@@ -233,13 +233,6 @@
 		</domainoverrides>
 		-->
 	</dnsmasq>
-	<snmpd>
-		<!-- <enable/> -->
-		<syslocation></syslocation>
-		<syscontact></syscontact>
-		<rocommunity>public</rocommunity>
-		<!-- <bindlan/> -->
-	</snmpd>
 	<diag>
 		<ipv6nat>
 			<!-- <enable/> -->

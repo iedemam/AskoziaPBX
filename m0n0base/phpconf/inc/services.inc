@@ -393,49 +393,6 @@ function services_dnsmasq_configure() {
 	return 0;
 }
 
-function services_snmpd_configure() {
-	global $config, $g;
-
-	/* kill any running snmpd */
-	sigkillbypid("{$g['varrun_path']}/snmpd.pid", "TERM");
-
-	if (isset($config['snmpd']['enable'])) {
-	
-		if ($g['booting'])
-			echo "Starting SNMP agent... ";
-
-		/* generate snmpd.conf */
-		$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
-		if (!$fd) {
-			printf("Error: cannot open snmpd.conf in services_snmpd_configure().\n");
-			return 1;
-		}
-			
-		$snmpdconf = <<<EOD
-syslocation "{$config['snmpd']['syslocation']}"
-syscontact "{$config['snmpd']['syscontact']}"
-rocommunity "{$config['snmpd']['rocommunity']}"
-
-EOD;
-
-		if (isset($config['snmpd']['bindlan'])) {
-			$snmpdconf .= "agentaddress udp:161@{$config['interfaces']['lan']['ipaddr']}\n";
-		}
-
-		fwrite($fd, $snmpdconf);
-		fclose($fd);
-
-		/* run snmpd */
-		mwexec("/usr/local/sbin/snmpd -c {$g['varetc_path']}/snmpd.conf" .
-			" -P {$g['varrun_path']}/snmpd.pid");
-
-		if ($g['booting'])
-			echo "done\n";
-	}
-
-	return 0;
-}
-
 function services_proxyarp_configure() {
 	global $config, $g;
 

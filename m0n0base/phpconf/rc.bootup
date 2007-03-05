@@ -118,9 +118,6 @@
 	/* start DHCP relay */
 	services_dhcrelay_configure();
 	
-	/* start SNMP service */
-	services_snmpd_configure();
-	
 	/* start proxy ARP service */
 	services_proxyarp_configure();
 

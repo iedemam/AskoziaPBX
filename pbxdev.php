@@ -58,7 +58,6 @@ $mini_httpd_version = "mini_httpd-1.19";
 $wol_version = "wol-0.7.1";
 $ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
 $bpalogin_version = "bpalogin-2.0.2";
-$ucd_snmp_version = "ucd-snmp-4.2.7";
 $mpd_version = "mpd-3.18";
 $ipsec_tools_version = "ipsec-tools-0.6.6";
 
@@ -418,35 +417,6 @@ function build_mpd() {
 }
 
 
-$h["build ucdsnmp"] = "(re)builds and patches UCD-SNMP";
-function build_ucdsnmp() {
-	global $dirs, $ucd_snmp_version;
-
-	if(!file_exists($dirs['packages'] ."/$ucd_snmp_version")) {
-		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://kent.dl.sourceforge.net/sourceforge/net-snmp/$ucd_snmp_version.tar.gz; ".
-				"tar zxf $ucd_snmp_version.tar.gz");
-		_log("fetched and untarred $ucd_snmp_version");
-	}
-	// TODO: this patch is taken from the 1.23 branch (2007-02-23) and should replace the 
-	// existing patch if it's confirmed to work
-	if(!_is_patched("$ucd_snmp_version")) {
-		_exec("cd ". $dirs['packages'] ."/$ucd_snmp_version; ". 
-				"patch < ". $dirs['files'] ."/ucd-snmp.patch");
-		_stamp_package_as_patched("$ucd_snmp_version");
-	}
-
-	_prompt("All of the following prompts can all be answered with their default values.", 5);
-
-	_exec("cd ". $dirs['packages'] ."/$ucd_snmp_version; ".
-		"./configure  --without-openssl --disable-debugging --enable-static --enable-mini-agent --disable-privacy --disable-testing-code --disable-shared-version --disable-shared --disable-ipv6 '--with-out-transports=TCP Unix' '--with-mib-modules=mibII/interfaces mibII/var_route ucd-snmp/vmstat_freebsd2'");		
-
-	_exec("cd ". $dirs['packages'] ."/$ucd_snmp_version; make");
-
-	_log("built UCD-SNMP");
-}
-
-
 $h["build tools"] = "(re)builds the little \"helper tools\" that m0n0wall needs (choparp, stats.cgi, minicron, verifysig)";
 function build_tools() {
 	global $dirs;
@@ -482,7 +452,6 @@ function build_packages() {
 	build_wol();
 	build_ezipupdate();
 	build_bpalogin();
-	build_ucdsnmp();
 }
 
 $h["build ports"] = "(re)builds all necessary ports";
@@ -720,17 +689,6 @@ function populate_racoon($image_name) {
 	_exec("cp /usr/ports/security/ipsec-tools/work/$ipsec_tools_version/src/setkey/setkey $image_name/usr/local/sbin/");
 	
 	_log("added racoon");
-}
-
-
-$h["populate ucdsnmp"] = "adds UCD-SNMP to the given \"image_name\"";
-function populate_ucdsnmp($image_name) {
-	global $dirs, $ucd_snmp_version;
-	
-	_exec("cd ". $dirs['packages'] ."/$ucd_snmp_version; ".
-		"install -s agent/snmpd $image_name/usr/local/sbin");
-	
-	_log("added ucd-snmp");
 }
 
 
@@ -1035,10 +993,10 @@ function _usage($err=0) {
 $h["patch"] = "available patch options: bootloader, kernel, syslogd, everything";
 $h["build"] = "available build options: kernel, kernels, syslogd, clog, php, minihttpd, ".
 	"dhcpserver, dhcprelay, dnsmasq, msntp, wol, ezipupdate, bpalogin, racoon, mpd, ".
-	"ucdsnmp, tools, bootloader, everything";
+	"tools, bootloader, everything";
 $h["populate"] = "available populate options: base, etc, defaultconf, zoneinfo, syslogd, ".
 	"clog, php, minihttpd, dhclient, dhcpserver, dhcprelay, dnsmasq, msntp, wol, ".
-	"ezipupdate, bpalogin, mpd, racoon, ucdsnmp, tools, phpconf, webgui, libs, everything";
+	"ezipupdate, bpalogin, mpd, racoon, tools, phpconf, webgui, libs, everything";
 
 
 // --[ command line parsing ]--------------------------------------------------
