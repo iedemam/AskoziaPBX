@@ -521,13 +521,4 @@
 		</proxyarpnet>
 		-->
 	</proxyarp>
-	<wol>
-		<!--
-		<wolentry>
-			<interface>lan|opt[n]</interface>
-			<mac>xx:xx:xx:xx:xx:xx</mac>
-			<descr></descr>
-		</wolentry>
-		-->
-	</wol>
 </m0n0wall>

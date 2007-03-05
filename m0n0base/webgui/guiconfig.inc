@@ -480,16 +480,6 @@ function cpelements_sort() {
 	usort($config['captiveportal']['element'],"cpelementscmp");
 }
 
-function wol_sort() {
-	global $g, $config;
-
-	function wolcmp($a, $b) {
-		return strcmp($a['descr'], $b['descr']);
-	}
-	
-	usort($config['wol']['wolentry'], "wolcmp");
-}
-
 function ipsec_ca_sort() {
 	global $g, $config;
 

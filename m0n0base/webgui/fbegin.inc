@@ -125,7 +125,6 @@ $menu['Services']['Dynamic DNS'] 	= array('services_dyndns.php');
 $menu['Services']['DHCP server']	= array('services_dhcp.php');
 $menu['Services']['DHCP relay'] 	= array('services_dhcp_relay.php');
 $menu['Services']['Proxy ARP']  	= array('services_proxyarp.php');
-$menu['Services']['Wake on LAN']  	= array('services_wol.php');
 
 $menu['VPN']['IPsec']  				= array('vpn_ipsec.php',
 											'vpn_ipsec_mobile.php',

@@ -55,7 +55,6 @@ $dirs['mwroot'] = "/usr/m0n06branch";	// no trailing slash please!
 $php_version = "php-4.4.5";
 $radius_version = "radius-1.2.5";
 $mini_httpd_version = "mini_httpd-1.19";
-$wol_version = "wol-0.7.1";
 $ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
 $mpd_version = "mpd-3.18";
 $ipsec_tools_version = "ipsec-tools-0.6.6";
@@ -322,24 +321,6 @@ function build_msntp() {
 }
 
 
-$h["build wol"] = "(re)builds wol (wake-on-lan client)";
-function build_wol() {
-	global $dirs, $wol_version;
-
-	if(!file_exists($dirs['packages'] ."/$wol_version")) {
-		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://heanet.dl.sourceforge.net/sourceforge/ahh/$wol_version.tar.gz; ".
-				"tar zxf $wol_version.tar.gz");
-		_log("fetched and untarred $wol_version");
-	}
-	_exec("cd ". $dirs['packages'] ."/$wol_version; ".
-			"./configure --disable-nls; ". 
-			"make");
-
-	_log("built wol");
-}
-
-
 $h["build ezipupdate"] = "(re)builds and patches ez-ipupdate (dynamic dns update client)";
 function build_ezipupdate() {
 	global $dirs, $ez_ipupdate_version;
@@ -430,7 +411,6 @@ function build_packages() {
 
 	build_php();
 	build_minihttpd();
-	build_wol();
 	build_ezipupdate();
 }
 
@@ -613,17 +593,6 @@ function populate_msntp($image_name) {
 		"install -s work/msntp-*/msntp $image_name/usr/local/bin");
 	
 	_log("added msntp");
-}
-
-
-$h["populate wol"] = "adds wol (wake on lan client) to the given \"image_name\"";
-function populate_wol($image_name) {
-	global $dirs, $wol_version;
-	
-	_exec("cd ". $dirs['packages'] ."/$wol_version; ".
-		"install -s src/wol $image_name/usr/local/bin");
-	
-	_log("added wol");
 }
 
 
@@ -961,10 +930,10 @@ function _usage($err=0) {
 // TODO: I could generate these...
 $h["patch"] = "available patch options: bootloader, kernel, syslogd, everything";
 $h["build"] = "available build options: kernel, kernels, syslogd, clog, php, minihttpd, ".
-	"dhcpserver, dhcprelay, dnsmasq, msntp, wol, ezipupdate, racoon, mpd, ".
+	"dhcpserver, dhcprelay, dnsmasq, msntp, ezipupdate, racoon, mpd, ".
 	"tools, bootloader, everything";
 $h["populate"] = "available populate options: base, etc, defaultconf, zoneinfo, syslogd, ".
-	"clog, php, minihttpd, dhclient, dhcpserver, dhcprelay, dnsmasq, msntp, wol, ".
+	"clog, php, minihttpd, dhclient, dhcpserver, dhcprelay, dnsmasq, msntp, ".
 	"ezipupdate, mpd, racoon, tools, phpconf, webgui, libs, everything";
 
 
