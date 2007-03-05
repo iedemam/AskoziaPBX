@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!-- m0n0wall default system configuration -->
+<!-- $Id: config.xml 170 2006-11-20 21:24:05Z mkasper $ -->
+<AskoziaPBX>
+	<version>1.0</version>
+	<lastchange></lastchange>
+	<system>
+		<hostname>m0n0wall</hostname>
+		<domain>local</domain>
+		<dnsserver></dnsserver>
+		<dnsallowoverride/>
+		<username>admin</username>
+		<password>$1$2xGLA75j$W/jiJc00HYBZX7kFjxjQv0</password>
+		<timezone>Etc/UTC</timezone>
+		<time-update-interval>300</time-update-interval>
+		<timeservers>pool.ntp.org</timeservers>
+		<webgui>
+			<protocol>http</protocol>
+			<!--
+			<port></port>
+			<certificate></certificate>
+			<private-key></private-key>
+			<noassigninterfaces/>
+			<expanddiags/>
+			<noantilockout></noantilockout>
+			-->
+		</webgui>
+		<!--
+		<user>
+			<name></name>
+			<fullname></fullname>
+			<groupname></groupname>
+			<password></password>
+		</user>
+		-->
+		<!--
+		<group>
+			<name></name>
+			<description></description>
+			<pages></pages>
+		</group>
+		-->
+		<!-- <disableconsolemenu/> -->
+		<!-- <disablefirmwarecheck/> -->
+		<!-- <shellcmd></shellcmd> -->
+		<!-- <earlyshellcmd></earlyshellcmd> -->
+		<!-- <harddiskstandby></harddiskstandby> -->
+		<!-- <polling/> -->
+		<!-- <notes></notes> -->
+	</system>
+	<interfaces>
+		<lan>
+			<if>sis0</if>
+			<ipaddr>192.168.1.1</ipaddr>
+			<subnet>24</subnet>
+			<media></media>
+			<mediaopt></mediaopt>
+		</lan>
+	</interfaces>
+	<staticroutes>
+		<!--
+		<route>
+			<interface>lan|opt[n]|pptp</interface>
+			<network>xxx.xxx.xxx.xxx/xx</network>
+			<gateway>xxx.xxx.xxx.xxx</gateway>
+			<descr></descr>
+		</route>
+		-->
+	</staticroutes>
+	<diag>
+		<ipv6nat>
+			<!-- <enable/> -->
+			<ipaddr></ipaddr>
+		</ipv6nat>
+		<!-- <ipfstatentries></ipfstatentries> -->
+	</diag>
+	<syslog>
+		<!--
+		<reverse/>
+		<enable/>
+		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
+		<filter/>
+		<dhcp/>
+		<system/>
+		<portalauth/>
+		<vpn/>
+		<nologdefaultblock/>
+		<resolve/>
+		-->
+	</syslog>
+</AskoziaPBX>

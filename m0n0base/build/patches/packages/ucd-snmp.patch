@@ -1,0 +1,11 @@
+--- snmplib/asn1.h.orig	Thu Aug 10 18:07:47 2000
++++ snmplib/asn1.h	Sun Nov 19 10:26:00 2006
+@@ -1,6 +1,8 @@
+ #ifndef ASN1_H
+ #define ASN1_H
+ 
++#include <sys/types.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

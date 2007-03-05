@@ -1,0 +1,1278 @@
+$Id: CHANGELOG 181 2006-12-25 17:50:15Z mkasper $
+
+*** Note: Please add new entries to the top of this file. ***
+-------------------------------------------------------------------------------
+
+- modified kernel patch to handle ipnat+dummynet in ip_input -> should fix problems
+  with captive portal not reporting downloaded data per user properly when the
+  traffic shaper is on, and also makes per-user bandwidth limits work again
+
+- add ural(4) to list of recognized wireless NICs
+
+- removed "-P" option from boot.config again (doesn't work properly with USB keyboards)
+
+- add kbdmux to kernel config of generic-pc(-cdrom) -> should fix problems with USB keyboards (hopefully)
+
+- use setkey from ipsec-tools now that we use NAT-T (mkasper)
+
+
+1.3b2
+-----
+
+- enabled AES for IPsec phase 1 (mkasper)
+
+- bumped MFS size in rc.firmware to 10 MB (mkasper)
+
+- set "-P" option in boot.config for generic-pc and generic-pc-cdrom to automatically
+  probe for a keyboard and use the serial port if no keyboard is found (mkasper)
+
+- compiled SNMP agent with support for memory usage information MIB (mkasper)
+
+- enabled NAT-T support for IPsec tunnels -> new option on IPsec webGUI pages (mkasper)
+
+- back-ported MSS clamping fix from MPD 4.0b5 to MPD 3.18 (fixes MTU problems with
+  PPPoE client) (mkasper)
+
+- enabled hostap for wireless cards supported by the ral(4) driver (mkasper)
+
+- forced PIO mode for ATA driver to work around problems with quirky hardware
+  (IDE controllers, CF cards) (mkasper)
+
+- changes in Captive Portal (jdegraeve):
+ - Always sent the session-time instead of only sending it within a stop. This
+   will cause most prepaid systems to work again.
+
+
+1.3b1
+-----
+
+- changed base system to FreeBSD 6.2-RC1 (final 1.3 version will be based on FreeBSD 6.2-RELEASE)
+
+- WARNING: the generic-pc image no longer fits on 8 MB CF cards! (>= 10 MB required)
+
+- for generic-pc-cdrom, the configuration may now also be stored on an USB memory stick
+  (instead of a floppy disk). m0n0wall will automatically probe for an USB stick with
+  an FAT file system first, and if this fails, fall back to the floppy drive
+
+- added support for new wireless features in FreeBSD 6
+	- Atheros cards are finally supported!
+	- channel selection on interface setup page now reflects actual capabilities of card
+	- wireless status page shows scanned APs in client mode and associated stations in hostap mode
+	- WPA support is expected in the next release
+
+- removed MTU option from Interfaces: WAN page. This used to control TCP MSS 
+  adjustment, but since the non-NAT-dependent MSS fixup patch kludged into ipnat 
+  has not been ported to ipfilter 4 (and is an ugly hack at best anyway), MSS 
+  fixup is now automatically applied for PPPoE connections (where it is actually 
+  needed) using MPD's integrated feature and shouldn't be necessary in other cases
+
+- a rather intrusive kernel patch was required to make concurrent traffic shaping + NAT on the
+  WAN interface possible; if you rely on this feature, please test it well and report any problems
+
+1.23b2
+------
+
+- changes in Captive portal (jdegraeve):
+  - add PfSense ideas (slighty different implemented):
+  * Import CP SSL idea from PfSense: Redirect both HTTP and HTTPS to the Captive Portal keeping in mind a SSL error (cert mismatch)
+  * Add preliminary support for WPA and PPPoE pass-through
+
+1.23b1
+------
+
+- updated base system to FreeBSD 4.11-RELEASE-p18 (mkasper)
+
+- recompiled ipsec-tools without FreeBSD patch to use "security" syslog
+  facility instead of "daemon" -> should get rid of excess debug messages
+  from racoon (mkasper)
+
+- do not generate anti-spoof rules for optional interfaces that have other interfaces
+  bridged to them (as opposed to being bridged to another interface, which was already
+  handled properly) when the filtering bridge is on (mkasper)
+
+- added support for 3rd party extensions in the group management and dynamic menu system. (ptaylor)
+  - Thanks to Leo Fante for code modifications
+
+- changes in Captive portal (jdegraeve):
+  - Fixes a bug in the way we handle authentication mechanism. (Potentially allowing double logins and faulty locking)
+  - Add support for different MAC formatting styles.
+  - Add support for per user bandwidth limitation.
+
+1.22
+----
+
+- updated base system to FreeBSD 4.11-RELEASE-p16 (mkasper)
+
+- updated Dnsmasq to 2.27
+
+- added Role-based Access to WebGUI (ptaylor)
+  - added Group and User Manager pages
+  - updated menu system to be dynamic depending upon permissions of active user 
+
+- added "support for 3rd DNS server" (jdegraeve)
+
+- updated radius_accounting.inc to PECL (jdegraeve)
+  - Now sends NAS-IP-Address (based on actual WAN-address) and NAS-Identifier cleanly
+  - Each gigawords value now counts as 4GB instead of 2GB (See RFC 2866 section 5)
+
+- changes in Captive portal (jdegraeve):
+  - Cleanup and code added to allow FUTURE stuff like volume limits etc. to be implemented
+  - Added User Volume Stats in captive portal status page
+  - RADIUS mac authentication now works on local subnet even if "Disable MAC filtering" is activated
+  - Firewall ruleno now uses a more intelligent pool, this fixes a bug where a ruleno could be used even if it is already been assigned
+  - Fixed bug in RADIUS Session-Timeout handling so it'll also work even if reauthentication is disabled
+
+- added "disable port mapping" option to advanced outbound NAT (helps with certain IPsec
+  VPN gateways that insist on the IKE source port being 500) (mkasper)
+
+- updated PHP to 4.4.2 (mkasper)
+
+- updated ipsec-tools to 0.6.5 (fixes problem with /32 subnets) (mkasper)
+
+- added option to System: Advanced page to allow IPsec/ESP-encrypted IP fragments to be passed (mkasper)
+
+- added DHCP/interface route fix for UK ADSL half-bridge modems (DSL-300T, X-modem) (mkasper)
+
+- fixed check for overlapping external port ranges when editing inbound NAT entries (mkasper)
+
+- log captive portal logins even when authentication is disabled (mkasper)
+
+1.21
+----
+X updated base system to FreeBSD 4.11-RELEASE-p13
+
+X updated PHP to 4.4.1
+
+X updated Dnsmasq to 2.23
+
+X updated racoon to the ipsec-tools 0.6.4 version
+
+X mini_httpd has been improved to increase stability of the captive portal and webGUI:
+  - when the maximum number of connections has been reached, it no longer
+    attempts to send a 503 message to the client, as that itself may cause
+    the parent process to block (and, due to a bug in SIGALRM handling, even exit)
+    if the client fails to acknowledge the data. Instead, the connection is simply closed.
+  - new feature: the number of connections per client IP address can now be
+    limited to prevent one misbehaved user from tying up the server. default
+    limit is now 4 connections per client, and 16 in total (can be adjusted on captive portal
+    setup page)
+  
+X new option for SNMP agent: bind to LAN interface only
+  (avoids problem with VPN tunnel to LAN subnet terminated on WAN; see
+   http://doc.m0n0.ch/handbook/faq-snmpovervpn.html)
+   
+X added device nodes for /dev/ad4-7
+
+X fixed CPU and traffic graph SVG for Firefox 1.5
+
+X captive portal RADIUS accounting stop packets are now sent before rebooting after a firmware upgrade
+
+X when restoring config.xml via the webGUI, XML validation is done on the file before it is installed
+
+X imported Jonathan de Graeve's captive portal RADIUS improvements
+	- improved RADIUS authentication using PHP's built-in PECL RADIUS support
+	- secondary RADIUS server support
+	- RADIUS MAC authentication
+	- RADIUS URL redirection attribute support
+	- RADIUS Session-Timeout support
+	- disable concurrent user login option
+
+(b3:)
+
+X fixed stopping/restarting racoon
+
+X the captive portal has been modified to always issue a redirect to m0n0wall's
+  own IP address first (even in HTTP mode). This means that all login forms MUST
+  contain the "redirurl" hidden field now, otherwise they won't work anymore!!!
+  
+X fixed typo in services_captiveportal.php
+
+X increased CF partition size to 7 MB
+
+(b4:)
+
+X mini_httpd: support for "-cpelement" option: path to directory that contains
+  files, and own host name/port
+
+	X RADIUS Idle-Timeout support
+	X RADIUS Acct-Terminate-Cause support
+
+X captive portal file manager
+	-> If you already have element files from inofficial builds, it isn't enough
+to simply delete all the files that were uploaded to the system. Before
+upgrading, you manually have to delete the whole
+"<element>...</element>" part in your config and restore that changed config.
+
+X notes field on index page
+
+- captive portal:
+	- WISPr RADIUS attributes are now supported as well as Nomadix attributes
+  	(Redirection-URL, Session-Terminate-Time)
+  	- on idle timeout, the time of last activity is used in calculating the Session-Time
+
+1.2
+---
+
+X fixed HD standby to use minutes, not seconds
+
+X fixed DNS forwarder domain override feature
+
+X Diagnostics: ARP page now allows entries to be deleted
+
+X made Ping/Traceroute pages tabbed
+
+X captive portal RADIUS accounting now sends Gigawords
+
+X fixed PPPoE dial-on-demand not to use 10.0.0.1/10.0.0.2 internally
+
+X removed OpenVPN
+  --> if you've been using OpenVPN in earlier 1.2b versions, make very sure
+  after upgrading that all your rules still point to the right interfaces
+  (the OpenVPN pseudo-interfaces will be removed). Better yet, restore the
+  configuration backup you made before you enabled OpenVPN (as per the
+  suggestion in the webGUI) prior to upgrading.
+
+X RFC 1918 block rule is now listed on the Firewall: Rules page for WAN
+  as an uneditable rule (gray background)
+
+
+1.2b10
+------
+
+X updated base system to FreeBSD 4.11-RELEASE-p11
+
+X upgraded PHP to 4.4.0
+
+X updated dhcpd to 3.0.3
+
+X updated racoon to 20050510a
+
+X removed psm0 from generic-pc/cdrom kernel config as there have been reports of
+  exotic machines that lock up with it and it serves no use anyway
+
+X fixed bug on DNS forwarder page where sometimes the wrong entry would be
+  edited/deleted
+  
+X fixed name resolution on firewall logs page
+
+X fixed PPTP interface display on firewall logs page
+
+X redirect after clearing logs to avoid reposting on next refresh in browser
+
+X allow current tab to be clicked to refresh log page for all logs (not just firewall log)
+
+X allow source interface to be selected on Diagnostics: Ping page
+
+X DNS forwarder: entire domains may be overridden by specifying a DNS server to be queried for them
+
+X cleaned up captive portal local user manager to be consistent with other
+  user databases in config.xml (i.e. don't store usernames in XML tag names anymore)
+  
+  --> existing users won't be converted and will have to be manually entered again!
+  (since this is a beta version and there has never been a release with
+  the captive portal local user manager before)
+  
+X added ARP table diagnostics page
+
+X added Traceroute diagnostics page
+
+X added firewall states diagnostics page
+
+X fixed filter rule generator to generate rules for DHCP on optional interfaces
+  if the DHCP server is enabled on the interface that the optional interface in
+  question is bridged to (e.g. OPT1 bridged to LAN and DHCP server running on LAN
+  -> clients on OPT1 can now use the DHCP server on LAN as well). Note: the interface
+  that the DHCP server is running on must have a link for this to work
+  (cf. FreeBSD PR kern/41632 - there's a fix, but it's too intrusive)
+
+X fixed problem with racoon not updating the expiration timer of
+  dynamically generated policies (for mobile clients) upon rekeying
+  
+- allow server/port to be specified for DynDNS client
+
+- many OpenVPN fixes/improvements
+
+
+1.2b9
+-----
+
+- IPsec certificate support (by Enrique Maldonado) -> not tested, feedback wanted!
+
+- improved firewall log page: it is now possible to filter by action, protocol,
+  interface, source and destination port (by Peter Allgeyer)
+  
+- reauthentication option for captive portal (checks connected clients against
+  RADIUS server every minute)
+
+- 32 bpf devices for DHCP server (instead of just 16)
+
+- fixed captive portal crash in HTTPS mode
+
+- includes /bin/mv
+
+- experimental DELAY patch for wireless cards that use the wi driver
+  (timeout in wi_seek etc.) - see http://www.monkey.org/freebsd/archive/freebsd-mobile/200401/msg00114.html
+  
+- fixed: hard disk standby isn't enabled on boot
+
+- update xl driver to support 3C920B-EMB-WNM (contributed by Michael Jones)
+
+- added TITLE attribute for add/edit/delete buttons
+  
+- captive portal status page now shows usernames
+
+- device polling can now be controlled on the System: Advanced page
+
+- swapped Acct-Input-Octets/Packets and Acct-Output-Octets/Packets in captive portal
+  RADIUS accounting messages to reflect the correct meaning as per RFC 2866
+
+
+1.2b8
+-----
+
+**** ath won't work anymore! ****
+
+**** focus is stability, not lots of new features ****
+
+- switched base system back to FreeBSD 4.11
+
+- merged ifstats.cgi and cpustats.cgi into stats.cgi
+
+- updated PHP to 4.3.11
+
+- only log the first passed packet, and not every packet in the same session
+
+- back out captive portal per-user bandwidth patches for the time being as they're buggy and not
+  currently maintained
+
+- fix captive portal logout
+
+- return ICMP port unreachable instead of protocol unreachable (ipfilter default)
+  for rejected UDP packets
+  
+- auto-add proxy ARP option for new 1:1 NAT mappings
+
+- auto-establish IPsec tunnel option removed for the time being (no good way of
+  making it work actually)
+
+- the IPsec SA preferral policy can be changed on the System: Advanced page
+  (default: prefer new SAs after 30 seconds)
+
+- captive portal: logout popup window is no longer enabled implicitly when using authentication
+
+- kernel is now built with polling support; default is disabled, but it can be enabled
+  using "sysctl kern.polling.enable=1" (see also "man polling")
+
+- updated ipfilter window scaling and ICMP NAT checksum adjustment fixes (by Fred Wright)
+
+- updated DP83815 short cable bug workaround in sis driver (by Fred Wright)
+
+
+1.2b7
+-----
+
+- beta images are now digitally signed too
+
+- show lease start/end time on DHCP leases page in local time instead of GMT
+
+- added logging for the captive portal
+
+- changed the generic-pc HD standby timer feature to use ataidle
+
+- captive portal support for local user database
+
+- apply new version of Keycom's captive portal RADIUS per-user bandwidth patches
+
+- updated wireless status page for FreeBSD 5.3 and ath
+
+- add some common 11a wireless channels as a temporary solution until we can query
+  the actual list of available channels using ifconfig
+
+- ipfilter window scaling patch
+
+- allow "WAN IP address" as source/destination in firewall rules; reload firewall rules when
+  the WAN IP address changes
+  
+- the previous change also solves the PPTP VPN server + traffic shaper problem
+  (no more NAT redirection to localhost)
+  
+- set link0 flag for fxp interfaces (interrupt moderation)
+
+
+
+1.2b6
+-----
+
+- fixed inbound NAT + traffic shaper bug (kernel patch; see FreeBSD PR kern/76539)
+
+- fixed: filtering bridge doesn't filter while traffic shaper is enabled by disabling
+  traffic shaping for bridged links for the time being (see kern/78090)
+
+- packet loss rate/queue size options for traffic shaper pipes
+
+- per-user bandwidth restrictions for captive portal users (according to special
+  attributes returned by the RADIUS server)
+
+- removed CPU meter from main webGUI page (causes 1 second delay and fluctuates
+  too much); replaced by SVG CPU graph
+
+- MAC addresses with dashes instead of colons now work too
+
+- static mappings can now be added by clicking a button on the DHCP leases page
+
+- several small HTML fixes (mainly for Firefox)
+
+
+1.2b5
+-----
+
+- fixed: DHCP relay won't start automatically on reboot
+
+- fixed display of SSIDs with spaces in them on Status: Interfaces
+
+- turned on ipfw bridge filtering when the filtering bridge is on (traffic shaper)
+
+- improved firewall rule selection (feedback with background color; the entire
+rule can be clicked to toggle the selection of a rule too); visual feedback on
+where rules are moved when the mouse is over a rule move button
+
+- hidden config.xml option to override DNS servers that are assigned to PPTP VPN clients
+
+- IPsec: /0 remote network mask now allowed
+
+- the filter is no longer bypassed for traffic that enters and leaves through the
+same interface (due to static routes) by default. This is now a configurable
+option on the advanced setup page
+
+- it is now possible to have separate TCP and UDP NAT mappings for the same port
+
+- fix filter timeouts (half-seconds instead of seconds)
+
+- support Atheros based wireless cards
+
+- modified nsupdate syntax for BIND 9
+
+- updated dnsmasq to 2.20
+
+- upgraded base system to FreeBSD 5.3 (recompiled kernel and all binaries)
+
+- don't mount proc filesystem anymore (not needed in 5.3)
+
+- anti-spoof rules are omitted on optional interfaces and on LAN if any
+  other interface is bridged to it while the filtering bridge is on
+  (to make other subnets work)
+
+- fixed input validation for "0" values
+
+- rearranged checkbox/buttons on firewall rule page
+
+- reduce redundancy in webGUI pages by putting more HTML in header/footer
+
+- upgraded to PHP 4.3.10
+
+- fixed ping function (no more stripping of dashes)
+
+- fixed warning in vpn.inc with mobile client IPsec but no static tunnels configured
+  (thanks to Brian Zushi for reporting this)
+
+- execute DHCP/PPP up-scripts in background for faster link startup
+
+
+1.2b3
+-----
+
+* filter rule page now has one tab per interface
+
+* much better rule move procedure: multiple rules can be selected and moved
+  to any position in the rule list at once (relative order is preserved)
+
+* multiple rules can now be deleted at once too
+
+* other minor GUI cleanups
+
+* RFC 2316 DNS updater (Services: Dynamic DNS)
+
+* unparsed (as generated by scripts) ipnat/ipf/ipfw rulesets are shown on status.php
+
+* proxy ARP is now supported on LAN and optional interfaces too
+
+* auto-assigned DNS servers (PPP/DHCP) are shown on Status: Interfaces
+
+* PPPoE/PPTP sessions on WAN can be manually disconnected and reconnected, and DHCP
+  leases may be released/renewed (Status: Interfaces)
+
+* captive portal: POST to real m0n0wall IP in HTTP mode too (not "") -> $PORTAL_REDIRURL$
+  is now required even in HTTP mode
+
+* added note to filter rule edit page about src port != dst port in most cases
+
+* skip m0n0wall's own IP address in static routing bypass
+
+* support for point-to-point links on WAN (with "ispointtopoint" set in config.xml)
+
+* support for an rc.early file in extensions
+
+* ez-ipupdate security fix
+
+* renamed "System logs" to "Logs" (misnomer)
+
+* omit req-dns for PPPoE/PPTP if DNS override option is not checked because of
+  problem reports with a few ISPs (-> document)
+
+* PPTP dial-on-demand fix
+
+* filter UDP ack timeout is now 240 instead of 24 seconds to make SIP work properly
+
+1.2b2
+-----
+
+- changed racoon proposal_check back to obey after many problem reports; only remaining
+difference to 1.1 now: new SAs are preferred after 30 seconds -> PLEASE TEST AND REPORT
+
+- changed mfsroot size to 11 MB to accomodate DHCP relay and OpenVPN binaries
+
+- ICMP type matching for filter rules
+
+- EXPERIMENTAL OpenVPN support (contributed by Peter Curran) -> THIS WILL MESS UP
+  THE OPTIONAL INTERFACES IN YOUR CONFIG.XML - BACKUP FIRST!
+
+- Dial-On-Demand for PPPoE and PPTP on WAN (contributed by Peter Allgeyer)
+
+- added DHCP relay service (contributed by Justin Ellison)
+
+- updated ISC DHCP server to 3.0.1.r14
+
+- updated PHP to 4.3.9
+
+- updated racoon to racoon-20040818a
+
+- PPTP VPN login/logout logging
+
+- TCP idle timeout for the filter is now 2.5 hours instead of the ipfilter default
+  of 10 days (!) to keep the state table from filling up with dead connections;
+  this value can be modified on the advanced setup page
+
+- fixed maxproc bug in mini_httpd that would manifest itself sometimes with the captive portal in HTTPS mode
+
+- captive portal: a unique/random session ID is now generated for RADIUS accounting,
+  and MAC filtering can be disabled for special topologies (e.g. routed clients);
+  RADIUS accounting port can be specified
+
+- HTML page titles now show the host name
+
+- config backup: file name now contains FQDN and date/time
+
+- config.xml options for interface media/mediaopt
+
+- increased filter state table size to 30000 entries
+
+- RADIUS accounting for PPTP VPN
+
+- NAT table reset on WAN IP change
+
+- magic shaper src/dst port fix
+
+- new hidden option "dnsserver" for DHCP service
+
+
+1.2b1
+-----
+
+- captive portal HTTPS login support
+
+- captive portal custom redirection support
+
+- CPU/memory usage display on main webGUI page
+
+- IPsec kernel fix to prefer newer SAs over older ones after 30 seconds (dead SA problem),
+  racoon proposal_check changed from obey -> claim, auto-establishment option
+  (ping)
+
+- console speed is no longer fixed to 9600 bps for net45xx/net48xx/WRAP;
+  instead, the value that was set by the BIOS is used, so it should work
+  at whatever speed the BIOS is set to
+
+- IDE hard disk standby option for generic-pc (System: Advanced page)
+
+- last configuration change timestamp is recorded and displayed in webGUI
+  
+- full interface names displayed for optional interfaces on Interfaces: Assign page
+
+- new advanced setup option: "Keep diagnostics in navigation expanded"
+
+- added more Ethernet drivers (esp. Gigabit Ethernet) for generic-pc/cdrom
+
+- netgraph protocol field compression fix
+
+- set kernel HZ to 1000 for smoother traffic shaping
+
+- webGUI anti-lockout rule on LAN can be disabled (System: Advanced page)
+
+- static routes can now be defined on the WAN interface
+
+- "earlyshellcmd" tag in config.xml is now supported (such commands are executed before
+  most of the system configuration is done)
+
+- VLAN parent interfaces are now always configured "up"
+
+- default hash algorithm for IPsec is now SHA1
+
+- ping option in console menu
+
+- hidden DHCP options (config.xml only): gateway, domain, next-server, filename
+  
+- fixed turning off PPTP VPN (NAT rules)
+
+- the webGUI now checks user input for control characters that are not allowed in XML
+
+
+1.1
+---
+
+- (fixed JS error on captive portal page interface -> cinterface)
+
+- turned off DMA for all platforms (problem with some CF cards; no real
+  performance improvement)
+  
+- improved hifn detection (when old messages in dmesg buffer)
+
+- disabled windowing for PPTP client on WAN
+
+- RADIUS accounting port fix
+
+
+1.1b17
+------
+- captive portal: RADIUS accounting support (with logout window) (Dinesh Nair)
+
+- fixed mini_httpd bug that could cause the webGUI server to exit when a
+  connection is closed while it's still in the listen queue
+  (such as when nmap'ing m0n0wall)
+  
+- updated racoon to 20040617a; patch for racoon-generated SP timeouts
+
+- fix for optional interfaces bridged with WAN set to DHCP/PPP
+
+- sis driver: fixed IRQ handling on stopped interfaces
+  (see http://www.freebsd.org/cgi/cvsweb.cgi/src/sys/pci/if_sis.c#rev1.93)
+  
+- fixed ipfilter/ipnat ICMP checksum adjustment bug (Fred Wright)
+
+- increased max. concurrent connections for the webGUI from 8 to 16
+
+- disabled ATA DMA for net48xx to fix problems with certain CF cards
+
+- merged ng_pptpgre.c/.h windowing control support from -STABLE;
+  recompiled MPD 3.18 -> delayed ACK is now enabled for PPTP VPN, while
+  windowing is still disabled (due to packet loss issues)
+  
+- fixed uptime display on index page
+
+- magic shaper P2P improvements
+
+- errors/collisions display on interface status page
+
+- replaced "alt" attributes in img tags with "title" for proper tooltip behavior
+
+- shaper: pipe/queue descriptions shown
+
+- removed IPsec auto-establishment feature for the time being
+  (racoon "keepalive" option is a no-op and ping patch is ugly)
+
+
+1.1b16
+------
+- got rid of kludgy table-based tab navigation bars - replaced with CSS;
+  tested with all major browsers (IE, Mozilla, Firefox, Opera)
+  -> if tabs appear messed up, try clearing the browser cache (an old CSS
+  file may be cached) and restarting the browser
+  
+- 802.1Q VLAN support (can be configured via the webGUI assign interfaces page;
+  add VLANs first, then use them like a physical interface; limited VLAN
+  configuration support on the console is also available)
+  
+- magic shaper (by Justin Ellison)
+
+- DHCP server: option to deny leases to unknown clients (Justin Ellison);
+  IP address no longer has to be specified for known clients (if not specified,
+  it will be dynamically allocated from the pool)
+
+- IPsec: user FQDNs now allowed (Justin Ellison)
+
+- IPsec: auto-establishment/keep-alive option (Justin Ellison)
+
+- simplified filter log display (default; raw filter logs may be turned back
+  on using the log settings page)
+  
+- fix for optional interfaces bridged with disabled optional interfaces
+
+- shorten MPD link labels for PPTP VPN to avoid netgraph problems
+
+- route/pass traffic between statically routed subnets on an interface and the
+  m0n0wall subnet on the same interface unconditionally to handle more
+  complicated routing topologies
+
+- updated PHP to 4.3.8
+
+1.1b15
+------
+- inbound NAT: local port range is now verified (cannot exceed 65535)
+
+- NAT: fixed problem with invalid ipnat rules being generated if one or more
+  interfaces were bridged
+  
+- mini_httpd: fix for concurrency limit
+
+1.1b14
+------
+- fixed DNS servers assigned by PPTP/PPPoE on WAN (change in MPD 3.18)
+
+- ipfilter fix for window scale bug (research and patch by Fred Wright)
+
+- generic-pc kernel now includes SCSI and USB mass storage drivers
+
+- added TOS matching for shaper rules (by Justin Ellison)
+
+- no IPsec processing for packets between LAN subnet and m0n0wall's LAN
+  IP address to prevent webGUI lockout
+  
+- uncompressed image size is now 6 MB for all platforms (generic-pc
+  kernel has grown due to SCSI support)
+
+
+1.1b13
+------
+- fixed JavaScript on traffic shaper rule edit page (allow ports with
+  protocol = any)
+  
+- HTTP server now has a limit on the maximum number of concurrent connections
+  (patch by Dinesh Nair)
+  
+- HTTP server no longer sends a "Server:" response-header field
+
+- patches for extension support (by Jason Crowley)
+
+- IGMP can now be selected as a protocol for filter/shaper rules
+
+- all disks known to the kernel are now probed for the config file, which
+  should make USB and SCSI disks work (patch by Dinesh Nair)
+  
+- hostname is now shown in the header of all webGUI pages
+
+- NAS-Port-Type attribute is now sent with RADIUS requests for the captive portal
+
+
+1.1b11
+------
+- problem with DHCP on WAN and automatically assigned DNS servers fixed
+
+- disabled filter/shaper rules are now shown with gray text
+
+- load average display on main page corrected
+
+
+1.1b10
+------
+- webGUI error page no longer shows the name "m0n0wall"
+
+- added Wake on LAN client
+
+- shaper rules can now be temporarily enabled/disabled as well
+
+- filter and shaper rules enable/disable status may be toggled by clicking the action/direction icon
+
+- upgraded base system to FreeBSD 4.10
+
+- updated MPD to 3.18
+
+1.1b9
+-----
+- added option to disable firmware version check on System: Advanced page
+
+- captive portal RADIUS authentication
+
+1.1b7/8
+-------
+- changed wording of external address option for inbound NAT
+
+- if the DNS forwarder is enabled, the DHCP server now issues the IP address
+  of the corresponding interface to clients (instead of the LAN IP address)
+
+- captive portal support
+
+1.1b6
+-----
+- updated MPD to 3.17
+
+- MSS clamping now works even when packets are not NATed
+
+- MSS fixup is used for PPTP VPN - this should correct problems when accessing
+  the Internet via a PPTP VPN tunnel
+
+- made PPTP VPN page tabbed
+
+- NAT on optional interfaces (Kurt Inge Smådal)
+
+- generate NAT rules for the PPTP VPN subnet and static routes when
+advanced outbound NAT is disabled
+
+- IP address can be specified on a per-user basis for PPTP VPN (Steven Honson)
+
+- DNS servers assigned via PPPoE/PPTP are now used if the "allow override"
+  option is set
+  
+- local subnet mask of /0 now allowed in IPsec tunnels
+
+- new SVG-based traffic grapher
+
+- bpalogin support
+
+- updated racoon to version 20040408a
+
+- updated system to FreeBSD 4.9-RELEASE-p4
+
+- updated PHP to 4.3.6
+
+- updated ipfilter to 3.4.33
+
+- disabled hardware TX checksumming for 3com cards due to buggy chips
+
+- new kernel patch that should solve PPTP VPN timeout/packet loss problems
+  once and for all
+  
+
+1.0
+---
+
+* fixed port validation on filter, shaper and NAT pages, and fixed ranges which
+  included 1 or 65535
+
+* fixed configuration backup download problem with IE and SSL
+
+* traffic shaping now works on bridged interfaces
+
+* added note to NAT pages about proxy ARP
+
+* changed DNS override description on system setup page (DNS servers
+assigned via PPP on WAN don't work)
+
+* imported modified version of choparp that supports IP address ranges;
+  modified webGUI to allow proxy ARP with ranges
+  
+* uploaded images are now verified using public-key cryptography - if the
+  digital signature is not correct, a warning is displayed (the user is allowed
+  to continue anyway though). The format of the signed images can be found
+  <here>, and the public key used to verify the images is <here>.
+  The first release has not been signed to avoid problems when upgrading older
+  versions (it wouldn't make sense anyway because pb versions do not
+  verify it).
+
+pb27
+----
+- disabled MSCHAPv1 (insecure) and CHAP-MD5 (no use with MPPE encryption anyway)
+
+- IP aliases are no longer added automatically to the WAN interface for 1:1 NAT
+  and server NAT mappings (use proxy ARP if required)
+  
+- renamed "internal" and "external subnet" to source and destination, respectively,
+  on the advanced outbound NAT page (to reduce confusion)
+  
+- added field to advanced outbound NAT page to allow entering the target (external)
+  address for the mapping
+  
+- added interface auto detection to "assign network ports" console menu item
+
+- fixed bug: failed to resync ipfilter on PPTP VPN linkup
+
+(- removed users figure from uptime)
+
+- added headers to webGUI pages to ensure pages are not cached
+
+- config file read/write locking to avoid race conditions
+
+- added "Clear log" button to log pages
+
+- added more BPF devices to fix problem with dhcpd on machines with more than
+  4 interfaces
+  
+- made webGUI username configurable
+
+- it is now possible to map entire subnets in 1:1 NAT (they may not overlap with
+  other server NAT entries, advanced outbound NAT entries or the WAN IP address)
+
+- added proxy ARP service
+
+pb26
+----
+
+- rxxx: fixed IPsec startup race condition with dynamic WAN IP address
+
+- r610: added option to disable individual IPsec tunnels
+
+- r610: moved firmware and advanced setup page to System section
+  (instead of Diagnostics)
+  
+- r610: filter and traffic shaper rules can now be duplicated
+
+- the parsed XML configuration file is now cached in PHP's native binary
+  serialized form to reduce webGUI page load times on slow platforms
+  (486-based in particular) where parsing the XML configuration is relatively
+  expensive
+  
+- added file up- and download via HTTP to exec.php
+
+- renamed "Log blocked packets by default" option on System logs:
+  Settings page to "Log packets blocked by the default rule" and changed its
+  behavior: it only controls whether packets that got blocked by an
+  automatically generated rule (usually the default-to-block rule in absence
+  of a matching pass rule) are logged. Logging of packets that are blocked by
+  user-defined block
+  rules is now no longer affected and only controlled by the per-rule log
+  option. Logging for pass rules remains unchanged.
+  
+- changed policy level for IPsec VPN tunnels to "unique" (was "require") to solve
+  a problem with multiple tunnels to the same endpoint
+    
+- fixed FQDN "my identifier" for mobile clients
+
+- kernel patch for problem with traffic shaper rules for inbound packets on WAN
+  (FreeBSD kernel bug, see FreeBSD PR kern/61685).
+  
+- IPsec GUI fixed (((forgot FQDN, domain name validation, apply changes)))
+
+- added "Disable console menu" option to advanced setup page
+
+- firmware upload now uses HTTP instead of FTP; the FTP server has been removed
+  (uploading files for diagnostic purposes may be done via exec.php)
+  
+- the firmware upload page now checks for new versions of m0n0wall online
+  (and displays the results, if available, on the firmware upload page).
+  Timeout is 3 seconds, and the following information is sent to the server:
+  platform and current m0n0wall version.
+  
+- added interface menu to IPsec tunnel edit page (local endpoint does no
+  longer have to be the WAN interface)
+  
+- "reject" type filter rules are now supported (returns TCP RST or ICMP port
+  unreachable for UDP) - contributed by Peter Allgeyer
+  
+- new feature: "server NAT"; makes it possible to map ports on multiple WAN
+  IP addresses to different servers (instead of just 1:1)
+ 
+
+pb25
+----
+
+- mobile IPsec VPN clients (i.e. dynamic IP address) are now supported. They
+  need to share a common policy (P1/P2 proposal), but may use different pre-shared
+  keys (with domain names or e-mail addresses as the identifier in aggressive mode).
+
+- upgraded racoon to 20030826a
+
+- added <shellcmd> tag to <system> section which can be used to run
+  arbitrary shell commands after the initial boot setup completes
+  
+- modified exec.php to always show the last command in the input field
+
+- added exec_raw.php to execute a command and return the output in
+  text/plain format without any HTML formatting
+  (use like http://m0n0wall-ip/exec-raw.php?cmd=... - command needs to
+  be URL-encoded of course)
+  
+- added note about not being able to access NATed services using the WAN IP
+  address from within LAN or optional networks to the inbound NAT page
+  
+- filter rule generator has been modified: outgoing packets that do not yet
+  have a state table entry are now always allowed to pass and create a state;
+  this implies that the firewall itself can now access any host on all networks
+  that are attached to it. This change was necessary to allow IPsec traffic
+  from mobile users out and to remove a very ugly rule that had been put in
+  place to allow decrypted IPsec traffic in on WAN without being able to verify
+  that it had indeed come from an IPsec tunnel (there's no way of verifying that
+  in an ipfilter rule).
+  
+- traffic shaper rules can now be applied to the WAN interface (see below)
+  
+- removed IPSEC_FILTERGIF from kernel config to correspond with the changes
+  in the filter rule generator - if you have a custom kernel and use IPsec,
+  rebuild it without that option!!
+  
+- reversed processing order of ipfilter and ipfw in ip_output.c to make things
+  symmetric with ip_input.c (ipfw needs to see outgoing packets
+  before ipnat)
+
+
+pb24
+----
+- new traffic shaper pipes/queues blabla... In good old m0n0wall tradition,
+your old configuration is automatically converted to the new model (separate
+rules/pipes) and should retain the same behavior, with one exception:
+ ... IMPORTANT: rule processing behavior for the traffic shaper has
+changed: only the action (pipe/queue) of the first rule to match a packet
+will be executed, instead of all rules that match a packet. As such,
+rule order is now important (and may be modified).
+
+- upgraded to IPFW2
+
+- changed behavior of the "add rule" button (+): when clicked next to a rule,
+adds the new rule before the current rule. When clicked at the very bottom
+of the page, appends the rule to the end of the relevant interfaces' rule list.
+
+- added new field to General setup to allow webGUI port to be specified
+
+- syslogd is no longer bound to the LAN interface's IP address. This
+fixes problems with logging to servers on optional interfaces.
+
+- symbols are now allowed in webGUI passwords
+
+
+pb23
+----
+- removed watchdog support for net45xx
+
+- fixed "Log blocked packets by default" option
+
+- NFS booting should be fixed (if /etc/fstab is already present, it is left
+  alone and devices are not probed for the config.xml file)
+  
+- host name may be omitted in DNS forwarder overrides
+
+- host name/client identifier to be sent when requesting a DHCP lease
+  can be configured (patch thanks to Pauline Middelink)
+
+- removed DynDNS password check (special characters)
+
+- the XML "spoofmac" element is now supported for LAN and optional interfaces, too
+  (even though the option is not offered in the webGUI)
+  
+(- fixed abs. widths in NAT/DHCP/Log menus)
+
+- added DHCP lease view page to diagnostics section (contributed by
+  Björn Pålsson)
+  
+- updated mini_httpd to 1.19
+
+- updated Dnsmasq to 1.18
+
+- made a custom mini_httpd error page
+
+pb22
+----
+- host and network aliases are now supported for filter, NAT and traffic shaper rules
+
+- updated ez-ipupdate to 3.0.11b8 (DynDNS.org is going to block 3.0.11b7
+starting from 12/15/03 because it has been incorrectly implemented in a Linksys
+product that is now flooding the DynDNS servers)
+
+- filter rules with logging enabled now have an icon in the rule list to reflect this fact
+
+- default logging of blocked packets may be turned off on the log settings page
+
+- "diagnostics" on navigation bar is shown collapsed by default
+  (to get most pages to fit at 1024x768 without scrolling);
+  added a JavaScript to expand it on demand
+
+
+r55x:
+- boot device probing (.....)
+
+- fixed UI display glitch on IPsec VPN page (local subnet)
+
+- upgraded mini_httpd to 1.18
+
+- fixed tables to use relative widths only, removed forced line breaks to 
+improve compatibility with some browsers and systems that do not have
+the intended font (Tahoma) installed
+
+- added webGUI assign network ports page (<system><webgui><noassigninterfaces/>)
+
+- changed "assign network ports" to "Interfaces: assign network ports" in console menu
+  (for clarity)
+
+pb20
+----
+- net4801 port available
+
+- DHCP server: default/max lease time and WINS servers configurable (per interface)
+  default default-lease-time changed to 7200, default max-lease-time changed to
+  86400
+  
+- it is now possible to use dynamically assigned DNS servers on WAN (from
+  DHCP or PPP) for m0n0wall itself. This is now enabled
+  in the default configuration, but old configuration will retain the old
+  behavior (i.e. the feature must be enabled manually on the system setup page).
+  Note that dynamically assigned DNS servers are not redistributed to clients
+  by the DHCP server, because this would cause reloading of the DHCP server
+  each time the DHCP release is renewed.
+  You may use the DNS forwarder, though.
+
+- DNS forwarder now enabled in the default configuration
+
+- replaced exec.php with more advanced version
+
+- replaced cgi-bin/status.cgi by status.php
+
+- upgraded PHP to 4.3.4
+
+pb19
+----
+- block rules are now supported, the rule order can be changed, logging
+can be enabled per rule and rules may be disabled individually
+
+- fixed interface status display when 1:1 NAT mappings are defined
+(subnet mask)
+
+- static routes are no longer lost when modifying 1:1 NAT entries
+
+- fixed ping/syslog to hosts on optional interfaces
+
+- destination for advanced outbound NAT is not configurable
+
+- removed ng_bridge code, always use BRIDGE
+
+- added a "filtering bridge" option to the advanced setup page
+
+- print a warning on the console if a newer configuration file version
+is found than the current m0n0wall version was designed for
+
+- upgraded system to FreeBSD 4.9
+
+- upgraded MPD to 3.14
+
+- some cosmetic HTML fixes
+
+pb18
+----
+- revised webGUI look to reflect required and optional input fields
+  (required = bold)
+
+pb17
+----
+- the DHCP server can now also serve clients on optional interfaces
+
+- the webGUI password is no longer stored in plaintext (existing
+  configuration files will be automatically updated)
+
+- upgraded mini_httpd to 1.17beta1 (security issues)
+
+- incorporated patch from FreeBSD security advisory 03:18
+
+- in the CD-ROM version, the default config.xml is now automatically
+  copied to the floppy disk if not found
+
+- other minor/cosmetic fixes (e.g. help text in console LAN IP setup to
+  explain subnet bit counts)
+
+pb15
+----
+- IPsec tunnels now work with a dynamic WAN IP address (DHCP/PPPoE/PPTP);
+IPsec clients with dynamic IP addresses cannot be accepted, though!
+
+- PPTP client + server enabled at the same time should work now
+
+- the PPTP server will now assign the DNS server address to clients just
+like the DHCP server does (m0n0wall LAN IP if DNS forwarder is on, DNS
+servers from system configuration otherwise)
+
+- racoon has been updated to 20030711a
+
+- DynDNS user name syntax check has been relaxed to allow for dynamic DNS
+services which use e-mail addresses as the user name 
+
+- fixed XML parser when spaces are used instead of tabs between tags
+
+pb13r450
+--------
+
+- outbound NAT is now configurable ("advanced outbound NAT") 
+want no NAT -> turn on advanced NAT and add no rules
+(NAT still only on WAN, though)
+
+- static routes supported (with all the goo like automatically reconfiguring
+the anti-spoof rules in the filter rule generator)
+-> guide to use a secondary network on LAN (NAT, filter rules)
+
+- removed syscons and atkbdc support from net45xx kernel
+
+- boot sector patch for "Read error" with some CF cards should finally work
+
+- dnsmasq -> 1.13 (update license)
+
+pb13
+----
+
+- allow the firewall access to DNS servers on optional interfaces (e.g. for DynDNS)
+
+
+pb10
+----
+
+- mount CF/floppy with -o sync
+
+pb9
+---
+
+- MAC address spoofing on WAN
+
+- fix for RADIUS to work regardless of whether the RADIUS server is on LAN, WAN or DMZ
+
+- NO_SWAPPING in kernel config
+
+pb8
+---
+
+- RADIUS support for PPTP server
+
+pb5
+---
+
+- upgraded to MPD 3.13
+
+- upgraded to FreeBSD 4.8-RELEASE
+
+- upgraded to PHP 4.3.1
+
+pb4
+---
+
+- dual wireless cards should now work
+
+- Wireless BSS (infrastructure) and IBSS (ad-hoc) mode are now supported
+
+- Wireless interface is no longer put in promiscuous mode with hostap
+
+- Cisco Aironet cards are now supported in BSS and IBSS mode
+
+- a new wireless status page has been added to display the signal strength cache
+  and the list of associated stations (in hostap mode) for cards supported by
+  the wi(4) driver (not for Aironet)
+
+pb3
+---
+
+- LAN IP is now shown in console banner
+
+- Wireless support! (hostap only at the moment)
+
+- non-present interfaces no longer show up in navigation bar
+
+
+pb2 (02/22/2003)
+----------------
+
+- changed navigation bar ("System" is no longer a link and has got a subitem named "General setup")
+
+- modified firmware upgrade facility so the normal gzip'ed CF images can be used
+
+- added configuration backup/restore
+
+- added new console menu item to allow LAN/WAN/DMZ <-> network interface assignment
+
+- improved bootup banner to show current port configuration
+
+- added PPTP client support on WAN interface (EXPERIMENTAL)
+
+
+pb1 (2/15/2002)
+---------------
+- Initial release.

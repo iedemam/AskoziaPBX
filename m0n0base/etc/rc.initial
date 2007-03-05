@@ -1,0 +1,73 @@
+#!/bin/sh
+
+# $Id: rc.initial 52 2006-02-07 14:35:14Z mkasper $
+# part of m0n0wall (http://m0n0.ch/wall)
+#
+# Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+# All rights reserved.
+
+# make sure the user can't kill us by pressing Ctrl-C
+trap : 2
+trap : 3
+
+# redirect input/output
+exec </dev/console >/dev/console 2>/dev/console
+
+if [ -r /var/etc/disableconsole ]; then
+
+while : ; do
+
+echo
+echo
+echo "*** Console menu disabled. ***"
+echo
+
+read tmp
+
+done
+
+else 
+
+# endless loop
+while : ; do
+
+# display a cheap menu
+echo
+echo
+echo "AskoziaPBX console setup"
+echo "**********************"
+echo "1) Interfaces: assign network port"
+echo "2) Set up LAN IP address"
+echo "3) Reset webGUI password"
+echo "4) Reset to factory defaults"
+echo "5) Reboot system"
+echo "6) Ping host"
+echo
+
+read -p "Enter a number: " opmode
+
+# see what the user has chosen
+case ${opmode} in
+1)
+	/etc/rc.initial.setports
+ 	;;
+2)
+	/etc/rc.initial.setlanip
+ 	;;
+3)
+	/etc/rc.initial.password
+	;;
+4)
+	/etc/rc.initial.defaults
+	;;
+5)
+	/etc/rc.initial.reboot
+	;;
+6)
+	/etc/rc.initial.ping
+	;;
+esac
+
+done
+
+fi

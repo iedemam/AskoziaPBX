@@ -1,0 +1,261 @@
+diff -u -r src.orig/iface.c src/iface.c
+--- src.orig/iface.c	Tue May  4 18:12:28 2004
++++ src/iface.c	Sun Dec 17 11:25:08 2006
+@@ -88,7 +88,7 @@
+   static int	IfaceFindACL (struct acl_pool *ap, char * ifname, int number);
+   static char *	IFaceParseACL (char * src, char * ifname);
+ 
+-  static void	IfaceCorrectMSS(struct tcphdr *tc, ssize_t pktlen, u_int16_t maxmss);
++  static void	IfaceCorrectMSS(Mbuf pkt, uint16_t maxmss);
+   
+ /*
+  * GLOBAL VARIABLES
+@@ -382,25 +382,8 @@
+   if (OPEN_STATE(fsm->state)) {
+     if (bund->bm.n_up > 0) {
+       if (Enabled(&iface->options, IFACE_CONF_TCPMSSFIX)) {
+-	struct ip	*iphdr;
+-	int		plen, hlen;
+-
+-        if (proto == PROTO_IP) {
+-	  iphdr = (struct ip *)MBDATA(pkt);
+-	  hlen = iphdr->ip_hl << 2;
+-	  plen = plength(pkt);
+-	  /*
+-	   * Check for MSS option only for TCP packets with zero fragment offsets
+-	   * and correct total and header lengths.
+-	   */
+-	  if (iphdr->ip_p == IPPROTO_TCP
+-	      && (ntohs(iphdr->ip_off) & IP_OFFMASK) == 0
+-	      &&  ntohs(iphdr->ip_len) == plen
+-	      && hlen <= plen
+-	      && plen - hlen >= sizeof(struct tcphdr))
+-	    IfaceCorrectMSS((struct tcphdr *)(MBDATA(pkt) + hlen), plen - hlen,
+-	      MAXMSS(iface->mtu));
+-        }
++	if (proto == PROTO_IP)
++	  IfaceCorrectMSS(pkt, MAXMSS(iface->mtu));
+       } else
+ 	Log(LG_IFACE, ("[%s] unexpected outgoing packet, len=%d",
+ 	  bund->name, MBLEN(pkt)));
+@@ -418,6 +401,26 @@
+   }
+ }
+ 
++ /*
++ * IfaceListenOutput()
++ *
++ * Now used only for TCP MSS hacking.
++ */
++
++void
++IfaceListenOutput(int proto, Mbuf pkt)
++{
++  IfaceState	const iface = &bund->iface;
++
++  if (Enabled(&iface->options, IFACE_CONF_TCPMSSFIX)) {
++    if (proto == PROTO_IP)
++      IfaceCorrectMSS(pkt, MAXMSS(iface->mtu));
++  } else
++    Log(LG_IFACE, ("[%s] unexpected outgoing packet, len=%d",
++       bund->name, MBLEN(pkt)));
++  NgFuncWriteFrame(bund->name, MPD_HOOK_MSSFIX_OUT, pkt);
++}
++
+ /*
+  * IfaceAllocACL ()
+  *
+@@ -1417,13 +1420,18 @@
+ }
+ 
+ static void
+-IfaceCorrectMSS(struct tcphdr *tc, ssize_t pktlen, u_int16_t maxmss)
++IfaceCorrectMSS(Mbuf pkt, uint16_t maxmss)
+ {
+-  int hlen, olen, optlen;
+-  u_char *opt;
+-  u_int16_t *mss;
+-  int accumulate;
+-
++  struct ip	*iphdr;
++  struct tcphdr	*tc;
++  int		pktlen, hlen, olen, optlen, accumulate;
++  uint16_t	*mss;
++  u_char	*opt;
++
++  iphdr = (struct ip *)MBDATA(pkt);
++  hlen = iphdr->ip_hl << 2;
++  pktlen = plength(pkt) - hlen;
++  tc = (struct tcphdr *)(MBDATA(pkt) + hlen);
+   hlen = tc->th_off << 2;
+ 
+   /* Invalid header length or header without options. */
+diff -u -r src.orig/iface.h src/iface.h
+--- src.orig/iface.h	Tue May  4 18:12:28 2004
++++ src/iface.h	Sun Dec 17 11:28:40 2006
+@@ -109,6 +109,7 @@
+ 		  struct sockaddr_dl *hwaddr);
+ 
+   extern void	IfaceListenInput(int proto, Mbuf pkt);
++  extern void	IfaceListenOutput(int proto, Mbuf pkt);
+   extern void	IfaceSetMTU(int mtu, int speed);
+ 
+ #endif
+diff -u -r src.orig/ngfunc.c src/ngfunc.c
+--- src.orig/ngfunc.c	Tue May  4 18:12:28 2004
++++ src/ngfunc.c	Sun Dec 17 11:28:25 2006
+@@ -271,6 +271,17 @@
+       b->name, BPF_HOOK_MPD, MPD_HOOK_DEMAND_TAP, strerror(errno)));
+     goto fail;
+   }
++  
++  /* Connect a second hook from the bpf node to our socket node. */
++  snprintf(cn.path, sizeof(cn.path), "%s.%s", MPD_HOOK_PPP, NG_PPP_HOOK_INET);
++  snprintf(cn.ourhook, sizeof(cn.ourhook), "%s", MPD_HOOK_MSSFIX_OUT);
++  snprintf(cn.peerhook, sizeof(cn.peerhook), "%s", BPF_HOOK_MPD_OUT);
++  if (NgSendMsg(b->csock, ".",
++      NGM_GENERIC_COOKIE, NGM_CONNECT, &cn, sizeof(cn)) < 0) {
++    Log(LG_ERR, ("[%s] can't connect %s and %s: %s",
++      b->name, BPF_HOOK_MPD_OUT, MPD_HOOK_MSSFIX_OUT, strerror(errno)));
++    goto fail;
++  }
+ 
+   /* Configure bpf(8) node */
+   NgFuncConfigBPF(b, BPF_MODE_OFF);
+@@ -478,19 +489,32 @@
+   /* First, configure the hook on the interface node side of the BPF node */
+   memset(&u, 0, sizeof(u));
+   snprintf(hp->thisHook, sizeof(hp->thisHook), "%s", BPF_HOOK_IFACE);
+-  hp->bpf_prog_len = DEMAND_PROG_LEN;
+-  memcpy(&hp->bpf_prog, &gDemandProg, DEMAND_PROG_LEN * sizeof(*gDemandProg));
+   switch (mode) {
+     case BPF_MODE_OFF:
++      hp->bpf_prog_len = NOMATCH_PROG_LEN;
++      memcpy(&hp->bpf_prog, &gNoMatchProg,
++        NOMATCH_PROG_LEN * sizeof(*gNoMatchProg));
+       memset(&hp->ifMatch, 0, sizeof(hp->ifMatch));
+       memset(&hp->ifNotMatch, 0, sizeof(hp->ifNotMatch));
+       break;
+     case BPF_MODE_ON:
+-    case BPF_MODE_MSSFIX:
++      hp->bpf_prog_len = NOMATCH_PROG_LEN;
++      memcpy(&hp->bpf_prog, &gNoMatchProg,
++        NOMATCH_PROG_LEN * sizeof(*gNoMatchProg));
+       snprintf(hp->ifMatch, sizeof(hp->ifMatch), "%s", BPF_HOOK_PPP);
+       snprintf(hp->ifNotMatch, sizeof(hp->ifNotMatch), "%s", BPF_HOOK_PPP);
+       break;
++    case BPF_MODE_MSSFIX:
++      hp->bpf_prog_len = TCPSYN_PROG_LEN;
++      memcpy(&hp->bpf_prog, &gTCPSYNProg,
++        TCPSYN_PROG_LEN * sizeof(*gTCPSYNProg));
++      snprintf(hp->ifMatch, sizeof(hp->ifMatch), "%s", BPF_HOOK_MPD_OUT);
++      snprintf(hp->ifNotMatch, sizeof(hp->ifNotMatch), "%s", BPF_HOOK_PPP);
++      break;
+     case BPF_MODE_DEMAND:
++      hp->bpf_prog_len = DEMAND_PROG_LEN;
++      memcpy(&hp->bpf_prog, &gDemandProg,
++        DEMAND_PROG_LEN * sizeof(*gDemandProg));
+       snprintf(hp->ifMatch, sizeof(hp->ifMatch), "%s", BPF_HOOK_MPD);
+       memset(&hp->ifNotMatch, 0, sizeof(hp->ifNotMatch));
+       break;
+@@ -537,7 +561,8 @@
+       b->name, NG_BPF_NODE_TYPE, strerror(errno)));
+     DoExit(EX_ERRDEAD);
+   }
+-  /* Configure the hook on the MPD node side of the BPF node */
++
++  /* Configure the hook on the MPD demand/tap node side of the BPF node */
+   memset(&u, 0, sizeof(u));
+   snprintf(hp->thisHook, sizeof(hp->thisHook), "%s", BPF_HOOK_MPD);
+   hp->bpf_prog_len = NOMATCH_PROG_LEN;
+@@ -565,6 +590,35 @@
+       b->name, NG_BPF_NODE_TYPE, strerror(errno)));
+     DoExit(EX_ERRDEAD);
+   }
++  
++  /* Configure the hook on the MPD mssfix-out node side of the BPF node */
++  memset(&u, 0, sizeof(u));
++  snprintf(hp->thisHook, sizeof(hp->thisHook), "%s", BPF_HOOK_MPD_OUT);
++  hp->bpf_prog_len = NOMATCH_PROG_LEN;
++  memcpy(&hp->bpf_prog,
++    &gNoMatchProg, NOMATCH_PROG_LEN * sizeof(*gNoMatchProg));
++  switch (mode) {
++    case BPF_MODE_OFF:
++    case BPF_MODE_DEMAND:
++      memset(&hp->ifMatch, 0, sizeof(hp->ifMatch));
++      memset(&hp->ifNotMatch, 0, sizeof(hp->ifNotMatch));
++      break;
++    case BPF_MODE_ON:
++    case BPF_MODE_MSSFIX:
++      snprintf(hp->ifMatch, sizeof(hp->ifMatch), "%s", BPF_HOOK_PPP);
++      snprintf(hp->ifNotMatch, sizeof(hp->ifNotMatch), "%s", BPF_HOOK_PPP);
++      break;
++    default:
++      assert(0);
++  }
++
++  /* Set new program on the BPF_HOOK_MPD hook */
++  if (NgSendMsg(b->csock, path, NGM_BPF_COOKIE,
++      NGM_BPF_SET_PROGRAM, hp, NG_BPF_HOOKPROG_SIZE(hp->bpf_prog_len)) < 0) {
++    Log(LG_ERR, ("[%s] can't set %s node program: %s",
++      b->name, NG_BPF_NODE_TYPE, strerror(errno)));
++    DoExit(EX_ERRDEAD);
++  }
+ }
+ 
+ /*
+@@ -710,8 +764,18 @@
+ 
+     /* Debugging */
+     LogDumpBuf(LG_FRAME, buf, nread,
+-      "[%s] rec'd outgoing IP frame", bund->name);
++      "[%s] rec'd IP frame on demand/mssfix-in hook", bund->name);
+     IfaceListenInput(PROTO_IP,
++      mbwrite(mballoc(MB_FRAME_IN, nread), buf, nread));
++    return;
++  }
++  
++  /* A snooped, outgoing TCP SYN frame? */
++  if (strcmp(naddr.sg_data, MPD_HOOK_MSSFIX_OUT) == 0) {
++    /* Debugging */
++    LogDumpBuf(LG_FRAME, buf, nread,
++      "[%s] rec'd IP frame on mssfix-out hook", bund->name);
++    IfaceListenOutput(PROTO_IP,
+       mbwrite(mballoc(MB_FRAME_IN, nread), buf, nread));
+     return;
+   }
+diff -u -r src.orig/ngfunc.h src/ngfunc.h
+--- src.orig/ngfunc.h	Tue May  4 18:12:28 2004
++++ src/ngfunc.h	Sun Dec 17 11:29:42 2006
+@@ -20,17 +20,30 @@
+  * DEFINITIONS
+  */
+ 
++  /*
++   * The "bypass" hook is used to read PPP control frames.
++   * The "demand" hook is a bit hacky - in closed state it is
++   * used to snoop outgoing frames, that can initiate UP event
++   * on interface. In opened state "demand" hook is used to
++   * snoop incoming TCP SYN segments, if userland tcpmssfix is on.
++   * The "mssfix-out" hook is used for outgoing TCP SYN segments,
++   * if userland tcpmssfix is on.
++   */
+   #define MPD_HOOK_PPP		"bypass"
+   #define MPD_HOOK_DEMAND_TAP	"demand"
++  #define MPD_HOOK_MSSFIX_OUT	"mssfix-out"
+ 
+   #define BPF_HOOK_PPP		"ppp"
+   #define BPF_HOOK_IFACE	"iface"
+   #define BPF_HOOK_MPD		"mpd"
++  #define BPF_HOOK_MPD_OUT	"mpd-out"
+ 
+   #define BPF_MODE_OFF		0	/* no BPF node traffic gets through */
+   #define BPF_MODE_ON		1	/* normal BPF node traffic flow */
+   #define BPF_MODE_DEMAND	2	/* block traffic; redirect demand */
+-  #define BPF_MODE_MSSFIX	3	/* redirect TCP SYN packets */
++  #define BPF_MODE_MSSFIX	3	/* redirect all TCP SYN packets */
++  #define BPF_MODE_MSSFIX_IN	4	/* redirect incoming TCP SYN packets */
++  #define BPF_MODE_MSSFIX_OUT	5	/* redirect outgoing TCP SYN packets */
+ 
+ /*
+  * FUNCTIONS
