@@ -569,17 +569,6 @@ EOD;
 		}
 	}
 	
-	/* BigPond client enabled? */
-	if ($wancfg['ipaddr'] == "bigpond") {
-		
-		$ipfrules .= <<<EOD
-
-# BigPond heartbeat rules
-pass in quick proto udp from any to any port = 5050 keep state group 200
-
-EOD;
-	}
-	
 	$i = 0;
 	
 	$ipfrules .= "\n# User-defined rules follow\n";

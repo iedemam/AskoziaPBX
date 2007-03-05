@@ -64,7 +64,7 @@
 		<wan>
 			<if>sis1</if>
 			<ipaddr>dhcp</ipaddr>
-			<!-- *or* ipv4-address *or* 'pppoe' *or* 'pptp' *or* 'bigpond' -->
+			<!-- *or* ipv4-address *or* 'pppoe' *or* 'pptp' -->
 			<subnet></subnet>
 			<gateway></gateway>
 			<blockpriv/>
@@ -146,13 +146,6 @@
 		<timeout></timeout>
 		-->
 	</pptp>
-	<bigpond>
-		<username></username>
-		<password></password>
-		<authserver></authserver>
-		<authdomain></authdomain>
-		<minheartbeatinterval></minheartbeatinterval>
-	</bigpond>
 	<dyndns>
 		<!-- <enable/> -->
 		<type>dyndns</type>

@@ -375,11 +375,7 @@ function interfaces_wan_configure() {
 		case 'pptp':
 			interfaces_wan_pptp_configure();
 			break;
-			
-		case 'bigpond':
-			/* just configure DHCP for now; fire up bpalogin when we've got the lease */
-			interfaces_wan_dhcp_configure();
-			break;
+
 			
 		default:
 			if (isset($wancfg['ispointtopoint']) && $wancfg['pointtopoint']) {
@@ -712,62 +708,6 @@ function interfaces_wan_pptp_up() {
 	sleep(3);
 }
 
-function interfaces_wan_bigpond_configure($curwanip) {
-	global $config, $g;
-	
-	$bpcfg = $config['bigpond'];
-	
-	if (!$curwanip) {
-		/* IP address not configured yet, exit */
-		return 0;
-	}
-		
-	/* kill bpalogin */
-	killbyname("bpalogin");
-	
-	/* wait a moment */
-	sleep(1);
-	
-	/* get the default domain */
-	$nfd = @fopen("{$g['varetc_path']}/defaultdomain.conf", "r");
-	if ($nfd) {
-		$defaultdomain = trim(fgets($nfd));
-		fclose($nfd);
-	}
-	
-	/* generate bpalogin.conf */
-	$fd = fopen("{$g['varetc_path']}/bpalogin.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open bpalogin.conf in interfaces_wan_bigpond_configure().\n");
-		return 1;
-	}
-	
-	if (!$bpcfg['authserver'])
-		$bpcfg['authserver'] = "dce-server";
-	if (!$bpcfg['authdomain'])
-		$bpcfg['authdomain'] = $defaultdomain;
-		
-	$bpconf = <<<EOD
-username {$bpcfg['username']}
-password {$bpcfg['password']}
-authserver {$bpcfg['authserver']}
-authdomain {$bpcfg['authdomain']}
-localport 5050
-
-EOD;
-
-	if ($bpcfg['minheartbeatinterval'])
-		$bpconf .= "minheartbeatinterval {$bpcfg['minheartbeatinterval']}\n";
-
-	fwrite($fd, $bpconf);
-	fclose($fd);
-	
-	/* fire up bpalogin */
-	mwexec("/usr/local/sbin/bpalogin -c {$g['varetc_path']}/bpalogin.conf");
-	
-	return 0;
-}
-
 function get_real_wan_interface() {
 	global $config, $g;
 	
@@ -786,7 +726,7 @@ function get_current_wan_address() {
 	
 	$wancfg = $config['interfaces']['wan'];
 	
-	if (in_array($wancfg['ipaddr'], array('pppoe','dhcp','pptp','bigpond'))) {
+	if (in_array($wancfg['ipaddr'], array('pppoe','dhcp','pptp'))) {
 		/* dynamic WAN IP address, find out which one */
 		$wanif = get_real_wan_interface();
 		

@@ -57,7 +57,6 @@ $radius_version = "radius-1.2.5";
 $mini_httpd_version = "mini_httpd-1.19";
 $wol_version = "wol-0.7.1";
 $ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
-$bpalogin_version = "bpalogin-2.0.2";
 $mpd_version = "mpd-3.18";
 $ipsec_tools_version = "ipsec-tools-0.6.6";
 
@@ -364,24 +363,6 @@ function build_ezipupdate() {
 }
 
 
-$h["build bpalogin"] = "(re)builds BPALogin (Big Pond client)";
-function build_bpalogin() {
-	global $dirs, $bpalogin_version;
-	
-	if(!file_exists($dirs['packages'] ."/$bpalogin_version")) {
-		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://bpalogin.sourceforge.net/download/$bpalogin_version.tar.gz; ".
-				"tar zxf $bpalogin_version.tar.gz");
-		_log("fetched and untarred $bpalogin_version");
-	}
-	_exec("cd ". $dirs['packages'] ."/$bpalogin_version; ".
-			"./configure; ".
-			"make");
-
-	_log("built bpalogin");
-}
-
-
 $h["build racoon"] = "(re)builds and patches the ipsec-tools version of racoon";
 function build_racoon() {
 	global $dirs, $ipsec_tools_version;
@@ -451,7 +432,6 @@ function build_packages() {
 	build_minihttpd();
 	build_wol();
 	build_ezipupdate();
-	build_bpalogin();
 }
 
 $h["build ports"] = "(re)builds all necessary ports";
@@ -655,17 +635,6 @@ function populate_ezipupdate($image_name) {
 		"install -s ez-ipupdate $image_name/usr/local/bin");
 	
 	_log("added ez-ipupdate");
-}
-
-
-$h["populate bpalogin"] = "adds bpalogin (Big Pond client) to the given \"image_name\"";
-function populate_bpalogin($image_name) {
-	global $dirs, $bpalogin_version;
-	
-	_exec("cd ". $dirs['packages'] ."/$bpalogin_version; ".
-		"install -s bpalogin $image_name/usr/local/sbin");
-
-	_log("added bpalogin");
 }
 
 
@@ -992,11 +961,11 @@ function _usage($err=0) {
 // TODO: I could generate these...
 $h["patch"] = "available patch options: bootloader, kernel, syslogd, everything";
 $h["build"] = "available build options: kernel, kernels, syslogd, clog, php, minihttpd, ".
-	"dhcpserver, dhcprelay, dnsmasq, msntp, wol, ezipupdate, bpalogin, racoon, mpd, ".
+	"dhcpserver, dhcprelay, dnsmasq, msntp, wol, ezipupdate, racoon, mpd, ".
 	"tools, bootloader, everything";
 $h["populate"] = "available populate options: base, etc, defaultconf, zoneinfo, syslogd, ".
 	"clog, php, minihttpd, dhclient, dhcpserver, dhcprelay, dnsmasq, msntp, wol, ".
-	"ezipupdate, bpalogin, mpd, racoon, tools, phpconf, webgui, libs, everything";
+	"ezipupdate, mpd, racoon, tools, phpconf, webgui, libs, everything";
 
 
 // --[ command line parsing ]--------------------------------------------------
