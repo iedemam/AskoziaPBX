@@ -1,0 +1,119 @@
+machine		i386
+cpu		I486_CPU
+ident		M0N0WALL_NET45XX
+
+makeoptions	MODULES_OVERRIDE="dummynet ipfw"
+
+options		HZ=1000
+
+options		CLK_USE_I8254_CALIBRATION
+options		CPU_ELAN
+options		CPU_SOEKRIS
+
+hints		"M0N0WALL_NET45XX.hints"
+
+options 	SCHED_4BSD		# 4BSD scheduler
+options 	INET			# InterNETworking
+options 	FFS			# Berkeley Fast Filesystem
+options 	SOFTUPDATES		# Enable FFS soft updates support
+options 	MD_ROOT			# MD is a potential root device
+options 	COMPAT_43		# Compatible with BSD 4.3 [KEEP THIS!]
+options 	SCSI_DELAY=5000		# Delay (in ms) before probing SCSI
+options 	SYSVSHM			# SYSV-style shared memory
+options 	SYSVMSG			# SYSV-style message queues
+options 	SYSVSEM			# SYSV-style semaphores
+options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
+options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
+
+options		NO_SWAPPING
+options         DEVICE_POLLING
+
+options		FAST_IPSEC              #new IPsec (cannot define w/ IPSEC)
+options		IPSEC_NAT_T
+
+options		BRIDGE
+options		IPFILTER
+options		IPFILTER_LOG
+options		IPFILTER_DEFAULT_BLOCK
+options		IPSTATE_SIZE=42859
+options		IPSTATE_MAX=30000
+options		IPFIREWALL_FORWARD
+
+device		apic			# I/O APIC
+
+# Bus support.
+device		eisa
+device		pci
+
+# ATA and ATAPI devices
+device		ata
+device		atadisk		# ATA disk drives
+options 	ATA_STATIC_ID	# Static device numbering
+
+# Add suspend/resume support for the i8254.
+device		pmtimer
+
+# PCCARD (PCMCIA) support
+# PCMCIA and cardbus bridge support
+device		cbb		# cardbus (yenta) bridge
+device		pccard		# PC Card (16-bit) bus
+device		cardbus		# CardBus (32-bit) bus
+
+# Serial (COM) ports
+device		sio		# 8250, 16[45]50 based serial ports
+
+# PCI Ethernet NICs that use the common MII bus controller code.
+# NOTE: Be sure to keep the 'device miibus' line in order to use these NICs!
+device		miibus		# MII bus support
+device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
+
+# Wireless NIC cards
+device		wlan		# 802.11 support
+device          wlan_wep                #802.11 WEP support
+device          wlan_ccmp               #802.11 CCMP support
+device          wlan_tkip               #802.11 TKIP support
+device          wlan_xauth              #802.11 external authenticator support
+device          wlan_acl
+device          ath
+device          ath_hal         # Atheros HAL (includes binary component)
+device          ath_rate_sample # SampleRate rate control for the ath driver
+device		an		# Aironet 4500/4800 802.11 wireless NICs.
+device		ral		# Ralink Technology RT2500 wireless NICs.
+device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
+
+# Pseudo devices.
+device		loop		# Network loopback
+device		random		# Entropy device
+device		ether		# Ethernet support
+device		tun		# Packet tunnel.
+device		pty		# Pseudo-ttys (telnet etc)
+device		md		# Memory "disks"
+device		gif		# IPv6 and IPv4 tunneling
+
+device		if_bridge	#Bridge interface
+device          vlan
+
+# The `bpf' device enables the Berkeley Packet Filter.
+# Be aware of the administrative consequences of enabling this!
+# Note that 'bpf' is required for DHCP.
+device		bpf		# Berkeley packet filter
+
+options 	NETGRAPH		#netgraph(4) system
+options 	NETGRAPH_ASYNC
+options		NETGRAPH_BPF
+options 	NETGRAPH_ETHER
+options 	NETGRAPH_IFACE
+options 	NETGRAPH_KSOCKET
+options 	NETGRAPH_L2TP
+options 	NETGRAPH_MPPC_ENCRYPTION
+options 	NETGRAPH_PPP
+options 	NETGRAPH_PPPOE
+options 	NETGRAPH_PPTPGRE
+options 	NETGRAPH_SOCKET
+options 	NETGRAPH_TEE
+options 	NETGRAPH_UI
+options 	NETGRAPH_VJC
+
+device		crypto
+device		cryptodev
+device		hifn

@@ -1,0 +1,11 @@
+--- Makefile.orig       Tue Feb  6 12:03:13 2007
++++ Makefile    Tue Feb  6 12:03:35 2007
+@@ -27,7 +27,7 @@
+ .endif
+ 
+ # Include simple terminal emulation (cons25-compatible)
+-CFLAGS+= -DTERM_EMU
++#CFLAGS+= -DTERM_EMU
+ 
+ # XXX: make alloca() useable
+ CFLAGS+= -Dalloca=__builtin_alloca

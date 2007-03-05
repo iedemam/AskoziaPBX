@@ -1,0 +1,11 @@
+--- guiconfig.inc.orig	Fri Mar  2 13:12:28 2007
++++ guiconfig.inc	Fri Mar  2 13:12:46 2007
+@@ -88,7 +88,7 @@
+ 	"10half" => "10BASE-T half-duplex", "1000full" => "1000BASE-TX full-duplex");
+ 	
+ /* platforms that support firmware updating */
+-$fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'wrap');
++$fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'wrap', 'generic-pc-smp');
+ 
+ /* IPsec defines */
+ $my_identifier_list = array('myaddress' => 'My IP address',

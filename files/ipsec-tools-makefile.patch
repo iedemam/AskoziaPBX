@@ -1,0 +1,19 @@
+--- Makefile.orig	Fri Feb 23 14:49:49 2007
++++ Makefile	Fri Feb 23 14:51:13 2007
+@@ -29,13 +29,14 @@
+ CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
+ CONFIGURE_ARGS=	--enable-shared --sysconfdir=${PREFIX}/etc/racoon \
+ 		--localstatedir=${STATEDIR:S/\/racoon//} \
+-		--with-pkgversion=freebsd-${PORTVERSION}
++		--with-pkgversion=freebsd-${PORTVERSION} \
++		--without-readline
+ 
+ STATEDIR=	${DESTDIR}/var/db/racoon
+ SUB_LIST+=	STATEDIR=${STATEDIR}
+ PLIST_SUB+=	STATEDIR=${STATEDIR}
+ 
+-OPTIONS=	DEBUG		"enable Debug support" on \
++OPTIONS=	DEBUG		"enable Debug support" off \
+ 		IPV6		"enable IPV6 support" on \
+ 		ADMINPORT	"enable Admin port" off \
+ 		STATS		"enable Statistics logging function" off \
