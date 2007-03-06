@@ -60,23 +60,11 @@
 	/* generate resolv.conf */
 	system_resolvconf_generate();
 	
-	/* establish ipfilter ruleset */
-	filter_configure();
-	
 	/* configure loopback interface */
 	interfaces_loopback_configure();
 	
 	/* set up LAN interface */
 	interfaces_lan_configure();
-	
-	/* set up Optional interfaces */
-	interfaces_optional_configure();
-	
-	/* resync ipfilter */
-	filter_resync();
-	
-	/* start ipmon */
-	filter_ipmon_start();
 	
 	/* set up static routes */
 	system_routing_configure();
