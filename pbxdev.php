@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-    m0n0dev.php (http://www.askozia.com/m0n0wall/m0n0dev.php)
+    pbxdev.php
     
     Copyright (C) 2007 IKT <http://www.itison-ikt.de> 
     All rights reserved.
@@ -53,11 +53,7 @@ $dirs['mwroot'] = "/usr/m0n06branch";	// no trailing slash please!
 // --[ package versions ]------------------------------------------------------
 
 $php_version = "php-4.4.5";
-$radius_version = "radius-1.2.5";
 $mini_httpd_version = "mini_httpd-1.19";
-$ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
-$mpd_version = "mpd-3.18";
-$ipsec_tools_version = "ipsec-tools-0.6.6";
 
 
 // --[ image sizes ]-----------------------------------------------------------
@@ -141,9 +137,6 @@ function patch_kernel() {
 	
 	_exec("cd /usr/src; patch -p0 < ". $dirs['patches'] ."/kernel/kernel-6.patch");
 	_log("patched kernel");
-	
-	_exec("cd /usr/src/sys; patch -p0 < ". $dirs['patches'] ."/kernel/racoon-nattraversal-freebsd6.patch");
-	_log("patched racoon nat-traversal");
 }
 
 
@@ -183,8 +176,8 @@ function build_kernel($platform) {
 	
 	$kernel = _platform_to_kernel($platform);
 
-	_exec("cp ". $dirs['kernelconfigs'] ."/M0N0WALL_* /sys/i386/conf/");
-	_exec("cp ". $dirs['files'] ."/M0N0WALL_GENERIC_SMP* /sys/i386/conf/");
+	_exec("cp ". $dirs['kernelconfigs'] ."/ASKOZIAPBX_* /sys/i386/conf/");
+//	_exec("cp ". $dirs['files'] ."/ASKOZIAPBX_GENERIC_SMP* /sys/i386/conf/");
 	
 	if(file_exists("/sys/i386/compile/$kernel")) {
 		_exec("rm -rf /sys/i386/compile/$kernel");
@@ -244,17 +237,11 @@ function build_php() {
 				"fetch http://br.php.net/distributions/$php_version.tar.gz;" .
 				"tar zxf $php_version.tar.gz");
 		_log("fetched and untarred $php_version");
-		
-		_exec("cd ". $dirs['packages'] ."/$php_version/ext; ".
-				"fetch http://m0n0.ch/wall/downloads/freebsd-4.11/$radius_version.tgz; ".
-				"tar zxf $radius_version.tgz; ".
-				"mv $radius_version radius");
-		_log("fetched and untarred $radius_version");
 	}
 	_exec("cd ". $dirs['packages'] ."/$php_version; ".
 			"rm configure; ".
 			"./buildconf --force; ".
-			"./configure --without-mysql --with-pear --with-openssl --enable-discard-path --enable-radius --enable-sockets --enable-bcmath; ".
+			"./configure --without-mysql --with-openssl --enable-discard-path --enable-sockets --enable-bcmath; ".
 			"make");
 	
 	_log("built php");
@@ -281,37 +268,6 @@ function build_minihttpd() {
 }
 
 
-$h["build dhcpserver"] = "(re)builds the ISC DHCP server (NOTE: dialog must be confirmed)";
-function build_dhcpserver() {
-	
-	/* TODO: automate compile */
-	_prompt("After the screen appears, press TAB and then ENTER. (it's on the TODO list...)", 5);
-	_exec("cd /usr/ports/net/isc-dhcp3-server; make clean; make WITHOUT_DHCP_LDAP_SSL=YES WITHOUT_DHCP_PARANOIA=YES WITHOUT_DHCP_JAIL=YES");
-
-	_log("built dhcp server");
-}
-
-
-$h["build dhcprelay"] = "(re)builds the ISC DHCP relay";
-function build_dhcprelay() {
-	
-	_exec("cd /usr/ports/net/isc-dhcp3-relay; make clean; make");
-
-	_log("built dhcp relay");
-}
-
-
-$h["build dnsmasq"] = "(re)builds Dnsmasq (DNS forwarder for NAT firewalls) (NOTE: dialog must be confirmed)";
-function build_dnsmasq() {
-	
-	/* TODO: automate compile */
-	_prompt("After the screen appears, press TAB and then ENTER. (it's on the TODO list...)", 5);
-	_exec("cd /usr/ports/dns/dnsmasq; make clean; make");
-	
-	_log("built dnsmasq");
-}
-
-
 $h["build msntp"] = "(re)builds msntp (NTP client)";
 function build_msntp() {
 	
@@ -321,70 +277,9 @@ function build_msntp() {
 }
 
 
-$h["build ezipupdate"] = "(re)builds and patches ez-ipupdate (dynamic dns update client)";
-function build_ezipupdate() {
-	global $dirs, $ez_ipupdate_version;
-	
-	if(!file_exists($dirs['packages'] ."/$ez_ipupdate_version")) {
-		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://dyn.pl/client/UNIX/ez-ipupdate/$ez_ipupdate_version.tar.gz; ".
-				"tar zxf $ez_ipupdate_version.tar.gz");
-		_log("fetched and untarred $ez_ipupdate_version");
-	}
-	if(!_is_patched($ez_ipupdate_version)) {
-		_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
-				"patch < ". $dirs['patches'] ."/packages/ez-ipupdate.c.patch");
-		_stamp_package_as_patched($ez_ipupdate_version);
-	}	
-	_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
-			"./configure; ".
-			"make");
-
-	_log("built ez-ipupdate");
-}
-
-
-$h["build racoon"] = "(re)builds and patches the ipsec-tools version of racoon";
-function build_racoon() {
-	global $dirs, $ipsec_tools_version;
-	
-	// TODO: mklibs.pl fails on this because the library has already been added by hand
-	// hacked to install lib temporarily
-
-	// TODO: ugly ugly ugly...make clean, make, make clean, make install!!
-	
-	/* TODO: automate compile */
-	_prompt("After the screen appears, press TAB and then ENTER. (it's on the TODO list...)", 5);
-	_exec("cd /usr/ports/security/ipsec-tools; patch < ". $dirs['files'] ."/ipsec-tools-makefile.patch");
-	_exec("cd /usr/ports/security/ipsec-tools; make clean; make");
-	_exec("cd /usr/ports/security/ipsec-tools/work/$ipsec_tools_version; ".
-			"patch < ". $dirs['patches'] ."/packages/$ipsec_tools_version.patch");
-	_exec("cd /usr/ports/security/ipsec-tools/work/$ipsec_tools_version; make clean; make install");
-	
-	_log("built and patched racoon (albeit hackily)");
-
-}
-
-
-$h["build mpd"] = "(re)builds and patches MPD (Multi-link PPP daemon)";
-function build_mpd() {
-	global $dirs, $mpd_version;
-	
-	// TODO: ugly...still need to better judge the port status
-	_exec("cd /usr/ports/net/mpd; make clean; make");
-	_exec("cd /usr/ports/net/mpd/work/$mpd_version; patch < ". $dirs['patches'] ."/packages/mpd.patch");
-	_exec("cd /usr/ports/net/mpd/work/$mpd_version; make");
-	
-	_log("built and patched MPD");
-}
-
-
-$h["build tools"] = "(re)builds the little \"helper tools\" that m0n0wall needs (choparp, stats.cgi, minicron, verifysig)";
+$h["build tools"] = "(re)builds the little \"helper tools\" that m0n0wall needs (stats.cgi, minicron, verifysig)";
 function build_tools() {
 	global $dirs;
-	
-	_exec("cd ". $dirs['tools'] ."; gcc -o choparp choparp.c");
-	_log("built choparp");
 	
 	_exec("cd ". $dirs['tools'] ."; gcc -o stats.cgi stats.c");
 	_log("built stats.cgi");
@@ -411,18 +306,12 @@ function build_packages() {
 
 	build_php();
 	build_minihttpd();
-	build_ezipupdate();
 }
 
 $h["build ports"] = "(re)builds all necessary ports";
 function build_ports() {
 	
-	build_dnsmasq();
 	build_msntp();
-	build_dhcpserver();
-	build_dhcprelay();
-	build_racoon();
-	build_mpd();
 }
 
 $h["build everything"] = "(re)builds all packages, kernels and the bootloader";
@@ -552,39 +441,6 @@ function populate_dhclient($image_name) {
 }
 
 
-$h["populate dhcpserver"] = "adds the ISC DHCP server to the given \"image_name\"";
-function populate_dhcpserver($image_name) {
-	global $dirs;
-	
-	_exec("cd /usr/ports/net/isc-dhcp3-server; ".
-		"install -s work/dhcp-*/work.freebsd/server/dhcpd $image_name/usr/local/sbin");
-	
-	_log("added dhcp server");
-}
-
-
-$h["populate dhcprelay"] = "adds the ISC DHCP relay to the given \"image_name\"";
-function populate_dhcprelay($image_name) {
-	global $dirs;
-	
-	_exec("cd /usr/ports/net/isc-dhcp3-relay; ".
-		"install -s work/dhcp-*/work.freebsd/relay/dhcrelay $image_name/usr/local/sbin");
-	
-	_log("added dhcp relay");
-}
-
-
-$h["populate dnsmasq"] = "adds Dnsmasq (DNS forwarder) to the given \"image_name\"";
-function populate_dnsmasq($image_name) {
-	global $dirs;
-	
-	_exec("cd /usr/ports/dns/dnsmasq; ".
-		"install -s work/dnsmasq-*/src/dnsmasq $image_name/usr/local/sbin");
-	
-	_log("added dnsmasq");
-}
-
-
 $h["populate msntp"] = "adds msntp (NTP client) to the given \"image_name\"";
 function populate_msntp($image_name) {
 	global $dirs;
@@ -596,51 +452,15 @@ function populate_msntp($image_name) {
 }
 
 
-$h["populate ezipupdate"] = "adds ez-ipupdate (dynamic dns client) to the given \"image_name\"";
-function populate_ezipupdate($image_name) {
-	global $dirs, $ez_ipupdate_version;
-	
-	_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
-		"install -s ez-ipupdate $image_name/usr/local/bin");
-	
-	_log("added ez-ipupdate");
-}
-
-
-$h["populate mpd"] = "adds MPD (Multi-link PPP daemon) to the given \"image_name\"";
-function populate_mpd($image_name) {
-	global $dirs;
-	
-	_exec("cd /usr/ports/net/mpd; install -s work/mpd-*/src/mpd $image_name/usr/local/sbin");
-	
-	_log("added mpd");
-}
-
-
-$h["populate racoon"] = "adds racoon to the given \"image_name\"";
-function populate_racoon($image_name) {
-	global $dirs, $ipsec_tools_version;
-	
-	_exec("cd /usr/ports/security/ipsec-tools; ".
-		"install -s work/$ipsec_tools_version/src/racoon/.libs/racoon $image_name/usr/local/sbin; ".
-		"install -s work/$ipsec_tools_version/src/libipsec/.libs/libipsec.so.0 $image_name/usr/local/lib");
-	_exec("cp /usr/ports/security/ipsec-tools/work/$ipsec_tools_version/src/setkey/setkey $image_name/usr/local/sbin/");
-	
-	_log("added racoon");
-}
-
-
 $h["populate tools"] = "adds the m0n0wall \"helper tools\" to the given \"image_name\"";
 function populate_tools($image_name) {
 	global $dirs;
 	
 	_exec("cd ". $dirs['tools'] ."; ".
-		"install -s choparp $image_name/usr/local/sbin; ".
 		"install -s stats.cgi $image_name/usr/local/www; ".
 		"install -s minicron $image_name/usr/local/bin; ".
 		"install -s verifysig $image_name/usr/local/bin; ".
-		"install runmsntp.sh $image_name/usr/local/bin; ".
-		"install ppp-linkup vpn-linkdown vpn-linkup $image_name/usr/local/sbin");
+		"install runmsntp.sh $image_name/usr/local/bin");
 }
 
 
@@ -736,8 +556,6 @@ function package($platform, $version, $image_name) {
 			$platform == "generic-pc-smp") {
 			_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/mnt/boot/kernel/");
 		}
-		_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/dummynet/dummynet.ko tmp/mnt/boot/kernel/");
-		_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/ipfw/ipfw.ko tmp/mnt/boot/kernel/");
 		
 		_exec("echo \"$version\" > tmp/mnt/etc/version");
 		_exec("echo `date` > tmp/mnt/etc/version.buildtime");
@@ -848,11 +666,11 @@ function _platform_to_kernel($platform) {
 	}
 	
 	if($platform == "generic-pc-cdrom" || $platform == "generic-pc") {
-		$kernel = "M0N0WALL_GENERIC";
+		$kernel = "ASKOZIAPBX_GENERIC";
 	} else if($platform == "generic-pc-smp") {
-		$kernel = "M0N0WALL_GENERIC_SMP";
+		$kernel = "ASKOZIAPBX_GENERIC_SMP";
 	} else {
-		$kernel = "M0N0WALL_" . strtoupper($platform);
+		$kernel = "ASKOZIAPBX_" . strtoupper($platform);
 	}
 
 	return $kernel;
@@ -925,16 +743,6 @@ function _usage($err=0) {
 	
 	exit($err);
 }
-
-
-// TODO: I could generate these...
-$h["patch"] = "available patch options: bootloader, kernel, syslogd, everything";
-$h["build"] = "available build options: kernel, kernels, syslogd, clog, php, minihttpd, ".
-	"dhcpserver, dhcprelay, dnsmasq, msntp, ezipupdate, racoon, mpd, ".
-	"tools, bootloader, everything";
-$h["populate"] = "available populate options: base, etc, defaultconf, zoneinfo, syslogd, ".
-	"clog, php, minihttpd, dhclient, dhcpserver, dhcprelay, dnsmasq, msntp, ".
-	"ezipupdate, mpd, racoon, tools, phpconf, webgui, libs, everything";
 
 
 // --[ command line parsing ]--------------------------------------------------

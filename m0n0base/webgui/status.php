@@ -151,7 +151,7 @@ defCmd("ls /conf");
 defCmd("ls /var/run");
 defCmdT("config.xml","dumpconfigxml");
 
-$pageTitle = "m0n0wall: status";
+$pageTitle = "AskoziaPBX: status";
 
 exec("/bin/date", $dateOutput, $dateStatus);
 $currentDate = $dateOutput[0];

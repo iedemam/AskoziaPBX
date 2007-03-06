@@ -171,17 +171,6 @@ function is_domain($domain) {
 		return false;
 }
 
-/* returns true if $uname is a valid DynDNS username */
-function is_dyndns_username($uname) {
-	if (!is_string($uname))
-		return false;
-		
-	if (preg_match("/[^a-z0-9\-.@_]/i", $uname))
-		return false;
-	else
-		return true;
-}
-
 /* returns true if $macaddr is a valid MAC address */
 function is_macaddr($macaddr) {
 	if (!is_string($macaddr))
@@ -297,67 +286,6 @@ function unlink_if_exists($fn) {
 		unlink($fn);
 }
 
-/* make a global alias table (for faster lookups) */
-function alias_make_table() {
-	
-	global $config, $g, $aliastable;
-	
-	$aliastable = array();
-	
-	if (is_array($config['aliases']['alias'])) {
-		foreach ($config['aliases']['alias'] as $alias) {
-			if ($alias['name'])
-				$aliastable[$alias['name']] = $alias['address'];
-		}
-	}
-}
-
-/* check if an alias exists */
-function is_alias($name) {
-	
-	global $aliastable;
-	
-	return isset($aliastable[$name]);
-}
-
-/* expand a host or network alias, if necessary */
-function alias_expand($name) {
-	
-	global $aliastable;
-	
-	if (isset($aliastable[$name]))
-		return $aliastable[$name];
-	else if (is_ipaddr($name) || is_subnet($name))
-		return $name;
-	else
-		return null;
-}
-
-/* expand a host alias, if necessary */
-function alias_expand_host($name) {
-	
-	global $aliastable;
-	
-	if (isset($aliastable[$name]) && is_ipaddr($aliastable[$name]))
-		return $aliastable[$name];
-	else if (is_ipaddr($name))
-		return $name;
-	else
-		return null;
-}
-
-/* expand a network alias, if necessary */
-function alias_expand_net($name) {
-	
-	global $aliastable;
-	
-	if (isset($aliastable[$name]) && is_subnet($aliastable[$name]))
-		return $aliastable[$name];
-	else if (is_subnet($name))
-		return $name;
-	else
-		return null;
-}
 
 /* find out whether two subnets overlap */
 function check_subnets_overlap($subnet1, $bits1, $subnet2, $bits2) {

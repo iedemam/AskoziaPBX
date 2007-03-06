@@ -32,35 +32,12 @@
 $pgtitle = array("Status", "Traffic graph");
 require("guiconfig.inc");
 
-$curif = "wan";
-if ($_GET['if'])
-	$curif = $_GET['if'];
-	
-if ($curif == "wan")
-	$ifnum = get_real_wan_interface();
-else
-	$ifnum = $config['interfaces'][$curif]['if'];
+$curif = "lan";
+$ifnum = $config['interfaces'][$curif]['if'];
+
 ?>
 <?php include("fbegin.inc"); ?>
-<?php
-$ifdescrs = array('wan' => 'WAN', 'lan' => 'LAN');
-	
-for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
-	$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
-}
-?>
-<form name="form1" action="" method="get" style="padding-bottom: 10px; margin-bottom: 14px; border-bottom: 1px solid #999999">
-Interface: 
-<select name="if" class="formfld" onchange="document.form1.submit()">
-<?php
-foreach ($ifdescrs as $ifn => $ifd) {
-	echo "<option value=\"$ifn\"";
-	if ($ifn == $curif) echo " selected";
-	echo ">" . htmlspecialchars($ifd) . "</option>\n";
-}
-?>
-</select>
-</form>
+
 <div align="center">
 <embed src="graph.php?ifnum=<?=$ifnum;?>&ifname=<?=rawurlencode($ifdescrs[$curif]);?>" type="image/svg+xml"
 		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />

@@ -61,116 +61,11 @@ $resolve = isset($config['syslog']['resolve']);
 
 <?php
 
-$fp = @fopen("{$g['vardb_path']}/dhcpd.leases","r");
-
-if ($fp) {
-
-	$return = array();
-	
-	while ($line = fgets($fp)) {
-		$matches = "";
-	
-		// Sort out comments
-		// C-style comments not supported!
-		if (preg_match("/^\s*[\r|\n]/", $line, $matches[0]) ||
-					preg_match("/^([^\"#]*)#.*$/", $line, $matches[1]) ||
-					preg_match("/^([^\"]*)\/\/.*$/", $line, $matches[2]) ||
-					preg_match("/\s*#(.*)/", $line, $matches[3]) ||
-					preg_match("/\\\"\176/", $line, $matches[4])
-			) {
-			$line = "";
-			continue;
-		}
-	
-		if (preg_match("/(.*)#(.*)/", $line, $matches))
-			$line = $matches[0];
-	
-		// Tokenize lines
-		do {
-			if (preg_match("/^\s*\"([^\"]*)\"(.*)$/", $line, $matches)) {
-				$line = $matches[2];
-				$return[] = array($matches[1], 0);
-			} else if (preg_match("/^\s*([{};])(.*)$/", $line, $matches)) {
-				$line = $matches[2];
-				$return[] = array($matches[0], 1);
-			} else if (preg_match("/^\s*([^{}; \t]+)(.*)$/", $line, $matches)) {
-				$line = $matches[2];
-				$return[] = array($matches[1], 0);
-			} else
-				break;
-	
-		} while($line);
-	
-		$lines++;
-	}
-	
-	fclose($fp);
-	
-	$leases = array();
-	$i = 0;
-	
-	// Put everything together again
-	while ($data = array_shift($return)) {
-		if ($data[0] == "next") {
-			$d = array_shift($return);
-		}
-		if ($data[0] == "lease") {
-			$d = array_shift($return);
-			$leases[$i]['ip'] = $d[0];
-		}
-		if ($data[0] == "client-hostname") {
-			$d = array_shift($return);
-			$leases[$i]['hostname'] = $d[0];
-		}
-		if ($data[0] == "hardware") {
-			$d = array_shift($return);
-			if ($d[0] == "ethernet") {
-				$d = array_shift($return);
-				$leases[$i]['mac'] = $d[0];
-			}
-		} else if ($data[0] == "starts") {
-			$d = array_shift($return);
-			$d = array_shift($return);
-			$leases[$i]['start'] = $d[0];
-			$d = array_shift($return);
-			$leases[$i]['start'] .= " " . $d[0];
-		} else if ($data[0] == "ends") {
-			$d = array_shift($return);
-			$d = array_shift($return);
-			$leases[$i]['end'] = $d[0];
-			$d = array_shift($return);
-			$leases[$i]['end'] .= " " . $d[0];
-		} else if ($data[0] == "binding") {
-			$d = array_shift($return);
-			if ($d[0] == "state") {
-				$d = array_shift($return);
-				$leases[$i]['act'] = $d[0];
-			}
-		} else if (($data[0] == "}") && ($data[1] == 1))		// End of group
-			$i++;
-	}
-	
-	// Put this in an easy to use form
-	$dhcpmac = array();
-	$dhcpip = array();
-	
-	foreach ($leases as $value) {
-		$dhcpmac[$value['mac']] = $value['hostname'];	
-		$dhcpip[$value['ip']] = $value['hostname'];	
-	}
-	
-	unset($data);
-}
-
 exec("/usr/sbin/arp -an",$rawdata);
 
 $i = 0; 
-$ifdescrs = array('wan' => 'WAN', 'lan' => 'LAN');
+$ifdescrs = array('lan' => 'LAN');
 						
-for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
-	$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
-}
-
 foreach ($ifdescrs as $key =>$interface) {
 	$hwif[$config['interfaces'][$key]['if']] = $interface;
 }

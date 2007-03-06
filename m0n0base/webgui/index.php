@@ -29,23 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("m0n0wall webGUI");
+$pgtitle = array("AskoziaPBX webGUI");
 $pgtitle_omit = true;
 require("guiconfig.inc");
-
-/* find out whether there's hardware encryption (hifn) */
-unset($hwcrypto);
-$fd = @fopen("{$g['varlog_path']}/dmesg.boot", "r");
-if ($fd) {
-	while (!feof($fd)) {
-		$dmesgl = fgets($fd);
-		if (preg_match("/^hifn.: (.*?),/", $dmesgl, $matches)) {
-			$hwcrypto = $matches[1];
-			break;
-		}
-	}
-	fclose($fd);
-}
 
 if ($_POST) {
 	$config['system']['notes'] = base64_encode($_POST['notes']);
@@ -87,13 +73,7 @@ if ($_POST) {
                 <td width="75%" class="listr"> 
                   <?=htmlspecialchars($g['fullplatform']);?>
                 </td>
-              </tr><?php if ($hwcrypto): ?>
-              <tr> 
-                <td width="25%" class="vncellt">Hardware crypto</td>
-                <td width="75%" class="listr"> 
-                  <?=htmlspecialchars($hwcrypto);?>
-                </td>
-              </tr><?php endif; ?>
+              </tr>
               <tr> 
                 <td width="25%" class="vncellt">Uptime</td>
                 <td width="75%" class="listr"> 

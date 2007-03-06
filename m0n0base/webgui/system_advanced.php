@@ -95,8 +95,6 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = filter_configure();
-			$retval |= interfaces_optional_configure();
 			$retval |= system_set_termcap();
 			config_unlock();
 		}
@@ -108,11 +106,7 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function enable_change(enable_over) {
-	if (document.iform.ipv6nat_enable.checked || enable_over) {
-		document.iform.ipv6nat_ipaddr.disabled = 0;
-	} else {
-		document.iform.ipv6nat_ipaddr.disabled = 1;
-	}
+
 }
 // -->
 </script>
@@ -123,50 +117,6 @@ function enable_change(enable_over) {
               and there's <strong>NO</strong> support for them.</span></p>
             <form action="system_advanced.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic">IPv6 tunneling</td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell">&nbsp;</td>
-                  <td width="78%" class="vtable"> 
-                    <input name="ipv6nat_enable" type="checkbox" id="ipv6nat_enable" value="yes" <?php if ($pconfig['ipv6nat_enable']) echo "checked"; ?> onclick="enable_change(false)"> 
-                    <strong>NAT encapsulated IPv6 packets (IP protocol 41/RFC2893) 
-                    to:</strong><br> <br> <input name="ipv6nat_ipaddr" type="text" class="formfld" id="ipv6nat_ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipv6nat_ipaddr']);?>"> 
-                    &nbsp;(IP address)<span class="vexpl"><br>
-                    Don't forget to add a firewall rule to permit IPv6 packets!</span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save" onclick="enable_change(true)"> 
-                  </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" class="list" height="12"></td>
-                </tr>
-				<tr> 
-                  <td colspan="2" valign="top" class="listtopic">Filtering bridge</td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell">&nbsp;</td>
-                  <td width="78%" class="vtable"> 
-                    <input name="filteringbridge_enable" type="checkbox" id="filteringbridge_enable" value="yes" <?php if ($pconfig['filteringbridge_enable']) echo "checked"; ?>>
-                    <strong>Enable filtering bridge</strong><span class="vexpl"><br>
-                    This will cause bridged packets to pass through the packet 
-                    filter in the same way as routed packets do (by default bridged 
-                    packets are always passed). If you enable this option, you'll 
-                    have to add filter rules to selectively permit traffic from 
-                    bridged interfaces.</span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save" onclick="enable_change(true)"> 
-                  </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" class="list" height="12"></td>
-                </tr>
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic">webGUI SSL certificate/key</td>
                 </tr>
@@ -210,20 +160,6 @@ function enable_change(enable_over) {
                     <strong>Disable firmware version check</strong><span class="vexpl"><br>
     This will cause m0n0wall not to check for newer firmware versions when the <a href="system_firmware.php">System: Firmware</a> page is viewed.</span></td>
 			    </tr>
-				<tr>
-                  <td valign="top" class="vncell">IPsec fragmented packets</td>
-                  <td class="vtable">
-                    <input name="allowipsecfrags" type="checkbox" id="allowipsecfrags" value="yes" <?php if ($pconfig['allowipsecfrags']) echo "checked"; ?>>
-                    <strong>Allow fragmented IPsec packets</strong><span class="vexpl"><br>
-    This will cause m0n0wall to allow fragmented IP packets that are encapsulated in IPsec ESP packets.</span></td>
-			    </tr>
-				<tr>
-                  <td valign="top" class="vncell">TCP idle timeout </td>
-                  <td class="vtable">                    <span class="vexpl">
-                    <input name="tcpidletimeout" type="text" class="formfld" id="tcpidletimeout" size="8" value="<?=htmlspecialchars($pconfig['tcpidletimeout']);?>">
-                    seconds<br>
-    Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 2.5 hours.</span></td>
-			    </tr>
 <?php if ($g['platform'] == "generic-pc"): ?>
 				<tr> 
                   <td width="22%" valign="top" class="vncell">Hard disk standby time </td>
@@ -247,13 +183,6 @@ function enable_change(enable_over) {
                     <strong>Keep diagnostics in navigation expanded </strong></td>
                 </tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell">Static route filtering</td>
-                  <td width="78%" class="vtable"> 
-                    <input name="bypassstaticroutes" type="checkbox" id="bypassstaticroutes" value="yes" <?php if ($pconfig['bypassstaticroutes']) echo "checked"; ?>>
-                    <strong>Bypass firewall rules for traffic on the same interface</strong><br>
-					This option only applies if you have defined one or more static routes. If it is enabled, traffic that enters and leaves through the same interface will not be checked by the firewall. This may be desirable in some situations where multiple subnets are connected to the same interface. </td>
-                </tr>
-				<tr> 
                   <td width="22%" valign="top" class="vncell">webGUI anti-lockout</td>
                   <td width="78%" class="vtable"> 
                     <input name="noantilockout" type="checkbox" id="noantilockout" value="yes" <?php if ($pconfig['noantilockout']) echo "checked"; ?>>
@@ -262,35 +191,6 @@ function enable_change(enable_over) {
 					Hint: 
 					the &quot;set LAN IP address&quot; option in the console menu  resets this setting as well.</td>
                 </tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell">IPsec SA preferral</td>
-                  <td width="78%" class="vtable"> 
-                    <input name="preferoldsa_enable" type="checkbox" id="preferoldsa_enable" value="yes" <?php if ($pconfig['preferoldsa_enable']) echo "checked"; ?>>
-                    <strong>Prefer old IPsec SAs</strong><br>
-					By default, if several SAs match, the newest one is preferred if it's at least 30 seconds old.
-					Select this option to always prefer old SAs over new ones.
-					</td>
-                </tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell">Device polling</td>
-                  <td width="78%" class="vtable"> 
-                    <input name="polling_enable" type="checkbox" id="polling_enable" value="yes" <?php if ($pconfig['polling_enable']) echo "checked"; ?>>
-                    <strong>Use device polling</strong><br>
-					Device polling is a technique that lets the system periodically poll network devices for new
-					data instead of relying on interrupts. This can reduce CPU load and therefore increase
-					throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times
-					per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards.
-					</td>
-                </tr>
-				<tr>
-                  <td valign="top" class="vncell">Firewall states displayed</td>
-                  <td class="vtable">
-                    <input name="ipfstatentries" type="text" class="formfld" id="ipfstatentries" size="8" value="<?=htmlspecialchars($pconfig['ipfstatentries']);?>">
-                    entries<br>
-    				<span class="vexpl">Maxmimum number of firewall state entries to be displayed on the <a href="diag_ipfstat.php">Diagnostics: Firewall state</a> page.
-    				Default is 300. Setting this to a very high value will cause a slowdown when viewing the
-    				firewall states page, depending on your system's processing power.</span></td>
-			    </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 

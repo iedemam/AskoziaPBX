@@ -56,8 +56,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "interface network network_subnet gateway");
-	$reqdfieldsn = explode(",", "Interface,Destination network,Destination network bit count,Gateway");
+	$reqdfields = explode(" ", "network network_subnet gateway");
+	$reqdfieldsn = explode(",", "Destination network,Destination network bit count,Gateway");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
@@ -85,7 +85,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$route = array();
-		$route['interface'] = $_POST['interface'];
+		$route['interface'] = "lan";
 		$route['network'] = $osn;
 		$route['gateway'] = $_POST['gateway'];
 		$route['descr'] = $_POST['descr'];
@@ -108,22 +108,6 @@ if ($_POST) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
             <form action="system_routes_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Interface</td>
-                  <td width="78%" class="vtable">
-					<select name="interface" class="formfld">
-                      <?php $interfaces = array('lan' => 'LAN', 'wan' => 'WAN', 'pptp' => 'PPTP');
-					  for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-					  	$interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
-					  }
-					  foreach ($interfaces as $iface => $ifacename): ?>
-                      <option value="<?=$iface;?>" <?php if ($iface == $pconfig['interface']) echo "selected"; ?>> 
-                      <?=htmlspecialchars($ifacename);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select> <br>
-                    <span class="vexpl">Choose which interface this route applies to.</span></td>
-                </tr>
                 <tr>
                   <td width="22%" valign="top" class="vncellreq">Destination network</td>
                   <td width="78%" class="vtable"> 

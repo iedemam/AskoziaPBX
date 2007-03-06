@@ -5,7 +5,7 @@
 	<version>1.0</version>
 	<lastchange></lastchange>
 	<system>
-		<hostname>m0n0wall</hostname>
+		<hostname>AskoziaPBX</hostname>
 		<domain>local</domain>
 		<dnsserver></dnsserver>
 		<dnsallowoverride/>
@@ -25,21 +25,6 @@
 			<noantilockout></noantilockout>
 			-->
 		</webgui>
-		<!--
-		<user>
-			<name></name>
-			<fullname></fullname>
-			<groupname></groupname>
-			<password></password>
-		</user>
-		-->
-		<!--
-		<group>
-			<name></name>
-			<description></description>
-			<pages></pages>
-		</group>
-		-->
 		<!-- <disableconsolemenu/> -->
 		<!-- <disablefirmwarecheck/> -->
 		<!-- <shellcmd></shellcmd> -->
@@ -68,22 +53,13 @@
 		-->
 	</staticroutes>
 	<diag>
-		<ipv6nat>
-			<!-- <enable/> -->
-			<ipaddr></ipaddr>
-		</ipv6nat>
-		<!-- <ipfstatentries></ipfstatentries> -->
 	</diag>
 	<syslog>
 		<!--
 		<reverse/>
 		<enable/>
 		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
-		<filter/>
-		<dhcp/>
 		<system/>
-		<portalauth/>
-		<vpn/>
 		<nologdefaultblock/>
 		<resolve/>
 		-->

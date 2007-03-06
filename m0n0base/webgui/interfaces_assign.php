@@ -123,13 +123,8 @@ if ($_POST) {
 		<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
 		  <?php foreach ($portlist as $portname => $portinfo): ?>
 		  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>> 
-		  <?php if ($portinfo['isvlan']) {
-		  			$descr = "VLAN {$portinfo['tag']} on {$portinfo['if']}";
-					if ($portinfo['descr'])
-						$descr .= " (" . $portinfo['descr'] . ")";
-					echo htmlspecialchars($descr);
-				  } else
-					echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")");
+		  <?php 
+				echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")");
 		  ?>
 		  </option>
 		  <?php endforeach; ?>
@@ -142,22 +137,13 @@ if ($_POST) {
 		</td>
   </tr>
   <?php endforeach; ?>
-  <?php if (count($config['interfaces']) < count($portlist)): ?>
-  <tr>
-	<td class="list" colspan="2"></td>
-	<td class="list" nowrap>
-	<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="add interface" width="17" height="17" border="0"></a>
-	</td>
-  </tr>
-  <?php else: ?>
   <tr>
 	<td class="list" colspan="3" height="10"></td>
   </tr>
-  <?php endif; ?>
 </table>
   <input name="Submit" type="submit" class="formbtn" value="Save"><br><br>
 <p><span class="vexpl"><strong><span class="red">Warning:</span><br>
-</strong>After you click &quot;Save&quot;, you must reboot the firewall to make the changes take effect. You may also have to do one or more of the following steps before you can access your firewall again: </span></p>
+</strong>After you click &quot;Save&quot;, you must reboot the PBX to make the changes take effect. You may also have to do one or more of the following steps before you can access your system again: </span></p>
 <ul>
   <li><span class="vexpl">change the IP address of your computer</span></li>
   <li><span class="vexpl">renew its DHCP lease</span></li>

@@ -62,7 +62,7 @@ if ($_POST) {
 			if (is_uploaded_file($_FILES['conffile']['tmp_name'])) {
 				if (config_install($_FILES['conffile']['tmp_name']) == 0) {
 					system_reboot();
-					$savemsg = "The configuration has been restored. The firewall is now rebooting.";
+					$savemsg = "The configuration has been restored. The PBX is now rebooting.";
 				} else {
 					$errstr = "The configuration could not be restored.";
 					if ($xmlerr)
@@ -101,11 +101,11 @@ if ($_POST) {
                 <tr> 
                   <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
                   <td width="78%" class="vtable"> 
-                    Open a m0n0wall configuration XML file and click the button 
+                    Open an AskoziaPBX configuration XML file and click the button 
                       below to restore the configuration.<br>
                       <br>
                       <strong><span class="red">Note:</span></strong><br>
-                      The firewall will reboot after restoring the configuration.<br>
+                      The PBX will reboot after restoring the configuration.<br>
                       <br>
                       <input name="conffile" type="file" class="formfld" id="conffile" size="40">
                       <br>

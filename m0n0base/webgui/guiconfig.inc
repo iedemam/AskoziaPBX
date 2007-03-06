@@ -41,8 +41,6 @@ if (!$omit_nocacheheaders) {
 require_once("config.inc");
 require_once("functions.inc");
 
-/* ensure the user is authorized to view the current page */
-require_once("auth.inc");
 
 $d_natconfdirty_path = $g['varrun_path'] . "/nat.conf.dirty";
 $d_filterconfdirty_path = $g['varrun_path'] . "/filter.conf.dirty";

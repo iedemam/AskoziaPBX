@@ -2,13 +2,13 @@ machine		i386
 cpu		I486_CPU
 cpu		I586_CPU
 cpu		I686_CPU
-ident		M0N0WALL_GENERIC
+ident		ASKOZIAPBX_GENERIC
 
-makeoptions	MODULES_OVERRIDE="dummynet ipfw acpi"
+makeoptions	MODULES_OVERRIDE="acpi"
 
 options		HZ=1000
 
-hints		"M0N0WALL_GENERIC.hints"
+hints		"ASKOZIAPBX_GENERIC.hints"
 
 options 	SCHED_4BSD		# 4BSD scheduler
 options 	INET			# InterNETworking
@@ -28,17 +28,6 @@ options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
 options		NO_SWAPPING
 options         DEVICE_POLLING
-
-options		FAST_IPSEC              #new IPsec (cannot define w/ IPSEC)
-options		IPSEC_NAT_T
-
-options		BRIDGE
-options		IPFILTER
-options		IPFILTER_LOG
-options		IPFILTER_DEFAULT_BLOCK
-options		IPSTATE_SIZE=42859
-options		IPSTATE_MAX=30000
-options		IPFIREWALL_FORWARD
 
 device		apic			# I/O APIC
 
@@ -161,56 +150,17 @@ device		lnc		# NE2100, NE32-VL Lance Ethernet cards
 device		sn		# SMC's 9000 series of Ethernet chips
 device		xe		# Xircom pccard Ethernet
 
-# Wireless NIC cards
-device		wlan		# 802.11 support
-device          wlan_wep                #802.11 WEP support
-device          wlan_ccmp               #802.11 CCMP support
-device          wlan_tkip               #802.11 TKIP support
-device          wlan_xauth              #802.11 external authenticator support
-device          wlan_acl
-device          ath
-device          ath_hal         # Atheros HAL (includes binary component)
-device          ath_rate_sample # SampleRate rate control for the ath driver
-device		an		# Aironet 4500/4800 802.11 wireless NICs.
-device		ral		# Ralink Technology RT2500 wireless NICs.
-device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
-
 # Pseudo devices.
 device		loop		# Network loopback
 device		random		# Entropy device
 device		ether		# Ethernet support
-device		tun		# Packet tunnel.
 device		pty		# Pseudo-ttys (telnet etc)
 device		md		# Memory "disks"
-device		gif		# IPv6 and IPv4 tunneling
-
-device		if_bridge	#Bridge interface
-device          vlan
 
 # The `bpf' device enables the Berkeley Packet Filter.
 # Be aware of the administrative consequences of enabling this!
 # Note that 'bpf' is required for DHCP.
 device		bpf		# Berkeley packet filter
-
-options 	NETGRAPH		#netgraph(4) system
-options 	NETGRAPH_ASYNC
-options		NETGRAPH_BPF
-options 	NETGRAPH_ETHER
-options 	NETGRAPH_IFACE
-options 	NETGRAPH_KSOCKET
-options 	NETGRAPH_L2TP
-options 	NETGRAPH_MPPC_ENCRYPTION
-options 	NETGRAPH_PPP
-options 	NETGRAPH_PPPOE
-options 	NETGRAPH_PPTPGRE
-options 	NETGRAPH_SOCKET
-options 	NETGRAPH_TEE
-options 	NETGRAPH_UI
-options 	NETGRAPH_VJC
-
-device		crypto
-device		cryptodev
-device		hifn
 
 # USB support
 device		uhci		# UHCI PCI->USB interface
@@ -221,7 +171,6 @@ device		ugen		# Generic
 device		uhid		# "Human Interface Devices"
 device		ukbd		# Keyboard
 device		umass		# Disks/Mass storage - Requires scbus and da
-device		ural		# Ralink Technology RT2500USB wireless NICs
 
 # USB Ethernet, requires miibus
 device		aue		# ADMtek USB Ethernet

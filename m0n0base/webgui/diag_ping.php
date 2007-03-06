@@ -51,7 +51,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$do_ping = true;
 		$host = $_POST['host'];
-		$interface = $_POST['interface'];
+		$interface = "lan";
 		$count = $_POST['count'];
 	}
 }
@@ -65,11 +65,7 @@ function get_interface_addr($ifdescr) {
 	
 	global $config, $g;
 	
-	/* find out interface name */
-	if ($ifdescr == "wan")
-		$if = get_real_wan_interface();
-	else
-		$if = $config['interfaces'][$ifdescr]['if'];
+	$if = $config['interfaces'][$ifdescr]['if'];
 	
 	/* try to determine IP address and netmask with ifconfig */
 	unset($ifconfiginfo);
@@ -104,24 +100,6 @@ function get_interface_addr($ifdescr) {
 				  <td width="22%" valign="top" class="vncellreq">Host</td>
 				  <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="host" type="text" class="formfld" id="host" size="20" value="<?=htmlspecialchars($host);?>"></td>
-				</tr>
-				<tr>
-				  <td width="22%" valign="top" class="vncellreq">Interface</td>
-				  <td width="78%" class="vtable">
-				  <select name="interface" class="formfld">
-                      <?php $interfaces = array('wan' => 'WAN', 'lan' => 'LAN');
-					  for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-					    if (isset($config['interfaces']['opt' . $i]['enable']) &&
-							!$config['interfaces']['opt' . $i]['bridge'])
-					  		$interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
-					  }
-					  foreach ($interfaces as $iface => $ifacename): ?>
-                      <option value="<?=$iface;?>" <?php if ($iface == $interface) echo "selected"; ?>> 
-                      <?=htmlspecialchars($ifacename);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select>
-				  </td>
 				</tr>
 				<tr>
 				  <td width="22%" valign="top" class="vncellreq">Count</td>

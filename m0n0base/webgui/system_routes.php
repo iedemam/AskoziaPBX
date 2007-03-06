@@ -88,9 +88,7 @@ if ($_GET['act'] == "del") {
                 <tr>
                   <td class="listlr">
                     <?php
-				  $iflabels = array('lan' => 'LAN', 'wan' => 'WAN', 'pptp' => 'PPTP');
-				  for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++)
-				  	$iflabels['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
+				  $iflabels = array('lan' => 'LAN');
 				  echo htmlspecialchars($iflabels[$route['interface']]); ?>
                   </td>
                   <td class="listr">

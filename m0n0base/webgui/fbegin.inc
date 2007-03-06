@@ -102,52 +102,13 @@ $menu['System']['General setup'] = array('system.php');
 $menu['System']['Static routes'] = array('system_routes.php');
 $menu['System']['Firmware']      = array('system_firmware.php');
 $menu['System']['Advanced']      = array('system_advanced.php');
-if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
-	$menu['System']['User manager']  = array('system_usermanager.php');
-}
-else {
-	$menu['System']['User password']  = array('system_usermanager.php');
-}
 
-$menu['Firewall']['Rules']          = array('firewall_rules.php');
-$menu['Firewall']['NAT']            = array('firewall_nat.php',
-											'firewall_nat_server.php',
-							  				'firewall_nat_1to1.php',
-							  				'firewall_nat_out.php');
-$menu['Firewall']['Traffic shaper'] = array('firewall_shaper.php',
-											'firewall_shaper_pipes.php',
-							  				'firewall_shaper_queues.php',
-											'firewall_shaper_magic.php');
-$menu['Firewall']['Aliases']        = array('firewall_aliases.php');
-
-$menu['Services']['DNS forwarder']	= array('services_dnsmasq.php');
-$menu['Services']['Dynamic DNS'] 	= array('services_dyndns.php');
-$menu['Services']['DHCP server']	= array('services_dhcp.php');
-$menu['Services']['DHCP relay'] 	= array('services_dhcp_relay.php');
-$menu['Services']['SNMP']  			= array('services_snmp.php');
-$menu['Services']['Proxy ARP']  	= array('services_proxyarp.php');
-$menu['Services']['Captive portal'] = array('services_captiveportal.php',
-											'services_captiveportal_mac.php',
-							                'services_captiveportal_ip.php',
-			                  				'services_captiveportal_users.php',
-							  				'services_captiveportal_elementmanager.php');
 $menu['Services']['Wake on LAN']  	= array('services_wol.php');
-
-$menu['VPN']['IPsec']  				= array('vpn_ipsec.php',
-											'vpn_ipsec_mobile.php',
-							  				'vpn_ipsec_keys.php',
-											'vpn_ipsec_ca.php');
-$menu['VPN']['PPTP']  				= array('vpn_pptp.php',
-											'vpn_pptp_users.php');
 											
 $menu['Status']['System']			= array('index.php');
 $menu['Status']['Interfaces']		= array('status_interfaces.php');
 
 $menu['Status']['Traffic graph']	= array('status_graph.php');
-$menu['Status']['Wireless']			= array('status_wireless.php');
-if (isset($config['captiveportal']['enable'])) {
-	$menu['Status']['Captive portal']	= array('status_captiveportal.php');
-}
 
 // Add Extensions, if they exist
 if (is_dir("{$g['www_path']}/ext")){
@@ -164,18 +125,10 @@ if (is_dir("{$g['www_path']}/ext")){
 }
 
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
-												'diag_logs_filter.php',
-							  					'diag_logs_dhcp.php',
-							  					'diag_logs_portal.php',
-							  					'diag_logs_vpn.php',
 							  					'diag_logs_settings.php');  
-$menu['Diagnostics']['DHCP Leases'] 	= array('diag_dhcp_leases.php');
-$menu['Diagnostics']['IPsec'] 			= array('diag_ipsec_sad.php',
-												'diag_ipsec_spd.php');
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
-$menu['Diagnostics']['Firewall states'] = array('diag_ipfstat.php');
 $menu['Diagnostics']['Reset state'] 	= array('diag_resetstate.php');
 $menu['Diagnostics']['Backup/Restore'] 	= array('diag_backup.php');
 $menu['Diagnostics']['Factory Defaults']= array('diag_defaults.php');
@@ -245,9 +198,7 @@ dynamic_menu($menu['System'], 'System');
 // The Interfaces menu is different than the rest because of the Assign link and
 // The dynamic nature of the optional interfaces.
 $if_menu = array('(assign)' => 'interfaces_assign.php',
-    			 'LAN' => 'interfaces_lan.php',
-			  	 'WAN' => 'interfaces_wan.php',
-			     'OPTx' => 'interfaces_opt.php');
+    			 'LAN' => 'interfaces_lan.php');
 if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
 	$allowed = $if_menu;
 }
@@ -261,24 +212,10 @@ if (array_intersect($if_menu,$allowed)) {
     if (in_array('interfaces_lan.php',$allowed)) {
     	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_lan.php" class="navlnk">LAN</a><br>';
     }
-    if (in_array('interfaces_wan.php',$allowed)) {
-    	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_wan.php" class="navlnk">WAN</a><br>';
-    }
-    if (in_array('interfaces_opt.php',$allowed)) {
-    	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-			echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_opt.php?index=' .$i.
-			     '" class="navlnk">'.htmlspecialchars($config['interfaces']['opt' . $i]['descr']).'</a><br>';
-    	}
-    }
 }             
 
-dynamic_menu($menu['Firewall'], 'Firewall');
 dynamic_menu($menu['Services'], 'Services');
-dynamic_menu($menu['VPN'], 'VPN');
 dynamic_menu($menu['Status'], 'Status');
-// If Extensions exist, add them to the menu
-if (isset($menu['Extensions'])) 
-    dynamic_menu($menu['Extensions'], 'Extensions');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 ?>
 			  </span>

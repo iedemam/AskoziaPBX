@@ -35,7 +35,7 @@ require("guiconfig.inc");
 if ($_POST) {
 	if ($_POST['Submit'] == " Yes ") {
 		system_reboot();
-		$rebootmsg = "The system is rebooting now. This may take one minute.";
+		$rebootmsg = "The system is rebooting now. This may take a minute.";
 	} else {
 		header("Location: index.php");
 		exit;
