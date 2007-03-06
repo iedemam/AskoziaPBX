@@ -42,21 +42,9 @@ require_once("config.inc");
 require_once("functions.inc");
 
 
-$d_natconfdirty_path = $g['varrun_path'] . "/nat.conf.dirty";
-$d_filterconfdirty_path = $g['varrun_path'] . "/filter.conf.dirty";
-$d_ipsecconfdirty_path = $g['varrun_path'] . "/ipsec.conf.dirty";
-$d_shaperconfdirty_path = $g['varrun_path'] . "/shaper.conf.dirty";
-$d_pptpuserdirty_path = $g['varrun_path'] . "/pptpd.user.dirty";
-$d_dnsmasqdirty_path = $g['varrun_path'] . "/dnsmasq.dirty";
-$d_staticmapsdirty_path = $g['varrun_path'] . "/staticmaps.dirty";
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
-$d_aliasesdirty_path = $g['varrun_path'] . "/aliases.dirty";
-$d_proxyarpdirty_path = $g['varrun_path'] . "/proxyarp.dirty";
-$d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
-$d_passthrumacsdirty_path = $g['varrun_path'] . "/passthrumacs.dirty";
-$d_allowedipsdirty_path = $g['varrun_path'] . "/allowedips.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {
@@ -67,42 +55,15 @@ if (file_exists($d_firmwarelock_path)) {
 	}
 }
 
-/* some well knows ports */
-$wkports = array(21 => "FTP", 22 => "SSH", 23 => "Telnet", 25 => "SMTP", 53 => "DNS", 80 => "HTTP",
-				 110 => "POP3", 143 => "IMAP", 443 => "HTTPS");
-
-$iptos = array("lowdelay", "throughput", "reliability", "mincost", "congestion");
-/* TCP flags */
-$tcpflags = array("fin", "syn", "rst", "psh", "ack", "urg");
-
-$specialnets = array("wanip" => "WAN address", "lan" => "LAN net", "pptp" => "PPTP clients");
-
-for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-	$specialnets['opt' . $i] = $config['interfaces']['opt' . $i]['descr'] . " net";
-}
+$specialnets = array("lan" => "LAN net");
 	
 $medias = array("auto" => "autoselect", "100full" => "100BASE-TX full-duplex",
 	"100half" => "100BASE-TX half-duplex", "10full" => "10BASE-T full-duplex",
 	"10half" => "10BASE-T half-duplex", "1000full" => "1000BASE-TX full-duplex");
 	
 /* platforms that support firmware updating */
-$fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'wrap');
+$fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'generic-pc-smp', 'wrap');
 
-/* IPsec defines */
-$my_identifier_list = array('myaddress' => 'My IP address',
-							'address' => 'IP address',
-							'fqdn' => 'Domain name',
-							'user_fqdn' => 'User FQDN');
-
-$p1_ealgos = array('des' => 'DES', '3des' => '3DES', 'blowfish' => 'Blowfish', 
-					'cast128' => 'CAST128', 'aes' => 'AES');
-$p2_ealgos = array('des' => 'DES', '3des' => '3DES', 'blowfish' => 'Blowfish',
-					'cast128' => 'CAST128', 'rijndael' => 'Rijndael (AES)');
-$p1_halgos = array('sha1' => 'SHA1', 'md5' => 'MD5');
-$p1_authentication_methods = array('pre_shared_key' => 'Pre-shared key', 'rsasig' => 'RSA signature');
-$p2_halgos = array('hmac_sha1' => 'SHA1', 'hmac_md5' => 'MD5');
-$p2_protos = array('esp' => 'ESP', 'ah' => 'AH');
-$p2_pfskeygroups = array('0' => 'off', '1' => '1', '2' => '2', '5' => '5');
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	
@@ -242,124 +203,6 @@ function pprint_port($port) {
 	return $pport;
 }
 
-/* sort by interface only, retain the original order of rules that apply to
-   the same interface */
-function filter_rules_sort() {
-	global $g, $config;
-	
-	/* mark each rule with the sequence number (to retain the order while sorting) */
-	for ($i = 0; isset($config['filter']['rule'][$i]); $i++)
-		$config['filter']['rule'][$i]['seq'] = $i;
-	
-	function filtercmp($a, $b) {
-		if ($a['interface'] == $b['interface'])
-			return $a['seq'] - $b['seq'];
-		else
-			return -strcmp($a['interface'], $b['interface']);
-	}
-	
-	usort($config['filter']['rule'], "filtercmp");
-	
-	/* strip the sequence numbers again */
-	for ($i = 0; isset($config['filter']['rule'][$i]); $i++)
-		unset($config['filter']['rule'][$i]['seq']);
-}
-
-function nat_rules_sort() {
-	global $g, $config;
-	
-	function natcmp($a, $b) {
-		if ($a['external-address'] == $b['external-address']) {
-			if ($a['protocol'] == $b['protocol']) {
-				if ($a['external-port'] == $b['external-port']) {
-					return 0;
-				} else {
-					return ($a['external-port'] - $b['external-port']);
-				}
-			} else {
-				return strcmp($a['protocol'], $b['protocol']);
-			}
-		} else if (!$a['external-address'])
-			return 1;
-		else if (!$b['external-address'])
-			return -1;
-		else
-			return ipcmp($a['external-address'], $b['external-address']);
-	}
-	
-	usort($config['nat']['rule'], "natcmp");
-}
-
-function nat_1to1_rules_sort() {
-	global $g, $config;
-	
-	function nat1to1cmp($a, $b) {
-		return ipcmp($a['external'], $b['external']);
-	}
-	
-	usort($config['nat']['onetoone'], "nat1to1cmp");
-}
-
-function nat_server_rules_sort() {
-	global $g, $config;
-	
-	function natservercmp($a, $b) {
-		return ipcmp($a['ipaddr'], $b['ipaddr']);
-	}
-	
-	usort($config['nat']['servernat'], "natservercmp");
-}
-
-function nat_out_rules_sort() {
-	global $g, $config;
-	
-	function natoutcmp($a, $b) {
-		return strcmp($a['source']['network'], $b['source']['network']);
-	}
-	
-	usort($config['nat']['advancedoutbound']['rule'], "natoutcmp");
-}
-
-function pptpd_users_sort() {
-	global $g, $config;
-	
-	function usercmp($a, $b) {
-		return strcasecmp($a['name'], $b['name']);
-	}
-	
-	usort($config['pptpd']['user'], "usercmp");
-}
-
-function captiveportal_users_sort() {
-	global $g, $config;
-	
-	function cpusercmp($a, $b) {
-		return strcasecmp($a['name'], $b['name']);
-	}
-	
-	usort($config['captiveportal']['user'], "cpusercmp");
-}
-
-function admin_groups_sort() {
-	global $g, $config;
-	
-	function cpusercmp($a, $b) {
-		return strcasecmp($a['name'], $b['name']);
-	}
-	
-	usort($config['system']['group'], "cpusercmp");
-}
-
-function admin_users_sort() {
-	global $g, $config;
-	
-	function cpusercmp($a, $b) {
-		return strcasecmp($a['name'], $b['name']);
-	}
-	
-	usort($config['system']['user'], "cpusercmp");
-}
-
 function staticroutes_sort() {
 	global $g, $config;
 
@@ -368,134 +211,6 @@ function staticroutes_sort() {
 	}
 
 	usort($config['staticroutes']['route'], "staticroutecmp");
-}
-
-function hosts_sort() {
-	global $g, $config;
-
-	function hostcmp($a, $b) {
-		if (strcasecmp($a['domain'], $b['domain']) == 0)
-			return strcasecmp($a['host'], $b['host']);
-		else
-			return strcasecmp($a['domain'], $b['domain']);
-	}
-
-	usort($config['dnsmasq']['hosts'], "hostcmp");
-}
-
-function domainoverrides_sort() {
-	global $g, $config;
-
-	function domainoverridescmp($a, $b) {
-		return strcasecmp($a['domain'], $b['domain']);
-	}
-
-	usort($config['dnsmasq']['domainoverrides'], "domainoverridescmp");
-}
-
-function staticmaps_sort($if) {
-	global $g, $config;
-
-	function staticmapcmp($a, $b) {
-		return ipcmp($a['ipaddr'], $b['ipaddr']);
-	}
-
-	usort($config['dhcpd'][$if]['staticmap'], "staticmapcmp");
-}
-
-function aliases_sort() {
-	global $g, $config;
-
-	function aliascmp($a, $b) {
-		return strcmp($a['name'], $b['name']);
-	}
-
-	usort($config['aliases']['alias'], "aliascmp");
-}
-
-function ipsec_mobilekey_sort() {
-	global $g, $config;
-
-	function mobilekeycmp($a, $b) {
-		return strcmp($a['ident'][0], $b['ident'][0]);
-	}
-
-	usort($config['ipsec']['mobilekey'], "mobilekeycmp");
-}
-
-function proxyarp_sort() {
-	global $g, $config;
-
-	function proxyarpcmp($a, $b) {
-		if (isset($a['network']))
-			list($ast,$asn) = explode("/", $a['network']);
-		else if (isset($a['range'])) {
-			$ast = $a['range']['from'];
-			$asn = 32;
-		}
-		if (isset($b['network']))
-			list($bst,$bsn) = explode("/", $b['network']);
-		else if (isset($b['range'])) {
-			$bst = $b['range']['from'];
-			$bsn = 32;
-		}
-		if (ipcmp($ast, $bst) == 0)
-			return ($asn - $bsn);
-		else
-			return ipcmp($ast, $bst);
-	}
-
-	usort($config['proxyarp']['proxyarpnet'], "proxyarpcmp");
-}
-
-function passthrumacs_sort() {
-	global $g, $config;
-
-	function passthrumacscmp($a, $b) {
-		return strcmp($a['mac'], $b['mac']);
-	}
-	
-	usort($config['captiveportal']['passthrumac'],"passthrumacscmp");
-}
-
-function allowedips_sort() {
-	global $g, $config;
-
-	function allowedipscmp($a, $b) {
-		return strcmp($a['ip'], $b['ip']);
-	}
-	
-	usort($config['captiveportal']['allowedip'],"allowedipscmp");
-}
-
-function cpelements_sort() {
-	global $g, $config;
-
-	function cpelementscmp($a, $b) {
-		return strcasecmp($a['name'], $b['name']);
-	}
-	
-	usort($config['captiveportal']['element'],"cpelementscmp");
-}
-
-function wol_sort() {
-	global $g, $config;
-
-	function wolcmp($a, $b) {
-		return strcmp($a['descr'], $b['descr']);
-	}
-	
-	usort($config['wol']['wolentry'], "wolcmp");
-}
-
-function ipsec_ca_sort() {
-	global $g, $config;
-
-	function ipseccacmp($a, $b) {
-		return strcmp($a['ident'], $b['ident']);
-	}
-
-	usort($config['ipsec']['cacert'], "ipseccacmp");
 }
 
 function dynamic_tab_menu(&$tabs) {

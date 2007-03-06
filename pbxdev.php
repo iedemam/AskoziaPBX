@@ -319,6 +319,7 @@ function build_everything() {
 
 	build_packages();
 	build_ports();
+	build_tools();
 	build_kernels();
 	build_bootloader();
 }
