@@ -100,28 +100,6 @@ function is_ipaddr($ipaddr) {
 		return false;
 }
 
-/* returns true if $ipaddr is a valid dotted IPv4 address or an alias thereof */
-function is_ipaddroralias($ipaddr) {
-	
-	global $aliastable;
-	
-	if (isset($aliastable[$ipaddr]) && is_ipaddr($aliastable[$ipaddr]))
-		return true;
-	else
-		return is_ipaddr($ipaddr);
-}
-
-/* returns true if $ipaddr is a valid dotted IPv4 address or any alias */
-function is_ipaddroranyalias($ipaddr) {
-	
-	global $aliastable;
-	
-	if (isset($aliastable[$ipaddr]))
-		return true;
-	else
-		return is_ipaddr($ipaddr);
-}
-
 /* returns true if $subnet is a valid subnet in CIDR format */
 function is_subnet($subnet) {
 	if (!is_string($subnet))
@@ -136,17 +114,6 @@ function is_subnet($subnet) {
 		return false;
 		
 	return true;
-}
-
-/* returns true if $subnet is a valid subnet in CIDR format or an alias thereof */
-function is_subnetoralias($subnet) {
-	
-	global $aliastable;
-	
-	if (isset($aliastable[$subnet]) && is_subnet($aliastable[$subnet]))
-		return true;
-	else
-		return is_subnet($subnet);
 }
 
 /* returns true if $hostname is a valid hostname */
@@ -188,14 +155,6 @@ function is_macaddr($macaddr) {
 	}
 	
 	return true;
-}
-
-/* returns true if $name is a valid name for an alias */
-function is_validaliasname($name) {
-	if (!preg_match("/[^a-zA-Z0-9]/", $name))
-		return true;
-	else
-		return false;
 }
 
 /* returns true if $port is a valid TCP/UDP port */

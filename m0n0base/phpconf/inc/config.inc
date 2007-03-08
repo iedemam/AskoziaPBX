@@ -204,9 +204,7 @@ EOD;
 	}
 	
 	config_unlock();
-	
-	/* make alias table (for faster lookups) */
-	alias_make_table();
+
 }
 
 /* mount flash card read/write */
