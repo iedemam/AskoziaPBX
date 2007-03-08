@@ -34,6 +34,7 @@ $listtags = explode(" ", "rule user group key dnsserver winsserver pages " .
 	"staticmap route alias shellcmd cacert earlyshellcmd mobilekey " .
 	"servernat allowedip domainoverrides element");
 
+
 function startElement($parser, $name, $attrs) {
 	global $depth, $curpath, $config, $havedata, $listtags;
 	

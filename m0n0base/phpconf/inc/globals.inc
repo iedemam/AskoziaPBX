@@ -41,7 +41,7 @@ $g = array(
     "cf_path" => "/cf",
     "cf_conf_path" => "/cf/conf",
     "www_path" => "/usr/local/www",
-    "xml_rootobj" => "AskoziaPBX",
+    "xml_rootobj" => "askoziapbx",
     "debug" => false,
     "latest_config" => "1.0"
 );

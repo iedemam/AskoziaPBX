@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- m0n0wall default system configuration -->
 <!-- $Id: config.xml 170 2006-11-20 21:24:05Z mkasper $ -->
-<AskoziaPBX>
+<askoziapbx>
 	<version>1.0</version>
 	<lastchange></lastchange>
 	<system>
@@ -64,4 +64,4 @@
 		<resolve/>
 		-->
 	</syslog>
-</AskoziaPBX>
+</askoziapbx>

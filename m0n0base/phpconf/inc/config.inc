@@ -165,7 +165,7 @@ if (!$noparseconfig) {
 					
 					echo "No XML configuration file found - using factory defaults.\n";
 				} else {
-					echo "XML configuration file not found. m0n0wall cannot continue booting.\n"; 
+					echo "XML configuration file not found. AskoziaPBX cannot continue booting.\n"; 
 					mwexec("/sbin/halt");
 					exit;
 				}
