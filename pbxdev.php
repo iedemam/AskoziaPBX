@@ -40,19 +40,16 @@
 	  values for the time being
 	- logging system is a bit overused, the commands say what's going on	
 	
-	Changelog:
-		2007-02-28 - v0.1.0 - first public release
-		2007-03-02 - v0.1.1	- added "generic-pc-smp" platform support
 */
 
 
 
 // Please set me to the path you checked out the m0n0wall FreeBSD 6 branch to.
-$dirs['mwroot'] = "/usr/m0n06branch";	// no trailing slash please!
+$dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
 
 // --[ package versions ]------------------------------------------------------
 
-$php_version = "php-4.4.5";
+$php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
 
 
@@ -66,7 +63,7 @@ $wrap_soekris_size = 7808;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "net45xx net48xx wrap generic-pc generic-pc-cdrom generic-pc-smp";
+$platform_list = "net45xx net48xx wrap generic-pc generic-pc-cdrom";
 $platforms = explode(" ", $platform_list);
 
 
@@ -319,6 +316,7 @@ function build_everything() {
 
 	build_packages();
 	build_ports();
+	build_clog();
 	build_tools();
 	build_kernels();
 	build_bootloader();
