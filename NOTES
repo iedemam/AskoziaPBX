@@ -1,0 +1,11 @@
+firmware page, line 92 touch() fails
+remove vlans from assign page
+remove wol from menu
+remove reset state from menu
+remove "dhcp dns override" notes from general setup page
+traffic graph has some artifacts
+logs doesn't seem to work
+factory defaults screen looks funky
+config download produces a binary file...
+gateway and dns need to be fixed for LAN interface
+remove Disable webGUI anti-lockout rule option from advanced screen
