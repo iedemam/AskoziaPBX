@@ -35,7 +35,6 @@
 
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
-	$lanip = get_current_lan_address();
 	
 	echo <<<EOD
 
@@ -46,7 +45,7 @@
     Visit http://m0n0.ch/wall for updates.
     
     
-    LAN IP address: $lanip
+    LAN IP address: {$config['interfaces']['lan']['ipaddr']}
     
     Port configuration:
     

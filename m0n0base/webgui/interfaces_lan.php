@@ -35,16 +35,9 @@ require("guiconfig.inc");
 $lancfg = &$config['interfaces']['lan'];
 $optcfg = &$config['interfaces']['lan'];
 
-$pconfig['dhcphostname'] = $lancfg['dhcphostname'];
-
-if ($lancfg['ipaddr'] == "dhcp") {
-	$pconfig['type'] = "DHCP";
-} else {
-	$pconfig['type'] = "Static";
-	$pconfig['ipaddr'] = $lancfg['ipaddr'];
-	$pconfig['subnet'] = $lancfg['subnet'];
-	$pconfig['gateway'] = $lancfg['gateway'];
-}
+$pconfig['ipaddr'] = $lancfg['ipaddr'];
+$pconfig['subnet'] = $lancfg['subnet'];
+$pconfig['gateway'] = $lancfg['gateway'];
 
 
 if ($_POST) {
@@ -52,12 +45,9 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	if ($_POST['type'] == "Static") {
-		$reqdfields = explode(" ", "ipaddr subnet gateway");
-		$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway");
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	}
+	$reqdfields = explode(" ", "ipaddr subnet gateway");
+	$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway");
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		
 	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
 		$input_errors[] = "A valid IP address must be specified.";
@@ -74,18 +64,11 @@ if ($_POST) {
 		unset($lancfg['ipaddr']);
 		unset($lancfg['subnet']);
 		unset($lancfg['gateway']);
-		unset($lancfg['dhcphostname']);
 	
-		if ($_POST['type'] == "Static") {
-			$lancfg['ipaddr'] = $_POST['ipaddr'];
-			$lancfg['subnet'] = $_POST['subnet'];
-			$lancfg['gateway'] = $_POST['gateway'];
+		$lancfg['ipaddr'] = $_POST['ipaddr'];
+		$lancfg['subnet'] = $_POST['subnet'];
+		$lancfg['gateway'] = $_POST['gateway'];
 
-		} else if ($_POST['type'] == "DHCP") {
-			$lancfg['ipaddr'] = "dhcp";
-			$lancfg['dhcphostname'] = $_POST['dhcphostname'];
-		}
-		
 		write_config();
 		
 		$retval = 0;
@@ -99,44 +82,10 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
-<!--
-function type_change() {
-	switch (document.iform.type.selectedIndex) {
-		case 0:
-			document.iform.ipaddr.disabled = 0;
-			document.iform.subnet.disabled = 0;
-			document.iform.gateway.disabled = 0;
-			document.iform.dhcphostname.disabled = 1;
-			break;
-		case 1:
-			document.iform.ipaddr.disabled = 1;
-			document.iform.subnet.disabled = 1;
-			document.iform.gateway.disabled = 1;
-			document.iform.dhcphostname.disabled = 0;
-			break;
-	}
-}
-//-->
-</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
             <form action="interfaces_lan.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td valign="middle"><strong>Type</strong></td>
-                  <td><select name="type" class="formfld" id="type" onchange="type_change()">
-                      <?php $opts = split(" ", "Static DHCP");
-				foreach ($opts as $opt): ?>
-                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
-                      <?=htmlspecialchars($opt);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="4"></td>
-                </tr>
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic">Static IP configuration</td>
                 </tr>
@@ -163,28 +112,10 @@ function type_change() {
                   <td colspan="2" valign="top" height="16"></td>
                 </tr>
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic">DHCP client configuration</td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncell">Hostname</td>
-                  <td class="vtable"> <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>">
-                    <br>
-                    The value in this field is sent as the DHCP client identifier 
-                    and hostname when requesting a DHCP lease.</td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="16"></td>
-                </tr>
-                <tr> 
                   <td width="100" valign="top">&nbsp;</td>
-                  <td> &nbsp;<br> <input name="Submit" type="submit" class="formbtn" value="Save"> 
+                  <td><input name="Submit" type="submit" class="formbtn" value="Save"> 
                   </td>
                 </tr>
               </table>
 </form>
-<script language="JavaScript">
-<!--
-type_change();
-//-->
-</script>
 <?php include("fend.inc"); ?>

@@ -429,17 +429,6 @@ function populate_minihttpd($image_name) {
 }
 
 
-$h["populate dhclient"] = "adds the ISC DHCP client to the given \"image_name\"";
-function populate_dhclient($image_name) {
-	global $dirs;
-	
-	_exec("cp /sbin/dhclient $image_name/sbin/");
-	_exec("cp ". $dirs['tools'] ."/dhclient-script $image_name/sbin/");
-	
-	_log("added dhclient");
-}
-
-
 $h["populate msntp"] = "adds msntp (NTP client) to the given \"image_name\"";
 function populate_msntp($image_name) {
 	global $dirs;

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# let the configuration system know that the
-# LAN IP address has changed
-/etc/rc.newlanip
