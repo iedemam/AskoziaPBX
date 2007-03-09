@@ -108,20 +108,6 @@ $menu['Status']['Interfaces']		= array('status_interfaces.php');
 
 $menu['Status']['Traffic graph']	= array('status_graph.php');
 
-// Add Extensions, if they exist
-if (is_dir("{$g['www_path']}/ext")){
-      $dh = @opendir("{$g['www_path']}/ext");
-      if ($dh) {
-        while (($extd = readdir($dh)) !== false) {
-          if (($extd === ".") || ($extd === ".."))
-            continue;
-          $extfiles=explode("\n",trim(file_get_contents("{$g['www_path']}/ext/" . $extd . "/menu2.inc")));
-          $menu['Extensions'][array_shift($extfiles)]=$extfiles;
-         }
-        closedir($dh);
-      }
-}
-
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 							  					'diag_logs_settings.php');  
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
@@ -211,7 +197,6 @@ if (array_intersect($if_menu,$allowed)) {
     }
 }             
 
-dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 ?>

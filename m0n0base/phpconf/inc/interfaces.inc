@@ -42,16 +42,26 @@ function interfaces_loopback_configure() {
 function interfaces_lan_configure() {
 	global $config, $g;
 	
+	$lancfg = $config['interfaces']['lan'];
+	
 	if ($g['booting'])
 		echo "Configuring LAN interface... ";
+	else {
+		/* kill dhclient */
+		mwexec("/usr/bin/killall dhclient");
+		
+		/* wait for processes to die */
+		sleep(2);
+		
+		unlink_if_exists("{$g['varetc_path']}/dhclient.conf");
+		unlink_if_exists("{$g['varetc_path']}/nameservers.conf");
+	}
 	
-	$lancfg = $config['interfaces']['lan'];
-			
-	/* MAC spoofing? */
-	if ($lancfg['spoofmac'])
-		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
-			" link " . escapeshellarg($lancfg['spoofmac']));
-	
+	/* remove all addresses first */
+	while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
+	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
+		
+		
 	/* media */
 	if ($lancfg['media'] || $lancfg['mediaopt']) {
 		$cmd = "/sbin/ifconfig " . escapeshellarg($lancfg['if']);
@@ -65,24 +75,27 @@ function interfaces_lan_configure() {
 	$addflags = "";
 	if (strpos($lancfg['if'], "fxp") !== false)
 		$addflags .= " link0";
-
-	if (isset($config['system']['polling']))
-		$addflags .= " polling";
-	
-	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
-		escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
 	
 
+	switch ($lancfg['ipaddr']) {
+	
+		case 'dhcp':
+			interfaces_lan_dhcp_configure();
+			break;
+						
+		default:
+			mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
+				escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+			
+			/* install default route */
+			mwexec("/sbin/route delete default");
+			mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
+
+	}
+	
 	if (!$g['booting']) {
-		/* make new hosts file */
-		system_hosts_generate();
-		
 		/* reconfigure static routes (kernel may have deleted them) */
 		system_routing_configure();
-				
-		/* reload webgui */
-		system_webgui_start();
-		
 	}
 	
 	if ($g['booting'])
@@ -91,26 +104,25 @@ function interfaces_lan_configure() {
 	return 0;
 }
 
-
-function interfaces_wan_dhcp_configure() {
+function interfaces_lan_dhcp_configure() {
 	global $config, $g;
 	
-	$wancfg = $config['interfaces']['wan'];
+	$lancfg = $config['interfaces']['lan'];
 
 	/* generate dhclient.conf */
 	$fd = fopen("{$g['varetc_path']}/dhclient.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open dhclient.conf in interfaces_wan_dhcp_configure().\n");
+		printf("Error: cannot open dhclient.conf in interfaces_lan_dhcp_configure().\n");
 		return 1;
 	}
  
  	$dhclientconf = "";
  
- 	if ($wancfg['dhcphostname']) {
+ 	if ($lancfg['dhcphostname']) {
 		$dhclientconf .= <<<EOD
-send dhcp-client-identifier "{$wancfg['dhcphostname']}";
-interface "{$wancfg['if']}" {
-	send host-name "{$wancfg['dhcphostname']}";
+send dhcp-client-identifier "{$lancfg['dhcphostname']}";
+interface "{$lancfg['if']}" {
+	send host-name "{$lancfg['dhcphostname']}";
 }
 
 EOD;
@@ -121,21 +133,48 @@ EOD;
 	
 	/* fire up dhclient - don't wait for the lease (-nw) */
 	mwexec("/sbin/dhclient -nw -cf {$g['varetc_path']}/dhclient.conf -sf /sbin/dhclient-script " .
-		escapeshellarg($wancfg['if']));
+		escapeshellarg($lancfg['if']));
 	
 	return 0;
 }
 
-function interfaces_wan_dhcp_down() {
+function interfaces_lan_dhcp_down() {
 	mwexec("/usr/bin/killall dhclient");
 
 	sleep(3);
 }
 
-function interfaces_wan_dhcp_up() {
-	interfaces_wan_dhcp_configure();
+function interfaces_lan_dhcp_up() {
+	interfaces_lan_dhcp_configure();
 
 	sleep(3);
+}
+
+function get_current_lan_address() {
+	global $config, $g;
+	
+	$lancfg = $config['interfaces']['lan'];
+	
+	if (in_array($lancfg['ipaddr'], array('dhcp'))) {
+		/* dynamic LAN IP address, find out which one */
+		$lanif = $lancfg['if'];
+		
+		/* get interface info with netstat */
+		exec("/usr/bin/netstat -nWI " . escapeshellarg($lanif) . " -f inet", $ifinfo);
+		
+		if (isset($ifinfo[1])) {
+			$aif = preg_split("/\s+/", $ifinfo[1]);
+			$curlanip = chop($aif[3]);
+			
+			if ($curlanip && is_ipaddr($curlanip) && ($curlanip != "0.0.0.0"))
+				return $curlanip;
+		}
+		
+		return null;
+	} else {
+		/* static LAN IP address */
+		return $lancfg['ipaddr'];
+	}
 }
 
 function get_interface_mac($interface) {

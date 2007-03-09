@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: interfaces_lan.php 72 2006-02-10 11:13:01Z jdegraeve $
+	$Id: interfaces_wan.php 170 2006-11-20 21:24:05Z mkasper $
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -34,8 +34,18 @@ require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
 $optcfg = &$config['interfaces']['lan'];
-$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
-$pconfig['subnet'] = $config['interfaces']['lan']['subnet'];
+
+$pconfig['dhcphostname'] = $lancfg['dhcphostname'];
+
+if ($lancfg['ipaddr'] == "dhcp") {
+	$pconfig['type'] = "DHCP";
+} else {
+	$pconfig['type'] = "Static";
+	$pconfig['ipaddr'] = $lancfg['ipaddr'];
+	$pconfig['subnet'] = $lancfg['subnet'];
+	$pconfig['gateway'] = $lancfg['gateway'];
+}
+
 
 if ($_POST) {
 
@@ -43,94 +53,138 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "ipaddr subnet");
-	$reqdfieldsn = explode(",", "IP address,Subnet bit count");
-	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+	if ($_POST['type'] == "Static") {
+		$reqdfields = explode(" ", "ipaddr subnet gateway");
+		$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway");
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	}
+		
 	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
 		$input_errors[] = "A valid IP address must be specified.";
 	}
 	if (($_POST['subnet'] && !is_numeric($_POST['subnet']))) {
 		$input_errors[] = "A valid subnet bit count must be specified.";
 	}
-
+	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
+		$input_errors[] = "A valid gateway must be specified.";
+	}
 
 	if (!$input_errors) {
-		$config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
-		$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
+	
+		unset($lancfg['ipaddr']);
+		unset($lancfg['subnet']);
+		unset($lancfg['gateway']);
+		unset($lancfg['dhcphostname']);
+	
+		if ($_POST['type'] == "Static") {
+			$lancfg['ipaddr'] = $_POST['ipaddr'];
+			$lancfg['subnet'] = $_POST['subnet'];
+			$lancfg['gateway'] = $_POST['gateway'];
+
+		} else if ($_POST['type'] == "DHCP") {
+			$lancfg['ipaddr'] = "dhcp";
+			$lancfg['dhcphostname'] = $_POST['dhcphostname'];
+		}
 		
-			
 		write_config();
-		touch($d_sysrebootreqd_path);
 		
-		$savemsg = get_std_save_message(0);
+		$retval = 0;
+		if (!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			$retval = interfaces_lan_configure();
+			config_unlock();
+		}
+		$savemsg = get_std_save_message($retval);
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
-function gen_bits(ipaddr) {
-    if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
-        var adr = ipaddr.split(/\./);
-        if (adr[0] > 255 || adr[1] > 255 || adr[2] > 255 || adr[3] > 255)
-            return "";
-        if (adr[0] == 0 && adr[1] == 0 && adr[2] == 0 && adr[3] == 0)
-            return "";
-		
-		if (adr[0] <= 127)
-			return "8";
-		else if (adr[0] <= 191)
-			return "16";
-		else
-			return "24";
-    }
-    else
-        return "";
+function type_change() {
+	switch (document.iform.type.selectedIndex) {
+		case 0:
+			document.iform.ipaddr.disabled = 0;
+			document.iform.subnet.disabled = 0;
+			document.iform.gateway.disabled = 0;
+			document.iform.dhcphostname.disabled = 1;
+			break;
+		case 1:
+			document.iform.ipaddr.disabled = 1;
+			document.iform.subnet.disabled = 1;
+			document.iform.gateway.disabled = 1;
+			document.iform.dhcphostname.disabled = 0;
+			break;
+	}
 }
-function ipaddr_change() {
-	document.iform.subnet.value = gen_bits(document.iform.ipaddr.value);
-}
-// -->
+//-->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
             <form action="interfaces_lan.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq">IP address</td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>" onchange="ipaddr_change()">
+                  <td valign="middle"><strong>Type</strong></td>
+                  <td><select name="type" class="formfld" id="type" onchange="type_change()">
+                      <?php $opts = split(" ", "Static DHCP");
+				foreach ($opts as $opt): ?>
+                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
+                      <?=htmlspecialchars($opt);?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" height="4"></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic">Static IP configuration</td>
+                </tr>
+                <tr> 
+                  <td width="100" valign="top" class="vncellreq">IP address</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
                     / 
                     <select name="subnet" class="formfld" id="subnet">
-                      <?php for ($i = 31; $i > 0; $i--): ?>
-                      <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>>
+                    <?php
+                      $snmax = 31;
+                      for ($i = $snmax; $i > 0; $i--): ?>
+                      <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>> 
                       <?=$i;?>
                       </option>
                       <?php endfor; ?>
                     </select></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save"> 
+                  <td valign="top" class="vncellreq">Gateway</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>"> 
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"><span class="vexpl"><span class="red"><strong>Warning:<br>
-                    </strong></span>after you click &quot;Save&quot;, you must 
-                    reboot your firewall for changes to take effect. You may also 
-                    have to do one or more of the following steps before you can 
-                    access your firewall again: 
-                    <ul>
-                      <li>change the IP address of your computer</li>
-                      <li>renew its DHCP lease</li>
-                      <li>access the webGUI with the new IP address</li>
-                    </ul>
-                    </span></td>
+                  <td colspan="2" valign="top" height="16"></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic">DHCP client configuration</td>
+                </tr>
+                <tr> 
+                  <td valign="top" class="vncell">Hostname</td>
+                  <td class="vtable"> <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>">
+                    <br>
+                    The value in this field is sent as the DHCP client identifier 
+                    and hostname when requesting a DHCP lease.</td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" height="16"></td>
+                </tr>
+                <tr> 
+                  <td width="100" valign="top">&nbsp;</td>
+                  <td> &nbsp;<br> <input name="Submit" type="submit" class="formbtn" value="Save"> 
+                  </td>
                 </tr>
               </table>
 </form>
+<script language="JavaScript">
+<!--
+type_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>

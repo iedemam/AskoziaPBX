@@ -60,8 +60,6 @@
 		<enable/>
 		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
 		<system/>
-		<nologdefaultblock/>
-		<resolve/>
 		-->
 	</syslog>
 </askoziapbx>

@@ -143,8 +143,12 @@ if ($_POST) {
 			$retval |= system_hosts_generate();
 			$retval |= system_resolvconf_generate();
 			$retval |= system_password_configure();
+			$retval |= services_dnsmasq_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
+ 			
+ 			if ($olddnsallowoverride != $config['system']['dnsallowoverride'])
+ 				$retval |= interfaces_lan_configure();
  			
 			config_unlock();
 		}
@@ -179,16 +183,13 @@ if ($_POST) {
                       <br>
                       <input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
                       <br>
-                      <span class="vexpl">IP addresses; these are also used for 
-                      the DHCP service, DNS forwarder and for PPTP VPN clients<br>
+                      <span class="vexpl">IP addresses<br>
                       <br>
                       <input name="dnsallowoverride" type="checkbox" id="dnsallowoverride" value="yes" <?php if ($pconfig['dnsallowoverride']) echo "checked"; ?>>
                       <strong>Allow DNS server list to be overridden by DHCP/PPP 
-                      on WAN</strong><br>
-                      If this option is set, m0n0wall will use DNS servers assigned 
-                      by a DHCP/PPP server on WAN for its own purposes (including 
-                      the DNS forwarder). They will not be assigned to DHCP and 
-                      PPTP VPN clients, though.</span></td>
+                      on LAN</strong><br>
+                      If this option is set, AskoziaPBXl will use DNS servers assigned 
+                      by a DHCP server on LAN for its own purposes.</span></td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell">Username</td>

@@ -1,7 +1,5 @@
 firmware page, line 92 touch() fails
-remove "dhcp dns override" notes from general setup page
+add "dhcp dns override" back into the system
 traffic graph has some artifacts
 logs don't seem to work
 config download produces a binary file...
-gateway and dns need to be fixed for LAN interface
-time doesn't work because of routing
