@@ -97,12 +97,6 @@ if ($_POST) {
 <?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0)); ?>
 <form action="interfaces_assign.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-    <li class="tabact">Interface assignments</li>
-    <li class="tabinact"><a href="interfaces_vlan.php">VLANs</a></li>
-  </ul>
-  </td></tr>
   <tr> 
     <td class="tabcont">
                     <table border="0" cellpadding="0" cellspacing="0">

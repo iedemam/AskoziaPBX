@@ -102,8 +102,6 @@ $menu['System']['General setup'] = array('system.php');
 $menu['System']['Static routes'] = array('system_routes.php');
 $menu['System']['Firmware']      = array('system_firmware.php');
 $menu['System']['Advanced']      = array('system_advanced.php');
-
-$menu['Services']['Wake on LAN']  	= array('services_wol.php');
 											
 $menu['Status']['System']			= array('index.php');
 $menu['Status']['Interfaces']		= array('status_interfaces.php');
@@ -129,7 +127,6 @@ $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
-$menu['Diagnostics']['Reset state'] 	= array('diag_resetstate.php');
 $menu['Diagnostics']['Backup/Restore'] 	= array('diag_backup.php');
 $menu['Diagnostics']['Factory Defaults']= array('diag_defaults.php');
 $menu['Diagnostics']['Reboot system'] 	= array('reboot.php');

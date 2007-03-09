@@ -71,12 +71,6 @@ function system_resolvconf_generate($dynupdate = false) {
 	fwrite($fd, $resolvconf);
 	fclose($fd);
 	
-	if (!$g['booting']) {
-		/* restart dhcpd (nameservers may have changed) */
-		if (!$dynupdate)
-			services_dhcpd_configure();
-	}
-	
 	return 0;
 }
 

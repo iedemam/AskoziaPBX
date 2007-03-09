@@ -182,15 +182,6 @@ function enable_change(enable_over) {
                     <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
                     <strong>Keep diagnostics in navigation expanded </strong></td>
                 </tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell">webGUI anti-lockout</td>
-                  <td width="78%" class="vtable"> 
-                    <input name="noantilockout" type="checkbox" id="noantilockout" value="yes" <?php if ($pconfig['noantilockout']) echo "checked"; ?>>
-                    <strong>Disable webGUI anti-lockout rule</strong><br>
-					By default, access to the webGUI on the LAN interface is always permitted, regardless of the user-defined filter rule set. Enable this feature to control webGUI access (make sure to have a filter rule in place that allows you in, or you will lock yourself out!).<br>
-					Hint: 
-					the &quot;set LAN IP address&quot; option in the console menu  resets this setting as well.</td>
-                </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
