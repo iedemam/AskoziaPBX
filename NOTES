@@ -1,4 +1,3 @@
-add "dhcp dns override" back into the system
+remov "dhcp dns override"
 traffic graph has some artifacts
 logs don't seem to work
-Warning: touch(): Unable to create file because No such file or directory in /usr/local/www/system_firmware.php on line 91
