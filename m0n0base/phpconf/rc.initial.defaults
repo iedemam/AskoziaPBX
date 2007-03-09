@@ -40,8 +40,8 @@
 	
 	echo <<<EOD
 	
-You are about to reset the firewall to factory defaults.
-The firewall will reboot after resetting the configuration.
+You are about to reset the PBX to factory defaults.
+The system will reboot after resetting the configuration.
 
 Do you want to proceed? (y/n) 
 EOD;

@@ -35,17 +35,18 @@
 
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
+	$lanip = get_current_lan_address();
 	
 	echo <<<EOD
 
 
-*** This is m0n0wall, version {$version}
+*** This is AskoziaPBX, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
     Copyright (C) 2002-2006 by Manuel Kasper. All rights reserved.
     Visit http://m0n0.ch/wall for updates.
     
     
-    LAN IP address: {$config['interfaces']['lan']['ipaddr']}
+    LAN IP address: $lanip
     
     Port configuration:
     
