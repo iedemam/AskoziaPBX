@@ -569,4 +569,33 @@ EOD;
 	return 0;
 }
 
+function system_check_reset_button() {
+	global $config, $g;
+ 
+	if ($g['platform'] != "wrap")
+		return 0;
+		 
+	$retval = mwexec("/usr/local/sbin/wrapresetbtn");
+ 
+	if ($retval == 99) {
+		/* user has pressed reset button for 2 seconds -
+		   reset to factory defaults */
+		echo <<<EOD
+
+***********************************************************************
+* Reset button pressed - resetting configuration to factory defaults. *
+* The system will reboot after this completes. *
+***********************************************************************
+
+
+EOD;
+
+		reset_factory_defaults();
+		system_reboot_sync();
+		exit(0);
+	}
+	
+	return 0;
+}
+
 ?>

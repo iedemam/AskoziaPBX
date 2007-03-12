@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>NOTES</string>
+	<string>m0n0base/phpconf/rc.initial.defaults</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -79,34 +79,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>m0n0base/etc/rc.initial</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>10</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>17</integer>
-		</dict>
-		<key>m0n0base/phpconf/config.xml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>46</integer>
-				<key>line</key>
-				<integer>12</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>9</integer>
-		</dict>
 		<key>m0n0base/phpconf/inc/globals.inc</key>
 		<dict>
 			<key>caret</key>
@@ -135,34 +107,6 @@
 			<key>firstVisibleLine</key>
 			<integer>5</integer>
 		</dict>
-		<key>m0n0base/webgui/guiconfig.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>58</integer>
-				<key>line</key>
-				<integer>45</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>17</integer>
-		</dict>
-		<key>m0n0base/webgui/system_firmware.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>90</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>102</integer>
-		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
@@ -180,14 +124,9 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>m0n0base/phpconf/config.xml</string>
 		<string>NOTES</string>
-		<string>m0n0base/webgui/system_firmware.php</string>
-		<string>m0n0base/webgui/guiconfig.inc</string>
 		<string>m0n0base/phpconf/rc.initial.defaults</string>
 		<string>pbxdev.php</string>
-		<string>m0n0base/etc/rc.initial</string>
-		<string>m0n0base/etc/rc.firmware</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

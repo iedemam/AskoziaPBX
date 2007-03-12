@@ -286,6 +286,9 @@ function build_tools() {
 	
 	_exec("cd ". $dirs['tools'] ."; gcc -o verifysig -lcrypto verifysig.c");
 	_log("built verifysig");
+	
+	_exec("cd ". $dirs['tools'] ."; gcc -o wrapresetbtn wrapresetbtn.c");
+	_log("built wrapresetbtn");	
 }
 
 
@@ -316,6 +319,7 @@ function build_everything() {
 
 	build_packages();
 	build_ports();
+	build_syslogd();
 	build_clog();
 	build_tools();
 	build_kernels();
@@ -448,6 +452,7 @@ function populate_tools($image_name) {
 		"install -s stats.cgi $image_name/usr/local/www; ".
 		"install -s minicron $image_name/usr/local/bin; ".
 		"install -s verifysig $image_name/usr/local/bin; ".
+		"install wrapresetbtn $image_name/usr/local/sbin; ".		
 		"install runmsntp.sh $image_name/usr/local/bin");
 }
 

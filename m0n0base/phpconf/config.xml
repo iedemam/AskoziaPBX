@@ -36,7 +36,7 @@
 	<interfaces>
 		<lan>
 			<if>sis0</if>
-			<ipaddr>192.168.1.1</ipaddr>
+			<ipaddr>141.41.40.56</ipaddr>
 			<subnet>24</subnet>
 			<media></media>
 			<mediaopt></mediaopt>
