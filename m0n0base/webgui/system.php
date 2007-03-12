@@ -35,7 +35,6 @@ require("guiconfig.inc");
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];
 list($pconfig['dns1'],$pconfig['dns2'],$pconfig['dns3']) = $config['system']['dnsserver'];
-$pconfig['dnsallowoverride'] = isset($config['system']['dnsallowoverride']);
 $pconfig['username'] = $config['system']['username'];
 if (!$pconfig['username'])
 	$pconfig['username'] = "admin";
@@ -123,9 +122,6 @@ if ($_POST) {
 		if ($_POST['dns3'])
 			$config['system']['dnsserver'][] = $_POST['dns3'];
 		
-		$olddnsallowoverride = $config['system']['dnsallowoverride'];
-		$config['system']['dnsallowoverride'] = $_POST['dnsallowoverride'] ? true : false;
-		
 		if ($_POST['password']) {
 			$config['system']['password'] = crypt($_POST['password']);
 		}
@@ -145,10 +141,7 @@ if ($_POST) {
 			$retval |= system_password_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
- 			
- 			if ($olddnsallowoverride != $config['system']['dnsallowoverride'])
- 				$retval |= interfaces_lan_configure();
- 			
+  			
 			config_unlock();
 		}
 		
@@ -182,13 +175,7 @@ if ($_POST) {
                       <br>
                       <input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
                       <br>
-                      <span class="vexpl">IP addresses<br>
-                      <br>
-                      <input name="dnsallowoverride" type="checkbox" id="dnsallowoverride" value="yes" <?php if ($pconfig['dnsallowoverride']) echo "checked"; ?>>
-                      <strong>Allow DNS server list to be overridden by DHCP/PPP 
-                      on LAN</strong><br>
-                      If this option is set, AskoziaPBXl will use DNS servers assigned 
-                      by a DHCP server on LAN for its own purposes.</span></td>
+                      <span class="vexpl">IP addresses</span></td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell">Username</td>

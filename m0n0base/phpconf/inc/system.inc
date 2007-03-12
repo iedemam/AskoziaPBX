@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: system.inc 174 2006-12-16 17:10:52Z mkasper $
+	$Id: system.inc 200 2007-03-12 10:03:31Z michael.iedema $
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -46,20 +46,6 @@ function system_resolvconf_generate($dynupdate = false) {
 	
 	$havedns = false;
 	
-	if (isset($syscfg['dnsallowoverride'])) {
-		/* get dynamically assigned DNS servers (if any) */
-		$nfd = @fopen("{$g['varetc_path']}/nameservers.conf", "r");
-		if ($nfd) {
-			while (!feof($nfd)) {
-				$dnss = trim(fgets($nfd));
-				if ($dnss) {
-					$resolvconf .= "nameserver $dnss\n";
-					$havedns = true;
-				}
-			}
-			fclose($nfd);
-		}
-	}
 	if (!$havedns && is_array($syscfg['dnsserver'])) {
 		foreach ($syscfg['dnsserver'] as $ns) {
 			if ($ns)
@@ -188,13 +174,15 @@ function system_syslogd_start() {
 		
 		$syslogconf = <<<EOD
 local0.*					%/var/log/filter.log
+local3.*					%/var/log/vpn.log
+local4.*					%/var/log/portalauth.log
+local7.*					%/var/log/dhcpd.log
 *.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local3.none;local4.none;local7.none %/var/log/system.log
 security.*					%/var/log/system.log
 auth.info;authpriv.info;daemon.info		%/var/log/system.log
 *.emerg						*
 
 EOD;
-		
 
 		if (isset($syslogcfg['system'])) {
 			$syslogconf .= <<<EOD
@@ -431,7 +419,6 @@ function system_do_shell_commands($early = 0) {
 	}
 }
 
-
 function system_console_configure() {
 	global $config, $g;
 	
@@ -571,30 +558,30 @@ EOD;
 
 function system_check_reset_button() {
 	global $config, $g;
- 
+
 	if ($g['platform'] != "wrap")
 		return 0;
-		 
+
 	$retval = mwexec("/usr/local/sbin/wrapresetbtn");
- 
+
 	if ($retval == 99) {
-		/* user has pressed reset button for 2 seconds -
+		/* user has pressed reset button for 2 seconds - 
 		   reset to factory defaults */
 		echo <<<EOD
 
 ***********************************************************************
 * Reset button pressed - resetting configuration to factory defaults. *
-* The system will reboot after this completes. *
+* The system will reboot after this completes.                        *
 ***********************************************************************
 
 
 EOD;
-
+		
 		reset_factory_defaults();
 		system_reboot_sync();
 		exit(0);
 	}
-	
+
 	return 0;
 }
 
