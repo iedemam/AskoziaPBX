@@ -1,3 +1,2 @@
-remov "dhcp dns override"
 traffic graph has some artifacts
-logs don't seem to work
+gateway and dns need to be able to be setup in the console
