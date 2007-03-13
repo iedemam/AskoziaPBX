@@ -98,15 +98,17 @@ if ((!is_array($allowed)) and
    
 }
 
-$menu['System']['General setup'] = array('system.php');
-$menu['System']['Static routes'] = array('system_routes.php');
-$menu['System']['Firmware']      = array('system_firmware.php');
-$menu['System']['Advanced']      = array('system_advanced.php');
+$menu['System']['General setup']		= array('system.php');
+$menu['System']['Static routes']		= array('system_routes.php');
+$menu['System']['Firmware']				= array('system_firmware.php');
+$menu['System']['Advanced']				= array('system_advanced.php');
 											
-$menu['Status']['System']			= array('index.php');
-$menu['Status']['Interfaces']		= array('status_interfaces.php');
+$menu['Status']['System']				= array('index.php');
+$menu['Status']['Interfaces']			= array('status_interfaces.php');
 
-$menu['Status']['Traffic graph']	= array('status_graph.php');
+$menu['Status']['Traffic graph']		= array('status_graph.php');
+
+$menu['PBX']['Editor']					= array('pbx_edit.php');
 
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 							  					'diag_logs_settings.php');  
@@ -198,6 +200,7 @@ if (array_intersect($if_menu,$allowed)) {
 }             
 
 dynamic_menu($menu['Status'], 'Status');
+dynamic_menu($menu['PBX'], 'PBX');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 ?>
 			  </span>
