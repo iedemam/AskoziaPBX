@@ -81,7 +81,7 @@ The interfaces will be assigned as follows:
 LAN  -> {$lanif}
 
 
-The firewall will reboot after saving the changes.
+The PBX will reboot after saving the changes.
 
 Do you want to proceed? (y/n) 
 EOD;
@@ -94,7 +94,7 @@ EOD;
 		
 		echo <<<EOD
 
-The firewall is rebooting now.
+The system is rebooting now.
 
 EOD;
 	

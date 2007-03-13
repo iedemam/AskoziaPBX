@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>m0n0base/phpconf/rc.initial.defaults</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,7 +18,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>196</integer>
+	<integer>227</integer>
 	<key>metaData</key>
 	<dict>
 		<key>NOTES</key>
@@ -26,7 +26,21 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>m0n0base/build/patches/user/syslogd.c.patch</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
@@ -93,44 +107,90 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>m0n0base/phpconf/rc.initial.defaults</key>
+		<key>m0n0base/phpconf/inc/system.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>26</integer>
+				<integer>174</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>528</integer>
+		</dict>
+		<key>m0n0base/phpconf/rc.bootup</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>36</integer>
+		</dict>
+		<key>m0n0base/webgui/diag_logs.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>61</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>41</integer>
+		</dict>
+		<key>m0n0base/webgui/system.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>118</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>185</integer>
 		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>430</integer>
+				<integer>290</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>777</integer>
+			<integer>411</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>NOTES</string>
-		<string>m0n0base/phpconf/rc.initial.defaults</string>
 		<string>pbxdev.php</string>
+		<string>m0n0base/webgui/system.php</string>
+		<string>m0n0base/webgui/diag_logs.php</string>
+		<string>m0n0base/phpconf/rc.bootup</string>
+		<string>m0n0base/phpconf/inc/system.inc</string>
+		<string>m0n0base/build/patches/user/syslogd.c.patch</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{370, 1032}, {772, 1040}}</string>
+	<string>{{392, 1033}, {772, 1040}}</string>
 </dict>
 </plist>

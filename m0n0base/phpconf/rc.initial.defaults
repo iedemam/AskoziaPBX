@@ -52,7 +52,7 @@ EOD;
 		
 		echo <<<EOD
 
-The firewall is rebooting now.
+The system is rebooting now.
 
 EOD;
 	

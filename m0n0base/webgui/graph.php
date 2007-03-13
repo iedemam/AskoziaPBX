@@ -34,7 +34,7 @@ header("Content-type: image/svg+xml");
 
 /********** HTTP GET Based Conf ***********/
 $ifnum=@$_GET["ifnum"];  // BSD / SNMP interface name / number
-$ifname=@$_GET["ifname"]?$_GET["ifname"]:"Interface $ifnum";  //Interface name that will be showed on top right of graph
+$ifname=@$_GET["ifname"]?$_GET["ifname"]:"LAN";  //Interface name that will be showed on top right of graph
 
 /********* Other conf *******/
 $scale_type="up";               //Autoscale default setup : "up" = only increase scale; "follow" = increase and decrease scale according to current graphed datas

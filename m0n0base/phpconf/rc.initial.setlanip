@@ -43,7 +43,7 @@
 		}
 	} while (!is_ipaddr($lanip));
 
-	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in m0n0wall.\n";
+	echo "\nSubnet masks are to be entered as bit counts (as in CIDR notation).\n";
 	echo "e.g. 255.255.255.0 = 24\n";
 	echo "     255.255.0.0   = 16\n";
 	echo "     255.0.0.0     = 8\n\n";
@@ -68,11 +68,6 @@
 			$config['system']['webgui']['protocol'] = "http";
 		else
 			$proto = "https";
-	}
-	
-	if (isset($config['system']['webgui']['noantilockout'])) {
-		echo "\nNote: the anti-lockout rule on LAN has been re-enabled.\n";
-		unset($config['system']['webgui']['noantilockout']);
 	}
 	
 	write_config();
