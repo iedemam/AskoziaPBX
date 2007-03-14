@@ -1,10 +1,9 @@
-#!/usr/local/bin/php
-<?php 
+<?php
 /*
-	pbx_edit.php
-	part of AskoziaPBX (http://askozia.com/pbx)
+	$Id: services.inc 171 2006-12-02 18:47:31Z mkasper $
+	part of m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2007 IKT <http://itison-ikt.de>.
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -29,41 +28,31 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("PBX", "Editor");
-require("guiconfig.inc");
+/* include all configuration functions */
+require_once("functions.inc");
 
-if ($_POST) {
+function asterisk_start() {
+	global $config, $g;
 
-	unset($input_errors);
-	$pconfig = $_POST;
-	
-	if (!file_exists($pconfig['file'])) {
-		$input_errors[] = "The specified file does not exist.";
+	if ($g['booting'])
+		echo "Starting Asterisk... ";
+
+	/* kill any running mini_httpd */
+	killbypid("{$g['varrun_path']}/asterisk.pid");
+
+	$astcfg = $config['asterisk'];
+
+
+	$res = mwexec("/usr/local/sbin/asterisk");
+
+	if ($g['booting']) {
+		if ($res == 0)
+			echo "done\n";
+		else
+			echo "failed\n";
 	}
-	
+
+	return $res;
 }
-
+	
 ?>
-
-<?php include("fbegin.inc"); ?>
-
-<form action="pbx_edit.php" method="post">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr> 
-			<td width="22%" valign="top" class="vncellreq">File</td>
-			<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="file" type="text" class="formfld" id="file" size="60" value="<?=htmlspecialchars($pconfig['file']);?>"></td>
-        </tr>
-		<tr> 
-			<td width="22%" class="vncellreq" valign="top">Contents</td>
-			<td width="78%" class="listr">
-                <textarea name="notes" cols="75" rows="21" id="contents" class="notes"><?=file_get_contents($pconfig['file']);?></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 
- 			</td>
-		</tr>
-	</table>
-</form>
-<?php include("fend.inc"); ?>

@@ -37,7 +37,7 @@
 	
 	echo <<<EOD
 	
-The firewall will reboot. This may take one minute.
+The system will reboot. This may take a minute.
 
 Do you want to proceed? (y/n) 
 EOD;
@@ -46,7 +46,7 @@ EOD;
 		
 		echo <<<EOD
 
-The firewall is rebooting now.
+The system is rebooting now.
 
 EOD;
 	

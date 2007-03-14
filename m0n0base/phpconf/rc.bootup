@@ -90,6 +90,9 @@
 	/* set up termcap (for the firewall states page) */
 	system_set_termcap();
 	
+	/* start up asterisk */
+	asterisk_start();
+	
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();
 	

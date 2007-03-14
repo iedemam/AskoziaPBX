@@ -42,6 +42,7 @@ echo "3) Reset webGUI password"
 echo "4) Reset to factory defaults"
 echo "5) Reboot system"
 echo "6) Ping host"
+echo "7) Shell"
 echo
 
 read -p "Enter a number: " opmode
@@ -65,6 +66,9 @@ case ${opmode} in
 	;;
 6)
 	/etc/rc.initial.ping
+	;;
+7)
+	/bin/sh
 	;;
 esac
 

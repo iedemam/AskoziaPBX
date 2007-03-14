@@ -1,0 +1,11 @@
+--- Makefile.orig	Wed Mar 14 10:41:41 2007
++++ Makefile	Wed Mar 14 10:44:22 2007
+@@ -83,7 +83,7 @@
+ OVERWRITE=y
+ 
+ # Include debug and macro symbols in the executables (-g) and profiling info (-pg)
+-DEBUG=-g3
++#DEBUG=-g3
+ 
+ # Staging directory
+ # Files are copied here temporarily during the install process

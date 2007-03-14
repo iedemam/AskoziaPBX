@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>NOTES</string>
+	<string>m0n0base/phpconf/inc/util.inc</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,10 +18,52 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>227</integer>
+	<integer>204</integer>
 	<key>metaData</key>
 	<dict>
-		<key>NOTES</key>
+		<key>files/etc/asterisk/cdr.conf</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>15</integer>
+		</dict>
+		<key>files/etc/asterisk/cdr_custom.conf</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>files/etc/asterisk/logger.conf</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>67</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>13</integer>
+		</dict>
+		<key>files/etc/asterisk/users.conf</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -121,6 +163,20 @@
 			<key>firstVisibleLine</key>
 			<integer>528</integer>
 		</dict>
+		<key>m0n0base/phpconf/inc/util.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>285</integer>
+		</dict>
 		<key>m0n0base/phpconf/rc.bootup</key>
 		<dict>
 			<key>caret</key>
@@ -135,62 +191,33 @@
 			<key>firstVisibleLine</key>
 			<integer>36</integer>
 		</dict>
-		<key>m0n0base/webgui/diag_logs.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>61</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>41</integer>
-		</dict>
-		<key>m0n0base/webgui/system.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
-				<key>line</key>
-				<integer>118</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>185</integer>
-		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>29</integer>
+				<integer>46</integer>
 				<key>line</key>
-				<integer>290</integer>
+				<integer>360</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>411</integer>
+			<integer>348</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>NOTES</string>
+		<string>files/etc/asterisk/users.conf</string>
+		<string>files/etc/asterisk/cdr.conf</string>
+		<string>files/etc/asterisk/cdr_custom.conf</string>
+		<string>files/etc/asterisk/logger.conf</string>
 		<string>pbxdev.php</string>
-		<string>m0n0base/webgui/system.php</string>
-		<string>m0n0base/webgui/diag_logs.php</string>
-		<string>m0n0base/phpconf/rc.bootup</string>
-		<string>m0n0base/phpconf/inc/system.inc</string>
-		<string>m0n0base/build/patches/user/syslogd.c.patch</string>
+		<string>m0n0base/phpconf/inc/util.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{392, 1033}, {772, 1040}}</string>
+	<string>{{358, 1034}, {786, 1041}}</string>
 </dict>
 </plist>

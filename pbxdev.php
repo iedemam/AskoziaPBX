@@ -31,22 +31,10 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 
-/*	Notes to self:
-
-	- sanity checks aren't performed in a regular way (some pre, some post call)
-	- patching is going to get NASTY if states aren't recorded properly
-	- mfsroot and .img sizes can be calculated automatically but they need a 
-	  pad of "x" bytes.  Since I can't set this accurately, I'll stick to static
-	  values for the time being
-	- logging system is a bit overused, the commands say what's going on	
-	
-*/
-
-
 
 // Please set me to the path you checked out the m0n0wall FreeBSD 6 branch to.
-//$dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
-$dirs['mwroot'] = "/Users/michael/Code/pbx-trunk/m0n0base";	// no trailing slash please!
+$dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
+//$dirs['mwroot'] = "/Users/michael/Code/pbx-trunk/m0n0base";	// no trailing slash please!
 
 // --[ package versions ]------------------------------------------------------
 
@@ -57,10 +45,10 @@ $asterisk_version = "asterisk-1.4.1";
 
 // --[ image sizes ]-----------------------------------------------------------
 
-$mfsroot_size = 13312;
-$generic_pc_size = 10240;
-$generic_pc_smp_size = 11264;
-$wrap_soekris_size = 7808;
+$mfsroot_size = 15360;
+$generic_pc_size = 12288;
+$generic_pc_smp_size = 12288;
+$wrap_soekris_size = 10240;
 
 
 // --[ possible platforms and kernels ]----------------------------------------
@@ -258,7 +246,8 @@ function build_minihttpd() {
 		_log("fetched and untarred $mini_httpd_version");
 	}
 	if(!_is_patched($mini_httpd_version)) {
-		_exec("cd ". $dirs['packages'] ."/$mini_httpd_version; patch < ". $dirs['patches'] . "/packages/mini_httpd.patch");
+		_exec("cd ". $dirs['packages'] ."/$mini_httpd_version; patch < ". $dirs['patches'] . 
+				"/packages/mini_httpd.patch");
 		_stamp_package_as_patched($mini_httpd_version);
 	}
 	_exec("cd ". $dirs['packages'] ."/$mini_httpd_version; make clean; make");
@@ -271,13 +260,30 @@ $h["build asterisk"] = "(re)builds and patches asterisk";
 function build_asterisk() {
 	global $dirs, $asterisk_version;
 	
-	if(!file_exists($dirs['packages'] ."/$asterisk_version")) {
+	if (!file_exists($dirs['packages'] ."/$asterisk_version")) {
+		if (!file_exists($dirs['packages'] ."/$asterisk_version.tar.gz")) {
+			_exec("cd ". $dirs['packages'] ."; ".
+					"fetch http://ftp.digium.com/pub/asterisk/releases/$asterisk_version.tar.gz; ");
+		}
 		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://ftp.digium.com/pub/asterisk/releases/$asterisk_version.tar.gz; ".
 				"tar zxf $asterisk_version.tar.gz");
+		_exec("mkdir ". $dirs['packages'] ."/$asterisk_version/STAGE");
+			
 		_log("fetched and untarred $asterisk_version");
 	}
-	
+	if(!_is_patched($asterisk_version)) {
+		_exec("cd ". $dirs['packages'] ."/$asterisk_version; patch < ". $dirs['files'] . 
+				"/asterisk_makefile.patch");
+		_stamp_package_as_patched($asterisk_version);
+	}
+	// clear stage
+	_exec("rm -rf ". $dirs['packages'] ."/$asterisk_version/STAGE/*");
+	// copy make options
+	_exec("cp ". $dirs['files'] ."/menuselect.makeopts /etc/asterisk.makeopts");
+	// reconfigure
+	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ./configure; ".
+		" gmake");
+		
 	_log("built asterisk");
 }
 
@@ -350,10 +356,11 @@ function create($image_name) {
 		
 	_exec("mkdir $image_name");
 	_exec("cd $image_name; mkdir lib bin cf conf.default dev etc ftmp mnt libexec proc root sbin tmp usr var");
-	_exec("cd $image_name; mkdir etc/inc");
 	_exec("cd $image_name; ln -s /cf/conf conf");
+	_exec("mkdir $image_name/etc/inc");
 	_exec("cd $image_name/usr; mkdir bin lib libexec local sbin share");
-	_exec("cd $image_name/usr/local; mkdir bin lib sbin www");
+	_exec("cd $image_name/usr/local; mkdir bin lib sbin www etc");
+	_exec("mkdir $image_name/usr/local/etc/asterisk");
 	_exec("cd $image_name/usr/local; ln -s /var/run/htpasswd www/.htpasswd");
 	
 	_log("created directory structure");
@@ -374,7 +381,8 @@ $h["populate etc"] = "populates /etc and appropriately links /etc/resolv.conf an
 function populate_etc($image_name) {
 	global $dirs;
 		
-	_exec("cp -p ". $dirs['files'] ."/etc/* $image_name/etc/");		// etc stuff not in svn
+	_exec("cp -p ". $dirs['files'] ."/etc/* $image_name/etc/");
+	_exec("cp -p ". $dirs['files'] ."/asterisk/* $image_name/usr/local/etc/asterisk/");
 	_exec("cp -p ". $dirs['etc'] ."/rc* $image_name/etc/");
 	_exec("cp ". $dirs['etc'] ."/pubkey.pem $image_name/etc/");
 	_log("added etc");
@@ -461,6 +469,18 @@ function populate_msntp($image_name) {
 }
 
 
+function populate_asterisk($image_name) {
+	global $dirs, $asterisk_version;
+	
+	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
+		" gmake install DESTDIR=$image_name");
+		
+	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm x queue-* agent-*");
+	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm LICENSE* *.wav fpm-c*.gsm fpm-w*.gsm");
+	_exec("rm -rf $image_name/usr/local/include");	
+}
+
+
 $h["populate tools"] = "adds the m0n0wall \"helper tools\" to the given \"image_name\"";
 function populate_tools($image_name) {
 	global $dirs;
@@ -510,20 +530,20 @@ function populate_libs($image_name) {
 $h["populate everything"] = "adds all packages, scripts and config files to the given \"image_name\"";
 function populate_everything($image_name) {
 
-	$funcs = get_defined_functions();
-	$funcs = $funcs['user'];
-
-	foreach($funcs as $func) {
-		if($func[0] == '_') {	// ignore internal functions
-			continue;
-		}
-		$func = explode("_", $func);
- 		if($func[0] == "populate" && $func[1] != "everything") {
-			$f = "populate_" . $func[1];
-			$f($image_name);
-		}
-	}
-
+	populate_base($image_name);
+	populate_etc($image_name);
+	populate_defaultconf($image_name);
+	populate_zoneinfo($image_name);
+	populate_syslogd($image_name);
+	populate_clog($image_name);
+	populate_php($image_name);
+	populate_minihttpd($image_name);
+	populate_msntp($image_name);
+	populate_asterisk($image_name);
+	populate_tools($image_name);
+	populate_phpconf($image_name);
+	populate_webgui($image_name);
+	populate_libs($image_name);
 }
 
 // TODO: this is quite large and ugly
