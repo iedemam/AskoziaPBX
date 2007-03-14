@@ -45,12 +45,14 @@
 
 
 // Please set me to the path you checked out the m0n0wall FreeBSD 6 branch to.
-$dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
+//$dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
+$dirs['mwroot'] = "/Users/michael/Code/pbx-trunk/m0n0base";	// no trailing slash please!
 
 // --[ package versions ]------------------------------------------------------
 
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
+$asterisk_version = "asterisk-1.4.1";
 
 
 // --[ image sizes ]-----------------------------------------------------------
@@ -265,6 +267,21 @@ function build_minihttpd() {
 }
 
 
+$h["build asterisk"] = "(re)builds and patches asterisk";
+function build_asterisk() {
+	global $dirs, $asterisk_version;
+	
+	if(!file_exists($dirs['packages'] ."/$asterisk_version")) {
+		_exec("cd ". $dirs['packages'] ."; ".
+				"fetch http://ftp.digium.com/pub/asterisk/releases/$asterisk_version.tar.gz; ".
+				"tar zxf $asterisk_version.tar.gz");
+		_log("fetched and untarred $asterisk_version");
+	}
+	
+	_log("built asterisk");
+}
+
+
 $h["build msntp"] = "(re)builds msntp (NTP client)";
 function build_msntp() {
 	
@@ -274,7 +291,7 @@ function build_msntp() {
 }
 
 
-$h["build tools"] = "(re)builds the little \"helper tools\" that m0n0wall needs (stats.cgi, minicron, verifysig)";
+$h["build tools"] = "(re)builds the little \"helper tools\" that AskoziaPBX needs (stats.cgi, minicron, verifysig)";
 function build_tools() {
 	global $dirs;
 	
