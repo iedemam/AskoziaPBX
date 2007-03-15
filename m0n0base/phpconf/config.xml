@@ -7,7 +7,8 @@
 	<system>
 		<hostname>AskoziaPBX</hostname>
 		<domain>local</domain>
-		<dnsserver></dnsserver>
+		<dnsserver>141.41.1.150</dnsserver>
+		<dnsserver>141.41.1.250</dnsserver>		
 		<dnsallowoverride/>
 		<username>admin</username>
 		<password>$1$uRCWrAae$JD3lKuONsFj/675FnBrjU/</password>
@@ -16,13 +17,13 @@
 		<timeservers>pool.ntp.org</timeservers>
 		<webgui>
 			<protocol>http</protocol>
+			<port>10080</port>			
 			<!--
-			<port></port>
+			<port>10080</port>
 			<certificate></certificate>
 			<private-key></private-key>
 			<noassigninterfaces/>
 			<expanddiags/>
-			<noantilockout></noantilockout>
 			-->
 		</webgui>
 		<!-- <disableconsolemenu/> -->
@@ -40,6 +41,7 @@
 			<subnet>24</subnet>
 			<media></media>
 			<mediaopt></mediaopt>
+			<gateway>141.41.40.1</gateway>
 		</lan>
 	</interfaces>
 	<staticroutes>

@@ -130,7 +130,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				touch($d_firmwarelock_path);
 				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
 				
-				$savemsg = "The firmware is now being installed. The firewall will reboot automatically.";
+				$savemsg = "The firmware is now being installed. The PBX will reboot automatically.";
 			}
 		}
 	}
@@ -152,7 +152,7 @@ $sig_warning = "<strong>" . $sig_warning . "</strong><br>This means that the ima
 	"is not an official/supported image and may lead to unexpected behavior or security " .
 	"compromises. Only install images that come from sources that you trust, and make sure ".
 	"that the image has not been tampered with.<br><br>".
-	"Do you want to install this image anyway (on your own risk)?";
+	"Do you want to install this image anyway (at your own risk)?";
 print_info_box($sig_warning);
 ?>
 <input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">

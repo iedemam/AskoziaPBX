@@ -32,38 +32,64 @@
 $pgtitle = array("PBX", "Editor");
 require("guiconfig.inc");
 
+$mode = "select";
+
 if ($_POST) {
 
 	unset($input_errors);
 	$pconfig = $_POST;
 	
-	if (!file_exists($pconfig['file'])) {
-		$input_errors[] = "The specified file does not exist.";
+	if (isset($pconfig['open'])) {
+		if (!isset($pconfig['file']) || !file_exists($pconfig['file'])) {
+			$input_errors[] = "The specified file ({$pconfig['file']}) does not exist.";
+		} else {
+			$mode = "edit";
+		}
+		
+	} else if (isset($pconfig['save'])) {
+		$f = fopen($pconfig['file'], "w");
+		fwrite($f, $pconfig['contents']);
+		fclose($f);
+		$savemsg = "File contents ({$pconfig['file']}) saved.";
 	}
-	
+
 }
 
 ?>
 
 <?php include("fbegin.inc"); ?>
-
+<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="pbx_edit.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<?php if ($mode == "edit"): ?>
 		<tr> 
 			<td width="22%" valign="top" class="vncellreq">File</td>
 			<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="file" type="text" class="formfld" id="file" size="60" value="<?=htmlspecialchars($pconfig['file']);?>"></td>
-        </tr>
+		</tr>
 		<tr> 
 			<td width="22%" class="vncellreq" valign="top">Contents</td>
 			<td width="78%" class="listr">
-                <textarea name="notes" cols="75" rows="21" id="contents" class="notes"><?=file_get_contents($pconfig['file']);?></textarea>
+                <textarea name="contents" cols="75" rows="21" id="contents" class="notes"><?=file_get_contents($pconfig['file']);?></textarea>
 			</td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 
+			<td width="78%"> <input name="save" type="submit" class="formbtn" value="Save">
+				<input name="cancel" type="submit" class="formbtn" value="Cancel"> 
  			</td>
 		</tr>
+		<?php else: ?>
+		<tr> 
+			<td width="22%" valign="top" class="vncellreq">File</td>
+			<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="file" type="text" class="formfld" id="file" size="60" value="<?=htmlspecialchars($pconfig['file']);?>"></td>
+    	</tr>
+		<tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"> <input name="open" type="submit" class="formbtn" value="Open"> 
+ 			</td>
+		</tr>
+		<?php endif; ?>
 	</table>
 </form>
 <?php include("fend.inc"); ?>
