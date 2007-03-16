@@ -1,0 +1,101 @@
+timepicker js can be removeds
+
+syslog is not logging because local7.none is set (duh)
+
+need to add killbypid to start of asterisk_start()
+
+sdmi.conf needs to be present to kill a warning
+
+indications.conf's country needs to be set
+
+moh directory is set incorrectly
+
+conference app needs to be added
+
+voicemail dir structure needs to be generated on boot
+
+general setup and networking interface (LAN) need to be merged 
+
+stun / nat settings need to be added to network interface
+
+voicemail has options to run a specified program upon mail receipt or secret change
+
+--------------------------------------------------------------------------
+
+System
+ - General Setup
+ - Firmware
+ - Backup / Restore
+ - Factory Defaults
+ - Reboot
+
+Interfaces
+ - Network
+
+Providers
+ - SIP
+ - IAX
+
+Phones
+ - SIP
+ - IAX
+
+Services
+ - Dialplan
+ - Voicemail
+ - Conferencing
+ - QoS
+
+Status
+ - Summary
+ - Providers
+ - Phones
+ - Channels
+ - Interfaces
+ - Voicemail
+
+Diagnostics
+ - Logs
+ - Traffic Graph
+ - CPU Load
+ - Ping / Traceroute
+ - ARP Table
+
+-------------------------------------------------------------------------
+
+<asterisk>
+	<providers>
+		<sip>
+			<name></name>
+			<username></username>
+			<authuser></authuser>
+			<password></password>
+			<proxy></proxy>
+			<port></port>
+			<description></description>
+		</sip>
+		...
+	</providers>
+	<phones>
+		<sip>
+			<name></name>
+			<extension></extension>
+			<username></username>
+			<secret></secret>
+			<vmsecret></vmsecret>
+			<email></email>
+			<description></description>
+		</sip>
+		...
+	</phones>
+	<dialplan>
+		<extension>
+			<app></app>
+			<args></args>
+			...
+		</extension>
+		...
+	</dialplan>
+	<jitterbuffer></jitterbuffer>
+	<voicemail></voicemail>
+</asterisk>

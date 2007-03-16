@@ -36,12 +36,10 @@ function asterisk_start() {
 
 	if ($g['booting'])
 		echo "Starting Asterisk... ";
-
-	/* kill any running mini_httpd */
-	killbypid("{$g['varrun_path']}/asterisk.pid");
+	else
+		killbypid("{$g['varrun_path']}/asterisk.pid");
 
 	$astcfg = $config['asterisk'];
-
 
 	$res = mwexec("/usr/local/sbin/asterisk");
 
