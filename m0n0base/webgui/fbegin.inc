@@ -127,11 +127,11 @@ $menu['Services']['QoS'] 				= array('services_qos.php'); /* jb, packet types */
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
-$menu['Status']['Providers']			= array('summary_providers.php');
-$menu['Status']['Phones']				= array('summary_phones.php');
-$menu['Status']['Channels']				= array('summary_channels.php');
-$menu['Status']['Interfaces']			= array('summary_interfaces.php');
-$menu['Status']['Voicemail']			= array('summary_voicemail.php');
+$menu['Status']['Providers']			= array('status_providers.php');
+$menu['Status']['Phones']				= array('status_phones.php');
+$menu['Status']['Channels']				= array('status_channels.php');
+$menu['Status']['Interfaces']			= array('status_interfaces.php');
+$menu['Status']['Voicemail']			= array('status_voicemail.php');
 
 
 /* Diagnostics */

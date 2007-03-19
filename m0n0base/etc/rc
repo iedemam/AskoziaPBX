@@ -23,6 +23,7 @@ mkdir /var/run /var/log /var/etc /var/db /var/empty
 
 # generate circular logfiles
 clog -i -s 262144 /var/log/system.log
+clog -i -s 262144 /var/log/asterisk.log
 chmod 0600 /var/log/*.log
 
 adjkerntz -i

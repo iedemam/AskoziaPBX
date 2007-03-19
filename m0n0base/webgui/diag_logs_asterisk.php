@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: diag_logs.php 72 2006-02-10 11:13:01Z jdegraeve $
+	diag_logs_asterisk.php
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -37,13 +37,13 @@ if (!$nentries)
 	$nentries = 50;
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/system.log");
+	exec("/usr/sbin/clog -i -s 262144 /var/log/asterisk.log");
 	/* redirect to avoid reposting form data on refresh */
-	header("Location: diag_logs.php");
+	header("Location: diag_logs_asterisk.php");
 	exit;
 }
 
-function dump_clog($logfile, $tail, $withorig = true) {
+function dump_clog($logfile, $tail) {
 	global $g, $config;
 
 	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
@@ -54,12 +54,9 @@ function dump_clog($logfile, $tail, $withorig = true) {
 		$logent = preg_split("/\s+/", $logent, 6);
 		echo "<tr valign=\"top\">\n";
 		
-		if ($withorig) {
-			echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-			echo "<td class=\"listr\">" . htmlspecialchars($logent[4] . " " . $logent[5]) . "</td>\n";
-		} else {
-			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent[5]) . "</td>\n";
-		}
+		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
+		echo "<td class=\"listr\" colspan=\"2\">" . htmlspecialchars($logent[5]) . "</td>\n";
+
 		echo "</tr>\n";
 	}
 }
@@ -70,9 +67,9 @@ function dump_clog($logfile, $tail, $withorig = true) {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 <?php 
-   	$tabs = array('System' => 'diag_logs.php',
+	$tabs = array('System' => 'diag_logs.php',
 				  'Asterisk' => 'diag_logs_asterisk.php',
-           		  'Settings' => 'diag_logs_settings.php');
+	       		  'Settings' => 'diag_logs_settings.php');
 	dynamic_tab_menu($tabs);
 ?> 
   </ul>
@@ -82,11 +79,11 @@ function dump_clog($logfile, $tail, $withorig = true) {
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr> 
 			<td colspan="2" class="listtopic"> 
-			  Last <?=$nentries;?> system log entries</td>
+			  Last <?=$nentries;?> Asterisk log entries</td>
 		  </tr>
-		  <?php dump_clog("/var/log/system.log", $nentries); ?>
+		  <?php dump_clog("/var/log/asterisk.log", $nentries); ?>
 		</table>
-		<br><form action="diag_logs.php" method="post">
+		<br><form action="diag_logs_asterisk.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="Clear log">
 </form>
 	</td>

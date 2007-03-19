@@ -130,6 +130,7 @@ defCmdT("Processes","ps xauww");
 defCmdT("df","/bin/df");
 
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
+defCmdT("last 200 asterisk log entries","/usr/sbin/clog /var/log/asterisk.log 2>&1 | tail -n 200");
 
 defCmd("ls /conf");
 defCmd("ls /var/run");

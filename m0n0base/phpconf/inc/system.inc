@@ -176,6 +176,7 @@ function system_syslogd_start() {
 *.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local3.none;local4.none;local7.none %/var/log/system.log
 security.*					%/var/log/system.log
 auth.info;authpriv.info;daemon.info		%/var/log/system.log
+local0.*					%/var/log/asterisk.log
 *.emerg						*
 
 EOD;
@@ -189,6 +190,8 @@ auth.info;authpriv.info;daemon.info		@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
+		
+		// TODO: remote logging for asterisk needs to be setup
 
 		fwrite($fd, $syslogconf);
 		fclose($fd);

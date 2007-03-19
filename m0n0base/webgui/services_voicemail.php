@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	pbx_edit.php
+	services_voicemail.php
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Services", "Voicemmail");
+$pgtitle = array("Services", "Voicemail");
 require("guiconfig.inc");
 
 if ($_POST) {
