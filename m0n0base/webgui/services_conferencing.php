@@ -1,10 +1,10 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: status_graph_cpu.php 143 2006-06-03 19:08:41Z mkasper $
-	part of m0n0wall (http://m0n0.ch/wall)
+	pbx_edit.php
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -29,13 +29,23 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "CPU load");
+$pgtitle = array("Services", "Conferencing");
 require("guiconfig.inc");
+
+if ($_POST) {
+
+	unset($input_errors);
+	$pconfig = $_POST;
+
+}
+
 ?>
+
 <?php include("fbegin.inc"); ?>
-<div align="center">
-<embed src="graph_cpu.php" type="image/svg+xml"
-		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
-</div>
-<br><span class="red"><strong>Note:</strong></span> if you can't see the graph, you may have to install the <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a>.
+<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) print_info_box($savemsg); ?>
+<form action="services_conferencing.php" method="post">
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+	</table>
+</form>
 <?php include("fend.inc"); ?>

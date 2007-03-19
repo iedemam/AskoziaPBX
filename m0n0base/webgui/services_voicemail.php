@@ -1,10 +1,10 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: reboot.php 72 2006-02-10 11:13:01Z jdegraeve $
-	part of m0n0wall (http://m0n0.ch/wall)
+	pbx_edit.php
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -29,27 +29,23 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Reboot system");
+$pgtitle = array("Services", "Voicemmail");
 require("guiconfig.inc");
 
 if ($_POST) {
-	if ($_POST['Submit'] == " Yes ") {
-		system_reboot();
-		$rebootmsg = "The system is rebooting now. This may take a minute.";
-	} else {
-		header("Location: index.php");
-		exit;
-	}
+
+	unset($input_errors);
+	$pconfig = $_POST;
+
 }
+
 ?>
+
 <?php include("fbegin.inc"); ?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
-      <form action="reboot.php" method="post">
-        <p><strong>Are you sure you want to reboot the system?</strong></p>
-        <p> 
-          <input name="Submit" type="submit" class="formbtn" value=" Yes ">
-          <input name="Submit" type="submit" class="formbtn" value=" No ">
-        </p>
-      </form>
-<?php endif; ?>
+<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) print_info_box($savemsg); ?>
+<form action="services_voicemail.php" method="post">
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+	</table>
+</form>
 <?php include("fend.inc"); ?>

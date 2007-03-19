@@ -1,8 +1,4 @@
-timepicker js can be removeds
-
-syslog is not logging because local7.none is set (duh)
-
-need to add killbypid to start of asterisk_start()
+syslog is not logging...
 
 sdmi.conf needs to be present to kill a warning
 
@@ -20,10 +16,13 @@ stun / nat settings need to be added to network interface
 
 voicemail has options to run a specified program upon mail receipt or secret change
 
+QoS options, such as jitterbuffer and packet types need to be added
+
 --------------------------------------------------------------------------
 
 System
  - General Setup
+ - GUI Options
  - Firmware
  - Backup / Restore
  - Factory Defaults

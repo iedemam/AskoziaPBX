@@ -123,29 +123,13 @@ defCmdT("Interfaces","/sbin/ifconfig -a");
 
 defCmdT("Routing tables","netstat -nr");
 
-defCmdT("ipfw show", "/sbin/ipfw show");
-defCmdT("ipnat -lv", "/sbin/ipnat -lv");
-defCmdT("ipfstat -v", "/sbin/ipfstat -v");
-defCmdT("ipfstat -nio", "/sbin/ipfstat -nio");
-
-defStrT("unparsed ipnat rules", filter_nat_rules_generate());
-defStrT("unparsed ipfilter rules", filter_rules_generate());
-defStrT("unparsed ipfw rules", shaper_rules_generate());
-
 defCmdT("resolv.conf","cat /etc/resolv.conf");
 
 defCmdT("Processes","ps xauww");
-defCmdT("dhcpd.conf","cat /var/etc/dhcpd.conf");
-defCmdT("ez-ipupdate.cache","cat /conf/ez-ipupdate.cache");
 
 defCmdT("df","/bin/df");
 
-defCmdT("racoon.conf","cat /var/etc/racoon.conf");
-defCmdT("SPD","/usr/local/sbin/setkey -DP");
-defCmdT("SAD","/usr/local/sbin/setkey -D");
-
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
-defCmdT("last 50 filter log entries","/usr/sbin/clog /var/log/filter.log 2>&1 | tail -n 50");
 
 defCmd("ls /conf");
 defCmd("ls /var/run");

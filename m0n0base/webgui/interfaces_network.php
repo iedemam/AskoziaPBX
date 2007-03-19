@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "LAN");
+$pgtitle = array("Interfaces", "Network");
 require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
@@ -84,7 +84,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-            <form action="interfaces_lan.php" method="post" name="iform" id="iform">
+            <form action="interfaces_network.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic">Static IP configuration</td>

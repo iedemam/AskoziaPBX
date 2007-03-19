@@ -61,7 +61,7 @@ function dynamic_menu(&$menu, $menu_title) {
 			}
 			else { 
 				if (!isset($header_displayed)) {
-					if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot")): ?>
+					if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")): ?>
 					<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br>
 					<span id="diag">
 					<?php else: ?>
@@ -98,26 +98,51 @@ if ((!is_array($allowed)) and
    
 }
 
+/* System */
 $menu['System']['General setup']		= array('system.php');
-$menu['System']['Static routes']		= array('system_routes.php');
+$menu['System']['GUI Options']			= array('system_guioptions.php');
 $menu['System']['Firmware']				= array('system_firmware.php');
-$menu['System']['Advanced']				= array('system_advanced.php');
+$menu['System']['Backup/Restore'] 		= array('system_backup.php');
+$menu['System']['Factory Defaults']		= array('system_defaults.php');
+$menu['System']['Reboot'] 				= array('system_reboot.php');
+
+/* Interfaces */
+$menu['Interfaces']['Network'] 			= array('interfaces_network.php');
+/* $menu['System']['Static routes']		= array('system_routes.php'); needs to be tab or submenu */
+/* assign interfaces also needs to be added as a tab */
+
+/* Providers */
+$menu['Providers']['SIP'] 				= array('providers_sip.php');
+$menu['Providers']['IAX'] 				= array('providers_iax.php');
+
+/* Phones */
+$menu['Phones']['SIP'] 					= array('phones_sip.php');
+$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
-$menu['Status']['System']				= array('index.php');
-$menu['Status']['Interfaces']			= array('status_interfaces.php');
+/* Services */
+$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
+$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
+$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
+$menu['Services']['QoS'] 				= array('services_qos.php'); /* jb, packet types */
 
-$menu['Status']['Traffic graph']		= array('status_graph.php');
+/* Status */
+$menu['Status']['Summary']				= array('index.php');
+$menu['Status']['Providers']			= array('summary_providers.php');
+$menu['Status']['Phones']				= array('summary_phones.php');
+$menu['Status']['Channels']				= array('summary_channels.php');
+$menu['Status']['Interfaces']			= array('summary_interfaces.php');
+$menu['Status']['Voicemail']			= array('summary_voicemail.php');
 
-$menu['PBX']['Editor']					= array('pbx_edit.php');
 
+/* Diagnostics */
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
-							  					'diag_logs_settings.php');  
+							  					'diag_logs_settings.php');
+$menu['Diagnostics']['Traffic Graph']	= array('diag_trafficgraph.php');
+$menu['Diagnostics']['CPU Usage']		= array('diag_cpugraph.php');
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
-$menu['Diagnostics']['Backup/Restore'] 	= array('diag_backup.php');
-$menu['Diagnostics']['Factory Defaults']= array('diag_defaults.php');
-$menu['Diagnostics']['Reboot system'] 	= array('reboot.php');
+$menu['Diagnostics']['File Editor']		= array('diag_editor.php');
 
 ?>
 
@@ -183,7 +208,7 @@ dynamic_menu($menu['System'], 'System');
 // The Interfaces menu is different than the rest because of the Assign link and
 // The dynamic nature of the optional interfaces.
 $if_menu = array('(assign)' => 'interfaces_assign.php',
-    			 'LAN' => 'interfaces_lan.php');
+    			 'Network' => 'interfaces_network.php');
 if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
 	$allowed = $if_menu;
 }
@@ -194,14 +219,17 @@ if (array_intersect($if_menu,$allowed)) {
 		echo '<a href="/interfaces_assign.php" class="navlnks"> (assign)</a>';
 	}
     echo '<br>';
-    if (in_array('interfaces_lan.php',$allowed)) {
-    	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_lan.php" class="navlnk">LAN</a><br>';
+    if (in_array('interfaces_network.php',$allowed)) {
+    	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_network.php" class="navlnk">Network</a><br>';
     }
 }             
 
+dynamic_menu($menu['Providers'], 'Providers');
+dynamic_menu($menu['Phones'], 'Phones');
+dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');
-dynamic_menu($menu['PBX'], 'PBX');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
+
 ?>
 			  </span>
 			  </font></span>
