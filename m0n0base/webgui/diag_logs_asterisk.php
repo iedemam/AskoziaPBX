@@ -2,7 +2,7 @@
 <?php 
 /*
 	diag_logs_asterisk.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.

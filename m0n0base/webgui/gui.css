@@ -82,6 +82,10 @@ textarea.notes {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 }
+textarea.pre {
+	font-family: Courier New, Courier, monospaced;
+	font-size: 10px;
+}
 .vvcell {
 	background-color: #FFFFC6;
 }

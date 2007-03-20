@@ -33,12 +33,12 @@ $pgtitle = array("Interfaces", "Network");
 require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
-$optcfg = &$config['interfaces']['lan'];
 
 $pconfig['ipaddr'] = $lancfg['ipaddr'];
 $pconfig['subnet'] = $lancfg['subnet'];
 $pconfig['gateway'] = $lancfg['gateway'];
 
+list($pconfig['dns1'],$pconfig['dns2'],$pconfig['dns3']) = $config['system']['dnsserver'];
 
 if ($_POST) {
 
@@ -58,7 +58,10 @@ if ($_POST) {
 	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
 		$input_errors[] = "A valid gateway must be specified.";
 	}
-
+	if (($_POST['dns1'] && !is_ipaddr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipaddr($_POST['dns2'])) || ($_POST['dns3'] && !is_ipaddr($_POST['dns3']))) {
+		$input_errors[] = "A valid IP address must be specified for the primary/secondary/tertiary DNS server.";
+	}
+	
 	if (!$input_errors) {
 	
 		unset($lancfg['ipaddr']);
@@ -68,13 +71,22 @@ if ($_POST) {
 		$lancfg['ipaddr'] = $_POST['ipaddr'];
 		$lancfg['subnet'] = $_POST['subnet'];
 		$lancfg['gateway'] = $_POST['gateway'];
-
+		
+		unset($config['system']['dnsserver']);
+		if ($_POST['dns1'])
+			$config['system']['dnsserver'][] = $_POST['dns1'];
+		if ($_POST['dns2'])
+			$config['system']['dnsserver'][] = $_POST['dns2'];
+		if ($_POST['dns3'])
+			$config['system']['dnsserver'][] = $_POST['dns3'];	
+		
 		write_config();
 		
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval = interfaces_lan_configure();
+			$retval |= system_resolvconf_generate();			
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -107,6 +119,17 @@ if ($_POST) {
                   <td valign="top" class="vncellreq">Gateway</td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>"> 
                   </td>
+                </tr>
+                <tr> 
+                  <td width="22%" valign="top" class="vncell">DNS servers</td>
+                  <td width="78%" class="vtable">
+                      <input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>">
+                      <br>
+                      <input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>">
+                      <br>
+                      <input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
+                      <br>
+                      <span class="vexpl">IP addresses</span></td>
                 </tr>
                 <tr> 
                   <td colspan="2" valign="top" height="16"></td>

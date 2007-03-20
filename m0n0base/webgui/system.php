@@ -34,7 +34,6 @@ require("guiconfig.inc");
 
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];
-list($pconfig['dns1'],$pconfig['dns2'],$pconfig['dns3']) = $config['system']['dnsserver'];
 $pconfig['username'] = $config['system']['username'];
 if (!$pconfig['username'])
 	$pconfig['username'] = "admin";
@@ -78,9 +77,6 @@ if ($_POST) {
 	if ($_POST['domain'] && !is_domain($_POST['domain'])) {
 		$input_errors[] = "The domain may only contain the characters a-z, 0-9, '-' and '.'.";
 	}
-	if (($_POST['dns1'] && !is_ipaddr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipaddr($_POST['dns2'])) || ($_POST['dns3'] && !is_ipaddr($_POST['dns3']))) {
-		$input_errors[] = "A valid IP address must be specified for the primary/secondary/tertiary DNS server.";
-	}
 	if ($_POST['username'] && !preg_match("/^[a-zA-Z0-9]*$/", $_POST['username'])) {
 		$input_errors[] = "The username may only contain the characters a-z, A-Z and 0-9.";
 	}
@@ -113,15 +109,7 @@ if ($_POST) {
 		$config['system']['timezone'] = $_POST['timezone'];
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
-		
-		unset($config['system']['dnsserver']);
-		if ($_POST['dns1'])
-			$config['system']['dnsserver'][] = $_POST['dns1'];
-		if ($_POST['dns2'])
-			$config['system']['dnsserver'][] = $_POST['dns2'];
-		if ($_POST['dns3'])
-			$config['system']['dnsserver'][] = $_POST['dns3'];
-		
+				
 		if ($_POST['password']) {
 			$config['system']['password'] = crypt($_POST['password']);
 		}
@@ -137,7 +125,6 @@ if ($_POST) {
 			config_lock();
 			$retval = system_hostname_configure();
 			$retval |= system_hosts_generate();
-			$retval |= system_resolvconf_generate();
 			$retval |= system_password_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
@@ -157,25 +144,14 @@ if ($_POST) {
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq">Hostname</td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"> 
-                    <br> <span class="vexpl">name of the firewall host, without 
+                    <br> <span class="vexpl">name of the pbx host, without 
                     domain part<br>
-                    e.g. <em>firewall</em></span></td>
+                    e.g. <em>pbx</em></span></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq">Domain</td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"> 
                     <br> <span class="vexpl">e.g. <em>mycorp.com</em> </span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell">DNS servers</td>
-                  <td width="78%" class="vtable">
-                      <input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>">
-                      <br>
-                      <input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>">
-                      <br>
-                      <input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
-                      <br>
-                      <span class="vexpl">IP addresses</span></td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell">Username</td>

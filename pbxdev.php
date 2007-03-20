@@ -382,7 +382,7 @@ function populate_etc($image_name) {
 	global $dirs;
 		
 	_exec("cp -p ". $dirs['files'] ."/etc/* $image_name/etc/");
-	_exec("cp -p ". $dirs['files'] ."/asterisk/* $image_name/usr/local/etc/asterisk/");
+	_exec("cp -p ". $dirs['files'] ."/asterisk/*.conf $image_name/usr/local/etc/asterisk/");
 	_exec("cp -p ". $dirs['etc'] ."/rc* $image_name/etc/");
 	_exec("cp ". $dirs['etc'] ."/pubkey.pem $image_name/etc/");
 	_log("added etc");
@@ -477,7 +477,7 @@ function populate_asterisk($image_name) {
 		
 	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm x queue-* agent-*");
 	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm LICENSE* *.wav fpm-c*.gsm fpm-w*.gsm");
-	_exec("rm -rf $image_name/usr/local/include");	
+	_exec("rm -rf $image_name/usr/local/include");
 }
 
 

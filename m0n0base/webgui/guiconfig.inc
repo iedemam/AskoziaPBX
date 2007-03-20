@@ -43,6 +43,7 @@ require_once("functions.inc");
 
 
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
+$d_sipphonesdirty_path = $g['varrun_path'] . "/sipphones.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
@@ -212,6 +213,17 @@ function staticroutes_sort() {
 	}
 
 	usort($config['staticroutes']['route'], "staticroutecmp");
+}
+
+
+function sipphones_sort() {
+	global $g, $config;
+
+	function sipphonecmp($a, $b) {
+		return strcmp($a['extension'], $b['extension']);
+	}
+
+	usort($config['phones']['sipphone'], "sipphonecmp");	
 }
 
 function dynamic_tab_menu(&$tabs) {

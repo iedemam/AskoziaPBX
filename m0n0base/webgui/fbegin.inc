@@ -99,7 +99,7 @@ if ((!is_array($allowed)) and
 }
 
 /* System */
-$menu['System']['General setup']		= array('system.php');
+$menu['System']['General Setup']		= array('system.php');
 $menu['System']['GUI Options']			= array('system_guioptions.php');
 $menu['System']['Firmware']				= array('system_firmware.php');
 $menu['System']['Backup/Restore'] 		= array('system_backup.php');
@@ -113,11 +113,11 @@ $menu['Interfaces']['Network'] 			= array('interfaces_network.php');
 
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php');
-$menu['Providers']['IAX'] 				= array('providers_iax.php');
+//$menu['Providers']['IAX'] 				= array('providers_iax.php');
 
 /* Phones */
 $menu['Phones']['SIP'] 					= array('phones_sip.php');
-$menu['Phones']['IAX'] 					= array('phones_iax.php');
+//$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
 /* Services */
 $menu['Services']['Dialplan'] 			= array('services_dialplan.php');

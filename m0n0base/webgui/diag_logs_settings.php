@@ -95,9 +95,11 @@ function enable_change(enable_over) {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 <?php 
-   	$tabs = array('System' => 'diag_logs.php',
-           		  'Settings' => 'diag_logs_settings.php');
+	$tabs = array('System' => 'diag_logs.php',
+				  'Asterisk' => 'diag_logs_asterisk.php',
+	       		  'Settings' => 'diag_logs_settings.php');
 	dynamic_tab_menu($tabs);
+	
 ?> 
   </ul>
   </td></tr>

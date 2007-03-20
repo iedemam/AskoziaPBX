@@ -30,6 +30,7 @@
 
 /* include all configuration functions */
 require_once("functions.inc");
+require_once("asterisk_sip.inc");
 
 function asterisk_start() {
 	global $config, $g;
@@ -40,8 +41,10 @@ function asterisk_start() {
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 
 	$astcfg = $config['asterisk'];
-
-	$res = mwexec("/usr/local/sbin/asterisk");
+	
+	$res = 0;
+	$res |= asterisk_sip_conf_generate();
+	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {
 		if ($res == 0)
@@ -51,6 +54,38 @@ function asterisk_start() {
 	}
 
 	return $res;
+}
+
+
+function asterisk_exec($cmd, $output=NULL) {
+
+	$token = md5(uniqid(rand()));
+	$errno = 0;
+	$errstr = 0;
+	$fp = fsockopen("localhost", 5038, &$errno, &$errstr, 20);
+	if (!$fp) {
+	  return 1;
+	}
+	
+	fputs($fp, "Action: login\r\n");
+	fputs($fp, "Username: admin\r\n");
+	fputs($fp, "Secret: askozia\r\n");
+	fputs($fp, "Events: off\r\n\r\n");
+	usleep(500);
+	fputs($fp, "Action: COMMAND\r\n");
+	fputs($fp, "command: $cmd\r\n");
+	fputs($fp, "ActionID: $token\r\n\r\n");
+	usleep(500);
+	$out = fread($fp, 38000); 
+	while(strpos($out,"--END COMMAND--")==0) {
+		$out .= fread($fp, 38000); 	  
+	}
+	fclose ($fp);
+
+	// better command failure checking needed
+	$output = $out;
+
+	return 0;	
 }
 	
 ?>

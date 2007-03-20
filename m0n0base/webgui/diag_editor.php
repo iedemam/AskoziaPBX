@@ -70,7 +70,7 @@ if ($_POST) {
 		<tr> 
 			<td width="22%" class="vncellreq" valign="top">Contents</td>
 			<td width="78%" class="listr">
-                <textarea name="contents" cols="75" rows="21" id="contents" class="notes"><?=file_get_contents($pconfig['file']);?></textarea>
+                <textarea name="contents" cols="80" rows="21" id="contents" class="pre"><?=file_get_contents($pconfig['file']);?></textarea>
 			</td>
 		</tr>
 		<tr>

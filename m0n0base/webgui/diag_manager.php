@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	phones_iax.php
+	diag_editor.php
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,13 +29,12 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Phones", "IAX");
+$pgtitle = array("Diagnostics", "Manager");
 require("guiconfig.inc");
 
 if ($_POST) {
 
-	unset($input_errors);
-	$pconfig = $_POST;
+	 asterisk_exec($_POST['command'], &$output);
 
 }
 
@@ -44,8 +43,23 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="phones_iax.php" method="post">
+<form action="diag_manager.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr> 
+			<td width="22%" valign="top" class="vncellreq">Command</td>
+			<td width="78%" class="vtable"><input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($_POST['command']);?>"></td>
+		</tr>
+		<tr> 
+			<td width="22%" class="vncellreq" valign="top">Output</td>
+			<td width="78%" class="listr">
+                <textarea wrap="nowrap" name="contents" cols="80" rows="21" id="contents" class="pre"><?=$output;?></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"> <input name="execute" type="submit" class="formbtn" value="Execute">
+ 			</td>
+		</tr>
 	</table>
 </form>
 <?php include("fend.inc"); ?>

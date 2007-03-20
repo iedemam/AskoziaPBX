@@ -19,7 +19,7 @@
 			<protocol>http</protocol>
 			<port>10080</port>			
 			<!--
-			<port>10080</port>
+			<port></port>
 			<certificate></certificate>
 			<private-key></private-key>
 			<noassigninterfaces/>
@@ -64,4 +64,18 @@
 		<system/>
 		-->
 	</syslog>
+	<phones>
+		<sipphone>
+			<extension>042</extension>
+			<name>Askozia Test Account</name>
+			<secret>askozia</secret>
+			<descr>A test account</descr>
+		</sipphone>
+		<sipphone>
+			<extension>142</extension>
+			<name>Askozia Test Account #2</name>
+			<secret>askozia</secret>
+			<descr>Another test account</descr>
+		</sipphone>
+	</phones>
 </askoziapbx>
