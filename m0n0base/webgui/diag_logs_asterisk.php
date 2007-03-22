@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	diag_logs_asterisk.php
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.

@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	status_channels.php
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.

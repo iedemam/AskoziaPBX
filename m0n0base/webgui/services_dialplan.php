@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	services_dialplan.php
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
