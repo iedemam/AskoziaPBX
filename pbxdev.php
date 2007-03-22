@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-    pbxdev.php
+    $Id$
     
     Copyright (C) 2007 IKT <http://www.itison-ikt.de> 
     All rights reserved.
