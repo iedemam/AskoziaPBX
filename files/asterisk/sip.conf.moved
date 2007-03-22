@@ -1,3 +1,6 @@
+# $Id$
+# base conf for AskoziaPBX
+
 [general]
 context=default			; Default context for incoming calls
 ;allowguest=no			; Allow or reject guest calls (default is yes)
