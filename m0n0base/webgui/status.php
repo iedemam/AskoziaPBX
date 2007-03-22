@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	$Id: status.php 180 2006-12-23 22:29:48Z mkasper $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Jim McBeath <jimmc@macrovision.com> and Manuel Kasper <mk@neon1.net>.

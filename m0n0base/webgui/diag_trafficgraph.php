@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: status_graph.php 143 2006-06-03 19:08:41Z mkasper $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.

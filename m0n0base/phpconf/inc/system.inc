@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: system.inc 200 2007-03-12 10:03:31Z michael.iedema $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.

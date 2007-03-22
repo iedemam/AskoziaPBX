@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: xmlparse.inc 63 2006-02-08 21:25:46Z ptaylor $
+	$Id$
 	functions to parse/dump configuration files in XML format
 	part of m0n0wall (http://m0n0.ch/wall)
 	

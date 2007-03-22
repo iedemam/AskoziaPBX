@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: util.inc 136 2006-05-16 11:32:05Z jdegraeve $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.

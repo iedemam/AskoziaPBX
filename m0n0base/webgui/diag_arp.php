@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	$Id: diag_arp.php 72 2006-02-10 11:13:01Z jdegraeve $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 
 	Copyright (C) 2005 Paul Taylor (paultaylor@winndixie.com) and Manuel Kasper <mk@neon1.net>.

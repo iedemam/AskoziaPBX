@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: guiconfig.inc 178 2006-12-23 17:51:36Z mkasper $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.

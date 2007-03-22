@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: system_routes_edit.php 72 2006-02-10 11:13:01Z jdegraeve $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.

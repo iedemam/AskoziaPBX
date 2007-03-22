@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: interfaces_assign.php 72 2006-02-10 11:13:01Z jdegraeve $
+	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
 	Written by Jim McBeath based on existing m0n0wall files
 	
