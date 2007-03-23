@@ -1,9 +1,9 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -103,8 +103,15 @@ function asterisk_is_valid_secret($secret) {
 	return true;
 }
 
-function asterisk_extension_exists($extension) {
-	return false;
+function asterisk_get_extensions() {
+	global $config;
+	
+	$extensions = array();
+	if (is_array($config['phones']['sipphone']))
+		foreach($config['phones']['sipphone'] as $phone)
+			$extensions[] = $phone['extension'];
+
+	return $extensions;
 }
 
 function asterisk_get_providers() {

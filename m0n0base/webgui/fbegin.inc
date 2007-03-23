@@ -121,9 +121,9 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 											
 /* Services */
 $menu['Services']['Dialplan'] 			= array('services_dialplan.php');
-$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
-$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
-$menu['Services']['QoS'] 				= array('services_qos.php'); /* jb, packet types */
+//$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
+//$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
+//$menu['Services']['QoS'] 				= array('services_qos.php'); /* jb, packet types */
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
@@ -131,7 +131,7 @@ $menu['Status']['Providers']			= array('status_providers.php');
 $menu['Status']['Phones']				= array('status_phones.php');
 $menu['Status']['Channels']				= array('status_channels.php');
 $menu['Status']['Interfaces']			= array('status_interfaces.php');
-$menu['Status']['Voicemail']			= array('status_voicemail.php');
+//$menu['Status']['Voicemail']			= array('status_voicemail.php');
 
 
 /* Diagnostics */
@@ -143,6 +143,7 @@ $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
 $menu['Diagnostics']['File Editor']		= array('diag_editor.php');
+$menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 
 ?>
 

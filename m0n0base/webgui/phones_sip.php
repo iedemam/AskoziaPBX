@@ -47,8 +47,10 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			// not quite sure what to do here...
 			config_lock();
-			$retval = asterisk_sip_conf_generate();
+			$retval |= asterisk_sip_conf_generate();
 			$retval |= asterisk_sip_reload();
+			$retval |= asterisk_extensions_conf_generate();
+			$retval |= asterisk_extensions_reload();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

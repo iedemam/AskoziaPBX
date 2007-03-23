@@ -66,7 +66,7 @@
 	</syslog>
 	<phones>
 		<sipphone>
-			<extension>42</extension>
+			<extension>4242</extension>
 			<callerid>Askozia Test Account</callerid>
 			<secret>askozia</secret>
 			<descr>A test account</descr>
@@ -80,10 +80,14 @@
 	<providers>
 		<sipprovider>
 			<name>Remote Test Server</name>
-			<secret>askozia</secret>
-			<proxy>sip.askozia.com</proxy>
-			<port>5060</port>
+			<username>210</username>
+	   <!-- <authuser></authuser> -->
+			<secret>tk-labor</secret>
+			<host>141.41.40.232</host>
+			<prefix>275</prefix>
+			<codec>ulaw</codec>
+			<codec>alaw</codec>			
 			<uniqid>4603243cbd344</uniqid>
-		<sipprovider>
+		</sipprovider>
 	</providers>
 </askoziapbx>

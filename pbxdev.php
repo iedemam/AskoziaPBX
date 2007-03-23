@@ -40,7 +40,7 @@ $dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
 
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
-$asterisk_version = "asterisk-1.4.1";
+$asterisk_version = "asterisk-1.4.2";
 
 
 // --[ image sizes ]-----------------------------------------------------------

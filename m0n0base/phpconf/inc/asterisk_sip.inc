@@ -1,9 +1,9 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -47,32 +47,54 @@ EOD;
 }
 
 
-function asterisk_sip_get_allowed_codecs() {
-	
-	$codecs = <<<EOD
-
-disallow=all
-allow=ulaw
-allow=gsm
-
-EOD;
-
-	return $codecs;
-}
-
-
 function asterisk_sip_get_providers() {
+	global $config, $g;
 	
-	$providers = <<<EOD
-
-;register => 1234:password@mysipprovider.com	
-;register => 2345:password@sip_proxy/1234
-;registertimeout=20		; retry registration calls every 20 seconds (default)
-;registerattempts=10		; Number of registration attempts before we give up	
-
-EOD;
+	if (!is_array($config['providers']['sipprovider']))
+		$config['providers']['sipprovider'] = array();
+		
+	$sipproviders = $config['providers']['sipprovider'];
 	
-	return $providers;
+	// register => user[:secret[:authuser]]@host[:port][/extension]
+	foreach($sipproviders as $sp) {
+		$conf .= "register => {$sp['username']}";
+		if($sp['secret']) {
+			$conf .= ":{$sp['secret']}";
+			if($sp['authuser']) {
+				$conf.= ":{$sp['authuser']}";
+			}
+		}
+		$conf .= "@{$sp['host']}";
+		if($sp['port']) {
+			$conf .= ":{$sp['port']}";	
+		}
+		if($sp['extension']) {
+			$conf .= "/{$sp['extension']}";	
+		}
+		$conf .= "\n";
+	}
+
+	foreach($sipproviders as $sp) {
+		$conf .= "[{$sp['uniqid']}]\n";
+		$conf .= "type=peer\n";
+		$conf .= "username={$sp['username']}\n";
+		$conf .= "secret={$sp['secret']}\n";
+		$conf .= "fromuser={$sp['username']}\n";
+		$conf .= "context={$sp['uniqid']}\n";
+		$conf .= "host={$sp['host']}\n";
+		$conf .= "nat=no\n";
+		$conf .= "qualify=yes";
+		$conf .= "canreinvite=no\n";
+		$conf .= "disallow=all\n";
+
+		foreach ($sp['codec'] as $codec) {
+			$conf .= "allow=$codec\n";
+		}
+		
+		$conf .= "\n";
+	}
+
+	return $conf;
 }
 
 
@@ -109,10 +131,17 @@ function asterisk_sip_get_phones() {
 		$conf .= "type=friend\n";
 		$conf .= "secret={$sp['secret']}\n";
 		$conf .= "context=default\n";
-		$conf .= "callerid=\"{$sp['name']}\" <{$sp['extension']}>\n";
+		$conf .= "callerid=\"{$sp['callerid']}\" <{$sp['extension']}>\n";
 		$conf .= "host=dynamic\n";
-		$conf .= "nat=no\n";
+		$conf .= "nat=yes\n";
+		$conf .= "qualify=yes";
 		$conf .= "canreinvite=yes\n";
+		$conf .= "disallow=all\n";
+
+		foreach ($sp['codec'] as $codec) {
+			$conf .= "allow=$codec\n";
+		}
+		
 		$conf .= "\n";
 	}
 
@@ -130,9 +159,8 @@ function asterisk_sip_conf_generate() {
 	}
 
 	$sipconf = asterisk_sip_get_settings();
-	$sipconf .= asterisk_sip_get_allowed_codecs();
-	$sipconf .= asterisk_sip_get_providers();
 	$sipconf .= asterisk_sip_get_nat_config();
+	$sipconf .= asterisk_sip_get_providers();
 	$sipconf .= asterisk_sip_get_phones();
 
 	fwrite($fd, $sipconf);

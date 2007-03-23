@@ -80,7 +80,7 @@ if ($_POST) {
 	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
-	if (asterisk_extension_exists($_POST['extension'])) {
+	if (in_array($_POST['extension'], asterisk_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
 
@@ -102,11 +102,13 @@ if ($_POST) {
 				$sp['codec'][] = $codec;
 
 
-		if (isset($id) && $a_sipphones[$id])
-			$sp['uniqid'] = uniqid();
+		if (isset($id) && $a_sipphones[$id]) {
+			$sp['uniqid'] = $a_sipphones[$id]['uniqid'];
 			$a_sipphones[$id] = $sp;
-		else
-			$a_sipphones[] = $sp;		
+		 } else {
+			$sp['uniqid'] = uniqid(rand());
+			$a_sipphones[] = $sp;
+		}
 		
 		touch($d_sipphonesdirty_path);
 		
@@ -147,7 +149,7 @@ function typesel_change() {
                   <td width="22%" valign="top" class="vncell">Providers</td>
                   <td width="78%" class="vtable">
 				  <? foreach ($a_providers as $provider): ?>
-					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid'?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['provider'][$provider]) echo "checked"; ?>><?=$provider['name']?><br>
+					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($provider['uniqid'], $pconfig['provider'])) echo "checked"; ?>><?=$provider['name']?><br>
 				  <? endforeach; ?>
 				  </td>
 				</tr>
@@ -155,7 +157,7 @@ function typesel_change() {
                   <td width="22%" valign="top" class="vncell">Codecs</td>
                   <td width="78%" class="vtable">
 				  <? foreach ($codecs as $codec=>$friendly): ?>
-					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['codec'][$codec]) echo "checked"; ?>><?=$friendly?><br>
+					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
 				  <? endforeach; ?>
 				</tr>
                 <tr> 

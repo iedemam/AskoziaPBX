@@ -88,18 +88,18 @@ $fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'generic-pc-smp', 'wr
 2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
 
 $codecs = array(
-	"g723" => "G.723.1";
-	"gsm" => "GSM";
-	"ulaw" => "G.711 u-law";
-	"alaw" => "G.711 A-law";
-	"g726aal2" => "G.726 AAL2";
-	"adpcm" => "ADPCM";
-	"slin" => "16 bit Signed Linear PCM";
-	"lpc10" => "LPC10";
-	"g729" => "G.729A";
-	"speex" => "SpeeX";
-	"ilbc" => "iLBC";
-	"g726" => "G.726 RFC3551";
+	"g723" => "G.723.1",
+	"gsm" => "GSM",
+	"ulaw" => "G.711 u-law",
+	"alaw" => "G.711 A-law",
+	"g726aal2" => "G.726 AAL2",
+	"adpcm" => "ADPCM",
+	"slin" => "16 bit Signed Linear PCM",
+	"lpc10" => "LPC10",
+	"g729" => "G.729A",
+	"speex" => "SpeeX",
+	"ilbc" => "iLBC",
+	"g726" => "G.726 RFC3551",
 	"g722" => "G722"
 );
 
