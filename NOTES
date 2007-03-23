@@ -29,6 +29,8 @@ access can be given to existing phones/providers while creating a new provider/p
 
 codecs are selectable on provider and phone pages with order being handled by drag and drop
 
+if providers are changed, extensions needs to be regenerated
+
 --------------------------------------------------------------------------
 
 System
