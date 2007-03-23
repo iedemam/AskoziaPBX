@@ -91,7 +91,7 @@ function asterisk_sip_get_providers() {
 			$conf .= "allow=$codec\n";
 		}
 		
-		$conf .= "\n";
+		$conf .= "\n\n";
 	}
 
 	return $conf;
@@ -111,6 +111,7 @@ function asterisk_sip_get_nat_config() {
 ;localnet=172.16.0.0/12		; Another RFC1918 with CIDR notation
 ;localnet=169.254.0.0/255.255.0.0 ;Zero conf local network
 ;nat=no				; Global NAT settings  (Affects all peers and users)
+
 
 EOD;
 
@@ -134,7 +135,7 @@ function asterisk_sip_get_phones() {
 		$conf .= "callerid=\"{$sp['callerid']}\" <{$sp['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		$conf .= "nat=yes\n";
-		$conf .= "qualify=yes";
+		$conf .= "qualify=yes\n";
 		$conf .= "canreinvite=yes\n";
 		$conf .= "disallow=all\n";
 
@@ -142,7 +143,7 @@ function asterisk_sip_get_phones() {
 			$conf .= "allow=$codec\n";
 		}
 		
-		$conf .= "\n";
+		$conf .= "\n\n";
 	}
 
 	return $conf;

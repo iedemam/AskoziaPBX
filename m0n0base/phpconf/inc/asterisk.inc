@@ -31,6 +31,7 @@
 /* include all configuration functions */
 require_once("functions.inc");
 require_once("asterisk_sip.inc");
+require_once("asterisk_extensions.inc");
 
 function asterisk_start() {
 	global $config, $g;
@@ -103,6 +104,18 @@ function asterisk_is_valid_secret($secret) {
 	return true;
 }
 
+function asterisk_is_valid_username($username) {
+	return true;
+}
+
+function asterisk_is_valid_host($host) {
+	return true;
+}
+
+function asterisk_is_valid_prefix($prefix) {
+	return true;
+}
+
 function asterisk_get_extensions() {
 	global $config;
 	
@@ -121,6 +134,17 @@ function asterisk_get_providers() {
 		$config['providers']['sipprovider'] = array();
 		
 	return array_merge($config['providers']['sipprovider']);
+}
+
+function asterisk_get_prefixes() {
+	global $config;
+	
+	$prefixes = array();
+	if (is_array($config['providers']['sipprovider']))
+		foreach($config['providers']['sipprovider'] as $provider)
+			$prefixes[] = $provider['prefix'];
+
+	return $prefixes;	
 }
 
 

@@ -30,7 +30,7 @@
 */
 
 
-$pgtitle = array("Phones", "SIP", "Edit Accounts");
+$pgtitle = array("Phones", "SIP", "Edit Account");
 require("guiconfig.inc");
 
 /* grab and sort the sip phones in our config */
@@ -128,17 +128,17 @@ function typesel_change() {
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td valign="top" class="vncellreq">Extension</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="extension" type="text" class="formfld" id="name" size="40" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+                  <td class="vtable"><?=$mandfldhtml;?><input name="extension" type="text" class="formfld" id="extension" size="20" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
                     <br> <span class="vexpl">Four digits.</span></td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncellreq">Caller ID</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="callerid" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
+                  <td class="vtable"><?=$mandfldhtml;?><input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
                     <br> <span class="vexpl">Text to be displayed for Caller ID.</span></td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncellreq">Secret</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="secret" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
+                  <td class="vtable"><?=$mandfldhtml;?><input name="secret" type="text" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
                     <br> <span class="vexpl">Secrets may not contain '#' or ';'</span></td>
                 </tr>
 				<tr> 

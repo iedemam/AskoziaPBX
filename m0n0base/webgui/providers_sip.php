@@ -83,30 +83,26 @@ if ($_GET['act'] == "del") {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="15%" class="listhdrr">Prefix</td>
-		<td width="35%" class="listhdrr">Username</td>
-		<td width="40%" class="listhdr">Proxy</td>
+		<td width="10%" class="listhdrr">Prefix</td>
+		<td width="30%" class="listhdrr">Name</td>		
+		<td width="25%" class="listhdrr">Username</td>
+		<td width="25%" class="listhdr">Host</td>
 		<td width="10%" class="list"></td>
 	</tr>
 
 	<?php $i = 0; foreach ($a_sipproviders as $sp): ?>
 	<tr>
-		<td class="listlr">
-			<?=htmlspecialchars($sp['prefix']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars($sp['username']);?>
-		</td>
-		<td class="listbg">
-			<?=htmlspecialchars($sp['host']);?>&nbsp;
-		</td>
+		<td class="listlr"><?=htmlspecialchars($sp['prefix']);?></td>
+		<td class="listbg"><?=htmlspecialchars($sp['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($sp['username']);?></td>
+		<td class="listr"><?=htmlspecialchars($sp['host']);?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"> <a href="providers_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
            &nbsp;<a href="providers_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP provider?"><img src="x.gif" title="delete SIP provider" width="17" height="17" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
+		<td class="list" colspan="4"></td>
 		<td class="list"> <a href="providers_sip_edit.php"><img src="plus.gif" title="add SIP provider" width="17" height="17" border="0"></a></td>
 	</tr>
 </table>

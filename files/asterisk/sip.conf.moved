@@ -1,5 +1,5 @@
-# $Id$
-# base conf for AskoziaPBX
+; $Id$
+; base conf for AskoziaPBX
 
 [general]
 context=default			; Default context for incoming calls

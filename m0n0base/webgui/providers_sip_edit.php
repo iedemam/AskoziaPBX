@@ -29,16 +29,14 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Phones", "SIP", "Edit Accounts");
+$pgtitle = array("Providers", "SIP", "Edit Account");
 require("guiconfig.inc");
 
-/* grab and sort the sip phones in our config */
-if (!is_array($config['phones']['sipphone']))
-	$config['phones']['sipphone'] = array();
+if (!is_array($config['providers']['sipprovider']))
+	$config['providers']['sipprovider'] = array();
 
-asterisk_sip_sort_phones();
-$a_sipphones = &$config['phones']['sipphone'];
-$a_providers = asterisk_get_providers();
+asterisk_sip_sort_providers();
+$a_sipproviders = &$config['providers']['sipprovider'];
 
 
 $id = $_GET['id'];
@@ -46,13 +44,16 @@ if (isset($_POST['id']))
 	$id = $_POST['id'];
 
 /* pull current config into pconfig */
-if (isset($id) && $a_sipphones[$id]) {
-	$pconfig['extension'] = $a_sipphones[$id]['extension'];
-	$pconfig['callerid'] = $a_sipphones[$id]['callerid'];
-	$pconfig['secret'] = $a_sipphones[$id]['secret'];
-	$pconfig['provider'] = $a_sipphones[$id]['provider'];
-	$pconfig['codec'] = $a_sipphones[$id]['codec'];
-	$pconfig['descr'] = $a_sipphones[$id]['descr'];
+if (isset($id) && $a_sipproviders[$id]) {
+	$pconfig['name'] = $a_sipproviders[$id]['name'];
+	$pconfig['username'] = $a_sipproviders[$id]['username'];
+	$pconfig['authuser'] = $a_sipproviders[$id]['authuser'];
+	$pconfig['secret'] = $a_sipproviders[$id]['secret'];
+	$pconfig['host'] = $a_sipproviders[$id]['host'];
+	$pconfig['port'] = $a_sipproviders[$id]['port'];
+	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
+	$pconfig['codec'] = $a_sipproviders[$id]['codec'];
+	
 }
 
 if ($_POST) {
@@ -61,35 +62,36 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "extension callerid secret");
-	$reqdfieldsn = explode(",", "Extension,Caller ID,Secret");
+	$reqdfields = explode(" ", "name username host prefix");
+	$reqdfieldsn = explode(",", "Name,Username,Host,Prefix");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['extension'] && !asterisk_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = "An extension must be four digit number.";
-	}
-	if (($_POST['callerid'] && !asterisk_is_valid_callerid($_POST['callerid']))) {
-		$input_errors[] = "A valid Caller ID must be specified.";
+	if (($_POST['username'] && !asterisk_is_valid_username($_POST['username']))) {
+		$input_errors[] = "A valid username must be specified.";
 	}
 	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
-	if (in_array($_POST['extension'], asterisk_get_extensions())) {
-		$input_errors[] = "A phone with this extension already exists.";
+	if (($_POST['host'] && !asterisk_is_valid_host($_POST['host']))) {
+		$input_errors[] = "A valid host must be specified.";
 	}
+	if (!isset($id) && in_array($_POST['prefix'], asterisk_get_prefixes())) {
+		$input_errors[] = "A provider with this prefix already exists.";
+	} else if (!asterisk_is_valid_prefix($_POST['prefix'])) {
+		$input_errors[] = "A valid prefix must be specified.";
+	}
+	// TODO: more checking on optional fields
 
 	if (!$input_errors) {
-		$sp = array();
-		$sp['extension'] = $_POST['extension'];
-		$sp['callerid'] = $_POST['callerid'];
+		$sp = array();		
+		$sp['name'] = $_POST['name'];
+		$sp['username'] = $_POST['username'];
+		$sp['authuser'] = $_POST['authuser'];
 		$sp['secret'] = $_POST['secret'];
-		$sp['descr'] = $_POST['descr'];
-
-		$sp['provider'] = array();
-		foreach ($a_providers as $provider)
-			if($_POST[$provider['uniqid']] == true)
-				$sp['provider'][] = $provider['uniqid'];
+		$sp['host'] = $_POST['host'];
+		$sp['port'] = $_POST['port'];
+		$sp['prefix'] = $_POST['prefix'];
 		
 		$sp['codec'] = array();
 		foreach ($codecs as $codec=>$friendly)
@@ -97,19 +99,19 @@ if ($_POST) {
 				$sp['codec'][] = $codec;
 
 
-		if (isset($id) && $a_sipphones[$id]) {
-			$sp['uniqid'] = $a_sipphones[$id]['uniqid'];
-			$a_sipphones[$id] = $sp;
+		if (isset($id) && $a_sipproviders[$id]) {
+			$sp['uniqid'] = $a_sipproviders[$id]['uniqid'];
+			$a_sipproviders[$id] = $sp;
 		 } else {
 			$sp['uniqid'] = uniqid(rand());
-			$a_sipphones[] = $sp;
+			$a_sipproviders[] = $sp;
 		}
 		
 		touch($d_sipconfdirty_path);
 		
 		write_config();
 		
-		header("Location: phones_sip.php");
+		header("Location: providers_sip.php");
 		exit;
 	}
 }
@@ -123,31 +125,43 @@ function typesel_change() {
 //-->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="phones_sip_edit.php" method="post" name="iform" id="iform">
+            <form action="providers_sip_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td valign="top" class="vncellreq">Extension</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="extension" type="text" class="formfld" id="name" size="40" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-                    <br> <span class="vexpl">Four digits.</span></td>
+                  <td valign="top" class="vncellreq">Name</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+                    <br> <span class="vexpl">Descriptive name of this provider.</span></td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncellreq">Caller ID</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="callerid" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
-                    <br> <span class="vexpl">Text to be displayed for Caller ID.</span></td>
+                  <td valign="top" class="vncellreq">Prefix</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="prefix" type="text" class="formfld" id="prefix" size="40" value="<?=htmlspecialchars($pconfig['prefix']);?>"> 
+                    <br> <span class="vexpl">Dialing prefix to access this provider (pattern matching notes here).</span></td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncellreq">Secret</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="secret" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                    <br> <span class="vexpl">Secrets may not contain '#' or ';'</span></td>
+                  <td valign="top" class="vncellreq">Username</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>"> 
+                    <br> <span class="vexpl">Username</span></td>
                 </tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell">Providers</td>
-                  <td width="78%" class="vtable">
-				  <? foreach ($a_providers as $provider): ?>
-					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($provider['uniqid'], $pconfig['provider'])) echo "checked"; ?>><?=$provider['name']?><br>
-				  <? endforeach; ?>
-				  </td>
-				</tr>
+                <tr> 
+                  <td valign="top" class="vncell">Authuser</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="authuser" type="text" class="formfld" id="authuser" size="40" value="<?=htmlspecialchars($pconfig['authuser']);?>"> 
+                    <br> <span class="vexpl">Some providers require a seperate authorization name.</span></td>
+                </tr>
+                <tr> 
+                  <td valign="top" class="vncell">Secret</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="secret" type="text" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
+                    <br> <span class="vexpl">Secrets may not contain a '#' or ';'.</span></td>
+                </tr>
+                <tr> 
+                  <td valign="top" class="vncellreq">Host</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>"> 
+                    <br> <span class="vexpl">SIP proxy host URL or IP address.</span></td>
+                </tr>
+                <tr> 
+                  <td valign="top" class="vncell">Port</td>
+                  <td class="vtable"><?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+                    <br> <span class="vexpl">defaults to 5060</span></td>
+                </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncell">Codecs</td>
                   <td width="78%" class="vtable">
@@ -156,15 +170,9 @@ function typesel_change() {
 				  <? endforeach; ?>
 				</tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Description</td>
-                  <td width="78%" class="vtable"> <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
-                    <br> <span class="vexpl">You may enter a description here 
-                    for your reference (not parsed).</span></td>
-                </tr>
-                <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 
-                    <?php if (isset($id) && $a_sipphones[$id]): ?>
+                    <?php if (isset($id) && $a_sipproviders[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>
                   </td>

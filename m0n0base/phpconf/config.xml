@@ -84,10 +84,12 @@
 	   <!-- <authuser></authuser> -->
 			<secret>tk-labor</secret>
 			<host>141.41.40.232</host>
+	   <!-- <port></port> -->
 			<prefix>275</prefix>
 			<codec>ulaw</codec>
 			<codec>alaw</codec>			
 			<uniqid>4603243cbd344</uniqid>
+	   <!-- <disabled/> -->			
 		</sipprovider>
 	</providers>
 </askoziapbx>
