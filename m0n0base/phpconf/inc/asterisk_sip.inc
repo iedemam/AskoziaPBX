@@ -80,7 +80,7 @@ function asterisk_sip_get_providers() {
 		$conf .= "username={$sp['username']}\n";
 		$conf .= "secret={$sp['secret']}\n";
 		$conf .= "fromuser={$sp['username']}\n";
-		$conf .= "context={$sp['uniqid']}\n";
+		$conf .= "context=sipprovider-{$sp['uniqid']}\n";
 		$conf .= "host={$sp['host']}\n";
 		$conf .= "nat=no\n";
 		$conf .= "qualify=yes";
@@ -130,7 +130,7 @@ function asterisk_sip_get_phones() {
 		$conf .= "[{$sp['extension']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "secret={$sp['secret']}\n";
-		$conf .= "context=default\n";
+		$conf .= "context=sipphone-{$sp['uniqid']}\n";
 		$conf .= "callerid=\"{$sp['callerid']}\" <{$sp['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		$conf .= "nat=yes\n";
@@ -185,6 +185,17 @@ function asterisk_sip_sort_phones() {
 	}
 
 	usort($config['phones']['sipphone'], "sipphonecmp");	
+}
+
+
+function asterisk_sip_sort_providers() {
+	global $g, $config;
+
+	function sipprovidercmp($a, $b) {
+		return strcmp($a['prefix'], $b['prefix']);
+	}
+
+	usort($config['providers']['sipprovider'], "sipprovidercmp");	
 }
 
 ?>

@@ -55,8 +55,8 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_sipphonesdirty_path))
-				unlink($d_sipphonesdirty_path);
+			if (file_exists($d_sipconfdirty_path))
+				unlink($d_sipconfdirty_path);
 		}
 	}
 }
@@ -65,7 +65,7 @@ if ($_GET['act'] == "del") {
 	if ($a_sipphones[$_GET['id']]) {
 		unset($a_sipphones[$_GET['id']]);
 		write_config();
-		touch($d_sipphonesdirty_path);
+		touch($d_sipconfdirty_path);
 		header("Location: phones_sip.php");
 		exit;
 	}
@@ -76,7 +76,7 @@ if ($_GET['act'] == "del") {
 <?php include("fbegin.inc"); ?>
 <form action="phones_sip.php" method="post">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if (file_exists($d_sipphonesdirty_path)): ?><p>
+<?php if (file_exists($d_sipconfdirty_path)): ?><p>
 <?php print_info_box_np("The SIP phones list has been changed.<br>You must apply the changes in order for them to take effect.");?><br>
 <input name="apply" type="submit" class="formbtn" id="apply" value="Apply changes"></p>
 <?php endif; ?>

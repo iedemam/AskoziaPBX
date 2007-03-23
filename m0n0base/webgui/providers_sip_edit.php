@@ -29,7 +29,6 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 $pgtitle = array("Phones", "SIP", "Edit Accounts");
 require("guiconfig.inc");
 
@@ -68,7 +67,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !asterisk_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = "An extension must be a four digit number.";
+		$input_errors[] = "An extension must be four digit number.";
 	}
 	if (($_POST['callerid'] && !asterisk_is_valid_callerid($_POST['callerid']))) {
 		$input_errors[] = "A valid Caller ID must be specified.";
@@ -76,7 +75,7 @@ if ($_POST) {
 	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
-	if (!isset($id) && in_array($_POST['extension'], asterisk_get_extensions())) {
+	if (in_array($_POST['extension'], asterisk_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
 
