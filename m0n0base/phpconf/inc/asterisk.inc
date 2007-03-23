@@ -45,6 +45,7 @@ function asterisk_start() {
 	
 	$res = 0;
 	$res |= asterisk_sip_conf_generate();
+	$res |= asterisk_extensions_conf_generate();
 	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {

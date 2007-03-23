@@ -28,25 +28,6 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-function asterisk_sip_get_settings() {
-	global $config;
-	
-	$sipsettings = <<<EOD
-
-[general]
-context=default
-allowoverlap=no
-bindport=5060
-bindaddr=0.0.0.0
-srvlookup=yes
-useragent=AskoziaPBX
-
-EOD;
-
-	return $sipsettings;
-}
-
-
 function asterisk_sip_get_providers() {
 	global $config, $g;
 	
@@ -80,10 +61,10 @@ function asterisk_sip_get_providers() {
 		$conf .= "username={$sp['username']}\n";
 		$conf .= "secret={$sp['secret']}\n";
 		$conf .= "fromuser={$sp['username']}\n";
-		$conf .= "context=sipprovider-{$sp['uniqid']}\n";
+		$conf .= "context={$sp['uniqid']}\n";
 		$conf .= "host={$sp['host']}\n";
 		$conf .= "nat=no\n";
-		$conf .= "qualify=yes";
+		$conf .= "qualify=yes\n";
 		$conf .= "canreinvite=no\n";
 		$conf .= "disallow=all\n";
 
@@ -100,7 +81,7 @@ function asterisk_sip_get_providers() {
 
 function asterisk_sip_get_nat_config() {
 	
-	$natconfig = <<<EOD
+	$conf = <<<EOD
 	
 ;----------------------------------------- NAT SUPPORT ------------------------
 ;externip = 200.201.202.203	; Address that we're going to put in outbound SIP
@@ -115,7 +96,7 @@ function asterisk_sip_get_nat_config() {
 
 EOD;
 
-	return $natconfig;
+	return $conf;
 }
 
 
@@ -131,7 +112,7 @@ function asterisk_sip_get_phones() {
 		$conf .= "[{$sp['extension']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "secret={$sp['secret']}\n";
-		$conf .= "context=sipphone-{$sp['uniqid']}\n";
+		$conf .= "context={$sp['uniqid']}\n";
 		$conf .= "callerid=\"{$sp['callerid']}\" <{$sp['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		$conf .= "nat=yes\n";
@@ -155,16 +136,27 @@ function asterisk_sip_conf_generate() {
 	
 	$fd = fopen("/usr/local/etc/asterisk/sip.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open sip.conf in asterisk_write_sip_conf().\n");
+		printf("Error: cannot open sip.conf in asterisk_sip_conf_generate().\n");
 		return 1;
 	}
 
-	$sipconf = asterisk_sip_get_settings();
-	$sipconf .= asterisk_sip_get_nat_config();
-	$sipconf .= asterisk_sip_get_providers();
-	$sipconf .= asterisk_sip_get_phones();
+	$conf = <<<EOD
+	
+[general]
+context=default
+allowoverlap=no
+bindport=5060
+bindaddr=0.0.0.0
+srvlookup=yes
+useragent=AskoziaPBX
+		
+EOD;
 
-	fwrite($fd, $sipconf);
+	$conf .= asterisk_sip_get_nat_config();
+	$conf .= asterisk_sip_get_providers();
+	$conf .= asterisk_sip_get_phones();
+
+	fwrite($fd, $conf);
 	fclose($fd);
 	
 	return 0;

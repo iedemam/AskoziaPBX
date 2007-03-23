@@ -30,10 +30,85 @@
 
 
 function asterisk_extensions_conf_generate() {
+	global $config, $g;
+	
+	$fd = fopen("/usr/local/etc/asterisk/extensions.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open extensions.conf in asterisk_extensions_conf_generate().\n");
+		return 1;
+	}
+	
+	$conf = <<<EOD
+
+[test]
+exten => 512,1,Answer()
+exten => 512,2,Echo()
+exten => 512,3,Hangup()	
+
+[macro-internal]
+exten => s,1,Dial($\{ARG2}30)
+
+[internal]
+include => test
+exten => _XXXX,1,Macro(internal|$\{EXTEN}|SIP/$\{EXTEN})
+
+EOD;
+
+	$conf .= asterisk_extensions_get_sip_providers();
+	$conf .= asterisk_extensions_get_sip_phones();
+
+	fwrite($fd, $conf);
+	fclose($fd);
+	
 	return 0;
 }
 
 
+function asterisk_extensions_get_sip_phones() {
+	global $config;
+	
+	if (!is_array($config['providers']['sipprovider']))
+		$config['providers']['sipprovider'] = array();
+
+	$a_sipproviders = &$config['providers']['sipprovider'];
+	
+	if (!is_array($config['phones']['sipphone']))
+		$config['phones']['sipphone'] = array();
+
+	$a_sipphones = &$config['phones']['sipphone'];
+
+	foreach ($a_sipphones as $sp) {
+		$conf .= "[{$sp['uniqid']}]\n";
+		$conf .= "include => internal\n";
+		foreach ($sp['provider'] as $provider) {
+			$conf .= "include => $provider\n";
+		}
+	}
+	
+	return $conf;
+}
+
+
+function asterisk_extensions_get_sip_providers() {
+	global $config;
+	
+	if (!is_array($config['providers']['sipprovider']))
+		$config['providers']['sipprovider'] = array();
+
+	$a_sipproviders = &$config['providers']['sipprovider'];
+
+	foreach ($a_sipproviders as $sp) {
+		$conf .= "[{$sp['uniqid']}]\n";
+		$conf .= "exten => _{$sp['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($sp['prefix']) ."}@{$sp['uniqid']},30)\n";
+		$conf .= "\n\n";
+	}
+	
+	return $conf;
+}
+
+
 function asterisk_extensions_reload() {
-	return 0;
+	
+	asterisk_exec("dialplan reload");
+
 }
