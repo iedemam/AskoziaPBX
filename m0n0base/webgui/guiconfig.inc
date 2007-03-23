@@ -67,6 +67,43 @@ $medias = array("auto" => "autoselect", "100full" => "100BASE-TX full-duplex",
 $fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'generic-pc-smp', 'wrap');
 
 
+/*     1 (1 <<  0)      (0x1)  audio       g723   (G.723.1)
+      2 (1 <<  1)      (0x2)  audio        gsm   (GSM)
+      4 (1 <<  2)      (0x4)  audio       ulaw   (G.711 u-law)
+      8 (1 <<  3)      (0x8)  audio       alaw   (G.711 A-law)
+     16 (1 <<  4)     (0x10)  audio   g726aal2   (G.726 AAL2)
+     32 (1 <<  5)     (0x20)  audio      adpcm   (ADPCM)
+     64 (1 <<  6)     (0x40)  audio       slin   (16 bit Signed Linear PCM)
+    128 (1 <<  7)     (0x80)  audio      lpc10   (LPC10)
+    256 (1 <<  8)    (0x100)  audio       g729   (G.729A)
+    512 (1 <<  9)    (0x200)  audio      speex   (SpeeX)
+   1024 (1 << 10)    (0x400)  audio       ilbc   (iLBC)
+   2048 (1 << 11)    (0x800)  audio       g726   (G.726 RFC3551)
+   4096 (1 << 12)   (0x1000)  audio       g722   (G722)
+  65536 (1 << 16)  (0x10000)  image       jpeg   (JPEG image)
+ 131072 (1 << 17)  (0x20000)  image        png   (PNG image)
+ 262144 (1 << 18)  (0x40000)  video       h261   (H.261 Video)
+ 524288 (1 << 19)  (0x80000)  video       h263   (H.263 Video)
+1048576 (1 << 20) (0x100000)  video      h263p   (H.263+ Video)
+2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
+
+$codecs = array(
+	"g723" => "G.723.1";
+	"gsm" => "GSM";
+	"ulaw" => "G.711 u-law";
+	"alaw" => "G.711 A-law";
+	"g726aal2" => "G.726 AAL2";
+	"adpcm" => "ADPCM";
+	"slin" => "16 bit Signed Linear PCM";
+	"lpc10" => "LPC10";
+	"g729" => "G.729A";
+	"speex" => "SpeeX";
+	"ilbc" => "iLBC";
+	"g726" => "G.726 RFC3551";
+	"g722" => "G722"
+);
+
+
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	
 	/* check for bad control characters */	
@@ -215,16 +252,6 @@ function staticroutes_sort() {
 	usort($config['staticroutes']['route'], "staticroutecmp");
 }
 
-
-function sipphones_sort() {
-	global $g, $config;
-
-	function sipphonecmp($a, $b) {
-		return strcmp($a['extension'], $b['extension']);
-	}
-
-	usort($config['phones']['sipphone'], "sipphonecmp");	
-}
 
 function dynamic_tab_menu(&$tabs) {
 	global $allowed, $config;

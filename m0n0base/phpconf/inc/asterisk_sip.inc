@@ -148,4 +148,15 @@ function asterisk_sip_reload() {
 	
 }
 
+
+function asterisk_sip_sort_phones() {
+	global $g, $config;
+
+	function sipphonecmp($a, $b) {
+		return strcmp($a['extension'], $b['extension']);
+	}
+
+	usort($config['phones']['sipphone'], "sipphonecmp");	
+}
+
 ?>

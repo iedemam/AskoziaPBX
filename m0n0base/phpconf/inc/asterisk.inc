@@ -87,5 +87,35 @@ function asterisk_exec($cmd, $output=NULL) {
 
 	return 0;	
 }
+
+
+function asterisk_is_valid_extension($extension) {
+	return true;
+}
+
+
+function asterisk_is_valid_callerid($id) {
+	return true;
+}
+
+
+function asterisk_is_valid_secret($secret) {
+	return true;
+}
+
+function asterisk_extension_exists($extension) {
+	return false;
+}
+
+function asterisk_get_providers() {
+	global $config;
+	
+	if (!is_array($config['providers']['sipprovider']))
+		$config['providers']['sipprovider'] = array();
+		
+	return array_merge($config['providers']['sipprovider']);
+}
+
+
 	
 ?>

@@ -35,7 +35,7 @@ require("guiconfig.inc");
 if (!is_array($config['phones']['sipphone']))
 	$config['phones']['sipphone'] = array();
 
-sipphones_sort();
+asterisk_sip_sort_phones();
 $a_sipphones = &$config['phones']['sipphone'];
 
 if ($_POST) {
@@ -82,7 +82,7 @@ if ($_GET['act'] == "del") {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
-		<td width="35%" class="listhdrr">Name</td>
+		<td width="35%" class="listhdrr">Caller ID</td>
 		<td width="40%" class="listhdr">Description</td>
 		<td width="10%" class="list"></td>
 	</tr>
@@ -93,7 +93,7 @@ if ($_GET['act'] == "del") {
 			<?=htmlspecialchars($sipphone['extension']);?>
 		</td>
 		<td class="listr">
-			<?=htmlspecialchars($sipphone['name']);?>
+			<?=htmlspecialchars($sipphone['callerid']);?>
 		</td>
 		<td class="listbg">
 			<?=htmlspecialchars($sipphone['descr']);?>&nbsp;

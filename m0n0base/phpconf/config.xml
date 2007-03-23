@@ -66,16 +66,24 @@
 	</syslog>
 	<phones>
 		<sipphone>
-			<extension>042</extension>
-			<name>Askozia Test Account</name>
+			<extension>42</extension>
+			<callerid>Askozia Test Account</callerid>
 			<secret>askozia</secret>
 			<descr>A test account</descr>
-		</sipphone>
-		<sipphone>
-			<extension>142</extension>
-			<name>Askozia Test Account #2</name>
-			<secret>askozia</secret>
-			<descr>Another test account</descr>
+			<provider>4603243cbd344</provider>
+			<codec>ulaw</codec>
+			<codec>gsm</codec>
+			<uniqid>4603243d4952b</uniqid>
+	   <!-- <disabled/> -->
 		</sipphone>
 	</phones>
+	<providers>
+		<sipprovider>
+			<name>Remote Test Server</name>
+			<secret>askozia</secret>
+			<proxy>sip.askozia.com</proxy>
+			<port>5060</port>
+			<uniqid>4603243cbd344</uniqid>
+		<sipprovider>
+	</providers>
 </askoziapbx>

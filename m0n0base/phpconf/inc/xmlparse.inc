@@ -32,7 +32,8 @@
 /* tags that are always to be handled as lists */
 $listtags = explode(" ", "rule user group key dnsserver winsserver pages " .
 	"staticmap route alias shellcmd cacert earlyshellcmd mobilekey " .
-	"servernat allowedip domainoverrides element sipphone");
+	"servernat allowedip domainoverrides element ".
+	"sipphone sipprovider codec provider");
 
 
 function startElement($parser, $name, $attrs) {
