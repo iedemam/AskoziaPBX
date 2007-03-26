@@ -79,6 +79,9 @@ if ($_POST) {
 	if (!isset($id) && in_array($_POST['extension'], asterisk_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
+	if (($_POST['port'] && !is_port($_POST['port']))) {
+		$input_errors[] = "A valid port must be specified.";
+	}	
 
 	if (!$input_errors) {
 		$sp = array();
@@ -93,16 +96,19 @@ if ($_POST) {
 				$sp['provider'][] = $provider['uniqid'];
 		
 		$sp['codec'] = array();
-		foreach ($codecs as $codec=>$friendly)
+		foreach ($audio_codecs as $codec=>$friendly)
 			if($_POST[$codec] == true)
 				$sp['codec'][] = $codec;
 
+		foreach ($video_codecs as $codec=>$friendly)
+			if($_POST[$codec] == true)
+				$sp['codec'][] = $codec;
 
 		if (isset($id) && $a_sipphones[$id]) {
 			$sp['uniqid'] = $a_sipphones[$id]['uniqid'];
 			$a_sipphones[$id] = $sp;
 		 } else {
-			$sp['uniqid'] = uniqid(rand());
+			$sp['uniqid'] = "SIP-PHONE-" . uniqid(rand());
 			$a_sipphones[] = $sp;
 		}
 		
@@ -150,9 +156,16 @@ function typesel_change() {
 				  </td>
 				</tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Codecs</td>
+                  <td width="22%" valign="top" class="vncell">Audio Codecs</td>
                   <td width="78%" class="vtable">
-				  <? foreach ($codecs as $codec=>$friendly): ?>
+				  <? foreach ($audio_codecs as $codec=>$friendly): ?>
+					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
+				  <? endforeach; ?>
+				</tr>
+                <tr> 
+                  <td width="22%" valign="top" class="vncell">Video Codecs</td>
+                  <td width="78%" class="vtable">
+				  <? foreach ($video_codecs as $codec=>$friendly): ?>
 					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
 				  <? endforeach; ?>
 				</tr>

@@ -30,8 +30,7 @@
 
 /* include all configuration functions */
 require_once("functions.inc");
-require_once("asterisk_sip.inc");
-require_once("asterisk_extensions.inc");
+
 
 function asterisk_start() {
 	global $config, $g;
@@ -40,8 +39,6 @@ function asterisk_start() {
 		echo "Starting Asterisk... ";
 	else
 		killbypid("{$g['varrun_path']}/asterisk.pid");
-
-	$astcfg = $config['asterisk'];
 	
 	$res = 0;
 	$res |= asterisk_sip_conf_generate();
@@ -109,45 +106,45 @@ function asterisk_is_valid_username($username) {
 	return true;
 }
 
-function asterisk_is_valid_host($host) {
-	return true;
-}
-
 function asterisk_is_valid_prefix($prefix) {
 	return true;
 }
 
 function asterisk_get_extensions() {
 	global $config;
-	
-	$extensions = array();
-	if (is_array($config['phones']['sipphone']))
-		foreach($config['phones']['sipphone'] as $phone)
-			$extensions[] = $phone['extension'];
 
-	return $extensions;
+	return array_merge(asterisk_sip_get_extensions());
 }
 
 function asterisk_get_providers() {
 	global $config;
 	
-	if (!is_array($config['providers']['sipprovider']))
-		$config['providers']['sipprovider'] = array();
-		
-	return array_merge($config['providers']['sipprovider']);
+	return array_merge(asterisk_sip_get_providers());
+}
+
+function asterisk_get_phones() {
+	global $config;
+	
+	return array_merge(asterisk_sip_get_phones());
 }
 
 function asterisk_get_prefixes() {
 	global $config;
-	
-	$prefixes = array();
-	if (is_array($config['providers']['sipprovider']))
-		foreach($config['providers']['sipprovider'] as $provider)
-			$prefixes[] = $provider['prefix'];
 
-	return $prefixes;	
+	return array_merge(asterisk_sip_get_prefixes());
 }
 
-
+function asterisk_uniqid_to_dial($uniqid) {
+	global $config;
+	
+	$id = split("-", $uniqid);
+	$dial = $id[0] . "/";
+	
+	if($id[0] == "SIP") {
+		$phone = asterisk_sip_get_phone($uniqid);
+	}
+	
+	return $dial . $phone['extension'];
+}
 	
 ?>

@@ -45,10 +45,10 @@ $asterisk_version = "asterisk-1.4.2";
 
 // --[ image sizes ]-----------------------------------------------------------
 
-$mfsroot_size = 15360;
+$mfsroot_size = 16384;
 $generic_pc_size = 12288;
 $generic_pc_smp_size = 12288;
-$wrap_soekris_size = 10240;
+$wrap_soekris_size = 11264;
 
 
 // --[ possible platforms and kernels ]----------------------------------------

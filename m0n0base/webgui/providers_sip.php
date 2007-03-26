@@ -38,6 +38,7 @@ if (!is_array($config['providers']['sipprovider']))
 asterisk_sip_sort_providers();
 $a_sipproviders = &$config['providers']['sipprovider'];
 
+
 if ($_POST) {
 
 	$pconfig = $_POST;
@@ -76,6 +77,7 @@ if ($_GET['act'] == "del") {
 <?php include("fbegin.inc"); ?>
 <form action="providers_sip.php" method="post">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_sipconfdirty_path)): ?><p>
 <?php print_info_box_np("The SIP providers list has been changed.<br>You must apply the changes in order for them to take effect.");?><br>
 <input name="apply" type="submit" class="formbtn" id="apply" value="Apply changes"></p>

@@ -29,6 +29,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require_once("functions.inc");
+
 $pgtitle = array("Providers", "SIP", "Edit Account");
 require("guiconfig.inc");
 
@@ -37,6 +39,8 @@ if (!is_array($config['providers']['sipprovider']))
 
 asterisk_sip_sort_providers();
 $a_sipproviders = &$config['providers']['sipprovider'];
+
+$a_sipphones = asterisk_sip_get_phones();
 
 
 $id = $_GET['id'];
@@ -52,6 +56,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['host'] = $a_sipproviders[$id]['host'];
 	$pconfig['port'] = $a_sipproviders[$id]['port'];
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
+	$pconfig['incomingphone'] = $a_sipproviders[$id]['incomingphone'];
 	$pconfig['codec'] = $a_sipproviders[$id]['codec'];
 	
 }
@@ -73,9 +78,12 @@ if ($_POST) {
 	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
-	if (($_POST['host'] && !asterisk_is_valid_host($_POST['host']))) {
+/*	if (($_POST['host'] && !is_hostname($_POST['host']))) {
 		$input_errors[] = "A valid host must be specified.";
-	}
+	}*/
+	if (($_POST['port'] && !is_port($_POST['port']))) {
+		$input_errors[] = "A valid port must be specified.";
+	}	
 	if (!isset($id) && in_array($_POST['prefix'], asterisk_get_prefixes())) {
 		$input_errors[] = "A provider with this prefix already exists.";
 	} else if (!asterisk_is_valid_prefix($_POST['prefix'])) {
@@ -87,14 +95,21 @@ if ($_POST) {
 		$sp = array();		
 		$sp['name'] = $_POST['name'];
 		$sp['username'] = $_POST['username'];
-		$sp['authuser'] = $_POST['authuser'];
+		if (isset($_POST['authuser']))
+			$sp['authuser'] = $_POST['authuser'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['host'] = $_POST['host'];
-		$sp['port'] = $_POST['port'];
+		if (isset($_POST['port']))
+			$sp['port'] = $_POST['port'];
 		$sp['prefix'] = $_POST['prefix'];
+		$sp['incomingphone'] = $_POST['incomingphone'];
 		
 		$sp['codec'] = array();
-		foreach ($codecs as $codec=>$friendly)
+		foreach ($audio_codecs as $codec=>$friendly)
+			if($_POST[$codec] == true)
+				$sp['codec'][] = $codec;
+
+		foreach ($video_codecs as $codec=>$friendly)
 			if($_POST[$codec] == true)
 				$sp['codec'][] = $codec;
 
@@ -103,7 +118,7 @@ if ($_POST) {
 			$sp['uniqid'] = $a_sipproviders[$id]['uniqid'];
 			$a_sipproviders[$id] = $sp;
 		 } else {
-			$sp['uniqid'] = uniqid(rand());
+			$sp['uniqid'] = "SIP-PROVIDER-" . uniqid(rand());
 			$a_sipproviders[] = $sp;
 		}
 		
@@ -159,16 +174,38 @@ function typesel_change() {
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell">Port</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+                  <td class="vtable"><?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
                     <br> <span class="vexpl">defaults to 5060</span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Codecs</td>
+                  <td valign="top" class="vncell">Incoming Phone</td>
+                  <td class="vtable"><?=$mandfldhtml;?>
+					<select name="incomingphone" class="formfld" id="incomingphone">
+                    <?php
+                      foreach ($a_sipphones as $phone): ?>
+                      <option value="<?=$phone['uniqid'];?>" <?php 
+						if ($phone['uniqid'] == $pconfig['incomingphone']) 
+							echo "selected"; ?>> 
+                      <? echo "<{$phone['extension']}> - {$phone['callerid']}"; ?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select>
+                    <br> <span class="vexpl">Directs incoming phone calls from this provider to the specified phone.</span></td>
+                </tr>
+                <tr> 
+                  <td width="22%" valign="top" class="vncell">Audio Codecs</td>
                   <td width="78%" class="vtable">
-				  <? foreach ($codecs as $codec=>$friendly): ?>
+				  <? foreach ($audio_codecs as $codec=>$friendly): ?>
 					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
 				  <? endforeach; ?>
 				</tr>
+                <tr> 
+                  <td width="22%" valign="top" class="vncell">Video Codecs</td>
+                  <td width="78%" class="vtable">
+				  <? foreach ($video_codecs as $codec=>$friendly): ?>
+					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
+				  <? endforeach; ?>
+				</tr>				
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 

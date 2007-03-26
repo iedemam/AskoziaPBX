@@ -120,16 +120,17 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 //$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
 /* Services */
-$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
+$menu['Services']['SIP'] 				= array('services_sip.php');
+//$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
 //$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
 //$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
 //$menu['Services']['QoS'] 				= array('services_qos.php'); /* jb, packet types */
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
-$menu['Status']['Providers']			= array('status_providers.php');
-$menu['Status']['Phones']				= array('status_phones.php');
-$menu['Status']['Channels']				= array('status_channels.php');
+//$menu['Status']['Providers']			= array('status_providers.php');
+//$menu['Status']['Phones']				= array('status_phones.php');
+//$menu['Status']['Channels']				= array('status_channels.php');
 $menu['Status']['Interfaces']			= array('status_interfaces.php');
 //$menu['Status']['Voicemail']			= array('status_voicemail.php');
 

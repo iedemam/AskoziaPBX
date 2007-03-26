@@ -76,6 +76,7 @@ if ($_GET['act'] == "del") {
 <?php include("fbegin.inc"); ?>
 <form action="phones_sip.php" method="post">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_sipconfdirty_path)): ?><p>
 <?php print_info_box_np("The SIP phones list has been changed.<br>You must apply the changes in order for them to take effect.");?><br>
 <input name="apply" type="submit" class="formbtn" id="apply" value="Apply changes"></p>
@@ -89,16 +90,16 @@ if ($_GET['act'] == "del") {
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<?php $i = 0; foreach ($a_sipphones as $sipphone): ?>
+	<?php $i = 0; foreach ($a_sipphones as $sp): ?>
 	<tr>
 		<td class="listlr">
-			<?=htmlspecialchars($sipphone['extension']);?>
+			<?=htmlspecialchars($sp['extension']);?>
 		</td>
 		<td class="listr">
-			<?=htmlspecialchars($sipphone['callerid']);?>
+			<?=htmlspecialchars($sp['callerid']);?>
 		</td>
 		<td class="listbg">
-			<?=htmlspecialchars($sipphone['descr']);?>&nbsp;
+			<?=htmlspecialchars($sp['descr']);?>&nbsp;
 		</td>
 		<td valign="middle" nowrap class="list"> <a href="phones_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
            &nbsp;<a href="phones_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP phone?"><img src="x.gif" title="delete SIP phone" width="17" height="17" border="0"></a></td>

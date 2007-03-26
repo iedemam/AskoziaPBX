@@ -87,7 +87,7 @@ $fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'generic-pc-smp', 'wr
 1048576 (1 << 20) (0x100000)  video      h263p   (H.263+ Video)
 2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
 
-$codecs = array(
+$audio_codecs = array(
 	"g723" => "G.723.1",
 	"gsm" => "GSM",
 	"ulaw" => "G.711 u-law",
@@ -101,6 +101,13 @@ $codecs = array(
 	"ilbc" => "iLBC",
 	"g726" => "G.726 RFC3551",
 	"g722" => "G722"
+);
+
+$video_codecs = array(
+"h261" => "H.261",
+"h263" => "H.263",
+"h263p" => "H.263+",
+"h264" => "H.264"
 );
 
 
