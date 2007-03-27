@@ -37,6 +37,7 @@ require("guiconfig.inc");
 if (!is_array($config['phones']['sipphone']))
 	$config['phones']['sipphone'] = array();
 
+
 asterisk_sip_sort_phones();
 $a_sipphones = &$config['phones']['sipphone'];
 $a_providers = asterisk_get_providers();
@@ -52,7 +53,8 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['callerid'] = $a_sipphones[$id]['callerid'];
 	$pconfig['secret'] = $a_sipphones[$id]['secret'];
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
-	$pconfig['codec'] = $a_sipphones[$id]['codec'];
+	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
+		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_sipphones[$id]['descr'];
 }
 
@@ -60,6 +62,10 @@ if ($_POST) {
 
 	unset($input_errors);
 	$pconfig = $_POST;
+	$pconfig['codec'] = array("ulaw");
+	
+	parse_str($_POST['a_codecs']);
+	parse_str($_POST['v_codecs']);
 
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid secret");
@@ -81,7 +87,11 @@ if ($_POST) {
 	}
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
-	}	
+	}
+	/* TODO
+	if (!count(array_intersect($ace, array_keys($audio_codecs)))) {
+		$input_errors[] = "An audio codec must be specified.";
+	}*/
 
 	if (!$input_errors) {
 		$sp = array();
@@ -96,13 +106,7 @@ if ($_POST) {
 				$sp['provider'][] = $provider['uniqid'];
 		
 		$sp['codec'] = array();
-		foreach ($audio_codecs as $codec=>$friendly)
-			if($_POST[$codec] == true)
-				$sp['codec'][] = $codec;
-
-		foreach ($video_codecs as $codec=>$friendly)
-			if($_POST[$codec] == true)
-				$sp['codec'][] = $codec;
+		$sp['codec'] = array_merge($ace, $vce);
 
 		if (isset($id) && $a_sipphones[$id]) {
 			$sp['uniqid'] = $a_sipphones[$id]['uniqid'];
@@ -130,64 +134,119 @@ function typesel_change() {
 //-->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="phones_sip_edit.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td valign="top" class="vncellreq">Extension</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="extension" type="text" class="formfld" id="extension" size="20" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-                    <br> <span class="vexpl">Four digits.</span></td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncellreq">Caller ID</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
-                    <br> <span class="vexpl">Text to be displayed for Caller ID.</span></td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncellreq">Secret</td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="secret" type="text" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                    <br> <span class="vexpl">Secrets may not contain '#' or ';'</span></td>
-                </tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell">Providers</td>
-                  <td width="78%" class="vtable">
-				  <? foreach ($a_providers as $provider): ?>
-					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($provider['uniqid'], $pconfig['provider'])) echo "checked"; ?>><?=$provider['name']?><br>
-				  <? endforeach; ?>
-				  </td>
-				</tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell">Audio Codecs</td>
-                  <td width="78%" class="vtable">
-				  <? foreach ($audio_codecs as $codec=>$friendly): ?>
-					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
-				  <? endforeach; ?>
-				</tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell">Video Codecs</td>
-                  <td width="78%" class="vtable">
-				  <? foreach ($video_codecs as $codec=>$friendly): ?>
-					<input name="<?=$codec?>" id="<?=$codec?>" type="checkbox" value="yes" onclick="enable_change(false)" <?php if (in_array($codec, $pconfig['codec'])) echo "checked"; ?>><?=$friendly?><br>
-				  <? endforeach; ?>
-				</tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell">Description</td>
-                  <td width="78%" class="vtable"> <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
-                    <br> <span class="vexpl">You may enter a description here 
-                    for your reference (not parsed).</span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 
-                    <?php if (isset($id) && $a_sipphones[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>"> 
-                    <?php endif; ?>
-                  </td>
-                </tr>
-              </table>
-</form>
-<script language="JavaScript">
-<!--
-typesel_change();
-//-->
+	<form action="phones_sip_edit.php" method="post" name="iform" id="iform">
+		<table width="100%" border="0" cellpadding="6" cellspacing="0">
+			<tr> 
+				<td width="20%" valign="top" class="vncellreq">Extension</td>
+				<td width="80%" colspan="2" class="vtable">
+					<input name="extension" type="text" class="formfld" id="extension" size="20" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+					<br><span class="vexpl">Four digits. This is also this account's username</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncellreq">Caller ID</td>
+				<td colspan="2" class="vtable">
+					<input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
+					<br><span class="vexpl">Text to be displayed for Caller ID.</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncellreq">Secret</td>
+				<td colspan="2" class="vtable">
+					<input name="secret" type="text" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
+                    <br><span class="vexpl">Secrets may not contain '#' or ';'</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">Providers</td>
+				<td colspan="2" class="vtable">
+				<? foreach ($a_providers as $provider): ?>
+					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <?php if (in_array($provider['uniqid'], $pconfig['provider'])) echo "checked"; ?>><?=$provider['name']?><br>
+				<? endforeach; ?>
+				</td>
+			</tr>
+			<tr> 
+				<td width="20%" valign="top" class="vncell">Audio Codecs</td>
+				<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
+					<ul id="ace" class="ace">
+					<? foreach ($pconfig['codec'] as $codec): ?>
+						<? if (array_key_exists($codec, $audio_codecs)): ?>
+						<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
+						<? endif; ?>
+					<? endforeach; ?>
+					</ul>
+				</td>
+				<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
+					<ul id="acd" class="acd">
+					<? foreach ($audio_codecs as $codec=>$friendly): ?>
+						<? if (!in_array($codec, $pconfig['codec'])): ?>
+						<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
+						<? endif; ?>
+					<? endforeach; ?>
+					</ul>
+				</td>
+			</tr>
+			<tr> 
+				<td width="20%" valign="top" class="vncell">Video Codecs</td>
+				<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
+					<ul id="vce" class="vce">
+						<? foreach ($pconfig['codec'] as $codec): ?>
+							<? if (array_key_exists($codec, $video_codecs)): ?>
+							<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
+							<? endif; ?>
+						<? endforeach; ?>
+					</ul>
+				</td>
+				<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
+					<ul id="vcd" class="vcd">
+					<? foreach ($video_codecs as $codec=>$friendly): ?>
+						<? if (!in_array($codec, $pconfig['codec'])): ?>
+						<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
+						<? endif; ?>
+					<? endforeach; ?>
+					</ul>
+				</td>
+			</tr>			
+			<tr> 
+				<td valign="top" class="vncell">Description</td>
+				<td colspan="2" class="vtable">
+					<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
+					<br><span class="vexpl">You may enter a description here 
+					for your reference (not parsed).</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top">&nbsp;</td>
+				<td colspan="2">
+					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
+					<input id="a_codecs" name="a_codecs" type="hidden" value="">
+					<input id="v_codecs" name="v_codecs" type="hidden" value="">
+					<?php if (isset($id) && $a_sipphones[$id]): ?>
+					<input name="id" type="hidden" value="<?=$id;?>"> 
+					<?php endif; ?>
+				</td>
+			</tr>
+		</table>
+	</form>
+<script type="text/javascript" charset="utf-8">
+// <![CDATA[
+	typesel_change();
+	
+	Sortable.create("ace",
+		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});
+	Sortable.create("acd",
+		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});
+	Sortable.create("vce",
+		{dropOnEmpty:true,containment:["vce","vcd"],constraint:false});
+	Sortable.create("vcd",
+		{dropOnEmpty:true,containment:["vce","vcd"],constraint:false});	
+	
+	function save_codec_states() {
+		var acs = document.getElementById('a_codecs');
+		acs.value = Sortable.serialize('ace');
+		var vcs = document.getElementById('v_codecs');
+		vcs.value = Sortable.serialize('vce');
+	}
+// ]]>			
 </script>
 <?php include("fend.inc"); ?>

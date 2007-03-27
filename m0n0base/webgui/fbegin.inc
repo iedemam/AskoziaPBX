@@ -138,7 +138,7 @@ $menu['Status']['Interfaces']			= array('status_interfaces.php');
 /* Diagnostics */
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 												'diag_logs_asterisk.php',
-												'diag_logs_calls.php'
+												'diag_logs_calls.php',
 							  					'diag_logs_settings.php');
 $menu['Diagnostics']['Traffic Graph']	= array('diag_trafficgraph.php');
 $menu['Diagnostics']['CPU Usage']		= array('diag_cpugraph.php');
@@ -155,6 +155,8 @@ $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 <head>
 <title><?=genhtmltitle($pgtitle);?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script src="prototype.js" type="text/javascript"></script>
+<script src="scriptaculous.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 
