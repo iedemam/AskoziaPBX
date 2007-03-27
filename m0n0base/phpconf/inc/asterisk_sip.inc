@@ -183,7 +183,7 @@ EOD;
 		$conf .= "host=dynamic\n";
 		$conf .= "nat=yes\n";
 		$conf .= "qualify=60000\n";
-		$conf .= "canreinvite=yes\n";
+		$conf .= "canreinvite=no\n";
 		$conf .= "disallow=all\n";
 	
 		if(is_array($sp['codec'])) {

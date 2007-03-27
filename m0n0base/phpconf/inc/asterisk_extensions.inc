@@ -80,11 +80,11 @@ EOD;
 
 	foreach ($a_sipphones as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";
-		$conf .= "include => internal\n";
 		if (isset($sp['provider']))
 			foreach ($sp['provider'] as $provider) {
 				$conf .= "include => $provider\n";
 		}
+		$conf .= "include => internal\n";
 		$conf .= "\n";
 	}
 	
