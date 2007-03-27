@@ -44,9 +44,9 @@ function asterisk_extensions_conf_generate() {
 
 [macro-internal]
 exten => s,1,Dial($\{ARG2},30)
+exten => s,2,Hangup()
 
 [internal]
-include => test
 exten => _XXXX,1,Macro(internal|$\{EXTEN}|SIP/$\{EXTEN})
 exten => 512,1,Answer()
 exten => 512,2,Echo()
