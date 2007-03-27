@@ -72,6 +72,7 @@ function dump_clog($logfile, $tail, $withorig = true) {
 <?php 
    	$tabs = array('System' => 'diag_logs.php',
 				  'Asterisk' => 'diag_logs_asterisk.php',
+				  'Calls' => 'diag_logs_calls.php',
            		  'Settings' => 'diag_logs_settings.php');
 	dynamic_tab_menu($tabs);
 ?> 

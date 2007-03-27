@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: diag_logs_asterisk.php 38 2007-03-22 22:47:23Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -37,9 +37,9 @@ if (!$nentries)
 	$nentries = 50;
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/asterisk.log");
+	//exec("/usr/sbin/clog -i -s 262144 /var/log/asterisk.log");
 	/* redirect to avoid reposting form data on refresh */
-	header("Location: diag_logs_asterisk.php");
+	header("Location: diag_logs_calls.php");
 	exit;
 }
 
@@ -48,14 +48,40 @@ function dump_clog($logfile, $tail) {
 
 	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
 
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
+	exec("cat " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
+	
+	/*
+	0	clid		""Grandstream" <2424>",
+	1	src			"2424",
+	2	dst			"4242",
+	3	dcontext	"SIP-PHONE-15751265024607fa93812e3",
+	4	channel		"SIP/2424-086be000",
+	5	dstchannel	"",
+	6	lastapp		"Dial",
+	7	lastdata	"SIP/4242|30",
+	8	start		"2007-03-27 10:18:04",
+	9	answer		"",
+	10	end			"2007-03-27 10:18:04",
+	11	duration	"0",
+	12	billsec		"0",
+	13	disposition	"FAILED",
+	14	amaflags	"DOCUMENTATION",
+	15	accountcode	"",
+	16	uniqueid	"1174990684.0",
+	17	userfield	""
+	*/
 	
 	foreach ($logarr as $logent) {
-		$logent = preg_split("/\s+/", $logent, 6);
+		$logent = split(",", $logent);
+
 		echo "<tr valign=\"top\">\n";
 		
-		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-		echo "<td class=\"listr\">" . htmlspecialchars($logent[5]) . "</td>\n";
+		echo "<td class=\"listlr\" nowrap>" . 
+			htmlspecialchars(trim($logent[8],"\"")) . "</td>\n";
+		echo "<td class=\"listr\">" . 
+			htmlspecialchars(trim($logent[11],"\"")) . " seconds " .
+			": ". htmlspecialchars(str_replace("\"", "", $logent[0])) . 
+			" -&gt; ". htmlspecialchars(trim($logent[2],"\"")) ."</td>\n";
 
 		echo "</tr>\n";
 	}
@@ -80,11 +106,11 @@ function dump_clog($logfile, $tail) {
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr> 
 			<td colspan="2" class="listtopic"> 
-			  Last <?=$nentries;?> Asterisk log entries</td>
+			  Last <?=$nentries;?> Call Records</td>
 		  </tr>
-		  <?php dump_clog("/var/log/asterisk.log", $nentries); ?>
+		  <?php dump_clog("/var/log/asterisk/cdr-custom/Master.csv", $nentries); ?>
 		</table>
-		<br><form action="diag_logs_asterisk.php" method="post">
+		<br><form action="diag_logs_calls.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="Clear log">
 </form>
 	</td>

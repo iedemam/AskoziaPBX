@@ -137,6 +137,8 @@ $menu['Status']['Interfaces']			= array('status_interfaces.php');
 
 /* Diagnostics */
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
+												'diag_logs_asterisk.php',
+												'diag_logs_calls.php'
 							  					'diag_logs_settings.php');
 $menu['Diagnostics']['Traffic Graph']	= array('diag_trafficgraph.php');
 $menu['Diagnostics']['CPU Usage']		= array('diag_cpugraph.php');
