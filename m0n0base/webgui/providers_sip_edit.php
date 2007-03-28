@@ -42,6 +42,8 @@ $a_sipproviders = &$config['providers']['sipprovider'];
 
 $a_sipphones = asterisk_sip_get_phones();
 
+$pconfig['codec'] = array("ulaw");
+
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
