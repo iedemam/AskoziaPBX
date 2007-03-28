@@ -367,6 +367,7 @@ ul#tabnav li.tabact {
 
 #ace li {
 	margin: 5px auto;
+	margin-left: -40px;
 	padding: 2px;
 	width: 100%;
 	text-align:left;
@@ -377,6 +378,7 @@ ul#tabnav li.tabact {
 
 #acd li {
 	margin: 5px auto;
+	margin-left: -40px;
 	padding: 2px;
 	width: 100%;
 	text-align:left;
@@ -387,6 +389,7 @@ ul#tabnav li.tabact {
 
 #vce li {
 	margin: 5px auto;
+	margin-left: -40px;
 	padding: 2px;
 	width: 100%;
 	text-align:left;
@@ -397,6 +400,7 @@ ul#tabnav li.tabact {
 
 #vcd li {
 	margin: 5px auto;
+	margin-left: -40px;
 	padding: 2px;
 	width: 100%;
 	text-align:left;

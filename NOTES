@@ -1,113 +1,11 @@
-syslog is not logging...
-
-sdmi.conf needs to be present to kill a warning
-
 indications.conf's country needs to be set
-
-moh directory is set incorrectly
-
 conference app needs to be added
-
 voicemail dir structure needs to be generated on boot
-
-general setup and networking interface (LAN) need to be merged 
-
 stun / nat settings need to be added to network interface
-
 voicemail has options to run a specified program upon mail receipt or secret change
-
 QoS options, such as jitterbuffer and packet types need to be added
 
-
-
-phones are assigned permissions to use providers
-providers are assigned permissions to call internal phones
 providers are assigned permission to use other providers through a pin
 
 dialplan is a movable grid like sidebar modules in wp
 access can be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
-
-codecs are selectable on provider and phone pages with order being handled by drag and drop
-
-if providers are changed, extensions needs to be regenerated
-
---------------------------------------------------------------------------
-
-System
- - General Setup
- - GUI Options
- - Firmware
- - Backup / Restore
- - Factory Defaults
- - Reboot
-
-Interfaces
- - Network
-
-Providers
- - SIP
- - IAX
-
-Phones
- - SIP
- - IAX
-
-Services
- - Dialplan
- - Voicemail
- - Conferencing
- - QoS
-
-Status
- - Summary
- - Providers
- - Phones
- - Channels
- - Interfaces
- - Voicemail
-
-Diagnostics
- - Logs
- - Traffic Graph
- - CPU Load
- - Ping / Traceroute
- - ARP Table
-
--------------------------------------------------------------------------
-
-<asterisk>
-	<providers>
-		<sip>
-			<name></name>
-			<username></username>
-			<authuser></authuser>
-			<password></password>
-			<proxy></proxy>
-			<port></port>
-			<description></description>
-		</sip>
-		...
-	</providers>
-	<phones>
-		<sip>
-			<name></name>
-			<extension></extension>
-			<username></username>
-			<secret></secret>
-			<vmsecret></vmsecret>
-			<email></email>
-			<description></description>
-		</sip>
-		...
-	</phones>
-	<dialplan>
-		<extension>
-			<app></app>
-			<args></args>
-			...
-		</extension>
-		...
-	</dialplan>
-	<jitterbuffer></jitterbuffer>
-	<voicemail></voicemail>
-</asterisk>

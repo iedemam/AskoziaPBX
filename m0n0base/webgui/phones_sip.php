@@ -95,10 +95,10 @@ if ($_GET['act'] == "del") {
 		<td class="listlr">
 			<?=htmlspecialchars($sp['extension']);?>
 		</td>
-		<td class="listr">
+		<td class="listbg">
 			<?=htmlspecialchars($sp['callerid']);?>
 		</td>
-		<td class="listbg">
+		<td class="listr">
 			<?=htmlspecialchars($sp['descr']);?>&nbsp;
 		</td>
 		<td valign="middle" nowrap class="list"> <a href="phones_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
