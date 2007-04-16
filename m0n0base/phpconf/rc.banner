@@ -45,13 +45,8 @@
     m0n0wall is Copyright (C) 2002-2006 Manuel Kasper. All rights reserved.
     Visit http://askozia.com/pbx for updates.
     
+    LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}
     
-    LAN IP address: {$config['interfaces']['lan']['ipaddr']}
-    
-    Port configuration:
-    
-    LAN   -> {$config['interfaces']['lan']['if']}
-
 EOD;
 
 ?>

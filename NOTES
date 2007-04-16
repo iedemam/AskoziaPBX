@@ -1,11 +1,45 @@
-indications.conf's country needs to be set
-conference app needs to be added
-voicemail dir structure needs to be generated on boot
-stun / nat settings need to be added to network interface
-voicemail has options to run a specified program upon mail receipt or secret change
-QoS options, such as jitterbuffer and packet types need to be added
+Priorities:
+ - get cdr's clogging
+ - get NAT / STUN conf working
+   - note: might need to re-add dyndns support
+ - get "advanced mode" working
+   - note: whole conf files encoded in base64 and stored in xml conf
+   - note: editor needs work
+ - remove junk from manager output
+ - cleanups!
 
-providers are assigned permission to use other providers through a pin
+First Public Beta
 
-dialplan is a movable grid like sidebar modules in wp
-access can be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
+ - get zaptel working
+   - note: enables conferencing, moh and hardware!
+ - get conferencing working
+ - get moh working (remove perhaps...)
+ - get indications.conf working 
+   - if it's found to be necessary
+ - get voicemail working (e-mail only)
+   - note: strip excess prompts!
+   - note: voicemail dir structure needs to be generated on boot
+   - note: voicemail has options to run a specified program upon mail receipt or secret change
+ - provider to provider access with pin code
+ - access able to be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
+ - QoS options, such as jitterbuffer and packet types supported
+ - dialplan is a movable grid like sidebar modules in wp
+
+-----------------------------------------------------------------------
+
+Clean-Ups:
+ - css irregularities
+ - figure out config xml single var irregularities (empty defines showing up)
+ - handle tones better in extensions.inc
+ - better field checks
+ - trim down scriptaculous
+
+-----------------------------------------------------------------------
+
+Table Class:
+ - section title
+ - field name
+ - (not)required
+ - entry type (more than one allowed per field)
+   - drop down contents defined with a callback
+ - 
