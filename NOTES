@@ -33,6 +33,7 @@ Clean-Ups:
  - handle tones better in extensions.inc
  - better field checks
  - trim down scriptaculous
+ - gui needs to confirm deletes!
 
 -----------------------------------------------------------------------
 

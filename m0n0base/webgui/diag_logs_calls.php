@@ -37,7 +37,7 @@ if (!$nentries)
 	$nentries = 50;
 
 if ($_POST['clear']) {
-	//exec("/usr/sbin/clog -i -s 262144 /var/log/asterisk.log");
+	exec("clog -i -s 262144 /var/log/cdr.log");
 	/* redirect to avoid reposting form data on refresh */
 	header("Location: diag_logs_calls.php");
 	exit;
@@ -48,7 +48,7 @@ function dump_clog($logfile, $tail) {
 
 	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
 
-	exec("cat " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
+	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);	
 	
 	/*
 	0	clid		""Grandstream" <2424>",
@@ -108,7 +108,7 @@ function dump_clog($logfile, $tail) {
 			<td colspan="2" class="listtopic"> 
 			  Last <?=$nentries;?> Call Records</td>
 		  </tr>
-		  <?php dump_clog("/var/log/asterisk/cdr-custom/Master.csv", $nentries); ?>
+		  <?php dump_clog("/var/log/cdr.log", $nentries); ?>
 		</table>
 		<br><form action="diag_logs_calls.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="Clear log">
