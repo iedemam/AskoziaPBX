@@ -37,7 +37,7 @@ if (!$nentries)
 	$nentries = 50;
 
 if ($_POST['clear']) {
-	exec("clog -i -s 262144 /var/log/cdr.log");
+	exec("/usr/sbin/clog -i -s 262144 /var/log/cdr.log");
 	/* redirect to avoid reposting form data on refresh */
 	header("Location: diag_logs_calls.php");
 	exit;
@@ -72,17 +72,12 @@ function dump_clog($logfile, $tail) {
 	*/
 	
 	foreach ($logarr as $logent) {
-		$logent = split(",", $logent);
-
+		$logent = preg_split("/\s+/", $logent, 6);
 		echo "<tr valign=\"top\">\n";
 		
-		echo "<td class=\"listlr\" nowrap>" . 
-			htmlspecialchars(trim($logent[8],"\"")) . "</td>\n";
-		echo "<td class=\"listr\">" . 
-			htmlspecialchars(trim($logent[11],"\"")) . " seconds " .
-			": ". htmlspecialchars(str_replace("\"", "", $logent[0])) . 
-			" -&gt; ". htmlspecialchars(trim($logent[2],"\"")) ."</td>\n";
-
+		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
+		echo "<td class=\"listr\">" . htmlspecialchars($logent[5]) . "</td>\n";
+	
 		echo "</tr>\n";
 	}
 }

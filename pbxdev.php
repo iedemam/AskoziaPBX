@@ -45,10 +45,10 @@ $asterisk_version = "asterisk-1.4.2";
 
 // --[ image sizes ]-----------------------------------------------------------
 
-$mfsroot_size = 16384;
+$mfsroot_size = 18432;
 $generic_pc_size = 12288;
 $generic_pc_smp_size = 12288;
-$wrap_soekris_size = 11264;
+$wrap_soekris_size = 12288;
 
 
 // --[ possible platforms and kernels ]----------------------------------------
@@ -105,15 +105,6 @@ $error_codes = array(
 	/* 5 */ "invalid image specified!",
 	/* 6 */ "image already exists!"
 );
-
-
-// --[ phone home ]------------------------------------------------------------
-
-$h["update"] = "checks for m0n0dev updates";
-function _update() {
-	$s = file_get_contents("http://www.askozia.com/vcheck.php?p=m0n0dev&cv=0.1.1");
-	print("$s\n");
-}
 
 
 // --[ the functions! ]--------------------------------------------------------
@@ -274,6 +265,8 @@ function build_asterisk() {
 	if(!_is_patched($asterisk_version)) {
 		_exec("cd ". $dirs['packages'] ."/$asterisk_version; patch < ". $dirs['files'] . 
 				"/asterisk_makefile.patch");
+		_exec("cd ". $dirs['packages'] ."; patch < ". $dirs['files'] . 
+				"/asterisk_cdr_to_syslog.patch");				
 		_stamp_package_as_patched($asterisk_version);
 	}
 	// clear stage
@@ -489,7 +482,7 @@ function populate_tools($image_name) {
 		"install -s stats.cgi $image_name/usr/local/www; ".
 		"install -s minicron $image_name/usr/local/bin; ".
 		"install -s verifysig $image_name/usr/local/bin; ".
-		"install wrapresetbtn $image_name/usr/local/sbin; ".		
+		"install -s wrapresetbtn $image_name/usr/local/sbin; ".		
 		"install runmsntp.sh $image_name/usr/local/bin");
 }
 
@@ -780,11 +773,6 @@ function _usage($err=0) {
 // nothing to do, here's what's possible
 if($argc == 1) {
 	_usage();
-
-// phone home and check version
-} else if($argv[1] == "update") {
-	_update();
-	exit();
 
 // here's some help if it's available
 } else if($argv[1] == "help") {
