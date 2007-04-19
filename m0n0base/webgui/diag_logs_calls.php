@@ -73,11 +73,17 @@ function dump_clog($logfile, $tail) {
 	
 	foreach ($logarr as $logent) {
 		$logent = preg_split("/\s+/", $logent, 6);
+		$cdr = strstr($logent[5], "\"");
+		$cdr = explode(",", $cdr);
+		$cdr = str_replace("\"", "", $cdr);
+		
 		echo "<tr valign=\"top\">\n";
 		
 		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-		echo "<td class=\"listr\">" . htmlspecialchars($logent[5]) . "</td>\n";
-	
+		echo "<td class=\"listr\">" . htmlspecialchars($cdr[0]) . 
+			"&nbsp;-&gt;&nbsp;" . htmlspecialchars($cdr[2]) . "&nbsp;( " .
+			htmlspecialchars($cdr[12]) . " sec. )</td>\n";
+		
 		echo "</tr>\n";
 	}
 }

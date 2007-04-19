@@ -47,7 +47,7 @@ diff -ur asterisk-1.4.2-orig/include/asterisk/logger.h asterisk-1.4.2/include/as
  #endif
 diff -ur asterisk-1.4.2-orig/main/logger.c asterisk-1.4.2/main/logger.c
 --- asterisk-1.4.2-orig/main/logger.c	2006-12-27 23:06:56.000000000 +0100
-+++ asterisk-1.4.2/main/logger.c	2007-04-18 14:19:12.000000000 +0200
++++ asterisk-1.4.2/main/logger.c	2007-04-19 10:10:34.000000000 +0200
 @@ -54,7 +54,8 @@
  	LOG_WARNING,
  	LOG_ERR,
@@ -86,6 +86,15 @@ diff -ur asterisk-1.4.2-orig/main/logger.c asterisk-1.4.2/main/logger.c
  		ast_cli(fd, "\n");
  	}
  	AST_LIST_UNLOCK(&logchannels);
+@@ -647,7 +653,7 @@
+ 	return;
+ }
+ 
+-static void ast_log_vsyslog(int level, const char *file, int line, const char *function, const char *fmt, va_list args) 
++static void ast_log_vsyslog(int level, int facility, const char *file, int line, const char *function, const char *fmt, va_list args) 
+ {
+ 	char buf[BUFSIZ];
+ 	char *s;
 @@ -663,6 +669,9 @@
  	} else if (level == __LOG_DTMF) {
  		snprintf(buf, sizeof(buf), "DTMF[%ld]: ", (long)GETTID());
@@ -96,6 +105,24 @@ diff -ur asterisk-1.4.2-orig/main/logger.c asterisk-1.4.2/main/logger.c
  	} else {
  		snprintf(buf, sizeof(buf), "%s[%ld]: %s:%d in %s: ",
  			 levels[level], (long)GETTID(), file, line, function);
+@@ -670,7 +679,7 @@
+ 	s = buf + strlen(buf);
+ 	vsnprintf(s, sizeof(buf) - strlen(buf), fmt, args);
+ 	term_strip(s, s, strlen(s) + 1);
+-	syslog(syslog_level_map[level], "%s", buf);
++	syslog(syslog_level_map[level] | facility, "%s", buf);
+ }
+ 
+ /*!
+@@ -749,7 +758,7 @@
+ 		/* Check syslog channels */
+ 		if (chan->type == LOGTYPE_SYSLOG && (chan->logmask & (1 << level))) {
+ 			va_start(ap, fmt);
+-			ast_log_vsyslog(level, file, line, function, fmt, ap);
++			ast_log_vsyslog(level, chan->facility, file, line, function, fmt, ap);
+ 			va_end(ap);
+ 		/* Console channels */
+ 		} else if ((chan->logmask & (1 << level)) && (chan->type == LOGTYPE_CONSOLE)) {
 Only in asterisk-1.4.2: makeopts
 Only in asterisk-1.4.2: makeopts.embed_rules
 Only in asterisk-1.4.2/menuselect: autoconfig.h

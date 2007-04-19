@@ -541,10 +541,10 @@ function populate_everything($image_name) {
 
 // TODO: this is quite large and ugly
 $h["package"] = "package the specified image directory into an .img for the specified platform and stamp as version (i.e. package generic-pc 1.3b2copy testimage)";
-function package($platform, $version, $image_name) {
+function package($platform, $image_name) {
 	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size;
 	
-	_log("packaging $image_name $version for $platform...");
+	_log("packaging $image_name for $platform...");
 	
 	_set_permissions($image_name);
 	
@@ -556,7 +556,7 @@ function package($platform, $version, $image_name) {
 	$kernel = _platform_to_kernel($platform);
 	
 	// mfsroots
-	if(!file_exists($dirs['mfsroots'] ."/$platform-$version-". basename($image_name) .".gz")) {
+	if(!file_exists($dirs['mfsroots'] ."/$platform-". basename($image_name) .".gz")) {
 				
 		_exec("dd if=/dev/zero of=tmp/mfsroot bs=1k count=$mfsroot_size");
 		_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
@@ -580,18 +580,18 @@ function package($platform, $version, $image_name) {
 			_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/mnt/boot/kernel/");
 		}
 		
-		_exec("echo \"$version\" > tmp/mnt/etc/version");
+		_exec("echo \"". basename($image_name) ."\" > tmp/mnt/etc/version");
 		_exec("echo `date` > tmp/mnt/etc/version.buildtime");
 		_exec("echo $platform > tmp/mnt/etc/platform");
 	
 		_exec("umount tmp/mnt");
 		_exec("mdconfig -d -u 0");
 		_exec("gzip -9 tmp/mfsroot");
-		_exec("mv tmp/mfsroot.gz ". $dirs['mfsroots'] ."/$platform-$version-". basename($image_name) .".gz");
+		_exec("mv tmp/mfsroot.gz ". $dirs['mfsroots'] ."/$platform-". basename($image_name) .".gz");
 	}
 	
 	// .img
-	if($platform != "generic-pc-cdrom" && !file_exists($dirs['images'] ."/$platform-$version-". basename($image_name) .".img")) {
+	if($platform != "generic-pc-cdrom" && !file_exists($dirs['images'] ."/$platform-". basename($image_name) .".img")) {
 		
 		if($platform == "generic-pc") {
 			_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$generic_pc_size");
@@ -605,7 +605,7 @@ function package($platform, $version, $image_name) {
 		_exec("bsdlabel -Brw -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 auto");
 		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
 		_exec("mount /dev/md0a tmp/mnt");
-		_exec("cp ". $dirs['mfsroots'] ."/$platform-$version-". basename($image_name) .".gz tmp/mnt/mfsroot.gz");
+		_exec("cp ". $dirs['mfsroots'] ."/$platform-". basename($image_name) .".gz tmp/mnt/mfsroot.gz");
 		
 		// boot
 		mkdir("tmp/mnt/boot");
@@ -622,13 +622,13 @@ function package($platform, $version, $image_name) {
 		_exec("umount tmp/mnt");
 		_exec("mdconfig -d -u 0");
 		_exec("gzip -9 tmp/image.bin");
-		_exec("mv tmp/image.bin.gz ". $dirs['images'] ."/$platform-$version-". basename($image_name) .".img");
+		_exec("mv tmp/image.bin.gz ". $dirs['images'] ."/$platform-". basename($image_name) .".img");
 		
 	// .iso
-	} else if($platform == "generic-pc-cdrom" && !file_exists($dirs['images'] ."/$platform-$version-". basename($image_name) .".iso")) {
+	} else if($platform == "generic-pc-cdrom" && !file_exists($dirs['images'] ."/$platform-". basename($image_name) .".iso")) {
 
 		_exec("mkdir tmp/cdroot");
-		_exec("cp ". $dirs['mfsroots'] ."/$platform-$version-". basename($image_name) .".gz tmp/cdroot/mfsroot.gz");
+		_exec("cp ". $dirs['mfsroots'] ."/$platform-". basename($image_name) .".gz tmp/cdroot/mfsroot.gz");
 		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/cdroot/kernel.gz");		
 
 		_exec("mkdir tmp/cdroot/boot");
@@ -641,7 +641,7 @@ function package($platform, $version, $image_name) {
 			"-c \"boot/boot.catalog\" -d -r -publisher \"m0n0.ch\" ".
 			"-p \"Your Name\" -V \"m0n0wall_cd\" -o \"m0n0wall.iso\" tmp/cdroot/");
 			
-		_exec("mv m0n0wall.iso ". $dirs['images'] ."/cdrom-$version-". basename($image_name) .".iso");
+		_exec("mv m0n0wall.iso ". $dirs['images'] ."/cdrom-". basename($image_name) .".iso");
 	}
 	
 	_exec("rm -rf tmp");
@@ -795,6 +795,20 @@ if($argc == 1) {
 		_usage(6) :
 		create($image_name);
 
+// revised "create" functionality...probably switch to this later
+} else if($argv[1] == "new") {
+
+	$image_name = $dirs['images']. "/" . rtrim($argv[2], "/");
+
+	if(file_exists($image_name)) {
+		_exec("rm -rf $image_name");
+		_exec("rm -rf ". $dirs['images'] ."/*". $argv[2] .".img");
+		_exec("rm -rf ". $dirs['mfsroots'] ."/*". $argv[2] .".gz");
+		_log("old images and mfsroots removed");
+	}
+	create($image_name);
+	populate_everything($image_name);
+
 // patch functions are all defined with no arguments
 } else if($argv[1] == "patch") {
 	$f = implode("_", array_slice($argv, 1));
@@ -831,11 +845,11 @@ if($argc == 1) {
 	$f($image_name);
 
 
-// the package function is defined with three arguments:
-// (platform, version, image_name)
+// the package function is defined with two arguments:
+// (platform, image_name)
 } else if($argv[1] == "package") {
 	// construct an absolute path to the image
-	$image_name = $dirs['images']. "/" . rtrim($argv[4], "/");
+	$image_name = $dirs['images']. "/" . rtrim($argv[3], "/");
 	// not a valid image, show usage
 	if(!file_exists($image_name)) {
 		_usage(5);
@@ -843,11 +857,11 @@ if($argc == 1) {
 	// we're packaging all platforms go right ahead
 	if($argv[2] == "all") {
 		foreach($platforms as $platform) {
-			package($platform, $argv[3], $image_name);			
+			package($platform, $image_name);			
 		}
 	// check the specific platform before attempting to package
 	} else if(in_array($argv[2], $platforms)) {
-		package($argv[2], $argv[3], $image_name);
+		package($argv[2], $image_name);
 	// not a valid package command...
 	} else {
 		_usage(3);
