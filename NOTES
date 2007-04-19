@@ -1,5 +1,4 @@
 Priorities:
- - get cdr's clogging
  - get NAT / STUN conf working
    - note: might need to re-add dyndns support
  - get "advanced mode" working
@@ -34,6 +33,9 @@ Clean-Ups:
  - better field checks
  - trim down scriptaculous
  - gui needs to confirm deletes!
+ - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
+ - console screen should fill window
+ - url given in console menu should match port given in gui
 
 -----------------------------------------------------------------------
 
