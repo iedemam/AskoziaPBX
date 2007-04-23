@@ -102,7 +102,7 @@ if ($_GET['act'] == "del") {
 			<?=htmlspecialchars($sp['descr']);?>&nbsp;
 		</td>
 		<td valign="middle" nowrap class="list"> <a href="phones_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="phones_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP phone?"><img src="x.gif" title="delete SIP phone" width="17" height="17" border="0"></a></td>
+           &nbsp;<a href="phones_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP phone?')"><img src="x.gif" title="delete SIP phone" width="17" height="17" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 

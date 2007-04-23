@@ -99,7 +99,7 @@ if ($_GET['act'] == "del") {
 		<td class="listr"><?=htmlspecialchars($sp['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['host']);?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"> <a href="providers_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="providers_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP provider?"><img src="x.gif" title="delete SIP provider" width="17" height="17" border="0"></a></td>
+           &nbsp;<a href="providers_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP provider?')"><img src="x.gif" title="delete SIP provider" width="17" height="17" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 

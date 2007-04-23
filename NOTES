@@ -5,6 +5,7 @@ Priorities:
    - note: whole conf files encoded in base64 and stored in xml conf
    - note: editor needs work
  - stop loading sound files into memory, link to an actual piece of the CF
+ - apply changes as soon as possible where possible (remove "apply")
  - get image signing working
  - remove junk from manager output
  - cleanups!
@@ -34,7 +35,6 @@ Clean-Ups:
  - handle tones better in extensions.inc
  - better field checks
  - trim down scriptaculous
- - gui needs to confirm deletes!
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
  - console screen should fill window
  - url given in console menu should match port given in gui

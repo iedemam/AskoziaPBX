@@ -157,7 +157,7 @@ EOD;
 		$conf .= "nat=no\n";
 		$conf .= "qualify=30000\n";
 		$conf .= "canreinvite=no\n";
-		$conf .= "insecure=very\n";
+		$conf .= "insecure=port,invite\n";
 		$conf .= "disallow=all\n";
 	
 		if(is_array($sp['codec'])) {
