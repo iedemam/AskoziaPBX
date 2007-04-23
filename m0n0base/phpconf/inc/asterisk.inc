@@ -41,8 +41,7 @@ function asterisk_start() {
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 	
 	$res = 0;
-	$res |= asterisk_sip_conf_generate();
-	$res |= asterisk_extensions_conf_generate();
+	$res |= asterisk_configure();
 	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {
@@ -52,6 +51,15 @@ function asterisk_start() {
 			echo "failed\n";
 	}
 
+	return $res;
+}
+
+function asterisk_configure() {
+	
+	$res = 0;
+	$res |= asterisk_sip_conf_generate();
+	$res |= asterisk_extensions_conf_generate();
+	
 	return $res;
 }
 

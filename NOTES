@@ -4,6 +4,7 @@ Priorities:
  - get "advanced mode" working
    - note: whole conf files encoded in base64 and stored in xml conf
    - note: editor needs work
+ - stop loading sound files into memory, link to an actual piece of the CF
  - remove junk from manager output
  - cleanups!
 
@@ -36,6 +37,9 @@ Clean-Ups:
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
  - console screen should fill window
  - url given in console menu should match port given in gui
+ - move cpu/traffic graphs back to status
+ - fix logo width
+ - update all (C) tags
 
 -----------------------------------------------------------------------
 

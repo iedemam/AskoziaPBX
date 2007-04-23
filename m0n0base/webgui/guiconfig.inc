@@ -110,6 +110,12 @@ $video_codecs = array(
 	"h264" => "H.264"
 );
 
+$topologies = array(
+	"public" => "Public IP address",
+	"natstatic" => "NAT, static external IP",
+	"natdynamichost" => "NAT, dynamic external IP"
+);
+
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	

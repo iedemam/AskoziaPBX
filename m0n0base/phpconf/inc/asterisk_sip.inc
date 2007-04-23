@@ -92,7 +92,7 @@ function asterisk_sip_conf_generate() {
 	}
 	
 	$port = "5060";
-	if(isset($config['services']['sip']['port']))
+	if (isset($config['services']['sip']['port']))
 		$port = $config['services']['sip']['port'];
 
 	$conf = <<<EOD
@@ -106,18 +106,20 @@ srvlookup=yes
 useragent=AskoziaPBX
 videosupport=yes
 
-;----------------------------------------- NAT SUPPORT ------------------------
-;externip = 200.201.202.203	; Address that we're going to put in outbound SIP
-;externhost=foo.dyndns.net	; Alternatively you can specify an 
-;externrefresh=10		; How often to refresh externhost if 
-;localnet=192.168.0.0/255.255.0.0; All RFC 1918 addresses are local networks
-;localnet=10.0.0.0/255.0.0.0	; Also RFC1918
-;localnet=172.16.0.0/12		; Another RFC1918 with CIDR notation
-;localnet=169.254.0.0/255.255.0.0 ;Zero conf local network
-;nat=no				; Global NAT settings  (Affects all peers and users)
 
 EOD;
 
+	$lancfg = $config['interfaces']['lan'];
+
+	if ($lancfg['topology'] == "natstatic") {
+		$conf .= "externip=" . $lancfg['extipaddr'] . "\n";
+		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
+	} else if ($lancfg['topology'] == "natdynamic") {
+		$conf .= "externhost=" . $lancfg['externhost'] . "\n";
+		$conf .= "externrefresh=10\n";
+		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
+	}
+	
 	$conf .= "\n\n";
 	
 	// providers
@@ -153,7 +155,7 @@ EOD;
 		$conf .= "context={$sp['uniqid']}\n";
 		$conf .= "host={$sp['host']}\n";
 		$conf .= "nat=no\n";
-		$conf .= "qualify=60000\n";
+		$conf .= "qualify=30000\n";
 		$conf .= "canreinvite=no\n";
 		$conf .= "insecure=very\n";
 		$conf .= "disallow=all\n";
@@ -181,8 +183,9 @@ EOD;
 		$conf .= "context={$sp['uniqid']}\n";
 		$conf .= "callerid=\"{$sp['callerid']}\" <{$sp['extension']}>\n";
 		$conf .= "host=dynamic\n";
-		$conf .= "nat=yes\n";
-		$conf .= "qualify=60000\n";
+		if ($lancfg['topology'] != "public")
+			$conf .= "nat=yes\n";
+		$conf .= "qualify=30000\n";
 		$conf .= "canreinvite=no\n";
 		$conf .= "disallow=all\n";
 	

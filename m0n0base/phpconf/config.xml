@@ -9,7 +9,6 @@
 		<domain>local</domain>
 		<dnsserver>141.41.1.150</dnsserver>
 		<dnsserver>141.41.1.250</dnsserver>		
-		<dnsallowoverride/>
 		<username>admin</username>
 		<password>$1$uRCWrAae$JD3lKuONsFj/675FnBrjU/</password>
 		<timezone>Etc/UTC</timezone>
