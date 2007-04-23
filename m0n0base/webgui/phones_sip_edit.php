@@ -89,10 +89,7 @@ if ($_POST) {
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}
-	/* TODO
-	if (!count(array_intersect($ace, array_keys($audio_codecs)))) {
-		$input_errors[] = "An audio codec must be specified.";
-	}*/
+
 
 	if (!$input_errors) {
 		$sp = array();
@@ -164,6 +161,7 @@ function typesel_change() {
 				<? foreach ($a_providers as $provider): ?>
 					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <?php if (in_array($provider['uniqid'], $pconfig['provider'])) echo "checked"; ?>><?=$provider['name']?><br>
 				<? endforeach; ?>
+				&nbsp;
 				</td>
 			</tr>
 			<tr> 

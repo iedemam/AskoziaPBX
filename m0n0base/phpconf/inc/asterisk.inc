@@ -154,5 +154,6 @@ function asterisk_uniqid_to_dial($uniqid) {
 	
 	return $dial . $phone['extension'];
 }
+
 	
 ?>

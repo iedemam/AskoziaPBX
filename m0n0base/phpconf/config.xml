@@ -7,8 +7,7 @@
 	<system>
 		<hostname>AskoziaPBX</hostname>
 		<domain>local</domain>
-		<dnsserver>141.41.1.150</dnsserver>
-		<dnsserver>141.41.1.250</dnsserver>		
+		<dnsserver>192.168.1.1</dnsserver>
 		<username>admin</username>
 		<password>$1$uRCWrAae$JD3lKuONsFj/675FnBrjU/</password>
 		<timezone>Etc/UTC</timezone>
@@ -36,11 +35,11 @@
 	<interfaces>
 		<lan>
 			<if>sis0</if>
-			<ipaddr>141.41.40.56</ipaddr>
+			<ipaddr>192.168.1.2</ipaddr>
 			<subnet>24</subnet>
 			<media></media>
 			<mediaopt></mediaopt>
-			<gateway>141.41.40.1</gateway>
+			<gateway>192.168.1.1</gateway>
 		</lan>
 	</interfaces>
 	<staticroutes>

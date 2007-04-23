@@ -112,8 +112,8 @@ $video_codecs = array(
 
 $topologies = array(
 	"public" => "Public IP address",
-	"natstatic" => "NAT, static external IP",
-	"natdynamichost" => "NAT, dynamic external IP"
+	"natstatic" => "NAT + static public IP",
+	"natdynamichost" => "NAT + dynamic public IP"
 );
 
 

@@ -5,6 +5,7 @@ Priorities:
    - note: whole conf files encoded in base64 and stored in xml conf
    - note: editor needs work
  - stop loading sound files into memory, link to an actual piece of the CF
+ - get image signing working
  - remove junk from manager output
  - cleanups!
 
@@ -39,6 +40,7 @@ Clean-Ups:
  - url given in console menu should match port given in gui
  - move cpu/traffic graphs back to status
  - fix logo width
+ - vcheck.php on server needs help and so does the firmware query page
  - update all (C) tags
 
 -----------------------------------------------------------------------

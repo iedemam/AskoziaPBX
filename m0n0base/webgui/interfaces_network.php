@@ -114,6 +114,26 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script language="JavaScript">
+<!--
+function type_change() {
+	switch (document.iform.topology.selectedIndex) {
+		case 0:
+			document.iform.extipaddr.disabled = 1;
+			document.iform.exthostname.disabled = 1;	
+			break;
+		case 1:
+			document.iform.extipaddr.disabled = 0;
+			document.iform.exthostname.disabled = 1;	
+			break;
+		case 2:
+			document.iform.extipaddr.disabled = 1;
+			document.iform.exthostname.disabled = 0;	
+			break;
+	}
+}
+//-->
+</script>
 <form action="interfaces_network.php" method="post" name="iform" id="iform">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
@@ -157,8 +177,7 @@ if ($_POST) {
 	<tr> 
 		<td width="22%" valign="top" class="vncellreq">Topology</td>
 		<td width="78%" class="vtable">
-			<select name="topology" class="formfld" id="topology">
-				<option></option>
+			<select name="topology" class="formfld" id="topology" onchange="type_change()">
 				<?php foreach ($topologies as $topo => $tfriendly): ?>
 				<option value="<?=$topo;?>" <?php if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
 				<?php endforeach; ?>
@@ -166,19 +185,15 @@ if ($_POST) {
 		</td>
 	</tr>	
 	<tr> 
-		<td width="22%" valign="top" class="vncell">External IP address</td>
+		<td width="22%" valign="top" class="vncell">Public IP address</td>
 		<td width="78%" class="vtable">
 			<input name="extipaddr" type="text" class="formfld" id="extipaddr" size="20" value="<?=htmlspecialchars($pconfig['extipaddr']);?>">
-			<br>
-			<span class="vexpl">Static external IP</span>
 		</td>
 	</tr>
 	<tr>
-		<td width="22%" valign="top" class="vncell">External hostname</td>
+		<td width="22%" valign="top" class="vncell">Public hostname</td>
 		<td width="78%" class="vtable">
 			<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>">
-			<br>
-			<span class="vexpl">External hostname to lookup dynamic IPs</span>
 		</td>
 	</tr>
 	<tr> 
@@ -203,4 +218,9 @@ if ($_POST) {
 	</tr>
 </table>
 </form>
+<script language="JavaScript">
+<!--
+type_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>
