@@ -31,6 +31,8 @@
 
 require_once("functions.inc");
 
+$needs_scriptaculous = true;
+
 $pgtitle = array("Providers", "SIP", "Edit Account");
 require("guiconfig.inc");
 

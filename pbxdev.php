@@ -41,6 +41,7 @@ $dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
 $asterisk_version = "asterisk-1.4.2";
+$ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
 
 
 // --[ image sizes ]-----------------------------------------------------------
@@ -281,6 +282,29 @@ function build_asterisk() {
 }
 
 
+$h["build ezipupdate"] = "(re)builds and patches ez-ipupdate (dynamic dns update client)";
+function build_ezipupdate() {
+	global $dirs, $ez_ipupdate_version;
+	
+	if(!file_exists($dirs['packages'] ."/$ez_ipupdate_version")) {
+		_exec("cd ". $dirs['packages'] ."; ".
+				"fetch http://dyn.pl/client/UNIX/ez-ipupdate/$ez_ipupdate_version.tar.gz; ".
+				"tar zxf $ez_ipupdate_version.tar.gz");
+		_log("fetched and untarred $ez_ipupdate_version");
+	}
+	if(!_is_patched($ez_ipupdate_version)) {
+		_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
+				"patch < ". $dirs['patches'] ."/packages/ez-ipupdate.c.patch");
+		_stamp_package_as_patched($ez_ipupdate_version);
+	}	
+	_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
+			"./configure; ".
+			"make");
+
+	_log("built ez-ipupdate");
+}
+
+
 $h["build msntp"] = "(re)builds msntp (NTP client)";
 function build_msntp() {
 	
@@ -322,6 +346,7 @@ function build_packages() {
 
 	build_php();
 	build_minihttpd();
+	build_ezipupdate();
 }
 
 $h["build ports"] = "(re)builds all necessary ports";
@@ -462,13 +487,24 @@ function populate_msntp($image_name) {
 }
 
 
+$h["populate ezipupdate"] = "adds ez-ipupdate (dynamic dns client) to the given \"image_name\"";
+function populate_ezipupdate($image_name) {
+	global $dirs, $ez_ipupdate_version;
+	
+	_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
+		"install -s ez-ipupdate $image_name/usr/local/bin");
+	
+	_log("added ez-ipupdate");
+}
+
+
 function populate_asterisk($image_name) {
 	global $dirs, $asterisk_version;
 	
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
 		
-	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm x queue-* agent-*");
+	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm x queue-* agent-* vm-*");
 	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm LICENSE* *.wav fpm-c*.gsm fpm-w*.gsm");
 	_exec("rm -rf $image_name/usr/local/include");
 }
@@ -532,6 +568,7 @@ function populate_everything($image_name) {
 	populate_php($image_name);
 	populate_minihttpd($image_name);
 	populate_msntp($image_name);
+	populate_ezipupdate($image_name);
 	populate_asterisk($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);

@@ -29,6 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require_once("functions.inc");
+
+$needs_scriptaculous = true;
 
 $pgtitle = array("Phones", "SIP", "Edit Account");
 require("guiconfig.inc");

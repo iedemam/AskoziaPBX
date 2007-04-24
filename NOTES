@@ -56,7 +56,6 @@ Horizon:
  - debug dev-page for interface
 
 Today:
- - trim down scriptaculous
  - stop loading sound files into memory, link to an actual piece of the CF
  - apply changes as soon as possible where possible (remove "apply")
  - re-add dyndns support

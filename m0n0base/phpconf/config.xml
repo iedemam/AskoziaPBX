@@ -42,6 +42,27 @@
 			<gateway>192.168.1.1</gateway>
 		</lan>
 	</interfaces>
+	<dyndns>
+		<!-- <enable/> -->
+		<type>dyndns</type>
+		<username></username>
+		<password></password>
+		<host></host>
+		<mx></mx>
+		<!-- <wildcard/> -->
+		<server></server>
+		<port></port>
+	</dyndns>
+	<dnsupdate>
+		<!--
+		<enable/>
+		<host></host>
+		<ttl></ttl>
+		<keyname></keyname>
+		<keydata></keydata>
+		</usetcp>
+		-->
+	</dnsupdate>	
 	<staticroutes>
 		<!--
 		<route>

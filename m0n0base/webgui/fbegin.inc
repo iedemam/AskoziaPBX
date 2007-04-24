@@ -120,6 +120,7 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 //$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
 /* Services */
+$menu['Services']['Dynamic DNS']		= array('services_dyndns.php');
 $menu['Services']['SIP'] 				= array('services_sip.php');
 //$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
 //$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
@@ -155,8 +156,10 @@ $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 <head>
 <title><?=genhtmltitle($pgtitle);?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<?php if ($needs_scriptaculous) :?>
 <script src="prototype.js" type="text/javascript"></script>
-<script src="scriptaculous.js" type="text/javascript"></script>
+<script src="scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
+<?php endif; ?>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 

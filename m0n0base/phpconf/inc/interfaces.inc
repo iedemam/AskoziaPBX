@@ -82,6 +82,12 @@ function interfaces_lan_configure() {
 	if (!$g['booting']) {
 		/* reconfigure static routes (kernel may have deleted them) */
 		system_routing_configure();
+		
+		/* restart ez-ipupdate */
+		services_dyndns_configure();
+		
+		/* force DNS update */
+		services_dnsupdate_process();		
 	}
 	
 	if ($g['booting'])
@@ -90,14 +96,27 @@ function interfaces_lan_configure() {
 	return 0;
 }
 
+function get_current_public_address() {
+	global $config, $g;
+	
+	$lancfg = $config['interfaces']['lan'];
+	
+	if ($lancfg['topology'] == "public")
+	 	return $lancfg['ipaddr'];
+	else if ($lancfg['topology'] == "natstatic")
+		return $lancfg['extipaddr'];
+		
+	/* else.. TODO: get STUN public info */
+}
+
 function get_interface_mac($interface) {
   
-        /* build interface list with netstat */
-        exec("/usr/bin/netstat -I $interface -nW -f link", $linkinfo);
-        array_shift($linkinfo);
-        $alink = preg_split("/\s+/", $linkinfo[0]);
-        $mac = chop($alink[3]);
-        return $mac;
+	/* build interface list with netstat */
+	exec("/usr/bin/netstat -I $interface -nW -f link", $linkinfo);
+	array_shift($linkinfo);
+	$alink = preg_split("/\s+/", $linkinfo[0]);
+	$mac = chop($alink[3]);
+	return $mac;
 }
 
 ?>
