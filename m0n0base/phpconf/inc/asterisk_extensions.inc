@@ -48,9 +48,22 @@ exten => s,2,Hangup()
 
 [internal]
 exten => _XXXX,1,Macro(internal|$\{EXTEN}|SIP/$\{EXTEN})
-exten => 512,1,Answer()
-exten => 512,2,Echo()
-exten => 512,3,Hangup()
+
+exten => 00001,1,Answer()
+exten => 00001,2,Playback(tt-monkeys)
+exten => 00001,3,Hangup()
+
+exten => 00002,1,Answer()
+exten => 00002,2,Playback(tt-somethingwrong)
+exten => 00002,3,Hangup()
+
+exten => 00003,1,Answer()
+exten => 00003,2,Playback(tt-weasels)
+exten => 00003,3,Hangup()
+
+exten => 00003246,1,Answer()
+exten => 00003246,2,Echo()
+exten => 00003246,3,Hangup()
 
 EOD;
 

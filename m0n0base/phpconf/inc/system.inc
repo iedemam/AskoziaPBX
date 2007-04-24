@@ -174,25 +174,27 @@ function system_syslogd_start() {
 		}
 		
 		$syslogconf = <<<EOD
-*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local3.none;local4.none;local7.none %/var/log/system.log
-security.*					%/var/log/system.log
+local0.*								%/var/log/asterisk.log
+local1.*								%/var/log/cdr.log
+*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local1.none; %/var/log/system.log
+security.*								%/var/log/system.log
 auth.info;authpriv.info;daemon.info		%/var/log/system.log
-local0.*					%/var/log/asterisk.log
-*.emerg						*
+*.emerg									*
 
 EOD;
 
-		if (isset($syslogcfg['system'])) {
+		if (isset($syslogcfg['asterisk'])) {
 			$syslogconf .= <<<EOD
-*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local3.none;local4.none;local7.none @{$syslogcfg['remoteserver']}
-security.*					@{$syslogcfg['remoteserver']}
-auth.info;authpriv.info;daemon.info		@{$syslogcfg['remoteserver']}
-*.emerg						@{$syslogcfg['remoteserver']}
+local0.*								@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
-		
-		// TODO: remote logging for asterisk needs to be setup
+		if (isset($syslogcfg['cdr'])) {
+			$syslogconf .= <<<EOD
+local1.*								@{$syslogcfg['remoteserver']}
+
+EOD;
+		}
 
 		fwrite($fd, $syslogconf);
 		fclose($fd);
