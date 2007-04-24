@@ -66,13 +66,7 @@ function system_hosts_generate() {
 	
 	$syscfg = $config['system'];
 	$lancfg = $config['interfaces']['lan'];
-	$dnsmasqcfg = $config['dnsmasq'];
 
-	if (!is_array($dnsmasqcfg['hosts'])) {
-		$dnsmasqcfg['hosts'] = array();
-	}
-	$hostscfg = $dnsmasqcfg['hosts'];
-	
 	$fd = fopen("{$g['varetc_path']}/hosts", "w");
 	if (!$fd) {
 		printf("Error: cannot open hosts file in system_hosts_generate().\n");
@@ -85,12 +79,6 @@ function system_hosts_generate() {
 
 EOD;
 	
-	foreach ($hostscfg as $host) {
-		if ($host['host'])
-			$hosts .= "{$host['ip']}	{$host['host']}.{$host['domain']} {$host['host']}\n";
-		else
-			$hosts .= "{$host['ip']}	{$host['domain']}\n";
-	}
 	fwrite($fd, $hosts);
 	fclose($fd);
 	

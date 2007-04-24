@@ -59,3 +59,5 @@ Today:
  - stop loading sound files into memory, link to an actual piece of the CF
  - apply changes as soon as possible where possible (remove "apply")
  - re-add dyndns support
+   - need to change daemon behavior
+   - "-a" flag manual updates + stun needed
