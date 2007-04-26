@@ -4,6 +4,12 @@ Priorities:
    - note: editor needs work
  - get image signing working
  - remove junk from manager output
+ - merge m0n0base and files
+ - stop loading sound files into memory, link to an actual piece of the CF
+ - apply changes as soon as possible where possible (remove "apply")
+ - re-add dyndns support
+   - need to change daemon behavior
+   - "-a" flag manual updates + stun needed
  - cleanups!
 
 First Public Beta
@@ -56,8 +62,3 @@ Horizon:
  - debug dev-page for interface
 
 Today:
- - stop loading sound files into memory, link to an actual piece of the CF
- - apply changes as soon as possible where possible (remove "apply")
- - re-add dyndns support
-   - need to change daemon behavior
-   - "-a" flag manual updates + stun needed

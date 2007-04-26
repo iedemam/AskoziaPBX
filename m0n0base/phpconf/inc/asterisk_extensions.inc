@@ -65,6 +65,11 @@ exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()
 exten => 00003246,3,Hangup()
 
+exten => 000064554,1,Answer()
+exten => 000064554,2,Milliwatt()
+exten => 000064554,3,Hangup()
+
+
 EOD;
 
 	$conf .= "\n\n";

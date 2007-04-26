@@ -31,11 +31,6 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 
-
-// Please set me to the path you checked out the m0n0wall FreeBSD 6 branch to.
-$dirs['mwroot'] = "/root/pbx-trunk/m0n0base";	// no trailing slash please!
-//$dirs['mwroot'] = "/Users/michael/Code/pbx-trunk/m0n0base";	// no trailing slash please!
-
 // --[ package versions ]------------------------------------------------------
 
 $php_version = "php-4.4.6";
@@ -61,14 +56,15 @@ $platforms = explode(" ", $platform_list);
 // --[ sanity checks and env info ]--------------------------------------------
 
 $dirs['pwd'] = rtrim(shell_exec("pwd"), "\n");
+$dirs['mwroot'] = $dirs['pwd']. "/m0n0base";
 $dirs['boot'] = $dirs['mwroot'] . "/build/boot";
 $dirs['kernelconfigs'] = $dirs['mwroot'] . "/build/kernelconfigs";
 $dirs['minibsd'] = $dirs['mwroot'] . "/build/minibsd";
 $dirs['patches'] = $dirs['mwroot'] . "/build/patches";
 $dirs['tools'] = $dirs['mwroot'] . "/build/tools";
-$dirs['etc'] = $dirs['mwroot'] . "/etc";
+$dirs['etc'] = $dirs['pwd'] . "/etc";
 $dirs['phpconf'] = $dirs['mwroot'] . "/phpconf";
-$dirs['webgui'] = $dirs['mwroot'] . "/webgui";
+$dirs['webgui'] = $dirs['pwd'] . "/webgui";
 $dirs['files'] = $dirs['pwd'] . "/files";
 
 // check to make sure that the directories we expect are there
@@ -503,9 +499,19 @@ function populate_asterisk($image_name) {
 	
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
-		
-	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm x queue-* agent-* vm-*");
-	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm LICENSE* *.wav fpm-c*.gsm fpm-w*.gsm");
+	
+	$sounds = explode(" ", "tt-monkeys tt-somethingwrong tt-weasels");
+	
+	_exec("mkdir /tmp/sounds");
+	foreach ($sounds as $sound) {
+		_exec("cp $image_name/usr/local/share/asterisk/sounds/$sound.* /tmp/sounds");
+	}
+	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm -rf *");
+	_exec("cp /tmp/sounds/* $image_name/usr/local/share/asterisk/sounds/");
+	_exec("rm -rf /tmp/sounds");
+	
+	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm *");
+	
 	_exec("rm -rf $image_name/usr/local/include");
 }
 

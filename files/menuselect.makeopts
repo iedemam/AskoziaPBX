@@ -8,9 +8,10 @@ MENUSELECT_PBX=pbx_ael pbx_dundi pbx_gtkconsole pbx_kdeconsole pbx_realtime
 MENUSELECT_RES=res_config_odbc res_config_pgsql res_convert res_crypto res_indications res_jabber res_odbc res_snmp res_speech 
 MENUSELECT_OPTS_app_voicemail=
 MENUSELECT_CFLAGS=LOADABLE_MODULES 
-MENUSELECT_EMBED=
+MENUSELECT_EMBED=apps cdr codecs formats funcs pbx res
 MENUSELECT_CORE_SOUNDS=CORE-SOUNDS-EN-GSM 
-MENUSELECT_MOH=MOH-FREEPLAY-GSM 
+#MENUSELECT_MOH=MOH-FREEPLAY-GSM 
+MENUSELECT_MOH=
 MENUSELECT_EXTRA_SOUNDS=
 MENUSELECT_DEPSFAILED=MENUSELECT_APPS=app_flash
 MENUSELECT_DEPSFAILED=MENUSELECT_APPS=app_meetme
