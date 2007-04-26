@@ -262,7 +262,7 @@ function build_asterisk() {
 		_exec("cd ". $dirs['packages'] ."/$asterisk_version; patch < ". $dirs['patches'] . 
 				"/packages/asterisk_makefile.patch");
 		_exec("cd ". $dirs['packages'] ."; patch < ". $dirs['patches'] . 
-				"/patches/asterisk_cdr_to_syslog.patch");				
+				"/packages/asterisk_cdr_to_syslog.patch");				
 		_stamp_package_as_patched($asterisk_version);
 	}
 	// clear stage
