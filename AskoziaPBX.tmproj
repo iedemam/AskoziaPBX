@@ -2,23 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>m0n0base/phpconf/inc/xmlparse.inc</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
-			<string>m0n0base</string>
+			<string>build</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
 			<key>sourceDirectory</key>
-			<string>m0n0base</string>
+			<string>build</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
+			<key>name</key>
+			<string>etc</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>etc</string>
+		</dict>
+		<dict>
 			<key>name</key>
 			<string>files</string>
 			<key>regexFolderFilter</key>
@@ -27,155 +29,41 @@
 			<string>files</string>
 		</dict>
 		<dict>
-			<key>filename</key>
-			<string>pbxdev.php</string>
-			<key>lastUsed</key>
-			<date>2007-04-26T12:59:51Z</date>
+			<key>name</key>
+			<string>phpconf</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>phpconf</string>
 		</dict>
 		<dict>
-			<key>filename</key>
-			<string>CHANGELOG</string>
-			<key>lastUsed</key>
-			<date>2007-04-18T09:42:28Z</date>
+			<key>name</key>
+			<string>webgui</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>webgui</string>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
-			<key>lastUsed</key>
-			<date>2007-04-26T09:01:40Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>CHANGELOG</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>pbxdev.php</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>242</integer>
 	<key>metaData</key>
-	<dict>
-		<key>NOTES</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>43</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>files/menuselect.makeopts</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>m0n0base/phpconf/inc/asterisk_extensions.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>68</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>40</integer>
-		</dict>
-		<key>m0n0base/phpconf/inc/interfaces.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>106</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>73</integer>
-		</dict>
-		<key>m0n0base/phpconf/inc/services.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>91</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>86</integer>
-		</dict>
-		<key>m0n0base/phpconf/inc/xmlparse.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>m0n0base/phpconf/rc.bootup</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>86</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>71</integer>
-		</dict>
-		<key>pbxdev.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>64</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>37</integer>
-		</dict>
-	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>NOTES</string>
-		<string>m0n0base/phpconf/inc/services.inc</string>
-		<string>m0n0base/phpconf/rc.bootup</string>
-		<string>m0n0base/phpconf/inc/interfaces.inc</string>
-		<string>pbxdev.php</string>
-		<string>m0n0base/phpconf/inc/xmlparse.inc</string>
-		<string>files/menuselect.makeopts</string>
-		<string>m0n0base/phpconf/inc/asterisk_extensions.inc</string>
-	</array>
+	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{23, 1}, {817, 777}}</string>
+	<string>{{22, 0}, {817, 777}}</string>
 </dict>
 </plist>

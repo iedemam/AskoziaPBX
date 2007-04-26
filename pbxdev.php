@@ -56,7 +56,6 @@ $platforms = explode(" ", $platform_list);
 // --[ sanity checks and env info ]--------------------------------------------
 
 $dirs['pwd'] = rtrim(shell_exec("pwd"), "\n");
-$dirs['mwroot'] = $dirs['pwd']. "/m0n0base";
 $dirs['boot'] = $dirs['pwd'] . "/build/boot";
 $dirs['kernelconfigs'] = $dirs['pwd'] . "/build/kernelconfigs";
 $dirs['minibsd'] = $dirs['pwd'] . "/build/minibsd";
