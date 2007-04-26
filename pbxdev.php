@@ -57,11 +57,11 @@ $platforms = explode(" ", $platform_list);
 
 $dirs['pwd'] = rtrim(shell_exec("pwd"), "\n");
 $dirs['mwroot'] = $dirs['pwd']. "/m0n0base";
-$dirs['boot'] = $dirs['mwroot'] . "/build/boot";
-$dirs['kernelconfigs'] = $dirs['mwroot'] . "/build/kernelconfigs";
-$dirs['minibsd'] = $dirs['mwroot'] . "/build/minibsd";
-$dirs['patches'] = $dirs['mwroot'] . "/build/patches";
-$dirs['tools'] = $dirs['mwroot'] . "/build/tools";
+$dirs['boot'] = $dirs['pwd'] . "/build/boot";
+$dirs['kernelconfigs'] = $dirs['pwd'] . "/build/kernelconfigs";
+$dirs['minibsd'] = $dirs['pwd'] . "/build/minibsd";
+$dirs['patches'] = $dirs['pwd'] . "/build/patches";
+$dirs['tools'] = $dirs['pwd'] . "/build/tools";
 $dirs['etc'] = $dirs['pwd'] . "/etc";
 $dirs['phpconf'] = $dirs['mwroot'] . "/phpconf";
 $dirs['webgui'] = $dirs['pwd'] . "/webgui";
