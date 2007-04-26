@@ -63,7 +63,7 @@ $dirs['minibsd'] = $dirs['pwd'] . "/build/minibsd";
 $dirs['patches'] = $dirs['pwd'] . "/build/patches";
 $dirs['tools'] = $dirs['pwd'] . "/build/tools";
 $dirs['etc'] = $dirs['pwd'] . "/etc";
-$dirs['phpconf'] = $dirs['mwroot'] . "/phpconf";
+$dirs['phpconf'] = $dirs['pwd'] . "/phpconf";
 $dirs['webgui'] = $dirs['pwd'] . "/webgui";
 $dirs['files'] = $dirs['pwd'] . "/files";
 
