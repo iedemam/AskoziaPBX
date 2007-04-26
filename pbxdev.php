@@ -129,7 +129,7 @@ $h["patch bootloader"] = "patches the bootloader to fix some problems with termi
 function patch_bootloader() {
 	global $dirs;
 	
-	_exec("cd /sys/boot/i386/libi386; patch < ". $dirs['files'] ."/libi386.patch");
+	_exec("cd /sys/boot/i386/libi386; patch < ". $dirs['patches'] ."/user/libi386.patch");
 	
 	_log("patched bootloader");
 }
@@ -259,16 +259,16 @@ function build_asterisk() {
 		_log("fetched and untarred $asterisk_version");
 	}
 	if(!_is_patched($asterisk_version)) {
-		_exec("cd ". $dirs['packages'] ."/$asterisk_version; patch < ". $dirs['files'] . 
-				"/asterisk_makefile.patch");
-		_exec("cd ". $dirs['packages'] ."; patch < ". $dirs['files'] . 
-				"/asterisk_cdr_to_syslog.patch");				
+		_exec("cd ". $dirs['packages'] ."/$asterisk_version; patch < ". $dirs['patches'] . 
+				"/packages/asterisk_makefile.patch");
+		_exec("cd ". $dirs['packages'] ."; patch < ". $dirs['patches'] . 
+				"/patches/asterisk_cdr_to_syslog.patch");				
 		_stamp_package_as_patched($asterisk_version);
 	}
 	// clear stage
 	_exec("rm -rf ". $dirs['packages'] ."/$asterisk_version/STAGE/*");
 	// copy make options
-	_exec("cp ". $dirs['files'] ."/menuselect.makeopts /etc/asterisk.makeopts");
+	_exec("cp ". $dirs['patches'] ."/packages/menuselect.makeopts /etc/asterisk.makeopts");
 	// reconfigure
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ./configure; ".
 		" gmake");
