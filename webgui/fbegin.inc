@@ -120,8 +120,8 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 //$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
 /* Services */
-$menu['Services']['Dynamic DNS']		= array('services_dyndns.php');
 $menu['Services']['SIP'] 				= array('services_sip.php');
+$menu['Services']['Dynamic DNS']		= array('services_dyndns.php');
 //$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
 //$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
 //$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
@@ -129,10 +129,12 @@ $menu['Services']['SIP'] 				= array('services_sip.php');
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
+$menu['Status']['Traffic Graph']		= array('status_graph_traffic.php');
+$menu['Status']['CPU Usage']			= array('status_graph_cpu.php');
+$menu['Status']['Interfaces']			= array('status_interfaces.php');
 //$menu['Status']['Providers']			= array('status_providers.php');
 //$menu['Status']['Phones']				= array('status_phones.php');
 //$menu['Status']['Channels']				= array('status_channels.php');
-$menu['Status']['Interfaces']			= array('status_interfaces.php');
 //$menu['Status']['Voicemail']			= array('status_voicemail.php');
 
 
@@ -141,8 +143,6 @@ $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 												'diag_logs_asterisk.php',
 												'diag_logs_calls.php',
 							  					'diag_logs_settings.php');
-$menu['Diagnostics']['Traffic Graph']	= array('diag_trafficgraph.php');
-$menu['Diagnostics']['CPU Usage']		= array('diag_cpugraph.php');
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');

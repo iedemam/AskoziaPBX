@@ -110,7 +110,7 @@ if ($_POST) {
 			  <tr> 
                 <td width="25%" class="vncellt">CPU usage</td>
                 <td width="75%" class="listr">
-				<a href="diag_cpugraph.php">view graph</a></td>
+				<a href="status_graph_cpu.php">view graph</a></td>
               </tr>
 			  <tr> 
                 <td width="25%" class="vncellt">Memory usage</td>
