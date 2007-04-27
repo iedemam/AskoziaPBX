@@ -121,7 +121,7 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 											
 /* Services */
 $menu['Services']['SIP'] 				= array('services_sip.php');
-$menu['Services']['Dynamic DNS']		= array('services_dyndns.php');
+//$menu['Services']['Dynamic DNS']		= array('services_dyndns.php');
 //$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
 //$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
 //$menu['Services']['Conferencing'] 		= array('services_conferencing.php');

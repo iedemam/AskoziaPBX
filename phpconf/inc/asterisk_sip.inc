@@ -104,11 +104,15 @@ bindport=$port
 bindaddr=0.0.0.0
 srvlookup=yes
 useragent=AskoziaPBX
+relaxdtmf=yes
+dtmfmode=auto
+alwaysauthreject=yes
 videosupport=yes
 
 
 EOD;
 
+	// nat config
 	$lancfg = $config['interfaces']['lan'];
 
 	if ($lancfg['topology'] == "natstatic") {

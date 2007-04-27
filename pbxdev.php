@@ -36,7 +36,7 @@
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
 $asterisk_version = "asterisk-1.4.3";
-$ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
+//$ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
 
 
 // --[ image sizes ]-----------------------------------------------------------
@@ -276,7 +276,7 @@ function build_asterisk() {
 	_log("built asterisk");
 }
 
-
+/*
 $h["build ezipupdate"] = "(re)builds and patches ez-ipupdate (dynamic dns update client)";
 function build_ezipupdate() {
 	global $dirs, $ez_ipupdate_version;
@@ -297,7 +297,7 @@ function build_ezipupdate() {
 			"make");
 
 	_log("built ez-ipupdate");
-}
+}*/
 
 
 $h["build msntp"] = "(re)builds msntp (NTP client)";
@@ -316,8 +316,9 @@ function build_tools() {
 	_exec("cd ". $dirs['tools'] ."; gcc -o stats.cgi stats.c");
 	_log("built stats.cgi");
 	
+	/*
 	_exec("cd ". $dirs['tools'] ."; gcc -o minicron minicron.c");
-	_log("built minicron");
+	_log("built minicron");*/
 	
 	_exec("cd ". $dirs['tools'] ."; gcc -o verifysig -lcrypto verifysig.c");
 	_log("built verifysig");
@@ -341,7 +342,7 @@ function build_packages() {
 
 	build_php();
 	build_minihttpd();
-	build_ezipupdate();
+	//build_ezipupdate();
 }
 
 $h["build ports"] = "(re)builds all necessary ports";
@@ -481,7 +482,7 @@ function populate_msntp($image_name) {
 	_log("added msntp");
 }
 
-
+/*
 $h["populate ezipupdate"] = "adds ez-ipupdate (dynamic dns client) to the given \"image_name\"";
 function populate_ezipupdate($image_name) {
 	global $dirs, $ez_ipupdate_version;
@@ -490,7 +491,7 @@ function populate_ezipupdate($image_name) {
 		"install -s ez-ipupdate $image_name/usr/local/bin");
 	
 	_log("added ez-ipupdate");
-}
+}*/
 
 
 function populate_asterisk($image_name) {
@@ -519,9 +520,16 @@ $h["populate tools"] = "adds the m0n0wall \"helper tools\" to the given \"image_
 function populate_tools($image_name) {
 	global $dirs;
 	
+	/*
 	_exec("cd ". $dirs['tools'] ."; ".
 		"install -s stats.cgi $image_name/usr/local/www; ".
 		"install -s minicron $image_name/usr/local/bin; ".
+		"install -s verifysig $image_name/usr/local/bin; ".
+		"install -s wrapresetbtn $image_name/usr/local/sbin; ".		
+		"install runmsntp.sh $image_name/usr/local/bin");*/
+
+	_exec("cd ". $dirs['tools'] ."; ".
+		"install -s stats.cgi $image_name/usr/local/www; ".
 		"install -s verifysig $image_name/usr/local/bin; ".
 		"install -s wrapresetbtn $image_name/usr/local/sbin; ".		
 		"install runmsntp.sh $image_name/usr/local/bin");
@@ -573,7 +581,7 @@ function populate_everything($image_name) {
 	populate_php($image_name);
 	populate_minihttpd($image_name);
 	populate_msntp($image_name);
-	populate_ezipupdate($image_name);
+	//populate_ezipupdate($image_name);
 	populate_asterisk($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
@@ -582,7 +590,7 @@ function populate_everything($image_name) {
 }
 
 // TODO: this is quite large and ugly
-$h["package"] = "package the specified image directory into an .img for the specified platform and stamp as version (i.e. package generic-pc 1.3b2copy testimage)";
+$h["package"] = "package the specified image directory into an .img for the specified platform and stamp as version (i.e. package generic-pc testimage)";
 function package($platform, $image_name) {
 	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size;
 	
