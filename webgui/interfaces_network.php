@@ -105,7 +105,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval = interfaces_lan_configure();
-			$retval |= asterisk_start();
+			$retval |= asterisk_configure();
 			$retval |= system_resolvconf_generate();			
 			config_unlock();
 		}

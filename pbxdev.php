@@ -36,7 +36,7 @@
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
 $asterisk_version = "asterisk-1.4.3";
-//$ez_ipupdate_version = "ez-ipupdate-3.0.11b8";
+$zaptel_version = "zaptel-1.4";
 
 
 // --[ image sizes ]-----------------------------------------------------------
@@ -270,34 +270,43 @@ function build_asterisk() {
 	// copy make options
 	_exec("cp ". $dirs['patches'] ."/packages/menuselect.makeopts /etc/asterisk.makeopts");
 	// reconfigure
-	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ./configure; ".
-		" gmake");
+	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ./configure; gmake");
 		
 	_log("built asterisk");
 }
 
-/*
-$h["build ezipupdate"] = "(re)builds and patches ez-ipupdate (dynamic dns update client)";
-function build_ezipupdate() {
-	global $dirs, $ez_ipupdate_version;
+function build_zaptel() {
+	global $dirs, $zaptel_version;
 	
-	if(!file_exists($dirs['packages'] ."/$ez_ipupdate_version")) {
-		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://dyn.pl/client/UNIX/ez-ipupdate/$ez_ipupdate_version.tar.gz; ".
-				"tar zxf $ez_ipupdate_version.tar.gz");
-		_log("fetched and untarred $ez_ipupdate_version");
+	if (!file_exists($dirs['packages'] ."/$zaptel_version")) {
+		_exec("cd ". $dirs['packages'] ."; svn co --username svn --password svn https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 $zaptel_version");
+		_log("checked out $zaptel_version");
+	} else {
+		_exec("cd ". $dirs['packages'] ."/$zaptel_version; svn update");
+		_log("updated $zaptel_version");
 	}
-	if(!_is_patched($ez_ipupdate_version)) {
-		_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
-				"patch < ". $dirs['patches'] ."/packages/ez-ipupdate.c.patch");
-		_stamp_package_as_patched($ez_ipupdate_version);
-	}	
-	_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
-			"./configure; ".
-			"make");
+	// remove old headers if they're around
+	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
+	
+	// make new directory for moved zaptel headers
+	if (!file_exists("/usr/local/include/zaptel/")) {
+		_exec("mkdir /usr/local/include/zaptel");
+	}
+	// copy over header files
+	_exec("cd " .$dirs['packages'] . "/$zaptel_version/; ".
+		"cp zaptel/zaptel.h ztcfg/tonezone.h /usr/local/include/zaptel/");
+	
+	_exec("cd ". $dirs['packages'] ."/$zaptel_version; make clean");
+	_exec("cd ". $dirs['packages'] ."/$zaptel_version; make");
 
-	_log("built ez-ipupdate");
-}*/
+	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE");
+	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE/bin");
+	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE/lib");
+	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE/etc");
+	
+	_exec("cd ". $dirs['packages'] ."/$zaptel_version; make install PREFIX=".
+		$dirs['packages'] ."/$zaptel_version/STAGE");
+}
 
 
 $h["build msntp"] = "(re)builds msntp (NTP client)";
@@ -342,7 +351,8 @@ function build_packages() {
 
 	build_php();
 	build_minihttpd();
-	//build_ezipupdate();
+	build_zaptel();
+	build_asterisk();
 }
 
 $h["build ports"] = "(re)builds all necessary ports";
@@ -482,17 +492,6 @@ function populate_msntp($image_name) {
 	_log("added msntp");
 }
 
-/*
-$h["populate ezipupdate"] = "adds ez-ipupdate (dynamic dns client) to the given \"image_name\"";
-function populate_ezipupdate($image_name) {
-	global $dirs, $ez_ipupdate_version;
-	
-	_exec("cd ". $dirs['packages'] ."/$ez_ipupdate_version; ".
-		"install -s ez-ipupdate $image_name/usr/local/bin");
-	
-	_log("added ez-ipupdate");
-}*/
-
 
 function populate_asterisk($image_name) {
 	global $dirs, $asterisk_version;
@@ -500,19 +499,25 @@ function populate_asterisk($image_name) {
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
 	
-	$sounds = explode(" ", "tt-monkeys tt-somethingwrong tt-weasels");
+	$sounds = explode(" ", "tt-monkeys tt-somethingwrong tt-weasels conf-*");
 	
 	_exec("mkdir /tmp/sounds");
 	foreach ($sounds as $sound) {
 		_exec("cp $image_name/usr/local/share/asterisk/sounds/$sound.* /tmp/sounds");
 	}
-	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm -rf *");
+	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm -f *.* x");
 	_exec("cp /tmp/sounds/* $image_name/usr/local/share/asterisk/sounds/");
 	_exec("rm -rf /tmp/sounds");
-	
 	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm *");
 	
 	_exec("rm -rf $image_name/usr/local/include");
+}
+
+
+function populate_zaptel($image_name) {
+	global $dirs, $zaptel_version;
+	
+	_log("placeholder for zaptel population");
 }
 
 
@@ -581,7 +586,7 @@ function populate_everything($image_name) {
 	populate_php($image_name);
 	populate_minihttpd($image_name);
 	populate_msntp($image_name);
-	//populate_ezipupdate($image_name);
+	populate_zaptel($image_name);
 	populate_asterisk($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
@@ -592,7 +597,7 @@ function populate_everything($image_name) {
 // TODO: this is quite large and ugly
 $h["package"] = "package the specified image directory into an .img for the specified platform and stamp as version (i.e. package generic-pc testimage)";
 function package($platform, $image_name) {
-	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size;
+	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size, $zaptel_version;
 	
 	_log("packaging $image_name for $platform...");
 	
@@ -621,15 +626,20 @@ function package($platform, $image_name) {
 			_exec("cd tmp/mnt/usr/local/www/; patch < ". $dirs['files'] ."/generic-pc-smp.patch");
 		}
 		
-		// modules		
+		// system modules		
 		mkdir("tmp/mnt/boot");
 		mkdir("tmp/mnt/boot/kernel");
-		if($platform == "generic-pc" || 
+		if ($platform == "generic-pc" || 
 			$platform == "generic-pc-cdrom" ||
 			$platform == "generic-pc-smp") {
 			_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/mnt/boot/kernel/");
 		}
 		
+		// zaptel modules
+		_exec("cp ". $dirs['packages'] ."/$zaptel_version/zaptel/zaptel.ko tmp/mnt/boot/kernel/");
+		_exec("cp ". $dirs['packages'] ."/$zaptel_version/ztdummy/ztdummy.ko tmp/mnt/boot/kernel/");
+		
+		// stamps
 		_exec("echo \"". basename($image_name) ."\" > tmp/mnt/etc/version");
 		_exec("echo `date` > tmp/mnt/etc/version.buildtime");
 		_exec("echo $platform > tmp/mnt/etc/platform");

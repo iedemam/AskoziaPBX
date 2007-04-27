@@ -69,6 +69,10 @@ exten => 000064554,1,Answer()
 exten => 000064554,2,Milliwatt()
 exten => 000064554,3,Hangup()
 
+exten => 00002663,1,Answer()
+exten => 00002663,2,MeetMe(00002663)
+exten => 00002663,3,Hangup()
+
 
 EOD;
 
