@@ -15,7 +15,7 @@ fi
 
 case $1 in
 enable)
-	/sbin/mdmfs -s 15m md1 /ftmp > /dev/null 2>&1
+	/sbin/mdmfs -s 20m md1 /ftmp > /dev/null 2>&1
 	;;
 upgrade)
 	# wait 5 seconds before beginning

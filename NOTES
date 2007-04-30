@@ -4,22 +4,15 @@ Priorities:
    - note: editor needs work
  - get image signing working
  - remove junk from manager output
- - merge m0n0base and files
  - stop loading sound files into memory, link to an actual piece of the CF
- - apply changes as soon as possible where possible (remove "apply")
- - re-add dyndns support
-   - need to change daemon behavior
-   - "-a" flag manual updates + stun needed
+ - get conferencing configuration working
+ - get indications.conf working 
+   - if it's found to be necessary
+
  - cleanups!
 
 First Public Beta
 
- - get zaptel working
-   - note: enables conferencing, moh and hardware!
- - get conferencing working
- - get moh working (remove perhaps...)
- - get indications.conf working 
-   - if it's found to be necessary
  - get voicemail working (e-mail only)
    - note: strip excess prompts!
    - note: voicemail dir structure needs to be generated on boot
@@ -39,7 +32,6 @@ Clean-Ups:
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
  - console screen should fill window
  - url given in console menu should match port given in gui
- - move cpu/traffic graphs back to status
  - fix logo width
  - vcheck.php on server needs help and so does the firmware query page
  - update all (C) tags
@@ -60,5 +52,3 @@ Horizon:
  - call center solution
  - distributability / scalability
  - debug dev-page for interface
-
-Today:

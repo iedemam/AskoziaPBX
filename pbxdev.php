@@ -35,16 +35,16 @@
 
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
-$asterisk_version = "asterisk-1.4.3";
+$asterisk_version = "asterisk-1.4.4";
 $zaptel_version = "zaptel-1.4";
 
 
 // --[ image sizes ]-----------------------------------------------------------
 
-$mfsroot_size = 18432;
-$generic_pc_size = 12288;
-$generic_pc_smp_size = 12288;
-$wrap_soekris_size = 12288;
+$mfsroot_size = 22528;
+$generic_pc_size = 13824;
+$generic_pc_smp_size = 13824;
+$wrap_soekris_size = 13824;
 
 
 // --[ possible platforms and kernels ]----------------------------------------
@@ -299,10 +299,10 @@ function build_zaptel() {
 	_exec("cd ". $dirs['packages'] ."/$zaptel_version; make clean");
 	_exec("cd ". $dirs['packages'] ."/$zaptel_version; make");
 
-	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE");
-	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE/bin");
-	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE/lib");
-	_exec("mkdir ". $dirs['packages'] ."/$zaptel_version/STAGE/etc");
+	if (!file_exists($dirs['packages'] ."/$zaptel_version/STAGE")) {
+		_exec("cd ". $dirs['packages'] ."/$zaptel_version/; ".
+			"mkdir STAGE STAGE/bin STAGE/lib STAGE/etc");
+	}
 	
 	_exec("cd ". $dirs['packages'] ."/$zaptel_version; make install PREFIX=".
 		$dirs['packages'] ."/$zaptel_version/STAGE");
@@ -499,16 +499,29 @@ function populate_asterisk($image_name) {
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
 	
-	$sounds = explode(" ", "tt-monkeys tt-somethingwrong tt-weasels conf-*");
+	$sounds = explode(" ", "conf-*.wav");
 	
 	_exec("mkdir /tmp/sounds");
 	foreach ($sounds as $sound) {
-		_exec("cp $image_name/usr/local/share/asterisk/sounds/$sound.* /tmp/sounds");
+		_exec("cp $image_name/usr/local/share/asterisk/sounds/$sound /tmp/sounds");
 	}
 	_exec("cd $image_name/usr/local/share/asterisk/sounds/; rm -f *.* x");
 	_exec("cp /tmp/sounds/* $image_name/usr/local/share/asterisk/sounds/");
+
+	_exec("rm $image_name/usr/local/share/asterisk/sounds/dictate/*");
+	_exec("rm $image_name/usr/local/share/asterisk/sounds/followme/*");
+	_exec("cd $image_name/usr/local/share/asterisk/sounds/; find . -name .gsm -print0 | xargs -0 rm -rf");
 	_exec("rm -rf /tmp/sounds");
-	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm *");
+	
+	//moh (distributed are: fpm-calm-river fpm-sunshine fpm-world-mix)
+	$musiconhold = explode(" ", "fpm-calm-river.wav");
+	_exec("mkdir /tmp/moh");
+	foreach ($musiconhold as $moh) {
+		_exec("cp $image_name/usr/local/share/asterisk/moh/$moh /tmp/moh");
+	}
+	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm -f *.*");
+	_exec("cp /tmp/moh/* $image_name/usr/local/share/asterisk/moh/");
+	_exec("rm -rf /tmp/moh");
 	
 	_exec("rm -rf $image_name/usr/local/include");
 }
@@ -643,6 +656,8 @@ function package($platform, $image_name) {
 		_exec("echo \"". basename($image_name) ."\" > tmp/mnt/etc/version");
 		_exec("echo `date` > tmp/mnt/etc/version.buildtime");
 		_exec("echo $platform > tmp/mnt/etc/platform");
+		
+		_exec("df");
 	
 		_exec("umount tmp/mnt");
 		_exec("mdconfig -d -u 0");
@@ -678,7 +693,8 @@ function package($platform, $image_name) {
 		// conf
 		mkdir("tmp/mnt/conf");
 		_exec("cp ". $dirs['phpconf'] ."/config.xml tmp/mnt/conf");
-		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/mnt/kernel.gz");		
+		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/mnt/kernel.gz");
+		_exec("df");
 		_exec("umount tmp/mnt");
 		_exec("mdconfig -d -u 0");
 		_exec("gzip -9 tmp/image.bin");
