@@ -207,8 +207,11 @@ function build_php() {
 	}
 	
 	if(!file_exists($dirs['packages'] ."/$php_version")) {
+		if(!file_exists($dirs['packages'] ."/$php_version.tar.gz")) {
+			_exec("cd ". $dirs['packages'] ."; ".
+					"fetch http://br.php.net/distributions/$php_version.tar.gz");
+		}
 		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://br.php.net/distributions/$php_version.tar.gz;" .
 				"tar zxf $php_version.tar.gz");
 		_log("fetched and untarred $php_version");
 	}
@@ -226,13 +229,16 @@ $h["build minihttpd"] = "(re)builds and patches mini_httpd";
 function build_minihttpd() {
 	global $dirs, $mini_httpd_version;
 	
-	if(!file_exists($dirs['packages'] ."/$mini_httpd_version")) {
+	if (!file_exists($dirs['packages'] ."/$mini_httpd_version")) {
+		if (!file_exists($dirs['packages'] ."/$mini_httpd_version.tar.gz")) {
+			_exec("cd ". $dirs['packages'] ."; ".
+					"fetch http://www.acme.com/software/mini_httpd/$mini_httpd_version.tar.gz");
+		}
 		_exec("cd ". $dirs['packages'] ."; ".
-				"fetch http://www.acme.com/software/mini_httpd/$mini_httpd_version.tar.gz; ".
 				"tar zxf $mini_httpd_version.tar.gz");
 		_log("fetched and untarred $mini_httpd_version");
 	}
-	if(!_is_patched($mini_httpd_version)) {
+	if (!_is_patched($mini_httpd_version)) {
 		_exec("cd ". $dirs['packages'] ."/$mini_httpd_version; patch < ". $dirs['patches'] . 
 				"/packages/mini_httpd.patch");
 		_stamp_package_as_patched($mini_httpd_version);
@@ -510,7 +516,7 @@ function populate_asterisk($image_name) {
 
 	_exec("rm $image_name/usr/local/share/asterisk/sounds/dictate/*");
 	_exec("rm $image_name/usr/local/share/asterisk/sounds/followme/*");
-	_exec("cd $image_name/usr/local/share/asterisk/sounds/; find . -name .gsm -print0 | xargs -0 rm -rf");
+
 	_exec("rm -rf /tmp/sounds");
 	
 	//moh (distributed are: fpm-calm-river fpm-sunshine fpm-world-mix)
