@@ -36,7 +36,7 @@
 $php_version = "php-4.4.6";
 $mini_httpd_version = "mini_httpd-1.19";
 $asterisk_version = "asterisk-1.4.4";
-$zaptel_version = "zaptel-1.4";
+$zaptel_version = "zaptel";
 
 
 // --[ image sizes ]-----------------------------------------------------------
@@ -288,8 +288,8 @@ function build_zaptel() {
 		_exec("cd ". $dirs['packages'] ."; svn co --username svn --password svn https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 $zaptel_version");
 		_log("checked out $zaptel_version");
 	} else {
-		_exec("cd ". $dirs['packages'] ."/$zaptel_version; svn update");
-		_log("updated $zaptel_version");
+		//_exec("cd ". $dirs['packages'] ."/$zaptel_version; svn update");
+		//_log("updated $zaptel_version");
 	}
 	// remove old headers if they're around
 	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
@@ -505,7 +505,7 @@ function populate_asterisk($image_name) {
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
 	
-	$sounds = explode(" ", "conf-*.wav");
+	$sounds = explode(" ", "conf-*");
 	
 	_exec("mkdir /tmp/sounds");
 	foreach ($sounds as $sound) {
@@ -530,6 +530,7 @@ function populate_asterisk($image_name) {
 	_exec("rm -rf /tmp/moh");
 	
 	_exec("rm -rf $image_name/usr/local/include");
+	_exec("rm -rf $image_name/usr/local/share/man");
 }
 
 

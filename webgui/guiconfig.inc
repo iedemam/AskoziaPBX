@@ -41,12 +41,12 @@ if (!$omit_nocacheheaders) {
 require_once("config.inc");
 require_once("functions.inc");
 
-
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
+$d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {

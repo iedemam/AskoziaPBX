@@ -121,21 +121,20 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 											
 /* Services */
 $menu['Services']['SIP'] 				= array('services_sip.php');
-//$menu['Services']['Dynamic DNS']		= array('services_dyndns.php');
+$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
 //$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
 //$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
-//$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
-//$menu['Services']['QoS'] 				= array('services_qos.php'); /* jb, packet types */
+//$menu['Services']['QoS'] 					= array('services_qos.php'); /* jb, packet types */
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
 $menu['Status']['Traffic Graph']		= array('status_graph_traffic.php');
 $menu['Status']['CPU Usage']			= array('status_graph_cpu.php');
 $menu['Status']['Interfaces']			= array('status_interfaces.php');
-//$menu['Status']['Providers']			= array('status_providers.php');
-//$menu['Status']['Phones']				= array('status_phones.php');
+//$menu['Status']['Providers']				= array('status_providers.php');
+//$menu['Status']['Phones']					= array('status_phones.php');
 //$menu['Status']['Channels']				= array('status_channels.php');
-//$menu['Status']['Voicemail']			= array('status_voicemail.php');
+//$menu['Status']['Voicemail']				= array('status_voicemail.php');
 
 
 /* Diagnostics */

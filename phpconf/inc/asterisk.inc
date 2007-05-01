@@ -42,9 +42,11 @@ function asterisk_configure() {
 
 	
 	$res = 0;
+	$res |= mwexec("/sbin/kldload zaptel");
 	$res |= mwexec("/sbin/kldload ztdummy");
 	$res |= asterisk_sip_conf_generate();
 	$res |= asterisk_extensions_conf_generate();
+	$res |= asterisk_conferencing_conf_generate();
 	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {
@@ -115,25 +117,34 @@ function asterisk_is_valid_prefix($prefix) {
 function asterisk_get_extensions() {
 	global $config;
 
-	return array_merge(asterisk_sip_get_extensions());
+	return array_merge(
+		asterisk_sip_get_extensions(), 
+		asterisk_conferencing_get_extensions()
+	);
 }
 
 function asterisk_get_providers() {
 	global $config;
 	
-	return array_merge(asterisk_sip_get_providers());
+	return array_merge(
+		asterisk_sip_get_providers()
+	);
 }
 
 function asterisk_get_phones() {
 	global $config;
 	
-	return array_merge(asterisk_sip_get_phones());
+	return array_merge(
+		asterisk_sip_get_phones()
+	);
 }
 
 function asterisk_get_prefixes() {
 	global $config;
 
-	return array_merge(asterisk_sip_get_prefixes());
+	return array_merge(
+		asterisk_sip_get_prefixes()
+	);
 }
 
 function asterisk_uniqid_to_dial($uniqid) {

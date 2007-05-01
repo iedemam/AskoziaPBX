@@ -32,20 +32,80 @@
 $pgtitle = array("Services", "Conferencing");
 require("guiconfig.inc");
 
-if ($_POST) {
 
-	unset($input_errors);
-	$pconfig = $_POST;
+if (!is_array($config['conferencing']['room']))
+	$config['conferencing']['room'] = array();
 
+asterisk_conferencing_sort_rooms();
+$a_rooms = &$config['conferencing']['room'];
+
+if ($_GET['act'] == "del") {
+	if ($a_rooms[$_GET['id']]) {
+		unset($a_rooms[$_GET['id']]);
+		write_config();
+		touch($d_conferencingconfdirty_path);
+		header("Location: services_conferencing.php");
+		exit;
+	}
+}
+
+if (file_exists($d_conferencingconfdirty_path)) {
+	$retval = 0;
+	config_lock();
+	$retval |= asterisk_conferencing_conf_generate();
+	config_unlock();
+
+	$savemsg = get_std_save_message($retval);
+	if ($retval == 0)
+		unlink($d_conferencingconfdirty_path);
 }
 
 ?>
 
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="services_conferencing.php" method="post">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-	</table>
+<?php if ($savemsg) print_info_box($savemsg); ?>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="25%" class="listhdrr">Room Number</td>
+		<td width="45%" class="listhdr">Description</td>
+		<td width="10%" class="listhdr">Pin</td>
+		<td width="10%" class="listhdr">Admin Pin</td>
+		<td width="10%" class="list"></td>
+	</tr>
+
+	<?php $i = 0; foreach ($a_rooms as $room): ?>
+	<tr>
+		<td class="listlr">
+			<?=htmlspecialchars($room['number']);?>
+		</td>
+		<td class="listr">
+			<?=htmlspecialchars($room['descr']);?>&nbsp;
+		</td>
+		<td valign="middle" nowrap class="list">
+			<?php if (isset($room['pin'])): ?>
+			<img src="check.gif" width="17" height="17" border="0">
+			<?php endif; ?>
+		</td>
+		<td valign="middle" nowrap class="list">
+			<?php if (isset($room['adminpin'])): ?>
+			<img src="check.gif" width="17" height="17" border="0">
+			<?php endif; ?>
+		</td>
+		<td valign="middle" nowrap class="list">
+			<a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit conference room" width="17" height="17" border="0"></a>
+           &nbsp;<a href="services_conferencing_edit.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="x.gif" title="delete conference room" width="17" height="17" border="0"></a>
+		</td>
+	</tr>
+	<?php $i++; endforeach; ?>
+
+	<tr> 
+		<td class="list" colspan="4"></td>
+		<td class="list">
+			<a href="services_conferencing_edit.php"><img src="plus.gif" title="add conference room" width="17" height="17" border="0"></a>
+		</td>
+	</tr>
+</table>
 </form>
 <?php include("fend.inc"); ?>
