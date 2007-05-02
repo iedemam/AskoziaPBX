@@ -41,6 +41,17 @@ function asterisk_conferencing_get_extensions() {
 	return $extensions;
 }
 
+function asterisk_conferencing_get_rooms() {
+	global $config;
+	
+	if (!is_array($config['conferencing']['room']))
+		$config['conferencing']['room'] = array();
+		
+	asterisk_conferencing_sort_rooms();
+		
+	return $config['conferencing']['room'];
+}
+
 
 function asterisk_conferencing_sort_rooms() {
 	global $config;
@@ -61,17 +72,10 @@ function asterisk_conferencing_conf_generate() {
 		return 1;
 	}	
 
-	$conf = <<<EOD
+	$conf = "[general]\n\n".
+			"[rooms]\n";
 
-[general]
-
-[rooms]
-EOD;
-
-	if (!is_array($config['conferencing']['room']))
-		$config['conferencing']['room'] = array();
-
-	$rooms = $config['conferencing']['room'];
+	$rooms = asterisk_conferencing_get_rooms();
 	
 	// Usage is conf => confno[,pin][,adminpin]
 	foreach ($rooms as $room) {

@@ -53,11 +53,14 @@ if (file_exists($d_conferencingconfdirty_path)) {
 	$retval = 0;
 	config_lock();
 	$retval |= asterisk_conferencing_conf_generate();
+	$retval |= asterisk_extensions_conf_generate();
+	$retval |= asterisk_extensions_reload();
 	config_unlock();
 
 	$savemsg = get_std_save_message($retval);
-	if ($retval == 0)
+	if ($retval == 0) {
 		unlink($d_conferencingconfdirty_path);
+	}
 }
 
 ?>
@@ -68,10 +71,10 @@ if (file_exists($d_conferencingconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="25%" class="listhdrr">Room Number</td>
-		<td width="45%" class="listhdr">Description</td>
-		<td width="10%" class="listhdr">Pin</td>
-		<td width="10%" class="listhdr">Admin Pin</td>
+		<td width="20%" class="listhdrr">Room Number</td>
+		<td width="50%" class="listhdrr">Description</td>
+		<td width="15%" class="listhdrr">Pin</td>
+		<td width="15%" class="listhdr">Admin Pin</td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -80,18 +83,20 @@ if (file_exists($d_conferencingconfdirty_path)) {
 		<td class="listlr">
 			<?=htmlspecialchars($room['number']);?>
 		</td>
-		<td class="listr">
+		<td class="listbg">
 			<?=htmlspecialchars($room['descr']);?>&nbsp;
 		</td>
-		<td valign="middle" nowrap class="list">
-			<?php if (isset($room['pin'])): ?>
-			<img src="check.gif" width="17" height="17" border="0">
+		<td valign="middle" nowrap class="listr">
+			<?php if ($room['pin']): ?>
+			<img src="lock.gif" width="7" height="9" border="0">
 			<?php endif; ?>
+			&nbsp;
 		</td>
-		<td valign="middle" nowrap class="list">
-			<?php if (isset($room['adminpin'])): ?>
-			<img src="check.gif" width="17" height="17" border="0">
+		<td valign="middle" nowrap class="listr">
+			<?php if ($room['adminpin']): ?>
+			<img src="lock.gif" width="7" height="9" border="0">
 			<?php endif; ?>
+			&nbsp;
 		</td>
 		<td valign="middle" nowrap class="list">
 			<a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit conference room" width="17" height="17" border="0"></a>

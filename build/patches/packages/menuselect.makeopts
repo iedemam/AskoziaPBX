@@ -2,15 +2,15 @@ MENUSELECT_APPS=app_adsiprog app_alarmreceiver app_amd app_authenticate app_chan
 MENUSELECT_CDR=cdr_manager cdr_odbc cdr_pgsql cdr_radius cdr_sqlite cdr_tds 
 MENUSELECT_CHANNELS=chan_agent chan_alsa chan_features chan_gtalk chan_h323 chan_mgcp chan_misdn chan_nbs chan_oss chan_phone chan_skinny chan_vpb 
 MENUSELECT_CODECS=
-MENUSELECT_FORMATS=format_g723 format_g726 format_g729 format_gsm format_h263 format_h264 format_ilbc format_jpeg format_ogg_vorbis format_pcm format_sln format_vox format_wav_gsm 
+MENUSELECT_FORMATS=format_g723 format_g726 format_g729 format_h263 format_h264 format_ilbc format_jpeg format_ogg_vorbis format_vox format_wav_gsm 
 MENUSELECT_FUNCS=func_base64 func_odbc func_realtime func_uri 
 MENUSELECT_PBX=pbx_ael pbx_dundi pbx_gtkconsole pbx_kdeconsole pbx_realtime 
 MENUSELECT_RES=res_config_odbc res_config_pgsql res_convert res_crypto res_indications res_jabber res_odbc res_snmp res_speech 
 MENUSELECT_OPTS_app_voicemail=
 MENUSELECT_CFLAGS=LOADABLE_MODULES 
 MENUSELECT_EMBED=
-MENUSELECT_CORE_SOUNDS=CORE-SOUNDS-EN-WAV 
-MENUSELECT_MOH=MOH-FREEPLAY-WAV 
+MENUSELECT_CORE_SOUNDS=CORE-SOUNDS-EN-ULAW CORE-SOUNDS-EN-GSM
+MENUSELECT_MOH=MOH-FREEPLAY-ULAW MOH-FREEPLAY-GSM
 MENUSELECT_EXTRA_SOUNDS=
 MENUSELECT_DEPSFAILED=MENUSELECT_APPS=app_osplookup
 MENUSELECT_DEPSFAILED=MENUSELECT_CDR=cdr_odbc

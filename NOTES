@@ -1,11 +1,14 @@
 Priorities:
  - get "advanced mode" working
    - note: whole conf files encoded in base64 and stored in xml conf
-   - note: editor needs work
+   - note: editor needs to be merged with exec.php
  - get image signing working
- - remove junk from manager output
- - stop loading sound files into memory, link to an actual piece of the CF
+ - remove junk from manager output and add return values to asterisk_exec()
+ - stop loading sound files into memory, link to an actual piece of the CF (test (u)mount during calls...)
+ - sounds should be pulled and merged separately to allow higher customization
+   - i.e. gsm silence sounds (signed linear silence costs 1.4MB!)
  - get conferencing configuration working
+   - add support for i|v etc options and max participants
  - get indications.conf working 
    - if it's found to be necessary
 
@@ -27,11 +30,11 @@ First Public Beta
 Clean-Ups:
  - css irregularities
  - figure out config xml single var irregularities (empty defines showing up)
- - handle tones better in extensions.inc
+ - handle tones better in extensions.inc (pbx-* sounds for 404 errors)
  - better field checks
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
  - console screen should fill window
- - url given in console menu should match port given in gui
+ - url given in console menu should match port given in gui (m0n0wall bug)
  - fix logo width
  - vcheck.php on server needs help and so does the firmware query page
  - update all (C) tags

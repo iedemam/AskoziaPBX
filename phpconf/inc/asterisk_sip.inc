@@ -34,23 +34,23 @@ require_once("functions.inc");
 function asterisk_sip_get_providers() {
 	global $config;
 	
-	if (!is_array($config['providers']['sipprovider']))
-		$config['providers']['sipprovider'] = array();
+	if (!is_array($config['sip']['provider']))
+		$config['sip']['provider'] = array();
 		
 	asterisk_sip_sort_providers();
 		
-	return $config['providers']['sipprovider'];
+	return $config['sip']['provider'];
 }
 
 function asterisk_sip_get_phones() {
 	global $config;
 	
-	if (!is_array($config['phones']['sipphone']))
-		$config['phones']['sipphone'] = array();
+	if (!is_array($config['sip']['phone']))
+		$config['sip']['phone'] = array();
 		
 	asterisk_sip_sort_phones();
 		
-	return $config['phones']['sipphone'];
+	return $config['sip']['phone'];
 }
 
 function asterisk_sip_get_phone($uniqid) {
@@ -64,8 +64,8 @@ function asterisk_sip_get_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['phones']['sipphone']))
-		foreach($config['phones']['sipphone'] as $phone)
+	if (is_array($config['sip']['phones']))
+		foreach($config['sip']['phones'] as $phone)
 			$extensions[] = $phone['extension'];
 
 	return $extensions;
@@ -75,8 +75,8 @@ function asterisk_sip_get_prefixes() {
 	global $config;
 	
 	$prefixes = array();
-	if (is_array($config['providers']['sipprovider']))
-		foreach($config['providers']['sipprovider'] as $provider)
+	if (is_array($config['sip']['provider']))
+		foreach($config['sip']['provider'] as $provider)
 			$prefixes[] = $provider['prefix'];
 
 	return $prefixes;	
@@ -92,8 +92,8 @@ function asterisk_sip_conf_generate() {
 	}
 	
 	$port = "5060";
-	if (isset($config['services']['sip']['port']))
-		$port = $config['services']['sip']['port'];
+	if (isset($config['sip']['port']))
+		$port = $config['sip']['port'];
 
 	$conf = <<<EOD
 	
@@ -127,10 +127,10 @@ EOD;
 	$conf .= "\n\n";
 	
 	// providers
-	if (!is_array($config['providers']['sipprovider']))
-		$config['providers']['sipprovider'] = array();
+	if (!is_array($config['sip']['provider']))
+		$config['sip']['provider'] = array();
 		
-	$sipproviders = $config['providers']['sipprovider'];
+	$sipproviders = $config['sip']['provider'];
 
 	// provider registrations
 	foreach($sipproviders as $sp) {
@@ -175,10 +175,10 @@ EOD;
 	}
 
 	// phones
-	if (!is_array($config['phones']['sipphone']))
-		$config['phones']['sipphone'] = array();
+	if (!is_array($config['sip']['phone']))
+		$config['sip']['phone'] = array();
 		
-	$sipphones = $config['phones']['sipphone'];
+	$sipphones = $config['sip']['phone'];
 	
 	foreach($sipphones as $sp) {
 		$conf .= "[{$sp['extension']}]\n";
@@ -212,7 +212,7 @@ EOD;
 
 function asterisk_sip_reload() {
 	
-	asterisk_exec("module reload chan_sip.so");
+	return asterisk_exec("module reload chan_sip.so");
 	
 }
 
@@ -220,7 +220,7 @@ function asterisk_sip_reload() {
 function asterisk_sip_sort_phones() {
 	global $g, $config;
 
-	usort($config['phones']['sipphone'], "_sipphonecmp");	
+	usort($config['sip']['phone'], "_sipphonecmp");	
 }
 function _sipphonecmp($a, $b) {
 	return strcmp($a['extension'], $b['extension']);
@@ -230,7 +230,7 @@ function _sipphonecmp($a, $b) {
 function asterisk_sip_sort_providers() {
 	global $g, $config;
 
-	usort($config['providers']['sipprovider'], "_sipprovidercmp");	
+	usort($config['sip']['provider'], "_sipprovidercmp");	
 }
 function _sipprovidercmp($a, $b) {
 	return strcmp($a['prefix'], $b['prefix']);

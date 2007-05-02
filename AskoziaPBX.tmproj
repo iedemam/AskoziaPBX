@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/asterisk_extensions.inc</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -45,8 +43,6 @@
 			<string>phpconf</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>webgui</string>
 			<key>regexFolderFilter</key>
@@ -57,6 +53,10 @@
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
+			<key>lastUsed</key>
+			<date>2007-05-02T09:26:06Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -66,110 +66,50 @@
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-04-27T15:14:01Z</date>
+			<date>2007-05-02T09:26:06Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>242</integer>
 	<key>metaData</key>
 	<dict>
-		<key>files/asterisk/meetme.conf</key>
+		<key>NOTES</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>74</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>16</integer>
 		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>68</integer>
-				<key>line</key>
-				<integer>507</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>487</integer>
-		</dict>
-		<key>phpconf/inc/asterisk.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>41</integer>
+				<integer>617</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>30</integer>
-		</dict>
-		<key>phpconf/inc/asterisk_extensions.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>73</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>40</integer>
-		</dict>
-		<key>phpconf/inc/asterisk_sip.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>91</integer>
-		</dict>
-		<key>phpconf/rc.bootup</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>101</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>71</integer>
+			<integer>749</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>phpconf/rc.bootup</string>
-		<string>phpconf/inc/asterisk_extensions.inc</string>
-		<string>files/asterisk/meetme.conf</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>phpconf/inc/asterisk_sip.inc</string>
+		<string>NOTES</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{144, 1}, {817, 777}}</string>
+	<string>{{137, 234}, {841, 544}}</string>
 </dict>
 </plist>

@@ -59,25 +59,20 @@ exten => 000064554,3,Hangup()
 
 
 EOD;
-
-	if (!is_array($config['conferencing']['room']))
-		$config['conferencing']['room'] = array();
 	
-	$rooms = $config['conferencing']['room'];
+	// conference rooms
+	$rooms = asterisk_conferencing_get_rooms();
 	
 	foreach ($rooms as $room) {
 		$conf .= "exten => {$room['number']},1,Answer()\n";
-		$conf .= "exten => {$room['number']},2,MeetMe({$room['number']})\n";
+		$conf .= "exten => {$room['number']},2,MeetMe({$room['number']},MI)\n";
 		$conf .= "exten => {$room['number']},3,Hangup()\n\n";
 	}
 
 	$conf .= "\n\n";
 
 	// sip providers
-	if (!is_array($config['providers']['sipprovider']))
-		$config['providers']['sipprovider'] = array();
-
-	$a_sipproviders = $config['providers']['sipprovider'];
+	$a_sipproviders = asterisk_sip_get_providers();
 
 	foreach ($a_sipproviders as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";
@@ -90,10 +85,7 @@ EOD;
 	}
 
 	// sip phones
-	if (!is_array($config['phones']['sipphone']))
-		$config['phones']['sipphone'] = array();
-
-	$a_sipphones = $config['phones']['sipphone'];
+	$a_sipphones = asterisk_sip_get_phones();
 
 	foreach ($a_sipphones as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";
@@ -114,6 +106,6 @@ EOD;
 
 function asterisk_extensions_reload() {
 	
-	asterisk_exec("dialplan reload");
+	return asterisk_exec("dialplan reload");
 
 }

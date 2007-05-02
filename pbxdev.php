@@ -505,7 +505,7 @@ function populate_asterisk($image_name) {
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
 	
-	$sounds = explode(" ", "conf-*");
+	$sounds = explode(" ", "conf-* vm-rec-name.* beep.* auth-thankyou.*");
 	
 	_exec("mkdir /tmp/sounds");
 	foreach ($sounds as $sound) {
@@ -515,17 +515,20 @@ function populate_asterisk($image_name) {
 	_exec("cp /tmp/sounds/* $image_name/usr/local/share/asterisk/sounds/");
 
 	_exec("rm $image_name/usr/local/share/asterisk/sounds/dictate/*");
+	//_exec("rm $image_name/usr/local/share/asterisk/sounds/digits/*.gsm");
 	_exec("rm $image_name/usr/local/share/asterisk/sounds/followme/*");
-
+	//_exec("rm $image_name/usr/local/share/asterisk/sounds/letters/*.gsm");
+	//_exec("rm $image_name/usr/local/share/asterisk/sounds/phonetic/*.gsm");
+	_exec("rm $image_name/usr/local/share/asterisk/sounds/silence/*.ulaw");
 	_exec("rm -rf /tmp/sounds");
 	
 	//moh (distributed are: fpm-calm-river fpm-sunshine fpm-world-mix)
-	$musiconhold = explode(" ", "fpm-calm-river.wav");
+	$musiconhold = explode(" ", "fpm-calm-river.gsm fpm-calm-river.ulaw");
 	_exec("mkdir /tmp/moh");
 	foreach ($musiconhold as $moh) {
 		_exec("cp $image_name/usr/local/share/asterisk/moh/$moh /tmp/moh");
 	}
-	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm -f *.*");
+	_exec("cd $image_name/usr/local/share/asterisk/moh/; rm -f *");
 	_exec("cp /tmp/moh/* $image_name/usr/local/share/asterisk/moh/");
 	_exec("rm -rf /tmp/moh");
 	
@@ -537,7 +540,9 @@ function populate_asterisk($image_name) {
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
 	
-	_log("placeholder for zaptel population");
+	_exec("cp ". $dirs['packages'] .
+		"/$zaptel_version/STAGE/etc/zaptel.conf.sample /etc/zaptel.conf");
+	_log("added zaptel");
 }
 
 
@@ -614,7 +619,7 @@ function populate_everything($image_name) {
 	populate_libs($image_name);
 }
 
-// TODO: this is quite large and ugly
+
 $h["package"] = "package the specified image directory into an .img for the specified platform and stamp as version (i.e. package generic-pc testimage)";
 function package($platform, $image_name) {
 	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size, $zaptel_version;
@@ -949,6 +954,13 @@ if($argc == 1) {
 	} else {
 		_usage(3);
 	}
+
+} else if ($argv[1] == "parsecheck") {
+
+	passthru("find webgui/ -type f -name \"*.php\" -exec php -l {} \; -print | grep Parse");
+	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
+	passthru("find phpconf/ -type f -name \"*rc.*\" -exec php -l {} \; -print | grep Parse");
+	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
 
 // hmmm, don't have any verbs like that!
 } else {

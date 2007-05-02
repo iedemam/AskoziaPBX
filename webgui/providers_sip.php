@@ -32,35 +32,12 @@
 $pgtitle = array("Providers", "SIP");
 require("guiconfig.inc");
 
-if (!is_array($config['providers']['sipprovider']))
-	$config['providers']['sipprovider'] = array();
+if (!is_array($config['sip']['provider']))
+	$config['sip']['provider'] = array();
 
 asterisk_sip_sort_providers();
-$a_sipproviders = &$config['providers']['sipprovider'];
+$a_sipproviders = &$config['sip']['provider'];
 
-
-if ($_POST) {
-
-	$pconfig = $_POST;
-
-	if ($_POST['apply']) {
-		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path)) {
-			// not quite sure what to do here...
-			config_lock();
-			$retval |= asterisk_sip_conf_generate();
-			$retval |= asterisk_sip_reload();
-			$retval |= asterisk_extensions_conf_generate();
-			$retval |= asterisk_extensions_reload();
-			config_unlock();
-		}
-		$savemsg = get_std_save_message($retval);
-		if ($retval == 0) {
-			if (file_exists($d_sipconfdirty_path))
-				unlink($d_sipconfdirty_path);
-		}
-	}
-}
 
 if ($_GET['act'] == "del") {
 	if ($a_sipproviders[$_GET['id']]) {
@@ -72,16 +49,27 @@ if ($_GET['act'] == "del") {
 	}
 }
 
+if (file_exists($d_sipconfdirty_path)) {
+	$retval = 0;
+	if (!file_exists($d_sysrebootreqd_path)) {
+		config_lock();
+		$retval |= asterisk_sip_conf_generate();
+		$retval |= asterisk_sip_reload();
+		$retval |= asterisk_extensions_conf_generate();
+		$retval |= asterisk_extensions_reload();
+		config_unlock();
+	}
+	$savemsg = get_std_save_message($retval);
+	if ($retval == 0) {
+		unlink($d_sipconfdirty_path);
+	}
+}
+
 ?>
 
 <?php include("fbegin.inc"); ?>
 <form action="providers_sip.php" method="post">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if (file_exists($d_sipconfdirty_path)): ?><p>
-<?php print_info_box_np("The SIP providers list has been changed.<br>You must apply the changes in order for them to take effect.");?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="Apply changes"></p>
-<?php endif; ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

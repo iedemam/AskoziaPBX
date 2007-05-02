@@ -37,12 +37,12 @@ $pgtitle = array("Phones", "SIP", "Edit Account");
 require("guiconfig.inc");
 
 /* grab and sort the sip phones in our config */
-if (!is_array($config['phones']['sipphone']))
-	$config['phones']['sipphone'] = array();
+if (!is_array($config['sip']['phone']))
+	$config['sip']['phone'] = array();
 
 
 asterisk_sip_sort_phones();
-$a_sipphones = &$config['phones']['sipphone'];
+$a_sipphones = &$config['sip']['phone'];
 $a_providers = asterisk_get_providers();
 
 $pconfig['codec'] = array("ulaw");

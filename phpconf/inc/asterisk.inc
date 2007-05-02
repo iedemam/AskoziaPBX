@@ -45,8 +45,8 @@ function asterisk_configure() {
 	$res |= mwexec("/sbin/kldload zaptel");
 	$res |= mwexec("/sbin/kldload ztdummy");
 	$res |= asterisk_sip_conf_generate();
-	$res |= asterisk_extensions_conf_generate();
 	$res |= asterisk_conferencing_conf_generate();
+	$res |= asterisk_extensions_conf_generate();
 	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {
@@ -88,7 +88,7 @@ function asterisk_exec($cmd, $output=NULL) {
 	// better command failure checking needed
 	$output = $out;
 
-	return 0;	
+	return 0; // this needs to return a value for SUCCESS/FAILURE
 }
 
 

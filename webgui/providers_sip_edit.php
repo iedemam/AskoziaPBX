@@ -36,11 +36,11 @@ $needs_scriptaculous = true;
 $pgtitle = array("Providers", "SIP", "Edit Account");
 require("guiconfig.inc");
 
-if (!is_array($config['providers']['sipprovider']))
-	$config['providers']['sipprovider'] = array();
+if (!is_array($config['sip']['provider']))
+	$config['sip']['provider'] = array();
 
 asterisk_sip_sort_providers();
-$a_sipproviders = &$config['providers']['sipprovider'];
+$a_sipproviders = &$config['sip']['provider'];
 
 $a_sipphones = asterisk_sip_get_phones();
 

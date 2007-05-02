@@ -84,7 +84,7 @@ if ($_POST) {
 		$room = array();
 		$room['number'] = $_POST['number'];
 		$room['pin'] = $_POST['pin'];
-		$room['adminpin'] = $_POST['adminpin'];			
+		$room['adminpin'] = $_POST['adminpin'];
 		$room['descr'] = $_POST['descr'];
 
 		if (isset($id) && $a_rooms[$id]) {

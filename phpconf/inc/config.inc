@@ -184,10 +184,10 @@ if (!$noparseconfig) {
 
 *******************************************************************************
 * WARNING!                                                                    *
-* The current configuration has been created with a newer version of m0n0wall *
-* than this one! This can lead to serious misbehavior and even security       *
-* holes! You are urged to either upgrade to a newer version of m0n0wall or    *
-* revert to the default configuration immediately!                            *
+* The current configuration has been created with a newer version of          *
+* AskoziaPBX than this one! This can lead to serious misbehavior and even     *
+* security holes! You are urged to either upgrade to a newer version of       *
+* AskoziaPBX or revert to the default configuration immediately!              *
 *******************************************************************************
 
 
@@ -252,7 +252,7 @@ function write_config() {
 
 	conf_mount_rw();
 	
-	if (time() > mktime(0, 0, 0, 9, 1, 2004))	/* make sure the clock settings is plausible */
+	if (time() > mktime(0, 0, 0, 9, 1, 2004))	/* make sure the clock settings are plausible */
 		$config['lastchange'] = time();
 	
 	/* generate configuration XML */
