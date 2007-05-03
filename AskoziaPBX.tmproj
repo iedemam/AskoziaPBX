@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>NOTES</string>
+	<string>pbxdev.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -23,8 +25,6 @@
 			<string>etc</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>files</string>
 			<key>regexFolderFilter</key>
@@ -33,8 +33,6 @@
 			<string>files</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>phpconf</string>
 			<key>regexFolderFilter</key>
@@ -54,9 +52,7 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-05-02T09:26:06Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-05-02T11:34:36Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -66,50 +62,109 @@
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-05-02T09:26:06Z</date>
+			<date>2007-05-03T14:38:12Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>242</integer>
+	<integer>230</integer>
 	<key>metaData</key>
 	<dict>
-		<key>NOTES</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>74</integer>
-				<key>line</key>
-				<integer>35</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>16</integer>
-		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>91</integer>
 				<key>line</key>
-				<integer>617</integer>
+				<integer>603</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>749</integer>
+			<integer>553</integer>
+		</dict>
+		<key>phpconf/inc/asterisk_conferencing.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>75</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>54</integer>
+		</dict>
+		<key>phpconf/inc/asterisk_extensions.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>66</integer>
+				<key>line</key>
+				<integer>67</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>48</integer>
+		</dict>
+		<key>webgui/diag_logs_calls.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>36</integer>
+				<key>line</key>
+				<integer>75</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>66</integer>
+		</dict>
+		<key>webgui/services_conferencing.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>74</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>68</integer>
+		</dict>
+		<key>webgui/services_conferencing_edit.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>49</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>NOTES</string>
+		<string>webgui/services_conferencing_edit.php</string>
+		<string>webgui/diag_logs_calls.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{137, 234}, {841, 544}}</string>
+	<string>{{144, 806}, {772, 712}}</string>
 </dict>
 </plist>

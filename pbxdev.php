@@ -41,10 +41,10 @@ $zaptel_version = "zaptel";
 
 // --[ image sizes ]-----------------------------------------------------------
 
-$mfsroot_size = 22528;
-$generic_pc_size = 13824;
-$generic_pc_smp_size = 13824;
-$wrap_soekris_size = 13824;
+$mfsroot_size = 20480;
+$generic_pc_size = 14848;
+$generic_pc_smp_size = 14848;
+$wrap_soekris_size = 14848;
 
 
 // --[ possible platforms and kernels ]----------------------------------------
@@ -260,7 +260,7 @@ function build_asterisk() {
 		}
 		_exec("cd ". $dirs['packages'] ."; ".
 				"tar zxf $asterisk_version.tar.gz");
-		_exec("mkdir ". $dirs['packages'] ."/$asterisk_version/STAGE");
+		_exec("mkdir ". $dirs['packages'] ."/$asterisk_version/TMP_MODULES");
 			
 		_log("fetched and untarred $asterisk_version");
 	}
@@ -271,11 +271,11 @@ function build_asterisk() {
 				"/packages/asterisk_cdr_to_syslog.patch");				
 		_stamp_package_as_patched($asterisk_version);
 	}
-	// clear stage
-	_exec("rm -rf ". $dirs['packages'] ."/$asterisk_version/STAGE/*");
+	// clear module storage
+	_exec("rm -rf ". $dirs['packages'] ."/$asterisk_version/TMP_MODULES/*");
 	// copy make options
 	_exec("cp ". $dirs['patches'] ."/packages/menuselect.makeopts /etc/asterisk.makeopts");
-	// reconfigure
+	// reconfigure and make
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ./configure; gmake");
 		
 	_log("built asterisk");
@@ -505,6 +505,7 @@ function populate_asterisk($image_name) {
 	_exec("cd " .$dirs['packages'] . "/$asterisk_version/; ".
 		" gmake install DESTDIR=$image_name");
 	
+	// filter sounds
 	$sounds = explode(" ", "conf-* vm-rec-name.* beep.* auth-thankyou.*");
 	
 	_exec("mkdir /tmp/sounds");
@@ -522,7 +523,7 @@ function populate_asterisk($image_name) {
 	_exec("rm $image_name/usr/local/share/asterisk/sounds/silence/*.ulaw");
 	_exec("rm -rf /tmp/sounds");
 	
-	//moh (distributed are: fpm-calm-river fpm-sunshine fpm-world-mix)
+	// filter music on hold
 	$musiconhold = explode(" ", "fpm-calm-river.gsm fpm-calm-river.ulaw");
 	_exec("mkdir /tmp/moh");
 	foreach ($musiconhold as $moh) {
@@ -532,8 +533,16 @@ function populate_asterisk($image_name) {
 	_exec("cp /tmp/moh/* $image_name/usr/local/share/asterisk/moh/");
 	_exec("rm -rf /tmp/moh");
 	
+	// move modules to a temporary location and create link to cf storage
+	_exec("mv $image_name/usr/local/lib/asterisk/modules/* ". 
+		$dirs['packages'] ."/$asterisk_version/TMP_MODULES");
+	_exec("rmdir $image_name/usr/local/lib/asterisk/modules/");
+	_exec("cd $image_name/usr/local/lib/asterisk; ln -s /cf/asterisk/modules modules");
+	
+	// clean up
 	_exec("rm -rf $image_name/usr/local/include");
 	_exec("rm -rf $image_name/usr/local/share/man");
+	
 }
 
 
@@ -589,10 +598,11 @@ function populate_webgui($image_name) {
 
 $h["populate libs"] = "adds the required libraries (using mklibs.pl) to the given \"image_name\"";
 function populate_libs($image_name) {
-	global $dirs;
+	global $dirs, $asterisk_version;
 	
-	_exec("perl ". $dirs['minibsd'] ."/mklibs.pl $image_name > tmp.libs");
-	_exec("perl ". $dirs['minibsd'] ."/mkmini.pl tmp.libs / $image_name");
+	_exec("perl {$dirs['minibsd']}/mklibs.pl $image_name > tmp.libs");
+	_exec("perl {$dirs['minibsd']}/mklibs.pl {$dirs['packages']}/$asterisk_version/TMP_MODULES >> tmp.libs");
+	_exec("perl {$dirs['minibsd']}/mkmini.pl tmp.libs / $image_name");
 	_exec("rm tmp.libs");
 	
 	_log("added libraries");	
@@ -622,7 +632,7 @@ function populate_everything($image_name) {
 
 $h["package"] = "package the specified image directory into an .img for the specified platform and stamp as version (i.e. package generic-pc testimage)";
 function package($platform, $image_name) {
-	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size, $zaptel_version;
+	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size, $zaptel_version, $asterisk_version;
 	
 	_log("packaging $image_name for $platform...");
 	
@@ -695,17 +705,26 @@ function package($platform, $image_name) {
 		_exec("cp ". $dirs['mfsroots'] ."/$platform-". basename($image_name) .".gz tmp/mnt/mfsroot.gz");
 		
 		// boot
-		mkdir("tmp/mnt/boot");
-		mkdir("tmp/mnt/boot/kernel");
+		_exec("mkdir tmp/mnt/boot");
+		_exec("mkdir tmp/mnt/boot/kernel");
 	    _exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/mnt/boot/");
 		$platform == "generic-pc-smp" ?
 		_exec("cp ". $dirs['boot'] ."/generic-pc/loader.rc tmp/mnt/boot/") :
 		_exec("cp ". $dirs['boot'] ."/$platform/loader.rc tmp/mnt/boot/");
 	
 		// conf
-		mkdir("tmp/mnt/conf");
+		_exec("mkdir tmp/mnt/conf");
 		_exec("cp ". $dirs['phpconf'] ."/config.xml tmp/mnt/conf");
 		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/mnt/kernel.gz");
+		
+		// asterisk modules
+		_exec("mkdir tmp/mnt/asterisk");
+		_exec("mkdir tmp/mnt/asterisk/modules");
+		_exec("cp {$dirs['packages']}/$asterisk_version/TMP_MODULES/* tmp/mnt/asterisk/modules");
+
+
+		// cleanup
+		_exec("ls -alR tmp/mnt");
 		_exec("df");
 		_exec("umount tmp/mnt");
 		_exec("mdconfig -d -u 0");

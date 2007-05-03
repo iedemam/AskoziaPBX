@@ -72,6 +72,10 @@ function dump_clog($logfile, $tail) {
 	*/
 	
 	foreach ($logarr as $logent) {
+		// filter out pseudo channels
+		if (strpos($logent, "Zap/pseudo"))
+			continue;
+
 		$logent = preg_split("/\s+/", $logent, 6);
 		$cdr = strstr($logent[5], "\"");
 		$cdr = explode(",", $cdr);
