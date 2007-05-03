@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("System", "GUI Options");
+$pgtitle = array("Advanced", "GUI Options");
 require("guiconfig.inc");
 
 
@@ -115,7 +115,7 @@ function enable_change(enable_over) {
             <p><span class="vexpl"><span class="red"><strong>Note: </strong></span>the 
               options on this page are intended for use by advanced users only, 
               and there's <strong>NO</strong> support for them.</span></p>
-            <form action="system_guioptions.php" method="post" name="iform" id="iform">
+            <form action="advanced_guioptions.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic">webGUI SSL certificate/key</td>

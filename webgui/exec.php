@@ -74,7 +74,7 @@ function puts( $arg ) { echo "$arg\n"; }
 
 $Version    = '';
 $ScriptName = $HTTP_SERVER_VARS['SCRIPT_NAME'];
-$Title      = 'm0n0wall: execute command';
+$Title      = 'AskoziaPBX: execute command';
 
 // Get year.
 
@@ -234,7 +234,7 @@ if(!isBlank($_POST['txtCommand'])) {
 <p><span class="pgtitle"><?=$Title ?></span>
 <?php if (isBlank($_POST['txtCommand'])): ?>
 <p class="red"><strong>Note: this function is unsupported. Use it
-on your own risk!</strong></p>
+at your own risk!</strong></p>
 <?php endif; ?>
 <?php if ($ulmsg) echo "<p><strong>" . $ulmsg . "</strong></p>\n"; ?>
 <?php

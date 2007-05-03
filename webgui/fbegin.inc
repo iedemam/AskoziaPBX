@@ -100,7 +100,6 @@ if ((!is_array($allowed)) and
 
 /* System */
 $menu['System']['General Setup']		= array('system.php');
-$menu['System']['GUI Options']			= array('system_guioptions.php');
 $menu['System']['Firmware']				= array('system_firmware.php');
 $menu['System']['Backup/Restore'] 		= array('system_backup.php');
 $menu['System']['Factory Defaults']		= array('system_defaults.php');
@@ -120,11 +119,9 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 //$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
 /* Services */
-$menu['Services']['SIP'] 				= array('services_sip.php');
 $menu['Services']['Conferencing'] 		= array('services_conferencing.php');
 //$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
 //$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
-//$menu['Services']['QoS'] 					= array('services_qos.php'); /* jb, packet types */
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
@@ -136,6 +133,10 @@ $menu['Status']['Interfaces']			= array('status_interfaces.php');
 //$menu['Status']['Channels']				= array('status_channels.php');
 //$menu['Status']['Voicemail']				= array('status_voicemail.php');
 
+/* Advanced */
+$menu['Advanced']['SIP'] 				= array('advanced_sip.php');
+$menu['Advanced']['GUI Options']		= array('advanced_guioptions.php');
+//$menu['Advanced']['Quality of Service'] 					= array('advanced_qos.php');
 
 /* Diagnostics */
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
@@ -236,6 +237,7 @@ dynamic_menu($menu['Providers'], 'Providers');
 dynamic_menu($menu['Phones'], 'Phones');
 dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');
+dynamic_menu($menu['Advanced'], 'Advanced');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 
 ?>
