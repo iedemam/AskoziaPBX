@@ -62,7 +62,7 @@
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-05-03T14:38:12Z</date>
+			<date>2007-05-03T15:47:42Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -76,14 +76,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>91</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>603</integer>
+				<integer>43</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>553</integer>
+			<integer>25</integer>
 		</dict>
 		<key>phpconf/inc/asterisk_conferencing.inc</key>
 		<dict>
@@ -112,20 +112,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>48</integer>
-		</dict>
-		<key>webgui/diag_logs_calls.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>36</integer>
-				<key>line</key>
-				<integer>75</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>66</integer>
 		</dict>
 		<key>webgui/services_conferencing.php</key>
 		<dict>
@@ -160,11 +146,10 @@
 	<array>
 		<string>pbxdev.php</string>
 		<string>webgui/services_conferencing_edit.php</string>
-		<string>webgui/diag_logs_calls.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{144, 806}, {772, 712}}</string>
+	<string>{{144, 824}, {772, 712}}</string>
 </dict>
 </plist>

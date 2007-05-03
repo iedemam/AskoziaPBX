@@ -41,10 +41,10 @@ $zaptel_version = "zaptel";
 
 // --[ image sizes ]-----------------------------------------------------------
 
-$mfsroot_size = 20480;
-$generic_pc_size = 14848;
-$generic_pc_smp_size = 14848;
-$wrap_soekris_size = 14848;
+$mfsroot_size = 18 * 1024;
+$generic_pc_size = 13 * 1024;
+$generic_pc_smp_size = 13 * 1024;
+$wrap_soekris_size = 13 * 1024;
 
 
 // --[ possible platforms and kernels ]----------------------------------------
@@ -534,6 +534,7 @@ function populate_asterisk($image_name) {
 	_exec("rm -rf /tmp/moh");
 	
 	// move modules to a temporary location and create link to cf storage
+	_exec("rm {$dirs['packages']}/$asterisk_version/TMP_MODULES/*");
 	_exec("mv $image_name/usr/local/lib/asterisk/modules/* ". 
 		$dirs['packages'] ."/$asterisk_version/TMP_MODULES");
 	_exec("rmdir $image_name/usr/local/lib/asterisk/modules/");
