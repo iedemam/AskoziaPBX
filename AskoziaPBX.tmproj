@@ -25,6 +25,8 @@
 			<string>etc</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>files</string>
 			<key>regexFolderFilter</key>
@@ -33,6 +35,8 @@
 			<string>files</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>phpconf</string>
 			<key>regexFolderFilter</key>
@@ -41,6 +45,8 @@
 			<string>phpconf</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>webgui</string>
 			<key>regexFolderFilter</key>
@@ -52,7 +58,7 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-05-02T11:34:36Z</date>
+			<date>2007-05-09T13:28:50Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -62,28 +68,42 @@
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-05-03T15:47:42Z</date>
+			<date>2007-05-09T13:28:50Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>230</integer>
+	<integer>215</integer>
 	<key>metaData</key>
 	<dict>
+		<key>NOTES</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>73</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>43</integer>
+				<integer>456</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>25</integer>
+			<integer>480</integer>
 		</dict>
 		<key>phpconf/inc/asterisk_conferencing.inc</key>
 		<dict>
@@ -99,20 +119,6 @@
 			<key>firstVisibleLine</key>
 			<integer>54</integer>
 		</dict>
-		<key>phpconf/inc/asterisk_extensions.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>66</integer>
-				<key>line</key>
-				<integer>67</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>48</integer>
-		</dict>
 		<key>webgui/services_conferencing.php</key>
 		<dict>
 			<key>caret</key>
@@ -127,29 +133,15 @@
 			<key>firstVisibleLine</key>
 			<integer>68</integer>
 		</dict>
-		<key>webgui/services_conferencing_edit.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>41</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>49</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>webgui/services_conferencing_edit.php</string>
+		<string>NOTES</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{144, 824}, {772, 712}}</string>
+	<string>{{148, 806}, {788, 714}}</string>
 </dict>
 </plist>

@@ -54,8 +54,9 @@ if (file_exists($d_conferencingconfdirty_path)) {
 	config_lock();
 	$retval |= asterisk_conferencing_conf_generate();
 	$retval |= asterisk_extensions_conf_generate();
-	$retval |= asterisk_extensions_reload();
 	config_unlock();
+	
+	$retval |= asterisk_extensions_reload();
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
@@ -100,7 +101,7 @@ if (file_exists($d_conferencingconfdirty_path)) {
 		</td>
 		<td valign="middle" nowrap class="list">
 			<a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit conference room" width="17" height="17" border="0"></a>
-           &nbsp;<a href="services_conferencing_edit.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="x.gif" title="delete conference room" width="17" height="17" border="0"></a>
+           &nbsp;<a href="services_conferencing.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="x.gif" title="delete conference room" width="17" height="17" border="0"></a>
 		</td>
 	</tr>
 	<?php $i++; endforeach; ?>
