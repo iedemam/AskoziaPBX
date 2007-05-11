@@ -33,19 +33,17 @@
 
 // --[ package versions ]------------------------------------------------------
 
-$php_version		= "php-4.4.6";
+$php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
 $asterisk_version	= "asterisk-1.4.4";
 $zaptel_version		= "zaptel";
 
 
-// --[ image sizes ]-----------------------------------------------------------
+// --[ image padding ]---------------------------------------------------------
 
-$mfsroot_size 			= 40 * 1024;
-$generic_pc_size 		= 25 * 1024;
-$generic_pc_smp_size 	= 25 * 1024;
-$wrap_soekris_size 		= 25 * 1024;
-
+$mfsroot_pad	= 2048;
+$asterisk_pad	= 512;
+$image_pad		= 512;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
@@ -480,86 +478,98 @@ function populate_everything($image_name) {
 }
 
 function package($platform, $image_name) {
-	global $dirs, $mfsroot_size, $generic_pc_size, $generic_pc_smp_size, $wrap_soekris_size, $zaptel_version, $asterisk_version;
+	global $dirs;
+	global $mfsroot_pad, $asterisk_pad, $image_pad;
+	global $zaptel_version, $asterisk_version;
 		
 	_set_permissions($image_name);
 	
 	if (!file_exists("tmp")) {
 		mkdir("tmp");
 		mkdir("tmp/mnt");
+		mkdir("tmp/stage");
 	}
 	
 	$kernel = _platform_to_kernel($platform);
 	
-	// mfsroots
-	if (!file_exists("{$dirs['mfsroots']}/$platform-". basename($image_name) .".gz")) {
+	// mfsroot
 
-		_exec("dd if=/dev/zero of=tmp/mfsroot bs=1k count=$mfsroot_size");
-		_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
-	
-		_exec("bsdlabel -rw md0 auto");
-		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
-	
-		_exec("mount /dev/md0c tmp/mnt");
-		_exec("cd tmp/mnt; tar -cf - -C $image_name ./ | tar -xpf -");
-		
-		// system modules		
-		_exec("mkdir tmp/mnt/boot");
-		_exec("mkdir tmp/mnt/boot/kernel");
-		if ($platform == "generic-pc" || 
-			$platform == "generic-pc-cdrom") {
-			_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/mnt/boot/kernel/");
-		}
-		
-		// zaptel modules
-		_exec("cp {$dirs['packages']}/$zaptel_version/zaptel/zaptel.ko tmp/mnt/boot/kernel/");
-		_exec("cp {$dirs['packages']}/$zaptel_version/ztdummy/ztdummy.ko tmp/mnt/boot/kernel/");
-		
-		// stamps
-		_exec("echo \"". basename($image_name) ."\" > tmp/mnt/etc/version");
-		_exec("echo `date` > tmp/mnt/etc/version.buildtime");
-		_exec("echo $platform > tmp/mnt/etc/platform");
-		
-		_exec("df");
-	
-		_exec("umount tmp/mnt");
-		_exec("mdconfig -d -u 0");
-		_exec("gzip -9 tmp/mfsroot");
-		_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz");
+	// add rootfs
+	_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
+
+	// ...system modules		
+	_exec("mkdir tmp/stage/boot");
+	_exec("mkdir tmp/stage/boot/kernel");
+	if ($platform == "generic-pc" || 
+		$platform == "generic-pc-cdrom") {
+		_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/stage/boot/kernel/");
 	}
 	
+	// ...zaptel modules
+	_exec("cp {$dirs['packages']}/$zaptel_version/zaptel/zaptel.ko tmp/stage/boot/kernel/");
+	_exec("cp {$dirs['packages']}/$zaptel_version/ztdummy/ztdummy.ko tmp/stage/boot/kernel/");
+	
+	// ...stamps
+	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
+	_exec("echo `date` > tmp/stage/etc/version.buildtime");
+	_exec("echo $platform > tmp/stage/etc/platform");		
+	
+	// get size and package mfsroot
+	$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
+	
+	_exec("dd if=/dev/zero of=tmp/mfsroot bs=1k count=$mfsroot_size");
+	_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
+
+	_exec("bsdlabel -rw md0 auto");
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
+
+	_exec("mount /dev/md0c tmp/mnt");
+	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+	
+	_exec("df");
+
+	_exec("umount tmp/mnt");
+	_exec("rm -rf tmp/stage/*");
+	_exec("mdconfig -d -u 0");
+	_exec("gzip -9 tmp/mfsroot");
+	_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz");
+
+
 	// .img
 	if ($platform != "generic-pc-cdrom") {
 		
-		if ($platform == "generic-pc") {
-			_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$generic_pc_size");
-		} else {
-			_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$wrap_soekris_size");
-		}
-			
-		_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
-		_exec("bsdlabel -Brw -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 auto");
-		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
-		_exec("mount /dev/md0a tmp/mnt");
+		// add mfsroot
 		_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
-			"tmp/mnt/mfsroot.gz");
+			"tmp/stage/mfsroot.gz");
 		
-		// boot
-		_exec("mkdir tmp/mnt/boot");
-		_exec("mkdir tmp/mnt/boot/kernel");
-	    _exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/mnt/boot/");
-		_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/mnt/boot/");
+		// ...boot
+		_exec("mkdir tmp/stage/boot");
+		_exec("mkdir tmp/stage/boot/kernel");
+	    _exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/stage/boot/");
+		_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/stage/boot/");
 	
-		// conf
-		_exec("mkdir tmp/mnt/conf");
-		_exec("cp {$dirs['phpconf']}/config.xml tmp/mnt/conf");
-		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/mnt/kernel.gz");
+		// ...conf
+		_exec("mkdir tmp/stage/conf");
+		_exec("cp {$dirs['phpconf']}/config.xml tmp/stage/conf");
+		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/stage/kernel.gz");
 		
-		// asterisk modules
-		_exec("mkdir tmp/mnt/asterisk");
-		_exec("mkdir tmp/mnt/asterisk/modules");
-		_exec("cp {$dirs['packages']}/$asterisk_version/TMP_MODULES/* tmp/mnt/asterisk/modules");
+		$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
+		print("$asterisk_size\n");
+		$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
+		print("$image_size\n");
 
+		_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
+		_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
+		
+		_exec("bsdlabel -Brw -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 auto");
+		_exec("bsdlabel md0 > tmp/default.label");
+		
+		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
+		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
+		
+		_exec("mount /dev/md0a tmp/mnt");
+		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+		
 		// cleanup
 		_exec("df");
 		_exec("umount tmp/mnt");
@@ -589,6 +599,12 @@ function package($platform, $image_name) {
 	}
 	
 	_exec("rm -rf tmp");
+}
+
+function _get_dir_size($dir) {
+	exec("du -d 0 $dir", $out);
+	$out = preg_split("/\s+/", $out[0]);
+	return $out[0];
 }
 
 function _set_permissions($image_name) {

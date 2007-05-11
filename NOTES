@@ -4,9 +4,6 @@ Priorities:
    - note: editor needs to be merged with exec.php
  - get image signing working
  - remove junk from manager output and add return values to asterisk_exec()
- - stop loading sound files into memory, link to an actual piece of the CF (test (u)mount during calls...)
- - sounds should be pulled and merged separately to allow higher customization
-   - i.e. gsm silence sounds (signed linear silence costs 1.4MB!)
  - get conferencing configuration working
    - add support for i|v etc options and max participants
  - get indications.conf working 
