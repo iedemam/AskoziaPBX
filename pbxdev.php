@@ -554,25 +554,45 @@ function package($platform, $image_name) {
 		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/stage/kernel.gz");
 		
 		$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
-		print("$asterisk_size\n");
 		$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
-		print("$image_size\n");
+		
+		$a_size = ($image_size - $asterisk_size) * 2 - 16;
+		$b_size = $asterisk_size * 2;
+		$c_size = $image_size * 2;
 
+		$label  = "# /dev/md0:\n";
+		$label .= "8 partitions:\n";
+		$label .= "#        size   offset    fstype   [fsize bsize bps/cpg]\n";
+		$label .= " a: " . $a_size . "  16  unused  0  0\n";
+		$label .= " b: " . $b_size . "   *  unused  0  0\n";
+		$label .= " c: " . $c_size . "   0  unused  0  0\n\n";
+
+		$fd = fopen("tmp/formatted.label", "w");
+		if (!$fd) {
+			printf("Error: cannot open label!\n");
+			exit(1);
+		}
+		fwrite($fd, $label);
+		fclose($fd);
+		
 		_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
 		_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
-		
-		_exec("bsdlabel -Brw -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 auto");
-		_exec("bsdlabel md0 > tmp/default.label");
+		_exec("bsdlabel -BR -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 tmp/formatted.label");
 		
 		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
 		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
 		
 		_exec("mount /dev/md0a tmp/mnt");
 		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
-		
-		// cleanup
 		_exec("df");
 		_exec("umount tmp/mnt");
+		
+		_exec("mount /dev/md0b tmp/mnt");
+		_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+		_exec("df");
+		_exec("umount tmp/mnt");		
+		
+		// cleanup
 		_exec("mdconfig -d -u 0");
 		_exec("gzip -9 tmp/image.bin");
 		_exec("mv tmp/image.bin.gz {$dirs['images']}/$platform-". basename($image_name) .".img");
