@@ -87,7 +87,7 @@ foreach($dirs as $dir) {
 	}	
 }
 
-// --[ the functions! ]--------------------------------------------------------
+// --[ the functions ]---------------------------------------------------------
 
 function patch_kernel() {
 	global $dirs;

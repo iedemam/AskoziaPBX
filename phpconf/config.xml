@@ -2,7 +2,7 @@
 <!-- AskoziaPBX default system configuration -->
 <!-- $Id$ -->
 <askoziapbx>
-	<version>1.0</version>
+	<version>1.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>AskoziaPBX</hostname>
@@ -55,7 +55,7 @@
 	</sip>
 	<conferencing>
 		<room>
-			
+
 		</room>
 		...
 	</conferencing>

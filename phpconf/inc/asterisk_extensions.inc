@@ -65,7 +65,7 @@ EOD;
 	
 	foreach ($rooms as $room) {
 		$conf .= "exten => {$room['number']},1,Answer()\n";
-		$conf .= "exten => {$room['number']},2,MeetMe({$room['number']},MI)\n";
+		$conf .= "exten => {$room['number']},2,MeetMe({$room['number']},M)\n";
 		$conf .= "exten => {$room['number']},3,Hangup()\n\n";
 	}
 
@@ -78,7 +78,7 @@ EOD;
 		$conf .= "[{$sp['uniqid']}]\n";
 		$conf .= "exten => {$sp['username']},1,Answer()\n";
 		$conf .= "exten => {$sp['username']},2,Dial(". 
-			asterisk_uniqid_to_dial($sp['incomingphone']) .",30)\n";
+			asterisk_uniqid_to_dial($sp['incomingextension']) .",30)\n";
 		$conf .= "exten => {$sp['username']},3,Hangup()\n";
 		$conf .= "exten => _{$sp['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($sp['prefix']) ."}@{$sp['uniqid']},30)\n";
 		$conf .= "\n";
@@ -89,9 +89,10 @@ EOD;
 
 	foreach ($a_sipphones as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";
-		if (isset($sp['provider']))
+		if (isset($sp['provider'])) {
 			foreach ($sp['provider'] as $provider) {
 				$conf .= "include => $provider\n";
+			}
 		}
 		$conf .= "include => internal\n";
 		$conf .= "\n";

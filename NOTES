@@ -48,36 +48,28 @@ Table Class:
 
 -----------------------------------------------------------------------
 
-Horizon:
- - call center solution
- - distributability / scalability
- - debug dev-page for interface
+Config Snippets:
 
-
------------------------------------------------------------------------
-
-Module Reload Bug
-
- - moved modules from mfsroot onto cf card to save some memory
- - phones_sip.php on delete calls:
-	write_config();				config.inc
-		config_lock();
-		conf_mount_rw();
-			mwexec("/sbin/umount -f {$g['cf_path']}");
-			mwexec("/sbin/mount -w -o noatime {$g['cf_path']}");
-		dump_xml_config();
-		conf_mount_ro();
-			mwexec("/sbin/umount -f {$g['cf_path']}");
-			mwexec("/sbin/mount -r {$g['cf_path']}");
-		parse_xml_config();
-		config_unlock();
+<dialplan>
+	<group>
+		<name>Michael I</name>
+		<type>sequential</type>
+		<groupextension>SIP-PHONE-23lkjfd3209jf20w9djf</groupextension>
+		<groupextension>SIP-PHONE-4kjf38jjlk3jw09dj2ks</groupextension>
+	</group>
+	<group>
+		<name>Find Me</name>
+		<type>parallel</type>
+		<groupextension>SIP-PHONE-23lkjfd3209jf20w9djf</groupextension>
+		<groupextension>SIP-PHONE-4kjf38jjlk3jw09dj2ks</groupextension>
+	</group>
 	
-	config_lock();
-	asterisk_sip_conf_generate();
-	asterisk_extensions_conf_generate();
-	config_unlock();
+	<quickdial>
+		...
+	</quickdial>
 	
-	asterisk_sip_reload();
-		asterisk_exec("module reload chan_sip.so");
-	asterisk_extensions_reload();
-		asterisk_exec("dialplan reload");
+	<customextension>
+		...
+	</customextension>
+<dialplan>
+	

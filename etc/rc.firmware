@@ -30,8 +30,9 @@ upgrade)
 	mkdir /tmp/configbak
 	cp -p /conf/* /tmp/configbak
 
-	# unmount /cf
+	# unmount /cf and /asterisk
 	/sbin/umount -f /cf
+	/sbin/umount -f /asterisk
 
 	# dd image onto card
 	if [ -r $2 ]; then

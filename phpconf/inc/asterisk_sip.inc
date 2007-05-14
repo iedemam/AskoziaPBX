@@ -213,7 +213,6 @@ EOD;
 function asterisk_sip_reload() {
 	
 	return asterisk_exec("module reload chan_sip.so");
-	
 }
 
 

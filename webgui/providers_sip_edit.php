@@ -60,7 +60,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['host'] = $a_sipproviders[$id]['host'];
 	$pconfig['port'] = $a_sipproviders[$id]['port'];
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
-	$pconfig['incomingphone'] = $a_sipproviders[$id]['incomingphone'];
+	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
 }
@@ -110,7 +110,7 @@ if ($_POST) {
 		if (isset($_POST['port']))
 			$sp['port'] = $_POST['port'];
 		$sp['prefix'] = $_POST['prefix'];
-		$sp['incomingphone'] = $_POST['incomingphone'];
+		$sp['incomingextension'] = $_POST['incomingextension'];
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
@@ -188,21 +188,21 @@ function typesel_change() {
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncell">Incoming Phone</td>
+				<td valign="top" class="vncell">Incoming Extension</td>
 				<td colspan="2" class="vtable">
-					<select name="incomingphone" class="formfld" id="incomingphone">
+					<select name="incomingextension" class="formfld" id="incomingextension">
 						<option></option>
+						<option>SIP Phones</option>
 						<?php foreach ($a_sipphones as $phone): ?>
 						<option value="<?=$phone['uniqid'];?>" <?php 
-						if ($phone['uniqid'] == $pconfig['incomingphone']) 
+						if ($phone['uniqid'] == $pconfig['incomingextension']) 
 							echo "selected"; ?>> 
-						<? echo "<{$phone['extension']}> - {$phone['callerid']}"; ?></option>
+						<? echo "  {$phone['callerid']} <{$phone['extension']}>"; ?></option>
 						<?php endforeach; ?>
                     </select>
-					<br><span class="vexpl">Directs incoming phone calls from this provider to the specified phone.</span>
+					<br><span class="vexpl">Directs incoming phone calls from this provider to the specified extension.</span>
 				</td>
 			</tr>
-
 			<tr> 
 				<td width="20%" valign="top" class="vncell">Audio Codecs</td>
 				<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
@@ -245,7 +245,6 @@ function typesel_change() {
 					</ul>
 				</td>
 			</tr>
-
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

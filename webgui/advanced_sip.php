@@ -63,6 +63,7 @@ if ($_POST) {
 		$retval |= asterisk_sip_conf_generate();
 		$retval |= asterisk_sip_reload();
 		config_unlock();
+		
 		$savemsg = get_std_save_message($retval);
 		
 		header("Location: services_sip.php");
@@ -83,12 +84,16 @@ function typesel_change() {
 <form action="advanced_sip.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td valign="top" class="vncell">Binding Port</td>
-			<td class="vtable"><?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"></td>
+			<td width="20%" valign="top" class="vncell">Binding Port</td>
+			<td width="80%" class="vtable">
+				<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+			</td>
 		</tr>
 		<tr> 
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"></td>
+			<td valign="top">&nbsp;</td>
+			<td>
+				<input name="Submit" type="submit" class="formbtn" value="Save">
+			</td>
 		</tr>
 	</table>
 </form>
