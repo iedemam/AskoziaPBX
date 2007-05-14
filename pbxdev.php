@@ -159,12 +159,11 @@ function build_php() {
 		_exec("ln -s /usr/local/bin/autoconf213 /usr/local/bin/autoconf");
 		_exec("ln -s /usr/local/bin/autoheader213 /usr/local/bin/autoheader");
 	}
-	
+	if (!file_exists("{$dirs['packages']}/$php_version.tar.gz")) {
+		_exec("cd {$dirs['packages']}; " .
+				"fetch http://br.php.net/distributions/$php_version.tar.gz");
+	}
 	if (!file_exists("{$dirs['packages']}/$php_version")) {
-		if (!file_exists("{$dirs['packages']}/$php_version.tar.gz")) {
-			_exec("cd {$dirs['packages']}; " .
-					"fetch http://br.php.net/distributions/$php_version.tar.gz");
-		}
 		_exec("cd {$dirs['packages']}; tar zxf $php_version.tar.gz");
 	}
 	_exec("cd {$dirs['packages']}/$php_version; ".
@@ -177,11 +176,11 @@ function build_php() {
 function build_minihttpd() {
 	global $dirs, $mini_httpd_version;
 	
+	if (!file_exists("{$dirs['packages']}/$mini_httpd_version.tar.gz")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://www.acme.com/software/mini_httpd/$mini_httpd_version.tar.gz");
+	}
 	if (!file_exists("{$dirs['packages']}/$mini_httpd_version")) {
-		if (!file_exists("{$dirs['packages']}/$mini_httpd_version.tar.gz")) {
-			_exec("cd {$dirs['packages']}; ".
-				"fetch http://www.acme.com/software/mini_httpd/$mini_httpd_version.tar.gz");
-		}
 		_exec("cd {$dirs['packages']}; tar zxf $mini_httpd_version.tar.gz");
 	}
 	if (!_is_patched($mini_httpd_version)) {
@@ -195,11 +194,11 @@ function build_minihttpd() {
 function build_asterisk() {
 	global $dirs, $asterisk_version;
 	
+	if (!file_exists("{$dirs['packages']}/$asterisk_version.tar.gz")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://ftp.digium.com/pub/asterisk/releases/$asterisk_version.tar.gz");
+	}
 	if (!file_exists("{$dirs['packages']}/$asterisk_version")) {
-		if (!file_exists("{$dirs['packages']}/$asterisk_version.tar.gz")) {
-			_exec("cd {$dirs['packages']}; ".
-				"fetch http://ftp.digium.com/pub/asterisk/releases/$asterisk_version.tar.gz; ");
-		}
 		_exec("cd {$dirs['packages']}; tar zxf $asterisk_version.tar.gz");
 	}
 	if (!_is_patched($asterisk_version)) {
@@ -296,7 +295,7 @@ function create($image_name) {
 	$rootfs = "$image_name/rootfs";
 	_exec("mkdir $rootfs");
 	
-	_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc ftmp mnt libexec proc root sbin tmp usr var");
+	_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc ftmp mnt libexec proc root sbin tmp usr var asterisk");
 	_exec("cd $rootfs; ln -s /cf/conf conf");
 	_exec("mkdir $rootfs/etc/inc");
 	_exec("cd $rootfs/usr; mkdir bin lib libexec local sbin share");

@@ -114,7 +114,7 @@ EOD;
 *******************************************************************************
 * FATAL ERROR                                                                 *
 * The device that contains the configuration file (config.xml) could not be   *
-* found. m0n0wall cannot continue booting.                                    *
+* found. AskoziaPBX cannot continue booting.                                  *
 *******************************************************************************
 
 
@@ -133,6 +133,7 @@ EOD;
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 		
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
+		$fstab .= "/dev/{$cfgdevice}b /asterisk ufs ro 0 0\n";
 		$fstab .= "proc /proc procfs rw 0 0\n";
 		
 		fwrite($fd, $fstab);
