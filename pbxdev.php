@@ -250,6 +250,13 @@ function build_msntp() {
 	_exec("cd /usr/ports/net/msntp; make clean; make");
 }
 
+function build_msmtp() {
+	
+	_exec("cd /usr/ports/mail/msmtp; make clean; ".
+		"make WITH_OPENSSL=yes WITHOUT_IDN=yes WITHOUT_NLS=yes");
+}
+
+
 function build_tools() {
 	global $dirs;
 	
@@ -275,6 +282,7 @@ function build_packages() {
 function build_ports() {
 	
 	build_msntp();
+	build_msmtp();
 }
 
 function build_everything() {
@@ -379,6 +387,13 @@ function populate_msntp($image_name) {
 		"install -s work/msntp-*/msntp $image_name/rootfs/usr/local/bin");
 }
 
+function populate_msmtp($image_name) {
+	global $dirs;
+	
+	_exec("cd /usr/ports/mail/msmtp; ".
+		"install -s work/msmtp-*/src/msmtp $image_name/rootfs/usr/sbin");
+}
+
 function populate_asterisk($image_name) {
 	global $dirs, $asterisk_version;
 	
@@ -468,6 +483,7 @@ function populate_everything($image_name) {
 	populate_php($image_name);
 	populate_minihttpd($image_name);
 	populate_msntp($image_name);
+	populate_msmtp($image_name);
 	populate_zaptel($image_name);
 	populate_asterisk($image_name);
 	populate_tools($image_name);
