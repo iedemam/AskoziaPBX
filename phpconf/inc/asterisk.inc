@@ -47,6 +47,7 @@ function asterisk_configure() {
 	$res |= asterisk_sip_conf_generate();
 	$res |= asterisk_conferencing_conf_generate();
 	$res |= asterisk_extensions_conf_generate();
+	$res |= asterisk_voicemail_conf_generate();
 	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {

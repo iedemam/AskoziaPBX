@@ -55,10 +55,12 @@ if (file_exists($d_sipconfdirty_path)) {
 		config_lock();
 		$retval |= asterisk_sip_conf_generate();
 		$retval |= asterisk_extensions_conf_generate();
+		$retval |= asterisk_voicemail_conf_generate();
 		config_unlock();
 		
 		$retval |= asterisk_sip_reload();
 		$retval |= asterisk_extensions_reload();
+		$retval |= asterisk_voicemail_reload();
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {

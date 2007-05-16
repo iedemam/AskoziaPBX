@@ -85,12 +85,12 @@
 	system_console_configure();
 	
 	/* start dyndns service */
-	services_dyndns_configure();
+	//services_dyndns_configure();
 	
-	/* static IP address? -> attempt DNS update */
+	/* static IP address? -> attempt DNS update *//*
 	if ($config['interfaces']['lan']['topology'] == "public" ||
 		$config['interfaces']['lan']['topology'] == "natstatic")
-		services_dnsupdate_process();
+		services_dnsupdate_process();*/
 		
 	/* start the NTP client */
 	system_ntp_configure();

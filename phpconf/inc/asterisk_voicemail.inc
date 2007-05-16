@@ -30,3 +30,117 @@
 
 require_once("functions.inc");
 
+
+function asterisk_voicemail_conf_generate() {
+	
+	$res = 0;
+	$res |= voicemail_generate_msmtp_conf();
+	$res |= voicemail_generate_voicemail_conf();
+	return $res;
+}
+
+function voicemail_generate_voicemail_conf() {
+	global $config;
+	
+	$fd = fopen("/usr/local/etc/asterisk/voicemail.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open sip.conf in asterisk_sip_conf_generate().\n");
+		return 1;
+	}
+	
+	$conf = <<<EOD
+
+[general]
+format=wav49
+attach=yes
+skipms=3000
+maxsilence=10
+silencethreshold=128
+maxlogins=3
+
+serveremail=AskoziaPBX
+fromstring=AskoziaPBX Voicemail
+emailsubject=New voicemail message (box: $\{VM_MAILBOX})
+emailbody=Dear $\{VM_NAME}:\n\n\A call from $\{VM_CALLERID} just landed in your voicemail.\n\nHere's the $\{VM_DUR} long message they left for you on $\{VM_DATE}.\n\n--Your Phone System
+
+emaildateformat=%A, %B %d, %Y at %r
+
+mailcmd=/usr/sbin/msmtp -C /etc/msmtp.conf -t
+
+sendvoicemail=yes	; Context to Send voicemail from [option 5 from the advanced menu]
+
+[zonemessages]
+eastern=America/New_York|'vm-received' Q 'digits/at' IMp
+central=America/Chicago|'vm-received' Q 'digits/at' IMp
+central24=America/Chicago|'vm-received' q 'digits/at' H N 'hours'
+military=Zulu|'vm-received' q 'digits/at' H N 'hours' 'phonetic/z_p'
+european=Europe/Copenhagen|'vm-received' a d b 'digits/at' HM
+
+[default]
+
+EOD;
+
+	// sip phones
+	if (!is_array($config['sip']['phone']))
+		$config['sip']['phone'] = array();
+	
+	$sipphones = $config['sip']['phone'];
+
+	foreach($sipphones as $sp) {
+		if(!$sp['voicemailbox'])
+			continue;
+		// is eliminating VoiceMailMain from the dialplan enough to keep
+		// this default password from being a privacy risk?
+		$conf .= "{$sp['extension']} => 0000,{$sp['callerid']},{$sp['voicemailbox']},,delete=yes\n";
+	}
+	
+	fwrite($fd, $conf);
+	fclose($fd);
+	
+	return 0;
+}
+
+
+function voicemail_generate_msmtp_conf() {
+	global $config;
+	
+	$fd = fopen("/etc/msmtp.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open msmtp.conf in voicemail_generate_msmtp_conf().\n");
+		return 1;
+	}
+	
+	$conf = <<<EOD
+
+# A system wide configuration is optional.
+# If it exists, it usually defines a default account.
+# This allows msmtp to be used like /usr/sbin/sendmail.
+#account default
+
+# The SMTP smarthost.
+#host mailhub.oursite.example
+
+# Construct envelope-from addresses of the form "user@oursite.example".
+#auto_from on
+#maildomain oursite.example
+
+# Use TLS.
+#tls on
+#tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+# Syslog logging with facility LOG_MAIL instead of the default LOG_USER.
+syslog LOG_MAIL
+
+
+EOD;
+
+	fwrite($fd, $conf);
+	fclose($fd);
+
+	return 0;
+}
+
+function asterisk_voicemail_reload() {
+	
+	return asterisk_exec("module reload app_voicemail.so");
+}

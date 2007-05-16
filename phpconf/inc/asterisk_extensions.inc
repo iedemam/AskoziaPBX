@@ -42,12 +42,16 @@ function asterisk_extensions_conf_generate() {
 	
 	$conf = <<<EOD
 
-[macro-internal]
-exten => s,1,Dial($\{ARG2},30)
-exten => s,2,Hangup()
+[macro-normal];
+exten => s,1,Dial($\{ARG1},30)
+exten => s,n,Goto(s-$\{DIALSTATUS},1)
+exten => s-NOANSWER,1,VoiceMail($\{ARG2},u)
+exten => s-BUSY,1,VoiceMail($\{ARG2},b)
+exten => s-ANSWER,1,Hangup()
+exten => _s-.,1,Goto(s-NOANSWER,1)
 
 [internal]
-exten => _XXXX,1,Macro(internal|$\{EXTEN}|SIP/$\{EXTEN})
+exten => _XXXX,1,Macro(normal|SIP/$\{EXTEN}|$\{EXTEN})
 
 exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()

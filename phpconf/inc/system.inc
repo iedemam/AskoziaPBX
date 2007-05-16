@@ -162,9 +162,9 @@ function system_syslogd_start() {
 		}
 		
 		$syslogconf = <<<EOD
-local0.*								%/var/log/asterisk.log
+local0.*;mail.*							%/var/log/asterisk.log
 local1.*								%/var/log/cdr.log
-*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local1.none; %/var/log/system.log
+*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; %/var/log/system.log
 security.*								%/var/log/system.log
 auth.info;authpriv.info;daemon.info		%/var/log/system.log
 *.emerg									*

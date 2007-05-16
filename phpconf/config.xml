@@ -45,20 +45,46 @@
 	<sip>
 		<port>5060</port>
 		<phone>
-
+			<extension></extension>
+			<callerid></callerid>
+			<secret></secret>
+			<descr/>
+			<provider></provider>
+			<voicemailbox>bob@aol.com</voicemailbox> or
+			<codec>/codec>
+			...
+			<uniqid></uniqid>
 		</phone>
 		...
 		<provider>
-
+			<name>Free World Dialup</name>
+			<username></username>
+			<authuser/>
+			<secret></secret>
+			<host></host>
+			<port/>
+			<prefix></prefix>
+			<incomingextension></incomingextension>
+			<codec></codec>
+			...
+			<uniqid></uniqid>
 		</provider>
 		...
 	</sip>
+	-->
 	<conferencing>
 		<room>
-
+			<number>2663</number>
+			<!-- <pin></pin> -->
+			<!-- <adminpin></adminpin> -->
+			<descr>Default Conference</descr>
 		</room>
-		...
 	</conferencing>
+	<!--
+	<voicemail>
+		<host></host>
+		<maildomain></maildomain>
+	</voicemail>
 	-->
 	<staticroutes>
 		<!--

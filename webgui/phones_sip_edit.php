@@ -57,6 +57,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['callerid'] = $a_sipphones[$id]['callerid'];
 	$pconfig['secret'] = $a_sipphones[$id]['secret'];
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
+	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
 	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_sipphones[$id]['descr'];
@@ -92,6 +93,8 @@ if ($_POST) {
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}
+	
+	//TODO: check if voicemailbox is valid)
 
 
 	if (!$input_errors) {
@@ -99,6 +102,7 @@ if ($_POST) {
 		$sp['extension'] = $_POST['extension'];
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['secret'] = $_POST['secret'];
+		$sp['voicemailbox'] = $_POST['voicemailbox'];
 		$sp['descr'] = $_POST['descr'];
 
 		$sp['provider'] = array();
@@ -151,6 +155,13 @@ function typesel_change() {
 					<br><span class="vexpl">Text to be displayed for Caller ID.</span>
 				</td>
 			</tr>
+			<tr> 
+				<td valign="top" class="vncell">Voicemail Address</td>
+				<td colspan="2" class="vtable">
+					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
+					<br><span class="vexpl">If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given e-mail address.</span>
+				</td>
+			</tr>			
 			<tr> 
 				<td valign="top" class="vncellreq">Secret</td>
 				<td colspan="2" class="vtable">
