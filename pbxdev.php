@@ -315,6 +315,7 @@ function create($image_name) {
 	_exec("mkdir $image_name/asterisk/moh");
 	_exec("mkdir $image_name/asterisk/sounds");
 	_exec("mkdir $image_name/asterisk/sounds/silence");
+	_exec("mkdir $image_name/asterisk/sounds/digits");
 	_exec("mkdir $image_name/asterisk/modules");
 }
 
@@ -403,13 +404,15 @@ function populate_asterisk($image_name) {
 		"gmake install DESTDIR=$rootfs");
 	
 	// filter and link sounds
-	$sounds = explode(" ", "conf-* vm-rec-name.* beep.* auth-thankyou.*");
+	$sounds = explode(" ", "conf-* vm-* beep.* auth-thankyou.*");
 	foreach ($sounds as $sound) {
 		_exec("cp $rootfs/usr/local/share/asterisk/sounds/$sound ".
 			"$image_name/asterisk/sounds");
 	}
-	_exec("cp $rootfs/usr/local/share/asterisk/sounds/silence/*.gsm ".
+	_exec("cp $rootfs/usr/local/share/asterisk/sounds/silence/* ".
 		"$image_name/asterisk/sounds/silence");
+	_exec("cp $rootfs/usr/local/share/asterisk/sounds/digits/* ".
+		"$image_name/asterisk/sounds/digits");
 	_exec("rm -rf $rootfs/usr/local/share/asterisk/sounds");
 	_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/sounds sounds");
 	
@@ -708,8 +711,8 @@ if ($argv[1] == "new") {
 
 	if (file_exists($image_name)) {
 		_exec("rm -rf $image_name");
-		_exec("rm -rf {$dirs['images']}/* {$argv[2]}.img");
-		_exec("rm -rf {$dirs['mfsroots']}/* {$argv[2]}.gz");
+		_exec("rm -rf {$dirs['images']}/*{$argv[2]}.img");
+		_exec("rm -rf {$dirs['mfsroots']}/*{$argv[2]}.gz");
 	}
 	create($image_name);
 	populate_everything($image_name);

@@ -44,7 +44,7 @@ function voicemail_generate_voicemail_conf() {
 	
 	$fd = fopen("/usr/local/etc/asterisk/voicemail.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open sip.conf in asterisk_sip_conf_generate().\n");
+		printf("Error: cannot open voicemail.conf in voicemail_generate_voicemail_conf().\n");
 		return 1;
 	}
 	
@@ -61,7 +61,7 @@ maxlogins=3
 serveremail=AskoziaPBX
 fromstring=AskoziaPBX Voicemail
 emailsubject=New voicemail message (box: $\{VM_MAILBOX})
-emailbody=Dear $\{VM_NAME}:\n\n\A call from $\{VM_CALLERID} just landed in your voicemail.\n\nHere's the $\{VM_DUR} long message they left for you on $\{VM_DATE}.\n\n--Your Phone System
+emailbody=Dear $\{VM_NAME}:\\n\\nA call from $\{VM_CALLERID} just landed in your voicemail.\\n\\nHere's the $\{VM_DUR} long message they left for you on $\{VM_DATE}.\\n\\n--Your Phone System
 
 emaildateformat=%A, %B %d, %Y at %r
 
@@ -136,6 +136,8 @@ EOD;
 
 	fwrite($fd, $conf);
 	fclose($fd);
+	
+	chmod("/etc/msntp.conf", 600);
 
 	return 0;
 }
