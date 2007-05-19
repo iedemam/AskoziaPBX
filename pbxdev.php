@@ -544,7 +544,8 @@ function package($platform, $image_name) {
 	_exec("mount /dev/md0c tmp/mnt");
 	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
 	
-	_exec("df");
+	_exec("du tmp/mnt");
+	_exec("df");	
 
 	_exec("umount tmp/mnt");
 	_exec("rm -rf tmp/stage/*");
@@ -602,11 +603,13 @@ function package($platform, $image_name) {
 		
 		_exec("mount /dev/md0a tmp/mnt");
 		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+		_exec("du tmp/mnt");
 		_exec("df");
 		_exec("umount tmp/mnt");
 		
 		_exec("mount /dev/md0b tmp/mnt");
 		_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+		_exec("du tmp/mnt");
 		_exec("df");
 		_exec("umount tmp/mnt");		
 		
