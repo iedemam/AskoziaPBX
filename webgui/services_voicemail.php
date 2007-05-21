@@ -32,20 +32,117 @@
 $pgtitle = array("Services", "Voicemail");
 require("guiconfig.inc");
 
+$vmconfig = &$config['voicemail'];
+
+$pconfig['host'] = $vmconfig['host'];
+$pconfig['address'] = $vmconfig['address'];
+$pconfig['username'] = $vmconfig['username'];
+$pconfig['password'] = $vmconfig['password'];
+$pconfig['port'] = $vmconfig['port'];
+$pconfig['tls'] = $vmconfig['tls'];
+$pconfig['fromaddress'] = $vmconfig['fromaddress'];
+
 if ($_POST) {
 
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	/* input validation */
+	$reqdfields = explode(" ", "host address username password");
+	$reqdfieldsn = explode(",", "Host,E-mail Address,Username,Password");
+	
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if (!$input_errors) {
+		$vmconfig['host'] = $_POST['host'];
+		$vmconfig['address'] = $_POST['address'];
+		$vmconfig['username'] = $_POST['username'];
+		$vmconfig['password'] = $_POST['password'];
+		$vmconfig['port'] = $_POST['port'];
+		$vmconfig['tls'] = $_POST['tls'];
+		$vmconfig['fromaddress'] = $_POST['fromaddress'];
+		
+		write_config();
+		
+		config_lock();
+		$retval |= asterisk_voicemail_conf_generate();
+		config_unlock();
+		
+		$retval |= asterisk_voicemail_reload();
+		
+		$savemsg = get_std_save_message($retval);
+	}
 }
-
 ?>
-
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="services_voicemail.php" method="post">
+<form action="services_voicemail.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr> 
+			<td colspan="2" valign="top" class="listtopic">SMTP</td>
+		</tr>
+		<tr>
+			<td width="20%" valign="top" class="vncellreq">Host</td>
+			<td width="80%" class="vtable">
+				<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">E-mail Address</td>
+			<td class="vtable">
+				<input name="address" type="text" class="formfld" id="address" size="40" value="<?=htmlspecialchars($pconfig['address']);?>">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">Username</td>
+			<td class="vtable">
+				<input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">Password</td>
+			<td class="vtable">
+				<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncell">Port</td>
+			<td class="vtable">
+				<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+				<br>
+				If your server uses a nonstandard port, enter it here.
+			</td>
+		</tr>
+		<tr> 
+			<td valign="top" class="vncell">Options</td>
+			<td class="vtable"> 
+				<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
+            	<strong>Account uses TLS</strong><span class="vexpl">
+				<br><span class="red"><strong>Warning: </strong></span>
+                TLS certificates are currently not verified.</span>
+			</td>
+        </tr>
+		<tr> 
+			<td colspan="2" class="list" height="12"></td>
+		</tr>
+		<tr> 
+			<td colspan="2" valign="top" class="listtopic">Presentation</td>
+		</tr>
+		<tr>
+			<td width="20%" valign="top" class="vncell">From Address</td>
+			<td width="80%" class="vtable">
+				<input name="fromaddress" type="text" class="formfld" id="fromaddress" size="40" value="<?=htmlspecialchars($pconfig['fromaddress']);?>">
+				<br>
+				This will be shown as voicemail service's sending address. Defaults to the e-mail account entered above.
+			</td>
+		</tr>
+		<tr> 
+			<td valign="top">&nbsp;</td>
+			<td>
+				<input name="Submit" type="submit" class="formbtn" value="Save">
+			</td>
+		</tr>
 	</table>
 </form>
 <?php include("fend.inc"); ?>

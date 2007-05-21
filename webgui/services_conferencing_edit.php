@@ -49,7 +49,7 @@ if (isset($id) && $a_rooms[$id]) {
 	$pconfig['number'] = $a_rooms[$id]['number'];
 	$pconfig['descr'] = $a_rooms[$id]['descr'];
 	$pconfig['pin'] = $a_rooms[$id]['pin'];
-	$pconfig['adminpin'] = $a_rooms[$id]['adminpin'];
+	//$pconfig['adminpin'] = $a_rooms[$id]['adminpin'];
 }
 
 
@@ -67,24 +67,24 @@ if ($_POST) {
 	if (!is_numericint($_POST['number'])) {
 		$input_errors[] = "Conference rooms must be numeric.";
 	}
-	if (!isset($id) && in_array($_POST['number'], asterisk_get_extensions())) {
-		$input_errors[] = "Conference number matches an existing extension.";
-	} else if (!isset($id) && in_array($_POST['number'], asterisk_conferencing_get_extensions())) {
+	if (!isset($id) && in_array($_POST['number'], asterisk_conferencing_get_extensions())) {
 		$input_errors[] = "Conference number already exists.";
+	} else if (!isset($id) && in_array($_POST['number'], asterisk_get_extensions())) {
+		$input_errors[] = "Conference number matches an existing extension.";
 	}
 	if (($_POST['pin'] && !is_numericint($_POST['pin']))) {
 		$input_errors[] = "Conference pins must be numeric.";
 	}
-	if (($_POST['adminpin'] && !is_numericint($_POST['adminpin']))) {
+	/*if (($_POST['adminpin'] && !is_numericint($_POST['adminpin']))) {
 		$input_errors[] = "Conference administration pins must be numeric.";
-	}
+	}*/
 
 
 	if (!$input_errors) {
 		$room = array();
 		$room['number'] = $_POST['number'];
 		$room['pin'] = $_POST['pin'];
-		$room['adminpin'] = $_POST['adminpin'];
+		//$room['adminpin'] = $_POST['adminpin'];
 		$room['descr'] = $_POST['descr'];
 
 		if (isset($id) && $a_rooms[$id]) {
@@ -118,13 +118,6 @@ if ($_POST) {
 				<td class="vtable">
 					<input name="pin" type="text" class="formfld" id="pin" size="40" value="<?=htmlspecialchars($pconfig['pin']);?>"> 
 					<br><span class="vexpl">Optional PIN needed to access this conference room.</span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Administration PIN</td>
-				<td class="vtable">
-					<input name="adminpin" type="text" class="formfld" id="adminpin" size="40" value="<?=htmlspecialchars($pconfig['adminpin']);?>"> 
-                    <br><span class="vexpl">Optional administration PIN used to control this conference room.</span>
 				</td>
 			</tr>
 			<tr> 

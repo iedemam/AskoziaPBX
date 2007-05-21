@@ -61,12 +61,13 @@ if ($_POST) {
 		
 		config_lock();
 		$retval |= asterisk_sip_conf_generate();
-		$retval |= asterisk_sip_reload();
 		config_unlock();
+		
+		$retval |= asterisk_sip_reload();
 		
 		$savemsg = get_std_save_message($retval);
 		
-		header("Location: services_sip.php");
+		header("Location: advanced_sip.php");
 		exit;
 	}
 }

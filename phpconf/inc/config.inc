@@ -237,14 +237,6 @@ function convert_config() {
 		echo "Converting configuration... ";
 	
 	/* convert 1.0 -> 1.1 */
-	if ($config['version'] == "1.0") {
-		foreach($config['sip']['provider'] as $provider) {
-			$provider['incomingextension'] = $provider['incomingphone'];
-			unset($provider['incomingphone']);
-		}
-		
-		$config['version'] = "1.1";
-	}
 	
 	write_config();
 	

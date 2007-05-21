@@ -165,7 +165,7 @@ function typesel_change() {
 			<tr> 
 				<td valign="top" class="vncellreq">Secret</td>
 				<td colspan="2" class="vtable">
-					<input name="secret" type="text" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
+					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
                     <br><span class="vexpl">Secrets may not contain '#' or ';'</span>
 				</td>
 			</tr>

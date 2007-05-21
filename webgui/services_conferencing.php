@@ -73,9 +73,8 @@ if (file_exists($d_conferencingconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="20%" class="listhdrr">Room Number</td>
-		<td width="50%" class="listhdrr">Description</td>
+		<td width="55%" class="listhdrr">Description</td>
 		<td width="15%" class="listhdrr">Pin</td>
-		<td width="15%" class="listhdr">Admin Pin</td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -93,12 +92,6 @@ if (file_exists($d_conferencingconfdirty_path)) {
 			<?php endif; ?>
 			&nbsp;
 		</td>
-		<td valign="middle" nowrap class="listr">
-			<?php if ($room['adminpin']): ?>
-			<img src="lock.gif" width="7" height="9" border="0">
-			<?php endif; ?>
-			&nbsp;
-		</td>
 		<td valign="middle" nowrap class="list">
 			<a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit conference room" width="17" height="17" border="0"></a>
            &nbsp;<a href="services_conferencing.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="x.gif" title="delete conference room" width="17" height="17" border="0"></a>
@@ -107,7 +100,7 @@ if (file_exists($d_conferencingconfdirty_path)) {
 	<?php $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="4"></td>
+		<td class="list" colspan="3"></td>
 		<td class="list">
 			<a href="services_conferencing_edit.php"><img src="plus.gif" title="add conference room" width="17" height="17" border="0"></a>
 		</td>

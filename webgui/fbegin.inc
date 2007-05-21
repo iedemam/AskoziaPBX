@@ -120,8 +120,9 @@ $menu['Phones']['SIP'] 					= array('phones_sip.php');
 											
 /* Services */
 $menu['Services']['Conferencing'] 		= array('services_conferencing.php');
+$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
 //$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
-//$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
+
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');

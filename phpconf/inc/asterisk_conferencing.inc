@@ -79,7 +79,8 @@ function asterisk_conferencing_conf_generate() {
 	
 	// Usage is conf => confno[,pin][,adminpin]
 	foreach ($rooms as $room) {
-		$conf .= "conf => {$room['number']},{$room['pin']},{$room['adminpin']}\n";
+		//$conf .= "conf => {$room['number']},{$room['pin']},{$room['adminpin']}\n";
+		$conf .= "conf => {$room['number']},{$room['pin']}\n";
 	}
 	
 	$conf .= "\n";

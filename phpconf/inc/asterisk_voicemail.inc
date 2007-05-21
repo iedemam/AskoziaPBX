@@ -110,34 +110,39 @@ function voicemail_generate_msmtp_conf() {
 		return 1;
 	}
 	
-	$conf = <<<EOD
+	$vmconfig = $config['voicemail'];
 
-# A system wide configuration is optional.
-# If it exists, it usually defines a default account.
-# This allows msmtp to be used like /usr/sbin/sendmail.
-#account default
-
-# The SMTP smarthost.
-#host mailhub.oursite.example
-
-# Construct envelope-from addresses of the form "user@oursite.example".
-#auto_from on
-#maildomain oursite.example
-
-# Use TLS.
-#tls on
-#tls_trust_file /etc/ssl/certs/ca-certificates.crt
-
-# Syslog logging with facility LOG_MAIL instead of the default LOG_USER.
-syslog LOG_MAIL
-
+	$address = explode("@", $vmconfig['address']);
+	$domain = $address[1];
+	
+	$conf = "account default\n";
+	$conf .= "host {$vmconfig['host']}\n";
+	$conf .= "auth on\n";
+	$conf .= "user {$vmconfig['address']}\n";
+	$conf .= "password {$vmconfig['password']}\n";
+	if ($vmconfig['tls']) {
+		$conf .= "tls on\n";
+		$conf .= "tls_starttls on\n";
+		$conf .= "tls_certcheck off\n";
+	}
+	if ($vmconfig['fromaddress']) {
+		$conf .= "from {$vmconfig['fromaddress']}\n";
+	} else {
+		$conf .= "from {$vmconfig['address']}\n";
+	}
+	$conf .= "maildomain $domain\n";
+	if ($vmconfig['fromaddress']) {
+		$conf .= "port {$vmconfig['port']}\n";
+	}
+	$conf .= "syslog LOG_MAIL\n";
+	
 
 EOD;
 
 	fwrite($fd, $conf);
 	fclose($fd);
 	
-	chmod("/etc/msntp.conf", 600);
+	chmod("/etc/msmtp.conf", 600);
 
 	return 0;
 }
