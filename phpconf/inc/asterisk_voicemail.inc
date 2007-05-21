@@ -61,11 +61,11 @@ maxlogins=3
 serveremail=AskoziaPBX
 fromstring=AskoziaPBX Voicemail
 emailsubject=New voicemail message (box: $\{VM_MAILBOX})
-emailbody=Dear $\{VM_NAME}:\\n\\nA call from $\{VM_CALLERID} just landed in your voicemail.\\n\\nHere's the $\{VM_DUR} long message they left for you on $\{VM_DATE}.\\n\\n--Your Phone System
+emailbody=Dear $\{VM_NAME}:\\n\\nA call from $\{VM_CALLERID} just landed in your voicemail.\\n\\nHere's the $\{VM_DUR} long message that was left for you on $\{VM_DATE}.\\n\\n--Your Phone System
 
 emaildateformat=%A, %B %d, %Y at %r
 
-mailcmd=/usr/sbin/msmtp -C /etc/msmtp.conf -t
+mailcmd=/usr/local/bin/msmtp -C /etc/msmtp.conf -t
 
 sendvoicemail=yes	; Context to Send voicemail from [option 5 from the advanced menu]
 
@@ -137,12 +137,10 @@ function voicemail_generate_msmtp_conf() {
 	$conf .= "syslog LOG_MAIL\n";
 	
 
-EOD;
-
 	fwrite($fd, $conf);
 	fclose($fd);
 	
-	chmod("/etc/msmtp.conf", 600);
+	chmod("/etc/msmtp.conf", 0600);
 
 	return 0;
 }

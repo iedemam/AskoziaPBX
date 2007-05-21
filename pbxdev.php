@@ -37,6 +37,7 @@ $php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
 $asterisk_version	= "asterisk-1.4.4";
 $zaptel_version		= "zaptel";
+$msmtp_version		= "msmtp-1.4.11";
 
 
 // --[ image padding ]---------------------------------------------------------
@@ -251,9 +252,19 @@ function build_msntp() {
 }
 
 function build_msmtp() {
+	global $dirs, $msmtp_version;
 	
-	_exec("cd /usr/ports/mail/msmtp; make clean; ".
-		"make WITH_OPENSSL=yes WITHOUT_IDN=yes WITHOUT_NLS=yes");
+	if (!file_exists("{$dirs['packages']}/$msmtp_version.tar.bz2")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/$msmtp_version.tar.bz2");
+	}
+	if (!file_exists("{$dirs['packages']}/$msmtp_version")) {
+		_exec("cd {$dirs['packages']}; bunzip2 $msmtp_version.tar.bz2; tar xf $msmtp_version.tar");
+	}
+	
+	_exec("cd {$dirs['packages']}/$msmtp_version; ".
+		"./configure --with-ssl=openssl --without-libgsasl --without-libidn --disable-nls; ".
+		"make");
 }
 
 
@@ -304,6 +315,7 @@ function create($image_name) {
 	_exec("mkdir $rootfs");
 	
 	_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc ftmp mnt libexec proc root sbin tmp usr var asterisk");
+	_exec("cd $rootfs/var; mkdir tmp");
 	_exec("cd $rootfs; ln -s /cf/conf conf");
 	_exec("mkdir $rootfs/etc/inc");
 	_exec("cd $rootfs/usr; mkdir bin lib libexec local sbin share");
@@ -389,10 +401,10 @@ function populate_msntp($image_name) {
 }
 
 function populate_msmtp($image_name) {
-	global $dirs;
+	global $dirs, $msmtp_version;
 	
-	_exec("cd /usr/ports/mail/msmtp; ".
-		"install -s work/msmtp-*/src/msmtp $image_name/rootfs/usr/sbin");
+	_exec("cd {$dirs['packages']}/$msmtp_version/src; ".
+		"install -s msmtp $image_name/rootfs/usr/local/bin");
 }
 
 function populate_asterisk($image_name) {
