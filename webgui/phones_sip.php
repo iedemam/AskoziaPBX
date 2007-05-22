@@ -35,7 +35,7 @@ require("guiconfig.inc");
 if (!is_array($config['sip']['phone']))
 	$config['sip']['phone'] = array();
 
-asterisk_sip_sort_phones();
+sip_sort_phones();
 $a_sipphones = &$config['sip']['phone'];
 
 
@@ -53,12 +53,12 @@ if (file_exists($d_sipconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= asterisk_sip_conf_generate();
+		$retval |= sip_conf_generate();
 		$retval |= extensions_conf_generate();
 		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
-		$retval |= asterisk_sip_reload();
+		$retval |= sip_reload();
 		$retval |= extensions_reload();
 		$retval |= voicemail_reload();
 	}

@@ -31,36 +31,36 @@
 require_once("functions.inc");
 
 
-function asterisk_sip_get_providers() {
+function sip_get_providers() {
 	global $config;
 	
 	if (!is_array($config['sip']['provider']))
 		$config['sip']['provider'] = array();
 		
-	asterisk_sip_sort_providers();
+	sip_sort_providers();
 		
 	return $config['sip']['provider'];
 }
 
-function asterisk_sip_get_phones() {
+function sip_get_phones() {
 	global $config;
 	
 	if (!is_array($config['sip']['phone']))
 		$config['sip']['phone'] = array();
 		
-	asterisk_sip_sort_phones();
+	sip_sort_phones();
 		
 	return $config['sip']['phone'];
 }
 
-function asterisk_sip_get_phone($uniqid) {
-	$phones = asterisk_sip_get_phones();
+function sip_get_phone($uniqid) {
+	$phones = sip_get_phones();
 	foreach ($phones as $phone)
 		if($phone['uniqid'] == $uniqid)
 			return $phone;
 }
 
-function asterisk_sip_get_extensions() {
+function sip_get_extensions() {
 	global $config;
 	
 	$extensions = array();
@@ -71,7 +71,7 @@ function asterisk_sip_get_extensions() {
 	return $extensions;
 }
 
-function asterisk_sip_get_prefixes() {
+function sip_get_prefixes() {
 	global $config;
 	
 	$prefixes = array();
@@ -82,12 +82,12 @@ function asterisk_sip_get_prefixes() {
 	return $prefixes;	
 }
 
-function asterisk_sip_conf_generate() {
+function sip_conf_generate() {
 	global $config, $g;
 	
 	$fd = fopen("/usr/local/etc/asterisk/sip.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open sip.conf in asterisk_sip_conf_generate().\n");
+		printf("Error: cannot open sip.conf in sip_conf_generate().\n");
 		return 1;
 	}
 	
@@ -210,13 +210,13 @@ EOD;
 }
 
 
-function asterisk_sip_reload() {
+function sip_reload() {
 	
 	return asterisk_exec("module reload chan_sip.so");
 }
 
 
-function asterisk_sip_sort_phones() {
+function sip_sort_phones() {
 	global $g, $config;
 
 	usort($config['sip']['phone'], "_sipphonecmp");	
@@ -226,7 +226,7 @@ function _sipphonecmp($a, $b) {
 }
 
 
-function asterisk_sip_sort_providers() {
+function sip_sort_providers() {
 	global $g, $config;
 
 	usort($config['sip']['provider'], "_sipprovidercmp");	

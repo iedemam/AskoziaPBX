@@ -76,7 +76,7 @@ EOD;
 	$conf .= "\n\n";
 
 	// sip providers
-	$a_sipproviders = asterisk_sip_get_providers();
+	$a_sipproviders = sip_get_providers();
 
 	foreach ($a_sipproviders as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";
@@ -89,7 +89,7 @@ EOD;
 	}
 
 	// sip phones
-	$a_sipphones = asterisk_sip_get_phones();
+	$a_sipphones = sip_get_phones();
 
 	foreach ($a_sipphones as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";

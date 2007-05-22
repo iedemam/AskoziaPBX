@@ -41,7 +41,7 @@ if (!is_array($config['sip']['phone']))
 	$config['sip']['phone'] = array();
 
 
-asterisk_sip_sort_phones();
+sip_sort_phones();
 $a_sipphones = &$config['sip']['phone'];
 $a_providers = asterisk_get_providers();
 
