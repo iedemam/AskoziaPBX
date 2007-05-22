@@ -39,10 +39,10 @@ require("guiconfig.inc");
 if (!is_array($config['sip']['provider']))
 	$config['sip']['provider'] = array();
 
-asterisk_sip_sort_providers();
+sip_sort_providers();
 $a_sipproviders = &$config['sip']['provider'];
 
-$a_sipphones = asterisk_sip_get_phones();
+$a_sipphones = sip_get_phones();
 
 $pconfig['codec'] = array("ulaw");
 
@@ -133,13 +133,6 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
-<!--
-function typesel_change() {
-
-}
-//-->
-</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="providers_sip_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -260,7 +253,6 @@ function typesel_change() {
 	</form>
 <script type="text/javascript" charset="utf-8">
 // <![CDATA[
-	typesel_change();
 
 	Sortable.create("ace",
 		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});

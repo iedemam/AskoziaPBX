@@ -44,7 +44,7 @@ function asterisk_configure() {
 	$res = 0;
 	$res |= mwexec("/sbin/kldload zaptel");
 	$res |= mwexec("/sbin/kldload ztdummy");
-	$res |= asterisk_sip_conf_generate();
+	$res |= sip_conf_generate();
 	$res |= conferencing_conf_generate();
 	$res |= extensions_conf_generate();
 	$res |= voicemail_conf_generate();
@@ -120,7 +120,7 @@ function asterisk_get_extensions() {
 	global $config;
 
 	return array_merge(
-		asterisk_sip_get_extensions(), 
+		sip_get_extensions(), 
 		conferencing_get_extensions()
 	);
 }
@@ -129,7 +129,7 @@ function asterisk_get_providers() {
 	global $config;
 	
 	return array_merge(
-		asterisk_sip_get_providers()
+		sip_get_providers()
 	);
 }
 
@@ -137,7 +137,7 @@ function asterisk_get_phones() {
 	global $config;
 	
 	return array_merge(
-		asterisk_sip_get_phones()
+		sip_get_phones()
 	);
 }
 
@@ -145,7 +145,7 @@ function asterisk_get_prefixes() {
 	global $config;
 
 	return array_merge(
-		asterisk_sip_get_prefixes()
+		sip_get_prefixes()
 	);
 }
 
@@ -156,7 +156,7 @@ function asterisk_uniqid_to_dial($uniqid) {
 	$dial = $id[0] . "/";
 	
 	if($id[0] == "SIP") {
-		$phone = asterisk_sip_get_phone($uniqid);
+		$phone = sip_get_phone($uniqid);
 	}
 	
 	return $dial . $phone['extension'];
