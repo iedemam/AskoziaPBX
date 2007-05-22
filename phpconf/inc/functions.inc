@@ -36,7 +36,7 @@ require_once("interfaces.inc");
 require_once("services.inc");
 require_once("asterisk.inc");
 require_once("asterisk_sip.inc");
-require_once("asterisk_extensions.inc");
+require_once("extensions.inc");
 require_once("conferencing.inc");
 require_once("voicemail.inc");
 require_once("util.inc");
