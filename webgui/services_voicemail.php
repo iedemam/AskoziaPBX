@@ -65,10 +65,10 @@ if ($_POST) {
 		write_config();
 		
 		config_lock();
-		$retval |= asterisk_voicemail_conf_generate();
+		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
-		$retval |= asterisk_voicemail_reload();
+		$retval |= voicemail_reload();
 		
 		$savemsg = get_std_save_message($retval);
 	}
