@@ -65,7 +65,7 @@ exten => 000064554,3,Hangup()
 EOD;
 	
 	// conference rooms
-	$rooms = asterisk_conferencing_get_rooms();
+	$rooms = conferencing_get_rooms();
 	
 	foreach ($rooms as $room) {
 		$conf .= "exten => {$room['number']},1,Answer()\n";

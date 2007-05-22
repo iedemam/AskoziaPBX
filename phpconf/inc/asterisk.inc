@@ -45,7 +45,7 @@ function asterisk_configure() {
 	$res |= mwexec("/sbin/kldload zaptel");
 	$res |= mwexec("/sbin/kldload ztdummy");
 	$res |= asterisk_sip_conf_generate();
-	$res |= asterisk_conferencing_conf_generate();
+	$res |= conferencing_conf_generate();
 	$res |= asterisk_extensions_conf_generate();
 	$res |= voicemail_conf_generate();
 	$res |= msmtp_conf_generate();
@@ -121,7 +121,7 @@ function asterisk_get_extensions() {
 
 	return array_merge(
 		asterisk_sip_get_extensions(), 
-		asterisk_conferencing_get_extensions()
+		conferencing_get_extensions()
 	);
 }
 

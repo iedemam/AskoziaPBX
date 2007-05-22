@@ -30,7 +30,7 @@
 
 require_once("functions.inc");
 
-function asterisk_conferencing_get_extensions() {
+function conferencing_get_extensions() {
 	global $config;
 
 	$extensions = array();
@@ -41,19 +41,19 @@ function asterisk_conferencing_get_extensions() {
 	return $extensions;
 }
 
-function asterisk_conferencing_get_rooms() {
+function conferencing_get_rooms() {
 	global $config;
 	
 	if (!is_array($config['conferencing']['room']))
 		$config['conferencing']['room'] = array();
 		
-	asterisk_conferencing_sort_rooms();
+	conferencing_sort_rooms();
 		
 	return $config['conferencing']['room'];
 }
 
 
-function asterisk_conferencing_sort_rooms() {
+function conferencing_sort_rooms() {
 	global $config;
 
 	usort($config['conferencing']['room'], "_confroomcmp");	
@@ -63,19 +63,19 @@ function _confroomcmp($a, $b) {
 }
 
 
-function asterisk_conferencing_conf_generate() {
+function conferencing_conf_generate() {
 	global $config;
 	
 	$fd = fopen("/usr/local/etc/asterisk/meetme.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open meetme.conf in asterisk_conferencing_conf_generate().\n");
+		printf("Error: cannot open meetme.conf in conferencing_conf_generate().\n");
 		return 1;
 	}	
 
 	$conf = "[general]\n\n".
 			"[rooms]\n";
 
-	$rooms = asterisk_conferencing_get_rooms();
+	$rooms = conferencing_get_rooms();
 	
 	// Usage is conf => confno[,pin][,adminpin]
 	foreach ($rooms as $room) {

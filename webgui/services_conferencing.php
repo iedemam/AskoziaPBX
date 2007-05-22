@@ -36,7 +36,7 @@ require("guiconfig.inc");
 if (!is_array($config['conferencing']['room']))
 	$config['conferencing']['room'] = array();
 
-asterisk_conferencing_sort_rooms();
+conferencing_sort_rooms();
 $a_rooms = &$config['conferencing']['room'];
 
 if ($_GET['act'] == "del") {
@@ -52,7 +52,7 @@ if ($_GET['act'] == "del") {
 if (file_exists($d_conferencingconfdirty_path)) {
 	$retval = 0;
 	config_lock();
-	$retval |= asterisk_conferencing_conf_generate();
+	$retval |= conferencing_conf_generate();
 	$retval |= asterisk_extensions_conf_generate();
 	config_unlock();
 	

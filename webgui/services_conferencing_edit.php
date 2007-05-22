@@ -37,7 +37,7 @@ require("guiconfig.inc");
 if (!is_array($config['conferencing']['room']))
 	$config['conferencing']['room'] = array();
 
-asterisk_conferencing_sort_rooms();
+conferencing_sort_rooms();
 $a_rooms = &$config['conferencing']['room'];
 
 $id = $_GET['id'];
@@ -67,7 +67,7 @@ if ($_POST) {
 	if (!is_numericint($_POST['number'])) {
 		$input_errors[] = "Conference rooms must be numeric.";
 	}
-	if (!isset($id) && in_array($_POST['number'], asterisk_conferencing_get_extensions())) {
+	if (!isset($id) && in_array($_POST['number'], conferencing_get_extensions())) {
 		$input_errors[] = "Conference number already exists.";
 	} else if (!isset($id) && in_array($_POST['number'], asterisk_get_extensions())) {
 		$input_errors[] = "Conference number matches an existing extension.";
