@@ -46,7 +46,7 @@ function asterisk_configure() {
 	$res |= mwexec("/sbin/kldload ztdummy");
 	$res |= asterisk_sip_conf_generate();
 	$res |= conferencing_conf_generate();
-	$res |= asterisk_extensions_conf_generate();
+	$res |= extensions_conf_generate();
 	$res |= voicemail_conf_generate();
 	$res |= msmtp_conf_generate();
 	$res |= mwexec("/usr/local/sbin/asterisk");

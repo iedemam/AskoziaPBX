@@ -53,10 +53,10 @@ if (file_exists($d_conferencingconfdirty_path)) {
 	$retval = 0;
 	config_lock();
 	$retval |= conferencing_conf_generate();
-	$retval |= asterisk_extensions_conf_generate();
+	$retval |= extensions_conf_generate();
 	config_unlock();
 	
-	$retval |= asterisk_extensions_reload();
+	$retval |= extensions_reload();
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {

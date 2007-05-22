@@ -54,12 +54,12 @@ if (file_exists($d_sipconfdirty_path)) {
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= asterisk_sip_conf_generate();
-		$retval |= asterisk_extensions_conf_generate();
+		$retval |= extensions_conf_generate();
 		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
 		$retval |= asterisk_sip_reload();
-		$retval |= asterisk_extensions_reload();
+		$retval |= extensions_reload();
 		$retval |= voicemail_reload();
 	}
 	$savemsg = get_std_save_message($retval);

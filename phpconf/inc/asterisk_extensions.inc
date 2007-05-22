@@ -31,12 +31,12 @@
 require_once("functions.inc");
 
 
-function asterisk_extensions_conf_generate() {
+function extensions_conf_generate() {
 	global $config, $g;
 	
 	$fd = fopen("/usr/local/etc/asterisk/extensions.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open extensions.conf in asterisk_extensions_conf_generate().\n");
+		printf("Error: cannot open extensions.conf in extensions_conf_generate().\n");
 		return 1;
 	}
 	
@@ -109,7 +109,7 @@ EOD;
 }
 
 
-function asterisk_extensions_reload() {
+function extensions_reload() {
 	
 	return asterisk_exec("dialplan reload");
 
