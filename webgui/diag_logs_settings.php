@@ -106,7 +106,7 @@ function enable_change(enable_over) {
 			<ul id="tabnav"><?php 
 
 	$tabs = array('System' => 'diag_logs.php',
-					'Asterisk' => 'diag_logs_asterisk.php',
+					'PBX' => 'diag_logs_pbx.php',
 					'Calls' => 'diag_logs_calls.php',
 					'Settings' => 'diag_logs_settings.php');
 	dynamic_tab_menu($tabs);

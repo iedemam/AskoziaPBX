@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/asterisk_voicemail.inc</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -42,13 +42,15 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-05-21T12:51:59Z</date>
+			<date>2007-05-22T00:33:43Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-05-21T16:49:35Z</date>
+			<date>2007-05-22T00:33:43Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -61,8 +63,6 @@
 			<string>phpconf</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>webgui</string>
 			<key>regexFolderFilter</key>
@@ -82,7 +82,7 @@
 				<key>column</key>
 				<integer>11</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -94,42 +94,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>28</integer>
 				<key>line</key>
-				<integer>317</integer>
+				<integer>635</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>323</integer>
-		</dict>
-		<key>phpconf/inc/asterisk.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>44</integer>
-				<key>line</key>
-				<integer>49</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>29</integer>
-		</dict>
-		<key>phpconf/inc/asterisk_voicemail.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>146</integer>
-				<key>line</key>
-				<integer>63</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>55</integer>
+			<integer>615</integer>
 		</dict>
 		<key>phpconf/inc/util.inc</key>
 		<dict>
@@ -161,47 +133,15 @@
 				<integer>145</integer>
 			</dict>
 		</dict>
-		<key>phpconf/rc.bootup</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>87</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>72</integer>
-		</dict>
-		<key>webgui/services_voicemail.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>43</integer>
-				<key>line</key>
-				<integer>72</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>40</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
 		<string>NOTES</string>
-		<string>phpconf/inc/asterisk_voicemail.inc</string>
-		<string>phpconf/rc.bootup</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>webgui/services_voicemail.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{27, 18}, {888, 760}}</string>
+	<string>{{27, 17}, {888, 760}}</string>
 </dict>
 </plist>

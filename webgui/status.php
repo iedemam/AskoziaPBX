@@ -52,7 +52,7 @@ function doCmdT($title, $command, $isstr) {
 					$line = fgets($fd);
 					/* remove password tag contents */
 					$line = preg_replace("/<password>.*?<\\/password>/", "<password>xxxxx</password>", $line);
-					$line = preg_replace("/<pre-shared-key>.*?<\\/pre-shared-key>/", "<pre-shared-key>xxxxx</pre-shared-key>", $line);
+					$line = preg_replace("/<secret>.*?<\\/secret>/", "<secret>xxxxx</secret>", $line);
 					$line = str_replace("\t", "    ", $line);
 					echo htmlspecialchars($line,ENT_NOQUOTES);
 				}
@@ -119,7 +119,7 @@ function execCmds() {
 
 /* Set up all of the commands we want to execute. */
 defCmdT("System uptime","uptime");
-defCmdT("Interfaces","/sbin/ifconfig -a");
+defCmdT("Network Interfaces","/sbin/ifconfig -a");
 
 defCmdT("Routing tables","netstat -nr");
 
@@ -130,7 +130,8 @@ defCmdT("Processes","ps xauww");
 defCmdT("df","/bin/df");
 
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
-defCmdT("last 200 asterisk log entries","/usr/sbin/clog /var/log/asterisk.log 2>&1 | tail -n 200");
+defCmdT("last 200 asterisk log entries","/usr/sbin/clog /var/log/pbx.log 2>&1 | tail -n 200");
+defCmdT("last 200 call detail records","/usr/sbin/clog /var/log/cdr.log 2>&1 | tail -n 200");
 
 defCmd("ls /conf");
 defCmd("ls /var/run");

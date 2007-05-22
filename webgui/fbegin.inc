@@ -141,7 +141,7 @@ $menu['Advanced']['GUI Options']		= array('advanced_guioptions.php');
 
 /* Diagnostics */
 $menu['Diagnostics']['Logs']			= array('diag_logs.php',
-												'diag_logs_asterisk.php',
+												'diag_logs_pbx.php',
 												'diag_logs_calls.php',
 							  					'diag_logs_settings.php');
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',

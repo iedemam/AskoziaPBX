@@ -37,9 +37,9 @@ if (!$nentries)
 	$nentries = 50;
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/asterisk.log");
+	exec("/usr/sbin/clog -i -s 262144 /var/log/pbx.log");
 	/* redirect to avoid reposting form data on refresh */
-	header("Location: diag_logs_asterisk.php");
+	header("Location: diag_logs_pbx.php");
 	exit;
 }
 
@@ -68,7 +68,7 @@ function dump_clog($logfile, $tail) {
   <ul id="tabnav">
 <?php 
 	$tabs = array('System' => 'diag_logs.php',
-				  'Asterisk' => 'diag_logs_asterisk.php',
+				  'PBX' => 'diag_logs_pbx.php',
 				  'Calls' => 'diag_logs_calls.php',
 	       		  'Settings' => 'diag_logs_settings.php');
 	dynamic_tab_menu($tabs);
@@ -82,9 +82,9 @@ function dump_clog($logfile, $tail) {
 			<td colspan="2" class="listtopic"> 
 			  Last <?=$nentries;?> Asterisk log entries</td>
 		  </tr>
-		  <?php dump_clog("/var/log/asterisk.log", $nentries); ?>
+		  <?php dump_clog("/var/log/pbx.log", $nentries); ?>
 		</table>
-		<br><form action="diag_logs_asterisk.php" method="post">
+		<br><form action="diag_logs_pbx.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="Clear log">
 </form>
 	</td>
