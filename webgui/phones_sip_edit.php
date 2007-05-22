@@ -156,17 +156,17 @@ function typesel_change() {
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncell">Voicemail Address</td>
-				<td colspan="2" class="vtable">
-					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
-					<br><span class="vexpl">If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given e-mail address.</span>
-				</td>
-			</tr>			
-			<tr> 
 				<td valign="top" class="vncellreq">Secret</td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
                     <br><span class="vexpl">Secrets may not contain '#' or ';'</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">Voicemail Address</td>
+				<td colspan="2" class="vtable">
+					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
+					<br><span class="vexpl">If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given e-mail address.</span>
 				</td>
 			</tr>
 			<tr> 

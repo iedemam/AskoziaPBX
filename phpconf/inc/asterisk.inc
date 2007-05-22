@@ -36,7 +36,7 @@ function asterisk_configure() {
 	global $config, $g;
 
 	if ($g['booting'])
-		echo "Starting Asterisk... ";
+		echo "Starting Asterisk...\n";
 	else
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 
@@ -47,7 +47,8 @@ function asterisk_configure() {
 	$res |= asterisk_sip_conf_generate();
 	$res |= asterisk_conferencing_conf_generate();
 	$res |= asterisk_extensions_conf_generate();
-	$res |= asterisk_voicemail_conf_generate();
+	$res |= voicemail_conf_generate();
+	$res |= msmtp_conf_generate();
 	$res |= mwexec("/usr/local/sbin/asterisk");
 
 	if ($g['booting']) {

@@ -31,20 +31,13 @@
 require_once("functions.inc");
 
 
-function asterisk_voicemail_conf_generate() {
-	
-	$res = 0;
-	$res |= voicemail_generate_msmtp_conf();
-	$res |= voicemail_generate_voicemail_conf();
-	return $res;
-}
 
-function voicemail_generate_voicemail_conf() {
+function voicemail_conf_generate() {
 	global $config;
 	
 	$fd = fopen("/usr/local/etc/asterisk/voicemail.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open voicemail.conf in voicemail_generate_voicemail_conf().\n");
+		printf("Error: cannot open voicemail.conf in voicemail_conf_generate().\n");
 		return 1;
 	}
 	
@@ -101,12 +94,12 @@ EOD;
 }
 
 
-function voicemail_generate_msmtp_conf() {
+function msmtp_conf_generate() {
 	global $config;
 	
 	$fd = fopen("/etc/msmtp.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open msmtp.conf in voicemail_generate_msmtp_conf().\n");
+		printf("Error: cannot open msmtp.conf in msmtp_conf_generate().\n");
 		return 1;
 	}
 	
@@ -145,7 +138,7 @@ function voicemail_generate_msmtp_conf() {
 	return 0;
 }
 
-function asterisk_voicemail_reload() {
+function voicemail_reload() {
 	
 	return asterisk_exec("module reload app_voicemail.so");
 }
