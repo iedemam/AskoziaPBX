@@ -83,11 +83,11 @@ function interfaces_lan_configure() {
 		/* reconfigure static routes (kernel may have deleted them) */
 		system_routing_configure();
 		
-		/* restart ez-ipupdate */
-		services_dyndns_configure();
+		/* restart ez-ipupdate *//*
+		services_dyndns_configure();*/
 		
-		/* force DNS update */
-		services_dnsupdate_process();		
+		/* force DNS update *//*
+		services_dnsupdate_process();*/
 	}
 	
 	if ($g['booting'])

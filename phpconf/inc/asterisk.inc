@@ -35,15 +35,15 @@ require_once("functions.inc");
 function asterisk_configure() {
 	global $config, $g;
 
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "Starting Asterisk...\n";
-	else
+		mwexec("/sbin/kldload zaptel");
+		mwexec("/sbin/kldload ztdummy");
+	} else
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 
 	
 	$res = 0;
-	$res |= mwexec("/sbin/kldload zaptel");
-	$res |= mwexec("/sbin/kldload ztdummy");
 	$res |= sip_conf_generate();
 	$res |= conferencing_conf_generate();
 	$res |= extensions_conf_generate();
