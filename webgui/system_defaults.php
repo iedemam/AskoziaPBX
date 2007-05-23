@@ -50,7 +50,7 @@ if ($_POST) {
               <p><strong>If you click &quot;Yes&quot;, the PBX will be reset 
                 to factory defaults and will reboot immediately. The entire system 
                 configuration will be overwritten. The LAN IP address will be 
-                reset to 192.168.1.1 and the password will be set to 'askozia'.<br>
+                reset to 192.168.1.2 and the password will be set to 'askozia'.<br>
                 <br>
                 Are you sure you want to proceed?</strong></p>
         <p> 

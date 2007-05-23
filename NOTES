@@ -1,9 +1,7 @@
 Priorities:
- - get image signing working
  - remove junk from manager output and add return values to asterisk_exec()
- - get indications.conf working 
- - strip excess prompts!
- - update status.php
+ - get indications.conf working
+ - fix dialplan for users without voicemail accounts
  - remove excess icons
  - css irregularities
  - figure out config xml single var irregularities (empty defines showing up)
@@ -57,4 +55,5 @@ Config Snippets:
 		...
 	</customextension>
 <dialplan>
+
 	

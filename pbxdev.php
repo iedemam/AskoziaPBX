@@ -449,8 +449,7 @@ function populate_asterisk($image_name) {
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
 	
-	_exec("cp {$dirs['packages']}/$zaptel_version/STAGE/etc/zaptel.conf.sample ".
-		"$image_name/rootfs/etc/zaptel.conf");
+	_log("zaptel population placeholder...");
 }
 
 function populate_tools($image_name) {
