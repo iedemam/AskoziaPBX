@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/asterisk.inc</string>
+	<string>webgui/license.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,8 +21,6 @@
 			<string>CHANGELOG</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>etc</string>
 			<key>regexFolderFilter</key>
@@ -44,17 +42,15 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-05-23T13:04:44Z</date>
+			<date>2007-05-24T15:02:50Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-05-23T21:19:55Z</date>
+			<date>2007-05-24T15:02:46Z</date>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>phpconf</string>
 			<key>regexFolderFilter</key>
@@ -82,9 +78,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>files/asterisk/features.conf</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -105,20 +115,6 @@
 			<key>firstVisibleLine</key>
 			<integer>431</integer>
 		</dict>
-		<key>phpconf/inc/asterisk.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>47</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>36</integer>
-		</dict>
 		<key>phpconf/inc/interfaces.inc</key>
 		<dict>
 			<key>caret</key>
@@ -132,20 +128,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>65</integer>
-		</dict>
-		<key>phpconf/inc/system.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>55</integer>
 		</dict>
 		<key>phpconf/inc/util.inc</key>
 		<dict>
@@ -205,21 +187,31 @@
 			<key>firstVisibleLine</key>
 			<integer>91</integer>
 		</dict>
+		<key>webgui/license.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>78</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>62</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>webgui/guiconfig.inc</string>
-		<string>webgui/interfaces_network.php</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>phpconf/inc/interfaces.inc</string>
-		<string>phpconf/inc/system.inc</string>
-		<string>phpconf/inc/util.inc</string>
+		<string>files/asterisk/features.conf</string>
 		<string>NOTES</string>
+		<string>webgui/license.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{6, 4}, {888, 760}}</string>
+	<string>{{60, -7}, {888, 760}}</string>
 </dict>
 </plist>

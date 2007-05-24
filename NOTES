@@ -1,6 +1,7 @@
 Priorities:
  - remove junk from manager output and add return values to asterisk_exec()
  - get indications.conf working
+ - get call parking working
  - fix dialplan for users without voicemail accounts
  - remove excess icons
  - css irregularities
@@ -12,12 +13,11 @@ Priorities:
  - fix logo width
  - vcheck.php on server needs help and so does the firmware query page
  - update all (C) tags
+ - 
 
  - presentation
  - website
  - user documentation
-
- - cleanups!
 
 First Public Beta
 

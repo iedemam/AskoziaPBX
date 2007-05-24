@@ -149,7 +149,7 @@ function enable_change(enable_over) {
 						<br>
 						<input name="system" id="system" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['system']) echo "checked"; ?>>system events
 						<br>
-						<input name="asterisk" id="asterisk" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['asterisk']) echo "checked"; ?>>asterisk events
+						<input name="asterisk" id="asterisk" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['asterisk']) echo "checked"; ?>>pbx events
 						<br>
 						<input name="cdr" id="cdr" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['cdr']) echo "checked"; ?>>call detail records
 					</td>

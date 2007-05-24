@@ -72,9 +72,12 @@ require("guiconfig.inc");
 	This product includes PHP, freely available from <a href="http://www.php.net/" target="_blank">http://www.php.net</a>.<br>
 	Copyright &copy; 1999 - 2007 The PHP Group. All rights reserved.<br>
 	<br>
-	mini_httpd (<a href="http://www.acme.com/software/mini_httpd" target="_blank">http://www.acme.com/software/mini_httpd)</a><br>
+	mini_httpd (<a href="http://www.acme.com/software/mini_httpd" target="_blank">http://www.acme.com/software/mini_httpd</a>)<br>
 	Copyright &copy; 1999, 2000 by Jef Poskanzer &lt;jef@acme.com&gt;. 
 	All rights reserved.<br>
+	<br>
+	script.aculo.us (<a href="http://script.aculo.us" target="_blank">http://script.aculo.us</a>)<br>
+	Copyright (&copy;) 2005, 2006 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)<br>
 	<br>
 	Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
 	Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)<br>
