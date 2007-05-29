@@ -52,6 +52,13 @@ function conferencing_get_rooms() {
 	return $config['conferencing']['room'];
 }
 
+function conferencing_get_room($uniqid) {
+	$rooms = conferencing_get_rooms();
+	foreach ($rooms as $room)
+		if($room['uniqid'] == $uniqid)
+			return $room;	
+}
+
 
 function conferencing_sort_rooms() {
 	global $config;

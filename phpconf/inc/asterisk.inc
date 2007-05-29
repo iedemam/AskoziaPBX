@@ -149,14 +149,21 @@ function asterisk_get_prefixes() {
 	);
 }
 
-function asterisk_uniqid_to_dial($uniqid) {
+function asterisk_uniqid_to_dial($exten, $uniqid) {
 	global $config;
 	
 	$id = split("-", $uniqid);
-	$dial = $id[0] . "/";
 	
-	if($id[0] == "SIP") {
+	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
+		$dial = "exten => $exten,1,".
+			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']})\n";
+
+	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
+		$room = conferencing_get_room($uniqid);
+		$dial = "exten => $exten,1,Answer()\n";
+		$dial .= "exten => $exten,2,MeetMe({$room['number']},M)\n";
+		$dial .= "exten => $exten,3,Hangup()\n";
 	}
 	
 	return $dial . $phone['extension'];

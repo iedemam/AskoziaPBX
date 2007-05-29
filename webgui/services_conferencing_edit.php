@@ -47,7 +47,7 @@ if (isset($_POST['id']))
 /* pull current config into pconfig */
 if (isset($id) && $a_rooms[$id]) {
 	$pconfig['number'] = $a_rooms[$id]['number'];
-	$pconfig['descr'] = $a_rooms[$id]['descr'];
+	$pconfig['name'] = $a_rooms[$id]['name'];
 	$pconfig['pin'] = $a_rooms[$id]['pin'];
 	//$pconfig['adminpin'] = $a_rooms[$id]['adminpin'];
 }
@@ -59,13 +59,13 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "number");
-	$reqdfieldsn = explode(",", "Room Number");
+	$reqdfields = explode(" ", "number name");
+	$reqdfieldsn = explode(",", "Room Number,Name");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!is_numericint($_POST['number'])) {
-		$input_errors[] = "Conference rooms must be numeric.";
+		$input_errors[] = "Conference room numbers must be numeric.";
 	}
 	if (!isset($id) && in_array($_POST['number'], conferencing_get_extensions())) {
 		$input_errors[] = "Conference number already exists.";
@@ -85,14 +85,16 @@ if ($_POST) {
 		$room['number'] = $_POST['number'];
 		$room['pin'] = $_POST['pin'];
 		//$room['adminpin'] = $_POST['adminpin'];
-		$room['descr'] = $_POST['descr'];
+		$room['name'] = $_POST['name'];
 
 		if (isset($id) && $a_rooms[$id]) {
+			$room['uniqid'] = $a_rooms[$id]['uniqid'];
 			$a_rooms[$id] = $room;
 		} else {
+			$room['uniqid'] = "CONFERENCE-ROOM-" . uniqid(rand());
 			$a_rooms[] = $room;
 		}
-				
+						
 		touch($d_conferencingconfdirty_path);
 
 		write_config();
@@ -105,7 +107,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="services_conferencing_edit.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq">Room Number</td>
 				<td width="80%" class="vtable">
@@ -114,18 +116,16 @@ if ($_POST) {
 				</td>
 			</tr>
 			<tr> 
+				<td valign="top" class="vncellreq">Name</td>
+				<td class="vtable">
+					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
+				</td>
+			</tr>			
+			<tr> 
 				<td valign="top" class="vncell">Access PIN</td>
 				<td class="vtable">
 					<input name="pin" type="text" class="formfld" id="pin" size="40" value="<?=htmlspecialchars($pconfig['pin']);?>"> 
 					<br><span class="vexpl">Optional PIN needed to access this conference room.</span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Description</td>
-				<td class="vtable">
-					<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
-					<br><span class="vexpl">You may enter a description here 
-					for your reference (not parsed).</span>
 				</td>
 			</tr>
 			<tr> 

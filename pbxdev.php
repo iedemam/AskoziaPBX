@@ -653,15 +653,6 @@ function package($platform, $image_name) {
 	_exec("rm -rf tmp");
 }
 
-function setup_environment() {
-	setup_doctools();
-}
-
-function setup_doctools() {
-	
-	_exec("cd /usr/ports/textproc/docproj; make JADETEX=yes install");
-}
-
 function _get_dir_size($dir) {
 	exec("du -d 0 $dir", $out);
 	$out = preg_split("/\s+/", $out[0]);

@@ -81,6 +81,9 @@ function dump_clog($logfile, $tail) {
 		$cdr = explode(",", $cdr);
 		$cdr = str_replace("\"", "", $cdr);
 		
+		if ((!$cdr[0]) || (!$cdr[2]) || (!$cdr[12]))
+			continue;
+		
 		echo "<tr valign=\"top\">\n";
 		
 		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";

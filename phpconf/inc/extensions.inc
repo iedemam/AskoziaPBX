@@ -42,7 +42,7 @@ function extensions_conf_generate() {
 	
 	$conf = <<<EOD
 
-[macro-normal];
+[macro-vm];
 exten => s,1,Dial($\{ARG1},30)
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 exten => s-NOANSWER,1,VoiceMail($\{ARG2},u)
@@ -51,7 +51,7 @@ exten => s-ANSWER,1,Hangup()
 exten => _s-.,1,Goto(s-NOANSWER,1)
 
 [internal]
-exten => _XXXX,1,Macro(normal|SIP/$\{EXTEN}|$\{EXTEN})
+exten => _XXXX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
 
 exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()
@@ -80,11 +80,9 @@ EOD;
 
 	foreach ($a_sipproviders as $sp) {
 		$conf .= "[{$sp['uniqid']}]\n";
-		$conf .= "exten => {$sp['username']},1,Answer()\n";
-		$conf .= "exten => {$sp['username']},2,Dial(". 
-			asterisk_uniqid_to_dial($sp['incomingextension']) .",30)\n";
-		$conf .= "exten => {$sp['username']},3,Hangup()\n";
+		$conf .= asterisk_uniqid_to_dial($sp['username'], $sp['incomingextension']);
 		$conf .= "exten => _{$sp['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($sp['prefix']) ."}@{$sp['uniqid']},30)\n";
+		$conf .= "exten => _{$sp['prefix']}.,2,Hangup()\n";
 		$conf .= "\n";
 	}
 

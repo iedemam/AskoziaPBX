@@ -50,7 +50,7 @@
 			<secret></secret>
 			<descr/>
 			<provider></provider>
-			<voicemailbox>bob@aol.com</voicemailbox> or
+			<voicemailbox></voicemailbox>
 			<codec>/codec>
 			...
 			<uniqid></uniqid>
@@ -75,8 +75,8 @@
 	<conferencing>
 		<room>
 			<number>2663</number>
+			<name>Default Conference</name>
 			<!-- <pin></pin> -->
-			<descr>Default Conference</descr>
 		</room>
 	</conferencing>
 	<!--

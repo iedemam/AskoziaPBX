@@ -1,19 +1,15 @@
 Priorities:
+ - fix dialplan for users without voicemail accounts
  - remove junk from manager output and add return values to asterisk_exec()
  - get indications.conf working
- - get call parking working
- - fix dialplan for users without voicemail accounts
- - remove excess icons
  - css irregularities
  - figure out config xml single var irregularities (empty defines showing up)
  - better field checks
+ - url given in console menu should match port given in gui (m0n0wall bug)
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
  - console screen should fill window
- - url given in console menu should match port given in gui (m0n0wall bug)
  - fix logo width
- - vcheck.php on server needs help and so does the firmware query page
  - update all (C) tags
- - 
 
  - presentation
  - website
@@ -28,6 +24,7 @@ First Public Beta
  - access able to be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
  - QoS options, such as jitterbuffer and packet types supported
  - dialplan is a movable grid
+- get call parking working
 
 -----------------------------------------------------------------------
 

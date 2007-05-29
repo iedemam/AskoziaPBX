@@ -73,7 +73,7 @@ if (file_exists($d_conferencingconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="20%" class="listhdrr">Room Number</td>
-		<td width="55%" class="listhdrr">Description</td>
+		<td width="55%" class="listhdrr">Name</td>
 		<td width="15%" class="listhdrr">Pin</td>
 		<td width="10%" class="list"></td>
 	</tr>
@@ -84,7 +84,7 @@ if (file_exists($d_conferencingconfdirty_path)) {
 			<?=htmlspecialchars($room['number']);?>
 		</td>
 		<td class="listbg">
-			<?=htmlspecialchars($room['descr']);?>&nbsp;
+			<?=htmlspecialchars($room['name']);?>&nbsp;
 		</td>
 		<td valign="middle" nowrap class="listr">
 			<?php if ($room['pin']): ?>
