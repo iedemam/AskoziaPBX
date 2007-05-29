@@ -42,7 +42,7 @@ echo "3) Reset webGUI password"
 echo "4) Reset to factory defaults"
 echo "5) Reboot system"
 echo "6) Ping host"
-echo "7) Shell"
+echo "7) Asterisk Console"
 echo
 
 read -p "Enter a number: " opmode
@@ -68,7 +68,7 @@ case ${opmode} in
 	/etc/rc.initial.ping
 	;;
 7)
-	/bin/sh
+	/usr/local/sbin/asterisk -r
 	;;
 esac
 

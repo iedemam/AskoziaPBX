@@ -416,7 +416,8 @@ function populate_asterisk($image_name) {
 		"gmake install DESTDIR=$rootfs");
 	
 	// filter and link sounds
-	$sounds = explode(" ", "conf-* vm-intro.* vm-theperson.* vm-is*.* beep.* auth-thankyou.*");
+	$sounds = explode(" ", "conf-* vm-intro.* vm-theperson.* vm-is*.* beep.* auth-thankyou.* ".
+		"vm-goodbye.*");
 	foreach ($sounds as $sound) {
 		_exec("cp $rootfs/usr/local/share/asterisk/sounds/$sound ".
 			"$image_name/asterisk/sounds");

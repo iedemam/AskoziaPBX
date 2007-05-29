@@ -107,8 +107,6 @@ $menu['System']['Reboot'] 				= array('system_reboot.php');
 
 /* Interfaces */
 $menu['Interfaces']['Network'] 			= array('interfaces_network.php');
-/* $menu['System']['Static routes']		= array('system_routes.php'); needs to be tab or submenu */
-/* assign interfaces also needs to be added as a tab */
 
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php');
