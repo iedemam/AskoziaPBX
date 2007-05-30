@@ -48,7 +48,7 @@ $image_pad		= 512;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "net45xx net48xx wrap generic-pc generic-pc-cdrom";
+$platform_list = "net45xx net48xx wrap generic-pc"; //generic-pc-cdrom";
 $platforms = explode(" ", $platform_list);
 
 
@@ -309,7 +309,13 @@ function build_everything() {
 
 function create($image_name) {
 	global $dirs;
-		
+
+	if (file_exists($image_name)) {
+		_exec("rm -rf $image_name");
+		_exec("rm -rf {$dirs['images']}/*$image_name.img");
+		_exec("rm -rf {$dirs['mfsroots']}/*$image_name.gz");
+	}
+
 	_exec("mkdir $image_name");
 	$rootfs = "$image_name/rootfs";
 	_exec("mkdir $rootfs");
@@ -654,6 +660,25 @@ function package($platform, $image_name) {
 	_exec("rm -rf tmp");
 }
 
+function release($name) {
+	global $platforms, $dirs;
+	
+	$html = "\n";
+	foreach($platforms as $platform) {
+		$filename = $platform . "-" . basename($name) . ".img";
+		_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
+		
+		$html .= "<tr>\n";
+		$html .= "\t<td>$filename</td>\n";
+		$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
+		$html .= "\t<td>". md5("{$dirs['images']}/$filename")."</td>\n";
+		$html .= "</tr>\n";
+	}
+	$html .= "\n";
+
+	print $html;
+}
+
 function _get_dir_size($dir) {
 	exec("du -d 0 $dir", $out);
 	$out = preg_split("/\s+/", $out[0]);
@@ -721,14 +746,8 @@ function _log($msg) {
 // --[ command line parsing ]--------------------------------------------------
 
 if ($argv[1] == "new") {
-
+	
 	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
-
-	if (file_exists($image_name)) {
-		_exec("rm -rf $image_name");
-		_exec("rm -rf {$dirs['images']}/*{$argv[2]}.img");
-		_exec("rm -rf {$dirs['mfsroots']}/*{$argv[2]}.gz");
-	}
 	create($image_name);
 	populate_everything($image_name);
 
@@ -799,6 +818,16 @@ if ($argv[1] == "new") {
 	passthru("find phpconf/ -type f -name \"*rc.*\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
 
+} else if ($argv[1] == "release") {
+
+	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
+	create($image_name);
+	populate_everything($image_name);
+	foreach($platforms as $platform) {
+		package($platform, $image_name);			
+	}
+	release($image_name);
+	
 } else {
 	_log("Huh?");
 	exit(1);
