@@ -147,7 +147,7 @@ if ($_POST) {
 				<td valign="top" class="vncellreq">Prefix</td>
 				<td colspan="2" class="vtable">
 					<input name="prefix" type="text" class="formfld" id="prefix" size="40" value="<?=htmlspecialchars($pconfig['prefix']);?>"> 
-					<br><span class="vexpl">Dialing prefix to access this provider (pattern matching notes here).</span>
+					<br><span class="vexpl">Dialing prefix to access this provider.</span>
 				</td>
 			</tr>
 			<tr> 
@@ -168,7 +168,7 @@ if ($_POST) {
 				<td valign="top" class="vncell">Secret</td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-					<br><span class="vexpl">Secrets may not contain a '#' or ';'.</span>
+					<br><span class="vexpl">This account's password.</span>
 				</td>
 			</tr>
 			<tr> 

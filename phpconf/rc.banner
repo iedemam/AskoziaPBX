@@ -47,6 +47,10 @@
     
     LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}
     
+
+
+
+
 EOD;
 
 ?>

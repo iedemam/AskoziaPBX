@@ -145,7 +145,7 @@ function typesel_change() {
 				<td width="20%" valign="top" class="vncellreq">Extension</td>
 				<td width="80%" colspan="2" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">Four digits. This is also this account's username</span>
+					<br><span class="vexpl">Four digits. This is also this account's username.</span>
 				</td>
 			</tr>
 			<tr> 
@@ -159,14 +159,14 @@ function typesel_change() {
 				<td valign="top" class="vncellreq">Secret</td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                    <br><span class="vexpl">Secrets may not contain '#' or ';'</span>
+                    <br><span class="vexpl">This account's password.</span>
 				</td>
 			</tr>
 			<tr> 
 				<td valign="top" class="vncell">Voicemail Address</td>
 				<td colspan="2" class="vtable">
 					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
-					<br><span class="vexpl">If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given e-mail address.</span>
+					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 				</td>
 			</tr>
 			<tr> 

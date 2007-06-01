@@ -77,10 +77,12 @@ function asterisk_exec($cmd, $output=NULL) {
 	fputs($fp, "Secret: askozia\r\n");
 	fputs($fp, "Events: off\r\n\r\n");
 	usleep(500);
+	
 	fputs($fp, "Action: COMMAND\r\n");
 	fputs($fp, "command: $cmd\r\n");
 	fputs($fp, "ActionID: $token\r\n\r\n");
 	usleep(500);
+	
 	$out = fread($fp, 38000); 
 	while(strpos($out,"--END COMMAND--")==0) {
 		$out .= fread($fp, 38000); 	  
@@ -95,6 +97,9 @@ function asterisk_exec($cmd, $output=NULL) {
 
 
 function asterisk_is_valid_extension($extension) {
+	if(!is_numericint($extension) || (strlen($extension) != 4))
+		return false;
+	
 	return true;
 }
 
@@ -113,6 +118,9 @@ function asterisk_is_valid_username($username) {
 }
 
 function asterisk_is_valid_prefix($prefix) {
+	if (!is_numericint($extension))
+		return false;
+
 	return true;
 }
 

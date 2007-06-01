@@ -3,7 +3,7 @@ Priorities:
  - remove junk from manager output and add return values to asterisk_exec()
  - get indications.conf working
  - figure out config xml single var irregularities (empty defines showing up)
- - better field checks
+ - better field checks!
  - url given in console menu should match port given in gui (m0n0wall bug)
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
  - console screen should fill window

@@ -145,7 +145,7 @@ $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
-$menu['Diagnostics']['File Editor']		= array('diag_editor.php');
+//$menu['Diagnostics']['File Editor']		= array('diag_editor.php');
 $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 
 ?>

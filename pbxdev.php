@@ -669,9 +669,9 @@ function release($name) {
 		_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
 		
 		$html .= "<tr>\n";
-		$html .= "\t<td>$filename</td>\n";
+		$html .= "\t<td><a href=\"/downloads/$filename\">$filename</a></td>\n";
 		$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
-		$html .= "\t<td>". md5("{$dirs['images']}/$filename")."</td>\n";
+		$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
 		$html .= "</tr>\n";
 	}
 	$html .= "\n";
