@@ -663,6 +663,10 @@ function package($platform, $image_name) {
 function release($name) {
 	global $platforms, $dirs;
 	
+	_exec("cd {$dirs['images']}; tar -cf rootfs-".basename($name).".tar ".basename($name));
+	_exec("cd {$dirs['images']}; gzip -9 rootfs-".basename($name).".tar");
+	_exec("mv {$dirs['images']}/rootfs-".basename($name).".tar.gz {$dirs['images']}/rootfs-".basename($name).".tgz");
+	
 	$html = "\n";
 	foreach($platforms as $platform) {
 		$filename = $platform . "-" . basename($name) . ".img";
@@ -674,6 +678,14 @@ function release($name) {
 		$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
 		$html .= "</tr>\n";
 	}
+	
+	$filename = "rootfs-".basename($name).".tgz";
+	
+	$html .= "<tr>\n";
+	$html .= "\t<td><a href=\"/downloads/$filename\">$filename</a></td>\n";
+	$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
+	$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
+	$html .= "</tr>\n";	
 	$html .= "\n";
 
 	print $html;
