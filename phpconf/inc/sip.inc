@@ -105,7 +105,6 @@ bindaddr=0.0.0.0
 srvlookup=yes
 useragent=AskoziaPBX
 relaxdtmf=yes
-dtmfmode=auto
 alwaysauthreject=yes
 videosupport=yes
 
@@ -162,6 +161,12 @@ EOD;
 		$conf .= "qualify=30000\n";
 		$conf .= "canreinvite=no\n";
 		$conf .= "insecure=port,invite\n";
+		if ($sp['dtmfmode']) {
+			$conf .= "dtmfmode={$sp['dtmfmode']}\n";
+		} else {
+			$conf .= "dtmfmode=auto\n";
+		}
+			
 		$conf .= "disallow=all\n";
 	
 		if(is_array($sp['codec'])) {
@@ -191,6 +196,11 @@ EOD;
 			$conf .= "nat=yes\n";
 		$conf .= "qualify=30000\n";
 		$conf .= "canreinvite=no\n";
+		if ($sp['dtmfmode']) {
+			$conf .= "dtmfmode={$sp['dtmfmode']}\n";
+		} else {
+			$conf .= "dtmfmode=auto\n";
+		}		
 		$conf .= "disallow=all\n";
 	
 		if(is_array($sp['codec'])) {

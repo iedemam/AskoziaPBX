@@ -58,6 +58,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['secret'] = $a_sipphones[$id]['secret'];
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
+	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
 	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_sipphones[$id]['descr'];
@@ -106,6 +107,7 @@ if ($_POST) {
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
+		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['descr'] = $_POST['descr'];
 
 		$sp['provider'] = array();
@@ -172,6 +174,19 @@ function typesel_change() {
 					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 				</td>
 			</tr>
+			<tr> 
+				<td valign="top" class="vncell">DTMF Mode</td>
+				<td colspan="2" class="vtable">
+					<select name="dtmfmode" class="formfld" id="dtmfmode">
+					<? foreach ($dtmfmodes as $dtmfmode) : ?>
+					<option value="<?=$dtmfmode;?>" <?
+					if ($pconfig['dtmfmode'] == $dtmfmode)
+						echo "selected"; ?>
+					><?=$dtmfmode;?></option>
+					<? endforeach; ?>
+					</select>
+				</td>
+			</tr>			
 			<tr> 
 				<td valign="top" class="vncell">Providers</td>
 				<td colspan="2" class="vtable">

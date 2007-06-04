@@ -11,6 +11,13 @@ Priorities:
 pb2
  - do the right thing on initial interface selection
  - add some more sip.conf options for providers (from user)
+   - fromuser=a3189sL8tpmJpAML
+   - dtmfmode=rfc2833
+		auto
+		rfc2833
+		inband
+		info
+
  - iax2
 
  - presentation

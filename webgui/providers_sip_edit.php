@@ -60,6 +60,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['host'] = $a_sipproviders[$id]['host'];
 	$pconfig['port'] = $a_sipproviders[$id]['port'];
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
+	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
 	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
@@ -110,6 +111,7 @@ if ($_POST) {
 		if (isset($_POST['port']))
 			$sp['port'] = $_POST['port'];
 		$sp['prefix'] = $_POST['prefix'];
+		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
 		$sp['codec'] = array();
@@ -153,8 +155,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top" class="vncellreq">Username</td>
 				<td colspan="2" class="vtable">
-					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>"> 
-					<br><span class="vexpl">Username</span>
+					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
 				</td>
 			</tr>
                 <tr> 
@@ -178,6 +179,19 @@ if ($_POST) {
 					:
 					<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
 					<br><span class="vexpl">SIP proxy host URL or IP address and optional port.</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">DTMF Mode</td>
+				<td colspan="2" class="vtable">
+					<select name="dtmfmode" class="formfld" id="dtmfmode">
+					<? foreach ($dtmfmodes as $dtmfmode) : ?>
+					<option value="<?=$dtmfmode;?>" <?
+					if ($pconfig['dtmfmode'] == $dtmfmode)
+						echo "selected"; ?>
+					><?=$dtmfmode;?></option>
+					<? endforeach; ?>
+					</select>
 				</td>
 			</tr>
 			<tr> 

@@ -116,6 +116,12 @@ $topologies = array(
 	"natdynamichost" => "NAT + dynamic public IP"
 );
 
+$dtmfmodes = array(
+	"auto",
+	"rfc2833",
+	"inband",
+	"info"
+);
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	
