@@ -52,6 +52,13 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", "Host,E-mail Address,Username,Password");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	
+	if (($_POST['address'] && !is_email_address($_POST['address']))) {
+		$input_errors[] = "A valid e-mail address must be specified.";
+	}
+	if (($_POST['fromaddress'] && !is_email_address($_POST['fromaddress']))) {
+		$input_errors[] = "A valid e-mail address must be specified for the \"from address\".";
+	}
 
 	if (!$input_errors) {
 		$vmconfig['host'] = $_POST['host'];

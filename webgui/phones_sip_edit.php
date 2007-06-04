@@ -79,7 +79,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !asterisk_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = "An extension must be a four digit number.";
+		$input_errors[] = "An extension must be a one to four digit number.";
 	}
 	if (($_POST['callerid'] && !asterisk_is_valid_callerid($_POST['callerid']))) {
 		$input_errors[] = "A valid Caller ID must be specified.";
@@ -92,6 +92,9 @@ if ($_POST) {
 	}
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
+	}
+	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
+		$input_errors[] = "A valid e-mail address must be specified.";
 	}
 	
 	//TODO: check if voicemailbox is valid)
@@ -145,7 +148,7 @@ function typesel_change() {
 				<td width="20%" valign="top" class="vncellreq">Extension</td>
 				<td width="80%" colspan="2" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">Four digits. This is also this account's username.</span>
+					<br><span class="vexpl">Up to four digits. This is also this account's username.</span>
 				</td>
 			</tr>
 			<tr> 

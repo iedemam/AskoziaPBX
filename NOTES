@@ -6,9 +6,12 @@ Priorities:
  - better field checks!
  - url given in console menu should match port given in gui (m0n0wall bug)
  - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
- - console screen should fill window
- - fix logo width
  - update all (C) tags
+
+pb2
+ - do the right thing on initial interface selection
+ - add some more sip.conf options for providers (from user)
+ - iax2
 
  - presentation
  - website

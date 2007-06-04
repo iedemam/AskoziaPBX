@@ -58,6 +58,9 @@ exten => exit-USEREXIT,1,Playback(vm-goodbye)
 exten => exit-USEREXIT,n,Hangup()
 
 [internal]
+exten => _X,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
+exten => _XX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
+exten => _XXX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
 exten => _XXXX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
 
 exten => 00003246,1,Answer()

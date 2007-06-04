@@ -179,6 +179,13 @@ function is_port($port) {
 		return true;
 }
 
+function is_email_address($address) {
+	if (!eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,6}$", $address))
+	   return false;
+
+	return true;
+}
+
 /* returns a list of interfaces with MAC addresses
    (skips VLAN and other virtual interfaces) */
 function get_interface_list() {

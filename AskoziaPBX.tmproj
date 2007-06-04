@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>webgui/index.php</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -42,13 +40,15 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-05-31T08:54:18Z</date>
+			<date>2007-06-03T18:31:56Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-05-31T08:33:28Z</date>
+			<date>2007-06-03T18:31:56Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -80,9 +80,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -96,12 +96,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>823</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>798</integer>
+			<integer>0</integer>
 		</dict>
 		<key>phpconf/inc/asterisk.inc</key>
 		<dict>
@@ -161,6 +161,34 @@
 				<integer>145</integer>
 			</dict>
 		</dict>
+		<key>phpconf/rc.banner</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>53</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>16</integer>
+		</dict>
+		<key>webgui/fbegin.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>147</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>117</integer>
+		</dict>
 		<key>webgui/guiconfig.inc</key>
 		<dict>
 			<key>caret</key>
@@ -208,14 +236,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>144</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>168</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>55</integer>
+			<integer>0</integer>
 		</dict>
 		<key>webgui/providers_sip_edit.php</key>
 		<dict>
@@ -235,15 +263,11 @@
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>webgui/index.php</string>
 		<string>NOTES</string>
-		<string>webgui/providers_sip_edit.php</string>
-		<string>webgui/phones_sip_edit.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{4, 8}, {822, 770}}</string>
+	<string>{{23, 8}, {822, 770}}</string>
 </dict>
 </plist>

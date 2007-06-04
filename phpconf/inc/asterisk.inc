@@ -97,7 +97,7 @@ function asterisk_exec($cmd, $output=NULL) {
 
 
 function asterisk_is_valid_extension($extension) {
-	if(!is_numericint($extension) || (strlen($extension) != 4))
+	if(!is_numericint($extension) || (strlen($extension) > 4) || (strlen($extension) < 1))
 		return false;
 	
 	return true;
