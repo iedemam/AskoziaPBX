@@ -45,6 +45,7 @@ function asterisk_configure() {
 	
 	$res = 0;
 	$res |= sip_conf_generate();
+	$res |= iax_conf_generate();
 	$res |= conferencing_conf_generate();
 	$res |= extensions_conf_generate();
 	$res |= voicemail_conf_generate();
@@ -129,6 +130,7 @@ function asterisk_get_extensions() {
 
 	return array_merge(
 		sip_get_extensions(), 
+		iax_get_extensions(),
 		conferencing_get_extensions()
 	);
 }
@@ -137,7 +139,8 @@ function asterisk_get_providers() {
 	global $config;
 	
 	return array_merge(
-		sip_get_providers()
+		sip_get_providers(),
+		iax_get_providers()
 	);
 }
 
@@ -145,7 +148,8 @@ function asterisk_get_phones() {
 	global $config;
 	
 	return array_merge(
-		sip_get_phones()
+		sip_get_phones(),
+		iax_get_phones()
 	);
 }
 
@@ -153,7 +157,8 @@ function asterisk_get_prefixes() {
 	global $config;
 
 	return array_merge(
-		sip_get_prefixes()
+		sip_get_prefixes(),
+		iax_get_prefixes()
 	);
 }
 
@@ -166,6 +171,11 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 		$phone = sip_get_phone($uniqid);
 		$dial = "exten => $exten,1,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']})\n";
+			
+	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
+		$phone = iax_get_phone($uniqid);
+		$dial = "exten => $exten,1,".
+			"Macro(vm|IAX2/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
 		$room = conferencing_get_room($uniqid);
@@ -174,7 +184,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 		$dial .= "exten => $exten,3,Hangup()\n";
 	}
 	
-	return $dial . $phone['extension'];
+	return $dial;
 }
 
 	

@@ -110,11 +110,11 @@ $menu['Interfaces']['Network'] 			= array('interfaces_network.php');
 
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php');
-//$menu['Providers']['IAX'] 				= array('providers_iax.php');
+$menu['Providers']['IAX'] 				= array('providers_iax.php');
 
 /* Phones */
 $menu['Phones']['SIP'] 					= array('phones_sip.php');
-//$menu['Phones']['IAX'] 					= array('phones_iax.php');
+$menu['Phones']['IAX'] 					= array('phones_iax.php');
 											
 /* Services */
 $menu['Services']['Conferencing'] 		= array('services_conferencing.php');
@@ -134,6 +134,7 @@ $menu['Status']['Interfaces']			= array('status_interfaces.php');
 
 /* Advanced */
 $menu['Advanced']['SIP'] 				= array('advanced_sip.php');
+$menu['Advanced']['IAX'] 				= array('advanced_iax.php');
 $menu['Advanced']['GUI Options']		= array('advanced_guioptions.php');
 //$menu['Advanced']['Quality of Service'] 					= array('advanced_qos.php');
 

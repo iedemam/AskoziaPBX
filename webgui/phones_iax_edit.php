@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: phones_sip_edit.php 117 2007-06-04 12:13:10Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -33,16 +33,16 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Phones", "SIP", "Edit Account");
+$pgtitle = array("Phones", "IAX", "Edit Account");
 require("guiconfig.inc");
 
-/* grab and sort the sip phones in our config */
-if (!is_array($config['sip']['phone']))
-	$config['sip']['phone'] = array();
+/* grab and sort the iax phones in our config */
+if (!is_array($config['iax']['phone']))
+	$config['iax']['phone'] = array();
 
 
-sip_sort_phones();
-$a_sipphones = &$config['sip']['phone'];
+iax_sort_phones();
+$a_iaxphones = &$config['iax']['phone'];
 $a_providers = asterisk_get_providers();
 
 $pconfig['codec'] = array("ulaw");
@@ -52,16 +52,15 @@ if (isset($_POST['id']))
 	$id = $_POST['id'];
 
 /* pull current config into pconfig */
-if (isset($id) && $a_sipphones[$id]) {
-	$pconfig['extension'] = $a_sipphones[$id]['extension'];
-	$pconfig['callerid'] = $a_sipphones[$id]['callerid'];
-	$pconfig['secret'] = $a_sipphones[$id]['secret'];
-	$pconfig['provider'] = $a_sipphones[$id]['provider'];
-	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
-	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
-	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
+if (isset($id) && $a_iaxphones[$id]) {
+	$pconfig['extension'] = $a_iaxphones[$id]['extension'];
+	$pconfig['callerid'] = $a_iaxphones[$id]['callerid'];
+	$pconfig['secret'] = $a_iaxphones[$id]['secret'];
+	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
+	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
+	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
-	$pconfig['descr'] = $a_sipphones[$id]['descr'];
+	$pconfig['descr'] = $a_iaxphones[$id]['descr'];
 }
 
 if ($_POST) {
@@ -107,7 +106,6 @@ if ($_POST) {
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
-		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['descr'] = $_POST['descr'];
 
 		$sp['provider'] = array();
@@ -118,26 +116,26 @@ if ($_POST) {
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
 
-		if (isset($id) && $a_sipphones[$id]) {
-			$sp['uniqid'] = $a_sipphones[$id]['uniqid'];
-			$a_sipphones[$id] = $sp;
+		if (isset($id) && $a_iaxphones[$id]) {
+			$sp['uniqid'] = $a_iaxphones[$id]['uniqid'];
+			$a_iaxphones[$id] = $sp;
 		 } else {
-			$sp['uniqid'] = "SIP-PHONE-" . uniqid(rand());
-			$a_sipphones[] = $sp;
+			$sp['uniqid'] = "IAX-PHONE-" . uniqid(rand());
+			$a_iaxphones[] = $sp;
 		}
 		
-		touch($d_sipconfdirty_path);
+		touch($d_iaxconfdirty_path);
 		
 		write_config();
 		
-		header("Location: phones_sip.php");
+		header("Location: phones_iax.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-	<form action="phones_sip_edit.php" method="post" name="iform" id="iform">
+	<form action="phones_iax_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq">Extension</td>
@@ -167,19 +165,6 @@ if ($_POST) {
 					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncell">DTMF Mode</td>
-				<td colspan="2" class="vtable">
-					<select name="dtmfmode" class="formfld" id="dtmfmode">
-					<? foreach ($dtmfmodes as $dtmfmode) : ?>
-					<option value="<?=$dtmfmode;?>" <?
-					if ($pconfig['dtmfmode'] == $dtmfmode)
-						echo "selected"; ?>
-					><?=$dtmfmode;?></option>
-					<? endforeach; ?>
-					</select>
-				</td>
-			</tr>			
 			<tr> 
 				<td valign="top" class="vncell">Providers</td>
 				<td colspan="2" class="vtable">
@@ -245,7 +230,7 @@ if ($_POST) {
 					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
 					<input id="a_codecs" name="a_codecs" type="hidden" value="">
 					<input id="v_codecs" name="v_codecs" type="hidden" value="">
-					<?php if (isset($id) && $a_sipphones[$id]): ?>
+					<?php if (isset($id) && $a_iaxphones[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
 				</td>

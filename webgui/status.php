@@ -133,6 +133,11 @@ defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 |
 defCmdT("last 200 pbx log entries","/usr/sbin/clog /var/log/pbx.log 2>&1 | tail -n 200");
 defCmdT("last 200 call detail records","/usr/sbin/clog /var/log/cdr.log 2>&1 | tail -n 200");
 
+defCmdT("extensions.conf","cat /usr/local/etc/asterisk/extensions.conf");
+defCmdT("sip.conf","cat /usr/local/etc/asterisk/sip.conf");
+defCmdT("iax.conf","cat /usr/local/etc/asterisk/iax.conf");
+defCmdT("voicemail.conf","cat /usr/local/etc/asterisk/voicemail.conf");
+
 defCmd("ls /conf");
 defCmd("ls /var/run");
 defCmdT("config.xml","dumpconfigxml");

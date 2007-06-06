@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id$
+	$Id: iax.inc 117 2007-06-04 12:13:10Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -31,144 +31,114 @@
 require_once("functions.inc");
 
 
-function sip_get_providers() {
+function iax_get_providers() {
 	global $config;
 	
-	if (!is_array($config['sip']['provider']))
-		$config['sip']['provider'] = array();
+	if (!is_array($config['iax']['provider']))
+		$config['iax']['provider'] = array();
 		
-	sip_sort_providers();
+	iax_sort_providers();
 		
-	return $config['sip']['provider'];
+	return $config['iax']['provider'];
 }
 
-function sip_get_phones() {
+function iax_get_phones() {
 	global $config;
 	
-	if (!is_array($config['sip']['phone']))
-		$config['sip']['phone'] = array();
+	if (!is_array($config['iax']['phone']))
+		$config['iax']['phone'] = array();
 		
-	sip_sort_phones();
+	iax_sort_phones();
 		
-	return $config['sip']['phone'];
+	return $config['iax']['phone'];
 }
 
-function sip_get_phone($uniqid) {
-	$phones = sip_get_phones();
+function iax_get_phone($uniqid) {
+	$phones = iax_get_phones();
 	foreach ($phones as $phone)
 		if($phone['uniqid'] == $uniqid)
 			return $phone;
 }
 
-function sip_get_extensions() {
+function iax_get_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['sip']['phones']))
-		foreach($config['sip']['phones'] as $phone)
+	if (is_array($config['iax']['phones']))
+		foreach($config['iax']['phones'] as $phone)
 			$extensions[] = $phone['extension'];
 
 	return $extensions;
 }
 
-function sip_get_prefixes() {
+function iax_get_prefixes() {
 	global $config;
 	
 	$prefixes = array();
-	if (is_array($config['sip']['provider']))
-		foreach($config['sip']['provider'] as $provider)
+	if (is_array($config['iax']['provider']))
+		foreach($config['iax']['provider'] as $provider)
 			$prefixes[] = $provider['prefix'];
 
 	return $prefixes;	
 }
 
-function sip_conf_generate() {
+function iax_conf_generate() {
 	global $config, $g;
 	
-	$fd = fopen("/usr/local/etc/asterisk/sip.conf", "w");
+	$fd = fopen("/usr/local/etc/asterisk/iax.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open sip.conf in sip_conf_generate().\n");
+		printf("Error: cannot open iax.conf in iax_conf_generate().\n");
 		return 1;
 	}
 	
-	$port = "5060";
-	if (isset($config['sip']['port']))
-		$port = $config['sip']['port'];
+	$port = "4569";
+	if (isset($config['iax']['port']))
+		$port = $config['iax']['port'];
 
 	$conf = <<<EOD
 	
 [general]
 context=default
-allowoverlap=no
 bindport=$port
 bindaddr=0.0.0.0
-srvlookup=yes
-useragent=AskoziaPBX
-relaxdtmf=yes
-alwaysauthreject=yes
-videosupport=yes
+delayreject=yes
+
 
 
 EOD;
 
-	// nat config
-	$lancfg = $config['interfaces']['lan'];
-
-	if ($lancfg['topology'] == "natstatic") {
-		$conf .= "externip=" . $lancfg['extipaddr'] . "\n";
-		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
-	} else if ($lancfg['topology'] == "natdynamic") {
-		$conf .= "externhost=" . $lancfg['externhost'] . "\n";
-		$conf .= "externrefresh=10\n";
-		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
-	}
-	
-	$conf .= "\n\n";
 	
 	// providers
-	if (!is_array($config['sip']['provider']))
-		$config['sip']['provider'] = array();
+	if (!is_array($config['iax']['provider']))
+		$config['iax']['provider'] = array();
 		
-	$sipproviders = $config['sip']['provider'];
+	$iaxproviders = $config['iax']['provider'];
 
 	// provider registrations
-	foreach($sipproviders as $p) {
+	foreach($iaxproviders as $p) {
 		$conf .= "register => {$p['username']}";
 		if($p['secret']) {
 			$conf .= ":{$p['secret']}";
-			if($p['authuser']) {
-				$conf.= ":{$p['authuser']}";
-			}
 		}
 		$conf .= "@{$p['host']}";
 		if($p['port']) {
 			$conf .= ":{$p['port']}";	
 		}
-		$conf .= "/{$p['username']}";	
 		$conf .= "\n\n";
 	}
 	
 	// provider definitions
-	foreach($sipproviders as $p) {
+	foreach($iaxproviders as $p) {
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "username={$p['username']}\n";
 		$conf .= "secret={$p['secret']}\n";
-		$conf .= "fromuser={$p['username']}\n";
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "host={$p['host']}\n";
 		if ($p['port'])
-			$conf .= "port={$p['port']}";
-		$conf .= "nat=no\n";
+			$conf .= "port={$p['port']}";		
 		$conf .= "qualify=15000\n";
-		$conf .= "canreinvite=no\n";
-		$conf .= "insecure=port,invite\n";
-		if ($p['dtmfmode']) {
-			$conf .= "dtmfmode={$p['dtmfmode']}\n";
-		} else {
-			$conf .= "dtmfmode=auto\n";
-		}
-			
+		$conf .= "notransfer=yes\n";			
 		$conf .= "disallow=all\n";
 	
 		if(is_array($p['codec'])) {
@@ -182,27 +152,20 @@ EOD;
 	}
 
 	// phones
-	if (!is_array($config['sip']['phone']))
-		$config['sip']['phone'] = array();
+	if (!is_array($config['iax']['phone']))
+		$config['iax']['phone'] = array();
 		
-	$sipphones = $config['sip']['phone'];
+	$iaxphones = $config['iax']['phone'];
 	
-	foreach($sipphones as $p) {
+	foreach($iaxphones as $p) {
 		$conf .= "[{$p['extension']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "secret={$p['secret']}\n";
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
-		if ($lancfg['topology'] != "public")
-			$conf .= "nat=yes\n";
 		$conf .= "qualify=15000\n";
-		$conf .= "canreinvite=no\n";
-		if ($p['dtmfmode']) {
-			$conf .= "dtmfmode={$p['dtmfmode']}\n";
-		} else {
-			$conf .= "dtmfmode=auto\n";
-		}		
+		$conf .= "notransfer=yes\n";
 		$conf .= "disallow=all\n";
 	
 		if(is_array($p['codec'])) {
@@ -222,28 +185,28 @@ EOD;
 }
 
 
-function sip_reload() {
+function iax_reload() {
 	
-	return asterisk_exec("module reload chan_sip.so");
+	return asterisk_exec("module reload chan_iax2.so");
 }
 
 
-function sip_sort_phones() {
+function iax_sort_phones() {
 	global $g, $config;
 
-	usort($config['sip']['phone'], "_sipphonecmp");	
+	usort($config['iax']['phone'], "_iaxphonecmp");	
 }
-function _sipphonecmp($a, $b) {
+function _iaxphonecmp($a, $b) {
 	return strcmp($a['extension'], $b['extension']);
 }
 
 
-function sip_sort_providers() {
+function iax_sort_providers() {
 	global $g, $config;
 
-	usort($config['sip']['provider'], "_sipprovidercmp");	
+	usort($config['iax']['provider'], "_iaxprovidercmp");	
 }
-function _sipprovidercmp($a, $b) {
+function _iaxprovidercmp($a, $b) {
 	return strcmp($a['prefix'], $b['prefix']);
 }
 

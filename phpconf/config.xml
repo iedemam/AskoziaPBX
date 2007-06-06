@@ -71,6 +71,35 @@
 		</provider>
 		...
 	</sip>
+	<iax>
+		<port>4569</port>
+		<phone>
+			<extension></extension>
+			<callerid></callerid>
+			<secret></secret>
+			<descr/>
+			<provider></provider>
+			<voicemailbox></voicemailbox>
+			<codec>/codec>
+			...
+			<uniqid></uniqid>
+		</phone>
+		...
+		<provider>
+			<name>Free World Dialup</name>
+			<username></username>
+			<authuser/>
+			<secret></secret>
+			<host></host>
+			<port/>
+			<prefix></prefix>
+			<incomingextension></incomingextension>
+			<codec></codec>
+			...
+			<uniqid></uniqid>
+		</provider>
+		...
+	</iax>
 	-->
 	<conferencing>
 		<room>

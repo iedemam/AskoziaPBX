@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: providers_sip.php 102 2007-05-22 00:29:46Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,23 +29,23 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Providers", "SIP");
+$pgtitle = array("Providers", "IAX");
 require("guiconfig.inc");
 
-if (!is_array($config['sip']['provider']))
-	$config['sip']['provider'] = array();
+if (!is_array($config['iax']['provider']))
+	$config['iax']['provider'] = array();
 
-sip_sort_providers();
-$a_sipproviders = &$config['sip']['provider'];
+iax_sort_providers();
+$a_iaxproviders = &$config['iax']['provider'];
 
 
 if ($_GET['act'] == "del") {
-	if ($a_sipproviders[$_GET['id']]) {
+	if ($a_iaxproviders[$_GET['id']]) {
 		
 		// get the provider's unique id before removal
-		$removed_id = $a_sipproviders[$_GET['id']]['uniqid'];
-		unset($a_sipproviders[$_GET['id']]);
-		
+		$removed_id = $a_iaxproviders[$_GET['id']]['uniqid'];
+		unset($a_iaxproviders[$_GET['id']]);
+				
 		// remove references to this provider from sip phones
 		if (is_array($config['sip']['phone'])) {
 			$a_sipphones = &$config['sip']['phone'];
@@ -78,36 +78,37 @@ if ($_GET['act'] == "del") {
 				}
 			}
 		}
-		
+
+
 		write_config();
-		touch($d_sipconfdirty_path);
-		header("Location: providers_sip.php");
+		touch($d_iaxconfdirty_path);
+		header("Location: providers_iax.php");
 		exit;
 	}
 }
 
-if (file_exists($d_sipconfdirty_path)) {
+if (file_exists($d_iaxconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= sip_conf_generate();
+		$retval |= iax_conf_generate();
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= sip_reload();
+		$retval |= iax_reload();
 		$retval |= extensions_reload();
 	}
-	
+
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_sipconfdirty_path);
+		unlink($d_iaxconfdirty_path);
 	}
 }
 
 ?>
 
 <?php include("fbegin.inc"); ?>
-<form action="providers_sip.php" method="post">
+<form action="providers_iax.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -119,20 +120,20 @@ if (file_exists($d_sipconfdirty_path)) {
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<?php $i = 0; foreach ($a_sipproviders as $sp): ?>
+	<?php $i = 0; foreach ($a_iaxproviders as $sp): ?>
 	<tr>
 		<td class="listlr"><?=htmlspecialchars($sp['prefix']);?></td>
 		<td class="listbg"><?=htmlspecialchars($sp['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"> <a href="providers_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="providers_sip.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this SIP provider?')"><img src="x.gif" title="delete SIP provider" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"> <a href="providers_iax_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit IAX phone" width="17" height="17" border="0"></a>
+           &nbsp;<a href="providers_iax.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this IAX provider?')"><img src="x.gif" title="delete IAX provider" width="17" height="17" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="providers_sip_edit.php"><img src="plus.gif" title="add SIP provider" width="17" height="17" border="0"></a></td>
+		<td class="list"> <a href="providers_iax_edit.php"><img src="plus.gif" title="add IAX provider" width="17" height="17" border="0"></a></td>
 	</tr>
 </table>
 </form>

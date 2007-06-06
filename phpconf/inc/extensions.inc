@@ -57,12 +57,23 @@ exten => exit-SUCCESS,n,Hangup()
 exten => exit-USEREXIT,1,Playback(vm-goodbye)
 exten => exit-USEREXIT,n,Hangup()
 
-[internal]
-exten => _X,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
-exten => _XX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
-exten => _XXX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
-exten => _XXXX,1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})
 
+EOD;
+
+	// internal extensions
+	$conf .= "[internal]\n";
+
+	$a_sipphones = sip_get_phones();
+	foreach ($a_sipphones as $phone) {
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})\n";
+	}
+	
+	$a_iaxphones = iax_get_phones();
+	foreach ($a_iaxphones as $phone) {
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}/$\{EXTEN}|$\{EXTEN})\n";
+	}	
+
+	$conf .= <<<EOD
 exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()
 exten => 00003246,3,Hangup()
@@ -88,21 +99,44 @@ EOD;
 	// sip providers
 	$a_sipproviders = sip_get_providers();
 
-	foreach ($a_sipproviders as $sp) {
-		$conf .= "[{$sp['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($sp['username'], $sp['incomingextension']);
-		$conf .= "exten => _{$sp['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($sp['prefix']) ."}@{$sp['uniqid']},30)\n";
-		$conf .= "exten => _{$sp['prefix']}.,2,Hangup()\n";
+	foreach ($a_sipproviders as $p) {
+		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
+		$conf .= "exten => _{$p['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($p['prefix']) ."}@{$p['uniqid']},30)\n";
+		$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
 		$conf .= "\n";
 	}
+	
+	// iax providers
+	$a_iaxproviders = iax_get_providers();
+
+	foreach ($a_iaxproviders as $p) {
+		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
+		$conf .= "exten => _{$p['prefix']}.,1,Dial(IAX2/{$p['uniqid']}/$\{EXTEN:". strlen($p['prefix']) ."},30)\n";
+		$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
+		$conf .= "\n";
+	}
+	
 
 	// sip phones
-	$a_sipphones = sip_get_phones();
-
-	foreach ($a_sipphones as $sp) {
-		$conf .= "[{$sp['uniqid']}]\n";
-		if (isset($sp['provider'])) {
-			foreach ($sp['provider'] as $provider) {
+	foreach ($a_sipphones as $p) {
+		$conf .= "[{$p['uniqid']}]\n";
+		if (isset($p['provider'])) {
+			foreach ($p['provider'] as $provider) {
+				$conf .= "include => $provider\n";
+			}
+		}
+		$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
+		$conf .= "include => internal\n";
+		$conf .= "\n";
+	}
+	
+	// iax phones
+	foreach ($a_iaxphones as $p) {
+		$conf .= "[{$p['uniqid']}]\n";
+		if (isset($p['provider'])) {
+			foreach ($p['provider'] as $provider) {
 				$conf .= "include => $provider\n";
 			}
 		}

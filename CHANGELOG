@@ -1,0 +1,11 @@
+2007.06.xx - pb2
+ - added "dtmfmode" option to sip providers and phones
+ - added iax provider and phone support
+ - added extensions.conf, sip.conf, iax.conf and voicemail.conf contents to status.php
+ - hints are now registered for sip phones
+ - lan gateway now configurable while setting lan ip on console
+ - bug: deleted providers are now removed from phones which reference them
+ - bug: reverting to http in console now restarts mini httpd to update settings
+
+2007.06.01 - pb1
+ - initial release

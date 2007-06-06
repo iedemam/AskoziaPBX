@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: providers_iax_edit.php 117 2007-06-04 12:13:10Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -33,16 +33,16 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "SIP", "Edit Account");
+$pgtitle = array("Providers", "IAX", "Edit Account");
 require("guiconfig.inc");
 
-if (!is_array($config['sip']['provider']))
-	$config['sip']['provider'] = array();
+if (!is_array($config['iax']['provider']))
+	$config['iax']['provider'] = array();
 
-sip_sort_providers();
-$a_sipproviders = &$config['sip']['provider'];
+iax_sort_providers();
+$a_iaxproviders = &$config['iax']['provider'];
 
-$a_sipphones = sip_get_phones();
+$a_iaxphones = iax_get_phones();
 
 $pconfig['codec'] = array("ulaw");
 
@@ -52,17 +52,15 @@ if (isset($_POST['id']))
 	$id = $_POST['id'];
 
 /* pull current config into pconfig */
-if (isset($id) && $a_sipproviders[$id]) {
-	$pconfig['name'] = $a_sipproviders[$id]['name'];
-	$pconfig['username'] = $a_sipproviders[$id]['username'];
-	$pconfig['authuser'] = $a_sipproviders[$id]['authuser'];
-	$pconfig['secret'] = $a_sipproviders[$id]['secret'];
-	$pconfig['host'] = $a_sipproviders[$id]['host'];
-	$pconfig['port'] = $a_sipproviders[$id]['port'];
-	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
-	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
-	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
-	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
+if (isset($id) && $a_iaxproviders[$id]) {
+	$pconfig['name'] = $a_iaxproviders[$id]['name'];
+	$pconfig['username'] = $a_iaxproviders[$id]['username'];
+	$pconfig['secret'] = $a_iaxproviders[$id]['secret'];
+	$pconfig['host'] = $a_iaxproviders[$id]['host'];
+	$pconfig['port'] = $a_iaxproviders[$id]['port'];
+	$pconfig['prefix'] = $a_iaxproviders[$id]['prefix'];
+	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
+	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
 }
 
@@ -104,39 +102,36 @@ if ($_POST) {
 		$sp = array();		
 		$sp['name'] = $_POST['name'];
 		$sp['username'] = $_POST['username'];
-		if (isset($_POST['authuser']))
-			$sp['authuser'] = $_POST['authuser'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['host'] = $_POST['host'];
 		if (isset($_POST['port']))
 			$sp['port'] = $_POST['port'];
 		$sp['prefix'] = $_POST['prefix'];
-		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
 
-		if (isset($id) && $a_sipproviders[$id]) {
-			$sp['uniqid'] = $a_sipproviders[$id]['uniqid'];
-			$a_sipproviders[$id] = $sp;
+		if (isset($id) && $a_iaxproviders[$id]) {
+			$sp['uniqid'] = $a_iaxproviders[$id]['uniqid'];
+			$a_iaxproviders[$id] = $sp;
 		 } else {
-			$sp['uniqid'] = "SIP-PROVIDER-" . uniqid(rand());
-			$a_sipproviders[] = $sp;
+			$sp['uniqid'] = "IAX-PROVIDER-" . uniqid(rand());
+			$a_iaxproviders[] = $sp;
 		}
 		
-		touch($d_sipconfdirty_path);
+		touch($d_iaxconfdirty_path);
 		
 		write_config();
 		
-		header("Location: providers_sip.php");
+		header("Location: providers_iax.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-	<form action="providers_sip_edit.php" method="post" name="iform" id="iform">
+	<form action="providers_iax_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq">Name</td>
@@ -158,13 +153,6 @@ if ($_POST) {
 					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
 				</td>
 			</tr>
-                <tr> 
-                  <td valign="top" class="vncell">Authuser</td>
-                  <td colspan="2" class="vtable">
-					<input name="authuser" type="text" class="formfld" id="authuser" size="40" value="<?=htmlspecialchars($pconfig['authuser']);?>"> 
-					<br><span class="vexpl">Some providers require a seperate authorization name.</span>
-				</td>
-			</tr>
 			<tr> 
 				<td valign="top" class="vncell">Secret</td>
 				<td colspan="2" class="vtable">
@@ -178,20 +166,7 @@ if ($_POST) {
 					<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
 					:
 					<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-					<br><span class="vexpl">SIP proxy host URL or IP address and optional port.</span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">DTMF Mode</td>
-				<td colspan="2" class="vtable">
-					<select name="dtmfmode" class="formfld" id="dtmfmode">
-					<? foreach ($dtmfmodes as $dtmfmode) : ?>
-					<option value="<?=$dtmfmode;?>" <?
-					if ($pconfig['dtmfmode'] == $dtmfmode)
-						echo "selected"; ?>
-					><?=$dtmfmode;?></option>
-					<? endforeach; ?>
-					</select>
+					<br><span class="vexpl">IAX proxy host URL or IP address and optional port.</span>
 				</td>
 			</tr>
 			<tr> 
@@ -201,7 +176,7 @@ if ($_POST) {
 					
 						<option></option>
 						<?php $have_extension = false; ?>
-					
+
 						<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
 						<?php $have_extension = true; ?>
 						<option>SIP Phones</option>
@@ -212,7 +187,8 @@ if ($_POST) {
 						<? echo "&nbsp;&nbsp;{$phone['callerid']} <{$phone['extension']}>"; ?></option>
 						<?php endforeach; ?>
 						<?php endif; ?>
-						
+
+					
 						<?php if (count($a_iaxphones = iax_get_phones()) > 0): ?>
 						<?php $have_extension = true; ?>
 						<option>IAX Phones</option>
@@ -291,7 +267,7 @@ if ($_POST) {
 					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
 					<input id="a_codecs" name="a_codecs" type="hidden" value="">
 					<input id="v_codecs" name="v_codecs" type="hidden" value="">					 
-					<?php if (isset($id) && $a_sipproviders[$id]): ?>
+					<?php if (isset($id) && $a_iaxproviders[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
 				</td>

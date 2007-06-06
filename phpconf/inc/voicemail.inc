@@ -60,8 +60,6 @@ emaildateformat=%A, %B %d, %Y at %r
 
 mailcmd=/usr/local/bin/msmtp -C /etc/msmtp.conf -t
 
-sendvoicemail=yes	; Context to Send voicemail from [option 5 from the advanced menu]
-
 [zonemessages]
 eastern=America/New_York|'vm-received' Q 'digits/at' IMp
 central=America/Chicago|'vm-received' Q 'digits/at' IMp
@@ -74,18 +72,24 @@ european=Europe/Copenhagen|'vm-received' a d b 'digits/at' HM
 EOD;
 
 	// sip phones
-	if (!is_array($config['sip']['phone']))
-		$config['sip']['phone'] = array();
-	
-	$sipphones = $config['sip']['phone'];
+	$sipphones = sip_get_phones();
 
-	foreach($sipphones as $sp) {
-		if(!$sp['voicemailbox'])
+	foreach($sipphones as $p) {
+		if(!$p['voicemailbox'])
 			continue;
 		// is eliminating VoiceMailMain from the dialplan enough to keep
 		// this default password from being a privacy risk?
-		$conf .= "{$sp['extension']} => 0000,{$sp['callerid']},{$sp['voicemailbox']},,delete=yes\n";
+		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
 	}
+	
+	// iax phones
+	$iaxphones = iax_get_phones();
+
+	foreach($iaxphones as $p) {
+		if(!$p['voicemailbox'])
+			continue;
+		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
+	}	
 	
 	fwrite($fd, $conf);
 	fclose($fd);

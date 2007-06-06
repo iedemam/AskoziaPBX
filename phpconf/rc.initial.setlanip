@@ -34,7 +34,8 @@
 	require_once("functions.inc");
 	
 	$fp = fopen('php://stdin', 'r');
-	
+
+	// LAN IP address
 	do {
 		echo "\nEnter the new LAN IP address: ";
 		$lanip = chop(fgets($fp));
@@ -56,22 +57,39 @@
 		}
 	} while (!is_numeric($lanbits) || ($lanbits < 1) || ($lanbits > 31));
 	
+	// LAN Gateway
+	do {
+		echo "\nEnter the LAN gateway IP address: ";
+		$gwip = chop(fgets($fp));
+		if ($gwip === "") {
+			exit(0);
+		}
+	} while (!is_ipaddr($gwip));
+	
+	
 	$config['interfaces']['lan']['ipaddr'] = $lanip;
 	$config['interfaces']['lan']['subnet'] = $lanbits;
+	$config['interfaces']['lan']['gateway'] = $gwip;
 		
 	$proto = "http";
+	$webgui_restart = false;
 	if ($config['system']['webgui']['protocol'] == "https") {
 	
 		echo "\nDo you want to revert to HTTP as the webGUI protocol? (y/n) ";
 		
-		if (strcasecmp(chop(fgets($fp)), "y") == 0)
+		if (strcasecmp(chop(fgets($fp)), "y") == 0) {
 			$config['system']['webgui']['protocol'] = "http";
-		else
+			$webgui_restart = true;
+		} else {
 			$proto = "https";
+		}
 	}
 	
 	write_config();
 	interfaces_lan_configure();
+	if ($webgui_restart) {
+		system_webgui_start();
+	}
 	
 	echo <<<EOD
 	

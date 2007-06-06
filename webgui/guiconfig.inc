@@ -43,6 +43,7 @@ require_once("functions.inc");
 
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
+$d_iaxconfdirty_path = $g['varrun_path'] . "/iaxconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
