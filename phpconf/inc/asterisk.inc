@@ -50,7 +50,7 @@ function asterisk_configure() {
 	$res |= extensions_conf_generate();
 	$res |= voicemail_conf_generate();
 	$res |= msmtp_conf_generate();
-	$res |= mwexec("/usr/local/sbin/asterisk");
+	$res |= mwexec("/usr/local/sbin/asterisk -vvv");
 
 	if ($g['booting']) {
 		if ($res == 0)

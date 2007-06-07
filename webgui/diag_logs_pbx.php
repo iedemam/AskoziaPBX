@@ -34,7 +34,7 @@ require("guiconfig.inc");
 
 $nentries = $config['syslog']['nentries'];
 if (!$nentries)
-	$nentries = 50;
+	$nentries = 100;
 
 if ($_POST['clear']) {
 	exec("/usr/sbin/clog -i -s 262144 /var/log/pbx.log");
@@ -51,11 +51,11 @@ function dump_clog($logfile, $tail) {
 	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
 	
 	foreach ($logarr as $logent) {
-		$logent = preg_split("/\s+/", $logent, 6);
+		$logent = preg_split("/\s+/", $logent, 7);
 		echo "<tr valign=\"top\">\n";
 		
 		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-		echo "<td class=\"listr\">" . htmlspecialchars($logent[5]) . "</td>\n";
+		echo "<td class=\"listr\">" . str_replace("^M", "<br>", htmlspecialchars($logent[6])) . "</td>\n";
 
 		echo "</tr>\n";
 	}

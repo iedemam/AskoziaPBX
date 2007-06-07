@@ -41,7 +41,7 @@ $pconfig['cdr'] = isset($config['syslog']['cdr']);
 $pconfig['enable'] = isset($config['syslog']['enable']);
 
 if (!$pconfig['nentries'])
-	$pconfig['nentries'] = 50;
+	$pconfig['nentries'] = 100;
 
 if ($_POST) {
 

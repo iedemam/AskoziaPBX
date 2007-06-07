@@ -34,7 +34,7 @@ require("guiconfig.inc");
 
 $nentries = $config['syslog']['nentries'];
 if (!$nentries)
-	$nentries = 50;
+	$nentries = 100;
 
 if ($_POST['clear']) {
 	exec("/usr/sbin/clog -i -s 262144 /var/log/system.log");
