@@ -138,7 +138,7 @@ EOD;
 		if ($p['port'])
 			$conf .= "port={$p['port']}";		
 		$conf .= "qualify=15000\n";
-		$conf .= "notransfer=yes\n";			
+		$conf .= "transfer=mediaonly\n";			
 		$conf .= "disallow=all\n";
 	
 		if(is_array($p['codec'])) {
@@ -165,7 +165,7 @@ EOD;
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		$conf .= "qualify=15000\n";
-		$conf .= "notransfer=yes\n";
+		$conf .= "transfer=mediaonly\n";
 		$conf .= "disallow=all\n";
 	
 		if(is_array($p['codec'])) {

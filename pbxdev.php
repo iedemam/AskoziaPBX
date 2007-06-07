@@ -42,9 +42,9 @@ $msmtp_version		= "msmtp-1.4.11";
 
 // --[ image padding ]---------------------------------------------------------
 
-$mfsroot_pad	= 2048;
+$mfsroot_pad	= 2560;
 $asterisk_pad	= 512;
-$image_pad		= 512;
+$image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
@@ -562,8 +562,8 @@ function package($platform, $image_name) {
 	_exec("mount /dev/md0c tmp/mnt");
 	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
 	
-	_exec("du tmp/mnt");
-	_exec("df");	
+	_log("---- $platform - " . basename($image_name) . " - mfsroot ----");
+	_exec("df tmp/mnt");
 
 	_exec("umount tmp/mnt");
 	_exec("rm -rf tmp/stage/*");
@@ -621,14 +621,14 @@ function package($platform, $image_name) {
 		
 		_exec("mount /dev/md0a tmp/mnt");
 		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
-		_exec("du tmp/mnt");
-		_exec("df");
+		_log("---- $platform - " . basename($image_name) . " - system partition ----");
+		_exec("df tmp/mnt");
 		_exec("umount tmp/mnt");
 		
 		_exec("mount /dev/md0b tmp/mnt");
 		_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
-		_exec("du tmp/mnt");
-		_exec("df");
+		_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
+		_exec("df tmp/mnt");
 		_exec("umount tmp/mnt");		
 		
 		// cleanup
