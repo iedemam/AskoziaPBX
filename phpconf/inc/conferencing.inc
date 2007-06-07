@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: asterisk_sip.inc 75 2007-04-27 10:42:05Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.

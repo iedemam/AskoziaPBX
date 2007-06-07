@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: iax.inc 117 2007-06-04 12:13:10Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
