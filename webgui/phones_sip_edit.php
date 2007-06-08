@@ -189,48 +189,8 @@ if ($_POST) {
 				&nbsp;
 				</td>
 			</tr>
-			<tr> 
-				<td width="20%" valign="top" class="vncell">Audio Codecs</td>
-				<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
-					<ul id="ace" class="ace" style="min-height:50px">
-					<? foreach ($pconfig['codec'] as $codec): ?>
-						<? if (array_key_exists($codec, $audio_codecs)): ?>
-						<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
-						<? endif; ?>
-					<? endforeach; ?>
-					</ul>
-				</td>
-				<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
-					<ul id="acd" class="acd" style="min-height:50px">
-					<? foreach ($audio_codecs as $codec=>$friendly): ?>
-						<? if (!in_array($codec, $pconfig['codec'])): ?>
-						<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
-						<? endif; ?>
-					<? endforeach; ?>
-					</ul>
-				</td>
-			</tr>
-			<tr> 
-				<td width="20%" valign="top" class="vncell">Video Codecs</td>
-				<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
-					<ul id="vce" class="vce" style="min-height:50px">
-						<? foreach ($pconfig['codec'] as $codec): ?>
-							<? if (array_key_exists($codec, $video_codecs)): ?>
-							<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
-							<? endif; ?>
-						<? endforeach; ?>
-					</ul>
-				</td>
-				<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
-					<ul id="vcd" class="vcd" style="min-height:50px">
-					<? foreach ($video_codecs as $codec=>$friendly): ?>
-						<? if (!in_array($codec, $pconfig['codec'])): ?>
-						<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
-						<? endif; ?>
-					<? endforeach; ?>
-					</ul>
-				</td>
-			</tr>			
+			<? asterisk_display_audio_codecs($pconfig['codec']); ?>
+			<? asterisk_display_video_codecs($pconfig['codec']); ?>
 			<tr> 
 				<td valign="top" class="vncell">Description</td>
 				<td colspan="2" class="vtable">

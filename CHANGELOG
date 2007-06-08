@@ -1,6 +1,10 @@
-2007.06.xx - pb2
- - added "dtmfmode" option to sip providers and phones
+2007.06.08 - pb3
+ - added some notes about codec selection
+ - added some more start-up messages
+ - bug: starting asterisk with extra verbosity hangs, this is now done in two steps
+2007.06.07 - pb2
  - added iax provider and phone support
+ - added "dtmfmode" option to sip providers and phones
  - added extensions.conf, sip.conf, iax.conf and voicemail.conf contents to status.php
  - added sip/iax2 show peers/registry output to status.php
  - hints are now registered for sip phones
