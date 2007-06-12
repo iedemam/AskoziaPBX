@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,9 +18,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-06-07T14:13:31Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-06-11T17:09:37Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -44,13 +42,15 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-06-06T13:10:45Z</date>
+			<date>2007-06-11T17:09:37Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-06-07T14:13:31Z</date>
+			<date>2007-06-08T08:42:17Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -82,39 +82,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>53</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>2</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>79</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
 		</dict>
-		<key>pbxdev.php</key>
+		<key>NOTES</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -135,6 +119,20 @@
 			<key>firstVisibleLine</key>
 			<integer>173</integer>
 		</dict>
+		<key>phpconf/inc/sip.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>172</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>140</integer>
+		</dict>
 		<key>phpconf/rc.banner</key>
 		<dict>
 			<key>caret</key>
@@ -149,19 +147,49 @@
 			<key>firstVisibleLine</key>
 			<integer>16</integer>
 		</dict>
-		<key>phpconf/rc.bootup</key>
+		<key>webgui/dialplan_providers.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>54</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>15</integer>
+			<integer>58</integer>
+		</dict>
+		<key>webgui/guiconfig.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>461</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>432</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>266</integer>
+				<key>line</key>
+				<integer>461</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>461</integer>
+			</dict>
 		</dict>
 		<key>webgui/index.php</key>
 		<dict>
@@ -191,17 +219,33 @@
 			<key>firstVisibleLine</key>
 			<integer>91</integer>
 		</dict>
+		<key>webgui/providers_sip_edit.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>159</integer>
+				<key>line</key>
+				<integer>214</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>191</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>pbxdev.php</string>
-		<string>phpconf/inc/iax.inc</string>
 		<string>CHANGELOG</string>
-		<string>phpconf/rc.bootup</string>
+		<string>NOTES</string>
+		<string>webgui/guiconfig.inc</string>
+		<string>webgui/dialplan_providers.php</string>
+		<string>webgui/providers_sip_edit.php</string>
+		<string>phpconf/inc/sip.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{21, 3}, {903, 752}}</string>
+	<string>{{2, 27}, {1047, 751}}</string>
 </dict>
 </plist>

@@ -209,57 +209,5 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 	
 	return $dial;
 }
-
-function asterisk_display_audio_codecs($enabled_codecs) {
-	global $audio_codecs;
-	
-	?><tr> 
-		<td width="20%" valign="top" class="vncell">Audio Codecs<br><i>(drag-and-drop)</i></td>
-		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
-			<ul id="ace" class="ace" style="min-height:50px">
-			<? foreach ($enabled_codecs as $codec): ?>
-				<? if (array_key_exists($codec, $audio_codecs)): ?>
-				<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
-				<? endif; ?>
-			<? endforeach; ?>
-			</ul>
-		</td>
-		<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
-			<ul id="acd" class="acd" style="min-height:50px">
-			<? foreach ($audio_codecs as $codec=>$friendly): ?>
-				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
-				<? endif; ?>
-			<? endforeach; ?>
-			</ul>
-		</td>
-	</tr><?	
-}
-
-function asterisk_display_video_codecs($enabled_codecs) {
-	global $video_codecs;
-	
-	?><tr> 
-		<td width="20%" valign="top" class="vncell">Video Codecs<br><i>(drag-and-drop)</i></td>
-		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
-			<ul id="vce" class="vce" style="min-height:50px">
-				<? foreach ($enabled_codecs as $codec): ?>
-					<? if (array_key_exists($codec, $video_codecs)): ?>
-					<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
-					<? endif; ?>
-				<? endforeach; ?>
-			</ul>
-		</td>
-		<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
-			<ul id="vcd" class="vcd" style="min-height:50px">
-			<? foreach ($video_codecs as $codec=>$friendly): ?>
-				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
-				<? endif; ?>
-			<? endforeach; ?>
-			</ul>
-		</td>
-	</tr><?
-}
 	
 ?>

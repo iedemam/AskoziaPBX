@@ -56,8 +56,11 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['name'] = $a_sipproviders[$id]['name'];
 	$pconfig['username'] = $a_sipproviders[$id]['username'];
 	$pconfig['authuser'] = $a_sipproviders[$id]['authuser'];
+	$pconfig['fromuser'] = $a_sipproviders[$id]['fromuser'];
 	$pconfig['secret'] = $a_sipproviders[$id]['secret'];
 	$pconfig['host'] = $a_sipproviders[$id]['host'];
+	$pconfig['fromdomain'] = $a_sipproviders[$id]['fromdomain'];
+	$pconfig['noregister'] = $a_sipproviders[$id]['noregister'];
 	$pconfig['port'] = $a_sipproviders[$id]['port'];
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
 	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
@@ -84,6 +87,9 @@ if ($_POST) {
 	if (($_POST['username'] && !asterisk_is_valid_username($_POST['username']))) {
 		$input_errors[] = "A valid username must be specified.";
 	}
+	if (($_POST['fromuser'] && !asterisk_is_valid_username($_POST['fromuser']))) {
+		$input_errors[] = "A valid \"fromuser\" must be specified.";
+	}
 	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
@@ -104,12 +110,13 @@ if ($_POST) {
 		$sp = array();		
 		$sp['name'] = $_POST['name'];
 		$sp['username'] = $_POST['username'];
-		if (isset($_POST['authuser']))
-			$sp['authuser'] = $_POST['authuser'];
+		$sp['fromuser'] = $_POST['fromuser'];
+		$sp['authuser'] = $_POST['authuser'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['host'] = $_POST['host'];
-		if (isset($_POST['port']))
-			$sp['port'] = $_POST['port'];
+		$sp['port'] = $_POST['port'];
+		$sp['fromdomain'] = $_POST['fromdomain'];
+		$sp['noregister'] = $_POST['noregister'];
 		$sp['prefix'] = $_POST['prefix'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
@@ -158,13 +165,22 @@ if ($_POST) {
 					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
 				</td>
 			</tr>
-                <tr> 
-                  <td valign="top" class="vncell">Authuser</td>
-                  <td colspan="2" class="vtable">
+			<tr> 
+				<td valign="top" class="vncell">Authorization User</td>
+				<td colspan="2" class="vtable">
 					<input name="authuser" type="text" class="formfld" id="authuser" size="40" value="<?=htmlspecialchars($pconfig['authuser']);?>"> 
-					<br><span class="vexpl">Some providers require a seperate authorization name.</span>
+					<br><span class="vexpl">Some providers require a seperate authorization username.
+					<br>Defaults to username entered above.</span>
 				</td>
 			</tr>
+			<tr> 
+				<td valign="top" class="vncell">From User</td>
+				<td colspan="2" class="vtable">
+					<input name="fromuser" type="text" class="formfld" id="fromuser" size="40" value="<?=htmlspecialchars($pconfig['fromuser']);?>">
+					<br><span class="vexpl">Some providers require a seperate "from" user.
+					<br>Defaults to username entered above.</span>
+				</td>
+			</tr>			
 			<tr> 
 				<td valign="top" class="vncell">Secret</td>
 				<td colspan="2" class="vtable">
@@ -182,69 +198,23 @@ if ($_POST) {
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncell">DTMF Mode</td>
+				<td valign="top" class="vncell">From Domain</td>
 				<td colspan="2" class="vtable">
-					<select name="dtmfmode" class="formfld" id="dtmfmode">
-					<? foreach ($dtmfmodes as $dtmfmode) : ?>
-					<option value="<?=$dtmfmode;?>" <?
-					if ($pconfig['dtmfmode'] == $dtmfmode)
-						echo "selected"; ?>
-					><?=$dtmfmode;?></option>
-					<? endforeach; ?>
-					</select>
+					<input name="fromdomain" type="text" class="formfld" id="fromdomain" size="40" value="<?=htmlspecialchars($pconfig['fromdomain']);?>">
+					<br><span class="vexpl">Some providers require a seperate "from" domain.
+					<br>Defaults to host entered above.</span>
 				</td>
 			</tr>
+			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
+			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
+			<? display_audio_codec_selector($pconfig['codec']); ?>
+			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 
-				<td valign="top" class="vncell">Incoming Extension</td>
+				<td valign="top" class="vncell">Misc. Options</td>
 				<td colspan="2" class="vtable">
-					<select name="incomingextension" class="formfld" id="incomingextension">
-					
-						<option></option>
-						<?php $have_extension = false; ?>
-					
-						<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
-						<?php $have_extension = true; ?>
-						<option>SIP Phones</option>
-						<?php foreach ($a_sipphones as $phone): ?>
-						<option value="<?=$phone['uniqid'];?>" <?php 
-						if ($phone['uniqid'] == $pconfig['incomingextension']) 
-							echo "selected"; ?>> 
-						<? echo "&nbsp;&nbsp;{$phone['callerid']} <{$phone['extension']}>"; ?></option>
-						<?php endforeach; ?>
-						<?php endif; ?>
-						
-						<?php if (count($a_iaxphones = iax_get_phones()) > 0): ?>
-						<?php $have_extension = true; ?>
-						<option>IAX Phones</option>
-						<?php foreach ($a_iaxphones as $phone): ?>
-						<option value="<?=$phone['uniqid'];?>" <?php 
-						if ($phone['uniqid'] == $pconfig['incomingextension']) 
-							echo "selected"; ?>> 
-						<? echo "&nbsp;&nbsp;{$phone['callerid']} <{$phone['extension']}>"; ?></option>
-						<?php endforeach; ?>
-						<?php endif; ?>
-					
-						<?php if (count($a_rooms = conferencing_get_rooms()) > 0): ?>
-						<?php $have_extension = true; ?>
-						<option>Conference Rooms</option>
-						<?php foreach ($a_rooms as $room): ?>
-						<option value="<?=$room['uniqid'];?>" <?php 
-						if ($room['uniqid'] == $pconfig['incomingextension']) 
-							echo "selected"; ?>> 
-						<? echo "&nbsp;&nbsp;{$room['name']} <{$room['number']}>"; ?></option>
-						<?php endforeach; ?>
-						<?php endif; ?>
-					
-						<?php if (!$have_extension): ?>
-						<option>no incoming extensions available</option>
-						<?php endif; ?>
-
-                    </select>
-					<br><span class="vexpl">Directs incoming phone calls from this provider to the specified extension.</span>
+					<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($pconfig['noregister']) echo "checked"; ?>>Do not register with this provider.
 				</td>
 			</tr>
-			<? asterisk_display_audio_codecs($pconfig['codec']); ?>
-			<? asterisk_display_video_codecs($pconfig['codec']); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

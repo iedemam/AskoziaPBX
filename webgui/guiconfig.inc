@@ -44,10 +44,11 @@ require_once("functions.inc");
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
 $d_iaxconfdirty_path = $g['varrun_path'] . "/iaxconf.dirty";
+$d_extensionsconfdirty_path = $g['varrun_path'] . "/extensionsconf.dirty";
+$d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
-$d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {
@@ -307,6 +308,182 @@ function dynamic_tab_menu(&$tabs) {
    			}
    		}
     }	
- }
+}
 
+function print_r_html($data, $return_data=true) {
+    $data = print_r($data, true);
+    $data = str_replace( " ", "&nbsp;", $data);
+    $data = str_replace( "\r\n", "<br>\r\n", $data);
+    $data = str_replace( "\r", "<br>\r", $data);
+    $data = str_replace( "\n", "<br>\n", $data);
+
+    if (!$return_data)
+        echo $data;   
+    else
+        return $data;
+}
+
+
+function display_audio_codec_selector($enabled_codecs) {
+	global $audio_codecs;
+	
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Audio Codecs<br><i>(drag-and-drop)</i></td>
+		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
+			<ul id="ace" class="ace" style="min-height:50px">
+			<? foreach ($enabled_codecs as $codec): ?>
+				<? if (array_key_exists($codec, $audio_codecs)): ?>
+				<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
+				<? endif; ?>
+			<? endforeach; ?>
+			</ul>
+		</td>
+		<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
+			<ul id="acd" class="acd" style="min-height:50px">
+			<? foreach ($audio_codecs as $codec=>$friendly): ?>
+				<? if (!in_array($codec, $enabled_codecs)): ?>
+				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
+				<? endif; ?>
+			<? endforeach; ?>
+			</ul>
+		</td>
+	</tr><?	
+}
+
+function display_video_codec_selector($enabled_codecs) {
+	global $video_codecs;
+	
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Video Codecs<br><i>(drag-and-drop)</i></td>
+		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
+			<ul id="vce" class="vce" style="min-height:50px">
+				<? foreach ($enabled_codecs as $codec): ?>
+					<? if (array_key_exists($codec, $video_codecs)): ?>
+					<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
+					<? endif; ?>
+				<? endforeach; ?>
+			</ul>
+		</td>
+		<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
+			<ul id="vcd" class="vcd" style="min-height:50px">
+			<? foreach ($video_codecs as $codec=>$friendly): ?>
+				<? if (!in_array($codec, $enabled_codecs)): ?>
+				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
+				<? endif; ?>
+			<? endforeach; ?>
+			</ul>
+		</td>
+	</tr><?
+}
+
+function display_incoming_extension_selector($current_incoming_extension, $colspan, $prefix=false) {
+	
+	?><tr>
+		<td valign="top" class="vncell">Incoming Extension</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<? if ($prefix): ?>
+			<select name="<?=$prefix;?>" class="formfld" id="incomingextension">
+			<? else: ?>
+			<select name="incomingextension" class="formfld" id="incomingextension">
+			<? endif; ?>
+				<option>Outgoing Calls Only</option>
+				<option></option>
+				<?php $have_extension = false; ?>
+
+				<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>SIP Phones</option>
+				<?php foreach ($a_sipphones as $phone): ?>
+				<option value="<?=$phone['uniqid'];?>" <?php 
+				if ($phone['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+
+				<?php if (count($a_iaxphones = iax_get_phones()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>IAX Phones</option>
+				<?php foreach ($a_iaxphones as $phone): ?>
+				<option value="<?=$phone['uniqid'];?>" <?php 
+				if ($phone['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			
+				<?php if (count($a_rooms = conferencing_get_rooms()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>Conference Rooms</option>
+				<?php foreach ($a_rooms as $room): ?>
+				<option value="<?=$room['uniqid'];?>" <?php 
+				if ($room['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$room['name']} &lt;{$room['number']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			
+				<?php if (!$have_extension): ?>
+				<option>no incoming extensions available</option>
+				<?php endif; ?>
+
+            </select>
+			<br><span class="vexpl">Directs incoming phone calls from this provider to the specified extension.</span>
+		</td>
+	</tr><?
+}
+
+function display_dtmfmode_selector($current_dtmfmode, $colspan) {
+	global $dtmfmodes;
+	
+	?><tr> 
+		<td valign="top" class="vncell">DTMF Mode</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<select name="dtmfmode" class="formfld" id="dtmfmode">
+			<? foreach ($dtmfmodes as $dtmfmode) : ?>
+			<option value="<?=$dtmfmode;?>" <?
+			if ($dtmfmode == $current_dtmfmode)
+				echo "selected"; ?>
+			><?=$dtmfmode;?></option>
+			<? endforeach; ?>
+			</select>
+		</td>
+	</tr><?
+}
+
+function display_provider_access_selector($current_providers, $colspan) {
+	
+	$a_providers = asterisk_get_providers();
+
+	?><tr> 
+		<td valign="top" class="vncell">Providers</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+		<? foreach ($a_providers as $provider): ?>
+			<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? if (in_array($provider['uniqid'], $current_providers)) echo "checked"; ?>><?=$provider['name']?><br>
+		<? endforeach; ?>
+		&nbsp;
+		</td>
+	</tr><?
+}
+
+function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false) {
+	
+	$a_phones = asterisk_get_phones();
+
+	?><tr> 
+		<td valign="top" class="vncell">Phones</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+		<? foreach ($a_phones as $phone): ?>
+			<? if($prefix): ?>
+			<input name="<?=$prefix.":".$phone['uniqid'];?>" id="<?=$prefix.":".$phone['uniqid'];?>" type="checkbox" value="<?=$prefix;?>"
+			<? else: ?>
+			<input name="<?=$phone['uniqid'];?>" id="<?=$phone['uniqid'];?>" type="checkbox" value="yes"
+			<? endif; ?>
+			<? if (in_array($provider_uniqid, $phone['provider'])) echo "checked"; ?>>
+			<?=$phone['callerid'];?> &lt;<?=$phone['extension'];?>&gt;<br>
+		<? endforeach; ?>
+		&nbsp;
+		</td>
+	</tr><?
+}
 ?>

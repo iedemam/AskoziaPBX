@@ -156,6 +156,7 @@ if (!$noparseconfig) {
 		
 		/* read cache */
 		$config = unserialize(file_get_contents("{$g['tmp_path']}/config.cache"));
+		$uniqid_map = unserialize(file_get_contents("{$g['tmp_path']}/uniqid_map.cache"));
 	} else {
 	
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
@@ -200,6 +201,14 @@ EOD;
 		$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
 		if ($fd) {
 			fwrite($fd, serialize($config));
+			fclose($fd);
+		}
+		
+		/* write uniqid_map cache */
+		$uniqid_map = config_build_uniqid_map($config);
+		$fd = @fopen("{$g['tmp_path']}/uniqid_map.cache", "wb");
+		if ($fd) {
+			fwrite($fd, serialize($uniqid_map));
 			fclose($fd);
 		}
 	}
@@ -272,6 +281,9 @@ function write_config() {
 	
 	/* re-read configuration */
 	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
+	/* build uniqid_map */
+	$uniqid_map = config_build_uniqid_map($config);
+	
 	
 	/* write config cache */
 	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
@@ -280,7 +292,46 @@ function write_config() {
 		fclose($fd);
 	}
 	
+	/* write uniqid_map cache */
+	$fd = @fopen("{$g['tmp_path']}/uniqid_map.cache", "wb");
+	if ($fd) {
+		fwrite($fd, serialize($uniqid_map));
+		fclose($fd);
+	}
+	
+	
 	config_unlock();
+}
+
+function config_build_uniqid_map($config) {
+
+	// sip
+	$n = count($config['sip']['provider']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['sip']['provider'][$i]['uniqid']] = $i;
+	}
+	$n = count($config['sip']['phone']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['sip']['phone'][$i]['uniqid']] = $i;
+	}
+
+	// iax
+	$n = count($config['iax']['provider']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['iax']['provider'][$i]['uniqid']] = $i;
+	}
+	$n = count($config['iax']['phone']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['iax']['phone'][$i]['uniqid']] = $i;
+	}
+
+	// conferencing
+	$n = count($config['conferencing']['room']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['conferencing']['room'][$i]['uniqid']] = $i;
+	}
+	
+	return $uniqid_map;
 }
 
 function reset_factory_defaults() {

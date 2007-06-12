@@ -16,7 +16,7 @@
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
 	
-	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
 	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
@@ -133,6 +133,9 @@ EOD;
 
 	// provider registrations
 	foreach($sipproviders as $p) {
+		if ($p['noregister'])
+			continue;
+
 		$conf .= "register => {$p['username']}";
 		if($p['secret']) {
 			$conf .= ":{$p['secret']}";
@@ -154,11 +157,20 @@ EOD;
 		$conf .= "type=friend\n";
 		$conf .= "username={$p['username']}\n";
 		$conf .= "secret={$p['secret']}\n";
-		$conf .= "fromuser={$p['username']}\n";
+		if($p['fromuser']) {
+			$conf .= "fromuser={$p['fromuser']}\n";
+		} else {
+			$conf .= "fromuser={$p['username']}\n";
+		}
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "host={$p['host']}\n";
 		if ($p['port'])
-			$conf .= "port={$p['port']}";
+			$conf .= "port={$p['port']}\n";
+		if($p['fromdomain']) {
+			$conf .= "fromdomain={$p['fromdomain']}\n";
+		} else {
+			$conf .= "fromdomain={$p['host']}\n";
+		}
 		$conf .= "nat=no\n";
 		$conf .= "qualify=15000\n";
 		$conf .= "canreinvite=no\n";

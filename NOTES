@@ -1,16 +1,29 @@
-pb2
- - add some more sip.conf options for providers (from user)
- - iax2 needs more auth options
- - update all (C) tags
+pb4
+ - dialplan (still needs (de)select all)
+ - check all (C) tags
+ - incomingextension selector needs to be verified
 
-Priorities:
- - fix dialplan for users without voicemail accounts
- - remove junk from manager output and add return values to asterisk_exec()
- - get indications.conf working
- - figure out config xml single var irregularities (empty defines showing up)
- - better field checks!
- - url given in console menu should match port given in gui (m0n0wall bug)
- - cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
+pb5
+ - provider pattern matching
+ - add iax2 auth options
+   - pubkey import
+   - md5
+ - sshd + goodies dev image
+
+pb6
+ - 400p card working, generic or not
+
+pb7
+ - followme
+ - call groups
+
+pb8
+ - privacy with voicemail forward
+
+pb9
+ - storage interface (add storage partition for extended capabilities)
+ - extended capabilities hooks into the gui
+ - new option to log to storage partition
 
 
 Docs:
@@ -27,6 +40,15 @@ Docs:
  - dialplan is a movable grid
 - get call parking working
 - testing / performance mode
+- fix dialplan for users without voicemail accounts
+- remove junk from manager output and add return values to asterisk_exec()
+- get indications.conf working
+- figure out config xml single var irregularities (empty defines showing up)
+- better field checks!
+- url given in console menu should match port given in gui (m0n0wall bug)
+- cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
+
+? ajax asteierk console
 
 -----------------------------------------------------------------------
 

@@ -115,6 +115,9 @@ $menu['Providers']['IAX'] 				= array('providers_iax.php');
 /* Phones */
 $menu['Phones']['SIP'] 					= array('phones_sip.php');
 $menu['Phones']['IAX'] 					= array('phones_iax.php');
+
+/* Dialplan */
+$menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 											
 /* Services */
 $menu['Services']['Conferencing'] 		= array('services_conferencing.php');
@@ -235,6 +238,7 @@ if (array_intersect($if_menu,$allowed)) {
 
 dynamic_menu($menu['Providers'], 'Providers');
 dynamic_menu($menu['Phones'], 'Phones');
+dynamic_menu($menu['Dialplan'], 'Dialplan');
 dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');
 dynamic_menu($menu['Advanced'], 'Advanced');

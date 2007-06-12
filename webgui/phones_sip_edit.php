@@ -40,10 +40,8 @@ require("guiconfig.inc");
 if (!is_array($config['sip']['phone']))
 	$config['sip']['phone'] = array();
 
-
 sip_sort_phones();
 $a_sipphones = &$config['sip']['phone'];
-$a_providers = asterisk_get_providers();
 
 $pconfig['codec'] = array("ulaw");
 
@@ -97,8 +95,6 @@ if ($_POST) {
 	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
-	
-	//TODO: check if voicemailbox is valid)
 
 
 	if (!$input_errors) {
@@ -110,6 +106,7 @@ if ($_POST) {
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['descr'] = $_POST['descr'];
 
+		$a_providers = asterisk_get_providers();
 		$sp['provider'] = array();
 		foreach ($a_providers as $provider)
 			if($_POST[$provider['uniqid']] == true)
@@ -167,30 +164,10 @@ if ($_POST) {
 					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncell">DTMF Mode</td>
-				<td colspan="2" class="vtable">
-					<select name="dtmfmode" class="formfld" id="dtmfmode">
-					<? foreach ($dtmfmodes as $dtmfmode) : ?>
-					<option value="<?=$dtmfmode;?>" <?
-					if ($pconfig['dtmfmode'] == $dtmfmode)
-						echo "selected"; ?>
-					><?=$dtmfmode;?></option>
-					<? endforeach; ?>
-					</select>
-				</td>
-			</tr>			
-			<tr> 
-				<td valign="top" class="vncell">Providers</td>
-				<td colspan="2" class="vtable">
-				<? foreach ($a_providers as $provider): ?>
-					<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <?php if (in_array($provider['uniqid'], $pconfig['provider'])) echo "checked"; ?>><?=$provider['name']?><br>
-				<? endforeach; ?>
-				&nbsp;
-				</td>
-			</tr>
-			<? asterisk_display_audio_codecs($pconfig['codec']); ?>
-			<? asterisk_display_video_codecs($pconfig['codec']); ?>
+			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
+			<? display_provider_access_selector($pconfig['provider'], 2); ?>
+			<? display_audio_codec_selector($pconfig['codec']); ?>
+			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 
 				<td valign="top" class="vncell">Description</td>
 				<td colspan="2" class="vtable">

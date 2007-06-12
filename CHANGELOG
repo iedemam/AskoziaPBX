@@ -1,7 +1,17 @@
+2007.06.xx - pb4
+ - added "Dialplan -> Providers" page which lets one quickly map incoming extensions and phone permissions to providers
+ - added "fromuser" and "fromdomain" fields to sip providers
+ - added "top" links to status.php sections
+ - registrations to sip providers can now be disabled
+ - several operations have been greatly sped up with some additional configuration caching features
+ - refactored common display elements into functions
+ - bug: added a newline in sip.conf generator after port definition
+
 2007.06.08 - pb3
  - added some notes about codec selection
  - added some more start-up messages
  - bug: starting asterisk with extra verbosity hangs, this is now done in two steps
+
 2007.06.07 - pb2
  - added iax provider and phone support
  - added "dtmfmode" option to sip providers and phones

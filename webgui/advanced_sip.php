@@ -73,13 +73,6 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
-<!--
-function typesel_change() {
-
-}
-//-->
-</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="advanced_sip.php" method="post" name="iform" id="iform">
@@ -98,9 +91,4 @@ function typesel_change() {
 		</tr>
 	</table>
 </form>
-<script language="JavaScript">
-<!--
-typesel_change();
-//-->
-</script>
 <?php include("fend.inc"); ?>

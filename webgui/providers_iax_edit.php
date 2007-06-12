@@ -169,58 +169,9 @@ if ($_POST) {
 					<br><span class="vexpl">IAX proxy host URL or IP address and optional port.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Incoming Extension</td>
-				<td colspan="2" class="vtable">
-					<select name="incomingextension" class="formfld" id="incomingextension">
-					
-						<option></option>
-						<?php $have_extension = false; ?>
-
-						<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
-						<?php $have_extension = true; ?>
-						<option>SIP Phones</option>
-						<?php foreach ($a_sipphones as $phone): ?>
-						<option value="<?=$phone['uniqid'];?>" <?php 
-						if ($phone['uniqid'] == $pconfig['incomingextension']) 
-							echo "selected"; ?>> 
-						<? echo "&nbsp;&nbsp;{$phone['callerid']} <{$phone['extension']}>"; ?></option>
-						<?php endforeach; ?>
-						<?php endif; ?>
-
-					
-						<?php if (count($a_iaxphones = iax_get_phones()) > 0): ?>
-						<?php $have_extension = true; ?>
-						<option>IAX Phones</option>
-						<?php foreach ($a_iaxphones as $phone): ?>
-						<option value="<?=$phone['uniqid'];?>" <?php 
-						if ($phone['uniqid'] == $pconfig['incomingextension']) 
-							echo "selected"; ?>> 
-						<? echo "&nbsp;&nbsp;{$phone['callerid']} <{$phone['extension']}>"; ?></option>
-						<?php endforeach; ?>
-						<?php endif; ?>
-					
-						<?php if (count($a_rooms = conferencing_get_rooms()) > 0): ?>
-						<?php $have_extension = true; ?>
-						<option>Conference Rooms</option>
-						<?php foreach ($a_rooms as $room): ?>
-						<option value="<?=$room['uniqid'];?>" <?php 
-						if ($room['uniqid'] == $pconfig['incomingextension']) 
-							echo "selected"; ?>> 
-						<? echo "&nbsp;&nbsp;{$room['name']} <{$room['number']}>"; ?></option>
-						<?php endforeach; ?>
-						<?php endif; ?>
-					
-						<?php if (!$have_extension): ?>
-						<option>no incoming extensions available</option>
-						<?php endif; ?>
-
-                    </select>
-					<br><span class="vexpl">Directs incoming phone calls from this provider to the specified extension.</span>
-				</td>
-			</tr>
-			<? asterisk_display_audio_codecs($pconfig['codec']); ?>
-			<? asterisk_display_video_codecs($pconfig['codec']); ?>
+			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
+			<? display_audio_codec_selector($pconfig['codec']); ?>
+			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

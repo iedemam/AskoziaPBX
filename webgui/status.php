@@ -39,7 +39,7 @@ function doCmdT($title, $command, $isstr) {
     echo "<p>\n";
     echo "<a name=\"" . $title . "\">\n";
     echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
-    echo "<tr><td class=\"listtopic\">" . $title . "</td></tr>\n";
+    echo "<tr><td class=\"listtopic\">" . $title . " (<a class=\"tblnk\" href=\"#top\">top</a>)</td></tr>\n";
     echo "<tr><td class=\"listlr\"><pre>";		/* no newline after pre */
 	
 	if ($isstr) {
@@ -178,6 +178,7 @@ pre {
 (passwords, maybe also IP addresses) before posting 
 information from this page in public places (like mailing lists)!</strong></span><br>
 Passwords in config.xml have been automatically removed.
+<a name="top">
 
 <?php listCmds(); ?>
 
