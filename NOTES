@@ -1,16 +1,16 @@
 pb4
- - dialplan (still needs (de)select all)
- - check all (C) tags
  - incomingextension selector needs to be verified
 
 pb5
  - provider pattern matching
+ - sshd + goodies dev image
+ - dialplan (still needs (de)select all)
+ - improved cdr's
+
+pb6
  - add iax2 auth options
    - pubkey import
    - md5
- - sshd + goodies dev image
-
-pb6
  - 400p card working, generic or not
 
 pb7

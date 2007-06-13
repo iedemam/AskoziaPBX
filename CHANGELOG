@@ -6,6 +6,10 @@
  - several operations have been greatly sped up with some additional configuration caching features
  - refactored common display elements into functions
  - better checks and explanations for the network topology settings
+ - images now have a prefix of "pbx-" to avoid confusion with m0n0wall images
+ - added zaptel device modules and utilities to root file system
+   - this is only for basic compatibility testing
+   - using these devices in AskoziaPBX is still completely unsupported
  - bug: added a newline in sip.conf generator after port definition
  - bug: stray asterisk bootup messages have been removed from "Interfaces -> Network" page
 

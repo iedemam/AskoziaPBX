@@ -455,8 +455,12 @@ function populate_asterisk($image_name) {
 
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
-	
-	_log("zaptel population placeholder...");
+
+	// hack!
+	_exec("mv $image_name/rootfs/etc/zaptel.conf $image_name/rootfs/usr/local/etc/");
+	_exec("cd {$dirs['packages']}/$zaptel_version/STAGE; ".
+		"install -s bin/* $image_name/rootfs/sbin; ".
+		"cp lib/* $image_name/rootfs/lib");
 }
 
 function populate_tools($image_name) {
@@ -542,8 +546,22 @@ function package($platform, $image_name) {
 	}
 	
 	// ...zaptel modules
-	_exec("cp {$dirs['packages']}/$zaptel_version/zaptel/zaptel.ko tmp/stage/boot/kernel/");
-	_exec("cp {$dirs['packages']}/$zaptel_version/ztdummy/ztdummy.ko tmp/stage/boot/kernel/");
+	$zaptel_modules = array(
+		"zaptel/zaptel.ko",
+		"ztdummy/ztdummy.ko",
+		
+		"qozap/qozap.ko",
+		"tau32pci/tau32pci.ko",
+		"wcfxo/wcfxo.ko",
+		"wcfxs/wcfxs.ko",
+		"wct1xxp/wct1xxp.ko",
+		"wct4xxp/wct4xxp.ko",
+		"wcte11xp/wcte11xp.ko",
+		"zaphfc/zaphfc.ko"
+	);
+	foreach ($zaptel_modules as $zaptel_module) {
+		_exec("cp {$dirs['packages']}/$zaptel_version/$zaptel_module tmp/stage/boot/kernel/");
+	}
 	
 	// ...stamps
 	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
@@ -634,7 +652,7 @@ function package($platform, $image_name) {
 		// cleanup
 		_exec("mdconfig -d -u 0");
 		_exec("gzip -9 tmp/image.bin");
-		_exec("mv tmp/image.bin.gz {$dirs['images']}/$platform-". basename($image_name) .".img");
+		_exec("mv tmp/image.bin.gz {$dirs['images']}/pbx-$platform-". basename($image_name) .".img");
 		
 	// .iso
 	} else if($platform == "generic-pc-cdrom") {
@@ -663,13 +681,17 @@ function package($platform, $image_name) {
 function release($name) {
 	global $platforms, $dirs;
 	
+	// tar
 	_exec("cd {$dirs['images']}; tar -cf rootfs-".basename($name).".tar ".basename($name));
+	// zip
 	_exec("cd {$dirs['images']}; gzip -9 rootfs-".basename($name).".tar");
-	_exec("mv {$dirs['images']}/rootfs-".basename($name).".tar.gz {$dirs['images']}/rootfs-".basename($name).".tgz");
+	// rename
+	_exec("mv {$dirs['images']}/rootfs-".basename($name).".tar.gz {$dirs['images']}/pbx-rootfs-".basename($name).".tgz");
 	
+	// signing & html generator
 	$html = "\n";
 	foreach($platforms as $platform) {
-		$filename = $platform . "-" . basename($name) . ".img";
+		$filename = "pbx-" . $platform . "-" . basename($name) . ".img";
 		_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
 		
 		$html .= "<tr>\n";
@@ -679,7 +701,7 @@ function release($name) {
 		$html .= "</tr>\n";
 	}
 	
-	$filename = "rootfs-".basename($name).".tgz";
+	$filename = "pbx-rootfs-".basename($name).".tgz";
 	
 	$html .= "<tr>\n";
 	$html .= "\t<td><a href=\"/downloads/$filename\">$filename</a></td>\n";

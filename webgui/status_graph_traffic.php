@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "Traffic Graph");
+$pgtitle = array("Live", "Network Traffic");
 require("guiconfig.inc");
 
 $curif = "lan";

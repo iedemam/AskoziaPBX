@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "CPU Load");
+$pgtitle = array("Live", "CPU Load");
 require("guiconfig.inc");
 ?>
 <?php include("fbegin.inc"); ?>

@@ -118,26 +118,37 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 	<form action="dialplan_providers.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 
-			<? $a_sipproviders = sip_get_providers(); ?>
-			<? foreach($a_sipproviders as $provider): ?>
-			<tr> 
+		$provider_count = 0;
+
+		// sip
+		$a_sipproviders = sip_get_providers();
+		$provider_count = $n = count($a_sipproviders);
+
+		for($i = 0; $i < $n; $i++) {
+			$provider = $a_sipproviders[$i];
+			?><tr> 
 				<td colspan="2" valign="top" class="listtopic">
 					<?=$provider['name']?>
-					(SIP:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
+					(SIP:&nbsp;<?=$a_sipproviders['username']?>@<?=$provider['host']?>)
 				</td>
 			</tr>
 			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
 			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 			<tr> 
 				<td colspan="2" class="list" height="12">&nbsp;</td>
-			</tr>
-			<? endforeach; ?>
+			</tr><?
+		}
 
-			<? $a_iaxproviders = iax_get_providers(); ?>
-			<? foreach($a_iaxproviders as $provider): ?>
-			<tr> 
+		// iax
+		$a_iaxproviders = iax_get_providers();
+		$n = count($a_iaxproviders);
+		$provider_count += $n;
+		
+		for($i = 0; $i < $n; $i++) {
+			$provider = $a_iaxproviders[$i];
+			?><tr> 
 				<td colspan="2" valign="top" class="listtopic">
 					<?=$provider['name']?>
 					(IAX:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
@@ -147,16 +158,23 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 			<tr> 
 				<td colspan="2" class="list" height="12">&nbsp;</td>
-			</tr>
-			<? endforeach; ?>
-
-
-			<tr> 
+			</tr><?
+		}
+			
+		if ($provider_count == 0) {
+			?><tr> 
+				<td><i>There are currently no providers defined.</i></td>
+			</tr><?
+			
+		} else {
+			?><tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
 					<input name="Submit" type="submit" class="formbtn" value="Save">
 				</td>
-			</tr>
-		</table>
+			</tr><?
+		}
+		
+		?></table>
 	</form>
 <?php include("fend.inc"); ?>

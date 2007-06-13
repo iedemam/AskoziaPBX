@@ -458,11 +458,23 @@ function display_provider_access_selector($current_providers, $colspan) {
 
 	?><tr> 
 		<td valign="top" class="vncell">Providers</td>
-		<td colspan="<?=$colspan?>" class="vtable">
-		<? foreach ($a_providers as $provider): ?>
-			<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? if (in_array($provider['uniqid'], $current_providers)) echo "checked"; ?>><?=$provider['name']?><br>
-		<? endforeach; ?>
-		<br>
+		<td colspan="<?=$colspan?>" class="vtable"><?
+		
+		$n = count($a_providers);
+		if ($n == 0) {
+			?><span class="vexpl"><i>There are currently no providers defined.</i></span><br><?
+
+		} else {
+			for($i = 0; $i < $n; $i++) {
+				$provider = $a_providers[$i];
+			
+				?><input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? 
+				if (in_array($provider['uniqid'], $current_providers)) echo "checked"; 
+				?>><?=$provider['name']?><br><?
+			}
+		}
+		
+		?><br>
 		<span class="vexpl">Checked providers will be accessible from this phone.</span>
 		</td>
 	</tr><?
@@ -474,17 +486,31 @@ function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false
 
 	?><tr> 
 		<td valign="top" class="vncell">Phones</td>
-		<td colspan="<?=$colspan?>" class="vtable">
-		<? foreach ($a_phones as $phone): ?>
-			<? if($prefix): ?>
-			<input name="<?=$prefix.":".$phone['uniqid'];?>" id="<?=$prefix.":".$phone['uniqid'];?>" type="checkbox" value="<?=$prefix;?>"
-			<? else: ?>
-			<input name="<?=$phone['uniqid'];?>" id="<?=$phone['uniqid'];?>" type="checkbox" value="yes"
-			<? endif; ?>
-			<? if (in_array($provider_uniqid, $phone['provider'])) echo "checked"; ?>>
-			<?=$phone['callerid'];?> &lt;<?=$phone['extension'];?>&gt;<br>
-		<? endforeach; ?>
-		<br>
+		<td colspan="<?=$colspan?>" class="vtable"><?
+		
+		$n = count($a_phones);
+		if ($n == 0) {
+			?><span class="vexpl"><i>There are currently no phones defined.</i></span><br><?
+
+		} else {
+			for($i = 0; $i < $n; $i++) {
+				$phone = $a_phones[$i];
+				
+				if($prefix) {
+					?><input name="<?=$prefix.":".$phone['uniqid'];?>" id="<?=$prefix.":".$phone['uniqid'];?>" type="checkbox" value="<?=$prefix;?>"<?
+				
+				} else {
+					?><input name="<?=$phone['uniqid'];?>" id="<?=$phone['uniqid'];?>" type="checkbox" value="yes"<?
+				}
+				
+				if (in_array($provider_uniqid, $phone['provider']))
+					echo "checked"; 
+
+				?>><?=$phone['callerid'];?> &lt;<?=$phone['extension'];?>&gt;<br><?
+			}
+		}
+		
+		?><br>
 		<span class="vexpl">Checked phones will have access to this provider.</span>
 		</td>
 	</tr><?

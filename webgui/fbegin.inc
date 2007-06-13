@@ -122,18 +122,18 @@ $menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 /* Services */
 $menu['Services']['Conferencing'] 		= array('services_conferencing.php');
 $menu['Services']['Voicemail'] 			= array('services_voicemail.php');
-//$menu['Services']['Dialplan'] 			= array('services_dialplan.php');
-
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
-$menu['Status']['Traffic Graph']		= array('status_graph_traffic.php');
-$menu['Status']['CPU Usage']			= array('status_graph_cpu.php');
 $menu['Status']['Interfaces']			= array('status_interfaces.php');
 //$menu['Status']['Providers']				= array('status_providers.php');
 //$menu['Status']['Phones']					= array('status_phones.php');
-//$menu['Status']['Channels']				= array('status_channels.php');
+//$menu['Status']['Conferencing']				= array('status_conferencing.php');
 //$menu['Status']['Voicemail']				= array('status_voicemail.php');
+
+/* Live Stats */
+$menu['Live Stats']['Network Traffic']	= array('status_graph_traffic.php');
+$menu['Live Stats']['CPU Load']			= array('status_graph_cpu.php');
 
 /* Advanced */
 $menu['Advanced']['SIP'] 				= array('advanced_sip.php');
@@ -241,6 +241,7 @@ dynamic_menu($menu['Phones'], 'Phones');
 dynamic_menu($menu['Dialplan'], 'Dialplan');
 dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');
+dynamic_menu($menu['Live Stats'], 'Live Stats');
 dynamic_menu($menu['Advanced'], 'Advanced');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 
