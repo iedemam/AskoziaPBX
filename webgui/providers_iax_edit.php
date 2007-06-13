@@ -104,8 +104,7 @@ if ($_POST) {
 		$sp['username'] = $_POST['username'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['host'] = $_POST['host'];
-		if (isset($_POST['port']))
-			$sp['port'] = $_POST['port'];
+		$sp['port'] = $_POST['port'];
 		$sp['prefix'] = $_POST['prefix'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		

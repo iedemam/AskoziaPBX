@@ -5,7 +5,9 @@
  - registrations to sip providers can now be disabled
  - several operations have been greatly sped up with some additional configuration caching features
  - refactored common display elements into functions
+ - better checks and explanations for the network topology settings
  - bug: added a newline in sip.conf generator after port definition
+ - bug: stray asterisk bootup messages have been removed from "Interfaces -> Network" page
 
 2007.06.08 - pb3
  - added some notes about codec selection

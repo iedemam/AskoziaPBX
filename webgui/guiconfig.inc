@@ -328,8 +328,8 @@ function display_audio_codec_selector($enabled_codecs) {
 	global $audio_codecs;
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Audio Codecs<br><i>(drag-and-drop)</i></td>
-		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
+		<td width="20%" valign="top" class="vncell">Audio Codecs</td>
+		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>&nbsp;<i>(drag-and-drop)</i>
 			<ul id="ace" class="ace" style="min-height:50px">
 			<? foreach ($enabled_codecs as $codec): ?>
 				<? if (array_key_exists($codec, $audio_codecs)): ?>
@@ -354,8 +354,8 @@ function display_video_codec_selector($enabled_codecs) {
 	global $video_codecs;
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Video Codecs<br><i>(drag-and-drop)</i></td>
-		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>
+		<td width="20%" valign="top" class="vncell">Video Codecs</td>
+		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>&nbsp;<i>(drag-and-drop)</i>
 			<ul id="vce" class="vce" style="min-height:50px">
 				<? foreach ($enabled_codecs as $codec): ?>
 					<? if (array_key_exists($codec, $video_codecs)): ?>
@@ -428,7 +428,8 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				<?php endif; ?>
 
             </select>
-			<br><span class="vexpl">Directs incoming phone calls from this provider to the specified extension.</span>
+			<br><span class="vexpl">Directs incoming phone calls from this provider to the selected extension.
+			<br><strong><span class="red">Note:</span></strong>&nbsp;Permission must still be given to this phone for it to place outgoing calls.</span>
 		</td>
 	</tr><?
 }
@@ -461,7 +462,8 @@ function display_provider_access_selector($current_providers, $colspan) {
 		<? foreach ($a_providers as $provider): ?>
 			<input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? if (in_array($provider['uniqid'], $current_providers)) echo "checked"; ?>><?=$provider['name']?><br>
 		<? endforeach; ?>
-		&nbsp;
+		<br>
+		<span class="vexpl">Checked providers will be accessible from this phone.</span>
 		</td>
 	</tr><?
 }
@@ -482,7 +484,8 @@ function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false
 			<? if (in_array($provider_uniqid, $phone['provider'])) echo "checked"; ?>>
 			<?=$phone['callerid'];?> &lt;<?=$phone['extension'];?>&gt;<br>
 		<? endforeach; ?>
-		&nbsp;
+		<br>
+		<span class="vexpl">Checked phones will have access to this provider.</span>
 		</td>
 	</tr><?
 }

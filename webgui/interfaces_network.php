@@ -65,10 +65,24 @@ if ($_POST) {
 	}
 	if (($_POST['dns1'] && !is_ipaddr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipaddr($_POST['dns2'])) || ($_POST['dns3'] && !is_ipaddr($_POST['dns3']))) {
 		$input_errors[] = "A valid IP address must be specified for the primary/secondary/tertiary DNS server.";
-	}	
-	if (($_POST['extipaddr'] && !is_ipaddr($_POST['extipaddr']))) {
-		$input_errors[] = "A valid external IP address must be specified.";
 	}
+	
+	if ($_POST['topology'] == "natstatic") {
+		if (!$_POST['extipaddr']) {
+			$input_errors[] = "A public IP address must be entered for this topology.";
+		} else if (!is_ipaddr($_POST['extipaddr'])) {
+			$input_errors[] = "A valid public IP address must be entered for this topology.";
+		}
+	}
+	
+	if ($_POST['topology'] == "natdynamichost") {
+		if (!$_POST['exthostname']) {
+			$input_errors[] = "A public hostname must be entered for this topology.";
+		} else if (!is_domain($_POST['exthostname'])) {
+			$input_errors[] = "A valid public hostname must be entered for this topology.";
+		}
+	}
+	
 	
 	if (!$input_errors) {
 	
@@ -92,12 +106,10 @@ if ($_POST) {
 		$lancfg['topology'] = $_POST['topology'];
 
 		unset($lancfg['extipaddr']);
-		if ($_POST['extipaddr'])
-			$lancfg['extipaddr'] = $_POST['extipaddr'];
+		$lancfg['extipaddr'] = $_POST['extipaddr'];
 			
 		unset($lancfg['exthostname']);
-		if ($_POST['exthostname'])
-			$lancfg['exthostname'] = $_POST['exthostname'];
+		$lancfg['exthostname'] = $_POST['exthostname'];
 		
 		write_config();
 		
@@ -182,6 +194,14 @@ function type_change() {
 				<option value="<?=$topo;?>" <?php if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
 				<?php endforeach; ?>
 			</select>
+			<br>
+			<span class="vexpl">
+				<ul>
+					<li>Public IP Address: this pbx has a routable IP address</li>
+					<li>NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below.</li>
+					<li>NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below.</li>
+				</ul>
+			</span>
 		</td>
 	</tr>	
 	<tr> 

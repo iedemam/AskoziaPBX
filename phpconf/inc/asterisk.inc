@@ -46,34 +46,34 @@ function asterisk_configure() {
 
 	
 	$res = 0;
-	echo " - generating sip configuration...";
+	if ($g['booting']) echo " - generating sip configuration...";
 	$res |= sip_conf_generate();
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 	
-	echo " - generating iax configuration...";
+	if ($g['booting']) echo " - generating iax configuration...";
 	$res |= iax_conf_generate();
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 	
-	echo " - generating conferencing configuration...";
+	if ($g['booting']) echo " - generating conferencing configuration...";
 	$res |= conferencing_conf_generate();
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 	
-	echo " - generating dialplan...";
+	if ($g['booting']) echo " - generating dialplan...";
 	$res |= extensions_conf_generate();
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 	
-	echo " - generating voicemail configuration...";
+	if ($g['booting']) echo " - generating voicemail configuration...";
 	$res |= voicemail_conf_generate();
 	$res |= msmtp_conf_generate();
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 	
-	echo " - executing Asterisk...";
+	if ($g['booting']) echo " - executing Asterisk...";
 	$res |= mwexec("/usr/local/sbin/asterisk");
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 	sleep(5);
-	echo " - increasing verbosity...";
+	if ($g['booting']) echo " - increasing verbosity...";
 	$res |= mwexec("/usr/local/sbin/asterisk -rx \"core set verbose 3\"");
-	echo "done\n";
+	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) {
 		if ($res == 0)
