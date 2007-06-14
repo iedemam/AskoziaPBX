@@ -1,4 +1,4 @@
-2007.06.xx - pb4
+2007.06.14 - pb4
  - added "Dialplan -> Providers" page which lets one quickly map incoming extensions and phone permissions to providers
  - added "fromuser" and "fromdomain" fields to sip providers
  - added "top" links to status.php sections
@@ -6,12 +6,13 @@
  - several operations have been greatly sped up with some additional configuration caching features
  - refactored common display elements into functions
  - better checks and explanations for the network topology settings
- - images now have a prefix of "pbx-" to avoid confusion with m0n0wall images
+ - disk images now have a prefix of "pbx-" to avoid confusion with m0n0wall images
  - added zaptel device modules and utilities to root file system
    - this is only for basic compatibility testing
    - using these devices in AskoziaPBX is still completely unsupported
  - bug: added a newline in sip.conf generator after port definition
  - bug: stray asterisk bootup messages have been removed from "Interfaces -> Network" page
+ - bug: fixed some display issues when either no phones or no providers are present
 
 2007.06.08 - pb3
  - added some notes about codec selection
