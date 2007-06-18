@@ -35,10 +35,17 @@
 
 $php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.4";
+$asterisk_version	= "asterisk-1.4.5";
 $zaptel_version		= "zaptel";
 $msmtp_version		= "msmtp-1.4.11";
 
+// --[ sounds ]----------------------------------------------------------------
+
+$core_sounds_version= "1.4.7";
+$sound_formats		= explode(" ", "ulaw gsm");
+$sound_languages	= explode(" ", "en");
+$sounds				= explode(" ", "auth-thankyou beep conf-* vm-intro vm-theperson vm-is vm-goodbye");
+$musiconhold		= explode(" ", "fpm-calm-river");
 
 // --[ image padding ]---------------------------------------------------------
 
@@ -80,6 +87,7 @@ if (!file_exists("work")) {
 // ...and subdirectories
 $dirs['packages']	= $dirs['pwd'] . "/work/packages";
 $dirs['images']		= $dirs['pwd'] . "/work/images";
+$dirs['sounds']		= $dirs['pwd'] . "/work/sounds";
 $dirs['mfsroots']	= $dirs['pwd'] . "/work/mfsroots";
 
 foreach($dirs as $dir) {
@@ -205,7 +213,7 @@ function build_asterisk() {
 	if (!_is_patched($asterisk_version)) {
 		_exec("cd {$dirs['packages']}/$asterisk_version; ".
 			"patch < {$dirs['patches']}/packages/asterisk_makefile.patch");
-		_exec("cd {$dirs['packages']}; ".
+		_exec("cd {$dirs['packages']}/$asterisk_version; ".
 			"patch < {$dirs['patches']}/packages/asterisk_cdr_to_syslog.patch");				
 		_stamp_package_as_patched($asterisk_version);
 	}
@@ -331,9 +339,6 @@ function create($image_name) {
 	
 	_exec("mkdir $image_name/asterisk");
 	_exec("mkdir $image_name/asterisk/moh");
-	_exec("mkdir $image_name/asterisk/sounds");
-	_exec("mkdir $image_name/asterisk/sounds/silence");
-	_exec("mkdir $image_name/asterisk/sounds/digits");
 	_exec("mkdir $image_name/asterisk/modules");
 }
 
@@ -421,25 +426,9 @@ function populate_asterisk($image_name) {
 	_exec("cd {$dirs['packages']}/$asterisk_version/; ".
 		"gmake install DESTDIR=$rootfs");
 	
-	// filter and link sounds
-	$sounds = explode(" ", "conf-* vm-intro.* vm-theperson.* vm-is*.* beep.* auth-thankyou.* ".
-		"vm-goodbye.*");
-	foreach ($sounds as $sound) {
-		_exec("cp $rootfs/usr/local/share/asterisk/sounds/$sound ".
-			"$image_name/asterisk/sounds");
-	}
-	_exec("cp $rootfs/usr/local/share/asterisk/sounds/silence/* ".
-		"$image_name/asterisk/sounds/silence");
-	_exec("cp $rootfs/usr/local/share/asterisk/sounds/digits/* ".
-		"$image_name/asterisk/sounds/digits");
+	// link sounds and moh
 	_exec("rm -rf $rootfs/usr/local/share/asterisk/sounds");
 	_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/sounds sounds");
-	
-	// filter music on hold
-	$musiconhold = explode(" ", "fpm-calm-river.gsm fpm-calm-river.ulaw");
-	foreach ($musiconhold as $moh) {
-		_exec("cp $rootfs/usr/local/share/asterisk/moh/$moh $image_name/asterisk/moh");
-	}
 	_exec("rm -rf $rootfs/usr/local/share/asterisk/moh");
 	_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/moh moh");
 	
@@ -451,6 +440,72 @@ function populate_asterisk($image_name) {
 	// clean up
 	_exec("rm -rf $rootfs/usr/local/include");
 	_exec("rm -rf $rootfs/usr/local/share/man");
+}
+
+function populate_sounds($image_name) {
+	global $dirs, $core_sounds_version, $sound_formats, $sound_languages, $sounds, $musiconhold;
+	
+	// create english directories
+	_exec("mkdir $image_name/asterisk/sounds");
+	_exec("mkdir $image_name/asterisk/sounds/silence");
+	_exec("mkdir $image_name/asterisk/sounds/digits");
+	
+	// sounds
+	foreach($sound_languages as $sound_language) {
+		
+		// create other language directories
+		if ($sound_language != "en") {
+			_exec("mkdir $image_name/asterisk/sounds/$sound_language");
+			_exec("mkdir $image_name/asterisk/sounds/$sound_language/silence");
+			_exec("mkdir $image_name/asterisk/sounds/$sound_language/digits");
+		}
+		
+		foreach($sound_formats as $sound_format) {
+			
+			// download sound distributions
+			$distname = "asterisk-core-sounds-$sound_language-$sound_format-$core_sounds_version";
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
+				_exec("cd {$dirs['sounds']}; ".
+					"fetch http://ftp.digium.com/pub/telephony/sounds/releases/$distname.tar.gz");
+			}
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+			
+			// populate sounds
+			if ($sound_language == "en") {
+				$destdir = "$image_name/asterisk/sounds";
+			} else {
+				$destdir = "$image_name/asterisk/sounds/$sound_language";
+			}
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/$sound* $destdir");
+			}
+			_exec("cp {$dirs['sounds']}/$distname/silence/* $destdir/silence");
+			_exec("cp {$dirs['sounds']}/$distname/digits/* $destdir/digits");
+		}
+	}
+	
+	// music on hold
+	foreach($sound_formats as $sound_format) {
+		
+		// download music on hold distributions
+		$distname = "asterisk-moh-freeplay-$sound_format";
+		if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
+			_exec("cd {$dirs['sounds']}; ".
+				"fetch http://ftp.digium.com/pub/telephony/sounds/releases/$distname.tar.gz");
+		}
+		if (!file_exists("{$dirs['sounds']}/$distname")) {
+			_exec("mkdir {$dirs['sounds']}/$distname");
+			_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+		}
+	
+		// populate music on hold
+		foreach ($musiconhold as $moh) {
+			_exec("cp {$dirs['sounds']}/$distname/$moh* $image_name/asterisk/moh");
+		}
+	}
 }
 
 function populate_zaptel($image_name) {
@@ -511,6 +566,7 @@ function populate_everything($image_name) {
 	populate_msmtp($image_name);
 	populate_zaptel($image_name);
 	populate_asterisk($image_name);
+	populate_sounds($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
 	populate_webgui($image_name);
@@ -610,6 +666,7 @@ function package($platform, $image_name) {
 		
 		$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
 		$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
+		$image_size += 16 - ($image_size % 16);
 		
 		$a_size = ($image_size - $asterisk_size) * 2 - 16;
 		$b_size = $asterisk_size * 2;

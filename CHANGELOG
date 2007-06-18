@@ -1,3 +1,7 @@
+2007.06.xx - pb5
+ - 
+ - bug: fixed disk image packaging
+
 2007.06.14 - pb4
  - added "Dialplan -> Providers" page which lets one quickly map incoming extensions and phone permissions to providers
  - added "fromuser" and "fromdomain" fields to sip providers

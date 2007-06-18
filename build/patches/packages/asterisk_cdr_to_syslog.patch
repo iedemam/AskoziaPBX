@@ -1,7 +1,6 @@
-Only in asterisk-1.4.4/build_tools: menuselect-deps
-diff -ur asterisk-1.4.4-orig/cdr/cdr_custom.c asterisk-1.4.4/cdr/cdr_custom.c
---- asterisk-1.4.4-orig/cdr/cdr_custom.c	2006-10-25 16:32:08.000000000 +0200
-+++ asterisk-1.4.4/cdr/cdr_custom.c	2007-04-17 16:20:01.000000000 +0200
+diff -ur cdr/cdr_custom.c.orig cdr/cdr_custom.c
+--- cdr/cdr_custom.c.orig	2006-10-25 16:32:08.000000000 +0200
++++ cdr/cdr_custom.c	2007-04-17 16:20:01.000000000 +0200
 @@ -122,16 +122,17 @@
  	/* because of the absolutely unconditional need for the
  	   highest reliability possible in writing billing records,
@@ -24,14 +23,10 @@ diff -ur asterisk-1.4.4-orig/cdr/cdr_custom.c asterisk-1.4.4/cdr/cdr_custom.c
  	return 0;
  }
  
-Only in asterisk-1.4.4/channels/h323: Makefile
-Only in asterisk-1.4.4: config.log
-Only in asterisk-1.4.4: config.status
-Only in asterisk-1.4.4/include/asterisk: autoconfig.h
-Only in asterisk-1.4.4/include/asterisk: buildopts.h
-diff -ur asterisk-1.4.4-orig/include/asterisk/logger.h asterisk-1.4.4/include/asterisk/logger.h
---- asterisk-1.4.4-orig/include/asterisk/logger.h	2006-09-28 20:05:43.000000000 +0200
-+++ asterisk-1.4.4/include/asterisk/logger.h	2007-04-17 16:04:22.000000000 +0200
+
+diff -ur include/asterisk/logger.h.orig include/asterisk/logger.h
+--- include/asterisk/logger.h.orig	2006-09-28 20:05:43.000000000 +0200
++++ include/asterisk/logger.h	2007-04-17 16:04:22.000000000 +0200
 @@ -129,6 +129,12 @@
  #define __LOG_DTMF  6
  #define LOG_DTMF    __LOG_DTMF, _A_
@@ -45,9 +40,9 @@ diff -ur asterisk-1.4.4-orig/include/asterisk/logger.h asterisk-1.4.4/include/as
  #if defined(__cplusplus) || defined(c_plusplus)
  }
  #endif
-diff -ur asterisk-1.4.4-orig/main/logger.c asterisk-1.4.4/main/logger.c
---- asterisk-1.4.4-orig/main/logger.c	2006-12-27 23:06:56.000000000 +0100
-+++ asterisk-1.4.4/main/logger.c	2007-04-19 10:10:34.000000000 +0200
+diff -ur main/logger.c.orig main/logger.c
+--- main/logger.c.orig	2006-12-27 23:06:56.000000000 +0100
++++ main/logger.c	2007-04-19 10:10:34.000000000 +0200
 @@ -54,7 +54,8 @@
  	LOG_WARNING,
  	LOG_ERR,
@@ -123,15 +118,3 @@ diff -ur asterisk-1.4.4-orig/main/logger.c asterisk-1.4.4/main/logger.c
  			va_end(ap);
  		/* Console channels */
  		} else if ((chan->logmask & (1 << level)) && (chan->type == LOGTYPE_CONSOLE)) {
-Only in asterisk-1.4.4: makeopts
-Only in asterisk-1.4.4: makeopts.embed_rules
-Only in asterisk-1.4.4/menuselect: autoconfig.h
-Only in asterisk-1.4.4/menuselect: config.log
-Only in asterisk-1.4.4/menuselect: config.status
-Only in asterisk-1.4.4/menuselect: makeopts
-Only in asterisk-1.4.4/menuselect/mxml: Makefile
-Only in asterisk-1.4.4/menuselect/mxml: config.h
-Only in asterisk-1.4.4/menuselect/mxml: mxml.list
-Only in asterisk-1.4.4: menuselect-tree
-Only in asterisk-1.4.4: menuselect.makedeps
-Only in asterisk-1.4.4: menuselect.makeopts
