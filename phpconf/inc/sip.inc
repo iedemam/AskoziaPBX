@@ -82,6 +82,17 @@ function sip_get_prefixes() {
 	return $prefixes;	
 }
 
+function sip_get_patterns() {
+	global $config;
+	
+	$patterns = array();
+	if (is_array($config['sip']['provider']))
+		foreach($config['sip']['provider'] as $provider)
+			$patterns[] = $provider['pattern'];
+
+	return $patterns;	
+}
+
 function sip_conf_generate() {
 	global $config, $g;
 	

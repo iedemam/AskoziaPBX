@@ -148,6 +148,10 @@ function asterisk_is_valid_prefix($prefix) {
 	return true;
 }
 
+function asterisk_is_valid_pattern($pattern) {
+	return true;
+}
+
 function asterisk_get_extensions() {
 	global $config;
 
@@ -182,6 +186,15 @@ function asterisk_get_prefixes() {
 	return array_merge(
 		sip_get_prefixes(),
 		iax_get_prefixes()
+	);
+}
+
+function asterisk_get_patterns() {
+	global $config;
+
+	return array_merge(
+		sip_get_patterns(),
+		iax_get_patterns()
 	);
 }
 

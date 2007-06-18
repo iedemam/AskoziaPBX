@@ -79,7 +79,18 @@ function iax_get_prefixes() {
 		foreach($config['iax']['provider'] as $provider)
 			$prefixes[] = $provider['prefix'];
 
-	return $prefixes;	
+	return $prefixes;
+}
+
+function iax_get_patterns() {
+	global $config;
+	
+	$patterns = array();
+	if (is_array($config['iax']['provider']))
+		foreach($config['iax']['provider'] as $provider)
+			$patterns[] = $provider['pattern'];
+
+	return $patterns;
 }
 
 function iax_conf_generate() {

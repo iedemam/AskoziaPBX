@@ -515,4 +515,32 @@ function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false
 		</td>
 	</tr><?
 }
+
+function display_provider_prefix_pattern_editor($current_prefix, $current_pattern) {
+	
+	?><tr> 
+		<td valign="top" class="vncellreq">Dialing Prefix or Pattern</td>
+		<td colspan="2" class="vtable">
+			<select name="prefixorpattern" class="formfld" id="prefixorpattern">
+				<option value="prefix" <? if ($current_prefix) echo "selected"; ?>>prefix</option>
+				<option value="pattern" <? if ($current_pattern) echo "selected"; ?>>pattern</option>
+			</select>&nbsp;
+			<input name="prefixpattern" type="text" class="formfld" id="prefixpattern" size="40" value="<?
+				if ($current_prefix) {
+					echo htmlspecialchars($current_prefix);
+				} else if ($current_pattern) {
+					echo htmlspecialchars($current_pattern);
+				}?>">
+			<br><span class="vexpl">Prefixes remove matched digits from the dialed number, patterns keep them.<br>
+			<ul>
+				<li>X - matches digits 0-9</li>
+				<li>Z - matches digits 1-9</li>
+				<li>N - matches digits 2-9</li>
+				<li>[13-5] - matches any digit in the brackets (here, 1,3,4,5)</li>
+				<li>. - matches one or more characters</li>
+				<li>! - matches zero or more characters immediately</li>
+			</ul></span>
+		</td>
+	</tr><?
+}
 ?>

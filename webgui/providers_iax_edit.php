@@ -59,6 +59,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['host'] = $a_iaxproviders[$id]['host'];
 	$pconfig['port'] = $a_iaxproviders[$id]['port'];
 	$pconfig['prefix'] = $a_iaxproviders[$id]['prefix'];
+	$pconfig['pattern'] = $a_iaxproviders[$id]['pattern'];
 	$pconfig['qualify'] = $a_iaxproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
@@ -75,8 +76,8 @@ if ($_POST) {
 	parse_str($_POST['v_codecs']);
 
 	/* input validation */
-	$reqdfields = explode(" ", "name username host prefix");
-	$reqdfieldsn = explode(",", "Name,Username,Host,Prefix");
+	$reqdfields = explode(" ", "name username host");
+	$reqdfieldsn = explode(",", "Name,Username,Host");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -92,11 +93,19 @@ if ($_POST) {
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}	
+	
 	if (!isset($id) && in_array($_POST['prefix'], asterisk_get_prefixes())) {
 		$input_errors[] = "A provider with this prefix already exists.";
 	} else if (!asterisk_is_valid_prefix($_POST['prefix'])) {
 		$input_errors[] = "A valid prefix must be specified.";
 	}
+	
+	if (!isset($id) && in_array($_POST['pattern'], asterisk_get_patterns())) {
+		$input_errors[] = "A provider with this pattern already exists.";
+	} else if (!asterisk_is_valid_pattern($_POST['pattern'])) {
+		$input_errors[] = "A valid pattern must be specified.";
+	}
+	
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
@@ -109,7 +118,13 @@ if ($_POST) {
 		$sp['secret'] = $_POST['secret'];
 		$sp['host'] = $_POST['host'];
 		$sp['port'] = $_POST['port'];
-		$sp['prefix'] = $_POST['prefix'];
+		
+		if ($_POST['prefixorpattern'] == "prefix") {
+			$sp['prefix'] = $_POST['prefixpattern'];
+		} else if ($_POST['prefixorpattern'] == "pattern") {
+			$sp['pattern'] = $_POST['prefixpattern'];
+		}
+		
 		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
@@ -144,13 +159,7 @@ if ($_POST) {
 					<br><span class="vexpl">Descriptive name of this provider.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq">Prefix</td>
-				<td colspan="2" class="vtable">
-					<input name="prefix" type="text" class="formfld" id="prefix" size="40" value="<?=htmlspecialchars($pconfig['prefix']);?>"> 
-					<br><span class="vexpl">Dialing prefix to access this provider.</span>
-				</td>
-			</tr>
+			<? display_provider_prefix_pattern_editor($pconfig['prefix'], $pconfig['pattern']); ?>
 			<tr> 
 				<td valign="top" class="vncellreq">Username</td>
 				<td colspan="2" class="vtable">

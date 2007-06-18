@@ -102,8 +102,13 @@ EOD;
 	foreach ($a_sipproviders as $p) {
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
-		$conf .= "exten => _{$p['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($p['prefix']) ."}@{$p['uniqid']},30)\n";
-		$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
+		if ($p['prefix']) {
+			$conf .= "exten => _{$p['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($p['prefix']) ."}@{$p['uniqid']},30)\n";
+			$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
+		} else if ($p['pattern']) {
+			$conf .= "exten => _{$p['pattern']},1,Dial(SIP/$\{EXTEN}@{$p['uniqid']},30)\n";
+			$conf .= "exten => _{$p['pattern']},2,Hangup()\n";
+		}
 		$conf .= "\n";
 	}
 	
@@ -113,8 +118,13 @@ EOD;
 	foreach ($a_iaxproviders as $p) {
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
-		$conf .= "exten => _{$p['prefix']}.,1,Dial(IAX2/{$p['uniqid']}/$\{EXTEN:". strlen($p['prefix']) ."},30)\n";
-		$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
+		if ($p['prefix']) {
+			$conf .= "exten => _{$p['prefix']}.,1,Dial(IAX2/{$p['uniqid']}/$\{EXTEN:". strlen($p['prefix']) ."},30)\n";
+			$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
+		} else if ($p['pattern']) {
+			$conf .= "exten => _{$p['pattern']},1,Dial(IAX2/{$p['uniqid']}/$\{EXTEN},30)\n";
+			$conf .= "exten => _{$p['pattern']},2,Hangup()\n";
+		}
 		$conf .= "\n";
 	}
 	

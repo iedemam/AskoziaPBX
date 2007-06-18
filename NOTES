@@ -1,6 +1,7 @@
 pb5
  - provider pattern matching
  - qualify options for iax/sip
+ - no authentication option for voicemail
  - sshd + goodies dev image
  - dialplan (still needs (de)select all)
  - improved cdr's

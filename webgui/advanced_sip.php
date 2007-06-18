@@ -45,10 +45,10 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	//$reqdfields = explode(" ", "name username host prefix");
-	//$reqdfieldsn = explode(",", "Name,Username,Host,Prefix");
+	$reqdfields = explode(" ", "port");
+	$reqdfieldsn = explode(",", "Port");
 	
-	//do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";

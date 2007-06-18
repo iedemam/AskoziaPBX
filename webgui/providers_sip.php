@@ -112,16 +112,21 @@ if (file_exists($d_sipconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="10%" class="listhdrr">Prefix</td>
-		<td width="30%" class="listhdrr">Name</td>		
-		<td width="25%" class="listhdrr">Username</td>
+		<td width="20%" class="listhdrr">Prefix / Pattern</td>
+		<td width="25%" class="listhdrr">Name</td>		
+		<td width="20%" class="listhdrr">Username</td>
 		<td width="25%" class="listhdr">Host</td>
 		<td width="10%" class="list"></td>
 	</tr>
+	
 
 	<?php $i = 0; foreach ($a_sipproviders as $sp): ?>
 	<tr>
-		<td class="listlr"><?=htmlspecialchars($sp['prefix']);?></td>
+		<td class="listlr"><?
+			if ($sp['prefix']) 
+				echo htmlspecialchars($sp['prefix']);
+			else if ($sp['pattern'])
+				echo htmlspecialchars($sp['pattern']);?></td>
 		<td class="listbg"><?=htmlspecialchars($sp['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['host']);?>&nbsp;</td>
