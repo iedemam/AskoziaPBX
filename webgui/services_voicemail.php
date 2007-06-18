@@ -48,16 +48,21 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "host address username password");
-	$reqdfieldsn = explode(",", "Host,E-mail Address,Username,Password");
+	$reqdfields = explode(" ", "host address");
+	$reqdfieldsn = explode(",", "Host,E-mail Address");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['address'] && !is_email_address($_POST['address']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
+	
 	if (($_POST['fromaddress'] && !is_email_address($_POST['fromaddress']))) {
 		$input_errors[] = "A valid e-mail address must be specified for the \"from address\".";
+	}
+	
+	if (($_POST['port'] && !is_port($_POST['port']))) {
+		$input_errors[] = "A valid port must be specified.";
 	}
 
 	if (!$input_errors) {
@@ -93,6 +98,9 @@ if ($_POST) {
 			<td width="20%" valign="top" class="vncellreq">Host</td>
 			<td width="80%" class="vtable">
 				<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
+				:
+				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+				<br><span class="vexpl">SMTP host URL or IP address and optional port.</span>
 			</td>
 		</tr>
 		<tr>
@@ -102,23 +110,15 @@ if ($_POST) {
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" class="vncellreq">Username</td>
+			<td valign="top" class="vncell">Username</td>
 			<td class="vtable">
 				<input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" class="vncellreq">Password</td>
+			<td valign="top" class="vncell">Password</td>
 			<td class="vtable">
 				<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell">Port</td>
-			<td class="vtable">
-				<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
-				<br>
-				If your server uses a nonstandard port, enter it here.
 			</td>
 		</tr>
 		<tr> 
@@ -141,7 +141,8 @@ if ($_POST) {
 			<td width="80%" class="vtable">
 				<input name="fromaddress" type="text" class="formfld" id="fromaddress" size="40" value="<?=htmlspecialchars($pconfig['fromaddress']);?>">
 				<br>
-				This will be shown as voicemail service's sending address. Defaults to the e-mail account entered above.
+				This will be shown as voicemail service's sending address.
+				<br>Defaults to the e-mail address entered above.
 			</td>
 		</tr>
 		<tr> 

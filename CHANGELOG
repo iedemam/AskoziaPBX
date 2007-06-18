@@ -2,7 +2,9 @@
  - added "qualify" options to sip/iax phones/providers
  - added pattern matching support to sip/iax providers
  - updated Asterisk to 1.4.5
+ - authentication is now optional in voicemail settings
  - bug: fixed disk image packaging
+ - bug: fixed copy/paste bug in voicemail.inc
 
 2007.06.14 - pb4
  - added "Dialplan -> Providers" page which lets one quickly map incoming extensions and phone permissions to providers

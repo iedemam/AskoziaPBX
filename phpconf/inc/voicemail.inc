@@ -114,25 +114,32 @@ function msmtp_conf_generate() {
 	
 	$conf = "account default\n";
 	$conf .= "host {$vmconfig['host']}\n";
-	$conf .= "auth on\n";
-	$conf .= "user {$vmconfig['address']}\n";
-	$conf .= "password {$vmconfig['password']}\n";
+	
+	if ($vmconfig['username']) {
+		$conf .= "auth on\n";
+		$conf .= "user {$vmconfig['username']}\n";
+		$conf .= "password {$vmconfig['password']}\n";
+	}
+	
 	if ($vmconfig['tls']) {
 		$conf .= "tls on\n";
 		$conf .= "tls_starttls on\n";
 		$conf .= "tls_certcheck off\n";
 	}
+	
 	if ($vmconfig['fromaddress']) {
 		$conf .= "from {$vmconfig['fromaddress']}\n";
 	} else {
 		$conf .= "from {$vmconfig['address']}\n";
 	}
+	
 	$conf .= "maildomain $domain\n";
-	if ($vmconfig['fromaddress']) {
+	
+	if ($vmconfig['port']) {
 		$conf .= "port {$vmconfig['port']}\n";
 	}
-	$conf .= "syslog LOG_MAIL\n";
 	
+	$conf .= "syslog LOG_MAIL\n";
 
 	fwrite($fd, $conf);
 	fclose($fd);

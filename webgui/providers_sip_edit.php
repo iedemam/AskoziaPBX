@@ -207,7 +207,7 @@ if ($_POST) {
 				<td colspan="2" class="vtable">
 					<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
 					:
-					<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+					<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
 					<br><span class="vexpl">SIP proxy host URL or IP address and optional port.</span>
 				</td>
 			</tr>

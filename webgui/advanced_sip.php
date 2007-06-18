@@ -80,7 +80,7 @@ if ($_POST) {
 		<tr>
 			<td width="20%" valign="top" class="vncell">Binding Port</td>
 			<td width="80%" class="vtable">
-				<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
 			</td>
 		</tr>
 		<tr> 
