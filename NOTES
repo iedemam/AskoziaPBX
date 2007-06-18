@@ -1,5 +1,6 @@
 pb5
  - provider pattern matching
+ - qualify options for iax/sip
  - sshd + goodies dev image
  - dialplan (still needs (de)select all)
  - improved cdr's

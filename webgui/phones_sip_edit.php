@@ -57,6 +57,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
 	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
+	$pconfig['qualify'] = $a_sipphones[$id]['qualify'];
 	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_sipphones[$id]['descr'];
@@ -95,7 +96,9 @@ if ($_POST) {
 	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
-
+	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
+	}
 
 	if (!$input_errors) {
 		$sp = array();
@@ -104,6 +107,7 @@ if ($_POST) {
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
+		$sp['qualify'] = $_POST['qualify'];
 		$sp['descr'] = $_POST['descr'];
 
 		$a_providers = asterisk_get_providers();
@@ -165,6 +169,14 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
+			<tr> 
+				<td valign="top" class="vncell">Qualify</td>
+				<td colspan="2" class="vtable">
+					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
+                    <br><span class="vexpl">Packets will be sent to this phone every <i>n</i> seconds to check its status.
+					<br>Defaults to '2'. Set to '0' to disable.</span>
+				</td>
+			</tr>
 			<? display_provider_access_selector($pconfig['provider'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>

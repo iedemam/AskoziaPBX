@@ -135,9 +135,18 @@ EOD;
 		$conf .= "secret={$p['secret']}\n";
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "host={$p['host']}\n";
+		
 		if ($p['port'])
 			$conf .= "port={$p['port']}";		
-		$conf .= "qualify=15000\n";
+		
+		if ($p['qualify'] == "0") {
+			$conf .= "qualify=no\n";
+		} else if ($p['qualify']) {
+			$conf .= "qualify=". $p['qualify']*1000 ."\n";
+		} else {
+			$conf .= "qualify=yes\n";
+		}
+
 		$conf .= "transfer=mediaonly\n";			
 		$conf .= "disallow=all\n";
 	
@@ -164,7 +173,15 @@ EOD;
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
-		$conf .= "qualify=15000\n";
+		
+		if ($p['qualify'] == "0") {
+			$conf .= "qualify=no\n";
+		} else if ($p['qualify']) {
+			$conf .= "qualify=". $p['qualify']*1000 ."\n";
+		} else {
+			$conf .= "qualify=yes\n";
+		}
+		
 		$conf .= "transfer=mediaonly\n";
 		$conf .= "disallow=all\n";
 	

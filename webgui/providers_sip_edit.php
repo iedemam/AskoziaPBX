@@ -64,6 +64,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['port'] = $a_sipproviders[$id]['port'];
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
 	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
+	$pconfig['qualify'] = $a_sipproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
@@ -104,7 +105,10 @@ if ($_POST) {
 	} else if (!asterisk_is_valid_prefix($_POST['prefix'])) {
 		$input_errors[] = "A valid prefix must be specified.";
 	}
-	// TODO: more checking on optional fields
+	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
+	}
+
 
 	if (!$input_errors) {
 		$sp = array();		
@@ -119,6 +123,7 @@ if ($_POST) {
 		$sp['noregister'] = $_POST['noregister'];
 		$sp['prefix'] = $_POST['prefix'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
+		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
 		$sp['codec'] = array();
@@ -206,6 +211,14 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
+			<tr> 
+				<td valign="top" class="vncell">Qualify</td>
+				<td colspan="2" class="vtable">
+					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
+                    <br><span class="vexpl">Packets will be sent to this provider every <i>n</i> seconds to check its status.
+					<br>Defaults to '2'. Set to '0' to disable.</span>
+				</td>
+			</tr>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>

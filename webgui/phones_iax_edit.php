@@ -56,6 +56,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['secret'] = $a_iaxphones[$id]['secret'];
 	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
+	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
 	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_iaxphones[$id]['descr'];
@@ -94,6 +95,9 @@ if ($_POST) {
 	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
+	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
+	}
 
 
 	if (!$input_errors) {
@@ -103,6 +107,7 @@ if ($_POST) {
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
 		$sp['descr'] = $_POST['descr'];
+		$sp['qualify'] = $_POST['qualify'];
 
 		$a_providers = asterisk_get_providers();
 		$sp['provider'] = array();
@@ -160,6 +165,14 @@ if ($_POST) {
 				<td colspan="2" class="vtable">
 					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
 					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">Qualify</td>
+				<td colspan="2" class="vtable">
+					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
+                    <br><span class="vexpl">Packets will be sent to this phone every <i>n</i> seconds to check its status.
+					<br>Defaults to '2'. Set to '0' to disable.</span>
 				</td>
 			</tr>
 			<? display_provider_access_selector($pconfig['provider'], 2); ?>

@@ -157,24 +157,38 @@ EOD;
 		$conf .= "type=friend\n";
 		$conf .= "username={$p['username']}\n";
 		$conf .= "secret={$p['secret']}\n";
+		
 		if($p['fromuser']) {
 			$conf .= "fromuser={$p['fromuser']}\n";
 		} else {
 			$conf .= "fromuser={$p['username']}\n";
 		}
+		
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "host={$p['host']}\n";
+		
 		if ($p['port'])
 			$conf .= "port={$p['port']}\n";
+		
 		if($p['fromdomain']) {
 			$conf .= "fromdomain={$p['fromdomain']}\n";
 		} else {
 			$conf .= "fromdomain={$p['host']}\n";
 		}
+		
 		$conf .= "nat=no\n";
-		$conf .= "qualify=15000\n";
+		
+		if ($p['qualify'] == "0") {
+			$conf .= "qualify=no\n";
+		} else if ($p['qualify']) {
+			$conf .= "qualify=". $p['qualify']*1000 ."\n";
+		} else {
+			$conf .= "qualify=yes\n";
+		}
+		
 		$conf .= "canreinvite=no\n";
 		$conf .= "insecure=port,invite\n";
+		
 		if ($p['dtmfmode']) {
 			$conf .= "dtmfmode={$p['dtmfmode']}\n";
 		} else {
@@ -206,15 +220,26 @@ EOD;
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
+		
 		if ($lancfg['topology'] != "public")
 			$conf .= "nat=yes\n";
-		$conf .= "qualify=15000\n";
+		
+		if ($p['qualify'] == "0") {
+			$conf .= "qualify=no\n";
+		} else if ($p['qualify']) {
+			$conf .= "qualify=". $p['qualify']*1000 ."\n";
+		} else {
+			$conf .= "qualify=yes\n";
+		}
+		
 		$conf .= "canreinvite=no\n";
+		
 		if ($p['dtmfmode']) {
 			$conf .= "dtmfmode={$p['dtmfmode']}\n";
 		} else {
 			$conf .= "dtmfmode=auto\n";
 		}		
+		
 		$conf .= "disallow=all\n";
 	
 		if(is_array($p['codec'])) {

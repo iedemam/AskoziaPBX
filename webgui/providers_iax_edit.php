@@ -59,6 +59,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['host'] = $a_iaxproviders[$id]['host'];
 	$pconfig['port'] = $a_iaxproviders[$id]['port'];
 	$pconfig['prefix'] = $a_iaxproviders[$id]['prefix'];
+	$pconfig['qualify'] = $a_iaxproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
@@ -96,6 +97,9 @@ if ($_POST) {
 	} else if (!asterisk_is_valid_prefix($_POST['prefix'])) {
 		$input_errors[] = "A valid prefix must be specified.";
 	}
+	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
+	}
 	// TODO: more checking on optional fields
 
 	if (!$input_errors) {
@@ -106,6 +110,7 @@ if ($_POST) {
 		$sp['host'] = $_POST['host'];
 		$sp['port'] = $_POST['port'];
 		$sp['prefix'] = $_POST['prefix'];
+		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
 		$sp['codec'] = array();
@@ -166,6 +171,14 @@ if ($_POST) {
 					:
 					<input name="port" type="text" class="formfld" id="port" size="20" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
 					<br><span class="vexpl">IAX proxy host URL or IP address and optional port.</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">Qualify</td>
+				<td colspan="2" class="vtable">
+					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
+                    <br><span class="vexpl">Packets will be sent to this provider every <i>n</i> seconds to check its status.
+					<br>Defaults to '2'. Set to '0' to disable.</span>
 				</td>
 			</tr>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
