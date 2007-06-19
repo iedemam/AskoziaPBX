@@ -172,7 +172,7 @@ if ($_POST) {
 					<br><span class="vexpl">Descriptive name of this provider.</span>
 				</td>
 			</tr>
-			<? display_provider_prefix_pattern_editor($pconfig['prefix'], $pconfig['pattern']); ?>
+			<? display_provider_prefix_pattern_editor($pconfig['prefix'], $pconfig['pattern'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncellreq">Username</td>
 				<td colspan="2" class="vtable">

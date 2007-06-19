@@ -41,31 +41,55 @@ if ($_POST) {
 	
 	$post_keys = array_keys($_POST);
 
-	$sip_provider_pairs = array();
+	$sip_provider_incomingextension_pairs = array();
+	$sip_provider_prefixes = array();
 	$sip_phone_pairs = array();
-	$iax_provider_pairs = array();
+	$iax_provider_incomingextension_pairs = array();
+	$iax_provider_prefixes = array();
 	$iax_phone_pairs = array();
 
 	foreach($post_keys as $post_key) {
 		
-		if (strpos($post_key, ":") === false) {
+		$key_split = explode(":", $post_key);
+
+		// phone permission, phone -> provider pairs
+		if (strpos($key_split[1], "SIP-PHONE") !== false) {
+			$sip_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
+
+		} else if (strpos($key_split[1], "IAX-PHONE") !== false) {
+			$iax_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
 			
-			if (strpos($post_key, "SIP-PROVIDER") !== false) {
-				$sip_provider_pairs[] = array($post_key, $_POST[$post_key]);
-				
-			} else if (strpos($post_key, "IAX-PROVIDER") !== false) {
-				$iax_provider_pairs[] = array($post_key, $_POST[$post_key]);		
-			} 			
-		} else {
-			$key_split = explode(":", $post_key);
+		// incoming extension, provider -> phone pairs
+		} else if (strpos($key_split[1], "incomingextension") !== false) {
+			
+			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
+				$sip_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
 
-			if (strpos($key_split[1], "SIP-PHONE") !== false) {
-				$sip_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
+			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
+				$iax_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
+			}
+		
+		// prefix or pattern?
+		} else if (strpos($key_split[1], "prefixorpattern") !== false) {
+			
+			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
+				$sip_provider_prefixes[$key_split[0]][0] = $_POST[$post_key];
 
-			} else if (strpos($key_split[1], "IAX-PHONE") !== false) {
-				$iax_phone_pairs[] = array($key_split[1], $_POST[$post_key]);			
+			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
+				$iax_provider_prefixes[$key_split[0]][0] = $_POST[$post_key];
+			}
+
+		// prefix or pattern string
+		} else if (strpos($key_split[1], "prefixpattern") !== false) {
+
+			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
+				$sip_provider_prefixes[$key_split[0]][1] = $_POST[$post_key];
+
+			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
+				$iax_provider_prefixes[$key_split[0]][1] = $_POST[$post_key];
 			}
 		}
+
 	}
 
 	// clear phone to provider mappings
@@ -77,7 +101,19 @@ if ($_POST) {
 	for ($i = 0; $i < $n; $i++) {
 		unset($config['iax']['phone'][$i]['provider']);
 	}
-
+	
+	// clear provider prefixes and patterns
+	$n = count($config['sip']['provider']);
+	for ($i = 0; $i < $n; $i++) {
+		unset($config['sip']['provider'][$i]['prefix']);
+		unset($config['sip']['provider'][$i]['pattern']);
+	}
+	$n = count($config['iax']['provider']);
+	for ($i = 0; $i < $n; $i++) {
+		unset($config['iax']['provider'][$i]['prefix']);
+		unset($config['iax']['provider'][$i]['pattern']);
+	}
+	
 	// remap phones to providers
 	foreach($sip_phone_pairs as $pair) {
 		$config['sip']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
@@ -87,13 +123,21 @@ if ($_POST) {
 	}
 	
 	// remap incoming extensions
-	foreach($sip_provider_pairs as $pair) {
+	foreach($sip_provider_incomingextension_pairs as $pair) {
 		$config['sip']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
 	}
-	foreach($iax_provider_pairs as $pair) {
+	foreach($iax_provider_incomingextension_pairs as $pair) {
 		$config['iax']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
 	}
-
+	
+	// remap prefixes and patterns
+	foreach($sip_provider_prefixes as $providerid => $pair) {
+		$config['sip']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
+	}
+	foreach($iax_provider_prefixes as $providerid => $pair) {
+		$config['iax']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
+	}
+	
 	write_config();
 	touch($d_extensionsconfdirty_path);
 	header("Location: dialplan_providers.php");
@@ -131,9 +175,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			?><tr> 
 				<td colspan="2" valign="top" class="listtopic">
 					<?=$provider['name']?>
-					(SIP:&nbsp;<?=$a_sipproviders['username']?>@<?=$provider['host']?>)
+					(SIP:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
 				</td>
 			</tr>
+			<? display_provider_prefix_pattern_editor($provider['prefix'], $provider['pattern'], 1, $provider['uniqid']); ?>
 			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
 			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 			<tr> 
@@ -154,6 +199,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 					(IAX:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
 				</td>
 			</tr>
+			<? display_provider_prefix_pattern_editor($provider['prefix'], $provider['pattern'], 1, $provider['uniqid']); ?>
 			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
 			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 			<tr> 

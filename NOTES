@@ -1,4 +1,5 @@
 pb5
+ - is_pattern!
  - sshd + goodies dev image
  - dialplan (still needs (de)select all)
  - improved cdr's

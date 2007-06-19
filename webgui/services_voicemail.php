@@ -53,15 +53,19 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
-	if (($_POST['address'] && !is_email_address($_POST['address']))) {
+	if ($_POST['address'] && !is_email_address($_POST['address'])) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
 	
-	if (($_POST['fromaddress'] && !is_email_address($_POST['fromaddress']))) {
+	if ($_POST['password'] && !$_POST['username']) {
+		$input_errors[] = "A username must be specified.";
+	}
+	
+	if ($_POST['fromaddress'] && !is_email_address($_POST['fromaddress'])) {
 		$input_errors[] = "A valid e-mail address must be specified for the \"from address\".";
 	}
 	
-	if (($_POST['port'] && !is_port($_POST['port']))) {
+	if ($_POST['port'] && !is_port($_POST['port'])) {
 		$input_errors[] = "A valid port must be specified.";
 	}
 
@@ -78,6 +82,7 @@ if ($_POST) {
 		
 		config_lock();
 		$retval |= voicemail_conf_generate();
+		$retval |= msmtp_conf_generate();
 		config_unlock();
 		
 		$retval |= voicemail_reload();
@@ -125,9 +130,8 @@ if ($_POST) {
 			<td valign="top" class="vncell">Options</td>
 			<td class="vtable"> 
 				<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
-            	<strong>Account uses TLS</strong><span class="vexpl">
-				<br><span class="red"><strong>Warning: </strong></span>
-                TLS certificates are currently not verified.</span>
+            	Account uses TLS<br>
+				<span class="vexpl"><span class="red"><strong>Warning: </strong></span>TLS certificates are currently not verified.</span>
 			</td>
         </tr>
 		<tr> 

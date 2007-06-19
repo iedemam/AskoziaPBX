@@ -376,13 +376,13 @@ function display_video_codec_selector($enabled_codecs) {
 	</tr><?
 }
 
-function display_incoming_extension_selector($current_incoming_extension, $colspan, $prefix=false) {
+function display_incoming_extension_selector($current_incoming_extension, $colspan, $idprefix=false) {
 	
 	?><tr>
-		<td valign="top" class="vncell">Incoming Extension</td>
-		<td colspan="<?=$colspan?>" class="vtable">
-			<? if ($prefix): ?>
-			<select name="<?=$prefix;?>" class="formfld" id="incomingextension">
+		<td width="20%" valign="top" class="vncell">Incoming Extension</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<? if ($idprefix): ?>
+			<select name="<?=$idprefix;?>:incomingextension" class="formfld" id="<?=$idprefix;?>:incomingextension">
 			<? else: ?>
 			<select name="incomingextension" class="formfld" id="incomingextension">
 			<? endif; ?>
@@ -438,8 +438,8 @@ function display_dtmfmode_selector($current_dtmfmode, $colspan) {
 	global $dtmfmodes;
 	
 	?><tr> 
-		<td valign="top" class="vncell">DTMF Mode</td>
-		<td colspan="<?=$colspan?>" class="vtable">
+		<td width="20%" valign="top" class="vncell">DTMF Mode</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="dtmfmode" class="formfld" id="dtmfmode">
 			<? foreach ($dtmfmodes as $dtmfmode) : ?>
 			<option value="<?=$dtmfmode;?>" <?
@@ -457,8 +457,8 @@ function display_provider_access_selector($current_providers, $colspan) {
 	$a_providers = asterisk_get_providers();
 
 	?><tr> 
-		<td valign="top" class="vncell">Providers</td>
-		<td colspan="<?=$colspan?>" class="vtable"><?
+		<td width="20%" valign="top" class="vncell">Providers</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
 		
 		$n = count($a_providers);
 		if ($n == 0) {
@@ -480,13 +480,13 @@ function display_provider_access_selector($current_providers, $colspan) {
 	</tr><?
 }
 
-function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false) {
+function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=false) {
 	
 	$a_phones = asterisk_get_phones();
 
 	?><tr> 
-		<td valign="top" class="vncell">Phones</td>
-		<td colspan="<?=$colspan?>" class="vtable"><?
+		<td width="20%" valign="top" class="vncell">Phones</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
 		
 		$n = count($a_phones);
 		if ($n == 0) {
@@ -496,8 +496,8 @@ function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false
 			for($i = 0; $i < $n; $i++) {
 				$phone = $a_phones[$i];
 				
-				if($prefix) {
-					?><input name="<?=$prefix.":".$phone['uniqid'];?>" id="<?=$prefix.":".$phone['uniqid'];?>" type="checkbox" value="<?=$prefix;?>"<?
+				if($idprefix) {
+					?><input name="<?=$idprefix.":".$phone['uniqid'];?>" id="<?=$idprefix.":".$phone['uniqid'];?>" type="checkbox" value="<?=$idprefix;?>"<?
 				
 				} else {
 					?><input name="<?=$phone['uniqid'];?>" id="<?=$phone['uniqid'];?>" type="checkbox" value="yes"<?
@@ -516,21 +516,31 @@ function display_phone_access_selector($provider_uniqid, $colspan, $prefix=false
 	</tr><?
 }
 
-function display_provider_prefix_pattern_editor($current_prefix, $current_pattern) {
+function display_provider_prefix_pattern_editor($current_prefix, $current_pattern, $colspan, $idprefix=false) {
 	
 	?><tr> 
-		<td valign="top" class="vncellreq">Dialing Prefix or Pattern</td>
-		<td colspan="2" class="vtable">
+		<td width="20%" valign="top" class="vncellreq">Dialing Prefix or Pattern</td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
+		<? if ($idprefix): ?>
+			<select name="<?=$idprefix;?>:prefixorpattern" class="formfld" id="<?=$idprefix;?>:prefixorpattern">
+		<? else: ?>
 			<select name="prefixorpattern" class="formfld" id="prefixorpattern">
+		<? endif; ?>
 				<option value="prefix" <? if ($current_prefix) echo "selected"; ?>>prefix</option>
 				<option value="pattern" <? if ($current_pattern) echo "selected"; ?>>pattern</option>
-			</select>&nbsp;
-			<input name="prefixpattern" type="text" class="formfld" id="prefixpattern" size="40" value="<?
-				if ($current_prefix) {
-					echo htmlspecialchars($current_prefix);
-				} else if ($current_pattern) {
-					echo htmlspecialchars($current_pattern);
-				}?>">
+			</select>&nbsp;<?
+			
+			if ($idprefix) {
+				?><input name="<?=$idprefix;?>:prefixpattern" type="text" class="formfld" id="<?=$idprefix;?>:prefixpattern" size="40" value="<?
+			} else {
+				?><input name="prefixpattern" type="text" class="formfld" id="prefixpattern" size="40" value="<?
+			}
+
+			if ($current_prefix) {
+				echo htmlspecialchars($current_prefix);
+			} else if ($current_pattern) {
+				echo htmlspecialchars($current_pattern);
+			}?>">
 			<br><span class="vexpl">Prefixes remove matched digits from the dialed number, patterns keep them.<br>
 			<ul>
 				<li>X - matches digits 0-9</li>
