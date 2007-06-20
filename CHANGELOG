@@ -2,6 +2,7 @@
  - added "qualify" options to sip/iax phones/providers
  - added pattern matching support to sip/iax providers
  - added prefix/pattern setting to "Dialplan -> Providers" page
+ - "Diagnostics -> Logs -> Calls" displays much more information now
  - updated Asterisk to 1.4.5
  - authentication is now optional in voicemail settings
  - bug: fixed disk image packaging

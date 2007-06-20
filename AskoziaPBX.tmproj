@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,9 +18,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-06-19T13:17:09Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-06-20T00:56:02Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -42,7 +40,9 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-06-19T13:17:09Z</date>
+			<date>2007-06-20T00:56:02Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -80,9 +80,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>55</integer>
+				<integer>47</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -94,28 +94,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>phpconf/inc/asterisk.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>151</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>44</integer>
 		</dict>
 		<key>phpconf/inc/config.inc</key>
 		<dict>
@@ -145,19 +131,63 @@
 			<key>firstVisibleLine</key>
 			<integer>16</integer>
 		</dict>
-		<key>webgui/dialplan_providers.php</key>
+		<key>webgui/diag_logs_calls.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>140</integer>
+				<integer>103</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>125</integer>
+			<integer>64</integer>
+		</dict>
+		<key>webgui/diag_logs_pbx.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>33</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>33</integer>
+		</dict>
+		<key>webgui/gui.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>214</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>146</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>214</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>214</integer>
+			</dict>
 		</dict>
 		<key>webgui/index.php</key>
 		<dict>
@@ -172,20 +202,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>107</integer>
-		</dict>
-		<key>webgui/services_voicemail.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>75</integer>
-				<key>line</key>
-				<integer>133</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>111</integer>
 		</dict>
 		<key>webgui/status.php</key>
 		<dict>
@@ -220,9 +236,9 @@
 	<array>
 		<string>CHANGELOG</string>
 		<string>NOTES</string>
-		<string>webgui/services_voicemail.php</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>webgui/dialplan_providers.php</string>
+		<string>webgui/diag_logs_pbx.php</string>
+		<string>webgui/diag_logs_calls.php</string>
+		<string>webgui/gui.css</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

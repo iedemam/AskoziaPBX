@@ -71,6 +71,17 @@ function dump_clog($logfile, $tail) {
 	17	userfield	""
 	*/
 	
+	echo "<tr valign=\"top\">\n";
+	echo "<td class=\"listhdrr\">start</td>\n";
+	echo "<td class=\"listhdrr\">src</td>\n";
+	echo "<td class=\"listhdrr\">dst</td>\n";
+	echo "<td class=\"listhdrr\">channels</td>\n";
+	echo "<td class=\"listhdrr\">lastapp</td>\n";
+	echo "<td class=\"listhdrr\">sec.</td>\n";
+	echo "<td class=\"listhdrr\">bill</td>\n";
+	echo "<td class=\"listhdr\">disposition</td>\n";
+	echo "</tr>\n";
+	
 	foreach ($logarr as $logent) {
 		// filter out pseudo channels
 		if (strpos($logent, "Zap/pseudo"))
@@ -81,16 +92,51 @@ function dump_clog($logfile, $tail) {
 		$cdr = explode(",", $cdr);
 		$cdr = str_replace("\"", "", $cdr);
 		
-		if ((!$cdr[0]) || (!$cdr[2]) || (!$cdr[12]))
-			continue;
+		$timestamp = join(" ", array_slice($logent, 0, 2));
+		$tstime = explode(" ", $cdr[8]);
+		$tstime = $tstime[1];
+		$timestamp .= " " . $tstime;
 		
 		echo "<tr valign=\"top\">\n";
+		// start
+		echo "<td class=\"listlr\" nowrap>".htmlspecialchars($timestamp)."&nbsp;</td>\n";
+		// src
+		echo "<td class=\"listr\">\n";
+		echo "\t<span title=\"".
+				htmlspecialchars($cdr[0]).
+				"\" style=\"cursor: help; border-bottom: 1px dashed #000000;\">".
+				htmlspecialchars($cdr[1]).
+			"</span>&nbsp;</td>\n";
 		
-		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-		echo "<td class=\"listr\">" . htmlspecialchars($cdr[0]) . 
-			"&nbsp;-&gt;&nbsp;" . htmlspecialchars($cdr[2]) . "&nbsp;( " .
-			htmlspecialchars($cdr[12]) . " sec. )</td>\n";
+		// dst
+		echo "<td class=\"listr\">".htmlspecialchars($cdr[2])."&nbsp;</td>\n";
 		
+		// channels
+		echo "<td class=\"listr\">".htmlspecialchars(substr($cdr[4], 0, strpos($cdr[4], "-")))."&nbsp;";
+		if($cdr[5]) {
+			echo "-&gt;&nbsp;";
+			echo htmlspecialchars(substr($cdr[5], 0, strpos($cdr[5], "-")))."&nbsp;</td>\n";
+		} else {
+			echo "</td>\n";
+		}
+		
+		// last app
+		echo "<td class=\"listr\">";
+		if ($cdr[6]) {
+			echo htmlspecialchars($cdr[6])."(";
+			if ($cdr[7]) {
+				echo "&nbsp;".htmlspecialchars($cdr[7])."&nbsp;";
+			}
+			echo ")";
+		}
+		echo "&nbsp;</td>\n";
+		
+		// seconds
+		echo "<td class=\"listr\">".htmlspecialchars($cdr[11])."&nbsp;</td>\n";
+		// billable
+		echo "<td class=\"listr\">".htmlspecialchars($cdr[12])."&nbsp;</td>\n";
+		// disposition
+		echo "<td class=\"listr\">".htmlspecialchars($cdr[13])."&nbsp;</td>\n";
 		echo "</tr>\n";
 	}
 }
@@ -113,7 +159,7 @@ function dump_clog($logfile, $tail) {
     <td class="tabcont">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr> 
-			<td colspan="2" class="listtopic"> 
+			<td colspan="8" class="listtopic"> 
 			  Last <?=$nentries;?> Call Records</td>
 		  </tr>
 		  <?php dump_clog("/var/log/cdr.log", $nentries); ?>
