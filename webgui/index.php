@@ -51,7 +51,7 @@ if ($_POST) {
                 <td height="170" colspan="2"><img src="logobig.gif" width="520" height="149"></td>
               </tr>
               <tr> 
-                <td colspan="2" class="listtopic">System information</td>
+                <td colspan="2" class="listtopic">System Information</td>
               </tr>
               <tr> 
                 <td width="25%" class="vncellt">Name</td>
@@ -102,18 +102,24 @@ if ($_POST) {
                 </td>
               </tr><?php if ($config['lastchange']): ?>
               <tr> 
-                <td width="25%" class="vncellt">Last config change</td>
+                <td width="25%" class="vncellt">Last Config Change</td>
                 <td width="75%" class="listr"> 
                   <?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>
                 </td>
               </tr><?php endif; ?>
+			
+			<? asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_list); ?>
+			<tr> 
+				<td width="25%" class="vncellt">Active Calls</td>
+				<td width="75%" class="listr"><?=$active_calls;?></td>
+			</tr>
+			<tr> 
+				<td width="25%" class="vncellt">Active Channels</td>
+				<td width="75%" class="listr"><?=$active_channels;?></td>
+			</tr>
+			
 			  <tr> 
-                <td width="25%" class="vncellt">CPU usage</td>
-                <td width="75%" class="listr">
-				<a href="status_graph_cpu.php">view graph</a></td>
-              </tr>
-			  <tr> 
-                <td width="25%" class="vncellt">Memory usage</td>
+                <td width="25%" class="vncellt">Memory Usage</td>
                 <td width="75%" class="listr">
 <?php
 

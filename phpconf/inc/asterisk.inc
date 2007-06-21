@@ -198,6 +198,25 @@ function asterisk_get_patterns() {
 	);
 }
 
+function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {
+	
+	asterisk_exec("core show channels", &$output);
+	$ostart = strpos($output, "Channel");
+	$oend = strpos($output, "--END COMMAND--") - 1;
+	
+	$output = substr($output, $ostart, ($oend - $ostart));
+	$lines = explode("\n", $output);
+
+	$n = count($lines) - 3;
+	for ($i = 1; $i <= $n; $i++) {
+		$channel_list[] = $lines[$i];
+	}
+	$active_channels = substr($lines[$n+1], 0, strpos($lines[$n+1], " "));
+	$active_calls = substr($lines[$n+2], 0, strpos($lines[$n+2], " "));
+
+	return 0; // could do some error checking here
+}
+
 function asterisk_uniqid_to_dial($exten, $uniqid) {
 	global $config;
 	
@@ -222,5 +241,26 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 	
 	return $dial;
 }
+
+function asterisk_uniqid_to_name($uniqid) {
+	global $config, $uniqid_map;
 	
+	// sip phone
+	if (strpos($uniqid, "SIP-PHONE") !== false) {
+		return $config['sip']['phone'][$uniqid_map[$uniqid]]['callerid'];
+
+	// iax phone
+	} else if (strpos($uniqid, "IAX-PHONE") !== false) {
+		return $config['iax']['phone'][$uniqid_map[$uniqid]]['callerid'];
+
+	// sip provider
+	} else if (strpos($uniqid, "SIP-PROVIDER") !== false) {
+		return $config['sip']['provider'][$uniqid_map[$uniqid]]['name'];
+		
+	// sip provider
+	} else if (strpos($uniqid, "IAX-PROVIDER") !== false) {
+		return $config['iax']['provider'][$uniqid_map[$uniqid]]['name'];
+	}
+}
+
 ?>

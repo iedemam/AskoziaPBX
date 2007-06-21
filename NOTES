@@ -1,7 +1,8 @@
 pb5
- - is_pattern!
+ - is_pattern!!
  - sshd + goodies dev image
  - dialplan (still needs (de)select all)
+ - need to really check cdrs, uniqid-to-name, summary page
 
 pb6
  - add iax2 auth options
