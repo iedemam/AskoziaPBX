@@ -127,6 +127,7 @@ EOD;
 
 	// provider registrations
 	foreach($iaxproviders as $p) {
+		$conf .= "; {$p['name']}\n";
 		$conf .= "register => {$p['username']}";
 		if($p['secret']) {
 			$conf .= ":{$p['secret']}";
@@ -140,6 +141,7 @@ EOD;
 	
 	// provider definitions
 	foreach($iaxproviders as $p) {
+		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "username={$p['username']}\n";
@@ -178,6 +180,7 @@ EOD;
 	$iaxphones = $config['iax']['phone'];
 	
 	foreach($iaxphones as $p) {
+		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['extension']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "secret={$p['secret']}\n";

@@ -142,13 +142,20 @@ function asterisk_is_valid_username($username) {
 }
 
 function asterisk_is_valid_prefix($prefix) {
-	if (!is_numericint($extension))
+	if (!is_numericint($prefix))
 		return false;
 
 	return true;
 }
 
 function asterisk_is_valid_pattern($pattern) {
+	if (!preg_match("/^[XNZ0-9\-\[\]\.\!]+$/", $pattern)) {
+		return false;
+	}
+	if (((strpos($pattern, "[") !== false) && (strpos($pattern, "]") === false)) ||
+		((strpos($pattern, "]") !== false) && (strpos($pattern, "[") === false))) {
+		return false;
+	}
 	return true;
 }
 

@@ -3,6 +3,7 @@
  - added pattern matching support to sip/iax providers
  - added prefix/pattern setting to "Dialplan -> Providers" page
  - added active call/channel counts to "System -> Summary"
+ - added comments to the generated sip, iax and extensions.conf files
  - removed "cpu load" link from "System -> Summary"
  - "Diagnostics -> Logs -> Calls" displays much more information now
  - updated Asterisk to 1.4.5

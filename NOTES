@@ -1,14 +1,18 @@
 pb5
- - is_pattern!!
- - sshd + goodies dev image
- - dialplan (still needs (de)select all)
- - need to really check cdrs, uniqid-to-name, summary page
+ - dialplan_providers needs to check patterns
+
 
 pb6
  - add iax2 auth options
    - pubkey import
    - md5
  - 400p card working, generic or not
+ - sshd + goodies dev image
+ - dialplan (still needs (de)select all)
+ - need to really check cdrs, uniqid-to-name, summary page
+ - is_valid_xxx checks need to be complete
+ - need a better way to replace uniqids with names
+ - logs_pbx needs to replace uniqids with names
 
 pb7
  - followme

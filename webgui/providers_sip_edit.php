@@ -76,9 +76,11 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 	$pconfig['codec'] = array("ulaw", "gsm");
+	$pconfig[$_POST['prefixorpattern']] = $_POST['prefixpattern'];
 	
 	parse_str($_POST['a_codecs']);
 	parse_str($_POST['v_codecs']);
+	
 
 	/* input validation */
 	$reqdfields = explode(" ", "name username host");
@@ -100,18 +102,20 @@ if ($_POST) {
 	}*/
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
-	}	
-	
-	if (!isset($id) && in_array($_POST['prefix'], asterisk_get_prefixes())) {
-		$input_errors[] = "A provider with this prefix already exists.";
-	} else if (!asterisk_is_valid_prefix($_POST['prefix'])) {
-		$input_errors[] = "A valid prefix must be specified.";
 	}
 	
-	if (!isset($id) && in_array($_POST['pattern'], asterisk_get_patterns())) {
-		$input_errors[] = "A provider with this pattern already exists.";
-	} else if (!asterisk_is_valid_pattern($_POST['pattern'])) {
-		$input_errors[] = "A valid pattern must be specified.";
+	if ($_POST['prefixorpattern'] == "prefix") {
+		if (!isset($id) && in_array($_POST['prefixpattern'], asterisk_get_prefixes())) {
+			$input_errors[] = "A provider with this prefix already exists.";
+		} else if (!asterisk_is_valid_prefix($_POST['prefixpattern'])) {
+			$input_errors[] = "A valid prefix must be specified.";
+		}	
+	} else if ($_POST['prefixorpattern'] == "pattern") {
+		if (!isset($id) && in_array($_POST['prefixpattern'], asterisk_get_patterns())) {
+			$input_errors[] = "A provider with this pattern already exists.";
+		} else if (!asterisk_is_valid_pattern($_POST['prefixpattern'])) {
+			$input_errors[] = "A valid pattern must be specified.";
+		}
 	}
 	
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
@@ -131,11 +135,7 @@ if ($_POST) {
 		$sp['fromdomain'] = $_POST['fromdomain'];
 		$sp['noregister'] = $_POST['noregister'];
 
-		if ($_POST['prefixorpattern'] == "prefix") {
-			$sp['prefix'] = $_POST['prefixpattern'];
-		} else if ($_POST['prefixorpattern'] == "pattern") {
-			$sp['pattern'] = $_POST['prefixpattern'];
-		}
+		$sp[$_POST['prefixorpattern']] = $_POST['prefixpattern'];
 
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['qualify'] = $_POST['qualify'];

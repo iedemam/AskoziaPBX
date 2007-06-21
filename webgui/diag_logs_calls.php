@@ -112,13 +112,10 @@ function dump_clog($logfile, $tail) {
 		echo "<td class=\"listr\">".htmlspecialchars($cdr[2])."&nbsp;</td>\n";
 		
 		// channels
-		if (strpos($cdr[4], "IAX-PROVIDER") !== false) {
+		if (strpos($cdr[4], "PROVIDER") !== false) {
 			$chan = explode("/", $cdr[4]);
 			$chan[1] = asterisk_uniqid_to_name(substr($chan[1], 0, strrpos($chan[1], "-")));
 			$chan = implode("/", $chan);
-		} else if (strpos($cdr[4], "SIP-PROVIDER") !== false) {
-			// sip provider parse
-			$chan = $cdr[4];
 		} else {
 			$chan = substr($cdr[4], 0, strpos($cdr[4], "-"));
 		}

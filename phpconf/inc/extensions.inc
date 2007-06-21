@@ -100,6 +100,7 @@ EOD;
 	$a_sipproviders = sip_get_providers();
 
 	foreach ($a_sipproviders as $p) {
+		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
 		if ($p['prefix']) {
@@ -116,6 +117,7 @@ EOD;
 	$a_iaxproviders = iax_get_providers();
 
 	foreach ($a_iaxproviders as $p) {
+		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
 		if ($p['prefix']) {
@@ -131,6 +133,7 @@ EOD;
 
 	// sip phones
 	foreach ($a_sipphones as $p) {
+		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		if (isset($p['provider'])) {
 			foreach ($p['provider'] as $provider) {
@@ -144,6 +147,7 @@ EOD;
 	
 	// iax phones
 	foreach ($a_iaxphones as $p) {
+		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		if (isset($p['provider'])) {
 			foreach ($p['provider'] as $provider) {

@@ -72,77 +72,93 @@ if ($_POST) {
 		// prefix or pattern?
 		} else if (strpos($key_split[1], "prefixorpattern") !== false) {
 			
+			$prefixorpattern = $_POST[$post_key];
+			$prefixpatternkey = $key_split[0] . ":" . "prefixpattern";
+			$prefixpattern = $_POST[$prefixpatternkey];
+			
+			if ($prefixorpattern == "prefix") {
+				if (!asterisk_is_valid_prefix($prefixpattern)) {
+					$input_errors[] = "A valid prefix must be specified for \"" .
+					 	asterisk_uniqid_to_name($key_split[0]) . "\".";
+				}
+			} else if ($prefixorpattern == "pattern") {
+				if (!asterisk_is_valid_pattern($prefixpattern)) {
+					$input_errors[] = "A valid pattern must be specified for \"" .
+					 	asterisk_uniqid_to_name($key_split[0]) . "\".";
+				}
+			}
+			
 			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
-				$sip_provider_prefixes[$key_split[0]][0] = $_POST[$post_key];
+				$sip_provider_prefixes[$key_split[0]] = array($prefixorpattern, $prefixpattern);
 
 			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
-				$iax_provider_prefixes[$key_split[0]][0] = $_POST[$post_key];
+				$iax_provider_prefixes[$key_split[0]] = array($prefixorpattern, $prefixpattern);
 			}
 
-		// prefix or pattern string
-		} else if (strpos($key_split[1], "prefixpattern") !== false) {
-
-			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
-				$sip_provider_prefixes[$key_split[0]][1] = $_POST[$post_key];
-
-			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
-				$iax_provider_prefixes[$key_split[0]][1] = $_POST[$post_key];
-			}
 		}
-
 	}
 
-	// clear phone to provider mappings
-	$n = count($config['sip']['phone']);
-	for ($i = 0; $i < $n; $i++) {
-		unset($config['sip']['phone'][$i]['provider']);
+	if (!$input_errors) {
+		
+		// clear phone to provider mappings
+		$n = count($config['sip']['phone']);
+		for ($i = 0; $i < $n; $i++) {
+			if (isset($config['sip']['phone'][$i]['provider']))
+				unset($config['sip']['phone'][$i]['provider']);
+		}
+		$n = count($config['iax']['phone']);
+		for ($i = 0; $i < $n; $i++) {
+			if (isset($config['iax']['phone'][$i]['provider']))
+				unset($config['iax']['phone'][$i]['provider']);
+		}
+		
+		// clear provider prefixes and patterns
+		$n = count($config['sip']['provider']);
+		for ($i = 0; $i < $n; $i++) {
+			if (isset($config['sip']['provider'][$i]['prefix']))
+				unset($config['sip']['provider'][$i]['prefix']);
+			if (isset($config['sip']['provider'][$i]['pattern']))
+				unset($config['sip']['provider'][$i]['pattern']);
+		}
+		$n = count($config['iax']['provider']);
+		for ($i = 0; $i < $n; $i++) {
+			if (isset($config['iax']['provider'][$i]['prefix']))
+				unset($config['iax']['provider'][$i]['prefix']);
+			if (isset($config['iax']['provider'][$i]['pattern']))
+				unset($config['iax']['provider'][$i]['pattern']);
+		}
+		
+		// remap phones to providers
+		foreach($sip_phone_pairs as $pair) {
+			$config['sip']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
+		}
+		foreach($iax_phone_pairs as $pair) {
+			$config['iax']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
+		}
+		
+		// remap incoming extensions
+		foreach($sip_provider_incomingextension_pairs as $pair) {
+			$config['sip']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
+		}
+		foreach($iax_provider_incomingextension_pairs as $pair) {
+			$config['iax']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
+		}
+		
+		// remap prefixes and patterns
+		foreach($sip_provider_prefixes as $providerid => $pair) {
+			$config['sip']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
+		}
+		foreach($iax_provider_prefixes as $providerid => $pair) {
+			$config['iax']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
+		}
+		
+		write_config();
+		touch($d_extensionsconfdirty_path);
+		header("Location: dialplan_providers.php");
+		exit;
 	}
-	$n = count($config['iax']['phone']);
-	for ($i = 0; $i < $n; $i++) {
-		unset($config['iax']['phone'][$i]['provider']);
-	}
-	
-	// clear provider prefixes and patterns
-	$n = count($config['sip']['provider']);
-	for ($i = 0; $i < $n; $i++) {
-		unset($config['sip']['provider'][$i]['prefix']);
-		unset($config['sip']['provider'][$i]['pattern']);
-	}
-	$n = count($config['iax']['provider']);
-	for ($i = 0; $i < $n; $i++) {
-		unset($config['iax']['provider'][$i]['prefix']);
-		unset($config['iax']['provider'][$i]['pattern']);
-	}
-	
-	// remap phones to providers
-	foreach($sip_phone_pairs as $pair) {
-		$config['sip']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
-	}
-	foreach($iax_phone_pairs as $pair) {
-		$config['iax']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
-	}
-	
-	// remap incoming extensions
-	foreach($sip_provider_incomingextension_pairs as $pair) {
-		$config['sip']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
-	}
-	foreach($iax_provider_incomingextension_pairs as $pair) {
-		$config['iax']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
-	}
-	
-	// remap prefixes and patterns
-	foreach($sip_provider_prefixes as $providerid => $pair) {
-		$config['sip']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
-	}
-	foreach($iax_provider_prefixes as $providerid => $pair) {
-		$config['iax']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
-	}
-	
-	write_config();
-	touch($d_extensionsconfdirty_path);
-	header("Location: dialplan_providers.php");
-	exit;
 }
+
 
 if (file_exists($d_extensionsconfdirty_path)) {
 	$retval = 0;
