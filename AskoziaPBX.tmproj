@@ -18,7 +18,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-06-21T08:55:53Z</date>
+			<date>2007-06-21T16:03:54Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -42,7 +42,7 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-06-21T08:55:53Z</date>
+			<date>2007-06-21T16:03:54Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -80,23 +80,39 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>51</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>12</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
 		</dict>
 		<key>NOTES</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>81</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>12</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -258,6 +274,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{6, 144}, {1054, 565}}</string>
+	<string>{{196, 935}, {1054, 565}}</string>
 </dict>
 </plist>

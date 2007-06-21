@@ -1,7 +1,3 @@
-pb5
- - dialplan_providers needs to check patterns
-
-
 pb6
  - add iax2 auth options
    - pubkey import
@@ -10,9 +6,12 @@ pb6
  - sshd + goodies dev image
  - dialplan (still needs (de)select all)
  - need to really check cdrs, uniqid-to-name, summary page
- - is_valid_xxx checks need to be complete
+ - is_valid_xxx checks need to be completed!
  - need a better way to replace uniqids with names
  - logs_pbx needs to replace uniqids with names
+ - fix dialplan for users without voicemail accounts
+ - use posted config in dialplan providers instead of making users start all over
+
 
 pb7
  - followme
@@ -41,13 +40,11 @@ Docs:
  - dialplan is a movable grid
 - get call parking working
 - testing / performance mode
-- fix dialplan for users without voicemail accounts
 - remove junk from manager output and add return values to asterisk_exec()
 - get indications.conf working
 - figure out config xml single var irregularities (empty defines showing up)
 - better field checks!
 - url given in console menu should match port given in gui (m0n0wall bug)
-- cdr logs not spacing date correctly, need to be prettied with hr, min, sec.
 
 ? ajax asteierk console
 

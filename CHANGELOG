@@ -1,4 +1,4 @@
-2007.06.xx - pb5
+2007.06.21 - pb5
  - added "qualify" options to sip/iax phones/providers
  - added pattern matching support to sip/iax providers
  - added prefix/pattern setting to "Dialplan -> Providers" page
