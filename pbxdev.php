@@ -98,6 +98,12 @@ foreach($dirs as $dir) {
 
 // --[ the functions ]---------------------------------------------------------
 
+function prepare_environment() {
+	global $dirs;
+	
+	_exec("cd {$dirs['tools']}; gcc -o sign -lcrypto sign.c");
+}
+
 function patch_kernel() {
 	global $dirs;
 	
@@ -836,7 +842,16 @@ function _log($msg) {
 
 // --[ command line parsing ]--------------------------------------------------
 
-if ($argv[1] == "new") {
+if ($argv[1] == "prepare") {
+
+	$f = implode("_", array_slice($argv, 1));
+	if (!function_exists($f)) {
+		_log("Invalid patch command!");
+		exit(1);
+	}
+	$f();
+
+} else if ($argv[1] == "new") {
 	
 	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
 	create($image_name);
