@@ -56,6 +56,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['secret'] = $a_sipphones[$id]['secret'];
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
+	$pconfig['language'] = $a_sipphones[$id]['language'];
 	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
 	$pconfig['qualify'] = $a_sipphones[$id]['qualify'];
 	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
@@ -106,6 +107,7 @@ if ($_POST) {
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
+		$sp['language'] = $_POST['language'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['qualify'] = $_POST['qualify'];
 		$sp['descr'] = $_POST['descr'];
@@ -168,6 +170,7 @@ if ($_POST) {
 					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 				</td>
 			</tr>
+			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>

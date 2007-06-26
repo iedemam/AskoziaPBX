@@ -56,6 +56,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['secret'] = $a_iaxphones[$id]['secret'];
 	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
+	$pconfig['language'] = $a_iaxphones[$id]['language'];
 	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
 	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
@@ -106,6 +107,7 @@ if ($_POST) {
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
+		$sp['language'] = $_POST['language'];
 		$sp['descr'] = $_POST['descr'];
 		$sp['qualify'] = $_POST['qualify'];
 
@@ -167,6 +169,7 @@ if ($_POST) {
 					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 				</td>
 			</tr>
+			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>
 				<td colspan="2" class="vtable">

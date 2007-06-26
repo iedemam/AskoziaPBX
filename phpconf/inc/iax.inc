@@ -188,6 +188,12 @@ EOD;
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
+		
 		if ($p['qualify'] == "0") {
 			$conf .= "qualify=no\n";
 		} else if ($p['qualify']) {

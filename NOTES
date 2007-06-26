@@ -12,6 +12,20 @@ pb6
  - fix dialplan for users without voicemail accounts
  - use posted config in dialplan providers instead of making users start all over
 
+language urls:
+http://www.voip-info.org/wiki/view/Asterisk+sound+files+international#Seealso
+de: http://www.amooma.de/asterisk/service/deutsche-sprachprompts/
+it: http://mirror.tomato.it/ftp/pub/asterisk/suoni_ita/
+jp: http://voip.gapj.net/index.php?Japanese
+nl: http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles
+es: http://www.voipnovatos.es/index.php?itemid=943
+se: http://www.danielnylander.se/asterisk-saker/
+
+// to do
+cn: http://www.iaxtalk.com/asterisk_sounds_cn.zip
+en-uk: http://www.enicomms.com/cutglassivr/
+no: http://voop.org/files/
+
 
 pb7
  - followme

@@ -236,6 +236,12 @@ EOD;
 		
 		if ($lancfg['topology'] != "public")
 			$conf .= "nat=yes\n";
+			
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
 		
 		if ($p['qualify'] == "0") {
 			$conf .= "qualify=no\n";

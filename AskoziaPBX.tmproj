@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>pbxdev.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -18,11 +20,11 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-06-21T16:03:54Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-06-25T16:46:29Z</date>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>etc</string>
 			<key>regexFolderFilter</key>
@@ -31,6 +33,8 @@
 			<string>etc</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>files</string>
 			<key>regexFolderFilter</key>
@@ -42,13 +46,15 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-06-21T16:03:54Z</date>
+			<date>2007-06-26T08:38:50Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-06-18T22:09:55Z</date>
+			<date>2007-06-26T08:38:50Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -80,30 +86,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>1</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>12</integer>
-			</dict>
 		</dict>
 		<key>NOTES</key>
 		<dict>
@@ -119,19 +109,49 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>phpconf/inc/asterisk.inc</key>
+		<key>build/tools/sign.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>74</integer>
 				<key>line</key>
-				<integer>245</integer>
+				<integer>34</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>238</integer>
+			<integer>129</integer>
+		</dict>
+		<key>pbxdev.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>501</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>477</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>495</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>501</integer>
+			</dict>
 		</dict>
 		<key>phpconf/inc/config.inc</key>
 		<dict>
@@ -219,20 +239,6 @@
 				<integer>214</integer>
 			</dict>
 		</dict>
-		<key>webgui/index.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>48</integer>
-				<key>line</key>
-				<integer>112</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>98</integer>
-		</dict>
 		<key>webgui/status.php</key>
 		<dict>
 			<key>caret</key>
@@ -264,16 +270,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
 		<string>NOTES</string>
-		<string>webgui/diag_logs_pbx.php</string>
-		<string>webgui/diag_logs_calls.php</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>webgui/index.php</string>
+		<string>build/tools/sign.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{196, 935}, {1054, 565}}</string>
+	<string>{{259, 99}, {973, 563}}</string>
 </dict>
 </plist>

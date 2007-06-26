@@ -42,9 +42,12 @@ $msmtp_version		= "msmtp-1.4.11";
 // --[ sounds ]----------------------------------------------------------------
 
 $core_sounds_version= "1.4.7";
-$sound_formats		= explode(" ", "ulaw gsm");
-$sound_languages	= explode(" ", "en");
-$sounds				= explode(" ", "auth-thankyou beep conf-* vm-intro vm-theperson vm-is vm-goodbye");
+$sound_languages	= explode(" ", "en de it es fr jp nl se");
+$sounds				= explode(" ", 
+						"auth-thankyou ".
+						"conf-onlyperson conf-getpin conf-invalidpin ".
+						"vm-intro vm-theperson vm-is vm-goodbye");
+$digits				= explode(" ", "0 1 2 3 4 5 6 7 8 9");
 $musiconhold		= explode(" ", "fpm-calm-river");
 
 // --[ image padding ]---------------------------------------------------------
@@ -449,7 +452,7 @@ function populate_asterisk($image_name) {
 }
 
 function populate_sounds($image_name) {
-	global $dirs, $core_sounds_version, $sound_formats, $sound_languages, $sounds, $musiconhold;
+	global $dirs, $core_sounds_version, $sound_languages, $sounds, $digits, $musiconhold;
 	
 	// create english directories
 	_exec("mkdir $image_name/asterisk/sounds");
@@ -462,42 +465,200 @@ function populate_sounds($image_name) {
 		// create other language directories
 		if ($sound_language != "en") {
 			_exec("mkdir $image_name/asterisk/sounds/$sound_language");
-			_exec("mkdir $image_name/asterisk/sounds/$sound_language/silence");
-			_exec("mkdir $image_name/asterisk/sounds/$sound_language/digits");
+			_exec("mkdir $image_name/asterisk/sounds/digits/$sound_language");
 		}
-		
-		foreach($sound_formats as $sound_format) {
-			
-			// download sound distributions
-			$distname = "asterisk-core-sounds-$sound_language-$sound_format-$core_sounds_version";
-			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
-				_exec("cd {$dirs['sounds']}; ".
-					"fetch http://ftp.digium.com/pub/telephony/sounds/releases/$distname.tar.gz");
+
+		// us-english
+		if ($sound_language == "en") {
+			// ulaw and gsm
+			$formats = array("gsm", "ulaw");
+			foreach($formats as $format) {
+				$distname = "asterisk-core-sounds-$sound_language-$format-$core_sounds_version";
+				$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
+				
+				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+						_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+						
+				if (!file_exists("{$dirs['sounds']}/$distname")) {
+					_exec("mkdir {$dirs['sounds']}/$distname");
+					_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+				}
+				
+				foreach($sounds as $sound) {
+					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds");
+				}
+				foreach($digits as $digit) {
+					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits");
+				}
+				
+				_exec("cp {$dirs['sounds']}/$distname/beep* $image_name/asterisk/sounds");
+				if ($format == "gsm")
+					_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/silence");
 			}
+
+
+		// french
+		} else if ($sound_language == "fr") {
+			// gsm
+			$distname = "asterisk-core-sounds-$sound_language-gsm-$core_sounds_version";
+			$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
+            
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+            
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+            
+			foreach($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/fr");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/fr");
+			}
+
+
+		// spanish
+		} else if ($sound_language == "es") {
+			// gsm
+			$distname = "asterisk-voces-es-v1_2-gsm-voipnovatos";
+			$disturl = "http://www.voipnovatos.es/voces";
+
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz");
+			}
+
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/es/$sound* $image_name/asterisk/sounds/es");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/es/digits/$digit.* $image_name/asterisk/sounds/digits/es");
+			}
+
+
+		// german
+		} else if ($sound_language == "de") {
+			// gsm
+			$distname = "asterisk-1.4-de-prompts";
+			$disturl = "http://www.amooma.de/asterisk/service/deutsche-sprachprompts";
+			
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+
 			if (!file_exists("{$dirs['sounds']}/$distname")) {
 				_exec("mkdir {$dirs['sounds']}/$distname");
 				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
 			}
 			
-			// populate sounds
-			if ($sound_language == "en") {
-				$destdir = "$image_name/asterisk/sounds";
-			} else {
-				$destdir = "$image_name/asterisk/sounds/$sound_language";
-			}
 			foreach ($sounds as $sound) {
-				_exec("cp {$dirs['sounds']}/$distname/$sound* $destdir");
+				_exec("cp {$dirs['sounds']}/$distname/de/$sound* $image_name/asterisk/sounds/de");
 			}
-			_exec("cp {$dirs['sounds']}/$distname/silence/* $destdir/silence");
-			_exec("cp {$dirs['sounds']}/$distname/digits/* $destdir/digits");
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/digits/de/$digit.* $image_name/asterisk/sounds/digits/de");
+			}
+			
+
+		// italian
+		} else if ($sound_language == "it") {
+			// gsm
+			$distname = "it_mm_sounds_20060510";
+			$disturl = "http://mirror.tomato.it/ftp/pub/asterisk/suoni_ita";
+        
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+        
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+        
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds_it_2006_05_10/$sound* $image_name/asterisk/sounds/it");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds_it_2006_05_10/digits/$digit.* $image_name/asterisk/sounds/digits/it");
+			}
+		
+		
+		// japanese
+		} else if ($sound_language == "jp") {
+			// gsm
+			$distname = "asterisk-sound-jp";
+			$disturl = "http://voip.gapj.net/files";
+			
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+        
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+        
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/jp/$sound* $image_name/asterisk/sounds/jp");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/digits/jp/$digit.* $image_name/asterisk/sounds/digits/jp");
+			}
+
+
+		// dutch
+		} else if ($sound_language == "nl") {
+			// gsm
+			$distname = "asterisksounds-0.4";
+			$disturl = "http://www.borndgtl.cistron.nl";
+
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/asterisksounds/$sound* $image_name/asterisk/sounds/nl");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/asterisksounds/digits/$digit.* $image_name/asterisk/sounds/digits/nl");
+			}
+
+		// swedish
+		} else if ($sound_language == "se") {
+			// gsm
+			$distname = "asterisk-prompt-se_1.045-orig";
+			$disturl = "http://www.danielnylander.se/asterisk";
+
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds/se/$sound* $image_name/asterisk/sounds/se");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/se/$digit.* $image_name/asterisk/sounds/digits/se");
+			}
+
+
 		}
+
 	}
 	
 	// music on hold
-	foreach($sound_formats as $sound_format) {
+	$formats = array("gsm");
+	foreach($formats as $format) {
 		
 		// download music on hold distributions
-		$distname = "asterisk-moh-freeplay-$sound_format";
+		$distname = "asterisk-moh-freeplay-$format";
 		if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
 			_exec("cd {$dirs['sounds']}; ".
 				"fetch http://ftp.digium.com/pub/telephony/sounds/releases/$distname.tar.gz");

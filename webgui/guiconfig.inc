@@ -125,6 +125,17 @@ $dtmfmodes = array(
 	"info"
 );
 
+$prompt_languages = array(
+	"en" => "English",
+	"nl" => "Dutch",
+	"de" => "German",
+	"es" => "Spanish",
+	"fr" => "French",
+	"it" => "Italian",
+	"jp" => "Japanese",
+	"se" => "Swedish"
+);
+
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	
 	/* check for bad control characters */	
@@ -550,6 +561,24 @@ function display_provider_prefix_pattern_editor($current_prefix, $current_patter
 				<li>. - matches one or more characters</li>
 				<li>! - matches zero or more characters immediately</li>
 			</ul></span>
+		</td>
+	</tr><?
+}
+
+function display_channel_language_selector($current_language, $colspan, $idprefix=false) {
+	global $prompt_languages;
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Language</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<select name="language" class="formfld" id="language">
+			<? foreach($prompt_languages as $prompt_language=>$friendly) : ?>
+			<option value="<?=$prompt_language;?>" <?
+			if ($prompt_language == $current_language)
+				echo "selected"; ?>
+			><?=$friendly;?></option>
+			<? endforeach; ?>
+			</select>
 		</td>
 	</tr><?
 }
