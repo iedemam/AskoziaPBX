@@ -1,5 +1,15 @@
 2007.06.xx - pb6
- - 
+ - improved sound packaging to finally include only what is necessary
+ - added prompts for the following languages:
+   - Dutch (gsm)
+   - French (gsm/ulaw)
+   - German (gsm)
+   - Italian (gsm)
+   - Japanese (gsm)
+   - Spanish (gsm/ulaw)
+   - Swedish (gsm)
+ - added registration timeout options to sip providers
+ - updated base system to FreeBSD 6.2-RELEASE-p5
 
 2007.06.21 - pb5
  - added "qualify" options to sip/iax phones/providers

@@ -150,8 +150,16 @@ EOD;
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])
-			$conf .= "port={$p['port']}";		
+			$conf .= "port={$p['port']}";
+			
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
 		
+		// qualify options
 		if ($p['qualify'] == "0") {
 			$conf .= "qualify=no\n";
 		} else if ($p['qualify']) {
@@ -188,6 +196,7 @@ EOD;
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		
+		// language selection
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {

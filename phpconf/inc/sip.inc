@@ -102,9 +102,11 @@ function sip_conf_generate() {
 		return 1;
 	}
 	
+	$sipconfig = $config['services']['sip'];
+	
 	$port = "5060";
-	if (isset($config['sip']['port']))
-		$port = $config['sip']['port'];
+	if (isset($sipconfig['port']))
+		$port = $sipconfig['port'];
 
 	$conf = <<<EOD
 	
@@ -119,9 +121,17 @@ relaxdtmf=yes
 alwaysauthreject=yes
 videosupport=yes
 
-
 EOD;
 
+	// registration options
+	if (isset($sipconfig['defaultexpiry']))
+		$conf .= "defaultexpiry={$sipconfig['defaultexpiry']}\n";
+	if (isset($sipconfig['minexpiry']))
+		$conf .= "minexpiry={$sipconfig['minexpiry']}\n";
+	if (isset($sipconfig['maxexpiry']))
+		$conf .= "maxexpiry={$sipconfig['maxexpiry']}\n";
+	$conf .= "\n";
+	
 	// nat config
 	$lancfg = $config['interfaces']['lan'];
 
@@ -190,6 +200,14 @@ EOD;
 		
 		$conf .= "nat=no\n";
 		
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
+		
+		// qualify options
 		if ($p['qualify'] == "0") {
 			$conf .= "qualify=no\n";
 		} else if ($p['qualify']) {
@@ -201,14 +219,15 @@ EOD;
 		$conf .= "canreinvite=no\n";
 		$conf .= "insecure=port,invite\n";
 		
+		// dtmf options
 		if ($p['dtmfmode']) {
 			$conf .= "dtmfmode={$p['dtmfmode']}\n";
 		} else {
 			$conf .= "dtmfmode=auto\n";
 		}
-			
+		
+		// codecs	
 		$conf .= "disallow=all\n";
-	
 		if(is_array($p['codec'])) {
 			foreach ($p['codec'] as $codec)
 				$conf .= "allow=$codec\n";
@@ -237,6 +256,7 @@ EOD;
 		if ($lancfg['topology'] != "public")
 			$conf .= "nat=yes\n";
 			
+		// language selection
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {

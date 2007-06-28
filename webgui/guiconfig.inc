@@ -579,6 +579,7 @@ function display_channel_language_selector($current_language, $colspan, $idprefi
 			><?=$friendly;?></option>
 			<? endforeach; ?>
 			</select>
+			<br><span class="vexpl">Audio prompts will be played back in the selected language for this account.</span>
 		</td>
 	</tr><?
 }

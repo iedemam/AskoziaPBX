@@ -65,6 +65,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
 	$pconfig['pattern'] = $a_sipproviders[$id]['pattern'];
 	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
+	$pconfig['language'] = $a_sipproviders[$id]['language'];
 	$pconfig['qualify'] = $a_sipproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
@@ -138,6 +139,7 @@ if ($_POST) {
 		$sp[$_POST['prefixorpattern']] = $_POST['prefixpattern'];
 
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
+		$sp['language'] = $_POST['language'];
 		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
@@ -219,7 +221,14 @@ if ($_POST) {
 					<br>Defaults to host entered above.</span>
 				</td>
 			</tr>
+			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
+			<tr> 
+				<td valign="top" class="vncell">Registration</td>
+				<td colspan="2" class="vtable">
+					<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($pconfig['noregister']) echo "checked"; ?>>Do not register with this provider.
+				</td>
+			</tr>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>
 				<td colspan="2" class="vtable">
@@ -231,12 +240,6 @@ if ($_POST) {
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
-			<tr> 
-				<td valign="top" class="vncell">Misc. Options</td>
-				<td colspan="2" class="vtable">
-					<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($pconfig['noregister']) echo "checked"; ?>>Do not register with this provider.
-				</td>
-			</tr>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

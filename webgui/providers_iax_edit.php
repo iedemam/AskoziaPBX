@@ -60,6 +60,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['port'] = $a_iaxproviders[$id]['port'];
 	$pconfig['prefix'] = $a_iaxproviders[$id]['prefix'];
 	$pconfig['pattern'] = $a_iaxproviders[$id]['pattern'];
+	$pconfig['language'] = $a_iaxproviders[$id]['language'];
 	$pconfig['qualify'] = $a_iaxproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
@@ -124,6 +125,7 @@ if ($_POST) {
 		
 		$sp[$_POST['prefixorpattern']] = $_POST['prefixpattern'];
 		
+		$sp['language'] = $_POST['language'];
 		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		
@@ -181,6 +183,7 @@ if ($_POST) {
 					<br><span class="vexpl">IAX proxy host URL or IP address and optional port.</span>
 				</td>
 			</tr>
+			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>
 				<td colspan="2" class="vtable">

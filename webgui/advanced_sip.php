@@ -34,10 +34,11 @@ require("guiconfig.inc");
 
 $sipconfig = &$config['services']['sip'];
 
-$pconfig['port'] = "5060";
-if (isset($sipconfig['port'])) {
-	$pconfig['port'] = $sipconfig['port'];	
-}
+$pconfig['port'] = isset($sipconfig['port']) ? $sipconfig['port'] : "5060";
+$pconfig['defaultexpiry'] = isset($sipconfig['defaultexpiry']) ? $sipconfig['defaultexpiry'] : "120";
+$pconfig['minexpiry'] = isset($sipconfig['minexpiry']) ? $sipconfig['minexpiry'] : "60";
+$pconfig['maxexpiry'] = isset($sipconfig['maxexpiry']) ? $sipconfig['maxexpiry'] : "3600";
+
 
 if ($_POST) {
 
@@ -53,10 +54,23 @@ if ($_POST) {
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}
+	
+	if (($_POST['defaultexpiry'] && !is_numericint($_POST['defaultexpiry']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"Default Registration Expiration\" timeout.";
+	}
+	if (($_POST['minexpiry'] && !is_numericint($_POST['minexpiry']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout.";
+	}
+	if (($_POST['maxexpiry'] && !is_numericint($_POST['maxexpiry']))) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout.";
+	}
 
 	if (!$input_errors) {
 		$sipconfig['port'] = $_POST['port'];
-		
+		$sipconfig['defaultexpiry'] = $_POST['defaultexpiry'];
+		$sipconfig['minexpiry'] = $_POST['minexpiry'];
+		$sipconfig['maxexpiry'] = $_POST['maxexpiry'];
+
 		write_config();
 		
 		config_lock();
@@ -66,9 +80,6 @@ if ($_POST) {
 		$retval |= sip_reload();
 		
 		$savemsg = get_std_save_message($retval);
-		
-		header("Location: advanced_sip.php");
-		exit;
 	}
 }
 ?>
@@ -81,6 +92,14 @@ if ($_POST) {
 			<td width="20%" valign="top" class="vncell">Binding Port</td>
 			<td width="80%" class="vtable">
 				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+			</td>
+		</tr>
+		<tr> 
+			<td valign="top" class="vncell">Registration Expiration Timeouts</td>
+			<td class="vtable">
+				min:&nbsp;<input name="minexpiry" type="text" class="formfld" id="minexpiry" size="10" value="<?=htmlspecialchars($pconfig['minexpiry']);?>">&nbsp;&nbsp;max:&nbsp;<input name="maxexpiry" type="text" class="formfld" id="maxexpiry" size="10" value="<?=htmlspecialchars($pconfig['maxexpiry']);?>">&nbsp;&nbsp;default:&nbsp;<input name="defaultexpiry" type="text" class="formfld" id="defaultexpiry" size="10" value="<?=htmlspecialchars($pconfig['defaultexpiry']);?>">
+				<br><span class="vexpl">The minimum, maximum and default number of seconds that incoming and outgoing registrations and subscriptions remain valid.
+				<br>Default values are 60, 3600 and 120 respectively.</span>
 			</td>
 		</tr>
 		<tr> 

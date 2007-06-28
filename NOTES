@@ -11,10 +11,11 @@ pb6
  - logs_pbx needs to replace uniqids with names
  - fix dialplan for users without voicemail accounts
  - use posted config in dialplan providers instead of making users start all over
+ - some pages post to self without redirecting!
 
 language urls:
 http://www.voip-info.org/wiki/view/Asterisk+sound+files+international#Seealso
-de: http://www.amooma.de/asterisk/service/deutsche-sprachprompts/
+de: http://www.amooma.de/asterisk/service/deutsche-sprachprompts/ (GPL)
 it: http://mirror.tomato.it/ftp/pub/asterisk/suoni_ita/
 jp: http://voip.gapj.net/index.php?Japanese
 nl: http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles

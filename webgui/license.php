@@ -97,5 +97,36 @@ require("guiconfig.inc");
 	Original zaptel infrastracture by Digium Inc., ported to FreeBSD by<br>
 	Oleksandr Tymoshenko, Dinesh Nair, Konstantin Prokazoff, Luigi Rizzo, Chris Stenton and Yuri Saltykov
 	</p>
+	<hr size="1">
+	<p>The multilingual speech prompts used in AskoziaPBX have been made available by the following groups</p>
+	<p>Dutch (<a href="http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles" target="_blank">http://www.borndigital.nl</a>)<br>
+	Copyright &copy; 2006 Born Digital<br>
+	<br>
+	English and French (<a href="http://ftp.digium.com/pub/telephony/sounds/releases" target="_blank">http://ftp.digium.com/pub/telephony/sounds/releases</a>)<br>
+	Copyright &copy; Allison Smith (<a href="http://www.theivrvoice.com" target="_blank">http://www.theivrvoice.com</a>)<br>
+	Financed by Digium, Inc. (<a href="http://www.digium.com" target="_blank">http://www.digium.com</a>)<br>
+	<br>
+	German (<a href="http://www.amooma.de/asterisk/service/deutsche-sprachprompts" target="_blank">http://www.amooma.de</a>)<br>
+	Copyright &copy; 2006 amooma GmbH<br>
+	Released under the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GPL</a><br>
+	<br>
+	Italian (<a href="http://mirror.tomato.it/ftp/pub/asterisk/suoni_ita" target="_blank">http://mirror.tomato.it</a>)<br>
+	Copyright &copy; 2006 Marco Menardi and Paola Dal Zot<br>
+	Released under the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GPL</a><br>
+	Voice: Paola Dal Zot<br>
+	<br>
+	Japanese (<a href="http://www.voip-info.jp/index.php?Japanese" target="_blank">http://www.voip-info.jp</a>)<br>
+	Copyright &copy; 2005 Takahashi<br>
+	Voice: Eri Takeda.<br>
+	Edited by VoIP-Info.jp.<br>
+	<br>
+	Spanish (<a href="http://www.voipnovatos.es/index.php?itemid=943" target="_blank">http://www.voipnovatos.es</a>)<br>
+	Copyright &copy; 2006 Alberto Sagredo Castro<br>
+	<br>
+	Swedish (<a href="http://www.danielnylander.se/asterisk-saker" target="_blank">http://www.danielnylander.se</a>)<br>
+	Copyright &copy; 2005 Daniel Nylander<br>
+	Released under the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GPL</a><br>
+	</p>
+	
 
 <?php include("fend.inc"); ?>

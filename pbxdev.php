@@ -492,51 +492,56 @@ function populate_sounds($image_name) {
 				}
 				
 				_exec("cp {$dirs['sounds']}/$distname/beep* $image_name/asterisk/sounds");
-				if ($format == "gsm")
-					_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/silence");
+				_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/silence");
 			}
 
 
 		// french
 		} else if ($sound_language == "fr") {
-			// gsm
-			$distname = "asterisk-core-sounds-$sound_language-gsm-$core_sounds_version";
-			$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
-            
-			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
-					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
-            
-			if (!file_exists("{$dirs['sounds']}/$distname")) {
-				_exec("mkdir {$dirs['sounds']}/$distname");
-				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
-			}
-            
-			foreach($sounds as $sound) {
-				_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/fr");
-			}
-			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/fr");
+			// ulaw and gsm
+			$formats = array("gsm", "ulaw");
+			foreach($formats as $format) {
+				$distname = "asterisk-core-sounds-$sound_language-$format-$core_sounds_version";
+				$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
+            	
+				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+						_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+            	
+				if (!file_exists("{$dirs['sounds']}/$distname")) {
+					_exec("mkdir {$dirs['sounds']}/$distname");
+					_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+				}
+            	
+				foreach($sounds as $sound) {
+					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/fr");
+				}
+				foreach($digits as $digit) {
+					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/fr");
+				}
 			}
 
 
 		// spanish
 		} else if ($sound_language == "es") {
-			// gsm
-			$distname = "asterisk-voces-es-v1_2-gsm-voipnovatos";
-			$disturl = "http://www.voipnovatos.es/voces";
-
-			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
-					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
-
-			if (!file_exists("{$dirs['sounds']}/$distname")) {
-				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz");
-			}
-
-			foreach ($sounds as $sound) {
-				_exec("cp {$dirs['sounds']}/$distname/es/$sound* $image_name/asterisk/sounds/es");
-			}
-			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/es/digits/$digit.* $image_name/asterisk/sounds/digits/es");
+			// gsm & 711u
+			$formats = array("gsm", "711u");
+			foreach($formats as $format) {
+				$distname = "asterisk-voces-es-v1_2-$format-voipnovatos";
+				$disturl = "http://www.voipnovatos.es/voces";
+            	
+				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+						_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+            	
+				if (!file_exists("{$dirs['sounds']}/$distname")) {
+					_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz");
+				}
+            	
+				foreach ($sounds as $sound) {
+					_exec("cp {$dirs['sounds']}/$distname/es/$sound* $image_name/asterisk/sounds/es");
+				}
+				foreach($digits as $digit) {
+					_exec("cp {$dirs['sounds']}/$distname/es/digits/$digit.* $image_name/asterisk/sounds/digits/es");
+				}
 			}
 
 
@@ -654,7 +659,7 @@ function populate_sounds($image_name) {
 	}
 	
 	// music on hold
-	$formats = array("gsm");
+	$formats = array("gsm", "ulaw");
 	foreach($formats as $format) {
 		
 		// download music on hold distributions

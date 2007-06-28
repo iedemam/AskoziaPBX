@@ -148,6 +148,7 @@ function asterisk_is_valid_prefix($prefix) {
 	return true;
 }
 
+
 function asterisk_is_valid_pattern($pattern) {
 	if (!preg_match("/^[XNZ0-9\-\[\]\.\!]+$/", $pattern)) {
 		return false;
