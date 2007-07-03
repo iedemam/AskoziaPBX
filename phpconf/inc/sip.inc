@@ -71,26 +71,15 @@ function sip_get_extensions() {
 	return $extensions;
 }
 
-function sip_get_prefixes() {
+function sip_get_dialpatterns() {
 	global $config;
 	
-	$prefixes = array();
+	$dialpatterns = array();
 	if (is_array($config['sip']['provider']))
 		foreach($config['sip']['provider'] as $provider)
-			$prefixes[] = $provider['prefix'];
+			$dialpatterns[] = $provider['dialpattern'];
 
-	return $prefixes;	
-}
-
-function sip_get_patterns() {
-	global $config;
-	
-	$patterns = array();
-	if (is_array($config['sip']['provider']))
-		foreach($config['sip']['provider'] as $provider)
-			$patterns[] = $provider['pattern'];
-
-	return $patterns;	
+	return $dialpatterns;	
 }
 
 function sip_conf_generate() {
@@ -320,7 +309,7 @@ function sip_sort_providers() {
 	usort($config['sip']['provider'], "_sipprovidercmp");	
 }
 function _sipprovidercmp($a, $b) {
-	return strcmp($a['prefix'], $b['prefix']);
+	return strcmp($a['name'], $b['name']);
 }
 
 ?>

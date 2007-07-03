@@ -103,12 +103,23 @@ EOD;
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
-		if ($p['prefix']) {
-			$conf .= "exten => _{$p['prefix']}.,1,Dial(SIP/$\{EXTEN:". strlen($p['prefix']) ."}@{$p['uniqid']},30)\n";
-			$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
-		} else if ($p['pattern']) {
-			$conf .= "exten => _{$p['pattern']},1,Dial(SIP/$\{EXTEN}@{$p['uniqid']},30)\n";
-			$conf .= "exten => _{$p['pattern']},2,Hangup()\n";
+		
+		foreach($p['dialpattern'] as $pattern) {
+			$prefix = $offset = "";
+			$exten = "$\{EXTEN}";
+			// prefix insertion
+			if (($offset = strpos($pattern, "+")) !== false) {
+				$prefix = substr($pattern, 0, $offset);
+				$pattern = substr($pattern, $offset+1);
+			}
+			// prefix deletion
+			if (($offset = strpos($pattern, "|")) !== false) {
+				$pattern = str_replace("|", "", $pattern);
+				$exten = "$\{EXTEN:$offset}";
+			}
+			
+			$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30)\n";
+			$conf .= "exten => _$pattern,2,Hangup()\n";
 		}
 		$conf .= "\n";
 	}
@@ -120,12 +131,23 @@ EOD;
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
-		if ($p['prefix']) {
-			$conf .= "exten => _{$p['prefix']}.,1,Dial(IAX2/{$p['uniqid']}/$\{EXTEN:". strlen($p['prefix']) ."},30)\n";
-			$conf .= "exten => _{$p['prefix']}.,2,Hangup()\n";
-		} else if ($p['pattern']) {
-			$conf .= "exten => _{$p['pattern']},1,Dial(IAX2/{$p['uniqid']}/$\{EXTEN},30)\n";
-			$conf .= "exten => _{$p['pattern']},2,Hangup()\n";
+
+		foreach($p['dialpattern'] as $pattern) {
+			$prefix = $offset = "";
+			$exten = "$\{EXTEN}";
+			// prefix insertion
+			if (($offset = strpos($pattern, "+")) !== false) {
+				$prefix = substr($pattern, 0, $offset);
+				$pattern = substr($pattern, $offset+1);
+			}
+			// prefix deletion
+			if (($offset = strpos($pattern, "|")) !== false) {
+				$pattern = str_replace("|", "", $pattern);
+				$exten = "$\{EXTEN:$offset}";
+			}
+			
+			$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30)\n";
+			$conf .= "exten => _$pattern,2,Hangup()\n";
 		}
 		$conf .= "\n";
 	}

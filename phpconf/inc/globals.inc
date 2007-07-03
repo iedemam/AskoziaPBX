@@ -43,7 +43,7 @@ $g = array(
     "www_path" => "/usr/local/www",
     "xml_rootobj" => "askoziapbx",
     "debug" => false,
-    "latest_config" => "1.0"
+    "latest_config" => "1.1"
 );
 
 ?>

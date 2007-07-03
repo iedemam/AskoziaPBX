@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: dialplan_providers.php 137 2007-06-21 15:43:23Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,73 +29,38 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Advanced", "IAX");
+require_once("functions.inc");
+
+$pgtitle = array("Dialplan", "Call Groups");
 require("guiconfig.inc");
 
-$iaxconfig = &$config['services']['iax'];
-
-$pconfig['port'] = isset($iaxconfig['port']) ? $iaxconfig['port'] : "4569";
 
 if ($_POST) {
 
-	unset($input_errors);
-	$pconfig = $_POST;
-
-	/* input validation */
-	$reqdfields = explode(" ", "port");
-	$reqdfieldsn = explode(",", "Port");
-	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	// is valid port
-	if ($_POST['port'] && !is_port($_POST['port'])) {
-		$input_errors[] = "A valid port must be specified.";
-	}
-
-	if (!$input_errors) {
-		$iaxconfig['port'] = $_POST['port'];
-		
-		write_config();
-		touch($d_iaxconfdirty_path);
-		header("Location: advanced_iax.php");
-		exit;
-	}
 }
 
-if (file_exists($d_iaxconfdirty_path)) {
+if (file_exists($d_extensionsconfdirty_path)) {
 	$retval = 0;
-	if (!file_exists($d_sysrebootreqd_path)) {
-		config_lock();
-		$retval |= iax_conf_generate();
-		config_unlock();
-		
-		$retval |= iax_reload();
-	}
+	config_lock();
+	$retval |= extensions_conf_generate();
+	config_unlock();
+
+	$retval |= extensions_reload();
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_iaxconfdirty_path);
+		unlink($d_extensionsconfdirty_path);
 	}
 }
 
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="advanced_iax.php" method="post" name="iform" id="iform">
+include("fbegin.inc");
+if ($input_errors)
+	print_input_errors($input_errors);
+if ($savemsg)
+	print_info_box($savemsg);
+	
+?><form action="dialplan_callgroups.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr>
-			<td width="20%" valign="top" class="vncell">Binding Port</td>
-			<td width="80%" class="vtable">
-				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
-			</td>
-		</tr>
-		<tr> 
-			<td valign="top">&nbsp;</td>
-			<td>
-				<input name="Submit" type="submit" class="formbtn" value="Save">
-			</td>
-		</tr>
 	</table>
 </form>
 <?php include("fend.inc"); ?>

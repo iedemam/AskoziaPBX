@@ -17,7 +17,7 @@
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
 	
-	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
 	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
@@ -51,18 +51,25 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['port'] && !is_port($_POST['port']))) {
+	// is valid port
+	if ($_POST['port'] && !is_port($_POST['port'])) {
 		$input_errors[] = "A valid port must be specified.";
 	}
-	
-	if (($_POST['defaultexpiry'] && !is_numericint($_POST['defaultexpiry']))) {
+	// defaultexpiry is numeric
+	if ($_POST['defaultexpiry'] && !is_numericint($_POST['defaultexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Default Registration Expiration\" timeout.";
 	}
-	if (($_POST['minexpiry'] && !is_numericint($_POST['minexpiry']))) {
+	// minexpiry is numeric
+	if ($_POST['minexpiry'] && !is_numericint($_POST['minexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout.";
 	}
-	if (($_POST['maxexpiry'] && !is_numericint($_POST['maxexpiry']))) {
+	// maxexpiry is numeric
+	if ($_POST['maxexpiry'] && !is_numericint($_POST['maxexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout.";
+	}
+	// minexpiry is less than maxexpiry
+	if ($_POST['minexpiry'] && $_POST['maxexpiry'] && ($_POST['minexpiry'] <= $_POST['maxexpiry'])) {
+		$input_errors[] = "A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout.";
 	}
 
 	if (!$input_errors) {
@@ -72,14 +79,25 @@ if ($_POST) {
 		$sipconfig['maxexpiry'] = $_POST['maxexpiry'];
 
 		write_config();
-		
+		touch($d_sipconfdirty_path);
+		header("Location: advanced_sip.php");
+		exit;
+	}
+}
+
+if (file_exists($d_sipconfdirty_path)) {
+	$retval = 0;
+	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= sip_conf_generate();
 		config_unlock();
 		
 		$retval |= sip_reload();
-		
-		$savemsg = get_std_save_message($retval);
+	}
+	
+	$savemsg = get_std_save_message($retval);
+	if ($retval == 0) {
+		unlink($d_sipconfdirty_path);
 	}
 }
 ?>

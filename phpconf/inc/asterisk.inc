@@ -70,7 +70,7 @@ function asterisk_configure() {
 	if ($g['booting']) echo " - executing Asterisk...";
 	$res |= mwexec("/usr/local/sbin/asterisk");
 	if ($g['booting']) echo "done\n";
-	sleep(5);
+	sleep(3);
 	if ($g['booting']) echo " - increasing verbosity...";
 	$res |= mwexec("/usr/local/sbin/asterisk -rx \"core set verbose 3\"");
 	if ($g['booting']) echo "done\n";
@@ -141,15 +141,9 @@ function asterisk_is_valid_username($username) {
 	return true;
 }
 
-function asterisk_is_valid_prefix($prefix) {
-	if (!is_numericint($prefix))
-		return false;
-
+function asterisk_is_valid_dialpattern($dialpattern) {
 	return true;
-}
-
-
-function asterisk_is_valid_pattern($pattern) {
+	/*
 	if (!preg_match("/^[XNZ0-9\-\[\]\.\!]+$/", $pattern)) {
 		return false;
 	}
@@ -157,7 +151,7 @@ function asterisk_is_valid_pattern($pattern) {
 		((strpos($pattern, "]") !== false) && (strpos($pattern, "[") === false))) {
 		return false;
 	}
-	return true;
+	return true;*/
 }
 
 function asterisk_get_extensions() {
@@ -188,21 +182,12 @@ function asterisk_get_phones() {
 	);
 }
 
-function asterisk_get_prefixes() {
+function asterisk_get_dialpatterns() {
 	global $config;
 
 	return array_merge(
-		sip_get_prefixes(),
-		iax_get_prefixes()
-	);
-}
-
-function asterisk_get_patterns() {
-	global $config;
-
-	return array_merge(
-		sip_get_patterns(),
-		iax_get_patterns()
+		sip_get_dialpatterns(),
+		iax_get_dialpatterns()
 	);
 }
 
@@ -232,12 +217,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 	
 	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
-		$dial = "exten => $exten,1,".
+		$dial = "exten => s,1,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']})\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
-		$dial = "exten => $exten,1,".
+		$dial = "exten => s,1,".
 			"Macro(vm|IAX2/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {

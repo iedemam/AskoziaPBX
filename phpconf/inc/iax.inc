@@ -71,26 +71,15 @@ function iax_get_extensions() {
 	return $extensions;
 }
 
-function iax_get_prefixes() {
+function iax_get_dialpatterns() {
 	global $config;
 	
-	$prefixes = array();
+	$dialpatterns = array();
 	if (is_array($config['iax']['provider']))
 		foreach($config['iax']['provider'] as $provider)
-			$prefixes[] = $provider['prefix'];
+			$dialpatterns[] = $provider['dialpattern'];
 
-	return $prefixes;
-}
-
-function iax_get_patterns() {
-	global $config;
-	
-	$patterns = array();
-	if (is_array($config['iax']['provider']))
-		foreach($config['iax']['provider'] as $provider)
-			$patterns[] = $provider['pattern'];
-
-	return $patterns;
+	return $dialpatterns;
 }
 
 function iax_conf_generate() {
@@ -253,7 +242,7 @@ function iax_sort_providers() {
 	usort($config['iax']['provider'], "_iaxprovidercmp");	
 }
 function _iaxprovidercmp($a, $b) {
-	return strcmp($a['prefix'], $b['prefix']);
+	return strcmp($a['name'], $b['name']);
 }
 
 ?>

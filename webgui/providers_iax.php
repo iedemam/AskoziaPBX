@@ -79,7 +79,6 @@ if ($_GET['act'] == "del") {
 			}
 		}
 
-
 		write_config();
 		touch($d_iaxconfdirty_path);
 		header("Location: providers_iax.php");
@@ -113,7 +112,7 @@ if (file_exists($d_iaxconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="20%" class="listhdrr">Prefix / Pattern</td>
+		<td width="20%" class="listhdrr">Pattern(s)</td>
 		<td width="25%" class="listhdrr">Name</td>		
 		<td width="20%" class="listhdrr">Username</td>
 		<td width="25%" class="listhdr">Host</td>
@@ -123,10 +122,12 @@ if (file_exists($d_iaxconfdirty_path)) {
 	<?php $i = 0; foreach ($a_iaxproviders as $sp): ?>
 	<tr>
 		<td class="listlr"><?
-			if ($sp['prefix']) 
-				echo htmlspecialchars($sp['prefix']);
-			else if ($sp['pattern'])
-				echo htmlspecialchars($sp['pattern']);?></td>
+			$n = count($sp['dialpattern']);
+			echo htmlspecialchars($sp['dialpattern'][0]);
+			for($ii = 1; $ii < $n; $ii++) {
+				echo "<br>" . htmlspecialchars($sp['dialpattern'][$ii]);
+			}
+		?>&nbsp;</td>
 		<td class="listbg"><?=htmlspecialchars($sp['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($sp['host']);?>&nbsp;</td>

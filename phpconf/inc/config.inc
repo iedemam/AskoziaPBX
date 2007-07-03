@@ -246,6 +246,42 @@ function convert_config() {
 		echo "Converting configuration... ";
 	
 	/* convert 1.0 -> 1.1 */
+	if ($config['version'] == "1.0") {
+
+		// update sip provider prefixes and patterns
+		$n = count($config['sip']['provider']);
+		for($i = 0; $i < $n; $i++) {
+			$p = &$config['sip']['provider'][$i];
+			
+			$p['dialpattern'] = array();
+			if ($p['prefix']) {
+				$p['dialpattern'][] = $p['prefix'] . "|.";
+				unset($p['prefix']);
+			}
+			if ($p['pattern']) {
+				$p['dialpattern'][] = $p['pattern'];
+				unset($p['pattern']);
+			}
+		}
+
+		// update iax provider prefixes and patterns
+		$n = count($config['iax']['provider']);
+		for($i = 0; $i < $n; $i++) {
+			$p = &$config['iax']['provider'][$i];
+			
+			$p['dialpattern'] = array();
+			if ($p['prefix']) {
+				$p['dialpattern'][] = $p['prefix'] . "|.";
+				unset($p['prefix']);
+			}
+			if ($p['pattern']) {
+				$p['dialpattern'][] = $p['pattern'];
+				unset($p['pattern']);
+			}
+		}
+		
+		$config['version'] = "1.1";
+	}
 	
 	write_config();
 	

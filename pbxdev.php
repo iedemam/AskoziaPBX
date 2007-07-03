@@ -35,7 +35,7 @@
 
 $php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.5";
+$asterisk_version	= "asterisk-1.4.6";
 $zaptel_version		= "zaptel";
 $msmtp_version		= "msmtp-1.4.11";
 
@@ -49,6 +49,10 @@ $sounds				= explode(" ",
 						"vm-intro vm-theperson vm-is vm-goodbye");
 $digits				= explode(" ", "0 1 2 3 4 5 6 7 8 9");
 $musiconhold		= explode(" ", "fpm-calm-river");
+
+// --[ modules ]---------------------------------------------------------------
+
+$low_power_modules= explode(" ", "codec_speex.so codec_ilbc.so");
 
 // --[ image padding ]---------------------------------------------------------
 
@@ -105,6 +109,8 @@ function prepare_environment() {
 	global $dirs;
 	
 	_exec("cd {$dirs['tools']}; gcc -o sign -lcrypto sign.c");
+	_exec("cd /usr/ports/audio/speex; make install");
+	_exec("cd /usr/ports/net/ilbc; make install");
 }
 
 function patch_kernel() {
@@ -749,6 +755,7 @@ function package($platform, $image_name) {
 	global $dirs;
 	global $mfsroot_pad, $asterisk_pad, $image_pad;
 	global $zaptel_version, $asterisk_version;
+	global $low_power_modules;
 		
 	_set_permissions($image_name);
 	

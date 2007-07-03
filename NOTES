@@ -1,36 +1,31 @@
 pb6
- - add iax2 auth options
-   - pubkey import
-   - md5
- - 400p card working, generic or not
- - sshd + goodies dev image
- - dialplan (still needs (de)select all)
- - need to really check cdrs, uniqid-to-name, summary page
+new features
+ - call groups
+ - get call parking working or remove it!
+ - status, channels
+
+fixes
  - is_valid_xxx checks need to be completed!
  - need a better way to replace uniqids with names
  - logs_pbx needs to replace uniqids with names
  - fix dialplan for users without voicemail accounts
  - use posted config in dialplan providers instead of making users start all over
- - some pages post to self without redirecting!
 
-language urls:
-http://www.voip-info.org/wiki/view/Asterisk+sound+files+international#Seealso
-de: http://www.amooma.de/asterisk/service/deutsche-sprachprompts/ (GPL)
-it: http://mirror.tomato.it/ftp/pub/asterisk/suoni_ita/
-jp: http://voip.gapj.net/index.php?Japanese
-nl: http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles
-es: http://www.voipnovatos.es/index.php?itemid=943
-se: http://www.danielnylander.se/asterisk-saker/
-
-// to do
-cn: http://www.iaxtalk.com/asterisk_sounds_cn.zip
-en-uk: http://www.enicomms.com/cutglassivr/
-no: http://voop.org/files/
+improvements
+ - dialplan (still needs (de)select all)
+ - improve module population in pbxdev
+ - sorting needs to be merged...not sorted-sip then sorted-iax
+ - incoming only info for providers
+// XXX logic from patterns still needs to be checked!!!
+// XXX do get_patterns() functions really work now that everything is an array
+// XXX input checks on patterns
 
 
 pb7
  - followme
- - call groups
+ - add iax2 auth options
+   - pubkey import
+   - md5
 
 pb8
  - privacy with voicemail forward
@@ -47,47 +42,14 @@ Docs:
  - user documentation
 
 - get "advanced mode" working
-  - note: whole conf files encoded in base64 and stored in xml conf
-  - note: editor needs to be merged with exec.php
- - provider to provider access with pin code
- - access able to be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
- - QoS options, such as jitterbuffer and packet types supported
- - dialplan is a movable grid
-- get call parking working
+- provider to provider access with pin code
+- access able to be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
+- QoS options, such as jitterbuffer and packet types supported
+- dialplan is a movable grid
+
 - testing / performance mode
 - remove junk from manager output and add return values to asterisk_exec()
 - get indications.conf working
 - figure out config xml single var irregularities (empty defines showing up)
 - better field checks!
 - url given in console menu should match port given in gui (m0n0wall bug)
-
-? ajax asteierk console
-
------------------------------------------------------------------------
-
-Config Snippets:
-
-<dialplan>
-	<group>
-		<name>Michael I</name>
-		<type>sequential</type>
-		<groupextension>SIP-PHONE-23lkjfd3209jf20w9djf</groupextension>
-		<groupextension>SIP-PHONE-4kjf38jjlk3jw09dj2ks</groupextension>
-	</group>
-	<group>
-		<name>Find Me</name>
-		<type>parallel</type>
-		<groupextension>SIP-PHONE-23lkjfd3209jf20w9djf</groupextension>
-		<groupextension>SIP-PHONE-4kjf38jjlk3jw09dj2ks</groupextension>
-	</group>
-	
-	<quickdial>
-		...
-	</quickdial>
-	
-	<customextension>
-		...
-	</customextension>
-<dialplan>
-
-	

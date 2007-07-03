@@ -1,5 +1,13 @@
 2007.06.xx - pb6
  - improved sound packaging to finally include only what is necessary
+ - dialplan now forwards all incoming calls to the defined "incoming extension"
+   - earlier, only calls to the registered extension for this provider would be forwarded
+   - ATAs, setup as providers, need this for calls to be properly routed
+ - help messages now only appear once per page when multiple instances of the same field are present
+ - normalized some pages' POST and redirection routines
+ - multiple patterns may now be entered
+   - prefixes have been removed
+   - existing configurations will be converted during the first boot
  - added prompts for the following languages:
    - Dutch (gsm)
    - French (gsm/ulaw)
@@ -9,7 +17,9 @@
    - Spanish (gsm/ulaw)
    - Swedish (gsm)
  - added registration timeout options to sip providers
+ - added iLBC and Speex codecs
  - updated base system to FreeBSD 6.2-RELEASE-p5
+ - updated Asterisk to 1.4.6
 
 2007.06.21 - pb5
  - added "qualify" options to sip/iax phones/providers

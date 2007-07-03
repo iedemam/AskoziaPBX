@@ -288,6 +288,16 @@ a {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+.listhelptopic {
+	font-size: 11px;
+	background-color: #777777;
+	padding-right: 16px;
+	padding-left: 6px;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 .optsect_t {
 	border-right: 1px solid #999999;
 	background-color: #435370;

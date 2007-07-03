@@ -17,7 +17,7 @@
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
 	
-	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
 	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
@@ -42,10 +42,10 @@ if ($_POST) {
 	$post_keys = array_keys($_POST);
 
 	$sip_provider_incomingextension_pairs = array();
-	$sip_provider_prefixes = array();
+	$sip_provider_dialpatterns = array();
 	$sip_phone_pairs = array();
 	$iax_provider_incomingextension_pairs = array();
-	$iax_provider_prefixes = array();
+	$iax_provider_dialpatterns = array();
 	$iax_phone_pairs = array();
 
 	foreach($post_keys as $post_key) {
@@ -69,32 +69,24 @@ if ($_POST) {
 				$iax_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
 			}
 		
-		// prefix or pattern?
-		} else if (strpos($key_split[1], "prefixorpattern") !== false) {
+		// save dialpatterns
+		} else if (strpos($key_split[1], "dialpattern") !== false) {
+
+			$dialpatterns = split_and_clean_patterns($_POST[$post_key]);
 			
-			$prefixorpattern = $_POST[$post_key];
-			$prefixpatternkey = $key_split[0] . ":" . "prefixpattern";
-			$prefixpattern = $_POST[$prefixpatternkey];
-			
-			if ($prefixorpattern == "prefix") {
-				if (!asterisk_is_valid_prefix($prefixpattern)) {
-					$input_errors[] = "A valid prefix must be specified for \"" .
+			foreach($dialpatterns as $pattern) {
+				if (!asterisk_is_valid_dialpattern($pattern)) {
+					$input_errors[] = "An invalid dial-pattern ($pattern) was found for \"" .
 					 	asterisk_uniqid_to_name($key_split[0]) . "\".";
-				}
-			} else if ($prefixorpattern == "pattern") {
-				if (!asterisk_is_valid_pattern($prefixpattern)) {
-					$input_errors[] = "A valid pattern must be specified for \"" .
-					 	asterisk_uniqid_to_name($key_split[0]) . "\".";
-				}
+				}	
 			}
 			
 			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
-				$sip_provider_prefixes[$key_split[0]] = array($prefixorpattern, $prefixpattern);
+				$sip_provider_dialpatterns[$key_split[0]] = $dialpatterns;
 
 			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
-				$iax_provider_prefixes[$key_split[0]] = array($prefixorpattern, $prefixpattern);
+				$iax_provider_dialpatterns[$key_split[0]] = $dialpatterns;
 			}
-
 		}
 	}
 
@@ -112,20 +104,16 @@ if ($_POST) {
 				unset($config['iax']['phone'][$i]['provider']);
 		}
 		
-		// clear provider prefixes and patterns
+		// clear provider patterns
 		$n = count($config['sip']['provider']);
 		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['sip']['provider'][$i]['prefix']))
-				unset($config['sip']['provider'][$i]['prefix']);
-			if (isset($config['sip']['provider'][$i]['pattern']))
-				unset($config['sip']['provider'][$i]['pattern']);
+			if (isset($config['sip']['provider'][$i]['dialpattern']))
+				unset($config['sip']['provider'][$i]['dialpattern']);
 		}
 		$n = count($config['iax']['provider']);
 		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['iax']['provider'][$i]['prefix']))
-				unset($config['iax']['provider'][$i]['prefix']);
-			if (isset($config['iax']['provider'][$i]['pattern']))
-				unset($config['iax']['provider'][$i]['pattern']);
+			if (isset($config['iax']['provider'][$i]['dialpattern']))
+				unset($config['iax']['provider'][$i]['dialpattern']);
 		}
 		
 		// remap phones to providers
@@ -144,12 +132,12 @@ if ($_POST) {
 			$config['iax']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
 		}
 		
-		// remap prefixes and patterns
-		foreach($sip_provider_prefixes as $providerid => $pair) {
-			$config['sip']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
+		// remap dialpatterns
+		foreach($sip_provider_dialpatterns as $providerid => $patterns) {
+			$config['sip']['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
 		}
-		foreach($iax_provider_prefixes as $providerid => $pair) {
-			$config['iax']['provider'][$uniqid_map[$providerid]][$pair[0]] = $pair[1];
+		foreach($iax_provider_dialpatterns as $providerid => $patterns) {
+			$config['iax']['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
 		}
 		
 		write_config();
@@ -158,7 +146,6 @@ if ($_POST) {
 		exit;
 	}
 }
-
 
 if (file_exists($d_extensionsconfdirty_path)) {
 	$retval = 0;
@@ -173,11 +160,14 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		unlink($d_extensionsconfdirty_path);
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-	<form action="dialplan_providers.php" method="post" name="iform" id="iform">
+
+include("fbegin.inc");
+if ($input_errors)
+	print_input_errors($input_errors);
+if ($savemsg)
+	print_info_box($savemsg);
+	
+	?><form action="dialplan_providers.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 
 		$provider_count = 0;
@@ -194,7 +184,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 					(SIP:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
 				</td>
 			</tr>
-			<? display_provider_prefix_pattern_editor($provider['prefix'], $provider['pattern'], 1, $provider['uniqid']); ?>
+			<? display_provider_dialpattern_editor($provider['dialpattern'], 1, $provider['uniqid']); ?>
 			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
 			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 			<tr> 
@@ -215,7 +205,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 					(IAX:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
 				</td>
 			</tr>
-			<? display_provider_prefix_pattern_editor($provider['prefix'], $provider['pattern'], 1, $provider['uniqid']); ?>
+			<? display_provider_dialpattern_editor($provider['dialpattern'], 1, $provider['uniqid']); ?>
 			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
 			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 			<tr> 
@@ -229,7 +219,28 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			</tr><?
 			
 		} else {
-			?><tr> 
+			?><tr>
+				<td colspan="2" valign="top" class="listhelptopic">Help</td>
+			</tr>
+			<tr>
+				<td width="20%" valign="top" class="vncell">Dialing Pattern(s)</td>
+				<td width="80%" class="vtable">
+					<span class="vexpl"><?=$help[$help_language]["display_provider_dialpattern_editor"]; ?></span>
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" valign="top" class="vncell">Incoming Extension</td>
+				<td width="80%" class="vtable">
+					<span class="vexpl"><?=$help[$help_language]["display_incoming_extension_selector"]; ?></span>
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" valign="top" class="vncell">Phones</td>
+				<td width="80%" class="vtable">
+					<span class="vexpl"><?=$help[$help_language]["display_phone_access_selector"]; ?></span>
+				</td>
+			</tr>
+			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
 					<input name="Submit" type="submit" class="formbtn" value="Save">

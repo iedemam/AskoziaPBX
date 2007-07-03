@@ -40,6 +40,7 @@ if (!$omit_nocacheheaders) {
 /* parse the configuration and include all configuration functions */
 require_once("config.inc");
 require_once("functions.inc");
+require_once("help.inc");
 
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
@@ -334,6 +335,13 @@ function print_r_html($data, $return_data=true) {
         return $data;
 }
 
+function split_and_clean_patterns($patterns_string) {
+	$patterns_string = str_replace(" ", "", $patterns_string);
+	$patterns = preg_split("/[\x0D\x0A]+/", $patterns_string, -1, PREG_SPLIT_NO_EMPTY);
+	
+	return $patterns;
+}
+
 
 function display_audio_codec_selector($enabled_codecs) {
 	global $audio_codecs;
@@ -388,6 +396,7 @@ function display_video_codec_selector($enabled_codecs) {
 }
 
 function display_incoming_extension_selector($current_incoming_extension, $colspan, $idprefix=false) {
+	global $help, $help_language;
 	
 	?><tr>
 		<td width="20%" valign="top" class="vncell">Incoming Extension</td>
@@ -438,10 +447,14 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				<option>no incoming extensions available</option>
 				<?php endif; ?>
 
-            </select>
-			<br><span class="vexpl">Directs incoming phone calls from this provider to the selected extension.
-			<br><strong><span class="red">Note:</span></strong>&nbsp;Permission must still be given to this phone for it to place outgoing calls.</span>
-		</td>
+            </select><?
+
+		// multiple instances don't need help for every instance
+		if (!$idprefix) {				
+			?><br><span class="vexpl"><?=$help[$help_language]["display_incoming_extension_selector"]; ?></span><?
+		}
+
+		?></td>
 	</tr><?
 }
 
@@ -492,6 +505,7 @@ function display_provider_access_selector($current_providers, $colspan) {
 }
 
 function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=false) {
+	global $help, $help_language;
 	
 	$a_phones = asterisk_get_phones();
 
@@ -521,51 +535,52 @@ function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=fal
 			}
 		}
 		
-		?><br>
-		<span class="vexpl">Checked phones will have access to this provider.</span>
-		</td>
+		// multiple instances don't need help for every instance
+		if (!$idprefix) {				
+			?><br><span class="vexpl"><?=$help[$help_language]["display_phone_access_selector"]; ?></span><?
+		}
+		
+		?></td>
 	</tr><?
 }
 
-function display_provider_prefix_pattern_editor($current_prefix, $current_pattern, $colspan, $idprefix=false) {
+function display_provider_dialpattern_editor($current_patterns, $colspan, $idprefix=false) {
+	global $help, $help_language;
+	
+	$n = count($current_patterns);
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncellreq">Dialing Prefix or Pattern</td>
-		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
-		<? if ($idprefix): ?>
-			<select name="<?=$idprefix;?>:prefixorpattern" class="formfld" id="<?=$idprefix;?>:prefixorpattern">
-		<? else: ?>
-			<select name="prefixorpattern" class="formfld" id="prefixorpattern">
-		<? endif; ?>
-				<option value="prefix" <? if ($current_prefix) echo "selected"; ?>>prefix</option>
-				<option value="pattern" <? if ($current_pattern) echo "selected"; ?>>pattern</option>
-			</select>&nbsp;<?
-			
-			if ($idprefix) {
-				?><input name="<?=$idprefix;?>:prefixpattern" type="text" class="formfld" id="<?=$idprefix;?>:prefixpattern" size="40" value="<?
-			} else {
-				?><input name="prefixpattern" type="text" class="formfld" id="prefixpattern" size="40" value="<?
-			}
+		<td width="20%" valign="top" class="vncell">Dialing Pattern(s)</td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
 
-			if ($current_prefix) {
-				echo htmlspecialchars($current_prefix);
-			} else if ($current_pattern) {
-				echo htmlspecialchars($current_pattern);
-			}?>">
-			<br><span class="vexpl">Prefixes remove matched digits from the dialed number, patterns keep them.<br>
-			<ul>
-				<li>X - matches digits 0-9</li>
-				<li>Z - matches digits 1-9</li>
-				<li>N - matches digits 2-9</li>
-				<li>[13-5] - matches any digit in the brackets (here, 1,3,4,5)</li>
-				<li>. - matches one or more characters</li>
-				<li>! - matches zero or more characters immediately</li>
-			</ul></span>
-		</td>
+		// multiple instances need a prefixing identifier
+		if ($idprefix) {
+			$idstring = $idprefix . ":dialpattern";
+		} else {
+			$idstring = "dialpattern";
+		}
+
+			?><textarea name="<?=$idstring;?>" cols="40" rows="<?=$n;?>" id="<?=$idstring;?>" class="notes"><?
+
+			// print the pattern(s)
+			if (is_array($current_patterns)) {
+				echo htmlspecialchars($current_patterns[0]);
+				for ($i = 1; $i < $n; $i++) {
+					echo "\n" . htmlspecialchars($current_patterns[$i]);
+				}
+			}
+			?></textarea><?
+			
+		// multiple instances don't need help for every instance
+		if (!$idprefix) {				
+			?><br><span class="vexpl"><?=$help[$help_language]["display_provider_dialpattern_editor"]; ?></span><?
+		}
+		
+		?></td>
 	</tr><?
 }
 
-function display_channel_language_selector($current_language, $colspan, $idprefix=false) {
+function display_channel_language_selector($current_language, $colspan) {
 	global $prompt_languages;
 
 	?><tr> 

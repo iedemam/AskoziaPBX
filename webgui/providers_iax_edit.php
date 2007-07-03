@@ -59,7 +59,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['host'] = $a_iaxproviders[$id]['host'];
 	$pconfig['port'] = $a_iaxproviders[$id]['port'];
 	$pconfig['prefix'] = $a_iaxproviders[$id]['prefix'];
-	$pconfig['pattern'] = $a_iaxproviders[$id]['pattern'];
+	$pconfig['dialpattern'] = $a_iaxproviders[$id]['dialpattern'];
 	$pconfig['language'] = $a_iaxproviders[$id]['language'];
 	$pconfig['qualify'] = $a_iaxproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
@@ -70,9 +70,9 @@ if (isset($id) && $a_iaxproviders[$id]) {
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['dialpattern'] = split_and_clean_patterns($_POST['dialpattern']);
 	$pconfig = $_POST;
 	$pconfig['codec'] = array("ulaw", "gsm");
-	$pconfig[$_POST['prefixorpattern']] = $_POST['prefixpattern'];
 	
 	parse_str($_POST['a_codecs']);
 	parse_str($_POST['v_codecs']);
@@ -96,19 +96,13 @@ if ($_POST) {
 		$input_errors[] = "A valid port must be specified.";
 	}	
 	
-	if ($_POST['prefixorpattern'] == "prefix") {
-		if (!isset($id) && in_array($_POST['prefixpattern'], asterisk_get_prefixes())) {
-			$input_errors[] = "A provider with this prefix already exists.";
-		} else if (!asterisk_is_valid_prefix($_POST['prefixpattern'])) {
-			$input_errors[] = "A valid prefix must be specified.";
-		}	
-	} else if ($_POST['prefixorpattern'] == "pattern") {
-		if (!isset($id) && in_array($_POST['prefixpattern'], asterisk_get_patterns())) {
-			$input_errors[] = "A provider with this pattern already exists.";
-		} else if (!asterisk_is_valid_pattern($_POST['prefixpattern'])) {
-			$input_errors[] = "A valid pattern must be specified.";
-		}
+	/* pattern checking!!
+	if (!isset($id) && in_array($_POST['dialpattern'], asterisk_get_dialpatterns())) {
+		$input_errors[] = "A provider with this dial-pattern already exists.";
+	} else if (!asterisk_is_valid_dialpattern($_POST['dialpattern'])) {
+		$input_errors[] = "A valid dial-pattern must be specified.";
 	}
+	*/
 	
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
@@ -123,7 +117,7 @@ if ($_POST) {
 		$sp['host'] = $_POST['host'];
 		$sp['port'] = $_POST['port'];
 		
-		$sp[$_POST['prefixorpattern']] = $_POST['prefixpattern'];
+		$sp['dialpattern'] = $_POST['dialpattern'];
 		
 		$sp['language'] = $_POST['language'];
 		$sp['qualify'] = $_POST['qualify'];
@@ -160,7 +154,7 @@ if ($_POST) {
 					<br><span class="vexpl">Descriptive name of this provider.</span>
 				</td>
 			</tr>
-			<? display_provider_prefix_pattern_editor($pconfig['prefix'], $pconfig['pattern'], 2); ?>
+			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncellreq">Username</td>
 				<td colspan="2" class="vtable">
