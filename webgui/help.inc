@@ -43,15 +43,15 @@ $help = array(
 			"Checked phones will have access to this provider.",
 
 		"display_provider_dialpattern_editor" => 
-			"Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\")<br>\n".
+			"Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\"). If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n".
 			"<ul>\n".
-			"\t<li>X - matches digits 0-9</li>\n".
-			"\t<li>Z - matches digits 1-9</li>\n".
-			"\t<li>N - matches digits 2-9</li>\n".
-			"\t<li>[13-5] - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
-			"\t<li>. - matches one or more characters (not allowed before | or +)</li>\n".
-			"\t<li>| - removes a prefix (i.e. \"1|NXX\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
-			"\t<li>+ - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n".
+			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n".
+			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|NXX\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
+			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
+			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
+			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
+			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
+			"\t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n".
 			"</ul>\n"
 	)
 	

@@ -77,7 +77,7 @@ function iax_get_dialpatterns() {
 	$dialpatterns = array();
 	if (is_array($config['iax']['provider']))
 		foreach($config['iax']['provider'] as $provider)
-			$dialpatterns[] = $provider['dialpattern'];
+			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
 
 	return $dialpatterns;
 }

@@ -95,19 +95,25 @@ if ($_POST) {
 	if (($_POST['port'] && !is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}	
-	
-	/* pattern checking!!
-	if (!isset($id) && in_array($_POST['dialpattern'], asterisk_get_dialpatterns())) {
-		$input_errors[] = "A provider with this dial-pattern already exists.";
-	} else if (!asterisk_is_valid_dialpattern($_POST['dialpattern'])) {
-		$input_errors[] = "A valid dial-pattern must be specified.";
-	}
-	*/
-	
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
-	// TODO: more checking on optional fields
+
+	// pattern validation
+	if (isset($id)) {
+		$current_provider_id = $a_sipproviders[$id]['uniqid'];
+	}
+	if (is_array($_POST['dialpattern'])) {
+		foreach($_POST['dialpattern'] as $p) {
+			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
+				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
+			}
+			if (!asterisk_is_valid_dialpattern($p, &$internal_error)) {
+				$input_errors[] = "The dial-pattern \"$p\" is invalid. $internal_error";
+			}
+		}
+	}
+	
 
 	if (!$input_errors) {
 		$sp = array();		

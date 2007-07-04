@@ -141,17 +141,98 @@ function asterisk_is_valid_username($username) {
 	return true;
 }
 
-function asterisk_is_valid_dialpattern($dialpattern) {
+function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $current_provider_id=false) {
+	$allpatterns = asterisk_get_dialpatterns();
+
+	if (is_array($allpatterns)) {
+		foreach ($allpatterns as $provider_id => $patterns) {
+			if ($provider_id == $current_provider_id) {
+				continue;
+			}
+			if (in_array($dialpattern, $patterns)) {
+				$return_provider_name = asterisk_uniqid_to_name($provider_id);
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
+function asterisk_is_valid_dialpattern($dialpattern, &$error) {
+	
+	// invalid character
+	if (!preg_match("/^[XNZ0-9\-\[\]\.\|\+]+$/", $dialpattern)) {
+		$error = "It contains an invalid character";
+		return false;
+	}
+	
+	// doubled character
+	if (substr_count($dialpattern, "|") > 1) {
+		$error = "It contains an doubled \"|\" character, only one is allowed.";
+		return false;
+	}
+	if (substr_count($dialpattern, "+") > 1) {
+		$error = "It contains an doubled \"+\" character, only one is allowed.";
+		return false;
+	}
+	if (substr_count($dialpattern, "-") > 1) {
+		$error = "It contains an doubled \"-\" character, only one is allowed.";
+		return false;
+	}
+	
+	// bracketing
+	$len = strlen($dialpattern);
+	$open = false;
+	$open_index = 0;
+	for($i = 0; $i < $len; $i++) {
+		if ($dialpattern[$i] == "[") {
+			if ($open) {
+				$error = "Nested square brackets are not allowed.";
+				return false;
+			} else {
+				$open = true;
+				$open_index = $i;
+			}
+		} else if ($dialpattern[$i] == "]") {
+			if (!$open) {
+				$error = "Unmatched square bracket.";
+				return false;
+			} else if (($i - $open_index) < 3) {
+				$error = "Brackets are not needed for less than 2 characters.";
+				return false;
+			} else {
+				$open = false;
+			}
+		}
+	}
+	
+	// invalid characters in brackets
+	/* FIXME not working...
+	if (preg_match("/\[[XNZ\.\|\+]+\]/", $dialpattern)) {
+		$error = "An invalid character is contained within square brackets, only digits and hyphens are allowed.";
+		return false;
+	}
+	*/
+	
+	// invalid appended prefix
+	if (($plus_offset = strpos($dialpattern, "+")) !== false) {
+		if (!preg_match("/^[0-9]+\+/", $dialpattern)) {
+			$error = "Appended prefixes may only contain digits.";
+			return false;
+		}
+		$dialpattern = substr($dialpattern, $plus_offset+1);
+	}
+	
+	// invalid chopped prefix
+	if (($pipe_offset = strpos($dialpattern, "|")) !== false) {
+		if (strpos(substr($dialpattern, 0, $pipe_offset), ".") !== false) {
+			$error = "The wildcard character \".\" is not allowed before a prefix which is to be removed.";
+			return false;
+		}
+	}
+
 	return true;
-	/*
-	if (!preg_match("/^[XNZ0-9\-\[\]\.\!]+$/", $pattern)) {
-		return false;
-	}
-	if (((strpos($pattern, "[") !== false) && (strpos($pattern, "]") === false)) ||
-		((strpos($pattern, "]") !== false) && (strpos($pattern, "[") === false))) {
-		return false;
-	}
-	return true;*/
 }
 
 function asterisk_get_extensions() {
@@ -217,12 +298,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 	
 	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
-		$dial = "exten => s,1,".
+		$dial = "exten => $exten,1,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']})\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
-		$dial = "exten => s,1,".
+		$dial = "exten => $exten,1,".
 			"Macro(vm|IAX2/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {

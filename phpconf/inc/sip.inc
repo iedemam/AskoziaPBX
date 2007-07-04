@@ -77,7 +77,7 @@ function sip_get_dialpatterns() {
 	$dialpatterns = array();
 	if (is_array($config['sip']['provider']))
 		foreach($config['sip']['provider'] as $provider)
-			$dialpatterns[] = $provider['dialpattern'];
+			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
 
 	return $dialpatterns;	
 }

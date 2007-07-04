@@ -1,24 +1,21 @@
 pb6
 new features
- - call groups
- - get call parking working or remove it!
+ - call groups!!!
+ - get call parking working or remove it!!!
  - status, channels
 
 fixes
- - is_valid_xxx checks need to be completed!
+ - is_valid_xxx checks need to be completed!!!
  - need a better way to replace uniqids with names
  - logs_pbx needs to replace uniqids with names
- - fix dialplan for users without voicemail accounts
+ - fix dialplan for users without voicemail accounts!!!
  - use posted config in dialplan providers instead of making users start all over
 
 improvements
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev
  - sorting needs to be merged...not sorted-sip then sorted-iax
- - incoming only info for providers
-// XXX logic from patterns still needs to be checked!!!
-// XXX do get_patterns() functions really work now that everything is an array
-// XXX input checks on patterns
+ - figure out DID!!!
 
 
 pb7

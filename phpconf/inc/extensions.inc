@@ -102,7 +102,9 @@ EOD;
 	foreach ($a_sipproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
+		// FIXME give some options for this ... kind of hacky
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension']);
 		
 		foreach($p['dialpattern'] as $pattern) {
 			$prefix = $offset = "";

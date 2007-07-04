@@ -75,10 +75,14 @@ if ($_POST) {
 			$dialpatterns = split_and_clean_patterns($_POST[$post_key]);
 			
 			foreach($dialpatterns as $pattern) {
-				if (!asterisk_is_valid_dialpattern($pattern)) {
+				if (!asterisk_is_valid_dialpattern($pattern, &$internal_error)) {
 					$input_errors[] = "An invalid dial-pattern ($pattern) was found for \"" .
-					 	asterisk_uniqid_to_name($key_split[0]) . "\".";
-				}	
+					 	asterisk_uniqid_to_name($key_split[0]) . "\". $internal_error";
+				}
+				if (asterisk_dialpattern_exists($p, &$return_provider_name, $key_split[0])) {
+					$input_errors[] = "The dial-pattern \"$p\" defined for \"".
+						asterisk_uniqid_to_name($key_split[0]) . "\" already exists for \"$return_provider_name\".";
+				}
 			}
 			
 			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
