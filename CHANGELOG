@@ -1,4 +1,7 @@
-2007.06.xx - pb6
+2007.07.xx - pb7
+ - 
+
+2007.07.05 - pb6
  - improved sound packaging to finally include only what is necessary
  - dialplan now has an 's' extension to pick up stray incoming calls from providers, this is helpful with at least one ATA device until a better solution is implemented
  - help messages now only appear once per page when multiple instances of the same field are present
@@ -6,7 +9,7 @@
  - phones and providers appear properly sorted now (earlier first appeared sorted SIP then sorted IAX)
  - multiple patterns may now be entered
  - removed prefixes (automatically converted to patterns on the first boot)
- - added prompts for the following languages:
+ - added audio prompts for the following languages:
    - Dutch (gsm)
    - French (gsm/ulaw)
    - German (gsm)

@@ -1,6 +1,10 @@
-pb6
+pb7
+ - followme
+ - add iax2 auth options
+   - pubkey import
+   - md5
+
 new features
- - call groups!!! (finish up incomingextension selector and uniqid_to_dial mods)
  - get call parking working or remove it!!!
  - status, channels
 
@@ -14,18 +18,11 @@ fixes
 improvements
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev
- - sorting needs to be merged...not sorted-sip then sorted-iax
  - figure out DID!!!
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - get_a_specific_blah($uniaid) functions aren't all switched over to use the uniqid_map
 
-
-pb7
- - followme
- - add iax2 auth options
-   - pubkey import
-   - md5
 
 pb8
  - privacy with voicemail forward

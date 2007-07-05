@@ -124,7 +124,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<?php $i = 0; foreach ($a_callgroups as $cg): ?>
 	<tr>
 		<td class="listlr"><?=htmlspecialchars($cg['name']);?></td>
-		<td class="listbg"><?=htmlspecialchars($cg['descr']);?></td>
+		<td class="listbg"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
 		<td class="listr"><?
 			$n = count($cg['groupmember']);
 			echo htmlspecialchars(asterisk_uniqid_to_name($cg['groupmember'][0]));
