@@ -245,24 +245,43 @@ function asterisk_get_extensions() {
 	);
 }
 
+// providers
 function asterisk_get_providers() {
 	global $config;
 	
-	return array_merge(
-		sip_get_providers(),
-		iax_get_providers()
-	);
+	return asterisk_sort_providers(
+				array_merge(
+					sip_get_providers(),
+					iax_get_providers()
+				));
+}
+function asterisk_sort_providers($providers) {
+	usort($providers, "_a_sortproviders");
+	return $providers;
+}
+function _a_sortproviders($a, $b) {
+	return strcmp($a['name'], $b['name']);
 }
 
+// phones
 function asterisk_get_phones() {
 	global $config;
 	
-	return array_merge(
-		sip_get_phones(),
-		iax_get_phones()
-	);
+	return asterisk_sort_phones(
+				array_merge(
+					sip_get_phones(),
+					iax_get_phones()
+				));
+}
+function asterisk_sort_phones($phones) {
+	usort($phones, "_a_sortphones");
+	return $phones;
+}
+function _a_sortphones($a, $b) {
+	return strcmp($a['callerid'], $b['callerid']);
 }
 
+// dialpatterns
 function asterisk_get_dialpatterns() {
 	global $config;
 
@@ -311,6 +330,38 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 		$dial = "exten => $exten,1,Answer()\n";
 		$dial .= "exten => $exten,2,MeetMe({$room['number']},M)\n";
 		$dial .= "exten => $exten,3,Hangup()\n";
+
+	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
+		$group = dialplan_get_callgroup($uniqid);
+		$dial_strings = array();
+		$vm_account = "";
+		$n = count($group['groupmember']);
+		for ($i = 0; $i < $n; $i++) {
+			$subid = split("-", $group['groupmember'][$i]);
+			if ($subid[0] == "SIP" && $subid[1] == "PHONE") {
+				$phone = sip_get_phone($group['groupmember'][$i]);
+				if ($i == 0) {
+					$vm_account = $phone['extension'];
+				}
+				$dial_strings[] = "SIP/{$phone['extension']}";
+        	
+			} else if ($subid[0] == "IAX" && $subid[1] == "PHONE") {
+				$phone = iax_get_phone($group['groupmember'][$i]);
+				if ($i == 0) {
+					$vm_account = $phone['extension'];
+				}
+				$dial_strings[] = "IAX2/{$phone['extension']}";        	
+			}
+		}
+		
+		$n = count($dial_strings);
+		$dstring = $dial_strings[0];
+		for ($i = 1; $i < $n; $i++) {
+			$dstring .= "&" . $dial_strings[$i];
+		}
+		
+		$dial = "exten => $exten,1,".
+			"Macro(vm|$dstring|$vm_account)\n";
 	}
 	
 	return $dial;

@@ -7,6 +7,8 @@
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -18,7 +20,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-07-03T14:50:00Z</date>
+			<date>2007-07-04T17:04:08Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -40,7 +42,7 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-07-03T14:51:13Z</date>
+			<date>2007-07-04T17:04:08Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -80,9 +82,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>69</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -96,7 +98,7 @@
 				<key>column</key>
 				<integer>20</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -136,44 +138,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>25</integer>
 				<key>line</key>
-				<integer>219</integer>
+				<integer>152</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>208</integer>
+			<integer>138</integer>
 		</dict>
-		<key>phpconf/inc/extensions.inc</key>
+		<key>phpconf/inc/sip.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>49</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>104</integer>
+				<integer>81</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>99</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>35</integer>
-				<key>line</key>
-				<integer>104</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>49</integer>
-				<key>line</key>
-				<integer>104</integer>
-			</dict>
+			<integer>66</integer>
 		</dict>
 		<key>webgui/diag_logs_calls.php</key>
 		<dict>
@@ -188,6 +174,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>142</integer>
+		</dict>
+		<key>webgui/dialplan_providers.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>67</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
 		</dict>
 		<key>webgui/gui.css</key>
 		<dict>
@@ -217,6 +233,64 @@
 				<integer>8</integer>
 				<key>line</key>
 				<integer>214</integer>
+			</dict>
+		</dict>
+		<key>webgui/help.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>98</integer>
+				<key>line</key>
+				<integer>53</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>35</integer>
+		</dict>
+		<key>webgui/providers_iax_edit.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>114</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>89</integer>
+		</dict>
+		<key>webgui/providers_sip_edit.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>110</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>104</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>123</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>110</integer>
 			</dict>
 		</dict>
 		<key>webgui/status.php</key>
@@ -250,15 +324,18 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>pbxdev.php</string>
-		<string>NOTES</string>
 		<string>CHANGELOG</string>
+		<string>NOTES</string>
 		<string>phpconf/inc/asterisk.inc</string>
-		<string>phpconf/inc/extensions.inc</string>
+		<string>phpconf/inc/sip.inc</string>
+		<string>webgui/providers_sip_edit.php</string>
+		<string>webgui/providers_iax_edit.php</string>
+		<string>webgui/help.inc</string>
+		<string>webgui/dialplan_providers.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{305, 97}, {831, 576}}</string>
+	<string>{{331, 800}, {831, 576}}</string>
 </dict>
 </plist>

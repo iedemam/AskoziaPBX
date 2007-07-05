@@ -3,6 +3,7 @@
  - dialplan now has an 's' extension to pick up stray incoming calls from providers, this is helpful with at least one ATA device until a better solution is implemented
  - help messages now only appear once per page when multiple instances of the same field are present
  - normalized some pages' POST and redirection routines
+ - phones and providers appear properly sorted now (earlier first appeared sorted SIP then sorted IAX)
  - multiple patterns may now be entered
  - removed prefixes (automatically converted to patterns on the first boot)
  - added prompts for the following languages:
@@ -14,6 +15,7 @@
    - Spanish (gsm/ulaw)
    - Swedish (gsm)
  - added registration timeout options to sip providers
+ - added parallel ringing call group support
  - added iLBC and Speex codecs
  - updated base system to FreeBSD 6.2-RELEASE-p5
  - updated Asterisk to 1.4.6

@@ -367,6 +367,12 @@ function config_build_uniqid_map($config) {
 		$uniqid_map[$config['conferencing']['room'][$i]['uniqid']] = $i;
 	}
 	
+	// callgroups
+	$n = count($config['dialplan']['callgroup']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['dialplan']['callgroup'][$i]['uniqid']] = $i;
+	}
+	
 	return $uniqid_map;
 }
 

@@ -418,3 +418,25 @@ ul#tabnav li.tabact {
 	border: 2px solid #A12A2A;
 	background-color: #FFD9D1;
 }
+
+#gme li {
+	margin: 5px auto;
+	margin-left: -40px;
+	padding: 2px;
+	width: 100%;
+	text-align:left;
+	list-style-type:none;
+	border: 2px solid #687BA4;
+	background-color: #D9DEE8;
+}
+
+#gmd li {
+	margin: 5px auto;
+	margin-left: -40px;
+	padding: 2px;
+	width: 100%;
+	text-align:left;
+	list-style-type:none;
+	border: 2px solid #A12A2A;
+	background-color: #FFD9D1;
+}

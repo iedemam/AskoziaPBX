@@ -137,6 +137,17 @@ $prompt_languages = array(
 	"se" => "Swedish"
 );
 
+$vm_email_languages = array(
+	"en-informal" => "English",
+	"nl-informal" => "Dutch",
+	"nl-formal" => "Dutch (formal)",
+	"fr-informal" => "French",
+	"fr-formal" => "French (formal)",
+	"es-formal" => "Spanish (formal)",
+	"se-informal" => "Swedish"
+
+);
+
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	
 	/* check for bad control characters */	
@@ -395,6 +406,55 @@ function display_video_codec_selector($enabled_codecs) {
 	</tr><?
 }
 
+function display_callgroup_member_selector($current_members) {
+	
+	$all_phones = asterisk_get_phones();
+	
+	// XXX this should be handled at a lower level in the next release
+	$indexed_phones = array();
+	foreach($all_phones as $phone) {
+		$indexed_phones[$phone['uniqid']] = $phone;
+	}
+	
+	if (!is_array($current_members)) {
+		$current_members = array();
+	}
+	
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Group Members</td>
+		<td width="40%" class="vtable" valign="top"><strong>Members</strong>&nbsp;<i>(drag-and-drop)</i>
+			<ul id="gme" class="gme" style="min-height:50px"><? 
+			
+			foreach ($current_members as $member) {
+				if (array_key_exists($member, $indexed_phones)) {
+					?><li class="gme" id="gme_<?=$member;?>"><?=asterisk_uniqid_to_name($member);?></li><?
+				}
+			}
+			
+			?></ul>
+		</td>
+		<td width="40%" class="vtable" valign="top"><strong>Non-Members</strong>
+			<ul id="gmd" class="gmd" style="min-height:50px"><?
+			
+
+			foreach ($indexed_phones as $uniqid=>$phone) {
+				if (!in_array($uniqid, $current_members)) {
+					?><li class="gmd" id="gmd_<?=$uniqid;?>"><?=$phone['callerid'];?></li><?
+				}
+			}
+			
+			?></ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="20%" valign="top" class="vncell">&nbsp;</td>
+		<td width="40%" class="vtable" valign="top" colspan="2">
+			<span class="vexpl"><strong><span class="red">Note:</span></strong>
+			All group members will be called at the same time. The voicemail account associated with the first member will be used if the call is not answered.</span>
+		</td>
+	</tr><?	
+}
+
 function display_incoming_extension_selector($current_incoming_extension, $colspan, $idprefix=false) {
 	global $help, $help_language;
 	
@@ -409,6 +469,17 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				<option>Outgoing Calls Only</option>
 				<option></option>
 				<?php $have_extension = false; ?>
+				
+				<?php if (count($a_groups = dialplan_get_callgroups()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>Call Groups</option>
+				<?php foreach ($a_groups as $group): ?>
+				<option value="<?=$group['uniqid'];?>" <?php 
+				if ($group['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$group['name']}"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
 
 				<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
 				<?php $have_extension = true; ?>
@@ -598,4 +669,5 @@ function display_channel_language_selector($current_language, $colspan) {
 		</td>
 	</tr><?
 }
+
 ?>

@@ -41,6 +41,7 @@ $pconfig['password'] = $vmconfig['password'];
 $pconfig['port'] = $vmconfig['port'];
 $pconfig['tls'] = $vmconfig['tls'];
 $pconfig['fromaddress'] = $vmconfig['fromaddress'];
+$pconfig['maillanguage'] = $vmconfig['maillanguage'];
 
 if ($_POST) {
 
@@ -77,6 +78,7 @@ if ($_POST) {
 		$vmconfig['port'] = $_POST['port'];
 		$vmconfig['tls'] = $_POST['tls'];
 		$vmconfig['fromaddress'] = $_POST['fromaddress'];
+		$vmconfig['maillanguage'] = $_POST['maillanguage'];
 		
 		write_config();
 		
@@ -148,8 +150,22 @@ if ($_POST) {
 				This will be shown as voicemail service's sending address.
 				<br>Defaults to the e-mail address entered above.
 			</td>
-		</tr>
+		</tr><? /*
 		<tr> 
+			<td width="20%" valign="top" class="vncell">E-Mail Language</td>
+			<td width="80%" class="vtable">
+				<select name="maillanguage" class="formfld" id="maillanguage">
+				<? foreach($vm_email_languages as $vm_email_language=>$friendly) : ?>
+				<option value="<?=$vm_email_language;?>" <?
+				if ($vm_email_language == $pconfig['maillanguage'])
+					echo "selected"; ?>
+				><?=$friendly;?></option>
+				<? endforeach; ?>
+				</select>
+				<br><span class="vexpl">E-mail notifications for new voicemail will be delievered in this language.</span>
+			</td>
+		</tr>
+		*/ ?><tr> 
 			<td valign="top">&nbsp;</td>
 			<td>
 				<input name="Submit" type="submit" class="formbtn" value="Save">

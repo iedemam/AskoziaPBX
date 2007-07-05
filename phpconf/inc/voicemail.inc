@@ -30,10 +30,67 @@
 
 require_once("functions.inc");
 
+$vm_emailsubject = array(
+
+	"en-informal" => "New voicemail message (box: $\{VM_MAILBOX})",
+
+	"nl-informal" => "Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
+	"nl-formal" => "Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
+
+	"fr-informal" => "tu as reçu un nouveau message dans ta boite vocale",
+	"fr-formal" => "vous avez reçu un nouveau message dans votre boite vocale",
+	
+	"es-formal" => "MISSING",
+	
+	"se-informal" => "MISSING"
+	
+);
+
+$vm_emailbody = array(
+
+	// english
+	"en-informal" => "Dear $\{VM_NAME},\\n\\n".
+						"A call from $\{VM_CALLERID} just landed in your voicemail.\\n\\n".
+						"Here's the $\{VM_DUR} long message that was left for you on $\{VM_DATE}.\\n\\n".
+						"--Your Phone System",
+	
+	// dutch
+	"nl-informal" => "Hallo $\{VM_NAME},\\n\\n".
+						"Een oproep van $\{VM_CALLERID} is in je voicemail terecht gekomen.\\n\\n".
+						"Hier is het $\{VM_DUR} durende bericht dat voor jou is achtergelaten op $\{VM_DATE}.\\n\\n".
+						"--Je telefoonsysteem",
+	"nl-formal" => "Beste $\{VM_NAME},\\n\\n".
+						"Een oproep van $\{VM_CALLERID} is in uw voicemail terecht gekomen.\\n\\n".
+						"Hier is het $\{VM_DUR} durende bericht dat voor u is achtergelaten op $\{VM_DATE}.\\n\\n".
+						"--Uw telefoonsysteem",
+
+	// french
+	"fr-informal" => "Cher $\{VM_NAME},\\n\\n".
+						"Un message de $\{VM_CALLERID} t' attend dans ta boite vocale.\\n\\n".
+						"Tu trouvera en pièce jointe le message d'une durée de $\{VM_DUR} qui t'a été laissé en date du $\{VM_DATE}.\\n\\n".
+						"--AskoziaPBX",
+	"fr-formal" => "Cher $\{VM_NAME},\\n\\n".
+						"Un message de $\{VM_CALLERID} vous attend dans votre boite vocale.\\n\\n".
+						"Vous trouverez en pièce jointe le message d'une durée de $\{VM_DUR} qui vous a été laissé en date du $\{VM_DATE}.\\n\\n".
+						"--AskoziaPBX",
+						
+	// spanish
+	"es-formal" => "Estimado $\{VM_NAME},\\n\\n".
+						"Usted ha recibido un mensaje de voz desde el número $\{VM_CALLERID}.\\n\\n".
+						"La duración del mensaje es $\{VM_DUR} y fue dejado para usted el día $\{VM_DATE}.\\n\\n".
+						"--Su sistema de telefonía.",
+	
+	// swedish
+	"se-informal" => "Bäste $\{VM_NAME},\\n\\n".
+						"Ett samtal ifrån $\{VM_CALLERID} har precis spelats in på din telesvar.\\n\\n".
+						"Meddelandet är $\{VM_DUR} långt och det lämnades $\{VM_DATE}.\\n\\n".
+						"--AskoziaPBX"
+	
+);
 
 
 function voicemail_conf_generate() {
-	global $config;
+	global $config, $vm_emailsubject, $vm_emailbody;
 	
 	$fd = fopen("/usr/local/etc/asterisk/voicemail.conf", "w");
 	if (!$fd) {
@@ -53,8 +110,19 @@ maxlogins=3
 
 serveremail=AskoziaPBX
 fromstring=AskoziaPBX Voicemail
-emailsubject=New voicemail message (box: $\{VM_MAILBOX})
-emailbody=Dear $\{VM_NAME}:\\n\\nA call from $\{VM_CALLERID} just landed in your voicemail.\\n\\nHere's the $\{VM_DUR} long message that was left for you on $\{VM_DATE}.\\n\\n--Your Phone System
+
+EOD;
+
+	if (!$config['voicemail']['maillanguage']) {
+		$conf .= "emailsubject=" . $vm_emailsubject['en-informal'] . "\n";
+		$conf .= "emailbody=" . $vm_emailbody['en-informal'] . "\n\n";
+	} else {
+		$vm_lang = $config['voicemail']['maillanguage'];
+		$conf .= "emailsubject=" . $vm_emailsubject[$vm_lang] . "\n";
+		$conf .= "emailbody=" . $vm_emailbody[$vm_lang] . "\n\n";
+	}
+
+	$conf .= <<<EOD
 
 emaildateformat=%A, %B %d, %Y at %r
 
@@ -90,6 +158,8 @@ EOD;
 			continue;
 		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
 	}	
+	
+	//$conf = mb_convert_encoding($conf, "UTF-8");
 	
 	fwrite($fd, $conf);
 	fclose($fd);

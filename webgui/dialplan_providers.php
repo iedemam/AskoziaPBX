@@ -174,55 +174,32 @@ if ($savemsg)
 	?><form action="dialplan_providers.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 
-		$provider_count = 0;
-
-		// sip
-		$a_sipproviders = sip_get_providers();
-		$provider_count = $n = count($a_sipproviders);
-
-		for($i = 0; $i < $n; $i++) {
-			$provider = $a_sipproviders[$i];
-			?><tr> 
-				<td colspan="2" valign="top" class="listtopic">
-					<?=$provider['name']?>
-					(SIP:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
-				</td>
-			</tr>
-			<? display_provider_dialpattern_editor($provider['dialpattern'], 1, $provider['uniqid']); ?>
-			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
-			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
-			<tr> 
-				<td colspan="2" class="list" height="12">&nbsp;</td>
-			</tr><?
-		}
-
-		// iax
-		$a_iaxproviders = iax_get_providers();
-		$n = count($a_iaxproviders);
-		$provider_count += $n;
+		$a_providers = asterisk_get_providers();
 		
-		for($i = 0; $i < $n; $i++) {
-			$provider = $a_iaxproviders[$i];
-			?><tr> 
-				<td colspan="2" valign="top" class="listtopic">
-					<?=$provider['name']?>
-					(IAX:&nbsp;<?=$provider['username']?>@<?=$provider['host']?>)
-				</td>
-			</tr>
-			<? display_provider_dialpattern_editor($provider['dialpattern'], 1, $provider['uniqid']); ?>
-			<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
-			<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
-			<tr> 
-				<td colspan="2" class="list" height="12">&nbsp;</td>
-			</tr><?
-		}
+		if (!is_array($a_providers)) {
 			
-		if ($provider_count == 0) {
 			?><tr> 
 				<td><i>There are currently no providers defined.</i></td>
 			</tr><?
 			
 		} else {
+			foreach($a_providers as $provider) {
+				
+				?><tr> 
+					<td colspan="2" valign="top" class="listtopic">
+						<?=$provider['name']?>
+						(<?=$provider['username']?>@<?=$provider['host']?>)
+					</td>
+				</tr>
+				<? display_provider_dialpattern_editor($provider['dialpattern'], 1, $provider['uniqid']); ?>
+				<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
+				<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
+				<tr> 
+					<td colspan="2" class="list" height="12">&nbsp;</td>
+				</tr><?
+					
+			}
+
 			?><tr>
 				<td colspan="2" valign="top" class="listhelptopic">Help</td>
 			</tr>

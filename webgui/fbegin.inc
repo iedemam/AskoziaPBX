@@ -118,6 +118,7 @@ $menu['Phones']['IAX'] 					= array('phones_iax.php');
 
 /* Dialplan */
 $menu['Dialplan']['Providers']			= array('dialplan_providers.php');
+$menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php');
 											
 /* Services */
 $menu['Services']['Conferencing'] 		= array('services_conferencing.php');

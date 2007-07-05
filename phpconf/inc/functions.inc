@@ -38,6 +38,7 @@ require_once("asterisk.inc");
 require_once("sip.inc");
 require_once("iax.inc");
 require_once("extensions.inc");
+require_once("dialplan.inc");
 require_once("conferencing.inc");
 require_once("voicemail.inc");
 require_once("util.inc");
