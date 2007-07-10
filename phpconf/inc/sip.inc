@@ -54,10 +54,8 @@ function sip_get_phones() {
 }
 
 function sip_get_phone($uniqid) {
-	$phones = sip_get_phones();
-	foreach ($phones as $phone)
-		if($phone['uniqid'] == $uniqid)
-			return $phone;
+	global $config, $uniqid_map;
+	return $config['sip']['phone'][$uniqid_map[$uniqid]];
 }
 
 function sip_get_extensions() {

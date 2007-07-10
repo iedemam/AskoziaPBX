@@ -54,10 +54,8 @@ function iax_get_phones() {
 }
 
 function iax_get_phone($uniqid) {
-	$phones = iax_get_phones();
-	foreach ($phones as $phone)
-		if($phone['uniqid'] == $uniqid)
-			return $phone;
+	global $config, $uniqid_map;
+	return $config['iax']['phone'][$uniqid_map[$uniqid]];
 }
 
 function iax_get_extensions() {

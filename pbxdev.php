@@ -45,7 +45,7 @@ $core_sounds_version= "1.4.7";
 $sound_languages	= explode(" ", "en de it es fr jp nl se");
 $sounds				= explode(" ", 
 						"auth-thankyou ".
-						"conf-onlyperson conf-getpin conf-invalidpin ".
+						"conf-onlyperson conf-getpin conf-invalidpin conf-kicked ".
 						"vm-intro vm-theperson vm-is vm-goodbye");
 $digits				= explode(" ", "0 1 2 3 4 5 6 7 8 9");
 $musiconhold		= explode(" ", "fpm-calm-river");
