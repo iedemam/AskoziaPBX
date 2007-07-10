@@ -135,23 +135,26 @@ EOD;
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension']);
 
-		foreach($p['dialpattern'] as $pattern) {
-			$prefix = $offset = "";
-			$exten = "$\{EXTEN}";
-			// prefix insertion
-			if (($offset = strpos($pattern, "+")) !== false) {
-				$prefix = substr($pattern, 0, $offset);
-				$pattern = substr($pattern, $offset+1);
+		if (is_array($p['dialpattern'])) {
+			foreach($p['dialpattern'] as $pattern) {
+				$prefix = $offset = "";
+				$exten = "$\{EXTEN}";
+				// prefix insertion
+				if (($offset = strpos($pattern, "+")) !== false) {
+					$prefix = substr($pattern, 0, $offset);
+					$pattern = substr($pattern, $offset+1);
+				}
+				// prefix deletion
+				if (($offset = strpos($pattern, "|")) !== false) {
+					$pattern = str_replace("|", "", $pattern);
+					$exten = "$\{EXTEN:$offset}";
+				}
+				
+				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30)\n";
+				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
-			// prefix deletion
-			if (($offset = strpos($pattern, "|")) !== false) {
-				$pattern = str_replace("|", "", $pattern);
-				$exten = "$\{EXTEN:$offset}";
-			}
-			
-			$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30)\n";
-			$conf .= "exten => _$pattern,2,Hangup()\n";
 		}
 		$conf .= "\n";
 	}

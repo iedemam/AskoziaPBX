@@ -101,7 +101,7 @@ if ($_POST) {
 
 	// pattern validation
 	if (isset($id)) {
-		$current_provider_id = $a_sipproviders[$id]['uniqid'];
+		$current_provider_id = $a_iaxproviders[$id]['uniqid'];
 	}
 	if (is_array($_POST['dialpattern'])) {
 		foreach($_POST['dialpattern'] as $p) {

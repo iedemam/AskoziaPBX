@@ -1,0 +1,27 @@
+system
+controller
+entry
+name        		= ISDNTEST1		# name for reference. This name will
+usrdevicename		= ipr		# ipr, isp, tel, rbch
+usrdeviceunit		= 0		# unit number
+isdncontroller		= 0		# controller to use or -1 to use any
+isdnchannel			= -1		# channel (1/2) to use or 0 or -1 for any
+direction		= inout		# in, out, inout
+local-phone-incoming	= 321		# this is my number
+remote-phone-incoming	= 0123456789	# this one can call in
+local-phone-dialout	= 321		# this is my number
+remote-phone-dialout	= 00123456789	# i call this remote number
+remdial-handling	= first		# first, last or next
+dialin-reaction		= accept	# accept, reject, ignore, answer, callback
+dialout-type		= normal	# normal / calledback
+callbackwait		= 1		# no of secs to wait before calling back
+b1protocol		= hdlc		# hdlc, raw
+idletime-incoming	= 120		# incoming call idle timeout
+idletime-outgoing	= 60		# outgoing call idle timeout
+earlyhangup		= 5		# time to hangup before an expected
+dialretries		= 3		# # of dial retries
+dialrandincr		= off		# random dial increment time
+recoverytime		= 5		# time to wait between 2 dial tries
+usedown			= off		# set i/f down
+downtries		= 5		# retry cycles before set down
+downtime		= 30		# time to be in down before going up

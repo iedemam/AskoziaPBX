@@ -23,9 +23,24 @@ options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
 options		NO_SWAPPING
-options         DEVICE_POLLING
+options		DEVICE_POLLING
 
 device		apic			# I/O APIC
+
+# I4B
+options		IPR_VJ  
+device		"i4bdss1"
+device		"i4b"
+device		"i4btrc"
+device		"i4bctl"
+device		"i4brbch"
+device		"i4btel"
+device		"i4bipr"
+device		"i4bisppp"
+
+device		ihfc
+device		sound
+# end I4B
 
 # Bus support.
 device		eisa
@@ -48,14 +63,14 @@ device		sio		# 8250, 16[45]50 based serial ports
 # PCI Ethernet NICs that use the common MII bus controller code.
 # NOTE: Be sure to keep the 'device miibus' line in order to use these NICs!
 device		miibus		# MII bus support
-device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
+device		sis			# Silicon Integrated Systems SiS 900/SiS 7016
 
 # Pseudo devices.
 device		loop		# Network loopback
 device		random		# Entropy device
 device		ether		# Ethernet support
-device		pty		# Pseudo-ttys (telnet etc)
-device		md		# Memory "disks"
+device		pty			# Pseudo-ttys (telnet etc)
+device		md			# Memory "disks"
 
 # The `bpf' device enables the Berkeley Packet Filter.
 # Be aware of the administrative consequences of enabling this!
@@ -64,7 +79,7 @@ device		bpf		# Berkeley packet filter
 
 # USB support
 device		ohci		# OHCI PCI->USB interface
-device		usb		# USB Bus (required)
+device		usb			# USB Bus (required)
 device		ugen		# Generic
 device		uhid		# "Human Interface Devices"
 device		ukbd		# Keyboard
@@ -73,7 +88,7 @@ device		umass		# Disks/Mass storage - Requires scbus and da
 # USB Ethernet, requires miibus
 device		aue		# ADMtek USB Ethernet
 device		axe		# ASIX Electronics USB Ethernet
-device		cdce		# Generic USB over Ethernet
+device		cdce	# Generic USB over Ethernet
 device		cue		# CATC USB Ethernet
 device		kue		# Kawasaki LSI USB Ethernet
 device		rue		# RealTek RTL8150 USB Ethernet

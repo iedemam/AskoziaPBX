@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>NOTES</string>
+	<string>build/minibsd/m0n0wall.files</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,7 +20,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-07-05T15:58:14Z</date>
+			<date>2007-07-09T17:18:09Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -44,15 +44,13 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-07-05T15:58:19Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-07-09T12:19:21Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-07-05T15:58:19Z</date>
+			<date>2007-07-09T16:17:05Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -76,22 +74,64 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>178</integer>
+	<integer>189</integer>
 	<key>metaData</key>
 	<dict>
-		<key>NOTES</key>
+		<key>CHANGELOG</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>88</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>NOTES</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>64</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>build/kernelconfigs/ASKOZIAPBX_NET48XX</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>39</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>59</integer>
+		</dict>
+		<key>build/minibsd/m0n0wall.files</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>73</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>47</integer>
 		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>
@@ -107,19 +147,47 @@
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
 		</dict>
+		<key>files/etc/isdnd.rc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>63</integer>
+				<integer>51</integer>
 				<key>line</key>
-				<integer>181</integer>
+				<integer>290</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>173</integer>
+			<integer>264</integer>
+		</dict>
+		<key>phpconf/inc/asterisk.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>44</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>51</integer>
 		</dict>
 		<key>webgui/diag_logs_calls.php</key>
 		<dict>
@@ -182,10 +250,15 @@
 	<array>
 		<string>pbxdev.php</string>
 		<string>NOTES</string>
+		<string>phpconf/inc/asterisk.inc</string>
+		<string>CHANGELOG</string>
+		<string>build/kernelconfigs/ASKOZIAPBX_NET48XX</string>
+		<string>files/etc/isdnd.rc</string>
+		<string>build/minibsd/m0n0wall.files</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{215, 178}, {1026, 585}}</string>
+	<string>{{342, 820}, {814, 579}}</string>
 </dict>
 </plist>

@@ -35,9 +35,9 @@
 
 $php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.6";
-$zaptel_version		= "zaptel";
+$asterisk_version	= "asterisk-1.4.7";
 $msmtp_version		= "msmtp-1.4.11";
+$zaptel_version		= "zaptel";
 
 // --[ sounds ]----------------------------------------------------------------
 
@@ -269,6 +269,30 @@ function build_zaptel() {
 		"make install PREFIX={$dirs['packages']}/$zaptel_version/STAGE");
 }
 
+function build_isdn() {
+	global $dirs;
+	
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/; make clean; make all I4B_WITHOUT_CURSES=yes");
+
+	if (file_exists("{$dirs['packages']}/i4b/trunk/i4b/STAGE")) {
+		_exec("rm -rf {$dirs['packages']}/i4b/trunk/i4b/STAGE");
+	}
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b; ".
+		"mkdir STAGE STAGE/boot STAGE/boot/kernel STAGE/usr STAGE/usr/lib ".
+		"STAGE/usr/share STAGE/usr/sbin STAGE/usr/share/man ".
+		"STAGE/usr/share/man/man1 STAGE/usr/share/man/man3 STAGE/usr/share/man/man4 ".
+		"STAGE/usr/share/man/man5 STAGE/usr/share/man/man8");
+
+	// XXX pretty messy here
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b; ".
+		"make install; ".
+		"make install DESTDIR={$dirs['packages']}/i4b/trunk/i4b/STAGE");
+	_exec("cp -p {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b/isdntest/isdntest ".
+		"{$dirs['packages']}/i4b/trunk/i4b/STAGE/usr/sbin");
+		
+	_exec("cd {$dirs['packages']}/i4b/trunk/chan_capi/; gmake clean; gmake all");
+}
+
 function build_msntp() {
 	
 	_exec("cd /usr/ports/net/msntp; make clean; make");
@@ -310,6 +334,7 @@ function build_packages() {
 	build_php();
 	build_minihttpd();
 	build_zaptel();
+	build_isdn();
 	build_asterisk();
 }
 
@@ -689,11 +714,20 @@ function populate_sounds($image_name) {
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
 
-	// hack!
+	// XXX hack!
 	_exec("mv $image_name/rootfs/etc/zaptel.conf $image_name/rootfs/usr/local/etc/");
 	_exec("cd {$dirs['packages']}/$zaptel_version/STAGE; ".
 		"install -s bin/* $image_name/rootfs/sbin; ".
 		"cp lib/* $image_name/rootfs/lib");
+}
+
+function populate_isdn($image_name) {
+	global $dirs;
+	
+	// XXX isdn population
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/STAGE; ".
+		"cp -p usr/sbin/* $image_name/rootfs/sbin; ");
+	_exec("cp {$dirs['packages']}/i4b/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
 }
 
 function populate_tools($image_name) {
@@ -743,6 +777,7 @@ function populate_everything($image_name) {
 	populate_msntp($image_name);
 	populate_msmtp($image_name);
 	populate_zaptel($image_name);
+	populate_isdn($image_name);
 	populate_asterisk($image_name);
 	populate_sounds($image_name);
 	populate_tools($image_name);
@@ -797,6 +832,9 @@ function package($platform, $image_name) {
 	foreach ($zaptel_modules as $zaptel_module) {
 		_exec("cp {$dirs['packages']}/$zaptel_version/$zaptel_module tmp/stage/boot/kernel/");
 	}
+	
+	// XXX i4b module
+	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");
 	
 	// ...stamps
 	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");

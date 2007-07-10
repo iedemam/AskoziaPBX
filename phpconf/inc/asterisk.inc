@@ -41,6 +41,8 @@ function asterisk_configure() {
 		mwexec("/sbin/kldload zaptel");
 		echo " - loading ztdummy\n";
 		mwexec("/sbin/kldload ztdummy");
+		//echo " - loading isdn4bsd\n";
+		//mwexec("/sbin/kldload i4b");
 	} else
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 
@@ -69,10 +71,6 @@ function asterisk_configure() {
 	
 	if ($g['booting']) echo " - executing Asterisk...";
 	$res |= mwexec("/usr/local/sbin/asterisk");
-	if ($g['booting']) echo "done\n";
-	sleep(3);
-	if ($g['booting']) echo " - increasing verbosity...";
-	$res |= mwexec("/usr/local/sbin/asterisk -rx \"core set verbose 3\"");
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) {

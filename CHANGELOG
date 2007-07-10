@@ -1,5 +1,9 @@
 2007.07.xx - pb7
- - 
+ - updated to Asterisk 1.4.7
+ - verbosity and internal_timing now set in asterisk.conf
+ - disabled core dumping of Asterisk
+ - fixed handling of IAX providers with no patterns set
+ - fixed missing IAX 's' extension
 
 2007.07.05 - pb6
  - improved sound packaging to finally include only what is necessary

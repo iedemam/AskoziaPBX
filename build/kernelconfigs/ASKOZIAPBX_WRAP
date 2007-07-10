@@ -26,6 +26,21 @@ options         DEVICE_POLLING
 
 device		apic			# I/O APIC
 
+# I4B
+options		IPR_VJ  
+device		"i4bdss1"
+device		"i4b"
+device		"i4btrc"
+device		"i4bctl"
+device		"i4brbch"
+device		"i4btel"
+device		"i4bipr"
+device		"i4bisppp"
+
+device		ihfc
+device		sound
+# end I4B
+
 # Bus support.
 device		eisa
 device		pci
