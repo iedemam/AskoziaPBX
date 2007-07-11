@@ -57,6 +57,22 @@ function conferencing_get_room($uniqid) {
 	return $config['conferencing']['room'][$uniqid_map[$uniqid]];
 }
 
+function conferencing_get_members($room_number) {
+	global $config;
+	
+	asterisk_exec("meetme show $room_number", &$output);
+	
+	$members = array();
+	$output = explode("\n" $output);
+	
+/* XXX TODO, parse me!
+	User #: 02         1001 M. Iedema (mcnomad)  Channel: SIP/1001-0877f000    (unmonitored) 00:09:44
+	User #: 03          202 M. Iedema (snom)     Channel: SIP/202-08777000    (unmonitored) 00:03:37
+	2 users in that conference.
+
+*/
+}
+
 
 function conferencing_sort_rooms() {
 	global $config;

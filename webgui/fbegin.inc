@@ -127,9 +127,10 @@ $menu['Services']['Voicemail'] 			= array('services_voicemail.php');
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
 $menu['Status']['Interfaces']			= array('status_interfaces.php');
+$menu['Status']['Channels']				= array('status_channels.php');
 //$menu['Status']['Providers']				= array('status_providers.php');
 //$menu['Status']['Phones']					= array('status_phones.php');
-//$menu['Status']['Conferencing']				= array('status_conferencing.php');
+$menu['Status']['Conferences']			= array('status_conferences.php');
 //$menu['Status']['Voicemail']				= array('status_voicemail.php');
 
 /* Live Stats */

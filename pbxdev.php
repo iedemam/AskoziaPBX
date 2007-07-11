@@ -35,7 +35,7 @@
 
 $php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.7";
+$asterisk_version	= "asterisk-1.4.7.1";
 $msmtp_version		= "msmtp-1.4.11";
 $zaptel_version		= "zaptel";
 

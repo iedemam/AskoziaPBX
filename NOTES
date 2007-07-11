@@ -14,7 +14,6 @@ fixes
  - logs_pbx needs to replace uniqids with names
  - fix dialplan for users without voicemail accounts!!!
  - use posted config in dialplan providers instead of making users start all over
- - pattern fixes in providers_iax 
 
 improvements
  - dialplan (still needs (de)select all)
@@ -22,8 +21,9 @@ improvements
  - figure out DID!!!
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
- - get_a_specific_blah($uniaid) functions aren't all switched over to use the uniqid_map
  - kernel and asterisk modules should only be loaded when needed
+ - should merge "assign" page into the network interface page
+
 
 
 pb8

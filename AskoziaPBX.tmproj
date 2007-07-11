@@ -3,12 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>build/minibsd/m0n0wall.files</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -20,7 +18,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-07-09T17:18:09Z</date>
+			<date>2007-07-11T14:42:24Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -44,13 +42,15 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-07-09T12:19:21Z</date>
+			<date>2007-07-11T14:42:24Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-07-09T16:17:05Z</date>
+			<date>2007-07-11T13:41:12Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -74,7 +74,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>189</integer>
+	<integer>194</integer>
 	<key>metaData</key>
 	<dict>
 		<key>CHANGELOG</key>
@@ -96,42 +96,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>64</integer>
+				<integer>61</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>24</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>build/kernelconfigs/ASKOZIAPBX_NET48XX</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>39</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>59</integer>
-		</dict>
-		<key>build/minibsd/m0n0wall.files</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>73</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>47</integer>
 		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>
@@ -147,47 +119,63 @@
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
 		</dict>
-		<key>files/etc/isdnd.rc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>51</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>290</integer>
+				<integer>984</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>264</integer>
+			<integer>951</integer>
 		</dict>
 		<key>phpconf/inc/asterisk.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>85</integer>
 				<key>line</key>
-				<integer>44</integer>
+				<integer>295</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>90</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>295</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>85</integer>
+				<key>line</key>
+				<integer>295</integer>
+			</dict>
+		</dict>
+		<key>phpconf/inc/conferencing.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>67</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>51</integer>
+			<integer>49</integer>
 		</dict>
 		<key>webgui/diag_logs_calls.php</key>
 		<dict>
@@ -231,6 +219,20 @@
 			<key>firstVisibleLine</key>
 			<integer>24</integer>
 		</dict>
+		<key>webgui/status_conferences.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>24</integer>
+		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
 			<key>caret</key>
@@ -249,16 +251,15 @@
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>NOTES</string>
-		<string>phpconf/inc/asterisk.inc</string>
 		<string>CHANGELOG</string>
-		<string>build/kernelconfigs/ASKOZIAPBX_NET48XX</string>
-		<string>files/etc/isdnd.rc</string>
-		<string>build/minibsd/m0n0wall.files</string>
+		<string>NOTES</string>
+		<string>phpconf/inc/conferencing.inc</string>
+		<string>phpconf/inc/asterisk.inc</string>
+		<string>webgui/status_conferences.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{342, 820}, {814, 579}}</string>
+	<string>{{346, 804}, {814, 579}}</string>
 </dict>
 </plist>

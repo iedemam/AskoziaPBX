@@ -110,6 +110,10 @@ function asterisk_exec($cmd, $output=NULL) {
 		$out .= fread($fp, 38000); 	  
 	}
 	fclose ($fp);
+	
+	$out = substr($out, strpos($out, "ActionID"));
+	$out = substr($out, strpos($out, "\n") + 1);
+	$out = substr($out, 0, strpos($out, "--END COMMAND--") - 1);
 
 	// better command failure checking needed
 	$output = $out;
@@ -292,10 +296,6 @@ function asterisk_get_dialpatterns() {
 function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {
 	
 	asterisk_exec("core show channels", &$output);
-	$ostart = strpos($output, "Channel");
-	$oend = strpos($output, "--END COMMAND--") - 1;
-	
-	$output = substr($output, $ostart, ($oend - $ostart));
 	$lines = explode("\n", $output);
 
 	$n = count($lines) - 3;
@@ -305,7 +305,7 @@ function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_
 	$active_channels = substr($lines[$n+1], 0, strpos($lines[$n+1], " "));
 	$active_calls = substr($lines[$n+2], 0, strpos($lines[$n+2], " "));
 
-	return 0; // could do some error checking here
+	return 0; // XXX could do some error checking here
 }
 
 function asterisk_uniqid_to_dial($exten, $uniqid) {

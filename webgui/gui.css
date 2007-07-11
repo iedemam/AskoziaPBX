@@ -199,6 +199,17 @@ a {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
+.listbgl {
+	border-left: 1px solid #999999;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	background-color: #D9DEE8;
+	padding-right: 16px;
+	padding-left: 6px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
 .listhdr {
 	background-color: #BBBBBB;
 	padding-right: 16px;
