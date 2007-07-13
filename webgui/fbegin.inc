@@ -107,6 +107,7 @@ $menu['System']['Reboot'] 				= array('system_reboot.php');
 
 /* Interfaces */
 $menu['Interfaces']['Network'] 			= array('interfaces_network.php');
+$menu['Interfaces']['ISDN'] 			= array('interfaces_isdn.php');
 
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php');
@@ -222,7 +223,8 @@ dynamic_menu($menu['System'], 'System');
 // The Interfaces menu is different than the rest because of the Assign link and
 // The dynamic nature of the optional interfaces.
 $if_menu = array('(assign)' => 'interfaces_assign.php',
-    			 'Network' => 'interfaces_network.php');
+    			 'Network' => 'interfaces_network.php',
+				'ISDN' => 'interfaces_isdn.php');
 if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
 	$allowed = $if_menu;
 }
@@ -235,6 +237,9 @@ if (array_intersect($if_menu,$allowed)) {
     echo '<br>';
     if (in_array('interfaces_network.php',$allowed)) {
     	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_network.php" class="navlnk">Network</a><br>';
+    }
+	if (in_array('interfaces_isdn.php',$allowed)) {
+    	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_isdn.php" class="navlnk">ISDN</a><br>';
     }
 }             
 

@@ -60,17 +60,50 @@ function conferencing_get_room($uniqid) {
 function conferencing_get_members($room_number) {
 	global $config;
 	
-	asterisk_exec("meetme show $room_number", &$output);
-	
-	$members = array();
-	$output = explode("\n" $output);
-	
-/* XXX TODO, parse me!
-	User #: 02         1001 M. Iedema (mcnomad)  Channel: SIP/1001-0877f000    (unmonitored) 00:09:44
-	User #: 03          202 M. Iedema (snom)     Channel: SIP/202-08777000    (unmonitored) 00:03:37
-	2 users in that conference.
+	asterisk_exec("meetme list $room_number", &$output);
 
-*/
+	$members = array();
+	$output = explode("\n", $output);
+	// inactive conference
+	if (count($output) == 1) {
+		return $members;
+	}
+	// remove user count line
+	unset($output[count($output)-1]);
+	
+	$n = count($output);
+	for($i = 0; $i < $n; $i++) {
+		// strip off "User #: "
+		$output[$i] = substr($output[$i], 8);
+
+		// grab user number
+		preg_match("/^[0-9]+/", $output[$i], &$matches);
+		if ($matches[0][0] == "0") {
+			$matches[0] = $matches[0][1];
+		}
+		$memnum = $matches[0];
+
+		// strip user number and whitespace
+		$output[$i] = substr($output[$i], strlen($matches[0]));
+		preg_match("/\s+/", $output[$i], &$matches);
+		$output[$i] = substr($output[$i], strlen($matches[0]));
+
+		// grab caller id
+		$members[$memnum]['callerid'] = trim(substr($output[$i], 0, strpos($output[$i], "Channel: ")));
+		
+		// strip caller id and "Channel: "
+		$output[$i] = substr($output[$i], strpos($output[$i], "Channel: ") + 9);
+		
+		// grab channel
+		preg_match("/\S+/", $output[$i], &$matches);
+		$members[$memnum]['channel'] = substr($matches[0], 0, strpos($matches[0], "-"));
+		
+		// grab connect time
+		preg_match("/[0-9]+:[0-9]+:[0-9]+/", $output[$i], &$matches);
+		$members[$memnum]['connecttime'] = $matches[0];
+	}
+	
+	return $members;
 }
 
 

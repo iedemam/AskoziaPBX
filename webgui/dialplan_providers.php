@@ -179,7 +179,7 @@ if ($savemsg)
 		if (!is_array($a_providers)) {
 			
 			?><tr> 
-				<td><i>There are currently no providers defined.</i></td>
+				<td><strong>There are currently no providers defined.</strong></td>
 			</tr><?
 			
 		} else {

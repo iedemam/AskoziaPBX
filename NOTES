@@ -1,11 +1,10 @@
 pb7
+new features
  - followme
  - add iax2 auth options
    - pubkey import
    - md5
-
-new features
- - get call parking working or remove it!!!
+ - build pages for call parking
  - status, channels
 
 fixes

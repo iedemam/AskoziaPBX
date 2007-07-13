@@ -1,7 +1,6 @@
-#!/usr/local/bin/php
-<?php 
+<?php
 /*
-	$Id: status_interfaces.php 67 2007-04-26 15:32:45Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,56 +28,22 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "Active Channels");
-require("guiconfig.inc");
+/* include all configuration functions */
+require_once("functions.inc");
 
-asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_strings);
-
-$channels = array();
-$n = count($channel_strings);
-for($i = 0; $i < $n; $i++) {
-	$channels[$i] = preg_split("/\s+/", $channel_strings[$i]);
+function isdn_get_recognized_interfaces() {
+	global $g;
+	
+	$dmesg_lines = explode("\n", file_get_contents("{$g['varlog_path']}/dmesg.boot"));
+	
+	$hfc_lines = array();
+	foreach($dmesg_lines as $line) {
+		if (preg_match("/^ihfc[0-9]/", $line)) {
+			$hfc_lines[] = $line;
+		}
+	}
+	
+	return $hfc_lines;
 }
 
 ?>
-<?php include("fbegin.inc"); ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-
-	<? if ($n == 0): ?>
-		
-		<tr> 
-			<td><strong>There are currently no active channels.</strong></td>
-		</tr>
-		
-	<? else: ?>
-
-		<tr>
-			<td width="25%" class="listhdrr">Channel</td>
-			<td width="25%" class="listhdrr">Location</td>
-			<td width="25%" class="listhdrr">State</td>
-			<td width="25%" class="listhdr">Application</td>
-		</tr>
-		
-		<? $n = count($channels); ?>
-		<? for($i = 0; $i < $n; $i++): ?>
-		<tr>
-			<td class="listbgl">
-				<?=htmlspecialchars($channels[$i][0]);?>&nbsp;
-			</td>
-			<td class="listr">
-				<?=htmlspecialchars($channels[$i][1]);?>&nbsp;
-			</td>
-			<td class="listr">
-				<?=htmlspecialchars($channels[$i][2]);?>&nbsp;
-			</td>
-			<td class="listr">
-				<?=htmlspecialchars($channels[$i][3]);?>&nbsp;
-			</td>
-		</tr>
-		<? endfor; ?>
-		
-	<? endif; ?>
-
-</table>
-</form>
-<?php include("fend.inc"); ?>

@@ -62,7 +62,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "net45xx net48xx wrap generic-pc"; //generic-pc-cdrom";
+$platform_list = "net48xx wrap generic-pc"; //generic-pc-cdrom net45xx";
 $platforms = explode(" ", $platform_list);
 
 
@@ -321,6 +321,7 @@ function build_tools() {
 	_exec("cd {$dirs['tools']}; gcc -o stats.cgi stats.c");
 	_exec("cd {$dirs['tools']}; gcc -o verifysig -lcrypto verifysig.c");
 	_exec("cd {$dirs['tools']}; gcc -o wrapresetbtn wrapresetbtn.c");
+	_exec("cd {$dirs['tools']}; gcc -o zttest zttest.c");
 	/*_exec("cd ". $dirs['tools'] ."; gcc -o minicron minicron.c");*/
 }
 
@@ -714,8 +715,11 @@ function populate_sounds($image_name) {
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
 
-	// XXX hack!
+	// XXX hacky!
 	_exec("mv $image_name/rootfs/etc/zaptel.conf $image_name/rootfs/usr/local/etc/");
+	if (file_exists("{$dirs['packages']}/$zaptel_version/STAGE/bin/zttest")) {
+		_exec("rm {$dirs['packages']}/$zaptel_version/STAGE/bin/zttest");
+	}
 	_exec("cd {$dirs['packages']}/$zaptel_version/STAGE; ".
 		"install -s bin/* $image_name/rootfs/sbin; ".
 		"cp lib/* $image_name/rootfs/lib");
@@ -726,6 +730,7 @@ function populate_isdn($image_name) {
 	
 	// XXX isdn population
 	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/STAGE; ".
+		"rm usr/sbin/isdnd usr/sbin/isdnphone usr/sbin/isdntel usr/sbin/isdntelctl; ".
 		"cp -p usr/sbin/* $image_name/rootfs/sbin; ");
 	_exec("cp {$dirs['packages']}/i4b/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
 }
@@ -739,7 +744,8 @@ function populate_tools($image_name) {
 		"install -s stats.cgi $rootfs/usr/local/www; ".
 		/*"install -s minicron $rootfs/usr/local/bin; ".*/
 		"install -s verifysig $rootfs/usr/local/bin; ".
-		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".		
+		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
+		"install -s zttest $rootfs/sbin; ".
 		"install runmsntp.sh $rootfs/usr/local/bin");
 }
 
@@ -826,8 +832,8 @@ function package($platform, $image_name) {
 		"wcfxs/wcfxs.ko",
 		"wct1xxp/wct1xxp.ko",
 		"wct4xxp/wct4xxp.ko",
-		"wcte11xp/wcte11xp.ko",
-		"zaphfc/zaphfc.ko"
+		"wcte11xp/wcte11xp.ko"
+		//"zaphfc/zaphfc.ko"
 	);
 	foreach ($zaptel_modules as $zaptel_module) {
 		_exec("cp {$dirs['packages']}/$zaptel_version/$zaptel_module tmp/stage/boot/kernel/");

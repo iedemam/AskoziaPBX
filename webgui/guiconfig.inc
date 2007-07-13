@@ -47,6 +47,7 @@ $d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
 $d_iaxconfdirty_path = $g['varrun_path'] . "/iaxconf.dirty";
 $d_extensionsconfdirty_path = $g['varrun_path'] . "/extensionsconf.dirty";
 $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
+$d_conferencing_kicked_path = $g['varrun_path'] . "/conferencing.kicked";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";

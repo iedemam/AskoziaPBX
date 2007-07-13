@@ -1,8 +1,9 @@
 2007.07.xx - pb7
- - 
- - verbosity and internal_timing now set in asterisk.conf
+ - removed net45xx platform support until test hardware can be acquired
+ - verbosity, internal_timing and highpriority now set in asterisk.conf
  - disabled core dumping of Asterisk
  - added "Status -> Channels" page which displays all currently active channels
+ - added "Status -> Conferences" page which displays all currently active conferences and allows members to be kicked from conferences
  - updated to Asterisk 1.4.7.1
  - bug: fixed handling of IAX providers with no patterns set
  - bug: fixed missing IAX 's' extension
