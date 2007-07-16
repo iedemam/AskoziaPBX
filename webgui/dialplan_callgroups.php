@@ -47,41 +47,27 @@ if ($_GET['act'] == "del") {
 		$removed_id = $a_callgroups[$_GET['id']]['uniqid'];
 		unset($a_callgroups[$_GET['id']]);
 		
-		// XXX remove references to this callgroup from sip providers incoming extensions
-		/*
-		if (is_array($config['sip']['phone'])) {
-			$a_sipphones = &$config['sip']['phone'];
-			$n = count($a_sipphones);
+		// remove references to this callgroup from sip providers incoming extensions
+		if (is_array($config['sip']['provider'])) {
+			$a_sipproviders = &$config['sip']['provider'];
+			$n = count($a_sipproviders);
 			for ($i = 0; $i < $n; $i++) {
-				if (is_array($a_sipphones[$i]['provider'])) {
-					$nn = count($a_sipphones[$i]['provider']);
-					for ($j = 0; $j < $nn; $j++) {
-						if ($a_sipphones[$i]['provider'][$j] == $removed_id) {
-							unset($a_sipphones[$i]['provider'][$j]);
-						}
-					}
-				}
-			}
-		}*/
-		
-		// XXX remove references to this callgroup from iax providers incoming extensions
-		/*
-		if (is_array($config['iax']['phone'])) {
-			$a_iaxphones = &$config['iax']['phone'];
-			$n = count($a_iaxphones);
-			for ($i = 0; $i < $n; $i++) {
-				if (is_array($a_iaxphones[$i]['provider'])) {
-					$nn = count($a_iaxphones[$i]['provider']);
-					for ($j = 0; $j < $nn; $j++) {
-						if ($a_iaxphones[$i]['provider'][$j] == $removed_id) {
-							unset($a_iaxphones[$i]['provider'][$j]);
-						}
-					}
-
+				if ($a_sipproviders[$i]['incomingextension'] == $removed_id) {
+					unset($a_sipproviders[$i]['incomingextension']);
 				}
 			}
 		}
-		*/
+		
+		// remove references to this callgroup from iax providers incoming extensions
+		if (is_array($config['iax']['provider'])) {
+			$a_iaxproviders = &$config['iax']['provider'];
+			$n = count($a_iaxproviders);
+			for ($i = 0; $i < $n; $i++) {
+				if ($a_iaxproviders[$i]['incomingextension'] == $removed_id) {
+					unset($a_iaxproviders[$i]['incomingextension']);
+				}
+			}
+		}
 		
 		write_config();
 		touch($d_extensionsconfdirty_path);
