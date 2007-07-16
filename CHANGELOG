@@ -2,6 +2,8 @@
  - removed net45xx platform support until test hardware can be acquired
  - verbosity, internal_timing and highpriority now set in asterisk.conf
  - disabled core dumping of Asterisk
+ - moved "assign" link into "Interfaces -> Network" page as a tab
+ - cleaned up "Manager Interface" output
  - added "Status -> Channels" page which displays all currently active channels
  - added "Status -> Conferences" page which displays all currently active conferences and allows members to be kicked from conferences
  - updated to Asterisk 1.4.7.1

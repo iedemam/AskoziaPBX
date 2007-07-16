@@ -30,7 +30,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "Assign network ports");
+$pgtitle = array("Interfaces", "Assign Network Ports");
 require("guiconfig.inc");
 
 /*
@@ -95,54 +95,67 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0)); ?>
-<form action="interfaces_assign.php" method="post" name="iform" id="iform">
+<form action="interfaces_network_assign.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td class="tabcont">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                      <tr> 
-	<td class="listhdrr">Interface</td>
-	<td class="listhdr">Network port</td>
-	<td class="list">&nbsp;</td>
-  </tr>
-  <?php foreach ($config['interfaces'] as $ifname => $iface):
-	if ($iface['descr'])
-		$ifdescr = $iface['descr'];
-	else
-		$ifdescr = strtoupper($ifname);
-	?>
-  <tr> 
-	<td class="listlr" valign="middle"><strong><?=$ifdescr;?></strong></td>
-	  <td valign="middle" class="listr">
-		<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
-		  <?php foreach ($portlist as $portname => $portinfo): ?>
-		  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>> 
-		  <?php 
-				echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")");
-		  ?>
-		  </option>
-		  <?php endforeach; ?>
-		</select>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+	
+			$tabs = array('Settings' => 'interfaces_network.php',
+						'Assign' => 'interfaces_network_assign.php');
+			dynamic_tab_menu($tabs);
+			
+			?></ul>
 		</td>
-		<td valign="middle" class="list"> 
-		  <?php if ($ifname != 'lan'): ?>
-		  <a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="delete interface" width="17" height="17" border="0"></a>
-		  <?php endif; ?>
+	</tr>
+	<tr> 
+		<td class="tabcont">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr> 
+					<td class="listhdrr">Interface</td>
+					<td class="listhdr">Network port</td>
+					<td class="list">&nbsp;</td>
+				</tr>
+				
+				<? foreach ($config['interfaces'] as $ifname => $iface):
+					if ($iface['descr']) {
+						$ifdescr = $iface['descr'];
+					} else {
+						$ifdescr = strtoupper($ifname);
+					}
+
+				?><tr>
+					<td class="listlr" valign="middle"><strong><?=$ifdescr;?></strong></td>
+					<td valign="middle" class="listr">
+						<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
+						<? foreach ($portlist as $portname => $portinfo): ?>
+							<option value="<?=$portname;?>" <? if ($portname == $iface['if']) echo "selected";?>> 
+								<? echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")"); ?>
+							</option>
+						<? endforeach; ?>
+						</select>
+					</td>
+					<td valign="middle" class="list"> 
+						<? if ($ifname != 'lan'): ?>
+							<a href="interfaces_network_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="delete interface" width="17" height="17" border="0"></a>
+						<? endif; ?>
+					</td>
+				</tr>
+				<? endforeach; ?>
+				<tr>
+					<td class="list" colspan="3" height="10"></td>
+				</tr>
+			</table>
+			<input name="Submit" type="submit" class="formbtn" value="Save"><br><br>
+			<p><span class="vexpl"><strong><span class="red">Warning:</span><br>
+			</strong>After you click &quot;Save&quot;, you must reboot the PBX to make the changes take effect. 
+			You may also have to do one or more of the following steps before you can access your system again: </span></p>
+			<ul>
+				<li><span class="vexpl">change the IP address of your computer</span></li>
+				<li><span class="vexpl">renew its DHCP lease</span></li>
+				<li><span class="vexpl">access the webGUI with the new IP address</span></li>
+			</ul>
 		</td>
-  </tr>
-  <?php endforeach; ?>
-  <tr>
-	<td class="list" colspan="3" height="10"></td>
-  </tr>
-</table>
-  <input name="Submit" type="submit" class="formbtn" value="Save"><br><br>
-<p><span class="vexpl"><strong><span class="red">Warning:</span><br>
-</strong>After you click &quot;Save&quot;, you must reboot the PBX to make the changes take effect. You may also have to do one or more of the following steps before you can access your system again: </span></p>
-<ul>
-  <li><span class="vexpl">change the IP address of your computer</span></li>
-  <li><span class="vexpl">renew its DHCP lease</span></li>
-  <li><span class="vexpl">access the webGUI with the new IP address</span></li>
-</ul></td>
 	</tr>
 </table>
 </form>

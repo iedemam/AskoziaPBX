@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: interfaces_isdn.php 151 2007-07-13 17:11:32Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,32 +29,32 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "ISDN");
+$pgtitle = array("Interfaces", "Assign ISDN Ports");
 require("guiconfig.inc");
 
 $hfc_lines = isdn_get_recognized_interfaces();
 
 ?>
 <?php include("fbegin.inc"); ?>
-<form action="interfaces_isdn.php" method="post" name="iform" id="iform">
+<form action="interfaces_isdn_assign.php" method="post" name="iform" id="iform">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav"><?
-
+	
 			$tabs = array('Interfaces' => 'interfaces_isdn.php',
 						'Assign' => 'interfaces_isdn_assign.php');
 			dynamic_tab_menu($tabs);
-
+			
 			?></ul>
 		</td>
 	</tr>
-	<tr>
+	<tr> 
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
+				<tr> 
 					<td colspan="2" valign="top" class="listtopic">ISDN configuration</td>
 				</tr>
 				<tr> 

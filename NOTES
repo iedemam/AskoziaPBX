@@ -5,7 +5,6 @@ new features
    - pubkey import
    - md5
  - build pages for call parking
- - status, channels
 
 fixes
  - is_valid_xxx checks need to be completed!!!
@@ -21,8 +20,9 @@ improvements
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
- - should merge "assign" page into the network interface page
 
+?? should interfaces be handled identically, isdn vs network
+?? figure out bridging before next release to accomplish this last question
 
 
 pb8
@@ -41,12 +41,9 @@ Docs:
 
 - get "advanced mode" working
 - provider to provider access with pin code
-- access able to be given to existing phones/providers while creating a new provider/phone with a expandable dropdown (a la gmail file upload)
 - QoS options, such as jitterbuffer and packet types supported
-- dialplan is a movable grid
-
+- dialplan as a movable grid
 - testing / performance mode
-- remove junk from manager output and add return values to asterisk_exec()
 - get indications.conf working
 - figure out config xml single var irregularities (empty defines showing up)
 - better field checks!

@@ -67,30 +67,32 @@ function dump_clog($logfile, $tail, $withorig = true) {
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-<?php 
-   	$tabs = array('System' => 'diag_logs.php',
-				  'PBX' => 'diag_logs_pbx.php',
-				  'Calls' => 'diag_logs_calls.php',
-           		  'Settings' => 'diag_logs_settings.php');
-	dynamic_tab_menu($tabs);
-?> 
-  </ul>
-  </td></tr>
-  <tr> 
-    <td class="tabcont">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tr> 
-			<td colspan="2" class="listtopic"> 
-			  Last <?=$nentries;?> system log entries</td>
-		  </tr>
-		  <?php dump_clog("/var/log/system.log", $nentries); ?>
-		</table>
-		<br><form action="diag_logs.php" method="post">
-<input name="clear" type="submit" class="formbtn" value="Clear log">
-</form>
-	</td>
-  </tr>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array('System' => 'diag_logs.php',
+						'PBX' => 'diag_logs_pbx.php',
+						'Calls' => 'diag_logs_calls.php',
+						'Settings' => 'diag_logs_settings.php');
+			dynamic_tab_menu($tabs);
+			
+			?></ul>
+		</td>
+	</tr>
+	<tr> 
+		<td class="tabcont">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr> 
+					<td colspan="2" class="listtopic">Last <?=$nentries;?> system log entries</td>
+				</tr>
+				<?php dump_clog("/var/log/system.log", $nentries); ?>
+			</table>
+			<br>
+			<form action="diag_logs.php" method="post">
+				<input name="clear" type="submit" class="formbtn" value="Clear log">
+			</form>
+		</td>
+	</tr>
 </table>
 <?php include("fend.inc"); ?>

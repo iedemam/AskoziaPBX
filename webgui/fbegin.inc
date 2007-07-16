@@ -106,7 +106,8 @@ $menu['System']['Factory Defaults']		= array('system_defaults.php');
 $menu['System']['Reboot'] 				= array('system_reboot.php');
 
 /* Interfaces */
-$menu['Interfaces']['Network'] 			= array('interfaces_network.php');
+$menu['Interfaces']['Network'] 			= array('interfaces_network.php',
+												'interfaces_network_assign.php');
 $menu['Interfaces']['ISDN'] 			= array('interfaces_isdn.php');
 
 /* Providers */
@@ -152,7 +153,6 @@ $menu['Diagnostics']['Logs']			= array('diag_logs.php',
 $menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
-//$menu['Diagnostics']['File Editor']		= array('diag_editor.php');
 $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 
 ?>
@@ -219,30 +219,7 @@ function showhide(tspan, tri) {
             <?php 
                    
 dynamic_menu($menu['System'], 'System');
-            
-// The Interfaces menu is different than the rest because of the Assign link and
-// The dynamic nature of the optional interfaces.
-$if_menu = array('(assign)' => 'interfaces_assign.php',
-    			 'Network' => 'interfaces_network.php',
-				'ISDN' => 'interfaces_isdn.php');
-if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
-	$allowed = $if_menu;
-}
-if (array_intersect($if_menu,$allowed)) {
-	echo '<strong>Interfaces</strong>';
-	if ((!isset($config['system']['webgui']['noassigninterfaces'])) && 
-	    (in_array('interfaces_assign.php',$allowed))) {
-		echo '<a href="/interfaces_assign.php" class="navlnks"> (assign)</a>';
-	}
-    echo '<br>';
-    if (in_array('interfaces_network.php',$allowed)) {
-    	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_network.php" class="navlnk">Network</a><br>';
-    }
-	if (in_array('interfaces_isdn.php',$allowed)) {
-    	echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_isdn.php" class="navlnk">ISDN</a><br>';
-    }
-}             
-
+dynamic_menu($menu['Interfaces'], 'Interfaces');
 dynamic_menu($menu['Providers'], 'Providers');
 dynamic_menu($menu['Phones'], 'Phones');
 dynamic_menu($menu['Dialplan'], 'Dialplan');

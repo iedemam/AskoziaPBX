@@ -149,91 +149,107 @@ function type_change() {
 <form action="interfaces_network.php" method="post" name="iform" id="iform">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
 
-<table width="100%" border="0" cellpadding="6" cellspacing="0">
-	<tr> 
-		<td colspan="2" valign="top" class="listtopic">LAN configuration</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top" class="vncellreq">IP address</td>
-		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
-			/ 
-			<select name="subnet" class="formfld" id="subnet">
-			<?php
-				$snmax = 31;
-				for ($i = $snmax; $i > 0; $i--): ?>
-					<option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>> 
-					<?=$i;?>
-					</option>
-				<?php endfor; ?>
-			</select>
-		</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top" class="vncellreq">Gateway</td>
-		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>"> 
-		</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top" class="vncell">DNS servers</td>
-		<td width="78%" class="vtable">
-			<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>">
-			<br>
-			<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>">
-			<br>
-			<input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
-			<br>
-			<span class="vexpl">IP addresses</span>
-		</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top" class="vncellreq">Topology</td>
-		<td width="78%" class="vtable">
-			<select name="topology" class="formfld" id="topology" onchange="type_change()">
-				<?php foreach ($topologies as $topo => $tfriendly): ?>
-				<option value="<?=$topo;?>" <?php if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
-				<?php endforeach; ?>
-			</select>
-			<br>
-			<span class="vexpl">
-				<ul>
-					<li>Public IP Address: this pbx has a routable IP address</li>
-					<li>NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below.</li>
-					<li>NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below.</li>
-				</ul>
-			</span>
-		</td>
-	</tr>	
-	<tr> 
-		<td width="22%" valign="top" class="vncell">Public IP address</td>
-		<td width="78%" class="vtable">
-			<input name="extipaddr" type="text" class="formfld" id="extipaddr" size="20" value="<?=htmlspecialchars($pconfig['extipaddr']);?>">
+			$tabs = array('Settings' => 'interfaces_network.php',
+						'Assign' => 'interfaces_network_assign.php');
+			dynamic_tab_menu($tabs);
+			
+			?></ul>
 		</td>
 	</tr>
 	<tr>
-		<td width="22%" valign="top" class="vncell">Public hostname</td>
-		<td width="78%" class="vtable">
-			<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>">
-		</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top">&nbsp;</td>
-		<td width="78%"> 
-			<input name="Submit" type="submit" class="formbtn" value="Save"> 
-		</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top">&nbsp;</td>
-		<td width="78%">
-			<span class="vexpl"><span class="red"><strong>Warning:<br>
-			</strong></span>after you click &quot;Save&quot;, all current
-			calls will be dropped. You may also have to do one or more 
-			of the following steps before you can access your pbx again: 
-			<ul>
-				<li>change the IP address of your computer</li>
-				<li>access the webGUI with the new IP address</li>
-			</ul>
-			</span>
+		<td class="tabcont">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr> 
+					<td colspan="2" valign="top" class="listtopic">LAN configuration</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq">IP address</td>
+					<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
+						/ 
+						<select name="subnet" class="formfld" id="subnet"><?
+
+							$snmax = 31;
+							for ($i = $snmax; $i > 0; $i--): ?>
+								<option value="<?=$i;?>" <? if ($i == $pconfig['subnet']) echo "selected"; ?>> 
+								<?=$i;?>
+								</option>
+							<? endfor; ?>
+						</select>
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq">Gateway</td>
+					<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>"> 
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncell">DNS servers</td>
+					<td width="78%" class="vtable">
+						<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>">
+						<br>
+						<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>">
+						<br>
+						<input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
+						<br>
+						<span class="vexpl">IP addresses</span>
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq">Topology</td>
+					<td width="78%" class="vtable">
+						<select name="topology" class="formfld" id="topology" onchange="type_change()">
+							<? foreach ($topologies as $topo => $tfriendly): ?>
+							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
+							<? endforeach; ?>
+						</select>
+						<br>
+						<span class="vexpl">
+							<ul>
+								<li>Public IP Address: this pbx has a routable IP address</li>
+								<li>NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below.</li>
+								<li>NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below.</li>
+							</ul>
+						</span>
+					</td>
+				</tr>	
+				<tr> 
+					<td width="22%" valign="top" class="vncell">Public IP address</td>
+					<td width="78%" class="vtable">
+						<input name="extipaddr" type="text" class="formfld" id="extipaddr" size="20" value="<?=htmlspecialchars($pconfig['extipaddr']);?>">
+					</td>
+				</tr>
+				<tr>
+					<td width="22%" valign="top" class="vncell">Public hostname</td>
+					<td width="78%" class="vtable">
+						<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>">
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top">&nbsp;</td>
+					<td width="78%"> 
+						<input name="Submit" type="submit" class="formbtn" value="Save"> 
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top">&nbsp;</td>
+					<td width="78%">
+						<span class="vexpl"><span class="red"><strong>Warning:<br>
+						</strong></span>after you click &quot;Save&quot;, all current
+						calls will be dropped. You may also have to do one or more 
+						of the following steps before you can access your pbx again: 
+						<ul>
+							<li>change the IP address of your computer</li>
+							<li>access the webGUI with the new IP address</li>
+						</ul>
+						</span>
+					</td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 </table>
