@@ -48,6 +48,7 @@ $d_iaxconfdirty_path = $g['varrun_path'] . "/iaxconf.dirty";
 $d_extensionsconfdirty_path = $g['varrun_path'] . "/extensionsconf.dirty";
 $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 $d_conferencing_kicked_path = $g['varrun_path'] . "/conferencing.kicked";
+$d_isdnconfdirty_path = $g['varrun_path'] . "/isdnconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
@@ -146,7 +147,21 @@ $vm_email_languages = array(
 	"fr-formal" => "French (formal)",
 	"es-formal" => "Spanish (formal)",
 	"se-informal" => "Swedish"
+);
 
+$isdn_dchannel_modes = array(
+	0 => "",
+	"DRVR_DSS1_TE" => "euro-ISDN, point-to-multipoint, terminal side",
+	"DRVR_DSS1_NT" => "euro-ISDN, multipoint-to-point, network side",
+	"DRVR_DSS1_P2P_TE" => "euro-ISDN, point-to-point, terminal side",
+	"DRVR_DSS1_P2P_NT" => "euro-ISDN, point-to-point, network side"
+//	"DRVR_D_CHANNEL" => "default D-channel driver",
+//	"DRVR_CAPI_TE" => "",
+//	"DRVR_DIEHL_TE" => "",
+//	"DRVR_TINA_DD_TE" => "",
+//	"DRVR_AMV_B1_TE" => "",
+//	"DRVR_D64S" => "This driver can be used on single B-channel leased lines.",
+//	"DRVR_DUMMY" => "",
 );
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {

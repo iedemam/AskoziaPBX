@@ -33,7 +33,7 @@ $pgtitle = array("Status", "Interfaces");
 require("guiconfig.inc");
 
 
-function get_interface_info($ifdescr) {
+function get_network_interface_info($ifdescr) {
 	
 	global $config, $g;
 	
@@ -86,81 +86,92 @@ function get_interface_info($ifdescr) {
 
 ?>
 <?php include("fbegin.inc"); ?>
-<form action="" method="post">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <?php $i = 0; $ifdescrs = array('lan' => 'Network');
-					
-			      foreach ($ifdescrs as $ifdescr => $ifname): 
-				  $ifinfo = get_interface_info($ifdescr);
-				?>
-              <?php if ($i): ?>
-              <tr>
-				  <td colspan="8" class="list" height="12"></td>
-				</tr>
-				<?php endif; ?>
-              <tr> 
-                <td colspan="2" class="listtopic"> 
-                  <?=htmlspecialchars($ifname);?>
-                  Interface</td>
-              </tr>
-              <tr> 
-                <td width="22%" class="vncellt">Status</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['status']);?>
-                </td>
-              </tr><?php if ($ifinfo['macaddr']): ?>
-              <tr> 
-                <td width="22%" class="vncellt">MAC address</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['macaddr']);?>
-                </td>
-              </tr><?php endif; if ($ifinfo['status'] != "down"): ?>
-			  <?php if ($ifinfo['ipaddr']): ?>
-              <tr> 
-                <td width="22%" class="vncellt">IP address</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['ipaddr']);?>
-                  &nbsp; </td>
-              </tr><?php endif; ?><?php if ($ifinfo['subnet']): ?>
-              <tr> 
-                <td width="22%" class="vncellt">Subnet mask</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['subnet']);?>
-                </td>
-              </tr><?php endif; ?><?php if ($ifinfo['gateway']): ?>
-              <tr> 
-                <td width="22%" class="vncellt">Gateway</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['gateway']);?>
-                </td>
-              </tr><?php endif; if ($ifinfo['media']): ?>
-              <tr> 
-                <td width="22%" class="vncellt">Media</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['media']);?>
-                </td>
-              </tr><?php endif; ?>
-              <tr> 
-                <td width="22%" class="vncellt">In/out packets</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['inpkts'] . "/" . $ifinfo['outpkts'] . " (" . 
-				  		format_bytes($ifinfo['inbytes']) . "/" . format_bytes($ifinfo['outbytes']) . ")");?>
-                </td>
-              </tr><?php if (isset($ifinfo['inerrs'])): ?>
-              <tr> 
-                <td width="22%" class="vncellt">In/out errors</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['inerrs'] . "/" . $ifinfo['outerrs']);?>
-                </td>
-              </tr><?php endif; ?><?php if (isset($ifinfo['collisions'])): ?>
-              <tr> 
-                <td width="22%" class="vncellt">Collisions</td>
-                <td width="78%" class="listr"> 
-                  <?=htmlspecialchars($ifinfo['collisions']);?>
-                </td>
-              </tr><?php endif; ?>
-	      <?php endif; ?>
-              <?php $i++; endforeach; ?>
-            </table>
-</form>
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><?
+
+	$i = 0;
+	$ifdescrs = array('lan' => 'Network');
+	
+	foreach ($ifdescrs as $ifdescr => $ifname) {
+		$ifinfo = get_network_interface_info($ifdescr);
+
+		if ($i) {
+			?><tr>
+				<td colspan="8" class="list" height="12"></td>
+			</tr><?
+		}
+
+		?><tr> 
+			<td colspan="2" class="listtopic"><?=htmlspecialchars($ifname);?> Interface</td>
+		</tr>
+		<tr> 
+			<td width="20%" class="vncellt">Status</td>
+			<td width="80%" class="listr"><?=htmlspecialchars($ifinfo['status']);?></td>
+		</tr><?
+		
+		if ($ifinfo['macaddr']) {
+			?><tr> 
+				<td class="vncellt">MAC Address</td>
+				<td class="listr"><?=htmlspecialchars($ifinfo['macaddr']);?></td>
+              </tr><?
+		}
+		
+		if ($ifinfo['status'] != "down") {
+			
+			if ($ifinfo['ipaddr']) {
+				?><tr> 
+					<td class="vncellt">IP Address</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['ipaddr']);?>&nbsp;</td>
+				</tr><?
+			}
+			
+			if ($ifinfo['subnet']) {
+				?><tr> 
+					<td class="vncellt">Subnet Mask</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['subnet']);?></td>
+				</tr><?
+			}
+			
+			if ($ifinfo['gateway']) {
+				?><tr> 
+					<td class="vncellt">Gateway</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['gateway']);?></td>
+              </tr><?
+			}
+			
+			if ($ifinfo['media']) {
+				?><tr> 
+					<td class="vncellt">Media</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['media']);?></td>
+				</tr><?
+			}
+			
+			?><tr> 
+				<td class="vncellt">In/Out Packets</td>
+				<td class="listr"> 
+					<?=htmlspecialchars($ifinfo['inpkts'] . "/" . $ifinfo['outpkts'] . " (" . 
+					format_bytes($ifinfo['inbytes']) . "/" . format_bytes($ifinfo['outbytes']) . ")");?>
+				</td>
+			</tr><?
+			
+			if (isset($ifinfo['inerrs'])) {
+				?><tr> 
+					<td class="vncellt">In/Out Errors</td>
+					<td class="listr">
+						<?=htmlspecialchars($ifinfo['inerrs'] . "/" . $ifinfo['outerrs']);?>
+					</td>
+				</tr><?
+			}
+			
+			if (isset($ifinfo['collisions'])) {
+				?><tr>
+					<td class="vncellt">Collisions</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['collisions']);?></td>
+				</tr><?
+			}
+		}
+		
+		$i++;
+	}
+
+?></table>
 <?php include("fend.inc"); ?>

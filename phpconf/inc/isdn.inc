@@ -31,19 +31,69 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-function isdn_get_recognized_interfaces() {
+/*
+	isdnconfig - configure ISDN4BSD, version 1.6.0, compiled Jul  9 2007 16:34:01
+	usage:  isdnconfig -u <unit> -i <number> -p <protocol> [parameters]
+		-u unit         set controller unit (default is zero)
+		-c channel      set channel number (default is zero)
+		-p enum         set D-channel protocol
+		-i value        set D-channel serial number
+		-a              activate PH-line
+		-D              deactivate PH-line
+		-t              set TE-mode
+		-n              set NT-mode
+		-r              reset device
+		-m              set PCM cable unit (default is zero)
+		-E enum         display information about enum
+
+*/
+
+function isdn_get_recognized_unit_numbers() {
 	global $g;
 	
 	$dmesg_lines = explode("\n", file_get_contents("{$g['varlog_path']}/dmesg.boot"));
 	
-	$hfc_lines = array();
+	$controllers = array();
 	foreach($dmesg_lines as $line) {
-		if (preg_match("/^ihfc[0-9]/", $line)) {
-			$hfc_lines[] = $line;
+		if (strpos($line, "Attaching I4B controller") !== false) {
+			preg_match("/\b[0-9]+\b/", $line, &$matches);
+			$controllers[$matches[0]] = "found";
 		}
 	}
 	
-	return $hfc_lines;
+	return $controllers;
 }
+
+function isdn_get_interfaces() {
+	global $config;
+	
+	if (!is_array($config['interfaces']['isdn']))
+		$config['interfaces']['isdn'] = array();
+		
+	isdn_sort_interfaces();
+		
+	return $config['interfaces']['isdn'];
+}
+
+function isdn_sort_interfaces() {
+	global $config;
+
+	usort($config['interfaces']['isdn'], "_isdninterfacescmp");	
+}
+function _isdninterfacescmp($a, $b) {
+	return strcmp($a['unit'], $b['unit']);
+}
+
+function isdn_configure() {
+	
+	$res = 0;
+	$interfaces = isdn_get_interfaces();
+	foreach ($interfaces as $interface) {
+		$res |= mwexec("/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']} pcm_master");
+	}
+
+	return $res;
+}
+
 
 ?>

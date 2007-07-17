@@ -69,6 +69,10 @@ function asterisk_configure() {
 	$res |= msmtp_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
+	if ($g['booting']) echo " - configuring isdn interfaces...";
+	$res |= isdn_configure();
+	if ($g['booting']) echo "done\n";
+	
 	if ($g['booting']) echo " - executing Asterisk...";
 	$res |= mwexec("/usr/local/sbin/asterisk");
 	if ($g['booting']) echo "done\n";

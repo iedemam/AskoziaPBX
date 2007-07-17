@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: interfaces_isdn.php 151 2007-07-13 17:11:32Z michael.iedema $
+	$Id: providers_sip_edit.php 144 2007-07-04 17:05:34Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,55 +29,119 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "Edit ISDN Port");
+$unit = $_GET['unit'];
+if (isset($_POST['unit']))
+	$unit = $_POST['unit'];
+
+$pgtitle = array("Interfaces", "Edit ISDN Interface #$unit");
 require("guiconfig.inc");
 
-$hfc_lines = isdn_get_recognized_interfaces();
 
+if (!is_array($config['interfaces']['isdn']))
+	$config['interfaces']['isdn'] = array();
+
+isdn_sort_interfaces();
+$a_isdninterfaces = &$config['interfaces']['isdn'];
+
+$configured_units = array();
+foreach ($a_isdninterfaces as $i_unit) {
+	$configured_units[$i_unit['unit']]['name'] = $i_unit['name'];
+	$configured_units[$i_unit['unit']]['mode'] = $i_unit['mode'];
+}
+
+$recognized_units = isdn_get_recognized_unit_numbers();
+if (!count($recognized_units)) {
+	$n = 0;
+} else {
+	$n = max(array_keys($recognized_units));
+}
+$merged_units = array();
+for ($i = 0; $i <= $n; $i++) {
+	if (!isset($recognized_units[$i])) {
+		continue;
+	}
+	if (isset($configured_units[$i])) {
+		$merged_units[$i]['unit'] = $i;
+		$merged_units[$i]['name'] = $configured_units[$i]['name'];
+		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
+	} else {
+		$merged_units[$i]['unit'] = $i;
+		$merged_units[$i]['name'] = "(unconfigured)";
+		$merged_units[$i]['mode'] = 0;
+	}
+}
+
+/* pull current config into pconfig */
+$pconfig['unit'] = $merged_units[$unit]['unit'];
+$pconfig['name'] = $merged_units[$unit]['name'];
+$pconfig['mode'] = $merged_units[$unit]['mode'];
+
+
+
+if ($_POST) {
+
+	unset($input_errors);
+	$pconfig = $_POST;
+	
+	if (!$input_errors) {
+		
+		$n = count($a_isdninterfaces);
+		if (isset($configured_units[$unit])) {
+			for ($i = 0; $i < $n; $i++) {
+				if ($a_isdninterfaces[$i]['unit'] == $unit) {
+					$a_isdninterfaces[$i]['name'] = $_POST['name'];
+					$a_isdninterfaces[$i]['mode'] = $_POST['mode'];
+				}
+			}
+
+		} else {
+			$a_isdninterfaces[$n]['unit'] = $unit;
+			$a_isdninterfaces[$n]['name'] = $_POST['name'];
+			$a_isdninterfaces[$n]['mode'] = $_POST['mode'];
+		}
+
+
+		touch($d_isdnconfdirty_path);
+
+		write_config();
+
+		header("Location: interfaces_isdn.php");
+		exit;
+	}
+}
 ?>
 <?php include("fbegin.inc"); ?>
-<form action="interfaces_isdn.php" method="post" name="iform" id="iform">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<form action="interfaces_isdn_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td colspan="2" valign="top" class="listtopic">ISDN configuration</td>
-	</tr>
-	<tr> 
-		<td width="22%" valign="top" class="vncellreq">HFC Lines</td>
-		<td width="78%" class="vtable"><?
-		
-		foreach($hfc_lines as $line) {
-			echo "$line<br>\n";
-		}
-		
-		?></td>
-	</tr>
-	<tr> 
-		<td valign="top">&nbsp;</td>
-		<td> 
-			<input name="Submit" type="submit" class="formbtn" value="Save"> 
+		<td valign="top" class="vncellreq">Name</td>
+		<td class="vtable">
+			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+			<br><span class="vexpl">descriptive name</span>
 		</td>
 	</tr>
 	<tr> 
-		<td width="22%" valign="top">&nbsp;</td>
-		<td width="78%">
-			<span class="vexpl"><span class="red"><strong>Warning:<br>
-			</strong></span>after you click &quot;Save&quot;, all current
-			calls will be dropped. You may also have to do one or more 
-			of the following steps before you can access your pbx again: 
-			<ul>
-				<li>change the IP address of your computer</li>
-				<li>access the webGUI with the new IP address</li>
-			</ul>
-			</span>
+		<td valign="top" class="vncell">Mode</td>
+		<td class="vtable">
+			<select name="mode" class="formfld" id="mode">
+			<? foreach ($isdn_dchannel_modes as $mode => $friendly) : ?>
+			<option value="<?=$mode;?>" <?
+			if ($mode == $pconfig['mode'])
+				echo "selected"; ?>
+			><?=$friendly;?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl">Interface Operation Mode</span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top">&nbsp;</td>
+		<td>
+			<input name="Submit" type="submit" class="formbtn" value="Save">
+			<input name="unit" type="hidden" value="<?=$unit;?>"> 
 		</td>
 	</tr>
 </table>
 </form>
-<script language="JavaScript">
-<!--
-type_change();
-//-->
-</script>
 <?php include("fend.inc"); ?>

@@ -5,6 +5,8 @@ new features
    - pubkey import
    - md5
  - build pages for call parking
+ - ISDN
+
 
 fixes
  - is_valid_xxx checks need to be completed!!!
@@ -23,6 +25,7 @@ improvements
 
 ?? should interfaces be handled identically, isdn vs network
 ?? figure out bridging before next release to accomplish this last question
+?? should the iprX and ispX interfaces be filtered out
 
 
 pb8

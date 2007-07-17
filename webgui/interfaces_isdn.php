@@ -32,69 +32,95 @@
 $pgtitle = array("Interfaces", "ISDN");
 require("guiconfig.inc");
 
-$hfc_lines = isdn_get_recognized_interfaces();
+
+if (!is_array($config['interfaces']['isdn']))
+	$config['interfaces']['isdn'] = array();
+
+isdn_sort_interfaces();
+$a_isdninterfaces = &$config['interfaces']['isdn'];
+
+$configured_units = array();
+foreach ($a_isdninterfaces as $unit) {
+	$configured_units[$unit['unit']]['name'] = $unit['name'];
+	$configured_units[$unit['unit']]['mode'] = $unit['mode'];
+}
+
+$recognized_units = isdn_get_recognized_unit_numbers();
+if (!count($recognized_units)) {
+	$n = 0;
+} else {
+	$n = max(array_keys($recognized_units));
+}
+$merged_units = array();
+for ($i = 0; $i <= $n; $i++) {
+	if (!isset($recognized_units[$i])) {
+		continue;
+	}
+	if (isset($configured_units[$i])) {
+		$merged_units[$i]['unit'] = $i;
+		$merged_units[$i]['name'] = $configured_units[$i]['name'];
+		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
+	} else {
+		$merged_units[$i]['unit'] = $i;
+		$merged_units[$i]['name'] = "(unconfigured)";
+		$merged_units[$i]['mode'] = 0;
+	}
+}
+
+
+if (file_exists($d_isdnconfdirty_path)) {
+	$retval = 0;
+	if (!file_exists($d_sysrebootreqd_path)) {
+		config_lock();
+		$retval |= isdn_configure();
+		config_unlock();
+	}
+	
+	$savemsg = get_std_save_message($retval);
+	if ($retval == 0) {
+		unlink($d_isdnconfdirty_path);
+	}
+}
 
 ?>
+
 <?php include("fbegin.inc"); ?>
-<form action="interfaces_isdn.php" method="post" name="iform" id="iform">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<form action="interfaces_isdn.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td class="tabnavtbl">
-			<ul id="tabnav"><?
 
-			$tabs = array('Interfaces' => 'interfaces_isdn.php',
-						'Assign' => 'interfaces_isdn_assign.php');
-			dynamic_tab_menu($tabs);
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><?
 
-			?></ul>
+if (!count($recognized_units)) {
+	
+	?><tr> 
+		<td><strong>No compatible ISDN interfaces detected.</strong>
+		<br>
+		<br>If an ISDN interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.</td>
+	</tr><?
+	
+} else {
+
+	?><tr>
+		<td width="10%" class="listhdrr">Unit</td>
+		<td width="30%" class="listhdrr">Name</td>		
+		<td width="55%" class="listhdr">Mode</td>
+		<td width="5%" class="list"></td>
+	</tr><?	
+
+	foreach ($merged_units as $mu) {
+
+	?><tr>
+		<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
+		<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list">
+			<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
 		</td>
-	</tr>
-	<tr>
-		<td class="tabcont">
-			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
-					<td colspan="2" valign="top" class="listtopic">ISDN configuration</td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top" class="vncellreq">HFC Lines</td>
-					<td width="78%" class="vtable"><?
-					
-					foreach($hfc_lines as $line) {
-						echo "$line<br>\n";
-					}
-					
-					?></td>
-				</tr>
-				<tr> 
-					<td valign="top">&nbsp;</td>
-					<td> 
-						<input name="Submit" type="submit" class="formbtn" value="Save"> 
-					</td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top">&nbsp;</td>
-					<td width="78%">
-						<span class="vexpl"><span class="red"><strong>Warning:<br>
-						</strong></span>after you click &quot;Save&quot;, all current
-						calls will be dropped. You may also have to do one or more 
-						of the following steps before you can access your pbx again: 
-						<ul>
-							<li>change the IP address of your computer</li>
-							<li>access the webGUI with the new IP address</li>
-						</ul>
-						</span>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
+	</tr><?
+	
+	}
+}
+
+?></table>
 </form>
-<script language="JavaScript">
-<!--
-type_change();
-//-->
-</script>
 <?php include("fend.inc"); ?>
