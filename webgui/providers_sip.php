@@ -79,6 +79,23 @@ if ($_GET['act'] == "del") {
 			}
 		}
 		
+		// remove references to this provider from isdn phones
+		if (is_array($config['isdn']['phone'])) {
+			$a_isdnphones = &$config['isdn']['phone'];
+			$n = count($a_isdnphones);
+			for ($i = 0; $i < $n; $i++) {
+				if (is_array($a_isdnphones[$i]['provider'])) {
+					$nn = count($a_isdnphones[$i]['provider']);
+					for ($j = 0; $j < $nn; $j++) {
+						if ($a_isdnphones[$i]['provider'][$j] == $removed_id) {
+							unset($a_isdnphones[$i]['provider'][$j]);
+						}
+					}
+
+				}
+			}
+		}
+		
 		write_config();
 		touch($d_sipconfdirty_path);
 		header("Location: providers_sip.php");

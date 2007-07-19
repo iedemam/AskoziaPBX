@@ -151,10 +151,10 @@ $vm_email_languages = array(
 
 $isdn_dchannel_modes = array(
 	0 => "",
-	"DRVR_DSS1_TE" => "euro-ISDN, point-to-multipoint, terminal side",
-	"DRVR_DSS1_NT" => "euro-ISDN, multipoint-to-point, network side",
-	"DRVR_DSS1_P2P_TE" => "euro-ISDN, point-to-point, terminal side",
-	"DRVR_DSS1_P2P_NT" => "euro-ISDN, point-to-point, network side"
+	"DRVR_DSS1_TE" => "euro-ISDN, point-to-multipoint, terminal equipment",
+	"DRVR_DSS1_NT" => "euro-ISDN, multipoint-to-point, network termination",
+	"DRVR_DSS1_P2P_TE" => "euro-ISDN, point-to-point, terminal equipment",
+	"DRVR_DSS1_P2P_NT" => "euro-ISDN, point-to-point, network termination"
 //	"DRVR_D_CHANNEL" => "default D-channel driver",
 //	"DRVR_CAPI_TE" => "",
 //	"DRVR_DIEHL_TE" => "",
@@ -426,7 +426,7 @@ function display_callgroup_member_selector($current_members) {
 	
 	$all_phones = asterisk_get_phones();
 	
-	// XXX this should be handled at a lower level in the next release
+	// XXX this should be handled at a lower level
 	$indexed_phones = array();
 	foreach($all_phones as $phone) {
 		$indexed_phones[$phone['uniqid']] = $phone;
@@ -512,6 +512,17 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				<?php $have_extension = true; ?>
 				<option>IAX Phones</option>
 				<?php foreach ($a_iaxphones as $phone): ?>
+				<option value="<?=$phone['uniqid'];?>" <?php 
+				if ($phone['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+				
+				<?php if (count($a_isdnphones = isdn_get_phones()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>ISDN Phones</option>
+				<?php foreach ($a_isdnphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
 					echo "selected"; ?>> 

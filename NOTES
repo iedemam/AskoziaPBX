@@ -1,4 +1,5 @@
 pb7
+
 new features
  - followme
  - add iax2 auth options
@@ -6,6 +7,7 @@ new features
    - md5
  - build pages for call parking
  - ISDN
+ - forward callerid from providers!!!
 
 
 fixes
@@ -22,6 +24,8 @@ improvements
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
+ - removal of references to providers from phones can really be improved / updated for isdn!!
+ - voicemail "flusher" needed for stale voicemail messages
 
 ?? should interfaces be handled identically, isdn vs network
 ?? figure out bridging before next release to accomplish this last question

@@ -35,7 +35,7 @@
 
 $php_version		= "php-4.4.7";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.7.1";
+$asterisk_version	= "asterisk-1.4.8";
 $msmtp_version		= "msmtp-1.4.11";
 $zaptel_version		= "zaptel";
 
@@ -925,6 +925,12 @@ function package($platform, $image_name) {
 		
 		_exec("mount /dev/md0b tmp/mnt");
 		_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+		// XXX quick fix to remove low power modules
+		if ($platform != "generic-pc") {
+			foreach ($low_power_modules as $lpm) {
+				_exec("rm tmp/mnt/modules/$lpm");
+			}
+		}
 		_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
 		_exec("df tmp/mnt");
 		_exec("umount tmp/mnt");		

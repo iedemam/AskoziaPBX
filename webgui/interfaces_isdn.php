@@ -33,16 +33,19 @@ $pgtitle = array("Interfaces", "ISDN");
 require("guiconfig.inc");
 
 
-if (!is_array($config['interfaces']['isdn']))
-	$config['interfaces']['isdn'] = array();
+if (!is_array($config['interfaces']['isdn-unit']))
+	$config['interfaces']['isdn-unit'] = array();
 
 isdn_sort_interfaces();
-$a_isdninterfaces = &$config['interfaces']['isdn'];
+$a_isdninterfaces = &$config['interfaces']['isdn-unit'];
 
 $configured_units = array();
 foreach ($a_isdninterfaces as $unit) {
 	$configured_units[$unit['unit']]['name'] = $unit['name'];
 	$configured_units[$unit['unit']]['mode'] = $unit['mode'];
+	$configured_units[$unit['unit']]['pcmmaster'] = $unit['pcmmaster'];
+	$configured_units[$unit['unit']]['nopwrsave'] = $unit['nopwrsave'];
+	$configured_units[$unit['unit']]['pollmode'] = $unit['pollmode'];
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();
@@ -60,10 +63,12 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
+		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
+		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
+		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
-		$merged_units[$i]['mode'] = 0;
 	}
 }
 
@@ -73,7 +78,10 @@ if (file_exists($d_isdnconfdirty_path)) {
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= isdn_configure();
+		$retval |= isdn_conf_generate();
 		config_unlock();
+		
+		$retval |= isdn_reload();
 	}
 	
 	$savemsg = get_std_save_message($retval);

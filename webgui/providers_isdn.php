@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
+	$Id: providers_iax.php 143 2007-07-03 14:34:07Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.
@@ -29,22 +29,22 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Providers", "IAX");
+$pgtitle = array("Providers", "ISDN");
 require("guiconfig.inc");
 
-if (!is_array($config['iax']['provider']))
-	$config['iax']['provider'] = array();
+if (!is_array($config['isdn']['provider']))
+	$config['isdn']['provider'] = array();
 
-iax_sort_providers();
-$a_iaxproviders = &$config['iax']['provider'];
+isdn_sort_providers();
+$a_isdnproviders = &$config['isdn']['provider'];
 
 
 if ($_GET['act'] == "del") {
-	if ($a_iaxproviders[$_GET['id']]) {
+	if ($a_isdnproviders[$_GET['id']]) {
 		
 		// get the provider's unique id before removal
-		$removed_id = $a_iaxproviders[$_GET['id']]['uniqid'];
-		unset($a_iaxproviders[$_GET['id']]);
+		$removed_id = $a_isdnproviders[$_GET['id']]['uniqid'];
+		unset($a_isdnproviders[$_GET['id']]);
 				
 		// remove references to this provider from sip phones
 		if (is_array($config['sip']['phone'])) {
@@ -78,7 +78,7 @@ if ($_GET['act'] == "del") {
 				}
 			}
 		}
-		
+
 		// remove references to this provider from isdn phones
 		if (is_array($config['isdn']['phone'])) {
 			$a_isdnphones = &$config['isdn']['phone'];
@@ -97,65 +97,66 @@ if ($_GET['act'] == "del") {
 		}
 
 		write_config();
-		touch($d_iaxconfdirty_path);
-		header("Location: providers_iax.php");
+		touch($d_isdnconfdirty_path);
+		header("Location: providers_isdn.php");
 		exit;
 	}
 }
 
-if (file_exists($d_iaxconfdirty_path)) {
+if (file_exists($d_isdnconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= iax_conf_generate();
+		$retval |= isdn_conf_generate();
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= iax_reload();
+		$retval |= isdn_reload();
 		$retval |= extensions_reload();
 	}
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_iaxconfdirty_path);
+		unlink($d_isdnconfdirty_path);
 	}
 }
 
 ?>
 
 <?php include("fbegin.inc"); ?>
-<form action="providers_iax.php" method="post">
+<form action="providers_isdn.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="20%" class="listhdrr">Pattern(s)</td>
-		<td width="25%" class="listhdrr">Name</td>		
-		<td width="20%" class="listhdrr">Username</td>
-		<td width="25%" class="listhdr">Host</td>
+		<td width="30%" class="listhdrr">Name</td>
+		<td width="15%" class="listhdrr">Interface</td>
+		<td width="25%" class="listhdrr">MSN</td>
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<?php $i = 0; foreach ($a_iaxproviders as $sp): ?>
+	<?php $i = 0; foreach ($a_isdnproviders as $ip): ?>
+	<? $interface = isdn_get_interface($ip['interface']); ?>
 	<tr>
 		<td class="listlr"><?
-			$n = count($sp['dialpattern']);
-			echo htmlspecialchars($sp['dialpattern'][0]);
+			$n = count($ip['dialpattern']);
+			echo htmlspecialchars($ip['dialpattern'][0]);
 			for($ii = 1; $ii < $n; $ii++) {
-				echo "<br>" . htmlspecialchars($sp['dialpattern'][$ii]);
+				echo "<br>" . htmlspecialchars($ip['dialpattern'][$ii]);
 			}
 		?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($sp['name']);?></td>
-		<td class="listr"><?=htmlspecialchars($sp['username']);?></td>
-		<td class="listr"><?=htmlspecialchars($sp['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"> <a href="providers_iax_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit IAX provider" width="17" height="17" border="0"></a>
-           &nbsp;<a href="providers_iax.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this IAX provider?')"><img src="x.gif" title="delete IAX provider" width="17" height="17" border="0"></a></td>
+		<td class="listbg"><?=htmlspecialchars($ip['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($ip['msn']);?></td>
+		<td valign="middle" nowrap class="list"> <a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit ISDN provider" width="17" height="17" border="0"></a>
+           &nbsp;<a href="providers_isdn.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this ISDN provider?')"><img src="x.gif" title="delete ISDN provider" width="17" height="17" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="providers_iax_edit.php"><img src="plus.gif" title="add IAX provider" width="17" height="17" border="0"></a></td>
+		<td class="list"> <a href="providers_isdn_edit.php"><img src="plus.gif" title="add ISDN provider" width="17" height="17" border="0"></a></td>
 	</tr>
 </table>
 </form>

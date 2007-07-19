@@ -32,7 +32,7 @@
 /* tags that are always to be handled as lists */
 $listtags = explode(" ", 
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
-	"phone provider codec room dialpattern callgroup groupmember isdn");
+	"phone provider codec room dialpattern callgroup groupmember isdn-unit");
 
 
 function startElement($parser, $name, $attrs) {

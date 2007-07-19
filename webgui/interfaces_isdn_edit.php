@@ -37,16 +37,19 @@ $pgtitle = array("Interfaces", "Edit ISDN Interface #$unit");
 require("guiconfig.inc");
 
 
-if (!is_array($config['interfaces']['isdn']))
-	$config['interfaces']['isdn'] = array();
+if (!is_array($config['interfaces']['isdn-unit']))
+	$config['interfaces']['isdn-unit'] = array();
 
 isdn_sort_interfaces();
-$a_isdninterfaces = &$config['interfaces']['isdn'];
+$a_isdninterfaces = &$config['interfaces']['isdn-unit'];
 
 $configured_units = array();
 foreach ($a_isdninterfaces as $i_unit) {
 	$configured_units[$i_unit['unit']]['name'] = $i_unit['name'];
 	$configured_units[$i_unit['unit']]['mode'] = $i_unit['mode'];
+	$configured_units[$i_unit['unit']]['pcmmaster'] = $i_unit['pcmmaster'];
+	$configured_units[$i_unit['unit']]['nopwrsave'] = $i_unit['nopwrsave'];
+	$configured_units[$i_unit['unit']]['pollmode'] = $i_unit['pollmode'];
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();
@@ -64,10 +67,12 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
+		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
+		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
+		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
-		$merged_units[$i]['mode'] = 0;
 	}
 }
 
@@ -75,6 +80,9 @@ for ($i = 0; $i <= $n; $i++) {
 $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['mode'] = $merged_units[$unit]['mode'];
+$pconfig['pcmmaster'] = $merged_units[$unit]['pcmmaster'];
+$pconfig['nopwrsave'] = $merged_units[$unit]['nopwrsave'];
+$pconfig['pollmode'] = $merged_units[$unit]['pollmode'];
 
 
 
@@ -91,6 +99,9 @@ if ($_POST) {
 				if ($a_isdninterfaces[$i]['unit'] == $unit) {
 					$a_isdninterfaces[$i]['name'] = $_POST['name'];
 					$a_isdninterfaces[$i]['mode'] = $_POST['mode'];
+					$a_isdninterfaces[$i]['pcmmaster'] = $_POST['pcmmaster'];
+					$a_isdninterfaces[$i]['nopwrsave'] = $_POST['nopwrsave'];
+					$a_isdninterfaces[$i]['pollmode'] = $_POST['pollmode'];
 				}
 			}
 
@@ -98,6 +109,9 @@ if ($_POST) {
 			$a_isdninterfaces[$n]['unit'] = $unit;
 			$a_isdninterfaces[$n]['name'] = $_POST['name'];
 			$a_isdninterfaces[$n]['mode'] = $_POST['mode'];
+			$a_isdninterfaces[$n]['pcmmaster'] = $_POST['pcmmaster'];
+			$a_isdninterfaces[$n]['nopwrsave'] = $_POST['nopwrsave'];
+			$a_isdninterfaces[$n]['pollmode'] = $_POST['pollmode'];
 		}
 
 
@@ -133,6 +147,27 @@ if ($_POST) {
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl">Interface Operation Mode</span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell">PCM Master</td>
+		<td class="vtable">
+			<input name="pcmmaster" id="pcmmaster" type="checkbox" value="yes" <? if ($pconfig['pcmmaster']) echo "checked"; ?>>
+			This card provides the timing source (needed if this is the only card).
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell">Disable Power Save</td>
+		<td class="vtable">
+			<input name="nopwrsave" id="nopwrsave" type="checkbox" value="yes" <? if ($pconfig['nopwrsave']) echo "checked"; ?>>
+			Disable power save mode.
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell">Enable Polling Mode</td>
+		<td class="vtable">
+			<input name="pollmode" id="pollmode" type="checkbox" value="yes" <? if ($pconfig['pollmode']) echo "checked"; ?>>
+			Enable polling mode.
 		</td>
 	</tr>
 	<tr> 

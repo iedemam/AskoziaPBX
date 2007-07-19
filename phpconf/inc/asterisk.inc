@@ -69,7 +69,11 @@ function asterisk_configure() {
 	$res |= msmtp_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
-	if ($g['booting']) echo " - configuring isdn interfaces...";
+	if ($g['booting']) echo " - generating isdn configuration...";
+	$res |= isdn_conf_generate();
+	if ($g['booting']) echo "done\n";
+	
+	if ($g['booting']) echo " - applying isdn configuration...";
 	$res |= isdn_configure();
 	if ($g['booting']) echo "done\n";
 	
@@ -247,6 +251,7 @@ function asterisk_get_extensions() {
 	return array_merge(
 		sip_get_extensions(), 
 		iax_get_extensions(),
+		isdn_get_extensions(),
 		conferencing_get_extensions()
 	);
 }
@@ -258,7 +263,8 @@ function asterisk_get_providers() {
 	return asterisk_sort_providers(
 				array_merge(
 					sip_get_providers(),
-					iax_get_providers()
+					iax_get_providers(),
+					isdn_get_providers()
 				));
 }
 function asterisk_sort_providers($providers) {
@@ -276,7 +282,8 @@ function asterisk_get_phones() {
 	return asterisk_sort_phones(
 				array_merge(
 					sip_get_phones(),
-					iax_get_phones()
+					iax_get_phones(),
+					isdn_get_phones()
 				));
 }
 function asterisk_sort_phones($phones) {
@@ -293,7 +300,8 @@ function asterisk_get_dialpatterns() {
 
 	return array_merge(
 		sip_get_dialpatterns(),
-		iax_get_dialpatterns()
+		iax_get_dialpatterns(),
+		isdn_get_dialpatterns()
 	);
 }
 
@@ -312,26 +320,47 @@ function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_
 	return 0; // XXX could do some error checking here
 }
 
-function asterisk_uniqid_to_dial($exten, $uniqid) {
+function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) {
 	global $config;
 	
 	$id = split("-", $uniqid);
 	
+	$prio = 1;
+	$dial = "";
+	
+	if ($wait) {
+		$dial .= "exten => $exten,$prio,Ringing()\n";
+		$prio++;
+		$dial .= "exten => $exten,$prio,Wait($wait)\n";
+		$prio++;
+	}
+	if ($override) {
+		$dial .= "exten => $exten,$prio,Set(CALLERID(name)=$\CALLERID(number))\n";
+		$prio++;
+	}
+	
 	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
-		$dial = "exten => $exten,1,".
+		$dial .= "exten => $exten,$prio,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']})\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
-		$dial = "exten => $exten,1,".
+		$dial .= "exten => $exten,$prio,".
 			"Macro(vm|IAX2/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
+
+	} else if ($id[0] == "ISDN" && $id[1] == "PHONE") {
+		$phone = isdn_get_phone($uniqid);
+		$dial .= "exten => $exten,$prio,".
+			"Macro(vm|CAPI/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
 		$room = conferencing_get_room($uniqid);
-		$dial = "exten => $exten,1,Answer()\n";
-		$dial .= "exten => $exten,2,MeetMe({$room['number']},M)\n";
-		$dial .= "exten => $exten,3,Hangup()\n";
+		$dial .= "exten => $exten,$prio,Answer()\n";
+		$prio++;
+		$dial .= "exten => $exten,$prio,MeetMe({$room['number']},M)\n";
+		$prio++;
+		$dial .= "exten => $exten,$prio,Hangup()\n";
 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
 		$group = dialplan_get_callgroup($uniqid);
@@ -353,7 +382,15 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 					$vm_account = $phone['extension'];
 				}
 				$dial_strings[] = "IAX2/{$phone['extension']}";        	
+			
+			} else if ($subid[0] == "ISDN" && $subid[1] == "PHONE") {
+				$phone = isdn_get_phone($group['groupmember'][$i]);
+				if ($i == 0) {
+					$vm_account = $phone['extension'];
+				}
+				$dial_strings[] = "CAPI/{$phone['extension']}";        	
 			}
+			
 		}
 		
 		$n = count($dial_strings);
@@ -361,8 +398,8 @@ function asterisk_uniqid_to_dial($exten, $uniqid) {
 		for ($i = 1; $i < $n; $i++) {
 			$dstring .= "&" . $dial_strings[$i];
 		}
-		
-		$dial = "exten => $exten,1,".
+
+		$dial .= "exten => $exten,$prio,".
 			"Macro(vm|$dstring|$vm_account)\n";
 	}
 	
@@ -380,13 +417,21 @@ function asterisk_uniqid_to_name($uniqid) {
 	} else if (strpos($uniqid, "IAX-PHONE") !== false) {
 		return $config['iax']['phone'][$uniqid_map[$uniqid]]['callerid'];
 
+	// isdn phone
+	} else if (strpos($uniqid, "ISDN-PHONE") !== false) {
+		return $config['isdn']['phone'][$uniqid_map[$uniqid]]['callerid'];
+			
 	// sip provider
 	} else if (strpos($uniqid, "SIP-PROVIDER") !== false) {
 		return $config['sip']['provider'][$uniqid_map[$uniqid]]['name'];
 		
-	// sip provider
+	// iax provider
 	} else if (strpos($uniqid, "IAX-PROVIDER") !== false) {
 		return $config['iax']['provider'][$uniqid_map[$uniqid]]['name'];
+	
+	// isdn provider
+	} else if (strpos($uniqid, "ISDN-PROVIDER") !== false) {
+		return $config['isdn']['provider'][$uniqid_map[$uniqid]]['name'];
 	}
 }
 

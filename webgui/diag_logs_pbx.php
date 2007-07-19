@@ -52,6 +52,14 @@ function dump_clog($logfile, $tail) {
 	
 	foreach ($logarr as $logent) {
 		$logent = preg_split("/\s+/", $logent, 7);
+		
+		// filter some unimportant messages
+		if (($logent[6] == "Found") || 
+			(strpos($logent[6], "Manager 'admin' logged") !== false) ||
+			(strpos($logent[6], "Remote UNIX connection") !== false)) {
+			continue;
+		}
+		
 		echo "<tr valign=\"top\">\n";
 		
 		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";

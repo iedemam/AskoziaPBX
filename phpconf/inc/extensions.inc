@@ -71,6 +71,11 @@ EOD;
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
 		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}/$\{EXTEN}|$\{EXTEN})\n";
+	}
+	
+	$a_isdnphones = isdn_get_phones();
+	foreach ($a_isdnphones as $phone) {
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}/$\{EXTEN}|$\{EXTEN})\n";
 	}	
 
 	$conf .= <<<EOD
@@ -103,8 +108,8 @@ EOD;
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		// FIXME give some options for this ... kind of hacky
-		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension']);
+		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension'], false, $p['override']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
 		
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
@@ -134,8 +139,8 @@ EOD;
 	foreach ($a_iaxproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension']);
+		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension'], false, $p['override']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
@@ -159,6 +164,38 @@ EOD;
 		$conf .= "\n";
 	}
 	
+	// isdn providers
+	$a_isdnproviders = isdn_get_providers();
+
+	foreach ($a_isdnproviders as $p) {
+		$conf .= "; {$p['name']}\n";
+		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= asterisk_uniqid_to_dial($p['msn'], $p['incomingextension'], 1, $p['override']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override']);
+
+		if (is_array($p['dialpattern'])) {
+			foreach($p['dialpattern'] as $pattern) {
+				$prefix = $offset = "";
+				$exten = "$\{EXTEN}";
+				// prefix insertion
+				if (($offset = strpos($pattern, "+")) !== false) {
+					$prefix = substr($pattern, 0, $offset);
+					$pattern = substr($pattern, $offset+1);
+				}
+				// prefix deletion
+				if (($offset = strpos($pattern, "|")) !== false) {
+					$pattern = str_replace("|", "", $pattern);
+					$exten = "$\{EXTEN:$offset}";
+				}
+				
+				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
+				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30)\n";
+				$conf .= "exten => _$pattern,3,Hangup()\n";
+			}
+		}
+		$conf .= "\n";
+	}
+	
 
 	// sip phones
 	foreach ($a_sipphones as $p) {
@@ -176,6 +213,19 @@ EOD;
 	
 	// iax phones
 	foreach ($a_iaxphones as $p) {
+		$conf .= "; {$p['callerid']}\n";
+		$conf .= "[{$p['uniqid']}]\n";
+		if (isset($p['provider'])) {
+			foreach ($p['provider'] as $provider) {
+				$conf .= "include => $provider\n";
+			}
+		}
+		$conf .= "include => internal\n";
+		$conf .= "\n";
+	}
+	
+	// isdn phones
+	foreach ($a_isdnphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		if (isset($p['provider'])) {

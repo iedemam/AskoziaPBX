@@ -3,56 +3,52 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>webgui/status_conferences.php</string>
+	<string>webgui/providers_isdn.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>build</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>build</string>
+			<key>filename</key>
+			<string>pbxdev.php</string>
+			<key>lastUsed</key>
+			<date>2007-07-18T11:11:21Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-07-13T17:06:17Z</date>
-		</dict>
-		<dict>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>etc</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>etc</string>
-		</dict>
-		<dict>
-			<key>expanded</key>
-			<true/>
-			<key>name</key>
-			<string>files</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>files</string>
+			<date>2007-07-18T11:27:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-07-13T17:06:53Z</date>
+			<date>2007-07-18T13:16:12Z</date>
 		</dict>
 		<dict>
-			<key>filename</key>
-			<string>pbxdev.php</string>
-			<key>lastUsed</key>
-			<date>2007-07-13T12:52:24Z</date>
+			<key>name</key>
+			<string>build</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>build</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>etc</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>etc</string>
+		</dict>
+		<dict>
+			<key>expanded</key>
+			<true/>
+			<key>name</key>
+			<string>files</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>files</string>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -79,34 +75,6 @@
 	<integer>194</integer>
 	<key>metaData</key>
 	<dict>
-		<key>CHANGELOG</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>104</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>NOTES</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>
 			<key>caret</key>
@@ -121,47 +89,61 @@
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
 		</dict>
-		<key>pbxdev.php</key>
+		<key>phpconf/inc/asterisk.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>834</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>84</integer>
-			<key>firstVisibleLine</key>
-			<integer>820</integer>
-		</dict>
-		<key>phpconf/inc/conferencing.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>102</integer>
+				<integer>322</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>82</integer>
+			<integer>311</integer>
+		</dict>
+		<key>phpconf/inc/extensions.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>76</integer>
+				<key>line</key>
+				<integer>191</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>164</integer>
+		</dict>
+		<key>phpconf/inc/isdn.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>228</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>202</integer>
 		</dict>
 		<key>webgui/diag_logs_calls.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>150</integer>
+				<integer>155</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>142</integer>
+			<integer>108</integer>
 		</dict>
 		<key>webgui/help.inc</key>
 		<dict>
@@ -177,6 +159,34 @@
 			<key>firstVisibleLine</key>
 			<integer>35</integer>
 		</dict>
+		<key>webgui/providers_isdn.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>59</integer>
+				<key>line</key>
+				<integer>149</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>124</integer>
+		</dict>
+		<key>webgui/providers_isdn_edit.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>67</integer>
+				<key>line</key>
+				<integer>131</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>90</integer>
+		</dict>
 		<key>webgui/status.php</key>
 		<dict>
 			<key>caret</key>
@@ -190,20 +200,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>24</integer>
-		</dict>
-		<key>webgui/status_conferences.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>28</integer>
-				<key>line</key>
-				<integer>76</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>45</integer>
 		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
@@ -219,18 +215,33 @@
 			<key>firstVisibleLine</key>
 			<integer>5</integer>
 		</dict>
+		<key>webgui/status_interfaces.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>94</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>86</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>pbxdev.php</string>
-		<string>CHANGELOG</string>
-		<string>NOTES</string>
-		<string>phpconf/inc/conferencing.inc</string>
-		<string>webgui/status_conferences.php</string>
+		<string>phpconf/inc/isdn.inc</string>
+		<string>webgui/providers_isdn.php</string>
+		<string>webgui/providers_isdn_edit.php</string>
+		<string>phpconf/inc/extensions.inc</string>
+		<string>webgui/diag_logs_calls.php</string>
+		<string>phpconf/inc/asterisk.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{387, 198}, {814, 579}}</string>
+	<string>{{364, 928}, {790, 785}}</string>
 </dict>
 </plist>

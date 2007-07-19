@@ -69,6 +69,17 @@ if ($_GET['act'] == "del") {
 			}
 		}
 		
+		// remove references to this callgroup from isdn providers incoming extensions
+		if (is_array($config['isdn']['provider'])) {
+			$a_isdnproviders = &$config['isdn']['provider'];
+			$n = count($a_isdnproviders);
+			for ($i = 0; $i < $n; $i++) {
+				if ($a_isdnproviders[$i]['incomingextension'] == $removed_id) {
+					unset($a_isdnproviders[$i]['incomingextension']);
+				}
+			}
+		}
+		
 		write_config();
 		touch($d_extensionsconfdirty_path);
 		header("Location: dialplan_callgroups.php");

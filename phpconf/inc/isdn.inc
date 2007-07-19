@@ -48,6 +48,74 @@ require_once("functions.inc");
 
 */
 
+function isdn_get_providers() {
+	global $config;
+	
+	if (!is_array($config['isdn']['provider']))
+		$config['isdn']['provider'] = array();
+		
+	isdn_sort_providers();
+		
+	return $config['isdn']['provider'];
+}
+
+function isdn_get_phones() {
+	global $config;
+	
+	if (!is_array($config['isdn']['phone']))
+		$config['isdn']['phone'] = array();
+		
+	isdn_sort_phones();
+		
+	return $config['isdn']['phone'];
+}
+
+function isdn_get_phone($uniqid) {
+	global $config, $uniqid_map;
+	return $config['isdn']['phone'][$uniqid_map[$uniqid]];
+}
+
+function isdn_get_extensions() {
+	global $config;
+	
+	$extensions = array();
+	if (is_array($config['isdn']['phones']))
+		foreach($config['isdn']['phones'] as $phone)
+			$extensions[] = $phone['extension'];
+
+	return $extensions;
+}
+
+function isdn_get_dialpatterns() {
+	global $config;
+	
+	$dialpatterns = array();
+	if (is_array($config['isdn']['provider']))
+		foreach($config['isdn']['provider'] as $provider)
+			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
+
+	return $dialpatterns;
+}
+
+function isdn_sort_phones() {
+	global $g, $config;
+
+	usort($config['isdn']['phone'], "_isdnphonecmp");	
+}
+function _isdnphonecmp($a, $b) {
+	return strcmp($a['extension'], $b['extension']);
+}
+
+
+function isdn_sort_providers() {
+	global $g, $config;
+
+	usort($config['isdn']['provider'], "_isdnprovidercmp");	
+}
+function _isdnprovidercmp($a, $b) {
+	return strcmp($a['name'], $b['name']);
+}
+
 function isdn_get_recognized_unit_numbers() {
 	global $g;
 	
@@ -67,18 +135,28 @@ function isdn_get_recognized_unit_numbers() {
 function isdn_get_interfaces() {
 	global $config;
 	
-	if (!is_array($config['interfaces']['isdn']))
-		$config['interfaces']['isdn'] = array();
+	if (!is_array($config['interfaces']['isdn-unit']))
+		$config['interfaces']['isdn-unit'] = array();
 		
 	isdn_sort_interfaces();
 		
-	return $config['interfaces']['isdn'];
+	return $config['interfaces']['isdn-unit'];
+}
+
+function isdn_get_interface($unit) {
+	
+	$interfaces = isdn_get_interfaces();
+	foreach ($interfaces as $interface) {
+		if ($interface['unit'] == $unit) {
+			return $interface;
+		}
+	}
 }
 
 function isdn_sort_interfaces() {
 	global $config;
 
-	usort($config['interfaces']['isdn'], "_isdninterfacescmp");	
+	usort($config['interfaces']['isdn-unit'], "_isdninterfacescmp");	
 }
 function _isdninterfacescmp($a, $b) {
 	return strcmp($a['unit'], $b['unit']);
@@ -89,10 +167,149 @@ function isdn_configure() {
 	$res = 0;
 	$interfaces = isdn_get_interfaces();
 	foreach ($interfaces as $interface) {
-		$res |= mwexec("/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']} pcm_master");
+		
+		$command = "/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
+		
+		if ($interface['pcmmaster']) {
+			$command .= " pcm_master";
+		} else {
+			$command .= " pcm_slave";
+		}
+		
+		if ($interface['nopwrsave']) {
+			$command .= " power_on";
+		} else {
+			$command .= " pwr_save";
+		}
+		
+		if ($interface['pollmode']) {
+			$command .= " poll_mode";
+		} else {
+			$command .= " intr_mode";
+		}
+		
+		$res |= mwexec($command);
 	}
 
 	return $res;
+}
+
+function isdn_reload() {
+	return asterisk_exec("module reload chan_capi.so");
+}
+
+function isdn_conf_generate() {
+	global $config, $g;
+	
+	$fd = fopen("/usr/local/etc/asterisk/capi.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open capi.conf in isdn_conf_generate().\n");
+		return 1;
+	}
+	
+	$isdnconfig = $config['services']['isdn'];
+	
+	$law = "alaw";
+	if (isset($isdnconfig['law']))
+		$law = $isdnconfig['law'];
+
+	$nationalprefix = "0";
+	if (isset($isdnconfig['nationalprefix']))
+		$nationalprefix = $isdnconfig['nationalprefix'];
+
+	$internationalprefix = "00";
+	if (isset($isdnconfig['internationalprefix']))
+		$internationalprefix = $isdnconfig['internationalprefix'];
+		
+	$conf = <<<EOD
+	
+[general]
+nationalprefix=$nationalprefix
+internationalprefix=$internationalprefix
+rxgain=1.0
+txgain=1.0
+;debug=yes
+
+EOD;
+
+	if ($law != "alaw") {
+		$conf .= "ulaw=yes\n";
+	}
+	
+	$conf .= "\n\n";
+	
+	// provider definitions
+	$isdnproviders = isdn_get_providers();
+	foreach($isdnproviders as $p) {
+		$conf .= "; {$p['name']}\n";
+		$conf .= "[{$p['uniqid']}]\n";
+
+		$interface = isdn_get_interface($p['interface']);
+		
+		$conf .= "isdnmode=msn\n";
+		$conf .= "msn={$p['msn']}\n";
+		$conf .= "incomingmsn=*\n";
+		$conf .= "controller={$interface['unit']}\n";
+		$conf .= "group=1\n";
+		//$conf .= ";prefix=0\n";
+		$conf .= "softdtmf=off\n";
+		$conf .= "relaxdtmf=off\n";
+		//$conf .= "accountcode=\n";
+		
+		$conf .= "context={$p['uniqid']}\n";
+
+		$conf .= "holdtype=local\n";
+		//$conf .= ";immediate=yes\n";
+		$conf .= "echocancel=yes\n";
+		//$conf .= "echosquelch=yes\n";
+		//$conf .= ";echocancelold=yes\n";
+		//$conf .= ";echotail=64\n";
+		//$conf .= ";bridge=yes\n";
+		//$conf .= ";callgroup=1\n";
+		//$conf .= ";deflect=1234567\n";
+		$conf .= "devices=2\n";
+		$conf .= "\n";
+	}
+	
+	$conf .= "\n";
+	
+	// phone definitions
+	$isdnphones = isdn_get_phones();
+	foreach($isdnphones as $p) {
+		$conf .= "; {$p['callerid']}\n";
+		$conf .= "[{$p['extension']}]\n";
+
+		$interface = isdn_get_interface($p['interface']);
+		
+		$conf .= "ntmode=yes\n";
+		$conf .= "isdnmode=did\n";
+		$conf .= "incomingmsn=*\n";
+		$conf .= "controller={$interface['unit']}\n";
+		$conf .= "group=1\n";
+		//$conf .= ";prefix=0\n";
+		$conf .= "softdtmf=off\n";
+		$conf .= "relaxdtmf=off\n";
+		//$conf .= "accountcode=\n";
+		
+		$conf .= "context={$p['uniqid']}\n";
+
+		$conf .= "holdtype=local\n";
+		//$conf .= ";immediate=yes\n";
+		$conf .= "echocancel=yes\n";
+		//$conf .= "echosquelch=yes\n";
+		//$conf .= ";echocancelold=yes\n";
+		//$conf .= ";echotail=64\n";
+		//$conf .= ";bridge=yes\n";
+		//$conf .= ";callgroup=1\n";
+		//$conf .= ";deflect=1234567\n";
+		$conf .= "devices=2\n";
+		$conf .= "\n";
+	}
+
+	fwrite($fd, $conf);
+	fclose($fd);
+
+	return 0;
 }
 
 
