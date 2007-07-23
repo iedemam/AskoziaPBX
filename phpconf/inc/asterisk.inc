@@ -334,8 +334,8 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 		$dial .= "exten => $exten,$prio,Wait($wait)\n";
 		$prio++;
 	}
-	if ($override) {
-		$dial .= "exten => $exten,$prio,Set(CALLERID(name)=$\CALLERID(number))\n";
+	if ($override == "replacenamewithnum") {
+		$dial .= "exten => $exten,$prio,Set(CALLERID(name)=$\{CALLERID(number)})\n";
 		$prio++;
 	}
 	

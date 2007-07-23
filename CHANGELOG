@@ -4,6 +4,9 @@
  - disabled core dumping of Asterisk
  - moved "assign" link into "Interfaces -> Network" page as a tab
  - cleaned up "Manager Interface" output
+ - incoming Caller ID name from providers may now be overridden with the incoming Caller ID number
+ - call parking now enabled on extension 700
+ - calling an unregistered user with no voicemail account now results in a message instead of a abrupt hangup
  - added "Status -> Channels" page which displays all currently active channels
  - added "Status -> Conferences" page which displays all currently active conferences and allows members to be kicked from conferences
  - added ISDN Interface and Provider support
@@ -11,6 +14,7 @@
  - bug: fixed handling of IAX providers with no patterns set
  - bug: fixed missing IAX 's' extension
  - bug: incoming extension references to call groups are now removed upon call group deletion
+ - bug: numbers now sort like numbers
 
 
 2007.07.05 - pb6

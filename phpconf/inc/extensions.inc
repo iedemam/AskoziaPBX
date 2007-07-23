@@ -43,7 +43,7 @@ function extensions_conf_generate() {
 	$conf = <<<EOD
 
 [macro-vm];
-exten => s,1,Dial($\{ARG1},30)
+exten => s,1,Dial($\{ARG1},30,tT)
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 exten => s-NOANSWER,1,VoiceMail($\{ARG2},u)
 exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
@@ -51,7 +51,11 @@ exten => s-BUSY,1,VoiceMail($\{ARG2},b)
 exten => s-BUSY,n,Goto(exit-$\{VMSTATUS},1)
 exten => s-ANSWER,1,Hangup()
 exten => _s-.,1,Goto(s-NOANSWER,1)
-exten => exit-FAILED,1,Hangup()
+exten => exit-FAILED,1,Answer()
+exten => exit-FAILED,2,Playback(vm-theperson)
+exten => exit-FAILED,3,SayDigits($\{ARG2})
+exten => exit-FAILED,4,Playback(vm-isunavail)
+exten => exit-FAILED,5,Hangup()
 exten => exit-SUCCESS,1,Playback(vm-goodbye)
 exten => exit-SUCCESS,n,Hangup()
 exten => exit-USEREXIT,1,Playback(vm-goodbye)
@@ -86,6 +90,8 @@ exten => 00003246,3,Hangup()
 exten => 000064554,1,Answer()
 exten => 000064554,2,Milliwatt()
 exten => 000064554,3,Hangup()
+
+include => parkedcalls
 
 
 EOD;

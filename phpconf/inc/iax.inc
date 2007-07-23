@@ -114,6 +114,8 @@ EOD;
 
 	// provider registrations
 	foreach($iaxproviders as $p) {
+		if ($p['noregister'])
+			continue;
 		$conf .= "; {$p['name']}\n";
 		$conf .= "register => {$p['username']}";
 		if($p['secret']) {
@@ -230,7 +232,10 @@ function iax_sort_phones() {
 	usort($config['iax']['phone'], "_iaxphonecmp");	
 }
 function _iaxphonecmp($a, $b) {
-	return strcmp($a['extension'], $b['extension']);
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
 

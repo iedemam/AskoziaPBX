@@ -103,7 +103,10 @@ function isdn_sort_phones() {
 	usort($config['isdn']['phone'], "_isdnphonecmp");	
 }
 function _isdnphonecmp($a, $b) {
-	return strcmp($a['extension'], $b['extension']);
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
 
@@ -159,7 +162,10 @@ function isdn_sort_interfaces() {
 	usort($config['interfaces']['isdn-unit'], "_isdninterfacescmp");	
 }
 function _isdninterfacescmp($a, $b) {
-	return strcmp($a['unit'], $b['unit']);
+    if ($a['unit'] == $b['unit']) {
+        return 0;
+    }
+    return ($a['unit'] < $b['unit']) ? -1 : 1;
 }
 
 function isdn_configure() {
@@ -260,14 +266,33 @@ EOD;
 
 		$conf .= "holdtype=local\n";
 		//$conf .= ";immediate=yes\n";
-		$conf .= "echocancel=yes\n";
-		//$conf .= "echosquelch=yes\n";
+
+		if ($interface['echocancel']) {
+			$conf .= "echocancel=yes\n";
+		} else {
+			$conf .= "echocancel=no\n";
+		}
+
+		if ($interface['echosquelch']) {
+			$conf .= "echosquelch=yes\n";
+		} else {
+			$conf .= "echosquelch=no\n";
+		}
+				
 		//$conf .= ";echocancelold=yes\n";
-		//$conf .= ";echotail=64\n";
+		$conf .= "echotail=64\n";
 		//$conf .= ";bridge=yes\n";
 		//$conf .= ";callgroup=1\n";
 		//$conf .= ";deflect=1234567\n";
 		$conf .= "devices=2\n";
+		
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
+		
 		$conf .= "\n";
 	}
 	

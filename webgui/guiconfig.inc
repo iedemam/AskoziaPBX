@@ -574,6 +574,38 @@ function display_dtmfmode_selector($current_dtmfmode, $colspan) {
 	</tr><?
 }
 
+function display_registration_options($current_noregister, $colspan) {
+	
+	?><tr> 
+		<td valign="top" class="vncell">Registration</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($current_noregister) echo "checked"; ?>>Do not register with this provider.
+		</td>
+	</tr><?
+}
+
+function display_qualify_options($current_qualify, $colspan) {
+	
+	?><tr> 
+		<td valign="top" class="vncell">Qualify</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($current_qualify);?>">&nbsp;seconds 
+            <br><span class="vexpl">Packets will be sent to this provider every <i>n</i> seconds to check its status.
+			<br>Defaults to '2'. Set to '0' to disable.</span>
+		</td>
+	</tr><?
+}
+
+function display_callerid_override_options($current_override, $colspan) {
+	
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Incoming Caller ID Overrides</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<input name="override" type="checkbox" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.
+		</td>
+	</tr><?
+}
+
 function display_provider_access_selector($current_providers, $colspan) {
 	
 	$a_providers = asterisk_get_providers();

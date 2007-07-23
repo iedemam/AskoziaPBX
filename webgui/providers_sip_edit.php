@@ -68,6 +68,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['language'] = $a_sipproviders[$id]['language'];
 	$pconfig['qualify'] = $a_sipproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
+	$pconfig['override'] = $a_sipproviders[$id]['override'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
 }
@@ -142,6 +143,7 @@ if ($_POST) {
 		$sp['language'] = $_POST['language'];
 		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
+		$sp['override'] = $_POST['override'];
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
@@ -223,21 +225,10 @@ if ($_POST) {
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
-			<tr> 
-				<td valign="top" class="vncell">Registration</td>
-				<td colspan="2" class="vtable">
-					<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($pconfig['noregister']) echo "checked"; ?>>Do not register with this provider.
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Qualify</td>
-				<td colspan="2" class="vtable">
-					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
-                    <br><span class="vexpl">Packets will be sent to this provider every <i>n</i> seconds to check its status.
-					<br>Defaults to '2'. Set to '0' to disable.</span>
-				</td>
-			</tr>
+			<? display_registration_options($pconfig['noregister'], 2); ?>
+			<? display_qualify_options($pconfig['qualify'], 2); ?>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
+			<? display_callerid_override_options($pconfig['override'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 

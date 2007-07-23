@@ -113,7 +113,10 @@ function conferencing_sort_rooms() {
 	usort($config['conferencing']['room'], "_confroomcmp");	
 }
 function _confroomcmp($a, $b) {
-	return strcmp($a['number'], $b['number']);
+    if ($a['number'] == $b['number']) {
+        return 0;
+    }
+    return ($a['number'] < $b['number']) ? -1 : 1;
 }
 
 

@@ -57,6 +57,7 @@ if (isset($id) && $a_isdnproviders[$id]) {
 	$pconfig['language'] = $a_isdnproviders[$id]['language'];
 	$pconfig['dialpattern'] = $a_isdnproviders[$id]['dialpattern'];
 	$pconfig['incomingextension'] = $a_isdnproviders[$id]['incomingextension'];
+	$pconfig['override'] = $a_isdnproviders[$id]['override'];
 }
 
 if ($_POST) {
@@ -96,6 +97,7 @@ if ($_POST) {
 		
 		$ip['dialpattern'] = $_POST['dialpattern'];
 		$ip['incomingextension'] = $_POST['incomingextension'];
+		$ip['override'] = $_POST['override'];
 		
 		if (isset($id) && $a_isdnproviders[$id]) {
 			$ip['uniqid'] = $a_isdnproviders[$id]['uniqid'];
@@ -149,6 +151,7 @@ if ($_POST) {
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 1); ?>
+			<? display_callerid_override_options($pconfig['override'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

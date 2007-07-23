@@ -43,6 +43,8 @@ $configured_units = array();
 foreach ($a_isdninterfaces as $unit) {
 	$configured_units[$unit['unit']]['name'] = $unit['name'];
 	$configured_units[$unit['unit']]['mode'] = $unit['mode'];
+	$configured_units[$unit['unit']]['echosquelch'] = $unit['echosquelch'];
+	$configured_units[$unit['unit']]['echocancel'] = $unit['echocancel'];
 	$configured_units[$unit['unit']]['pcmmaster'] = $unit['pcmmaster'];
 	$configured_units[$unit['unit']]['nopwrsave'] = $unit['nopwrsave'];
 	$configured_units[$unit['unit']]['pollmode'] = $unit['pollmode'];
@@ -63,6 +65,8 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
+		$merged_units[$i]['echosquelch'] = $configured_units[$i]['echosquelch'];
+		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
 		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
 		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];

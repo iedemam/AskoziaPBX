@@ -61,8 +61,10 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['prefix'] = $a_iaxproviders[$id]['prefix'];
 	$pconfig['dialpattern'] = $a_iaxproviders[$id]['dialpattern'];
 	$pconfig['language'] = $a_iaxproviders[$id]['language'];
+	$pconfig['noregister'] = $a_iaxproviders[$id]['noregister'];
 	$pconfig['qualify'] = $a_iaxproviders[$id]['qualify'];
 	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
+	$pconfig['override'] = $a_iaxproviders[$id]['override'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
 }
@@ -126,8 +128,10 @@ if ($_POST) {
 		$sp['dialpattern'] = $_POST['dialpattern'];
 		
 		$sp['language'] = $_POST['language'];
+		$sp['noregister'] = $_POST['noregister'];
 		$sp['qualify'] = $_POST['qualify'];
 		$sp['incomingextension'] = $_POST['incomingextension'];
+		$sp['override'] = $_POST['override'];
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
@@ -184,15 +188,10 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
-			<tr> 
-				<td valign="top" class="vncell">Qualify</td>
-				<td colspan="2" class="vtable">
-					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
-                    <br><span class="vexpl">Packets will be sent to this provider every <i>n</i> seconds to check its status.
-					<br>Defaults to '2'. Set to '0' to disable.</span>
-				</td>
-			</tr>
+			<? display_registration_options($pconfig['noregister'], 2); ?>
+			<? display_qualify_options($pconfig['qualify'], 2); ?>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
+			<? display_callerid_override_options($pconfig['override'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 

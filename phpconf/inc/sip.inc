@@ -297,7 +297,10 @@ function sip_sort_phones() {
 	usort($config['sip']['phone'], "_sipphonecmp");	
 }
 function _sipphonecmp($a, $b) {
-	return strcmp($a['extension'], $b['extension']);
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
 
