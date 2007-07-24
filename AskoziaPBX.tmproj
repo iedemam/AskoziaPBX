@@ -10,41 +10,41 @@
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-07-23T13:45:11Z</date>
+			<date>2007-07-24T11:19:18Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-07-23T13:59:56Z</date>
+			<date>2007-07-24T15:08:44Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-07-23T13:59:56Z</date>
+			<date>2007-07-24T15:09:10Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
 		<dict>
+			<key>name</key>
+			<string>build</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>build</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>etc</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>etc</string>
+		</dict>
+		<dict>
 			<key>expanded</key>
 			<true/>
-			<key>name</key>
-			<string>build</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>build</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>etc</string>
-			<key>regexFolderFilter</key>
-			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>sourceDirectory</key>
-			<string>etc</string>
-		</dict>
-		<dict>
 			<key>name</key>
 			<string>files</string>
 			<key>regexFolderFilter</key>
@@ -82,9 +82,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>69</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -131,21 +131,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>19</integer>
-		</dict>
-		<key>phpconf/inc/extensions.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>40</integer>
-				<key>line</key>
-				<integer>55</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>33</integer>
+			<integer>42</integer>
 		</dict>
 		<key>webgui/help.inc</key>
 		<dict>
@@ -208,12 +194,11 @@
 	<array>
 		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
-		<string>phpconf/inc/extensions.inc</string>
 		<string>NOTES</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{226, 52}, {877, 721}}</string>
+	<string>{{226, 38}, {996, 732}}</string>
 </dict>
 </plist>

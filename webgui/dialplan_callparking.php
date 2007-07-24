@@ -71,12 +71,24 @@ if ($_POST) {
 		$parkingconfig['parkposend'] = $_POST['parkposend'];
 
 		write_config();
-		
-		$retval |= asterisk_configure();
-		
-		$savemsg = get_std_save_message($retval);
+		touch($d_featuresconfdirty_path);
+		header("Location: dialplan_callparking.php");
+		exit;
 	}
 }
+
+if (file_exists($d_featuresconfdirty_path)) {
+	$retval = 0;
+	if (!file_exists($d_sysrebootreqd_path)) {
+		$retval |= asterisk_configure();
+		$savemsg = get_std_save_message($retval);
+		if ($retval == 0) {
+			unlink($d_featuresconfdirty_path);
+		}
+	}
+}
+
+
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -84,16 +96,16 @@ if ($_POST) {
 <form action="dialplan_callparking.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td width="20%" valign="top" class="vncellreq">Parking Extension</td>
+			<td width="20%" valign="top" class="vncellreq">Park Extension</td>
 			<td width="80%" class="vtable">
-				<input name="parkext" type="text" class="formfld" id="parkext" size="40" value="<?=htmlspecialchars($pconfig['parkext']);?>">
+				<input name="parkext" type="text" class="formfld" id="parkext" size="20" value="<?=htmlspecialchars($pconfig['parkext']);?>">
 				<br><span class="vexpl">Transfer to this extension to park a call.</span>
 			</td>
 		</tr>
 		<tr>
 			<td valign="top" class="vncellreq">Parking Range</td>
 			<td class="vtable">
-				<input name="parkposstart" type="text" class="formfld" id="parkposstart" size="20" value="<?=htmlspecialchars($pconfig['parkposstart']);?>">&nbsp;-&nbsp;<input name="parkposend" type="text" class="formfld" id="parkposend" size="20" value="<?=htmlspecialchars($pconfig['parkposend']);?>">
+				<input name="parkposstart" type="text" class="formfld" id="parkposstart" size="10" value="<?=htmlspecialchars($pconfig['parkposstart']);?>">&nbsp;-&nbsp;<input name="parkposend" type="text" class="formfld" id="parkposend" size="10" value="<?=htmlspecialchars($pconfig['parkposend']);?>">
 				<br><span class="vexpl">This range of extensions is where parked calls reside.</span>
 			</td>
 		</tr>
