@@ -39,8 +39,6 @@ device		"i4btrc"
 device		"i4bctl"
 device		"i4brbch"
 device		"i4btel"
-device		"i4bipr"
-device		"i4bisppp"
 
 device		ihfc
 device		sound

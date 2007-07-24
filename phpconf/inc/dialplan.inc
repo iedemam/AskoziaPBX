@@ -56,4 +56,30 @@ function _dpcallgroupcmp($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
+function dialplan_callparking_conf_generate() {
+	global $config;
+	
+	$parkingconfig = &$config['dialplan']['callparking'];
+	$pc['parkext'] = isset($parkingconfig['parkext']) ? $parkingconfig['parkext'] : "700";
+	$pc['parkposstart'] = isset($parkingconfig['parkposstart']) ? $parkingconfig['parkposstart'] : "701";
+	$pc['parkposend'] = isset($parkingconfig['parkposend']) ? $parkingconfig['parkposend'] : "720";
+	
+	$fd = fopen("/usr/local/etc/asterisk/features.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open features.conf in dialplan_callparking_conf_generate().\n");
+		return 1;
+	}	
+
+	$conf = "[general]\n";
+
+	$conf .= "parkext => " . $pc['parkext'] . "\n";
+	$conf .= "parkpos => " . $pc['parkposstart'] . "-" . $pc['parkposend'] . "\n";
+	$conf .= "context => parkedcalls\n\n";
+	
+	fwrite($fd, $conf);
+	fclose($fd);
+	
+	return 0;
+}
+
 ?>

@@ -62,6 +62,7 @@ function asterisk_configure() {
 	
 	if ($g['booting']) echo " - generating dialplan...";
 	$res |= extensions_conf_generate();
+	$res |= dialplan_callparking_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - generating voicemail configuration...";
@@ -328,11 +329,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 	$prio = 1;
 	$dial = "";
 	
+
 	if ($wait) {
 		$dial .= "exten => $exten,$prio,Ringing()\n";
 		$prio++;
-		$dial .= "exten => $exten,$prio,Wait($wait)\n";
-		$prio++;
+		/*$dial .= "exten => $exten,$prio,Wait($wait)\n";
+		$prio++;*/
 	}
 	if ($override == "replacenamewithnum") {
 		$dial .= "exten => $exten,$prio,Set(CALLERID(name)=$\{CALLERID(number)})\n";
@@ -433,6 +435,29 @@ function asterisk_uniqid_to_name($uniqid) {
 	} else if (strpos($uniqid, "ISDN-PROVIDER") !== false) {
 		return $config['isdn']['provider'][$uniqid_map[$uniqid]]['name'];
 	}
+}
+
+function asterisk_remove_provider_reference_from_phones($removed_id) {
+	
+	$technologies = array("sip", "iax", "isdn");
+
+	foreach ($technologies as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['phone'])) {
+			$a_phones = &$GLOBALS['config'][$tech]['phone'];
+			$n = count($a_phones);
+			for ($i = 0; $i < $n; $i++) {
+				if (is_array($a_phones[$i]['provider'])) {
+					$nn = count($a_phones[$i]['provider']);
+					for ($j = 0; $j < $nn; $j++) {
+						if ($a_phones[$i]['provider'][$j] == $removed_id) {
+							unset($a_phones[$i]['provider'][$j]);
+						}
+					}
+				}
+			}
+		}
+	}
+
 }
 
 ?>

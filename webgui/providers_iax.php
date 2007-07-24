@@ -41,60 +41,9 @@ $a_iaxproviders = &$config['iax']['provider'];
 
 if ($_GET['act'] == "del") {
 	if ($a_iaxproviders[$_GET['id']]) {
-		
-		// get the provider's unique id before removal
-		$removed_id = $a_iaxproviders[$_GET['id']]['uniqid'];
+
+		asterisk_remove_provider_reference_from_phones($a_iaxproviders[$_GET['id']]['uniqid']);
 		unset($a_iaxproviders[$_GET['id']]);
-				
-		// remove references to this provider from sip phones
-		if (is_array($config['sip']['phone'])) {
-			$a_sipphones = &$config['sip']['phone'];
-			$n = count($a_sipphones);
-			for ($i = 0; $i < $n; $i++) {
-				if (is_array($a_sipphones[$i]['provider'])) {
-					$nn = count($a_sipphones[$i]['provider']);
-					for ($j = 0; $j < $nn; $j++) {
-						if ($a_sipphones[$i]['provider'][$j] == $removed_id) {
-							unset($a_sipphones[$i]['provider'][$j]);
-						}
-					}
-				}
-			}
-		}
-		
-		// remove references to this provider from iax phones
-		if (is_array($config['iax']['phone'])) {
-			$a_iaxphones = &$config['iax']['phone'];
-			$n = count($a_iaxphones);
-			for ($i = 0; $i < $n; $i++) {
-				if (is_array($a_iaxphones[$i]['provider'])) {
-					$nn = count($a_iaxphones[$i]['provider']);
-					for ($j = 0; $j < $nn; $j++) {
-						if ($a_iaxphones[$i]['provider'][$j] == $removed_id) {
-							unset($a_iaxphones[$i]['provider'][$j]);
-						}
-					}
-
-				}
-			}
-		}
-		
-		// remove references to this provider from isdn phones
-		if (is_array($config['isdn']['phone'])) {
-			$a_isdnphones = &$config['isdn']['phone'];
-			$n = count($a_isdnphones);
-			for ($i = 0; $i < $n; $i++) {
-				if (is_array($a_isdnphones[$i]['provider'])) {
-					$nn = count($a_isdnphones[$i]['provider']);
-					for ($j = 0; $j < $nn; $j++) {
-						if ($a_isdnphones[$i]['provider'][$j] == $removed_id) {
-							unset($a_isdnphones[$i]['provider'][$j]);
-						}
-					}
-
-				}
-			}
-		}
 
 		write_config();
 		touch($d_iaxconfdirty_path);

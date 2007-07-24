@@ -6,7 +6,7 @@
  - cleaned up "Manager Interface" output
  - incoming Caller ID name from providers may now be overridden with the incoming Caller ID number
  - call parking now enabled on extension 700
- - calling an unregistered user with no voicemail account now results in a message instead of a abrupt hangup
+ - calling an unregistered user with no voicemail account now results in a message instead of an abrupt hangup
  - added "Status -> Channels" page which displays all currently active channels
  - added "Status -> Conferences" page which displays all currently active conferences and allows members to be kicked from conferences
  - added ISDN Interface and Provider support

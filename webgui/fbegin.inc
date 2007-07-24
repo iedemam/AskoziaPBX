@@ -122,10 +122,11 @@ $menu['Phones']['IAX'] 					= array('phones_iax.php');
 /* Dialplan */
 $menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 $menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php');
+$menu['Dialplan']['Call Parking']		= array('dialplan_callparking.php');
 											
 /* Services */
-$menu['Services']['Conferencing'] 		= array('services_conferencing.php');
-$menu['Services']['Voicemail'] 			= array('services_voicemail.php');
+$menu['Services']['Conferencing']		= array('services_conferencing.php');
+$menu['Services']['Voicemail']			= array('services_voicemail.php');
 
 /* Status */
 $menu['Status']['Summary']				= array('index.php');
