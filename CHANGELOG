@@ -10,7 +10,7 @@
  - added "Status -> Conferences" page which displays all currently active conferences and allows members to be kicked from conferences
  - added "Dialplan -> Call Parking" page to manage parking extensions
  - added ISDN Interface and Provider support
- - updated to Asterisk 1.4.8
+ - updated to Asterisk 1.4.9
  - bug: fixed handling of IAX providers with no patterns set
  - bug: fixed missing IAX 's' extension
  - bug: incoming extension references to call groups are now removed upon call group deletion

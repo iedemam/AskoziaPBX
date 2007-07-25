@@ -408,33 +408,45 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 	return $dial;
 }
 
+function asterisk_replace_uniqids_with_names($string) {
+	
+	$uniqid_regex = "/(SIP|IAX|ISDN|CONFERENCE|DIALPLAN|CALLGROUP){1}-(PROVIDER|PHONE|ROOM|CALLGROUP){1}-[0-9a-zA-Z]+/";
+
+	preg_match_all($uniqid_regex, $string, $uniqids);
+	if (!is_array($uniqids)) {
+		return;
+	}
+
+	$uniqids = array_keys(array_flip($uniqids[0]));
+
+	$names = array();
+	$n = count($uniqids);
+	for ($i = 0; $i < $n; $i++) {
+		$names[$i] = asterisk_uniqid_to_name($uniqids[$i]);
+	}
+
+	return str_replace($uniqids, $names, $string);
+}
+
 function asterisk_uniqid_to_name($uniqid) {
 	global $config, $uniqid_map;
 	
-	// sip phone
-	if (strpos($uniqid, "SIP-PHONE") !== false) {
-		return $config['sip']['phone'][$uniqid_map[$uniqid]]['callerid'];
+	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
 
-	// iax phone
-	} else if (strpos($uniqid, "IAX-PHONE") !== false) {
-		return $config['iax']['phone'][$uniqid_map[$uniqid]]['callerid'];
-
-	// isdn phone
-	} else if (strpos($uniqid, "ISDN-PHONE") !== false) {
-		return $config['isdn']['phone'][$uniqid_map[$uniqid]]['callerid'];
-			
-	// sip provider
-	} else if (strpos($uniqid, "SIP-PROVIDER") !== false) {
-		return $config['sip']['provider'][$uniqid_map[$uniqid]]['name'];
-		
-	// iax provider
-	} else if (strpos($uniqid, "IAX-PROVIDER") !== false) {
-		return $config['iax']['provider'][$uniqid_map[$uniqid]]['name'];
-	
-	// isdn provider
-	} else if (strpos($uniqid, "ISDN-PROVIDER") !== false) {
-		return $config['isdn']['provider'][$uniqid_map[$uniqid]]['name'];
+	if ($pair[1] == "phone") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['callerid'];
 	}
+	if ($pair[1] == "provider") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+	}
+	if ($pair[1] == "room") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+	}
+	if ($pair[1] == "callgroup") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+	}
+
+	return "ERROR:UNIQID-NOT-FOUND($uniqid)";
 }
 
 function asterisk_remove_provider_reference_from_phones($removed_id) {

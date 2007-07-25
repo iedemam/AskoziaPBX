@@ -51,6 +51,7 @@ function dump_clog($logfile, $tail) {
 	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
 	
 	foreach ($logarr as $logent) {
+		$logent = asterisk_replace_uniqids_with_names($logent);
 		$logent = preg_split("/\s+/", $logent, 7);
 		
 		// filter some unimportant messages

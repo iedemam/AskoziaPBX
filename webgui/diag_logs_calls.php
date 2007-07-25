@@ -86,6 +86,8 @@ function dump_clog($logfile, $tail) {
 		// filter out pseudo channels
 		if (strpos($logent, "Zap/pseudo"))
 			continue;
+			
+		$logent = asterisk_replace_uniqids_with_names($logent);
 
 		$logent = preg_split("/\s+/", $logent, 6);
 		$cdr = strstr($logent[5], "\"");
@@ -112,32 +114,10 @@ function dump_clog($logfile, $tail) {
 		echo "<td class=\"listr\">".htmlspecialchars($cdr[2])."&nbsp;</td>\n";
 		
 		// channels
-		if (strpos($cdr[4], "ISDN-PROVIDER") !== false) {
-			$chan = explode("/", $cdr[4]);
-			$chan[1] = asterisk_uniqid_to_name($chan[1]);
-			$chan = implode("/", $chan);
-		} else if (strpos($cdr[4], "PROVIDER") !== false) {
-			$chan = explode("/", $cdr[4]);
-			$chan[1] = asterisk_uniqid_to_name(substr($chan[1], 0, strrpos($chan[1], "-")));
-			$chan = implode("/", $chan);
-		} else {
-			$chan = substr($cdr[4], 0, strpos($cdr[4], "-"));
-		}
-		echo "<td class=\"listr\">".htmlspecialchars($chan)."&nbsp;";
+		echo "<td class=\"listr\">".htmlspecialchars($cdr[4])."&nbsp;";
 		if($cdr[5]) {
 			echo "-&gt;&nbsp;";
-			if (strpos($cdr[5], "ISDN-PROVIDER") !== false) {
-				$chan = explode("/", $cdr[5]);
-				$chan[1] = asterisk_uniqid_to_name($chan[1]);
-				$chan = implode("/", $chan);
-			} else if (strpos($cdr[5], "PROVIDER") !== false) {
-				$chan = explode("/", $cdr[5]);
-				$chan[1] = asterisk_uniqid_to_name(substr($chan[1], 0, strrpos($chan[1], "-")));
-				$chan = implode("/", $chan);
-			} else {
-				$chan = substr($cdr[5], 0, strpos($cdr[5], "-"));
-			}
-			echo htmlspecialchars($chan)."&nbsp;</td>\n";
+			echo htmlspecialchars($cdr[5])."&nbsp;</td>\n";
 		} else {
 			echo "</td>\n";
 		}
@@ -146,29 +126,8 @@ function dump_clog($logfile, $tail) {
 		echo "<td class=\"listr\">";
 		if ($cdr[6]) {
 			echo htmlspecialchars($cdr[6])."(";
-			// need to replace dial provider uniqid strings with names
 			if ($cdr[7]) {
-				if (strpos($cdr[7], "IAX-PROVIDER") !== false) {
-					$appdata = explode("/", $cdr[7]);
-					$appdata[1] = asterisk_uniqid_to_name($appdata[1]);
-					$appdata = implode("/", $appdata);
-
-				} else if (strpos($cdr[7], "SIP-PROVIDER") !== false) {
-					$infront = strpos($cdr[7], "@") + 1;
-					$behind = strrpos($cdr[7], "|");
-					$appdata = substr($cdr[7], 0, $infront) . 
-						asterisk_uniqid_to_name(substr($cdr[7], $infront, $behind - $infront)) .
-						substr($cdr[7], $behind);
-
-				} else if (strpos($cdr[7], "ISDN-PROVIDER") !== false) {
-					$appdata = explode("/", $cdr[7]);
-					$appdata[1] = asterisk_uniqid_to_name($appdata[1]);
-					$appdata = implode("/", $appdata);
-
-				} else {
-					$appdata = $cdr[7];
-				}
-				echo "&nbsp;".htmlspecialchars($appdata)."&nbsp;";
+				echo "&nbsp;".htmlspecialchars($cdr[7])."&nbsp;";
 			}
 			echo ")";
 		}
