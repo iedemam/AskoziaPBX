@@ -90,6 +90,10 @@ require("guiconfig.inc");
 	Copyright &copy; 2005, 2006, 2007 Martin Lambers.
 	All rights reserved.<br>
 	<br>
+	ISDN4BSD by HPS (<a href="http://www.turbocat.net/~hselasky/isdn4bsd/" target="_blank">http://www.turbocat.net/~hselasky/isdn4bsd/</a>)<br>
+	Copyright &copy; 2003-2007 Hans Petter Selasky.
+	All rights reserved.<br>
+	<br>
 	Asterisk (<a href="http://www.asterisk.org" target="_blank">http://www.asterisk.org</a>)<br>
 	Copyright &copy; 1999 - 2007, Digium, Inc.
 	All rights reserved.<br>

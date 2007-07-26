@@ -10,8 +10,6 @@ new features
 
 fixes
  - is_valid_xxx checks need to be completed!!!
- - need a better way to replace uniqids with names
- - logs_pbx needs to replace uniqids with names
  - use posted config in dialplan providers instead of making users start all over
 
 improvements
