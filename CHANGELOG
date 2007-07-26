@@ -4,6 +4,7 @@
  - disabled core dumping of Asterisk
  - moved "assign" link into "Interfaces -> Network" page as a tab
  - cleaned up "Manager Interface" output
+ - logs now display friendly names instead of internal unique ids
  - incoming Caller ID name from providers may now be overridden with the incoming Caller ID number
  - calling an unregistered user with no voicemail account now results in a message instead of an abrupt hangup
  - added "Status -> Channels" page which displays all currently active channels

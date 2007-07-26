@@ -253,8 +253,8 @@ EOD;
 		$interface = isdn_get_interface($p['interface']);
 		
 		$conf .= "isdnmode=msn\n";
-		$conf .= "msn={$p['msn']}\n";
-		$conf .= "incomingmsn=*\n";
+		//$conf .= "msn={$p['msn']}\n";
+		$conf .= "incomingmsn={$p['msn']}\n";
 		$conf .= "controller={$interface['unit']}\n";
 		$conf .= "group=1\n";
 		//$conf .= ";prefix=0\n";
@@ -320,14 +320,29 @@ EOD;
 
 		$conf .= "holdtype=local\n";
 		//$conf .= ";immediate=yes\n";
-		$conf .= "echocancel=yes\n";
-		//$conf .= "echosquelch=yes\n";
+		if ($interface['echocancel']) {
+			$conf .= "echocancel=yes\n";
+		} else {
+			$conf .= "echocancel=no\n";
+		}
+
+		if ($interface['echosquelch']) {
+			$conf .= "echosquelch=yes\n";
+		} else {
+			$conf .= "echosquelch=no\n";
+		}
 		//$conf .= ";echocancelold=yes\n";
 		//$conf .= ";echotail=64\n";
 		//$conf .= ";bridge=yes\n";
 		//$conf .= ";callgroup=1\n";
 		//$conf .= ";deflect=1234567\n";
 		$conf .= "devices=2\n";
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
 		$conf .= "\n";
 	}
 

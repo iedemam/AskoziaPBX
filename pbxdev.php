@@ -827,13 +827,13 @@ function package($platform, $image_name) {
 		"zaptel/zaptel.ko",
 		"ztdummy/ztdummy.ko",
 		
-		"qozap/qozap.ko",
-		"tau32pci/tau32pci.ko",
-		"wcfxo/wcfxo.ko",
-		"wcfxs/wcfxs.ko",
-		"wct1xxp/wct1xxp.ko",
-		"wct4xxp/wct4xxp.ko",
-		"wcte11xp/wcte11xp.ko"
+		//"qozap/qozap.ko",
+		//"tau32pci/tau32pci.ko",
+		//"wcfxo/wcfxo.ko",
+		//"wcfxs/wcfxs.ko",
+		//"wct1xxp/wct1xxp.ko",
+		//"wct4xxp/wct4xxp.ko",
+		//"wcte11xp/wcte11xp.ko"
 		//"zaphfc/zaphfc.ko"
 	);
 	foreach ($zaptel_modules as $zaptel_module) {
