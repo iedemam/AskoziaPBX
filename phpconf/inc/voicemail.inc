@@ -157,7 +157,25 @@ EOD;
 		if(!$p['voicemailbox'])
 			continue;
 		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
-	}	
+	}
+	
+	// isdn phones
+	$isdnphones = isdn_get_phones();
+
+	foreach($isdnphones as $p) {
+		if(!$p['voicemailbox'])
+			continue;
+		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
+	}
+	
+	// external phones
+	$extphones = external_get_phones();
+
+	foreach($extphones as $p) {
+		if(!$p['voicemailbox'])
+			continue;
+		$conf .= "{$p['extension']} => 0000,{$p['name']},{$p['voicemailbox']},,delete=yes\n";
+	}
 	
 	//$conf = mb_convert_encoding($conf, "UTF-8");
 	

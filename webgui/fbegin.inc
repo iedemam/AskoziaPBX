@@ -118,6 +118,8 @@ $menu['Providers']['ISDN'] 				= array('providers_isdn.php');
 /* Phones */
 $menu['Phones']['SIP'] 					= array('phones_sip.php');
 $menu['Phones']['IAX'] 					= array('phones_iax.php');
+$menu['Phones']['ISDN']					= array('phones_isdn.php');
+$menu['Phones']['External']				= array('phones_external.php');
 
 /* Dialplan */
 $menu['Dialplan']['Providers']			= array('dialplan_providers.php');

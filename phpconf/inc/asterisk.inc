@@ -132,7 +132,7 @@ function asterisk_exec($cmd, $output=NULL) {
 
 
 function asterisk_is_valid_extension($extension) {
-	if(!is_numericint($extension) || (strlen($extension) > 4) || (strlen($extension) < 1))
+	if(!is_numericint($extension) || (strlen($extension) < 1))
 		return false;
 	
 	return true;
@@ -152,15 +152,15 @@ function asterisk_is_valid_username($username) {
 	return true;
 }
 
-function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $current_provider_id=false) {
+function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $sending_provider_id=false) {
 	$allpatterns = asterisk_get_dialpatterns();
 
 	if (is_array($allpatterns)) {
 		foreach ($allpatterns as $provider_id => $patterns) {
-			if ($provider_id == $current_provider_id) {
+			if ($provider_id == $sending_provider_id) {
 				continue;
 			}
-			if (in_array($dialpattern, $patterns)) {
+			if (is_array($patterns) && in_array($dialpattern, $patterns)) {
 				$return_provider_name = asterisk_uniqid_to_name($provider_id);
 				return true;
 			}
@@ -253,7 +253,8 @@ function asterisk_get_extensions() {
 		sip_get_extensions(), 
 		iax_get_extensions(),
 		isdn_get_extensions(),
-		conferencing_get_extensions()
+		conferencing_get_extensions(),
+		external_get_extensions()
 	);
 }
 
@@ -318,7 +319,7 @@ function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_
 	$active_channels = substr($lines[$n+1], 0, strpos($lines[$n+1], " "));
 	$active_calls = substr($lines[$n+2], 0, strpos($lines[$n+2], " "));
 
-	return 0; // XXX could do some error checking here
+	return 0;
 }
 
 function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) {
@@ -363,6 +364,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 		$dial .= "exten => $exten,$prio,MeetMe({$room['number']},M)\n";
 		$prio++;
 		$dial .= "exten => $exten,$prio,Hangup()\n";
+		
+	} else if ($id[0] == "EXTERNAL" && $id[1] == "PHONE") {
+		$phone = external_get_phone($uniqid);
+		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+		$dial .= "exten => $exten,$prio,".
+			"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
 		$group = dialplan_get_callgroup($uniqid);
@@ -390,7 +397,15 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 				if ($i == 0) {
 					$vm_account = $phone['extension'];
 				}
-				$dial_strings[] = "CAPI/{$phone['extension']}";        	
+				$dial_strings[] = "CAPI/{$phone['extension']}";
+
+			} else if ($subid[0] == "EXTERNAL" && $subid[1] == "PHONE") {
+				$phone = external_get_phone($group['groupmember'][$i]);
+				if ($i == 0) {
+					$vm_account = $phone['extension'];
+				}
+				$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+				$dial_strings[] = "$technology/{$phone['dialprovider']}/{$phone['dialstring']}";
 			}
 			
 		}
@@ -410,7 +425,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 
 function asterisk_replace_uniqids_with_names($string) {
 	
-	$uniqid_regex = "/(SIP|IAX|ISDN|CONFERENCE|DIALPLAN|CALLGROUP){1}-(PROVIDER|PHONE|ROOM|CALLGROUP){1}-[0-9a-zA-Z]+/";
+	$uniqid_regex = "/(SIP|IAX|ISDN|CONFERENCE|DIALPLAN|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|CALLGROUP){1}-[0-9a-zA-Z]+/";
 
 	preg_match_all($uniqid_regex, $string, $uniqids);
 	if (!is_array($uniqids)) {
@@ -433,7 +448,9 @@ function asterisk_uniqid_to_name($uniqid) {
 	
 	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
 
-	if ($pair[1] == "phone") {
+	if ($pair[1] == "phone" && $pair[0] == "external") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+	} else if ($pair[1] == "phone") {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['callerid'];
 	}
 	if ($pair[1] == "provider") {
@@ -446,7 +463,37 @@ function asterisk_uniqid_to_name($uniqid) {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
 	}
 
-	return "ERROR:UNIQID-NOT-FOUND($uniqid)";
+	return "ERROR:UNIQID_TO_NAME($uniqid)";
+}
+
+function asterisk_uniqid_to_extension($uniqid) {
+	global $config, $uniqid_map;
+	
+	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
+
+	if ($pair[1] == "phone") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['extension'];
+	}
+	if ($pair[1] == "room") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['extension'];
+	}
+
+	return "ERROR:UNIQID_TO_EXTENSION($uniqid)";
+}
+
+function asterisk_uniqid_to_technology($uniqid) {
+	
+	$parts = explode("-", $uniqid);
+	switch($parts[0]) {
+		case "SIP":
+			return "SIP";
+		case "IAX":
+			return "IAX2";
+		case "ISDN":
+			return "CAPI";
+	}
+
+	return "UNIQID_TO_TECHNOLOGY_FAILED";
 }
 
 function asterisk_remove_provider_reference_from_phones($removed_id) {

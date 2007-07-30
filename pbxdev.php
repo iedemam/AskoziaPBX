@@ -230,7 +230,9 @@ function build_asterisk() {
 		_exec("cd {$dirs['packages']}/$asterisk_version; ".
 			"patch < {$dirs['patches']}/packages/asterisk_makefile.patch");
 		_exec("cd {$dirs['packages']}/$asterisk_version; ".
-			"patch < {$dirs['patches']}/packages/asterisk_cdr_to_syslog.patch");				
+			"patch < {$dirs['patches']}/packages/asterisk_cdr_to_syslog.patch");
+		_exec("cd {$dirs['packages']}/$asterisk_version; ".
+			"patch < {$dirs['patches']}/packages/asterisk_channel_queue.patch");
 		_stamp_package_as_patched($asterisk_version);
 	}
 	// copy make options

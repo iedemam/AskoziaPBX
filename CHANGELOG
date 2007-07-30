@@ -1,4 +1,11 @@
-2007.07.xx - pb7
+2007.08.xx - pb8
+ - added ISDN Phone support
+ - added External Phone support (phones not directly connected to but accessible by AskoziaPBX)
+ - removed the 4 digit limitation to internal phone numbers
+ - conference delay and moh issues finally fixed by code submitted to asterisk-bsd by David G. Lawrence
+ - bug: fixed unchecked array in asterisk_dialpattern_exists()
+
+2007.07.26 - pb7
  - removed net45xx platform support until test hardware can be acquired
  - verbosity, internal_timing and highpriority now set in asterisk.conf
  - disabled core dumping of Asterisk

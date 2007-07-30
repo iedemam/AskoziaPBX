@@ -371,6 +371,12 @@ function config_build_uniqid_map($config) {
 		$uniqid_map[$config['isdn']['phone'][$i]['uniqid']] = $i;
 	}
 
+	// external
+	$n = count($config['external']['phone']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['external']['phone'][$i]['uniqid']] = $i;
+	}
+	
 	// conferencing
 	$n = count($config['conferencing']['room']);
 	for ($i = 0; $i < $n; $i++) {

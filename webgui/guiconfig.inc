@@ -425,11 +425,15 @@ function display_video_codec_selector($enabled_codecs) {
 
 function display_callgroup_member_selector($current_members) {
 	
-	$all_phones = asterisk_get_phones();
+	$internal_phones = asterisk_get_phones();
+	$external_phones = external_get_phones();
 	
 	// XXX this should be handled at a lower level
 	$indexed_phones = array();
-	foreach($all_phones as $phone) {
+	foreach($internal_phones as $phone) {
+		$indexed_phones[$phone['uniqid']] = $phone;
+	}
+	foreach($external_phones as $phone) {
 		$indexed_phones[$phone['uniqid']] = $phone;
 	}
 	
@@ -456,7 +460,7 @@ function display_callgroup_member_selector($current_members) {
 
 			foreach ($indexed_phones as $uniqid=>$phone) {
 				if (!in_array($uniqid, $current_members)) {
-					?><li class="gmd" id="gmd_<?=$uniqid;?>"><?=$phone['callerid'];?></li><?
+					?><li class="gmd" id="gmd_<?=$uniqid;?>"><?=asterisk_uniqid_to_name($phone['uniqid']);?></li><?
 				}
 			}
 			
@@ -528,6 +532,17 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				if ($phone['uniqid'] == $current_incoming_extension) 
 					echo "selected"; ?>> 
 				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+				
+				<?php if (count($a_extphones = external_get_phones()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>External Phones</option>
+				<?php foreach ($a_extphones as $phone): ?>
+				<option value="<?=$phone['uniqid'];?>" <?php 
+				if ($phone['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$phone['name']} &lt;{$phone['dialstring']}&gt;"; ?></option>
 				<?php endforeach; ?>
 				<?php endif; ?>
 			

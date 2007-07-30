@@ -125,6 +125,7 @@ EOD;
 		if($p['port']) {
 			$conf .= ":{$p['port']}";	
 		}
+		$conf .= "/{$p['username']}";
 		$conf .= "\n\n";
 	}
 	

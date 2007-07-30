@@ -30,6 +30,45 @@
 
 require_once("functions.inc");
 
+function external_get_phones() {
+	global $config;
+	
+	if (!is_array($config['external']['phone']))
+		$config['external']['phone'] = array();
+		
+	external_sort_phones();
+		
+	return $config['external']['phone'];
+}
+
+function external_get_phone($uniqid) {
+	global $config, $uniqid_map;
+	return $config['external']['phone'][$uniqid_map[$uniqid]];
+}
+
+function external_sort_phones() {
+	global $g, $config;
+
+	usort($config['external']['phone'], "_extphonecmp");	
+}
+function _extphonecmp($a, $b) {
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
+}
+
+function external_get_extensions() {
+	global $config;
+	
+	$extensions = array();
+	if (is_array($config['external']['phones']))
+		foreach($config['external']['phones'] as $phone)
+			$extensions[] = $phone['extension'];
+
+	return $extensions;
+}
+
 
 function extensions_conf_generate() {
 	global $config, $g;
@@ -80,8 +119,15 @@ EOD;
 	$a_isdnphones = isdn_get_phones();
 	foreach ($a_isdnphones as $phone) {
 		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}/$\{EXTEN}|$\{EXTEN})\n";
-	}	
-
+	}
+	
+	$a_extphones = external_get_phones();
+	foreach ($a_extphones as $phone) {
+		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+		$conf .= "exten => {$phone['extension']},1,".
+			"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";
+	}
+	
 	$conf .= <<<EOD
 exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()
@@ -207,13 +253,13 @@ EOD;
 	foreach ($a_sipphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= "include => internal\n";
 		if (isset($p['provider'])) {
 			foreach ($p['provider'] as $provider) {
 				$conf .= "include => $provider\n";
 			}
 		}
 		$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
-		$conf .= "include => internal\n";
 		$conf .= "\n";
 	}
 	
@@ -221,12 +267,12 @@ EOD;
 	foreach ($a_iaxphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= "include => internal\n";
 		if (isset($p['provider'])) {
 			foreach ($p['provider'] as $provider) {
 				$conf .= "include => $provider\n";
 			}
 		}
-		$conf .= "include => internal\n";
 		$conf .= "\n";
 	}
 	
@@ -234,12 +280,12 @@ EOD;
 	foreach ($a_isdnphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= "include => internal\n";
 		if (isset($p['provider'])) {
 			foreach ($p['provider'] as $provider) {
 				$conf .= "include => $provider\n";
 			}
 		}
-		$conf .= "include => internal\n";
 		$conf .= "\n";
 	}
 	

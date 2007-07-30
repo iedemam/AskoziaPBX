@@ -1,0 +1,48 @@
+--- main/channel.c.orig	Sun Jul 29 19:53:10 2007
++++ main/channel.c	Sun Jul 29 23:59:00 2007
+@@ -898,6 +898,7 @@
+ 	struct ast_frame *cur;
+ 	int blah = 1;
+ 	int qlen = 0;
++	int vqlen = 0;
+ 
+ 	/* Build us a copy and free the original one */
+ 	if (!(f = ast_frdup(fin))) {
+@@ -905,6 +906,37 @@
+ 		return -1;
+ 	}
+ 	ast_channel_lock(chan);
++	
++	/*
++	 * Drop any previous voice frames beyond the limit.
++	 */
++
++	/*
++	 * First count up how many voice frames that we have.
++	 */
++	AST_LIST_TRAVERSE(&chan->readq, cur, frame_list) {
++		if (cur->frametype == AST_FRAME_VOICE) {
++			vqlen++;
++		}
++	}
++
++	/*
++	 * Now drop voice frames past the limit, currently 2 voice frames.
++	 */
++
++	if (vqlen > 2) {
++		AST_LIST_TRAVERSE_SAFE_BEGIN(&chan->readq, cur, frame_list) {
++			if (cur->frametype == AST_FRAME_VOICE) {
++				AST_LIST_REMOVE_CURRENT(&chan->readq, frame_list);
++				ast_frfree(cur);
++				vqlen--;
++				if (vqlen <= 2)
++					break;
++			}
++		}
++		AST_LIST_TRAVERSE_SAFE_END;
++	}
++		
+ 
+ 	/* See if the last frame on the queue is a hangup, if so don't queue anything */
+ 	if ((cur = AST_LIST_LAST(&chan->readq)) && (cur->frametype == AST_FRAME_CONTROL) && (cur->subclass == AST_CONTROL_HANGUP)) {

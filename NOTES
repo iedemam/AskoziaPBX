@@ -1,4 +1,4 @@
-pb7
+pb8
 
 new features
  - followme
@@ -8,9 +8,12 @@ new features
  - ISDN
    - dialing failures need debugging
 
+ - multilanguage e-mail greetings!!!
+
 fixes
  - is_valid_xxx checks need to be completed!!!
  - use posted config in dialplan providers instead of making users start all over
+ - extension_exists() really needs to work
 
 improvements
  - dialplan (still needs (de)select all)
@@ -19,15 +22,13 @@ improvements
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
-
-pb8
- - privacy with voicemail forward
+ - ISDN interfaces for providers and phones should be limited to appropriate choices (NT vs TE)
 
 pb9
  - storage interface (add storage partition for extended capabilities)
  - extended capabilities hooks into the gui
  - new option to log to storage partition
-
+ - privacy with voicemail forward
 
 Docs:
  - presentation
@@ -41,5 +42,4 @@ Docs:
 - testing / performance mode
 - get indications.conf working
 - figure out config xml single var irregularities (empty defines showing up)
-- better field checks!
 - url given in console menu should match port given in gui (m0n0wall bug)

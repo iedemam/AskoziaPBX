@@ -144,8 +144,8 @@ if ($_POST) {
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq">Extension</td>
 				<td width="80%" colspan="2" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="20" maxlength="4" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">Up to four digits. This is also this account's username.</span>
+					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+					<br><span class="vexpl">This is also this account's username.</span>
 				</td>
 			</tr>
 			<tr> 
