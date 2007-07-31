@@ -89,9 +89,11 @@ function iax_conf_generate() {
 		return 1;
 	}
 	
+	$iaxconfig = $config['services']['iax'];
+	
 	$port = "4569";
-	if (isset($config['iax']['port']))
-		$port = $config['iax']['port'];
+	if (isset($iaxconfig['port']))
+		$port = $iaxconfig['port'];
 
 	$conf = <<<EOD
 	
@@ -101,9 +103,21 @@ bindport=$port
 bindaddr=0.0.0.0
 delayreject=yes
 
-
-
 EOD;
+
+	if ($iaxconfig['jbenable']) {
+		$conf .= "jitterbuffer=yes\n";
+	} else {
+		$conf .= "jitterbuffer=no\n";
+	}
+
+	if ($iaxconfig['jbforce']) {
+		$conf .= "forcejitterbuffer=yes\n";
+	} else {
+		$conf .= "forcejitterbuffer=no\n";
+	}
+	
+	$conf .= "\n\n";
 
 	
 	// providers

@@ -35,6 +35,8 @@ require("guiconfig.inc");
 $iaxconfig = &$config['services']['iax'];
 
 $pconfig['port'] = isset($iaxconfig['port']) ? $iaxconfig['port'] : "4569";
+$pconfig['jbenable'] = isset($iaxconfig['jbenable']) ? $iaxconfig['jbenable'] : false;
+$pconfig['jbforce'] = isset($iaxconfig['jbforce']) ? $iaxconfig['jbforce'] : false;
 
 if ($_POST) {
 
@@ -53,7 +55,9 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$iaxconfig['port'] = $_POST['port'];
+		$iaxconfig['port'] = $_POST['port'];		
+		$iaxconfig['jbenable'] = $_POST['jbenable'] ? true : false;
+		$iaxconfig['jbforce'] = $_POST['jbforce'] ? true : false;
 		
 		write_config();
 		touch($d_iaxconfdirty_path);
@@ -80,14 +84,47 @@ if (file_exists($d_iaxconfdirty_path)) {
 
 ?>
 <?php include("fbegin.inc"); ?>
+<script language="JavaScript">
+<!--
+function jb_enable_click() {
+	if (document.iform.jbenable.checked) {
+		document.iform.jbforce.disabled = 0;
+	} else {
+		document.iform.jbforce.disabled = 1;
+		document.iform.jbforce.checked = false;
+	}
+}
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="advanced_iax.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr> 
+			<td valign="top" colspan="2" class="listtopic">General</td>
+		</tr>
 		<tr>
 			<td width="20%" valign="top" class="vncell">Binding Port</td>
 			<td width="80%" class="vtable">
 				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+			</td>
+		</tr>
+		<tr> 
+			<td class="list" colspan="2" height="12">&nbsp;</td>
+		</tr>
+		<tr> 
+			<td valign="top" colspan="2" class="listtopic">Jitterbuffer</td>
+		</tr>
+		<tr> 
+			<td valign="top" class="vncell">Enable</td>
+			<td class="vtable">
+				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>>Enable Jitterbuffer on IAX connections terminating by AskoziaPBX.
+			</td>
+		</tr>
+		<tr> 
+			<td valign="top" class="vncell">Force</td>
+			<td class="vtable">
+				<input name="jbforce" id="jbforce" type="checkbox" value="yes" <? if ($pconfig['jbforce']) echo "checked"; ?>>Use Jitterbuffer even when bridging two endpoints.
 			</td>
 		</tr>
 		<tr> 

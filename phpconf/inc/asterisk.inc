@@ -41,6 +41,14 @@ function asterisk_configure() {
 		mwexec("/sbin/kldload zaptel");
 		echo " - loading ztdummy\n";
 		mwexec("/sbin/kldload ztdummy");
+		echo " - loading wcfxo\n";
+		mwexec("/sbin/kldload wcfxo");
+		echo " - loading wcfxs\n";
+		mwexec("/sbin/kldload wcfxs");
+		echo " - loading wct1xxp\n";
+		mwexec("/sbin/kldload wct1xxp");
+		echo " - loading wct4xxp\n";
+		mwexec("/sbin/kldload wct4xxp");
 		//echo " - loading isdn4bsd\n";
 		//mwexec("/sbin/kldload i4b");
 	} else

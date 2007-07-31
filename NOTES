@@ -5,13 +5,11 @@ new features
  - add iax2 auth options
    - pubkey import
    - md5
- - isdn jitter buffer options, notes at bottom
+ - iax jitter buffer options, notes at bottom!!!
  - ISDN
    - dialing failures need debugging
-
- - callgroups should have a reachable internal extension
-
  - multilanguage e-mail greetings!!!
+ - "Statu -> Interfaces" needs to display ISDN interface information!!!
 
 fixes
  - is_valid_xxx checks need to be completed!!!

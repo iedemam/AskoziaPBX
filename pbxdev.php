@@ -831,11 +831,11 @@ function package($platform, $image_name) {
 		
 		//"qozap/qozap.ko",
 		//"tau32pci/tau32pci.ko",
-		//"wcfxo/wcfxo.ko",
-		//"wcfxs/wcfxs.ko",
-		//"wct1xxp/wct1xxp.ko",
-		//"wct4xxp/wct4xxp.ko",
-		//"wcte11xp/wcte11xp.ko"
+		"wcfxo/wcfxo.ko",
+		"wcfxs/wcfxs.ko",
+		"wct1xxp/wct1xxp.ko",
+		"wct4xxp/wct4xxp.ko",
+		"wcte11xp/wcte11xp.ko"
 		//"zaphfc/zaphfc.ko"
 	);
 	foreach ($zaptel_modules as $zaptel_module) {
