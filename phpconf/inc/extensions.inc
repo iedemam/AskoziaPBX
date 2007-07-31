@@ -128,6 +128,11 @@ EOD;
 			"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";
 	}
 	
+	$a_callgroups = dialplan_get_callgroups();
+	foreach ($a_callgroups as $group) {
+		$conf .= asterisk_uniqid_to_dial($group['extension'], $group['uniqid']);
+	}
+	
 	$conf .= <<<EOD
 exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()

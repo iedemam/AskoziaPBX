@@ -5,8 +5,11 @@ new features
  - add iax2 auth options
    - pubkey import
    - md5
+ - isdn jitter buffer options, notes at bottom
  - ISDN
    - dialing failures need debugging
+
+ - callgroups should have a reachable internal extension
 
  - multilanguage e-mail greetings!!!
 
@@ -43,3 +46,46 @@ Docs:
 - get indications.conf working
 - figure out config xml single var irregularities (empty defines showing up)
 - url given in console menu should match port given in gui (m0n0wall bug)
+
+; --[ jitter buffer ]-------------------------------------------------------------
+; You can adjust several parameters relating to the jitter buffer.
+; The jitter buffer's function is to compensate for varying
+; network delay.
+;
+; All the jitter buffer settings are in milliseconds.
+; The jitter buffer works for INCOMING audio - the outbound audio
+; will be dejittered by the jitter buffer at the other end.
+;
+; jitterbuffer=yes|no: global default as to whether you want
+; the jitter buffer at all.
+;
+; forcejitterbuffer=yes|no: in the ideal world, when we bridge VoIP channels
+; we don't want to do jitterbuffering on the switch, since the endpoints
+; can each handle this.  However, some endpoints may have poor jitterbuffers 
+; themselves, so this option will force * to always jitterbuffer, even in this
+; case.
+;
+; maxjitterbuffer: a maximum size for the jitter buffer.
+; Setting a reasonable maximum here will prevent the call delay
+; from rising to silly values in extreme situations; you'll hear
+; SOMETHING, even though it will be jittery.
+;
+; resyncthreshold: when the jitterbuffer notices a significant change in delay
+; that continues over a few frames, it will resync, assuming that the change in
+; delay was caused by a timestamping mix-up. The threshold for noticing a
+; change in delay is measured as twice the measured jitter plus this resync
+; threshold.
+; Resyncing can be disabled by setting this parameter to -1.
+;
+; maxjitterinterps: the maximum number of interpolation frames the jitterbuffer
+; should return in a row. Since some clients do not send CNG/DTX frames to
+; indicate silence, the jitterbuffer will assume silence has begun after
+; returning this many interpolations. This prevents interpolating throughout
+; a long silence.
+;
+
+jitterbuffer=no
+forcejitterbuffer=no
+;maxjitterbuffer=1000
+;maxjitterinterps=10
+;resyncthreshold=1000

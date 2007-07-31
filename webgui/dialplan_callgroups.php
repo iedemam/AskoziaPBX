@@ -111,9 +111,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="20%" class="listhdrr">Name</td>
-		<td width="25%" class="listhdrr">Description</td>		
-		<td width="45%" class="listhdr">Members</td>
+		<td width="15%" class="listhdrr">Name</td>
+		<td width="15%" class="listhdrr">Extension</td>
+		<td width="30%" class="listhdrr">Description</td>		
+		<td width="30%" class="listhdr">Members</td>
 		<td width="10%" class="list"></td>
 	</tr>
 	
@@ -121,6 +122,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<?php $i = 0; foreach ($a_callgroups as $cg): ?>
 	<tr>
 		<td class="listlr"><?=htmlspecialchars($cg['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($cg['extension']);?>&nbsp;</td>
 		<td class="listbg"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
 		<td class="listr"><?
 			$n = count($cg['groupmember']);
@@ -135,7 +137,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<?php $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
+		<td class="list" colspan="4"></td>
 		<td class="list"> <a href="dialplan_callgroups_edit.php"><img src="plus.gif" title="add call group" width="17" height="17" border="0"></a></td>
 	</tr>
 </table>

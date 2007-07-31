@@ -56,6 +56,17 @@ function _dpcallgroupcmp($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
+function dialplan_get_callgroup_extensions() {
+	global $config;
+	
+	$extensions = array();
+	if (is_array($config['dialplan']['callgroup']))
+		foreach($config['dialplan']['callgroup'] as $group)
+			$extensions[] = $group['extension'];
+
+	return $extensions;
+}
+
 function dialplan_callparking_conf_generate() {
 	global $config;
 	

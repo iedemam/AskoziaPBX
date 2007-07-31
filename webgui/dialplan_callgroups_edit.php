@@ -50,6 +50,7 @@ if (isset($_POST['id']))
 /* pull current config into pconfig */
 if (isset($id) && $a_callgroups[$id]) {
 	$pconfig['name'] = $a_callgroups[$id]['name'];
+	$pconfig['extension'] = $a_callgroups[$id]['extension'];
 	$pconfig['descr'] = $a_callgroups[$id]['descr'];
 	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
 }
@@ -72,6 +73,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$gm = array();		
 		$gm['name'] = $_POST['name'];
+		$gm['extension'] = $_POST['extension'];
 		$gm['descr'] = $_POST['descr'];
 		$gm['groupmember'] = $gme;
 
@@ -101,6 +103,13 @@ if ($_POST) {
 				<td width="80%" colspan="2" class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
 					<br><span class="vexpl">Group name</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">Extension</td>
+				<td colspan="2" class="vtable">
+					<input name="extension" type="text" class="formfld" id="extension" size="40" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+					<br><span class="vexpl">Internal extension used to reach this call group.</span>
 				</td>
 			</tr>
 			<tr> 

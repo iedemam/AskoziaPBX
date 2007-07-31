@@ -254,7 +254,8 @@ function asterisk_get_extensions() {
 		iax_get_extensions(),
 		isdn_get_extensions(),
 		conferencing_get_extensions(),
-		external_get_extensions()
+		external_get_extensions(),
+		dialplan_get_callgroup_extensions()
 	);
 }
 
