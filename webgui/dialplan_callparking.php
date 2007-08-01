@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Dialplan", "Call Parking");
+$pgtitle = array("Dialplan", "Transfers");
 require("guiconfig.inc");
 
 $parkingconfig = &$config['dialplan']['callparking'];
@@ -37,6 +37,7 @@ $parkingconfig = &$config['dialplan']['callparking'];
 $pconfig['parkext'] = isset($parkingconfig['parkext']) ? $parkingconfig['parkext'] : "700";
 $pconfig['parkposstart'] = isset($parkingconfig['parkposstart']) ? $parkingconfig['parkposstart'] : "701";
 $pconfig['parkposend'] = isset($parkingconfig['parkposend']) ? $parkingconfig['parkposend'] : "720";
+$pconfig['parktime'] = isset($parkingconfig['parktime']) ? $parkingconfig['parktime'] : "30";
 
 
 if ($_POST) {
@@ -45,8 +46,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "parkext parkposstart parkposend");
-	$reqdfieldsn = explode(",", "Parking Extension,Parking Start Position,Parking Stop Position");
+	$reqdfields = explode(" ", "parkext parkposstart parkposend parkingtime");
+	$reqdfieldsn = explode(",", "Parking Extension,Parking Start Position,Parking Stop Position,Park Time");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -60,15 +61,18 @@ if ($_POST) {
 	if (!$input_errors && ($_POST['parkposend'] <= $_POST['parkposstart'])) {
 		$input_errors[] = "The end parking position must be larger than the start position.";
 	}
-
 	if ($_POST['parkext'] && !is_numericint($_POST['parkext'])) {
 		$input_errors[] = "A valid parking extension must be specified.";
 	}
+	if ($_POST['parktime'] && !is_numericint($_POST['parktime'])) {
+		$input_errors[] = "A valid park time must be specified.";
+	}
 
 	if (!$input_errors) {
-		$parkingconfig['parkext'] = $_POST['parkext'];
-		$parkingconfig['parkposstart'] = $_POST['parkposstart'];
-		$parkingconfig['parkposend'] = $_POST['parkposend'];
+		$parkingconfig['parkext'] = ($_POST['parkext'] != "700") ? $_POST['parkext'] : false ;
+		$parkingconfig['parkposstart'] = ($_POST['parkposstart'] != "701") ? $_POST['parkposstart'] : false ;
+		$parkingconfig['parkposend'] = ($_POST['parkposend'] != "720") ? $_POST['parkposend'] : false ;
+		$parkingconfig['parktime'] =($_POST['parktime'] != "30") ? $_POST['parktime'] : false ;
 
 		write_config();
 		touch($d_featuresconfdirty_path);
@@ -96,6 +100,9 @@ if (file_exists($d_featuresconfdirty_path)) {
 <form action="dialplan_callparking.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
+			<td colspan="2" class="listtopic">Call Parking</td>
+		</tr>
+		<tr>
 			<td width="20%" valign="top" class="vncellreq">Park Extension</td>
 			<td width="80%" class="vtable">
 				<input name="parkext" type="text" class="formfld" id="parkext" size="20" value="<?=htmlspecialchars($pconfig['parkext']);?>">
@@ -107,6 +114,13 @@ if (file_exists($d_featuresconfdirty_path)) {
 			<td class="vtable">
 				<input name="parkposstart" type="text" class="formfld" id="parkposstart" size="10" value="<?=htmlspecialchars($pconfig['parkposstart']);?>">&nbsp;-&nbsp;<input name="parkposend" type="text" class="formfld" id="parkposend" size="10" value="<?=htmlspecialchars($pconfig['parkposend']);?>">
 				<br><span class="vexpl">This range of extensions is where parked calls reside.</span>
+			</td>
+		</tr>
+		<tr>
+			<td width="20%" valign="top" class="vncellreq">Park Time</td>
+			<td width="80%" class="vtable">
+				<input name="parktime" type="text" class="formfld" id="parktime" size="20" value="<?=htmlspecialchars($pconfig['parktime']);?>">
+				<br><span class="vexpl">Maximum number of seconds a call can be parked before it is transfered back to the parker.</span>
 			</td>
 		</tr>
 		<tr> 

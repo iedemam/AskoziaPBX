@@ -124,7 +124,7 @@ $menu['Phones']['External']				= array('phones_external.php');
 /* Dialplan */
 $menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 $menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php');
-$menu['Dialplan']['Call Parking']		= array('dialplan_callparking.php');
+$menu['Dialplan']['Transfers']			= array('dialplan_transfers.php');
 											
 /* Services */
 $menu['Services']['Conferencing']		= array('services_conferencing.php');

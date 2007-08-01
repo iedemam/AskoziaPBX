@@ -74,6 +74,7 @@ function dialplan_callparking_conf_generate() {
 	$pc['parkext'] = isset($parkingconfig['parkext']) ? $parkingconfig['parkext'] : "700";
 	$pc['parkposstart'] = isset($parkingconfig['parkposstart']) ? $parkingconfig['parkposstart'] : "701";
 	$pc['parkposend'] = isset($parkingconfig['parkposend']) ? $parkingconfig['parkposend'] : "720";
+	$pc['parktime'] = isset($parkingconfig['parktime']) ? $parkingconfig['parktime'] : "30";
 	
 	$fd = fopen("/usr/local/etc/asterisk/features.conf", "w");
 	if (!$fd) {
@@ -85,7 +86,9 @@ function dialplan_callparking_conf_generate() {
 
 	$conf .= "parkext => " . $pc['parkext'] . "\n";
 	$conf .= "parkpos => " . $pc['parkposstart'] . "-" . $pc['parkposend'] . "\n";
-	$conf .= "context => parkedcalls\n\n";
+	$conf .= "context => parkedcalls\n";
+	$conf .= "parkingtime => " . $pc['parktime'] . "\n";
+	$conf .= "\n";
 	
 	fwrite($fd, $conf);
 	fclose($fd);

@@ -2,6 +2,7 @@
  - added ISDN Phone support
  - added External Phone support (phones not directly connected to but accessible from AskoziaPBX)
  - added Jitterbuffer enable and force options to the "Advanced -> IAX" page
+ - added ISDN interface information to "Status -> Interfaces" page
  - call groups can now be mapped to an internal extension
  - removed the 4 digit limitation to internal phone numbers
  - conference delay and moh issues fixed by code submitted to asterisk-bsd by David G. Lawrence

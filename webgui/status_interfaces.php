@@ -84,6 +84,25 @@ function get_network_interface_info($ifdescr) {
 	return $ifinfo;
 }
 
+function get_isdn_interface_info($interface) {
+	
+	$fields = array();
+	
+	$unit = $interface['unit'];
+	unset($unitinfo);
+	exec("/sbin/isdnconfig -u $unit", $unitinfolines);
+	foreach ($unitinfolines as $line) {
+		if (preg_match("/\s:\s/", $line)) {
+			$pair = explode(":", $line, 2);
+			$pair[0] = trim($pair[0]);
+			$pair[1] = trim($pair[1]);
+			$fields[$pair[0]] = $pair[1];
+		}
+	}
+
+	return $fields;
+}
+
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0"><?
@@ -172,6 +191,71 @@ function get_network_interface_info($ifdescr) {
 		
 		$i++;
 	}
+	
+	?><tr>
+		<td colspan="2" class="list" height="12"></td>
+	</tr><?
+	
+	$i = 0;
+	$isdninterfaces = isdn_get_interfaces();
+	foreach ($isdninterfaces as $isdninterface) {
+		$ifinfo = get_isdn_interface_info($isdninterface);
+		
+		if ($i) {
+			?><tr>
+				<td colspan="2" class="list" height="12"></td>
+			</tr><?
+		}
+
+		?><tr> 
+			<td colspan="2" class="listtopic">
+				<?="ISDN Unit {$isdninterface['unit']} (". htmlspecialchars($isdninterface['name']) .")";?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Attached</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['attached']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">PH State</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['PH-state']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Dialtone</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['dialtone']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Description</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['description']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Type</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['type']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Driver Type</td>
+			<td class="listr"><?
+				echo htmlspecialchars($ifinfo['driver_type']);
+				if ($isdn_dchannel_modes[$ifinfo['driver_type']]) {
+					echo "&nbsp;(". htmlspecialchars($isdn_dchannel_modes[$ifinfo['driver_type']]) .")";
+				}
+			?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Channels</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['channels']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Serial</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['serial']);?></td>
+		</tr>
+		<tr>
+			<td class="vncellt">Power Save</td>
+			<td class="listr"><?=htmlspecialchars($ifinfo['power_save']);?></td>
+		</tr><?
+		
+		$i++;
+	}
+	
 
 ?></table>
 <?php include("fend.inc"); ?>
