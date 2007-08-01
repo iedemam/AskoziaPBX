@@ -33,11 +33,16 @@ $pgtitle = array("Dialplan", "Transfers");
 require("guiconfig.inc");
 
 $parkingconfig = &$config['dialplan']['callparking'];
+$featuremapconfig = &$config['dialplan']['featuremap'];
 
 $pconfig['parkext'] = isset($parkingconfig['parkext']) ? $parkingconfig['parkext'] : "700";
 $pconfig['parkposstart'] = isset($parkingconfig['parkposstart']) ? $parkingconfig['parkposstart'] : "701";
 $pconfig['parkposend'] = isset($parkingconfig['parkposend']) ? $parkingconfig['parkposend'] : "720";
 $pconfig['parktime'] = isset($parkingconfig['parktime']) ? $parkingconfig['parktime'] : "30";
+
+$pconfig['attendedtransfer'] = isset($featuremapconfig['attendedtransfer']) ? $featuremapconfig['attendedtransfer'] : "**";
+$pconfig['blindtransfer'] = isset($featuremapconfig['blindtransfer']) ? $featuremapconfig['blindtransfer'] : "##";
+//$pconfig['disconnect'] = isset($featuremapconfig['disconnect']) ? $featuremapconfig['disconnect'] : "*0";
 
 
 if ($_POST) {
@@ -46,7 +51,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "parkext parkposstart parkposend parkingtime");
+	$reqdfields = explode(" ", "parkext parkposstart parkposend parktime");
 	$reqdfieldsn = explode(",", "Parking Extension,Parking Start Position,Parking Stop Position,Park Time");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -72,11 +77,15 @@ if ($_POST) {
 		$parkingconfig['parkext'] = ($_POST['parkext'] != "700") ? $_POST['parkext'] : false ;
 		$parkingconfig['parkposstart'] = ($_POST['parkposstart'] != "701") ? $_POST['parkposstart'] : false ;
 		$parkingconfig['parkposend'] = ($_POST['parkposend'] != "720") ? $_POST['parkposend'] : false ;
-		$parkingconfig['parktime'] =($_POST['parktime'] != "30") ? $_POST['parktime'] : false ;
+		$parkingconfig['parktime'] = ($_POST['parktime'] != "30") ? $_POST['parktime'] : false ;
+		
+		$featuremapconfig['attendedtransfer'] = ($_POST['attendedtransfer'] != "**") ? $_POST['attendedtransfer'] : false;
+		$featuremapconfig['blindtransfer'] = ($_POST['blindtransfer'] != "##") ? $_POST['blindtransfer'] : false;
+		//$featuremapconfig['disconnect'] = ($_POST['disconnect'] !=  "*0") ? $_POST['disconnect'] : false;
 
 		write_config();
 		touch($d_featuresconfdirty_path);
-		header("Location: dialplan_callparking.php");
+		header("Location: dialplan_transfers.php");
 		exit;
 	}
 }
@@ -84,7 +93,11 @@ if ($_POST) {
 if (file_exists($d_featuresconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
-		$retval |= asterisk_configure();
+		config_lock();
+		$retval |= dialplan_features_conf_generate();
+		config_unlock();
+		
+		$retval |= dialplan_features_reload();
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
 			unlink($d_featuresconfdirty_path);
@@ -97,8 +110,35 @@ if (file_exists($d_featuresconfdirty_path)) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="dialplan_callparking.php" method="post" name="iform" id="iform">
+<form action="dialplan_transfers.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr>
+			<td colspan="2" class="listtopic">Feature Map</td>
+		</tr>
+		<tr>
+			<td width="20%" valign="top" class="vncellreq">Attended Transfer</td>
+			<td width="80%" class="vtable">
+				<input name="attendedtransfer" type="text" class="formfld" id="attendedtransfer" size="10" value="<?=htmlspecialchars($pconfig['attendedtransfer']);?>">
+				<br><span class="vexpl">This key combination activates an attended transfer.</span>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">Blind Transfer</td>
+			<td class="vtable">
+				<input name="blindtransfer" type="text" class="formfld" id="blindtransfer" size="10" value="<?=htmlspecialchars($pconfig['blindtransfer']);?>">
+				<br><span class="vexpl">This key combination activates a blind transfer.</span>
+			</td>
+		</tr><? /*
+		<tr>
+			<td valign="top" class="vncellreq">Disconnect</td>
+			<td class="vtable">
+				<input name="disconnect" type="text" class="formfld" id="disconnect" size="10" value="<?=htmlspecialchars($pconfig['disconnect']);?>">
+				<br><span class="vexpl">This key combination disconnects a phone from a call.</span>
+			</td>
+		</tr>
+		*/?><tr> 
+			<td colspan="2" class="list" height="12">&nbsp;</td>
+		</tr>
 		<tr>
 			<td colspan="2" class="listtopic">Call Parking</td>
 		</tr>
@@ -121,14 +161,6 @@ if (file_exists($d_featuresconfdirty_path)) {
 			<td width="80%" class="vtable">
 				<input name="parktime" type="text" class="formfld" id="parktime" size="20" value="<?=htmlspecialchars($pconfig['parktime']);?>">
 				<br><span class="vexpl">Maximum number of seconds a call can be parked before it is transfered back to the parker.</span>
-			</td>
-		</tr>
-		<tr> 
-			<td valign="top">&nbsp;</td>
-			<td>
-				<span class="vexpl"><span class="red"><strong>Warning:<br>
-				</strong></span>after you click &quot;Save&quot;, all current
-				calls will be dropped.</span>
 			</td>
 		</tr>
 		<tr> 

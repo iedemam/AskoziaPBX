@@ -67,18 +67,23 @@ function dialplan_get_callgroup_extensions() {
 	return $extensions;
 }
 
-function dialplan_callparking_conf_generate() {
+function dialplan_features_conf_generate() {
 	global $config;
 	
-	$parkingconfig = &$config['dialplan']['callparking'];
+	$parkingconfig = $config['dialplan']['callparking'];
 	$pc['parkext'] = isset($parkingconfig['parkext']) ? $parkingconfig['parkext'] : "700";
 	$pc['parkposstart'] = isset($parkingconfig['parkposstart']) ? $parkingconfig['parkposstart'] : "701";
 	$pc['parkposend'] = isset($parkingconfig['parkposend']) ? $parkingconfig['parkposend'] : "720";
 	$pc['parktime'] = isset($parkingconfig['parktime']) ? $parkingconfig['parktime'] : "30";
 	
+	$featuremapconfig = $config['dialplan']['featuremap'];
+	$pc['attendedtransfer'] = isset($featuremapconfig['attendedtransfer']) ? $featuremapconfig['attendedtransfer'] : "**";
+	$pc['blindtransfer'] = isset($featuremapconfig['blindtransfer']) ? $featuremapconfig['blindtransfer'] : "##";
+	//$pc['disconnect'] = isset($featuremapconfig['disconnect']) ? $featuremapconfig['disconnect'] : "*0";
+	
 	$fd = fopen("/usr/local/etc/asterisk/features.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open features.conf in dialplan_callparking_conf_generate().\n");
+		printf("Error: cannot open features.conf in dialplan_features_conf_generate().\n");
 		return 1;
 	}	
 
@@ -90,10 +95,21 @@ function dialplan_callparking_conf_generate() {
 	$conf .= "parkingtime => " . $pc['parktime'] . "\n";
 	$conf .= "\n";
 	
+	$conf .= "[featuremap]\n";
+	$conf .= "atxfer => " . $pc['attendedtransfer'] . "\n";
+	$conf .= "blindxfer => " . $pc['blindtransfer'] . "\n";
+//	$conf .= "disconnect => ". $pc['disconnect'] . "\n";
+//	$conf .= "automon => *1\n";//                  ; One Touch Record
+	$conf .= "\n";
+	
 	fwrite($fd, $conf);
 	fclose($fd);
 	
 	return 0;
+}
+
+function dialplan_features_reload() {
+	return asterisk_exec("module reload res_features.so");
 }
 
 ?>

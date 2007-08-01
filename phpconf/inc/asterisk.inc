@@ -70,7 +70,7 @@ function asterisk_configure() {
 	
 	if ($g['booting']) echo " - generating dialplan...";
 	$res |= extensions_conf_generate();
-	$res |= dialplan_callparking_conf_generate();
+	$res |= dialplan_features_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - generating voicemail configuration...";
