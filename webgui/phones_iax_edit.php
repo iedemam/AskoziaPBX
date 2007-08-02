@@ -53,6 +53,7 @@ if (isset($_POST['id']))
 if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['extension'] = $a_iaxphones[$id]['extension'];
 	$pconfig['callerid'] = $a_iaxphones[$id]['callerid'];
+	$pconfig['authentication'] = $a_iaxphones[$id]['authentication'];
 	$pconfig['secret'] = $a_iaxphones[$id]['secret'];
 	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
@@ -73,8 +74,8 @@ if ($_POST) {
 	parse_str($_POST['v_codecs']);
 
 	/* input validation */
-	$reqdfields = explode(" ", "extension callerid secret");
-	$reqdfieldsn = explode(",", "Extension,Caller ID,Secret");
+	$reqdfields = explode(" ", "extension callerid");
+	$reqdfieldsn = explode(",", "Extension,Caller ID");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -105,6 +106,7 @@ if ($_POST) {
 		$sp = array();
 		$sp['extension'] = $_POST['extension'];
 		$sp['callerid'] = $_POST['callerid'];
+		$sp['authentication'] = $_POST['authentication'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
 		$sp['language'] = $_POST['language'];
@@ -155,11 +157,21 @@ if ($_POST) {
 					<br><span class="vexpl">Text to be displayed for Caller ID.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq">Secret</td>
+			<tr>
+				<td valign="top" class="vncell">Authentication</td>
 				<td colspan="2" class="vtable">
+					<select name="authentication" class="formfld" id="authentication">
+						<option value="plaintext" <? 
+							if ($pconfig['authentication'] == "plaintext") 
+								echo "selected"; 
+							?>>plaintext</option>
+						<option value="md5" <? 
+							if ($pconfig['authentication'] == "md5") 
+								echo "selected"; 
+							?>>md5</option>
+					</select>&nbsp;
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                    <br><span class="vexpl">This account's password.</span>
+                    <br><span class="vexpl">This account's password and authentication scheme.</span>
 				</td>
 			</tr>
 			<tr> 

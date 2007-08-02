@@ -113,7 +113,7 @@ if (file_exists($d_featuresconfdirty_path)) {
 <form action="dialplan_transfers.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td colspan="2" class="listtopic">Feature Map</td>
+			<td colspan="2" class="listtopic">Hot Keys</td>
 		</tr>
 		<tr>
 			<td width="20%" valign="top" class="vncellreq">Attended Transfer</td>

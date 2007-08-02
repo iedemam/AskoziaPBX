@@ -55,6 +55,7 @@ if (isset($_POST['id']))
 if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['name'] = $a_iaxproviders[$id]['name'];
 	$pconfig['username'] = $a_iaxproviders[$id]['username'];
+	$pconfig['authentication'] = $a_iaxproviders[$id]['authentication'];
 	$pconfig['secret'] = $a_iaxproviders[$id]['secret'];
 	$pconfig['host'] = $a_iaxproviders[$id]['host'];
 	$pconfig['port'] = $a_iaxproviders[$id]['port'];
@@ -121,6 +122,7 @@ if ($_POST) {
 		$sp = array();		
 		$sp['name'] = $_POST['name'];
 		$sp['username'] = $_POST['username'];
+		$sp['authentication'] = $_POST['authentication'];
 		$sp['secret'] = $_POST['secret'];
 		$sp['host'] = $_POST['host'];
 		$sp['port'] = $_POST['port'];
@@ -171,11 +173,21 @@ if ($_POST) {
 					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Secret</td>
+			<tr>
+				<td valign="top" class="vncell">Authentication</td>
 				<td colspan="2" class="vtable">
+					<select name="authentication" class="formfld" id="authentication">
+						<option value="plaintext" <? 
+							if ($pconfig['authentication'] == "plaintext") 
+								echo "selected"; 
+							?>>plaintext</option>
+						<option value="md5" <? 
+							if ($pconfig['authentication'] == "md5") 
+								echo "selected"; 
+							?>>md5</option>
+					</select>&nbsp;
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-					<br><span class="vexpl">This account's password.</span>
+                    <br><span class="vexpl">This account's password and authentication scheme.</span>
 				</td>
 			</tr>
 			<tr> 

@@ -4,8 +4,7 @@ new features
  - followme
  - add iax2 auth options
    - pubkey import
-   - md5
- - iax jitter buffer options, notes at bottom!!!
+   - md5!!!
  - ISDN
    - dialing failures need debugging
  - multilanguage e-mail greetings!!!

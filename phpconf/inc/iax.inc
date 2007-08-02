@@ -139,7 +139,7 @@ EOD;
 		if($p['port']) {
 			$conf .= ":{$p['port']}";	
 		}
-		$conf .= "/{$p['username']}";
+
 		$conf .= "\n\n";
 	}
 	
@@ -149,7 +149,15 @@ EOD;
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "type=friend\n";
 		$conf .= "username={$p['username']}\n";
-		$conf .= "secret={$p['secret']}\n";
+		
+		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
+			$conf .= "auth=plaintext\n";
+			$conf .= "secret={$p['secret']}\n";
+		} else if ($p['authentication'] == "md5") {
+			$conf .= "auth=md5\n";
+			$conf .= "secret={$p['secret']}\n";
+		}
+		
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "host={$p['host']}\n";
 		
@@ -184,6 +192,47 @@ EOD;
 		
 		$conf .= "\n\n";
 	}
+	
+	// provider definitions (incoming)
+	foreach($iaxproviders as $p) {
+		$conf .= "; {$p['name']}\n";
+		$conf .= "[{$p['username']}]\n";
+		$conf .= "type=user\n";
+		$conf .= "username={$p['username']}\n";
+		
+		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
+			$conf .= "auth=plaintext\n";
+			$conf .= "secret={$p['secret']}\n";
+		} else if ($p['authentication'] == "md5") {
+			$conf .= "auth=md5\n";
+			$conf .= "secret={$p['secret']}\n";
+		}
+		
+		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "host={$p['host']}\n";
+		
+		if ($p['port'])
+			$conf .= "port={$p['port']}";
+			
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
+
+		$conf .= "transfer=mediaonly\n";			
+		$conf .= "disallow=all\n";
+	
+		if(is_array($p['codec'])) {
+			foreach ($p['codec'] as $codec)
+				$conf .= "allow=$codec\n";
+		} else {
+			$conf .= "allow={$p['codec']}\n";
+		}
+		
+		$conf .= "\n\n";
+	}
 
 	// phones
 	if (!is_array($config['iax']['phone']))
@@ -195,7 +244,15 @@ EOD;
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['extension']}]\n";
 		$conf .= "type=friend\n";
-		$conf .= "secret={$p['secret']}\n";
+		
+		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
+			$conf .= "auth=plaintext\n";
+			$conf .= "secret={$p['secret']}\n";
+		} else if ($p['authentication'] == "md5") {
+			$conf .= "auth=md5\n";
+			$conf .= "secret={$p['secret']}\n";
+		}
+		
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
