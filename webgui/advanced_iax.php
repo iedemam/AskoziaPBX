@@ -118,7 +118,7 @@ function jb_enable_click() {
 		<tr> 
 			<td valign="top" class="vncell">Enable</td>
 			<td class="vtable">
-				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>>Enable Jitterbuffer on IAX connections terminating by AskoziaPBX.
+				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>>Enable Jitterbuffer on IAX connections terminated by AskoziaPBX.
 			</td>
 		</tr>
 		<tr> 

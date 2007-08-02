@@ -1,15 +1,19 @@
-2007.08.xx - pb8
+2007.08.02 - pb8
  - added ISDN Phone support
  - added External Phone support (phones not directly connected to but accessible from AskoziaPBX)
  - added Jitterbuffer enable and force options to the "Advanced -> IAX" page
  - added md5 authentication option to IAX accounts
  - added ISDN interface information to "Status -> Interfaces" page
- - renamed "Dialplan -> Call Parking" page to "Transfers" and added transfer key combination options
+ - renamed "Dialplan -> Call Parking" page to "Transfers"
+ - added transfer key combination options and changed default combinations to:
+	- attended transfer = "**"
+	- blind transfer = "##"
  - call groups can now be mapped to an internal extension
  - removed the 4 digit limitation to internal phone numbers
  - conference delay and moh issues fixed by code submitted to the asterisk-bsd list by David G. Lawrence
  - bug: fixed unchecked array in asterisk_dialpattern_exists()
  - bug: USB ISDN cards attached after AskoziaPBX has already booted are now detected
+ - bug: incoming calls from IAX providers are now handled better
 
 2007.07.26 - pb7
  - removed net45xx platform support until test hardware can be acquired

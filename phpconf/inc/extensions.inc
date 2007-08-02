@@ -113,12 +113,12 @@ EOD;
 	
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}/$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
 	$a_isdnphones = isdn_get_phones();
 	foreach ($a_isdnphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}/$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
 	$a_extphones = external_get_phones();

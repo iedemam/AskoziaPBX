@@ -359,12 +359,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|IAX2/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
+			"Macro(vm|IAX2/{$phone['extension']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "ISDN" && $id[1] == "PHONE") {
 		$phone = isdn_get_phone($uniqid);
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|CAPI/{$phone['extension']}/{$phone['extension']}|{$phone['extension']})\n";
+			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']})\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
 		$room = conferencing_get_room($uniqid);

@@ -4,7 +4,6 @@ new features
  - followme
  - add iax2 auth options
    - pubkey import
-   - md5!!!
  - ISDN
    - dialing failures need debugging
  - multilanguage e-mail greetings!!!
@@ -12,7 +11,7 @@ new features
 fixes
  - is_valid_xxx checks need to be completed!!!
  - use posted config in dialplan providers instead of making users start all over
- - extension_exists() really needs to work
+ - extension_exists() really needs work
 
 improvements
  - dialplan (still needs (de)select all)

@@ -74,8 +74,8 @@ if ($_POST) {
 	parse_str($_POST['v_codecs']);
 
 	/* input validation */
-	$reqdfields = explode(" ", "extension callerid secret");
-	$reqdfieldsn = explode(",", "Extension,Caller ID,Secret");
+	$reqdfields = explode(" ", "extension callerid");
+	$reqdfieldsn = explode(",", "Extension,Caller ID");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -157,7 +157,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Secret</td>
+				<td valign="top" class="vncell">Secret</td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
                     <br><span class="vexpl">This account's password.</span>
