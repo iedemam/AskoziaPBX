@@ -6,14 +6,12 @@ new features
    - pubkey import
  - ISDN
    - dialing failures need debugging
- - multilanguage e-mail greetings!!!
 
 fixes
  - is_valid_xxx checks need to be completed!!!
  - use posted config in dialplan providers instead of making users start all over
  - ...when no providers are present, fix display
  - extension_exists() really needs work
- - incoming iax connections!!!
  - calls to phones from isdn providers should read back msn number when unreachable
 
 

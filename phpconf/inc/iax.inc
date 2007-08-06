@@ -121,10 +121,7 @@ EOD;
 
 	
 	// providers
-	if (!is_array($config['iax']['provider']))
-		$config['iax']['provider'] = array();
-		
-	$iaxproviders = $config['iax']['provider'];
+	$iaxproviders = iax_get_providers();
 
 	// provider registrations
 	foreach($iaxproviders as $p) {
@@ -191,13 +188,58 @@ EOD;
 		}
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
 		$conf .= "\n\n";
+		
+		
+		$conf .= "; {$p['name']} - incoming\n";
+		$conf .= "[{$p['username']}]\n";
+		$conf .= "type=user\n";
+		$conf .= "username={$p['username']}\n";
+		
+		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
+			$conf .= "auth=plaintext\n";
+			$conf .= "secret={$p['secret']}\n";
+		} else if ($p['authentication'] == "md5") {
+			$conf .= "auth=md5\n";
+			$conf .= "secret={$p['secret']}\n";
+		}
+		
+		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "host={$p['host']}\n";
+		
+		if ($p['port'])
+			$conf .= "port={$p['port']}";
+			
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
+		
+		// qualify options
+		if ($p['qualify'] == "0") {
+			$conf .= "qualify=no\n";
+		} else if ($p['qualify']) {
+			$conf .= "qualify=". $p['qualify']*1000 ."\n";
+		} else {
+			$conf .= "qualify=yes\n";
+		}
+
+		$conf .= "transfer=mediaonly\n";			
+		$conf .= "disallow=all\n";
+	
+		if(is_array($p['codec'])) {
+			foreach ($p['codec'] as $codec)
+				$conf .= "allow=$codec\n";
+		} else {
+			$conf .= "allow={$p['codec']}\n";
+		}
+		$conf .= "permit=0.0.0.0/0.0.0.0\n";
+		$conf .= "\n\n";
 	}
 
 	// phones
-	if (!is_array($config['iax']['phone']))
-		$config['iax']['phone'] = array();
-		
-	$iaxphones = $config['iax']['phone'];
+	$iaxphones = iax_get_phones();
 	
 	foreach($iaxphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
