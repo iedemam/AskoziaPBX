@@ -32,60 +32,78 @@ require_once("functions.inc");
 
 $vm_emailsubject = array(
 
-	"en-informal" => "New voicemail message (box: $\{VM_MAILBOX})",
-
-	"nl-informal" => "Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
-	"nl-formal" => "Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
-
-	"fr-informal" => "tu as reçu un nouveau message dans ta boite vocale",
-	"fr-formal" => "vous avez reçu un nouveau message dans votre boite vocale",
+	"en-informal" => 	"New voicemail message (box: $\{VM_MAILBOX})",
+	"en-formal" => 		"New voicemail message (box: $\{VM_MAILBOX})",
 	
-	"es-formal" => "MISSING",
+	"de-informal" => 	"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
+	"de-formal" => 		"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
+
+	"nl-informal" => 	"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
+	"nl-formal" => 		"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
+
+	"fr-informal" => 	"tu as reçu un nouveau message dans ta boite vocale",
+	"fr-formal" => 		"vous avez reçu un nouveau message dans votre boite vocale",
 	
-	"se-informal" => "MISSING"
+	"es-formal" => 		"MISSING",
+	
+	"se-informal" => 	"MISSING"
 	
 );
 
 $vm_emailbody = array(
 
 	// english
-	"en-informal" => "Dear $\{VM_NAME},\\n\\n".
+	"en-informal" => 	"Dear $\{VM_NAME},\\n\\n".
 						"A call from $\{VM_CALLERID} just landed in your voicemail.\\n\\n".
 						"Here's the $\{VM_DUR} long message that was left for you on $\{VM_DATE}.\\n\\n".
-						"--Your Phone System",
+						"-AskoziaPBX",
+
+	"en-formal" => 		"Dear $\{VM_NAME},\\n\\n".
+						"A $\{VM_DUR} long voicemail was left for you on $\{VM_DATE} from $\{VM_CALLERID}.\\n\\n".
+						"-AskoziaPBX",
+
+	// german
+	"de-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
+						"Eine $\{VM_DUR} lange Nachricht wurde von $\{VM_CALLERID} am $\{VM_DATE} hinterlassen.\\n\\n".
+						"-AskoziaPBX",
+
+	"de-formal" => 		"Sehr geehrte(r) $\{VM_NAME},\\n\\n".
+						"Eine $\{VM_DUR} lange Sprachmitteilung wurde von $\{VM_CALLERID} am $\{VM_DATE} für Sie hinterlassen.\\n\\n".
+						"-AskoziaPBX",
 	
 	// dutch
-	"nl-informal" => "Hallo $\{VM_NAME},\\n\\n".
+	"nl-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
 						"Een oproep van $\{VM_CALLERID} is in je voicemail terecht gekomen.\\n\\n".
 						"Hier is het $\{VM_DUR} durende bericht dat voor jou is achtergelaten op $\{VM_DATE}.\\n\\n".
-						"--Je telefoonsysteem",
-	"nl-formal" => "Beste $\{VM_NAME},\\n\\n".
+						"-AskoziaPBX",
+
+	"nl-formal" => 		"Beste $\{VM_NAME},\\n\\n".
 						"Een oproep van $\{VM_CALLERID} is in uw voicemail terecht gekomen.\\n\\n".
 						"Hier is het $\{VM_DUR} durende bericht dat voor u is achtergelaten op $\{VM_DATE}.\\n\\n".
-						"--Uw telefoonsysteem",
+						"-AskoziaPBX",
 
 	// french
-	"fr-informal" => "Cher $\{VM_NAME},\\n\\n".
+	"fr-informal" => 	"Cher $\{VM_NAME},\\n\\n".
 						"Un message de $\{VM_CALLERID} t' attend dans ta boite vocale.\\n\\n".
 						"Tu trouvera en pièce jointe le message d'une durée de $\{VM_DUR} qui t'a été laissé en date du $\{VM_DATE}.\\n\\n".
-						"--AskoziaPBX",
-	"fr-formal" => "Cher $\{VM_NAME},\\n\\n".
+						"-AskoziaPBX",
+
+	"fr-formal" => 		"Cher $\{VM_NAME},\\n\\n".
 						"Un message de $\{VM_CALLERID} vous attend dans votre boite vocale.\\n\\n".
 						"Vous trouverez en pièce jointe le message d'une durée de $\{VM_DUR} qui vous a été laissé en date du $\{VM_DATE}.\\n\\n".
-						"--AskoziaPBX",
+						"-AskoziaPBX",
 						
 	// spanish
-	"es-formal" => "Estimado $\{VM_NAME},\\n\\n".
+	"es-formal" => 		"Estimado $\{VM_NAME},\\n\\n".
 						"Usted ha recibido un mensaje de voz desde el número $\{VM_CALLERID}.\\n\\n".
 						"La duración del mensaje es $\{VM_DUR} y fue dejado para usted el día $\{VM_DATE}.\\n\\n".
-						"--Su sistema de telefonía.",
+						"-AskoziaPBX",
 	
 	// swedish
-	"se-informal" => "Bäste $\{VM_NAME},\\n\\n".
+	"se-informal" => 	"Bäste $\{VM_NAME},\\n\\n".
 						"Ett samtal ifrån $\{VM_CALLERID} har precis spelats in på din telesvar.\\n\\n".
 						"Meddelandet är $\{VM_DUR} långt och det lämnades $\{VM_DATE}.\\n\\n".
-						"--AskoziaPBX"
-	
+						"-AskoziaPBX"
 );
 
 
@@ -107,6 +125,7 @@ skipms=3000
 maxsilence=10
 silencethreshold=128
 maxlogins=3
+charset=UTF-8
 
 serveremail=AskoziaPBX
 fromstring=AskoziaPBX Voicemail
@@ -176,9 +195,7 @@ EOD;
 			continue;
 		$conf .= "{$p['extension']} => 0000,{$p['name']},{$p['voicemailbox']},,delete=yes\n";
 	}
-	
-	//$conf = mb_convert_encoding($conf, "UTF-8");
-	
+		
 	fwrite($fd, $conf);
 	fclose($fd);
 	

@@ -150,7 +150,7 @@ if ($_POST) {
 				This will be shown as voicemail service's sending address.
 				<br>Defaults to the e-mail address entered above.
 			</td>
-		</tr><? /*
+		</tr>
 		<tr> 
 			<td width="20%" valign="top" class="vncell">E-Mail Language</td>
 			<td width="80%" class="vtable">
@@ -165,7 +165,7 @@ if ($_POST) {
 				<br><span class="vexpl">E-mail notifications for new voicemail will be delievered in this language.</span>
 			</td>
 		</tr>
-		*/ ?><tr> 
+		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>
 				<input name="Submit" type="submit" class="formbtn" value="Save">

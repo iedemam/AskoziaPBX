@@ -1,4 +1,4 @@
-pb8
+pb9
 
 new features
  - followme
@@ -11,7 +11,11 @@ new features
 fixes
  - is_valid_xxx checks need to be completed!!!
  - use posted config in dialplan providers instead of making users start all over
+ - ...when no providers are present, fix display
  - extension_exists() really needs work
+ - incoming iax connections!!!
+ - calls to phones from isdn providers should read back msn number when unreachable
+
 
 improvements
  - dialplan (still needs (de)select all)
@@ -22,7 +26,7 @@ improvements
  - kernel and asterisk modules should only be loaded when needed
  - ISDN interfaces for providers and phones should be limited to appropriate choices (NT vs TE)
 
-pb9
+
  - storage interface (add storage partition for extended capabilities)
  - extended capabilities hooks into the gui
  - new option to log to storage partition

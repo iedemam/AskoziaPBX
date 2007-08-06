@@ -142,12 +142,15 @@ $prompt_languages = array(
 
 $vm_email_languages = array(
 	"en-informal" => "English",
+	"en-formal" => "English (formal)",
+	"de-informal" => "German",
+	"de-formal" => "German (formal)",
 	"nl-informal" => "Dutch",
 	"nl-formal" => "Dutch (formal)",
 	"fr-informal" => "French",
-	"fr-formal" => "French (formal)",
-	"es-formal" => "Spanish (formal)",
-	"se-informal" => "Swedish"
+	"fr-formal" => "French (formal)"
+//	"es-formal" => "Spanish (formal)",
+//	"se-informal" => "Swedish"
 );
 
 $isdn_dchannel_modes = array(
@@ -164,6 +167,75 @@ $isdn_dchannel_modes = array(
 //	"DRVR_D64S" => "This driver can be used on single B-channel leased lines.",
 //	"DRVR_DUMMY" => "",
 );
+
+$zaptel_tonezones = array(
+	"us" => "United States / North America",
+	"au" => "Australia",
+	"at" => "Austria",
+	"be" => "Belgium",
+	"cl" => "Chile",
+	"cn" => "China",
+	"fi" => "Finland",
+	"fr" => "France",
+	"gr" => "Greece",
+	"it" => "Italy",
+	"jp" => "Japan",
+	"my" => "Malaysia",
+	"nl" => "Netherlands",
+	"nz" => "New Zealand",
+	"no" => "Norway",
+	"ru" => "Russia",
+	"es" => "Spain",
+	"se" => "Sweden",
+	"tw" => "Taiwan",
+	"uk" => "United Kingdom",
+	"us-old" => "United States Circa 1950/ North America"
+);
+
+$system_tonezones = array(
+	"us" => "United States / North America",
+	"au" => "Australia",
+	"at" => "Austria",
+	"be" => "Belgium",
+	"br" => "Brazil",
+	"bg" => "Bulgaria",
+	"cl" => "Chile",
+	"cn" => "China",
+	"cz" => "Czech Republic",
+	"dk" => "Denmark",
+	"ee" => "Estonia",
+	"fi" => "Finland",
+	"fr" => "France",
+	"de" => "Germany",
+	"gr" => "Greece",
+	"hu" => "Hungary",
+	"in" => "India",
+	"il" => "Israel",
+	"it" => "Italy",
+	"jp" => "Japan",
+	"lt" => "Lithuania",
+	"my" => "Malaysia",
+	"mx" => "Mexico",
+	"nl" => "Netherlands",
+	"nz" => "New Zealand",
+	"no" => "Norway",
+	"ph" => "Philippines",
+	"pl" => "Poland",
+	"pt" => "Portugal",
+	"ru" => "Russia / ex Soviet Union",
+	"sg" => "Singapore",
+	"za" => "South Africa",
+	"es" => "Spain",
+	"se" => "Sweden",
+	"ch" => "Switzerland",
+	"tw" => "Taiwan",
+	"th" => "Thailand",
+	"uk" => "United Kingdom",
+	"us-old" => "United States Circa 1950/ North America",
+	"ve" => "Venezuela / South America"
+);
+
+
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	

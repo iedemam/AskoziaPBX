@@ -41,6 +41,7 @@ $pconfig['webguiproto'] = $config['system']['webgui']['protocol'];
 if (!$pconfig['webguiproto'])
 	$pconfig['webguiproto'] = "http";
 $pconfig['webguiport'] = $config['system']['webgui']['port'];
+$pconfig['tonezone'] = $config['system']['tonezone'];
 $pconfig['timezone'] = $config['system']['timezone'];
 $pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
 $pconfig['timeservers'] = $config['system']['timeservers'];
@@ -106,6 +107,7 @@ if ($_POST) {
 		$config['system']['webgui']['protocol'] = $pconfig['webguiproto'];
 		$oldwebguiport = $config['system']['webgui']['port'];
 		$config['system']['webgui']['port'] = $pconfig['webguiport'];
+		$config['system']['tonezone'] = $_POST['tonezone'];
 		$config['system']['timezone'] = $_POST['timezone'];
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
@@ -128,6 +130,8 @@ if ($_POST) {
 			$retval |= system_password_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
+			$retval |= asterisk_indications_conf_generate();
+			$retval |= asterisk_indications_reload();
   			
 			config_unlock();
 		}
@@ -182,6 +186,17 @@ if ($_POST) {
                     <span class="vexpl">Enter a custom port number for the webGUI 
                     above if you want to override the default (80 for HTTP, 443 
                     for HTTPS).</span></td>
+                </tr>
+				<tr> 
+                  <td valign="top" class="vncell">Indications Tonezone</td>
+                  <td class="vtable"> <select name="tonezone" id="tonezone">
+                      <?php foreach ($system_tonezones as $abbreviation => $friendly): ?>
+                      <option value="<?=htmlspecialchars($abbreviation);?>" <?php if ($abbreviation == $pconfig['tonezone']) echo "selected"; ?>> 
+                      <?=htmlspecialchars($friendly);?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select>
+						<br> <span class="vexpl">Select which country's indication tones are to be used.</span></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncell">Time zone</td>

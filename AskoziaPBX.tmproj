@@ -16,13 +16,13 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-08-01T13:29:38Z</date>
+			<date>2007-08-02T15:53:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-08-01T13:29:38Z</date>
+			<date>2007-08-02T15:53:02Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -80,23 +80,39 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>100</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>0</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>64</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
 		</dict>
 		<key>NOTES</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>34</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -117,47 +133,33 @@
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
 		</dict>
-		<key>pbxdev.php</key>
+		<key>phpconf/inc/iax.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>44</integer>
+				<integer>149</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>30</integer>
+			<integer>242</integer>
 		</dict>
-		<key>phpconf/inc/dialplan.inc</key>
+		<key>webgui/advanced_iax.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>195</integer>
 				<key>line</key>
-				<integer>100</integer>
+				<integer>120</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>60</integer>
-		</dict>
-		<key>webgui/dialplan_transfers.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>112</integer>
-				<key>line</key>
-				<integer>43</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>57</integer>
+			<integer>98</integer>
 		</dict>
 		<key>webgui/help.inc</key>
 		<dict>
@@ -206,13 +208,12 @@
 	<array>
 		<string>CHANGELOG</string>
 		<string>NOTES</string>
-		<string>pbxdev.php</string>
-		<string>phpconf/inc/dialplan.inc</string>
-		<string>webgui/dialplan_transfers.php</string>
+		<string>webgui/advanced_iax.php</string>
+		<string>phpconf/inc/iax.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{238, 24}, {979, 743}}</string>
+	<string>{{248, 14}, {780, 749}}</string>
 </dict>
 </plist>
