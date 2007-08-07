@@ -49,8 +49,6 @@ function asterisk_configure() {
 		mwexec("/sbin/kldload wct1xxp");
 		echo " - loading wct4xxp\n";
 		mwexec("/sbin/kldload wct4xxp");
-		//echo " - loading isdn4bsd\n";
-		//mwexec("/sbin/kldload i4b");
 	} else
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 
@@ -88,6 +86,14 @@ function asterisk_configure() {
 	
 	if ($g['booting']) echo " - applying isdn configuration...";
 	$res |= isdn_configure();
+	if ($g['booting']) echo "done\n";
+	
+	if ($g['booting']) echo " - generating analog configuration...";
+	$res |= analog_conf_generate();
+	if ($g['booting']) echo "done\n";
+	
+	if ($g['booting']) echo " - applying analog configuration...";
+	$res |= analog_configure();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - executing Asterisk...";
@@ -844,7 +850,8 @@ function asterisk_get_providers() {
 				array_merge(
 					sip_get_providers(),
 					iax_get_providers(),
-					isdn_get_providers()
+					isdn_get_providers(),
+					analog_get_providers()
 				));
 }
 function asterisk_sort_providers($providers) {
@@ -881,7 +888,8 @@ function asterisk_get_dialpatterns() {
 	return array_merge(
 		sip_get_dialpatterns(),
 		iax_get_dialpatterns(),
-		isdn_get_dialpatterns()
+		isdn_get_dialpatterns(),
+		analog_get_dialpatterns()
 	);
 }
 
@@ -1003,7 +1011,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 
 function asterisk_replace_uniqids_with_names($string) {
 	
-	$uniqid_regex = "/(SIP|IAX|ISDN|CONFERENCE|DIALPLAN|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|CALLGROUP){1}-[0-9a-zA-Z]+/";
+	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|CONFERENCE|DIALPLAN|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|CALLGROUP){1}-[0-9a-zA-Z]+/";
 
 	preg_match_all($uniqid_regex, $string, $uniqids);
 	if (!is_array($uniqids)) {
@@ -1069,6 +1077,8 @@ function asterisk_uniqid_to_technology($uniqid) {
 			return "IAX2";
 		case "ISDN":
 			return "CAPI";
+		case "ANALOG":
+			return "ZAP";
 	}
 
 	return "UNIQID_TO_TECHNOLOGY_FAILED";
@@ -1076,7 +1086,7 @@ function asterisk_uniqid_to_technology($uniqid) {
 
 function asterisk_remove_provider_reference_from_phones($removed_id) {
 	
-	$technologies = array("sip", "iax", "isdn");
+	$technologies = array("sip", "iax", "isdn", "analog");
 
 	foreach ($technologies as $tech) {
 		if (is_array($GLOBALS['config'][$tech]['phone'])) {

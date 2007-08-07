@@ -253,6 +253,38 @@ EOD;
 		$conf .= "\n";
 	}
 	
+	// analog providers
+	$a_analogproviders = analog_get_providers();
+
+	foreach ($a_analogproviders as $p) {
+		$conf .= "; {$p['name']}\n";
+		$conf .= "[{$p['uniqid']}]\n";
+		$conf .= asterisk_uniqid_to_dial($p['number'], $p['incomingextension'], 1, $p['override']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override']);
+
+		if (is_array($p['dialpattern'])) {
+			foreach($p['dialpattern'] as $pattern) {
+				$prefix = $offset = "";
+				$exten = "$\{EXTEN}";
+				// prefix insertion
+				if (($offset = strpos($pattern, "+")) !== false) {
+					$prefix = substr($pattern, 0, $offset);
+					$pattern = substr($pattern, $offset+1);
+				}
+				// prefix deletion
+				if (($offset = strpos($pattern, "|")) !== false) {
+					$pattern = str_replace("|", "", $pattern);
+					$exten = "$\{EXTEN:$offset}";
+				}
+				
+				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
+				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,30)\n";
+				$conf .= "exten => _$pattern,3,Hangup()\n";
+			}
+		}
+		$conf .= "\n";
+	}
+	
 
 	// sip phones
 	foreach ($a_sipphones as $p) {
@@ -302,7 +334,5 @@ EOD;
 
 
 function extensions_reload() {
-	
 	return asterisk_exec("dialplan reload");
-
 }

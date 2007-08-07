@@ -14,7 +14,6 @@ fixes
  - extension_exists() really needs work
  - calls to phones from isdn providers should read back msn number when unreachable
 
-
 improvements
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev
@@ -22,9 +21,7 @@ improvements
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
- - ISDN interfaces for providers and phones should be limited to appropriate choices (NT vs TE)
-
-
+ - ISDN interfaces for providers and phones should be limited to appropriate choices (NT vs TE
  - storage interface (add storage partition for extended capabilities)
  - extended capabilities hooks into the gui
  - new option to log to storage partition

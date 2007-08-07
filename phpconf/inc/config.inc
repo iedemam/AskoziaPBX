@@ -370,6 +370,16 @@ function config_build_uniqid_map($config) {
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['isdn']['phone'][$i]['uniqid']] = $i;
 	}
+	
+	// analog
+	$n = count($config['analog']['provider']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['analog']['provider'][$i]['uniqid']] = $i;
+	}
+	$n = count($config['analog']['phone']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['analog']['phone'][$i]['uniqid']] = $i;
+	}
 
 	// external
 	$n = count($config['external']['phone']);

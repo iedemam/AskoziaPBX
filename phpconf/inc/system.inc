@@ -478,12 +478,7 @@ function system_set_harddisk_standby() {
 function system_set_termcap() {
 	global $config;
 	
-	if (isset($config['diag']['ipfstatentries'])) {
-		$lines = $config['diag']['ipfstatentries'] + 6;
-	}
-	else {
-		$lines = 306;
-	}
+	$lines = 80;
 	
 	$termcap = <<<EOD
 cons25w|ansiw|ansi80x25-raw:\

@@ -111,11 +111,11 @@ if ($_POST) {
 			<? asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_list); ?>
 			<tr> 
 				<td width="25%" class="vncellt">Active Calls</td>
-				<td width="75%" class="listr"><?=$active_calls;?></td>
+				<td width="75%" class="listr"><?=$active_calls;?>&nbsp;</td>
 			</tr>
 			<tr> 
 				<td width="25%" class="vncellt">Active Channels</td>
-				<td width="75%" class="listr"><?=$active_channels;?></td>
+				<td width="75%" class="listr"><?=$active_channels;?>&nbsp;</td>
 			</tr>
 			
 			  <tr> 

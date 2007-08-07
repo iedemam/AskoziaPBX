@@ -109,11 +109,13 @@ $menu['System']['Reboot'] 				= array('system_reboot.php');
 $menu['Interfaces']['Network'] 			= array('interfaces_network.php',
 												'interfaces_network_assign.php');
 $menu['Interfaces']['ISDN'] 			= array('interfaces_isdn.php');
+$menu['Interfaces']['Analog'] 			= array('interfaces_analog.php');
 
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php');
 $menu['Providers']['IAX'] 				= array('providers_iax.php');
 $menu['Providers']['ISDN'] 				= array('providers_isdn.php');
+$menu['Providers']['Analog'] 			= array('providers_analog.php');
 
 /* Phones */
 $menu['Phones']['SIP'] 					= array('phones_sip.php');
@@ -147,6 +149,7 @@ $menu['Live Stats']['CPU Load']			= array('status_graph_cpu.php');
 $menu['Advanced']['SIP'] 				= array('advanced_sip.php');
 $menu['Advanced']['IAX'] 				= array('advanced_iax.php');
 $menu['Advanced']['ISDN'] 				= array('advanced_isdn.php');
+$menu['Advanced']['Analog'] 			= array('advanced_analog.php');
 $menu['Advanced']['GUI Options']		= array('advanced_guioptions.php');
 //$menu['Advanced']['Quality of Service'] 					= array('advanced_qos.php');
 

@@ -37,6 +37,9 @@ $vm_emailsubject = array(
 	
 	"de-informal" => 	"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
 	"de-formal" => 		"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
+	
+	"it-formal" => 		"Nuovo messaggio voicemail (box: $\{VM_MAILBOX})",
+	"it-informal" =>	"Nuovo messaggio voicemail per te (box: $\{VM_MAILBOX})",
 
 	"nl-informal" => 	"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
 	"nl-formal" => 		"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
@@ -64,11 +67,11 @@ $vm_emailbody = array(
 
 	// german
 	"de-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
-						"Eine $\{VM_DUR} lange Nachricht wurde von $\{VM_CALLERID} am $\{VM_DATE} hinterlassen.\\n\\n".
+						"eine $\{VM_DUR} lange Nachricht wurde von $\{VM_CALLERID} am $\{VM_DATE} hinterlassen.\\n\\n".
 						"-AskoziaPBX",
 
 	"de-formal" => 		"Sehr geehrte(r) $\{VM_NAME},\\n\\n".
-						"Eine $\{VM_DUR} lange Sprachmitteilung wurde von $\{VM_CALLERID} am $\{VM_DATE} für Sie hinterlassen.\\n\\n".
+						"eine $\{VM_DUR} lange Sprachmitteilung wurde von $\{VM_CALLERID} am $\{VM_DATE} für Sie hinterlassen.\\n\\n".
 						"-AskoziaPBX",
 	
 	// dutch
@@ -91,6 +94,19 @@ $vm_emailbody = array(
 	"fr-formal" => 		"Cher $\{VM_NAME},\\n\\n".
 						"Un message de $\{VM_CALLERID} vous attend dans votre boite vocale.\\n\\n".
 						"Vous trouverez en pièce jointe le message d'une durée de $\{VM_DUR} qui vous a été laissé en date du $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+						
+	// italian
+	"it-formal" => 		"Gentile $\{VM_NAME},\\n\\n".
+						"e' stato ricevuto un messaggio vocale per Lei dal numero telefonico ".
+						"$\{VM_CALLERID}. Il messaggio e' stato ricevuto il giorno $\{VM_DATE} e la ".
+						"durata e' $\{VM_DUR}.\\n\\n".
+						"-AskoziaPBX",
+
+	"it-informal" =>	"Ciao $\{VM_NAME},\\n\\n".
+						"hai un messaggio vocale in voicemail!\\n\\n".
+						"Il numero telefonico del chiamante e' $\{VM_CALLERID}.\\n".
+						"Data $\{VM_DATE} - durata $\{VM_DUR}.\\n\\n".
 						"-AskoziaPBX",
 						
 	// spanish

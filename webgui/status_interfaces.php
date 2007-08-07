@@ -103,6 +103,23 @@ function get_isdn_interface_info($interface) {
 	return $fields;
 }
 
+function get_analog_interface_info() {
+	
+	//putenv("TERM=xterm-color"); XXX term needs help
+	exec("/sbin/zttool", $unitinfolines);
+	return $unitinfolines;/*
+	foreach ($unitinfolines as $line) {
+		if (preg_match("/\s:\s/", $line)) {
+			$pair = explode(":", $line, 2);
+			$pair[0] = trim($pair[0]);
+			$pair[1] = trim($pair[1]);
+			$fields[$pair[0]] = $pair[1];
+		}
+	}
+
+	return $fields;*/
+}
+
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0"><?
@@ -255,6 +272,17 @@ function get_isdn_interface_info($interface) {
 		
 		$i++;
 	}
+	
+	/* ?><tr>
+		<td colspan="2" class="list" height="12"></td>
+	</tr>
+	<tr> 
+		<td colspan="2" class="listtopic">Analog Units</td>
+	</tr>
+	<tr>
+		<td class="vncellt">RAW OUTPUT</td>
+		<td class="listr"><?=htmlspecialchars(print_r_html(get_analog_interface_info()));?></td>
+	</tr> */
 	
 
 ?></table>

@@ -50,6 +50,7 @@ $d_featuresconfdirty_path = $g['varrun_path'] . "/featuresconf.dirty";
 $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 $d_conferencing_kicked_path = $g['varrun_path'] . "/conferencing.kicked";
 $d_isdnconfdirty_path = $g['varrun_path'] . "/isdnconf.dirty";
+$d_analogconfdirty_path = $g['varrun_path'] . "/analogconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
@@ -145,10 +146,12 @@ $vm_email_languages = array(
 	"en-formal" => "English (formal)",
 	"de-informal" => "German",
 	"de-formal" => "German (formal)",
-	"nl-informal" => "Dutch",
-	"nl-formal" => "Dutch (formal)",
 	"fr-informal" => "French",
-	"fr-formal" => "French (formal)"
+	"fr-formal" => "French (formal)",
+	"it-informal" => "Italian",
+	"it-formal" => "Italian (formal)",
+	"nl-informal" => "Dutch",
+	"nl-formal" => "Dutch (formal)"
 //	"es-formal" => "Spanish (formal)",
 //	"se-informal" => "Swedish"
 );
@@ -168,7 +171,7 @@ $isdn_dchannel_modes = array(
 //	"DRVR_DUMMY" => "",
 );
 
-$zaptel_tonezones = array(
+$zaptel_loadzones = array(
 	"us" => "United States / North America",
 	"au" => "Australia",
 	"at" => "Austria",
@@ -233,6 +236,11 @@ $system_tonezones = array(
 	"uk" => "United Kingdom",
 	"us-old" => "United States Circa 1950/ North America",
 	"ve" => "Venezuela / South America"
+);
+
+$analog_signaling = array(
+	"fxs" => "fxo",
+	"fxo" => "fxs"
 );
 
 

@@ -29,6 +29,7 @@
 */
 
 /* include all configuration functions */
+require_once("analog.inc");
 require_once("asterisk.inc");
 require_once("conferencing.inc");
 require_once("config.inc");

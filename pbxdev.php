@@ -718,8 +718,6 @@ function populate_sounds($image_name) {
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
 
-	// XXX hacky!
-	_exec("mv $image_name/rootfs/etc/zaptel.conf $image_name/rootfs/usr/local/etc/");
 	if (file_exists("{$dirs['packages']}/$zaptel_version/STAGE/bin/zttest")) {
 		_exec("rm {$dirs['packages']}/$zaptel_version/STAGE/bin/zttest");
 	}

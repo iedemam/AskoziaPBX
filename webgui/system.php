@@ -132,7 +132,6 @@ if ($_POST) {
  			$retval |= system_ntp_configure();
 			$retval |= asterisk_indications_conf_generate();
 			$retval |= asterisk_indications_reload();
-  			
 			config_unlock();
 		}
 		
@@ -189,7 +188,8 @@ if ($_POST) {
                 </tr>
 				<tr> 
                   <td valign="top" class="vncell">Indications Tonezone</td>
-                  <td class="vtable"> <select name="tonezone" id="tonezone">
+                  <td class="vtable">
+					<select name="tonezone" id="tonezone">
                       <?php foreach ($system_tonezones as $abbreviation => $friendly): ?>
                       <option value="<?=htmlspecialchars($abbreviation);?>" <?php if ($abbreviation == $pconfig['tonezone']) echo "selected"; ?>> 
                       <?=htmlspecialchars($friendly);?>
