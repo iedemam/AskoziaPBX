@@ -6,6 +6,9 @@ new features
    - pubkey import
  - ISDN
    - dialing failures need debugging
+ - analog
+   - doesn't hang up
+   - caller id
 
 fixes
  - is_valid_xxx checks need to be completed!!!

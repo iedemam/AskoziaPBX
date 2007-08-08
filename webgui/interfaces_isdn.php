@@ -40,14 +40,14 @@ isdn_sort_interfaces();
 $a_isdninterfaces = &$config['interfaces']['isdn-unit'];
 
 $configured_units = array();
-foreach ($a_isdninterfaces as $unit) {
-	$configured_units[$unit['unit']]['name'] = $unit['name'];
-	$configured_units[$unit['unit']]['mode'] = $unit['mode'];
-	$configured_units[$unit['unit']]['echosquelch'] = $unit['echosquelch'];
-	$configured_units[$unit['unit']]['echocancel'] = $unit['echocancel'];
-	$configured_units[$unit['unit']]['pcmmaster'] = $unit['pcmmaster'];
-	$configured_units[$unit['unit']]['nopwrsave'] = $unit['nopwrsave'];
-	$configured_units[$unit['unit']]['pollmode'] = $unit['pollmode'];
+foreach ($a_isdninterfaces as $interface) {
+	$configured_units[$interface['unit']]['name'] = $interface['name'];
+	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
+	$configured_units[$interface['unit']]['echosquelch'] = $interface['echosquelch'];
+	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
+	$configured_units[$interface['unit']]['pcmmaster'] = $interface['pcmmaster'];
+	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
+	$configured_units[$interface['unit']]['pollmode'] = $interface['pollmode'];
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();

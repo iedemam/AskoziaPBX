@@ -122,7 +122,7 @@ function analog_get_recognized_ab_unit_numbers() {
 		if (strpos($dmesg_lines[$i], "Installed -- AUTO FXO") !== false) {
 			preg_match("/\b[0-9]+: Installed\b/", $dmesg_lines[$i], &$matches);
 			$num = substr($matches[0], 0, strpos($matches[0],":"));
-			$controllers[$num] = "fxo";
+			$controllers[$num+1] = "fxo";
 		}
 	}
 	
@@ -192,9 +192,9 @@ function analog_zaptel_conf_generate() {
 	$abinterfaces = analog_get_ab_interfaces();
 	foreach($abinterfaces as $abi) {
 		if ($abi['type'] == "fxo") {
-			$conf .= "fxsks=" . ($abi['unit']+1) . "\n";
+			$conf .= "fxsks={$abi['unit']}\n";
 		} else if ($abi['type'] == "fxs"){
-			$conf .= "fxoks=" . ($abi['unit']+1) . "\n";
+			$conf .= "fxoks={$abi['unit']}\n";
 		}
 		$conf .= "\n";
 	}
@@ -238,13 +238,16 @@ function analog_zapata_conf_generate() {
 	$analogproviders = analog_get_providers();
 	foreach ($analogproviders as $p) {
 		$conf .= "signalling=fxs_ks\n";
+		//$conf .= "hanguponpolarityswitch=yes\n";
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
 		if (!$p['language']) {
 			$conf .= "language=en\n";
 		} else {
 			$conf .= "language={$p['language']}\n";
 		}
 		$conf .= "context={$p['uniqid']}\n";
-		$conf .= "channel => " . ($p['interface']+1) . "\n";
+		$conf .= "channel => {$p['interface']}\n";
 		$conf .= "\n";
 	}
 

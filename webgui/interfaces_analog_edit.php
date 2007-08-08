@@ -48,9 +48,9 @@ analog_sort_ab_interfaces();
 $a_abinterfaces = &$config['interfaces']['ab-unit'];
 
 $configured_units = array();
-foreach ($a_abinterfaces as $unit) {
-	$configured_units[$unit['unit']]['name'] = $unit['name'];
-	$configured_units[$unit['unit']]['type'] = $unit['type'];
+foreach ($a_abinterfaces as $interface) {
+	$configured_units[$interface['unit']]['name'] = $interface['name'];
+	$configured_units[$interface['unit']]['type'] = $interface['type'];
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -74,7 +74,6 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['type'] = $recognized_units[$i];
 	}
 }
-
 
 /* pull current config into pconfig */
 $pconfig['unit'] = $merged_units[$unit]['unit'];

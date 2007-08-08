@@ -277,9 +277,8 @@ EOD;
 					$exten = "$\{EXTEN:$offset}";
 				}
 				
-				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
-				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,30)\n";
-				$conf .= "exten => _$pattern,3,Hangup()\n";
+				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30)\n";
+				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
 		$conf .= "\n";
