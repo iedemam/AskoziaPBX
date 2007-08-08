@@ -43,6 +43,11 @@ function analog_get_providers() {
 	return $config['analog']['provider'];
 }
 
+function analog_get_provider($uniqid) {
+	global $config, $uniqid_map;
+	return $config['analog']['provider'][$uniqid_map[$uniqid]];
+}
+
 function analog_get_phones() {
 	global $config;
 	

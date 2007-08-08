@@ -138,15 +138,20 @@ if ($_POST) {
 			<tr> 
 				<td valign="top" class="vncell">Analog Interface</td>
 				<td class="vtable">
-					<select name="interface" class="formfld" id="interface">
-					<? $ab_interfaces = analog_get_ab_interfaces(); ?>
-					<? foreach ($ab_interfaces as $interface) : ?>
-					<option value="<?=$interface['unit'];?>" <?
-					if ($interface['unit'] == $pconfig['interface'])
-						echo "selected"; ?>
-					><?=$interface['name'];?></option>
-					<? endforeach; ?>
-					</select>
+					<select name="interface" class="formfld" id="interface"><?
+
+					$ab_interfaces = analog_get_ab_interfaces();
+					foreach ($ab_interfaces as $interface) {
+						if ($interface['type'] != "fxo") {
+							continue;
+						}
+						?><option value="<?=$interface['unit'];?>" <?
+						if ($interface['unit'] == $pconfig['interface'])
+							echo "selected"; ?>
+						><?=$interface['name'];?></option><?
+					}
+
+					?></select>
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>

@@ -7,7 +7,6 @@ new features
  - ISDN
    - dialing failures need debugging
  - analog
-   - doesn't hang up
    - caller id
 
 fixes

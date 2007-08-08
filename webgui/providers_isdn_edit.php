@@ -138,15 +138,21 @@ if ($_POST) {
 			<tr> 
 				<td valign="top" class="vncell">ISDN Interface</td>
 				<td class="vtable">
-					<select name="interface" class="formfld" id="interface">
-					<? $isdn_interfaces = isdn_get_interfaces(); ?>
-					<? foreach ($isdn_interfaces as $interface) : ?>
-					<option value="<?=$interface['unit'];?>" <?
-					if ($interface['unit'] == $pconfig['interface'])
-						echo "selected"; ?>
-					><?=$interface['name'];?></option>
-					<? endforeach; ?>
-					</select>
+					<select name="interface" class="formfld" id="interface"><?
+					
+					$isdn_interfaces = isdn_get_interfaces();
+					foreach ($isdn_interfaces as $interface) {
+						if (strpos($interface['mode'], "TE") === false) {
+							continue;
+						}
+						?><option value="<?=$interface['unit'];?>" <?
+						if ($interface['unit'] == $pconfig['interface']) {
+							echo "selected";
+						}
+						?>><?=$interface['name'];?></option><?
+					}
+					
+					?></select>
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>

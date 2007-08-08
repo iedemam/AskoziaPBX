@@ -71,7 +71,7 @@ function external_get_extensions() {
 
 
 function extensions_conf_generate() {
-	global $config, $g;
+	global $config, $g, $uniqid_map;
 	
 	$fd = fopen("/usr/local/etc/asterisk/extensions.conf", "w");
 	if (!$fd) {
@@ -124,8 +124,14 @@ EOD;
 	$a_extphones = external_get_phones();
 	foreach ($a_extphones as $phone) {
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
-		$conf .= "exten => {$phone['extension']},1,".
-			"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";
+		if ($technology == "ZAP") {
+			$zprov = analog_get_provider($phone['dialprovider']);
+			$conf .= "exten => {$phone['extension']},1,".
+				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']})\n";
+		} else {
+			$conf .= "exten => {$phone['extension']},1,".
+				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";	
+		}
 	}
 	
 	$a_callgroups = dialplan_get_callgroups();
