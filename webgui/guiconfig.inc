@@ -152,8 +152,8 @@ $vm_email_languages = array(
 	"it-formal" => "Italian (formal)",
 	"nl-informal" => "Dutch",
 	"nl-formal" => "Dutch (formal)"
-//	"es-formal" => "Spanish (formal)",
-//	"se-informal" => "Swedish"
+	"es-formal" => "Spanish (formal)",
+	"se-informal" => "Swedish"
 );
 
 $isdn_dchannel_modes = array(

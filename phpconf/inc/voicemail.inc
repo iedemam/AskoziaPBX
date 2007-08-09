@@ -47,9 +47,9 @@ $vm_emailsubject = array(
 	"fr-informal" => 	"tu as reçu un nouveau message dans ta boite vocale",
 	"fr-formal" => 		"vous avez reçu un nouveau message dans votre boite vocale",
 	
-	"es-formal" => 		"MISSING",
+	"es-formal" => 		"Nuevo mensaje de voz (cuenta: $\{VM_MAILBOX})",
 	
-	"se-informal" => 	"MISSING"
+	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})"
 	
 );
 

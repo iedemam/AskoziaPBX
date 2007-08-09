@@ -954,8 +954,14 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 	} else if ($id[0] == "EXTERNAL" && $id[1] == "PHONE") {
 		$phone = external_get_phone($uniqid);
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
-		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";
+		if ($technology == "ZAP") {
+			$zprov = analog_get_provider($phone['dialprovider']);
+			$dial .= "exten => $exten,$prio,".
+				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']})\n";
+		} else {
+			$dial .= "exten => $exten,$prio,".
+				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";
+		}
 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
 		$group = dialplan_get_callgroup($uniqid);
@@ -991,7 +997,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false) 
 					$vm_account = $phone['extension'];
 				}
 				$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
-				$dial_strings[] = "$technology/{$phone['dialprovider']}/{$phone['dialstring']}";
+				if ($technology == "ZAP") {
+					$zprov = analog_get_provider($phone['dialprovider']);
+					$dial_strings[] = "$technology/{$zprov['interface']}/{$phone['dialstring']}";
+				} else {
+					$dial_strings[] = "$technology/{$phone['dialprovider']}/{$phone['dialstring']}";	
+				}
 			}
 			
 		}
