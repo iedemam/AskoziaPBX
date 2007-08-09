@@ -151,7 +151,7 @@ $vm_email_languages = array(
 	"it-informal" => "Italian",
 	"it-formal" => "Italian (formal)",
 	"nl-informal" => "Dutch",
-	"nl-formal" => "Dutch (formal)"
+	"nl-formal" => "Dutch (formal)",
 	"es-formal" => "Spanish (formal)",
 	"se-informal" => "Swedish"
 );

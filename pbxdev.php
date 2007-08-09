@@ -47,7 +47,7 @@ $sounds				= explode(" ",
 						"auth-thankyou ".
 						"conf-onlyperson conf-getpin conf-invalidpin conf-kicked ".
 						"pbx-transfer pbx-invalid ".
-						"vm-intro vm-theperson vm-isunavail vm-goodbye");
+						"vm-intro vm-theperson vm-isunavail vm-isonphone vm-goodbye");
 $digits				= explode(" ", "0 1 2 3 4 5 6 7 8 9");
 $musiconhold		= explode(" ", "fpm-calm-river");
 
