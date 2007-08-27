@@ -1,26 +1,31 @@
-pb9
+pb10
+ - add russian prompts, ask about copyright information
+ - add better fxo detection
+ - add polish mail translation
+ - add spoofmac support
+ - update to asterisk 1.4.11
+ - investigate sound (timing) problems, usually involves an iax channel, analog members of a conference
+ - fix caller id, and number readback on unreachable extensions
+ - fix up drag and drop css
+ - fix extensions_exists
+ - fix diaplan_providers.php to save posted config and display correctly when no providers are present
+ - complete is_valid_xxx() checks
+ - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
+ - console display needs fixing, spacing and http(s)/port correction
+
+ - extend callgroup support to add delays, sequential groups
+ - rework incoming extension to support DID's
+
+-----------------
 
 new features
  - followme
  - add iax2 auth options
    - pubkey import
- - ISDN
-   - dialing failures need debugging
- - analog
-   - caller id!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   - conferencing is crap
-
-fixes
- - is_valid_xxx checks need to be completed!!!
- - use posted config in dialplan providers instead of making users start all over
- - ...when no providers are present, fix display
- - extension_exists() really needs work
- - calls to phones from isdn providers should read back msn number when unreachable
 
 improvements
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev
- - figure out DID!!!
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
@@ -41,8 +46,6 @@ Docs:
 - dialplan as a movable grid
 - testing / performance mode
 - get indications.conf working
-- figure out config xml single var irregularities (empty defines showing up)
-- url given in console menu should match port given in gui (m0n0wall bug)
 
 
 
