@@ -35,6 +35,7 @@ sbin/ipmon
 sbin/ipnat
 sbin/kldload
 sbin/kldunload
+sbin/kldstat
 sbin/ldconfig
 sbin/mdconfig
 sbin/mdmfs

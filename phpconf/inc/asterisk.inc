@@ -49,8 +49,9 @@ function asterisk_configure() {
 		mwexec("/sbin/kldload wct1xxp");
 		echo " - loading wct4xxp\n";
 		mwexec("/sbin/kldload wct4xxp");
-	} else
+	} else {
 		killbypid("{$g['varrun_path']}/asterisk.pid");
+	}
 
 	
 	$res = 0;

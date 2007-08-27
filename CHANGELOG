@@ -2,6 +2,7 @@
  - added polish voicemail notification e-mail translation
  - added MAC spoofing support for the network interface
  - updated to Asterisk 1.4.11
+ - updated basesystem to FreeBSD 6.2-RELEASE-p7
 
 2007.08.09 - pb9
  - added multilingual voicemail notification e-mail option (en, de, it, nl, fr, es, se)

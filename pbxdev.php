@@ -259,6 +259,9 @@ function build_zaptel() {
 	// copy over header files
 	_exec("cd {$dirs['packages']}/$zaptel_version/; ".
 		"cp zaptel/zaptel.h ztcfg/tonezone.h /usr/local/include/zaptel/");
+		
+	// copy over better ztdummy.c
+	_exec("cp {$dirs['patches']}/packages/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
 	
 	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
 	_exec("cd {$dirs['packages']}/$zaptel_version; make");
@@ -275,23 +278,12 @@ function build_zaptel() {
 function build_isdn() {
 	global $dirs;
 	
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/; make clean; make all I4B_WITHOUT_CURSES=yes");
-
-	if (file_exists("{$dirs['packages']}/i4b/trunk/i4b/STAGE")) {
-		_exec("rm -rf {$dirs['packages']}/i4b/trunk/i4b/STAGE");
+	if (!file_exists("{$dirs['packages']}/i4b")) {
+		_exec("cd {$dirs['packages']}; ".
+			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b i4b");
 	}
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b; ".
-		"mkdir STAGE STAGE/boot STAGE/boot/kernel STAGE/usr STAGE/usr/lib ".
-		"STAGE/usr/share STAGE/usr/sbin STAGE/usr/share/man ".
-		"STAGE/usr/share/man/man1 STAGE/usr/share/man/man3 STAGE/usr/share/man/man4 ".
-		"STAGE/usr/share/man/man5 STAGE/usr/share/man/man8");
-
-	// XXX pretty messy here
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b; ".
-		"make install; ".
-		"make install DESTDIR={$dirs['packages']}/i4b/trunk/i4b/STAGE");
-	_exec("cp -p {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b/isdntest/isdntest ".
-		"{$dirs['packages']}/i4b/trunk/i4b/STAGE/usr/sbin");
+	
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
 		
 	_exec("cd {$dirs['packages']}/i4b/trunk/chan_capi/; gmake clean; gmake all");
 }
@@ -336,6 +328,7 @@ function build_bootloader() {
 function build_packages() {
 
 	build_php();
+	build_msmtp();
 	build_minihttpd();
 	build_zaptel();
 	build_isdn();
@@ -345,7 +338,6 @@ function build_packages() {
 function build_ports() {
 	
 	build_msntp();
-	build_msmtp();
 }
 
 function build_everything() {
@@ -747,10 +739,10 @@ function populate_zaptel($image_name) {
 function populate_isdn($image_name) {
 	global $dirs;
 	
-	// XXX isdn population
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/STAGE; ".
-		"rm usr/sbin/isdnd usr/sbin/isdnphone usr/sbin/isdntel usr/sbin/isdntelctl; ".
-		"cp -p usr/sbin/* $image_name/rootfs/sbin; ");
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; ".
+		"cp -p isdnconfig/isdnconfig isdndebug/isdndebug isdndecode/isdndecode ".
+		"isdnmonitor/isdnmonitor isdntest/isdntest isdntrace/isdntrace ".
+		"$image_name/rootfs/sbin; ");
 	_exec("cp {$dirs['packages']}/i4b/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
 }
 
