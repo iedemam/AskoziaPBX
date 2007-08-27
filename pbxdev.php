@@ -42,7 +42,7 @@ $zaptel_version		= "zaptel";
 // --[ sounds ]----------------------------------------------------------------
 
 $core_sounds_version= "1.4.7";
-$sound_languages	= explode(" ", "en de it es fr jp nl se");
+$sound_languages	= explode(" ", "en de it es fr jp nl se");// ru");
 $sounds				= explode(" ", 
 						"auth-thankyou ".
 						"conf-onlyperson conf-getpin conf-invalidpin conf-kicked ".
@@ -688,9 +688,27 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/se/$digit.* $image_name/asterisk/sounds/digits/se");
 			}
 
+		// russian
+		} else if ($sound_language == "ru") {
+			// gsm
+			$distname = "sounds_AST_01";
+			$disturl = "http://www.asterisk-support.ru/files/ivr";
 
+			if (!file_exists("{$dirs['sounds']}/$distname.zip"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.zip");
+
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; unzip $distname.zip -d $distname");
+			}
+
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds/$sound* $image_name/asterisk/sounds/ru");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/$digit.* $image_name/asterisk/sounds/digits/ru");
+			}
 		}
-
 	}
 	
 	// music on hold

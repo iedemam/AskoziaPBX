@@ -12,6 +12,7 @@ pb10
  - complete is_valid_xxx() checks
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - console display needs fixing, spacing and http(s)/port correction
+ - update all sources
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's

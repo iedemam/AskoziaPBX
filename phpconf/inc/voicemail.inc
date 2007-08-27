@@ -49,7 +49,10 @@ $vm_emailsubject = array(
 	
 	"es-formal" => 		"Nuevo mensaje de voz (cuenta: $\{VM_MAILBOX})",
 	
-	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})"
+	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})",
+	
+	"pl-informal" => 	"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})",
+	"pl-formal" => 		"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})"
 	
 );
 
@@ -119,6 +122,17 @@ $vm_emailbody = array(
 	"se-informal" => 	"Bäste $\{VM_NAME},\\n\\n".
 						"Ett samtal ifrån $\{VM_CALLERID} har precis spelats in på din telesvar.\\n\\n".
 						"Meddelandet är $\{VM_DUR} långt och det lämnades $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+	
+	"pl-informal" => 	"Szanowny $\{VM_NAME},\\n\\n".
+						"Wiadomość głosowa od $\{VM_CALLERID} została pozostawiona na ".
+						"twojej skrzynce. Wiadomość trwa $\{VM_DUR} i została pozostawiona ".
+						"$\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+						
+	"pl-formal" => 		"Szanowny $\{VM_NAME},\\n\\n".
+						"$\{VM_CALLERID} pozostawił trwającą $\{VM_DUR} wiadomość głosową w ".
+						"dniu $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX"
 );
 

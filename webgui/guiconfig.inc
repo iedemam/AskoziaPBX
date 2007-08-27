@@ -133,25 +133,27 @@ $dtmfmodes = array(
 $prompt_languages = array(
 	"en" => "English",
 	"nl" => "Dutch",
-	"de" => "German",
-	"es" => "Spanish",
 	"fr" => "French",
+	"de" => "German",
 	"it" => "Italian",
 	"jp" => "Japanese",
+	"es" => "Spanish",
 	"se" => "Swedish"
 );
 
 $vm_email_languages = array(
 	"en-informal" => "English",
 	"en-formal" => "English (formal)",
-	"de-informal" => "German",
-	"de-formal" => "German (formal)",
-	"fr-informal" => "French",
-	"fr-formal" => "French (formal)",
-	"it-informal" => "Italian",
-	"it-formal" => "Italian (formal)",
 	"nl-informal" => "Dutch",
 	"nl-formal" => "Dutch (formal)",
+	"fr-informal" => "French",
+	"fr-formal" => "French (formal)",
+	"de-informal" => "German",
+	"de-formal" => "German (formal)",
+	"it-informal" => "Italian",
+	"it-formal" => "Italian (formal)",
+	"pl-informal" => "Polish",
+	"pl-formal" => "Polish (formal)",
 	"es-formal" => "Spanish (formal)",
 	"se-informal" => "Swedish"
 );
