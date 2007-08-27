@@ -54,7 +54,12 @@ function interfaces_lan_configure() {
 	/* remove all addresses first */
 	while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
 	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
-		
+	
+	/* MAC spoofing? */
+	if ($lancfg['spoofmac']) {
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
+			" link " . escapeshellarg($lancfg['spoofmac']));
+	}
 		
 	/* media */
 	if ($lancfg['media'] || $lancfg['mediaopt']) {

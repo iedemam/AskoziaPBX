@@ -1,9 +1,6 @@
 pb10
- - add russian prompts, ask about copyright information
+ - add russian prompts, ask about copyright information, needs "auth-thankyou"
  - add better fxo detection
- - add polish mail translation
- - add spoofmac support
- - update to asterisk 1.4.11
  - investigate sound (timing) problems, usually involves an iax channel, analog members of a conference
  - fix caller id, and number readback on unreachable extensions
  - fix up drag and drop css
@@ -13,6 +10,9 @@ pb10
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - console display needs fixing, spacing and http(s)/port correction
  - update all sources
+ - add sip presence state support
+ - AVM cards are broken
+ - IAX checkboxes aren't working
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's

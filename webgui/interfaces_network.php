@@ -43,6 +43,7 @@ list($pconfig['dns1'],$pconfig['dns2'],$pconfig['dns3']) = $config['system']['dn
 $pconfig['topology'] = $lancfg['topology'];
 $pconfig['extipaddr'] = $lancfg['extipaddr'];
 $pconfig['exthostname'] = $lancfg['exthostname'];
+$pconfig['spoofmac'] = $lancfg['spoofmac'];
 
 
 if ($_POST) {
@@ -53,7 +54,12 @@ if ($_POST) {
 	$reqdfields = explode(" ", "ipaddr subnet gateway topology");
 	$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway,Network topology");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-		
+	
+	$_POST['spoofmac'] = str_replace("-", ":", $_POST['spoofmac']);
+	if (($_POST['spoofmac'] && !is_macaddr($_POST['spoofmac']))) {
+		$input_errors[] = "A valid MAC address must be specified.";
+	}
+	
 	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
 		$input_errors[] = "A valid IP address must be specified.";
 	}
@@ -110,6 +116,8 @@ if ($_POST) {
 			
 		unset($lancfg['exthostname']);
 		$lancfg['exthostname'] = $_POST['exthostname'];
+		
+		$lancfg['spoofmac'] = $_POST['spoofmac'];
 		
 		write_config();
 		
@@ -199,6 +207,14 @@ function type_change() {
 						<span class="vexpl">IP addresses</span>
 					</td>
 				</tr>
+				<tr> 
+					<td valign="top" class="vncell">MAC address</td>
+					<td class="vtable">
+						<input name="spoofmac" type="text" class="formfld" id="spoofmac" size="30" value="<?=htmlspecialchars($pconfig['spoofmac']);?>"><br>
+						This field can be used to modify (&quot;spoof&quot;) the MAC address of the network interface<br>
+						Enter a MAC address in the following format: xx:xx:xx:xx:xx:xx or leave blank
+					</td>
+                </tr>
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq">Topology</td>
 					<td width="78%" class="vtable">

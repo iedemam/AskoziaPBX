@@ -188,10 +188,9 @@ european=Europe/Copenhagen|'vm-received' a d b 'digits/at' HM
 
 EOD;
 
-	// sip phones
-	$sipphones = sip_get_phones();
-
-	foreach($sipphones as $p) {
+	// internal phones
+	$intphones = asterisk_get_phones();
+	foreach($intphones as $p) {
 		if(!$p['voicemailbox'])
 			continue;
 		// is eliminating VoiceMailMain from the dialplan enough to keep
@@ -199,27 +198,8 @@ EOD;
 		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
 	}
 	
-	// iax phones
-	$iaxphones = iax_get_phones();
-
-	foreach($iaxphones as $p) {
-		if(!$p['voicemailbox'])
-			continue;
-		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
-	}
-	
-	// isdn phones
-	$isdnphones = isdn_get_phones();
-
-	foreach($isdnphones as $p) {
-		if(!$p['voicemailbox'])
-			continue;
-		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
-	}
-	
 	// external phones
 	$extphones = external_get_phones();
-
 	foreach($extphones as $p) {
 		if(!$p['voicemailbox'])
 			continue;
