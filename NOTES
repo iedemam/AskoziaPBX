@@ -10,7 +10,6 @@ pb10
  - console display needs fixing, spacing and http(s)/port correction
  - add sip presence state support
  - AVM cards are broken
- - IAX checkboxes aren't working
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's

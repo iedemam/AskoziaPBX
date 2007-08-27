@@ -3,6 +3,7 @@
  - added MAC spoofing support for the network interface
  - updated to Asterisk 1.4.11
  - updated basesystem to FreeBSD 6.2-RELEASE-p7
+ - bug: fixed the broken jitterbuffer options on in "Advanced -> IAX"
 
 2007.08.09 - pb9
  - added multilingual voicemail notification e-mail option (en, de, it, nl, fr, es, se)

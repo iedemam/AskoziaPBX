@@ -35,8 +35,8 @@ require("guiconfig.inc");
 $iaxconfig = &$config['services']['iax'];
 
 $pconfig['port'] = isset($iaxconfig['port']) ? $iaxconfig['port'] : "4569";
-$pconfig['jbenable'] = isset($iaxconfig['jbenable']) ? $iaxconfig['jbenable'] : false;
-$pconfig['jbforce'] = isset($iaxconfig['jbforce']) ? $iaxconfig['jbforce'] : false;
+$pconfig['jbenable'] = isset($iaxconfig['jbenable']);
+$pconfig['jbforce'] = isset($iaxconfig['jbforce']);
 
 if ($_POST) {
 
@@ -135,4 +135,9 @@ function jb_enable_click() {
 		</tr>
 	</table>
 </form>
+<script language="JavaScript">
+<!--
+jb_enable_click();
+//-->
+</script>
 <?php include("fend.inc"); ?>

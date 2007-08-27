@@ -105,13 +105,13 @@ delayreject=yes
 
 EOD;
 
-	if ($iaxconfig['jbenable']) {
+	if (isset($iaxconfig['jbenable'])) {
 		$conf .= "jitterbuffer=yes\n";
 	} else {
 		$conf .= "jitterbuffer=no\n";
 	}
 
-	if ($iaxconfig['jbforce']) {
+	if (isset($iaxconfig['jbforce'])) {
 		$conf .= "forcejitterbuffer=yes\n";
 	} else {
 		$conf .= "forcejitterbuffer=no\n";
