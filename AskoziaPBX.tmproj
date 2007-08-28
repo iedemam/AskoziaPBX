@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,15 +16,15 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-08-27T16:22:45Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-08-27T16:26:40Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-08-27T16:22:45Z</date>
+			<date>2007-08-27T16:26:40Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -94,14 +94,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>54</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>40</integer>
 		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>

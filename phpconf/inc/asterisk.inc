@@ -37,18 +37,6 @@ function asterisk_configure() {
 
 	if ($g['booting']) {
 		echo "Starting Asterisk...\n";
-		echo " - loading zaptel\n";
-		mwexec("/sbin/kldload zaptel");
-		echo " - loading ztdummy\n";
-		mwexec("/sbin/kldload ztdummy");
-		echo " - loading wcfxo\n";
-		mwexec("/sbin/kldload wcfxo");
-		echo " - loading wcfxs\n";
-		mwexec("/sbin/kldload wcfxs");
-		echo " - loading wct1xxp\n";
-		mwexec("/sbin/kldload wct1xxp");
-		echo " - loading wct4xxp\n";
-		mwexec("/sbin/kldload wct4xxp");
 	} else {
 		killbypid("{$g['varrun_path']}/asterisk.pid");
 	}
@@ -97,6 +85,10 @@ function asterisk_configure() {
 	$res |= analog_configure();
 	if ($g['booting']) echo "done\n";
 	
+	if ($g['booting']) echo " - configuring timing source...";
+	$res |= asterisk_configure_timing();
+	if ($g['booting']) echo "done\n";
+	
 	if ($g['booting']) echo " - executing Asterisk...";
 	$res |= mwexec("/usr/local/sbin/asterisk");
 	if ($g['booting']) echo "done\n";
@@ -109,6 +101,20 @@ function asterisk_configure() {
 	}
 
 	return $res;
+}
+
+function asterisk_configure_timing() {
+
+	/* zaptel modules are all loaded at boot, 
+	if nothing was detected we fall back to ztdummy for timing */
+	if(!count(analog_get_recognized_ab_unit_numbers())) {
+		mwexec("/sbin/kldunload wcfxo");
+		mwexec("/sbin/kldunload wcfxs");
+		mwexec("/sbin/kldunload wct1xxp");
+		mwexec("/sbin/kldunload wct4xxp");
+		mwexec("/sbin/kldload ztdummy");
+	}
+	return 0;
 }
 
 function asterisk_indications_conf_generate() {

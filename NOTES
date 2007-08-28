@@ -1,7 +1,6 @@
 pb10
  - add russian prompts, ask about copyright information, needs "auth-thankyou"
  - add better fxo detection
- - investigate sound (timing) problems, usually involves an iax channel, analog members of a conference
  - fix caller id, and number readback on unreachable extensions
  - fix extensions_exists
  - fix diaplan_providers.php to save posted config and display correctly when no providers are present
@@ -10,9 +9,11 @@ pb10
  - console display needs fixing, spacing and http(s)/port correction
  - add sip presence state support
  - AVM cards are broken
+ - add transfer spacing timeout option
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
+ - make "advanced" menu collapsable like "diagnostics"
 
 -----------------
 

@@ -571,4 +571,13 @@ EOD;
 	return 0;
 }
 
+function system_load_kernel_modules() {
+	
+	mwexec("/sbin/kldload zaptel");
+	mwexec("/sbin/kldload wcfxo");
+	mwexec("/sbin/kldload wcfxs");
+	mwexec("/sbin/kldload wct1xxp");
+	mwexec("/sbin/kldload wct4xxp");
+}
+
 ?>
