@@ -1,6 +1,7 @@
 2007.09.xx - pb10
  - added polish voicemail notification e-mail translation
  - added MAC spoofing support for the network interface
+ - added "attended transfer answer," "transfer key" and "extension digit" timeout options to "Dialplan -> Transfers"
  - updated to Asterisk 1.4.11
  - updated basesystem to FreeBSD 6.2-RELEASE-p7
  - bug: fixed the broken jitterbuffer options on in "Advanced -> IAX"

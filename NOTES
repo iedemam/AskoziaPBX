@@ -9,7 +9,7 @@ pb10
  - console display needs fixing, spacing and http(s)/port correction
  - add sip presence state support
  - AVM cards are broken
- - add transfer spacing timeout option
+ - confirm "Ringing()" behavior/usage on ISDN connections
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
@@ -98,9 +98,7 @@ Docs:
 ;xfersound = beep		; to indicate an attended transfer is complete
 ;xferfailsound = beeperr	; to indicate a failed transfer
 ;pickupexten = *8		; Configure the pickup extension. (default is *8)
-;featuredigittimeout = 500	; Max time (ms) between digits for 
-				; feature activation  (default is 500 ms)
-;atxfernoanswertimeout = 15	; Timeout for answer on attended transfer default is 15 seconds.
+
 
 [featuremap]
 ;disconnect => *0		; Disconnect  (default is *)

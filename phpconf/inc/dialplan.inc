@@ -80,6 +80,9 @@ function dialplan_features_conf_generate() {
 	$pc['attendedtransfer'] = isset($featuremapconfig['attendedtransfer']) ? $featuremapconfig['attendedtransfer'] : "**";
 	$pc['blindtransfer'] = isset($featuremapconfig['blindtransfer']) ? $featuremapconfig['blindtransfer'] : "##";
 	//$pc['disconnect'] = isset($featuremapconfig['disconnect']) ? $featuremapconfig['disconnect'] : "*0";
+	$pc['featuredigittimeout'] = isset($featuremapconfig['featuredigittimeout']) ? $featuremapconfig['featuredigittimeout'] : "500";
+	$pc['atxfernoanswertimeout'] = isset($featuremapconfig['atxfernoanswertimeout']) ? $featuremapconfig['atxfernoanswertimeout'] : "15";
+	$pc['transferdigittimeout'] = isset($featuremapconfig['transferdigittimeout']) ? $featuremapconfig['transferdigittimeout'] : "3";
 	
 	$fd = fopen("/usr/local/etc/asterisk/features.conf", "w");
 	if (!$fd) {
@@ -93,6 +96,9 @@ function dialplan_features_conf_generate() {
 	$conf .= "parkpos => " . $pc['parkposstart'] . "-" . $pc['parkposend'] . "\n";
 	$conf .= "context => parkedcalls\n";
 	$conf .= "parkingtime => " . $pc['parktime'] . "\n";
+	$conf .= "featuredigittimeout = " . $pc['featuredigittimeout'] . "\n";
+	$conf .= "atxfernoanswertimeout = " . $pc['atxfernoanswertimeout'] . "\n";
+	$conf .= "transferdigittimeout = " . $pc['transferdigittimeout'] . "\n";
 	$conf .= "\n";
 	
 	$conf .= "[featuremap]\n";
@@ -100,6 +106,7 @@ function dialplan_features_conf_generate() {
 	$conf .= "blindxfer => " . $pc['blindtransfer'] . "\n";
 //	$conf .= "disconnect => ". $pc['disconnect'] . "\n";
 //	$conf .= "automon => *1\n";//                  ; One Touch Record
+	
 	$conf .= "\n";
 	
 	fwrite($fd, $conf);

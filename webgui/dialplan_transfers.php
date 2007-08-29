@@ -43,6 +43,9 @@ $pconfig['parktime'] = isset($parkingconfig['parktime']) ? $parkingconfig['parkt
 $pconfig['attendedtransfer'] = isset($featuremapconfig['attendedtransfer']) ? $featuremapconfig['attendedtransfer'] : "**";
 $pconfig['blindtransfer'] = isset($featuremapconfig['blindtransfer']) ? $featuremapconfig['blindtransfer'] : "##";
 //$pconfig['disconnect'] = isset($featuremapconfig['disconnect']) ? $featuremapconfig['disconnect'] : "*0";
+$pconfig['featuredigittimeout'] = isset($featuremapconfig['featuredigittimeout']) ? $featuremapconfig['featuredigittimeout'] : "500";
+$pconfig['atxfernoanswertimeout'] = isset($featuremapconfig['atxfernoanswertimeout']) ? $featuremapconfig['atxfernoanswertimeout'] : "15";
+$pconfig['transferdigittimeout'] = isset($featuremapconfig['transferdigittimeout']) ? $featuremapconfig['transferdigittimeout'] : "3";
 
 
 if ($_POST) {
@@ -72,6 +75,16 @@ if ($_POST) {
 	if ($_POST['parktime'] && !is_numericint($_POST['parktime'])) {
 		$input_errors[] = "A valid park time must be specified.";
 	}
+	
+	if ($_POST['featuredigittimeout'] && !is_numericint($_POST['featuredigittimeout'])) {
+		$input_errors[] = "A valid key timeout must be specified.";
+	}
+	if ($_POST['atxfernoanswertimeout'] && !is_numericint($_POST['atxfernoanswertimeout'])) {
+		$input_errors[] = "A valid attended transfer timeout must be specified.";
+	}
+	if ($_POST['transferdigittimeout'] && !is_numericint($_POST['transferdigittimeout'])) {
+		$input_errors[] = "A valid extension digit timeout must be specified.";
+	}
 
 	if (!$input_errors) {
 		$parkingconfig['parkext'] = ($_POST['parkext'] != "700") ? $_POST['parkext'] : false ;
@@ -82,6 +95,9 @@ if ($_POST) {
 		$featuremapconfig['attendedtransfer'] = ($_POST['attendedtransfer'] != "**") ? $_POST['attendedtransfer'] : false;
 		$featuremapconfig['blindtransfer'] = ($_POST['blindtransfer'] != "##") ? $_POST['blindtransfer'] : false;
 		//$featuremapconfig['disconnect'] = ($_POST['disconnect'] !=  "*0") ? $_POST['disconnect'] : false;
+		$featuremapconfig['featuredigittimeout'] = ($_POST['featuredigittimeout'] != "500") ? $_POST['featuredigittimeout'] : false;
+		$featuremapconfig['atxfernoanswertimeout'] = ($_POST['atxfernoanswertimeout'] != "15") ? $_POST['atxfernoanswertimeout'] : false;
+		$featuremapconfig['transferdigittimeout'] = ($_POST['transferdigittimeout'] != "3") ? $_POST['transferdigittimeout'] : false;
 
 		write_config();
 		touch($d_featuresconfdirty_path);
@@ -116,17 +132,17 @@ if (file_exists($d_featuresconfdirty_path)) {
 			<td colspan="2" class="listtopic">Hot Keys</td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" class="vncellreq">Attended Transfer</td>
+			<td width="20%" valign="top" class="vncellreq">Attended</td>
 			<td width="80%" class="vtable">
 				<input name="attendedtransfer" type="text" class="formfld" id="attendedtransfer" size="10" value="<?=htmlspecialchars($pconfig['attendedtransfer']);?>">
-				<br><span class="vexpl">This key combination activates an attended transfer.</span>
+				<br><span class="vexpl">This key combination activates an attended transfer (default **).</span>
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" class="vncellreq">Blind Transfer</td>
+			<td valign="top" class="vncellreq">Blind</td>
 			<td class="vtable">
 				<input name="blindtransfer" type="text" class="formfld" id="blindtransfer" size="10" value="<?=htmlspecialchars($pconfig['blindtransfer']);?>">
-				<br><span class="vexpl">This key combination activates a blind transfer.</span>
+				<br><span class="vexpl">This key combination activates a blind transfer (default ##).</span>
 			</td>
 		</tr><? /*
 		<tr>
@@ -146,21 +162,48 @@ if (file_exists($d_featuresconfdirty_path)) {
 			<td width="20%" valign="top" class="vncellreq">Park Extension</td>
 			<td width="80%" class="vtable">
 				<input name="parkext" type="text" class="formfld" id="parkext" size="20" value="<?=htmlspecialchars($pconfig['parkext']);?>">
-				<br><span class="vexpl">Transfer to this extension to park a call.</span>
+				<br><span class="vexpl">Transfer to this extension to park a call (default 700).</span>
 			</td>
 		</tr>
 		<tr>
 			<td valign="top" class="vncellreq">Parking Range</td>
 			<td class="vtable">
 				<input name="parkposstart" type="text" class="formfld" id="parkposstart" size="10" value="<?=htmlspecialchars($pconfig['parkposstart']);?>">&nbsp;-&nbsp;<input name="parkposend" type="text" class="formfld" id="parkposend" size="10" value="<?=htmlspecialchars($pconfig['parkposend']);?>">
-				<br><span class="vexpl">This range of extensions is where parked calls reside.</span>
+				<br><span class="vexpl">This range of extensions is where parked calls reside (default 701-720).</span>
+			</td>
+		</tr>
+		<tr> 
+			<td colspan="2" class="list" height="12">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="listtopic">Timeouts</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">Attended Transfer Answer</td>
+			<td class="vtable">
+				<input name="atxfernoanswertimeout" type="text" class="formfld" id="atxfernoanswertimeout" size="10" value="<?=htmlspecialchars($pconfig['atxfernoanswertimeout']);?>">
+				<br><span class="vexpl">Maximum number of seconds an attended transfer can go unanswered (default 15).</span>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">Transfer Key</td>
+			<td class="vtable">
+				<input name="featuredigittimeout" type="text" class="formfld" id="featuredigittimeout" size="10" value="<?=htmlspecialchars($pconfig['featuredigittimeout']);?>">
+				<br><span class="vexpl">Maximum number of milliseconds between key presses for transfer activation (default 500).</span>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top" class="vncellreq">Extension Digit</td>
+			<td class="vtable">
+				<input name="transferdigittimeout" type="text" class="formfld" id="transferdigittimeout" size="10" value="<?=htmlspecialchars($pconfig['transferdigittimeout']);?>">
+				<br><span class="vexpl">Maximum number of seconds to wait between digits when transferring a call (default 3).</span>
 			</td>
 		</tr>
 		<tr>
 			<td width="20%" valign="top" class="vncellreq">Park Time</td>
 			<td width="80%" class="vtable">
 				<input name="parktime" type="text" class="formfld" id="parktime" size="20" value="<?=htmlspecialchars($pconfig['parktime']);?>">
-				<br><span class="vexpl">Maximum number of seconds a call can be parked before it is transfered back to the parker.</span>
+				<br><span class="vexpl">Maximum number of seconds a call can be parked before it is transfered back to the parker (default 30).</span>
 			</td>
 		</tr>
 		<tr> 
