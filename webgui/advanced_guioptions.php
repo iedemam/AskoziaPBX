@@ -38,6 +38,13 @@ $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
+$pconfig['expandadvanced'] = isset($config['system']['webgui']['expandadvanced']);
+
+$pconfig['hidesip'] = isset($config['system']['webgui']['hidesip']);
+$pconfig['hideiax'] = isset($config['system']['webgui']['hideiax']);
+$pconfig['hideisdn'] = isset($config['system']['webgui']['hideisdn']);
+$pconfig['hideanalog'] = isset($config['system']['webgui']['hideanalog']);
+
 if ($g['platform'] == "generic-pc")
 	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
 $pconfig['noantilockout'] = isset($config['system']['webgui']['noantilockout']);
@@ -66,6 +73,13 @@ if ($_POST) {
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
+		$config['system']['webgui']['expandadvanced'] = $_POST['expandadvanced'] ? true : false;
+		
+		$config['system']['webgui']['hidesip'] = $_POST['hidesip'] ? true : false;
+		$config['system']['webgui']['hideiax'] = $_POST['hideiax'] ? true : false;
+		$config['system']['webgui']['hideisdn'] = $_POST['hideisdn'] ? true : false;
+		$config['system']['webgui']['hideanalog'] = $_POST['hideanalog'] ? true : false;
+		
 		if ($g['platform'] == "generic-pc") {
 			$oldharddiskstandby = $config['system']['harddiskstandby'];
 			$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
@@ -112,9 +126,6 @@ function enable_change(enable_over) {
 </script>
             <?php if ($input_errors) print_input_errors($input_errors); ?>
             <?php if ($savemsg) print_info_box($savemsg); ?>
-            <p><span class="vexpl"><span class="red"><strong>Note: </strong></span>the 
-              options on this page are intended for use by advanced users only, 
-              and there's <strong>NO</strong> support for them.</span></p>
             <form action="advanced_guioptions.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
@@ -180,7 +191,22 @@ function enable_change(enable_over) {
                   <td width="22%" valign="top" class="vncell">Navigation</td>
                   <td width="78%" class="vtable"> 
                     <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
-                    <strong>Keep diagnostics in navigation expanded </strong></td>
+                    <strong>Keep diagnostics in navigation expanded</strong>
+					<br>
+					<input name="expandadvanced" type="checkbox" id="expandadvanced" value="yes" <?php if ($pconfig['expandadvanced']) echo "checked"; ?>>
+					<strong>Keep advanced options in navigation expanded</strong>
+					<br>
+					<input name="hidesip" type="checkbox" id="hidesip" value="yes" <?php if ($pconfig['hidesip']) echo "checked"; ?>>
+					<strong>Hide SIP related options</strong>
+					<br>
+					<input name="hideiax" type="checkbox" id="hideiax" value="yes" <?php if ($pconfig['hideiax']) echo "checked"; ?>>
+					<strong>Hide IAX related options</strong>
+					<br>
+					<input name="hideisdn" type="checkbox" id="hideisdn" value="yes" <?php if ($pconfig['hideisdn']) echo "checked"; ?>>
+					<strong>Hide ISDN related options</strong>
+					<br>
+					<input name="hideanalog" type="checkbox" id="hideanalog" value="yes" <?php if ($pconfig['hideanalog']) echo "checked"; ?>>
+					<strong>Hide Analog related options</strong></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>

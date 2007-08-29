@@ -2,6 +2,8 @@
  - added polish voicemail notification e-mail translation
  - added MAC spoofing support for the network interface
  - added "attended transfer answer," "transfer key" and "extension digit" timeout options to "Dialplan -> Transfers"
+ - added collapsable "Advanced" menu and option to keep it open in "Advanced -> GUI Options"
+ - added options in "Advanced -> GUI Options" to hide menu entries for unused telephony technologies
  - updated to Asterisk 1.4.11
  - updated basesystem to FreeBSD 6.2-RELEASE-p7
  - bug: fixed the broken jitterbuffer options on in "Advanced -> IAX"

@@ -55,26 +55,43 @@ function dynamic_menu(&$menu, $menu_title) {
 	
 	foreach ($menu as $desc => $links) {
 		if ($intersect = array_intersect($menu[$desc],$allowed)) {
-			if (!isset($header_displayed) && !($menu_title=='Diagnostics')) {
+			
+			if (!isset($header_displayed) && !($menu_title == 'Diagnostics') && !($menu_title == 'Advanced')) {
 				echo "\n			<strong>".$menu_title.'</strong><br>';
 				$header_displayed = true;
-			}
-			else { 
+			
+			} else { 
 				if (!isset($header_displayed)) {
-					if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")): ?>
-					<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br>
-					<span id="diag">
-					<?php else: ?>
-					<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br>
-					<span id="diag" style="display: none">
-					<?php endif;
+					if ($menu_title == 'Diagnostics') {
+						if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) :?>
+							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br><span id="diag">
+						<? else :?>
+							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br><span id="diag" style="display: none">
+						<? endif;
+					}
+					if ($menu_title == 'Advanced') {
+						if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) :?>
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk">Advanced</a></strong><br><span id="advanced">
+						<? else :?>
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk">Advanced</a></strong><br><span id="advanced" style="display: none">
+						<? endif;
+					}
+					
 					$header_displayed = true;			  
 				}
 				
 			}
 			// $intersect may contain one or more links, but we only need the first one
 			// BUT, we are doing a foreach here because it might not be element [0]
-			foreach ($intersect as $link) { 
+			foreach ($intersect as $link) {
+				if ((isset($config['system']['webgui']['hidesip']) && $desc == "SIP") ||
+					(isset($config['system']['webgui']['hideiax']) && $desc == "IAX") ||
+					(isset($config['system']['webgui']['hideisdn']) && $desc == "ISDN") ||
+					(isset($config['system']['webgui']['hideanalog']) && $desc == "Analog")) {
+					
+					break;	
+				}
+				 
 				// Below lines are spaced out oddly to help improve the look of resulting HTML code.
 				?>
 
@@ -83,6 +100,9 @@ function dynamic_menu(&$menu, $menu_title) {
 	   			break;
 			}
 		}
+	}
+	if ($menu_title == 'Advanced' || $menu_title == 'Diagnostics') {
+		?></span><?
 	}
 }
         
@@ -238,7 +258,6 @@ dynamic_menu($menu['Advanced'], 'Advanced');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 
 ?>
-			  </span>
 			  </font></span>
             </td>
         </tr></table></td>
