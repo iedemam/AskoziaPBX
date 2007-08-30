@@ -107,6 +107,9 @@ useragent=AskoziaPBX
 relaxdtmf=yes
 alwaysauthreject=yes
 videosupport=yes
+notifybusy=yes
+limitonpeer=yes
+notifyhold=no
 
 EOD;
 
@@ -264,7 +267,18 @@ EOD;
 			$conf .= "dtmfmode={$p['dtmfmode']}\n";
 		} else {
 			$conf .= "dtmfmode=auto\n";
-		}		
+		}
+		
+		if ($p['calllimit']) {
+			$conf .= "call-limit={$p['calllimit']}\n";
+		} else {
+			$conf .= "call-limit=2\n";
+		}
+		if ($p['busylimit']) {
+			$conf .= "busy-limit={$p['busylimit']}\n";
+		} else {
+			$conf .= "busy-limit=1\n";
+		}
 		
 		$conf .= "disallow=all\n";
 	

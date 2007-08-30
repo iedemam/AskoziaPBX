@@ -59,6 +59,10 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['language'] = $a_sipphones[$id]['language'];
 	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
 	$pconfig['qualify'] = $a_sipphones[$id]['qualify'];
+	
+	$pconfig['calllimit'] = isset($a_sipphones[$id]['calllimit']) ? $a_sipphones[$id]['calllimit'] : "2";
+	$pconfig['busylimit'] = isset($a_sipphones[$id]['busylimit']) ? $a_sipphones[$id]['busylimit'] : "1";
+	
 	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_sipphones[$id]['descr'];
@@ -100,6 +104,13 @@ if ($_POST) {
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
+	
+	if (($_POST['calllimit'] && !is_numericint($_POST['calllimit']))) {
+		$input_errors[] = "A whole number of calls must be entered for the \"call limit.\"";
+	}
+	if (($_POST['busylimit'] && !is_numericint($_POST['busylimit']))) {
+		$input_errors[] = "A whole number of calls must be entered for the \"busy limit.\"";
+	}
 
 	if (!$input_errors) {
 		$sp = array();
@@ -110,6 +121,10 @@ if ($_POST) {
 		$sp['language'] = $_POST['language'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['qualify'] = $_POST['qualify'];
+		
+		$sp['calllimit'] = $_POST['calllimit'];
+		$sp['busylimit'] = $_POST['busylimit'];
+		
 		$sp['descr'] = $_POST['descr'];
 
 		$a_providers = asterisk_get_providers();
@@ -180,6 +195,7 @@ if ($_POST) {
 					<br>Defaults to '2'. Set to '0' to disable.</span>
 				</td>
 			</tr>
+			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 2); ?>
 			<? display_provider_access_selector($pconfig['provider'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>

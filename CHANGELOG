@@ -4,10 +4,12 @@
  - added "attended transfer answer," "transfer key" and "extension digit" timeout options to "Dialplan -> Transfers"
  - added collapsable "Advanced" menu and option to keep it open in "Advanced -> GUI Options"
  - added options in "Advanced -> GUI Options" to hide menu entries for unused telephony technologies
+ - added "T" option to Dial() on outgoing calls so they are parkable/transferable
+ - added call-limit and busy-limit options to SIP Phones and fixed SIP hints in dialplan, basic presence information is now working
  - updated to Asterisk 1.4.11
  - updated basesystem to FreeBSD 6.2-RELEASE-p7
  - bug: fixed the broken jitterbuffer options on in "Advanced -> IAX"
- - bug: fixed sound issues introduced in pb9
+ - bug: fixed sound issues introduced in pb9 in certain situations (more testing needed)
 
 2007.08.09 - pb9
  - added multilingual voicemail notification e-mail option (en, de, it, nl, fr, es, se)

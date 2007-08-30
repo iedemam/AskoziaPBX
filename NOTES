@@ -7,7 +7,6 @@ pb10
  - complete is_valid_xxx() checks
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - console display needs http(s)/port correction
- - add sip presence state support
  - AVM cards are broken
  - confirm "Ringing()" behavior/usage on ISDN connections
 
@@ -236,3 +235,77 @@ Zapata Telephony Interface Registered on major 196
 Echo Canceller: MG2
 ztdummy: loaded
 Registered tone zone 0 (United States / North America)
+
+
+
+
+
+-------------------------------------------------------------------------
+Beginnings of Presence Info
+-------------------------------------------------------------------------
+
+*****After sip.conf - added limitonperr and notifyhold option to the general section and added call-limit and busy-limit to individual sip extensions.
+
+[general]
+context=default
+allowoverlap=no
+bindport=5060
+bindaddr=0.0.0.0
+srvlookup=yes
+useragent=AskoziaPBX
+relaxdtmf=yes
+alwaysauthreject=yes
+videosupport=yes
+notifybusy=yes
+limitonpeer=yes
+notifyhold=no
+
+externip=24.10.190.87
+localnet=192.168.0.10/24
+
+; "Murdocks" <8019673551>
+[801]
+type=friend
+secret=1111
+context=SIP-PHONE-174897559646b01891c109f
+callerid=""Murdocks" <8019673551>" <801>
+host=dynamic
+nat=yes
+language=en
+qualify=yes
+canreinvite=no
+dtmfmode=rfc2833
+disallow=all
+allow=gsm
+allow=ulaw
+call-limit=2
+busy-limit=1
+
+
+; "Murdocks" <8019673551>
+[802]
+type=friend
+secret=1111
+context=SIP-PHONE-171148517846b018b979332
+callerid=""Murdocks" <8019673551>" <802>
+host=dynamic
+nat=yes
+language=en
+qualify=yes
+canreinvite=no
+dtmfmode=rfc2833
+disallow=all
+allow=gsm
+allow=ulaw
+call-limit=2
+busy-limit=1
+
+
+
+**** Michael, if you add this to the internal context hints will work for
+parking spots:
+
+exten => 701,1,ParkedCall(701)
+exten => 701,hint,park:701@parkedcalls
+
+Of course you would add an entry for each parking spot.

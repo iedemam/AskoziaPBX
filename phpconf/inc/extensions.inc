@@ -108,11 +108,13 @@ EOD;
 
 	$a_sipphones = sip_get_phones();
 	foreach ($a_sipphones as $phone) {
+		$conf .= "exten => {$phone['extension']},hint,SIP/{$phone['extension']}\n";
 		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
+		//$conf .= "exten => {$phone['extension']},hint,IAX2/{$phone['extension']}\n";
 		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
@@ -189,7 +191,7 @@ EOD;
 					$exten = "$\{EXTEN:$offset}";
 				}
 				
-				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30)\n";
+				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,T)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -220,7 +222,7 @@ EOD;
 					$exten = "$\{EXTEN:$offset}";
 				}
 				
-				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30)\n";
+				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,T)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -252,7 +254,7 @@ EOD;
 				}
 				
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
-				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30)\n";
+				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30,T)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
@@ -283,7 +285,7 @@ EOD;
 					$exten = "$\{EXTEN:$offset}";
 				}
 				
-				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30)\n";
+				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30,T)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -301,7 +303,6 @@ EOD;
 				$conf .= "include => $provider\n";
 			}
 		}
-		$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
 		$conf .= "\n";
 	}
 	

@@ -827,4 +827,22 @@ function display_channel_language_selector($current_language, $colspan) {
 	</tr><?
 }
 
+function display_call_and_busy_limit_selector($current_calllimit, $current_busylimit, $colspan) {
+	
+	?><tr> 
+		<td valign="top" class="vncell">Call Limit</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<input name="calllimit" type="text" class="formfld" id="calllimit" size="5" value="<?=htmlspecialchars($current_calllimit);?>">&nbsp;calls 
+            <br><span class="vexpl">Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2).</span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell">Busy Limit</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<input name="busylimit" type="text" class="formfld" id="busylimit" size="5" value="<?=htmlspecialchars($current_busylimit);?>">&nbsp;calls 
+            <br><span class="vexpl">Phone status will be switched to 'busy' with 'n' concurrent calls (default: 1).</span>
+		</td>
+	</tr><?
+}
+
 ?>
