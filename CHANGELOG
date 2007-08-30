@@ -1,5 +1,6 @@
 2007.09.xx - pb10
- - added polish voicemail notification e-mail translation
+ - added Polish voicemail notification e-mail translation
+ - added Russian (gsm) audio prompts
  - added MAC spoofing support for the network interface
  - added "attended transfer answer," "transfer key" and "extension digit" timeout options to "Dialplan -> Transfers"
  - added collapsable "Advanced" menu and option to keep it open in "Advanced -> GUI Options"

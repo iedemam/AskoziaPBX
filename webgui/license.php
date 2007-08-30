@@ -124,6 +124,9 @@ require("guiconfig.inc");
 	Voice: Eri Takeda.<br>
 	Edited by VoIP-Info.jp.<br>
 	<br>
+	Russian (<a href="http://www.asterisk-support.ru/files/ivr/" target="_blank">http://www.asterisk-support.ru</a>)<br>
+	Copyright Information Unknown<br>
+	<br>
 	Spanish (<a href="http://www.voipnovatos.es/index.php?itemid=943" target="_blank">http://www.voipnovatos.es</a>)<br>
 	Copyright &copy; 2006 Alberto Sagredo Castro<br>
 	<br>

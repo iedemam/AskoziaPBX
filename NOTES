@@ -1,5 +1,4 @@
 pb10
- - add russian prompts, ask about copyright information, needs "auth-thankyou"
  - add better fxo detection
  - fix caller id, and number readback on unreachable extensions
  - fix extensions_exists
@@ -12,7 +11,6 @@ pb10
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
- - make "advanced" menu collapsable like "diagnostics"
 
 -----------------
 
@@ -27,7 +25,6 @@ improvements
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
- - ISDN interfaces for providers and phones should be limited to appropriate choices (NT vs TE
  - storage interface (add storage partition for extended capabilities)
  - extended capabilities hooks into the gui
  - new option to log to storage partition
@@ -43,8 +40,6 @@ Docs:
 - QoS options, such as jitterbuffer and packet types supported
 - dialplan as a movable grid
 - testing / performance mode
-- get indications.conf working
-
 
 
 ; --[ jitter buffer ]-------------------------------------------------------------

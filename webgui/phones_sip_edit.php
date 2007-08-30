@@ -122,8 +122,9 @@ if ($_POST) {
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['qualify'] = $_POST['qualify'];
 		
-		$sp['calllimit'] = $_POST['calllimit'];
-		$sp['busylimit'] = $_POST['busylimit'];
+		// XXX the proper way of setting posted options with default values...
+		$sp['calllimit'] = ($_POST['calllimit'] != "2") ? $_POST['calllimit'] : false;
+		$sp['busylimit'] = ($_POST['busylimit'] != "1") ? $_POST['busylimit'] : false;
 		
 		$sp['descr'] = $_POST['descr'];
 

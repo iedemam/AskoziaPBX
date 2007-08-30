@@ -42,7 +42,7 @@ $zaptel_version		= "zaptel";
 // --[ sounds ]----------------------------------------------------------------
 
 $core_sounds_version= "1.4.7";
-$sound_languages	= explode(" ", "en de it es fr jp nl se");// ru");
+$sound_languages	= explode(" ", "en de it es fr jp nl se ru");
 $sounds				= explode(" ", 
 						"auth-thankyou ".
 						"conf-onlyperson conf-getpin conf-invalidpin conf-kicked ".
@@ -692,6 +692,7 @@ function populate_sounds($image_name) {
 			if (!file_exists("{$dirs['sounds']}/$distname")) {
 				_exec("mkdir {$dirs['sounds']}/$distname");
 				_exec("cd {$dirs['sounds']}; unzip $distname.zip -d $distname");
+				_exec("cd {$dirs['sounds']}/$distname/sounds/; cp privacy-thankyou.gsm auth-thankyou.gsm");
 			}
 
 			foreach ($sounds as $sound) {
