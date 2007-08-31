@@ -110,8 +110,8 @@ function asterisk_configure_timing() {
 	if(!count(analog_get_recognized_ab_unit_numbers())) {
 		mwexec("/sbin/kldunload wcfxo");
 		mwexec("/sbin/kldunload wcfxs");
-		mwexec("/sbin/kldunload wct1xxp");
-		mwexec("/sbin/kldunload wct4xxp");
+		//mwexec("/sbin/kldunload wct1xxp");
+		//mwexec("/sbin/kldunload wct4xxp");
 		mwexec("/sbin/kldload ztdummy");
 	}
 	return 0;

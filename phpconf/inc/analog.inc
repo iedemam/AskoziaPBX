@@ -108,6 +108,7 @@ function _analogprovidercmp($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
+// XXX multiple cards will still cause problems here
 function analog_get_recognized_ab_unit_numbers() {
 	global $g;
 
@@ -123,11 +124,13 @@ function analog_get_recognized_ab_unit_numbers() {
 	
 	$controllers = array();
 	for ($i = $lastcpline; $i < count($dmesg_lines); $i++) {
-		// Module 3: Installed -- AUTO FXO
-		if (strpos($dmesg_lines[$i], "Installed -- AUTO FXO") !== false) {
-			preg_match("/\b[0-9]+: Installed\b/", $dmesg_lines[$i], &$matches);
+		if (preg_match("/\b[0-9]+: Installed -- AUTO FXO/", $dmesg_lines[$i], &$matches)) {
 			$num = substr($matches[0], 0, strpos($matches[0],":"));
 			$controllers[$num+1] = "fxo";
+
+		} else if (strpos($dmesg_lines[$i], "Found a Wildcard FXO: ") !== false) {
+			$controllers[1] = "fxo";
+
 		}
 	}
 	

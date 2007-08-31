@@ -1,16 +1,17 @@
 pb10
- - add better fxo detection
- - fix caller id, and number readback on unreachable extensions
+ - fix caller id
+ - patch in support for separate number readback in voicemail
  - fix extensions_exists
  - fix diaplan_providers.php to save posted config and display correctly when no providers are present
  - complete is_valid_xxx() checks
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
- - console display needs http(s)/port correction
  - AVM cards are broken
  - confirm "Ringing()" behavior/usage on ISDN connections
 
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
+
+ - CHECK CHANGED AB DETECTOR
 
 -----------------
 
@@ -38,7 +39,6 @@ Docs:
 - get "advanced mode" working
 - provider to provider access with pin code
 - QoS options, such as jitterbuffer and packet types supported
-- dialplan as a movable grid
 - testing / performance mode
 
 
@@ -112,69 +112,6 @@ Docs:
 FXO Detection
 -------------------------------------------------------------------------
 
-wcfxo0@pci0:10:0:	class=0x078000 card=0x00038086 chip=0x0001e159 rev=0x00 hdr=0x00
-    class    = simple comms
-
-Zapata Telephony Interface Registered on major 196
-Echo Canceller: MG2
-ztdummy: loaded
-ZapTel device: vendor=e159 device=1 subvendor=8086
-wcfxo0: <Generic Clone> port 0xe400-0xe4ff mem 0xd8002000-0xd8002fff irq 5 at device 10.0 on pci0
-ZapTel Attach for wcfxo0: deviceID : 0xe159
-wcfxo0: [FAST]
-wcfxo: DAA mode is 'FCC'
-Found a Wildcard FXO: Generic Clone
-ZapTel device loaded.
-Registered tone zone 0 (United States / North America)
-
------------------------------------------------------------------------
-
-wcfxo0@pci0:9:0:	class=0x078000 card=0x00038086 chip=0x0001e159 rev=0x00 hdr=0x00
-    class    = simple comms
-
-Zapata Telephony Interface Registered on major 196
-Echo Canceller: MG2
-ztdummy: loaded
-ZapTel device: vendor=e159 device=1 subvendor=8086
-wcfxo0: <Generic Clone> port 0xdc00-0xdcff mem 0xeffff000-0xefffffff irq 10 at device 9.0 on pci0
-ZapTel Attach for wcfxo0: deviceID : 0xe159
-wcfxo0: [FAST]
-wcfxo: DAA mode is 'FCC'
-Found a Wildcard FXO: Generic Clone
-ZapTel device loaded.
-Registered tone zone 0 (United States / North America)
-
------------------------------------------------------------------------
-
-none1@pci0:11:0:	class=0x078000 card=0x200414f1 chip=0x2f0014f1 rev=0x01 hdr=0x00
-    class    = simple comms
-
-pci0: <simple comms> at device 11.0 (no driver attached)
-Trying to mount root from ufs:/dev/md0
-Zapata Telephony Interface Registered on major 196
-Echo Canceller: MG2
-ztdummy: loaded
-Registered tone zone 0 (United States / North America)
-
------------------------------------------------------------------------
-
-wcfxo0@pci0:14:0:      class=0x078000 card=0x00011055 chip=0x56081057 rev=0x00 hdr=0x00
-    class    = simple comms
-
-Zapata Telephony Interface Registered on major 196
-Echo Canceller: MG2
-ztdummy: loaded
-ZapTel device: vendor=1057 device=5608 subvendor=1055
-wcfxo0: <Wildcard X100P> port 0x1800-0x18ff mem 0xfebfa000-0xfebfafff irq 10 at device 14.0 on pci0
-ZapTel Attach for wcfxo0: deviceID : 0x1057
-wcfxo0: [FAST]
-wcfxo: DAA mode is 'FCC'
-Found a Wildcard FXO: Wildcard X100P
-ZapTel device loaded.
-Registered tone zone 0 (United States / North America)
-
------------------------------------------------------------------------
-
 wcfxo0@pci0:20:0:       class=0x078000 card=0x00011055 chip=0x56081057 rev=0x00 hdr=0x00
    class    = simple comms
 
@@ -219,83 +156,10 @@ We failed: 5
 device_attach: wcfxo0 attach returned 5
 Registered tone zone 0 (United States / North America)
 
------------------------------------------------------------------------
-
-none1@pci0:9:0: class=0x070300 card=0x1002134d chip=0x2189134d rev=0x04 hdr=0x00
-   class    = simple comms
-   subclass = generic modem
-
-pci0: <simple comms, generic modem> at device 9.0 (no driver attached)
-Zapata Telephony Interface Registered on major 196
-Echo Canceller: MG2
-ztdummy: loaded
-Registered tone zone 0 (United States / North America)
-
-
-
-
 
 -------------------------------------------------------------------------
 Beginnings of Presence Info
 -------------------------------------------------------------------------
-
-*****After sip.conf - added limitonperr and notifyhold option to the general section and added call-limit and busy-limit to individual sip extensions.
-
-[general]
-context=default
-allowoverlap=no
-bindport=5060
-bindaddr=0.0.0.0
-srvlookup=yes
-useragent=AskoziaPBX
-relaxdtmf=yes
-alwaysauthreject=yes
-videosupport=yes
-notifybusy=yes
-limitonpeer=yes
-notifyhold=no
-
-externip=24.10.190.87
-localnet=192.168.0.10/24
-
-; "Murdocks" <8019673551>
-[801]
-type=friend
-secret=1111
-context=SIP-PHONE-174897559646b01891c109f
-callerid=""Murdocks" <8019673551>" <801>
-host=dynamic
-nat=yes
-language=en
-qualify=yes
-canreinvite=no
-dtmfmode=rfc2833
-disallow=all
-allow=gsm
-allow=ulaw
-call-limit=2
-busy-limit=1
-
-
-; "Murdocks" <8019673551>
-[802]
-type=friend
-secret=1111
-context=SIP-PHONE-171148517846b018b979332
-callerid=""Murdocks" <8019673551>" <802>
-host=dynamic
-nat=yes
-language=en
-qualify=yes
-canreinvite=no
-dtmfmode=rfc2833
-disallow=all
-allow=gsm
-allow=ulaw
-call-limit=2
-busy-limit=1
-
-
 
 **** Michael, if you add this to the internal context hints will work for
 parking spots:
