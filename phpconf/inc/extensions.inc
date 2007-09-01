@@ -84,15 +84,15 @@ function extensions_conf_generate() {
 [macro-vm];
 exten => s,1,Dial($\{ARG1},30,tT)
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
-exten => s-NOANSWER,1,VoiceMail($\{ARG2},u)
+exten => s-NOANSWER,1,VoiceMail($\{ARG2},u,$\{ARG3})
 exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
-exten => s-BUSY,1,VoiceMail($\{ARG2},b)
+exten => s-BUSY,1,VoiceMail($\{ARG2},b,$\{ARG3})
 exten => s-BUSY,n,Goto(exit-$\{VMSTATUS},1)
 exten => s-ANSWER,1,Hangup()
 exten => _s-.,1,Goto(s-NOANSWER,1)
 exten => exit-FAILED,1,Answer()
 exten => exit-FAILED,2,Playback(vm-theperson)
-exten => exit-FAILED,3,SayDigits($\{ARG2})
+exten => exit-FAILED,3,SayDigits($\{ARG3})
 exten => exit-FAILED,4,Playback(vm-isunavail)
 exten => exit-FAILED,5,Hangup()
 exten => exit-SUCCESS,1,Playback(vm-goodbye)
@@ -109,18 +109,18 @@ EOD;
 	$a_sipphones = sip_get_phones();
 	foreach ($a_sipphones as $phone) {
 		$conf .= "exten => {$phone['extension']},hint,SIP/{$phone['extension']}\n";
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
 		//$conf .= "exten => {$phone['extension']},hint,IAX2/{$phone['extension']}\n";
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
 	$a_isdnphones = isdn_get_phones();
 	foreach ($a_isdnphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
 	$a_extphones = external_get_phones();
@@ -129,10 +129,10 @@ EOD;
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
 			$conf .= "exten => {$phone['extension']},1,".
-				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']})\n";
+				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']})\n";
 		} else {
 			$conf .= "exten => {$phone['extension']},1,".
-				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']})\n";	
+				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']})\n";	
 		}
 	}
 	
@@ -142,6 +142,7 @@ EOD;
 	}
 	
 	$conf .= <<<EOD
+
 exten => 00003246,1,Answer()
 exten => 00003246,2,Echo()
 exten => 00003246,3,Hangup()
@@ -157,7 +158,6 @@ EOD;
 	
 	// conference rooms
 	$rooms = conferencing_get_rooms();
-	
 	foreach ($rooms as $room) {
 		$conf .= "exten => {$room['number']},1,Answer()\n";
 		$conf .= "exten => {$room['number']},2,MeetMe({$room['number']},M)\n";
@@ -168,7 +168,6 @@ EOD;
 
 	// sip providers
 	$a_sipproviders = sip_get_providers();
-
 	foreach ($a_sipproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
@@ -200,7 +199,6 @@ EOD;
 	
 	// iax providers
 	$a_iaxproviders = iax_get_providers();
-
 	foreach ($a_iaxproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
@@ -231,12 +229,11 @@ EOD;
 	
 	// isdn providers
 	$a_isdnproviders = isdn_get_providers();
-
 	foreach ($a_isdnproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['msn'], $p['incomingextension'], 1, $p['override']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override']);
+		$conf .= asterisk_uniqid_to_dial($p['msn'], $p['incomingextension'], 1, $p['override'], $p['msn']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['msn']);
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
@@ -263,12 +260,11 @@ EOD;
 	
 	// analog providers
 	$a_analogproviders = analog_get_providers();
-
 	foreach ($a_analogproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['number'], $p['incomingextension'], 1, $p['override']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override']);
+		$conf .= asterisk_uniqid_to_dial($p['number'], $p['incomingextension'], 1, $p['override'], $p['number']);
+		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['number']);
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
@@ -285,6 +281,7 @@ EOD;
 					$exten = "$\{EXTEN:$offset}";
 				}
 				
+				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
 				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30,T)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
@@ -293,34 +290,9 @@ EOD;
 	}
 	
 
-	// sip phones
-	foreach ($a_sipphones as $p) {
-		$conf .= "; {$p['callerid']}\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= "include => internal\n";
-		if (isset($p['provider'])) {
-			foreach ($p['provider'] as $provider) {
-				$conf .= "include => $provider\n";
-			}
-		}
-		$conf .= "\n";
-	}
-	
-	// iax phones
-	foreach ($a_iaxphones as $p) {
-		$conf .= "; {$p['callerid']}\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= "include => internal\n";
-		if (isset($p['provider'])) {
-			foreach ($p['provider'] as $provider) {
-				$conf .= "include => $provider\n";
-			}
-		}
-		$conf .= "\n";
-	}
-	
-	// isdn phones
-	foreach ($a_isdnphones as $p) {
+	// internal phones
+	$intphones = asterisk_get_phones();
+	foreach($intphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "include => internal\n";

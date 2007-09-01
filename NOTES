@@ -1,6 +1,5 @@
 pb10
  - fix caller id
- - patch in support for separate number readback in voicemail
  - fix extensions_exists
  - fix diaplan_providers.php to save posted config and display correctly when no providers are present
  - complete is_valid_xxx() checks

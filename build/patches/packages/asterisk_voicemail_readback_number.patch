@@ -1,0 +1,82 @@
+--- apps/app_voicemail.c.orig	Thu Aug 30 15:31:18 2007
++++ apps/app_voicemail.c	Thu Aug 30 19:57:34 2007
+@@ -2054,7 +2054,7 @@
+ 	return strftime(s, len, "%a %b %e %r %Z %Y", &tm);
+ }
+ 
+-static int invent_message(struct ast_channel *chan, char *context, char *ext, int busy, char *ecodes)
++static int invent_message(struct ast_channel *chan, char *context, char *ext, int busy, char *ecodes, char *readnum)
+ {
+ 	int res;
+ 	char fn[PATH_MAX];
+@@ -2080,7 +2080,7 @@
+ 		res = ast_stream_and_wait(chan, "vm-theperson", chan->language, ecodes);
+ 		if (res)
+ 			return res;
+-		res = ast_say_digit_str(chan, ext, ecodes, chan->language);
++		res = ast_say_digit_str(chan, readnum, ecodes, chan->language);
+ 		if (res)
+ 			return res;
+ 	}
+@@ -2753,7 +2753,7 @@
+ 	signed char record_gain;
+ };
+ 
+-static int leave_voicemail(struct ast_channel *chan, char *ext, struct leave_vm_options *options)
++static int leave_voicemail(struct ast_channel *chan, char *ext, struct leave_vm_options *options, char *readnum)
+ {
+ #ifdef IMAP_STORAGE
+ 	int newmsgs, oldmsgs;
+@@ -2880,7 +2880,7 @@
+ 		} else {
+ 			if (option_debug)
+ 				ast_log(LOG_DEBUG, "%s doesn't exist, doing what we can\n", prefile);
+-			res = invent_message(chan, vmu->context, ext, ast_test_flag(options, OPT_BUSY_GREETING), ecodes);
++			res = invent_message(chan, vmu->context, ext, ast_test_flag(options, OPT_BUSY_GREETING), ecodes, readnum);
+ 		}
+ 		DISPOSE(prefile, -1);
+ 		if (res < 0) {
+@@ -4059,7 +4059,7 @@
+ 		/* Send VoiceMail */
+ 		memset(&leave_options, 0, sizeof(leave_options));
+ 		leave_options.record_gain = record_gain;
+-		cmd = leave_voicemail(chan, mailbox, &leave_options);
++		cmd = leave_voicemail(chan, mailbox, &leave_options, mailbox);
+ 	} else {
+ 
+ 		/* Forward VoiceMail */
+@@ -6902,6 +6902,7 @@
+ 	AST_DECLARE_APP_ARGS(args,
+ 		AST_APP_ARG(argv0);
+ 		AST_APP_ARG(argv1);
++		AST_APP_ARG(argv2); /* added new option to hold "readback number" */
+ 	);
+ 
+ 	u = ast_module_user_add(chan);
+@@ -6914,7 +6915,7 @@
+ 	if (!ast_strlen_zero(data)) {
+ 		tmp = ast_strdupa(data);
+ 		AST_STANDARD_APP_ARGS(args, tmp);
+-		if (args.argc == 2) {
++		if (args.argc >= 2) {
+ 			if (ast_app_parse_options(vm_app_options, &flags, opts, args.argv1)) {
+ 				ast_module_user_remove(u);
+ 				return -1;
+@@ -6972,7 +6973,7 @@
+ 		args.argv0 = ast_strdupa(tmp);
+ 	}
+ 
+-	res = leave_voicemail(chan, args.argv0, &leave_options);
++	res = leave_voicemail(chan, args.argv0, &leave_options, args.argv2);
+ 
+ 	if (res == ERROR_LOCK_PATH) {
+ 		ast_log(LOG_ERROR, "Could not leave voicemail. The path is already locked.\n");
+@@ -8108,7 +8109,7 @@
+ 				
+ 				memset(&leave_options, 0, sizeof(leave_options));
+ 				leave_options.record_gain = record_gain;
+-				res = leave_voicemail(chan, mailbox, &leave_options);
++				res = leave_voicemail(chan, mailbox, &leave_options, mailbox);
+ 				if (!res)
+ 					res = 't';
+ 				ast_config_destroy(msg_cfg);
