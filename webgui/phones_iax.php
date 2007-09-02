@@ -41,7 +41,11 @@ $a_iaxphones = &$config['iax']['phone'];
 
 if ($_GET['act'] == "del") {
 	if ($a_iaxphones[$_GET['id']]) {
+
+		$removed_id = $a_iaxphones[$_GET['id']]['uniqid'];
 		unset($a_iaxphones[$_GET['id']]);
+		asterisk_remove_incomingextension_reference_from_providers($removed_id);
+		
 		write_config();
 		touch($d_iaxconfdirty_path);
 		header("Location: phones_iax.php");

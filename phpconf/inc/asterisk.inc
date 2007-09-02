@@ -1126,7 +1126,23 @@ function asterisk_remove_provider_reference_from_phones($removed_id) {
 			}
 		}
 	}
+}
 
+function asterisk_remove_incomingextension_reference_from_providers($removed_id) {
+	
+	$technologies = array("sip", "iax", "isdn", "analog");
+	
+	foreach ($technologies as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['provider'])) {
+			$a_providers = &$GLOBALS['config'][$tech]['provider'];
+			$n = count($a_providers);
+			for ($i = 0; $i < $n; $i++) {
+				if ($a_providers[$i]['incomingextension'] == $removed_id) {
+					unset($a_providers[$i]['incomingextension']);
+				}
+			}
+		}
+	}	
 }
 
 ?>

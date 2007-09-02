@@ -42,43 +42,10 @@ $a_callgroups = &$config['dialplan']['callgroup'];
 
 if ($_GET['act'] == "del") {
 	if ($a_callgroups[$_GET['id']]) {
-		
-		// get the callgroup's unique id before removal
+
 		$removed_id = $a_callgroups[$_GET['id']]['uniqid'];
 		unset($a_callgroups[$_GET['id']]);
-		
-		// remove references to this callgroup from sip providers incoming extensions
-		if (is_array($config['sip']['provider'])) {
-			$a_sipproviders = &$config['sip']['provider'];
-			$n = count($a_sipproviders);
-			for ($i = 0; $i < $n; $i++) {
-				if ($a_sipproviders[$i]['incomingextension'] == $removed_id) {
-					unset($a_sipproviders[$i]['incomingextension']);
-				}
-			}
-		}
-		
-		// remove references to this callgroup from iax providers incoming extensions
-		if (is_array($config['iax']['provider'])) {
-			$a_iaxproviders = &$config['iax']['provider'];
-			$n = count($a_iaxproviders);
-			for ($i = 0; $i < $n; $i++) {
-				if ($a_iaxproviders[$i]['incomingextension'] == $removed_id) {
-					unset($a_iaxproviders[$i]['incomingextension']);
-				}
-			}
-		}
-		
-		// remove references to this callgroup from isdn providers incoming extensions
-		if (is_array($config['isdn']['provider'])) {
-			$a_isdnproviders = &$config['isdn']['provider'];
-			$n = count($a_isdnproviders);
-			for ($i = 0; $i < $n; $i++) {
-				if ($a_isdnproviders[$i]['incomingextension'] == $removed_id) {
-					unset($a_isdnproviders[$i]['incomingextension']);
-				}
-			}
-		}
+		asterisk_remove_incomingextension_reference_from_providers($removed_id);
 		
 		write_config();
 		touch($d_extensionsconfdirty_path);

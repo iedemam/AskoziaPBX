@@ -41,7 +41,11 @@ $a_sipphones = &$config['sip']['phone'];
 
 if ($_GET['act'] == "del") {
 	if ($a_sipphones[$_GET['id']]) {
+		
+		$removed_id = $a_sipphones[$_GET['id']]['uniqid'];
 		unset($a_sipphones[$_GET['id']]);
+		asterisk_remove_incomingextension_reference_from_providers($removed_id);
+		
 		write_config();
 		touch($d_sipconfdirty_path);
 		header("Location: phones_sip.php");

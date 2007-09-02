@@ -12,6 +12,7 @@
  - updated basesystem to FreeBSD 6.2-RELEASE-p7
  - bug: fixed the broken jitterbuffer options on in "Advanced -> IAX"
  - bug: fixed sound issues introduced in pb9 in certain situations (more testing needed)
+ - bug: incoming extension reference deletion is now centralized and used in previously omitted cases
  - bug: callers from isdn and analog providers are now read the external telephone number and not the internal extension when reaching a voicemail account or timing out
 
 2007.08.09 - pb9
