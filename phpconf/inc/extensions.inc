@@ -82,7 +82,7 @@ function extensions_conf_generate() {
 	$conf = <<<EOD
 
 [macro-vm];
-exten => s,1,Dial($\{ARG1},30,tT)
+exten => s,1,Dial($\{ARG1},30,tTo)
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 exten => s-NOANSWER,1,VoiceMail($\{ARG2},u,$\{ARG3})
 exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
@@ -151,6 +151,11 @@ exten => 000064554,1,Answer()
 exten => 000064554,2,Milliwatt()
 exten => 000064554,3,Hangup()
 
+exten => 00009253,1,Answer()
+exten => 00009253,2,Set(CHANNEL(language)=en) 
+exten => 00009253,3,WakeMe()
+exten => 00009253,4,Hangup()
+
 include => parkedcalls
 
 
@@ -171,26 +176,13 @@ EOD;
 	foreach ($a_sipproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		// FIXME give some options for this ... kind of hacky
 		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension'], false, $p['override']);
 		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
 		
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				$prefix = $offset = "";
-				$exten = "$\{EXTEN}";
-				// prefix insertion
-				if (($offset = strpos($pattern, "+")) !== false) {
-					$prefix = substr($pattern, 0, $offset);
-					$pattern = substr($pattern, $offset+1);
-				}
-				// prefix deletion
-				if (($offset = strpos($pattern, "|")) !== false) {
-					$pattern = str_replace("|", "", $pattern);
-					$exten = "$\{EXTEN:$offset}";
-				}
-				
-				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,T)\n";
+				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
+				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,To)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -207,20 +199,8 @@ EOD;
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				$prefix = $offset = "";
-				$exten = "$\{EXTEN}";
-				// prefix insertion
-				if (($offset = strpos($pattern, "+")) !== false) {
-					$prefix = substr($pattern, 0, $offset);
-					$pattern = substr($pattern, $offset+1);
-				}
-				// prefix deletion
-				if (($offset = strpos($pattern, "|")) !== false) {
-					$pattern = str_replace("|", "", $pattern);
-					$exten = "$\{EXTEN:$offset}";
-				}
-				
-				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,T)\n";
+				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
+				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,To)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -237,21 +217,9 @@ EOD;
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				$prefix = $offset = "";
-				$exten = "$\{EXTEN}";
-				// prefix insertion
-				if (($offset = strpos($pattern, "+")) !== false) {
-					$prefix = substr($pattern, 0, $offset);
-					$pattern = substr($pattern, $offset+1);
-				}
-				// prefix deletion
-				if (($offset = strpos($pattern, "|")) !== false) {
-					$pattern = str_replace("|", "", $pattern);
-					$exten = "$\{EXTEN:$offset}";
-				}
-				
+				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
-				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30,T)\n";
+				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
@@ -268,21 +236,9 @@ EOD;
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				$prefix = $offset = "";
-				$exten = "$\{EXTEN}";
-				// prefix insertion
-				if (($offset = strpos($pattern, "+")) !== false) {
-					$prefix = substr($pattern, 0, $offset);
-					$pattern = substr($pattern, $offset+1);
-				}
-				// prefix deletion
-				if (($offset = strpos($pattern, "|")) !== false) {
-					$pattern = str_replace("|", "", $pattern);
-					$exten = "$\{EXTEN:$offset}";
-				}
-				
+				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
-				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30,T)\n";
+				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30,Tf)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}

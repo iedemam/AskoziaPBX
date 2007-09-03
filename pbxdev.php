@@ -42,12 +42,18 @@ $zaptel_version		= "zaptel";
 // --[ sounds ]----------------------------------------------------------------
 
 $core_sounds_version= "1.4.7";
+$extra_sounds_version="1.4.6";
 $sound_languages	= explode(" ", "en de it es fr jp nl se ru");
 $sounds				= explode(" ", 
 						"auth-thankyou ".
 						"conf-onlyperson conf-getpin conf-invalidpin conf-kicked ".
 						"pbx-transfer pbx-invalid ".
 						"vm-intro vm-theperson vm-isunavail vm-isonphone vm-goodbye");
+$wake_me_sounds		= explode(" ",
+						"this-is-yr-wakeup-call to-snooze-for to-cancel-wakeup ".
+						"for. press-0 press-1 wakeup-call-cancelled to-rqst-wakeup-call ".
+						"enter-a-time im-sorry 1-for-am-2-for-pm rqsted-wakeup-for ".
+						"1-yes-2-no thank-you-for-calling goodbye");
 $digits				= explode(" ", "0 1 2 3 4 5 6 7 8 9");
 $musiconhold		= explode(" ", "fpm-calm-river");
 
@@ -69,16 +75,17 @@ $platforms = explode(" ", $platform_list);
 
 // --[ sanity checks and env info ]--------------------------------------------
 
-$dirs['pwd']			= rtrim(shell_exec("pwd"), "\n");
-$dirs['boot']			= $dirs['pwd'] . "/build/boot";
-$dirs['kernelconfigs']	= $dirs['pwd'] . "/build/kernelconfigs";
-$dirs['minibsd']		= $dirs['pwd'] . "/build/minibsd";
-$dirs['patches']		= $dirs['pwd'] . "/build/patches";
-$dirs['tools']			= $dirs['pwd'] . "/build/tools";
-$dirs['etc']			= $dirs['pwd'] . "/etc";
-$dirs['phpconf']		= $dirs['pwd'] . "/phpconf";
-$dirs['webgui']			= $dirs['pwd'] . "/webgui";
-$dirs['files']			= $dirs['pwd'] . "/files";
+$dirs['pwd']				= rtrim(shell_exec("pwd"), "\n");
+$dirs['boot']				= $dirs['pwd'] . "/build/boot";
+$dirs['kernelconfigs']		= $dirs['pwd'] . "/build/kernelconfigs";
+$dirs['minibsd']			= $dirs['pwd'] . "/build/minibsd";
+$dirs['patches']			= $dirs['pwd'] . "/build/patches";
+$dirs['asterisk_modules']	= $dirs['pwd'] . "/build/asterisk_modules";
+$dirs['tools']				= $dirs['pwd'] . "/build/tools";
+$dirs['etc']				= $dirs['pwd'] . "/etc";
+$dirs['phpconf']			= $dirs['pwd'] . "/phpconf";
+$dirs['webgui']				= $dirs['pwd'] . "/webgui";
+$dirs['files']				= $dirs['pwd'] . "/files";
 
 foreach ($dirs as $dir) {
 	if (!file_exists($dir)) {
@@ -239,6 +246,8 @@ function build_asterisk() {
 	}
 	// copy make options
 	_exec("cp {$dirs['patches']}/packages/menuselect.makeopts /etc/asterisk.makeopts");
+	// copy wakeme application
+	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/$asterisk_version/apps");
 	// reconfigure and make
 	_exec("cd {$dirs['packages']}/$asterisk_version/; ./configure; gmake");
 }
@@ -481,7 +490,8 @@ function populate_asterisk($image_name) {
 }
 
 function populate_sounds($image_name) {
-	global $dirs, $core_sounds_version, $sound_languages, $sounds, $digits, $musiconhold;
+	global $dirs, $core_sounds_version, $extra_sounds_version, 
+			$sound_languages, $sounds, $wake_me_sounds, $digits, $musiconhold;
 	
 	// create english directories
 	_exec("mkdir $image_name/asterisk/sounds");
@@ -522,6 +532,32 @@ function populate_sounds($image_name) {
 				
 				_exec("cp {$dirs['sounds']}/$distname/beep* $image_name/asterisk/sounds");
 				_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/silence");
+			}
+			
+			// wakeme sounds
+			$distname = "asterisk-core-sounds-en-gsm-$core_sounds_version";
+			_exec("cp {$dirs['sounds']}/$distname/minutes.* $image_name/asterisk/sounds");
+			_exec("cp {$dirs['sounds']}/$distname/digits/a-m.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/p-m.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/1*.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/20.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/30.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/40.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/50.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/oclock.* $image_name/asterisk/sounds/digits");
+			_exec("cp {$dirs['sounds']}/$distname/digits/oh.* $image_name/asterisk/sounds/digits");
+			
+			$distname = "asterisk-extra-sounds-en-gsm-$extra_sounds_version";
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+					
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+			
+			foreach($wake_me_sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds");
 			}
 
 

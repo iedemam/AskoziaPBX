@@ -1,25 +1,16 @@
 pb10
  - fix caller id
  - fix extensions_exists
- - fix diaplan_providers.php to save posted config and display correctly when no providers are present
+ - fix dialplan_providers.php to save posted config and display correctly when no providers are present
  - complete is_valid_xxx() checks
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - AVM cards are broken
  - confirm "Ringing()" behavior/usage on ISDN connections
-
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
 
- - CHECK CHANGED AB DETECTOR
-
 -----------------
 
-new features
- - followme
- - add iax2 auth options
-   - pubkey import
-
-improvements
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev
  - start returning get_blahs() functions by reference
@@ -29,16 +20,16 @@ improvements
  - extended capabilities hooks into the gui
  - new option to log to storage partition
  - privacy with voicemail forward
-
-Docs:
- - presentation
- - website
- - user documentation
-
+ - add "Dialplan -> Applications" page and WakeMe support :)
+ - followme
+ - add iax2 auth options
+   - pubkey import
 - get "advanced mode" working
 - provider to provider access with pin code
 - QoS options, such as jitterbuffer and packet types supported
 - testing / performance mode
+
+
 
 
 ; --[ jitter buffer ]-------------------------------------------------------------

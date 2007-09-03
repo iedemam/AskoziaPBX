@@ -7,12 +7,15 @@
  - added options in "Advanced -> GUI Options" to hide menu entries for unused telephony technologies
  - added "T" option to Dial() on outgoing calls so they are parkable/transferable
  - added call-limit and busy-limit options to SIP Phones and fixed SIP hints in dialplan, basic presence information is now working
+ - added WakeMe Wake-Up Call Manager to extension 00009253 (0000WAKE), English only, scheduled calls will not survive a reboot
+ - added a basic printable Dialplan
  - improved device detection for Analog FXO modules / cards
  - updated to Asterisk 1.4.11
  - updated basesystem to FreeBSD 6.2-RELEASE-p7
  - bug: fixed the broken jitterbuffer options on in "Advanced -> IAX"
  - bug: fixed sound issues introduced in pb9 in certain situations (more testing needed)
  - bug: incoming extension reference deletion is now centralized and used in previously omitted cases
+ - bug: updated some Dial() flags to set Caller ID more appropriately (more testing needed)
  - bug: callers from isdn and analog providers are now read the external telephone number and not the internal extension when reaching a voicemail account or timing out
 
 2007.08.09 - pb9

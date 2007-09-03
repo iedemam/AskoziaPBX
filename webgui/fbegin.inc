@@ -56,7 +56,11 @@ function dynamic_menu(&$menu, $menu_title) {
 	foreach ($menu as $desc => $links) {
 		if ($intersect = array_intersect($menu[$desc],$allowed)) {
 			
-			if (!isset($header_displayed) && !($menu_title == 'Diagnostics') && !($menu_title == 'Advanced')) {
+			if (!isset($header_displayed) && ($menu_title == 'Dialplan')) {
+				echo "\n			<strong>".$menu_title.'</strong>&nbsp;<a href="/printable_dialplan.php" class="navlnks">(print)</a><br>';
+				$header_displayed = true;
+			
+			} else if (!isset($header_displayed) && !($menu_title == 'Diagnostics') && !($menu_title == 'Advanced')) {
 				echo "\n			<strong>".$menu_title.'</strong><br>';
 				$header_displayed = true;
 			

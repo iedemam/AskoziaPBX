@@ -42,7 +42,7 @@ $a_iaxproviders = &$config['iax']['provider'];
 if ($_GET['act'] == "del") {
 	if ($a_iaxproviders[$_GET['id']]) {
 
-		asterisk_remove_provider_reference_from_phones($a_iaxproviders[$_GET['id']]['uniqid']);
+		dialplan_remove_provider_reference_from_phones($a_iaxproviders[$_GET['id']]['uniqid']);
 		unset($a_iaxproviders[$_GET['id']]);
 
 		write_config();

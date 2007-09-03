@@ -44,7 +44,7 @@ if ($_GET['act'] == "del") {
 		
 		$removed_id = $a_extphones[$_GET['id']]['uniqid'];
 		unset($a_extphones[$_GET['id']]);
-		asterisk_remove_incomingextension_reference_from_providers($removed_id);
+		dialplan_remove_incomingextension_reference_from_providers($removed_id);
 
 		write_config();
 		touch($d_extensionsconfdirty_path);

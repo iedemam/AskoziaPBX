@@ -42,7 +42,7 @@ $a_analogproviders = &$config['analog']['provider'];
 if ($_GET['act'] == "del") {
 	if ($a_analogproviders[$_GET['id']]) {
 		
-		asterisk_remove_provider_reference_from_phones($a_analogproviders[$_GET['id']]['uniqid']);
+		dialplan_remove_provider_reference_from_phones($a_analogproviders[$_GET['id']]['uniqid']);
 		unset($a_analogproviders[$_GET['id']]);
 
 		write_config();

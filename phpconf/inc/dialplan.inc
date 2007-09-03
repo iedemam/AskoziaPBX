@@ -115,6 +115,61 @@ function dialplan_features_conf_generate() {
 	return 0;
 }
 
+function dialplan_remove_provider_reference_from_phones($removed_id) {
+	
+	$technologies = array("sip", "iax", "isdn", "analog");
+
+	foreach ($technologies as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['phone'])) {
+			$a_phones = &$GLOBALS['config'][$tech]['phone'];
+			$n = count($a_phones);
+			for ($i = 0; $i < $n; $i++) {
+				if (is_array($a_phones[$i]['provider'])) {
+					$nn = count($a_phones[$i]['provider']);
+					for ($j = 0; $j < $nn; $j++) {
+						if ($a_phones[$i]['provider'][$j] == $removed_id) {
+							unset($a_phones[$i]['provider'][$j]);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+function dialplan_remove_incomingextension_reference_from_providers($removed_id) {
+	
+	$technologies = array("sip", "iax", "isdn", "analog");
+	
+	foreach ($technologies as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['provider'])) {
+			$a_providers = &$GLOBALS['config'][$tech]['provider'];
+			$n = count($a_providers);
+			for ($i = 0; $i < $n; $i++) {
+				if ($a_providers[$i]['incomingextension'] == $removed_id) {
+					unset($a_providers[$i]['incomingextension']);
+				}
+			}
+		}
+	}	
+}
+
+function dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten) {
+
+	$prefix = $offset = "";
+	$exten = "$\{EXTEN}";
+	// prefix insertion
+	if (($offset = strpos($pattern, "+")) !== false) {
+		$prefix = substr($pattern, 0, $offset);
+		$pattern = substr($pattern, $offset+1);
+	}
+	// prefix deletion
+	if (($offset = strpos($pattern, "|")) !== false) {
+		$pattern = str_replace("|", "", $pattern);
+		$exten = "$\{EXTEN:$offset}";
+	}
+}
+
 function dialplan_features_reload() {
 	return asterisk_exec("module reload res_features.so");
 }

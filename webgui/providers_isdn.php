@@ -42,7 +42,7 @@ $a_isdnproviders = &$config['isdn']['provider'];
 if ($_GET['act'] == "del") {
 	if ($a_isdnproviders[$_GET['id']]) {
 		
-		asterisk_remove_provider_reference_from_phones($a_isdnproviders[$_GET['id']]['uniqid']);
+		dialplan_remove_provider_reference_from_phones($a_isdnproviders[$_GET['id']]['uniqid']);
 		unset($a_isdnproviders[$_GET['id']]);
 
 		write_config();

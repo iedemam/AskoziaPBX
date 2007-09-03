@@ -1033,7 +1033,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 
 function asterisk_replace_uniqids_with_names($string) {
 	
-	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|CONFERENCE|DIALPLAN|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|CALLGROUP){1}-[0-9a-zA-Z]+/";
+	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|CONFERENCE|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL){1}-[0-9a-zA-Z]+/";
 
 	preg_match_all($uniqid_regex, $string, $uniqids);
 	if (!is_array($uniqids)) {
@@ -1104,45 +1104,6 @@ function asterisk_uniqid_to_technology($uniqid) {
 	}
 
 	return "UNIQID_TO_TECHNOLOGY_FAILED";
-}
-
-function asterisk_remove_provider_reference_from_phones($removed_id) {
-	
-	$technologies = array("sip", "iax", "isdn", "analog");
-
-	foreach ($technologies as $tech) {
-		if (is_array($GLOBALS['config'][$tech]['phone'])) {
-			$a_phones = &$GLOBALS['config'][$tech]['phone'];
-			$n = count($a_phones);
-			for ($i = 0; $i < $n; $i++) {
-				if (is_array($a_phones[$i]['provider'])) {
-					$nn = count($a_phones[$i]['provider']);
-					for ($j = 0; $j < $nn; $j++) {
-						if ($a_phones[$i]['provider'][$j] == $removed_id) {
-							unset($a_phones[$i]['provider'][$j]);
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-function asterisk_remove_incomingextension_reference_from_providers($removed_id) {
-	
-	$technologies = array("sip", "iax", "isdn", "analog");
-	
-	foreach ($technologies as $tech) {
-		if (is_array($GLOBALS['config'][$tech]['provider'])) {
-			$a_providers = &$GLOBALS['config'][$tech]['provider'];
-			$n = count($a_providers);
-			for ($i = 0; $i < $n; $i++) {
-				if ($a_providers[$i]['incomingextension'] == $removed_id) {
-					unset($a_providers[$i]['incomingextension']);
-				}
-			}
-		}
-	}	
 }
 
 ?>
