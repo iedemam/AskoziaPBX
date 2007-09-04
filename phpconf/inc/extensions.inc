@@ -123,6 +123,11 @@ EOD;
 		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
 	}
 	
+	$a_analogphones = analog_get_phones();
+	foreach ($a_analogphones as $phone) {
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|ZAP/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
+	}
+	
 	$a_extphones = external_get_phones();
 	foreach ($a_extphones as $phone) {
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
@@ -238,8 +243,8 @@ EOD;
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
-				$conf .= "exten => _$pattern,1,Dial(ZAP/{$p['interface']}/$prefix$exten,30,Tf)\n";
-				$conf .= "exten => _$pattern,2,Hangup()\n";
+				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,30,Tf)\n";
+				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
 		$conf .= "\n";

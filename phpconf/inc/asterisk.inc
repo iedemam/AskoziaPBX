@@ -47,6 +47,10 @@ function asterisk_configure() {
 	$res |= asterisk_indications_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
+	if ($g['booting']) echo " - generating rtp configuration...";
+	$res |= asterisk_rtp_conf_generate();
+	if ($g['booting']) echo "done\n";
+	
 	if ($g['booting']) echo " - generating sip configuration...";
 	$res |= sip_conf_generate();
 	if ($g['booting']) echo "done\n";
@@ -114,6 +118,31 @@ function asterisk_configure_timing() {
 		//mwexec("/sbin/kldunload wct4xxp");
 		mwexec("/sbin/kldload ztdummy");
 	}
+	return 0;
+}
+
+function asterisk_rtp_conf_generate() {
+	global $config;
+	
+	$fd = fopen("/usr/local/etc/asterisk/rtp.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open rtp.conf in asterisk_rtp_conf_generate().\n");
+		return 1;
+	}
+	
+	$rtpconfig = $config['services']['rtp'];
+
+	$lowport = isset($rtpconfig['lowport']) ? $rtpconfig['lowport'] : "10000";
+	$highport = isset($rtpconfig['highport']) ? $rtpconfig['highport'] : "20000";
+	
+	$conf = "[general]\n";
+	$conf .= "rtpstart=$lowport\n";
+	$conf .= "rtpend=$highport\n";
+	$conf .= "\n";
+	
+	fwrite($fd, $conf);
+	fclose($fd);
+
 	return 0;
 }
 
@@ -843,6 +872,7 @@ function asterisk_get_extensions() {
 		sip_get_extensions(), 
 		iax_get_extensions(),
 		isdn_get_extensions(),
+		analog_get_extensions(),
 		conferencing_get_extensions(),
 		external_get_extensions(),
 		dialplan_get_callgroup_extensions()
@@ -877,7 +907,8 @@ function asterisk_get_phones() {
 				array_merge(
 					sip_get_phones(),
 					iax_get_phones(),
-					isdn_get_phones()
+					isdn_get_phones(),
+					analog_get_phones()
 				));
 }
 function asterisk_sort_phones($phones) {
@@ -953,6 +984,12 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		$dial .= "exten => $exten,$prio,".
 			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']}|$readbacknum)\n";
 
+	} else if ($id[0] == "ANALOG" && $id[1] == "PHONE") {
+		$phone = analog_get_phone($uniqid);
+		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
+		$dial .= "exten => $exten,$prio,".
+			"Macro(vm|ZAP/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum)\n";
+
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
 		$room = conferencing_get_room($uniqid);
 		$dial .= "exten => $exten,$prio,Answer()\n";
@@ -1001,6 +1038,13 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 					$vm_account = $phone['extension'];
 				}
 				$dial_strings[] = "CAPI/{$phone['extension']}";
+				
+			} else if ($subid[0] == "ANALOG" && $subid[1] == "PHONE") {
+				$phone = analog_get_phone($group['groupmember'][$i]);
+				if ($i == 0) {
+					$vm_account = $phone['extension'];
+				}
+				$dial_strings[] = "ZAP/{$phone['interface']}/{$phone['extension']}";
 
 			} else if ($subid[0] == "EXTERNAL" && $subid[1] == "PHONE") {
 				$phone = external_get_phone($group['groupmember'][$i]);
@@ -1071,7 +1115,7 @@ function asterisk_uniqid_to_name($uniqid) {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
 	}
 
-	return "ERROR:UNIQID_TO_NAME($uniqid)";
+	return "ERROR:UNIQID_TO_NAME_FAILED($uniqid)";
 }
 
 function asterisk_uniqid_to_extension($uniqid) {
@@ -1086,7 +1130,7 @@ function asterisk_uniqid_to_extension($uniqid) {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['extension'];
 	}
 
-	return "ERROR:UNIQID_TO_EXTENSION($uniqid)";
+	return "ERROR:UNIQID_TO_EXTENSION_FAILED($uniqid)";
 }
 
 function asterisk_uniqid_to_technology($uniqid) {
@@ -1103,7 +1147,7 @@ function asterisk_uniqid_to_technology($uniqid) {
 			return "ZAP";
 	}
 
-	return "UNIQID_TO_TECHNOLOGY_FAILED";
+	return "ERROR:UNIQID_TO_TECHNOLOGY_FAILED($uniqid)";
 }
 
 ?>

@@ -8,9 +8,12 @@ pb10
  - confirm "Ringing()" behavior/usage on ISDN connections
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
+ - "Status -> Interfaces" needs to be updated with Zaptel, interfaces which have been removed shouldn't be displayed
+ - bug: max() call on isdn interface page breaks countup
 
 -----------------
 
+ - multiple MSNs on ISDN
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev
  - start returning get_blahs() functions by reference

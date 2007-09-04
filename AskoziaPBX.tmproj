@@ -3,26 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>build/asterisk_modules/app_wakeme.c</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-09-02T19:45:15Z</date>
+			<date>2007-09-04T17:05:31Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-09-02T17:57:41Z</date>
+			<date>2007-09-04T18:27:19Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-09-02T19:42:54Z</date>
+			<date>2007-09-04T18:27:27Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -82,9 +84,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>91</integer>
+				<integer>46</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>11</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -96,28 +98,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>60</integer>
+				<integer>56</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>11</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>build/asterisk_modules/app_wakeme.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>44</integer>
-				<key>line</key>
-				<integer>403</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>367</integer>
 		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>
@@ -138,28 +126,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>51</integer>
 				<key>line</key>
-				<integer>241</integer>
+				<integer>49</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>212</integer>
+			<integer>34</integer>
 		</dict>
-		<key>webgui/printable_dialplan.php</key>
+		<key>webgui/interfaces_isdn.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>55</integer>
 				<key>line</key>
-				<integer>50</integer>
+				<integer>56</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>33</integer>
+			<integer>29</integer>
 		</dict>
 		<key>webgui/status.php</key>
 		<dict>
@@ -192,15 +180,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
 		<string>NOTES</string>
-		<string>webgui/printable_dialplan.php</string>
-		<string>build/asterisk_modules/app_wakeme.c</string>
-		<string>pbxdev.php</string>
+		<string>webgui/interfaces_isdn.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{55, 3}, {963, 775}}</string>
+	<string>{{6, 2}, {992, 776}}</string>
 </dict>
 </plist>

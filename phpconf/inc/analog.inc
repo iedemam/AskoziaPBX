@@ -124,6 +124,7 @@ function analog_get_recognized_ab_unit_numbers() {
 	
 	$controllers = array();
 	for ($i = $lastcpline; $i < count($dmesg_lines); $i++) {
+		// fxo ports
 		if (preg_match("/\b[0-9]+: Installed -- AUTO FXO/", $dmesg_lines[$i], &$matches)) {
 			$num = substr($matches[0], 0, strpos($matches[0],":"));
 			$controllers[$num+1] = "fxo";
@@ -131,6 +132,10 @@ function analog_get_recognized_ab_unit_numbers() {
 		} else if (strpos($dmesg_lines[$i], "Found a Wildcard FXO: ") !== false) {
 			$controllers[1] = "fxo";
 
+		// fxs ports
+		} else if (preg_match("/\b[0-9]+: Installed -- AUTO FXS/", $dmesg_lines[$i], &$matches)) {
+			$num = substr($matches[0], 0, strpos($matches[0],":"));
+			$controllers[$num+1] = "fxs";
 		}
 	}
 	
@@ -171,6 +176,9 @@ function _abinterfacescmp($a, $b) {
 }
 
 function analog_configure() {	
+	if(!count(analog_get_recognized_ab_unit_numbers())) {
+		return 0;
+	}
 	$res = 0;
 	$res |= mwexec("/sbin/ztcfg");
 	return $res;
@@ -258,6 +266,22 @@ function analog_zapata_conf_generate() {
 		$conf .= "channel => {$p['interface']}\n";
 		$conf .= "\n";
 	}
+	
+	$analogphones = analog_get_phones();
+	foreach ($analogphones as $p) {
+		$conf .= "signalling=fxo_ks\n";
+		//$conf .= "hanguponpolarityswitch=yes\n";
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
+		if (!$p['language']) {
+			$conf .= "language=en\n";
+		} else {
+			$conf .= "language={$p['language']}\n";
+		}
+		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "channel => {$p['interface']}\n";
+		$conf .= "\n";
+	}
 
 	$conf .= "\n";
 
@@ -265,7 +289,6 @@ function analog_zapata_conf_generate() {
 	fclose($fd);
 
 	return 0;
-	
 }
 
 

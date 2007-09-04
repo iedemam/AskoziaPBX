@@ -145,6 +145,7 @@ $menu['Providers']['Analog'] 			= array('providers_analog.php');
 $menu['Phones']['SIP'] 					= array('phones_sip.php');
 $menu['Phones']['IAX'] 					= array('phones_iax.php');
 $menu['Phones']['ISDN']					= array('phones_isdn.php');
+$menu['Phones']['Analog']				= array('phones_analog.php');
 $menu['Phones']['External']				= array('phones_external.php');
 
 /* Dialplan */
@@ -170,6 +171,7 @@ $menu['Live Stats']['Network Traffic']	= array('status_graph_traffic.php');
 $menu['Live Stats']['CPU Load']			= array('status_graph_cpu.php');
 
 /* Advanced */
+$menu['Advanced']['RTP'] 				= array('advanced_rtp.php');
 $menu['Advanced']['SIP'] 				= array('advanced_sip.php');
 $menu['Advanced']['IAX'] 				= array('advanced_iax.php');
 $menu['Advanced']['ISDN'] 				= array('advanced_isdn.php');

@@ -33,6 +33,7 @@ require("guiconfig.inc");
 $a_sipphones = sip_get_phones();
 $a_iaxphones = iax_get_phones();
 $a_isdnphones = isdn_get_phones();
+$a_analogphones = analog_get_phones();
 $a_extphones = external_get_phones();
 $a_callgroups = dialplan_get_callgroups();
 $a_rooms = conferencing_get_rooms();
@@ -42,6 +43,7 @@ $all_extensions = printable_sort_extensions(
 		$a_sipphones,
 		$a_iaxphones,
 		$a_isdnphones,
+		$a_analogphones,
 		$a_extphones,
 		$a_callgroups,
 		$a_rooms

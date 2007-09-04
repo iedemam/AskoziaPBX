@@ -54,7 +54,7 @@ $recognized_units = isdn_get_recognized_unit_numbers();
 if (!count($recognized_units)) {
 	$n = 0;
 } else {
-	$n = max(array_keys($recognized_units));
+	$n = max(array_keys($recognized_units)); // XXX bug!!!
 }
 $merged_units = array();
 for ($i = 0; $i <= $n; $i++) {

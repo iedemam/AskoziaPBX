@@ -98,7 +98,7 @@ if (!count($recognized_units)) {
 	?><tr> 
 		<td><strong>No compatible analog interfaces detected.</strong>
 		<br>
-		<br>Analog interface support in pb9 is still limited. Interface detection is currently limited to a/b FXO modules. If one of these is present and was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.</td>
+		<br>If an analog interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.</td>
 	</tr><?
 	
 } else {

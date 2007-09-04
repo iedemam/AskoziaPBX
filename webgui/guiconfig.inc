@@ -51,6 +51,7 @@ $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 $d_conferencing_kicked_path = $g['varrun_path'] . "/conferencing.kicked";
 $d_isdnconfdirty_path = $g['varrun_path'] . "/isdnconf.dirty";
 $d_analogconfdirty_path = $g['varrun_path'] . "/analogconf.dirty";
+$d_rtpconfdirty_path = $g['varrun_path'] . "/rtpconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
@@ -611,6 +612,17 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				<?php $have_extension = true; ?>
 				<option>ISDN Phones</option>
 				<?php foreach ($a_isdnphones as $phone): ?>
+				<option value="<?=$phone['uniqid'];?>" <?php 
+				if ($phone['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+				
+				<?php if (count($a_analogphones = analog_get_phones()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>Analog Phones</option>
+				<?php foreach ($a_analogphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
 					echo "selected"; ?>> 

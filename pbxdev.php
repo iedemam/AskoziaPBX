@@ -45,15 +45,15 @@ $core_sounds_version= "1.4.7";
 $extra_sounds_version="1.4.6";
 $sound_languages	= explode(" ", "en de it es fr jp nl se ru");
 $sounds				= explode(" ", 
-						"auth-thankyou ".
-						"conf-onlyperson conf-getpin conf-invalidpin conf-kicked ".
-						"pbx-transfer pbx-invalid ".
-						"vm-intro vm-theperson vm-isunavail vm-isonphone vm-goodbye");
+						"auth-thankyou. ".
+						"conf-onlyperson. conf-getpin. conf-invalidpin. conf-kicked. ".
+						"pbx-transfer. pbx-invalid. pbx-invalidpark. ".
+						"vm-intro. vm-theperson. vm-isunavail. vm-isonphone. vm-goodbye.");
 $wake_me_sounds		= explode(" ",
-						"this-is-yr-wakeup-call to-snooze-for to-cancel-wakeup ".
-						"for. press-0 press-1 wakeup-call-cancelled to-rqst-wakeup-call ".
-						"enter-a-time im-sorry 1-for-am-2-for-pm rqsted-wakeup-for ".
-						"1-yes-2-no thank-you-for-calling goodbye");
+						"this-is-yr-wakeup-call. to-snooze-for. to-cancel-wakeup. ".
+						"for. press-0. press-1. wakeup-call-cancelled. to-rqst-wakeup-call. ".
+						"enter-a-time. im-sorry. 1-for-am-2-for-pm. rqsted-wakeup-for. ".
+						"1-yes-2-no. thank-you-for-calling. goodbye.");
 $digits				= explode(" ", "0 1 2 3 4 5 6 7 8 9");
 $musiconhold		= explode(" ", "fpm-calm-river");
 
