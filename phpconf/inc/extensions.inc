@@ -82,7 +82,7 @@ function extensions_conf_generate() {
 	$conf = <<<EOD
 
 [macro-vm];
-exten => s,1,Dial($\{ARG1},30,tTo)
+exten => s,1,Dial($\{ARG1},30,$\{ARG4})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 exten => s-NOANSWER,1,VoiceMail($\{ARG2},u,$\{ARG3})
 exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
@@ -109,23 +109,23 @@ EOD;
 	$a_sipphones = sip_get_phones();
 	foreach ($a_sipphones as $phone) {
 		$conf .= "exten => {$phone['extension']},hint,SIP/{$phone['extension']}\n";
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
 		//$conf .= "exten => {$phone['extension']},hint,IAX2/{$phone['extension']}\n";
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_isdnphones = isdn_get_phones();
 	foreach ($a_isdnphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_analogphones = analog_get_phones();
 	foreach ($a_analogphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|ZAP/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN})\n";
+		$conf .= "exten => {$phone['extension']},1,Macro(vm|ZAP/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_extphones = external_get_phones();
@@ -134,10 +134,10 @@ EOD;
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
 			$conf .= "exten => {$phone['extension']},1,".
-				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']})\n";
+				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']}|tTo)\n";
 		} else {
 			$conf .= "exten => {$phone['extension']},1,".
-				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']})\n";	
+				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']}|to)\n";	
 		}
 	}
 	

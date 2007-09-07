@@ -215,7 +215,11 @@ function get_analog_interface_info() {
 	
 	$i = 0;
 	$isdninterfaces = isdn_get_interfaces();
+	$recognized_units = isdn_get_recognized_unit_numbers();
 	foreach ($isdninterfaces as $isdninterface) {
+		if (!isset($recognized_units[$isdninterface['unit']])) {
+			continue;
+		}
 		$ifinfo = get_isdn_interface_info($isdninterface);
 		
 		if ($i) {

@@ -54,7 +54,8 @@ $recognized_units = isdn_get_recognized_unit_numbers();
 if (!count($recognized_units)) {
 	$n = 0;
 } else {
-	$n = max(array_keys($recognized_units)); // XXX bug!!!
+	$n = max(array_keys($recognized_units));
+	$n = ($n == 0) ? 1 : $n;
 }
 $merged_units = array();
 for ($i = 0; $i <= $n; $i++) {
@@ -107,7 +108,9 @@ if (!count($recognized_units)) {
 	?><tr> 
 		<td><strong>No compatible ISDN interfaces detected.</strong>
 		<br>
-		<br>If an ISDN interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.</td>
+		<br>If an ISDN interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
+		<br>
+		<br>If this is a USB ISDN device, send <a href="/exec_raw.php?cmd=udesc_dump">this output</a> as well.</td>
 	</tr><?
 	
 } else {

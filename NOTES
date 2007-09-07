@@ -1,5 +1,4 @@
 pb10
- - fix caller id
  - fix extensions_exists
  - fix dialplan_providers.php to save posted config and display correctly when no providers are present
  - complete is_valid_xxx() checks
@@ -8,11 +7,14 @@ pb10
  - confirm "Ringing()" behavior/usage on ISDN connections
  - extend callgroup support to add delays, sequential groups
  - rework incoming extension to support DID's
- - "Status -> Interfaces" needs to be updated with Zaptel, interfaces which have been removed shouldn't be displayed
- - bug: max() call on isdn interface page breaks countup
+
+ - check changes to caller id (number setting for zap channels), should fix wakeme
+ - ...may be able to set in zapata or zaptel
 
 -----------------
 
+ - gtalk
+ - ajaxify logs page
  - multiple MSNs on ISDN
  - dialplan (still needs (de)select all)
  - improve module population in pbxdev

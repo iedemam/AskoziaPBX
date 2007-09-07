@@ -132,7 +132,7 @@ if (file_exists($d_analogconfdirty_path)) {
 			<td width="20%" valign="top" class="vncell">&nbsp;</td>
 			<td width="40%" class="vtable" valign="top" colspan="2">
 				<span class="vexpl"><strong><span class="red">Note:</span></strong>
-				Select all indication tone zones the analog hardware should support. The first tone zone will be the default tonezone.</span>
+				Select all indication tone zones the analog hardware should support. <strong>The first tone zone will be the default tonezone.</strong></span>
 			</td>
 		</tr>
 		<tr> 

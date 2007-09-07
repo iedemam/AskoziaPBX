@@ -208,11 +208,25 @@ function analog_zaptel_conf_generate() {
 	$abinterfaces = analog_get_ab_interfaces();
 	foreach($abinterfaces as $abi) {
 		if ($abi['type'] == "fxo") {
-			$conf .= "fxsks={$abi['unit']}\n";
+			if (!$fxsks_line) {
+				$fxsks_line = "fxsks={$abi['unit']}";
+			} else {
+				$fxsks_line .= ",{$abi['unit']}";
+			}
 		} else if ($abi['type'] == "fxs"){
-			$conf .= "fxoks={$abi['unit']}\n";
+			if (!$fxoks_line) {
+				$fxoks_line = "fxoks={$abi['unit']}";
+			} else {
+				$fxoks_line .= ",{$abi['unit']}";
+			}
 		}
-		$conf .= "\n";
+	}
+	
+	if ($fxsks_line) {
+		$conf .= "$fxsks_line\n";
+	}
+	if ($fxoks_line) {
+		$conf .= "$fxoks_line\n";
 	}
 	
 	$analogconfig = $config['services']['analog'];
@@ -269,6 +283,7 @@ function analog_zapata_conf_generate() {
 	
 	$analogphones = analog_get_phones();
 	foreach ($analogphones as $p) {
+		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 		$conf .= "signalling=fxo_ks\n";
 		//$conf .= "hanguponpolarityswitch=yes\n";
 		$conf .= "busydetect=yes\n";

@@ -970,25 +970,25 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		$phone = sip_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']}|$readbacknum)\n";
+			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|IAX2/{$phone['extension']}|{$phone['extension']}|$readbacknum)\n";
+			"Macro(vm|IAX2/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ISDN" && $id[1] == "PHONE") {
 		$phone = isdn_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']}|$readbacknum)\n";
+			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ANALOG" && $id[1] == "PHONE") {
 		$phone = analog_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|ZAP/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum)\n";
+			"Macro(vm|ZAP/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
 		$room = conferencing_get_room($uniqid);
@@ -1005,10 +1005,10 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
 			$dial .= "exten => $exten,$prio,".
-				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|$readbacknum)\n";
+				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|$readbacknum|to)\n";
 		} else {
 			$dial .= "exten => $exten,$prio,".
-				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|$readbacknum)\n";
+				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|$readbacknum|to)\n";
 		}
 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
@@ -1069,7 +1069,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		}
 
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|$dstring|$vm_account|$readbacknum)\n";
+			"Macro(vm|$dstring|$vm_account|$readbacknum|to)\n";
 	}
 	
 	return $dial;

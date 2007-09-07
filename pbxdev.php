@@ -234,14 +234,18 @@ function build_asterisk() {
 		_exec("cd {$dirs['packages']}; tar zxf $asterisk_version.tar.gz");
 	}
 	if (!_is_patched($asterisk_version)) {
-		_exec("cd {$dirs['packages']}/$asterisk_version; ".
-			"patch < {$dirs['patches']}/packages/asterisk_makefile.patch");
-		_exec("cd {$dirs['packages']}/$asterisk_version; ".
-			"patch < {$dirs['patches']}/packages/asterisk_cdr_to_syslog.patch");
-		_exec("cd {$dirs['packages']}/$asterisk_version; ".
-			"patch < {$dirs['patches']}/packages/asterisk_channel_queue.patch");
-		_exec("cd {$dirs['packages']}/$asterisk_version; ".
-			"patch < {$dirs['patches']}/packages/asterisk_voicemail_readback_number.patch");
+		$patches = array(
+			"makefile",
+			"cdr_to_syslog",
+			"channel_queue",
+			"voicemail_readback_number",
+			"chan_sip_default_cid"
+		);
+		foreach ($patches as $patch) {
+			_exec("cd {$dirs['packages']}/$asterisk_version; ".
+				"patch < {$dirs['patches']}/packages/asterisk_$patch.patch");
+			_log("\n\n --- patch: $patch -----------\n\n");
+		}
 		_stamp_package_as_patched($asterisk_version);
 	}
 	// copy make options
@@ -304,6 +308,11 @@ function build_msntp() {
 	_exec("cd /usr/ports/net/msntp; make clean; make");
 }
 
+function build_udesc_dump() {
+	
+	_exec("cd /usr/ports/sysutils/udesc_dump; make clean; make");
+}
+
 function build_msmtp() {
 	global $dirs, $msmtp_version;
 	
@@ -349,6 +358,7 @@ function build_packages() {
 function build_ports() {
 	
 	build_msntp();
+	build_udesc_dump();
 }
 
 function build_everything() {
@@ -452,10 +462,15 @@ function populate_minihttpd($image_name) {
 }
 
 function populate_msntp($image_name) {
-	global $dirs;
 	
 	_exec("cd /usr/ports/net/msntp; ".
 		"install -s work/msntp-*/msntp $image_name/rootfs/usr/local/bin");
+}
+
+function populate_udesc_dump($image_name) {
+	
+	_exec("cd /usr/ports/sysutils/udesc_dump; ".
+		"install -s work/udesc_dump-*/udesc_dump $image_name/rootfs/sbin");
 }
 
 function populate_msmtp($image_name) {
@@ -831,6 +846,7 @@ function populate_everything($image_name) {
 	populate_php($image_name);
 	populate_minihttpd($image_name);
 	populate_msntp($image_name);
+	populate_udesc_dump($image_name);
 	populate_msmtp($image_name);
 	populate_zaptel($image_name);
 	populate_isdn($image_name);
@@ -1031,7 +1047,7 @@ function release($name) {
 		_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
 		
 		$html .= "<tr>\n";
-		$html .= "\t<td><a href=\"/downloads/$filename\">$filename</a></td>\n";
+		$html .= "\t<td><a href=\"/downloads/$filename\">$platform</a></td>\n";
 		$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
 		$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
 		$html .= "</tr>\n";
@@ -1040,7 +1056,7 @@ function release($name) {
 	$filename = "pbx-rootfs-".basename($name).".tgz";
 	
 	$html .= "<tr>\n";
-	$html .= "\t<td><a href=\"/downloads/$filename\">$filename</a></td>\n";
+	$html .= "\t<td><a href=\"/downloads/$filename\">rootfs</a></td>\n";
 	$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
 	$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
 	$html .= "</tr>\n";	

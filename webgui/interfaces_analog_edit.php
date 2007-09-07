@@ -58,6 +58,7 @@ if (!count($recognized_units)) {
 	$n = 0;
 } else {
 	$n = max(array_keys($recognized_units));
+	$n = ($n == 0) ? 1 : $n;
 }
 $merged_units = array();
 for ($i = 0; $i <= $n; $i++) {

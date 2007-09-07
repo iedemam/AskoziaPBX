@@ -555,7 +555,7 @@ function display_callgroup_member_selector($current_members) {
 		<td width="20%" valign="top" class="vncell">&nbsp;</td>
 		<td width="40%" class="vtable" valign="top" colspan="2">
 			<span class="vexpl"><strong><span class="red">Note:</span></strong>
-			All group members will be called at the same time. The voicemail account associated with the first member will be used if the call is not answered.</span>
+			All group members will be called at the same time. <strong>The voicemail account associated with the first member will be used if the call is not answered.</strong></span>
 		</td>
 	</tr><?	
 }
