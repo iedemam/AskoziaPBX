@@ -1,3 +1,7 @@
+2007.09.xx - pb11
+ - bug: fixed dialplan_parse_pattern()
+ - bug: really fixed the ab-unit display problem on "Interfaces -> Network -> Assign"
+
 2007.09.07 - pb10
  - added Polish voicemail notification e-mail translation
  - added Russian language (gsm) audio prompts

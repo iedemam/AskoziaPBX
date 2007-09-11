@@ -1,0 +1,11 @@
+--- channels/chan_sip.c.orig	Tue Sep 11 14:02:04 2007
++++ channels/chan_sip.c	Tue Sep 11 14:02:44 2007
+@@ -488,7 +488,7 @@
+ #define DEFAULT_MOHINTERPRET    "default"
+ #define DEFAULT_MOHSUGGEST      ""
+ #define DEFAULT_VMEXTEN 	"asterisk"
+-#define DEFAULT_CALLERID 	"asterisk"
++#define DEFAULT_CALLERID 	"Unknown"
+ #define DEFAULT_NOTIFYMIME 	"application/simple-message-summary"
+ #define DEFAULT_MWITIME 	10
+ #define DEFAULT_ALLOWGUEST	TRUE

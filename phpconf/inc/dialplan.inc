@@ -154,7 +154,7 @@ function dialplan_remove_incomingextension_reference_from_providers($removed_id)
 	}	
 }
 
-function dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten) {
+function dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten) {
 
 	$prefix = $offset = "";
 	$exten = "$\{EXTEN}";

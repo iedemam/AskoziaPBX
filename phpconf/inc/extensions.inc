@@ -186,7 +186,7 @@ EOD;
 		
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
+				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,To)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
@@ -204,7 +204,7 @@ EOD;
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
+				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,To)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
@@ -222,7 +222,7 @@ EOD;
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
+				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
 				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
@@ -241,7 +241,7 @@ EOD;
 
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
-				dialplan_parse_pattern($pattern, &$prefix, &$offset, &$exten);
+				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
 				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,30,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";

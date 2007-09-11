@@ -119,6 +119,7 @@ function prepare_environment() {
 	_exec("cd {$dirs['tools']}; gcc -o sign -lcrypto sign.c");
 	_exec("cd /usr/ports/audio/speex; make install");
 	_exec("cd /usr/ports/net/ilbc; make install");
+	_exec("cd /usr/ports/devel/newt; make install");
 }
 
 function patch_kernel() {
@@ -252,6 +253,8 @@ function build_asterisk() {
 	_exec("cp {$dirs['patches']}/packages/menuselect.makeopts /etc/asterisk.makeopts");
 	// copy wakeme application
 	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/$asterisk_version/apps");
+	// copy includes
+	_exec("cp -pR {$dirs['packages']}/$asterisk_version/include/* /usr/local/include");
 	// reconfigure and make
 	_exec("cd {$dirs['packages']}/$asterisk_version/; ./configure; gmake");
 }
@@ -296,6 +299,8 @@ function build_isdn() {
 	if (!file_exists("{$dirs['packages']}/i4b")) {
 		_exec("cd {$dirs['packages']}; ".
 			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b i4b");
+			
+		_exec("cd {$dirs['packages']}/i4b/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
 	}
 	
 	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
@@ -351,8 +356,8 @@ function build_packages() {
 	build_msmtp();
 	build_minihttpd();
 	build_zaptel();
-	build_isdn();
 	build_asterisk();
+	build_isdn();
 }
 
 function build_ports() {
@@ -629,7 +634,7 @@ function populate_sounds($image_name) {
 		} else if ($sound_language == "de") {
 			// gsm
 			$distname = "asterisk-1.4-de-prompts";
-			$disturl = "http://www.amooma.de/asterisk/service/deutsche-sprachprompts";
+			$disturl = "http://www.amooma.de/asterisk/sprachbausteine";
 			
 			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
 					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");

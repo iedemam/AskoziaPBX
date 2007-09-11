@@ -119,7 +119,7 @@ if ($_POST) {
 				
 				<? foreach ($config['interfaces'] as $ifname => $iface):
 					// ignore ISDN ports
-					if ($ifname == "isdn-unit" || $ifname == "ab-name") {
+					if ($ifname == "isdn-unit" || $ifname == "ab-unit") {
 						continue;
 					}
 					
