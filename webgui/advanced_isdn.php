@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id: advanced_iax.php 143 2007-07-03 14:34:07Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.

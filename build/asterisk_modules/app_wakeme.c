@@ -1,6 +1,8 @@
 /*
+ * $Id$
+ * 
  * Asterisk Wake-Up Call Module - part of AskoziaPBX <http://askozia.com/pbx>
- *
+ * 
  * Copyright (C) 2007 IKT <http://www.itison-ikt.de> 
  *
  * See http://www.asterisk.org for more information about
@@ -50,7 +52,7 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 	char buffer[256];				/* general purpose buffer 			*/
 	struct ast_module_user *u;		/* local user for resource control 	*/
 	char time_str[5];				/* 4 digit DTMF time entry 			*/
-	int time_int = 0;			/* atoi of time_str 				*/
+	int time_int = 0;				/* atoi of time_str 				*/
 	int max_chars = 4;				/* loop control for dtmf entry 		*/
 	int cur_chars;					/* loop control for dtmf entry		*/
 	FILE *call_file;				/* call file handle					*/
@@ -340,13 +342,13 @@ setwakeup:
 	} else {
 		char buff[256];
 		sprintf(buff, 
-			"Channel: Local/%s@internal\n"
+			"Channel: %s/%s@internal\n"
 			"Callerid: Wake UP!\n"
 			"MaxRetries: 5\n"
 			"RetryTime: 60\n"
 			"WaitTime: 15\n"
 			"Application: WakeMe\n"
-			"Data: WAKE", chan->cid.cid_num);
+			"Data: WAKE", chan->tech->type, chan->cid.cid_num);
 		fprintf(call_file, buff);
 		fflush(call_file);
 		fclose(call_file);

@@ -132,6 +132,7 @@ function analog_get_recognized_ab_unit_numbers() {
 		} else if (strpos($dmesg_lines[$i], "Found a Wildcard FXO: ") !== false) {
 			$controllers[1] = "fxo";
 
+
 		// fxs ports
 		} else if (preg_match("/\b[0-9]+: Installed -- AUTO FXS/", $dmesg_lines[$i], &$matches)) {
 			$num = substr($matches[0], 0, strpos($matches[0],":"));
@@ -271,6 +272,11 @@ function analog_zapata_conf_generate() {
 		//$conf .= "hanguponpolarityswitch=yes\n";
 		$conf .= "busydetect=yes\n";
 		$conf .= "busycount=3\n";
+		
+		$conf .= "echocancel=128\n";
+		$conf .= "echotraining=256\n";
+		$conf .= "echocancelwhenbridged=no\n";
+		
 		if (!$p['language']) {
 			$conf .= "language=en\n";
 		} else {
@@ -288,6 +294,11 @@ function analog_zapata_conf_generate() {
 		//$conf .= "hanguponpolarityswitch=yes\n";
 		$conf .= "busydetect=yes\n";
 		$conf .= "busycount=3\n";
+		
+		$conf .= "echocancel=128\n";
+		$conf .= "echotraining=256\n";
+		$conf .= "echocancelwhenbridged=no\n";
+		
 		if (!$p['language']) {
 			$conf .= "language=en\n";
 		} else {

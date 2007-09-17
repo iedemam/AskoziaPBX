@@ -1,6 +1,6 @@
 <?php
 /*
-	$Id: sip.inc 144 2007-07-04 17:05:34Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.

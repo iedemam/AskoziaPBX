@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	$Id: exec.php 82 2007-05-03 14:53:45Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2007 IKT <http://itison-ikt.de>.

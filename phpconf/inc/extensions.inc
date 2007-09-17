@@ -84,17 +84,20 @@ function extensions_conf_generate() {
 [macro-vm];
 exten => s,1,Dial($\{ARG1},30,$\{ARG4})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
-exten => s-NOANSWER,1,VoiceMail($\{ARG2},u,$\{ARG3})
+exten => s-NOANSWER,1,Wait(1)
+exten => s-NOANSWER,n,VoiceMail($\{ARG2},u,$\{ARG3})
 exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
-exten => s-BUSY,1,VoiceMail($\{ARG2},b,$\{ARG3})
+exten => s-BUSY,1,Wait(1)
+exten => s-BUSY,n,VoiceMail($\{ARG2},b,$\{ARG3})
 exten => s-BUSY,n,Goto(exit-$\{VMSTATUS},1)
 exten => s-ANSWER,1,Hangup()
 exten => _s-.,1,Goto(s-NOANSWER,1)
 exten => exit-FAILED,1,Answer()
-exten => exit-FAILED,2,Playback(vm-theperson)
-exten => exit-FAILED,3,SayDigits($\{ARG3})
-exten => exit-FAILED,4,Playback(vm-isunavail)
-exten => exit-FAILED,5,Hangup()
+exten => exit-FAILED,n,Wait(1)
+exten => exit-FAILED,n,Playback(vm-theperson)
+exten => exit-FAILED,n,SayDigits($\{ARG3})
+exten => exit-FAILED,n,Playback(vm-isunavail)
+exten => exit-FAILED,n,Hangup()
 exten => exit-SUCCESS,1,Playback(vm-goodbye)
 exten => exit-SUCCESS,n,Hangup()
 exten => exit-USEREXIT,1,Playback(vm-goodbye)
@@ -143,6 +146,9 @@ EOD;
 	
 	$a_callgroups = dialplan_get_callgroups();
 	foreach ($a_callgroups as $group) {
+		if (!$group['extension']) {
+			continue;
+		}
 		$conf .= asterisk_uniqid_to_dial($group['extension'], $group['uniqid']);
 	}
 	

@@ -1,5 +1,5 @@
 machine		i386
-cpu		I486_CPU
+cpu			I486_CPU
 ident		ASKOZIAPBX_NET45XX
 
 options		HZ=1000
@@ -23,8 +23,10 @@ options 	SYSVSEM			# SYSV-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
+options		BRIDGE
+
 options		NO_SWAPPING
-options         DEVICE_POLLING
+options		DEVICE_POLLING
 
 device		apic			# I/O APIC
 

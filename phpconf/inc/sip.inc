@@ -124,16 +124,14 @@ EOD;
 	
 	// nat config
 	$lancfg = $config['interfaces']['lan'];
-
 	if ($lancfg['topology'] == "natstatic") {
 		$conf .= "externip=" . $lancfg['extipaddr'] . "\n";
 		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
-	} else if ($lancfg['topology'] == "natdynamic") {
-		$conf .= "externhost=" . $lancfg['externhost'] . "\n";
+	} else if ($lancfg['topology'] == "natdynamichost") {
+		$conf .= "externhost=" . $lancfg['exthostname'] . "\n";
 		$conf .= "externrefresh=10\n";
 		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
 	}
-	
 	$conf .= "\n\n";
 	
 	// providers
@@ -188,7 +186,9 @@ EOD;
 			$conf .= "fromdomain={$p['host']}\n";
 		}
 		
-		$conf .= "nat=no\n";
+		if ($lancfg['topology'] != "public") {
+			$conf .= "nat=yes\n";
+		}
 		
 		// language selection
 		if ($p['language']) {

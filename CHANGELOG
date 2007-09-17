@@ -1,4 +1,6 @@
 2007.09.xx - pb11
+ - bug: fixed extension generator for callgroups not having an internal extension defined
+ - bug: fixed NAT configuration generator in sip.conf
  - bug: fixed dialplan_parse_pattern()
  - bug: really fixed the ab-unit display problem on "Interfaces -> Network -> Assign"
 

@@ -1,38 +1,47 @@
-pb10
+pb11
+ - zapata reloads aren't all working (restart needed sometimes)
+ - zapata kewlstart / loopstart / groundstart options are needed
+ - provider / phone status indicators on edit page
+ - compact interfaces page into one tabbed page under System
+ - interface bridging options
+ - extend callgroup support to add delays, sequential groups
+ - storage interface (add storage partition for extended capabilities)
+ - extended capabilities hooks into the gui
+ - new option to log to storage partition
+ - add "Dialplan -> Applications" page to map applications
+ - multiple MSNs on ISDN, DID/DDI support in general
+ - wakeme's new channel technology grab should be tested (not working with zap because ZAP/1)
+
  - fix extensions_exists
  - fix dialplan_providers.php to save posted config and display correctly when no providers are present
  - complete is_valid_xxx() checks
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - AVM cards are broken
  - confirm "Ringing()" behavior/usage on ISDN connections
- - extend callgroup support to add delays, sequential groups
- - rework incoming extension to support DID's
 
- - check changes to caller id (number setting for zap channels), should fix wakeme
- - ...may be able to set in zapata or zaptel
+ - added sqlite cdr module and sqlite extension to php
+ - added options BRIDGE to kernel
+ - added bsdlabel to m0n0wall files
+   - config.inc:96 - disk listing
+ - added wlan & bridge options from new M0N0WALL kernel
+
 
 -----------------
 
  - gtalk
  - ajaxify logs page
- - multiple MSNs on ISDN
  - dialplan (still needs (de)select all)
- - improve module population in pbxdev
  - start returning get_blahs() functions by reference
  _ also, get_blahs() should return arrays with uniqid's as the keys
  - kernel and asterisk modules should only be loaded when needed
- - storage interface (add storage partition for extended capabilities)
- - extended capabilities hooks into the gui
- - new option to log to storage partition
  - privacy with voicemail forward
- - add "Dialplan -> Applications" page and WakeMe support :)
  - followme
  - add iax2 auth options
    - pubkey import
-- get "advanced mode" working
-- provider to provider access with pin code
-- QoS options, such as jitterbuffer and packet types supported
-- testing / performance mode
+ - get "advanced mode" working
+ - provider to provider access with pin code
+ - QoS options, such as jitterbuffer and packet types supported
+ - testing / performance mode
 
 
 

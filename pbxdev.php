@@ -7,7 +7,7 @@
     All rights reserved.
     
     Authors:
-        Michael Iedema <michael.iedema@askozia.com>.
+        Michael Iedema <michael@askozia.com>.
     
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
@@ -34,6 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $php_version		= "php-4.4.7";
+$pecl_sqlite_version= "SQLite-1.0.3";
 $mini_httpd_version	= "mini_httpd-1.19";
 $asterisk_version	= "asterisk-1.4.11";
 $msmtp_version		= "msmtp-1.4.11";
@@ -69,7 +70,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "net48xx wrap generic-pc"; //generic-pc-cdrom net45xx";
+$platform_list = "generic-pc net48xx wrap"; //generic-pc-cdrom net45xx";
 $platforms = explode(" ", $platform_list);
 
 
@@ -120,6 +121,8 @@ function prepare_environment() {
 	_exec("cd /usr/ports/audio/speex; make install");
 	_exec("cd /usr/ports/net/ilbc; make install");
 	_exec("cd /usr/ports/devel/newt; make install");
+	//_exec("cd /usr/ports/databases/sqlite2; make install");
+	//_exec("cd /usr/ports/net/mDNSResponder; make install");
 }
 
 function patch_kernel() {
@@ -185,7 +188,7 @@ function build_clog() {
 }
 
 function build_php() {
-	global $dirs, $php_version, $radius_version;
+	global $dirs, $php_version, $pecl_sqlite_version;
 
 	if (!file_exists("/usr/local/bin/autoconf")) {
 		_exec("cd /usr/ports/devel/autoconf213; make install clean");
@@ -199,10 +202,17 @@ function build_php() {
 	if (!file_exists("{$dirs['packages']}/$php_version")) {
 		_exec("cd {$dirs['packages']}; tar zxf $php_version.tar.gz");
 	}
+	if (!file_exists("{$dirs['packages']}/$php_version/ext/sqlite")) {
+		_exec("cd ". $dirs['packages'] ."/$php_version/ext; ".
+			"fetch http://pecl.php.net/get/$pecl_sqlite_version.tgz; ".
+			"tar zxf $pecl_sqlite_version.tgz; ".
+				"mv $pecl_sqlite_version sqlite");
+	}
+	
 	_exec("cd {$dirs['packages']}/$php_version; ".
 			"rm configure; ".
 			"./buildconf --force; ".
-			"./configure --without-mysql --with-openssl --enable-discard-path --enable-sockets --enable-bcmath; ".
+			"./configure --without-mysql --with-pear --with-openssl --enable-discard-path --enable-sockets --enable-bcmath --enable sqlite; ".
 			"make");
 }
 
@@ -282,7 +292,7 @@ function build_zaptel() {
 	_exec("cp {$dirs['patches']}/packages/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
 	
 	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
-	_exec("cd {$dirs['packages']}/$zaptel_version; make");
+	_exec("cd {$dirs['packages']}/$zaptel_version; make; make install");
 
 	if (!file_exists("{$dirs['packages']}/$zaptel_version/STAGE")) {
 		_exec("cd {$dirs['packages']}/$zaptel_version/; ".
@@ -350,6 +360,19 @@ function build_bootloader() {
 	_exec("cd /sys/boot; make clean; make obj; make");
 }
 
+function build_res_bonjour() {
+	global $dirs;
+	
+	$resver = "res_bonjour-2.0rc1";
+	if (file_exists(("{$dirs['packages']}/$ribver"))) {
+		_exec("cd {$dirs['packages']}; fetch http://www.mezzo.net/asterisk/$resver.tgz");
+		_exec("cd {$dirs['packages']}; tar zxf $resver.tgz");
+	}
+	
+	
+	
+}
+
 function build_packages() {
 
 	build_php();
@@ -358,6 +381,8 @@ function build_packages() {
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
+	//build_res_bonjour();
+	//build_fop();
 }
 
 function build_ports() {

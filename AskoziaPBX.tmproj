@@ -3,28 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>NOTES</string>
+	<string>phpconf/inc/analog.inc</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-09-04T17:05:31Z</date>
+			<date>2007-09-15T10:40:49Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-09-04T18:27:19Z</date>
+			<date>2007-09-15T10:46:56Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-09-04T18:27:27Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-09-14T18:34:17Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -84,9 +82,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>89</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -98,9 +96,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>56</integer>
+				<integer>92</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>12</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -126,28 +124,72 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>51</integer>
+				<integer>59</integer>
 				<key>line</key>
-				<integer>49</integer>
+				<integer>294</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>34</integer>
+			<integer>278</integer>
 		</dict>
-		<key>webgui/interfaces_isdn.php</key>
+		<key>phpconf/inc/analog.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>55</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>56</integer>
+				<integer>277</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>29</integer>
+			<integer>283</integer>
+		</dict>
+		<key>phpconf/inc/extensions.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>149</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>132</integer>
+		</dict>
+		<key>phpconf/inc/sip.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>189</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>180</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>189</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>189</integer>
+			</dict>
 		</dict>
 		<key>webgui/status.php</key>
 		<dict>
@@ -181,13 +223,15 @@
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
+		<string>phpconf/inc/sip.inc</string>
 		<string>CHANGELOG</string>
+		<string>phpconf/inc/extensions.inc</string>
+		<string>phpconf/inc/analog.inc</string>
 		<string>NOTES</string>
-		<string>webgui/interfaces_isdn.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{6, 2}, {992, 776}}</string>
+	<string>{{113, 41}, {838, 732}}</string>
 </dict>
 </plist>
