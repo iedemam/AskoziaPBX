@@ -1,12 +1,12 @@
 machine		i386
 cpu			I586_CPU
-ident		ASKOZIAPBX_NET48XX
+ident		ASKOZIAPBX_NET55XX
 
 options		HZ=1000
 options		CPU_GEODE
 options		CPU_SOEKRIS
 
-hints		"ASKOZIAPBX_NET48XX.hints"
+hints		"ASKOZIAPBX_NET55XX.hints"
 
 options 	SCHED_4BSD					# 4BSD scheduler
 options 	INET						# InterNETworking
@@ -60,8 +60,9 @@ device		sio			# 8250, 16[45]50 based serial ports
 
 # PCI Ethernet NICs that use the common MII bus controller code.
 # NOTE: Be sure to keep the 'device miibus' line in order to use these NICs!
-device		miibus		# MII bus support
-device		sis			# Silicon Integrated Systems SiS 900/SiS 7016
+device		miibus			# MII bus support
+device		vr				# VIA Rhine, Rhine II
+device		sis				# Silicon Integrated Systems SiS 900/SiS 7016
 
 # Wireless NIC cards
 device		wlan			# 802.11 support
@@ -94,6 +95,7 @@ device		bpf		# Berkeley packet filter
 
 # USB support
 device		ohci		# OHCI PCI->USB interface
+device		ehci		# EHCI PCI->USB interface (USB 2.0)
 device		usb			# USB Bus (required)
 device		ugen		# Generic
 device		uhid		# "Human Interface Devices"

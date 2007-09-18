@@ -97,9 +97,7 @@ device		ses		# SCSI Environmental Services (and SAF-TE)
 # atkbdc0 controls both the keyboard and the PS/2 mouse
 device		atkbdc		# AT keyboard controller
 device		atkbd		# AT keyboard
-
 device		kbdmux		# keyboard multiplexer
-
 device		vga			# VGA video card driver
 
 # syscons is the default console driver, resembling an SCO console

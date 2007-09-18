@@ -70,7 +70,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "generic-pc net48xx wrap"; //generic-pc-cdrom net45xx";
+$platform_list = "generic-pc net48xx net55xx wrap alix1x hl4xx"; //generic-pc-cdrom net45xx";
 $platforms = explode(" ", $platform_list);
 
 
@@ -121,7 +121,7 @@ function prepare_environment() {
 	_exec("cd /usr/ports/audio/speex; make install");
 	_exec("cd /usr/ports/net/ilbc; make install");
 	_exec("cd /usr/ports/devel/newt; make install");
-	//_exec("cd /usr/ports/databases/sqlite2; make install");
+	_exec("cd /usr/ports/databases/sqlite2; make install");
 	//_exec("cd /usr/ports/net/mDNSResponder; make install");
 }
 
@@ -453,7 +453,7 @@ function populate_etc($image_name) {
 function populate_defaultconf($image_name) {
 	global $dirs;
 	
-	_exec("cp {$dirs['phpconf']}/config.xml $image_name/rootfs/conf.default/");
+	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/rootfs/conf.default/");
 }
 
 function populate_zoneinfo($image_name) {
@@ -980,7 +980,7 @@ function package($platform, $image_name) {
 	
 		// ...conf
 		_exec("mkdir tmp/stage/conf");
-		_exec("cp {$dirs['phpconf']}/config.xml tmp/stage/conf");
+		_exec("cp {$dirs['phpconf']}/config.$platform.xml tmp/stage/conf/config.xml");
 		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/stage/kernel.gz");
 		
 		$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
@@ -1108,7 +1108,7 @@ function _set_permissions($image_name) {
 	
 	_exec("chmod 644 $image_name/rootfs/etc/inc/*");
 	
-	_exec("chmod 644 $image_name/rootfs/conf.default/config.xml");
+	_exec("chmod 644 $image_name/rootfs/conf.default/config.*.xml");
 
 	_exec("chmod 644 $image_name/rootfs/usr/local/www/*");
 	_exec("chmod 755 $image_name/rootfs/usr/local/www/*.php");

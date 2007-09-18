@@ -424,7 +424,7 @@ function reset_factory_defaults() {
 	closedir($dh);
 	
 	/* copy default configuration */
-	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
+	@copy("{$g['conf_default_path']}/config.{$g['fullplatform']}.xml", "{$g['conf_path']}/config.xml");
 	
 	conf_mount_ro();
 	

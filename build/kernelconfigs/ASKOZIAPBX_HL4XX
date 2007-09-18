@@ -1,12 +1,12 @@
 machine		i386
 cpu			I586_CPU
-ident		ASKOZIAPBX_NET48XX
+ident		ASKOZIAPBX_HL4XX
 
 options		HZ=1000
 options		CPU_GEODE
-options		CPU_SOEKRIS
+#options		CPU_SOEKRIS
 
-hints		"ASKOZIAPBX_NET48XX.hints"
+hints		"ASKOZIAPBX_HL4XX.hints"
 
 options 	SCHED_4BSD					# 4BSD scheduler
 options 	INET						# InterNETworking
@@ -20,6 +20,7 @@ options 	SYSVSHM						# SYSV-style shared memory
 options 	SYSVMSG						# SYSV-style message queues
 options 	SYSVSEM						# SYSV-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
+options 	KBD_INSTALL_CDEV			# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT				# Giant mutex is adaptive.
 
 options		BRIDGE
@@ -52,6 +53,12 @@ options 	ATA_STATIC_ID	# Static device numbering
 device		scbus			# SCSI bus (required for SCSI)
 device		da				# Direct Access (disks)
 
+device		kbdmux		# keyboard multiplexer
+device		vga			# VGA video card driver
+
+# syscons is the default console driver, resembling an SCO console
+device		sc
+
 # Add suspend/resume support for the i8254.
 device		pmtimer
 
@@ -61,6 +68,7 @@ device		sio			# 8250, 16[45]50 based serial ports
 # PCI Ethernet NICs that use the common MII bus controller code.
 # NOTE: Be sure to keep the 'device miibus' line in order to use these NICs!
 device		miibus		# MII bus support
+device		rl			# RealTek 8129/8139
 device		sis			# Silicon Integrated Systems SiS 900/SiS 7016
 
 # Wireless NIC cards

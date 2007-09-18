@@ -157,7 +157,6 @@ if ($_POST) {
 			You may also have to do one or more of the following steps before you can access your system again: </span></p>
 			<ul>
 				<li><span class="vexpl">change the IP address of your computer</span></li>
-				<li><span class="vexpl">renew its DHCP lease</span></li>
 				<li><span class="vexpl">access the webGUI with the new IP address</span></li>
 			</ul>
 		</td>

@@ -3,26 +3,50 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/analog.inc</string>
+	<string>CHANGELOG</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-09-15T10:40:49Z</date>
+			<date>2007-09-18T18:02:53Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>build/kernelconfigs/ASKOZIAPBX_ALIX1X</string>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>build/kernelconfigs/ASKOZIAPBX_ALIX1X.hints</string>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>build/kernelconfigs/ASKOZIAPBX_HL4XX</string>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>build/kernelconfigs/ASKOZIAPBX_HL4XX.hints</string>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-09-15T10:46:56Z</date>
+			<date>2007-09-18T18:02:53Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-09-14T18:34:17Z</date>
+			<date>2007-09-18T17:59:51Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -43,8 +67,6 @@
 			<string>etc</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>files</string>
 			<key>regexFolderFilter</key>
@@ -74,7 +96,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>214</integer>
+	<integer>252</integer>
 	<key>metaData</key>
 	<dict>
 		<key>CHANGELOG</key>
@@ -82,9 +104,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>89</integer>
+				<integer>78</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -96,7 +118,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>92</integer>
+				<integer>67</integer>
 				<key>line</key>
 				<integer>12</integer>
 			</dict>
@@ -124,72 +146,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>59</integer>
+				<integer>56</integer>
 				<key>line</key>
-				<integer>294</integer>
+				<integer>72</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>278</integer>
-		</dict>
-		<key>phpconf/inc/analog.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>277</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>283</integer>
-		</dict>
-		<key>phpconf/inc/extensions.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>149</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>132</integer>
-		</dict>
-		<key>phpconf/inc/sip.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>180</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
+			<integer>68</integer>
 		</dict>
 		<key>webgui/status.php</key>
 		<dict>
@@ -223,15 +187,12 @@
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>phpconf/inc/sip.inc</string>
-		<string>CHANGELOG</string>
-		<string>phpconf/inc/extensions.inc</string>
-		<string>phpconf/inc/analog.inc</string>
 		<string>NOTES</string>
+		<string>CHANGELOG</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{113, 41}, {838, 732}}</string>
+	<string>{{61, 28}, {930, 750}}</string>
 </dict>
 </plist>
