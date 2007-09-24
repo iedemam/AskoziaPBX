@@ -67,10 +67,10 @@
 	system_resolvconf_generate();
 	
 	/* configure loopback interface */
-	interfaces_loopback_configure();
+	network_loopback_configure();
 	
 	/* set up LAN interface */
-	interfaces_lan_configure();
+	network_lan_configure();
 	
 	/* set up static routes */
 	system_routing_configure();

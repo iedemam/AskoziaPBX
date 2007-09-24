@@ -124,16 +124,23 @@ if ((!is_array($allowed)) and
 
 /* System */
 $menu['System']['General Setup']		= array('system.php');
+$menu['System']['Interfaces'] 			= array('interfaces_network.php',
+												'interfaces_isdn.php',
+												'interfaces_isdn_edit.php',
+												'interfaces_analog.php',
+												'interfaces_analog_edit.php');
 $menu['System']['Firmware']				= array('system_firmware.php');
 $menu['System']['Backup/Restore'] 		= array('system_backup.php');
 $menu['System']['Factory Defaults']		= array('system_defaults.php');
 $menu['System']['Reboot'] 				= array('system_reboot.php');
 
-/* Interfaces */
+/* Interfaces *//*
 $menu['Interfaces']['Network'] 			= array('interfaces_network.php',
 												'interfaces_network_assign.php');
-$menu['Interfaces']['ISDN'] 			= array('interfaces_isdn.php');
-$menu['Interfaces']['Analog'] 			= array('interfaces_analog.php');
+$menu['Interfaces']['ISDN'] 			= array('interfaces_isdn.php',
+												'interfaces_isdn_edit.php');
+$menu['Interfaces']['Analog'] 			= array('interfaces_analog.php',
+												'interfaces_analog_edit.php');*/
 
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php');
@@ -253,7 +260,7 @@ function showhide(tspan, tri) {
             <?php 
                    
 dynamic_menu($menu['System'], 'System');
-dynamic_menu($menu['Interfaces'], 'Interfaces');
+/*dynamic_menu($menu['Interfaces'], 'Interfaces');*/
 dynamic_menu($menu['Providers'], 'Providers');
 dynamic_menu($menu['Phones'], 'Phones');
 dynamic_menu($menu['Dialplan'], 'Dialplan');

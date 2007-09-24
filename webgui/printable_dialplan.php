@@ -81,7 +81,7 @@ function _a_sortexts($a, $b) {
 		
 			<?php $i = 0; foreach ($all_extensions as $ext): ?>
 			<tr>
-				<td class="listlr"><?=htmlspecialchars(isset($ext['extension']) ? $ext['extension'] : $ext['number']);?></td>
+				<td class="listlr"><?=htmlspecialchars(isset($ext['extension']) ? $ext['extension'] : $ext['number']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars(isset($ext['callerid']) ? $ext['callerid'] : $ext['name']);?>&nbsp;</td>
 			</tr>
 			<?php $i++; endforeach; ?>

@@ -186,48 +186,6 @@ function is_email_address($address) {
 	return true;
 }
 
-/* returns a list of interfaces with MAC addresses
-   (skips VLAN and other virtual interfaces) */
-function get_interface_list() {
-	
-	global $g;
-	
-	/* build interface list with netstat */
-	exec("/usr/bin/netstat -inW -f link", $linkinfo);
-	array_shift($linkinfo);
-	
-	$iflist = array();
-	
-	foreach ($linkinfo as $link) {
-		$alink = preg_split("/\s+/", $link);
-		$ifname = chop($alink[0]);
-		
-		if (substr($ifname, -1) == "*")
-			$ifname = substr($ifname, 0, strlen($ifname) - 1);
-		
-		if (!preg_match("/^(ppp|sl|gif|faith|lo|ng|vlan|tun)/", $ifname)) {
-			$iflist[$ifname] = array();
-			
-			$iflist[$ifname]['mac'] = chop($alink[3]);
-			$iflist[$ifname]['up'] = false;
-			
-			/* find out if the link on this interface is up */
-			unset($ifinfo);
-			exec("/sbin/ifconfig {$ifname}", $ifinfo);
-			
-			foreach ($ifinfo as $ifil) {
-				if (preg_match("/status: (.*)$/", $ifil, $matches)) {
-					if ($matches[1] == "active")
-						$iflist[$ifname]['up'] = true;
-					break;
-				}
-			}
-		}
-	}
-	
-	return $iflist;
-}
-
 /* wrapper for exec() */
 function mwexec($command) {
 

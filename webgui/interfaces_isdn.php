@@ -101,41 +101,63 @@ if (file_exists($d_isdnconfdirty_path)) {
 <form action="interfaces_isdn.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0"><?
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
 
-if (!count($recognized_units)) {
-	
-	?><tr> 
-		<td><strong>No compatible ISDN interfaces detected.</strong>
-		<br>
-		<br>If an ISDN interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
-		<br>
-		<br>If this is a USB ISDN device, send <a href="/exec_raw.php?cmd=udesc_dump">this output</a> as well.</td>
-	</tr><?
-	
-} else {
-
-	?><tr>
-		<td width="10%" class="listhdrr">Unit</td>
-		<td width="30%" class="listhdrr">Name</td>		
-		<td width="55%" class="listhdr">Mode</td>
-		<td width="5%" class="list"></td>
-	</tr><?	
-
-	foreach ($merged_units as $mu) {
-
-	?><tr>
-		<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
-		<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list">
-			<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
+			$tabs = array(
+				'Network'	=> 'interfaces_network.php',
+				//'Wireless'	=> 'interfaces_wireless.php',
+				'ISDN'		=> 'interfaces_isdn.php',
+				'Analog'	=> 'interfaces_analog.php',
+				//'Storage'	=> 'interfaces_storage.php'
+			);
+			dynamic_tab_menu($tabs);
+			
+			?></ul>
 		</td>
-	</tr><?
-	
-	}
-}
+	</tr>
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 
-?></table>
+			if (!count($recognized_units)) {
+				
+				?><tr> 
+					<td><strong>No compatible ISDN interfaces detected.</strong>
+					<br>
+					<br>If an ISDN interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
+					<br>
+					<br>If this is a USB ISDN device, send <a href="/exec_raw.php?cmd=udesc_dump">this output</a> as well.</td>
+				</tr><?
+	
+			} else {
+
+				?><tr>
+					<td width="10%" class="listhdrr">Unit</td>
+					<td width="30%" class="listhdrr">Name</td>		
+					<td width="55%" class="listhdr">Mode</td>
+					<td width="5%" class="list"></td>
+				</tr><?	
+    			
+				foreach ($merged_units as $mu) {
+    			
+				?><tr>
+					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
+					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
+					<td valign="middle" nowrap class="list">
+						<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
+					</td>
+				</tr><?
+				
+				}
+			}
+
+			?></table>
+		</td>
+	</tr>
+</table>
 </form>
 <?php include("fend.inc"); ?>

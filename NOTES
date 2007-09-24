@@ -2,8 +2,7 @@ pb11
  - zapata reloads aren't all working (restart needed sometimes)
  - zapata kewlstart / loopstart / groundstart options are needed
  - provider / phone status indicators on edit page
- - compact interfaces page into one tabbed page under System
- - interface bridging options
+ - enable sip/iax/isdn/analog debug options on pbx log page
  - extend callgroup support to add delays, sequential groups
  - storage interface (add storage partition for extended capabilities)
  - extended capabilities hooks into the gui

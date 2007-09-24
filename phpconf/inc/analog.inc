@@ -273,8 +273,8 @@ function analog_zapata_conf_generate() {
 		$conf .= "busydetect=yes\n";
 		$conf .= "busycount=3\n";
 		
-		$conf .= "echocancel=128\n";
-		$conf .= "echotraining=256\n";
+		$conf .= "echocancel=yes\n";
+		//$conf .= "echotraining=800\n";
 		$conf .= "echocancelwhenbridged=no\n";
 		
 		if (!$p['language']) {
@@ -295,8 +295,8 @@ function analog_zapata_conf_generate() {
 		$conf .= "busydetect=yes\n";
 		$conf .= "busycount=3\n";
 		
-		$conf .= "echocancel=128\n";
-		$conf .= "echotraining=256\n";
+		$conf .= "echocancel=yes\n";
+		//$conf .= "echotraining=800\n";
 		$conf .= "echocancelwhenbridged=no\n";
 		
 		if (!$p['language']) {

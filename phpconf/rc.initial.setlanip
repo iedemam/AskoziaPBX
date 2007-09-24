@@ -86,7 +86,7 @@
 	}
 	
 	write_config();
-	interfaces_lan_configure();
+	network_lan_configure();
 	if ($webgui_restart) {
 		system_webgui_start();
 	}

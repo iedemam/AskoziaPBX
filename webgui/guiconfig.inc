@@ -72,7 +72,7 @@ $medias = array("auto" => "autoselect", "100full" => "100BASE-TX full-duplex",
 	"10half" => "10BASE-T half-duplex", "1000full" => "1000BASE-TX full-duplex");
 	
 /* platforms that support firmware updating */
-$fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'generic-pc-smp', 'wrap');
+$fwupplatforms = array('net45xx', 'net48xx', 'net55xx', 'generic-pc', 'wrap', 'alix1x', 'hl4xx');
 
 
 /*     1 (1 <<  0)      (0x1)  audio       g723   (G.723.1)

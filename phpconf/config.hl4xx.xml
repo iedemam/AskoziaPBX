@@ -39,6 +39,8 @@
 			<media></media>
 			<mediaopt></mediaopt>
 			<gateway>192.168.1.1</gateway>
+			<bridge>rl0</bridge>
+			<bridge>rl1</bridge>
 		</lan>
 	</interfaces>
 	<!--

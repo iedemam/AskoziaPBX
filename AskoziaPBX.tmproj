@@ -3,54 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>webgui/interfaces_network.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-09-18T18:02:53Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>build/kernelconfigs/ASKOZIAPBX_ALIX1X</string>
-			<key>selected</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>build/kernelconfigs/ASKOZIAPBX_ALIX1X.hints</string>
-			<key>selected</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>build/kernelconfigs/ASKOZIAPBX_HL4XX</string>
-			<key>selected</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>build/kernelconfigs/ASKOZIAPBX_HL4XX.hints</string>
-			<key>selected</key>
-			<true/>
+			<date>2007-09-20T15:05:29Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-09-18T18:02:53Z</date>
+			<date>2007-09-20T10:15:07Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-09-18T17:59:51Z</date>
+			<date>2007-09-20T13:57:31Z</date>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>build</string>
 			<key>regexFolderFilter</key>
@@ -104,9 +78,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>78</integer>
+				<integer>81</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -118,9 +92,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>67</integer>
+				<integer>59</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -146,14 +120,56 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>56</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>72</integer>
+				<integer>250</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>68</integer>
+			<integer>229</integer>
+		</dict>
+		<key>phpconf/inc/network.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>56</integer>
+				<key>line</key>
+				<integer>77</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>51</integer>
+		</dict>
+		<key>phpconf/rc.bootup</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>webgui/interfaces_network.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>172</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>145</integer>
 		</dict>
 		<key>webgui/status.php</key>
 		<dict>
@@ -189,10 +205,13 @@
 		<string>pbxdev.php</string>
 		<string>NOTES</string>
 		<string>CHANGELOG</string>
+		<string>webgui/interfaces_network.php</string>
+		<string>phpconf/inc/network.inc</string>
+		<string>phpconf/rc.bootup</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{61, 28}, {930, 750}}</string>
+	<string>{{9, 10}, {753, 768}}</string>
 </dict>
 </plist>

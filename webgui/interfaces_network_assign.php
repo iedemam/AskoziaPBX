@@ -39,7 +39,7 @@ require("guiconfig.inc");
 */
 
 /* get list without VLAN interfaces */
-$portlist = get_interface_list();
+$portlist = network_get_interfaces();
 
 
 if ($_POST) {

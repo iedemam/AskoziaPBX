@@ -33,12 +33,15 @@
 	</system>
 	<interfaces>
 		<lan>
-			<if>sis0</if>
+			<if>vr0</if>
 			<ipaddr>192.168.1.2</ipaddr>
 			<subnet>24</subnet>
 			<media></media>
 			<mediaopt></mediaopt>
 			<gateway>192.168.1.1</gateway>
+			<bridge>vr1</bridge>
+			<bridge>vr2</bridge>
+			<bridge>vr3</bridge>
 		</lan>
 	</interfaces>
 	<!--

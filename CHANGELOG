@@ -2,7 +2,10 @@
  - new platform: PC Engines - ALIX.1x
  - new platform: Soekris - net55xx
  - new platform: Herologic - HL-4xx
+ - additional network interfaces may now be bridged to the "main" interface
+ - "Interfaces" menu collapsed into a single tabbed page under "System -> Interfaces"
  - resetting to factory defaults now sets values appropriate for each platform
+ - removed channel queue limit patch which was dropping frames on slower hardware until a tunable parameter can be implemented
  - bug: fixed extension generator for callgroups not having an internal extension defined
  - bug: fixed NAT configuration generator in sip.conf
  - bug: fixed dialplan_parse_pattern()

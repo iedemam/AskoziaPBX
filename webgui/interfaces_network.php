@@ -34,6 +34,8 @@ require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
 
+$pconfig['if'] = $lancfg['if'];
+$pconfig['bridge'] = $lancfg['bridge'];
 $pconfig['ipaddr'] = $lancfg['ipaddr'];
 $pconfig['subnet'] = $lancfg['subnet'];
 $pconfig['gateway'] = $lancfg['gateway'];
@@ -44,6 +46,9 @@ $pconfig['topology'] = $lancfg['topology'];
 $pconfig['extipaddr'] = $lancfg['extipaddr'];
 $pconfig['exthostname'] = $lancfg['exthostname'];
 $pconfig['spoofmac'] = $lancfg['spoofmac'];
+
+/* get list without VLAN interfaces */
+$networkinterfaces = network_get_interfaces();
 
 
 if ($_POST) {
@@ -92,9 +97,21 @@ if ($_POST) {
 	
 	if (!$input_errors) {
 	
-		unset($lancfg['ipaddr']);
-		unset($lancfg['subnet']);
-		unset($lancfg['gateway']);
+		if ($pconfig['if'] != $lancfg['if']) {
+			$lancfg['if'] = $pconfig['if'];
+			touch($d_sysrebootreqd_path);
+		}
+		
+		unset($lancfg['bridge']);
+		$lancfg['bridge'] = array();
+		$pconfig['bridge'] = array();
+		$keys = array_keys($_POST);
+		foreach ($networkinterfaces as $ifname => $ifinfo) {
+			if (in_array($ifname, $keys) && ($ifname != $pconfig['if'])) {
+				$lancfg['bridge'][] = $ifname;
+				$pconfig['bridge'][] = $ifname;
+			}
+		}
 	
 		$lancfg['ipaddr'] = $_POST['ipaddr'];
 		$lancfg['subnet'] = $_POST['subnet'];
@@ -108,15 +125,9 @@ if ($_POST) {
 		if ($_POST['dns3'])
 			$config['system']['dnsserver'][] = $_POST['dns3'];	
 
-		unset($lancfg['topology']);
 		$lancfg['topology'] = $_POST['topology'];
-
-		unset($lancfg['extipaddr']);
 		$lancfg['extipaddr'] = $_POST['extipaddr'];
-			
-		unset($lancfg['exthostname']);
 		$lancfg['exthostname'] = $_POST['exthostname'];
-		
 		$lancfg['spoofmac'] = $_POST['spoofmac'];
 		
 		write_config();
@@ -124,7 +135,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = interfaces_lan_configure();
+			$retval = network_lan_configure();
 			$retval |= asterisk_configure();
 			$retval |= system_resolvconf_generate();			
 			config_unlock();
@@ -152,6 +163,20 @@ function type_change() {
 			break;
 	}
 }
+
+function lan_if_change() {
+	switch (document.iform.if.value) {
+		<? foreach ($networkinterfaces as $ifname => $ifinfo): ?>
+		case "<?=$ifname;?>":
+			<? foreach ($networkinterfaces as $i_ifname => $i_ifinfo): ?>
+			document.iform.<?=$i_ifname;?>.disabled = 0;
+			document.iform.<?=$i_ifname;?>.checked = 0;
+			<? endforeach; ?>
+			document.iform.<?=$ifname;?>.disabled = 1;	
+			break;
+		<? endforeach; ?>
+	}
+}
 //-->
 </script>
 <form action="interfaces_network.php" method="post" name="iform" id="iform">
@@ -162,8 +187,13 @@ function type_change() {
 		<td class="tabnavtbl">
 			<ul id="tabnav"><?
 
-			$tabs = array('Settings' => 'interfaces_network.php',
-						'Assign' => 'interfaces_network_assign.php');
+			$tabs = array(
+				'Network'	=> 'interfaces_network.php',
+				//'Wireless'	=> 'interfaces_wireless.php',
+				'ISDN'		=> 'interfaces_isdn.php',
+				'Analog'	=> 'interfaces_analog.php',
+				//'Storage'	=> 'interfaces_storage.php'
+			);
 			dynamic_tab_menu($tabs);
 			
 			?></ul>
@@ -173,7 +203,28 @@ function type_change() {
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
-					<td colspan="2" valign="top" class="listtopic">LAN configuration</td>
+					<td width="22%" valign="top" class="vncellreq">LAN</td>
+					<td width="78%" class="vtable">
+						<select name="if" class="formfld" id="if" onchange="lan_if_change()">
+						<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
+							<option value="<?=$mainifname;?>" <? if ($mainifname == $pconfig['if']) echo "selected";?>> 
+						<? echo htmlspecialchars($mainifname . " (" . $mainifinfo['mac'] . ")"); ?></option>
+						<? endforeach; ?>
+						</select>
+						&nbsp;&nbsp;
+						<? foreach ($networkinterfaces as $ifname => $ifinfo): ?>
+							<input name="<?=$ifname;?>" id="<?=$ifname;?>" type="checkbox" value="yes"<?
+							if (in_array($ifname, $pconfig['bridge'])) 
+								echo "checked";
+							else if ($ifname == $mainifname)
+								echo "disabled";
+							?>><?=$ifname;?>&nbsp;&nbsp;
+						<? endforeach; ?>
+						<? if (count($networkinterfaces) >= 2): ?>
+						<br>
+						<span class="vexpl">Checked interfaces will be bridged to the main interface.</span>
+						<? endif; ?>
+					</td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq">IP address</td>
@@ -257,8 +308,9 @@ function type_change() {
 						<span class="vexpl"><span class="red"><strong>Warning:<br>
 						</strong></span>after you click &quot;Save&quot;, all current
 						calls will be dropped. You may also have to do one or more 
-						of the following steps before you can access your pbx again: 
+						of the following steps before you can access your PBX again: 
 						<ul>
+							<li>restart the PBX</li>
 							<li>change the IP address of your computer</li>
 							<li>access the webGUI with the new IP address</li>
 						</ul>

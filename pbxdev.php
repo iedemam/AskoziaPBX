@@ -39,6 +39,7 @@ $mini_httpd_version	= "mini_httpd-1.19";
 $asterisk_version	= "asterisk-1.4.11";
 $msmtp_version		= "msmtp-1.4.11";
 $zaptel_version		= "zaptel";
+$oslec_version		= "oslec-trunk";
 
 // --[ sounds ]----------------------------------------------------------------
 
@@ -166,6 +167,14 @@ function build_kernel($platform) {
 	_exec("gzip -9 /sys/i386/compile/$kernel/kernel");
 }
 
+function build_srcupdate() {
+	
+	build_syslogd();
+	build_clog();
+	build_isdn();
+	build_kernels();
+}
+
 function build_kernels() {
 	global $platforms;
 	
@@ -248,7 +257,7 @@ function build_asterisk() {
 		$patches = array(
 			"makefile",
 			"cdr_to_syslog",
-			"channel_queue",
+			//"channel_queue",
 			"voicemail_readback_number",
 			"chan_sip_default_cid"
 		);
@@ -289,6 +298,7 @@ function build_zaptel() {
 		"cp zaptel/zaptel.h ztcfg/tonezone.h /usr/local/include/zaptel/");
 		
 	// copy over better ztdummy.c
+	_exec("cd {$dirs['packages']}/$zaptel_version/ztdummy; cp ztdummy.c ztdummy_orig.c");
 	_exec("cp {$dirs['patches']}/packages/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
 	
 	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
@@ -309,9 +319,8 @@ function build_isdn() {
 	if (!file_exists("{$dirs['packages']}/i4b")) {
 		_exec("cd {$dirs['packages']}; ".
 			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b i4b");
-			
-		_exec("cd {$dirs['packages']}/i4b/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
 	}
+	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
 	
 	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
 		
@@ -364,12 +373,25 @@ function build_res_bonjour() {
 	global $dirs;
 	
 	$resver = "res_bonjour-2.0rc1";
-	if (file_exists(("{$dirs['packages']}/$ribver"))) {
+	if (file_exists(("{$dirs['packages']}/$resver"))) {
 		_exec("cd {$dirs['packages']}; fetch http://www.mezzo.net/asterisk/$resver.tgz");
 		_exec("cd {$dirs['packages']}; tar zxf $resver.tgz");
 	}
 	
 	
+	
+}
+
+function build_oslec() {
+	global $dirs, $oslec_version;
+	
+	if (!file_exists("{$dirs['packages']}/$oslec_version")) {
+		_exec("cd {$dirs['packages']}; ".
+			"svn http://svn.rowetel.com/software/oslec/trunk/ $oslec_version");
+	}
+	
+	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean");
+	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make");
 	
 }
 
@@ -381,6 +403,7 @@ function build_packages() {
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
+	build_oslec();
 	//build_res_bonjour();
 	//build_fop();
 }
@@ -891,7 +914,7 @@ function populate_everything($image_name) {
 function package($platform, $image_name) {
 	global $dirs;
 	global $mfsroot_pad, $asterisk_pad, $image_pad;
-	global $zaptel_version, $asterisk_version;
+	global $zaptel_version, $oslec_version, $asterisk_version;
 	global $low_power_modules;
 		
 	_set_permissions($image_name);
@@ -934,6 +957,8 @@ function package($platform, $image_name) {
 	foreach ($zaptel_modules as $zaptel_module) {
 		_exec("cp {$dirs['packages']}/$zaptel_version/$zaptel_module tmp/stage/boot/kernel/");
 	}
+	// ...oslec module
+	_exec("cp {$dirs['packages']}/$oslec_version/kernel-freebsd/oslec.ko tmp/stage/boot/kernel/");
 	
 	// XXX i4b module
 	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");

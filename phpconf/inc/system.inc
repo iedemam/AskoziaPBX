@@ -573,6 +573,7 @@ EOD;
 
 function system_load_kernel_modules() {
 	
+	mwexec("/sbin/kldload oslec");
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
