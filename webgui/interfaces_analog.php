@@ -39,10 +39,15 @@ if (!is_array($config['interfaces']['ab-unit']))
 analog_sort_ab_interfaces();
 $a_abinterfaces = &$config['interfaces']['ab-unit'];
 
+
+
+
 $configured_units = array();
-foreach ($a_abinterfaces as $unit) {
-	$configured_units[$unit['unit']]['name'] = $unit['name'];
-	$configured_units[$unit['unit']]['type'] = $unit['type'];
+foreach ($a_abinterfaces as $interface) {
+	$configured_units[$interface['unit']]['name'] = $interface['name'];
+	$configured_units[$interface['unit']]['type'] = $interface['type'];
+	$configured_units[$interface['unit']]['startsignal'] = $interface['startsignal'];
+	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -61,10 +66,14 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['type'] = $configured_units[$i]['type'];
+		$merged_units[$i]['startsignal'] = $configured_units[$i]['startsignal'];
+		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
 		$merged_units[$i]['type'] = $recognized_units[$i];
+		$merged_units[$i]['startsignal'] = "ks";
+		$merged_units[$i]['echocancel'] = "yes";
 	}
 }
 
@@ -122,22 +131,30 @@ if (file_exists($d_analogconfdirty_path)) {
 				</tr><?
 				
 			} else {
-			
+				/* XXX remove signaling, rearrange some bits, echo cancel & start don't seem to be working */
 				?><tr>
 					<td width="10%" class="listhdrr">Unit</td>
-					<td width="65%" class="listhdrr">Name</td>
-					<td width="20%" class="listhdrr">Type</td>
-					<td width="20%" class="listhdrr">Signaling</td>
+					<td width="30%" class="listhdrr">Name</td>
+					<td width="15%" class="listhdrr">Type</td>
+					<td width="20%" class="listhdrr">Start</td>
+					<td width="20%" class="listhdrr">Echo Canceller</td>
 					<td width="5%" class="list"></td>
 				</tr><?	
 			
 				foreach ($merged_units as $mu) {
+					if (isset($mu['startsignal'])) {
+						$startsignal = $analog_startsignals[$mu['startsignal']];
+						$startsignal = substr($startsignal, 0, strpos($startsignal, " "));	
+					} else {
+						$startsignal = "Kewl";
+					}
 			
 				?><tr>
 					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($mu['type']);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars($analog_signaling[$mu['type']]);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($startsignal);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars(isset($mu['echocancel']) ? "Enabled" : "");?>&nbsp;</td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_analog_edit.php?unit=<?=$mu['unit'];?>&type=<?=$mu['type'];?>"><img src="e.gif" title="edit analog interface" width="17" height="17" border="0"></a>
 					</td>

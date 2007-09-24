@@ -205,20 +205,49 @@ function analog_zaptel_conf_generate() {
 		return 1;
 	}
 
-	// interface definitions
 	$abinterfaces = analog_get_ab_interfaces();
 	foreach($abinterfaces as $abi) {
+		// fxo
 		if ($abi['type'] == "fxo") {
-			if (!$fxsks_line) {
-				$fxsks_line = "fxsks={$abi['unit']}";
-			} else {
-				$fxsks_line .= ",{$abi['unit']}";
+			if (!$abi['startsignal'] || $abi['startsignal'] == "ks") {
+				if (!$fxsks_line) {
+					$fxsks_line = "fxsks={$abi['unit']}";
+				} else {
+					$fxsks_line .= ",{$abi['unit']}";
+				}
+			} else if ($abi['startsignal'] == "gs") {
+				if (!$fxsgs_line) {
+					$fxsgs_line = "fxsgs={$abi['unit']}";
+				} else {
+					$fxsgs_line .= ",{$abi['unit']}";
+				}
+			} else if ($abi['startsignal'] == "ls") {
+				if (!$fxsls_line) {
+					$fxsls_line = "fxsls={$abi['unit']}";
+				} else {
+					$fxsls_line .= ",{$abi['unit']}";
+				}
 			}
-		} else if ($abi['type'] == "fxs"){
-			if (!$fxoks_line) {
-				$fxoks_line = "fxoks={$abi['unit']}";
-			} else {
-				$fxoks_line .= ",{$abi['unit']}";
+		// fxs
+		} else if ($abi['type'] == "fxs") {
+			if (!$abi['startsignal'] || $abi['startsignal'] == "ks") {
+				if (!$fxoks_line) {
+					$fxoks_line = "fxoks={$abi['unit']}";
+				} else {
+					$fxoks_line .= ",{$abi['unit']}";
+				}
+			} else if ($abi['startsignal'] == "gs") {
+				if (!$fxogs_line) {
+					$fxogs_line = "fxogs={$abi['unit']}";
+				} else {
+					$fxogs_line .= ",{$abi['unit']}";
+				}
+			} else if ($abi['startsignal'] == "ls") {
+				if (!$fxols_line) {
+					$fxols_line = "fxols={$abi['unit']}";
+				} else {
+					$fxols_line .= ",{$abi['unit']}";
+				}
 			}
 		}
 	}
@@ -226,8 +255,21 @@ function analog_zaptel_conf_generate() {
 	if ($fxsks_line) {
 		$conf .= "$fxsks_line\n";
 	}
+	if ($fxsgs_line) {
+		$conf .= "$fxsgs_line\n";
+	}
+	if ($fxsls_line) {
+		$conf .= "$fxsls_line\n";
+	}
+	
 	if ($fxoks_line) {
 		$conf .= "$fxoks_line\n";
+	}
+	if ($fxogs_line) {
+		$conf .= "$fxogs_line\n";
+	}
+	if ($fxols_line) {
+		$conf .= "$fxols_line\n";
 	}
 	
 	$analogconfig = $config['services']['analog'];
@@ -268,23 +310,23 @@ function analog_zapata_conf_generate() {
 	
 	$analogproviders = analog_get_providers();
 	foreach ($analogproviders as $p) {
+		$interface = analog_get_ab_interface($p['interface']);
 
-		if ($p['startsignal']) {
-			$conf .= "signalling=fxs_{$p['startsignal']}\n";
+		if ($interface['startsignal']) {
+			$conf .= "signalling=fxs_{$interface['startsignal']}\n";
 		} else {
 			$conf .= "signalling=fxs_ks\n";
 		}
 
-		$conf .= "busydetect=yes\n";
-		$conf .= "busycount=3\n";
-
-		if ($p['echocancel']) {
+		if (isset($interface['echocancel'])) {
 			$conf .= "echocancel=yes\n";
 		} else {
 			$conf .= "echocancel=no\n";
 		}
-		
 		$conf .= "echocancelwhenbridged=no\n";
+		
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
 		
 		if (!$p['language']) {
 			$conf .= "language=en\n";
@@ -298,24 +340,25 @@ function analog_zapata_conf_generate() {
 	
 	$analogphones = analog_get_phones();
 	foreach ($analogphones as $p) {
+		$interface = analog_get_ab_interface($p['interface']);
+		
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
 
-		if ($p['startsignal']) {
-			$conf .= "signalling=fxo_{$p['startsignal']}\n";
+		if ($interface['startsignal']) {
+			$conf .= "signalling=fxo_{$interface['startsignal']}\n";
 		} else {
 			$conf .= "signalling=fxo_ks\n";
 		}
 
-		$conf .= "busydetect=yes\n";
-		$conf .= "busycount=3\n";
-		
-		if ($p['echocancel']) {
+		if (isset($interface['echocancel'])) {
 			$conf .= "echocancel=yes\n";
 		} else {
 			$conf .= "echocancel=no\n";
 		}
-		
 		$conf .= "echocancelwhenbridged=no\n";
+		
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
 		
 		if (!$p['language']) {
 			$conf .= "language=en\n";
