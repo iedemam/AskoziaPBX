@@ -1,6 +1,5 @@
 pb11
  - zapata reloads aren't all working (restart needed sometimes)
- - zapata kewlstart / loopstart / groundstart options are needed
  - provider / phone status indicators on edit page
  - enable sip/iax/isdn/analog debug options on pbx log page
  - extend callgroup support to add delays, sequential groups
@@ -9,7 +8,6 @@ pb11
  - new option to log to storage partition
  - add "Dialplan -> Applications" page to map applications
  - multiple MSNs on ISDN, DID/DDI support in general
- - wakeme's new channel technology grab should be tested (not working with zap because ZAP/1)
 
  - fix extensions_exists
  - fix dialplan_providers.php to save posted config and display correctly when no providers are present

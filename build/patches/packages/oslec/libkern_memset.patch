@@ -1,0 +1,20 @@
+--- libkern.h.orig	Sun Sep 23 15:49:44 2007
++++ libkern.h	Sun Sep 23 15:51:06 2007
+@@ -137,7 +137,7 @@
+ {
+ 	return (bcmp(b1, b2, len));
+ }
+-
++/*
+ static __inline void *
+ memset(void *b, int c, size_t len)
+ {
+@@ -150,7 +150,7 @@
+ 			*bb++ = c;
+ 	return (b);
+ }
+-
++*/
+ /* fnmatch() return values. */
+ #define	FNM_NOMATCH	1	/* Match failed. */
+ 

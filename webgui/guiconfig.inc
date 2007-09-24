@@ -131,6 +131,12 @@ $dtmfmodes = array(
 	"info"
 );
 
+$analog_startsignals = array(
+	"ks" => "Kewl Start",
+	"gs" => "Ground Start",
+	"ls" => "Loop Start"
+);
+
 $prompt_languages = array(
 	"en" => "English",
 	"nl" => "Dutch",

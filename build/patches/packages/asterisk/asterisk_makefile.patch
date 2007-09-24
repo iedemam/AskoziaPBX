@@ -1,4 +1,4 @@
-# $Id$
+# $Id: asterisk_makefile.patch 72 2007-04-26 15:59:03Z michael.iedema $
 # patch for AskoziaPBX
 
 --- Makefile.orig	Wed Mar 14 10:41:41 2007

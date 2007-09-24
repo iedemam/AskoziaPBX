@@ -342,13 +342,13 @@ setwakeup:
 	} else {
 		char buff[256];
 		sprintf(buff, 
-			"Channel: %s/%s@internal\n"
+			"Channel: Local/%s@internal\n"
 			"Callerid: Wake UP!\n"
 			"MaxRetries: 5\n"
 			"RetryTime: 60\n"
 			"WaitTime: 15\n"
 			"Application: WakeMe\n"
-			"Data: WAKE", chan->tech->type, chan->cid.cid_num);
+			"Data: WAKE", chan->cid.cid_num);
 		fprintf(call_file, buff);
 		fflush(call_file);
 		fclose(call_file);

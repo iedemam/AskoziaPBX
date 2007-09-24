@@ -38,7 +38,7 @@ $pecl_sqlite_version= "SQLite-1.0.3";
 $mini_httpd_version	= "mini_httpd-1.19";
 $asterisk_version	= "asterisk-1.4.11";
 $msmtp_version		= "msmtp-1.4.11";
-$zaptel_version		= "zaptel";
+$zaptel_version		= "zaptel-trunk";
 $oslec_version		= "oslec-trunk";
 
 // --[ sounds ]----------------------------------------------------------------
@@ -263,13 +263,13 @@ function build_asterisk() {
 		);
 		foreach ($patches as $patch) {
 			_exec("cd {$dirs['packages']}/$asterisk_version; ".
-				"patch < {$dirs['patches']}/packages/asterisk_$patch.patch");
+				"patch < {$dirs['patches']}/packages/asterisk/asterisk_$patch.patch");
 			_log("\n\n --- patch: $patch -----------\n\n");
 		}
 		_stamp_package_as_patched($asterisk_version);
 	}
 	// copy make options
-	_exec("cp {$dirs['patches']}/packages/menuselect.makeopts /etc/asterisk.makeopts");
+	_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
 	// copy wakeme application
 	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/$asterisk_version/apps");
 	// copy includes
@@ -285,7 +285,12 @@ function build_zaptel() {
 		_exec("cd {$dirs['packages']}; ".
 			"svn co --username svn --password svn ".
 			"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 $zaptel_version");
-	} 
+	}
+	if (!_is_patched($zaptel_version)) {
+		_exec("cd {$dirs['packages']}/$zaptel_version; ".
+			"patch < {$dirs['patches']}/packages/zaptel/zaptel_oslec.patch");
+		_stamp_package_as_patched($zaptel_version);
+	}	
 	// remove old headers if they're around
 	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
 	
@@ -299,7 +304,7 @@ function build_zaptel() {
 		
 	// copy over better ztdummy.c
 	_exec("cd {$dirs['packages']}/$zaptel_version/ztdummy; cp ztdummy.c ztdummy_orig.c");
-	_exec("cp {$dirs['patches']}/packages/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
+	_exec("cp {$dirs['patches']}/packages/zaptel/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
 	
 	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
 	_exec("cd {$dirs['packages']}/$zaptel_version; make; make install");
@@ -387,7 +392,12 @@ function build_oslec() {
 	
 	if (!file_exists("{$dirs['packages']}/$oslec_version")) {
 		_exec("cd {$dirs['packages']}; ".
-			"svn http://svn.rowetel.com/software/oslec/trunk/ $oslec_version");
+			"svn co http://svn.rowetel.com/software/oslec/trunk/ $oslec_version");
+	}
+	if (!_is_patched($oslec_version)) {
+		_exec("mkdir {$dirs['packages']}/$oslec_version/kernel-freebsd");
+		_exec("cp {$dirs['patches']}/packages/oslec/* {$dirs['packages']}/$oslec_version/kernel-freebsd");
+		_stamp_package_as_patched($oslec_version);
 	}
 	
 	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean");

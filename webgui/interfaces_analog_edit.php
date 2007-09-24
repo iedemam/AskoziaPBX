@@ -51,6 +51,8 @@ $configured_units = array();
 foreach ($a_abinterfaces as $interface) {
 	$configured_units[$interface['unit']]['name'] = $interface['name'];
 	$configured_units[$interface['unit']]['type'] = $interface['type'];
+	$configured_units[$interface['unit']]['startsignal'] = $interface['startsignal'];
+	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -69,10 +71,14 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['type'] = $configured_units[$i]['type'];
+		$merged_units[$i]['startsignal'] = $configured_units[$i]['startsignal'];
+		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
 		$merged_units[$i]['type'] = $recognized_units[$i];
+		$merged_units[$i]['startsignal'] = "ks";
+		$merged_units[$i]['echocancel'] = true;
 	}
 }
 
@@ -80,6 +86,8 @@ for ($i = 0; $i <= $n; $i++) {
 $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['type'] = $merged_units[$unit]['type'];
+$pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
+$pconfig['echocancel'] = isset($merged_units[$unit]['echocancel']) ? "yes" : false;
 
 
 if ($_POST) {
@@ -95,6 +103,8 @@ if ($_POST) {
 				if ($a_abinterfaces[$i]['unit'] == $unit) {
 					$a_abinterfaces[$i]['name'] = $_POST['name'];
 					$a_abinterfaces[$i]['type'] = $_POST['type'];
+					$a_abinterfaces[$i]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
+					$a_abinterfaces[$i]['echocancel'] = $_POST['echocancel'] ? true : false;
 				}
 			}
 
@@ -102,6 +112,8 @@ if ($_POST) {
 			$a_abinterfaces[$n]['unit'] = $unit;
 			$a_abinterfaces[$n]['name'] = $_POST['name'];
 			$a_abinterfaces[$n]['type'] = $_POST['type'];
+			$a_abinterfaces[$n]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
+			$a_abinterfaces[$n]['echocancel'] = $_POST['echocancel'] ? true : false;
 		}
 
 
@@ -124,7 +136,21 @@ if ($_POST) {
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
 			<br><span class="vexpl">descriptive name</span>
 		</td>
-	</tr><? /*
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell">Start Signaling</td>
+		<td class="vtable">
+			<select name="startsignal" class="formfld" id="startsignal">
+			<? foreach ($analog_startsignals as $signalabb => $signalname) : ?>
+			<option value="<?=$signalabb;?>" <?
+			if ($signalabb == $pconfig['startsignal'])
+				echo "selected"; ?>
+			><?=$signalname;?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl">In nearly all cases, "Kewl Start" is the appropriate choice here.</span>
+		</td>
+	</tr>
 	<tr> 
 		<td valign="top" class="vncell">Echo Canceller</td>
 		<td class="vtable">
@@ -132,8 +158,6 @@ if ($_POST) {
 			Enable echo cancellation.
 		</td>
 	</tr>
-	
-	*/ ?>
 	<tr> 
 		<td valign="top">&nbsp;</td>
 		<td>

@@ -268,13 +268,22 @@ function analog_zapata_conf_generate() {
 	
 	$analogproviders = analog_get_providers();
 	foreach ($analogproviders as $p) {
-		$conf .= "signalling=fxs_ks\n";
-		//$conf .= "hanguponpolarityswitch=yes\n";
+
+		if ($p['startsignal']) {
+			$conf .= "signalling=fxs_{$p['startsignal']}\n";
+		} else {
+			$conf .= "signalling=fxs_ks\n";
+		}
+
 		$conf .= "busydetect=yes\n";
 		$conf .= "busycount=3\n";
+
+		if ($p['echocancel']) {
+			$conf .= "echocancel=yes\n";
+		} else {
+			$conf .= "echocancel=no\n";
+		}
 		
-		$conf .= "echocancel=yes\n";
-		//$conf .= "echotraining=800\n";
 		$conf .= "echocancelwhenbridged=no\n";
 		
 		if (!$p['language']) {
@@ -290,13 +299,22 @@ function analog_zapata_conf_generate() {
 	$analogphones = analog_get_phones();
 	foreach ($analogphones as $p) {
 		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
-		$conf .= "signalling=fxo_ks\n";
-		//$conf .= "hanguponpolarityswitch=yes\n";
+
+		if ($p['startsignal']) {
+			$conf .= "signalling=fxo_{$p['startsignal']}\n";
+		} else {
+			$conf .= "signalling=fxo_ks\n";
+		}
+
 		$conf .= "busydetect=yes\n";
 		$conf .= "busycount=3\n";
 		
-		$conf .= "echocancel=yes\n";
-		//$conf .= "echotraining=800\n";
+		if ($p['echocancel']) {
+			$conf .= "echocancel=yes\n";
+		} else {
+			$conf .= "echocancel=no\n";
+		}
+		
 		$conf .= "echocancelwhenbridged=no\n";
 		
 		if (!$p['language']) {
