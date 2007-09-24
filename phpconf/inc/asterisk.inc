@@ -875,7 +875,8 @@ function asterisk_get_extensions() {
 		analog_get_extensions(),
 		conferencing_get_extensions(),
 		external_get_extensions(),
-		dialplan_get_callgroup_extensions()
+		dialplan_get_callgroup_extensions(),
+		dialplan_get_application_extensions()
 	);
 }
 
@@ -1070,6 +1071,19 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 
 		$dial .= "exten => $exten,$prio,".
 			"Macro(vm|$dstring|$vm_account|$readbacknum|to)\n";
+
+	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
+		$app = dialplan_get_application($uniqid);
+		
+		$dial .= "exten => $exten,$prio,Answer()\n";
+		$prio++;
+		if ($app['name'] == "WakeMe") {
+			$conf .= "exten => $exten,$prio,Set(CHANNEL(language)=en)\n";
+		}
+		$prio++;
+		$dial .= "exten => $exten,$prio,{$app['name']}()\n";
+		$prio++;
+		$dial .= "exten => $exten,$prio,Hangup()\n";
 	}
 	
 	return $dial;

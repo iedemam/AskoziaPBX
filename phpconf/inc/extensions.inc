@@ -152,35 +152,27 @@ EOD;
 		$conf .= asterisk_uniqid_to_dial($group['extension'], $group['uniqid']);
 	}
 	
-	$conf .= <<<EOD
-
-exten => 00003246,1,Answer()
-exten => 00003246,2,Echo()
-exten => 00003246,3,Hangup()
-
-exten => 000064554,1,Answer()
-exten => 000064554,2,Milliwatt()
-exten => 000064554,3,Hangup()
-
-exten => 00009253,1,Answer()
-exten => 00009253,2,Set(CHANNEL(language)=en) 
-exten => 00009253,3,WakeMe()
-exten => 00009253,4,Hangup()
-
-include => parkedcalls
-
-
-EOD;
+	$a_applications = dialplan_get_applications();
+	foreach ($a_applications as $app) {
+		$conf .= "exten => {$app['extension']},1,Answer()\n";
+		if ($app['name'] == "WakeMe") {
+			$conf .= "exten => {$app['extension']},n,Set(CHANNEL(language)=en)\n";
+		}
+		$conf .= "exten => {$app['extension']},n,{$app['name']}()\n";
+		$conf .= "exten => {$app['extension']},n,Hangup()\n";
+		$conf .= "\n";
+	}
 	
 	// conference rooms
 	$rooms = conferencing_get_rooms();
 	foreach ($rooms as $room) {
 		$conf .= "exten => {$room['number']},1,Answer()\n";
-		$conf .= "exten => {$room['number']},2,MeetMe({$room['number']},M)\n";
-		$conf .= "exten => {$room['number']},3,Hangup()\n\n";
+		$conf .= "exten => {$room['number']},n,MeetMe({$room['number']},M)\n";
+		$conf .= "exten => {$room['number']},n,Hangup()\n\n";
 	}
 
-	$conf .= "\n\n";
+	$conf .= "include => parkedcalls\n\n";
+
 
 	// sip providers
 	$a_sipproviders = sip_get_providers();

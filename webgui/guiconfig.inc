@@ -137,6 +137,12 @@ $analog_startsignals = array(
 	"ls" => "Loop Start"
 );
 
+$applications = array(
+	"Echo" => "Echos audio and video back to the caller as soon as it is received. Used to test connection delay.",
+	"Milliwatt" => "Generates a constant 1000Hz tone. Used to test connection quality.",
+	"WakeMe" => "Wake-Up call manager. Call to set and cancel wake-up calls on the current extension."
+);
+
 $prompt_languages = array(
 	"en" => "English",
 	"nl" => "Dutch",
@@ -655,6 +661,17 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				if ($room['uniqid'] == $current_incoming_extension) 
 					echo "selected"; ?>> 
 				<? echo "&nbsp;&nbsp;{$room['name']} &lt;{$room['number']}&gt;"; ?></option>
+				<?php endforeach; ?>
+				<?php endif; ?>
+				
+				<?php if (count($a_applications = dialplan_get_applications()) > 0): ?>
+				<?php $have_extension = true; ?>
+				<option>Applications</option>
+				<?php foreach ($a_applications as $app): ?>
+				<option value="<?=$app['uniqid'];?>" <?php 
+				if ($app['uniqid'] == $current_incoming_extension) 
+					echo "selected"; ?>> 
+				<? echo "&nbsp;&nbsp;{$app['name']}"; ?></option>
 				<?php endforeach; ?>
 				<?php endif; ?>
 			

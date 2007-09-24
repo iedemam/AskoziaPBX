@@ -283,6 +283,30 @@ function convert_config() {
 		$config['version'] = "1.1";
 	}
 	
+	/* convert 1.1 -> 1.2 */
+	if ($config['version'] == "1.1") {
+		
+		// add default applications to new mapper
+		$apps[] = array(
+				"name" => "Echo",
+				"extension" => "00003246",
+				"uniqid" => "APPLICATION-MAPPING-83606076846f835d8828a4");
+
+		$apps[] = array(
+				"name" => "Milliwatt",
+				"extension" => "000064554",
+				"uniqid" => "APPLICATION-MAPPING-48856682646f8381701993");
+
+		$apps[] = array(
+				"name" => "WakeMe",
+				"extension" => "00009253",
+				"uniqid" => "APPLICATION-MAPPING-202074715246f8385a7a820");
+		
+		$config['dialplan']['application'] = $apps;
+		
+		$config['version'] = "1.2";
+	}
+	
 	write_config();
 	
 	if ($g['booting'])
@@ -397,6 +421,12 @@ function config_build_uniqid_map($config) {
 	$n = count($config['dialplan']['callgroup']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['dialplan']['callgroup'][$i]['uniqid']] = $i;
+	}
+	
+	// applications
+	$n = count($config['dialplan']['application']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['dialplan']['application'][$i]['uniqid']] = $i;
 	}
 	
 	return $uniqid_map;

@@ -6,7 +6,6 @@ pb11
  - storage interface (add storage partition for extended capabilities)
  - extended capabilities hooks into the gui
  - new option to log to storage partition
- - add "Dialplan -> Applications" page to map applications
  - multiple MSNs on ISDN, DID/DDI support in general
 
  - fix extensions_exists

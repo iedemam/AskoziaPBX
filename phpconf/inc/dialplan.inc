@@ -67,6 +67,45 @@ function dialplan_get_callgroup_extensions() {
 	return $extensions;
 }
 
+function dialplan_get_applications() {
+	global $config;
+	
+	if (!is_array($config['dialplan']['application']))
+		$config['dialplan']['application'] = array();
+		
+	dialplan_sort_applications();
+		
+	return $config['dialplan']['application'];
+}
+
+function dialplan_get_application($uniqid) {
+	global $config, $uniqid_map;
+	return $config['dialplan']['application'][$uniqid_map[$uniqid]];
+}
+
+function dialplan_sort_applications() {
+	global $config;
+
+	usort($config['dialplan']['application'], "_dpapplicationcmp");	
+}
+function _dpapplicationcmp($a, $b) {
+	if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
+}
+
+function dialplan_get_application_extensions() {
+	global $config;
+	
+	$extensions = array();
+	if (is_array($config['dialplan']['application']))
+		foreach($config['dialplan']['application'] as $app)
+			$extensions[] = $app['extension'];
+
+	return $extensions;
+}
+
 function dialplan_features_conf_generate() {
 	global $config;
 	

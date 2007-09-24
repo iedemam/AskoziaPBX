@@ -156,8 +156,9 @@ $menu['Phones']['Analog']				= array('phones_analog.php');
 $menu['Phones']['External']				= array('phones_external.php');
 
 /* Dialplan */
-$menu['Dialplan']['Providers']			= array('dialplan_providers.php');
+$menu['Dialplan']['Applications']		= array('dialplan_applications.php');
 $menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php');
+$menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 $menu['Dialplan']['Transfers']			= array('dialplan_transfers.php');
 											
 /* Services */
