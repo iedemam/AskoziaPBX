@@ -3,26 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>webgui/dialplan_callgroups.php</string>
+	<string>pbxdev.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-09-24T13:45:24Z</date>
+			<date>2007-09-27T14:10:53Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-09-24T16:53:08Z</date>
+			<date>2007-09-27T12:40:47Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-09-24T21:00:11Z</date>
+			<date>2007-09-26T15:43:18Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -74,7 +76,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>252</integer>
+	<integer>233</integer>
 	<key>metaData</key>
 	<dict>
 		<key>CHANGELOG</key>
@@ -82,9 +84,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>54</integer>
+				<integer>71</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -96,9 +98,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>2</integer>
+				<integer>19</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -124,84 +126,86 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>48</integer>
+				<integer>112</integer>
 				<key>line</key>
-				<integer>271</integer>
+				<integer>405</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>244</integer>
+			<integer>384</integer>
 		</dict>
-		<key>phpconf/inc/analog.inc</key>
+		<key>phpconf/inc/globals.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>44</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>297</integer>
+			<integer>10</integer>
 		</dict>
-		<key>webgui/diag_ping.php</key>
+		<key>phpconf/inc/network.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>46</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>56</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>50</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>46</integer>
+			</dict>
 		</dict>
-		<key>webgui/dialplan_callgroups.php</key>
+		<key>phpconf/inc/wireless.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>170</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>135</integer>
 		</dict>
-		<key>webgui/guiconfig.inc</key>
+		<key>webgui/interfaces_wireless.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>45</integer>
 				<key>line</key>
-				<integer>115</integer>
+				<integer>167</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>115</integer>
-		</dict>
-		<key>webgui/interfaces_analog.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>78</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>44</integer>
+			<integer>156</integer>
 		</dict>
 		<key>webgui/status.php</key>
 		<dict>
@@ -231,21 +235,35 @@
 			<key>firstVisibleLine</key>
 			<integer>5</integer>
 		</dict>
+		<key>webgui/status_interfaces.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>382</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>427</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
+		<string>phpconf/inc/wireless.inc</string>
+		<string>phpconf/inc/globals.inc</string>
+		<string>phpconf/inc/network.inc</string>
+		<string>webgui/interfaces_wireless.php</string>
+		<string>webgui/status_interfaces.php</string>
 		<string>NOTES</string>
-		<string>phpconf/inc/analog.inc</string>
-		<string>webgui/diag_ping.php</string>
-		<string>webgui/dialplan_callgroups.php</string>
-		<string>webgui/interfaces_analog.php</string>
-		<string>webgui/guiconfig.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{3, 1}, {919, 777}}</string>
+	<string>{{3, 2}, {982, 776}}</string>
 </dict>
 </plist>

@@ -44,6 +44,7 @@ require_once("sip.inc");
 require_once("system.inc");
 require_once("util.inc");
 require_once("voicemail.inc");
+require_once("wireless.inc");
 
 
 ?>

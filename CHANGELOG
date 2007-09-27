@@ -2,9 +2,11 @@
  - new platform: PC Engines - ALIX.1x
  - new platform: Soekris - net55xx
  - new platform: Herologic - HL-4xx
- - added "echo cancel" option to Analog interfaces
  - added "start signaling" option to Analog interfaces
+ - added "echo cancel" option to Analog interfaces
+   - ported OSLEC (http://rowetel.com/ucasterisk/oslec) to FreeBSD for this and some testing is still needed
  - added "Dialplan -> Applications" page so applications may be mapped to the dialplan
+ - added Wireless interface support
  - additional network interfaces may now be bridged to the "main" interface
  - "Interfaces" menu collapsed into a single tabbed page under "System -> Interfaces"
  - resetting to factory defaults now sets values appropriate for each platform

@@ -12,14 +12,12 @@ pb11
  - fix dialplan_providers.php to save posted config and display correctly when no providers are present
  - complete is_valid_xxx() checks
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
- - AVM cards are broken
  - confirm "Ringing()" behavior/usage on ISDN connections
 
  - added sqlite cdr module and sqlite extension to php
  - added options BRIDGE to kernel
  - added bsdlabel to m0n0wall files
    - config.inc:96 - disk listing
- - added wlan & bridge options from new M0N0WALL kernel
 
 
 -----------------

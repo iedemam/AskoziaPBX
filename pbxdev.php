@@ -145,11 +145,18 @@ function patch_bootloader() {
 	_exec("cd /sys/boot/i386/libi386; patch < {$dirs['patches']}/user/libi386.patch");
 }
 
+function patch_hostapd() {
+	global $dirs;
+	
+	_exec("cd /usr/src; patch < ". $dirs['patches'] ."/user/hostapd.patch");
+}
+
 function patch_everything() {
 	
 	patch_kernel();
 	patch_syslogd();
 	patch_bootloader();
+	patch_hostapd();
 }
 
 function build_kernel($platform) {
@@ -172,6 +179,7 @@ function build_srcupdate() {
 	build_syslogd();
 	build_clog();
 	build_isdn();
+	build_hostapd();
 	build_kernels();
 }
 
@@ -279,7 +287,7 @@ function build_asterisk() {
 }
 
 function build_zaptel() {
-	global $dirs, $zaptel_version;
+	global $dirs, $zaptel_version, $oslec_version;
 	
 	if (!file_exists("{$dirs['packages']}/$zaptel_version")) {
 		_exec("cd {$dirs['packages']}; ".
@@ -288,7 +296,7 @@ function build_zaptel() {
 	}
 	if (!_is_patched($zaptel_version)) {
 		_exec("cd {$dirs['packages']}/$zaptel_version; ".
-			"patch < {$dirs['patches']}/packages/zaptel/zaptel_oslec.patch");
+			"patch < {$dirs['packages']}/$oslec_version/kernel-freebsd/zaptel-trunk.diff");
 		_stamp_package_as_patched($zaptel_version);
 	}	
 	// remove old headers if they're around
@@ -396,7 +404,8 @@ function build_oslec() {
 	}
 	if (!_is_patched($oslec_version)) {
 		_exec("mkdir {$dirs['packages']}/$oslec_version/kernel-freebsd");
-		_exec("cp {$dirs['patches']}/packages/oslec/* {$dirs['packages']}/$oslec_version/kernel-freebsd");
+		_exec("cd {$dirs['packages']}/$oslec_version; patch < {$dirs['patches']}/packages/oslec/oslec_fbsd_0.1.diff");
+		_exec("rm {$dirs['packages']}/$oslec_version/*.orig");
 		_stamp_package_as_patched($oslec_version);
 	}
 	
@@ -405,15 +414,19 @@ function build_oslec() {
 	
 }
 
+function build_hostapd() {
+	_exec("cd /usr/src/usr.sbin/wpa/hostapd; make clean; make; make install");	
+}
+
 function build_packages() {
 
 	build_php();
 	build_msmtp();
 	build_minihttpd();
+	build_oslec();
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
-	build_oslec();
 	//build_res_bonjour();
 	//build_fop();
 }
@@ -433,6 +446,7 @@ function build_everything() {
 	build_tools();
 	build_kernels();
 	build_bootloader();
+	build_hostapd();
 }
 
 function create($image_name) {

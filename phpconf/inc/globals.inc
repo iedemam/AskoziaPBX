@@ -43,6 +43,7 @@ $g = array(
     "www_path" => "/usr/local/www",
     "xml_rootobj" => "askoziapbx",
     "debug" => false,
+    "wireless_hostap_regex" => "/^(wi|ath|ral|ural)/",
     "latest_config" => "1.2"
 );
 

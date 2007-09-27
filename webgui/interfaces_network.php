@@ -189,7 +189,7 @@ function lan_if_change() {
 
 			$tabs = array(
 				'Network'	=> 'interfaces_network.php',
-				//'Wireless'	=> 'interfaces_wireless.php',
+				'Wireless'	=> 'interfaces_wireless.php',
 				'ISDN'		=> 'interfaces_isdn.php',
 				'Analog'	=> 'interfaces_analog.php',
 				//'Storage'	=> 'interfaces_storage.php'
@@ -205,24 +205,30 @@ function lan_if_change() {
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq">LAN</td>
 					<td width="78%" class="vtable">
-						<select name="if" class="formfld" id="if" onchange="lan_if_change()">
-						<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
-							<option value="<?=$mainifname;?>" <? if ($mainifname == $pconfig['if']) echo "selected";?>> 
-						<? echo htmlspecialchars($mainifname . " (" . $mainifinfo['mac'] . ")"); ?></option>
-						<? endforeach; ?>
-						</select>
-						&nbsp;&nbsp;
-						<? foreach ($networkinterfaces as $ifname => $ifinfo): ?>
-							<input name="<?=$ifname;?>" id="<?=$ifname;?>" type="checkbox" value="yes"<?
-							if (in_array($ifname, $pconfig['bridge'])) 
-								echo "checked";
-							else if ($ifname == $mainifname)
-								echo "disabled";
-							?>><?=$ifname;?>&nbsp;&nbsp;
-						<? endforeach; ?>
-						<? if (count($networkinterfaces) >= 2): ?>
-						<br>
-						<span class="vexpl">Checked interfaces will be bridged to the main interface.</span>
+						
+						<? if (count($networkinterfaces) == 1): ?>
+							<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
+							<? echo htmlspecialchars($mainifname . " (" . $mainifinfo['mac'] . ")"); ?>
+							<input id="if" name="if" type="hidden" value="<?=$mainifname;?>">
+							<? endforeach; ?>
+						<? else: ?>
+							<select name="if" class="formfld" id="if" onchange="lan_if_change()">
+							<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
+								<option value="<?=$mainifname;?>" <? if ($mainifname == $pconfig['if']) echo "selected";?>> 
+							<? echo htmlspecialchars($mainifname . " (" . $mainifinfo['mac'] . ")"); ?></option>
+							<? endforeach; ?>
+							</select>
+							&nbsp;&nbsp;
+							<? foreach ($networkinterfaces as $ifname => $ifinfo): ?>
+								<input name="<?=$ifname;?>" id="<?=$ifname;?>" type="checkbox" value="yes"<?
+								if (in_array($ifname, $pconfig['bridge'])) 
+									echo "checked";
+								else if ($ifname == $pconfig['if'])
+									echo "disabled";
+								?>><?=$ifname;?>&nbsp;&nbsp;
+							<? endforeach; ?>
+							<br>
+							<span class="vexpl">Checked interfaces will be bridged to the main interface.</span>
 						<? endif; ?>
 					</td>
 				</tr>

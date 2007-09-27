@@ -70,6 +70,7 @@ usr/sbin/ancontrol
 usr/sbin/arp
 usr/sbin/chown
 usr/sbin/chroot
+usr/sbin/hostapd
 usr/sbin/pwd_mkdb
 usr/sbin/traceroute
 usr/sbin/pciconf

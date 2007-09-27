@@ -135,7 +135,8 @@ function get_interface_mac($interface) {
 }
 
 /* returns a list of interfaces with MAC addresses
-   (skips VLAN and other virtual interfaces) */
+   - skips VLAN and other virtual interfaces
+   - also skips WLAN interfaces */
 function network_get_interfaces() {
 	
 	global $g;
@@ -153,7 +154,7 @@ function network_get_interfaces() {
 		if (substr($ifname, -1) == "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 		
-		if (!preg_match("/^(ppp|sl|gif|faith|lo|ng|vlan|tun)/", $ifname)) {
+		if (!preg_match("/^(ppp|sl|gif|faith|lo|ng|vlan|tun|wi|ath|ral|ural)/", $ifname)) {
 			$iflist[$ifname] = array();
 			
 			$iflist[$ifname]['mac'] = chop($alink[3]);

@@ -69,16 +69,89 @@ function get_network_interface_info($ifdescr) {
 		exec("/sbin/ifconfig " . $ifinfo['hwif'], $ifconfiginfo);
 		
 		foreach ($ifconfiginfo as $ici) {
-			if (preg_match("/media: .*? \((.*?)\)/", $ici, $matches)) {
-				$ifinfo['media'] = $matches[1];
-			} else if (preg_match("/media: Ethernet (.*)/", $ici, $matches)) {
-				$ifinfo['media'] = $matches[1];
+			if (!$ifdescr == 'wireless') {
+				/* don't list media/speed for wireless cards, as it always
+				   displays 2 Mbps even though clients can connect at 11 Mbps */
+				if (preg_match("/media: .*? \((.*?)\)/", $ici, $matches)) {
+					$ifinfo['media'] = $matches[1];
+				} else if (preg_match("/media: Ethernet (.*)/", $ici, $matches)) {
+					$ifinfo['media'] = $matches[1];
+				}
 			}
 			if (preg_match("/status: (.*)$/", $ici, $matches)) {
 				if ($matches[1] != "active")
 					$ifinfo['status'] = $matches[1];
 			}
+			if (preg_match("/channel (\S*)/", $ici, $matches)) {
+				$ifinfo['channel'] = $matches[1];
+			}
+			if (preg_match("/ssid (\".*?\"|\S*)/", $ici, $matches)) {
+				if ($matches[1][0] == '"')
+					$ifinfo['ssid'] = substr($matches[1], 1, -1);
+				else
+					$ifinfo['ssid'] = $matches[1];
+			}
 		}		
+	}
+	
+	return $ifinfo;
+}
+
+function get_wireless_info($ifdescr) {
+	
+	global $config, $g;
+	
+	$ifinfo = array();
+	$ifinfo['if'] = $config['interfaces'][$ifdescr]['if'];
+	
+	if ($config['interfaces'][$ifdescr]['mode'] != "hostap") {
+		/* get scan list */
+		exec("/sbin/ifconfig -v " . $ifinfo['if'] . " list scan", $scanlist);
+		
+		$ifinfo['scanlist'] = array();
+		$title = array_shift($scanlist);
+		
+		/* determine width of SSID field */
+		$ssid_fldwidth = strpos($title, "BSSID");
+		
+		foreach ($scanlist as $sl) {
+			if ($sl) {
+				$slent = array();
+				
+				$slent['ssid'] = trim(substr($sl, 0, $ssid_fldwidth));
+				
+				$remflds = preg_split("/\s+/", substr($sl, $ssid_fldwidth), 6);
+				
+				$slent['bssid'] = $remflds[0];
+				$slent['channel'] = $remflds[1];
+				$slent['rate'] = $remflds[2];
+				list($slent['sig'],$slent['noise']) = explode(":", $remflds[3]);
+				$slent['int'] = $remflds[4];
+				$slent['caps'] = preg_split("/\s+/", $remflds[5]);
+				
+				$ifinfo['scanlist'][] = $slent;
+			}
+		}
+	}
+	
+	/* if in hostap mode: get associated stations */
+	if ($config['interfaces'][$ifdescr]['mode'] == "hostap") {
+		exec("/sbin/ifconfig -v " . $ifinfo['if'] . " list sta", $aslist);
+		
+		$ifinfo['aslist'] = array();
+		array_shift($aslist);
+		foreach ($aslist as $as) {
+			if ($as) {
+				$asa = preg_split("/\s+/", $as);
+				$aslent = array();
+				$aslent['mac'] = $asa[0];
+				$aslent['rate'] = str_replace("M", " Mbps", $asa[3]);
+				$aslent['rssi'] = $asa[4];
+				$aslent['caps'] = $asa[8];
+				$aslent['flags'] = $asa[9];
+				$ifinfo['aslist'][] = $aslent;
+			}
+		}
 	}
 	
 	return $ifinfo;
@@ -125,7 +198,10 @@ function get_analog_interface_info() {
 <table width="100%" border="0" cellspacing="0" cellpadding="0"><?
 
 	$i = 0;
-	$ifdescrs = array('lan' => 'Network');
+	$ifdescrs = array(
+		'lan' => 'Network',
+		'wireless' => 'Wireless'
+	);
 	
 	foreach ($ifdescrs as $ifdescr => $ifname) {
 		$ifinfo = get_network_interface_info($ifdescr);
@@ -181,6 +257,20 @@ function get_analog_interface_info() {
 				</tr><?
 			}
 			
+			if ($ifinfo['channel']) {
+				?><tr> 
+					<td class="vncellt">Channel</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['channel']);?></td>
+				</tr><?
+			}
+			
+			if ($ifinfo['ssid']) {
+				?><tr> 
+					<td class="vncellt">SSID</td>
+					<td class="listr"><?=htmlspecialchars($ifinfo['ssid']);?></td>
+				</tr><?
+			}
+			
 			?><tr> 
 				<td class="vncellt">In/Out Packets</td>
 				<td class="listr"> 
@@ -204,6 +294,97 @@ function get_analog_interface_info() {
 					<td class="listr"><?=htmlspecialchars($ifinfo['collisions']);?></td>
 				</tr><?
 			}
+		}
+		
+		if ($ifdescr == "wireless") {
+			
+			$ifinfo = get_wireless_info($ifdescr);
+
+
+			if (isset($ifinfo['scanlist'])) {
+			
+			?><tr> 
+				<td width="22%" valign="top" class="vncellt">Last scan results</td>
+				<td width="78%" class="listrpad"> 
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr> 
+							<td width="35%" class="listhdrr">SSID</td>
+							<td width="25%" class="listhdrr">BSSID</td>
+							<td width="10%" class="listhdrr">Channel</td>
+							<td width="10%" class="listhdrr">Rate</td>
+							<td width="10%" class="listhdrr">Signal</td>
+							<td width="10%" class="listhdrr">Noise</td>
+						</tr><?
+						
+					foreach ($ifinfo['scanlist'] as $ss) {
+						?><tr> 
+							<td class="listlr" nowrap><?
+							if (!$ss['ssid']) 
+								echo "<span class=\"gray\">(hidden)</span>";
+							else
+								echo htmlspecialchars($ss['ssid']);
+			    	
+							if (strpos($ss['caps'][0], "E") !== false) {
+								?><img src="lock.gif" width="7" height="9"><?
+							}
+							?></td>
+							<td class="listr"><?=htmlspecialchars($ss['bssid']);?></td>
+							<td class="listr"><?=htmlspecialchars($ss['channel']);?></td>
+							<td class="listr"><?=htmlspecialchars($ss['rate']);?></td>
+							<td class="listr"><?=htmlspecialchars($ss['sig']);?></td>
+							<td class="listr"><?=htmlspecialchars($ss['noise']);?></td>
+						</tr><?
+					}
+                	
+					?></table>
+				</td>
+			</tr><?
+			
+			}
+
+			if (isset($ifinfo['aslist'])) {
+
+			?><tr> 
+				<td width="22%" valign="top" class="vncellt">Associated stations</td>
+				<td width="78%" class="listrpad"><?
+				
+				if (count($ifinfo['aslist']) > 0) {
+
+					?><table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="30%" class="listhdrr">MAC address</td>
+							<td width="15%" class="listhdrr">Rate</td>
+							<td width="15%" class="listhdrr">RSSI</td>
+							<td width="20%" class="listhdrr">Flags</td>
+							<td width="20%" class="listhdrr">Capabilities</td>
+						</tr><?
+						
+					foreach ($ifinfo['aslist'] as $as) {
+
+						?><tr> 
+							<td class="listlr"><?=htmlspecialchars($as['mac']);?></td>
+							<td class="listr"><?=htmlspecialchars($as['rate']);?></td>
+							<td class="listr"><?=htmlspecialchars($as['rssi']);?></td>
+							<td class="listr"><?=htmlspecialchars($as['flags']);?></td>
+							<td class="listr"><?=htmlspecialchars($as['caps']);?></td>
+						</tr><?
+					}
+
+					?></table><br>
+					Flags: A = authorized, E = Extended Rate (802.11g), P = Power save mode<br>
+					Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), P = privacy (WEP/TKIP/AES),
+					S = Short preamble, s = Short slot time<?
+
+				} else {
+					
+					?>No stations are associated at this time.<?
+
+				}
+			}
+			
+			?></td>
+		</tr><?
+		
 		}
 		
 		$i++;

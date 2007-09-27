@@ -1,0 +1,73 @@
+--- contrib/hostapd/hostapd.c.orig	Fri Mar 24 02:42:34 2006
++++ contrib/hostapd/hostapd.c	Sat Aug 25 19:53:21 2007
+@@ -630,12 +630,14 @@
+ 	show_version();
+ 	fprintf(stderr,
+ 		"\n"
+-		"usage: hostapd [-hdBKt] <configuration file(s)>\n"
++		"usage: hostapd [-hdBKt] [-P <PID file>] "
++		"<configuration file(s)>\n"
+ 		"\n"
+ 		"options:\n"
+ 		"   -h   show this usage\n"
+ 		"   -d   show more debug messages (-dd for even more)\n"
+ 		"   -B   run daemon in the background\n"
++		"   -P   PID file\n"
+ 		"   -K   include key data in debug messages\n"
+ 		"   -t   include timestamps in some debug messages\n"
+ 		"   -v   show hostapd version\n");
+@@ -743,9 +745,10 @@
+ 	struct hapd_interfaces interfaces;
+ 	int ret = 1, i, j;
+ 	int c, debug = 0, daemonize = 0;
++	const char *pid_file = NULL;
+ 
+ 	for (;;) {
+-		c = getopt(argc, argv, "BdhKtv");
++		c = getopt(argc, argv, "BdhKP:tv");
+ 		if (c < 0)
+ 			break;
+ 		switch (c) {
+@@ -761,6 +764,9 @@
+ 		case 'K':
+ 			wpa_debug_show_keys++;
+ 			break;
++		case 'P':
++			pid_file = optarg;
++			break;
+ 		case 't':
+ 			wpa_debug_timestamp++;
+ 			break;
+@@ -813,6 +819,14 @@
+ 	if (daemonize && daemon(0, 0)) {
+ 		perror("daemon");
+ 		goto out;
++	}
++	
++	if (pid_file) {
++		FILE *f = fopen(pid_file, "w");
++		if (f) {
++			fprintf(f, "%u\n", getpid());
++			fclose(f);
++		}
+ 	}
+ 
+ 	openlog("hostapd", 0, LOG_DAEMON);
+--- usr.sbin/wpa/hostapd/driver_freebsd.c.orig	Sat Dec  9 14:06:57 2006
++++ usr.sbin/wpa/hostapd/driver_freebsd.c	Wed Aug  1 10:28:33 2007
+@@ -245,6 +245,7 @@
+ 		return -1;
+ 	}
+ 
++/*
+ 	if (dev_up) {
+ 		memset(&ifr, 0, sizeof(ifr));
+ 		snprintf(ifr.ifr_name, IFNAMSIZ, "%s", drv->iface);
+@@ -255,6 +256,7 @@
+ 			       "current value\n");
+ 		}
+ 	}
++*/
+ 
+ 	return 0;
+ }

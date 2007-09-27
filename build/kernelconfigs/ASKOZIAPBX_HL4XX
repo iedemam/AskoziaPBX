@@ -53,6 +53,9 @@ options 	ATA_STATIC_ID	# Static device numbering
 device		scbus			# SCSI bus (required for SCSI)
 device		da				# Direct Access (disks)
 
+# atkbdc0 controls both the keyboard and the PS/2 mouse
+device		atkbdc		# AT keyboard controller
+device		atkbd		# AT keyboard
 device		kbdmux		# keyboard multiplexer
 device		vga			# VGA video card driver
 
