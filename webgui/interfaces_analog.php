@@ -154,7 +154,14 @@ if (file_exists($d_analogconfdirty_path)) {
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($mu['type']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($startsignal);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars(isset($mu['echocancel']) ? "Enabled" : "");?>&nbsp;</td>
+					<td class="listr"><?
+						if (!isset($mu['echocancel']))
+							$ecfield = "64";
+						else if ($mu['echocancel'] == "no")
+							$ecfield = "Disabled";
+						else
+							$ecfield = $mu['echocancel'];
+						?><?=htmlspecialchars($ecfield);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_analog_edit.php?unit=<?=$mu['unit'];?>&type=<?=$mu['type'];?>"><img src="e.gif" title="edit analog interface" width="17" height="17" border="0"></a>
 					</td>

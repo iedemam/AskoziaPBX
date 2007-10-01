@@ -1,5 +1,4 @@
 pb11
- - zapata reloads aren't all working (restart needed sometimes)
  - provider / phone status indicators on edit page
  - enable sip/iax/isdn/analog debug options on pbx log page
  - extend callgroup support to add delays, sequential groups

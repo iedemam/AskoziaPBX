@@ -78,7 +78,6 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['name'] = "(unconfigured)";
 		$merged_units[$i]['type'] = $recognized_units[$i];
 		$merged_units[$i]['startsignal'] = "ks";
-		$merged_units[$i]['echocancel'] = "yes";
 	}
 }
 
@@ -87,7 +86,7 @@ $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['type'] = $merged_units[$unit]['type'];
 $pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
-$pconfig['echocancel'] = isset($merged_units[$unit]['echocancel']) ? "yes" : false;
+$pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : "64";
 
 
 if ($_POST) {
@@ -104,7 +103,7 @@ if ($_POST) {
 					$a_abinterfaces[$i]['name'] = $_POST['name'];
 					$a_abinterfaces[$i]['type'] = $_POST['type'];
 					$a_abinterfaces[$i]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
-					$a_abinterfaces[$i]['echocancel'] = $_POST['echocancel'] ? true : false;
+					$a_abinterfaces[$i]['echocancel'] = ($_POST['echocancel'] != "64") ? $_POST['echocancel'] : false;
 				}
 			}
 
@@ -113,7 +112,7 @@ if ($_POST) {
 			$a_abinterfaces[$n]['name'] = $_POST['name'];
 			$a_abinterfaces[$n]['type'] = $_POST['type'];
 			$a_abinterfaces[$n]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
-			$a_abinterfaces[$n]['echocancel'] = $_POST['echocancel'] ? true : false;
+			$a_abinterfaces[$n]['echocancel'] = ($_POST['echocancel'] != "64") ? $_POST['echocancel'] : false;
 		}
 
 
@@ -154,8 +153,14 @@ if ($_POST) {
 	<tr> 
 		<td valign="top" class="vncell">Echo Canceller</td>
 		<td class="vtable">
-			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
-			Enable echo cancellation.
+			<select name="echocancel" class="formfld" id="echocancel">
+				<option value="no" <? if ($pconfig['echocancel'] == "no") echo "selected"; ?>>Disabled</option>
+				<option value="32" <? if ($pconfig['echocancel'] == "32") echo "selected"; ?>>32</option>
+				<option value="64" <? if ($pconfig['echocancel'] == "64") echo "selected"; ?>>64</option>
+				<option value="128" <? if ($pconfig['echocancel'] == "128") echo "selected"; ?>>128</option>
+				<option value="256" <? if ($pconfig['echocancel'] == "256") echo "selected"; ?>>256</option>
+			</select>
+			<br><span class="vexpl">The echo canceller "tap" size. Larger sizes more effectively cancel echo but require more processing power.</span>
 		</td>
 	</tr>
 	<tr> 

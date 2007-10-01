@@ -318,10 +318,10 @@ function analog_zapata_conf_generate() {
 			$conf .= "signalling=fxs_ks\n";
 		}
 
-		if (isset($interface['echocancel'])) {
-			$conf .= "echocancel=yes\n";
+		if ($interface['echocancel']) {
+			$conf .= "echocancel={$interface['echocancel']}\n";
 		} else {
-			$conf .= "echocancel=no\n";
+			$conf .= "echocancel=64\n";
 		}
 		$conf .= "echocancelwhenbridged=no\n";
 		
@@ -350,10 +350,10 @@ function analog_zapata_conf_generate() {
 			$conf .= "signalling=fxo_ks\n";
 		}
 
-		if (isset($interface['echocancel'])) {
-			$conf .= "echocancel=yes\n";
+		if ($interface['echocancel']) {
+			$conf .= "echocancel={$interface['echocancel']}\n";
 		} else {
-			$conf .= "echocancel=no\n";
+			$conf .= "echocancel=64\n";
 		}
 		$conf .= "echocancelwhenbridged=no\n";
 		
