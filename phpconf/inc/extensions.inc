@@ -177,11 +177,15 @@ EOD;
 	// sip providers
 	$a_sipproviders = sip_get_providers();
 	foreach ($a_sipproviders as $p) {
-		$conf .= "; {$p['name']}\n";
+		if ($p['incomingextension']) {
+			$conf .= "; {$p['name']} incoming\n";
+			$conf .= "[{$p['uniqid']}-incoming]\n";
+			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], false, $p['override']);
+			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
+			$conf .= "\n";
+		}
+		$conf .= "; {$p['name']} outgoing\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension'], false, $p['override']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
-		
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
@@ -195,11 +199,15 @@ EOD;
 	// iax providers
 	$a_iaxproviders = iax_get_providers();
 	foreach ($a_iaxproviders as $p) {
-		$conf .= "; {$p['name']}\n";
+		if ($p['incomingextension']) {
+			$conf .= "; {$p['name']} incoming\n";
+			$conf .= "[{$p['uniqid']}-incoming]\n";
+			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], false, $p['override']);
+			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
+			$conf .= "\n";
+		}
+		$conf .= "; {$p['name']} outgoing\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['username'], $p['incomingextension'], false, $p['override']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
-
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
@@ -213,11 +221,15 @@ EOD;
 	// isdn providers
 	$a_isdnproviders = isdn_get_providers();
 	foreach ($a_isdnproviders as $p) {
-		$conf .= "; {$p['name']}\n";
+		if ($p['incomingextension']) {
+			$conf .= "; {$p['name']} incoming\n";
+			$conf .= "[{$p['uniqid']}-incoming]\n";
+			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], 1, $p['override'], $p['msn']);
+			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['msn']);
+			$conf .= "\n";
+		}
+		$conf .= "; {$p['name']} outgoing\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['msn'], $p['incomingextension'], 1, $p['override'], $p['msn']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['msn']);
-
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
@@ -232,11 +244,15 @@ EOD;
 	// analog providers
 	$a_analogproviders = analog_get_providers();
 	foreach ($a_analogproviders as $p) {
-		$conf .= "; {$p['name']}\n";
+		if ($p['incomingextension']) {
+			$conf .= "; {$p['name']} incoming\n";
+			$conf .= "[{$p['uniqid']}-incoming]\n";
+			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], 1, $p['override'], $p['number']);
+			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['number']);
+			$conf .= "\n";
+		}
+		$conf .= "; {$p['name']} outgoing\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= asterisk_uniqid_to_dial($p['number'], $p['incomingextension'], 1, $p['override'], $p['number']);
-		$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['number']);
-
 		if (is_array($p['dialpattern'])) {
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);

@@ -333,7 +333,7 @@ function analog_zapata_conf_generate() {
 		} else {
 			$conf .= "language={$p['language']}\n";
 		}
-		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "context={$p['uniqid']}-incoming\n";
 		$conf .= "channel => {$p['interface']}\n";
 		$conf .= "\n";
 	}

@@ -583,13 +583,13 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 			<? else: ?>
 			<select name="incomingextension" class="formfld" id="incomingextension">
 			<? endif; ?>
-				<option>Outgoing Calls Only</option>
+				<option value="">Outgoing Calls Only</option>
 				<option></option>
 				<?php $have_extension = false; ?>
 				
 				<?php if (count($a_groups = dialplan_get_callgroups()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>Call Groups</option>
+				<option value="">Call Groups</option>
 				<?php foreach ($a_groups as $group): ?>
 				<option value="<?=$group['uniqid'];?>" <?php 
 				if ($group['uniqid'] == $current_incoming_extension) 
@@ -600,7 +600,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 
 				<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>SIP Phones</option>
+				<option value="">SIP Phones</option>
 				<?php foreach ($a_sipphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
@@ -611,7 +611,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 
 				<?php if (count($a_iaxphones = iax_get_phones()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>IAX Phones</option>
+				<option value="">IAX Phones</option>
 				<?php foreach ($a_iaxphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
@@ -622,7 +622,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				
 				<?php if (count($a_isdnphones = isdn_get_phones()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>ISDN Phones</option>
+				<option value="">ISDN Phones</option>
 				<?php foreach ($a_isdnphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
@@ -633,7 +633,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				
 				<?php if (count($a_analogphones = analog_get_phones()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>Analog Phones</option>
+				<option value="">Analog Phones</option>
 				<?php foreach ($a_analogphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
@@ -644,7 +644,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				
 				<?php if (count($a_extphones = external_get_phones()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>External Phones</option>
+				<option value="">External Phones</option>
 				<?php foreach ($a_extphones as $phone): ?>
 				<option value="<?=$phone['uniqid'];?>" <?php 
 				if ($phone['uniqid'] == $current_incoming_extension) 
@@ -655,7 +655,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 			
 				<?php if (count($a_rooms = conferencing_get_rooms()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>Conference Rooms</option>
+				<option value="">Conference Rooms</option>
 				<?php foreach ($a_rooms as $room): ?>
 				<option value="<?=$room['uniqid'];?>" <?php 
 				if ($room['uniqid'] == $current_incoming_extension) 
@@ -666,7 +666,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				
 				<?php if (count($a_applications = dialplan_get_applications()) > 0): ?>
 				<?php $have_extension = true; ?>
-				<option>Applications</option>
+				<option value="">Applications</option>
 				<?php foreach ($a_applications as $app): ?>
 				<option value="<?=$app['uniqid'];?>" <?php 
 				if ($app['uniqid'] == $current_incoming_extension) 
@@ -676,7 +676,7 @@ function display_incoming_extension_selector($current_incoming_extension, $colsp
 				<?php endif; ?>
 			
 				<?php if (!$have_extension): ?>
-				<option>no incoming extensions available</option>
+				<option value="">no incoming extensions available</option>
 				<?php endif; ?>
 
             </select><?

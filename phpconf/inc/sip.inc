@@ -174,7 +174,7 @@ EOD;
 			$conf .= "fromuser={$p['username']}\n";
 		}
 		
-		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "context={$p['uniqid']}-incoming\n";
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])

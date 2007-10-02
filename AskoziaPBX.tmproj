@@ -16,7 +16,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-10-01T10:47:59Z</date>
+			<date>2007-10-02T10:43:00Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -82,9 +82,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -199,6 +199,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{3, 2}, {982, 776}}</string>
+	<string>{{96, 2}, {982, 776}}</string>
 </dict>
 </plist>
