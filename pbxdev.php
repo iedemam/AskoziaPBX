@@ -36,7 +36,7 @@
 $php_version		= "php-4.4.7";
 $pecl_sqlite_version= "SQLite-1.0.3";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.11";
+$asterisk_version	= "asterisk-1.4.12";
 $msmtp_version		= "msmtp-1.4.11";
 $zaptel_version		= "zaptel-trunk";
 $oslec_version		= "oslec-trunk";
@@ -280,10 +280,8 @@ function build_asterisk() {
 	_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
 	// copy wakeme application
 	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/$asterisk_version/apps");
-	// copy includes
-	_exec("cp -pR {$dirs['packages']}/$asterisk_version/include/* /usr/local/include");
 	// reconfigure and make
-	_exec("cd {$dirs['packages']}/$asterisk_version/; ./configure; gmake");
+	_exec("cd {$dirs['packages']}/$asterisk_version/; ./configure; gmake; gmake install");
 }
 
 function build_zaptel() {

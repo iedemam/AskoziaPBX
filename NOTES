@@ -19,6 +19,9 @@ pb11
    - config.inc:96 - disk listing
 
 
+* configs/indications.conf.sample, pbx/pbx_dundi.c: Add Russian
+ 1016 	  tones. (closes issue #7953, hanabana)
+
 -----------------
 
  - gtalk
