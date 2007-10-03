@@ -168,35 +168,63 @@ function asterisk_indications_conf_generate() {
 [at]
 description = Austria
 ringcadence = 1000,5000
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 dial = 420
 busy = 420/400,0/400
 ring = 420/1000,0/5000
 congestion = 420/200,0/200
 callwaiting = 420/40,0/1960
 dialrecall = 420
+; RECORDTONE - not specified
 record = 1400/80,0/14920
 info = 950/330,1450/330,1850/330,0/1000
 stutter = 380+420
 
 [au]
 description = Australia
+; Reference http://www.acif.org.au/__data/page/3303/S002_2001.pdf
+; Normal Ring
 ringcadence = 400,200,400,2000
+; Distinctive Ring 1 - Forwarded Calls
+; 400,400,200,200,400,1400
+; Distinctive Ring 2 - Selective Ring 2 + Operator + Recall
+; 400,400,200,2000
+; Distinctive Ring 3 - Multiple Subscriber Number 1
+; 200,200,400,2200
+; Distinctive Ring 4 - Selective Ring 1 + Centrex
+; 400,2600
+; Distinctive Ring 5 - Selective Ring 3
+; 400,400,200,400,200,1400
+; Distinctive Ring 6 - Multiple Subscriber Number 2
+; 200,400,200,200,400,1600
+; Distinctive Ring 7 - Multiple Subscriber Number 3 + Data Privacy
+; 200,400,200,400,200,1600
+; Tones
 dial = 413+438
 busy = 425/375,0/375
 ring = 413+438/400,0/200,413+438/400,0/2000
+; XXX Congestion: Should reduce by 10 db every other cadence XXX
 congestion = 425/375,0/375,420/375,0/375
 callwaiting = 425/200,0/200,425/200,0/4400
 dialrecall = 413+438
+; Record tone used for Call Intrusion/Recording or Conference
 record = !425/1000,!0/15000,425/360,0/15000
 info = 425/2500,0/500
+; Other Australian Tones
+; The STD "pips" indicate the call is not an untimed local call
 std = !525/100,!0/100,!525/100,!0/100,!525/100,!0/100,!525/100,!0/100,!525/100
+; Facility confirmation tone (eg. Call Forward Activated)
 facility = 425
+; Message Waiting "stutter" dialtone
 stutter = 413+438/100,0/40
+; Ringtone for calls to Telstra mobiles
 ringmobile = 400+450/400,0/200,400+450/400,0/2000
 
 [bg]
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 description = Bulgaria
 ringdance = 1000,4000
+;
 dial = 425
 busy = 425/500,0/500
 ring = 425/1000,0/4000
@@ -215,39 +243,49 @@ busy = 425/250,0/250
 ring = 425/1000,0/4000
 congestion = 425/250,0/250,425/750,0/250
 callwaiting = 425/50,0/1000
+; Dialrecall not used in Brazil standard (using UK standard)
 dialrecall = 350+440
+; Record tone is not used in Brazil, use busy tone
 record = 425/250,0/250
+; Info not used in Brazil standard (using UK standard)
 info = 950/330,1400/330,1800/330
 stutter = 350+440
 
 [be]
 description = Belgium
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,3000
 dial = 425
 busy = 425/500,0/500
 ring = 425/1000,0/3000
 congestion = 425/167,0/167
 callwaiting = 1400/175,0/175,1400/175,0/3500
+; DIALRECALL - not specified
 dialrecall = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,350+440"
+; RECORDTONE - not specified
 record = 1400/500,0/15000
 info = 900/330,1400/330,1800/330,0/1000
 stutter = 425/1000,0/250
 
 [ch]
 description = Switzerland
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 425
 busy = 425/500,0/500
 ring = 425/1000,0/4000
 congestion = 425/200,0/200
 callwaiting = 425/200,0/200,425/200,0/4000
+; DIALRECALL - not specified
 dialrecall = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
+; RECORDTONE - not specified
 record = 1400/80,0/15000
 info = 950/330,1400/330,1800/330,0/1000
 stutter = 425+340/1100,0/1100
 
 [cl]
 description = Chile
+; According to specs from Telefonica CTC Chile
 ringcadence = 1000,3000
 dial = 400
 busy = 400/500,0/500
@@ -261,6 +299,7 @@ stutter = !400/100,!0/100,!400/100,!0/100,!400/100,!0/100,!400/100,!0/100,!400/1
 
 [cn]
 description = China
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 450
 busy = 450/350,0/350
@@ -270,58 +309,76 @@ callwaiting = 450/400,0/4000
 dialrecall = 450
 record = 950/400,0/10000
 info = 450/100,0/100,450/100,0/100,450/100,0/100,450/400,0/400
+; STUTTER - not specified
 stutter = 450+425
 
 [cz]
 description = Czech Republic
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 425/330,0/330,425/660,0/660
 busy = 425/330,0/330
 ring = 425/1000,0/4000
 congestion = 425/165,0/165
 callwaiting = 425/330,0/9000
+; DIALRECALL - not specified
 dialrecall = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425/330,0/330,425/660,0/660
+; RECORDTONE - not specified
 record = 1400/500,0/14000
 info = 950/330,0/30,1400/330,0/30,1800/330,0/1000
+; STUTTER - not specified
 stutter = 425/450,0/50
 
 [de]
 description = Germany
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 425
 busy = 425/480,0/480
 ring = 425/1000,0/4000
 congestion = 425/240,0/240
 callwaiting = !425/200,!0/200,!425/200,!0/5000,!425/200,!0/200,!425/200,!0/5000,!425/200,!0/200,!425/200,!0/5000,!425/200,!0/200,!425/200,!0/5000,!425/200,!0/200,!425/200,0
+; DIALRECALL - not specified
 dialrecall = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
+; RECORDTONE - not specified
 record = 1400/80,0/15000
 info = 950/330,1400/330,1800/330,0/1000
 stutter = 425+400
 
 [dk]
 description = Denmark
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 425
 busy = 425/500,0/500
 ring = 425/1000,0/4000
 congestion = 425/200,0/200
 callwaiting = !425/200,!0/600,!425/200,!0/3000,!425/200,!0/200,!425/200,0
+; DIALRECALL - not specified
 dialrecall = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
+; RECORDTONE - not specified
 record = 1400/80,0/15000
 info = 950/330,1400/330,1800/330,0/1000
+; STUTTER - not specified
 stutter = 425/450,0/50
 
 [ee]
 description = Estonia
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 425
 busy = 425/300,0/300
 ring = 425/1000,0/4000
 congestion = 425/200,0/200
+; CALLWAIT not in accordance to ITU
 callwaiting = 950/650,0/325,950/325,0/30,1400/1300,0/2600
+; DIALRECALL - not specified
 dialrecall = 425/650,0/25
+; RECORDTONE - not specified
 record = 1400/500,0/15000
+; INFO not in accordance to ITU
 info = 950/650,0/325,950/325,0/30,1400/1300,0/2600
+; STUTTER not specified
 stutter = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
 
 [es]
@@ -353,13 +410,18 @@ stutter = 425/650,0/25
 
 [fr]
 description = France
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1500,3500
+; Dialtone can also be 440+330
 dial = 440
 busy = 440/500,0/500
 ring = 440/1500,0/3500
+; CONGESTION - not specified
 congestion = 440/250,0/250
 callwait = 440/300,0/10000
+; DIALRECALL - not specified
 dialrecall = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,350+440
+; RECORDTONE - not specified
 record = 1400/500,0/15000
 info = !950/330,!1400/330,!1800/330
 stutter = !440/100,!0/100,!440/100,!0/100,!440/100,!0/100,!440/100,!0/100,!440/100,!0/100,!440/100,!0/100,440
@@ -379,6 +441,7 @@ stutter = 425/650,0/25
 
 [hu]
 description = Hungary
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1250,3750
 dial = 425
 busy = 425/300,0/300
@@ -386,6 +449,7 @@ ring = 425/1250,0/3750
 congestion = 425/300,0/300
 callwaiting = 425/40,0/1960
 dialrecall = 425+450
+; RECORDTONE - not specified
 record = 1400/400,0/15000
 info = !950/330,!1400/330,!1800/330,!0/1000,!950/330,!1400/330,!1800/330,!0/1000,!950/330,!1400/330,!1800/330,!0/1000,0
 stutter = 350+375+400
@@ -419,6 +483,7 @@ stutter = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/1
 
 [it]
 description = Italy
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
 dial = 425/200,0/200,425/600,0/1000
 busy = 425/500,0/500
@@ -438,9 +503,12 @@ busy = 425/350,0/350
 ring = 425/1000,0/4000
 congestion = 425/200,0/200
 callwaiting = 425/150,0/150,425/150,0/4000
+; DIALRECALL - not specified
 dialrecall = 425/500,0/50
+; RECORDTONE - not specified
 record = 1400/500,0/15000
 info = !950/330,!1400/330,!1800/330,!0/1000,!950/330,!1400/330,!1800/330,!0/1000,!950/330,!1400/330,!1800/330,!0/1000,0
+; STUTTER - not specified
 stutter = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
 
 [jp]
@@ -479,13 +547,17 @@ congestion = 425/500,0/500
 
 [nl]
 description = Netherlands
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 ringcadence = 1000,4000
+; Most of these 425's can also be 450's
 dial = 425
 busy = 425/500,0/500
 ring = 425/1000,0/4000
 congestion = 425/250,0/250
 callwaiting = 425/500,0/9500
+; DIALRECALL - not specified
 dialrecall = 425/500,0/50
+; RECORDTONE - not specified
 record = 1400/500,0/15000
 info = 950/330,1400/330,1800/330,0/1000
 stutter = 425/500,0/50
@@ -505,6 +577,8 @@ stutter = 470/400,425/400
 
 [nz]
 description = New Zealand
+;NOTE - the ITU has different tonesets for NZ, but according to some residents there,
+;      this is, indeed, the correct way to do it.
 ringcadence = 400,200,400,2000
 dial = 400
 busy = 400/250,0/250
@@ -518,6 +592,9 @@ stutter = !400/100!0/100,!400/100,!0/100,!400/100,!0/100,!400/100!0/100,!400/100
 unobtainable = 400/75,0/100,400/75,0/100,400/75,0/100,400/75,0/400
 
 [ph]
+
+; reference http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
+
 description = Philippines
 ringcadence = 1000,4000
 dial = 425
@@ -525,9 +602,13 @@ busy = 480+620/500,0/500
 ring = 425+480/1000,0/4000
 congestion = 480+620/250,0/250
 callwaiting = 440/300,0/10000
+; DIALRECALL - not specified
 dialrecall = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,350+440
+; RECORDTONE - not specified
 record = 1400/500,0/15000
+; INFO - not specified
 info = !950/330,!1400/330,!1800/330,0
+; STUTTER - not specified
 stutter = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,350+440
 
 
@@ -539,9 +620,13 @@ busy = 425/500,0/500
 ring = 425/1000,0/4000
 congestion = 425/500,0/500
 callwaiting = 425/150,0/150,425/150,0/4000
+; DIALRECALL - not specified
 dialrecall = 425/500,0/50
+; RECORDTONE - not specified
 record = 1400/500,0/15000
+; 950/1400/1800 3x0.33 on 1.0 off  repeated 3 times 
 info = !950/330,!1400/330,!1800/330,!0/1000,!950/330,!1400/330,!1800/330,!0/1000,!950/330,!1400/330,!1800/330,!0/1000
+; STUTTER - not specified
 stutter = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
 
 [pt]
@@ -558,16 +643,20 @@ info = 950/330,1400/330,1800/330,0/1000
 stutter = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
 
 [ru]
-description = Russia / ex Soviet Union
-ringcadence = 800,3200
+; References:
+;	http://www.minsvyaz.ru/site.shtml?id=1806
+;	http://www.aboutphone.info/lib/gost/45-223-2001.html
+description = Russian Federation / ex Soviet Union
+ringcadence = 1000,4000
 dial = 425
 busy = 425/350,0/350
-ring = 425/800,0/3200
-congestion = 425/350,0/350
+ring = 425/1000,0/4000
+congestion = 425/175,0/175
 callwaiting = 425/200,0/5000
-dialrecall = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,350+440
-record = 1400/500,0/15000
-info = !950/330,!1400/330,!1800/330,0
+record = 1400/400,0/15000
+info = 950/330,1400/330,1800/330,0/1000
+dialrecall = 425/400,0/40
+stutter = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
 
 [se]
 description = Sweden
@@ -581,9 +670,13 @@ dialrecall = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
 record = 1400/500,0/15000
 info = !950/332,!0/24,!1400/332,!0/24,!1800/332,!0/2024,!950/332,!0/24,!1400/332,!0/24,!1800/332,!0/2024,!950/332,!0/24,!1400/332,!0/24,!1800/332,!0/2024,!950/332,!0/24,!1400/332,!0/24,!1800/332,!0/2024,!950/332,!0/24,!1400/332,!0/24,!1800/332,0
 stutter = !425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,!425/100,!0/100,425
+; stutter = 425/320,0/20        ; Real swedish standard, not used for now
 
 [sg]
 description = Singapore
+; Singapore
+; Reference: http://www.ida.gov.sg/idaweb/doc/download/I397/ida_ts_pstn1_i4r2.pdf 
+; Frequency specs are:   425 Hz +/- 20Hz; 24 Hz +/- 2Hz; modulation depth 100%; SIT +/- 50Hz
 ringcadence = 400,200,400,2000
 dial        = 425
 ring        = 425*24/400,0/200,425*24/400,0/2000     ; modulation should be 100%, not 90%
@@ -594,6 +687,7 @@ stutter     = !425/200,!0/200,!425/600,!0/200,!425/200,!0/200,!425/600,!0/200,!4
 info        = 950/330,1400/330,1800/330,0/1000       ; not currently in use acc. to reference
 dialrecall  = 425*24/500,0/500,425/500,0/2500        ; unspecified in IDA reference, use repeating Holding Tone A,B
 record      = 1400/500,0/15000                       ; unspecified in IDA reference, use 0.5s tone every 15s
+; additionally defined in reference
 nutone      = 425/2500,0/500
 intrusion   = 425/250,0/2000
 warning     = 425/624,0/4376                         ; end of period tone, warning
@@ -604,32 +698,53 @@ holdingb    = !425/500,!0/2500
 [th]
 description = Thailand
 ringcadence = 1000,4000
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 dial = 400*50
 busy = 400/500,0/500
 ring = 420/1000,0/5000
 congestion = 400/300,0/300
 callwaiting = 1000/400,10000/400,1000/400
+; DIALRECALL - not specified - use special dial tone instead.
 dialrecall = 400*50/400,0/100,400*50/400,0/100
+; RECORDTONE - not specified
 record = 1400/500,0/15000
+; INFO - specified as an announcement - use special information tones instead
 info = 950/330,1400/330,1800/330
+; STUTTER - not specified
 stutter = !400/200,!0/200,!400/600,!0/200,!400/200,!0/200,!400/600,!0/200,!400/200,!0/200,!400/600,!0/200,!400/200,!0/200,!400/600,!0/200,400
 
 [uk]
 description = United Kingdom
 ringcadence = 400,200,400,2000
+; These are the official tones taken from BT SIN350. The actual tones
+; used by BT include some volume differences so sound slightly different
+; from Asterisk-generated ones.
 dial = 350+440
+; Special dial is the intermittent dial tone heard when, for example,
+; you have a divert active on the line
 specialdial = 350+440/750,440/750
+; Busy is also called "Engaged"
 busy = 400/375,0/375
+; "Congestion" is the Beep-bip engaged tone
 congestion = 400/400,0/350,400/225,0/525
+; "Special Congestion" is not used by BT very often if at all
 specialcongestion = 400/200,1004/300
 unobtainable = 400
 ring = 400+450/400,0/200,400+450/400,0/2000
 callwaiting = 400/100,0/4000
+; BT seem to use "Special Call Waiting" rather than just "Call Waiting" tones
 specialcallwaiting = 400/250,0/250,400/250,0/250,400/250,0/5000
+; "Pips" used by BT on payphones. (Sounds wrong, but this is what BT claim it
+; is and I've not used a payphone for years)
 creditexpired = 400/125,0/125
+; These two are used to confirm/reject service requests on exchanges that
+; don't do voice announcements.
 confirm = 1400
 switching = 400/200,0/400,400/2000,0/400
+; This is the three rising tones Doo-dah-dee "Special Information Tone",
+; usually followed by the BT woman saying an appropriate message.
 info = 950/330,0/15,1400/330,0/15,1800/330,0/1000
+; Not listed in SIN350
 record = 1400/500,0/60000
 stutter = 350+440/750,440/750
 
@@ -661,6 +776,17 @@ stutter = !600*120/100,!0/100,!600*120/100,!0/100,!600*120/100,!0/100,!600*120/1
 
 [tw]
 description = Taiwan
+; http://nemesis.lonestar.org/reference/telecom/signaling/dialtone.html
+; http://nemesis.lonestar.org/reference/telecom/signaling/busy.html
+; http://www.iproducts.com.tw/ee/kylink/06ky-1000a.htm
+; http://www.pbx-manufacturer.com/ky120dx.htm
+; http://www.nettwerked.net/tones.txt
+; http://www.cisco.com/univercd/cc/td/doc/product/tel_pswt/vco_prod/taiw_sup/taiw2.htm
+;
+; busy tone 480+620Hz 0.5 sec. on ,0.5 sec. off
+; reorder tone 480+620Hz 0.25 sec. on,0.25 sec. off
+; ringing tone 440+480Hz 1 sec. on ,2 sec. off
+;
 ringcadence = 1000,4000
 dial = 350+440
 busy = 480+620/500,0/500
@@ -673,6 +799,8 @@ info = !950/330,!1400/330,!1800/330,0
 stutter = !350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,!350+440/100,!0/100,350+440
 
 [ve]
+; Tone definition source for ve found on 
+; Reference: http://www.itu.int/ITU-T/inr/forms/files/tones-0203.pdf
 description = Venezuela / South America
 ringcadence = 1000,4000
 dial = 425
@@ -687,13 +815,25 @@ info = !950/330,!1440/330,!1800/330,0/1000
 
 [za]
 description = South Africa
+; http://www.cisco.com/univercd/cc/td/doc/product/tel_pswt/vco_prod/safr_sup/saf02.htm
+; (definitions for other countries can also be found there)
+; Note, though, that South Africa uses two switch types in their network --
+; Alcatel switches -- mainly in the Western Cape, and Siemens elsewhere.
+; The former use 383+417 in dial, ringback etc.  The latter use 400*33
+; I've provided both, uncomment the ones you prefer
 ringcadence = 400,200,400,2000
+; dial/ring/callwaiting for the Siemens switches:
 dial = 400*33
 ring = 400*33/400,0/200,400*33/400,0/2000
 callwaiting = 400*33/250,0/250,400*33/250,0/250,400*33/250,0/250,400*33/250,0/250
+; dial/ring/callwaiting for the Alcatel switches:
+; dial = 383+417
+; ring = 383+417/400,0/200,383+417/400,0/2000
+; callwaiting = 383+417/250,0/250,383+417/250,0/250,383+417/250,0/250,383+417/250,0/250
 congestion = 400/250,0/250
 busy = 400/500,0/500
 dialrecall = 350+440
+; XXX Not sure about the RECORDTONE
 record = 1400/500,0/10000
 info = 950/330,1400/330,1800/330,0/330
 stutter = !400*33/100,!0/100,!400*33/100,!0/100,!400*33/100,!0/100,!400*33/100,!0/100,!400*33/100,!0/100,!400*33/100,!0/100,400*33
