@@ -348,6 +348,11 @@ function build_udesc_dump() {
 	_exec("cd /usr/ports/sysutils/udesc_dump; make clean; make");
 }
 
+function build_mpg123() {
+	
+	_exec("cd /usr/ports/audio/mpg123; make clean; make");
+}
+
 function build_msmtp() {
 	global $dirs, $msmtp_version;
 	
@@ -433,6 +438,7 @@ function build_ports() {
 	
 	build_msntp();
 	build_udesc_dump();
+	build_mpg123();
 }
 
 function build_everything() {
@@ -546,6 +552,12 @@ function populate_udesc_dump($image_name) {
 	
 	_exec("cd /usr/ports/sysutils/udesc_dump; ".
 		"install -s work/udesc_dump-*/udesc_dump $image_name/rootfs/sbin");
+}
+
+function populate_mpg123($image_name) {
+	
+	_exec("cd /usr/ports/audio/mpg123; ".
+		"install -s work/mpg123-*/mpg123 $image_name/rootfs/usr/local/bin");
 }
 
 function populate_msmtp($image_name) {
@@ -925,6 +937,7 @@ function populate_everything($image_name) {
 	populate_msmtp($image_name);
 	populate_zaptel($image_name);
 	populate_isdn($image_name);
+	populate_mpg123($image_name);
 	populate_asterisk($image_name);
 	populate_sounds($image_name);
 	populate_tools($image_name);

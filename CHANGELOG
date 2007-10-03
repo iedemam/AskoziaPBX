@@ -12,6 +12,7 @@
  - "Interfaces" menu collapsed into a single tabbed page under "System -> Interfaces"
  - resetting to factory defaults now sets values appropriate for each platform
  - removed channel queue limit patch which was dropping frames on slower hardware until a tunable parameter can be implemented
+ - updated Asterisk to 1.4.12
  - updated script.aculo.us to 1.7.1 beta 3
  - bug: fixed invalid options being stored in incoming extension
  - bug: fixed extension generator for callgroups not having an internal extension defined

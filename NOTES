@@ -1,11 +1,5 @@
 pb11
  - provider / phone status indicators on edit page
- - enable sip/iax/isdn/analog debug options on pbx log page
- - extend callgroup support to add delays, sequential groups
- - storage interface (add storage partition for extended capabilities)
- - extended capabilities hooks into the gui
- - new option to log to storage partition
- - multiple MSNs on ISDN, DID/DDI support in general
 
  - fix extensions_exists
  - fix dialplan_providers.php to save posted config and display correctly when no providers are present
@@ -13,16 +7,26 @@ pb11
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - confirm "Ringing()" behavior/usage on ISDN connections
 
- - added sqlite cdr module and sqlite extension to php
- - added options BRIDGE to kernel
- - added bsdlabel to m0n0wall files
-   - config.inc:96 - disk listing
+MMX optimizations for Zaptel & Oslec:
+CPU: Geode(TM) Integrated Processor by National Semi (332.04-MHz 586-class CPU)
+  Origin = "Geode by NSC"  Id = 0x552  Stepping = 2
+  Features=0x80a13d<FPU,DE,PSE,TSC,MSR,CX8,PGE,CMOV,MMX>
 
-
-* configs/indications.conf.sample, pbx/pbx_dundi.c: Add Russian
- 1016 	  tones. (closes issue #7953, hanabana)
+ - manager users page
+ - streaming moh
+ - test incoming extensions
+ - check about dtmf bursts after picking analog phones
+ - fix snooze
+ - get a iax client working ... figure out what's going on there
 
 -----------------
+
+- enable sip/iax/isdn/analog debug options on pbx log page
+- extend callgroup support to add delays, sequential groups
+- storage interface (add storage partition for extended capabilities)
+- extended capabilities hooks into the gui
+- new option to log to storage partition
+- multiple MSNs on ISDN, DID/DDI support in general
 
  - gtalk
  - ajaxify logs page
