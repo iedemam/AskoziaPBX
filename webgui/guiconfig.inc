@@ -49,6 +49,7 @@ $d_extensionsconfdirty_path = $g['varrun_path'] . "/extensionsconf.dirty";
 $d_featuresconfdirty_path = $g['varrun_path'] . "/featuresconf.dirty";
 $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 $d_conferencing_kicked_path = $g['varrun_path'] . "/conferencing.kicked";
+$d_managerconfdirty_path = $g['varrun_path'] . "/managerconf.dirty";
 $d_isdnconfdirty_path = $g['varrun_path'] . "/isdnconf.dirty";
 $d_analogconfdirty_path = $g['varrun_path'] . "/analogconf.dirty";
 $d_rtpconfdirty_path = $g['varrun_path'] . "/rtpconf.dirty";
@@ -259,6 +260,16 @@ $analog_signaling = array(
 	"fxo" => "fxs"
 );
 
+$manager_permissions = array(
+	"agent",
+	"call",
+	"command",
+	"config",
+	"log",
+	"user",
+	"verbose",
+	"system"
+);
 
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {

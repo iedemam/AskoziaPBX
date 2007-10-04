@@ -39,7 +39,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 	
 	if (isset($pconfig['start'])) {
-		exec("/sbin/isdndecode -u {$pconfig['interface']} -i -o -x > /tmp/isdndecode.txt &");
+		exec("/usr/sbin/isdndecode -u {$pconfig['interface']} -i -o -x > /tmp/isdndecode.txt &");
 		$state = "running";
 		
 	} else if (isset($pconfig['stop'])) {

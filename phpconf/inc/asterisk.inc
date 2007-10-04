@@ -47,6 +47,10 @@ function asterisk_configure() {
 	$res |= asterisk_indications_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
+	if ($g['booting']) echo " - generating manager configuration...";
+	$res |= asterisk_manager_conf_generate();
+	if ($g['booting']) echo "done\n";
+	
 	if ($g['booting']) echo " - generating rtp configuration...";
 	$res |= asterisk_rtp_conf_generate();
 	if ($g['booting']) echo "done\n";
@@ -138,6 +142,65 @@ function asterisk_rtp_conf_generate() {
 	$conf = "[general]\n";
 	$conf .= "rtpstart=$lowport\n";
 	$conf .= "rtpend=$highport\n";
+	$conf .= "\n";
+	
+	fwrite($fd, $conf);
+	fclose($fd);
+
+	return 0;
+}
+
+function asterisk_sort_manager_users() {
+	global $config;
+	usort($config['services']['manager']['manager-user'], "_a_sortmanagerusers");
+}
+function _a_sortmanagerusers($a, $b) {
+	return strcmp($a['username'], $b['username']);
+}
+
+function asterisk_manager_conf_generate() {
+	global $config;
+	
+	$fd = fopen("/usr/local/etc/asterisk/manager.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open manager.conf in asterisk_manager_conf_generate().\n");
+		return 1;
+	}
+	
+	$managerconfig = $config['services']['manager'];
+
+	$conf = <<<EOD
+
+[general]
+displaysystemname = yes
+enabled = yes
+port = 5038
+bindaddr = 127.0.0.1
+
+[admin]
+secret = askozia
+deny=0.0.0.0/0.0.0.0
+permit=127.0.0.1/255.255.255.255
+read = system,call,log,verbose,command,agent,user,config
+write = system,call,log,verbose,command,agent,user,config
+
+
+
+EOD;
+
+	foreach ($config['services']['manager']['manager-user'] as $user) {
+		$conf .= "[" . $user['username'] . "]" . "\n";
+		$conf .= "secret = " . $user['secret'] . "\n";
+		$conf .= "deny=" . $user['denyip'] . "/" . $user['denynetmask'] . "\n";
+		$conf .= "permit=" . $user['permitip'] . "/" . $user['permitnetmask'] . "\n";
+		if (is_array($user['read-permission'])) {
+			$conf .= "read = " . implode(",", $user['read-permission']) . "\n";
+		}
+		if (is_array($user['write-permission'])) {
+			$conf .= "write = " . implode(",", $user['write-permission']) . "\n";
+		}
+		$conf .= "\n";
+	}
 	$conf .= "\n";
 	
 	fwrite($fd, $conf);

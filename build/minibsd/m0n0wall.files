@@ -71,10 +71,16 @@ usr/sbin/arp
 usr/sbin/chown
 usr/sbin/chroot
 usr/sbin/hostapd
+usr/sbin/isdnconfig
+usr/sbin/isdndecode
 usr/sbin/pwd_mkdb
 usr/sbin/traceroute
 usr/sbin/pciconf
 usr/sbin/pnpinfo
+
+# contents of usr/local/bin
+usr/local/bin/oslecspeedtest
+usr/local/bin/ztcfg
 
 # contents of /usr/libexec
 usr/libexec/ld-elf.so.1:libexec/ld-elf.so.1

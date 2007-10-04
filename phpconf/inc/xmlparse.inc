@@ -33,7 +33,9 @@
 $listtags = explode(" ", 
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
 	"phone provider codec room dialpattern callgroup groupmember " .
-	"isdn-unit ab-unit loadzone bridge application");
+	"isdn-unit ab-unit loadzone bridge application " .
+	"manager-user read-permission write-permission"
+);
 
 
 function startElement($parser, $name, $attrs) {

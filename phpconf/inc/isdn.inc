@@ -183,7 +183,7 @@ function isdn_configure() {
 	$interfaces = isdn_get_interfaces();
 	foreach ($interfaces as $interface) {
 		
-		$command = "/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
+		$command = "/usr/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
 		
 		if ($interface['pcmmaster']) {
 			$command .= " pcm_master";

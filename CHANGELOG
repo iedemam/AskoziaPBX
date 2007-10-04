@@ -7,6 +7,7 @@
    - ported OSLEC (http://rowetel.com/ucasterisk/oslec) to FreeBSD for this and some testing is still needed
  - added "Dialplan -> Applications" page so applications may be mapped to the dialplan
  - added Wireless interface support
+ - added "Advanced -> Manager" page to allow extra AMI users to be defined
  - improved incoming extension matching
  - additional network interfaces may now be bridged to the "main" interface
  - "Interfaces" menu collapsed into a single tabbed page under "System -> Interfaces"

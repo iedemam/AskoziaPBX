@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Manager");
+$pgtitle = array("Diagnostics", "Manager Interface");
 require("guiconfig.inc");
 
 if ($_POST) {

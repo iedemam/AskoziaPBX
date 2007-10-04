@@ -184,6 +184,8 @@ $menu['Advanced']['SIP'] 				= array('advanced_sip.php');
 $menu['Advanced']['IAX'] 				= array('advanced_iax.php');
 $menu['Advanced']['ISDN'] 				= array('advanced_isdn.php');
 $menu['Advanced']['Analog'] 			= array('advanced_analog.php');
+$menu['Advanced']['Manager'] 			= array('advanced_manager.php',
+												'advanced_manager_edit.php');
 $menu['Advanced']['GUI Options']		= array('advanced_guioptions.php');
 //$menu['Advanced']['Quality of Service'] 					= array('advanced_qos.php');
 

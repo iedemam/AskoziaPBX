@@ -163,7 +163,7 @@ function get_isdn_interface_info($interface) {
 	
 	$unit = $interface['unit'];
 	unset($unitinfo);
-	exec("/sbin/isdnconfig -u $unit", $unitinfolines);
+	exec("/usr/sbin/isdnconfig -u $unit", $unitinfolines);
 	foreach ($unitinfolines as $line) {
 		if (preg_match("/\s:\s/", $line)) {
 			$pair = explode(":", $line, 2);

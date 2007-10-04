@@ -1,3 +1,7 @@
+closed bugs in 1.4 svn, open in 1.4.12
+ - 10877 (rtp unknown event creating NULL dtmf, one-way audio)
+
+
 pb11
  - provider / phone status indicators on edit page
 
@@ -7,17 +11,14 @@ pb11
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - confirm "Ringing()" behavior/usage on ISDN connections
 
-MMX optimizations for Zaptel & Oslec:
-CPU: Geode(TM) Integrated Processor by National Semi (332.04-MHz 586-class CPU)
-  Origin = "Geode by NSC"  Id = 0x552  Stepping = 2
-  Features=0x80a13d<FPU,DE,PSE,TSC,MSR,CX8,PGE,CMOV,MMX>
-
  - manager users page
  - streaming moh
  - test incoming extensions
  - check about dtmf bursts after picking analog phones
  - fix snooze
  - get a iax client working ... figure out what's going on there
+
+ - single tone voicemails...
 
 -----------------
 
@@ -116,3 +117,37 @@ exten => 701,1,ParkedCall(701)
 exten => 701,hint,park:701@parkedcalls
 
 Of course you would add an entry for each parking spot.
+
+
+
+
+
+
+
+
+
+
+
+
+MMX optimizations for Zaptel & Oslec:
+CPU: Geode(TM) Integrated Processor by National Semi (332.04-MHz 586-class CPU)
+  Origin = "Geode by NSC"  Id = 0x552  Stepping = 2
+  Features=0x80a13d<FPU,DE,PSE,TSC,MSR,CX8,PGE,CMOV,MMX>
+
+-------------------------------------------------------------
+Testing OSLEC with 256 taps (32 ms tail) no MMX
+CPU executes 2109.52 MIPS
+-------------------------
+
+Method 1: gettimeofday() at start and end
+  133 ms for 10s of speech
+  28.06 MIPS
+  75.19 instances possible at 100% CPU load
+Method 2: samples clock cycles at start and end
+  28.06 MIPS
+  75.19 instances possible at 100% CPU load
+Method 3: samples clock cycles for each call, IIR average
+  cycles_worst 254568 cycles_last 3156 cycles_av: 3233
+  25.86 MIPS
+  81.56 instances possible at 100% CPU load
+-------------------------------------------------------------

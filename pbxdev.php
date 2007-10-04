@@ -295,33 +295,43 @@ function build_zaptel() {
 	if (!_is_patched($zaptel_version)) {
 		_exec("cd {$dirs['packages']}/$zaptel_version; ".
 			"patch < {$dirs['packages']}/$oslec_version/kernel-freebsd/zaptel-trunk.diff");
+		//_exec("cd {$dirs['packages']}/$zaptel_version; ".
+		//	"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_calc_xlaw.patch");
 		_stamp_package_as_patched($zaptel_version);
 	}	
 	// remove old headers if they're around
 	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
 	
-	// make new directory for moved zaptel headers
-	if (!file_exists("/usr/local/include/zaptel/")) {
-		_exec("mkdir /usr/local/include/zaptel");
-	}
-	// copy over header files
-	_exec("cd {$dirs['packages']}/$zaptel_version/; ".
-		"cp zaptel/zaptel.h ztcfg/tonezone.h /usr/local/include/zaptel/");
-		
 	// copy over better ztdummy.c
 	_exec("cd {$dirs['packages']}/$zaptel_version/ztdummy; cp ztdummy.c ztdummy_orig.c");
 	_exec("cp {$dirs['patches']}/packages/zaptel/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
 	
-	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
-	_exec("cd {$dirs['packages']}/$zaptel_version; make; make install");
-
-	if (!file_exists("{$dirs['packages']}/$zaptel_version/STAGE")) {
-		_exec("cd {$dirs['packages']}/$zaptel_version/; ".
-			"mkdir STAGE STAGE/bin STAGE/lib STAGE/etc");
+	// make stage directory, clear if present
+	if (file_exists("{$dirs['packages']}/$zaptel_version/STAGE")) {
+		_exec("rm -rf {$dirs['packages']}/$zaptel_version/STAGE");
 	}
+	_exec("mkdir {$dirs['packages']}/$zaptel_version/STAGE");
+
+	// compile and install standard version
+	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
+	_exec("cd {$dirs['packages']}/$zaptel_version; make");
+	_exec("cd {$dirs['packages']}/$zaptel_version; make install");
+	_exec("cd {$dirs['packages']}/$zaptel_version; cp -p ".
+			"zaptel/zaptel.ko ".
+			"ztdummy/ztdummy.ko ".
+			"wcfxo/wcfxo.ko ".
+			"wcfxs/wcfxs.ko ".
+			"STAGE");
 	
+	// compile mmx enabled version
 	_exec("cd {$dirs['packages']}/$zaptel_version; ".
-		"make install PREFIX={$dirs['packages']}/$zaptel_version/STAGE");
+		"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
+	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
+	_exec("cd {$dirs['packages']}/$zaptel_version; make");
+	_exec("cd {$dirs['packages']}/$zaptel_version; cp -p zaptel/zaptel.ko STAGE/mmx_zaptel.ko");
+	_exec("cd {$dirs['packages']}/$zaptel_version; ".
+			"patch -R < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
+
 }
 
 function build_isdn() {
@@ -376,7 +386,7 @@ function build_tools() {
 	_exec("cd {$dirs['tools']}; gcc -o stats.cgi stats.c");
 	_exec("cd {$dirs['tools']}; gcc -o verifysig -lcrypto verifysig.c");
 	_exec("cd {$dirs['tools']}; gcc -o wrapresetbtn wrapresetbtn.c");
-	_exec("cd {$dirs['tools']}; gcc -o zttest zttest.c");
+	/*_exec("cd {$dirs['tools']}; gcc -o zttest zttest.c");*/
 	/*_exec("cd ". $dirs['tools'] ."; gcc -o minicron minicron.c");*/
 }
 
@@ -412,9 +422,17 @@ function build_oslec() {
 		_stamp_package_as_patched($oslec_version);
 	}
 	
-	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean");
-	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make");
+	// make stage directory, clear if present
+	if (file_exists("{$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE")) {
+		_exec("rm -rf {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE");
+	}
+	_exec("mkdir {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE");
 	
+	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean; make");
+	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; cp -p oslec.ko STAGE");
+	// XXX : build mmx enabled version
+	_exec("cd {$dirs['packages']}/$oslec_version/user; gmake clean; gmake");
+	_exec("cd {$dirs['packages']}/$oslec_version/user; install -s speedtest /usr/local/bin/oslecspeedtest");
 }
 
 function build_hostapd() {
@@ -868,22 +886,19 @@ function populate_sounds($image_name) {
 
 function populate_zaptel($image_name) {
 	global $dirs, $zaptel_version;
-
-	if (file_exists("{$dirs['packages']}/$zaptel_version/STAGE/bin/zttest")) {
-		_exec("rm {$dirs['packages']}/$zaptel_version/STAGE/bin/zttest");
-	}
+/* moved to m0n0wall.files
 	_exec("cd {$dirs['packages']}/$zaptel_version/STAGE; ".
-		"install -s bin/* $image_name/rootfs/sbin; ".
-		"cp lib/* $image_name/rootfs/lib");
+		"install -s ztcfg $image_name/rootfs/sbin; ".
+		"cp lib/* $image_name/rootfs/lib"); */
 }
 
 function populate_isdn($image_name) {
 	global $dirs;
-	
+/* moved to m0n0wall.files
 	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; ".
 		"cp -p isdnconfig/isdnconfig isdndebug/isdndebug isdndecode/isdndecode ".
 		"isdnmonitor/isdnmonitor isdntest/isdntest isdntrace/isdntrace ".
-		"$image_name/rootfs/sbin; ");
+		"$image_name/rootfs/sbin; ");*/
 	_exec("cp {$dirs['packages']}/i4b/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
 }
 
@@ -897,7 +912,7 @@ function populate_tools($image_name) {
 		/*"install -s minicron $rootfs/usr/local/bin; ".*/
 		"install -s verifysig $rootfs/usr/local/bin; ".
 		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
-		"install -s zttest $rootfs/sbin; ".
+		/*"install -s zttest $rootfs/sbin; ".*/
 		"install runmsntp.sh $rootfs/usr/local/bin");
 }
 
@@ -976,24 +991,9 @@ function package($platform, $image_name) {
 	}
 	
 	// ...zaptel modules
-	$zaptel_modules = array(
-		"zaptel/zaptel.ko",
-		"ztdummy/ztdummy.ko",
-		
-		//"qozap/qozap.ko",
-		//"tau32pci/tau32pci.ko",
-		"wcfxo/wcfxo.ko",
-		"wcfxs/wcfxs.ko",
-		//"wct1xxp/wct1xxp.ko",
-		//"wct4xxp/wct4xxp.ko",
-		//"wcte11xp/wcte11xp.ko"
-		//"zaphfc/zaphfc.ko"
-	);
-	foreach ($zaptel_modules as $zaptel_module) {
-		_exec("cp {$dirs['packages']}/$zaptel_version/$zaptel_module tmp/stage/boot/kernel/");
-	}
-	// ...oslec module
-	_exec("cp {$dirs['packages']}/$oslec_version/kernel-freebsd/oslec.ko tmp/stage/boot/kernel/");
+	_exec("cp {$dirs['packages']}/$zaptel_version/STAGE/*.ko tmp/stage/boot/kernel/");
+	// ...oslec modules
+	_exec("cp {$dirs['packages']}/$oslec_version/kernel-freebsd/*.ko tmp/stage/boot/kernel/");
 	
 	// XXX i4b module
 	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");
