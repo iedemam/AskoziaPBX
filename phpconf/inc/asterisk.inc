@@ -188,18 +188,20 @@ write = system,call,log,verbose,command,agent,user,config
 
 EOD;
 
-	foreach ($config['services']['manager']['manager-user'] as $user) {
-		$conf .= "[" . $user['username'] . "]" . "\n";
-		$conf .= "secret = " . $user['secret'] . "\n";
-		$conf .= "deny=" . $user['denyip'] . "/" . $user['denynetmask'] . "\n";
-		$conf .= "permit=" . $user['permitip'] . "/" . $user['permitnetmask'] . "\n";
-		if (is_array($user['read-permission'])) {
-			$conf .= "read = " . implode(",", $user['read-permission']) . "\n";
+	if (is_array($config['services']['manager']['manager-user'])) {
+		foreach ($config['services']['manager']['manager-user'] as $user) {
+			$conf .= "[" . $user['username'] . "]" . "\n";
+			$conf .= "secret = " . $user['secret'] . "\n";
+			$conf .= "deny=" . $user['denyip'] . "/" . $user['denynetmask'] . "\n";
+			$conf .= "permit=" . $user['permitip'] . "/" . $user['permitnetmask'] . "\n";
+			if (is_array($user['read-permission'])) {
+				$conf .= "read = " . implode(",", $user['read-permission']) . "\n";
+			}
+			if (is_array($user['write-permission'])) {
+				$conf .= "write = " . implode(",", $user['write-permission']) . "\n";
+			}
+			$conf .= "\n";
 		}
-		if (is_array($user['write-permission'])) {
-			$conf .= "write = " . implode(",", $user['write-permission']) . "\n";
-		}
-		$conf .= "\n";
 	}
 	$conf .= "\n";
 	
