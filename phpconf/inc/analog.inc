@@ -321,7 +321,7 @@ function analog_zapata_conf_generate() {
 		if ($interface['echocancel']) {
 			$conf .= "echocancel={$interface['echocancel']}\n";
 		} else {
-			$conf .= "echocancel=64\n";
+			$conf .= "echocancel=128\n";
 		}
 		$conf .= "echocancelwhenbridged=no\n";
 		
@@ -353,7 +353,7 @@ function analog_zapata_conf_generate() {
 		if ($interface['echocancel']) {
 			$conf .= "echocancel={$interface['echocancel']}\n";
 		} else {
-			$conf .= "echocancel=64\n";
+			$conf .= "echocancel=128\n";
 		}
 		$conf .= "echocancelwhenbridged=no\n";
 		

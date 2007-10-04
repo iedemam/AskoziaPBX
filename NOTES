@@ -11,7 +11,6 @@ pb11
  - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
  - confirm "Ringing()" behavior/usage on ISDN connections
 
- - manager users page
  - streaming moh
  - test incoming extensions
  - check about dtmf bursts after picking analog phones

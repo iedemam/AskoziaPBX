@@ -86,7 +86,7 @@ $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['type'] = $merged_units[$unit]['type'];
 $pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
-$pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : "64";
+$pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : "128";
 
 
 if ($_POST) {
@@ -103,7 +103,7 @@ if ($_POST) {
 					$a_abinterfaces[$i]['name'] = $_POST['name'];
 					$a_abinterfaces[$i]['type'] = $_POST['type'];
 					$a_abinterfaces[$i]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
-					$a_abinterfaces[$i]['echocancel'] = ($_POST['echocancel'] != "64") ? $_POST['echocancel'] : false;
+					$a_abinterfaces[$i]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
 				}
 			}
 
@@ -112,7 +112,7 @@ if ($_POST) {
 			$a_abinterfaces[$n]['name'] = $_POST['name'];
 			$a_abinterfaces[$n]['type'] = $_POST['type'];
 			$a_abinterfaces[$n]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
-			$a_abinterfaces[$n]['echocancel'] = ($_POST['echocancel'] != "64") ? $_POST['echocancel'] : false;
+			$a_abinterfaces[$n]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
 		}
 
 

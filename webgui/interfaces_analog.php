@@ -156,7 +156,7 @@ if (file_exists($d_analogconfdirty_path)) {
 					<td class="listr"><?=htmlspecialchars($startsignal);?>&nbsp;</td>
 					<td class="listr"><?
 						if (!isset($mu['echocancel']))
-							$ecfield = "64";
+							$ecfield = "128";
 						else if ($mu['echocancel'] == "no")
 							$ecfield = "Disabled";
 						else
