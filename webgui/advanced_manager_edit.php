@@ -152,7 +152,7 @@ if ($_POST) {
 					<strong>Read</strong><br><?
 				foreach ($manager_permissions as $perm) {
 					?><input name="read-<?=$perm;?>" id="read-<?=$perm;?>" type="checkbox" value="yes" <?
-					if (in_array($permission, $pconfig['read-permission'])) echo "checked"; 
+					if (in_array($perm, $pconfig['read-permission'])) echo "checked"; 
 					?>><?=$perm;?><br><?
 				}
 				?></td>
@@ -160,7 +160,7 @@ if ($_POST) {
 					<strong>Write</strong><br><?
 				foreach ($manager_permissions as $perm) {
 					?><input name="write-<?=$perm;?>" id="write-<?=$perm;?>" type="checkbox" value="yes" <?
-					if (in_array($permission, $pconfig['write-permission'])) echo "checked"; 
+					if (in_array($perm, $pconfig['write-permission'])) echo "checked"; 
 					?>><?=$perm;?><br><?
 				}
 				?></td>
