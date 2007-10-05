@@ -1,4 +1,4 @@
-2007.09.xx - pb11
+2007.10.05 - pb11
  - new platform: PC Engines - ALIX.1x
  - new platform: Soekris - net55xx
  - new platform: Herologic - HL-4xx
@@ -19,7 +19,6 @@
  - bug: fixed extension generator for callgroups not having an internal extension defined
  - bug: fixed NAT configuration generator in sip.conf
  - bug: fixed dialplan_parse_pattern()
- - bug: really fixed the ab-unit display problem on "Interfaces -> Network -> Assign"
 
 2007.09.07 - pb10
  - added Polish voicemail notification e-mail translation
