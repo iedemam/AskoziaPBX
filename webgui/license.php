@@ -33,7 +33,7 @@ $pgtitle = array("License");
 require("guiconfig.inc"); 
 ?>
 <?php include("fbegin.inc"); ?>
-	<p><strong>AskoziaPBX is Copyright &copy; 2007 IKT (<a href="http://www.itison-ikt.de">http://www.itison-ikt.de</a>).<br>
+	<p><strong>AskoziaPBX is Copyright &copy; 2007 IKT (<a href="http://itison-ikt.de/en/en_index.html">http://www.itison-ikt.de</a>).<br>
 	All rights reserved.</strong></p>
 	<p> Redistribution and use in source and binary forms, with or without<br>
 	modification, are permitted provided that the following conditions 
@@ -92,6 +92,10 @@ require("guiconfig.inc");
 	<br>
 	ISDN4BSD by HPS (<a href="http://www.turbocat.net/~hselasky/isdn4bsd/" target="_blank">http://www.turbocat.net/~hselasky/isdn4bsd/</a>)<br>
 	Copyright &copy; 2003-2007 Hans Petter Selasky.
+	All rights reserved.<br>
+	<br>
+	OSLEC Open Source Line Echo Canceller (<a href="http://www.rowetel.com/ucasterisk/oslec.html" target="_blank">http://www.rowetel.com/ucasterisk/oslec.html</a>)<br>
+	Copyright &copy; 2007, David Rowe
 	All rights reserved.<br>
 	<br>
 	Asterisk (<a href="http://www.asterisk.org" target="_blank">http://www.asterisk.org</a>)<br>
