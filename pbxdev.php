@@ -36,7 +36,7 @@
 $php_version		= "php-4.4.7";
 $pecl_sqlite_version= "SQLite-1.0.3";
 $mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.12";
+$asterisk_version	= "asterisk-1.4.12.1";
 $msmtp_version		= "msmtp-1.4.11";
 $zaptel_version		= "zaptel-trunk";
 $oslec_version		= "oslec-trunk";
@@ -71,7 +71,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "generic-pc net48xx net55xx wrap alix1x hl4xx"; //generic-pc-cdrom net45xx";
+$platform_list = "generic-pc net48xx net55xx wrap alix1x hl4xx";
 $platforms = explode(" ", $platform_list);
 
 
@@ -187,9 +187,6 @@ function build_kernels() {
 	global $platforms;
 	
 	foreach($platforms as $platform) {
-		if($platform == "generic-pc-cdrom") {
-			continue;
-		}
 		build_kernel($platform);
 	}
 }
@@ -985,8 +982,7 @@ function package($platform, $image_name) {
 	// ...system modules		
 	_exec("mkdir tmp/stage/boot");
 	_exec("mkdir tmp/stage/boot/kernel");
-	if ($platform == "generic-pc" || 
-		$platform == "generic-pc-cdrom") {
+	if ($platform == "generic-pc") {
 		_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/stage/boot/kernel/");
 	}
 	
@@ -1023,102 +1019,100 @@ function package($platform, $image_name) {
 	_exec("mdconfig -d -u 0");
 	_exec("gzip -9 tmp/mfsroot");
 	_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz");
-
-
-	// .img
-	if ($platform != "generic-pc-cdrom") {
-		
-		// add mfsroot
-		_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
-			"tmp/stage/mfsroot.gz");
-		
-		// ...boot
-		_exec("mkdir tmp/stage/boot");
-		_exec("mkdir tmp/stage/boot/kernel");
-	    _exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/stage/boot/");
-		_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/stage/boot/");
 	
-		// ...conf
-		_exec("mkdir tmp/stage/conf");
-		_exec("cp {$dirs['phpconf']}/config.$platform.xml tmp/stage/conf/config.xml");
-		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/stage/kernel.gz");
-		
-		$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
-		$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
-		$image_size += 16 - ($image_size % 16);
-		
-		$a_size = ($image_size - $asterisk_size) * 2 - 16;
-		$b_size = $asterisk_size * 2;
-		$c_size = $image_size * 2;
-
-		$label  = "# /dev/md0:\n";
-		$label .= "8 partitions:\n";
-		$label .= "#        size   offset    fstype   [fsize bsize bps/cpg]\n";
-		$label .= " a: " . $a_size . "  16  unused  0  0\n";
-		$label .= " b: " . $b_size . "   *  unused  0  0\n";
-		$label .= " c: " . $c_size . "   0  unused  0  0\n\n";
-
-		$fd = fopen("tmp/formatted.label", "w");
-		if (!$fd) {
-			printf("Error: cannot open label!\n");
-			exit(1);
-		}
-		fwrite($fd, $label);
-		fclose($fd);
-		
-		_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
-		_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
-		_exec("bsdlabel -BR -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 tmp/formatted.label");
-		
-		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
-		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
-		
-		_exec("mount /dev/md0a tmp/mnt");
-		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
-		_log("---- $platform - " . basename($image_name) . " - system partition ----");
-		_exec("df tmp/mnt");
-		_exec("umount tmp/mnt");
-		
-		_exec("mount /dev/md0b tmp/mnt");
-		_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
-		// XXX quick fix to remove low power modules
-		if ($platform != "generic-pc") {
-			foreach ($low_power_modules as $lpm) {
-				_exec("rm tmp/mnt/modules/$lpm");
-			}
-		}
-		_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
-		_exec("df tmp/mnt");
-		_exec("umount tmp/mnt");		
-		
-		// cleanup
-		_exec("mdconfig -d -u 0");
-		_exec("gzip -9 tmp/image.bin");
-		_exec("mv tmp/image.bin.gz {$dirs['images']}/pbx-$platform-". basename($image_name) .".img");
-		
-	// .iso
-	} else if($platform == "generic-pc-cdrom") {
-
-		_exec("mkdir tmp/cdroot");
-		_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
-			"tmp/cdroot/mfsroot.gz");
-		_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/cdroot/kernel.gz");		
-
-		_exec("mkdir tmp/cdroot/boot");
-	    _exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot tmp/cdroot/boot/");		
-	    _exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/cdroot/boot/");
-		_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
-		_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot tmp/cdroot/boot/");
-
-		_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"m0n0wall CD-ROM image\" ".
-			"-c \"boot/boot.catalog\" -d -r -publisher \"m0n0.ch\" ".
-			"-p \"Your Name\" -V \"m0n0wall_cd\" -o \"m0n0wall.iso\" tmp/cdroot/");
-			
-		_exec("mv m0n0wall.iso {$dirs['images']}/cdrom-". basename($image_name) .".iso");
+	// add mfsroot
+	_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
+		"tmp/stage/mfsroot.gz");
+	
+	// ...boot
+	_exec("mkdir tmp/stage/boot");
+	_exec("mkdir tmp/stage/boot/kernel");
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/stage/boot/");
+	_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/stage/boot/");
+	
+	// ...conf
+	_exec("mkdir tmp/stage/conf");
+	_exec("cp {$dirs['phpconf']}/config.$platform.xml tmp/stage/conf/config.xml");
+	_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/stage/kernel.gz");
+	
+	$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
+	$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
+	$image_size += 16 - ($image_size % 16);
+	
+	$a_size = ($image_size - $asterisk_size) * 2 - 16;
+	$b_size = $asterisk_size * 2;
+	$c_size = $image_size * 2;
+    
+	$label  = "# /dev/md0:\n";
+	$label .= "8 partitions:\n";
+	$label .= "#        size   offset    fstype   [fsize bsize bps/cpg]\n";
+	$label .= " a: " . $a_size . "  16  unused  0  0\n";
+	$label .= " b: " . $b_size . "   *  unused  0  0\n";
+	$label .= " c: " . $c_size . "   0  unused  0  0\n\n";
+    
+	$fd = fopen("tmp/formatted.label", "w");
+	if (!$fd) {
+		printf("Error: cannot open label!\n");
+		exit(1);
 	}
+	fwrite($fd, $label);
+	fclose($fd);
 	
+	_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
+	_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
+	_exec("bsdlabel -BR -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 tmp/formatted.label");
+	
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
+	
+	_exec("mount /dev/md0a tmp/mnt");
+	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+	_log("---- $platform - " . basename($image_name) . " - system partition ----");
+	_exec("df tmp/mnt");
+	_exec("umount tmp/mnt");
+	
+	_exec("mount /dev/md0b tmp/mnt");
+	_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+	// XXX quick fix to remove low power modules
+	if ($platform != "generic-pc") {
+		foreach ($low_power_modules as $lpm) {
+			_exec("rm tmp/mnt/modules/$lpm");
+		}
+	}
+	_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
+	_exec("df tmp/mnt");
+	_exec("umount tmp/mnt");		
+	
+	// cleanup
+	_exec("mdconfig -d -u 0");
+	_exec("gzip -9 tmp/image.bin");
+	_exec("mv tmp/image.bin.gz {$dirs['images']}/pbx-$platform-". basename($image_name) .".img");
+
+
 	_exec("rm -rf tmp");
 }
+
+/* function build_installcd
+
+	// .iso
+	_exec("mkdir tmp/cdroot");
+	_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
+		"tmp/cdroot/mfsroot.gz");
+	_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/cdroot/kernel.gz");		
+    
+	_exec("mkdir tmp/cdroot/boot");
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot tmp/cdroot/boot/");		
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/cdroot/boot/");
+	_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot tmp/cdroot/boot/");
+    
+	_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"m0n0wall CD-ROM image\" ".
+		"-c \"boot/boot.catalog\" -d -r -publisher \"m0n0.ch\" ".
+		"-p \"Your Name\" -V \"m0n0wall_cd\" -o \"m0n0wall.iso\" tmp/cdroot/");
+		
+	_exec("mv m0n0wall.iso {$dirs['images']}/cdrom-". basename($image_name) .".iso");
+
+*/
 
 function release($name) {
 	global $platforms, $dirs;
@@ -1195,7 +1189,7 @@ function _platform_to_kernel($platform) {
 		exit(1);
 	}
 	
-	if($platform == "generic-pc-cdrom" || $platform == "generic-pc") {
+	if($platform == "generic-pc") {
 		$kernel = "ASKOZIAPBX_GENERIC";
 	} else {
 		$kernel = "ASKOZIAPBX_" . strtoupper($platform);
