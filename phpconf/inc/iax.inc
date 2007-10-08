@@ -203,7 +203,7 @@ EOD;
 			$conf .= "secret={$p['secret']}\n";
 		}
 		
-		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "context={$p['uniqid']}-incoming\n";
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])

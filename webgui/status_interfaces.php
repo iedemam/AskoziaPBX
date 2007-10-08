@@ -204,6 +204,9 @@ function get_analog_interface_info() {
 	);
 	
 	foreach ($ifdescrs as $ifdescr => $ifname) {
+		if ($ifdescr == "wireless" && !isset($config['interfaces']['wireless']['if'])) {
+			continue;
+		}
 		$ifinfo = get_network_interface_info($ifdescr);
 
 		if ($i) {

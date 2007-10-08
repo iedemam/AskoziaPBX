@@ -175,7 +175,7 @@ function asterisk_manager_conf_generate() {
 displaysystemname = yes
 enabled = yes
 port = 5038
-bindaddr = 127.0.0.1
+bindaddr = 0.0.0.0
 
 [admin]
 secret = askozia

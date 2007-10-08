@@ -1,3 +1,8 @@
+2007.10.xx - pb11.1
+ - bug: unwanted wireless information no longer displayed on systems with no wireless interfaces present (reported by Carlo L)
+ - bug: manager is now bound to 0.0.0.0, allowing connections from users defined in "Advanced -> Manager" (reported by Carlo L)
+ - bug: added forgotten "-incoming" to iax.conf generator (reported by Mat M)
+
 2007.10.05 - pb11
  - new platform: PC Engines - ALIX.1x
  - new platform: Soekris - net55xx
