@@ -264,7 +264,9 @@ function build_asterisk() {
 			"cdr_to_syslog",
 			//"channel_queue",
 			"voicemail_readback_number",
-			"chan_sip_default_cid"
+			"chan_sip_default_cid",
+			"chan_local_jitterbuffer"
+			//"chan_sip_423"
 		);
 		foreach ($patches as $patch) {
 			_exec("cd {$dirs['packages']}/$asterisk_version; ".
