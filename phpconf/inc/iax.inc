@@ -144,7 +144,7 @@ EOD;
 	foreach($iaxproviders as $p) {
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= "type=friend\n";
+		$conf .= "type=peer\n";
 		$conf .= "username={$p['username']}\n";
 		
 		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
@@ -155,7 +155,6 @@ EOD;
 			$conf .= "secret={$p['secret']}\n";
 		}
 		
-		$conf .= "context={$p['uniqid']}-incoming\n";
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])
@@ -193,7 +192,6 @@ EOD;
 		$conf .= "; {$p['name']} - incoming\n";
 		$conf .= "[{$p['username']}]\n";
 		$conf .= "type=user\n";
-		$conf .= "username={$p['username']}\n";
 		
 		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
 			$conf .= "auth=plaintext\n";
