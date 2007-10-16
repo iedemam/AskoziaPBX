@@ -16,7 +16,7 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-10-08T13:35:01Z</date>
+			<date>2007-10-09T13:27:37Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -84,14 +84,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>50</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>0</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>77</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
 		</dict>
 		<key>NOTES</key>
 		<dict>
@@ -210,9 +226,6 @@
 	<array>
 		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
-		<string>webgui/status_interfaces.php</string>
-		<string>phpconf/inc/asterisk.inc</string>
-		<string>phpconf/inc/iax.inc</string>
 		<string>NOTES</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
