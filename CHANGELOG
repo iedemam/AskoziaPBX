@@ -3,6 +3,7 @@
  - cleaned up iax.conf generator based on suggestions by Mat M
  - updated Asterisk to 1.4.13
  - bug: fixed "localnet" setting in sip.conf
+ - bug: "Diagnostics -> Logs -> Calls" now displays information in the "src" field in more cases
 
 2007.10.09 - pb11.1
  - updated Asterisk to 1.4.12.1

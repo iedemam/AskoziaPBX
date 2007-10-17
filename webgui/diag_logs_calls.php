@@ -103,12 +103,16 @@ function dump_clog($logfile, $tail) {
 		// start
 		echo "<td class=\"listlr\" nowrap>".htmlspecialchars($timestamp)."&nbsp;</td>\n";
 		// src
-		echo "<td class=\"listr\">\n";
-		echo "\t<span title=\"".
-				htmlspecialchars($cdr[0]).
-				"\" style=\"cursor: help; border-bottom: 1px dashed #000000;\">".
-				htmlspecialchars($cdr[1]).
-			"</span>&nbsp;</td>\n";
+		if ($cdr[1]) {
+			echo "<td class=\"listr\">\n";
+			echo "\t<span title=\"".
+					htmlspecialchars($cdr[0]).
+					"\" style=\"cursor: help; border-bottom: 1px dashed #000000;\">".
+					htmlspecialchars($cdr[1]).
+				"</span>&nbsp;</td>\n";
+		} else {
+			echo "<td class=\"listr\">" . htmlspecialchars($cdr[0]) . "&nbsp;</td>\n";
+		}
 		
 		// dst
 		echo "<td class=\"listr\">".htmlspecialchars($cdr[2])."&nbsp;</td>\n";
