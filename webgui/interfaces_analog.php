@@ -73,7 +73,7 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['name'] = "(unconfigured)";
 		$merged_units[$i]['type'] = $recognized_units[$i];
 		$merged_units[$i]['startsignal'] = "ks";
-		$merged_units[$i]['echocancel'] = "yes";
+		$merged_units[$i]['echocancel'] = "128";
 	}
 }
 

@@ -5,6 +5,7 @@
  - bug: fixed "localnet" setting in sip.conf
  - bug: "Diagnostics -> Logs -> Calls" now displays information in the "src" field in more cases
  - bug: fixed a small display issue when a provider does not have any patterns defined
+ - bug: unconfigured analog interfaces now have a default value of "128" for their echo cancellers instead of "yes"
 
 2007.10.09 - pb11.1
  - updated Asterisk to 1.4.12.1
