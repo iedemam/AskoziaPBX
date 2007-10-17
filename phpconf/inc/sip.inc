@@ -126,11 +126,13 @@ EOD;
 	$lancfg = $config['interfaces']['lan'];
 	if ($lancfg['topology'] == "natstatic") {
 		$conf .= "externip=" . $lancfg['extipaddr'] . "\n";
-		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
+		$baseaddr = long2ip(ip2long($lancfg['ipaddr']) & gen_subnet_mask_long($lancfg['subnet']));
+		$conf .= "localnet=" . $baseaddr . "/" . $lancfg['subnet'] . "\n";
 	} else if ($lancfg['topology'] == "natdynamichost") {
 		$conf .= "externhost=" . $lancfg['exthostname'] . "\n";
 		$conf .= "externrefresh=10\n";
-		$conf .= "localnet=" . $lancfg['ipaddr'] . "/" . $lancfg['subnet'] . "\n";
+		$baseaddr = long2ip(ip2long($lancfg['ipaddr']) & gen_subnet_mask_long($lancfg['subnet']));
+		$conf .= "localnet=" . $baseaddr . "/" . $lancfg['subnet'] . "\n";
 	}
 	$conf .= "\n\n";
 	
