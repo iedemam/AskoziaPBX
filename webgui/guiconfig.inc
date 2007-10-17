@@ -823,6 +823,9 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 	global $help, $help_language;
 	
 	$n = count($current_patterns);
+	if ($n == 0) {
+		$n = 1 ;	
+	}
 	
 	?><tr> 
 		<td width="20%" valign="top" class="vncell">Dialing Pattern(s)</td>
