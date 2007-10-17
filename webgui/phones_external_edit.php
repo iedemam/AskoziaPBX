@@ -141,13 +141,7 @@ if ($_POST) {
 					<br><span class="vexpl">Outgoing provider to be used to reach this telephone.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Voicemail Address</td>
-				<td class="vtable">
-					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
-					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
-				</td>
-			</tr>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

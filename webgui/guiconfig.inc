@@ -877,6 +877,17 @@ function display_channel_language_selector($current_language, $colspan) {
 	</tr><?
 }
 
+function display_call_notifications_editor($current_voicemailbox, $colspan) {
+	
+	?><tr> 
+		<td valign="top" class="vncell">Voicemail Address</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($current_voicemailbox);?>"> 
+			<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
+		</td>
+	</tr><?
+}
+
 function display_call_and_busy_limit_selector($current_calllimit, $current_busylimit, $colspan) {
 	
 	?><tr> 

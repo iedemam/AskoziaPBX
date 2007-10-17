@@ -131,13 +131,7 @@ if ($_POST) {
 					<br><span class="vexpl">Text to be displayed for Caller ID. (untested)</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Voicemail Address</td>
-				<td class="vtable">
-					<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($pconfig['voicemailbox']);?>"> 
-					<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
-				</td>
-			</tr>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">Analog Interface</td>
 				<td class="vtable">
