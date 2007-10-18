@@ -221,8 +221,7 @@ EOD;
 		$conf .= "exten => {$room['number']},n,Hangup()\n\n";
 	}
 
-	$conf .= "include => parkedcalls\n\n";
-
+	$conf .= _extensions_generate_parkinglot();
 
 	// sip providers
 	$a_sipproviders = sip_get_providers();
@@ -344,6 +343,25 @@ function _extensions_add_sendnotifications_line($phone) {
 	}
 
 	return $dial;
+}
+
+function _extensions_generate_parkinglot() {
+	global $config;
+	
+	$pc = $config['dialplan']['callparking'];
+	
+	$parkstart = isset($pc['parkposstart']) ? $pc['parkposstart'] : "701";
+	$parkend = isset($pc['parkposend']) ? $pc['parkposend'] : "720";
+	
+	$conf .= "include => parkedcalls\n";
+	
+	for ($i = $parkstart; $i <= $parkend; $i++) {
+		$conf .= "exten => $i,1,ParkedCall($i)\n";
+		$conf .= "exten => $i,hint,park:$i@parkedcalls\n";
+	}
+	$conf .= "\n\n";
+	
+	return $conf;
 }
 
 
