@@ -54,6 +54,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['dialstring'] = $a_extphones[$id]['dialstring'];
 	$pconfig['dialprovider'] = $a_extphones[$id]['dialprovider'];
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
+	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
 	$pconfig['language'] = $a_extphones[$id]['language'];
 }
 
@@ -83,6 +84,7 @@ if ($_POST) {
 		$ep['dialstring'] = $_POST['dialstring'];
 		$ep['dialprovider'] = $_POST['dialprovider'];
 		$ep['voicemailbox'] = $_POST['voicemailbox'];
+		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ep['language'] = $_POST['language'];
 
 		if (isset($id) && $a_extphones[$id]) {
@@ -141,7 +143,7 @@ if ($_POST) {
 					<br><span class="vexpl">Outgoing provider to be used to reach this telephone.</span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], 2); ?>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

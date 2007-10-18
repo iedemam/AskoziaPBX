@@ -1220,42 +1220,41 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
 		$group = dialplan_get_callgroup($uniqid);
 		$dial_strings = array();
-		$vm_account = "";
 		$n = count($group['groupmember']);
 		for ($i = 0; $i < $n; $i++) {
 			$subid = split("-", $group['groupmember'][$i]);
 			if ($subid[0] == "SIP" && $subid[1] == "PHONE") {
 				$phone = sip_get_phone($group['groupmember'][$i]);
 				if ($i == 0) {
-					$vm_account = $phone['extension'];
+					$vm_phone = $phone;
 				}
 				$dial_strings[] = "SIP/{$phone['extension']}";
         	
 			} else if ($subid[0] == "IAX" && $subid[1] == "PHONE") {
 				$phone = iax_get_phone($group['groupmember'][$i]);
 				if ($i == 0) {
-					$vm_account = $phone['extension'];
+					$vm_phone = $phone;
 				}
 				$dial_strings[] = "IAX2/{$phone['extension']}";        	
 			
 			} else if ($subid[0] == "ISDN" && $subid[1] == "PHONE") {
 				$phone = isdn_get_phone($group['groupmember'][$i]);
 				if ($i == 0) {
-					$vm_account = $phone['extension'];
+					$vm_phone = $phone;
 				}
 				$dial_strings[] = "CAPI/{$phone['extension']}";
 				
 			} else if ($subid[0] == "ANALOG" && $subid[1] == "PHONE") {
 				$phone = analog_get_phone($group['groupmember'][$i]);
 				if ($i == 0) {
-					$vm_account = $phone['extension'];
+					$vm_phone = $phone;
 				}
 				$dial_strings[] = "ZAP/{$phone['interface']}/{$phone['extension']}";
 
 			} else if ($subid[0] == "EXTERNAL" && $subid[1] == "PHONE") {
 				$phone = external_get_phone($group['groupmember'][$i]);
 				if ($i == 0) {
-					$vm_account = $phone['extension'];
+					$vm_phone = $phone;
 				}
 				$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
 				if ($technology == "ZAP") {
@@ -1273,9 +1272,16 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		for ($i = 1; $i < $n; $i++) {
 			$dstring .= "&" . $dial_strings[$i];
 		}
+		// XXX doubled from _extensions_add_sendnotifications_line...messy messy
+		if ($vm_phone['voicemailbox'] && isset($vm_phone['sendcallnotifications'])) {
+			$dial .= "exten => $exten,$prio,Set(SENDNOTIFICATIONS=\"{$vm_phone['voicemailbox']}\")\n";
+		} else {
+			$dial .= "exten => $exten,$prio,Set(SENDNOTIFICATIONS=\"no\")\n";
+		}
 
+		$prio++;
 		$dial .= "exten => $exten,$prio,".
-			"Macro(vm|$dstring|$vm_account|$readbacknum|to)\n";
+			"Macro(vm|$dstring|{$vm_phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
 		$app = dialplan_get_application($uniqid);

@@ -1,4 +1,5 @@
 2007.10.xx - pb12
+ - added missed call notification e-mail option to phones
  - added chan_local jitterbuffer patch, enabling applications to also be jitterbuffered
  - cleaned up iax.conf generator based on suggestions by Mat M
  - updated Asterisk to 1.4.13

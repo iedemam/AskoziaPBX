@@ -79,29 +79,70 @@ function extensions_conf_generate() {
 		return 1;
 	}
 	
+	$vmconfig = $config['voicemail'];
+	
 	$conf = <<<EOD
 
 [macro-vm];
 exten => s,1,Dial($\{ARG1},30,$\{ARG4})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
+
 exten => s-NOANSWER,1,Wait(1)
+exten => s-NOANSWER,n,Set(MISSEDCAUSE=no-answer)
 exten => s-NOANSWER,n,VoiceMail($\{ARG2},u,$\{ARG3})
 exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
+
 exten => s-BUSY,1,Wait(1)
+exten => s-BUSY,n,Set(MISSEDCAUSE=busy)
 exten => s-BUSY,n,VoiceMail($\{ARG2},b,$\{ARG3})
 exten => s-BUSY,n,Goto(exit-$\{VMSTATUS},1)
+
 exten => s-ANSWER,1,Hangup()
+
 exten => _s-.,1,Goto(s-NOANSWER,1)
+
+exten => h,1,GosubIf($["$\{MISSEDCAUSE}" = ""]?reallyhungup)
+exten => h,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
+exten => h,n,Hangup()
+exten => h,n(reallyhungup),Set(MISSEDCAUSE=hungup)
+exten => h,n,Return()
+exten => h,n(notify),Macro(email)
+exten => h,n,Return()
+
 exten => exit-FAILED,1,Answer()
 exten => exit-FAILED,n,Wait(1)
 exten => exit-FAILED,n,Playback(vm-theperson)
 exten => exit-FAILED,n,SayDigits($\{ARG3})
 exten => exit-FAILED,n,Playback(vm-isunavail)
+exten => exit-FAILED,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
 exten => exit-FAILED,n,Hangup()
+exten => exit-FAILED,n(notify),Macro(email)
+exten => exit-FAILED,n,Return()
+
 exten => exit-SUCCESS,1,Playback(vm-goodbye)
+exten => exit-SUCCESS,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
 exten => exit-SUCCESS,n,Hangup()
+exten => exit-SUCCESS,n(notify),Macro(email)
+exten => exit-SUCCESS,n,Return()
+
 exten => exit-USEREXIT,1,Playback(vm-goodbye)
+exten => exit-USEREXIT,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
 exten => exit-USEREXIT,n,Hangup()
+exten => exit-USEREXIT,n(notify),Macro(email)
+exten => exit-USEREXIT,n,Return()
+
+
+[macro-email]
+exten => s,1,Set(TMPMAILFILE=/var/spool/asterisk/tmp/email-$\{MD5($\{CHANNEL})})
+exten => s,n,System(touch $\{TMPMAILFILE})
+exten => s,n,System(echo "date: `date`" > $\{TMPMAILFILE})
+exten => s,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
+exten => s,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
+exten => s,n,System(echo "from: AskoziaPBX Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
+exten => s,n,System(echo >> $\{TMPMAILFILE})
+exten => s,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
+exten => s,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
+exten => s,n,System(rm $\{TMPMAILFILE})
 
 
 EOD;
@@ -112,34 +153,43 @@ EOD;
 	$a_sipphones = sip_get_phones();
 	foreach ($a_sipphones as $phone) {
 		$conf .= "exten => {$phone['extension']},hint,SIP/{$phone['extension']}\n";
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
+		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
+		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= "exten => {$phone['extension']},n,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
-		//$conf .= "exten => {$phone['extension']},hint,IAX2/{$phone['extension']}\n";
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
+		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
+		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= "exten => {$phone['extension']},n,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_isdnphones = isdn_get_phones();
 	foreach ($a_isdnphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
+		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
+		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= "exten => {$phone['extension']},n,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_analogphones = analog_get_phones();
 	foreach ($a_analogphones as $phone) {
-		$conf .= "exten => {$phone['extension']},1,Macro(vm|ZAP/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
+		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
+		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= "exten => {$phone['extension']},n,Macro(vm|ZAP/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_extphones = external_get_phones();
 	foreach ($a_extphones as $phone) {
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
+		$conf .= _extensions_add_sendnotifications_line($phone);
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
-			$conf .= "exten => {$phone['extension']},1,".
+			$conf .= "exten => {$phone['extension']},n,".
 				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']}|tTo)\n";
 		} else {
-			$conf .= "exten => {$phone['extension']},1,".
+			$conf .= "exten => {$phone['extension']},n,".
 				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|{$phone['extension']}|to)\n";	
 		}
 	}
@@ -283,6 +333,17 @@ EOD;
 	fclose($fd);
 	
 	return 0;
+}
+
+function _extensions_add_sendnotifications_line($phone) {
+
+	if ($phone['voicemailbox'] && isset($phone['sendcallnotifications'])) {
+		$dial = "exten => {$phone['extension']},n,Set(SENDNOTIFICATIONS=\"{$phone['voicemailbox']}\")\n";
+	} else {
+		$dial = "exten => {$phone['extension']},n,Set(SENDNOTIFICATIONS=\"no\")\n";
+	}
+
+	return $dial;
 }
 
 

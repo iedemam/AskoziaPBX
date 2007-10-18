@@ -877,12 +877,19 @@ function display_channel_language_selector($current_language, $colspan) {
 	</tr><?
 }
 
-function display_call_notifications_editor($current_voicemailbox, $colspan) {
+function display_call_notifications_editor($current_voicemailbox, $current_sendcallnotifications, $colspan) {
 	
 	?><tr> 
-		<td valign="top" class="vncell">Voicemail Address</td>
+		<td valign="top" class="vncell">Voicemail</td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($current_voicemailbox);?>"> 
+			<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($current_voicemailbox);?>">
+			<br><input name="sendcallnotifications" id="sendcallnotifications" type="checkbox" value="yes"<?
+			
+			if ($current_sendcallnotifications) {
+				echo "checked";
+			}
+
+			?>>&nbsp;also send missed call notifications<br>
 			<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
 		</td>
 	</tr><?

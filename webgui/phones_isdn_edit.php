@@ -51,6 +51,7 @@ if (isset($id) && $a_isdnphones[$id]) {
 	$pconfig['callerid'] = $a_isdnphones[$id]['callerid'];
 	$pconfig['provider'] = $a_isdnphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_isdnphones[$id]['voicemailbox'];
+	$pconfig['sendcallnotifications'] = isset($a_isdnphones[$id]['sendcallnotifications']);
 	$pconfig['interface'] = $a_isdnphones[$id]['interface'];
 	$pconfig['language'] = $a_isdnphones[$id]['language'];
 	$pconfig['descr'] = $a_isdnphones[$id]['descr'];
@@ -86,6 +87,7 @@ if ($_POST) {
 		$ip['extension'] = $_POST['extension'];
 		$ip['callerid'] = $_POST['callerid'];
 		$ip['voicemailbox'] = $_POST['voicemailbox'];
+		$ip['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ip['interface'] = $_POST['interface'];
 		$ip['language'] = $_POST['language'];
 		$ip['descr'] = $_POST['descr'];
@@ -131,7 +133,7 @@ if ($_POST) {
 					<br><span class="vexpl">Text to be displayed for Caller ID.</span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], 1); ?>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">ISDN Interface</td>
 				<td class="vtable">
