@@ -71,7 +71,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "generic-pc net48xx net55xx wrap alix1x hl4xx";
+$platform_list = "generic-pc net48xx net55xx wrap alix1x alix23x hl4xx";
 $platforms = explode(" ", $platform_list);
 
 
