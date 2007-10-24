@@ -2,7 +2,7 @@
 <!-- AskoziaPBX default system configuration -->
 <!-- $Id: config.xml 143 2007-07-03 14:34:07Z michael.iedema $ -->
 <askoziapbx>
-	<version>1.1</version>
+	<version>1.2</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>AskoziaPBX</hostname>
@@ -15,117 +15,41 @@
 		<timeservers>pool.ntp.org</timeservers>
 		<webgui>
 			<protocol>https</protocol>
-			<!--
-			<port></port>
-			<certificate></certificate>
-			<private-key></private-key>
-			<noassigninterfaces/>
-			<expanddiags/>
-			-->
 		</webgui>
-		<!-- <disableconsolemenu/> -->
-		<!-- <disablefirmwarecheck/> -->
-		<!-- <shellcmd></shellcmd> -->
-		<!-- <earlyshellcmd></earlyshellcmd> -->
-		<!-- <harddiskstandby></harddiskstandby> -->
-		<!-- <polling/> -->
-		<!-- <notes></notes> -->
 	</system>
 	<interfaces>
 		<lan>
 			<if>vr0</if>
 			<ipaddr>192.168.1.2</ipaddr>
 			<subnet>24</subnet>
-			<media></media>
-			<mediaopt></mediaopt>
 			<gateway>192.168.1.1</gateway>
 			<bridge>vr1</bridge>
 			<bridge>vr2</bridge>
 			<bridge>vr3</bridge>
 		</lan>
 	</interfaces>
-	<!--
-	<sip>
-		<port>5060</port>
-		<phone>
-			<extension></extension>
-			<callerid></callerid>
-			<secret></secret>
-			<descr/>
-			<provider></provider>
-			<voicemailbox></voicemailbox>
-			<codec>/codec>
-			...
-			<uniqid></uniqid>
-		</phone>
-		...
-		<provider>
-			<name>Free World Dialup</name>
-			<username></username>
-			<authuser/>
-			<secret></secret>
-			<host></host>
-			<port/>
-			<dialpattern></dialpattern>
-			...
-			<incomingextension></incomingextension>
-			<codec></codec>
-			...
-			<uniqid></uniqid>
-		</provider>
-		...
-	</sip>
-	<iax>
-		<port>4569</port>
-		<phone>
-			<extension></extension>
-			<callerid></callerid>
-			<secret></secret>
-			<descr/>
-			<provider></provider>
-			<voicemailbox></voicemailbox>
-			<codec>/codec>
-			...
-			<uniqid></uniqid>
-		</phone>
-		...
-		<provider>
-			<name>Free World Dialup</name>
-			<username></username>
-			<authuser/>
-			<secret></secret>
-			<host></host>
-			<port/>
-			<dialpattern></dialpattern>
-			...
-			<incomingextension></incomingextension>
-			<codec></codec>
-			...
-			<uniqid></uniqid>
-		</provider>
-		...
-	</iax>
-	-->
 	<conferencing>
 		<room>
 			<number>2663</number>
 			<name>Default Conference</name>
-			<!-- <pin></pin> -->
 			<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6</uniqid>
 		</room>
 	</conferencing>
-	<!--
-	<voicemail>
-		<host></host>
-		<maildomain></maildomain>
-	</voicemail>
-	-->
-	<syslog>
-		<!--
-		<reverse/>
-		<enable/>
-		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
-		<system/>
-		-->
-	</syslog>
+	<dialplan>
+		<application>
+			<name>Echo</name>
+			<extension>00003246</extension>
+			<uniqid>APPLICATION-MAPPING-83606076846f835d8828a4</uniqid>
+		</application>
+		<application>
+			<name>Milliwatt</name>
+			<extension>000064554</extension>
+			<uniqid>APPLICATION-MAPPING-48856682646f8381701993</uniqid>
+		</application>
+		<application>
+			<name>WakeMe</name>
+			<extension>00009253</extension>
+			<uniqid>APPLICATION-MAPPING-202074715246f8385a7a820</uniqid>
+		</application>
+	</dialplan>
 </askoziapbx>
