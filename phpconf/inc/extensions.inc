@@ -97,7 +97,8 @@ exten => s-BUSY,n,Set(MISSEDCAUSE=busy)
 exten => s-BUSY,n,VoiceMail($\{ARG2},b,$\{ARG3})
 exten => s-BUSY,n,Goto(exit-$\{VMSTATUS},1)
 
-exten => s-ANSWER,1,Hangup()
+exten => s-ANSWER,1,Set(MISSEDCAUSE=didntmiss)
+exten => s-ANSWER,n,Hangup()
 
 exten => _s-.,1,Goto(s-NOANSWER,1)
 
