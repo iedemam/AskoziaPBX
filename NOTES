@@ -1,152 +1,50 @@
-closed bugs in 1.4 svn, open in 1.4.12
- - 10877 (rtp unknown event creating NULL dtmf, one-way audio)
+pb12
+- multiple MSNs on ISDN, DID/DDI support in general
+- nat=yes|no optional an all sip accounts
+- caller id override=yes|no option for providers
+- dial timeout options
+- fix snooze
+- check about dtmf bursts after picking analog phones
+- single tone voicemails...
 
 
-pb11
- - provider / phone status indicators on edit page
+sooner
+- fix extensions_exists
+- fix dialplan_providers.php to save posted config and display correctly when no providers are present
+- complete is_valid_xxx() checks
+- normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
+- confirm "Ringing()" behavior/usage on ISDN connections
+- start returning get_blahs() functions by reference
+_ also, get_blahs() should return arrays with uniqid's as the keys
+- kernel and asterisk modules should only be loaded when needed
 
- - fix extensions_exists
- - fix dialplan_providers.php to save posted config and display correctly when no providers are present
- - complete is_valid_xxx() checks
- - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
- - confirm "Ringing()" behavior/usage on ISDN connections
 
- - streaming moh
- - test incoming extensions
- - check about dtmf bursts after picking analog phones
- - fix snooze
- - get a iax client working ... figure out what's going on there
-
- - single tone voicemails...
-
------------------
-
-- enable sip/iax/isdn/analog debug options on pbx log page
-- extend callgroup support to add delays, sequential groups
+later
+- qos page with jitterbuffer tab
+- time based call routing
+- sqlite cdrs
+	- cdr page needs query, column add/hide support
+- better front panel w/quick access to call logs, etc
+- disable/enable options for each provider and phone
 - storage interface (add storage partition for extended capabilities)
 - extended capabilities hooks into the gui
 - new option to log to storage partition
-- multiple MSNs on ISDN, DID/DDI support in general
-
- - gtalk
- - ajaxify logs page
- - dialplan (still needs (de)select all)
- - start returning get_blahs() functions by reference
- _ also, get_blahs() should return arrays with uniqid's as the keys
- - kernel and asterisk modules should only be loaded when needed
- - privacy with voicemail forward
- - followme
- - add iax2 auth options
-   - pubkey import
- - get "advanced mode" working
- - provider to provider access with pin code
- - QoS options, such as jitterbuffer and packet types supported
- - testing / performance mode
+- get "advanced mode" working
+- provider / phone status indicators on edit page
+- add "Entities -> Users"
+- dialplan (still needs (de)select all)
+- add iax2 auth options
+	- pubkey import
+- enable sip/iax/isdn/analog debug options on pbx log page
+- extend callgroup support to add delays, sequential groups
+- privacy with voicemail forward
+- cryptographically verifiable, encryptable config.xmls
+- provider to provider access with pin code
+- QoS options, such as jitterbuffer and packet types supported
 
 
-
-
-; --[ jitter buffer ]-------------------------------------------------------------
-; All the jitter buffer settings are in milliseconds.
-; The jitter buffer works for INCOMING audio - the outbound audio
-; will be dejittered by the jitter buffer at the other end.
-;
-; maxjitterbuffer: a maximum size for the jitter buffer.
-; Setting a reasonable maximum here will prevent the call delay
-; from rising to silly values in extreme situations; you'll hear
-; SOMETHING, even though it will be jittery.
-;
-; resyncthreshold: when the jitterbuffer notices a significant change in delay
-; that continues over a few frames, it will resync, assuming that the change in
-; delay was caused by a timestamping mix-up. The threshold for noticing a
-; change in delay is measured as twice the measured jitter plus this resync
-; threshold.
-; Resyncing can be disabled by setting this parameter to -1.
-;
-; maxjitterinterps: the maximum number of interpolation frames the jitterbuffer
-; should return in a row. Since some clients do not send CNG/DTX frames to
-; indicate silence, the jitterbuffer will assume silence has begun after
-; returning this many interpolations. This prevents interpolating throughout
-; a long silence.
-;
-
-;maxjitterbuffer=1000
-;maxjitterinterps=10
-;resyncthreshold=1000
-
-
-
-; --[ features ]-------------------------------------------------------------
-
-[general]
-;courtesytone = beep		; Sound file to play to the parked caller 
-				; when someone dials a parked call
-				; or the Touch Monitor is activated/deactivated.
-;parkedplay = caller		; Who to play the courtesy tone to when picking up a parked call
-				; one of: parked, caller, both  (default is caller)
-;adsipark = yes			; if you want ADSI parking announcements
-;findslot => next		; Continue to the 'next' free parking space. 
-				; Defaults to 'first' available
-;parkedmusicclass=default	; This is the MOH class to use for the parked channel
-				; as long as the class is not set on the channel directly
-				; using Set(CHANNEL(musicclass)=whatever) in the dialplan
-
-;transferdigittimeout => 3	; Number of seconds to wait between digits when transferring a call
-				; (default is 3 seconds)
-;xfersound = beep		; to indicate an attended transfer is complete
-;xferfailsound = beeperr	; to indicate a failed transfer
-;pickupexten = *8		; Configure the pickup extension. (default is *8)
-
-
-[featuremap]
-;disconnect => *0		; Disconnect  (default is *)
-;automon => *1			; One Touch Record a.k.a. Touch Monitor
-;parkcall => #72                ; Park call (one step parking)
-
-
-
--------------------------------------------------------------------------
-Beginnings of Presence Info
--------------------------------------------------------------------------
-
-**** Michael, if you add this to the internal context hints will work for
-parking spots:
-
-exten => 701,1,ParkedCall(701)
-exten => 701,hint,park:701@parkedcalls
-
-Of course you would add an entry for each parking spot.
-
-
-
-
-
-
-
-
-
-
-
-
-MMX optimizations for Zaptel & Oslec:
-CPU: Geode(TM) Integrated Processor by National Semi (332.04-MHz 586-class CPU)
-  Origin = "Geode by NSC"  Id = 0x552  Stepping = 2
-  Features=0x80a13d<FPU,DE,PSE,TSC,MSR,CX8,PGE,CMOV,MMX>
-
--------------------------------------------------------------
-Testing OSLEC with 256 taps (32 ms tail) no MMX
-CPU executes 2109.52 MIPS
--------------------------
-
-Method 1: gettimeofday() at start and end
-  133 ms for 10s of speech
-  28.06 MIPS
-  75.19 instances possible at 100% CPU load
-Method 2: samples clock cycles at start and end
-  28.06 MIPS
-  75.19 instances possible at 100% CPU load
-Method 3: samples clock cycles for each call, IIR average
-  cycles_worst 254568 cycles_last 3156 cycles_av: 3233
-  25.86 MIPS
-  81.56 instances possible at 100% CPU load
--------------------------------------------------------------
+much later
+- streaming moh
+- gtalk
+- ajaxify logs page
+- testing / performance mode
