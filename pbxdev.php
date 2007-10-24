@@ -45,7 +45,7 @@ $oslec_version		= "oslec-trunk";
 
 $core_sounds_version= "1.4.7";
 $extra_sounds_version="1.4.6";
-$sound_languages	= explode(" ", "en de it es fr jp nl se ru");
+$sound_languages	= explode(" ", "en de it es fr fr-ca jp nl se ru");
 $sounds				= explode(" ", 
 						"auth-thankyou. ".
 						"conf-onlyperson. conf-getpin. conf-invalidpin. conf-kicked. ".
@@ -682,10 +682,34 @@ function populate_sounds($image_name) {
 
 		// french
 		} else if ($sound_language == "fr") {
+			// gsm
+			$distname = "FrenchPrompts";
+			$disturl = "http://www.sineapps.com";
+            
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+            
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+            
+			foreach($sounds as $sound) {
+				if ($sound == "conf-kicked.") // XXX: need a replacement sound
+					continue;
+				_exec("cp {$dirs['sounds']}/$distname/fr/$sound* $image_name/asterisk/sounds/fr");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/digits/fr/$digit.* $image_name/asterisk/sounds/digits/fr");
+			}
+
+
+		// french canadian
+		} else if ($sound_language == "fr-ca") {
 			// ulaw and gsm
 			$formats = array("gsm", "ulaw");
 			foreach($formats as $format) {
-				$distname = "asterisk-core-sounds-$sound_language-$format-$core_sounds_version";
+				$distname = "asterisk-core-sounds-fr-$format-$core_sounds_version";
 				$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
             	
 				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
@@ -697,10 +721,10 @@ function populate_sounds($image_name) {
 				}
             	
 				foreach($sounds as $sound) {
-					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/fr");
+					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/fr-ca");
 				}
 				foreach($digits as $digit) {
-					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/fr");
+					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/fr-ca");
 				}
 			}
 

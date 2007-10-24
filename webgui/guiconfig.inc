@@ -148,6 +148,7 @@ $prompt_languages = array(
 	"en" => "English",
 	"nl" => "Dutch",
 	"fr" => "French",
+	"fr-ca" => "French (Canada)",
 	"de" => "German",
 	"it" => "Italian",
 	"jp" => "Japanese",
