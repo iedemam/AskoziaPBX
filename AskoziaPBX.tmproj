@@ -10,13 +10,13 @@
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-10-08T13:35:01Z</date>
+			<date>2007-10-17T14:24:08Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-10-09T13:27:37Z</date>
+			<date>2007-10-19T23:43:05Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -24,7 +24,7 @@
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-10-05T10:56:02Z</date>
+			<date>2007-10-18T15:36:43Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -84,44 +84,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>37</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>3</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>77</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
 		</dict>
 		<key>NOTES</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>41</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>105</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>90</integer>
+			<integer>88</integer>
 		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>
@@ -137,40 +121,56 @@
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
 		</dict>
-		<key>pbxdev.php</key>
+		<key>phpconf/inc/dialplan.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>52</integer>
 				<key>line</key>
-				<integer>951</integer>
+				<integer>111</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>924</integer>
-		</dict>
-		<key>phpconf/inc/asterisk.inc</key>
-		<dict>
-			<key>caret</key>
+			<integer>100</integer>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>18</integer>
 				<key>line</key>
-				<integer>177</integer>
+				<integer>111</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>52</integer>
+				<key>line</key>
+				<integer>111</integer>
+			</dict>
+		</dict>
+		<key>phpconf/inc/extensions.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>44</integer>
+				<key>line</key>
+				<integer>223</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>150</integer>
+			<integer>198</integer>
 		</dict>
 		<key>phpconf/inc/iax.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>43</integer>
+				<integer>2</integer>
 				<key>line</key>
 				<integer>205</integer>
 			</dict>
@@ -224,13 +224,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
 		<string>NOTES</string>
+		<string>phpconf/inc/extensions.inc</string>
+		<string>phpconf/inc/dialplan.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{166, 25}, {842, 751}}</string>
+	<string>{{82, 24}, {737, 749}}</string>
 </dict>
 </plist>

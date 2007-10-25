@@ -155,6 +155,10 @@ EOD;
 			$conf .= "secret={$p['secret']}\n";
 		}
 		
+		if (($p['calleridsource'] == "string") && $p['calleridstring']) {
+			$conf .= "callerid=" . $p['calleridstring'] . "\n";
+		}
+		
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])

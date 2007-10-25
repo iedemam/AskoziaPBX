@@ -157,7 +157,7 @@ if ($_POST) {
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 1); ?>
-			<? display_callerid_override_options($pconfig['override'], 1); ?>
+			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

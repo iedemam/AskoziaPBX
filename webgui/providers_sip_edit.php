@@ -67,6 +67,9 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
 	$pconfig['language'] = $a_sipproviders[$id]['language'];
 	$pconfig['qualify'] = $a_sipproviders[$id]['qualify'];
+	$pconfig['calleridsource'] = 
+		isset($a_sipproviders[$id]['calleridsource']) ? $a_sipproviders[$id]['calleridsource'] : "phones";
+	$pconfig['calleridstring'] = $a_sipproviders[$id]['calleridstring'];
 	$pconfig['incomingextension'] = $a_sipproviders[$id]['incomingextension'];
 	$pconfig['override'] = $a_sipproviders[$id]['override'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
@@ -108,6 +111,9 @@ if ($_POST) {
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
+	if ($_POST['calleridsource'] == "string" && !asterisk_is_valid_callerid_string($_POST['calleridstring'])) {
+		$input_errors[] = "A valid Caller ID string must be specified.";
+	}
 	
 	// pattern validation
 	if (isset($id)) {
@@ -142,6 +148,10 @@ if ($_POST) {
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['language'] = $_POST['language'];
 		$sp['qualify'] = $_POST['qualify'];
+		
+		$sp['calleridsource'] = $_POST['calleridsource'];
+		$sp['calleridstring'] = $_POST['calleridstring'];
+		
 		$sp['incomingextension'] = $_POST['incomingextension'];
 		$sp['override'] = $_POST['override'];
 		
@@ -223,12 +233,13 @@ if ($_POST) {
 					<br>Defaults to host entered above.</span>
 				</td>
 			</tr>
+			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
 			<? display_registration_options($pconfig['noregister'], 2); ?>
 			<? display_qualify_options($pconfig['qualify'], 2); ?>
 			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
-			<? display_callerid_override_options($pconfig['override'], 2); ?>
+			<? display_incoming_callerid_override_options($pconfig['override'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 

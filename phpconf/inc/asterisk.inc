@@ -967,6 +967,9 @@ function asterisk_is_valid_callerid($id) {
 	return true;
 }
 
+function asterisk_is_valid_callerid_string($string) {
+	return true;
+}
 
 function asterisk_is_valid_secret($secret) {
 	return true;

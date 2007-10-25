@@ -177,8 +177,12 @@ EOD;
 		}
 		
 		$conf .= "context={$p['uniqid']}-incoming\n";
-		$conf .= "host={$p['host']}\n";
 		
+		if (($p['calleridsource'] == "string") && $p['calleridstring']) {
+			$conf .= "callerid=" . $p['calleridstring'] . "\n";
+		}
+		
+		$conf .= "host={$p['host']}\n";
 		if ($p['port'])
 			$conf .= "port={$p['port']}\n";
 		

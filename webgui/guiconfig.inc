@@ -742,12 +742,23 @@ function display_qualify_options($current_qualify, $colspan) {
 	</tr><?
 }
 
-function display_callerid_override_options($current_override, $colspan) {
+function display_incoming_callerid_override_options($current_override, $colspan) {
 	
 	?><tr> 
 		<td width="20%" valign="top" class="vncell">Incoming Caller ID Overrides</td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<input name="override" type="checkbox" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.
+		</td>
+	</tr><?
+}
+
+function display_outgoing_callerid_options($current_callerid_source, $current_callerid_string, $colspan) {
+	
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Outgoing Caller ID</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<input name="calleridstring" type="text" class="formfld" id="calleridstring" size="40" value="<?=htmlspecialchars($current_callerid_string);?>">&nbsp;<i>"Your Name" &lt;number&gt;</i><br>
+			<input name="calleridsource" type="radio" value="string" <?php if ($current_callerid_source == "string") echo "checked"; ?>> Send string defined above&nbsp;<input name="calleridsource" type="radio" value="phones" <?php if ($current_callerid_source == "phones") echo "checked"; ?>> Send phones' Caller ID
 		</td>
 	</tr><?
 }

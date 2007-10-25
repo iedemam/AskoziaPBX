@@ -237,9 +237,10 @@ EOD;
 		$conf .= "; {$p['name']} outgoing\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		if (is_array($p['dialpattern'])) {
+			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,To)\n";
+				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,T$cidflag)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -259,9 +260,10 @@ EOD;
 		$conf .= "; {$p['name']} outgoing\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		if (is_array($p['dialpattern'])) {
+			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,To)\n";
+				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,T$cidflag)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
