@@ -145,9 +145,10 @@ $applications = array(
 );
 
 $prompt_languages = array(
-	"en" => "English",
+	"en" => "English (US)",
+	"en-gb" => "English (UK)",
 	"nl" => "Dutch",
-	"fr" => "French",
+	"fr" => "French (France)",
 	"fr-ca" => "French (Canada)",
 	"de" => "German",
 	"it" => "Italian",

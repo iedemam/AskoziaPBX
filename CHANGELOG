@@ -1,11 +1,13 @@
 2007.10.xx - pb12
  - added outgoing caller id override options to SIP and IAX providers
- - added French gsm prompts, renamed existing prompts to French (Canada)
+ - added English (UK) ulaw prompts, renamed existing prompts to English (USA)
+ - added French (France) gsm prompts, renamed existing prompts to French (Canada)
  - added missed call notification e-mail option to phones
  - added chan_local jitterbuffer patch, enabling applications to also be jitterbuffered
  - added hints to call parking spots based on info provided by Mat M
  - cleaned up iax.conf generator based on suggestions by Mat M
  - updated Asterisk to 1.4.13
+ - removed gsm prompts from languages which also have ulaw prompts to make room for more languages
  - bug: fixed "localnet" setting in sip.conf
  - bug: "Diagnostics -> Logs -> Calls" now displays information in the "src" field in more cases
  - bug: fixed a small display issue when a provider does not have any patterns defined

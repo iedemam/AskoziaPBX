@@ -110,9 +110,16 @@ require("guiconfig.inc");
 	<p>Dutch (<a href="http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles" target="_blank">http://www.borndigital.nl</a>)<br>
 	Copyright &copy; 2006 Born Digital<br>
 	<br>
-	English and French (<a href="http://ftp.digium.com/pub/telephony/sounds/releases" target="_blank">http://ftp.digium.com/pub/telephony/sounds/releases</a>)<br>
+	English (US) and French (Canada) (<a href="http://ftp.digium.com/pub/telephony/sounds/releases" target="_blank">http://ftp.digium.com/pub/telephony/sounds/releases</a>)<br>
 	Copyright &copy; Allison Smith (<a href="http://www.theivrvoice.com" target="_blank">http://www.theivrvoice.com</a>)<br>
 	Financed by Digium, Inc. (<a href="http://www.digium.com" target="_blank">http://www.digium.com</a>)<br>
+	<br>
+	English (UK) (<a href="http://www.enicomms.com/cutglassivr/" target="_blank">http://www.enicomms.com/cutglassivr/</a>)<br>
+	Copyright &copy; 2006 ENIcommunications Corp.<br>
+	Released under the <a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank">Creative Commons Attribution-ShareAlike 2.5 License</a><br>
+	<br>
+	French (France) (<a href="http://www.sineapps.com" target="_blank">http://www.sineapps.com</a>)<br>
+	Copyright Information Unknown<br>
 	<br>
 	German (<a href="http://www.amooma.de/asterisk/service/deutsche-sprachprompts" target="_blank">http://www.amooma.de</a>)<br>
 	Copyright &copy; 2006 amooma GmbH<br>
