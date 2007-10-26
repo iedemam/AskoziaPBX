@@ -1160,52 +1160,45 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 	
 	$id = split("-", $uniqid);
 	
-	$prio = 1;
-	$dial = "";
-	
+	$dial = "exten => $exten,1,NoOp()\n";
 
 	if ($wait) {
-		$dial .= "exten => $exten,$prio,Ringing()\n";
-		$prio++;
-		$dial .= "exten => $exten,$prio,Wait($wait)\n";
-		$prio++;
+		$dial .= "exten => $exten,n,Ringing()\n";
+		$dial .= "exten => $exten,n,Wait($wait)\n";
 	}
 	if ($override == "replacenamewithnum") {
-		$dial .= "exten => $exten,$prio,Set(CALLERID(name)=$\{CALLERID(number)})\n";
-		$prio++;
+		$dial .= "exten => $exten,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
 	}
 	
 	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= "exten => $exten,$prio,".
+		$dial .= "exten => $exten,n,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= "exten => $exten,$prio,".
+		$dial .= "exten => $exten,n,".
 			"Macro(vm|IAX2/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ISDN" && $id[1] == "PHONE") {
 		$phone = isdn_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= "exten => $exten,$prio,".
+		$dial .= "exten => $exten,n,".
 			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ANALOG" && $id[1] == "PHONE") {
 		$phone = analog_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= "exten => $exten,$prio,".
+		$dial .= "exten => $exten,n,".
 			"Macro(vm|ZAP/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
 		$room = conferencing_get_room($uniqid);
-		$dial .= "exten => $exten,$prio,Answer()\n";
-		$prio++;
-		$dial .= "exten => $exten,$prio,MeetMe({$room['number']},M)\n";
-		$prio++;
-		$dial .= "exten => $exten,$prio,Hangup()\n";
+		$dial .= "exten => $exten,n,Answer()\n";
+		$dial .= "exten => $exten,n,MeetMe({$room['number']},M)\n";
+		$dial .= "exten => $exten,n,Hangup()\n";
 		
 	} else if ($id[0] == "EXTERNAL" && $id[1] == "PHONE") {
 		$phone = external_get_phone($uniqid);
@@ -1213,10 +1206,10 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
-			$dial .= "exten => $exten,$prio,".
+			$dial .= "exten => $exten,n,".
 				"Macro(vm|$technology/{$zprov['interface']}/{$phone['dialstring']}|{$phone['extension']}|$readbacknum|to)\n";
 		} else {
-			$dial .= "exten => $exten,$prio,".
+			$dial .= "exten => $exten,n,".
 				"Macro(vm|$technology/{$phone['dialprovider']}/{$phone['dialstring']}|{$phone['extension']}|$readbacknum|to)\n";
 		}
 
@@ -1277,27 +1270,23 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		}
 		// XXX doubled from _extensions_add_sendnotifications_line...messy messy
 		if ($vm_phone['voicemailbox'] && isset($vm_phone['sendcallnotifications'])) {
-			$dial .= "exten => $exten,$prio,Set(SENDNOTIFICATIONS=\"{$vm_phone['voicemailbox']}\")\n";
+			$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$vm_phone['voicemailbox']}\")\n";
 		} else {
-			$dial .= "exten => $exten,$prio,Set(SENDNOTIFICATIONS=\"no\")\n";
+			$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"no\")\n";
 		}
 
-		$prio++;
-		$dial .= "exten => $exten,$prio,".
+		$dial .= "exten => $exten,n,".
 			"Macro(vm|$dstring|{$vm_phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
 		$app = dialplan_get_application($uniqid);
 		
-		$dial .= "exten => $exten,$prio,Answer()\n";
-		$prio++;
+		$dial .= "exten => $exten,n,Answer()\n";
 		if ($app['name'] == "WakeMe") {
-			$conf .= "exten => $exten,$prio,Set(CHANNEL(language)=en)\n";
+			$conf .= "exten => $exten,n,Set(CHANNEL(language)=en)\n";
 		}
-		$prio++;
-		$dial .= "exten => $exten,$prio,{$app['name']}()\n";
-		$prio++;
-		$dial .= "exten => $exten,$prio,Hangup()\n";
+		$dial .= "exten => $exten,n,{$app['name']}()\n";
+		$dial .= "exten => $exten,n,Hangup()\n";
 	}
 	
 	return $dial;
