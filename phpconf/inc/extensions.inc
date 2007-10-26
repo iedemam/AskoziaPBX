@@ -134,7 +134,7 @@ exten => exit-USEREXIT,n,Return()
 
 
 [macro-email]
-exten => s,1,Set(TMPMAILFILE=/var/spool/asterisk/tmp/email-$\{MD5($\{CHANNEL})})
+exten => s,1,Set(TMPMAILFILE=/var/spool/asterisk/tmp/email-$\{MD5($\{UNIQUEID})})
 exten => s,n,System(touch $\{TMPMAILFILE})
 exten => s,n,System(echo "date: `date`" > $\{TMPMAILFILE})
 exten => s,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
