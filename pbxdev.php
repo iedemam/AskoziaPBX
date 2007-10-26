@@ -226,7 +226,7 @@ function build_php() {
 	_exec("cd {$dirs['packages']}/$php_version; ".
 			"rm configure; ".
 			"./buildconf --force; ".
-			"./configure --without-mysql --with-pear --with-openssl --enable-discard-path --enable-sockets --enable-bcmath --enable sqlite; ".
+			"./configure --without-mysql --without-pear --with-openssl --with-sqlite --enable-discard-path --enable-sockets --enable-bcmath; ".
 			"make");
 }
 
