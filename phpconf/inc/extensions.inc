@@ -155,28 +155,28 @@ EOD;
 	foreach ($a_sipphones as $phone) {
 		$conf .= "exten => {$phone['extension']},hint,SIP/{$phone['extension']}\n";
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
-		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
 		$conf .= "exten => {$phone['extension']},n,Macro(vm|SIP/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_iaxphones = iax_get_phones();
 	foreach ($a_iaxphones as $phone) {
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
-		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
 		$conf .= "exten => {$phone['extension']},n,Macro(vm|IAX2/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_isdnphones = isdn_get_phones();
 	foreach ($a_isdnphones as $phone) {
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
-		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
 		$conf .= "exten => {$phone['extension']},n,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_analogphones = analog_get_phones();
 	foreach ($a_analogphones as $phone) {
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
-		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
 		$conf .= "exten => {$phone['extension']},n,Macro(vm|ZAP/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
@@ -184,7 +184,7 @@ EOD;
 	foreach ($a_extphones as $phone) {
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
-		$conf .= _extensions_add_sendnotifications_line($phone);
+		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
 			$conf .= "exten => {$phone['extension']},n,".
@@ -337,12 +337,12 @@ EOD;
 	return 0;
 }
 
-function _extensions_add_sendnotifications_line($phone) {
+function _extensions_add_sendnotifications_line($exten, $phone) {
 
 	if ($phone['voicemailbox'] && isset($phone['sendcallnotifications'])) {
-		$dial = "exten => {$phone['extension']},n,Set(SENDNOTIFICATIONS=\"{$phone['voicemailbox']}\")\n";
+		$dial = "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['voicemailbox']}\")\n";
 	} else {
-		$dial = "exten => {$phone['extension']},n,Set(SENDNOTIFICATIONS=\"no\")\n";
+		$dial = "exten => $exten,n,Set(SENDNOTIFICATIONS=\"no\")\n";
 	}
 
 	return $dial;

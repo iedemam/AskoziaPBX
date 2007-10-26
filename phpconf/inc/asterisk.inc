@@ -1173,24 +1173,28 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
+		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
+		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|IAX2/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ISDN" && $id[1] == "PHONE") {
 		$phone = isdn_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
+		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ANALOG" && $id[1] == "PHONE") {
 		$phone = analog_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
+		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|ZAP/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
@@ -1204,6 +1208,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		$phone = external_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
 			$dial .= "exten => $exten,n,".
@@ -1268,13 +1273,8 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		for ($i = 1; $i < $n; $i++) {
 			$dstring .= "&" . $dial_strings[$i];
 		}
-		// XXX doubled from _extensions_add_sendnotifications_line...messy messy
-		if ($vm_phone['voicemailbox'] && isset($vm_phone['sendcallnotifications'])) {
-			$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$vm_phone['voicemailbox']}\")\n";
-		} else {
-			$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"no\")\n";
-		}
 
+		$dial .= _extensions_add_sendnotifications_line($exten, $vm_phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|$dstring|{$vm_phone['extension']}|$readbacknum|to)\n";
 
