@@ -9,6 +9,7 @@
  - updated Asterisk to 1.4.13
  - removed gsm prompts from languages which also have ulaw prompts to make room for more languages
  - replaced internal call detail record logging with sqlite backend
+ - changed default Dial timeout to 20 seconds, still needs to be made a configurable option
  - bug: fixed "localnet" setting in sip.conf
  - bug: fixed snooze feature in WakeMe
  - bug: "Diagnostics -> Logs -> Calls" now displays information in the "src" field in more cases

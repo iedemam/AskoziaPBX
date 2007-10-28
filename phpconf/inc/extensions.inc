@@ -84,7 +84,7 @@ function extensions_conf_generate() {
 	$conf = <<<EOD
 
 [macro-vm];
-exten => s,1,Dial($\{ARG1},30,$\{ARG4})
+exten => s,1,Dial($\{ARG1},20,$\{ARG4})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 
 exten => s-NOANSWER,1,Wait(1)
@@ -240,7 +240,7 @@ EOD;
 			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},30,T$cidflag)\n";
+				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},20,T$cidflag)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -263,7 +263,7 @@ EOD;
 			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,30,T$cidflag)\n";
+				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,20,T$cidflag)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
@@ -286,7 +286,7 @@ EOD;
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
-				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,30,Tf)\n";
+				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,20,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
@@ -309,7 +309,7 @@ EOD;
 			foreach($p['dialpattern'] as $pattern) {
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
-				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,30,Tf)\n";
+				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,20,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
