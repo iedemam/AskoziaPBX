@@ -37,39 +37,22 @@ if (!$nentries)
 	$nentries = 100;
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/cdr.log");
-	/* redirect to avoid reposting form data on refresh */
+
+	$db = sqlite_open("/var/log/asterisk/cdr.db", 0666, $err);
+	$results = sqlite_query("delete from cdr", $db); // XXX sync problem here?
+
 	header("Location: diag_logs_calls.php");
 	exit;
 }
 
-function dump_clog($logfile, $tail) {
+function dump_clog($logfile, $max) {
 	global $g, $config;
 
-	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
+	$sor = isset($config['syslog']['reverse']) ? "desc" : "asc";
+	$query = "select * from cdr order by start " . $sor . " limit $max";
 
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);	
-	
-	/*
-	0	clid		""Grandstream" <2424>",
-	1	src			"2424",
-	2	dst			"4242",
-	3	dcontext	"SIP-PHONE-15751265024607fa93812e3",
-	4	channel		"SIP/2424-086be000",
-	5	dstchannel	"",
-	6	lastapp		"Dial",
-	7	lastdata	"SIP/4242|30",
-	8	start		"2007-03-27 10:18:04",
-	9	answer		"",
-	10	end			"2007-03-27 10:18:04",
-	11	duration	"0",
-	12	billsec		"0",
-	13	disposition	"FAILED",
-	14	amaflags	"DOCUMENTATION",
-	15	accountcode	"",
-	16	uniqueid	"1174990684.0",
-	17	userfield	""
-	*/
+	$db = sqlite_open($logfile, 0666, $err);
+	$results = sqlite_query($query, $db);
 	
 	echo "<tr valign=\"top\">\n";
 	echo "<td class=\"listhdrr\">start</td>\n";
@@ -82,67 +65,57 @@ function dump_clog($logfile, $tail) {
 	echo "<td class=\"listhdr\">disposition</td>\n";
 	echo "</tr>\n";
 	
-	foreach ($logarr as $logent) {
-		// filter out pseudo channels
-		if (strpos($logent, "Zap/pseudo"))
-			continue;
+	while ($cdr = sqlite_fetch_array($results, SQLITE_ASSOC)) {
+		// filter out pseudo channels XXX to do
+		//if (strpos($logent, "Zap/pseudo"))
+		//	continue;
 			
-		$logent = asterisk_replace_uniqids_with_names($logent);
-
-		$logent = preg_split("/\s+/", $logent, 6);
-		$cdr = strstr($logent[5], "\"");
-		$cdr = explode(",", $cdr);
-		$cdr = str_replace("\"", "", $cdr);
-		
-		$timestamp = join(" ", array_slice($logent, 0, 2));
-		$tstime = explode(" ", $cdr[8]);
-		$tstime = $tstime[1];
-		$timestamp .= " " . $tstime;
+		//$logent = asterisk_replace_uniqids_with_names($logent);
 		
 		echo "<tr valign=\"top\">\n";
 		// start
-		echo "<td class=\"listlr\" nowrap>".htmlspecialchars($timestamp)."&nbsp;</td>\n";
+		echo "<td class=\"listlr\" nowrap>".htmlspecialchars($cdr['start'])."&nbsp;</td>\n";
 		// src
-		if ($cdr[1]) {
+		if ($cdr['clid']) {
 			echo "<td class=\"listr\">\n";
 			echo "\t<span title=\"".
-					htmlspecialchars($cdr[0]).
+					htmlspecialchars($cdr['clid']).
 					"\" style=\"cursor: help; border-bottom: 1px dashed #000000;\">".
-					htmlspecialchars($cdr[1]).
+					htmlspecialchars($cdr['src']).
 				"</span>&nbsp;</td>\n";
 		} else {
-			echo "<td class=\"listr\">" . htmlspecialchars($cdr[0]) . "&nbsp;</td>\n";
+			echo "<td class=\"listr\">" . htmlspecialchars($cdr['src']) . "&nbsp;</td>\n";
 		}
 		
 		// dst
-		echo "<td class=\"listr\">".htmlspecialchars($cdr[2])."&nbsp;</td>\n";
+		echo "<td class=\"listr\">".htmlspecialchars($cdr['dst'])."&nbsp;</td>\n";
 		
 		// channels
-		echo "<td class=\"listr\">".htmlspecialchars($cdr[4])."&nbsp;";
-		if($cdr[5]) {
+		echo "<td class=\"listr\">".htmlspecialchars($cdr['channel'])."&nbsp;";
+		if($cdr['dstchannel']) {
 			echo "-&gt;&nbsp;";
-			echo htmlspecialchars($cdr[5])."&nbsp;</td>\n";
+			echo htmlspecialchars($cdr['dstchannel'])."&nbsp;</td>\n";
 		} else {
 			echo "</td>\n";
 		}
 		
 		// last app
 		echo "<td class=\"listr\">";
-		if ($cdr[6]) {
-			echo htmlspecialchars($cdr[6])."(";
-			if ($cdr[7]) {
-				echo "&nbsp;".htmlspecialchars($cdr[7])."&nbsp;";
+		if ($cdr['lastapp']) {
+			echo htmlspecialchars($cdr['lastapp'])."(";
+			if ($cdr['lastdata']) {
+				echo "&nbsp;".htmlspecialchars($cdr['lastdata'])."&nbsp;";
 			}
 			echo ")";
 		}
 		echo "&nbsp;</td>\n";
 		
 		// seconds
-		echo "<td class=\"listr\">".htmlspecialchars($cdr[11])."&nbsp;</td>\n";
+		echo "<td class=\"listr\">".htmlspecialchars($cdr['duration'])."&nbsp;</td>\n";
 		// billable
-		echo "<td class=\"listr\">".htmlspecialchars($cdr[12])."&nbsp;</td>\n";
+		echo "<td class=\"listr\">".htmlspecialchars($cdr['billsec'])."&nbsp;</td>\n";
 		// disposition
-		echo "<td class=\"listr\">".htmlspecialchars($cdr[13])."&nbsp;</td>\n";
+		echo "<td class=\"listr\">".htmlspecialchars($cdr['disposition'])."&nbsp;</td>\n";
 		echo "</tr>\n";
 	}
 }
@@ -168,7 +141,7 @@ function dump_clog($logfile, $tail) {
 			<td colspan="8" class="listtopic"> 
 			  Last <?=$nentries;?> Call Records</td>
 		  </tr>
-		  <?php dump_clog("/var/log/cdr.log", $nentries); ?>
+		  <?php dump_clog("/var/log/asterisk/cdr.db", $nentries); ?>
 		</table>
 		<br><form action="diag_logs_calls.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="Clear log">

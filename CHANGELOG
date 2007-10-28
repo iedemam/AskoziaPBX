@@ -8,7 +8,9 @@
  - cleaned up iax.conf generator based on suggestions by Mat M
  - updated Asterisk to 1.4.13
  - removed gsm prompts from languages which also have ulaw prompts to make room for more languages
+ - replaced internal call detail record logging with sqlite backend
  - bug: fixed "localnet" setting in sip.conf
+ - bug: fixed snooze feature in WakeMe
  - bug: "Diagnostics -> Logs -> Calls" now displays information in the "src" field in more cases
  - bug: fixed a small display issue when a provider does not have any patterns defined
  - bug: unconfigured analog interfaces now have a default value of "128" for their echo cancellers instead of "yes"

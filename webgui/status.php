@@ -131,7 +131,8 @@ defCmdT("df","/bin/df");
 
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
 defCmdT("last 200 pbx log entries","/usr/sbin/clog /var/log/pbx.log 2>&1 | tail -n 200");
-defCmdT("last 200 call detail records","/usr/sbin/clog /var/log/cdr.log 2>&1 | tail -n 200");
+/* XXX needs to be replaced with sqlite implementation
+defCmdT("last 200 call detail records","/usr/sbin/clog /var/log/cdr.log 2>&1 | tail -n 200");*/
 
 defCmdT("extensions.conf","cat /usr/local/etc/asterisk/extensions.conf");
 defCmdT("sip.conf","cat /usr/local/etc/asterisk/sip.conf");

@@ -279,6 +279,8 @@ function build_asterisk() {
 	_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
 	// copy wakeme application
 	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/$asterisk_version/apps");
+	// copy sqlite cdr module
+	_exec("cp {$dirs['asterisk_modules']}/cdr_sqlite.c {$dirs['packages']}/$asterisk_version/cdr");
 	// reconfigure and make
 	_exec("cd {$dirs['packages']}/$asterisk_version/; ./configure; gmake; gmake install");
 }
