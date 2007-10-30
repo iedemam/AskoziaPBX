@@ -33,14 +33,15 @@
 
 // --[ package versions ]------------------------------------------------------
 
-$php_version		= "php-4.4.7";
-$pecl_sqlite_version= "SQLite-1.0.3";
-$mini_httpd_version	= "mini_httpd-1.19";
-$asterisk_version	= "asterisk-1.4.13";
-$msmtp_version		= "msmtp-1.4.11";
-$zaptel_version		= "zaptel-trunk";
-$oslec_version		= "oslec-trunk";
-$i4b_version		= "i4b-trunk";
+$php_version			= "php-4.4.7";
+$pecl_sqlite_version	= "SQLite-1.0.3";
+$mini_httpd_version		= "mini_httpd-1.19";
+$asterisk_version		= "asterisk-1.4.13";
+$msmtp_version			= "msmtp-1.4.11";
+$zaptel_version			= "zaptel-trunk";
+$oslec_version			= "oslec-trunk";
+$i4b_version			= "i4b-trunk";
+$scriptaculous_version	= "scriptaculous-js-1.7.1_beta3";
 
 // --[ sounds ]----------------------------------------------------------------
 
@@ -982,9 +983,19 @@ function populate_phpconf($image_name) {
 }
 
 function populate_webgui($image_name) {
-	global $dirs;
+	global $dirs, $scriptaculous_version;
 	
 	_exec("cp {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
+	
+	if (!file_exists("{$dirs['packages']}/$scriptaculous_version.zip")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://script.aculo.us/dist/$scriptaculous_version.zip");
+	}
+	if (!file_exists("{$dirs['packages']}/$scriptaculous_version")) {
+		_exec("cd {$dirs['packages']}; unzip $scriptaculous_version.zip");
+	}
+	_exec("cd {$dirs['packages']}/$scriptaculous_version; ".
+		"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
 }
 
 function populate_libs($image_name) {
