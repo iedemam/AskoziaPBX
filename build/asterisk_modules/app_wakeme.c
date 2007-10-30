@@ -38,6 +38,8 @@
 
 static int _play_file(struct ast_channel* chan, char* filename);
 static int _file_filter(struct dirent *entry);
+static int _setwakeup(int time_int, char *cid);
+
 
 static char *app = "WakeMe";
 static char *synopsis = "Wake-up Call Manager";
@@ -52,21 +54,16 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 	char buffer[256];				/* general purpose buffer 			*/
 	struct ast_module_user *u;		/* local user for resource control 	*/
 	char time_str[5];				/* 4 digit DTMF time entry 			*/
+	time_t timer;					/* init for tm structure			*/
+	struct tm *time_struct = NULL;	/* time structure for ast_say_time	*/
 	int time_int = 0;				/* atoi of time_str 				*/
 	int max_chars = 4;				/* loop control for dtmf entry 		*/
 	int cur_chars;					/* loop control for dtmf entry		*/
-	FILE *call_file;				/* call file handle					*/
-	char command[128];				/* sys command string buffer		*/
-	time_t timer;					/* init for tm structure			*/
-	struct tm *time_struct = NULL;	/* time structure for ast_say_time	*/
-	int cur_time_int = 0;			/* time converted from tm struct	*/
 	char ampm;						/* am or pm char entry				*/
-	char touch_string[13];			/* buffer for touch -t string		*/
 	struct dirent **files;			/* files in outgoing spool			*/
 	int i;							/* loop control						*/
 	int count;						/* file count in outgoing spool		*/
 	char *existing_wakeup_file = NULL;
-	unsigned char month_days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 	u = ast_module_user_add(chan);
 	
@@ -121,7 +118,14 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 				} else {
 					time_int += 10;
 				}
-				goto setwakeup; /* XXX setwakeup should be a function */
+				res = _setwakeup(time_int, data);
+				if (res >= 0) {
+					res = _play_file(chan, "thank-you-for-calling");
+					if (!res) {
+						res = _play_file(chan, "goodbye");
+					}
+				}
+				goto out;
 			} else if (res < 0) {
 				goto out;
 			}
@@ -137,7 +141,7 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 				res = _play_file(chan, "for");
 			}
 			if (!res) {
-				ast_say_time(chan,mktime(time_struct), AST_DIGIT_ANY, chan->language);
+				ast_say_time(chan, mktime(time_struct), AST_DIGIT_ANY, chan->language);
 			}
 			if (!res) {
 				res = _play_file(chan, "press-1");
@@ -290,79 +294,16 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 		}
 		
 		if ((char)res == '1') {
+			res = _setwakeup(time_int, chan->cid.cid_num);
+			if (res >= 0) {
+				res = _play_file(chan, "thank-you-for-calling");
+				if (!res) {
+					res = _play_file(chan, "goodbye");
+				}
+			}
 			break;
 		} else if (res == -1) {
-			goto out;
-		}
-	}
-	
-setwakeup:
-	/* get our machine time */
-	timer = time(NULL);
-	time_struct = localtime(&timer);
-	cur_time_int += time_struct->tm_hour * 100 + time_struct->tm_min;
-
-	/* setup initial touch_time for today at wake time */
-	time_struct->tm_hour = time_int/100;
-	time_struct->tm_min = time_int%100;
-
-	/* if the wake time is earlier than our present time we need to
-	 * adjust the day that the wake-up-call will occur */
-	if (time_int < cur_time_int) {
-
-		/* year change */
-		if (time_struct->tm_mon == 11 && time_struct->tm_mday == 31) {
-			time_struct->tm_year++;
-			time_struct->tm_mon = 0;
-			time_struct->tm_mday = 1;
-	
-		/* leap year */
-		} else if (time_struct->tm_mon == 2 && time_struct->tm_mday == 28 && time_struct->tm_year % 4 == 0 ) {
-			time_struct->tm_mday++;
-			
-		/* month change */
-		} else if (month_days[time_struct->tm_mon] <= time_struct->tm_mday) {
-			time_struct->tm_mon++;
-			time_struct->tm_mday = 1;
-		
-		/* day change */
-		} else {
-			time_struct->tm_mday++;
-		}		
-	}
-
-	strftime(touch_string, 13, "%Y%m%d%H%M", time_struct);
-	
-	/* apply touch -t string and write out file */ 
-	sprintf(buffer, "/tmp/wakeme_%04d_ext_%s.call", time_int, chan->cid.cid_num);
-	
-	if ((call_file = fopen(buffer, "w")) == NULL) {
-		fprintf(stderr, "Cannot open %s\n", buffer);
-		res = -1;
-	} else {
-		char buff[256];
-		sprintf(buff, 
-			"Channel: Local/%s@internal\n"
-			"Callerid: Wake UP!\n"
-			"MaxRetries: 5\n"
-			"RetryTime: 60\n"
-			"WaitTime: 15\n"
-			"Application: WakeMe\n"
-			"Data: WAKE", chan->cid.cid_num);
-		fprintf(call_file, buff);
-		fflush(call_file);
-		fclose(call_file);
-		sprintf(command, "touch -t %s %s", touch_string, buffer);
-		system(command);
-		sprintf(command, "mv %s %s", buffer, spool_path);
-		system(command);
-		res = 0;
-	}
-	
-	if (res >= 0) {
-		res = _play_file(chan, "thank-you-for-calling");
-		if (!res) {
-			res = _play_file(chan, "goodbye");
+			break;
 		}
 	}
 out:
@@ -404,6 +345,83 @@ static int _play_file(struct ast_channel* chan, char* filename) {
 
 static int _file_filter(struct dirent *entry) {
 	return((int)strstr(entry->d_name,"wakeme"));
+}
+
+static int _setwakeup(int time_int, char *cid) {
+	
+	time_t timer;					/* init for tm structure			*/
+	struct tm *time_struct = NULL;	/* time structure for ast_say_time	*/
+	int cur_time_int = 0;			/* time converted from tm struct	*/
+	char touch_string[13];			/* buffer for touch -t string		*/
+	char buffer[256];				/* general purpose buffer 			*/
+	FILE *call_file;				/* call file handle					*/
+	char command[128];				/* sys command string buffer		*/
+	int res = 0;					/* result 							*/
+	unsigned char month_days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+	
+	/* get our machine time */
+	timer = time(NULL);
+	time_struct = localtime(&timer);
+	cur_time_int += time_struct->tm_hour * 100 + time_struct->tm_min;
+
+	/* setup initial touch_time for today at wake time */
+	time_struct->tm_hour = time_int/100;
+	time_struct->tm_min = time_int%100;
+
+	/* if the wake time is earlier than our present time we need to
+	 * adjust the day that the wake-up-call will occur */
+	if (time_int < cur_time_int) {
+
+		/* year change */
+		if (time_struct->tm_mon == 11 && time_struct->tm_mday == 31) {
+			time_struct->tm_year++;
+			time_struct->tm_mon = 0;
+			time_struct->tm_mday = 1;
+	
+		/* leap year */
+		} else if (time_struct->tm_mon == 2 && time_struct->tm_mday == 28 && time_struct->tm_year % 4 == 0 ) {
+			time_struct->tm_mday++;
+			
+		/* month change */
+		} else if (month_days[time_struct->tm_mon] <= time_struct->tm_mday) {
+			time_struct->tm_mon++;
+			time_struct->tm_mday = 1;
+		
+		/* day change */
+		} else {
+			time_struct->tm_mday++;
+		}		
+	}
+
+	strftime(touch_string, 13, "%Y%m%d%H%M", time_struct);
+	
+	/* apply touch -t string and write out file */ 
+	sprintf(buffer, "/tmp/wakeme_%04d_ext_%s.call", time_int, cid);
+	
+	if ((call_file = fopen(buffer, "w")) == NULL) {
+		fprintf(stderr, "Cannot open %s\n", buffer);
+		res = -1;
+	} else {
+		char buff[256];
+		sprintf(buff, 
+			"Channel: Local/%s@internal\n"
+			"Callerid: Wake UP!\n"
+			"MaxRetries: 5\n"
+			"RetryTime: 60\n"
+			"WaitTime: 15\n"
+			"Application: WakeMe\n"
+			"Data: %s", cid, cid);
+		fprintf(call_file, buff);
+		fflush(call_file);
+		fclose(call_file);
+		sprintf(command, "touch -t %s %s", touch_string, buffer);
+		system(command);
+		sprintf(command, "mv %s %s", buffer, spool_path);
+		system(command);
+		res = 0;
+	}
+
+	return res;
 }
 
 AST_MODULE_INFO_STANDARD(ASTERISK_GPL_KEY, "Wake-up Call Manager");
