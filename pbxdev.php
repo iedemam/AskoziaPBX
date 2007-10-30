@@ -40,6 +40,7 @@ $asterisk_version	= "asterisk-1.4.13";
 $msmtp_version		= "msmtp-1.4.11";
 $zaptel_version		= "zaptel-trunk";
 $oslec_version		= "oslec-trunk";
+$i4b_version		= "i4b-trunk";
 
 // --[ sounds ]----------------------------------------------------------------
 
@@ -336,17 +337,25 @@ function build_zaptel() {
 }
 
 function build_isdn() {
-	global $dirs;
+	global $dirs, $i4b_version;
 	
-	if (!file_exists("{$dirs['packages']}/i4b")) {
+	if (!file_exists("{$dirs['packages']}/$i4b_version")) {
 		_exec("cd {$dirs['packages']}; ".
-			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b i4b");
+			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b $i4b_version");
 	}
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
+	if (!_is_patched($i4b_version)) {
+		_exec("cd {$dirs['packages']}/$i4b_version; ".
+			"patch < {$dirs['patches']}/packages/i4b_alix23_ehci_usb_amd.patch");
+		_stamp_package_as_patched($i4b_version);
+	}
+	_exec("cd {$dirs['packages']}/$i4b_version; svn update");
 	
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
+	
+	_exec("cd {$dirs['packages']}/$i4b_version/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
+	
+	_exec("cd {$dirs['packages']}/$i4b_version/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
 		
-	_exec("cd {$dirs['packages']}/i4b/trunk/chan_capi/; gmake clean; gmake all");
+	_exec("cd {$dirs['packages']}/$i4b_version/trunk/chan_capi/; gmake clean; gmake all");
 }
 
 function build_msntp() {
@@ -942,13 +951,13 @@ function populate_zaptel($image_name) {
 }
 
 function populate_isdn($image_name) {
-	global $dirs;
+	global $dirs, $i4b_version;
 /* moved to m0n0wall.files
 	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; ".
 		"cp -p isdnconfig/isdnconfig isdndebug/isdndebug isdndecode/isdndecode ".
 		"isdnmonitor/isdnmonitor isdntest/isdntest isdntrace/isdntrace ".
 		"$image_name/rootfs/sbin; ");*/
-	_exec("cp {$dirs['packages']}/i4b/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
+	_exec("cp {$dirs['packages']}/$i4b_version/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
 }
 
 function populate_tools($image_name) {
