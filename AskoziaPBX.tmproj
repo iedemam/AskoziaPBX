@@ -3,28 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-10-17T14:24:08Z</date>
+			<date>2007-10-28T18:29:33Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-10-19T23:43:05Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-10-29T09:30:05Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-10-18T15:36:43Z</date>
+			<date>2007-10-29T09:30:05Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -84,9 +84,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>91</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>11</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -98,14 +98,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>64</integer>
 				<key>line</key>
-				<integer>105</integer>
+				<integer>17</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>88</integer>
+			<integer>0</integer>
+		</dict>
+		<key>build/asterisk_modules/app_wakeme.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>142</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>79</integer>
 		</dict>
 		<key>build/tools/sign.c</key>
 		<dict>
@@ -121,77 +135,63 @@
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
 		</dict>
-		<key>phpconf/inc/dialplan.inc</key>
+		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>52</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>111</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>100</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>111</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>52</integer>
-				<key>line</key>
-				<integer>111</integer>
-			</dict>
+			<integer>256</integer>
 		</dict>
 		<key>phpconf/inc/extensions.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>78</integer>
 				<key>line</key>
-				<integer>223</integer>
+				<integer>288</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>198</integer>
+			<integer>61</integer>
 		</dict>
-		<key>phpconf/inc/iax.inc</key>
+		<key>webgui/advanced_manager.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>205</integer>
+				<integer>0</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>243</integer>
-		</dict>
-		<key>webgui/status.php</key>
-		<dict>
-			<key>caret</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>1</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>24</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
 		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
@@ -227,11 +227,11 @@
 		<string>CHANGELOG</string>
 		<string>NOTES</string>
 		<string>phpconf/inc/extensions.inc</string>
-		<string>phpconf/inc/dialplan.inc</string>
+		<string>pbxdev.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{82, 24}, {737, 749}}</string>
+	<string>{{75, 19}, {940, 759}}</string>
 </dict>
 </plist>

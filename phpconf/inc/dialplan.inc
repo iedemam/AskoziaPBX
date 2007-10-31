@@ -176,7 +176,7 @@ function dialplan_remove_provider_reference_from_phones($removed_id) {
 	}
 }
 
-function dialplan_remove_incomingextension_reference_from_providers($removed_id) {
+function dialplan_remove_incomingextensionmap_reference_from_providers($removed_id) {
 	
 	$technologies = array("sip", "iax", "isdn", "analog");
 	
@@ -185,8 +185,11 @@ function dialplan_remove_incomingextension_reference_from_providers($removed_id)
 			$a_providers = &$GLOBALS['config'][$tech]['provider'];
 			$n = count($a_providers);
 			for ($i = 0; $i < $n; $i++) {
-				if ($a_providers[$i]['incomingextension'] == $removed_id) {
-					unset($a_providers[$i]['incomingextension']);
+				$nn = $a_providers[$i]['incomingextensionmap'];
+				for ($ii = 0; $ii < $nn; $ii++) {
+					if ($a_providers[$i]['incomingextensionmap'][$ii]['destinationid'] == $removed_id) {
+						unset($a_providers[$i]['incomingextensionmap'][$ii]);
+					}	
 				}
 			}
 		}

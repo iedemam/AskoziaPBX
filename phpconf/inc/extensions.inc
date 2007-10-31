@@ -227,92 +227,162 @@ EOD;
 	// sip providers
 	$a_sipproviders = sip_get_providers();
 	foreach ($a_sipproviders as $p) {
-		if ($p['incomingextension']) {
+		// incoming extension mappings
+		if ($n = count($p['incomingextensionmap'])) {
+			
 			$conf .= "; {$p['name']} incoming\n";
 			$conf .= "[{$p['uniqid']}-incoming]\n";
-			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], false, $p['override']);
-			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
-			$conf .= "\n";
+			
+			for ($i = 0; $i < $n; $i++) {
+				$map = $p['incomingextensionmap'][$i];
+				if (!isset($map['pattern'])) {
+					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
+					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);	
+				} else {
+					$conf .= asterisk_uniqid_to_dial($map['pattern'], $map['destinationid'], false, $p['override']);
+				}
+				$conf .= "\n";
+			}
 		}
-		$conf .= "; {$p['name']} outgoing\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		if (is_array($p['dialpattern'])) {
+		
+		// outgoing dial patterns
+		if ($n = count($p['dialpattern'])) {
+			
+			$conf .= "; {$p['name']} outgoing\n";
+			$conf .= "[{$p['uniqid']}]\n";
+			
 			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
-			foreach($p['dialpattern'] as $pattern) {
+			
+			for ($i = 0; $i < $n; $i++) {
+				$pattern = $p['dialpattern'][$i];
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},20,T$cidflag)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
+		
 		$conf .= "\n";
 	}
 	
 	// iax providers
 	$a_iaxproviders = iax_get_providers();
 	foreach ($a_iaxproviders as $p) {
-		if ($p['incomingextension']) {
+		// incoming extension mappings
+		if ($n = count($p['incomingextensionmap'])) {
+			
 			$conf .= "; {$p['name']} incoming\n";
 			$conf .= "[{$p['uniqid']}-incoming]\n";
-			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], false, $p['override']);
-			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], false, $p['override']);
-			$conf .= "\n";
+			
+			for ($i = 0; $i < $n; $i++) {
+				$map = $p['incomingextensionmap'][$i];
+				if (!isset($map['pattern'])) {
+					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
+					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);	
+				} else {
+					$conf .= asterisk_uniqid_to_dial($map['pattern'], $map['destinationid'], false, $p['override']);
+				}
+				$conf .= "\n";
+			}
 		}
-		$conf .= "; {$p['name']} outgoing\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		if (is_array($p['dialpattern'])) {
+		
+		// outgoing dial patterns
+		if ($n = count($p['dialpattern'])) {
+			
+			$conf .= "; {$p['name']} outgoing\n";
+			$conf .= "[{$p['uniqid']}]\n";
+			
 			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
-			foreach($p['dialpattern'] as $pattern) {
+			
+			for ($i = 0; $i < $n; $i++) {
+				$pattern = $p['dialpattern'][$i];
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 				$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,20,T$cidflag)\n";
 				$conf .= "exten => _$pattern,2,Hangup()\n";
 			}
 		}
+		
 		$conf .= "\n";
 	}
 	
 	// isdn providers
 	$a_isdnproviders = isdn_get_providers();
 	foreach ($a_isdnproviders as $p) {
-		if ($p['incomingextension']) {
+		// incoming extension mappings
+		if ($n = count($p['incomingextensionmap'])) {
+			
 			$conf .= "; {$p['name']} incoming\n";
 			$conf .= "[{$p['uniqid']}-incoming]\n";
-			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], 1, $p['override'], $p['msn']);
-			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['msn']);
-			$conf .= "\n";
+			
+			for ($i = 0; $i < $n; $i++) {
+				$map = $p['incomingextensionmap'][$i];
+				if (!isset($map['pattern'])) {
+					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['msn']);
+					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['msn']);
+				} else {
+					$conf .= asterisk_uniqid_to_dial($map['pattern'], $map['destinationid'], 1, $p['override'], $p['msn']);
+				}
+				$conf .= "\n";
+			}
 		}
-		$conf .= "; {$p['name']} outgoing\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		if (is_array($p['dialpattern'])) {
-			foreach($p['dialpattern'] as $pattern) {
-				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
+		
+		// outgoing dial patterns
+		if ($n = count($p['dialpattern'])) {
+			
+			$conf .= "; {$p['name']} outgoing\n";
+			$conf .= "[{$p['uniqid']}]\n";
+			
+			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
+			
+			for ($i = 0; $i < $n; $i++) {
+				$pattern = $p['dialpattern'][$i];
+				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);				
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
 				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,20,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
+		
 		$conf .= "\n";
 	}
 	
 	// analog providers
 	$a_analogproviders = analog_get_providers();
 	foreach ($a_analogproviders as $p) {
-		if ($p['incomingextension']) {
+		// incoming extension mappings
+		if ($n = count($p['incomingextensionmap'])) {
+			
 			$conf .= "; {$p['name']} incoming\n";
 			$conf .= "[{$p['uniqid']}-incoming]\n";
-			$conf .= asterisk_uniqid_to_dial("_X!", $p['incomingextension'], 1, $p['override'], $p['number']);
-			$conf .= asterisk_uniqid_to_dial("s", $p['incomingextension'], 1, $p['override'], $p['number']);
-			$conf .= "\n";
+			
+			for ($i = 0; $i < $n; $i++) {
+				$map = $p['incomingextensionmap'][$i];
+				if (!isset($map['pattern'])) {
+					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['number']);
+					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['number']);
+				} else {
+					$conf .= asterisk_uniqid_to_dial($map['pattern'], $map['destinationid'], 1, $p['override'], $p['number']);
+				}
+				$conf .= "\n";
+			}
 		}
-		$conf .= "; {$p['name']} outgoing\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		if (is_array($p['dialpattern'])) {
-			foreach($p['dialpattern'] as $pattern) {
-				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
+		
+		// outgoing dial patterns
+		if ($n = count($p['dialpattern'])) {
+			
+			$conf .= "; {$p['name']} outgoing\n";
+			$conf .= "[{$p['uniqid']}]\n";
+			
+			$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
+			
+			for ($i = 0; $i < $n; $i++) {
+				$pattern = $p['dialpattern'][$i];
+				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);				
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
 				$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,20,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
+		
 		$conf .= "\n";
 	}
 	

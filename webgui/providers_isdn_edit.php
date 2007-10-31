@@ -56,7 +56,7 @@ if (isset($id) && $a_isdnproviders[$id]) {
 	$pconfig['msn'] = $a_isdnproviders[$id]['msn'];
 	$pconfig['language'] = $a_isdnproviders[$id]['language'];
 	$pconfig['dialpattern'] = $a_isdnproviders[$id]['dialpattern'];
-	$pconfig['incomingextension'] = $a_isdnproviders[$id]['incomingextension'];
+	$pconfig['incomingextensionmap'] = $a_isdnproviders[$id]['incomingextensionmap'];
 	$pconfig['override'] = $a_isdnproviders[$id]['override'];
 }
 
@@ -64,6 +64,7 @@ if ($_POST) {
 
 	unset($input_errors);
 	$_POST['dialpattern'] = split_and_clean_patterns($_POST['dialpattern']);
+	$_POST['incomingextensionmap'] = gather_incomingextensionmaps($_POST);
 	$pconfig = $_POST;
 
 	/* input validation */
@@ -86,6 +87,17 @@ if ($_POST) {
 			}
 		}
 	}
+	if (is_array($_POST['incomingextensionmap'])) {
+		foreach($_POST['incomingextensionmap'] as $map) {
+			/* XXX : check for duplicates
+			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
+				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
+			}*/
+			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map, &$internal_error)) {
+				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
+			}
+		}
+	}
 	
 
 	if (!$input_errors) {
@@ -96,7 +108,7 @@ if ($_POST) {
 		$ip['language'] = $_POST['language'];
 		
 		$ip['dialpattern'] = $_POST['dialpattern'];
-		$ip['incomingextension'] = $_POST['incomingextension'];
+		$ip['incomingextensionmap'] = $_POST['incomingextensionmap'];
 		$ip['override'] = $_POST['override'];
 		
 		if (isset($id) && $a_isdnproviders[$id]) {
@@ -156,7 +168,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_incoming_extension_selector($pconfig['incomingextension'], 1); ?>
+			<? display_incoming_extension_selector($pconfig['incomingextensionmap'], 1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

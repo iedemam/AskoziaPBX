@@ -67,7 +67,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['calleridsource'] = 
 		isset($a_iaxproviders[$id]['calleridsource']) ? $a_iaxproviders[$id]['calleridsource'] : "phones";
 	$pconfig['calleridstring'] = $a_iaxproviders[$id]['calleridstring'];
-	$pconfig['incomingextension'] = $a_iaxproviders[$id]['incomingextension'];
+	$pconfig['incomingextensionmap'] = $a_iaxproviders[$id]['incomingextensionmap'];
 	$pconfig['override'] = $a_iaxproviders[$id]['override'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
@@ -77,6 +77,7 @@ if ($_POST) {
 
 	unset($input_errors);
 	$_POST['dialpattern'] = split_and_clean_patterns($_POST['dialpattern']);
+	$_POST['incomingextensionmap'] = gather_incomingextensionmaps($_POST);
 	$pconfig = $_POST;
 	$pconfig['codec'] = array("ulaw", "gsm");
 	
@@ -122,6 +123,17 @@ if ($_POST) {
 			}
 		}
 	}
+	if (is_array($_POST['incomingextensionmap'])) {
+		foreach($_POST['incomingextensionmap'] as $map) {
+			/* XXX : check for duplicates
+			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
+				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
+			}*/
+			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map, &$internal_error)) {
+				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
+			}
+		}
+	}
 	
 
 	if (!$input_errors) {
@@ -142,7 +154,7 @@ if ($_POST) {
 		$sp['calleridsource'] = $_POST['calleridsource'];
 		$sp['calleridstring'] = $_POST['calleridstring'];
 		
-		$sp['incomingextension'] = $_POST['incomingextension'];
+		$sp['incomingextensionmap'] = $_POST['incomingextensionmap'];
 		$sp['override'] = $_POST['override'];
 		
 		$sp['codec'] = array();
@@ -213,7 +225,7 @@ if ($_POST) {
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_registration_options($pconfig['noregister'], 2); ?>
 			<? display_qualify_options($pconfig['qualify'], 2); ?>
-			<? display_incoming_extension_selector($pconfig['incomingextension'], 2); ?>
+			<? display_incoming_extension_selector($pconfig['incomingextensionmap'], 2); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>

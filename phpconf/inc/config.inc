@@ -307,6 +307,28 @@ function convert_config() {
 		$config['version'] = "1.2";
 	}
 	
+	/* convert 1.2 -> 1.3 */
+	if ($config['version'] == "1.2") {
+
+		// convert incomingextensions to new representation
+		$techs = array("sip", "iax", "isdn", "analog");
+		foreach ($techs as $tech) {
+			$n = count($config[$tech]['provider']);
+			for($i = 0; $i < $n; $i++) {
+				$p = &$config[$tech]['provider'][$i];
+				
+				if ($p['incomingextension']) {
+					$destinationid = $p['incomingextension'];
+					$p['incomingextensionmap'] = array();
+					$p['incomingextensionmap'][0]['destinationid'] = $destinationid;
+				}
+				unset($p['incomingextension']);
+			}
+		}
+		
+		$config['version'] = "1.3";
+	}
+	
 	write_config();
 	
 	if ($g['booting'])

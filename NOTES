@@ -1,9 +1,7 @@
 pb12
 - multiple MSNs on ISDN, DID/DDI support in general
 - nat=yes|no optional an all sip accounts
-- caller id override=yes|no option for providers
 - dial timeout options
-- fix snooze
 - check about dtmf bursts after picking analog phones
 - single tone voicemails...
 
@@ -17,13 +15,12 @@ sooner
 - start returning get_blahs() functions by reference
 _ also, get_blahs() should return arrays with uniqid's as the keys
 - kernel and asterisk modules should only be loaded when needed
+- publicly reachable extension, e-mail style extension overrides
 
 
 later
 - qos page with jitterbuffer tab
 - time based call routing
-- sqlite cdrs
-	- cdr page needs query, column add/hide support
 - better front panel w/quick access to call logs, etc
 - disable/enable options for each provider and phone
 - storage interface (add storage partition for extended capabilities)

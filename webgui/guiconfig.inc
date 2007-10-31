@@ -479,6 +479,24 @@ function split_and_clean_patterns($patterns_string) {
 	return $patterns;
 }
 
+// XXX : multiple still needs to be implemented for dialplan_providers page
+function gather_incomingextensionmaps($post, $multiple=false) {
+	
+	$maps = array();
+	$keys = array_keys($post);
+	
+	foreach ($keys as $key) {
+		if ((strpos($key, "destinationid:") !== false && $post[$key]) ||
+			(strpos($key, "incomingpattern:") !== false && strlen($post[$key]))) {
+				
+			$match = explode(":", $key);
+			$maps[$match[1]][$match[0]] = $post[$key];
+		}
+	}
+
+	return $maps;
+}
+
 
 function display_audio_codec_selector($enabled_codecs) {
 	global $audio_codecs;
@@ -585,122 +603,157 @@ function display_callgroup_member_selector($current_members) {
 	</tr><?	
 }
 
-function display_incoming_extension_selector($current_incoming_extension, $colspan, $idprefix=false) {
+function display_incoming_extension_selector($current_incoming_extensions, $colspan, $idprefix=false) {
 	global $help, $help_language;
 	
 	?><tr>
-		<td width="20%" valign="top" class="vncell">Incoming Extension</td>
-		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<? if ($idprefix): ?>
-			<select name="<?=$idprefix;?>:incomingextension" class="formfld" id="<?=$idprefix;?>:incomingextension">
-			<? else: ?>
-			<select name="incomingextension" class="formfld" id="incomingextension">
-			<? endif; ?>
-				<option value="">Outgoing Calls Only</option>
-				<option></option>
-				<?php $have_extension = false; ?>
-				
-				<?php if (count($a_groups = dialplan_get_callgroups()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">Call Groups</option>
-				<?php foreach ($a_groups as $group): ?>
-				<option value="<?=$group['uniqid'];?>" <?php 
-				if ($group['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$group['name']}"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-
-				<?php if (count($a_sipphones = sip_get_phones()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">SIP Phones</option>
-				<?php foreach ($a_sipphones as $phone): ?>
-				<option value="<?=$phone['uniqid'];?>" <?php 
-				if ($phone['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-
-				<?php if (count($a_iaxphones = iax_get_phones()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">IAX Phones</option>
-				<?php foreach ($a_iaxphones as $phone): ?>
-				<option value="<?=$phone['uniqid'];?>" <?php 
-				if ($phone['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-				
-				<?php if (count($a_isdnphones = isdn_get_phones()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">ISDN Phones</option>
-				<?php foreach ($a_isdnphones as $phone): ?>
-				<option value="<?=$phone['uniqid'];?>" <?php 
-				if ($phone['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-				
-				<?php if (count($a_analogphones = analog_get_phones()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">Analog Phones</option>
-				<?php foreach ($a_analogphones as $phone): ?>
-				<option value="<?=$phone['uniqid'];?>" <?php 
-				if ($phone['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$phone['callerid']} &lt;{$phone['extension']}&gt;"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-				
-				<?php if (count($a_extphones = external_get_phones()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">External Phones</option>
-				<?php foreach ($a_extphones as $phone): ?>
-				<option value="<?=$phone['uniqid'];?>" <?php 
-				if ($phone['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$phone['name']} &lt;{$phone['dialstring']}&gt;"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
+		<td width="20%" valign="top" class="vncell">Incoming Extension(s)</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
 			
-				<?php if (count($a_rooms = conferencing_get_rooms()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">Conference Rooms</option>
-				<?php foreach ($a_rooms as $room): ?>
-				<option value="<?=$room['uniqid'];?>" <?php 
-				if ($room['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$room['name']} &lt;{$room['number']}&gt;"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-				
-				<?php if (count($a_applications = dialplan_get_applications()) > 0): ?>
-				<?php $have_extension = true; ?>
-				<option value="">Applications</option>
-				<?php foreach ($a_applications as $app): ?>
-				<option value="<?=$app['uniqid'];?>" <?php 
-				if ($app['uniqid'] == $current_incoming_extension) 
-					echo "selected"; ?>> 
-				<? echo "&nbsp;&nbsp;{$app['name']}"; ?></option>
-				<?php endforeach; ?>
-				<?php endif; ?>
-			
-				<?php if (!$have_extension): ?>
-				<option value="">no incoming extensions available</option>
-				<?php endif; ?>
-
-            </select><?
+			$n = count($current_incoming_extensions);
+			if ($n == 0) {
+				display_incoming_extension_selector_sub(0, false, $idprefix);
+				echo "<br>";
+			} else {
+				for ($i = 0; $i < $n; $i++) {
+					display_incoming_extension_selector_sub($i, $current_incoming_extensions[$i], $idprefix);
+					echo "<br>";
+				}
+			}
 
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=$help[$help_language]["display_incoming_extension_selector"]; ?></span><?
+			?><span class="vexpl"><?=$help[$help_language]["display_incoming_extension_selector"]; ?></span><?
 		}
 
 		?></td>
 	</tr><?
+
+}
+
+function display_incoming_extension_selector_sub($id, $current_incoming_extension, $idprefix=false) {
+	
+	$destinationid = $current_incoming_extension['destinationid'];
+	$pattern = $current_incoming_extension['pattern'];
+	
+	if ($idprefix) {
+		?><input name="<?=$idprefix;?>:incomingpattern:<?=$id;?>" type="text" class="formfld" id="<?=$idprefix;?>:incomingpattern:<?=$id;?>" size="20" value="<?=htmlspecialchars($pattern);?>"><?
+	} else {
+		?><input name="incomingpattern:<?=$id;?>" type="text" class="formfld" id="incomingpattern:<?=$id;?>" size="20" value="<?=htmlspecialchars($pattern);?>"><?
+	}
+	
+	if ($idprefix) {
+		?><select name="<?=$idprefix;?>:destinationid:<?=$id;?>" class="formfld" id="<?=$idprefix;?>:destinationid:<?=$id;?>"><?
+	} else {
+		?><select name="destinationid:<?=$id;?>" class="formfld" id="destinationid:<?=$id;?>"><?
+	}
+
+			?><option value="">Outgoing Calls Only</option>
+			<option></option><?
+			$have_extension = false;
+			
+		if (count($a_items = dialplan_get_callgroups())) {
+			$have_extension = true;
+			echo "<option value=\"\">Call Groups</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['name']}</option>";
+			}
+		}
+		
+		if (count($a_items = sip_get_phones())) {
+			$have_extension = true;
+			echo "<option value=\"\">SIP Phones</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['callerid']} &lt;{$item['extension']}&gt</option>";
+			}
+		}
+		
+		if (count($a_items = iax_get_phones())) {
+			$have_extension = true;
+			echo "<option value=\"\">IAX Phones</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['callerid']} &lt;{$item['extension']}&gt</option>";
+			}
+		}
+		
+		if (count($a_items = isdn_get_phones())) {
+			$have_extension = true;
+			echo "<option value=\"\">ISDN Phones</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['callerid']} &lt;{$item['extension']}&gt</option>";
+			}
+		}
+		
+		if (count($a_items = analog_get_phones())) {
+			$have_extension = true;
+			echo "<option value=\"\">Analog Phones</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['callerid']} &lt;{$item['extension']}&gt</option>";
+			}
+		}
+
+		if (count($a_items = external_get_phones())) {
+			$have_extension = true;
+			echo "<option value=\"\">External Phones</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['name']} &lt;{$item['dialstring']}&gt</option>";
+			}
+		}
+		
+		if (count($a_items = conferencing_get_rooms())) {
+			$have_extension = true;
+			echo "<option value=\"\">Conference Rooms</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['name']} &lt;{$item['number']}&gt</option>";
+			}
+		}
+
+		if (count($a_items = dialplan_get_applications())) {
+			$have_extension = true;
+			echo "<option value=\"\">Applications</option>";
+			foreach ($a_items as $item) {
+				echo "<option value=\"{$item['uniqid']}\"";
+				if ($item['uniqid'] == $destinationid) {
+					echo " selected";
+				}
+			 	echo ">&nbsp;&nbsp;{$item['name']}</option>";
+			}
+		}
+
+		if (!$have_extension) {
+			?><option value="">no incoming extensions available</option><?
+		}
+		
+        ?></select><?
+
 }
 
 function display_dtmfmode_selector($current_dtmfmode, $colspan) {
