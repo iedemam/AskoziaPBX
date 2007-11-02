@@ -42,6 +42,7 @@ $zaptel_version			= "zaptel-trunk";
 $oslec_version			= "oslec-trunk";
 $i4b_version			= "i4b-trunk";
 $scriptaculous_version	= "scriptaculous-js-1.7.1_beta3";
+$jquery_version			= "jquery-1.2.1";
 
 // --[ sounds ]----------------------------------------------------------------
 
@@ -983,7 +984,7 @@ function populate_phpconf($image_name) {
 }
 
 function populate_webgui($image_name) {
-	global $dirs, $scriptaculous_version;
+	global $dirs, $scriptaculous_version, $jquery_version;
 	
 	_exec("cp {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
 	
@@ -996,6 +997,12 @@ function populate_webgui($image_name) {
 	}
 	_exec("cd {$dirs['packages']}/$scriptaculous_version; ".
 		"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
+
+	if (!file_exists("{$dirs['packages']}/$jquery_version.js")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://jqueryjs.googlecode.com/files/$jquery_version.js");
+	}
+	_exec("cp {$dirs['packages']}/$jquery_version.js $image_name/rootfs/usr/local/www/jquery.js");
 }
 
 function populate_libs($image_name) {

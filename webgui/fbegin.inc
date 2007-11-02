@@ -210,6 +210,9 @@ $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 <script src="prototype.js" type="text/javascript"></script>
 <script src="scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
 <?php endif; ?>
+<?php if ($needs_jquery) :?>
+<script src="jquery.js" type="text/javascript"></script>
+<?php endif; ?>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 
