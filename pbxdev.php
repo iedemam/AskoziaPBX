@@ -1003,6 +1003,12 @@ function populate_webgui($image_name) {
 			"fetch http://jqueryjs.googlecode.com/files/$jquery_version.js");
 	}
 	_exec("cp {$dirs['packages']}/$jquery_version.js $image_name/rootfs/usr/local/www/jquery.js");
+
+	if (!file_exists("{$dirs['packages']}/jquery.selectboxes.js")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://jqueryjs.googlecode.com/svn/trunk/plugins/selectboxes/jquery.selectboxes.js");
+	}
+	_exec("cp {$dirs['packages']}/jquery.selectboxes.js $image_name/rootfs/usr/local/www/");	
 }
 
 function populate_libs($image_name) {

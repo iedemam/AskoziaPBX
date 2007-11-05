@@ -32,6 +32,7 @@
 require_once("functions.inc");
 
 $needs_scriptaculous = true;
+$needs_jquery = true;
 
 $pgtitle = array("Providers", "Analog", "Edit Line");
 require("guiconfig.inc");
@@ -93,7 +94,7 @@ if ($_POST) {
 			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
 				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
 			}*/
-			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map, &$internal_error)) {
+			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map['incomingpattern'], &$internal_error)) {
 				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
 			}
 		}
@@ -167,7 +168,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_incoming_extension_selector($pconfig['incomingextensionmap'], 1); ?>
+			<? display_incoming_extension_selector(1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
@@ -180,4 +181,11 @@ if ($_POST) {
 			</tr>
 		</table>
 	</form>
+<script language="JavaScript">
+<!-- 
+
+<? js_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
+
+//-->
+</script>
 <?php include("fend.inc"); ?>

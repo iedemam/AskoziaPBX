@@ -32,6 +32,7 @@
 require_once("functions.inc");
 
 $needs_scriptaculous = true;
+$needs_jquery = true;
 
 $pgtitle = array("Providers", "SIP", "Edit Account");
 require("guiconfig.inc");
@@ -250,7 +251,7 @@ if ($_POST) {
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
 			<? display_registration_options($pconfig['noregister'], 2); ?>
 			<? display_qualify_options($pconfig['qualify'], 2); ?>
-			<? display_incoming_extension_selector($pconfig['incomingextensionmap'], 2); ?>
+			<? display_incoming_extension_selector(2); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
@@ -269,6 +270,8 @@ if ($_POST) {
 	</form>
 <script type="text/javascript" charset="utf-8">
 // <![CDATA[
+
+	<? js_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
 
 	Sortable.create("ace",
 		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});

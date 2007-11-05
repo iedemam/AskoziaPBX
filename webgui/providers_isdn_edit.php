@@ -32,6 +32,7 @@
 require_once("functions.inc");
 
 $needs_scriptaculous = true;
+$needs_jquery = true;
 
 $pgtitle = array("Providers", "ISDN", "Edit Line");
 require("guiconfig.inc");
@@ -168,7 +169,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_incoming_extension_selector($pconfig['incomingextensionmap'], 1); ?>
+			<? display_incoming_extension_selector(1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
@@ -181,4 +182,11 @@ if ($_POST) {
 			</tr>
 		</table>
 	</form>
+<script language="JavaScript">
+<!-- 
+
+<? js_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
+
+//-->
+</script>
 <?php include("fend.inc"); ?>

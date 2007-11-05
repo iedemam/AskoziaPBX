@@ -38,8 +38,8 @@ $help = array(
 			"Directs incoming phone calls from this provider to the selected extension. ".
 			"If no pattern is defined, all calls will be directed to the extension.<br>\n".
 			"<ul>\n".
-			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n".
-			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|NXX\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
+			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the phone)</li>\n".
+			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|NXX\" matches \"1555\" but only passes \"555\" to the phone)</li>\n".
 			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
 			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
 			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".

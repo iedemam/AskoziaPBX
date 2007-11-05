@@ -212,6 +212,10 @@ $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 <?php endif; ?>
 <?php if ($needs_jquery) :?>
 <script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.selectboxes.js" type="text/javascript"></script>
+<script>
+	jQuery.noConflict();
+</script>
 <?php endif; ?>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>

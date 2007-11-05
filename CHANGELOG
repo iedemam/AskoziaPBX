@@ -5,6 +5,7 @@
  - added missed call notification e-mail option to phones
  - added chan_local jitterbuffer patch, enabling applications to also be jitterbuffered
  - added hints to call parking spots based on info provided by Mat M
+ - multiple incoming extensions per provider can now be defined
  - cleaned up iax.conf generator based on suggestions by Mat M
  - updated Asterisk to 1.4.13
  - removed gsm prompts from languages which also have ulaw prompts to make room for more languages
