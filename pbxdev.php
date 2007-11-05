@@ -64,7 +64,8 @@ $musiconhold		= explode(" ", "fpm-calm-river");
 
 // --[ modules ]---------------------------------------------------------------
 
-$low_power_modules= explode(" ", "codec_speex.so codec_ilbc.so");
+$low_power_modules		= explode(" ", "codec_speex.so codec_ilbc.so");
+$low_power_libraries	= explode(" ", "/usr/local/lib/libspeex.so.1");
 
 // --[ image padding ]---------------------------------------------------------
 
@@ -1047,7 +1048,7 @@ function package($platform, $image_name) {
 	global $dirs;
 	global $mfsroot_pad, $asterisk_pad, $image_pad;
 	global $zaptel_version, $oslec_version, $asterisk_version;
-	global $low_power_modules;
+	global $low_power_modules, $low_power_libraries;
 		
 	_set_permissions($image_name);
 	
@@ -1078,6 +1079,13 @@ function package($platform, $image_name) {
 	
 	// XXX i4b module
 	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");
+	
+	// XXX quick fix to remove modules' libraries not needed for these
+	if ($platform != "generic-pc") {
+		foreach ($low_power_libraries as $lpl) {
+			_exec("rm tmp/stage/$lpl");
+		}
+	}
 	
 	// ...stamps
 	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
