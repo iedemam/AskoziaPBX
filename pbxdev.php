@@ -468,7 +468,7 @@ function build_ports() {
 	
 	build_msntp();
 	build_udesc_dump();
-	build_mpg123();
+	//build_mpg123();
 }
 
 function build_everything() {
@@ -1034,7 +1034,7 @@ function populate_everything($image_name) {
 	populate_msmtp($image_name);
 	populate_zaptel($image_name);
 	populate_isdn($image_name);
-	populate_mpg123($image_name);
+	//populate_mpg123($image_name);
 	populate_asterisk($image_name);
 	populate_sounds($image_name);
 	populate_tools($image_name);
