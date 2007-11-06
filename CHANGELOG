@@ -1,4 +1,5 @@
 2007.10.xx - pb12
+ - new platform: PC Engines - ALIX.2,3x
  - added outgoing caller id override options to SIP and IAX providers
  - added English (UK) ulaw prompts, renamed existing prompts to English (USA)
  - added French (France) gsm prompts, renamed existing prompts to French (Canada)
