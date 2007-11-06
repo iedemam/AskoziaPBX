@@ -153,11 +153,8 @@ if ($_POST) {
 				<td class="vtable">
 					<select name="interface" class="formfld" id="interface"><?
 					
-					$isdn_interfaces = isdn_get_interfaces();
+					$isdn_interfaces = isdn_get_te_interfaces();
 					foreach ($isdn_interfaces as $interface) {
-						if (strpos($interface['mode'], "TE") === false) {
-							continue;
-						}
 						?><option value="<?=$interface['unit'];?>" <?
 						if ($interface['unit'] == $pconfig['interface']) {
 							echo "selected";

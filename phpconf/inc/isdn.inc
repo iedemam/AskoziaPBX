@@ -155,6 +155,34 @@ function isdn_get_interfaces() {
 	return $config['interfaces']['isdn-unit'];
 }
 
+function isdn_get_nt_interfaces() {
+	
+	$interfaces = isdn_get_interfaces();
+	
+	foreach ($interfaces as $interface) {
+		if (strpos($interface['mode'], "NT") === false) {
+			continue;
+		}
+		$nt_interfaces[] = $interface;
+	}
+		
+	return $nt_interfaces;
+}
+
+function isdn_get_te_interfaces() {
+	
+	$interfaces = isdn_get_interfaces();
+	
+	foreach ($interfaces as $interface) {
+		if (strpos($interface['mode'], "TE") === false) {
+			continue;
+		}
+		$te_interfaces[] = $interface;
+	}
+		
+	return $te_interfaces;
+}
+
 function isdn_get_interface($unit) {
 	
 	$interfaces = isdn_get_interfaces();
