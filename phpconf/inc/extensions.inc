@@ -428,8 +428,8 @@ EOD;
 		$conf .= "[isdn-unit-{$interface['unit']}-incoming]\n";
 		foreach ($providers as $p) {
 			// XXX : multiple providers on a single s0 is broken
-			//$conf .= "exten => _X!/{$p['msn']},1,Goto({$p['uniqid']},$\{EXTEN},1)\n";
-			$conf .= "exten => _X!,1,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+			//$conf .= "exten => _X!/{$p['msn']},1,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+			$conf .= "exten => _X!,1,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}
