@@ -170,7 +170,7 @@ EOD;
 	foreach ($a_isdnphones as $phone) {
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
 		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
-		$conf .= "exten => {$phone['extension']},n,Macro(vm|CAPI/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
+		$conf .= "exten => {$phone['extension']},n,Macro(vm|CAPI/{$phone['interface']}/$\{EXTEN}|$\{EXTEN}|$\{EXTEN}|tTo)\n";
 	}
 	
 	$a_analogphones = analog_get_phones();
@@ -337,7 +337,7 @@ EOD;
 				$pattern = $p['dialpattern'][$i];
 				dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);				
 				$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
-				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['uniqid']}/$prefix$exten/bl,20,Tf)\n";
+				$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['interface']}/$prefix$exten/bl,20,Tf)\n";
 				$conf .= "exten => _$pattern,3,Hangup()\n";
 			}
 		}
@@ -397,6 +397,39 @@ EOD;
 			foreach ($p['provider'] as $provider) {
 				$conf .= "include => $provider\n";
 			}
+		}
+		$conf .= "\n";
+	}
+
+
+	// isdn nt ports
+	$isdn_interfaces = isdn_get_nt_interfaces();
+	foreach ($isdn_interfaces as $interface) {
+		$phones = isdn_get_phones_on_unit($interface['unit']);
+		if (!count($phones)) {
+			continue;
+		}
+		$conf .= "; isdn nt interface \"{$interface['name']}\" incoming\n";
+		$conf .= "[isdn-unit-{$interface['unit']}-incoming]\n";
+		foreach ($phones as $p) {
+			$conf .= "exten => _X!/{$p['extension']},1,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+		}
+		$conf .= "\n";
+	}
+	
+	// isdn te ports
+	$isdn_interfaces = isdn_get_te_interfaces();
+	foreach ($isdn_interfaces as $interface) {
+		$providers = isdn_get_providers_on_unit($interface['unit']);
+		if (!count($providers)) {
+			continue;
+		}
+		$conf .= "; isdn te interface \"{$interface['name']}\" incoming\n";
+		$conf .= "[isdn-unit-{$interface['unit']}-incoming]\n";
+		foreach ($providers as $p) {
+			// XXX : multiple providers on a single s0 is broken
+			//$conf .= "exten => _X!/{$p['msn']},1,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+			$conf .= "exten => _X!,1,Goto({$p['uniqid']},$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}

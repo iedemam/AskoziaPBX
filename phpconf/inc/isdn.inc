@@ -183,6 +183,34 @@ function isdn_get_te_interfaces() {
 	return $te_interfaces;
 }
 
+function isdn_get_phones_on_unit($unit_number) {
+	
+	$phones = isdn_get_phones();
+	
+	foreach ($phones as $p) {
+		if ($p['interface'] != $unit_number) {
+			continue;
+		}
+		$unit_phones[] = $p;
+	}
+		
+	return $unit_phones;
+}
+
+function isdn_get_providers_on_unit($unit_number) {
+	
+	$providers = isdn_get_providers();
+	
+	foreach ($providers as $p) {
+		if ($p['interface'] != $unit_number) {
+			continue;
+		}
+		$unit_providers[] = $p;
+	}
+		
+	return $unit_providers;
+}
+
 function isdn_get_interface($unit) {
 	
 	$interfaces = isdn_get_interfaces();
@@ -281,17 +309,15 @@ EOD;
 	
 	$conf .= "\n\n";
 	
-	// provider definitions
-	$isdnproviders = isdn_get_providers();
-	foreach($isdnproviders as $p) {
-		$conf .= "; {$p['name']}\n";
-		$conf .= "[{$p['uniqid']}]\n";
-
-		$interface = isdn_get_interface($p['interface']);
+	// provider (te) interfaces
+	$interfaces = isdn_get_te_interfaces();
+	foreach($interfaces as $interface) {
+		$conf .= "; {$interface['name']}\n";
+		$conf .= "[{$interface['unit']}]\n";;
 		
 		$conf .= "isdnmode=msn\n";
 		//$conf .= "msn={$p['msn']}\n";
-		$conf .= "incomingmsn={$p['msn']}\n";
+		$conf .= "incomingmsn=*\n";
 		$conf .= "controller={$interface['unit']}\n";
 		$conf .= "group=1\n";
 		//$conf .= ";prefix=0\n";
@@ -299,7 +325,7 @@ EOD;
 		$conf .= "relaxdtmf=off\n";
 		//$conf .= "accountcode=\n";
 		
-		$conf .= "context={$p['uniqid']}-incoming\n";
+		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
 
 		$conf .= "holdtype=local\n";
 		//$conf .= ";immediate=yes\n";
@@ -322,26 +348,16 @@ EOD;
 		//$conf .= ";callgroup=1\n";
 		//$conf .= ";deflect=1234567\n";
 		$conf .= "devices=2\n";
-		
-		// language selection
-		if ($p['language']) {
-			$conf .= "language=" . $p['language'] . "\n";
-		} else {
-			$conf .= "language=en\n";
-		}
-		
 		$conf .= "\n";
 	}
 	
 	$conf .= "\n";
 	
-	// phone definitions
-	$isdnphones = isdn_get_phones();
-	foreach($isdnphones as $p) {
-		$conf .= "; {$p['callerid']}\n";
-		$conf .= "[{$p['extension']}]\n";
-
-		$interface = isdn_get_interface($p['interface']);
+	// phone (nt) interfaces
+	$interfaces = isdn_get_nt_interfaces();
+	foreach($interfaces as $interface) {
+		$conf .= "; {$interface['name']}\n";
+		$conf .= "[{$interface['unit']}]\n";
 		
 		$conf .= "ntmode=yes\n";
 		$conf .= "isdnmode=did\n";
@@ -353,7 +369,7 @@ EOD;
 		$conf .= "relaxdtmf=off\n";
 		//$conf .= "accountcode=\n";
 		
-		$conf .= "context={$p['uniqid']}\n";
+		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
 
 		$conf .= "holdtype=local\n";
 		//$conf .= ";immediate=yes\n";
@@ -374,12 +390,6 @@ EOD;
 		//$conf .= ";callgroup=1\n";
 		//$conf .= ";deflect=1234567\n";
 		$conf .= "devices=2\n";
-		// language selection
-		if ($p['language']) {
-			$conf .= "language=" . $p['language'] . "\n";
-		} else {
-			$conf .= "language=en\n";
-		}
 		$conf .= "\n";
 	}
 

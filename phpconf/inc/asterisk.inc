@@ -1189,7 +1189,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
-			"Macro(vm|CAPI/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
+			"Macro(vm|CAPI/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ANALOG" && $id[1] == "PHONE") {
 		$phone = analog_get_phone($uniqid);
@@ -1243,7 +1243,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 				if ($i == 0) {
 					$vm_phone = $phone;
 				}
-				$dial_strings[] = "CAPI/{$phone['extension']}";
+				$dial_strings[] = "CAPI/{$phone['interface']}/{$phone['extension']}";
 				
 			} else if ($subid[0] == "ANALOG" && $subid[1] == "PHONE") {
 				$phone = analog_get_phone($group['groupmember'][$i]);
