@@ -997,10 +997,15 @@ function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $send
 	return false;
 }
 
-function asterisk_is_valid_dialpattern($dialpattern, &$error) {
+function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
+	
+	$incoming_regex = "/^[XNZ0-9\-\[\]\.]+$/";
+	$outgoing_regex = "/^[XNZ0-9\-\[\]\.\|\+]+$/";
+	
+	$invalid_regex = $incoming ? $incoming_regex : $outgoing_regex;
 	
 	// invalid character
-	if (!preg_match("/^[XNZ0-9\-\[\]\.\|\+]+$/", $dialpattern)) {
+	if (!preg_match($invalid_regex, $dialpattern)) {
 		$error = "It contains an invalid character";
 		return false;
 	}

@@ -130,7 +130,7 @@ if ($_POST) {
 			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
 				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
 			}*/
-			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map, &$internal_error)) {
+			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map, &$internal_error, true)) {
 				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
 			}
 		}
