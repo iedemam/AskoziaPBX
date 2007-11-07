@@ -159,6 +159,7 @@ function isdn_get_nt_interfaces() {
 	
 	$interfaces = isdn_get_interfaces();
 	
+	$nt_interfaces = array();
 	foreach ($interfaces as $interface) {
 		if (strpos($interface['mode'], "NT") === false) {
 			continue;
@@ -173,6 +174,7 @@ function isdn_get_te_interfaces() {
 	
 	$interfaces = isdn_get_interfaces();
 	
+	$te_interfaces = array();
 	foreach ($interfaces as $interface) {
 		if (strpos($interface['mode'], "TE") === false) {
 			continue;
@@ -187,6 +189,7 @@ function isdn_get_phones_on_unit($unit_number) {
 	
 	$phones = isdn_get_phones();
 	
+	$unit_phones = array();
 	foreach ($phones as $p) {
 		if ($p['interface'] != $unit_number) {
 			continue;
@@ -200,7 +203,8 @@ function isdn_get_phones_on_unit($unit_number) {
 function isdn_get_providers_on_unit($unit_number) {
 	
 	$providers = isdn_get_providers();
-	
+
+	$unit_providers = array();
 	foreach ($providers as $p) {
 		if ($p['interface'] != $unit_number) {
 			continue;
@@ -326,16 +330,16 @@ EOD;
 		//$conf .= "accountcode=\n";
 		
 		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
-
+    
 		$conf .= "holdtype=local\n";
 		//$conf .= ";immediate=yes\n";
-
+    
 		if ($interface['echocancel']) {
 			$conf .= "echocancel=yes\n";
 		} else {
 			$conf .= "echocancel=no\n";
 		}
-
+    
 		if ($interface['echosquelch']) {
 			$conf .= "echosquelch=yes\n";
 		} else {
@@ -370,7 +374,7 @@ EOD;
 		//$conf .= "accountcode=\n";
 		
 		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
-
+    
 		$conf .= "holdtype=local\n";
 		//$conf .= ";immediate=yes\n";
 		if ($interface['echocancel']) {
@@ -378,7 +382,7 @@ EOD;
 		} else {
 			$conf .= "echocancel=no\n";
 		}
-
+    
 		if ($interface['echosquelch']) {
 			$conf .= "echosquelch=yes\n";
 		} else {
