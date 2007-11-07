@@ -35,16 +35,14 @@ $help = array(
 	"en" => array(
 		
 		"display_incoming_extension_selector" =>
-			"Directs incoming phone calls from this provider to the selected extension. ".
-			"If no pattern is defined, all calls will be directed to the extension.<br>\n".
+			"Enter a pattern or a phone number and select a destination extension. ".
+			"If nothing is defined, all calls will be directed to the destination extension.<br>\n".
 			"<ul>\n".
-			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the phone)</li>\n".
-			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|NXX\" matches \"1555\" but only passes \"555\" to the phone)</li>\n".
 			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
 			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
 			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
 			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
-			"\t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n".
+			"\t<li><strong>.</strong> - matches one or more characters</li>\n".
 			"</ul>\n".
 			"<strong><span class=\"red\">Note:</span></strong>&nbsp;".
 			"Permission must still be given to this phone for it to place outgoing calls.",
