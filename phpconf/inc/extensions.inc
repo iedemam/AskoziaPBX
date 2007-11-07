@@ -237,9 +237,11 @@ EOD;
 				$map = $p['incomingextensionmap'][$i];
 				if (!isset($map['incomingpattern'])) {
 					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
-					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);	
+					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
+				} else if (is_numeric($map['incomingpattern'])) {
+					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_$map['incomingpattern']", $map['destinationid'], false, $p['override']);
+					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
 				}
 				$conf .= "\n";
 			}
@@ -277,9 +279,11 @@ EOD;
 				$map = $p['incomingextensionmap'][$i];
 				if (!isset($map['incomingpattern'])) {
 					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
-					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);	
+					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
+				} else if (is_numeric($map['incomingpattern'])) {
+					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_$map['incomingpattern']", $map['destinationid'], false, $p['override']);
+					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
 				}
 				$conf .= "\n";
 			}
@@ -318,8 +322,10 @@ EOD;
 				if (!isset($map['incomingpattern'])) {
 					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['msn']);
 					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['msn']);
+				} else if (is_numeric($map['incomingpattern'])) {
+					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_$map['incomingpattern']", $map['destinationid'], 1, $p['override'], $p['msn']);
+					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['msn']);
 				}
 				$conf .= "\n";
 			}
@@ -359,8 +365,10 @@ EOD;
 				if (!isset($map['incomingpattern'])) {
 					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['number']);
 					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['number']);
+				} else if (is_numeric($map['incomingpattern'])) {
+					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_$map['incomingpattern']", $map['destinationid'], 1, $p['override'], $p['number']);
+					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['number']);
 				}
 				$conf .= "\n";
 			}
@@ -416,7 +424,8 @@ EOD;
 		}
 		$conf .= "\n";
 	}
-	
+
+
 	// isdn te ports
 	$isdn_interfaces = isdn_get_te_interfaces();
 	foreach ($isdn_interfaces as $interface) {
@@ -433,7 +442,8 @@ EOD;
 		}
 		$conf .= "\n";
 	}
-	
+
+
 	fwrite($fd, $conf);
 	fclose($fd);
 	
