@@ -40,61 +40,53 @@ if ($_POST) {
 	unset($input_errors);
 	
 	$post_keys = array_keys($_POST);
-
-	$sip_provider_incomingextension_pairs = array();
-	$sip_provider_dialpatterns = array();
-	$sip_phone_pairs = array();
-
-	$iax_provider_incomingextension_pairs = array();
-	$iax_provider_dialpatterns = array();
-	$iax_phone_pairs = array();
-
-	$isdn_provider_incomingextension_pairs = array();
-	$isdn_provider_dialpatterns = array();
-	$isdn_phone_pairs = array();
 	
-	$analog_provider_incomingextension_pairs = array();
-	$analog_provider_dialpatterns = array();
-	$analog_phone_pairs = array();
+	$technologies = array("sip", "iax", "isdn", "analog");
+
+	$dialpatterns = array();
+	$incomingextension_pairs = array();
+	$phone_pairs = array();
+	
+	foreach ($technologies as $tech) {
+		$dialpatterns[$tech] = array();
+		$incomingextension_pairs[$tech] = array();
+		$phone_pairs[$tech] = array();
+	}
+	
+	// incoming extension maps
+	$incomingextensionmaps = gather_incomingextensionmaps($_POST, "multi");
+	
+	if (is_array($incomingextensionmap)) {
+		foreach($incomingextensionmap as $map) {
+			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
+				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" for \"" .
+					asterisk_uniqid_to_name($key_split[0]) . "\"is invalid. $internal_error";
+			}
+		}
+	}
+
+	foreach ($technologies as $tech) {
+		if (strpos($key_split[0], strtoupper($tech) . "-PROVIDER") !== false) {
+			$incomingextension_pairs[$tech] = $incomingextensionmap;
+		}
+	}
 
 	foreach($post_keys as $post_key) {
 		
-		$key_split = explode(":", $post_key);
+		$key_split = explode("_", $post_key);
 
 		// phone permission, phone -> provider pairs
-		if (strpos($key_split[1], "SIP-PHONE") !== false) {
-			$sip_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
-
-		} else if (strpos($key_split[1], "IAX-PHONE") !== false) {
-			$iax_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
-			
-		} else if (strpos($key_split[1], "ISDN-PHONE") !== false) {
-			$isdn_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
-			
-		} else if (strpos($key_split[1], "ANALOG-PHONE") !== false) {
-			$analog_phone_pairs[] = array($key_split[1], $_POST[$post_key]);
-			
-		// incoming extension, provider -> phone pairs
-		} else if (strpos($key_split[1], "incomingextension") !== false) {
-			
-			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
-				$sip_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
-
-			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
-				$iax_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
-
-			} else if (strpos($key_split[0], "ISDN-PROVIDER") !== false) {
-					$isdn_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
-			
-			} else if (strpos($key_split[0], "ANALOG-PROVIDER") !== false) {
-					$analog_provider_incomingextension_pairs[] = array($key_split[0], $_POST[$post_key]);
+		foreach ($technologies as $tech) {
+			if (strpos($key_split[1], strtoupper($tech) . "-PHONE") !== false) {
+				$phone_pairs[$tech] = array($key_split[1], $_POST[$post_key]);
 			}
-		
+		}
+			
 		// save dialpatterns
-		} else if (strpos($key_split[1], "dialpattern") !== false) {
+		if (strpos($key_split[1], "dialpattern") !== false) {
 
 			$dialpatterns = split_and_clean_patterns($_POST[$post_key]);
-			
+
 			foreach($dialpatterns as $pattern) {
 				if (!asterisk_is_valid_dialpattern($pattern, &$internal_error)) {
 					$input_errors[] = "An invalid dial-pattern ($pattern) was found for \"" .
@@ -106,17 +98,10 @@ if ($_POST) {
 				}
 			}
 			
-			if (strpos($key_split[0], "SIP-PROVIDER") !== false) {
-				$sip_provider_dialpatterns[$key_split[0]] = $dialpatterns;
-
-			} else if (strpos($key_split[0], "IAX-PROVIDER") !== false) {
-				$iax_provider_dialpatterns[$key_split[0]] = $dialpatterns;
-			
-			} else if (strpos($key_split[0], "ISDN-PROVIDER") !== false) {
-				$isdn_provider_dialpatterns[$key_split[0]] = $dialpatterns;
-
-			} else if (strpos($key_split[0], "ANALOG-PROVIDER") !== false) {
-				$analog_provider_dialpatterns[$key_split[0]] = $dialpatterns;
+			foreach ($technologies as $tech) {
+				if (strpos($key_split[0], strtoupper($tech) . "-PROVIDER") !== false) {
+					$dialpatterns[$tech][$key_split[0]] = $dialpatterns;
+				}
 			}
 		}
 	}
@@ -124,89 +109,42 @@ if ($_POST) {
 	if (!$input_errors) {
 		
 		// clear phone to provider mappings
-		$n = count($config['sip']['phone']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['sip']['phone'][$i]['provider']))
-				unset($config['sip']['phone'][$i]['provider']);
-		}
-		$n = count($config['iax']['phone']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['iax']['phone'][$i]['provider']))
-				unset($config['iax']['phone'][$i]['provider']);
-		}
-		$n = count($config['isdn']['phone']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['isdn']['phone'][$i]['provider']))
-				unset($config['isdn']['phone'][$i]['provider']);
-		}
-		$n = count($config['analog']['phone']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['analog']['phone'][$i]['provider']))
-				unset($config['analog']['phone'][$i]['provider']);
+		foreach ($technologies as $tech) {
+			$n = count($config[$tech]['phone']);
+			for ($i = 0; $i < $n; $i++) {
+				if (isset($config[$tech]['phone'][$i]['provider']))
+					unset($config[$tech]['phone'][$i]['provider']);
+			}
 		}
 		
 		// clear provider patterns
-		$n = count($config['sip']['provider']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['sip']['provider'][$i]['dialpattern']))
-				unset($config['sip']['provider'][$i]['dialpattern']);
-		}
-		$n = count($config['iax']['provider']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['iax']['provider'][$i]['dialpattern']))
-				unset($config['iax']['provider'][$i]['dialpattern']);
-		}
-		$n = count($config['isdn']['provider']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['isdn']['provider'][$i]['dialpattern']))
-				unset($config['isdn']['provider'][$i]['dialpattern']);
-		}
-		$n = count($config['analog']['provider']);
-		for ($i = 0; $i < $n; $i++) {
-			if (isset($config['analog']['provider'][$i]['dialpattern']))
-				unset($config['analog']['provider'][$i]['dialpattern']);
+		foreach ($technologies as $tech) {
+			$n = count($config[$tech]['provider']);
+			for ($i = 0; $i < $n; $i++) {
+				if (isset($config[$tech]['provider'][$i]['dialpattern']))
+					unset($config[$tech]['provider'][$i]['dialpattern']);
+			}	
 		}
 		
 		// remap phones to providers
-		foreach($sip_phone_pairs as $pair) {
-			$config['sip']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
+		foreach ($technologies as $tech) {
+			foreach($phone_pairs[$tech] as $pair) {
+				$config[$tech]['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
+			}			
 		}
-		foreach($iax_phone_pairs as $pair) {
-			$config['iax']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
-		}
-		foreach($isdn_phone_pairs as $pair) {
-			$config['isdn']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
-		}
-		foreach($analog_phone_pairs as $pair) {
-			$config['analog']['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
-		}
-		
+
 		// remap incoming extensions
-		foreach($sip_provider_incomingextension_pairs as $pair) {
-			$config['sip']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
+		foreach ($technologies as $tech) {
+			foreach($incomingextension_pairs[$tech] as $pair) {
+				$config[$tech]['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
+			}
 		}
-		foreach($iax_provider_incomingextension_pairs as $pair) {
-			$config['iax']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
-		}
-		foreach($isdn_provider_incomingextension_pairs as $pair) {
-			$config['isdn']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
-		}
-		foreach($analog_provider_incomingextension_pairs as $pair) {
-			$config['analog']['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
-		}
-		
+
 		// remap dialpatterns
-		foreach($sip_provider_dialpatterns as $providerid => $patterns) {
-			$config['sip']['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
-		}
-		foreach($iax_provider_dialpatterns as $providerid => $patterns) {
-			$config['iax']['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
-		}
-		foreach($isdn_provider_dialpatterns as $providerid => $patterns) {
-			$config['isdn']['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
-		}
-		foreach($analog_provider_dialpatterns as $providerid => $patterns) {
-			$config['analog']['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
+		foreach ($technologies as $tech) {
+			foreach($dialpatterns[$tech] as $providerid => $patterns) {
+				$config[$tech]['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
+			}
 		}
 		
 		write_config();
@@ -263,7 +201,7 @@ if ($savemsg)
 					</td>
 				</tr>
 				<? display_provider_dialpattern_editor($provider['dialpattern'], 1, $provider['uniqid']); ?>
-				<? display_incoming_extension_selector($provider['incomingextension'], 1, $provider['uniqid']); ?>
+				<? display_incoming_extension_selector(1, $provider['uniqid']); ?>
 				<? display_phone_access_selector($provider['uniqid'], 1, $provider['uniqid']); ?>
 				<tr> 
 					<td colspan="2" class="list" height="12">&nbsp;</td>
@@ -302,4 +240,15 @@ if ($savemsg)
 		
 		?></table>
 	</form>
+<script language="JavaScript">
+<!-- 
+
+<?
+foreach ($a_providers as $provider) {
+	js_incoming_extension_selector($provider['incomingextensionmap'], $provider['uniqid']);	
+}
+?>
+
+//-->
+</script>
 <?php include("fend.inc"); ?>

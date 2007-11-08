@@ -177,10 +177,10 @@ $vm_email_languages = array(
 
 $isdn_dchannel_modes = array(
 	0 => "",
-	"DRVR_DSS1_TE" => "euro-ISDN, point-to-multipoint, terminal equipment",
-	"DRVR_DSS1_NT" => "euro-ISDN, multipoint-to-point, network termination",
-	"DRVR_DSS1_P2P_TE" => "euro-ISDN, point-to-point, terminal equipment",
-	"DRVR_DSS1_P2P_NT" => "euro-ISDN, point-to-point, network termination"
+	"DRVR_DSS1_TE" => "point-to-multipoint, terminal equipment",
+	"DRVR_DSS1_NT" => "multipoint-to-point, network termination",
+	"DRVR_DSS1_P2P_TE" => "point-to-point, terminal equipment",
+	"DRVR_DSS1_P2P_NT" => "point-to-point, network termination"
 //	"DRVR_D_CHANNEL" => "default D-channel driver",
 //	"DRVR_CAPI_TE" => "",
 //	"DRVR_DIEHL_TE" => "",
@@ -479,19 +479,23 @@ function split_and_clean_patterns($patterns_string) {
 	return $patterns;
 }
 
-// XXX : multiple still needs to be implemented for dialplan_providers page
-function gather_incomingextensionmaps($post, $multiple=false) {
+
+function gather_incomingextensionmaps($post, $multi=false) {
 	
 	$maps = array();
 	$keys = array_keys($post);
 	
-	foreach ($keys as $key) {
-		if ((strpos($key, "destinationid_") !== false && $post[$key]) ||
-			(strpos($key, "incomingpattern_") !== false && strlen($post[$key]))) {
-				
-			$match = explode("_", $key);
-			$maps[$match[1]][$match[0]] = $post[$key];
-		}
+	if ($multi) {
+		// XXX : the entire multiple vs single display mechanism needs to be redesigned...this will get / is horrible
+	} else {
+		foreach ($keys as $key) {
+			if ((strpos($key, "destinationid_") !== false && $post[$key]) ||
+				(strpos($key, "incomingpattern_") !== false && strlen($post[$key]))) {
+
+				$match = explode("_", $key);
+				$maps[$match[1]][$match[0]] = $post[$key];
+			}
+		}	
 	}
 
 	return $maps;
@@ -606,13 +610,17 @@ function display_callgroup_member_selector($current_members) {
 function display_incoming_extension_selector($colspan, $idprefix=false) {
 	global $help, $help_language;
 	
+	$table_id = $idprefix ? $idprefix . "_incoming_extension_selector" : "incoming_extension_selector";
+	$row_id = $idprefix ? $idprefix . "_incoming_extension_selector_last" : "incoming_extension_selector_last";
+	$add_params = $idprefix ? ",,\"$idprefix\"" : "";
+	
 	?><tr>
 		<td width="20%" valign="top" class="vncell">Incoming Extension(s)</td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<table id="incoming_extension_selector">
-				<tr id="incoming_extension_selector_last">
+			<table id="<?=$table_id;?>">
+				<tr id="<?=$row_id;?>">
 					<td>&nbsp;</td>
-					<td><img src="plus.gif" title="add incoming extension mapping" width="17" height="17" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector()"></td>
+					<td><img src="plus.gif" title="add incoming extension mapping" width="17" height="17" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
 				</tr>
 			</table><br><?
 			
@@ -626,7 +634,7 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 
 }
 
-function js_incoming_extension_selector($current_incomingextensionmap) {
+function js_incoming_extension_selector($current_incomingextensionmap, $multiple=false) {
 	
 	$options[] = array("", "Outgoing Calls Only");
 	$options[] = array("", "");
@@ -692,13 +700,13 @@ function js_incoming_extension_selector($current_incomingextensionmap) {
 	for ($i = 0; $i < $n; $i++) {
 		$add_options_string .= "\t\t+ '<option value=\"{$options[$i][0]}\">{$options[$i][1]}</option>'\n";
 	}
-	
+
 	echo <<<EOD
 
 
 var next_incoming_extension_selector_id = 0;
 
-function add_incoming_extension_selector(destination_id, pattern) {
+function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 	if (pattern === undefined) {
 		pattern = '';
 	}
@@ -867,7 +875,7 @@ function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=fal
 				$phone = $a_phones[$i];
 				
 				if($idprefix) {
-					?><input name="<?=$idprefix.":".$phone['uniqid'];?>" id="<?=$idprefix.":".$phone['uniqid'];?>" type="checkbox" value="<?=$idprefix;?>"<?
+					?><input name="<?=$idprefix."_".$phone['uniqid'];?>" id="<?=$idprefix."_".$phone['uniqid'];?>" type="checkbox" value="<?=$idprefix;?>"<?
 				
 				} else {
 					?><input name="<?=$phone['uniqid'];?>" id="<?=$phone['uniqid'];?>" type="checkbox" value="yes"<?
@@ -903,7 +911,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 
 		// multiple instances need a prefixing identifier
 		if ($idprefix) {
-			$idstring = $idprefix . ":dialpattern";
+			$idstring = $idprefix . "_dialpattern";
 		} else {
 			$idstring = "dialpattern";
 		}
