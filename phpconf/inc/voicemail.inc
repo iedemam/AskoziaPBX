@@ -155,6 +155,7 @@ skipms=3000
 maxsilence=10
 silencethreshold=128
 maxlogins=3
+minmessage=3
 charset=UTF-8
 
 serveremail=AskoziaPBX
