@@ -136,17 +136,23 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 				?><tr>
 					<td width="10%" class="listhdrr">Unit</td>
-					<td width="30%" class="listhdrr">Name</td>		
-					<td width="55%" class="listhdr">Mode</td>
+					<td width="20%" class="listhdrr">Name</td>		
+					<td width="30%" class="listhdr">Mode</td>
+					<td width="15%" class="listhdrr">Echo Canceller</td>
+					<td width="15%" class="listhdrr">Timing</td>
 					<td width="5%" class="list"></td>
 				</tr><?	
     			
 				foreach ($merged_units as $mu) {
+					$echocancel = $mu['echocancel'] ? "Enabled" : "Disabled";
+					$pcmmaster = $mu['pcmmaster'] ? "Master" : "Slave";
     			
 				?><tr>
 					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($pcmmaster);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
 					</td>

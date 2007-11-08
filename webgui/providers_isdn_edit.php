@@ -141,10 +141,10 @@ if ($_POST) {
 				</td>
 			</tr>
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">MSN</td>
+				<td width="20%" valign="top" class="vncellreq">Main MSN</td>
 				<td width="80%" colspan="1" class="vtable">
 					<input name="msn" type="text" class="formfld" id="msn" size="40" value="<?=htmlspecialchars($pconfig['msn']);?>"> 
-					<br><span class="vexpl">Telephone number assigned to this line.</span>
+					<br><span class="vexpl">The main telephone number assigned to this line. Individual MSN mappings can be defined below.</span>
 				</td>
 			</tr>
 			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 1); ?>

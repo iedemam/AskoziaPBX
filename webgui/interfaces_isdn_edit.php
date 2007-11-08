@@ -175,7 +175,7 @@ if ($_POST) {
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">PCM Master</td>
+		<td valign="top" class="vncell">PCM Timing Master</td>
 		<td class="vtable">
 			<input name="pcmmaster" id="pcmmaster" type="checkbox" value="yes" <? if ($pconfig['pcmmaster']) echo "checked"; ?>>
 			This card provides the timing source (needed if this is the only card).
