@@ -1,4 +1,4 @@
-2007.10.xx - pb12
+2007.11.09 - pb12
  - new platform: PC Engines - ALIX.2,3x
  - added outgoing caller id override options to SIP and IAX providers
  - added English (UK) ulaw prompts, renamed existing prompts to English (USA)
@@ -13,6 +13,7 @@
  - removed gsm prompts from languages which also have ulaw prompts to make room for more languages
  - replaced internal call detail record logging with sqlite backend
  - changed default Dial timeout to 20 seconds, still needs to be made a configurable option
+ - disabled "Dialplan -> Providers" page as it is currently broken, several things should be rewritten before yet another workaround is implemented
  - bug: fixed "localnet" setting in sip.conf
  - bug: fixed snooze feature in WakeMe
  - bug: "Diagnostics -> Logs -> Calls" now displays information in the "src" field in more cases
