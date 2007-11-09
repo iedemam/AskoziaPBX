@@ -137,9 +137,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 				?><tr>
 					<td width="10%" class="listhdrr">Unit</td>
 					<td width="20%" class="listhdrr">Name</td>		
-					<td width="30%" class="listhdr">Mode</td>
+					<td width="30%" class="listhdrr">Mode</td>
 					<td width="15%" class="listhdrr">Echo Canceller</td>
-					<td width="15%" class="listhdrr">Timing</td>
+					<td width="15%" class="listhdr">Timing</td>
 					<td width="5%" class="list"></td>
 				</tr><?	
     			
