@@ -1,10 +1,25 @@
 pb12
-- multiple MSNs on ISDN, DID/DDI support in general
 - nat=yes|no optional an all sip accounts
 - dial timeout options
 - check about dtmf bursts after picking analog phones
 - single tone voicemails...
+- dialplan_remove_incomingextensionmap_reference_from_providers is broken ?
+- multiple incoming extensions shouldn't be an option for providers lacking that ability ?
+- readback numbers should be definable for each of the incoming extensions
+- deleting a provider breaks external phones...warn? suggest?
+- "forget" interface details option
+- remove "device report" info from interface pages
+- set a more sensible default for analog phone echo canceller size
+- difference between incoming extensions and callgroups should be made clear in the gui
+	- perhaps destinations defined with the same pattern should be treated as improv-callgroups
+- start writing short wiki entries for new features as they are impelemented
 
+general improvements
+- better documentation on codec options (passthru esp.)
+- all data should be accessed with a function, no more direct $config queries
+- multiple vs single displays of a gui element on a page should be generalized, there are 5 wheels here already...
+- translation storage should be generalized and combined with help.inc
+- guiconfig.inc is huge...
 
 sooner
 - fix extensions_exists

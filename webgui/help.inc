@@ -36,7 +36,8 @@ $help = array(
 		
 		"display_incoming_extension_selector" =>
 			"Enter a pattern or a phone number and select a destination extension. ".
-			"If nothing is defined, all calls will be directed to the destination extension.<br>\n".
+			"If a phone number is entered, it will used as the \"read back\" number on unanswered calls. ".
+			"If nothing is entered, all calls will be directed to the destination extension.<br>\n".
 			"<ul>\n".
 			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
 			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
