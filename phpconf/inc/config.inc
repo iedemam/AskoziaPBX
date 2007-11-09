@@ -313,6 +313,7 @@ function convert_config() {
 		// convert incomingextensions to new representation
 		$techs = array("sip", "iax", "isdn", "analog");
 		foreach ($techs as $tech) {
+			if (!isset($config[$tech]['provider'])) continue; // missed this the first time...
 			$n = count($config[$tech]['provider']);
 			for($i = 0; $i < $n; $i++) {
 				$p = &$config[$tech]['provider'][$i];
@@ -327,6 +328,23 @@ function convert_config() {
 		}
 		
 		$config['version'] = "1.3";
+	}
+	
+	/* convert 1.3 -> 1.4 */
+	if ($config['version'] == "1.3") {
+
+		// clean up bug from 1.2 -> 1.3 upgrade
+		$techs = array("sip", "iax", "isdn", "analog");
+		foreach ($techs as $tech) {
+			if (isset($config[$tech]['provider']) && (count($config[$tech]['provider'], COUNT_RECURSIVE) == 1)) {
+				unset($config[$tech]['provider']);
+				if ($g['booting']) {
+					echo "- fixed $tech config\n";
+				}
+			}
+		}
+		
+		$config['version'] = "1.4";
 	}
 	
 	write_config();
