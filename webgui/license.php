@@ -79,6 +79,9 @@ require("guiconfig.inc");
 	script.aculo.us (<a href="http://script.aculo.us" target="_blank">http://script.aculo.us</a>)<br>
 	Copyright (&copy;) 2005, 2006 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)<br>
 	<br>
+	jQuery (<a href="http://jquery.com" target="_blank">http://jquery.com</a>)<br>
+	Copyright (&copy;) 2007 John Resig<br>
+	<br>
 	Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
 	Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)<br>
 	<br>
