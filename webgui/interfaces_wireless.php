@@ -165,7 +165,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = interfaces_wireless_configure();
+			$retval = wireless_configure();
 			$retval = network_lan_configure();
 			config_unlock();
 		}

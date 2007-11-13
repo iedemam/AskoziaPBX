@@ -67,7 +67,7 @@
 	system_resolvconf_generate();
 	
 	/* configure wireless interface */
-	interfaces_wireless_configure();
+	wireless_configure();
 	
 	/* configure loopback interface */
 	network_loopback_configure();

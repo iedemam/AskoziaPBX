@@ -74,8 +74,7 @@ function wireless_get_interfaces() {
 }
 
 
-/* XXX : rename needed */
-function interfaces_wireless_configure() {
+function wireless_configure() {
 	global $config, $g;
 	
 	if (!is_array($config['interfaces']['wireless'])) {
@@ -142,7 +141,7 @@ function interfaces_wireless_configure() {
 		}
 		
 		/* configure encryption (if needed) */
-		interfaces_wireless_configure_encryption();
+		wireless_configure_encryption();
 		
 		/* add interface to LAN bridge */
 		if (!is_array($config['interfaces']['lan']['bridge'])) {
@@ -173,8 +172,8 @@ function interfaces_wireless_configure() {
 	return 0;
 }
 
-/* XXX : rename needed */
-function interfaces_wireless_configure_encryption() {
+
+function wireless_configure_encryption() {
 	global $config, $g;
 	
 	$if = $config['interfaces']['wireless']['if'];
@@ -191,12 +190,12 @@ function interfaces_wireless_configure_encryption() {
 
 		if ($wlcfg['mode'] == "hostap") {
 			/* use WPA in hostap mode */
-			$hostapdcfg = generate_hostapd_config($if, $wlcfg);
+			$hostapdcfg = wireless_generate_hostapd_config($if, $wlcfg);
 			
 			/* write config to temporary file */
 			$fd = fopen("{$g['varetc_path']}/hostapd-$if.conf", "w");
 			if (!$fd) {
-				echo("Error: cannot open hostapd-$if.conf in interfaces_wireless_configure_encryption().\n");
+				echo("Error: cannot open hostapd-$if.conf in wireless_configure_encryption().\n");
 				return 1;
 			}
 	
@@ -229,8 +228,8 @@ function interfaces_wireless_configure_encryption() {
 	}
 }
 
-/* XXX : rename! */
-function generate_hostapd_config($if, $wlcfg) {
+
+function wireless_generate_hostapd_config($if, $wlcfg) {
 	$config = <<<EOD
 interface=$if
 driver=bsd
