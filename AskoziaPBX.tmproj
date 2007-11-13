@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/extensions.inc</string>
+	<string>NOTES</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -16,13 +16,15 @@
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-11-06T18:28:01Z</date>
+			<date>2007-11-12T16:53:08Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-11-06T18:23:09Z</date>
+			<date>2007-11-12T17:53:43Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -82,30 +84,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>1</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
+		</dict>
+		<key>NOTES</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>88</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>2</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>build/asterisk_modules/app_wakeme.c</key>
 		<dict>
@@ -134,48 +134,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>129</integer>
-		</dict>
-		<key>pbxdev.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>266</integer>
-		</dict>
-		<key>phpconf/inc/extensions.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>409</integer>
-		</dict>
-		<key>phpconf/inc/isdn.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>76</integer>
 		</dict>
 		<key>webgui/advanced_manager.php</key>
 		<dict>
@@ -238,14 +196,12 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
-		<string>phpconf/inc/isdn.inc</string>
-		<string>phpconf/inc/extensions.inc</string>
+		<string>NOTES</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{206, 998}, {755, 757}}</string>
+	<string>{{10, 31}, {962, 747}}</string>
 </dict>
 </plist>

@@ -1,4 +1,5 @@
 pb12
+- isdn language not being set correctly
 - nat=yes|no optional an all sip accounts
 - dial timeout options
 - check about dtmf bursts after picking analog phones
