@@ -420,7 +420,12 @@ EOD;
 		$conf .= "; isdn nt interface \"{$interface['name']}\" incoming\n";
 		$conf .= "[isdn-unit-{$interface['unit']}-incoming]\n";
 		foreach ($phones as $p) {
-			$conf .= "exten => _X!/{$p['extension']},1,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+			$phone_lang = "en";
+			if ($p['language']) {
+				$phone_lang = $p['language'];
+			}
+			$conf .= "exten => _X!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
+			$conf .= "exten => _X!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}
@@ -437,8 +442,12 @@ EOD;
 		$conf .= "[isdn-unit-{$interface['unit']}-incoming]\n";
 		foreach ($providers as $p) {
 			// XXX : multiple providers on a single s0 is broken
-			//$conf .= "exten => _X!/{$p['msn']},1,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
-			$conf .= "exten => _X!,1,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+			$provider_lang = "en";
+			if ($p['language']) {
+				$provider_lang = $p['language'];
+			}
+			$conf .= "exten => _X!,1,Set(CHANNEL(language)=$provider_lang)\n";
+			$conf .= "exten => _X!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}

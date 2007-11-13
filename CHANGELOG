@@ -1,5 +1,6 @@
 2007.11.xx - pb12.x
  - bug: outgoing calls are no longer limited to a 20 second ring time (reported by Andreas J)
+ - bug: ISDN phones and providers now have their prompt language set properly (reported by Kai D)
 
 2007.11.09 - pb12.1
  - cleans up errors left by config.xml upgrade bug in pb12 (reported by Carlo L) 
