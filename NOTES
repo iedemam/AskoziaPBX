@@ -3,7 +3,6 @@ pb12
 - dial timeout options
 - check about dtmf bursts after picking analog phones
 - single tone voicemails...
-- dialplan_remove_incomingextensionmap_reference_from_providers is broken ?
 - multiple incoming extensions shouldn't be an option for providers lacking that ability ?
 - readback numbers should be definable for each of the incoming extensions
 - deleting a provider breaks external phones...warn? suggest?

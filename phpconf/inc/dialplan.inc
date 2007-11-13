@@ -185,11 +185,13 @@ function dialplan_remove_incomingextensionmap_reference_from_providers($removed_
 			$a_providers = &$GLOBALS['config'][$tech]['provider'];
 			$n = count($a_providers);
 			for ($i = 0; $i < $n; $i++) {
-				$nn = $a_providers[$i]['incomingextensionmap'];
-				for ($ii = 0; $ii < $nn; $ii++) {
-					if ($a_providers[$i]['incomingextensionmap'][$ii]['destinationid'] == $removed_id) {
-						unset($a_providers[$i]['incomingextensionmap'][$ii]);
-					}	
+				if (is_array($a_providers[$i]['incomingextensionmap'])) {
+					$nn = count($a_providers[$i]['incomingextensionmap']);
+					for ($ii = 0; $ii < $nn; $ii++) {
+						if ($a_providers[$i]['incomingextensionmap'][$ii]['destinationid'] == $removed_id) {
+							unset($a_providers[$i]['incomingextensionmap'][$ii]);
+						}
+					}
 				}
 			}
 		}
