@@ -182,7 +182,7 @@ if ($_POST) {
 <script language="JavaScript">
 <!-- 
 
-<? js_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
+<? javascript_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
 
 //-->
 </script>

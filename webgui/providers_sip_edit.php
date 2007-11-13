@@ -271,7 +271,7 @@ if ($_POST) {
 <script type="text/javascript" charset="utf-8">
 // <![CDATA[
 
-	<? js_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
+	<? javascript_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
 
 	Sortable.create("ace",
 		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});

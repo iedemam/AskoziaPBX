@@ -245,7 +245,7 @@ if ($savemsg)
 
 <?
 foreach ($a_providers as $provider) {
-	js_incoming_extension_selector($provider['incomingextensionmap'], $provider['uniqid']);	
+	javascript_incoming_extension_selector($provider['incomingextensionmap'], $provider['uniqid']);	
 }
 ?>
 

@@ -28,7 +28,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-function js_incoming_extension_selector($current_incomingextensionmap, $multiple=false) {
+function javascript_incoming_extension_selector($current_incomingextensionmap, $multiple=false) {
 	
 	$options[] = array("", "Outgoing Calls Only");
 	$options[] = array("", "");
