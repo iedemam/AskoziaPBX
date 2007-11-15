@@ -441,9 +441,15 @@ function build_oslec() {
 	}
 	_exec("mkdir {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE");
 	
+	// build normal version
 	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean; make");
 	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; cp -p oslec.ko STAGE");
-	// XXX : build mmx enabled version
+
+	// build mmx enabled version
+	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean; make \"MMX=-DUSE_MMX\"");
+	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; cp -p oslec.ko STAGE/mmx_oslec.ko");
+
+	// build and install speedtest
 	_exec("cd {$dirs['packages']}/$oslec_version/user; gmake clean; gmake");
 	_exec("cd {$dirs['packages']}/$oslec_version/user; install -s speedtest /usr/local/bin/oslecspeedtest");
 }
@@ -1075,7 +1081,7 @@ function package($platform, $image_name) {
 	// ...zaptel modules
 	_exec("cp {$dirs['packages']}/$zaptel_version/STAGE/*.ko tmp/stage/boot/kernel/");
 	// ...oslec modules
-	_exec("cp {$dirs['packages']}/$oslec_version/kernel-freebsd/*.ko tmp/stage/boot/kernel/");
+	_exec("cp {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE/*.ko tmp/stage/boot/kernel/");
 	
 	// XXX i4b module
 	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");

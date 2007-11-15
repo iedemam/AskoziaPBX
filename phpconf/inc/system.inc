@@ -419,33 +419,6 @@ function system_console_configure() {
 	}
 }
 
-function system_dmesg_save() {
-	global $g;
-	
-	exec("/sbin/dmesg", $dmesg);
-	
-	/* find last copyright line (output from previous boots may be present) */
-	$lastcpline = 0;
-	
-	for ($i = 0; $i < count($dmesg); $i++) {
-		if (strstr($dmesg[$i], "Copyright (c) 1992-"))
-			$lastcpline = $i;
-	}
-	
-	$fd = fopen("{$g['varlog_path']}/dmesg.boot", "w");
-	if (!$fd) {
-		printf("Error: cannot open dmesg.boot in system_dmesg_save().\n");
-		return 1;
-	}
-	
-	for ($i = $lastcpline; $i < count($dmesg); $i++)
-		fwrite($fd, $dmesg[$i] . "\n");
-	
-	fclose($fd);
-	
-	return 0;
-}
-
 function system_set_harddisk_standby() {
 	global $g, $config;
 
@@ -570,9 +543,68 @@ EOD;
 	return 0;
 }
 
+function system_get_dmesg_as_string() {
+
+	exec("/sbin/dmesg", $dmesg_lines);
+	$n = count($dmesg_lines);
+	
+	/* find last copyright line (output from previous boots may be present) */
+	$lastcpline = 0;
+	for ($i = 0; $i < $n; $i++) {
+		if (strstr($dmesg_lines[$i], "Copyright (c) 1992-")) {
+			$lastcpline = $i;
+		}
+	}
+	
+	$dmesg_string = "";
+	for ($i = $lastcpline; $i < $n; $i++) {
+		$dmesg_string .= $dmesg_lines[$i] . "\n";
+	}
+	
+	return $dmesg_string;
+}
+
+function system_get_dmesg_as_array() {
+	
+	exec("/sbin/dmesg", $dmesg_lines);
+	$n = count($dmesg_lines);
+	
+	/* find last copyright line (output from previous boots may be present) */
+	$lastcpline = 0;
+	for ($i = 0; $i < $n; $i++) {
+		if (strstr($dmesg_lines[$i], "Copyright (c) 1992-")) {
+			$lastcpline = $i;
+		}
+	}
+	
+	$dmesg = array();
+	for ($i = $lastcpline; $i < $n; $i++) {
+		$dmesg[] = $dmesg_lines[$i];
+	}
+	
+	return $dmesg;
+}
+
+function system_supports_mmx() {
+	global $g;
+
+	// Features=0x88a93d<FPU,DE,PSE,TSC,MSR,CX8,SEP,PGE,CMOV,CLFLUSH,MMX>
+	$dmesg = system_get_dmesg_as_string();
+	if (preg_match("/Features.*?<.*MMX.*>/", $dmesg)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function system_load_kernel_modules() {
 	
-	mwexec("/sbin/kldload oslec");
+	if (system_supports_mmx()) {
+		mwexec("/sbin/kldload mmx_oslec");
+	} else {
+		mwexec("/sbin/kldload oslec");
+	}
+
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
