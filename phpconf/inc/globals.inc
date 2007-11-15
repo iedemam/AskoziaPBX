@@ -47,4 +47,67 @@ $g = array(
     "latest_config" => "1.4"
 );
 
+$defaults = array();
+
+$defaults['analog'] = array();
+$defaults['analog']['interface'] = array();
+$defaults['analog']['interface']['name'] = "(unconfigured)";
+$defaults['analog']['interface']['startsignal'] = "ks";
+$defaults['analog']['interface']['echocancel'] = "128";
+$defaults['analog']['loadzone'] = array("us");
+
+$defaults['codec'] = array("ulaw");
+
+$defaults['featuremap'] = array();
+$defaults['featuremap']['attendedtransfer'] = "**";
+$defaults['featuremap']['blindtransfer'] = "##";
+$defaults['featuremap']['featuredigittimeout'] = "500";
+$defaults['featuremap']['atxfernoanswertimeout'] = "15";
+$defaults['featuremap']['transferdigittimeout'] = "3";
+
+$defaults['iax'] = array();
+$defaults['iax']['port'] = "4569";
+$defaults['iax']['provider'] = array();
+$defaults['iax']['provider']['calleridsource'] = "phones";
+
+$defaults['isdn'] = array();
+$defaults['isdn']['interface'] = array();
+$defaults['isdn']['interface']['name'] = "(unconfigured)";
+$defaults['isdn']['law'] = "alaw";
+$defaults['isdn']['nationalprefix'] = "0";
+$defaults['isdn']['internationalprefix'] = "00";
+
+$defaults['parking'] = array();
+$defaults['parking']['parkext'] = "700";
+$defaults['parking']['parkposstart'] = "701";
+$defaults['parking']['parkposend'] = "720";
+$defaults['parking']['parktime'] = "30";
+
+$defaults['rtp'] = array();
+$defaults['rtp']['lowport'] = "10000";
+$defaults['rtp']['highport'] = "20000";
+
+$defaults['sip'] = array();
+$defaults['sip']['port'] = "5060";
+$defaults['sip']['defaultexpiry'] = "120";
+$defaults['sip']['minexpiry'] = "60";
+$defaults['sip']['maxexpiry'] = "3600";
+$defaults['sip']['phone'] = array();
+$defaults['sip']['phone']['calllimit'] = "2";
+$defaults['sip']['phone']['busylimit'] = "1";
+$defaults['sip']['provider'] = array();
+$defaults['sip']['provider']['calleridsource'] = "phones";
+
+$defaults['syslog'] = array();
+$defaults['syslog']['nentries'] = 100;
+
+$defaults['system'] = array();
+$defaults['system']['username'] = "admin";
+$defaults['system']['timezone'] = "Etc/UTC";
+$defaults['system']['timeservers'] = "pool.ntp.org";
+$defaults['system']['timeupdateinterval'] = 300;
+
+$defaults['webgui'] = array();
+$defaults['webgui']['protocol'] = "http";
+
 ?>
