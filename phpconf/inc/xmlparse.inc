@@ -33,7 +33,7 @@
 $listtags = explode(" ", 
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
 	"phone provider codec room dialpattern callgroup groupmember incomingextensionmap " .
-	"isdn-unit ab-unit loadzone bridge application " .
+	"isdn-unit ab-unit storage-disk storage-service loadzone bridge application " .
 	"manager-user read-permission write-permission"
 );
 

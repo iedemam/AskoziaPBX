@@ -1,7 +1,7 @@
 2007.11.xx - 
  - an optimized version of OSLEC will now be loaded if the system supports MMX
 
-2007.11.xx - pb12.x
+2007.11.xx - pb12.2
  - bug: deleting a phone or callgroup no longer ends up in a page hang (reported by Mattijs V)
  - bug: outgoing calls are no longer limited to a 20 second ring time (reported by Andreas J)
  - bug: ISDN phones and providers now have their prompt language set properly (reported by Kai D)

@@ -70,6 +70,7 @@ usr/sbin/ancontrol
 usr/sbin/arp
 usr/sbin/chown
 usr/sbin/chroot
+usr/sbin/diskinfo
 usr/sbin/hostapd
 usr/sbin/isdnconfig
 usr/sbin/isdndecode

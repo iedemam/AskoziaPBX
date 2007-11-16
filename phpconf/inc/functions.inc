@@ -29,18 +29,19 @@
 */
 
 /* include all configuration functions */
+require_once("globals.inc");
 require_once("analog.inc");
 require_once("asterisk.inc");
 require_once("conferencing.inc");
 require_once("config.inc");
 require_once("dialplan.inc");
 require_once("extensions.inc");
-require_once("globals.inc");
 require_once("iax.inc");
 require_once("isdn.inc");
 require_once("network.inc");
 require_once("services.inc");
 require_once("sip.inc");
+require_once("storage.inc");
 require_once("system.inc");
 require_once("util.inc");
 require_once("voicemail.inc");

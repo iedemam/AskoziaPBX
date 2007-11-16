@@ -13,12 +13,19 @@ pb12
 	- perhaps destinations defined with the same pattern should be treated as improv-callgroups
 - start writing short wiki entries for new features as they are impelemented
 
+storage
+- device states: unconfigured, configured, inactive, active, healthy, dirty, clean, mounted, unmounted...?!
+- fs options?
+- ajax format status bar
+- what happens when da0 is recognized as da1 and v.v, how to get a uniqid for each disk
+
 general improvements
 - better documentation on codec options (passthru esp.)
 - all data should be accessed with a function, no more direct $config queries
 - multiple vs single displays of a gui element on a page should be generalized, there are 5 wheels here already...
 - translation storage should be generalized and combined with help.inc
 - guiconfig.inc is huge...
+- searching dmesg output should be put into a function
 
 sooner
 - fix extensions_exists
