@@ -599,12 +599,12 @@ function system_supports_mmx() {
 
 function system_load_kernel_modules() {
 	
-	if (system_supports_mmx()) {
+	/*if (system_supports_mmx()) {
 		mwexec("/sbin/kldload mmx_oslec");
 	} else {
 		mwexec("/sbin/kldload oslec");
-	}
-
+	}*/
+	mwexec("/sbin/kldload oslec");
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
