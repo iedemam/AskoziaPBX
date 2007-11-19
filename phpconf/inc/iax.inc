@@ -30,7 +30,11 @@
 
 require_once("functions.inc");
 
-
+/**
+ * Returns all providers sorted by name.
+ * If no providers are defined, the global array is initialized.
+ * This should be changed to return by reference to eliminate a lot of repetitive code.
+ */
 function iax_get_providers() {
 	global $config;
 	
@@ -42,6 +46,24 @@ function iax_get_providers() {
 	return $config['iax']['provider'];
 }
 
+/**
+ * Sorts providers by name
+ */
+function iax_sort_providers() {
+	global $g, $config;
+
+	usort($config['iax']['provider'], "_iaxprovidercmp");	
+}
+
+/* XXX : replace with "sort_by_name_field" */
+function _iaxprovidercmp($a, $b) {
+	return strcmp($a['name'], $b['name']);
+}
+
+/**
+ * Returns all phones sorted by extension.
+ * If no phones are defined, the global array is initialized.
+ */
 function iax_get_phones() {
 	global $config;
 	
@@ -53,33 +75,70 @@ function iax_get_phones() {
 	return $config['iax']['phone'];
 }
 
+/**
+ * Sorts phones by extension
+ */
+function iax_sort_phones() {
+	global $g, $config;
+
+	usort($config['iax']['phone'], "_iaxphonecmp");	
+}
+
+/* XXX : replace with "sort_by_extension_field" */
+function _iaxphonecmp($a, $b) {
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
+}
+
+/**
+ * Returns a specific phone based on its uniqid
+ */
 function iax_get_phone($uniqid) {
 	global $config, $uniqid_map;
+
 	return $config['iax']['phone'][$uniqid_map[$uniqid]];
 }
 
+/**
+ * Returns an array of all assigned phone extensions
+ */
 function iax_get_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['iax']['phones']))
-		foreach($config['iax']['phones'] as $phone)
+
+	if (is_array($config['iax']['phones'])) {
+		foreach($config['iax']['phones'] as $phone) {
 			$extensions[] = $phone['extension'];
+		}
+	}
 
 	return $extensions;
 }
 
+/**
+ * Returns an array of all assigned provider dialpatterns
+ */
 function iax_get_dialpatterns() {
 	global $config;
 	
 	$dialpatterns = array();
-	if (is_array($config['iax']['provider']))
-		foreach($config['iax']['provider'] as $provider)
+
+	if (is_array($config['iax']['provider'])) {
+		foreach($config['iax']['provider'] as $provider) {
 			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
+		}
+	}
 
 	return $dialpatterns;
 }
 
+/**
+ * Generates iax.conf
+ * XXX : the way in which defaults are used must be normalized
+ */
 function iax_conf_generate() {
 	global $config, $g;
 	
@@ -294,33 +353,11 @@ EOD;
 	return 0;
 }
 
-
+/**
+ * Reloads chan_iax2 to apply newly generated configuration changes
+ */
 function iax_reload() {
-	
 	return asterisk_exec("module reload chan_iax2.so");
-}
-
-
-function iax_sort_phones() {
-	global $g, $config;
-
-	usort($config['iax']['phone'], "_iaxphonecmp");	
-}
-function _iaxphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
-}
-
-
-function iax_sort_providers() {
-	global $g, $config;
-
-	usort($config['iax']['provider'], "_iaxprovidercmp");	
-}
-function _iaxprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
 }
 
 ?>
