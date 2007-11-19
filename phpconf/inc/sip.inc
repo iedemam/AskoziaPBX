@@ -30,7 +30,11 @@
 
 require_once("functions.inc");
 
-
+/**
+ * Returns all providers sorted by name.
+ * If no providers are defined, the global array is initialized.
+ * This should be changed to return by reference to eliminate a lot of repetitive code.
+ */
 function sip_get_providers() {
 	global $config;
 	
@@ -42,6 +46,24 @@ function sip_get_providers() {
 	return $config['sip']['provider'];
 }
 
+/**
+ * Sorts providers by name
+ */
+function sip_sort_providers() {
+	global $g, $config;
+
+	usort($config['sip']['provider'], "_sipprovidercmp");	
+}
+
+/* XXX : replace with "sort_by_name_field" */
+function _sipprovidercmp($a, $b) {
+	return strcmp($a['name'], $b['name']);
+}
+
+/**
+ * Returns all phones sorted by extension.
+ * If no phones are defined, the global array is initialized.
+ */
 function sip_get_phones() {
 	global $config;
 	
@@ -53,33 +75,70 @@ function sip_get_phones() {
 	return $config['sip']['phone'];
 }
 
+/**
+ * Sorts phones by extension
+ */
+function sip_sort_phones() {
+	global $g, $config;
+
+	usort($config['sip']['phone'], "_sipphonecmp");	
+}
+
+/* XXX : replace with "sort_by_extension_field" */
+function _sipphonecmp($a, $b) {
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
+}
+
+/**
+ * Returns a specific phone based on its uniqid
+ */
 function sip_get_phone($uniqid) {
 	global $config, $uniqid_map;
+
 	return $config['sip']['phone'][$uniqid_map[$uniqid]];
 }
 
+/**
+ * Returns an array of all assigned phone extensions
+ */
 function sip_get_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['sip']['phones']))
-		foreach($config['sip']['phones'] as $phone)
+
+	if (is_array($config['sip']['phones'])) {
+		foreach($config['sip']['phones'] as $phone) {
 			$extensions[] = $phone['extension'];
+		}
+	}
 
 	return $extensions;
 }
 
+/**
+ * Returns an array of all assigned provider dialpatterns
+ */
 function sip_get_dialpatterns() {
 	global $config;
 	
 	$dialpatterns = array();
-	if (is_array($config['sip']['provider']))
-		foreach($config['sip']['provider'] as $provider)
+
+	if (is_array($config['sip']['provider'])) {
+		foreach($config['sip']['provider'] as $provider) {
 			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
+		}
+	}
 
 	return $dialpatterns;	
 }
 
+/**
+ * Generates sip.conf
+ * XXX : the way in which defaults are used must be normalized
+ */
 function sip_conf_generate() {
 	global $config, $g;
 	
@@ -304,33 +363,11 @@ EOD;
 	return 0;
 }
 
-
+/**
+ * Reloads chan_sip to apply newly generated configuration changes
+ */
 function sip_reload() {
-	
 	return asterisk_exec("module reload chan_sip.so");
-}
-
-
-function sip_sort_phones() {
-	global $g, $config;
-
-	usort($config['sip']['phone'], "_sipphonecmp");	
-}
-function _sipphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
-}
-
-
-function sip_sort_providers() {
-	global $g, $config;
-
-	usort($config['sip']['provider'], "_sipprovidercmp");	
-}
-function _sipprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
 }
 
 ?>
