@@ -31,7 +31,11 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-
+/**
+ * Returns all providers sorted by name.
+ * If no providers are defined, the global array is initialized.
+ * This should be changed to return by reference to eliminate a lot of repetitive code.
+ */
 function analog_get_providers() {
 	global $config;
 	
@@ -43,11 +47,33 @@ function analog_get_providers() {
 	return $config['analog']['provider'];
 }
 
+/**
+ * Sorts providers by name
+ */
+function analog_sort_providers() {
+	global $g, $config;
+
+	usort($config['analog']['provider'], "_analogprovidercmp");	
+}
+
+/* XXX : replace with "sort_by_name_field" */
+function _analogprovidercmp($a, $b) {
+	return strcmp($a['name'], $b['name']);
+}
+
+/**
+ * Returns a specific provider based on its uniqid
+ */
 function analog_get_provider($uniqid) {
 	global $config, $uniqid_map;
+
 	return $config['analog']['provider'][$uniqid_map[$uniqid]];
 }
 
+/**
+ * Returns all phones sorted by extension.
+ * If no phones are defined, the global array is initialized.
+ */
 function analog_get_phones() {
 	global $config;
 	
@@ -59,38 +85,16 @@ function analog_get_phones() {
 	return $config['analog']['phone'];
 }
 
-function analog_get_phone($uniqid) {
-	global $config, $uniqid_map;
-	return $config['analog']['phone'][$uniqid_map[$uniqid]];
-}
-
-function analog_get_extensions() {
-	global $config;
-	
-	$extensions = array();
-	if (is_array($config['analog']['phones']))
-		foreach($config['analog']['phones'] as $phone)
-			$extensions[] = $phone['extension'];
-
-	return $extensions;
-}
-
-function analog_get_dialpatterns() {
-	global $config;
-	
-	$dialpatterns = array();
-	if (is_array($config['analog']['provider']))
-		foreach($config['analog']['provider'] as $provider)
-			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
-
-	return $dialpatterns;
-}
-
+/**
+ * Sorts phones by extension
+ */
 function analog_sort_phones() {
 	global $g, $config;
 
 	usort($config['analog']['phone'], "_analogphonecmp");	
 }
+
+/* XXX : replace with "sort_by_extension_field" */
 function _analogphonecmp($a, $b) {
     if ($a['extension'] == $b['extension']) {
         return 0;
@@ -98,17 +102,55 @@ function _analogphonecmp($a, $b) {
     return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
+/**
+ * Returns a specific phone based on its uniqid
+ */
+function analog_get_phone($uniqid) {
+	global $config, $uniqid_map;
 
-function analog_sort_providers() {
-	global $g, $config;
-
-	usort($config['analog']['provider'], "_analogprovidercmp");	
+	return $config['analog']['phone'][$uniqid_map[$uniqid]];
 }
-function _analogprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+
+/**
+ * Returns an array of all assigned phone extensions
+ */
+function analog_get_extensions() {
+	global $config;
+	
+	$extensions = array();
+
+	if (is_array($config['analog']['phones'])) {
+		foreach($config['analog']['phones'] as $phone) {
+			$extensions[] = $phone['extension'];
+		}
+	}
+
+	return $extensions;
 }
 
-// XXX multiple cards will still cause problems here
+/**
+ * Returns an array of all assigned provider dialpatterns
+ */
+function analog_get_dialpatterns() {
+	global $config;
+	
+	$dialpatterns = array();
+
+	if (is_array($config['analog']['provider'])) {
+		foreach($config['analog']['provider'] as $provider) {
+			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
+		}
+	}
+
+	return $dialpatterns;
+}
+
+/**
+ * Searches dmesg for recognized a/b modules.
+ * Returns an array indexed by module number containing the module type as value.
+ * XXX : multiple cards will still cause problems here
+ * XXX : should be switched to use new get_dmesg functions
+ */
 function analog_get_recognized_ab_unit_numbers() {
 	global $g;
 
@@ -143,6 +185,11 @@ function analog_get_recognized_ab_unit_numbers() {
 	return $controllers;
 }
 
+/**
+ * Returns all configured a/b units sorted by unit number.
+ * If no units are configured, the global array is initialized.
+ * XXX : should be switched to return both recognized and configured units
+ */
 function analog_get_ab_interfaces() {
 	global $config;
 	
@@ -154,9 +201,31 @@ function analog_get_ab_interfaces() {
 	return $config['interfaces']['ab-unit'];
 }
 
+/**
+ * Sorts a/b units by unit number
+ */
+function analog_sort_ab_interfaces() {
+	global $config;
+
+	usort($config['interfaces']['ab-unit'], "_abinterfacescmp");	
+}
+
+/* XXX : replace with "sort_by_unit_field" */
+function _abinterfacescmp($a, $b) {
+
+    if ($a['unit'] == $b['unit']) {
+        return 0;
+    }
+    return ($a['unit'] < $b['unit']) ? -1 : 1;
+}
+
+/**
+ * Returns an a/b unit based on its unit number
+ */
 function analog_get_ab_interface($unit) {
 	
 	$interfaces = analog_get_ab_interfaces();
+
 	foreach ($interfaces as $interface) {
 		if ($interface['unit'] == $unit) {
 			return $interface;
@@ -164,38 +233,22 @@ function analog_get_ab_interface($unit) {
 	}
 }
 
-function analog_sort_ab_interfaces() {
-	global $config;
-
-	usort($config['interfaces']['ab-unit'], "_abinterfacescmp");	
-}
-function _abinterfacescmp($a, $b) {
-    if ($a['unit'] == $b['unit']) {
-        return 0;
-    }
-    return ($a['unit'] < $b['unit']) ? -1 : 1;
-}
-
-function analog_configure() {	
-	if(!count(analog_get_recognized_ab_unit_numbers())) {
-		return 0;
-	}
-	$res = 0;
-	$res |= mwexec("/usr/local/bin/ztcfg");
-	return $res;
-}
-
-function analog_reload() {
-	return asterisk_exec("module reload chan_zap.so");
-}
-
+/**
+ * Generates all configuration files necessary when changes are made.
+ */
 function analog_conf_generate() {
+
 	$res = 0;
 	$res |= analog_zaptel_conf_generate();
 	$res |= analog_zapata_conf_generate();
+
 	return $res;
 }
 
+/**
+ * Generates zaptel.conf which defines modules, signaling and loadzones.
+ * XXX : fx___= lines could probably be generated much more intelligently
+ */
 function analog_zaptel_conf_generate() {
 	global $config, $g;
 
@@ -295,6 +348,9 @@ function analog_zaptel_conf_generate() {
 	
 }
 
+/**
+ * Generates zapata.conf which defines modules, signaling, ec options, busy detection etc.
+ */
 function analog_zapata_conf_generate() {
 	global $config, $g;
 
@@ -378,6 +434,25 @@ function analog_zapata_conf_generate() {
 	return 0;
 }
 
+/**
+ * Executes ztcfg to apply newly generated configuration changes, returns if no a/b units are present.
+ */
+function analog_configure() {
 
+	if(!count(analog_get_recognized_ab_unit_numbers())) {
+		return 0;
+	}
+	$res = 0;
+	$res |= mwexec("/usr/local/bin/ztcfg");
+
+	return $res;
+}
+
+/**
+ * Reloads chan_zap to apply newly generated configuration changes
+ */
+function analog_reload() {
+	return asterisk_exec("module reload chan_zap.so");
+}
 
 ?>
