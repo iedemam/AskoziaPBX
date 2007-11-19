@@ -31,23 +31,11 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-/*
-	isdnconfig - configure ISDN4BSD, version 1.6.0, compiled Jul  9 2007 16:34:01
-	usage:  isdnconfig -u <unit> -i <number> -p <protocol> [parameters]
-		-u unit         set controller unit (default is zero)
-		-c channel      set channel number (default is zero)
-		-p enum         set D-channel protocol
-		-i value        set D-channel serial number
-		-a              activate PH-line
-		-D              deactivate PH-line
-		-t              set TE-mode
-		-n              set NT-mode
-		-r              reset device
-		-m              set PCM cable unit (default is zero)
-		-E enum         display information about enum
-
-*/
-
+/**
+ * Returns all providers sorted by name.
+ * If no providers are defined, the global array is initialized.
+ * This should be changed to return by reference to eliminate a lot of repetitive code.
+ */
 function isdn_get_providers() {
 	global $config;
 	
@@ -59,6 +47,24 @@ function isdn_get_providers() {
 	return $config['isdn']['provider'];
 }
 
+/**
+ * Sorts providers by name
+ */
+function isdn_sort_providers() {
+	global $g, $config;
+
+	usort($config['isdn']['provider'], "_isdnprovidercmp");	
+}
+
+/* XXX : replace with "sort_by_name_field" */
+function _isdnprovidercmp($a, $b) {
+	return strcmp($a['name'], $b['name']);
+}
+
+/**
+ * Returns all phones sorted by extension.
+ * If no phones are defined, the global array is initialized.
+ */
 function isdn_get_phones() {
 	global $config;
 	
@@ -70,38 +76,16 @@ function isdn_get_phones() {
 	return $config['isdn']['phone'];
 }
 
-function isdn_get_phone($uniqid) {
-	global $config, $uniqid_map;
-	return $config['isdn']['phone'][$uniqid_map[$uniqid]];
-}
-
-function isdn_get_extensions() {
-	global $config;
-	
-	$extensions = array();
-	if (is_array($config['isdn']['phones']))
-		foreach($config['isdn']['phones'] as $phone)
-			$extensions[] = $phone['extension'];
-
-	return $extensions;
-}
-
-function isdn_get_dialpatterns() {
-	global $config;
-	
-	$dialpatterns = array();
-	if (is_array($config['isdn']['provider']))
-		foreach($config['isdn']['provider'] as $provider)
-			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
-
-	return $dialpatterns;
-}
-
+/**
+ * Sorts phones by extension
+ */
 function isdn_sort_phones() {
 	global $g, $config;
 
 	usort($config['isdn']['phone'], "_isdnphonecmp");	
 }
+
+/* XXX : replace with "sort_by_extension_field" */
 function _isdnphonecmp($a, $b) {
     if ($a['extension'] == $b['extension']) {
         return 0;
@@ -109,16 +93,54 @@ function _isdnphonecmp($a, $b) {
     return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
+/**
+ * Returns a specific phone based on its uniqid
+ */
+function isdn_get_phone($uniqid) {
+	global $config, $uniqid_map;
 
-function isdn_sort_providers() {
-	global $g, $config;
-
-	usort($config['isdn']['provider'], "_isdnprovidercmp");	
+	return $config['isdn']['phone'][$uniqid_map[$uniqid]];
 }
-function _isdnprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+
+/**
+ * Returns an array of all assigned phone extensions
+ */
+function isdn_get_extensions() {
+	global $config;
+	
+	$extensions = array();
+
+	if (is_array($config['isdn']['phones'])) {
+		foreach($config['isdn']['phones'] as $phone) {
+			$extensions[] = $phone['extension'];
+		}
+	}
+
+	return $extensions;
 }
 
+/**
+ * Returns an array of all assigned provider dialpatterns
+ */
+function isdn_get_dialpatterns() {
+	global $config;
+	
+	$dialpatterns = array();
+
+	if (is_array($config['isdn']['provider'])) {
+		foreach($config['isdn']['provider'] as $provider) {
+			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
+		}
+	}
+
+	return $dialpatterns;
+}
+
+/**
+ * Searches dmesg for recognized ISDN units.
+ * Returns an array indexed by module number.
+ * XXX : should be switched to use new get_dmesg functions
+ */
 function isdn_get_recognized_unit_numbers() {
 	global $g;
 	
@@ -144,6 +166,11 @@ function isdn_get_recognized_unit_numbers() {
 	return $controllers;
 }
 
+/**
+ * Returns all configured ISDN units sorted by unit number.
+ * If no units are configured, the global array is initialized.
+ * XXX : should be switched to return both recognized and configured units
+ */
 function isdn_get_interfaces() {
 	global $config;
 	
@@ -155,6 +182,41 @@ function isdn_get_interfaces() {
 	return $config['interfaces']['isdn-unit'];
 }
 
+/**
+ * Sorts ISDN units by unit number
+ */
+function isdn_sort_interfaces() {
+	global $config;
+
+	usort($config['interfaces']['isdn-unit'], "_isdninterfacescmp");	
+}
+
+/* XXX : replace with "sort_by_unit_field" */
+function _isdninterfacescmp($a, $b) {
+    if ($a['unit'] == $b['unit']) {
+        return 0;
+    }
+    return ($a['unit'] < $b['unit']) ? -1 : 1;
+}
+
+/**
+ * Returns an ISDN unit based on its unit number
+ */
+function isdn_get_interface($unit) {
+	
+	$interfaces = isdn_get_interfaces();
+
+	foreach ($interfaces as $interface) {
+		if ($interface['unit'] == $unit) {
+			return $interface;
+		}
+	}
+}
+
+/**
+ * Returns all "NT" configured ISDN units
+ * If no units are configured, an empty array is returned
+ */
 function isdn_get_nt_interfaces() {
 	
 	$interfaces = isdn_get_interfaces();
@@ -170,6 +232,10 @@ function isdn_get_nt_interfaces() {
 	return $nt_interfaces;
 }
 
+/**
+ * Returns all "TE" configured ISDN units
+ * If no units are configured, an empty array is returned
+ */
 function isdn_get_te_interfaces() {
 	
 	$interfaces = isdn_get_interfaces();
@@ -185,6 +251,10 @@ function isdn_get_te_interfaces() {
 	return $te_interfaces;
 }
 
+/**
+ * Returns all phones associated with a particular ISDN unit
+ * If no phones are associated with the supplied unit, an empty array is returned
+ */
 function isdn_get_phones_on_unit($unit_number) {
 	
 	$phones = isdn_get_phones();
@@ -200,6 +270,10 @@ function isdn_get_phones_on_unit($unit_number) {
 	return $unit_phones;
 }
 
+/**
+ * Returns all providers associated with a particular ISDN unit
+ * If no providers are associated with the supplied unit, an empty array is returned
+ */
 function isdn_get_providers_on_unit($unit_number) {
 	
 	$providers = isdn_get_providers();
@@ -215,64 +289,9 @@ function isdn_get_providers_on_unit($unit_number) {
 	return $unit_providers;
 }
 
-function isdn_get_interface($unit) {
-	
-	$interfaces = isdn_get_interfaces();
-	foreach ($interfaces as $interface) {
-		if ($interface['unit'] == $unit) {
-			return $interface;
-		}
-	}
-}
-
-function isdn_sort_interfaces() {
-	global $config;
-
-	usort($config['interfaces']['isdn-unit'], "_isdninterfacescmp");	
-}
-function _isdninterfacescmp($a, $b) {
-    if ($a['unit'] == $b['unit']) {
-        return 0;
-    }
-    return ($a['unit'] < $b['unit']) ? -1 : 1;
-}
-
-function isdn_configure() {
-	
-	$res = 0;
-	$interfaces = isdn_get_interfaces();
-	foreach ($interfaces as $interface) {
-		
-		$command = "/usr/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
-		
-		if ($interface['pcmmaster']) {
-			$command .= " pcm_master";
-		} else {
-			$command .= " pcm_slave";
-		}
-		
-		if ($interface['nopwrsave']) {
-			$command .= " power_on";
-		} else {
-			$command .= " pwr_save";
-		}
-		
-		if ($interface['pollmode']) {
-			$command .= " poll_mode";
-		} else {
-			$command .= " intr_mode";
-		}
-		
-		$res |= mwexec($command);
-	}
-
-	return $res;
-}
-
-function isdn_reload() {
-	return asterisk_exec("module reload chan_capi.so");
-}
-
+/**
+ * Generates capi.conf
+ */
 function isdn_conf_generate() {
 	global $config, $g;
 	
@@ -403,5 +422,46 @@ EOD;
 	return 0;
 }
 
+/**
+ * Executes isdnconfig to apply newly generated configuration changes
+ */
+function isdn_configure() {
+	
+	$res = 0;
+	$interfaces = isdn_get_interfaces();
+	foreach ($interfaces as $interface) {
+		
+		$command = "/usr/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
+		
+		if ($interface['pcmmaster']) {
+			$command .= " pcm_master";
+		} else {
+			$command .= " pcm_slave";
+		}
+		
+		if ($interface['nopwrsave']) {
+			$command .= " power_on";
+		} else {
+			$command .= " pwr_save";
+		}
+		
+		if ($interface['pollmode']) {
+			$command .= " poll_mode";
+		} else {
+			$command .= " intr_mode";
+		}
+		
+		$res |= mwexec($command);
+	}
+
+	return $res;
+}
+
+/**
+ * Reloads chan_capi to apply newly generated configuration changes
+ */
+function isdn_reload() {
+	return asterisk_exec("module reload chan_capi.so");
+}
 
 ?>
