@@ -30,6 +30,10 @@
 
 require_once("functions.inc");
 
+/**
+ * Returns all phones sorted by extension.
+ * If no phones are defined, the global array is initialized.
+ */
 function external_get_phones() {
 	global $config;
 	
@@ -41,16 +45,16 @@ function external_get_phones() {
 	return $config['external']['phone'];
 }
 
-function external_get_phone($uniqid) {
-	global $config, $uniqid_map;
-	return $config['external']['phone'][$uniqid_map[$uniqid]];
-}
-
+/**
+ * Sorts phones by extension
+ */
 function external_sort_phones() {
 	global $g, $config;
 
 	usort($config['external']['phone'], "_extphonecmp");	
 }
+
+/* XXX : replace with "sort_by_extension_field" */
 function _extphonecmp($a, $b) {
     if ($a['extension'] == $b['extension']) {
         return 0;
@@ -58,18 +62,36 @@ function _extphonecmp($a, $b) {
     return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
+/**
+ * Returns a specific phone based on its uniqid
+ */
+function external_get_phone($uniqid) {
+	global $config, $uniqid_map;
+
+	return $config['external']['phone'][$uniqid_map[$uniqid]];
+}
+
+/**
+ * Returns an array of all assigned phone extensions
+ */
 function external_get_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['external']['phones']))
-		foreach($config['external']['phones'] as $phone)
+
+	if (is_array($config['external']['phones'])) {
+		foreach($config['external']['phones'] as $phone) {
 			$extensions[] = $phone['extension'];
+		}
+	}
 
 	return $extensions;
 }
 
-
+/**
+ * Responsible for generating extensions.conf, the entire system's dialplan
+ * XXX : this is huge and needs a rewrite so some flexibility is possible
+ */
 function extensions_conf_generate() {
 	global $config, $g, $uniqid_map;
 	
@@ -459,6 +481,10 @@ EOD;
 	return 0;
 }
 
+/**
+ * Adds a "Notifications" line containing the user's e-mail address
+ * if configured. If not, this channel variable is set to "no"
+ */
 function _extensions_add_sendnotifications_line($exten, $phone) {
 
 	if ($phone['voicemailbox'] && isset($phone['sendcallnotifications'])) {
@@ -470,6 +496,9 @@ function _extensions_add_sendnotifications_line($exten, $phone) {
 	return $dial;
 }
 
+/**
+ * Generates parking lot hint entries
+ */
 function _extensions_generate_parkinglot() {
 	global $config;
 	
@@ -489,7 +518,11 @@ function _extensions_generate_parkinglot() {
 	return $conf;
 }
 
-
+/**
+ * Reloads dialplan to apply newly generated configuration changes
+ */
 function extensions_reload() {
 	return asterisk_exec("dialplan reload");
 }
+
+?>
