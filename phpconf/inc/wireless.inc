@@ -1,9 +1,11 @@
 <?php
 /*
 	$Id: network.inc 200 2007-09-24 12:26:27Z michael.iedema $
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -31,8 +33,10 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-/* returns a list of wireless interfaces with MAC addresses
-   - skips VLAN and other virtual interfaces */
+/**
+ * Returns a list of wireless interfaces with MAC addresses
+ * - skips VLAN and other virtual interfaces
+ */
 function wireless_get_interfaces() {
 	
 	global $g;
@@ -73,7 +77,9 @@ function wireless_get_interfaces() {
 	return $iflist;
 }
 
-
+/**
+ * Configures the wireless interface and adds it to the LAN bridge.
+ */
 function wireless_configure() {
 	global $config, $g;
 	
@@ -172,7 +178,10 @@ function wireless_configure() {
 	return 0;
 }
 
-
+/**
+ * Applies wireless encryption settings. Currently, AskoziaPBX only
+ * uses hostap mode.
+ */
 function wireless_configure_encryption() {
 	global $config, $g;
 	
@@ -228,7 +237,9 @@ function wireless_configure_encryption() {
 	}
 }
 
-
+/**
+ * Generates and returns a hostapd configuration file
+ */
 function wireless_generate_hostapd_config($if, $wlcfg) {
 	$config = <<<EOD
 interface=$if
@@ -278,3 +289,5 @@ EOD;
 	
 	return $config;
 }
+
+?>
