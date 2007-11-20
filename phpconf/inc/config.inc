@@ -1,9 +1,11 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -217,7 +219,9 @@ EOD;
 
 }
 
-/* mount flash card read/write */
+/**
+ * Mounts the flash card read/write
+ */
 function conf_mount_rw() {
 	global $g;
 
@@ -227,7 +231,9 @@ function conf_mount_rw() {
 	mwexec("/sbin/mount -w -o noatime {$g['cf_path']}");
 }
 
-/* mount flash card read only */
+/**
+ * Mounts the flash card read only
+ */
 function conf_mount_ro() {
 	global $g;
 	
@@ -235,7 +241,9 @@ function conf_mount_ro() {
 	mwexec("/sbin/mount -r {$g['cf_path']}");
 }
 
-/* convert configuration, if necessary */
+/**
+ * Converts the configuration structure if updates require.
+ */
 function convert_config() {
 	global $config, $g;
 	
@@ -353,7 +361,9 @@ function convert_config() {
 		echo "done\n";
 }
 
-/* save the system configuration */
+/**
+ * Saves the system configuration and uniqid mapping
+ */
 function write_config() {
 
 	global $config, $g;
@@ -403,6 +413,10 @@ function write_config() {
 	config_unlock();
 }
 
+/**
+ * Builds a mapping of uniqids to their array offsets to speed up element lookups
+ * XXX : should be reimplemented to use a global tech array
+ */
 function config_build_uniqid_map($config) {
 
 	// sip
@@ -472,6 +486,9 @@ function config_build_uniqid_map($config) {
 	return $uniqid_map;
 }
 
+/**
+ * Overwrites the existing config.xml file with factory default values.
+ */
 function reset_factory_defaults() {
 	
 	global $g;
@@ -503,6 +520,9 @@ function reset_factory_defaults() {
 	return 0;
 }
 
+/**
+ * Installs the specified configuration file into the global "conf path"
+ */
 function config_install($conffile) {
 
 	global $config, $g;
@@ -524,6 +544,9 @@ function config_install($conffile) {
 	return 0;
 }
 
+/**
+ * Performs an XML validation of the configuration file.
+ */
 function config_validate($conffile) {
 
 	global $g, $xmlerr;
@@ -550,8 +573,10 @@ function config_validate($conffile) {
 	return true;
 }
 
-/* lock configuration file, decide that the lock file is stale after
-   10 seconds */
+/**
+ * Locks access to the configuration file.
+ * Lock is invalidated after 10 seconds.
+ */
 function config_lock() {
 	
 	global $g;
@@ -573,7 +598,9 @@ function config_lock() {
 	}
 }
 
-/* unlock configuration file */
+/**
+ * Unlocks access to the configuration file
+ */
 function config_unlock() {
 	
 	global $g;
