@@ -1,9 +1,11 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -31,7 +33,11 @@
 /* include all configuration functions */
 require_once("functions.inc");
 	
-	
+/**
+ * Generates resolv.conf
+ * XXX : this needs to be cleaned up, leftovers still here from m0n0wall trim down
+ * XXX : is $havedns being set correctly?
+ */
 function system_resolvconf_generate($dynupdate = false) {
 	global $config, $g;
 	
@@ -61,6 +67,9 @@ function system_resolvconf_generate($dynupdate = false) {
 	return 0;
 }
 
+/**
+ * Generates a hosts file containing localhost and hostname entries
+ */
 function system_hosts_generate() {
 	global $config, $g;
 	
@@ -85,6 +94,9 @@ EOD;
 	return 0;
 }
 
+/**
+ * Applies system hostname
+ */
 function system_hostname_configure() {
 	global $config, $g;
 	
@@ -95,6 +107,10 @@ function system_hostname_configure() {
 		escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 }
 
+/**
+ * Configures systems static routes
+ * XXX : static routes would still be nice to have
+ */
 function system_routing_configure() {
 	global $config, $g;
 	
@@ -136,12 +152,20 @@ function system_routing_configure() {
 	return 0;
 }
 
+/**
+ * Turns ip forwarding on
+ */
 function system_routing_enable() {
 	global $config, $g;
 	
 	return mwexec("/sbin/sysctl net.inet.ip.forwarding=1");
 }
 
+/**
+ * Generates syslog.conf and (re)starts the syslog daemon
+ * XXX : this generator should replace the static syslog.conf file still
+ *       present in the svn tree
+ */
 function system_syslogd_start() {
 	global $config, $g;
 	
@@ -198,6 +222,9 @@ EOD;
 	return $retval;
 }
 
+/**
+ * Configures and (re)starts the mini_httpd process
+ */
 function system_webgui_start() {
 	global $config, $g;
 	
@@ -290,6 +317,10 @@ EOD;
 	return $res;
 }
 
+/**
+ * Generates htpasswd
+ * XXX : still contains "local user manager" which should still be reimplemented
+ */
 function system_password_configure() {
 	global $config, $g;
 	
@@ -319,6 +350,9 @@ function system_password_configure() {
 	return 0;
 }
 
+/**
+ * Decompresses timezone entries and stores them in /etc/localtime
+ */
 function system_timezone_configure() {
 	global $config, $g;
 
@@ -339,6 +373,9 @@ function system_timezone_configure() {
 		echo "done\n";
 }
 
+/**
+ * Configures and (re)starts msntp
+ */
 function system_ntp_configure() {
 	global $config, $g;
 
@@ -373,6 +410,10 @@ function system_ntp_configure() {
 		echo "done\n";
 }
 
+/**
+ * Reboots the system after calling system_reboot_cleanup()
+ * XXX : difference between system_reboot_sync() and system_reboot() ?
+ */
 function system_reboot() {
 	global $g;
 	
@@ -381,6 +422,10 @@ function system_reboot() {
 	mwexec("nohup /etc/rc.reboot > /dev/null 2>&1 &");
 }
 
+/**
+ * Reboots the system after calling system_reboot_cleanup()
+ * XXX : difference between system_reboot_sync() and system_reboot() ?
+ */
 function system_reboot_sync() {
 	global $g;
 	
@@ -389,10 +434,18 @@ function system_reboot_sync() {
 	mwexec("/etc/rc.reboot > /dev/null 2>&1");
 }
 
+/**
+ * Placeholder function for future cleanup() functions to be executed
+ * before restarting
+ */
 function system_reboot_cleanup() {
 
 }
 
+/**
+ * Executes commands from config.xml defined as shellcmd or earlyshellcmd 
+ * entries upon boot
+ */
 function system_do_shell_commands($early = 0) {
 	global $config, $g;
 	
@@ -409,6 +462,9 @@ function system_do_shell_commands($early = 0) {
 	}
 }
 
+/**
+ * (En|Dis)able the system console
+ */
 function system_console_configure() {
 	global $config, $g;
 	
@@ -419,6 +475,11 @@ function system_console_configure() {
 	}
 }
 
+/**
+ * Set hard disk standby time
+ * XXX : should perhaps be replaced with newer bits in m0n0wall from r213
+ *       http://svn.m0n0.ch/wsvn/wall/branches/?rev=213
+ */
 function system_set_harddisk_standby() {
 	global $g, $config;
 
@@ -447,6 +508,10 @@ function system_set_harddisk_standby() {
 	}
 }
 
+/**
+ * Sets termcap
+ * XXX : doesn't seem to be working / understood when dealing with zttool
+ */
 function system_set_termcap() {
 	global $config;
 	
@@ -514,6 +579,10 @@ EOD;
 	return 0;
 }
 
+/**
+ * Checks to see if the wrap reset button was pressed and held for 2 seconds
+ * on boot. If so, factory defaults will be restored and the system restarted.
+ */
 function system_check_reset_button() {
 	global $config, $g;
 
@@ -543,6 +612,9 @@ EOD;
 	return 0;
 }
 
+/**
+ * Returns most recent dmesg contents as a single string
+ */
 function system_get_dmesg_as_string() {
 
 	exec("/sbin/dmesg", $dmesg_lines);
@@ -564,6 +636,9 @@ function system_get_dmesg_as_string() {
 	return $dmesg_string;
 }
 
+/**
+ * Returns most recent dmesg contents as an array of its lines
+ */
 function system_get_dmesg_as_array() {
 	
 	exec("/sbin/dmesg", $dmesg_lines);
@@ -585,6 +660,9 @@ function system_get_dmesg_as_array() {
 	return $dmesg;
 }
 
+/**
+ * Parses dmesg output to determine if this system supports MMX extensions
+ */
 function system_supports_mmx() {
 	global $g;
 
@@ -597,6 +675,9 @@ function system_supports_mmx() {
 	}
 }
 
+/**
+ * Loads required kernel modules
+ */
 function system_load_kernel_modules() {
 	
 	/*if (system_supports_mmx()) {
