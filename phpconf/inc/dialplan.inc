@@ -30,7 +30,11 @@
 
 require_once("functions.inc");
 
-
+/**
+ * Returns all callgroups sorted by name.
+ * If no callgroups are defined, the global array is initialized.
+ * This should be changed to return by reference to eliminate a lot of repetitive code.
+ */
 function dialplan_get_callgroups() {
 	global $config;
 	
@@ -42,31 +46,52 @@ function dialplan_get_callgroups() {
 	return $config['dialplan']['callgroup'];
 }
 
-function dialplan_get_callgroup($uniqid) {
-	global $config, $uniqid_map;
-	return $config['dialplan']['callgroup'][$uniqid_map[$uniqid]];
-}
-
+/**
+ * Sorts callgroups by name
+ */
 function dialplan_sort_callgroups() {
 	global $config;
 
 	usort($config['dialplan']['callgroup'], "_dpcallgroupcmp");	
 }
+
+/* XXX : replace with "sort_by_name_field" */
 function _dpcallgroupcmp($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
+/**
+ * Returns a specific callgroup based on its uniqid
+ */
+function dialplan_get_callgroup($uniqid) {
+	global $config, $uniqid_map;
+
+	return $config['dialplan']['callgroup'][$uniqid_map[$uniqid]];
+}
+
+/**
+ * Returns an array of all assigned callgroup extensions
+ * XXX : an isset check may be missing here on 'extension'
+ */
 function dialplan_get_callgroup_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['dialplan']['callgroup']))
-		foreach($config['dialplan']['callgroup'] as $group)
+
+	if (is_array($config['dialplan']['callgroup'])) {
+		foreach($config['dialplan']['callgroup'] as $group) {
 			$extensions[] = $group['extension'];
+		}
+	}
 
 	return $extensions;
 }
 
+/**
+ * Returns all applications sorted by extension.
+ * If no applications are defined, the global array is initialized.
+ * This should be changed to return by reference to eliminate a lot of repetitive code.
+ */
 function dialplan_get_applications() {
 	global $config;
 	
@@ -78,16 +103,16 @@ function dialplan_get_applications() {
 	return $config['dialplan']['application'];
 }
 
-function dialplan_get_application($uniqid) {
-	global $config, $uniqid_map;
-	return $config['dialplan']['application'][$uniqid_map[$uniqid]];
-}
-
+/**
+ * Sorts applications by extension
+ */
 function dialplan_sort_applications() {
 	global $config;
 
 	usort($config['dialplan']['application'], "_dpapplicationcmp");	
 }
+
+/* XXX : replace with "sort_by_extension_field" */
 function _dpapplicationcmp($a, $b) {
 	if ($a['extension'] == $b['extension']) {
         return 0;
@@ -95,17 +120,35 @@ function _dpapplicationcmp($a, $b) {
     return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
+/**
+ * Returns a specific application based on its uniqid
+ */
+function dialplan_get_application($uniqid) {
+	global $config, $uniqid_map;
+
+	return $config['dialplan']['application'][$uniqid_map[$uniqid]];
+}
+
+/**
+ * Returns an array of all assigned application extensions
+ */
 function dialplan_get_application_extensions() {
 	global $config;
 	
 	$extensions = array();
-	if (is_array($config['dialplan']['application']))
-		foreach($config['dialplan']['application'] as $app)
+
+	if (is_array($config['dialplan']['application'])) {
+		foreach($config['dialplan']['application'] as $app) {
 			$extensions[] = $app['extension'];
+		}
+	}
 
 	return $extensions;
 }
 
+/**
+ * Generates features.conf which contains call parking, transfer settings and feature maps
+ */
 function dialplan_features_conf_generate() {
 	global $config;
 	
@@ -154,6 +197,10 @@ function dialplan_features_conf_generate() {
 	return 0;
 }
 
+/**
+ * Removes references to a provider from phone elements
+ * XXX : should be reimplemented to utilize a global tech array
+ */
 function dialplan_remove_provider_reference_from_phones($removed_id) {
 	
 	$technologies = array("sip", "iax", "isdn", "analog");
@@ -176,6 +223,10 @@ function dialplan_remove_provider_reference_from_phones($removed_id) {
 	}
 }
 
+/**
+ * Removes references to an incoming extension mapping from provider elements
+ * XXX : should be reimplemented to utilize a global tech array
+ */
 function dialplan_remove_incomingextensionmap_reference_from_providers($removed_id) {
 	
 	$technologies = array("sip", "iax", "isdn", "analog");
@@ -198,6 +249,9 @@ function dialplan_remove_incomingextensionmap_reference_from_providers($removed_
 	}	
 }
 
+/**
+ * Parses out elements for a dialstring from the given pattern.
+ */
 function dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten) {
 
 	$prefix = $offset = "";
@@ -214,6 +268,9 @@ function dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten) {
 	}
 }
 
+/**
+ * Reloads res_features to apply newly generated configuration changes
+ */
 function dialplan_features_reload() {
 	return asterisk_exec("module reload res_features.so");
 }
