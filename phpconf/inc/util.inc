@@ -1,9 +1,11 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -28,30 +30,40 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-/* kill a process by pid file */
+/**
+ * Kills a process by pid file
+ */
 function killbypid($pidfile) {
 	sigkillbypid($pidfile, "TERM");
 	unlink_if_exists($pidfile);
 }
 
-/* sigkill a process by pid file */
+/**
+ * Sigkills a process by pid file 
+ */
 function sigkillbypid($pidfile, $sig) {
 	if (file_exists($pidfile)) {
 		mwexec("/bin/kill -s $sig `/bin/cat " . $pidfile . "`");
 	}
 }
 
-/* kill a process by name */
+/**
+ * Kills a process by name
+ */
 function killbyname($procname) {
 	return mwexec("/usr/bin/killall " . escapeshellarg($procname));
 }
 
-/* kill a process by name */
+/**
+ * Kills a process by name
+ */
 function sigkillbyname($procname, $sig) {
 	return mwexec("/usr/bin/killall -{$sig} " . escapeshellarg($procname));
 }
 
-/* return the subnet address given a host address and a subnet bit count */
+/**
+ * Returns the subnet address given a host address and a subnet bit count
+ */
 function gen_subnet($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
@@ -59,7 +71,10 @@ function gen_subnet($ipaddr, $bits) {
 	return long2ip(ip2long($ipaddr) & gen_subnet_mask_long($bits));
 }
 
-/* return the highest (broadcast) address in the subnet given a host address and a subnet bit count */
+/**
+ * return the highest (broadcast) address in the subnet given a host address 
+ * and a subnet bit count
+ */
 function gen_subnet_max($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
@@ -67,7 +82,9 @@ function gen_subnet_max($ipaddr, $bits) {
 	return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
 }
 
-/* returns a subnet mask (long given a bit count) */
+/**
+ * Returns a subnet mask (long given a bit count)
+ */
 function gen_subnet_mask_long($bits) {
 	$sm = 0;
 	for ($i = 0; $i < $bits; $i++) {
@@ -77,16 +94,23 @@ function gen_subnet_mask_long($bits) {
 	return $sm;
 }
 
-/* same as above but returns a string */
+/**
+ * Same as gen_subnet_mask_long but returns a string
+ */
 function gen_subnet_mask($bits) {
 	return long2ip(gen_subnet_mask_long($bits));
 }
 
+/**
+ * Verifies input as being a numeric integer
+ */
 function is_numericint($arg) {
 	return (preg_match("/[^0-9]/", $arg) ? false : true);
 }
 
-/* returns true if $ipaddr is a valid dotted IPv4 address */
+/**
+ * Returns true if $ipaddr is a valid dotted IPv4 address
+ */
 function is_ipaddr($ipaddr) {
 	if (!is_string($ipaddr))
 		return false;
@@ -100,7 +124,9 @@ function is_ipaddr($ipaddr) {
 		return false;
 }
 
-/* returns true if $subnet is a valid subnet in CIDR format */
+/**
+ * Returns true if $subnet is a valid subnet in CIDR format
+ */
 function is_subnet($subnet) {
 	if (!is_string($subnet))
 		return false;
@@ -116,7 +142,9 @@ function is_subnet($subnet) {
 	return true;
 }
 
-/* returns true if $hostname is a valid hostname */
+/**
+ * Returns true if $hostname is a valid hostname
+ */
 function is_hostname($hostname) {
 	if (!is_string($hostname))
 		return false;
@@ -127,7 +155,9 @@ function is_hostname($hostname) {
 		return false;
 }
 
-/* returns true if $domain is a valid domain name */
+/**
+ * Returns true if $domain is a valid domain name
+ */
 function is_domain($domain) {
 	if (!is_string($domain))
 		return false;
@@ -138,7 +168,9 @@ function is_domain($domain) {
 		return false;
 }
 
-/* returns true if $uname is a valid DynDNS username */
+/**
+ * Returns true if $uname is a valid DynDNS username
+ */
 function is_dyndns_username($uname) {
 	if (!is_string($uname))
 		return false;
@@ -149,7 +181,9 @@ function is_dyndns_username($uname) {
 		return true;
 }
 
-/* returns true if $macaddr is a valid MAC address */
+/**
+ * Returns true if $macaddr is a valid MAC address
+ */
 function is_macaddr($macaddr) {
 	if (!is_string($macaddr))
 		return false;
@@ -168,7 +202,9 @@ function is_macaddr($macaddr) {
 	return true;
 }
 
-/* returns true if $port is a valid TCP/UDP port */
+/**
+ * Returns true if $port is a valid TCP/UDP port
+ */
 function is_port($port) {
 	if (!is_numericint($port))
 		return false;
@@ -179,6 +215,10 @@ function is_port($port) {
 		return true;
 }
 
+/**
+ * Returns true if $address is a RFC value e-mail address
+ * XXX : switch to preg_match()
+ */
 function is_email_address($address) {
 	if (!eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,6}$", $address))
 	   return false;
@@ -186,7 +226,9 @@ function is_email_address($address) {
 	return true;
 }
 
-/* wrapper for exec() */
+/**
+ * Wrapper for exec()
+ */
 function mwexec($command) {
 
 	global $g;
@@ -202,7 +244,9 @@ function mwexec($command) {
 	return $retval; 
 }
 
-/* wrapper for exec() in background */
+/**
+ * Wrapper for exec() in background
+ */
 function mwexec_bg($command) {
 
 	global $g;
@@ -215,14 +259,18 @@ function mwexec_bg($command) {
 	exec("nohup $command > /dev/null 2>&1 &");
 }
 
-/* unlink a file, if it exists */
+/**
+ * Unlink a file, if it exists
+ */
 function unlink_if_exists($fn) {
 	if (file_exists($fn))
 		unlink($fn);
 }
 
 
-/* find out whether two subnets overlap */
+/**
+ * Find out whether two subnets overlap
+ */
 function check_subnets_overlap($subnet1, $bits1, $subnet2, $bits2) {
 
 	if (!is_numeric($bits1))
@@ -244,7 +292,9 @@ function check_subnets_overlap($subnet1, $bits1, $subnet2, $bits2) {
 		return false;
 }
 
-/* compare two IP addresses */
+/**
+ * Compares two IP addresses
+ */
 function ipcmp($a, $b) {
 	if (ip2long($a) < ip2long($b))
 		return -1;
@@ -254,14 +304,18 @@ function ipcmp($a, $b) {
 		return 0;
 }
 
-/* return true if $addr is in $subnet, false if not */
+/**
+ * Returns true if $addr is in $subnet, false if not
+ */
 function ip_in_subnet($addr,$subnet) {
 	list($ip, $mask) = explode('/', $subnet);
 	$mask = 0xffffffff << (32 - $mask);
 	return ((ip2long($addr) & $mask) == (ip2long($ip) & $mask));
 }
 
-/* verify (and remove) the digital signature on a file - returns 0 if OK */
+/**
+ * Verifies (and remove) the digital signature on a file, returns 0 if OK
+ */
 function verify_digital_signature($fname) {
 
 	global $g;
@@ -271,7 +325,9 @@ function verify_digital_signature($fname) {
 		escapeshellarg($fname));
 }
 
-/* obtain MAC address given an IP address by looking at the ARP table */
+/**
+ * Obtains MAC address given an IP address by looking at the ARP table
+ */
 function arp_get_mac_by_ip($ip) {
 	exec("/usr/sbin/arp -n {$ip}", $arpoutput);
 	
@@ -287,6 +343,9 @@ function arp_get_mac_by_ip($ip) {
 	return false;
 }
 
+/**
+ * Returns MAC addresses in a variety of formats
+ */
 function mac_format($clientmac) {
     $mac =explode(":", $clientmac);
 
