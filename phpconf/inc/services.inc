@@ -1,9 +1,11 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -31,6 +33,9 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
+/**
+ * Removes ez-ipupdate's caches
+ */
 function services_dyndns_reset() {
 	global $config, $g;
 
@@ -47,7 +52,9 @@ function services_dyndns_reset() {
 	return 0;
 }
 
-
+/**
+ * Configures and (re)starts the ez-ipupdate process
+ */
 function services_dyndns_configure() {
 	global $config, $g;
 	
@@ -126,7 +133,9 @@ EOD;
 	return 0;
 }
 
-
+/**
+ * Configures and invokes nsupdate
+ */
 function services_dnsupdate_process() {
 	global $config, $g;
 	
