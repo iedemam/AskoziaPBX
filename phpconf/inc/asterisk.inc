@@ -31,7 +31,9 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-
+/**
+ * Generates all Asterisk configuration files and (re)starts the Asterisk process
+ */
 function asterisk_configure() {
 	global $config, $g;
 
@@ -111,6 +113,10 @@ function asterisk_configure() {
 	return $res;
 }
 
+/**
+ * Loads an appropriate combination of kernel modules to provide a timing source
+ * depending on what hardware is available.
+ */
 function asterisk_configure_timing() {
 
 	/* zaptel modules are all loaded at boot, 
@@ -125,6 +131,9 @@ function asterisk_configure_timing() {
 	return 0;
 }
 
+/**
+ * Generates rtp.conf which contains the RTP port range Asterisk uses
+ */
 function asterisk_rtp_conf_generate() {
 	global $config;
 	
@@ -150,14 +159,23 @@ function asterisk_rtp_conf_generate() {
 	return 0;
 }
 
+/**
+ * Sorts the defined Asterisk manager users by username.
+ */
 function asterisk_sort_manager_users() {
 	global $config;
+
 	usort($config['services']['manager']['manager-user'], "_a_sortmanagerusers");
 }
+
+/* XXX : replace with "sort_by_username_field" */
 function _a_sortmanagerusers($a, $b) {
 	return strcmp($a['username'], $b['username']);
 }
 
+/**
+ * Generates manager.conf which contains extra AMI users defined in the GUI
+ */
 function asterisk_manager_conf_generate() {
 	global $config;
 	
@@ -188,6 +206,7 @@ write = system,call,log,verbose,command,agent,user,config
 
 EOD;
 
+	// XXX : replace with a function, no more direct $config access
 	if (is_array($config['services']['manager']['manager-user'])) {
 		foreach ($config['services']['manager']['manager-user'] as $user) {
 			$conf .= "[" . $user['username'] . "]" . "\n";
@@ -211,6 +230,10 @@ EOD;
 	return 0;
 }
 
+/**
+ * Generates indications.conf which contains regional tone information and sets this
+ * installation's tonezone country
+ */
 function asterisk_indications_conf_generate() {
 	global $config;
 	
@@ -912,11 +935,16 @@ EOD;
 
 }
 
+/**
+ * Reloads res_indications to apply newly generated configuration changes
+ */
 function asterisk_indications_reload() {
 	return asterisk_exec("module reload res_indications.so");
 }
 
-
+/**
+ * Executes a command using the AMI
+ */
 function asterisk_exec($cmd, $output=NULL) {
 
 	$token = md5(uniqid(rand()));
@@ -948,13 +976,15 @@ function asterisk_exec($cmd, $output=NULL) {
 	$out = substr($out, strpos($out, "\n") + 1);
 	$out = substr($out, 0, strpos($out, "--END COMMAND--") - 1);
 
-	// better command failure checking needed
+	// XXX : better command failure checking needed
 	$output = $out;
 
-	return 0; // this needs to return a value for SUCCESS/FAILURE
+	return 0; // XXX : this needs to return a value for SUCCESS/FAILURE
 }
 
-
+/**
+ * Determines the validity of a given internal extension
+ */
 function asterisk_is_valid_extension($extension) {
 	if(!is_numericint($extension) || (strlen($extension) < 1))
 		return false;
@@ -962,23 +992,41 @@ function asterisk_is_valid_extension($extension) {
 	return true;
 }
 
-
+/**
+ * Determines the validity of a given Caller ID
+ * XXX : unimplemented
+ */
 function asterisk_is_valid_callerid($id) {
 	return true;
 }
 
+/**
+ * Determines the validity of a given Caller ID string
+ * XXX : unimplemented
+ */
 function asterisk_is_valid_callerid_string($string) {
 	return true;
 }
 
+/**
+ * Determines the validity of a given secret
+ * XXX : unimplemented
+ */
 function asterisk_is_valid_secret($secret) {
 	return true;
 }
 
+/**
+ * Determines the validity of a given username
+ * XXX : unimplemented
+ */
 function asterisk_is_valid_username($username) {
 	return true;
 }
 
+/**
+ * Checks is the supplied dialpattern already exists.
+ */
 function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $sending_provider_id=false) {
 	$allpatterns = asterisk_get_dialpatterns();
 
@@ -997,6 +1045,9 @@ function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $send
 	return false;
 }
 
+/**
+ * Determines the validity of a given dialpattern
+ */
 function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	
 	$incoming_regex = "/^[XNZ0-9\-\[\]\.]+$/";
@@ -1051,7 +1102,7 @@ function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	}
 	
 	// invalid characters in brackets
-	/* FIXME not working...
+	/* XXX : not working...
 	if (preg_match("/\[[XNZ\.\|\+]+\]/", $dialpattern)) {
 		$error = "An invalid character is contained within square brackets, only digits and hyphens are allowed.";
 		return false;
@@ -1078,6 +1129,11 @@ function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	return true;
 }
 
+/**
+ * Merges all *get_extensions() into a single array
+ * XXX : should be reimplemented to have an optional "technology" parameter
+ * so each of these sub _get_ functions can be generally implemented here
+ */
 function asterisk_get_extensions() {
 	global $config;
 
@@ -1093,7 +1149,11 @@ function asterisk_get_extensions() {
 	);
 }
 
-// providers
+/**
+ * Merges all *get_providers() into a single array
+ * XXX : should be reimplemented to have an optional "technology" parameter
+ * so each of these sub _get_ functions can be generally implemented here
+ */
 function asterisk_get_providers() {
 	global $config;
 	
@@ -1105,15 +1165,26 @@ function asterisk_get_providers() {
 					analog_get_providers()
 				));
 }
+
+/**
+ * Sorts providers by name
+ */
 function asterisk_sort_providers($providers) {
 	usort($providers, "_a_sortproviders");
+
 	return $providers;
 }
+
+/* XXX : replace with "sort_by_name_field" */
 function _a_sortproviders($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
-// phones
+/**
+ * Merges all *get_phones() into a single array
+ * XXX : should be reimplemented to have an optional "technology" parameter
+ * so each of these sub _get_ functions can be generally implemented here
+ */
 function asterisk_get_phones() {
 	global $config;
 	
@@ -1125,15 +1196,27 @@ function asterisk_get_phones() {
 					analog_get_phones()
 				));
 }
+
+/**
+ * Sorts phones by Caller ID
+ * XXX : this sort differs in behavior from the individual _sort_phones() functions
+ */
 function asterisk_sort_phones($phones) {
 	usort($phones, "_a_sortphones");
+
 	return $phones;
 }
+
+/* XXX : replace with "sort_by_callerid_field" */
 function _a_sortphones($a, $b) {
 	return strcmp($a['callerid'], $b['callerid']);
 }
 
-// dialpatterns
+/**
+ * Merges all *get_dialpatterns() into a single array
+ * XXX : should be reimplemented to have an optional "technology" parameter
+ * so each of these sub _get_ functions can be generally implemented here
+ */
 function asterisk_get_dialpatterns() {
 	global $config;
 
@@ -1145,6 +1228,9 @@ function asterisk_get_dialpatterns() {
 	);
 }
 
+/**
+ * Parses "core show channels" output to return active calls, channels and a channel list
+ */
 function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {
 	
 	asterisk_exec("core show channels", &$output);
@@ -1160,6 +1246,11 @@ function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_
 	return 0;
 }
 
+/**
+ * Returns a dialstring based on the supplied uniqid and misc. options
+ * XXX : needs to be made more granular
+ * XXX : very clunky / hacky / junky
+ */
 function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $readbacknum=false) {
 	global $config;
 	
@@ -1297,6 +1388,9 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 	return $dial;
 }
 
+/**
+ * Replace a string's contents with the name equivalents of the uniqids contained within.
+ */
 function asterisk_replace_uniqids_with_names($string) {
 	
 	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|CONFERENCE|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL){1}-[0-9a-zA-Z]+/";
@@ -1317,6 +1411,9 @@ function asterisk_replace_uniqids_with_names($string) {
 	return str_replace($uniqids, $names, $string);
 }
 
+/**
+ * Returns an appropriate "name" for the supplied uniqid.
+ */
 function asterisk_uniqid_to_name($uniqid) {
 	global $config, $uniqid_map;
 	
@@ -1340,6 +1437,9 @@ function asterisk_uniqid_to_name($uniqid) {
 	return "ERROR:UNIQID_TO_NAME_FAILED($uniqid)";
 }
 
+/**
+ * Returns the extension associated with the supplied uniqid.
+ */
 function asterisk_uniqid_to_extension($uniqid) {
 	global $config, $uniqid_map;
 	
@@ -1355,6 +1455,9 @@ function asterisk_uniqid_to_extension($uniqid) {
 	return "ERROR:UNIQID_TO_EXTENSION_FAILED($uniqid)";
 }
 
+/**
+ * Returns the channel technology associated with the supplied uniqid.
+ */
 function asterisk_uniqid_to_technology($uniqid) {
 	
 	$parts = explode("-", $uniqid);
