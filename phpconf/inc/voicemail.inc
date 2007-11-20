@@ -30,6 +30,10 @@
 
 require_once("functions.inc");
 
+/**
+ * Voicemail notification e-mail subject lines
+ * XXX : consolidate in help.inc or something like languages.inc
+ */
 $vm_emailsubject = array(
 
 	"en-informal" => 	"New voicemail message (box: $\{VM_MAILBOX})",
@@ -56,6 +60,10 @@ $vm_emailsubject = array(
 	
 );
 
+/**
+ * Voicemail notification e-mail bodies
+ * XXX : consolidate in help.inc or something like languages.inc
+ */
 $vm_emailbody = array(
 
 	// english
@@ -136,7 +144,10 @@ $vm_emailbody = array(
 						"-AskoziaPBX"
 );
 
-
+/**
+ * Generates voicemail.conf
+ * XXX : security issues here with 0000 password on mail-only accounts?
+ */
 function voicemail_conf_generate() {
 	global $config, $vm_emailsubject, $vm_emailbody;
 	
@@ -213,7 +224,9 @@ EOD;
 	return 0;
 }
 
-
+/**
+ * Generates msmtp.conf for smtp client
+ */
 function msmtp_conf_generate() {
 	global $config;
 	
@@ -265,7 +278,11 @@ function msmtp_conf_generate() {
 	return 0;
 }
 
+/**
+ * Reloads app_voicemail to apply newly generated changes
+ */
 function voicemail_reload() {
-	
 	return asterisk_exec("module reload app_voicemail.so");
 }
+
+?>
