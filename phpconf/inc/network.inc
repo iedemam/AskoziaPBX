@@ -1,9 +1,11 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -31,6 +33,9 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
+/**
+ * Configures the system's loopback device
+ */
 function network_loopback_configure() {
 	global $config, $g;
 
@@ -39,6 +44,10 @@ function network_loopback_configure() {
 	return 0;
 }
 
+/**
+ * Configures the system's main LAN interface, bridging additional interfaces
+ * to it as selected in the GUI.
+ */
 function network_lan_configure() {
 	global $config, $g;
 	
@@ -111,6 +120,11 @@ function network_lan_configure() {
 	return 0;
 }
 
+/**
+ * Returns the current public IP address.
+ * XXX : incomplete implementation, does not return a value if topology is 'natdynamic'
+ * XXX : rename needed
+ */
 function get_current_public_address() {
 	global $config, $g;
 	
@@ -124,6 +138,10 @@ function get_current_public_address() {
 	/* else.. TODO: get STUN public info */
 }
 
+/**
+ * Returns the given interface's MAC address
+ * XXX : rename needed
+ */
 function get_interface_mac($interface) {
   
 	/* build interface list with netstat */
@@ -131,12 +149,15 @@ function get_interface_mac($interface) {
 	array_shift($linkinfo);
 	$alink = preg_split("/\s+/", $linkinfo[0]);
 	$mac = chop($alink[3]);
+
 	return $mac;
 }
 
-/* returns a list of interfaces with MAC addresses
-   - skips VLAN and other virtual interfaces
-   - also skips WLAN interfaces */
+/**
+ * Returns a list of interfaces with MAC addresses
+ * - skips VLAN and other virtual interfaces
+ * - also skips WLAN interfaces
+ */
 function network_get_interfaces() {
 	
 	global $g;
