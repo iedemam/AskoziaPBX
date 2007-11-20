@@ -1,10 +1,12 @@
 <?php
 /*
 	$Id$
-    part of m0n0wall (http://m0n0.ch/wall)
-    
-    Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-    All rights reserved.
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
+	
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007 IKT <http://itison-ikt.de>.
+	All rights reserved.
     
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
@@ -46,6 +48,5 @@ require_once("system.inc");
 require_once("util.inc");
 require_once("voicemail.inc");
 require_once("wireless.inc");
-
 
 ?>
