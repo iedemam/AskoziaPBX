@@ -30,17 +30,26 @@
 
 require_once("functions.inc");
 
+/**
+ * Returns an array of all assigned conference room numbers / extensions
+ */
 function conferencing_get_extensions() {
 	global $config;
 
 	$extensions = array();
-	if (is_array($config['conferencing']['room']))
-		foreach($config['conferencing']['room'] as $room)
+
+	if (is_array($config['conferencing']['room'])) {
+		foreach($config['conferencing']['room'] as $room) {
 			$extensions[] = $room['number'];
+		}
+	}
 
 	return $extensions;
 }
 
+/**
+ * Returns an array of all assigned conference rooms
+ */
 function conferencing_get_rooms() {
 	global $config;
 	
@@ -52,11 +61,35 @@ function conferencing_get_rooms() {
 	return $config['conferencing']['room'];
 }
 
+/**
+ * Sorts conference rooms by their room number.
+ */
+function conferencing_sort_rooms() {
+	global $config;
+
+	usort($config['conferencing']['room'], "_confroomcmp");	
+}
+
+/* XXX : replace with "sort_by_number_field" */
+function _confroomcmp($a, $b) {
+    if ($a['number'] == $b['number']) {
+        return 0;
+    }
+    return ($a['number'] < $b['number']) ? -1 : 1;
+}
+
+/**
+ * Returns a specific conference room based on its uniqid
+ */
 function conferencing_get_room($uniqid) {
 	global $config, $uniqid_map;
+
 	return $config['conferencing']['room'][$uniqid_map[$uniqid]];
 }
 
+/**
+ * Parses "meetme list room#" output to return an array of its members
+ */
 function conferencing_get_members($room_number) {
 	global $config;
 	
@@ -106,20 +139,9 @@ function conferencing_get_members($room_number) {
 	return $members;
 }
 
-
-function conferencing_sort_rooms() {
-	global $config;
-
-	usort($config['conferencing']['room'], "_confroomcmp");	
-}
-function _confroomcmp($a, $b) {
-    if ($a['number'] == $b['number']) {
-        return 0;
-    }
-    return ($a['number'] < $b['number']) ? -1 : 1;
-}
-
-
+/**
+ * Generates meetme.conf which defines conference rooms and their access information
+ */
 function conferencing_conf_generate() {
 	global $config;
 	
@@ -147,3 +169,5 @@ function conferencing_conf_generate() {
 	
 	return 0;
 }
+
+?>
