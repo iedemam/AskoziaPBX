@@ -38,6 +38,7 @@ $pconfig['port'] = isset($sipconfig['port']) ? $sipconfig['port'] : "5060";
 $pconfig['defaultexpiry'] = isset($sipconfig['defaultexpiry']) ? $sipconfig['defaultexpiry'] : "120";
 $pconfig['minexpiry'] = isset($sipconfig['minexpiry']) ? $sipconfig['minexpiry'] : "60";
 $pconfig['maxexpiry'] = isset($sipconfig['maxexpiry']) ? $sipconfig['maxexpiry'] : "3600";
+$pconfig['disablesrv'] = isset($sipconfig['disablesrv']);
 
 
 if ($_POST) {
@@ -73,6 +74,7 @@ if ($_POST) {
 		$sipconfig['defaultexpiry'] = $_POST['defaultexpiry'];
 		$sipconfig['minexpiry'] = $_POST['minexpiry'];
 		$sipconfig['maxexpiry'] = $_POST['maxexpiry'];
+		$sipconfig['disablesrv'] = $_POST['disablesrv'] ? true : false;
 
 		write_config();
 		touch($d_sipconfdirty_path);
@@ -114,6 +116,12 @@ if (file_exists($d_sipconfdirty_path)) {
 				min:&nbsp;<input name="minexpiry" type="text" class="formfld" id="minexpiry" size="10" value="<?=htmlspecialchars($pconfig['minexpiry']);?>">&nbsp;&nbsp;max:&nbsp;<input name="maxexpiry" type="text" class="formfld" id="maxexpiry" size="10" value="<?=htmlspecialchars($pconfig['maxexpiry']);?>">&nbsp;&nbsp;default:&nbsp;<input name="defaultexpiry" type="text" class="formfld" id="defaultexpiry" size="10" value="<?=htmlspecialchars($pconfig['defaultexpiry']);?>"><br>
 				<br><span class="vexpl">The minimum, maximum and default number of seconds that incoming and outgoing registrations and subscriptions remain valid.
 				<br>Default values are 60, 3600 and 120 respectively.</span>
+			</td>
+		</tr>
+		<tr> 
+			<td valign="top" class="vncell">DNS Service Records</td>
+			<td class="vtable">
+				<input name="disablesrv" id="disablesrv" type="checkbox" value="yes" <? if ($pconfig['disablesrv']) echo "checked"; ?>>Disable DNS SRV lookups.
 			</td>
 		</tr>
 		<tr> 

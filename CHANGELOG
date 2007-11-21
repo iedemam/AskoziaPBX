@@ -1,5 +1,6 @@
 2007.11.xx - 
  - added: Russian voicemail notification e-mail translation (submitted by Eugen Bernatskiy)
+ - added: "DNS Service Records" option to "Advanced -> SIP" so SRV lookups can be disabled
  - provider dialpatterns now allow '#' and '*' characters (suggested by Dave Fear)
  - an optimized version of OSLEC will now be loaded if the system supports MMX
 

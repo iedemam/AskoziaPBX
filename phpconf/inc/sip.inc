@@ -154,6 +154,11 @@ function sip_conf_generate() {
 	if (isset($sipconfig['port']))
 		$port = $sipconfig['port'];
 
+	$srvlookup = "yes";
+	if (isset($sipconfig['disablesrv'])) {
+		$srvlookup = "no";
+	}
+
 	$conf = <<<EOD
 	
 [general]
@@ -161,7 +166,7 @@ context=default
 allowoverlap=no
 bindport=$port
 bindaddr=0.0.0.0
-srvlookup=yes
+srvlookup=$srvlookup
 useragent=AskoziaPBX
 relaxdtmf=yes
 alwaysauthreject=yes
