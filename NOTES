@@ -1,4 +1,4 @@
-pb12
+pb13
 - nat=yes|no optional an all sip accounts
 - dial timeout options
 - check about dtmf bursts after picking analog phones
@@ -12,6 +12,8 @@ pb12
 - difference between incoming extensions and callgroups should be made clear in the gui
 	- perhaps destinations defined with the same pattern should be treated as improv-callgroups
 - start writing short wiki entries for new features as they are impelemented
+
+bug: new Russian voicemail translation is missing words upon reception...
 
 storage
 - device states: unconfigured, configured, inactive, active, healthy, dirty, clean, mounted, unmounted...?!

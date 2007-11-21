@@ -152,11 +152,11 @@ $vm_emailbody = array(
 	// russian
 	"ru-informal" => 	"Уважаемые $\{VM_NAME},\\n\\n".
 						"Вам звонил $\{VM_CALLERID} и оставил сообщение в голосовом ящике.\\n\\n".
-						"Продолжительность и дата сообщения $\{VM_DUR} , $\{VM_DATE}.\\n\\n".
+						"Продолжительность и дата сообщения $\{VM_DUR}, $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
 
 	"ru-formal" => 		"Уважаемые $\{VM_NAME},\\n\\n".
-						"Сообщение продолжительностью $\{VM_DUR} ,от $\{VM_DATE} было оставленно\\n\\n".
+						"Сообщение продолжительностью $\{VM_DUR}, от $\{VM_DATE} было оставленно\\n\\n".
 						"для Вас от $\{VM_CALLERID}.\\n\\n".
 						"-AskoziaPBX",
 
@@ -208,7 +208,7 @@ EOD;
 
 	$conf .= <<<EOD
 
-emaildateformat=%A, %B %d, %Y at %r
+emaildateformat=%Y-%m-%d (%R)
 
 mailcmd=/usr/local/bin/msmtp -C /etc/msmtp.conf -t
 
