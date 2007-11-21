@@ -173,6 +173,8 @@ $vm_email_languages = array(
 	"it-formal" => "Italian (formal)",
 	"pl-informal" => "Polish",
 	"pl-formal" => "Polish (formal)",
+	"ru-informal" => "Russian",
+	"ru-formal" => "Russian (formal)",
 	"es-formal" => "Spanish (formal)",
 	"se-informal" => "Swedish"
 );

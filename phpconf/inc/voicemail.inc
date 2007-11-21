@@ -36,28 +36,39 @@ require_once("functions.inc");
  */
 $vm_emailsubject = array(
 
-	"en-informal" => 	"New voicemail message (box: $\{VM_MAILBOX})",
-	"en-formal" => 		"New voicemail message (box: $\{VM_MAILBOX})",
-	
+	// german
 	"de-informal" => 	"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
 	"de-formal" => 		"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
 	
+	// english
+	"en-informal" => 	"New voicemail message (box: $\{VM_MAILBOX})",
+	"en-formal" => 		"New voicemail message (box: $\{VM_MAILBOX})",
+
+	// spanish
+	"es-formal" => 		"Nuevo mensaje de voz (cuenta: $\{VM_MAILBOX})",
+
+	// french
+	"fr-informal" => 	"tu as reçu un nouveau message dans ta boite vocale",
+	"fr-formal" => 		"vous avez reçu un nouveau message dans votre boite vocale",
+
+	// italian
 	"it-formal" => 		"Nuovo messaggio voicemail (box: $\{VM_MAILBOX})",
 	"it-informal" =>	"Nuovo messaggio voicemail per te (box: $\{VM_MAILBOX})",
 
+	// dutch
 	"nl-informal" => 	"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
 	"nl-formal" => 		"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
 
-	"fr-informal" => 	"tu as reçu un nouveau message dans ta boite vocale",
-	"fr-formal" => 		"vous avez reçu un nouveau message dans votre boite vocale",
-	
-	"es-formal" => 		"Nuevo mensaje de voz (cuenta: $\{VM_MAILBOX})",
-	
-	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})",
-	
+	// polish
 	"pl-informal" => 	"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})",
-	"pl-formal" => 		"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})"
+	"pl-formal" => 		"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})",
+
+	// russian
+	"ru-informal" => 	"Новое голосовое сообщение (окно: $\{VM_MAILBOX})",
+	"ru-formal" => 		"Новое голосовое сообщение (окно: $\{VM_MAILBOX})",
 	
+	// swedish
+	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})"
 );
 
 /**
@@ -65,16 +76,6 @@ $vm_emailsubject = array(
  * XXX : consolidate in help.inc or something like languages.inc
  */
 $vm_emailbody = array(
-
-	// english
-	"en-informal" => 	"Dear $\{VM_NAME},\\n\\n".
-						"A call from $\{VM_CALLERID} just landed in your voicemail.\\n\\n".
-						"Here's the $\{VM_DUR} long message that was left for you on $\{VM_DATE}.\\n\\n".
-						"-AskoziaPBX",
-
-	"en-formal" => 		"Dear $\{VM_NAME},\\n\\n".
-						"A $\{VM_DUR} long voicemail was left for you on $\{VM_DATE} from $\{VM_CALLERID}.\\n\\n".
-						"-AskoziaPBX",
 
 	// german
 	"de-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
@@ -85,15 +86,20 @@ $vm_emailbody = array(
 						"eine $\{VM_DUR} lange Sprachmitteilung wurde von $\{VM_CALLERID} am $\{VM_DATE} für Sie hinterlassen.\\n\\n".
 						"-AskoziaPBX",
 	
-	// dutch
-	"nl-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
-						"Een oproep van $\{VM_CALLERID} is in je voicemail terecht gekomen.\\n\\n".
-						"Hier is het $\{VM_DUR} durende bericht dat voor jou is achtergelaten op $\{VM_DATE}.\\n\\n".
+	// english
+	"en-informal" => 	"Dear $\{VM_NAME},\\n\\n".
+						"A call from $\{VM_CALLERID} just landed in your voicemail.\\n\\n".
+						"Here's the $\{VM_DUR} long message that was left for you on $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
 
-	"nl-formal" => 		"Beste $\{VM_NAME},\\n\\n".
-						"Een oproep van $\{VM_CALLERID} is in uw voicemail terecht gekomen.\\n\\n".
-						"Hier is het $\{VM_DUR} durende bericht dat voor u is achtergelaten op $\{VM_DATE}.\\n\\n".
+	"en-formal" => 		"Dear $\{VM_NAME},\\n\\n".
+						"A $\{VM_DUR} long voicemail was left for you on $\{VM_DATE} from $\{VM_CALLERID}.\\n\\n".
+						"-AskoziaPBX",
+
+	// spanish
+	"es-formal" => 		"Estimado $\{VM_NAME},\\n\\n".
+						"Usted ha recibido un mensaje de voz desde el número $\{VM_CALLERID}.\\n\\n".
+						"La duración del mensaje es $\{VM_DUR} y fue dejado para usted el día $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
 
 	// french
@@ -106,7 +112,7 @@ $vm_emailbody = array(
 						"Un message de $\{VM_CALLERID} vous attend dans votre boite vocale.\\n\\n".
 						"Vous trouverez en pièce jointe le message d'une durée de $\{VM_DUR} qui vous a été laissé en date du $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
-						
+
 	// italian
 	"it-formal" => 		"Gentile $\{VM_NAME},\\n\\n".
 						"e' stato ricevuto un messaggio vocale per Lei dal numero telefonico ".
@@ -119,28 +125,45 @@ $vm_emailbody = array(
 						"Il numero telefonico del chiamante e' $\{VM_CALLERID}.\\n".
 						"Data $\{VM_DATE} - durata $\{VM_DUR}.\\n\\n".
 						"-AskoziaPBX",
-						
-	// spanish
-	"es-formal" => 		"Estimado $\{VM_NAME},\\n\\n".
-						"Usted ha recibido un mensaje de voz desde el número $\{VM_CALLERID}.\\n\\n".
-						"La duración del mensaje es $\{VM_DUR} y fue dejado para usted el día $\{VM_DATE}.\\n\\n".
+
+	// dutch
+	"nl-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
+						"Een oproep van $\{VM_CALLERID} is in je voicemail terecht gekomen.\\n\\n".
+						"Hier is het $\{VM_DUR} durende bericht dat voor jou is achtergelaten op $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
-	
-	// swedish
-	"se-informal" => 	"Bäste $\{VM_NAME},\\n\\n".
-						"Ett samtal ifrån $\{VM_CALLERID} har precis spelats in på din telesvar.\\n\\n".
-						"Meddelandet är $\{VM_DUR} långt och det lämnades $\{VM_DATE}.\\n\\n".
+
+	"nl-formal" => 		"Beste $\{VM_NAME},\\n\\n".
+						"Een oproep van $\{VM_CALLERID} is in uw voicemail terecht gekomen.\\n\\n".
+						"Hier is het $\{VM_DUR} durende bericht dat voor u is achtergelaten op $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
-	
+
+	// polish
 	"pl-informal" => 	"Szanowny $\{VM_NAME},\\n\\n".
 						"Wiadomość głosowa od $\{VM_CALLERID} została pozostawiona na ".
 						"twojej skrzynce. Wiadomość trwa $\{VM_DUR} i została pozostawiona ".
 						"$\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
-						
+
 	"pl-formal" => 		"Szanowny $\{VM_NAME},\\n\\n".
 						"$\{VM_CALLERID} pozostawił trwającą $\{VM_DUR} wiadomość głosową w ".
 						"dniu $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	// russian
+	"ru-informal" => 	"Уважаемые $\{VM_NAME},\\n\\n".
+						"Вам звонил $\{VM_CALLERID} и оставил сообщение в голосовом ящике.\\n\\n".
+						"Продолжительность и дата сообщения $\{VM_DUR} , $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	"ru-formal" => 		"Уважаемые $\{VM_NAME},\\n\\n".
+						"Сообщение продолжительностью $\{VM_DUR} ,от $\{VM_DATE} было оставленно\\n\\n".
+						"для Вас от $\{VM_CALLERID}.\\n\\n".
+						"-AskoziaPBX",
+
+	// swedish
+	"se-informal" => 	"Bäste $\{VM_NAME},\\n\\n".
+						"Ett samtal ifrån $\{VM_CALLERID} har precis spelats in på din telesvar.\\n\\n".
+						"Meddelandet är $\{VM_DUR} långt och det lämnades $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX"
 );
 
