@@ -1051,7 +1051,7 @@ function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $send
 function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	
 	$incoming_regex = "/^[XNZ0-9\-\[\]\.]+$/";
-	$outgoing_regex = "/^[XNZ0-9\-\[\]\.\|\+]+$/";
+	$outgoing_regex = "/^[XNZ0-9\-\[\]\.\|\+\*\#]+$/";
 	
 	$invalid_regex = $incoming ? $incoming_regex : $outgoing_regex;
 	
@@ -1111,8 +1111,8 @@ function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	
 	// invalid appended prefix
 	if (($plus_offset = strpos($dialpattern, "+")) !== false) {
-		if (!preg_match("/^[0-9]+\+/", $dialpattern)) {
-			$error = "Appended prefixes may only contain digits.";
+		if (!preg_match("/^[0-9\*\#]+\+/", $dialpattern)) {
+			$error = "Appended prefixes may only contain digits, '*' and '#'.";
 			return false;
 		}
 		$dialpattern = substr($dialpattern, $plus_offset+1);

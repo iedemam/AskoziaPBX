@@ -169,6 +169,7 @@ videosupport=yes
 notifybusy=yes
 limitonpeer=yes
 notifyhold=no
+pedantic=yes
 
 EOD;
 
