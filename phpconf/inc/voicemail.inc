@@ -63,6 +63,10 @@ $vm_emailsubject = array(
 	"pl-informal" => 	"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})",
 	"pl-formal" => 		"Nowa wiadomość głosowa (box: $\{VM_MAILBOX})",
 
+	// portuguese, brazil
+	"pt-br-informal" => "Nova mensagem de voz (caixa: $\{VM_MAILBOX})",
+	"pt-br-formal" => 	"Nova mensagem de voz (caixa: $\{VM_MAILBOX})",
+
 	// russian
 	"ru-informal" => 	"Новое голосовое сообщение (окно: $\{VM_MAILBOX})",
 	"ru-formal" => 		"Новое голосовое сообщение (окно: $\{VM_MAILBOX})",
@@ -147,6 +151,16 @@ $vm_emailbody = array(
 	"pl-formal" => 		"Szanowny $\{VM_NAME},\\n\\n".
 						"$\{VM_CALLERID} pozostawił trwającą $\{VM_DUR} wiadomość głosową w ".
 						"dniu $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	// portuguese, brazil
+	"pt-br-informal" => "Caro(a) $\{VM_NAME},\\n\\n".
+						"Uma chamada de $\{VM_CALLERID} acabou de cair em sua caixa postal de voz.\\n\\n".
+						"Aqui está a mensagem deixada no dia $\{VM_DATE}, que tem $\{VM_DUR} de duração.\\n\\n".
+						"-AskoziaPBX",
+
+	"pt-br-formal" => 	"Caro(a) $\{VM_NAME},\\n\\n".
+						"Uma mensagem com $\{VM_DUR} chegou para você no dia $\{VM_DATE}, vinda de $\{VM_CALLERID}.\\n\\n".
 						"-AskoziaPBX",
 
 	// russian
