@@ -4,6 +4,7 @@
  - added: "DNS Service Records" option to "Advanced -> SIP" so SRV lookups can be disabled
  - provider dialpatterns now allow '#' and '*' characters (suggested by Dave Fear)
  - an optimized version of OSLEC will now be loaded if the system supports MMX
+ - updated Asterisk to 1.4.14
 
 2007.11.16 - pb12.2
  - bug: deleting a phone or callgroup no longer ends up in a page hang (reported by Mattijs V)

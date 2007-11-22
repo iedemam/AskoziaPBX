@@ -36,7 +36,7 @@
 $php_version			= "php-4.4.7";
 $pecl_sqlite_version	= "SQLite-1.0.3";
 $mini_httpd_version		= "mini_httpd-1.19";
-$asterisk_version		= "asterisk-1.4.13";
+$asterisk_version		= "asterisk-1.4.14";
 $msmtp_version			= "msmtp-1.4.11";
 $zaptel_version			= "zaptel-trunk";
 $oslec_version			= "oslec-trunk";
