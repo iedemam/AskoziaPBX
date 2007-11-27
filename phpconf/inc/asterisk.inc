@@ -1363,7 +1363,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 			}
 			
 		}
-		$readbacknum = ($readbacknum) ? $readbacknum : $vm_account;
+		$readbacknum = ($readbacknum) ? $readbacknum : $vm_phone['extension'];
 		$n = count($dial_strings);
 		$dstring = $dial_strings[0];
 		for ($i = 1; $i < $n; $i++) {
