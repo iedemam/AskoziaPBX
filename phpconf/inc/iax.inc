@@ -52,7 +52,7 @@ function iax_get_providers() {
 function iax_sort_providers() {
 	global $g, $config;
 
-	usort($config['iax']['provider'], "asterisk_sort_by_name");	
+	usort($config['iax']['provider'], "pbx_sort_by_name");	
 }
 
 /**
@@ -76,7 +76,7 @@ function iax_get_phones() {
 function iax_sort_phones() {
 	global $g, $config;
 
-	usort($config['iax']['phone'], "asterisk_sort_by_extension");	
+	usort($config['iax']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
@@ -344,7 +344,7 @@ EOD;
  * Reloads chan_iax2 to apply newly generated configuration changes
  */
 function iax_reload() {
-	return asterisk_exec("module reload chan_iax2.so");
+	return pbx_exec("module reload chan_iax2.so");
 }
 
 ?>

@@ -102,7 +102,7 @@
 	system_set_termcap();
 	
 	/* start up asterisk */
-	asterisk_configure();
+	pbx_configure();
 	
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();

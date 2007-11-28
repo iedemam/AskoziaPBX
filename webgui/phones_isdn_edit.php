@@ -68,13 +68,13 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['extension'] && !asterisk_is_valid_extension($_POST['extension']))) {
+	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = "A valid extension must be entered.";
 	}
-	if (($_POST['callerid'] && !asterisk_is_valid_callerid($_POST['callerid']))) {
+	if (($_POST['callerid'] && !pbx_is_valid_callerid($_POST['callerid']))) {
 		$input_errors[] = "A valid Caller ID must be specified.";
 	}
-	if (!isset($id) && in_array($_POST['extension'], asterisk_get_extensions())) {
+	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
 	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
@@ -92,7 +92,7 @@ if ($_POST) {
 		$ip['language'] = $_POST['language'];
 		$ip['descr'] = $_POST['descr'];
 
-		$a_providers = asterisk_get_providers();
+		$a_providers = pbx_get_providers();
 		$ip['provider'] = array();
 		foreach ($a_providers as $provider)
 			if($_POST[$provider['uniqid']] == true)

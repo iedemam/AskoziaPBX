@@ -34,7 +34,7 @@ require("guiconfig.inc");
 
 
 if ($_GET['act'] == "kick") {
-	asterisk_exec("meetme {$_GET['act']} {$_GET['conf']} {$_GET['member']}");
+	pbx_exec("meetme {$_GET['act']} {$_GET['conf']} {$_GET['member']}");
 	touch($d_conferencing_kicked_path);
 	header("Location: status_conferences.php?c={$_GET['conf']}&m={$_GET['member']}");
 	exit;

@@ -238,7 +238,7 @@ european=Europe/Copenhagen|'vm-received' a d b 'digits/at' HM
 EOD;
 
 	// internal phones
-	$intphones = asterisk_get_phones();
+	$intphones = pbx_get_phones();
 	foreach($intphones as $p) {
 		if(!$p['voicemailbox'])
 			continue;
@@ -319,7 +319,7 @@ function msmtp_conf_generate() {
  * Reloads app_voicemail to apply newly generated changes
  */
 function voicemail_reload() {
-	return asterisk_exec("module reload app_voicemail.so");
+	return pbx_exec("module reload app_voicemail.so");
 }
 
 ?>

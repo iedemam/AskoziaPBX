@@ -93,7 +93,7 @@ function conferencing_get_room($uniqid) {
 function conferencing_get_members($room_number) {
 	global $config;
 	
-	asterisk_exec("meetme list $room_number", &$output);
+	pbx_exec("meetme list $room_number", &$output);
 
 	$members = array();
 	$output = explode("\n", $output);

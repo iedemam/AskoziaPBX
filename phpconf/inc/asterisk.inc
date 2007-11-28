@@ -34,7 +34,7 @@ require_once("functions.inc");
 /**
  * Generates all Asterisk configuration files and (re)starts the Asterisk process
  */
-function asterisk_configure() {
+function pbx_configure() {
 	global $config, $g;
 
 	if ($g['booting']) {
@@ -46,15 +46,15 @@ function asterisk_configure() {
 	
 	$res = 0;
 	if ($g['booting']) echo " - generating indications configuration...";
-	$res |= asterisk_indications_conf_generate();
+	$res |= pbx_indications_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - generating manager configuration...";
-	$res |= asterisk_manager_conf_generate();
+	$res |= pbx_manager_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - generating rtp configuration...";
-	$res |= asterisk_rtp_conf_generate();
+	$res |= pbx_rtp_conf_generate();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - generating sip configuration...";
@@ -96,7 +96,7 @@ function asterisk_configure() {
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - configuring timing source...";
-	$res |= asterisk_configure_timing();
+	$res |= pbx_configure_timing();
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - executing Asterisk...";
@@ -117,7 +117,7 @@ function asterisk_configure() {
  * Loads an appropriate combination of kernel modules to provide a timing source
  * depending on what hardware is available.
  */
-function asterisk_configure_timing() {
+function pbx_configure_timing() {
 
 	/* zaptel modules are all loaded at boot, 
 	if nothing was detected we fall back to ztdummy for timing */
@@ -134,12 +134,12 @@ function asterisk_configure_timing() {
 /**
  * Generates rtp.conf which contains the RTP port range Asterisk uses
  */
-function asterisk_rtp_conf_generate() {
+function pbx_rtp_conf_generate() {
 	global $config;
 	
 	$fd = fopen("/usr/local/etc/asterisk/rtp.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open rtp.conf in asterisk_rtp_conf_generate().\n");
+		printf("Error: cannot open rtp.conf in pbx_rtp_conf_generate().\n");
 		return 1;
 	}
 	
@@ -162,7 +162,7 @@ function asterisk_rtp_conf_generate() {
 /**
  * Sorts the defined Asterisk manager users by username.
  */
-function asterisk_sort_manager_users() {
+function pbx_sort_manager_users() {
 	global $config;
 
 	usort($config['services']['manager']['manager-user'], "_a_sortmanagerusers");
@@ -176,12 +176,12 @@ function _a_sortmanagerusers($a, $b) {
 /**
  * Generates manager.conf which contains extra AMI users defined in the GUI
  */
-function asterisk_manager_conf_generate() {
+function pbx_manager_conf_generate() {
 	global $config;
 	
 	$fd = fopen("/usr/local/etc/asterisk/manager.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open manager.conf in asterisk_manager_conf_generate().\n");
+		printf("Error: cannot open manager.conf in pbx_manager_conf_generate().\n");
 		return 1;
 	}
 	
@@ -234,12 +234,12 @@ EOD;
  * Generates indications.conf which contains regional tone information and sets this
  * installation's tonezone country
  */
-function asterisk_indications_conf_generate() {
+function pbx_indications_conf_generate() {
 	global $config;
 	
 	$fd = fopen("/usr/local/etc/asterisk/indications.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open indications.conf in asterisk_indications_conf_generate().\n");
+		printf("Error: cannot open indications.conf in pbx_indications_conf_generate().\n");
 		return 1;
 	}
 	
@@ -938,14 +938,14 @@ EOD;
 /**
  * Reloads res_indications to apply newly generated configuration changes
  */
-function asterisk_indications_reload() {
-	return asterisk_exec("module reload res_indications.so");
+function pbx_indications_reload() {
+	return pbx_exec("module reload res_indications.so");
 }
 
 /**
  * Executes a command using the AMI
  */
-function asterisk_exec($cmd, $output=NULL) {
+function pbx_exec($cmd, $output=NULL) {
 
 	$token = md5(uniqid(rand()));
 	$errno = 0;
@@ -985,7 +985,7 @@ function asterisk_exec($cmd, $output=NULL) {
 /**
  * Determines the validity of a given internal extension
  */
-function asterisk_is_valid_extension($extension) {
+function pbx_is_valid_extension($extension) {
 	if(!is_numericint($extension) || (strlen($extension) < 1))
 		return false;
 	
@@ -996,7 +996,7 @@ function asterisk_is_valid_extension($extension) {
  * Determines the validity of a given Caller ID
  * XXX : unimplemented
  */
-function asterisk_is_valid_callerid($id) {
+function pbx_is_valid_callerid($id) {
 	return true;
 }
 
@@ -1004,7 +1004,7 @@ function asterisk_is_valid_callerid($id) {
  * Determines the validity of a given Caller ID string
  * XXX : unimplemented
  */
-function asterisk_is_valid_callerid_string($string) {
+function pbx_is_valid_callerid_string($string) {
 	return true;
 }
 
@@ -1012,7 +1012,7 @@ function asterisk_is_valid_callerid_string($string) {
  * Determines the validity of a given secret
  * XXX : unimplemented
  */
-function asterisk_is_valid_secret($secret) {
+function pbx_is_valid_secret($secret) {
 	return true;
 }
 
@@ -1020,15 +1020,15 @@ function asterisk_is_valid_secret($secret) {
  * Determines the validity of a given username
  * XXX : unimplemented
  */
-function asterisk_is_valid_username($username) {
+function pbx_is_valid_username($username) {
 	return true;
 }
 
 /**
  * Checks is the supplied dialpattern already exists.
  */
-function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $sending_provider_id=false) {
-	$allpatterns = asterisk_get_dialpatterns();
+function pbx_dialpattern_exists($dialpattern, &$return_provider_name, $sending_provider_id=false) {
+	$allpatterns = pbx_get_dialpatterns();
 
 	if (is_array($allpatterns)) {
 		foreach ($allpatterns as $provider_id => $patterns) {
@@ -1036,7 +1036,7 @@ function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $send
 				continue;
 			}
 			if (is_array($patterns) && in_array($dialpattern, $patterns)) {
-				$return_provider_name = asterisk_uniqid_to_name($provider_id);
+				$return_provider_name = pbx_uniqid_to_name($provider_id);
 				return true;
 			}
 		}
@@ -1048,7 +1048,7 @@ function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $send
 /**
  * Determines the validity of a given dialpattern
  */
-function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
+function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	
 	$incoming_regex = "/^[XNZ0-9\-\[\]\.\!]+$/";
 	$outgoing_regex = "/^[XNZ0-9\-\[\]\.\!\|\+\*\#]+$/";
@@ -1138,7 +1138,7 @@ function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
  * XXX : should be reimplemented to have an optional "technology" parameter
  * so each of these sub _get_ functions can be generally implemented here
  */
-function asterisk_get_extensions() {
+function pbx_get_extensions() {
 	global $config;
 
 	return array_merge(
@@ -1158,10 +1158,10 @@ function asterisk_get_extensions() {
  * XXX : should be reimplemented to have an optional "technology" parameter
  * so each of these sub _get_ functions can be generally implemented here
  */
-function asterisk_get_providers() {
+function pbx_get_providers() {
 	global $config;
 	
-	return asterisk_sort_providers(
+	return pbx_sort_providers(
 				array_merge(
 					sip_get_providers(),
 					iax_get_providers(),
@@ -1173,8 +1173,8 @@ function asterisk_get_providers() {
 /**
  * Sorts providers by name
  */
-function asterisk_sort_providers($providers) {
-	usort($providers, "asterisk_sort_by_name");
+function pbx_sort_providers($providers) {
+	usort($providers, "pbx_sort_by_name");
 
 	return $providers;
 }
@@ -1184,10 +1184,10 @@ function asterisk_sort_providers($providers) {
  * XXX : should be reimplemented to have an optional "technology" parameter
  * so each of these sub _get_ functions can be generally implemented here
  */
-function asterisk_get_phones() {
+function pbx_get_phones() {
 	global $config;
 	
-	return asterisk_sort_phones(
+	return pbx_sort_phones(
 				array_merge(
 					sip_get_phones(),
 					iax_get_phones(),
@@ -1200,7 +1200,7 @@ function asterisk_get_phones() {
  * Sorts phones by Caller ID
  * XXX : this sort differs in behavior from the individual _sort_phones() functions
  */
-function asterisk_sort_phones($phones) {
+function pbx_sort_phones($phones) {
 	usort($phones, "_a_sortphones");
 
 	return $phones;
@@ -1216,7 +1216,7 @@ function _a_sortphones($a, $b) {
  * XXX : should be reimplemented to have an optional "technology" parameter
  * so each of these sub _get_ functions can be generally implemented here
  */
-function asterisk_get_dialpatterns() {
+function pbx_get_dialpatterns() {
 	global $config;
 
 	return array_merge(
@@ -1230,14 +1230,14 @@ function asterisk_get_dialpatterns() {
 /**
  * usort callback for sorting an array alphabetically by name field
  */
-function asterisk_sort_by_name($a, $b) {
+function pbx_sort_by_name($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
 /**
  * usort callback for sorting an array numerically by extension field
  */
-function asterisk_sort_by_extension($a, $b) {
+function pbx_sort_by_extension($a, $b) {
     if ($a['extension'] == $b['extension']) {
         return 0;
     }
@@ -1247,7 +1247,7 @@ function asterisk_sort_by_extension($a, $b) {
 /**
  * usort callback for sorting an array numerically by unit field
  */
-function asterisk_sort_by_unit($a, $b) {
+function pbx_sort_by_unit($a, $b) {
 
     if ($a['unit'] == $b['unit']) {
         return 0;
@@ -1258,9 +1258,9 @@ function asterisk_sort_by_unit($a, $b) {
 /**
  * Parses "core show channels" output to return active calls, channels and a channel list
  */
-function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {
+function pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {
 	
-	asterisk_exec("core show channels", &$output);
+	pbx_exec("core show channels", &$output);
 	$lines = explode("\n", $output);
 
 	$n = count($lines) - 3;
@@ -1278,7 +1278,7 @@ function asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_
  * XXX : needs to be made more granular
  * XXX : very clunky / hacky / junky
  */
-function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $readbacknum=false) {
+function pbx_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $readbacknum=false) {
 	global $config;
 	
 	$id = split("-", $uniqid);
@@ -1330,7 +1330,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 	} else if ($id[0] == "EXTERNAL" && $id[1] == "PHONE") {
 		$phone = external_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
@@ -1380,7 +1380,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 				if ($i == 0) {
 					$vm_phone = $phone;
 				}
-				$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+				$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 				if ($technology == "ZAP") {
 					$zprov = analog_get_provider($phone['dialprovider']);
 					$dial_strings[] = "$technology/{$zprov['interface']}/{$phone['dialstring']}";
@@ -1418,7 +1418,7 @@ function asterisk_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, 
 /**
  * Replace a string's contents with the name equivalents of the uniqids contained within.
  */
-function asterisk_replace_uniqids_with_names($string) {
+function pbx_replace_uniqids_with_names($string) {
 	
 	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|CONFERENCE|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL){1}-[0-9a-zA-Z]+/";
 
@@ -1432,7 +1432,7 @@ function asterisk_replace_uniqids_with_names($string) {
 	$names = array();
 	$n = count($uniqids);
 	for ($i = 0; $i < $n; $i++) {
-		$names[$i] = asterisk_uniqid_to_name($uniqids[$i]);
+		$names[$i] = pbx_uniqid_to_name($uniqids[$i]);
 	}
 
 	return str_replace($uniqids, $names, $string);
@@ -1441,7 +1441,7 @@ function asterisk_replace_uniqids_with_names($string) {
 /**
  * Returns an appropriate "name" for the supplied uniqid.
  */
-function asterisk_uniqid_to_name($uniqid) {
+function pbx_uniqid_to_name($uniqid) {
 	global $config, $uniqid_map;
 	
 	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
@@ -1467,7 +1467,7 @@ function asterisk_uniqid_to_name($uniqid) {
 /**
  * Returns the extension associated with the supplied uniqid.
  */
-function asterisk_uniqid_to_extension($uniqid) {
+function pbx_uniqid_to_extension($uniqid) {
 	global $config, $uniqid_map;
 	
 	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
@@ -1485,7 +1485,7 @@ function asterisk_uniqid_to_extension($uniqid) {
 /**
  * Returns the channel technology associated with the supplied uniqid.
  */
-function asterisk_uniqid_to_technology($uniqid) {
+function pbx_uniqid_to_technology($uniqid) {
 	
 	$parts = explode("-", $uniqid);
 	switch($parts[0]) {

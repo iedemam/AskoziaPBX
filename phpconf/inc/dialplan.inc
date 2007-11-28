@@ -52,7 +52,7 @@ function dialplan_get_callgroups() {
 function dialplan_sort_callgroups() {
 	global $config;
 
-	usort($config['dialplan']['callgroup'], "asterisk_sort_by_name");	
+	usort($config['dialplan']['callgroup'], "pbx_sort_by_name");	
 }
 
 /**
@@ -104,7 +104,7 @@ function dialplan_get_applications() {
 function dialplan_sort_applications() {
 	global $config;
 
-	usort($config['dialplan']['application'], "asterisk_sort_by_extension");	
+	usort($config['dialplan']['application'], "pbx_sort_by_extension");	
 }
 
 /**
@@ -259,7 +259,7 @@ function dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten) {
  * Reloads res_features to apply newly generated configuration changes
  */
 function dialplan_features_reload() {
-	return asterisk_exec("module reload res_features.so");
+	return pbx_exec("module reload res_features.so");
 }
 
 ?>

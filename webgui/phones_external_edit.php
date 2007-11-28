@@ -134,7 +134,7 @@ if ($_POST) {
 				<td class="vtable">
 					<select name="dialprovider" class="formfld" id="dialprovider">
 						<option></option>
-						<? $a_providers = asterisk_get_providers(); ?>
+						<? $a_providers = pbx_get_providers(); ?>
 						<? foreach ($a_providers as $provider): ?>
 						<option value="<?=$provider['uniqid'];?>" <?php 
 						if ($provider['uniqid'] == $pconfig['dialprovider']) 

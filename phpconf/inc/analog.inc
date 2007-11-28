@@ -53,7 +53,7 @@ function analog_get_providers() {
 function analog_sort_providers() {
 	global $g, $config;
 
-	usort($config['analog']['provider'], "asterisk_sort_by_name");	
+	usort($config['analog']['provider'], "pbx_sort_by_name");	
 }
 
 /**
@@ -86,7 +86,7 @@ function analog_get_phones() {
 function analog_sort_phones() {
 	global $g, $config;
 
-	usort($config['analog']['phone'], "asterisk_sort_by_extension");	
+	usort($config['analog']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
@@ -194,7 +194,7 @@ function analog_get_ab_interfaces() {
 function analog_sort_ab_interfaces() {
 	global $config;
 
-	usort($config['interfaces']['ab-unit'], "asterisk_sort_by_unit");	
+	usort($config['interfaces']['ab-unit'], "pbx_sort_by_unit");	
 }
 
 /**
@@ -430,7 +430,7 @@ function analog_configure() {
  * Reloads chan_zap to apply newly generated configuration changes
  */
 function analog_reload() {
-	return asterisk_exec("module reload chan_zap.so");
+	return pbx_exec("module reload chan_zap.so");
 }
 
 ?>

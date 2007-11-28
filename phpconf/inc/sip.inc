@@ -52,7 +52,7 @@ function sip_get_providers() {
 function sip_sort_providers() {
 	global $g, $config;
 
-	usort($config['sip']['provider'], "asterisk_sort_by_name");	
+	usort($config['sip']['provider'], "pbx_sort_by_name");	
 }
 
 /**
@@ -76,7 +76,7 @@ function sip_get_phones() {
 function sip_sort_phones() {
 	global $g, $config;
 
-	usort($config['sip']['phone'], "asterisk_sort_by_extension");	
+	usort($config['sip']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
@@ -360,7 +360,7 @@ EOD;
  * Reloads chan_sip to apply newly generated configuration changes
  */
 function sip_reload() {
-	return asterisk_exec("module reload chan_sip.so");
+	return pbx_exec("module reload chan_sip.so");
 }
 
 ?>

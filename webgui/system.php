@@ -130,8 +130,8 @@ if ($_POST) {
 			$retval |= system_password_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
-			$retval |= asterisk_indications_conf_generate();
-			$retval |= asterisk_indications_reload();
+			$retval |= pbx_indications_conf_generate();
+			$retval |= pbx_indications_reload();
 			config_unlock();
 		}
 		

@@ -53,7 +53,7 @@ function isdn_get_providers() {
 function isdn_sort_providers() {
 	global $g, $config;
 
-	usort($config['isdn']['provider'], "asterisk_sort_by_name");	
+	usort($config['isdn']['provider'], "pbx_sort_by_name");	
 }
 
 /**
@@ -77,7 +77,7 @@ function isdn_get_phones() {
 function isdn_sort_phones() {
 	global $g, $config;
 
-	usort($config['isdn']['phone'], "asterisk_sort_by_extension");	
+	usort($config['isdn']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
@@ -175,7 +175,7 @@ function isdn_get_interfaces() {
 function isdn_sort_interfaces() {
 	global $config;
 
-	usort($config['interfaces']['isdn-unit'], "asterisk_sort_by_unit");	
+	usort($config['interfaces']['isdn-unit'], "pbx_sort_by_unit");	
 }
 
 /**
@@ -440,7 +440,7 @@ function isdn_configure() {
  * Reloads chan_capi to apply newly generated configuration changes
  */
 function isdn_reload() {
-	return asterisk_exec("module reload chan_capi.so");
+	return pbx_exec("module reload chan_capi.so");
 }
 
 ?>

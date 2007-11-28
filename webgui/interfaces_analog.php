@@ -86,7 +86,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		$retval |= analog_configure();
 		config_unlock();
 		
-		$retval |= asterisk_configure();
+		$retval |= pbx_configure();
 	}
 	
 	$savemsg = get_std_save_message($retval);

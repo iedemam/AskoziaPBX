@@ -91,10 +91,10 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['username'] && !asterisk_is_valid_username($_POST['username']))) {
+	if (($_POST['username'] && !pbx_is_valid_username($_POST['username']))) {
 		$input_errors[] = "A valid username must be specified.";
 	}
-	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
+	if (($_POST['secret'] && !pbx_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
 /*	if (($_POST['host'] && !is_hostname($_POST['host']))) {
@@ -106,7 +106,7 @@ if ($_POST) {
 	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
-	if ($_POST['calleridsource'] == "string" && !asterisk_is_valid_callerid_string($_POST['calleridstring'])) {
+	if ($_POST['calleridsource'] == "string" && !pbx_is_valid_callerid_string($_POST['calleridstring'])) {
 		$input_errors[] = "A valid Caller ID string must be specified.";
 	}
 
@@ -116,10 +116,10 @@ if ($_POST) {
 	}
 	if (is_array($_POST['dialpattern'])) {
 		foreach($_POST['dialpattern'] as $p) {
-			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
+			if (pbx_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
 				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
 			}
-			if (!asterisk_is_valid_dialpattern($p, &$internal_error)) {
+			if (!pbx_is_valid_dialpattern($p, &$internal_error)) {
 				$input_errors[] = "The dial-pattern \"$p\" is invalid. $internal_error";
 			}
 		}
@@ -127,10 +127,10 @@ if ($_POST) {
 	if (is_array($_POST['incomingextensionmap'])) {
 		foreach($_POST['incomingextensionmap'] as $map) {
 			/* XXX : check for duplicates
-			if (asterisk_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
+			if (pbx_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
 				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
 			}*/
-			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
+			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
 				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
 			}
 		}

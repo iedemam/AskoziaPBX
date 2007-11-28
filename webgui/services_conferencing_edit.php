@@ -69,7 +69,7 @@ if ($_POST) {
 	}
 	if (!isset($id) && in_array($_POST['number'], conferencing_get_extensions())) {
 		$input_errors[] = "Conference number already exists.";
-	} else if (!isset($id) && in_array($_POST['number'], asterisk_get_extensions())) {
+	} else if (!isset($id) && in_array($_POST['number'], pbx_get_extensions())) {
 		$input_errors[] = "Conference number matches an existing extension.";
 	}
 	if (($_POST['pin'] && !is_numericint($_POST['pin']))) {

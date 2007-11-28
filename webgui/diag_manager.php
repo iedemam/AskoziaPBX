@@ -34,7 +34,7 @@ require("guiconfig.inc");
 
 if ($_POST) {
 
-	 asterisk_exec($_POST['command'], &$output);
+	 pbx_exec($_POST['command'], &$output);
 
 }
 

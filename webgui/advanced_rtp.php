@@ -75,10 +75,10 @@ if (file_exists($d_rtpconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= asterisk_rtp_conf_generate();
+		$retval |= pbx_rtp_conf_generate();
 		config_unlock();
 		
-		$retval |= asterisk_configure();
+		$retval |= pbx_configure();
 	}
 	
 	$savemsg = get_std_save_message($retval);

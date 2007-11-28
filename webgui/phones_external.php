@@ -96,7 +96,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			<?=htmlspecialchars($ep['dialstring']);?>
 		</td>
 		<td class="listr">
-			<?=htmlspecialchars(asterisk_uniqid_to_name($ep['dialprovider']));?>&nbsp;
+			<?=htmlspecialchars(pbx_uniqid_to_name($ep['dialprovider']));?>&nbsp;
 		</td>
 		<td valign="middle" nowrap class="list"> <a href="phones_external_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit external phone" width="17" height="17" border="0"></a>
            &nbsp;<a href="phones_external.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this external phone?')"><img src="x.gif" title="delete external phone" width="17" height="17" border="0"></a></td>

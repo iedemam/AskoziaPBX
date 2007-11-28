@@ -82,7 +82,7 @@ function display_video_codec_selector($enabled_codecs) {
 
 function display_callgroup_member_selector($current_members) {
 	
-	$internal_phones = asterisk_get_phones();
+	$internal_phones = pbx_get_phones();
 	$external_phones = external_get_phones();
 	
 	// XXX this should be handled at a lower level
@@ -105,7 +105,7 @@ function display_callgroup_member_selector($current_members) {
 			
 			foreach ($current_members as $member) {
 				if (array_key_exists($member, $indexed_phones)) {
-					?><li class="gme" id="gme_<?=$member;?>"><?=asterisk_uniqid_to_name($member);?></li><?
+					?><li class="gme" id="gme_<?=$member;?>"><?=pbx_uniqid_to_name($member);?></li><?
 				}
 			}
 			
@@ -117,7 +117,7 @@ function display_callgroup_member_selector($current_members) {
 
 			foreach ($indexed_phones as $uniqid=>$phone) {
 				if (!in_array($uniqid, $current_members)) {
-					?><li class="gmd" id="gmd_<?=$uniqid;?>"><?=asterisk_uniqid_to_name($phone['uniqid']);?></li><?
+					?><li class="gmd" id="gmd_<?=$uniqid;?>"><?=pbx_uniqid_to_name($phone['uniqid']);?></li><?
 				}
 			}
 			
@@ -223,7 +223,7 @@ function display_outgoing_callerid_options($current_callerid_source, $current_ca
 
 function display_provider_access_selector($current_providers, $colspan) {
 	
-	$a_providers = asterisk_get_providers();
+	$a_providers = pbx_get_providers();
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell">Providers</td>
@@ -252,7 +252,7 @@ function display_provider_access_selector($current_providers, $colspan) {
 function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=false) {
 	global $help, $help_language;
 	
-	$a_phones = asterisk_get_phones();
+	$a_phones = pbx_get_phones();
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell">Phones</td>

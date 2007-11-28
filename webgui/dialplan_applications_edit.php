@@ -62,7 +62,7 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['extension'] && !asterisk_is_valid_extension($_POST['extension']))) {
+	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = "A valid extension must be entered.";
 	}
 

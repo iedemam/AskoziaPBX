@@ -2,10 +2,11 @@
  - added: Russian voicemail notification e-mail translation (submitted by Eugen Bernatskiy)
  - added: Portuguese voicemail notification e-mail translation (submitted by Marcus Vinícius Quintella Ribeiro)
  - added: "DNS Service Records" option to "Advanced -> SIP" so SRV lookups can be disabled
- - provider dialpatterns now allow '#' and '*' characters (suggested by Dave Fear)
- - an optimized version of OSLEC will now be loaded if the system supports MMX
- - '!' characters are now allowed in incoming and outgoing dialpatterns
- - updated Asterisk to 1.4.14
+ - added: '!' characters are now allowed in incoming and outgoing dialpatterns
+ - added: provider dialpatterns now allow '#' and '*' characters (suggested by Dave Fear)
+ - refactor: individual sorting functions replaced with pbx_sort_by_xxx() functions
+ - refactor: all asterisk_* functions renamed to pbx_*
+ - updated: Asterisk to 1.4.14
  - bug: call groups now define their "read back" number properly (reported by Janåke Rönnblom)
 
 2007.11.16 - pb12.2

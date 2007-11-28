@@ -93,9 +93,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td class="listbg"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
 		<td class="listr"><?
 			$n = count($cg['groupmember']);
-			echo htmlspecialchars(asterisk_uniqid_to_name($cg['groupmember'][0]));
+			echo htmlspecialchars(pbx_uniqid_to_name($cg['groupmember'][0]));
 			for($ii = 1; $ii < $n; $ii++) {
-				echo ", " . htmlspecialchars(asterisk_uniqid_to_name($cg['groupmember'][$ii]));
+				echo ", " . htmlspecialchars(pbx_uniqid_to_name($cg['groupmember'][$ii]));
 			}
 		?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"> <a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit call group" width="17" height="17" border="0"></a>

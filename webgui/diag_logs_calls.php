@@ -70,7 +70,7 @@ function dump_clog($logfile, $max) {
 		//if (strpos($logent, "Zap/pseudo"))
 		//	continue;
 			
-		//$logent = asterisk_replace_uniqids_with_names($logent);
+		//$logent = pbx_replace_uniqids_with_names($logent);
 		
 		echo "<tr valign=\"top\">\n";
 		// start

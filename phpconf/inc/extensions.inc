@@ -51,7 +51,7 @@ function external_get_phones() {
 function external_sort_phones() {
 	global $g, $config;
 
-	usort($config['external']['phone'], "asterisk_sort_by_extension");	
+	usort($config['external']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
@@ -198,7 +198,7 @@ EOD;
 	
 	$a_extphones = external_get_phones();
 	foreach ($a_extphones as $phone) {
-		$technology = asterisk_uniqid_to_technology($phone['dialprovider']);
+		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		$conf .= "exten => {$phone['extension']},1,NoOp()\n";
 		$conf .= _extensions_add_sendnotifications_line($phone['extension'], $phone);
 		if ($technology == "ZAP") {
@@ -216,7 +216,7 @@ EOD;
 		if (!$group['extension']) {
 			continue;
 		}
-		$conf .= asterisk_uniqid_to_dial($group['extension'], $group['uniqid']);
+		$conf .= pbx_uniqid_to_dial($group['extension'], $group['uniqid']);
 	}
 	
 	$a_applications = dialplan_get_applications();
@@ -252,12 +252,12 @@ EOD;
 			for ($i = 0; $i < $n; $i++) {
 				$map = $p['incomingextensionmap'][$i];
 				if (!isset($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
-					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
+					$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
+					$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
 				} else if (is_numeric($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
+					$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
+					$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
 				}
 				$conf .= "\n";
 			}
@@ -294,12 +294,12 @@ EOD;
 			for ($i = 0; $i < $n; $i++) {
 				$map = $p['incomingextensionmap'][$i];
 				if (!isset($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
-					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
+					$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
+					$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
 				} else if (is_numeric($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
+					$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
+					$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
 				}
 				$conf .= "\n";
 			}
@@ -336,12 +336,12 @@ EOD;
 			for ($i = 0; $i < $n; $i++) {
 				$map = $p['incomingextensionmap'][$i];
 				if (!isset($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['msn']);
-					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['msn']);
+					$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['msn']);
+					$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['msn']);
 				} else if (is_numeric($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
+					$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['msn']);
+					$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['msn']);
 				}
 				$conf .= "\n";
 			}
@@ -379,12 +379,12 @@ EOD;
 			for ($i = 0; $i < $n; $i++) {
 				$map = $p['incomingextensionmap'][$i];
 				if (!isset($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['number']);
-					$conf .= asterisk_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['number']);
+					$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['number']);
+					$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['number']);
 				} else if (is_numeric($map['incomingpattern'])) {
-					$conf .= asterisk_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
+					$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
 				} else {
-					$conf .= asterisk_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['number']);
+					$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['number']);
 				}
 				$conf .= "\n";
 			}
@@ -412,7 +412,7 @@ EOD;
 	
 
 	// internal phones
-	$intphones = asterisk_get_phones();
+	$intphones = pbx_get_phones();
 	foreach($intphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
@@ -516,7 +516,7 @@ function _extensions_generate_parkinglot() {
  * Reloads dialplan to apply newly generated configuration changes
  */
 function extensions_reload() {
-	return asterisk_exec("dialplan reload");
+	return pbx_exec("dialplan reload");
 }
 
 ?>

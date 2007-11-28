@@ -32,7 +32,7 @@
 $pgtitle = array("Status", "Active Channels");
 require("guiconfig.inc");
 
-asterisk_get_active_calls(&$active_calls, &$active_channels, &$channel_strings);
+pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_strings);
 
 $channels = array();
 $n = count($channel_strings);

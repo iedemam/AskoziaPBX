@@ -58,9 +58,9 @@ if ($_POST) {
 	
 	if (is_array($incomingextensionmap)) {
 		foreach($incomingextensionmap as $map) {
-			if ($map['incomingpattern'] && !asterisk_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
+			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
 				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" for \"" .
-					asterisk_uniqid_to_name($key_split[0]) . "\"is invalid. $internal_error";
+					pbx_uniqid_to_name($key_split[0]) . "\"is invalid. $internal_error";
 			}
 		}
 	}
@@ -88,13 +88,13 @@ if ($_POST) {
 			$dialpatterns = split_and_clean_patterns($_POST[$post_key]);
 
 			foreach($dialpatterns as $pattern) {
-				if (!asterisk_is_valid_dialpattern($pattern, &$internal_error)) {
+				if (!pbx_is_valid_dialpattern($pattern, &$internal_error)) {
 					$input_errors[] = "An invalid dial-pattern ($pattern) was found for \"" .
-					 	asterisk_uniqid_to_name($key_split[0]) . "\". $internal_error";
+					 	pbx_uniqid_to_name($key_split[0]) . "\". $internal_error";
 				}
-				if (asterisk_dialpattern_exists($p, &$return_provider_name, $key_split[0])) {
+				if (pbx_dialpattern_exists($p, &$return_provider_name, $key_split[0])) {
 					$input_errors[] = "The dial-pattern \"$p\" defined for \"".
-						asterisk_uniqid_to_name($key_split[0]) . "\" already exists for \"$return_provider_name\".";
+						pbx_uniqid_to_name($key_split[0]) . "\" already exists for \"$return_provider_name\".";
 				}
 			}
 			
@@ -177,7 +177,7 @@ if ($savemsg)
 	?><form action="dialplan_providers.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 
-		$a_providers = asterisk_get_providers();
+		$a_providers = pbx_get_providers();
 		
 		if (!is_array($a_providers)) {
 			

@@ -80,16 +80,16 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['extension'] && !asterisk_is_valid_extension($_POST['extension']))) {
+	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = "An extension must be a one to four digit number.";
 	}
-	if (($_POST['callerid'] && !asterisk_is_valid_callerid($_POST['callerid']))) {
+	if (($_POST['callerid'] && !pbx_is_valid_callerid($_POST['callerid']))) {
 		$input_errors[] = "A valid Caller ID must be specified.";
 	}
-	if (($_POST['secret'] && !asterisk_is_valid_secret($_POST['secret']))) {
+	if (($_POST['secret'] && !pbx_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
-	if (!isset($id) && in_array($_POST['extension'], asterisk_get_extensions())) {
+	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
 	if (($_POST['port'] && !is_port($_POST['port']))) {
@@ -115,7 +115,7 @@ if ($_POST) {
 		$sp['descr'] = $_POST['descr'];
 		$sp['qualify'] = $_POST['qualify'];
 
-		$a_providers = asterisk_get_providers();
+		$a_providers = pbx_get_providers();
 		$sp['provider'] = array();
 		foreach ($a_providers as $provider)
 			if($_POST[$provider['uniqid']] == true)
