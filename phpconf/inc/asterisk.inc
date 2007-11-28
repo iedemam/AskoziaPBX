@@ -1050,8 +1050,8 @@ function asterisk_dialpattern_exists($dialpattern, &$return_provider_name, $send
  */
 function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	
-	$incoming_regex = "/^[XNZ0-9\-\[\]\.]+$/";
-	$outgoing_regex = "/^[XNZ0-9\-\[\]\.\|\+\*\#]+$/";
+	$incoming_regex = "/^[XNZ0-9\-\[\]\.\!]+$/";
+	$outgoing_regex = "/^[XNZ0-9\-\[\]\.\!\|\+\*\#]+$/";
 	
 	$invalid_regex = $incoming ? $incoming_regex : $outgoing_regex;
 	
@@ -1122,6 +1122,10 @@ function asterisk_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	if (($pipe_offset = strpos($dialpattern, "|")) !== false) {
 		if (strpos(substr($dialpattern, 0, $pipe_offset), ".") !== false) {
 			$error = "The wildcard character \".\" is not allowed before a prefix which is to be removed.";
+			return false;
+		}
+		if (strpos(substr($dialpattern, 0, $pipe_offset), "!") !== false) {
+			$error = "The wildcard character \"!\" is not allowed before a prefix which is to be removed.";
 			return false;
 		}
 	}

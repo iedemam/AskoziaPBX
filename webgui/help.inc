@@ -44,6 +44,7 @@ $help = array(
 			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
 			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
 			"\t<li><strong>.</strong> - matches one or more characters</li>\n".
+			"\t<li><strong>!</strong> - matches zero or more characters</li>\n".
 			"</ul>\n".
 			"<strong><span class=\"red\">Note:</span></strong>&nbsp;".
 			"Permission must still be given to this phone for it to place outgoing calls.",
@@ -61,6 +62,7 @@ $help = array(
 			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
 			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
 			"\t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n".
+			"\t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n".
 			"</ul>\n"
 	)
 	
