@@ -86,15 +86,7 @@ function analog_get_phones() {
 function analog_sort_phones() {
 	global $g, $config;
 
-	usort($config['analog']['phone'], "_analogphonecmp");	
-}
-
-/* XXX : replace with "sort_by_extension_field" */
-function _analogphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
+	usort($config['analog']['phone'], "asterisk_sort_by_extension");	
 }
 
 /**

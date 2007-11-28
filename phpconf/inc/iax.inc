@@ -76,15 +76,7 @@ function iax_get_phones() {
 function iax_sort_phones() {
 	global $g, $config;
 
-	usort($config['iax']['phone'], "_iaxphonecmp");	
-}
-
-/* XXX : replace with "sort_by_extension_field" */
-function _iaxphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
+	usort($config['iax']['phone'], "asterisk_sort_by_extension");	
 }
 
 /**

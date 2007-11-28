@@ -76,15 +76,7 @@ function sip_get_phones() {
 function sip_sort_phones() {
 	global $g, $config;
 
-	usort($config['sip']['phone'], "_sipphonecmp");	
-}
-
-/* XXX : replace with "sort_by_extension_field" */
-function _sipphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
+	usort($config['sip']['phone'], "asterisk_sort_by_extension");	
 }
 
 /**

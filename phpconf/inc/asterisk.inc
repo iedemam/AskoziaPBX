@@ -1228,10 +1228,20 @@ function asterisk_get_dialpatterns() {
 }
 
 /**
- * Sorts an array alphabetically by name field
+ * usort function for sorting an array alphabetically by name field
  */
 function asterisk_sort_by_name($a, $b) {
 	return strcmp($a['name'], $b['name']);
+}
+
+/**
+ * usort function for sorting an array numerically by extension field
+ */
+function asterisk_sort_by_extension($a, $b) {
+    if ($a['extension'] == $b['extension']) {
+        return 0;
+    }
+    return ($a['extension'] < $b['extension']) ? -1 : 1;
 }
 
 /**

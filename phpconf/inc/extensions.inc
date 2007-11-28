@@ -51,15 +51,7 @@ function external_get_phones() {
 function external_sort_phones() {
 	global $g, $config;
 
-	usort($config['external']['phone'], "_extphonecmp");	
-}
-
-/* XXX : replace with "sort_by_extension_field" */
-function _extphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
+	usort($config['external']['phone'], "asterisk_sort_by_extension");	
 }
 
 /**

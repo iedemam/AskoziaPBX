@@ -104,15 +104,7 @@ function dialplan_get_applications() {
 function dialplan_sort_applications() {
 	global $config;
 
-	usort($config['dialplan']['application'], "_dpapplicationcmp");	
-}
-
-/* XXX : replace with "sort_by_extension_field" */
-function _dpapplicationcmp($a, $b) {
-	if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
+	usort($config['dialplan']['application'], "asterisk_sort_by_extension");	
 }
 
 /**

@@ -77,15 +77,7 @@ function isdn_get_phones() {
 function isdn_sort_phones() {
 	global $g, $config;
 
-	usort($config['isdn']['phone'], "_isdnphonecmp");	
-}
-
-/* XXX : replace with "sort_by_extension_field" */
-function _isdnphonecmp($a, $b) {
-    if ($a['extension'] == $b['extension']) {
-        return 0;
-    }
-    return ($a['extension'] < $b['extension']) ? -1 : 1;
+	usort($config['isdn']['phone'], "asterisk_sort_by_extension");	
 }
 
 /**
