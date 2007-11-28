@@ -53,12 +53,7 @@ function isdn_get_providers() {
 function isdn_sort_providers() {
 	global $g, $config;
 
-	usort($config['isdn']['provider'], "_isdnprovidercmp");	
-}
-
-/* XXX : replace with "sort_by_name_field" */
-function _isdnprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+	usort($config['isdn']['provider'], "asterisk_sort_by_name");	
 }
 
 /**

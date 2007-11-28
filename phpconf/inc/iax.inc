@@ -52,12 +52,7 @@ function iax_get_providers() {
 function iax_sort_providers() {
 	global $g, $config;
 
-	usort($config['iax']['provider'], "_iaxprovidercmp");	
-}
-
-/* XXX : replace with "sort_by_name_field" */
-function _iaxprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+	usort($config['iax']['provider'], "asterisk_sort_by_name");	
 }
 
 /**

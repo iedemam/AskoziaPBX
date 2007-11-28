@@ -1174,14 +1174,9 @@ function asterisk_get_providers() {
  * Sorts providers by name
  */
 function asterisk_sort_providers($providers) {
-	usort($providers, "_a_sortproviders");
+	usort($providers, "asterisk_sort_by_name");
 
 	return $providers;
-}
-
-/* XXX : replace with "sort_by_name_field" */
-function _a_sortproviders($a, $b) {
-	return strcmp($a['name'], $b['name']);
 }
 
 /**
@@ -1230,6 +1225,13 @@ function asterisk_get_dialpatterns() {
 		isdn_get_dialpatterns(),
 		analog_get_dialpatterns()
 	);
+}
+
+/**
+ * Sorts an array alphabetically by name field
+ */
+function asterisk_sort_by_name($a, $b) {
+	return strcmp($a['name'], $b['name']);
 }
 
 /**

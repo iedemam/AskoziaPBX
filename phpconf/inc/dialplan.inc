@@ -52,12 +52,7 @@ function dialplan_get_callgroups() {
 function dialplan_sort_callgroups() {
 	global $config;
 
-	usort($config['dialplan']['callgroup'], "_dpcallgroupcmp");	
-}
-
-/* XXX : replace with "sort_by_name_field" */
-function _dpcallgroupcmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+	usort($config['dialplan']['callgroup'], "asterisk_sort_by_name");	
 }
 
 /**

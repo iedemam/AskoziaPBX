@@ -53,12 +53,7 @@ function analog_get_providers() {
 function analog_sort_providers() {
 	global $g, $config;
 
-	usort($config['analog']['provider'], "_analogprovidercmp");	
-}
-
-/* XXX : replace with "sort_by_name_field" */
-function _analogprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+	usort($config['analog']['provider'], "asterisk_sort_by_name");	
 }
 
 /**

@@ -52,12 +52,7 @@ function sip_get_providers() {
 function sip_sort_providers() {
 	global $g, $config;
 
-	usort($config['sip']['provider'], "_sipprovidercmp");	
-}
-
-/* XXX : replace with "sort_by_name_field" */
-function _sipprovidercmp($a, $b) {
-	return strcmp($a['name'], $b['name']);
+	usort($config['sip']['provider'], "asterisk_sort_by_name");	
 }
 
 /**
