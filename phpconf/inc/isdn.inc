@@ -175,15 +175,7 @@ function isdn_get_interfaces() {
 function isdn_sort_interfaces() {
 	global $config;
 
-	usort($config['interfaces']['isdn-unit'], "_isdninterfacescmp");	
-}
-
-/* XXX : replace with "sort_by_unit_field" */
-function _isdninterfacescmp($a, $b) {
-    if ($a['unit'] == $b['unit']) {
-        return 0;
-    }
-    return ($a['unit'] < $b['unit']) ? -1 : 1;
+	usort($config['interfaces']['isdn-unit'], "asterisk_sort_by_unit");	
 }
 
 /**

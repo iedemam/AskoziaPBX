@@ -1228,20 +1228,31 @@ function asterisk_get_dialpatterns() {
 }
 
 /**
- * usort function for sorting an array alphabetically by name field
+ * usort callback for sorting an array alphabetically by name field
  */
 function asterisk_sort_by_name($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
 /**
- * usort function for sorting an array numerically by extension field
+ * usort callback for sorting an array numerically by extension field
  */
 function asterisk_sort_by_extension($a, $b) {
     if ($a['extension'] == $b['extension']) {
         return 0;
     }
     return ($a['extension'] < $b['extension']) ? -1 : 1;
+}
+
+/**
+ * usort callback for sorting an array numerically by unit field
+ */
+function asterisk_sort_by_unit($a, $b) {
+
+    if ($a['unit'] == $b['unit']) {
+        return 0;
+    }
+    return ($a['unit'] < $b['unit']) ? -1 : 1;
 }
 
 /**

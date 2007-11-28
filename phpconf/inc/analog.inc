@@ -194,16 +194,7 @@ function analog_get_ab_interfaces() {
 function analog_sort_ab_interfaces() {
 	global $config;
 
-	usort($config['interfaces']['ab-unit'], "_abinterfacescmp");	
-}
-
-/* XXX : replace with "sort_by_unit_field" */
-function _abinterfacescmp($a, $b) {
-
-    if ($a['unit'] == $b['unit']) {
-        return 0;
-    }
-    return ($a['unit'] < $b['unit']) ? -1 : 1;
+	usort($config['interfaces']['ab-unit'], "asterisk_sort_by_unit");	
 }
 
 /**
