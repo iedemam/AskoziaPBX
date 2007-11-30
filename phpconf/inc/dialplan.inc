@@ -186,13 +186,11 @@ function dialplan_features_conf_generate() {
 
 /**
  * Removes references to a provider from phone elements
- * XXX : should be reimplemented to utilize a global tech array
  */
 function dialplan_remove_provider_reference_from_phones($removed_id) {
+	global $g;
 	
-	$technologies = array("sip", "iax", "isdn", "analog");
-
-	foreach ($technologies as $tech) {
+	foreach ($g['technologies'] as $tech) {
 		if (is_array($GLOBALS['config'][$tech]['phone'])) {
 			$a_phones = &$GLOBALS['config'][$tech]['phone'];
 			$n = count($a_phones);
@@ -212,13 +210,11 @@ function dialplan_remove_provider_reference_from_phones($removed_id) {
 
 /**
  * Removes references to an incoming extension mapping from provider elements
- * XXX : should be reimplemented to utilize a global tech array
  */
 function dialplan_remove_incomingextensionmap_reference_from_providers($removed_id) {
-	
-	$technologies = array("sip", "iax", "isdn", "analog");
-	
-	foreach ($technologies as $tech) {
+	global $g;
+
+	foreach ($g['technologies'] as $tech) {
 		if (is_array($GLOBALS['config'][$tech]['provider'])) {
 			$a_providers = &$GLOBALS['config'][$tech]['provider'];
 			$n = count($a_providers);

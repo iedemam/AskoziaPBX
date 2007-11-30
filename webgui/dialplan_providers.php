@@ -40,14 +40,12 @@ if ($_POST) {
 	unset($input_errors);
 	
 	$post_keys = array_keys($_POST);
-	
-	$technologies = array("sip", "iax", "isdn", "analog");
 
 	$dialpatterns = array();
 	$incomingextension_pairs = array();
 	$phone_pairs = array();
 	
-	foreach ($technologies as $tech) {
+	foreach ($g['technologies'] as $tech) {
 		$dialpatterns[$tech] = array();
 		$incomingextension_pairs[$tech] = array();
 		$phone_pairs[$tech] = array();
@@ -65,7 +63,7 @@ if ($_POST) {
 		}
 	}
 
-	foreach ($technologies as $tech) {
+	foreach ($g['technologies'] as $tech) {
 		if (strpos($key_split[0], strtoupper($tech) . "-PROVIDER") !== false) {
 			$incomingextension_pairs[$tech] = $incomingextensionmap;
 		}
@@ -76,7 +74,7 @@ if ($_POST) {
 		$key_split = explode("_", $post_key);
 
 		// phone permission, phone -> provider pairs
-		foreach ($technologies as $tech) {
+		foreach ($g['technologies'] as $tech) {
 			if (strpos($key_split[1], strtoupper($tech) . "-PHONE") !== false) {
 				$phone_pairs[$tech] = array($key_split[1], $_POST[$post_key]);
 			}
@@ -98,7 +96,7 @@ if ($_POST) {
 				}
 			}
 			
-			foreach ($technologies as $tech) {
+			foreach ($g['technologies'] as $tech) {
 				if (strpos($key_split[0], strtoupper($tech) . "-PROVIDER") !== false) {
 					$dialpatterns[$tech][$key_split[0]] = $dialpatterns;
 				}
@@ -109,7 +107,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		
 		// clear phone to provider mappings
-		foreach ($technologies as $tech) {
+		foreach ($g['technologies'] as $tech) {
 			$n = count($config[$tech]['phone']);
 			for ($i = 0; $i < $n; $i++) {
 				if (isset($config[$tech]['phone'][$i]['provider']))
@@ -118,7 +116,7 @@ if ($_POST) {
 		}
 		
 		// clear provider patterns
-		foreach ($technologies as $tech) {
+		foreach ($g['technologies'] as $tech) {
 			$n = count($config[$tech]['provider']);
 			for ($i = 0; $i < $n; $i++) {
 				if (isset($config[$tech]['provider'][$i]['dialpattern']))
@@ -127,21 +125,21 @@ if ($_POST) {
 		}
 		
 		// remap phones to providers
-		foreach ($technologies as $tech) {
+		foreach ($g['technologies'] as $tech) {
 			foreach($phone_pairs[$tech] as $pair) {
 				$config[$tech]['phone'][$uniqid_map[$pair[0]]]['provider'][] = $pair[1];
 			}			
 		}
 
 		// remap incoming extensions
-		foreach ($technologies as $tech) {
+		foreach ($g['technologies'] as $tech) {
 			foreach($incomingextension_pairs[$tech] as $pair) {
 				$config[$tech]['provider'][$uniqid_map[$pair[0]]]['incomingextension'] = $pair[1];
 			}
 		}
 
 		// remap dialpatterns
-		foreach ($technologies as $tech) {
+		foreach ($g['technologies'] as $tech) {
 			foreach($dialpatterns[$tech] as $providerid => $patterns) {
 				$config[$tech]['provider'][$uniqid_map[$providerid]]['dialpattern'] = $patterns;
 			}

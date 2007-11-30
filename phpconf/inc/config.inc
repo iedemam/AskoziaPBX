@@ -415,51 +415,23 @@ function write_config() {
 
 /**
  * Builds a mapping of uniqids to their array offsets to speed up element lookups
- * XXX : should be reimplemented to use a global tech array
  */
 function config_build_uniqid_map($config) {
+	global $g;
 
-	// sip
-	$n = count($config['sip']['provider']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['sip']['provider'][$i]['uniqid']] = $i;
-	}
-	$n = count($config['sip']['phone']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['sip']['phone'][$i]['uniqid']] = $i;
-	}
-
-	// iax
-	$n = count($config['iax']['provider']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['iax']['provider'][$i]['uniqid']] = $i;
-	}
-	$n = count($config['iax']['phone']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['iax']['phone'][$i]['uniqid']] = $i;
+	// providers and internal phones
+	foreach ($g['technologies'] as $tech) {
+		$n = count($config[$tech]['provider']);
+		for ($i = 0; $i < $n; $i++) {
+			$uniqid_map[$config[$tech]['provider'][$i]['uniqid']] = $i;
+		}
+		$n = count($config[$tech]['phone']);
+		for ($i = 0; $i < $n; $i++) {
+			$uniqid_map[$config[$tech]['phone'][$i]['uniqid']] = $i;
+		}
 	}
 
-	// isdn
-	$n = count($config['isdn']['provider']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['isdn']['provider'][$i]['uniqid']] = $i;
-	}
-	$n = count($config['isdn']['phone']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['isdn']['phone'][$i]['uniqid']] = $i;
-	}
-	
-	// analog
-	$n = count($config['analog']['provider']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['analog']['provider'][$i]['uniqid']] = $i;
-	}
-	$n = count($config['analog']['phone']);
-	for ($i = 0; $i < $n; $i++) {
-		$uniqid_map[$config['analog']['phone'][$i]['uniqid']] = $i;
-	}
-
-	// external
+	// external phones
 	$n = count($config['external']['phone']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['external']['phone'][$i]['uniqid']] = $i;
