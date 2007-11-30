@@ -33,20 +33,24 @@
 
 // --[ package versions ]------------------------------------------------------
 
-$php_version			= "php-4.4.7";
-$pecl_sqlite_version	= "SQLite-1.0.3";
-$mini_httpd_version		= "mini_httpd-1.19";
-$asterisk_version		= "asterisk-1.4.14";
-$msmtp_version			= "msmtp-1.4.11";
-$zaptel_version			= "zaptel-trunk";
-$oslec_version			= "oslec-trunk";
-$i4b_version			= "i4b-trunk";
-$scriptaculous_version	= "scriptaculous-js-1.7.1_beta3";
-$jquery_version			= "jquery-1.2.1";
+$versions = array(
+	"asterisk"		=> "asterisk-1.4.15",
+	"i4b"			=> "i4b-trunk",
+	"jquery"		=> "jquery-1.2.1",
+	"mini_httpd"	=> "mini_httpd-1.19",
+	"msmtp"			=> "msmtp-1.4.11",
+	"msntp"			=> "msntp-1.6",
+	"oslec"			=> "oslec-trunk",
+	"pecl_sqlite"	=> "SQLite-1.0.3",
+	"php"			=> "php-4.4.7",
+	"scriptaculous"	=> "scriptaculous-js-1.7.1_beta3",
+	"udesc_dump"	=> "udesc_dump-1.3.9",
+	"zaptel"		=> "zaptel-trunk"
+);
 
 // --[ sounds ]----------------------------------------------------------------
 
-$core_sounds_version= "1.4.7";
+$core_sounds_version= "1.4.8";
 $extra_sounds_version="1.4.6";
 $sound_languages	= explode(" ", "en en-gb de it es fr fr-ca jp nl se ru");
 $sounds				= explode(" ", 
@@ -127,7 +131,6 @@ function prepare_environment() {
 	_exec("cd /usr/ports/net/ilbc; make install");
 	_exec("cd /usr/ports/devel/newt; make install");
 	_exec("cd /usr/ports/databases/sqlite2; make install");
-	//_exec("cd /usr/ports/net/mDNSResponder; make install");
 }
 
 function patch_kernel() {
@@ -152,7 +155,7 @@ function patch_bootloader() {
 function patch_hostapd() {
 	global $dirs;
 	
-	_exec("cd /usr/src; patch < ". $dirs['patches'] ."/user/hostapd.patch");
+	_exec("cd /usr/src; patch < {$dirs['patches']}/user/hostapd.patch");
 }
 
 function patch_everything() {
@@ -196,38 +199,36 @@ function build_kernels() {
 }
 
 function build_syslogd() {
-
 	_exec("cd /usr/src/usr.sbin/syslogd; make clean; make");
 }
 
 function build_clog() {
-
 	_exec("cd /usr/src/usr.sbin/clog; make clean; make obj; make");	
 }
 
 function build_php() {
-	global $dirs, $php_version, $pecl_sqlite_version;
+	global $dirs, $versions;
 
 	if (!file_exists("/usr/local/bin/autoconf")) {
 		_exec("cd /usr/ports/devel/autoconf213; make install clean");
 		_exec("ln -s /usr/local/bin/autoconf213 /usr/local/bin/autoconf");
 		_exec("ln -s /usr/local/bin/autoheader213 /usr/local/bin/autoheader");
 	}
-	if (!file_exists("{$dirs['packages']}/$php_version.tar.gz")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['php']}.tar.gz")) {
 		_exec("cd {$dirs['packages']}; " .
-				"fetch http://br.php.net/distributions/$php_version.tar.gz");
+				"fetch http://br.php.net/distributions/{$versions['php']}.tar.gz");
 	}
-	if (!file_exists("{$dirs['packages']}/$php_version")) {
-		_exec("cd {$dirs['packages']}; tar zxf $php_version.tar.gz");
+	if (!file_exists("{$dirs['packages']}/{$versions['php']}")) {
+		_exec("cd {$dirs['packages']}; tar zxf {$versions['php']}.tar.gz");
 	}
-	if (!file_exists("{$dirs['packages']}/$php_version/ext/sqlite")) {
-		_exec("cd ". $dirs['packages'] ."/$php_version/ext; ".
-			"fetch http://pecl.php.net/get/$pecl_sqlite_version.tgz; ".
-			"tar zxf $pecl_sqlite_version.tgz; ".
-				"mv $pecl_sqlite_version sqlite");
+	if (!file_exists("{$dirs['packages']}/{$versions['php']}/ext/sqlite")) {
+		_exec("cd ". $dirs['packages'] ."/{$versions['php']}/ext; ".
+			"fetch http://pecl.php.net/get/{$versions['pecl_sqlite']}.tgz; ".
+			"tar zxf {$versions['pecl_sqlite']}.tgz; ".
+				"mv {$versions['pecl_sqlite']} sqlite");
 	}
 	
-	_exec("cd {$dirs['packages']}/$php_version; ".
+	_exec("cd {$dirs['packages']}/{$versions['php']}; ".
 			"rm configure; ".
 			"./buildconf --force; ".
 			"./configure --without-mysql --without-pear --with-openssl --with-sqlite --enable-discard-path --enable-sockets --enable-bcmath; ".
@@ -235,34 +236,34 @@ function build_php() {
 }
 
 function build_minihttpd() {
-	global $dirs, $mini_httpd_version;
+	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/$mini_httpd_version.tar.gz")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['mini_httpd']}.tar.gz")) {
 		_exec("cd {$dirs['packages']}; ".
-			"fetch http://www.acme.com/software/mini_httpd/$mini_httpd_version.tar.gz");
+			"fetch http://www.acme.com/software/mini_httpd/{$versions['mini_httpd']}.tar.gz");
 	}
-	if (!file_exists("{$dirs['packages']}/$mini_httpd_version")) {
-		_exec("cd {$dirs['packages']}; tar zxf $mini_httpd_version.tar.gz");
+	if (!file_exists("{$dirs['packages']}/{$versions['mini_httpd']}")) {
+		_exec("cd {$dirs['packages']}; tar zxf {$versions['mini_httpd']}.tar.gz");
 	}
-	if (!_is_patched($mini_httpd_version)) {
-		_exec("cd {$dirs['packages']}/$mini_httpd_version; ".
+	if (!_is_patched($versions['mini_httpd'])) {
+		_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; ".
 			"patch < {$dirs['patches']}/packages/mini_httpd.patch");
-		_stamp_package_as_patched($mini_httpd_version);
+		_stamp_package_as_patched($versions['mini_httpd']);
 	}
-	_exec("cd {$dirs['packages']}/$mini_httpd_version; make clean; make");
+	_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; make clean; make");
 }
 
 function build_asterisk() {
-	global $dirs, $asterisk_version;
+	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/$asterisk_version.tar.gz")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['asterisk']}.tar.gz")) {
 		_exec("cd {$dirs['packages']}; ".
-			"fetch http://ftp.digium.com/pub/asterisk/releases/$asterisk_version.tar.gz");
+			"fetch http://ftp.digium.com/pub/asterisk/releases/{$versions['asterisk']}.tar.gz");
 	}
-	if (!file_exists("{$dirs['packages']}/$asterisk_version")) {
-		_exec("cd {$dirs['packages']}; tar zxf $asterisk_version.tar.gz");
+	if (!file_exists("{$dirs['packages']}/{$versions['asterisk']}")) {
+		_exec("cd {$dirs['packages']}; tar zxf {$versions['asterisk']}.tar.gz");
 	}
-	if (!_is_patched($asterisk_version)) {
+	if (!_is_patched($versions['asterisk'])) {
 		$patches = array(
 			"makefile",
 			"cdr_to_syslog",
@@ -273,55 +274,53 @@ function build_asterisk() {
 			//"chan_sip_423"
 		);
 		foreach ($patches as $patch) {
-			_exec("cd {$dirs['packages']}/$asterisk_version; ".
+			_exec("cd {$dirs['packages']}/{$versions['asterisk']}; ".
 				"patch < {$dirs['patches']}/packages/asterisk/asterisk_$patch.patch");
 			_log("\n\n --- patch: $patch -----------\n\n");
 		}
-		_stamp_package_as_patched($asterisk_version);
+		_stamp_package_as_patched($versions['asterisk']);
 	}
 	// copy make options
 	_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
 	// copy wakeme application
-	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/$asterisk_version/apps");
+	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/{$versions['asterisk']}/apps");
 	// copy sqlite cdr module
-	_exec("cp {$dirs['asterisk_modules']}/cdr_sqlite.c {$dirs['packages']}/$asterisk_version/cdr");
+	_exec("cp {$dirs['asterisk_modules']}/cdr_sqlite.c {$dirs['packages']}/{$versions['asterisk']}/cdr");
 	// reconfigure and make
-	_exec("cd {$dirs['packages']}/$asterisk_version/; ./configure; gmake; gmake install");
+	_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ./configure; gmake; gmake install");
 }
 
 function build_zaptel() {
-	global $dirs, $zaptel_version, $oslec_version;
+	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/$zaptel_version")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['zaptel']}")) {
 		_exec("cd {$dirs['packages']}; ".
 			"svn co --username svn --password svn ".
-			"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 $zaptel_version");
+			"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 {$versions['zaptel']}");
 	}
-	if (!_is_patched($zaptel_version)) {
-		_exec("cd {$dirs['packages']}/$zaptel_version; ".
-			"patch < {$dirs['packages']}/$oslec_version/kernel-freebsd/zaptel-trunk.diff");
+	if (!_is_patched($versions['zaptel'])) {
+		_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
+			"patch < {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/zaptel-trunk.diff");
 		//_exec("cd {$dirs['packages']}/$zaptel_version; ".
 		//	"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_calc_xlaw.patch");
-		_stamp_package_as_patched($zaptel_version);
+		_stamp_package_as_patched($versions['zaptel']);
 	}	
 	// remove old headers if they're around
 	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
 	
 	// copy over better ztdummy.c
-	_exec("cd {$dirs['packages']}/$zaptel_version/ztdummy; cp ztdummy.c ztdummy_orig.c");
-	_exec("cp {$dirs['patches']}/packages/zaptel/ztdummy.c {$dirs['packages']}/$zaptel_version/ztdummy");
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}/ztdummy; cp ztdummy.c ztdummy_orig.c");
+	_exec("cp {$dirs['patches']}/packages/zaptel/ztdummy.c {$dirs['packages']}/{$versions['zaptel']}/ztdummy");
 	
 	// make stage directory, clear if present
-	if (file_exists("{$dirs['packages']}/$zaptel_version/STAGE")) {
-		_exec("rm -rf {$dirs['packages']}/$zaptel_version/STAGE");
+	if (file_exists("{$dirs['packages']}/{$versions['zaptel']}/STAGE")) {
+		_exec("rm -rf {$dirs['packages']}/{$versions['zaptel']}/STAGE");
 	}
-	_exec("mkdir {$dirs['packages']}/$zaptel_version/STAGE");
+	_exec("mkdir {$dirs['packages']}/{$versions['zaptel']}/STAGE");
 
 	// compile and install standard version
-	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
-	_exec("cd {$dirs['packages']}/$zaptel_version; make");
-	_exec("cd {$dirs['packages']}/$zaptel_version; make install");
-	_exec("cd {$dirs['packages']}/$zaptel_version; cp -p ".
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; make clean; make; make install");
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; cp -p ".
 			"zaptel/zaptel.ko ".
 			"ztdummy/ztdummy.ko ".
 			"wcfxo/wcfxo.ko ".
@@ -329,69 +328,55 @@ function build_zaptel() {
 			"STAGE");
 	
 	// compile mmx enabled version
-	_exec("cd {$dirs['packages']}/$zaptel_version; ".
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
 		"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
-	_exec("cd {$dirs['packages']}/$zaptel_version; make clean");
-	_exec("cd {$dirs['packages']}/$zaptel_version; make");
-	_exec("cd {$dirs['packages']}/$zaptel_version; cp -p zaptel/zaptel.ko STAGE/mmx_zaptel.ko");
-	_exec("cd {$dirs['packages']}/$zaptel_version; ".
-			"patch -R < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
-
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; make clean; make");
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; cp -p zaptel/zaptel.ko STAGE/mmx_zaptel.ko");
+	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
+		"patch -R < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
 }
 
 function build_isdn() {
-	global $dirs, $i4b_version;
+	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/$i4b_version")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['i4b']}")) {
 		_exec("cd {$dirs['packages']}; ".
-			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b $i4b_version");
+			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b {$versions['i4b']}");
 	}
-	if (!_is_patched($i4b_version)) {
-		_exec("cd {$dirs['packages']}/$i4b_version; ".
+	if (!_is_patched($versions['i4b'])) {
+		_exec("cd {$dirs['packages']}/{$versions['i4b']}; ".
 			"patch < {$dirs['patches']}/packages/i4b_alix23_ehci_usb_amd.patch");
-		_stamp_package_as_patched($i4b_version);
+		_stamp_package_as_patched($versions['i4b']);
 	}
-	_exec("cd {$dirs['packages']}/$i4b_version; svn update");
 	
-	
-	_exec("cd {$dirs['packages']}/$i4b_version/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
-	
-	_exec("cd {$dirs['packages']}/$i4b_version/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
-		
-	_exec("cd {$dirs['packages']}/$i4b_version/trunk/chan_capi/; gmake clean; gmake all");
+	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
+	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
+	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/; gmake clean; gmake all");
 }
 
 function build_msntp() {
-	
 	_exec("cd /usr/ports/net/msntp; make clean; make");
 }
 
 function build_udesc_dump() {
-	
 	_exec("cd /usr/ports/sysutils/udesc_dump; make clean; make");
 }
 
-function build_mpg123() {
-	
-	_exec("cd /usr/ports/audio/mpg123; make clean; make");
-}
-
 function build_msmtp() {
-	global $dirs, $msmtp_version;
+	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/$msmtp_version.tar.bz2")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}.tar.bz2")) {
 		_exec("cd {$dirs['packages']}; ".
-			"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/$msmtp_version.tar.bz2");
+			"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/{$versions['msmtp']}.tar.bz2");
 	}
-	if (!file_exists("{$dirs['packages']}/$msmtp_version")) {
-		_exec("cd {$dirs['packages']}; bunzip2 $msmtp_version.tar.bz2; tar xf $msmtp_version.tar");
+	if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}")) {
+		_exec("cd {$dirs['packages']}; bunzip2 {$versions['msmtp']}.tar.bz2; tar xf {$versions['msmtp']}.tar");
 	}
 	
-	_exec("cd {$dirs['packages']}/$msmtp_version; ".
+	_exec("cd {$dirs['packages']}/{$versions['msmtp']}; ".
 		"./configure --with-ssl=openssl --without-libgsasl --without-libidn --disable-nls; ".
 		"make");
 }
-
 
 function build_tools() {
 	global $dirs;
@@ -404,54 +389,39 @@ function build_tools() {
 }
 
 function build_bootloader() {
-	
 	_exec("cd /sys/boot; make clean; make obj; make");
 }
 
-function build_res_bonjour() {
-	global $dirs;
-	
-	$resver = "res_bonjour-2.0rc1";
-	if (file_exists(("{$dirs['packages']}/$resver"))) {
-		_exec("cd {$dirs['packages']}; fetch http://www.mezzo.net/asterisk/$resver.tgz");
-		_exec("cd {$dirs['packages']}; tar zxf $resver.tgz");
-	}
-	
-	
-	
-}
-
 function build_oslec() {
-	global $dirs, $oslec_version;
+	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/$oslec_version")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['oslec']}")) {
 		_exec("cd {$dirs['packages']}; ".
-			"svn co http://svn.rowetel.com/software/oslec/trunk/ $oslec_version");
+			"svn co http://svn.rowetel.com/software/oslec/trunk/ {$versions['oslec']}");
 	}
-	if (!_is_patched($oslec_version)) {
-		_exec("mkdir {$dirs['packages']}/$oslec_version/kernel-freebsd");
-		_exec("cd {$dirs['packages']}/$oslec_version; patch < {$dirs['patches']}/packages/oslec/oslec_fbsd_0.1.diff");
-		_exec("rm {$dirs['packages']}/$oslec_version/*.orig");
-		_stamp_package_as_patched($oslec_version);
+	if (!_is_patched($versions['oslec'])) {
+		_exec("mkdir {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd");
+		_exec("cd {$dirs['packages']}/{$versions['oslec']}; patch < {$dirs['patches']}/packages/oslec/oslec_fbsd_0.1.diff");
+		_stamp_package_as_patched($versions['oslec']);
 	}
 	
 	// make stage directory, clear if present
-	if (file_exists("{$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE")) {
-		_exec("rm -rf {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE");
+	if (file_exists("{$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE")) {
+		_exec("rm -rf {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE");
 	}
-	_exec("mkdir {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE");
+	_exec("mkdir {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE");
 	
 	// build normal version
-	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean; make");
-	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; cp -p oslec.ko STAGE");
+	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; make clean; make");
+	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; cp -p oslec.ko STAGE");
 
 	// build mmx enabled version
-	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; make clean; make \"MMX=-DUSE_MMX\"");
-	_exec("cd {$dirs['packages']}/$oslec_version/kernel-freebsd; cp -p oslec.ko STAGE/mmx_oslec.ko");
+	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; make clean; make \"MMX=-DUSE_MMX\"");
+	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; cp -p oslec.ko STAGE/mmx_oslec.ko");
 
 	// build and install speedtest
-	_exec("cd {$dirs['packages']}/$oslec_version/user; gmake clean; gmake");
-	_exec("cd {$dirs['packages']}/$oslec_version/user; install -s speedtest /usr/local/bin/oslecspeedtest");
+	_exec("cd {$dirs['packages']}/{$versions['oslec']}/user; gmake clean; gmake");
+	_exec("cd {$dirs['packages']}/{$versions['oslec']}/user; install -s speedtest /usr/local/bin/oslecspeedtest");
 }
 
 function build_hostapd() {
@@ -467,15 +437,12 @@ function build_packages() {
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
-	//build_res_bonjour();
-	//build_fop();
 }
 
 function build_ports() {
 	
 	build_msntp();
 	build_udesc_dump();
-	//build_mpg123();
 }
 
 function build_everything() {
@@ -520,8 +487,7 @@ function create($image_name) {
 function populate_base($image_name) {
 	global $dirs;
 
-	_exec("perl {$dirs['minibsd']}/mkmini.pl ".
-		"{$dirs['minibsd']}/m0n0wall.files / $image_name/rootfs");
+	_exec("perl {$dirs['minibsd']}/mkmini.pl {$dirs['minibsd']}/m0n0wall.files / $image_name/rootfs");
 }
 
 function populate_etc($image_name) {
@@ -565,51 +531,47 @@ function populate_clog($image_name) {
 }
 
 function populate_php($image_name) {
-	global $dirs, $php_version;
+	global $dirs, $versions;
 	
-	_exec("cd {$dirs['packages']}/$php_version/; ".
+	_exec("cd {$dirs['packages']}/{$versions['php']}/; ".
 		"install -s sapi/cgi/php $image_name/rootfs/usr/local/bin");
 	_exec("cp {$dirs['files']}/php.ini $image_name/rootfs/usr/local/lib/");
 }
 
 function populate_minihttpd($image_name) {
-	global $dirs, $mini_httpd_version;
+	global $dirs, $versions;
 	
-	_exec("cd {$dirs['packages']}/$mini_httpd_version; ".
+	_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; ".
 			"install -s mini_httpd $image_name/rootfs/usr/local/sbin");
 }
 
 function populate_msntp($image_name) {
-	
+	global $versions;
+
 	_exec("cd /usr/ports/net/msntp; ".
-		"install -s work/msntp-*/msntp $image_name/rootfs/usr/local/bin");
+		"install -s work/{$versions['msntp']}/msntp $image_name/rootfs/usr/local/bin");
 }
 
 function populate_udesc_dump($image_name) {
-	
-	_exec("cd /usr/ports/sysutils/udesc_dump; ".
-		"install -s work/udesc_dump-*/udesc_dump $image_name/rootfs/sbin");
-}
+	global $versions;
 
-function populate_mpg123($image_name) {
-	
-	_exec("cd /usr/ports/audio/mpg123; ".
-		"install -s work/mpg123-*/mpg123 $image_name/rootfs/usr/local/bin");
+	_exec("cd /usr/ports/sysutils/udesc_dump; ".
+		"install -s work/{$versions['udesc_dump']}/udesc_dump $image_name/rootfs/sbin");
 }
 
 function populate_msmtp($image_name) {
-	global $dirs, $msmtp_version;
+	global $dirs, $versions;
 	
-	_exec("cd {$dirs['packages']}/$msmtp_version/src; ".
+	_exec("cd {$dirs['packages']}/{$versions['msmtp']}/src; ".
 		"install -s msmtp $image_name/rootfs/usr/local/bin");
 }
 
 function populate_asterisk($image_name) {
-	global $dirs, $asterisk_version;
+	global $dirs, $versions;
 	
 	$rootfs = "$image_name/rootfs";
 	
-	_exec("cd {$dirs['packages']}/$asterisk_version/; ".
+	_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ".
 		"gmake install DESTDIR=$rootfs");
 	
 	// link sounds and moh
@@ -648,8 +610,7 @@ function populate_sounds($image_name) {
 
 		// us-english
 		if ($sound_language == "en") {
-			// ulaw and gsm
-			//$formats = array("gsm", "ulaw");
+			// ulaw
 			$formats = array("ulaw");
 			foreach($formats as $format) {
 				$distname = "asterisk-core-sounds-$sound_language-$format-$core_sounds_version";
@@ -672,32 +633,32 @@ function populate_sounds($image_name) {
 				
 				_exec("cp {$dirs['sounds']}/$distname/beep* $image_name/asterisk/sounds");
 				_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/silence");
-			}
-			
-			// wakeme sounds
-			$distname = "asterisk-core-sounds-en-gsm-$core_sounds_version";
-			_exec("cp {$dirs['sounds']}/$distname/minutes.* $image_name/asterisk/sounds");
-			_exec("cp {$dirs['sounds']}/$distname/digits/a-m.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/p-m.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/1*.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/20.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/30.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/40.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/50.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/oclock.* $image_name/asterisk/sounds/digits");
-			_exec("cp {$dirs['sounds']}/$distname/digits/oh.* $image_name/asterisk/sounds/digits");
-			
-			$distname = "asterisk-extra-sounds-en-gsm-$extra_sounds_version";
-			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
+				
+				
+				// wakeme sounds
+				_exec("cp {$dirs['sounds']}/$distname/minutes.* $image_name/asterisk/sounds");
+				_exec("cp {$dirs['sounds']}/$distname/digits/a-m.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/p-m.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/1*.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/20.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/30.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/40.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/50.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/oclock.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/oh.* $image_name/asterisk/sounds/digits");
+
+				$distname = "asterisk-extra-sounds-en-$format-$extra_sounds_version";
+				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
 					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
-					
-			if (!file_exists("{$dirs['sounds']}/$distname")) {
-				_exec("mkdir {$dirs['sounds']}/$distname");
-				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
-			}
-			
-			foreach($wake_me_sounds as $sound) {
-				_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds");
+				}
+				if (!file_exists("{$dirs['sounds']}/$distname")) {
+					_exec("mkdir {$dirs['sounds']}/$distname");
+					_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+				}
+
+				foreach($wake_me_sounds as $sound) {
+					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds");
+				}
 			}
 
 		// english gb
@@ -747,8 +708,7 @@ function populate_sounds($image_name) {
 
 		// french canadian
 		} else if ($sound_language == "fr-ca") {
-			// ulaw and gsm
-			//$formats = array("gsm", "ulaw");
+			// ulaw
 			$formats = array("ulaw");
 			foreach($formats as $format) {
 				$distname = "asterisk-core-sounds-fr-$format-$core_sounds_version";
@@ -773,9 +733,8 @@ function populate_sounds($image_name) {
 
 		// spanish
 		} else if ($sound_language == "es") {
-			// gsm & 711u
-			//$formats = array("gsm", "711u");
-			$formats = array("711u");
+			// ulaw
+			$formats = array("711u"); // XXX : files aren't automatically renamed here!
 			foreach($formats as $format) {
 				$distname = "asterisk-voces-es-v1_2-$format-voipnovatos";
 				$disturl = "http://www.voipnovatos.es/voces";
@@ -929,7 +888,6 @@ function populate_sounds($image_name) {
 	}
 	
 	// music on hold
-	//$formats = array("gsm", "ulaw");
 	$formats = array("ulaw");
 	foreach($formats as $format) {
 		
@@ -952,21 +910,15 @@ function populate_sounds($image_name) {
 }
 
 function populate_zaptel($image_name) {
-	global $dirs, $zaptel_version;
-/* moved to m0n0wall.files
-	_exec("cd {$dirs['packages']}/$zaptel_version/STAGE; ".
-		"install -s ztcfg $image_name/rootfs/sbin; ".
-		"cp lib/* $image_name/rootfs/lib"); */
+	global $dirs, $versions;
+
+	/* moved to m0n0wall.files */
 }
 
 function populate_isdn($image_name) {
-	global $dirs, $i4b_version;
-/* moved to m0n0wall.files
-	_exec("cd {$dirs['packages']}/i4b/trunk/i4b/src/usr.sbin/i4b; ".
-		"cp -p isdnconfig/isdnconfig isdndebug/isdndebug isdndecode/isdndecode ".
-		"isdnmonitor/isdnmonitor isdntest/isdntest isdntrace/isdntrace ".
-		"$image_name/rootfs/sbin; ");*/
-	_exec("cp {$dirs['packages']}/$i4b_version/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
+	global $dirs, $versions;
+
+	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
 }
 
 function populate_tools($image_name) {
@@ -991,25 +943,25 @@ function populate_phpconf($image_name) {
 }
 
 function populate_webgui($image_name) {
-	global $dirs, $scriptaculous_version, $jquery_version;
+	global $dirs, $versions;
 	
 	_exec("cp {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
 	
-	if (!file_exists("{$dirs['packages']}/$scriptaculous_version.zip")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
 		_exec("cd {$dirs['packages']}; ".
-			"fetch http://script.aculo.us/dist/$scriptaculous_version.zip");
+			"fetch http://script.aculo.us/dist/{$versions['scriptaculous']}.zip");
 	}
-	if (!file_exists("{$dirs['packages']}/$scriptaculous_version")) {
-		_exec("cd {$dirs['packages']}; unzip $scriptaculous_version.zip");
+	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}")) {
+		_exec("cd {$dirs['packages']}; unzip {$versions['scriptaculous']}.zip");
 	}
-	_exec("cd {$dirs['packages']}/$scriptaculous_version; ".
+	_exec("cd {$dirs['packages']}/{$versions['scriptaculous']}; ".
 		"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
 
-	if (!file_exists("{$dirs['packages']}/$jquery_version.js")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['jquery']}.js")) {
 		_exec("cd {$dirs['packages']}; ".
-			"fetch http://jqueryjs.googlecode.com/files/$jquery_version.js");
+			"fetch http://jqueryjs.googlecode.com/files/{$versions['jquery']}.js");
 	}
-	_exec("cp {$dirs['packages']}/$jquery_version.js $image_name/rootfs/usr/local/www/jquery.js");
+	_exec("cp {$dirs['packages']}/{$versions['jquery']}.js $image_name/rootfs/usr/local/www/jquery.js");
 
 	if (!file_exists("{$dirs['packages']}/jquery.selectboxes.js")) {
 		_exec("cd {$dirs['packages']}; ".
@@ -1019,7 +971,7 @@ function populate_webgui($image_name) {
 }
 
 function populate_libs($image_name) {
-	global $dirs, $asterisk_version;
+	global $dirs;
 	
 	_exec("perl {$dirs['minibsd']}/mklibs.pl $image_name > tmp.libs");
 	_exec("perl {$dirs['minibsd']}/mkmini.pl tmp.libs / $image_name/rootfs");
@@ -1041,19 +993,21 @@ function populate_everything($image_name) {
 	populate_msmtp($image_name);
 	populate_zaptel($image_name);
 	populate_isdn($image_name);
-	//populate_mpg123($image_name);
 	populate_asterisk($image_name);
 	populate_sounds($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
 	populate_webgui($image_name);
 	populate_libs($image_name);
+	
+	$fd = fopen("$image_name/rootfs/etc/versions", "w");
+	fwrite($fd, _generate_versions_file());
+	fclose($fd);
 }
 
 function package($platform, $image_name) {
-	global $dirs;
+	global $dirs, $versions;
 	global $mfsroot_pad, $asterisk_pad, $image_pad;
-	global $zaptel_version, $oslec_version, $asterisk_version;
 	global $low_power_modules, $low_power_libraries;
 		
 	_set_permissions($image_name);
@@ -1079,11 +1033,11 @@ function package($platform, $image_name) {
 	}
 	
 	// ...zaptel modules
-	_exec("cp {$dirs['packages']}/$zaptel_version/STAGE/*.ko tmp/stage/boot/kernel/");
+	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko tmp/stage/boot/kernel/");
 	// ...oslec modules
-	_exec("cp {$dirs['packages']}/$oslec_version/kernel-freebsd/STAGE/*.ko tmp/stage/boot/kernel/");
+	_exec("cp {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE/*.ko tmp/stage/boot/kernel/");
 	
-	// XXX i4b module
+	// XXX : i4b module should be used here instead of being built into the kernel
 	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");
 	
 	// XXX quick fix to remove modules' libraries not needed for these
@@ -1278,6 +1232,30 @@ function _is_patched($package_version) {
 	global $dirs;
 	
 	return(file_exists("{$dirs['packages']}/$package_version/$package_version.patched"));
+}
+
+function _generate_versions_file() {
+	global $dirs, $versions;
+	
+	$contents = "";
+
+	foreach ($versions as $v) {
+		if (strstr($v, "trunk")) {
+			$contents .= $v . " : revision " . _get_svn_revision_number($dirs['packages'] . "/" . $v) . "\n";
+		} else {
+			$contents .= $v . "\n";
+		}
+	}
+	
+	return $contents;
+}
+
+function _get_svn_revision_number($path) {
+
+	exec("svn info $path | grep Revision", $output);
+	$pair = explode(" ", $output[0]);
+
+	return $pair[1];
 }
 
 function _platform_to_kernel($platform) {
