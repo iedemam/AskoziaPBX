@@ -126,26 +126,15 @@ function isdn_get_dialpatterns() {
 /**
  * Searches dmesg for recognized ISDN units.
  * Returns an array indexed by module number.
- * XXX : should be switched to use new get_dmesg functions
  */
 function isdn_get_recognized_unit_numbers() {
-	global $g;
-	
-	//$dmesg_lines = explode("\n", file_get_contents("{$g['varlog_path']}/dmesg.boot"));
-	exec("/sbin/dmesg", $dmesg_lines);
-	
-	/* find last copyright line (output from previous boots may be present) */
-	$lastcpline = 0;
-	
-	for ($i = 0; $i < count($dmesg_lines); $i++) {
-		if (strstr($dmesg_lines[$i], "Copyright (c) 1992-"))
-			$lastcpline = $i;
-	}
-	
+
+	$dmesg_lines = system_get_dmesg_as_array();
+
 	$controllers = array();
-	for ($i = $lastcpline; $i < count($dmesg_lines); $i++) {
-		if (strpos($dmesg_lines[$i], "Attaching I4B controller") !== false) {
-			preg_match("/\b[0-9]+\b/", $dmesg_lines[$i], &$matches);
+	foreach ($dmesg_lines as $line) {
+		if (strpos($line, "Attaching I4B controller") !== false) {
+			preg_match("/\b[0-9]+\b/", $line, &$matches);
 			$controllers[$matches[0]] = "found";
 		}
 	}

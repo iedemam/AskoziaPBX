@@ -616,24 +616,7 @@ EOD;
  * Returns most recent dmesg contents as a single string
  */
 function system_get_dmesg_as_string() {
-
-	exec("/sbin/dmesg", $dmesg_lines);
-	$n = count($dmesg_lines);
-	
-	/* find last copyright line (output from previous boots may be present) */
-	$lastcpline = 0;
-	for ($i = 0; $i < $n; $i++) {
-		if (strstr($dmesg_lines[$i], "Copyright (c) 1992-")) {
-			$lastcpline = $i;
-		}
-	}
-	
-	$dmesg_string = "";
-	for ($i = $lastcpline; $i < $n; $i++) {
-		$dmesg_string .= $dmesg_lines[$i] . "\n";
-	}
-	
-	return $dmesg_string;
+	return implode("\n", system_get_dmesg_as_array());
 }
 
 /**

@@ -136,34 +136,24 @@ function analog_get_dialpatterns() {
  * Searches dmesg for recognized a/b modules.
  * Returns an array indexed by module number containing the module type as value.
  * XXX : multiple cards will still cause problems here
- * XXX : should be switched to use new get_dmesg functions
  */
 function analog_get_recognized_ab_unit_numbers() {
-	global $g;
 
-	exec("/sbin/dmesg", $dmesg_lines);
-	
-	/* find last copyright line (output from previous boots may be present) */
-	$lastcpline = 0;
-	
-	for ($i = 0; $i < count($dmesg_lines); $i++) {
-		if (strstr($dmesg_lines[$i], "Copyright (c) 1992-"))
-			$lastcpline = $i;
-	}
-	
+	$dmesg_lines = system_get_dmesg_as_array();
+
 	$controllers = array();
-	for ($i = $lastcpline; $i < count($dmesg_lines); $i++) {
+	foreach ($dmesg_lines as $line) {
 		// fxo ports
-		if (preg_match("/\b[0-9]+: Installed -- AUTO FXO/", $dmesg_lines[$i], &$matches)) {
+		if (preg_match("/\b[0-9]+: Installed -- AUTO FXO/", $line, &$matches)) {
 			$num = substr($matches[0], 0, strpos($matches[0],":"));
 			$controllers[$num+1] = "fxo";
 
-		} else if (strpos($dmesg_lines[$i], "Found a Wildcard FXO: ") !== false) {
+		} else if (strpos($line, "Found a Wildcard FXO: ") !== false) {
 			$controllers[1] = "fxo";
 
 
 		// fxs ports
-		} else if (preg_match("/\b[0-9]+: Installed -- AUTO FXS/", $dmesg_lines[$i], &$matches)) {
+		} else if (preg_match("/\b[0-9]+: Installed -- AUTO FXS/", $line, &$matches)) {
 			$num = substr($matches[0], 0, strpos($matches[0],":"));
 			$controllers[$num+1] = "fxs";
 		}
