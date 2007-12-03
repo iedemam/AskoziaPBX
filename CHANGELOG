@@ -15,6 +15,7 @@
  - updated: core sounds to 1.4.8
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8
  - changed: additional sounds used for WakeMe application are now in the higher quality ulaw format
+ - changed: callgroup member selector now displays the phone's extension
  - bug: call groups now define their "read back" number properly (reported by Janåke Rönnblom)
 
 2007.11.16 - pb12.2
