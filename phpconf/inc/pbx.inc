@@ -386,6 +386,31 @@ function pbx_get_phones() {
 }
 
 /**
+ * Returns a phone based on its uniqid
+ */
+function pbx_get_phone($uniqid) {
+
+	if (strstr($uniqid, "SIP-PHONE")) {
+		return sip_get_phone($uniqid);
+			
+	} else if (strstr($uniqid, "IAX-PHONE")) {
+		return iax_get_phone($uniqid);
+
+	} else if (strstr($uniqid, "ISDN-PHONE")) {
+		return isdn_get_phone($uniqid);
+
+	} else if (strstr($uniqid, "ANALOG-PHONE")) {
+		return analog_get_phone($uniqid);
+
+	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
+		return external_get_phone($uniqid);
+
+	} else {
+		return "ERROR: unmatched uniqid in pbx_get_phone!";
+	}
+}
+
+/**
  * Sorts phones by Caller ID
  * XXX : this sort differs in behavior from the individual _sort_phones() functions
  */
@@ -485,28 +510,28 @@ function pbx_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $read
 	if ($id[0] == "SIP" && $id[1] == "PHONE") {
 		$phone = sip_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
+		$dial .= extensions_generate_missed_call_notifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|SIP/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 			
 	} else if ($id[0] == "IAX" && $id[1] == "PHONE") {
 		$phone = iax_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
+		$dial .= extensions_generate_missed_call_notifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|IAX2/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ISDN" && $id[1] == "PHONE") {
 		$phone = isdn_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
+		$dial .= extensions_generate_missed_call_notifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|CAPI/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "ANALOG" && $id[1] == "PHONE") {
 		$phone = analog_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
-		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
+		$dial .= extensions_generate_missed_call_notifications_line($exten, $phone);
 		$dial .= "exten => $exten,n,".
 			"Macro(vm|ZAP/{$phone['interface']}/{$phone['extension']}|{$phone['extension']}|$readbacknum|to)\n";
 
@@ -520,7 +545,8 @@ function pbx_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $read
 		$phone = external_get_phone($uniqid);
 		$readbacknum = ($readbacknum) ? $readbacknum : $phone['extension'];
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
-		$dial .= _extensions_add_sendnotifications_line($exten, $phone);
+		$dial .= extensions_generate_missed_call_notifications_line($exten, $phone);
+		// XXX : CAPI exception needed here!‚
 		if ($technology == "ZAP") {
 			$zprov = analog_get_provider($phone['dialprovider']);
 			$dial .= "exten => $exten,n,".
@@ -531,64 +557,18 @@ function pbx_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $read
 		}
 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
+		// get our group
 		$group = callgroups_get_group($uniqid);
-		$dial_strings = array();
-		$n = count($group['groupmember']);
-		for ($i = 0; $i < $n; $i++) {
-			$subid = split("-", $group['groupmember'][$i]);
-			if ($subid[0] == "SIP" && $subid[1] == "PHONE") {
-				$phone = sip_get_phone($group['groupmember'][$i]);
-				if ($i == 0) {
-					$vm_phone = $phone;
-				}
-				$dial_strings[] = "SIP/{$phone['extension']}";
-        	
-			} else if ($subid[0] == "IAX" && $subid[1] == "PHONE") {
-				$phone = iax_get_phone($group['groupmember'][$i]);
-				if ($i == 0) {
-					$vm_phone = $phone;
-				}
-				$dial_strings[] = "IAX2/{$phone['extension']}";        	
-			
-			} else if ($subid[0] == "ISDN" && $subid[1] == "PHONE") {
-				$phone = isdn_get_phone($group['groupmember'][$i]);
-				if ($i == 0) {
-					$vm_phone = $phone;
-				}
-				$dial_strings[] = "CAPI/{$phone['interface']}/{$phone['extension']}";
-				
-			} else if ($subid[0] == "ANALOG" && $subid[1] == "PHONE") {
-				$phone = analog_get_phone($group['groupmember'][$i]);
-				if ($i == 0) {
-					$vm_phone = $phone;
-				}
-				$dial_strings[] = "ZAP/{$phone['interface']}/{$phone['extension']}";
-
-			} else if ($subid[0] == "EXTERNAL" && $subid[1] == "PHONE") {
-				$phone = external_get_phone($group['groupmember'][$i]);
-				if ($i == 0) {
-					$vm_phone = $phone;
-				}
-				$technology = pbx_uniqid_to_technology($phone['dialprovider']);
-				if ($technology == "ZAP") {
-					$zprov = analog_get_provider($phone['dialprovider']);
-					$dial_strings[] = "$technology/{$zprov['interface']}/{$phone['dialstring']}";
-				} else {
-					$dial_strings[] = "$technology/{$phone['dialprovider']}/{$phone['dialstring']}";	
-				}
-			}
-			
-		}
+		// generate the group's dialstring
+		$group_dialstring = extensions_phone_uniqids_to_dialstring($group['groupmember']);
+		// set the voicemail phone to the first group entry
+		$vm_phone = pbx_get_phone($group['groupmember'][0]);
+		// set the read back number
 		$readbacknum = ($readbacknum) ? $readbacknum : $vm_phone['extension'];
-		$n = count($dial_strings);
-		$dstring = $dial_strings[0];
-		for ($i = 1; $i < $n; $i++) {
-			$dstring .= "&" . $dial_strings[$i];
-		}
 
-		$dial .= _extensions_add_sendnotifications_line($exten, $vm_phone);
+		$dial .= extensions_generate_missed_call_notifications_line($exten, $vm_phone);
 		$dial .= "exten => $exten,n,".
-			"Macro(vm|$dstring|{$vm_phone['extension']}|$readbacknum|to)\n";
+			"Macro(vm|$group_dialstring|{$vm_phone['extension']}|$readbacknum|to)\n";
 
 	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
 		$app = applications_get_app($uniqid);
@@ -651,24 +631,6 @@ function pbx_uniqid_to_name($uniqid) {
 	}
 
 	return "ERROR:UNIQID_TO_NAME_FAILED($uniqid)";
-}
-
-/**
- * Returns the extension associated with the supplied uniqid.
- */
-function pbx_uniqid_to_extension($uniqid) {
-	global $config, $uniqid_map;
-	
-	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
-
-	if ($pair[1] == "phone") {
-		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['extension'];
-	}
-	if ($pair[1] == "room") {
-		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['extension'];
-	}
-
-	return "ERROR:UNIQID_TO_EXTENSION_FAILED($uniqid)";
 }
 
 /**

@@ -57,6 +57,15 @@ function isdn_sort_providers() {
 }
 
 /**
+ * Returns a specific provider based on its uniqid
+ */
+function isdn_get_provider($uniqid) {
+	global $config, $uniqid_map;
+
+	return $config['isdn']['provider'][$uniqid_map[$uniqid]];
+}
+
+/**
  * Returns all phones sorted by extension.
  * If no phones are defined, the global array is initialized.
  */
