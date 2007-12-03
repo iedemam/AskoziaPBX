@@ -77,7 +77,7 @@ if ($_POST) {
 	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
-	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
+	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
 	

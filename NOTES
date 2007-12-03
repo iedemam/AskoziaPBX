@@ -1,4 +1,7 @@
 pb13
+- add core changes in m0n0wall r222
+- make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
+- enter dns server via console
 - nat=yes|no optional an all sip accounts
 - dial timeout options
 - single tone voicemails...
@@ -10,62 +13,21 @@ pb13
 - set a more sensible default for analog phone echo canceller size
 - difference between incoming extensions and callgroups should be made clear in the gui
 	- perhaps destinations defined with the same pattern should be treated as improv-callgroups
-- start writing short wiki entries for new features as they are impelemented
+- start writing short wiki entries for new features as they are implemented
+- phones displayed in drag-and-drop lists should perhaps also show their extension
 
 bug: new Russian voicemail translation is missing words upon reception...
-
----------------------------------------------------------------------
-debug info for dtmf blast and call notifications bugs:
----------------------------------------------------------------------
-- Starting simple switch on 'Zap/4-1'
-- Executing [s@T-Com-incoming:1] NoOp("Zap/4-1", "") in new stack
-- Executing [s@T-Com-incoming:2] Ringing("Zap/4-1", "") in new stack
-- Executing [s@T-Com-incoming:3] Wait("Zap/4-1", "1") in new stack
-- Executing [s@T-Com-incoming:4] Set("Zap/4-1", "SENDNOTIFICATIONS="michael@askozia.com"") in new stack
-- Executing [s@T-Com-incoming:5] Macro("Zap/4-1", "vm|ZAP/3/211|211|05331901858|to") in new stack
-- Executing [s@macro-vm:1] Dial("Zap/4-1", "ZAP/3/211|20|to") in new stack
-han_zap.c:1840 in zt_call: Unable to reset default ring on 'Zap/3-1'
-- Called 3/211
-- Zap/3-1 is ringing
-- Zap/3-1 is ringing
-- Zap/3-1 answered Zap/4-1
-- parse_srv: SRV mapped to host fwd.pulver.com, port 5060
-- Hungup 'Zap/3-1'
-= Spawn extension (macro-vm, s, 1) exited non-zero on 'Zap/4-1' in macro 'vm'
-= Spawn extension (macro-vm, s, 1) exited non-zero on 'Zap/4-1'
-- Executing [h@macro-vm:1] GosubIf("Zap/4-1", "1?reallyhungup") in new stack
-- Executing [h@macro-vm:4] Set("Zap/4-1", "MISSEDCAUSE=hungup") in new stack
-- Executing [h@macro-vm:5] Return("Zap/4-1", "") in new stack
-- Executing [h@macro-vm:2] GosubIf("Zap/4-1", "1?notify") in new stack
-- Executing [h@macro-vm:6] Macro("Zap/4-1", "email") in new stack
-
-
-chan_zap.c:1833
-/* Choose proper cadence */
-if ((p->distinctivering > 0) && (p->distinctivering <= num_cadence)) {
-	if (ioctl(p->subs[SUB_REAL].zfd, ZT_SETCADENCE, &cadences[p->distinctivering - 1]))
-		ast_log(LOG_WARNING, "Unable to set distinctive ring cadence %d on '%s'\n", p->distinctivering, ast->name);
-	p->cidrings = cidrings[p->distinctivering - 1];
-} else {
-	if (ioctl(p->subs[SUB_REAL].zfd, ZT_SETCADENCE, NULL))
-		ast_log(LOG_WARNING, "Unable to reset default ring on '%s'\n", ast->name);
-	p->cidrings = p->sendcalleridafter;
-}
----------------------------------------------------------------------
 
 storage
 - device states: unconfigured, configured, inactive, active, healthy, dirty, clean, mounted, unmounted...?!
 - fs options?
 - ajax format status bar
-- what happens when da0 is recognized as da1 and v.v, how to get a uniqid for each disk
 
 general improvements
 - better documentation on codec options (passthru esp.)
 - all data should be accessed with a function, no more direct $config queries
 - multiple vs single displays of a gui element on a page should be generalized, there are 5 wheels here already...
 - translation storage should be generalized and combined with help.inc
-- guiconfig.inc is huge...
-- searching dmesg output should be put into a function
 
 sooner
 - fix extensions_exists

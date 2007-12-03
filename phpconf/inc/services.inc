@@ -142,7 +142,7 @@ function services_dnsupdate_process() {
 	/* Dynamic DNS updating active? */
 	if (isset($config['dnsupdate']['enable'])) {
 		
-		$wanip = get_current_public_address();
+		$wanip = network_get_current_public_ip_address();
 		
 		if ($wanip) {
 				

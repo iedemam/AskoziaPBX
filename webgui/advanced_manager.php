@@ -36,7 +36,7 @@ require("guiconfig.inc");
 if (!is_array($config['services']['manager']['manager-user']))
 	$config['services']['manager']['manager-user'] = array();
 
-pbx_sort_manager_users();
+manager_sort_users();
 $a_users = &$config['services']['manager']['manager-user'];
 
 if ($_GET['act'] == "del") {
@@ -52,7 +52,7 @@ if ($_GET['act'] == "del") {
 if (file_exists($d_managerconfdirty_path)) {
 	$retval = 0;
 	config_lock();
-	$retval |= pbx_manager_conf_generate();
+	$retval |= manager_conf_generate();
 	config_unlock();
 
 	$savemsg = get_std_save_message($retval);

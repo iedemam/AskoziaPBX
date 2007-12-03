@@ -96,20 +96,20 @@ if ($_POST) {
 	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
-	if (($_POST['port'] && !is_port($_POST['port']))) {
+	if (($_POST['port'] && !verify_is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}
-	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
+	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
-	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+	if (($_POST['qualify'] && !verify_is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
 	
-	if (($_POST['calllimit'] && !is_numericint($_POST['calllimit']))) {
+	if (($_POST['calllimit'] && !verify_is_numericint($_POST['calllimit']))) {
 		$input_errors[] = "A whole number of calls must be entered for the \"call limit.\"";
 	}
-	if (($_POST['busylimit'] && !is_numericint($_POST['busylimit']))) {
+	if (($_POST['busylimit'] && !verify_is_numericint($_POST['busylimit']))) {
 		$input_errors[] = "A whole number of calls must be entered for the \"busy limit.\"";
 	}
 

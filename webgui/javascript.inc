@@ -34,7 +34,7 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 	$options[] = array("", "");
 	$pad = "&nbsp;&nbsp;&nbsp;";
 
-	if (count($a_items = dialplan_get_callgroups())) {
+	if (count($a_items = callgroups_get_groups())) {
 		$options[] = array("", "Call Groups");
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name']);
@@ -83,7 +83,7 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
-	if (count($a_items = dialplan_get_applications())) {
+	if (count($a_items = applications_get_apps())) {
 		$options[] = array("", "Applications");
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name']);

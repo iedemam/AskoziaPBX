@@ -53,19 +53,19 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid port
-	if ($_POST['port'] && !is_port($_POST['port'])) {
+	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
 		$input_errors[] = "A valid port must be specified.";
 	}
 	// defaultexpiry is numeric
-	if ($_POST['defaultexpiry'] && !is_numericint($_POST['defaultexpiry'])) {
+	if ($_POST['defaultexpiry'] && !verify_is_numericint($_POST['defaultexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Default Registration Expiration\" timeout.";
 	}
 	// minexpiry is numeric
-	if ($_POST['minexpiry'] && !is_numericint($_POST['minexpiry'])) {
+	if ($_POST['minexpiry'] && !verify_is_numericint($_POST['minexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout.";
 	}
 	// maxexpiry is numeric
-	if ($_POST['maxexpiry'] && !is_numericint($_POST['maxexpiry'])) {
+	if ($_POST['maxexpiry'] && !verify_is_numericint($_POST['maxexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout.";
 	}
 

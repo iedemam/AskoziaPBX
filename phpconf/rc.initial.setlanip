@@ -42,7 +42,7 @@
 		if ($lanip === "") {
 			exit(0);
 		}
-	} while (!is_ipaddr($lanip));
+	} while (!verify_is_ipaddress($lanip));
 
 	echo "\nSubnet masks are to be entered as bit counts (as in CIDR notation).\n";
 	echo "e.g. 255.255.255.0 = 24\n";
@@ -64,7 +64,7 @@
 		if ($gwip === "") {
 			exit(0);
 		}
-	} while (!is_ipaddr($gwip));
+	} while (!verify_is_ipaddress($gwip));
 	
 	
 	$config['interfaces']['lan']['ipaddr'] = $lanip;

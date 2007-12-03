@@ -36,7 +36,7 @@ require("guiconfig.inc");
 if (!is_array($config['dialplan']['application']))
 	$config['dialplan']['application'] = array();
 
-dialplan_sort_applications();
+applications_sort_apps();
 $a_applications = &$config['dialplan']['application'];
 
 

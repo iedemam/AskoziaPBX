@@ -92,13 +92,13 @@ if ($_POST) {
 	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
 		$input_errors[] = "A phone with this extension already exists.";
 	}
-	if (($_POST['port'] && !is_port($_POST['port']))) {
+	if (($_POST['port'] && !verify_is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}
-	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
+	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
-	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+	if (($_POST['qualify'] && !verify_is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
 

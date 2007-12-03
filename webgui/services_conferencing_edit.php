@@ -64,7 +64,7 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (!is_numericint($_POST['number'])) {
+	if (!verify_is_numericint($_POST['number'])) {
 		$input_errors[] = "Conference room numbers must be numeric.";
 	}
 	if (!isset($id) && in_array($_POST['number'], conferencing_get_extensions())) {
@@ -72,10 +72,10 @@ if ($_POST) {
 	} else if (!isset($id) && in_array($_POST['number'], pbx_get_extensions())) {
 		$input_errors[] = "Conference number matches an existing extension.";
 	}
-	if (($_POST['pin'] && !is_numericint($_POST['pin']))) {
+	if (($_POST['pin'] && !verify_is_numericint($_POST['pin']))) {
 		$input_errors[] = "Conference pins must be numeric.";
 	}
-	/*if (($_POST['adminpin'] && !is_numericint($_POST['adminpin']))) {
+	/*if (($_POST['adminpin'] && !verify_is_numericint($_POST['adminpin']))) {
 		$input_errors[] = "Conference administration pins must be numeric.";
 	}*/
 

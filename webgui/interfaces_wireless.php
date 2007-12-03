@@ -104,11 +104,11 @@ if ($_POST) {
 		
 		do_input_validation($_POST, explode(" ", $reqdfields), explode(",", $reqdfieldsn), &$input_errors);
 		
-		/*if ($_POST['radiusip'] && !is_ipaddr($_POST['radiusip']))
+		/*if ($_POST['radiusip'] && !verify_is_ipaddress($_POST['radiusip']))
 			$input_errors[] = "A valid RADIUS IP address must be specified.";
-		if ($_POST['radiusauthport'] && !is_port($_POST['radiusauthport']))
+		if ($_POST['radiusauthport'] && !verify_is_port($_POST['radiusauthport']))
 			$input_errors[] = "A valid RADIUS authentication port number must be specified.";
-		if ($_POST['radiusacctport'] && !is_port($_POST['radiusacctport']))
+		if ($_POST['radiusacctport'] && !verify_is_port($_POST['radiusacctport']))
 			$input_errors[] = "A valid RADIUS accounting port number must be specified.";*/
 	
 		if ($_POST['wpapsk'] && !(strlen($_POST['wpapsk']) >= 8 && strlen($_POST['wpapsk']) <= 63))

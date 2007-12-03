@@ -36,7 +36,7 @@ require("guiconfig.inc");
 if (!is_array($config['dialplan']['callgroup']))
 	$config['dialplan']['callgroup'] = array();
 
-dialplan_sort_callgroups();
+callgroups_sort_groups();
 $a_callgroups = &$config['dialplan']['callgroup'];
 
 

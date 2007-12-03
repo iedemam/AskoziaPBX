@@ -104,13 +104,13 @@ if ($_POST) {
 	if (($_POST['secret'] && !pbx_is_valid_secret($_POST['secret']))) {
 		$input_errors[] = "A valid secret must be specified.";
 	}
-/*	if (($_POST['host'] && !is_hostname($_POST['host']))) {
+/*	if (($_POST['host'] && !verify_is_hostname($_POST['host']))) {
 		$input_errors[] = "A valid host must be specified.";
 	}*/
-	if (($_POST['port'] && !is_port($_POST['port']))) {
+	if (($_POST['port'] && !verify_is_port($_POST['port']))) {
 		$input_errors[] = "A valid port must be specified.";
 	}
-	if (($_POST['qualify'] && !is_numericint($_POST['qualify']))) {
+	if (($_POST['qualify'] && !verify_is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
 	if ($_POST['calleridsource'] == "string" && !pbx_is_valid_callerid_string($_POST['calleridstring'])) {

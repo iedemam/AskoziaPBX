@@ -69,10 +69,10 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['dialstring'] && !is_numericint($_POST['dialstring']))) {
+	if (($_POST['dialstring'] && !verify_is_numericint($_POST['dialstring']))) {
 		$input_errors[] = "A valid dialstring must be entered.";
 	}
-	if (($_POST['voicemailbox'] && !is_email_address($_POST['voicemailbox']))) {
+	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
 	

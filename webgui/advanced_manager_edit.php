@@ -37,7 +37,7 @@ require("guiconfig.inc");
 if (!is_array($config['services']['manager']['manager-user']))
 	$config['services']['manager']['manager-user'] = array();
 
-pbx_sort_manager_users();
+manager_sort_users();
 $a_users = &$config['services']['manager']['manager-user'];
 
 $id = $_GET['id'];

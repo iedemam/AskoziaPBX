@@ -61,27 +61,27 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	$_POST['spoofmac'] = str_replace("-", ":", $_POST['spoofmac']);
-	if (($_POST['spoofmac'] && !is_macaddr($_POST['spoofmac']))) {
+	if (($_POST['spoofmac'] && !verify_is_macaddress($_POST['spoofmac']))) {
 		$input_errors[] = "A valid MAC address must be specified.";
 	}
 	
-	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
+	if (($_POST['ipaddr'] && !verify_is_ipaddress($_POST['ipaddr']))) {
 		$input_errors[] = "A valid IP address must be specified.";
 	}
 	if (($_POST['subnet'] && !is_numeric($_POST['subnet']))) {
 		$input_errors[] = "A valid subnet bit count must be specified.";
 	}
-	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
+	if (($_POST['gateway'] && !verify_is_ipaddress($_POST['gateway']))) {
 		$input_errors[] = "A valid gateway must be specified.";
 	}
-	if (($_POST['dns1'] && !is_ipaddr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipaddr($_POST['dns2'])) || ($_POST['dns3'] && !is_ipaddr($_POST['dns3']))) {
+	if (($_POST['dns1'] && !verify_is_ipaddress($_POST['dns1'])) || ($_POST['dns2'] && !verify_is_ipaddress($_POST['dns2'])) || ($_POST['dns3'] && !verify_is_ipaddress($_POST['dns3']))) {
 		$input_errors[] = "A valid IP address must be specified for the primary/secondary/tertiary DNS server.";
 	}
 	
 	if ($_POST['topology'] == "natstatic") {
 		if (!$_POST['extipaddr']) {
 			$input_errors[] = "A public IP address must be entered for this topology.";
-		} else if (!is_ipaddr($_POST['extipaddr'])) {
+		} else if (!verify_is_ipaddress($_POST['extipaddr'])) {
 			$input_errors[] = "A valid public IP address must be entered for this topology.";
 		}
 	}
@@ -89,7 +89,7 @@ if ($_POST) {
 	if ($_POST['topology'] == "natdynamichost") {
 		if (!$_POST['exthostname']) {
 			$input_errors[] = "A public hostname must be entered for this topology.";
-		} else if (!is_domain($_POST['exthostname'])) {
+		} else if (!verify_is_domain($_POST['exthostname'])) {
 			$input_errors[] = "A valid public hostname must be entered for this topology.";
 		}
 	}

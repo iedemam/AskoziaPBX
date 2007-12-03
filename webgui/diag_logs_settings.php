@@ -49,7 +49,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	if ($_POST['enable'] && !is_ipaddr($_POST['remoteserver'])) {
+	if ($_POST['enable'] && !verify_is_ipaddress($_POST['remoteserver'])) {
 		$input_errors[] = "A valid IP address must be specified.";
 	}
 	if (($_POST['nentries'] < 5) || ($_POST['nentries'] > 1000)) {

@@ -123,9 +123,8 @@ function network_lan_configure() {
 /**
  * Returns the current public IP address.
  * XXX : incomplete implementation, does not return a value if topology is 'natdynamic'
- * XXX : rename needed
  */
-function get_current_public_address() {
+function network_get_current_public_ip_address() {
 	global $config, $g;
 	
 	$lancfg = $config['interfaces']['lan'];
@@ -140,9 +139,8 @@ function get_current_public_address() {
 
 /**
  * Returns the given interface's MAC address
- * XXX : rename needed
  */
-function get_interface_mac($interface) {
+function network_get_interface_mac($interface) {
   
 	/* build interface list with netstat */
 	exec("/usr/bin/netstat -I $interface -nW -f link", $linkinfo);
@@ -196,6 +194,138 @@ function network_get_interfaces() {
 	}
 	
 	return $iflist;
+}
+
+/**
+ * Returns the subnet address given a host address and a subnet bit count
+ */
+function gen_subnet($ipaddr, $bits) {
+	if (!verify_is_ipaddress($ipaddr) || !is_numeric($bits))
+		return "";
+	
+	return long2ip(ip2long($ipaddr) & gen_subnet_mask_long($bits));
+}
+
+/**
+ * return the highest (broadcast) address in the subnet given a host address 
+ * and a subnet bit count
+ */
+function gen_subnet_max($ipaddr, $bits) {
+	if (!verify_is_ipaddress($ipaddr) || !is_numeric($bits))
+		return "";
+	
+	return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
+}
+
+/**
+ * Returns a subnet mask (long given a bit count)
+ */
+function gen_subnet_mask_long($bits) {
+	$sm = 0;
+	for ($i = 0; $i < $bits; $i++) {
+		$sm >>= 1;
+		$sm |= 0x80000000;
+	}
+	return $sm;
+}
+
+/**
+ * Same as gen_subnet_mask_long but returns a string
+ */
+function gen_subnet_mask($bits) {
+	return long2ip(gen_subnet_mask_long($bits));
+}
+
+/**
+ * Find out whether two subnets overlap
+ */
+function check_subnets_overlap($subnet1, $bits1, $subnet2, $bits2) {
+
+	if (!is_numeric($bits1))
+		$bits1 = 32;
+	if (!is_numeric($bits2))
+		$bits2 = 32;
+
+	if ($bits1 < $bits2)
+		$relbits = $bits1;
+	else
+		$relbits = $bits2;
+	
+	$sn1 = gen_subnet_mask_long($relbits) & ip2long($subnet1);
+	$sn2 = gen_subnet_mask_long($relbits) & ip2long($subnet2);
+	
+	if ($sn1 == $sn2)
+		return true;
+	else
+		return false;
+}
+
+/**
+ * Compares two IP addresses
+ */
+function ipcmp($a, $b) {
+	if (ip2long($a) < ip2long($b))
+		return -1;
+	else if (ip2long($a) > ip2long($b))
+		return 1;
+	else
+		return 0;
+}
+
+/**
+ * Returns true if $addr is in $subnet, false if not
+ */
+function ip_in_subnet($addr,$subnet) {
+	list($ip, $mask) = explode('/', $subnet);
+	$mask = 0xffffffff << (32 - $mask);
+	return ((ip2long($addr) & $mask) == (ip2long($ip) & $mask));
+}
+
+/**
+ * Obtains MAC address given an IP address by looking at the ARP table
+ */
+function arp_get_mac_by_ip($ip) {
+	exec("/usr/sbin/arp -n {$ip}", $arpoutput);
+	
+	if ($arpoutput[0]) {
+		$arpi = explode(" ", $arpoutput[0]);
+		$macaddr = $arpi[3];
+		if (verify_is_macaddress($macaddr))
+			return $macaddr;
+		else
+			return false;
+	}
+	
+	return false;
+}
+
+/**
+ * Returns MAC addresses in a variety of formats
+ */
+function mac_format($clientmac) {
+    $mac =explode(":", $clientmac);
+
+    global $config;
+
+    $mac_format = $config['captiveportal']['radmac_format'] ? $config['captiveportal']['radmac_format'] : false;
+
+    switch($mac_format) {
+
+        case 'singledash':
+        return "$mac[0]$mac[1]$mac[2]-$mac[3]$mac[4]$mac[5]";
+
+        case 'ietf':
+        return "$mac[0]-$mac[1]-$mac[2]-$mac[3]-$mac[4]-$mac[5]";
+
+        case 'cisco':
+        return "$mac[0]$mac[1].$mac[2]$mac[3].$mac[4]$mac[5]";
+
+        case 'unformatted':
+        return "$mac[0]$mac[1]$mac[2]$mac[3]$mac[4]$mac[5]";
+
+        default:
+        return $clientmac;
+    }
 }
 
 ?>

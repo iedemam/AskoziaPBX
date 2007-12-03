@@ -72,16 +72,16 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
-	if ($_POST['hostname'] && !is_hostname($_POST['hostname'])) {
+	if ($_POST['hostname'] && !verify_is_hostname($_POST['hostname'])) {
 		$input_errors[] = "The hostname may only contain the characters a-z, 0-9 and '-'.";
 	}
-	if ($_POST['domain'] && !is_domain($_POST['domain'])) {
+	if ($_POST['domain'] && !verify_is_domain($_POST['domain'])) {
 		$input_errors[] = "The domain may only contain the characters a-z, 0-9, '-' and '.'.";
 	}
 	if ($_POST['username'] && !preg_match("/^[a-zA-Z0-9]*$/", $_POST['username'])) {
 		$input_errors[] = "The username may only contain the characters a-z, A-Z and 0-9.";
 	}
-	if ($_POST['webguiport'] && (!is_numericint($_POST['webguiport']) || 
+	if ($_POST['webguiport'] && (!verify_is_numericint($_POST['webguiport']) || 
 			($_POST['webguiport'] < 1) || ($_POST['webguiport'] > 65535))) {
 		$input_errors[] = "A valid TCP/IP port must be specified for the webGUI port.";
 	}
@@ -94,7 +94,7 @@ if ($_POST) {
 		$input_errors[] = "The time update interval must be either 0 (disabled) or between 6 and 1440.";
 	}
 	foreach (explode(' ', $_POST['timeservers']) as $ts) {
-		if (!is_domain($ts)) {
+		if (!verify_is_domain($ts)) {
 			$input_errors[] = "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'.";
 		}
 	}
@@ -130,8 +130,8 @@ if ($_POST) {
 			$retval |= system_password_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
-			$retval |= pbx_indications_conf_generate();
-			$retval |= pbx_indications_reload();
+			$retval |= indications_conf_generate();
+			$retval |= indications_reload();
 			config_unlock();
 		}
 		

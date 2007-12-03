@@ -33,7 +33,7 @@ $dev = $_GET['dev'];
 if (isset($_POST['dev']))
 	$dev = $_POST['dev'];
 
-$pgtitle = array("Interfaces", "Edit Disk");
+$pgtitle = array("Interfaces", "Storage", "Edit Disk");
 require("guiconfig.inc");
 
 $recognized_disk = storage_get_recognized_disk($dev);

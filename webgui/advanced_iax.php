@@ -50,7 +50,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid port
-	if ($_POST['port'] && !is_port($_POST['port'])) {
+	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
 		$input_errors[] = "A valid port must be specified.";
 	}
 

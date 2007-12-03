@@ -49,10 +49,10 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if ($_POST['lowport'] && !is_numericint($_POST['lowport'])) {
+	if ($_POST['lowport'] && !verify_is_numericint($_POST['lowport'])) {
 		$input_errors[] = "A valid port must be entered for the low RTP port.";
 	}
-	if ($_POST['highport'] && !is_numericint($_POST['highport'])) {
+	if ($_POST['highport'] && !verify_is_numericint($_POST['highport'])) {
 		$input_errors[] = "A valid port must be entered for the high RTP port.";
 	}
 	if ($_POST['highport'] <= $_POST['lowport']) {
@@ -75,7 +75,7 @@ if (file_exists($d_rtpconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= pbx_rtp_conf_generate();
+		$retval |= rtp_conf_generate();
 		config_unlock();
 		
 		$retval |= pbx_configure();

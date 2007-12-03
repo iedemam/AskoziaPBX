@@ -60,29 +60,29 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 
-	if ($_POST['parkposstart'] && !is_numericint($_POST['parkposstart'])) {
+	if ($_POST['parkposstart'] && !verify_is_numericint($_POST['parkposstart'])) {
 		$input_errors[] = "A valid parking start position must be specified.";
 	}
-	if ($_POST['parkposend'] && !is_numericint($_POST['parkposend'])) {
+	if ($_POST['parkposend'] && !verify_is_numericint($_POST['parkposend'])) {
 		$input_errors[] = "A valid parking stop position must be specified.";
 	}
 	if (!$input_errors && ($_POST['parkposend'] <= $_POST['parkposstart'])) {
 		$input_errors[] = "The end parking position must be larger than the start position.";
 	}
-	if ($_POST['parkext'] && !is_numericint($_POST['parkext'])) {
+	if ($_POST['parkext'] && !verify_is_numericint($_POST['parkext'])) {
 		$input_errors[] = "A valid parking extension must be specified.";
 	}
-	if ($_POST['parktime'] && !is_numericint($_POST['parktime'])) {
+	if ($_POST['parktime'] && !verify_is_numericint($_POST['parktime'])) {
 		$input_errors[] = "A valid park time must be specified.";
 	}
 	
-	if ($_POST['featuredigittimeout'] && !is_numericint($_POST['featuredigittimeout'])) {
+	if ($_POST['featuredigittimeout'] && !verify_is_numericint($_POST['featuredigittimeout'])) {
 		$input_errors[] = "A valid key timeout must be specified.";
 	}
-	if ($_POST['atxfernoanswertimeout'] && !is_numericint($_POST['atxfernoanswertimeout'])) {
+	if ($_POST['atxfernoanswertimeout'] && !verify_is_numericint($_POST['atxfernoanswertimeout'])) {
 		$input_errors[] = "A valid attended transfer timeout must be specified.";
 	}
-	if ($_POST['transferdigittimeout'] && !is_numericint($_POST['transferdigittimeout'])) {
+	if ($_POST['transferdigittimeout'] && !verify_is_numericint($_POST['transferdigittimeout'])) {
 		$input_errors[] = "A valid extension digit timeout must be specified.";
 	}
 
@@ -110,10 +110,10 @@ if (file_exists($d_featuresconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= dialplan_features_conf_generate();
+		$retval |= features_conf_generate();
 		config_unlock();
 		
-		$retval |= dialplan_features_reload();
+		$retval |= features_reload();
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
 			unlink($d_featuresconfdirty_path);

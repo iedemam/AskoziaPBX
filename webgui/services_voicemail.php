@@ -54,7 +54,7 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
-	if ($_POST['address'] && !is_email_address($_POST['address'])) {
+	if ($_POST['address'] && !verify_is_email_address($_POST['address'])) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
 	
@@ -62,11 +62,11 @@ if ($_POST) {
 		$input_errors[] = "A username must be specified.";
 	}
 	
-	if ($_POST['fromaddress'] && !is_email_address($_POST['fromaddress'])) {
+	if ($_POST['fromaddress'] && !verify_is_email_address($_POST['fromaddress'])) {
 		$input_errors[] = "A valid e-mail address must be specified for the \"from address\".";
 	}
 	
-	if ($_POST['port'] && !is_port($_POST['port'])) {
+	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
 		$input_errors[] = "A valid port must be specified.";
 	}
 

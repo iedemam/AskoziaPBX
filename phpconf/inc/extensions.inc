@@ -211,7 +211,7 @@ EOD;
 		}
 	}
 	
-	$a_callgroups = dialplan_get_callgroups();
+	$a_callgroups = callgroups_get_groups();
 	foreach ($a_callgroups as $group) {
 		if (!$group['extension']) {
 			continue;
@@ -219,7 +219,7 @@ EOD;
 		$conf .= pbx_uniqid_to_dial($group['extension'], $group['uniqid']);
 	}
 	
-	$a_applications = dialplan_get_applications();
+	$a_applications = applications_get_apps();
 	foreach ($a_applications as $app) {
 		$conf .= "exten => {$app['extension']},1,Answer()\n";
 		if ($app['name'] == "WakeMe") {

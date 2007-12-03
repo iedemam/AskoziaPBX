@@ -188,6 +188,7 @@ EOD;
 	
 	// provider definitions
 	foreach($iaxproviders as $p) {
+		// outgoing (peer)
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "type=peer\n";
@@ -238,7 +239,7 @@ EOD;
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
 		$conf .= "\n\n";
 		
-		
+		// incoming (user)
 		$conf .= "; {$p['name']} - incoming\n";
 		$conf .= "[{$p['username']}]\n";
 		$conf .= "type=user\n";

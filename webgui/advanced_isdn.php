@@ -54,11 +54,11 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid nationalprefix
-	if ($_POST['nationalprefix'] && !is_numericint($_POST['nationalprefix'])) {
+	if ($_POST['nationalprefix'] && !verify_is_numericint($_POST['nationalprefix'])) {
 		$input_errors[] = "A valid national prefix must be specified.";
 	}
 	// is valid internationalprefix
-	if ($_POST['internationalprefix'] && !is_numericint($_POST['internationalprefix'])) {
+	if ($_POST['internationalprefix'] && !verify_is_numericint($_POST['internationalprefix'])) {
 		$input_errors[] = "A valid international prefix must be specified.";
 	}
 
