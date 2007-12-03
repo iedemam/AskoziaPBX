@@ -189,10 +189,7 @@ EOD;
 	$conf .= "\n\n";
 	
 	// providers
-	if (!is_array($config['sip']['provider']))
-		$config['sip']['provider'] = array();
-		
-	$sipproviders = $config['sip']['provider'];
+	$sipproviders = sip_get_providers();
 
 	// provider registrations
 	foreach($sipproviders as $p) {
@@ -216,9 +213,10 @@ EOD;
 	
 	// provider definitions
 	foreach($sipproviders as $p) {
+		// outgoing (peer)
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= "type=friend\n";
+		$conf .= "type=peer\n";
 		$conf .= "username={$p['username']}\n";
 		$conf .= "secret={$p['secret']}\n";
 		
@@ -227,34 +225,33 @@ EOD;
 		} else {
 			$conf .= "fromuser={$p['username']}\n";
 		}
-		
-		$conf .= "context={$p['uniqid']}-incoming\n";
-		
+
 		if (($p['calleridsource'] == "string") && $p['calleridstring']) {
 			$conf .= "callerid=" . $p['calleridstring'] . "\n";
 		}
-		
+
 		$conf .= "host={$p['host']}\n";
-		if ($p['port'])
+		if ($p['port']) {
 			$conf .= "port={$p['port']}\n";
-		
+		}
+
 		if($p['fromdomain']) {
 			$conf .= "fromdomain={$p['fromdomain']}\n";
 		} else {
 			$conf .= "fromdomain={$p['host']}\n";
 		}
-		
+
 		if ($lancfg['topology'] != "public") {
 			$conf .= "nat=yes\n";
 		}
-		
+
 		// language selection
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {
 			$conf .= "language=en\n";
 		}
-		
+
 		// qualify options
 		if ($p['qualify'] == "0") {
 			$conf .= "qualify=no\n";
@@ -263,34 +260,93 @@ EOD;
 		} else {
 			$conf .= "qualify=yes\n";
 		}
-		
+
 		$conf .= "canreinvite=no\n";
 		$conf .= "insecure=port,invite\n";
-		
+
 		// dtmf options
 		if ($p['dtmfmode']) {
 			$conf .= "dtmfmode={$p['dtmfmode']}\n";
 		} else {
 			$conf .= "dtmfmode=auto\n";
 		}
-		
+
 		// codecs	
 		$conf .= "disallow=all\n";
 		if(is_array($p['codec'])) {
-			foreach ($p['codec'] as $codec)
+			foreach ($p['codec'] as $codec) {
 				$conf .= "allow=$codec\n";
+			}
+		}
+		$conf .= "\n\n";
+
+		// incoming (user)
+		$conf .= "; {$p['name']}\n";
+		$conf .= "[{$p['username']}]\n";
+		$conf .= "type=user\n";
+		$conf .= "secret={$p['secret']}\n";
+
+		if($p['fromuser']) {
+			$conf .= "fromuser={$p['fromuser']}\n";
 		} else {
-			$conf .= "allow={$p['codec']}\n";
+			$conf .= "fromuser={$p['username']}\n";
 		}
 		
+		$conf .= "context={$p['uniqid']}-incoming\n";
+
+		$conf .= "host={$p['host']}\n";
+		if ($p['port']) {
+			$conf .= "port={$p['port']}\n";
+		}
+		
+		if($p['fromdomain']) {
+			$conf .= "fromdomain={$p['fromdomain']}\n";
+		} else {
+			$conf .= "fromdomain={$p['host']}\n";
+		}
+
+		if ($lancfg['topology'] != "public") {
+			$conf .= "nat=yes\n";
+		}
+
+		// language selection
+		if ($p['language']) {
+			$conf .= "language=" . $p['language'] . "\n";
+		} else {
+			$conf .= "language=en\n";
+		}
+
+		// qualify options
+		if ($p['qualify'] == "0") {
+			$conf .= "qualify=no\n";
+		} else if ($p['qualify']) {
+			$conf .= "qualify=". $p['qualify']*1000 ."\n";
+		} else {
+			$conf .= "qualify=yes\n";
+		}
+
+		$conf .= "canreinvite=no\n";
+		$conf .= "insecure=port,invite\n";
+
+		// dtmf options
+		if ($p['dtmfmode']) {
+			$conf .= "dtmfmode={$p['dtmfmode']}\n";
+		} else {
+			$conf .= "dtmfmode=auto\n";
+		}
+
+		// codecs
+		$conf .= "disallow=all\n";
+		if(is_array($p['codec'])) {
+			foreach ($p['codec'] as $codec) {
+				$conf .= "allow=$codec\n";
+			}
+		}
 		$conf .= "\n\n";
 	}
 
 	// phones
-	if (!is_array($config['sip']['phone']))
-		$config['sip']['phone'] = array();
-		
-	$sipphones = $config['sip']['phone'];
+	$sipphones = sip_get_phones();
 	
 	foreach($sipphones as $p) {
 		$conf .= "; {$p['callerid']}\n";
