@@ -494,7 +494,13 @@ function pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list)
  */
 function pbx_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $readbacknum=false) {
 	global $config;
-	
+
+	// handling for impromptu groups
+	if (is_array($uniqid)) {
+		$groupmembers = $uniqid;
+		$uniqid = "CALLGROUP-PARALLEL-impromptu";
+	}
+
 	$id = split("-", $uniqid);
 	
 	$dial = "exten => $exten,1,NoOp()\n";
@@ -557,12 +563,16 @@ function pbx_uniqid_to_dial($exten, $uniqid, $wait=false, $override=false, $read
 		}
 
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
-		// get our group
-		$group = callgroups_get_group($uniqid);
+		// if this is a stored group, grab its info
+		if ($id[2] != "impromptu") {
+			$group = callgroups_get_group($uniqid);
+			$groupmembers = $group['groupmember'];
+		}
+
 		// generate the group's dialstring
-		$group_dialstring = extensions_phone_uniqids_to_dialstring($group['groupmember']);
+		$group_dialstring = extensions_phone_uniqids_to_dialstring($groupmembers);
 		// set the voicemail phone to the first group entry
-		$vm_phone = pbx_get_phone($group['groupmember'][0]);
+		$vm_phone = pbx_get_phone($groupmembers[0]);
 		// set the read back number
 		$readbacknum = ($readbacknum) ? $readbacknum : $vm_phone['extension'];
 

@@ -5,6 +5,7 @@
  - added: '!' characters are now allowed in incoming and outgoing dialpatterns
  - added: provider dialpatterns now allow '#' and '*' characters (suggested by Dave Fear)
  - added: software package versions used in each release now listed in /etc/versions
+ - added: when defining the incoming routing for a provider, impromptu call groups can now be setup by defining two destinations with the same pattern
  - updated: Asterisk to 1.4.15
  - updated: core sounds to 1.4.8
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8

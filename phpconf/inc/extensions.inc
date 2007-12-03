@@ -419,55 +419,64 @@ function extensions_generate_provider_incoming_context($p) {
 
 	$conf .= "; {$p['name']} incoming\n";
 	$conf .= "[{$p['uniqid']}-incoming]\n";
+
+	$groupped_mapping = array();
+	foreach ($p['incomingextensionmap'] as $map) {
+		if (!isset($map['incomingpattern'])) {
+			$groupped_mapping['all'][] = $map['destinationid'];
+		} else {
+			$groupped_mapping[$map['incomingpattern']][] = $map['destinationid'];
+		}
+	}
 	
 	if ($tech == "SIP") {
-		foreach ($p['incomingextensionmap'] as $map) {
-			if (!isset($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
-				$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
-			} else if (is_numeric($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
+		foreach ($groupped_mapping as $pattern => $destination) {
+			if ($pattern == "all") {
+				$conf .= pbx_uniqid_to_dial("_X!", $destination, false, $p['override']);
+				$conf .= pbx_uniqid_to_dial("s", $destination, false, $p['override']);
+			} else if (is_numeric($pattern)) {
+				$conf .= pbx_uniqid_to_dial($pattern, $destination, false, $p['override'], $pattern);
 			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
+				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, false, $p['override']);
 			}
 			$conf .= "\n";
 		}
 
 	} else if ($tech == "IAX2") {		
-		foreach ($p['incomingextensionmap'] as $map) {
-			if (!isset($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], false, $p['override']);
-				$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], false, $p['override']);
-			} else if (is_numeric($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], false, $p['override'], $map['incomingpattern']);
+		foreach ($groupped_mapping as $pattern => $destination) {
+			if ($pattern == "all") {
+				$conf .= pbx_uniqid_to_dial("_X!", $destination, false, $p['override']);
+				$conf .= pbx_uniqid_to_dial("s", $destination, false, $p['override']);
+			} else if (is_numeric($pattern)) {
+				$conf .= pbx_uniqid_to_dial($pattern, $destination, false, $p['override'], $pattern);
 			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], false, $p['override']);
+				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, false, $p['override']);
 			}
 			$conf .= "\n";
 		}
 
 	} else if ($tech == "CAPI") {
-		foreach ($p['incomingextensionmap'] as $map) {
-			if (!isset($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['msn']);
-				$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['msn']);
-			} else if (is_numeric($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
+		foreach ($groupped_mapping as $pattern => $destination) {
+			if ($pattern == "all") {
+				$conf .= pbx_uniqid_to_dial("_X!", $destination, 1, $p['override'], $p['msn']);
+				$conf .= pbx_uniqid_to_dial("s", $destination, 1, $p['override'], $p['msn']);
+			} else if (is_numeric($pattern)) {
+				$conf .= pbx_uniqid_to_dial($pattern, $destination, 1, $p['override'], $pattern);
 			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['msn']);
+				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, 1, $p['override'], $p['msn']);
 			}
 			$conf .= "\n";
 		}
 
 	} else if ($tech == "ZAP") {
-		foreach ($p['incomingextensionmap'] as $map) {
-			if (!isset($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial("_X!", $map['destinationid'], 1, $p['override'], $p['number']);
-				$conf .= pbx_uniqid_to_dial("s", $map['destinationid'], 1, $p['override'], $p['number']);
-			} else if (is_numeric($map['incomingpattern'])) {
-				$conf .= pbx_uniqid_to_dial($map['incomingpattern'], $map['destinationid'], 1, $p['override'], $map['incomingpattern']);
+		foreach ($groupped_mapping as $pattern => $destination) {
+			if ($pattern == "all") {
+				$conf .= pbx_uniqid_to_dial("_X!", $destination, 1, $p['override'], $p['number']);
+				$conf .= pbx_uniqid_to_dial("s", $destination, 1, $p['override'], $p['number']);
+			} else if (is_numeric($pattern)) {
+				$conf .= pbx_uniqid_to_dial($pattern, $destination, 1, $p['override'], $pattern);
 			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $map['incomingpattern'], $map['destinationid'], 1, $p['override'], $p['number']);
+				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, 1, $p['override'], $p['number']);
 			}
 			$conf .= "\n";
 		}

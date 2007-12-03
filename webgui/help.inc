@@ -36,6 +36,7 @@ $help = array(
 		
 		"display_incoming_extension_selector" =>
 			"Enter a pattern or a phone number and select a destination extension. ".
+			"To ring multiple phones, simply define them with the same pattern. ".
 			"If a phone number is entered, it will used as the \"read back\" number on unanswered calls. ".
 			"If nothing is entered, all calls will be directed to the destination extension.<br>\n".
 			"<ul>\n".
