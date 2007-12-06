@@ -34,7 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.15",
+	"asterisk"		=> "asterisk-1.4.14",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
 	"mini_httpd"	=> "mini_httpd-1.19",
@@ -51,7 +51,7 @@ $versions = array(
 // --[ sounds ]----------------------------------------------------------------
 
 $core_sounds_version= "1.4.8";
-$extra_sounds_version="1.4.6";
+$extra_sounds_version="1.4.7";
 $sound_languages	= explode(" ", "en en-gb de it es fr fr-ca jp nl se ru");
 $sounds				= explode(" ", 
 						"auth-thankyou. ".
