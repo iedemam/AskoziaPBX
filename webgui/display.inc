@@ -365,6 +365,23 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 	</tr><?
 }
 
+function display_public_direct_dial_editor($current_allowdirectdial, $colspan) {
+	
+	?><tr> 
+		<td valign="top" class="vncell">Public Direct Dial</td>
+		<td colspan="<?=$colspan?>" class="vtable">
+			<input name="allowdirectdial" id="allowdirectdial" type="checkbox" value="yes"<?
+			
+			if ($current_allowdirectdial) {
+				echo "checked";
+			}
+
+			?>>&nbsp;allow extension to be directly dialed over public networks<br>
+			<br><span class="vexpl">This extension is reachable via SIP and IAX2 urls (extension@hostname.domain)</span>
+		</td>
+	</tr><?
+}
+
 function display_call_and_busy_limit_selector($current_calllimit, $current_busylimit, $colspan) {
 	
 	?><tr> 

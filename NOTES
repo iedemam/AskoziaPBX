@@ -5,16 +5,14 @@ pb13
 - nat=yes|no optional an all sip accounts
 - dial timeout options
 - single tone voicemails...
-- multiple incoming extensions shouldn't be an option for providers lacking that ability ?
 - readback numbers should be definable for each of the incoming extensions
 - deleting a provider breaks external phones...warn? suggest?
 - "forget" interface details option
 - remove "device report" info from interface pages
 - set a more sensible default for analog phone echo canceller size
 - difference between incoming extensions and callgroups should be made clear in the gui
-	- perhaps destinations defined with the same pattern should be treated as improv-callgroups
 - start writing short wiki entries for new features as they are implemented
-- phones displayed in drag-and-drop lists should perhaps also show their extension
+- providers should have the option to also include "public direct dial" extensions
 
 bug: new Russian voicemail translation is missing words upon reception...
 

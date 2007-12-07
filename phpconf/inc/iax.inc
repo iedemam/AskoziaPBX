@@ -144,7 +144,7 @@ function iax_conf_generate() {
 	$conf = <<<EOD
 	
 [general]
-context=default
+context=public-direct-dial
 bindport=$port
 bindaddr=0.0.0.0
 delayreject=yes

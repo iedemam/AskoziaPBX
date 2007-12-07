@@ -149,7 +149,7 @@ function sip_conf_generate() {
 	$conf = <<<EOD
 	
 [general]
-context=default
+context=public-direct-dial
 allowoverlap=no
 bindport=$port
 bindaddr=0.0.0.0

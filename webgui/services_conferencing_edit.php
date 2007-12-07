@@ -50,6 +50,7 @@ if (isset($id) && $a_rooms[$id]) {
 	$pconfig['name'] = $a_rooms[$id]['name'];
 	$pconfig['pin'] = $a_rooms[$id]['pin'];
 	//$pconfig['adminpin'] = $a_rooms[$id]['adminpin'];
+	$pconfig['allowdirectdial'] = isset($a_rooms[$id]['allowdirectdial']);
 }
 
 
@@ -86,6 +87,7 @@ if ($_POST) {
 		$room['pin'] = $_POST['pin'];
 		//$room['adminpin'] = $_POST['adminpin'];
 		$room['name'] = $_POST['name'];
+		$room['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 
 		if (isset($id) && $a_rooms[$id]) {
 			$room['uniqid'] = $a_rooms[$id]['uniqid'];
@@ -128,6 +130,7 @@ if ($_POST) {
 					<br><span class="vexpl">Optional PIN needed to access this conference room.</span>
 				</td>
 			</tr>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

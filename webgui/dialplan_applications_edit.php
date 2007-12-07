@@ -49,6 +49,7 @@ if (isset($_POST['id']))
 if (isset($id) && $a_applications[$id]) {
 	$pconfig['name'] = $a_applications[$id]['name'];
 	$pconfig['extension'] = $a_applications[$id]['extension'];
+	$pconfig['allowdirectdial'] = isset($a_applications[$id]['allowdirectdial']);
 }
 
 if ($_POST) {
@@ -69,7 +70,8 @@ if ($_POST) {
 	if (!$input_errors) {
 		$app = array();		
 		$app['name'] = $_POST['name'];
-		$app['extension'] = $_POST['extension'];	
+		$app['extension'] = $_POST['extension'];
+		$app['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 
 		if (isset($id) && $a_applications[$id]) {
 			$gm['uniqid'] = $a_applications[$id]['uniqid'];
@@ -120,6 +122,7 @@ if ($_POST) {
 					<br><span class="vexpl">Internal extension used to reach this call group.</span>
 				</td>
 			</tr>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

@@ -55,6 +55,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['dialprovider'] = $a_extphones[$id]['dialprovider'];
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
+	$pconfig['allowdirectdial'] = isset($a_extphones[$id]['allowdirectdial']);
 	$pconfig['language'] = $a_extphones[$id]['language'];
 }
 
@@ -85,6 +86,7 @@ if ($_POST) {
 		$ep['dialprovider'] = $_POST['dialprovider'];
 		$ep['voicemailbox'] = $_POST['voicemailbox'];
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
+		$ep['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ep['language'] = $_POST['language'];
 
 		if (isset($id) && $a_extphones[$id]) {
@@ -144,6 +146,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

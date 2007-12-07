@@ -53,6 +53,7 @@ if (isset($id) && $a_callgroups[$id]) {
 	$pconfig['extension'] = $a_callgroups[$id]['extension'];
 	$pconfig['descr'] = $a_callgroups[$id]['descr'];
 	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
+	$pconfig['allowdirectdial'] = isset($a_callgroups[$id]['allowdirectdial']);
 }
 
 if ($_POST) {
@@ -76,6 +77,7 @@ if ($_POST) {
 		$gm['extension'] = $_POST['extension'];
 		$gm['descr'] = $_POST['descr'];
 		$gm['groupmember'] = $gme;
+		$gm['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 
 		if (isset($id) && $a_callgroups[$id]) {
 			$gm['uniqid'] = $a_callgroups[$id]['uniqid'];
@@ -112,6 +114,7 @@ if ($_POST) {
 					<br><span class="vexpl">Internal extension used to reach this call group.</span>
 				</td>
 			</tr>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Description</td>
 				<td colspan="2" class="vtable">

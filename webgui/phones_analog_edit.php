@@ -52,6 +52,7 @@ if (isset($id) && $a_analogphones[$id]) {
 	$pconfig['provider'] = $a_analogphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_analogphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_analogphones[$id]['sendcallnotifications']);
+	$pconfig['allowdirectdial'] = isset($a_analogphones[$id]['allowdirectdial']);
 	$pconfig['interface'] = $a_analogphones[$id]['interface'];
 	$pconfig['language'] = $a_analogphones[$id]['language'];
 	$pconfig['descr'] = $a_analogphones[$id]['descr'];
@@ -88,6 +89,7 @@ if ($_POST) {
 		$ap['callerid'] = $_POST['callerid'];
 		$ap['voicemailbox'] = $_POST['voicemailbox'];
 		$ap['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
+		$ap['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ap['interface'] = $_POST['interface'];
 		$ap['language'] = $_POST['language'];
 		$ap['descr'] = $_POST['descr'];
@@ -134,6 +136,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">Analog Interface</td>
 				<td class="vtable">

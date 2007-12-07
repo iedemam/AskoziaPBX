@@ -6,8 +6,9 @@
  - added: provider dialpatterns now allow '#' and '*' characters (suggested by Dave Fear)
  - added: software package versions used in each release now listed in /etc/versions
  - added: when defining the incoming routing for a provider, impromptu call groups can now be setup by defining two destinations with the same pattern
- - updated: Asterisk to 1.4.15
+ - added: phones, callgroups, conferences and applications have a new option "Public Direct Dial" which, when activated, exposes these extensions to public networks
  - updated: core sounds to 1.4.8
+ - updated: extra sounds to 1.4.7
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8
  - changed: additional sounds used for WakeMe application are now in the higher quality ulaw format
  - changed: callgroup member selector now displays the phone's extension
@@ -20,7 +21,7 @@
  - refactor: all features, application and callgroup related functions moved from dialplan.inc to features.inc, applications.inc and callgroups.inc
  - refactor: all verification and network related functions moved from util.inc to verify.inc and network.inc
  - refactor: added isdn_get_provider()
- - refactor: added extensions_phone_uniqid_to_dialstring(), extensions_generate_provider_incoming_context() andextensions_generate_provider_outgoing_context() : extension generator is much cleaner now
+ - refactor: added extensions_phone_uniqid_to_dialstring(), extensions_generate_provider_incoming_context(), extensions_generate_provider_outgoing_context(), extensions_generate_internal_phone_extension(), extensions_generate_external_phone_extension(), extensions_generate_callgroup_extension(), extensions_generate_application_extension(), extensions_generate_conference_room_extension() : extension generator is much cleaner now
  - refactor: renamed _extensions_add_sendnotifications_line() to extensions_generate_missed_call_notifications_line()
  - refactor: renamed _extensions_generate_parkinglot() to extensions_generate_parkinglot()
  - refactor: deprecated pbx_uniqid_to_extension()

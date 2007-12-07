@@ -58,6 +58,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_iaxphones[$id]['sendcallnotifications']);
+	$pconfig['allowdirectdial'] = isset($a_iaxphones[$id]['allowdirectdial']);
 	$pconfig['language'] = $a_iaxphones[$id]['language'];
 	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
 	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
@@ -111,6 +112,7 @@ if ($_POST) {
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = $_POST['voicemailbox'];
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
+		$sp['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$sp['language'] = $_POST['language'];
 		$sp['descr'] = $_POST['descr'];
 		$sp['qualify'] = $_POST['qualify'];
@@ -177,6 +179,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>
