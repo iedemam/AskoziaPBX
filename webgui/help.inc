@@ -57,7 +57,7 @@ $help = array(
 			"Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\"). If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n".
 			"<ul>\n".
 			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n".
-			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|NXX\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
+			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
 			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
 			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
 			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
