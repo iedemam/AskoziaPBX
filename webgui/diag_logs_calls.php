@@ -49,7 +49,7 @@ function dump_clog($logfile, $max) {
 	global $g, $config;
 
 	$sor = isset($config['syslog']['reverse']) ? "desc" : "asc";
-	$query = "select * from cdr order by start " . $sor . " limit $max";
+	$query = "select * from cdr order by id " . $sor . " limit $max";
 
 	$db = sqlite_open($logfile, 0666, $err);
 	$results = sqlite_query($query, $db);
