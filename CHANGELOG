@@ -16,6 +16,7 @@
  - bug: call records are now sorted properly (reported by Jakob Strebel)
  - bug: call groups now define their "read back" number properly (reported by Janåke Rönnblom)
  - bug: external phones reachable via ISDN providers working properly again
+ - bug: nge network interfaces are no longer ignored (merged from m0n0wall)
  - refactor: sip.conf generator rewritten to produce peer and user entries for providers instead of friend entries
  - refactor: individual sorting functions replaced with pbx_sort_by_xxx() functions
  - refactor: all asterisk_* functions renamed to pbx_*
