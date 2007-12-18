@@ -60,7 +60,8 @@ require("guiconfig.inc");
 	<p>AskoziaPBX is derived from m0n0wall (<a href="http://m0n0.ch/wall" target="_blank">http://m0n0.ch/wall</a>) (FreeBSD 6 branch, r195).<br>
 	Many thanks to Manuel Kasper, Chris Buechler and all of the m0n0wall contributors.<br>
 	<br>
-	<strong>m0n0wall is Copyright &copy; 2002-2007 Manuel Kasper (<a href="mailto:mk@neon1.net">mk@neon1.net</a>).<br>
+	<strong>m0n0wall&reg; is Copyright &copy; 2002-2007 Manuel Kasper (<a href="mailto:mk@neon1.net">mk@neon1.net</a>).<br>
+	m0n0wall is a registered trademark of Manuel Kasper.<br>
 	All rights reserved.</strong></p>
 	<hr size="1">
 	<p>AskoziaPBX is also based upon/includes various free software packages, 
