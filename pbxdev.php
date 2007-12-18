@@ -384,6 +384,7 @@ function build_tools() {
 	_exec("cd {$dirs['tools']}; gcc -o stats.cgi stats.c");
 	_exec("cd {$dirs['tools']}; gcc -o verifysig -lcrypto verifysig.c");
 	_exec("cd {$dirs['tools']}; gcc -o wrapresetbtn wrapresetbtn.c");
+	_exec("cd {$dirs['tools']}; gcc -o alix23xresetbtn alix23xresetbtn.c");
 	/*_exec("cd {$dirs['tools']}; gcc -o zttest zttest.c");*/
 	/*_exec("cd ". $dirs['tools'] ."; gcc -o minicron minicron.c");*/
 }
@@ -931,6 +932,7 @@ function populate_tools($image_name) {
 		/*"install -s minicron $rootfs/usr/local/bin; ".*/
 		"install -s verifysig $rootfs/usr/local/bin; ".
 		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
+		"install -s alix23xresetbtn $rootfs/usr/local/sbin; ".
 		/*"install -s zttest $rootfs/sbin; ".*/
 		"install runmsntp.sh $rootfs/usr/local/bin");
 }

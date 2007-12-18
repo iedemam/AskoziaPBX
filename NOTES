@@ -1,5 +1,4 @@
 pb13
-- add core changes in m0n0wall r222
 - make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
 - enter dns server via console
 - nat=yes|no optional an all sip accounts

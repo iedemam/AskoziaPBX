@@ -586,10 +586,12 @@ EOD;
 function system_check_reset_button() {
 	global $config, $g;
 
-	if ($g['platform'] != "wrap")
+	$platform = $g['platform'];
+	if ($platform != "wrap" && $platform != "alix23x") {
 		return 0;
+	}
 
-	$retval = mwexec("/usr/local/sbin/wrapresetbtn");
+	$retval = mwexec("/usr/local/sbin/" . $platform . "resetbtn");
 
 	if ($retval == 99) {
 		/* user has pressed reset button for 2 seconds - 

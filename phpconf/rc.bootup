@@ -39,7 +39,7 @@
 	require_once("config.inc");
 	require_once("functions.inc");
 	
-	/* check whether config reset is desired (via hardware button on WRAP) */
+	/* check whether config reset is desired (via hardware button on wrap and alix23x) */
 	system_check_reset_button();
 	
 	/* convert configuration, if necessary */

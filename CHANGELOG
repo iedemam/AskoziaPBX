@@ -1,4 +1,5 @@
 2007.12.xx - pb13
+ - added: factory default reset button support for alix23x platform (merged from m0n0wall)
  - added: Russian voicemail notification e-mail translation (submitted by Eugen Bernatskiy)
  - added: Portuguese voicemail notification e-mail translation (submitted by Marcus Vinícius Quintella Ribeiro)
  - added: "DNS Service Records" option to "Advanced -> SIP" so SRV lookups can be disabled
