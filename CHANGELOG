@@ -11,6 +11,7 @@
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8
+ - updated: timezone information (merged from m0n0wall)
  - changed: additional sounds used for WakeMe application are now in the higher quality ulaw format
  - changed: callgroup member selector now displays the phone's extension
  - bug: call records are now sorted properly (reported by Jakob Strebel)
