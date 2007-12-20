@@ -26,6 +26,8 @@ sbin/atacontrol
 sbin/bsdlabel
 sbin/dmesg
 sbin/fastboot:sbin/fasthalt:sbin/halt:sbin/reboot
+sbin/geom
+sbin/glabel
 sbin/ifconfig
 sbin/init
 sbin/ipf

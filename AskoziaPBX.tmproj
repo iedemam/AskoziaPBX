@@ -3,28 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>CHANGELOG</string>
+	<string>phpconf/inc/extensions.inc</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-12-06T09:20:55Z</date>
+			<date>2007-12-18T19:37:57Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-12-17T19:29:13Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2007-12-19T16:58:46Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-12-17T15:48:34Z</date>
+			<date>2007-12-19T16:59:16Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -84,28 +82,58 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>72</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>13</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>6</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>55</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
 		</dict>
 		<key>NOTES</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>82</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>build/minibsd/m0n0wall.files</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>58</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>48</integer>
 		</dict>
 		<key>build/patches/packages/asterisk/menuselect.makeopts</key>
 		<dict>
@@ -121,79 +149,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>phpconf/inc/pbx.inc</key>
+		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>565</integer>
+				<integer>1063</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>490</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>76</integer>
-				<key>line</key>
-				<integer>580</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>565</integer>
-			</dict>
+			<integer>1121</integer>
 		</dict>
-		<key>webgui/diag_logs_calls.php</key>
+		<key>phpconf/inc/extensions.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>51</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>40</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>66</integer>
-				<key>line</key>
-				<integer>51</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>51</integer>
-			</dict>
-		</dict>
-		<key>webgui/help.inc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>61</integer>
-				<key>line</key>
-				<integer>59</integer>
+				<integer>86</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>39</integer>
+			<integer>268</integer>
 		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
@@ -212,16 +194,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>pbxdev.php</string>
 		<string>CHANGELOG</string>
-		<string>webgui/diag_logs_calls.php</string>
 		<string>NOTES</string>
-		<string>webgui/help.inc</string>
-		<string>phpconf/inc/pbx.inc</string>
-		<string>build/patches/packages/asterisk/menuselect.makeopts</string>
+		<string>phpconf/inc/extensions.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{184, 0}, {765, 778}}</string>
+	<string>{{81, 12}, {889, 766}}</string>
 </dict>
 </plist>
