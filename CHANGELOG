@@ -8,7 +8,7 @@
  - added: software package versions used in each release now listed in /etc/versions
  - added: when defining the incoming routing for a provider, impromptu call groups can now be setup by defining two destinations with the same pattern
  - added: phones, callgroups, conferences and applications have a new option "Public Direct Dial" which, when activated, exposes these extensions to public networks
- - updated: Asterisk to 1.4.16.1
+ - updated: Asterisk to 1.4.16.2
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8
