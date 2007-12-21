@@ -143,7 +143,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if ($fwinfo) echo $fwinfo; ?>
-<?php if (!in_array($g['platform'], $fwupplatforms)): ?>
+<?php if (in_array($g['platform'], $no_firmware_update_platforms)): ?>
 <p><strong>Firmware uploading is not supported on this platform.</strong></p>
 <?php elseif ($sig_warning && !$input_errors): ?>
 <form action="system_firmware.php" method="post">
