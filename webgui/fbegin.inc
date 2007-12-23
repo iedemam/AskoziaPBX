@@ -137,26 +137,38 @@ $menu['System']['Factory Defaults']		= array('system_defaults.php');
 $menu['System']['Reboot'] 				= array('system_reboot.php');
 
 /* Providers */
-$menu['Providers']['SIP'] 				= array('providers_sip.php');
-$menu['Providers']['IAX'] 				= array('providers_iax.php');
-$menu['Providers']['ISDN'] 				= array('providers_isdn.php');
-$menu['Providers']['Analog'] 			= array('providers_analog.php');
+$menu['Providers']['SIP'] 				= array('providers_sip.php',
+												'providers_sip_edit.php');
+$menu['Providers']['IAX'] 				= array('providers_iax.php',
+												'providers_iax_edit.php');
+$menu['Providers']['ISDN'] 				= array('providers_isdn.php',
+												'providers_isdn_edit.php');
+$menu['Providers']['Analog'] 			= array('providers_analog.php',
+												'providers_analog_edit.php');
 
 /* Phones */
-$menu['Phones']['SIP'] 					= array('phones_sip.php');
-$menu['Phones']['IAX'] 					= array('phones_iax.php');
-$menu['Phones']['ISDN']					= array('phones_isdn.php');
-$menu['Phones']['Analog']				= array('phones_analog.php');
-$menu['Phones']['External']				= array('phones_external.php');
+$menu['Phones']['SIP'] 					= array('phones_sip.php',
+												'phones_sip_edit.php');
+$menu['Phones']['IAX'] 					= array('phones_iax.php',
+												'phones_iax_edit.php');
+$menu['Phones']['ISDN']					= array('phones_isdn.php',
+												'phones_isdn_edit.php');
+$menu['Phones']['Analog']				= array('phones_analog.php',
+												'phones_analog_edit.php');
+$menu['Phones']['External']				= array('phones_external.php',
+												'phones_external_edit.php');
 
 /* Dialplan */
-$menu['Dialplan']['Applications']		= array('dialplan_applications.php');
-$menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php');
+$menu['Dialplan']['Applications']		= array('dialplan_applications.php',
+												'dialplan_applications_edit.php');
+$menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php',
+												'dialplan_callgroups_edit.php');
 //$menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 $menu['Dialplan']['Transfers']			= array('dialplan_transfers.php');
 											
 /* Services */
-$menu['Services']['Conferencing']		= array('services_conferencing.php');
+$menu['Services']['Conferencing']		= array('services_conferencing.php',
+												'services_conferencing_edit.php');
 $menu['Services']['Voicemail']			= array('services_voicemail.php');
 
 /* Status */
