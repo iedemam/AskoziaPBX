@@ -30,6 +30,9 @@
 */
 require("guiconfig.inc");
 
+/* omit no-cache headers because it confuses IE with file downloads */
+$omit_nocacheheaders = true;
+
 if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	session_cache_limiter('public');
 	$fd = fopen($_POST['dlPath'], "rb");
