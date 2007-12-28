@@ -32,34 +32,47 @@
 $pgtitle = array("Diagnostics", "Manager Interface");
 require("guiconfig.inc");
 
-if ($_POST) {
+include("fbegin.inc"); ?>
 
-	 pbx_exec($_POST['command'], &$output);
+<script type="text/JavaScript">
 
-}
+	jQuery(document).ready(function(){
 
-?>
+		jQuery.preloadImages(['/ajax_busy_round.gif']);
+		
+		jQuery("#contents_wrapper").ajaxStart(function(){
+			jQuery(this).block('<img src="/ajax_busy_round.gif">');
+		});
 
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="diag_manager.php" method="post">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr> 
-			<td width="22%" valign="top" class="vncellreq">Command</td>
-			<td width="78%" class="vtable"><input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($_POST['command']);?>"></td>
-		</tr>
-		<tr> 
-			<td width="22%" class="vncellreq" valign="top">Output</td>
-			<td width="78%" class="listr">
-                <textarea wrap="nowrap" name="contents" cols="80" rows="21" id="contents" class="pre"><?=$output;?></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"> <input name="execute" type="submit" class="formbtn" value="Execute">
- 			</td>
-		</tr>
-	</table>
-</form>
+		jQuery("#contents_wrapper").ajaxStop(function(){
+			jQuery(this).unblock();
+		});
+
+		jQuery("#command").keyup(function(e){
+			if (e.keyCode == 13) {
+				jQuery.get("/ajax.cgi", { exec_ami: '"' + jQuery("#command").val() + '"' }, function(data){
+					jQuery("#contents").val(data);
+				});
+			}
+		});
+	});
+
+</script>
+
+<table width="100%" border="0" cellpadding="6" cellspacing="0">
+	<tr> 
+		<td width="20%" valign="top" class="vncellreq">Command</td>
+		<td width="80%" class="vtable">
+			<input name="command" id="command" class="formfld" type="text" size="60">
+		</td>
+	</tr>
+	<tr> 
+		<td width="20%" class="vncellreq" valign="top">Output</td>
+		<td width="80%" class="listr">
+			<div id="contents_wrapper">
+				<textarea wrap="nowrap" name="contents" cols="80" rows="21" id="contents" class="pre"></textarea>
+			</div>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>

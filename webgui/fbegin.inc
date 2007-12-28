@@ -216,32 +216,23 @@ $menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
 <script src="prototype.js" type="text/javascript"></script>
 <script src="scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
 <?php endif; ?>
-<?php if ($needs_jquery) :?>
 <script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
-<script>
-	jQuery.noConflict();
-</script>
-<?php endif; ?>
+<script src="jquery.preloadImage.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
-<script language="javascript">
+<script type="text/JavaScript">
 <!--
-var tri_open = "";
-var tri_closed = "";
+	jQuery.noConflict();
 
-window.onload = preload;
+	jQuery(document).ready(function(){
 
-function preload() {
-	if (document.images) {
-		tri_open = new Image(14,10);
-		tri_closed = new Image(14,10);
-		tri_open.src = "/tri_o.gif";
-		tri_closed.src = "/tri_c.gif";
-	}
-}
+		jQuery.preloadImages(['/tri_o.gif', '/tri_c.gif']);
+
+	});
 
 function showhide(tspan, tri) {
 	tspanel = document.getElementById(tspan);

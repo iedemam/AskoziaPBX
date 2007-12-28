@@ -127,9 +127,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 				?><tr> 
 					<td><strong>No compatible ISDN interfaces detected.</strong>
 					<br>
-					<br>If an ISDN interface is present but was not detected, please send <a href="/exec_raw.php?cmd=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
+					<br>If an ISDN interface is present but was not detected, please send <a href="/ajax.cgi?exec_shell=pciconf%20-lv;echo;dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
 					<br>
-					<br>If this is a USB ISDN device, send <a href="/exec_raw.php?cmd=udesc_dump">this output</a> as well.</td>
+					<br>If this is a USB ISDN device, send <a href="/ajax.cgi?exec_shell=udesc_dump">this output</a> as well.</td>
 				</tr><?
 	
 			} else {

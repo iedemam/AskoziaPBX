@@ -92,6 +92,7 @@ $dirs['minibsd']			= $dirs['pwd'] . "/build/minibsd";
 $dirs['patches']			= $dirs['pwd'] . "/build/patches";
 $dirs['asterisk_modules']	= $dirs['pwd'] . "/build/asterisk_modules";
 $dirs['tools']				= $dirs['pwd'] . "/build/tools";
+$dirs['cgi']				= $dirs['pwd'] . "/build/cgi";
 $dirs['etc']				= $dirs['pwd'] . "/etc";
 $dirs['phpconf']			= $dirs['pwd'] . "/phpconf";
 $dirs['webgui']				= $dirs['pwd'] . "/webgui";
@@ -381,12 +382,20 @@ function build_msmtp() {
 function build_tools() {
 	global $dirs;
 	
-	_exec("cd {$dirs['tools']}; gcc -o stats.cgi stats.c");
-	_exec("cd {$dirs['tools']}; gcc -o verifysig -lcrypto verifysig.c");
-	_exec("cd {$dirs['tools']}; gcc -o wrapresetbtn wrapresetbtn.c");
-	_exec("cd {$dirs['tools']}; gcc -o alix23xresetbtn alix23xresetbtn.c");
+	_exec("cd " . $dirs['tools'] . "; " .
+		"gcc -Wall -o stats.cgi stats.c; " .
+		"gcc -Wall -o verifysig -lcrypto verifysig.c; " .
+		"gcc -Wall -o wrapresetbtn wrapresetbtn.c; " .
+		"gcc -Wall -o alix23xresetbtn alix23xresetbtn.c");
 	/*_exec("cd {$dirs['tools']}; gcc -o zttest zttest.c");*/
 	/*_exec("cd ". $dirs['tools'] ."; gcc -o minicron minicron.c");*/
+}
+
+function build_cgi() {
+	global $dirs;
+	
+	_exec("cd " . $dirs['cgi'] . "; ".
+		"gcc -Wall -o ajax.cgi ajax.c");
 }
 
 function build_bootloader() {
@@ -453,6 +462,7 @@ function build_everything() {
 	build_syslogd();
 	build_clog();
 	build_tools();
+	build_cgi();
 	build_kernels();
 	build_bootloader();
 	build_hostapd();
@@ -937,6 +947,15 @@ function populate_tools($image_name) {
 		"install runmsntp.sh $rootfs/usr/local/bin");
 }
 
+function populate_cgi($image_name) {
+	global $dirs;
+	
+	$rootfs = "$image_name/rootfs";
+	
+	_exec("cd {$dirs['cgi']}; ".
+		"install -s ajax.cgi $rootfs/usr/local/www");
+}
+
 function populate_phpconf($image_name) {
 	global $dirs;
 
@@ -946,9 +965,11 @@ function populate_phpconf($image_name) {
 
 function populate_webgui($image_name) {
 	global $dirs, $versions;
-	
+
+	// copy over webgui files
 	_exec("cp {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
-	
+
+	// grab scriptaculous
 	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
 		_exec("cd {$dirs['packages']}; ".
 			"fetch http://script.aculo.us/dist/{$versions['scriptaculous']}.zip");
@@ -958,18 +979,40 @@ function populate_webgui($image_name) {
 	}
 	_exec("cd {$dirs['packages']}/{$versions['scriptaculous']}; ".
 		"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
+}
 
+function populate_jquery($image_name) {
+	global $dirs, $versions;
+
+	$repo_url = "http://jqueryjs.googlecode.com/svn/trunk/plugins";
+	$plugins = array(
+		"blockUI",
+		"selectboxes",
+		array("preloadImage", "http://plugins.jquery.com/files/jquery.preloadImages.js_1.txt")
+	);
+
+	// grab jquery
 	if (!file_exists("{$dirs['packages']}/{$versions['jquery']}.js")) {
 		_exec("cd {$dirs['packages']}; ".
 			"fetch http://jqueryjs.googlecode.com/files/{$versions['jquery']}.js");
 	}
 	_exec("cp {$dirs['packages']}/{$versions['jquery']}.js $image_name/rootfs/usr/local/www/jquery.js");
 
-	if (!file_exists("{$dirs['packages']}/jquery.selectboxes.js")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://jqueryjs.googlecode.com/svn/trunk/plugins/selectboxes/jquery.selectboxes.js");
+	foreach ($plugins as $p) {
+		if (!is_array($p)) {
+			if (!file_exists($dirs['packages'] . "/jquery." . $p . ".js")) {
+				_exec("cd " . $dirs['packages'] . "; " .
+					"fetch " . $repo_url . "/" . $p . "/jquery." . $p . ".js");
+			}
+			_exec("cp " . $dirs['packages'] . "/jquery." . $p . ".js " . $image_name . "/rootfs/usr/local/www/");
+		} else {
+			if (!file_exists($dirs['packages'] . "/jquery." . $p[0] . ".js")) {
+				_exec("cd " . $dirs['packages'] . "; " .
+					"fetch -o jquery." . $p[0] . ".js " . $p[1]);
+			}
+			_exec("cp " . $dirs['packages'] . "/jquery." . $p[0] . ".js " . $image_name . "/rootfs/usr/local/www/");
+		}
 	}
-	_exec("cp {$dirs['packages']}/jquery.selectboxes.js $image_name/rootfs/usr/local/www/");	
 }
 
 function populate_libs($image_name) {
@@ -999,6 +1042,8 @@ function populate_everything($image_name) {
 	populate_sounds($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
+	populate_cgi($image_name);
+	populate_jquery($image_name);
 	populate_webgui($image_name);
 	populate_libs($image_name);
 	

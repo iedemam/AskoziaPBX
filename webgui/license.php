@@ -67,6 +67,10 @@ require("guiconfig.inc");
 	<p>AskoziaPBX is also based upon/includes various free software packages, 
 	listed below.<br>
 	A big thanks to the authors for all of their hard work!</p>
+	Asterisk (<a href="http://www.asterisk.org" target="_blank">http://www.asterisk.org</a>)<br>
+	Copyright &copy; 1999 - 2007, Digium, Inc.
+	All rights reserved.<br>
+	<br>
 	<p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
 	Copyright &copy; 1994-2007 FreeBSD, Inc. All rights reserved.<br>
 	<br>
@@ -78,10 +82,17 @@ require("guiconfig.inc");
 	All rights reserved.<br>
 	<br>
 	script.aculo.us (<a href="http://script.aculo.us" target="_blank">http://script.aculo.us</a>)<br>
-	Copyright (&copy;) 2005, 2006 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)<br>
+	Copyright &copy; 2005, 2006 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)<br>
 	<br>
 	jQuery (<a href="http://jquery.com" target="_blank">http://jquery.com</a>)<br>
-	Copyright (&copy;) 2007 John Resig<br>
+	Copyright &copy; 2007 John Resig<br>
+	<br>
+	with plugins:
+	<ul>
+		<li><a href="http://plugins.jquery.com/project/blockui" target="_blank">blockUI</a> - Copyright &copy; 2007 M. Alsup</li>
+		<li><a href="http://plugins.jquery.com/project/preloadImages" target="_blank">preloadImages</a> - Copyright &copy; 2007 Blair McBride</li>
+		<li><a href="http://plugins.jquery.com/project/selectboxes" target="_blank">selectboxes</a> - Copyright &copy; 2006-2007 Sam Collett</li>
+	</ul>
 	<br>
 	Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
 	Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)<br>
@@ -100,10 +111,6 @@ require("guiconfig.inc");
 	<br>
 	OSLEC Open Source Line Echo Canceller (<a href="http://www.rowetel.com/ucasterisk/oslec.html" target="_blank">http://www.rowetel.com/ucasterisk/oslec.html</a>)<br>
 	Copyright &copy; 2007, David Rowe
-	All rights reserved.<br>
-	<br>
-	Asterisk (<a href="http://www.asterisk.org" target="_blank">http://www.asterisk.org</a>)<br>
-	Copyright &copy; 1999 - 2007, Digium, Inc.
 	All rights reserved.<br>
 	<br>
 	Original zaptel infrastracture by Digium Inc., ported to FreeBSD by<br>

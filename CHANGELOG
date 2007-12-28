@@ -8,6 +8,8 @@
  - added: software package versions used in each release now listed in /etc/versions
  - added: when defining the incoming routing for a provider, impromptu call groups can now be setup by defining two destinations with the same pattern
  - added: phones, callgroups, conferences and applications have a new option "Public Direct Dial" which, when activated, exposes these extensions to public networks
+ - added: ajax.cgi allows execution of Asterisk Manager Interface and shell commands
+ - added: jQuery plugin copyright information to license page
  - updated: Asterisk to 1.4.16.2
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
@@ -15,10 +17,12 @@
  - updated: timezone information (merged from m0n0wall)
  - changed: additional sounds used for WakeMe application are now in the higher quality ulaw format
  - changed: callgroup member selector now displays the phone's extension
+ - changed: "Diagnostics -> Manager Interface" now uses AJAX to query the new ajax.cgi backend
  - bug: call records are now sorted properly (reported by Jakob Strebel)
  - bug: call groups now define their "read back" number properly (reported by Janåke Rönnblom)
  - bug: external phones reachable via ISDN providers working properly again
  - bug: nge network interfaces are no longer ignored (merged from m0n0wall)
+ - bug: omit no-cache headers on exec.php because it confuses IE with file downloads (merged from m0n0wall)
  - refactor: sip.conf generator rewritten to produce peer and user entries for providers instead of friend entries
  - refactor: individual sorting functions replaced with pbx_sort_by_xxx() functions
  - refactor: all asterisk_* functions renamed to pbx_*

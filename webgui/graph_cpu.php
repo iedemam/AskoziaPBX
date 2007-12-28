@@ -35,7 +35,7 @@ header("Content-type: image/svg+xml");
 /********* Other conf *******/
 
 $nb_plot = 120;  // maximum number of data points to plot in the graph
-$fetch_link = "stats.cgi?cpu";
+$fetch_link = "ajax.cgi?get_stat_cpu=yes";
 
 //SVG attributes
 $attribs['axis']='fill="black" stroke="black"';

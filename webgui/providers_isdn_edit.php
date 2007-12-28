@@ -32,7 +32,6 @@
 require_once("functions.inc");
 
 $needs_scriptaculous = true;
-$needs_jquery = true;
 
 $pgtitle = array("Providers", "ISDN", "Edit Line");
 require("guiconfig.inc");

@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/extensions.inc</string>
+	<string>build/cgi/ajax_shell_exec.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2007-12-18T19:37:57Z</date>
+			<date>2007-12-26T04:17:32Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-12-19T16:58:46Z</date>
+			<date>2007-12-23T19:15:57Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2007-12-19T16:59:16Z</date>
+			<date>2007-12-21T20:46:33Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -82,30 +82,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>55</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
 		<key>NOTES</key>
 		<dict>
@@ -121,6 +105,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>build/cgi/ajax_shell_exec.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>44</integer>
+				<key>line</key>
+				<integer>102</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>65</integer>
+		</dict>
 		<key>build/minibsd/m0n0wall.files</key>
 		<dict>
 			<key>caret</key>
@@ -135,47 +133,61 @@
 			<key>firstVisibleLine</key>
 			<integer>48</integer>
 		</dict>
-		<key>build/patches/packages/asterisk/menuselect.makeopts</key>
+		<key>build/tools/stats.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>54</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>51</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>101</integer>
 		</dict>
 		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>1063</integer>
+				<integer>393</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1121</integer>
+			<integer>374</integer>
 		</dict>
-		<key>phpconf/inc/extensions.inc</key>
+		<key>webgui/diag_manager.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>52</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>29</integer>
+		</dict>
+		<key>webgui/exec.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>86</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>268</integer>
+			<integer>220</integer>
 		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
@@ -195,13 +207,15 @@
 	<key>openDocuments</key>
 	<array>
 		<string>pbxdev.php</string>
-		<string>CHANGELOG</string>
+		<string>build/cgi/ajax_shell_exec.c</string>
+		<string>build/tools/stats.c</string>
 		<string>NOTES</string>
-		<string>phpconf/inc/extensions.inc</string>
+		<string>CHANGELOG</string>
+		<string>webgui/diag_manager.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{81, 12}, {889, 766}}</string>
+	<string>{{6, 13}, {722, 765}}</string>
 </dict>
 </plist>
