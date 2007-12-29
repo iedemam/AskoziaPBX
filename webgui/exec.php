@@ -33,6 +33,7 @@ require("guiconfig.inc");
 /* omit no-cache headers because it confuses IE with file downloads */
 $omit_nocacheheaders = true;
 
+/* handle download request */
 if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	session_cache_limiter('public');
 	$fd = fopen($_POST['dlPath'], "rb");
@@ -43,6 +44,8 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	
 	fpassthru($fd);
 	exit;
+
+/* handle upload request */
 } else if (($_POST['submit'] == "Upload") && is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 	move_uploaded_file($_FILES['ulfile']['tmp_name'], "/tmp/" . $_FILES['ulfile']['name']);
 	$ulmsg = "Uploaded file to /tmp/" . htmlentities($_FILES['ulfile']['name']);
@@ -63,135 +66,120 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 
 // Function: is Blank
 // Returns true or false depending on blankness of argument.
-
 function isBlank( $arg ) { return ereg( "^\s*$", $arg ); }
 
 
 // Function: Puts
 // Put string, Ruby-style.
-
 function puts( $arg ) { echo "$arg\n"; }
 
 
-// "Constants".
-
-$Version    = '';
-$ScriptName = $HTTP_SERVER_VARS['SCRIPT_NAME'];
-$Title      = 'AskoziaPBX: execute command';
-
-// Get year.
-
-$arrDT   = localtime();
-$intYear = $arrDT[5] + 1900;
 
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title><?=$Title ?></title>
+<title>AskoziaPBX: execute command</title>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.blockUI.js" type="text/javascript"></script>
+<script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script language="javascript">
 <!--
 
-   // Create recall buffer array (of encoded strings).
-
-<?php
-
-if (isBlank( $_POST['txtRecallBuffer'] )) {
-   puts( "   var arrRecallBuffer = new Array;" );
-} else {
-   puts( "   var arrRecallBuffer = new Array(" );
-   $arrBuffer = explode( "&", $_POST['txtRecallBuffer'] );
-   for ($i=0; $i < (count( $arrBuffer ) - 1); $i++) puts( "      '" . $arrBuffer[$i] . "'," );
-   puts( "      '" . $arrBuffer[count( $arrBuffer ) - 1] . "'" );
-   puts( "   );" );
-}
-
-?>
-
-   // Set pointer to end of recall buffer.
-   var intRecallPtr = arrRecallBuffer.length;
-
-   // Functions to extend String class.
-   function str_encode() { return escape( this ) }
-   function str_decode() { return unescape( this ) }
-      
-   // Extend string class to include encode() and decode() functions.
-   String.prototype.encode = str_encode
-   String.prototype.decode = str_decode
-
-   // Function: is Blank
-   // Returns boolean true or false if argument is blank.
-   function isBlank( strArg ) { return strArg.match( /^\s*$/ ) }
-
-   // Function: frmExecPlus onSubmit (event handler)
-   // Builds the recall buffer from the command string on submit.
-   function frmExecPlus_onSubmit( form ) {
-
-      if (!isBlank(form.txtCommand.value)) {
-		  // If this command is repeat of last command, then do not store command.
-		  if (form.txtCommand.value.encode() == arrRecallBuffer[arrRecallBuffer.length-1]) { return true }
+	jQuery(document).ready(function(){
 	
-		  // Stuff encoded command string into the recall buffer.
-		  if (isBlank(form.txtRecallBuffer.value))
-			 form.txtRecallBuffer.value = form.txtCommand.value.encode();
-		  else
-			 form.txtRecallBuffer.value += '&' + form.txtCommand.value.encode();
-	  }
+		jQuery.preloadImages(['/ajax_busy_round.gif']);
 
-      return true;
-   }
+		jQuery("#contents_wrapper").ajaxStart(function(){
+			jQuery(this).text("executing...");
+		});
 
-   // Function: btnRecall onClick (event handler)
-   // Recalls command buffer going either up or down.
-   function btnRecall_onClick( form, n ) {
+		jQuery("#txtCommand").keyup(function(e){
+			if (e.keyCode == 13) {
+				execute();
+			}
+		});
 
-      // If nothing in recall buffer, then error.
-      if (!arrRecallBuffer.length) {
-         alert( 'Nothing to recall!' );
-         form.txtCommand.focus();
-         return;
-      }
+		jQuery("#Execute").click(function(){
+			execute();
+		});
 
-      // Increment recall buffer pointer in positive or negative direction
-      // according to <n>.
-      intRecallPtr += n;
+	});
 
-      // Make sure the buffer stays circular.
-      if (intRecallPtr < 0) { intRecallPtr = arrRecallBuffer.length - 1 }
-      if (intRecallPtr > (arrRecallBuffer.length - 1)) { intRecallPtr = 0 }
+	function execute() {
 
-      // Recall the command.
-      form.txtCommand.value = arrRecallBuffer[intRecallPtr].decode();
-   }
+		var command = jQuery("#txtCommand").val();
 
-   // Function: Reset onClick (event handler)
-   // Resets form on reset button click event.
-   function Reset_onClick( form ) {
+		if (!isBlank(command)) {
+			// If this command is not a repeat of last command, then not store command.
+			if (command != arrRecallBuffer[arrRecallBuffer.length-1]) {
+				arrRecallBuffer[arrRecallBuffer.length] = command;
+			}
+		}
+		jQuery.get("/ajax.cgi", { exec_shell: command }, function(data){
+			jQuery("#contents_wrapper").text(data);
+		});
+	}
 
-      // Reset recall buffer pointer.
-      intRecallPtr = arrRecallBuffer.length;
+	// Create recall buffer array (of encoded strings).
+	var arrRecallBuffer = new Array;
 
-      // Clear form (could have spaces in it) and return focus ready for cmd.
-      form.txtCommand.value = '';
-      form.txtCommand.focus();
+	// Set pointer to end of recall buffer.
+	var intRecallPtr = arrRecallBuffer.length;
 
-      return true;
-   }
+	// Function: is Blank
+	// Returns boolean true or false if argument is blank.
+	function isBlank( strArg ) { return strArg.match( /^\s*$/ ) }
 
-   // hansmi, 2005-01-13
-   function txtCommand_onKey(e) {
-       if(!e) var e = window.event; // IE-Fix
-       var code = (e.keyCode?e.keyCode:(e.which?e.which:0));
-       if(!code) return;
-       var f = document.getElementsByName('frmExecPlus')[0];
-       if(!f) return;
-       switch(code) {
-       case 38: // up
-           btnRecall_onClick(f, -1);
-           break;
-       case 40: // down
-           btnRecall_onClick(f, 1);
-           break;
-       }
-   }
+	// Recalls command buffer going either up or down.
+	function btnRecall_onClick(n) {
+
+		// If nothing in recall buffer, then error.
+		if (!arrRecallBuffer.length) {
+			alert( 'Nothing to recall!' );
+			jQuery("#txtCommand").focus();
+			return;
+		}
+
+		// Increment recall buffer pointer in positive or negative direction
+		// according to <n>.
+		intRecallPtr += n;
+
+		// Make sure the buffer stays circular.
+		if (intRecallPtr < 0) { intRecallPtr = arrRecallBuffer.length - 1 }
+		if (intRecallPtr > (arrRecallBuffer.length - 1)) { intRecallPtr = 0 }
+
+		// Recall the command.
+		jQuery("#txtCommand").val(arrRecallBuffer[intRecallPtr]);
+	}
+
+	// Resets form on reset button click event.
+	function Reset_onClick() {
+
+		// Reset recall buffer pointer.
+		intRecallPtr = arrRecallBuffer.length;
+
+		// Clear form (could have spaces in it) and return focus ready for cmd.
+		jQuery("#txtCommand").val('');
+		jQuery("#txtCommand").focus();
+
+		return true;
+	}
+
+	// hansmi, 2005-01-13
+	function txtCommand_onKey(e) {
+		if(!e) var e = window.event; // IE-Fix
+		var code = (e.keyCode?e.keyCode:(e.which?e.which:0));
+		if(!code) return;
+		var f = document.getElementsByName('frmExecPlus')[0];
+		if(!f) return;
+		switch(code) {
+		case 38: // up
+			btnRecall_onClick(f, -1);
+			break;
+		case 40: // down
+			btnRecall_onClick(f, 1);
+			break;
+		}
+	}
 //-->
 </script>
 <link href="gui.css" rel="stylesheet" type="text/css">
@@ -199,96 +187,73 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
 <!--
 
 input {
-   font-family: courier new, courier;
-   font-weight: normal;
-   font-size: 9pt;
+	font-family: courier new, courier;
+	font-weight: normal;
+	font-size: 9pt;
 }
 
 pre {
-   border: 2px solid #435370;
-   background: #F0F0F0;
-   padding: 1em;
-   font-family: courier new, courier;
-   white-space: pre;
-   line-height: 10pt;
-   font-size: 10pt;
+	border: 2px solid #435370;
+	background: #F0F0F0;
+	padding: 1em;
+	font-family: courier new, courier;
+	white-space: pre;
+	line-height: 10pt;
+	font-size: 10pt;
 }
 
 .label {
-   font-family: tahoma, verdana, arial, helvetica;
-   font-size: 11px;
-   font-weight: bold;
+	font-family: tahoma, verdana, arial, helvetica;
+	font-size: 11px;
+	font-weight: bold;
 }
 
 .button {
-   font-family: tahoma, verdana, arial, helvetica;
-   font-weight: bold;
-   font-size: 11px;
+	font-family: tahoma, verdana, arial, helvetica;
+	font-weight: bold;
+	font-size: 11px;
 }
 
 -->
 </style>
 </head>
-<body<?php
-if(!isBlank($_POST['txtCommand'])) {
-    echo ' onload="document.forms[\'frmExecPlus\'].txtCommand.focus();"';
-}
-?>>
-<p><span class="pgtitle"><?=$Title ?></span>
-<?php if (isBlank($_POST['txtCommand'])): ?>
-<p class="red"><strong>Note: this function is unsupported. Use it
-at your own risk!</strong></p>
-<?php endif; ?>
+<body>
+<p><span class="pgtitle">AskoziaPBX: execute command</span>
 <?php if ($ulmsg) echo "<p><strong>" . $ulmsg . "</strong></p>\n"; ?>
-<?php
-
-if (!isBlank($_POST['txtCommand'])) {
-   puts("<pre>");
-   puts("\$ " . htmlspecialchars($_POST['txtCommand']));
-   putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
-   putenv("SCRIPT_FILENAME=" . strtok($_POST['txtCommand'], " "));	/* PHP scripts */
-   $ph = popen($_POST['txtCommand'], "r" );
-   while ($line = fgets($ph)) echo htmlspecialchars($line);
-   pclose($ph);
-   puts("</pre>");
-}
-
-?>
-
-<form action="<?=$ScriptName ?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
-  <table>
-    <tr>
-      <td class="label" align="right">Command:</td>
-      <td class="type"><input name="txtCommand" type="text" size="80" value="" onkeypress="txtCommand_onKey(event);"></td>
-    </tr>
-    <tr>
-      <td valign="top">&nbsp;</td>
-      <td valign="top" class="label">
-         <input type="hidden" name="txtRecallBuffer" value="<?=$_POST['txtRecallBuffer'] ?>">
-         <input type="button" class="button" name="btnRecallPrev" value="<" onClick="btnRecall_onClick( this.form, -1 );">
-         <input type="submit" class="button" value="Execute">
-         <input type="button" class="button" name="btnRecallNext" value=">" onClick="btnRecall_onClick( this.form,  1 );">
-         <input type="button"  class="button" value="Clear" onClick="return Reset_onClick( this.form );">
-      </td>
-    </tr>
-    <tr>
-      <td height="8"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td align="right">Download:</td>
-      <td>
-        <input name="dlPath" type="text" id="dlPath" size="50">
-        <input name="submit" type="submit"  class="button" id="download" value="Download">
-        </td>
-    </tr>
-    <tr>
-      <td align="right">Upload:</td>
-      <td valign="top" class="label">
-<input name="ulfile" type="file" class="button" id="ulfile">
-        <input name="submit" type="submit"  class="button" id="upload" value="Upload"></td>
-    </tr>
-  </table>
+<pre id="contents_wrapper">enter a command below...</pre>
+	<table>
+		<tr>
+			<td class="label" align="right">Command:</td>
+			<td class="type"><input name="txtCommand" id="txtCommand" type="text" size="80" value=""></td>
+		</tr>
+		<tr>
+			<td valign="top">&nbsp;</td>
+			<td valign="top" class="label">
+				<input type="hidden" name="txtRecallBuffer" value="">
+				<input type="button" class="button" name="btnRecallPrev" value="<" onClick="btnRecall_onClick(-1);">
+				<input type="button" class="button" name="Execute" id="Execute" value="Execute">
+				<input type="button" class="button" name="btnRecallNext" value=">" onClick="btnRecall_onClick(1);">
+				<input type="button"  class="button" value="Clear" onClick="return Reset_onClick();">
+			</td>
+		</tr>
+	</table>
+<form action="exec.php" method="post" enctype="multipart/form-data" name="frmExecPlus">
+	<table>
+		<tr>
+			<td align="right">Download:</td>
+			<td>
+				<input name="dlPath" type="text" id="dlPath" size="50">
+				<input name="submit" type="submit"  class="button" id="download" value="Download">
+			</td>
+		</tr>
+		<tr>
+			<td align="right">Upload:</td>
+			<td valign="top" class="label">
+				<input name="ulfile" type="file" class="button" id="ulfile">
+				<input name="submit" type="submit"  class="button" id="upload" value="Upload">
+			</td>
+		</tr>
+	</table>
 </form>
 </body>
 </html>

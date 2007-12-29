@@ -18,6 +18,7 @@
  - changed: additional sounds used for WakeMe application are now in the higher quality ulaw format
  - changed: callgroup member selector now displays the phone's extension
  - changed: "Diagnostics -> Manager Interface" now uses AJAX to query the new ajax.cgi backend
+ - changed: /exec.php now uses AJAX to query the new ajax.cgi backend
  - bug: call records are now sorted properly (reported by Jakob Strebel)
  - bug: call groups now define their "read back" number properly (reported by Janåke Rönnblom)
  - bug: external phones reachable via ISDN providers working properly again

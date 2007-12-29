@@ -39,6 +39,8 @@ include("fbegin.inc"); ?>
 	jQuery(document).ready(function(){
 
 		jQuery.preloadImages(['/ajax_busy_round.gif']);
+
+		jQuery("#command").focus();
 		
 		jQuery("#contents_wrapper").ajaxStart(function(){
 			jQuery(this).block('<img src="/ajax_busy_round.gif">');

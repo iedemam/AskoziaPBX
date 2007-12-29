@@ -116,8 +116,13 @@ void exec_shell(char * command) {
 
 	FILE * shell_pipe;
 	char output_buffer[81];
+	char * postfix = " 2>&1";
+	char total_command[strlen(command) + strlen(postfix) + 1];
 
-	shell_pipe = popen(command, "r");
+	strcpy(total_command, command);
+	strcat(total_command, postfix);
+
+	shell_pipe = popen(total_command, "r");
 	if (shell_pipe == NULL) {
 		print_debug("exec_shell: process pipe creation failed!");
 		exit(1);
