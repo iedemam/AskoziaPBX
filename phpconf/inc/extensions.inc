@@ -622,6 +622,7 @@ function extensions_generate_callgroup_extension($g, $from_public=false, $readba
 	$readbacknum = ($readbacknum) ? $readbacknum : $vm_phone['extension'];
 
 	$conf = "; callgroup : {$g['name']} - <$exten>\n";
+	$conf .= "exten => $exten,1,NoOp()\n";
 	$conf .= extensions_generate_missed_call_notifications_line($exten, $vm_phone);
 	$conf .= "exten => $exten,n,Macro(vm|$dialstring|{$vm_phone['extension']}|$readbacknum|$transfer_flags" . "o)\n";
 
