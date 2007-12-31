@@ -216,7 +216,7 @@ EOD;
 		// outgoing (peer)
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= "type=peer\n";
+		$conf .= "type=friend\n";
 		$conf .= "username={$p['username']}\n";
 		$conf .= "secret={$p['secret']}\n";
 		
@@ -234,6 +234,8 @@ EOD;
 		if ($p['port']) {
 			$conf .= "port={$p['port']}\n";
 		}
+
+		$conf .= "context={$p['uniqid']}-incoming\n";
 
 		if($p['fromdomain']) {
 			$conf .= "fromdomain={$p['fromdomain']}\n";
@@ -281,7 +283,8 @@ EOD;
 		$conf .= "\n\n";
 
 		// incoming (user)
-		$conf .= "; {$p['name']}\n";
+		/*
+		$conf .= "; {$p['name']} - incoming\n";
 		$conf .= "[{$p['username']}]\n";
 		$conf .= "type=user\n";
 		$conf .= "secret={$p['secret']}\n";
@@ -341,7 +344,7 @@ EOD;
 			foreach ($p['codec'] as $codec) {
 				$conf .= "allow=$codec\n";
 			}
-		}
+		}*/
 		$conf .= "\n\n";
 	}
 
