@@ -238,10 +238,10 @@ function showhide(tspan, tri) {
 	tspanel = document.getElementById(tspan);
 	triel = document.getElementById(tri);
 	if (tspanel.style.display == 'none') {
-		tspanel.style.display = '';
+		jQuery("#" + tspan).slideDown("slow");
 		triel.src = "/tri_o.gif";
 	} else {
-		tspanel.style.display = 'none';
+		jQuery("#" + tspan).slideUp("slow");
 		triel.src = "/tri_c.gif";
 	}
 }
