@@ -12,7 +12,7 @@ pb13
 - difference between incoming extensions and callgroups should be made clear in the gui
 - start writing short wiki entries for new features as they are implemented
 - providers should have the option to also include "public direct dial" extensions
-
+!! - refactor: sip.conf generator rewritten to produce peer and user entries for providers instead of friend entries
 bug: new Russian voicemail translation is missing words upon reception...
 
 storage

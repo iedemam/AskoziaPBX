@@ -39,6 +39,7 @@ require_once("conferencing.inc");
 require_once("config.inc");
 require_once("dialplan.inc");
 require_once("extensions.inc");
+require_once("external.inc");
 require_once("features.inc");
 require_once("iax.inc");
 require_once("indications.inc");

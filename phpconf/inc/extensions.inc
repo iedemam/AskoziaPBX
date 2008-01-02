@@ -31,56 +31,6 @@
 require_once("functions.inc");
 
 /**
- * Returns all phones sorted by extension.
- * If no phones are defined, the global array is initialized.
- */
-function external_get_phones() {
-	global $config;
-	
-	if (!is_array($config['external']['phone']))
-		$config['external']['phone'] = array();
-		
-	external_sort_phones();
-		
-	return $config['external']['phone'];
-}
-
-/**
- * Sorts phones by extension
- */
-function external_sort_phones() {
-	global $g, $config;
-
-	usort($config['external']['phone'], "pbx_sort_by_extension");	
-}
-
-/**
- * Returns a specific phone based on its uniqid
- */
-function external_get_phone($uniqid) {
-	global $config, $uniqid_map;
-
-	return $config['external']['phone'][$uniqid_map[$uniqid]];
-}
-
-/**
- * Returns an array of all assigned phone extensions
- */
-function external_get_extensions() {
-	global $config;
-	
-	$extensions = array();
-
-	if (is_array($config['external']['phones'])) {
-		foreach($config['external']['phones'] as $phone) {
-			$extensions[] = $phone['extension'];
-		}
-	}
-
-	return $extensions;
-}
-
-/**
  * Responsible for generating extensions.conf, the entire system's dialplan
  * XXX : this is huge and needs a rewrite so some flexibility is possible
  */
