@@ -33,7 +33,7 @@ $pgtitle = array("License");
 require("guiconfig.inc"); 
 ?>
 <?php include("fbegin.inc"); ?>
-	<p><strong>AskoziaPBX is Copyright &copy; 2007 IKT (<a href="http://itison-ikt.de/en/en_index.html">http://www.itison-ikt.de</a>).<br>
+	<p><strong>AskoziaPBX is Copyright &copy; 2007 - 2008 IKT (<a href="http://itison-ikt.de/en/en_index.html">http://www.itison-ikt.de</a>).<br>
 	All rights reserved.</strong></p>
 	<p> Redistribution and use in source and binary forms, with or without<br>
 	modification, are permitted provided that the following conditions 
@@ -60,7 +60,7 @@ require("guiconfig.inc");
 	<p>AskoziaPBX is derived from m0n0wall (<a href="http://m0n0.ch/wall" target="_blank">http://m0n0.ch/wall</a>) (FreeBSD 6 branch, r195).<br>
 	Many thanks to Manuel Kasper, Chris Buechler and all of the m0n0wall contributors.<br>
 	<br>
-	<strong>m0n0wall&reg; is Copyright &copy; 2002-2007 Manuel Kasper (<a href="mailto:mk@neon1.net">mk@neon1.net</a>).<br>
+	<strong>m0n0wall&reg; is Copyright &copy; 2002 - 2008 Manuel Kasper (<a href="mailto:mk@neon1.net">mk@neon1.net</a>).<br>
 	m0n0wall is a registered trademark of Manuel Kasper.<br>
 	All rights reserved.</strong></p>
 	<hr size="1">
@@ -68,30 +68,30 @@ require("guiconfig.inc");
 	listed below.<br>
 	A big thanks to the authors for all of their hard work!</p>
 	Asterisk (<a href="http://www.asterisk.org" target="_blank">http://www.asterisk.org</a>)<br>
-	Copyright &copy; 1999 - 2007, Digium, Inc.
+	Copyright &copy; 1999 - 2008, Digium, Inc.
 	All rights reserved.<br>
 	<br>
 	<p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
-	Copyright &copy; 1994-2007 FreeBSD, Inc. All rights reserved.<br>
+	Copyright &copy; 1994 - 2008 FreeBSD, Inc. All rights reserved.<br>
 	<br>
 	This product includes PHP, freely available from <a href="http://www.php.net/" target="_blank">http://www.php.net</a>.<br>
-	Copyright &copy; 1999 - 2007 The PHP Group. All rights reserved.<br>
+	Copyright &copy; 1999 - 2008 The PHP Group. All rights reserved.<br>
 	<br>
 	mini_httpd (<a href="http://www.acme.com/software/mini_httpd" target="_blank">http://www.acme.com/software/mini_httpd</a>)<br>
 	Copyright &copy; 1999, 2000 by Jef Poskanzer &lt;jef@acme.com&gt;. 
 	All rights reserved.<br>
 	<br>
 	script.aculo.us (<a href="http://script.aculo.us" target="_blank">http://script.aculo.us</a>)<br>
-	Copyright &copy; 2005, 2006 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)<br>
+	Copyright &copy; 2005 - 2008 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)<br>
 	<br>
 	jQuery (<a href="http://jquery.com" target="_blank">http://jquery.com</a>)<br>
-	Copyright &copy; 2007 John Resig<br>
+	Copyright &copy; 2007 - 2008 John Resig<br>
 	<br>
 	with plugins:
 	<ul>
-		<li><a href="http://plugins.jquery.com/project/blockui" target="_blank">blockUI</a> - Copyright &copy; 2007 M. Alsup</li>
-		<li><a href="http://plugins.jquery.com/project/preloadImages" target="_blank">preloadImages</a> - Copyright &copy; 2007 Blair McBride</li>
-		<li><a href="http://plugins.jquery.com/project/selectboxes" target="_blank">selectboxes</a> - Copyright &copy; 2006-2007 Sam Collett</li>
+		<li><a href="http://plugins.jquery.com/project/blockui" target="_blank">blockUI</a> - Copyright &copy; 2007 - 2008 M. Alsup</li>
+		<li><a href="http://plugins.jquery.com/project/preloadImages" target="_blank">preloadImages</a> - Copyright &copy; 2007 - 2008 Blair McBride</li>
+		<li><a href="http://plugins.jquery.com/project/selectboxes" target="_blank">selectboxes</a> - Copyright &copy; 2006 - 2008 Sam Collett</li>
 	</ul>
 	<br>
 	Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
@@ -102,15 +102,15 @@ require("guiconfig.inc");
 	All rights reserved.<br>
 	<br>
 	msmtp (<a href="http://msmtp.sourceforge.net" target="_blank">http://msmtp.sourceforge.net</a>)<br>
-	Copyright &copy; 2005, 2006, 2007 Martin Lambers.
+	Copyright &copy; 2005 - 2008 Martin Lambers.
 	All rights reserved.<br>
 	<br>
 	ISDN4BSD by HPS (<a href="http://www.turbocat.net/~hselasky/isdn4bsd/" target="_blank">http://www.turbocat.net/~hselasky/isdn4bsd/</a>)<br>
-	Copyright &copy; 2003-2007 Hans Petter Selasky.
+	Copyright &copy; 2003 - 2008 Hans Petter Selasky.
 	All rights reserved.<br>
 	<br>
 	OSLEC Open Source Line Echo Canceller (<a href="http://www.rowetel.com/ucasterisk/oslec.html" target="_blank">http://www.rowetel.com/ucasterisk/oslec.html</a>)<br>
-	Copyright &copy; 2007, David Rowe
+	Copyright &copy; 2007 - 2008, David Rowe
 	All rights reserved.<br>
 	<br>
 	Original zaptel infrastracture by Digium Inc., ported to FreeBSD by<br>

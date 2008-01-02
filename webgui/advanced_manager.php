@@ -4,7 +4,7 @@
 	$Id: services_conferencing.php 110 2007-05-29 11:39:10Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
