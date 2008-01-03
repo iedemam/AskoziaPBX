@@ -161,4 +161,12 @@ EOD;
 
 }
 
+function javascript_default_value_setter($id, $value) {
+
+	$js = "jQuery('#" . $id . "').val('" . $value . "');";
+	$a = "<a href=\"javascript:{}\" onclick=\"$js\" title=\"set default value\">$value</a>";
+
+	return $a;
+}
+
 ?>

@@ -31,6 +31,15 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
+/* add default values to global array */
+if (!isset($defaults['rtp'])) {
+	$defaults['rtp'] = array();
+	$defaults['rtp']['lowport'] = "10000";
+	$defaults['rtp']['highport'] = "10200";
+} else {
+	echo "ERROR: adding default values in rtp.inc failed!\n";
+}
+
 
 /**
  * Generates rtp.conf which contains the RTP port range Asterisk uses
@@ -43,21 +52,77 @@ function rtp_conf_generate() {
 		printf("Error: cannot open rtp.conf in rtp_conf_generate().\n");
 		return 1;
 	}
-	
-	$rtpconfig = $config['services']['rtp'];
 
-	$lowport = isset($rtpconfig['lowport']) ? $rtpconfig['lowport'] : "10000";
-	$highport = isset($rtpconfig['highport']) ? $rtpconfig['highport'] : "20000";
+	$low_port = rtp_low_port();
+	$high_port = rtp_high_port();
 	
 	$conf = "[general]\n";
-	$conf .= "rtpstart=$lowport\n";
-	$conf .= "rtpend=$highport\n";
+	$conf .= "rtpstart=$low_port\n";
+	$conf .= "rtpend=$high_port\n";
 	$conf .= "\n";
 	
 	fwrite($fd, $conf);
 	fclose($fd);
 
 	return 0;
+}
+
+/**
+ * gets, verifies and sets values for the rtp low port number
+ */
+function rtp_low_port($new_port=false) {
+	global $defaults, $config;
+
+	// setting a new value
+	if ($new_port !== false) {
+		// verify port
+		if (!verify_is_port($new_port)) {
+			return "Invalid RTP low port specified ($new_port).";
+		} else {
+			// delete existing value
+			unset($GLOBALS['config']['services']['rtp']['lowport']);
+			// save if new value is not the default value
+			if ($new_port != $defaults['rtp']['lowport']) {
+				$config['services']['rtp']['lowport'] = $new_port;
+			}
+			return false;
+		}
+	
+	// get current value
+	} else {
+		return isset($config['services']['rtp']['lowport']) ?
+			$config['services']['rtp']['lowport'] :
+			$defaults['rtp']['lowport'];	
+	}
+}
+
+/**
+ * gets, verifies and sets values for the rtp high port number
+ */
+function rtp_high_port($new_port=false) {
+	global $defaults, $config;
+
+	// setting a new value
+	if ($new_port !== false) {
+		// verify port
+		if (!verify_is_port($new_port)) {
+			return "Invalid RTP high port specified ($new_port).";
+		} else {
+			// delete existing value
+			unset($GLOBALS['config']['services']['rtp']['highport']);
+			// save if new value is not the default value
+			if ($new_port != $defaults['rtp']['highport']) {
+				$config['services']['rtp']['highport'] = $new_port;
+			}
+			return false;
+		}
+	
+	// get current value
+	} else {
+		return isset($config['services']['rtp']['highport']) ?
+			$config['services']['rtp']['highport'] :
+			$defaults['rtp']['highport'];	
+	}
 }
 
 ?>

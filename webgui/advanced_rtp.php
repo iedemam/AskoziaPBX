@@ -32,11 +32,8 @@
 $pgtitle = array("Advanced", "RTP");
 require("guiconfig.inc");
 
-$rtpconfig = &$config['services']['rtp'];
-
-$pconfig['lowport'] = isset($rtpconfig['lowport']) ? $rtpconfig['lowport'] : "10000";
-$pconfig['highport'] = isset($rtpconfig['highport']) ? $rtpconfig['highport'] : "20000";
-
+$pconfig['highport'] = rtp_high_port();
+$pconfig['lowport'] = rtp_low_port();
 
 if ($_POST) {
 
@@ -49,21 +46,17 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if ($_POST['lowport'] && !verify_is_numericint($_POST['lowport'])) {
-		$input_errors[] = "A valid port must be entered for the low RTP port.";
+	if ($_POST['lowport'] && ($msg = rtp_low_port($_POST['lowport']))) {
+		$input_errors[] = $msg;
 	}
-	if ($_POST['highport'] && !verify_is_numericint($_POST['highport'])) {
-		$input_errors[] = "A valid port must be entered for the high RTP port.";
+	if ($_POST['highport'] && ($msg = rtp_high_port($_POST['highport']))) {
+		$input_errors[] = $msg;
 	}
 	if ($_POST['highport'] <= $_POST['lowport']) {
-		$input_errors[] = "The high RTP port must be larger than the low RTP port.";
+		$input_errors[] = "The high RTP port must be greater than the low RTP port.";
 	}
 
 	if (!$input_errors) {
-		// XXX the proper way of setting posted options with default values...
-		$rtpconfig['lowport'] = ($_POST['lowport'] != "10000") ? $_POST['lowport'] : false;
-		$rtpconfig['highport'] = ($_POST['highport'] != "20000") ? $_POST['highport'] : false;
-
 		write_config();
 		touch($d_rtpconfdirty_path);
 		header("Location: advanced_rtp.php");
@@ -95,8 +88,11 @@ if (file_exists($d_rtpconfdirty_path)) {
 		<tr> 
 			<td width="20%" valign="top" class="vncell">RTP Port Range</td>
 			<td width="80%" class="vtable">
-				<input name="lowport" type="text" class="formfld" id="lowport" size="20" value="<?=htmlspecialchars($pconfig['lowport']);?>">&nbsp;-&nbsp;<input name="highport" type="text" class="formfld" id="highport" size="20" value="<?=htmlspecialchars($pconfig['highport']);?>">
-				<br><span class="vexpl">The port range which RTP streams should use. (default 10000-20000)</span>
+				<input name="lowport" type="text" class="formfld" id="lowport" size="20" maxlength="5"  value="<?=htmlspecialchars($pconfig['lowport']);?>">
+				-
+				<input name="highport" type="text" class="formfld" id="highport" size="20" maxlength="5"  value="<?=htmlspecialchars($pconfig['highport']);?>">
+				<br><span class="vexpl">The port range which RTP streams should use.
+				(default: <?=javascript_default_value_setter("lowport", $defaults['rtp']['lowport']);?>-<?=javascript_default_value_setter("highport", $defaults['rtp']['highport']);?>)</span>
 			</td>
 		</tr>
 		<tr> 

@@ -93,10 +93,6 @@ $defaults['parking']['parktime'] = "30";
 $defaults['qos'] = array();
 $defaults['qos']['qualify'] = "2";
 
-$defaults['rtp'] = array();
-$defaults['rtp']['lowport'] = "10000";
-$defaults['rtp']['highport'] = "10200";
-
 $defaults['sip'] = array();
 $defaults['sip']['port'] = "5060";
 $defaults['sip']['defaultexpiry'] = "120";
