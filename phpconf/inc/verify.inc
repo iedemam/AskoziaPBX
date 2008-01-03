@@ -195,4 +195,25 @@ function verify_digital_signature($fname) {
 		escapeshellarg($fname));
 }
 
+/**
+ * Returns the supplied argument if the string has length and is unequal to all default values
+ */
+function verify_non_default($value, $defaults=false) {
+
+	if (!$defaults) {
+		return !strlen($value) ? false : $value;
+	}
+
+	if (!is_array($defaults)) {
+		return $value == $defaults ? false : $value;
+	}
+
+	foreach ($defaults as $default) {
+		if ($value == $default) {
+			return false;
+		}
+	}
+	return $value;
+}
+
 ?>

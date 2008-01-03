@@ -119,7 +119,7 @@ if ($_POST) {
 		$sp['extension'] = $_POST['extension'];
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['secret'] = $_POST['secret'];
-		$sp['voicemailbox'] = $_POST['voicemailbox'];
+		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$sp['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$sp['language'] = $_POST['language'];
@@ -130,7 +130,7 @@ if ($_POST) {
 		$sp['calllimit'] = ($_POST['calllimit'] != "2") ? $_POST['calllimit'] : false;
 		$sp['busylimit'] = ($_POST['busylimit'] != "1") ? $_POST['busylimit'] : false;
 		
-		$sp['descr'] = $_POST['descr'];
+		$sp['descr'] = verify_non_default($_POST['descr']);
 
 		$a_providers = pbx_get_providers();
 		$sp['provider'] = array();

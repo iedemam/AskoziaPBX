@@ -31,10 +31,7 @@
  - refactor: all features, application and callgroup related functions moved from dialplan.inc to features.inc, applications.inc and callgroups.inc
  - refactor: all verification and network related functions moved from util.inc to verify.inc and network.inc
  - refactor: added isdn_get_provider()
- - refactor: added extensions_phone_uniqid_to_dialstring(), extensions_generate_provider_incoming_context(), extensions_generate_provider_outgoing_context(), extensions_generate_internal_phone_extension(), extensions_generate_external_phone_extension(), extensions_generate_callgroup_extension(), extensions_generate_application_extension(), extensions_generate_conference_room_extension() : extension generator is much cleaner now
- - refactor: renamed _extensions_add_sendnotifications_line() to extensions_generate_missed_call_notifications_line()
- - refactor: renamed _extensions_generate_parkinglot() to extensions_generate_parkinglot()
- - refactor: deprecated pbx_uniqid_to_extension()
+ - refactor: extension generator is much cleaner now
 
 2007.11.16 - pb12.2
  - bug: deleting a phone or callgroup no longer ends up in a page hang (reported by Mattijs V)

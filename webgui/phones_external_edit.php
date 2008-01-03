@@ -84,7 +84,7 @@ if ($_POST) {
 		$ep['name'] = $_POST['name'];
 		$ep['dialstring'] = $_POST['dialstring'];
 		$ep['dialprovider'] = $_POST['dialprovider'];
-		$ep['voicemailbox'] = $_POST['voicemailbox'];
+		$ep['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ep['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ep['language'] = $_POST['language'];

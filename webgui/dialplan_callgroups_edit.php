@@ -74,8 +74,8 @@ if ($_POST) {
 	if (!$input_errors) {
 		$gm = array();		
 		$gm['name'] = $_POST['name'];
-		$gm['extension'] = $_POST['extension'];
-		$gm['descr'] = $_POST['descr'];
+		$gm['extension'] = verify_non_default($_POST['extension']);
+		$gm['descr'] = verify_non_default($_POST['descr']);
 		$gm['groupmember'] = $gme;
 		$gm['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 

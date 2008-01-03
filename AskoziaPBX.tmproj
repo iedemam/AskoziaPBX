@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>phpconf/inc/functions.inc</string>
+	<string>phpconf/inc/verify.inc</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2008-01-02T14:11:35Z</date>
+			<date>2008-01-02T16:08:11Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2007-12-31T17:55:35Z</date>
+			<date>2008-01-02T22:35:47Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2008-01-02T14:05:24Z</date>
+			<date>2008-01-02T16:07:33Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -77,34 +77,6 @@
 	<integer>224</integer>
 	<key>metaData</key>
 	<dict>
-		<key>CHANGELOG</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>NOTES</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>build/minibsd/m0n0wall.files</key>
 		<dict>
 			<key>caret</key>
@@ -119,121 +91,177 @@
 			<key>firstVisibleLine</key>
 			<integer>48</integer>
 		</dict>
-		<key>pbxdev.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>984</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>962</integer>
-		</dict>
 		<key>phpconf/inc/extensions.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>434</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>526</integer>
+		</dict>
+		<key>phpconf/inc/globals.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>61</integer>
+				<key>line</key>
+				<integer>74</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>68</integer>
+		</dict>
+		<key>phpconf/inc/iax.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>214</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>206</integer>
+		</dict>
+		<key>phpconf/inc/sip.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>388</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>373</integer>
+		</dict>
+		<key>phpconf/inc/verify.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>200</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>187</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>200</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>200</integer>
 			</dict>
 		</dict>
-		<key>phpconf/inc/external.inc</key>
+		<key>webgui/display.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>31</integer>
+				<integer>330</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>326</integer>
 		</dict>
-		<key>phpconf/inc/functions.inc</key>
+		<key>webgui/guiconfig.inc</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>149</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>17</integer>
-		</dict>
-		<key>phpconf/inc/pbx.inc</key>
-		<dict>
-			<key>caret</key>
+			<integer>134</integer>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>149</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>22</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>149</integer>
+			</dict>
 		</dict>
 		<key>webgui/interfaces_analog.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>107</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>129</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>110</integer>
-			<key>selectFrom</key>
+		</dict>
+		<key>webgui/phones_iax_edit.php</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>117</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>129</integer>
+				<integer>0</integer>
 			</dict>
-			<key>selectTo</key>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>105</integer>
+		</dict>
+		<key>webgui/phones_sip_edit.php</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>107</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>129</integer>
+				<integer>0</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>49</integer>
 		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
@@ -252,17 +280,19 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>pbxdev.php</string>
+		<string>webgui/display.inc</string>
+		<string>webgui/phones_sip_edit.php</string>
+		<string>phpconf/inc/sip.inc</string>
+		<string>webgui/phones_iax_edit.php</string>
+		<string>phpconf/inc/globals.inc</string>
 		<string>phpconf/inc/extensions.inc</string>
-		<string>phpconf/inc/external.inc</string>
-		<string>phpconf/inc/functions.inc</string>
-		<string>phpconf/inc/pbx.inc</string>
-		<string>NOTES</string>
-		<string>CHANGELOG</string>
+		<string>phpconf/inc/iax.inc</string>
+		<string>webgui/guiconfig.inc</string>
+		<string>phpconf/inc/verify.inc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{54, 7}, {933, 771}}</string>
+	<string>{{68, 173}, {952, 605}}</string>
 </dict>
 </plist>

@@ -87,12 +87,12 @@ if ($_POST) {
 		$ap = array();
 		$ap['extension'] = $_POST['extension'];
 		$ap['callerid'] = $_POST['callerid'];
-		$ap['voicemailbox'] = $_POST['voicemailbox'];
+		$ap['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ap['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ap['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ap['interface'] = $_POST['interface'];
 		$ap['language'] = $_POST['language'];
-		$ap['descr'] = $_POST['descr'];
+		$ap['descr'] = verify_non_default($_POST['descr']);
 
 		$a_providers = pbx_get_providers();
 		$ap['provider'] = array();

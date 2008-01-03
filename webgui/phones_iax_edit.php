@@ -110,11 +110,11 @@ if ($_POST) {
 		$sp['callerid'] = $_POST['callerid'];
 		$sp['authentication'] = $_POST['authentication'];
 		$sp['secret'] = $_POST['secret'];
-		$sp['voicemailbox'] = $_POST['voicemailbox'];
+		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$sp['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$sp['language'] = $_POST['language'];
-		$sp['descr'] = $_POST['descr'];
+		$sp['descr'] = verify_non_default($_POST['descr']);
 		$sp['qualify'] = $_POST['qualify'];
 
 		$a_providers = pbx_get_providers();

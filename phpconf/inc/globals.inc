@@ -70,8 +70,12 @@ $defaults['featuremap']['transferdigittimeout'] = "3";
 
 $defaults['iax'] = array();
 $defaults['iax']['port'] = "4569";
+$defaults['iax']['authentication'] = "plaintext";
 $defaults['iax']['provider'] = array();
 $defaults['iax']['provider']['calleridsource'] = "phones";
+
+$defaults['internationalization'] = array();
+$defaults['internationalization']['prompt-language'] = "en";
 
 $defaults['isdn'] = array();
 $defaults['isdn']['interface'] = array();
@@ -86,9 +90,12 @@ $defaults['parking']['parkposstart'] = "701";
 $defaults['parking']['parkposend'] = "720";
 $defaults['parking']['parktime'] = "30";
 
+$defaults['qos'] = array();
+$defaults['qos']['qualify'] = "2";
+
 $defaults['rtp'] = array();
 $defaults['rtp']['lowport'] = "10000";
-$defaults['rtp']['highport'] = "20000";
+$defaults['rtp']['highport'] = "10200";
 
 $defaults['sip'] = array();
 $defaults['sip']['port'] = "5060";
@@ -102,15 +109,15 @@ $defaults['sip']['provider'] = array();
 $defaults['sip']['provider']['calleridsource'] = "phones";
 
 $defaults['syslog'] = array();
-$defaults['syslog']['nentries'] = 100;
+$defaults['syslog']['nentries'] = "100";
 
 $defaults['system'] = array();
 $defaults['system']['username'] = "admin";
 $defaults['system']['timezone'] = "Etc/UTC";
 $defaults['system']['timeservers'] = "pool.ntp.org";
-$defaults['system']['timeupdateinterval'] = 300;
+$defaults['system']['timeupdateinterval'] = "300";
 
 $defaults['webgui'] = array();
-$defaults['webgui']['protocol'] = "http";
+$defaults['webgui']['protocol'] = "https";
 
 ?>
