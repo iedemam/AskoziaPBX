@@ -130,6 +130,8 @@ EOD;
 	// internal phone extensions
 	foreach ($internal_phones as $p) {
 		if (isset($p['allowdirectdial'])) {
+			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
+			$conf .= "exten => {$p['extension']},1,NoOp()\n";
 			$conf .= extensions_generate_internal_phone_extension($p, true);
 		}
 	}
@@ -137,13 +139,20 @@ EOD;
 	// external phone extensions
 	foreach ($external_phones as $p) {
 		if (isset($p['allowdirectdial'])) {
+			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
+			$conf .= "exten => {$p['extension']},1,NoOp()\n";
 			$conf .= extensions_generate_external_phone_extension($p, true);
 		}
 	}
 
 	// callgroup extensions
 	foreach ($callgroups as $g) {
+		if (!isset($g['extension']) || !strlen($g['extension'])) {
+			continue;
+		}
 		if (isset($g['allowdirectdial'])) {
+			$conf .= "; callgroup : {$g['name']} - <{$g['extension']}>\n";
+			$conf .= "exten => {$g['extension']},1,NoOp()\n";
 			$conf .= extensions_generate_callgroup_extension($g, true);
 		}
 	}
@@ -151,6 +160,8 @@ EOD;
 	// application extensions
 	foreach ($applications as $a) {
 		if (isset($a['allowdirectdial'])) {
+			$conf .= "; application : {$a['name']}\n";
+			$conf .= "exten => {$a['extension']},1,NoOp()\n";
 			$conf .= extensions_generate_application_extension($a, true);
 		}
 	}
@@ -158,6 +169,8 @@ EOD;
 	// conference room extensions
 	foreach ($conference_rooms as $r) {
 		if (isset($r['allowdirectdial'])) {
+			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
+			$conf .= "exten => {$r['number']},1,NoOp()\n";
 			$conf .= extensions_generate_conference_room_extension($r);
 		}
 	}
@@ -169,37 +182,56 @@ EOD;
 
 	// internal phone extensions
 	foreach ($internal_phones as $p) {
+		$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
+		$conf .= "exten => {$p['extension']},1,NoOp()\n";
 		$conf .= extensions_generate_internal_phone_extension($p);
 	}
 
 	// external phone extensions
 	foreach ($external_phones as $p) {
+		$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
+		$conf .= "exten => {$p['extension']},1,NoOp()\n";
 		$conf .= extensions_generate_external_phone_extension($p);
 	}
 
 	// callgroup extensions
 	foreach ($callgroups as $g) {
+		if (!isset($g['extension']) || !strlen($g['extension'])) {
+			continue;
+		}
+		$conf .= "; callgroup : {$g['name']} - <{$g['extension']}>\n";
+		$conf .= "exten => {$g['extension']},1,NoOp()\n";
 		$conf .= extensions_generate_callgroup_extension($g);
 	}
 
 	// application extensions
 	foreach ($applications as $a) {
+		$conf .= "; application : {$a['name']}\n";
+		$conf .= "exten => {$a['extension']},1,NoOp()\n";
 		$conf .= extensions_generate_application_extension($a);
 	}
 
 	// conference room extensions
 	foreach ($conference_rooms as $r) {
+		$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
+		$conf .= "exten => {$r['number']},1,NoOp()\n";
 		$conf .= extensions_generate_conference_room_extension($r);
 	}
 
+	$conf .= "; parking lot\n";
 	$conf .= extensions_generate_parkinglot();
+
+	$conf .= "; sip device hints\n";
+	$conf .= extensions_generate_hints();
 
 	// providers contexts
 	foreach ($providers as $p) {
 		if (count($p['incomingextensionmap'])) {
+			$conf .= "; incoming provider : {$p['name']}\n";
 			$conf .= extensions_generate_provider_incoming_context($p);
 		}
 		if (count($p['dialpattern'])) {
+			$conf .= "; outgoing provider : {$p['name']}\n";
 			$conf .= extensions_generate_provider_outgoing_context($p);
 		}
 		$conf .= "\n";
@@ -207,7 +239,7 @@ EOD;
 
 	// internal phone contexts
 	foreach($internal_phones as $p) {
-		$conf .= "; {$p['callerid']}\n";
+		$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "include => internal\n";
 		if (isset($p['provider'])) {
@@ -284,20 +316,31 @@ function extensions_generate_missed_call_notifications_line($exten, $phone) {
  */
 function extensions_generate_parkinglot() {
 	global $config;
-	
+	// XXX : direct call to parking info
 	$pc = $config['dialplan']['callparking'];
 	
 	$parkstart = isset($pc['parkposstart']) ? $pc['parkposstart'] : "701";
 	$parkend = isset($pc['parkposend']) ? $pc['parkposend'] : "720";
-	
+
 	$conf .= "include => parkedcalls\n";
 	
 	for ($i = $parkstart; $i <= $parkend; $i++) {
 		$conf .= "exten => $i,1,ParkedCall($i)\n";
 		$conf .= "exten => $i,hint,park:$i@parkedcalls\n";
 	}
-	$conf .= "\n\n";
+	$conf .= "\n";
 	
+	return $conf;
+}
+
+function extensions_generate_hints() {
+
+	$phones = sip_get_phones();
+	foreach ($phones as $p) {
+		$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
+	}
+	$conf .= "\n";
+
 	return $conf;
 }
 
@@ -358,10 +401,11 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 function extensions_generate_provider_incoming_context($p) {
 
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
+	$catchall = array("_X!", "s");
 
-	$conf = "; incoming provider : {$p['name']}\n";
-	$conf .= "[{$p['uniqid']}-incoming]\n";
+	$conf = "[{$p['uniqid']}-incoming]\n";
 
+	// form "impromptu group arrays" for destinations mapped to the the same patterns
 	$groupped_mapping = array();
 	foreach ($p['incomingextensionmap'] as $map) {
 		if (!isset($map['incomingpattern'])) {
@@ -370,63 +414,69 @@ function extensions_generate_provider_incoming_context($p) {
 			$groupped_mapping[$map['incomingpattern']][] = $map['destinationid'];
 		}
 	}
-	
-	if ($tech == "SIP") {
-		foreach ($groupped_mapping as $pattern => $destination) {
-			if ($pattern == "all") {
-				$conf .= pbx_uniqid_to_dial("_X!", $destination, false, $p['override']);
-				$conf .= pbx_uniqid_to_dial("s", $destination, false, $p['override']);
-			} else if (is_numeric($pattern)) {
-				$conf .= pbx_uniqid_to_dial($pattern, $destination, false, $p['override'], $pattern);
-			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, false, $p['override']);
-			}
-			$conf .= "\n";
-		}
 
-	} else if ($tech == "IAX2") {		
-		foreach ($groupped_mapping as $pattern => $destination) {
-			if ($pattern == "all") {
-				$conf .= pbx_uniqid_to_dial("_X!", $destination, false, $p['override']);
-				$conf .= pbx_uniqid_to_dial("s", $destination, false, $p['override']);
-			} else if (is_numeric($pattern)) {
-				$conf .= pbx_uniqid_to_dial($pattern, $destination, false, $p['override'], $pattern);
-			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, false, $p['override']);
-			}
-			$conf .= "\n";
-		}
-
-	} else if ($tech == "CAPI") {
-		foreach ($groupped_mapping as $pattern => $destination) {
-			if ($pattern == "all") {
-				$conf .= pbx_uniqid_to_dial("_X!", $destination, 1, $p['override'], $p['msn']);
-				$conf .= pbx_uniqid_to_dial("s", $destination, 1, $p['override'], $p['msn']);
-			} else if (is_numeric($pattern)) {
-				$conf .= pbx_uniqid_to_dial($pattern, $destination, 1, $p['override'], $pattern);
-			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, 1, $p['override'], $p['msn']);
-			}
-			$conf .= "\n";
-		}
-
+	// assign read back number for provider
+	if ($tech == "CAPI") {
+		$readbacknum = $p['msn'];
 	} else if ($tech == "ZAP") {
-		foreach ($groupped_mapping as $pattern => $destination) {
-			if ($pattern == "all") {
-				$conf .= pbx_uniqid_to_dial("_X!", $destination, 1, $p['override'], $p['number']);
-				$conf .= pbx_uniqid_to_dial("s", $destination, 1, $p['override'], $p['number']);
-			} else if (is_numeric($pattern)) {
-				$conf .= pbx_uniqid_to_dial($pattern, $destination, 1, $p['override'], $pattern);
-			} else {
-				$conf .= pbx_uniqid_to_dial("_" . $pattern, $destination, 1, $p['override'], $p['number']);
-			}
-			$conf .= "\n";
-		}
-	
+		$readbacknum = $p['number'];
 	} else {
-		$conf .= "ERROR: unmatched case in extensions_generate_provider_incoming_context!";
+		$readbacknum = false;
 	}
-	
+
+	// does this channel need a wait
+	if ($tech == "CAPI" || $tech == "ZAP") {
+		$needswait = true;
+	}
+
+	// generate incoming extensions
+	foreach ($groupped_mapping as $pattern => $destination) {
+		// XXX : hacky way to avoid handling multiple conditions in extensions_generate_extension_from_uniqid
+		// XXX : this could be stored correctly in the first place...
+		if (is_array($destination) && (count($destination) == 1)) {
+			$destination = $destination[0];
+		}
+		
+		if ($pattern == "all") {
+			foreach ($catchall as $catch) {
+				$conf .= "exten => $catch,1,NoOp()\n";
+				if ($needswait) {
+					$conf .= "exten => $catch,n,Ringing()\n";
+					$conf .= "exten => $catch,n,Wait(1)\n";
+				}
+				if ($p['override'] == "replacenamewithnum") {
+					$conf .= "exten => $catch,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
+				}
+				$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
+			}
+
+
+		} else if (is_numeric($pattern)) {
+			$conf .= "exten => $pattern,1,NoOp()\n";
+			if ($needswait) {
+				$conf .= "exten => $pattern,n,Ringing()\n";
+				$conf .= "exten => $pattern,n,Wait(1)\n";
+			}
+			if ($p['override'] == "replacenamewithnum") {
+				$conf .= "exten => $pattern,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
+			}
+			$conf .= extensions_generate_extension_from_uniqid($destination, true, $pattern, $pattern);
+
+
+		} else {
+			$conf .= "exten => _$pattern,1,NoOp()\n";
+			if ($needswait) {
+				$conf .= "exten => _$pattern,n,Ringing()\n";
+				$conf .= "exten => _$pattern,n,Wait(1)\n";
+			}
+			if ($p['override'] == "replacenamewithnum") {
+				$conf .= "exten => _$pattern,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
+			}
+			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, "_ " . $pattern);
+		}
+		$conf .= "\n";
+	}
+
 	return $conf;
 }
 
@@ -438,7 +488,6 @@ function extensions_generate_provider_outgoing_context($p) {
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
 	$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
 
-	$conf = "; outgoing provider : {$p['name']}\n";
 	$conf .= "[{$p['uniqid']}]\n";
 	
 	if ($tech == "SIP") {
@@ -480,37 +529,29 @@ function extensions_generate_provider_outgoing_context($p) {
 /**
  * Returns an extension for an internal phone.
  */
-function extensions_generate_internal_phone_extension($p, $from_public=false, $readbacknum=false) {
+function extensions_generate_internal_phone_extension($p, $from_public=false, $readbacknum=false, $extension=false) {
 	
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
 	$transfer_flags = (!$from_public) ? "tT" : "t";
-	$exten = $p['extension'];
-	$readbacknum = ($readbacknum) ? $readbacknum : $exten;
+	$phone_exten = $p['extension'];
+	$exten = ($extension !== false) ? $extension : $phone_exten;
+	$readbacknum = ($readbacknum !== false) ? $readbacknum : $exten;
+	if ($readbacknum == "s" || $readbacknum == "_X!") {
+		$readbacknum = $phone_exten;
+	}
 
-	$conf = "; internal $tech phone : {$p['callerid']} - <$exten>\n";
-
+	$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
 	if ($tech == "SIP") {
-		if (!$from_public) {
-			$conf .= "exten => $exten,hint,SIP/$exten\n";
-		}
-		$conf .= "exten => $exten,1,NoOp()\n";
-		$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
-		$conf .= "exten => $exten,n,Macro(vm|SIP/$exten|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|SIP/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "IAX2") {
-		$conf .= "exten => $exten,1,NoOp()\n";
-		$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
-		$conf .= "exten => $exten,n,Macro(vm|IAX2/$exten|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|IAX2/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "CAPI") {
-		$conf .= "exten => $exten,1,NoOp()\n";
-		$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
-		$conf .= "exten => $exten,n,Macro(vm|CAPI/{$p['interface']}/$exten|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "ZAP") {
-		$conf .= "exten => $exten,1,NoOp()\n";
-		$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
-		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}/$exten|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
@@ -522,30 +563,31 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 /**
  * Returns an extension for an external phone.
  */
-function extensions_generate_external_phone_extension($p, $from_public=false, $readbacknum=false) {
+function extensions_generate_external_phone_extension($p, $from_public=false, $readbacknum=false, $extension=false) {
 	
 	$tech = pbx_uniqid_to_technology($p['dialprovider']);
 	$transfer_flags = (!$from_public) ? "tT" : "t";
-	$exten = $p['extension'];
-	$readbacknum = ($readbacknum) ? $readbacknum : $exten;
+	$phone_exten = $p['extension'];
+	$exten = ($extension !== false) ? $extension : $phone_exten;
+	$readbacknum = ($readbacknum !== false) ? $readbacknum : $exten;
+	if ($readbacknum == "s" || $readbacknum == "_X!") {
+		$readbacknum = $phone_exten;
+	}
 
-	$conf = "; external $tech phone : {$p['name']} - <$exten>\n";
-
-	$conf .= "exten => $exten,1,NoOp()\n";
 	$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
 	if ($tech == "ZAP") {
 		$prov = analog_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+			"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "CAPI") {
 		$prov = isdn_get_provider($phone['dialprovider']);
 		$conf .= "exten => $exten,n,".
-				"Macro(vm|$tech/{$prov['interface']}/{$phone['dialstring']}|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+				"Macro(vm|$tech/{$prov['interface']}/{$phone['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$phone['dialprovider']}/{$phone['dialstring']}|$exten|$readbacknum|" . $transfer_flags . "o)\n";
+			"Macro(vm|$tech/{$phone['dialprovider']}/{$phone['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_external_phone_extension!";
@@ -558,21 +600,14 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
  * Generates a callgroup extension, returns nothing if
  * no extension is defined for this group
  */
-function extensions_generate_callgroup_extension($g, $from_public=false, $readbacknum=false) {
-	
-	// bail if no extension
-	if (!$g['extension']) {
-		return;
-	}
+function extensions_generate_callgroup_extension($g, $from_public=false, $readbacknum=false, $extension=false) {
 
 	$transfer_flags = (!$from_public) ? "tT" : "t";
-	$exten = $g['extension'];
+	$exten = ($extension !== false) ? $extension : $g['extension'];
 	$dialstring = extensions_phone_uniqids_to_dialstring($g['groupmember']);
 	$vm_phone = pbx_get_phone($g['groupmember'][0]);
-	$readbacknum = ($readbacknum) ? $readbacknum : $vm_phone['extension'];
+	$readbacknum = ($readbacknum !== false) ? $readbacknum : $vm_phone['extension'];
 
-	$conf = "; callgroup : {$g['name']} - <$exten>\n";
-	$conf .= "exten => $exten,1,NoOp()\n";
 	$conf .= extensions_generate_missed_call_notifications_line($exten, $vm_phone);
 	$conf .= "exten => $exten,n,Macro(vm|$dialstring|{$vm_phone['extension']}|$readbacknum|$transfer_flags" . "o)\n";
 
@@ -582,13 +617,12 @@ function extensions_generate_callgroup_extension($g, $from_public=false, $readba
 /**
  * Generates an application extension
  */
-function extensions_generate_application_extension($a, $from_public=false) {
-	
-	$exten = $a['extension'];
+function extensions_generate_application_extension($a, $from_public=false, $extension=false) {
+
+	$exten = ($extension !== false) ? $extension : $a['extension'];
 	$name = $a['name'];
 
-	$conf = "; application : $name\n";
-	$conf .= "exten => $exten,1,Answer()\n";
+	$conf .= "exten => $exten,n,Answer()\n";
 	if ($name == "WakeMe") {
 		$conf .= "exten => $exten,n,Set(CHANNEL(language)=en)\n";
 	}
@@ -598,16 +632,65 @@ function extensions_generate_application_extension($a, $from_public=false) {
 	return $conf;
 }
 
-function extensions_generate_conference_room_extension($r, $from_public=false) {
+function extensions_generate_conference_room_extension($r, $from_public=false, $extension=false) {
 
-	$exten = $r['number'];
+	$number = $r['number'];
+	$exten = ($extension !== false) ? $extension : $number;
 
-	$conf = "; conference room : {$r['name']} - <$exten>\n";
-	$conf .= "exten => $exten,1,Answer()\n";
-	$conf .= "exten => $exten,n,MeetMe($exten,M)\n";
+	$conf .= "exten => $exten,n,Answer()\n";
+	$conf .= "exten => $exten,n,MeetMe($number,M)\n";
 	$conf .= "exten => $exten,n,Hangup()\n";
 
 	return $conf;
+}
+
+function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, $readbacknum=false, $extension=false) {
+
+	// handle impromptu call groups 
+	if (is_array($uniqid)) {
+		$impromptugroup = array();
+		$impromptugroup['groupmember'] = $uniqid;
+		$impromptugroup['name'] = "impromptu";
+		$uniqid = "CALLGROUP-PARALLEL-impromptu";
+	}
+
+	$id = split("-", $uniqid);
+
+	// external phones
+	if ($id[0] == "EXTERNAL" && $id[1] == "PHONE") {
+		$p = pbx_get_phone($uniqid);
+		return extensions_generate_external_phone_extension($p, $from_public, $readbacknum, $extension);
+
+	// internal phones
+	} else if ($id[1] == "PHONE") {
+		$p = pbx_get_phone($uniqid);
+		return extensions_generate_internal_phone_extension($p, $from_public, $readbacknum, $extension);
+
+	// conference rooms
+	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {
+		$r = conferencing_get_room($uniqid);
+		return extensions_generate_conference_room_extension($r, $from_public, $extension);
+
+	// impromptu parallel callgroups
+	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL" && $id[2] == "impromptu") {
+		return extensions_generate_callgroup_extension($impromptugroup, $from_public, $readbacknum, $extension);
+
+	// stored parallel callgroups
+	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
+		$g = callgroups_get_group($uniqid);
+		if (!isset($g['extension']) && $extension === false) {
+			return;
+		}
+		return extensions_generate_callgroup_extension($g, $from_public, $readbacknum, $extension);
+
+	// applications
+	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
+		$a = applications_get_app($uniqid);
+		return extensions_generate_application_extension($a, $from_public, $extension);
+
+	} else {
+		return "ERROR: unmatched case in extensions_generate_extension_from_uniqid!";
+	}
 }
 
 /**
