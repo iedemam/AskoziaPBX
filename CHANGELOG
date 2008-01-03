@@ -11,6 +11,7 @@
  - added: ajax.cgi allows execution of Asterisk Manager Interface and shell commands
  - added: jQuery plugin copyright information to license page
  - updated: Asterisk to 1.4.17
+ - updated: php to 4.4.8
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8

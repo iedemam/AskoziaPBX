@@ -42,7 +42,7 @@ $versions = array(
 	"msntp"			=> "msntp-1.6",
 	"oslec"			=> "oslec-trunk",
 	"pecl_sqlite"	=> "SQLite-1.0.3",
-	"php"			=> "php-4.4.7",
+	"php"			=> "php-4.4.8",
 	"scriptaculous"	=> "scriptaculous-js-1.7.1_beta3",
 	"udesc_dump"	=> "udesc_dump-1.3.9",
 	"zaptel"		=> "zaptel-trunk"
@@ -217,7 +217,7 @@ function build_php() {
 	}
 	if (!file_exists("{$dirs['packages']}/{$versions['php']}.tar.gz")) {
 		_exec("cd {$dirs['packages']}; " .
-				"fetch http://br.php.net/distributions/{$versions['php']}.tar.gz");
+				"fetch http://de.php.net/distributions/{$versions['php']}.tar.gz");
 	}
 	if (!file_exists("{$dirs['packages']}/{$versions['php']}")) {
 		_exec("cd {$dirs['packages']}; tar zxf {$versions['php']}.tar.gz");
