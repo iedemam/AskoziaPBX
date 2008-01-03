@@ -365,19 +365,24 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 	</tr><?
 }
 
-function display_public_direct_dial_editor($current_allowdirectdial, $colspan) {
-	
+function display_public_direct_dial_editor($current_allowdirectdial, $current_publicname, $colspan, $getjs=false) {
+
 	?><tr> 
 		<td valign="top" class="vncell">Public Direct Dial</td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="allowdirectdial" id="allowdirectdial" type="checkbox" value="yes"<?
+			<input name="allowdirectdial" id="allowdirectdial" type="checkbox" value="yes" <?
 			
 			if ($current_allowdirectdial) {
 				echo "checked";
 			}
 
-			?>>&nbsp;allow extension to be directly dialed over public networks<br>
-			<br><span class="vexpl">This extension is reachable via SIP and IAX2 urls (extension@hostname.domain)</span>
+			?>>&nbsp;allow extension to be directly dialed over public networks
+			<br><span name="publicname_wrapper" id="publicname_wrapper">
+			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@mypbx.tld
+			<br><span class="vexpl">Public name. Enter a string to map a friendly name to this extension.</span>
+			<br>
+			</span>
+			<br><span class="vexpl">Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@mypbx.tld)</span>
 		</td>
 	</tr><?
 }

@@ -131,8 +131,13 @@ EOD;
 	foreach ($internal_phones as $p) {
 		if (isset($p['allowdirectdial'])) {
 			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
-			$conf .= "exten => {$p['extension']},1,NoOp()\n";
-			$conf .= extensions_generate_internal_phone_extension($p, true);
+			if (!$p['publicname']) {
+				$conf .= "exten => {$p['extension']},1,NoOp()\n";
+				$conf .= extensions_generate_internal_phone_extension($p, true);
+			} else {
+				$conf .= "exten => {$p['publicname']},1,NoOp()\n";
+				$conf .= extensions_generate_internal_phone_extension($p, true, false, $p['publicname']);
+			}
 		}
 	}
 
@@ -140,8 +145,13 @@ EOD;
 	foreach ($external_phones as $p) {
 		if (isset($p['allowdirectdial'])) {
 			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
-			$conf .= "exten => {$p['extension']},1,NoOp()\n";
-			$conf .= extensions_generate_external_phone_extension($p, true);
+			if (!$p['publicname']) {
+				$conf .= "exten => {$p['extension']},1,NoOp()\n";
+				$conf .= extensions_generate_external_phone_extension($p, true);
+			} else {
+				$conf .= "exten => {$p['publicname']},1,NoOp()\n";
+				$conf .= extensions_generate_external_phone_extension($p, true, false, $p['publicname']);
+			}
 		}
 	}
 
@@ -152,8 +162,13 @@ EOD;
 		}
 		if (isset($g['allowdirectdial'])) {
 			$conf .= "; callgroup : {$g['name']} - <{$g['extension']}>\n";
-			$conf .= "exten => {$g['extension']},1,NoOp()\n";
-			$conf .= extensions_generate_callgroup_extension($g, true);
+			if (!$g['publicname']) {
+				$conf .= "exten => {$g['extension']},1,NoOp()\n";
+				$conf .= extensions_generate_callgroup_extension($g, true);
+			} else {
+				$conf .= "exten => {$g['publicname']},1,NoOp()\n";
+				$conf .= extensions_generate_callgroup_extension($g, true, false, $g['publicname']);
+			}
 		}
 	}
 
@@ -161,8 +176,13 @@ EOD;
 	foreach ($applications as $a) {
 		if (isset($a['allowdirectdial'])) {
 			$conf .= "; application : {$a['name']}\n";
-			$conf .= "exten => {$a['extension']},1,NoOp()\n";
-			$conf .= extensions_generate_application_extension($a, true);
+			if (!$a['publicname']) {
+				$conf .= "exten => {$a['extension']},1,NoOp()\n";
+				$conf .= extensions_generate_application_extension($a, true);
+			} else {
+				$conf .= "exten => {$a['publicname']},1,NoOp()\n";
+				$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
+			}
 		}
 	}
 
@@ -170,8 +190,13 @@ EOD;
 	foreach ($conference_rooms as $r) {
 		if (isset($r['allowdirectdial'])) {
 			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
-			$conf .= "exten => {$r['number']},1,NoOp()\n";
-			$conf .= extensions_generate_conference_room_extension($r);
+			if (!$r['publicname']) {
+				$conf .= "exten => {$r['number']},1,NoOp()\n";
+				$conf .= extensions_generate_conference_room_extension($r, true);
+			} else {
+				$conf .= "exten => {$r['publicname']},1,NoOp()\n";
+				$conf .= extensions_generate_conference_room_extension($r, true, $r['publicname']);
+			}
 		}
 	}
 	$conf .= "\n";
@@ -404,6 +429,7 @@ function extensions_generate_provider_incoming_context($p) {
 	$catchall = array("_X!", "s");
 
 	$conf = "[{$p['uniqid']}-incoming]\n";
+	$conf .= "include => public-direct-dial\n";
 
 	// form "impromptu group arrays" for destinations mapped to the the same patterns
 	$groupped_mapping = array();
@@ -536,7 +562,8 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 	$phone_exten = $p['extension'];
 	$exten = ($extension !== false) ? $extension : $phone_exten;
 	$readbacknum = ($readbacknum !== false) ? $readbacknum : $exten;
-	if ($readbacknum == "s" || $readbacknum == "_X!") {
+	// XXX : should be fixed by better handling of the readback number in voicemail patch or rethought
+	if (!verify_is_numericint($readbacknum)) {
 		$readbacknum = $phone_exten;
 	}
 
@@ -570,7 +597,8 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 	$phone_exten = $p['extension'];
 	$exten = ($extension !== false) ? $extension : $phone_exten;
 	$readbacknum = ($readbacknum !== false) ? $readbacknum : $exten;
-	if ($readbacknum == "s" || $readbacknum == "_X!") {
+	// XXX : should be fixed by better handling of the readback number in voicemail patch or rethought
+	if (verify_is_numericint($readbacknum)) {
 		$readbacknum = $phone_exten;
 	}
 

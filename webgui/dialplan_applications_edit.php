@@ -50,6 +50,7 @@ if (isset($id) && $a_applications[$id]) {
 	$pconfig['name'] = $a_applications[$id]['name'];
 	$pconfig['extension'] = $a_applications[$id]['extension'];
 	$pconfig['allowdirectdial'] = isset($a_applications[$id]['allowdirectdial']);
+	$pconfig['publicname'] = $a_applications[$id]['publicname'];
 }
 
 if ($_POST) {
@@ -66,12 +67,16 @@ if ($_POST) {
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = "A valid extension must be entered.";
 	}
+	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
+		$input_errors[] = $msg;
+	}
 
 	if (!$input_errors) {
 		$app = array();		
 		$app['name'] = $_POST['name'];
 		$app['extension'] = $_POST['extension'];
 		$app['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$app['publicname'] = verify_non_default($_POST['publicname']);
 
 		if (isset($id) && $a_applications[$id]) {
 			$gm['uniqid'] = $a_applications[$id]['uniqid'];
@@ -91,6 +96,18 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_public_direct_dial_editor("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_public_direct_dial_editor("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="dialplan_applications_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -118,11 +135,11 @@ if ($_POST) {
 			<tr> 
 				<td valign="top" class="vncell">Extension</td>
 				<td colspan="2" class="vtable">
-					<input name="extension" type="text" class="formfldreq" id="extension" size="40" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">Internal extension used to reach this call group.</span>
+					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+					<br><span class="vexpl">Internal extension used to reach this application.</span>
 				</td>
 			</tr>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 1); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

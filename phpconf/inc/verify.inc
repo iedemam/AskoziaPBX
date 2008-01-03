@@ -216,4 +216,17 @@ function verify_non_default($value, $defaults=false) {
 	return $value;
 }
 
+/**
+ * Verifies the "user" substring in a sip uri
+ */
+function verify_is_public_name($name) {
+
+	$regex = "/^[a-zA-ZZ0-9\-\(\)\.]+$/";
+
+	if (!preg_match($regex, $name)) {
+		return "An invalid public name was entered!";
+	}
+	return false;
+}
+
 ?>

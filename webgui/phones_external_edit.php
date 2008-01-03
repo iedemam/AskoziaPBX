@@ -56,6 +56,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
 	$pconfig['allowdirectdial'] = isset($a_extphones[$id]['allowdirectdial']);
+	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
 }
 
@@ -76,7 +77,9 @@ if ($_POST) {
 	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
-	
+	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
+		$input_errors[] = $msg;
+	}
 
 	if (!$input_errors) {
 		$ep = array();
@@ -87,6 +90,7 @@ if ($_POST) {
 		$ep['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ep['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
 
 		if (isset($id) && $a_extphones[$id]) {
@@ -107,6 +111,18 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_public_direct_dial_editor("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_public_direct_dial_editor("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="phones_external_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -146,7 +162,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 2); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

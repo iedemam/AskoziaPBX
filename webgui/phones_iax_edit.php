@@ -59,6 +59,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_iaxphones[$id]['sendcallnotifications']);
 	$pconfig['allowdirectdial'] = isset($a_iaxphones[$id]['allowdirectdial']);
+	$pconfig['publicname'] = $a_iaxphones[$id]['publicname'];
 	$pconfig['language'] = $a_iaxphones[$id]['language'];
 	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
 	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
@@ -102,7 +103,9 @@ if ($_POST) {
 	if (($_POST['qualify'] && !verify_is_numericint($_POST['qualify']))) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
 	}
-
+	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
+		$input_errors[] = $msg;
+	}
 
 	if (!$input_errors) {
 		$sp = array();
@@ -113,6 +116,7 @@ if ($_POST) {
 		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$sp['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$sp['publicname'] = verify_non_default($_POST['publicname']);
 		$sp['language'] = $_POST['language'];
 		$sp['descr'] = verify_non_default($_POST['descr']);
 		$sp['qualify'] = $_POST['qualify'];
@@ -144,6 +148,18 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_public_direct_dial_editor("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_public_direct_dial_editor("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="phones_iax_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -179,7 +195,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 2); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>

@@ -51,6 +51,7 @@ if (isset($id) && $a_rooms[$id]) {
 	$pconfig['pin'] = $a_rooms[$id]['pin'];
 	//$pconfig['adminpin'] = $a_rooms[$id]['adminpin'];
 	$pconfig['allowdirectdial'] = isset($a_rooms[$id]['allowdirectdial']);
+	$pconfig['publicname'] = $a_rooms[$id]['publicname'];
 }
 
 
@@ -79,7 +80,9 @@ if ($_POST) {
 	/*if (($_POST['adminpin'] && !verify_is_numericint($_POST['adminpin']))) {
 		$input_errors[] = "Conference administration pins must be numeric.";
 	}*/
-
+	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
+		$input_errors[] = $msg;
+	}
 
 	if (!$input_errors) {
 		$room = array();
@@ -88,6 +91,7 @@ if ($_POST) {
 		//$room['adminpin'] = $_POST['adminpin'];
 		$room['name'] = $_POST['name'];
 		$room['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$room['publicname'] = verify_non_default($_POST['publicname']);
 
 		if (isset($id) && $a_rooms[$id]) {
 			$room['uniqid'] = $a_rooms[$id]['uniqid'];
@@ -107,6 +111,18 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_public_direct_dial_editor("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_public_direct_dial_editor("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="services_conferencing_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
@@ -130,7 +146,7 @@ if ($_POST) {
 					<br><span class="vexpl">Optional PIN needed to access this conference room.</span>
 				</td>
 			</tr>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 1); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

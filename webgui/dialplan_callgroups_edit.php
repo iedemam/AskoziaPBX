@@ -54,6 +54,7 @@ if (isset($id) && $a_callgroups[$id]) {
 	$pconfig['descr'] = $a_callgroups[$id]['descr'];
 	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
 	$pconfig['allowdirectdial'] = isset($a_callgroups[$id]['allowdirectdial']);
+	$pconfig['publicname'] = $a_callgroups[$id]['publicname'];
 }
 
 if ($_POST) {
@@ -70,6 +71,9 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
+	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
+		$input_errors[] = $msg;
+	}
 
 	if (!$input_errors) {
 		$gm = array();		
@@ -78,6 +82,7 @@ if ($_POST) {
 		$gm['descr'] = verify_non_default($_POST['descr']);
 		$gm['groupmember'] = $gme;
 		$gm['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$gm['publicname'] = verify_non_default($_POST['publicname']);
 
 		if (isset($id) && $a_callgroups[$id]) {
 			$gm['uniqid'] = $a_callgroups[$id]['uniqid'];
@@ -97,6 +102,18 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_public_direct_dial_editor("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_public_direct_dial_editor("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="dialplan_callgroups_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -110,11 +127,11 @@ if ($_POST) {
 			<tr> 
 				<td valign="top" class="vncell">Extension</td>
 				<td colspan="2" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="40" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
 					<br><span class="vexpl">Internal extension used to reach this call group.</span>
 				</td>
 			</tr>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 2); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Description</td>
 				<td colspan="2" class="vtable">

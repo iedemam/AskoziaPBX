@@ -53,6 +53,7 @@ if (isset($id) && $a_isdnphones[$id]) {
 	$pconfig['voicemailbox'] = $a_isdnphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_isdnphones[$id]['sendcallnotifications']);
 	$pconfig['allowdirectdial'] = isset($a_isdnphones[$id]['allowdirectdial']);
+	$pconfig['publicname'] = $a_isdnphones[$id]['publicname'];
 	$pconfig['interface'] = $a_isdnphones[$id]['interface'];
 	$pconfig['language'] = $a_isdnphones[$id]['language'];
 	$pconfig['descr'] = $a_isdnphones[$id]['descr'];
@@ -81,7 +82,9 @@ if ($_POST) {
 	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
 	}
-	
+	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
+		$input_errors[] = $msg;
+	}
 
 	if (!$input_errors) {
 		$ip = array();
@@ -90,6 +93,7 @@ if ($_POST) {
 		$ip['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ip['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ip['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$ip['publicname'] = verify_non_default($_POST['publicname']);
 		$ip['interface'] = $_POST['interface'];
 		$ip['language'] = $_POST['language'];
 		$ip['descr'] = verify_non_default($_POST['descr']);
@@ -118,6 +122,18 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_public_direct_dial_editor("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_public_direct_dial_editor("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="phones_isdn_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -136,7 +152,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], 1); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">ISDN Interface</td>
 				<td class="vtable">

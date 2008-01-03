@@ -169,4 +169,28 @@ function javascript_default_value_setter($id, $value) {
 	return $a;
 }
 
+function javascript_public_direct_dial_editor($part) {
+
+	if ($part == "functions") {
+		$js = <<<EOD
+		function publicname_slide() {
+			if (jQuery("#allowdirectdial").is(":checked")) {
+				jQuery("#publicname_wrapper").slideDown();
+			} else {
+				jQuery("#publicname_wrapper").slideUp();
+			}
+		}
+EOD;
+	} else if ($part == "ready") {
+		$js = <<<EOD
+			jQuery("#allowdirectdial").click(publicname_slide);
+			publicname_slide();
+EOD;
+	} else {
+		$js = "ERROR: no part defined in javascript_public_direct_dial_editor()!";
+	}
+	
+	return $js;
+}
+
 ?>
