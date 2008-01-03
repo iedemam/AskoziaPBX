@@ -98,6 +98,9 @@ if ($_POST) {
 			}
 		}
 	}
+	if ($_POST['msn'] && !verify_is_numericint($_POST['msn'])) {
+		$input_errors[] = "A valid Main MSN must be specified (all digits).";
+	}
 	
 
 	if (!$input_errors) {
@@ -143,7 +146,7 @@ if ($_POST) {
 				<td width="20%" valign="top" class="vncellreq">Main MSN</td>
 				<td width="80%" colspan="1" class="vtable">
 					<input name="msn" type="text" class="formfld" id="msn" size="40" value="<?=htmlspecialchars($pconfig['msn']);?>"> 
-					<br><span class="vexpl">The main telephone number assigned to this line. Individual MSN mappings can be defined below.</span>
+					<br><span class="vexpl">The main telephone number assigned to this line (the shortest possible number used to reach this line). Individual MSN mappings can be defined below.</span>
 				</td>
 			</tr>
 			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 1); ?>
