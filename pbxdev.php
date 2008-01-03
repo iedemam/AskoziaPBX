@@ -34,7 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.16.2",
+	"asterisk"		=> "asterisk-1.4.17",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
 	"mini_httpd"	=> "mini_httpd-1.19",

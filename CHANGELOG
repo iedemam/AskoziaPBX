@@ -10,7 +10,7 @@
  - added: phones, callgroups, conferences and applications have a new option "Public Direct Dial" which, when activated, exposes these extensions to public networks
  - added: ajax.cgi allows execution of Asterisk Manager Interface and shell commands
  - added: jQuery plugin copyright information to license page
- - updated: Asterisk to 1.4.16.2
+ - updated: Asterisk to 1.4.17
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
  - updated: basesystem to FreeBSD 6.2-RELEASE-p8
