@@ -111,6 +111,10 @@ exten => s,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALL
 exten => s,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
 exten => s,n,System(rm $\{TMPMAILFILE})
 
+[macro-outgoing-uri]
+exten => s,1,NoOp(Direct dialing via SIP uri : $\{ARG1})
+exten => s,n,Dial(SIP/$\{ARG1},,To)
+
 
 EOD;
 
@@ -272,6 +276,10 @@ EOD;
 				$conf .= "include => $provider\n";
 			}
 		}
+		// allow direct outward dialing via sip uris
+		if (isset($p['outbounduridial'])) {
+			$conf .= "include => outgoing-uri\n";
+		}
 		$conf .= "\n";
 	}
 
@@ -314,6 +322,15 @@ EOD;
 		$conf .= "\n";
 	}
 
+	$conf .= <<<EOD
+[outgoing-uri]
+exten => _[a-z]!,1,Macro(outgoing-uri,$\{EXTEN}@$\{SIPDOMAIN})
+exten => _[A-Z]!,1,Macro(outgoing-uri,$\{EXTEN}@$\{SIPDOMAIN})
+exten => _X!,1,Macro(outgoing-uri,$\{EXTEN}@$\{SIPDOMAIN})
+
+EOD;
+
+	$conf .= "\n";
 
 	fwrite($fd, $conf);
 	fclose($fd);
@@ -353,7 +370,6 @@ function extensions_generate_parkinglot() {
 		$conf .= "exten => $i,1,ParkedCall($i)\n";
 		$conf .= "exten => $i,hint,park:$i@parkedcalls\n";
 	}
-	$conf .= "\n";
 	
 	return $conf;
 }

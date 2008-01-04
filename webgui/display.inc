@@ -221,7 +221,7 @@ function display_outgoing_callerid_options($current_callerid_source, $current_ca
 	</tr><?
 }
 
-function display_provider_access_selector($current_providers, $colspan) {
+function display_provider_access_selector($current_providers, $current_outbounduridial, $colspan) {
 	
 	$a_providers = pbx_get_providers();
 
@@ -242,7 +242,11 @@ function display_provider_access_selector($current_providers, $colspan) {
 				?>><?=$provider['name']?><br><?
 			}
 		}
-		
+
+		?><input name="outbounduridial" id="outbounduridial" type="checkbox" value="yes" <? 
+		if ($current_outbounduridial) echo "checked"; 
+		?>>direct outbound dialing via SIP uris<br><?
+
 		?><br>
 		<span class="vexpl">Checked providers will be accessible from this phone.</span>
 		</td>

@@ -55,6 +55,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['callerid'] = $a_sipphones[$id]['callerid'];
 	$pconfig['secret'] = $a_sipphones[$id]['secret'];
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
+	$pconfig['outbounduridial'] = isset($a_sipphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_sipphones[$id]['sendcallnotifications']);
 	$pconfig['allowdirectdial'] = isset($a_sipphones[$id]['allowdirectdial']);
@@ -139,9 +140,12 @@ if ($_POST) {
 
 		$a_providers = pbx_get_providers();
 		$sp['provider'] = array();
-		foreach ($a_providers as $provider)
-			if($_POST[$provider['uniqid']] == true)
+		foreach ($a_providers as $provider) {
+			if($_POST[$provider['uniqid']] == true) {
 				$sp['provider'][] = $provider['uniqid'];
+			}
+		}
+		$sp['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
@@ -213,7 +217,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 2); ?>
-			<? display_provider_access_selector($pconfig['provider'], 2); ?>
+			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 

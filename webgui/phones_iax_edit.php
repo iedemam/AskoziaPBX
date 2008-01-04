@@ -56,6 +56,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['authentication'] = $a_iaxphones[$id]['authentication'];
 	$pconfig['secret'] = $a_iaxphones[$id]['secret'];
 	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
+	$pconfig['outbounduridial'] = isset($a_iaxphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_iaxphones[$id]['sendcallnotifications']);
 	$pconfig['allowdirectdial'] = isset($a_iaxphones[$id]['allowdirectdial']);
@@ -123,9 +124,12 @@ if ($_POST) {
 
 		$a_providers = pbx_get_providers();
 		$sp['provider'] = array();
-		foreach ($a_providers as $provider)
-			if($_POST[$provider['uniqid']] == true)
+		foreach ($a_providers as $provider) {
+			if($_POST[$provider['uniqid']] == true) {
 				$sp['provider'][] = $provider['uniqid'];
+			}
+		}
+		$sp['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
@@ -205,7 +209,7 @@ if ($_POST) {
 					<br>Defaults to '2'. Set to '0' to disable.</span>
 				</td>
 			</tr>
-			<? display_provider_access_selector($pconfig['provider'], 2); ?>
+			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<tr> 

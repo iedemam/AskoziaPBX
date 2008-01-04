@@ -50,6 +50,7 @@ if (isset($id) && $a_analogphones[$id]) {
 	$pconfig['extension'] = $a_analogphones[$id]['extension'];
 	$pconfig['callerid'] = $a_analogphones[$id]['callerid'];
 	$pconfig['provider'] = $a_analogphones[$id]['provider'];
+	$pconfig['outbounduridial'] = isset($a_analogphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_analogphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_analogphones[$id]['sendcallnotifications']);
 	$pconfig['allowdirectdial'] = isset($a_analogphones[$id]['allowdirectdial']);
@@ -100,9 +101,13 @@ if ($_POST) {
 
 		$a_providers = pbx_get_providers();
 		$ap['provider'] = array();
-		foreach ($a_providers as $provider)
-			if($_POST[$provider['uniqid']] == true)
+		foreach ($a_providers as $provider) {
+			if($_POST[$provider['uniqid']] == true) {
 				$ap['provider'][] = $provider['uniqid'];
+			}
+		}
+		$ap['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
+		
 		
 		if (isset($id) && $a_analogphones[$id]) {
 			$ap['uniqid'] = $a_analogphones[$id]['uniqid'];
@@ -174,7 +179,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_provider_access_selector($pconfig['provider'], 1); ?>
+			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">Description</td>
 				<td class="vtable">
