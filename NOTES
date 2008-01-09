@@ -1,5 +1,5 @@
 pb13
-- revamp password field to make it a bit friendlier / eliminate auto-complete problem
+- revamp password field to make it a bit friendlier / eliminate auto-complete problems
 - make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
 - enter dns server via console
 - nat=yes|no optional an all sip accounts
