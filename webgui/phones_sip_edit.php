@@ -162,7 +162,7 @@ if ($_POST) {
 		
 		write_config();
 		
-		header("Location: phones_sip.php");
+		header("Location: accounts_phones.php");
 		exit;
 	}
 }

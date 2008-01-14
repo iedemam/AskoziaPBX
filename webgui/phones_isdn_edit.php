@@ -120,7 +120,7 @@ if ($_POST) {
 		
 		write_config();
 		
-		header("Location: phones_isdn.php");
+		header("Location: accounts_phones.php");
 		exit;
 	}
 }

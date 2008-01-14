@@ -411,6 +411,28 @@ function pbx_get_phone($uniqid) {
 }
 
 /**
+ * Deletes a phone from the configuration array.
+ * XXX : as opposed to the pbx_get_* functions, this is implemented in pbx.inc itself
+ * this seems more logical as there is nothing technology specific going on here.
+ * The other functions should be refactored to use this method if no argument arises
+ * against it.
+ */
+function pbx_delete_phone($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$phone_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PHONE" && in_array($phone_type, $g['phone_types'])) {
+		unset($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]]);
+		dialplan_remove_incomingextensionmap_reference_from_providers($uniqid);
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_delete_phone!";
+	}
+}
+
+/**
  * Sorts phones by Caller ID
  * XXX : this sort differs in behavior from the individual _sort_phones() functions
  */

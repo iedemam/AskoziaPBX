@@ -136,6 +136,14 @@ $menu['System']['Backup/Restore'] 		= array('system_backup.php');
 $menu['System']['Factory Defaults']		= array('system_defaults.php');
 $menu['System']['Reboot'] 				= array('system_reboot.php');
 
+/* Accounts */
+$menu['Accounts']['Phones']				= array('accounts_phones.php',
+												'phones_sip_edit.php',
+												'phones_iax_edit.php',
+												'phones_isdn_edit.php',
+												'phones_analog_edit.php',
+												'phones_external_edit.php');
+
 /* Providers */
 $menu['Providers']['SIP'] 				= array('providers_sip.php',
 												'providers_sip_edit.php');
@@ -267,8 +275,8 @@ function showhide(tspan, tri) {
             <?php 
                    
 dynamic_menu($menu['System'], 'System');
+dynamic_menu($menu['Accounts'], 'Accounts');
 dynamic_menu($menu['Providers'], 'Providers');
-dynamic_menu($menu['Phones'], 'Phones');
 dynamic_menu($menu['Dialplan'], 'Dialplan');
 dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');
