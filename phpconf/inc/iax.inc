@@ -209,7 +209,7 @@ EOD;
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])
-			$conf .= "port={$p['port']}";
+			$conf .= "port={$p['port']}\n";
 			
 		// language selection
 		if ($p['language']) {
@@ -256,7 +256,7 @@ EOD;
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])
-			$conf .= "port={$p['port']}";
+			$conf .= "port={$p['port']}\n";
 			
 		// language selection
 		if ($p['language']) {
