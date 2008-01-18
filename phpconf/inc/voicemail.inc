@@ -206,18 +206,25 @@ maxlogins=3
 minmessage=3
 charset=UTF-8
 
-serveremail=AskoziaPBX
 fromstring=AskoziaPBX Voicemail
 
 EOD;
 
-	if (!$config['voicemail']['maillanguage']) {
-		$conf .= "emailsubject=" . $vm_emailsubject['en-informal'] . "\n";
-		$conf .= "emailbody=" . $vm_emailbody['en-informal'] . "\n\n";
+	if ($config['voicemail']['fromaddress']) {
+		$conf .= "serveremail=" . $config['voicemail']['fromaddress'] . "\n\n";
+	} else if ($config['voicemail']['address']) {
+		$conf .= "serveremail=" . $config['voicemail']['address'] . "\n\n";
 	} else {
+		$conf .= "serveremail=AskoziaPBX\n\n";
+	}
+
+	if ($config['voicemail']['maillanguage']) {
 		$vm_lang = $config['voicemail']['maillanguage'];
 		$conf .= "emailsubject=" . $vm_emailsubject[$vm_lang] . "\n";
 		$conf .= "emailbody=" . $vm_emailbody[$vm_lang] . "\n\n";
+	} else {
+		$conf .= "emailsubject=" . $vm_emailsubject['en-informal'] . "\n";
+		$conf .= "emailbody=" . $vm_emailbody['en-informal'] . "\n\n";
 	}
 
 	$conf .= <<<EOD
