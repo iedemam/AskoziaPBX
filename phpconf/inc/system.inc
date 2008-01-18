@@ -670,12 +670,10 @@ function system_load_kernel_modules() {
 	} else {
 		mwexec("/sbin/kldload oslec");
 	}*/
-	mwexec("/sbin/kldload oslec");
+	//mwexec("/sbin/kldload oslec");
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
-	//mwexec("/sbin/kldload wct1xxp");
-	//mwexec("/sbin/kldload wct4xxp");
 }
 
 ?>

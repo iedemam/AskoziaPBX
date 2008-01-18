@@ -299,13 +299,13 @@ function build_zaptel() {
 			"svn co --username svn --password svn ".
 			"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 {$versions['zaptel']}");
 	}
-	if (!_is_patched($versions['zaptel'])) {
+	/*if (!_is_patched($versions['zaptel'])) {
 		_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
 			"patch < {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/zaptel-trunk.diff");
 		//_exec("cd {$dirs['packages']}/$zaptel_version; ".
 		//	"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_calc_xlaw.patch");
 		_stamp_package_as_patched($versions['zaptel']);
-	}	
+	}*/	
 	// remove old headers if they're around
 	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
 	
@@ -329,12 +329,12 @@ function build_zaptel() {
 			"STAGE");
 	
 	// compile mmx enabled version
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
+	/*_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
 		"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
 	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; make clean; make");
 	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; cp -p zaptel/zaptel.ko STAGE/mmx_zaptel.ko");
 	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
-		"patch -R < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
+		"patch -R < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");*/
 }
 
 function build_isdn() {
@@ -407,7 +407,7 @@ function build_oslec() {
 	
 	if (!file_exists("{$dirs['packages']}/{$versions['oslec']}")) {
 		_exec("cd {$dirs['packages']}; ".
-			"svn co http://svn.rowetel.com/software/oslec/trunk/ {$versions['oslec']}");
+			"svn co http://svn.astfin.org/software/oslec/trunk/ {$versions['oslec']}");
 	}
 	if (!_is_patched($versions['oslec'])) {
 		_exec("mkdir {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd");
@@ -443,7 +443,7 @@ function build_packages() {
 	build_php();
 	build_msmtp();
 	build_minihttpd();
-	build_oslec();
+	//build_oslec();
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
@@ -920,12 +920,6 @@ function populate_sounds($image_name) {
 	}
 }
 
-function populate_zaptel($image_name) {
-	global $dirs, $versions;
-
-	/* moved to m0n0wall.files */
-}
-
 function populate_isdn($image_name) {
 	global $dirs, $versions;
 
@@ -1036,7 +1030,6 @@ function populate_everything($image_name) {
 	populate_msntp($image_name);
 	populate_udesc_dump($image_name);
 	populate_msmtp($image_name);
-	populate_zaptel($image_name);
 	populate_isdn($image_name);
 	populate_asterisk($image_name);
 	populate_sounds($image_name);
@@ -1082,7 +1075,7 @@ function package($platform, $image_name) {
 	// ...zaptel modules
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko tmp/stage/boot/kernel/");
 	// ...oslec modules
-	_exec("cp {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE/*.ko tmp/stage/boot/kernel/");
+	//_exec("cp {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE/*.ko tmp/stage/boot/kernel/");
 	
 	// XXX : i4b module should be used here instead of being built into the kernel
 	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");
