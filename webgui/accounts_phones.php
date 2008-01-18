@@ -34,11 +34,32 @@ require("guiconfig.inc");
 
 /* delete phone? */
 if ($_GET['act'] == "del") {
-	pbx_delete_phone($_GET['id']);		
-	write_config();
-	touch($d_analogconfdirty_path);
-	header("Location: accounts_phones.php");
-	exit;
+	if(!($msg = pbx_delete_phone($_GET['id']))) {
+		write_config();
+		$pieces = explode("-", $_GET['id']);
+		$phone_type = strtolower($pieces[0]);
+		switch ($phone_type) {
+			case "analog":
+				touch($d_analogconfdirty_path);
+				break;
+			case "external":
+				touch($d_extensionsconfdirty_path);
+				break;
+			case "iax":
+				touch($d_iaxconfdirty_path);
+				break;
+			case "sip":
+				touch($d_sipconfdirty_path);
+				break;
+			case "isdn":
+				touch($d_isdnconfdirty_path);	
+				break;
+		}
+		header("Location: accounts_phones.php");
+		exit;
+	} else {
+		$savemsg = $msg;	
+	}
 }
 
 /* dirty sip config */
@@ -147,8 +168,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <? if (!isset($config['system']['webgui']['hidesip'])) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="3" class="listtopiclight">SIP</td>
-		<td class="list"></td>
+		<td colspan="4" class="listtopiclight">SIP</td>
 	</tr>
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
@@ -187,8 +207,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <? if (!isset($config['system']['webgui']['hideiax'])) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="3" class="listtopiclight">IAX</td>
-		<td class="list"></td>
+		<td colspan="4" class="listtopiclight">IAX</td>
 	</tr>
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
@@ -227,8 +246,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <? if (!isset($config['system']['webgui']['hideisdn'])) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="3" class="listtopiclight">ISDN</td>
-		<td class="list"></td>
+		<td colspan="4" class="listtopiclight">ISDN</td>
 	</tr>
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
@@ -267,8 +285,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <? if (!isset($config['system']['webgui']['hideanalog'])) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="3" class="listtopiclight">Analog</td>
-		<td class="list"></td>
+		<td colspan="4" class="listtopiclight">Analog</td>
 	</tr>
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
@@ -305,8 +322,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="4" class="listtopiclight">External</td>
-		<td class="list"></td>
+		<td colspan="5" class="listtopiclight">External</td>
 	</tr>
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
@@ -340,7 +356,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td class="list"> <a href="phones_external_edit.php"><img src="plus.gif" title="add external phone" width="17" height="17" border="0"></a></td>
 	</tr>
 	<tr> 
-		<td class="list" colspan="5" height="24">&nbsp;</td>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
 </table>
 

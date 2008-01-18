@@ -123,7 +123,7 @@ if ($_POST) {
 		
 		write_config();
 		
-		header("Location: providers_analog.php");
+		header("Location: accounts_providers.php");
 		exit;
 	}
 }

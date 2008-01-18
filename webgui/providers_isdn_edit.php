@@ -126,7 +126,7 @@ if ($_POST) {
 		
 		write_config();
 		
-		header("Location: providers_isdn.php");
+		header("Location: accounts_providers.php");
 		exit;
 	}
 }

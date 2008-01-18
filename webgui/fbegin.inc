@@ -137,33 +137,16 @@ $menu['System']['Factory Defaults']		= array('system_defaults.php');
 $menu['System']['Reboot'] 				= array('system_reboot.php');
 
 /* Accounts */
+$menu['Accounts']['Providers']			= array('accounts_providers.php',
+												'providers_sip_edit.php',
+												'providers_iax_edit.php',
+												'providers_isdn_edit.php',
+												'providers_analog_edit.php');
 $menu['Accounts']['Phones']				= array('accounts_phones.php',
 												'phones_sip_edit.php',
 												'phones_iax_edit.php',
 												'phones_isdn_edit.php',
 												'phones_analog_edit.php',
-												'phones_external_edit.php');
-
-/* Providers */
-$menu['Providers']['SIP'] 				= array('providers_sip.php',
-												'providers_sip_edit.php');
-$menu['Providers']['IAX'] 				= array('providers_iax.php',
-												'providers_iax_edit.php');
-$menu['Providers']['ISDN'] 				= array('providers_isdn.php',
-												'providers_isdn_edit.php');
-$menu['Providers']['Analog'] 			= array('providers_analog.php',
-												'providers_analog_edit.php');
-
-/* Phones */
-$menu['Phones']['SIP'] 					= array('phones_sip.php',
-												'phones_sip_edit.php');
-$menu['Phones']['IAX'] 					= array('phones_iax.php',
-												'phones_iax_edit.php');
-$menu['Phones']['ISDN']					= array('phones_isdn.php',
-												'phones_isdn_edit.php');
-$menu['Phones']['Analog']				= array('phones_analog.php',
-												'phones_analog_edit.php');
-$menu['Phones']['External']				= array('phones_external.php',
 												'phones_external_edit.php');
 
 /* Dialplan */
@@ -276,7 +259,6 @@ function showhide(tspan, tri) {
                    
 dynamic_menu($menu['System'], 'System');
 dynamic_menu($menu['Accounts'], 'Accounts');
-dynamic_menu($menu['Providers'], 'Providers');
 dynamic_menu($menu['Dialplan'], 'Dialplan');
 dynamic_menu($menu['Services'], 'Services');
 dynamic_menu($menu['Status'], 'Status');

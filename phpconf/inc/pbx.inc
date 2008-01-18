@@ -360,6 +360,32 @@ function pbx_get_providers() {
 }
 
 /**
+ * Deletes a provider from the configuration array.
+ * XXX : as opposed to the pbx_get_* functions, this is implemented in pbx.inc itself
+ * this seems more logical as there is nothing technology specific going on here.
+ * The other functions should be refactored to use this method if no argument arises
+ * against it.
+ */
+function pbx_delete_provider($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$provider_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PHONE" &&
+		in_array($provider_type, $g['provider_types']) &&
+		is_array($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]])) {
+
+		unset($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]]);
+		dialplan_remove_provider_reference_from_phones($uniqid);
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_delete_provider!";
+	}
+}
+
+/**
  * Sorts providers by name
  */
 function pbx_sort_providers($providers) {
@@ -423,9 +449,13 @@ function pbx_delete_phone($uniqid) {
 	$pieces = explode("-", $uniqid);
 	$phone_type = strtolower($pieces[0]);
 
-	if ($pieces[1] == "PHONE" && in_array($phone_type, $g['phone_types'])) {
+	if ($pieces[1] == "PHONE" &&
+		in_array($phone_type, $g['phone_types']) &&
+		is_array($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]])) {
+
 		unset($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]]);
 		dialplan_remove_incomingextensionmap_reference_from_providers($uniqid);
+		return 0;
 
 	} else {
 		return "ERROR: invalid uniqid ($uniqid) provided in pbx_delete_phone!";
