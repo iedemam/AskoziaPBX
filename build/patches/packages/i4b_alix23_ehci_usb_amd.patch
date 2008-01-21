@@ -1,17 +1,16 @@
 Index: trunk/i4b/src/sys/dev/usb/ehci_pci.c
 ===================================================================
---- trunk/i4b/src/sys/dev/usb/ehci_pci.c	(revision 542)
+--- trunk/i4b/src/sys/dev/usb/ehci_pci.c	(revision 569)
 +++ trunk/i4b/src/sys/dev/usb/ehci_pci.c	(working copy)
-@@ -144,8 +144,10 @@
+@@ -147,8 +147,10 @@
  	if (device_id == 0x523910b9)
- 	    return "ALi M5239 USB 2.0 controller";
+ 		return "ALi M5239 USB 2.0 controller";
  
 -	if (device_id == 0x10227463)
--	    return "AMD 8111 USB 2.0 controller";
 +	if (device_id == 0x74631022)
-+		return "AMD 8111 USB 2.0 controller";
+ 		return "AMD 8111 USB 2.0 controller";
 +	if (device_id == 0x20951022)
 +		return "AMD CS5536 USB 2.0 controller";
  
  	if (device_id == 0x43451002)
- 	    return "ATI SB200 USB 2.0 controller";
+ 		return "ATI SB200 USB 2.0 controller";
