@@ -63,7 +63,7 @@ if (isset($id) && $a_isdnproviders[$id]) {
 if ($_POST) {
 
 	unset($input_errors);
-	$_POST['dialpattern'] = split_and_clean_patterns($_POST['dialpattern']);
+	$_POST['dialpattern'] = split_and_clean_lines($_POST['dialpattern']);
 	$_POST['incomingextensionmap'] = gather_incomingextensionmaps($_POST);
 	$pconfig = $_POST;
 

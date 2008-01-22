@@ -478,11 +478,11 @@ function print_r_html($data, $return_data=true) {
         return $data;
 }
 
-function split_and_clean_patterns($patterns_string) {
-	$patterns_string = str_replace(" ", "", $patterns_string);
-	$patterns = preg_split("/[\x0D\x0A]+/", $patterns_string, -1, PREG_SPLIT_NO_EMPTY);
+function split_and_clean_lines($s) {
+	$s = str_replace(" ", "", $s);
+	$lines = preg_split("/[\x0D\x0A]+/", $s, -1, PREG_SPLIT_NO_EMPTY);
 	
-	return $patterns;
+	return $lines;
 }
 
 

@@ -83,7 +83,7 @@ if ($_POST) {
 		// save dialpatterns
 		if (strpos($key_split[1], "dialpattern") !== false) {
 
-			$dialpatterns = split_and_clean_patterns($_POST[$post_key]);
+			$dialpatterns = split_and_clean_lines($_POST[$post_key]);
 
 			foreach($dialpatterns as $pattern) {
 				if (!pbx_is_valid_dialpattern($pattern, &$internal_error)) {
