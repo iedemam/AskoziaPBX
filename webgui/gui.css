@@ -388,10 +388,6 @@ ul#tabnav li.tabact {
 	white-space: nowrap;
 }
 ul#tabnav li.tabact a {
-	float: left;
-	display: block;
-	text-decoration: none;
-	padding: 5px 8px 5px 8px;
 	color: #000000;
 }
 .tabcont {
