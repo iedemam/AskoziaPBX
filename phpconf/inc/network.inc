@@ -84,6 +84,12 @@ function network_lan_configure() {
 	/* bridging */
 	mwexec("/sbin/sysctl net.link.ether.bridge.enable=0");
 	if (is_array($lancfg['bridge'])) {
+		/* ensure that hardware TX/RX checksumming is off for bridged interfaces */
+		foreach ($lancfg['bridge'] as $b_if) {
+			mwexec("/sbin/ifconfig " . escapeshellarg($b_if) . " -rxcsum -txcsum");
+		}
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -rxcsum -txcsum");
+		/* build bridge configuration */
 		$bridgeconfig = implode(":0,", $lancfg['bridge']);
 		$bridgeconfig .= ":0,{$lancfg['if']}:0";
 		mwexec("/sbin/sysctl net.link.ether.bridge.config=" . $bridgeconfig);		
