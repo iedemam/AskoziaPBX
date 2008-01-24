@@ -498,7 +498,7 @@ function extensions_generate_provider_incoming_context($p) {
 			}
 
 
-		} else if (is_numeric($pattern)) {
+		} else if (verify_is_numericint($pattern)) {
 			$conf .= "exten => $pattern,1,NoOp()\n";
 			if ($needswait) {
 				$conf .= "exten => $pattern,n,Ringing()\n";
