@@ -354,7 +354,47 @@ function convert_config() {
 		
 		$config['version'] = "1.4";
 	}
-	
+
+	/* convert 1.4 -> 1.5 */
+	if ($config['version'] == "1.4") {
+
+		// convert applications to new representation
+		if (is_array($config['dialplan']['application'])) {
+			$n = count($config['dialplan']['application']);
+			for($i = 0; $i < $n; $i++) {
+				$a = &$config['dialplan']['application'][$i];
+				
+				if ($a['name'] == "Echo") {
+					$a['app-command'] = array(
+						base64_encode("1,Answer()"),
+						base64_encode("2,Echo()"),
+						base64_encode("3,Hangup()")
+					);
+					$a['descr'] = "Echos audio and video back to the caller as soon as it is received. Used to test connection delay.";
+
+				} else if ($a['name'] == "Milliwatt") {
+					$a['app-command'] = array(
+						base64_encode("1,Answer()"),
+						base64_encode("2,Milliwatt()"),
+						base64_encode("3,Hangup()")
+					);
+					$a['descr'] = "Generates a constant 1000Hz tone. Used to test connection quality.";
+
+				} else if ($a['name'] == "WakeMe") {
+					$a['app-command'] = array(
+						base64_encode("1,Answer()"),
+						base64_encode("2,Set(CHANNEL(language)=en)"),
+						base64_encode("3,WakeMe()"),
+						base64_encode("4,Hangup()")
+					);
+					$a['descr'] = "Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.";
+				}
+			}
+		}
+
+		$config['version'] = "1.5";
+	}
+
 	write_config();
 	
 	if ($g['booting'])

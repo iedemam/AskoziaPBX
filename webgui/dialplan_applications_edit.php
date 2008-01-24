@@ -49,37 +49,48 @@ if (isset($_POST['id']))
 if (isset($id) && $a_applications[$id]) {
 	$pconfig['name'] = $a_applications[$id]['name'];
 	$pconfig['extension'] = $a_applications[$id]['extension'];
+	$pconfig['app-command'] = $a_applications[$id]['app-command'];
 	$pconfig['allowdirectdial'] = isset($a_applications[$id]['allowdirectdial']);
 	$pconfig['publicname'] = $a_applications[$id]['publicname'];
+	$pconfig['descr'] = $a_applications[$id]['descr'];
 }
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['applogic'] = split_and_clean_lines($_POST['applogic']);
 	$pconfig = $_POST;
 	
 	/* input validation */
-	$reqdfields = explode(" ", "extension");
-	$reqdfieldsn = explode(",", "Extension");
+	$reqdfields = explode(" ", "name extension applogic");
+	$reqdfieldsn = explode(",", "Name,Extension,Application Logic");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
+	if (!pbx_is_valid_extension($_POST['extension'])) {
 		$input_errors[] = "A valid extension must be entered.";
 	}
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
 	}
+	if ($msg = verify_application_logic($_POST['applogic'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the app-command content
+	$pconfig['app-command'] = array_map("base64_encode", $_POST['applogic']);
 
 	if (!$input_errors) {
 		$app = array();		
 		$app['name'] = $_POST['name'];
 		$app['extension'] = $_POST['extension'];
+		$app['app-command'] = array_map("base64_encode", $_POST['applogic']);
 		$app['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$app['publicname'] = verify_non_default($_POST['publicname']);
+		$app['descr'] = verify_non_default($_POST['descr']);
 
 		if (isset($id) && $a_applications[$id]) {
-			$gm['uniqid'] = $a_applications[$id]['uniqid'];
+			$app['uniqid'] = $a_applications[$id]['uniqid'];
 			$a_applications[$id] = $app;
 		 } else {
 			$app['uniqid'] = "APPLICATION-MAPPING-" . uniqid(rand());
@@ -103,7 +114,6 @@ if ($_POST) {
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_direct_dial_editor("ready");?>
-
 	});
 
 //-->
@@ -112,34 +122,27 @@ if ($_POST) {
 	<form action="dialplan_applications_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Name</td>
-				<td width="80%" colspan="2" class="vtable">
-					<select name="name" class="formfld" id="name">
-					<? foreach ($applications as $appname => $appdesc) : ?>
-					<option value="<?=$appname;?>" <?
-					if ($appname == $pconfig['name'])
-						echo "selected"; ?>
-					><?=$appname;?></option>
-					<? endforeach; ?>
-					</select>
-					<br>
-					<span class="vexpl">
-						<ul>
-						<? foreach ($applications as $appname => $appdesc) : ?>
-							<li><strong><?=$appname;?></strong>&nbsp;<?=$appdesc;?></li>
-						<? endforeach; ?>
-						</ul>
-					</span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Extension</td>
-				<td colspan="2" class="vtable">
+				<td width="20%" valign="top" class="vncellreq">Extension</td>
+				<td width="80%" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
 					<br><span class="vexpl">Internal extension used to reach this application.</span>
 				</td>
 			</tr>
+			<tr> 
+				<td valign="top" class="vncellreq">Name</td>
+				<td class="vtable">
+					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+					<br><span class="vexpl"></span>
+				</td>
+			</tr>
+			<? display_application_logic_editor($pconfig['app-command'], 1); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
+			<tr> 
+				<td valign="top" class="vncell">Description</td>
+				<td class="vtable">
+					<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
+				</td>
+			</tr>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">

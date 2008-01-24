@@ -370,6 +370,9 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 }
 
 function display_public_direct_dial_editor($current_allowdirectdial, $current_publicname, $colspan, $getjs=false) {
+	global $config;
+
+	$fullhostname = $config['system']['hostname'] . "." . $config['system']['domain'];
 
 	?><tr> 
 		<td valign="top" class="vncell">Public Direct Dial</td>
@@ -382,11 +385,11 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 
 			?>>&nbsp;allow extension to be directly dialed over public networks
 			<br><span name="publicname_wrapper" id="publicname_wrapper">
-			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@mypbx.tld
+			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
 			<br><span class="vexpl">Public name. Enter a string to map a friendly name to this extension.</span>
 			<br>
 			</span>
-			<br><span class="vexpl">Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@mypbx.tld)</span>
+			<br><span class="vexpl">Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@<?=$fullhostname;?>)</span>
 		</td>
 	</tr><?
 }
@@ -406,6 +409,45 @@ function display_call_and_busy_limit_selector($current_calllimit, $current_busyl
 			<input name="busylimit" type="text" class="formfld" id="busylimit" size="5" value="<?=htmlspecialchars($current_busylimit);?>">&nbsp;calls 
             <br><span class="vexpl">Phone status will be switched to 'busy' with 'n' concurrent calls (default: 1)</span>
 		</td>
+	</tr><?
+}
+
+function display_application_logic_editor($current_appcommands, $colspan, $idprefix=false) {
+	global $help, $help_language;
+
+	$n = count($current_appcommands);
+	if ($n < 20) {
+		$n = 20;	
+	}
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncellreq">Logic</td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
+
+		// multiple instances need a prefixing identifier
+		if ($idprefix) {
+			$idstring = $idprefix . "_applogic";
+		} else {
+			$idstring = "applogic";
+		}
+
+			?><textarea name="<?=$idstring;?>" cols="65" rows="<?=$n;?>" id="<?=$idstring;?>" class="notes"><?
+
+			// print the pattern(s)
+			if (is_array($current_appcommands)) {
+				echo htmlspecialchars(base64_decode($current_appcommands[0]));
+				for ($i = 1; $i < $n; $i++) {
+					echo "\n" . htmlspecialchars(base64_decode($current_appcommands[$i]));
+				}
+			}
+			?></textarea><?
+
+		// multiple instances don't need help for every instance
+		if (!$idprefix) {				
+			?><br><span class="vexpl"><?=$help[$help_language]["display_application_logic_editor"]; ?></span><?
+		}
+
+		?></td>
 	</tr><?
 }
 

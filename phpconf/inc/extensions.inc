@@ -43,6 +43,14 @@ function extensions_conf_generate() {
 		return 1;
 	}
 
+	$internal_phones = pbx_get_phones();
+	$external_phones = external_get_phones(); // XXX : refactor needed here re: internal vs external function names
+	$callgroups = callgroups_get_groups();
+	$applications = applications_get_apps();
+	$conference_rooms = conferencing_get_rooms();
+	$providers = pbx_get_providers();
+	$isdn_nt_interfaces = isdn_get_nt_interfaces();
+	$isdn_te_interfaces = isdn_get_te_interfaces();
 	$vmconfig = $config['voicemail'];
 	
 	$conf = <<<EOD
@@ -118,16 +126,13 @@ exten => s,n,Dial(SIP/$\{ARG1},,To)
 
 EOD;
 
-	$internal_phones = pbx_get_phones();
-	$external_phones = external_get_phones(); // XXX : refactor needed here re: internal vs external function names
-	$callgroups = callgroups_get_groups();
-	$applications = applications_get_apps();
-	$conference_rooms = conferencing_get_rooms();
-	$providers = pbx_get_providers();
-	$isdn_nt_interfaces = isdn_get_nt_interfaces();
-	$isdn_te_interfaces = isdn_get_te_interfaces();
-	
-	
+	// application contexts
+	foreach ($applications as $a) {
+		$conf .= extensions_generate_application_context($a);
+		$conf .= "\n";
+	}
+	$conf .= "\n";
+
 	// "public" extensions context
 	$conf .= "[public-direct-dial]\n";
 
@@ -659,21 +664,29 @@ function extensions_generate_callgroup_extension($g, $from_public=false, $readba
 }
 
 /**
- * Generates an application extension
+ * Generates an application context
+ */
+function extensions_generate_application_context($a) {
+
+	if (is_array($a['app-command'])) {
+		$conf = "; " . $a['name'] . "\n";
+		$conf .= "[" . $a['uniqid'] . "]\n";
+		foreach ($a['app-command'] as $ac) {
+			$conf .= "exten => s," . base64_decode($ac) . "\n";
+		}
+	}
+
+	return $conf;
+}
+
+/**
+ * Generates an extension which links to a local application
  */
 function extensions_generate_application_extension($a, $from_public=false, $extension=false) {
 
 	$exten = ($extension !== false) ? $extension : $a['extension'];
-	$name = $a['name'];
 
-	$conf .= "exten => $exten,n,Answer()\n";
-	if ($name == "WakeMe") {
-		$conf .= "exten => $exten,n,Set(CHANNEL(language)=en)\n";
-	}
-	$conf .= "exten => $exten,n,$name()\n";
-	$conf .= "exten => $exten,n,Hangup()\n";
-
-	return $conf;
+	return "exten => $exten,n,Dial(Local/s@" . $a['uniqid'] . "/n)\n";
 }
 
 function extensions_generate_conference_room_extension($r, $from_public=false, $extension=false) {

@@ -1,3 +1,23 @@
+// zap interfaces being correctly restarted??
+I did a "zap restart" and now it seems to be working.
+Now I can see the detailed information about the
+channels with "zap show channel 1" for instance.
+
+// time difference
+> The second issue is when I get the email with the voicemail attachment, the time is always 6 hours behind the actual time. The missed call emails have the right time, but the voicemail attachment email is not.
+
+// number readback death
+> I Still have the problem that my asterisk dies when he tries to read me
+> the sipgate number.
+> I think it is because i have a letter in the identification from
+> sipgate, because this never happens with my sicall account.
+> It doesn't make sense that it tries to read my sipgate identification it
+> should read my phone number. Can I configure this somewhere?
+>
+
+// iax tos options
+
+
 pb13
 - revamp password field to make it a bit friendlier / eliminate auto-complete problems
 - make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
@@ -49,7 +69,6 @@ later
 - new option to log to storage partition
 - get "advanced mode" working
 - provider / phone status indicators on edit page
-- add "Entities -> Users"
 - dialplan (still needs (de)select all)
 - add iax2 auth options
 	- pubkey import
@@ -57,7 +76,6 @@ later
 - extend callgroup support to add delays, sequential groups
 - privacy with voicemail forward
 - cryptographically verifiable, encryptable config.xmls
-- provider to provider access with pin code
 - QoS options, such as jitterbuffer and packet types supported
 
 

@@ -104,7 +104,7 @@ function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 	if (pattern === undefined) {
 		pattern = '';
 	}
-	
+
 	var id = next_incoming_extension_selector_id;
 
 	var insert_string =
@@ -127,7 +127,7 @@ function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 			+ '</td>' +
 			'</tr>';
 	}
-	
+
 	jQuery("#incoming_extension_selector_last").before(insert_string);
 
 	if (destination_id !== undefined) {
@@ -171,8 +171,8 @@ function javascript_default_value_setter($id, $value) {
 
 function javascript_public_direct_dial_editor($part) {
 
-	if ($part == "functions") {
-		$js = <<<EOD
+	if ($part == "functions") : ?>
+
 		function publicname_slide() {
 			if (jQuery("#allowdirectdial").is(":checked")) {
 				jQuery("#publicname_wrapper").slideDown();
@@ -180,17 +180,17 @@ function javascript_public_direct_dial_editor($part) {
 				jQuery("#publicname_wrapper").slideUp();
 			}
 		}
-EOD;
-	} else if ($part == "ready") {
-		$js = <<<EOD
-			jQuery("#allowdirectdial").click(publicname_slide);
-			publicname_slide();
-EOD;
-	} else {
-		$js = "ERROR: no part defined in javascript_public_direct_dial_editor()!";
-	}
-	
-	return $js;
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#allowdirectdial").click(publicname_slide);
+		publicname_slide();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_public_direct_dial_editor()!
+
+	<? endif;
 }
 
 ?>

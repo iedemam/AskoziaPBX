@@ -64,7 +64,21 @@ $help = array(
 			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
 			"\t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n".
 			"\t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n".
-			"</ul>\n"
+			"</ul>\n",
+
+		"display_application_logic_editor" =>
+			"Enter application logic, one command per line as shown:".
+			"<br>".
+			"<pre>".
+			"1,Answer()\n".
+			"2,Echo()\n".
+			"3,Hangup()\n".
+			"</pre>".
+			"<p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. ".
+			"An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be ".
+			"rendered useless by faulty application logic. A reference of applications, functions and ".
+			"phones is available in the ".
+			"<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"
 	)
 	
 );

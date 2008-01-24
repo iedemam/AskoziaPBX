@@ -1,4 +1,5 @@
 2008.01.xx - pb13
+ - added: custom application logic may now be defined in "Dialplan -> Applications" (suggested w/proof-of-concept by Ben Hathaway)
  - added: factory default reset button support for alix23x platform (merged from m0n0wall)
  - added: Russian voicemail notification e-mail translation (submitted by Eugen Bernatskiy)
  - added: Portuguese voicemail notification e-mail translation (submitted by Marcus Vinícius Quintella Ribeiro)
@@ -10,23 +11,30 @@
  - added: phones, callgroups, conferences and applications have a new option "Public Direct Dial" which, when activated, exposes these extensions to public networks. An optional string may also be defined to override the internal extension with a friendly name ("yourname" vs "1234")
  - added: ajax.cgi allows execution of Asterisk Manager Interface and shell commands
  - added: jQuery plugin copyright information to license page
- - added: direct outgoing sip uri dialing (unfinished: cid options...) 
+ - added: direct outgoing sip uri dialing (unfinished: cid options...)
  - updated: Asterisk to 1.4.17
  - updated: php to 4.4.8
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
- - updated: basesystem to FreeBSD 6.2-RELEASE-p8
+ - updated: basesystem to FreeBSD 6.2-RELEASE-p10
  - updated: timezone information (merged from m0n0wall)
  - changed: additional sounds used for WakeMe application are now in the higher quality ulaw format
  - changed: callgroup member selector now displays the phone's extension
  - changed: "Diagnostics -> Manager Interface" now uses AJAX to query the new ajax.cgi backend
  - changed: /exec.php now uses AJAX to query the new ajax.cgi backend
  - changed: existing GUI javascript code replaced with jQuery equivalents where possible
+ - bug: fixed bridging with interfaces that support hardware TX checksumming
+(by turning it off) (merged from m0n0wall)
+ - bug: added patches to fix rebooting on alix boards (merged from m0n0wall)
+ - bug: added patches to fix trap 12 kernel panics on Nokia IP110/IP120/IP130 (merged from m0n0wall)
  - bug: call records are now sorted properly (reported by Jakob Strebel)
  - bug: call groups now define their "read back" number properly (reported by Janåke Rönnblom)
  - bug: external phones reachable via ISDN providers working properly again
  - bug: nge network interfaces are no longer ignored (merged from m0n0wall)
  - bug: omit no-cache headers on exec.php because it confuses IE with file downloads (merged from m0n0wall)
+ - bug: "Services -> Voicemail" now properly sets the serveremail property in voicemail.conf (reported by Falko Mach)
+ - bug: added missing newlines to iax.conf generator (reported by Falko Mach)
+ - refactor: all providers and phones moved to subsections under "Accounts"
  - refactor: individual sorting functions replaced with pbx_sort_by_xxx() functions
  - refactor: all asterisk_* functions renamed to pbx_*
  - refactor: all manager, rtp and indications related functions moved from pbx.inc to manager.inc, rtp.inc and indications.inc

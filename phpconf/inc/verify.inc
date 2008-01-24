@@ -229,4 +229,19 @@ function verify_is_public_name($name) {
 	return false;
 }
 
+/**
+ * Verifies user provided application logic
+ * This is a very basic check at the moment.
+ */
+function verify_application_logic($app_lines) {
+
+	$n = count($app_lines);
+	for ($i = 1; $i <= $n; $i++) {
+		if (!preg_match("/^$i,[A-Za-z0-9]+\(.*\)/", $app_lines[$i-1])) {
+			return "Application logic line number $i is invalid. ".
+				"Incorrect numbering or missing parenthesis?";
+		}	
+	}
+}
+
 ?>
