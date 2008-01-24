@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Phones", "ISDN", "Edit Line");
+$pgtitle = array("Phones", "Edit ISDN Line");
 require("guiconfig.inc");
 
 /* grab and sort the isdn phones in our config */

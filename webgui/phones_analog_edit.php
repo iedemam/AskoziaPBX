@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Phones", "Analog", "Edit Line");
+$pgtitle = array("Phones", "Edit Analog Line");
 require("guiconfig.inc");
 
 /* grab and sort the analog phones in our config */

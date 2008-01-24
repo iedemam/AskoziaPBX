@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "IAX", "Edit Account");
+$pgtitle = array("Providers", "Edit IAX Account");
 require("guiconfig.inc");
 
 if (!is_array($config['iax']['provider']))

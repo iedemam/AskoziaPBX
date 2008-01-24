@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "SIP", "Edit Account");
+$pgtitle = array("Providers", "Edit SIP Account");
 require("guiconfig.inc");
 
 if (!is_array($config['sip']['provider']))

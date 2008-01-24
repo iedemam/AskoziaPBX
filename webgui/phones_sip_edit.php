@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Phones", "SIP", "Edit Account");
+$pgtitle = array("Phones", "Edit SIP Account");
 require("guiconfig.inc");
 
 /* grab and sort the sip phones in our config */

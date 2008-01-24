@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "ISDN", "Edit Line");
+$pgtitle = array("Providers", "Edit ISDN Line");
 require("guiconfig.inc");
 
 if (!is_array($config['isdn']['provider']))

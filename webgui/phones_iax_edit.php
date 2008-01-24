@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Phones", "IAX", "Edit Account");
+$pgtitle = array("Phones", "Edit IAX Account");
 require("guiconfig.inc");
 
 /* grab and sort the iax phones in our config */

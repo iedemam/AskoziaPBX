@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Phones", "External", "Edit Line");
+$pgtitle = array("Phones", "Edit External Line");
 require("guiconfig.inc");
 
 /* grab and sort the isdn phones in our config */

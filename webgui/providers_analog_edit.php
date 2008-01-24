@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "Analog", "Edit Line");
+$pgtitle = array("Providers", "Edit Analog Line");
 require("guiconfig.inc");
 
 if (!is_array($config['analog']['provider']))
