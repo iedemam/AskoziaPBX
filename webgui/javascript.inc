@@ -193,4 +193,22 @@ function javascript_public_direct_dial_editor($part) {
 	<? endif;
 }
 
+function javascript_advanced_settings($part) {
+
+	if ($part == "functions") : ?>
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#advanced-settings-opener").click(function(){
+			jQuery("#advanced-settings-header").html("Advanced Settings");
+			jQuery("#advanced-settings-container").slideDown();
+		});
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_advanced_settings()!
+
+	<? endif;
+}
+
 ?>

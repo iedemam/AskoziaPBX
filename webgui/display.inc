@@ -451,4 +451,27 @@ function display_application_logic_editor($current_appcommands, $colspan, $idpre
 	</tr><?
 }
 
+function display_advanced_settings_begin($colspan) {
+
+		?><tr>
+			<td class="list" colspan="<?=$colspan + 1;?>" height="12">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header">Advanced Settings (<a href="javascript:{}" id="advanced-settings-opener" style="color: #000000; text-decoration: none">show</a>)</td>
+		</tr>
+	</table>
+	<div id="advanced-settings-container" style="display: none">
+	<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
+}
+
+function display_advanced_settings_end() {
+
+	?></table>
+	</div>
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr>
+			<td class="list" colspan="2" height="12">&nbsp;</td>
+		</tr><?
+}
+
 ?>

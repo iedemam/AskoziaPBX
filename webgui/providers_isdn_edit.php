@@ -132,6 +132,17 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_advanced_settings("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="providers_isdn_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -169,7 +180,9 @@ if ($_POST) {
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_incoming_extension_selector(1); ?>
+			<? display_advanced_settings_begin(1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
+			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

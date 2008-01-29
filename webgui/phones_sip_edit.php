@@ -175,6 +175,7 @@ if ($_POST) {
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_advanced_settings("ready");?>
 
 	});
 
@@ -207,16 +208,6 @@ if ($_POST) {
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
-			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
-			<tr> 
-				<td valign="top" class="vncell">Qualify</td>
-				<td colspan="2" class="vtable">
-					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
-                    <br><span class="vexpl">Packets will be sent to this phone every <i>n</i> seconds to check its status.
-					<br>Defaults to '2'. Set to '0' to disable.</span>
-				</td>
-			</tr>
-			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 2); ?>
 			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
@@ -228,9 +219,21 @@ if ($_POST) {
 					for your reference (not parsed).</span>
 				</td>
 			</tr>
+			<? display_advanced_settings_begin(2); ?>
+			<tr> 
+				<td valign="top" class="vncell">Qualify</td>
+				<td colspan="2" class="vtable">
+					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
+        	        <br><span class="vexpl">Packets will be sent to this phone every <i>n</i> seconds to check its status.
+					<br>Defaults to '2'. Set to '0' to disable.</span>
+				</td>
+			</tr>
+			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
+			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 2); ?>
+			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
-				<td colspan="2">
+				<td>
 					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
 					<input id="a_codecs" name="a_codecs" type="hidden" value="">
 					<input id="v_codecs" name="v_codecs" type="hidden" value="">

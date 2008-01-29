@@ -188,6 +188,17 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_advanced_settings("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 	<form action="providers_sip_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -203,22 +214,6 @@ if ($_POST) {
 				<td valign="top" class="vncellreq">Username</td>
 				<td colspan="2" class="vtable">
 					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">Authorization User</td>
-				<td colspan="2" class="vtable">
-					<input name="authuser" type="text" class="formfld" id="authuser" size="40" value="<?=htmlspecialchars($pconfig['authuser']);?>"> 
-					<br><span class="vexpl">Some providers require a seperate authorization username.
-					<br>Defaults to username entered above.</span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncell">From User</td>
-				<td colspan="2" class="vtable">
-					<input name="fromuser" type="text" class="formfld" id="fromuser" size="40" value="<?=htmlspecialchars($pconfig['fromuser']);?>">
-					<br><span class="vexpl">Some providers require a seperate "from" user.
-					<br>Defaults to username entered above.</span>
 				</td>
 			</tr>			
 			<tr> 
@@ -237,26 +232,44 @@ if ($_POST) {
 					<br><span class="vexpl">SIP proxy host URL or IP address and optional port.</span>
 				</td>
 			</tr>
+			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 2); ?>
+			<? display_channel_language_selector($pconfig['language'], 2); ?>
+			<? display_incoming_extension_selector(2); ?>
+			<? display_audio_codec_selector($pconfig['codec']); ?>
+			<? display_video_codec_selector($pconfig['codec']); ?>
+			<? display_advanced_settings_begin(2); ?>
+			<tr> 
+				<td valign="top" class="vncell">Authorization User</td>
+				<td class="vtable">
+					<input name="authuser" type="text" class="formfld" id="authuser" size="40" value="<?=htmlspecialchars($pconfig['authuser']);?>"> 
+					<br><span class="vexpl">Some providers require a seperate authorization username.
+					<br>Defaults to username entered above.</span>
+				</td>
+			</tr>
+			<tr> 
+				<td valign="top" class="vncell">From User</td>
+				<td class="vtable">
+					<input name="fromuser" type="text" class="formfld" id="fromuser" size="40" value="<?=htmlspecialchars($pconfig['fromuser']);?>">
+					<br><span class="vexpl">Some providers require a seperate "from" user.
+					<br>Defaults to username entered above.</span>
+				</td>
+			</tr>
 			<tr> 
 				<td valign="top" class="vncell">From Domain</td>
-				<td colspan="2" class="vtable">
+				<td class="vtable">
 					<input name="fromdomain" type="text" class="formfld" id="fromdomain" size="40" value="<?=htmlspecialchars($pconfig['fromdomain']);?>">
 					<br><span class="vexpl">Some providers require a seperate "from" domain.
 					<br>Defaults to host entered above.</span>
 				</td>
 			</tr>
-			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 2); ?>
-			<? display_channel_language_selector($pconfig['language'], 2); ?>
-			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
-			<? display_registration_options($pconfig['noregister'], 2); ?>
-			<? display_qualify_options($pconfig['qualify'], 2); ?>
-			<? display_incoming_extension_selector(2); ?>
-			<? display_incoming_callerid_override_options($pconfig['override'], 2); ?>
-			<? display_audio_codec_selector($pconfig['codec']); ?>
-			<? display_video_codec_selector($pconfig['codec']); ?>
+			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>
+			<? display_registration_options($pconfig['noregister'], 1); ?>
+			<? display_qualify_options($pconfig['qualify'], 1); ?>
+			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
+			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
-				<td colspan="2">
+				<td>
 					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
 					<input id="a_codecs" name="a_codecs" type="hidden" value="">
 					<input id="v_codecs" name="v_codecs" type="hidden" value="">					 
