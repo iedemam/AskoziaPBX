@@ -372,7 +372,7 @@ function pbx_delete_provider($uniqid) {
 	$pieces = explode("-", $uniqid);
 	$provider_type = strtolower($pieces[0]);
 
-	if ($pieces[1] == "PHONE" &&
+	if ($pieces[1] == "PROVIDER" &&
 		in_array($provider_type, $g['provider_types']) &&
 		is_array($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]])) {
 
