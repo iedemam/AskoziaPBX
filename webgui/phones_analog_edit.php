@@ -174,14 +174,7 @@ if ($_POST) {
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 1); ?>
-			<tr> 
-				<td valign="top" class="vncell">Description</td>
-				<td class="vtable">
-					<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
-					<br><span class="vexpl">You may enter a description here 
-					for your reference (not parsed).</span>
-				</td>
-			</tr>
+			<? display_description_field($pconfig['descr'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

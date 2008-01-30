@@ -524,4 +524,16 @@ function display_caller_id_field($current_callerid, $colspan) {
 	</tr><?
 }
 
+function display_description_field($current_description, $colspan) {
+
+	?><tr> 
+		<td valign="top" class="vncell">Description</td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($current_description);?>"> 
+			<br><span class="vexpl">You may enter a description here 
+			for your reference (not parsed).</span>
+		</td>
+	</tr><?
+}
+
 ?>

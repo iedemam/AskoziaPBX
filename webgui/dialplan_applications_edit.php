@@ -137,15 +137,10 @@ if ($_POST) {
 			</tr>
 			<? display_application_logic_editor($pconfig['app-command'], 1); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
-			<tr> 
-				<td valign="top" class="vncell">Description</td>
-				<td class="vtable">
-					<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-				</td>
-			</tr>
+			<? display_description_field($pconfig['descr'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
-				<td colspan="2">
+				<td>
 					<input name="Submit" type="submit" class="formbtn" value="Save">
 					<?php if (isset($id) && $a_applications[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 

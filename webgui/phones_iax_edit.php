@@ -209,14 +209,7 @@ if ($_POST) {
 			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
-			<tr> 
-				<td valign="top" class="vncell">Description</td>
-				<td colspan="2" class="vtable">
-					<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
-					<br><span class="vexpl">You may enter a description here 
-					for your reference (not parsed).</span>
-				</td>
-			</tr>
+			<? display_description_field($pconfig['descr'], 2); ?>
 			<? display_advanced_settings_begin(2); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
