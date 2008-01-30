@@ -479,9 +479,11 @@ function print_r_html($data, $return_data=true) {
 }
 
 function split_and_clean_lines($s) {
-	$s = str_replace(" ", "", $s);
 	$lines = preg_split("/[\x0D\x0A]+/", $s, -1, PREG_SPLIT_NO_EMPTY);
-	
+	$n = count($lines);
+	for ($i = 0; $i < $n; $i++) {
+		$lines[$i] = trim($lines[$i], " ");
+	}
 	return $lines;
 }
 
