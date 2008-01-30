@@ -194,7 +194,7 @@ function display_qualify_options($current_qualify, $colspan) {
 		<td valign="top" class="vncell">Qualify</td>
 		<td colspan="<?=$colspan?>" class="vtable">
 			<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($current_qualify);?>">&nbsp;seconds 
-            <br><span class="vexpl">Packets will be sent to this provider every <i>n</i> seconds to check its status.
+            <br><span class="vexpl">Packets will be sent to this account every <i>n</i> seconds to check its status.
 			<br>Defaults to '2'. Set to '0' to disable.</span>
 		</td>
 	</tr><?

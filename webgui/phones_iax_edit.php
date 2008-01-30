@@ -224,14 +224,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_advanced_settings_begin(2); ?>
-			<tr> 
-				<td valign="top" class="vncell">Qualify</td>
-				<td class="vtable">
-					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
-                    <br><span class="vexpl">Packets will be sent to this phone every <i>n</i> seconds to check its status.
-					<br>Defaults to '2'. Set to '0' to disable.</span>
-				</td>
-			</tr>
+			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
