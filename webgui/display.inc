@@ -513,4 +513,15 @@ function display_manual_attributes_editor($current_manual, $colspan, $idprefix=f
 	</tr><?
 }
 
+function display_caller_id_field($current_callerid, $colspan) {
+
+	?><tr> 
+		<td valign="top" class="vncellreq">Caller ID</td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($current_callerid);?>"> 
+			<br><span class="vexpl">Text to be displayed for Caller ID.</span>
+		</td>
+	</tr><?
+}
+
 ?>

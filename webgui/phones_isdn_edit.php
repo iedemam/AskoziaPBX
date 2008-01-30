@@ -148,13 +148,7 @@ if ($_POST) {
 					<br><span class="vexpl">This phone's number (MSN).</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq">Caller ID</td>
-				<td class="vtable">
-					<input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
-					<br><span class="vexpl">Text to be displayed for Caller ID.</span>
-				</td>
-			</tr>
+			<? display_caller_id_field($pconfig['callerid'], 1); ?>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 

@@ -201,13 +201,7 @@ if ($_POST) {
 					<br><span class="vexpl">This is also this account's username.</span>
 				</td>
 			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq">Caller ID</td>
-				<td colspan="2" class="vtable">
-					<input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($pconfig['callerid']);?>"> 
-					<br><span class="vexpl">Text to be displayed for Caller ID.</span>
-				</td>
-			</tr>
+			<? display_caller_id_field($pconfig['callerid'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">Secret</td>
 				<td colspan="2" class="vtable">
