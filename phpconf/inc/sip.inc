@@ -186,6 +186,9 @@ EOD;
 		$baseaddr = long2ip(ip2long($lancfg['ipaddr']) & gen_subnet_mask_long($lancfg['subnet']));
 		$conf .= "localnet=" . $baseaddr . "/" . $lancfg['subnet'] . "\n";
 	}
+
+	$conf .= util_gen_manual_attributes($sipconfig['manual-attribute']);
+
 	$conf .= "\n\n";
 	
 	// providers
@@ -280,6 +283,9 @@ EOD;
 				$conf .= "allow=$codec\n";
 			}
 		}
+
+		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+
 		$conf .= "\n\n";
 
 		// incoming (user)
@@ -344,8 +350,8 @@ EOD;
 			foreach ($p['codec'] as $codec) {
 				$conf .= "allow=$codec\n";
 			}
-		}*/
-		$conf .= "\n\n";
+		}
+		$conf .= "\n\n";*/
 	}
 
 	// phones
@@ -405,6 +411,8 @@ EOD;
 		} else {
 			$conf .= "allow={$p['codec']}\n";
 		}
+
+		$conf .= util_gen_manual_attributes($p['manual-attribute']);
 		
 		$conf .= "\n\n";
 	}

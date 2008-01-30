@@ -66,11 +66,13 @@ if (isset($id) && $a_iaxphones[$id]) {
 	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_iaxphones[$id]['descr'];
+	$pconfig['manual-attribute'] = $a_iaxphones[$id]['manual-attribute'];
 }
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
 	$pconfig['codec'] = array("ulaw");
 	
@@ -107,6 +109,12 @@ if ($_POST) {
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
 	}
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 	if (!$input_errors) {
 		$sp = array();
@@ -121,6 +129,8 @@ if ($_POST) {
 		$sp['language'] = $_POST['language'];
 		$sp['descr'] = verify_non_default($_POST['descr']);
 		$sp['qualify'] = $_POST['qualify'];
+
+		$sp['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 		$a_providers = pbx_get_providers();
 		$sp['provider'] = array();
@@ -222,6 +232,7 @@ if ($_POST) {
 					<br>Defaults to '2'. Set to '0' to disable.</span>
 				</td>
 			</tr>
+			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

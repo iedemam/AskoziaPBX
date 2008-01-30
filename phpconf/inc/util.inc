@@ -102,4 +102,22 @@ function unlink_if_exists($fn) {
 		unlink($fn);
 }
 
+/**
+ * Manual attributes are needed in a variety of places,
+ * this generates an appropriate conf snippet.
+ * XXX : util_gen_*() functions should be written for language, qualify, codecs...
+ */
+function util_gen_manual_attributes($ma_array) {
+
+	$conf = "";
+	if (is_array($ma_array)) {
+		$conf .= "; manual attributes\n";
+		foreach ($ma_array as $ma) {
+			$conf .= base64_decode($ma) . "\n";
+		}
+	}
+
+	return $conf;
+}
+
 ?>

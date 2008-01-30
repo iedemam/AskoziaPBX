@@ -1,4 +1,5 @@
 2008.01.xx - pb13
+ - added: manual attributes may now be defined for phones, providers and under "Advanced" for SIP and IAX technologies
  - added: custom application logic may now be defined in "Dialplan -> Applications" (suggested w/proof-of-concept by Ben Hathaway)
  - added: factory default reset button support for alix23x platform (merged from m0n0wall)
  - added: Russian voicemail notification e-mail translation (submitted by Eugen Bernatskiy)

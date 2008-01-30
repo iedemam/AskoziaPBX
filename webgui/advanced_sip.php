@@ -39,11 +39,12 @@ $pconfig['defaultexpiry'] = isset($sipconfig['defaultexpiry']) ? $sipconfig['def
 $pconfig['minexpiry'] = isset($sipconfig['minexpiry']) ? $sipconfig['minexpiry'] : "60";
 $pconfig['maxexpiry'] = isset($sipconfig['maxexpiry']) ? $sipconfig['maxexpiry'] : "3600";
 $pconfig['disablesrv'] = isset($sipconfig['disablesrv']);
-
+$pconfig['manual-attribute'] = $sipconfig['manual-attribute'];
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
 
 	/* input validation */
@@ -68,6 +69,12 @@ if ($_POST) {
 	if ($_POST['maxexpiry'] && !verify_is_numericint($_POST['maxexpiry'])) {
 		$input_errors[] = "A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout.";
 	}
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 	if (!$input_errors) {
 		$sipconfig['port'] = $_POST['port'];
@@ -75,6 +82,7 @@ if ($_POST) {
 		$sipconfig['minexpiry'] = $_POST['minexpiry'];
 		$sipconfig['maxexpiry'] = $_POST['maxexpiry'];
 		$sipconfig['disablesrv'] = $_POST['disablesrv'] ? true : false;
+		$sipconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 		write_config();
 		touch($d_sipconfdirty_path);
@@ -124,6 +132,7 @@ if (file_exists($d_sipconfdirty_path)) {
 				<input name="disablesrv" id="disablesrv" type="checkbox" value="yes" <? if ($pconfig['disablesrv']) echo "checked"; ?>>Disable DNS SRV lookups.
 			</td>
 		</tr>
+		<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>

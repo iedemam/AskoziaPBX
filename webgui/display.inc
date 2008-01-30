@@ -474,4 +474,43 @@ function display_advanced_settings_end() {
 		</tr><?
 }
 
+function display_manual_attributes_editor($current_manual, $colspan, $idprefix=false) {
+	global $help, $help_language;
+
+	$n = count($current_manual);
+	if ($n < 5) {
+		$n = 5;
+	}
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Manual Attributes</td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
+
+		// multiple instances need a prefixing identifier
+		if ($idprefix) {
+			$idstring = $idprefix . "_manualattributes";
+		} else {
+			$idstring = "manualattributes";
+		}
+
+			?><textarea name="<?=$idstring;?>" cols="40" rows="<?=$n;?>" id="<?=$idstring;?>" class="notes"><?
+
+			// print the attributes
+			if (is_array($current_manual)) {
+				echo htmlspecialchars(base64_decode($current_manual[0]));
+				for ($i = 1; $i < $n; $i++) {
+					echo "\n" . htmlspecialchars(base64_decode($current_manual[$i]));
+				}
+			}
+			?></textarea><?
+
+		// multiple instances don't need help for every instance
+		if (!$idprefix) {				
+			?><br><span class="vexpl"><?=$help[$help_language]["display_manual_attributes_editor"]; ?></span><?
+		}
+
+		?></td>
+	</tr><?
+}
+
 ?>

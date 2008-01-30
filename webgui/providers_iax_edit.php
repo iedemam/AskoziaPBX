@@ -71,12 +71,14 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['override'] = $a_iaxproviders[$id]['override'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
+	$pconfig['manual-attribute'] = $a_iaxproviders[$id]['manual-attribute'];
 }
 
 if ($_POST) {
 
 	unset($input_errors);
 	$_POST['dialpattern'] = split_and_clean_lines($_POST['dialpattern']);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$_POST['incomingextensionmap'] = gather_incomingextensionmaps($_POST);
 	$pconfig = $_POST;
 	$pconfig['codec'] = array("ulaw", "gsm");
@@ -134,7 +136,12 @@ if ($_POST) {
 			}
 		}
 	}
-	
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 	if (!$input_errors) {
 		$sp = array();		
@@ -159,6 +166,8 @@ if ($_POST) {
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
+
+		$sp['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 		if (isset($id) && $a_iaxproviders[$id]) {
 			$sp['uniqid'] = $a_iaxproviders[$id]['uniqid'];
@@ -241,6 +250,7 @@ if ($_POST) {
 			<? display_registration_options($pconfig['noregister'], 1); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
+			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

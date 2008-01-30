@@ -37,10 +37,12 @@ $iaxconfig = &$config['services']['iax'];
 $pconfig['port'] = isset($iaxconfig['port']) ? $iaxconfig['port'] : "4569";
 $pconfig['jbenable'] = isset($iaxconfig['jbenable']);
 $pconfig['jbforce'] = isset($iaxconfig['jbforce']);
+$pconfig['manual-attribute'] = $iaxconfig['manual-attribute'];
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
 
 	/* input validation */
@@ -53,11 +55,18 @@ if ($_POST) {
 	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
 		$input_errors[] = "A valid port must be specified.";
 	}
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 	if (!$input_errors) {
 		$iaxconfig['port'] = $_POST['port'];		
 		$iaxconfig['jbenable'] = $_POST['jbenable'] ? true : false;
 		$iaxconfig['jbforce'] = $_POST['jbforce'] ? true : false;
+		$iaxconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 		
 		write_config();
 		touch($d_iaxconfdirty_path);
@@ -109,6 +118,7 @@ function jb_enable_click() {
 				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
 			</td>
 		</tr>
+		<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 		<tr> 
 			<td class="list" colspan="2" height="12">&nbsp;</td>
 		</tr>

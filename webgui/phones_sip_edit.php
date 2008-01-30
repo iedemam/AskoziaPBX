@@ -70,11 +70,13 @@ if (isset($id) && $a_sipphones[$id]) {
 	if(!is_array($pconfig['codec'] = $a_sipphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_sipphones[$id]['descr'];
+	$pconfig['manual-attribute'] = $a_sipphones[$id]['manual-attribute'];
 }
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
 	$pconfig['codec'] = array("ulaw");
 	
@@ -118,6 +120,12 @@ if ($_POST) {
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
 	}
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 	if (!$input_errors) {
 		$sp = array();
@@ -131,7 +139,9 @@ if ($_POST) {
 		$sp['language'] = $_POST['language'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['qualify'] = $_POST['qualify'];
-		
+
+		$sp['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
+
 		// XXX the proper way of setting posted options with default values...
 		$sp['calllimit'] = ($_POST['calllimit'] != "2") ? $_POST['calllimit'] : false;
 		$sp['busylimit'] = ($_POST['busylimit'] != "1") ? $_POST['busylimit'] : false;
@@ -230,6 +240,7 @@ if ($_POST) {
 			</tr>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>
 			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 1); ?>
+			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

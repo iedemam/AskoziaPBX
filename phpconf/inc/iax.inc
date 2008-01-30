@@ -162,6 +162,8 @@ EOD;
 	} else {
 		$conf .= "forcejitterbuffer=no\n";
 	}
+
+	$conf .= util_gen_manual_attributes($iaxconfig['manual-attribute']);
 	
 	$conf .= "\n\n";
 
@@ -237,6 +239,9 @@ EOD;
 			$conf .= "allow={$p['codec']}\n";
 		}
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
+
+		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+
 		$conf .= "\n\n";
 		
 		// incoming (user)
@@ -284,6 +289,9 @@ EOD;
 			$conf .= "allow={$p['codec']}\n";
 		}
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
+
+		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+
 		$conf .= "\n\n";
 	}
 
@@ -331,7 +339,9 @@ EOD;
 		} else {
 			$conf .= "allow={$p['codec']}\n";
 		}
-		
+
+		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+
 		$conf .= "\n\n";
 	}
 

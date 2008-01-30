@@ -78,7 +78,14 @@ $help = array(
 			"An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be ".
 			"rendered useless by faulty application logic. A reference of applications, functions and ".
 			"phones is available in the ".
-			"<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"
+			"<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>",
+
+		"display_manual_attributes_editor" =>
+			"Manual key-value pairs can be entered in addition to the generated configuration ".
+			"(i.e. <em>configoption=value</em>). These settings will be ".
+			"appended to this item's Asterisk configuration file or context. Unless you have a very ".
+			"specific need to do this, nothing should be entered in this field. Improperly ".
+			"formed values can break system functionality and/or open security holes."
 	)
 	
 );

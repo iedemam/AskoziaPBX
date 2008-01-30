@@ -244,4 +244,18 @@ function verify_application_logic($app_lines) {
 	}
 }
 
+/**
+ * Verifies manual attributes
+ * This is a very basic check at the moment.
+ */
+function verify_manual_attributes($kv_lines) {
+
+	$n = count($kv_lines);
+	for ($i = 1; $i <= $n; $i++) {
+		if (!preg_match("/^.+=.+/", $kv_lines[$i-1])) {
+			return "Manual attribute line number $i is invalid.";
+		}	
+	}
+}
+
 ?>
