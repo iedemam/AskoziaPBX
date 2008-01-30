@@ -222,14 +222,14 @@ if ($_POST) {
 			<? display_advanced_settings_begin(2); ?>
 			<tr> 
 				<td valign="top" class="vncell">Qualify</td>
-				<td colspan="2" class="vtable">
+				<td class="vtable">
 					<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($pconfig['qualify']);?>">&nbsp;seconds 
         	        <br><span class="vexpl">Packets will be sent to this phone every <i>n</i> seconds to check its status.
 					<br>Defaults to '2'. Set to '0' to disable.</span>
 				</td>
 			</tr>
-			<? display_dtmfmode_selector($pconfig['dtmfmode'], 2); ?>
-			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 2); ?>
+			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>
+			<? display_call_and_busy_limit_selector($pconfig['calllimit'], $pconfig['busylimit'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
