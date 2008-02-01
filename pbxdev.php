@@ -1156,6 +1156,7 @@ function package($platform, $image_name) {
 	_exec("bsdlabel -BR -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 tmp/formatted.label");
 	
 	//_exec("newfs -L MAIN -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
 	_exec("newfs -L ASTERISK -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
 	
 	_exec("mount /dev/md0a tmp/mnt");
