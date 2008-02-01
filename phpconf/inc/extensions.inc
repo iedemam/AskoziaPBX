@@ -630,13 +630,13 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 			"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "CAPI") {
-		$prov = isdn_get_provider($phone['dialprovider']);
+		$prov = isdn_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-				"Macro(vm|$tech/{$prov['interface']}/{$phone['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+				"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$phone['dialprovider']}/{$phone['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+			"Macro(vm|$tech/{$p['dialprovider']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_external_phone_extension!";
