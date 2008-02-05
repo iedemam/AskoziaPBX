@@ -162,7 +162,7 @@ if (file_exists($d_featuresconfdirty_path)) {
 			<td width="20%" valign="top" class="vncellreq">Park Extension</td>
 			<td width="80%" class="vtable">
 				<input name="parkext" type="text" class="formfld" id="parkext" size="20" value="<?=htmlspecialchars($pconfig['parkext']);?>">
-				<br><span class="vexpl">Transfer to this extension to park a call (default 700).</span>
+				<br><span class="vexpl">Blind transfer to this extension to park a call (default 700). The number read back to you after transfering is the extension where the call was parked.</span>
 			</td>
 		</tr>
 		<tr>
