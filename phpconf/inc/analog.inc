@@ -420,7 +420,12 @@ function analog_configure() {
  * Reloads chan_zap to apply newly generated configuration changes
  */
 function analog_reload() {
-	return pbx_exec("module reload chan_zap.so");
+
+	$res = 0;
+	$res |= pbx_exec("module reload chan_zap.so");
+	$res |= pbx_exec("zap restart");
+
+	return $res;
 }
 
 ?>
