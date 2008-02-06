@@ -285,7 +285,7 @@ if (file_exists($d_analogconfdirty_path)) {
 	<? $interface = analog_get_ab_interface($p['interface']); ?>
 	<tr>
 		<td class="listlr"><?
-			$n = count($ap['dialpattern']);
+			$n = count($p['dialpattern']);
 			echo htmlspecialchars($p['dialpattern'][0]);
 			for($ii = 1; $ii < $n; $ii++) {
 				echo "<br>" . htmlspecialchars($p['dialpattern'][$ii]);
