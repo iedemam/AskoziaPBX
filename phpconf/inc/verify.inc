@@ -221,7 +221,7 @@ function verify_non_default($value, $defaults=false) {
  */
 function verify_is_public_name($name) {
 
-	$regex = "/^[a-zA-ZZ0-9\-\(\)\.]+$/";
+	$regex = "/^[a-zA-Z0-9\-\(\)\.]+$/";
 
 	if (!preg_match($regex, $name)) {
 		return "An invalid public name was entered!";
@@ -256,6 +256,19 @@ function verify_manual_attributes($kv_lines) {
 			return "Manual attribute line number $i is invalid.";
 		}	
 	}
+}
+
+/**
+ * Verifies an outgoing dialstring used in external phones
+ */
+function verify_is_dialstring($dialstring) {
+
+	$regex = "/^[a-zA-Z0-9\-\.]+$/";
+
+	if (!preg_match($regex, $dialstring)) {
+		return "An invalid dialstring was entered!";
+	}
+	return false;
 }
 
 ?>

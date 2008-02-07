@@ -58,6 +58,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['allowdirectdial'] = isset($a_extphones[$id]['allowdirectdial']);
 	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
+	$pconfig['descr'] = $a_extphones[$id]['descr'];
 }
 
 if ($_POST) {
@@ -70,9 +71,9 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", "Extension,Name,Dialstring,Provider");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if (($_POST['dialstring'] && !verify_is_numericint($_POST['dialstring']))) {
-		$input_errors[] = "A valid dialstring must be entered.";
+	/* XXX : other strings should be verified with isset() to prevent false negatives */
+	if (isset($_POST['dialstring']) && ($msg = verify_is_dialstring($_POST['dialstring']))) {
+		$input_errors[] = $msg;
 	}
 	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
 		$input_errors[] = "A valid e-mail address must be specified.";
@@ -92,6 +93,7 @@ if ($_POST) {
 		$ep['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
+		$ep['descr'] = verify_non_default($_POST['descr']);
 
 		if (isset($id) && $a_extphones[$id]) {
 			$ep['uniqid'] = $a_extphones[$id]['uniqid'];
@@ -144,7 +146,7 @@ if ($_POST) {
 				<td valign="top" class="vncellreq">Dialstring</td>
 				<td class="vtable">
 					<input name="dialstring" type="text" class="formfld" id="dialstring" size="40" value="<?=htmlspecialchars($pconfig['dialstring']);?>"> 
-					<br><span class="vexpl">Number to be dialed to reach this telephone.</span>
+					<br><span class="vexpl">Number or string to be dialed to reach this telephone. This will be dialed directly; outgoing pattern matching rules do not apply</span>
 				</td>
 			</tr>
 			<tr> 
@@ -161,9 +163,10 @@ if ($_POST) {
 					<br><span class="vexpl">Outgoing provider to be used to reach this telephone.</span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
+			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
+			<? display_description_field($pconfig['descr'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

@@ -326,9 +326,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	</tr>
 	<tr>
 		<td width="15%" class="listhdrr">Extension</td>
-		<td width="25%" class="listhdrr">Name</td>
-		<td width="20%" class="listhdrr">Dialstring</td>
-		<td width="30%" class="listhdr">Provider</td>
+		<td width="35%" class="listhdrr">Name</td>
+		<td width="40%" class="listhdrr">Dialstring</td>
 		<td width="10%" class="list"></td>
 	</tr>
 	<? $external_phones = external_get_phones(); ?>
@@ -341,10 +340,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			<?=htmlspecialchars($p['name']);?>
 		</td>
 		<td class="listr">
-			<?=htmlspecialchars($p['dialstring']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars(pbx_uniqid_to_name($p['dialprovider']));?>&nbsp;
+			<?=htmlspecialchars($p['dialstring']);?>@<?=htmlspecialchars(pbx_uniqid_to_name($p['dialprovider']));?>
 		</td>
 		<td valign="middle" nowrap class="list"> <a href="phones_external_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit external phone" width="17" height="17" border="0"></a>
            &nbsp;<a href="accounts_phones.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this external phone?')"><img src="x.gif" title="delete external phone" width="17" height="17" border="0"></a></td>
@@ -352,11 +348,11 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="4"></td>
+		<td class="list" colspan="3"></td>
 		<td class="list"> <a href="phones_external_edit.php"><img src="plus.gif" title="add external phone" width="17" height="17" border="0"></a></td>
 	</tr>
 	<tr> 
-		<td class="list" colspan="5" height="12">&nbsp;</td>
+		<td class="list" colspan="4" height="12">&nbsp;</td>
 	</tr>
 </table>
 
