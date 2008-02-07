@@ -522,6 +522,17 @@ function pbx_sort_by_unit($a, $b) {
 }
 
 /**
+ * usort callback for sorting an array numerically by number field
+ */
+function pbx_sort_by_number($a, $b) {
+
+    if ($a['number'] == $b['number']) {
+        return 0;
+    }
+    return ($a['number'] < $b['number']) ? -1 : 1;
+}
+
+/**
  * Parses "core show channels" output to return active calls, channels and a channel list
  */
 function pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {

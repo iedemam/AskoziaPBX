@@ -30,38 +30,12 @@
 */
 require("guiconfig.inc");
 
-$a_sipphones = sip_get_phones();
-$a_iaxphones = iax_get_phones();
-$a_isdnphones = isdn_get_phones();
-$a_analogphones = analog_get_phones();
-$a_extphones = external_get_phones();
-$a_callgroups = callgroups_get_groups();
-$a_rooms = conferencing_get_rooms();
-
-$all_extensions = printable_sort_extensions(
-	array_merge(
-		$a_sipphones,
-		$a_iaxphones,
-		$a_isdnphones,
-		$a_analogphones,
-		$a_extphones,
-		$a_callgroups,
-		$a_rooms
-	));
-
-function printable_sort_extensions($extensions) {
-	usort($extensions, "_a_sortexts");
-	return $extensions;
-}
-function _a_sortexts($a, $b) {
-	$ext1 = isset($a['extension']) ? $a['extension'] : $a['number'];
-	$ext2 = isset($b['extension']) ? $b['extension'] : $b['number'];
-
-    if ($ext1 == $ext2) {
-        return 0;
-    }
-    return ($ext1 < $ext2) ? -1 : 1;
-}
+/* XXX : sorting is handled in so many different ways...really time to normalize this */
+$a_intphones = pbx_get_phones();			usort($a_intphones, "pbx_sort_by_extension");
+$a_extphones = external_get_phones();		// already sorted by extension
+$a_callgroups = callgroups_get_groups();	usort($a_callgroups, "pbx_sort_by_extension");
+$a_rooms = conferencing_get_rooms();		usort($a_rooms, "pbx_sort_by_extension");
+$a_apps = applications_get_apps();			// already sorted by extension
 
 ?>
 <html>
@@ -70,21 +44,131 @@ function _a_sortexts($a, $b) {
 		<link href="gui.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<table width="500" border="0" cellpadding="0" cellspacing="0">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
-				<td colspan="2" align="right"><img src="/logo.gif" width="150" height="47" border="0"></td>
+				<td colspan="3" align="right"><img src="/logo.gif" width="150" height="47" border="0"></td>
+			</tr>
+
+
+			<?php if (count($a_intphones) > 0): ?>
+			<tr>
+				<td colspan="3" class="listtopiclight">Internal Phones</td>
 			</tr>
 			<tr>
-				<td width="100" class="listhdr">Extension</td>
-				<td width="400" class="listhdr">Caller ID / Name</td>
-			</tr>
-		
-			<?php $i = 0; foreach ($all_extensions as $ext): ?>
+				<td width="75" class="listhdr">Extension</td>
+				<td width="150" class="listhdr">Caller ID</td>
+				<td class="listhdr">Description</td>
+			</tr>		
+			<?php foreach ($a_intphones as $p): ?>
 			<tr>
-				<td class="listlr"><?=htmlspecialchars(isset($ext['extension']) ? $ext['extension'] : $ext['number']);?>&nbsp;</td>
-				<td class="listr"><?=htmlspecialchars(isset($ext['callerid']) ? $ext['callerid'] : $ext['name']);?>&nbsp;</td>
+				<td class="listlr"><?=htmlspecialchars($p['extension']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
 			</tr>
-			<?php $i++; endforeach; ?>
+			<?php endforeach; ?>
+			<tr> 
+				<td colspan="3" class="list" height="12">&nbsp;</td>
+			</tr>
+			<?php endif; ?>
+
+
+			<?php if (count($a_extphones) > 0): ?>
+			<tr>
+				<td colspan="3" class="listtopiclight">External Phones</td>
+			</tr>
+			<tr>
+				<td width="75" class="listhdr">Extension</td>
+				<td width="150" class="listhdr">Name</td>
+				<td class="listhdr">Description</td>
+			</tr>
+			<?php foreach ($a_extphones as $p): ?>
+			<tr>
+				<td class="listlr"><?=htmlspecialchars($p['extension']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr> 
+				<td colspan="3" class="list" height="12">&nbsp;</td>
+			</tr>
+			<?php endif; ?>
+
+
+			<?php if (count($a_callgroups) > 0): ?>
+			<tr>
+				<td colspan="3" class="listtopiclight">Call Groups</td>
+			</tr>
+			<tr>
+				<td width="75" class="listhdr">Extension</td>
+				<td width="150" class="listhdr">Name</td>
+				<td class="listhdr">Members</td>
+			</tr>
+			<?php foreach ($a_callgroups as $cg): ?>
+			<tr>
+				<td class="listlr"><?=htmlspecialchars($cg['extension']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($cg['name']);?>&nbsp;</td>
+				<td class="listr"><?
+					$n = count($cg['groupmember']);
+					echo htmlspecialchars(pbx_uniqid_to_name($cg['groupmember'][0]));
+					for($i = 1; $i < $n; $i++) {
+						echo ", " . htmlspecialchars(pbx_uniqid_to_name($cg['groupmember'][$i]));
+					}
+					?>&nbsp;</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr> 
+				<td colspan="3" class="list" height="12">&nbsp;</td>
+			</tr>
+			<?php endif; ?>
+
+
+			<?php if (count($a_rooms) > 0): ?>
+			<tr>
+				<td colspan="3" class="listtopiclight">Conference Rooms</td>
+			</tr>
+			<tr>
+				<td width="75" class="listhdr">Extension</td>
+				<td width="150" class="listhdr">Name</td>
+				<td width="20" class="listhdr">Pin</td>
+			</tr>
+			<?php foreach ($a_rooms as $r): ?>
+			<tr>
+				<td class="listlr"><?=htmlspecialchars($r['number']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($r['name']);?>&nbsp;</td>
+				<td class="listr">
+					<?php if ($r['pin']): ?>
+					<img src="lock.gif" width="7" height="9" border="0">
+					<?php endif; ?>
+					&nbsp;</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr> 
+				<td colspan="3" class="list" height="12">&nbsp;</td>
+			</tr>
+			<?php endif; ?>
+
+
+			<?php if (count($a_apps) > 0): ?>
+			<tr>
+				<td colspan="3" class="listtopiclight">Custom Applications</td>
+			</tr>
+			<tr>
+				<td width="75" class="listhdr">Extension</td>
+				<td width="150" class="listhdr">Name</td>
+				<td class="listhdr">Description</td>
+			</tr>
+			<?php foreach ($a_apps as $app): ?>
+			<tr>
+				<td class="listlr"><?=htmlspecialchars($app['extension']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($app['descr']);?>&nbsp;</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr> 
+				<td colspan="3" class="list" height="12">&nbsp;</td>
+			</tr>
+			<?php endif; ?>
+
 		</table>
 		<br>&nbsp;<i>generated on: <?=htmlspecialchars(date("D M j G:i T Y"));?></i>
 	</body>
