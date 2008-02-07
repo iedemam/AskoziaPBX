@@ -124,17 +124,20 @@ if ($_POST) {
 <?php
 
 exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count " .
-	"vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count", $memory);
+	"vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count vm.stats.vm.v_page_size", $memory);
 
 $totalMem = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
 $freeMem = $memory[4];
 $usedMem = $totalMem - $freeMem;
 $memUsage = round(($usedMem * 100) / $totalMem, 0);
+$pagekbytes = $memory[5] / 1024;
+
+$usageTitle = $usedMem * $pagekbytes . " / " . $totalMem * $pagekbytes . " kBytes";
 		  
-echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-echo "<img src='bar_blue.gif' height='15' width='" . $memUsage . "' border='0' align='absmiddle'>";
-echo "<img src='bar_gray.gif' height='15' width='" . (100 - $memUsage) . "' border='0' align='absmiddle'>";
-echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
+echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle' title='$usageTitle'>";
+echo "<img src='bar_blue.gif' height='15' width='" . $memUsage . "' border='0' align='absmiddle' title='$usageTitle'>";
+echo "<img src='bar_gray.gif' height='15' width='" . (100 - $memUsage) . "' border='0' align='absmiddle' title='$usageTitle'>";
+echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle' title='$usageTitle'> ";
 echo $memUsage . "%";
 ?>
                 </td>
