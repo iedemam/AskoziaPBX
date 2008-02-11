@@ -420,7 +420,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		return "CAPI/" . $phone['interface'] . "/" . $phone['extension'];
 
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
-		return "ZAP/" . $phone['interface'] . "/" . $phone['extension'];
+		return "ZAP/" . $phone['interface'];
 	
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
@@ -599,7 +599,7 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 		$conf .= "exten => $exten,n,Macro(vm|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else if ($tech == "ZAP") {
-		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
