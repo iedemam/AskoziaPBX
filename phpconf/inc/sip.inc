@@ -96,8 +96,8 @@ function sip_get_extensions() {
 	
 	$extensions = array();
 
-	if (is_array($config['sip']['phones'])) {
-		foreach($config['sip']['phones'] as $phone) {
+	if (is_array($config['sip']['phone'])) {
+		foreach($config['sip']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}

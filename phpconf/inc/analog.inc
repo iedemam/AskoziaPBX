@@ -106,8 +106,8 @@ function analog_get_extensions() {
 	
 	$extensions = array();
 
-	if (is_array($config['analog']['phones'])) {
-		foreach($config['analog']['phones'] as $phone) {
+	if (is_array($config['analog']['phone'])) {
+		foreach($config['analog']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}

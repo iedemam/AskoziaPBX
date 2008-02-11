@@ -106,8 +106,8 @@ function isdn_get_extensions() {
 	
 	$extensions = array();
 
-	if (is_array($config['isdn']['phones'])) {
-		foreach($config['isdn']['phones'] as $phone) {
+	if (is_array($config['isdn']['phone'])) {
+		foreach($config['isdn']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}

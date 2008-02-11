@@ -71,8 +71,8 @@ function external_get_extensions() {
 	
 	$extensions = array();
 
-	if (is_array($config['external']['phones'])) {
-		foreach($config['external']['phones'] as $phone) {
+	if (is_array($config['external']['phone'])) {
+		foreach($config['external']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}

@@ -96,8 +96,8 @@ function iax_get_extensions() {
 	
 	$extensions = array();
 
-	if (is_array($config['iax']['phones'])) {
-		foreach($config['iax']['phones'] as $phone) {
+	if (is_array($config['iax']['phone'])) {
+		foreach($config['iax']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}

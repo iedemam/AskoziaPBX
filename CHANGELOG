@@ -1,4 +1,4 @@
-2008.01.xx - pb13
+2008.02.xx - pb13
  - added: manual attributes may now be defined for phones, providers and under "Advanced" for SIP and IAX technologies
  - added: custom application logic may now be defined in "Dialplan -> Applications" (suggested w/proof-of-concept by Ben Hathaway)
  - added: factory default reset button support for alix23x platform (merged from m0n0wall)
@@ -13,7 +13,9 @@
  - added: ajax.cgi allows execution of Asterisk Manager Interface and shell commands
  - added: jQuery plugin copyright information to license page
  - added: direct outgoing sip uri dialing (unfinished: cid options...)
- - updated: Asterisk to 1.4.17
+ - added: more information to printable dialplan
+ - added: Danish language audio prompts (GSM)
+ - updated: Asterisk to 1.4.18
  - updated: php to 4.4.8
  - updated: core sounds to 1.4.8
  - updated: extra sounds to 1.4.7
@@ -35,6 +37,8 @@
  - bug: omit no-cache headers on exec.php because it confuses IE with file downloads (merged from m0n0wall)
  - bug: "Services -> Voicemail" now properly sets the serveremail property in voicemail.conf (reported by Falko Mach)
  - bug: added missing newlines to iax.conf generator (reported by Falko Mach)
+ - bug: dtmf tones are no longer played after picking up a ringing Analog phone (fixed by David G. Lawrence)
+ - bug: extensions are now gathered properly from phones (reported by devon in the forums)
  - refactor: all providers and phones moved to subsections under "Accounts"
  - refactor: individual sorting functions replaced with pbx_sort_by_xxx() functions
  - refactor: all asterisk_* functions renamed to pbx_*
