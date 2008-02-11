@@ -149,6 +149,7 @@ $applications = array(
 $prompt_languages = array(
 	"en" => "English (US)",
 	"en-gb" => "English (UK)",
+	"da" => "Danish",
 	"nl" => "Dutch",
 	"fr" => "French (France)",
 	"fr-ca" => "French (Canada)",

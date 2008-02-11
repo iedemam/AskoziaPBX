@@ -52,7 +52,7 @@ $versions = array(
 
 $core_sounds_version= "1.4.8";
 $extra_sounds_version="1.4.7";
-$sound_languages	= explode(" ", "en en-gb de it es fr fr-ca jp nl se ru");
+$sound_languages	= explode(" ", "en en-gb da de it es fr fr-ca jp nl se ru");
 $sounds				= explode(" ", 
 						"auth-thankyou. ".
 						"conf-onlyperson. conf-getpin. conf-invalidpin. conf-kicked. ".
@@ -132,6 +132,8 @@ function prepare_environment() {
 	_exec("cd /usr/ports/net/ilbc; make install");
 	_exec("cd /usr/ports/devel/newt; make install");
 	_exec("cd /usr/ports/databases/sqlite2; make install");
+	_exec("cd /usr/ports/archivers/unrar; make install");
+	_exec("cd /usr/ports/audio/sox; make install");
 }
 
 function patch_kernel() {
@@ -763,6 +765,30 @@ function populate_sounds($image_name) {
 				foreach($digits as $digit) {
 					_exec("cp {$dirs['sounds']}/$distname/es/digits/$digit.* $image_name/asterisk/sounds/digits/es");
 				}
+			}
+
+
+		// danish
+		} else if ($sound_language == "da") {
+			// gsm
+			$distname = "da-voice-prompts";
+			$disturl = "http://www.globaltelip.dk/downloads";
+        
+			if (!file_exists("{$dirs['sounds']}/$distname.rar")) {
+					_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.rar");
+					_exec("cd {$dirs['sounds']}; unrar e $distname.rar");
+			}
+        
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf da-voice-gsm.gz -C $distname");
+			}
+        
+			foreach ($sounds as $sound) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds/da/$sound* $image_name/asterisk/sounds/da");
+			}
+			foreach($digits as $digit) {
+				_exec("cp {$dirs['sounds']}/$distname/sounds/da/digits/$digit.* $image_name/asterisk/sounds/digits/da");
 			}
 
 
