@@ -54,7 +54,8 @@ $core_sounds_version= "1.4.8";
 $extra_sounds_version="1.4.7";
 $sound_languages	= explode(" ", "en en-gb da de it es fr fr-ca jp nl se ru");
 $sounds				= explode(" ", 
-						"auth-thankyou. ".
+						"agent-pass. ".
+						"auth-thankyou. auth-incorrect. ".
 						"conf-onlyperson. conf-getpin. conf-invalidpin. conf-kicked. ".
 						"pbx-transfer. pbx-invalid. pbx-invalidpark. ".
 						"vm-intro. vm-theperson. vm-isunavail. vm-isonphone. vm-goodbye.");
@@ -912,7 +913,10 @@ function populate_sounds($image_name) {
 			if (!file_exists("{$dirs['sounds']}/$distname")) {
 				_exec("mkdir {$dirs['sounds']}/$distname");
 				_exec("cd {$dirs['sounds']}; unzip $distname.zip -d $distname");
+				// make up for missing sounds
 				_exec("cd {$dirs['sounds']}/$distname/sounds/; cp privacy-thankyou.gsm auth-thankyou.gsm");
+				_exec("cd {$dirs['sounds']}/$distname/sounds/; cp vm-password.gsm agent-pass.gsm");
+				_exec("cd {$dirs['sounds']}/$distname/sounds/; cp vm-incorrect.gsm auth-incorrect.gsm");
 			}
 
 			foreach ($sounds as $sound) {
