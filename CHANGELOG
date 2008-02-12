@@ -14,7 +14,7 @@
  - added: jQuery plugin copyright information to license page
  - added: direct outgoing sip uri dialing (unfinished: cid options...)
  - added: more information to printable dialplan
- - added: Danish language audio prompts (GSM)
+ - added: Danish language audio prompts (GSM) and voicemail notification e-mail translation (provided by McM in the forums)
  - updated: Asterisk to 1.4.18
  - updated: php to 4.4.8
  - updated: core sounds to 1.4.8

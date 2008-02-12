@@ -36,6 +36,10 @@ require_once("functions.inc");
  */
 $vm_emailsubject = array(
 
+	// danish
+	"da-informal" => 	"Ny telefonsvarer besked (boks: $\{VM_MAILBOX})",
+	"da-formal" => 		"Ny telefonsvarer besked (boks: $\{VM_MAILBOX})",
+
 	// german
 	"de-informal" => 	"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
 	"de-formal" => 		"Neue Sprachmitteilung (Konto: $\{VM_MAILBOX})",
@@ -80,6 +84,17 @@ $vm_emailsubject = array(
  * XXX : consolidate in help.inc or something like languages.inc
  */
 $vm_emailbody = array(
+
+	// danish
+	"da-informal" => 	"Kære $\{VM_NAME},\\n\\n".
+						"En besked fra $\{VM_CALLERID} er modtaget på din telefonsvarer. ".
+						"En $\{VM_DUR} lang besked blev indtalt til dig den $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	"da-formal" => 		"Kære $\{VM_NAME},\\n\\n".
+						"En $\{VM_DUR} lang besked blev indtalt på din telefonsvarer den $\{VM_DATE} ".
+						"fra $\{VM_CALLERID}.\\n\\n".
+						"-AskoziaPBX",
 
 	// german
 	"de-informal" => 	"Hallo $\{VM_NAME},\\n\\n".
