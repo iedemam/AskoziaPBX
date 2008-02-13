@@ -34,7 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.18",
+	"asterisk"		=> "asterisk-1.4.17",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
 	"mini_httpd"	=> "mini_httpd-1.19",
@@ -58,7 +58,7 @@ $sounds				= explode(" ",
 						"auth-thankyou. auth-incorrect. ".
 						"conf-onlyperson. conf-getpin. conf-invalidpin. conf-kicked. ".
 						"pbx-transfer. pbx-invalid. pbx-invalidpark. ".
-						"vm-intro. vm-theperson. vm-isunavail. vm-isonphone. vm-goodbye.");
+						"vm-intro. vm-theperson. vm-isunavail. vm-isonphone. vm-goodbye. vm-password.");
 $wake_me_sounds		= explode(" ",
 						"this-is-yr-wakeup-call. to-snooze-for. to-cancel-wakeup. ".
 						"for. press-0. press-1. wakeup-call-cancelled. to-rqst-wakeup-call. ".
