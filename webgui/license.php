@@ -118,7 +118,10 @@ require("guiconfig.inc");
 	</p>
 	<hr size="1">
 	<p>The multilingual speech prompts used in AskoziaPBX have been made available by the following groups</p>
-	<p>Dutch (<a href="http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles" target="_blank">http://www.borndigital.nl</a>)<br>
+	<p>Danish (<a href="http://www.globaltelip.dk/downloads/da-voice-prompts.rar" target="_blank">http://www.globaltelip.dk</a>)<br>
+	Copyright Information Unknown<br>
+	<br>
+	Dutch (<a href="http://www.borndigital.nl/voip.asp?page=106&title=Asterisk_Soundfiles" target="_blank">http://www.borndigital.nl</a>)<br>
 	Copyright &copy; 2006 Born Digital<br>
 	<br>
 	English (US) and French (Canada) (<a href="http://ftp.digium.com/pub/telephony/sounds/releases" target="_blank">http://ftp.digium.com/pub/telephony/sounds/releases</a>)<br>
