@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>webgui/providers_sip_edit.php</string>
+	<string>webgui/license.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>pbxdev.php</string>
 			<key>lastUsed</key>
-			<date>2008-01-21T13:40:01Z</date>
+			<date>2008-02-13T14:14:21Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>CHANGELOG</string>
 			<key>lastUsed</key>
-			<date>2008-01-29T08:39:35Z</date>
+			<date>2008-02-12T08:48:35Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>NOTES</string>
 			<key>lastUsed</key>
-			<date>2008-01-21T13:39:59Z</date>
+			<date>2008-02-12T08:15:02Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -74,7 +74,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>236</integer>
+	<integer>231</integer>
 	<key>metaData</key>
 	<dict>
 		<key>CHANGELOG</key>
@@ -82,30 +82,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>123</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>16</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
+		</dict>
+		<key>NOTES</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>130</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>39</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>31</integer>
 		</dict>
 		<key>build/minibsd/m0n0wall.files</key>
 		<dict>
@@ -121,33 +119,61 @@
 			<key>firstVisibleLine</key>
 			<integer>48</integer>
 		</dict>
-		<key>webgui/dialplan_applications.php</key>
+		<key>pbxdev.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>4</integer>
 				<key>line</key>
-				<integer>79</integer>
+				<integer>926</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>65</integer>
+			<integer>908</integer>
 		</dict>
-		<key>webgui/dialplan_applications_edit.php</key>
+		<key>phpconf/inc/extensions.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>422</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>404</integer>
+		</dict>
+		<key>phpconf/inc/verify.inc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>36</integer>
+				<key>line</key>
+				<integer>267</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>235</integer>
+		</dict>
+		<key>webgui/dialplan_callgroups_edit.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>78</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>52</integer>
+			<integer>0</integer>
 		</dict>
 		<key>webgui/dialplan_providers.php</key>
 		<dict>
@@ -168,14 +194,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>39</integer>
+				<integer>66</integer>
 				<key>line</key>
-				<integer>466</integer>
+				<integer>526</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>440</integer>
+			<integer>501</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>526</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>66</integer>
+				<key>line</key>
+				<integer>526</integer>
+			</dict>
 		</dict>
 		<key>webgui/fbegin.inc</key>
 		<dict>
@@ -191,47 +233,33 @@
 			<key>firstVisibleLine</key>
 			<integer>240</integer>
 		</dict>
-		<key>webgui/help.inc</key>
+		<key>webgui/license.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>110</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>80</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>48</integer>
+			<integer>0</integer>
 		</dict>
-		<key>webgui/providers_iax_edit.php</key>
+		<key>webgui/phones_iax_edit.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>72</integer>
+				<integer>52</integer>
 				<key>line</key>
-				<integer>242</integer>
+				<integer>211</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>225</integer>
-		</dict>
-		<key>webgui/providers_sip_edit.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>72</integer>
-				<key>line</key>
-				<integer>267</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>244</integer>
+			<integer>197</integer>
 		</dict>
 		<key>webgui/status_graph_cpu.php</key>
 		<dict>
@@ -250,14 +278,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>pbxdev.php</string>
+		<string>webgui/license.php</string>
 		<string>CHANGELOG</string>
-		<string>webgui/display.inc</string>
-		<string>webgui/providers_sip_edit.php</string>
-		<string>webgui/providers_iax_edit.php</string>
+		<string>NOTES</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{6, 1280}, {769, 766}}</string>
+	<string>{{25, 15}, {960, 758}}</string>
 </dict>
 </plist>

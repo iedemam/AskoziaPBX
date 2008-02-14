@@ -1,38 +1,16 @@
-// zap interfaces being correctly restarted??
-I did a "zap restart" and now it seems to be working.
-Now I can see the detailed information about the
-channels with "zap show channel 1" for instance.
-
-// time difference
-> The second issue is when I get the email with the voicemail attachment, the time is always 6 hours behind the actual time. The missed call emails have the right time, but the voicemail attachment email is not.
-
-// number readback death
-> I Still have the problem that my asterisk dies when he tries to read me
-> the sipgate number.
-> I think it is because i have a letter in the identification from
-> sipgate, because this never happens with my sicall account.
-> It doesn't make sense that it tries to read my sipgate identification it
-> should read my phone number. Can I configure this somewhere?
->
+// askozia-bugs.doc
 
 // iax tos options
-
-
-pb13
 - revamp password field to make it a bit friendlier / eliminate auto-complete problems
 - make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
 - enter dns server via console
-- nat=yes|no optional an all sip accounts
 - dial timeout options
 - single tone voicemails...
 - readback numbers should be definable for each of the incoming extensions
 - deleting a provider breaks external phones...warn? suggest?
 - "forget" interface details option
-- remove "device report" info from interface pages
 - set a more sensible default for analog phone echo canceller size
-- difference between incoming extensions and callgroups should be made clear in the gui
 - start writing short wiki entries for new features as they are implemented
-- providers should have the option to also include "public direct dial" extensions
 !! - refactor: sip.conf generator rewritten to produce peer and user entries for providers instead of friend entries
 bug: new Russian voicemail translation is missing words upon reception...
 
@@ -49,15 +27,11 @@ general improvements
 
 sooner
 - fix extensions_exists
-- fix dialplan_providers.php to save posted config and display correctly when no providers are present
-- complete is_valid_xxx() checks
 - normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
 - confirm "Ringing()" behavior/usage on ISDN connections
 - start returning get_blahs() functions by reference
 _ also, get_blahs() should return arrays with uniqid's as the keys
 - kernel and asterisk modules should only be loaded when needed
-- publicly reachable extension, e-mail style extension overrides
-
 
 later
 - qos page with jitterbuffer tab
