@@ -40,7 +40,6 @@ $versions = array(
 	"mini_httpd"	=> "mini_httpd-1.19",
 	"msmtp"			=> "msmtp-1.4.11",
 	"msntp"			=> "msntp-1.6",
-	"oslec"			=> "oslec-trunk",
 	"pecl_sqlite"	=> "SQLite-1.0.3",
 	"php"			=> "php-4.4.8",
 	"scriptaculous"	=> "scriptaculous-js-1.7.1_beta3",
@@ -302,13 +301,7 @@ function build_zaptel() {
 			"svn co --username svn --password svn ".
 			"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 {$versions['zaptel']}");
 	}
-	/*if (!_is_patched($versions['zaptel'])) {
-		_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
-			"patch < {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/zaptel-trunk.diff");
-		//_exec("cd {$dirs['packages']}/$zaptel_version; ".
-		//	"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_calc_xlaw.patch");
-		_stamp_package_as_patched($versions['zaptel']);
-	}*/	
+
 	// remove old headers if they're around
 	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
 	
@@ -330,14 +323,6 @@ function build_zaptel() {
 			"wcfxo/wcfxo.ko ".
 			"wcfxs/wcfxs.ko ".
 			"STAGE");
-	
-	// compile mmx enabled version
-	/*_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
-		"patch < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; make clean; make");
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; cp -p zaptel/zaptel.ko STAGE/mmx_zaptel.ko");
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; ".
-		"patch -R < {$dirs['patches']}/packages/zaptel/zaptel_config_mmx.patch");*/
 }
 
 function build_isdn() {
@@ -386,7 +371,6 @@ function build_tools() {
 	global $dirs;
 	
 	_exec("cd " . $dirs['tools'] . "; " .
-		"gcc -Wall -o stats.cgi stats.c; " .
 		"gcc -Wall -o verifysig -lcrypto verifysig.c; " .
 		"gcc -Wall -o wrapresetbtn wrapresetbtn.c; " .
 		"gcc -Wall -o alix23xresetbtn alix23xresetbtn.c");
@@ -405,38 +389,6 @@ function build_bootloader() {
 	_exec("cd /sys/boot; make clean; make obj; make");
 }
 
-function build_oslec() {
-	global $dirs, $versions;
-	
-	if (!file_exists("{$dirs['packages']}/{$versions['oslec']}")) {
-		_exec("cd {$dirs['packages']}; ".
-			"svn co http://svn.astfin.org/software/oslec/trunk/ {$versions['oslec']}");
-	}
-	if (!_is_patched($versions['oslec'])) {
-		_exec("mkdir {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd");
-		_exec("cd {$dirs['packages']}/{$versions['oslec']}; patch < {$dirs['patches']}/packages/oslec/oslec_fbsd_0.1.diff");
-		_stamp_package_as_patched($versions['oslec']);
-	}
-	
-	// make stage directory, clear if present
-	if (file_exists("{$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE")) {
-		_exec("rm -rf {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE");
-	}
-	_exec("mkdir {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE");
-	
-	// build normal version
-	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; make clean; make");
-	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; cp -p oslec.ko STAGE");
-
-	// build mmx enabled version
-	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; make clean; make \"MMX=-DUSE_MMX\"");
-	_exec("cd {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd; cp -p oslec.ko STAGE/mmx_oslec.ko");
-
-	// build and install speedtest
-	_exec("cd {$dirs['packages']}/{$versions['oslec']}/user; gmake clean; gmake");
-	_exec("cd {$dirs['packages']}/{$versions['oslec']}/user; install -s speedtest /usr/local/bin/oslecspeedtest");
-}
-
 function build_hostapd() {
 	_exec("cd /usr/src/usr.sbin/wpa/hostapd; make clean; make; make install");	
 }
@@ -446,7 +398,6 @@ function build_packages() {
 	build_php();
 	build_msmtp();
 	build_minihttpd();
-	//build_oslec();
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
@@ -475,9 +426,8 @@ function create($image_name) {
 	global $dirs;
 
 	if (file_exists($image_name)) {
-		_exec("rm -rf $image_name");
-		_exec("rm -rf {$dirs['images']}/*$image_name.img");
-		_exec("rm -rf {$dirs['mfsroots']}/*$image_name.gz");
+		_log("Image already exists!");
+		exit(1);
 	}
 
 	_exec("mkdir $image_name");
@@ -496,6 +446,8 @@ function create($image_name) {
 	_exec("mkdir $image_name/asterisk");
 	_exec("mkdir $image_name/asterisk/moh");
 	_exec("mkdir $image_name/asterisk/modules");
+
+	_exec("mkdir $image_name/pointstaging");
 }
 
 function populate_base($image_name) {
@@ -962,7 +914,6 @@ function populate_tools($image_name) {
 	$rootfs = "$image_name/rootfs";
 	
 	_exec("cd {$dirs['tools']}; ".
-		"install -s stats.cgi $rootfs/usr/local/www; ".
 		/*"install -s minicron $rootfs/usr/local/bin; ".*/
 		"install -s verifysig $rootfs/usr/local/bin; ".
 		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
@@ -1047,6 +998,22 @@ function populate_libs($image_name) {
 	_exec("rm tmp.libs");
 }
 
+function populate_pointstaging($image_name) {
+	global $dirs, $versions, $platforms;
+
+	foreach ($platforms as $platform) {
+		$kernel = _platform_to_kernel($platform);
+		_exec("cp /sys/i386/compile/$kernel/kernel.gz $image_name/pointstaging/kernel_$kernel.gz");
+		_exec("cp {$dirs['boot']}/$platform/loader.rc $image_name/pointstaging/loader.rc_$platform");
+	}
+
+	_exec("cp /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/acpi/acpi/acpi.ko ".
+		"$image_name/pointstaging");
+	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
+	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/pointstaging");
+}
+
 function populate_everything($image_name) {
 
 	populate_base($image_name);
@@ -1069,6 +1036,7 @@ function populate_everything($image_name) {
 	populate_jquery($image_name);
 	populate_webgui($image_name);
 	populate_libs($image_name);
+	populate_pointstaging($image_name);
 	
 	$fd = fopen("$image_name/rootfs/etc/versions", "w");
 	fwrite($fd, _generate_versions_file());
@@ -1098,25 +1066,15 @@ function package($platform, $image_name) {
 	// ...system modules		
 	_exec("mkdir tmp/stage/boot");
 	_exec("mkdir tmp/stage/boot/kernel");
-	if ($platform == "generic-pc") {
-		_exec("cp /sys/i386/compile/$kernel/modules/usr/src/sys/modules/acpi/acpi/acpi.ko tmp/stage/boot/kernel/");
-	}
-	
-	// ...zaptel modules
-	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko tmp/stage/boot/kernel/");
-	// ...oslec modules
-	//_exec("cp {$dirs['packages']}/{$versions['oslec']}/kernel-freebsd/STAGE/*.ko tmp/stage/boot/kernel/");
-	
-	// XXX : i4b module should be used here instead of being built into the kernel
-	//_exec("cp {$dirs['packages']}/i4b/trunk/i4b/STAGE/boot/kernel/i4b.ko tmp/stage/boot/kernel/");
-	
-	// XXX quick fix to remove modules' libraries not needed for these
+	_exec("cp $image_name/pointstaging/*.ko tmp/stage/boot/kernel/");
+
 	if ($platform != "generic-pc") {
+		_exec("rm tmp/stage/boot/kernel/acpi.ko");
 		foreach ($low_power_libraries as $lpl) {
 			_exec("rm tmp/stage/$lpl");
 		}
 	}
-	
+
 	// ...stamps
 	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
 	_exec("echo `date` > tmp/stage/etc/version.buildtime");
@@ -1150,13 +1108,13 @@ function package($platform, $image_name) {
 	// ...boot
 	_exec("mkdir tmp/stage/boot");
 	_exec("mkdir tmp/stage/boot/kernel");
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/stage/boot/");
-	_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/stage/boot/");
+	_exec("cp $image_name/pointstaging/loader tmp/stage/boot/");
+	_exec("cp $image_name/pointstaging/loader.rc_$platform tmp/stage/boot/loader.rc");
 	
 	// ...conf
 	_exec("mkdir tmp/stage/conf");
-	_exec("cp {$dirs['phpconf']}/config.$platform.xml tmp/stage/conf/config.xml");
-	_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/stage/kernel.gz");
+	_exec("cp $image_name/pointstaging/config.$platform.xml tmp/stage/conf/config.xml");
+	_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/stage/kernel.gz");
 	
 	$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
 	$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
@@ -1247,30 +1205,12 @@ function release($name) {
 	_exec("cd {$dirs['images']}; gzip -9 rootfs-".basename($name).".tar");
 	// rename
 	_exec("mv {$dirs['images']}/rootfs-".basename($name).".tar.gz {$dirs['images']}/pbx-rootfs-".basename($name).".tgz");
-	
-	// signing & html generator
-	$html = "\n";
+
+	// signing
 	foreach($platforms as $platform) {
 		$filename = "pbx-" . $platform . "-" . basename($name) . ".img";
 		_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
-		
-		$html .= "<tr>\n";
-		$html .= "\t<td><a href=\"/downloads/$filename\">$platform</a></td>\n";
-		$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
-		$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
-		$html .= "</tr>\n";
 	}
-	
-	$filename = "pbx-rootfs-".basename($name).".tgz";
-	
-	$html .= "<tr>\n";
-	$html .= "\t<td><a href=\"/downloads/$filename\">rootfs</a></td>\n";
-	$html .= "\t<td>". round(((filesize("{$dirs['images']}/$filename")/1024)/1024),1)." MB</td>\n";
-	$html .= "\t<td>". md5_file("{$dirs['images']}/$filename")."</td>\n";
-	$html .= "</tr>\n";	
-	$html .= "\n";
-
-	print $html;
 }
 
 function _get_dir_size($dir) {
@@ -1448,8 +1388,6 @@ if ($argv[1] == "prepare") {
 } else if ($argv[1] == "release") {
 
 	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
-	create($image_name);
-	populate_everything($image_name);
 	foreach($platforms as $platform) {
 		package($platform, $image_name);			
 	}
