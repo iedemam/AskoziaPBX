@@ -271,6 +271,18 @@ EOD;
 		$conf .= "\n";
 	}
 
+	// handling for multiple sip providers using same host
+	$sip_multi = sip_get_hosts_with_multiple_accounts();
+	foreach ($sip_multi as $host => $ids) {
+		$conf .= "; multiple SIP Provider accounts found for host : $host\n";
+		$conf .= "[SIP-PROVIDER-$host-incoming]\n";
+		foreach ($ids as $id) {
+			$sp = sip_get_provider($id);
+			$conf .= "exten => {$sp['username']},1,Goto({$sp['uniqid']}-incoming,s,1)\n";
+		}
+	}
+	$conf .= "\n";
+
 	// internal phone contexts
 	foreach($internal_phones as $p) {
 		$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";

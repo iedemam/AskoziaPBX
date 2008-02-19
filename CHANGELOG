@@ -1,3 +1,6 @@
+2008.xx.xx - pb13.1
+ - bug: multiple SIP Provider accounts on the same host are now correctly routed (working *.conf example provided by Sergio in the forums)
+
 2008.02.14 - pb13
  - added: manual attributes may now be defined for phones, providers and under "Advanced" for SIP and IAX technologies
  - added: custom application logic may now be defined in "Dialplan -> Applications" (suggested w/proof-of-concept by Ben Hathaway)

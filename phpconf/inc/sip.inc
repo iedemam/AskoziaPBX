@@ -47,6 +47,15 @@ function sip_get_providers() {
 }
 
 /**
+ * Returns a specific provider based on its uniqid
+ */
+function sip_get_provider($uniqid) {
+	global $config, $uniqid_map;
+
+	return $config['sip']['provider'][$uniqid_map[$uniqid]];
+}
+
+/**
  * Sorts providers by name
  */
 function sip_sort_providers() {
@@ -123,6 +132,28 @@ function sip_get_dialpatterns() {
 }
 
 /**
+ * Returns a host indexed array of sip providers which have multiple accounts
+ * defined for the same host
+ */
+function sip_get_hosts_with_multiple_accounts() {
+
+	$multi = array();
+
+	$providers = sip_get_providers();
+	$tmp = array();
+	foreach ($providers as $p) {
+		$tmp[$p['host']][] = $p['uniqid'];
+	}
+	foreach ($tmp as $host => $ids) {
+		if (count($ids) > 1) {
+			$multi[$host] = $ids;
+		}
+	}
+
+	return $multi;
+}
+
+/**
  * Generates sip.conf
  * XXX : the way in which defaults are used must be normalized
  */
@@ -193,6 +224,7 @@ EOD;
 	
 	// providers
 	$sipproviders = sip_get_providers();
+	$sipproviders_multi = sip_get_hosts_with_multiple_accounts();
 
 	// provider registrations
 	foreach($sipproviders as $p) {
@@ -238,7 +270,15 @@ EOD;
 			$conf .= "port={$p['port']}\n";
 		}
 
-		$conf .= "context={$p['uniqid']}-incoming\n";
+		// incoming context must be specially handled if this provider is
+		// one of many accounts associated with a specific host
+		$tmp_incomingcontext = $p['uniqid'] . "-incoming";
+		foreach ($sipproviders_multi as $spm_host => $spm_ids) {
+			if (in_array($p['uniqid'], $spm_ids)) {
+				$tmp_incomingcontext = "SIP-PROVIDER-$spm_host-incoming";
+			}
+		}
+		$conf .= "context=$tmp_incomingcontext\n";
 
 		if($p['fromdomain']) {
 			$conf .= "fromdomain={$p['fromdomain']}\n";
