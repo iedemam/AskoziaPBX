@@ -165,18 +165,18 @@ EOD;
 	}
 
 	// callgroup extensions
-	foreach ($callgroups as $g) {
-		if (!isset($g['extension']) || !strlen($g['extension'])) {
+	foreach ($callgroups as $cg) {
+		if (!isset($cg['extension']) || !strlen($cg['extension'])) {
 			continue;
 		}
-		if (isset($g['allowdirectdial'])) {
-			$conf .= "; callgroup : {$g['name']} - <{$g['extension']}>\n";
-			if (!$g['publicname']) {
-				$conf .= "exten => {$g['extension']},1,NoOp()\n";
-				$conf .= extensions_generate_callgroup_extension($g, true);
+		if (isset($cg['allowdirectdial'])) {
+			$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
+			if (!$cg['publicname']) {
+				$conf .= "exten => {$cg['extension']},1,NoOp()\n";
+				$conf .= extensions_generate_callgroup_extension($cg, true);
 			} else {
-				$conf .= "exten => {$g['publicname']},1,NoOp()\n";
-				$conf .= extensions_generate_callgroup_extension($g, true, false, $g['publicname']);
+				$conf .= "exten => {$cg['publicname']},1,NoOp()\n";
+				$conf .= extensions_generate_callgroup_extension($cg, true, false, $cg['publicname']);
 			}
 		}
 	}
@@ -229,13 +229,13 @@ EOD;
 	}
 
 	// callgroup extensions
-	foreach ($callgroups as $g) {
-		if (!isset($g['extension']) || !strlen($g['extension'])) {
+	foreach ($callgroups as $cg) {
+		if (!isset($cg['extension']) || !strlen($cg['extension'])) {
 			continue;
 		}
-		$conf .= "; callgroup : {$g['name']} - <{$g['extension']}>\n";
-		$conf .= "exten => {$g['extension']},1,NoOp()\n";
-		$conf .= extensions_generate_callgroup_extension($g);
+		$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
+		$conf .= "exten => {$cg['extension']},1,NoOp()\n";
+		$conf .= extensions_generate_callgroup_extension($cg);
 	}
 
 	// application extensions

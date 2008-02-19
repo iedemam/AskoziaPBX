@@ -1,5 +1,6 @@
 2008.xx.xx - pb13.1
  - bug: multiple SIP Provider accounts on the same host are now correctly routed (working *.conf example provided by Sergio in the forums)
+ - bug: boot messages are no longer being suppressed by a poorly chosen variable name in extensions.inc
 
 2008.02.14 - pb13
  - added: manual attributes may now be defined for phones, providers and under "Advanced" for SIP and IAX technologies
