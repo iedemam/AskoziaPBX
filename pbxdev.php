@@ -1174,6 +1174,20 @@ function package($platform, $image_name) {
 	_exec("rm -rf tmp");
 }
 
+function package_rootfs($image_name) {
+	global $dirs;
+	
+	$name = basename($image_name);
+
+	// tar
+	_exec("cd {$dirs['images']}; tar -cf rootfs-$name.tar $name");
+	// zip
+	_exec("cd {$dirs['images']}; gzip -9 rootfs-$name.tar");
+	// rename
+	_exec("mv {$dirs['images']}/rootfs-$name.tar.gz {$dirs['images']}/pbx-rootfs-$name.tgz");
+
+}
+
 /* function build_installcd
 
 	// .iso
@@ -1199,12 +1213,7 @@ function package($platform, $image_name) {
 function release($name) {
 	global $platforms, $dirs;
 	
-	// tar
-	_exec("cd {$dirs['images']}; tar -cf rootfs-".basename($name).".tar ".basename($name));
-	// zip
-	_exec("cd {$dirs['images']}; gzip -9 rootfs-".basename($name).".tar");
-	// rename
-	_exec("mv {$dirs['images']}/rootfs-".basename($name).".tar.gz {$dirs['images']}/pbx-rootfs-".basename($name).".tgz");
+	package_rootfs($name);
 
 	// signing
 	foreach($platforms as $platform) {
@@ -1369,9 +1378,16 @@ if ($argv[1] == "prepare") {
 		foreach($platforms as $platform) {
 			package($platform, $image_name);			
 		}
+		package_rootfs($image_name);
+
+	// packaging the root file system distribution
+	} else if ($argv[2] == "rootfs") {
+			package_rootfs($image_name);
+
 	// check the specific platform before attempting to package
 	} else if (in_array($argv[2], $platforms)) {
 		package($argv[2], $image_name);
+
 	// not a valid package command...
 	} else {
 		_log("Invalid packaging command!");
