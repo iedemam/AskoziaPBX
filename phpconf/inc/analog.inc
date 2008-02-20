@@ -366,7 +366,7 @@ function analog_zapata_conf_generate() {
 	foreach ($analogphones as $p) {
 		$interface = analog_get_ab_interface($p['interface']);
 		
-		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
+		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
 
 		if ($interface['startsignal']) {
 			$conf .= "signalling=fxo_{$interface['startsignal']}\n";

@@ -203,11 +203,7 @@ EOD;
 			$conf .= "auth=md5\n";
 			$conf .= "secret={$p['secret']}\n";
 		}
-		
-		if (($p['calleridsource'] == "string") && $p['calleridstring']) {
-			$conf .= "callerid=" . $p['calleridstring'] . "\n";
-		}
-		
+
 		$conf .= "host={$p['host']}\n";
 		
 		if ($p['port'])
@@ -312,7 +308,7 @@ EOD;
 		}
 		
 		$conf .= "context={$p['uniqid']}\n";
-		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
+		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		
 		// language selection

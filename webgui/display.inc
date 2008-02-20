@@ -200,12 +200,14 @@ function display_qualify_options($current_qualify, $colspan) {
 	</tr><?
 }
 
-function display_incoming_callerid_override_options($current_override, $colspan) {
+function display_incoming_callerid_override_options($current_override, $current_overridestring, $colspan) {
 	
 	?><tr> 
 		<td width="20%" valign="top" class="vncell">Incoming Caller ID Overrides</td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<input name="override" type="checkbox" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.
+			<input name="overridestring" type="text" class="formfld" id="overridestring" size="40" value="<?=htmlspecialchars($current_overridestring);?>">&nbsp;<i>Source Name &lt;number&gt;</i><br>
+			<input name="override" type="radio" value="prepend" <?php if ($current_override == "prepend") echo "checked"; ?>> Prepend string&nbsp;<input name="override" type="radio" value="replace" <?php if ($current_override == "replace") echo "checked"; ?>> Replace with string<br>
+			<input name="override" type="radio" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.
 		</td>
 	</tr><?
 }
@@ -215,8 +217,8 @@ function display_outgoing_callerid_options($current_callerid_source, $current_ca
 	?><tr> 
 		<td width="20%" valign="top" class="vncell">Outgoing Caller ID</td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<input name="calleridstring" type="text" class="formfld" id="calleridstring" size="40" value="<?=htmlspecialchars($current_callerid_string);?>">&nbsp;<i>"Your Name" &lt;number&gt;</i><br>
-			<input name="calleridsource" type="radio" value="string" <?php if ($current_callerid_source == "string") echo "checked"; ?>> Send string defined above&nbsp;<input name="calleridsource" type="radio" value="phones" <?php if ($current_callerid_source == "phones") echo "checked"; ?>> Send phones' Caller ID
+			<input name="calleridstring" type="text" class="formfld" id="calleridstring" size="40" value="<?=htmlspecialchars($current_callerid_string);?>">&nbsp;<i>Your Name &lt;number&gt;</i><br>
+			<input name="calleridsource" type="radio" value="string" <?php if ($current_callerid_source == "string") echo "checked"; ?>> Send string defined above&nbsp;<input name="calleridsource" type="radio" value="phones" <?php if ($current_callerid_source == "phones" || !$current_callerid_source) echo "checked"; ?>> Send phones' Caller ID
 		</td>
 	</tr><?
 }

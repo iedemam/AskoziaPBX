@@ -503,9 +503,8 @@ function extensions_generate_provider_incoming_context($p) {
 					$conf .= "exten => $catch,n,Ringing()\n";
 					$conf .= "exten => $catch,n,Wait(1)\n";
 				}
-				if ($p['override'] == "replacenamewithnum") {
-					$conf .= "exten => $catch,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
-				}
+
+				$conf .= extensions_generate_incoming_callerid_overrides($catch, $p['override'], $p['overridestring']);
 				$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
 			}
 
@@ -516,9 +515,7 @@ function extensions_generate_provider_incoming_context($p) {
 				$conf .= "exten => $pattern,n,Ringing()\n";
 				$conf .= "exten => $pattern,n,Wait(1)\n";
 			}
-			if ($p['override'] == "replacenamewithnum") {
-				$conf .= "exten => $pattern,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
-			}
+			$conf .= extensions_generate_incoming_callerid_overrides($pattern, $p['override'], $p['overridestring']);
 			$conf .= extensions_generate_extension_from_uniqid($destination, true, $pattern, $pattern);
 
 
@@ -528,9 +525,7 @@ function extensions_generate_provider_incoming_context($p) {
 				$conf .= "exten => _$pattern,n,Ringing()\n";
 				$conf .= "exten => _$pattern,n,Wait(1)\n";
 			}
-			if ($p['override'] == "replacenamewithnum") {
-				$conf .= "exten => _$pattern,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
-			}
+			$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
 			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, "_ " . $pattern);
 		}
 		$conf .= "\n";
@@ -540,46 +535,76 @@ function extensions_generate_provider_incoming_context($p) {
 }
 
 /**
+ * Generates appropriate incoming caller id overrides for calls from providers
+ */
+function extensions_generate_incoming_callerid_overrides($extension, $override, $overridestring) {
+
+	// - replace the incoming name with the incoming number
+	if ($override == "replacenamewithnum") {
+		return "exten => $extension,n,Set(CALLERID(name)=$\{CALLERID(number)})\n";
+
+	// - replace the incoming caller id string
+	} else if ($override == "replace") {
+		return "exten => $extension,n,Set(CALLERID(all)=$overridestring)\n";
+
+	// - prepend the incoming caller id string
+	} else if ($override == "prepend") {
+		return "exten => $extension,n,Set(CALLERID(name)=$overridestring $\{CALLERID(name)})\n";
+
+	} else if ($override) {
+		return "ERROR: unmatched case (override = $override) in extensions_generate_incoming_callerid_overrides!\n";
+
+	} else {
+		return NULL;
+	}
+}
+
+/**
  * Returns a context generated for outgoing calls to a provider
  */
 function extensions_generate_provider_outgoing_context($p) {
 
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
-	$cidflag = ($p['calleridsource'] == "string") ? "f" : "o";
-
-	$conf .= "[{$p['uniqid']}]\n";
 	
-	if ($tech == "SIP") {
-		foreach ($p['dialpattern'] as $pattern) {
-			dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-			$conf .= "exten => _$pattern,1,Dial(SIP/$prefix$exten@{$p['uniqid']},,T$cidflag)\n";
-			$conf .= "exten => _$pattern,2,Hangup()\n";
+	$conf .= "[{$p['uniqid']}]\n";
+
+	// outgoing caller id should be that of the phone originating the call
+	$cidflag = "o";
+	// set the appropriate flag if an override is wished and defined
+	if ($p['calleridsource'] == "string" && $p['calleridstring']) {
+		$cidflag = "f";
+		$cidoverride = $p['calleridstring'];
+	}
+
+	foreach ($p['dialpattern'] as $pattern) {
+		dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
+
+		// apply caller id override
+		if ($cidoverride) {
+			$conf .= "exten => _$pattern,1,Set(CALLERID(all)=$cidoverride)\n";
+		} else {
+			$conf .= "exten => _$pattern,1,NoOp()\n";
 		}
 
-	} else if ($tech == "IAX2") {
-		foreach ($p['dialpattern'] as $pattern) {
-			dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-			$conf .= "exten => _$pattern,1,Dial(IAX2/{$p['uniqid']}/$prefix$exten,,T$cidflag)\n";
-			$conf .= "exten => _$pattern,2,Hangup()\n";
+		// generate technology specific dial()
+		if ($tech == "SIP") {
+			$conf .= "exten => _$pattern,n,Dial(SIP/$prefix$exten@{$p['uniqid']},,T$cidflag)\n";
+
+		} else if ($tech == "IAX2") {
+			$conf .= "exten => _$pattern,n,Dial(IAX2/{$p['uniqid']}/$prefix$exten,,T$cidflag)\n";
+
+		} else if ($tech == "CAPI") {
+			$conf .= "exten => _$pattern,n,Dial(CAPI/{$p['interface']}/$prefix$exten/bl,,T$cidflag)\n";
+
+		} else if ($tech == "ZAP") {
+			$conf .= "exten => _$pattern,n,Dial(ZAP/{$p['interface']}/$prefix$exten,,T$cidflag)\n";
+
+		} else {
+			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
 		}
 
-	} else if ($tech == "CAPI") {
-		foreach ($p['dialpattern'] as $pattern) {
-			dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);				
-			$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['msn']})\n";
-			$conf .= "exten => _$pattern,2,Dial(CAPI/{$p['interface']}/$prefix$exten/bl,,Tf)\n";
-			$conf .= "exten => _$pattern,3,Hangup()\n";
-		}
-
-	} else if ($tech == "ZAP") {
-		foreach ($p['dialpattern'] as $pattern) {
-			dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);				
-			$conf .= "exten => _$pattern,1,Set(CALLERID(number)={$p['number']})\n";
-			$conf .= "exten => _$pattern,2,Dial(ZAP/{$p['interface']}/$prefix$exten,,Tf)\n";
-			$conf .= "exten => _$pattern,3,Hangup()\n";
-		}
-	} else {
-		$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
+		// hangup
+		$conf .= "exten => _$pattern,n,Hangup()\n";
 	}
 
 	return $conf;

@@ -261,10 +261,6 @@ EOD;
 			$conf .= "fromuser={$p['username']}\n";
 		}
 
-		if (($p['calleridsource'] == "string") && $p['calleridstring']) {
-			$conf .= "callerid=" . $p['calleridstring'] . "\n";
-		}
-
 		$conf .= "host={$p['host']}\n";
 		if ($p['port']) {
 			$conf .= "port={$p['port']}\n";
@@ -403,7 +399,7 @@ EOD;
 		$conf .= "type=friend\n";
 		$conf .= "secret={$p['secret']}\n";
 		$conf .= "context={$p['uniqid']}\n";
-		$conf .= "callerid=\"{$p['callerid']}\" <{$p['extension']}>\n";
+		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
 		
 		if ($lancfg['topology'] != "public")

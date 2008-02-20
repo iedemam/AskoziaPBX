@@ -58,6 +58,7 @@ if (isset($id) && $a_isdnproviders[$id]) {
 	$pconfig['dialpattern'] = $a_isdnproviders[$id]['dialpattern'];
 	$pconfig['incomingextensionmap'] = $a_isdnproviders[$id]['incomingextensionmap'];
 	$pconfig['override'] = $a_isdnproviders[$id]['override'];
+	$pconfig['overridestring'] = $a_isdnproviders[$id]['overridestring'];
 }
 
 if ($_POST) {
@@ -72,6 +73,10 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", "Name");
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
+		$input_errors[] = "An incoming Caller ID override string must be specified.";
+	}
 
 	// pattern validation
 	if (isset($id)) {
@@ -113,6 +118,7 @@ if ($_POST) {
 		$ip['dialpattern'] = $_POST['dialpattern'];
 		$ip['incomingextensionmap'] = $_POST['incomingextensionmap'];
 		$ip['override'] = $_POST['override'];
+		$ip['overridestring'] = verify_non_default($_POST['overridestring']);
 		
 		if (isset($id) && $a_isdnproviders[$id]) {
 			$ip['uniqid'] = $a_isdnproviders[$id]['uniqid'];
@@ -181,7 +187,7 @@ if ($_POST) {
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_incoming_extension_selector(1); ?>
 			<? display_advanced_settings_begin(1); ?>
-			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
+			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

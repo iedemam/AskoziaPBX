@@ -72,6 +72,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['calleridstring'] = $a_sipproviders[$id]['calleridstring'];
 	$pconfig['incomingextensionmap'] = $a_sipproviders[$id]['incomingextensionmap'];
 	$pconfig['override'] = $a_sipproviders[$id]['override'];
+	$pconfig['overridestring'] = $a_sipproviders[$id]['overridestring'];
 	if(!is_array($pconfig['codec'] = $a_sipproviders[$id]['codec']))
 		$pconfig['codec'] = array("ulaw", "gsm");
 	$pconfig['manual-attribute'] = $a_sipproviders[$id]['manual-attribute'];
@@ -116,6 +117,9 @@ if ($_POST) {
 	}
 	if ($_POST['calleridsource'] == "string" && !pbx_is_valid_callerid_string($_POST['calleridstring'])) {
 		$input_errors[] = "A valid Caller ID string must be specified.";
+	}
+	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
+		$input_errors[] = "An incoming Caller ID override string must be specified.";
 	}
 	
 	// pattern validation
@@ -173,6 +177,7 @@ if ($_POST) {
 		
 		$sp['incomingextensionmap'] = $_POST['incomingextensionmap'];
 		$sp['override'] = $_POST['override'];
+		$sp['overridestring'] = verify_non_default($_POST['overridestring']);
 		
 		$sp['codec'] = array();
 		$sp['codec'] = array_merge($ace, $vce);
@@ -274,7 +279,7 @@ if ($_POST) {
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>
 			<? display_registration_options($pconfig['noregister'], 1); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
-			<? display_incoming_callerid_override_options($pconfig['override'], 1); ?>
+			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>
 			<tr> 
