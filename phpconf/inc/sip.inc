@@ -419,7 +419,9 @@ EOD;
 		} else {
 			$conf .= "qualify=yes\n";
 		}
-		
+
+		$conf .= "nat=yes\n";
+
 		$conf .= "canreinvite=no\n";
 		
 		if ($p['dtmfmode']) {

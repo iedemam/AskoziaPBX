@@ -1,5 +1,6 @@
 2008.xx.xx - pb13.1
  - added: incoming caller id from providers may be prepended or replaced by a user defined string
+ - changed: SIP phone accounts now always have nat=yes set
  - bug: multiple SIP Provider accounts on the same host are now correctly routed (working *.conf example provided by Sergio in the forums)
  - bug: boot messages are no longer being suppressed by a poorly chosen variable name in extensions.inc
  - bug: outgoing caller id overrides in providers are now functional
