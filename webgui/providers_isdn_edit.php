@@ -117,7 +117,7 @@ if ($_POST) {
 		
 		$ip['dialpattern'] = $_POST['dialpattern'];
 		$ip['incomingextensionmap'] = $_POST['incomingextensionmap'];
-		$ip['override'] = $_POST['override'];
+		$ip['override'] = ($_POST['override'] != "disable") ? $_POST['override'] : false;
 		$ip['overridestring'] = verify_non_default($_POST['overridestring']);
 		
 		if (isset($id) && $a_isdnproviders[$id]) {

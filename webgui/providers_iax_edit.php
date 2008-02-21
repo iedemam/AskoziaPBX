@@ -166,7 +166,7 @@ if ($_POST) {
 		$sp['calleridstring'] = $_POST['calleridstring'];
 		
 		$sp['incomingextensionmap'] = $_POST['incomingextensionmap'];
-		$sp['override'] = $_POST['override'];
+		$sp['override'] = ($_POST['override'] != "disable") ? $_POST['override'] : false;
 		$sp['overridestring'] = verify_non_default($_POST['overridestring']);
 		
 		$sp['codec'] = array();

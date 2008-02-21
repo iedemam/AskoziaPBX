@@ -206,8 +206,9 @@ function display_incoming_callerid_override_options($current_override, $current_
 		<td width="20%" valign="top" class="vncell">Incoming Caller ID Overrides</td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<input name="overridestring" type="text" class="formfld" id="overridestring" size="40" value="<?=htmlspecialchars($current_overridestring);?>">&nbsp;<i>Source Name &lt;number&gt;</i><br>
-			<input name="override" type="radio" value="prepend" <?php if ($current_override == "prepend") echo "checked"; ?>> Prepend string&nbsp;<input name="override" type="radio" value="replace" <?php if ($current_override == "replace") echo "checked"; ?>> Replace with string<br>
-			<input name="override" type="radio" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.
+			<input name="override" type="radio" value="prepend" <?php if ($current_override == "prepend") echo "checked"; ?>> Prepend with string&nbsp;<input name="override" type="radio" value="replace" <?php if ($current_override == "replace") echo "checked"; ?>> Replace with string<br>
+			<input name="override" type="radio" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.<br>
+			<input name="override" type="radio" value="disable" <?php if (!$current_override) echo "checked"; ?>> Disable overrides
 		</td>
 	</tr><?
 }

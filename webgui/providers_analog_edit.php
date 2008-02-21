@@ -114,7 +114,7 @@ if ($_POST) {
 		
 		$ap['dialpattern'] = $_POST['dialpattern'];
 		$ap['incomingextensionmap'] = $_POST['incomingextensionmap'];
-		$ap['override'] = $_POST['override'];
+		$ap['override'] = ($_POST['override'] != "disable") ? $_POST['override'] : false;
 		$ap['overridestring'] = verify_non_default($_POST['overridestring']);
 		
 		if (isset($id) && $a_analogproviders[$id]) {
