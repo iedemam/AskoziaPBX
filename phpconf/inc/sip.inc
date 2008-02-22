@@ -158,7 +158,7 @@ function sip_get_hosts_with_multiple_accounts() {
  * XXX : the way in which defaults are used must be normalized
  */
 function sip_conf_generate() {
-	global $config, $g;
+	global $config, $g, $defaults;
 	
 	$fd = fopen("/usr/local/etc/asterisk/sip.conf", "w");
 	if (!$fd) {
@@ -282,15 +282,18 @@ EOD;
 			$conf .= "fromdomain={$p['host']}\n";
 		}
 
-		if ($lancfg['topology'] != "public") {
-			$conf .= "nat=yes\n";
-		}
-
 		// language selection
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {
 			$conf .= "language=en\n";
+		}
+
+		// nat settings
+		if ($p['natmode']) {
+			$conf .= "nat=" . $p['natmode'] . "\n";
+		} else {
+			$conf .= "nat=" . $defaults['sip']['natmode'] . "\n";
 		}
 
 		// qualify options
@@ -401,15 +404,19 @@ EOD;
 		$conf .= "context={$p['uniqid']}\n";
 		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
 		$conf .= "host=dynamic\n";
-		
-		if ($lancfg['topology'] != "public")
-			$conf .= "nat=yes\n";
-			
+
 		// language selection
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {
 			$conf .= "language=en\n";
+		}
+
+		// nat settings
+		if ($p['natmode']) {
+			$conf .= "nat=" . $p['natmode'] . "\n";
+		} else {
+			$conf .= "nat=" . $defaults['sip']['natmode'] . "\n";
 		}
 		
 		if ($p['qualify'] == "0") {
@@ -419,8 +426,6 @@ EOD;
 		} else {
 			$conf .= "qualify=yes\n";
 		}
-
-		$conf .= "nat=yes\n";
 
 		$conf .= "canreinvite=no\n";
 		

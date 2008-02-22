@@ -65,6 +65,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
 	$pconfig['dialpattern'] = $a_sipproviders[$id]['dialpattern'];
 	$pconfig['dtmfmode'] = $a_sipproviders[$id]['dtmfmode'];
+	$pconfig['natmode'] = $a_sipproviders[$id]['natmode'];
 	$pconfig['language'] = $a_sipproviders[$id]['language'];
 	$pconfig['qualify'] = $a_sipproviders[$id]['qualify'];
 	$pconfig['calleridsource'] = 
@@ -169,6 +170,7 @@ if ($_POST) {
 		$sp['dialpattern'] = $_POST['dialpattern'];
 
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
+		$sp['natmode'] = verify_non_default($_POST['natmode'], $defaults['sip']['natmode']);
 		$sp['language'] = $_POST['language'];
 		$sp['qualify'] = $_POST['qualify'];
 		
@@ -276,9 +278,10 @@ if ($_POST) {
 					<br>Defaults to host entered above.</span>
 				</td>
 			</tr>
+			<? display_natmode_selector($pconfig['natmode'], 1); ?>
+			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>
 			<? display_registration_options($pconfig['noregister'], 1); ?>
-			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>

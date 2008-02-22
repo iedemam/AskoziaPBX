@@ -100,6 +100,7 @@ $defaults['sip']['port'] = "5060";
 $defaults['sip']['defaultexpiry'] = "120";
 $defaults['sip']['minexpiry'] = "60";
 $defaults['sip']['maxexpiry'] = "3600";
+$defaults['sip']['natmode'] = "yes";
 $defaults['sip']['phone'] = array();
 $defaults['sip']['phone']['calllimit'] = "2";
 $defaults['sip']['phone']['busylimit'] = "1";

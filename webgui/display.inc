@@ -200,6 +200,37 @@ function display_qualify_options($current_qualify, $colspan) {
 	</tr><?
 }
 
+// XXX : first option to fully implement the $defaults array, time to start updating the others
+function display_natmode_selector($current_natmode, $colspan) {
+	global $defaults;
+
+	$natmodes = array(
+		"yes" => "always use NAT mode.",
+		"no" => "only use NAT mode according to RFC3581 (rport)",
+		"never" => "never attempt NAT mode or RFC3581 support",
+		"route" => "assume NAT mode but don't send rport "
+	);
+
+	if (!$current_natmode) {
+		$current_natmode = $defaults['sip']['natmode'];
+	}
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">NAT</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<select name="natmode" class="formfld" id="natmode">
+			<? foreach ($natmodes as $natmode => $natdesc) : ?>
+			<option value="<?=$natmode;?>" <?
+			if ($natmode == $current_natmode)
+				echo "selected"; ?>
+			><?=$natmode;?>&nbsp;-&nbsp;<?=$natdesc;?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl">Is there a NATing device between AskoziaPBX and this account? Setting this to "yes" will work in most cases. The options "never" and "route" are only rarely used for certain buggy SIP phones.</span>
+		</td>
+	</tr><?
+}
+
 function display_incoming_callerid_override_options($current_override, $current_overridestring, $colspan) {
 	
 	?><tr> 
