@@ -54,6 +54,10 @@ $g = array(
 
 $defaults = array();
 
+$defaults['accounts'] = array();
+$defaults['accounts']['phones'] = array();
+$defaults['accounts']['phones']['ringlength'] = "20";
+
 $defaults['analog'] = array();
 $defaults['analog']['interface'] = array();
 $defaults['analog']['interface']['name'] = "(unconfigured)";

@@ -59,6 +59,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
 	$pconfig['descr'] = $a_extphones[$id]['descr'];
+	$pconfig['ringlength'] = $a_extphones[$id]['ringlength'];
 }
 
 if ($_POST) {
@@ -94,6 +95,7 @@ if ($_POST) {
 		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
 		$ep['descr'] = verify_non_default($_POST['descr']);
+		$ep['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 
 		if (isset($id) && $a_extphones[$id]) {
 			$ep['uniqid'] = $a_extphones[$id]['uniqid'];
@@ -120,6 +122,7 @@ if ($_POST) {
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_advanced_settings("ready");?>
 
 	});
 
@@ -167,6 +170,9 @@ if ($_POST) {
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
+			<? display_advanced_settings_begin(1); ?>
+			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
+			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

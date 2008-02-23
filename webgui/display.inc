@@ -231,6 +231,35 @@ function display_natmode_selector($current_natmode, $colspan) {
 	</tr><?
 }
 
+function display_phone_ringlength_selector($current_ringlength, $colspan) {
+	global $defaults;
+
+	$ringlengths = array(
+		"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60",
+		"70", "80", "90", "100", "110", "120", "150", "180",
+		"indefinitely"
+	);
+
+	if (!$current_ringlength) {
+		$current_ringlength = $defaults['accounts']['phones']['ringlength'];
+	}
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Ring Length</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<select name="ringlength" class="formfld" id="ringlength">
+			<? foreach ($ringlengths as $ringlength) : ?>
+			<option value="<?=$ringlength;?>" <?
+			if ($ringlength == $current_ringlength)
+				echo "selected"; ?>
+			><?=$ringlength;?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl">The number of seconds this phone will ring before being reported as unanswered.</span>
+		</td>
+	</tr><?
+}
+
 function display_incoming_callerid_override_options($current_override, $current_overridestring, $colspan) {
 	
 	?><tr> 

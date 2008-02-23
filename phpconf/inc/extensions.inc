@@ -52,11 +52,11 @@ function extensions_conf_generate() {
 	$isdn_nt_interfaces = isdn_get_nt_interfaces();
 	$isdn_te_interfaces = isdn_get_te_interfaces();
 	$vmconfig = $config['voicemail'];
-	
+	// XXX : this macro is starting to get really big and ugly...
 	$conf = <<<EOD
 
 [macro-vm];
-exten => s,1,Dial($\{ARG1},20,$\{ARG4})
+exten => s,1,Dial($\{ARG1},$\{ARG5},$\{ARG4})
 exten => s,n,NoOp($\{DIALSTATUS})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 
@@ -614,6 +614,7 @@ function extensions_generate_provider_outgoing_context($p) {
  * Returns an extension for an internal phone.
  */
 function extensions_generate_internal_phone_extension($p, $from_public=false, $readbacknum=false, $extension=false) {
+	global $defaults;
 	
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
 	$transfer_flags = (!$from_public) ? "tT" : "t";
@@ -625,18 +626,26 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 		$readbacknum = $phone_exten;
 	}
 
+	// ring length
+	$ringlength = $defaults['accounts']['phones']['ringlength'];
+	if ($p['ringlength'] == "indefinitely") {
+		$ringlength = "";
+	} else if ($p['ringlength']) {
+		$ringlength = $p['ringlength'];
+	}
+
 	$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
 	if ($tech == "SIP") {
-		$conf .= "exten => $exten,n,Macro(vm|SIP/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|SIP/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "IAX2") {
-		$conf .= "exten => $exten,n,Macro(vm|IAX2/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|IAX2/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "CAPI") {
-		$conf .= "exten => $exten,n,Macro(vm|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "ZAP") {
-		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
@@ -649,6 +658,7 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
  * Returns an extension for an external phone.
  */
 function extensions_generate_external_phone_extension($p, $from_public=false, $readbacknum=false, $extension=false) {
+	global $defaults;
 	
 	$tech = pbx_uniqid_to_technology($p['dialprovider']);
 	$transfer_flags = (!$from_public) ? "tT" : "t";
@@ -660,20 +670,28 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 		$readbacknum = $phone_exten;
 	}
 
+	// ring length
+	$ringlength = $defaults['accounts']['phones']['ringlength'];
+	if ($p['ringlength'] == "indefinitely") {
+		$ringlength = "";
+	} else if ($p['ringlength']) {
+		$ringlength = $p['ringlength'];
+	}
+
 	$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
 	if ($tech == "ZAP") {
 		$prov = analog_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+			"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "CAPI") {
 		$prov = isdn_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-				"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+				"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$p['dialprovider']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o)\n";
+			"Macro(vm|$tech/{$p['dialprovider']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_external_phone_extension!";
@@ -687,6 +705,7 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
  * no extension is defined for this group
  */
 function extensions_generate_callgroup_extension($g, $from_public=false, $readbacknum=false, $extension=false) {
+	global $defaults;
 
 	$transfer_flags = (!$from_public) ? "tT" : "t";
 	$exten = ($extension !== false) ? $extension : $g['extension'];
@@ -694,8 +713,16 @@ function extensions_generate_callgroup_extension($g, $from_public=false, $readba
 	$vm_phone = pbx_get_phone($g['groupmember'][0]);
 	$readbacknum = ($readbacknum !== false) ? $readbacknum : $vm_phone['extension'];
 
+	// ring length
+	$ringlength = $defaults['accounts']['phones']['ringlength'];
+	if ($p['ringlength'] == "indefinitely") {
+		$ringlength = "";
+	} else if ($p['ringlength']) {
+		$ringlength = $p['ringlength'];
+	}
+
 	$conf .= extensions_generate_missed_call_notifications_line($exten, $vm_phone);
-	$conf .= "exten => $exten,n,Macro(vm|$dialstring|{$vm_phone['extension']}|$readbacknum|$transfer_flags" . "o)\n";
+	$conf .= "exten => $exten,n,Macro(vm|$dialstring|{$vm_phone['extension']}|$readbacknum|$transfer_flags" . "o|$ringlength)\n";
 
 	return $conf;
 }

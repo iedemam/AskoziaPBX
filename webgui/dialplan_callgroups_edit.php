@@ -55,6 +55,7 @@ if (isset($id) && $a_callgroups[$id]) {
 	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
 	$pconfig['allowdirectdial'] = isset($a_callgroups[$id]['allowdirectdial']);
 	$pconfig['publicname'] = $a_callgroups[$id]['publicname'];
+	$pconfig['ringlength'] = $a_callgroups[$id]['ringlength'];
 }
 
 if ($_POST) {
@@ -83,6 +84,7 @@ if ($_POST) {
 		$gm['groupmember'] = $gme;
 		$gm['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$gm['publicname'] = verify_non_default($_POST['publicname']);
+		$gm['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 
 		if (isset($id) && $a_callgroups[$id]) {
 			$gm['uniqid'] = $a_callgroups[$id]['uniqid'];
@@ -133,6 +135,7 @@ if ($_POST) {
 			</tr>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
 			<? display_description_field($pconfig['descr'], 2); ?>
+			<? display_phone_ringlength_selector($pconfig['ringlength'], 2); ?>
 			<? display_callgroup_member_selector($pconfig['groupmember']); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

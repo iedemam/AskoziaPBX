@@ -63,6 +63,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['language'] = $a_sipphones[$id]['language'];
 	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
 	$pconfig['natmode'] = $a_sipphones[$id]['natmode'];
+	$pconfig['ringlength'] = $a_sipphones[$id]['ringlength'];
 	$pconfig['qualify'] = $a_sipphones[$id]['qualify'];
 	
 	$pconfig['calllimit'] = isset($a_sipphones[$id]['calllimit']) ? $a_sipphones[$id]['calllimit'] : "2";
@@ -140,6 +141,7 @@ if ($_POST) {
 		$sp['language'] = $_POST['language'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
 		$sp['natmode'] = verify_non_default($_POST['natmode'], $defaults['sip']['natmode']);
+		$sp['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 		$sp['qualify'] = $_POST['qualify'];
 
 		$sp['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
@@ -219,6 +221,7 @@ if ($_POST) {
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<? display_description_field($pconfig['descr'], 2); ?>
 			<? display_advanced_settings_begin(2); ?>
+			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
 			<? display_natmode_selector($pconfig['natmode'], 1); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>

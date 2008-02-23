@@ -58,6 +58,7 @@ if (isset($id) && $a_analogphones[$id]) {
 	$pconfig['interface'] = $a_analogphones[$id]['interface'];
 	$pconfig['language'] = $a_analogphones[$id]['language'];
 	$pconfig['descr'] = $a_analogphones[$id]['descr'];
+	$pconfig['ringlength'] = $a_analogphones[$id]['ringlength'];
 }
 
 if ($_POST) {
@@ -98,6 +99,7 @@ if ($_POST) {
 		$ap['interface'] = $_POST['interface'];
 		$ap['language'] = $_POST['language'];
 		$ap['descr'] = verify_non_default($_POST['descr']);
+		$ap['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 
 		$a_providers = pbx_get_providers();
 		$ap['provider'] = array();
@@ -134,6 +136,7 @@ if ($_POST) {
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_advanced_settings("ready");?>
 
 	});
 
@@ -175,6 +178,9 @@ if ($_POST) {
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
+			<? display_advanced_settings_begin(1); ?>
+			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
+			<? display_advanced_settings_end(); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

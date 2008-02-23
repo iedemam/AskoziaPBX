@@ -63,6 +63,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['publicname'] = $a_iaxphones[$id]['publicname'];
 	$pconfig['language'] = $a_iaxphones[$id]['language'];
 	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
+	$pconfig['ringlength'] = $a_iaxphones[$id]['ringlength'];
 	if(!is_array($pconfig['codec'] = $a_iaxphones[$id]['codec']))
 		$pconfig['codec'] = array("ulaw");
 	$pconfig['descr'] = $a_iaxphones[$id]['descr'];
@@ -129,6 +130,7 @@ if ($_POST) {
 		$sp['language'] = $_POST['language'];
 		$sp['descr'] = verify_non_default($_POST['descr']);
 		$sp['qualify'] = $_POST['qualify'];
+		$sp['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 
 		$sp['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
@@ -211,6 +213,7 @@ if ($_POST) {
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<? display_description_field($pconfig['descr'], 2); ?>
 			<? display_advanced_settings_begin(2); ?>
+			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>
