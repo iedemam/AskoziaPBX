@@ -47,9 +47,17 @@ if ($_POST) {
 		}
 		
 	} else if (isset($pconfig['save'])) {
+		$needsremount = (substr($pconfig['file'], 0, 6) == "/conf/");
+		if ($needsremount) {
+			conf_mount_rw();
+		}
 		$f = fopen($pconfig['file'], "w");
+		$pconfig['contents'] = str_replace("\r", "", $pconfig['contents']);
 		fwrite($f, $pconfig['contents']);
 		fclose($f);
+		if ($needsremount) {
+			conf_mount_ro();
+		}
 		$savemsg = "File contents ({$pconfig['file']}) saved.";
 	}
 
