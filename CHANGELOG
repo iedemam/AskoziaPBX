@@ -6,7 +6,8 @@
  - bug: multiple SIP Provider accounts on the same host are now correctly routed (working *.conf example provided by Sergio in the forums)
  - bug: boot messages are no longer being suppressed by a poorly chosen variable name in extensions.inc
  - bug: outgoing caller id overrides in providers are now functional
- - bug: diag_editor.php no longer inserts unwanted '\r' characters and automatically remounts /conf if needed (reported and patched by devon in the forums) 
+ - bug: diag_editor.php no longer inserts unwanted '\r' characters and automatically remounts /conf if needed (reported and patched by devon in the forums)
+ - bug: Applications are no longer generated with 's' extensions, rather 'X!' patterns. This allows the application to be aware of which extension it was reached with. (reported by ciscomonkey in the forums)
 
 2008.02.14 - pb13
  - added: manual attributes may now be defined for phones, providers and under "Advanced" for SIP and IAX technologies

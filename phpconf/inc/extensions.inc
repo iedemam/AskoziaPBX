@@ -736,7 +736,7 @@ function extensions_generate_application_context($a) {
 		$conf = "; " . $a['name'] . "\n";
 		$conf .= "[" . $a['uniqid'] . "]\n";
 		foreach ($a['app-command'] as $ac) {
-			$conf .= "exten => s," . base64_decode($ac) . "\n";
+			$conf .= "exten => _X!," . base64_decode($ac) . "\n";
 		}
 	}
 
@@ -750,7 +750,7 @@ function extensions_generate_application_extension($a, $from_public=false, $exte
 
 	$exten = ($extension !== false) ? $extension : $a['extension'];
 
-	return "exten => $exten,n,Dial(Local/s@" . $a['uniqid'] . "/n)\n";
+	return "exten => $exten,n,Dial(Local/$\{EXTEN}@" . $a['uniqid'] . "/n)\n";
 }
 
 function extensions_generate_conference_room_extension($r, $from_public=false, $extension=false) {
