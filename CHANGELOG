@@ -1,4 +1,4 @@
-2008.xx.xx - pb13.1
+2008.02.26 - pb13.1
  - added: incoming caller id from providers may be prepended or replaced by a user defined string
  - added: NAT settings can now be overridden under "Advanced Settings" in SIP accounts
  - added: phones and callgroups now have selectable ring lengths
