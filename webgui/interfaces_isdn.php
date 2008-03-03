@@ -43,7 +43,6 @@ $configured_units = array();
 foreach ($a_isdninterfaces as $interface) {
 	$configured_units[$interface['unit']]['name'] = $interface['name'];
 	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
-	$configured_units[$interface['unit']]['echosquelch'] = $interface['echosquelch'];
 	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
 	$configured_units[$interface['unit']]['pcmmaster'] = $interface['pcmmaster'];
 	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
@@ -66,7 +65,6 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
-		$merged_units[$i]['echosquelch'] = $configured_units[$i]['echosquelch'];
 		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
 		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];

@@ -179,7 +179,7 @@ function network_get_interfaces() {
 		if (substr($ifname, -1) == "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 
-		if (!preg_match("/^(ppp|sl|gif|faith|lo|ng|vlan|tun|enc|wi|ath|ral|ural)\d/", $ifname)) {
+		if (!preg_match("/^(ppp|sl|gif|faith|lo|ng|vlan|tun|enc|wi|ath|ral|ural|ipr)\d/", $ifname)) {
 			$iflist[$ifname] = array();
 			
 			$iflist[$ifname]['mac'] = chop($alink[3]);

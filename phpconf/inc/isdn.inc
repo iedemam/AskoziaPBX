@@ -152,9 +152,8 @@ function isdn_get_recognized_unit_numbers() {
 }
 
 /**
- * Returns all configured ISDN units sorted by unit number.
+ * Returns all configured ISDN units still present in the system sorted by unit number.
  * If no units are configured, the global array is initialized.
- * XXX : should be switched to return both recognized and configured units
  */
 function isdn_get_interfaces() {
 	global $config;
@@ -163,8 +162,16 @@ function isdn_get_interfaces() {
 		$config['interfaces']['isdn-unit'] = array();
 		
 	isdn_sort_interfaces();
-		
-	return $config['interfaces']['isdn-unit'];
+
+	$recognized_units = array_keys(isdn_get_recognized_unit_numbers());
+	$interfaces = array();
+	foreach ($config['interfaces']['isdn-unit'] as $i) {
+		if (in_array($i['unit'], $recognized_units)) {
+			$interfaces[] = $i;
+		}
+	}
+
+	return $interfaces;
 }
 
 /**
@@ -336,12 +343,6 @@ EOD;
 			$conf .= "echocancel=no\n";
 		}
     
-		if ($interface['echosquelch']) {
-			$conf .= "echosquelch=yes\n";
-		} else {
-			$conf .= "echosquelch=no\n";
-		}
-				
 		//$conf .= ";echocancelold=yes\n";
 		$conf .= "echotail=64\n";
 		//$conf .= ";bridge=yes\n";
@@ -378,12 +379,7 @@ EOD;
 		} else {
 			$conf .= "echocancel=no\n";
 		}
-    
-		if ($interface['echosquelch']) {
-			$conf .= "echosquelch=yes\n";
-		} else {
-			$conf .= "echosquelch=no\n";
-		}
+
 		//$conf .= ";echocancelold=yes\n";
 		//$conf .= ";echotail=64\n";
 		//$conf .= ";bridge=yes\n";

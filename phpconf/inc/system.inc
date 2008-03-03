@@ -674,6 +674,11 @@ function system_load_kernel_modules() {
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
+	// XXX : small work around to maintain webgui/binary compatibility between pb13 and pb14
+	// this can be safely removed after pb13's point releases have stopped
+	if (file_exists("/boot/kernel/i4b.ko")) {
+		mwexec("/sbin/kldload i4b");
+	}
 }
 
 ?>

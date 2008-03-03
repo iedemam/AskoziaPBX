@@ -47,7 +47,6 @@ $configured_units = array();
 foreach ($a_isdninterfaces as $interface) {
 	$configured_units[$interface['unit']]['name'] = $interface['name'];
 	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
-	$configured_units[$interface['unit']]['echosquelch'] = $interface['echosquelch'];
 	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
 	$configured_units[$interface['unit']]['pcmmaster'] = $interface['pcmmaster'];
 	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
@@ -70,7 +69,6 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
-		$merged_units[$i]['echosquelch'] = $configured_units[$i]['echosquelch'];
 		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
 		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
@@ -85,7 +83,6 @@ for ($i = 0; $i <= $n; $i++) {
 $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['mode'] = $merged_units[$unit]['mode'];
-$pconfig['echosquelch'] = $merged_units[$unit]['echosquelch'];
 $pconfig['echocancel'] = $merged_units[$unit]['echocancel'];
 $pconfig['pcmmaster'] = $merged_units[$unit]['pcmmaster'];
 $pconfig['nopwrsave'] = $merged_units[$unit]['nopwrsave'];
@@ -106,7 +103,6 @@ if ($_POST) {
 				if ($a_isdninterfaces[$i]['unit'] == $unit) {
 					$a_isdninterfaces[$i]['name'] = $_POST['name'];
 					$a_isdninterfaces[$i]['mode'] = $_POST['mode'];
-					$a_isdninterfaces[$i]['echosquelch'] = $_POST['echosquelch'];
 					$a_isdninterfaces[$i]['echocancel'] = $_POST['echocancel'];
 					$a_isdninterfaces[$i]['pcmmaster'] = $_POST['pcmmaster'];
 					$a_isdninterfaces[$i]['nopwrsave'] = $_POST['nopwrsave'];
@@ -118,7 +114,6 @@ if ($_POST) {
 			$a_isdninterfaces[$n]['unit'] = $unit;
 			$a_isdninterfaces[$n]['name'] = $_POST['name'];
 			$a_isdninterfaces[$n]['mode'] = $_POST['mode'];
-			$a_isdninterfaces[$n]['echosquelch'] = $_POST['echosquelch'];
 			$a_isdninterfaces[$n]['echocancel'] = $_POST['echocancel'];
 			$a_isdninterfaces[$n]['pcmmaster'] = $_POST['pcmmaster'];
 			$a_isdninterfaces[$n]['nopwrsave'] = $_POST['nopwrsave'];
@@ -165,13 +160,6 @@ if ($_POST) {
 		<td class="vtable">
 			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
 			Enable echo cancellation.
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Echo Squelch</td>
-		<td class="vtable">
-			<input name="echosquelch" id="echosquelch" type="checkbox" value="yes" <? if ($pconfig['echosquelch']) echo "checked"; ?>>
-			Enable echo squelch. (primitive echo suppression)
 		</td>
 	</tr>
 	<tr> 

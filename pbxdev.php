@@ -340,6 +340,8 @@ function build_isdn() {
 	
 	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
 	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
+	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module; make clean; make");
+
 	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/; gmake clean; gmake all");
 }
 
@@ -1010,6 +1012,7 @@ function populate_pointstaging($image_name) {
 	_exec("cp /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/acpi/acpi/acpi.ko ".
 		"$image_name/pointstaging");
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
+	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
 	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/pointstaging");
 }
