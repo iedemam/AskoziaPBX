@@ -320,7 +320,7 @@ function analog_zaptel_conf_generate() {
  * Generates zapata.conf which defines modules, signaling, ec options, busy detection etc.
  */
 function analog_zapata_conf_generate() {
-	global $config, $g;
+	global $config, $g, $defaults;
 
 	$fd = fopen("/usr/local/etc/asterisk/zapata.conf", "w");
 	if (!$fd) {
@@ -340,6 +340,17 @@ function analog_zapata_conf_generate() {
 			$conf .= "signalling=fxs_{$interface['startsignal']}\n";
 		} else {
 			$conf .= "signalling=fxs_ks\n";
+		}
+
+		if ($interface['rxgain']) {
+			$conf .= "rxgain=" . $interface['rxgain'] . "\n";
+		} else {
+			$conf .= "rxgain=" . $defaults['analog']['interface']['rxgain'] . "\n";
+		}
+		if ($interface['txgain']) {
+			$conf .= "txgain=" . $interface['txgain'] . "\n";
+		} else {
+			$conf .= "txgain=" . $defaults['analog']['interface']['txgain'] . "\n";
 		}
 
 		if ($interface['echocancel']) {
@@ -372,6 +383,17 @@ function analog_zapata_conf_generate() {
 			$conf .= "signalling=fxo_{$interface['startsignal']}\n";
 		} else {
 			$conf .= "signalling=fxo_ks\n";
+		}
+
+		if ($interface['rxgain']) {
+			$conf .= "rxgain=" . $interface['rxgain'] . "\n";
+		} else {
+			$conf .= "rxgain=" . $defaults['analog']['interface']['rxgain'] . "\n";
+		}
+		if ($interface['txgain']) {
+			$conf .= "txgain=" . $interface['txgain'] . "\n";
+		} else {
+			$conf .= "txgain=" . $defaults['analog']['interface']['txgain'] . "\n";
 		}
 
 		if ($interface['echocancel']) {

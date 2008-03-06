@@ -47,12 +47,15 @@ if (!is_array($config['interfaces']['ab-unit']))
 analog_sort_ab_interfaces();
 $a_abinterfaces = &$config['interfaces']['ab-unit'];
 
+// XXX : these merging and sorting bits in isdn and analog interfaces need a rewrite
 $configured_units = array();
 foreach ($a_abinterfaces as $interface) {
 	$configured_units[$interface['unit']]['name'] = $interface['name'];
 	$configured_units[$interface['unit']]['type'] = $interface['type'];
 	$configured_units[$interface['unit']]['startsignal'] = $interface['startsignal'];
 	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
+	$configured_units[$interface['unit']]['rxgain'] = $interface['rxgain'];
+	$configured_units[$interface['unit']]['txgain'] = $interface['txgain'];
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -73,6 +76,8 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['type'] = $configured_units[$i]['type'];
 		$merged_units[$i]['startsignal'] = $configured_units[$i]['startsignal'];
 		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
+		$merged_units[$i]['rxgain'] = $configured_units[$i]['rxgain'];
+		$merged_units[$i]['txgain'] = $configured_units[$i]['txgain'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
@@ -87,6 +92,8 @@ $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['type'] = $merged_units[$unit]['type'];
 $pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
 $pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : "128";
+$pconfig['rxgain'] = $merged_units[$unit]['rxgain'];
+$pconfig['txgain'] = $merged_units[$unit]['txgain'];
 
 
 if ($_POST) {
@@ -95,7 +102,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 	
 	if (!$input_errors) {
-		
+		// XXX : these merging and sorting bits in isdn and analog interfaces need a rewrite
 		$n = count($a_abinterfaces);
 		if (isset($configured_units[$unit])) {
 			for ($i = 0; $i < $n; $i++) {
@@ -104,6 +111,8 @@ if ($_POST) {
 					$a_abinterfaces[$i]['type'] = $_POST['type'];
 					$a_abinterfaces[$i]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
 					$a_abinterfaces[$i]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
+					$a_abinterfaces[$i]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
+					$a_abinterfaces[$i]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
 				}
 			}
 
@@ -113,6 +122,8 @@ if ($_POST) {
 			$a_abinterfaces[$n]['type'] = $_POST['type'];
 			$a_abinterfaces[$n]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
 			$a_abinterfaces[$n]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
+			$a_abinterfaces[$n]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
+			$a_abinterfaces[$n]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
 		}
 
 
@@ -133,7 +144,7 @@ if ($_POST) {
 		<td width="20%" valign="top" class="vncellreq">Name</td>
 		<td width="80%" class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-			<br><span class="vexpl">descriptive name</span>
+			<br><span class="vexpl">Descriptive name for this interface</span>
 		</td>
 	</tr>
 	<tr> 
@@ -163,6 +174,7 @@ if ($_POST) {
 			<br><span class="vexpl">The echo canceller "tap" size. Larger sizes more effectively cancel echo but require more processing power.</span>
 		</td>
 	</tr>
+	<? display_analog_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
 	<tr> 
 		<td valign="top">&nbsp;</td>
 		<td>

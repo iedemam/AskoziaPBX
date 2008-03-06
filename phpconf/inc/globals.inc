@@ -63,6 +63,9 @@ $defaults['analog']['interface'] = array();
 $defaults['analog']['interface']['name'] = "(unconfigured)";
 $defaults['analog']['interface']['startsignal'] = "ks";
 $defaults['analog']['interface']['echocancel'] = "128";
+$defaults['analog']['interface']['rxgain'] = "0.0";
+$defaults['analog']['interface']['txgain'] = "0.0";
+
 $defaults['analog']['loadzone'] = array("us");
 
 $defaults['codec'] = array("ulaw");
