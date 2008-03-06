@@ -33,7 +33,7 @@ $pgtitle = array("License");
 require("guiconfig.inc"); 
 ?>
 <?php include("fbegin.inc"); ?>
-	<p><strong>AskoziaPBX is Copyright &copy; 2007 - 2008 IKT (<a href="http://itison-ikt.de/en/en_index.html">http://www.itison-ikt.de</a>).<br>
+	<p><strong>AskoziaPBX is Copyright &copy; 2007 - 2008 IKT (<a href="http://itison-ikt.de/en/startseite">http://www.itison-ikt.de</a>).<br>
 	All rights reserved.</strong></p>
 	<p> Redistribution and use in source and binary forms, with or without<br>
 	modification, are permitted provided that the following conditions 

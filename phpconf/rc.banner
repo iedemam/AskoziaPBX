@@ -41,8 +41,8 @@
 
 *** This is AskoziaPBX, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
-    Copyright (C) 2007 IKT. All rights reserved.
-    m0n0wall base Copyright (C) 2002-2007 Manuel Kasper. All rights reserved.
+    AskoziaPBX is Copyright (C) 2007-2008 IKT. All rights reserved.
+    m0n0wall base Copyright (C) 2002-2008 Manuel Kasper. All rights reserved.
     Visit http://askozia.com/pbx for updates.
     
     LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}

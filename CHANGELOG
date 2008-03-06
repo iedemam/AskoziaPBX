@@ -1,4 +1,5 @@
 2008.xx.xx - pb14
+ - updated isdn4bsd to revision 606
  - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
 
 2008.02.26 - pb13.1
