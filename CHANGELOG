@@ -5,6 +5,7 @@
 2008.xx.xx - pb13.2
  - added: transmit and receive gains can now be set for analog interfaces (working patch provided by devon in the forums, modified for code consistency)
  - added: improved documentation on the analog interfaces page
+ - bug: missed call notifications are no longer sent for successfully completed calls
 
 2008.02.26 - pb13.1
  - added: incoming caller id from providers may be prepended or replaced by a user defined string

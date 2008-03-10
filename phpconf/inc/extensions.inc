@@ -57,7 +57,7 @@ function extensions_conf_generate() {
 
 [macro-vm];
 exten => s,1,Dial($\{ARG1},$\{ARG5},$\{ARG4})
-exten => s,n,NoOp($\{DIALSTATUS})
+exten => s,n,NoOp(DIALSTATUS: $\{DIALSTATUS})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 
 exten => s-NOANSWER,1,Wait(1)
@@ -75,10 +75,14 @@ exten => s-ANSWER,n,Hangup()
 
 exten => _s-.,1,Goto(s-NOANSWER,1)
 
-exten => h,1,NoOp($\{MISSEDCAUSE})
+exten => h,1,NoOp(DIALSTATUS: $\{DIALSTATUS})
+exten => h,n,GosubIf($["$\{DIALSTATUS}" = "ANSWER"]?callcompleted)
+exten => h,n,NoOp(MISSEDCAUSE: $\{MISSEDCAUSE})
 exten => h,n,GosubIf($["$\{MISSEDCAUSE}" = ""]?reallyhungup)
+exten => h,n,NoOp(SENDNOTIFICATIONS: $\{SENDNOTIFICATIONS})
 exten => h,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
 exten => h,n,Hangup()
+exten => h,n(callcompleted),Hangup()
 exten => h,n(reallyhungup),Set(MISSEDCAUSE=hungup)
 exten => h,n,Return()
 exten => h,n(notify),Macro(email)
