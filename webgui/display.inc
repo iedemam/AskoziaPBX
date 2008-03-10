@@ -488,7 +488,7 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 			}
 
 			?>>&nbsp;allow extension to be directly dialed over public networks
-			<br><span name="publicname_wrapper" id="publicname_wrapper">
+			<br><span name="publicname_wrapper" id="publicname_wrapper" style="display: none">
 			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
 			<br><span class="vexpl">Public name. Enter a string to map a friendly name to this extension.</span>
 			<br>
