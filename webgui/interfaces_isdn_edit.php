@@ -152,7 +152,15 @@ if ($_POST) {
 			><?=$friendly;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl">Interface Operation Mode</span>
+			<br><span class="vexpl">
+				<ul>
+					<li>point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system</li>
+					<li>multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones</li>
+					<li>point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system</li>
+					<li>point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system</li>
+				</ul>
+			</span>
+			<br>
 		</td>
 	</tr>
 	<tr> 
@@ -173,14 +181,14 @@ if ($_POST) {
 		<td valign="top" class="vncell">Disable Power Save</td>
 		<td class="vtable">
 			<input name="nopwrsave" id="nopwrsave" type="checkbox" value="yes" <? if ($pconfig['nopwrsave']) echo "checked"; ?>>
-			Disable power save mode.
+			Disable power save mode. (sometimes needed for older cards)
 		</td>
 	</tr>
 	<tr> 
 		<td valign="top" class="vncell">Enable Polling Mode</td>
 		<td class="vtable">
 			<input name="pollmode" id="pollmode" type="checkbox" value="yes" <? if ($pconfig['pollmode']) echo "checked"; ?>>
-			Enable polling mode.
+			Enable polling mode. (sometimes needed for older cards)
 		</td>
 	</tr>
 	<tr> 
