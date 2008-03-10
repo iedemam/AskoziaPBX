@@ -56,6 +56,7 @@ foreach ($a_abinterfaces as $interface) {
 	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
 	$configured_units[$interface['unit']]['rxgain'] = $interface['rxgain'];
 	$configured_units[$interface['unit']]['txgain'] = $interface['txgain'];
+	$configured_units[$interface['unit']]['manual-attribute'] = $interface['manual-attribute'];
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -78,6 +79,7 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 		$merged_units[$i]['rxgain'] = $configured_units[$i]['rxgain'];
 		$merged_units[$i]['txgain'] = $configured_units[$i]['txgain'];
+		$merged_units[$i]['manual-attribute'] = $configured_units[$i]['manual-attribute'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
@@ -94,12 +96,20 @@ $pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
 $pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : "128";
 $pconfig['rxgain'] = $merged_units[$unit]['rxgain'];
 $pconfig['txgain'] = $merged_units[$unit]['txgain'];
-
+$pconfig['manual-attribute'] = $merged_units[$unit]['manual-attribute'];
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
+	
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 	
 	if (!$input_errors) {
 		// XXX : these merging and sorting bits in isdn and analog interfaces need a rewrite
@@ -113,6 +123,7 @@ if ($_POST) {
 					$a_abinterfaces[$i]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
 					$a_abinterfaces[$i]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
 					$a_abinterfaces[$i]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
+					$a_abinterfaces[$i]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 				}
 			}
 
@@ -124,6 +135,7 @@ if ($_POST) {
 			$a_abinterfaces[$n]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
 			$a_abinterfaces[$n]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
 			$a_abinterfaces[$n]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
+			$a_abinterfaces[$n]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 		}
 
 
@@ -137,6 +149,17 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_advanced_settings("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -175,9 +198,12 @@ if ($_POST) {
 		</td>
 	</tr>
 	<? display_analog_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
+	<? display_advanced_settings_begin(1); ?>
+	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
+	<? display_advanced_settings_end(); ?>
 	<tr> 
-		<td valign="top">&nbsp;</td>
-		<td>
+		<td width="20%" valign="top">&nbsp;</td>
+		<td width="80%">
 			<input name="Submit" type="submit" class="formbtn" value="Save">
 			<input name="unit" type="hidden" value="<?=$unit;?>">
 			<input name="type" type="hidden" value="<?=$type;?>">

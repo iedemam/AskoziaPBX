@@ -1,10 +1,11 @@
 2008.xx.xx - pb14
  - updated isdn4bsd to revision 606
- - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
 
 2008.xx.xx - pb13.2
  - added: transmit and receive gains can now be set for analog interfaces (working patch provided by devon in the forums, modified for code consistency)
  - added: improved documentation on the analog interfaces page
+ - added: manual attributes can now be defined for analog interfaces
+ - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
  - bug: missed call notifications are no longer sent for successfully completed calls
 
 2008.02.26 - pb13.1

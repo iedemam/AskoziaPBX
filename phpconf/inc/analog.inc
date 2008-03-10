@@ -369,6 +369,7 @@ function analog_zapata_conf_generate() {
 			$conf .= "language={$p['language']}\n";
 		}
 		$conf .= "context={$p['uniqid']}-incoming\n";
+		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
 		$conf .= "channel => {$p['interface']}\n";
 		$conf .= "\n";
 	}
@@ -412,6 +413,7 @@ function analog_zapata_conf_generate() {
 			$conf .= "language={$p['language']}\n";
 		}
 		$conf .= "context={$p['uniqid']}\n";
+		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
 		$conf .= "channel => {$p['interface']}\n";
 		$conf .= "\n";
 	}
