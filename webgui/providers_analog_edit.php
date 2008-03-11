@@ -153,7 +153,7 @@ if ($_POST) {
 				<td width="20%" valign="top" class="vncellreq">Name</td>
 				<td width="80%" colspan="1" class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl">Descriptive name of this provider.</span>
+					<br><span class="vexpl">Descriptive name for this provider.</span>
 				</td>
 			</tr>
 			<tr> 
