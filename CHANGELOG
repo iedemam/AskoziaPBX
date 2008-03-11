@@ -5,6 +5,7 @@
  - added: transmit and receive gains can now be set for analog interfaces (working patch provided by devon in the forums, modified for code consistency)
  - added: improved documentation on the analog and isdn interfaces pages
  - added: manual attributes can now be defined for analog interfaces
+ - added: an authentication method can now be selected for the SMTP server used in "Services -> Voicemail"
  - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
  - bug: missed call notifications are no longer sent for successfully completed calls
 

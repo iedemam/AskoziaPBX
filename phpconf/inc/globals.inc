@@ -126,4 +126,6 @@ $defaults['system']['timeupdateinterval'] = "300";
 $defaults['webgui'] = array();
 $defaults['webgui']['protocol'] = "https";
 
+$defaults['voicemail']['authtype'] = "auto";
+
 ?>

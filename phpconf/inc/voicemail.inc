@@ -304,7 +304,11 @@ function msmtp_conf_generate() {
 	$conf .= "host {$vmconfig['host']}\n";
 	
 	if ($vmconfig['username']) {
-		$conf .= "auth on\n";
+		if ($vmconfig['authtype']) {
+			$conf .= "auth {$vmconfig['authtype']}\n";
+		} else {
+			$conf .= "auth on\n";
+		}
 		$conf .= "user {$vmconfig['username']}\n";
 		$conf .= "password {$vmconfig['password']}\n";
 	}

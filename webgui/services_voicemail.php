@@ -40,6 +40,7 @@ $pconfig['username'] = $vmconfig['username'];
 $pconfig['password'] = $vmconfig['password'];
 $pconfig['port'] = $vmconfig['port'];
 $pconfig['tls'] = $vmconfig['tls'];
+$pconfig['authtype'] = $vmconfig['authtype'];
 $pconfig['fromaddress'] = $vmconfig['fromaddress'];
 $pconfig['maillanguage'] = $vmconfig['maillanguage'];
 
@@ -77,6 +78,7 @@ if ($_POST) {
 		$vmconfig['password'] = $_POST['password'];
 		$vmconfig['port'] = $_POST['port'];
 		$vmconfig['tls'] = $_POST['tls'];
+		$vmconfig['authtype'] = verify_non_default($_POST['authtype'], $defaults['voicemail']['authtype']);
 		$vmconfig['fromaddress'] = $_POST['fromaddress'];
 		$vmconfig['maillanguage'] = $_POST['maillanguage'];
 		
@@ -128,6 +130,7 @@ if ($_POST) {
 				<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
 			</td>
 		</tr>
+		<? display_voicemail_authtype_selector($pconfig['authtype'], 1); ?>
 		<tr> 
 			<td valign="top" class="vncell">Options</td>
 			<td class="vtable"> 

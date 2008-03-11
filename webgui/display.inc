@@ -640,4 +640,38 @@ function display_description_field($current_description, $colspan) {
 	</tr><?
 }
 
+function display_voicemail_authtype_selector($current_authtype, $colspan) {
+	global $defaults;
+
+	$authtypes = array(
+		"auto",
+		"plain",
+		"login",
+		"cram-md5",
+		//"digest-md5", (needs gnu sasl)
+		//"gssapi", (needs gnu sasl)
+		"external"
+		//"ntlm" (needs gnu sasl)
+	);
+
+	if (!$current_authtype) {
+		$current_authtype = $defaults['voicemail']['authmode'];
+	}
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell">Authentication Method</td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<select name="authtype" class="formfld" id="authtype">
+			<? foreach ($authtypes as $authtype) : ?>
+			<option value="<?=$authtype;?>" <?
+			if ($authtype == $current_authtype)
+				echo "selected"; ?>
+			><?=$authtype;?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl">Most accounts will work using "auto." If this fails, select an authentication method appropriate for your server.</span>
+		</td>
+	</tr><?
+}
+
 ?>
