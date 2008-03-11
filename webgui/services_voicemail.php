@@ -165,7 +165,7 @@ if ($_POST) {
 				><?=$friendly;?></option>
 				<? endforeach; ?>
 				</select>
-				<br><span class="vexpl">E-mail notifications for new voicemail will be delievered in this language.</span>
+				<br><span class="vexpl">E-mail notifications for new voicemail will be delivered in this language.</span>
 			</td>
 		</tr>
 		<tr> 
