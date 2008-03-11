@@ -1014,6 +1014,7 @@ function populate_pointstaging($image_name) {
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
 	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot $image_name/pointstaging");
 	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/pointstaging");
 }
 
@@ -1144,7 +1145,7 @@ function package($platform, $image_name) {
 	
 	_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
 	_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
-	_exec("bsdlabel -BR -b /usr/obj/usr/src/sys/boot/i386/boot2/boot md0 tmp/formatted.label");
+	_exec("bsdlabel -BR -b $image_name/pointstaging/boot md0 tmp/formatted.label");
 	
 	//_exec("newfs -L MAIN -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
 	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
