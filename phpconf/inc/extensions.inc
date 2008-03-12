@@ -463,7 +463,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 function extensions_generate_provider_incoming_context($p) {
 
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
-	$catchall = array("_X!", "s");
+	$catchall = array("_[0-9a-zA-Z*#]!", "s");
 
 	$conf = "[{$p['uniqid']}-incoming]\n";
 	$conf .= "include => public-direct-dial\n";
@@ -483,6 +483,8 @@ function extensions_generate_provider_incoming_context($p) {
 		$readbacknum = $p['msn'];
 	} else if ($tech == "ZAP") {
 		$readbacknum = $p['number'];
+	} else if (($tech == "SIP" || $tech == "IAX") && verify_is_numericint($p['username'])) {
+		$readbacknum = $p['username'];
 	} else {
 		$readbacknum = false;
 	}
@@ -740,7 +742,7 @@ function extensions_generate_application_context($a) {
 		$conf = "; " . $a['name'] . "\n";
 		$conf .= "[" . $a['uniqid'] . "]\n";
 		foreach ($a['app-command'] as $ac) {
-			$conf .= "exten => _X!," . base64_decode($ac) . "\n";
+			$conf .= "exten => _[*#0-9]!," . base64_decode($ac) . "\n";
 		}
 	}
 

@@ -6,8 +6,11 @@
  - added: improved documentation on the analog and isdn interfaces pages
  - added: manual attributes can now be defined for analog interfaces
  - added: an authentication method can now be selected for the SMTP server used in "Services -> Voicemail"
+ - changed: * and # characters may now be used in application extensions
  - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
  - bug: missed call notifications are no longer sent for successfully completed calls
+ - bug: incoming calls from SIP or IAX providers landing in voicemail will now be read back the account's username if it is numeric instead of the internal extension
+ - bug: incoming calls from providers will now be accepted in more cases (previously only numeric and 's' extensions would be matched, now all extensions containing alphanumeric, # and * characters will be matched)
 
 2008.02.26 - pb13.1
  - added: incoming caller id from providers may be prepended or replaced by a user defined string

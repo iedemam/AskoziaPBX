@@ -67,7 +67,8 @@ if ($_POST) {
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (!pbx_is_valid_extension($_POST['extension'])) {
+	/* XXX : temporary hack to allow '*' and '#' characters in application extensions */
+	if (!preg_match("/[0-9\*\#]+/", $_POST['extension'])) {
 		$input_errors[] = "A valid extension must be entered.";
 	}
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
