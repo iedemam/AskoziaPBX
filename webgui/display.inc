@@ -468,7 +468,8 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 			}
 
 			?>>&nbsp;also send missed call notifications<br>
-			<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.</span>
+			<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.
+			<br><span class="red"><strong>Note:</strong></span> Voicemail Services <a href="/services_voicemail.php">must be configured</a> before this feature will work.</span>
 		</td>
 	</tr><?
 }
