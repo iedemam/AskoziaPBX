@@ -81,6 +81,16 @@ for ($i = 0; $i <= $n; $i++) {
 	}
 }
 
+if ($_GET['act'] == "forget") {
+	if(!($msg = analog_forget_interface($_GET['unit']))) {
+		write_config();
+		touch($d_analogconfdirty_path);
+		header("Location: interfaces_analog.php");
+		exit;
+	} else {
+		$input_errors[] = $msg;	
+	}
+}
 
 if (file_exists($d_analogconfdirty_path)) {
 	$retval = 0;
@@ -137,28 +147,25 @@ if (file_exists($d_analogconfdirty_path)) {
 			} else {
 				?><tr>
 					<td width="10%" class="listhdrr">Unit</td>
-					<td width="25%" class="listhdrr">Name</td>
+					<td width="20%" class="listhdrr">Name</td>
 					<td width="10%" class="listhdrr">Type</td>
 					<td width="12%" class="listhdrr">Start</td>
 					<td width="18%" class="listhdrr">Gain (rx/tx)</td>
 					<td width="20%" class="listhdrr">Echo Canceller</td>
-					<td width="5%" class="list"></td>
+					<td width="10%" class="list"></td>
 				</tr><?	
 			
 				foreach ($merged_units as $mu) {
-					if (isset($mu['startsignal'])) {
-						$startsignal = $analog_startsignals[$mu['startsignal']];
-						$startsignal = substr($startsignal, 0, strpos($startsignal, " "));	
-					} else {
-						$startsignal = "Kewl";
-					}
-			
-				?><tr>
-					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
-					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars($mu['type']);?></td>
-					<td class="listr"><?=htmlspecialchars($startsignal);?></td>
-					<td class="listr"><?
+					if ($mu['name'] != "(unconfigured)") {
+						// set start signal text
+						if (isset($mu['startsignal'])) {
+							$startsignal = $analog_startsignals[$mu['startsignal']];
+							$startsignal = substr($startsignal, 0, strpos($startsignal, " "));	
+						} else {
+							$startsignal = "Kewl";
+						}
+
+						// set gain text
 						if (isset($mu['rxgain'])) {
 							$rx = $mu['rxgain'];
 						} else {
@@ -169,18 +176,35 @@ if (file_exists($d_analogconfdirty_path)) {
 						} else {
 							$tx = $defaults['analog']['interface']['txgain'];
 						}
-						
-						?><?=htmlspecialchars($rx . "/" . $tx);?></td>
-					<td class="listr"><?
-						if (!isset($mu['echocancel']))
+						$gain = $rx . "/" . $tx;
+
+						// set echo cancel text
+						if (!isset($mu['echocancel'])) {
 							$ecfield = "128";
-						else if ($mu['echocancel'] == "no")
+						} else if ($mu['echocancel'] == "no") {
 							$ecfield = "Disabled";
-						else
+						} else {
 							$ecfield = $mu['echocancel'];
-						?><?=htmlspecialchars($ecfield);?></td>
+						}
+
+					} else {
+						$startsignal = "";
+						$gain = "";
+						$ecfield = "";
+					}
+
+				?><tr>
+					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
+					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($mu['type']);?></td>
+					<td class="listr"><?=htmlspecialchars($startsignal);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($gain);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($ecfield);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_analog_edit.php?unit=<?=$mu['unit'];?>&type=<?=$mu['type'];?>"><img src="e.gif" title="edit analog interface" width="17" height="17" border="0"></a>
+					<? if ($mu['name'] != "(unconfigured)") : ?>
+						&nbsp;<a href="interfaces_analog.php?act=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="x.gif" title="forget interface settings" width="17" height="17" border="0"></a>
+					<? endif; ?>
 					</td>
 				</tr><?
 				

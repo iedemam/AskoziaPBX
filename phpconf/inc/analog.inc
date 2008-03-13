@@ -202,6 +202,31 @@ function analog_get_ab_interface($unit) {
 }
 
 /**
+ * Forgets previously defined interface settings
+ */
+function analog_forget_interface($unit_number) {
+	global $config;
+
+	$interfaces = $config['interfaces']['ab-unit'];
+	$n = count($interfaces);
+	$unset = false;
+
+	for ($i = 0; $i < $n; $i++) {
+		if ($interfaces[$i]['unit'] == $unit_number) {
+			unset($GLOBALS['config']['interfaces']['ab-unit'][$i]);
+			$unset = true;
+			break;
+		}
+	}
+
+	if (!$unset) {
+		return "Interface unable to be found, settings remain.";
+	}
+
+	return 0;
+}
+
+/**
  * Generates all configuration files necessary when changes are made.
  */
 function analog_conf_generate() {
