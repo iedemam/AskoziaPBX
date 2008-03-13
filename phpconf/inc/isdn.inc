@@ -274,6 +274,31 @@ function isdn_get_providers_on_unit($unit_number) {
 }
 
 /**
+ * Forgets previously defined interface settings
+ */
+function isdn_forget_interface($unit_number) {
+	global $config;
+
+	$interfaces = $config['interfaces']['isdn-unit'];
+	$n = count($interfaces);
+	$unset = false;
+
+	for ($i = 0; $i < $n; $i++) {
+		if ($interfaces[$i]['unit'] == $unit_number) {
+			unset($GLOBALS['config']['interfaces']['isdn-unit'][$i]);
+			$unset = true;
+			break;
+		}
+	}
+
+	if (!$unset) {
+		return "Interface unable to be found, settings remain.";
+	}
+
+	return 0;
+}
+
+/**
  * Generates capi.conf
  */
 function isdn_conf_generate() {

@@ -75,6 +75,16 @@ for ($i = 0; $i <= $n; $i++) {
 	}
 }
 
+if ($_GET['act'] == "forget") {
+	if(!($msg = isdn_forget_interface($_GET['unit']))) {
+		write_config();
+		touch($d_isdnconfdirty_path);
+		header("Location: interfaces_isdn.php");
+		exit;
+	} else {
+		$input_errors[] = $msg;	
+	}
+}
 
 if (file_exists($d_isdnconfdirty_path)) {
 	$retval = 0;
@@ -96,9 +106,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 ?>
 
 <?php include("fbegin.inc"); ?>
-<form action="interfaces_isdn.php" method="post">
+<?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-
+<form action="interfaces_isdn.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -135,16 +145,21 @@ if (file_exists($d_isdnconfdirty_path)) {
 				?><tr>
 					<td width="10%" class="listhdrr">Unit</td>
 					<td width="20%" class="listhdrr">Name</td>		
-					<td width="30%" class="listhdrr">Mode</td>
-					<td width="15%" class="listhdrr">Echo Canceller</td>
-					<td width="15%" class="listhdr">Timing</td>
-					<td width="5%" class="list"></td>
+					<td width="22%" class="listhdrr">Operating Mode</td>
+					<td width="21%" class="listhdrr">Echo Canceller</td>
+					<td width="12%" class="listhdr">Timing</td>
+					<td width="10%" class="list"></td>
 				</tr><?	
-    			
+
 				foreach ($merged_units as $mu) {
-					$echocancel = $mu['echocancel'] ? "Enabled" : "Disabled";
-					$pcmmaster = $mu['pcmmaster'] ? "Master" : "Slave";
-    			
+					if ($mu['name'] != "(unconfigured)") {
+						$echocancel = $mu['echocancel'] ? "Enabled" : "Disabled";
+						$pcmmaster = $mu['pcmmaster'] ? "Master" : "Slave";
+					} else {
+						$echocancel = "";
+						$pcmmaster = "";
+					}
+
 				?><tr>
 					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
@@ -153,6 +168,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<td class="listr"><?=htmlspecialchars($pcmmaster);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
+					<? if ($mu['name'] != "(unconfigured)") : ?>
+						&nbsp;<a href="interfaces_isdn.php?act=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="x.gif" title="forget interface settings" width="17" height="17" border="0"></a>
+					<? endif; ?>
 					</td>
 				</tr><?
 				
@@ -160,6 +178,16 @@ if (file_exists($d_isdnconfdirty_path)) {
 			}
 
 			?></table>
+			<br>
+			<span class="vexpl"><strong>Operating Modes</strong>
+				<ul>
+					<li>point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system</li>
+					<li>multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones</li>
+					<li>point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system</li>
+					<li>point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system</li>
+				</ul>
+			</span>
+			<br>
 		</td>
 	</tr>
 </table>
