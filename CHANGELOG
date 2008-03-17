@@ -1,5 +1,6 @@
 2008.xx.xx - pb14
- - updated isdn4bsd to revision 612
+ - updated: isdn4bsd to revision 612
+ - updated: basesystem to FreeBSD 6.2-RELEASE-p11
 
 2008.xx.xx - pb13.3
  - added: isdn and analog interface settings can now be "forgotten" in the webGUI
@@ -9,6 +10,7 @@
  - added: improved documentation on the analog and isdn interfaces pages
  - added: manual attributes can now be defined for analog interfaces
  - added: an authentication method can now be selected for the SMTP server used in "Services -> Voicemail"
+ - added: Page() application to base distribution
  - changed: * and # characters may now be used in application extensions
  - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
  - bug: missed call notifications are no longer sent for successfully completed calls
