@@ -123,11 +123,6 @@ exten => s,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALL
 exten => s,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
 exten => s,n,System(rm $\{TMPMAILFILE})
 
-[macro-outgoing-uri]
-exten => s,1,NoOp(Direct dialing via SIP uri : $\{ARG1})
-exten => s,n,Dial(SIP/$\{ARG1},,To)
-
-
 EOD;
 
 	// application contexts
@@ -347,9 +342,8 @@ EOD;
 
 	$conf .= <<<EOD
 [outgoing-uri]
-exten => _[a-z]!,1,Macro(outgoing-uri,$\{EXTEN}@$\{SIPDOMAIN})
-exten => _[A-Z]!,1,Macro(outgoing-uri,$\{EXTEN}@$\{SIPDOMAIN})
-exten => _X!,1,Macro(outgoing-uri,$\{EXTEN}@$\{SIPDOMAIN})
+exten => _[0-9a-zA-Z*#]!,1,NoOp(Direct dialing via SIP uri : $\{EXTEN}@$\{SIPDOMAIN})
+exten => _[0-9a-zA-Z*#]!,n,Dial(SIP/$\{EXTEN}@$\{SIPDOMAIN},,To)
 
 EOD;
 
