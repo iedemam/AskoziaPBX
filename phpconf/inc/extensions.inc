@@ -140,10 +140,10 @@ EOD;
 		if (isset($p['allowdirectdial'])) {
 			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
-				$conf .= "exten => {$p['extension']},1,NoOp()\n";
+				$conf .= "exten => {$p['extension']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
 				$conf .= extensions_generate_internal_phone_extension($p, true);
 			} else {
-				$conf .= "exten => {$p['publicname']},1,NoOp()\n";
+				$conf .= "exten => {$p['publicname']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
 				$conf .= extensions_generate_internal_phone_extension($p, true, false, $p['publicname']);
 			}
 		}
@@ -154,10 +154,10 @@ EOD;
 		if (isset($p['allowdirectdial'])) {
 			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
-				$conf .= "exten => {$p['extension']},1,NoOp()\n";
+				$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['name']} - <{$p['extension']}>)\n";
 				$conf .= extensions_generate_external_phone_extension($p, true);
 			} else {
-				$conf .= "exten => {$p['publicname']},1,NoOp()\n";
+				$conf .= "exten => {$p['publicname']},1,NoOp(public calling external phone: {$p['name']} - <{$p['extension']}>)\n";
 				$conf .= extensions_generate_external_phone_extension($p, true, false, $p['publicname']);
 			}
 		}
@@ -171,10 +171,10 @@ EOD;
 		if (isset($cg['allowdirectdial'])) {
 			$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
 			if (!$cg['publicname']) {
-				$conf .= "exten => {$cg['extension']},1,NoOp()\n";
+				$conf .= "exten => {$cg['extension']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
 				$conf .= extensions_generate_callgroup_extension($cg, true);
 			} else {
-				$conf .= "exten => {$cg['publicname']},1,NoOp()\n";
+				$conf .= "exten => {$cg['publicname']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
 				$conf .= extensions_generate_callgroup_extension($cg, true, false, $cg['publicname']);
 			}
 		}
@@ -185,10 +185,10 @@ EOD;
 		if (isset($a['allowdirectdial'])) {
 			$conf .= "; application : {$a['name']}\n";
 			if (!$a['publicname']) {
-				$conf .= "exten => {$a['extension']},1,NoOp()\n";
+				$conf .= "exten => {$a['extension']},1,NoOp(public calling application: {$a['name']})\n";
 				$conf .= extensions_generate_application_extension($a, true);
 			} else {
-				$conf .= "exten => {$a['publicname']},1,NoOp()\n";
+				$conf .= "exten => {$a['publicname']},1,NoOp(public calling application: {$a['name']})\n";
 				$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
 			}
 		}
@@ -199,10 +199,10 @@ EOD;
 		if (isset($r['allowdirectdial'])) {
 			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
 			if (!$r['publicname']) {
-				$conf .= "exten => {$r['number']},1,NoOp()\n";
+				$conf .= "exten => {$r['number']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
 				$conf .= extensions_generate_conference_room_extension($r, true);
 			} else {
-				$conf .= "exten => {$r['publicname']},1,NoOp()\n";
+				$conf .= "exten => {$r['publicname']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
 				$conf .= extensions_generate_conference_room_extension($r, true, $r['publicname']);
 			}
 		}
@@ -216,14 +216,14 @@ EOD;
 	// internal phone extensions
 	foreach ($internal_phones as $p) {
 		$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
-		$conf .= "exten => {$p['extension']},1,NoOp()\n";
+		$conf .= "exten => {$p['extension']},1,NoOp(internal calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
 		$conf .= extensions_generate_internal_phone_extension($p);
 	}
 
 	// external phone extensions
 	foreach ($external_phones as $p) {
 		$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
-		$conf .= "exten => {$p['extension']},1,NoOp()\n";
+		$conf .= "exten => {$p['extension']},1,NoOp(internal calling external phone: {$p['name']} - <{$p['extension']}>)\n";
 		$conf .= extensions_generate_external_phone_extension($p);
 	}
 
@@ -233,21 +233,21 @@ EOD;
 			continue;
 		}
 		$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
-		$conf .= "exten => {$cg['extension']},1,NoOp()\n";
+		$conf .= "exten => {$cg['extension']},1,NoOp(internal calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
 		$conf .= extensions_generate_callgroup_extension($cg);
 	}
 
 	// application extensions
 	foreach ($applications as $a) {
 		$conf .= "; application : {$a['name']}\n";
-		$conf .= "exten => {$a['extension']},1,NoOp()\n";
+		$conf .= "exten => {$a['extension']},1,NoOp(internal calling application: {$a['name']})\n";
 		$conf .= extensions_generate_application_extension($a);
 	}
 
 	// conference room extensions
 	foreach ($conference_rooms as $r) {
 		$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
-		$conf .= "exten => {$r['number']},1,NoOp()\n";
+		$conf .= "exten => {$r['number']},1,NoOp(internal calling conference: {$r['name']} - <{$r['number']}>)\n";
 		$conf .= extensions_generate_conference_room_extension($r);
 	}
 
@@ -500,7 +500,7 @@ function extensions_generate_provider_incoming_context($p) {
 		
 		if ($pattern == "all") {
 			foreach ($catchall as $catch) {
-				$conf .= "exten => $catch,1,NoOp()\n";
+				$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']})\n";
 				if ($needswait) {
 					$conf .= "exten => $catch,n,Ringing()\n";
 					$conf .= "exten => $catch,n,Wait(1)\n";
@@ -512,7 +512,7 @@ function extensions_generate_provider_incoming_context($p) {
 
 
 		} else if (verify_is_numericint($pattern)) {
-			$conf .= "exten => $pattern,1,NoOp()\n";
+			$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']})\n";
 			if ($needswait) {
 				$conf .= "exten => $pattern,n,Ringing()\n";
 				$conf .= "exten => $pattern,n,Wait(1)\n";
@@ -522,7 +522,7 @@ function extensions_generate_provider_incoming_context($p) {
 
 
 		} else {
-			$conf .= "exten => _$pattern,1,NoOp()\n";
+			$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']})\n";
 			if ($needswait) {
 				$conf .= "exten => _$pattern,n,Ringing()\n";
 				$conf .= "exten => _$pattern,n,Wait(1)\n";
@@ -581,11 +581,11 @@ function extensions_generate_provider_outgoing_context($p) {
 	foreach ($p['dialpattern'] as $pattern) {
 		dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 
+		$conf .= "exten => _$pattern,1,NoOp(outgoing call to provider: {$p['name']})\n";
+
 		// apply caller id override
 		if ($cidoverride) {
-			$conf .= "exten => _$pattern,1,Set(CALLERID(all)=$cidoverride)\n";
-		} else {
-			$conf .= "exten => _$pattern,1,NoOp()\n";
+			$conf .= "exten => _$pattern,n,Set(CALLERID(all)=$cidoverride)\n";
 		}
 
 		// generate technology specific dial()
