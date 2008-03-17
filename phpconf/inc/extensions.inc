@@ -317,8 +317,8 @@ EOD;
 			if ($p['language']) {
 				$phone_lang = $p['language'];
 			}
-			$conf .= "exten => _X!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
-			$conf .= "exten => _X!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+			$conf .= "exten => _[0-9a-zA-Z*#]!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
+			$conf .= "exten => _[0-9a-zA-Z*#]!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}
@@ -337,8 +337,10 @@ EOD;
 			if ($p['language']) {
 				$provider_lang = $p['language'];
 			}
-			$conf .= "exten => _X!,1,Set(CHANNEL(language)=$provider_lang)\n";
-			$conf .= "exten => _X!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+			$conf .= "exten => _[0-9a-zA-Z*#]!,1,Set(CHANNEL(language)=$provider_lang)\n";
+			$conf .= "exten => _[0-9a-zA-Z*#]!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+			$conf .= "exten => s,1,Set(CHANNEL(language)=$provider_lang)\n";
+			$conf .= "exten => s,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}
