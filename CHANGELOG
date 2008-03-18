@@ -7,6 +7,7 @@
  - added: dialplan now produces more human-readable log messages
  - added: Page() application to base distribution
  - added: manual attributes can now be defined for ISDN interfaces
+ - added: "readback" numbers (used for unreachable messages) can now be set manually for SIP and IAX providers
  - bug: incoming calls from ISDN providers will now be accepted in more cases
  - bug: ISDN and Analog interfaces are now automatically renamed from "(unconfigured)" upon configuration
  - bug: ISDN Operating Mode is now verified before saving

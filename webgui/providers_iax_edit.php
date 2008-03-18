@@ -54,6 +54,7 @@ if (isset($_POST['id']))
 /* pull current config into pconfig */
 if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['name'] = $a_iaxproviders[$id]['name'];
+	$pconfig['readbacknumber'] = $a_iaxproviders[$id]['readbacknumber'];
 	$pconfig['username'] = $a_iaxproviders[$id]['username'];
 	$pconfig['authentication'] = $a_iaxproviders[$id]['authentication'];
 	$pconfig['secret'] = $a_iaxproviders[$id]['secret'];
@@ -114,6 +115,9 @@ if ($_POST) {
 	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
 		$input_errors[] = "An incoming Caller ID override string must be specified.";
 	}
+	if ($msg = verify_readback_number($_POST['readbacknumber'])) {
+		$input_errors[] = $msg;
+	}
 
 	// pattern validation
 	if (isset($id)) {
@@ -150,6 +154,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$sp = array();		
 		$sp['name'] = $_POST['name'];
+		$sp['readbacknumber'] = verify_non_default($_POST['readbacknumber']);
 		$sp['username'] = $_POST['username'];
 		$sp['authentication'] = $_POST['authentication'];
 		$sp['secret'] = $_POST['secret'];
@@ -213,6 +218,7 @@ if ($_POST) {
 					<br><span class="vexpl">Descriptive name for this provider.</span>
 				</td>
 			</tr>
+			<? display_readback_number_field($pconfig['readbacknumber'], 2); ?>
 			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncellreq">Username</td>

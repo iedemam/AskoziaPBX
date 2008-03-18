@@ -641,6 +641,17 @@ function display_description_field($current_description, $colspan) {
 	</tr><?
 }
 
+function display_readback_number_field($current_readbacknumber, $colspan) {
+
+	?><tr> 
+		<td valign="top" class="vncell">Readback Number</td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="readbacknumber" type="text" class="formfld" id="readbacknumber" size="40" value="<?=htmlspecialchars($current_readbacknumber);?>"> 
+			<br><span class="vexpl">This "external" number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back.</span>
+		</td>
+	</tr><?
+}
+
 function display_voicemail_authtype_selector($current_authtype, $colspan) {
 	global $defaults;
 

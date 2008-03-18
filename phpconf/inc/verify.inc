@@ -271,4 +271,15 @@ function verify_is_dialstring($dialstring) {
 	return false;
 }
 
+/**
+ * Verifies the presentation or "readback" number
+ */
+function verify_readback_number($readbacknum) {
+
+	if (!verify_is_numericint($readbacknum)) {
+		return "An invalid readback number was entered. Readback numbers must be numeric.";
+	}
+	return false;
+}
+
 ?>

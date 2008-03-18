@@ -477,10 +477,20 @@ function extensions_generate_provider_incoming_context($p) {
 	// assign read back number for provider
 	if ($tech == "CAPI") {
 		$readbacknum = $p['msn'];
+
 	} else if ($tech == "ZAP") {
 		$readbacknum = $p['number'];
-	} else if (($tech == "SIP" || $tech == "IAX") && verify_is_numericint($p['username'])) {
-		$readbacknum = $p['username'];
+
+	} else if ($tech == "SIP" || $tech == "IAX") {
+		// read back username if it is numeric
+		if (verify_is_numericint($p['username'])) {
+			$readbacknum = $p['username'];
+		}
+		// override with readback number if it is set
+		if (isset($p['readbacknumber'])) {
+			$readbacknum = $p['readbacknumber'];
+		}
+
 	} else {
 		$readbacknum = false;
 	}

@@ -54,6 +54,7 @@ if (isset($_POST['id']))
 /* pull current config into pconfig */
 if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['name'] = $a_sipproviders[$id]['name'];
+	$pconfig['readbacknumber'] = $a_sipproviders[$id]['readbacknumber'];
 	$pconfig['username'] = $a_sipproviders[$id]['username'];
 	$pconfig['authuser'] = $a_sipproviders[$id]['authuser'];
 	$pconfig['fromuser'] = $a_sipproviders[$id]['fromuser'];
@@ -122,6 +123,9 @@ if ($_POST) {
 	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
 		$input_errors[] = "An incoming Caller ID override string must be specified.";
 	}
+	if ($msg = verify_readback_number($_POST['readbacknumber'])) {
+		$input_errors[] = $msg;
+	}
 	
 	// pattern validation
 	if (isset($id)) {
@@ -158,6 +162,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$sp = array();		
 		$sp['name'] = $_POST['name'];
+		$sp['readbacknumber'] = verify_non_default($_POST['readbacknumber']);
 		$sp['username'] = $_POST['username'];
 		$sp['fromuser'] = $_POST['fromuser'];
 		$sp['authuser'] = $_POST['authuser'];
@@ -225,6 +230,7 @@ if ($_POST) {
 					<br><span class="vexpl">Descriptive name for this provider.</span>
 				</td>
 			</tr>
+			<? display_readback_number_field($pconfig['readbacknumber'], 2); ?>
 			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 2); ?>
 			<tr> 
 				<td valign="top" class="vncellreq">Username</td>
