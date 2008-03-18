@@ -374,6 +374,7 @@ EOD;
 		//$conf .= ";callgroup=1\n";
 		//$conf .= ";deflect=1234567\n";
 		$conf .= "devices=2\n";
+		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
 		$conf .= "\n";
 	}
 	
@@ -412,6 +413,7 @@ EOD;
 		//$conf .= ";callgroup=1\n";
 		//$conf .= ";deflect=1234567\n";
 		$conf .= "devices=2\n";
+		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
 		$conf .= "\n";
 	}
 

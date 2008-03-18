@@ -51,6 +51,7 @@ foreach ($a_isdninterfaces as $interface) {
 	$configured_units[$interface['unit']]['pcmmaster'] = $interface['pcmmaster'];
 	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
 	$configured_units[$interface['unit']]['pollmode'] = $interface['pollmode'];
+	$configured_units[$interface['unit']]['manual-attribute'] = $interface['manual-attribute'];
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();
@@ -73,6 +74,7 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
 		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
 		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];
+		$merged_units[$i]['manual-attribute'] = $configured_units[$i]['manual-attribute'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
@@ -87,13 +89,21 @@ $pconfig['echocancel'] = $merged_units[$unit]['echocancel'];
 $pconfig['pcmmaster'] = $merged_units[$unit]['pcmmaster'];
 $pconfig['nopwrsave'] = $merged_units[$unit]['nopwrsave'];
 $pconfig['pollmode'] = $merged_units[$unit]['pollmode'];
-
+$pconfig['manual-attribute'] = $merged_units[$unit]['manual-attribute'];
 
 
 if ($_POST) {
 
 	unset($input_errors);
+	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
+	
+	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
+		$input_errors[] = $msg;
+	}
+
+	// this is a messy fix for properly and encoding the content
+	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 	
 	if (!$input_errors) {
 		
@@ -107,6 +117,7 @@ if ($_POST) {
 					$a_isdninterfaces[$i]['pcmmaster'] = $_POST['pcmmaster'];
 					$a_isdninterfaces[$i]['nopwrsave'] = $_POST['nopwrsave'];
 					$a_isdninterfaces[$i]['pollmode'] = $_POST['pollmode'];
+					$a_isdninterfaces[$i]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 				}
 			}
 
@@ -118,6 +129,7 @@ if ($_POST) {
 			$a_isdninterfaces[$n]['pcmmaster'] = $_POST['pcmmaster'];
 			$a_isdninterfaces[$n]['nopwrsave'] = $_POST['nopwrsave'];
 			$a_isdninterfaces[$n]['pollmode'] = $_POST['pollmode'];
+			$a_isdninterfaces[$n]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 		}
 
 
@@ -131,6 +143,17 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_advanced_settings("ready");?>
+
+	});
+
+//-->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="interfaces_isdn_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -191,9 +214,12 @@ if ($_POST) {
 			Enable polling mode. (sometimes needed for older cards)
 		</td>
 	</tr>
+	<? display_advanced_settings_begin(1); ?>
+	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
+	<? display_advanced_settings_end(); ?>
 	<tr> 
-		<td valign="top">&nbsp;</td>
-		<td>
+		<td width="20%" valign="top">&nbsp;</td>
+		<td width="80%">
 			<input name="Submit" type="submit" class="formbtn" value="Save">
 			<input name="unit" type="hidden" value="<?=$unit;?>"> 
 		</td>
