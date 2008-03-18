@@ -9,6 +9,7 @@
  - added: manual attributes can now be defined for ISDN interfaces
  - bug: incoming calls from ISDN providers will now be accepted in more cases
  - bug: ISDN and Analog interfaces are now automatically renamed from "(unconfigured)" upon configuration
+ - bug: ISDN Operating Mode is now verified before saving
  - refactor: outgoing SIP uri dialing logic has been simplified
 
 2008.03.12 - pb13.2

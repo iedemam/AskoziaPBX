@@ -102,6 +102,10 @@ if ($_POST) {
 		$input_errors[] = $msg;
 	}
 
+	if (!$_POST['mode']) {
+		$input_errors[] = "An Operating Mode must be selected for this interface.";
+	}
+
 	// this is a messy fix for properly and encoding the content
 	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 	
@@ -165,7 +169,7 @@ if ($_POST) {
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Mode</td>
+		<td valign="top" class="vncell">Operating Mode</td>
 		<td class="vtable">
 			<select name="mode" class="formfld" id="mode">
 			<? foreach ($isdn_dchannel_modes as $mode => $friendly) : ?>
