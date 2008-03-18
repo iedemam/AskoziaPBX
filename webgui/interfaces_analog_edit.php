@@ -166,7 +166,7 @@ if ($_POST) {
 	<tr> 
 		<td width="20%" valign="top" class="vncellreq">Name</td>
 		<td width="80%" class="vtable">
-			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != "(unconfigured)") ? $pconfig['name'] : "$type #$unit");?>"> 
 			<br><span class="vexpl">Descriptive name for this interface</span>
 		</td>
 	</tr>
