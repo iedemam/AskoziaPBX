@@ -46,9 +46,7 @@ $help = array(
 			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
 			"\t<li><strong>.</strong> - matches one or more characters</li>\n".
 			"\t<li><strong>!</strong> - matches zero or more characters</li>\n".
-			"</ul>\n".
-			"<strong><span class=\"red\">Note:</span></strong>&nbsp;".
-			"Permission must still be given to this phone for it to place outgoing calls.",
+			"</ul>\n",
 
 		"display_phone_access_selector" => 
 			"Checked phones will have access to this provider.",
