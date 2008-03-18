@@ -234,8 +234,8 @@ if (file_exists($d_analogconfdirty_path)) {
 	<tr>
 		<td width="20%" class="listhdrr">Pattern(s)</td>
 		<td width="25%" class="listhdrr">Name</td>
-		<td width="20%" class="listhdrr">Interface</td>
-		<td width="25%" class="listhdrr">Main MSN</td>
+		<td width="20%" class="listhdrr">Main MSN</td>
+		<td width="25%" class="listhdr">Interface</td>
 		<td width="10%" class="list"></td>
 	</tr>
 	<? $isdn_providers = isdn_get_providers(); ?>
@@ -250,8 +250,8 @@ if (file_exists($d_analogconfdirty_path)) {
 			}
 		?>&nbsp;</td>
 		<td class="listbg"><?=htmlspecialchars($p['name']);?></td>
-		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['msn']);?></td>
+		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
 		<td valign="middle" nowrap class="list"> <a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit ISDN provider" width="17" height="17" border="0"></a>
            &nbsp;<a href="accounts_providers.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this ISDN provider?')"><img src="x.gif" title="delete ISDN provider" width="17" height="17" border="0"></a></td>
 	</tr>
@@ -276,8 +276,8 @@ if (file_exists($d_analogconfdirty_path)) {
 	<tr>
 		<td width="20%" class="listhdrr">Pattern(s)</td>
 		<td width="25%" class="listhdrr">Name</td>
-		<td width="20%" class="listhdrr">Interface</td>
-		<td width="25%" class="listhdrr">Number</td>
+		<td width="20%" class="listhdrr">Number</td>
+		<td width="25%" class="listhdr">Interface</td>
 		<td width="10%" class="list"></td>
 	</tr>
 	<? $analog_providers = analog_get_providers(); ?>
@@ -292,8 +292,8 @@ if (file_exists($d_analogconfdirty_path)) {
 			}
 		?>&nbsp;</td>
 		<td class="listbg"><?=htmlspecialchars($p['name']);?></td>
-		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['number']);?></td>
+		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
 		<td valign="middle" nowrap class="list"> <a href="providers_analog_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit analog provider" width="17" height="17" border="0"></a>
            &nbsp;<a href="accounts_providers.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this analog provider?')"><img src="x.gif" title="delete analog provider" width="17" height="17" border="0"></a></td>
 	</tr>
