@@ -53,6 +53,7 @@ if (isset($id) && $a_analogphones[$id]) {
 	$pconfig['outbounduridial'] = isset($a_analogphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_analogphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_analogphones[$id]['sendcallnotifications']);
+	$pconfig['novmwhenbusy'] = isset($a_analogphones[$id]['novmwhenbusy']);
 	$pconfig['allowdirectdial'] = isset($a_analogphones[$id]['allowdirectdial']);
 	$pconfig['publicname'] = $a_analogphones[$id]['publicname'];
 	$pconfig['interface'] = $a_analogphones[$id]['interface'];
@@ -94,6 +95,7 @@ if ($_POST) {
 		$ap['callerid'] = $_POST['callerid'];
 		$ap['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ap['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
+		$ap['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$ap['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ap['publicname'] = verify_non_default($_POST['publicname']);
 		$ap['interface'] = $_POST['interface'];
@@ -153,7 +155,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 2); ?>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell">Analog Interface</td>

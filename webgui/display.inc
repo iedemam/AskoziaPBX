@@ -455,7 +455,7 @@ function display_channel_language_selector($current_language, $colspan) {
 	</tr><?
 }
 
-function display_call_notifications_editor($current_voicemailbox, $current_sendcallnotifications, $colspan) {
+function display_call_notifications_editor($current_voicemailbox, $current_sendcallnotifications, $current_novmwhenbusy, $colspan) {
 	
 	?><tr> 
 		<td valign="top" class="vncell">Voicemail</td>
@@ -467,7 +467,14 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 				echo "checked";
 			}
 
-			?>>&nbsp;also send missed call notifications<br>
+			?>>&nbsp;send missed call notifications<br>
+			<input name="novmwhenbusy" id="novmwhenbusy" type="checkbox" value="yes"<?
+            
+			if ($current_novmwhenbusy) {
+				echo "checked";
+			}
+            
+			?>>&nbsp;don't send to voicemail when busy<br>
 			<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.
 			<br><span class="red"><strong>Note:</strong></span> Voicemail Services <a href="/services_voicemail.php">must be configured</a> before this feature will work.</span>
 		</td>

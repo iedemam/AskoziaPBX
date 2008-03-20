@@ -8,10 +8,14 @@
  - added: Page() application to base distribution
  - added: manual attributes can now be defined for ISDN interfaces
  - added: "readback" numbers (used for unreachable messages) can now be set manually for SIP and IAX providers
+ - added: Voicemail enabled extensions now have an option to signal "busy" via tones instead of going to Voicemail
+ - changed: busy extensions are signaled via tones for extensions without Voicemail enabled
  - bug: incoming calls from ISDN providers will now be accepted in more cases
  - bug: ISDN and Analog interfaces are now automatically renamed from "(unconfigured)" upon configuration
  - bug: ISDN Operating Mode is now verified before saving
+ - bug: missed call notifications are no longer sent when a voicemail message was left
  - refactor: outgoing SIP uri dialing logic has been simplified
+ - refactor: main macro completely rewritten
 
 2008.03.12 - pb13.2
  - added: transmit and receive gains can now be set for analog interfaces (working patch provided by devon in the forums, modified for code consistency)
@@ -19,10 +23,10 @@
  - added: manual attributes can now be defined for analog interfaces
  - added: an authentication method can now be selected for the SMTP server used in "Services -> Voicemail"
  - changed: * and # characters may now be used in application extensions
- - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
  - bug: missed call notifications are no longer sent for successfully completed calls
  - bug: incoming calls from SIP or IAX providers landing in voicemail will now be read back the account's username if it is numeric instead of the internal extension
  - bug: incoming calls from providers will now be accepted in more cases (previously only numeric and 's' extensions would be matched, now all extensions containing alphanumeric, # and * characters will be matched)
+ - removed: echo squelch options removed from isdn interfaces as it is no longer supported in isdn4bsd
 
 2008.02.26 - pb13.1
  - added: incoming caller id from providers may be prepended or replaced by a user defined string

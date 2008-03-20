@@ -55,6 +55,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['dialprovider'] = $a_extphones[$id]['dialprovider'];
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
+	$pconfig['novmwhenbusy'] = isset($a_extphones[$id]['novmwhenbusy']);
 	$pconfig['allowdirectdial'] = isset($a_extphones[$id]['allowdirectdial']);
 	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
@@ -91,6 +92,7 @@ if ($_POST) {
 		$ep['dialprovider'] = $_POST['dialprovider'];
 		$ep['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
+		$ep['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$ep['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
@@ -166,7 +168,7 @@ if ($_POST) {
 					<br><span class="vexpl">Outgoing provider to be used to reach this telephone.</span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 1); ?>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>

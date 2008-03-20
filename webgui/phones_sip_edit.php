@@ -58,6 +58,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['outbounduridial'] = isset($a_sipphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_sipphones[$id]['sendcallnotifications']);
+	$pconfig['novmwhenbusy'] = isset($a_sipphones[$id]['novmwhenbusy']);
 	$pconfig['allowdirectdial'] = isset($a_sipphones[$id]['allowdirectdial']);
 	$pconfig['publicname'] = $a_sipphones[$id]['publicname'];
 	$pconfig['language'] = $a_sipphones[$id]['language'];
@@ -136,6 +137,7 @@ if ($_POST) {
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
+		$sp['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$sp['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$sp['publicname'] = verify_non_default($_POST['publicname']);
 		$sp['language'] = $_POST['language'];
@@ -213,7 +215,7 @@ if ($_POST) {
                     <br><span class="vexpl">This account's password.</span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], 2); ?>
+			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 2); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 2); ?>

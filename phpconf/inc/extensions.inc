@@ -32,7 +32,6 @@ require_once("functions.inc");
 
 /**
  * Responsible for generating extensions.conf, the entire system's dialplan
- * XXX : this is huge and needs a rewrite so some flexibility is possible
  */
 function extensions_conf_generate() {
 	global $config, $g, $uniqid_map;
@@ -52,76 +51,79 @@ function extensions_conf_generate() {
 	$isdn_nt_interfaces = isdn_get_nt_interfaces();
 	$isdn_te_interfaces = isdn_get_te_interfaces();
 	$vmconfig = $config['voicemail'];
-	// XXX : this macro is starting to get really big and ugly...
+
 	$conf = <<<EOD
 
-[macro-vm];
+[macro-main];
 exten => s,1,Dial($\{ARG1},$\{ARG5},$\{ARG4})
 exten => s,n,NoOp(DIALSTATUS: $\{DIALSTATUS})
 exten => s,n,Goto(s-$\{DIALSTATUS},1)
 
-exten => s-NOANSWER,1,Wait(1)
-exten => s-NOANSWER,n,Set(MISSEDCAUSE=no-answer)
-exten => s-NOANSWER,n,VoiceMail($\{ARG2},u,$\{ARG3})
-exten => s-NOANSWER,n,Goto(exit-$\{VMSTATUS},1)
+;exten => s-ANSWER
+;exten => s-CANCEL
+;exten => s-CHANUNAVAIL
+;exten => s-CONGESTION
+;exten => s-DONTCALL
+;exten => s-TORTURE
+;exten => s-INVALIDARGS
+exten => s-BUSY,1,Goto(busy,1)
+exten => s-NOANSWER,1,Goto(noanswer,1)
+exten => _s-.,1,Goto(noanswer,1)
 
-exten => s-BUSY,1,Wait(1)
-exten => s-BUSY,n,Set(MISSEDCAUSE=busy)
-exten => s-BUSY,n,VoiceMail($\{ARG2},b,$\{ARG3})
-exten => s-BUSY,n,Goto(exit-$\{VMSTATUS},1)
+; busy
+exten => busy,1,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-busy,1)
+exten => busy,n,Busy(10)
+exten => vm-busy,1,Wait(1)
+exten => vm-busy,n,Set(MISSEDCAUSE=busy)
+exten => vm-busy,n,GosubIf($["$\{SENDNOTIFICATIONS}" != ""]?mailnotification,1)
+exten => vm-busy,n,ExecIf($["$\{NOVOICEMAILWHENBUSY}" != ""]|Busy|10)
+exten => vm-busy,n,VoiceMail($\{ARG2},b,$\{ARG3})
+exten => vm-busy,n,Playback(vm-goodbye)
+exten => vm-busy,n,GotoIf($["$\{VMSTATUS}" = "SUCCESS"]?vm-message-exit,1:vm-nomessage-noexit,1)
 
-exten => s-ANSWER,1,Set(MISSEDCAUSE=didntmiss)
-exten => s-ANSWER,n,Hangup()
+; no answer
+exten => noanswer,1,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-noanswer,1)
+exten => noanswer,n,Hangup()
+exten => vm-noanswer,1,Wait(1)
+exten => vm-noanswer,n,Set(MISSEDCAUSE=no-answer)
+exten => vm-noanswer,n,VoiceMail($\{ARG2},u,$\{ARG3})
+exten => vm-noanswer,n,Playback(vm-goodbye)
+exten => vm-noanswer,n,GotoIf($["$\{VMSTATUS}" = "SUCCESS"]?vm-message-exit,1:vm-nomessage-noexit,1)
 
-exten => _s-.,1,Goto(s-NOANSWER,1)
+; voicemail exit
+exten => vm-message-exit,1,Set(MISSEDCAUSE=didntmiss)
+exten => vm-message-exit,n,Hangup()
+exten => vm-nomessage-exit,1,GosubIf($["$\{SENDNOTIFICATIONS}" != ""]?mailnotification,1)
+exten => vm-nomessage-exit,n,Hangup()
 
-exten => h,1,NoOp(DIALSTATUS: $\{DIALSTATUS})
-exten => h,n,GosubIf($["$\{DIALSTATUS}" = "ANSWER"]?callcompleted)
-exten => h,n,NoOp(MISSEDCAUSE: $\{MISSEDCAUSE})
-exten => h,n,GosubIf($["$\{MISSEDCAUSE}" = ""]?reallyhungup)
-exten => h,n,NoOp(SENDNOTIFICATIONS: $\{SENDNOTIFICATIONS})
-exten => h,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
+; hangup
+exten => h,1,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-h,1)
 exten => h,n,Hangup()
-exten => h,n(callcompleted),Hangup()
-exten => h,n(reallyhungup),Set(MISSEDCAUSE=hungup)
-exten => h,n,Return()
-exten => h,n(notify),Macro(email)
-exten => h,n,Return()
+exten => vm-h,1,ExecIf($["$\{DIALSTATUS}" = "ANSWER"]|Hangup)
+exten => vm-h,n,ExecIf($["$\{MISSEDCAUSE}" = ""]|Set|MISSEDCAUSE=hungup)
+exten => vm-h,n,GosubIf($[("$\{SENDNOTIFICATIONS}" != "") & ("$\{MISSEDCAUSE}" != "didntmiss")]?mailnotification,1)
+exten => vm-h,n,Hangup()
 
-exten => exit-FAILED,1,Answer()
-exten => exit-FAILED,n,Wait(1)
-exten => exit-FAILED,n,Playback(vm-theperson)
-exten => exit-FAILED,n,SayDigits($\{ARG3})
-exten => exit-FAILED,n,Playback(vm-isunavail)
-exten => exit-FAILED,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
-exten => exit-FAILED,n,Hangup()
-exten => exit-FAILED,n(notify),Macro(email)
-exten => exit-FAILED,n,Return()
+; mail missed call notification
+exten => mailnotification,1,Set(TMPMAILFILE=/var/spool/asterisk/tmp/email-$\{MD5($\{UNIQUEID})})
+exten => mailnotification,n,System(touch $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "date: `date`" > $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "from: AskoziaPBX Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
+exten => mailnotification,n,System(rm $\{TMPMAILFILE})
+exten => mailnotification,n,Return()
 
-exten => exit-SUCCESS,1,Playback(vm-goodbye)
-exten => exit-SUCCESS,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
-exten => exit-SUCCESS,n,Hangup()
-exten => exit-SUCCESS,n(notify),Macro(email)
-exten => exit-SUCCESS,n,Return()
-
-exten => exit-USEREXIT,1,Playback(vm-goodbye)
-exten => exit-USEREXIT,n,GosubIf($["$\{SENDNOTIFICATIONS}" != "no"]?notify)
-exten => exit-USEREXIT,n,Hangup()
-exten => exit-USEREXIT,n(notify),Macro(email)
-exten => exit-USEREXIT,n,Return()
-
-
-[macro-email]
-exten => s,1,Set(TMPMAILFILE=/var/spool/asterisk/tmp/email-$\{MD5($\{UNIQUEID})})
-exten => s,n,System(touch $\{TMPMAILFILE})
-exten => s,n,System(echo "date: `date`" > $\{TMPMAILFILE})
-exten => s,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
-exten => s,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
-exten => s,n,System(echo "from: AskoziaPBX Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
-exten => s,n,System(echo >> $\{TMPMAILFILE})
-exten => s,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
-exten => s,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
-exten => s,n,System(rm $\{TMPMAILFILE})
+;i - Invalid
+;s - Start
+;h - Hangup
+;t - Timeout
+;T - AbsoluteTimeout
+;a - Asterisk extension
+;o - Operator
 
 EOD;
 
@@ -356,15 +358,24 @@ EOD;
 }
 
 /**
- * Adds a "Notifications" line containing the user's e-mail address
+ * 1. Adds a "Notifications" line containing the user's e-mail address
  * if configured. If not, this channel variable is set to "no"
+ *
+ * 2. Adds a variable indicating if voicemail is desired when channel is busy
  */
-function extensions_generate_missed_call_notifications_line($exten, $phone) {
+function extensions_generate_call_notification_variables($exten, $phone) {
 
-	if ($phone['voicemailbox'] && isset($phone['sendcallnotifications'])) {
-		$dial = "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['voicemailbox']}\")\n";
-	} else {
-		$dial = "exten => $exten,n,Set(SENDNOTIFICATIONS=\"no\")\n";
+	if ($phone['voicemailbox']) {
+
+		$dial = "exten => $exten,n,Set(HASVOICEMAIL=\"yes\")\n";
+
+		if (isset($phone['sendcallnotifications'])) {
+			$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['voicemailbox']}\")\n";
+		}
+
+		if (isset($phone['novmwhenbusy'])) {
+			$dial .= "exten => $exten,n,Set(NOVOICEMAILWHENBUSY=\"yes\")\n";
+		}
 	}
 
 	return $dial;
@@ -510,7 +521,7 @@ function extensions_generate_provider_incoming_context($p) {
 		
 		if ($pattern == "all") {
 			foreach ($catchall as $catch) {
-				$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']})\n";
+				$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
 				if ($needswait) {
 					$conf .= "exten => $catch,n,Ringing()\n";
 					$conf .= "exten => $catch,n,Wait(1)\n";
@@ -522,7 +533,7 @@ function extensions_generate_provider_incoming_context($p) {
 
 
 		} else if (verify_is_numericint($pattern)) {
-			$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']})\n";
+			$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
 			if ($needswait) {
 				$conf .= "exten => $pattern,n,Ringing()\n";
 				$conf .= "exten => $pattern,n,Wait(1)\n";
@@ -532,7 +543,7 @@ function extensions_generate_provider_incoming_context($p) {
 
 
 		} else {
-			$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']})\n";
+			$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
 			if ($needswait) {
 				$conf .= "exten => _$pattern,n,Ringing()\n";
 				$conf .= "exten => _$pattern,n,Wait(1)\n";
@@ -646,18 +657,18 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 		$ringlength = $p['ringlength'];
 	}
 
-	$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
+	$conf .= extensions_generate_call_notification_variables($exten, $p);
 	if ($tech == "SIP") {
-		$conf .= "exten => $exten,n,Macro(vm|SIP/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+		$conf .= "exten => $exten,n,Macro(main|SIP/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "IAX2") {
-		$conf .= "exten => $exten,n,Macro(vm|IAX2/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+		$conf .= "exten => $exten,n,Macro(main|IAX2/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "CAPI") {
-		$conf .= "exten => $exten,n,Macro(vm|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+		$conf .= "exten => $exten,n,Macro(main|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "ZAP") {
-		$conf .= "exten => $exten,n,Macro(vm|ZAP/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+		$conf .= "exten => $exten,n,Macro(main|ZAP/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
@@ -690,20 +701,20 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 		$ringlength = $p['ringlength'];
 	}
 
-	$conf .= extensions_generate_missed_call_notifications_line($exten, $p);
+	$conf .= extensions_generate_call_notification_variables($exten, $p);
 	if ($tech == "ZAP") {
 		$prov = analog_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+			"Macro(main|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "CAPI") {
 		$prov = isdn_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-				"Macro(vm|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+				"Macro(main|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,".
-			"Macro(vm|$tech/{$p['dialprovider']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+			"Macro(main|$tech/{$p['dialprovider']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_external_phone_extension!";
@@ -733,8 +744,8 @@ function extensions_generate_callgroup_extension($g, $from_public=false, $readba
 		$ringlength = $p['ringlength'];
 	}
 
-	$conf .= extensions_generate_missed_call_notifications_line($exten, $vm_phone);
-	$conf .= "exten => $exten,n,Macro(vm|$dialstring|{$vm_phone['extension']}|$readbacknum|$transfer_flags" . "o|$ringlength)\n";
+	$conf .= extensions_generate_call_notification_variables($exten, $vm_phone);
+	$conf .= "exten => $exten,n,Macro(main|$dialstring|{$vm_phone['extension']}|$readbacknum|$transfer_flags" . "o|$ringlength)\n";
 
 	return $conf;
 }
