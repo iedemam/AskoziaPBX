@@ -9,6 +9,7 @@
  - added: manual attributes can now be defined for ISDN interfaces
  - added: "readback" numbers (used for unreachable messages) can now be set manually for SIP and IAX providers
  - added: Voicemail enabled extensions now have an option to signal "busy" via tones instead of going to Voicemail
+ - added: LAN DNS IP now configurable via console (patch provided by devon in the forums, small fix needed)
  - changed: busy extensions are signaled via tones for extensions without Voicemail enabled
  - bug: incoming calls from ISDN providers will now be accepted in more cases
  - bug: ISDN and Analog interfaces are now automatically renamed from "(unconfigured)" upon configuration
