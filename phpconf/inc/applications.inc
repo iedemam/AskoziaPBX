@@ -61,7 +61,17 @@ function applications_sort_apps() {
 function applications_get_app($uniqid) {
 	global $config, $uniqid_map;
 
-	return $config['dialplan']['application'][$uniqid_map[$uniqid]];
+	// horribly inefficient but surely working replacement for broken uniqid_map index
+	$apps = applications_get_apps();
+	foreach ($apps as $app) {
+		if ($app['uniqid'] == $uniqid) {
+			return $app;
+		}
+	}
+	/* $uniqid_map has regressed is unpredictable now that * and # characters are allowed in extensions
+	It is probably not the culprit but rather the unpredictable things_get_thing() internal sorting behavior
+	which should be removed so that sorting is done transparently
+	return $config['dialplan']['application'][$uniqid_map[$uniqid]]; */
 }
 
 /**

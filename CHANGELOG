@@ -14,6 +14,7 @@
  - bug: ISDN and Analog interfaces are now automatically renamed from "(unconfigured)" upon configuration
  - bug: ISDN Operating Mode is now verified before saving
  - bug: missed call notifications are no longer sent when a voicemail message was left
+ - bug: using applications as a Provider's incoming destination works properly again (reported by Marco in the forums)
  - refactor: outgoing SIP uri dialing logic has been simplified
  - refactor: main macro completely rewritten
 
