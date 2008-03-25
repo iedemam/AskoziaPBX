@@ -1009,8 +1009,9 @@ function populate_pointstaging($image_name) {
 		_exec("cp {$dirs['boot']}/$platform/loader.rc $image_name/pointstaging/loader.rc_$platform");
 	}
 
-	_exec("cp /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/acpi/acpi/acpi.ko ".
-		"$image_name/pointstaging");
+	_exec("cd /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/; " .
+		"cp acpi/acpi/acpi.ko ugen/ugen.ko $image_name/pointstaging");
+
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
 	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");

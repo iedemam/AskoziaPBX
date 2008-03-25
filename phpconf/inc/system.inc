@@ -679,6 +679,9 @@ function system_load_kernel_modules() {
 	if (file_exists("/boot/kernel/i4b.ko")) {
 		mwexec("/sbin/kldload i4b");
 	}
+	if (file_exists("/boot/kernel/ugen.ko")) {
+		mwexec("/sbin/kldload ugen");
+	}
 }
 
 ?>

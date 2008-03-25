@@ -108,7 +108,6 @@ device		bpf		# Berkeley packet filter
 # USB support
 device		ohci		# OHCI PCI->USB interface
 device		usb			# USB Bus (required)
-device		ugen		# Generic
 device		uhid		# "Human Interface Devices"
 device		ukbd		# Keyboard
 device		umass		# Disks/Mass storage - Requires scbus and da
