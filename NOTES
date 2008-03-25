@@ -3,15 +3,11 @@
 // iax tos options
 - revamp password field to make it a bit friendlier / eliminate auto-complete problems
 - make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
-- enter dns server via console
-- dial timeout options
 - single tone voicemails...
 - readback numbers should be definable for each of the incoming extensions
 - deleting a provider breaks external phones...warn? suggest?
-- "forget" interface details option
 - set a more sensible default for analog phone echo canceller size
 - start writing short wiki entries for new features as they are implemented
-!! - refactor: sip.conf generator rewritten to produce peer and user entries for providers instead of friend entries
 bug: new Russian voicemail translation is missing words upon reception...
 
 storage
@@ -27,7 +23,7 @@ general improvements
 
 sooner
 - fix extensions_exists
-- normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.2
+- normalize all single var irregularities, maybe even write a cleanup when upgrading to config.xml 1.x
 - confirm "Ringing()" behavior/usage on ISDN connections
 - start returning get_blahs() functions by reference
 _ also, get_blahs() should return arrays with uniqid's as the keys
