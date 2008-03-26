@@ -125,6 +125,7 @@ exten => mailnotification,n,Return()
 ;a - Asterisk extension
 ;o - Operator
 
+
 EOD;
 
 	// application contexts
@@ -314,8 +315,8 @@ EOD;
 			if ($p['language']) {
 				$phone_lang = $p['language'];
 			}
-			$conf .= "exten => _[0-9a-zA-Z*#]!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
-			$conf .= "exten => _[0-9a-zA-Z*#]!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+			$conf .= "exten => _[0-9*#]!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
+			$conf .= "exten => _[0-9*#]!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
 		}
 		$conf .= "\n";
 	}
@@ -334,8 +335,8 @@ EOD;
 			if ($p['language']) {
 				$provider_lang = $p['language'];
 			}
-			$conf .= "exten => _[0-9a-zA-Z*#]!,1,Set(CHANNEL(language)=$provider_lang)\n";
-			$conf .= "exten => _[0-9a-zA-Z*#]!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+			$conf .= "exten => _[0-9*#]!,1,Set(CHANNEL(language)=$provider_lang)\n";
+			$conf .= "exten => _[0-9*#]!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
 			$conf .= "exten => s,1,Set(CHANNEL(language)=$provider_lang)\n";
 			$conf .= "exten => s,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
 		}
@@ -344,8 +345,8 @@ EOD;
 
 	$conf .= <<<EOD
 [outgoing-uri]
-exten => _[0-9a-zA-Z*#]!,1,NoOp(Direct dialing via SIP uri : $\{EXTEN}@$\{SIPDOMAIN})
-exten => _[0-9a-zA-Z*#]!,n,Dial(SIP/$\{EXTEN}@$\{SIPDOMAIN},,To)
+exten => _[0-9a-zA-Z*#].,1,NoOp(Direct dialing via SIP uri : $\{EXTEN}@$\{SIPDOMAIN})
+exten => _[0-9a-zA-Z*#].,n,Dial(SIP/$\{EXTEN}@$\{SIPDOMAIN},,To)
 
 EOD;
 
@@ -470,7 +471,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 function extensions_generate_provider_incoming_context($p) {
 
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
-	$catchall = array("_[0-9a-zA-Z*#]!", "s");
+	$catchall = array("_[0-9*#]!", "s");
 
 	$conf = "[{$p['uniqid']}-incoming]\n";
 	$conf .= "include => public-direct-dial\n";
