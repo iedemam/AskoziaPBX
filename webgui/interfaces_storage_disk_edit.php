@@ -36,15 +36,11 @@ if (isset($_POST['dev']))
 $pgtitle = array("Interfaces", "Storage", "Edit Disk");
 require("guiconfig.inc");
 
-$recognized_disk = storage_get_recognized_disk($dev);
-$configured_disk = storage_get_configured_disk($dev);
 
 /* merge recognized and configured info on a different level */
 /* references needed to modify disk, or finally move over to functions for updates */
 
 /* pull current config into pconfig */
-$pconfig['name'] = $recognized_disk['name'];
-$pconfig['bytes'] = $recognized_disk['bytes'];
 
 
 if ($_POST) {
@@ -54,33 +50,8 @@ if ($_POST) {
 	
 	if (!$input_errors) {
 		/*
-		$n = count($a_isdninterfaces);
-		if (isset($configured_units[$unit])) {
-			for ($i = 0; $i < $n; $i++) {
-				if ($a_isdninterfaces[$i]['unit'] == $unit) {
-					$a_isdninterfaces[$i]['name'] = $_POST['name'];
-					$a_isdninterfaces[$i]['mode'] = $_POST['mode'];
-					$a_isdninterfaces[$i]['echosquelch'] = $_POST['echosquelch'];
-					$a_isdninterfaces[$i]['echocancel'] = $_POST['echocancel'];
-					$a_isdninterfaces[$i]['pcmmaster'] = $_POST['pcmmaster'];
-					$a_isdninterfaces[$i]['nopwrsave'] = $_POST['nopwrsave'];
-					$a_isdninterfaces[$i]['pollmode'] = $_POST['pollmode'];
-				}
-			}
 
-		} else {
-			$a_isdninterfaces[$n]['unit'] = $unit;
-			$a_isdninterfaces[$n]['name'] = $_POST['name'];
-			$a_isdninterfaces[$n]['mode'] = $_POST['mode'];
-			$a_isdninterfaces[$n]['echosquelch'] = $_POST['echosquelch'];
-			$a_isdninterfaces[$n]['echocancel'] = $_POST['echocancel'];
-			$a_isdninterfaces[$n]['pcmmaster'] = $_POST['pcmmaster'];
-			$a_isdninterfaces[$n]['nopwrsave'] = $_POST['nopwrsave'];
-			$a_isdninterfaces[$n]['pollmode'] = $_POST['pollmode'];
-		}
-
-
-		touch($d_isdnconfdirty_path);
+		touch($d_storageconfdirty_path);
 
 		write_config();
 		*/
@@ -98,55 +69,6 @@ if ($_POST) {
 		<td class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
 			<br><span class="vexpl">descriptive name</span>
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Mode</td>
-		<td class="vtable">
-			<select name="mode" class="formfld" id="mode">
-			<? foreach ($isdn_dchannel_modes as $mode => $friendly) : ?>
-			<option value="<?=$mode;?>" <?
-			if ($mode == $pconfig['mode'])
-				echo "selected"; ?>
-			><?=$friendly;?></option>
-			<? endforeach; ?>
-			</select>
-			<br><span class="vexpl">Interface Operation Mode</span>
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Echo Canceller</td>
-		<td class="vtable">
-			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
-			Enable echo cancellation.
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Echo Squelch</td>
-		<td class="vtable">
-			<input name="echosquelch" id="echosquelch" type="checkbox" value="yes" <? if ($pconfig['echosquelch']) echo "checked"; ?>>
-			Enable echo squelch. (primitive echo suppression)
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">PCM Timing Master</td>
-		<td class="vtable">
-			<input name="pcmmaster" id="pcmmaster" type="checkbox" value="yes" <? if ($pconfig['pcmmaster']) echo "checked"; ?>>
-			This card provides the timing source (needed if this is the only card).
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Disable Power Save</td>
-		<td class="vtable">
-			<input name="nopwrsave" id="nopwrsave" type="checkbox" value="yes" <? if ($pconfig['nopwrsave']) echo "checked"; ?>>
-			Disable power save mode.
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Enable Polling Mode</td>
-		<td class="vtable">
-			<input name="pollmode" id="pollmode" type="checkbox" value="yes" <? if ($pconfig['pollmode']) echo "checked"; ?>>
-			Enable polling mode.
 		</td>
 	</tr>
 	<tr> 

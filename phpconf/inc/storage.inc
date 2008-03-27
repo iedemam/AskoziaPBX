@@ -30,6 +30,49 @@
 
 require_once("functions.inc");
 
+function storage_disk_read_bsdlabel($device) {
+
+	exec("/sbin/bsdlabel $device", $output);
+
+	foreach ($output as $line) {
+		if (!preg_match("/^\s+[a-z]:/", $line)) {
+			continue;
+		}
+
+		$elements = preg_split("/\s+/", $line);
+		$partition = $elements[1][0];
+		$info[$partition]['size'] = $elements[2];
+		$info[$partition]['offset'] = $elements[3];
+		$info[$partition]['fstype'] = $elements[4];
+	}
+
+	return $info;
+}
+
+function storage_disk_read_geominfo($device) {
+
+	exec("/sbin/geom disk list $device", $output);
+
+	$mediasize = preg_split("/\s+/", $output[3]);
+	$info['mediasize'] = $mediasize[2];
+
+	$sectorsize = preg_split("/\s+/", $output[4]);
+	$info['sectorsize'] = $sectorsize[2];
+
+	return $info;
+}
+
+function storage_disk_read_diskinfo($device) {
+
+	$output = preg_split("/\s+/", exec("/usr/sbin/diskinfo $device"));
+
+	$info['sectorsize'] = $output[1];
+	$info['sizeinbytes'] = $output[2];
+	$info['sizeinsectors'] = $output[3];
+
+	return $info;
+}
+
 function storage_get_configured_disks() {
 	global $config;
 	

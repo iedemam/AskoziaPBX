@@ -1,0 +1,124 @@
+AskoziaPBX Storage System Implementation
+========================================
+Michael Iedema (2008-03-27, v0.1)
+
+
+In order to provide permanent storage for items such as recording, voicemail greetings, additional prompts, application modules etc, a new partition must be configurable on the system's install media. This is a potentially tricky / dangerous operation and I wish to discuss it before writing the implementation.
+
+In the future, other storage types will be supported but this document focuses on a "system-storage-parition" which is present on the system's install media.
+
+
+
+Requirements
+------------
+
+1. The storage partition must reside at a disk offset never to be overwritten by firmware upgrades.
+
+2. Its data must survive firmware upgrades.
+
+3. It must be able to be found and reutilized by a "factory default" or "rolled-back" install where its meta-information is no longer present in the config.xml file.
+
+4. As new storage mechanisms are supported, storage "services" must be assignable to individual partitions.
+
+5. Partition health must be automatically maintained.
+
+6. WebGUI functionality must degrade gracefully if the partition it depends on is no longer available.
+
+
+
+1. Initialization
+-----------------
+
+An offset of 64MB will allow the current AskoziaPBX base image to more than double in size without effecting the storage partition. The disk space remaining beyond that offset will be allocated for the partition.
+
+User initialization will consist of clicking a "+" icon next to the recognized disk in "Interfaces -> Storage." This will AJAX back to a PHP script which will initialize the partition. Upon successful initialization, the "+" icon will change to an "e" icon which the user can click to assign storage services to that partition.
+
+Implementation:
+
+  + get system disk
+
+     $sysdisk = chop(file_get_contents("{$g['varetc_path']}/cfdevice"));
+
+  + read the bsdlabel
+  
+     exec("/sbin/bsdlabel $sysdisk", $output);
+  
+  + ? add a 'd' partition with an offset of 64MB which occupies the remaining space
+  + write this bsdlabel back to the system's disk
+
+     mwexec("/sbin/bsdlabel -R $sysdisk /tmp/newbsdlabel");
+
+  + ? no need to reinstall the boot code
+  + check for existing partition -> skip next step if present
+  + create a new file system on the partition
+  
+     mwexec("/sbin/newfs -L SYSSTORAGE -b 8192 -f 1024 -o space /dev/" . $sysdisk . "d");
+  
+  + generate the appropriate config.xml entries
+  
+     $disk['uniqid'] = "SYSSTORAGE";
+     $config['interfaces']['storage-disk'][] = $disk;
+
+  + regenerate fstab
+  + mount
+
+
+
+2. Withstanding Firmware Upgrades
+---------------------------------
+
+The bsdlabel will be overwritten after a firmware upgrade. It must be regenerated for the "system-storage-partition" to function again.
+
+Implementation:
+
+  + early in the boot process, check if there is a configured "system-storage-partition"
+
+     foreach ($config['interfaces']['storage-disk'] as $disk) {
+          if ($disk['uniqid'] == "SYSSTORAGE") {
+               $have_sysstorage = true;
+          }
+     }
+
+  + modify the bsdlabel as described in "Initialization"
+  + regenerate fstab
+  + mount
+
+
+
+3. Withstanding Configuration Rollbacks
+---------------------------------------
+
+If a system is reset to "factory defaults" or restores a pre-partition config.xml, the partition information will be lost. To get it back, a simple check could be done during the "initialization" process which checks for its presence and label after calculating the offset and writing bsdlabel.
+
+
+
+4. Storage Services
+-------------------
+
+Individual services will be assignable to different storage devices. Services will simply be represented as a directory in the root of the storage device for simplicity.
+
+Transferring of services from one disk to another will also be possible and services should have minimum space requirements which are to be checked before "installing" the particular service on a disk.
+
+The following services are to be released with the initial storage system:
+ - System + Asterisk Logs
+ - CDRs (sqlite and csv formats)
+ - Asterisk module upload/fetch + storage
+ - Asterisk sounds upload/fetch + storage
+
+Once the storage system has been deemed stable:
+ - Full Voicemail Support
+ - Call Recording
+
+
+
+5. Verifying and Repairing Partition Health
+-------------------------------------------
+
+Early in the boot process the partition's health should be verified and repaired if necessary. Interactive repair is out of the question unless SSH is added. Booting cannot be allowed to continue until this process has concluded as once the storage system is back online, the storage services cannot be used anyway until rebooted.
+
+
+
+6. Graceful Degradation of Functionality
+----------------------------------------
+
+Each service must be able to revert to its non-storage defaults when a partition is no longer present. Are there cases where this is not possible?
