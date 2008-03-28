@@ -646,42 +646,15 @@ function system_get_dmesg_as_array() {
 }
 
 /**
- * Parses dmesg output to determine if this system supports MMX extensions
- */
-function system_supports_mmx() {
-	global $g;
-
-	// Features=0x88a93d<FPU,DE,PSE,TSC,MSR,CX8,SEP,PGE,CMOV,CLFLUSH,MMX>
-	$dmesg = system_get_dmesg_as_string();
-	if (preg_match("/Features.*?<.*MMX.*>/", $dmesg)) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
  * Loads required kernel modules
  */
 function system_load_kernel_modules() {
-	
-	/*if (system_supports_mmx()) {
-		mwexec("/sbin/kldload mmx_oslec");
-	} else {
-		mwexec("/sbin/kldload oslec");
-	}*/
-	//mwexec("/sbin/kldload oslec");
+
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
-	// XXX : small work around to maintain webgui/binary compatibility between pb13 and pb14
-	// this can be safely removed after pb13's point releases have stopped
-	if (file_exists("/boot/kernel/i4b.ko")) {
-		mwexec("/sbin/kldload i4b");
-	}
-	if (file_exists("/boot/kernel/ugen.ko")) {
-		mwexec("/sbin/kldload ugen");
-	}
+	mwexec("/sbin/kldload i4b");
+	mwexec("/sbin/kldload ugen");
 }
 
 ?>
