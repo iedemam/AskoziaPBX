@@ -471,7 +471,6 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 function extensions_generate_provider_incoming_context($p) {
 
 	$tech = pbx_uniqid_to_technology($p['uniqid']);
-	$catchall = array("_[0-9*#]!", "s");
 
 	$conf = "[{$p['uniqid']}-incoming]\n";
 	$conf .= "include => public-direct-dial\n";
@@ -521,6 +520,11 @@ function extensions_generate_provider_incoming_context($p) {
 		}
 		
 		if ($pattern == "all") {
+			$catchall = array("_[0-9*#]!", "s");
+			// can we include the incoming username as a catch all extension
+			if ($tech == "SIP") {
+				$catchall[] = $p['username'];
+			}
 			foreach ($catchall as $catch) {
 				$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
 				if ($needswait) {

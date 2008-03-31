@@ -5,6 +5,7 @@
 
 2008.xx.xx - pb13.4
  - bug: using applications as a Provider's incoming destination works in more cases
+ - bug: incoming calls from SIP Providers are now accepted in more cases
 
 2008.03.27 - pb13.3
  - added: isdn and analog interface settings can now be "forgotten" in the webGUI
