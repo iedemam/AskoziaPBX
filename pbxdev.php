@@ -34,7 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.17",
+	"asterisk"		=> "asterisk-1.4.19",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
 	"mini_httpd"	=> "mini_httpd-1.19",
@@ -1132,8 +1132,8 @@ function package($platform, $image_name) {
 	$label  = "# /dev/md0:\n";
 	$label .= "8 partitions:\n";
 	$label .= "#        size   offset    fstype   [fsize bsize bps/cpg]\n";
-	$label .= " a: " . $a_size . "  16  unused  0  0\n";
-	$label .= " b: " . $b_size . "   *  unused  0  0\n";
+	$label .= " a: " . $a_size . "  16  4.2BSD  0  0\n";
+	$label .= " b: " . $b_size . "   *  4.2BSD  0  0\n";
 	$label .= " c: " . $c_size . "   0  unused  0  0\n\n";
     
 	$fd = fopen("tmp/formatted.label", "w");
@@ -1147,6 +1147,7 @@ function package($platform, $image_name) {
 	_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
 	_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
 	_exec("bsdlabel -BR -b $image_name/pointstaging/boot md0 tmp/formatted.label");
+	_exec("cp tmp/formatted.label tmp/stage/original.bsdlabel");
 	
 	//_exec("newfs -L MAIN -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
 	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");

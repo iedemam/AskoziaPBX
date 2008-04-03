@@ -1,7 +1,9 @@
 2008.xx.xx - pb14
+ - updated: Asterisk to 1.4.19
  - updated: isdn4bsd to revision 648
  - updated: basesystem to FreeBSD 6.2-RELEASE-p11
  - changed: isdn4bsd and generic usb devices are now compiled as modules
+ - removed: iLBC removed until licensing can be confirmed
 
 2008.xx.xx - pb13.4
  - bug: using applications as a Provider's incoming destination works in more cases
