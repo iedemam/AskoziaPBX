@@ -94,6 +94,7 @@ $dirs['asterisk_modules']	= $dirs['pwd'] . "/build/asterisk_modules";
 $dirs['tools']				= $dirs['pwd'] . "/build/tools";
 $dirs['cgi']				= $dirs['pwd'] . "/build/cgi";
 $dirs['etc']				= $dirs['pwd'] . "/etc";
+$dirs['pkgs']				= $dirs['pwd'] . "/packages";
 $dirs['phpconf']			= $dirs['pwd'] . "/phpconf";
 $dirs['webgui']				= $dirs['pwd'] . "/webgui";
 $dirs['files']				= $dirs['pwd'] . "/files";
@@ -287,8 +288,8 @@ function build_asterisk() {
 	_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
 	// copy wakeme application
 	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/{$versions['asterisk']}/apps");
-	// copy sqlite cdr module
-	_exec("cp {$dirs['asterisk_modules']}/cdr_sqlite.c {$dirs['packages']}/{$versions['asterisk']}/cdr");
+	// copy cdr modules
+	_exec("cp {$dirs['asterisk_modules']}/cdr_*.c {$dirs['packages']}/{$versions['asterisk']}/cdr");
 	// reconfigure and make
 	_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ./configure; gmake; gmake install");
 }
@@ -436,10 +437,10 @@ function create($image_name) {
 	$rootfs = "$image_name/rootfs";
 	_exec("mkdir $rootfs");
 	
-	_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc ftmp mnt libexec proc root sbin tmp usr var asterisk");
+	_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc mnt libexec proc root sbin tmp usr var asterisk storage");
 	_exec("cd $rootfs/var; mkdir tmp");
 	_exec("cd $rootfs; ln -s /cf/conf conf");
-	_exec("mkdir $rootfs/etc/inc");
+	_exec("cd $rootfs/etc/; mkdir inc pkgs");
 	_exec("cd $rootfs/usr; mkdir bin lib libexec local sbin share");
 	_exec("cd $rootfs/usr/local; mkdir bin lib sbin www etc");
 	_exec("mkdir $rootfs/usr/local/etc/asterisk");
@@ -465,7 +466,6 @@ function populate_etc($image_name) {
 		
 	_exec("cp -p {$dirs['files']}/etc/* $rootfs/etc/");
 	_exec("cp -p {$dirs['files']}/asterisk/*.conf $rootfs/usr/local/etc/asterisk/");
-	_exec("cp -p {$dirs['etc']}/rc* $rootfs/etc/");
 	_exec("cp {$dirs['etc']}/pubkey.pem $rootfs/etc/");
 	
 	_exec("ln -s /var/etc/resolv.conf $rootfs/etc/resolv.conf");
@@ -933,11 +933,24 @@ function populate_cgi($image_name) {
 		"install -s ajax.cgi $rootfs/usr/local/www");
 }
 
+function populate_phpcode($image_name) {
+	populate_phpconf($image_name);
+	populate_webgui($image_name);
+	populate_pkgs($image_name);
+}
+
 function populate_phpconf($image_name) {
 	global $dirs;
 
+	_exec("cp -p {$dirs['etc']}/rc* $image_name/rootfs/etc/");
 	_exec("cp {$dirs['phpconf']}/rc* $image_name/rootfs/etc/");
 	_exec("cp {$dirs['phpconf']}/inc/* $image_name/rootfs/etc/inc/");
+}
+
+function populate_pkgs($image_name) {
+	global $dirs;
+
+	_exec("cp -R {$dirs['pkgs']}/ $image_name/rootfs/etc/pkgs");
 }
 
 function populate_webgui($image_name) {
@@ -1037,6 +1050,7 @@ function populate_everything($image_name) {
 	populate_sounds($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
+	populate_pkgs($image_name);
 	populate_cgi($image_name);
 	populate_jquery($image_name);
 	populate_webgui($image_name);
@@ -1092,7 +1106,7 @@ function package($platform, $image_name) {
 	_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
 
 	_exec("bsdlabel -rw md0 auto");
-	_exec("newfs -L MFSROOT -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
 
 	_exec("mount /dev/md0c tmp/mnt");
 	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
@@ -1148,11 +1162,10 @@ function package($platform, $image_name) {
 	_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
 	_exec("bsdlabel -BR -b $image_name/pointstaging/boot md0 tmp/formatted.label");
 	_exec("cp tmp/formatted.label tmp/stage/original.bsdlabel");
-	
-	//_exec("newfs -L MAIN -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
+
 	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
-	_exec("newfs -L ASTERISK -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
-	
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
+
 	_exec("mount /dev/md0a tmp/mnt");
 	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
 	_log("---- $platform - " . basename($image_name) . " - system partition ----");
@@ -1404,9 +1417,12 @@ if ($argv[1] == "prepare") {
 
 	passthru("find webgui/ -type f -name \"*.php\" -exec php -l {} \; -print | grep Parse");
 	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
-	passthru("find phpconf/ -type f -name \"*rc.*\" -exec php -l {} \; -print | grep Parse");
+	passthru("find phpconf/ -type f -name \"*rc*\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
 
+} else if ($argv[1] == "cleandots") {
+	passthru("find ./ -type f -name \"._*\" -delete -print");
+	
 } else if ($argv[1] == "release") {
 
 	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
