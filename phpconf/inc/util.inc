@@ -120,4 +120,17 @@ function util_gen_manual_attributes($ma_array) {
 	return $conf;
 }
 
+function util_file_put_contents($contents, $filename) {
+
+	$fd = fopen($filename, "w");
+	if (!$fd) {
+		printf("Error: cannot open $filename in util_file_put_contents().\n");
+		return 1;
+	}
+	fwrite($fd, $contents);
+	fclose($fd);
+
+	return 0;
+}
+
 ?>
