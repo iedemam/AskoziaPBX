@@ -83,7 +83,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	else if (stristr($_POST['Submit'], "Upgrade") || $_POST['sig_override'])
 		$mode = "upgrade";
 	else if ($_POST['sig_no'])
-		unlink("{$g['ftmp_path']}/firmware.img");
+		unlink("/ultmp/firmware.img");
 		
 	if ($mode) {
 		if ($mode == "enable") {
@@ -106,10 +106,10 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 						unlink($d_fwupenabled_path);
 				} else {
 					/* move the image so PHP won't delete it */
-					rename($_FILES['ulfile']['tmp_name'], "{$g['ftmp_path']}/firmware.img");
+					rename($_FILES['ulfile']['tmp_name'], "/ultmp/firmware.img");
 					
 					/* check digital signature */
-					$sigchk = verify_digital_signature("{$g['ftmp_path']}/firmware.img");
+					$sigchk = verify_digital_signature("/ultmp/firmware.img");
 					
 					if ($sigchk == 1)
 						$sig_warning = "The digital signature on this image is invalid.";
@@ -118,17 +118,28 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 					else if (($sigchk == 3) || ($sigchk == 4))
 						$sig_warning = "There has been an error verifying the signature on this image.";
 				
-					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
+					if (!verify_gzip_file("/ultmp/firmware.img")) {
 						$input_errors[] = "The image file is corrupt.";
-						unlink("{$g['ftmp_path']}/firmware.img");
+						unlink("/ultmp/firmware.img");
 					}
 				}
 			}
 
 			if (!$input_errors && !file_exists($d_firmwarelock_path) && (!$sig_warning || $_POST['sig_override'])) {			
+				/* stop any disk activity Asterisk may be causing */
+				pbx_stop();
+				/* if we're using the mounted temporary file upload, it must be moved to a memory disk so
+				 * the storage partition can be unmounted */
+				if (file_exists($d_ultmpmounted_path)) {
+					unlink("/ultmp");
+					mkdir("/ultmp");
+					mwexec("/sbin/mdmfs -s 20m md1 /ultmp");
+					rename("/storage/ultmp/firmware.img", "/ultmp/firmware.img");
+					storage_syspart_unmount();
+				}
 				/* fire up the update script in the background */
 				touch($d_firmwarelock_path);
-				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
+				exec_rc_script_async("/etc/rc.firmware upgrade /ultmp/firmware.img");
 				
 				$savemsg = "The firmware is now being installed. The PBX will reboot automatically.";
 			}
@@ -138,59 +149,94 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	if (!isset($config['system']['disablefirmwarecheck']))
 		$fwinfo = check_firmware_version();
 }
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if ($fwinfo) echo $fwinfo; ?>
-<?php if (in_array($g['platform'], $no_firmware_update_platforms)): ?>
-<p><strong>Firmware uploading is not supported on this platform.</strong></p>
-<?php elseif ($sig_warning && !$input_errors): ?>
-<form action="system_firmware.php" method="post">
-<?php 
-$sig_warning = "<strong>" . $sig_warning . "</strong><br>This means that the image you uploaded " .
+
+include("fbegin.inc");
+if ($input_errors) print_input_errors($input_errors);
+if ($savemsg) print_info_box($savemsg);
+if ($fwinfo) echo $fwinfo;
+
+if (in_array($g['platform'], $no_firmware_update_platforms)) {
+
+	?><p><strong>Firmware uploading is not supported on this platform.</strong></p><?
+
+} else if ($sig_warning && !$input_errors) {
+
+	?><form action="system_firmware.php" method="post"><?
+
+	$sig_warning = "<strong>" . $sig_warning . "</strong><br>This means that the image you uploaded " .
 	"is not an official/supported image and may lead to unexpected behavior or security " .
 	"compromises. Only install images that come from sources that you trust, and make sure ".
 	"that the image has not been tampered with.<br><br>".
 	"Do you want to install this image anyway (at your own risk)?";
-print_info_box($sig_warning);
-?>
-<input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">
-<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
-</form>
-<?php else: ?>
-            <?php if (!file_exists($d_firmwarelock_path)): ?>
-            <p>Click &quot;Enable firmware 
-              upload&quot; below, then choose the image file (pbx-<?=$g['fullplatform'];?>-*.img)
-			  to be uploaded.<br>Click &quot;Upgrade firmware&quot; 
-              to start the upgrade process.</p>
-            <form action="system_firmware.php" method="post" enctype="multipart/form-data">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <?php if (!file_exists($d_sysrebootreqd_path)): ?>
-                    <?php if (!file_exists($d_fwupenabled_path)): ?>
-                    <input name="Submit" type="submit" class="formbtn" value="Enable firmware upload">
-				  <?php else: ?>
-				   <input name="Submit" type="submit" class="formbtn" value="Disable firmware upload">
-                    <br><br>
-					<strong>Firmware image file: </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
-                    <br><br>
-                    <input name="Submit" type="submit" class="formbtn" value="Upgrade firmware">
-				  <?php endif; else: ?>
-				    <strong>You must reboot the system before you can upgrade the firmware.</strong>
-				  <?php endif; ?>
-                  </td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"><span class="vexpl"><span class="red"><strong>Warning:<br>
-                    </strong></span>DO NOT abort the firmware upgrade once it 
-                    has started. The system will reboot automatically after 
-                    storing the new firmware. The configuration will be maintained.</span></td>
-                </tr>
-              </table>
-</form>
-<?php endif; endif; ?>
-<?php include("fend.inc"); ?>
+	print_info_box($sig_warning);
+
+		?><input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">
+		<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
+	</form><?
+
+} else {
+
+	if (!file_exists($d_firmwarelock_path)) {
+
+		?><p><?
+
+		if (!file_exists($d_ultmpmounted_path)) {
+
+		?>Click &quot;Enable firmware upload&quot; below. <?
+
+		}
+
+		?>Choose the new firmware image file (pbx-<?=$g['fullplatform'];?>-*.img)
+		to be installed.<br>
+		Click &quot;Upgrade firmware&quot; to start the upgrade process.</p>
+		<form action="system_firmware.php" method="post" enctype="multipart/form-data">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr> 
+					<td width="22%" valign="top">&nbsp;</td>
+					<td width="78%"><?
+
+			if (!file_exists($d_sysrebootreqd_path)) {
+
+				if (!file_exists($d_fwupenabled_path) && !file_exists($d_ultmpmounted_path)) {
+
+					?><input name="Submit" type="submit" class="formbtn" value="Enable firmware upload"><?
+
+				} else {
+
+					if (!file_exists($d_ultmpmounted_path)) {
+
+					?><input name="Submit" type="submit" class="formbtn" value="Disable firmware upload"><br>
+					<br><?
+
+					}
+
+					?><strong>Firmware image file: </strong>&nbsp;<input name="ulfile" type="file" class="formfld"><br>
+					<br>
+					<input name="Submit" type="submit" class="formbtn" value="Upgrade firmware"><?
+
+				}
+
+			} else {
+
+				?><strong>You must reboot the system before you can upgrade the firmware.</strong><?
+
+			}
+
+					?></td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top">&nbsp;</td>
+					<td width="78%">
+						<span class="vexpl"><span class="red"><strong>Warning:</strong></span><br>
+						DO NOT abort the firmware upgrade once it has started.
+						The system will reboot automatically after storing the new firmware.
+						The configuration will be maintained.</span>
+					</td>
+				</tr>
+			</table>
+		</form><?
+
+	}
+}
+
+include("fend.inc");
