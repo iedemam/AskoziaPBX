@@ -1,3 +1,11 @@
+logging storage service
+ - log rotation
+ - cdr : search, sort
+ - cdr, pbx, system : pagination
+
+ - RELAX e-mail validation (forum post)
+ - handle '+' and ' ' characters in extensions routed over providers
+
 // askozia-bugs.doc
 
 // iax tos options
@@ -9,11 +17,6 @@
 - set a more sensible default for analog phone echo canceller size
 - start writing short wiki entries for new features as they are implemented
 bug: new Russian voicemail translation is missing words upon reception...
-
-storage
-- device states: unconfigured, configured, inactive, active, healthy, dirty, clean, mounted, unmounted...?!
-- fs options?
-- ajax format status bar
 
 general improvements
 - better documentation on codec options (passthru esp.)
@@ -34,9 +37,6 @@ later
 - time based call routing
 - better front panel w/quick access to call logs, etc
 - disable/enable options for each provider and phone
-- storage interface (add storage partition for extended capabilities)
-- extended capabilities hooks into the gui
-- new option to log to storage partition
 - get "advanced mode" working
 - provider / phone status indicators on edit page
 - dialplan (still needs (de)select all)

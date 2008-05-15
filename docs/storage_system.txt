@@ -24,12 +24,14 @@ Requirements
 
 6. WebGUI functionality must degrade gracefully if the partition it depends on is no longer available.
 
+7. Backup / Restore
+
 
 
 1. Initialization
 -----------------
 
-An offset of 64MB will allow the current AskoziaPBX base image to more than double in size without effecting the storage partition. The disk space remaining beyond that offset will be allocated for the partition.
+An offset of 64MB will allow the current AskoziaPBX base image to more than double in size without affecting the storage partition. The disk space remaining beyond that offset will be allocated for the partition.
 
 User initialization will consist of clicking a "+" icon next to the recognized disk in "Interfaces -> Storage." This will AJAX back to a PHP script which will initialize the partition. Upon successful initialization, the "+" icon will change to an "e" icon which the user can click to assign storage services to that partition.
 
@@ -43,23 +45,18 @@ Implementation:
   
      exec("/sbin/bsdlabel $sysdisk", $output);
   
-  + ? add a 'd' partition with an offset of 64MB which occupies the remaining space
+  + add a 'd' partition with an offset of 64MB which occupies the remaining space
+
   + write this bsdlabel back to the system's disk
 
      mwexec("/sbin/bsdlabel -R $sysdisk /tmp/newbsdlabel");
 
-  + ? no need to reinstall the boot code
   + check for existing partition -> skip next step if present
-  + create a new file system on the partition
-  
-     mwexec("/sbin/newfs -L SYSSTORAGE -b 8192 -f 1024 -o space /dev/" . $sysdisk . "d");
-  
-  + generate the appropriate config.xml entries
-  
-     $disk['uniqid'] = "SYSSTORAGE";
-     $config['interfaces']['storage-disk'][] = $disk;
 
-  + regenerate fstab
+  + create a new file system on the partition
+
+     mwexec("/sbin/newfs -L SYSSTORAGE -b 8192 -f 1024 -o space /dev/" . $sysdisk . "d");
+
   + mount
 
 
@@ -72,15 +69,7 @@ The bsdlabel will be overwritten after a firmware upgrade. It must be regenerate
 Implementation:
 
   + early in the boot process, check if there is a configured "system-storage-partition"
-
-     foreach ($config['interfaces']['storage-disk'] as $disk) {
-          if ($disk['uniqid'] == "SYSSTORAGE") {
-               $have_sysstorage = true;
-          }
-     }
-
   + modify the bsdlabel as described in "Initialization"
-  + regenerate fstab
   + mount
 
 
@@ -95,7 +84,7 @@ If a system is reset to "factory defaults" or restores a pre-partition config.xm
 4. Storage Services
 -------------------
 
-Individual services will be assignable to different storage devices. Services will simply be represented as a directory in the root of the storage device for simplicity.
+Individual services will be assignable to different storage devices. Services will be represented as a directory in the root of the storage device for simplicity.
 
 Transferring of services from one disk to another will also be possible and services should have minimum space requirements which are to be checked before "installing" the particular service on a disk.
 
@@ -108,6 +97,8 @@ The following services are to be released with the initial storage system:
 Once the storage system has been deemed stable:
  - Full Voicemail Support
  - Call Recording
+
+Services must be versioned and checked for updates upon boot.
 
 
 
@@ -122,3 +113,14 @@ Early in the boot process the partition's health should be verified and repaired
 ----------------------------------------
 
 Each service must be able to revert to its non-storage defaults when a partition is no longer present. Are there cases where this is not possible?
+
+
+
+7. Backup/Restore
+-----------------
+
+At some point, the storage partition will probably contain data that is sufficiently valuable to the user that the desire to be able to back it up will arise. The most user-friendly way would probably be if the contents could be downloaded as a single file through the webGUI.
+
+Perhaps this could be implemented by directly streaming the output of "tar cfvz - /mountpoint" to the client (e.g. with PHP's passthru()), thus avoiding the need for enough RAM to hold the entire archive.
+
+Restore would be a bit more tricky, as PHP always writes uploaded files to the file system (/tmp by default, I think), and that would probably exceed the capacity of the MFS. This could probably be solved by using a CGI written in C that is capable of decoding the data on the fly and writing it to disk.
