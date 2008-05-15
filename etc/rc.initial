@@ -70,6 +70,9 @@ case ${opmode} in
 7)
 	/usr/local/sbin/asterisk -r
 	;;
+8)
+	/bin/sh
+	;;
 esac
 
 done
