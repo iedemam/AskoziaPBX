@@ -38,7 +38,6 @@ $g = array(
     "etc_path" => "/etc",
     "tmp_path" => "/tmp",
     "conf_path" => "/conf",
-    "ftmp_path" => "/ftmp",
     "conf_default_path" => "/conf.default",
     "cf_path" => "/cf",
     "cf_conf_path" => "/cf/conf",
@@ -113,6 +112,9 @@ $defaults['sip']['phone']['calllimit'] = "2";
 $defaults['sip']['phone']['busylimit'] = "1";
 $defaults['sip']['provider'] = array();
 $defaults['sip']['provider']['calleridsource'] = "phones";
+
+$defaults['storage']['system-partition-offset-megabytes'] = "64";
+$defaults['storage']['system-media-minimum-size'] = "96";
 
 $defaults['syslog'] = array();
 $defaults['syslog']['nentries'] = "100";

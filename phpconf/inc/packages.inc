@@ -1,0 +1,213 @@
+<?php
+/*
+	$Id: services.inc 356 2008-01-02 15:43:21Z michael.iedema $
+	part of AskoziaPBX (http://askozia.com/pbx)
+
+	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+	
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
+	
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
+	
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/* include all configuration functions */
+require_once("functions.inc");
+
+function packages_get_packages() {
+
+	$packages = array();
+	$paths = packages_get_paths();
+
+	/* for each path where packagese can reside */
+	foreach ($paths as $media => $path) {
+		$dh = opendir($path);
+		while ($dirname = readdir($dh)) {
+			/* if the directory is a pkg */
+			if (strpos($dirname, ".pkg") !== false) { 
+				/* read in the xml configuration */
+				$pkg = packages_read_config($path . "/" . $dirname);
+				/* store that information in the packages array */
+				$packages[$pkg['name']] = $pkg;
+				$packages[$pkg['name']]['media'] = $media;
+				$packages[$pkg['name']]['parentpath'] = $path;
+				$packages[$pkg['name']]['path'] = $path . "/" . $dirname;
+				$packages[$pkg['name']]['datapath'] = $path . "/" . $dirname . "/data";
+				/* record the packages's state */
+				if (file_exists($path . "/" . $dirname . "/pkg.active")) {
+					$packages[$pkg['name']]['active'] = true;
+				}
+			} 
+		}
+		closedir($dh);
+	}
+
+	return $packages;
+}
+
+function packages_get_package($name) {
+
+	$paths = packages_get_paths();
+
+	/* for each path where packagese can reside */
+	foreach ($paths as $media => $path) {
+		$dh = opendir($path);
+		while ($dirname = readdir($dh)) {
+			/* if the directory is a pkg */
+			if ($dirname == $name . ".pkg") { 
+				/* read in the xml configuration */
+				$pkg = packages_read_config($path . "/" . $dirname);
+				/* store that information in the packages array */
+				$pkg['media'] = $media;
+				$pkg['parentpath'] = $path;
+				$pkg['path'] = $path . "/" . $dirname;
+				$pkg['datapath'] = $path . "/" . $dirname . "/data";
+				/* record the packages's state */
+				if (file_exists($path . "/" . $dirname . "/pkg.active")) {
+					$pkg['active'] = true;
+				}
+				break;
+			} 
+		}
+		closedir($dh);
+	}
+
+	return $pkg;
+}
+
+function packages_get_paths() {
+
+	$paths = array();
+
+	if (storage_syspart_get_state() == "active") {
+		$paths['syspart'] = storage_get_media_path("syspart");
+	}
+
+	return $paths;
+}
+
+function packages_get_packages_assigned_to_media($media) {
+
+	$packages = packages_get_packages();
+
+	$assigned_packages = array();
+	foreach($packages as $package) {
+		if ($package['media'] == $media) {
+			$assigned_packages[$package['name']] = $package;
+		}
+	}
+
+	return $assigned_packages;
+}
+
+function packages_read_config($path) {
+	$tmp = xml_to_array($path . "/conf.xml", "package");
+	return $tmp[0];
+}
+
+function packages_is_active($name) {
+
+	$pkg = packages_get_package($name);
+
+	return isset($package['active']);
+}
+
+function packages_exec_rc($name, $command) {
+
+	$pkg = packages_get_package($name);
+	return mwexec($pkg['path'] . "/rc $command");
+}
+
+function packages_create_command_file($file, $package_name, $package_command) {
+
+	util_file_put_contents($package_name . ":" . $package_command, $file);
+
+	return 0;
+}
+
+function packages_read_command_file($file) {
+
+	$tmp = explode(":", file_get_contents($file));
+	$command['name'] = $tmp[0];
+	$command['command'] = $tmp[1];
+
+	return $command;
+}
+
+function packages_get_size($name) {
+
+	$pkg = packages_get_package($name);
+
+	exec("/usr/bin/du -k -d 0 " . $pkg['path'], $out);
+	$out = preg_split("/\s+/", $out[0]);
+
+	return $out[0] * 1024;
+}
+
+function packages_update_all() {
+
+	$packages = packages_get_packages();
+	$src_path = "/etc/pkgs";
+	$dest_path = storage_get_media_path("syspart");
+
+	echo "Updating packages...\n";
+
+	$dh = opendir($src_path);
+	while ($dirname = readdir($dh)) {
+		/* if the directory is a pkg */
+		if (strpos($dirname, ".pkg") !== false) { 
+			/* read in the xml configuration */
+			$built_in_pkg = packages_read_config($src_path . "/" . $dirname);
+
+			/* if the package doesn't yet exist, copy it over */
+			if (!isset($packages[$built_in_pkg['name']])) {
+				mwexec("/bin/cp -R " . $src_path . "/" . $dirname . " " . $dest_path);
+
+				echo " - installed " . $built_in_pkg['name'] .
+					" package to storage partition.\n";
+
+			/* the built-in version number is higher than the installed package */
+			} else if ($built_in_pkg['version'] > $packages[$built_in_pkg['name']]['version']) {
+				/* copy the new rc file */
+				mwexec("/bin/cp " . $src_path . "/" . $dirname . "/rc " .
+					$dest_path . "/" . $dirname);
+				/* execute the update routine */
+				$ret = mwexec($dest_path . "/" . $dirname . "/rc update");
+				/* update package meta info from built-in package */
+				$new_pkg_conf = $packages[$built_in_pkg['name']];
+				$new_pkg_conf['version'] = $built_in_pkg['version'];
+				$new_pkg_conf['descr'] = $built_in_pkg['descr'];
+				/* write out package's updated conf.xml */
+				$new_pkg_xml = array_to_xml($new_pkg_conf, "package");
+				util_file_put_contents($new_pkg_xml, $dest_path . "/" . $dirname . "/conf.xml");
+
+				echo " - updated " . $built_in_pkg['name'] . " package from version " .
+					$packages[$built_in_pkg['name']]['version'] . " to version " .
+					$built_in_pkg['version'] . " " .
+					(($ret) ? "UNSUCCESSFULLY" : "successfully") . ".\n";
+			}
+		} 
+	}
+	closedir($dh);
+
+	echo " - done.\n";
+}
+
+?>
