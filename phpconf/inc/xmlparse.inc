@@ -35,17 +35,25 @@
 $listtags = explode(" ", 
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
 	"phone provider codec room dialpattern callgroup groupmember incomingextensionmap " .
-	"isdn-unit ab-unit storage-disk storage-service loadzone bridge application " .
+	"isdn-unit ab-unit storage-disk package loadzone bridge application " .
 	"manager-user read-permission write-permission app-command manual-attribute"
 );
 
+/* xml array used in parsing configuration files
+ * XXX : this is a workaround for m0n0wall's global use of $config so it
+ *		may be generalized for the packaging system. A lock/unlock has been
+ *		added to control access to the parser but, in general, the solution
+ *		is dirty and should be reimplemented. Oh the improvements
+ *		to be made with OOP in the future
+ */
+$xml_array = array();
 
 function startElement($parser, $name, $attrs) {
-	global $depth, $curpath, $config, $havedata, $listtags;
-	
+	global $depth, $curpath, $xml_array, $havedata, $listtags;
+
 	array_push($curpath, strtolower($name));
 	
-	$ptr =& $config;
+	$ptr =& $xml_array;
 	foreach ($curpath as $path) {
 		$ptr =& $ptr[$path];
 	}
@@ -73,10 +81,10 @@ function startElement($parser, $name, $attrs) {
 }
 
 function endElement($parser, $name) {
-	global $depth, $curpath, $config, $havedata, $listtags;
+	global $depth, $curpath, $xml_array, $havedata, $listtags;
 	
 	if ($havedata == $depth) {
-		$ptr =& $config;
+		$ptr =& $xml_array;
 		foreach ($curpath as $path) {
 			$ptr =& $ptr[$path];
 		}
@@ -92,12 +100,12 @@ function endElement($parser, $name) {
 }
 
 function cData($parser, $data) {
-	global $depth, $curpath, $config, $havedata;
+	global $depth, $curpath, $xml_array, $havedata;
 	
 	$data = trim($data, "\t\n\r");
 	
 	if ($data != "") {
-		$ptr =& $config;
+		$ptr =& $xml_array;
 		foreach ($curpath as $path) {
 			$ptr =& $ptr[$path];
 		}
@@ -113,43 +121,49 @@ function cData($parser, $data) {
 	}
 }
 
-function parse_xml_config($cffile, $rootobj) {
+function xml_to_array($cffile, $rootobj) {
+	global $depth, $curpath, $xml_array, $havedata, $listtags;
 
-	global $depth, $curpath, $config, $havedata, $listtags;
+	xml_parser_lock();
 
-	$config = array();
+	$xml_array = array();
 	$curpath = array();
 	$depth = 0;
 	$havedata = 0;
-	
+
 	$xml_parser = xml_parser_create();
-	
+
 	xml_set_element_handler($xml_parser, "startElement", "endElement");
 	xml_set_character_data_handler($xml_parser, "cdata");
-	
+
 	if (!($fp = fopen($cffile, "r"))) {
+		xml_parser_unlock();
 		die("Error: could not open XML input\n");
 	}
-	
+
 	while ($data = fread($fp, 4096)) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
+			xml_parser_unlock();
 			die(sprintf("XML error: %s at line %d\n",
 						xml_error_string(xml_get_error_code($xml_parser)),
 						xml_get_current_line_number($xml_parser)));
 		}
 	}
 	xml_parser_free($xml_parser);
-	
-	if (!$config[$rootobj]) {
+
+	if (!$xml_array[$rootobj]) {
+		xml_parser_unlock();
 		die("XML error: no $rootobj object found!\n");
 	}
-	
+
 	fclose($fp);
-	
-	return $config[$rootobj];
+
+	xml_parser_unlock();
+
+	return $xml_array[$rootobj];
 }
 
-function dump_xml_config_sub($arr, $indent) {
+function array_to_xml_sub($arr, $indent) {
 
 	global $listtags;
 	
@@ -163,7 +177,7 @@ function dump_xml_config_sub($arr, $indent) {
 					if (is_array($cval)) {
 						$xmlconfig .= str_repeat("\t", $indent);
 						$xmlconfig .= "<$ent>\n";
-						$xmlconfig .= dump_xml_config_sub($cval, $indent + 1);
+						$xmlconfig .= array_to_xml_sub($cval, $indent + 1);
 						$xmlconfig .= str_repeat("\t", $indent);
 						$xmlconfig .= "</$ent>\n";
 					} else {
@@ -179,7 +193,7 @@ function dump_xml_config_sub($arr, $indent) {
 				/* it's an array */
 				$xmlconfig .= str_repeat("\t", $indent);
 				$xmlconfig .= "<$ent>\n";
-				$xmlconfig .= dump_xml_config_sub($val, $indent + 1);
+				$xmlconfig .= array_to_xml_sub($val, $indent + 1);
 				$xmlconfig .= str_repeat("\t", $indent);
 				$xmlconfig .= "</$ent>\n";
 			}
@@ -197,16 +211,52 @@ function dump_xml_config_sub($arr, $indent) {
 	return $xmlconfig;
 }
 
-function dump_xml_config($arr, $rootobj) {
+function array_to_xml($arr, $rootobj) {
 
 	$xmlconfig = "<?xml version=\"1.0\"?" . ">\n";
 	$xmlconfig .= "<$rootobj>\n";
-		
-	$xmlconfig .= dump_xml_config_sub($arr, 1);
-	
+
+	$xmlconfig .= array_to_xml_sub($arr, 1);
+
 	$xmlconfig .= "</$rootobj>\n";
-	
+
 	return $xmlconfig;
+}
+
+/**
+ * Locks access xml parser
+ * Lock is invalidated after 10 seconds.
+ */
+function xml_parser_lock() {
+	global $g;
+
+	$lockfile = "{$g['varrun_path']}/xmlparser.lock";
+
+	$n = 0;
+	while ($n < 10) {
+		/* open the lock file in append mode to avoid race condition */
+		if ($fd = @fopen($lockfile, "x")) {
+			/* succeeded */
+			fclose($fd);
+			return;
+		} else {
+			/* file locked, wait and try again */
+			sleep(1);
+			$n++;
+		}
+	}
+}
+
+/**
+ * Unlocks access to the xmlparser
+ */
+function xml_parser_unlock() {
+	global $g;
+
+	$lockfile = "{$g['varrun_path']}/xmlparser.lock";
+
+	if (file_exists($lockfile))
+		unlink($lockfile);
 }
 
 ?>
