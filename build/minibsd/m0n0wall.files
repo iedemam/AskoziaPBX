@@ -11,6 +11,7 @@ bin/expr
 bin/hostname
 bin/kill
 bin/ls
+bin/ln
 bin/mkdir
 bin/mv
 bin/ps
@@ -26,6 +27,8 @@ sbin/atacontrol
 sbin/bsdlabel
 sbin/dmesg
 sbin/fastboot:sbin/fasthalt:sbin/halt:sbin/reboot
+sbin/fsck
+sbin/fsck_4.2bsd
 sbin/geom
 sbin/glabel
 sbin/ifconfig
@@ -54,7 +57,9 @@ sbin/sysctl
 sbin/umount
 
 # contents of /usr/bin
+usr/bin/du
 usr/bin/gzip:usr/bin/gunzip
+usr/bin/hexdump
 usr/bin/killall
 usr/bin/logger
 usr/bin/netstat
@@ -82,7 +87,6 @@ usr/sbin/pciconf
 usr/sbin/pnpinfo
 
 # contents of usr/local/bin
-usr/local/bin/oslecspeedtest
 usr/local/bin/ztcfg
 
 # contents of /usr/libexec
