@@ -40,11 +40,18 @@ function pbx_configure() {
 	if ($g['booting']) {
 		echo "Starting Asterisk...\n";
 	} else {
-		killbypid("{$g['varrun_path']}/asterisk.pid");
+		pbx_stop();
 	}
 
-	
 	$res = 0;
+	if ($g['booting']) echo " - generating Asterisk process configuration...";
+	$res |= pbx_asterisk_conf_generate();
+	if ($g['booting']) echo "done\n";
+
+	if ($g['booting']) echo " - generating modules configuration...";
+	$res |= pbx_modules_conf_generate();
+	if ($g['booting']) echo "done\n";
+
 	if ($g['booting']) echo " - generating indications configuration...";
 	$res |= indications_conf_generate();
 	if ($g['booting']) echo "done\n";
@@ -100,7 +107,7 @@ function pbx_configure() {
 	if ($g['booting']) echo "done\n";
 	
 	if ($g['booting']) echo " - executing Asterisk...";
-	$res |= mwexec("/usr/local/sbin/asterisk");
+	$res |= pbx_start();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) {
@@ -111,6 +118,19 @@ function pbx_configure() {
 	}
 
 	return $res;
+}
+
+function pbx_start() {
+	return mwexec("/usr/local/sbin/asterisk");
+}
+
+/* XXX : room for improvement here by factoring in call volume and
+ * giving feedback to force a restart
+ */
+function pbx_stop() {
+	global $g;
+
+	killbypid("{$g['varrun_path']}/asterisk.pid");
 }
 
 /**
@@ -617,6 +637,75 @@ function pbx_uniqid_to_technology($uniqid) {
 	}
 
 	return "ERROR:UNIQID_TO_TECHNOLOGY_FAILED($uniqid)";
+}
+
+function pbx_modules_conf_generate() {
+
+	$logging_pkg = packages_get_package("logging");
+
+	$fd = fopen("/usr/local/etc/asterisk/modules.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open modules.conf in pbx_modules_conf_generate().\n");
+		return 1;
+	}
+
+	$modulesconf = <<<EOD
+[modules]
+autoload=yes
+
+EOD;
+
+	if (isset($logging_pkg['active'])) {
+		$modulesconf .= "noload => cdr_syslog.so\n";
+	} else {
+		$modulesconf .= "noload => cdr_csv.so\n";
+		$modulesconf .= "noload => cdr_sqlite.so\n";
+	}
+
+	fwrite($fd, $modulesconf);
+	fclose($fd);
+
+	return 0;
+}
+
+function pbx_asterisk_conf_generate() {
+
+	$logging_pkg = packages_get_package("logging");
+
+	$astlogdir = "/var/log/asterisk";
+	if (isset($logging_pkg['active'])) {
+		$astlogdir = $logging_pkg['datapath'] . "/asterisk";
+	}
+
+	$fd = fopen("/usr/local/etc/asterisk/asterisk.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open asterisk.conf in pbx_asterisk_conf_generate().\n");
+		return 1;
+	}
+
+	$asteriskconf = <<<EOD
+[directories]
+astetcdir => /usr/local/etc/asterisk
+astmoddir => /usr/local/lib/asterisk/modules
+astvarlibdir => /usr/local/share/asterisk
+astdatadir => /usr/local/share/asterisk
+astagidir => /usr/local/share/asterisk/agi-bin
+astspooldir => /var/spool/asterisk
+astrundir => /var/run
+astlogdir => $astlogdir
+
+[options]
+verbose = 3
+dumpcore = no
+internal_timing = yes
+highpriority = yes
+
+EOD;
+
+	fwrite($fd, $asteriskconf);
+	fclose($fd);
+
+	return 0;
 }
 
 ?>
