@@ -55,7 +55,9 @@ $d_managerconfdirty_path = $g['varrun_path'] . "/managerconf.dirty";
 $d_isdnconfdirty_path = $g['varrun_path'] . "/isdnconf.dirty";
 $d_analogconfdirty_path = $g['varrun_path'] . "/analogconf.dirty";
 $d_rtpconfdirty_path = $g['varrun_path'] . "/rtpconf.dirty";
+$d_packageconfdirty_path = $g['varrun_path'] . "/packageconf.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
+$d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
 
