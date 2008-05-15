@@ -192,7 +192,7 @@ function lan_if_change() {
 				'Wireless'	=> 'interfaces_wireless.php',
 				'ISDN'		=> 'interfaces_isdn.php',
 				'Analog'	=> 'interfaces_analog.php',
-				//'Storage'	=> 'interfaces_storage.php'
+				'Storage'	=> 'interfaces_storage.php'
 			);
 			dynamic_tab_menu($tabs);
 			
