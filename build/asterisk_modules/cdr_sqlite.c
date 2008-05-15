@@ -71,23 +71,23 @@ static char sql_create_table[] = "CREATE TABLE cdr ("
 "	lastapp		VARCHAR(80),"
 "	lastdata	VARCHAR(80),"
 "	start		VARCHAR(16),"
-//"	answer		CHAR(19),"
-//"	end			CHAR(19),"
+"	answer		CHAR(19),"
+"	end			CHAR(19),"
 "	duration	INTEGER,"
 "	billsec		INTEGER,"
-"	disposition	VARCHAR(16)"
-//"	amaflags	INTEGER,"
-//"	accountcode	VARCHAR(20),"
-//"	uniqueid	VARCHAR(32),"
-//"	userfield	VARCHAR(255)"
+"	disposition	VARCHAR(16),"
+"	amaflags	INTEGER,"
+"	accountcode	VARCHAR(20),"
+"	uniqueid	VARCHAR(32),"
+"	userfield	VARCHAR(255)"
 ");";
 
-static char sql_create_trigger[] = "CREATE TRIGGER maxentries"
+/*static char sql_create_trigger[] = "CREATE TRIGGER maxentries"
 " AFTER INSERT ON cdr"
 " BEGIN"
 "	DELETE FROM cdr"
 "	WHERE id <= (SELECT max(id) FROM cdr) - 200;"
-" END;";
+" END;";*/
 
 static int sqlite_log(struct ast_cdr *cdr)
 {
@@ -96,8 +96,8 @@ static int sqlite_log(struct ast_cdr *cdr)
 	struct tm tm;
 	time_t t;
 	char startstr[80];
-//	char answerstr[80];
-//	char endstr[80];
+	char answerstr[80];
+	char endstr[80];
 	char *dispositionstr = NULL;
 	int count;
 
@@ -107,13 +107,13 @@ static int sqlite_log(struct ast_cdr *cdr)
 	ast_localtime(&t, &tm, NULL);
 	strftime(startstr, sizeof(startstr), DATE_FORMAT, &tm);
 
-//	t = cdr->answer.tv_sec;
-//	ast_localtime(&t, &tm, NULL);
-//	strftime(answerstr, sizeof(answerstr), DATE_FORMAT, &tm);
+	t = cdr->answer.tv_sec;
+	ast_localtime(&t, &tm, NULL);
+	strftime(answerstr, sizeof(answerstr), DATE_FORMAT, &tm);
 
-//	t = cdr->end.tv_sec;
-//	ast_localtime(&t, &tm, NULL);
-//	strftime(endstr, sizeof(endstr), DATE_FORMAT, &tm);
+	t = cdr->end.tv_sec;
+	ast_localtime(&t, &tm, NULL);
+	strftime(endstr, sizeof(endstr), DATE_FORMAT, &tm);
 	
 	dispositionstr = ast_cdr_disp2str(cdr->disposition);
 
@@ -129,15 +129,15 @@ static int sqlite_log(struct ast_cdr *cdr)
 				"lastapp,"
 				"lastdata,"
 				"start,"
-//				"answer,"
-//				"end,"
+				"answer,"
+				"end,"
 				"duration,"
 				"billsec,"
-				"disposition"
-//				"amaflags,"
-//				"accountcode,"
-//				"uniqueid,"
-//				"userfield"
+				"disposition,"
+				"amaflags,"
+				"accountcode,"
+				"uniqueid,"
+				"userfield"
 			") VALUES ("
 				"'%q', "	// clid
 				"'%q', "	// src
@@ -148,15 +148,15 @@ static int sqlite_log(struct ast_cdr *cdr)
 				"'%q', "	// lastapp
 				"'%q', "	// lastdata
 				"'%q', "	// start
-//				"'%q', "	// answer
-//				"'%q', "	// end
+				"'%q', "	// answer
+				"'%q', "	// end
 				"%d, "		// duration
 				"%d, "		// billsec
-				"'%q'"		// disposition
-//				"%d, "		// amaflags
-//				"'%q', "	// accountcode
-//				"'%q', "	// uniqueiq
-//				"'%q' "		// userfield
+				"'%q', "		// disposition
+				"%d, "		// amaflags
+				"'%q', "	// accountcode
+				"'%q', "	// uniqueiq
+				"'%q' "		// userfield
 			")", NULL, NULL, &zErr,
 				cdr->clid, 
 				cdr->src, 
@@ -167,15 +167,15 @@ static int sqlite_log(struct ast_cdr *cdr)
 				cdr->lastapp, 
 				cdr->lastdata,
 				startstr, 
-//				answerstr, 
-//				endstr,
+				answerstr, 
+				endstr,
 				cdr->duration, 
 				cdr->billsec, 
-				dispositionstr
-//				cdr->amaflags,
-//				cdr->accountcode,
-//				cdr->uniqueid,
-//				cdr->userfield
+				dispositionstr,
+				cdr->amaflags,
+				cdr->accountcode,
+				cdr->uniqueid,
+				cdr->userfield
 			);
 		if (res != SQLITE_BUSY && res != SQLITE_LOCKED)
 			break;
@@ -223,12 +223,12 @@ static int load_module(void)
 			free(zErr);
 			goto err;
 		}
-		res = sqlite_exec(db, sql_create_trigger, NULL, NULL, &zErr);
+		/*res = sqlite_exec(db, sql_create_trigger, NULL, NULL, &zErr);
 		if (res) {
 			ast_log(LOG_ERROR, "cdr_sqlite: Unable to create maxentries trigger: %s\n", zErr);
 			free(zErr);
 			goto err;
-		}
+		}*/
 
 		/* TODO: here we should probably create an index */
 	}
