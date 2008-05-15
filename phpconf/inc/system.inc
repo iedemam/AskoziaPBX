@@ -163,30 +163,29 @@ function system_routing_enable() {
 
 /**
  * Generates syslog.conf and (re)starts the syslog daemon
- * XXX : this generator should replace the static syslog.conf file still
- *       present in the svn tree
  */
 function system_syslogd_start() {
 	global $config, $g;
 	
 	$syslogcfg = $config['syslog'];
+	$logging_pkg = packages_get_package("logging");
 
-	if ($g['booting']) 
+	if ($g['booting']) {
 		echo "Starting syslog service... ";
-	else
+	} else {
 		killbypid("{$g['varrun_path']}/syslog.pid");
-			
-	if (isset($syslogcfg['enable'])) {
+	}
 
-		/* write syslog.conf */
-		$fd = fopen("{$g['varetc_path']}/syslog.conf", "w");
-		if (!$fd) {
-			printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
-			return 1;
-		}
-		
-		$syslogconf = <<<EOD
+	/* write syslog.conf */
+	$fd = fopen("{$g['varetc_path']}/syslog.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
+		return 1;
+	}
+	// XXX : cdr logging could be made conditional here based on service state
+	$syslogconf = <<<EOD
 local0.*;mail.*							%/var/log/pbx.log
+local1.*								%/var/log/cdr.log
 *.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; %/var/log/system.log
 security.*								%/var/log/system.log
 auth.info;authpriv.info;daemon.info		%/var/log/system.log
@@ -194,6 +193,27 @@ auth.info;authpriv.info;daemon.info		%/var/log/system.log
 
 EOD;
 
+	if (isset($logging_pkg['active'])) {
+		$logpath = $logging_pkg['datapath'] . "/system";
+		$syslogconf .= <<<EOD
+local0.*;mail.*							$logpath/pbx.log
+*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; $logpath/system.log
+security.*								$logpath/system.log
+auth.info;authpriv.info;daemon.info		$logpath/system.log
+
+EOD;
+	}
+
+	if (isset($syslogcfg['enable'])) {
+
+		if (isset($syslogcfg['system'])) {
+			$syslogconf .= <<<EOD
+*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; @{$syslogcfg['remoteserver']}
+security.*								@{$syslogcfg['remoteserver']}
+auth.info;authpriv.info;daemon.info		@{$syslogcfg['remoteserver']}
+
+EOD;
+		}
 		if (isset($syslogcfg['asterisk'])) {
 			$syslogconf .= <<<EOD
 local0.*								@{$syslogcfg['remoteserver']}
@@ -206,19 +226,17 @@ local1.*								@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
+	}
 
-		fwrite($fd, $syslogconf);
-		fclose($fd);
-		
-		$retval = mwexec("/usr/sbin/syslogd -s -f {$g['varetc_path']}/syslog.conf");
+	fwrite($fd, $syslogconf);
+	fclose($fd);
+	
+	$retval = mwexec("/usr/sbin/syslogd -s -f {$g['varetc_path']}/syslog.conf");
 
-	} else {
-		$retval = mwexec("/usr/sbin/syslogd -ss");
+	if ($g['booting']) {
+		echo "done\n";
 	}
 	
-	if ($g['booting'])
-		echo "done\n";
-		
 	return $retval;
 }
 
@@ -655,6 +673,25 @@ function system_load_kernel_modules() {
 	mwexec("/sbin/kldload wcfxs");
 	mwexec("/sbin/kldload i4b");
 	mwexec("/sbin/kldload ugen");
+}
+
+function system_setup_ultmp() {
+	global $g;
+
+	$d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
+
+	if (storage_syspart_get_state() == "active") {
+		if (!file_exists("/storage/ultmp")) {
+			mkdir("/storage/ultmp");
+		}
+		if (file_exists("/ultmp")) {
+			mwexec("rm -rf /ultmp");
+		}
+		symlink("/storage/ultmp", "/ultmp");
+		touch($d_ultmpmounted_path);
+	} else {
+		mkdir("/ultmp");
+	}
 }
 
 ?>
