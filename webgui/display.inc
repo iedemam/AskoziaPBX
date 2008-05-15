@@ -693,4 +693,10 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 	</tr><?
 }
 
+function display_capacity_bar($sizeinbytes, $usage) {
+
+	?><img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'><img src='bar_blue.gif' height='15' width='<?=$usage;?>' border='0' align='absmiddle'><img src='bar_gray.gif' height='15' width='<?=100-$usage;?>' border='0' align='absmiddle'><img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'>
+	<br><?=$usage;?>% of <?=format_bytes($sizeinbytes);?><?
+}
+
 ?>
