@@ -24,6 +24,7 @@ mkdir /var/etc /var/db /var/empty
 # generate circular logfiles
 clog -i -s 262144 /var/log/system.log
 clog -i -s 262144 /var/log/pbx.log
+clog -i -s 262144 /var/log/cdr.log
 chmod 0600 /var/log/*.log
 
 adjkerntz -i
