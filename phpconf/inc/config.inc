@@ -179,7 +179,7 @@ if (!$noparseconfig) {
 			}
 		}
 		
-		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
+		$config = xml_to_array("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 		
 		if ((float)$config['version'] > (float)$g['latest_config']) {
 			if ($g['booting']) {
@@ -416,7 +416,7 @@ function write_config() {
 		$config['lastchange'] = time();
 	
 	/* generate configuration XML */
-	$xmlconfig = dump_xml_config($config, $g['xml_rootobj']);
+	$xmlconfig = array_to_xml($config, $g['xml_rootobj']);
 	
 	/* write configuration */
 	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
@@ -430,7 +430,7 @@ function write_config() {
 	conf_mount_ro();
 	
 	/* re-read configuration */
-	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
+	$config = xml_to_array("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 	/* build uniqid_map */
 	$uniqid_map = config_build_uniqid_map($config);
 	
