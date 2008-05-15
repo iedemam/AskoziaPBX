@@ -48,8 +48,17 @@
 	/* load kernel modules */
 	system_load_kernel_modules();
 	
+	/* detect storage partition, initialize if not present, reinit bsdlabel if overwritten */
+	storage_syspart_initialize();
+
+	/* setup the temporary file upload destination */
+	system_setup_ultmp();
+	
 	/* run any early shell commands specified in config.xml */
 	system_do_shell_commands(1);
+
+	/* copy built-in packages to storage partition and update existing packages */
+	packages_update_all();
 	
 	/* set up our timezone */
 	system_timezone_configure();
