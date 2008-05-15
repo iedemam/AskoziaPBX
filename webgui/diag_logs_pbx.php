@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -32,71 +32,73 @@
 $pgtitle = array("Diagnostics", "Logs");
 require("guiconfig.inc");
 
-$nentries = $config['syslog']['nentries'];
-if (!$nentries)
-	$nentries = 100;
-
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/pbx.log");
-	/* redirect to avoid reposting form data on refresh */
+	exec("/usr/sbin/clog -i -s 262144 $logpath");
 	header("Location: diag_logs_pbx.php");
 	exit;
 }
 
-function dump_clog($logfile, $tail) {
-	global $g, $config;
+$packages = packages_get_packages();
 
-	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
-
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
-	
-	foreach ($logarr as $logent) {
-		//$logent = pbx_replace_uniqids_with_names($logent);
-		$logent = preg_split("/\s+/", $logent, 7);
-		
-		// filter some unimportant messages
-		if (($logent[6] == "Found") || 
-			(strpos($logent[6], "Manager 'admin' logged") !== false) ||
-			(strpos($logent[6], "Remote UNIX connection") !== false)) {
-			continue;
-		}
-		
-		echo "<tr valign=\"top\">\n";
-		
-		echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-		echo "<td class=\"listr\">" . str_replace("^M", "<br>", htmlspecialchars($logent[6])) . "</td>\n";
-
-		echo "</tr>\n";
-	}
+$sort = isset($config['syslog']['reverse']) ? "-r" : "";
+$nentries = $config['syslog']['nentries'];
+if (!$nentries) {
+	$nentries = 100;
 }
+
+$source = "internal";
+$logpath = "/var/log/pbx.log";
+$command = "/usr/sbin/clog $logpath | /usr/bin/tail $sort -n $nentries";	
+
+if (isset($packages['logging']['active'])) {
+	$source = "package";
+	$logpath = $packages['logging']['datapath'] . "/system/pbx.log";
+	$command = "/usr/bin/tail $sort -n $nentries $logpath";
+}
+
+exec($command, $logarr);
 
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-<?php 
-	$tabs = array('System' => 'diag_logs.php',
-				  'PBX' => 'diag_logs_pbx.php',
-				  'Calls' => 'diag_logs_calls.php',
-	       		  'Settings' => 'diag_logs_settings.php');
-	dynamic_tab_menu($tabs);
-?> 
-  </ul>
-  </td></tr>
-  <tr> 
-    <td class="tabcont">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		  <tr> 
-			<td colspan="2" class="listtopic"> 
-			  Last <?=$nentries;?> Asterisk log entries</td>
-		  </tr>
-		  <?php dump_clog("/var/log/pbx.log", $nentries); ?>
-		</table>
-		<br><form action="diag_logs_pbx.php" method="post">
-<input name="clear" type="submit" class="formbtn" value="Clear log">
-</form>
-	</td>
-  </tr>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array('System' => 'diag_logs.php',
+							'PBX' => 'diag_logs_pbx.php',
+							'Calls' => 'diag_logs_calls.php',
+							'Settings' => 'diag_logs_settings.php');
+			dynamic_tab_menu($tabs);
+
+			?></ul>
+		</td>
+	</tr>
+	<tr> 
+		<td class="tabcont">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr> 
+					<td colspan="2" class="listtopic">Last <?=$nentries;?> Asterisk log entries</td>
+				</tr><?
+
+			foreach ($logarr as $logent) {
+				$logent = preg_split("/\s+/", $logent, 7);
+				?><tr valign="top">
+					<td class="listlr" nowrap><?=htmlspecialchars(join(" ", array_slice($logent, 0, 3)));?></td>
+					<td class="listr"><?=str_replace("^M", "<br>", htmlspecialchars($logent[6]));?></td>
+				</tr><?
+			}
+
+			?></table><?
+
+		if ($source == "internal") {
+			?><br>
+			<form action="diag_logs_pbx.php" method="post">
+				<input name="clear" type="submit" class="formbtn" value="Clear Log">
+			</form><?
+		}
+
+		?></td>
+	</tr>
 </table>
 <?php include("fend.inc"); ?>
