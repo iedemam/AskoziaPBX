@@ -1,11 +1,14 @@
 2008.xx.xx - pb14
- - updated: Asterisk to 1.4.19
- - updated: isdn4bsd to revision 648
- - updated: basesystem to FreeBSD 6.2-RELEASE-p11
+ - added: system storage media larger than 96MB will automatically be partitioned with a permanent storage partition
+ - added: basic package management system and api with backup, restore, activate, deactivate and delete
+ - package: logging package which enables permanent storage of system, pbx and call logs
+ - updated: Asterisk to 1.4.21
+ - updated: isdn4bsd to revision 751
+ - updated: basesystem to FreeBSD 6.3-RELEASE-p2
  - changed: isdn4bsd and generic usb devices are now compiled as modules
  - removed: iLBC removed until licensing can be confirmed
 
-2008.xx.xx - pb13.4
+2008.06.05 - pb13.4
  - bug: using applications as a Provider's incoming destination works in more cases
  - bug: incoming calls from SIP Providers are now accepted in more cases
 
