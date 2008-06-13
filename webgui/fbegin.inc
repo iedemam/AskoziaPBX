@@ -130,6 +130,7 @@ $menu['System']['Interfaces'] 			= array('interfaces_network.php',
 												'interfaces_analog.php',
 												'interfaces_analog_edit.php',
 												'interfaces_storage.php',
+												'interfaces_storage_syspart_edit.php',
 												'interfaces_storage_disk_edit.php');
 $menu['System']['Firmware']				= array('system_firmware.php');
 $menu['System']['Backup/Restore'] 		= array('system_backup.php');
