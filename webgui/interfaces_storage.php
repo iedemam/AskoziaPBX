@@ -32,39 +32,8 @@
 $pgtitle = array("Interfaces", "Storage");
 require("guiconfig.inc");
 
-/* package restore */
-if ($_POST['restore-submit'] && is_uploaded_file($_FILES['packageulfile']['tmp_name'])) {
-
-	$name = $_POST['packageulname'];
-	move_uploaded_file($_FILES['packageulfile']['tmp_name'], $_FILES['packageulfile']['name']);
-	/* XXX */
-}
-
-/* activate a package */
-if ($_GET['action'] == "activate" && isset($_GET['package'])) {
-
-	$name = $_GET['package'];
-
-	packages_create_command_file($d_packageconfdirty_path, $name, "activate");
-
-	header("Location: interfaces_storage.php");
-	exit;
-}
-
-/* delete a package's configuration and storage data */
-if ($_GET['action'] == "del" && isset($_GET['package'])) {
-
-	$name = $_GET['package'];
-	$pkg = packages_get_package($name);
-	packages_exec_rc($pkg['name'], "deactivate");
-	packages_exec_rc($pkg['name'], "apply");
-	mwexec("rm -rf " . $pkg['path']);
-	header("Location: interfaces_storage.php");
-	exit;
-}
-
-/* backup a package's data */
-if ($_GET['action'] == 'backup' && isset($_GET['package'])) {
+/* backup */
+if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 
 	$name = $_GET['package'];
 	$pkg = packages_get_package($name);
@@ -77,9 +46,63 @@ if ($_GET['action'] == 'backup' && isset($_GET['package'])) {
 
 		header("Content-Type: application/octet-stream"); 
 		header("Content-Disposition: attachment; filename=$tgz_filename");
-		passthru("/usr/bin/tar cfz - -C {$pkg['path']} $name");
+		passthru("/usr/bin/tar cfz - -C {$pkg['parentpath']} $name.pkg");
 		exit;
 	}
+
+/* activate, deactivate, delete */
+} else if (isset($_GET['package']) && 
+	in_array($_GET['action'], array("activate", "deactivate", "delete"))) {
+
+	packages_create_command_file($d_packageconfdirty_path, $_GET['package'], $_GET['action']);
+	header("Location: interfaces_storage.php");
+	exit;
+
+/* install */
+} else if ($_POST['install-submit'] && is_uploaded_file($_FILES['installfile']['tmp_name'])) {
+
+	$pkg_install_path = storage_get_media_path("syspart");
+	$ultmp_path =  $pkg_install_path . "/ultmp/";
+	$file_name = $_FILES['installfile']['name'];
+	$full_file_name = $ultmp_path . "/" . $file_name;
+
+	// rename the uploaded file back to its original name
+	move_uploaded_file($_FILES['installfile']['tmp_name'], $full_file_name);
+
+	// cd into ultmp and decompress the newly uploaded file
+	mwexec("cd $ultmp_path; /usr/bin/tar zxf $file_name");
+
+	// find the name of the freshly extracted package directory
+	$dh = opendir($ultmp_path);
+	while ($direntry = readdir($dh)) {
+		if (strpos($direntry, ".pkg") !== false) { 
+			$uploaded_pkg_name = substr($direntry, 0, strpos($direntry, ".pkg"));
+		} 
+	}
+	closedir($dh);
+
+	// if that package exists, record state and delete it from the system
+	if ($old_pkg = packages_get_package($uploaded_pkg_name)) {
+		packages_exec_rc($uploaded_pkg_name, "delete");
+	}
+
+	// remove active state file and move over restore data
+	unlink_if_exists($ultmp_path . "/" . $uploaded_pkg_name . ".pkg/pkg.active");
+	mwexec("mv " . $ultmp_path . "/" . $uploaded_pkg_name . ".pkg " . $pkg_install_path);
+
+	// activate new package if needed
+	if ($old_pkg['active']) {
+		packages_exec_rc($uploaded_pkg_name, "activate");
+	}
+
+	// remove uploaded files
+	mwexec("rm -rf " . $ultmp_path . "/*");
+
+	// set save message
+
+
+	header("Location: interfaces_storage.php");
+	exit;
 }
 
 /* apply changes */
@@ -90,7 +113,7 @@ if (file_exists($d_packageconfdirty_path)) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			$retval |= packages_exec_rc($command['name'], $command['command']);
 		}
-		$savemsg = get_std_save_message($retval);
+		$savemsg = packages_generate_save_message($command['name'], $command['command']);
 		if ($retval == 0) {
 			unlink($d_packageconfdirty_path);
 		}
@@ -105,15 +128,6 @@ if (storage_syspart_get_state() == "active") {
 ?>
 
 <?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
-<!--
-	function set_package_restore_name(packagename) {
-		jQuery("#packageulname").val(packagename);
-		jQuery("#packages-restore-file-name").html(packagename);
-	}
-
-//-->
-</script>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="interfaces_storage.php" method="post" enctype="multipart/form-data">
@@ -152,12 +166,14 @@ if (storage_syspart_get_state() == "active") {
 					<td width="20%" class="listhdrr">Name</td>
 					<td width="25%" class="listhdrr">Capacity</td>
 					<td width="15%" class="listhdrr">State</td>
-					<td width="30%" class="listhdr">Packages</td>
+					<td width="30%" class="listhdr">Installed Packages</td>
 					<td width="10%" class="list"></td>
 				</tr>
 				<tr>
 					<td class="listbgl">system storage partition</td>
-					<td class="listr"><? display_capacity_bar($syspart['size'], $syspart['usage']);?>&nbsp;</td>
+					<td class="listr"><? display_capacity_bar(
+						($syspart['size'] - ($defaults['storage']['system-partition-offset-megabytes']*1024*1024)),
+						$syspart['usage']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($syspart['state']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars(
 						implode(", ", array_keys($syspart['packages'])));?>&nbsp;</td>
@@ -195,17 +211,18 @@ if (storage_syspart_get_state() == "active") {
 						<table border="0" cellspacing="0" cellpadding="1">
 							<tr>
 								<td><a href="interfaces_storage.php?action=backup&package=<?=$pkg['name'];?>"><img src="b.gif" title="backup package data" width="17" height="17" border="0"></a></td>
-								<td><a href="javascript:{}" onclick="set_package_restore_name('<?=$pkg['name'];?>'); jQuery('#packages-restore-file-upload').slideDown();"><img src="r.gif" title="restore package data" width="17" height="17" border="0"></a></td>
+								<td><a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="r.gif" title="restore package data" width="17" height="17" border="0"></a></td>
 							</tr>
 							<tr>
 								<td align="center" valign="middle"><?
+								/* future short cut to packages's settings?
 
 							if ($ss_info['hasoptions']) {
 									?><a href="packages_edit_package.php?name=<?=$pkg['name'];?>"><img src="e.gif" title="edit package settings" width="17" height="17" border="0"></a><?
 							}
 
-								?></td>
-								<td><a href="interfaces_storage.php?action=del&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="x.gif" title="delete package configuration and data" width="17" height="17" border="0"></a></td>
+								*/ ?><a href="interfaces_storage.php?action=deactivate&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to deactivate this package?')"><img src="minus.gif" title="deactivate package" width="17" height="17" border="0"></a></td>
+								<td><a href="interfaces_storage.php?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="x.gif" title="delete package configuration and data" width="17" height="17" border="0"></a></td>
 							</tr>
 						</table>
 					</td>
@@ -220,26 +237,29 @@ if (storage_syspart_get_state() == "active") {
 
 				?><tr>
 					<td class="listbgl"><?=$pkg['name'];?>&nbsp;(<?=$pkg['version'];?>)</td>
-					<td class="listr">&nbsp;</td>
+					<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
 					<td class="listr">inactive</td>
 					<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_storage.php?action=activate&package=<?=$pkg['name'];?>"><img src="plus.gif" title="activate package" width="17" height="17" border="0"></a>
-						<a href="javascript:{}" onclick="set_package_restore_name('<?=$pkg['name'];?>'); jQuery('#packages-restore-file-upload').slideDown();"><img src="r.gif" title="activate package from backup data" width="17" height="17" border="0"></a>
+						<a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="r.gif" title="activate package from backup data" width="17" height="17" border="0"></a>
 					</td>
 				</tr><?
 			}
 
-			?></table><?
+				?><tr> 
+					<td class="list" colspan="4"></td>
+					<td class="list"><a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="plus.gif" title="install package" width="17" height="17" border="0"></a></td>
+				</tr>
+			</table><?
 
 		}
 
-		?><div id="packages-restore-file-upload" style="display: none; margin: 10px">
-			Restoring <strong><span id="packages-restore-file-name"></span></strong> package. Select a backup archive to restore from and press "Restore."<br>
+		?><div id="packages-file-upload" style="display: none; margin: 10px">
+			Select a package .tgz archive and press "Install"<br>
 			<br>
-			<input id="packageulfile" name="packageulfile" type="file" class="formfld">
-			<input name="restore-submit" type="submit" class="formbtn" value="Restore"> <a href="javascript:{}" onclick="jQuery('#packages-restore-file-upload').slideUp();">cancel</a>
-			<input id="packageulname" name="packageulname" type="hidden" value="">
+			<input id="installfile" name="installfile" type="file" class="formfld">
+			<input name="install-submit" type="submit" class="formbtn" value="Install"> <a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideUp();">cancel</a>
 		</div>
 		</td>
 	</tr>
