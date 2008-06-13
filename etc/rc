@@ -38,6 +38,5 @@ cd /var/run && cp /dev/null utmp && chmod 644 utmp
 # let the PHP-based configuration subsystem set up the system now
 /etc/rc.bootup
 
-/etc/rc.banner
 
 exit 0
