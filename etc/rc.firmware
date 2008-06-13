@@ -36,7 +36,7 @@ upgrade)
 
 	# dd image onto card
 	if [ -r $2 ]; then
-		/usr/bin/gunzip -S "" -c $2 | dd of=/dev/$CFDEVICE bs=16k > /dev/null 2>&1
+		/usr/bin/gunzip -S "" -c $2 | dd of=/dev/$CFDEVICE ibs=64k obs=64k > /dev/null 2>&1
 		echo "Image installed."
 		rm $2
 	fi
