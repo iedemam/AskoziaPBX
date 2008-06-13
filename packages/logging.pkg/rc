@@ -29,6 +29,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require_once("api.inc");
+
 
 function initialize() {
 	global $pkg_info;
@@ -44,6 +46,10 @@ function initialize() {
 	if (!@mkdir($pkg_info['datapath'] . "/asterisk/cdr-csv")) {
 		$ret = 1;
 	}
+	if (!touch($pkg_info['datapath'] . "/asterisk/cdr.db")) {
+		$ret = 1;
+	}
+
 	if (!@mkdir($pkg_info['datapath'] . "/system")) {
 		$ret = 1;
 	}
@@ -77,7 +83,5 @@ function boot() {
 function shutdown() {
 	return 0;
 }
-
-require_once("api.inc");
 
 ?>
