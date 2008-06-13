@@ -34,7 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.19",
+	"asterisk"		=> "asterisk-1.4.21",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
 	"mini_httpd"	=> "mini_httpd-1.19",
@@ -68,7 +68,7 @@ $musiconhold		= explode(" ", "fpm-calm-river");
 
 // --[ modules ]---------------------------------------------------------------
 
-$low_power_modules		= explode(" ", "codec_speex.so codec_ilbc.so");
+$low_power_modules		= explode(" ", "codec_speex.so");//" codec_ilbc.so");
 $low_power_libraries	= explode(" ", "/usr/local/lib/libspeex.so.1");
 
 // --[ image padding ]---------------------------------------------------------
@@ -1023,7 +1023,7 @@ function populate_pointstaging($image_name) {
 	}
 
 	_exec("cd /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/; " .
-		"cp acpi/acpi/acpi.ko ugen/ugen.ko $image_name/pointstaging");
+		"cp ugen/ugen.ko $image_name/pointstaging");
 
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
 	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
@@ -1088,7 +1088,6 @@ function package($platform, $image_name) {
 	_exec("cp $image_name/pointstaging/*.ko tmp/stage/boot/kernel/");
 
 	if ($platform != "generic-pc") {
-		_exec("rm tmp/stage/boot/kernel/acpi.ko");
 		foreach ($low_power_libraries as $lpl) {
 			_exec("rm tmp/stage/$lpl");
 		}
@@ -1102,7 +1101,7 @@ function package($platform, $image_name) {
 	// get size and package mfsroot
 	$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
 	
-	_exec("dd if=/dev/zero of=tmp/mfsroot bs=1k count=$mfsroot_size");
+	_exec("dd if=/dev/zero of=tmp/mfsroot ibs=1k obs=1k count=$mfsroot_size");
 	_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
 
 	_exec("bsdlabel -rw md0 auto");
@@ -1158,7 +1157,7 @@ function package($platform, $image_name) {
 	fwrite($fd, $label);
 	fclose($fd);
 	
-	_exec("dd if=/dev/zero of=tmp/image.bin bs=1k count=$image_size");			
+	_exec("dd if=/dev/zero of=tmp/image.bin ibs=1k obs=1k count=$image_size");			
 	_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
 	_exec("bsdlabel -BR -b $image_name/pointstaging/boot md0 tmp/formatted.label");
 	_exec("cp tmp/formatted.label tmp/stage/original.bsdlabel");
@@ -1392,6 +1391,10 @@ if ($argv[1] == "prepare") {
 		_log("Image does not exist!");
 		exit(1);
 	}
+	// clean up any .svn directories
+	passthru("find -d $image_name -name \".svn\" -exec rm -r '{}' \; -print");
+	// clean up and ._ files
+	passthru("find $image_name -type f -name \"._*\" -delete -print");
 	// we're packaging all platforms go right ahead
 	if ($argv[2] == "all") {
 		foreach($platforms as $platform) {
@@ -1401,7 +1404,7 @@ if ($argv[1] == "prepare") {
 
 	// packaging the root file system distribution
 	} else if ($argv[2] == "rootfs") {
-			package_rootfs($image_name);
+		package_rootfs($image_name);
 
 	// check the specific platform before attempting to package
 	} else if (in_array($argv[2], $platforms)) {
