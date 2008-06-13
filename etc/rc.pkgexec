@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# $Id: rc.firmware 88 2007-05-14 14:07:11Z michael.iedema $
+# part of AskoziaPBX (http://askozia.com/pbx)
+#
+# Copyright (C) 2008 IKT <http://itison-ikt.de>.
+# All rights reserved.
+
+PKGRC=$1
+VERB=$2
+
+# unset CGI environment variables so as not to confuse PHP
+unset CONTENT_TYPE GATEWAY_INTERFACE REMOTE_USER REMOTE_ADDR AUTH_TYPE
+unset HTTP_USER_AGENT CONTENT_LENGTH SCRIPT_FILENAME HTTP_HOST
+unset SERVER_SOFTWARE HTTP_REFERER SERVER_PROTOCOL REQUEST_METHOD
+unset SERVER_PORT SCRIPT_NAME SERVER_NAME
+
+$PKGRC $VERB
