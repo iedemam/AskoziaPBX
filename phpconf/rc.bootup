@@ -59,6 +59,9 @@
 
 	/* copy built-in packages to storage partition and update existing packages */
 	packages_update_all();
+
+	/* execute package boot routines */
+	packages_boot_all();
 	
 	/* set up our timezone */
 	system_timezone_configure();
