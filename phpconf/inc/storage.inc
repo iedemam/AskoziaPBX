@@ -176,7 +176,6 @@ function storage_syspart_get_device() {
 function storage_syspart_get_usage() {
 
 	$device = storage_syspart_get_device();
-	$matches = array();
 	exec("/bin/df", $output);
 	foreach ($output as $o) {
 		if (strstr($o, "/dev/" . $device . "d")) {
@@ -197,6 +196,7 @@ function storage_syspart_get_state() {
 	return storage_syspart_has_default_bsdlabel() ? "inactive" : "active";
 }
 
+/* XXX : some of these functions refer to the entire disk and others to the partition */
 function storage_syspart_get_info() {
 
 	$info['device'] = storage_syspart_get_device();

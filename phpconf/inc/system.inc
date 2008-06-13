@@ -430,7 +430,6 @@ function system_ntp_configure() {
 
 /**
  * Reboots the system after calling system_reboot_cleanup()
- * XXX : difference between system_reboot_sync() and system_reboot() ?
  */
 function system_reboot() {
 	global $g;
@@ -442,7 +441,6 @@ function system_reboot() {
 
 /**
  * Reboots the system after calling system_reboot_cleanup()
- * XXX : difference between system_reboot_sync() and system_reboot() ?
  */
 function system_reboot_sync() {
 	global $g;
@@ -457,7 +455,7 @@ function system_reboot_sync() {
  * before restarting
  */
 function system_reboot_cleanup() {
-
+	packages_shutdown_all();
 }
 
 /**
@@ -683,8 +681,7 @@ function system_setup_ultmp() {
 	if (storage_syspart_get_state() == "active") {
 		if (!file_exists("/storage/ultmp")) {
 			mkdir("/storage/ultmp");
-		}
-		if (file_exists("/ultmp")) {
+		} else {
 			mwexec("rm -rf /ultmp");
 		}
 		symlink("/storage/ultmp", "/ultmp");

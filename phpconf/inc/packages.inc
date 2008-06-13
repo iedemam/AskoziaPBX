@@ -132,7 +132,7 @@ function packages_is_active($name) {
 function packages_exec_rc($name, $command) {
 
 	$pkg = packages_get_package($name);
-	return mwexec($pkg['path'] . "/rc $command");
+	return mwexec("/etc/rc.pkgexec " . $pkg['path'] . "/rc $command");
 }
 
 function packages_create_command_file($file, $package_name, $package_command) {
@@ -161,6 +161,25 @@ function packages_get_size($name) {
 	return $out[0] * 1024;
 }
 
+function packages_generate_save_message($name, $command) {
+
+	switch($command) {
+		case "activate":
+		case "deactivate":
+		case "delete":
+		case "restore":
+			return $name . " package " . $command . "d successfully.";
+		case "install":
+			return $name . " package " . $command . "ed successfully.";
+		default:
+			return "packages_generate_save_message...no message found";
+	}
+}
+
+/* 
+	1. installs built-in packages onto storage partition
+	2. upgrades packages which have updates
+*/
 function packages_update_all() {
 
 	$packages = packages_get_packages();
@@ -189,7 +208,7 @@ function packages_update_all() {
 				mwexec("/bin/cp " . $src_path . "/" . $dirname . "/rc " .
 					$dest_path . "/" . $dirname);
 				/* execute the update routine */
-				$ret = mwexec($dest_path . "/" . $dirname . "/rc update");
+				$ret = mwexec("/etc/rc.pkgexec " . $dest_path . "/" . $dirname . "/rc update");
 				/* update package meta info from built-in package */
 				$new_pkg_conf = $packages[$built_in_pkg['name']];
 				$new_pkg_conf['version'] = $built_in_pkg['version'];
@@ -208,6 +227,34 @@ function packages_update_all() {
 	closedir($dh);
 
 	echo " - done.\n";
+}
+
+
+function packages_boot_all() {
+
+	$packages = packages_get_packages();
+
+	echo "Executing package boot routines...";
+
+	foreach ($packages as $package) {
+		if ($package['active']) {
+			packages_exec_rc($package['name'], "boot");
+		}
+	}
+
+	echo "done.\n";
+}
+
+function packages_shutdown_all() {
+
+	$packages = packages_get_packages();
+
+	foreach ($packages as $package) {
+		if ($package['active']) {
+			packages_exec_rc($package['name'], "shutdown");
+		}
+	}
+
 }
 
 ?>

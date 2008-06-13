@@ -57,9 +57,16 @@ function activate() {
 	/* initialize package if this is the first activation */
 	if (!file_exists($pkg_info['path'] . "/pkg.initialized")) {
 		$ret |= initialize();
+
+		if (!$ret) {
+			touch($pkg_info['path'] . "/pkg.initialized");
+		}
 	}
 
-	touch($pkg_info['path'] . "/pkg.active");
+	if (!$ret) {
+		touch($pkg_info['path'] . "/pkg.active");
+		$ret |= apply();
+	}
 
 	return $ret;
 }
@@ -68,6 +75,16 @@ function deactivate() {
 	global $pkg_info;
 
 	unlink_if_exists($pkg_info['path'] . "/pkg.active");
+	apply();
+
+	return 0;
+}
+
+function delete() {
+	global $pkg_info;
+
+	deactivate();
+	mwexec("rm -rf " . $pkg_info['path']);
 
 	return 0;
 }
