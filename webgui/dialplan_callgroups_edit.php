@@ -89,7 +89,7 @@ if ($_POST) {
 		if (isset($id) && $a_callgroups[$id]) {
 			$gm['uniqid'] = $a_callgroups[$id]['uniqid'];
 			$a_callgroups[$id] = $gm;
-		 } else {
+		} else {
 			$gm['uniqid'] = "CALLGROUP-PARALLEL-" . uniqid(rand());
 			$a_callgroups[] = $gm;
 		}

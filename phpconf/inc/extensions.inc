@@ -732,21 +732,21 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
  * Generates a callgroup extension, returns nothing if
  * no extension is defined for this group
  */
-function extensions_generate_callgroup_extension($g, $from_public=false, $readbacknum=false, $extension=false) {
+function extensions_generate_callgroup_extension($group, $from_public=false, $readbacknum=false, $extension=false) {
 	global $defaults;
 
 	$transfer_flags = (!$from_public) ? "tT" : "t";
-	$exten = ($extension !== false) ? $extension : $g['extension'];
-	$dialstring = extensions_phone_uniqids_to_dialstring($g['groupmember']);
-	$vm_phone = pbx_get_phone($g['groupmember'][0]);
+	$exten = ($extension !== false) ? $extension : $group['extension'];
+	$dialstring = extensions_phone_uniqids_to_dialstring($group['groupmember']);
+	$vm_phone = pbx_get_phone($group['groupmember'][0]);
 	$readbacknum = ($readbacknum !== false) ? $readbacknum : $vm_phone['extension'];
 
 	// ring length
 	$ringlength = $defaults['accounts']['phones']['ringlength'];
-	if ($p['ringlength'] == "indefinitely") {
+	if ($group['ringlength'] == "indefinitely") {
 		$ringlength = "";
-	} else if ($p['ringlength']) {
-		$ringlength = $p['ringlength'];
+	} else if ($group['ringlength']) {
+		$ringlength = $group['ringlength'];
 	}
 
 	$conf .= extensions_generate_call_notification_variables($exten, $vm_phone);
@@ -829,11 +829,11 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 
 	// stored parallel callgroups
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL") {
-		$g = callgroups_get_group($uniqid);
-		if (!isset($g['extension']) && $extension === false) {
+		$group = callgroups_get_group($uniqid);
+		if (!isset($group['extension']) && $extension === false) {
 			return;
 		}
-		return extensions_generate_callgroup_extension($g, $from_public, $readbacknum, $extension);
+		return extensions_generate_callgroup_extension($group, $from_public, $readbacknum, $extension);
 
 	// applications
 	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
