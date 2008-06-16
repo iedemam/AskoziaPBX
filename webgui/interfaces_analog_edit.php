@@ -171,6 +171,21 @@ if ($_POST) {
 		</td>
 	</tr>
 	<tr> 
+		<td valign="top" class="vncell">Echo Canceller</td>
+		<td class="vtable">
+			<select name="echocancel" class="formfld" id="echocancel">
+				<option value="no" <? if ($pconfig['echocancel'] == "no") echo "selected"; ?>>Disabled</option>
+				<option value="32" <? if ($pconfig['echocancel'] == "32") echo "selected"; ?>>32</option>
+				<option value="64" <? if ($pconfig['echocancel'] == "64") echo "selected"; ?>>64</option>
+				<option value="128" <? if ($pconfig['echocancel'] == "128") echo "selected"; ?>>128</option>
+				<option value="256" <? if ($pconfig['echocancel'] == "256") echo "selected"; ?>>256</option>
+			</select>
+			<br><span class="vexpl">The echo canceller "tap" size. Larger sizes more effectively cancel echo but require more processing power.</span>
+		</td>
+	</tr>
+	<? display_advanced_settings_begin(1); ?>
+	<? display_analog_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
+	<tr> 
 		<td valign="top" class="vncell">Start Signaling</td>
 		<td class="vtable">
 			<select name="startsignal" class="formfld" id="startsignal">
@@ -184,21 +199,6 @@ if ($_POST) {
 			<br><span class="vexpl">In nearly all cases, "Kewl Start" is the appropriate choice here.</span>
 		</td>
 	</tr>
-	<tr> 
-		<td valign="top" class="vncell">Echo Canceller</td>
-		<td class="vtable">
-			<select name="echocancel" class="formfld" id="echocancel">
-				<option value="no" <? if ($pconfig['echocancel'] == "no") echo "selected"; ?>>Disabled</option>
-				<option value="32" <? if ($pconfig['echocancel'] == "32") echo "selected"; ?>>32</option>
-				<option value="64" <? if ($pconfig['echocancel'] == "64") echo "selected"; ?>>64</option>
-				<option value="128" <? if ($pconfig['echocancel'] == "128") echo "selected"; ?>>128</option>
-				<option value="256" <? if ($pconfig['echocancel'] == "256") echo "selected"; ?>>256</option>
-			</select>
-			<br><span class="vexpl">The echo canceller "tap" size. Larger sizes more effectively cancel echo but require more processing power.</span>
-		</td>
-	</tr>
-	<? display_analog_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
-	<? display_advanced_settings_begin(1); ?>
 	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 	<? display_advanced_settings_end(); ?>
 	<tr> 

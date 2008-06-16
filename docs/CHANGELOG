@@ -6,8 +6,10 @@
  - updated: isdn4bsd to revision 751
  - updated: basesystem to FreeBSD 6.3-RELEASE-p2
  - changed: seldom used ISDN interface settings moved to "advanced" settings, timing defaults improved
+ - changed: seldom used Analog interface settings moved to "advanced" settings
  - changed: isdn4bsd and generic usb devices are now compiled as modules
  - bug: ring lengths now correctly set for call groups (reported by runner in the forums)
+ - bug: fixed "help text" display bug on ISDN and Analog interface summary pages
  - removed: iLBC removed until licensing can be confirmed
 
 2008.06.05 - pb13.4
