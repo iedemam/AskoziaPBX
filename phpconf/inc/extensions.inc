@@ -262,6 +262,9 @@ EOD;
 
 	// providers contexts
 	foreach ($providers as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		if (count($p['incomingextensionmap'])) {
 			$conf .= "; incoming provider : {$p['name']}\n";
 			$conf .= extensions_generate_provider_incoming_context($p);
@@ -292,7 +295,9 @@ EOD;
 		$conf .= "include => internal\n";
 		if (isset($p['provider'])) {
 			foreach ($p['provider'] as $provider) {
-				$conf .= "include => $provider\n";
+				if (pbx_provider_is_active($provider)) {
+					$conf .= "include => $provider\n";
+				}
 			}
 		}
 		// allow direct outward dialing via sip uris

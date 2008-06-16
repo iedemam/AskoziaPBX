@@ -32,34 +32,58 @@
 $pgtitle = array("Accounts", "Providers");
 require("guiconfig.inc");
 
-/* delete provider? */
-if ($_GET['act'] == "del") {
+
+/* delete */
+if ($_GET['action'] == "delete") {
 	if(!($msg = pbx_delete_provider($_GET['id']))) {
-		write_config();
-		$pieces = explode("-", $_GET['id']);
-		$provider_type = strtolower($pieces[0]);
-		switch ($provider_type) {
-			case "analog":
-				touch($d_analogconfdirty_path);
-				break;
-			case "external":
-				touch($d_extensionsconfdirty_path);
-				break;
-			case "iax":
-				touch($d_iaxconfdirty_path);
-				break;
-			case "sip":
-				touch($d_sipconfdirty_path);
-				break;
-			case "isdn":
-				touch($d_isdnconfdirty_path);	
-				break;
-		}
-		header("Location: accounts_providers.php");
-		exit;
+		$successful_action = true;
 	} else {
 		$savemsg = $msg;	
 	}
+}
+
+/* disable */
+if ($_GET['action'] == "disable") {
+	if(!($msg = pbx_disable_provider($_GET['id']))) {
+		$successful_action = true;
+	} else {
+		$savemsg = $msg;	
+	}
+}
+
+/* enable */
+if ($_GET['action'] == "enable") {
+	if(!($msg = pbx_enable_provider($_GET['id']))) {
+		$successful_action = true;
+	} else {
+		$savemsg = $msg;	
+	}
+}
+
+/* handle successful action */
+if ($successful_action) {
+	write_config();
+	$pieces = explode("-", $_GET['id']);
+	$provider_type = strtolower($pieces[0]);
+	switch ($provider_type) {
+		case "analog":
+			touch($d_analogconfdirty_path);
+			break;
+		case "external":
+			touch($d_extensionsconfdirty_path);
+			break;
+		case "iax":
+			touch($d_iaxconfdirty_path);
+			break;
+		case "sip":
+			touch($d_sipconfdirty_path);
+			break;
+		case "isdn":
+			touch($d_isdnconfdirty_path);	
+			break;
+	}
+	header("Location: accounts_providers.php");
+	exit;	
 }
 
 /* dirty sip config? */
@@ -142,169 +166,204 @@ if (file_exists($d_analogconfdirty_path)) {
 <? include("fbegin.inc"); ?>
 <form action="accounts_providers.php" method="post">
 <? if ($savemsg) print_info_box($savemsg); ?>
+<? $status_info = pbx_get_provider_statuses(); ?>
 
-<? if (!isset($config['system']['webgui']['hidesip'])) : ?>
+<table border="0" cellspacing="0" cellpadding="6" width="100%">
+	<tr>
+		<td class="listhdradd"><img src="server.png">&nbsp;&nbsp;&nbsp;
+			<a href="providers_sip_edit.php">SIP</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="providers_iax_edit.php">IAX</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="providers_isdn_edit.php">ISDN</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="providers_analog_edit.php">Analog</a><img src="bullet_add.png">
+		</td>
+		<tr> 
+			<td class="list" height="12">&nbsp;</td>
+		</tr>
+	</tr>
+</table>
+
+<? if ($sip_providers = sip_get_providers()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="5" class="listtopiclight">SIP</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
+		<td width="25%" class="listhdrr">Name</td>
 		<td width="20%" class="listhdrr">Pattern(s)</td>
-		<td width="25%" class="listhdrr">Name</td>		
 		<td width="20%" class="listhdrr">Username</td>
-		<td width="25%" class="listhdr">Host</td>
+		<td width="20%" class="listhdr">Host</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	
-	<? $sip_providers = sip_get_providers(); ?>
+
 	<? $i = 0; foreach ($sip_providers as $p): ?>
 	<tr>
-		<td class="listlr"><?
-			$n = count($p['dialpattern']);
-			echo htmlspecialchars($p['dialpattern'][0]);
-			for($ii = 1; $ii < $n; $ii++) {
-				echo "<br>" . htmlspecialchars($p['dialpattern'][$ii]);
-			}
-		?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($p['name']);?></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo htmlspecialchars($p['name']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"> <a href="providers_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_providers.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this SIP provider?')"><img src="x.gif" title="delete SIP provider" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_sip_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="providers_sip_edit.php"><img src="plus.gif" title="add SIP provider" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="5" height="12">&nbsp;</td>
+		<td class="list" colspan="6" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
-
-<? if (!isset($config['system']['webgui']['hideiax'])) : ?>
+<? if ($iax_providers = iax_get_providers()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="5" class="listtopiclight">IAX</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
+		<td width="25%" class="listhdrr">Name</td>
 		<td width="20%" class="listhdrr">Pattern(s)</td>
-		<td width="25%" class="listhdrr">Name</td>		
 		<td width="20%" class="listhdrr">Username</td>
-		<td width="25%" class="listhdr">Host</td>
+		<td width="20%" class="listhdr">Host</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $iax_providers = iax_get_providers(); ?>
+
 	<? $i = 0; foreach ($iax_providers as $p): ?>
 	<tr>
-		<td class="listlr"><?
-			$n = count($p['dialpattern']);
-			echo htmlspecialchars($p['dialpattern'][0]);
-			for($ii = 1; $ii < $n; $ii++) {
-				echo "<br>" . htmlspecialchars($p['dialpattern'][$ii]);
-			}
-		?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($p['name']);?></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo htmlspecialchars($p['name']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"> <a href="providers_iax_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit IAX provider" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_providers.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this IAX provider?')"><img src="x.gif" title="delete IAX provider" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_iax_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="providers_iax_edit.php"><img src="plus.gif" title="add IAX provider" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="5" height="12">&nbsp;</td>
+		<td class="list" colspan="6" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
-
-<? if (!isset($config['system']['webgui']['hideisdn'])) : ?>
+<? if ($isdn_providers = isdn_get_providers()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="5" class="listtopiclight">ISDN</td>
 	</tr>
 	<tr>
-		<td width="20%" class="listhdrr">Pattern(s)</td>
+		<td width="5%" class="list"></td>
 		<td width="25%" class="listhdrr">Name</td>
+		<td width="20%" class="listhdrr">Pattern(s)</td>
 		<td width="20%" class="listhdrr">Main MSN</td>
-		<td width="25%" class="listhdr">Interface</td>
+		<td width="20%" class="listhdr">Interface</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $isdn_providers = isdn_get_providers(); ?>
+
 	<? $i = 0; foreach ($isdn_providers as $p): ?>
 	<? $interface = isdn_get_interface($p['interface']); ?>
 	<tr>
-		<td class="listlr"><?
-			$n = count($p['dialpattern']);
-			echo htmlspecialchars($p['dialpattern'][0]);
-			for($ii = 1; $ii < $n; $ii++) {
-				echo "<br>" . htmlspecialchars($p['dialpattern'][$ii]);
-			}
-		?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($p['name']);?></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo htmlspecialchars($p['name']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['msn']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
-		<td valign="middle" nowrap class="list"> <a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit ISDN provider" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_providers.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this ISDN provider?')"><img src="x.gif" title="delete ISDN provider" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="providers_isdn_edit.php"><img src="plus.gif" title="add ISDN provider" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="5" height="12">&nbsp;</td>
+		<td class="list" colspan="6" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
-
-<? if (!isset($config['system']['webgui']['hideanalog'])) : ?>
+<? if ($analog_providers = analog_get_providers()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="5" class="listtopiclight">Analog</td>
 	</tr>
 	<tr>
-		<td width="20%" class="listhdrr">Pattern(s)</td>
+		<td width="5%" class="list"></td>
 		<td width="25%" class="listhdrr">Name</td>
+		<td width="20%" class="listhdrr">Pattern(s)</td>
 		<td width="20%" class="listhdrr">Number</td>
 		<td width="25%" class="listhdr">Interface</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $analog_providers = analog_get_providers(); ?>
+
 	<? $i = 0; foreach ($analog_providers as $p): ?>
 	<? $interface = analog_get_ab_interface($p['interface']); ?>
 	<tr>
-		<td class="listlr"><?
-			$n = count($p['dialpattern']);
-			echo htmlspecialchars($p['dialpattern'][0]);
-			for($ii = 1; $ii < $n; $ii++) {
-				echo "<br>" . htmlspecialchars($p['dialpattern'][$ii]);
-			}
-		?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($p['name']);?></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo htmlspecialchars($p['name']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['number']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
-		<td valign="middle" nowrap class="list"> <a href="providers_analog_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit analog provider" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_providers.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this analog provider?')"><img src="x.gif" title="delete analog provider" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="providers_analog_edit.php"><img src="plus.gif" title="add analog provider" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="5" height="12">&nbsp;</td>
+		<td class="list" colspan="6" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>

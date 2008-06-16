@@ -175,6 +175,9 @@ EOD;
 	foreach($iaxproviders as $p) {
 		if ($p['noregister'])
 			continue;
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$conf .= "; {$p['name']}\n";
 		$conf .= "register => {$p['username']}";
 		if($p['secret']) {
@@ -190,6 +193,9 @@ EOD;
 	
 	// provider definitions
 	foreach($iaxproviders as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		// outgoing (peer)
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";

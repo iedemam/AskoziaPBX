@@ -406,6 +406,65 @@ function pbx_delete_provider($uniqid) {
 }
 
 /**
+ * Marks a provider disabled
+ */
+function pbx_disable_provider($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$provider_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PROVIDER" &&
+		in_array($provider_type, $g['provider_types']) &&
+		is_array($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]])) {
+
+		$GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]]['disabled'] = true;
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_disable_provider!";
+	}
+}
+
+/**
+ * Marks a provider enabled
+ */
+function pbx_enable_provider($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$provider_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PROVIDER" &&
+		in_array($provider_type, $g['provider_types']) &&
+		is_array($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]])) {
+
+		unset($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]]['disabled']);
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_enable_provider!";
+	}
+}
+
+function pbx_provider_is_active($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$provider_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PROVIDER" &&
+		in_array($provider_type, $g['provider_types']) &&
+		is_array($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]])) {
+
+		return !isset($GLOBALS['config'][$provider_type]['provider'][$uniqid_map[$uniqid]]['disabled']);
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_provider_is_active!";
+	}
+}
+
+/**
  * Sorts providers by name
  */
 function pbx_sort_providers($providers) {
@@ -568,6 +627,31 @@ function pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list)
 	$active_calls = substr($lines[$n+2], 0, strpos($lines[$n+2], " "));
 
 	return 0;
+}
+
+function pbx_get_provider_statuses() {
+/*
+	65 OK (199 ms)
+	SIP-PROVIDER-10758720864848013d90e3b OK (101 ms)
+	SIP-PROVIDER-342863348484e7bf9a9d4f OK (119 ms)
+*/
+
+	$statuses = array();
+	/* sip */
+	pbx_exec("sip show statuses", &$raw);
+	$lines = explode("\n", $raw);
+	foreach ($lines as $line) {
+		if (strpos($line, "PROVIDER") === false) {
+			continue;
+		}
+		$line = preg_split("/\s+/", $line);
+		$statuses[$line[0]] = $line[1];
+	}
+	/* iax */
+	/* isdn */
+	/* analog */
+
+	return $statuses;
 }
 
 /**

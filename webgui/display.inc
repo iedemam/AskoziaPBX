@@ -699,4 +699,17 @@ function display_capacity_bar($sizeinbytes, $usage) {
 	<br><?=$usage;?>% of <?=format_bytes($sizeinbytes);?><?
 }
 
+function display_peer_status_icon($status) {
+	switch ($status) {
+		case "OK":
+		return "<img src=\"bullet_green.png\" border=\"0\" title=\"ok\">";
+		case "LAGGED":
+		return  "<img src=\"bullet_yellow.png\" border=\"0\" title=\"lagged\">";
+		case "UNREACHABLE":
+		return  "<img src=\"bullet_red.png\" border=\"0\" title=\"unreachable\">";
+		default:
+		return "<img src=\"bullet_white.png\" border=\"0\" title=\"status unknown\">";
+	}
+}
+
 ?>

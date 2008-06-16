@@ -237,6 +237,15 @@ a {
 .listhdrr a {
 	color: #000000;
 }
+.listhdradd {
+	background-color: #EDEDED;
+	padding: 5px;
+	border: 1px solid #999999;
+	font-size: 12px;
+}
+.listhdradd a {
+	color: #000000;
+}
 .listlr {
 	background-color: #FFFFFF;
 	border-right: 1px solid #999999;

@@ -142,6 +142,9 @@ function sip_get_hosts_with_multiple_accounts() {
 	$providers = sip_get_providers();
 	$tmp = array();
 	foreach ($providers as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$tmp[$p['host']][] = $p['uniqid'];
 	}
 	foreach ($tmp as $host => $ids) {
@@ -228,6 +231,9 @@ EOD;
 
 	// provider registrations
 	foreach($sipproviders as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		if ($p['noregister'])
 			continue;
 		$conf .= "; {$p['name']}\n";
@@ -248,6 +254,9 @@ EOD;
 	
 	// provider definitions
 	foreach($sipproviders as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		// outgoing (peer)
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";

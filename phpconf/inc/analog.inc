@@ -359,6 +359,9 @@ function analog_zapata_conf_generate() {
 	
 	$analogproviders = analog_get_providers();
 	foreach ($analogproviders as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$interface = analog_get_ab_interface($p['interface']);
 
 		if ($interface['startsignal']) {

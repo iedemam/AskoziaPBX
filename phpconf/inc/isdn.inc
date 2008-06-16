@@ -264,6 +264,9 @@ function isdn_get_providers_on_unit($unit_number) {
 
 	$unit_providers = array();
 	foreach ($providers as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		if ($p['interface'] != $unit_number) {
 			continue;
 		}
