@@ -48,7 +48,7 @@ foreach ($a_isdninterfaces as $interface) {
 	$configured_units[$interface['unit']]['name'] = $interface['name'];
 	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
 	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
-	$configured_units[$interface['unit']]['pcmmaster'] = $interface['pcmmaster'];
+	$configured_units[$interface['unit']]['pcmslave'] = $interface['pcmslave'];
 	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
 	$configured_units[$interface['unit']]['pollmode'] = $interface['pollmode'];
 	$configured_units[$interface['unit']]['manual-attribute'] = $interface['manual-attribute'];
@@ -71,7 +71,7 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
 		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
-		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
+		$merged_units[$i]['pcmslave'] = $configured_units[$i]['pcmslave'];
 		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
 		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];
 		$merged_units[$i]['manual-attribute'] = $configured_units[$i]['manual-attribute'];
@@ -86,7 +86,7 @@ $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['mode'] = $merged_units[$unit]['mode'];
 $pconfig['echocancel'] = $merged_units[$unit]['echocancel'];
-$pconfig['pcmmaster'] = $merged_units[$unit]['pcmmaster'];
+$pconfig['pcmslave'] = $merged_units[$unit]['pcmslave'];
 $pconfig['nopwrsave'] = $merged_units[$unit]['nopwrsave'];
 $pconfig['pollmode'] = $merged_units[$unit]['pollmode'];
 $pconfig['manual-attribute'] = $merged_units[$unit]['manual-attribute'];
@@ -118,7 +118,7 @@ if ($_POST) {
 					$a_isdninterfaces[$i]['name'] = $_POST['name'];
 					$a_isdninterfaces[$i]['mode'] = $_POST['mode'];
 					$a_isdninterfaces[$i]['echocancel'] = $_POST['echocancel'];
-					$a_isdninterfaces[$i]['pcmmaster'] = $_POST['pcmmaster'];
+					$a_isdninterfaces[$i]['pcmslave'] = $_POST['pcmslave'];
 					$a_isdninterfaces[$i]['nopwrsave'] = $_POST['nopwrsave'];
 					$a_isdninterfaces[$i]['pollmode'] = $_POST['pollmode'];
 					$a_isdninterfaces[$i]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
@@ -130,7 +130,7 @@ if ($_POST) {
 			$a_isdninterfaces[$n]['name'] = $_POST['name'];
 			$a_isdninterfaces[$n]['mode'] = $_POST['mode'];
 			$a_isdninterfaces[$n]['echocancel'] = $_POST['echocancel'];
-			$a_isdninterfaces[$n]['pcmmaster'] = $_POST['pcmmaster'];
+			$a_isdninterfaces[$n]['pcmslave'] = $_POST['pcmslave'];
 			$a_isdninterfaces[$n]['nopwrsave'] = $_POST['nopwrsave'];
 			$a_isdninterfaces[$n]['pollmode'] = $_POST['pollmode'];
 			$a_isdninterfaces[$n]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
@@ -194,14 +194,15 @@ if ($_POST) {
 		<td valign="top" class="vncell">Echo Canceller</td>
 		<td class="vtable">
 			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
-			Enable echo cancellation.
+			Attempts to remove echoes from the line.
 		</td>
 	</tr>
+	<? display_advanced_settings_begin(1); ?>
 	<tr> 
-		<td valign="top" class="vncell">PCM Timing Master</td>
+		<td valign="top" class="vncell">PCM Timing Slave</td>
 		<td class="vtable">
-			<input name="pcmmaster" id="pcmmaster" type="checkbox" value="yes" <? if ($pconfig['pcmmaster']) echo "checked"; ?>>
-			This card provides the timing source (needed if this is the only card).
+			<input name="pcmslave" id="pcmslave" type="checkbox" value="yes" <? if ($pconfig['pcmslave']) echo "checked"; ?>>
+			There is already another card present which provides the timing. Unless more than one inteface card is present in the system, this should not be changed.
 		</td>
 	</tr>
 	<tr> 
@@ -218,7 +219,6 @@ if ($_POST) {
 			Enable polling mode. (sometimes needed for older cards)
 		</td>
 	</tr>
-	<? display_advanced_settings_begin(1); ?>
 	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 	<? display_advanced_settings_end(); ?>
 	<tr> 

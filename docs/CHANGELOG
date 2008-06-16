@@ -5,6 +5,7 @@
  - updated: Asterisk to 1.4.21
  - updated: isdn4bsd to revision 751
  - updated: basesystem to FreeBSD 6.3-RELEASE-p2
+ - changed: seldom used ISDN interface settings moved to "advanced" settings, timing defaults improved
  - changed: isdn4bsd and generic usb devices are now compiled as modules
  - bug: ring lengths now correctly set for call groups (reported by runner in the forums)
  - removed: iLBC removed until licensing can be confirmed

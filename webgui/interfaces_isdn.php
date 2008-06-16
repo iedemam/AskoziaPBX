@@ -44,9 +44,6 @@ foreach ($a_isdninterfaces as $interface) {
 	$configured_units[$interface['unit']]['name'] = $interface['name'];
 	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
 	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
-	$configured_units[$interface['unit']]['pcmmaster'] = $interface['pcmmaster'];
-	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
-	$configured_units[$interface['unit']]['pollmode'] = $interface['pollmode'];
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();
@@ -66,9 +63,6 @@ for ($i = 0; $i <= $n; $i++) {
 		$merged_units[$i]['name'] = $configured_units[$i]['name'];
 		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
 		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
-		$merged_units[$i]['pcmmaster'] = $configured_units[$i]['pcmmaster'];
-		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
-		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
 		$merged_units[$i]['name'] = "(unconfigured)";
@@ -127,57 +121,51 @@ if (file_exists($d_isdnconfdirty_path)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="tabcont">
-			<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
+		<td class="tabcont"><?
 
-			if (!count($recognized_units)) {
-				
-				?><tr> 
+		if (!count($recognized_units)) {
+
+			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr> 
 					<td><strong>No compatible ISDN interfaces detected.</strong>
 					<br>
 					<br>If an ISDN interface is present but was not detected, please send <a href="/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
 					<br>
 					<br>If this is a USB ISDN device, send <a href="/ajax.cgi?exec_shell=/sbin/udesc_dump">this output</a> as well.</td>
-				</tr><?
-	
-			} else {
+				</tr>
+			</table><?
 
-				?><tr>
+		} else {
+
+			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr>
 					<td width="10%" class="listhdrr">Unit</td>
-					<td width="20%" class="listhdrr">Name</td>		
-					<td width="22%" class="listhdrr">Operating Mode</td>
-					<td width="21%" class="listhdrr">Echo Canceller</td>
-					<td width="12%" class="listhdr">Timing</td>
+					<td width="25%" class="listhdrr">Name</td>		
+					<td width="30%" class="listhdrr">Operating Mode</td>
+					<td width="25%" class="listhdr">Echo Canceller</td>
 					<td width="10%" class="list"></td>
 				</tr><?	
 
-				foreach ($merged_units as $mu) {
-					if ($mu['name'] != "(unconfigured)") {
-						$echocancel = $mu['echocancel'] ? "Enabled" : "Disabled";
-						$pcmmaster = $mu['pcmmaster'] ? "Master" : "Slave";
-					} else {
-						$echocancel = "";
-						$pcmmaster = "";
-					}
+			foreach ($merged_units as $mu) {
+				if ($mu['name'] != "(unconfigured)") {
+					$echocancel = $mu['echocancel'] ? "Enabled" : "Disabled";
+				} else {
+					$echocancel = "";
+				}
 
 				?><tr>
 					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars($pcmmaster);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list">
 						<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
 					<? if ($mu['name'] != "(unconfigured)") : ?>
 						&nbsp;<a href="interfaces_isdn.php?act=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="x.gif" title="forget interface settings" width="17" height="17" border="0"></a>
 					<? endif; ?>
 					</td>
-				</tr><?
-				
-				}
-			}
-
-			?></table>
+				</tr>
+			</table>
 			<br>
 			<span class="vexpl"><strong>Operating Modes</strong>
 				<ul>
@@ -186,9 +174,12 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<li>point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system</li>
 					<li>point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system</li>
 				</ul>
-			</span>
-			<br>
-		</td>
+			</span><?
+
+			}
+		}
+
+		?></td>
 	</tr>
 </table>
 </form>

@@ -434,10 +434,10 @@ function isdn_configure() {
 		
 		$command = "/usr/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
 		
-		if ($interface['pcmmaster']) {
-			$command .= " pcm_master";
-		} else {
+		if ($interface['pcmslave']) {
 			$command .= " pcm_slave";
+		} else {
+			$command .= " pcm_master";
 		}
 		
 		if ($interface['nopwrsave']) {
