@@ -94,6 +94,9 @@ require("guiconfig.inc");
 		<li><a href="http://plugins.jquery.com/project/selectboxes" target="_blank">selectboxes</a> - Copyright &copy; 2006 - 2008 Sam Collett</li>
 	</ul>
 	<br>
+	silk icons from famfamfam (<a href="http://www.famfamfam.com/lab/icons/silk/" target="_blank">http://www.famfamfam.com/lab/icons/silk/</a>)<br>
+	Creative Commons Attribution 2.5 Licensed from Mark James<br>
+	<br>
 	Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
 	Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)<br>
 	<br>
