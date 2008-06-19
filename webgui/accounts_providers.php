@@ -214,11 +214,11 @@ if (file_exists($d_analogconfdirty_path)) {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
+		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="providers_sip_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
-			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -260,11 +260,11 @@ if (file_exists($d_analogconfdirty_path)) {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
+		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="providers_iax_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
-			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -307,11 +307,11 @@ if (file_exists($d_analogconfdirty_path)) {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
+		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['msn']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
 		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
-			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -354,11 +354,11 @@ if (file_exists($d_analogconfdirty_path)) {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=implode("<br>", $p['dialpattern']);?>&nbsp;</td>
+		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['number']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
 		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
-			<a href="accounts_providers.php?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
