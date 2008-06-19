@@ -362,7 +362,7 @@ EOD;
 		
 		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
     
-		$conf .= "holdtype=local\n";
+		$conf .= "holdtype=local_moh\n";
 		//$conf .= "immediate=yes\n";
     
 		if ($interface['echocancel']) {
@@ -401,7 +401,7 @@ EOD;
 		
 		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
     
-		$conf .= "holdtype=local\n";
+		$conf .= "holdtype=local_moh\n";
 		//$conf .= "immediate=yes\n";
 
 		if ($interface['echocancel']) {
