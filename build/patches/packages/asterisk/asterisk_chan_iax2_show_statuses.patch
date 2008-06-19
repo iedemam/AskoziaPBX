@@ -1,0 +1,77 @@
+--- channels/chan_iax2.c.orig	2008-06-19 11:52:03.000000000 +0200
++++ channels/chan_iax2.c	2008-06-19 12:21:06.000000000 +0200
+@@ -4624,6 +4624,39 @@
+ #undef FORMAT2
+ }
+ 
++static int __iax2_show_statuses(int manager, int fd, struct mansession *s, int argc, char *argv[])
++{
++	struct ao2_iterator i;
++
++#define FORMAT "%s %s\n"
++
++	struct iax2_peer *peer = NULL;
++	char name[256];
++
++	switch (argc) {
++	case 3:
++		break;
++	default:
++		return RESULT_SHOWUSAGE;
++	}
++
++	i = ao2_iterator_init(peers, 0);
++	for (peer = ao2_iterator_next(&i); peer; 
++		peer_unref(peer), peer = ao2_iterator_next(&i)) {
++		char status[20];
++		char srch[2000];
++		int retstatus;
++
++		ast_copy_string(name, peer->name, sizeof(name));
++		retstatus = peer_status(peer, status, sizeof(status));
++		snprintf(srch, sizeof(srch), FORMAT, name, status);
++		ast_cli(fd, FORMAT, name, status);
++	}
++
++	return RESULT_SUCCESS;
++#undef FORMAT
++}
++
+ static int iax2_show_threads(int fd, int argc, char *argv[])
+ {
+ 	struct iax2_thread *thread = NULL;
+@@ -4687,6 +4720,12 @@
+ {
+ 	return __iax2_show_peers(0, fd, NULL, argc, argv);
+ }
++
++static int iax2_show_statuses(int fd, int argc, char *argv[])
++{
++	return __iax2_show_statuses(0, fd, NULL, argc, argv);
++}
++
+ static int manager_iax2_show_netstats(struct mansession *s, const struct message *m)
+ {
+ 	ast_cli_netstats(s, -1, 0);
+@@ -10752,6 +10791,10 @@
+ "       Optional 'registered' argument lists only peers with known addresses.\n"
+ "       Optional regular expression pattern is used to filter the peer list.\n";
+ 
++static char show_statuses_usage[] = 
++"Usage: iax2 show statuses\n"
++"       Lists all peers statuses.\n";
++
+ static char show_firmware_usage[] = 
+ "Usage: iax2 show firmware\n"
+ "       Lists all known IAX firmware images.\n";
+@@ -10848,6 +10891,10 @@
+ 	iax2_show_peers, "List defined IAX peers",
+ 	show_peers_usage, NULL, },
+ 
++	{ { "iax2", "show", "statuses", NULL },
++	iax2_show_statuses, "List IAX peers statuses",
++	show_statuses_usage },
++
+ 	{ { "iax2", "show", "registry", NULL },
+ 	iax2_show_registry, "Display IAX registration status",
+ 	show_reg_usage, NULL, },
