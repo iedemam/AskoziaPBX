@@ -637,6 +637,7 @@ function pbx_get_provider_statuses() {
 */
 
 	$statuses = array();
+
 	/* sip */
 	pbx_exec("sip show statuses", &$raw);
 	$lines = explode("\n", $raw);
@@ -647,8 +648,22 @@ function pbx_get_provider_statuses() {
 		$line = preg_split("/\s+/", $line);
 		$statuses[$line[0]] = $line[1];
 	}
+	unset($raw);
+
 	/* iax */
+	pbx_exec("iax2 show statuses", &$raw);
+	$lines = explode("\n", $raw);
+	foreach ($lines as $line) {
+		if (strpos($line, "PROVIDER") === false) {
+			continue;
+		}
+		$line = preg_split("/\s+/", $line);
+		$statuses[$line[0]] = $line[1];
+	}
+	unset($raw);
+
 	/* isdn */
+
 	/* analog */
 
 	return $statuses;
@@ -678,9 +693,23 @@ function pbx_replace_uniqids_with_names($string) {
 }
 
 /**
- * Returns an appropriate "name" for the supplied uniqid.
+ * Returns an appropriate "name" for the supplied uniqid or array of uniqids
  */
 function pbx_uniqid_to_name($uniqid) {
+
+	if (is_array($uniqid)) {
+		$n = count($uniqid);
+		for ($i = 0; $i < $n; $i++) {
+			$uniqid[$i] = pbx_uniqid_to_name_sub($uniqid[$i]);
+		}
+		return $uniqid;
+
+	} else {
+		return pbx_uniqid_to_name_sub($uniqid);
+	}
+}
+
+function pbx_uniqid_to_name_sub($uniqid) {
 	global $config, $uniqid_map;
 	
 	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
