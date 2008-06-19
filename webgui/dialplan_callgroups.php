@@ -40,13 +40,13 @@ callgroups_sort_groups();
 $a_callgroups = &$config['dialplan']['callgroup'];
 
 
-if ($_GET['act'] == "del") {
+if ($_GET['action'] == "delete") {
 	if ($a_callgroups[$_GET['id']]) {
 
 		$removed_id = $a_callgroups[$_GET['id']]['uniqid'];
 		unset($a_callgroups[$_GET['id']]);
 		dialplan_remove_incomingextensionmap_reference_from_providers($removed_id);
-		
+
 		write_config();
 		touch($d_extensionsconfdirty_path);
 		header("Location: dialplan_callgroups.php");
@@ -60,10 +60,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		config_lock();
 		$retval |= extensions_conf_generate();
 		config_unlock();
-		
+
 		$retval |= extensions_reload();
 	}
-	
+
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
 		unlink($d_extensionsconfdirty_path);
@@ -84,28 +84,21 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td width="30%" class="listhdr">Members</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	
 
 	<?php $i = 0; foreach ($a_callgroups as $cg): ?>
 	<tr>
-		<td class="listlr"><?=htmlspecialchars($cg['name']);?></td>
+		<td class="listbgl"><?=htmlspecialchars($cg['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($cg['extension']);?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
-		<td class="listr"><?
-			$n = count($cg['groupmember']);
-			echo htmlspecialchars(pbx_uniqid_to_name($cg['groupmember'][0]));
-			for($ii = 1; $ii < $n; $ii++) {
-				echo ", " . htmlspecialchars(pbx_uniqid_to_name($cg['groupmember'][$ii]));
-			}
-		?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"> <a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit call group" width="17" height="17" border="0"></a>
-           &nbsp;<a href="dialplan_callgroups.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this call group?')"><img src="x.gif" title="delete call group" width="17" height="17" border="0"></a></td>
+		<td class="listr"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
+		<td class="listr"><?=@implode(", ", pbx_uniqid_to_name($cg['groupmember']));?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit call group" border="0"></a>
+			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this call group?')"><img src="delete.png" title="delete call group" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="4"></td>
-		<td class="list"> <a href="dialplan_callgroups_edit.php"><img src="plus.gif" title="add call group" width="17" height="17" border="0"></a></td>
+		<td class="list"><a href="dialplan_callgroups_edit.php"><img src="group_add.png" title="add call group" border="0"></a></td>
 	</tr>
 </table>
 </form>
