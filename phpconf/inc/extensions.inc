@@ -140,6 +140,9 @@ EOD;
 
 	// internal phone extensions
 	foreach ($internal_phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		if (isset($p['allowdirectdial'])) {
 			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
@@ -154,6 +157,9 @@ EOD;
 
 	// external phone extensions
 	foreach ($external_phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		if (isset($p['allowdirectdial'])) {
 			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
@@ -218,6 +224,9 @@ EOD;
 
 	// internal phone extensions
 	foreach ($internal_phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
 		$conf .= "exten => {$p['extension']},1,NoOp(internal calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
 		$conf .= extensions_generate_internal_phone_extension($p);
@@ -225,6 +234,9 @@ EOD;
 
 	// external phone extensions
 	foreach ($external_phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
 		$conf .= "exten => {$p['extension']},1,NoOp(internal calling external phone: {$p['name']} - <{$p['extension']}>)\n";
 		$conf .= extensions_generate_external_phone_extension($p);
@@ -290,6 +302,9 @@ EOD;
 
 	// internal phone contexts
 	foreach($internal_phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "include => internal\n";
@@ -412,6 +427,9 @@ function extensions_generate_hints() {
 
 	$phones = sip_get_phones();
 	foreach ($phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
 	}
 	$conf .= "\n";
@@ -816,12 +834,12 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 	// external phones
 	if ($id[0] == "EXTERNAL" && $id[1] == "PHONE") {
 		$p = pbx_get_phone($uniqid);
-		return extensions_generate_external_phone_extension($p, $from_public, $readbacknum, $extension);
+		return (isset($p['disabled'])) ? "" : extensions_generate_external_phone_extension($p, $from_public, $readbacknum, $extension);
 
 	// internal phones
 	} else if ($id[1] == "PHONE") {
 		$p = pbx_get_phone($uniqid);
-		return extensions_generate_internal_phone_extension($p, $from_public, $readbacknum, $extension);
+		return (isset($p['disabled'])) ? "" : extensions_generate_internal_phone_extension($p, $from_public, $readbacknum, $extension);
 
 	// conference rooms
 	} else if ($id[0] == "CONFERENCE" && $id[1] == "ROOM") {

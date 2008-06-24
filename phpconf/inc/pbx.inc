@@ -542,6 +542,48 @@ function pbx_delete_phone($uniqid) {
 }
 
 /**
+ * Marks a phone disabled
+ */
+function pbx_disable_phone($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$phone_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PHONE" &&
+		in_array($phone_type, $g['phone_types']) &&
+		is_array($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]])) {
+
+		$GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]]['disabled'] = true;
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_disable_phone!";
+	}
+}
+
+/**
+ * Marks a phone enabled
+ */
+function pbx_enable_phone($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$phone_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "PHONE" &&
+		in_array($phone_type, $g['phone_types']) &&
+		is_array($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]])) {
+
+		unset($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]]['disabled']);
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_enable_phone!";
+	}
+}
+
+/**
  * Sorts phones by Caller ID
  * XXX : this sort differs in behavior from the individual _sort_phones() functions
  */
@@ -629,7 +671,7 @@ function pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list)
 	return 0;
 }
 
-function pbx_get_provider_statuses() {
+function pbx_get_peer_statuses() {
 /*
 	65 OK (199 ms)
 	SIP-PROVIDER-10758720864848013d90e3b OK (101 ms)
@@ -642,9 +684,6 @@ function pbx_get_provider_statuses() {
 	pbx_exec("sip show statuses", &$raw);
 	$lines = explode("\n", $raw);
 	foreach ($lines as $line) {
-		if (strpos($line, "PROVIDER") === false) {
-			continue;
-		}
 		$line = preg_split("/\s+/", $line);
 		$statuses[$line[0]] = $line[1];
 	}
@@ -654,9 +693,6 @@ function pbx_get_provider_statuses() {
 	pbx_exec("iax2 show statuses", &$raw);
 	$lines = explode("\n", $raw);
 	foreach ($lines as $line) {
-		if (strpos($line, "PROVIDER") === false) {
-			continue;
-		}
 		$line = preg_split("/\s+/", $line);
 		$statuses[$line[0]] = $line[1];
 	}

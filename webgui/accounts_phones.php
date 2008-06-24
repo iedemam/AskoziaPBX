@@ -32,37 +32,61 @@
 $pgtitle = array("Accounts", "Phones");
 require("guiconfig.inc");
 
-/* delete phone? */
-if ($_GET['act'] == "del") {
+
+/* delete */
+if ($_GET['action'] == "delete") {
 	if(!($msg = pbx_delete_phone($_GET['id']))) {
-		write_config();
-		$pieces = explode("-", $_GET['id']);
-		$phone_type = strtolower($pieces[0]);
-		switch ($phone_type) {
-			case "analog":
-				touch($d_analogconfdirty_path);
-				break;
-			case "external":
-				touch($d_extensionsconfdirty_path);
-				break;
-			case "iax":
-				touch($d_iaxconfdirty_path);
-				break;
-			case "sip":
-				touch($d_sipconfdirty_path);
-				break;
-			case "isdn":
-				touch($d_isdnconfdirty_path);	
-				break;
-		}
-		header("Location: accounts_phones.php");
-		exit;
+		$successful_action = true;
 	} else {
 		$savemsg = $msg;	
 	}
 }
 
-/* dirty sip config */
+/* disable */
+if ($_GET['action'] == "disable") {
+	if(!($msg = pbx_disable_phone($_GET['id']))) {
+		$successful_action = true;
+	} else {
+		$savemsg = $msg;	
+	}
+}
+
+/* enable */
+if ($_GET['action'] == "enable") {
+	if(!($msg = pbx_enable_phone($_GET['id']))) {
+		$successful_action = true;
+	} else {
+		$savemsg = $msg;	
+	}
+}
+
+/* handle successful action */
+if ($successful_action) {
+	write_config();
+	$pieces = explode("-", $_GET['id']);
+	$phone_type = strtolower($pieces[0]);
+	switch ($phone_type) {
+		case "analog":
+			touch($d_analogconfdirty_path);
+			break;
+		case "external":
+			touch($d_extensionsconfdirty_path);
+			break;
+		case "iax":
+			touch($d_iaxconfdirty_path);
+			break;
+		case "sip":
+			touch($d_sipconfdirty_path);
+			break;
+		case "isdn":
+			touch($d_isdnconfdirty_path);	
+			break;
+	}
+	header("Location: accounts_phones.php");
+	exit;	
+}
+
+/* dirty sip config? */
 if (file_exists($d_sipconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
@@ -102,7 +126,7 @@ if (file_exists($d_iaxconfdirty_path)) {
 	}
 }
 
-/* dirty isdn config */
+/* dirty isdn config? */
 if (file_exists($d_isdnconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
@@ -164,197 +188,243 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <? include("fbegin.inc"); ?>
 <form action="accounts_phones.php" method="post">
 <? if ($savemsg) print_info_box($savemsg); ?>
+<? $status_info = pbx_get_peer_statuses(); ?>
 
-<? if (!isset($config['system']['webgui']['hidesip'])) : ?>
+<table border="0" cellspacing="0" cellpadding="6" width="100%">
+	<tr>
+		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
+			<a href="phones_sip_edit.php">SIP</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_iax_edit.php">IAX</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_isdn_edit.php">ISDN</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_analog_edit.php">Analog</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_external_edit.php">External</a><img src="bullet_add.png">
+		</td>
+	</tr>
+	<tr> 
+		<td class="list" height="12">&nbsp;</td>
+	</tr>
+</table>
+
+<? if ($sip_phones = sip_get_phones()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="4" class="listtopiclight">SIP</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr">Extension</td>
 		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="40%" class="listhdr">Description</td>
+		<td width="35%" class="listhdr">Description</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $sip_phones = sip_get_phones(); ?>
+
 	<? $i = 0; foreach ($sip_phones as $p): ?>
 	<tr>
-		<td class="listlr">
-			<?=htmlspecialchars($p['extension']);?>
-		</td>
-		<td class="listbg">
-			<?=htmlspecialchars($p['callerid']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars($p['descr']);?>&nbsp;
-		</td>
-		<td valign="middle" nowrap class="list"> <a href="phones_sip_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit SIP phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_phones.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this SIP phone?')"><img src="x.gif" title="delete SIP phone" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['extension']]);
+			echo htmlspecialchars($p['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="phones_sip_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
-		<td class="list"> <a href="phones_sip_edit.php"><img src="plus.gif" title="add SIP phone" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="4" height="12">&nbsp;</td>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
-
-<? if (!isset($config['system']['webgui']['hideiax'])) : ?>
+<? if ($iax_phones = iax_get_phones()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="4" class="listtopiclight">IAX</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr">Extension</td>
 		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="40%" class="listhdr">Description</td>
+		<td width="35%" class="listhdr">Description</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $iax_phones = iax_get_phones(); ?>
+
 	<? $i = 0; foreach ($iax_phones as $p): ?>
 	<tr>
-		<td class="listlr">
-			<?=htmlspecialchars($p['extension']);?>
-		</td>
-		<td class="listbg">
-			<?=htmlspecialchars($p['callerid']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars($p['descr']);?>&nbsp;
-		</td>
-		<td valign="middle" nowrap class="list"> <a href="phones_iax_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit IAX phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_phones.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this IAX phone?')"><img src="x.gif" title="delete IAX phone" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['extension']]);
+			echo htmlspecialchars($p['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="phones_iax_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
-		<td class="list"> <a href="phones_iax_edit.php"><img src="plus.gif" title="add IAX phone" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="4" height="12">&nbsp;</td>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
-
-<? if (!isset($config['system']['webgui']['hideisdn'])) : ?>
+<? if ($isdn_phones = isdn_get_phones()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="4" class="listtopiclight">ISDN</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr">Extension</td>
 		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="40%" class="listhdr">Description</td>
+		<td width="35%" class="listhdr">Description</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $isdn_phones = isdn_get_phones(); ?>
+
 	<? $i = 0; foreach ($isdn_phones as $p): ?>
 	<tr>
-		<td class="listlr">
-			<?=htmlspecialchars($p['extension']);?>
-		</td>
-		<td class="listbg">
-			<?=htmlspecialchars($p['callerid']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars($p['descr']);?>&nbsp;
-		</td>
-		<td valign="middle" nowrap class="list"> <a href="phones_isdn_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit ISDN phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_phones.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this ISDN phone?')"><img src="x.gif" title="delete ISDN phone" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['extension']]);
+			echo htmlspecialchars($p['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="phones_isdn_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
-		<td class="list"> <a href="phones_isdn_edit.php"><img src="plus.gif" title="add ISDN phone" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="4" height="12">&nbsp;</td>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
-
-<? if (!isset($config['system']['webgui']['hideanalog'])) : ?>
+<? if ($analog_phones = analog_get_phones()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
+		<td width="5%" class="list"></td>
 		<td colspan="4" class="listtopiclight">Analog</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr">Extension</td>
 		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="40%" class="listhdr">Description</td>
+		<td width="35%" class="listhdr">Description</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $analog_phones = analog_get_phones(); ?>
+
 	<? $i = 0; foreach ($analog_phones as $p): ?>
 	<tr>
-		<td class="listlr">
-			<?=htmlspecialchars($p['extension']);?>
-		</td>
-		<td class="listbg">
-			<?=htmlspecialchars($p['callerid']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars($p['descr']);?>&nbsp;
-		</td>
-		<td valign="middle" nowrap class="list"> <a href="phones_analog_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit analog phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_phones.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this analog phone?')"><img src="x.gif" title="delete analog phone" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['extension']]);
+			echo htmlspecialchars($p['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="phones_analog_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
-		<td class="list"> <a href="phones_analog_edit.php"><img src="plus.gif" title="add analog phone" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="4" height="12">&nbsp;</td>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
 </table>
 <? endif; ?>
 
+<? if ($external_phones = external_get_phones()) : ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td colspan="5" class="listtopiclight">External</td>
+		<td width="5%" class="list"></td>
+		<td colspan="4" class="listtopiclight">IAX</td>
 	</tr>
 	<tr>
+		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr">Extension</td>
 		<td width="35%" class="listhdrr">Name</td>
-		<td width="40%" class="listhdrr">Dialstring</td>
+		<td width="35%" class="listhdr">Dialstring</td>
 		<td width="10%" class="list"></td>
 	</tr>
-	<? $external_phones = external_get_phones(); ?>
+
 	<? $i = 0; foreach ($external_phones as $p): ?>
 	<tr>
-		<td class="listlr">
-			<?=htmlspecialchars($p['extension']);?>
-		</td>
-		<td class="listbg">
-			<?=htmlspecialchars($p['name']);?>
-		</td>
-		<td class="listr">
-			<?=htmlspecialchars($p['dialstring']);?>@<?=htmlspecialchars(pbx_uniqid_to_name($p['dialprovider']));?>
-		</td>
-		<td valign="middle" nowrap class="list"> <a href="phones_external_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit external phone" width="17" height="17" border="0"></a>
-           &nbsp;<a href="accounts_phones.php?act=del&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this external phone?')"><img src="x.gif" title="delete external phone" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+		} else {
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo htmlspecialchars($p['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($p['dialstring'] . " via " . pbx_uniqid_to_name($p['dialprovider']));?></td>
+		<td valign="middle" nowrap class="list"><a href="phones_external_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
 	<tr> 
-		<td class="list" colspan="3"></td>
-		<td class="list"> <a href="phones_external_edit.php"><img src="plus.gif" title="add external phone" width="17" height="17" border="0"></a></td>
-	</tr>
-	<tr> 
-		<td class="list" colspan="4" height="12">&nbsp;</td>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
 </table>
+<? endif; ?>
 
 </form>
+
 <? include("fend.inc"); ?>

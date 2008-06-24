@@ -245,6 +245,9 @@ function isdn_get_phones_on_unit($unit_number) {
 	
 	$unit_phones = array();
 	foreach ($phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
 		if ($p['interface'] != $unit_number) {
 			continue;
 		}
