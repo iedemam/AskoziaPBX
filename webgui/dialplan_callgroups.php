@@ -98,7 +98,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 	<tr> 
 		<td class="list" colspan="4"></td>
-		<td class="list"><a href="dialplan_callgroups_edit.php"><img src="group_add.png" title="add call group" border="0"></a></td>
+		<td class="list"><a href="dialplan_callgroups_edit.php"><img src="add.png" title="add call group" border="0"></a></td>
 	</tr>
 </table>
 </form>
