@@ -1,8 +1,8 @@
 2008.xx.xx - pb14
  - added: system storage media larger than 96MB will automatically be partitioned with a permanent storage partition
  - added: basic package management system and api with backup, restore, activate, deactivate and delete
- - added: providers may now be disabled / enabled
- - added: SIP and IAX providers now have icon indicating connection status
+ - added: providers and phones may now be disabled / enabled
+ - added: SIP and IAX providers and phones now have icon indicating connection status
  - package: logging package which enables permanent storage of system, pbx and call logs
  - updated: Asterisk to 1.4.21
  - updated: isdn4bsd to revision 751
