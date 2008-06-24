@@ -704,11 +704,12 @@ function display_peer_status_icon($status) {
 		case "OK":
 		return "<img src=\"bullet_green.png\" border=\"0\" title=\"ok\">";
 		case "LAGGED":
-		return  "<img src=\"bullet_yellow.png\" border=\"0\" title=\"lagged\">";
+		return "<img src=\"bullet_yellow.png\" border=\"0\" title=\"lagged\">";
 		case "UNREACHABLE":
-		return  "<img src=\"bullet_red.png\" border=\"0\" title=\"unreachable\">";
+		return "<img src=\"bullet_red.png\" border=\"0\" title=\"unreachable\">";
 		default:
-		return "<img src=\"bullet_white.png\" border=\"0\" title=\"status unknown\">";
+		return "";
+		//return "<img src=\"bullet_white.png\" border=\"0\" title=\"status unknown\">";
 	}
 }
 
