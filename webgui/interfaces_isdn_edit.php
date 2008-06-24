@@ -162,8 +162,8 @@ if ($_POST) {
 <form action="interfaces_isdn_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td valign="top" class="vncellreq">Name</td>
-		<td class="vtable">
+		<td width="20%" valign="top" class="vncellreq">Name</td>
+		<td width="80%" class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != "(unconfigured)") ? $pconfig['name'] : "isdn #$unit");?>"> 
 			<br><span class="vexpl">Descriptive name for this interface</span>
 		</td>
@@ -194,7 +194,7 @@ if ($_POST) {
 		<td valign="top" class="vncell">Echo Canceller</td>
 		<td class="vtable">
 			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
-			Attempts to remove echoes from the line.
+			Attempt to remove echoes from the line.
 		</td>
 	</tr>
 	<? display_advanced_settings_begin(1); ?>
@@ -202,7 +202,7 @@ if ($_POST) {
 		<td valign="top" class="vncell">PCM Timing Slave</td>
 		<td class="vtable">
 			<input name="pcmslave" id="pcmslave" type="checkbox" value="yes" <? if ($pconfig['pcmslave']) echo "checked"; ?>>
-			There is already another card present which provides the timing. Unless more than one inteface card is present in the system, this should not be changed.
+			There is already another card present which provides the timing.<br><em>(Unless more than one inteface card is present in the system, this should not be changed.</em>
 		</td>
 	</tr>
 	<tr> 
