@@ -166,19 +166,19 @@ if (file_exists($d_analogconfdirty_path)) {
 <? include("fbegin.inc"); ?>
 <form action="accounts_providers.php" method="post">
 <? if ($savemsg) print_info_box($savemsg); ?>
-<? $status_info = pbx_get_provider_statuses(); ?>
+<? $status_info = pbx_get_peer_statuses(); ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
-		<td class="listhdradd"><img src="server.png">&nbsp;&nbsp;&nbsp;
+		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
 			<a href="providers_sip_edit.php">SIP</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="providers_iax_edit.php">IAX</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="providers_isdn_edit.php">ISDN</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="providers_analog_edit.php">Analog</a><img src="bullet_add.png">
 		</td>
-		<tr> 
-			<td class="list" height="12">&nbsp;</td>
-		</tr>
+	</tr>
+	<tr> 
+		<td class="list" height="12">&nbsp;</td>
 	</tr>
 </table>
 
@@ -201,9 +201,9 @@ if (file_exists($d_analogconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable provider" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="enabled.png" title="click to disable provider" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -217,7 +217,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="providers_sip_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="providers_sip_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit provider" border="0"></a>
 			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
@@ -247,9 +247,9 @@ if (file_exists($d_analogconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable provider" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="enabled.png" title="click to disable provider" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -263,7 +263,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="providers_iax_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="providers_iax_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit provider" border="0"></a>
 			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
@@ -294,9 +294,9 @@ if (file_exists($d_analogconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable provider" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="enabled.png" title="click to disable provider" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -310,7 +310,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['msn']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
-		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit provider" border="0"></a>
 			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
@@ -341,9 +341,9 @@ if (file_exists($d_analogconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="connect.png" title="enable provider" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable provider" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="disconnect.png" title="disable provider" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this provider?')"><img src="enabled.png" title="click to disable provider" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -357,7 +357,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['number']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
-		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit provider" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit provider" border="0"></a>
 			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this provider?')"><img src="delete.png" title="delete provider" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
