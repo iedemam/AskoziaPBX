@@ -158,14 +158,15 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
-					<td valign="middle" nowrap class="list">
-						<a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="e.gif" title="edit ISDN interface" width="17" height="17" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="edit ISDN interface" border="0"></a>
 					<? if ($mu['name'] != "(unconfigured)") : ?>
-						&nbsp;<a href="interfaces_isdn.php?act=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="x.gif" title="forget interface settings" width="17" height="17" border="0"></a>
+						<a href="interfaces_isdn.php?act=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="delete.png" title="forget interface settings" border="0"></a>
 					<? endif; ?>
 					</td>
-				</tr>
-			</table>
+				</tr><?
+			}
+
+			?></table>
 			<br>
 			<span class="vexpl"><strong>Operating Modes</strong>
 				<ul>
@@ -175,8 +176,6 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<li>point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system</li>
 				</ul>
 			</span><?
-
-			}
 		}
 
 		?></td>
