@@ -702,14 +702,15 @@ function display_capacity_bar($sizeinbytes, $usage) {
 function display_peer_status_icon($status) {
 	switch ($status) {
 		case "OK":
-		return "<img src=\"bullet_green.png\" border=\"0\" title=\"ok\">";
+		return "<img src=\"bullet_green.png\" border=\"0\" title=\"connected\">";
 		case "LAGGED":
-		return "<img src=\"bullet_yellow.png\" border=\"0\" title=\"lagged\">";
+		return "<img src=\"bullet_yellow.png\" border=\"0\" title=\"connected but lagged\">";
 		case "UNREACHABLE":
 		return "<img src=\"bullet_red.png\" border=\"0\" title=\"unreachable\">";
+		case "UNKNOWN":
+		return "<img src=\"bullet_white.png\" border=\"0\" title=\"status unknown\">";
 		default:
 		return "";
-		//return "<img src=\"bullet_white.png\" border=\"0\" title=\"status unknown\">";
 	}
 }
 
