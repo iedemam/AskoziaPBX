@@ -69,7 +69,7 @@ for ($i = 0; $i <= $n; $i++) {
 	}
 }
 
-if ($_GET['act'] == "forget") {
+if ($_GET['action'] == "forget") {
 	if(!($msg = isdn_forget_interface($_GET['unit']))) {
 		write_config();
 		touch($d_isdnconfdirty_path);
@@ -160,7 +160,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list"><a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="edit ISDN interface" border="0"></a>
 					<? if ($mu['name'] != "(unconfigured)") : ?>
-						<a href="interfaces_isdn.php?act=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="delete.png" title="forget interface settings" border="0"></a>
+						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="delete.png" title="forget interface settings" border="0"></a>
 					<? endif; ?>
 					</td>
 				</tr><?

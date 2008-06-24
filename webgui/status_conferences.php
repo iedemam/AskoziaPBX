@@ -33,8 +33,8 @@ $pgtitle = array("Status", "Conferences");
 require("guiconfig.inc");
 
 
-if ($_GET['act'] == "kick") {
-	pbx_exec("meetme {$_GET['act']} {$_GET['conf']} {$_GET['member']}");
+if ($_GET['action'] == "kick") {
+	pbx_exec("meetme {$_GET['action']} {$_GET['conf']} {$_GET['member']}");
 	touch($d_conferencing_kicked_path);
 	header("Location: status_conferences.php?c={$_GET['conf']}&m={$_GET['member']}");
 	exit;
@@ -99,7 +99,7 @@ if (file_exists($d_conferencing_kicked_path)) {
 					<?=htmlspecialchars($member['connecttime']);?>&nbsp;
 				</td>
 				<td valign="middle" nowrap class="list">
-					<a href="status_conferences.php?act=kick&conf=<?=$room_no;?>&member=<?=$member_no;?>" onclick="return confirm('Do you really want to kick this member?')"><img src="x.gif" title="kick conference member" width="17" height="17" border="0"></a>
+					<a href="?action=kick&conf=<?=$room_no;?>&member=<?=$member_no;?>" onclick="return confirm('Do you really want to kick this member?')"><img src="user_delete.png" title="kick conference member" border="0"></a>
 				</td>
 			</tr>
 			<? endforeach; ?>

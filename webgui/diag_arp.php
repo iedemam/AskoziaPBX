@@ -36,7 +36,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
         $id = $_POST['id'];
 
-if ($_GET['act'] == "del") {
+if ($_GET['action'] == "delete") {
 	if (isset($id)) {
 		/* remove arp entry from arp table */
 		mwexec("/usr/sbin/arp -d " . escapeshellarg($id));
@@ -113,7 +113,7 @@ function getHostName($mac,$ip)
     <td class="listr"><?=$entry['mac'];?></td>
     <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?></td>
     <td class="listr"><?=$hwif[$entry['interface']];?></td>
-    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="delete arp entry" width="17" height="17" border="0"></a></td>
+    <td valign="middle" nowrap class="list"><a href="?action=delete&id=<?=$entry['ip'];?>"><img src="delete.png" title="delete arp entry" border="0"></a></td>
   </tr>
 <?php $i++; endforeach; ?>
   <tr> 
@@ -121,7 +121,7 @@ function getHostName($mac,$ip)
   </tr> 
   <tr> 
     <td class="list" colspan="4"></td>
-    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="remove all entries from arp table" width="17" height="17" border="0"></a></td>
+    <td class="list"><a href="?action=delete"><img src="delete.png" title="remove all entries from arp table" border="0"></a></td>
   </tr>
   <tr>
     <td colspan="4">

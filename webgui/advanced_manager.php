@@ -39,7 +39,7 @@ if (!is_array($config['services']['manager']['manager-user']))
 manager_sort_users();
 $a_users = &$config['services']['manager']['manager-user'];
 
-if ($_GET['act'] == "del") {
+if ($_GET['action'] == "delete") {
 	if ($a_users[$_GET['id']]) {
 		unset($a_users[$_GET['id']]);
 		write_config();
@@ -94,18 +94,15 @@ if (file_exists($d_managerconfdirty_path)) {
 			}
 
 		?></td>
-		<td valign="middle" nowrap class="list">
-			<a href="advanced_manager_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit manager room" width="17" height="17" border="0"></a>
-           &nbsp;<a href="advanced_manager.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this manager user?')"><img src="x.gif" title="delete manager user" width="17" height="17" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="advanced_manager_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit manager room" border="0"></a>
+           <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this manager user?')"><img src="delete.png" title="delete manager user" border="0"></a>
 		</td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="2"></td>
-		<td class="list">
-			<a href="advanced_manager_edit.php"><img src="plus.gif" title="add manager user" width="17" height="17" border="0"></a>
-		</td>
+		<td class="list"><a href="advanced_manager_edit.php"><img src="add.png" title="add manager user" border="0"></a></td>
 	</tr>
 </table>
 </form>

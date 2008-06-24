@@ -146,7 +146,7 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 			<table id="<?=$table_id;?>">
 				<tr id="<?=$row_id;?>">
 					<td>&nbsp;</td>
-					<td><img src="plus.gif" title="add incoming extension mapping" width="17" height="17" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
+					<td><img src="add.png" title="add incoming extension mapping" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
 				</tr>
 			</table><br><?
 			

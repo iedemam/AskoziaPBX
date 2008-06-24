@@ -39,7 +39,7 @@ if (!is_array($config['conferencing']['room']))
 conferencing_sort_rooms();
 $a_rooms = &$config['conferencing']['room'];
 
-if ($_GET['act'] == "del") {
+if ($_GET['action'] == "delete") {
 	if ($a_rooms[$_GET['id']]) {
 		unset($a_rooms[$_GET['id']]);
 		write_config();
@@ -92,18 +92,15 @@ if (file_exists($d_conferencingconfdirty_path)) {
 			<?php endif; ?>
 			&nbsp;
 		</td>
-		<td valign="middle" nowrap class="list">
-			<a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit conference room" width="17" height="17" border="0"></a>
-           &nbsp;<a href="services_conferencing.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="x.gif" title="delete conference room" width="17" height="17" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit conference room" border="0"></a>
+           <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="delete.png" title="delete conference room" border="0"></a>
 		</td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="3"></td>
-		<td class="list">
-			<a href="services_conferencing_edit.php"><img src="plus.gif" title="add conference room" width="17" height="17" border="0"></a>
-		</td>
+		<td class="list"><a href="services_conferencing_edit.php"><img src="add.png" title="add conference room" border="0"></a></td>
 	</tr>
 </table>
 </form>

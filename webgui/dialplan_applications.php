@@ -40,7 +40,7 @@ applications_sort_apps();
 $a_applications = &$config['dialplan']['application'];
 
 
-if ($_GET['act'] == "del") {
+if ($_GET['action'] == "delete") {
 	if ($a_applications[$_GET['id']]) {
 
 		unset($a_applications[$_GET['id']]);
@@ -88,14 +88,14 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td class="listlr"><?=htmlspecialchars($app['extension']);?></td>
 		<td class="listbg"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($app['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"> <a href="dialplan_applications_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit application mapping" width="17" height="17" border="0"></a>
-           &nbsp;<a href="dialplan_applications.php?act=del&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this application mapping?')"><img src="x.gif" title="delete application mapping" width="17" height="17" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit application mapping" border="0"></a>
+			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this application mapping?')"><img src="delete.png" title="delete application mapping" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="3"></td>
-		<td class="list"> <a href="dialplan_applications_edit.php"><img src="plus.gif" title="add application mapping" width="17" height="17" border="0"></a></td>
+		<td class="list"><a href="dialplan_applications_edit.php"><img src="add.png" title="add application mapping" border="0"></a></td>
 	</tr>
 </table>
 </form>

@@ -94,6 +94,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			if (file_exists($d_fwupenabled_path))
 				unlink($d_fwupenabled_path);
 		} else if ($mode == "upgrade") {
+			/* XXX : system reboots if no file was uploaded...some checks are failing here */
 			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 				/* verify firmware image(s) */
 				if (!stristr($_FILES['ulfile']['name'], $g['fullplatform']) && !$_POST['sig_override'])

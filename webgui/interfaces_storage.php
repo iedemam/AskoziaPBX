@@ -184,16 +184,19 @@ if (storage_syspart_get_state() == "active") {
 				<tr> 
 					<td class="list" colspan="5" height="12">&nbsp;</td>
 				</tr>
+			</table>
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr>
-					<td colspan="4" class="listtopic">Packages</td>
+					<td class="list">&nbsp;</td>
+					<td colspan="3" class="listtopiclight">Packages</td>
 					<td class="list">&nbsp;</td>
 				</tr>
 				<tr>
+					<td width="5%" class="list"></td>
 					<td width="20%" class="listhdrr">Name</td>
 					<td width="25%" class="listhdrr">Size</td>
-					<td width="15%" class="listhdrr">State</td>
-					<td width="30%" class="listhdr">Description</td>
-					<td width="10%" class="list"></td>
+					<td width="35%" class="listhdr">Description</td>
+					<td width="15%" class="list"></td>
 				</tr><?
 				
 			foreach($packages as $pkg) {
@@ -203,29 +206,13 @@ if (storage_syspart_get_state() == "active") {
 				}
 
 				?><tr>
+					<td valign="middle" nowrap class="list"><a href="?action=deactivate&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to disable this package?')"><img src="enabled.png" title="click to disable package" border="0"></a></td>
 					<td class="listbgl"><?=$pkg['name'];?>&nbsp;(<?=$pkg['version'];?>)</td>
 					<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
-					<td class="listr">active</td>
 					<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
-					<td valign="middle" nowrap class="list">
-						<table border="0" cellspacing="0" cellpadding="1">
-							<tr>
-								<td><a href="interfaces_storage.php?action=backup&package=<?=$pkg['name'];?>"><img src="b.gif" title="backup package data" width="17" height="17" border="0"></a></td>
-								<td><a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="r.gif" title="restore package data" width="17" height="17" border="0"></a></td>
-							</tr>
-							<tr>
-								<td align="center" valign="middle"><?
-								/* future short cut to packages's settings?
-
-							if ($ss_info['hasoptions']) {
-									?><a href="packages_edit_package.php?name=<?=$pkg['name'];?>"><img src="e.gif" title="edit package settings" width="17" height="17" border="0"></a><?
-							}
-
-								*/ ?><a href="interfaces_storage.php?action=deactivate&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to deactivate this package?')"><img src="minus.gif" title="deactivate package" width="17" height="17" border="0"></a></td>
-								<td><a href="interfaces_storage.php?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="x.gif" title="delete package configuration and data" width="17" height="17" border="0"></a></td>
-							</tr>
-						</table>
-					</td>
+					<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="backup package data" border="0"></a>
+						<a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="restore.png" title="restore package data" border="0"></a>
+						<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="delete.png" title="delete package configuration and data" border="0"></a></td>
 				</tr><?
 			}
 
@@ -236,20 +223,18 @@ if (storage_syspart_get_state() == "active") {
 				}
 
 				?><tr>
+					<td valign="middle" nowrap class="list"><a href="?action=activate&package=<?=$pkg['name'];?>"><img src="disabled.png" title="click to enable package" border="0"></a></td>
 					<td class="listbgl"><?=$pkg['name'];?>&nbsp;(<?=$pkg['version'];?>)</td>
 					<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
-					<td class="listr">inactive</td>
 					<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
-					<td valign="middle" nowrap class="list">
-						<a href="interfaces_storage.php?action=activate&package=<?=$pkg['name'];?>"><img src="plus.gif" title="activate package" width="17" height="17" border="0"></a>
-						<a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="r.gif" title="activate package from backup data" width="17" height="17" border="0"></a>
-					</td>
+					<td valign="middle" nowrap class="list"><a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="restore.png" title="activate package from backup data" border="0"></a>
+						<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="delete.png" title="delete package configuration and data" border="0"></a></td>
 				</tr><?
 			}
 
 				?><tr> 
 					<td class="list" colspan="4"></td>
-					<td class="list"><a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="plus.gif" title="install package" width="17" height="17" border="0"></a></td>
+					<td class="list"><a href="javascript:{}" onclick="jQuery('#packages-file-upload').slideDown();"><img src="add.png" title="install package" border="0"></a></td>
 				</tr>
 			</table><?
 
