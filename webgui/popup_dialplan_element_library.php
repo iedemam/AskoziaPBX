@@ -29,6 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require_once("guiconfig.inc");
 require_once("functions.inc");
 
 ?>
@@ -170,6 +171,8 @@ require_once("functions.inc");
 					jQuery('#element-library-func-content').hide();
 					jQuery('#element-library-phone-tab').removeClass('tabact').addClass('tabinact');
 					jQuery('#element-library-phone-content').hide();
+					jQuery('#element-library-prompts-tab').removeClass('tabact').addClass('tabinact');
+					jQuery('#element-library-prompts-content').hide();
 					jQuery('#element-library-app-content').show();
 				});
 
@@ -179,6 +182,8 @@ require_once("functions.inc");
 					jQuery('#element-library-app-content').hide();
 					jQuery('#element-library-phone-tab').removeClass('tabact').addClass('tabinact');
 					jQuery('#element-library-phone-content').hide();
+					jQuery('#element-library-prompts-tab').removeClass('tabact').addClass('tabinact');
+					jQuery('#element-library-prompts-content').hide();
 					jQuery('#element-library-func-content').show();
 				});
 
@@ -188,7 +193,20 @@ require_once("functions.inc");
 					jQuery('#element-library-app-content').hide();
 					jQuery('#element-library-func-tab').removeClass('tabact').addClass('tabinact');
 					jQuery('#element-library-func-content').hide();
+					jQuery('#element-library-prompts-tab').removeClass('tabact').addClass('tabinact');
+					jQuery('#element-library-prompts-content').hide();
 					jQuery('#element-library-phone-content').show();
+				});
+
+				jQuery("#element-library-prompts-tab").click(function(){
+					jQuery(this).removeClass('tabinact').addClass('tabact');
+					jQuery('#element-library-app-tab').removeClass('tabact').addClass('tabinact');
+					jQuery('#element-library-app-content').hide();
+					jQuery('#element-library-func-tab').removeClass('tabact').addClass('tabinact');
+					jQuery('#element-library-func-content').hide();
+					jQuery('#element-library-phone-tab').removeClass('tabact').addClass('tabinact');
+					jQuery('#element-library-phone-content').hide();
+					jQuery('#element-library-prompts-content').show();
 				});
 
 				element_library_populate_applications();
@@ -204,6 +222,7 @@ require_once("functions.inc");
 						<li id="element-library-app-tab" class="tabact"><a href="javascript:{}">Applications</a></li>
 						<li id="element-library-func-tab" class="tabinact"><a href="javascript:{}">Functions</a></li>
 						<li id="element-library-phone-tab" class="tabinact"><a href="javascript:{}">Phones</a></li>
+						<li id="element-library-prompts-tab" class="tabinact"><a href="javascript:{}">Audio Prompts</a></li>
 					</ul>
 				</td>
 			</tr>
@@ -215,27 +234,148 @@ require_once("functions.inc");
 						<p><em>Below is a list of the currently defined phones along with a basic 
 						Dial() command to call them. Many additional options are available for this 
 						command, please read its reference documentation in the Applications tab.</em></p>
-						<p><strong>Caller ID / Name&nbsp;&nbsp;-&nbsp;&nbsp;Basic <code>Dial()</code> Command</strong></p><?
+						<table border="0" cellspacing="0" cellpadding="6" width="100%">
+							<tr>
+								<td width="200px"><strong>Caller ID / Name</strong></td>
+								<td><strong>Basic <code>Dial()</code> Command</strong></td>
+							</tr><?
 
 						$phones = pbx_get_phones();
 						foreach ($phones as $p) {
-							echo "<div class=\"phone-entry\"><p>" .
+							echo "<tr><td>" .
 								$p['callerid'] . "&nbsp;&lt;" . $p['extension'] . "&gt;" .
-								"&nbsp;&nbsp;-&nbsp;&nbsp;<code>" .
+								"</td><td><code>" .
 								"Dial(" . extensions_phone_uniqid_to_dialstring($p['uniqid']) . ")" .
-								"</code></p></div>\n";
+								"</code></td></tr>\n";
 						}
 
 						$phones = external_get_phones();
 						foreach ($phones as $p) {
-							echo "<div class=\"phone-entry\"><p>" .
+							echo "<tr><td>" .
 								$p['name'] . "&nbsp;&lt;" . $p['extension'] . "&gt;" .
-								"&nbsp;&nbsp;-&nbsp;&nbsp;<code>" .
+								"</td><td><code>" .
 								"Dial(" . extensions_phone_uniqid_to_dialstring($p['uniqid']) . ")" .
-								"</code></p></div>\n";
+								"</code></td></tr>\n";
 						}
 
-					?></span>
+						?></table>
+					</span>
+					<span id="element-library-prompts-content" style="display: none"><?
+					
+					function get_format($s) {
+						return substr($s, strpos($s, ".")+1);
+					}
+					function get_filename($s) {
+						return substr($s, 0, strpos($s, "."));
+					}
+
+					$languages = array_keys($prompt_languages);
+					$prompts = array();
+
+					$base_path = "/asterisk/sounds";
+					$dh = opendir($base_path);
+					while (false !== ($filename = readdir($dh))) {
+						/* english (us) prompts */
+						if (preg_match("/\S+\.\S+/", $filename)) {
+							$prompts['en'][] = array(
+								get_filename($filename),
+								get_format($filename),
+								format_bytes(filesize($base_path . "/" . $filename)),
+								"default"
+							);
+
+						/* all other international prompt subdirectories */
+						} else if (in_array($filename, $languages)) {
+							$lang = $filename;
+							$path = $base_path . "/" . $lang;
+							$dh_sub = opendir($path);
+							while (false !== ($filename = readdir($dh_sub))) {
+								if (preg_match("/\S+\.\S+/", $filename)) {
+									$prompts[$lang][] = array(
+										get_filename($filename),
+										get_format($filename),
+										format_bytes(filesize($path . "/" . $filename)),
+										"default"
+									);
+								}
+							}
+							closedir($dh_sub);
+						}
+					}
+					closedir($dh);
+
+					$digits_path = "/asterisk/sounds/digits";
+					$dh = opendir($digits_path);
+					while (false !== ($filename = readdir($dh))) {
+						/* english (us) digits */
+						if (preg_match("/\S+\.\S+/", $filename)) {
+							$prompts['en'][] = array(
+								"digits/" . get_filename($filename),
+								get_format($filename),
+								format_bytes(filesize($digits_path . "/" . $filename)),
+								"default"
+							);
+                    
+						/* all other international digits */
+						} else if (in_array($filename, $languages)) {
+							$lang = $filename;
+							$path = $digits_path . "/" . $lang;
+							$dh_sub = opendir($path);
+							while (false !== ($filename = readdir($dh_sub))) {
+								if (preg_match("/\S+\.\S+/", $filename)) {
+									$prompts[$lang][] = array(
+										"digits/" . get_filename($filename),
+										get_format($filename),
+										format_bytes(filesize($path . "/" . $filename)),
+										"default"
+									);
+								}
+							}
+							closedir($dh_sub);
+						}
+					}
+					closedir($dh);
+
+					?><ul><?
+					foreach ($prompt_languages as $lang => $friendly) {
+						?><li><a href="#<?=$lang;?>"><?=$friendly;?></a></li><?
+					}
+					?></ul>
+					<br>
+					<br>
+
+						<table border="0" cellspacing="0" cellpadding="6" width="100%"><?
+						foreach ($prompt_languages as $lang => $friendly) {
+							?><tr>
+								<td colspan="4" class="listtopic"><a name="<?=$lang;?>"><?=$friendly;?></a></td>
+							</tr>
+							<tr>
+								<td><strong>Filename</strong></td>
+								<td><strong>Format</strong></td>
+								<td><strong>Size</strong></td>
+								<td><strong>Location</strong></td>
+							</tr><?
+
+							/* for each prompt... */
+							foreach ($prompts[$lang] as $prompt) {
+								?><tr>
+									<td><?=$prompt[0];?></td>
+									<td><?=$prompt[1];?></td>
+									<td><?=$prompt[2];?></td>
+									<td><?=$prompt[3];?></td>
+								</tr><?
+							}
+
+							?><tr>
+								<td class="list" colspan="4" height="12">&nbsp;</td>
+							</tr><?
+
+						}
+
+						?></table>
+						<?=print_r_html($prompts);?>
+						</span>
+					</span>
 				</td>
 			</tr>
 		</table>
