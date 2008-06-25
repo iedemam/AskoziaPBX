@@ -235,7 +235,7 @@ function build_php() {
 	_exec("cd {$dirs['packages']}/{$versions['php']}; ".
 			"rm configure; ".
 			"./buildconf --force; ".
-			"./configure --without-mysql --without-pear --with-openssl --with-sqlite --enable-discard-path --enable-sockets --enable-bcmath; ".
+			"./configure --without-mysql --without-pear --with-openssl --with-sqlite --enable-discard-path --enable-sockets --enable-bcmath --with-gettext=/usr/local/bin; ".
 			"make");
 }
 
@@ -359,7 +359,7 @@ function build_udesc_dump() {
 function build_msmtp() {
 	global $dirs, $versions;
 	
-	if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}.tar.bz2")) {
+	if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}.tar")) {
 		_exec("cd {$dirs['packages']}; ".
 			"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/{$versions['msmtp']}.tar.bz2");
 	}
@@ -957,9 +957,11 @@ function populate_pkgs($image_name) {
 
 function populate_webgui($image_name) {
 	global $dirs, $versions;
+	
+	update_locales();
 
 	// copy over webgui files
-	_exec("cp {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
+	_exec("cp -R {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
 
 	// grab scriptaculous
 	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
@@ -971,6 +973,18 @@ function populate_webgui($image_name) {
 	}
 	_exec("cd {$dirs['packages']}/{$versions['scriptaculous']}; ".
 		"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
+}
+
+function update_locales() {
+	global $dirs;
+
+	$path = $dirs['webgui'] . "/locale";
+	$dh = opendir($path);
+	while (false !== ($dirname = readdir($dh))) {
+		if (preg_match("/\S+\_\S+/", $dirname)) {
+			_exec("cd $path/$dirname/LC_MESSAGES; msgfmt -o messages.mo messages.po");
+		}
+	}
 }
 
 function populate_jquery($image_name) {
