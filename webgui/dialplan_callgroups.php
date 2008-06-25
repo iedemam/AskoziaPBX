@@ -91,7 +91,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td class="listr"><?=htmlspecialchars($cg['extension']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
 		<td class="listr"><?=@implode(", ", pbx_uniqid_to_name($cg['groupmember']));?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="cog.png" title="edit call group" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit call group" border="0"></a>
 			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this call group?')"><img src="delete.png" title="delete call group" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
