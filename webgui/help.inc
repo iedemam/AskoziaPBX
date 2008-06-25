@@ -35,10 +35,10 @@ $help = array(
 	"en" => array(
 		
 		"display_incoming_extension_selector" =>
-			"Enter a pattern or a phone number and select a destination extension. ".
-			"To ring multiple phones, simply define them with the same pattern. ".
-			"If a phone number is entered, it will used as the \"read back\" number on unanswered calls. ".
-			"If nothing is entered, all calls will be directed to the destination extension.<br>\n".
+			"<strong>Leave blank, or enter a pattern or phone number in the left-hand \"match\" field and select a destination extension from the right-hand drop-down.</strong> ".
+			"If nothing is entered, all calls will be directed to the destination extension. ".
+			"To ring multiple phones, simply enter the same \"match\" value for multiple destinations. ".
+			"If a phone number is entered, it will also be used as the \"read back\" number on unanswered calls.<br>\n".
 			"<ul>\n".
 			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
 			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
@@ -52,7 +52,7 @@ $help = array(
 			"Checked phones will have access to this provider.",
 
 		"display_provider_dialpattern_editor" => 
-			"Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\"). If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n".
+			"Enter patterns, one per line, to define this provider's routing. To route all calls through this provider, enter \"X!\". To route calls beginning with a 9, enter \"9|.\". If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n".
 			"<ul>\n".
 			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n".
 			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
