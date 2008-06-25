@@ -59,8 +59,11 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td width="150" class="listhdr">Caller ID</td>
 				<td class="listhdr">Description</td>
 			</tr>		
-			<?php foreach ($a_intphones as $p): ?>
-			<tr>
+			<?php foreach ($a_intphones as $p):
+				if (isset($p['disabled'])) {
+					continue;
+				}
+			?><tr>
 				<td class="listlr"><?=htmlspecialchars($p['extension']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
@@ -81,8 +84,11 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td width="150" class="listhdr">Name</td>
 				<td class="listhdr">Description</td>
 			</tr>
-			<?php foreach ($a_extphones as $p): ?>
-			<tr>
+			<?php foreach ($a_extphones as $p):
+				if (isset($p['disabled'])) {
+					continue;
+				}
+			?><tr>
 				<td class="listlr"><?=htmlspecialchars($p['extension']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
