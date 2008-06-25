@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Accounts", "Phones");
+$pgtitle = array(gettext("Accounts"), gettext("Phones"));
 require("guiconfig.inc");
 
 
@@ -193,11 +193,11 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
 		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
-			<a href="phones_sip_edit.php">SIP</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_iax_edit.php">IAX</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_isdn_edit.php">ISDN</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_analog_edit.php">Analog</a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_external_edit.php">External</a><img src="bullet_add.png">
+			<a href="phones_sip_edit.php"><?=gettext("SIP");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="phones_external_edit.php"><?=gettext("External");?></a><img src="bullet_add.png">
 		</td>
 	</tr>
 	<tr> 
@@ -209,13 +209,13 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight">SIP</td>
+		<td colspan="4" class="listtopiclight"><?=gettext("SIP");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="35%" class="listhdr">Description</td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Caller ID");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -223,9 +223,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable phone");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this phone?");?>')"><img src="enabled.png" title="<?=gettext("click to disable phone");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -238,8 +238,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_sip_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="phones_sip_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -253,13 +253,13 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight">IAX</td>
+		<td colspan="4" class="listtopiclight"><?=gettext("IAX");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="35%" class="listhdr">Description</td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Caller ID");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -267,9 +267,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable phone");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this phone?");?>')"><img src="enabled.png" title="<?=gettext("click to disable phone");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -282,8 +282,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_iax_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="phones_iax_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -297,13 +297,13 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight">ISDN</td>
+		<td colspan="4" class="listtopiclight"><?=gettext("ISDN");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="35%" class="listhdr">Description</td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Caller ID");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -311,9 +311,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable phone");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this phone?");?>')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -326,8 +326,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_isdn_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="phones_isdn_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -341,13 +341,13 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight">Analog</td>
+		<td colspan="4" class="listtopiclight"><?=gettext("Analog");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="35%" class="listhdrr">Caller ID</td>
-		<td width="35%" class="listhdr">Description</td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Caller ID");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -355,9 +355,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable phone");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this phone?");?>')"><img src="enabled.png" title="<?=gettext("click to disable phone");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -370,8 +370,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_analog_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="phones_analog_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -385,13 +385,13 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight">IAX</td>
+		<td colspan="4" class="listtopiclight"><?=gettext("IAX");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="35%" class="listhdrr">Name</td>
-		<td width="35%" class="listhdr">Dialstring</td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Dialstring");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -399,9 +399,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="click to enable phone" border="0"></a><?
+			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable phone");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to disable this phone?')"><img src="enabled.png" title="click to disable phone" border="0"></a><?
+			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this phone?");?>')"><img src="enabled.png" title="<?=gettext("click to disable phone");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -414,8 +414,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['dialstring'] . " via " . pbx_uniqid_to_name($p['dialprovider']));?></td>
-		<td valign="middle" nowrap class="list"><a href="phones_external_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit phone" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('Do you really want to delete this phone?')"><img src="delete.png" title="delete phone" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="phones_external_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
