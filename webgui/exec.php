@@ -77,7 +77,7 @@ function puts( $arg ) { echo "$arg\n"; }
 
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>AskoziaPBX: execute command</title>
+<title><?=gettext("AskoziaPBX: execute command");?></title>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
@@ -218,12 +218,12 @@ pre {
 </style>
 </head>
 <body>
-<p><span class="pgtitle">AskoziaPBX: execute command</span>
+<p><span class="pgtitle"><?=gettext("AskoziaPBX: execute command");?></span>
 <?php if ($ulmsg) echo "<p><strong>" . $ulmsg . "</strong></p>\n"; ?>
-<pre id="contents_wrapper">enter a command below...</pre>
+<pre id="contents_wrapper"><?=gettext("enter a command below...");?></pre>
 	<table>
 		<tr>
-			<td class="label" align="right">Command:</td>
+			<td class="label" align="right"><?=gettext("Command:");?></td>
 			<td class="type"><input name="txtCommand" id="txtCommand" type="text" size="80" value=""></td>
 		</tr>
 		<tr>
@@ -231,26 +231,26 @@ pre {
 			<td valign="top" class="label">
 				<input type="hidden" name="txtRecallBuffer" value="">
 				<input type="button" class="button" name="btnRecallPrev" value="<" onClick="btnRecall_onClick(-1);">
-				<input type="button" class="button" name="Execute" id="Execute" value="Execute">
+				<input type="button" class="button" name="Execute" id="Execute" value="<?=gettext("Execute");?>">
 				<input type="button" class="button" name="btnRecallNext" value=">" onClick="btnRecall_onClick(1);">
-				<input type="button"  class="button" value="Clear" onClick="return Reset_onClick();">
+				<input type="button"  class="button" value="<?=gettext("Clear");?>" onClick="return Reset_onClick();">
 			</td>
 		</tr>
 	</table>
 <form action="exec.php" method="post" enctype="multipart/form-data" name="frmExecPlus">
 	<table>
 		<tr>
-			<td align="right">Download:</td>
+			<td align="right"><?=gettext("Download:");?></td>
 			<td>
 				<input name="dlPath" type="text" id="dlPath" size="50">
-				<input name="submit" type="submit"  class="button" id="download" value="Download">
+				<input name="submit" type="submit"  class="button" id="download" value="<?=gettext("Download");?>">
 			</td>
 		</tr>
 		<tr>
-			<td align="right">Upload:</td>
+			<td align="right"><?=gettext("Upload:");?></td>
 			<td valign="top" class="label">
 				<input name="ulfile" type="file" class="button" id="ulfile">
-				<input name="submit" type="submit"  class="button" id="upload" value="Upload">
+				<input name="submit" type="submit"  class="button" id="upload" value="<?=gettext("Upload");?>">
 			</td>
 		</tr>
 	</table>
