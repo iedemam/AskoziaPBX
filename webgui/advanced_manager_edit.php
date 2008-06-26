@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Advanced", "Manager Interface", "Edit User");
+$pgtitle = array(gettext("Advanced"), gettext("Manager Interface"), gettext("Edit User"));
 require("guiconfig.inc");
 
 if (!is_array($config['services']['manager']['manager-user']))
@@ -64,12 +64,12 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "username secret denyip denynetmask permitip permitnetmask");
-	$reqdfieldsn = explode(",", "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask");
+	$reqdfieldsn = explode(",", gettext("Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"));
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['username'] == "admin") {
-		$input_errors[] = "The username of \"admin\" is already used internally by AskoziaPBX.";
+		$input_errors[] = gettext("The username of \"admin\" is already used internally by AskoziaPBX.");
 	}
 	// XXX : check doubled username
 
@@ -115,60 +115,60 @@ if ($_POST) {
 	<form action="advanced_manager_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Username</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
 				<td width="80%" class="vtable" colspan="2">
 					<input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>"> 
 					<br><span class="vexpl"></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Secret</td>
+				<td valign="top" class="vncellreq"><?=gettext("Secret");?></td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
                     <br><span class="vexpl"></span>
 				</td>
 			</tr>
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Deny Network</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Deny Network");?></td>
 				<td width="80%" class="vtable" colspan="2">
 					<input name="denyip" type="text" class="formfld" id="denyip" size="20" value="<?=htmlspecialchars($pconfig['denyip']);?>">
 					/
 					<input name="denynetmask" type="text" class="formfld" id="denynetmask" size="20" value="<?=htmlspecialchars($pconfig['denynetmask']);?>">
-					<br><span class="vexpl">set to "0.0.0.0 / 0.0.0.0" to deny everything</span>
+					<br><span class="vexpl"><?=gettext("set to '0.0.0.0 / 0.0.0.0' to deny everything");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Permit Network</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Permit Network");?></td>
 				<td width="80%" class="vtable" colspan="2">
 					<input name="permitip" type="text" class="formfld" id="permitip" size="20" value="<?=htmlspecialchars($pconfig['permitip']);?>">
 					/
 					<input name="permitnetmask" type="text" class="formfld" id="permitnetmask" size="20" value="<?=htmlspecialchars($pconfig['permitnetmask']);?>">
-					<br><span class="vexpl">set to "0.0.0.0 / 0.0.0.0" to permit everything</span>
+					<br><span class="vexpl"><?=gettext("set to '0.0.0.0 / 0.0.0.0' to permit everything");?></span>
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" valign="top" class="vncellreq">Permissions</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Permissions");?></td>
 				<td width="25%" class="vtable" valign="top">
-					<strong>Read</strong><br><?
+					<strong><?=gettext("Read");?></strong><br><?
 				foreach ($manager_permissions as $perm) {
 					?><input name="read-<?=$perm;?>" id="read-<?=$perm;?>" type="checkbox" value="yes" <?
 					if (in_array($perm, $pconfig['read-permission'])) echo "checked"; 
-					?>><?=$perm;?><br><?
+					?>><?=gettext($perm);?><br><?
 				}
 				?></td>
 				<td width="55%" class="vtable" valign="top">
-					<strong>Write</strong><br><?
+					<strong><?=gettext("Write");?></strong><br><?
 				foreach ($manager_permissions as $perm) {
 					?><input name="write-<?=$perm;?>" id="write-<?=$perm;?>" type="checkbox" value="yes" <?
 					if (in_array($perm, $pconfig['write-permission'])) echo "checked"; 
-					?>><?=$perm;?><br><?
+					?>><?=gettext($perm);?><br><?
 				}
 				?></td>
 			</tr>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">
-					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
 					<?php if (isset($id) && $a_users[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
