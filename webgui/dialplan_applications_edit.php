@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Dialplan", "Applications", "Edit");
+$pgtitle = array(gettext("Dialplan"), gettext("Applications"), gettext("Edit"));
 require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...
@@ -63,13 +63,13 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "name extension applogic");
-	$reqdfieldsn = explode(",", "Name,Extension,Application Logic");
+	$reqdfieldsn = explode(",", gettext("Name,Extension,Application Logic"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	/* XXX : temporary hack to allow '*' and '#' characters in application extensions */
 	if (!preg_match("/[0-9\*\#]+/", $_POST['extension'])) {
-		$input_errors[] = "A valid extension must be entered.";
+		$input_errors[] = gettext("A valid extension must be entered.");
 	}
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
@@ -123,14 +123,14 @@ if ($_POST) {
 	<form action="dialplan_applications_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Extension</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
 				<td width="80%" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">Internal extension used to reach this application.</span>
+					<br><span class="vexpl"><?=gettext("Internal extension used to reach this application.");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Name</td>
+				<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
 					<br><span class="vexpl"></span>
@@ -142,7 +142,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_applications[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
