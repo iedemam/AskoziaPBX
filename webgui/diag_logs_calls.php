@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Logs");
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
 
 if ($_POST['clear']) {
@@ -157,10 +157,10 @@ function dump_sqlite($logfile, $max) {
 		<td class="tabnavtbl">
 			<ul id="tabnav"><?
 
-			$tabs = array('System' => 'diag_logs.php',
-							'PBX' => 'diag_logs_pbx.php',
-							'Calls' => 'diag_logs_calls.php',
-							'Settings' => 'diag_logs_settings.php');
+			$tabs = array(gettext('System') => 'diag_logs.php',
+					gettext('PBX') => 'diag_logs_pbx.php',
+					gettext('Calls') => 'diag_logs_calls.php',
+					gettext('Settings') => 'diag_logs_settings.php');
 			dynamic_tab_menu($tabs);
 
 			?></ul>
@@ -170,17 +170,17 @@ function dump_sqlite($logfile, $max) {
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="8" class="listtopic">Last <?=$nentries;?> Call Records</td>
+					<td colspan="8" class="listtopic">Last <?=$nentries;?><?=gettext(" Call Records");?></td>
 				</tr>
 				<tr valign="top">
-					<td class="listhdrr">start</td>
-					<td class="listhdrr">src</td>
-					<td class="listhdrr">dst</td>
-					<td class="listhdrr">channels</td>
-					<td class="listhdrr">last app</td>
-					<td class="listhdrr">sec.</td>
-					<td class="listhdrr">bill</td>
-					<td class="listhdr">disposition</td>
+					<td class="listhdrr"><?=gettext("start");?></td>
+					<td class="listhdrr"><?=gettext("src");?></td>
+					<td class="listhdrr"><?=gettext("dst");?></td>
+					<td class="listhdrr"><?=gettext("channels");?></td>
+					<td class="listhdrr"><?=gettext("last app");?></td>
+					<td class="listhdrr"><?=gettext("sec.");?></td>
+					<td class="listhdrr"><?=gettext("bill");?></td>
+					<td class="listhdr"><?=gettext("disposition");?></td>
 				</tr><?
 
 				if ($source == "internal") {
@@ -195,7 +195,7 @@ function dump_sqlite($logfile, $max) {
 		if ($source == "internal") {
 			?><br>
 			<form action="diag_logs_calls.php" method="post">
-				<input name="clear" type="submit" class="formbtn" value="Clear log">
+				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
 			</form><?
 		}
 
