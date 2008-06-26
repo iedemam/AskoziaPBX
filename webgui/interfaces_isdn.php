@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "ISDN");
+$pgtitle = array(gettext("Interfaces"), gettext("ISDN"));
 require("guiconfig.inc");
 
 
@@ -109,11 +109,11 @@ if (file_exists($d_isdnconfdirty_path)) {
 			<ul id="tabnav"><?
 
 			$tabs = array(
-				'Network'	=> 'interfaces_network.php',
-				'Wireless'	=> 'interfaces_wireless.php',
-				'ISDN'		=> 'interfaces_isdn.php',
-				'Analog'	=> 'interfaces_analog.php',
-				'Storage'	=> 'interfaces_storage.php'
+				gettext('Network')	=> 'interfaces_network.php',
+				gettext('Wireless')	=> 'interfaces_wireless.php',
+				gettext('ISDN')		=> 'interfaces_isdn.php',
+				gettext('Analog')	=> 'interfaces_analog.php',
+				gettext('Storage')	=> 'interfaces_storage.php'
 			);
 			dynamic_tab_menu($tabs);
 			
@@ -127,11 +127,11 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
-					<td><strong>No compatible ISDN interfaces detected.</strong>
+					<td><strong><?=gettext("No compatible ISDN interfaces detected.");?></strong>
 					<br>
-					<br>If an ISDN interface is present but was not detected, please send <a href="/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg">this output</a> to <a href="mailto:michael@askozia.com">michael@askozia.com</a>.
+					<br><?=gettext("If an ISDN interface is present but was not detected, please send ");?><a href="/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"><?=gettext("this output</a> to ");?><a href="mailto:michael@askozia.com">michael@askozia.com</a>.
 					<br>
-					<br>If this is a USB ISDN device, send <a href="/ajax.cgi?exec_shell=/sbin/udesc_dump">this output</a> as well.</td>
+					<br><?=gettext("If this is a USB ISDN device, send ");?><a href="/ajax.cgi?exec_shell=/sbin/udesc_dump"><?=gettext("this output</a> as well.");?></td>
 				</tr>
 			</table><?
 
@@ -139,10 +139,10 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr>
-					<td width="10%" class="listhdrr">Unit</td>
-					<td width="25%" class="listhdrr">Name</td>		
-					<td width="30%" class="listhdrr">Operating Mode</td>
-					<td width="25%" class="listhdr">Echo Canceller</td>
+					<td width="10%" class="listhdrr"><?=gettext("Unit");?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Name");?></td>		
+					<td width="30%" class="listhdrr"><?=gettext("Operating Mode");?></td>
+					<td width="25%" class="listhdr"><?=gettext("Echo Canceller");?></td>
 					<td width="10%" class="list"></td>
 				</tr><?	
 
@@ -158,9 +158,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
-					<td valign="middle" nowrap class="list"><a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="edit ISDN interface" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="<?=gettext("edit ISDN interface");?>" border="0"></a>
 					<? if ($mu['name'] != "(unconfigured)") : ?>
-						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('Do you really want to forget this interface\'s settings?')"><img src="delete.png" title="forget interface settings" border="0"></a>
+						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this interface\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget interface settings");?>" border="0"></a>
 					<? endif; ?>
 					</td>
 				</tr><?
@@ -168,12 +168,12 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 			?></table>
 			<br>
-			<span class="vexpl"><strong>Operating Modes</strong>
+			<span class="vexpl"><strong><?=gettext("Operating Modes");?></strong>
 				<ul>
-					<li>point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system</li>
-					<li>multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones</li>
-					<li>point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system</li>
-					<li>point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system</li>
+					<li><?=gettext("point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system");?></li>
+					<li><?=gettext("multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones");?></li>
+					<li><?=gettext("point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system")?></li>
+					<li><?=gettext("point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system");?></li>
 				</ul>
 			</span><?
 		}
