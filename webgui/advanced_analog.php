@@ -31,7 +31,7 @@
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Advanced", "Analog");
+$pgtitle = array(gettext("Advanced"), gettext("Analog"));
 require("guiconfig.inc");
 
 $analogconfig = &$config['services']['analog'];
@@ -104,24 +104,24 @@ if (file_exists($d_analogconfdirty_path)) {
 <form action="advanced_analog.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
-			<td width="20%" valign="top" class="vncell">Tone Zones</td>
-			<td width="40%" class="vtable" valign="top"><strong>Loaded</strong>&nbsp;<i>(drag-and-drop)</i>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Tone Zones");?></td>
+			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Loaded");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
 				<ul id="gme" class="gme" style="min-height:50px"><? 
 
 				foreach ($pconfig['loadzone'] as $loadzone) {
 					if (array_key_exists($loadzone, $zaptel_loadzones)) {
-						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars($zaptel_loadzones[$loadzone]);?></li><?
+						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars(gettext($zaptel_loadzones[$loadzone]));?></li><?
 					}
 				}
 
 				?></ul>
 			</td>
-			<td width="40%" class="vtable" valign="top"><strong>Inactive</strong>
+			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Inactive");?></strong>
 				<ul id="gmd" class="gmd" style="min-height:50px"><?
 
 				foreach ($zaptel_loadzones as $abbreviation=>$friendly) {
 					if (!in_array($abbreviation, $pconfig['loadzone'])) {
-						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars($zaptel_loadzones[$abbreviation]);?></li><?
+						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars(gettext($zaptel_loadzones[$abbreviation]));?></li><?
 					}
 				}
 
@@ -131,8 +131,8 @@ if (file_exists($d_analogconfdirty_path)) {
 		<tr>
 			<td width="20%" valign="top" class="vncell">&nbsp;</td>
 			<td width="40%" class="vtable" valign="top" colspan="2">
-				<span class="vexpl"><strong><span class="red">Note:</span></strong>
-				Select all indication tone zones the analog hardware should support. <strong>The first tone zone will be the default tonezone.</strong></span>
+				<span class="vexpl"><strong><span class="red"><?=gettext("Note:");?></span></strong>
+				<?=gettext("Select all indication tone zones the analog hardware should support. <strong>The first tone zone will be the default tonezone.");?></strong></span>
 			</td>
 		</tr>
 		<tr> 
