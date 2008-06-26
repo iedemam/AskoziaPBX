@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "ARP table");
+$pgtitle = array(gettext("Diagnostics"), gettext("ARP table"));
 require("guiconfig.inc");
 
 $id = $_GET['id'];
@@ -64,7 +64,7 @@ $resolve = isset($config['syslog']['resolve']);
 exec("/usr/sbin/arp -an",$rawdata);
 
 $i = 0; 
-$ifdescrs = array('lan' => 'LAN');
+$ifdescrs = array('lan' => gettext('LAN'));
 						
 foreach ($ifdescrs as $key =>$interface) {
 	$hwif[$config['interfaces'][$key]['if']] = $interface;
@@ -101,10 +101,10 @@ function getHostName($mac,$ip)
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="listhdrr">IP address</td>
-    <td class="listhdrr">MAC address</td>
-    <td class="listhdrr">Hostname</td>
-    <td class="listhdr">Interface</td>
+    <td class="listhdrr"><?=gettext("IP address");?></td>
+    <td class="listhdrr"><?=gettext("MAC address");?></td>
+    <td class="listhdrr"><?=gettext("Hostname");?></td>
+    <td class="listhdr"><?=gettext("Interface");?></td>
     <td class="list"></td>
   </tr>
 <?php $i = 0; foreach ($data as $entry): ?>
@@ -113,7 +113,7 @@ function getHostName($mac,$ip)
     <td class="listr"><?=$entry['mac'];?></td>
     <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?></td>
     <td class="listr"><?=$hwif[$entry['interface']];?></td>
-    <td valign="middle" nowrap class="list"><a href="?action=delete&id=<?=$entry['ip'];?>"><img src="delete.png" title="delete arp entry" border="0"></a></td>
+    <td valign="middle" nowrap class="list"><a href="?action=delete&id=<?=$entry['ip'];?>"><img src="delete.png" title="<?=gettext("delete arp entry");?>" border="0"></a></td>
   </tr>
 <?php $i++; endforeach; ?>
   <tr> 
@@ -121,15 +121,13 @@ function getHostName($mac,$ip)
   </tr> 
   <tr> 
     <td class="list" colspan="4"></td>
-    <td class="list"><a href="?action=delete"><img src="delete.png" title="remove all entries from arp table" border="0"></a></td>
+    <td class="list"><a href="?action=delete"><img src="delete.png" title="<?=gettext("remove all entries from arp table");?>" border="0"></a></td>
   </tr>
   <tr>
     <td colspan="4">
-      <span class="vexpl"><span class="red"><strong>Hint:<br>
-      </strong></span>IP addresses are resolved to hostnames if
-      &quot;Resolve IP addresses to hostnames&quot; 
-      is checked on the <a href="diag_logs_settings.php">
-      Diagnostics: Logs</a> page.</span>
+      <span class="vexpl"><span class="red"><strong><?=gettext("Hint:");?><br>
+      </strong></span><?=gettext("IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the");?> <a href="diag_logs_settings.php">
+      <?=gettext("Diagnostics: Logs</a> page.");?></span>
     </td>
   </tr>
 </table>
