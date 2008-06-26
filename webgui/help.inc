@@ -35,55 +35,19 @@ $help = array(
 	"en" => array(
 		
 		"display_incoming_extension_selector" =>
-			"<strong>Leave blank, or enter a pattern or phone number in the left-hand \"match\" field and select a destination extension from the right-hand drop-down.</strong> ".
-			"If nothing is entered, all calls will be directed to the destination extension. ".
-			"To ring multiple phones, simply enter the same \"match\" value for multiple destinations. ".
-			"If a phone number is entered, it will also be used as the \"read back\" number on unanswered calls.<br>\n".
-			"<ul>\n".
-			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
-			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
-			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
-			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
-			"\t<li><strong>.</strong> - matches one or more characters</li>\n".
-			"\t<li><strong>!</strong> - matches zero or more characters</li>\n".
-			"</ul>\n",
+			gettext("Enter a pattern or a phone number and select a destination extension. To ring multiple phones, simply define them with the same pattern. If a phone number is entered, it will used as the \"read back\" number on unanswered calls. If nothing is entered, all calls will be directed to the destination extension.<br>\n <ul>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters</li>\n \t<li><strong>!</strong> - matches zero or more characters</li>\n </ul>\n"),
 
 		"display_phone_access_selector" => 
-			"Checked phones will have access to this provider.",
+			gettext("Checked phones will have access to this provider."),
 
 		"display_provider_dialpattern_editor" => 
-			"Enter patterns, one per line, to define this provider's routing. To route all calls through this provider, enter \"X!\". To route calls beginning with a 9, enter \"9|.\". If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n".
-			"<ul>\n".
-			"\t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n".
-			"\t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n".
-			"\t<li><strong>X</strong> - matches digits 0-9</li>\n".
-			"\t<li><strong>Z</strong> - matches digits 1-9</li>\n".
-			"\t<li><strong>N</strong> - matches digits 2-9</li>\n".
-			"\t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n".
-			"\t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n".
-			"\t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n".
-			"</ul>\n",
+			gettext("Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\"). If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n <ul>\n \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n </ul>\n"),
 
 		"display_application_logic_editor" =>
-			"Enter application logic, one command per line as shown:".
-			"<br>".
-			"<pre>".
-			"1,Answer()\n".
-			"2,Echo()\n".
-			"3,Hangup()\n".
-			"</pre>".
-			"<p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. ".
-			"An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be ".
-			"rendered useless by faulty application logic. A reference of applications, functions and ".
-			"phones is available in the ".
-			"<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>",
+			gettext("Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n 2,Echo()\n 3,Hangup()\n </pre> <p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"),
 
 		"display_manual_attributes_editor" =>
-			"Manual key-value pairs can be entered in addition to the generated configuration ".
-			"(i.e. <em>configoption=value</em>). These settings will be ".
-			"appended to this item's Asterisk configuration file or context. Unless you have a very ".
-			"specific need to do this, nothing should be entered in this field. Improperly ".
-			"formed values can break system functionality and/or open security holes."
+			gettext("Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes.")
 	)
 	
 );
