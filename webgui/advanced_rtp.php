@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Advanced", "RTP");
+$pgtitle = array(gettext("Advanced"), gettext("RTP"));
 require("guiconfig.inc");
 
 $pconfig['highport'] = rtp_high_port();
@@ -42,7 +42,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "lowport highport");
-	$reqdfieldsn = explode(",", "Low RTP Port,High RTP Port");
+	$reqdfieldsn = explode(",", gettext("Low RTP Port,High RTP Port"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -53,7 +53,7 @@ if ($_POST) {
 		$input_errors[] = $msg;
 	}
 	if ($_POST['highport'] <= $_POST['lowport']) {
-		$input_errors[] = "The high RTP port must be greater than the low RTP port.";
+		$input_errors[] = gettext("The high RTP port must be greater than the low RTP port.");
 	}
 
 	if (!$input_errors) {
@@ -86,26 +86,24 @@ if (file_exists($d_rtpconfdirty_path)) {
 <form action="advanced_rtp.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
-			<td width="20%" valign="top" class="vncell">RTP Port Range</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("RTP Port Range");?></td>
 			<td width="80%" class="vtable">
 				<input name="lowport" type="text" class="formfld" id="lowport" size="20" maxlength="5"  value="<?=htmlspecialchars($pconfig['lowport']);?>">
 				-
 				<input name="highport" type="text" class="formfld" id="highport" size="20" maxlength="5"  value="<?=htmlspecialchars($pconfig['highport']);?>">
-				<br><span class="vexpl">The port range which RTP streams should use.
-				(default: <?=javascript_default_value_setter("lowport", $defaults['rtp']['lowport']);?>-<?=javascript_default_value_setter("highport", $defaults['rtp']['highport']);?>)</span>
+				<br><span class="vexpl"><?=gettext("The port range which RTP streams should use. (default: ");?> <?=javascript_default_value_setter("lowport", $defaults['rtp']['lowport']);?>-<?=javascript_default_value_setter("highport", $defaults['rtp']['highport']);?>)</span>
 			</td>
 		</tr>
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>
-				<input name="Submit" type="submit" class="formbtn" value="Save">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><span class="vexpl"><span class="red"><strong>Warning:<br>
-			</strong></span>after you click &quot;Save&quot;, all current
-			calls will be dropped.</td>
+			<td><span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?><br>
+			</strong></span><?=gettext("after you click &quot;Save&quot;, all current calls will be dropped.");?></td>
 		</tr>
 	</table>
 </form>
