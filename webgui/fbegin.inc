@@ -32,14 +32,38 @@ $navlevelsep = ": ";	/* navigation level separator string */
 $mandfldhtml = "";		/* display this before mandatory input fields */
 $mandfldhtmlspc = "";	/* same as above, but with spacing */
 
+//locale stuff
+//try to acquire the language 
+$current_language =  $config['system']['webgui']['language'];
+// default to English if nothing is still set
+if (!$current_language) {
+	$current_language = "en_US";
+}
+
+bindtextdomain("messages", "./locale");
+bind_textdomain_codeset("messages","utf-8");
+//setlocale(LC_ALL, $lang);
+setlocale(LC_MESSAGES, $current_language);
+putenv("LANG=$current_language");
+textdomain("messages");
+// end locale stuff
+
 function gentitle($title) {
 	global $navlevelsep;
-	return join($navlevelsep, $title);
+	//return join($navlevelsep, $title);
+	foreach ($title as $item) {
+        	echo gettext($item);
+		if(next($title)) {
+			echo ": ";
+		}
+	}
 }
 
 function genhtmltitle($title) {
 	global $config;
-	return $config['system']['hostname'] . "." . $config['system']['domain'] . " - " . gentitle($title);
+	//return $config['system']['hostname'] . "." . $config['system']['domain'] . " - " . gentitle($title);
+	echo $config['system']['hostname'] . "." . $config['system']['domain'] . " - ";
+	gentitle($title);
 }
 
 function dynamic_menu(&$menu, $menu_title) {
@@ -68,16 +92,16 @@ function dynamic_menu(&$menu, $menu_title) {
 				if (!isset($header_displayed)) {
 					if ($menu_title == 'Diagnostics') {
 						if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br><span id="diag">
+							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag">
 						<? else :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk">Diagnostics</a></strong><br><span id="diag" style="display: none">
+							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag" style="display: none">
 						<? endif;
 					}
 					if ($menu_title == 'Advanced') {
 						if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk">Advanced</a></strong><br><span id="advanced">
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced">
 						<? else :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk">Advanced</a></strong><br><span id="advanced" style="display: none">
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced" style="display: none">
 						<? endif;
 					}
 					
@@ -123,8 +147,8 @@ if ((!is_array($allowed)) and
 }
 
 /* System */
-$menu['System']['General Setup']		= array('system.php');
-$menu['System']['Interfaces'] 			= array('interfaces_network.php',
+$menu['System'][gettext("General Setup")]		= array('system.php');
+$menu['System'][gettext("Interfaces")] 			= array('interfaces_network.php',
 												'interfaces_isdn.php',
 												'interfaces_isdn_edit.php',
 												'interfaces_analog.php',
@@ -132,18 +156,18 @@ $menu['System']['Interfaces'] 			= array('interfaces_network.php',
 												'interfaces_storage.php',
 												'interfaces_storage_syspart_edit.php',
 												'interfaces_storage_disk_edit.php');
-$menu['System']['Firmware']				= array('system_firmware.php');
-$menu['System']['Backup/Restore'] 		= array('system_backup.php');
-$menu['System']['Factory Defaults']		= array('system_defaults.php');
-$menu['System']['Reboot'] 				= array('system_reboot.php');
+$menu['System'][gettext("Firmware")]				= array('system_firmware.php');
+$menu['System'][gettext("Backup/Restore")] 		= array('system_backup.php');
+$menu['System'][gettext("Factory Defaults")]		= array('system_defaults.php');
+$menu['System'][gettext("Reboot")] 				= array('system_reboot.php');
 
 /* Accounts */
-$menu['Accounts']['Providers']			= array('accounts_providers.php',
+$menu['Accounts'][gettext("Providers")]			= array('accounts_providers.php',
 												'providers_sip_edit.php',
 												'providers_iax_edit.php',
 												'providers_isdn_edit.php',
 												'providers_analog_edit.php');
-$menu['Accounts']['Phones']				= array('accounts_phones.php',
+$menu['Accounts'][gettext("Phones")]				= array('accounts_phones.php',
 												'phones_sip_edit.php',
 												'phones_iax_edit.php',
 												'phones_isdn_edit.php',
@@ -151,51 +175,51 @@ $menu['Accounts']['Phones']				= array('accounts_phones.php',
 												'phones_external_edit.php');
 
 /* Dialplan */
-$menu['Dialplan']['Applications']		= array('dialplan_applications.php',
+$menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications.php',
 												'dialplan_applications_edit.php');
-$menu['Dialplan']['Call Groups']		= array('dialplan_callgroups.php',
+$menu['Dialplan'][gettext("Call Groups")]		= array('dialplan_callgroups.php',
 												'dialplan_callgroups_edit.php');
 //$menu['Dialplan']['Providers']			= array('dialplan_providers.php');
-$menu['Dialplan']['Transfers']			= array('dialplan_transfers.php');
+$menu['Dialplan'][gettext("Transfers")]			= array('dialplan_transfers.php');
 											
 /* Services */
-$menu['Services']['Conferencing']		= array('services_conferencing.php',
+$menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
-$menu['Services']['Voicemail']			= array('services_voicemail.php');
+$menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 
 /* Status */
-$menu['Status']['Summary']				= array('index.php');
-$menu['Status']['Interfaces']			= array('status_interfaces.php');
-$menu['Status']['Channels']				= array('status_channels.php');
+$menu['Status'][gettext("Summary")]				= array('index.php');
+$menu['Status'][gettext("Interfaces")]			= array('status_interfaces.php');
+$menu['Status'][gettext("Channels")]				= array('status_channels.php');
 //$menu['Status']['Providers']				= array('status_providers.php');
 //$menu['Status']['Phones']					= array('status_phones.php');
-$menu['Status']['Conferences']			= array('status_conferences.php');
+$menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
 //$menu['Status']['Voicemail']				= array('status_voicemail.php');
 
 /* Live Stats */
-$menu['Live Stats']['Network Traffic']	= array('status_graph_traffic.php');
-$menu['Live Stats']['CPU Load']			= array('status_graph_cpu.php');
+$menu['Live Stats'][gettext("Network Traffic")]	= array('status_graph_traffic.php');
+$menu['Live Stats'][gettext("CPU Load")]			= array('status_graph_cpu.php');
 
 /* Advanced */
-$menu['Advanced']['RTP'] 				= array('advanced_rtp.php');
-$menu['Advanced']['SIP'] 				= array('advanced_sip.php');
-$menu['Advanced']['IAX'] 				= array('advanced_iax.php');
-$menu['Advanced']['ISDN'] 				= array('advanced_isdn.php');
-$menu['Advanced']['Analog'] 			= array('advanced_analog.php');
-$menu['Advanced']['Manager'] 			= array('advanced_manager.php',
+$menu['Advanced'][gettext("RTP")] 				= array('advanced_rtp.php');
+$menu['Advanced'][gettext("SIP")] 				= array('advanced_sip.php');
+$menu['Advanced'][gettext("IAX")] 				= array('advanced_iax.php');
+$menu['Advanced'][gettext("ISDN")] 				= array('advanced_isdn.php');
+$menu['Advanced'][gettext("Analog")] 			= array('advanced_analog.php');
+$menu['Advanced'][gettext("Manager")] 			= array('advanced_manager.php',
 												'advanced_manager_edit.php');
-$menu['Advanced']['GUI Options']		= array('advanced_guioptions.php');
+$menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 //$menu['Advanced']['Quality of Service'] 					= array('advanced_qos.php');
 
 /* Diagnostics */
-$menu['Diagnostics']['Logs']			= array('diag_logs.php',
+$menu['Diagnostics'][gettext("Logs")]			= array('diag_logs.php',
 												'diag_logs_pbx.php',
 												'diag_logs_calls.php',
 							  					'diag_logs_settings.php');
-$menu['Diagnostics']['Ping/Traceroute'] = array('diag_ping.php',
+$menu['Diagnostics'][gettext('Ping/Traceroute')] = array('diag_ping.php',
 												'diag_traceroute.php');
-$menu['Diagnostics']['ARP Table'] 		= array('diag_arp.php');
-$menu['Diagnostics']['Manager Interface']= array('diag_manager.php');
+$menu['Diagnostics'][gettext("ARP Table")] 		= array('diag_arp.php');
+$menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 
 ?>
 
@@ -244,8 +268,7 @@ function showhide(tspan, tri) {
     <td width="150" height="65" align="center" valign="middle"> <strong><a href="http://askozia.com/pbx" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong></td>
     <td height="65" bgcolor="#435370">
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
-	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;webGUI 
-      Configuration</span></td>
+	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
 	  <td align="right" valign="bottom">
 	  <span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
 	  </td></tr></table>
@@ -258,12 +281,12 @@ function showhide(tspan, tri) {
           <td><span class="navlnk"><font color="#FFFFFF"> 
             <?php 
                    
-dynamic_menu($menu['System'], 'System');
-dynamic_menu($menu['Accounts'], 'Accounts');
-dynamic_menu($menu['Dialplan'], 'Dialplan');
-dynamic_menu($menu['Services'], 'Services');
-dynamic_menu($menu['Status'], 'Status');
-dynamic_menu($menu['Live Stats'], 'Live Stats');
+dynamic_menu($menu['System'], gettext('System'));
+dynamic_menu($menu['Accounts'], gettext('Accounts'));
+dynamic_menu($menu['Dialplan'], gettext('Dialplan'));
+dynamic_menu($menu['Services'], gettext('Services'));
+dynamic_menu($menu['Status'], gettext('Status'));
+dynamic_menu($menu['Live Stats'], gettext('Live Stats'));
 dynamic_menu($menu['Advanced'], 'Advanced');
 dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 
