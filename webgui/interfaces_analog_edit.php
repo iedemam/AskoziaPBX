@@ -37,7 +37,7 @@ $type = $_GET['type'];
 if (isset($_POST['type']))
 	$type = $_POST['type'];
 
-$pgtitle = array("Interfaces", "Edit Analog ". strtoupper($type) ." Interface #$unit");
+$pgtitle = array(gettext("Interfaces"), gettext("Edit Analog "). strtoupper($type) .gettext(" Interface #").$unit);
 require("guiconfig.inc");
 
 
@@ -164,29 +164,29 @@ if ($_POST) {
 <form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td width="20%" valign="top" class="vncellreq">Name</td>
+		<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		<td width="80%" class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != "(unconfigured)") ? $pconfig['name'] : "$type #$unit");?>"> 
-			<br><span class="vexpl">Descriptive name for this interface</span>
+			<br><span class="vexpl"><?=gettext("Descriptive name for this interface");?></span>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Echo Canceller</td>
+		<td valign="top" class="vncell"><?=gettext("Echo Canceller");?></td>
 		<td class="vtable">
 			<select name="echocancel" class="formfld" id="echocancel">
-				<option value="no" <? if ($pconfig['echocancel'] == "no") echo "selected"; ?>>Disabled</option>
-				<option value="32" <? if ($pconfig['echocancel'] == "32") echo "selected"; ?>>32</option>
-				<option value="64" <? if ($pconfig['echocancel'] == "64") echo "selected"; ?>>64</option>
-				<option value="128" <? if ($pconfig['echocancel'] == "128") echo "selected"; ?>>128</option>
-				<option value="256" <? if ($pconfig['echocancel'] == "256") echo "selected"; ?>>256</option>
+				<option value="no" <? if ($pconfig['echocancel'] == "no") echo "selected"; ?>><?=gettext("Disabled");?></option>
+				<option value="32" <? if ($pconfig['echocancel'] == "32") echo "selected"; ?>><?=gettext("32");?></option>
+				<option value="64" <? if ($pconfig['echocancel'] == "64") echo "selected"; ?>><?=gettext("64");?></option>
+				<option value="128" <? if ($pconfig['echocancel'] == "128") echo "selected"; ?>><?=gettext("128");?></option>
+				<option value="256" <? if ($pconfig['echocancel'] == "256") echo "selected"; ?>><?=gettext("256");?></option>
 			</select>
-			<br><span class="vexpl">The echo canceller "tap" size. Larger sizes more effectively cancel echo but require more processing power.</span>
+			<br><span class="vexpl"><?=gettext("The echo canceller 'tap' size. Larger sizes more effectively cancel echo but require more processing power.");?></span>
 		</td>
 	</tr>
 	<? display_advanced_settings_begin(1); ?>
 	<? display_analog_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
 	<tr> 
-		<td valign="top" class="vncell">Start Signaling</td>
+		<td valign="top" class="vncell"><?=gettext("Start Signaling");?></td>
 		<td class="vtable">
 			<select name="startsignal" class="formfld" id="startsignal">
 			<? foreach ($analog_startsignals as $signalabb => $signalname) : ?>
@@ -196,7 +196,7 @@ if ($_POST) {
 			><?=$signalname;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl">In nearly all cases, "Kewl Start" is the appropriate choice here.</span>
+			<br><span class="vexpl"><?=gettext("In nearly all cases, 'Kewl Start' is the appropriate choice here.");?></span>
 		</td>
 	</tr>
 	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
@@ -204,7 +204,7 @@ if ($_POST) {
 	<tr> 
 		<td width="20%" valign="top">&nbsp;</td>
 		<td width="80%">
-			<input name="Submit" type="submit" class="formbtn" value="Save">
+			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			<input name="unit" type="hidden" value="<?=$unit;?>">
 			<input name="type" type="hidden" value="<?=$type;?>">
 		</td>
@@ -212,9 +212,8 @@ if ($_POST) {
 	<tr> 
 		<td valign="top">&nbsp;</td>
 		<td>
-			<span class="vexpl"><span class="red"><strong>Warning:<br>
-			</strong></span>clicking &quot;Save&quot; will drop all current
-			calls.</span>
+			<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?><br>
+			</strong></span><?=gettext("clicking &quot;Save&quot; will drop all current calls.");?></span>
 		</td>
 	</tr>
 </table>
