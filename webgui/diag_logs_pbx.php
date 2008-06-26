@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Logs");
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
 
 if ($_POST['clear']) {
@@ -65,10 +65,10 @@ exec($command, $logarr);
 		<td class="tabnavtbl">
 			<ul id="tabnav"><?
 
-			$tabs = array('System' => 'diag_logs.php',
-							'PBX' => 'diag_logs_pbx.php',
-							'Calls' => 'diag_logs_calls.php',
-							'Settings' => 'diag_logs_settings.php');
+			$tabs = array(gettext('System') => 'diag_logs.php',
+					gettext('PBX') => 'diag_logs_pbx.php',
+					gettext('Calls') => 'diag_logs_calls.php',
+					gettext('Settings') => 'diag_logs_settings.php');
 			dynamic_tab_menu($tabs);
 
 			?></ul>
@@ -78,7 +78,7 @@ exec($command, $logarr);
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="2" class="listtopic">Last <?=$nentries;?> Asterisk log entries</td>
+					<td colspan="2" class="listtopic">Last <?=$nentries;?><?=gettext(" Asterisk log entries");?></td>
 				</tr><?
 
 			foreach ($logarr as $logent) {
@@ -94,7 +94,7 @@ exec($command, $logarr);
 		if ($source == "internal") {
 			?><br>
 			<form action="diag_logs_pbx.php" method="post">
-				<input name="clear" type="submit" class="formbtn" value="Clear Log">
+				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear Log");?>">
 			</form><?
 		}
 
