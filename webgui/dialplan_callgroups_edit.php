@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Dialplan", "Call Groups", "Edit");
+$pgtitle = array(gettext("Dialplan"), gettext("Call Groups"), gettext("Edit"));
 require("guiconfig.inc");
 
 if (!is_array($config['dialplan']['callgroup']))
@@ -68,7 +68,7 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", "Name");
+	$reqdfieldsn = explode(",", gettext("Name"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -120,17 +120,17 @@ if ($_POST) {
 	<form action="dialplan_callgroups_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Name</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td width="80%" colspan="2" class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl">Group name</span>
+					<br><span class="vexpl"><?=gettext("Group name");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncell">Extension</td>
+				<td valign="top" class="vncell"><?=gettext("Extension");?></td>
 				<td colspan="2" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">Internal extension used to reach this call group.</span>
+					<br><span class="vexpl"><?=gettext("Internal extension used to reach this call group.");?></span>
 				</td>
 			</tr>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
@@ -140,7 +140,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">
-					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_groupmember_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_groupmember_states()">
 					<input id="groupmembers" name="groupmembers" type="hidden" value="">
 					<?php if (isset($id) && $a_callgroups[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
