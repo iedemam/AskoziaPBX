@@ -28,25 +28,49 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+//GUI language selector function
+function display_gui_language_selector($current_language) {
+
+	$languages = array(
+		"en_US" => gettext("English"),
+		"fi_FI" => gettext("Finnish")
+	);
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell"><?=gettext("webGUI language");?></td>
+		<td width="80%" class="vtable">
+			<select name="lang" class="formfld" id="lang">
+			<? foreach ($languages as $lang => $langdesc) : ?>
+			<option value="<?=$lang;?>" <?
+			if ($lang == $current_language)
+				echo "selected"; ?>
+			><?=gettext($langdesc);?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl"><? echo gettext("Select in which language you want the webGUI to be displayed."); ?></span>
+		</td>
+	</tr><?
+}
+
 function display_audio_codec_selector($enabled_codecs) {
 	global $audio_codecs;
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Audio Codecs</td>
-		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>&nbsp;<i>(drag-and-drop)</i>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Audio Codecs");?></td>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
 			<ul id="ace" class="ace" style="min-height:50px">
 			<? foreach ($enabled_codecs as $codec): ?>
 				<? if (array_key_exists($codec, $audio_codecs)): ?>
-				<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
+				<li class="ace" id="ace_<?=$codec;?>"><?=gettext($audio_codecs[$codec]);?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
 		</td>
-		<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Disabled");?></strong>
 			<ul id="acd" class="acd" style="min-height:50px">
 			<? foreach ($audio_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
+				<li class="acd" id="acd_<?=$codec;?>"><?=gettext($friendly);?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
@@ -58,21 +82,21 @@ function display_video_codec_selector($enabled_codecs) {
 	global $video_codecs;
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Video Codecs</td>
-		<td width="40%" class="vtable" valign="top"><strong>Enabled</strong>&nbsp;<i>(drag-and-drop)</i>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Video Codecs");?></td>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
 			<ul id="vce" class="vce" style="min-height:50px">
 				<? foreach ($enabled_codecs as $codec): ?>
 					<? if (array_key_exists($codec, $video_codecs)): ?>
-					<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
+					<li class="vce" id="vce_<?=$codec;?>"><?=gettext($video_codecs[$codec]);?></li>
 					<? endif; ?>
 				<? endforeach; ?>
 			</ul>
 		</td>
-		<td width="40%" class="vtable" valign="top"><strong>Disabled</strong>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Disabled");?></strong>
 			<ul id="vcd" class="vcd" style="min-height:50px">
 			<? foreach ($video_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
+				<li class="vcd" id="vcd_<?=$codec;?>"><?=gettext($friendly);?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
@@ -99,8 +123,8 @@ function display_callgroup_member_selector($current_members) {
 	}
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Group Members</td>
-		<td width="40%" class="vtable" valign="top"><strong>Members</strong>&nbsp;<i>(drag-and-drop)</i>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Group Members");?></td>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Members");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
 			<ul id="gme" class="gme" style="min-height:50px"><? 
 			
 			foreach ($current_members as $member) {
@@ -111,7 +135,7 @@ function display_callgroup_member_selector($current_members) {
 			
 			?></ul>
 		</td>
-		<td width="40%" class="vtable" valign="top"><strong>Non-Members</strong>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Non-Members");?></strong>
 			<ul id="gmd" class="gmd" style="min-height:50px"><?
 			
 
@@ -127,8 +151,8 @@ function display_callgroup_member_selector($current_members) {
 	<tr>
 		<td width="20%" valign="top" class="vncell">&nbsp;</td>
 		<td width="40%" class="vtable" valign="top" colspan="2">
-			<span class="vexpl"><strong><span class="red">Note:</span></strong>
-			All group members will be called at the same time. <strong>The voicemail account associated with the first member will be used if the call is not answered.</strong></span>
+			<span class="vexpl"><strong><span class="red"><?=gettext("Note:");?></span></strong>
+			<?=gettext("All group members will be called at the same time. <strong>The voicemail account associated with the first member will be used if the call is not answered.");?></strong></span>
 		</td>
 	</tr><?	
 }
@@ -141,18 +165,18 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 	$add_params = $idprefix ? ",,\"$idprefix\"" : "";
 	
 	?><tr>
-		<td width="20%" valign="top" class="vncell">Incoming Extension(s)</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Incoming Extension(s)");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<table id="<?=$table_id;?>">
 				<tr id="<?=$row_id;?>">
 					<td>&nbsp;</td>
-					<td><img src="add.png" title="add incoming extension mapping" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
+					<td><img src="add.png" title="<?=gettext("add incoming extension mapping");?>" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
 				</tr>
 			</table><br><?
 			
 			// multiple instances don't need help for every instance
 			if (!$idprefix) {				
-				?><span class="vexpl"><?=$help[$help_language]["display_incoming_extension_selector"]; ?></span><?
+				?><span class="vexpl"><?=gettext($help[$help_language]["display_incoming_extension_selector"]); ?></span><?
 			}			
 
 		?></td>
@@ -164,7 +188,7 @@ function display_dtmfmode_selector($current_dtmfmode, $colspan) {
 	global $dtmfmodes;
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">DTMF Mode</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("DTMF Mode");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="dtmfmode" class="formfld" id="dtmfmode">
 			<? foreach ($dtmfmodes as $dtmfmode) : ?>
@@ -181,9 +205,9 @@ function display_dtmfmode_selector($current_dtmfmode, $colspan) {
 function display_registration_options($current_noregister, $colspan) {
 	
 	?><tr> 
-		<td valign="top" class="vncell">Registration</td>
+		<td valign="top" class="vncell"><?=gettext("Registration");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($current_noregister) echo "checked"; ?>>Do not register with this provider.
+			<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($current_noregister) echo "checked"; ?>><?=gettext("Do not register with this provider.");?>
 		</td>
 	</tr><?
 }
@@ -191,11 +215,10 @@ function display_registration_options($current_noregister, $colspan) {
 function display_qualify_options($current_qualify, $colspan) {
 	
 	?><tr> 
-		<td valign="top" class="vncell">Qualify</td>
+		<td valign="top" class="vncell"><?=gettext("Qualify");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($current_qualify);?>">&nbsp;seconds 
-            <br><span class="vexpl">Packets will be sent to this account every <i>n</i> seconds to check its status.
-			<br>Defaults to '2'. Set to '0' to disable.</span>
+			<input name="qualify" type="text" class="formfld" id="qualify" size="5" value="<?=htmlspecialchars($current_qualify);?>">&nbsp;<?=gettext("seconds");?> 
+            <br><span class="vexpl"><?=gettext("Packets will be sent to this account every <i>n</i> seconds to check its status.<br>Defaults to '2'. Set to '0' to disable.");?></span>
 		</td>
 	</tr><?
 }
@@ -205,10 +228,10 @@ function display_natmode_selector($current_natmode, $colspan) {
 	global $defaults;
 
 	$natmodes = array(
-		"yes" => "always use NAT mode.",
-		"no" => "only use NAT mode according to RFC3581 (rport)",
-		"never" => "never attempt NAT mode or RFC3581 support",
-		"route" => "assume NAT mode but don't send rport "
+		"yes" => gettext("always use NAT mode."),
+		"no" => gettext("only use NAT mode according to RFC3581 (rport)"),
+		"never" => gettext("never attempt NAT mode or RFC3581 support"),
+		"route" => gettext("assume NAT mode but don't send rport ")
 	);
 
 	if (!$current_natmode) {
@@ -216,17 +239,17 @@ function display_natmode_selector($current_natmode, $colspan) {
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">NAT</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("NAT");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="natmode" class="formfld" id="natmode">
 			<? foreach ($natmodes as $natmode => $natdesc) : ?>
 			<option value="<?=$natmode;?>" <?
 			if ($natmode == $current_natmode)
 				echo "selected"; ?>
-			><?=$natmode;?>&nbsp;-&nbsp;<?=$natdesc;?></option>
+			><?=$natmode;?>&nbsp;-&nbsp;<?=gettext($natdesc);?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl">Is there a NATing device between AskoziaPBX and this account? Setting this to "yes" will work in most cases. The options "never" and "route" are only rarely used for certain buggy SIP phones.</span>
+			<br><span class="vexpl"><?=gettext("Is there a NATing device between AskoziaPBX and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones.");?></span>
 		</td>
 	</tr><?
 }
@@ -237,7 +260,7 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 	$ringlengths = array(
 		"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60",
 		"70", "80", "90", "100", "110", "120", "150", "180",
-		"indefinitely"
+		gettext("indefinitely")
 	);
 
 	if (!$current_ringlength) {
@@ -245,7 +268,7 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Ring Length</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Ring Length");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="ringlength" class="formfld" id="ringlength">
 			<? foreach ($ringlengths as $ringlength) : ?>
@@ -255,7 +278,7 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 			><?=$ringlength;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl">The number of seconds this phone will ring before being reported as unanswered.</span>
+			<br><span class="vexpl"><?=gettext("The number of seconds this phone will ring before being reported as unanswered.");?></span>
 		</td>
 	</tr><?
 }
@@ -275,7 +298,7 @@ function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Line Gain</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Line Gain");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="rxgain" class="formfld" id="rxgain">
 			<? for ($i = $mingain; $i <= $maxgain; $i += $stepping) : ?>
@@ -285,7 +308,7 @@ function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan
 				echo "selected"; ?>
 			><?=sprintf("%0.1f\n", $i);?></option>
 			<? endfor; ?>
-			</select>&nbsp;receive
+			</select>&nbsp;<?=gettext("receive");?>
 			&nbsp;&nbsp;
 			<select name="txgain" class="formfld" id="txgain">
 			<? for ($i = $mingain; $i <= $maxgain; $i += $stepping) : ?>
@@ -296,7 +319,7 @@ function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan
 			><?=sprintf("%0.1f\n", $i);?></option>
 			<? endfor; ?>
 			</select>&nbsp;transmit
-			<br><span class="vexpl">Some analog connections may need adjustment to achieve an acceptable audio level. Adjust the receive and transmit gain in decibels to amplify or quiet the line.</span>
+			<br><span class="vexpl"><?=gettext("Some analog connections may need adjustment to achieve an acceptable audio level. Adjust the receive and transmit gain in decibels to amplify or quiet the line.");?></span>
 		</td>
 	</tr><?
 }
@@ -304,12 +327,12 @@ function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan
 function display_incoming_callerid_override_options($current_override, $current_overridestring, $colspan) {
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Incoming Caller ID Overrides</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Incoming Caller ID Overrides");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<input name="overridestring" type="text" class="formfld" id="overridestring" size="40" value="<?=htmlspecialchars($current_overridestring);?>">&nbsp;<i>Source Name &lt;number&gt;</i><br>
-			<input name="override" type="radio" value="prepend" <?php if ($current_override == "prepend") echo "checked"; ?>> Prepend with string&nbsp;<input name="override" type="radio" value="replace" <?php if ($current_override == "replace") echo "checked"; ?>> Replace with string<br>
-			<input name="override" type="radio" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> Replace calling name with calling number.<br>
-			<input name="override" type="radio" value="disable" <?php if (!$current_override) echo "checked"; ?>> Disable overrides
+			<input name="overridestring" type="text" class="formfld" id="overridestring" size="40" value="<?=htmlspecialchars($current_overridestring);?>">&nbsp;<i><?=gettext("Source Name &lt;number&gt;");?></i><br>
+			<input name="override" type="radio" value="prepend" <?php if ($current_override == "prepend") echo "checked"; ?>> <?=gettext("Prepend with string");?>&nbsp;<input name="override" type="radio" value="replace" <?php if ($current_override == "replace") echo "checked"; ?>> <?=gettext("Replace with string");?><br>
+			<input name="override" type="radio" value="replacenamewithnum" <?php if ($current_override == "replacenamewithnum") echo "checked"; ?>> <?=gettext("Replace calling name with calling number.");?><br>
+			<input name="override" type="radio" value="disable" <?php if (!$current_override) echo "checked"; ?>> <?=gettext("Disable overrides");?>
 		</td>
 	</tr><?
 }
@@ -317,10 +340,10 @@ function display_incoming_callerid_override_options($current_override, $current_
 function display_outgoing_callerid_options($current_callerid_source, $current_callerid_string, $colspan) {
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Outgoing Caller ID</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Outgoing Caller ID");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<input name="calleridstring" type="text" class="formfld" id="calleridstring" size="40" value="<?=htmlspecialchars($current_callerid_string);?>">&nbsp;<i>Your Name &lt;number&gt;</i><br>
-			<input name="calleridsource" type="radio" value="string" <?php if ($current_callerid_source == "string") echo "checked"; ?>> Send string defined above&nbsp;<input name="calleridsource" type="radio" value="phones" <?php if ($current_callerid_source == "phones" || !$current_callerid_source) echo "checked"; ?>> Send phones' Caller ID
+			<input name="calleridstring" type="text" class="formfld" id="calleridstring" size="40" value="<?=htmlspecialchars($current_callerid_string);?>">&nbsp;<i><?=gettext("Your Name &lt;number&gt;");?></i><br>
+			<input name="calleridsource" type="radio" value="string" <?php if ($current_callerid_source == "string") echo "checked"; ?>> <?=gettext("Send string defined above&nbsp;");?><input name="calleridsource" type="radio" value="phones" <?php if ($current_callerid_source == "phones" || !$current_callerid_source) echo "checked"; ?>> <?=gettext("Send phones' Caller ID");?>
 		</td>
 	</tr><?
 }
@@ -330,12 +353,12 @@ function display_provider_access_selector($current_providers, $current_outboundu
 	$a_providers = pbx_get_providers();
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Providers</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Providers");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
 		
 		$n = count($a_providers);
 		if ($n == 0) {
-			?><span class="vexpl"><i>There are currently no providers defined.</i></span><br><?
+			?><span class="vexpl"><i><?=gettext("There are currently no providers defined.");?></i></span><br><?
 
 		} else {
 			for($i = 0; $i < $n; $i++) {
@@ -349,10 +372,10 @@ function display_provider_access_selector($current_providers, $current_outboundu
 
 		?><input name="outbounduridial" id="outbounduridial" type="checkbox" value="yes" <? 
 		if ($current_outbounduridial) echo "checked"; 
-		?>>direct outbound dialing via SIP uris<br><?
+		?>><?=gettext("direct outbound dialing via SIP uris");?><br><?
 
 		?><br>
-		<span class="vexpl">Checked providers will be accessible from this phone.</span>
+		<span class="vexpl"><?=gettext("Checked providers will be accessible from this phone.");?></span>
 		</td>
 	</tr><?
 }
@@ -363,12 +386,12 @@ function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=fal
 	$a_phones = pbx_get_phones();
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Phones</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Phones");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
 		
 		$n = count($a_phones);
 		if ($n == 0) {
-			?><span class="vexpl"><i>There are currently no phones defined.</i></span><br><?
+			?><span class="vexpl"><i><?=gettext("There are currently no phones defined.");?></i></span><br><?
 
 		} else {
 			for($i = 0; $i < $n; $i++) {
@@ -390,7 +413,7 @@ function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=fal
 		
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=$help[$help_language]["display_phone_access_selector"]; ?></span><?
+			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_phone_access_selector"]); ?></span><?
 		}
 		
 		?></td>
@@ -406,7 +429,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 	}
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Dialing Pattern(s)</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Dialing Pattern(s)");?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
 
 		// multiple instances need a prefixing identifier
@@ -429,7 +452,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 			
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=$help[$help_language]["display_provider_dialpattern_editor"]; ?></span><?
+			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_provider_dialpattern_editor"]); ?></span><?
 		}
 		
 		?></td>
@@ -440,17 +463,17 @@ function display_channel_language_selector($current_language, $colspan) {
 	global $prompt_languages;
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Language</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Language");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="language" class="formfld" id="language">
 			<? foreach($prompt_languages as $prompt_language=>$friendly) : ?>
 			<option value="<?=$prompt_language;?>" <?
 			if ($prompt_language == $current_language)
 				echo "selected"; ?>
-			><?=$friendly;?></option>
+			><?=gettext($friendly);?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl">Audio prompts will be played back in the selected language for this account.</span>
+			<br><span class="vexpl"><?=gettext("Audio prompts will be played back in the selected language for this account.");?></span>
 		</td>
 	</tr><?
 }
@@ -458,7 +481,7 @@ function display_channel_language_selector($current_language, $colspan) {
 function display_call_notifications_editor($current_voicemailbox, $current_sendcallnotifications, $current_novmwhenbusy, $colspan) {
 	
 	?><tr> 
-		<td valign="top" class="vncell">Voicemail</td>
+		<td valign="top" class="vncell"><?=gettext("Voicemail");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
 			<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($current_voicemailbox);?>">
 			<br><input name="sendcallnotifications" id="sendcallnotifications" type="checkbox" value="yes"<?
@@ -467,16 +490,16 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 				echo "checked";
 			}
 
-			?>>&nbsp;send missed call notifications<br>
+			?>>&nbsp;<?=gettext("send missed call notifications");?><br>
 			<input name="novmwhenbusy" id="novmwhenbusy" type="checkbox" value="yes"<?
             
 			if ($current_novmwhenbusy) {
 				echo "checked";
 			}
             
-			?>>&nbsp;don't send to voicemail when busy<br>
-			<br><span class="vexpl">An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.
-			<br><span class="red"><strong>Note:</strong></span> Voicemail Services <a href="/services_voicemail.php">must be configured</a> before this feature will work.</span>
+			?>>&nbsp;<?=gettext("don't send to voicemail when busy");?><br>
+			<br><span class="vexpl"><?=gettext("An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.");?>
+			<br><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("Voicemail Services");?> <a href="/services_voicemail.php"><?=gettext("must be configured</a> before this feature will work.");?></span>
 		</td>
 	</tr><?
 }
@@ -487,7 +510,7 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 	$fullhostname = $config['system']['hostname'] . "." . $config['system']['domain'];
 
 	?><tr> 
-		<td valign="top" class="vncell">Public Direct Dial</td>
+		<td valign="top" class="vncell"><?=gettext("Public Direct Dial");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
 			<input name="allowdirectdial" id="allowdirectdial" type="checkbox" value="yes" <?
 			
@@ -495,13 +518,13 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 				echo "checked";
 			}
 
-			?>>&nbsp;allow extension to be directly dialed over public networks
+			?>>&nbsp;<?=gettext("allow extension to be directly dialed over public networks");?>
 			<br><span name="publicname_wrapper" id="publicname_wrapper" style="display: none">
 			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
-			<br><span class="vexpl">Public name. Enter a string to map a friendly name to this extension.</span>
+			<br><span class="vexpl"><?=gettext("Public name. Enter a string to map a friendly name to this extension.");?></span>
 			<br>
 			</span>
-			<br><span class="vexpl">Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@<?=$fullhostname;?>)</span>
+			<br><span class="vexpl"><?=sprintf(gettext("Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@%s)"), $fullhostname);?></span>
 		</td>
 	</tr><?
 }
@@ -509,17 +532,17 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 function display_call_and_busy_limit_selector($current_calllimit, $current_busylimit, $colspan) {
 	
 	?><tr> 
-		<td valign="top" class="vncell">Call Limit</td>
+		<td valign="top" class="vncell"><?=gettext("Call Limit");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="calllimit" type="text" class="formfld" id="calllimit" size="5" value="<?=htmlspecialchars($current_calllimit);?>">&nbsp;calls 
-            <br><span class="vexpl">Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)</span>
+			<input name="calllimit" type="text" class="formfld" id="calllimit" size="5" value="<?=htmlspecialchars($current_calllimit);?>">&nbsp;<?=gettext("calls");?> 
+            <br><span class="vexpl"><?=gettext("Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)");?></span>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Busy Limit</td>
+		<td valign="top" class="vncell"><?=gettext("Busy Limit");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="busylimit" type="text" class="formfld" id="busylimit" size="5" value="<?=htmlspecialchars($current_busylimit);?>">&nbsp;calls 
-            <br><span class="vexpl">Phone status will be switched to 'busy' with 'n' concurrent calls (default: 1)</span>
+			<input name="busylimit" type="text" class="formfld" id="busylimit" size="5" value="<?=htmlspecialchars($current_busylimit);?>">&nbsp;<?=gettext("calls");?> 
+            <br><span class="vexpl"><?=gettext("Phone status will be switched to 'busy' with 'n' concurrent calls (default: 1)");?></span>
 		</td>
 	</tr><?
 }
@@ -533,7 +556,7 @@ function display_application_logic_editor($current_appcommands, $colspan, $idpre
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncellreq">Logic</td>
+		<td width="20%" valign="top" class="vncellreq"><?=gettext("Logic");?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
 
 		// multiple instances need a prefixing identifier
@@ -556,7 +579,7 @@ function display_application_logic_editor($current_appcommands, $colspan, $idpre
 
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=$help[$help_language]["display_application_logic_editor"]; ?></span><?
+			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_application_logic_editor"]); ?></span><?
 		}
 
 		?></td>
@@ -569,7 +592,7 @@ function display_advanced_settings_begin($colspan) {
 			<td class="list" colspan="<?=$colspan + 1;?>" height="12">&nbsp;</td>
 		</tr>
 		<tr>
-			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header">Advanced Settings (<a href="javascript:{}" id="advanced-settings-opener" style="color: #000000; text-decoration: none">show</a>)</td>
+			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header"><?=gettext("Advanced Settings");?> (<a href="javascript:{}" id="advanced-settings-opener" style="color: #000000; text-decoration: none"><?=gettext("show");?></a>)</td>
 		</tr>
 	</table>
 	<div id="advanced-settings-container" style="display: none">
@@ -595,7 +618,7 @@ function display_manual_attributes_editor($current_manual, $colspan, $idprefix=f
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Manual Attributes</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Manual Attributes");?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
 
 		// multiple instances need a prefixing identifier
@@ -618,7 +641,7 @@ function display_manual_attributes_editor($current_manual, $colspan, $idprefix=f
 
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=$help[$help_language]["display_manual_attributes_editor"]; ?></span><?
+			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_manual_attributes_editor"]); ?></span><?
 		}
 
 		?></td>
@@ -628,10 +651,10 @@ function display_manual_attributes_editor($current_manual, $colspan, $idprefix=f
 function display_caller_id_field($current_callerid, $colspan) {
 
 	?><tr> 
-		<td valign="top" class="vncellreq">Caller ID</td>
+		<td valign="top" class="vncellreq"><?=gettext("Caller ID");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
 			<input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($current_callerid);?>"> 
-			<br><span class="vexpl">Text to be displayed for Caller ID.</span>
+			<br><span class="vexpl"><?=gettext("Text to be displayed for Caller ID.");?></span>
 		</td>
 	</tr><?
 }
@@ -639,11 +662,10 @@ function display_caller_id_field($current_callerid, $colspan) {
 function display_description_field($current_description, $colspan) {
 
 	?><tr> 
-		<td valign="top" class="vncell">Description</td>
+		<td valign="top" class="vncell"><?=gettext("Description");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
 			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($current_description);?>"> 
-			<br><span class="vexpl">You may enter a description here 
-			for your reference (not parsed).</span>
+			<br><span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span>
 		</td>
 	</tr><?
 }
@@ -651,10 +673,10 @@ function display_description_field($current_description, $colspan) {
 function display_readback_number_field($current_readbacknumber, $colspan) {
 
 	?><tr> 
-		<td valign="top" class="vncell">Readback Number</td>
+		<td valign="top" class="vncell"><?=gettext("Readback Number");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
 			<input name="readbacknumber" type="text" class="formfld" id="readbacknumber" size="40" value="<?=htmlspecialchars($current_readbacknumber);?>"> 
-			<br><span class="vexpl">This "external" number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back.</span>
+			<br><span class="vexpl"><?=gettext("This "external" number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back.");?></span>
 		</td>
 	</tr><?
 }
@@ -663,13 +685,13 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 	global $defaults;
 
 	$authtypes = array(
-		"auto",
-		"plain",
-		"login",
-		"cram-md5",
+		gettext("auto"),
+		gettext("plain"),
+		gettext("login"),
+		gettext("cram-md5"),
 		//"digest-md5", (needs gnu sasl)
 		//"gssapi", (needs gnu sasl)
-		"external"
+		gettext("external")
 		//"ntlm" (needs gnu sasl)
 	);
 
@@ -678,7 +700,7 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell">Authentication Method</td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Authentication Method");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="authtype" class="formfld" id="authtype">
 			<? foreach ($authtypes as $authtype) : ?>
@@ -688,7 +710,7 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 			><?=$authtype;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl">Most accounts will work using "auto." If this fails, select an authentication method appropriate for your server.</span>
+			<br><span class="vexpl"><?=gettext("Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server.");?></span>
 		</td>
 	</tr><?
 }
@@ -696,7 +718,7 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 function display_capacity_bar($sizeinbytes, $usage) {
 
 	?><img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'><img src='bar_blue.gif' height='15' width='<?=$usage;?>' border='0' align='absmiddle'><img src='bar_gray.gif' height='15' width='<?=100-$usage;?>' border='0' align='absmiddle'><img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'>
-	<br><?=$usage;?>% of <?=format_bytes($sizeinbytes);?><?
+	<br><?=$usage;?><?=gettext("% of ");?><?=format_bytes($sizeinbytes);?><?
 }
 
 function display_peer_status_icon($status) {
