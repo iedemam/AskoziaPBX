@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Manager Interface");
+$pgtitle = array(gettext("Diagnostics"), gettext("Manager Interface"));
 require("guiconfig.inc");
 
 include("fbegin.inc"); ?>
@@ -63,13 +63,13 @@ include("fbegin.inc"); ?>
 
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td width="20%" valign="top" class="vncellreq">Command</td>
+		<td width="20%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
 		<td width="80%" class="vtable">
 			<input name="command" id="command" class="formfld" type="text" size="60">
 		</td>
 	</tr>
 	<tr> 
-		<td width="20%" class="vncellreq" valign="top">Output</td>
+		<td width="20%" class="vncellreq" valign="top"><?=gettext("Output");?></td>
 		<td width="80%" class="listr">
 			<div id="contents_wrapper">
 				<textarea wrap="nowrap" name="contents" cols="80" rows="21" id="contents" class="pre"></textarea>
