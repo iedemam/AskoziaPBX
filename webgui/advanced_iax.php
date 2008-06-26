@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Advanced", "IAX");
+$pgtitle = array(gettext("Advanced"), gettext("IAX"));
 require("guiconfig.inc");
 
 $iaxconfig = &$config['services']['iax'];
@@ -47,13 +47,13 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "port");
-	$reqdfieldsn = explode(",", "Port");
+	$reqdfieldsn = explode(",", gettext("Port"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid port
 	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
-		$input_errors[] = "A valid port must be specified.";
+		$input_errors[] = gettext("A valid port must be specified.");
 	}
 	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
 		$input_errors[] = $msg;
@@ -110,10 +110,10 @@ function jb_enable_click() {
 <form action="advanced_iax.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
-			<td valign="top" colspan="2" class="listtopic">General</td>
+			<td valign="top" colspan="2" class="listtopic"><?=gettext("General");?></td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" class="vncell">Binding Port</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Binding Port");?></td>
 			<td width="80%" class="vtable">
 				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
 			</td>
@@ -123,24 +123,24 @@ function jb_enable_click() {
 			<td class="list" colspan="2" height="12">&nbsp;</td>
 		</tr>
 		<tr> 
-			<td valign="top" colspan="2" class="listtopic">Jitterbuffer</td>
+			<td valign="top" colspan="2" class="listtopic"><?=gettext("Jitterbuffer");?></td>
 		</tr>
 		<tr> 
 			<td valign="top" class="vncell">Enable</td>
 			<td class="vtable">
-				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>>Enable Jitterbuffer on IAX connections terminated by AskoziaPBX.
+				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>><?=gettext("Enable Jitterbuffer on IAX connections terminated by AskoziaPBX.");?>
 			</td>
 		</tr>
 		<tr> 
-			<td valign="top" class="vncell">Force</td>
+			<td valign="top" class="vncell"><?=gettext("Force");?></td>
 			<td class="vtable">
-				<input name="jbforce" id="jbforce" type="checkbox" value="yes" <? if ($pconfig['jbforce']) echo "checked"; ?>>Use Jitterbuffer even when bridging two endpoints.
+				<input name="jbforce" id="jbforce" type="checkbox" value="yes" <? if ($pconfig['jbforce']) echo "checked"; ?>><?=gettext("Use Jitterbuffer even when bridging two endpoints.");?>
 			</td>
 		</tr>
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>
-				<input name="Submit" type="submit" class="formbtn" value="Save">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			</td>
 		</tr>
 	</table>
