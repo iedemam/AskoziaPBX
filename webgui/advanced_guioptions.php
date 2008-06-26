@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Advanced", "GUI Options");
+$pgtitle = array(gettext("Advanced"), gettext("GUI Options"));
 require("guiconfig.inc");
 
 
@@ -57,12 +57,12 @@ if ($_POST) {
 
 	/* input validation */
 	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
-		$input_errors[] = "Certificate and key must always be specified together.";
+		$input_errors[] = gettext("Certificate and key must always be specified together.");
 	} else if ($_POST['cert'] && $_POST['key']) {
 		if (!strstr($_POST['cert'], "BEGIN CERTIFICATE") || !strstr($_POST['cert'], "END CERTIFICATE"))
-			$input_errors[] = "This certificate does not appear to be valid.";
+			$input_errors[] = gettext("This certificate does not appear to be valid.");
 		if (!strstr($_POST['key'], "BEGIN RSA PRIVATE KEY") || !strstr($_POST['key'], "END RSA PRIVATE KEY"))
-			$input_errors[] = "This key does not appear to be valid.";
+			$input_errors[] = gettext("This key does not appear to be valid.");
 	}
 
 	if (!$input_errors) {
@@ -129,89 +129,89 @@ function enable_change(enable_over) {
             <form action="advanced_guioptions.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic">webGUI SSL certificate/key</td>
+                  <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate/key");?></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Certificate</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>
                   <td width="78%" class="vtable"> 
                     <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea>
                     <br> 
-                    Paste a signed certificate in X.509 PEM format here.</td>
+                    <?=gettext("Paste a signed certificate in X.509 PEM format here.");?></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncell">Key</td>
                   <td width="78%" class="vtable"> 
                     <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
                     <br> 
-                    Paste an RSA private key in PEM format here.</td>
+                    <?=gettext("Paste an RSA private key in PEM format here.");?></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save" onclick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
                   </td>
                 </tr>
                 <tr> 
                   <td colspan="2" class="list" height="12"></td>
                 </tr>
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic">Miscellaneous</td>
+                  <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>
                 </tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell">Console menu </td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Console menu");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked"; ?>>
-                    <strong>Disable console menu</strong><span class="vexpl"><br>
-                    Changes to this option will take effect after a reboot.</span></td>
+                    <strong><?=gettext("Disable console menu");?></strong><span class="vexpl"><br>
+                    <?=gettext("Changes to this option will take effect after a reboot.");?></span></td>
                 </tr>
 				<tr>
-                  <td valign="top" class="vncell">Firmware version check </td>
+                  <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
                   <td class="vtable">
                     <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
-                    <strong>Disable firmware version check</strong><span class="vexpl"><br>
-    This will cause AskoziaPBX not to check for newer firmware versions when the <a href="system_firmware.php">System: Firmware</a> page is viewed.</span></td>
+                    <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br>
+    <?=gettext("This will cause AskoziaPBX not to check for newer firmware versions when the ");?><a href="system_firmware.php"><?=gettext("System: Firmware</a> page is viewed.");?></span></td>
 			    </tr>
 <?php if ($g['platform'] == "generic-pc"): ?>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell">Hard disk standby time </td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time ");?></td>
                   <td width="78%" class="vtable"> 
                     <select name="harddiskstandby" class="formfld">
 					<?php $sbvals = array(1,2,3,4,5,10,15,20,30,60); ?>
-                      <option value="" <?php if(!$pconfig['harddiskstandby']) echo('selected');?>>Always on</option>
+                      <option value="" <?php if(!$pconfig['harddiskstandby']) echo('selected');?>><?=gettext("Always on");?></option>
 					<?php foreach ($sbvals as $sbval): ?>
-                      <option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=$sbval;?> minutes</option>
+                      <option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=$sbval;?><?=gettext(" minutes");?></option>
 					<?php endforeach; ?>
                     </select>
                     <br>
-                    Puts the hard disk into standby mode when the selected amount of time after the last
-                    access has elapsed. <em>Do not set this for CF cards.</em></td>
+                    <?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last
+                    access has elapsed. <em>Do not set this for CF cards.");?></em></td>
 				</tr>
 <?php endif; ?>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell">Navigation</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
-                    <strong>Keep diagnostics in navigation expanded</strong>
+                    <strong><?=gettext("Keep diagnostics in navigation expanded");?></strong>
 					<br>
 					<input name="expandadvanced" type="checkbox" id="expandadvanced" value="yes" <?php if ($pconfig['expandadvanced']) echo "checked"; ?>>
-					<strong>Keep advanced options in navigation expanded</strong>
+					<strong><?=gettext("Keep advanced options in navigation expanded");?></strong>
 					<br>
 					<input name="hidesip" type="checkbox" id="hidesip" value="yes" <?php if ($pconfig['hidesip']) echo "checked"; ?>>
-					<strong>Hide SIP related options</strong>
+					<strong><?=gettext("Hide SIP related options");?></strong>
 					<br>
 					<input name="hideiax" type="checkbox" id="hideiax" value="yes" <?php if ($pconfig['hideiax']) echo "checked"; ?>>
-					<strong>Hide IAX related options</strong>
+					<strong><?=gettext("Hide IAX related options");?></strong>
 					<br>
 					<input name="hideisdn" type="checkbox" id="hideisdn" value="yes" <?php if ($pconfig['hideisdn']) echo "checked"; ?>>
-					<strong>Hide ISDN related options</strong>
+					<strong><?=gettext("Hide ISDN related options");?></strong>
 					<br>
 					<input name="hideanalog" type="checkbox" id="hideanalog" value="yes" <?php if ($pconfig['hideanalog']) echo "checked"; ?>>
-					<strong>Hide Analog related options</strong></td>
+					<strong><?=gettext("Hide Analog related options");?></strong></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save" onclick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
                   </td>
                 </tr>
               </table>
