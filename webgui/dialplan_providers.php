@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Dialplan", "Providers");
+$pgtitle = array(gettext("Dialplan"), gettext("Providers"));
 require("guiconfig.inc");
 
 
@@ -57,8 +57,7 @@ if ($_POST) {
 	if (is_array($incomingextensionmap)) {
 		foreach($incomingextensionmap as $map) {
 			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
-				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" for \"" .
-					pbx_uniqid_to_name($key_split[0]) . "\"is invalid. $internal_error";
+				$input_errors[] = sprintf(gettext("The incoming extension pattern \"%s\" for \" %s \" is invalid. %s"),$map['incomingpattern'], pbx_uniqid_to_name($key_split[0]), $internal_error);
 			}
 		}
 	}
@@ -87,12 +86,10 @@ if ($_POST) {
 
 			foreach($dialpatterns as $pattern) {
 				if (!pbx_is_valid_dialpattern($pattern, &$internal_error)) {
-					$input_errors[] = "An invalid dial-pattern ($pattern) was found for \"" .
-					 	pbx_uniqid_to_name($key_split[0]) . "\". $internal_error";
+					$input_errors[] = sprintf(gettext("An invalid dial-pattern (%s) was found for \"%s\". %s"), $pattern, pbx_uniqid_to_name($key_split[0]), $internal_error);
 				}
 				if (pbx_dialpattern_exists($p, &$return_provider_name, $key_split[0])) {
-					$input_errors[] = "The dial-pattern \"$p\" defined for \"".
-						pbx_uniqid_to_name($key_split[0]) . "\" already exists for \"$return_provider_name\".";
+					$input_errors[] = sprintf(gettext("The dial-pattern \"%s\" defined for \"%s\" already exists for \"%s\"."), $p, pbx_uniqid_to_name($key_split[0]), $return_provider_name);
 				}
 			}
 			
@@ -180,7 +177,7 @@ if ($savemsg)
 		if (!is_array($a_providers)) {
 			
 			?><tr> 
-				<td><strong>There are currently no providers defined.</strong></td>
+				<td><strong><?=gettext("There are currently no providers defined.");?></strong></td>
 			</tr><?
 			
 		} else {
@@ -190,9 +187,9 @@ if ($savemsg)
 					<td colspan="2" valign="top" class="listtopic">
 						<?=$provider['name']?>
 						<? if (strpos($provider['uniqid'], "ISDN") !== false): ?>
-						(ISDN)
+						<?=gettext("(ISDN)");?>
 						<? elseif (strpos($provider['uniqid'], "ANALOG") !== false): ?>
-						(Analog)
+						<?=gettext("(Analog)");?>
 						<? else: ?>
 						(<?=$provider['username']?>@<?=$provider['host']?>)
 						<? endif; ?>
@@ -208,30 +205,30 @@ if ($savemsg)
 			}
 
 			?><tr>
-				<td colspan="2" valign="top" class="listhelptopic">Help</td>
+				<td colspan="2" valign="top" class="listhelptopic"><?=gettext("Help");?></td>
 			</tr>
 			<tr>
-				<td width="20%" valign="top" class="vncell">Dialing Pattern(s)</td>
+				<td width="20%" valign="top" class="vncell"><?=gettext("Dialing Pattern(s)");?></td>
 				<td width="80%" class="vtable">
-					<span class="vexpl"><?=$help[$help_language]["display_provider_dialpattern_editor"]; ?></span>
+					<span class="vexpl"><?=gettext($help[$help_language]["display_provider_dialpattern_editor"]); ?></span>
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" valign="top" class="vncell">Incoming Extension</td>
+				<td width="20%" valign="top" class="vncell"><?=gettext("Incoming Extension");?></td>
 				<td width="80%" class="vtable">
-					<span class="vexpl"><?=$help[$help_language]["display_incoming_extension_selector"]; ?></span>
+					<span class="vexpl"><?=gettext($help[$help_language]["display_incoming_extension_selector"]); ?></span>
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" valign="top" class="vncell">Phones</td>
+				<td width="20%" valign="top" class="vncell"><?=gettext("Phones");?></td>
 				<td width="80%" class="vtable">
-					<span class="vexpl"><?=$help[$help_language]["display_phone_access_selector"]; ?></span>
+					<span class="vexpl"><?=gettext($help[$help_language]["display_phone_access_selector"]); ?></span>
 				</td>
 			</tr>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 				</td>
 			</tr><?
 		}
