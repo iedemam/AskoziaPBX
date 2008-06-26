@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Dialplan", "Applications");
+$pgtitle = array(gettext("Dialplan"), gettext("Applications"));
 require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...
@@ -76,9 +76,9 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="25%" class="listhdrr">Name</td>
-		<td width="50%" class="listhdrr">Description</td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="50%" class="listhdrr"><?=gettext("Description");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 	
@@ -88,14 +88,14 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td class="listlr"><?=htmlspecialchars($app['extension']);?></td>
 		<td class="listbg"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($app['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit application mapping" border="0"></a>
-			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this application mapping?')"><img src="delete.png" title="delete application mapping" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit application mapping");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this application mapping?");?>')"><img src="delete.png" title="<?=gettext("delete application mapping");?>" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="3"></td>
-		<td class="list"><a href="dialplan_applications_edit.php"><img src="add.png" title="add application mapping" border="0"></a></td>
+		<td class="list"><a href="dialplan_applications_edit.php"><img src="add.png" title="<?=gettext("add application mapping");?>" border="0"></a></td>
 	</tr>
 </table>
 </form>
