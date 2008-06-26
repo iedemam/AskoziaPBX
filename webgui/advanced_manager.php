@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Advanced", "Manager Interface");
+$pgtitle = array(gettext("Advanced"), gettext("Manager Interface"));
 require("guiconfig.inc");
 
 
@@ -69,8 +69,8 @@ if (file_exists($d_managerconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="20%" class="listhdrr">Username</td>
-		<td width="70%" class="listhdrr">Permissions</td>
+		<td width="20%" class="listhdrr"><?=gettext("Username");?></td>
+		<td width="70%" class="listhdrr"><?=gettext("Permissions");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -83,26 +83,26 @@ if (file_exists($d_managerconfdirty_path)) {
 
 			if (is_array($user['read-permission'])) {
 				sort($user['read-permission']);
-				?><strong>read:&nbsp;</strong>&nbsp;<?
+				?><strong><?=gettext("read:");?>&nbsp;</strong>&nbsp;<?
 				echo htmlspecialchars(implode(", ", $user['read-permission']));
 				echo "<br>";
 			}
 			if (is_array($user['write-permission'])) {
 				sort($user['write-permission']);
-				?><strong>write:&nbsp;</strong>&nbsp;<?
+				?><strong><?=gettext("write:");?>&nbsp;</strong>&nbsp;<?
 				echo htmlspecialchars(implode(", ", $user['write-permission']));
 			}
 
 		?></td>
-		<td valign="middle" nowrap class="list"><a href="advanced_manager_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit manager room" border="0"></a>
-           <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this manager user?')"><img src="delete.png" title="delete manager user" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="advanced_manager_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit manager room");?>" border="0"></a>
+           <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this manager user?");?>')"><img src="delete.png" title="<?=gettext("delete manager user");?>" border="0"></a>
 		</td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="2"></td>
-		<td class="list"><a href="advanced_manager_edit.php"><img src="add.png" title="add manager user" border="0"></a></td>
+		<td class="list"><a href="advanced_manager_edit.php"><img src="add.png" title="<?=gettext("add manager user");?>" border="0"></a></td>
 	</tr>
 </table>
 </form>
