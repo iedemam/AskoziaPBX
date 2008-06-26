@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Logs");
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
 
 $pconfig['reverse'] = isset($config['syslog']['reverse']);
@@ -50,10 +50,10 @@ if ($_POST) {
 
 	/* input validation */
 	if ($_POST['enable'] && !verify_is_ipaddress($_POST['remoteserver'])) {
-		$input_errors[] = "A valid IP address must be specified.";
+		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 	if (($_POST['nentries'] < 5) || ($_POST['nentries'] > 1000)) {
-		$input_errors[] = "Number of log entries to show must be between 5 and 1000.";
+		$input_errors[] = gettext("Number of log entries to show must be between 5 and 1000.");
 	}
 
 	if (!$input_errors) {
@@ -105,10 +105,10 @@ function enable_change(enable_over) {
 		<td class="tabnavtbl">
 			<ul id="tabnav"><?php 
 
-	$tabs = array('System' => 'diag_logs.php',
-					'PBX' => 'diag_logs_pbx.php',
-					'Calls' => 'diag_logs_calls.php',
-					'Settings' => 'diag_logs_settings.php');
+	$tabs = array(gettext('System') => 'diag_logs.php',
+			gettext('PBX') => 'diag_logs_pbx.php',
+			gettext('Calls') => 'diag_logs_calls.php',
+			gettext('Settings') => 'diag_logs_settings.php');
 	dynamic_tab_menu($tabs);
 	
 			?></ul>
@@ -121,14 +121,13 @@ function enable_change(enable_over) {
 					<td width="22%" valign="top" class="vtable">&nbsp;</td>
 					<td width="78%" class="vtable">
 						<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
-						<strong>Show log entries in reverse order (newest entries 
-						on top)</strong>
+						<strong><?=gettext("Show log entries in reverse order (newest entries on top)");?></strong>
 					</td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top" class="vtable">&nbsp;</td>
 					<td width="78%" class="vtable">
-						Number of log entries to show: 
+						<?=gettext("Number of log entries to show:");?> 
 						<input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>">
 					</td>
 				</tr>
@@ -136,38 +135,36 @@ function enable_change(enable_over) {
 					<td width="22%" valign="top" class="vtable">&nbsp;</td>
 					<td width="78%" class="vtable">
 						<input name="enable" type="checkbox" id="enable" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)">
-						<strong>Enable syslog'ing to remote syslog server</strong>
+						<strong><?=gettext("Enable syslog'ing to remote syslog server");?></strong>
 					</td>
 				</tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncell">Remote syslog server</td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("Remote syslog server");?></td>
 					<td width="78%" class="vtable">
 						<input name="remoteserver" id="remoteserver" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['remoteserver']);?>"> 
 						<br>
-						IP address of remote syslog server
+						<?=gettext("IP address of remote syslog server");?>
 						<br>
 						<br>
-						<input name="system" id="system" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['system']) echo "checked"; ?>>system events
+						<input name="system" id="system" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['system']) echo "checked"; ?>><?=gettext("system events");?>
 						<br>
-						<input name="asterisk" id="asterisk" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['asterisk']) echo "checked"; ?>>pbx events
+						<input name="asterisk" id="asterisk" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['asterisk']) echo "checked"; ?>><?=gettext("pbx events");?>
 						<br>
-						<input name="cdr" id="cdr" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['cdr']) echo "checked"; ?>>call detail records
+						<input name="cdr" id="cdr" type="checkbox" value="yes" onclick="enable_change(false)" <?php if ($pconfig['cdr']) echo "checked"; ?>><?=gettext("call detail records");?>
 					</td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%">
-						<input name="Submit" type="submit" class="formbtn" value="Save" onclick="enable_change(true)"> 
+						<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
 					</td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%">
-						<strong><span class="red">Note:</span></strong>
+						<strong><span class="red"><?=gettext("Note:");?></span></strong>
 						<br>
-						syslog sends UDP datagrams to port 514 on the specified 
-						remote syslog server. Be sure to set syslogd on the 
-						remote server to accept syslog messages from AskoziaPBX. 
+						<?=gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from AskoziaPBX.");?>
 					</td>
 				</tr>
 			</table>
