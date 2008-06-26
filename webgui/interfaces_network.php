@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "Network");
+$pgtitle = array(gettext("Interfaces"), gettext("Network"));
 require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
@@ -57,40 +57,40 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	$reqdfields = explode(" ", "ipaddr subnet gateway topology");
-	$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway,Network topology");
+	$reqdfieldsn = explode(",", gettext("IP address,Subnet bit count,Gateway,Network topology"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	$_POST['spoofmac'] = str_replace("-", ":", $_POST['spoofmac']);
 	if (($_POST['spoofmac'] && !verify_is_macaddress($_POST['spoofmac']))) {
-		$input_errors[] = "A valid MAC address must be specified.";
+		$input_errors[] = gettext("A valid MAC address must be specified.");
 	}
 	
 	if (($_POST['ipaddr'] && !verify_is_ipaddress($_POST['ipaddr']))) {
-		$input_errors[] = "A valid IP address must be specified.";
+		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 	if (($_POST['subnet'] && !is_numeric($_POST['subnet']))) {
-		$input_errors[] = "A valid subnet bit count must be specified.";
+		$input_errors[] = gettext("A valid subnet bit count must be specified.");
 	}
 	if (($_POST['gateway'] && !verify_is_ipaddress($_POST['gateway']))) {
-		$input_errors[] = "A valid gateway must be specified.";
+		$input_errors[] = gettext("A valid gateway must be specified.");
 	}
 	if (($_POST['dns1'] && !verify_is_ipaddress($_POST['dns1'])) || ($_POST['dns2'] && !verify_is_ipaddress($_POST['dns2'])) || ($_POST['dns3'] && !verify_is_ipaddress($_POST['dns3']))) {
-		$input_errors[] = "A valid IP address must be specified for the primary/secondary/tertiary DNS server.";
+		$input_errors[] = gettext("A valid IP address must be specified for the primary/secondary/tertiary DNS server.");
 	}
 	
 	if ($_POST['topology'] == "natstatic") {
 		if (!$_POST['extipaddr']) {
-			$input_errors[] = "A public IP address must be entered for this topology.";
+			$input_errors[] = gettext("A public IP address must be entered for this topology.");
 		} else if (!verify_is_ipaddress($_POST['extipaddr'])) {
-			$input_errors[] = "A valid public IP address must be entered for this topology.";
+			$input_errors[] = gettext("A valid public IP address must be entered for this topology.");
 		}
 	}
 	
 	if ($_POST['topology'] == "natdynamichost") {
 		if (!$_POST['exthostname']) {
-			$input_errors[] = "A public hostname must be entered for this topology.";
+			$input_errors[] = gettext("A public hostname must be entered for this topology.");
 		} else if (!verify_is_domain($_POST['exthostname'])) {
-			$input_errors[] = "A valid public hostname must be entered for this topology.";
+			$input_errors[] = gettext("A valid public hostname must be entered for this topology.");
 		}
 	}
 	
@@ -188,11 +188,11 @@ function lan_if_change() {
 			<ul id="tabnav"><?
 
 			$tabs = array(
-				'Network'	=> 'interfaces_network.php',
-				'Wireless'	=> 'interfaces_wireless.php',
-				'ISDN'		=> 'interfaces_isdn.php',
-				'Analog'	=> 'interfaces_analog.php',
-				'Storage'	=> 'interfaces_storage.php'
+				gettext('Network')	=> 'interfaces_network.php',
+				gettext('Wireless')	=> 'interfaces_wireless.php',
+				gettext('ISDN')		=> 'interfaces_isdn.php',
+				gettext('Analog')	=> 'interfaces_analog.php',
+				gettext('Storage')	=> 'interfaces_storage.php'
 			);
 			dynamic_tab_menu($tabs);
 			
@@ -203,7 +203,7 @@ function lan_if_change() {
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq">LAN</td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("LAN");?></td>
 					<td width="78%" class="vtable">
 						
 						<? if (count($networkinterfaces) == 1): ?>
@@ -228,12 +228,12 @@ function lan_if_change() {
 								?>><?=$ifname;?>&nbsp;&nbsp;
 							<? endforeach; ?>
 							<br>
-							<span class="vexpl">Checked interfaces will be bridged to the main interface.</span>
+							<span class="vexpl"><?=gettext("Checked interfaces will be bridged to the main interface.");?></span>
 						<? endif; ?>
 					</td>
 				</tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq">IP address</td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
 					<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
 						/ 
 						<select name="subnet" class="formfld" id="subnet"><?
@@ -248,12 +248,12 @@ function lan_if_change() {
 					</td>
 				</tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq">Gateway</td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>
 					<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>"> 
 					</td>
 				</tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncell">DNS servers</td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("DNS servers");?></td>
 					<td width="78%" class="vtable">
 						<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>">
 						<br>
@@ -261,43 +261,42 @@ function lan_if_change() {
 						<br>
 						<input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
 						<br>
-						<span class="vexpl">IP addresses</span>
+						<span class="vexpl"><?=gettext("IP addresses");?></span>
 					</td>
 				</tr>
 				<tr> 
-					<td valign="top" class="vncell">MAC address</td>
+					<td valign="top" class="vncell"><?=gettext("MAC address");?></td>
 					<td class="vtable">
 						<input name="spoofmac" type="text" class="formfld" id="spoofmac" size="30" value="<?=htmlspecialchars($pconfig['spoofmac']);?>"><br>
-						This field can be used to modify (&quot;spoof&quot;) the MAC address of the network interface<br>
-						Enter a MAC address in the following format: xx:xx:xx:xx:xx:xx or leave blank
+						<?=gettext("This field can be used to modify (&quot;spoof&quot;) the MAC address of the network interface<br>Enter a MAC address in the following format: xx:xx:xx:xx:xx:xx or leave blank");?>
 					</td>
                 </tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq">Topology</td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Topology");?></td>
 					<td width="78%" class="vtable">
 						<select name="topology" class="formfld" id="topology" onchange="type_change()">
 							<? foreach ($topologies as $topo => $tfriendly): ?>
-							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
+							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=gettext($tfriendly);?></option>
 							<? endforeach; ?>
 						</select>
 						<br>
 						<span class="vexpl">
 							<ul>
-								<li>Public IP Address: this pbx has a routable IP address</li>
-								<li>NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below.</li>
-								<li>NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below.</li>
+								<li><?=gettext("Public IP Address: this pbx has a routable IP address");?></li>
+								<li><?=gettext("NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below.");?></li>
+								<li><?=gettext("NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below.");?></li>
 							</ul>
 						</span>
 					</td>
 				</tr>	
 				<tr> 
-					<td width="22%" valign="top" class="vncell">Public IP address</td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("Public IP address");?></td>
 					<td width="78%" class="vtable">
 						<input name="extipaddr" type="text" class="formfld" id="extipaddr" size="20" value="<?=htmlspecialchars($pconfig['extipaddr']);?>">
 					</td>
 				</tr>
 				<tr>
-					<td width="22%" valign="top" class="vncell">Public hostname</td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("Public hostname");?></td>
 					<td width="78%" class="vtable">
 						<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>">
 					</td>
@@ -305,20 +304,18 @@ function lan_if_change() {
 				<tr> 
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%"> 
-						<input name="Submit" type="submit" class="formbtn" value="Save"> 
+						<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
 					</td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%">
-						<span class="vexpl"><span class="red"><strong>Warning:<br>
-						</strong></span>after you click &quot;Save&quot;, all current
-						calls will be dropped. You may also have to do one or more 
-						of the following steps before you can access your PBX again: 
+						<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?><br>
+						</strong></span><?=gettext("after you click &quot;Save&quot;, all currentcalls will be dropped. You may also have to do one or more of the following steps before you can access your PBX again:");?> 
 						<ul>
-							<li>restart the PBX</li>
-							<li>change the IP address of your computer</li>
-							<li>access the webGUI with the new IP address</li>
+							<li><?=gettext("restart the PBX");?></li>
+							<li><?=gettext("change the IP address of your computer");?></li>
+							<li><?=gettext("access the webGUI with the new IP address");?></li>
 						</ul>
 						</span>
 					</td>
