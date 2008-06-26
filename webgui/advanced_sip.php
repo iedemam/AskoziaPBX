@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Advanced", "SIP");
+$pgtitle = array(gettext("Advanced"), gettext("SIP"));
 require("guiconfig.inc");
 
 $sipconfig = &$config['services']['sip'];
@@ -49,25 +49,25 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "port");
-	$reqdfieldsn = explode(",", "Port");
+	$reqdfieldsn = explode(",", gettext("Port"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid port
 	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
-		$input_errors[] = "A valid port must be specified.";
+		$input_errors[] = gettext("A valid port must be specified.");
 	}
 	// defaultexpiry is numeric
 	if ($_POST['defaultexpiry'] && !verify_is_numericint($_POST['defaultexpiry'])) {
-		$input_errors[] = "A whole number of seconds must be entered for the \"Default Registration Expiration\" timeout.";
+		$input_errors[] = gettext("A whole number of seconds must be entered for the \"Default Registration Expiration\" timeout.");
 	}
 	// minexpiry is numeric
 	if ($_POST['minexpiry'] && !verify_is_numericint($_POST['minexpiry'])) {
-		$input_errors[] = "A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout.";
+		$input_errors[] = gettext("A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout.");
 	}
 	// maxexpiry is numeric
 	if ($_POST['maxexpiry'] && !verify_is_numericint($_POST['maxexpiry'])) {
-		$input_errors[] = "A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout.";
+		$input_errors[] = gettext("A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout.");
 	}
 	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
 		$input_errors[] = $msg;
@@ -113,30 +113,30 @@ if (file_exists($d_sipconfdirty_path)) {
 <form action="advanced_sip.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td width="20%" valign="top" class="vncell">Binding Port</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Binding Port");?></td>
 			<td width="80%" class="vtable">
 				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
 			</td>
 		</tr>
 		<tr> 
-			<td valign="top" class="vncell">Registration Expiration Timeouts</td>
+			<td valign="top" class="vncell"><?=gettext("Registration Expiration Timeouts");?></td>
 			<td class="vtable">
-				min:&nbsp;<input name="minexpiry" type="text" class="formfld" id="minexpiry" size="10" value="<?=htmlspecialchars($pconfig['minexpiry']);?>">&nbsp;&nbsp;max:&nbsp;<input name="maxexpiry" type="text" class="formfld" id="maxexpiry" size="10" value="<?=htmlspecialchars($pconfig['maxexpiry']);?>">&nbsp;&nbsp;default:&nbsp;<input name="defaultexpiry" type="text" class="formfld" id="defaultexpiry" size="10" value="<?=htmlspecialchars($pconfig['defaultexpiry']);?>"><br>
-				<br><span class="vexpl">The minimum, maximum and default number of seconds that incoming and outgoing registrations and subscriptions remain valid.
-				<br>Default values are 60, 3600 and 120 respectively.</span>
+				<?=gettext("min:");?>&nbsp;<input name="minexpiry" type="text" class="formfld" id="minexpiry" size="10" value="<?=htmlspecialchars($pconfig['minexpiry']);?>">&nbsp;&nbsp;<?=gettext("max:");?>&nbsp;<input name="maxexpiry" type="text" class="formfld" id="maxexpiry" size="10" value="<?=htmlspecialchars($pconfig['maxexpiry']);?>">&nbsp;&nbsp;<?=gettext("default:");?>&nbsp;<input name="defaultexpiry" type="text" class="formfld" id="defaultexpiry" size="10" value="<?=htmlspecialchars($pconfig['defaultexpiry']);?>"><br>
+				<br><span class="vexpl"><?=gettext("The minimum, maximum and default number of seconds that incoming and outgoing registrations and subscriptions remain valid.");?>
+				<br><?=gettext("Default values are 60, 3600 and 120 respectively.");?></span>
 			</td>
 		</tr>
 		<tr> 
-			<td valign="top" class="vncell">DNS Service Records</td>
+			<td valign="top" class="vncell"><?=gettext("DNS Service Records");?></td>
 			<td class="vtable">
-				<input name="disablesrv" id="disablesrv" type="checkbox" value="yes" <? if ($pconfig['disablesrv']) echo "checked"; ?>>Disable DNS SRV lookups.
+				<input name="disablesrv" id="disablesrv" type="checkbox" value="yes" <? if ($pconfig['disablesrv']) echo "checked"; ?>><?=gettext("Disable DNS SRV lookups.");?>
 			</td>
 		</tr>
 		<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>
-				<input name="Submit" type="submit" class="formbtn" value="Save">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			</td>
 		</tr>
 	</table>
