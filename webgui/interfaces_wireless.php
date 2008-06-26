@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "Wireless");
+$pgtitle = array(gettext("Interfaces"), gettext("Wireless"));
 
 require("guiconfig.inc");
 require("interfaces_wlan.inc");
@@ -87,15 +87,15 @@ if ($_POST) {
 	/* input validation */
 	if ($_POST['enable']) {
 		$reqdfields = "ssid channel";
-		$reqdfieldsn = "SSID,Channel";
+		$reqdfieldsn = gettext("SSID,Channel");
 		
 		if ($_POST['wpamode'] != "none") {
 			$reqdfields .= " wpaversion wpacipher";
-			$reqdfieldsn .= ",WPA version,WPA cipher";
+			$reqdfieldsn .= gettext(",WPA version,WPA cipher");
 			
 			if ($_POST['wpamode'] == "psk") {
 				$reqdfields .= " wpapsk";
-				$reqdfieldsn .= ",WPA PSK";
+				$reqdfieldsn .= gettext(",WPA PSK");
 			} /*else if ($_POST['wpamode'] == "enterprise") {
 				$reqdfields .= " radiusip radiussecret";
 				$reqdfieldsn .= ",RADIUS IP,RADIUS Shared secret";
@@ -112,7 +112,7 @@ if ($_POST) {
 			$input_errors[] = "A valid RADIUS accounting port number must be specified.";*/
 	
 		if ($_POST['wpapsk'] && !(strlen($_POST['wpapsk']) >= 8 && strlen($_POST['wpapsk']) <= 63))
-			$input_errors[] = "The WPA PSK must be between 8 and 63 characters long.";
+			$input_errors[] = gettext("The WPA PSK must be between 8 and 63 characters long.");
 	
 		if (!$input_errors) {
 				
@@ -120,9 +120,9 @@ if ($_POST) {
 			$is_chan_11a = (strpos($wlchannels[$_POST['channel']]['mode'], "11a") !== false);
 			$is_std_11a = ($_POST['standard'] == "11a");
 			if ($is_chan_11a && !$is_std_11a)
-				$input_errors[] = "802.11a channels can only be selected if the standard is set to 802.11a too.";
+				$input_errors[] = gettext("802.11a channels can only be selected if the standard is set to 802.11a too.");
 			else if (!$is_chan_11a && $is_std_11a)
-				$input_errors[] = "802.11a can only be selected if an 802.11a channel is selected too.";
+				$input_errors[] = gettext("802.11a can only be selected if an 802.11a channel is selected too.");
 
 		}
 	}
@@ -187,11 +187,11 @@ if ($_POST) {
 			<ul id="tabnav"><?
 
 			$tabs = array(
-				'Network'	=> 'interfaces_network.php',
-				'Wireless'	=> 'interfaces_wireless.php',
-				'ISDN'		=> 'interfaces_isdn.php',
-				'Analog'	=> 'interfaces_analog.php',
-				'Storage'	=> 'interfaces_storage.php'
+				gettext('Network')	=> 'interfaces_network.php',
+				gettext('Wireless')	=> 'interfaces_wireless.php',
+				gettext('ISDN')		=> 'interfaces_isdn.php',
+				gettext('Analog')	=> 'interfaces_analog.php',
+				gettext('Storage')	=> 'interfaces_storage.php'
 			);
 			dynamic_tab_menu($tabs);
 			
@@ -205,7 +205,7 @@ if ($_POST) {
 			if (!count(wireless_get_interfaces())) {
 				
 				?><tr> 
-					<td><strong>No compatible wireless interfaces detected.</strong></td>
+					<td><strong><?=gettext("No compatible wireless interfaces detected.");?></strong></td>
 				</tr><?
 	
 			} else {
@@ -213,11 +213,11 @@ if ($_POST) {
 				?><tr> 
 					<td width="20%" valign="top" class="vtable">&nbsp;</td>
 					<td width="80%" class="vtable">
-						<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="wlan_enable_change(false)"><strong>Enable Wireless Interface</strong>
+						<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="wlan_enable_change(false)"><strong><?=gettext("Enable Wireless Interface");?></strong>
 					</td>
 				</tr>
 				<tr>
-					<td valign="top" class="vncellreq">Standard</td>
+					<td valign="top" class="vncellreq"><?=gettext("Standard");?></td>
 					<td class="vtable">
 						<select name="standard" class="formfld" id="standard">
 						<? foreach ($wlstandards as $sn): ?>
@@ -229,23 +229,21 @@ if ($_POST) {
 					</td>
 				</tr>
 				<tr> 
-					<td valign="top" class="vncellreq">SSID</td>
+					<td valign="top" class="vncellreq"><?=gettext("SSID");?></td>
 					<td class="vtable"><?=$mandfldhtml;?>
 						<input name="ssid" type="text" class="formfld" id="ssid" size="20" value="<?=htmlspecialchars($pconfig['ssid']);?>">
                     	<br>
 						<br>
-						<input type="checkbox" name="hidessid" id="hidessid" value="1" <?php if ($pconfig['hidessid']) echo "checked";?>><strong>Hide SSID</strong>
+						<input type="checkbox" name="hidessid" id="hidessid" value="1" <?php if ($pconfig['hidessid']) echo "checked";?>><strong><?=gettext("Hide SSID");?></strong>
 						<br>
-						If this option is selected, the SSID will not be broadcast in hostap mode, and only
-						clients that know the exact SSID will be able to connect. Note that this option 
-						should never be used as a substitute for proper security/encryption settings.
+						<?=gettext("If this option is selected, the SSID will not be broadcast in hostap mode, and onlyclients that know the exact SSID will be able to connect. Note that this option should never be used as a substitute for proper security/encryption settings.");?>
 					</td>
 				</tr>
 				<tr> 
-					<td valign="top" class="vncellreq">Channel</td>
+					<td valign="top" class="vncellreq"><?=gettext("Channel");?></td>
 					<td class="vtable">
 						<select name="channel" class="formfld" id="channel">
-							<option <?php if ($pconfig['channel'] == 0) echo "selected";?> value="0">Auto</option>
+							<option <?php if ($pconfig['channel'] == 0) echo "selected";?> value="0"><?=gettext("Auto");?></option>
 							<? foreach ($wlchannels as $channel => $chaninfo):
 								if ($chaninfo['mode'] == "11g")
 									$mode = "11b/g";
@@ -261,51 +259,51 @@ if ($_POST) {
 					</td>
 				</tr>
 				<tr>
-					<td valign="top" class="vncell">WPA</td>
+					<td valign="top" class="vncell"><?=gettext("WPA");?></td>
 					<td class="vtable">
 						<table width="100%" border="0" cellpadding="6" cellspacing="0">
 							<tr>
-								<td colspan="2" valign="top" class="optsect_t2">WPA settings</td>
+								<td colspan="2" valign="top" class="optsect_t2"><?=gettext("WPA settings");?></td>
 							</tr>
 							<tr>
-								<td class="vncell" valign="top">Mode</td>
+								<td class="vncell" valign="top"><?=gettext("Mode");?></td>
 								<td class="vtable">
 									<select name="wpamode" id="wpamode" onChange="wlan_enable_change(false)">
-										<option value="none" <?php if (!$pconfig['wpamode'] || $pconfig['wpamode'] == "none") echo "selected";?>>none</option>
-										<option value="psk" <?php if ($pconfig['wpamode'] == "psk") echo "selected";?>>PSK</option><? /*
+										<option value="none" <?php if (!$pconfig['wpamode'] || $pconfig['wpamode'] == "none") echo "selected";?>><?=gettext("none");?></option>
+										<option value="psk" <?php if ($pconfig['wpamode'] == "psk") echo "selected";?>><?=gettext("PSK");?></option><? /*
 										<option value="enterprise" <?php if ($pconfig['wpamode'] == "enterprise") echo "selected";?>>Enterprise</option> */ ?>
 									</select>
 								</td>
 							</tr>
 							<tr>
-								<td class="vncell" valign="top">Version</td>
+								<td class="vncell" valign="top"><?=gettext("Version");?></td>
 								<td class="vtable">
 									<select name="wpaversion" id="wpaversion">
-										<option value="1" <?php if ($pconfig['wpaversion'] == "1") echo "selected";?>>WPA only</option>
-										<option value="2" <?php if ($pconfig['wpaversion'] == "2") echo "selected";?>>WPA2 only</option>
-										<option value="3" <?php if ($pconfig['wpaversion'] == "3") echo "selected";?>>WPA + WPA2</option>
+										<option value="1" <?php if ($pconfig['wpaversion'] == "1") echo "selected";?>><?=gettext("WPA only");?></option>
+										<option value="2" <?php if ($pconfig['wpaversion'] == "2") echo "selected";?>><?=gettext("WPA2 only");?></option>
+										<option value="3" <?php if ($pconfig['wpaversion'] == "3") echo "selected";?>><?=gettext("WPA + WPA2");?></option>
 									</select>
 									<br>
-									In most cases, you should select &quot;WPA + WPA2&quot; here.
+									<?=gettext("In most cases, you should select &quot;WPA + WPA2&quot; here.");?>
 								</td>
 							</tr>
 							<tr>
-								<td class="vncell" valign="top">Cipher</td>
+								<td class="vncell" valign="top"><?=gettext("Cipher");?></td>
 								<td class="vtable">
 									<select name="wpacipher" id="wpacipher">
-										<option value="tkip" <?php if ($pconfig['wpacipher'] == "tkip") echo "selected";?>>TKIP</option>
-										<option value="ccmp" <?php if ($pconfig['wpacipher'] == "ccmp") echo "selected";?>>AES/CCMP</option>
-										<option value="both" <?php if ($pconfig['wpacipher'] == "both") echo "selected";?>>TKIP + AES/CCMP</option>
+										<option value="tkip" <?php if ($pconfig['wpacipher'] == "tkip") echo "selected";?>><?=gettext("TKIP");?></option>
+										<option value="ccmp" <?php if ($pconfig['wpacipher'] == "ccmp") echo "selected";?>><?=gettext("AES/CCMP");?></option>
+										<option value="both" <?php if ($pconfig['wpacipher'] == "both") echo "selected";?>><?=gettext("TKIP + AES/CCMP");?></option>
 									</select>
 									<br>
-									AES/CCMP provides better security than TKIP, but TKIP is more compatible with older hardware.
+									<?=gettext("AES/CCMP provides better security than TKIP, but TKIP is more compatible with older hardware.");?>
 								</td>
 							</tr>
 							<tr>
-								<td class="vncell" valign="top">PSK</td>
+								<td class="vncell" valign="top"><?=gettext("PSK");?></td>
 								<td class="vtable">
 									<input name="wpapsk" type="text" class="formfld" id="wpapsk" size="30" value="<?=htmlspecialchars($pconfig['wpapsk']);?>"><br>
-										Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long.
+										<?=gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long.");?>
 								</td>
 							</tr><? /*
 							<tr> 
@@ -337,18 +335,18 @@ if ($_POST) {
 					</td>
 				</tr>
 				<tr>
-					<td valign="top" class="vncell">WEP</td>
+					<td valign="top" class="vncell"><?=gettext("WEP");?></td>
 					<td class="vtable">
 						<input name="wep_enable" type="checkbox" id="wep_enable" value="yes" <?php if ($pconfig['wep_enable']) echo "checked"; ?>> 
-						<strong>Enable WEP</strong>
+						<strong><?=gettext("Enable WEP");?></strong>
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr> 
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>&nbsp;TX key&nbsp;</td>
+								<td>&nbsp;<?=gettext("TX key");?>&nbsp;</td>
 							</tr>
 							<tr> 
-								<td>Key 1:&nbsp;&nbsp;</td>
+								<td><?=gettext("Key 1:");?>&nbsp;&nbsp;</td>
 								<td>
 									<input name="key1" type="text" class="formfld" id="key1" size="30" value="<?=htmlspecialchars($pconfig['key1']);?>">
 								</td>
@@ -357,7 +355,7 @@ if ($_POST) {
 								</td>
 							</tr>
 							<tr> 
-								<td>Key 2:&nbsp;&nbsp;</td>
+								<td><?=gettext("Key 2:");?>&nbsp;&nbsp;</td>
 								<td>
 									<input name="key2" type="text" class="formfld" id="key2" size="30" value="<?=htmlspecialchars($pconfig['key2']);?>">
 								</td>
@@ -366,7 +364,7 @@ if ($_POST) {
 								</td>
 							</tr>
 							<tr>
-								<td>Key 3:&nbsp;&nbsp;</td>
+								<td><?=gettext("Key 3:");?>&nbsp;&nbsp;</td>
 								<td>
 									<input name="key3" type="text" class="formfld" id="key3" size="30" value="<?=htmlspecialchars($pconfig['key3']);?>">
 								</td>
@@ -375,7 +373,7 @@ if ($_POST) {
 								</td>
 							</tr>
 							<tr>
-								<td>Key 4:&nbsp;&nbsp;</td>
+								<td><?=gettext("Key 4:");?>&nbsp;&nbsp;</td>
 								<td>
 									<input name="key4" type="text" class="formfld" id="key4" size="30" value="<?=htmlspecialchars($pconfig['key4']);?>">
 								</td>
@@ -385,16 +383,14 @@ if ($_POST) {
 							</tr>
 						</table>
 						<br>
-						40 (64) bit keys may be entered as 5 ASCII characters or 10 
-						hex digits preceded by '0x'.<br>
-						104 (128) bit keys may be entered as 13 ASCII characters or 
-						26 hex digits preceded by '0x'.
+						<?=gettext("40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits preceded by '0x'.");?>
+						<br><?=gettext("104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits preceded by '0x'.");?>
 					</td>
 				</tr>
 				<tr> 
 					<td width="20%" valign="top">&nbsp;</td>
 					<td width="80%"> 
-						<input name="Submit" type="submit" class="formbtn" value="Save"> 
+						<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
 					</td>
 				</tr><?
 
