@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Debug", "ISDN");
+$pgtitle = array(gettext("Debug"), gettext("ISDN"));
 require("guiconfig.inc");
 
 $state = "stopped";
@@ -58,7 +58,7 @@ if ($_POST) {
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<?php if ($state == "stopped"): ?>
 		<tr> 
-			<td width="20%" valign="top" class="vncell">ISDN Interface</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>
 			<td width="80%" class="vtable">
 				<select name="interface" class="formfld" id="interface">
 				<? $isdn_interfaces = isdn_get_interfaces(); ?>
@@ -71,25 +71,25 @@ if ($_POST) {
 		<tr>
 			<td valign="top">&nbsp;</td>
 			<td>
-				<input name="start" type="submit" class="formbtn" value="Start">
+				<input name="start" type="submit" class="formbtn" value="<?=gettext("Start");?>">
  			</td>
 		</tr>
 		
 		<?php elseif ($state == "running"): ?>
 		<tr> 
-			<td width="20%" valign="top" class="vncell">Debugging</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Debugging");?></td>
 			<td width="80%" class="vtable">...</td>
 		</tr>
 		<tr>
 			<td width="20%" valign="top">&nbsp;</td>
 			<td width="80%">
-				<input name="stop" type="submit" class="formbtn" value="Stop">
+				<input name="stop" type="submit" class="formbtn" value="<?=gettext("Stop");?>">
  			</td>
 		</tr>
 		
 		<?php elseif ($state == "finished"): ?>
 		<tr> 
-			<td width="20%" valign="top" class="vncell">Debug Ouptut</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Debug Ouptut");?></td>
 			<td width="80%" class="vtable">
 				<textarea name="contents" cols="80" rows="40" id="contents" class="pre"><?=$file_contents?></textarea>
 			</td>
@@ -97,7 +97,7 @@ if ($_POST) {
 		<tr>
 			<td valign="top">&nbsp;</td>
 			<td>
-				<input name="restart" type="submit" class="formbtn" value="Restart">
+				<input name="restart" type="submit" class="formbtn" value="<?=gettext("Restart");?>">
  			</td>
 		</tr>
 		<?php endif; ?>
