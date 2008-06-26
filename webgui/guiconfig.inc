@@ -70,11 +70,14 @@ if (file_exists($d_firmwarelock_path)) {
 	}
 }
 
-$specialnets = array("lan" => "LAN net");
+$specialnets = array("lan" => gettext("LAN net"));
 	
-$medias = array("auto" => "autoselect", "100full" => "100BASE-TX full-duplex",
-	"100half" => "100BASE-TX half-duplex", "10full" => "10BASE-T full-duplex",
-	"10half" => "10BASE-T half-duplex", "1000full" => "1000BASE-TX full-duplex");
+$medias = array("auto" => gettext("autoselect"), 
+		"100full" => gettext("100BASE-TX full-duplex"),
+		"100half" => gettext("100BASE-TX half-duplex"), 
+		"10full" => gettext("10BASE-T full-duplex"),
+		"10half" => gettext("10BASE-T half-duplex"), 
+		"1000full" => gettext("1000BASE-TX full-duplex"));
 	
 /* platforms that do not support firmware updating */
 $no_firmware_update_platforms = array();
@@ -101,32 +104,32 @@ $no_firmware_update_platforms = array();
 2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
 
 $audio_codecs = array(
-	"ulaw" => "G.711 u-law",
-	"alaw" => "G.711 A-law",
-	"gsm" => "GSM",
-	"g729" => "G.729A",
-	"ilbc" => "iLBC",
-	"speex" => "SpeeX",
-	"g723" => "G.723.1",
-	"g726aal2" => "G.726 AAL2",
-	"adpcm" => "ADPCM",
-	"slin" => "16 bit Signed Linear PCM",
-	"lpc10" => "LPC10",
-	"g726" => "G.726 RFC3551",
-	"g722" => "G722"
+	"ulaw" => gettext("G.711 u-law"),
+	"alaw" => gettext("G.711 A-law"),
+	"gsm" => gettext("GSM"),
+	"g729" => gettext("G.729A"),
+	"ilbc" => gettext("iLBC"),
+	"speex" => gettext("SpeeX"),
+	"g723" => gettext("G.723.1"),
+	"g726aal2" => gettext("G.726 AAL2"),
+	"adpcm" => gettext("ADPCM"),
+	"slin" => gettext("16 bit Signed Linear PCM"),
+	"lpc10" => gettext("LPC10"),
+	"g726" => gettext("G.726 RFC3551"),
+	"g722" => gettext("G722")
 );
 
 $video_codecs = array(
-	"h261" => "H.261",
-	"h263" => "H.263",
-	"h263p" => "H.263+",
-	"h264" => "H.264"
+	"h261" => gettext("H.261"),
+	"h263" => gettext("H.263"),
+	"h263p" => gettext("H.263+"),
+	"h264" => gettext("H.264")
 );
 
 $topologies = array(
-	"public" => "Public IP address",
-	"natstatic" => "NAT + static public IP",
-	"natdynamichost" => "NAT + dynamic public IP"
+	"public" => gettext("Public IP address"),
+	"natstatic" => gettext("NAT + static public IP"),
+	"natdynamichost" => gettext("NAT + dynamic public IP")
 );
 
 $dtmfmodes = array(
@@ -137,61 +140,61 @@ $dtmfmodes = array(
 );
 
 $analog_startsignals = array(
-	"ks" => "Kewl Start",
-	"gs" => "Ground Start",
-	"ls" => "Loop Start"
+	"ks" => gettext("Kewl Start"),
+	"gs" => gettext("Ground Start"),
+	"ls" => gettext("Loop Start")
 );
 
 $applications = array(
-	"Echo" => "Echos audio and video back to the caller as soon as it is received. Used to test connection delay.",
-	"Milliwatt" => "Generates a constant 1000Hz tone. Used to test connection quality.",
-	"WakeMe" => "Wake-Up call manager. Call to set and cancel wake-up calls on the current extension."
+	"Echo" => gettext("Echos audio and video back to the caller as soon as it is received. Used to test connection delay."),
+	"Milliwatt" => gettext("Generates a constant 1000Hz tone. Used to test connection quality."),
+	"WakeMe" => gettext("Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.")
 );
 
 $prompt_languages = array(
-	"en" => "English (US)",
-	"en-gb" => "English (UK)",
-	"da" => "Danish",
-	"nl" => "Dutch",
-	"fr" => "French (France)",
-	"fr-ca" => "French (Canada)",
-	"de" => "German",
-	"it" => "Italian",
-	"jp" => "Japanese",
-	"ru" => "Russian",
-	"es" => "Spanish",
-	"se" => "Swedish"
+	"en" => gettext("English (US)"),
+	"en-gb" => gettext("English (UK)"),
+	"da" => gettext("Danish"),
+	"nl" => gettext("Dutch"),
+	"fr" => gettext("French (France)"),
+	"fr-ca" => gettext("French (Canada)"),
+	"de" => gettext("German"),
+	"it" => gettext("Italian"),
+	"jp" => gettext("Japanese"),
+	"ru" => gettext("Russian"),
+	"es" => gettext("Spanish"),
+	"se" => gettext("Swedish")
 );
 
 $vm_email_languages = array(
-	"en-informal" => "English",
-	"en-formal" => "English (formal)",
-	"da-informal" => "Danish",
-	"da-formal" => "Danish (formal)",
-	"nl-informal" => "Dutch",
-	"nl-formal" => "Dutch (formal)",
-	"fr-informal" => "French",
-	"fr-formal" => "French (formal)",
-	"de-informal" => "German",
-	"de-formal" => "German (formal)",
-	"it-informal" => "Italian",
-	"it-formal" => "Italian (formal)",
-	"pl-informal" => "Polish",
-	"pl-formal" => "Polish (formal)",
-	"pt-br-informal" => "Portuguese, Brazil",
-	"pt-br-formal" => "Portuguese, Brazil (formal)",
-	"ru-informal" => "Russian",
-	"ru-formal" => "Russian (formal)",
-	"es-formal" => "Spanish (formal)",
-	"se-informal" => "Swedish"
+	"en-informal" => gettext("English"),
+	"en-formal" => gettext("English (formal)"),
+	"da-informal" => gettext("Danish"),
+	"da-formal" => gettext("Danish (formal)"),
+	"nl-informal" => gettext("Dutch"),
+	"nl-formal" => gettext("Dutch (formal)"),
+	"fr-informal" => gettext("French"),
+	"fr-formal" => gettext("French (formal)"),
+	"de-informal" => gettext("German"),
+	"de-formal" => gettext("German (formal)"),
+	"it-informal" => gettext("Italian"),
+	"it-formal" => gettext("Italian (formal)"),
+	"pl-informal" => gettext("Polish"),
+	"pl-formal" => gettext("Polish (formal)"),
+	"pt-br-informal" => gettext("Portuguese, Brazil"),
+	"pt-br-formal" => gettext("Portuguese, Brazil (formal)"),
+	"ru-informal" => gettext("Russian"),
+	"ru-formal" => gettext("Russian (formal)"),
+	"es-formal" => gettext("Spanish (formal)"),
+	"se-informal" => gettext("Swedish")
 );
 
 $isdn_dchannel_modes = array(
 	0 => "",
-	"DRVR_DSS1_TE" => "point-to-multipoint, terminal equipment",
-	"DRVR_DSS1_NT" => "multipoint-to-point, network termination",
-	"DRVR_DSS1_P2P_TE" => "point-to-point, terminal equipment",
-	"DRVR_DSS1_P2P_NT" => "point-to-point, network termination"
+	"DRVR_DSS1_TE" => gettext("point-to-multipoint, terminal equipment"),
+	"DRVR_DSS1_NT" => gettext("multipoint-to-point, network termination"),
+	"DRVR_DSS1_P2P_TE" => gettext("point-to-point, terminal equipment"),
+	"DRVR_DSS1_P2P_NT" => gettext("point-to-point, network termination")
 //	"DRVR_D_CHANNEL" => "default D-channel driver",
 //	"DRVR_CAPI_TE" => "",
 //	"DRVR_DIEHL_TE" => "",
@@ -202,70 +205,70 @@ $isdn_dchannel_modes = array(
 );
 
 $zaptel_loadzones = array(
-	"us" => "United States / North America",
-	"au" => "Australia",
-	"at" => "Austria",
-	"be" => "Belgium",
-	"cl" => "Chile",
-	"cn" => "China",
-	"fi" => "Finland",
-	"fr" => "France",
-	"gr" => "Greece",
-	"it" => "Italy",
-	"jp" => "Japan",
-	"my" => "Malaysia",
-	"nl" => "Netherlands",
-	"nz" => "New Zealand",
-	"no" => "Norway",
-	"ru" => "Russia",
-	"es" => "Spain",
-	"se" => "Sweden",
-	"tw" => "Taiwan",
-	"uk" => "United Kingdom",
-	"us-old" => "United States Circa 1950/ North America"
+	"us" => gettext("United States / North America"),
+	"au" => gettext("Australia"),
+	"at" => gettext("Austria"),
+	"be" => gettext("Belgium"),
+	"cl" => gettext("Chile"),
+	"cn" => gettext("China"),
+	"fi" => gettext("Finland"),
+	"fr" => gettext("France"),
+	"gr" => gettext("Greece"),
+	"it" => gettext("Italy"),
+	"jp" => gettext("Japan"),
+	"my" => gettext("Malaysia"),
+	"nl" => gettext("Netherlands"),
+	"nz" => gettext("New Zealand"),
+	"no" => gettext("Norway"),
+	"ru" => gettext("Russia"),
+	"es" => gettext("Spain"),
+	"se" => gettext("Sweden"),
+	"tw" => gettext("Taiwan"),
+	"uk" => gettext("United Kingdom"),
+	"us-old" => gettext("United States Circa 1950/ North America")
 );
 
 $system_tonezones = array(
-	"us" => "United States / North America",
-	"au" => "Australia",
-	"at" => "Austria",
-	"be" => "Belgium",
-	"br" => "Brazil",
-	"bg" => "Bulgaria",
-	"cl" => "Chile",
-	"cn" => "China",
-	"cz" => "Czech Republic",
-	"dk" => "Denmark",
-	"ee" => "Estonia",
-	"fi" => "Finland",
-	"fr" => "France",
-	"de" => "Germany",
-	"gr" => "Greece",
-	"hu" => "Hungary",
-	"in" => "India",
-	"il" => "Israel",
-	"it" => "Italy",
-	"jp" => "Japan",
-	"lt" => "Lithuania",
-	"my" => "Malaysia",
-	"mx" => "Mexico",
-	"nl" => "Netherlands",
-	"nz" => "New Zealand",
-	"no" => "Norway",
-	"ph" => "Philippines",
-	"pl" => "Poland",
-	"pt" => "Portugal",
-	"ru" => "Russia / ex Soviet Union",
-	"sg" => "Singapore",
-	"za" => "South Africa",
-	"es" => "Spain",
-	"se" => "Sweden",
-	"ch" => "Switzerland",
-	"tw" => "Taiwan",
-	"th" => "Thailand",
-	"uk" => "United Kingdom",
-	"us-old" => "United States Circa 1950/ North America",
-	"ve" => "Venezuela / South America"
+	"us" => gettext("United States / North America"),
+	"au" => gettext("Australia"),
+	"at" => gettext("Austria"),
+	"be" => gettext("Belgium"),
+	"br" => gettext("Brazil"),
+	"bg" => gettext("Bulgaria"),
+	"cl" => gettext("Chile"),
+	"cn" => gettext("China"),
+	"cz" => gettext("Czech Republic"),
+	"dk" => gettext("Denmark"),
+	"ee" => gettext("Estonia"),
+	"fi" => gettext("Finland"),
+	"fr" => gettext("France"),
+	"de" => gettext("Germany"),
+	"gr" => gettext("Greece"),
+	"hu" => gettext("Hungary"),
+	"in" => gettext("India"),
+	"il" => gettext("Israel"),
+	"it" => gettext("Italy"),
+	"jp" => gettext("Japan"),
+	"lt" => gettext("Lithuania"),
+	"my" => gettext("Malaysia"),
+	"mx" => gettext("Mexico"),
+	"nl" => gettext("Netherlands"),
+	"nz" => gettext("New Zealand"),
+	"no" => gettext("Norway"),
+	"ph" => gettext("Philippines"),
+	"pl" => gettext("Poland"),
+	"pt" => gettext("Portugal"),
+	"ru" => gettext("Russia / ex Soviet Union"),
+	"sg" => gettext("Singapore"),
+	"za" => gettext("South Africa"),
+	"es" => gettext("Spain"),
+	"se" => gettext("Sweden"),
+	"ch" => gettext("Switzerland"),
+	"tw" => gettext("Taiwan"),
+	"th" => gettext("Thailand"),
+	"uk" => gettext("United Kingdom"),
+	"us-old" => gettext("United States Circa 1950/ North America"),
+	"ve" => gettext("Venezuela / South America")
 );
 
 $analog_signaling = array(
@@ -274,29 +277,28 @@ $analog_signaling = array(
 );
 
 $manager_permissions = array(
-	"agent",
-	"call",
-	"command",
-	"config",
-	"log",
-	"user",
-	"verbose",
-	"system"
+	gettext("agent"),
+	gettext("call"),
+	gettext("command"),
+	gettext("config"),
+	gettext("log"),
+	gettext("user"),
+	gettext("verbose"),
+	gettext("system")
 );
-
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	
 	/* check for bad control characters */	
 	foreach ($postdata as $pn => $pd) {
 		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
-			$input_errors[] = "The field '" . $pn . "' contains invalid characters.";
+			$input_errors[] = sprintf(gettext("The field '%s' contains invalid characters."), $pn);
 		}
 	}
 	
 	for ($i = 0; $i < count($reqdfields); $i++) {
 		if (!isset($_POST[$reqdfields[$i]]) || ($_POST[$reqdfields[$i]] === "")) {
-			$input_errors[] = "The field '" . $reqdfieldsn[$i] . "' is required.";
+			$input_errors[] = sprintf(gettext("The field '%s' is required."), $reqdfieldsn[$i]);
 		}
 	}	
 }
@@ -306,7 +308,9 @@ function print_input_errors($input_errors) {
 	echo "<tr><td bgcolor=\"#A12A2A\" width=\"36\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" width=\"28\" height=\"32\"></td>\n";
 	echo "<td bgcolor=\"#FFD9D1\" style=\"padding-left: 8px; padding-top: 6px\">";
 	
-	echo "<span class=\"errmsg\"><p>The following input errors were detected:<ul>\n";
+	echo "<span class=\"errmsg\"><p>";
+	echo gettext("The following input errors were detected:");
+	echo "<ul>\n";
 	foreach ($input_errors as $ierr) {
 		echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
 	}
@@ -350,7 +354,7 @@ function print_info_box_np($msg) {
 	echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
 	echo "<tr><td bgcolor=\"#687BA4\" align=\"center\" valign=\"top\" width=\"36\"><img src=\"/exclam.gif\" width=\"28\" height=\"32\"></td>\n";
 	echo "<td bgcolor=\"#D9DEE8\" style=\"padding-left: 8px\">";
-	echo $msg;
+	echo gettext($msg);
 	echo "</td></tr></table>";
 }
 
@@ -362,13 +366,13 @@ function print_info_box($msg) {
 
 function format_bytes($bytes) {
 	if ($bytes >= 1073741824) {
-		return sprintf("%.2f GB", $bytes/1073741824);
+		return sprintf(gettext("%.2f GB"), $bytes/1073741824);
 	} else if ($bytes >= 1048576) {
-		return sprintf("%.2f MB", $bytes/1048576);
+		return sprintf(gettext("%.2f MB"), $bytes/1048576);
 	} else if ($bytes >= 1024) {
-		return sprintf("%.0f KB", $bytes/1024);
+		return sprintf(gettext("%.0f KB"), $bytes/1024);
 	} else {
-		return sprintf("%d bytes", $bytes);
+		return sprintf(gettext("%d bytes"), $bytes);
 	}
 }
 
@@ -377,11 +381,11 @@ function get_std_save_message($ok) {
 
 	if ($ok == 0) {
 		if (file_exists($d_sysrebootreqd_path))
-			return "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</a> your pbx for the changes to take effect.";
+			return gettext("The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</a> your pbx for the changes to take effect.");
 		else
-			return "The changes have been applied successfully.";
+			return gettext("The changes have been applied successfully.");
 	} else {
-		return "ERROR: the changes could not be applied (error code $ok).";
+		return sprintf(gettext("ERROR: the changes could not be applied (error code %s)."), $ok);
 	}
 }
 
@@ -451,10 +455,14 @@ function dynamic_tab_menu(&$tabs) {
    				// special handling for diagnostic Logs tabs.
    				if ((strpos($link,'diag_logs') > -1) && ($link != 'diag_logs_settings.php')) {
 	   				if ($desc == "Firewall") {
-	       				echo '<li class="tabact"><a href="diag_logs_filter.php" style="color:black" title="reset filter and reload firewall logs page">Firewall</a></li>';
+	       				$msg = gettext("reset filter and reload firewall logs page");
+	       				echo '<li class="tabact"><a href="diag_logs_filter.php" style="color:black" title="'.$msg.'">';
+					echo gettext("Firewall");
+					echo '</a></li>';
 	   				}
 	   				else {
-	   					echo '<li class="tabact"><a href="'.$link.'" style="color:black" title="reload page">'.$desc.'</a></li>';
+	   					$msg = gettext("reload page");
+	   					echo '<li class="tabact"><a href="'.$link.'" style="color:black" title="'.$msg.'">'.$desc.'</a></li>';
 	   				}
 	   			}
        			else {
