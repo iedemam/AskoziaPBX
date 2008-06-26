@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Ping");
+$pgtitle = array(gettext("Diagnostics"), gettext("Ping"));
 require("guiconfig.inc");
 
 define('MAX_COUNT', 10);
@@ -41,11 +41,11 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "host count");
-	$reqdfieldsn = explode(",", "Host,Count");
+	$reqdfieldsn = explode(",", gettext("Host,Count"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['count'] < 1) || ($_POST['count'] > MAX_COUNT)) {
-		$input_errors[] = "Count must be between 1 and {MAX_COUNT}";
+		$input_errors[] = sprintf(gettext("Count must be between 1 and %d"), MAX_COUNT);
 	}
 
 	if (!$input_errors) {
@@ -85,8 +85,8 @@ function get_interface_addr($ifdescr) {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 <?php 
-   	$tabs = array('Ping' => 'diag_ping.php',
-           		  'Traceroute' => 'diag_traceroute.php');
+   	$tabs = array(gettext('Ping') => 'diag_ping.php',
+           	      gettext('Traceroute') => 'diag_traceroute.php');
 	dynamic_tab_menu($tabs);
 ?> 
   </ul>
@@ -97,12 +97,12 @@ function get_interface_addr($ifdescr) {
 			<form action="diag_ping.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>
-				  <td width="22%" valign="top" class="vncellreq">Host</td>
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
 				  <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="host" type="text" class="formfld" id="host" size="20" value="<?=htmlspecialchars($host);?>"></td>
 				</tr>
 				<tr>
-				  <td width="22%" valign="top" class="vncellreq">Count</td>
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Count");?></td>
 				  <td width="78%" class="vtable">
 					<select name="count" class="formfld" id="count">
 					<?php for ($i = 1; $i <= MAX_COUNT; $i++): ?>
@@ -113,13 +113,15 @@ function get_interface_addr($ifdescr) {
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>
 				  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Ping">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Ping");?>">
 				</td>
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
 				<? if ($do_ping) {
-					echo("<strong>Ping output:</strong><br>");
+					echo('<strong>');
+					echo gettext("Ping output:");
+					echo('</strong><br>');
 					echo('<pre>');
 					ob_end_flush();
 					$ifaddr = get_interface_addr($interface);
