@@ -33,7 +33,7 @@ $unit = $_GET['unit'];
 if (isset($_POST['unit']))
 	$unit = $_POST['unit'];
 
-$pgtitle = array("Interfaces", "Edit ISDN Interface #$unit");
+$pgtitle = array(gettext("Interfaces"), sprintf(gettext("Edit ISDN Interface #%s"),$unit));
 require("guiconfig.inc");
 
 
@@ -103,7 +103,7 @@ if ($_POST) {
 	}
 
 	if (!$_POST['mode']) {
-		$input_errors[] = "An Operating Mode must be selected for this interface.";
+		$input_errors[] = gettext("An Operating Mode must be selected for this interface.");
 	}
 
 	// this is a messy fix for properly and encoding the content
@@ -162,14 +162,14 @@ if ($_POST) {
 <form action="interfaces_isdn_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td width="20%" valign="top" class="vncellreq">Name</td>
+		<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		<td width="80%" class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != "(unconfigured)") ? $pconfig['name'] : "isdn #$unit");?>"> 
-			<br><span class="vexpl">Descriptive name for this interface</span>
+			<br><span class="vexpl"><?=gettext("Descriptive name for this interface");?></span>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Operating Mode</td>
+		<td valign="top" class="vncell"><?=gettext("Operating Mode");?></td>
 		<td class="vtable">
 			<select name="mode" class="formfld" id="mode">
 			<? foreach ($isdn_dchannel_modes as $mode => $friendly) : ?>
@@ -181,42 +181,42 @@ if ($_POST) {
 			</select>
 			<br><span class="vexpl">
 				<ul>
-					<li>point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system</li>
-					<li>multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones</li>
-					<li>point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system</li>
-					<li>point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system</li>
+					<li><?=gettext("point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system");?></li>
+					<li><?=gettext("multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones");?></li>
+					<li><?=gettext("point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system");?></li>
+					<li><?=gettext("point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system");?></li>
 				</ul>
 			</span>
 			<br>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Echo Canceller</td>
+		<td valign="top" class="vncell"><?=gettext("Echo Canceller");?></td>
 		<td class="vtable">
 			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
-			Attempt to remove echoes from the line.
+			<?=gettext("Attempt to remove echoes from the line.");?>
 		</td>
 	</tr>
 	<? display_advanced_settings_begin(1); ?>
 	<tr> 
-		<td valign="top" class="vncell">PCM Timing Slave</td>
+		<td valign="top" class="vncell"><?=gettext("PCM Timing Slave");?></td>
 		<td class="vtable">
 			<input name="pcmslave" id="pcmslave" type="checkbox" value="yes" <? if ($pconfig['pcmslave']) echo "checked"; ?>>
-			There is already another card present which provides the timing.<br><em>(Unless more than one inteface card is present in the system, this should not be changed.</em>
+			<?=gettext("There is already another card present which provides the timing.<br><em>(Unless more than one inteface card is present in the system, this should not be changed.");?></em>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Disable Power Save</td>
+		<td valign="top" class="vncell"><?=gettext("Disable Power Save");?></td>
 		<td class="vtable">
 			<input name="nopwrsave" id="nopwrsave" type="checkbox" value="yes" <? if ($pconfig['nopwrsave']) echo "checked"; ?>>
-			Disable power save mode. (sometimes needed for older cards)
+			<?=gettext("Disable power save mode. (sometimes needed for older cards)");?>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell">Enable Polling Mode</td>
+		<td valign="top" class="vncell"><?=gettext("Enable Polling Mode");?></td>
 		<td class="vtable">
 			<input name="pollmode" id="pollmode" type="checkbox" value="yes" <? if ($pconfig['pollmode']) echo "checked"; ?>>
-			Enable polling mode. (sometimes needed for older cards)
+			<?=gettext("Enable polling mode. (sometimes needed for older cards)");?>
 		</td>
 	</tr>
 	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
@@ -224,7 +224,7 @@ if ($_POST) {
 	<tr> 
 		<td width="20%" valign="top">&nbsp;</td>
 		<td width="80%">
-			<input name="Submit" type="submit" class="formbtn" value="Save">
+			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			<input name="unit" type="hidden" value="<?=$unit;?>"> 
 		</td>
 	</tr>
