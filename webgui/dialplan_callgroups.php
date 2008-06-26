@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Dialplan", "Call Groups");
+$pgtitle = array(gettext("Dialplan"), gettext("Call Groups"));
 require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...
@@ -78,10 +78,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="15%" class="listhdrr">Name</td>
-		<td width="15%" class="listhdrr">Extension</td>
-		<td width="30%" class="listhdrr">Description</td>		
-		<td width="30%" class="listhdr">Members</td>
+		<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="30%" class="listhdrr"><?=gettext("Description");?></td>		
+		<td width="30%" class="listhdr"><?=gettext("Members");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -91,14 +91,14 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td class="listr"><?=htmlspecialchars($cg['extension']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
 		<td class="listr"><?=@implode(", ", pbx_uniqid_to_name($cg['groupmember']));?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit call group" border="0"></a>
-			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this call group?')"><img src="delete.png" title="delete call group" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit call group");?>" border="0"></a>
+			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this call group?");?>')"><img src="delete.png" title="<?=gettext("delete call group");?>" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="4"></td>
-		<td class="list"><a href="dialplan_callgroups_edit.php"><img src="add.png" title="add call group" border="0"></a></td>
+		<td class="list"><a href="dialplan_callgroups_edit.php"><img src="add.png" title="<?=gettext("add call group");?>" border="0"></a></td>
 	</tr>
 </table>
 </form>
