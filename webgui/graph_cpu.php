@@ -60,12 +60,12 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
     <path id="graph_cpu" d="" <?=$attribs['graph_cpu']?>/>
     <path id="grid" d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" <?=$attribs['grid']?>/>
-    <text id="grid_txt1" x="100%" y="25%" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
-    <text id="grid_txt2" x="100%" y="50%" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>
-    <text id="grid_txt3" x="100%" y="75%" <?=$attribs['grid_txt']?> text-anchor="end">25%</text>
+    <text id="grid_txt1" x="100%" y="25%" <?=$attribs['grid_txt']?> text-anchor="end"><?=gettext("75%");?></text>
+    <text id="grid_txt2" x="100%" y="50%" <?=$attribs['grid_txt']?> text-anchor="end"><?=gettext("50%");?></text>
+    <text id="grid_txt3" x="100%" y="75%" <?=$attribs['grid_txt']?> text-anchor="end"><?=gettext("25%");?></text>
     <text id="graph_cpu_txt" x="4" y="8" <?=$attribs['cpu']?>> </text>
-    <text id="error" x="50%" y="50%"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle">Cannot get CPU load</text>
-    <text id="collect_initial" x="50%" y="50%"  visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle">Collecting initial data, please wait...</text>
+    <text id="error" x="50%" y="50%"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=gettext("Cannot get CPU load");?></text>
+    <text id="collect_initial" x="50%" y="50%"  visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=gettext("Collecting initial data, please wait...");?></text>
   </g>
   <script type="text/ecmascript">
     <![CDATA[
