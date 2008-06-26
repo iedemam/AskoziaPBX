@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("AskoziaPBX webGUI");
+$pgtitle = array(gettext("AskoziaPBX webGUI"));
 $pgtitle_omit = true;
 require("guiconfig.inc");
 
@@ -51,31 +51,31 @@ if ($_POST) {
                 <td height="170" colspan="2"><img src="logobig.gif" width="520" height="149"></td>
               </tr>
               <tr> 
-                <td colspan="2" class="listtopic">System Information</td>
+                <td colspan="2" class="listtopic"><?=gettext("System Information");?></td>
               </tr>
               <tr> 
-                <td width="25%" class="vncellt">Name</td>
+                <td width="25%" class="vncellt"><?=gettext("Name");?></td>
                 <td width="75%" class="listr">
                   <?php echo $config['system']['hostname'] . "." . $config['system']['domain']; ?>
                 </td>
               </tr>
               <tr> 
-                <td width="25%" valign="top" class="vncellt">Version</td>
+                <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
                 <td width="75%" class="listr"> <strong> 
                   <?php readfile("/etc/version"); ?>
                   </strong><br>
-                  built on 
+                  <?=gettext("built on");?> 
                   <?php readfile("/etc/version.buildtime"); ?>
                 </td>
               </tr>
               <tr> 
-                <td width="25%" class="vncellt">Platform</td>
+                <td width="25%" class="vncellt"><?=gettext("Platform");?></td>
                 <td width="75%" class="listr"> 
                   <?=htmlspecialchars($g['fullplatform']);?>
                 </td>
               </tr>
               <tr> 
-                <td width="25%" class="vncellt">Uptime</td>
+                <td width="25%" class="vncellt"><?=gettext("Uptime");?></td>
                 <td width="75%" class="listr"> 
                   <?php
 				  	exec("/sbin/sysctl -n kern.boottime", $boottime);
@@ -93,7 +93,7 @@ if ($_POST) {
 					
 					$uptimestr = "";
 					if ($updays > 1)
-						$uptimestr .= "$updays days, ";
+						$uptimestr .= sprintf(gettext("%s days, "), $updays);
 					else if ($updays > 0)
 						$uptimestr .= "1 day, ";
 					$uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
@@ -102,7 +102,7 @@ if ($_POST) {
                 </td>
               </tr><?php if ($config['lastchange']): ?>
               <tr> 
-                <td width="25%" class="vncellt">Last Config Change</td>
+                <td width="25%" class="vncellt"><?=gettext("Last Config Change");?></td>
                 <td width="75%" class="listr"> 
                   <?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>
                 </td>
@@ -110,16 +110,16 @@ if ($_POST) {
 			
 			<? pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list); ?>
 			<tr> 
-				<td width="25%" class="vncellt">Active Calls</td>
+				<td width="25%" class="vncellt"><?=gettext("Active Calls");?></td>
 				<td width="75%" class="listr"><?=$active_calls;?>&nbsp;</td>
 			</tr>
 			<tr> 
-				<td width="25%" class="vncellt">Active Channels</td>
+				<td width="25%" class="vncellt"><?=gettext("Active Channels");?></td>
 				<td width="75%" class="listr"><?=$active_channels;?>&nbsp;</td>
 			</tr>
 			
 			  <tr> 
-                <td width="25%" class="vncellt">Memory Usage</td>
+                <td width="25%" class="vncellt"><?=gettext("Memory Usage");?></td>
                 <td width="75%" class="listr">
 <?php
 
@@ -143,10 +143,10 @@ echo $memUsage . "%";
                 </td>
               </tr>
               <tr> 
-                <td width="25%" class="vncellt" valign="top">Notes</td>
+                <td width="25%" class="vncellt" valign="top"><?=gettext("Notes");?></td>
                 <td width="75%" class="listr">
                   <textarea name="notes" cols="75" rows="7" id="notes" class="notes"><?=htmlspecialchars(base64_decode($config['system']['notes']));?></textarea><br>
-                  <input name="Submit" type="submit" class="formbtns" value="Save">
+                  <input name="Submit" type="submit" class="formbtns" value="<?=gettext("Save");?>">
                 </td>
               </tr>
             </table>
