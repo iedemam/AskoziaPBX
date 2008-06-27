@@ -39,9 +39,9 @@ if ($_POST) {
 
 	unset($input_errors);
 	
-	if (stristr($_POST['Submit'], "Restore"))
+	if ($_POST['Restore'])
 		$mode = "restore";
-	else if (stristr($_POST['Submit'], "Download"))
+	else if ($_POST['Download'])
 		$mode = "download";
 		
 	if ($mode) {
@@ -62,15 +62,15 @@ if ($_POST) {
 			if (is_uploaded_file($_FILES['conffile']['tmp_name'])) {
 				if (config_install($_FILES['conffile']['tmp_name']) == 0) {
 					system_reboot();
-					$savemsg = "The configuration has been restored. The PBX is now rebooting.";
+					$savemsg = gettext("The configuration has been restored. The PBX is now rebooting.");
 				} else {
-					$errstr = "The configuration could not be restored.";
+					$errstr = gettext("The configuration could not be restored.");
 					if ($xmlerr)
-						$errstr .= " (XML error: $xmlerr)";
+						$errstr .= sprintf(gettext(" (XML error: %s)"), $xmlerr);
 					$input_errors[] = $errstr;
 				}
 			} else {
-				$input_errors[] = "The configuration could not be restored (file upload error).";
+				$input_errors[] = gettext("The configuration could not be restored (file upload error).");
 			}
 		}
 	}
@@ -82,35 +82,33 @@ if ($_POST) {
             <?php if ($savemsg) print_info_box($savemsg); ?>
               <table width="100%" border="0" cellspacing="0" cellpadding="6">
                 <tr> 
-                  <td colspan="2" class="listtopic">Backup configuration</td>
+                  <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
                   <td width="78%" class="vtable"> 
-                    Click this button to download the system configuration 
-                      in XML format.<br>
+                    <?=gettext("Click this button to download the system configuration in XML format.");?><br>
                       <br>
-                      <input name="Submit" type="submit" class="formbtn" id="download" value="Download configuration"></td>
+                      <input name="Download" type="submit" class="formbtn" id="download" value="<?=gettext("Download configuration");?>"></td>
                 </tr>
                 <tr> 
                   <td colspan="2" class="list" height="12"></td>
                 </tr>
                 <tr> 
-                  <td colspan="2" class="listtopic">Restore configuration</td>
+                  <td colspan="2" class="listtopic"><?=gettext("Restore configuration");?></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
                   <td width="78%" class="vtable"> 
-                    Open an AskoziaPBX configuration XML file and click the button 
-                      below to restore the configuration.<br>
+                    <?=gettext("Open an AskoziaPBX configuration XML file and click the button below to restore the configuration.");?><br>
                       <br>
-                      <strong><span class="red">Note:</span></strong><br>
-                      The PBX will reboot after restoring the configuration.<br>
+                      <strong><span class="red"><?=gettext("Note:");?></span></strong><br>
+                      <?=gettext("The PBX will reboot after restoring the configuration.");?><br>
                       <br>
                       <input name="conffile" type="file" class="formfld" id="conffile" size="40">
                       <br>
                       <br>
-                      <input name="Submit" type="submit" class="formbtn" id="restore" value="Restore configuration">
+                      <input name="Restore" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
                   </td>
                 </tr>
               </table>
