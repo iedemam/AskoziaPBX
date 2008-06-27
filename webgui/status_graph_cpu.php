@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Live", "CPU Load");
+$pgtitle = array(gettext("Live"), gettext("CPU Load"));
 require("guiconfig.inc");
 ?>
 <?php include("fbegin.inc"); ?>
@@ -37,5 +37,5 @@ require("guiconfig.inc");
 <embed src="graph_cpu.php" type="image/svg+xml"
 		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
 </div>
-<br><span class="red"><strong>Note:</strong></span> if you can't see the graph, you may have to install the <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a>.
+<br><span class="red"><strong><?=gettext("Note:");?></strong></span><?=gettext(" if you can't see the graph, you may have to install the ");?><a href="http://www.adobe.com/svg/viewer/install/" target="_blank"><?=gettext("Adobe SVG viewer");?></a>.
 <?php include("fend.inc"); ?>
