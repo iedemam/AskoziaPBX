@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Services", "Voicemail");
+$pgtitle = array(gettext("Services"), gettext("Voicemail"));
 require("guiconfig.inc");
 
 $vmconfig = &$config['voicemail'];
@@ -51,24 +51,24 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "host address");
-	$reqdfieldsn = explode(",", "Host,E-mail Address");
+	$reqdfieldsn = explode(",", gettext("Host,E-mail Address"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['address'] && !verify_is_email_address($_POST['address'])) {
-		$input_errors[] = "A valid e-mail address must be specified.";
+		$input_errors[] = gettext("A valid e-mail address must be specified.");
 	}
 	
 	if ($_POST['password'] && !$_POST['username']) {
-		$input_errors[] = "A username must be specified.";
+		$input_errors[] = gettext("A username must be specified.");
 	}
 	
 	if ($_POST['fromaddress'] && !verify_is_email_address($_POST['fromaddress'])) {
-		$input_errors[] = "A valid e-mail address must be specified for the \"from address\".";
+		$input_errors[] = gettext("A valid e-mail address must be specified for the \"from address\".");
 	}
 	
 	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
-		$input_errors[] = "A valid port must be specified.";
+		$input_errors[] = gettext("A valid port must be specified.");
 	}
 
 	if (!$input_errors) {
@@ -101,77 +101,77 @@ if ($_POST) {
 <form action="services_voicemail.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
-			<td colspan="2" valign="top" class="listtopic">SMTP</td>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("SMTP");?></td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" class="vncellreq">Host</td>
+			<td width="20%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
 			<td width="80%" class="vtable">
 				<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
 				:
 				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
-				<br><span class="vexpl">SMTP host URL or IP address and optional port.</span>
+				<br><span class="vexpl"><?=gettext("SMTP host URL or IP address and optional port.");?></span>
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" class="vncellreq">E-mail Address</td>
+			<td valign="top" class="vncellreq"><?=gettext("E-mail Address");?></td>
 			<td class="vtable">
 				<input name="address" type="text" class="formfld" id="address" size="40" value="<?=htmlspecialchars($pconfig['address']);?>">
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" class="vncell">Username</td>
+			<td valign="top" class="vncell"><?=gettext("Username");?></td>
 			<td class="vtable">
 				<input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
 			</td>
 		</tr>
 		<tr>
-			<td valign="top" class="vncell">Password</td>
+			<td valign="top" class="vncell"><?=gettext("Password");?></td>
 			<td class="vtable">
 				<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
 			</td>
 		</tr>
 		<? display_voicemail_authtype_selector($pconfig['authtype'], 1); ?>
 		<tr> 
-			<td valign="top" class="vncell">Options</td>
+			<td valign="top" class="vncell"><?=gettext("Options");?></td>
 			<td class="vtable"> 
 				<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
             	Account uses TLS<br>
-				<span class="vexpl"><span class="red"><strong>Warning: </strong></span>TLS certificates are currently not verified.</span>
+				<span class="vexpl"><span class="red"><strong><?=gettext("Warning: ");?></strong></span><?=gettext("TLS certificates are currently not verified.");?></span>
 			</td>
         </tr>
 		<tr> 
 			<td colspan="2" class="list" height="12"></td>
 		</tr>
 		<tr> 
-			<td colspan="2" valign="top" class="listtopic">Presentation</td>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("Presentation");?></td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" class="vncell">From Address</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("From Address");?></td>
 			<td width="80%" class="vtable">
 				<input name="fromaddress" type="text" class="formfld" id="fromaddress" size="40" value="<?=htmlspecialchars($pconfig['fromaddress']);?>">
 				<br>
-				This will be shown as voicemail service's sending address.
-				<br>Defaults to the e-mail address entered above.
+				<?=gettext("This will be shown as voicemail service's sending address.");?>
+				<br><?=gettext("Defaults to the e-mail address entered above.");?>
 			</td>
 		</tr>
 		<tr> 
-			<td width="20%" valign="top" class="vncell">E-Mail Language</td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("E-Mail Language");?></td>
 			<td width="80%" class="vtable">
 				<select name="maillanguage" class="formfld" id="maillanguage">
 				<? foreach($vm_email_languages as $vm_email_language=>$friendly) : ?>
 				<option value="<?=$vm_email_language;?>" <?
 				if ($vm_email_language == $pconfig['maillanguage'])
 					echo "selected"; ?>
-				><?=$friendly;?></option>
+				><?=gettext($friendly);?></option>
 				<? endforeach; ?>
 				</select>
-				<br><span class="vexpl">E-mail notifications for new voicemail will be delivered in this language.</span>
+				<br><span class="vexpl"><?=gettext("E-mail notifications for new voicemail will be delivered in this language.");?></span>
 			</td>
 		</tr>
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>
-				<input name="Submit" type="submit" class="formbtn" value="Save">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			</td>
 		</tr>
 	</table>
