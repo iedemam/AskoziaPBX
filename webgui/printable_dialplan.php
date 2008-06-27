@@ -40,7 +40,7 @@ $a_apps = applications_get_apps();			// already sorted by extension
 ?>
 <html>
 	<head>
-		<title>Printable Dialplan</title>
+		<title><?=gettext("Printable Dialplan");?></title>
 		<link href="gui.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
@@ -52,12 +52,12 @@ $a_apps = applications_get_apps();			// already sorted by extension
 
 			<?php if (count($a_intphones) > 0): ?>
 			<tr>
-				<td colspan="3" class="listtopiclight">Internal Phones</td>
+				<td colspan="3" class="listtopiclight"><?=gettext("Internal Phones");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr">Extension</td>
-				<td width="150" class="listhdr">Caller ID</td>
-				<td class="listhdr">Description</td>
+				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="150" class="listhdr"><?=gettext("Caller ID");?></td>
+				<td class="listhdr"><?=gettext("Description");?></td>
 			</tr>		
 			<?php foreach ($a_intphones as $p):
 				if (isset($p['disabled'])) {
@@ -77,12 +77,12 @@ $a_apps = applications_get_apps();			// already sorted by extension
 
 			<?php if (count($a_extphones) > 0): ?>
 			<tr>
-				<td colspan="3" class="listtopiclight">External Phones</td>
+				<td colspan="3" class="listtopiclight"><?=gettext("External Phones");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr">Extension</td>
-				<td width="150" class="listhdr">Name</td>
-				<td class="listhdr">Description</td>
+				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="150" class="listhdr"><?=gettext("Name");?></td>
+				<td class="listhdr"><?=gettext("Description");?></td>
 			</tr>
 			<?php foreach ($a_extphones as $p):
 				if (isset($p['disabled'])) {
@@ -102,12 +102,12 @@ $a_apps = applications_get_apps();			// already sorted by extension
 
 			<?php if (count($a_callgroups) > 0): ?>
 			<tr>
-				<td colspan="3" class="listtopiclight">Call Groups</td>
+				<td colspan="3" class="listtopiclight"><?=gettext("Call Groups");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr">Extension</td>
-				<td width="150" class="listhdr">Name</td>
-				<td class="listhdr">Members</td>
+				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="150" class="listhdr"><?=gettext("Name");?></td>
+				<td class="listhdr"><?=gettext("Members");?></td>
 			</tr>
 			<?php foreach ($a_callgroups as $cg): ?>
 			<tr>
@@ -130,12 +130,12 @@ $a_apps = applications_get_apps();			// already sorted by extension
 
 			<?php if (count($a_rooms) > 0): ?>
 			<tr>
-				<td colspan="3" class="listtopiclight">Conference Rooms</td>
+				<td colspan="3" class="listtopiclight"><?=gettext("Conference Rooms");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr">Extension</td>
-				<td width="150" class="listhdr">Name</td>
-				<td width="20" class="listhdr">Pin</td>
+				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="150" class="listhdr"><?=gettext("Name");?></td>
+				<td width="20" class="listhdr"><?=gettext("Pin");?></td>
 			</tr>
 			<?php foreach ($a_rooms as $r): ?>
 			<tr>
@@ -156,12 +156,12 @@ $a_apps = applications_get_apps();			// already sorted by extension
 
 			<?php if (count($a_apps) > 0): ?>
 			<tr>
-				<td colspan="3" class="listtopiclight">Custom Applications</td>
+				<td colspan="3" class="listtopiclight"><?=gettext("Custom Applications");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr">Extension</td>
-				<td width="150" class="listhdr">Name</td>
-				<td class="listhdr">Description</td>
+				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="150" class="listhdr"><?=gettext("Name");?></td>
+				<td class="listhdr"><?=gettext("Description");?></td>
 			</tr>
 			<?php foreach ($a_apps as $app): ?>
 			<tr>
