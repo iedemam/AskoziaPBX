@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Phones", "Edit External Line");
+$pgtitle = array(gettext("Phones"), gettext("Edit External Line"));
 require("guiconfig.inc");
 
 /* grab and sort the isdn phones in our config */
@@ -70,7 +70,7 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "extension name dialstring dialprovider");
-	$reqdfieldsn = explode(",", "Extension,Name,Dialstring,Provider");
+	$reqdfieldsn = explode(",", gettext("Extension,Name,Dialstring,Provider"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	/* XXX : other strings should be verified with isset() to prevent false negatives */
@@ -78,7 +78,7 @@ if ($_POST) {
 		$input_errors[] = $msg;
 	}
 	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
-		$input_errors[] = "A valid e-mail address must be specified.";
+		$input_errors[] = gettext("A valid e-mail address must be specified.");
 	}
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
@@ -134,28 +134,28 @@ if ($_POST) {
 	<form action="phones_external_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Extension</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
 				<td width="80%" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">The internal extension used to dial this phone.</span>
+					<br><span class="vexpl"><?=gettext("The internal extension used to dial this phone.");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Name</td>
+				<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl">Descriptive name for this phone.</span>
+					<br><span class="vexpl"><?=gettext("Descriptive name for this phone.");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Dialstring</td>
+				<td valign="top" class="vncellreq"><?=gettext("Dialstring");?></td>
 				<td class="vtable">
 					<input name="dialstring" type="text" class="formfld" id="dialstring" size="40" value="<?=htmlspecialchars($pconfig['dialstring']);?>"> 
-					<br><span class="vexpl">Number or string to be dialed to reach this telephone. This will be dialed directly; outgoing pattern matching rules do not apply</span>
+					<br><span class="vexpl"><?=gettext("Number or string to be dialed to reach this telephone. This will be dialed directly; outgoing pattern matching rules do not apply");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Provider</td>
+				<td valign="top" class="vncellreq"><?=gettext("Provider");?></td>
 				<td class="vtable">
 					<select name="dialprovider" class="formfld" id="dialprovider">
 						<option></option>
@@ -165,7 +165,7 @@ if ($_POST) {
 						if ($provider['uniqid'] == $pconfig['dialprovider']) 
 							echo "selected"; ?>><?=htmlspecialchars($provider['name']); ?></option>
 					<? endforeach; ?>
-					<br><span class="vexpl">Outgoing provider to be used to reach this telephone.</span>
+					<br><span class="vexpl"><?=gettext("Outgoing provider to be used to reach this telephone.");?></span>
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
@@ -178,7 +178,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_extphones[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
