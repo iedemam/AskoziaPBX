@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Phones", "Edit ISDN Line");
+$pgtitle = array(gettext("Phones"), gettext("Edit ISDN Line"));
 require("guiconfig.inc");
 
 /* grab and sort the isdn phones in our config */
@@ -69,21 +69,21 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid");
-	$reqdfieldsn = explode(",", "Extension,Caller ID");
+	$reqdfieldsn = explode(",", gettext("Extension,Caller ID"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = "A valid extension must be entered.";
+		$input_errors[] = gettext("A valid extension must be entered.");
 	}
 	if (($_POST['callerid'] && !pbx_is_valid_callerid($_POST['callerid']))) {
-		$input_errors[] = "A valid Caller ID must be specified.";
+		$input_errors[] = gettext("A valid Caller ID must be specified.");
 	}
 	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
-		$input_errors[] = "A phone with this extension already exists.";
+		$input_errors[] = gettext("A phone with this extension already exists.");
 	}
 	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
-		$input_errors[] = "A valid e-mail address must be specified.";
+		$input_errors[] = gettext("A valid e-mail address must be specified.");
 	}
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
@@ -147,17 +147,17 @@ if ($_POST) {
 	<form action="phones_isdn_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Extension</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
 				<td width="80%" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>">
-					<br><span class="vexpl">This phone's number (MSN).</span>
+					<br><span class="vexpl"><?=gettext("This phone's number (MSN).");?></span>
 				</td>
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 1); ?>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 
-				<td valign="top" class="vncell">ISDN Interface</td>
+				<td valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>
 				<td class="vtable">
 					<select name="interface" class="formfld" id="interface"><?
 					
@@ -182,7 +182,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_isdnphones[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
