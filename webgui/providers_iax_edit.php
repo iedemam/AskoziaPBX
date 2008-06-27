@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "Edit IAX Account");
+$pgtitle = array(gettext("Providers"), gettext("Edit IAX Account"));
 require("guiconfig.inc");
 
 if (!is_array($config['iax']['provider']))
@@ -90,30 +90,30 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name username host");
-	$reqdfieldsn = explode(",", "Name,Username,Host");
+	$reqdfieldsn = explode(",", gettext("Name,Username,Host"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['username'] && !pbx_is_valid_username($_POST['username']))) {
-		$input_errors[] = "A valid username must be specified.";
+		$input_errors[] = gettext("A valid username must be specified.");
 	}
 	if (($_POST['secret'] && !pbx_is_valid_secret($_POST['secret']))) {
-		$input_errors[] = "A valid secret must be specified.";
+		$input_errors[] = gettext("A valid secret must be specified.");
 	}
 /*	if (($_POST['host'] && !verify_is_hostname($_POST['host']))) {
 		$input_errors[] = "A valid host must be specified.";
 	}*/
 	if (($_POST['port'] && !verify_is_port($_POST['port']))) {
-		$input_errors[] = "A valid port must be specified.";
+		$input_errors[] = gettext("A valid port must be specified.");
 	}	
 	if (($_POST['qualify'] && !verify_is_numericint($_POST['qualify']))) {
-		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
+		$input_errors[] = gettext("A whole number of seconds must be entered for the \"qualify\" timeout.");
 	}
 	if ($_POST['calleridsource'] == "string" && !pbx_is_valid_callerid_string($_POST['calleridstring'])) {
-		$input_errors[] = "A valid Caller ID string must be specified.";
+		$input_errors[] = gettext("A valid Caller ID string must be specified.");
 	}
 	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
-		$input_errors[] = "An incoming Caller ID override string must be specified.";
+		$input_errors[] = gettext("An incoming Caller ID override string must be specified.");
 	}
 	if ($msg = verify_readback_number($_POST['readbacknumber'])) {
 		$input_errors[] = $msg;
@@ -129,7 +129,7 @@ if ($_POST) {
 				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
 			}*/
 			if (!pbx_is_valid_dialpattern($p, &$internal_error)) {
-				$input_errors[] = "The dial-pattern \"$p\" is invalid. $internal_error";
+				$input_errors[] = sprintf(gettext("The dial-pattern \"%s\" is invalid. %s"), $p, $internal_error);
 			}
 		}
 	}
@@ -137,7 +137,7 @@ if ($_POST) {
 		foreach($_POST['incomingextensionmap'] as $map) {
 			/* XXX : check for duplicates */
 			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
-				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
+				$input_errors[] = sprintf(gettext("The incoming extension pattern \"%s\" is invalid. %s"), $map['incomingpattern'], $internal_error);
 			}
 		}
 	}
@@ -209,44 +209,44 @@ if ($_POST) {
 	<form action="providers_iax_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Name</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td width="80%" colspan="2" class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl">Descriptive name for this provider.</span>
+					<br><span class="vexpl"><?=gettext("Descriptive name for this provider.");?></span>
 				</td>
 			</tr>
 			<? display_readback_number_field($pconfig['readbacknumber'], 2); ?>
 			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 2); ?>
 			<tr> 
-				<td valign="top" class="vncellreq">Username</td>
+				<td valign="top" class="vncellreq"><?=gettext("Username");?></td>
 				<td colspan="2" class="vtable">
 					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" class="vncell">Secret</td>
+				<td valign="top" class="vncell"><?=gettext("Secret");?></td>
 				<td colspan="2" class="vtable">
 					<select name="authentication" class="formfld" id="authentication">
 						<option value="plaintext" <? 
 							if ($pconfig['authentication'] == "plaintext") 
 								echo "selected"; 
-							?>>plaintext</option>
+							?>><?=gettext("plaintext");?></option>
 						<option value="md5" <? 
 							if ($pconfig['authentication'] == "md5") 
 								echo "selected"; 
-							?>>md5</option>
+							?>><?=gettext("md5");?></option>
 					</select>&nbsp;
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                    <br><span class="vexpl">This account's password and authentication scheme.</span>
+                    <br><span class="vexpl"><?=gettext("This account's password and authentication scheme.");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Host</td>
+				<td valign="top" class="vncellreq"><?=gettext("Host");?></td>
 				<td colspan="2" class="vtable">
 					<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
 					:
 					<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-					<br><span class="vexpl">IAX proxy host URL or IP address and optional port.</span>
+					<br><span class="vexpl"><?=gettext("IAX proxy host URL or IP address and optional port.");?></span>
 				</td>
 			</tr>
 			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 2); ?>
@@ -263,7 +263,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
 					<input id="a_codecs" name="a_codecs" type="hidden" value="">
 					<input id="v_codecs" name="v_codecs" type="hidden" value="">					 
 					<?php if (isset($id) && $a_iaxproviders[$id]): ?>
