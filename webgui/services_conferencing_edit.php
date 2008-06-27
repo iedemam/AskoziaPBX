@@ -31,7 +31,7 @@
 
 require_once("functions.inc");
 
-$pgtitle = array("Services", "Conferencing", "Edit Room");
+$pgtitle = array(gettext("Services"), gettext("Conferencing"), gettext("Edit Room"));
 require("guiconfig.inc");
 
 if (!is_array($config['conferencing']['room']))
@@ -62,20 +62,20 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "number name");
-	$reqdfieldsn = explode(",", "Room Number,Name");
+	$reqdfieldsn = explode(",", gettext("Room Number,Name"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!verify_is_numericint($_POST['number'])) {
-		$input_errors[] = "Conference room numbers must be numeric.";
+		$input_errors[] = gettext("Conference room numbers must be numeric.");
 	}
 	if (!isset($id) && in_array($_POST['number'], conferencing_get_extensions())) {
-		$input_errors[] = "Conference number already exists.";
+		$input_errors[] = gettext("Conference number already exists.");
 	} else if (!isset($id) && in_array($_POST['number'], pbx_get_extensions())) {
-		$input_errors[] = "Conference number matches an existing extension.";
+		$input_errors[] = gettext("Conference number matches an existing extension.");
 	}
 	if (($_POST['pin'] && !verify_is_numericint($_POST['pin']))) {
-		$input_errors[] = "Conference pins must be numeric.";
+		$input_errors[] = gettext("Conference pins must be numeric.");
 	}
 	/*if (($_POST['adminpin'] && !verify_is_numericint($_POST['adminpin']))) {
 		$input_errors[] = "Conference administration pins must be numeric.";
@@ -127,30 +127,30 @@ if ($_POST) {
 	<form action="services_conferencing_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Room Number</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Room Number");?></td>
 				<td width="80%" class="vtable">
 					<input name="number" type="text" class="formfld" id="number" size="20" value="<?=htmlspecialchars($pconfig['number']);?>"> 
-					<br><span class="vexpl">The conference room's number, also the extension that this conference is reachable at.</span>
+					<br><span class="vexpl"><?=gettext("The conference room's number, also the extension that this conference is reachable at.");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncellreq">Name</td>
+				<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
 				</td>
 			</tr>			
 			<tr> 
-				<td valign="top" class="vncell">Access PIN</td>
+				<td valign="top" class="vncell"><?=gettext("Access PIN");?></td>
 				<td class="vtable">
 					<input name="pin" type="text" class="formfld" id="pin" size="40" value="<?=htmlspecialchars($pconfig['pin']);?>"> 
-					<br><span class="vexpl">Optional PIN needed to access this conference room.</span>
+					<br><span class="vexpl"><?=gettext("Optional PIN needed to access this conference room.");?></span>
 				</td>
 			</tr>
 			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
 					<?php if (isset($id) && $a_rooms[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
