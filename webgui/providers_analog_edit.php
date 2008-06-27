@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Providers", "Edit Analog Line");
+$pgtitle = array(gettext("Providers"), gettext("Edit Analog Line"));
 require("guiconfig.inc");
 
 if (!is_array($config['analog']['provider']))
@@ -70,12 +70,12 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", "Name");
+	$reqdfieldsn = explode(",", gettext("Name"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
-		$input_errors[] = "An incoming Caller ID override string must be specified.";
+		$input_errors[] = gettext("An incoming Caller ID override string must be specified.");
 	}
 
 	// pattern validation
@@ -88,7 +88,7 @@ if ($_POST) {
 				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
 			}*/
 			if (!pbx_is_valid_dialpattern($p, &$internal_error)) {
-				$input_errors[] = "The dial-pattern \"$p\" is invalid. $internal_error";
+				$input_errors[] = sprintf(gettext("The dial-pattern \"%s\" is invalid. %s"), $p, $internal_error);
 			}
 		}
 	}
@@ -96,7 +96,7 @@ if ($_POST) {
 		foreach($_POST['incomingextensionmap'] as $map) {
 			/* XXX : check for duplicates */
 			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
-				$input_errors[] = "The incoming extension pattern \"{$map['incomingpattern']}\" is invalid. $internal_error";
+				$input_errors[] = sprintf(gettext("The incoming extension pattern \"%s\" is invalid. %s"), $map['incomingpattern'], $internal_error);
 			}
 		}
 	}
@@ -147,22 +147,22 @@ if ($_POST) {
 	<form action="providers_analog_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Name</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td width="80%" colspan="1" class="vtable">
 					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl">Descriptive name for this provider.</span>
+					<br><span class="vexpl"><?=gettext("Descriptive name for this provider.");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Number</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Number");?></td>
 				<td width="80%" colspan="1" class="vtable">
 					<input name="number" type="text" class="formfld" id="number" size="40" value="<?=htmlspecialchars($pconfig['number']);?>"> 
-					<br><span class="vexpl">Telephone number assigned to this line.</span>
+					<br><span class="vexpl"><?=gettext("Telephone number assigned to this line.");?></span>
 				</td>
 			</tr>
 			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 1); ?>
 			<tr> 
-				<td valign="top" class="vncell">Analog Interface</td>
+				<td valign="top" class="vncell"><?=gettext("Analog Interface");?></td>
 				<td class="vtable">
 					<select name="interface" class="formfld" id="interface"><?
 
@@ -188,7 +188,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_analogproviders[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>
