@@ -29,15 +29,15 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("System", "Factory Defaults");
+$pgtitle = array(gettext("System"), gettext("Factory Defaults"));
 
 require("guiconfig.inc");
 
 if ($_POST) {
-	if ($_POST['Submit'] != " No ") {
+	if ($_POST['Yes']) {
 		reset_factory_defaults();
 		system_reboot();
-		$rebootmsg = "The system has been reset to factory defaults and is now rebooting. This may take a minute.";
+		$rebootmsg = gettext("The system has been reset to factory defaults and is now rebooting. This may take a minute.");
 	} else {
 		header("Location: index.php");
 		exit;
@@ -47,15 +47,12 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
 <form action="system_defaults.php" method="post">
-              <p><strong>If you click &quot;Yes&quot;, the PBX will be reset 
-                to factory defaults and will reboot immediately. The entire system 
-                configuration will be overwritten. The LAN IP address will be 
-                reset to 192.168.1.2 and the password will be set to 'askozia'.<br>
+              <p><strong><?=gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to 'askozia'.");?><br>
                 <br>
-                Are you sure you want to proceed?</strong></p>
+                <?=gettext("Are you sure you want to proceed?");?></strong></p>
         <p> 
-          <input name="Submit" type="submit" class="formbtn" value=" Yes ">
-          <input name="Submit" type="submit" class="formbtn" value=" No ">
+          <input name="Yes" type="submit" class="formbtn" value="<?=gettext(" Yes ");?>">
+          <input name="No" type="submit" class="formbtn" value="<?=gettext(" No ");?>">
         </p>
       </form>
 <?php endif; ?>
