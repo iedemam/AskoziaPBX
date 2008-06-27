@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "Conferences");
+$pgtitle = array(gettext("Status"), gettext("Conferences"));
 require("guiconfig.inc");
 
 
@@ -54,7 +54,7 @@ if (file_exists($d_conferencing_kicked_path)) {
 	if (!count($active_rooms[$_GET['c']])) {
 		unset($active_rooms[$_GET['c']]);
 	}
-	$savemsg = "Member {$_GET['m']} has been kicked from conference {$_GET['c']}.";
+	$savemsg = sprintf(gettext("Member %s has been kicked from conference %s."), $_GET['m'], $_GET['c']);
 	unlink($d_conferencing_kicked_path);
 }
 
@@ -67,21 +67,21 @@ if (file_exists($d_conferencing_kicked_path)) {
 	<? if (!count($active_rooms)): ?>
 		
 		<tr> 
-			<td><strong>There are currently no active conferences.</strong></td>
+			<td><strong><?=gettext("There are currently no active conferences.");?></strong></td>
 		</tr>
 		
 	<? else: ?>
 
 		<? foreach($active_rooms as $room_no => $members): ?>
 		<tr> 
-			<td colspan="4" valign="top" class="listtopic">Conference <?=$room_no;?></td>
+			<td colspan="4" valign="top" class="listtopic"><?=gettext("Conference ");?><?=$room_no;?></td>
 			<td class="list"></td>
 		</tr>
 		<tr>
-			<td width="15%" class="listhdrr">Member</td>
-			<td width="40%" class="listhdrr">Caller ID</td>
-			<td width="20%" class="listhdrr">Channel</td>
-			<td width="20%" class="listhdr">Time</td>
+			<td width="15%" class="listhdrr"><?=gettext("Member");?></td>
+			<td width="40%" class="listhdrr"><?=gettext("Caller ID");?></td>
+			<td width="20%" class="listhdrr"><?=gettext("Channel");?></td>
+			<td width="20%" class="listhdr"><?=gettext("Time");?></td>
 			<td width="5%" class="list"></td>
 		</tr>
 			<? foreach($members as $member_no => $member): ?>
@@ -99,7 +99,7 @@ if (file_exists($d_conferencing_kicked_path)) {
 					<?=htmlspecialchars($member['connecttime']);?>&nbsp;
 				</td>
 				<td valign="middle" nowrap class="list">
-					<a href="?action=kick&conf=<?=$room_no;?>&member=<?=$member_no;?>" onclick="return confirm('Do you really want to kick this member?')"><img src="user_delete.png" title="kick conference member" border="0"></a>
+					<a href="?action=kick&conf=<?=$room_no;?>&member=<?=$member_no;?>" onclick="return confirm('<?=gettext("Do you really want to kick this member?");?>')"><img src="user_delete.png" title="<?=gettext("kick conference member");?>" border="0"></a>
 				</td>
 			</tr>
 			<? endforeach; ?>
