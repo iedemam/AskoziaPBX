@@ -29,9 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("System", "General setup");
+$pgtitle = array(gettext("System"), gettext("General setup"));
 require("guiconfig.inc");
 
+$pconfig['language'] = $config['system']['webgui']['language'];
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];
 $pconfig['username'] = $config['system']['username'];
@@ -68,34 +69,34 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = split(" ", "hostname domain username");
-	$reqdfieldsn = split(",", "Hostname,Domain,Username");
+	$reqdfieldsn = split(",", gettext("Hostname,Domain,Username"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['hostname'] && !verify_is_hostname($_POST['hostname'])) {
-		$input_errors[] = "The hostname may only contain the characters a-z, 0-9 and '-'.";
+		$input_errors[] = gettext("The hostname may only contain the characters a-z, 0-9 and '-'.");
 	}
 	if ($_POST['domain'] && !verify_is_domain($_POST['domain'])) {
-		$input_errors[] = "The domain may only contain the characters a-z, 0-9, '-' and '.'.";
+		$input_errors[] = gettext("The domain may only contain the characters a-z, 0-9, '-' and '.'.");
 	}
 	if ($_POST['username'] && !preg_match("/^[a-zA-Z0-9]*$/", $_POST['username'])) {
-		$input_errors[] = "The username may only contain the characters a-z, A-Z and 0-9.";
+		$input_errors[] = gettext("The username may only contain the characters a-z, A-Z and 0-9.");
 	}
 	if ($_POST['webguiport'] && (!verify_is_numericint($_POST['webguiport']) || 
 			($_POST['webguiport'] < 1) || ($_POST['webguiport'] > 65535))) {
-		$input_errors[] = "A valid TCP/IP port must be specified for the webGUI port.";
+		$input_errors[] = gettext("A valid TCP/IP port must be specified for the webGUI port.");
 	}
 	if (($_POST['password']) && ($_POST['password'] != $_POST['password2'])) {
-		$input_errors[] = "The passwords do not match.";
+		$input_errors[] = gettext("The passwords do not match.");
 	}
 	
 	$t = (int)$_POST['timeupdateinterval'];
 	if (($t < 0) || (($t > 0) && ($t < 6)) || ($t > 1440)) {
-		$input_errors[] = "The time update interval must be either 0 (disabled) or between 6 and 1440.";
+		$input_errors[] = gettext("The time update interval must be either 0 (disabled) or between 6 and 1440.");
 	}
 	foreach (explode(' ', $_POST['timeservers']) as $ts) {
 		if (!verify_is_domain($ts)) {
-			$input_errors[] = "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'.";
+			$input_errors[] = gettext("A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'.");
 		}
 	}
 
@@ -111,6 +112,7 @@ if ($_POST) {
 		$config['system']['timezone'] = $_POST['timezone'];
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
+		$config['system']['webgui']['language'] = $_POST['lang'];
 				
 		if ($_POST['password']) {
 			$config['system']['password'] = crypt($_POST['password']);
@@ -145,86 +147,76 @@ if ($_POST) {
 		<form action="system.php" method="post">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Hostname</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"> 
-                    <br> <span class="vexpl">name of the pbx host, without 
-                    domain part<br>
-                    e.g. <em>pbx</em></span></td>
+                    <br> <span class="vexpl"><?=gettext("name of the pbx host, without domain part");?><br>
+                    <?=gettext("e.g. <em>pbx");?></em></span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Domain</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"> 
-                    <br> <span class="vexpl">e.g. <em>mycorp.com</em> </span></td>
+                    <br> <span class="vexpl"><?=gettext("e.g. <em>mycorp.com");?></em> </span></td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncell">Username</td>
+                  <td valign="top" class="vncell"><?=gettext("Username");?></td>
                   <td class="vtable"> <input name="username" type="text" class="formfld" id="username" size="20" value="<?=$pconfig['username'];?>">
                     <br>
-                     <span class="vexpl">If you want 
-                    to change the username for accessing the webGUI, enter it 
-                    here.</span></td>
+                     <span class="vexpl"><?=gettext("If you want to change the username for accessing the webGUI, enter it here.");?></span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Password</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Password");?></td>
                   <td width="78%" class="vtable"> <input name="password" type="password" class="formfld" id="password" size="20"> 
                     <br> <input name="password2" type="password" class="formfld" id="password2" size="20"> 
-                    &nbsp;(confirmation) <br> <span class="vexpl">If you want 
-                    to change the password for accessing the webGUI, enter it 
-                    here twice.</span></td>
+                    &nbsp;<?=gettext("(confirmation)");?> <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span></td>
                 </tr>
+		<? display_gui_language_selector($config['system']['webgui']['language']); ?>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">webGUI protocol</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("webGUI protocol");?></td>
                   <td width="78%" class="vtable"> <input name="webguiproto" type="radio" value="http" <?php if ($pconfig['webguiproto'] == "http") echo "checked"; ?>>
-                    HTTP &nbsp;&nbsp;&nbsp; <input type="radio" name="webguiproto" value="https" <?php if ($pconfig['webguiproto'] == "https") echo "checked"; ?>>
-                    HTTPS</td>
+                    <?=gettext("HTTP");?> &nbsp;&nbsp;&nbsp; <input type="radio" name="webguiproto" value="https" <?php if ($pconfig['webguiproto'] == "https") echo "checked"; ?>>
+                    <?=gettext("HTTPS");?></td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncell">webGUI port</td>
+                  <td valign="top" class="vncell"><?=gettext("webGUI port");?></td>
                   <td class="vtable"> <input name="webguiport" type="text" class="formfld" id="webguiport" size="5" value="<?=htmlspecialchars($pconfig['webguiport']);?>"> 
                     <br>
-                    <span class="vexpl">Enter a custom port number for the webGUI 
-                    above if you want to override the default (80 for HTTP, 443 
-                    for HTTPS).</span></td>
+                    <span class="vexpl"><?=gettext("Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span></td>
                 </tr>
 				<tr> 
-                  <td valign="top" class="vncell">Indications Tonezone</td>
+                  <td valign="top" class="vncell"><?=gettext("Indications Tonezone");?></td>
                   <td class="vtable">
 					<select name="tonezone" id="tonezone">
                       <?php foreach ($system_tonezones as $abbreviation => $friendly): ?>
                       <option value="<?=htmlspecialchars($abbreviation);?>" <?php if ($abbreviation == $pconfig['tonezone']) echo "selected"; ?>> 
-                      <?=htmlspecialchars($friendly);?>
+                      <?=htmlspecialchars(gettext($friendly));?>
                       </option>
                       <?php endforeach; ?>
                     </select>
-						<br> <span class="vexpl">Select which country's indication tones are to be used.</span></td>
+						<br> <span class="vexpl"><?=gettext("Select which country's indication tones are to be used.");?></span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Time zone</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
                   <td width="78%" class="vtable"> <select name="timezone" id="timezone">
                       <?php foreach ($timezonelist as $value): ?>
                       <option value="<?=htmlspecialchars($value);?>" <?php if ($value == $pconfig['timezone']) echo "selected"; ?>> 
                       <?=htmlspecialchars($value);?>
                       </option>
                       <?php endforeach; ?>
-                    </select> <br> <span class="vexpl">Select the location closest 
-                    to you</span></td>
+                    </select> <br> <span class="vexpl"><?=gettext("Select the location closest to you");?></span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Time update interval</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Time update interval");?></td>
                   <td width="78%" class="vtable"> <input name="timeupdateinterval" type="text" class="formfld" id="timeupdateinterval" size="4" value="<?=htmlspecialchars($pconfig['timeupdateinterval']);?>"> 
-                    <br> <span class="vexpl">Minutes between network time sync.; 
-                    300 recommended, or 0 to disable </span></td>
+                    <br> <span class="vexpl"><?=gettext("Minutes between network time sync.; 300 recommended, or 0 to disable ");?></span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">NTP time server</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("NTP time server");?></td>
                   <td width="78%" class="vtable"> <input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>"> 
-                    <br> <span class="vexpl">Use a space to separate multiple 
-                    hosts (only one required). Remember to set up at least one 
-                    DNS server if you enter a host name here!</span></td>
+                    <br> <span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
                   </td>
                 </tr>
               </table>
