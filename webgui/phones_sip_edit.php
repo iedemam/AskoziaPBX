@@ -33,7 +33,7 @@ require_once("functions.inc");
 
 $needs_scriptaculous = true;
 
-$pgtitle = array("Phones", "Edit SIP Account");
+$pgtitle = array(gettext("Phones"), gettext("Edit SIP Account"));
 require("guiconfig.inc");
 
 /* grab and sort the sip phones in our config */
@@ -88,37 +88,37 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid");
-	$reqdfieldsn = explode(",", "Extension,Caller ID");
+	$reqdfieldsn = explode(",", gettext("Extension,Caller ID"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = "An extension must be a one to four digit number.";
+		$input_errors[] = gettext("An extension must be a one to four digit number.");
 	}
 	if (($_POST['callerid'] && !pbx_is_valid_callerid($_POST['callerid']))) {
-		$input_errors[] = "A valid Caller ID must be specified.";
+		$input_errors[] = gettext("A valid Caller ID must be specified.");
 	}
 	if (($_POST['secret'] && !pbx_is_valid_secret($_POST['secret']))) {
-		$input_errors[] = "A valid secret must be specified.";
+		$input_errors[] = gettext("A valid secret must be specified.");
 	}
 	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
-		$input_errors[] = "A phone with this extension already exists.";
+		$input_errors[] = gettext("A phone with this extension already exists.");
 	}
 	if (($_POST['port'] && !verify_is_port($_POST['port']))) {
-		$input_errors[] = "A valid port must be specified.";
+		$input_errors[] = gettext("A valid port must be specified.");
 	}
 	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
-		$input_errors[] = "A valid e-mail address must be specified.";
+		$input_errors[] = gettext("A valid e-mail address must be specified.");
 	}
 	if (($_POST['qualify'] && !verify_is_numericint($_POST['qualify']))) {
-		$input_errors[] = "A whole number of seconds must be entered for the \"qualify\" timeout.";
+		$input_errors[] = gettext("A whole number of seconds must be entered for the \"qualify\" timeout.");
 	}
 	
 	if (($_POST['calllimit'] && !verify_is_numericint($_POST['calllimit']))) {
-		$input_errors[] = "A whole number of calls must be entered for the \"call limit.\"";
+		$input_errors[] = gettext("A whole number of calls must be entered for the \"call limit.\"");
 	}
 	if (($_POST['busylimit'] && !verify_is_numericint($_POST['busylimit']))) {
-		$input_errors[] = "A whole number of calls must be entered for the \"busy limit.\"";
+		$input_errors[] = gettext("A whole number of calls must be entered for the \"busy limit.\"");
 	}
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
@@ -201,18 +201,18 @@ if ($_POST) {
 	<form action="phones_sip_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
-				<td width="20%" valign="top" class="vncellreq">Extension</td>
+				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
 				<td width="80%" colspan="2" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl">This is also this account's username.</span>
+					<br><span class="vexpl"><?=gettext("This is also this account's username.");?></span>
 				</td>
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 1); ?>
 			<tr> 
-				<td valign="top" class="vncell">Secret</td>
+				<td valign="top" class="vncell"><?=gettext("Secret");?></td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                    <br><span class="vexpl">This account's password.</span>
+                    <br><span class="vexpl"><?=gettext("This account's password.");?></span>
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 2); ?>
@@ -233,7 +233,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_codec_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
 					<input id="a_codecs" name="a_codecs" type="hidden" value="">
 					<input id="v_codecs" name="v_codecs" type="hidden" value="">
 					<?php if (isset($id) && $a_sipphones[$id]): ?>
