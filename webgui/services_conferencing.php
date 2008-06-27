@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Services", "Conferencing");
+$pgtitle = array(gettext("Services"), gettext("Conferencing"));
 require("guiconfig.inc");
 
 
@@ -72,9 +72,9 @@ if (file_exists($d_conferencingconfdirty_path)) {
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td width="20%" class="listhdrr">Room Number</td>
-		<td width="55%" class="listhdrr">Name</td>
-		<td width="15%" class="listhdrr">Pin</td>
+		<td width="20%" class="listhdrr"><?=gettext("Room Number");?></td>
+		<td width="55%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="15%" class="listhdrr"><?=gettext("Pin");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -92,15 +92,15 @@ if (file_exists($d_conferencingconfdirty_path)) {
 			<?php endif; ?>
 			&nbsp;
 		</td>
-		<td valign="middle" nowrap class="list"><a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="edit.png" title="edit conference room" border="0"></a>
-           <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('Do you really want to delete this conference room?')"><img src="delete.png" title="delete conference room" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="services_conferencing_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit conference room");?>" border="0"></a>
+           <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this conference room?");?>')"><img src="delete.png" title="<?=gettext("delete conference room");?>" border="0"></a>
 		</td>
 	</tr>
 	<?php $i++; endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="3"></td>
-		<td class="list"><a href="services_conferencing_edit.php"><img src="add.png" title="add conference room" border="0"></a></td>
+		<td class="list"><a href="services_conferencing_edit.php"><img src="add.png" title="<?=gettext("add conference room");?>" border="0"></a></td>
 	</tr>
 </table>
 </form>
