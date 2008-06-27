@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("System", "Backup/restore");
+$pgtitle = array(gettext("System"), gettext("Backup/restore"));
 
 /* omit no-cache headers because it confuses IE with file downloads */
 $omit_nocacheheaders = true;
