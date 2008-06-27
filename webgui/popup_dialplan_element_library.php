@@ -37,7 +37,7 @@ require_once("functions.inc");
 <html>
 
 	<head>
-		<title>Dialplan Element Library</title>
+		<title><?=gettext("Dialplan Element Library");?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<script src="jquery.js" type="text/javascript"></script>
 		<script src="jquery.blockUI.js" type="text/javascript"></script>
@@ -219,10 +219,10 @@ require_once("functions.inc");
 			<tr>
 				<td class="tabnavtbl">
 					<ul id="tabnav">
-						<li id="element-library-app-tab" class="tabact"><a href="javascript:{}">Applications</a></li>
-						<li id="element-library-func-tab" class="tabinact"><a href="javascript:{}">Functions</a></li>
-						<li id="element-library-phone-tab" class="tabinact"><a href="javascript:{}">Phones</a></li>
-						<li id="element-library-prompts-tab" class="tabinact"><a href="javascript:{}">Audio Prompts</a></li>
+						<li id="element-library-app-tab" class="tabact"><a href="javascript:{}"><?=gettext("Applications");?></a></li>
+						<li id="element-library-func-tab" class="tabinact"><a href="javascript:{}"><?=gettext("Functions");?></a></li>
+						<li id="element-library-phone-tab" class="tabinact"><a href="javascript:{}"><?=gettext("Phones");?></a></li>
+						<li id="element-library-prompts-tab" class="tabinact"><a href="javascript:{}"><?=gettext("Audio Prompts");?></a></li>
 					</ul>
 				</td>
 			</tr>
@@ -231,13 +231,11 @@ require_once("functions.inc");
 					<span id="element-library-app-content"></span>
 					<span id="element-library-func-content" style="display: none"></span>
 					<span id="element-library-phone-content" style="display: none">
-						<p><em>Below is a list of the currently defined phones along with a basic 
-						Dial() command to call them. Many additional options are available for this 
-						command, please read its reference documentation in the Applications tab.</em></p>
+						<p><em><?=gettext("Below is a list of the currently defined phones along with a basic Dial() command to call them. Many additional options are available for this command, please read its reference documentation in the Applications tab.");?></em></p>
 						<table border="0" cellspacing="0" cellpadding="6" width="100%">
 							<tr>
-								<td width="200px"><strong>Caller ID / Name</strong></td>
-								<td><strong>Basic <code>Dial()</code> Command</strong></td>
+								<td width="200px"><strong><?=gettext("Caller ID / Name");?></strong></td>
+								<td><strong><?=gettext("Basic ");?><code><?=gettext("Dial()");?></code><?=gettext(" Command");?></strong></td>
 							</tr><?
 
 						$phones = pbx_get_phones();
@@ -350,10 +348,10 @@ require_once("functions.inc");
 								<td colspan="4" class="listtopic"><a name="<?=$lang;?>"><?=$friendly;?></a></td>
 							</tr>
 							<tr>
-								<td><strong>Filename</strong></td>
-								<td><strong>Format</strong></td>
-								<td><strong>Size</strong></td>
-								<td><strong>Location</strong></td>
+								<td><strong><?=gettext("Filename");?></strong></td>
+								<td><strong><?=gettext("Format");?></strong></td>
+								<td><strong><?=gettext("Size");?></strong></td>
+								<td><strong><?=gettext("Location");?></strong></td>
 							</tr><?
 
 							/* for each prompt... */
