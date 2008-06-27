@@ -37,19 +37,19 @@ header("Content-Type: text/plain");
 if ($_POST['config']) {
 	$fd = @fopen("{$g['tmp_path']}/config.xml", "w");
 	if (!$fd) {
-		echo "ERR Could not save configuration.\n";
+		echo gettext("ERR Could not save configuration.\n");
 		exit(0);
 	}
 	fwrite($fd, $_POST['config']);
 	fclose($fd);
 	if (config_install("{$g['tmp_path']}/config.xml") == 0) {
-		echo "OK\n";
+		echo gettext("OK\n");
 		system_reboot();
 	} else {
-		echo "ERR Could not install configuration.\n";
+		echo gettext("ERR Could not install configuration.\n");
 	}
 } else {
-	echo "ERR Invalid configuration received.\n";
+	echo gettext("ERR Invalid configuration received.\n");
 }
 
 exit(0);
