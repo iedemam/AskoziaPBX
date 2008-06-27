@@ -29,13 +29,13 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("System", "Reboot");
+$pgtitle = array(gettext("System"), gettext("Reboot"));
 require("guiconfig.inc");
 
 if ($_POST) {
-	if ($_POST['Submit'] == " Yes ") {
+	if ($_POST['Yes']) {
 		system_reboot();
-		$rebootmsg = "The system is rebooting now. This may take a minute.";
+		$rebootmsg = gettext("The system is rebooting now. This may take a minute.");
 	} else {
 		header("Location: index.php");
 		exit;
@@ -45,10 +45,10 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
       <form action="system_reboot.php" method="post">
-        <p><strong>Are you sure you want to reboot the system?</strong></p>
+        <p><strong><?=gettext("Are you sure you want to reboot the system?");?></strong></p>
         <p> 
-          <input name="Submit" type="submit" class="formbtn" value=" Yes ">
-          <input name="Submit" type="submit" class="formbtn" value=" No ">
+          <input name="Yes" type="submit" class="formbtn" value="<?=gettext(" Yes ");?>">
+          <input name="No" type="submit" class="formbtn" value="<?=gettext(" No ");?>">
         </p>
       </form>
 <?php endif; ?>
