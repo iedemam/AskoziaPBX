@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "Interfaces");
+$pgtitle = array(gettext("Status"), gettext("Interfaces"));
 require("guiconfig.inc");
 
 
@@ -199,8 +199,8 @@ function get_analog_interface_info() {
 
 	$i = 0;
 	$ifdescrs = array(
-		'lan' => 'Network',
-		'wireless' => 'Wireless'
+		'lan' => gettext('Network'),
+		'wireless' => gettext('Wireless')
 	);
 	
 	foreach ($ifdescrs as $ifdescr => $ifname) {
@@ -216,16 +216,16 @@ function get_analog_interface_info() {
 		}
 
 		?><tr> 
-			<td colspan="2" class="listtopic"><?=htmlspecialchars($ifname);?> Interface</td>
+			<td colspan="2" class="listtopic"><?=htmlspecialchars($ifname);?><?=gettext(" Interface");?></td>
 		</tr>
 		<tr> 
-			<td width="20%" class="vncellt">Status</td>
+			<td width="20%" class="vncellt"><?=gettext("Status");?></td>
 			<td width="80%" class="listr"><?=htmlspecialchars($ifinfo['status']);?></td>
 		</tr><?
 		
 		if ($ifinfo['macaddr']) {
 			?><tr> 
-				<td class="vncellt">MAC Address</td>
+				<td class="vncellt"><?=gettext("MAC Address");?></td>
 				<td class="listr"><?=htmlspecialchars($ifinfo['macaddr']);?></td>
               </tr><?
 		}
@@ -234,48 +234,48 @@ function get_analog_interface_info() {
 			
 			if ($ifinfo['ipaddr']) {
 				?><tr> 
-					<td class="vncellt">IP Address</td>
+					<td class="vncellt"><?=gettext("IP Address");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['ipaddr']);?>&nbsp;</td>
 				</tr><?
 			}
 			
 			if ($ifinfo['subnet']) {
 				?><tr> 
-					<td class="vncellt">Subnet Mask</td>
+					<td class="vncellt"><?=gettext("Subnet Mask");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['subnet']);?></td>
 				</tr><?
 			}
 			
 			if ($ifinfo['gateway']) {
 				?><tr> 
-					<td class="vncellt">Gateway</td>
+					<td class="vncellt"><?=gettext("Gateway");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['gateway']);?></td>
               </tr><?
 			}
 			
 			if ($ifinfo['media']) {
 				?><tr> 
-					<td class="vncellt">Media</td>
+					<td class="vncellt"><?=gettext("Media");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['media']);?></td>
 				</tr><?
 			}
 			
 			if ($ifinfo['channel']) {
 				?><tr> 
-					<td class="vncellt">Channel</td>
+					<td class="vncellt"><?=gettext("Channel");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['channel']);?></td>
 				</tr><?
 			}
 			
 			if ($ifinfo['ssid']) {
 				?><tr> 
-					<td class="vncellt">SSID</td>
+					<td class="vncellt"><?=gettext("SSID");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['ssid']);?></td>
 				</tr><?
 			}
 			
 			?><tr> 
-				<td class="vncellt">In/Out Packets</td>
+				<td class="vncellt"><?=gettext("In/Out Packets");?></td>
 				<td class="listr"> 
 					<?=htmlspecialchars($ifinfo['inpkts'] . "/" . $ifinfo['outpkts'] . " (" . 
 					format_bytes($ifinfo['inbytes']) . "/" . format_bytes($ifinfo['outbytes']) . ")");?>
@@ -284,7 +284,7 @@ function get_analog_interface_info() {
 			
 			if (isset($ifinfo['inerrs'])) {
 				?><tr> 
-					<td class="vncellt">In/Out Errors</td>
+					<td class="vncellt"><?=gettext("In/Out Errors");?></td>
 					<td class="listr">
 						<?=htmlspecialchars($ifinfo['inerrs'] . "/" . $ifinfo['outerrs']);?>
 					</td>
@@ -293,7 +293,7 @@ function get_analog_interface_info() {
 			
 			if (isset($ifinfo['collisions'])) {
 				?><tr>
-					<td class="vncellt">Collisions</td>
+					<td class="vncellt"><?=gettext("Collisions");?></td>
 					<td class="listr"><?=htmlspecialchars($ifinfo['collisions']);?></td>
 				</tr><?
 			}
@@ -307,23 +307,25 @@ function get_analog_interface_info() {
 			if (isset($ifinfo['scanlist'])) {
 			
 			?><tr> 
-				<td width="22%" valign="top" class="vncellt">Last scan results</td>
+				<td width="22%" valign="top" class="vncellt"><?=gettext("Last scan results");?></td>
 				<td width="78%" class="listrpad"> 
 					<table width="100%" border="0" cellpadding="0" cellspacing="0">
 						<tr> 
-							<td width="35%" class="listhdrr">SSID</td>
-							<td width="25%" class="listhdrr">BSSID</td>
-							<td width="10%" class="listhdrr">Channel</td>
-							<td width="10%" class="listhdrr">Rate</td>
-							<td width="10%" class="listhdrr">Signal</td>
-							<td width="10%" class="listhdrr">Noise</td>
+							<td width="35%" class="listhdrr"><?=gettext("SSID");?></td>
+							<td width="25%" class="listhdrr"><?=gettext("BSSID");?></td>
+							<td width="10%" class="listhdrr"><?=gettext("Channel");?></td>
+							<td width="10%" class="listhdrr"><?=gettext("Rate");?></td>
+							<td width="10%" class="listhdrr"><?=gettext("Signal");?></td>
+							<td width="10%" class="listhdrr"><?=gettext("Noise");?></td>
 						</tr><?
 						
 					foreach ($ifinfo['scanlist'] as $ss) {
 						?><tr> 
 							<td class="listlr" nowrap><?
 							if (!$ss['ssid']) 
-								echo "<span class=\"gray\">(hidden)</span>";
+								echo "<span class=\"gray\">";
+								echo gettext("(hidden)");
+								echo "</span>";
 							else
 								echo htmlspecialchars($ss['ssid']);
 			    	
@@ -348,18 +350,18 @@ function get_analog_interface_info() {
 			if (isset($ifinfo['aslist'])) {
 
 			?><tr> 
-				<td width="22%" valign="top" class="vncellt">Associated stations</td>
+				<td width="22%" valign="top" class="vncellt"><?=gettext("Associated stations");?></td>
 				<td width="78%" class="listrpad"><?
 				
 				if (count($ifinfo['aslist']) > 0) {
 
 					?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 						<tr>
-							<td width="30%" class="listhdrr">MAC address</td>
-							<td width="15%" class="listhdrr">Rate</td>
-							<td width="15%" class="listhdrr">RSSI</td>
-							<td width="20%" class="listhdrr">Flags</td>
-							<td width="20%" class="listhdrr">Capabilities</td>
+							<td width="30%" class="listhdrr"><?=gettext("MAC address");?></td>
+							<td width="15%" class="listhdrr"><?=gettext("Rate");?></td>
+							<td width="15%" class="listhdrr"><?=gettext("RSSI");?></td>
+							<td width="20%" class="listhdrr"><?=gettext("Flags");?></td>
+							<td width="20%" class="listhdrr"><?=gettext("Capabilities");?></td>
 						</tr><?
 						
 					foreach ($ifinfo['aslist'] as $as) {
@@ -374,13 +376,11 @@ function get_analog_interface_info() {
 					}
 
 					?></table><br>
-					Flags: A = authorized, E = Extended Rate (802.11g), P = Power save mode<br>
-					Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), P = privacy (WEP/TKIP/AES),
-					S = Short preamble, s = Short slot time<?
+					<?=gettext("Flags: A = authorized, E = Extended Rate (802.11g), P = Power save mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time");?><?
 
 				} else {
 					
-					?>No stations are associated at this time.<?
+					?><?=gettext("No stations are associated at this time.");?><?
 
 				}
 			}
@@ -417,27 +417,27 @@ function get_analog_interface_info() {
 				<?="ISDN Unit {$isdninterface['unit']} (". htmlspecialchars($isdninterface['name']) .")";?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Attached</td>
+			<td class="vncellt"><?=gettext("Attached");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['attached']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">PH State</td>
+			<td class="vncellt"><?=gettext("PH State");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['PH-state']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Dialtone</td>
+			<td class="vncellt"><?=gettext("Dialtone");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['dialtone']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Description</td>
+			<td class="vncellt"><?=gettext("Description");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['description']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Type</td>
+			<td class="vncellt"><?=gettext("Type");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['type']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Driver Type</td>
+			<td class="vncellt"><?=gettext("Driver Type");?></td>
 			<td class="listr"><?
 				echo htmlspecialchars($ifinfo['driver_type']);
 				if ($isdn_dchannel_modes[$ifinfo['driver_type']]) {
@@ -446,15 +446,15 @@ function get_analog_interface_info() {
 			?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Channels</td>
+			<td class="vncellt"><?=gettext("Channels");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['channels']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Serial</td>
+			<td class="vncellt"><?=gettext("Serial");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['serial']);?></td>
 		</tr>
 		<tr>
-			<td class="vncellt">Power Save</td>
+			<td class="vncellt"><?=gettext("Power Save");?></td>
 			<td class="listr"><?=htmlspecialchars($ifinfo['power_save']);?></td>
 		</tr><?
 		
