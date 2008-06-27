@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Status", "Active Channels");
+$pgtitle = array(gettext("Status"), gettext("Active Channels"));
 require("guiconfig.inc");
 
 pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_strings);
@@ -47,16 +47,16 @@ for($i = 0; $i < $n; $i++) {
 	<? if ($n == 0): ?>
 		
 		<tr> 
-			<td><strong>There are currently no active channels.</strong></td>
+			<td><strong><?=gettext("There are currently no active channels.");?></strong></td>
 		</tr>
 		
 	<? else: ?>
 
 		<tr>
-			<td width="25%" class="listhdrr">Channel</td>
-			<td width="25%" class="listhdrr">Location</td>
-			<td width="25%" class="listhdrr">State</td>
-			<td width="25%" class="listhdr">Application</td>
+			<td width="25%" class="listhdrr"><?=gettext("Channel");?></td>
+			<td width="25%" class="listhdrr"><?=gettext("Location");?></td>
+			<td width="25%" class="listhdrr"><?=gettext("State");?></td>
+			<td width="25%" class="listhdr"><?=gettext("Application");?></td>
 		</tr>
 		
 		<? $n = count($channels); ?>
