@@ -3124,11 +3124,11 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #: display.inc:35 guiconfig.inc:170
 msgid "English"
-msgstr "Englanti"
+msgstr "Englannin kieli"
 
-#: display.inc:36
+#: display.inc:36 guiconfig.inc:173
 msgid "Finnish"
-msgstr "Suomi"
+msgstr "Suomen kieli"
 
 #: display.inc:40
 msgid "webGUI language"
@@ -3708,10 +3708,6 @@ msgstr "Tanskan kieli (virallinen)"
 #: guiconfig.inc:175
 msgid "Dutch (formal)"
 msgstr "Hollannin kieli (virallinen)"
-
-#: guiconfig.inc:173
-msgid "Finnish"
-msgstr "Suomen kieli"
 
 #: guiconfig.inc:175
 msgid "Finnish (formal)"
