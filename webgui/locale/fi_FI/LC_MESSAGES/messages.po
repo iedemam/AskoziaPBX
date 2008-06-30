@@ -3709,6 +3709,14 @@ msgstr "Tanskan kieli (virallinen)"
 msgid "Dutch (formal)"
 msgstr "Hollannin kieli (virallinen)"
 
+#: guiconfig.inc:173
+msgid "Finnish"
+msgstr "Suomen kieli"
+
+#: guiconfig.inc:175
+msgid "Finnish (formal)"
+msgstr "Suomen kieli (virallinen)"
+
 #: guiconfig.inc:176
 msgid "French"
 msgstr "Ranskan kieli"
