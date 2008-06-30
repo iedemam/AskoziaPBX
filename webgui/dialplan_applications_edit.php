@@ -132,7 +132,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td class="vtable">
-					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(gettext($pconfig['name']));?>"> 
 					<br><span class="vexpl"></span>
 				</td>
 			</tr>
