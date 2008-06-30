@@ -370,9 +370,7 @@ require_once("functions.inc");
 
 						}
 
-						?></table>
-						<?=print_r_html($prompts);?>
-						</span>
+						?></table></span>
 					</span>
 				</td>
 			</tr>
