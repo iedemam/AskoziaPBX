@@ -962,6 +962,8 @@ function populate_webgui($image_name) {
 
 	// copy over webgui files
 	_exec("cp -R {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
+	// remove the .po locale source files
+	_exec("find $image_name/rootfs/usr/local/www/locale -type f -name \"*.po\" -delete -print");
 
 	// grab scriptaculous
 	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
