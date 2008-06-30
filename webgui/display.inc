@@ -32,8 +32,8 @@
 function display_gui_language_selector($current_language) {
 
 	$languages = array(
-		"en_US" => gettext("English"),
-		"fi_FI" => gettext("Finnish")
+		"en_US" => "English",
+		"fi_FI" => "Suomen kieli"
 	);
 
 	?><tr> 
