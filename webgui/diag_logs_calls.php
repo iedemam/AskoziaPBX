@@ -33,7 +33,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 $logpath");
+	exec("/usr/sbin/clog -i -s 262144 /var/log/cdr.log");
 	header("Location: diag_logs_calls.php");
 	exit;
 }
