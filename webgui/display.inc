@@ -33,7 +33,7 @@ function display_gui_language_selector($current_language) {
 
 	$languages = array(
 		"en_US" => "English",
-		"fi_FI" => "Suomen kieli"
+		"fi_FI" => "Suomi"
 	);
 
 	?><tr> 
