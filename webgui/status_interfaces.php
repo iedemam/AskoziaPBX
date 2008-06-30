@@ -322,10 +322,11 @@ function get_analog_interface_info() {
 					foreach ($ifinfo['scanlist'] as $ss) {
 						?><tr> 
 							<td class="listlr" nowrap><?
-							if (!$ss['ssid']) 
+							if (!$ss['ssid']) {
 								echo "<span class=\"gray\">";
 								echo gettext("(hidden)");
 								echo "</span>";
+							}
 							else
 								echo htmlspecialchars($ss['ssid']);
 			    	
