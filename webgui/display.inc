@@ -664,7 +664,7 @@ function display_description_field($current_description, $colspan) {
 	?><tr> 
 		<td valign="top" class="vncell"><?=gettext("Description");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($current_description);?>"> 
+			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars(gettext($current_description));?>"> 
 			<br><span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span>
 		</td>
 	</tr><?
