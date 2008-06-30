@@ -86,8 +86,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<?php $i = 0; foreach ($a_applications as $app): ?>
 	<tr>
 		<td class="listlr"><?=htmlspecialchars($app['extension']);?></td>
-		<td class="listbg"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($app['descr']);?>&nbsp;</td>
+		<td class="listbg"><?=htmlspecialchars(gettext($app['name']));?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars(gettext($app['descr']));?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit application mapping");?>" border="0"></a>
 			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this application mapping?");?>')"><img src="delete.png" title="<?=gettext("delete application mapping");?>" border="0"></a></td>
 	</tr>
