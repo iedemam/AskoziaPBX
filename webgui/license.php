@@ -77,7 +77,7 @@ require("guiconfig.inc");
 	<?=gettext("with plugins:");?>
 	<ul>
 		<li><a href="http://plugins.jquery.com/project/blockui" target="_blank"><?=gettext("blockUI</a> - Copyright &copy; 2007 - 2008 M. Alsup");?></li>
-		<li><a href="http://plugins.jquery.com/project/preloadImages" target="_blank"><?=gettext("preloadImages</a> - Copyright &copy; 2007 - 2008 Blair McBride");></li>
+		<li><a href="http://plugins.jquery.com/project/preloadImages" target="_blank"><?=gettext("preloadImages</a> - Copyright &copy; 2007 - 2008 Blair McBride");?></li>
 		<li><a href="http://plugins.jquery.com/project/selectboxes" target="_blank"><?=gettext("selectboxes</a> - Copyright &copy; 2006 - 2008 Sam Collett");?></li>
 	</ul>
 	<br>
