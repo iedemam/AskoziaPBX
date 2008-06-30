@@ -51,6 +51,10 @@ $vm_emailsubject = array(
 	// spanish
 	"es-formal" => 		"Nuevo mensaje de voz (cuenta: $\{VM_MAILBOX})",
 
+	// finnish
+	"fi-informal" =>	"Uusi puhesanoma (postilokero: $\{VM_MAILBOX})",
+	"fi-formal" =>		"Uusi puhesanoma (postilokero: $\{VM_MAILBOX})",
+
 	// french
 	"fr-informal" => 	"tu as reçu un nouveau message dans ta boite vocale",
 	"fr-formal" => 		"vous avez reçu un nouveau message dans votre boite vocale",
@@ -119,6 +123,16 @@ $vm_emailbody = array(
 	"es-formal" => 		"Estimado $\{VM_NAME},\\n\\n".
 						"Usted ha recibido un mensaje de voz desde el número $\{VM_CALLERID}.\\n\\n".
 						"La duración del mensaje es $\{VM_DUR} y fue dejado para usted el día $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	// finnish
+	"fi-informal" => 	"Hei $\{VM_NAME},\\n\\n".
+						"Puhelu $\{VM_CALLERID}:lta on saapunut sinun vastaajaan.\\n\\n".
+						"Viesti on $\{VM_DUR} pitkä ja on jätetty vastaajalle $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	"fi-formal" => 		"Hyvä herra/rouva $\{VM_NAME},\\n\\n".
+						"$\{VM_CALLERID} on jättänyt sinulle $\{VM_DUR} pitkän puheviestin $\{VM_DATE}.\\n\\n".
 						"-AskoziaPBX",
 
 	// french
