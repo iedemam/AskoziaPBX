@@ -156,9 +156,10 @@ $menu['System'][gettext("Interfaces")] 			= array('interfaces_network.php',
 												'interfaces_storage.php',
 												'interfaces_storage_syspart_edit.php',
 												'interfaces_storage_disk_edit.php');
-$menu['System'][gettext("Firmware")]				= array('system_firmware.php');
+$menu['System'][gettext("Packages")]			= array('system_packages.php');
+$menu['System'][gettext("Firmware")]			= array('system_firmware.php');
 $menu['System'][gettext("Backup/Restore")] 		= array('system_backup.php');
-$menu['System'][gettext("Factory Defaults")]		= array('system_defaults.php');
+$menu['System'][gettext("Factory Defaults")]	= array('system_defaults.php');
 $menu['System'][gettext("Reboot")] 				= array('system_reboot.php');
 
 /* Accounts */
@@ -167,7 +168,7 @@ $menu['Accounts'][gettext("Providers")]			= array('accounts_providers.php',
 												'providers_iax_edit.php',
 												'providers_isdn_edit.php',
 												'providers_analog_edit.php');
-$menu['Accounts'][gettext("Phones")]				= array('accounts_phones.php',
+$menu['Accounts'][gettext("Phones")]			= array('accounts_phones.php',
 												'phones_sip_edit.php',
 												'phones_iax_edit.php',
 												'phones_isdn_edit.php',
@@ -179,7 +180,6 @@ $menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications.php',
 												'dialplan_applications_edit.php');
 $menu['Dialplan'][gettext("Call Groups")]		= array('dialplan_callgroups.php',
 												'dialplan_callgroups_edit.php');
-//$menu['Dialplan']['Providers']			= array('dialplan_providers.php');
 $menu['Dialplan'][gettext("Transfers")]			= array('dialplan_transfers.php');
 											
 /* Services */
@@ -191,10 +191,7 @@ $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Status'][gettext("Summary")]				= array('index.php');
 $menu['Status'][gettext("Interfaces")]			= array('status_interfaces.php');
 $menu['Status'][gettext("Channels")]				= array('status_channels.php');
-//$menu['Status']['Providers']				= array('status_providers.php');
-//$menu['Status']['Phones']					= array('status_phones.php');
 $menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
-//$menu['Status']['Voicemail']				= array('status_voicemail.php');
 
 /* Live Stats */
 $menu['Live Stats'][gettext("Network Traffic")]	= array('status_graph_traffic.php');
@@ -209,7 +206,6 @@ $menu['Advanced'][gettext("Analog")] 			= array('advanced_analog.php');
 $menu['Advanced'][gettext("Manager")] 			= array('advanced_manager.php',
 												'advanced_manager_edit.php');
 $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
-//$menu['Advanced']['Quality of Service'] 					= array('advanced_qos.php');
 
 /* Diagnostics */
 $menu['Diagnostics'][gettext("Logs")]			= array('diag_logs.php',
