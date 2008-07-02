@@ -170,12 +170,20 @@ if (file_exists($d_analogconfdirty_path)) {
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
-		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
-			<a href="providers_sip_edit.php"><?=gettext("SIP");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="providers_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="providers_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="providers_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">
-		</td>
+		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;<?
+		if (!isset($config['system']['webgui']['hidesip'])) {
+			?><a href="providers_sip_edit.php"><?=gettext("SIP");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		if (!isset($config['system']['webgui']['hideiax'])) {
+			?><a href="providers_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		if (!isset($config['system']['webgui']['hideisdn'])) {
+			?><a href="providers_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		if (!isset($config['system']['webgui']['hideanalog'])) {
+			?><a href="providers_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		?></td>
 	</tr>
 	<tr> 
 		<td class="list" height="12">&nbsp;</td>

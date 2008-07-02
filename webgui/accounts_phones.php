@@ -192,12 +192,20 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
-		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
-			<a href="phones_sip_edit.php"><?=gettext("SIP");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="phones_external_edit.php"><?=gettext("External");?></a><img src="bullet_add.png">
+		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;<?
+		if (!isset($config['system']['webgui']['hidesip'])) {
+			?><a href="phones_sip_edit.php"><?=gettext("SIP");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		if (!isset($config['system']['webgui']['hideiax'])) {
+			?><a href="phones_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		if (!isset($config['system']['webgui']['hideisdn'])) {
+			?><a href="phones_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+		if (!isset($config['system']['webgui']['hideanalog'])) {
+			?><a href="phones_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+		}
+			?><a href="phones_external_edit.php"><?=gettext("External");?></a><img src="bullet_add.png">
 		</td>
 	</tr>
 	<tr> 
@@ -385,7 +393,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight"><?=gettext("IAX");?></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("External");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
