@@ -28,7 +28,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-//GUI language selector function
+
 function display_gui_language_selector($current_language) {
 
 	$languages = array(
@@ -47,7 +47,12 @@ function display_gui_language_selector($current_language) {
 			><?=gettext($langdesc);?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl"><? echo gettext("Select in which language you want the webGUI to be displayed."); ?></span>
+			<br><span class="vexpl"><?=gettext("Select in which language you want the webGUI to be displayed."); ?><br><?
+			/* don't translate */
+			?><em>Contact <a href="mailto:michael@askozia.com">us</a>
+			if you are able to provide a new translation.</em><?
+			/* end */
+			?></span>
 		</td>
 	</tr><?
 }

@@ -200,7 +200,7 @@ function javascript_advanced_settings($part) {
 	<? elseif ($part == "ready") : ?>
 
 		jQuery("#advanced-settings-opener").click(function(){
-			jQuery("#advanced-settings-header").html("Advanced Settings");
+			jQuery("#advanced-settings-header").html("<?=gettext("Advanced Settings");?>");
 			jQuery("#advanced-settings-container").slideDown();
 		});
 
