@@ -804,9 +804,7 @@ autoload=yes
 
 EOD;
 
-	if (isset($logging_pkg['active'])) {
-		$modulesconf .= "noload => cdr_syslog.so\n";
-	} else {
+	if (!isset($logging_pkg['active'])) {
 		$modulesconf .= "noload => cdr_csv.so\n";
 		$modulesconf .= "noload => cdr_sqlite.so\n";
 	}

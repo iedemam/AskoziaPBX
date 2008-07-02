@@ -182,7 +182,7 @@ function system_syslogd_start() {
 		printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
 		return 1;
 	}
-	// XXX : cdr logging could be made conditional here based on service state
+
 	$syslogconf = <<<EOD
 local0.*;mail.*							%/var/log/pbx.log
 local1.*								%/var/log/cdr.log
