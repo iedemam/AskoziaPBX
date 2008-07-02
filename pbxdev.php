@@ -980,6 +980,7 @@ function populate_webgui($image_name) {
 function update_locales() {
 	global $dirs;
 
+	// convert to .mo files
 	$path = $dirs['webgui'] . "/locale";
 	$dh = opendir($path);
 	while (false !== ($dirname = readdir($dh))) {
@@ -987,6 +988,9 @@ function update_locales() {
 			_exec("cd $path/$dirname/LC_MESSAGES; msgfmt -o messages.mo messages.po");
 		}
 	}
+
+	// add a .po skeleton file
+	_exec("cd " . $dirs['webgui'] . "; xgettext -o skeleton.po --no-wrap --language=PHP *.php *.inc");
 }
 
 function populate_jquery($image_name) {
