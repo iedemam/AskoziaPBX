@@ -47,8 +47,8 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 
 /* handle upload request */
 } else if (($_POST['submit'] == "Upload") && is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
-	move_uploaded_file($_FILES['ulfile']['tmp_name'], "/tmp/" . $_FILES['ulfile']['name']);
-	$ulmsg = "Uploaded file to /tmp/" . htmlentities($_FILES['ulfile']['name']);
+	move_uploaded_file($_FILES['ulfile']['tmp_name'], "/ultmp/" . $_FILES['ulfile']['name']);
+	$ulmsg = "Uploaded file to /ultmp/" . htmlentities($_FILES['ulfile']['name']);
 	unset($_POST['txtCommand']);
 }
 ?>
