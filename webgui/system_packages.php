@@ -126,7 +126,7 @@ if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 
 	// if the package does not exist, fail
 	if (!($old_pkg = packages_get_package($uploaded_pkg_name))) {
-		$input_errors[] = "Existing package not found, update failed.";
+		$input_errors[] = gettext("Existing package not found, update failed.");
 
 	} else {
 		// read the uploaded package's configuration
@@ -135,7 +135,7 @@ if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 
 		// if the package is not newer, fail
 		if ($uploaded_pkg_conf['version'] <= $old_pkg['version']) {
-			$input_errors[] = "The uploaded package is not newer than the existing package, update failed.";
+			$input_errors[] = gettext("The uploaded package is not newer than the existing package, update failed.");
 
 		} else {
 			// copy the new rc file
@@ -191,7 +191,7 @@ if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 
 	// if that package exists, fail because we should be installing a new package
 	if (packages_get_package($uploaded_pkg_name)) {
-		$input_errors[] = "Package already exists, install failed.";
+		$input_errors[] = gettext("Package already exists, install failed.");
 
 	} else {
 		// move over new pkg data
