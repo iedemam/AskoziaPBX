@@ -4281,3 +4281,41 @@ msgstr ""
 "tehdä tämä, on suositeltavaa että jättät tämän alueen tyhjäksi. Virheelliset "
 "arvot voi vahingoittaa järjestelmän toimivuuden ja/tai haavoittaa "
 "turvallisuuden."
+
+#: phpconf/inc/packages.inc:168
+#, php-format
+msgid "Package activated successfully."
+msgstr "Paketti aktivoitiin onnistuneesti."
+
+#: phpconf/inc/packages.inc:170
+#, php-format
+msgid "Package deactivated successfully."
+msgstr "Paketti deaktivoitiin onnistuneesti."
+
+#: phpconf/inc/packages.inc:172
+#, php-format
+msgid "Package deleted successfully."
+msgstr "Paketti poistettiin onnistuneesti."
+
+#: phpconf/inc/packages.inc:174
+#, php-format
+msgid "Package restored successfully."
+msgstr "Paketti palautettiin onnistuneesti."
+
+#: phpconf/inc/packages.inc:176
+#, php-format
+msgid "Package installed successfully."
+msgstr "Paketti asennettiin onnistuneesti."
+
+#: webgui/system_packages.php:129
+msgid "Existing package not found, update failed."
+msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
+
+#: webgui/system_packages.php:138
+msgid ""
+"The uploaded package is not newer than the existing package, update failed."
+msgstr "Ladattu paketti ei ole uudempi kun oleva paketti, asennus epäonnistui."
+
+#: webgui/system_packages.php:194
+msgid "Package already exists, install failed."
+msgstr "Paketti on jo olemassa, asennus epäonnistui."
