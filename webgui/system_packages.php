@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("System", "Packages");
+$pgtitle = array(gettext("System"), gettext("Packages"));
 require("guiconfig.inc");
 
 /* backup */
@@ -141,16 +141,16 @@ if (storage_syspart_get_state() == "active") {
 
 if (!$syspart) {
 
-	?><strong>The system storage media is not large enough to install packages.</strong> A minimum of <?=$defaults['storage']['system-media-minimum-size'];?>MB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media.<?
+	?><strong><?=gettext("The system storage media is not large enough to install packages.");?></strong><?=gettext(" A minimum of ");?> <?=$defaults['storage']['system-media-minimum-size'];?><?=gettext("MB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media.");?><?
 
 } else {
 
 	?><table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
 			<td width="5%" class="list"></td>
-			<td width="20%" class="listhdrr">Name</td>
-			<td width="25%" class="listhdrr">Size</td>
-			<td width="35%" class="listhdr">Description</td>
+			<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+			<td width="25%" class="listhdrr"><?=gettext("Size");?></td>
+			<td width="35%" class="listhdr"><?=gettext("Description");?></td>
 			<td width="15%" class="list"></td>
 		</tr><?
 			
@@ -161,13 +161,13 @@ if (!$syspart) {
 		}
     
 		?><tr>
-			<td valign="middle" nowrap class="list"><a href="?action=deactivate&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to disable this package?')"><img src="enabled.png" title="click to disable package" border="0"></a></td>
+			<td valign="middle" nowrap class="list"><a href="?action=deactivate&package=<?=$pkg['name'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this package?");?>')"><img src="enabled.png" title="<?=gettext("click to disable package");?>" border="0"></a></td>
 			<td class="listbgl"><?=$pkg['name'];?>&nbsp;(<?=$pkg['version'];?>)</td>
 			<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
 			<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
-			<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="backup package data" border="0"></a>
-				<a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideDown();"><img src="restore.png" title="restore package data" border="0"></a>
-				<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="delete.png" title="delete package configuration and data" border="0"></a></td>
+			<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="<?=gettext("backup package data");?>" border="0"></a>
+				<a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideDown();"><img src="restore.png" title="<?=gettext("restore package data");?>" border="0"></a>
+				<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('<?=gettext("Do you really want to permanently delete this package\'s configuration and data?");?>')"><img src="delete.png" title="<?=gettext("delete package configuration and data");?>" border="0"></a></td>
 		</tr><?
 	}
     
@@ -178,20 +178,20 @@ if (!$syspart) {
 		}
     
 		?><tr>
-			<td valign="middle" nowrap class="list"><a href="?action=activate&package=<?=$pkg['name'];?>"><img src="disabled.png" title="click to enable package" border="0"></a></td>
+			<td valign="middle" nowrap class="list"><a href="?action=activate&package=<?=$pkg['name'];?>"><img src="disabled.png" title="<?=gettext("click to enable package");?>" border="0"></a></td>
 			<td class="listbgl"><?=$pkg['name'];?>&nbsp;(<?=$pkg['version'];?>)</td>
 			<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
 			<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
-			<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="backup package data" border="0"></a>
-				<a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideDown();"><img src="restore.png" title="activate package from backup data" border="0"></a>
-				<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('Do you really want to permanently delete this package\'s configuration and data?')"><img src="delete.png" title="delete package configuration and data" border="0"></a></td>
+			<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="<?=gettext("backup package data");?>" border="0"></a>
+				<a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideDown();"><img src="restore.png" title="<?=gettext("activate package from backup data");?>" border="0"></a>
+				<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('<?=gettext("Do you really want to permanently delete this package\'s configuration and data?");?>')"><img src="delete.png" title="<?=gettext("delete package configuration and data");?>" border="0"></a></td>
 		</tr><?
 	}
 
 		?><tr> 
 			<td class="list" colspan="4"></td>
-			<td class="list"><a href="javascript:{}" onclick="jQuery('#packages-install-container').slideDown();"><img src="add.png" title="install new package" border="0"></a>
-				<a href="javascript:{}" onclick="jQuery('#packages-update-container').slideDown();"><img src="update.png" title="update package to newer version" border="0"></a></td>
+			<td class="list"><a href="javascript:{}" onclick="jQuery('#packages-install-container').slideDown();"><img src="add.png" title="<?=gettext("install new package");?>" border="0"></a>
+				<a href="javascript:{}" onclick="jQuery('#packages-update-container').slideDown();"><img src="update.png" title="<?=gettext("update package to newer version");?>" border="0"></a></td>
 		</tr>
 		<tr> 
 			<td class="list" colspan="5" height="12">&nbsp;</td>
@@ -200,30 +200,30 @@ if (!$syspart) {
 			<td class="list"></td>
 			<td class="list" colspan="3">
 				<div id="packages-install-container" class="tabcont" style="display: none;">
-					<strong>Install a new Package</strong><br>
+					<strong><?=gettext("Install a new Package");?></strong><br>
 					<br>
-					Select a package .tgz archive and press "Install"<br>
+					<?=gettext("Select a package .tgz archive and press 'Install'");?><br>
 					<br>
 					<input id="installfile" name="installfile" type="file" class="formfld">
-					<input name="install-submit" type="submit" class="formbtn" value="Install"> <a href="javascript:{}" onclick="jQuery('#packages-install-container').slideUp();">cancel</a>
+					<input name="install-submit" type="submit" class="formbtn" value="<?=gettext("Install");?>"> <a href="javascript:{}" onclick="jQuery('#packages-install-container').slideUp();"><?=gettext("cancel");?></a>
 				</div>
 				<div id="packages-update-container" class="tabcont" style="display: none;">
-					<strong>Update an Installed Package</strong><br>
+					<strong><?=gettext("Update an Installed Package");?></strong><br>
 					<br>
-					Select a package .tgz archive and press "Update"<br>
-					Existing package data will be preserved.<br>
+					<?=gettext("Select a package .tgz archive and press 'Update'");?><br>
+					<?=gettext("Existing package data will be preserved.");?><br>
 					<br>
 					<input id="updatefile" name="updatefile" type="file" class="formfld">
-					<input name="update-submit" type="submit" class="formbtn" value="Update"> <a href="javascript:{}" onclick="jQuery('#packages-update-container').slideUp();">cancel</a>
+					<input name="update-submit" type="submit" class="formbtn" value="<?=gettext("Update");?>"> <a href="javascript:{}" onclick="jQuery('#packages-update-container').slideUp();"><?=gettext("cancel");?></a>
 				</div>
 				<div id="packages-restore-container" class="tabcont" style="display: none;">
-					<strong>Restore from a Backup Archive</strong><br>
+					<strong><?=gettext("Restore from a Backup Archive");?></strong><br>
 					<br>
-					Select a backup .tgz archive and press "Restore"<br>
-					Package data & logic will be replaced by the backup.<br>
+					<?=gettext("Select a backup .tgz archive and press 'Restore'");?><br>
+					<?=gettext("Package data & logic will be replaced by the backup.");?><br>
 					<br>
 					<input id="restorefile" name="restorefile" type="file" class="formfld">
-					<input name="restore-submit" type="submit" class="formbtn" value="Restore"> <a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideUp();">cancel</a>
+					<input name="restore-submit" type="submit" class="formbtn" value="<?=gettext("Restore");?>"> <a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideUp();"><?=gettext("cancel");?></a>
 				</div>
 			</td>
 			<td class="list"></td>
