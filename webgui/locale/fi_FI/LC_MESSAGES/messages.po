@@ -1181,6 +1181,10 @@ msgstr "Lataa ylös:"
 msgid "Upload"
 msgstr "Lataa ylös"
 
+#: fbegin.inc:86
+msgid "(print)"
+msgstr "(tulosta)"
+
 #: graph.php:79
 msgid "In"
 msgstr "Sisään"
