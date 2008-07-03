@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Interfaces", "Storage");
+$pgtitle = array(gettext("Interfaces"), gettext("Storage"));
 require("guiconfig.inc");
 
 
@@ -50,11 +50,11 @@ if (storage_syspart_get_state() == "active") {
 			<ul id="tabnav"><?
 
 			$tabs = array(
-				'Network'	=> 'interfaces_network.php',
-				'Wireless'	=> 'interfaces_wireless.php',
-				'ISDN'		=> 'interfaces_isdn.php',
-				'Analog'	=> 'interfaces_analog.php',
-				'Storage'	=> 'interfaces_storage.php'
+				gettext('Network')	=> 'interfaces_network.php',
+				gettext('Wireless')	=> 'interfaces_wireless.php',
+				gettext('ISDN')		=> 'interfaces_isdn.php',
+				gettext('Analog')	=> 'interfaces_analog.php',
+				gettext('Storage')	=> 'interfaces_storage.php'
 			);
 			dynamic_tab_menu($tabs);
 
@@ -66,20 +66,20 @@ if (storage_syspart_get_state() == "active") {
 
 		if (!$syspart) {
 
-			?><strong>The system storage media is not large enough to install packages.</strong> A minimum of <?=$defaults['storage']['system-media-minimum-size'];?>MB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media.<?
+			?><strong><?=gettext("The system storage media is not large enough to install packages.");?></strong><?=gettext(" A minimum of ");?> <?=$defaults['storage']['system-media-minimum-size'];?><?=gettext("MB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media.");?><?
 
 		} else {
 
 			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr>
-					<td width="20%" class="listhdrr">Name</td>
-					<td width="25%" class="listhdrr">Capacity</td>
-					<td width="15%" class="listhdrr">State</td>
-					<td width="30%" class="listhdr">Installed Packages</td>
+					<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Capacity");?></td>
+					<td width="15%" class="listhdrr"><?=gettext("State");?></td>
+					<td width="30%" class="listhdr"><?=gettext("Installed Packages");?></td>
 					<td width="10%" class="list"></td>
 				</tr>
 				<tr>
-					<td class="listbgl">system storage partition</td>
+					<td class="listbgl"><?=gettext("system storage partition");?></td>
 					<td class="listr"><? display_capacity_bar(
 						($syspart['size'] - ($defaults['storage']['system-partition-offset-megabytes']*1024*1024)),
 						$syspart['usage']);?>&nbsp;</td>
