@@ -58,23 +58,16 @@ if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 	header("Location: system_packages.php");
 	exit;
 
-/* install: can mean a number of things:
-	- if "restore" is clicked on an existing package:
-		+ the package is completely replaced
-	- if "install / upgrade" is clicked from the main screen:
-		+ if an older version of the package exists, a "logic upgrade" confirmation is presented
-		+ if an equal or newer version of the package exists, a failure screen is presented
-		+ if package does not yet exist, it is installed
-*/
-} else if ($_POST['install-submit'] && is_uploaded_file($_FILES['installfile']['tmp_name'])) {
+/* restore a package from a backup archive: the package is completely replaced */
+} else if ($_POST['restore-submit'] && is_uploaded_file($_FILES['restorefile']['tmp_name'])) {
 
 	$pkg_install_path = storage_get_media_path("syspart");
 	$ultmp_path =  $pkg_install_path . "/ultmp/";
-	$file_name = $_FILES['installfile']['name'];
+	$file_name = $_FILES['restorefile']['name'];
 	$full_file_name = $ultmp_path . "/" . $file_name;
 
 	// rename the uploaded file back to its original name
-	move_uploaded_file($_FILES['installfile']['tmp_name'], $full_file_name);
+	move_uploaded_file($_FILES['restorefile']['tmp_name'], $full_file_name);
 
 	// cd into ultmp and decompress the newly uploaded file
 	mwexec("cd $ultmp_path; /usr/bin/tar zxf $file_name");
@@ -105,11 +98,114 @@ if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 	// remove uploaded files
 	mwexec("rm -rf " . $ultmp_path . "/*");
 
-	// set save message
-
-
 	header("Location: system_packages.php");
 	exit;
+
+/* update an existing package: logic is updated */
+} else if ($_POST['update-submit'] && is_uploaded_file($_FILES['updatefile']['tmp_name'])) {
+
+	$pkg_install_path = storage_get_media_path("syspart");
+	$ultmp_path =  $pkg_install_path . "/ultmp/";
+	$file_name = $_FILES['updatefile']['name'];
+	$full_file_name = $ultmp_path . "/" . $file_name;
+
+	// rename the uploaded file back to its original name
+	move_uploaded_file($_FILES['updatefile']['tmp_name'], $full_file_name);
+
+	// cd into ultmp and decompress the newly uploaded file
+	mwexec("cd $ultmp_path; /usr/bin/tar zxf $file_name");
+
+	// find the name of the freshly extracted package directory
+	$dh = opendir($ultmp_path);
+	while ($direntry = readdir($dh)) {
+		if (strpos($direntry, ".pkg") !== false) { 
+			$uploaded_pkg_name = substr($direntry, 0, strpos($direntry, ".pkg"));
+		} 
+	}
+	closedir($dh);
+
+	// if the package does not exist, fail
+	if (!($old_pkg = packages_get_package($uploaded_pkg_name))) {
+		$input_errors[] = "Existing package not found, update failed.";
+
+	} else {
+		// read the uploaded package's configuration
+		$uploaded_pkg_path = $ultmp_path . "/" . $uploaded_pkg_name . ".pkg";
+		$uploaded_pkg_conf = packages_read_config($uploaded_pkg_path);
+
+		// if the package is not newer, fail
+		if ($uploaded_pkg_conf['version'] <= $old_pkg['version']) {
+			$input_errors[] = "The uploaded package is not newer than the existing package, update failed.";
+
+		} else {
+			// copy the new rc file
+			mwexec("/bin/cp " . $uploaded_pkg_path . "/rc " . $pkg_install_path . "/" . $uploaded_pkg_name);
+			// execute the update routine
+			$ret = mwexec("/etc/rc.pkgexec " . $pkg_install_path . "/" . $uploaded_pkg_name . "/rc update");
+			// update package meta info from built-in package
+			$updated_pkg_conf = $old_pkg;
+			$updated_pkg_conf['version'] = $uploaded_pkg_conf['version'];
+			$updated_pkg_conf['descr'] = $uploaded_pkg_conf['descr'];
+			// write out package's updated conf.xml
+			$updated_pkg_xml = array_to_xml($updated_pkg_conf, "package");
+			util_file_put_contents($updated_pkg_xml, $pkg_install_path . "/" . $uploaded_pkg_name . "/conf.xml");
+
+			// activate new package if needed
+			if ($old_pkg['active']) {
+				packages_exec_rc($uploaded_pkg_name, "activate");
+			}
+
+			// remove uploaded files
+			mwexec("rm -rf " . $ultmp_path . "/*");
+
+			header("Location: system_packages.php");
+			exit;
+		}	
+	}
+
+	// remove uploaded files
+	mwexec("rm -rf " . $ultmp_path . "/*");
+
+/* install a new package */
+} else if ($_POST['install-submit'] && is_uploaded_file($_FILES['installfile']['tmp_name'])) {
+
+	$pkg_install_path = storage_get_media_path("syspart");
+	$ultmp_path =  $pkg_install_path . "/ultmp/";
+	$file_name = $_FILES['installfile']['name'];
+	$full_file_name = $ultmp_path . "/" . $file_name;
+
+	// rename the uploaded file back to its original name
+	move_uploaded_file($_FILES['installfile']['tmp_name'], $full_file_name);
+
+	// cd into ultmp and decompress the newly uploaded file
+	mwexec("cd $ultmp_path; /usr/bin/tar zxf $file_name");
+
+	// find the name of the freshly extracted package directory
+	$dh = opendir($ultmp_path);
+	while ($direntry = readdir($dh)) {
+		if (strpos($direntry, ".pkg") !== false) { 
+			$uploaded_pkg_name = substr($direntry, 0, strpos($direntry, ".pkg"));
+		} 
+	}
+	closedir($dh);
+
+	// if that package exists, fail because we should be installing a new package
+	if (packages_get_package($uploaded_pkg_name)) {
+		$input_errors[] = "Package already exists, install failed.";
+
+	} else {
+		// move over new pkg data
+		mwexec("mv " . $ultmp_path . "/" . $uploaded_pkg_name . ".pkg " . $pkg_install_path);
+
+		// remove uploaded files
+		mwexec("rm -rf " . $ultmp_path . "/*");
+
+		header("Location: system_packages.php");
+		exit;	
+	}
+
+	// remove uploaded files
+	mwexec("rm -rf " . $ultmp_path . "/*");
 }
 
 /* apply changes */
