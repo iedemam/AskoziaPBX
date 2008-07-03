@@ -42,6 +42,7 @@ msgstr "IAX"
 #: accounts_providers.php:281 advanced_isdn.php:32 debug_isdn.php:32
 #: interfaces_analog.php:126 interfaces_isdn.php:32 interfaces_isdn.php:114
 #: interfaces_network.php:193 interfaces_wireless.php:192 fbegin.inc:207
+#: interfaces_storage.php:55
 msgid "ISDN"
 msgstr "ISDN"
 
@@ -49,6 +50,7 @@ msgstr "ISDN"
 #: accounts_providers.php:328 advanced_analog.php:34 interfaces_analog.php:32
 #: interfaces_analog.php:127 interfaces_isdn.php:115
 #: interfaces_network.php:194 interfaces_wireless.php:193 fbegin.inc:208
+#: interfaces_storage.php:56
 msgid "Analog"
 msgstr "Analogi"
 
@@ -78,7 +80,7 @@ msgstr "Soittajan Tunnus"
 #: accounts_phones.php:350 dialplan_applications.php:81
 #: dialplan_callgroups.php:83 printable_dialplan.php:60
 #: printable_dialplan.php:85 printable_dialplan.php:164
-#: status_interfaces.php:432 display.inc:665
+#: status_interfaces.php:432 display.inc:665 system_packages.php:153
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -125,7 +127,8 @@ msgstr "poista puhelin"
 #: providers_analog_edit.php:150 providers_iax_edit.php:212
 #: providers_isdn_edit.php:73 providers_isdn_edit.php:153
 #: providers_sip_edit.php:224 services_conferencing.php:76
-#: services_conferencing_edit.php:137
+#: services_conferencing_edit.php:137 interfaces_storage.php:75
+#: interfaces_storage_disk_edit.php:68 system_packages.php:151
 msgid "Name"
 msgstr "Nimi"
 
@@ -282,7 +285,7 @@ msgstr "Liitä yksityinen RSA avain PEM muodossa."
 #: providers_analog_edit.php:191 providers_iax_edit.php:266
 #: providers_isdn_edit.php:192 providers_sip_edit.php:291
 #: services_conferencing_edit.php:153 services_voicemail.php:174
-#: system.php:219
+#: system.php:219 interfaces_storage_disk_edit.php:77
 msgid "Save"
 msgstr "Tallenna"
 
@@ -702,6 +705,7 @@ msgstr "Loki"
 #: diag_logs.php:70 diag_logs_calls.php:160 diag_logs_pbx.php:68
 #: diag_logs_settings.php:108 system.php:32 system_defaults.php:32
 #: system_firmware.php:33 system_reboot.php:32 fbegin.inc:284
+#: system_packages.php:32
 msgid "System"
 msgstr "Järjestelmä"
 
@@ -1181,6 +1185,10 @@ msgstr "Lataa ylös"
 msgid "In"
 msgstr "Sisään"
 
+#: fbegin.inc:159 system_packages.php:32
+msgid "Packages"
+msgstr "Paketit"
+
 #: graph.php:80
 msgid "Out"
 msgstr "Ulos"
@@ -1274,23 +1282,27 @@ msgstr "Muistiinapanot"
 #: interfaces_isdn.php:32 interfaces_isdn_edit.php:36
 #: interfaces_network.php:32 interfaces_wireless.php:32
 #: status_interfaces.php:32 fbegin.inc:151 fbegin.inc:192
+#: interfaces_storage.php:32 interfaces_storage_disk_edit.php:36
 msgid "Interfaces"
 msgstr "Käyttöliittymät"
 
 #: interfaces_analog.php:124 interfaces_isdn.php:112 interfaces_network.php:32
 #: interfaces_network.php:191 interfaces_wireless.php:190
-#: status_interfaces.php:202
+#: status_interfaces.php:202 interfaces_storage.php:53
 msgid "Network"
 msgstr "Verkko"
 
 #: interfaces_analog.php:125 interfaces_isdn.php:113
 #: interfaces_network.php:192 interfaces_wireless.php:32
 #: interfaces_wireless.php:191 status_interfaces.php:203
+#: interfaces_storage.php:54
 msgid "Wireless"
 msgstr "Langaton"
 
 #: interfaces_analog.php:128 interfaces_isdn.php:116
 #: interfaces_network.php:195 interfaces_wireless.php:194
+#: interfaces_storage.php:32 interfaces_storage.php:57
+#: interfaces_storage_disk_edit.php:36
 msgid "Storage"
 msgstr "Tallentaminen"
 
@@ -1801,6 +1813,44 @@ msgid ""
 msgstr ""
 "104 (128) tavuinen avain on annettava 13 ASCII merkillä tai 26 HEX "
 "numeroilla jonka ennen tulee laittaa '0x'."
+
+#: interfaces_storage.php:69 system_packages.php:144
+msgid "The system storage media is not large enough to install packages."
+msgstr "Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa paketteja."
+
+#: interfaces_storage.php:69 system_packages.php:144
+msgid " A minimum of "
+msgstr " Minimi "
+
+#: interfaces_storage.php:69 system_packages.php:144
+msgid ""
+"MB is required. In the future, external media will be able to be used, but "
+"currently packages must be stored on the internal system media."
+msgstr "Mt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, mutta tällä hetkellä paketit on tallennettava sisäiselle medialle."
+
+#: interfaces_storage.php:76
+msgid "Capacity"
+msgstr "Kapasiteetti"
+
+#: interfaces_storage.php:77
+msgid "State"
+msgstr "Tila"
+
+#: interfaces_storage.php:78
+msgid "Installed Packages"
+msgstr "Asennetut Paketit"
+
+#: interfaces_storage.php:82
+msgid "system storage partition"
+msgstr "järjestelmän tallennus osio"
+
+#: interfaces_storage_disk_edit.php:71
+msgid "descriptive name"
+msgstr "kuvaileva nimi"
+
+#: interfaces_storage_disk_edit.php:36
+msgid "Edit Disk"
+msgstr "Muokkaa Levyä"
 
 #: license.php:32
 msgid "License"
@@ -2315,7 +2365,7 @@ msgstr "Tiedostonimi"
 msgid "Format"
 msgstr "Formaatti"
 
-#: popup_dialplan_element_library.php:353
+#: popup_dialplan_element_library.php:353 system_packages.php:152
 msgid "Size"
 msgstr "Koko"
 
@@ -3105,6 +3155,96 @@ msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuut
 #: system_reboot.php:48
 msgid "Are you sure you want to reboot the system?"
 msgstr "Oletko varma että haluat käynnistää järjestelmän uudelleen?"
+
+#: system_packages.php:164
+msgid "Do you really want to disable this package?"
+msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
+
+#: system_packages.php:164
+msgid "click to disable package"
+msgstr "klikkaa poistaaksesi paketti käytöstä"
+
+#: system_packages.php:168 system_packages.php:185
+msgid "backup package data"
+msgstr "tallenna pakettitiedot"
+
+#: system_packages.php:169
+msgid "restore package data"
+msgstr "palauta pakettitiedot"
+
+#: system_packages.php:170 system_packages.php:187
+msgid ""
+"Do you really want to permanently delete this package\\'s configuration and "
+"data?"
+msgstr "Oletko varma että haluat poistaa tämän paketin konfigurointi sekä tiedot?"
+
+#: system_packages.php:170 system_packages.php:187
+msgid "delete package configuration and data"
+msgstr "poista paketin konfigurointi sekä tiedot"
+
+#: system_packages.php:181
+msgid "click to enable package"
+msgstr "klikkaa mahdollistaaksesi paketti"
+
+#: system_packages.php:186
+msgid "activate package from backup data"
+msgstr "aktivoi tallennettu paketti"
+
+#: system_packages.php:193
+msgid "install new package"
+msgstr "asenna uusi paketti"
+
+#: system_packages.php:194
+msgid "update package to newer version"
+msgstr "päivitä paketti"
+
+#: system_packages.php:203
+msgid "Install a new Package"
+msgstr "Asenna uusi paketti"
+
+#: system_packages.php:205
+msgid "Select a package .tgz archive and press 'Install'"
+msgstr "Valitse .tgz paketti ja paina 'Asenna'"
+
+#: system_packages.php:208
+msgid "Install"
+msgstr "Asenna"
+
+#: system_packages.php:208 system_packages.php:217 system_packages.php:226
+msgid "cancel"
+msgstr "peruta"
+
+#: system_packages.php:211
+msgid "Update an Installed Package"
+msgstr "Päivitä asennettu paketti"
+
+#: system_packages.php:213
+msgid "Select a package .tgz archive and press 'Update'"
+msgstr "Valitse .tgz paketti ja paina 'Päivitä'"
+
+#: system_packages.php:214
+msgid "Existing package data will be preserved."
+msgstr "Olevat pakettitiedot säilytetään."
+
+#: system_packages.php:217
+msgid "Update"
+msgstr "Päivitä"
+
+#: system_packages.php:220
+msgid "Restore from a Backup Archive"
+msgstr "Palauta varmuuskopiosta"
+
+#: system_packages.php:222
+msgid "Select a backup .tgz archive and press 'Restore'"
+msgstr "Valitse varmuuskopion .tgz paketti ja paina 'Palauta'"
+
+#: system_packages.php:223
+msgid "Package data & logic will be replaced by the backup."
+msgstr "Paketin tiedot sekä logiikka korvataan varmuuskopion asetuksilla."
+
+#: system_packages.php:226
+msgid "Restore"
+msgstr "Palauta"
 
 #: uploadconfig.php:40
 msgid "ERR Could not save configuration.\n"
