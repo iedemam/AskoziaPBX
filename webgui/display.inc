@@ -44,7 +44,7 @@ function display_gui_language_selector($current_language) {
 			<option value="<?=$lang;?>" <?
 			if ($lang == $current_language)
 				echo "selected"; ?>
-			><?=gettext($langdesc);?></option>
+			><?=$langdesc;?></option>
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl"><?=gettext("Select in which language you want the webGUI to be displayed."); ?><br><?
