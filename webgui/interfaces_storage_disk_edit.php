@@ -33,7 +33,7 @@ $dev = $_GET['dev'];
 if (isset($_POST['dev']))
 	$dev = $_POST['dev'];
 
-$pgtitle = array("Interfaces", "Storage", "Edit Disk");
+$pgtitle = array(gettext("Interfaces"), gettext("Storage"), gettext("Edit Disk"));
 require("guiconfig.inc");
 
 
@@ -65,16 +65,16 @@ if ($_POST) {
 <form action="interfaces_storage_disk_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td valign="top" class="vncellreq">Name</td>
+		<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		<td class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-			<br><span class="vexpl">descriptive name</span>
+			<br><span class="vexpl"><?=gettext("descriptive name");?></span>
 		</td>
 	</tr>
 	<tr> 
 		<td valign="top">&nbsp;</td>
 		<td>
-			<input name="Submit" type="submit" class="formbtn" value="Save">
+			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			<input name="unit" type="hidden" value="<?=$unit;?>"> 
 		</td>
 	</tr>
