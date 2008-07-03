@@ -990,7 +990,7 @@ function update_locales() {
 	}
 
 	// add a .po skeleton file
-	_exec("cd " . $dirs['webgui'] . "; xgettext -o skeleton.po --no-wrap --language=PHP *.php *.inc");
+	_exec("xgettext -o " . $dirs['webgui'] . "/skeleton.po --no-wrap --language=PHP webgui/*.php webgui/*.inc phpconf/inc/*.inc");
 }
 
 function populate_jquery($image_name) {
