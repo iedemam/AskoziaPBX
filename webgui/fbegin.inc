@@ -81,7 +81,10 @@ function dynamic_menu(&$menu, $menu_title) {
 		if ($intersect = array_intersect($menu[$desc],$allowed)) {
 			
 			if (!isset($header_displayed) && ($menu_title == 'Dialplan')) {
-				echo "\n			<strong>".$menu_title.'</strong>&nbsp;<a href="/printable_dialplan.php" class="navlnks">(print)</a><br>';
+				echo "\n" 
+				?>
+				<strong><?=gettext("Dialplan");?></strong>&nbsp;<a href="/printable_dialplan.php" class="navlnks"><?=gettext("(print)");?></a><br>
+				<?
 				$header_displayed = true;
 			
 			} else if (!isset($header_displayed) && !($menu_title == 'Diagnostics') && !($menu_title == 'Advanced')) {
@@ -279,7 +282,7 @@ function showhide(tspan, tri) {
                    
 dynamic_menu($menu['System'], gettext('System'));
 dynamic_menu($menu['Accounts'], gettext('Accounts'));
-dynamic_menu($menu['Dialplan'], gettext('Dialplan'));
+dynamic_menu($menu['Dialplan'], 'Dialplan');
 dynamic_menu($menu['Services'], gettext('Services'));
 dynamic_menu($menu['Status'], gettext('Status'));
 dynamic_menu($menu['Live Stats'], gettext('Live Stats'));
