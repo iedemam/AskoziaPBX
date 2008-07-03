@@ -1832,7 +1832,7 @@ msgstr "Mt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, mutta
 msgid "Capacity"
 msgstr "Kapasiteetti"
 
-#: interfaces_storage.php:77
+#: interfaces_storage.php:77 status_channels.php:58
 msgid "State"
 msgstr "Tila"
 
@@ -2660,10 +2660,6 @@ msgstr "Status"
 #: status_channels.php:50
 msgid "There are currently no active channels."
 msgstr "Tällä hetkellä ei löydy aktiivista kanavaa."
-
-#: status_channels.php:58
-msgid "State"
-msgstr "Tila"
 
 #: status_channels.php:59
 msgid "Application"
