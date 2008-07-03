@@ -165,12 +165,15 @@ function packages_generate_save_message($name, $command) {
 
 	switch($command) {
 		case "activate":
+			return gettext("Package activated successfully.");
 		case "deactivate":
+			return gettext("Package deactivated successfully.");
 		case "delete":
+			return gettext("Package deleted successfully.");
 		case "restore":
-			return $name . " package " . $command . "d successfully.";
+			return gettext("Package restored successfully.");
 		case "install":
-			return $name . " package " . $command . "ed successfully.";
+			return gettext("Package installed successfully.");
 		default:
 			return "packages_generate_save_message...no message found";
 	}
