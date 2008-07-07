@@ -33,7 +33,17 @@ function display_gui_language_selector($current_language) {
 
 	$languages = array(
 		"en_US" => "English",
-		"fi_FI" => "Suomi"
+		"es_ES" => "Castellano",
+		"da_DA" => "Dansk",
+		"de_DE" => "Deutsch",
+		"fr_FR" => "Français",
+		"it_IT" => "Italiano",
+		"pl_PL" => "Język polski",
+		"nl_NL" => "Nederlands",
+		"pt_BR" => "Português",
+		"fi_FI" => "Suomi",
+		"se_SE" => "Svenska",
+		"ru_RU" => "Русский язык"
 	);
 
 	?><tr> 
@@ -49,7 +59,7 @@ function display_gui_language_selector($current_language) {
 			</select>
 			<br><span class="vexpl"><?=gettext("Select in which language you want the webGUI to be displayed."); ?><br><?
 			/* don't translate */
-			?><em>Contact <a href="mailto:michael@askozia.com">us</a>
+			?><em>Please <a href="mailto:michael@askozia.com">contact us</a>
 			if you are able to provide a new translation.</em><?
 			/* end */
 			?></span>
@@ -466,6 +476,9 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 
 function display_channel_language_selector($current_language, $colspan) {
 	global $prompt_languages;
+
+	// XXX : needs to be changed from always being English and instead
+	//			to recognize the webgui language
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Language");?></td>
