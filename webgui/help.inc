@@ -28,6 +28,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*	XXX - the strings can be put back directly into the GUI since the abstraction
+			has been taken care of by the gettext changes */
+
 $help_language = "en";
 
 $help = array(
