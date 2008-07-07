@@ -89,6 +89,7 @@ usr/sbin/pnpinfo
 
 # contents of usr/local/bin
 usr/local/bin/ztcfg
+usr/local/bin/msgfmt
 
 # contents of /usr/libexec
 usr/libexec/ld-elf.so.1:libexec/ld-elf.so.1
