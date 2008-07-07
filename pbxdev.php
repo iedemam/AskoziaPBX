@@ -980,17 +980,30 @@ function populate_webgui($image_name) {
 function update_locales() {
 	global $dirs;
 
-	// convert to .mo files
 	$path = $dirs['webgui'] . "/locale";
+
+	// generate a .po skeleton file
+	_exec("xgettext -o $path/skeleton.po --no-wrap --no-location --language=PHP " . 
+		"phpconf/rc.* " .
+		"webgui/*.php " .
+		"webgui/*.inc " .
+		"phpconf/inc/*.inc " .
+		"packages/audio.pkg/www/*.php");
+
 	$dh = opendir($path);
 	while (false !== ($dirname = readdir($dh))) {
 		if (preg_match("/\S+\_\S+/", $dirname)) {
+			// in every locale, make sure a messages.po file exists
+			if (!file_exists("$path/$dirname/LC_MESSAGES/messages.po")) {
+				_exec("touch $path/$dirname/LC_MESSAGES/messages.po");
+			}
+			// merge skeleton.po updates
+			_exec("msgmerge $path/$dirname/LC_MESSAGES/messages.po $path/skeleton.po " .
+					"-o $path/$dirname/LC_MESSAGES/messages.po");
+			// compile .mo file
 			_exec("cd $path/$dirname/LC_MESSAGES; msgfmt -o messages.mo messages.po");
 		}
 	}
-
-	// add a .po skeleton file
-	_exec("xgettext -o " . $dirs['webgui'] . "/skeleton.po --no-wrap --language=PHP webgui/*.php webgui/*.inc phpconf/inc/*.inc");
 }
 
 function populate_jquery($image_name) {
@@ -1262,6 +1275,10 @@ function release($name) {
 	}
 }
 
+function clean_dots() {
+	passthru("find ./ -type f -name \"._*\" -delete -print");
+}
+
 function _get_dir_size($dir) {
 	exec("du -d 0 $dir", $out);
 	$out = preg_split("/\s+/", $out[0]);
@@ -1444,9 +1461,6 @@ if ($argv[1] == "prepare") {
 	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*rc*\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
-
-} else if ($argv[1] == "cleandots") {
-	passthru("find ./ -type f -name \"._*\" -delete -print");
 	
 } else if ($argv[1] == "release") {
 
@@ -1455,6 +1469,18 @@ if ($argv[1] == "prepare") {
 		package($platform, $image_name);			
 	}
 	release($image_name);
+
+// handle all two argument commands
+//
+// XXX : single argument commands should be moved into functions and handled
+//			in the same manner
+} else if (isset($argv[1]) && isset($argv[2])) {
+	$f = implode("_", array_slice($argv, 1));
+	if (!function_exists($f)) {
+		_log("Invalid " . $argv[2] . " command!");
+		exit(1);
+	}
+	$f();
 	
 } else {
 	_log("Huh?");
