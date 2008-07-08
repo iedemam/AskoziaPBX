@@ -66,6 +66,7 @@ usr/bin/logger
 usr/bin/netstat
 usr/bin/nsupdate
 usr/bin/nohup
+usr/bin/sed
 usr/bin/su
 usr/bin/tail
 usr/bin/tar
@@ -73,7 +74,7 @@ usr/bin/top
 usr/bin/touch
 usr/bin/uptime:usr/bin/w
 
-# contents of usr/sbin
+# contents of /usr/sbin
 usr/sbin/ancontrol
 usr/sbin/arp
 usr/sbin/chown
@@ -87,9 +88,9 @@ usr/sbin/traceroute
 usr/sbin/pciconf
 usr/sbin/pnpinfo
 
-# contents of usr/local/bin
+# contents of /usr/local/bin
 usr/local/bin/ztcfg
 usr/local/bin/msgfmt
 
-# contents of /usr/libexec
-usr/libexec/ld-elf.so.1:libexec/ld-elf.so.1
+# contents of /libexec
+libexec/ld-elf.so.1
