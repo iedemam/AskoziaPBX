@@ -3,7 +3,8 @@
  - added: basic package management system and api with backup, restore, activate, deactivate and delete
  - added: providers and phones may now be disabled / enabled
  - added: SIP and IAX providers and phones now have icon indicating connection status
- - added: webGUI gettext localization + Finnish language translation
+ - added: webGUI gettext localization
+ - added: Finnish language translation + skeleton files for en, es, da, de, fr, it, pl, nl, pt, fi, se and ru
  - package: logging package which enables permanent storage of system, pbx and call logs
  - updated: Asterisk to 1.4.21.1
  - updated: isdn4bsd to revision 751
