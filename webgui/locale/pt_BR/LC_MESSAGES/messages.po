@@ -2542,6 +2542,9 @@ msgstr ""
 msgid "% of "
 msgstr ""
 
+msgid "(print)"
+msgstr ""
+
 msgid "General Setup"
 msgstr ""
 

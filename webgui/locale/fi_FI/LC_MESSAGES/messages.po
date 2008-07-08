@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-19 08:46+0000\n"
+"POT-Creation-Date: 2008-07-08 03:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Finnish <LL@li.org>\n"
@@ -16,223 +16,117 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounts_phones.php:32 accounts_providers.php:32 fbegin.inc:285
 msgid "Accounts"
 msgstr "Tilit"
 
-#: accounts_phones.php:32 dialplan_providers.php:223 phones_analog_edit.php:34
-#: phones_external_edit.php:36 phones_iax_edit.php:36 phones_isdn_edit.php:34
-#: phones_sip_edit.php:36 popup_dialplan_element_library.php:224
-#: display.inc:389 fbegin.inc:170
 msgid "Phones"
 msgstr "Puhelimet"
 
-#: accounts_phones.php:196 accounts_phones.php:212 accounts_providers.php:174
-#: accounts_providers.php:189 advanced_sip.php:32 fbegin.inc:205
 msgid "SIP"
 msgstr "SIP"
 
-#: accounts_phones.php:197 accounts_phones.php:256 accounts_phones.php:388
-#: accounts_providers.php:175 accounts_providers.php:235 advanced_iax.php:32
-#: fbegin.inc:206
 msgid "IAX"
 msgstr "IAX"
 
-#: accounts_phones.php:198 accounts_phones.php:300 accounts_providers.php:176
-#: accounts_providers.php:281 advanced_isdn.php:32 debug_isdn.php:32
-#: interfaces_analog.php:126 interfaces_isdn.php:32 interfaces_isdn.php:114
-#: interfaces_network.php:193 interfaces_wireless.php:192 fbegin.inc:207
-#: interfaces_storage.php:55
 msgid "ISDN"
 msgstr "ISDN"
 
-#: accounts_phones.php:199 accounts_phones.php:344 accounts_providers.php:177
-#: accounts_providers.php:328 advanced_analog.php:34 interfaces_analog.php:32
-#: interfaces_analog.php:127 interfaces_isdn.php:115
-#: interfaces_network.php:194 interfaces_wireless.php:193 fbegin.inc:208
-#: interfaces_storage.php:56
 msgid "Analog"
 msgstr "Analogi"
 
-#: accounts_phones.php:200
 msgid "External"
 msgstr "Ulkoinen"
 
-#: accounts_phones.php:216 accounts_phones.php:260 accounts_phones.php:304
-#: accounts_phones.php:348 accounts_phones.php:392
-#: dialplan_applications.php:79 dialplan_applications_edit.php:126
-#: dialplan_callgroups.php:82 dialplan_callgroups_edit.php:130
-#: phones_analog_edit.php:151 phones_external_edit.php:137
-#: phones_iax_edit.php:186 phones_isdn_edit.php:150 phones_sip_edit.php:204
-#: printable_dialplan.php:58 printable_dialplan.php:83
-#: printable_dialplan.php:108 printable_dialplan.php:136
-#: printable_dialplan.php:162
 msgid "Extension"
 msgstr "Jatke"
 
-#: accounts_phones.php:217 accounts_phones.php:261 accounts_phones.php:305
-#: accounts_phones.php:349 printable_dialplan.php:59 status_conferences.php:82
-#: display.inc:654
 msgid "Caller ID"
 msgstr "Soittajan Tunnus"
 
-#: accounts_phones.php:218 accounts_phones.php:262 accounts_phones.php:306
-#: accounts_phones.php:350 dialplan_applications.php:81
-#: dialplan_callgroups.php:83 printable_dialplan.php:60
-#: printable_dialplan.php:85 printable_dialplan.php:164
-#: status_interfaces.php:432 display.inc:665 system_packages.php:153
 msgid "Description"
 msgstr "Kuvaus"
 
-#: accounts_phones.php:226 accounts_phones.php:270 accounts_phones.php:314
-#: accounts_phones.php:358 accounts_phones.php:402
 msgid "click to enable phone"
 msgstr "klikkaa ottaaksesi puhelinta käyttöön"
 
-#: accounts_phones.php:228 accounts_phones.php:272 accounts_phones.php:316
-#: accounts_phones.php:360 accounts_phones.php:404
 msgid "Do you really want to disable this phone?"
 msgstr "Oletko varma että haluat poistaa tämän puhelimen käytöstä?"
 
-#: accounts_phones.php:228 accounts_phones.php:272 accounts_phones.php:360
-#: accounts_phones.php:404
 msgid "click to disable phone"
 msgstr "klikkaa poistaaksesi puhelinta käytöstä"
 
-#: accounts_phones.php:241 accounts_phones.php:285 accounts_phones.php:329
-#: accounts_phones.php:373 accounts_phones.php:417
 msgid "edit phone"
 msgstr "muokkaa puhelinta"
 
-#: accounts_phones.php:242 accounts_phones.php:286 accounts_phones.php:330
-#: accounts_phones.php:374 accounts_phones.php:418
 msgid "Do you really want to delete this phone?"
 msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
 
-#: accounts_phones.php:242 accounts_phones.php:286 accounts_phones.php:330
-#: accounts_phones.php:374 accounts_phones.php:418
 msgid "delete phone"
 msgstr "poista puhelin"
 
-#: accounts_phones.php:393 accounts_providers.php:193
-#: accounts_providers.php:239 accounts_providers.php:285
-#: accounts_providers.php:332 dialplan_applications.php:80
-#: dialplan_applications_edit.php:133 dialplan_callgroups.php:81
-#: dialplan_callgroups_edit.php:71 dialplan_callgroups_edit.php:123
-#: index.php:57 interfaces_analog.php:152 interfaces_analog_edit.php:167
-#: interfaces_isdn.php:143 interfaces_isdn_edit.php:165
-#: phones_external_edit.php:144 printable_dialplan.php:84
-#: printable_dialplan.php:109 printable_dialplan.php:137
-#: printable_dialplan.php:163 providers_analog_edit.php:73
-#: providers_analog_edit.php:150 providers_iax_edit.php:212
-#: providers_isdn_edit.php:73 providers_isdn_edit.php:153
-#: providers_sip_edit.php:224 services_conferencing.php:76
-#: services_conferencing_edit.php:137 interfaces_storage.php:75
-#: interfaces_storage_disk_edit.php:68 system_packages.php:151
 msgid "Name"
 msgstr "Nimi"
 
-#: accounts_phones.php:394 phones_external_edit.php:151
 msgid "Dialstring"
 msgstr "Soittotunnus"
 
-#: accounts_providers.php:32 dialplan_providers.php:34
-#: providers_analog_edit.php:36 providers_iax_edit.php:36
-#: providers_isdn_edit.php:36 providers_sip_edit.php:36 display.inc:356
-#: fbegin.inc:165
 msgid "Providers"
 msgstr "Palveluntarjoajat"
 
-#: accounts_providers.php:194 accounts_providers.php:240
-#: accounts_providers.php:286 accounts_providers.php:333
 msgid "Pattern(s)"
 msgstr "Kaavat(s)"
 
-#: accounts_providers.php:195 accounts_providers.php:241
-#: advanced_manager.php:72 advanced_manager_edit.php:118
-#: providers_iax_edit.php:221 providers_sip_edit.php:233
-#: services_voicemail.php:122 system.php:161
 msgid "Username"
 msgstr "Käyttäjänimi"
 
-#: accounts_providers.php:196 accounts_providers.php:242 diag_ping.php:100
-#: diag_traceroute.php:83 providers_iax_edit.php:244
-#: providers_sip_edit.php:246 services_voicemail.php:107
 msgid "Host"
 msgstr "Isäntä"
 
-#: accounts_providers.php:204 accounts_providers.php:250
-#: accounts_providers.php:297 accounts_providers.php:344
 msgid "click to enable provider"
 msgstr "klikkaa ottaaksesi palveluntarjoajaa käyttöön"
 
-#: accounts_providers.php:206 accounts_providers.php:252
-#: accounts_providers.php:299 accounts_providers.php:346
 msgid "Do you really want to disable this provider?"
 msgstr "Oletko varma että haluat poistaa tämä palveluntarjoaja käytöstä?"
 
-#: accounts_providers.php:206 accounts_providers.php:252
-#: accounts_providers.php:299 accounts_providers.php:346
 msgid "click to disable provider"
 msgstr "klikkaa poistaaksesi palveluntarjoajaa käytöstä"
 
-#: accounts_providers.php:220 accounts_providers.php:266
-#: accounts_providers.php:313 accounts_providers.php:360
 msgid "edit provider"
 msgstr "muokkaa palveluntarjoajaa"
 
-#: accounts_providers.php:221 accounts_providers.php:267
-#: accounts_providers.php:314 accounts_providers.php:361
 msgid "Do you really want to delete this provider?"
 msgstr "Oletko varma että haluat poistaa tämän palveluntarjoajan?"
 
-#: accounts_providers.php:221 accounts_providers.php:267
-#: accounts_providers.php:314 accounts_providers.php:361
 msgid "delete provider"
 msgstr "poista palveluntarjoaja"
 
-#: accounts_providers.php:287 providers_isdn_edit.php:160
 msgid "Main MSN"
 msgstr "Pää-MSN"
 
-#: accounts_providers.php:288 accounts_providers.php:335 diag_arp.php:107
 msgid "Interface"
 msgstr "Käyttöliittymä"
 
-#: accounts_providers.php:334 providers_analog_edit.php:157
 msgid "Number"
 msgstr "Numero"
 
-#: advanced_analog.php:34 advanced_guioptions.php:32 advanced_iax.php:32
-#: advanced_isdn.php:32 advanced_manager.php:32 advanced_manager_edit.php:34
-#: advanced_rtp.php:32 advanced_sip.php:32 fbegin.inc:102 fbegin.inc:104
 msgid "Advanced"
 msgstr "Lisäasetukset"
 
-#: advanced_analog.php:107
 msgid "Tone Zones"
 msgstr "Valintaääni Vyöhykkeet"
 
-#: advanced_analog.php:108
 msgid "Loaded"
 msgstr "Ladattu"
 
-#: advanced_analog.php:108 display.inc:60 display.inc:86 display.inc:127
 msgid "(drag-and-drop)"
 msgstr "(vedä ja päästä irti)"
 
-#: advanced_analog.php:119
 msgid "Inactive"
 msgstr "Toimeton"
 
-#: advanced_analog.php:134 diag_logs_settings.php:165 diag_traceroute.php:110
-#: interfaces_analog.php:215 status_graph_cpu.php:40
-#: status_graph_traffic.php:45 system_backup.php:105 display.inc:154
-#: display.inc:502
 msgid "Note:"
 msgstr "Huom:"
 
-#: advanced_analog.php:135
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
@@ -240,1118 +134,810 @@ msgstr ""
 "Valitse kaikki äänivyöhykkeet mitkä kyseinen analogi komponentti pitäisi "
 "tukea. <strong>Ensimmäinen äänivyöhyke tulee olemaan oletus."
 
-#: advanced_guioptions.php:32 fbegin.inc:211
 msgid "GUI Options"
 msgstr "Käyttöliit. Asetukset"
 
-#: advanced_guioptions.php:60
 msgid "Certificate and key must always be specified together."
 msgstr "Sertifikaatti ja avain on aina annettava yhdessä."
 
-#: advanced_guioptions.php:63
 msgid "This certificate does not appear to be valid."
 msgstr "Tämä ei ole voimassa oleva sertifikaatti."
 
-#: advanced_guioptions.php:65
 msgid "This key does not appear to be valid."
 msgstr "Tämä ei ole voimassa oleva avain."
 
-#: advanced_guioptions.php:132
 msgid "webGUI SSL certificate/key"
 msgstr "Verkkokäyttöliittymän SSL sertifikaatti/avain"
 
-#: advanced_guioptions.php:135
 msgid "Certificate"
 msgstr "Sertifikaatti"
 
-#: advanced_guioptions.php:139
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr "Liitä digitaalisesti allekirjoitettu sertifikaatti X.509 PEM muodossa."
 
-#: advanced_guioptions.php:146
 msgid "Paste an RSA private key in PEM format here."
 msgstr "Liitä yksityinen RSA avain PEM muodossa."
 
-#: advanced_guioptions.php:151 advanced_guioptions.php:214
-#: advanced_iax.php:143 advanced_isdn.php:125 advanced_manager_edit.php:171
-#: advanced_rtp.php:100 advanced_sip.php:139 diag_editor.php:86
-#: diag_logs_settings.php:159 dialplan_applications_edit.php:145
-#: dialplan_callgroups_edit.php:143 dialplan_providers.php:231
-#: dialplan_transfers.php:212 index.php:149 interfaces_analog_edit.php:207
-#: interfaces_isdn_edit.php:227 interfaces_network.php:307
-#: interfaces_wireless.php:393 phones_analog_edit.php:189
-#: phones_external_edit.php:181 phones_iax_edit.php:225
-#: phones_isdn_edit.php:185 phones_sip_edit.php:236
-#: providers_analog_edit.php:191 providers_iax_edit.php:266
-#: providers_isdn_edit.php:192 providers_sip_edit.php:291
-#: services_conferencing_edit.php:153 services_voicemail.php:174
-#: system.php:219 interfaces_storage_disk_edit.php:77
 msgid "Save"
 msgstr "Tallenna"
 
-#: advanced_guioptions.php:158
 msgid "Miscellaneous"
 msgstr "Sekalaiset"
 
-#: advanced_guioptions.php:161
 msgid "Console menu"
 msgstr "Konsolivalikko"
 
-#: advanced_guioptions.php:164
 msgid "Disable console menu"
 msgstr "Poista konsolivalikkoa käytöstä"
 
-#: advanced_guioptions.php:165
 msgid "Changes to this option will take effect after a reboot."
-msgstr "Järjestelmä on käynnistettävä uudelleen ennen kun nämä muutokset astuvat voimaan."
+msgstr ""
+"Järjestelmä on käynnistettävä uudelleen ennen kun nämä muutokset astuvat "
+"voimaan."
 
-#: advanced_guioptions.php:168
 msgid "Firmware version check"
 msgstr "Laiteohjelmiston version tarkistus"
 
-#: advanced_guioptions.php:171
 msgid "Disable firmware version check"
 msgstr "Poista laiteohjelmiston version tarkistus käytöstä"
 
-#: advanced_guioptions.php:172
 msgid ""
 "This will cause AskoziaPBX not to check for newer firmware versions when the "
 msgstr "AskoziaPBX ei enää yritä löytää uutta laiteohjelmistoa versiota kun"
 
-#: advanced_guioptions.php:172
 msgid "System: Firmware</a> page is viewed."
 msgstr "Järjestelmä: Laiteohjelmisto</a> sivu on esillä."
 
-#: advanced_guioptions.php:176
 msgid "Hard disk standby time "
 msgstr "Kovalevyn valmiustila aika"
 
-#: advanced_guioptions.php:180
 msgid "Always on"
 msgstr "Aina päällä"
 
-#: advanced_guioptions.php:182
 msgid " minutes"
 msgstr " minuttia"
 
-#: advanced_guioptions.php:186
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last\n"
 "                    access has elapsed. <em>Do not set this for CF cards."
-msgstr "Asettaa kovalevyn valmiustilaan kun annettu aika on kulunut. <em> Älä aseta tätä CF korteille."
+msgstr ""
+"Asettaa kovalevyn valmiustilaan kun annettu aika on kulunut. <em> Älä aseta "
+"tätä CF korteille."
 
-#: advanced_guioptions.php:191
 msgid "Navigation"
 msgstr "Navigointi"
 
-#: advanced_guioptions.php:194
 msgid "Keep diagnostics in navigation expanded"
 msgstr "Pidä diagnostiset asetukset näkyvissä"
 
-#: advanced_guioptions.php:197
 msgid "Keep advanced options in navigation expanded"
 msgstr "Pidä lisäasetukset näkyvissä"
 
-#: advanced_guioptions.php:200
 msgid "Hide SIP related options"
 msgstr "Piilota SIP asetukset"
 
-#: advanced_guioptions.php:203
 msgid "Hide IAX related options"
 msgstr "Piilota IAX asetukset"
 
-#: advanced_guioptions.php:206
 msgid "Hide ISDN related options"
 msgstr "Piilota ISDN asetukset"
 
-#: advanced_guioptions.php:209
 msgid "Hide Analog related options"
 msgstr "Piilota Analogiset asetukset"
 
-#: advanced_iax.php:50 advanced_sip.php:52
 msgid "Port"
 msgstr "Portti"
 
-#: advanced_iax.php:56 advanced_sip.php:58 phones_iax_edit.php:103
-#: phones_sip_edit.php:108 providers_iax_edit.php:107
-#: providers_sip_edit.php:115 services_voicemail.php:71
 msgid "A valid port must be specified."
 msgstr "Kelpaava portti on oltava määritetty."
 
-#: advanced_iax.php:113
 msgid "General"
 msgstr "Yleiset"
 
-#: advanced_iax.php:116 advanced_sip.php:116
 msgid "Binding Port"
 msgstr "Sitova Portti"
 
-#: advanced_iax.php:126
 msgid "Jitterbuffer"
 msgstr "Jitterbufferi"
 
-#: advanced_iax.php:131
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
-msgstr "Mahdollista Jitterbufferi IAX yhteyksiin jotka AskoziaPBX on päättänyt."
+msgstr ""
+"Mahdollista Jitterbufferi IAX yhteyksiin jotka AskoziaPBX on päättänyt."
 
-#: advanced_iax.php:135
 msgid "Force"
 msgstr "Pakota"
 
-#: advanced_iax.php:137
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Käytä Jitterbufferia myös kun kaksi päätepistettä ovat silloitettuna."
 
-#: advanced_isdn.php:52
 msgid "National Prefix, International Prefix"
 msgstr "Kansallinen Prefixi, Kansainvälinen Prefixi"
 
-#: advanced_isdn.php:58
 msgid "A valid national prefix must be specified."
 msgstr "Kelpaava kansallinen prefixi on oltava määritettynä."
 
-#: advanced_isdn.php:62
 msgid "A valid international prefix must be specified."
 msgstr "Kelpaava kansainvälinen prefixi on oltava määritettynä."
 
-#: advanced_isdn.php:101
 msgid "National Prefix"
 msgstr "Kansallinen Prefixi"
 
-#: advanced_isdn.php:107
 msgid "International Prefix"
 msgstr "Kansainvälinen Prefixi"
 
-#: advanced_isdn.php:113
 msgid "Audio"
 msgstr "Ääni"
 
-#: advanced_isdn.php:116
 msgid "A-law"
 msgstr "A-laki"
 
-#: advanced_isdn.php:119
 msgid "u-law"
 msgstr "u-laki"
 
-#: advanced_manager.php:32 advanced_manager_edit.php:34 diag_manager.php:32
-#: fbegin.inc:222
 msgid "Manager Interface"
 msgstr "Hallinta Käyttöliit."
 
-#: advanced_manager.php:73 advanced_manager_edit.php:150
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
-#: advanced_manager.php:86
 msgid "read:"
 msgstr "lue:"
 
-#: advanced_manager.php:92
 msgid "write:"
 msgstr "kirjoita:"
 
-#: advanced_manager.php:97
 msgid "edit manager room"
 msgstr "muokkaa hallinto huonetta"
 
-#: advanced_manager.php:98
 msgid "Do you really want to delete this manager user?"
 msgstr "Oletko varma että haluat poistaa tämän hallinnollisen käyttäjän?"
 
-#: advanced_manager.php:98
 msgid "delete manager user"
 msgstr "poista hallinnollinen käyttäjä"
 
-#: advanced_manager.php:105
 msgid "add manager user"
 msgstr "lisää hallinnollinen käyttäjä"
 
-#: advanced_manager_edit.php:34
 msgid "Edit User"
 msgstr "Muokkaa Käyttäjää"
 
-#: advanced_manager_edit.php:67
 msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr "Käyttäjänimi,Salaisuus,Estä IP,Estä Aliverkon peitettä,Salli IP,Salli Aliverkon peitettä"
+msgstr ""
+"Käyttäjänimi,Salaisuus,Estä IP,Estä Aliverkon peitettä,Salli IP,Salli "
+"Aliverkon peitettä"
 
-#: advanced_manager_edit.php:72
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr "Käyttäjänimi \"admin\" on jo sisäisesti käytössä."
 
-#: advanced_manager_edit.php:125 phones_iax_edit.php:194
-#: phones_sip_edit.php:212 providers_iax_edit.php:227
-#: providers_sip_edit.php:239
 msgid "Secret"
 msgstr "Salaisuus"
 
-#: advanced_manager_edit.php:132
 msgid "Deny Network"
 msgstr "Estä Verkko"
 
-#: advanced_manager_edit.php:137
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
 msgstr "Kaikki estetään jos asetat '0.0.0.0 / 0.0.0.0'"
 
-#: advanced_manager_edit.php:141
 msgid "Permit Network"
 msgstr "Salli Verkko"
 
-#: advanced_manager_edit.php:146
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
 msgstr "Kaikki sallitaan jos asetat '0.0.0.0 / 0.0.0.0'"
 
-#: advanced_manager_edit.php:152
 msgid "Read"
 msgstr "Lue"
 
-#: advanced_manager_edit.php:160
 msgid "Write"
 msgstr "Kirjoita"
 
-#: advanced_rtp.php:32 fbegin.inc:204
 msgid "RTP"
 msgstr "RTP"
 
-#: advanced_rtp.php:45
 msgid "Low RTP Port,High RTP Port"
 msgstr "Alhainen RTP Portti,Korkea RTP Portti"
 
-#: advanced_rtp.php:56
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "Korkea RTP portti on oltava isompi kun alempi RTP portti."
 
-#: advanced_rtp.php:89
 msgid "RTP Port Range"
 msgstr "RTP Porttien Kantama"
 
-#: advanced_rtp.php:94
 msgid "The port range which RTP streams should use. (default: "
 msgstr "Porttien kantama jota RTP streamit voivat käyttää. (oletus: "
 
-#: advanced_rtp.php:105 interfaces_analog_edit.php:215
-#: interfaces_network.php:313 system_firmware.php:226
 msgid "Warning:"
 msgstr "Varoitus:"
 
-#: advanced_rtp.php:106
 msgid "after you click &quot;Save&quot;, all current calls will be dropped."
-msgstr "Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
+msgstr ""
+"Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
 
-#: advanced_sip.php:62
 msgid ""
 "A whole number of seconds must be entered for the \"Default Registration "
 "Expiration\" timeout."
-msgstr "Yhtenäinen määrä sekuntteja on annettava \"Oletus Rekisteröinnin Erääntymisen\" ajaksi."
+msgstr ""
+"Yhtenäinen määrä sekuntteja on annettava \"Oletus Rekisteröinnin Erääntymisen"
+"\" ajaksi."
 
-#: advanced_sip.php:66
 msgid ""
 "A whole number of seconds must be entered for the \"Minimum Registration "
 "Expiration\" timeout."
-msgstr "Yhtenäinen määrä sekuntteja on annettava \"Minimi Rekisteröinnin Erääntymisen\" ajaksi."
+msgstr ""
+"Yhtenäinen määrä sekuntteja on annettava \"Minimi Rekisteröinnin Erääntymisen"
+"\" ajaksi."
 
-#: advanced_sip.php:70
 msgid ""
 "A whole number of seconds must be entered for the \"Maximum Registration "
 "Expiration\" timeout."
-msgstr "Yhtenäinen määrä sekuntteja on annettava \"Maximi Rekisteröinnin Erääntymisen\" ajaksi."
+msgstr ""
+"Yhtenäinen määrä sekuntteja on annettava \"Maximi Rekisteröinnin Erääntymisen"
+"\" ajaksi."
 
-#: advanced_sip.php:122
 msgid "Registration Expiration Timeouts"
 msgstr "Rekisteröinnin Erääntyminen"
 
-#: advanced_sip.php:124
 msgid "min:"
 msgstr "minimi:"
 
-#: advanced_sip.php:124
 msgid "max:"
 msgstr "maximi:"
 
-#: advanced_sip.php:124
 msgid "default:"
 msgstr "oletus:"
 
-#: advanced_sip.php:125
 msgid ""
 "The minimum, maximum and default number of seconds that incoming and "
 "outgoing registrations and subscriptions remain valid."
-msgstr "Minimi, maximi sekä oletus määrä sekuntteja jotka sisääntulevat ja ulosmenevät rekisteröinnit sekä tilaukset ovat voimassa."
+msgstr ""
+"Minimi, maximi sekä oletus määrä sekuntteja jotka sisääntulevat ja "
+"ulosmenevät rekisteröinnit sekä tilaukset ovat voimassa."
 
-#: advanced_sip.php:126
 msgid "Default values are 60, 3600 and 120 respectively."
 msgstr "Oletus arvot ovat tässä järjestyksessä: 60, 3600 ja 120."
 
-#: advanced_sip.php:130
 msgid "DNS Service Records"
 msgstr "DNS Palvelu Asiakirjat"
 
-#: advanced_sip.php:132
 msgid "Disable DNS SRV lookups."
 msgstr "Poista DNS SRV käytöstä."
 
-#: debug_isdn.php:32
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
-#: debug_isdn.php:61 phones_isdn_edit.php:160 providers_isdn_edit.php:168
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
-#: debug_isdn.php:74 interfaces_analog.php:154
 msgid "Start"
 msgstr "Aloita"
 
-#: debug_isdn.php:80
 msgid "Debugging"
 msgstr "Virheiden etsiminen"
 
-#: debug_isdn.php:86
 msgid "Stop"
 msgstr "Pysäytä"
 
-#: debug_isdn.php:92
 msgid "Debug Ouptut"
 msgstr "Virheiden etsinnän tulokset"
 
-#: debug_isdn.php:100
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: diag_arp.php:32 diag_editor.php:32 diag_logs.php:34 diag_logs_calls.php:32
-#: diag_logs_pbx.php:32 diag_logs_settings.php:32 diag_manager.php:32
-#: diag_ping.php:32 diag_traceroute.php:32 fbegin.inc:95 fbegin.inc:97
 msgid "Diagnostics"
 msgstr "Diagnostiset"
 
-#: diag_arp.php:32
 msgid "ARP table"
 msgstr "ARP taulukko"
 
-#: diag_arp.php:67 interfaces_network.php:206
 msgid "LAN"
 msgstr "LAN"
 
-#: diag_arp.php:104 interfaces_network.php:236
 msgid "IP address"
 msgstr "IP osoite"
 
-#: diag_arp.php:105 interfaces_network.php:268 status_interfaces.php:360
 msgid "MAC address"
 msgstr "MAC osoite"
 
-#: diag_arp.php:106 system.php:150
 msgid "Hostname"
 msgstr "Isäntänimi"
 
-#: diag_arp.php:116
 msgid "delete arp entry"
 msgstr "poista arp asetus"
 
-#: diag_arp.php:124
 msgid "remove all entries from arp table"
 msgstr "tyhjennä koko arp taulukko"
 
-#: diag_arp.php:128
 msgid "Hint:"
 msgstr "Vihje:"
 
-#: diag_arp.php:129
 msgid ""
 "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 "hostnames&quot; is checked on the"
-msgstr "IP osoitteet ovat selvitetty isäntänimiksi jos &quot;Selvitä IP osoitteet isäntänimiksi&quot; on valittu"
+msgstr ""
+"IP osoitteet ovat selvitetty isäntänimiksi jos &quot;Selvitä IP osoitteet "
+"isäntänimiksi&quot; on valittu"
 
-#: diag_arp.php:130
 msgid "Diagnostics: Logs</a> page."
 msgstr "Diagnostiset: Loki</a> sivulla."
 
-#: diag_editor.php:32
 msgid "Editor"
 msgstr "Editori"
 
-#: diag_editor.php:44
 #, php-format
 msgid "The specified file (%s) does not exist."
 msgstr "Kyseinen tiedosto (%s) ei löydetty."
 
-#: diag_editor.php:61
 #, php-format
 msgid "File contents (%s) saved."
 msgstr "Tiedoston sisältö (%s) tallennettu."
 
-#: diag_editor.php:75 diag_editor.php:92
 msgid "File"
 msgstr "Tiedosto"
 
-#: diag_editor.php:79
 msgid "Contents"
 msgstr "Sisältö"
 
-#: diag_editor.php:87
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: diag_editor.php:97
 msgid "Open"
 msgstr "Avaa"
 
-#: diag_logs.php:34 diag_logs_calls.php:32 diag_logs_pbx.php:32
-#: diag_logs_settings.php:32 fbegin.inc:215
 msgid "Logs"
 msgstr "Loki"
 
-#: diag_logs.php:70 diag_logs_calls.php:160 diag_logs_pbx.php:68
-#: diag_logs_settings.php:108 system.php:32 system_defaults.php:32
-#: system_firmware.php:33 system_reboot.php:32 fbegin.inc:284
-#: system_packages.php:32
 msgid "System"
 msgstr "Järjestelmä"
 
-#: diag_logs.php:71 diag_logs_calls.php:161 diag_logs_pbx.php:69
-#: diag_logs_settings.php:109
 msgid "PBX"
 msgstr "PBX"
 
-#: diag_logs.php:72 diag_logs_calls.php:162 diag_logs_pbx.php:70
-#: diag_logs_settings.php:110
 msgid "Calls"
 msgstr "Puhelut"
 
-#: diag_logs.php:73 diag_logs_calls.php:163 diag_logs_pbx.php:71
-#: diag_logs_settings.php:111
 msgid "Settings"
 msgstr "Asetukset"
 
-#: diag_logs.php:83
 msgid "Last "
 msgstr "Viimeiset "
 
-#: diag_logs.php:83
 msgid " system log entries"
 msgstr " järjestelmän loki tallennukset"
 
-#: diag_logs.php:99 diag_logs_pbx.php:97
 msgid "Clear Log"
 msgstr "Tyhjennä loki"
 
-#: diag_logs_calls.php:173
 msgid " Call Records"
 msgstr " Puhelutiedot"
 
-#: diag_logs_calls.php:176
 msgid "start"
 msgstr "aloita"
 
-#: diag_logs_calls.php:177
 msgid "src"
 msgstr "lähde"
 
-#: diag_logs_calls.php:178
 msgid "dst"
 msgstr "dst"
 
-#: diag_logs_calls.php:179
 msgid "channels"
 msgstr "kanavat"
 
-#: diag_logs_calls.php:180
 msgid "last app"
 msgstr "viimeinen app."
 
-#: diag_logs_calls.php:181
 msgid "sec."
 msgstr "sek."
 
-#: diag_logs_calls.php:182
 msgid "bill"
 msgstr "lasku"
 
-#: diag_logs_calls.php:183
 msgid "disposition"
 msgstr ""
 
-#: diag_logs_calls.php:198
 msgid "Clear log"
 msgstr "Tyhjennä loki"
 
-#: diag_logs_pbx.php:81
 msgid " Asterisk log entries"
 msgstr " Asterisk loki tallennukset"
 
-#: diag_logs_settings.php:53 interfaces_network.php:69
 msgid "A valid IP address must be specified."
 msgstr "Kelpaava IP osoite on oltava määritettynä."
 
-#: diag_logs_settings.php:56
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr "Loki tallennuksien määrä jota näytetään on oltava 5 ja 100 välissä."
 
-#: diag_logs_settings.php:124
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Näytä loki päinvastaisessa järjestyksessä (uusimmat ylhäällä)"
 
-#: diag_logs_settings.php:130
 msgid "Number of log entries to show:"
 msgstr "Loki tallennuksien määrä:"
 
-#: diag_logs_settings.php:138
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Mahdollista syslog'ing syslog serverille"
 
-#: diag_logs_settings.php:142
 msgid "Remote syslog server"
 msgstr "Syslog serveri"
 
-#: diag_logs_settings.php:146
 msgid "IP address of remote syslog server"
 msgstr "Syslog serverin IP osoite"
 
-#: diag_logs_settings.php:149
 msgid "system events"
 msgstr "järjestelmä tapahtumat"
 
-#: diag_logs_settings.php:151
 msgid "pbx events"
 msgstr "pbx tapahtumat"
 
-#: diag_logs_settings.php:153
 msgid "call detail records"
 msgstr "puheluiden yksityiskohdat"
 
-#: diag_logs_settings.php:167
 msgid ""
 "syslog sends UDP datagrams to port 514 on the specified remote syslog "
 "server. Be sure to set syslogd on the remote server to accept syslog "
 "messages from AskoziaPBX."
-msgstr "syslog lähettää UDP datagrammeja porttiin 514 syslog serverilla. Varmista että serveri (tarkemmin syslogd) hyväksyy syslog viestejä AskoziaPBX:ltä."
+msgstr ""
+"syslog lähettää UDP datagrammeja porttiin 514 syslog serverilla. Varmista "
+"että serveri (tarkemmin syslogd) hyväksyy syslog viestejä AskoziaPBX:ltä."
 
-#: diag_manager.php:66
 msgid "Command"
 msgstr "Komento"
 
-#: diag_manager.php:72
 msgid "Output"
 msgstr "Tuotos"
 
-#: diag_ping.php:32 diag_ping.php:88 diag_ping.php:116 diag_traceroute.php:71
 msgid "Ping"
 msgstr "Ping"
 
-#: diag_ping.php:44
 msgid "Host,Count"
 msgstr "Isäntä,Määrä"
 
-#: diag_ping.php:48
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr "Määrä on oltava 1 ja %d välissä"
 
-#: diag_ping.php:89 diag_traceroute.php:32 diag_traceroute.php:72
-#: diag_traceroute.php:105
 msgid "Traceroute"
 msgstr "Traceroute"
 
-#: diag_ping.php:105
 msgid "Count"
 msgstr "Määrä"
 
-#: diag_ping.php:123
 msgid "Ping output:"
 msgstr "Ping tuotos:"
 
-#: diag_traceroute.php:45
 msgid "Host,ttl"
 msgstr "Isäntä,ttl"
 
-#: diag_traceroute.php:49
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
 msgstr "Maximi määrä hyppyjä on oltava 1 ja %d välissä"
 
-#: diag_traceroute.php:88
 msgid "Maximum number of hops"
 msgstr "Maximi määrä hyppyjä"
 
-#: diag_traceroute.php:99
 msgid "Resolve IP addresses to hostnames"
 msgstr "Selvitä IP osoitteet isäntänimiksi"
 
-#: diag_traceroute.php:110
 msgid ""
 " Traceroute may take a while to complete.  You may hit the Stop button on "
 "your browser at any time to see the progress of failed traceroutes."
-msgstr " Traceroute voi kestää jonkin aikaa. Voit painaa Lopeta nappia milloin tahansa jotta näet epäonnistuneet jäljitykset."
+msgstr ""
+" Traceroute voi kestää jonkin aikaa. Voit painaa Lopeta nappia milloin "
+"tahansa jotta näet epäonnistuneet jäljitykset."
 
-#: diag_traceroute.php:113
 msgid "Traceroute output:"
 msgstr "Traceroute:in tuotos:"
 
-#: dialplan_applications.php:32 dialplan_applications_edit.php:34
-#: dialplan_callgroups.php:32 dialplan_callgroups_edit.php:36
-#: dialplan_providers.php:34 dialplan_transfers.php:32 fbegin.inc:286
 msgid "Dialplan"
 msgstr "Soittosuunnitelma"
 
-#: dialplan_applications.php:32 dialplan_applications_edit.php:34
-#: popup_dialplan_element_library.php:222 fbegin.inc:178
 msgid "Applications"
 msgstr "Sovellukset"
 
-#: dialplan_applications.php:91
+#, fuzzy
+msgid "name"
+msgstr "Nimi"
+
+msgid "descr"
+msgstr ""
+
 msgid "edit application mapping"
 msgstr "muokkaa sovelluksien kartoittaminen"
 
-#: dialplan_applications.php:92
 msgid "Do you really want to delete this application mapping?"
 msgstr "Oletko varma että haluat poistaa tämän sovelluksien kartoittaminen?"
 
-#: dialplan_applications.php:92
 msgid "delete application mapping"
 msgstr "poista sovelluksien kartoittaminen"
 
-#: dialplan_applications.php:98
 msgid "add application mapping"
 msgstr "lisää sovelluksien kartoittaminen"
 
-#: dialplan_applications_edit.php:34 dialplan_callgroups_edit.php:36
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: dialplan_applications_edit.php:66
 msgid "Name,Extension,Application Logic"
 msgstr "Nimi,Jatke,Sovelluslogiikka"
 
-#: dialplan_applications_edit.php:72 phones_analog_edit.php:77
-#: phones_isdn_edit.php:77
 msgid "A valid extension must be entered."
 msgstr "Kelpaava jatke on annettava."
 
-#: dialplan_applications_edit.php:129
 msgid "Internal extension used to reach this application."
 msgstr "Sisäinen jatke käytetty tämän sovelluksen tavoittamiseen."
 
-#: dialplan_callgroups.php:32 dialplan_callgroups_edit.php:36
-#: printable_dialplan.php:105 fbegin.inc:180
 msgid "Call Groups"
 msgstr "Puheluryhmät"
 
-#: dialplan_callgroups.php:84 printable_dialplan.php:110 display.inc:127
 msgid "Members"
 msgstr "Jäsenet"
 
-#: dialplan_callgroups.php:94
 msgid "edit call group"
 msgstr "muokkaa puheluryhmää"
 
-#: dialplan_callgroups.php:95
 msgid "Do you really want to delete this call group?"
 msgstr "Oleko varma että haluat poistaa tämän puheluryhmän?"
 
-#: dialplan_callgroups.php:95
 msgid "delete call group"
 msgstr "poista puheluryhmä"
 
-#: dialplan_callgroups.php:101
-msgid "alisää puheluryhmädd call group"
-msgstr ""
+#, fuzzy
+msgid "add call group"
+msgstr "muokkaa puheluryhmää"
 
-#: dialplan_callgroups_edit.php:126
 msgid "Group name"
 msgstr "Ryhmän nimi"
 
-#: dialplan_callgroups_edit.php:133
 msgid "Internal extension used to reach this call group."
 msgstr "Sisäinen jatke käytetty tämän ryhmän tavoittamiseen."
 
-#: dialplan_providers.php:60
-#, php-format
-msgid "The incoming extension pattern \"%s\" for \" %s \" is invalid. %s"
-msgstr "Sisääntulevan jatkeen kaava \"%s\" ei kelpaa \"%s\" varten. %s"
-
-#: dialplan_providers.php:89
-#, php-format
-msgid "An invalid dial-pattern (%s) was found for \"%s\". %s"
-msgstr "Kelvoton soittokaava (%s) löytyi \"%s\" varten. %s"
-
-#: dialplan_providers.php:92
-#, php-format
-msgid "The dial-pattern \"%s\" defined for \"%s\" already exists for \"%s\"."
-msgstr "Soittokaava \"%s\" määritetty \"%s\" varten on jo määritetty \"%s\" varten."
-
-#: dialplan_providers.php:180 display.inc:361
-msgid "There are currently no providers defined."
-msgstr "Tällä hetkellä ei ole palveluntarjoajia määritettynä."
-
-#: dialplan_providers.php:190
-msgid "(ISDN)"
-msgstr "(ISDN)"
-
-#: dialplan_providers.php:192
-msgid "(Analog)"
-msgstr "(Analogi)"
-
-#: dialplan_providers.php:208
-msgid "Help"
-msgstr "Apua"
-
-#: dialplan_providers.php:211 display.inc:432
-msgid "Dialing Pattern(s)"
-msgstr "Soittokaava(t)"
-
-#: dialplan_providers.php:213 display.inc:455
-msgid "display_provider_dialpattern_editor"
-msgstr ""
-
-#: dialplan_providers.php:217
-msgid "Incoming Extension"
-msgstr "Sisääntuleva Jatke"
-
-#: dialplan_providers.php:219 display.inc:179
-msgid "display_incoming_extension_selector"
-msgstr ""
-
-#: dialplan_providers.php:225 display.inc:416
-msgid "display_phone_access_selector"
-msgstr ""
-
-#: dialplan_transfers.php:32 fbegin.inc:183
 msgid "Transfers"
 msgstr "Siirrot"
 
-#: dialplan_transfers.php:58
 msgid ""
 "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr "Pysäköinti Jatke,Pysäköinnin Aloituskohta,Pysäköinnin Lopetuskohta,Pysäköinnin Aika"
+msgstr ""
+"Pysäköinti Jatke,Pysäköinnin Aloituskohta,Pysäköinnin Lopetuskohta,"
+"Pysäköinnin Aika"
 
-#: dialplan_transfers.php:64
 msgid "A valid parking start position must be specified."
 msgstr "Kelpaava pysäköinti aloituskohta on määritettävä."
 
-#: dialplan_transfers.php:67
 msgid "A valid parking stop position must be specified."
 msgstr "Kelpaava pysäköinti lopetuskohta on määritettävä"
 
-#: dialplan_transfers.php:70
 msgid "The end parking position must be larger than the start position."
 msgstr "Pysäköinnin lpetuskohta on oltava isompi kun aloituskohta."
 
-#: dialplan_transfers.php:73
 msgid "A valid parking extension must be specified."
 msgstr "Kelpaava pysäköinti-jatke on määritettävä."
 
-#: dialplan_transfers.php:76
 msgid "A valid park time must be specified."
 msgstr "Kelpaava pysäköinti aika on määritettävä."
 
-#: dialplan_transfers.php:80
 msgid "A valid key timeout must be specified."
 msgstr "Kelpaava avain aikaraja on määritettävä."
 
-#: dialplan_transfers.php:83
 msgid "A valid attended transfer timeout must be specified."
 msgstr "Kelpaava osallistunut siirto aikaraja on määritettävä."
 
-#: dialplan_transfers.php:86
 msgid "A valid extension digit timeout must be specified."
 msgstr "Kelpaava jatke-numero aikaraja on määritettävä."
 
-#: dialplan_transfers.php:132
 msgid "Hot Keys"
 msgstr "Pikanäppäimet"
 
-#: dialplan_transfers.php:135
 msgid "Attended"
 msgstr "Osallistunut"
 
-#: dialplan_transfers.php:138
 msgid "This key combination activates an attended transfer (default **)."
 msgstr "Tämä näppäinyhdistelmä aktivoi osallistuneen siirron (oletus **)."
 
-#: dialplan_transfers.php:142
 msgid "Blind"
 msgstr ""
 
-#: dialplan_transfers.php:145
 msgid "This key combination activates a blind transfer (default ##)."
 msgstr "Tämä näppäinyhdistelmä aktivoi blind siirron (oletus ##)."
 
-#: dialplan_transfers.php:159
 msgid "Call Parking"
 msgstr "Puhelun Pysäköiminen"
 
-#: dialplan_transfers.php:162
 msgid "Park Extension"
 msgstr "Päysäköinnin Jatke"
 
-#: dialplan_transfers.php:165
 msgid ""
 "Blind transfer to this extension to park a call (default 700). The number "
 "read back to you after transfering is the extension where the call was "
 "parked."
-msgstr "Blind siirto tälle jatkelle puhelun pysäköimiseen (oletus 700). Numero joka annetaan siirron jälkeen on jatke missä puhelu pysäköitiin."
+msgstr ""
+"Blind siirto tälle jatkelle puhelun pysäköimiseen (oletus 700). Numero joka "
+"annetaan siirron jälkeen on jatke missä puhelu pysäköitiin."
 
-#: dialplan_transfers.php:169
 msgid "Parking Range"
 msgstr "Pysäköinnin Kantama"
 
-#: dialplan_transfers.php:172
 msgid ""
 "This range of extensions is where parked calls reside (default 701-720)."
 msgstr "Tässä jatkekantamassa pysäköidyt puhelut ovat (oletus 700-720)."
 
-#: dialplan_transfers.php:179
 msgid "Timeouts"
 msgstr "Ajanjaksot"
 
-#: dialplan_transfers.php:182
 msgid "Attended Transfer Answer"
 msgstr "Osallistuneen Siirron Vastaus"
 
-#: dialplan_transfers.php:185
 msgid ""
 "Maximum number of seconds an attended transfer can go unanswered (default "
 "15)."
-msgstr "Maximi määrä sekuntteja osallistunut siirto voi olla vastaamatta (oletus 15)."
+msgstr ""
+"Maximi määrä sekuntteja osallistunut siirto voi olla vastaamatta (oletus 15)."
 
-#: dialplan_transfers.php:189
 msgid "Transfer Key"
 msgstr "Siirtonäppäin"
 
-#: dialplan_transfers.php:192
 msgid ""
 "Maximum number of milliseconds between key presses for transfer activation "
 "(default 500)."
-msgstr "Maximi määrä millisekuntteja avainyhdistelmien välillä siirto aktivoinnissa (oletus 500)."
+msgstr ""
+"Maximi määrä millisekuntteja avainyhdistelmien välillä siirto aktivoinnissa "
+"(oletus 500)."
 
-#: dialplan_transfers.php:196
 msgid "Extension Digit"
 msgstr "Jatkenumero"
 
-#: dialplan_transfers.php:199
 msgid ""
 "Maximum number of seconds to wait between digits when transferring a call "
 "(default 3)."
-msgstr "Maximi määrä sekuntteja odottaa numeroiden välillä kun siirretään puhelua (oletus 3)."
+msgstr ""
+"Maximi määrä sekuntteja odottaa numeroiden välillä kun siirretään puhelua "
+"(oletus 3)."
 
-#: dialplan_transfers.php:203
 msgid "Park Time"
 msgstr "Pysäköintiaika"
 
-#: dialplan_transfers.php:206
 msgid ""
 "Maximum number of seconds a call can be parked before it is transfered back "
 "to the parker (default 30)."
-msgstr "Miximi määrä sekuntteja puhelu voi olla pysäköitynä ennen kun sitä siirretään takaisin pysäköinnin tehneelle (oletus 30)."
+msgstr ""
+"Miximi määrä sekuntteja puhelu voi olla pysäköitynä ennen kun sitä "
+"siirretään takaisin pysäköinnin tehneelle (oletus 30)."
 
-#: exec.php:80 exec.php:221
 msgid "AskoziaPBX: execute command"
 msgstr "AskoxiaPBX: toteuta komento"
 
-#: exec.php:223
 msgid "enter a command below..."
 msgstr "anna komento..."
 
-#: exec.php:226
 msgid "Command:"
 msgstr "Komento:"
 
-#: exec.php:234
 msgid "Execute"
 msgstr "Suorita"
 
-#: exec.php:236
 msgid "Clear"
 msgstr "Tyhjennä"
 
-#: exec.php:243
 msgid "Download:"
 msgstr "Lataa:"
 
-#: exec.php:246
 msgid "Download"
 msgstr "Lataa"
 
-#: exec.php:250
 msgid "Upload:"
 msgstr "Lataa ylös:"
 
-#: exec.php:253
 msgid "Upload"
 msgstr "Lataa ylös"
 
-#: fbegin.inc:86
-msgid "(print)"
-msgstr "(tulosta)"
-
-#: graph.php:79
 msgid "In"
 msgstr "Sisään"
 
-#: fbegin.inc:159 system_packages.php:32
-msgid "Packages"
-msgstr "Paketit"
-
-#: graph.php:80
 msgid "Out"
 msgstr "Ulos"
 
-#: graph.php:84
 msgid "Switch to bytes/s"
 msgstr "Vaihda tavua/s"
 
-#: graph.php:85
 msgid "AutoScale"
 msgstr "Automaattinen skaalaus"
 
-#: graph.php:87
 msgid "Graph shows last"
 msgstr "Graafi näyttää viimeiset"
 
-#: graph.php:87
 msgid " seconds"
 msgstr " sekunttia"
 
-#: graph.php:90 graph_cpu.php:68
 msgid "Collecting initial data, please wait..."
 msgstr "Kerää tarvittavat tiedot, ole kärsivällinen ja odota..."
 
-#: graph_cpu.php:63
 msgid "75%"
 msgstr "75%"
 
-#: graph_cpu.php:64
 msgid "50%"
 msgstr "50%"
 
-#: graph_cpu.php:65
 msgid "25%"
 msgstr "25%"
 
-#: graph_cpu.php:67
 msgid "Cannot get CPU load"
 msgstr "Prosessorin rasitus ei ole saatavissa"
 
-#: index.php:32
 msgid "AskoziaPBX webGUI"
 msgstr "AskoziaPBX verkkokäyttöliittymä"
 
-#: index.php:54
 msgid "System Information"
 msgstr "Järjestelmän Tiedot"
 
-#: index.php:63 interfaces_wireless.php:279
 msgid "Version"
 msgstr "Versio"
 
-#: index.php:67
 msgid "built on"
 msgstr "rakennettu"
 
-#: index.php:72
 msgid "Platform"
 msgstr "Alusta"
 
-#: index.php:78
 msgid "Uptime"
 msgstr "Käynnissäoloaika"
 
-#: index.php:96
 #, php-format
 msgid "%s days, "
 msgstr "%s päivää"
 
-#: index.php:105
 msgid "Last Config Change"
 msgstr "Viimeisin Muutos"
 
-#: index.php:113
 msgid "Active Calls"
 msgstr "Aktiiviset Puhelut"
 
-#: index.php:117 status_channels.php:32
 msgid "Active Channels"
 msgstr "Aktiiviset Kanavat"
 
-#: index.php:122
 msgid "Memory Usage"
 msgstr "Muistin käyttö"
 
-#: index.php:146
 msgid "Notes"
 msgstr "Muistiinapanot"
 
-#: interfaces_analog.php:32 interfaces_analog_edit.php:40
-#: interfaces_isdn.php:32 interfaces_isdn_edit.php:36
-#: interfaces_network.php:32 interfaces_wireless.php:32
-#: status_interfaces.php:32 fbegin.inc:151 fbegin.inc:192
-#: interfaces_storage.php:32 interfaces_storage_disk_edit.php:36
 msgid "Interfaces"
 msgstr "Käyttöliittymät"
 
-#: interfaces_analog.php:124 interfaces_isdn.php:112 interfaces_network.php:32
-#: interfaces_network.php:191 interfaces_wireless.php:190
-#: status_interfaces.php:202 interfaces_storage.php:53
 msgid "Network"
 msgstr "Verkko"
 
-#: interfaces_analog.php:125 interfaces_isdn.php:113
-#: interfaces_network.php:192 interfaces_wireless.php:32
-#: interfaces_wireless.php:191 status_interfaces.php:203
-#: interfaces_storage.php:54
 msgid "Wireless"
 msgstr "Langaton"
 
-#: interfaces_analog.php:128 interfaces_isdn.php:116
-#: interfaces_network.php:195 interfaces_wireless.php:194
-#: interfaces_storage.php:32 interfaces_storage.php:57
-#: interfaces_storage_disk_edit.php:36
 msgid "Storage"
 msgstr "Tallentaminen"
 
-#: interfaces_analog.php:142
 msgid "No compatible analog interfaces detected."
 msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 
-#: interfaces_analog.php:144
 msgid "If an analog interface is present but was not detected, please send "
 msgstr "Jos analoginen käyttöliittymä on läsna mutta ei havaittavissa, lähetä "
 
-#: interfaces_analog.php:144 interfaces_isdn.php:132
 msgid "this output</a> to "
 msgstr "tämä tuotos</a> osoitteeseen "
 
-#: interfaces_analog.php:151 interfaces_isdn.php:142
 msgid "Unit"
 msgstr "Yksikkö"
 
-#: interfaces_analog.php:153 status_interfaces.php:436
 msgid "Type"
 msgstr "Tyyppi"
 
-#: interfaces_analog.php:155
 msgid "Gain (rx/tx)"
 msgstr "Hyöty (rx/tx)"
 
-#: interfaces_analog.php:156 interfaces_analog_edit.php:174
-#: interfaces_isdn.php:145 interfaces_isdn_edit.php:194
 msgid "Echo Canceller"
 msgstr "Echo Peruutus"
 
-#: interfaces_analog.php:205
 msgid "edit analog interface"
 msgstr "muokkaa analogi käyttöliittymää"
 
-#: interfaces_analog.php:207 interfaces_isdn.php:163
 msgid "Do you really want to forget this interface\\'s settings?"
 msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
 
-#: interfaces_analog.php:207 interfaces_isdn.php:163
 msgid "forget interface settings"
 msgstr "unohda käyttöliittymän asetukset"
 
-#: interfaces_analog.php:216
 msgid ""
 "FXS interfaces connect to telephones and FXO interfaces connect to provider "
 "lines. FXS interfaces produce electricity to power the telephone and FXO "
@@ -1361,7 +947,6 @@ msgstr ""
 "linjoihin. fxs käyttöliittymät tuottavat sähköä puhelimelle ja fxo ottaa "
 "sähkön palveluntarjoajalta."
 
-#: interfaces_analog.php:216
 msgid ""
 "Connecting a provider line to an FXS port can damage your hardware! If you "
 "are unsure which ports are FXO or FXS on your card, configure and connect "
@@ -1371,85 +956,69 @@ msgstr ""
 "järjestelmäsi! Jos olet epävarma mikä portti on fxs tai fxo sinun kortilla, "
 "konfiguroi ja yhdistä puhelin tilisi ennen kun yhdistät linjoja."
 
-#: interfaces_analog_edit.php:40
 msgid "Edit Analog "
 msgstr "Muokkaa Analogi "
 
-#: interfaces_analog_edit.php:40
 msgid " Interface #"
 msgstr " Käyttöliittymä #"
 
-#: interfaces_analog_edit.php:170 interfaces_isdn_edit.php:168
 msgid "Descriptive name for this interface"
 msgstr "Kuvaileva nimi tälle käyttöliittymälle"
 
-#: interfaces_analog_edit.php:177 display.inc:69 display.inc:95
 msgid "Disabled"
 msgstr "Poissa käytöstä"
 
-#: interfaces_analog_edit.php:178
 msgid "32"
 msgstr "32"
 
-#: interfaces_analog_edit.php:179
 msgid "64"
 msgstr "64"
 
-#: interfaces_analog_edit.php:180
 msgid "128"
 msgstr "128"
 
-#: interfaces_analog_edit.php:181
 msgid "256"
 msgstr "256"
 
-#: interfaces_analog_edit.php:183
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
 "require more processing power."
-msgstr "Echo peruutuksen 'tap' numero. Isompi numero peruuttaa echoa tehokkaammin, mutta tarvii enemmän tehoa."
+msgstr ""
+"Echo peruutuksen 'tap' numero. Isompi numero peruuttaa echoa tehokkaammin, "
+"mutta tarvii enemmän tehoa."
 
-#: interfaces_analog_edit.php:189
 msgid "Start Signaling"
 msgstr "Aloita Viestittäminen"
 
-#: interfaces_analog_edit.php:199
 msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
 msgstr "'Kewl Start' on melkein joka tapauksessa sopiva vaihtoehto."
 
-#: interfaces_analog_edit.php:216
 msgid "clicking &quot;Save&quot; will drop all current calls."
-msgstr "Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut katkaistaan."
+msgstr ""
+"Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
+"katkaistaan."
 
-#: interfaces_isdn.php:130
 msgid "No compatible ISDN interfaces detected."
 msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
 
-#: interfaces_isdn.php:132
 msgid "If an ISDN interface is present but was not detected, please send "
 msgstr "Jos ISDN käyttöliittymä on läsna mutta ei havaittavissa, lähetä "
 
-#: interfaces_isdn.php:134
 msgid "If this is a USB ISDN device, send "
 msgstr "Jos tämä on USB ISDN laite, lähetä "
 
-#: interfaces_isdn.php:134
 msgid "this output</a> as well."
 msgstr "tämä tuotos</a> myös."
 
-#: interfaces_isdn.php:144 interfaces_isdn_edit.php:172
 msgid "Operating Mode"
 msgstr "Käyttötapa"
 
-#: interfaces_isdn.php:161
 msgid "edit ISDN interface"
 msgstr "muokkaa ISDN käyttöliittymää"
 
-#: interfaces_isdn.php:171
 msgid "Operating Modes"
 msgstr "Käyttötavat"
 
-#: interfaces_isdn.php:173 interfaces_isdn_edit.php:184
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 "calls and is attached to the public ISDN network or another PBX system"
@@ -1458,7 +1027,6 @@ msgstr ""
 "reitittämään puheluita ja se on kiinni julkisessa ISDN verkossa tai toisessa "
 "PBX järjestelmässä."
 
-#: interfaces_isdn.php:174 interfaces_isdn_edit.php:185
 msgid ""
 "multipoint-to-point, network termination: this port provides MSNs to route "
 "calls and is attached to one or more telephones"
@@ -1466,7 +1034,6 @@ msgstr ""
 "multipoint-to-point, verkon päättyminen: tämä portti mahdollistaa MSN "
 "reitittämään puheluita ja se on kiinni yhteen tai moneen puhelimeen."
 
-#: interfaces_isdn.php:175 interfaces_isdn_edit.php:186
 msgid ""
 "point-to-point, terminal equipment: this port accepts DID to route calls and "
 "is connected directly to another PBX system"
@@ -1474,7 +1041,6 @@ msgstr ""
 "point-to-point, konsoli apuvälineet: tämä portti sallii DID reitittämään "
 "puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
 
-#: interfaces_isdn.php:176 interfaces_isdn_edit.php:187
 msgid ""
 "point-to-point, network termination: this port provides DID to route calls "
 "and is connected directly to another PBX system"
@@ -1482,63 +1048,53 @@ msgstr ""
 "point-to-point, verkon päättyminen: tämä portti mahdollistaa DID "
 "reitittämään puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
 
-#: interfaces_isdn_edit.php:36
 #, php-format
 msgid "Edit ISDN Interface #%s"
 msgstr "Muokkaa ISDN käyttöliittymää #%s"
 
-#: interfaces_isdn_edit.php:106
 msgid "An Operating Mode must be selected for this interface."
 msgstr "Käyttötapa on oltava valittu tälle käyttöliittymälle."
 
-#: interfaces_isdn_edit.php:197
 msgid "Attempt to remove echoes from the line."
 msgstr "Yritä poistaa kaikua linjalta."
 
-#: interfaces_isdn_edit.php:202
 msgid "PCM Timing Slave"
 msgstr "PCM Ajanotto Orja"
 
-#: interfaces_isdn_edit.php:205
 msgid ""
 "There is already another card present which provides the timing.<br><em>"
 "(Unless more than one inteface card is present in the system, this should "
 "not be changed."
-msgstr "Kortti joka mahdollistaa ajanottoa on jo käytössä.<br><em>(Jos järjestelmässä ei ole enempää kuin yksi käyttöliittymäkortti, niin tätä ei pitäisi muuttaa."
+msgstr ""
+"Kortti joka mahdollistaa ajanottoa on jo käytössä.<br><em>(Jos "
+"järjestelmässä ei ole enempää kuin yksi käyttöliittymäkortti, niin tätä ei "
+"pitäisi muuttaa."
 
-#: interfaces_isdn_edit.php:209
 msgid "Disable Power Save"
 msgstr "Poista Virransäästö Käytöstä"
 
-#: interfaces_isdn_edit.php:212
 msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr "Poista virransäästötila käytöstä. (joskus pakollinen vanhoille korteille)"
+msgstr ""
+"Poista virransäästötila käytöstä. (joskus pakollinen vanhoille korteille)"
 
-#: interfaces_isdn_edit.php:216
 msgid "Enable Polling Mode"
 msgstr "Mahdollista Äänestystila"
 
-#: interfaces_isdn_edit.php:219
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Poista äänestystila käytöstä. (joskus pakollinen vanhoille korteille)"
 
-#: interfaces_network.php:60
 msgid "IP address,Subnet bit count,Gateway,Network topology"
 msgstr "IP osoite,Aliverkon tavu määrä,Gateway,Verkon topologia"
 
-#: interfaces_network.php:65
 msgid "A valid MAC address must be specified."
 msgstr "Kelpaava MAC osoite on oltava määritetty."
 
-#: interfaces_network.php:72
 msgid "A valid subnet bit count must be specified."
 msgstr "kelpaava aliverkon tavu määrä on oltava määritetty."
 
-#: interfaces_network.php:75
 msgid "A valid gateway must be specified."
 msgstr "kelpaava gateway on oltava määritetty."
 
-#: interfaces_network.php:78
 msgid ""
 "A valid IP address must be specified for the primary/secondary/tertiary DNS "
 "server."
@@ -1546,39 +1102,32 @@ msgstr ""
 "kelpaava IP osoite on oltava määritettynä ensisijaiselle, toissijaiselle ja "
 "kolmannelle DNS serverille."
 
-#: interfaces_network.php:83
 msgid "A public IP address must be entered for this topology."
 msgstr "Julkinen IP osoite on annettava tälle topologialle."
 
-#: interfaces_network.php:85
 msgid "A valid public IP address must be entered for this topology."
 msgstr "Kelpaava IP osoite on annettava tälle topologialle."
 
-#: interfaces_network.php:91
 msgid "A public hostname must be entered for this topology."
 msgstr "Julkinen isäntänimi on annettava tälle topologialle."
 
-#: interfaces_network.php:93
 msgid "A valid public hostname must be entered for this topology."
 msgstr "Kelpaava julkinen isäntänimi on annettava tälle topologialle."
 
-#: interfaces_network.php:231
 msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Valitut käyttöliittymät tulevat olemaan sillattuja ensisijaiseen käyttäliittymään."
+msgstr ""
+"Valitut käyttöliittymät tulevat olemaan sillattuja ensisijaiseen "
+"käyttäliittymään."
 
-#: interfaces_network.php:251 status_interfaces.php:251
 msgid "Gateway"
 msgstr "Gateway"
 
-#: interfaces_network.php:256
 msgid "DNS servers"
 msgstr "DNS serverit"
 
-#: interfaces_network.php:264
 msgid "IP addresses"
 msgstr "IP osoitteet"
 
-#: interfaces_network.php:271
 msgid ""
 "This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
 "network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
@@ -1588,36 +1137,33 @@ msgstr ""
 "osoitetta<br>Anna MAC osoite seuraavassa muodossa: xx:xx:xx:xx:xx:xx tai "
 "jätä tyhjäksi."
 
-#: interfaces_network.php:275
 msgid "Topology"
 msgstr "Topologia"
 
-#: interfaces_network.php:285
 msgid "Public IP Address: this pbx has a routable IP address"
 msgstr "Julkinen IP Osoite: tällä pbx:llä on reitittävä IP osoite"
 
-#: interfaces_network.php:286
 msgid ""
 "NAT + static public IP: this pbx is behind a NAT which has a static public "
 "IP. Enter this IP below."
-msgstr "NAT + staattinen julkinen IP: tämä pbx on NAT:in takana jolla on staattinen julkinen IP."
+msgstr ""
+"NAT + staattinen julkinen IP: tämä pbx on NAT:in takana jolla on staattinen "
+"julkinen IP."
 
-#: interfaces_network.php:287
 msgid ""
 "NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public "
 "IP. A hostname, constantly updated to point to this network is required. "
 "Enter this hostname below."
-msgstr "NAT + dynaaminen julkinen IP: tämä pbx on NAT:in takana jolla on dynaaminen julkinen IP. Isäntänimi joka koko ajan osoittaa tähän verkkoon on pakollinen."
+msgstr ""
+"NAT + dynaaminen julkinen IP: tämä pbx on NAT:in takana jolla on dynaaminen "
+"julkinen IP. Isäntänimi joka koko ajan osoittaa tähän verkkoon on pakollinen."
 
-#: interfaces_network.php:293 guiconfig.inc:130
 msgid "Public IP address"
 msgstr "Julkinen IP osoite"
 
-#: interfaces_network.php:299
 msgid "Public hostname"
 msgstr "Julkinen isäntänimi"
 
-#: interfaces_network.php:314
 msgid ""
 "after you click &quot;Save&quot;, all currentcalls will be dropped. You may "
 "also have to do one or more of the following steps before you can access "
@@ -1627,65 +1173,83 @@ msgstr ""
 "lopetetaan. Sinun on ehkä myös pakko seurattava näitä toiminpideitä enne "
 "kuin voit käyttää PBX:ää uudelleen:"
 
-#: interfaces_network.php:316
 msgid "restart the PBX"
 msgstr "käynnistä PBX:ää uudelleen"
 
-#: interfaces_network.php:317
 msgid "change the IP address of your computer"
 msgstr "vaihda IP osoite tälle tietokoneelle"
 
-#: interfaces_network.php:318
 msgid "access the webGUI with the new IP address"
 msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
 
-#: interfaces_wireless.php:90
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa "
+"paketteja."
+
+msgid " A minimum of "
+msgstr " Minimi "
+
+msgid ""
+"MB is required. In the future, external media will be able to be used, but "
+"currently packages must be stored on the internal system media."
+msgstr ""
+"Mt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, mutta "
+"tällä hetkellä paketit on tallennettava sisäiselle medialle."
+
+msgid "Capacity"
+msgstr "Kapasiteetti"
+
+msgid "State"
+msgstr "Tila"
+
+msgid "Installed Packages"
+msgstr "Asennetut Paketit"
+
+msgid "system storage partition"
+msgstr "järjestelmän tallennus osio"
+
+msgid "Edit Disk"
+msgstr "Muokkaa Levyä"
+
+msgid "descriptive name"
+msgstr "kuvaileva nimi"
+
 msgid "SSID,Channel"
 msgstr "SSID,Kanava"
 
-#: interfaces_wireless.php:94
 msgid ",WPA version,WPA cipher"
 msgstr ".WPA versio,WPA salaus"
 
-#: interfaces_wireless.php:98
 msgid ",WPA PSK"
 msgstr ",WPA PSK"
 
-#: interfaces_wireless.php:115
 msgid "The WPA PSK must be between 8 and 63 characters long."
 msgstr "WPA PSK on oltava 8 ja 63 merkin pituinen."
 
-#: interfaces_wireless.php:123
 msgid ""
 "802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr "802.11a kanavat on vain käytettävissä jos standardi on asetettu 802.11a:ksi."
+msgstr ""
+"802.11a kanavat on vain käytettävissä jos standardi on asetettu 802.11a:ksi."
 
-#: interfaces_wireless.php:125
 msgid "802.11a can only be selected if an 802.11a channel is selected too."
 msgstr "802.11a voi ainoastaan valita jos 802.11a kanava on myös valittu."
 
-#: interfaces_wireless.php:208
 msgid "No compatible wireless interfaces detected."
 msgstr "Yhteensopivaa langatonta käyttöliittymää ei havaittu"
 
-#: interfaces_wireless.php:216
 msgid "Enable Wireless Interface"
 msgstr "Mahdollista Langatonta Käyttöliittymää"
 
-#: interfaces_wireless.php:220
 msgid "Standard"
 msgstr "Standardi"
 
-#: interfaces_wireless.php:232 status_interfaces.php:272
-#: status_interfaces.php:314
 msgid "SSID"
 msgstr "SSID"
 
-#: interfaces_wireless.php:237
 msgid "Hide SSID"
 msgstr "Piilota SSID"
 
-#: interfaces_wireless.php:239
 msgid ""
 "If this option is selected, the SSID will not be broadcast in hostap mode, "
 "and onlyclients that know the exact SSID will be able to connect. Note that "
@@ -1696,69 +1260,51 @@ msgstr ""
 "jotka tietävät SSID:een voivat yhdistää. Huomioi että tämä vaihtoehto ei "
 "missään nimessä ole korvike kunnolliselle turvallisuus/salaus asetukselle."
 
-#: interfaces_wireless.php:243 status_channels.php:56
-#: status_conferences.php:83 status_interfaces.php:265
-#: status_interfaces.php:316
 msgid "Channel"
 msgstr "Kanava"
 
-#: interfaces_wireless.php:246
 msgid "Auto"
 msgstr "Automattinen"
 
-#: interfaces_wireless.php:262
 msgid "WPA"
 msgstr "WPA"
 
-#: interfaces_wireless.php:266
 msgid "WPA settings"
 msgstr "WPA asetukset"
 
-#: interfaces_wireless.php:269
 msgid "Mode"
 msgstr "Tila"
 
-#: interfaces_wireless.php:272
 msgid "none"
 msgstr "ei yhtään"
 
-#: interfaces_wireless.php:273 interfaces_wireless.php:303
 msgid "PSK"
 msgstr "PSK"
 
-#: interfaces_wireless.php:282
 msgid "WPA only"
 msgstr "vain WPA"
 
-#: interfaces_wireless.php:283
 msgid "WPA2 only"
 msgstr "vain WPA2"
 
-#: interfaces_wireless.php:284
 msgid "WPA + WPA2"
 msgstr "WPA + WPA2"
 
-#: interfaces_wireless.php:287
 msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
 msgstr "Useimissa tapaksissa sinun on valittava &quot;WPA + WPA2&quot; tässä."
 
-#: interfaces_wireless.php:291
 msgid "Cipher"
 msgstr "Salaus"
 
-#: interfaces_wireless.php:294
 msgid "TKIP"
 msgstr "TKIP"
 
-#: interfaces_wireless.php:295
 msgid "AES/CCMP"
 msgstr "AES/CCMP"
 
-#: interfaces_wireless.php:296
 msgid "TKIP + AES/CCMP"
 msgstr "TKIP + AES/CCMP"
 
-#: interfaces_wireless.php:299
 msgid ""
 "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
 "with older hardware."
@@ -1766,7 +1312,6 @@ msgstr ""
 "AES/CCMP antaa paremman suojauksen kun TKIP, mutta TKIP on yhteensopiva "
 "vanhempien laitteiden kanssa."
 
-#: interfaces_wireless.php:306
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
@@ -1774,35 +1319,27 @@ msgstr ""
 "Anna salasana mikä käytetään WPA-PSK tilassa. Sen on oltava 8 ja 63 merkin "
 "pituinen."
 
-#: interfaces_wireless.php:338
 msgid "WEP"
 msgstr "WEP"
 
-#: interfaces_wireless.php:341
 msgid "Enable WEP"
 msgstr "Mahdollista WEP"
 
-#: interfaces_wireless.php:346
 msgid "TX key"
 msgstr "TX avain"
 
-#: interfaces_wireless.php:349
 msgid "Key 1:"
 msgstr "Avain 1:"
 
-#: interfaces_wireless.php:358
 msgid "Key 2:"
 msgstr "Avain 2:"
 
-#: interfaces_wireless.php:367
 msgid "Key 3:"
 msgstr "Avain 3:"
 
-#: interfaces_wireless.php:376
 msgid "Key 4:"
 msgstr "Avain 4:"
 
-#: interfaces_wireless.php:386
 msgid ""
 "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
 "preceded by '0x'."
@@ -1810,7 +1347,6 @@ msgstr ""
 "40 (64) tavuinen avain on annettava 5 ASCII merkillä tai 10 HEX numeroilla "
 "jonka ennen tulee laittaa '0x'."
 
-#: interfaces_wireless.php:387
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
@@ -1818,63 +1354,18 @@ msgstr ""
 "104 (128) tavuinen avain on annettava 13 ASCII merkillä tai 26 HEX "
 "numeroilla jonka ennen tulee laittaa '0x'."
 
-#: interfaces_storage.php:69 system_packages.php:144
-msgid "The system storage media is not large enough to install packages."
-msgstr "Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa paketteja."
-
-#: interfaces_storage.php:69 system_packages.php:144
-msgid " A minimum of "
-msgstr " Minimi "
-
-#: interfaces_storage.php:69 system_packages.php:144
-msgid ""
-"MB is required. In the future, external media will be able to be used, but "
-"currently packages must be stored on the internal system media."
-msgstr "Mt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, mutta tällä hetkellä paketit on tallennettava sisäiselle medialle."
-
-#: interfaces_storage.php:76
-msgid "Capacity"
-msgstr "Kapasiteetti"
-
-#: interfaces_storage.php:77 status_channels.php:58
-msgid "State"
-msgstr "Tila"
-
-#: interfaces_storage.php:78
-msgid "Installed Packages"
-msgstr "Asennetut Paketit"
-
-#: interfaces_storage.php:82
-msgid "system storage partition"
-msgstr "järjestelmän tallennus osio"
-
-#: interfaces_storage_disk_edit.php:71
-msgid "descriptive name"
-msgstr "kuvaileva nimi"
-
-#: interfaces_storage_disk_edit.php:36
-msgid "Edit Disk"
-msgstr "Muokkaa Levyä"
-
-#: license.php:32
 msgid "License"
 msgstr "Lisenssi"
 
-#: license.php:36
 msgid "AskoziaPBX is Copyright &copy; 2007 - 2008 IKT "
 msgstr "AskoziaPBX on tekijänoikeudettu &copy; 2007 - 2008 IKT "
 
-#: license.php:36
 msgid "http://www.itison-ikt.de"
 msgstr "http://www.itison-ikt.de"
 
-#: license.php:37 license.php:51 license.php:57 license.php:61 license.php:65
-#: license.php:69 license.php:92 license.php:96 license.php:100
-#: license.php:104
 msgid "All rights reserved."
 msgstr "Kaikki oikeudet pidetään."
 
-#: license.php:38
 msgid ""
 "Redistribution and use in source and binary forms, with or without<br> "
 "modification, are permitted provided that the following conditions are met:"
@@ -1882,7 +1373,6 @@ msgstr ""
 "Uudelleenjakaminen ja käyttö lähdekoodissa ja binäärimuodossa, muutoksin<br> "
 "tai ilman, on sallittua jos tulevat ehdot seurataan:"
 
-#: license.php:40
 msgid ""
 "1. Redistributions of source code must retain the above copyright notice,"
 "<br>this list of conditions and the following disclaimer."
@@ -1890,7 +1380,6 @@ msgstr ""
 "1. Uudelleenjaettu lähdekoodi on sisällettävä ylhäällä oleva tekijänoikeus "
 "ilmoitus, <br> tämä lista ja seuraava vastuuvapauslauseke."
 
-#: license.php:42
 msgid ""
 "2. Redistributions in binary form must reproduce the above "
 "copyright<br>notice, this list of conditions and the following disclaimer in "
@@ -1900,7 +1389,6 @@ msgstr ""
 "ilmoitus,<br> tämä lista ja seuraava vastuuvapauslauseke jossain tämän "
 "jakelun yhteydessä."
 
-#: license.php:44
 msgid ""
 "THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,"
 "<br>INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF "
@@ -1915,23 +1403,20 @@ msgid ""
 msgstr ""
 "TÄMÄ OHJELMA ON VÄLITETTY ''KUN SE ON'' JA KAIKKI ILMAISTU TAI VIHJAILTU "
 "TAKUU,<br>MUKAANLUKIEN, MUTTA EI RAJOITETTU SIIHEN, VIHJAILTU TAKUU "
-"KAUPALLISUUDESTA<br>JA SOPIVUUS ERITYISEEN ASIAAN KIISTETÄÄN.<br>"
-"OHJELMOIAA EI SAA MISSÄÄN TAPAUKSESSA PITÄÄ VASTUULLISENA MISTÄÄN SUORASTA,<br>"
-"EPÄSUORASTA, ERIKOISESTA TAI JÄLKISEURAUKSENA TAPAHTUNEESTA VAHINGOISTA<br>"
-"(MUKAANLUKIEN, MUTTA EI RAJOITETTU SIIHEN, OSTOTOIMINTAAN KORVAAVASTA <br>"
-"PALVELUSTA; KÄYTÖNLASKUSTA, TIEDONHÄVIÖSTÄ, TAI HYÖDYSTÄ; TAI <br>"
-"LIIKETOIMINNAN KESKEYTYKSESTÄ) VAIKKA KUINKA TAHANSA AIHEUTETTU JA <br>"
-"MISTÄÄN TAKUUTEORIASTA HUOLIMATTA (MUKAANLUKIEN HUOLIMATTOMUUS TAI MUU)."
+"KAUPALLISUUDESTA<br>JA SOPIVUUS ERITYISEEN ASIAAN KIISTETÄÄN.<br>OHJELMOIAA "
+"EI SAA MISSÄÄN TAPAUKSESSA PITÄÄ VASTUULLISENA MISTÄÄN SUORASTA,"
+"<br>EPÄSUORASTA, ERIKOISESTA TAI JÄLKISEURAUKSENA TAPAHTUNEESTA "
+"VAHINGOISTA<br>(MUKAANLUKIEN, MUTTA EI RAJOITETTU SIIHEN, OSTOTOIMINTAAN "
+"KORVAAVASTA <br>PALVELUSTA; KÄYTÖNLASKUSTA, TIEDONHÄVIÖSTÄ, TAI HYÖDYSTÄ; "
+"TAI <br>LIIKETOIMINNAN KESKEYTYKSESTÄ) VAIKKA KUINKA TAHANSA AIHEUTETTU JA "
+"<br>MISTÄÄN TAKUUTEORIASTA HUOLIMATTA (MUKAANLUKIEN HUOLIMATTOMUUS TAI MUU)."
 
-#: license.php:46
 msgid "AskoziaPBX is derived from m0n0wall "
 msgstr "AskoziaPBX on johdettu m0n0wall:ista "
 
-#: license.php:46
 msgid " (FreeBSD 6 branch, r195)."
 msgstr " (FreeBSD 6 kanta, r195)."
 
-#: license.php:47
 msgid ""
 "Many thanks to Manuel Kasper, Chris Buechler and all of the m0n0wall "
 "contributors."
@@ -1939,143 +1424,112 @@ msgstr ""
 "Isot kiitokset Manuel Kasperille, Chris Buechlerille ja kaikille m0n0wall:in "
 "tekijöille."
 
-#: license.php:49
 msgid "m0n0wall&reg; is Copyright &copy; 2002 - 2008 Manuel Kasper "
 msgstr "m0n0wall&reg; on tekijänoikeudettu &copy; 2002 - 2008 Manuel Kasper"
 
-#: license.php:50
 msgid "m0n0wall is a registered trademark of Manuel Kasper."
 msgstr "m0n0wall on Manuel Kasperin rekisteröity tavaramerkki."
 
-#: license.php:53
 msgid ""
 "AskoziaPBX is also based upon/includes various free software packages, "
 "listed below."
 msgstr ""
 "AskoziaPBX sisältää myös useita avoimia ohjelmistoja, listatut alhaalla."
 
-#: license.php:54
 msgid "A big thanks to the authors for all of their hard work!"
 msgstr "Iso kiitos kaikille tekijöille heidän kovasta työstä!"
 
-#: license.php:55
 msgid "Asterisk "
 msgstr "Asterisk "
 
-#: license.php:56
 msgid "Copyright &copy; 1999 - 2008, Digium, Inc. "
 msgstr "Tekijänoikeudettu &copy; 1999- 2008 Digium; Inc. "
 
-#: license.php:59
 msgid "FreeBSD "
 msgstr "FreeBSD "
 
-#: license.php:60
 msgid "Copyright &copy; 1994 - 2008 FreeBSD, Inc. "
 msgstr "Tekijänoikeudettu &copy; 1994 - 2008 FreeBSD, Inc. "
 
-#: license.php:63
 msgid "This product includes PHP, freely available from "
 msgstr "Tämä tuote sisältää PHP, joka on vapaasti saatavilla osoitteesta "
 
-#: license.php:64
 msgid "Copyright &copy; 1999 - 2008 The PHP Group. "
 msgstr "Tekijänoikeudettu &copy; 1999 - 2008 The PHP Group. "
 
-#: license.php:67
 msgid "mini_httpd "
 msgstr "mini_httpd "
 
-#: license.php:68
 msgid "Copyright &copy; 1999, 2000 by Jef Poskanzer &lt;jef@acme.com&gt;. "
-msgstr "Tekijänoikeudettu &copy; 1999, 2000 Jef Poskanzer &lt;jef@acme.com&gt;. "
+msgstr ""
+"Tekijänoikeudettu &copy; 1999, 2000 Jef Poskanzer &lt;jef@acme.com&gt;. "
 
-#: license.php:71
 msgid "script.aculo.us "
 msgstr "script.aculo.us "
 
-#: license.php:72
 msgid "Copyright &copy; 2005 - 2008 Thomas Fuchs "
 msgstr "Tekijänoikeudettu &copy; 2005 - 2008 Thomas Fuchs "
 
-#: license.php:74
 msgid "jQuery "
 msgstr "jQuery "
 
-#: license.php:75
 msgid "Copyright &copy; 2007 - 2008 John Resig"
 msgstr "Tekijänoikeudettu &copy; 2007 - 2008 John Resig "
 
-#: license.php:77
 msgid "with plugins:"
 msgstr "liitännäiset:"
 
-#: license.php:79
 msgid "blockUI</a> - Copyright &copy; 2007 - 2008 M. Alsup"
 msgstr "blockUI</a> - Tekijänoikeudettu &copy; 2007 - 2008 M. Alsup"
 
-#: license.php:80
 msgid "preloadImages</a> - Copyright &copy; 2007 - 2008 Blair McBride"
 msgstr "preloadImages</a> - Tekijänoikeudettu &copy; 2007 - 2008 Blair McBride"
 
-#: license.php:81
 msgid "selectboxes</a> - Copyright &copy; 2006 - 2008 Sam Collett"
 msgstr "selectboxes</a> - Tekijänoikeudettu &copy; 2006 - 2008 Sam Collett"
 
-#: license.php:84
 msgid "silk icons from famfamfam "
 msgstr "silk ikoonit famfamfam:lta"
 
-#: license.php:85
 msgid "Creative Commons Attribution 2.5 Licensed from Mark James"
 msgstr "Creative Commons Attribution 2.5 Lisenssoitu Mark James:lta"
 
-#: license.php:87
 msgid "Circular log support for FreeBSD syslogd "
 msgstr "Ympyrämuotoinen loki ylläpito FreeBSD syslogd"
 
-#: license.php:88
 msgid "Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)"
 msgstr "Tekijänoikeudettu &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)"
 
-#: license.php:90
 msgid "msntp "
 msgstr "msntp "
 
-#: license.php:91
 msgid ""
 "Copyright &copy; 1996, 1997, 2000 N.M. Maclaren, University of Cambridge. "
-msgstr "Tekijänoikeudettu &copy; 1996, 1997, 2000 N.M Maclaren, University of Cambridge. "
+msgstr ""
+"Tekijänoikeudettu &copy; 1996, 1997, 2000 N.M Maclaren, University of "
+"Cambridge. "
 
-#: license.php:94
 msgid "msmtp "
 msgstr "msmtp "
 
-#: license.php:95
 msgid "Copyright &copy; 2005 - 2008 Martin Lambers. "
 msgstr "Tekijänoikeudettu &copy; 2005 -2008 Martin Lambers. "
 
-#: license.php:98
 msgid "ISDN4BSD by HPS "
 msgstr "ISDN4BSD HPS:ltä"
 
-#: license.php:99
 msgid "Copyright &copy; 2003 - 2008 Hans Petter Selasky. "
 msgstr "Tekijänoikeudettu &copy; 2003 - 2008 Hans Petter Selasky. "
 
-#: license.php:102
 msgid "OSLEC Open Source Line Echo Canceller "
 msgstr "OSLEC Open Source Line Echo Canceller "
 
-#: license.php:103
 msgid "Copyright &copy; 2007 - 2008, David Rowe "
 msgstr "Tekijänoikeudettu &copy; 2007 - 2008, David Rowe. "
 
-#: license.php:106
 msgid "Original zaptel infrastracture by Digium Inc., ported to FreeBSD by"
 msgstr "Originaali zaptel infrastruktuuri Digium Inc., portannut FreeBSD:lle"
 
-#: license.php:107
 msgid ""
 "Oleksandr Tymoshenko, Dinesh Nair, Konstantin Prokazoff, Luigi Rizzo, Chris "
 "Stenton and Yuri Saltykov"
@@ -2083,7 +1537,6 @@ msgstr ""
 "Oleksandr Tymoshenko, Dinesh Nair, Konstantin Prokazoff, Luigi Rizzo, Chris "
 "Stenton ja Yuri Saltykov"
 
-#: license.php:110
 msgid ""
 "The multilingual speech prompts used in AskoziaPBX have been made available "
 "by the following groups"
@@ -2091,164 +1544,120 @@ msgstr ""
 "Monikieliset puhe promptit käytetty AskoziaPBX:ssä ovat tehneet seuraavat "
 "ryhmät"
 
-#: license.php:111
 msgid "Danish "
 msgstr "Tanskan kieli "
 
-#: license.php:112 license.php:126 license.php:143
 msgid "Copyright Information Unknown"
 msgstr "Tekijänoikeustiedot eivät ole tunnettuja"
 
-#: license.php:114
 msgid "Dutch "
 msgstr "Hollannin kieli "
 
-#: license.php:115
 msgid "Copyright &copy; 2006 Born Digital"
 msgstr "Tekijänoikeudettu &copy; 2006 Born Digital"
 
-#: license.php:117
 msgid "English (US) and French (Canada) "
 msgstr "Englannin kieli (US) ja Ranskan kieli (Kanada) "
 
-#: license.php:118
 msgid "Copyright &copy; Allison Smith "
 msgstr "Tekijänoikeudettu &copy; Allison Smith "
 
-#: license.php:119
 msgid "Financed by Digium, Inc. "
 msgstr "Rahoittaja on Digium, Inc. "
 
-#: license.php:121
 msgid "English (UK) "
 msgstr "Englannin kieli (UK) "
 
-#: license.php:122
 msgid "Copyright &copy; 2006 ENIcommunications Corp."
 msgstr "Tekijänoikeudettu &copy; 2006 ENIcommunications Corp."
 
-#: license.php:123 license.php:130 license.php:134 license.php:150
 msgid "Released under the "
 msgstr "Julkaistu "
 
-#: license.php:123
 msgid "Creative Commons Attribution-ShareAlike 2.5 License"
 msgstr "Creative Commons Attribution-ShareAlike 2.5 Lisenssi"
 
-#: license.php:125
 msgid "French (France) "
 msgstr "Ranskan kieli (Ranska) "
 
-#: license.php:128
 msgid "German "
 msgstr "Saksan kieli"
 
-#: license.php:129
 msgid "Copyright &copy; 2006 amooma GmbH"
 msgstr "Tekijänoikeudettu &copy; 2006 amooma GmbH"
 
-#: license.php:130 license.php:134 license.php:150
 msgid "GPL"
 msgstr "GPL lisenssillä"
 
-#: license.php:132
 msgid "Italian "
 msgstr "Italian kieli "
 
-#: license.php:133
 msgid "Copyright &copy; 2006 Marco Menardi and Paola Dal Zot"
 msgstr "Tekijänoikeudettu &copy; 2006 Marco Menardi and Paola Dal Zot"
 
-#: license.php:135
 msgid "Voice: Paola Dal Zot"
 msgstr "Ääni: Paola Dal Zot"
 
-#: license.php:137
 msgid "Japanese "
 msgstr "Japanin kieli "
 
-#: license.php:138
 msgid "Copyright &copy; 2005 Takahashi"
 msgstr "Tekijänoikeudettu &copy; 2005 Takahashi"
 
-#: license.php:139
 msgid "Voice: Eri Takeda."
 msgstr "Ääni: Eri Takeda."
 
-#: license.php:140
 msgid "Edited by VoIP-Info.jp."
 msgstr "Muokannut VoIP-Info.jp."
 
-#: license.php:142
 msgid "Russian "
 msgstr "Venäjän kieli "
 
-#: license.php:145
 msgid "Spanish "
 msgstr "Espanjan kieli "
 
-#: license.php:146
 msgid "Copyright &copy; 2006 Alberto Sagredo Castro"
 msgstr "Tekijänoikeudettu &copy; 2006 Alberto Sagredo Castro"
 
-#: license.php:148
 msgid "Swedish "
 msgstr "Ruotsin kieli "
 
-#: license.php:149
 msgid "Copyright &copy; 2005 Daniel Nylander"
 msgstr "Tekijänoikeudettu &copy; 2005 Daniel Nylander"
 
-#: phones_analog_edit.php:34 providers_analog_edit.php:36
 msgid "Edit Analog Line"
 msgstr "Muokkaa Analogi Linjaa"
 
-#: phones_analog_edit.php:72 phones_iax_edit.php:86 phones_isdn_edit.php:72
-#: phones_sip_edit.php:91
 msgid "Extension,Caller ID"
 msgstr "Jatke,Soittajan Tunnus"
 
-#: phones_analog_edit.php:80 phones_iax_edit.php:94 phones_isdn_edit.php:80
-#: phones_sip_edit.php:99
 msgid "A valid Caller ID must be specified."
 msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
 
-#: phones_analog_edit.php:83 phones_iax_edit.php:100 phones_isdn_edit.php:83
-#: phones_sip_edit.php:105
 msgid "A phone with this extension already exists."
 msgstr "Puhelin tällä jatkeella on jo olemassa."
 
-#: phones_analog_edit.php:86 phones_external_edit.php:81
-#: phones_iax_edit.php:106 phones_isdn_edit.php:86 phones_sip_edit.php:111
-#: services_voicemail.php:59
 msgid "A valid e-mail address must be specified."
 msgstr "Kelpaava s-posti osoite on oltava määritetty."
 
-#: phones_analog_edit.php:154
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
-#: phones_analog_edit.php:161 providers_analog_edit.php:165
 msgid "Analog Interface"
 msgstr "Analogi Käyttöliittymä"
 
-#: phones_external_edit.php:36
 msgid "Edit External Line"
 msgstr "Muokkaa Ulkoinen Linja"
 
-#: phones_external_edit.php:73
 msgid "Extension,Name,Dialstring,Provider"
 msgstr "Jatke,Nimi,Soittotunnus,Palveluntarjoaja"
 
-#: phones_external_edit.php:140
 msgid "The internal extension used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
-#: phones_external_edit.php:147
 msgid "Descriptive name for this phone."
 msgstr "Kuvaileva nimi tälle puhelimelle."
 
-#: phones_external_edit.php:154
 msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
@@ -2256,85 +1665,64 @@ msgstr ""
 "Numero tai tunnus joka käytetään tämän puhelimen tavoittamiseen. Tämä "
 "käytetään suoraan; ulosmenevät kaava-säännöt eivät päte tähän"
 
-#: phones_external_edit.php:158
 msgid "Provider"
 msgstr "Palveluntarjoaja"
 
-#: phones_external_edit.php:168
 msgid "Outgoing provider to be used to reach this telephone."
-msgstr "Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
+msgstr ""
+"Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
 
-#: phones_iax_edit.php:36 providers_iax_edit.php:36
 msgid "Edit IAX Account"
 msgstr "Muokkaa IAX Tiliä"
 
-#: phones_iax_edit.php:91 phones_sip_edit.php:96
 msgid "An extension must be a one to four digit number."
 msgstr "Jatke on oltava 1 ja 4 numeron välinen yhdistelmä."
 
-#: phones_iax_edit.php:97 phones_sip_edit.php:102 providers_iax_edit.php:101
-#: providers_sip_edit.php:109
 msgid "A valid secret must be specified."
 msgstr "Kelpaava salaisuus on oltava määritetty."
 
-#: phones_iax_edit.php:109 phones_sip_edit.php:114 providers_iax_edit.php:110
-#: providers_sip_edit.php:118
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
 
-#: phones_iax_edit.php:189 phones_sip_edit.php:207
 msgid "This is also this account's username."
 msgstr "Tämä on myös tilin käyttäjänimi."
 
-#: phones_iax_edit.php:200 providers_iax_edit.php:233
 msgid "plaintext"
 msgstr "Ilman suojausta"
 
-#: phones_iax_edit.php:204 providers_iax_edit.php:237
 msgid "md5"
 msgstr "md5"
 
-#: phones_iax_edit.php:207 providers_iax_edit.php:240
 msgid "This account's password and authentication scheme."
 msgstr "Tämän tilin salasana sekä todennus määritelmä."
 
-#: phones_isdn_edit.php:34 providers_isdn_edit.php:36
 msgid "Edit ISDN Line"
 msgstr "Muokkaa ISDN Linjaa"
 
-#: phones_isdn_edit.php:153
 msgid "This phone's number (MSN)."
 msgstr "Tämän puhelimen numero (MSN)."
 
-#: phones_sip_edit.php:36 providers_sip_edit.php:36
 msgid "Edit SIP Account"
 msgstr "Muokkaa SIP Tiliä"
 
-#: phones_sip_edit.php:118
 msgid "A whole number of calls must be entered for the \"call limit.\""
 msgstr "Yhtenäinen määrä puheluita on annettava \"puhelu rajaksi.\""
 
-#: phones_sip_edit.php:121
 msgid "A whole number of calls must be entered for the \"busy limit.\""
 msgstr "Yhtenäinen määrä puheluita on annettava \"varattu rajaksi.\""
 
-#: phones_sip_edit.php:215 providers_sip_edit.php:242
 msgid "This account's password."
 msgstr "Tämän tilin salasana."
 
-#: popup_dialplan_element_library.php:40
 msgid "Dialplan Element Library"
 msgstr "Soittosuunitelman Elementti Kirjasto"
 
-#: popup_dialplan_element_library.php:223
 msgid "Functions"
 msgstr "Toiminnat"
 
-#: popup_dialplan_element_library.php:225
 msgid "Audio Prompts"
 msgstr "Ääni Promptit"
 
-#: popup_dialplan_element_library.php:234
 msgid ""
 "Below is a list of the currently defined phones along with a basic Dial() "
 "command to call them. Many additional options are available for this "
@@ -2345,109 +1733,80 @@ msgstr ""
 "lisäasetusta, lue lisää niistä julkaisudokumentoinnissa Sovellus "
 "välilehdessä."
 
-#: popup_dialplan_element_library.php:237
 msgid "Caller ID / Name"
 msgstr "Soittajan tunnus / nimi"
 
-#: popup_dialplan_element_library.php:238
 msgid "Basic "
 msgstr "Perus "
 
-#: popup_dialplan_element_library.php:238
 msgid "Dial()"
 msgstr "dial()"
 
-#: popup_dialplan_element_library.php:238
 msgid " Command"
 msgstr " Komento"
 
-#: popup_dialplan_element_library.php:351
 msgid "Filename"
 msgstr "Tiedostonimi"
 
-#: popup_dialplan_element_library.php:352
 msgid "Format"
 msgstr "Formaatti"
 
-#: popup_dialplan_element_library.php:353 system_packages.php:152
 msgid "Size"
 msgstr "Koko"
 
-#: popup_dialplan_element_library.php:354 status_channels.php:57
 msgid "Location"
 msgstr "Paikka"
 
-#: printable_dialplan.php:43
 msgid "Printable Dialplan"
 msgstr "Tulostettava Soittosuunitelma"
 
-#: printable_dialplan.php:55
 msgid "Internal Phones"
 msgstr "Sisäiset Puhelimet"
 
-#: printable_dialplan.php:80
 msgid "External Phones"
 msgstr "Ulkoiset Puhelimet"
 
-#: printable_dialplan.php:133
 msgid "Conference Rooms"
 msgstr "Neuvottelutilat"
 
-#: printable_dialplan.php:138 services_conferencing.php:77
 msgid "Pin"
 msgstr "Pin"
 
-#: printable_dialplan.php:159
 msgid "Custom Applications"
 msgstr "Omat Sovellukset"
 
-#: providers_analog_edit.php:78 providers_iax_edit.php:116
-#: providers_isdn_edit.php:78 providers_sip_edit.php:124
 msgid "An incoming Caller ID override string must be specified."
 msgstr "Sisääntuleva Soittajan Tunnus 'override' tunnus on oltava määritetty."
 
-#: providers_analog_edit.php:91 providers_iax_edit.php:132
-#: providers_isdn_edit.php:91 providers_sip_edit.php:140
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
 msgstr "Soitto-kaava \"%s\" on kelvoton. %s"
 
-#: providers_analog_edit.php:99 providers_iax_edit.php:140
-#: providers_isdn_edit.php:99 providers_sip_edit.php:148
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr "Sisääntuleva jatke-kaava \"%s\" on kelvotohn. %s"
 
-#: providers_analog_edit.php:153 providers_iax_edit.php:215
-#: providers_isdn_edit.php:156 providers_sip_edit.php:227
 msgid "Descriptive name for this provider."
 msgstr "Kuvaileva nimi tälle palveluntarjoajalle."
 
-#: providers_analog_edit.php:160
 msgid "Telephone number assigned to this line."
 msgstr "Puhelinnumero tälle linjalle."
 
-#: providers_iax_edit.php:93 providers_sip_edit.php:98
 msgid "Name,Username,Host"
 msgstr "Nimi,Käyttäjänimi,Isäntä"
 
-#: providers_iax_edit.php:98 providers_sip_edit.php:103
 msgid "A valid username must be specified."
 msgstr "Kelpaava käyttäjänimi on oltava määritetty."
 
-#: providers_iax_edit.php:113 providers_sip_edit.php:121
 msgid "A valid Caller ID string must be specified."
 msgstr "Kelpaava Soittajan Tunnus tunnus on oltava määritetty."
 
-#: providers_iax_edit.php:249
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy isäntä URL tai IP osoite sekä valinnainen portti."
 
-#: providers_isdn_edit.php:104
 msgid "A valid Main MSN must be specified (all digits)."
 msgstr "Kelpaava pää-MSN on oltava määritetty (numeroina)."
 
-#: providers_isdn_edit.php:163
 msgid ""
 "The main telephone number assigned to this line (the shortest possible "
 "number used to reach this line). Individual MSN mappings can be defined "
@@ -2457,19 +1816,15 @@ msgstr ""
 "numero tämän linjan tavoittamiseen). Henkilökohtaiset MSN kartoitukset "
 "pystyy määrittämään alla."
 
-#: providers_sip_edit.php:106
 msgid "A valid \"fromuser\" must be specified."
 msgstr "Kelpaava \"käyttäjältä\" on oltava määritetty."
 
-#: providers_sip_edit.php:251
 msgid "SIP proxy host URL or IP address and optional port."
 msgstr "SIP proxy isäntä URL tai IP osoite ja valinnainen portti."
 
-#: providers_sip_edit.php:261
 msgid "Authorization User"
 msgstr "Valtuutus Käyttäjä"
 
-#: providers_sip_edit.php:264
 msgid ""
 "Some providers require a seperate authorization username.<br>Defaults to "
 "username entered above."
@@ -2477,11 +1832,9 @@ msgstr ""
 "Jotkut palveluntarjoajat haluavat erillinen valtuutus käyttäjänimi."
 "<br>Oletus on ylhäällä annettu käyttäjänimi."
 
-#: providers_sip_edit.php:268
 msgid "From User"
 msgstr "Käyttäjältä"
 
-#: providers_sip_edit.php:271
 msgid ""
 "Some providers require a seperate 'from' user.<br>Defaults to username "
 "entered above."
@@ -2489,11 +1842,9 @@ msgstr ""
 "Jotkut palveluntarjoajat haluavat erillinen 'käyttäjältä' nimi.<br>Oletus on "
 "ylhäällä annettu käyttäjänimi."
 
-#: providers_sip_edit.php:275
 msgid "From Domain"
 msgstr "Verkkotunnukselta"
 
-#: providers_sip_edit.php:278
 msgid ""
 "Some providers require a seperate 'from' domain. <br>Defaults to host "
 "entered above."
@@ -2501,148 +1852,113 @@ msgstr ""
 "Jotkut palveluntarjoajat haluavat erillisen 'verkkotunnukselta' tunnuksen."
 "<br> Oletus on ylhäällä annettu isäntänimi"
 
-#: services_conferencing.php:32 services_conferencing_edit.php:34
-#: services_voicemail.php:32 fbegin.inc:287
 msgid "Services"
 msgstr "Palvelut"
 
-#: services_conferencing.php:32 services_conferencing_edit.php:34
-#: fbegin.inc:186
 msgid "Conferencing"
 msgstr "Konferenssit"
 
-#: services_conferencing.php:75 services_conferencing_edit.php:130
 msgid "Room Number"
 msgstr "Huoneen Numero"
 
-#: services_conferencing.php:95
 msgid "edit conference room"
 msgstr "muokkaa kokoushuonetta"
 
-#: services_conferencing.php:96
 msgid "Do you really want to delete this conference room?"
 msgstr "Oletko varma että haluat poistaa tämän kokoushuoneen?"
 
-#: services_conferencing.php:96
 msgid "delete conference room"
 msgstr "poista kokoushuone"
 
-#: services_conferencing.php:103
 msgid "add conference room"
 msgstr "lisää kokoushuone"
 
-#: services_conferencing_edit.php:34
 msgid "Edit Room"
 msgstr "Muokkaa Huonetta"
 
-#: services_conferencing_edit.php:65
 msgid "Room Number,Name"
 msgstr "Huoneen Numero,Nimi"
 
-#: services_conferencing_edit.php:70
 msgid "Conference room numbers must be numeric."
 msgstr "Kokoushuoneiden numerot on oltava numeeriset."
 
-#: services_conferencing_edit.php:73
 msgid "Conference number already exists."
 msgstr "Konferenssin numero on jo käytössä."
 
-#: services_conferencing_edit.php:75
 msgid "Conference number matches an existing extension."
 msgstr "Konferenssin numero on sama kun käytössä oleva jatke."
 
-#: services_conferencing_edit.php:78
 msgid "Conference pins must be numeric."
 msgstr "Konferenssin koodi on oltava numeerinen."
 
-#: services_conferencing_edit.php:133
 msgid ""
 "The conference room's number, also the extension that this conference is "
 "reachable at."
-msgstr "Kokoushuoneen numero sekä jatke millä tämä konferenssi on tavoitettavissa."
+msgstr ""
+"Kokoushuoneen numero sekä jatke millä tämä konferenssi on tavoitettavissa."
 
-#: services_conferencing_edit.php:143
 msgid "Access PIN"
 msgstr "Kulkukoodi"
 
-#: services_conferencing_edit.php:146
 msgid "Optional PIN needed to access this conference room."
 msgstr "Valinnainen koodi joka tarvitaan tähän huoneeseen."
 
-#: services_voicemail.php:32 display.inc:484 fbegin.inc:188
 msgid "Voicemail"
 msgstr "Vastaaja"
 
-#: services_voicemail.php:54
 msgid "Host,E-mail Address"
 msgstr "Isäntä,S-posti Osoite"
 
-#: services_voicemail.php:63
 msgid "A username must be specified."
 msgstr "Käyttäjänimi on oltava määritetty."
 
-#: services_voicemail.php:67
 msgid "A valid e-mail address must be specified for the \"from address\"."
-msgstr "Kelpaava s-posti osoite on oltava määritetty \"osoitteesta\" tunnukselle."
+msgstr ""
+"Kelpaava s-posti osoite on oltava määritetty \"osoitteesta\" tunnukselle."
 
-#: services_voicemail.php:104
 msgid "SMTP"
 msgstr "SMTP"
 
-#: services_voicemail.php:112
 msgid "SMTP host URL or IP address and optional port."
 msgstr "SMTP isäntä URL tai IP osoite ja valinnainen portti."
 
-#: services_voicemail.php:116
 msgid "E-mail Address"
 msgstr "S-posti Osoite"
 
-#: services_voicemail.php:128 system.php:167
 msgid "Password"
 msgstr "Salasana"
 
-#: services_voicemail.php:135
 msgid "Options"
 msgstr "Valinnat"
 
-#: services_voicemail.php:139
 msgid "Warning: "
 msgstr "Varoitus: "
 
-#: services_voicemail.php:139
 msgid "TLS certificates are currently not verified."
 msgstr "TLS sertifikaatit eivät ole tarkastettuja"
 
-#: services_voicemail.php:146
 msgid "Presentation"
 msgstr "Alustus"
 
-#: services_voicemail.php:149
 msgid "From Address"
 msgstr "Osoitteesta"
 
-#: services_voicemail.php:153
 msgid "This will be shown as voicemail service's sending address."
 msgstr "Tämä näytetään vastaaja palvelun lähettäjä osoitteena."
 
-#: services_voicemail.php:154
 msgid "Defaults to the e-mail address entered above."
 msgstr "Oletus on ylhäällä annettu s-posti osoite."
 
-#: services_voicemail.php:158
 msgid "E-Mail Language"
 msgstr "S-posti Kieli"
 
-#: services_voicemail.php:168
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
 msgstr "S-posti ilmoitukset uusista viesteistä tulee olemaan tällä kielellä."
 
-#: status.php:104
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Tämä tila sivu antaa seuraavat tiedot:\n"
 
-#: status.php:178
 msgid ""
 "Note: make sure to remove any sensitive information (passwords, maybe also "
 "IP addresses) before posting information from this page in public places "
@@ -2652,149 +1968,112 @@ msgstr ""
 "ennen kun postitat tältä sivulta johonkin julkiseen paikkaan (kuten "
 "postituslistoille)!"
 
-#: status.php:179
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Salasanat ovat automaattisesti poistetut config.xml tiedostosta."
 
-#: status_channels.php:32 status_conferences.php:32 status_interfaces.php:32
-#: status_interfaces.php:222 fbegin.inc:288
 msgid "Status"
 msgstr "Status"
 
-#: status_channels.php:50
 msgid "There are currently no active channels."
 msgstr "Tällä hetkellä ei löydy aktiivista kanavaa."
 
-#: status_channels.php:59
 msgid "Application"
 msgstr "Sovellus"
 
-#: status_conferences.php:32 fbegin.inc:196
 msgid "Conferences"
 msgstr "Konferenssit"
 
-#: status_conferences.php:57
 #, php-format
 msgid "Member %s has been kicked from conference %s."
 msgstr "Jäsen %s on poistettu konferenssista %s."
 
-#: status_conferences.php:70
 msgid "There are currently no active conferences."
 msgstr "Tällä hetkellä ei löydy aktiivista konferenssia."
 
-#: status_conferences.php:77
 msgid "Conference "
 msgstr "Konferenssi"
 
-#: status_conferences.php:81
 msgid "Member"
 msgstr "Jäsen"
 
-#: status_conferences.php:84
 msgid "Time"
 msgstr "Aika"
 
-#: status_conferences.php:102
 msgid "Do you really want to kick this member?"
 msgstr "Oletko varma että haluat poistaa tämän jäsenen?"
 
-#: status_conferences.php:102
 msgid "kick conference member"
 msgstr "poista konferenssin jäsen"
 
-#: status_graph_cpu.php:32 status_graph_traffic.php:32
 msgid "Live"
 msgstr "Suorana"
 
-#: status_graph_cpu.php:32 fbegin.inc:201
 msgid "CPU Load"
 msgstr "Prosessorin kuormitus"
 
-#: status_graph_cpu.php:40 status_graph_traffic.php:45
 msgid " if you can't see the graph, you may have to install the "
 msgstr " jos et pysty näkemään graafia, niin sinun on ehkä asennettava "
 
-#: status_graph_cpu.php:40 status_graph_traffic.php:45
 msgid "Adobe SVG viewer"
 msgstr "Adobe SVG viewer"
 
-#: status_graph_traffic.php:32 fbegin.inc:200
 msgid "Network Traffic"
 msgstr "Verkon Liikenne"
 
-#: status_interfaces.php:219
 msgid " Interface"
 msgstr " Käyttöliittymä"
 
-#: status_interfaces.php:228
 msgid "MAC Address"
 msgstr "MAC Osoite"
 
-#: status_interfaces.php:237
 msgid "IP Address"
 msgstr "IP Osoite"
 
-#: status_interfaces.php:244
 msgid "Subnet Mask"
 msgstr "Aliverkon Peite"
 
-#: status_interfaces.php:258
 msgid "Media"
 msgstr "Tiedotusväline"
 
-#: status_interfaces.php:278
 msgid "In/Out Packets"
 msgstr "Sisään/Ulos Pakeetit"
 
-#: status_interfaces.php:287
 msgid "In/Out Errors"
 msgstr "Sisään/Ulos Virheet"
 
-#: status_interfaces.php:296
 msgid "Collisions"
 msgstr "Törmäykset"
 
-#: status_interfaces.php:310
 msgid "Last scan results"
 msgstr "Viimeisin tarkkailun tulos"
 
-#: status_interfaces.php:315
 msgid "BSSID"
 msgstr "BSSID"
 
-#: status_interfaces.php:317 status_interfaces.php:361
 msgid "Rate"
 msgstr "Nopeus"
 
-#: status_interfaces.php:318
 msgid "Signal"
 msgstr "Signaali"
 
-#: status_interfaces.php:319
 msgid "Noise"
 msgstr "Melu"
 
-#: status_interfaces.php:327
 msgid "(hidden)"
 msgstr "(piilotettu)"
 
-#: status_interfaces.php:353
 msgid "Associated stations"
 msgstr "Liittyvät asemat"
 
-#: status_interfaces.php:362
 msgid "RSSI"
 msgstr "RSSI"
 
-#: status_interfaces.php:363
 msgid "Flags"
 msgstr "Liput"
 
-#: status_interfaces.php:364
 msgid "Capabilities"
 msgstr "Kyvyt"
 
-#: status_interfaces.php:379
 msgid ""
 "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
 "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
@@ -2804,124 +2083,101 @@ msgstr ""
 "tila<br>Kyvyt: E = ESS (infrastuktuuri tila), I = IBSS (ad-hoc tila), P = "
 "Salaus (WEP/TKIP/AES), S = Lyhyt preamble, s = Lyhyt aikaväli"
 
-#: status_interfaces.php:383
 msgid "No stations are associated at this time."
 msgstr "Tällä hetkellä ei löydy liittyviä asemia."
 
-#: status_interfaces.php:420
 msgid "Attached"
 msgstr "Kiinnitetty"
 
-#: status_interfaces.php:424
 msgid "PH State"
 msgstr "PH Tila"
 
-#: status_interfaces.php:428
 msgid "Dialtone"
 msgstr "Valintaääni"
 
-#: status_interfaces.php:440
 msgid "Driver Type"
 msgstr "Ajurin tyyppi"
 
-#: status_interfaces.php:449 fbegin.inc:193
 msgid "Channels"
 msgstr "Kanavat"
 
-#: status_interfaces.php:453
 msgid "Serial"
 msgstr "Serial"
 
-#: status_interfaces.php:457
 msgid "Power Save"
 msgstr "Virransäästö"
 
-#: system.php:32
 msgid "General setup"
 msgstr "Yleiset asetukset"
 
-#: system.php:72
 msgid "Hostname,Domain,Username"
 msgstr "Isäntänimi,Verkkotunnus,Käyttäjänimi"
 
-#: system.php:77
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "Isäntänimi ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
 
-#: system.php:80
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Verkkotunnus ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
 
-#: system.php:83
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "Käyttäjänimi ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
 
-#: system.php:87
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "Kelpaava TCP/IP portti on oltava määritettynä verkkokäyttöliittymän portiksi"
+msgstr ""
+"Kelpaava TCP/IP portti on oltava määritettynä verkkokäyttöliittymän portiksi"
 
-#: system.php:90
 msgid "The passwords do not match."
 msgstr "Salasanat eivät täsmää."
 
-#: system.php:95
 msgid ""
 "The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr "Ajan päivitysväli on oltava jompikumpi 0 (poissa käytöstä) tai 6 ja 1440 välissä."
+msgstr ""
+"Ajan päivitysväli on oltava jompikumpi 0 (poissa käytöstä) tai 6 ja 1440 "
+"välissä."
 
-#: system.php:99
 msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "NTP Aika serverinimi ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
+msgstr ""
+"NTP Aika serverinimi ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
 
-#: system.php:152
 msgid "name of the pbx host, without domain part"
 msgstr "pbx:än isäntänimi, ilman verkkotunnusta"
 
-#: system.php:153
 msgid "e.g. <em>pbx"
 msgstr "esim. <em>pbx"
 
-#: system.php:156
 msgid "Domain"
 msgstr "Verkkotunnus"
 
-#: system.php:158
 msgid "e.g. <em>mycorp.com"
 msgstr "esim. <em>yhtiöni.fi"
 
-#: system.php:164
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr "Jos haluat vaihtaa verkkokäyttöliittymän käyttäjänimen, tee se tässä."
 
-#: system.php:170
 msgid "(confirmation)"
 msgstr "(vahvistaminen)"
 
-#: system.php:170
 msgid ""
 "If you want to change the password for accessing the webGUI, enter it here "
 "twice."
-msgstr "Jos haluat vaihtaa verkkokäyttöliittymän salasanaa, anna uusi salasana kahdesti."
+msgstr ""
+"Jos haluat vaihtaa verkkokäyttöliittymän salasanaa, anna uusi salasana "
+"kahdesti."
 
-#: system.php:174
 msgid "webGUI protocol"
 msgstr "Verkkokäyttöliittymän protokolla"
 
-#: system.php:176
 msgid "HTTP"
 msgstr "HTTP"
 
-#: system.php:177
 msgid "HTTPS"
 msgstr "HTTPS"
 
-#: system.php:180
 msgid "webGUI port"
 msgstr "Verkkokäyttöliittymän portti"
 
-#: system.php:183
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
@@ -2929,35 +2185,29 @@ msgstr ""
 "Anna oma portti verkkokäyttöliittymälle jos haluat kumota oletus asetuksen "
 "(http käyttää portin 80 ja https 443)."
 
-#: system.php:186
 msgid "Indications Tonezone"
 msgstr "Merkkiäänivyöhyke"
 
-#: system.php:195
 msgid "Select which country's indication tones are to be used."
 msgstr "Valtse minkä maan merkkiäänet tulee käyttää."
 
-#: system.php:198
 msgid "Time zone"
 msgstr "Aikavyöhyke"
 
-#: system.php:205
 msgid "Select the location closest to you"
 msgstr "Valitse paikka lähellä sinua"
 
-#: system.php:208
 msgid "Time update interval"
 msgstr "Ajan päivitysväli"
 
-#: system.php:210
 msgid "Minutes between network time sync.; 300 recommended, or 0 to disable "
-msgstr "Montako minuuttia verkon ajan tahdistuksien välillä.; 300 on suositeltava, 0 on poissa käytöstä "
+msgstr ""
+"Montako minuuttia verkon ajan tahdistuksien välillä.; 300 on suositeltava, 0 "
+"on poissa käytöstä "
 
-#: system.php:213
 msgid "NTP time server"
 msgstr "NTP aikaserveri"
 
-#: system.php:215
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
@@ -2966,44 +2216,34 @@ msgstr ""
 "pakollinen). Muista asentaa ainakin yksi DNS serveri jos annat isäntänimen "
 "tässä!"
 
-#: system_backup.php:31
 msgid "Backup/restore"
 msgstr "Varmuuskopio/Ennallista"
 
-#: system_backup.php:65
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr "Konfigurointi on entisöity. PBX käynnistyy uudelleen."
 
-#: system_backup.php:67
 msgid "The configuration could not be restored."
 msgstr "Konfigurointi ei pystytty entisöimään."
 
-#: system_backup.php:69
 #, php-format
 msgid " (XML error: %s)"
 msgstr " (XML virhe: %s)"
 
-#: system_backup.php:73
 msgid "The configuration could not be restored (file upload error)."
 msgstr "Konfigurointi ei pystytty entisöimään (tiedosto viallinen)."
 
-#: system_backup.php:85
 msgid "Backup configuration"
 msgstr "Varmuuskopioi konfigurointi"
 
-#: system_backup.php:90
 msgid "Click this button to download the system configuration in XML format."
 msgstr "Jos haluat lataa järjestelmän konfigurointia XML muodossa."
 
-#: system_backup.php:92
 msgid "Download configuration"
 msgstr "Lataa konfigurointi"
 
-#: system_backup.php:98 system_backup.php:111
 msgid "Restore configuration"
 msgstr "Palauta konfigurointi"
 
-#: system_backup.php:103
 msgid ""
 "Open an AskoziaPBX configuration XML file and click the button below to "
 "restore the configuration."
@@ -3011,15 +2251,12 @@ msgstr ""
 "Avaa AskoziaPBX konfigurointi tiedosto (XML) ja klikkaa palauttaaksesi "
 "konfiguroinnin."
 
-#: system_backup.php:106
 msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX käynnistyy uudelleen konfiguroinnin palautuksen jälkeen."
 
-#: system_defaults.php:32 fbegin.inc:161
 msgid "Factory Defaults"
 msgstr "Tehdasasetukset"
 
-#: system_defaults.php:40
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
 "take a minute."
@@ -3027,7 +2264,6 @@ msgstr ""
 "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
 "kestää muutaman minuutin."
 
-#: system_defaults.php:50
 msgid ""
 "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
 "will reboot immediately. The entire system configuration will be "
@@ -3039,56 +2275,43 @@ msgstr ""
 "olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle tulee olemaan "
 "'askozia'."
 
-#: system_defaults.php:52
 msgid "Are you sure you want to proceed?"
 msgstr "Oletko varma että haluat edetä?"
 
-#: system_defaults.php:54 system_firmware.php:170 system_reboot.php:50
 msgid " Yes "
 msgstr " Kyllä "
 
-#: system_defaults.php:55 system_firmware.php:171 system_reboot.php:51
 msgid " No "
 msgstr " Ei "
 
-#: system_firmware.php:33 fbegin.inc:159
 msgid "Firmware"
 msgstr "Laiteohjelmisto"
 
-#: system_firmware.php:101
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
 msgstr "ladattu levykuva ei ole tälle alustalle (%s)."
 
-#: system_firmware.php:104
 msgid "Image upload failed (out of memory?)"
 msgstr "Levykuvan lataaminen epäonnistui (muisti lopussa?)"
 
-#: system_firmware.php:116
 msgid "The digital signature on this image is invalid."
 msgstr "Levykuvan digitaalinen allekirjoitus on pätemätön."
 
-#: system_firmware.php:118
 msgid "This image is not digitally signed."
 msgstr "Tämä levykuva ei ole digitaalisesti allekirjoitettu."
 
-#: system_firmware.php:120
 msgid "There has been an error verifying the signature on this image."
 msgstr "On tapahtunut virhe todentaessa allekirjoituksen levykuvassa."
 
-#: system_firmware.php:123
 msgid "The image file is corrupt."
 msgstr "Levykuva tiedosto on korruptoitunut."
 
-#: system_firmware.php:145
 msgid "The firmware is now being installed. The PBX will reboot automatically."
 msgstr "Laiteohjelmisto asennetaan. PBX käynnistyy automaattisesti uudelleen."
 
-#: system_firmware.php:161
 msgid "Firmware uploading is not supported on this platform."
 msgstr "Laiteohjelmiston lataaminen ei ole tuettu tälle alustalle."
 
-#: system_firmware.php:167
 #, php-format
 msgid ""
 "<strong>%s</strong><br>This means that the image you uploaded is not an "
@@ -3102,203 +2325,167 @@ msgstr ""
 "turvallisuuden vaarantamiseen. Älä asenna levykuvaa jos et luota lähteeseen."
 "<br><br>Haluatko asentaa tämän levykuvan?"
 
-#: system_firmware.php:182
 msgid "Click &quot;Enable firmware upload&quot; below. "
 msgstr "Klikkaa &quot;Mahdollista laiteohjelmiston päivittäminen&quot; "
 
-#: system_firmware.php:186
 #, php-format
 msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
 msgstr "Valitse haluamasi levykuva (pbx-%s-*.img) minkä haluat asentaa."
 
-#: system_firmware.php:187
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr "Klikkaa &quot;Päivitä laiteohjelmistoa&quot; aloittaaksesi päivityksen."
+msgstr ""
+"Klikkaa &quot;Päivitä laiteohjelmistoa&quot; aloittaaksesi päivityksen."
 
-#: system_firmware.php:198
 msgid "Enable firmware upload"
 msgstr "Mahdollista laiteohjelmiston päivittäminen"
 
-#: system_firmware.php:204
 msgid "Disable firmware upload"
 msgstr "Poista laiteohjelmiston päivittäminen käytöstä"
 
-#: system_firmware.php:209
 msgid "Firmware image file: "
 msgstr "Laiteohjelmisto tiedosto: "
 
-#: system_firmware.php:211
 msgid "Upgrade firmware"
 msgstr "Päivitä laiteohjelmistoa"
 
-#: system_firmware.php:217
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr "Sinun on käynnistettävä järjestelmää uudelleen ennnen kun voit suorittaa laiteohjelmiston päivityksen."
+msgstr ""
+"Sinun on käynnistettävä järjestelmää uudelleen ennnen kun voit suorittaa "
+"laiteohjelmiston päivityksen."
 
-#: system_firmware.php:227
 msgid ""
 "DO NOT abort the firmware upgrade once it has started.The system will reboot "
 "automatically after storing the new firmware.The configuration will be "
 "maintained."
 msgstr ""
-"ÄLÄ keskeytä päivitystä kun se on käynnissä. Järjestelmä käynnistyy automaattisesti "
-"uudelleen kun päivitys on valmis. Konfigurointisi tallennetaan."
+"ÄLÄ keskeytä päivitystä kun se on käynnissä. Järjestelmä käynnistyy "
+"automaattisesti uudelleen kun päivitys on valmis. Konfigurointisi "
+"tallennetaan."
 
-#: system_reboot.php:32 fbegin.inc:162
-msgid "Reboot"
-msgstr "Käynnistä uudellen"
+msgid "Packages"
+msgstr "Paketit"
 
-#: system_reboot.php:38
-msgid "The system is rebooting now. This may take a minute."
-msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
+msgid "Existing package not found, update failed."
+msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
 
-#: system_reboot.php:48
-msgid "Are you sure you want to reboot the system?"
-msgstr "Oletko varma että haluat käynnistää järjestelmän uudelleen?"
+msgid ""
+"The uploaded package is not newer than the existing package, update failed."
+msgstr "Ladattu paketti ei ole uudempi kun oleva paketti, asennus epäonnistui."
 
-#: system_packages.php:164
+msgid "Package already exists, install failed."
+msgstr "Paketti on jo olemassa, asennus epäonnistui."
+
 msgid "Do you really want to disable this package?"
 msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
 
-#: system_packages.php:164
 msgid "click to disable package"
 msgstr "klikkaa poistaaksesi paketti käytöstä"
 
-#: system_packages.php:168 system_packages.php:185
 msgid "backup package data"
 msgstr "tallenna pakettitiedot"
 
-#: system_packages.php:169
 msgid "restore package data"
 msgstr "palauta pakettitiedot"
 
-#: system_packages.php:170 system_packages.php:187
 msgid ""
 "Do you really want to permanently delete this package\\'s configuration and "
 "data?"
-msgstr "Oletko varma että haluat poistaa tämän paketin konfigurointi sekä tiedot?"
+msgstr ""
+"Oletko varma että haluat poistaa tämän paketin konfigurointi sekä tiedot?"
 
-#: system_packages.php:170 system_packages.php:187
 msgid "delete package configuration and data"
 msgstr "poista paketin konfigurointi sekä tiedot"
 
-#: system_packages.php:181
 msgid "click to enable package"
 msgstr "klikkaa mahdollistaaksesi paketti"
 
-#: system_packages.php:186
 msgid "activate package from backup data"
 msgstr "aktivoi tallennettu paketti"
 
-#: system_packages.php:193
 msgid "install new package"
 msgstr "asenna uusi paketti"
 
-#: system_packages.php:194
 msgid "update package to newer version"
 msgstr "päivitä paketti"
 
-#: system_packages.php:203
 msgid "Install a new Package"
 msgstr "Asenna uusi paketti"
 
-#: system_packages.php:205
 msgid "Select a package .tgz archive and press 'Install'"
 msgstr "Valitse .tgz paketti ja paina 'Asenna'"
 
-#: system_packages.php:208
 msgid "Install"
 msgstr "Asenna"
 
-#: system_packages.php:208 system_packages.php:217 system_packages.php:226
 msgid "cancel"
 msgstr "peruta"
 
-#: system_packages.php:211
 msgid "Update an Installed Package"
 msgstr "Päivitä asennettu paketti"
 
-#: system_packages.php:213
 msgid "Select a package .tgz archive and press 'Update'"
 msgstr "Valitse .tgz paketti ja paina 'Päivitä'"
 
-#: system_packages.php:214
 msgid "Existing package data will be preserved."
 msgstr "Olevat pakettitiedot säilytetään."
 
-#: system_packages.php:217
 msgid "Update"
 msgstr "Päivitä"
 
-#: system_packages.php:220
 msgid "Restore from a Backup Archive"
 msgstr "Palauta varmuuskopiosta"
 
-#: system_packages.php:222
 msgid "Select a backup .tgz archive and press 'Restore'"
 msgstr "Valitse varmuuskopion .tgz paketti ja paina 'Palauta'"
 
-#: system_packages.php:223
 msgid "Package data & logic will be replaced by the backup."
 msgstr "Paketin tiedot sekä logiikka korvataan varmuuskopion asetuksilla."
 
-#: system_packages.php:226
 msgid "Restore"
 msgstr "Palauta"
 
-#: uploadconfig.php:40
+msgid "Reboot"
+msgstr "Käynnistä uudellen"
+
+msgid "The system is rebooting now. This may take a minute."
+msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
+
+msgid "Are you sure you want to reboot the system?"
+msgstr "Oletko varma että haluat käynnistää järjestelmän uudelleen?"
+
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR Konfigurointia ei pystytty tallentamaan.\n"
 
-#: uploadconfig.php:46
 msgid "OK\n"
 msgstr "OK\n"
 
-#: uploadconfig.php:49
 msgid "ERR Could not install configuration.\n"
 msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
-#: uploadconfig.php:52
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
-#: display.inc:35 guiconfig.inc:170
-msgid "English"
-msgstr "Englannin kieli"
-
-#: display.inc:36 guiconfig.inc:173
-msgid "Finnish"
-msgstr "Suomen kieli"
-
-#: display.inc:40
 msgid "webGUI language"
 msgstr "Verkkokäyttöliittymän kieli"
 
-#: display.inc:50
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Valitse verkkokäyttöliittymän kieli oheisesta valikosta."
 
-#: display.inc:59
 msgid "Audio Codecs"
 msgstr "Äänen pakkauksenhallinta"
 
-#: display.inc:60 display.inc:86
 msgid "Enabled"
 msgstr "Mahdollistettu"
 
-#: display.inc:85
 msgid "Video Codecs"
 msgstr "Videon pakkauksenhallinta"
 
-#: display.inc:126
 msgid "Group Members"
 msgstr "Ryhmän Jäsenet"
 
-#: display.inc:138
 msgid "Non-Members"
 msgstr "Ei Jäseniä"
 
-#: display.inc:155
 msgid ""
 "All group members will be called at the same time. <strong>The voicemail "
 "account associated with the first member will be used if the call is not "
@@ -3307,35 +2494,30 @@ msgstr ""
 "Kaikille ryhmän jäsenille soitetaan samaan aikaan. <strong>Ensimmäisen "
 "jäsenen vastaajaa käytetään jos puheluun ei vastata."
 
-#: display.inc:168
 msgid "Incoming Extension(s)"
 msgstr "Sisääntuleva Jatke/Jatkeet"
 
-#: display.inc:173
 msgid "add incoming extension mapping"
 msgstr "lisää sisääntulevan jatkeen kartoitus"
 
-#: display.inc:191
+msgid "display_incoming_extension_selector"
+msgstr ""
+
 msgid "DTMF Mode"
 msgstr "DTMF Tila"
 
-#: display.inc:208
 msgid "Registration"
 msgstr "Rekisteröinti"
 
-#: display.inc:210
 msgid "Do not register with this provider."
 msgstr "Älä rekisteröidy tälle palveluntaroajalle."
 
-#: display.inc:218
 msgid "Qualify"
 msgstr "Kelpuuttaa"
 
-#: display.inc:220
 msgid "seconds"
 msgstr "sekunttia"
 
-#: display.inc:221
 msgid ""
 "Packets will be sent to this account every <i>n</i> seconds to check its "
 "status.<br>Defaults to '2'. Set to '0' to disable."
@@ -3343,27 +2525,21 @@ msgstr ""
 "Pakettejä lähetetään tälle tilille joka <i>n</n> sekuntti tarkistaakseen sen "
 "tilan.<br>Oletus on '2', '0' poistaa käytöstä."
 
-#: display.inc:231
 msgid "always use NAT mode."
 msgstr "käytä aina NAT tilaa"
 
-#: display.inc:232
 msgid "only use NAT mode according to RFC3581 (rport)"
 msgstr "käytä ainoastaan NAT tilaa RFC3581 mukaan (rport)"
 
-#: display.inc:233
 msgid "never attempt NAT mode or RFC3581 support"
 msgstr "älä ikinä yritä NAT tilaa eikä RFC3581 tukea"
 
-#: display.inc:234
 msgid "assume NAT mode but don't send rport "
 msgstr "oleta NAT tilaa mutta älä lähetä rport"
 
-#: display.inc:242
 msgid "NAT"
 msgstr "NAT"
 
-#: display.inc:252
 msgid ""
 "Is there a NATing device between AskoziaPBX and this account? Setting this "
 "to 'yes' will work in most cases. The options 'never' and 'route' are only "
@@ -3373,29 +2549,24 @@ msgstr ""
 "tapauksissa 'kyllä' toimii. Valinnat 'ei koskaan' ja 'route' käytetään vain "
 "joskus tietyille SIP puhelimille."
 
-#: display.inc:263
 msgid "indefinitely"
 msgstr "epämääräinen"
 
-#: display.inc:271
 msgid "Ring Length"
 msgstr "Ympyrän pituus"
 
-#: display.inc:281
 msgid ""
 "The number of seconds this phone will ring before being reported as "
 "unanswered."
-msgstr "Määrä sekuntteja tämä puhelin soi ennen kun se merkitään ei vastatuksi."
+msgstr ""
+"Määrä sekuntteja tämä puhelin soi ennen kun se merkitään ei vastatuksi."
 
-#: display.inc:301
 msgid "Line Gain"
 msgstr "Linjan Hyöty"
 
-#: display.inc:311
 msgid "receive"
 msgstr "Vastaanota"
 
-#: display.inc:322
 msgid ""
 "Some analog connections may need adjustment to achieve an acceptable audio "
 "level. Adjust the receive and transmit gain in decibels to amplify or quiet "
@@ -3404,76 +2575,71 @@ msgstr ""
 "Jotkut analogi yhteydet voivat tarvita säätöjä jotta ne toimivat sopivalla "
 "äänitasolla. Säädä vastaanotto ja hyöty decibeleinä vahvistaaksesi linjaa."
 
-#: display.inc:330
 msgid "Incoming Caller ID Overrides"
 msgstr "Sisääntulevan Soittajan Tunnuksen Kumoaminen"
 
-#: display.inc:332
 msgid "Source Name &lt;number&gt;"
 msgstr "Lähteen Nimi &lt;numero&gt;"
 
-#: display.inc:333
 msgid "Prepend with string"
 msgstr "Etuliitä tunnuksella"
 
-#: display.inc:333
 msgid "Replace with string"
 msgstr "Korvaa tunnuksella"
 
-#: display.inc:334
 msgid "Replace calling name with calling number."
 msgstr "Korvaa soittajan nimen hänen numerolla"
 
-#: display.inc:335
 msgid "Disable overrides"
 msgstr "Poista kumoamiset käytöstä"
 
-#: display.inc:343
 msgid "Outgoing Caller ID"
 msgstr "Ulosmenevän Soittajan Tunnus"
 
-#: display.inc:345
 msgid "Your Name &lt;number&gt;"
 msgstr "Sinun Nimesi &lt;numero&gt;"
 
-#: display.inc:346
 msgid "Send string defined above&nbsp;"
 msgstr "Lähetä ylhäällä annettu tunnus&nbsp;"
 
-#: display.inc:346
 msgid "Send phones' Caller ID"
 msgstr "Lähetä puhelimen Soittajan Tunnus"
 
-#: display.inc:375
+msgid "There are currently no providers defined."
+msgstr "Tällä hetkellä ei ole palveluntarjoajia määritettynä."
+
 msgid "direct outbound dialing via SIP uris"
 msgstr "suoran ulosmenevä soitto SIP uris:in kautta"
 
-#: display.inc:378
 msgid "Checked providers will be accessible from this phone."
-msgstr "Valitut palveluntarjoajat tulevat olemaan käytettävissä tästä puhelimesta."
+msgstr ""
+"Valitut palveluntarjoajat tulevat olemaan käytettävissä tästä puhelimesta."
 
-#: display.inc:394
 msgid "There are currently no phones defined."
 msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
 
-#: display.inc:466
+msgid "display_phone_access_selector"
+msgstr ""
+
+msgid "Dialing Pattern(s)"
+msgstr "Soittokaava(t)"
+
+msgid "display_provider_dialpattern_editor"
+msgstr ""
+
 msgid "Language"
 msgstr "Kieli"
 
-#: display.inc:476
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "Ääni promptit toistetaan valitulla kielellä täälle tilille."
 
-#: display.inc:493
 msgid "send missed call notifications"
 msgstr "lähetä vastaamaton puhelu ilmoituksia"
 
-#: display.inc:500
 msgid "don't send to voicemail when busy"
 msgstr "älä lähetä vastaajaan kun tilani on varattu"
 
-#: display.inc:501
 msgid ""
 "An e-mail address. If entered, voicemail will be enabled on this extension. "
 "Incoming messages will be sent to the given address."
@@ -3481,27 +2647,21 @@ msgstr ""
 "S-posti osoite. Jos annettu, vaastaaja kytketään päälle tälle jatkeelle. "
 "Sisääntulevat viestit lähetetään annettuun osoitteeseen."
 
-#: display.inc:502
 msgid "Voicemail Services"
 msgstr "Vastaajan Palvelut"
 
-#: display.inc:502
 msgid "must be configured</a> before this feature will work."
 msgstr "on pakko olla konfiguroitu</a> jotta tämä toiminto olisi toiminassa."
 
-#: display.inc:513
 msgid "Public Direct Dial"
 msgstr "Julkinen Suorapuhelu"
 
-#: display.inc:521
 msgid "allow extension to be directly dialed over public networks"
 msgstr "salli jatkeen suorapuhelu julkisessa verkossa"
 
-#: display.inc:524
 msgid "Public name. Enter a string to map a friendly name to this extension."
 msgstr "julkinen nimi. Anna mukava nimi tälle jatkeelle."
 
-#: display.inc:527
 #, php-format
 msgid ""
 "Enabling this option will allow this extension to be reachable via SIP and "
@@ -3510,25 +2670,20 @@ msgstr ""
 "Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa SIP "
 "ja IAX2 uris:in kautta (jatke@%s)"
 
-#: display.inc:535
 msgid "Call Limit"
 msgstr "Puheluiden Raja"
 
-#: display.inc:537 display.inc:544
 msgid "calls"
 msgstr "puhelut"
 
-#: display.inc:538
 msgid "Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)"
 msgstr ""
 "Salli ainoastaan 'n' ulosmenevää puhelua ja 'n' sisääntulevaa pyhelua "
 "(oletus: 2)"
 
-#: display.inc:542
 msgid "Busy Limit"
 msgstr "Varattu Raja"
 
-#: display.inc:545
 msgid ""
 "Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
 "1)"
@@ -3536,71 +2691,57 @@ msgstr ""
 "Puhelimen tila vaihdetaan 'varatuksi' kun on 'n' samanaikaista puhelua "
 "(oletus: 1)"
 
-#: display.inc:559
 msgid "Logic"
 msgstr "Logiikka"
 
-#: display.inc:582
 msgid "display_application_logic_editor"
 msgstr ""
 
-#: display.inc:595
 msgid "Advanced Settings"
 msgstr "Lisäasetukset"
 
-#: display.inc:595
 msgid "show"
 msgstr "näytä"
 
-#: display.inc:621
 msgid "Manual Attributes"
 msgstr "Manuaaliset Ominaisuudet"
 
-#: display.inc:644
 msgid "display_manual_attributes_editor"
 msgstr ""
 
-#: display.inc:657
 msgid "Text to be displayed for Caller ID."
 msgstr "Teksti joka näytetään Soittajan Tunnukselle"
 
-#: display.inc:668
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
 
-#: display.inc:676
 msgid "Readback Number"
 msgstr "Luettava Numero"
 
-#: display.inc:679
-msgid "This "
-msgstr "Tämä "
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
 
-#: display.inc:688
 msgid "auto"
 msgstr "automaattinen"
 
-#: display.inc:689
 msgid "plain"
 msgstr "selvä"
 
-#: display.inc:690
 msgid "login"
 msgstr "kirjautuminen"
 
-#: display.inc:691
 msgid "cram-md5"
 msgstr "cram-md5"
 
-#: display.inc:694
 msgid "external"
 msgstr "ulkoinen"
 
-#: display.inc:703
 msgid "Authentication Method"
 msgstr "Laillistamiskeino"
 
-#: display.inc:713
 msgid ""
 "Most accounts will work using 'auto'. If this fails, select an "
 "authentication method appropriate for your server."
@@ -3608,180 +2749,140 @@ msgstr ""
 "Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
 "valitse sopiva laillistamiskeino valikosta."
 
-#: display.inc:721
 #, php-format
 msgid "% of "
 msgstr "% of "
 
-#: fbegin.inc:150
+msgid "(print)"
+msgstr "(tulosta)"
+
 msgid "General Setup"
 msgstr "Yleiset Asetukset"
 
-#: fbegin.inc:160
 msgid "Backup/Restore"
 msgstr "Varmuuskopioi/Entisöi"
 
-#: fbegin.inc:191
 msgid "Summary"
 msgstr "Tiivistelmä"
 
-#: fbegin.inc:209
 msgid "Manager"
 msgstr "Hallitseminen"
 
-#: fbegin.inc:219
 msgid "Ping/Traceroute"
 msgstr "Ping/Traceroute"
 
-#: fbegin.inc:221
 msgid "ARP Table"
 msgstr "ARP Taulukko"
 
-#: fbegin.inc:271
 msgid "webGUI Configuration"
 msgstr "Verkkokäyttöliittymän Konfigurointi"
 
-#: fbegin.inc:289
 msgid "Live Stats"
 msgstr "Tilastot Suorana"
 
-#: fend.inc:4
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
 
-#: fend.inc:4
 msgid "view license"
 msgstr "tarkasta lisenssi"
 
-#: guiconfig.inc:73
 msgid "LAN net"
 msgstr "LAN verkko"
 
-#: guiconfig.inc:75
 msgid "autoselect"
 msgstr "automattinen"
 
-#: guiconfig.inc:76
 msgid "100BASE-TX full-duplex"
 msgstr "100BASE-TX full-duplex"
 
-#: guiconfig.inc:77
 msgid "100BASE-TX half-duplex"
 msgstr "100BASE-TX half-duplex"
 
-#: guiconfig.inc:78
 msgid "10BASE-T full-duplex"
 msgstr "10BASE-T full-duplex"
 
-#: guiconfig.inc:79
 msgid "10BASE-T half-duplex"
 msgstr "10BASE-T half-duplex"
 
-#: guiconfig.inc:80
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
 
-#: guiconfig.inc:107
 msgid "G.711 u-law"
 msgstr "G.711 u-laki"
 
-#: guiconfig.inc:108
 msgid "G.711 A-law"
 msgstr "G.711 A-laki"
 
-#: guiconfig.inc:109
 msgid "GSM"
 msgstr "GSM"
 
-#: guiconfig.inc:110
 msgid "G.729A"
 msgstr "G.729A"
 
-#: guiconfig.inc:111
 msgid "iLBC"
 msgstr "iLBC"
 
-#: guiconfig.inc:112
 msgid "SpeeX"
 msgstr "SpeeX"
 
-#: guiconfig.inc:113
 msgid "G.723.1"
 msgstr "G.723.1"
 
-#: guiconfig.inc:114
 msgid "G.726 AAL2"
 msgstr "G.726 AAL2"
 
-#: guiconfig.inc:115
 msgid "ADPCM"
 msgstr "ADPCM"
 
-#: guiconfig.inc:116
 msgid "16 bit Signed Linear PCM"
 msgstr "16 tavunen Signed Linear PCM"
 
-#: guiconfig.inc:117
 msgid "LPC10"
 msgstr "LPC10"
 
-#: guiconfig.inc:118
 msgid "G.726 RFC3551"
 msgstr "G.726 RFC3551"
 
-#: guiconfig.inc:119
 msgid "G722"
 msgstr "G722"
 
-#: guiconfig.inc:123
 msgid "H.261"
 msgstr "H.261"
 
-#: guiconfig.inc:124
 msgid "H.263"
 msgstr "H.263"
 
-#: guiconfig.inc:125
 msgid "H.263+"
 msgstr "H.263+"
 
-#: guiconfig.inc:126
 msgid "H.264"
 msgstr "H.264"
 
-#: guiconfig.inc:131
 msgid "NAT + static public IP"
 msgstr "NAT + staattinen julkinen IP"
 
-#: guiconfig.inc:132
 msgid "NAT + dynamic public IP"
 msgstr "NAT + dynaaminen julkinen IP"
 
-#: guiconfig.inc:143
 msgid "Kewl Start"
 msgstr "Kewl Start"
 
-#: guiconfig.inc:144
 msgid "Ground Start"
 msgstr "Ground Start"
 
-#: guiconfig.inc:145
 msgid "Loop Start"
 msgstr "Loop Start"
 
-#: guiconfig.inc:149
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
 msgstr ""
-"Lähettää ääni ja video kaiku takaisin soittajalle heti kun se on vastaanotettu. "
-"Testaaksesi yhteyksen viivettä."
+"Lähettää ääni ja video kaiku takaisin soittajalle heti kun se on "
+"vastaanotettu. Testaaksesi yhteyksen viivettä."
 
-#: guiconfig.inc:150
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
 msgstr "Generoi jatkuvan 1000Hz äänen. Testaaksesi yhteyksen laatua."
 
-#: guiconfig.inc:151
 msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
@@ -3789,357 +2890,276 @@ msgstr ""
 "Herätys manageri. Puhelu herätyksen asettamiseksi tai peruttamiseksi "
 "nykyisellä jatkeella."
 
-#: guiconfig.inc:155
 msgid "English (US)"
 msgstr "Englannin kieli (US)"
 
-#: guiconfig.inc:156
 msgid "English (UK)"
 msgstr "Englannin kieli (UK)"
 
-#: guiconfig.inc:157 guiconfig.inc:172
 msgid "Danish"
 msgstr "Tanskan kieli"
 
-#: guiconfig.inc:158 guiconfig.inc:174
 msgid "Dutch"
 msgstr "Hollannin kieli"
 
-#: guiconfig.inc:159
 msgid "French (France)"
 msgstr "Ranskan kieli (Ranska)"
 
-#: guiconfig.inc:160
 msgid "French (Canada)"
 msgstr "Ranskan kieli (Kanada)"
 
-#: guiconfig.inc:161 guiconfig.inc:178
 msgid "German"
 msgstr "Saksan kieli"
 
-#: guiconfig.inc:162 guiconfig.inc:180
 msgid "Italian"
 msgstr "Italian kieli"
 
-#: guiconfig.inc:163
 msgid "Japanese"
 msgstr "Japanin kieli"
 
-#: guiconfig.inc:164 guiconfig.inc:186
 msgid "Russian"
 msgstr "Venäjän kieli"
 
-#: guiconfig.inc:165
 msgid "Spanish"
 msgstr "Espanjan kieli"
 
-#: guiconfig.inc:166 guiconfig.inc:189
 msgid "Swedish"
 msgstr "Ruotsin kieli"
 
-#: guiconfig.inc:171
+msgid "English"
+msgstr "Englannin kieli"
+
 msgid "English (formal)"
 msgstr "Englannin kilei (virallinen)"
 
-#: guiconfig.inc:173
 msgid "Danish (formal)"
 msgstr "Tanskan kieli (virallinen)"
 
-#: guiconfig.inc:175
 msgid "Dutch (formal)"
 msgstr "Hollannin kieli (virallinen)"
 
-#: guiconfig.inc:175
+msgid "Finnish"
+msgstr "Suomen kieli"
+
 msgid "Finnish (formal)"
 msgstr "Suomen kieli (virallinen)"
 
-#: guiconfig.inc:176
 msgid "French"
 msgstr "Ranskan kieli"
 
-#: guiconfig.inc:177
 msgid "French (formal)"
 msgstr "Ranskan kieli (virallinen)"
 
-#: guiconfig.inc:179
 msgid "German (formal)"
 msgstr "Saksan kieli (virallinen)"
 
-#: guiconfig.inc:181
 msgid "Italian (formal)"
 msgstr "Italian kieli (virallinen)"
 
-#: guiconfig.inc:182
 msgid "Polish"
 msgstr "Puolan kieli"
 
-#: guiconfig.inc:183
 msgid "Polish (formal)"
 msgstr "Puolan kieli (virallinen)"
 
-#: guiconfig.inc:184
 msgid "Portuguese, Brazil"
 msgstr "Portugalin kieli, Brasilia"
 
-#: guiconfig.inc:185
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugalin kieli, Brasilia (virallinen)"
 
-#: guiconfig.inc:187
 msgid "Russian (formal)"
 msgstr "Venäjän kieli (virallinen)"
 
-#: guiconfig.inc:188
 msgid "Spanish (formal)"
 msgstr "Espanjan kieli (virallinen)"
 
-#: guiconfig.inc:194
 msgid "point-to-multipoint, terminal equipment"
 msgstr "point-to-multipoint, konsoli apuvälineet"
 
-#: guiconfig.inc:195
 msgid "multipoint-to-point, network termination"
 msgstr "multipoint-to-point, verkon päättyminen"
 
-#: guiconfig.inc:196
 msgid "point-to-point, terminal equipment"
 msgstr "point-to-point, konsoli apuvälineet"
 
-#: guiconfig.inc:197
 msgid "point-to-point, network termination"
 msgstr "point-to-point, verkon päättyminen"
 
-#: guiconfig.inc:208 guiconfig.inc:232
 msgid "United States / North America"
 msgstr "USA / Pohjois Amerikka"
 
-#: guiconfig.inc:209 guiconfig.inc:233
 msgid "Australia"
 msgstr "Australia"
 
-#: guiconfig.inc:210 guiconfig.inc:234
 msgid "Austria"
 msgstr "Itävalta"
 
-#: guiconfig.inc:211 guiconfig.inc:235
 msgid "Belgium"
 msgstr "Belgia"
 
-#: guiconfig.inc:212 guiconfig.inc:238
 msgid "Chile"
 msgstr "Chile"
 
-#: guiconfig.inc:213 guiconfig.inc:239
 msgid "China"
 msgstr "Kiina"
 
-#: guiconfig.inc:214 guiconfig.inc:243
 msgid "Finland"
 msgstr "Suomi"
 
-#: guiconfig.inc:215 guiconfig.inc:244
 msgid "France"
 msgstr "Ranska"
 
-#: guiconfig.inc:216 guiconfig.inc:246
 msgid "Greece"
 msgstr "Kreikka"
 
-#: guiconfig.inc:217 guiconfig.inc:250
 msgid "Italy"
 msgstr "Italia"
 
-#: guiconfig.inc:218 guiconfig.inc:251
 msgid "Japan"
 msgstr "Japani"
 
-#: guiconfig.inc:219 guiconfig.inc:253
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: guiconfig.inc:220 guiconfig.inc:255
 msgid "Netherlands"
 msgstr "Hollanti"
 
-#: guiconfig.inc:221 guiconfig.inc:256
 msgid "New Zealand"
 msgstr "Uusi Seelanti"
 
-#: guiconfig.inc:222 guiconfig.inc:257
 msgid "Norway"
 msgstr "Norja"
 
-#: guiconfig.inc:223
 msgid "Russia"
 msgstr "Venäjä"
 
-#: guiconfig.inc:224 guiconfig.inc:264
 msgid "Spain"
 msgstr "Espanja"
 
-#: guiconfig.inc:225 guiconfig.inc:265
 msgid "Sweden"
 msgstr "Ruotsi"
 
-#: guiconfig.inc:226 guiconfig.inc:267
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: guiconfig.inc:227 guiconfig.inc:269
 msgid "United Kingdom"
 msgstr "Englanti"
 
-#: guiconfig.inc:228 guiconfig.inc:270
 msgid "United States Circa 1950/ North America"
 msgstr "USA 1950 / Pohjois Amerikka"
 
-#: guiconfig.inc:236
 msgid "Brazil"
 msgstr "Brasilia"
 
-#: guiconfig.inc:237
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: guiconfig.inc:240
 msgid "Czech Republic"
 msgstr "Tsekki"
 
-#: guiconfig.inc:241
 msgid "Denmark"
 msgstr "Tanska"
 
-#: guiconfig.inc:242
 msgid "Estonia"
 msgstr "Eesti"
 
-#: guiconfig.inc:245
 msgid "Germany"
 msgstr "Saksa"
 
-#: guiconfig.inc:247
 msgid "Hungary"
 msgstr "Unkari"
 
-#: guiconfig.inc:248
 msgid "India"
 msgstr "Intia"
 
-#: guiconfig.inc:249
 msgid "Israel"
 msgstr "Israel"
 
-#: guiconfig.inc:252
 msgid "Lithuania"
 msgstr "Liettua"
 
-#: guiconfig.inc:254
 msgid "Mexico"
 msgstr "Mexico"
 
-#: guiconfig.inc:258
 msgid "Philippines"
 msgstr "Filippiinit"
 
-#: guiconfig.inc:259
 msgid "Poland"
 msgstr "Puola"
 
-#: guiconfig.inc:260
 msgid "Portugal"
 msgstr "Portugali"
 
-#: guiconfig.inc:261
 msgid "Russia / ex Soviet Union"
 msgstr "Venäjä / entinen Neuvostoliitto"
 
-#: guiconfig.inc:262
 msgid "Singapore"
 msgstr "Singapore"
 
-#: guiconfig.inc:263
 msgid "South Africa"
 msgstr "Etelä Afrikka"
 
-#: guiconfig.inc:266
 msgid "Switzerland"
 msgstr "Sweitsi"
 
-#: guiconfig.inc:268
 msgid "Thailand"
 msgstr "Taimaa"
 
-#: guiconfig.inc:271
 msgid "Venezuela / South America"
 msgstr "Venezuela / Etelä Amerikka"
 
-#: guiconfig.inc:280
 msgid "agent"
 msgstr "agent"
 
-#: guiconfig.inc:281
 msgid "call"
 msgstr "puhelu"
 
-#: guiconfig.inc:282
 msgid "command"
 msgstr "komento"
 
-#: guiconfig.inc:283
 msgid "config"
 msgstr "konfigurointi"
 
-#: guiconfig.inc:284
 msgid "log"
 msgstr "loki"
 
-#: guiconfig.inc:285
 msgid "user"
 msgstr "käyttäjä"
 
-#: guiconfig.inc:286
 msgid "verbose"
 msgstr "verbose"
 
-#: guiconfig.inc:287
 msgid "system"
 msgstr "järjestelmä"
 
-#: guiconfig.inc:295
 #, php-format
 msgid "The field '%s' contains invalid characters."
 msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
 
-#: guiconfig.inc:301
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Kohta '%s' on määritettävä."
 
-#: guiconfig.inc:312
 msgid "The following input errors were detected:"
 msgstr "Seuraavat virheet löydettiin:"
 
-#: guiconfig.inc:369
 #, php-format
 msgid "%.2f GB"
 msgstr "%.2f Gt"
 
-#: guiconfig.inc:371
 #, php-format
 msgid "%.2f MB"
 msgstr "%.2f Mt"
 
-#: guiconfig.inc:373
 #, php-format
 msgid "%.0f KB"
 msgstr "%.0f Kt"
 
-#: guiconfig.inc:375
 #, php-format
 msgid "%d bytes"
 msgstr "%d tavua"
 
-#: guiconfig.inc:384
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -4147,28 +3167,22 @@ msgstr ""
 "Muutokset ovat tallennettu. Sinun on <a href=\"/system_reboot.php"
 "\">käynnistettävä pbx:ää uudellen</a> ennen kun muutokset astuvat voimaan."
 
-#: guiconfig.inc:386
 msgid "The changes have been applied successfully."
 msgstr "Muutokset astuivat voimaan onnistuneesti."
 
-#: guiconfig.inc:388
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "VIRHE: muutokset eivät astunut voimaan (virhe koodi %s)."
 
-#: guiconfig.inc:458
 msgid "reset filter and reload firewall logs page"
 msgstr "palauta suodatin ja lataa palomuuri loki sivua"
 
-#: guiconfig.inc:460
 msgid "Firewall"
 msgstr "Palomuuri"
 
-#: guiconfig.inc:464
 msgid "reload page"
 msgstr "Lataa sivua uudelleen"
 
-#: help.inc:38
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To "
 "ring multiple phones, simply define them with the same pattern. If a phone "
@@ -4199,11 +3213,9 @@ msgstr ""
 " \t<li><strong>!</strong> - sopii nollalle tai monelle merkille</li>\n"
 " </ul>\n"
 
-#: help.inc:41
 msgid "Checked phones will have access to this provider."
 msgstr "Valitut puhelimet saavat pääsyn tälle palveluntarjoajalle."
 
-#: help.inc:44
 msgid ""
 "Enter patterns, one per line, to define this provider's routing. Prefixes "
 "can be defined as shown in the following example. A prefix of \"9\" is "
@@ -4246,7 +3258,6 @@ msgstr ""
 "ennen | tai +)</li>\n"
 " </ul>\n"
 
-#: help.inc:47
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
 "()\n"
@@ -4270,7 +3281,6 @@ msgstr ""
 "<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
 "\">Elementti Kirjastossa</a></strong>.</p>"
 
-#: help.inc:50
 msgid ""
 "Manual key-value pairs can be entered in addition to the generated "
 "configuration (i.e. <em>configoption=value</em>). These settings will be "
@@ -4286,40 +3296,47 @@ msgstr ""
 "arvot voi vahingoittaa järjestelmän toimivuuden ja/tai haavoittaa "
 "turvallisuuden."
 
-#: phpconf/inc/packages.inc:168
-#, php-format
 msgid "Package activated successfully."
 msgstr "Paketti aktivoitiin onnistuneesti."
 
-#: phpconf/inc/packages.inc:170
-#, php-format
 msgid "Package deactivated successfully."
 msgstr "Paketti deaktivoitiin onnistuneesti."
 
-#: phpconf/inc/packages.inc:172
-#, php-format
 msgid "Package deleted successfully."
 msgstr "Paketti poistettiin onnistuneesti."
 
-#: phpconf/inc/packages.inc:174
-#, php-format
 msgid "Package restored successfully."
 msgstr "Paketti palautettiin onnistuneesti."
 
-#: phpconf/inc/packages.inc:176
-#, php-format
 msgid "Package installed successfully."
 msgstr "Paketti asennettiin onnistuneesti."
 
-#: webgui/system_packages.php:129
-msgid "Existing package not found, update failed."
-msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
+msgid "Install a new audio prompt distribution."
+msgstr ""
 
-#: webgui/system_packages.php:138
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr "Ladattu paketti ei ole uudempi kun oleva paketti, asennus epäonnistui."
+#~ msgid "The incoming extension pattern \"%s\" for \" %s \" is invalid. %s"
+#~ msgstr "Sisääntulevan jatkeen kaava \"%s\" ei kelpaa \"%s\" varten. %s"
 
-#: webgui/system_packages.php:194
-msgid "Package already exists, install failed."
-msgstr "Paketti on jo olemassa, asennus epäonnistui."
+#~ msgid "An invalid dial-pattern (%s) was found for \"%s\". %s"
+#~ msgstr "Kelvoton soittokaava (%s) löytyi \"%s\" varten. %s"
+
+#~ msgid ""
+#~ "The dial-pattern \"%s\" defined for \"%s\" already exists for \"%s\"."
+#~ msgstr ""
+#~ "Soittokaava \"%s\" määritetty \"%s\" varten on jo määritetty \"%s\" "
+#~ "varten."
+
+#~ msgid "(ISDN)"
+#~ msgstr "(ISDN)"
+
+#~ msgid "(Analog)"
+#~ msgstr "(Analogi)"
+
+#~ msgid "Help"
+#~ msgstr "Apua"
+
+#~ msgid "Incoming Extension"
+#~ msgstr "Sisääntuleva Jatke"
+
+#~ msgid "This "
+#~ msgstr "Tämä "
