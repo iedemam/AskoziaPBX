@@ -1279,6 +1279,15 @@ function clean_dots() {
 	passthru("find ./ -type f -name \"._*\" -delete -print");
 }
 
+function parse_check() {
+	passthru("find webgui/ -type f -name \"*.php\" -exec php -l {} \; -print | grep Parse");
+	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
+	passthru("find phpconf/ -type f -name \"*rc*\" -exec php -l {} \; -print | grep Parse");
+	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
+	passthru("find packages/ -type f -name \"rc\" -exec php -l {} \; -print | grep Parse");
+	passthru("find packages/ -type f -name \"*.php\" -exec php -l {} \; -print | grep Parse");
+}
+
 function _get_dir_size($dir) {
 	exec("du -d 0 $dir", $out);
 	$out = preg_split("/\s+/", $out[0]);
@@ -1455,14 +1464,7 @@ if ($argv[1] == "prepare") {
 		exit(1);
 	}
 
-} else if ($argv[1] == "parsecheck") {
-
-	passthru("find webgui/ -type f -name \"*.php\" -exec php -l {} \; -print | grep Parse");
-	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
-	passthru("find phpconf/ -type f -name \"*rc*\" -exec php -l {} \; -print | grep Parse");
-	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
-	
-} else if ($argv[1] == "release") {
+}  else if ($argv[1] == "release") {
 
 	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
 	foreach($platforms as $platform) {
