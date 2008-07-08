@@ -1,18 +1,18 @@
-# AskoziaPBX
-# Askozia (C) 2008 IKT
-# This file is distributed under the same license as the AskoziaPBX package.
-# Christoffer Lindqvist <EMAIL@ADDRESS>, 2008.
 #
-#, fuzzy
+# $Id$
+#
+# part of AskoziaPBX (http://askozia.com/pbx)
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+# All rights reserved.
+#
+# Authors:
+# 	Christoffer Lindqvist <kryysler@googlemail.com>
+#
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-08 03:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Finnish <LL@li.org>\n"
-"MIME-Version: 1.0\n"
+"POT-Creation-Date: 2008-07-08 04:19+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 

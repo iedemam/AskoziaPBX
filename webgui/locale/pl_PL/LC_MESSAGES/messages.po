@@ -1,3 +1,21 @@
+#
+# $Id$
+#
+# part of AskoziaPBX (http://askozia.com/pbx)
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+# All rights reserved.
+#
+# Authors:
+# 	Name <mail@domain>
+#
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-08 04:14+0200\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 msgid "Accounts"
 msgstr ""
 
