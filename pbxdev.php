@@ -987,8 +987,7 @@ function update_locales() {
 		"phpconf/rc.* " .
 		"webgui/*.php " .
 		"webgui/*.inc " .
-		"phpconf/inc/*.inc " .
-		"packages/audio.pkg/www/*.php");
+		"phpconf/inc/*.inc");
 
 	$dh = opendir($path);
 	while (false !== ($dirname = readdir($dh))) {
@@ -1289,9 +1288,9 @@ function parse_check() {
 }
 
 function _get_dir_size($dir) {
-	exec("du -d 0 $dir", $out);
-	$out = preg_split("/\s+/", $out[0]);
-	return $out[0];
+	$line = exec("du -d 0 $dir");
+	$pieces = preg_split("/\s+/", $line);
+	return $pieces[0];
 }
 
 function _set_permissions($image_name) {
