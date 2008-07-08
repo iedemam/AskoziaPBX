@@ -992,7 +992,7 @@ function update_locales() {
 
 	$dh = opendir($path);
 	while (false !== ($dirname = readdir($dh))) {
-		if (preg_match("/\S+\_\S+/", $dirname)) {
+		if (preg_match("/[a-z]{2}\_[A-Z]{2}/", $dirname)) {
 			// in every locale, make sure a messages.po file exists
 			if (!file_exists("$path/$dirname/LC_MESSAGES/messages.po")) {
 				_exec("touch $path/$dirname/LC_MESSAGES/messages.po");
