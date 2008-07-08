@@ -1,3 +1,21 @@
+#
+# $Id$
+#
+# part of AskoziaPBX (http://askozia.com/pbx)
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+# All rights reserved.
+#
+# Authors:
+# 	Name <mail@domain>
+#
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-08 05:32+0200\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 msgid "Accounts"
 msgstr ""
 
@@ -1244,251 +1262,6 @@ msgstr ""
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
-msgstr ""
-
-msgid "License"
-msgstr ""
-
-msgid "AskoziaPBX is Copyright &copy; 2007 - 2008 IKT "
-msgstr ""
-
-msgid "http://www.itison-ikt.de"
-msgstr ""
-
-msgid "All rights reserved."
-msgstr ""
-
-msgid ""
-"Redistribution and use in source and binary forms, with or without<br> "
-"modification, are permitted provided that the following conditions are met:"
-msgstr ""
-
-msgid ""
-"1. Redistributions of source code must retain the above copyright notice,"
-"<br>this list of conditions and the following disclaimer."
-msgstr ""
-
-msgid ""
-"2. Redistributions in binary form must reproduce the above "
-"copyright<br>notice, this list of conditions and the following disclaimer in "
-"the<br> documentation and/or other materials provided with the distribution."
-msgstr ""
-
-msgid ""
-"THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,"
-"<br>INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF "
-"MERCHANTABILITY<br>AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN "
-"NO EVENT SHALL THE<br>AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, "
-"SPECIAL, EXEMPLARY,<br>OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED "
-"TO, PROCUREMENT OF<br>SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR "
-"PROFITS; OR BUSINESS<br>INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF "
-"LIABILITY, WHETHER IN<br>CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING "
-"NEGLIGENCE OR OTHERWISE)<br>ARISING IN ANY WAY OUT OF THE USE OF THIS "
-"SOFTWARE, EVEN IF ADVISED OF THE<br>POSSIBILITY OF SUCH DAMAGE"
-msgstr ""
-
-msgid "AskoziaPBX is derived from m0n0wall "
-msgstr ""
-
-msgid " (FreeBSD 6 branch, r195)."
-msgstr ""
-
-msgid ""
-"Many thanks to Manuel Kasper, Chris Buechler and all of the m0n0wall "
-"contributors."
-msgstr ""
-
-msgid "m0n0wall&reg; is Copyright &copy; 2002 - 2008 Manuel Kasper "
-msgstr ""
-
-msgid "m0n0wall is a registered trademark of Manuel Kasper."
-msgstr ""
-
-msgid ""
-"AskoziaPBX is also based upon/includes various free software packages, "
-"listed below."
-msgstr ""
-
-msgid "A big thanks to the authors for all of their hard work!"
-msgstr ""
-
-msgid "Asterisk "
-msgstr ""
-
-msgid "Copyright &copy; 1999 - 2008, Digium, Inc. "
-msgstr ""
-
-msgid "FreeBSD "
-msgstr ""
-
-msgid "Copyright &copy; 1994 - 2008 FreeBSD, Inc. "
-msgstr ""
-
-msgid "This product includes PHP, freely available from "
-msgstr ""
-
-msgid "Copyright &copy; 1999 - 2008 The PHP Group. "
-msgstr ""
-
-msgid "mini_httpd "
-msgstr ""
-
-msgid "Copyright &copy; 1999, 2000 by Jef Poskanzer &lt;jef@acme.com&gt;. "
-msgstr ""
-
-msgid "script.aculo.us "
-msgstr ""
-
-msgid "Copyright &copy; 2005 - 2008 Thomas Fuchs "
-msgstr ""
-
-msgid "jQuery "
-msgstr ""
-
-msgid "Copyright &copy; 2007 - 2008 John Resig"
-msgstr ""
-
-msgid "with plugins:"
-msgstr ""
-
-msgid "blockUI</a> - Copyright &copy; 2007 - 2008 M. Alsup"
-msgstr ""
-
-msgid "preloadImages</a> - Copyright &copy; 2007 - 2008 Blair McBride"
-msgstr ""
-
-msgid "selectboxes</a> - Copyright &copy; 2006 - 2008 Sam Collett"
-msgstr ""
-
-msgid "silk icons from famfamfam "
-msgstr ""
-
-msgid "Creative Commons Attribution 2.5 Licensed from Mark James"
-msgstr ""
-
-msgid "Circular log support for FreeBSD syslogd "
-msgstr ""
-
-msgid "Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)"
-msgstr ""
-
-msgid "msntp "
-msgstr ""
-
-msgid ""
-"Copyright &copy; 1996, 1997, 2000 N.M. Maclaren, University of Cambridge. "
-msgstr ""
-
-msgid "msmtp "
-msgstr ""
-
-msgid "Copyright &copy; 2005 - 2008 Martin Lambers. "
-msgstr ""
-
-msgid "ISDN4BSD by HPS "
-msgstr ""
-
-msgid "Copyright &copy; 2003 - 2008 Hans Petter Selasky. "
-msgstr ""
-
-msgid "OSLEC Open Source Line Echo Canceller "
-msgstr ""
-
-msgid "Copyright &copy; 2007 - 2008, David Rowe "
-msgstr ""
-
-msgid "Original zaptel infrastracture by Digium Inc., ported to FreeBSD by"
-msgstr ""
-
-msgid ""
-"Oleksandr Tymoshenko, Dinesh Nair, Konstantin Prokazoff, Luigi Rizzo, Chris "
-"Stenton and Yuri Saltykov"
-msgstr ""
-
-msgid ""
-"The multilingual speech prompts used in AskoziaPBX have been made available "
-"by the following groups"
-msgstr ""
-
-msgid "Danish "
-msgstr ""
-
-msgid "Copyright Information Unknown"
-msgstr ""
-
-msgid "Dutch "
-msgstr ""
-
-msgid "Copyright &copy; 2006 Born Digital"
-msgstr ""
-
-msgid "English (US) and French (Canada) "
-msgstr ""
-
-msgid "Copyright &copy; Allison Smith "
-msgstr ""
-
-msgid "Financed by Digium, Inc. "
-msgstr ""
-
-msgid "English (UK) "
-msgstr ""
-
-msgid "Copyright &copy; 2006 ENIcommunications Corp."
-msgstr ""
-
-msgid "Released under the "
-msgstr ""
-
-msgid "Creative Commons Attribution-ShareAlike 2.5 License"
-msgstr ""
-
-msgid "French (France) "
-msgstr ""
-
-msgid "German "
-msgstr ""
-
-msgid "Copyright &copy; 2006 amooma GmbH"
-msgstr ""
-
-msgid "GPL"
-msgstr ""
-
-msgid "Italian "
-msgstr ""
-
-msgid "Copyright &copy; 2006 Marco Menardi and Paola Dal Zot"
-msgstr ""
-
-msgid "Voice: Paola Dal Zot"
-msgstr ""
-
-msgid "Japanese "
-msgstr ""
-
-msgid "Copyright &copy; 2005 Takahashi"
-msgstr ""
-
-msgid "Voice: Eri Takeda."
-msgstr ""
-
-msgid "Edited by VoIP-Info.jp."
-msgstr ""
-
-msgid "Russian "
-msgstr ""
-
-msgid "Spanish "
-msgstr ""
-
-msgid "Copyright &copy; 2006 Alberto Sagredo Castro"
-msgstr ""
-
-msgid "Swedish "
-msgstr ""
-
-msgid "Copyright &copy; 2005 Daniel Nylander"
 msgstr ""
 
 msgid "Edit Analog Line"
@@ -3043,7 +2816,4 @@ msgid "Package restored successfully."
 msgstr ""
 
 msgid "Package installed successfully."
-msgstr ""
-
-msgid "Install a new audio prompt distribution."
 msgstr ""
