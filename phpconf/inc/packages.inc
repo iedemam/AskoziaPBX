@@ -210,6 +210,10 @@ function packages_update_all() {
 				/* copy the new rc file */
 				mwexec("/bin/cp " . $src_path . "/" . $dirname . "/rc " .
 					$dest_path . "/" . $dirname);
+				/* copy the new www files if present */
+				if (file_exists($src_path . "/" . $dirname . "/www")) {
+					mwexec("/bin/cp -R " . $src_path . "/" . $dirname . "/www " . $dest_path . "/" . $dirname);
+				}
 				/* execute the update routine */
 				$ret = mwexec("/etc/rc.pkgexec " . $dest_path . "/" . $dirname . "/rc update");
 				/* update package meta info from built-in package */

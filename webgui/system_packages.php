@@ -140,6 +140,10 @@ if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 		} else {
 			// copy the new rc file
 			mwexec("/bin/cp " . $uploaded_pkg_path . "/rc " . $pkg_install_path . "/" . $uploaded_pkg_name);
+			// copy the new www files if present
+			if (file_exists($uploaded_pkg_path . "/www")) {
+				mwexec("/bin/cp -R " . $uploaded_pkg_path . "/www " . $pkg_install_path . "/" . $uploaded_pkg_name);
+			}
 			// execute the update routine
 			$ret = mwexec("/etc/rc.pkgexec " . $pkg_install_path . "/" . $uploaded_pkg_name . "/rc update");
 			// update package meta info from built-in package
