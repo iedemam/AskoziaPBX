@@ -190,6 +190,11 @@ $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
 $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 
+/* Packages */
+if ($nav = packages_get_www_nav()) {
+	$menu['Packages'] = $nav;
+}
+
 /* Status */
 $menu['Status'][gettext("Summary")]				= array('index.php');
 $menu['Status'][gettext("Interfaces")]			= array('status_interfaces.php');
@@ -284,6 +289,9 @@ dynamic_menu($menu['System'], gettext('System'));
 dynamic_menu($menu['Accounts'], gettext('Accounts'));
 dynamic_menu($menu['Dialplan'], 'Dialplan');
 dynamic_menu($menu['Services'], gettext('Services'));
+if (isset($menu['Packages'])) {
+	dynamic_menu($menu['Packages'], gettext('Packages'));
+}
 dynamic_menu($menu['Status'], gettext('Status'));
 dynamic_menu($menu['Live Stats'], gettext('Live Stats'));
 dynamic_menu($menu['Advanced'], 'Advanced');

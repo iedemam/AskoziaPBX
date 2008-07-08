@@ -50,9 +50,13 @@ function packages_get_packages() {
 				$packages[$pkg['name']]['parentpath'] = $path;
 				$packages[$pkg['name']]['path'] = $path . "/" . $dirname;
 				$packages[$pkg['name']]['datapath'] = $path . "/" . $dirname . "/data";
-				/* record the packages's state */
+				/* is the package active? */
 				if (file_exists($path . "/" . $dirname . "/pkg.active")) {
 					$packages[$pkg['name']]['active'] = true;
+				}
+				/* does the package have its own conf pages? */
+				if (file_exists($path . "/" . $dirname . "/www/index.php")) {
+					$packages[$pkg['name']]['haspages'] = true;
 				}
 			} 
 		}
@@ -79,9 +83,13 @@ function packages_get_package($name) {
 				$pkg['parentpath'] = $path;
 				$pkg['path'] = $path . "/" . $dirname;
 				$pkg['datapath'] = $path . "/" . $dirname . "/data";
-				/* record the packages's state */
+				/* is the package active? */
 				if (file_exists($path . "/" . $dirname . "/pkg.active")) {
 					$pkg['active'] = true;
+				}
+				/* does the package have its own conf pages? */
+				if (file_exists($path . "/" . $dirname . "/www/index.php")) {
+					$pkg['haspages'] = true;
 				}
 				break;
 			} 
@@ -177,6 +185,23 @@ function packages_generate_save_message($name, $command) {
 		default:
 			return "packages_generate_save_message...no message found";
 	}
+}
+
+function packages_get_www_nav() {
+
+	$packages = packages_get_packages();
+
+	foreach ($packages as $package) {
+		if ($package['haspages'] && $package['active']) {
+			$symfile = "/usr/local/www/packages_" . $package['name'] . ".php";
+			if (!file_exists($symfile)) {
+				symlink($package['path'] . "/www/index.php", $symfile);
+			}
+			$nav[ucfirst($package['name'])] = array("packages_" . $package['name'] . ".php");
+		}
+	}
+
+	return $nav;
 }
 
 /* 
