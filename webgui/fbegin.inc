@@ -83,7 +83,7 @@ function dynamic_menu(&$menu, $menu_title) {
 			if (!isset($header_displayed) && ($menu_title == 'Dialplan')) {
 				echo "\n" 
 				?>
-				<strong><?=gettext("Dialplan");?></strong>&nbsp;<a href="/printable_dialplan.php" class="navlnks"><?=gettext("(print)");?></a><br>
+				<strong><?=gettext("Dialplan");?></strong>&nbsp;<a href="printable_dialplan.php" class="navlnks"><?=gettext("(print)");?></a><br>
 				<?
 				$header_displayed = true;
 			
@@ -95,16 +95,16 @@ function dynamic_menu(&$menu, $menu_title) {
 				if (!isset($header_displayed)) {
 					if ($menu_title == 'Diagnostics') {
 						if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag">
+							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag">
 						<? else :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag" style="display: none">
+							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag" style="display: none">
 						<? endif;
 					}
 					if ($menu_title == 'Advanced') {
 						if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced">
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced">
 						<? else :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="/tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced" style="display: none">
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced" style="display: none">
 						<? endif;
 					}
 					
@@ -126,7 +126,7 @@ function dynamic_menu(&$menu, $menu_title) {
 				// Below lines are spaced out oddly to help improve the look of resulting HTML code.
 				?>
 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/<?=$link?>" class="navlnk"><?=$desc?></a><br><?
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=$link?>" class="navlnk"><?=$desc?></a><br><?
 	   			// Only need the first one, so break out of foreach
 	   			break;
 			}
@@ -259,17 +259,17 @@ function showhide(tspan, tri) {
 	triel = document.getElementById(tri);
 	if (tspanel.style.display == 'none') {
 		jQuery("#" + tspan).slideDown("slow");
-		triel.src = "/tri_o.gif";
+		triel.src = "tri_o.gif";
 	} else {
 		jQuery("#" + tspan).slideUp("slow");
-		triel.src = "/tri_c.gif";
+		triel.src = "tri_c.gif";
 	}
 }
 -->
 </script>
 <table width="750" border="0" cellspacing="0" cellpadding="2">
   <tr valign="bottom"> 
-    <td width="150" height="65" align="center" valign="middle"> <strong><a href="http://askozia.com/pbx" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong></td>
+    <td width="150" height="65" align="center" valign="middle"> <strong><a href="http://askozia.com/pbx" target="_blank"><img src="logo.gif" width="150" height="47" border="0"></a></strong></td>
     <td height="65" bgcolor="#435370">
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
