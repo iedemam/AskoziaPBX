@@ -136,7 +136,6 @@ EOD;
 		
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
 		$fstab .= "/dev/{$cfgdevice}b /asterisk ufs ro 0 0\n";
-		$fstab .= "proc /proc procfs rw 0 0\n";
 		
 		fwrite($fd, $fstab);
 		fclose($fd);

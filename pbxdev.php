@@ -466,7 +466,7 @@ function populate_etc($image_name) {
 	
 	$rootfs = "$image_name/rootfs";
 		
-	_exec("cp -p {$dirs['files']}/etc/* $rootfs/etc/");
+	_exec("cp -pR {$dirs['files']}/etc/* $rootfs/etc/");
 	_exec("cp -p {$dirs['files']}/asterisk/*.conf $rootfs/usr/local/etc/asterisk/");
 	_exec("cp {$dirs['etc']}/pubkey.pem $rootfs/etc/");
 	
@@ -1130,6 +1130,7 @@ function package($platform, $image_name) {
 	// ...stamps
 	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
 	_exec("echo `date` > tmp/stage/etc/version.buildtime");
+	_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
 	_exec("echo $platform > tmp/stage/etc/platform");		
 	
 	// get size and package mfsroot

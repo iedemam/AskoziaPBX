@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-08 05:32+0200\n"
+"POT-Creation-Date: 2008-07-08 16:41+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -137,6 +137,15 @@ msgstr ""
 msgid "GUI Options"
 msgstr "Käyttöliit. Asetukset"
 
+msgid ""
+"A self-signed certificate could not be generated because the system's clock "
+"is not set."
+msgstr ""
+
+msgid ""
+"A self-signed certificate and private key have been automatically generated."
+msgstr ""
+
 msgid "Certificate and key must always be specified together."
 msgstr "Sertifikaatti ja avain on aina annettava yhdessä."
 
@@ -157,6 +166,9 @@ msgstr "Liitä digitaalisesti allekirjoitettu sertifikaatti X.509 PEM muodossa."
 
 msgid "Paste an RSA private key in PEM format here."
 msgstr "Liitä yksityinen RSA avain PEM muodossa."
+
+msgid "Generate self-signed certificate"
+msgstr ""
 
 msgid "Save"
 msgstr "Tallenna"

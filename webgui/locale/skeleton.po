@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-08 05:40+0200\n"
+"POT-Creation-Date: 2008-07-08 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,6 +133,12 @@ msgstr ""
 msgid "GUI Options"
 msgstr ""
 
+msgid "A self-signed certificate could not be generated because the system's clock is not set."
+msgstr ""
+
+msgid "A self-signed certificate and private key have been automatically generated."
+msgstr ""
+
 msgid "Certificate and key must always be specified together."
 msgstr ""
 
@@ -152,6 +158,9 @@ msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr ""
 
 msgid "Paste an RSA private key in PEM format here."
+msgstr ""
+
+msgid "Generate self-signed certificate"
 msgstr ""
 
 msgid "Save"

@@ -92,7 +92,10 @@
 	
 	/* start syslogd */
 	system_syslogd_start();
-	
+
+	/* generate machine specific ssl certificate */
+	system_upgrade_https_certificate();
+
 	/* start web server */
 	system_webgui_start();
 	

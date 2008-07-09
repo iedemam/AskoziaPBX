@@ -133,4 +133,41 @@ function util_file_put_contents($contents, $filename) {
 	return 0;
 }
 
+/* generate a self-signed SSL cert/key (1024-bit, valid for 2 years) and return it in PEM format */
+function generate_self_signed_cert() {
+	global $g, $config;
+
+	$orgname = "AskoziaPBX";
+	$cn = $config['system']['hostname'] . "." . $config['system']['domain'];
+
+	/* check local clock first - must be set to something after the release date
+	  (subtract a day to avoid TZ problems with early adopters) */
+	$buildtime = trim(file_get_contents("{$g['etc_path']}/version.buildtime.unix")) - 86400;
+	if (time() < $buildtime)
+		return false;
+
+	$dn = array(
+	    "organizationName" => $orgname,
+	    "commonName" => $cn
+	);
+
+	$conf = array(
+		"digest_alg" => "sha1",
+		"private_key_bits" => 1024
+	);
+
+	$privkey = openssl_pkey_new($conf);
+	$csr = openssl_csr_new($dn, $privkey, $conf);
+	$sscert = openssl_csr_sign($csr, null, $privkey, 730, $conf, time());
+
+	openssl_x509_export($sscert, $certout);
+	openssl_pkey_export($privkey, $pkeyout);
+
+	/* sanity check */
+	if (strpos($certout, "BEGIN CERTIFICATE") !== false && strpos($pkeyout, "BEGIN RSA PRIVATE KEY") !== false)
+		return array('cert' => $certout, 'key' => $pkeyout);
+	else
+		return false;
+}
+
 ?>

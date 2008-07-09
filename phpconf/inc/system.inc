@@ -335,6 +335,26 @@ EOD;
 	return $res;
 }
 
+function system_upgrade_https_certificate() {
+	global $config;
+
+	if (!$config['system']['webgui']['certificate']) {
+		echo "Upgrading HTTPS to a more secure, machine-specific certificate...";
+
+		$ck = generate_self_signed_cert();
+		
+		if ($ck === false) {
+			echo "failed!\n";
+			echo " (A certificate could not be automatically generated because your system's clock is not set. " .
+				 "Please configure a custom certificate on the Advanced -> GUI Options page for security; " .
+				 "until then, the system will use an insecure default certificate shared by all installations)\n\n";
+		} else {
+			$config['system']['webgui']['certificate'] = base64_encode($ck['cert']);
+			$config['system']['webgui']['private-key'] = base64_encode($ck['key']);
+			echo "done\n";
+		}
+	}
+}
 /**
  * Generates htpasswd
  * XXX : still contains "local user manager" which should still be reimplemented
