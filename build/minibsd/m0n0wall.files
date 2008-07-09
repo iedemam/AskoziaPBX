@@ -73,6 +73,7 @@ usr/bin/tar
 usr/bin/top
 usr/bin/touch
 usr/bin/uptime:usr/bin/w
+usr/bin/wc
 
 # contents of /usr/sbin
 usr/sbin/ancontrol
