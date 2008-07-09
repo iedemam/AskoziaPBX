@@ -53,6 +53,21 @@ $pconfig['polling_enable'] = isset($config['system']['polling']);
 if ($_POST) {
 
 	unset($input_errors);
+	$savemsgadd = "";
+
+	if ($_POST['gencert']) {
+		/* custom certificate generation requested */
+		$ck = generate_self_signed_cert();
+		
+		if ($ck === false) {
+			$input_errors[] = gettext("A self-signed certificate could not be generated because the system's clock is not set.");
+		} else {
+			$_POST['cert'] = $ck['cert'];
+		 	$_POST['key'] = $ck['key'];
+			$savemsgadd = "<br><br>" . gettext("A self-signed certificate and private key have been automatically generated.");
+		}
+	}
+
 	$pconfig = $_POST;
 
 	/* input validation */
@@ -112,18 +127,12 @@ if ($_POST) {
 			$retval |= system_set_termcap();
 			config_unlock();
 		}
-		$savemsg = get_std_save_message($retval);
+		$savemsg = get_std_save_message($retval) . $savemsgadd;
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
-<!--
-function enable_change(enable_over) {
 
-}
-// -->
-</script>
             <?php if ($input_errors) print_input_errors($input_errors); ?>
             <?php if ($savemsg) print_info_box($savemsg); ?>
             <form action="advanced_guioptions.php" method="post" name="iform" id="iform">
@@ -148,7 +157,8 @@ function enable_change(enable_over) {
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
+                    <input name="gencert" type="submit" class="formbtn" value="<?=gettext("Generate self-signed certificate");?>"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
                   </td>
                 </tr>
                 <tr> 
@@ -211,7 +221,7 @@ function enable_change(enable_over) {
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
                   </td>
                 </tr>
               </table>
