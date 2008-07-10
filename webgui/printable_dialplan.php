@@ -36,6 +36,7 @@ $a_extphones = external_get_phones();		// already sorted by extension
 $a_callgroups = callgroups_get_groups();	usort($a_callgroups, "pbx_sort_by_extension");
 $a_rooms = conferencing_get_rooms();		usort($a_rooms, "pbx_sort_by_extension");
 $a_apps = applications_get_apps();			// already sorted by extension
+$a_providers = pbx_get_providers();			// already sorted by name
 
 ?>
 <html>
@@ -55,9 +56,9 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td colspan="3" class="listtopiclight"><?=gettext("Internal Phones");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
-				<td width="150" class="listhdr"><?=gettext("Caller ID");?></td>
-				<td class="listhdr"><?=gettext("Description");?></td>
+				<td width="15%" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Caller ID");?></td>
+				<td width="55%" class="listhdr"><?=gettext("Description");?></td>
 			</tr>		
 			<?php foreach ($a_intphones as $p):
 				if (isset($p['disabled'])) {
@@ -80,9 +81,9 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td colspan="3" class="listtopiclight"><?=gettext("External Phones");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
-				<td width="150" class="listhdr"><?=gettext("Name");?></td>
-				<td class="listhdr"><?=gettext("Description");?></td>
+				<td width="15%" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Name");?></td>
+				<td width="55%" class="listhdr"><?=gettext("Description");?></td>
 			</tr>
 			<?php foreach ($a_extphones as $p):
 				if (isset($p['disabled'])) {
@@ -105,9 +106,9 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td colspan="3" class="listtopiclight"><?=gettext("Call Groups");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
-				<td width="150" class="listhdr"><?=gettext("Name");?></td>
-				<td class="listhdr"><?=gettext("Members");?></td>
+				<td width="15%" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Name");?></td>
+				<td width="55%" class="listhdr"><?=gettext("Members");?></td>
 			</tr>
 			<?php foreach ($a_callgroups as $cg): ?>
 			<tr>
@@ -133,9 +134,9 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td colspan="3" class="listtopiclight"><?=gettext("Conference Rooms");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
-				<td width="150" class="listhdr"><?=gettext("Name");?></td>
-				<td width="20" class="listhdr"><?=gettext("Pin");?></td>
+				<td width="15%" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Name");?></td>
+				<td width="55%" class="listhdr"><?=gettext("Pin");?></td>
 			</tr>
 			<?php foreach ($a_rooms as $r): ?>
 			<tr>
@@ -159,15 +160,37 @@ $a_apps = applications_get_apps();			// already sorted by extension
 				<td colspan="3" class="listtopiclight"><?=gettext("Custom Applications");?></td>
 			</tr>
 			<tr>
-				<td width="75" class="listhdr"><?=gettext("Extension");?></td>
-				<td width="150" class="listhdr"><?=gettext("Name");?></td>
-				<td class="listhdr"><?=gettext("Description");?></td>
+				<td width="15%" class="listhdr"><?=gettext("Extension");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Name");?></td>
+				<td width="55%" class="listhdr"><?=gettext("Description");?></td>
 			</tr>
 			<?php foreach ($a_apps as $app): ?>
 			<tr>
 				<td class="listlr"><?=htmlspecialchars($app['extension']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($app['descr']);?>&nbsp;</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr> 
+				<td colspan="3" class="list" height="12">&nbsp;</td>
+			</tr>
+			<?php endif; ?>
+
+			<?php if (count($a_providers) > 0): ?>
+			<tr>
+				<td colspan="3" class="listtopiclight"><?=gettext("Providers");?></td>
+			</tr>
+			<tr>
+				<td width="15%" class="listhdr"><?=gettext("Name");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Dialing Pattern(s)");?></td>
+				<td width="55%" class="list">&nbsp;</td>
+			</tr>
+			<?php foreach ($a_providers as $provider): ?>
+			<?php if (!is_array($provider['dialpattern'])) continue; ?>
+			<tr>
+				<td class="listlr"><?=htmlspecialchars($provider['name']);?>&nbsp;</td>
+				<td class="listr"><?=@implode("<br>", $provider['dialpattern']);?>&nbsp;</td>
+				<td class="list">&nbsp;</td>
 			</tr>
 			<?php endforeach; ?>
 			<tr> 
