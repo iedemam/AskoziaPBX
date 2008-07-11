@@ -32,7 +32,6 @@
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
 
-$pconfig['reverse'] = isset($config['syslog']['reverse']);
 $pconfig['nentries'] = $config['syslog']['nentries'];
 $pconfig['remoteserver'] = $config['syslog']['remoteserver'];
 $pconfig['system'] = isset($config['syslog']['system']);
@@ -52,12 +51,11 @@ if ($_POST) {
 	if ($_POST['enable'] && !verify_is_ipaddress($_POST['remoteserver'])) {
 		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
-	if (($_POST['nentries'] < 5) || ($_POST['nentries'] > 1000)) {
-		$input_errors[] = gettext("Number of log entries to show must be between 5 and 1000.");
+	if (($_POST['nentries'] < 50) || ($_POST['nentries'] > 1000)) {
+		$input_errors[] = gettext("Number of log entries to show must be between 50 and 1000.");
 	}
 
 	if (!$input_errors) {
-		$config['syslog']['reverse'] = $_POST['reverse'] ? true : false;
 		$config['syslog']['nentries'] = (int)$_POST['nentries'];
 		$config['syslog']['remoteserver'] = $_POST['remoteserver'];
 		$config['syslog']['system'] = $_POST['system'] ? true : false;
@@ -117,13 +115,6 @@ function enable_change(enable_over) {
 	<tr> 
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr> 
-					<td width="22%" valign="top" class="vtable">&nbsp;</td>
-					<td width="78%" class="vtable">
-						<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
-						<strong><?=gettext("Show log entries in reverse order (newest entries on top)");?></strong>
-					</td>
-				</tr>
 				<tr> 
 					<td width="22%" valign="top" class="vtable">&nbsp;</td>
 					<td width="78%" class="vtable">

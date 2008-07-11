@@ -148,9 +148,7 @@ function print_entry($cdr) {
 function dump_clog($logfile, $start, $stop) {
 	global $g, $config;
 
-	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
-	//exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $max, $logarr);
-    	exec("/usr/sbin/clog $logfile | /usr/bin/sed '$start,$stop!d'", $logarr);
+	exec("/usr/sbin/clog $logfile | /usr/bin/sed '$start,$stop!d'", $logarr);
 
 	foreach ($logarr as $logent) {
 		$logent = preg_split("/\s+/", $logent, 6);
@@ -182,8 +180,7 @@ function dump_clog($logfile, $start, $stop) {
 function dump_sqlite($logfile, $start, $stop) {
 	global $g, $config;
 
-	$sor = isset($config['syslog']['reverse']) ? "desc" : "asc";
-	$query = "select * from cdr order by id " . $sor . " limit $start,$stop";
+	$query = "select * from cdr order by id asc limit $start,$stop";
 
 	$db = sqlite_open($logfile, 0666, $err);
 	$results = sqlite_query($query, $db);

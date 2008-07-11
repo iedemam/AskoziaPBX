@@ -52,7 +52,7 @@ function display_page_selector($page, $totalitems, $limit, $targetpage, $pagestr
 
 		//previous button
 		if ($page > 1) 
-			$pagination .= "<a href=\"$targetpage$pagestring$prev\">« prev</a>";
+			$pagination .= "<a class=\"leftmost\" href=\"$targetpage$pagestring$prev\">« prev</a>";
 		else
 			$pagination .= "<span class=\"disabled\">« prev</span>";	
 		
@@ -851,6 +851,28 @@ function display_peer_status_icon($status) {
 		return "<img src=\"bullet_white.png\" border=\"0\" title=\"status unknown\">";
 		default:
 		return "";
+	}
+}
+
+function display_firmware_update_info($status) {
+
+	if ($status == "current") {
+
+		?><p><table border="0" cellspacing="0" cellpadding="4" width="100%">
+		<tr><td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="check.gif" width="28" height="32"></td>
+		<td bgcolor="#D9DEE8" style="padding-left: 8px">
+		<?=gettext("You are using the most recent beta of AskoziaPBX.");?>
+		</td></tr></table></p><?
+
+	} else if ($status == "update available") { 
+
+		?><p><table border="0" cellspacing="0" cellpadding="4" width="100%">
+	<tr><td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="exclam.gif" width="28" height="32"></td>
+	<td bgcolor="#D9DEE8" style="padding-left: 8px"><strong>
+	<?=gettext("A newer beta version of AskoziaPBX is available!");?></strong><br>
+	<a href="http://askozia.com/pbx" target="_blank"><?=gettext("Update");?></a>
+	</td></tr></table></p><?
+
 	}
 }
 

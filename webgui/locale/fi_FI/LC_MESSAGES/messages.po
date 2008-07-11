@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-08 16:41+0200\n"
+"POT-Creation-Date: 2008-07-09 14:50+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -555,11 +555,8 @@ msgstr " Asterisk loki tallennukset"
 msgid "A valid IP address must be specified."
 msgstr "Kelpaava IP osoite on oltava määritettynä."
 
-msgid "Number of log entries to show must be between 5 and 1000."
-msgstr "Loki tallennuksien määrä jota näytetään on oltava 5 ja 100 välissä."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Näytä loki päinvastaisessa järjestyksessä (uusimmat ylhäällä)"
+msgid "Number of log entries to show must be between 50 and 1000."
+msgstr "Loki tallennuksien määrä jota näytetään on oltava 50 ja 1000 välissä."
 
 msgid "Number of log entries to show:"
 msgstr "Loki tallennuksien määrä:"
@@ -644,9 +641,8 @@ msgstr "Soittosuunnitelma"
 msgid "Applications"
 msgstr "Sovellukset"
 
-#, fuzzy
 msgid "name"
-msgstr "Nimi"
+msgstr "nimi"
 
 msgid "descr"
 msgstr ""
@@ -690,7 +686,6 @@ msgstr "Oleko varma että haluat poistaa tämän puheluryhmän?"
 msgid "delete call group"
 msgstr "poista puheluryhmä"
 
-#, fuzzy
 msgid "add call group"
 msgstr "muokkaa puheluryhmää"
 
@@ -1515,6 +1510,9 @@ msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Omat Sovellukset"
+
+msgid "Dialing Pattern(s)"
+msgstr "Soittokaava(t)"
 
 msgid "An incoming Caller ID override string must be specified."
 msgstr "Sisääntuleva Soittajan Tunnus 'override' tunnus on oltava määritetty."
@@ -2362,9 +2360,6 @@ msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
 msgid "display_phone_access_selector"
 msgstr ""
 
-msgid "Dialing Pattern(s)"
-msgstr "Soittokaava(t)"
-
 msgid "display_provider_dialpattern_editor"
 msgstr ""
 
@@ -2493,6 +2488,12 @@ msgstr ""
 #, php-format
 msgid "% of "
 msgstr "% of "
+
+msgid "You are using the most recent beta of AskoziaPBX."
+msgstr ""
+
+msgid "A newer beta version of AskoziaPBX is available!"
+msgstr ""
 
 msgid "(print)"
 msgstr "(tulosta)"
@@ -3051,3 +3052,6 @@ msgstr "Paketti palautettiin onnistuneesti."
 
 msgid "Package installed successfully."
 msgstr "Paketti asennettiin onnistuneesti."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "Näytä loki päinvastaisessa järjestyksessä (uusimmat ylhäällä)"

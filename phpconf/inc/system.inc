@@ -352,6 +352,8 @@ function system_upgrade_https_certificate() {
 			$config['system']['webgui']['certificate'] = base64_encode($ck['cert']);
 			$config['system']['webgui']['private-key'] = base64_encode($ck['key']);
 			echo "done\n";
+
+			write_config();
 		}
 	}
 }

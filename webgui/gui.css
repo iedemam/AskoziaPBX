@@ -474,8 +474,8 @@ ul#tabnav li.tabact a {
 }
 
 div.pagination {
-	padding: 3px;
-	margin: 3px;
+	margin:3px 0px 10px 0px;
+	padding:0px;
 }
 
 div.pagination a {
@@ -484,6 +484,9 @@ div.pagination a {
 	border: 1px solid #AAAADD;
 	text-decoration: none;
 	color: #000099;
+}
+div.pagination a.leftmost {
+	margin: 2px 2px 0px 0px;
 }
 div.pagination a:hover, div.pagination a:active {
 	border: 1px solid #435370;
@@ -498,8 +501,7 @@ div.pagination span.current {
 	color: #FFF;
 }
 div.pagination span.disabled {
-	padding: 2px 5px 2px 5px;
-	margin: 2px;
-	border: 1px solid #EEE;
-	color: #DDD;
+	padding: 2px 5px;
+	margin: 3px;
+	color: #777777;
 }

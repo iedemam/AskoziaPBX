@@ -42,10 +42,10 @@ function check_firmware_version() {
 		
 	$rfd = @fsockopen("askozia.com", 80, $errno, $errstr, 3);
 	if ($rfd) {
-		$hdr = "POST /vcheck.php HTTP/1.0\r\n";
+		$hdr = "POST /firmwarecheck.php HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
 		$hdr .= "User-Agent: AskoziaPBX-webGUI/1.0\r\n";
-		$hdr .= "Host: askozia.com\r\n";
+		$hdr .= "Host: updates.askozia.com\r\n";
 		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
 		
 		fwrite($rfd, $hdr);
@@ -148,13 +148,13 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	}
 } else {
 	if (!isset($config['system']['disablefirmwarecheck']))
-		$fwinfo = check_firmware_version();
+		$fwstatus = check_firmware_version();
 }
 
 include("fbegin.inc");
 if ($input_errors) print_input_errors($input_errors);
 if ($savemsg) print_info_box($savemsg);
-if ($fwinfo) echo $fwinfo;
+if ($fwstatus) echo display_firmware_update_info($fwstatus);
 
 if (in_array($g['platform'], $no_firmware_update_platforms)) {
 

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-08 16:41+0200\n"
+"POT-Creation-Date: 2008-07-09 14:50+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -535,10 +535,7 @@ msgstr ""
 msgid "A valid IP address must be specified."
 msgstr ""
 
-msgid "Number of log entries to show must be between 5 and 1000."
-msgstr ""
-
-msgid "Show log entries in reverse order (newest entries on top)"
+msgid "Number of log entries to show must be between 50 and 1000."
 msgstr ""
 
 msgid "Number of log entries to show:"
@@ -1419,6 +1416,9 @@ msgstr ""
 msgid "Custom Applications"
 msgstr ""
 
+msgid "Dialing Pattern(s)"
+msgstr ""
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr ""
 
@@ -2205,9 +2205,6 @@ msgstr ""
 msgid "display_phone_access_selector"
 msgstr ""
 
-msgid "Dialing Pattern(s)"
-msgstr ""
-
 msgid "display_provider_dialpattern_editor"
 msgstr ""
 
@@ -2325,6 +2322,12 @@ msgstr ""
 
 #, php-format
 msgid "% of "
+msgstr ""
+
+msgid "You are using the most recent beta of AskoziaPBX."
+msgstr ""
+
+msgid "A newer beta version of AskoziaPBX is available!"
 msgstr ""
 
 msgid "(print)"

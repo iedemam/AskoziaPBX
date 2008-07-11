@@ -42,7 +42,6 @@ if ($_POST['clear']) {
 
 $packages = packages_get_packages();
 
-$sort = isset($config['syslog']['reverse']) ? "-r" : "";
 $nentries = $config['syslog']['nentries'];
 if (!$nentries) {
 	$nentries = 100;
@@ -76,11 +75,9 @@ else {
 	$stop = (($start+$nentries)-1);
 
 if($source == "internal") {
-	//$command = "/usr/sbin/clog $logpath | /usr/bin/tail $sort -n $nentries";
 	$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
 }
 else {
-	//$command = "/usr/bin/tail $sort -n $nentries $logpath";
 	$command = "/usr/bin/sed '$start,$stop!d' $logpath";
 }
 
