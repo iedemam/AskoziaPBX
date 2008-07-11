@@ -46,15 +46,45 @@ if (!$nentries) {
 	$nentries = 100;
 }
 
-$source = "internal";
-$logpath = "/var/log/pbx.log";
-$command = "/usr/sbin/clog $logpath | /usr/bin/tail $sort -n $nentries";	
-
 if (isset($packages['logging']['active'])) {
 	$source = "package";
 	$logpath = $packages['logging']['datapath'] . "/system/pbx.log";
-	$command = "/usr/bin/tail $sort -n $nentries $logpath";
 }
+else {
+	$source = "internal";
+	$logpath = "/var/log/pbx.log";	
+}
+//-------------pagination logic start----------------------
+//XXX This section could me modified into a function, diag_logs.php uses the same code
+
+	$tmp = exec("/usr/bin/wc -l $logpath");
+	$lines = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
+	$pages = ceil($lines[0]/$nentries);
+
+	if($_GET['page']) 
+		$current_page = $_GET['page'];
+	else 
+		$current_page = $pages;
+
+	if($current_page == 0 || $current_page == 1) 
+		$start = 1;
+	else 
+		$start = (($nentries*($current_page-1))+1);
+
+	$stop = (($start+$nentries)-1);
+
+	if($source == "internal") {
+		//$command = "/usr/sbin/clog $logpath | /usr/bin/tail $sort -n $nentries";
+		$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
+	}
+	else {
+		//$command = "/usr/bin/tail $sort -n $nentries $logpath";
+		$command = "/usr/bin/sed '$start,$stop!d' $logpath";
+	}
+
+	$print_pageselector = display_page_selector($current_page, $pages, 12, "diag_logs_pbx.php", "?page=");
+ 
+//---------------pagination logic end----------------------------
 
 exec($command, $logarr);
 
@@ -76,6 +106,11 @@ exec($command, $logarr);
 	</tr>
 	<tr> 
 		<td class="tabcont">
+
+			<?			
+			echo $print_pageselector;
+			?>
+
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
 					<td colspan="2" class="listtopic">Last <?=$nentries;?><?=gettext(" Asterisk log entries");?></td>
@@ -90,6 +125,7 @@ exec($command, $logarr);
 			}
 
 			?></table><?
+			echo $print_pageselector;
 
 		if ($source == "internal") {
 			?><br>

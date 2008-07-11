@@ -45,14 +45,56 @@ if (!$nentries) {
 	$nentries = 100;
 }
 
-$source = "internal";
-$logpath = "/var/log/cdr.log";
+//-------------pagination logic start----------------------
 
 if (isset($logging_pkg['active'])) {
 	$source = "package";
 	$logpath = $logging_pkg['datapath'] . "/asterisk/cdr.db";
+	
+	$query = "select * from cdr";
+	$db = sqlite_open($logpath, 0666, $err);
+	$results = sqlite_query($query, $db);
+	$rows = sqlite_num_rows($results);
+
+	$pages = ceil($rows/$nentries);
+
+	if($_GET['page']) 
+		$current_page = $_GET['page'];
+	else 
+		$current_page = $pages;
+				
+	if($current_page == 0 || $current_page == 1)
+		$start = 0;
+	else
+		$start = ($nentries*($current_page-1));
+				
+	$stop = $nentries;	
+}
+else {
+	$source = "internal";
+	$logpath = "/var/log/cdr.log";
+
+	$tmp = exec("/usr/bin/wc -l $logpath");
+	$lines = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
+	$pages = ceil($lines[0]/$nentries);
+
+	if($_GET['page']) 
+		$current_page = $_GET['page'];
+	else 
+		$current_page = $pages;
+
+	if($current_page == 0 || $current_page == 1)
+		$start = 1;
+	else
+		$start = (($nentries*($current_page-1))+1);
+
+	$stop = (($start+$nentries)-1);
 }
 
+	$print_pageselector = display_page_selector($current_page, $pages, 12, "diag_logs_calls.php", "?page=");
+
+
+//---------------pagination logic end----------------------------
 
 function print_entry($cdr) {
 
@@ -103,12 +145,13 @@ function print_entry($cdr) {
 	echo "</tr>\n";
 }
 
-function dump_clog($logfile, $max) {
+function dump_clog($logfile, $start, $stop) {
 	global $g, $config;
 
 	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $max, $logarr);
-    
+	//exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $max, $logarr);
+    	exec("/usr/sbin/clog $logfile | /usr/bin/sed '$start,$stop!d'", $logarr);
+
 	foreach ($logarr as $logent) {
 		$logent = preg_split("/\s+/", $logent, 6);
 		$cdr = strstr($logent[5], "\"");
@@ -136,11 +179,11 @@ function dump_clog($logfile, $max) {
 	}
 }
 
-function dump_sqlite($logfile, $max) {
+function dump_sqlite($logfile, $start, $stop) {
 	global $g, $config;
 
 	$sor = isset($config['syslog']['reverse']) ? "desc" : "asc";
-	$query = "select * from cdr order by id " . $sor . " limit $max";
+	$query = "select * from cdr order by id " . $sor . " limit $start,$stop";
 
 	$db = sqlite_open($logfile, 0666, $err);
 	$results = sqlite_query($query, $db);
@@ -168,9 +211,14 @@ function dump_sqlite($logfile, $max) {
 	</tr>
 	<tr> 
 		<td class="tabcont">
+
+			<?
+			echo $print_pageselector;
+			?>
+	
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="8" class="listtopic">Last <?=$nentries;?><?=gettext(" Call Records");?></td>
+					<td colspan="8" class="listtopic"><?=gettext("Last ");?><?=$nentries;?><?=gettext(" Call Records");?></td>
 				</tr>
 				<tr valign="top">
 					<td class="listhdrr"><?=gettext("start");?></td>
@@ -184,13 +232,14 @@ function dump_sqlite($logfile, $max) {
 				</tr><?
 
 				if ($source == "internal") {
-					dump_clog($logpath, $nentries);
+					dump_clog($logpath, $start, $stop);
 
 				} else if ($source == "package") {
-					dump_sqlite($logpath, $nentries);
+					dump_sqlite($logpath, $start, $stop);
 				}
 
 			?></table><?
+			echo $print_pageselector;
 
 		if ($source == "internal") {
 			?><br>

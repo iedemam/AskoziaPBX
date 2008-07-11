@@ -28,6 +28,106 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+function display_page_selector($page, $totalitems, $limit, $targetpage, $pagestring) {	
+		
+	$prev = $page - 1;		//previous page is page - 1
+	$next = $page + 1;		//next page is page + 1
+	$lpm1 = $totalitems - 1;	//last page minus 1
+	
+	$pagination = "";
+	//if more than one page
+	if($totalitems > 1)
+	{	
+		$pagination .= "<div class=\"pagination\"";
+		if($margin || $padding)
+		{
+			$pagination .= " style=\"";
+			if($margin)
+				$pagination .= "margin: $margin;";
+			if($padding)
+				$pagination .= "padding: $padding;";
+			$pagination .= "\"";
+		}
+		$pagination .= ">";
+
+		//previous button
+		if ($page > 1) 
+			$pagination .= "<a href=\"$targetpage$pagestring$prev\">« prev</a>";
+		else
+			$pagination .= "<span class=\"disabled\">« prev</span>";	
+		
+		//pages	
+		if ($totalitems < $limit)	//not enough pages to bother breaking it up
+		{	
+			for ($i = 1; $i <= $totalitems; $i++)
+			{
+				if ($i == $page)
+					$pagination .= "<span class=\"current\">$i</span>";
+				else
+					$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";
+			}
+		}
+		elseif($totalitems >= $limit)	//enough pages to hide some
+		{
+			//close to beginning; only hide later pages
+			if($page < ($limit - 5))		
+			{
+				for ($i = 1; $i < ($limit - 4); $i++)
+				{
+					if ($i == $page)
+						$pagination .= "<span class=\"current\">$i</span>";
+					else
+						$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";
+				}
+				$pagination .= "...";
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . $lpm1 . "\">$lpm1</a>";
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . $totalitems . "\">$totalitems</a>";
+			}
+			//close to end; only hide early pages
+			else if($page > ($totalitems - ($limit - 6))) 
+			{
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . "1\">1</a>";
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . "2\">2</a>";
+				$pagination .= "...";
+				for ($i = ($totalitems - ($limit - 6)); $i <= $totalitems; $i++)
+				{
+					if ($i == $page)
+						$pagination .= "<span class=\"current\">$i</span>";
+					else
+						$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";	
+				}
+			}
+			//in middle; hide some front and some back
+			else
+			{
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . "1\">1</a>";
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . "2\">2</a>";
+				$pagination .= "...";
+				for ($i = $page - 3; $i <= $page + 3; $i++)
+				{
+					if ($i == $page)
+						$pagination .= "<span class=\"current\">$i</span>";
+					else
+						$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";
+				}
+				$pagination .= "...";
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . $lpm1 . "\">$lpm1</a>";
+				$pagination .= "<a href=\"" . $targetpage . $pagestring . $totalitems . "\">$totalitems</a>";		
+			}
+
+		}
+		
+		//next button
+		if ($page < $i - 1) 
+			$pagination .= "<a href=\"" . $targetpage . $pagestring . $next . "\">next »</a>";
+		else
+			$pagination .= "<span class=\"disabled\">next »</span>";
+		$pagination .= "</div>\n";
+	}
+	
+	return $pagination;
+
+}
 
 function display_gui_language_selector($current_language) {
 
