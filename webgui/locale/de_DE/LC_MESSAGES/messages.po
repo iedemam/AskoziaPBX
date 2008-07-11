@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 14:50+0200\n"
+"POT-Creation-Date: 2008-07-09 15:23+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -490,16 +490,13 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-msgid "Last "
-msgstr ""
-
-msgid " system log entries"
+msgid "System log entries"
 msgstr ""
 
 msgid "Clear Log"
 msgstr ""
 
-msgid " Call Records"
+msgid "Call Records"
 msgstr ""
 
 msgid "start"
@@ -529,7 +526,7 @@ msgstr ""
 msgid "Clear log"
 msgstr ""
 
-msgid " Asterisk log entries"
+msgid "Asterisk log entries"
 msgstr ""
 
 msgid "A valid IP address must be specified."

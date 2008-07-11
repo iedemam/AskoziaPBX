@@ -215,7 +215,7 @@ function dump_sqlite($logfile, $start, $stop) {
 	
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="8" class="listtopic"><?=gettext("Last ");?><?=$nentries;?><?=gettext(" Call Records");?></td>
+					<td colspan="8" class="listtopic"><?=gettext("Call Records");?></td>
 				</tr>
 				<tr valign="top">
 					<td class="listhdrr"><?=gettext("start");?></td>
@@ -235,7 +235,11 @@ function dump_sqlite($logfile, $start, $stop) {
 					dump_sqlite($logpath, $start, $stop);
 				}
 
-			?></table><?
+				?><tr> 
+					<td class="list" colspan="8" height="12">&nbsp;</td>
+				</tr>
+			</table><?
+
 			echo $print_pageselector;
 
 		if ($source == "internal") {

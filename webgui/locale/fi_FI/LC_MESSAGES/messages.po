@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 14:50+0200\n"
+"POT-Creation-Date: 2008-07-09 15:23+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -510,17 +510,14 @@ msgstr "Puhelut"
 msgid "Settings"
 msgstr "Asetukset"
 
-msgid "Last "
-msgstr "Viimeiset "
-
-msgid " system log entries"
-msgstr " järjestelmän loki tallennukset"
+msgid "System log entries"
+msgstr "Järjestelmän loki tallennukset"
 
 msgid "Clear Log"
 msgstr "Tyhjennä loki"
 
-msgid " Call Records"
-msgstr " Puhelutiedot"
+msgid "Call Records"
+msgstr "Puhelutiedot"
 
 msgid "start"
 msgstr "aloita"
@@ -549,8 +546,8 @@ msgstr ""
 msgid "Clear log"
 msgstr "Tyhjennä loki"
 
-msgid " Asterisk log entries"
-msgstr " Asterisk loki tallennukset"
+msgid "Asterisk log entries"
+msgstr "Asterisk loki tallennukset"
 
 msgid "A valid IP address must be specified."
 msgstr "Kelpaava IP osoite on oltava määritettynä."

@@ -111,7 +111,7 @@ exec($command, $logarr);
 
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="2" class="listtopic"><?=gettext("Last ");?><?=$nentries;?><?=gettext(" system log entries");?></td>
+					<td colspan="2" class="listtopic"><?=gettext("System log entries");?></td>
 				</tr><?
 
 			foreach ($logarr as $logent) {
@@ -122,7 +122,11 @@ exec($command, $logarr);
 				</tr><?
 			}
 
-			?></table><?
+				?><tr> 
+					<td class="list" colspan="2" height="12">&nbsp;</td>
+				</tr>
+			</table><?
+
 			echo $print_pageselector;
 
 		if ($source == "internal") {
