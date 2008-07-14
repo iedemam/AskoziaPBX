@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<package>
-	<name>logging</name>
-	<descr>Save log files to permanent storage.</descr>
-	<version>1.0</version>
-</package>
