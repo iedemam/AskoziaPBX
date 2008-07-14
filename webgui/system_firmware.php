@@ -37,15 +37,15 @@ require("guiconfig.inc");
    returns any HTML message it gets from the server */
 function check_firmware_version() {
 	global $g;
-	$post = "platform=" . rawurlencode($g['fullplatform']) . 
+	$post = "&check=pbxfirmware&platform=" . rawurlencode($g['fullplatform']) . 
 		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
 		
-	$rfd = @fsockopen("askozia.com", 80, $errno, $errstr, 3);
+	$rfd = @fsockopen("downloads.askozia.com", 80, $errno, $errstr, 3);
 	if ($rfd) {
-		$hdr = "POST /firmwarecheck.php HTTP/1.0\r\n";
+		$hdr = "POST /index.php HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
 		$hdr .= "User-Agent: AskoziaPBX-webGUI/1.0\r\n";
-		$hdr .= "Host: updates.askozia.com\r\n";
+		$hdr .= "Host: downloads.askozia.com\r\n";
 		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
 		
 		fwrite($rfd, $hdr);

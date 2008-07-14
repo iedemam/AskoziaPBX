@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 15:23+0200\n"
+"POT-Creation-Date: 2008-07-10 11:42+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2321,10 +2321,19 @@ msgstr ""
 msgid "% of "
 msgstr ""
 
-msgid "You are using the most recent beta of AskoziaPBX."
+msgid "You are using the most recent version of AskoziaPBX."
 msgstr ""
 
-msgid "A newer beta version of AskoziaPBX is available!"
+msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
+msgstr ""
+
+msgid "A newer version of AskoziaPBX is available!"
+msgstr ""
+
+msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
+msgstr ""
+
+msgid "Your version of AskoziaPBX was not recognized."
 msgstr ""
 
 msgid "(print)"

@@ -856,22 +856,47 @@ function display_peer_status_icon($status) {
 
 function display_firmware_update_info($status) {
 
-	if ($status == "current") {
+	if ($status == "current release") {
 
-		?><p><table border="0" cellspacing="0" cellpadding="4" width="100%">
-		<tr><td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="check.gif" width="28" height="32"></td>
-		<td bgcolor="#D9DEE8" style="padding-left: 8px">
-		<?=gettext("You are using the most recent beta of AskoziaPBX.");?>
-		</td></tr></table></p><?
+		$image = "check.gif";
+		$message = gettext("You are using the most recent version of AskoziaPBX.");
 
-	} else if ($status == "update available") { 
+	} else if ($status == "current beta") {
 
-		?><p><table border="0" cellspacing="0" cellpadding="4" width="100%">
-	<tr><td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="exclam.gif" width="28" height="32"></td>
-	<td bgcolor="#D9DEE8" style="padding-left: 8px"><strong>
-	<?=gettext("A newer beta version of AskoziaPBX is available!");?></strong><br>
-	<a href="http://askozia.com/pbx" target="_blank"><?=gettext("Update");?></a>
-	</td></tr></table></p><?
+		$image = "check.gif";
+		$message = gettext("You are using the most recent <strong>beta</strong> of AskoziaPBX.");
+
+	} else if ($status == "release update available") { 
+	
+		$image = "exclam.gif";
+		$message = gettext("A newer version of AskoziaPBX is available!") .
+					"<br><a href=\"http://askozia.com/pbx\" target=\"_blank\">" .
+					gettext("Update") . "</a>";
+
+	} else if ($status == "beta update available") { 
+
+		$image = "exclam.gif";
+		$message = gettext("A newer <strong>beta</strong> version of AskoziaPBX is available!") .
+					"<br><a href=\"http://askozia.com/pbx\" target=\"_blank\">" .
+					gettext("Update") . "</a>";
+
+	} else if ($status == "unknown") {
+
+		$image = "exclam.gif";
+		$message = gettext("Your version of AskoziaPBX was not recognized.");
+
+	} 
+
+	if ($image && $message) {
+
+		?><p>
+			<table border="0" cellspacing="0" cellpadding="4" width="100%">
+				<tr>
+					<td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="<?=$image;?>" width="28" height="32"></td>
+					<td bgcolor="#D9DEE8" style="padding-left: 8px"><?=$message;?></td>
+				</tr>
+			</table>
+		</p><?
 
 	}
 }
