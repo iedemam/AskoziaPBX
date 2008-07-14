@@ -59,6 +59,7 @@ sbin/umount
 # contents of /usr/bin
 usr/bin/du
 usr/bin/file
+usr/bin/grep
 usr/bin/gzip:usr/bin/gunzip
 usr/bin/hexdump
 usr/bin/killall
