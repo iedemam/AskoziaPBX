@@ -398,7 +398,7 @@ function build_hostapd() {
 	_exec("cd /usr/src/usr.sbin/wpa/hostapd; make clean; make; make install");	
 }
 
-function build_packages() {
+function build_srcpackages() {
 
 	build_php();
 	build_msmtp();
@@ -416,7 +416,7 @@ function build_ports() {
 
 function build_everything() {
 
-	build_packages();
+	build_srcpackages();
 	build_ports();
 	build_syslogd();
 	build_clog();
@@ -938,7 +938,6 @@ function populate_cgi($image_name) {
 function populate_phpcode($image_name) {
 	populate_phpconf($image_name);
 	populate_webgui($image_name);
-	populate_pkgs($image_name);
 }
 
 function populate_phpconf($image_name) {
@@ -947,12 +946,6 @@ function populate_phpconf($image_name) {
 	_exec("cp -p {$dirs['etc']}/rc* $image_name/rootfs/etc/");
 	_exec("cp {$dirs['phpconf']}/rc* $image_name/rootfs/etc/");
 	_exec("cp {$dirs['phpconf']}/inc/* $image_name/rootfs/etc/inc/");
-}
-
-function populate_pkgs($image_name) {
-	global $dirs;
-
-	_exec("cp -R {$dirs['pkgs']}/ $image_name/rootfs/etc/pkgs");
 }
 
 function populate_webgui($image_name) {
@@ -1084,7 +1077,6 @@ function populate_everything($image_name) {
 	populate_sounds($image_name);
 	populate_tools($image_name);
 	populate_phpconf($image_name);
-	populate_pkgs($image_name);
 	populate_cgi($image_name);
 	populate_jquery($image_name);
 	populate_webgui($image_name);
