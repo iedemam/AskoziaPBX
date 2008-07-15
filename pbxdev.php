@@ -94,7 +94,6 @@ $dirs['asterisk_modules']	= $dirs['pwd'] . "/build/asterisk_modules";
 $dirs['tools']				= $dirs['pwd'] . "/build/tools";
 $dirs['cgi']				= $dirs['pwd'] . "/build/cgi";
 $dirs['etc']				= $dirs['pwd'] . "/etc";
-$dirs['pkgs']				= $dirs['pwd'] . "/packages";
 $dirs['phpconf']			= $dirs['pwd'] . "/phpconf";
 $dirs['webgui']				= $dirs['pwd'] . "/webgui";
 $dirs['files']				= $dirs['pwd'] . "/files";
