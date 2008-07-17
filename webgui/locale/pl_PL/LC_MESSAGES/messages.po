@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-11 22:35+0200\n"
+"POT-Creation-Date: 2008-07-16 21:14+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -407,9 +407,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "ISDN Interface"
 msgstr ""
 
@@ -801,6 +798,9 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Upload:"
