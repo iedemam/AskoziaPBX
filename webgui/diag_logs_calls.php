@@ -45,56 +45,46 @@ if (!$nentries) {
 	$nentries = 100;
 }
 
-//-------------pagination logic start----------------------
+//-------------pagination/filter logic start----------------------
 
 if (isset($logging_pkg['active'])) {
 	$source = "package";
 	$logpath = $logging_pkg['datapath'] . "/asterisk/cdr.db";
 	
-	$query = "select * from cdr";
-	$db = sqlite_open($logpath, 0666, $err);
-	$results = sqlite_query($query, $db);
-	$rows = sqlite_num_rows($results);
+	if($_GET['filter']) {
+		$filter = addslashes($_GET['filter']);
+	}
 
-	$pages = ceil($rows/$nentries);
+	$pages = display_calculate_pages_sqlite($filter, $logpath, $nentries);
 
-	if($_GET['page']) 
-		$current_page = $_GET['page'];
-	else 
-		$current_page = $pages;
-				
-	if($current_page == 0 || $current_page == 1)
-		$start = 0;
-	else
-		$start = ($nentries*($current_page-1));
-				
-	$stop = $nentries;	
+	if(!$pages) {
+		$message = gettext("No matches found.");
+	}
+
+	$current_page = display_calculate_current_page($pages);
+	$query = display_get_query($start, $stop, $nentries, $current_page, $filter);
 }
 else {
 	$source = "internal";
 	$logpath = "/var/log/cdr.log";
 
-	$tmp = exec("/usr/bin/wc -l $logpath");
-	$lines = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
-	$pages = ceil($lines[0]/$nentries);
+	if($_GET['filter']) {
+		$filter = $_GET['filter'];
+	}
 
-	if($_GET['page']) 
-		$current_page = $_GET['page'];
-	else 
-		$current_page = $pages;
+	$pages = display_calculate_pages($filter, $logpath, $source, $nentries);
 
-	if($current_page == 0 || $current_page == 1)
-		$start = 1;
-	else
-		$start = (($nentries*($current_page-1))+1);
+	if(!$pages) {
+		$message = gettext("No matches found.");
+	}
 
-	$stop = (($start+$nentries)-1);
+	$current_page = display_calculate_current_page($pages);
+	$command = display_get_command($current_page, $nentries, $source, $filter, $logpath);
 }
 
-	$print_pageselector = display_page_selector($current_page, $pages, 12, "diag_logs_calls.php", "?page=");
+$print_pageselector = display_page_selector($current_page, $pages, 12, $filter);
 
-
-//---------------pagination logic end----------------------------
+//---------------pagination/filter logic end----------------------------
 
 function print_entry($cdr) {
 
@@ -145,10 +135,10 @@ function print_entry($cdr) {
 	echo "</tr>\n";
 }
 
-function dump_clog($logfile, $start, $stop) {
+function dump_clog($command) {
 	global $g, $config;
 
-	exec("/usr/sbin/clog $logfile | /usr/bin/sed '$start,$stop!d'", $logarr);
+	exec($command, $logarr);
 
 	foreach ($logarr as $logent) {
 		$logent = preg_split("/\s+/", $logent, 6);
@@ -177,11 +167,9 @@ function dump_clog($logfile, $start, $stop) {
 	}
 }
 
-function dump_sqlite($logfile, $start, $stop) {
+function dump_sqlite($logfile, $query) {
 	global $g, $config;
-
-	$query = "select * from cdr order by id asc limit $start,$stop";
-
+	
 	$db = sqlite_open($logfile, 0666, $err);
 	$results = sqlite_query($query, $db);
 
@@ -192,6 +180,18 @@ function dump_sqlite($logfile, $start, $stop) {
 
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_filter_textbox("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_filter_textbox("ready");?>
+
+	});
+
+//-->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -215,7 +215,21 @@ function dump_sqlite($logfile, $start, $stop) {
 	
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="8" class="listtopic"><?=gettext("Call Records");?></td>
+					<td colspan="8" class="listtopic">
+					<form action="diag_logs_calls.php" method="get" id="filtering" style="display:inline">
+						<div class="align_right">
+							<label for="filter" style="display:none"> <?=gettext("filter");?></label>
+							<input name="filter" id="filter" type="text" width="20" class="filterbox" value="<?=$filter;?>">
+							<?
+							if(!$filter)
+								echo "<input type='image' src='set_filter.png' name='set' class='verticalalign'>";
+							else
+								echo "<a href='?'><img class='verticalalign' src='remove_filter.png' name='erase'></a>";
+							?>
+						</div>
+					</form>
+					<div style="padding-top:2px"><?=gettext("Call Records");?></div>
+					</td>
 				</tr>
 				<tr valign="top">
 					<td class="listhdrr"><?=gettext("start");?></td>
@@ -229,14 +243,19 @@ function dump_sqlite($logfile, $start, $stop) {
 				</tr><?
 
 				if ($source == "internal") {
-					dump_clog($logpath, $start, $stop);
+					dump_clog($command);
 
 				} else if ($source == "package") {
-					dump_sqlite($logpath, $start, $stop);
+					dump_sqlite($logpath, $query);
 				}
 
 				?><tr> 
-					<td class="list" colspan="8" height="12">&nbsp;</td>
+					<?
+					if($message)
+						echo "<td class='filter_info_message' colspan='8' height='12'>" . gettext($message) . "</td>";
+					else
+						echo "<td class='list' colspan='8' height='12'>&nbsp;</td>";
+					?>
 				</tr>
 			</table><?
 

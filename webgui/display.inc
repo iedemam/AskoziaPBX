@@ -28,11 +28,118 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-function display_page_selector($page, $totalitems, $limit, $targetpage, $pagestring) {	
+//------------- pagination/filter logic -------------
+
+function display_calculate_pages_sqlite($filter=null, $logpath, $nentries) {
+
+	if($filter) {
+		 $query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%'";
+
+		$db = sqlite_open($logpath, 0666, $err);
+		$results = sqlite_query($query, $db);
+		$rows = sqlite_num_rows($results);
+		$pages = ceil($rows/$nentries);
+	}
+	else {
+		$query = "select * from cdr";
+		$db = sqlite_open($logpath, 0666, $err);
+		$results = sqlite_query($query, $db);
+		$rows = sqlite_num_rows($results);
+		$pages = ceil($rows/$nentries);
+	}
+
+	return $pages;
+}
+
+function display_get_query($start, $stop, $nentries, $current_page, $filter=null) {		
+	
+	if($current_page == 0 || $current_page == 1) {
+		$start = 0;
+	}
+	else {
+		$start = ($nentries*($current_page-1));
+	}		
+	$stop = $nentries;	
+
+	
+	if($filter) {
+		$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' LIMIT $start,$stop";
+	}
+	else {
+		$query = "SELECT * FROM cdr LIMIT $start,$stop";
+	}
+
+	return $query;
+}
+
+function display_calculate_pages($filter=null, $logpath, $source, $nentries) {
+
+	if($filter) {
+		if($source == "internal") {
+			$lines = exec("/usr/sbin/clog $logpath | /usr/bin/grep -i $filter | /usr/bin/wc -l");
+		}
+		else {
+			$lines = exec("/usr/bin/grep -i $filter $logpath | /usr/bin/wc -l");
+		}
+		$pages = ceil($lines/$nentries);
+	}
+	else {
+		$tmp = exec("/usr/bin/wc -l $logpath");
+		$lines = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
+		$pages = ceil($lines[0]/$nentries);
+	}
+	return $pages;
+}
+
+function display_calculate_current_page($pages) {
+	
+	if($_GET['page']) {
+		$current_page = $_GET['page'];
+	}
+	else { 
+		$current_page = $pages;
+	}
+
+	return $current_page;
+}
+
+function display_get_command($current_page, $nentries, $source, $filter=null, $logpath) {
+
+	if($current_page == 0 || $current_page == 1) {
+		$start = 1;
+	}
+	else {
+		$start = (($nentries*($current_page-1))+1);
+	}
+
+	$stop = (($start+$nentries)-1);
+
+	if($source == "internal") {
+		if($filter)
+			$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/sed '$start,$stop!d'";
+		else 
+			$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
+	}
+	else {
+		if($filter)
+			$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/sed '$start,$stop!d'";
+		else
+			$command = "/usr/bin/sed '$start,$stop!d' $logpath";
+	}
+	
+	return $command;
+}
+
+function display_page_selector($page, $totalitems, $limit, $filtering=null) {
 		
+	if($filtering) {
+		$filtering = "&filter=".$filtering;
+	}
+
 	$prev = $page - 1;		//previous page is page - 1
 	$next = $page + 1;		//next page is page + 1
 	$lpm1 = $totalitems - 1;	//last page minus 1
+	$pagestring = "?page=";
 	
 	$pagination = "";
 	//if more than one page
@@ -42,29 +149,35 @@ function display_page_selector($page, $totalitems, $limit, $targetpage, $pagestr
 		if($margin || $padding)
 		{
 			$pagination .= " style=\"";
-			if($margin)
+			if($margin) {
 				$pagination .= "margin: $margin;";
-			if($padding)
+			}
+			if($padding) {
 				$pagination .= "padding: $padding;";
+			}
 			$pagination .= "\"";
 		}
 		$pagination .= ">";
 
 		//previous button
-		if ($page > 1) 
-			$pagination .= "<a class=\"leftmost\" href=\"$targetpage$pagestring$prev\">« prev</a>";
-		else
-			$pagination .= "<span class=\"disabled\">« prev</span>";	
-		
+		if ($page > 1) {
+			$pagination .= "<a class=\"leftmost\" href=\"$pagestring$prev$filtering\"> « </a>";
+		}
+		else {
+			$pagination .= "<span class=\"disabled\"> « </span>";	
+		}
+
 		//pages	
 		if ($totalitems < $limit)	//not enough pages to bother breaking it up
 		{	
 			for ($i = 1; $i <= $totalitems; $i++)
 			{
-				if ($i == $page)
+				if ($i == $page) {
 					$pagination .= "<span class=\"current\">$i</span>";
-				else
-					$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";
+				}
+				else {
+					$pagination .= "<a href=\"" . $pagestring . $i . $filtering . "\">$i</a>";
+				}
 			}
 		}
 		elseif($totalitems >= $limit)	//enough pages to hide some
@@ -74,60 +187,70 @@ function display_page_selector($page, $totalitems, $limit, $targetpage, $pagestr
 			{
 				for ($i = 1; $i < ($limit - 4); $i++)
 				{
-					if ($i == $page)
+					if ($i == $page) {
 						$pagination .= "<span class=\"current\">$i</span>";
-					else
-						$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";
+					}
+					else {
+						$pagination .= "<a href=\"" . $pagestring . $i . $filtering . "\">$i</a>";
+					}
 				}
 				$pagination .= "...";
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . $lpm1 . "\">$lpm1</a>";
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . $totalitems . "\">$totalitems</a>";
+				$pagination .= "<a href=\"" . $pagestring . $lpm1 . $filtering . "\">$lpm1</a>";
+				$pagination .= "<a href=\"" . $pagestring . $totalitems . $filtering . "\">$totalitems</a>";
 			}
 			//close to end; only hide early pages
 			else if($page > ($totalitems - ($limit - 6))) 
 			{
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . "1\">1</a>";
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . "2\">2</a>";
+				$pagination .= "<a href=\"" . $pagestring . "1" . $filtering . "\">1</a>";
+				$pagination .= "<a href=\"" . $pagestring . "2" . $filtering . "\">2</a>";
 				$pagination .= "...";
 				for ($i = ($totalitems - ($limit - 6)); $i <= $totalitems; $i++)
 				{
-					if ($i == $page)
+					if ($i == $page) {
 						$pagination .= "<span class=\"current\">$i</span>";
-					else
-						$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";	
+					}
+					else {
+						$pagination .= "<a href=\"" . $pagestring . $i . $filtering . "\">$i</a>";
+					}
 				}
 			}
 			//in middle; hide some front and some back
 			else
 			{
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . "1\">1</a>";
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . "2\">2</a>";
+				$pagination .= "<a href=\"" . $pagestring . "1" . $filtering . "\">1</a>";
+				$pagination .= "<a href=\"" . $pagestring . "2" . $filtering . "\">2</a>";
 				$pagination .= "...";
 				for ($i = $page - 3; $i <= $page + 3; $i++)
 				{
-					if ($i == $page)
+					if ($i == $page) {
 						$pagination .= "<span class=\"current\">$i</span>";
-					else
-						$pagination .= "<a href=\"" . $targetpage . $pagestring . $i . "\">$i</a>";
+					}
+					else {
+						$pagination .= "<a href=\"" . $pagestring . $i . $filtering . "\">$i</a>";
+					}
 				}
 				$pagination .= "...";
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . $lpm1 . "\">$lpm1</a>";
-				$pagination .= "<a href=\"" . $targetpage . $pagestring . $totalitems . "\">$totalitems</a>";		
+				$pagination .= "<a href=\"" . $pagestring . $lpm1 . $filtering . "\">$lpm1</a>";
+				$pagination .= "<a href=\"" . $pagestring . $totalitems . $filtering . "\">$totalitems</a>";	
 			}
 
 		}
 		
 		//next button
-		if ($page < $i - 1) 
-			$pagination .= "<a href=\"" . $targetpage . $pagestring . $next . "\">next »</a>";
-		else
-			$pagination .= "<span class=\"disabled\">next »</span>";
+		if ($page < $i - 1) {
+			$pagination .= "<a href=\"" . $pagestring . $next . $filtering . "\"> » </a>";
+		}
+		else {
+			$pagination .= "<span class=\"disabled\"> » </span>";
+		}
 		$pagination .= "</div>\n";
 	}
 	
 	return $pagination;
 
 }
+
+//------------------------ pagination/filter end ------------------------------
 
 function display_gui_language_selector($current_language) {
 
@@ -172,7 +295,7 @@ function display_audio_codec_selector($enabled_codecs) {
 	
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Audio Codecs");?></td>
-		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
 			<ul id="ace" class="ace" style="min-height:50px">
 			<? foreach ($enabled_codecs as $codec): ?>
 				<? if (array_key_exists($codec, $audio_codecs)): ?>
@@ -198,7 +321,7 @@ function display_video_codec_selector($enabled_codecs) {
 	
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Video Codecs");?></td>
-		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
 			<ul id="vce" class="vce" style="min-height:50px">
 				<? foreach ($enabled_codecs as $codec): ?>
 					<? if (array_key_exists($codec, $video_codecs)): ?>
@@ -239,7 +362,7 @@ function display_callgroup_member_selector($current_members) {
 	
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Group Members");?></td>
-		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Members");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
+		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Members");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
 			<ul id="gme" class="gme" style="min-height:50px"><? 
 			
 			foreach ($current_members as $member) {
@@ -291,7 +414,7 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 			
 			// multiple instances don't need help for every instance
 			if (!$idprefix) {				
-				?><span class="vexpl"><?=gettext($help[$help_language]["display_incoming_extension_selector"]); ?></span><?
+				?><span class="vexpl"><?=gettext("Enter a pattern or a phone number and select a destination extension. To ring multiple phones, simply define them with the same pattern. If a phone number is entered, it will used as the \"read back\" number on unanswered calls. If nothing is entered, all calls will be directed to the destination extension.<br>\n <ul>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters</li>\n \t<li><strong>!</strong> - matches zero or more characters</li>\n </ul>\n");?></span><?
 			}			
 
 		?></td>
@@ -433,7 +556,7 @@ function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan
 				echo "selected"; ?>
 			><?=sprintf("%0.1f\n", $i);?></option>
 			<? endfor; ?>
-			</select>&nbsp;transmit
+			</select>&nbsp;<?=gettext("transmit");?>
 			<br><span class="vexpl"><?=gettext("Some analog connections may need adjustment to achieve an acceptable audio level. Adjust the receive and transmit gain in decibels to amplify or quiet the line.");?></span>
 		</td>
 	</tr><?
@@ -528,7 +651,7 @@ function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=fal
 		
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_phone_access_selector"]); ?></span><?
+			?><br><span class="vexpl"><?=gettext("Checked phones will have access to this provider."); ?></span><?
 		}
 		
 		?></td>
@@ -567,7 +690,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 			
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_provider_dialpattern_editor"]); ?></span><?
+			?><br><span class="vexpl"><?=gettext("Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\"). If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n <ul>\n \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n </ul>\n");?></span><?
 		}
 		
 		?></td>
@@ -697,7 +820,7 @@ function display_application_logic_editor($current_appcommands, $colspan, $idpre
 
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_application_logic_editor"]); ?></span><?
+			?><br><span class="vexpl"><?=gettext("Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n 2,Echo()\n 3,Hangup()\n </pre> <p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"); ?></span><?
 		}
 
 		?></td>
@@ -759,7 +882,7 @@ function display_manual_attributes_editor($current_manual, $colspan, $idprefix=f
 
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext($help[$help_language]["display_manual_attributes_editor"]); ?></span><?
+			?><br><span class="vexpl"><?=gettext("Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes."); ?></span><?
 		}
 
 		?></td>

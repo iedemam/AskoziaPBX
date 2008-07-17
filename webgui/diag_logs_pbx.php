@@ -53,40 +53,40 @@ else {
 	$source = "internal";
 	$logpath = "/var/log/pbx.log";	
 }
-//-------------pagination logic start----------------------
-//XXX This section could me modified into a function, diag_logs.php uses the same code
 
-	$tmp = exec("/usr/bin/wc -l $logpath");
-	$lines = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
-	$pages = ceil($lines[0]/$nentries);
+//---------------pagination/filter logic start----------------------------
 
-	if($_GET['page']) 
-		$current_page = $_GET['page'];
-	else 
-		$current_page = $pages;
+if($_GET['filter']) {
+	$filter = $_GET['filter'];
+}
+$pages = display_calculate_pages($filter, $logpath, $source, $nentries);
 
-	if($current_page == 0 || $current_page == 1) 
-		$start = 1;
-	else 
-		$start = (($nentries*($current_page-1))+1);
+if(!$pages) {
+	$message = gettext("No matches found.");
+}
 
-	$stop = (($start+$nentries)-1);
+$current_page = display_calculate_current_page($pages);
+$command = display_get_command($current_page, $nentries, $source, $filter, $logpath);
+$print_pageselector = display_page_selector($current_page, $pages, 12, $filter);
 
-	if($source == "internal") {
-		$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
-	}
-	else {
-		$command = "/usr/bin/sed '$start,$stop!d' $logpath";
-	}
-
-	$print_pageselector = display_page_selector($current_page, $pages, 12, "diag_logs_pbx.php", "?page=");
- 
-//---------------pagination logic end----------------------------
+//---------------pagination/filter logic end----------------------------
 
 exec($command, $logarr);
 
 ?>
 <?php include("fbegin.inc"); ?>
+<script type="text/JavaScript">
+<!--
+	<?=javascript_filter_textbox("functions");?>
+
+	jQuery(document).ready(function(){
+
+		<?=javascript_filter_textbox("ready");?>
+
+	});
+
+//-->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -110,7 +110,21 @@ exec($command, $logarr);
 
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
-					<td colspan="2" class="listtopic"><?=gettext("Asterisk log entries");?></td>
+					<td colspan="2" class="listtopic">
+					<form action="diag_logs_pbx.php" method="get" id="filtering" style="display:inline">
+						<div class="align_right">
+							<label for="filter" style="display:none"> <?=gettext("filter");?></label>
+							<input name="filter" id="filter" type="text" width="20" class="filterbox" value="<?=$filter;?>">
+							<?
+							if(!$filter)
+								echo "<input type='image' src='set_filter.png' name='set' class='verticalalign'>";
+							else
+								echo "<a href='?'><img class='verticalalign' src='remove_filter.png' name='erase'></a>";
+							?>
+						</div>
+					</form>
+					<div style="padding-top:2px"><?=gettext("Asterisk log entries");?></div>
+					</td>
 				</tr><?
 
 			foreach ($logarr as $logent) {
@@ -122,7 +136,12 @@ exec($command, $logarr);
 			}
 
 				?><tr> 
-					<td class="list" colspan="2" height="12">&nbsp;</td>
+					<?
+					if($message)
+						echo "<td class='filter_info_message' colspan='2' height='12'>" . gettext($message) . "</td>";
+					else
+						echo "<td class='list' colspan='2' height='12'>&nbsp;</td>";
+					?>
 				</tr>
 			</table><?
 

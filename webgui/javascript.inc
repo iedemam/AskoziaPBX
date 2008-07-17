@@ -211,4 +211,39 @@ function javascript_advanced_settings($part) {
 	<? endif;
 }
 
+function javascript_filter_textbox($part) {
+
+	if ($part == "functions") : ?>
+
+	<? elseif ($part == "ready") : ?>
+
+	var filter_text = jQuery('#filtering label').remove().text();
+
+	if(jQuery('#filter').val() != "") {
+		jQuery('#filter').attr("disabled","disabled");
+	}
+
+	if(jQuery('#filter').val() == "") {
+		jQuery('#filter').addClass('placeholder').val(filter_text).focus(function() {
+	
+			if(this.value == filter_text) {
+				jQuery(this).removeClass('placeholder').val('');
+			};
+	
+		}).blur(function() {
+			
+			if(this.value == '') {
+				jQuery(this).addClass('placeholder').val(filter_text);
+			};
+		});
+	}
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_filter_textbox()!
+
+	<? endif;
+
+}
+
 ?>
