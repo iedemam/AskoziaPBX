@@ -396,7 +396,6 @@ function display_callgroup_member_selector($current_members) {
 }
 
 function display_incoming_extension_selector($colspan, $idprefix=false) {
-	global $help, $help_language;
 	
 	$table_id = $idprefix ? $idprefix . "_incoming_extension_selector" : "incoming_extension_selector";
 	$row_id = $idprefix ? $idprefix . "_incoming_extension_selector_last" : "incoming_extension_selector_last";
@@ -619,7 +618,6 @@ function display_provider_access_selector($current_providers, $current_outboundu
 }
 
 function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=false) {
-	global $help, $help_language;
 	
 	$a_phones = pbx_get_phones();
 
@@ -659,7 +657,6 @@ function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=fal
 }
 
 function display_provider_dialpattern_editor($current_patterns, $colspan, $idprefix=false) {
-	global $help, $help_language;
 	
 	$n = count($current_patterns);
 	if ($n == 0) {
@@ -789,7 +786,6 @@ function display_call_and_busy_limit_selector($current_calllimit, $current_busyl
 }
 
 function display_application_logic_editor($current_appcommands, $colspan, $idprefix=false) {
-	global $help, $help_language;
 
 	$n = count($current_appcommands);
 	if ($n < 20) {
@@ -851,7 +847,6 @@ function display_advanced_settings_end() {
 }
 
 function display_manual_attributes_editor($current_manual, $colspan, $idprefix=false) {
-	global $help, $help_language;
 
 	$n = count($current_manual);
 	if ($n < 5) {
@@ -1003,12 +998,7 @@ function display_firmware_update_info($status) {
 					"<br><a href=\"http://askozia.com/pbx\" target=\"_blank\">" .
 					gettext("Update") . "</a>";
 
-	} else if ($status == "unknown") {
-
-		$image = "exclam.gif";
-		$message = gettext("Your version of AskoziaPBX was not recognized.");
-
-	} 
+	}
 
 	if ($image && $message) {
 
