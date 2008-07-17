@@ -1029,6 +1029,15 @@ function populate_jquery($image_name) {
 			_exec("cp " . $dirs['packages'] . "/jquery." . $p[0] . ".js " . $image_name . "/rootfs/usr/local/www/");
 		}
 	}
+
+	if (!file_exists("{$dirs['packages']}/jquery.progressbar.1.1.zip")) {
+		_exec("cd {$dirs['packages']}; ".
+			"fetch http://t.wits.sg/downloads/jquery.progressbar.1.1.zip");
+		_exec("cd {$dirs['packages']}; unzip jquery.progressbar.1.1.zip");
+	}
+	_exec("cd {$dirs['packages']}/jquery.progressbar/; ".
+		"cp js/jquery.progressbar.js images/progressbar.gif images/progressbg_black.gif ".
+		$image_name . "/rootfs/usr/local/www/");
 }
 
 function populate_libs($image_name) {
@@ -1275,8 +1284,6 @@ function parse_check() {
 	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*rc*\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
-	passthru("find packages/ -type f -name \"rc\" -exec php -l {} \; -print | grep Parse");
-	passthru("find packages/ -type f -name \"*.php\" -exec php -l {} \; -print | grep Parse");
 }
 
 function _get_dir_size($dir) {

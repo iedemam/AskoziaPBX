@@ -167,7 +167,7 @@ if ($_POST) {
                   <td width="22%" valign="top" class="vncell"><?=gettext("Password");?></td>
                   <td width="78%" class="vtable"> <input name="password" type="password" class="formfld" id="password" size="20"> 
                     <br> <input name="password2" type="password" class="formfld" id="password2" size="20"> 
-                    &nbsp;<?=gettext("(confirmation)");?> <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span></td>
+                    &nbsp;(<?=gettext("confirmation");?>) <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span></td>
                 </tr>
 		<? display_gui_language_selector($config['system']['webgui']['language']); ?>
                 <tr> 
@@ -207,7 +207,7 @@ if ($_POST) {
                 <tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Time update interval");?></td>
                   <td width="78%" class="vtable"> <input name="timeupdateinterval" type="text" class="formfld" id="timeupdateinterval" size="4" value="<?=htmlspecialchars($pconfig['timeupdateinterval']);?>"> 
-                    <br> <span class="vexpl"><?=gettext("Minutes between network time sync.; 300 recommended, or 0 to disable ");?></span></td>
+                    <br> <span class="vexpl"><?=gettext("Minutes between network time sync.; 300 recommended, or 0 to disable");?></span></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("NTP time server");?></td>

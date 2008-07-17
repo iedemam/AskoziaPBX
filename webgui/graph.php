@@ -84,7 +84,7 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <text id="switch_unit" x="<?=$width*0.55?>" y="5" <?=$attribs['switch_unit']?>><?=gettext("Switch to bytes/s");?></text>
     <text id="switch_scale" x="<?=$width*0.55?>" y="11" <?=$attribs['switch_scale']?>><?=gettext("AutoScale");?> (<?=$scale_type?>)</text>
     <text id="datetime" x="<?=$width*0.33?>" y="5" <?=$attribs['legend']?>> </text>
-    <text id="graphlast" x="<?=$width*0.55?>" y="17" <?=$attribs['legend']?>><?=gettext("Graph shows last");?> <?=$time_interval*$nb_plot?><?=gettext(" seconds");?></text>
+    <text id="graphlast" x="<?=$width*0.55?>" y="17" <?=$attribs['legend']?>><?=gettext("Graph shows last");?> <?=$time_interval*$nb_plot?> <?=gettext("seconds");?></text>
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
     <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
     <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=gettext("Collecting initial data, please wait...");?></text>

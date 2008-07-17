@@ -136,7 +136,7 @@ if ($_POST) {
 			<td class="vtable"> 
 				<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
             	Account uses TLS<br>
-				<span class="vexpl"><span class="red"><strong><?=gettext("Warning: ");?></strong></span><?=gettext("TLS certificates are currently not verified.");?></span>
+				<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span> <?=gettext("TLS certificates are currently not verified.");?></span>
 			</td>
         </tr>
 		<tr> 

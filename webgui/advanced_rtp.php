@@ -91,7 +91,7 @@ if (file_exists($d_rtpconfdirty_path)) {
 				<input name="lowport" type="text" class="formfld" id="lowport" size="20" maxlength="5"  value="<?=htmlspecialchars($pconfig['lowport']);?>">
 				-
 				<input name="highport" type="text" class="formfld" id="highport" size="20" maxlength="5"  value="<?=htmlspecialchars($pconfig['highport']);?>">
-				<br><span class="vexpl"><?=gettext("The port range which RTP streams should use. (default: ");?> <?=javascript_default_value_setter("lowport", $defaults['rtp']['lowport']);?>-<?=javascript_default_value_setter("highport", $defaults['rtp']['highport']);?>)</span>
+				<br><span class="vexpl"><?=gettext("The port range which RTP streams should use. (default:");?> <?=javascript_default_value_setter("lowport", $defaults['rtp']['lowport']);?>-<?=javascript_default_value_setter("highport", $defaults['rtp']['highport']);?>)</span>
 			</td>
 		</tr>
 		<tr> 
@@ -102,7 +102,7 @@ if (file_exists($d_rtpconfdirty_path)) {
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?><br>
+			<td><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br>
 			</strong></span><?=gettext("after you click &quot;Save&quot;, all current calls will be dropped.");?></td>
 		</tr>
 	</table>

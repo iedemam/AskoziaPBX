@@ -235,7 +235,7 @@ require_once("functions.inc");
 						<table border="0" cellspacing="0" cellpadding="6" width="100%">
 							<tr>
 								<td width="200px"><strong><?=gettext("Caller ID / Name");?></strong></td>
-								<td><strong><?=gettext("Basic ");?><code><?=gettext("Dial()");?></code><?=gettext(" Command");?></strong></td>
+								<td><strong><?=gettext("Basic");?> <code>Dial()</code> <?=gettext("Command");?></strong></td>
 							</tr><?
 
 						$phones = pbx_get_phones();

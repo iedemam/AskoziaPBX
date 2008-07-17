@@ -352,18 +352,24 @@ function verify_gzip_file($fname) {
 		return 1;
 }
 
-function print_info_box_np($msg) {
-	echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
-	echo "<tr><td bgcolor=\"#687BA4\" align=\"center\" valign=\"top\" width=\"36\"><img src=\"/exclam.gif\" width=\"28\" height=\"32\"></td>\n";
-	echo "<td bgcolor=\"#D9DEE8\" style=\"padding-left: 8px\">";
-	echo gettext($msg);
-	echo "</td></tr></table>";
-}
-
-function print_info_box($msg) {
-	echo "<p>";
-	print_info_box_np($msg);
-	echo "</p>";
+function print_info_box($msg, $keep=false) {
+	if (!$keep) {
+		?><script type="text/javascript" charset="utf-8">
+			jQuery(document).ready(function() {
+    	    	jQuery('#info-box').animate({opacity: 1.0}, 7000).slideUp('slow');
+    	    });
+		</script><?
+	}
+	?><span id="info-box">
+		<p>
+			<table border="0" cellspacing="0" cellpadding="4" width="100%">
+				<tr>
+					<td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="exclam.gif" width="28" height="32"></td>
+					<td bgcolor="#D9DEE8" style="padding-left: 8px"><?=gettext($msg);?></td>
+				</tr>
+			</table>
+		</p>
+	</span><?
 }
 
 function format_bytes($bytes) {

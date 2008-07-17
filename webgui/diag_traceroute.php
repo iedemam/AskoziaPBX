@@ -107,7 +107,7 @@ if (!isset($do_traceroute)) {
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
-				<p><span class="vexpl"><span class="red"><strong><?=gettext("Note:");?></strong></span><?=gettext(" Traceroute may take a while to complete.  You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?><p>
+				<p><span class="vexpl"><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("Traceroute may take a while to complete.  You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?><p>
 				<? if ($do_traceroute) {
 					echo('<br><strong>');
 					echo gettext("Traceroute output:");

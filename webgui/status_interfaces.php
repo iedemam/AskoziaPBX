@@ -216,7 +216,7 @@ function get_analog_interface_info() {
 		}
 
 		?><tr> 
-			<td colspan="2" class="listtopic"><?=htmlspecialchars($ifname);?><?=gettext(" Interface");?></td>
+			<td colspan="2" class="listtopic"><?=htmlspecialchars($ifname);?> <?=gettext("Interface");?></td>
 		</tr>
 		<tr> 
 			<td width="20%" class="vncellt"><?=gettext("Status");?></td>
@@ -324,7 +324,7 @@ function get_analog_interface_info() {
 							<td class="listlr" nowrap><?
 							if (!$ss['ssid']) {
 								echo "<span class=\"gray\">";
-								echo gettext("(hidden)");
+								echo "(" . gettext("hidden") . ")";
 								echo "</span>";
 							}
 							else

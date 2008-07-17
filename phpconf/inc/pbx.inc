@@ -319,6 +319,7 @@ function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	*/
 	
 	// invalid appended prefix
+	// XXX : incorrectly identifies "1|0+X!" as an invalid pattern
 	if (($plus_offset = strpos($dialpattern, "+")) !== false) {
 		if (!preg_match("/^[0-9\*\#]+\+/", $dialpattern)) {
 			$error = "Appended prefixes may only contain digits, '*' and '#'.";

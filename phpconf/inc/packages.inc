@@ -204,64 +204,6 @@ function packages_get_www_nav() {
 	return $nav;
 }
 
-/* 
-	1. installs built-in packages onto storage partition
-	2. upgrades packages which have updates
-*/
-function packages_update_all() {
-
-	$packages = packages_get_packages();
-	$src_path = "/etc/pkgs";
-	$dest_path = storage_get_media_path("syspart");
-
-	echo "Updating packages...\n";
-
-	$dh = opendir($src_path);
-	while ($dirname = readdir($dh)) {
-		/* if the directory is a pkg */
-		if (strpos($dirname, ".pkg") !== false) { 
-			/* read in the xml configuration */
-			$built_in_pkg = packages_read_config($src_path . "/" . $dirname);
-
-			/* if the package doesn't yet exist, copy it over */
-			if (!isset($packages[$built_in_pkg['name']])) {
-				mwexec("/bin/cp -R " . $src_path . "/" . $dirname . " " . $dest_path);
-
-				echo " - installed " . $built_in_pkg['name'] .
-					" package to storage partition.\n";
-
-			/* the built-in version number is higher than the installed package */
-			} else if ($built_in_pkg['version'] > $packages[$built_in_pkg['name']]['version']) {
-				/* copy the new rc file */
-				mwexec("/bin/cp " . $src_path . "/" . $dirname . "/rc " .
-					$dest_path . "/" . $dirname);
-				/* copy the new www files if present */
-				if (file_exists($src_path . "/" . $dirname . "/www")) {
-					mwexec("/bin/cp -R " . $src_path . "/" . $dirname . "/www " . $dest_path . "/" . $dirname);
-				}
-				/* execute the update routine */
-				$ret = mwexec("/etc/rc.pkgexec " . $dest_path . "/" . $dirname . "/rc update");
-				/* update package meta info from built-in package */
-				$new_pkg_conf = $packages[$built_in_pkg['name']];
-				$new_pkg_conf['version'] = $built_in_pkg['version'];
-				$new_pkg_conf['descr'] = $built_in_pkg['descr'];
-				/* write out package's updated conf.xml */
-				$new_pkg_xml = array_to_xml($new_pkg_conf, "package");
-				util_file_put_contents($new_pkg_xml, $dest_path . "/" . $dirname . "/conf.xml");
-
-				echo " - updated " . $built_in_pkg['name'] . " package from version " .
-					$packages[$built_in_pkg['name']]['version'] . " to version " .
-					$built_in_pkg['version'] . " " .
-					(($ret) ? "UNSUCCESSFULLY" : "successfully") . ".\n";
-			}
-		} 
-	}
-	closedir($dh);
-
-	echo " - done.\n";
-}
-
-
 function packages_boot_all() {
 
 	$packages = packages_get_packages();

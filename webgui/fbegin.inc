@@ -83,7 +83,7 @@ function dynamic_menu(&$menu, $menu_title) {
 			if (!isset($header_displayed) && ($menu_title == 'Dialplan')) {
 				echo "\n" 
 				?>
-				<strong><?=gettext("Dialplan");?></strong>&nbsp;<a href="printable_dialplan.php" class="navlnks"><?=gettext("(print)");?></a><br>
+				<strong><?=gettext("Dialplan");?></strong>&nbsp;<a href="printable_dialplan.php" class="navlnks">(<?=gettext("print");?>)</a><br>
 				<?
 				$header_displayed = true;
 			
@@ -240,6 +240,7 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 <script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
+<script src="jquery.progressbar.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 

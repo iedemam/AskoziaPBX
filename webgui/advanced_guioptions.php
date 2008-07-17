@@ -37,6 +37,7 @@ $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
+$pconfig['disablepackagechecks'] = isset($config['system']['disablepackagechecks']);
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
 $pconfig['expandadvanced'] = isset($config['system']['webgui']['expandadvanced']);
 
@@ -87,6 +88,7 @@ if ($_POST) {
 		$config['system']['webgui']['private-key'] = base64_encode($_POST['key']);
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
+		$config['system']['disablepackagechecks'] = $_POST['disablepackagechecks'] ? true : false;
 		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
 		$config['system']['webgui']['expandadvanced'] = $_POST['expandadvanced'] ? true : false;
 		
@@ -179,22 +181,28 @@ if ($_POST) {
                   <td class="vtable">
                     <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
                     <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br>
-    <?=gettext("This will cause AskoziaPBX not to check for newer firmware versions when the ");?><a href="system_firmware.php"><?=gettext("System: Firmware</a> page is viewed.");?></span></td>
+    <?=gettext("This will cause AskoziaPBX not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed.");?></span></td>
 			    </tr>
+				<tr>
+	              <td valign="top" class="vncell"><?=gettext("Package version checks");?></td>
+	              <td class="vtable">
+	                <input name="disablepackagechecks" type="checkbox" id="disablepackagechecks" value="yes" <?php if ($pconfig['disablepackagechecks']) echo "checked"; ?>>
+	                <strong><?=gettext("Disable package version checks");?></strong><span class="vexpl"><br>
+	    <?=gettext("This will cause AskoziaPBX not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed.");?></span></td>
+				</tr>
 <?php if ($g['platform'] == "generic-pc"): ?>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time ");?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time");?></td>
                   <td width="78%" class="vtable"> 
                     <select name="harddiskstandby" class="formfld">
 					<?php $sbvals = array(1,2,3,4,5,10,15,20,30,60); ?>
                       <option value="" <?php if(!$pconfig['harddiskstandby']) echo('selected');?>><?=gettext("Always on");?></option>
 					<?php foreach ($sbvals as $sbval): ?>
-                      <option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=$sbval;?><?=gettext(" minutes");?></option>
+                      <option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=$sbval;?>&nbsp;<?=gettext("minutes");?></option>
 					<?php endforeach; ?>
                     </select>
                     <br>
-                    <?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last
-                    access has elapsed. <em>Do not set this for CF cards.");?></em></td>
+                    <?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.");?></em></td>
 				</tr>
 <?php endif; ?>
 				<tr> 

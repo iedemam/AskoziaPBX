@@ -88,7 +88,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = gettext("An extension must be a one to four digit number.");
+		$input_errors[] = gettext("A valid extension must be entered.");
 	}
 	if (($_POST['callerid'] && !pbx_is_valid_callerid($_POST['callerid']))) {
 		$input_errors[] = gettext("A valid Caller ID must be specified.");

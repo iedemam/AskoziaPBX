@@ -32,6 +32,54 @@
 $pgtitle = array(gettext("System"), gettext("Packages"));
 require("guiconfig.inc");
 
+if ($_POST) {
+	echo print_r_html($_POST);
+	exit();
+}
+
+function check_package_versions() {
+	global $g;
+	$post = "&check=pbxpackage&platform=" . rawurlencode($g['fullplatform']) . 
+		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
+		
+	$rfd = @fsockopen("downloads.askozia.com", 80, $errno, $errstr, 3);
+	if ($rfd) {
+		$hdr = "POST /index.php HTTP/1.0\r\n";
+		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
+		$hdr .= "User-Agent: AskoziaPBX-webGUI/1.0\r\n";
+		$hdr .= "Host: downloads.askozia.com\r\n";
+		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
+		
+		fwrite($rfd, $hdr);
+		fwrite($rfd, $post);
+		
+		$inhdr = true;
+		$resp = "";
+		while (!feof($rfd)) {
+			$line = fgets($rfd);
+			if ($inhdr) {
+				if (trim($line) == "")
+					$inhdr = false;
+			} else {
+				$resp .= $line;
+			}
+		}
+		
+		fclose($rfd);
+
+		$lines = explode("\n", $resp);
+		foreach ($lines as $line) {
+			$line = preg_split("/\s+/", $line, -1, PREG_SPLIT_NO_EMPTY);
+			if ($line[0] && $line[1]) {
+				$packages[$line[0]] = $line[1];
+			}
+		}
+		return $packages;
+	}
+	
+	return null;
+}
+
 /* backup */
 if (isset($_GET['package']) && $_GET['action'] == 'backup') {
 
@@ -232,16 +280,54 @@ if (storage_syspart_get_state() == "active") {
 	$packages = packages_get_packages();
 }
 
+if (!isset($config['system']['disablepackagechecks'])) {
+	$server_packages = check_package_versions();
+}
+
 ?>
 
 <?php include("fbegin.inc"); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
+<script type="text/javascript" charset="utf-8">
+
+	function show_pane(name) {
+		jQuery('#restore-pane').hide();
+		jQuery('#update-pane').hide();
+		jQuery('#install-pane').hide();
+		jQuery('#' + name + '-pane').show();
+	}
+
+</script>
 <form action="system_packages.php" method="post" enctype="multipart/form-data"><?
+
+if ($server_packages) {
+	foreach ($server_packages as $s_p_name => $s_p_version) {
+		if ($packages[$s_p_name] && ($packages[$s_p_name]['version'] < $s_p_version)) {
+			$pkg_updates[$s_p_name] = $s_p_version;
+		} else if (!$packages[$s_p_name]) {
+			$pkg_new[$s_p_name] = $s_p_version;
+		}
+	}
+}
+
+if ($pkg_updates) {
+
+	?><p>
+		<table border="0" cellspacing="0" cellpadding="4" width="100%">
+			<tr>
+				<td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="exclam.gif" width="28" height="32"></td>
+				<td bgcolor="#D9DEE8" style="padding-left: 8px"><strong><?=gettext("There are updates available for packages on your system.");?></strong><br><?=gettext("Click the <img src=\"update.png\" border=\"0\"> icon below to select and install the updated packages.");?>
+				</td>
+			</tr>
+		</table>
+	</p><?
+
+}
 
 if (!$syspart) {
 
-	?><strong><?=gettext("The system storage media is not large enough to install packages.");?></strong><?=gettext(" A minimum of ");?> <?=$defaults['storage']['system-media-minimum-size'];?><?=gettext("MB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media.");?><?
+	?><strong><?=gettext("The system storage media is not large enough to install packages.");?></strong> <?=sprintf(gettext("A minimum of %sMB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media."), $defaults['storage']['system-media-minimum-size']);
 
 } else {
 
@@ -249,8 +335,8 @@ if (!$syspart) {
 		<tr>
 			<td width="5%" class="list"></td>
 			<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Size");?></td>
-			<td width="35%" class="listhdr"><?=gettext("Description");?></td>
+			<td width="15%" class="listhdrr"><?=gettext("Size");?></td>
+			<td width="45%" class="listhdr"><?=gettext("Description");?></td>
 			<td width="15%" class="list"></td>
 		</tr><?
 			
@@ -266,7 +352,7 @@ if (!$syspart) {
 			<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
 			<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
 			<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="<?=gettext("backup package data");?>" border="0"></a>
-				<a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideDown();"><img src="restore.png" title="<?=gettext("restore package data");?>" border="0"></a>
+				<a href="javascript:{}" onclick="show_pane('restore');"><img src="restore.png" title="<?=gettext("restore package data");?>" border="0"></a>
 				<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('<?=gettext("Do you really want to permanently delete this package\'s configuration and data?");?>')"><img src="delete.png" title="<?=gettext("delete package configuration and data");?>" border="0"></a></td>
 		</tr><?
 	}
@@ -283,15 +369,15 @@ if (!$syspart) {
 			<td class="listr"><?=format_bytes(packages_get_size($pkg['name']));?></td>
 			<td class="listr"><?=htmlspecialchars($pkg['descr']);?></td>
 			<td valign="middle" nowrap class="list"><a href="?action=backup&package=<?=$pkg['name'];?>"><img src="backup.png" title="<?=gettext("backup package data");?>" border="0"></a>
-				<a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideDown();"><img src="restore.png" title="<?=gettext("activate package from backup data");?>" border="0"></a>
+				<a href="javascript:{}" onclick="show_pane('restore');"><img src="restore.png" title="<?=gettext("activate package from backup data");?>" border="0"></a>
 				<a href="?action=delete&package=<?=$pkg['name'];?>" onclick="return confirm('<?=gettext("Do you really want to permanently delete this package\'s configuration and data?");?>')"><img src="delete.png" title="<?=gettext("delete package configuration and data");?>" border="0"></a></td>
 		</tr><?
 	}
 
 		?><tr> 
 			<td class="list" colspan="4"></td>
-			<td class="list"><a href="javascript:{}" onclick="jQuery('#packages-install-container').slideDown();"><img src="add.png" title="<?=gettext("install new package");?>" border="0"></a>
-				<a href="javascript:{}" onclick="jQuery('#packages-update-container').slideDown();"><img src="update.png" title="<?=gettext("update package to newer version");?>" border="0"></a></td>
+			<td class="list"><a href="javascript:{}" onclick="show_pane('install');"><img src="add.png" title="<?=gettext("install new package");?>" border="0"></a>
+				<a href="javascript:{}" onclick="show_pane('update');"><img src="update.png" title="<?=gettext("update package to newer version");?>" border="0"></a></td>
 		</tr>
 		<tr> 
 			<td class="list" colspan="5" height="12">&nbsp;</td>
@@ -299,31 +385,63 @@ if (!$syspart) {
 		<tr>
 			<td class="list"></td>
 			<td class="list" colspan="3">
-				<div id="packages-install-container" class="tabcont" style="display: none;">
-					<strong><?=gettext("Install a new Package");?></strong><br>
-					<br>
-					<?=gettext("Select a package .tgz archive and press 'Install'");?><br>
-					<br>
-					<input id="installfile" name="installfile" type="file" class="formfld">
-					<input name="install-submit" type="submit" class="formbtn" value="<?=gettext("Install");?>"> <a href="javascript:{}" onclick="jQuery('#packages-install-container').slideUp();"><?=gettext("cancel");?></a>
-				</div>
-				<div id="packages-update-container" class="tabcont" style="display: none;">
-					<strong><?=gettext("Update an Installed Package");?></strong><br>
-					<br>
-					<?=gettext("Select a package .tgz archive and press 'Update'");?><br>
+
+				<div id="update-pane" class="tabcont" style="display: none;">
+					<strong><?=gettext("Update Installed Package");?></strong><br>
+					<br><?
+
+					if ($pkg_updates) {
+						echo gettext("Select which packages you would like to update or select a .pkgpbx file and press 'Update'");
+					} else {
+						echo gettext("Select a .pbxpkg file and press 'Update'");
+					}
+
+					?><br>
 					<?=gettext("Existing package data will be preserved.");?><br>
-					<br>
-					<input id="updatefile" name="updatefile" type="file" class="formfld">
-					<input name="update-submit" type="submit" class="formbtn" value="<?=gettext("Update");?>"> <a href="javascript:{}" onclick="jQuery('#packages-update-container').slideUp();"><?=gettext("cancel");?></a>
+					<br><?
+
+					if ($pkg_updates) {
+						foreach ($pkg_updates as $pkg_name => $pkg_version) {
+							?><input name="update[]" type="checkbox" id="update[]" value="<?=$pkg_name;?>" checked>&nbsp;<?=$pkg_name;?>&nbsp;(<?=$pkg_version;?>)<br><?
+						}
+					}
+
+					?><input id="updatefile" name="updatefile" type="file" class="formfld">
+					<input name="update-submit" type="submit" class="formbtn" value="<?=gettext("Update");?>">
 				</div>
-				<div id="packages-restore-container" class="tabcont" style="display: none;">
+
+				<div id="install-pane" class="tabcont" style="display: none;">
+					<strong><?=gettext("Install a New Package");?></strong><br>
+					<br><?
+
+					if ($pkg_new) {
+						echo gettext("Select which packages you would like to install or select a .pkgpbx file and press 'Install'");
+					} else {
+						echo gettext("Select a .pbxpkg file and press 'Install'");
+					}
+
+					?><br>
+					<br><?
+
+					if ($pkg_new) {
+						foreach ($pkg_new as $pkg_name => $pkg_version) {
+							?><input name="install[]" type="checkbox" id="install[]" value="<?=$pkg_name;?>">&nbsp;<?=$pkg_name;?><br><?
+						}
+						echo "<br>\n";
+					}
+
+					?><input id="installfile" name="installfile" type="file" class="formfld">
+					<input name="install-submit" type="submit" class="formbtn" value="<?=gettext("Install");?>">
+				</div>
+
+				<div id="restore-pane" class="tabcont" style="display: none;">
 					<strong><?=gettext("Restore from a Backup Archive");?></strong><br>
 					<br>
 					<?=gettext("Select a backup .tgz archive and press 'Restore'");?><br>
-					<?=gettext("Package data & logic will be replaced by the backup.");?><br>
+					<?=gettext("Package data and logic will be replaced by the backup.");?><br>
 					<br>
 					<input id="restorefile" name="restorefile" type="file" class="formfld">
-					<input name="restore-submit" type="submit" class="formbtn" value="<?=gettext("Restore");?>"> <a href="javascript:{}" onclick="jQuery('#packages-restore-container').slideUp();"><?=gettext("cancel");?></a>
+					<input name="restore-submit" type="submit" class="formbtn" value="<?=gettext("Restore");?>">
 				</div>
 			</td>
 			<td class="list"></td>

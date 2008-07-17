@@ -66,7 +66,7 @@ if ($_POST) {
 				} else {
 					$errstr = gettext("The configuration could not be restored.");
 					if ($xmlerr)
-						$errstr .= sprintf(gettext(" (XML error: %s)"), $xmlerr);
+						$errstr .= " (". sprintf(gettext("XML error: %s") . ")", $xmlerr);
 					$input_errors[] = $errstr;
 				}
 			} else {

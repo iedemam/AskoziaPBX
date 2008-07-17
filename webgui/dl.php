@@ -1,10 +1,10 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	$Id: index.php 610 2008-06-26 12:18:23Z kryysler $
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2008 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -29,16 +29,21 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Live"), gettext("CPU Load"));
-require("guiconfig.inc");
-include("fbegin.inc");
-
-?><div align="center">
-<embed src="graph_cpu.php" type="image/svg+xml"
-		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
-</div>
-<br><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("if you can't see the graph, you may have to install the <a href=\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>.");
-
-include("fend.inc");
+if ($_GET['new']) {
+	$url = $_GET['new'];
+	$file = basename($url);
+	$output = exec("/usr/bin/fetch -s $url");
+	if (is_numeric($output)) {
+		echo $output;
+		if (file_exists("/ultmp/$file")) {
+			unlink("/ultmp/$file");
+		}
+		exec("nohup /usr/bin/fetch -a -w 2 -q -o /ultmp/$file $url > /dev/null 2>&1 &");
+	} else if (strpos($output, "Not Found") !== false) {
+		echo "file not found";
+	} else {
+		echo "unknown error";
+	}
+}
 
 ?>

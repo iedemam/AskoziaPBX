@@ -954,7 +954,7 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 function display_capacity_bar($sizeinbytes, $usage) {
 
 	?><img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'><img src='bar_blue.gif' height='15' width='<?=$usage;?>' border='0' align='absmiddle'><img src='bar_gray.gif' height='15' width='<?=100-$usage;?>' border='0' align='absmiddle'><img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'>
-	<br><?=$usage;?><?=gettext("% of ");?><?=format_bytes($sizeinbytes);?><?
+	<br><?=$usage;?>% <?=gettext("of");?> <?=format_bytes($sizeinbytes);?><?
 }
 
 function display_peer_status_icon($status) {

@@ -33,7 +33,7 @@ $d_isfwfile = 1;
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 require("guiconfig.inc"); 
 
-/* checks with m0n0.ch to see if a newer firmware version is available;
+/* checks with downloads.askozia.com to see if a newer firmware version is available;
    returns any HTML message it gets from the server */
 function check_firmware_version() {
 	global $g;
@@ -153,7 +153,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 
 include("fbegin.inc");
 if ($input_errors) print_input_errors($input_errors);
-if ($savemsg) print_info_box($savemsg);
+if ($savemsg) print_info_box($savemsg, "keep");
 if ($fwstatus) echo display_firmware_update_info($fwstatus);
 
 if (in_array($g['platform'], $no_firmware_update_platforms)) {
@@ -165,10 +165,10 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 	?><form action="system_firmware.php" method="post"><?
 
 	$sig_warning = sprintf(gettext("<strong>%s</strong><br>This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br> Do you want to install this image anyway (at your own risk)?"), gettext($sig_warning));
-	print_info_box($sig_warning);
+	print_info_box($sig_warning, "keep");
 
-		?><input name="sig_override" type="submit" class="formbtn" id="sig_override" value="<?=gettext(" Yes ");?>">
-		<input name="sig_no" type="submit" class="formbtn" id="sig_no" value="<?=gettext(" No ");?>">
+		?><input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" <?=gettext("Yes");?> ">
+		<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" <?=gettext("No");?> ">
 	</form><?
 
 } else {
@@ -179,7 +179,7 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 
 		if (!file_exists($d_ultmpmounted_path)) {
 
-		?><?=gettext("Click &quot;Enable firmware upload&quot; below. ");?><?
+		?><?=gettext("Click &quot;Enable firmware upload&quot; below.");?> <?
 
 		}
 
@@ -206,7 +206,7 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 
 					}
 
-					?><strong><?=gettext("Firmware image file: ");?></strong>&nbsp;<input name="ulfile" type="file" class="formfld"><br>
+					?><strong><?=gettext("Firmware image file:");?></strong>&nbsp;<input name="ulfile" type="file" class="formfld"><br>
 					<br>
 					<input name="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>"><?
 
@@ -224,7 +224,7 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%">
 						<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span><br>
-						<?=gettext("DO NOT abort the firmware upgrade once it has started.The system will reboot automatically after storing the new firmware.The configuration will be maintained.");?></span>
+						<?=gettext("DO NOT abort the firmware upgrade once it has started. The system will reboot automatically after storing the new firmware. The configuration will be maintained.");?></span>
 					</td>
 				</tr>
 			</table>

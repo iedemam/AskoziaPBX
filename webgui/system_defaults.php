@@ -45,14 +45,14 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
+<?php if ($rebootmsg): echo print_info_box($rebootmsg, "keep"); else: ?>
 <form action="system_defaults.php" method="post">
               <p><strong><?=gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to 'askozia'.");?><br>
                 <br>
                 <?=gettext("Are you sure you want to proceed?");?></strong></p>
         <p> 
-          <input name="Yes" type="submit" class="formbtn" value="<?=gettext(" Yes ");?>">
-          <input name="No" type="submit" class="formbtn" value="<?=gettext(" No ");?>">
+          <input name="Yes" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
+          <input name="No" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
         </p>
       </form>
 <?php endif; ?>

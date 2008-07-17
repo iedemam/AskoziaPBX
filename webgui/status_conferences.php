@@ -74,7 +74,7 @@ if (file_exists($d_conferencing_kicked_path)) {
 
 		<? foreach($active_rooms as $room_no => $members): ?>
 		<tr> 
-			<td colspan="4" valign="top" class="listtopic"><?=gettext("Conference ");?><?=$room_no;?></td>
+			<td colspan="4" valign="top" class="listtopic"><?=gettext("Conference");?> <?=$room_no;?></td>
 			<td class="list"></td>
 		</tr>
 		<tr>

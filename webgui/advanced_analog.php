@@ -105,7 +105,7 @@ if (file_exists($d_analogconfdirty_path)) {
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
 			<td width="20%" valign="top" class="vncell"><?=gettext("Tone Zones");?></td>
-			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Loaded");?></strong>&nbsp;<i><?=gettext("(drag-and-drop)");?></i>
+			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Loaded");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
 				<ul id="gme" class="gme" style="min-height:50px"><? 
 
 				foreach ($pconfig['loadzone'] as $loadzone) {

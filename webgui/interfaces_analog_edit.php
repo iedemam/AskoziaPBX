@@ -37,7 +37,10 @@ $type = $_GET['type'];
 if (isset($_POST['type']))
 	$type = $_POST['type'];
 
-$pgtitle = array(gettext("Interfaces"), gettext("Edit Analog "). strtoupper($type) .gettext(" Interface #").$unit);
+$pgtitle = array(
+	gettext("Interfaces"), 
+	gettext("Edit Analog") . " " . strtoupper($type) . " " . gettext("Interface #").$unit
+);
 require("guiconfig.inc");
 
 

@@ -57,9 +57,6 @@
 	/* run any early shell commands specified in config.xml */
 	system_do_shell_commands(1);
 
-	/* copy built-in packages to storage partition and update existing packages */
-	packages_update_all();
-
 	/* execute package boot routines */
 	packages_boot_all();
 	

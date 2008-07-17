@@ -43,12 +43,12 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
+<?php if ($rebootmsg): echo print_info_box($rebootmsg, "keep"); else: ?>
       <form action="system_reboot.php" method="post">
         <p><strong><?=gettext("Are you sure you want to reboot the system?");?></strong></p>
         <p> 
-          <input name="Yes" type="submit" class="formbtn" value="<?=gettext(" Yes ");?>">
-          <input name="No" type="submit" class="formbtn" value="<?=gettext(" No ");?>">
+          <input name="Yes" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
+          <input name="No" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
         </p>
       </form>
 <?php endif; ?>

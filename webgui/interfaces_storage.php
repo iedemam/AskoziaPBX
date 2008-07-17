@@ -66,7 +66,7 @@ if (storage_syspart_get_state() == "active") {
 
 		if (!$syspart) {
 
-			?><strong><?=gettext("The system storage media is not large enough to install packages.");?></strong><?=gettext(" A minimum of ");?> <?=$defaults['storage']['system-media-minimum-size'];?><?=gettext("MB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media.");?><?
+			?><strong><?=gettext("The system storage media is not large enough to install packages.");?></strong> <?=sprintf(gettext("A minimum of %sMB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media."), $defaults['storage']['system-media-minimum-size']);
 
 		} else {
 
