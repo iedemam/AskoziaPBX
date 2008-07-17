@@ -42,7 +42,6 @@ require_once("config.inc");
 require_once("functions.inc");
 require_once("display.inc");
 require_once("javascript.inc");
-require_once("help.inc");
 
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
 $d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
