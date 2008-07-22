@@ -35,6 +35,7 @@
 
 $versions = array(
 	"asterisk"		=> "asterisk-1.4.21.1",
+	"ezipupdate"	=> "ez-ipupdate-3.0.11b8",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
 	"mini_httpd"	=> "mini_httpd-1.19",
@@ -79,7 +80,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "generic-pc net48xx net55xx wrap alix1x alix23x hl4xx";
+$platform_list = "generic-pc net48xx net55xx wrap alix1x alix23x hl4xx generic-pc-cdrom";
 $platforms = explode(" ", $platform_list);
 
 
@@ -134,6 +135,7 @@ function prepare_environment() {
 	_exec("cd /usr/ports/databases/sqlite2; make install");
 	_exec("cd /usr/ports/archivers/unrar; make install");
 	_exec("cd /usr/ports/audio/sox; make install");
+	_exec("cd /usr/ports/sysutils/cdrtools; make install");
 }
 
 function patch_kernel() {
@@ -371,6 +373,29 @@ function build_msmtp() {
 		"make");
 }
 
+function build_ezipupdate() {
+	global $dirs, $versions;
+	
+	if (!file_exists($dirs['packages'] ."/{$versions['ezipupdate']}.tar.gz")) {
+        _exec("cd ". $dirs['packages'] ."; ".
+        "fetch http://dyn.pl/client/UNIX/ez-ipupdate/{$versions['ezipupdate']}.tar.gz");
+	}
+	
+	if (!is_dir($dirs['packages'] ."/{$versions['ezipupdate']}")) {
+        _exec("cd ". $dirs['packages'] ."; ".
+              "tar zxf {$versions['ezipupdate']}.tar.gz");
+	}
+	
+	if(!_is_patched($versions['ezipupdate'])) {
+		_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
+				"patch < ". $dirs['patches'] ."/packages/ez-ipupdate.c.patch");
+		_stamp_package_as_patched($versions['ezipupdate']);
+	}	
+	_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
+			"./configure; ".
+			"make");
+}
+
 function build_tools() {
 	global $dirs;
 	
@@ -405,6 +430,7 @@ function build_srcpackages() {
 	build_zaptel();
 	build_asterisk();
 	build_isdn();
+	build_ezipupdate();
 }
 
 function build_ports() {
@@ -505,6 +531,13 @@ function populate_php($image_name) {
 	_exec("cd {$dirs['packages']}/{$versions['php']}/; ".
 		"install -s sapi/cgi/php $image_name/rootfs/usr/local/bin");
 	_exec("cp {$dirs['files']}/php.ini $image_name/rootfs/usr/local/lib/");
+}
+
+function populate_ezipupdate($image_name) {
+	global $dirs, $versions;
+	
+	_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
+		"install -s ez-ipupdate $image_name/rootfs/usr/local/bin");
 }
 
 function populate_minihttpd($image_name) {
@@ -1062,6 +1095,7 @@ function populate_pointstaging($image_name) {
 
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
 	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
+	_exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot $image_name/pointstaging");
 	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/pointstaging");
@@ -1076,6 +1110,7 @@ function populate_everything($image_name) {
 	populate_syslogd($image_name);
 	populate_clog($image_name);
 	populate_php($image_name);
+	populate_ezipupdate($image_name);
 	populate_minihttpd($image_name);
 	populate_msntp($image_name);
 	populate_udesc_dump($image_name);
@@ -1241,27 +1276,79 @@ function package_rootfs($image_name) {
 
 }
 
-/* function build_installcd
+function package_cd($image_name) {
+	global $dirs, $versions, $mfsroot_pad;
+
+	_set_permissions($image_name);
+
+	if (!file_exists("tmp")) {
+		mkdir("tmp");
+		mkdir("tmp/mnt");
+		mkdir("tmp/stage");
+	}
+
+	$platform = "generic-pc-cdrom";
+	$kernel = _platform_to_kernel($platform);
+	$image_version = basename($image_name);
+
+	// mfsroot
+
+	// add rootfs
+	_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
+	_exec("cd tmp/stage/asterisk; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+	_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/stage/");
+
+	// ...system modules		
+	_exec("mkdir tmp/stage/boot");
+	_exec("mkdir tmp/stage/boot/kernel");
+	_exec("cp $image_name/pointstaging/*.ko tmp/stage/boot/kernel/");
+
+	// ...stamps
+	_exec("echo \"$image_version\" > tmp/stage/etc/version");
+	_exec("echo `date` > tmp/stage/etc/version.buildtime");
+	_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
+	_exec("echo $platform > tmp/stage/etc/platform");		
+
+	// get size and package mfsroot
+	$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
+
+	_exec("dd if=/dev/zero of=tmp/mfsroot ibs=1k obs=1k count=$mfsroot_size");
+	_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
+
+	_exec("bsdlabel -rw md0 auto");
+	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
+
+	_exec("mount /dev/md0c tmp/mnt");
+	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+
+	_log("---- $platform - $image_version - mfsroot ----");
+	_exec("df tmp/mnt");
+
+	_exec("umount tmp/mnt");
+	_exec("rm -rf tmp/stage/*");
+	_exec("mdconfig -d -u 0");
+	_exec("gzip -9 tmp/mfsroot");
+	_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-$image_version.gz");
 
 	// .iso
 	_exec("mkdir tmp/cdroot");
-	_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
-		"tmp/cdroot/mfsroot.gz");
-	_exec("cp /sys/i386/compile/$kernel/kernel.gz tmp/cdroot/kernel.gz");		
-    
+	_exec("cp {$dirs['mfsroots']}/$platform-$image_version.gz tmp/cdroot/mfsroot.gz");
+	_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/cdroot/kernel.gz");
+   
 	_exec("mkdir tmp/cdroot/boot");
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot tmp/cdroot/boot/");		
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader tmp/cdroot/boot/");
+	_exec("cp $image_name/pointstaging/cdboot tmp/cdroot/boot/");
+	_exec("cp $image_name/pointstaging/loader tmp/cdroot/boot/");
+	_exec("cp $image_name/pointstaging/boot tmp/cdroot/boot/");
 	_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot tmp/cdroot/boot/");
     
-	_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"m0n0wall CD-ROM image\" ".
-		"-c \"boot/boot.catalog\" -d -r -publisher \"m0n0.ch\" ".
-		"-p \"Your Name\" -V \"m0n0wall_cd\" -o \"m0n0wall.iso\" tmp/cdroot/");
+	_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"AskoziaPBX CD-ROM image\" ".
+		"-c \"boot/boot.catalog\" -d -r -publisher \"askozia.com\" ".
+		"-p \"AskoziaPBX\" -V \"AskoziaPBXCD\" -o \"AskoziaPBX.iso\" tmp/cdroot/");
 		
-	_exec("mv m0n0wall.iso {$dirs['images']}/cdrom-". basename($image_name) .".iso");
+	_exec("mv AskoziaPBX.iso {$dirs['images']}/pbx-cdrom-$image_version.iso");
 
-*/
+	_exec("rm -rf tmp");
+}
 
 function release($name) {
 	global $platforms, $dirs;
@@ -1345,12 +1432,12 @@ function _get_svn_revision_number($path) {
 function _platform_to_kernel($platform) {
 	global $platforms;
 	
-	if(array_search($platform, $platforms) === false) {
+	if (array_search($platform, $platforms) === false) {
 		_log("Platform doesn't exist!");
 		exit(1);
 	}
 	
-	if($platform == "generic-pc") {
+	if ($platform == "generic-pc" || $platform == "generic-pc-cdrom") {
 		$kernel = "ASKOZIAPBX_GENERIC";
 	} else {
 		$kernel = "ASKOZIAPBX_" . strtoupper($platform);
@@ -1447,10 +1534,15 @@ if ($argv[1] == "prepare") {
 			package($platform, $image_name);			
 		}
 		package_rootfs($image_name);
+		package_cd($image_name);
 
 	// packaging the root file system distribution
 	} else if ($argv[2] == "rootfs") {
 		package_rootfs($image_name);
+
+	// packaging the cd iso
+	} else if ($argv[2] == "cd") {
+		package_cd($image_name);
 
 	// check the specific platform before attempting to package
 	} else if (in_array($argv[2], $platforms)) {
