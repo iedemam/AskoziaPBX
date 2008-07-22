@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-16 21:14+0000\n"
+"POT-Creation-Date: 2008-07-22 15:05+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -407,6 +407,9 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "ISDN Interface"
 msgstr ""
 
@@ -798,9 +801,6 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
-msgstr ""
-
-msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1959,14 +1959,29 @@ msgstr ""
 msgid "Packages"
 msgstr ""
 
+msgid "The digital signature on this package is invalid."
+msgstr ""
+
+msgid "This package is not digitally signed."
+msgstr ""
+
+msgid "There has been an error verifying the signature on this package."
+msgstr ""
+
+msgid "The package is corrupt and has been deleted."
+msgstr ""
+
+msgid "Package already exists, install failed."
+msgstr ""
+
+msgid "Extracted package not found, install failed."
+msgstr ""
+
 msgid "Existing package not found, update failed."
 msgstr ""
 
 msgid ""
 "The uploaded package is not newer than the existing package, update failed."
-msgstr ""
-
-msgid "Package already exists, install failed."
 msgstr ""
 
 msgid "There are updates available for packages on your system."
@@ -1977,16 +1992,28 @@ msgid ""
 "install the updated packages."
 msgstr ""
 
+msgid ""
+"The following packages issued warnings while verifying their digital "
+"signature. This means that they are not official/supported packages and may "
+"lead to unexpected behavior or security compromises. Only install packages "
+"that come from sources that you trust, and make sure that they have not been "
+"tampered with.<br><br>Check the packages you wish to install despite this "
+"warning."
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
 msgid "Do you really want to disable this package?"
 msgstr ""
 
 msgid "click to disable package"
 msgstr ""
 
-msgid "backup package data"
+msgid "click to enable package"
 msgstr ""
 
-msgid "restore package data"
+msgid "backup package data"
 msgstr ""
 
 msgid ""
@@ -1997,47 +2024,47 @@ msgstr ""
 msgid "delete package configuration and data"
 msgstr ""
 
-msgid "click to enable package"
-msgstr ""
-
-msgid "activate package from backup data"
-msgstr ""
-
 msgid "install new package"
 msgstr ""
 
 msgid "update package to newer version"
 msgstr ""
 
+msgid "restore package data"
+msgstr ""
+
 msgid "Update Installed Package"
 msgstr ""
 
 msgid ""
-"Select which packages you would like to update or select a .pkgpbx file and "
-"press 'Update'"
-msgstr ""
-
-msgid "Select a .pbxpkg file and press 'Update'"
-msgstr ""
-
-msgid "Existing package data will be preserved."
+"Select which packages you would like to update, existing package data will "
+"be preserved."
 msgstr ""
 
 msgid "Update"
 msgstr ""
 
+msgid ""
+"Select a .pbxpkg file from your computer to update from, existing package "
+"data will be preserved."
+msgstr ""
+
+msgid "Manual Update"
+msgstr ""
+
 msgid "Install a New Package"
 msgstr ""
 
-msgid ""
-"Select which packages you would like to install or select a .pkgpbx file and "
-"press 'Install'"
-msgstr ""
-
-msgid "Select a .pbxpkg file and press 'Install'"
+msgid "Select which packages you would like to install."
 msgstr ""
 
 msgid "Install"
+msgstr ""
+
+msgid "Select a .pbxpkg file from your computer to install."
+msgstr ""
+
+msgid "Manual Install"
 msgstr ""
 
 msgid "Restore from a Backup Archive"

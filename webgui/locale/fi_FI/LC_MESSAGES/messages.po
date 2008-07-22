@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-16 22:34+0000\n"
+"POT-Creation-Date: 2008-07-22 15:05+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -431,6 +431,9 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
+msgid "Download"
+msgstr "Lataa"
+
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -840,9 +843,6 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
-
-msgid "Download"
-msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -2120,15 +2120,34 @@ msgstr ""
 msgid "Packages"
 msgstr "Paketit"
 
+#, fuzzy
+msgid "The digital signature on this package is invalid."
+msgstr "Levykuvan digitaalinen allekirjoitus on pätemätön."
+
+#, fuzzy
+msgid "This package is not digitally signed."
+msgstr "Tämä levykuva ei ole digitaalisesti allekirjoitettu."
+
+#, fuzzy
+msgid "There has been an error verifying the signature on this package."
+msgstr "On tapahtunut virhe todentaessa allekirjoituksen levykuvassa."
+
+msgid "The package is corrupt and has been deleted."
+msgstr ""
+
+msgid "Package already exists, install failed."
+msgstr "Paketti on jo olemassa, asennus epäonnistui."
+
+#, fuzzy
+msgid "Extracted package not found, install failed."
+msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
+
 msgid "Existing package not found, update failed."
 msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
 
 msgid ""
 "The uploaded package is not newer than the existing package, update failed."
 msgstr "Ladattu paketti ei ole uudempi kun oleva paketti, asennus epäonnistui."
-
-msgid "Package already exists, install failed."
-msgstr "Paketti on jo olemassa, asennus epäonnistui."
 
 msgid "There are updates available for packages on your system."
 msgstr ""
@@ -2142,17 +2161,35 @@ msgstr ""
 "Klikkaa <img src=\"update.png\" border=\"0\"> ikoonia alla ja valitse sekä "
 "asenna päivitetyt paketit."
 
+#, fuzzy
+msgid ""
+"The following packages issued warnings while verifying their digital "
+"signature. This means that they are not official/supported packages and may "
+"lead to unexpected behavior or security compromises. Only install packages "
+"that come from sources that you trust, and make sure that they have not been "
+"tampered with.<br><br>Check the packages you wish to install despite this "
+"warning."
+msgstr ""
+"<strong>%s</strong><br>Tämä tarkoittaa että lataamasi levykuva ei ole "
+"virallinen/tuettu levykuva ja se voi johtaa yllättävään käytökseen tai "
+"turvallisuuden vaarantamiseen. Älä asenna levykuvaa jos et luota lähteeseen."
+"<br><br>Haluatko asentaa tämän levykuvan?"
+
+#, fuzzy
+msgid "Continue"
+msgstr "Sisältö"
+
 msgid "Do you really want to disable this package?"
 msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
 
 msgid "click to disable package"
 msgstr "klikkaa poistaaksesi paketti käytöstä"
 
+msgid "click to enable package"
+msgstr "klikkaa mahdollistaaksesi paketti"
+
 msgid "backup package data"
 msgstr "tallenna pakettitiedot"
-
-msgid "restore package data"
-msgstr "palauta pakettitiedot"
 
 msgid ""
 "Do you really want to permanently delete this package\\'s configuration and "
@@ -2163,50 +2200,58 @@ msgstr ""
 msgid "delete package configuration and data"
 msgstr "poista paketin konfigurointi sekä tiedot"
 
-msgid "click to enable package"
-msgstr "klikkaa mahdollistaaksesi paketti"
-
-msgid "activate package from backup data"
-msgstr "aktivoi tallennettu paketti"
-
 msgid "install new package"
 msgstr "asenna uusi paketti"
 
 msgid "update package to newer version"
 msgstr "päivitä paketti"
 
+msgid "restore package data"
+msgstr "palauta pakettitiedot"
+
 msgid "Update Installed Package"
 msgstr "Päivitä Asennettu Paketti"
 
+#, fuzzy
 msgid ""
-"Select which packages you would like to update or select a .pkgpbx file and "
-"press 'Update'"
+"Select which packages you would like to update, existing package data will "
+"be preserved."
 msgstr ""
 "Valitse paketit mitkä haluat päivittää tai .pkgpbx tiedostoa ja paina "
 "'Päivitä'"
 
-msgid "Select a .pbxpkg file and press 'Update'"
-msgstr "Valitse .pbxpkg paketti ja paina 'Päivitä'"
-
-msgid "Existing package data will be preserved."
-msgstr "Olevat pakettitiedot säilytetään."
-
 msgid "Update"
+msgstr "Päivitä"
+
+#, fuzzy
+msgid ""
+"Select a .pbxpkg file from your computer to update from, existing package "
+"data will be preserved."
+msgstr ""
+"Valitse paketit mitkä haluat päivittää tai .pkgpbx tiedostoa ja paina "
+"'Päivitä'"
+
+#, fuzzy
+msgid "Manual Update"
 msgstr "Päivitä"
 
 msgid "Install a New Package"
 msgstr "Asenna Uusi Paketti"
 
-msgid ""
-"Select which packages you would like to install or select a .pkgpbx file and "
-"press 'Install'"
+#, fuzzy
+msgid "Select which packages you would like to install."
 msgstr ""
 "Valitse paketit mitkä haluat asentaa tai .pkgpbx tiedostoa ja paina 'Asenna'"
 
-msgid "Select a .pbxpkg file and press 'Install'"
+msgid "Install"
+msgstr "Asenna"
+
+#, fuzzy
+msgid "Select a .pbxpkg file from your computer to install."
 msgstr "Valitse .pbxpkg paketti ja paina 'Asenna'"
 
-msgid "Install"
+#, fuzzy
+msgid "Manual Install"
 msgstr "Asenna"
 
 msgid "Restore from a Backup Archive"
@@ -3084,3 +3129,12 @@ msgstr "Paketti palautettiin onnistuneesti."
 
 msgid "Package installed successfully."
 msgstr "Paketti asennettiin onnistuneesti."
+
+#~ msgid "activate package from backup data"
+#~ msgstr "aktivoi tallennettu paketti"
+
+#~ msgid "Select a .pbxpkg file and press 'Update'"
+#~ msgstr "Valitse .pbxpkg paketti ja paina 'Päivitä'"
+
+#~ msgid "Existing package data will be preserved."
+#~ msgstr "Olevat pakettitiedot säilytetään."
