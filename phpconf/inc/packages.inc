@@ -231,4 +231,51 @@ function packages_shutdown_all() {
 
 }
 
+function packages_check_server_versions() {
+	global $g;
+	$post = "&check=pbxpackage&platform=" . rawurlencode($g['fullplatform']) . 
+		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
+		
+	$rfd = @fsockopen("downloads.askozia.com", 80, $errno, $errstr, 3);
+	if ($rfd) {
+		$hdr = "POST /index.php HTTP/1.0\r\n";
+		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
+		$hdr .= "User-Agent: AskoziaPBX-webGUI/1.0\r\n";
+		$hdr .= "Host: downloads.askozia.com\r\n";
+		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
+		
+		fwrite($rfd, $hdr);
+		fwrite($rfd, $post);
+		
+		$inhdr = true;
+		$resp = "";
+		while (!feof($rfd)) {
+			$line = fgets($rfd);
+			if ($inhdr) {
+				if (trim($line) == "")
+					$inhdr = false;
+			} else {
+				$resp .= $line;
+			}
+		}
+		
+		fclose($rfd);
+
+		$lines = explode("\n", $resp);
+		foreach ($lines as $line) {
+			$line = preg_split("/\s+/", $line, -1, PREG_SPLIT_NO_EMPTY);
+			if ($line[0] && $line[1] && $line[2]) {
+				$packages[$line[0]] = array(
+					"version" => $line[1],
+					"url" => $line[2],
+					"filename" => basename($line[2])
+				);
+			}
+		}
+		return $packages;
+	}
+	
+	return null;
+}
+
 ?>
