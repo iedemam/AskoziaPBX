@@ -80,7 +80,7 @@ $image_pad		= 768;
 
 // --[ possible platforms and kernels ]----------------------------------------
 
-$platform_list = "generic-pc net48xx net55xx wrap alix1x alix23x hl4xx generic-pc-cdrom";
+$platform_list = "generic-pc net48xx net55xx wrap alix1x alix23x hl4xx";
 $platforms = explode(" ", $platform_list);
 
 
@@ -1534,7 +1534,7 @@ if ($argv[1] == "prepare") {
 			package($platform, $image_name);			
 		}
 		package_rootfs($image_name);
-		package_cd($image_name);
+		//package_cd($image_name);
 
 	// packaging the root file system distribution
 	} else if ($argv[2] == "rootfs") {
