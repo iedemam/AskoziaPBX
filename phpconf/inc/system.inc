@@ -711,6 +711,9 @@ function system_setup_ultmp() {
 	} else {
 		mkdir("/ultmp");
 	}
+
+	// clean up uploaded / downloaded files
+	mwexec("rm -rf /ultmp/*");
 }
 
 ?>
