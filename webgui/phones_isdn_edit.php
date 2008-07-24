@@ -128,9 +128,10 @@ if ($_POST) {
 		exit;
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+
+include("fbegin.inc");
+
+?><script type="text/JavaScript">
 <!--
 	<?=javascript_public_direct_dial_editor("functions");?>
 
@@ -142,9 +143,22 @@ if ($_POST) {
 	});
 
 //-->
-</script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-	<form action="phones_isdn_edit.php" method="post" name="iform" id="iform">
+</script><?
+
+if ($input_errors) print_input_errors($input_errors);
+
+$isdn_interfaces = isdn_get_nt_interfaces();
+
+if (count($isdn_interfaces) == 0) {
+
+	$page_link = '<a href="interfaces_isdn.php">' . gettext("Interfaces") . ": " . gettext("ISDN") . '</a>';
+	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
+		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
+	print_info_box($interfaces_warning, "keep");
+	
+} else {
+
+	?><form action="phones_isdn_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
@@ -160,8 +174,7 @@ if ($_POST) {
 				<td valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>
 				<td class="vtable">
 					<select name="interface" class="formfld" id="interface"><?
-					
-					$isdn_interfaces = isdn_get_nt_interfaces();
+
 					foreach ($isdn_interfaces as $interface) {
 						?><option value="<?=$interface['unit'];?>" <?
 						if ($interface['unit'] == $pconfig['interface']) {
@@ -169,7 +182,7 @@ if ($_POST) {
 						}
 						?>><?=$interface['name'];?></option><?
 					}
-					
+
 					?></select>
 				</td>
 			</tr>
@@ -189,5 +202,8 @@ if ($_POST) {
 				</td>
 			</tr>
 		</table>
-	</form>
-<?php include("fend.inc"); ?>
+	</form><?
+
+}
+
+include("fend.inc");

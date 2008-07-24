@@ -130,9 +130,10 @@ if ($_POST) {
 		exit;
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+
+include("fbegin.inc");
+
+?><script type="text/JavaScript">
 <!--
 
 	jQuery(document).ready(function(){
@@ -142,9 +143,22 @@ if ($_POST) {
 	});
 
 //-->
-</script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-	<form action="providers_analog_edit.php" method="post" name="iform" id="iform">
+</script><?
+
+if ($input_errors) print_input_errors($input_errors);
+
+$analog_interfaces = analog_get_ab_interfaces("fxo");
+
+if (count($analog_interfaces) == 0) {
+
+	$page_link = '<a href="interfaces_analog.php">' . gettext("Interfaces") . ": " . gettext("Analog") . '</a>';
+	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
+		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
+	print_info_box($interfaces_warning, "keep");
+	
+} else {
+
+	?><form action="providers_analog_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
@@ -166,11 +180,7 @@ if ($_POST) {
 				<td class="vtable">
 					<select name="interface" class="formfld" id="interface"><?
 
-					$ab_interfaces = analog_get_ab_interfaces();
-					foreach ($ab_interfaces as $interface) {
-						if ($interface['type'] != "fxo") {
-							continue;
-						}
+					foreach ($analog_interfaces as $interface) {
 						?><option value="<?=$interface['unit'];?>" <?
 						if ($interface['unit'] == $pconfig['interface'])
 							echo "selected"; ?>
@@ -195,12 +205,16 @@ if ($_POST) {
 				</td>
 			</tr>
 		</table>
-	</form>
-<script language="JavaScript">
+	</form><?
+
+}
+
+?><script language="JavaScript">
 <!-- 
 
 <? javascript_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
 
 //-->
-</script>
-<?php include("fend.inc"); ?>
+</script><?
+
+include("fend.inc");

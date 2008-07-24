@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-22 15:05+0200\n"
+"POT-Creation-Date: 2008-07-24 15:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1208,6 +1208,14 @@ msgstr ""
 msgid "A valid e-mail address must be specified."
 msgstr ""
 
+#, php-format
+msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr ""
 
@@ -2222,6 +2230,9 @@ msgid "General Setup"
 msgstr ""
 
 msgid "Backup/Restore"
+msgstr ""
+
+msgid "Dynamic DNS"
 msgstr ""
 
 msgid "Summary"

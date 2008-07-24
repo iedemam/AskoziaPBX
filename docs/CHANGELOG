@@ -4,11 +4,12 @@
  - added: providers and phones may now be disabled / enabled
  - added: SIP and IAX providers and phones now have icon indicating connection status
  - added: webGUI gettext localization
- - added: Finnish language translation + skeleton files for en, es, da, de, fr, it, pl, nl, pt, fi, se and ru
+ - added: Finnish and Italian language translations + skeleton files for en, es, da, de, fr, it, pl, nl, pt, fi, se and ru
  - added: a more secure, machine-specific HTTPS certificate is generated on the first boot if not defined
- - added: log display page pagination
+ - added: log display page pagination + filtering
+ - added: appropriate interfaces are now checked for before ISDN / Analog accounts can be setup
  - package: logging package which enables permanent storage of system, pbx and call logs
- - updated: Asterisk to 1.4.21.1
+ - updated: Asterisk to 1.4.21.2
  - updated: isdn4bsd to revision 751
  - updated: basesystem to FreeBSD 6.3-RELEASE-p2
  - changed: "Accounts -> Providers / Phones" pages redesigned

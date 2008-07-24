@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-22 15:34+0200\n"
+"POT-Creation-Date: 2008-07-24 15:14+0200\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1441,6 +1441,16 @@ msgstr "Un telefono con questo interno già esiste."
 msgid "A valid e-mail address must be specified."
 msgstr "Deve essere specificato un indirizzo E-mail valido."
 
+#, php-format
+msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr "Interno usato per raggiungere questo telefono."
 
@@ -2769,6 +2779,9 @@ msgstr "Impostazioni Generali"
 
 msgid "Backup/Restore"
 msgstr "Copia di riserva/Ripristino"
+
+msgid "Dynamic DNS"
+msgstr ""
 
 msgid "Summary"
 msgstr "Sommario"

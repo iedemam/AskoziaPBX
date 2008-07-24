@@ -167,7 +167,7 @@ function analog_get_recognized_ab_unit_numbers() {
  * If no units are configured, the global array is initialized.
  * XXX : should be switched to return both recognized and configured units
  */
-function analog_get_ab_interfaces() {
+function analog_get_ab_interfaces($type=null) {
 	global $config;
 	
 	if (!is_array($config['interfaces']['ab-unit']))
@@ -175,7 +175,17 @@ function analog_get_ab_interfaces() {
 		
 	analog_sort_ab_interfaces();
 		
-	return $config['interfaces']['ab-unit'];
+	if ($type) {
+		$filtered = array();
+		foreach ($config['interfaces']['ab-unit'] as $ab_unit) {
+			if ($ab_unit['type'] == $type) {
+				$filtered[] = $ab_unit;
+			}
+		}
+		return $filtered;
+	} else {
+		return $config['interfaces']['ab-unit'];
+	}
 }
 
 /**

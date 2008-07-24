@@ -129,9 +129,10 @@ if ($_POST) {
 		exit;
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+
+include("fbegin.inc");
+
+?><script type="text/JavaScript">
 <!--
 	<?=javascript_public_direct_dial_editor("functions");?>
 
@@ -143,9 +144,22 @@ if ($_POST) {
 	});
 
 //-->
-</script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-	<form action="phones_analog_edit.php" method="post" name="iform" id="iform">
+</script><?
+
+if ($input_errors) print_input_errors($input_errors);
+
+$analog_interfaces = analog_get_ab_interfaces("fxs");
+
+if (count($analog_interfaces) == 0) {
+
+	$page_link = '<a href="interfaces_analog.php">' . gettext("Interfaces") . ": " . gettext("Analog") . '</a>';
+	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
+		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
+	print_info_box($interfaces_warning, "keep");
+	
+} else {
+
+	?><form action="phones_analog_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
@@ -161,12 +175,8 @@ if ($_POST) {
 				<td valign="top" class="vncell"><?=gettext("Analog Interface");?></td>
 				<td class="vtable">
 					<select name="interface" class="formfld" id="interface"><?
-					
-					$analog_interfaces = analog_get_ab_interfaces();
+
 					foreach ($analog_interfaces as $interface) {
-						if ($interface['type'] != "fxs") {
-							continue;
-						}
 						?><option value="<?=$interface['unit'];?>" <?
 						if ($interface['unit'] == $pconfig['interface']) {
 							echo "selected";
@@ -193,5 +203,7 @@ if ($_POST) {
 				</td>
 			</tr>
 		</table>
-	</form>
-<?php include("fend.inc"); ?>
+	</form><?
+}
+
+include("fend.inc");
