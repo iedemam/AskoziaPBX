@@ -8,6 +8,7 @@
  - added: a more secure, machine-specific HTTPS certificate is generated on the first boot if not defined
  - added: log display page pagination + filtering
  - added: appropriate interfaces are now checked for before ISDN / Analog accounts can be setup
+ - added: if default or configured network interfaces are not detected, new working settings are generated
  - package: logging package which enables permanent storage of system, pbx and call logs
  - updated: Asterisk to 1.4.21.2
  - updated: isdn4bsd to revision 751

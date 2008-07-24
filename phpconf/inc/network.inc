@@ -51,14 +51,25 @@ function network_loopback_configure() {
 function network_lan_configure() {
 	global $config, $g;
 	
-	$lancfg = $config['interfaces']['lan'];
+	$lancfg =& $config['interfaces']['lan'];
+	$interface_names = array_keys(network_get_interfaces());
 	
 	if ($g['booting'])
 		echo "Configuring LAN interface... ";
 	else {
 		unlink_if_exists("{$g['varetc_path']}/nameservers.conf");
 	}
-	
+
+	/* no interface found? uh-oh! assign an interface and bridge everything to it */
+	if (!in_array($lancfg['if'], $interface_names)) {
+		$lancfg['if'] = $interface_names[0];
+		if (count($interface_names) > 1) {
+			$lancfg['bridge'] = array_slice($interface_names, 1);
+		} else {
+			$lancfg['bridge'] = false;
+		}
+		write_config();
+	}
 	
 	/* remove all addresses first */
 	while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
@@ -113,8 +124,8 @@ function network_lan_configure() {
 		/* reconfigure static routes (kernel may have deleted them) */
 		system_routing_configure();
 		
-		/* restart ez-ipupdate *//*
-		services_dyndns_configure();*/
+		/* restart ez-ipupdate */
+		services_dyndns_configure();
 		
 		/* force DNS update *//*
 		services_dnsupdate_process();*/
