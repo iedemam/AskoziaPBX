@@ -189,6 +189,7 @@ $menu['Dialplan'][gettext("Transfers")]			= array('dialplan_transfers.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
 $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
+$menu['Services'][gettext("Dynamic DNS")]			= array('services_dyndns.php');
 
 /* Packages */
 if ($nav = packages_get_www_nav()) {

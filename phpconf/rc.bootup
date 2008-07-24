@@ -100,7 +100,7 @@
 	system_console_configure();
 	
 	/* start dyndns service */
-	//services_dyndns_configure();
+	services_dyndns_configure();
 	
 	/* static IP address? -> attempt DNS update *//*
 	if ($config['interfaces']['lan']['topology'] == "public" ||
