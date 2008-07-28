@@ -33,6 +33,10 @@ require_once("functions.inc");
 function storage_syspart_initialize() {
 	global $g, $defaults;
 
+	if (strstr($g['platform'], "cdrom")) {
+		return 0;
+	}
+
 	if (!storage_syspart_media_is_large_enough()) {
 		echo "WARNING: System media not large enough for storage partition!\n";
 		echo " - a minimum of " . $defaults['storage']['system-media-minimum-size'] . "MB is required\n";

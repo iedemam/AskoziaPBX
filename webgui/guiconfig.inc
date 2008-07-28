@@ -79,7 +79,7 @@ $medias = array("auto" => gettext("autoselect"),
 		"1000full" => gettext("1000BASE-TX full-duplex"));
 	
 /* platforms that do not support firmware updating */
-$no_firmware_update_platforms = array();
+$no_firmware_update_platforms = array("generic-pc-cdrom");
 
 
 /*     1 (1 <<  0)      (0x1)  audio       g723   (G.723.1)

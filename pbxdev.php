@@ -34,7 +34,7 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.21.1",
+	"asterisk"		=> "asterisk-1.4.21.2",
 	"ezipupdate"	=> "ez-ipupdate-3.0.11b8",
 	"i4b"			=> "i4b-trunk",
 	"jquery"		=> "jquery-1.2.1",
@@ -402,9 +402,8 @@ function build_tools() {
 	_exec("cd " . $dirs['tools'] . "; " .
 		"gcc -Wall -o verifysig -lcrypto verifysig.c; " .
 		"gcc -Wall -o wrapresetbtn wrapresetbtn.c; " .
-		"gcc -Wall -o alix23xresetbtn alix23xresetbtn.c");
-	/*_exec("cd {$dirs['tools']}; gcc -o zttest zttest.c");*/
-	/*_exec("cd ". $dirs['tools'] ."; gcc -o minicron minicron.c");*/
+		"gcc -Wall -o alix23xresetbtn alix23xresetbtn.c; " .
+		"gcc -Wall -o minicron minicron.c");
 }
 
 function build_cgi() {
@@ -950,7 +949,7 @@ function populate_tools($image_name) {
 	$rootfs = "$image_name/rootfs";
 	
 	_exec("cd {$dirs['tools']}; ".
-		/*"install -s minicron $rootfs/usr/local/bin; ".*/
+		"install -s minicron $rootfs/usr/local/bin; ".
 		"install -s verifysig $rootfs/usr/local/bin; ".
 		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
 		"install -s alix23xresetbtn $rootfs/usr/local/sbin; ".
@@ -1288,7 +1287,7 @@ function package_cd($image_name) {
 	}
 
 	$platform = "generic-pc-cdrom";
-	$kernel = _platform_to_kernel($platform);
+	$kernel = _platform_to_kernel("generic-pc");
 	$image_version = basename($image_name);
 
 	// mfsroot
