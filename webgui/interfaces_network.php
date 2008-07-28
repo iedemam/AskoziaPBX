@@ -46,6 +46,14 @@ $pconfig['topology'] = $lancfg['topology'];
 $pconfig['extipaddr'] = $lancfg['extipaddr'];
 $pconfig['exthostname'] = $lancfg['exthostname'];
 $pconfig['spoofmac'] = $lancfg['spoofmac'];
+$pconfig['hostnameupdatesrc'] = $lancfg['hostnameupdatesrc'];
+
+$pconfig['dyndnsusername'] = $config['dyndns']['username'];
+$pconfig['dyndnspassword'] = $config['dyndns']['password'];
+$pconfig['dyndnshost'] = $config['dyndns']['host'];
+$pconfig['dyndnstype'] = $config['dyndns']['type'];
+$pconfig['dyndnsenable'] = isset($config['dyndns']['enable']);
+$pconfig['dyndnswildcard'] = isset($config['dyndns']['wildcard']);
 
 /* get list without VLAN interfaces */
 $networkinterfaces = network_get_interfaces();
@@ -59,6 +67,11 @@ if ($_POST) {
 	$reqdfields = explode(" ", "ipaddr subnet gateway topology");
 	$reqdfieldsn = explode(",", gettext("IP address,Subnet bit count,Gateway,Network topology"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	if ($_POST['hostnameupdatesrc'] == "pbx") {
+		$reqdfields = array_merge($reqdfields, explode(" ", "dyndnshost dyndnsusername dyndnspassword dyndnstype"));
+		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Dynamic DNS Hostname,Dynamic DNS Username,Dynamic DNS Password,Dynamic DNS Service Type"));
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	}
 	
 	$_POST['spoofmac'] = str_replace("-", ":", $_POST['spoofmac']);
 	if (($_POST['spoofmac'] && !verify_is_macaddress($_POST['spoofmac']))) {
@@ -86,11 +99,20 @@ if ($_POST) {
 		}
 	}
 	
-	if ($_POST['topology'] == "natdynamichost") {
+	if (($_POST['topology'] == "natdynamichost") && ($_POST['hostnameupdatesrc'] == "router")) {
 		if (!$_POST['exthostname']) {
 			$input_errors[] = gettext("A public hostname must be entered for this topology.");
 		} else if (!verify_is_domain($_POST['exthostname'])) {
 			$input_errors[] = gettext("A valid public hostname must be entered for this topology.");
+		}
+	}
+
+	if ($_POST['hostnameupdatesrc'] == "pbx") {
+		if (($_POST['dyndnshost'] && !verify_is_domain($_POST['dyndnshost']))) {
+			$input_errors[] = gettext("The dynamic DNS host name contains invalid characters.");
+		}
+		if (($_POST['dyndnsusername'] && !verify_is_dyndns_username($_POST['dyndnsusername']))) {
+			$input_errors[] = gettext("The dynamic DNS username contains invalid characters.");
 		}
 	}
 	
@@ -129,15 +151,24 @@ if ($_POST) {
 		$lancfg['extipaddr'] = $_POST['extipaddr'];
 		$lancfg['exthostname'] = $_POST['exthostname'];
 		$lancfg['spoofmac'] = $_POST['spoofmac'];
+		$lancfg['hostnameupdatesrc'] = $_POST['hostnameupdatesrc'];
+
+		$config['dyndns']['type'] = $_POST['dyndnstype'];	
+		$config['dyndns']['username'] = $_POST['dyndnsusername'];
+		$config['dyndns']['password'] = $_POST['dyndnspassword'];
+		$config['dyndns']['host'] = $_POST['dyndnshost'];
+		$config['dyndns']['wildcard'] = $_POST['dyndnswildcard'] ? true : false;
 		
 		write_config();
 		
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
+			services_dyndns_reset();
 			$retval = network_lan_configure();
 			$retval |= pbx_configure();
-			$retval |= system_resolvconf_generate();			
+			$retval |= system_resolvconf_generate();
+			$retval |= services_dyndns_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -147,19 +178,47 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
+	function dyndns_slide() {
+		if (jQuery("input[@name='hostnameupdatesrc']:checked").val() == "pbx" &&
+			document.iform.topology.selectedIndex == 2) {
+			jQuery("#hostname_wrapper").hide();
+			jQuery("#dyndns_wrapper").slideDown();
+		} else {
+			jQuery("#dyndns_wrapper").slideUp();
+			jQuery("#hostname_wrapper").show();
+		}
+	}
+
+	jQuery(document).ready(function(){
+
+		jQuery("input[@name='hostnameupdatesrc']").change(dyndns_slide);
+		if (!jQuery("input[@name='hostnameupdatesrc']:checked").val()) {
+			jQuery("#hostnameupdatesrc_router").attr("checked", "checked")
+		}
+		dyndns_slide();
+
+	});
+
 function type_change() {
+	dyndns_slide();
 	switch (document.iform.topology.selectedIndex) {
 		case 0:
 			document.iform.extipaddr.disabled = 1;
-			document.iform.exthostname.disabled = 1;	
+			document.iform.exthostname.disabled = 1;
+			document.iform.hostnameupdatesrc_pbx.disabled = 1;
+			document.iform.hostnameupdatesrc_router.disabled = 1;
 			break;
 		case 1:
 			document.iform.extipaddr.disabled = 0;
 			document.iform.exthostname.disabled = 1;	
+			document.iform.hostnameupdatesrc_pbx.disabled = 1;
+			document.iform.hostnameupdatesrc_router.disabled = 1;
 			break;
 		case 2:
 			document.iform.extipaddr.disabled = 1;
 			document.iform.exthostname.disabled = 0;	
+			document.iform.hostnameupdatesrc_pbx.disabled = 0;
+			document.iform.hostnameupdatesrc_router.disabled = 0;
 			break;
 	}
 }
@@ -282,9 +341,9 @@ function lan_if_change() {
 						<br>
 						<span class="vexpl">
 							<ul>
-								<li><?=gettext("Public IP Address: this pbx has a routable IP address");?></li>
-								<li><?=gettext("NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below.");?></li>
-								<li><?=gettext("NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below.");?></li>
+								<li><?=gettext("Public IP Address: this PBX has a routable IP address");?></li>
+								<li><?=gettext("NAT + Static Public IP: this PBX is behind a NAT which has a static public IP. Enter this IP below.");?></li>
+								<li><?=gettext("NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this information below.");?></li>
 							</ul>
 						</span>
 					</td>
@@ -298,9 +357,89 @@ function lan_if_change() {
 				<tr>
 					<td width="22%" valign="top" class="vncell"><?=gettext("Public hostname");?></td>
 					<td width="78%" class="vtable">
-						<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>">
+						<?=gettext("This information is updated by:");?><br>
+						<input name="hostnameupdatesrc" id="hostnameupdatesrc_pbx" type="radio" value="pbx"
+						<?php if ($pconfig['hostnameupdatesrc'] == "pbx") echo "checked"; ?>><?=gettext("AskoziaPBX");?>
+						&nbsp;&nbsp;
+						<input name="hostnameupdatesrc" id="hostnameupdatesrc_router" type="radio" value="router" 
+						<?php if ($pconfig['hostnameupdatesrc'] == "router") echo "checked"; ?>><?=gettext("My Router");?><span id="hostname_wrapper" style="display:none;">
+							&nbsp;&nbsp;<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>"></span>
 					</td>
 				</tr>
+				<tr> 
+					<td class="list" colspan="2" height="12">&nbsp;</td>
+				</tr>
+			</table>
+
+		<div id="dyndns_wrapper" style="display:none;">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0" summary="content pane">
+				<tr> 
+					<td valign="top" colspan="2" class="listtopic"><?=gettext("Dynamic DNS Client");?></td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Service Type");?></td>
+					<td width="78%" class="vtable">
+						<select name="dyndnstype" class="formfld" id="type"><?
+
+						$types = explode(",", "DynDNS,DHS,ODS,DyNS,HN.ORG,ZoneEdit,GNUDip,DynDNS (static),DynDNS (custom),easyDNS,EZ-IP,TZO");
+						$vals = explode(" ", "dyndns dhs ods dyns hn zoneedit gnudip dyndns-static dyndns-custom easydns ezip tzo");
+
+						for ($j = 0; $j < count($vals); $j++) {
+							?><option value="<?=$vals[$j];?>" <?
+							if ($vals[$j] == $pconfig['dyndnstype']) {
+								echo "selected";
+							}
+							?>><?=htmlspecialchars($types[$j]);?></option><?
+						}
+
+						?></select></td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
+					<td width="78%" class="vtable"> 
+						<input name="dyndnshost" type="text" class="formfld" id="dyndnshost" size="30" value="<?=htmlspecialchars($pconfig['dyndnshost']);?>"> 
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
+					<td width="78%" class="vtable"> 
+						<input name="dyndnsusername" type="text" class="formfld" id="dyndnsusername" size="20" value="<?=htmlspecialchars($pconfig['dyndnsusername']);?>"> 
+					</td>
+				</tr>
+				<tr> 
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
+				  <td width="78%" class="vtable"> 
+				    	<input name="dyndnspassword" type="password" class="formfld" id="dyndnspassword" size="20" value="<?=htmlspecialchars($pconfig['dyndnspassword']);?>"> 
+				  </td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncell">Wildcards</td>
+					<td width="78%" class="vtable"> 
+						<input name="dyndnswildcard" type="checkbox" id="dyndnswildcard" value="yes" <?php if ($pconfig['dyndnswildcard']) echo "checked"; ?>>
+						<?=gettext('Yes, alias "*.hostname.domain" to hostname specified above.');?></td>
+				</tr><? /*
+				<tr> 
+					<td width="22%" valign="top" class="vncell">Server</td>
+					<td width="78%" class="vtable"> 
+						<input name="server" type="text" class="formfld" id="server" size="30" value="<?=htmlspecialchars($pconfig['dyndnsserver']);?>">
+						<br>Special server to connect to.</td>
+				</tr>
+				<tr>
+					<td width="22%" valign="top" class="vncell">Port</td>
+					<td width="78%" class="vtable"> 
+						<input name="port" type="text" class="formfld" id="port" size="5" value="<?=htmlspecialchars($pconfig['dyndnsport']);?>">
+						<br>Special server port to connect to.</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncell">MX</td>
+					<td width="78%" class="vtable"> 
+						<input name="mx" type="text" class="formfld" id="mx" size="30" value="<?=htmlspecialchars($pconfig['dyndnsmx']);?>"> 
+						<br>
+						Set this option only if you need a special MX record. Not all services support this.</td>
+				</tr>
+		*/ ?></table>
+		</div>
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%"> 

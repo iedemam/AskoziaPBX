@@ -139,19 +139,21 @@ function network_lan_configure() {
 
 /**
  * Returns the current public IP address.
- * XXX : incomplete implementation, does not return a value if topology is 'natdynamic'
  */
 function network_get_current_public_ip_address() {
 	global $config, $g;
 	
 	$lancfg = $config['interfaces']['lan'];
 	
-	if ($lancfg['topology'] == "public")
+	if ($lancfg['topology'] == "public") {
 	 	return $lancfg['ipaddr'];
-	else if ($lancfg['topology'] == "natstatic")
+
+	} else if ($lancfg['topology'] == "natstatic") {
 		return $lancfg['extipaddr'];
-		
-	/* else.. TODO: get STUN public info */
+
+	} else {
+		return exec("/usr/bin/fetch -q -o - http://ip.askozia.com");
+	}
 }
 
 /**

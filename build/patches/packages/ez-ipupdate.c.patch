@@ -1,5 +1,5 @@
---- ez-ipupdate.c.orig	Tue Mar 12 00:31:47 2002
-+++ ez-ipupdate.c	Sun May  8 13:18:47 2005
+--- ez-ipupdate.c.orig	2008-07-25 13:17:46.000000000 +0200
++++ ez-ipupdate.c	2008-07-25 12:42:02.000000000 +0200
 @@ -798,7 +798,7 @@
      sprintf(buf, "message incomplete because your OS sucks: %s\n", fmt);
  #endif
@@ -9,21 +9,27 @@
    }
    else
    {
-@@ -1602,26 +1602,23 @@
+@@ -1602,45 +1602,134 @@
    return(bread);
  }
  
 -int get_if_addr(int sock, char *name, struct sockaddr_in *sin)
 +int get_if_addr(char *name, struct sockaddr_in *sin)
  {
++  if (strcmp(name, "web-detect"))
++  {
  #ifdef IF_LOOKUP
-   struct ifreq ifr;
-+  int mysock;
+-  struct ifreq ifr;
++	struct ifreq ifr;
++	int mysock;
 +  
-+  mysock = socket(AF_INET, SOCK_DGRAM, 0);
++	mysock = socket(AF_INET, SOCK_DGRAM, 0);
++
++	memset(&ifr, 0, sizeof(ifr));
++	strcpy(ifr.ifr_name, name);
  
-   memset(&ifr, 0, sizeof(ifr));
-   strcpy(ifr.ifr_name, name);
+-  memset(&ifr, 0, sizeof(ifr));
+-  strcpy(ifr.ifr_name, name);
 -  /* why does this need to be done twice? */
 -  if(ioctl(sock, SIOCGIFADDR, &ifr) < 0) 
 -  { 
@@ -33,35 +39,144 @@
 -    return -1;
 -  }
 -  if(ioctl(sock, SIOCGIFADDR, &ifr) < 0)
-+
-+  if(ioctl(mysock, SIOCGIFADDR, &ifr) < 0)
-   { 
-     perror("ioctl(SIOCGIFADDR)"); 
-     memset(sin, 0, sizeof(struct sockaddr_in));
-     dprintf((stderr, "%s: %s\n", name, "unknown interface"));
-+    close(mysock);
-     return -1;
-   }
- 
-@@ -1629,14 +1626,17 @@
-   {
-     memcpy(sin, &(ifr.ifr_addr), sizeof(struct sockaddr_in));
-     dprintf((stderr, "%s: %s\n", name, inet_ntoa(sin->sin_addr)));
-+    close(mysock);
-     return 0;
+-  { 
+-    perror("ioctl(SIOCGIFADDR)"); 
+-    memset(sin, 0, sizeof(struct sockaddr_in));
+-    dprintf((stderr, "%s: %s\n", name, "unknown interface"));
+-    return -1;
+-  }
+-
+-  if(ifr.ifr_addr.sa_family == AF_INET)
+-  {
+-    memcpy(sin, &(ifr.ifr_addr), sizeof(struct sockaddr_in));
+-    dprintf((stderr, "%s: %s\n", name, inet_ntoa(sin->sin_addr)));
+-    return 0;
++	if(ioctl(mysock, SIOCGIFADDR, &ifr) < 0)
++	{ 
++	  perror("ioctl(SIOCGIFADDR)"); 
++	  memset(sin, 0, sizeof(struct sockaddr_in));
++	  dprintf((stderr, "%s: %s\n", name, "unknown interface"));
++	  close(mysock);
++	  return -1;
++	}
++	
++	if(ifr.ifr_addr.sa_family == AF_INET)
++	{
++	  memcpy(sin, &(ifr.ifr_addr), sizeof(struct sockaddr_in));
++	  dprintf((stderr, "%s: %s\n", name, inet_ntoa(sin->sin_addr)));
++	  close(mysock);
++	  return 0;
++	}
++	else
++	{
++	  memset(sin, 0, sizeof(struct sockaddr_in));
++	  dprintf((stderr, "%s: %s\n", name, "could not resolve interface"));
++	  close(mysock);
++	  return -1;
++	}
++	close(mysock);
++#endif
++	return -1;
    }
    else
    {
-     memset(sin, 0, sizeof(struct sockaddr_in));
-     dprintf((stderr, "%s: %s\n", name, "could not resolve interface"));
-+    close(mysock);
-     return -1;
+-    memset(sin, 0, sizeof(struct sockaddr_in));
+-    dprintf((stderr, "%s: %s\n", name, "could not resolve interface"));
+-    return -1;
++	char buf[BUFFER_SIZE+1];
++	char *bp = buf;
++	int bytes;
++	int btot;
++	int ret;
++	char *server = "ip.askozia.com"; // TODO: params
++	char *port = "80"; // TODO: params
++	
++	buf[BUFFER_SIZE] = '\0';
++	
++	if(do_connect((int*)&client_sockfd, server, port) != 0)
++	{
++	  if(!(options & OPT_QUIET))
++	    show_message("error connecting to ip-detection server %s:%s\n", server, port);
++	  return -1;
++	}
++	
++	snprintf(buf, BUFFER_SIZE, "GET / HTTP/1.0\015\012", request);
++	output(buf);
++	snprintf(buf, BUFFER_SIZE, "User-Agent: %s-%s %s [%s] (%s)\015\012", 
++	    "ez-update", VERSION, OS, (options & OPT_DAEMON) ? "daemon" : "", "by Angus Mackay");
++	output(buf);
++	snprintf(buf, BUFFER_SIZE, "Host: %s\015\012", server);
++	output(buf);
++	snprintf(buf, BUFFER_SIZE, "\015\012");
++	output(buf);
++	
++	bp = buf;
++	bytes = 0;
++	btot = 0;
++	while((bytes=read_input(bp, BUFFER_SIZE-btot)) > 0)
++	{
++	  bp += bytes;
++	  btot += bytes;
++	  dprintf((stderr, "btot: %d\n", btot));
++	}
++	close(client_sockfd);
++	buf[btot] = '\0';
++	
++	dprintf((stderr, "server output: %s\n", buf));
++	
++	if(sscanf(buf, " HTTP/1.%*c %3d", &ret) != 1)
++	{
++	  if(!(options & OPT_QUIET))
++	    show_message("strange server response, are you connecting to the right ip-detection server?\n");
++	}
++	else if (ret != 200)
++	{
++	  show_message("unknown return code: %d\n", ret);
++	}
++	else
++	{
++	  char *p;
++	  char *next = buf;
++	  printf("request successful\n");
++	  while (p = strchr(next, '.'))
++	  {
++	    next = p+1;
++	    int dots = 1;
++	    // Find beginning of number before the dot
++	    while (isdigit(*(p-1)))
++	      p--;
++	
++	    // Find end of ip
++	    while (*next == '.' || isdigit(*next))
++	    {
++	      if (*next == '.')
++	        dots++;
++	      next++;
++	    }
++	    // If we are not at end of buffer, continue searching 
++	    if (*next != '\0')
++	    {
++	      *next = '\0';
++	      next++;
++	    }
++	    if(dots == 3 && inet_aton(p, &sin->sin_addr))
++	    {
++	      dprintf((stderr, "Detected IP: %s\n", p));
++	      return 0;
++	    }
++	  }
++	 	show_message("No ip address found in server response:\n%s\n",buf);
++	}
    }
-+  close(mysock);
-   return -1;
- #else
-   return -1;
-@@ -4487,13 +4487,6 @@
+-  return -1;
+-#else
+-  return -1;
+-#endif
++	return -1;
+ }
+ 
+ static int PGPOW_read_response(char *buf)
+@@ -4487,13 +4576,6 @@
    if(mx == NULL) { mx = strdup(""); }
    if(url == NULL) { url = strdup(""); }
  
@@ -75,7 +190,7 @@
    if(options & OPT_DAEMON)
    {
      int local_update_period = update_period;
-@@ -4584,7 +4577,7 @@
+@@ -4584,7 +4666,7 @@
        }
  #endif
  
@@ -84,7 +199,7 @@
        {
          ifresolve_warned = 0;
          if(memcmp(&sin.sin_addr, &sin2.sin_addr, sizeof(struct in_addr)) != 0 || 
-@@ -4607,6 +4600,19 @@
+@@ -4607,6 +4689,19 @@
              show_message("successful update for %s->%s (%s)\n",
                  interface, inet_ntoa(sin.sin_addr), N_STR(host));
  
@@ -104,7 +219,7 @@
              if(post_update_cmd)
              {
                int res;
-@@ -4631,19 +4637,6 @@
+@@ -4631,19 +4726,6 @@
                  }
                }
              }
@@ -124,7 +239,7 @@
            }
            else
            {
-@@ -4743,14 +4736,11 @@
+@@ -4743,14 +4825,11 @@
          {
  #ifdef IF_LOOKUP
            struct sockaddr_in sin;
@@ -140,7 +255,7 @@
            snprintf(ipbuf, sizeof(ipbuf), "%s", inet_ntoa(sin.sin_addr));
  #else
            fprintf(stderr, "interface lookup not enabled at compile time\n");
-@@ -4789,10 +4779,8 @@
+@@ -4789,10 +4868,8 @@
        if(address == NULL && interface != NULL)
        {
          struct sockaddr_in sin;
@@ -152,7 +267,7 @@
          {
            if(address) { free(address); }
            address = strdup(inet_ntoa(sin.sin_addr));
-@@ -4802,7 +4790,6 @@
+@@ -4802,7 +4879,6 @@
            show_message("could not resolve ip address for %s.\n", interface);
            exit(1);
          }
@@ -160,7 +275,7 @@
        }
  
        for(i=0; i<ntrys; i++)
-@@ -4814,26 +4801,6 @@
+@@ -4814,26 +4890,6 @@
          }
          if(i+1 != ntrys) { sleep(10 + 10*i); }
        }
@@ -187,7 +302,7 @@
  
        // write cache file
        if(retval == 0 && cache_file)
-@@ -4844,14 +4811,11 @@
+@@ -4844,14 +4900,11 @@
          {
  #ifdef IF_LOOKUP
            struct sockaddr_in sin;
@@ -203,7 +318,7 @@
            snprintf(ipbuf, sizeof(ipbuf), "%s", inet_ntoa(sin.sin_addr));
  #else
            fprintf(stderr, "interface lookup not enabled at compile time\n");
-@@ -4870,16 +4834,33 @@
+@@ -4870,6 +4923,27 @@
            exit(1);
          }
        }
@@ -231,13 +346,14 @@
      }
      else
      {
-       fprintf(stderr, "no update needed at this time\n");
+@@ -4877,10 +4951,6 @@
      }
    }
--
+ 
 -#ifdef IF_LOOKUP
 -  if(sock > 0) { close(sock); }
 -#endif
- 
+-
    if(address) { free(address); }
    if(cache_file) { free(cache_file); }
+   if(config_file) { free(config_file); }

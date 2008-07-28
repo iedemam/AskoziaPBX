@@ -48,35 +48,33 @@ function services_dyndns_reset() {
 
 function services_dyndns_configure() {
 	global $config, $g;
-	
+
 	/* kill any running ez-ipupdate */
 	/* ez-ipupdate needs SIGQUIT instead of SIGTERM */
 	sigkillbypid("{$g['varrun_path']}/ez-ipupdate.pid", "QUIT");
-	
+
 	$dyndnscfg = $config['dyndns'];
-	
-	if (isset($dyndnscfg['enable'])) {
-	
+
+	if ($config['interfaces']['lan']['hostnameupdatesrc'] == "pbx") {
+
 		if ($g['booting'])
 			echo "Starting DynDNS client... ";
 		else
 			sleep(1);
-		
-		/*XXX determine LAN interface name */
-		$lanif = $config['interfaces']['lan']['if'];
-		
+
 		/* write ez-ipupdate.conf */
 		$fd = fopen("{$g['varetc_path']}/ez-ipupdate.conf", "w");
 		if (!$fd) {
 			printf("Error: cannot open ez-ipupdate.conf in services_dyndns_configure().\n");
 			return 1;
 		}
-			
+
 		$ezipupdateconf = <<<EOD
 service-type={$dyndnscfg['type']}
 user={$dyndnscfg['username']}:{$dyndnscfg['password']}
 host={$dyndnscfg['host']}
-interface=$lanif
+interface=web-detect
+period=600
 max-interval=2073600
 pid-file={$g['varrun_path']}/ez-ipupdate.pid
 cache-file={$g['vardb_path']}/ez-ipupdate.cache
@@ -97,7 +95,7 @@ EOD;
 		if ($dyndnscfg['mx']) {
 			$ezipupdateconf .= "mx={$dyndnscfg['mx']}\n";
 		}
-		
+
 		/* enable wildcards? */
 		if (isset($dyndnscfg['wildcard'])) {
 			$ezipupdateconf .= "wildcard\n";
@@ -105,21 +103,22 @@ EOD;
 
 		fwrite($fd, $ezipupdateconf);
 		fclose($fd);
-		
+
+
 		/* if we're booting, copy the cache file from /conf */
 		if ($g['booting']) {
 			if (file_exists("{$g['conf_path']}/ez-ipupdate.cache")) {
 				copy("{$g['conf_path']}/ez-ipupdate.cache", "{$g['vardb_path']}/ez-ipupdate.cache");
 			}
 		}
-		
+
 		/* run ez-ipupdate */
 		mwexec("/usr/local/bin/ez-ipupdate -c {$g['varetc_path']}/ez-ipupdate.conf");
-		
+
 		if ($g['booting'])
 			echo "done\n";
 	}
-	
+
 	return 0;
 }
 
