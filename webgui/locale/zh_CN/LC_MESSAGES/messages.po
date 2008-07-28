@@ -1,25 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Xing Cao
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-18 08:50+0000\n"
+"POT-Creation-Date: 2008-07-28 12:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Accounts"
-msgstr "’ ªß"
+msgstr ""
 
 msgid "Phones"
-msgstr "µÁª∞"
+msgstr ""
+
+msgid "Phone Accounts asdflkja sdflaksdj flaskdjf "
+msgstr ""
 
 msgid "SIP"
 msgstr ""
@@ -70,6 +74,9 @@ msgid "Dialstring"
 msgstr ""
 
 msgid "Providers"
+msgstr ""
+
+msgid "Provider Accounts allow you to configure your system to route calls to and from external sources, be it VoIP service providers or attached ISDN / Analog interface hardware."
 msgstr ""
 
 msgid "Pattern(s)"
@@ -391,6 +398,9 @@ msgid "Disable DNS SRV lookups."
 msgstr ""
 
 msgid "Debug"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "ISDN Interface"
@@ -766,9 +776,6 @@ msgstr ""
 msgid "Download:"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "Upload:"
 msgstr ""
 
@@ -1014,6 +1021,12 @@ msgstr ""
 msgid "A valid public hostname must be entered for this topology."
 msgstr ""
 
+msgid "The dynamic DNS host name contains invalid characters."
+msgstr ""
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr ""
+
 msgid "Checked interfaces will be bridged to the main interface."
 msgstr ""
 
@@ -1032,19 +1045,40 @@ msgstr ""
 msgid "Topology"
 msgstr ""
 
-msgid "Public IP Address: this pbx has a routable IP address"
+msgid "Public IP Address: this PBX has a routable IP address"
 msgstr ""
 
-msgid "NAT + static public IP: this pbx is behind a NAT which has a static public IP. Enter this IP below."
+msgid "NAT + Static Public IP: this PBX is behind a NAT which has a static public IP. Enter this IP below."
 msgstr ""
 
-msgid "NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this hostname below."
+msgid "NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this information below."
 msgstr ""
 
 msgid "Public IP address"
 msgstr ""
 
 msgid "Public hostname"
+msgstr ""
+
+msgid "This information is updated by:"
+msgstr ""
+
+msgid "AskoziaPBX"
+msgstr ""
+
+msgid "My Router"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr ""
+
+msgid "Service Type"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 
 msgid "after you click &quot;Save&quot;, all currentcalls will be dropped. You may also have to do one or more of the following steps before you can access your PBX again:"
@@ -1215,6 +1249,10 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -1460,9 +1498,6 @@ msgid "SMTP host URL or IP address and optional port."
 msgstr ""
 
 msgid "E-mail Address"
-msgstr ""
-
-msgid "Password"
 msgstr ""
 
 msgid "Options"
@@ -2233,9 +2268,6 @@ msgstr ""
 msgid "Backup/Restore"
 msgstr ""
 
-msgid "Dynamic DNS"
-msgstr ""
-
 msgid "Summary"
 msgstr ""
 
@@ -2252,6 +2284,9 @@ msgid "webGUI Configuration"
 msgstr ""
 
 msgid "Live Stats"
+msgstr ""
+
+msgid "Page Help: "
 msgstr ""
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
