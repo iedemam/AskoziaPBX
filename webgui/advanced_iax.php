@@ -91,9 +91,9 @@ if (file_exists($d_iaxconfdirty_path)) {
 	}
 }
 
-?>
-<?php include("fbegin.inc"); ?>
-<script language="JavaScript">
+
+include("fbegin.inc");
+?><script language="JavaScript">
 <!--
 function jb_enable_click() {
 	if (document.iform.jbenable.checked) {
@@ -104,10 +104,10 @@ function jb_enable_click() {
 	}
 }
 //-->
-</script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="advanced_iax.php" method="post" name="iform" id="iform">
+</script><? 
+if ($input_errors) print_input_errors($input_errors);
+if ($savemsg) print_info_box($savemsg); 
+?><form action="advanced_iax.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
 			<td valign="top" colspan="2" class="listtopic"><?=gettext("General");?></td>
@@ -126,7 +126,7 @@ function jb_enable_click() {
 			<td valign="top" colspan="2" class="listtopic"><?=gettext("Jitterbuffer");?></td>
 		</tr>
 		<tr> 
-			<td valign="top" class="vncell">Enable</td>
+			<td valign="top" class="vncell"><?=gettext("Enable");?></td>
 			<td class="vtable">
 				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>><?=gettext("Enable Jitterbuffer on IAX connections terminated by AskoziaPBX.");?>
 			</td>

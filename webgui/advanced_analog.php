@@ -106,7 +106,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<tr> 
 			<td width="20%" valign="top" class="vncell"><?=gettext("Tone Zones");?></td>
 			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Loaded");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
-				<ul id="gme" class="gme" style="min-height:50px"><? 
+				<ul id="gme" class="gme"><? 
 
 				foreach ($pconfig['loadzone'] as $loadzone) {
 					if (array_key_exists($loadzone, $zaptel_loadzones)) {
@@ -117,7 +117,7 @@ if (file_exists($d_analogconfdirty_path)) {
 				?></ul>
 			</td>
 			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Inactive");?></strong>
-				<ul id="gmd" class="gmd" style="min-height:50px"><?
+				<ul id="gmd" class="gmd"><?
 
 				foreach ($zaptel_loadzones as $abbreviation=>$friendly) {
 					if (!in_array($abbreviation, $pconfig['loadzone'])) {
@@ -158,4 +158,4 @@ function save_loadzone_states() {
 }
 // ]]>			
 </script>
-<?php include("fend.inc"); ?>
+<? include("fend.inc"); ?>

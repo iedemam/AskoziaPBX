@@ -533,3 +533,15 @@ div.align_right {
 	padding-bottom: 4px;
 	text-align: center;
 }
+
+.display_none {
+	display: none;
+}
+
+form.display {
+	display: inline;
+}
+
+div.padding_top {
+	padding-top: 2px;
+}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-24 15:14+0200\n"
+"POT-Creation-Date: 2008-07-18 08:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,6 +157,9 @@ msgstr ""
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr ""
 
+msgid "Key"
+msgstr ""
+
 msgid "Paste an RSA private key in PEM format here."
 msgstr ""
 
@@ -242,6 +245,9 @@ msgid "Binding Port"
 msgstr ""
 
 msgid "Jitterbuffer"
+msgstr ""
+
+msgid "Enable"
 msgstr ""
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
@@ -386,9 +392,6 @@ msgid "Disable DNS SRV lookups."
 msgstr ""
 
 msgid "Debug"
-msgstr ""
-
-msgid "Download"
 msgstr ""
 
 msgid "ISDN Interface"
@@ -762,6 +765,9 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1210,10 +1216,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."

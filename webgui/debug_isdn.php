@@ -51,10 +51,9 @@ if ($_POST) {
 
 }
 
-?>
+include("fbegin.inc");
 
-<?php include("fbegin.inc"); ?>
-<form action="debug_isdn.php" method="post">
+?><form action="debug_isdn.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<?php if ($state == "stopped"): ?>
 		<tr> 

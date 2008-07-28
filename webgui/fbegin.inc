@@ -97,14 +97,14 @@ function dynamic_menu(&$menu, $menu_title) {
 						if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) :?>
 							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag">
 						<? else :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag" style="display: none">
+							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag" class="display_none">
 						<? endif;
 					}
 					if ($menu_title == 'Advanced') {
 						if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) :?>
 							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced">
 						<? else :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced" style="display: none">
+							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced" class="display_none">
 						<? endif;
 					}
 					

@@ -106,9 +106,9 @@ if ($_POST) {
 		exit;
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+
+include("fbegin.inc");
+?><script type="text/JavaScript">
 <!--
 	<?=javascript_public_direct_dial_editor("functions");?>
 

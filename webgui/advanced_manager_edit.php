@@ -109,10 +109,12 @@ if ($_POST) {
 		exit;
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-	<form action="advanced_manager_edit.php" method="post" name="iform" id="iform">
+
+include("fbegin.inc");
+
+if ($input_errors) print_input_errors($input_errors);
+
+	?><form action="advanced_manager_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Username");?></td>

@@ -106,11 +106,11 @@ if (file_exists($d_sipconfdirty_path)) {
 		unlink($d_sipconfdirty_path);
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="advanced_sip.php" method="post" name="iform" id="iform">
+
+include("fbegin.inc");
+if ($input_errors) print_input_errors($input_errors);
+if ($savemsg) print_info_box($savemsg);
+?><form action="advanced_sip.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
 			<td width="20%" valign="top" class="vncell"><?=gettext("Binding Port");?></td>

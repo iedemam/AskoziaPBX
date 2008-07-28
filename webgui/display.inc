@@ -145,19 +145,7 @@ function display_page_selector($page, $totalitems, $limit, $filtering=null) {
 	//if more than one page
 	if($totalitems > 1)
 	{	
-		$pagination .= "<div class=\"pagination\"";
-		if($margin || $padding)
-		{
-			$pagination .= " style=\"";
-			if($margin) {
-				$pagination .= "margin: $margin;";
-			}
-			if($padding) {
-				$pagination .= "padding: $padding;";
-			}
-			$pagination .= "\"";
-		}
-		$pagination .= ">";
+		$pagination .= "<div class=\"pagination\">";
 
 		//previous button
 		if ($page > 1) {
@@ -757,7 +745,7 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 			}
 
 			?>>&nbsp;<?=gettext("allow extension to be directly dialed over public networks");?>
-			<br><span name="publicname_wrapper" id="publicname_wrapper" style="display: none">
+			<br><span name="publicname_wrapper" id="publicname_wrapper" class="display_none">
 			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
 			<br><span class="vexpl"><?=gettext("Public name. Enter a string to map a friendly name to this extension.");?></span>
 			<br>
@@ -829,10 +817,10 @@ function display_advanced_settings_begin($colspan) {
 			<td class="list" colspan="<?=$colspan + 1;?>" height="12">&nbsp;</td>
 		</tr>
 		<tr>
-			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header"><?=gettext("Advanced Settings");?> (<a href="javascript:{}" id="advanced-settings-opener" style="color: #000000; text-decoration: none"><?=gettext("show");?></a>)</td>
+			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header"><?=gettext("Advanced Settings");?> (<a href="javascript:{}" id="advanced-settings-opener" style="color: #000000; text-decoration: none;"><?=gettext("show");?></a>)</td>
 		</tr>
 	</table>
-	<div id="advanced-settings-container" style="display: none">
+	<div id="advanced-settings-container" class="display_none">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 }
 

@@ -63,12 +63,12 @@ if ($_POST) {
 
 }
 
-?>
+include("fbegin.inc");
 
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="diag_editor.php" method="post">
+if ($input_errors) print_input_errors($input_errors);
+if ($savemsg) print_info_box($savemsg);
+
+?><form action="diag_editor.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<?php if ($mode == "edit"): ?>
 		<tr> 

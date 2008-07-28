@@ -55,11 +55,8 @@ if ($_GET['action'] == "delete") {
 }
 
 $resolve = isset($config['syslog']['resolve']);
-?>
 
-<?php include("fbegin.inc"); ?>
-
-<?php
+include("fbegin.inc");
 
 exec("/usr/sbin/arp -an",$rawdata);
 

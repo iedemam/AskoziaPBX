@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-24 15:14+0200\n"
+"POT-Creation-Date: 2008-07-18 08:50+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -165,6 +165,9 @@ msgstr "Sertifikaatti"
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr "Liitä digitaalisesti allekirjoitettu sertifikaatti X.509 PEM muodossa."
 
+msgid "Key"
+msgstr "Avain"
+
 msgid "Paste an RSA private key in PEM format here."
 msgstr "Liitä yksityinen RSA avain PEM muodossa."
 
@@ -266,6 +269,9 @@ msgstr "Sitova Portti"
 
 msgid "Jitterbuffer"
 msgstr "Jitterbufferi"
+
+msgid "Enable"
+msgstr "Mahdollista"
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
 msgstr ""
@@ -430,9 +436,6 @@ msgstr "Poista DNS SRV käytöstä."
 
 msgid "Debug"
 msgstr "Virheiden etsintä"
-
-msgid "Download"
-msgstr "Lataa"
 
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
@@ -843,6 +846,9 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
+
+msgid "Download"
+msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -1408,13 +1414,7 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
+msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
 
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
@@ -2130,30 +2130,26 @@ msgstr ""
 msgid "Packages"
 msgstr "Paketit"
 
-#, fuzzy
 msgid "The digital signature on this package is invalid."
-msgstr "Levykuvan digitaalinen allekirjoitus on pätemätön."
+msgstr "Paketin digitaalinen allekirjoitus on pätemätön."
 
-#, fuzzy
 msgid "This package is not digitally signed."
-msgstr "Tämä levykuva ei ole digitaalisesti allekirjoitettu."
+msgstr "Tämä paketti ei ole digitaalisesti allekirjoitettu."
 
-#, fuzzy
 msgid "There has been an error verifying the signature on this package."
-msgstr "On tapahtunut virhe todentaessa allekirjoituksen levykuvassa."
+msgstr "On tapahtunut virhe todentaessa paketin allekirjoitusta."
 
 msgid "The package is corrupt and has been deleted."
-msgstr ""
+msgstr "Tämä paketti on korruptoitunut ja on poistettu."
 
 msgid "Package already exists, install failed."
 msgstr "Paketti on jo olemassa, asennus epäonnistui."
 
-#, fuzzy
 msgid "Extracted package not found, install failed."
-msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
+msgstr "ladattu paketti ei löytynyt, asennus epäonnistui."
 
 msgid "Existing package not found, update failed."
-msgstr "Oleva paketti ei löydetty, päivitys epäonnistui."
+msgstr "Oleva paketti ei löytynyt, päivitys epäonnistui."
 
 msgid ""
 "The uploaded package is not newer than the existing package, update failed."
@@ -2171,7 +2167,6 @@ msgstr ""
 "Klikkaa <img src=\"update.png\" border=\"0\"> ikoonia alla ja valitse sekä "
 "asenna päivitetyt paketit."
 
-#, fuzzy
 msgid ""
 "The following packages issued warnings while verifying their digital "
 "signature. This means that they are not official/supported packages and may "
@@ -2180,14 +2175,14 @@ msgid ""
 "tampered with.<br><br>Check the packages you wish to install despite this "
 "warning."
 msgstr ""
-"<strong>%s</strong><br>Tämä tarkoittaa että lataamasi levykuva ei ole "
-"virallinen/tuettu levykuva ja se voi johtaa yllättävään käytökseen tai "
-"turvallisuuden vaarantamiseen. Älä asenna levykuvaa jos et luota lähteeseen."
-"<br><br>Haluatko asentaa tämän levykuvan?"
+"Seuraavat paketit aiheuttivat varoituksen varmistaessa digitaalisen "
+"allekirjoituksen. Tämä tarkoittaa että ne ei ole virallisia/tuettuja "
+"paketteja ja se voi johtaa yllättävään käytökseen tai turvallisuuden "
+"vaarantamiseen. Älä asenna pakettia jos et luota lähteeseen. "
+"<br><br>Tarkista paketit jotka aiheuttivat tämän varoituksen."
 
-#, fuzzy
 msgid "Continue"
-msgstr "Sisältö"
+msgstr "Jatka"
 
 msgid "Do you really want to disable this package?"
 msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
@@ -2222,47 +2217,39 @@ msgstr "palauta pakettitiedot"
 msgid "Update Installed Package"
 msgstr "Päivitä Asennettu Paketti"
 
-#, fuzzy
 msgid ""
 "Select which packages you would like to update, existing package data will "
 "be preserved."
 msgstr ""
-"Valitse paketit mitkä haluat päivittää tai .pkgpbx tiedostoa ja paina "
-"'Päivitä'"
+"Valitse paketit mitkä haluat päivittää, olevien pakettien tiedot säilytetään."
 
 msgid "Update"
 msgstr "Päivitä"
 
-#, fuzzy
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
 msgstr ""
-"Valitse paketit mitkä haluat päivittää tai .pkgpbx tiedostoa ja paina "
-"'Päivitä'"
+"Valitse .pkgpbx tiedosto josta haluat päivittää, olevien pakettien tiedot "
+"säilytetään."
 
-#, fuzzy
 msgid "Manual Update"
-msgstr "Päivitä"
+msgstr "Manuaalinen Päivitys"
 
 msgid "Install a New Package"
 msgstr "Asenna Uusi Paketti"
 
-#, fuzzy
 msgid "Select which packages you would like to install."
-msgstr ""
-"Valitse paketit mitkä haluat asentaa tai .pkgpbx tiedostoa ja paina 'Asenna'"
+msgstr "Valitse paketit mitkä haluat asentaa."
 
 msgid "Install"
 msgstr "Asenna"
 
-#, fuzzy
 msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Valitse .pbxpkg paketti ja paina 'Asenna'"
+msgstr "Valitse .pbxpkg tiedosto jonka haluat asentaa."
 
-#, fuzzy
 msgid "Manual Install"
-msgstr "Asenna"
+msgstr "Manuaalinen Asennus"
 
 msgid "Restore from a Backup Archive"
 msgstr "Palauta varmuuskopiosta"
@@ -3142,12 +3129,3 @@ msgstr "Paketti palautettiin onnistuneesti."
 
 msgid "Package installed successfully."
 msgstr "Paketti asennettiin onnistuneesti."
-
-#~ msgid "activate package from backup data"
-#~ msgstr "aktivoi tallennettu paketti"
-
-#~ msgid "Select a .pbxpkg file and press 'Update'"
-#~ msgstr "Valitse .pbxpkg paketti ja paina 'Päivitä'"
-
-#~ msgid "Existing package data will be preserved."
-#~ msgstr "Olevat pakettitiedot säilytetään."

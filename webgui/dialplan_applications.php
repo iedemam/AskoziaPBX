@@ -68,10 +68,8 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	}
 }
 
-?>
-
-<?php include("fbegin.inc"); ?>
-<form action="dialplan_applications.php" method="post">
+include("fbegin.inc");
+?><form action="dialplan_applications.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

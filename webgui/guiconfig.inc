@@ -363,8 +363,8 @@ function print_info_box($msg, $keep=false) {
 		<p>
 			<table border="0" cellspacing="0" cellpadding="4" width="100%">
 				<tr>
-					<td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="exclam.gif" width="28" height="32"></td>
-					<td bgcolor="#D9DEE8" style="padding-left: 8px"><?=gettext($msg);?></td>
+					<td align="center" valign="top" bgcolor="#687BA4" width="36"><img src="exclam.gif" width="28" height="32"></td>
+					<td style="padding-left:8px" bgcolor="#D9DEE8"><?=gettext($msg);?></td>
 				</tr>
 			</table>
 		</p>

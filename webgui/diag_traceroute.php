@@ -62,9 +62,9 @@ if (!isset($do_traceroute)) {
 	$ttl = DEFAULT_TTL;
 	$resolve = false;
 }
-?>
-<?php include("fbegin.inc"); ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+include("fbegin.inc");
+?><table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 <?php 

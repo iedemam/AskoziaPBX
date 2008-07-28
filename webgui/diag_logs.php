@@ -75,9 +75,9 @@ $print_pageselector = display_page_selector($current_page, $pages, 12, $filter);
 
 exec($command, $logarr);
 
-?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+include("fbegin.inc");
+
+?><script type="text/JavaScript">
 <!--
 	<?=javascript_filter_textbox("functions");?>
 
@@ -112,9 +112,9 @@ exec($command, $logarr);
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr> 
 					<td colspan="2" class="listtopic">
-					<form action="diag_logs.php" method="get" id="filtering" style="display:inline">
+					<form action="diag_logs.php" method="get" id="filtering" class="display">
 						<div class="align_right">
-							<label for="filter" style="display:none"> <?=gettext("filter");?></label>
+							<label for="filter" class="display_none"> <?=gettext("filter");?></label>
 							<input name="filter" id="filter" type="text" width="20" class="filterbox" value="<?=$filter;?>">
 							<?
 							if(!$filter)
@@ -124,7 +124,7 @@ exec($command, $logarr);
 							?>
 						</div>
 					</form>
-					<div style="padding-top:2px"><?=gettext("System log entries");?></div>
+					<div class="padding_top"><?=gettext("System log entries");?></div>
 					</td>
 				</tr><?
 

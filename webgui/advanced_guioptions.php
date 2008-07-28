@@ -150,7 +150,7 @@ if ($_POST) {
                     <?=gettext("Paste a signed certificate in X.509 PEM format here.");?></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Key</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Key");?></td>
                   <td width="78%" class="vtable"> 
                     <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
                     <br> 
