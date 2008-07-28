@@ -108,6 +108,10 @@ require("guiconfig.inc");
 	Copyright &copy; 2005 - 2008 Martin Lambers.
 	All rights reserved.<br>
 	<br>
+	ez-ipupdate (<a href="http://www.gusnet.cx/proj/ez-ipupdate/" target="_blank">http://www.gusnet.cx/proj/ez-ipupdate</a>)<br>
+	Copyright &copy; 1998-2001 Angus Mackay. All rights reserved.<br>
+	additional patches from <a href="http://m0n0.ch/wall" target="_blank">m0n0wall</a> and jef2000 in the <a href="http://forum.openwrt.org" target="_blank">OpenWRT forums</a><br>
+	<br>
 	ISDN4BSD by HPS (<a href="http://www.turbocat.net/~hselasky/isdn4bsd/" target="_blank">http://www.turbocat.net/~hselasky/isdn4bsd/</a>)<br>
 	Copyright &copy; 2003 - 2008 Hans Petter Selasky.
 	All rights reserved.<br>
