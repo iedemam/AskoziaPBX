@@ -79,7 +79,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
             <form action="system_backup.php" method="post" enctype="multipart/form-data">
             <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <?php if ($savemsg) print_info_box($savemsg); ?>
+            <?php if ($savemsg) print_info_box($savemsg, "keep"); ?>
               <table width="100%" border="0" cellspacing="0" cellpadding="6">
                 <tr> 
                   <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>
