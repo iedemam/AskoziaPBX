@@ -30,6 +30,8 @@
 */
 
 $pgtitle = array(gettext("Interfaces"), gettext("Analog"));
+$pghelp = gettext("Detected ports on this page must be edited and saved before the system can utilize them.");
+$pglegend = array("edit", "delete");
 require("guiconfig.inc");
 
 

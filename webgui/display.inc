@@ -245,6 +245,8 @@ function display_gui_language_selector($current_language) {
 	$languages = array(
 		"en_US" => "English",
 		"es_ES" => "Castellano",
+		"zh_CN" => "汉字",
+		"zh_TW" => "漢字",
 		"da_DA" => "Dansk",
 		"de_DE" => "Deutsch",
 		"fr_FR" => "Français",
@@ -401,8 +403,8 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 			
 			// multiple instances don't need help for every instance
 			if (!$idprefix) {				
-				?><span class="vexpl"><?=gettext("Enter a pattern or a phone number and select a destination extension. To ring multiple phones, simply define them with the same pattern. If a phone number is entered, it will used as the \"read back\" number on unanswered calls. If nothing is entered, all calls will be directed to the destination extension.<br>\n <ul>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters</li>\n \t<li><strong>!</strong> - matches zero or more characters</li>\n </ul>\n");?></span><?
-			}			
+				?><span class="vexpl"><?=gettext("Enter a pattern or a phone number and select a destination extension. To ring multiple phones, simply define them with the same pattern. If a phone number is entered, it will used as the \"external\" number on unanswered calls. If nothing is entered, all calls will be directed to the destination extension.<br>\n <ul>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters</li>\n \t<li><strong>!</strong> - matches zero or more characters</li>\n </ul>\n");?></span><?
+			}
 
 		?></td>
 	</tr><?
@@ -675,7 +677,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 			
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext("Enter patterns, one per line, to define this provider's routing. Prefixes can be defined as shown in the following example. A prefix of \"9\" is equivalent to a pattern of \"9|.\"). If no patterns are entered, only incoming calls will be accepted from this provider.<br>\n <ul>\n \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n </ul>\n");?></span><?
+			?><br><span class="vexpl"><?=gettext("Enter patterns, one per line, to define this provider's routing. Enter \"X!\" to use this Provider for all outgoing calls. To only use this Provider for calls starting with the number \"9\" enter \"9|.\". If no patterns are entered, only incoming calls will be accepted.<br>\n <ul>\n \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n </ul>\n");?></span><?
 		}
 		
 		?></td>
@@ -897,7 +899,7 @@ function display_description_field($current_description, $colspan) {
 function display_readback_number_field($current_readbacknumber, $colspan) {
 
 	?><tr> 
-		<td valign="top" class="vncell"><?=gettext("Readback Number");?></td>
+		<td valign="top" class="vncell"><?=gettext("Public Number");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
 			<input name="readbacknumber" type="text" class="formfld" id="readbacknumber" size="40" value="<?=htmlspecialchars($current_readbacknumber);?>"> 
 			<br><span class="vexpl"><?=gettext("This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back.");?></span>

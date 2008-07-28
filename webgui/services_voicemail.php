@@ -30,6 +30,7 @@
 */
 
 $pgtitle = array(gettext("Services"), gettext("Voicemail"));
+$pghelp = gettext("In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here.");
 require("guiconfig.inc");
 
 $vmconfig = &$config['voicemail'];

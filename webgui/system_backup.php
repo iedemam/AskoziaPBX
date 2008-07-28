@@ -29,8 +29,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("System"), gettext("Backup/restore"));
-
+$pgtitle = array(gettext("System"), gettext("Backup/Restore"));
+$pghelp = gettext("The entire system configuration can be backed up and restored via this page.");
 /* omit no-cache headers because it confuses IE with file downloads */
 $omit_nocacheheaders = true;
 require("guiconfig.inc"); 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-18 08:50+0000\n"
+"POT-Creation-Date: 2008-07-28 16:20+0200\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -28,6 +28,11 @@ msgstr "Accounts"
 
 msgid "Phones"
 msgstr "Telefoni"
+
+msgid ""
+"Phone Accounts allow you to configure internal extensions and their access "
+"to Provider Accounts. Click an account type below to get started."
+msgstr ""
 
 msgid "SIP"
 msgstr "SIP"
@@ -80,6 +85,12 @@ msgstr "Stringa di chiamata"
 msgid "Providers"
 msgstr "Operatori telefonici"
 
+msgid ""
+"Provider Accounts allow you to configure routes to and from external sources "
+"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
+"Click an account type below to get started."
+msgstr ""
+
 msgid "Pattern(s)"
 msgstr "Percorso(i)"
 
@@ -107,14 +118,11 @@ msgstr "Vuoi cancellare questo operatore?"
 msgid "delete provider"
 msgstr "cancella il operatore"
 
-msgid "Main MSN"
-msgstr "MSN principale"
+msgid "Number"
+msgstr "Numero"
 
 msgid "Interface"
 msgstr "Interfaccia"
-
-msgid "Number"
-msgstr "Numero"
 
 msgid "Advanced"
 msgstr "Avanzato"
@@ -453,6 +461,9 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
+msgid "Download"
+msgstr "Scaricare"
+
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -494,19 +505,6 @@ msgstr "cancella i dati arp"
 
 msgid "remove all entries from arp table"
 msgstr "eliminare tutti i dati dalla tabella arp"
-
-msgid "Hint:"
-msgstr "Suggerimento"
-
-msgid ""
-"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-"hostnames&quot; is checked on the"
-msgstr ""
-"Gli indirizzi IP vengono risolti in nomi host se \"Risolvere gli indirizzi "
-"IP a nomi host\" è selezionato"
-
-msgid "Diagnostics: Logs</a> page."
-msgstr "Diagnostica: Pagina dei registri."
 
 msgid "Editor"
 msgstr "Editor"
@@ -633,6 +631,11 @@ msgstr ""
 "Assicurarsi che le impostazioni del syslogd sul server remoto accettino i "
 "messaggi syslog da AskoziaPBX."
 
+msgid ""
+"This page allows direct execution of commands on the Asterisk console. "
+"Execute \"help\" to see a list of possible commands."
+msgstr ""
+
 msgid "Command"
 msgstr "Comando"
 
@@ -689,6 +692,13 @@ msgstr "Piano delle chiamate"
 msgid "Applications"
 msgstr "Applicazioni"
 
+msgid ""
+"With some knowledge of how the Asterisk dialplan works, some basic "
+"applications can be added to AskoziaPBX. These applications can then be "
+"dialed via their defined extensions or used as a destination for incoming "
+"calls from Providers."
+msgstr ""
+
 msgid "name"
 msgstr "nome"
 
@@ -722,6 +732,12 @@ msgstr "Interno utilizzato per raggiungere questa applicazione"
 msgid "Call Groups"
 msgstr "Gruppi di chiamata"
 
+msgid ""
+"Groups of extensions can be configured to ring concurrently. These groups "
+"can then be dialed via their defined extensions or used as a destination for "
+"incoming calls from Providers."
+msgstr ""
+
 msgid "Members"
 msgstr "Membri"
 
@@ -745,6 +761,11 @@ msgstr "Numero interno usato per raggiungere questo gruppo di chiamata."
 
 msgid "Transfers"
 msgstr "Trasferimenti"
+
+msgid ""
+"A variety of settings are here which define how call transfers and call "
+"parking are handled. The defaults should work in most situations."
+msgstr ""
 
 msgid ""
 "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
@@ -884,9 +905,6 @@ msgstr "Pulisci"
 msgid "Download:"
 msgstr "Scaricare:"
 
-msgid "Download"
-msgstr "Scaricare"
-
 msgid "Upload:"
 msgstr "Caricare:"
 
@@ -965,6 +983,11 @@ msgstr "Note"
 
 msgid "Interfaces"
 msgstr "Interfacce"
+
+msgid ""
+"Detected ports on this page must be edited and saved before the system can "
+"utilize them."
+msgstr ""
 
 msgid "Network"
 msgstr "Rete"
@@ -1072,6 +1095,13 @@ msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "cliccando &quot;Salva&quot; tutte le chiamate verranno lasciate cadere."
 
+msgid ""
+"Detected ports on this page must be edited and saved before the system can "
+"utilize them. Be careful when configuring ISDN interfaces. Having a single "
+"port on a card incorrectly configured can result in the entire card being "
+"unusable by the system."
+msgstr ""
+
 msgid "No compatible ISDN interfaces detected."
 msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
 
@@ -1132,7 +1162,8 @@ msgstr "Modifica l'interfaccia #%s"
 msgid "An Operating Mode must be selected for this interface."
 msgstr "Un modo operativo deve essere selezionato per questa interfaccia."
 
-msgid "Attempt to remove echoes from the line."
+#, fuzzy
+msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Tenta di rimuovere l'eco dalla linea telefonica."
 
 msgid "PCM Timing Slave"
@@ -1159,6 +1190,14 @@ msgstr "Abilita il modo Polling"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Abilita il modo polling. necessario a volte per vecchie card)"
+
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
 
 msgid "IP address,Subnet bit count,Gateway,Network topology"
 msgstr ""
@@ -1195,17 +1234,29 @@ msgid "A valid public hostname must be entered for this topology."
 msgstr ""
 "Un nome host pubblico valido deve essere specificato per questa tipologia."
 
+#, fuzzy
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "Il campo '%s' contiene dei caratteri non validi."
+
 msgid "Checked interfaces will be bridged to the main interface."
 msgstr "L'interfaccia selezionata verrà collegata all'interfaccia principale."
+
+msgid "IP Address"
+msgstr "Indirizzo IP"
 
 msgid "Gateway"
 msgstr "Gateway"
 
-msgid "DNS servers"
+#, fuzzy
+msgid "DNS Servers"
 msgstr "Servers DNS"
 
-msgid "IP addresses"
+#, fuzzy
+msgid "IP Addresses"
 msgstr "Indirizzi IP"
+
+msgid "MAC Address"
+msgstr "Indirizzo MAC"
 
 msgid ""
 "This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
@@ -1219,33 +1270,62 @@ msgstr ""
 msgid "Topology"
 msgstr "Topologia"
 
-msgid "Public IP Address: this pbx has a routable IP address"
+#, fuzzy
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr "Indirizzo IP pubblico: questo centralino ha un indirizzo IP instradato"
 
+#, fuzzy
 msgid ""
-"NAT + static public IP: this pbx is behind a NAT which has a static public "
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
 "IP. Enter this IP below."
 msgstr ""
 "NAT + IP pubblico statico: questo centralino è dietro ad una NAT la quale ha "
 "un indirizzo IP pubblico statico. "
 
+#, fuzzy
 msgid ""
-"NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public "
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
 "IP. A hostname, constantly updated to point to this network is required. "
-"Enter this hostname below."
+"Enter this information below."
 msgstr ""
 "NAT + IP pubblico dinamico: questo centralino è dietro ad una NAT la quale "
 "ha un indirizzo IP pubblico dinamico. E' richiesto un nome host che punta a "
 "questa rete costantemente aggiornato. Inserire qui il nome host."
 
-msgid "Public IP address"
-msgstr "Indirizzo IP pubblico"
+#, fuzzy
+msgid "Static Public IP"
+msgstr "NAT + IP pubblico statico"
 
-msgid "Public hostname"
+#, fuzzy
+msgid "Public Hostname"
 msgstr "Nome host pubblico"
 
+msgid "This information should be updated by:"
+msgstr ""
+
+msgid "My Router"
+msgstr ""
+
+#, fuzzy
+msgid "AskoziaPBX"
+msgstr "AskoziaPBX interfaccia WEB"
+
+msgid "Dynamic DNS Client"
+msgstr ""
+
+#, fuzzy
+msgid "Service Type"
+msgstr "Servizi"
+
+msgid "Password"
+msgstr "SMTP"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr ""
+
+#, fuzzy
 msgid ""
-"after you click &quot;Save&quot;, all currentcalls will be dropped. You may "
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
 "also have to do one or more of the following steps before you can access "
 "your PBX again:"
 msgstr ""
@@ -1261,6 +1341,11 @@ msgstr "cambia l'indirizzo IP del tuo computer"
 
 msgid "access the webGUI with the new IP address"
 msgstr "accesso all'interfaccia web con un nuovo indirizzo IP"
+
+msgid ""
+"AskoziaPBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
 
 msgid "The system storage media is not large enough to install packages."
 msgstr ""
@@ -1293,6 +1378,12 @@ msgstr "Modifica disco"
 
 msgid "descriptive name"
 msgstr "nome descrittivo"
+
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that "
+"AskoziaPBX is connected to."
+msgstr ""
 
 msgid "SSID,Channel"
 msgstr "SSID,Canale"
@@ -1453,6 +1544,12 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr "Interno usato per raggiungere questo telefono."
 
@@ -1496,8 +1593,10 @@ msgstr ""
 "Un numero intero di secondi deve essere specificato per \"precisare\" il "
 "timeout."
 
-msgid "This is also this account's username."
-msgstr "Questo è anche l'account del utente."
+#, fuzzy
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr "Numero telefonico assegnato a questa linea."
 
 msgid "plaintext"
 msgstr "testo in chiaro"
@@ -1619,14 +1718,14 @@ msgstr "Deve essere specificato un Identificativo del chiamante (CID) valido."
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "Indirizzo del proxy IAX o indirizzo IP e porta opzionale."
 
-msgid "A valid Main MSN must be specified (all digits)."
-msgstr ""
-"Deve essere specificato un numero MSN principale valido (tutte le cifre)."
+#, fuzzy
+msgid "A valid default number (MSN) must be specified."
+msgstr "Deve essere specificato un Numero Identificativo(CID) valido."
 
+#, fuzzy
 msgid ""
-"The main telephone number assigned to this line (the shortest possible "
-"number used to reach this line). Individual MSN mappings can be defined "
-"below."
+"The default telephone number (MSN) assigned to this line. Individual MSN "
+"mappings can be defined below."
 msgstr ""
 "Il numero principale assegnato a questa linea (il numero più breve usato per "
 "raggiungere questa linea). Le singole mappature MSN possono essere definite "
@@ -1673,6 +1772,13 @@ msgstr "Servizi"
 
 msgid "Conferencing"
 msgstr "Conferenze"
+
+msgid ""
+"Conference rooms with optional pin authentication can be configured here. "
+"The system's performance is the only limiting factor on the number of "
+"concurrent members. These rooms can then be dialed via their defined "
+"extensions or used as a destination for incoming calls from Providers."
+msgstr ""
 
 msgid "Room Number"
 msgstr "Stanza numero"
@@ -1723,6 +1829,11 @@ msgstr ""
 msgid "Voicemail"
 msgstr "Casella vocale"
 
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+
 msgid "Host,E-mail Address"
 msgstr "Host, Indirizzo E-Mail"
 
@@ -1741,9 +1852,6 @@ msgstr "URL o indirizzo IP del HOST SMTP e porta."
 
 msgid "E-mail Address"
 msgstr "Indirizzo E-mail"
-
-msgid "Password"
-msgstr "SMTP"
 
 msgid "Options"
 msgstr "Opzioni"
@@ -1836,12 +1944,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Traffico di rete"
 
-msgid "MAC Address"
-msgstr "Indirizzo MAC"
-
-msgid "IP Address"
-msgstr "Indirizzo IP"
-
 msgid "Subnet Mask"
 msgstr "Maschera sottorete"
 
@@ -1922,8 +2024,15 @@ msgstr "Seriale"
 msgid "Power Save"
 msgstr "Salva energia"
 
-msgid "General setup"
-msgstr "Impostazioni generali"
+msgid "General Setup"
+msgstr "Impostazioni Generali"
+
+msgid ""
+"This is the first page which needs configuring upon installing a new system. "
+"Most importantly, the default password should be changed. Then, ensure your "
+"host/domain name, time zone and country's indication tones are set correctly "
+"before continuing."
+msgstr ""
 
 msgid "Hostname,Domain,Username"
 msgstr "Nome host, Dominio, Nome utente"
@@ -2033,8 +2142,12 @@ msgstr ""
 "Usare uno spazio per separare gli host multipli (solo uno è richiesto). "
 "Ricorda di configurare almeno un server DNS se immetti un host!"
 
-msgid "Backup/restore"
-msgstr "Salvataggio/ripristino"
+msgid "Backup/Restore"
+msgstr "Copia di riserva/Ripristino"
+
+msgid ""
+"The entire system configuration can be backed up and restored via this page."
+msgstr ""
 
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr ""
@@ -2109,6 +2222,14 @@ msgstr " No "
 msgid "Firmware"
 msgstr "Firmware"
 
+msgid ""
+"AskoziaPBX's firmware can be kept up to date here. The system's "
+"configuration will be maintained through the upgrade. The system will reboot "
+"automatically after installing the new firmware. Firmware images of formal "
+"releases are digitally signed before distribution and checked upon "
+"installation."
+msgstr ""
+
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
 msgstr "L'immagine caricata non è per questa piattaforma (%s)."
@@ -2181,18 +2302,18 @@ msgstr "Aggiorna firmware"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Devi riavviare il sistema prima di poter aggiornare il firmware."
 
-#, fuzzy
-msgid ""
-"DO NOT abort the firmware upgrade once it has started. The system will "
-"reboot automatically after storing the new firmware. The configuration will "
-"be maintained."
+msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr ""
-"NON interrompere l'aggiornamento firmware una volta iniziato. Il sistema si "
-"riavvierà automaticamente dopo la memorizzazione del nuovo firmware.La "
-"configurazione verrà mantenuta. "
 
 msgid "Packages"
 msgstr "Pacchetti"
+
+msgid ""
+"Packages to expand system functionality can be installed and updated here. "
+"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
+"available packages. All packages are digitally signed before distribution "
+"and checked upon installation."
+msgstr ""
 
 #, fuzzy
 msgid "The digital signature on this package is invalid."
@@ -2401,7 +2522,7 @@ msgstr "aggiungi una mappatura di un interno in ingresso"
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To "
 "ring multiple phones, simply define them with the same pattern. If a phone "
-"number is entered, it will used as the \"read back\" number on unanswered "
+"number is entered, it will used as the \"external\" number on unanswered "
 "calls. If nothing is entered, all calls will be directed to the destination "
 "extension.<br>\n"
 " <ul>\n"
@@ -2550,17 +2671,18 @@ msgid "Checked phones will have access to this provider."
 msgstr ""
 "I telefoni contrassegnati avranno accesso a questo operatore telefonico."
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Prefixes "
-"can be defined as shown in the following example. A prefix of \"9\" is "
-"equivalent to a pattern of \"9|.\"). If no patterns are entered, only "
-"incoming calls will be accepted from this provider.<br>\n"
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
+"\" to use this Provider for all outgoing calls. To only use this Provider "
+"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
+"entered, only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
 " \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
 "\" but only passes \"555\" to the provider)</li>\n"
-" t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
 " \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
 " \t<li><strong>N</strong> - matches digits 2-9</li>\n"
 " \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
@@ -2720,8 +2842,9 @@ msgstr ""
 "Puoi inserire qui una descrizione per avere un riferimento (non verrà "
 "analizzata)."
 
-msgid "Readback Number"
-msgstr "Numero letto all'interlocutore"
+#, fuzzy
+msgid "Public Number"
+msgstr "Nome host pubblico"
 
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
@@ -2776,15 +2899,6 @@ msgstr ""
 msgid "print"
 msgstr "(stampa)"
 
-msgid "General Setup"
-msgstr "Impostazioni Generali"
-
-msgid "Backup/Restore"
-msgstr "Copia di riserva/Ripristino"
-
-msgid "Dynamic DNS"
-msgstr ""
-
 msgid "Summary"
 msgstr "Sommario"
 
@@ -2802,6 +2916,34 @@ msgstr "Configurazione interfaccia WEB"
 
 msgid "Live Stats"
 msgstr "Statistiche in tempo reale"
+
+msgid "add a new item"
+msgstr ""
+
+msgid "item is disabled, click to enable"
+msgstr ""
+
+msgid "item is enabled, click to disable"
+msgstr ""
+
+#, fuzzy
+msgid "edit an item"
+msgstr "modifica l'interfaccia analogica"
+
+msgid "permanently delete an item"
+msgstr ""
+
+#, fuzzy
+msgid "check for package updates"
+msgstr "ripristino dei dati del pacchetto"
+
+#, fuzzy
+msgid "restore a backup archive"
+msgstr "Ripristina da una Copia di Archivio"
+
+#, fuzzy
+msgid "download a backup archive"
+msgstr "Ripristina da una Copia di Archivio"
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tutti i diritti riservati."
@@ -2880,6 +3022,9 @@ msgstr "H.263+"
 
 msgid "H.264"
 msgstr "H.264"
+
+msgid "Public IP address"
+msgstr "Indirizzo IP pubblico"
 
 msgid "NAT + static public IP"
 msgstr "NAT + IP pubblico statico"
@@ -3222,6 +3367,52 @@ msgstr "Pacchetto ripristinato correttamente."
 
 msgid "Package installed successfully."
 msgstr "Pacchetto installato correttamente."
+
+#, fuzzy
+#~ msgid "The dynamic DNS host name contains invalid characters."
+#~ msgstr "Il campo '%s' contiene dei caratteri non validi."
+
+#~ msgid "Backup/restore"
+#~ msgstr "Salvataggio/ripristino"
+
+#, fuzzy
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. The system will "
+#~ "reboot automatically after storing the new firmware. The configuration "
+#~ "will be maintained."
+#~ msgstr ""
+#~ "NON interrompere l'aggiornamento firmware una volta iniziato. Il sistema "
+#~ "si riavvierà automaticamente dopo la memorizzazione del nuovo firmware.La "
+#~ "configurazione verrà mantenuta. "
+
+#~ msgid "Main MSN"
+#~ msgstr "MSN principale"
+
+#~ msgid "Hint:"
+#~ msgstr "Suggerimento"
+
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+#~ "hostnames&quot; is checked on the"
+#~ msgstr ""
+#~ "Gli indirizzi IP vengono risolti in nomi host se \"Risolvere gli "
+#~ "indirizzi IP a nomi host\" è selezionato"
+
+#~ msgid "Diagnostics: Logs</a> page."
+#~ msgstr "Diagnostica: Pagina dei registri."
+
+#~ msgid "This is also this account's username."
+#~ msgstr "Questo è anche l'account del utente."
+
+#~ msgid "A valid Main MSN must be specified (all digits)."
+#~ msgstr ""
+#~ "Deve essere specificato un numero MSN principale valido (tutte le cifre)."
+
+#~ msgid "General setup"
+#~ msgstr "Impostazioni generali"
+
+#~ msgid "Readback Number"
+#~ msgstr "Numero letto all'interlocutore"
 
 #~ msgid "System: Firmware</a> page is viewed."
 #~ msgstr "Sistema: Firmware</a> è mostrata."

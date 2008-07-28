@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-18 08:50+0000\n"
+"POT-Creation-Date: 2008-07-28 16:20+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -21,6 +21,11 @@ msgstr "Tilit"
 
 msgid "Phones"
 msgstr "Puhelimet"
+
+msgid ""
+"Phone Accounts allow you to configure internal extensions and their access "
+"to Provider Accounts. Click an account type below to get started."
+msgstr ""
 
 msgid "SIP"
 msgstr "SIP"
@@ -73,6 +78,12 @@ msgstr "Soittotunnus"
 msgid "Providers"
 msgstr "Palveluntarjoajat"
 
+msgid ""
+"Provider Accounts allow you to configure routes to and from external sources "
+"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
+"Click an account type below to get started."
+msgstr ""
+
 msgid "Pattern(s)"
 msgstr "Kaavat(s)"
 
@@ -100,14 +111,11 @@ msgstr "Oletko varma että haluat poistaa tämän palveluntarjoajan?"
 msgid "delete provider"
 msgstr "poista palveluntarjoaja"
 
-msgid "Main MSN"
-msgstr "Pää-MSN"
+msgid "Number"
+msgstr "Numero"
 
 msgid "Interface"
 msgstr "Käyttöliittymä"
-
-msgid "Number"
-msgstr "Numero"
 
 msgid "Advanced"
 msgstr "Lisäasetukset"
@@ -437,6 +445,9 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
+msgid "Download"
+msgstr "Lataa"
+
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -478,19 +489,6 @@ msgstr "poista arp asetus"
 
 msgid "remove all entries from arp table"
 msgstr "tyhjennä koko arp taulukko"
-
-msgid "Hint:"
-msgstr "Vihje:"
-
-msgid ""
-"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-"hostnames&quot; is checked on the"
-msgstr ""
-"IP osoitteet ovat selvitetty isäntänimiksi jos &quot;Selvitä IP osoitteet "
-"isäntänimiksi&quot; on valittu"
-
-msgid "Diagnostics: Logs</a> page."
-msgstr "Diagnostiset: Loki</a> sivulla."
 
 msgid "Editor"
 msgstr "Editori"
@@ -610,6 +608,11 @@ msgstr ""
 "syslog lähettää UDP datagrammeja porttiin 514 syslog serverilla. Varmista "
 "että serveri (tarkemmin syslogd) hyväksyy syslog viestejä AskoziaPBX:ltä."
 
+msgid ""
+"This page allows direct execution of commands on the Asterisk console. "
+"Execute \"help\" to see a list of possible commands."
+msgstr ""
+
 msgid "Command"
 msgstr "Komento"
 
@@ -664,6 +667,13 @@ msgstr "Soittosuunnitelma"
 msgid "Applications"
 msgstr "Sovellukset"
 
+msgid ""
+"With some knowledge of how the Asterisk dialplan works, some basic "
+"applications can be added to AskoziaPBX. These applications can then be "
+"dialed via their defined extensions or used as a destination for incoming "
+"calls from Providers."
+msgstr ""
+
 msgid "name"
 msgstr "nimi"
 
@@ -697,6 +707,12 @@ msgstr "Sisäinen jatke käytetty tämän sovelluksen tavoittamiseen."
 msgid "Call Groups"
 msgstr "Puheluryhmät"
 
+msgid ""
+"Groups of extensions can be configured to ring concurrently. These groups "
+"can then be dialed via their defined extensions or used as a destination for "
+"incoming calls from Providers."
+msgstr ""
+
 msgid "Members"
 msgstr "Jäsenet"
 
@@ -720,6 +736,11 @@ msgstr "Sisäinen jatke käytetty tämän ryhmän tavoittamiseen."
 
 msgid "Transfers"
 msgstr "Siirrot"
+
+msgid ""
+"A variety of settings are here which define how call transfers and call "
+"parking are handled. The defaults should work in most situations."
+msgstr ""
 
 msgid ""
 "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
@@ -847,9 +868,6 @@ msgstr "Tyhjennä"
 msgid "Download:"
 msgstr "Lataa:"
 
-msgid "Download"
-msgstr "Lataa"
-
 msgid "Upload:"
 msgstr "Lataa ylös:"
 
@@ -928,6 +946,11 @@ msgstr "Muistiinapanot"
 
 msgid "Interfaces"
 msgstr "Käyttöliittymät"
+
+msgid ""
+"Detected ports on this page must be edited and saved before the system can "
+"utilize them."
+msgstr ""
 
 msgid "Network"
 msgstr "Verkko"
@@ -1035,6 +1058,13 @@ msgstr ""
 "Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
 "katkaistaan."
 
+msgid ""
+"Detected ports on this page must be edited and saved before the system can "
+"utilize them. Be careful when configuring ISDN interfaces. Having a single "
+"port on a card incorrectly configured can result in the entire card being "
+"unusable by the system."
+msgstr ""
+
 msgid "No compatible ISDN interfaces detected."
 msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
 
@@ -1100,7 +1130,8 @@ msgstr "Muokkaa ISDN käyttöliittymää #%s"
 msgid "An Operating Mode must be selected for this interface."
 msgstr "Käyttötapa on oltava valittu tälle käyttöliittymälle."
 
-msgid "Attempt to remove echoes from the line."
+#, fuzzy
+msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Yritä poistaa kaikua linjalta."
 
 msgid "PCM Timing Slave"
@@ -1127,6 +1158,14 @@ msgstr "Mahdollista Äänestystila"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Poista äänestystila käytöstä. (joskus pakollinen vanhoille korteille)"
+
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
 
 msgid "IP address,Subnet bit count,Gateway,Network topology"
 msgstr "IP osoite,Aliverkon tavu määrä,Gateway,Verkon topologia"
@@ -1159,19 +1198,31 @@ msgstr "Julkinen isäntänimi on annettava tälle topologialle."
 msgid "A valid public hostname must be entered for this topology."
 msgstr "Kelpaava julkinen isäntänimi on annettava tälle topologialle."
 
+#, fuzzy
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
+
 msgid "Checked interfaces will be bridged to the main interface."
 msgstr ""
 "Valitut käyttöliittymät tulevat olemaan sillattuja ensisijaiseen "
 "käyttäliittymään."
 
+msgid "IP Address"
+msgstr "IP Osoite"
+
 msgid "Gateway"
 msgstr "Gateway"
 
-msgid "DNS servers"
+#, fuzzy
+msgid "DNS Servers"
 msgstr "DNS serverit"
 
-msgid "IP addresses"
+#, fuzzy
+msgid "IP Addresses"
 msgstr "IP osoitteet"
+
+msgid "MAC Address"
+msgstr "MAC Osoite"
 
 msgid ""
 "This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
@@ -1185,32 +1236,61 @@ msgstr ""
 msgid "Topology"
 msgstr "Topologia"
 
-msgid "Public IP Address: this pbx has a routable IP address"
+#, fuzzy
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr "Julkinen IP Osoite: tällä pbx:llä on reitittävä IP osoite"
 
+#, fuzzy
 msgid ""
-"NAT + static public IP: this pbx is behind a NAT which has a static public "
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
 "IP. Enter this IP below."
 msgstr ""
 "NAT + staattinen julkinen IP: tämä pbx on NAT:in takana jolla on staattinen "
 "julkinen IP."
 
+#, fuzzy
 msgid ""
-"NAT + dynamic public IP: this pbx is behind a NAT which has a dynamic public "
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
 "IP. A hostname, constantly updated to point to this network is required. "
-"Enter this hostname below."
+"Enter this information below."
 msgstr ""
 "NAT + dynaaminen julkinen IP: tämä pbx on NAT:in takana jolla on dynaaminen "
 "julkinen IP. Isäntänimi joka koko ajan osoittaa tähän verkkoon on pakollinen."
 
-msgid "Public IP address"
-msgstr "Julkinen IP osoite"
+#, fuzzy
+msgid "Static Public IP"
+msgstr "NAT + staattinen julkinen IP"
 
-msgid "Public hostname"
+#, fuzzy
+msgid "Public Hostname"
 msgstr "Julkinen isäntänimi"
 
+msgid "This information should be updated by:"
+msgstr ""
+
+msgid "My Router"
+msgstr ""
+
+#, fuzzy
+msgid "AskoziaPBX"
+msgstr "AskoziaPBX verkkokäyttöliittymä"
+
+msgid "Dynamic DNS Client"
+msgstr ""
+
+#, fuzzy
+msgid "Service Type"
+msgstr "Palvelut"
+
+msgid "Password"
+msgstr "Salasana"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr ""
+
+#, fuzzy
 msgid ""
-"after you click &quot;Save&quot;, all currentcalls will be dropped. You may "
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
 "also have to do one or more of the following steps before you can access "
 "your PBX again:"
 msgstr ""
@@ -1226,6 +1306,11 @@ msgstr "vaihda IP osoite tälle tietokoneelle"
 
 msgid "access the webGUI with the new IP address"
 msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
+
+msgid ""
+"AskoziaPBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
 
 msgid "The system storage media is not large enough to install packages."
 msgstr ""
@@ -1257,6 +1342,12 @@ msgstr "Muokkaa Levyä"
 
 msgid "descriptive name"
 msgstr "kuvaileva nimi"
+
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that "
+"AskoziaPBX is connected to."
+msgstr ""
 
 msgid "SSID,Channel"
 msgstr "SSID,Kanava"
@@ -1416,6 +1507,12 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
@@ -1457,8 +1554,10 @@ msgstr "Kelpaava salaisuus on oltava määritetty."
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
 
-msgid "This is also this account's username."
-msgstr "Tämä on myös tilin käyttäjänimi."
+#, fuzzy
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr "Puhelinnumero tälle linjalle."
 
 msgid "plaintext"
 msgstr "Ilman suojausta"
@@ -1574,13 +1673,14 @@ msgstr "Kelpaava Soittajan Tunnus tunnus on oltava määritetty."
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy isäntä URL tai IP osoite sekä valinnainen portti."
 
-msgid "A valid Main MSN must be specified (all digits)."
-msgstr "Kelpaava pää-MSN on oltava määritetty (numeroina)."
+#, fuzzy
+msgid "A valid default number (MSN) must be specified."
+msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
 
+#, fuzzy
 msgid ""
-"The main telephone number assigned to this line (the shortest possible "
-"number used to reach this line). Individual MSN mappings can be defined "
-"below."
+"The default telephone number (MSN) assigned to this line. Individual MSN "
+"mappings can be defined below."
 msgstr ""
 "Ensisijainen puhelinnumero määritetty tälle linjalle (lyhyin mahdollinen "
 "numero tämän linjan tavoittamiseen). Henkilökohtaiset MSN kartoitukset "
@@ -1627,6 +1727,13 @@ msgstr "Palvelut"
 
 msgid "Conferencing"
 msgstr "Konferenssit"
+
+msgid ""
+"Conference rooms with optional pin authentication can be configured here. "
+"The system's performance is the only limiting factor on the number of "
+"concurrent members. These rooms can then be dialed via their defined "
+"extensions or used as a destination for incoming calls from Providers."
+msgstr ""
 
 msgid "Room Number"
 msgstr "Huoneen Numero"
@@ -1676,6 +1783,11 @@ msgstr "Valinnainen koodi joka tarvitaan tähän huoneeseen."
 msgid "Voicemail"
 msgstr "Vastaaja"
 
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+
 msgid "Host,E-mail Address"
 msgstr "Isäntä,S-posti Osoite"
 
@@ -1694,9 +1806,6 @@ msgstr "SMTP isäntä URL tai IP osoite ja valinnainen portti."
 
 msgid "E-mail Address"
 msgstr "S-posti Osoite"
-
-msgid "Password"
-msgstr "Salasana"
 
 msgid "Options"
 msgstr "Valinnat"
@@ -1788,12 +1897,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Verkon Liikenne"
 
-msgid "MAC Address"
-msgstr "MAC Osoite"
-
-msgid "IP Address"
-msgstr "IP Osoite"
-
 msgid "Subnet Mask"
 msgstr "Aliverkon Peite"
 
@@ -1872,8 +1975,15 @@ msgstr "Serial"
 msgid "Power Save"
 msgstr "Virransäästö"
 
-msgid "General setup"
-msgstr "Yleiset asetukset"
+msgid "General Setup"
+msgstr "Yleiset Asetukset"
+
+msgid ""
+"This is the first page which needs configuring upon installing a new system. "
+"Most importantly, the default password should be changed. Then, ensure your "
+"host/domain name, time zone and country's indication tones are set correctly "
+"before continuing."
+msgstr ""
 
 msgid "Hostname,Domain,Username"
 msgstr "Isäntänimi,Verkkotunnus,Käyttäjänimi"
@@ -1981,8 +2091,12 @@ msgstr ""
 "pakollinen). Muista asentaa ainakin yksi DNS serveri jos annat isäntänimen "
 "tässä!"
 
-msgid "Backup/restore"
-msgstr "Varmuuskopio/Ennallista"
+msgid "Backup/Restore"
+msgstr "Varmuuskopioi/Entisöi"
+
+msgid ""
+"The entire system configuration can be backed up and restored via this page."
+msgstr ""
 
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr "Konfigurointi on entisöity. PBX käynnistyy uudelleen."
@@ -2052,6 +2166,14 @@ msgstr "Ei"
 msgid "Firmware"
 msgstr "Laiteohjelmisto"
 
+msgid ""
+"AskoziaPBX's firmware can be kept up to date here. The system's "
+"configuration will be maintained through the upgrade. The system will reboot "
+"automatically after installing the new firmware. Firmware images of formal "
+"releases are digitally signed before distribution and checked upon "
+"installation."
+msgstr ""
+
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
 msgstr "ladattu levykuva ei ole tälle alustalle (%s)."
@@ -2118,17 +2240,18 @@ msgstr ""
 "Sinun on käynnistettävä järjestelmää uudelleen ennnen kun voit suorittaa "
 "laiteohjelmiston päivityksen."
 
-msgid ""
-"DO NOT abort the firmware upgrade once it has started. The system will "
-"reboot automatically after storing the new firmware. The configuration will "
-"be maintained."
+msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr ""
-"ÄLÄ keskeytä päivitystä kun se on käynnissä. Järjestelmä käynnistyy "
-"automaattisesti uudelleen kun päivitys on valmis. Konfigurointisi "
-"tallennetaan."
 
 msgid "Packages"
 msgstr "Paketit"
+
+msgid ""
+"Packages to expand system functionality can be installed and updated here. "
+"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
+"available packages. All packages are digitally signed before distribution "
+"and checked upon installation."
+msgstr ""
 
 msgid "The digital signature on this package is invalid."
 msgstr "Paketin digitaalinen allekirjoitus on pätemätön."
@@ -2319,10 +2442,11 @@ msgstr "Sisääntuleva Jatke/Jatkeet"
 msgid "add incoming extension mapping"
 msgstr "lisää sisääntulevan jatkeen kartoitus"
 
+#, fuzzy
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To "
 "ring multiple phones, simply define them with the same pattern. If a phone "
-"number is entered, it will used as the \"read back\" number on unanswered "
+"number is entered, it will used as the \"external\" number on unanswered "
 "calls. If nothing is entered, all calls will be directed to the destination "
 "extension.<br>\n"
 " <ul>\n"
@@ -2467,17 +2591,18 @@ msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
 msgid "Checked phones will have access to this provider."
 msgstr "Valitut puhelimet saavat pääsyn tälle palveluntarjoajalle."
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Prefixes "
-"can be defined as shown in the following example. A prefix of \"9\" is "
-"equivalent to a pattern of \"9|.\"). If no patterns are entered, only "
-"incoming calls will be accepted from this provider.<br>\n"
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
+"\" to use this Provider for all outgoing calls. To only use this Provider "
+"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
+"entered, only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
 " \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
 "\" but only passes \"555\" to the provider)</li>\n"
-" t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
 " \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
 " \t<li><strong>N</strong> - matches digits 2-9</li>\n"
 " \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
@@ -2629,8 +2754,9 @@ msgstr "Teksti joka näytetään Soittajan Tunnukselle"
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
 
-msgid "Readback Number"
-msgstr "Luettava Numero"
+#, fuzzy
+msgid "Public Number"
+msgstr "Julkinen isäntänimi"
 
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
@@ -2685,15 +2811,6 @@ msgstr ""
 msgid "print"
 msgstr "tulosta"
 
-msgid "General Setup"
-msgstr "Yleiset Asetukset"
-
-msgid "Backup/Restore"
-msgstr "Varmuuskopioi/Entisöi"
-
-msgid "Dynamic DNS"
-msgstr ""
-
 msgid "Summary"
 msgstr "Tiivistelmä"
 
@@ -2711,6 +2828,34 @@ msgstr "Verkkokäyttöliittymän Konfigurointi"
 
 msgid "Live Stats"
 msgstr "Tilastot Suorana"
+
+msgid "add a new item"
+msgstr ""
+
+msgid "item is disabled, click to enable"
+msgstr ""
+
+msgid "item is enabled, click to disable"
+msgstr ""
+
+#, fuzzy
+msgid "edit an item"
+msgstr "muokkaa analogi käyttöliittymää"
+
+msgid "permanently delete an item"
+msgstr ""
+
+#, fuzzy
+msgid "check for package updates"
+msgstr "palauta pakettitiedot"
+
+#, fuzzy
+msgid "restore a backup archive"
+msgstr "Palauta varmuuskopiosta"
+
+#, fuzzy
+msgid "download a backup archive"
+msgstr "Palauta varmuuskopiosta"
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
@@ -2789,6 +2934,9 @@ msgstr "H.263+"
 
 msgid "H.264"
 msgstr "H.264"
+
+msgid "Public IP address"
+msgstr "Julkinen IP osoite"
 
 msgid "NAT + static public IP"
 msgstr "NAT + staattinen julkinen IP"
@@ -3129,3 +3277,47 @@ msgstr "Paketti palautettiin onnistuneesti."
 
 msgid "Package installed successfully."
 msgstr "Paketti asennettiin onnistuneesti."
+
+#, fuzzy
+#~ msgid "The dynamic DNS host name contains invalid characters."
+#~ msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
+
+#~ msgid "Backup/restore"
+#~ msgstr "Varmuuskopio/Ennallista"
+
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. The system will "
+#~ "reboot automatically after storing the new firmware. The configuration "
+#~ "will be maintained."
+#~ msgstr ""
+#~ "ÄLÄ keskeytä päivitystä kun se on käynnissä. Järjestelmä käynnistyy "
+#~ "automaattisesti uudelleen kun päivitys on valmis. Konfigurointisi "
+#~ "tallennetaan."
+
+#~ msgid "Main MSN"
+#~ msgstr "Pää-MSN"
+
+#~ msgid "Hint:"
+#~ msgstr "Vihje:"
+
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+#~ "hostnames&quot; is checked on the"
+#~ msgstr ""
+#~ "IP osoitteet ovat selvitetty isäntänimiksi jos &quot;Selvitä IP osoitteet "
+#~ "isäntänimiksi&quot; on valittu"
+
+#~ msgid "Diagnostics: Logs</a> page."
+#~ msgstr "Diagnostiset: Loki</a> sivulla."
+
+#~ msgid "This is also this account's username."
+#~ msgstr "Tämä on myös tilin käyttäjänimi."
+
+#~ msgid "A valid Main MSN must be specified (all digits)."
+#~ msgstr "Kelpaava pää-MSN on oltava määritetty (numeroina)."
+
+#~ msgid "General setup"
+#~ msgstr "Yleiset asetukset"
+
+#~ msgid "Readback Number"
+#~ msgstr "Luettava Numero"

@@ -29,7 +29,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("System"), gettext("General setup"));
+$pgtitle = array(gettext("System"), gettext("General Setup"));
+$pghelp = gettext("This is the first page which needs configuring upon installing a new system. Most importantly, the default password should be changed. Then, ensure your host/domain name, time zone and country's indication tones are set correctly before continuing.");
 require("guiconfig.inc");
 
 $pconfig['language'] = $config['system']['webgui']['language'];

@@ -30,6 +30,7 @@
 */
 
 $pgtitle = array(gettext("Interfaces"), gettext("Network"));
+$pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default AskoziaPBX requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
 require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
@@ -50,7 +51,6 @@ $pconfig['hostnameupdatesrc'] = $lancfg['hostnameupdatesrc'];
 
 $pconfig['dyndnsusername'] = $config['dyndns']['username'];
 $pconfig['dyndnspassword'] = $config['dyndns']['password'];
-$pconfig['dyndnshost'] = $config['dyndns']['host'];
 $pconfig['dyndnstype'] = $config['dyndns']['type'];
 $pconfig['dyndnsenable'] = isset($config['dyndns']['enable']);
 $pconfig['dyndnswildcard'] = isset($config['dyndns']['wildcard']);
@@ -68,8 +68,8 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", gettext("IP address,Subnet bit count,Gateway,Network topology"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	if ($_POST['hostnameupdatesrc'] == "pbx") {
-		$reqdfields = array_merge($reqdfields, explode(" ", "dyndnshost dyndnsusername dyndnspassword dyndnstype"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Dynamic DNS Hostname,Dynamic DNS Username,Dynamic DNS Password,Dynamic DNS Service Type"));
+		$reqdfields = array_merge($reqdfields, explode(" ", "dyndnsusername dyndnspassword dyndnstype"));
+		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Dynamic DNS Username,Dynamic DNS Password,Dynamic DNS Service Type"));
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 	
@@ -108,9 +108,6 @@ if ($_POST) {
 	}
 
 	if ($_POST['hostnameupdatesrc'] == "pbx") {
-		if (($_POST['dyndnshost'] && !verify_is_domain($_POST['dyndnshost']))) {
-			$input_errors[] = gettext("The dynamic DNS host name contains invalid characters.");
-		}
 		if (($_POST['dyndnsusername'] && !verify_is_dyndns_username($_POST['dyndnsusername']))) {
 			$input_errors[] = gettext("The dynamic DNS username contains invalid characters.");
 		}
@@ -156,7 +153,6 @@ if ($_POST) {
 		$config['dyndns']['type'] = $_POST['dyndnstype'];	
 		$config['dyndns']['username'] = $_POST['dyndnsusername'];
 		$config['dyndns']['password'] = $_POST['dyndnspassword'];
-		$config['dyndns']['host'] = $_POST['dyndnshost'];
 		$config['dyndns']['wildcard'] = $_POST['dyndnswildcard'] ? true : false;
 		
 		write_config();
@@ -181,11 +177,9 @@ if ($_POST) {
 	function dyndns_slide() {
 		if (jQuery("input[@name='hostnameupdatesrc']:checked").val() == "pbx" &&
 			document.iform.topology.selectedIndex == 2) {
-			jQuery("#hostname_wrapper").hide();
 			jQuery("#dyndns_wrapper").slideDown();
 		} else {
 			jQuery("#dyndns_wrapper").slideUp();
-			jQuery("#hostname_wrapper").show();
 		}
 	}
 
@@ -292,7 +286,7 @@ function lan_if_change() {
 					</td>
 				</tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("IP Address");?></td>
 					<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
 						/ 
 						<select name="subnet" class="formfld" id="subnet"><?
@@ -312,7 +306,7 @@ function lan_if_change() {
 					</td>
 				</tr>
 				<tr> 
-					<td width="22%" valign="top" class="vncell"><?=gettext("DNS servers");?></td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("DNS Servers");?></td>
 					<td width="78%" class="vtable">
 						<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>">
 						<br>
@@ -320,11 +314,11 @@ function lan_if_change() {
 						<br>
 						<input name="dns3" type="text" class="formfld" id="dns3" size="20" value="<?=htmlspecialchars($pconfig['dns3']);?>">
 						<br>
-						<span class="vexpl"><?=gettext("IP addresses");?></span>
+						<span class="vexpl"><?=gettext("IP Addresses");?></span>
 					</td>
 				</tr>
 				<tr> 
-					<td valign="top" class="vncell"><?=gettext("MAC address");?></td>
+					<td valign="top" class="vncell"><?=gettext("MAC Address");?></td>
 					<td class="vtable">
 						<input name="spoofmac" type="text" class="formfld" id="spoofmac" size="30" value="<?=htmlspecialchars($pconfig['spoofmac']);?>"><br>
 						<?=gettext("This field can be used to modify (&quot;spoof&quot;) the MAC address of the network interface<br>Enter a MAC address in the following format: xx:xx:xx:xx:xx:xx or leave blank");?>
@@ -341,7 +335,7 @@ function lan_if_change() {
 						<br>
 						<span class="vexpl">
 							<ul>
-								<li><?=gettext("Public IP Address: this PBX has a routable IP address");?></li>
+								<li><?=gettext("Public IP Address: this PBX has a routable IP address (entered above)");?></li>
 								<li><?=gettext("NAT + Static Public IP: this PBX is behind a NAT which has a static public IP. Enter this IP below.");?></li>
 								<li><?=gettext("NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this information below.");?></li>
 							</ul>
@@ -349,21 +343,22 @@ function lan_if_change() {
 					</td>
 				</tr>	
 				<tr> 
-					<td width="22%" valign="top" class="vncell"><?=gettext("Public IP address");?></td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("Static Public IP");?></td>
 					<td width="78%" class="vtable">
 						<input name="extipaddr" type="text" class="formfld" id="extipaddr" size="20" value="<?=htmlspecialchars($pconfig['extipaddr']);?>">
 					</td>
 				</tr>
 				<tr>
-					<td width="22%" valign="top" class="vncell"><?=gettext("Public hostname");?></td>
+					<td width="22%" valign="top" class="vncell"><?=gettext("Public Hostname");?></td>
 					<td width="78%" class="vtable">
-						<?=gettext("This information is updated by:");?><br>
+						<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>"><br>
+						<br>
+						<?=gettext("This information should be updated by:");?><br>
+						<input name="hostnameupdatesrc" id="hostnameupdatesrc_router" type="radio" value="router" 
+						<?php if ($pconfig['hostnameupdatesrc'] == "router") echo "checked"; ?>><?=gettext("My Router");?>
+						&nbsp;&nbsp;
 						<input name="hostnameupdatesrc" id="hostnameupdatesrc_pbx" type="radio" value="pbx"
 						<?php if ($pconfig['hostnameupdatesrc'] == "pbx") echo "checked"; ?>><?=gettext("AskoziaPBX");?>
-						&nbsp;&nbsp;
-						<input name="hostnameupdatesrc" id="hostnameupdatesrc_router" type="radio" value="router" 
-						<?php if ($pconfig['hostnameupdatesrc'] == "router") echo "checked"; ?>><?=gettext("My Router");?><span id="hostname_wrapper" style="display:none;">
-							&nbsp;&nbsp;<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>"></span>
 					</td>
 				</tr>
 				<tr> 
@@ -393,12 +388,6 @@ function lan_if_change() {
 						}
 
 						?></select></td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-					<td width="78%" class="vtable"> 
-						<input name="dyndnshost" type="text" class="formfld" id="dyndnshost" size="30" value="<?=htmlspecialchars($pconfig['dyndnshost']);?>"> 
-					</td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
@@ -450,7 +439,7 @@ function lan_if_change() {
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%">
 						<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?><br>
-						</strong></span><?=gettext("after you click &quot;Save&quot;, all currentcalls will be dropped. You may also have to do one or more of the following steps before you can access your PBX again:");?> 
+						</strong></span><?=gettext("after you click &quot;Save&quot;, all current calls will be dropped. You may also have to do one or more of the following steps before you can access your PBX again:");?> 
 						<ul>
 							<li><?=gettext("restart the PBX");?></li>
 							<li><?=gettext("change the IP address of your computer");?></li>

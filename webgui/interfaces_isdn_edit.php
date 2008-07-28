@@ -194,7 +194,7 @@ if ($_POST) {
 		<td valign="top" class="vncell"><?=gettext("Echo Canceller");?></td>
 		<td class="vtable">
 			<input name="echocancel" id="echocancel" type="checkbox" value="yes" <? if ($pconfig['echocancel']) echo "checked"; ?>>
-			<?=gettext("Attempt to remove echoes from the line.");?>
+			<?=gettext("Attempt to remove echoes from the line. (recommended)");?>
 		</td>
 	</tr>
 	<? display_advanced_settings_begin(1); ?>

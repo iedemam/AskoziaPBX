@@ -31,6 +31,7 @@
 
 $d_isfwfile = 1;
 $pgtitle = array(gettext("System"), gettext("Firmware"));
+$pghelp = gettext("AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation.");
 require("guiconfig.inc"); 
 
 /* checks with downloads.askozia.com to see if a newer firmware version is available;
@@ -224,7 +225,7 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 					<td width="22%" valign="top">&nbsp;</td>
 					<td width="78%">
 						<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span><br>
-						<?=gettext("DO NOT abort the firmware upgrade once it has started. The system will reboot automatically after storing the new firmware. The configuration will be maintained.");?></span>
+						<?=gettext("DO NOT abort the firmware upgrade once it has started.");?></span>
 					</td>
 				</tr>
 			</table>

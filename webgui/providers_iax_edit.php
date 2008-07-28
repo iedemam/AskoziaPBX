@@ -224,7 +224,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" class="vncell"><?=gettext("Secret");?></td>
+				<td valign="top" class="vncell"><?=gettext("Password");?></td>
 				<td colspan="2" class="vtable">
 					<select name="authentication" class="formfld" id="authentication">
 						<option value="plaintext" <? 

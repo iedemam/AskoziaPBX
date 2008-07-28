@@ -303,8 +303,35 @@ dynamic_menu($menu['Diagnostics'], 'Diagnostics');
             </td>
         </tr></table></td>
     <td width="600"><table width="100%" border="0" cellpadding="10" cellspacing="0">
-        <tr><td>
-<?php if (!$pgtitle_omit): ?>
-      <p class="pgtitle"><?=gentitle($pgtitle);?></p>
-<?php endif; ?>
+        <tr><td><?
 
+if (!$pgtitle_omit) {
+	?><p class="pgtitle"><?
+		echo gentitle($pgtitle);
+		if ($pghelp) {
+			?>&nbsp;<a href="javascript:{}" onclick="jQuery('#pghelp').toggle()"><img src="help.png" border="0"></a><?
+		}
+	?></p><?
+
+	if ($pghelp) {
+		?><div class="pghelp" name="pghelp" id="pghelp" style="display:none;"><?=$pghelp;?><?
+
+		if ($pglegend) {
+			$legendtext['add'] = gettext("add a new item");
+			$legendtext['disabled'] = gettext("item is disabled, click to enable");
+			$legendtext['enabled'] = gettext("item is enabled, click to disable");
+			$legendtext['edit'] = gettext("edit an item");
+			$legendtext['delete'] = gettext("permanently delete an item ");
+			$legendtext['update'] = gettext("check for package updates");
+			$legendtext['restore'] = gettext("restore a backup archive");
+			$legendtext['backup'] = gettext("download a backup archive");
+			echo "<br>\n";
+			foreach ($pglegend as $legend) {
+				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=$legendtext[$legend];?><?
+			}
+		}
+
+		?></div><?
+	}
+}
+?>

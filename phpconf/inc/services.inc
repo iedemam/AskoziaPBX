@@ -54,6 +54,7 @@ function services_dyndns_configure() {
 	sigkillbypid("{$g['varrun_path']}/ez-ipupdate.pid", "QUIT");
 
 	$dyndnscfg = $config['dyndns'];
+	$lancfg = $config['interfaces']['lan'];
 
 	if ($config['interfaces']['lan']['hostnameupdatesrc'] == "pbx") {
 
@@ -72,7 +73,7 @@ function services_dyndns_configure() {
 		$ezipupdateconf = <<<EOD
 service-type={$dyndnscfg['type']}
 user={$dyndnscfg['username']}:{$dyndnscfg['password']}
-host={$dyndnscfg['host']}
+host={$lancfg['exthostname']}
 interface=web-detect
 period=600
 max-interval=2073600

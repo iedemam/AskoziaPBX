@@ -30,6 +30,7 @@
 */
 
 $pgtitle = array(gettext("Interfaces"), gettext("Storage"));
+$pghelp = gettext("AskoziaPBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space.");
 require("guiconfig.inc");
 
 

@@ -30,6 +30,8 @@
 */
 
 $pgtitle = array(gettext("System"), gettext("Packages"));
+$pghelp = gettext("Packages to expand system functionality can be installed and updated here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly available packages. All packages are digitally signed before distribution and checked upon installation.");
+$pglegend = array("add", "update", "restore", "backup", "enabled", "disabled", "edit", "delete");
 require("guiconfig.inc");
 
 function get_packages() {

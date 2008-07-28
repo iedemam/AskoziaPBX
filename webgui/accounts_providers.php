@@ -30,6 +30,8 @@
 */
 
 $pgtitle = array(gettext("Accounts"), gettext("Providers"));
+$pghelp = gettext("Provider Accounts allow you to configure routes to and from external sources (i.e. VoIP service providers or attached ISDN / Analog interface hardware). Click an account type below to get started.");
+$pglegend = array("add", "enabled", "disabled", "edit", "delete");
 require("guiconfig.inc");
 
 
@@ -181,7 +183,7 @@ if (file_exists($d_analogconfdirty_path)) {
 			?><a href="providers_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
 		if (!isset($config['system']['webgui']['hideanalog'])) {
-			?><a href="providers_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
+			?><a href="providers_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png"><?
 		}
 		?></td>
 	</tr>
@@ -292,7 +294,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<td width="5%" class="list"></td>
 		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Pattern(s)");?></td>
-		<td width="20%" class="listhdrr"><?=gettext("Main MSN");?></td>
+		<td width="20%" class="listhdrr"><?=gettext("Number");?></td>
 		<td width="20%" class="listhdr"><?=gettext("Interface");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
@@ -340,7 +342,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Pattern(s)");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Number");?></td>
-		<td width="25%" class="listhdr"><?=gettext("Interface");?></td>
+		<td width="20%" class="listhdr"><?=gettext("Interface");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 

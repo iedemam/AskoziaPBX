@@ -30,6 +30,8 @@
 */
 
 $pgtitle = array(gettext("Accounts"), gettext("Phones"));
+$pghelp = gettext("Phone Accounts allow you to configure internal extensions and their access to Provider Accounts. Click an account type below to get started.");
+$pglegend = array("add", "enabled", "disabled", "edit", "delete");
 require("guiconfig.inc");
 
 

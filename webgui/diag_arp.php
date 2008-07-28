@@ -120,13 +120,6 @@ function getHostName($mac,$ip)
     <td class="list" colspan="4"></td>
     <td class="list"><a href="?action=delete"><img src="delete.png" title="<?=gettext("remove all entries from arp table");?>" border="0"></a></td>
   </tr>
-  <tr>
-    <td colspan="4">
-      <span class="vexpl"><span class="red"><strong><?=gettext("Hint:");?><br>
-      </strong></span><?=gettext("IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the");?> <a href="diag_logs_settings.php">
-      <?=gettext("Diagnostics: Logs</a> page.");?></span>
-    </td>
-  </tr>
 </table>
 
 <?php include("fend.inc"); ?>

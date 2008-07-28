@@ -30,6 +30,8 @@
 */
 
 $pgtitle = array(gettext("Dialplan"), gettext("Applications"));
+$pghelp = gettext("With some knowledge of how the Asterisk dialplan works, some basic applications can be added to AskoziaPBX. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers.");
+$pglegend = array("add", "edit", "delete");
 require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...

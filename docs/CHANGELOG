@@ -9,11 +9,14 @@
  - added: log display page pagination + filtering
  - added: appropriate interfaces are now checked for before ISDN / Analog accounts can be setup
  - added: if default or configured network interfaces are not detected, new working settings are generated
+ - added: dynamic DNS update support
+ - added: page specific help has been added on pages bearing the "?" icon next to their title
  - package: logging package which enables permanent storage of system, pbx and call logs
  - updated: Asterisk to 1.4.21.2
  - updated: isdn4bsd to revision 751
  - updated: basesystem to FreeBSD 6.3-RELEASE-p2
  - changed: "Accounts -> Providers / Phones" pages redesigned
+ - changed: reworded help text on many features
  - changed: seldom used ISDN interface settings moved to "advanced" settings, timing defaults improved
  - changed: seldom used Analog interface settings moved to "advanced" settings
  - changed: isdn4bsd and generic usb devices are now compiled as modules

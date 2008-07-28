@@ -236,7 +236,7 @@ if ($_POST) {
 				</td>
 			</tr>			
 			<tr> 
-				<td valign="top" class="vncell"><?=gettext("Secret");?></td>
+				<td valign="top" class="vncell"><?=gettext("Password");?></td>
 				<td colspan="2" class="vtable">
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
 					<br><span class="vexpl"><?=gettext("This account's password.");?></span>

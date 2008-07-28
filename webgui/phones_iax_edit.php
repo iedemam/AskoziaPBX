@@ -186,12 +186,12 @@ if ($_POST) {
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
 				<td width="80%" colspan="2" class="vtable">
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl"><?=gettext("This is also this account's username.");?></span>
+					<br><span class="vexpl"><?=gettext("The phone number assigned to this account. Also this account's username.");?></span>
 				</td>
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 2); ?>
 			<tr>
-				<td valign="top" class="vncell"><?=gettext("Secret");?></td>
+				<td valign="top" class="vncell"><?=gettext("Password");?></td>
 				<td colspan="2" class="vtable">
 					<select name="authentication" class="formfld" id="authentication">
 						<option value="plaintext" <? 
