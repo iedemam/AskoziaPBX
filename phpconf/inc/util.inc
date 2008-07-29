@@ -102,6 +102,18 @@ function unlink_if_exists($fn) {
 		unlink($fn);
 }
 
+function format_bytes($bytes) {
+	if ($bytes >= 1073741824) {
+		return sprintf(gettext("%.2f GB"), $bytes/1073741824);
+	} else if ($bytes >= 1048576) {
+		return sprintf(gettext("%.2f MB"), $bytes/1048576);
+	} else if ($bytes >= 1024) {
+		return sprintf(gettext("%.0f KB"), $bytes/1024);
+	} else {
+		return sprintf(gettext("%d bytes"), $bytes);
+	}
+}
+
 /**
  * Manual attributes are needed in a variety of places,
  * this generates an appropriate conf snippet.

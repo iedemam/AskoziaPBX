@@ -371,18 +371,6 @@ function print_info_box($msg, $keep=false) {
 	</span><?
 }
 
-function format_bytes($bytes) {
-	if ($bytes >= 1073741824) {
-		return sprintf(gettext("%.2f GB"), $bytes/1073741824);
-	} else if ($bytes >= 1048576) {
-		return sprintf(gettext("%.2f MB"), $bytes/1048576);
-	} else if ($bytes >= 1024) {
-		return sprintf(gettext("%.0f KB"), $bytes/1024);
-	} else {
-		return sprintf(gettext("%d bytes"), $bytes);
-	}
-}
-
 function get_std_save_message($ok) {
 	global $d_sysrebootreqd_path;
 
