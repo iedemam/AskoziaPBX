@@ -321,7 +321,7 @@ if (!$pgtitle_omit) {
 			$legendtext['disabled'] = gettext("item is disabled, click to enable");
 			$legendtext['enabled'] = gettext("item is enabled, click to disable");
 			$legendtext['edit'] = gettext("edit an item");
-			$legendtext['delete'] = gettext("permanently delete an item ");
+			$legendtext['delete'] = gettext("permanently delete an item");
 			$legendtext['update'] = gettext("check for package updates");
 			$legendtext['restore'] = gettext("restore a backup archive");
 			$legendtext['backup'] = gettext("download a backup archive");
