@@ -1,4 +1,5 @@
 2008.xx.xx - pb14
+ - new platform: Live + Install CD
  - added: system storage media larger than 96MB will automatically be partitioned with a permanent storage partition
  - added: basic package management system and api with backup, restore, activate, deactivate and delete
  - added: providers and phones may now be disabled / enabled

@@ -37,6 +37,7 @@ while : ; do
 # display a cheap menu
 echo
 echo
+echo
 echo "AskoziaPBX console setup"
 echo "************************"
 echo "1) Interfaces: assign network port"
@@ -46,6 +47,13 @@ echo "4) Reset to factory defaults"
 echo "5) Reboot system"
 echo "6) Ping host"
 echo "7) Asterisk Console"
+# need an install option?
+PLATFORM=`cat /etc/platform`
+if [ $PLATFORM = "generic-pc-cdrom" ]; then
+echo "8) Install on Hard Drive";
+else 
+echo
+fi
 echo
 
 read -p "Enter a number: " opmode
@@ -74,6 +82,9 @@ case ${opmode} in
 	/usr/local/sbin/asterisk -r
 	;;
 8)
+	/etc/rc.initial.install
+	;;
+9)
 	/bin/sh
 	;;
 esac
