@@ -1295,7 +1295,7 @@ function package_cd($image_name) {
 	// add rootfs
 	_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
 	_exec("cd tmp/stage/asterisk; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
-	_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/stage/");
+	_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/stage/firmware.img");
 
 	// ...system modules		
 	_exec("mkdir tmp/stage/boot");
@@ -1353,6 +1353,7 @@ function release($name) {
 	global $platforms, $dirs;
 	
 	package_rootfs($name);
+	package_cd($name);
 
 	// signing
 	foreach($platforms as $platform) {
@@ -1533,7 +1534,7 @@ if ($argv[1] == "prepare") {
 			package($platform, $image_name);			
 		}
 		package_rootfs($image_name);
-		//package_cd($image_name);
+		package_cd($image_name);
 
 	// packaging the root file system distribution
 	} else if ($argv[2] == "rootfs") {
