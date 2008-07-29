@@ -174,6 +174,7 @@ if ($_POST) {
 
 		<?=javascript_public_direct_dial_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
+		<?=javascript_generate_passwd("ready");?>
 
 	});
 
@@ -204,6 +205,7 @@ if ($_POST) {
 							?>><?=gettext("md5");?></option>
 					</select>&nbsp;
 					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
+					<? display_passwd_generation(); ?>
                     <br><span class="vexpl"><?=gettext("This account's password and authentication scheme.");?></span>
 				</td>
 			</tr>

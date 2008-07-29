@@ -12,25 +12,9 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-29 13:05+0200\n"
+"POT-Creation-Date: 2008-07-18 20:13+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f Gt"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f Mt"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f Kt"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d tavua"
 
 msgid "Accounts"
 msgstr "Tilit"
@@ -461,9 +445,6 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
-msgid "Download"
-msgstr "Lataa"
-
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -883,6 +864,9 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
+
+msgid "Download"
+msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -1522,12 +1506,6 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
@@ -2423,6 +2401,13 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+msgid "generate password"
+msgstr ""
+
+#, fuzzy
+msgid "use this password"
+msgstr "Tämän tilin salasana."
+
 msgid "webGUI language"
 msgstr "Verkkokäyttöliittymän kieli"
 
@@ -3277,6 +3262,22 @@ msgstr "Paketti palautettiin onnistuneesti."
 
 msgid "Package installed successfully."
 msgstr "Paketti asennettiin onnistuneesti."
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f Gt"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f Mt"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f Kt"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d tavua"
 
 #, fuzzy
 #~ msgid "The dynamic DNS host name contains invalid characters."

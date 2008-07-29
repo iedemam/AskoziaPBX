@@ -322,4 +322,37 @@ function javascript_account_statuses($part) {
 	<? endif;
 }
 
+function javascript_generate_passwd($part) {
+
+	if ($part == "functions") : ?>
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#generate").click(function(){
+			
+			if(!jQuery("#generator_wrapper").is(':visible')) {
+				jQuery("#generator_wrapper").slideDown();
+			}
+
+			var charlist = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
+			var plength = 10;
+			var passwd = "";
+				for (i = 0; i < plength ; i++) {
+					passwd += charlist.charAt(Math.floor(Math.random()*charlist.length));
+				}
+			jQuery('#gen_passwd').val(passwd);
+		});
+
+		jQuery("#use").click(function(){
+			
+			jQuery('#secret').val(jQuery('#gen_passwd').val());
+		});
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_filter_textbox()!
+
+	<? endif;
+}
+
 ?>

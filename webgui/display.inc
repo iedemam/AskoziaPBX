@@ -28,6 +28,16 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+function display_passwd_generation() {
+?>
+	<a href="javascript:{}"><img class='verticalalign' src='key_go.png' name='generate' id="generate" title="<?=gettext("generate password");?>"></a>
+	<span name="generator_wrapper" id="generator_wrapper" class="display_none">
+	<br><input type="text" name="gen_passwd" id="gen_passwd" value="">
+	<a href="javascript:{}"><img class='verticalalign' src='add.png' name='use' id="use" title="<?=gettext("use this password");?>"></a>
+	</span>
+<?	
+}
+
 //------------- pagination/filter logic -------------
 
 function display_calculate_pages_sqlite($filter=null, $logpath, $nentries) {

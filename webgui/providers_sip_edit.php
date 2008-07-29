@@ -212,6 +212,7 @@ if ($_POST) {
 	jQuery(document).ready(function(){
 
 		<?=javascript_advanced_settings("ready");?>
+		<?=javascript_generate_passwd("ready");?>
 
 	});
 
@@ -234,11 +235,12 @@ if ($_POST) {
 				<td colspan="2" class="vtable">
 					<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
 				</td>
-			</tr>			
+			</tr>
 			<tr> 
 				<td valign="top" class="vncell"><?=gettext("Password");?></td>
 				<td colspan="2" class="vtable">
-					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
+					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>">
+					<? display_passwd_generation(); ?>
 					<br><span class="vexpl"><?=gettext("This account's password.");?></span>
 				</td>
 			</tr>

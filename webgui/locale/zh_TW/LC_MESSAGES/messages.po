@@ -8,29 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-29 13:05+0200\n"
+"POT-Creation-Date: 2008-07-18 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#, php-format
-msgid "%.2f GB"
-msgstr ""
-
-#, php-format
-msgid "%.2f MB"
-msgstr ""
-
-#, php-format
-msgid "%.0f KB"
-msgstr ""
-
-#, php-format
-msgid "%d bytes"
-msgstr ""
 
 msgid "Accounts"
 msgstr ""
@@ -437,9 +421,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "ISDN Interface"
 msgstr ""
 
@@ -843,6 +824,9 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1407,12 +1391,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2239,6 +2217,12 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+msgid "generate password"
+msgstr ""
+
+msgid "use this password"
+msgstr ""
+
 msgid "webGUI language"
 msgstr ""
 
@@ -3005,4 +2989,20 @@ msgid "Package restored successfully."
 msgstr ""
 
 msgid "Package installed successfully."
+msgstr ""
+
+#, php-format
+msgid "%.2f GB"
+msgstr ""
+
+#, php-format
+msgid "%.2f MB"
+msgstr ""
+
+#, php-format
+msgid "%.0f KB"
+msgstr ""
+
+#, php-format
+msgid "%d bytes"
 msgstr ""

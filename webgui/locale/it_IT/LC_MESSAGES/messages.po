@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-29 13:05+0200\n"
+"POT-Creation-Date: 2008-07-18 20:13+0000\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -22,22 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f GB"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f MB"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f KB"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d bytes"
 
 msgid "Accounts"
 msgstr "Accounts"
@@ -476,9 +460,6 @@ msgstr "Disabilita la ricerca di server DNS"
 
 msgid "Debug"
 msgstr "Debug"
-
-msgid "Download"
-msgstr "Scaricare"
 
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
@@ -920,6 +901,9 @@ msgstr "Pulisci"
 
 msgid "Download:"
 msgstr "Scaricare:"
+
+msgid "Download"
+msgstr "Scaricare"
 
 msgid "Upload:"
 msgstr "Caricare:"
@@ -1558,12 +1542,6 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2498,6 +2476,13 @@ msgstr "ERR Non posso installare la configurazione. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
 
+msgid "generate password"
+msgstr ""
+
+#, fuzzy
+msgid "use this password"
+msgstr "La password di questo account."
+
 msgid "webGUI language"
 msgstr "Lingua del interfaccia WEB"
 
@@ -3367,6 +3352,22 @@ msgstr "Pacchetto ripristinato correttamente."
 
 msgid "Package installed successfully."
 msgstr "Pacchetto installato correttamente."
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f GB"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f MB"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f KB"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d bytes"
 
 #, fuzzy
 #~ msgid "The dynamic DNS host name contains invalid characters."
