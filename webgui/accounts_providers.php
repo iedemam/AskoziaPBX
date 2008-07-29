@@ -166,6 +166,17 @@ if (file_exists($d_analogconfdirty_path)) {
 ?>
 
 <? include("fbegin.inc"); ?>
+<script type="text/javascript" charset="utf-8">
+
+	<?=javascript_account_statuses("functions");?>
+
+	jQuery(document).ready(function(){
+	
+		<?=javascript_account_statuses("ready");?>
+	
+	});
+
+</script>
 <form action="accounts_providers.php" method="post">
 <? if ($savemsg) print_info_box($savemsg); ?>
 <? $status_info = pbx_get_peer_statuses(); ?>
@@ -218,7 +229,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		?></td>
 		<td class="listbgl"><?
 		if (!isset($p['disabled'])) {
-			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo display_peer_status_icon($status_info[$p['uniqid']], $p['uniqid']);
 			echo htmlspecialchars($p['name']);
 		} else {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
@@ -264,7 +275,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		?></td>
 		<td class="listbgl"><?
 		if (!isset($p['disabled'])) {
-			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo display_peer_status_icon($status_info[$p['uniqid']], $p['uniqid']);
 			echo htmlspecialchars($p['name']);
 		} else {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
@@ -311,7 +322,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		?></td>
 		<td class="listbgl"><?
 		if (!isset($p['disabled'])) {
-			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo display_peer_status_icon($status_info[$p['uniqid']], $p['uniqid']);
 			echo htmlspecialchars($p['name']);
 		} else {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
@@ -358,7 +369,7 @@ if (file_exists($d_analogconfdirty_path)) {
 		?></td>
 		<td class="listbgl"><?
 		if (!isset($p['disabled'])) {
-			echo display_peer_status_icon($status_info[$p['uniqid']]);
+			echo display_peer_status_icon($status_info[$p['uniqid']], $p['uniqid']);
 			echo htmlspecialchars($p['name']);
 		} else {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?

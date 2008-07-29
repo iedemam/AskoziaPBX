@@ -243,7 +243,83 @@ function javascript_filter_textbox($part) {
 		ERROR: no part defined in javascript_filter_textbox()!
 
 	<? endif;
+}
 
+function javascript_account_statuses($part) {
+
+	if ($part == "functions") : ?>
+
+		function update_statuses_sub(status) {
+			var title;
+			var src;
+			switch(status[1]) {
+    	    
+				case "OK":
+				title = "connected";
+				src = "bullet_green.png";
+				break;
+    	    
+				case "LAGGED":
+				title = "connected but lagged";
+				src = "bullet_yellow.png";
+				break;
+    	    
+				case "UNREACHABLE":
+				title = "unreachable";
+				src = "bullet_red.png";
+				break;
+    	    
+				case "UNKNOWN":
+				title = "status unknown";
+				src = "bullet_white.png";
+				break;
+    	    
+				default:
+				title = "status unknown";
+				src = "bullet_white.png";
+				break;
+			}
+    	
+			jQuery('#' + status[0]).attr("src", src).attr("title", title);
+		}
+
+		function update_statuses() {
+    	
+			var lines = [];
+			var pieces = [];
+			var status = [];
+			var count = 0;
+			var title;
+			var src;
+			var i = 0;
+    	
+			jQuery.get('/ajax.cgi', { exec_ami: '"sip show statuses"' }, function(data){
+				lines = data.split(/\n/);
+				for (i = 0; i < lines.length; i++) {
+					pieces = lines[i].split(" ");
+					update_statuses_sub(pieces);
+				}
+			});
+			jQuery.get('/ajax.cgi', { exec_ami: '"iax2 show statuses"' }, function(data){
+				lines = data.split(/\n/);
+				for (i = 0; i < lines.length; i++) {
+					pieces = lines[i].split(" ");
+					update_statuses_sub(pieces);
+				}
+			});
+    	
+			setTimeout("update_statuses()", 5000);
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		update_statuses();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_account_statuses()!
+
+	<? endif;
 }
 
 ?>
