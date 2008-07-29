@@ -8,13 +8,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-28 16:20+0200\n"
+"POT-Creation-Date: 2008-07-29 13:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, php-format
+msgid "%.2f GB"
+msgstr ""
+
+#, php-format
+msgid "%.2f MB"
+msgstr ""
+
+#, php-format
+msgid "%.0f KB"
+msgstr ""
+
+#, php-format
+msgid "%d bytes"
+msgstr ""
 
 msgid "Accounts"
 msgstr ""
@@ -2691,22 +2707,6 @@ msgid "The field '%s' is required."
 msgstr ""
 
 msgid "The following input errors were detected:"
-msgstr ""
-
-#, php-format
-msgid "%.2f GB"
-msgstr ""
-
-#, php-format
-msgid "%.2f MB"
-msgstr ""
-
-#, php-format
-msgid "%.0f KB"
-msgstr ""
-
-#, php-format
-msgid "%d bytes"
 msgstr ""
 
 msgid "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</a> your pbx for the changes to take effect."

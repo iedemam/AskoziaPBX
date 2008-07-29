@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-28 16:20+0200\n"
+"POT-Creation-Date: 2008-07-29 13:05+0200\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -22,6 +22,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f GB"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f MB"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f KB"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d bytes"
 
 msgid "Accounts"
 msgstr "Accounts"
@@ -3313,22 +3329,6 @@ msgstr "Il campo '%s' è obbligatorio."
 
 msgid "The following input errors were detected:"
 msgstr "Sono stati individuati i seguenti errori:"
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f GB"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f MB"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f KB"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d bytes"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"

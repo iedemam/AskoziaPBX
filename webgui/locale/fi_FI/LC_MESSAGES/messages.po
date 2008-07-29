@@ -12,9 +12,25 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-28 16:20+0200\n"
+"POT-Creation-Date: 2008-07-29 13:05+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f Gt"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f Mt"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f Kt"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d tavua"
 
 msgid "Accounts"
 msgstr "Tilit"
@@ -3223,22 +3239,6 @@ msgstr "Kohta '%s' on määritettävä."
 
 msgid "The following input errors were detected:"
 msgstr "Seuraavat virheet löydettiin:"
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f Gt"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f Mt"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f Kt"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d tavua"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
