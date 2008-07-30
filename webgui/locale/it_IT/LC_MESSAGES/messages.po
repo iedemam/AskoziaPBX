@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-18 20:13+0000\n"
+"POT-Creation-Date: 2008-07-30 15:03+0200\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -461,6 +461,9 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
+msgid "Download"
+msgstr "Scaricare"
+
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -902,9 +905,6 @@ msgstr "Pulisci"
 msgid "Download:"
 msgstr "Scaricare:"
 
-msgid "Download"
-msgstr "Scaricare"
-
 msgid "Upload:"
 msgstr "Caricare:"
 
@@ -1003,7 +1003,7 @@ msgstr "Nessuna interfaccia analogica rilevata."
 
 msgid ""
 "If an analog interface is present but was not detected, please send <a href="
-"\"/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 
@@ -1106,13 +1106,13 @@ msgid "No compatible ISDN interfaces detected."
 msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
 
 msgid ""
-"If an ISDN interface is present but was not detected, please send <a href=\"/"
-"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
+"If an ISDN interface is present but was not detected, please send <a href="
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 
 msgid ""
-"If this is a USB ISDN device, send <a href=\"/ajax.cgi?exec_shell=/sbin/"
+"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
 "udesc_dump\">this output</a> as well."
 msgstr ""
 
@@ -1542,6 +1542,12 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."

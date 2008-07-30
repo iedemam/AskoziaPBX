@@ -131,9 +131,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 				<tr> 
 					<td><strong><?=gettext("No compatible ISDN interfaces detected.");?></strong>
 					<br>
-					<br><?=gettext("If an ISDN interface is present but was not detected, please send <a href=\"/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>.");?>
+					<br><?=gettext("If an ISDN interface is present but was not detected, please send <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>.");?>
 					<br>
-					<br><?=gettext("If this is a USB ISDN device, send <a href=\"/ajax.cgi?exec_shell=/sbin/udesc_dump\">this output</a> as well.");?></td>
+					<br><?=gettext("If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/udesc_dump\">this output</a> as well.");?></td>
 				</tr>
 			</table><?
 

@@ -69,7 +69,7 @@ $musiconhold		= explode(" ", "fpm-calm-river");
 
 // --[ modules ]---------------------------------------------------------------
 
-$low_power_modules		= explode(" ", "codec_speex.so");//" codec_ilbc.so");
+$low_power_modules		= explode(" ", "codec_speex.so codec_ilbc.so");
 $low_power_libraries	= explode(" ", "/usr/local/lib/libspeex.so.1");
 
 // --[ image padding ]---------------------------------------------------------

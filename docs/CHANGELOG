@@ -23,11 +23,7 @@
  - changed: isdn4bsd and generic usb devices are now compiled as modules
  - bug: fixed "help text" display bug on ISDN and Analog interface summary pages
  - bug: fixed music-on-hold for ISDN accounts
- - removed: iLBC removed until licensing can be confirmed
  - removed: log reverse sort order option removed
-
-2008.xx.xx - pb13.5
- - bug: ring lengths now correctly set for call groups (reported by runner in the forums) 
 
 2008.06.05 - pb13.4
  - bug: using applications as a Provider's incoming destination works in more cases

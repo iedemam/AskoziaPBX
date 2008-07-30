@@ -52,7 +52,7 @@ require_once("functions.inc");
 			jQuery.noConflict();
 		
 			function element_library_populate_applications() {
-				jQuery.get('/ajax.cgi', { exec_ami: '"core show applications"' }, function(data){
+				jQuery.get('ajax.cgi', { exec_ami: '"core show applications"' }, function(data){
 					var lines = data.split(/\n/);
 					var app_pairs = [];
 					var i = 0;
@@ -91,7 +91,7 @@ require_once("functions.inc");
 			function element_library_get_application_description(app) {
 				jQuery('#application-description-' + app).toggle("slow");
 				if (jQuery('#application-description-' + app).html() == "fetching description...") {
-					jQuery.get('/ajax.cgi', { exec_ami: '"core show application ' + app + '"' }, function(data){
+					jQuery.get('ajax.cgi', { exec_ami: '"core show application ' + app + '"' }, function(data){
 						var app_description = "";
 						var description_start = 0;
 						var description_end = 0;
@@ -105,7 +105,7 @@ require_once("functions.inc");
 			}
         	
 			function element_library_populate_functions() {
-				jQuery.get('/ajax.cgi', { exec_ami: '"core show functions"' }, function(data){
+				jQuery.get('ajax.cgi', { exec_ami: '"core show functions"' }, function(data){
 					var lines = data.split(/\n/);
 					var func_pairs = [];
 					var i = 0;
@@ -143,7 +143,7 @@ require_once("functions.inc");
 			function element_library_get_function_description(func) {
 				jQuery('#function-description-' + func).toggle("slow");
 				if (jQuery('#function-description-' + func).html() == "fetching description...") {
-					jQuery.get('/ajax.cgi', { exec_ami: '"core show function ' + func + '"' }, function(data){
+					jQuery.get('ajax.cgi', { exec_ami: '"core show function ' + func + '"' }, function(data){
 						var func_description = "";
 						var syntax_start = 0;
 						var syntax_end = 0;

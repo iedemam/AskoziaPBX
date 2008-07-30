@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-18 20:13+0000\n"
+"POT-Creation-Date: 2008-07-30 15:03+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -445,6 +445,9 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
+msgid "Download"
+msgstr "Lataa"
+
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -865,9 +868,6 @@ msgstr "Tyhjennä"
 msgid "Download:"
 msgstr "Lataa:"
 
-msgid "Download"
-msgstr "Lataa"
-
 msgid "Upload:"
 msgstr "Lataa ylös:"
 
@@ -964,9 +964,10 @@ msgstr "Tallentaminen"
 msgid "No compatible analog interfaces detected."
 msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 
+#, fuzzy
 msgid ""
 "If an analog interface is present but was not detected, please send <a href="
-"\"/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 "Jos analoginen käyttöliittymä on läsnä mutta ei havaittu, ole ystävällinen "
@@ -1068,9 +1069,10 @@ msgstr ""
 msgid "No compatible ISDN interfaces detected."
 msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
 
+#, fuzzy
 msgid ""
-"If an ISDN interface is present but was not detected, please send <a href=\"/"
-"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
+"If an ISDN interface is present but was not detected, please send <a href="
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 "Jos ISDN käyttöliittymä on läsnä mutta ei havaittu, ole ystävällinen ja "
@@ -1078,8 +1080,9 @@ msgstr ""
 "sbin/dmesg\">tämä tuotos</a> osoitteeseen <a href=\"mailto:michael@askozia."
 "com\">michael@askozia.com</a>."
 
+#, fuzzy
 msgid ""
-"If this is a USB ISDN device, send <a href=\"/ajax.cgi?exec_shell=/sbin/"
+"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
 "udesc_dump\">this output</a> as well."
 msgstr ""
 "Jos tämä on USB ISDN laite, lähetä myös <a href=\"/ajax.cgi?exec_shell=/sbin/"
@@ -1506,6 +1509,12 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."

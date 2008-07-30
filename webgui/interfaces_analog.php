@@ -143,7 +143,7 @@ if (file_exists($d_analogconfdirty_path)) {
 				?><tr> 
 					<td><strong><?=gettext("No compatible analog interfaces detected.");?></strong>
 					<br>
-					<br><?=gettext("If an analog interface is present but was not detected, please send <a href=\"/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>.");?></td>
+					<br><?=gettext("If an analog interface is present but was not detected, please send <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>.");?></td>
 				</tr>
 			</table><?
 

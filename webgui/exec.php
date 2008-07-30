@@ -86,7 +86,7 @@ function puts( $arg ) { echo "$arg\n"; }
 
 	jQuery(document).ready(function(){
 	
-		jQuery.preloadImages(['/ajax_busy_round.gif']);
+		jQuery.preloadImages(['ajax_busy_round.gif']);
 
 		jQuery("#contents_wrapper").ajaxStart(function(){
 			jQuery(this).text("executing...");
@@ -114,7 +114,7 @@ function puts( $arg ) { echo "$arg\n"; }
 				arrRecallBuffer[arrRecallBuffer.length] = command;
 			}
 		}
-		jQuery.get("/ajax.cgi", { exec_shell: command }, function(data){
+		jQuery.get("ajax.cgi", { exec_shell: command }, function(data){
 			jQuery("#contents_wrapper").text(data);
 		});
 	}

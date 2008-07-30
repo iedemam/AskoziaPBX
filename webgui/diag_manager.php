@@ -39,12 +39,12 @@ include("fbegin.inc"); ?>
 
 	jQuery(document).ready(function(){
 
-		jQuery.preloadImages(['/ajax_busy_round.gif']);
+		jQuery.preloadImages(['ajax_busy_round.gif']);
 
 		jQuery("#command").focus();
 		
 		jQuery("#contents_wrapper").ajaxStart(function(){
-			jQuery(this).block('<img src="/ajax_busy_round.gif">');
+			jQuery(this).block('<img src="ajax_busy_round.gif">');
 		});
 
 		jQuery("#contents_wrapper").ajaxStop(function(){
@@ -53,7 +53,7 @@ include("fbegin.inc"); ?>
 
 		jQuery("#command").keyup(function(e){
 			if (e.keyCode == 13) {
-				jQuery.get("/ajax.cgi", { exec_ami: '"' + jQuery("#command").val() + '"' }, function(data){
+				jQuery.get("ajax.cgi", { exec_ami: '"' + jQuery("#command").val() + '"' }, function(data){
 					jQuery("#contents").val(data);
 				});
 			}

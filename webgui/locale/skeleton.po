@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-18 20:13+0000\n"
+"POT-Creation-Date: 2008-07-30 15:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,6 +397,9 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "ISDN Interface"
 msgstr ""
 
@@ -773,9 +776,6 @@ msgstr ""
 msgid "Download:"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "Upload:"
 msgstr ""
 
@@ -870,7 +870,7 @@ msgstr ""
 msgid "No compatible analog interfaces detected."
 msgstr ""
 
-msgid "If an analog interface is present but was not detected, please send <a href=\"/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+msgid "If an analog interface is present but was not detected, please send <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 
 msgid "Unit"
@@ -945,10 +945,10 @@ msgstr ""
 msgid "No compatible ISDN interfaces detected."
 msgstr ""
 
-msgid "If an ISDN interface is present but was not detected, please send <a href=\"/ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+msgid "If an ISDN interface is present but was not detected, please send <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 
-msgid "If this is a USB ISDN device, send <a href=\"/ajax.cgi?exec_shell=/sbin/udesc_dump\">this output</a> as well."
+msgid "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/udesc_dump\">this output</a> as well."
 msgstr ""
 
 msgid "Operating Mode"
@@ -1267,6 +1267,10 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."

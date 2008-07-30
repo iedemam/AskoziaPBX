@@ -737,7 +737,7 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
             
 			?>>&nbsp;<?=gettext("don't send to voicemail when busy");?><br>
 			<br><span class="vexpl"><?=gettext("An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.");?>
-			<br><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("Voicemail Services");?> <a href="/services_voicemail.php"><?=gettext("must be configured</a> before this feature will work.");?></span>
+			<br><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("Voicemail Services");?> <a href="services_voicemail.php"><?=gettext("must be configured</a> before this feature will work.");?></span>
 		</td>
 	</tr><?
 }
