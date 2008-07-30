@@ -56,7 +56,7 @@ EOD;
 		if ($target_disk === "") {
 			exit(0);
 		}
-	} while (!$target_disk);
+	} while (!in_array($target_disk, $disks));
 	
 	
 	echo <<<EOD
