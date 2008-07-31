@@ -254,19 +254,19 @@ function display_gui_language_selector($current_language) {
 
 	$languages = array(
 		"en_US" => "English",
-		"es_ES" => "Castellano",
-		"zh_CN" => "汉字",
-		"zh_TW" => "漢字",
-		"da_DA" => "Dansk",
-		"de_DE" => "Deutsch",
-		"fr_FR" => "Français",
-		"it_IT" => "Italiano",
-		"pl_PL" => "Język polski",
-		"nl_NL" => "Nederlands",
-		"pt_BR" => "Português",
-		"fi_FI" => "Suomi",
-		"se_SE" => "Svenska",
-		"ru_RU" => "Русский язык"
+		"es_ES" => "Castellano (0%)",
+		//"zh_CN" => "汉字",
+		//"zh_TW" => "漢字",
+		"da_DA" => "Dansk (0%)",
+		"de_DE" => "Deutsch (0%)",
+		"fr_FR" => "Français (0%)",
+		"it_IT" => "Italiano (70%)",
+		"pl_PL" => "Język polski (0%)",
+		"nl_NL" => "Nederlands (0%)",
+		"pt_BR" => "Português (0%)",
+		"fi_FI" => "Suomi (90%)",
+		"se_SE" => "Svenska (0%)",
+		"ru_RU" => "Русский язык (0%)"
 	);
 
 	?><tr> 
