@@ -1134,7 +1134,8 @@ function package($platform, $image_name) {
 	global $dirs, $versions;
 	global $mfsroot_pad, $asterisk_pad, $image_pad;
 	global $low_power_modules, $low_power_libraries;
-		
+
+	_clean_image($image_name);
 	_set_permissions($image_name);
 	
 	if (!file_exists("tmp")) {
@@ -1263,7 +1264,9 @@ function package($platform, $image_name) {
 
 function package_rootfs($image_name) {
 	global $dirs;
-	
+
+	_clean_image($image_name);
+	_set_permissions($image_name);
 	$name = basename($image_name);
 
 	// tar
@@ -1278,6 +1281,7 @@ function package_rootfs($image_name) {
 function package_cd($image_name) {
 	global $dirs, $versions, $mfsroot_pad;
 
+	_clean_image($image_name);
 	_set_permissions($image_name);
 
 	if (!file_exists("tmp")) {
@@ -1391,6 +1395,11 @@ function _set_permissions($image_name) {
 	_exec("chmod 644 $image_name/rootfs/usr/local/www/*");
 	_exec("chmod 755 $image_name/rootfs/usr/local/www/*.php");
 	_exec("chmod 755 $image_name/rootfs/usr/local/www/*.cgi");
+}
+
+function _clean_image($image_name) {
+	passthru("find -d $image_name -name \".svn\" -exec rm -r '{}' \; -print");
+	passthru("find $image_name -type f -name \"._*\" -delete -print");	
 }
 
 function _stamp_package_as_patched($package_version) {
@@ -1524,10 +1533,6 @@ if ($argv[1] == "prepare") {
 		_log("Image does not exist!");
 		exit(1);
 	}
-	// clean up any .svn directories
-	passthru("find -d $image_name -name \".svn\" -exec rm -r '{}' \; -print");
-	// clean up and ._ files
-	passthru("find $image_name -type f -name \"._*\" -delete -print");
 	// we're packaging all platforms go right ahead
 	if ($argv[2] == "all") {
 		foreach($platforms as $platform) {
