@@ -255,8 +255,8 @@ function display_gui_language_selector($current_language) {
 	$languages = array(
 		"en_US" => "English",
 		"es_ES" => "Castellano (0%)",
-		//"zh_CN" => "汉字",
-		//"zh_TW" => "漢字",
+		"zh_CN" => "简体中文",
+		"zh_TW" => "繁体中文",
 		"da_DA" => "Dansk (0%)",
 		"de_DE" => "Deutsch (0%)",
 		"fr_FR" => "Français (0%)",
@@ -264,7 +264,7 @@ function display_gui_language_selector($current_language) {
 		"pl_PL" => "Język polski (0%)",
 		"nl_NL" => "Nederlands (0%)",
 		"pt_BR" => "Português (0%)",
-		"fi_FI" => "Suomi (90%)",
+		"fi_FI" => "Suomi",
 		"se_SE" => "Svenska (0%)",
 		"ru_RU" => "Русский язык (0%)"
 	);
