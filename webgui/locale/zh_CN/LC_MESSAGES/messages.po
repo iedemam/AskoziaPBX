@@ -1,643 +1,656 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# $Id$
+#
+# part of AskoziaPBX (http://askozia.com/pbx)
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+# All rights reserved.
+#
+# Authors:
+# 	Cao Xing
+#
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-30 15:03+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"POT-Creation-Date: 2008-08-05 16:38+0000\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Accounts"
-msgstr ""
+msgstr "账号"
 
 msgid "Phones"
-msgstr ""
+msgstr "电话"
 
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
 msgstr ""
+"电话帐号，允许你设置内部分机和供应商账号对他们的访问。点击下面的一个帐号类型"
+"来开始。"
 
 msgid "SIP"
-msgstr ""
+msgstr "SIP"
 
 msgid "IAX"
-msgstr ""
+msgstr "IAX"
 
 msgid "ISDN"
-msgstr ""
+msgstr "ISDN"
 
 msgid "Analog"
-msgstr ""
+msgstr "模拟"
 
 msgid "External"
-msgstr ""
+msgstr "外部"
 
 msgid "Extension"
-msgstr ""
+msgstr "分机"
 
 msgid "Caller ID"
-msgstr ""
+msgstr "呼叫者ID"
 
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 msgid "click to enable phone"
-msgstr ""
+msgstr "点击启用电话"
 
 msgid "Do you really want to disable this phone?"
-msgstr ""
+msgstr "真的要禁用这个电话？"
 
 msgid "click to disable phone"
-msgstr ""
+msgstr "点击禁止电话"
 
 msgid "edit phone"
-msgstr ""
+msgstr "编辑电话"
 
 msgid "Do you really want to delete this phone?"
-msgstr ""
+msgstr "真的要删除这个电话？"
 
 msgid "delete phone"
-msgstr ""
+msgstr "删除电话"
 
 msgid "Name"
-msgstr ""
+msgstr "名字"
 
 msgid "Dialstring"
-msgstr ""
+msgstr "拨号串"
 
 msgid "Providers"
-msgstr ""
+msgstr "提供商"
 
 msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
 "(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
 "Click an account type below to get started."
 msgstr ""
+"通过提供商账号允许您设置与外部来源来往的路由。(即VoIP服务提供商或附加的ISDN/"
+"模拟电话硬件接口)。点击下面的一个账号开始。"
 
 msgid "Pattern(s)"
-msgstr ""
+msgstr "模式"
 
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 msgid "Host"
-msgstr ""
+msgstr "主机"
 
 msgid "click to enable provider"
-msgstr ""
+msgstr "点击启用提供商"
 
 msgid "Do you really want to disable this provider?"
-msgstr ""
+msgstr "真的要禁止这个提供商？"
 
 msgid "click to disable provider"
-msgstr ""
+msgstr "点击禁止提供商"
 
 msgid "edit provider"
-msgstr ""
+msgstr "编辑提供商"
 
 msgid "Do you really want to delete this provider?"
-msgstr ""
+msgstr "真的要删除这个提供商?"
 
 msgid "delete provider"
-msgstr ""
+msgstr "删除提供商"
 
 msgid "Number"
-msgstr ""
+msgstr "数量"
 
 msgid "Interface"
-msgstr ""
+msgstr "接口"
 
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
 msgid "Tone Zones"
-msgstr ""
+msgstr "Tone Zones"
 
 msgid "Loaded"
-msgstr ""
+msgstr "已载入"
 
 msgid "drag-and-drop"
-msgstr ""
+msgstr "拖放"
 
 msgid "Inactive"
-msgstr ""
+msgstr "交互"
 
 msgid "Note:"
-msgstr ""
+msgstr "注意："
 
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
 msgstr ""
+"选择所有模拟硬件支持的Tone Zones。<strong>第一个Tone Zone将会是是默认的。"
 
 msgid "GUI Options"
-msgstr ""
+msgstr "用户界面选项"
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
 "is not set."
-msgstr ""
+msgstr "自签发的证书不能产生，因为系统时钟尚未设定。"
 
 msgid ""
 "A self-signed certificate and private key have been automatically generated."
-msgstr ""
+msgstr "自签发的证书与私人密钥已经自动产生。"
 
 msgid "Certificate and key must always be specified together."
-msgstr ""
+msgstr "证书和密钥必须始终一起被指定。"
 
 msgid "This certificate does not appear to be valid."
-msgstr ""
+msgstr "这个证书似乎不是有效的。"
 
 msgid "This key does not appear to be valid."
-msgstr ""
+msgstr "这个密钥似乎不是有效的。"
 
 msgid "webGUI SSL certificate/key"
-msgstr ""
+msgstr "网页用户界面 SSL 证书/密钥"
 
 msgid "Certificate"
-msgstr ""
+msgstr "证书"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr ""
+msgstr "在这里粘贴一个X.509 PEM格式并签署的证书。"
 
 msgid "Key"
-msgstr ""
+msgstr "密钥"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr ""
+msgstr "在这里粘贴一个PEM格式的RSA私人密钥。"
 
 msgid "Generate self-signed certificate"
-msgstr ""
+msgstr "产生一个自签发的证书"
 
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "杂项"
 
 msgid "Console menu"
-msgstr ""
+msgstr "控制台菜单"
 
 msgid "Disable console menu"
-msgstr ""
+msgstr "禁用控制台菜单"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr ""
+msgstr "改变这个选项需要重启后方能生效。"
 
 msgid "Firmware version check"
-msgstr ""
+msgstr "固件版本检查"
 
 msgid "Disable firmware version check"
-msgstr ""
+msgstr "禁止固件版本检查"
 
 msgid ""
 "This will cause AskoziaPBX not to check for newer firmware versions when the "
 "<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
+"这会使AskoziaPBX不去检查新的固件版本当<a href=\"system_firmware.php\">系统："
+"固件</a> 页面被查看的时候."
 
 msgid "Package version checks"
-msgstr ""
+msgstr "软件包版本检查"
 
 msgid "Disable package version checks"
-msgstr ""
+msgstr "禁止软件包版本检查"
 
 msgid ""
 "This will cause AskoziaPBX not to check for package updates when the <a href="
 "\"system_packages.php\">System: Packages</a> page is viewed."
 msgstr ""
+"这会使AskoziaPBX不去检查软件包的版本当<a href=\"system_packages.php\">系统："
+"软件包</a> 页面被查看的时候."
 
 msgid "Hard disk standby time"
-msgstr ""
+msgstr "硬盘待机时间"
 
 msgid "Always on"
-msgstr ""
+msgstr "一直开启"
 
 msgid "minutes"
-msgstr ""
+msgstr "分钟"
 
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last access has elapsed. <em>Do not set this for CF cards."
-msgstr ""
+msgstr "硬盘的空闲时间超过所选的时长即进入待机模式。<em>请勿为CF卡设置此选项 "
 
 msgid "Navigation"
-msgstr ""
+msgstr "导航"
 
 msgid "Keep diagnostics in navigation expanded"
-msgstr ""
+msgstr "保持导航条展开"
 
 msgid "Keep advanced options in navigation expanded"
-msgstr ""
+msgstr "保持导航条里的高级选项展开"
 
 msgid "Hide SIP related options"
-msgstr ""
+msgstr "隐藏与SIP相关的选项"
 
 msgid "Hide IAX related options"
-msgstr ""
+msgstr "隐藏与IAX相关的选项"
 
 msgid "Hide ISDN related options"
-msgstr ""
+msgstr "隐藏与ISDN相关的选项"
 
 msgid "Hide Analog related options"
-msgstr ""
+msgstr "隐藏与模拟电话相关的选项"
 
 msgid "Port"
-msgstr ""
+msgstr "端口"
 
 msgid "A valid port must be specified."
-msgstr ""
+msgstr "必须指定一个有效的端口。"
 
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 msgid "Binding Port"
-msgstr ""
+msgstr "绑定的端口"
 
 msgid "Jitterbuffer"
-msgstr ""
+msgstr "時基誤差(Jitter)缓存"
 
 msgid "Enable"
-msgstr ""
+msgstr "允许"
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
 msgstr ""
 
 msgid "Force"
-msgstr ""
+msgstr "强制"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
-msgstr ""
+msgstr "使用時基誤差(Jitter)缓存即使桥接两个端点。"
 
 msgid "National Prefix, International Prefix"
-msgstr ""
+msgstr "国家区号，国际区号"
 
 msgid "A valid national prefix must be specified."
-msgstr ""
+msgstr "必须指定一个有效的国家区号。"
 
 msgid "A valid international prefix must be specified."
-msgstr ""
+msgstr "必须指定一个有效的国际区号。"
 
 msgid "National Prefix"
-msgstr ""
+msgstr "国家区号"
 
 msgid "International Prefix"
-msgstr ""
+msgstr "国际区号"
 
 msgid "Audio"
-msgstr ""
+msgstr "音频"
 
 msgid "A-law"
-msgstr ""
+msgstr "A-Law"
 
 msgid "u-law"
-msgstr ""
+msgstr "u-Law"
 
 msgid "Manager Interface"
-msgstr ""
+msgstr "管理界面"
 
 msgid "Permissions"
-msgstr ""
+msgstr "权限"
 
 msgid "read:"
-msgstr ""
+msgstr "读取："
 
 msgid "write:"
-msgstr ""
+msgstr "写入："
 
 msgid "edit manager room"
-msgstr ""
+msgstr "编辑管理空间"
 
 msgid "Do you really want to delete this manager user?"
-msgstr ""
+msgstr "真的要删除这个管理用户？"
 
 msgid "delete manager user"
-msgstr ""
+msgstr "删除管理用户"
 
 msgid "add manager user"
-msgstr ""
+msgstr "添加管理用户"
 
 msgid "Edit User"
-msgstr ""
+msgstr "编辑用户"
 
 msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr ""
+msgstr "用户名，秘密，拒绝的IP，拒绝的网络掩码，许可的IP，许可的网络掩码"
 
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
-msgstr ""
+msgstr "用户名\"admin\"已经被AskoziaPBX内部使用"
 
 msgid "Secret"
-msgstr ""
+msgstr "秘密"
 
 msgid "Deny Network"
-msgstr ""
+msgstr "拒绝的网络"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
-msgstr ""
+msgstr "设置 '0.0.0.0 / 0.0.0.0' 以拒绝所有"
 
 msgid "Permit Network"
-msgstr ""
+msgstr "许可的网络"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
-msgstr ""
+msgstr "设置 '0.0.0.0 / 0.0.0.0' 以许可所有"
 
 msgid "Read"
-msgstr ""
+msgstr "读取"
 
 msgid "Write"
-msgstr ""
+msgstr "写入"
 
 msgid "RTP"
-msgstr ""
+msgstr "RTP"
 
 msgid "Low RTP Port,High RTP Port"
-msgstr ""
+msgstr "低RTP端口，高RTP端口"
 
 msgid "The high RTP port must be greater than the low RTP port."
-msgstr ""
+msgstr "高RTP端口必须大于低RTP端口。"
 
 msgid "RTP Port Range"
-msgstr ""
+msgstr "RTP端口范围"
 
 msgid "The port range which RTP streams should use. (default:"
-msgstr ""
+msgstr "RTP流应使用的端口范围。（默认："
 
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 msgid "after you click &quot;Save&quot;, all current calls will be dropped."
-msgstr ""
+msgstr "按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。"
 
 msgid ""
 "A whole number of seconds must be entered for the \"Default Registration "
 "Expiration\" timeout."
-msgstr ""
+msgstr "必须为\"默认的注册期满\"填入一个超时的秒数"
 
 msgid ""
 "A whole number of seconds must be entered for the \"Minimum Registration "
 "Expiration\" timeout."
-msgstr ""
+msgstr "必须为\"最小的注册期满\"填入一个超时的秒数"
 
 msgid ""
 "A whole number of seconds must be entered for the \"Maximum Registration "
 "Expiration\" timeout."
-msgstr ""
+msgstr "必须为\"最大的注册期满\"填入一个超时的秒数"
 
 msgid "Registration Expiration Timeouts"
-msgstr ""
+msgstr "注册期满超时"
 
 msgid "min:"
-msgstr ""
+msgstr "最小"
 
 msgid "max:"
-msgstr ""
+msgstr "最大"
 
 msgid "default:"
-msgstr ""
+msgstr "默认"
 
 msgid ""
 "The minimum, maximum and default number of seconds that incoming and "
 "outgoing registrations and subscriptions remain valid."
-msgstr ""
+msgstr "最小，最大和默认的秒数，使传入传出的注册或者订阅信息保持有效。"
 
 msgid "Default values are 60, 3600 and 120 respectively."
-msgstr ""
+msgstr "默认值分别是60，3600和120。"
 
 msgid "DNS Service Records"
-msgstr ""
+msgstr "DNS服务器记录"
 
 msgid "Disable DNS SRV lookups."
-msgstr ""
+msgstr "禁用DNS SRV查找"
 
 msgid "Debug"
-msgstr ""
-
-msgid "Download"
-msgstr ""
+msgstr "调试"
 
 msgid "ISDN Interface"
-msgstr ""
+msgstr "ISDN界面"
 
 msgid "Start"
-msgstr ""
+msgstr "开始"
 
 msgid "Debugging"
-msgstr ""
+msgstr "正在调试"
 
 msgid "Stop"
-msgstr ""
+msgstr "停止"
 
 msgid "Debug Ouptut"
-msgstr ""
+msgstr "调试输出"
 
 msgid "Restart"
-msgstr ""
+msgstr "重启"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "症状"
 
 msgid "ARP table"
-msgstr ""
+msgstr "ARP表"
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP地址"
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC地址"
 
 msgid "Hostname"
-msgstr ""
+msgstr "主机名"
 
 msgid "delete arp entry"
-msgstr ""
+msgstr "删除arp条目"
 
 msgid "remove all entries from arp table"
-msgstr ""
+msgstr "删除arp表的所有条目"
 
 msgid "Editor"
-msgstr ""
+msgstr "编辑器"
 
 #, php-format
 msgid "The specified file (%s) does not exist."
-msgstr ""
+msgstr "指定的文件 (%s) 不存在。"
 
 #, php-format
 msgid "File contents (%s) saved."
-msgstr ""
+msgstr "文件内容 (%s) 已保存。"
 
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 msgid "Contents"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 msgid "Open"
-msgstr ""
+msgstr "打开"
 
 msgid "Logs"
-msgstr ""
+msgstr "日志"
 
 msgid "No matches found."
-msgstr ""
+msgstr "没有找到匹配的"
 
 msgid "System"
-msgstr ""
+msgstr "系统"
 
 msgid "PBX"
-msgstr ""
+msgstr "PBX"
 
 msgid "Calls"
-msgstr ""
+msgstr "电话"
 
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 msgid "filter"
-msgstr ""
+msgstr "过滤"
 
 msgid "System log entries"
-msgstr ""
+msgstr "系统日志条目"
 
 msgid "Clear Log"
-msgstr ""
+msgstr "清空日志"
 
 msgid "Call Records"
-msgstr ""
+msgstr "电话记录"
 
 msgid "start"
-msgstr ""
+msgstr "开始"
 
 msgid "src"
-msgstr ""
+msgstr "源头"
 
 msgid "dst"
-msgstr ""
+msgstr "目的地"
 
 msgid "channels"
-msgstr ""
+msgstr "信道"
 
 msgid "last app"
-msgstr ""
+msgstr "上一个app"
 
 msgid "sec."
-msgstr ""
+msgstr "秒."
 
 msgid "bill"
-msgstr ""
+msgstr "清单"
 
 msgid "disposition"
 msgstr ""
 
 msgid "Clear log"
-msgstr ""
+msgstr "清空日志"
 
 msgid "Asterisk log entries"
-msgstr ""
+msgstr "Asterisk日志条目"
 
 msgid "A valid IP address must be specified."
-msgstr ""
+msgstr "必须指定一个有效的IP地址"
 
 msgid "Number of log entries to show must be between 50 and 1000."
+msgstr "显示的日志条目数必须在50到1000之间。"
+
+msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
 
 msgid "Number of log entries to show:"
-msgstr ""
+msgstr "显示的日志条目数："
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
+msgstr "允许系统日志到远程系统日志服务器"
 
 msgid "Remote syslog server"
-msgstr ""
+msgstr "远程系统日志服务器"
 
 msgid "IP address of remote syslog server"
-msgstr ""
+msgstr "远程系统日志服务器的IP地址"
 
 msgid "system events"
-msgstr ""
+msgstr "系统事件"
 
 msgid "pbx events"
-msgstr ""
+msgstr "pbx事件"
 
 msgid "call detail records"
-msgstr ""
+msgstr "通话详情记录"
 
 msgid ""
 "syslog sends UDP datagrams to port 514 on the specified remote syslog "
 "server. Be sure to set syslogd on the remote server to accept syslog "
 "messages from AskoziaPBX."
 msgstr ""
+"系统日志通过UDP数据端口514发送到指定的远程系统日志服务器。请确认远程系统日志"
+"服务器的设置能够从AskoziaPBX接收日志数据。"
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
 "Execute \"help\" to see a list of possible commands."
-msgstr ""
+msgstr "本页允许直接在Asterisk控制台上运行命令。运行 \"help\" 查看命令列表。"
 
 msgid "Command"
-msgstr ""
+msgstr "命令"
 
 msgid "Output"
-msgstr ""
+msgstr "输出"
 
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 msgid "Host,Count"
-msgstr ""
+msgstr "主机，计数"
 
 #, php-format
 msgid "Count must be between 1 and %d"
-msgstr ""
+msgstr "计数必须介于1和%d之间"
 
 msgid "Traceroute"
-msgstr ""
+msgstr "路由追踪(Traceroute)"
 
 msgid "Count"
-msgstr ""
+msgstr "计数"
 
 msgid "Ping output:"
-msgstr ""
+msgstr "Ping输出"
 
 msgid "Host,ttl"
-msgstr ""
+msgstr "主机,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
-msgstr ""
+msgstr "最大跳数(hops)必须介于1和%d之间"
 
 msgid "Maximum number of hops"
-msgstr ""
+msgstr "最大跳数(hops)"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr ""
+msgstr "解析IP地址为主机名"
 
 msgid ""
 "Traceroute may take a while to complete.  You may hit the Stop button on "
 "your browser at any time to see the progress of failed traceroutes."
 msgstr ""
+"路由追踪需要一些时间来完成。您可以在任何时候点击浏览器的停止按钮来查看失败的"
+"追踪进程。"
 
 msgid "Traceroute output:"
-msgstr ""
+msgstr "路由追踪结果："
 
 msgid "Dialplan"
-msgstr ""
+msgstr "拨号计划"
 
 msgid "Applications"
-msgstr ""
+msgstr "应用"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -645,365 +658,383 @@ msgid ""
 "dialed via their defined extensions or used as a destination for incoming "
 "calls from Providers."
 msgstr ""
+"在了解一些Asterisk拨号计划如何运作的情况下，一些基础的应用可以被加入到"
+"AskoziaPBX中。这些应用程序既被预定的分机拨通，也可以用作提供商来电的目的地。"
 
 msgid "name"
-msgstr ""
+msgstr "名字"
 
 msgid "descr"
-msgstr ""
+msgstr "描述"
 
 msgid "edit application mapping"
-msgstr ""
+msgstr "编辑应用映射"
 
 msgid "Do you really want to delete this application mapping?"
-msgstr ""
+msgstr "真的要删除这个应用映射？"
 
 msgid "delete application mapping"
-msgstr ""
+msgstr "删除应用映射"
 
 msgid "add application mapping"
-msgstr ""
+msgstr "添加应用映射"
 
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 msgid "Name,Extension,Application Logic"
-msgstr ""
+msgstr "名字，分机，应用逻辑"
 
 msgid "A valid extension must be entered."
-msgstr ""
+msgstr "必须输入一个有效的分机"
 
 msgid "Internal extension used to reach this application."
-msgstr ""
+msgstr "内部的分机用来达到这个应用。"
 
 msgid "Call Groups"
-msgstr ""
+msgstr "通话组"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
 "can then be dialed via their defined extensions or used as a destination for "
 "incoming calls from Providers."
 msgstr ""
+"分机扩展的组可以被设置为同时响铃。这些组可以被各自预定的扩展分机拨通或者用作"
+"提供商来电的目的地。"
 
 msgid "Members"
-msgstr ""
+msgstr "成员"
 
 msgid "edit call group"
-msgstr ""
+msgstr "编辑通话组"
 
 msgid "Do you really want to delete this call group?"
-msgstr ""
+msgstr "真的要删除这个通话组？"
 
 msgid "delete call group"
-msgstr ""
+msgstr "删除通话组"
 
 msgid "add call group"
-msgstr ""
+msgstr "添加通话组"
 
 msgid "Group name"
-msgstr ""
+msgstr "组名"
 
 msgid "Internal extension used to reach this call group."
-msgstr ""
+msgstr "内部分机用于联络这个通话组。"
 
 msgid "Transfers"
-msgstr ""
+msgstr "转移"
 
 msgid ""
 "A variety of settings are here which define how call transfers and call "
 "parking are handled. The defaults should work in most situations."
-msgstr ""
+msgstr "关于一个呼叫转移和呼叫停泊的多样化设置。默认设置适用于大多数情况。"
 
 msgid ""
 "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr ""
+msgstr "停泊的分机，停泊的开始位置，停泊的终止位置，停泊的时间"
 
 msgid "A valid parking start position must be specified."
-msgstr ""
+msgstr "必须指定一个有效的停泊开始位置。"
 
 msgid "A valid parking stop position must be specified."
-msgstr ""
+msgstr "必须指定一个有效的停泊终止位置。"
 
 msgid "The end parking position must be larger than the start position."
-msgstr ""
+msgstr "停泊终止位置必须大于其开始位置。"
 
 msgid "A valid parking extension must be specified."
-msgstr ""
+msgstr "必须指定一个停泊分机。"
 
 msgid "A valid park time must be specified."
-msgstr ""
+msgstr "必须指定一个有效的停泊时间。"
 
 msgid "A valid key timeout must be specified."
-msgstr ""
+msgstr "必须指定一个有效的密钥超时。"
 
 msgid "A valid attended transfer timeout must be specified."
-msgstr ""
+msgstr "必须指定一个有效的呼叫转移(attended transfer)的超时。"
 
 msgid "A valid extension digit timeout must be specified."
-msgstr ""
+msgstr "必须指定一个有效的分机超时。"
 
 msgid "Hot Keys"
-msgstr ""
+msgstr "热键"
 
 msgid "Attended"
-msgstr ""
+msgstr "参与"
 
 msgid "This key combination activates an attended transfer (default **)."
-msgstr ""
+msgstr "这个键组合激活了一个呼叫转移(attended transfer)(默认：**)。"
 
 msgid "Blind"
-msgstr ""
+msgstr "Blind"
 
 msgid "This key combination activates a blind transfer (default ##)."
-msgstr ""
+msgstr "这个键组合激活了一个呼叫转移(blind transfer)(默认：##)。"
 
 msgid "Call Parking"
-msgstr ""
+msgstr "呼叫停泊"
 
 msgid "Park Extension"
-msgstr ""
+msgstr "停泊分机"
 
 msgid ""
 "Blind transfer to this extension to park a call (default 700). The number "
 "read back to you after transfering is the extension where the call was "
 "parked."
 msgstr ""
+"呼叫转移(blind transfer)到这个分机用来停泊通话（默认700）。分机号码将会在呼叫"
+"转移和停泊后读回给您。"
 
 msgid "Parking Range"
-msgstr ""
+msgstr "停泊范围"
 
 msgid ""
 "This range of extensions is where parked calls reside (default 701-720)."
-msgstr ""
+msgstr "这个分机的范围将用来停泊通话(默认701-720)。"
 
 msgid "Timeouts"
-msgstr ""
+msgstr "超时"
 
 msgid "Attended Transfer Answer"
-msgstr ""
+msgstr "呼叫转移应答"
 
 msgid ""
 "Maximum number of seconds an attended transfer can go unanswered (default "
 "15)."
-msgstr ""
+msgstr "呼叫转移最大无应答秒数（默认 15秒）。"
 
 msgid "Transfer Key"
-msgstr ""
+msgstr "呼叫转移键"
 
 msgid ""
 "Maximum number of milliseconds between key presses for transfer activation "
 "(default 500)."
-msgstr ""
+msgstr "最大呼叫转移按键的响应毫秒数（默认500毫秒）。"
 
 msgid "Extension Digit"
-msgstr ""
+msgstr "分机数字"
 
 msgid ""
 "Maximum number of seconds to wait between digits when transferring a call "
 "(default 3)."
-msgstr ""
+msgstr "呼叫转移时数字间最大的间隔秒数（默认 3）。"
 
 msgid "Park Time"
-msgstr ""
+msgstr "停泊时间"
 
 msgid ""
 "Maximum number of seconds a call can be parked before it is transfered back "
 "to the parker (default 30)."
-msgstr ""
+msgstr "一个已经停泊的通话被转移回的最大秒数（默认 30）。"
 
 msgid "AskoziaPBX: execute command"
-msgstr ""
+msgstr "AskoziaPBX: 执行命令"
 
 msgid "enter a command below..."
-msgstr ""
+msgstr "在下面输入一个命令..."
 
 msgid "Command:"
-msgstr ""
+msgstr "命令："
 
 msgid "Execute"
-msgstr ""
+msgstr "执行"
 
 msgid "Clear"
-msgstr ""
+msgstr "清空"
 
 msgid "Download:"
-msgstr ""
+msgstr "下载："
+
+msgid "Download"
+msgstr "下载"
 
 msgid "Upload:"
-msgstr ""
+msgstr "上载："
 
 msgid "Upload"
-msgstr ""
+msgstr "上载："
 
 msgid "In"
-msgstr ""
+msgstr "入"
 
 msgid "Out"
-msgstr ""
+msgstr "出"
 
 msgid "Switch to bytes/s"
-msgstr ""
+msgstr "转换到bytes/s"
 
 msgid "AutoScale"
-msgstr ""
+msgstr "自动缩放"
 
 msgid "Graph shows last"
-msgstr ""
+msgstr "图表显示"
 
 msgid "seconds"
-msgstr ""
+msgstr "秒"
 
 msgid "Collecting initial data, please wait..."
-msgstr ""
+msgstr "收集起始数据，请稍后..."
 
 msgid "75%"
-msgstr ""
+msgstr "75%"
 
 msgid "50%"
-msgstr ""
+msgstr "50%"
 
 msgid "25%"
-msgstr ""
+msgstr "25%"
 
 msgid "Cannot get CPU load"
-msgstr ""
+msgstr "CPU不能装载"
 
 msgid "AskoziaPBX webGUI"
-msgstr ""
+msgstr "AskoziaPBX 网页界面"
 
 msgid "System Information"
-msgstr ""
+msgstr "系统信息"
 
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 msgid "built on"
-msgstr ""
+msgstr "基于"
 
 msgid "Platform"
-msgstr ""
+msgstr "平台"
 
 msgid "Uptime"
-msgstr ""
+msgstr "正常运行时间"
 
 #, php-format
 msgid "%s days, "
-msgstr ""
+msgstr "%s 天"
 
 msgid "Last Config Change"
-msgstr ""
+msgstr "上一次设置改变"
 
 msgid "Active Calls"
-msgstr ""
+msgstr "活动的通话"
 
 msgid "Active Channels"
-msgstr ""
+msgstr "活动的信道"
 
 msgid "Memory Usage"
-msgstr ""
+msgstr "内存使用"
 
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 msgid "Interfaces"
-msgstr ""
+msgstr "界面(Interfaces)"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
 "utilize them."
-msgstr ""
+msgstr "在本页探测到的端口必须加以编辑和保存后方能被系统使用。"
 
 msgid "Network"
-msgstr ""
+msgstr "网络"
 
 msgid "Wireless"
-msgstr ""
+msgstr "无线"
 
 msgid "Storage"
-msgstr ""
+msgstr "储存"
 
 msgid "No compatible analog interfaces detected."
-msgstr ""
+msgstr "没有探测到兼容的模拟接口。"
 
+#, fuzzy
 msgid ""
 "If an analog interface is present but was not detected, please send <a href="
 "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
+"如果有一个模拟接口没有被探测到，请发送 <a href=\"/ajax.cgi?exec_shell=/usr/"
+"sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\"> 的输出 </a> 到 <a href=\"mailto:"
+"michael@askozia.com\">michael@askozia.com</a>."
 
 msgid "Unit"
-msgstr ""
+msgstr "部件"
 
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 msgid "Gain (rx/tx)"
-msgstr ""
+msgstr "增益 (rx/tx)"
 
 msgid "Echo Canceller"
-msgstr ""
+msgstr "回身补偿器"
 
 msgid "edit analog interface"
-msgstr ""
+msgstr "编辑模拟接口"
 
 msgid "Do you really want to forget this interface\\'s settings?"
-msgstr ""
+msgstr "真的要忽略这个接口的设定？"
 
 msgid "forget interface settings"
-msgstr ""
+msgstr "忽略接口设定"
 
 msgid ""
 "FXS interfaces connect to telephones and FXO interfaces connect to provider "
 "lines. FXS interfaces produce electricity to power the telephone and FXO "
 "interfaces accept the electricity generated by the provider."
 msgstr ""
+"FXS 接口连接到话机，FXO 接口连接到供应商线路。FXS 接口产生电力给话机，FXO 就"
+"扣接收供应商的电力。"
 
 msgid ""
 "Connecting a provider line to an FXS port can damage your hardware! If you "
 "are unsure which ports are FXO or FXS on your card, configure and connect "
 "your phone accounts before connecting any provider lines."
 msgstr ""
+"连接一个供应商线路到FXS接口可能损坏您的硬件。如果您不清楚您的卡上哪个接口是"
+"FXO或者FXS，在连接任何供应商线路之前，先设置并连接你的电话账号。"
 
 msgid "Edit Analog"
-msgstr ""
+msgstr "编辑模拟电话"
 
 msgid "Interface #"
-msgstr ""
+msgstr "接口 #"
 
 msgid "Descriptive name for this interface"
-msgstr ""
+msgstr "这个接口的描述名"
 
 msgid "Disabled"
-msgstr ""
+msgstr "禁用"
 
 msgid "32"
-msgstr ""
+msgstr "32"
 
 msgid "64"
-msgstr ""
+msgstr "64"
 
 msgid "128"
-msgstr ""
+msgstr "128"
 
 msgid "256"
-msgstr ""
+msgstr "256"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
 "require more processing power."
 msgstr ""
+"回声补偿器的‘tap’大小。更大的设置将抵消更多的回声，但同时需要更多的处理能力。"
 
 msgid "Start Signaling"
-msgstr ""
+msgstr "开始信号"
 
 msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
-msgstr ""
+msgstr "几乎在所有的情况下，‘kewl开始’在这里是最适合的选择。"
 
 msgid "Warning:"
-msgstr ""
+msgstr "警告："
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
-msgstr ""
+msgstr "点击&quot;保存&quot;会导致所有正在进行的通话断线。"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -1011,80 +1042,93 @@ msgid ""
 "port on a card incorrectly configured can result in the entire card being "
 "unusable by the system."
 msgstr ""
+"本页找到的端口必须编辑和保存后才能被系统利用。请小心设置ISDN接口。一个端口设"
+"置的错误，可能导致整卡都不能被系统使用。"
 
 msgid "No compatible ISDN interfaces detected."
-msgstr ""
+msgstr "没有找到兼容的ISDN接口。"
 
+#, fuzzy
 msgid ""
 "If an ISDN interface is present but was not detected, please send <a href="
 "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
+"如果一个ISDN接口已经连接但没有被发现，请发送这个 <a href=\"/ajax.cgi?"
+"exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">输出 </a> 给 <a "
+"href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 
+#, fuzzy
 msgid ""
 "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
 "udesc_dump\">this output</a> as well."
 msgstr ""
+"如果这是一个USB接口的ISDN设备，请同样发送这个输出 <a href=\"/ajax.cgi?"
+"exec_shell=/sbin/udesc_dump\"></a>。"
 
 msgid "Operating Mode"
-msgstr ""
+msgstr "操作模式"
 
 msgid "edit ISDN interface"
-msgstr ""
+msgstr "编剧ISDN接口"
 
 msgid "Operating Modes"
-msgstr ""
+msgstr "操作模式"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 "calls and is attached to the public ISDN network or another PBX system"
 msgstr ""
+"点对多，终端设备：这个端口允许MSNs路由通话并附加到公共ISDN网络或另外的PBX系统"
+"中。 "
 
 msgid ""
 "multipoint-to-point, network termination: this port provides MSNs to route "
 "calls and is attached to one or more telephones"
-msgstr ""
+msgstr "多对点，网络终端：这个端口提供MSNs路由通话并附加1个或多个话机上。"
 
 msgid ""
 "point-to-point, terminal equipment: this port accepts DID to route calls and "
 "is connected directly to another PBX system"
-msgstr ""
+msgstr "点对点，终端设备：这个端口允许DID路由通话并直接连接到另一个PBX系统。 "
 
 msgid ""
 "point-to-point, network termination: this port provides DID to route calls "
 "and is connected directly to another PBX system"
-msgstr ""
+msgstr "点对点，网络终端：这个端口提供DID路由通话并直接连接到另一个PBX系统。 "
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
-msgstr ""
+msgstr "编辑ISDN端口 #%s"
 
 msgid "An Operating Mode must be selected for this interface."
-msgstr ""
+msgstr "必须给这个接口选择一个操作模式。"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr ""
+msgstr "尝试去除回声。（推荐）"
 
 msgid "PCM Timing Slave"
-msgstr ""
+msgstr "PCM时序从属(PCM Timing Slave)"
 
 msgid ""
 "There is already another card present which provides the timing.<br><em>"
 "(Unless more than one inteface card is present in the system, this should "
 "not be changed."
 msgstr ""
+"已经有另一个卡正在提供时钟。<br><em>(除非系统中有一个以上的卡，这个选项不易被"
+"改动。) "
 
 msgid "Disable Power Save"
-msgstr ""
+msgstr "禁止节能"
 
 msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
+msgstr "禁止节能模式（对一些老卡有时是必要的）"
 
 msgid "Enable Polling Mode"
-msgstr ""
+msgstr "允许探询模式"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr ""
+msgstr "允许探询模式（对一些老卡有时是必要的）"
 
 msgid ""
 "The settings on this page are critical to ensuring connectivity to VoIP "
@@ -1093,193 +1137,208 @@ msgid ""
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
+"本页的设置对确保连接到VoIP供应商十分重要。实际上，不正确的网络设置可能造成电"
+"话无法接入。如果这个系统在一个NAT后，默认情况下，AskoziaPBX需要以下的端口映"
+"射：5060 UDP(SIP),4569 UDP(IAX)和10000-10200 UDP (RTP Audio)"
 
 msgid "IP address,Subnet bit count,Gateway,Network topology"
-msgstr ""
+msgstr "IP 地址，"
 
 msgid "A valid MAC address must be specified."
-msgstr ""
+msgstr "必须指定一个有效的MAC地址"
 
 msgid "A valid subnet bit count must be specified."
-msgstr ""
+msgstr "必须指定一个有效的子网位计数。"
 
 msgid "A valid gateway must be specified."
-msgstr ""
+msgstr "必须指定一个有效的网关。"
 
 msgid ""
 "A valid IP address must be specified for the primary/secondary/tertiary DNS "
 "server."
-msgstr ""
+msgstr "必须为首选/备用的DNS服务器指定一个有效地IP地址。"
 
 msgid "A public IP address must be entered for this topology."
-msgstr ""
+msgstr "必须为这个网络布局指定一个公网IP。"
 
 msgid "A valid public IP address must be entered for this topology."
-msgstr ""
+msgstr "必须为这个网络布局输入一个有效的公网IP。"
 
 msgid "A public hostname must be entered for this topology."
-msgstr ""
+msgstr "必须为这个网络布局输入一个公共的主机名。"
 
 msgid "A valid public hostname must be entered for this topology."
-msgstr ""
+msgstr "必须为这个网络布局输入一个有效的主机名。"
 
 msgid "The dynamic DNS username contains invalid characters."
-msgstr ""
+msgstr "动态DNS的用户名中包含无效字符。"
 
 msgid "Checked interfaces will be bridged to the main interface."
-msgstr ""
+msgstr "选定的接口会被桥接到主接口。"
 
 msgid "IP Address"
-msgstr ""
+msgstr "IP地址"
 
 msgid "Gateway"
-msgstr ""
+msgstr "网关"
 
 msgid "DNS Servers"
-msgstr ""
+msgstr "DNS服务器"
 
 msgid "IP Addresses"
-msgstr ""
+msgstr "IP地址"
 
 msgid "MAC Address"
-msgstr ""
+msgstr "MAC地址"
 
 msgid ""
 "This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
 "network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
 "xx:xx:xx or leave blank"
 msgstr ""
+"这里可以用来修改 (&quot;欺骗&quot;) 网络接口的MAC地址。 <br>输入一个格式为： "
+"xx:xx:xx:xx:xx:xx 的MAC地址或留空。"
 
 msgid "Topology"
-msgstr ""
+msgstr "网络布局"
 
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr ""
+msgstr "公网IP地址：这个PBX由一个可路由的IP地址（上面输入的）"
 
 msgid ""
 "NAT + Static Public IP: this PBX is behind a NAT which has a static public "
 "IP. Enter this IP below."
 msgstr ""
+"NAT + 固定公网IP：这个PBX处于一个有固定公网IP的NAT之后。请在下面输入这个IP。"
 
 msgid ""
 "NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
 "IP. A hostname, constantly updated to point to this network is required. "
 "Enter this information below."
 msgstr ""
+"NAT + 动态公网IP：这个PBX处于一个有动态公网IP的NAT之后。持续的更新指向这个网"
+"络的主机名是必要的。请在下面输入这个信息。"
 
 msgid "Static Public IP"
-msgstr ""
+msgstr "固定公网IP"
 
 msgid "Public Hostname"
-msgstr ""
+msgstr "公共主机名"
 
 msgid "This information should be updated by:"
-msgstr ""
+msgstr "这个信息的更新应该由："
 
 msgid "My Router"
-msgstr ""
+msgstr "我的路由"
 
 msgid "AskoziaPBX"
-msgstr ""
+msgstr "AskoziaPBX"
 
 msgid "Dynamic DNS Client"
-msgstr ""
+msgstr "动态DNS客户端"
 
 msgid "Service Type"
-msgstr ""
+msgstr "服务类型"
 
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr ""
+msgstr "是的，别名 \"*.hostname.domain\" 到上述指定的主机。"
 
 msgid ""
 "after you click &quot;Save&quot;, all current calls will be dropped. You may "
 "also have to do one or more of the following steps before you can access "
 "your PBX again:"
 msgstr ""
+"按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。在您重新您访问PBX之前，"
+"也可以做如下的几步："
 
 msgid "restart the PBX"
-msgstr ""
+msgstr "重启PBX"
 
 msgid "change the IP address of your computer"
-msgstr ""
+msgstr "改变您计算机的IP地址"
 
 msgid "access the webGUI with the new IP address"
-msgstr ""
+msgstr "用一个新IP地址访问网页界面"
 
 msgid ""
 "AskoziaPBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
 msgstr ""
+"AskoziaPBX 会自动分配剩余的空间用作永久存储。系统扩展包可以被安装到这个空间。"
 
 msgid "The system storage media is not large enough to install packages."
-msgstr ""
+msgstr "系统剩余的储存空间不够安装这个包。"
 
 #, php-format
 msgid ""
 "A minimum of %sMB is required. In the future, external media will be able to "
 "be used, but currently packages must be stored on the internal system media."
 msgstr ""
+"最小需要 %s MB 空间。在将来，使用外接的储存媒介会成为可能，但是现在，包必须储"
+"存在内部媒介上。"
 
 msgid "Capacity"
-msgstr ""
+msgstr "容量"
 
 msgid "State"
-msgstr ""
+msgstr "状态"
 
 msgid "Installed Packages"
-msgstr ""
+msgstr "已安装的包"
 
 msgid "system storage partition"
-msgstr ""
+msgstr "系统存储分区"
 
 msgid "Edit Disk"
-msgstr ""
+msgstr "编辑磁盘"
 
 msgid "descriptive name"
-msgstr ""
+msgstr "描述名"
 
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
 "to act as an Access Point. It will be bridged to the wired network that "
 "AskoziaPBX is connected to."
 msgstr ""
+"如果在现有的系统中有一个兼容的无线网卡，那么他可以被配置成为一个接入点。它会"
+"被桥接到AskoziaPBX连接的有线网络。"
 
 msgid "SSID,Channel"
-msgstr ""
+msgstr "SSID，信道"
 
 msgid ",WPA version,WPA cipher"
-msgstr ""
+msgstr "WPA版本，WPA 密钥"
 
 msgid ",WPA PSK"
-msgstr ""
+msgstr "WPA PSK"
 
 msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr ""
+msgstr "WPA PSK密钥必须由长度8到63个字符组成。"
 
 msgid ""
 "802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
+msgstr "只有当标准同样是802.11a的时候，才能选择802.11a的信道。"
 
 msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
+msgstr "只有选择了802.11a的信道，才能选用802.11a。"
 
 msgid "No compatible wireless interfaces detected."
-msgstr ""
+msgstr "没有检测到兼容的无线接口。"
 
 msgid "Enable Wireless Interface"
-msgstr ""
+msgstr "允许无线接口"
 
 msgid "Standard"
-msgstr ""
+msgstr "标准"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "隐藏SSID"
 
 msgid ""
 "If this option is selected, the SSID will not be broadcast in hostap mode, "
@@ -1287,313 +1346,311 @@ msgid ""
 "this option should never be used as a substitute for proper security/"
 "encryption settings."
 msgstr ""
+"如果勾选此选项，则SSID不会被以HostAP的模式被广播，并且只有知道确切SSID的客户"
+"端才能连接。注意的是，请不要用此选项来代替安全/加密的设置。"
 
 msgid "Channel"
-msgstr ""
+msgstr "信道"
 
 msgid "Auto"
-msgstr ""
+msgstr "自动"
 
 msgid "WPA"
-msgstr ""
+msgstr "WPA"
 
 msgid "WPA settings"
-msgstr ""
+msgstr "WPA设置"
 
 msgid "Mode"
-msgstr ""
+msgstr "模式"
 
 msgid "none"
-msgstr ""
+msgstr "没有"
 
 msgid "PSK"
-msgstr ""
+msgstr "PSK"
 
 msgid "WPA only"
-msgstr ""
+msgstr "仅WPA"
 
 msgid "WPA2 only"
-msgstr ""
+msgstr "仅WPA2"
 
 msgid "WPA + WPA2"
-msgstr ""
+msgstr "WPA + WPA2"
 
 msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr ""
+msgstr "在大多数情况下，您应该在这里选择&quot;WPA + WPA2&quot;。"
 
 msgid "Cipher"
-msgstr ""
+msgstr "密钥"
 
 msgid "TKIP"
-msgstr ""
+msgstr "TKIP"
 
 msgid "AES/CCMP"
-msgstr ""
+msgstr "AES/CCMP"
 
 msgid "TKIP + AES/CCMP"
-msgstr ""
+msgstr "TKIP + AES/CCMP"
 
 msgid ""
 "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
 "with older hardware."
-msgstr ""
+msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP与老的硬件有更好的兼容性。"
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
-msgstr ""
+msgstr "请输入WPA-PSK将用到的密码。其长度必须在8到63之间。"
 
 msgid "WEP"
-msgstr ""
+msgstr "WEP"
 
 msgid "Enable WEP"
-msgstr ""
+msgstr "允许 WEP"
 
 msgid "TX key"
-msgstr ""
+msgstr "TX Key"
 
 msgid "Key 1:"
-msgstr ""
+msgstr "Key 1:"
 
 msgid "Key 2:"
-msgstr ""
+msgstr "Key 2:"
 
 msgid "Key 3:"
-msgstr ""
+msgstr "Key 3:"
 
 msgid "Key 4:"
-msgstr ""
+msgstr "Key 4:"
 
 msgid ""
 "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
 "preceded by '0x'."
-msgstr ""
+msgstr "40 (64) 位的密钥可以用5位的ASCII码或者10位以0x开头的16进制输入。"
 
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
-msgstr ""
+msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
 
 msgid "Edit Analog Line"
-msgstr ""
+msgstr "编辑模拟线路"
 
 msgid "Extension,Caller ID"
-msgstr ""
+msgstr "分机，Caller ID"
 
 msgid "A valid Caller ID must be specified."
-msgstr ""
+msgstr "必须指定一个有效的Caller ID。"
 
 msgid "A phone with this extension already exists."
-msgstr ""
+msgstr "已经存在这个分机了。"
 
 msgid "A valid e-mail address must be specified."
-msgstr ""
+msgstr "必须指定一个有效的e-mail地址。"
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
+msgstr "<strong>没有找到兼容的接口！</strong><br><br>"
 
 msgid "Internal extension used to reach this phone."
-msgstr ""
+msgstr "内部分机用于达到此话机。"
 
 msgid "Analog Interface"
-msgstr ""
+msgstr "模拟接口"
 
 msgid "Edit External Line"
-msgstr ""
+msgstr "编辑外部线路"
 
 msgid "Extension,Name,Dialstring,Provider"
-msgstr ""
+msgstr "分机，名字，拨号串，提供商"
 
 msgid "The internal extension used to dial this phone."
-msgstr ""
+msgstr "这个内部分机用来拨打这个电话。"
 
 msgid "Descriptive name for this phone."
-msgstr ""
+msgstr "这个电话的描述性名称。"
 
 msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
-msgstr ""
+msgstr "数字或者字串用来拨打这个电话。这会是直接拨打，不会应用在外线模式中。"
 
 msgid "Provider"
-msgstr ""
+msgstr "提供商"
 
 msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
+msgstr "外线提供商用来达到这个电话。"
 
 msgid "Edit IAX Account"
-msgstr ""
+msgstr "编辑IAX账号"
 
 msgid "A valid secret must be specified."
-msgstr ""
+msgstr "必须输入一个有效的密码。"
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
+msgstr "必须为\"qualify\"输入一个超时的秒数。"
 
 msgid ""
 "The phone number assigned to this account. Also this account's username."
-msgstr ""
+msgstr "这个电话号码被分配到这个账号和它的用户名。"
 
 msgid "plaintext"
-msgstr ""
+msgstr "明文"
 
 msgid "md5"
-msgstr ""
+msgstr "md5"
 
 msgid "This account's password and authentication scheme."
-msgstr ""
+msgstr "这个账号的密码和验证计划。"
 
 msgid "Edit ISDN Line"
-msgstr ""
+msgstr "编辑ISDN线路"
 
 msgid "This phone's number (MSN)."
-msgstr ""
+msgstr "这个电话的号码（MSN）。"
 
 msgid "Edit SIP Account"
-msgstr ""
+msgstr "编辑SIP账号"
 
 msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
+msgstr "请输入一个数字给\"call limit(呼叫限制)。\""
 
 msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
+msgstr "请输入一个数字给\"busy limit(繁忙限制).\""
 
 msgid "This account's password."
-msgstr ""
+msgstr "这个账号的密码。"
 
 msgid "Dialplan Element Library"
-msgstr ""
+msgstr "拨号计划元素库"
 
 msgid "Functions"
-msgstr ""
+msgstr "功能"
 
 msgid "Audio Prompts"
-msgstr ""
+msgstr "音频提示"
 
 msgid ""
 "Below is a list of the currently defined phones along with a basic Dial() "
 "command to call them. Many additional options are available for this "
 "command, please read its reference documentation in the Applications tab."
 msgstr ""
+"以下的这个清单，列出了目前定义的用基本dial()命令就能拨通的电话。很多附加的选"
+"项可以加入这个命令中，请在应用程序选项卡中阅读它的参考文档。"
 
 msgid "Caller ID / Name"
-msgstr ""
+msgstr "Caller ID / 名字"
 
 msgid "Basic"
-msgstr ""
+msgstr "基本"
 
 msgid "Filename"
-msgstr ""
+msgstr "文件名"
 
 msgid "Format"
-msgstr ""
+msgstr "格式"
 
 msgid "Size"
-msgstr ""
+msgstr "大小"
 
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 msgid "Printable Dialplan"
-msgstr ""
+msgstr "可打印的拨号计划"
 
 msgid "Internal Phones"
-msgstr ""
+msgstr "内部电话"
 
 msgid "External Phones"
-msgstr ""
+msgstr "外部电话"
 
 msgid "Conference Rooms"
-msgstr ""
+msgstr "会议室"
 
 msgid "Pin"
-msgstr ""
+msgstr "Pin"
 
 msgid "Custom Applications"
-msgstr ""
+msgstr "自定义应用程序"
 
 msgid "Dialing Pattern(s)"
-msgstr ""
+msgstr "拨号模式"
 
 msgid "An incoming Caller ID override string must be specified."
-msgstr ""
+msgstr "必须为一个呼入电话的Caller ID指定一个补充字符串。"
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr ""
+msgstr "无效的拨号\"%s\"模式。%s"
 
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr ""
+msgstr "这个呼入分机模式\"%s\"是无效的。%s"
 
 msgid "Descriptive name for this provider."
-msgstr ""
+msgstr "提供商的描述性名字。"
 
 msgid "Telephone number assigned to this line."
-msgstr ""
+msgstr "分配给这条线的电话号码。"
 
 msgid "Name,Username,Host"
-msgstr ""
+msgstr "名字，用户名，主机"
 
 msgid "A valid username must be specified."
-msgstr ""
+msgstr "必须指定一个有效的用户名。"
 
 msgid "A valid Caller ID string must be specified."
-msgstr ""
+msgstr "必须指定一个有效的Caller ID字符串。"
 
 msgid "IAX proxy host URL or IP address and optional port."
-msgstr ""
+msgstr "IAX代理主机的网址或IP地址，还有它可选的端口。"
 
 msgid "A valid default number (MSN) must be specified."
-msgstr ""
+msgstr "必须指定一个默认的数量(MSN)。"
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
-msgstr ""
+msgstr "分配给这条线路的默认的电话号码（MSN）。"
 
 msgid "A valid \"fromuser\" must be specified."
-msgstr ""
+msgstr "必须指定一个有效的\"fromuser\"。"
 
 msgid "SIP proxy host URL or IP address and optional port."
-msgstr ""
+msgstr "SIP代理主机的网址或IP地址，还有它可选的端口。"
 
 msgid "Authorization User"
-msgstr ""
+msgstr "授权用户"
 
 msgid ""
 "Some providers require a seperate authorization username.<br>Defaults to "
 "username entered above."
-msgstr ""
+msgstr "一些提供商需要单独授权的用户名。<br>默认用户名填在上面。"
 
 msgid "From User"
-msgstr ""
+msgstr "From用户"
 
 msgid ""
 "Some providers require a seperate 'from' user.<br>Defaults to username "
 "entered above."
-msgstr ""
+msgstr "一些提供商需要单独的'from'用户。<br>默认用户名填在上面。"
 
 msgid "From Domain"
-msgstr ""
+msgstr "From域"
 
 msgid ""
 "Some providers require a seperate 'from' domain. <br>Defaults to host "
 "entered above."
-msgstr ""
+msgstr "一些提供商需要单独的'from'域。<br>默认主机填在上面。"
 
 msgid "Services"
-msgstr ""
+msgstr "服务"
 
 msgid "Conferencing"
-msgstr ""
+msgstr "会议"
 
 msgid ""
 "Conference rooms with optional pin authentication can be configured here. "
@@ -1601,239 +1658,249 @@ msgid ""
 "concurrent members. These rooms can then be dialed via their defined "
 "extensions or used as a destination for incoming calls from Providers."
 msgstr ""
+"会议室以及可选的密码验证可以在这里被设置。系统配置是影响最大参与者数量的唯一"
+"因素。这些房间可以被预设的分机拨通或者作为提供商来电的目的地。"
 
 msgid "Room Number"
-msgstr ""
+msgstr "房间号"
 
 msgid "edit conference room"
-msgstr ""
+msgstr "编辑会议室"
 
 msgid "Do you really want to delete this conference room?"
-msgstr ""
+msgstr "您真的要删除这个会议室？"
 
 msgid "delete conference room"
-msgstr ""
+msgstr "删除会议室"
 
 msgid "add conference room"
-msgstr ""
+msgstr "添加会议室"
 
 msgid "Edit Room"
-msgstr ""
+msgstr "编辑房间"
 
 msgid "Room Number,Name"
-msgstr ""
+msgstr "房间号，名字"
 
 msgid "Conference room numbers must be numeric."
-msgstr ""
+msgstr "会议室号码必须是数字。"
 
 msgid "Conference number already exists."
-msgstr ""
+msgstr "会议室号码重复。"
 
 msgid "Conference number matches an existing extension."
-msgstr ""
+msgstr "会议室号码与一个存在的分机冲突。"
 
 msgid "Conference pins must be numeric."
-msgstr ""
+msgstr "会议室认证码必须是数字。"
 
 msgid ""
 "The conference room's number, also the extension that this conference is "
 "reachable at."
-msgstr ""
+msgstr "会议室的号码，就是分机可以拨打"
 
 msgid "Access PIN"
-msgstr ""
+msgstr "接入验证码(PIN)"
 
 msgid "Optional PIN needed to access this conference room."
-msgstr ""
+msgstr "接入此会议室需要可选的验证码。"
 
 msgid "Voicemail"
-msgstr ""
+msgstr "语音邮件"
 
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
+"为了通过电子邮件发送错过电话通知和记录下的语音信息，这里需要正确的配置一个邮"
+"件服务器。"
 
 msgid "Host,E-mail Address"
-msgstr ""
+msgstr "主机，电邮地址"
 
 msgid "A username must be specified."
-msgstr ""
+msgstr "必须指定一个用户名。"
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
-msgstr ""
+msgstr "必须为\"来自地址\"指定一个有效的电邮地址。"
 
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 msgid "SMTP host URL or IP address and optional port."
-msgstr ""
+msgstr "SMTP主机URL或者IP地址以及可选的端口。"
 
 msgid "E-mail Address"
-msgstr ""
+msgstr "电邮地址"
 
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 msgid "TLS certificates are currently not verified."
-msgstr ""
+msgstr "TLS证书，现在尚未验证。"
 
 msgid "Presentation"
-msgstr ""
+msgstr "简报"
 
 msgid "From Address"
-msgstr ""
+msgstr "从地址"
 
 msgid "This will be shown as voicemail service's sending address."
-msgstr ""
+msgstr "这会被显示为语音邮件服务器的发送地址。"
 
 msgid "Defaults to the e-mail address entered above."
-msgstr ""
+msgstr "默认的电邮地址在上方输入。"
 
 msgid "E-Mail Language"
-msgstr ""
+msgstr "电邮语言"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
-msgstr ""
+msgstr "通过投递这种语言的电邮来通知新的语音邮件。"
 
 msgid "<p>This status page includes the following information:\n"
-msgstr ""
+msgstr "<p>这个状态页包括以下信息：\n"
 
 msgid ""
 "Note: make sure to remove any sensitive information (passwords, maybe also "
 "IP addresses) before posting information from this page in public places "
 "(like mailing lists)!"
 msgstr ""
+"Note：从本页发送信息到公共位置(比如邮寄名单)前，请确认移除所有敏感信息（密"
+"码，可能还有IP地址）。"
 
 msgid "Passwords in config.xml have been automatically removed."
-msgstr ""
+msgstr "config.xml中的密码被自动溢出了。"
 
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 msgid "There are currently no active channels."
-msgstr ""
+msgstr "目前没有活动的信道。"
 
 msgid "Application"
-msgstr ""
+msgstr "应用"
 
 msgid "Conferences"
-msgstr ""
+msgstr "会议"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
-msgstr ""
+msgstr "成员 %s 被踢出会议 %s。"
 
 msgid "There are currently no active conferences."
-msgstr ""
+msgstr "目前没有活动的电话会议。"
 
 msgid "Conference"
-msgstr ""
+msgstr "电话会议"
 
 msgid "Member"
-msgstr ""
+msgstr "成员"
 
 msgid "Time"
-msgstr ""
+msgstr "时间"
 
 msgid "Do you really want to kick this member?"
-msgstr ""
+msgstr "您真的要踢掉这个成员？"
 
 msgid "kick conference member"
-msgstr ""
+msgstr "踢掉与会成员"
 
 msgid "Live"
-msgstr ""
+msgstr "活动的"
 
 msgid "CPU Load"
-msgstr ""
+msgstr "CPU负载"
 
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
+"如果您不能看到这个图片，那么您可能需要安装<a href=\"http://www.adobe.com/svg/"
+"viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>。"
 
 msgid "Network Traffic"
-msgstr ""
+msgstr "网络流量"
 
 msgid "Subnet Mask"
-msgstr ""
+msgstr "子网掩码"
 
 msgid "Media"
-msgstr ""
+msgstr "媒体"
 
 msgid "In/Out Packets"
-msgstr ""
+msgstr "进/出 包"
 
 msgid "In/Out Errors"
-msgstr ""
+msgstr "进/出 错误"
 
 msgid "Collisions"
-msgstr ""
+msgstr "冲突"
 
 msgid "Last scan results"
-msgstr ""
+msgstr "上一次扫描结果"
 
 msgid "BSSID"
-msgstr ""
+msgstr "BSSID"
 
 msgid "Rate"
-msgstr ""
+msgstr "比率"
 
 msgid "Signal"
-msgstr ""
+msgstr "信号"
 
 msgid "Noise"
-msgstr ""
+msgstr "噪音"
 
 msgid "hidden"
-msgstr ""
+msgstr "隐藏"
 
 msgid "Associated stations"
-msgstr ""
+msgstr "相关监测站"
 
 msgid "RSSI"
-msgstr ""
+msgstr "RSSI"
 
 msgid "Flags"
-msgstr ""
+msgstr "标志"
 
 msgid "Capabilities"
-msgstr ""
+msgstr "能力"
 
 msgid ""
 "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
 "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
 "P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
 msgstr ""
+"标志：A=授权，E=扩展比率(802.11g)，P=节电模式<br>能力，E=ESS(基础结构模式)，"
+"I=IBSS(ad-hoc 模式)，P=隐私（WEP/TKIP/AES），S=短期序言，s=短期插槽时间"
 
 msgid "No stations are associated at this time."
-msgstr ""
+msgstr "在这个时候没有相关联的站。"
 
 msgid "Attached"
-msgstr ""
+msgstr "附加的"
 
 msgid "PH State"
-msgstr ""
+msgstr "PH状态"
 
 msgid "Dialtone"
-msgstr ""
+msgstr "拨号音"
 
 msgid "Driver Type"
-msgstr ""
+msgstr "驱动器类型"
 
 msgid "Channels"
-msgstr ""
+msgstr "信道"
 
 msgid "Serial"
-msgstr ""
+msgstr "串行"
 
 msgid "Power Save"
-msgstr ""
+msgstr "省电"
 
 msgid "General Setup"
-msgstr ""
+msgstr "一般安装"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -1841,147 +1908,153 @@ msgid ""
 "host/domain name, time zone and country's indication tones are set correctly "
 "before continuing."
 msgstr ""
+"这是第一页需要设置的，然后安装一个新系统。最重要的是，需要改变默认的密码。然"
+"后，确认您的主机名和域名，时区以及国家提示音在继续前已被设好"
 
 msgid "Hostname,Domain,Username"
-msgstr ""
+msgstr "主机名，域，用户名"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr ""
+msgstr "主机名只能包含a-z，0-9以及'-'。"
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
+msgstr "域只能包含a-z，0-9以及'-'。"
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr ""
+msgstr "用户名只能包含a-z，0-9以及'-'。"
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr ""
+msgstr "必须为这个网页设置界面指定一个TCP/IP的端口号。"
 
 msgid "The passwords do not match."
-msgstr ""
+msgstr "密码不正确。"
 
 msgid ""
 "The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
+msgstr "更新时间的间隔必须是0（禁用）或者在6和1440之间。"
 
 msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
+msgstr "一个NTP时间服务器名只能包含a-z，0-9，'-'以及'.'。"
 
 msgid "name of the pbx host, without domain part"
-msgstr ""
+msgstr "pbx的主机名，不含域名部分"
 
 msgid "e.g. <em>pbx"
-msgstr ""
+msgstr "例如 <em>pbx"
 
 msgid "Domain"
-msgstr ""
+msgstr "域"
 
 msgid "e.g. <em>mycorp.com"
-msgstr ""
+msgstr "例如<em>mycorp.com"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
-msgstr ""
+msgstr "如果您想改变登陆本设置界面的用户名，请输入到这里。"
 
 msgid "confirmation"
-msgstr ""
+msgstr "确认"
 
 msgid ""
 "If you want to change the password for accessing the webGUI, enter it here "
 "twice."
-msgstr ""
+msgstr "如果您想改变登陆本设置界面的密码，请在这里输入两次。"
 
 msgid "webGUI protocol"
-msgstr ""
+msgstr "网页设置界面传输协议"
 
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 msgid "webGUI port"
-msgstr ""
+msgstr "网页设置界面端口"
 
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
+"在上方为网页设置界面输入一个定制的端口号，如果您想替代其默认设置的话。(80 为 "
+"HTTP, 443 为 HTTPS)。"
 
 msgid "Indications Tonezone"
-msgstr ""
+msgstr "提示音"
 
 msgid "Select which country's indication tones are to be used."
-msgstr ""
+msgstr "请选择要使用的国家提示音。"
 
 msgid "Time zone"
-msgstr ""
+msgstr "时区"
 
 msgid "Select the location closest to you"
-msgstr ""
+msgstr "选择一个离您最近的地点。"
 
 msgid "Time update interval"
-msgstr ""
+msgstr "时间更新间隔"
 
 msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
-msgstr ""
+msgstr "网络时间同步的分钟数；300推荐，或者0禁用。"
 
 msgid "NTP time server"
-msgstr ""
+msgstr "NTP时间服务器"
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
 msgstr ""
+"使用一个空间来分隔多个主机（只需一个）。请别忘记设置至少一个DNS服务器，如果您"
+"在这里输入主机名。"
 
 msgid "Backup/Restore"
-msgstr ""
+msgstr "备份和还原"
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
-msgstr ""
+msgstr "通过本页可以恢复和备份整个系统设置。"
 
 msgid "The configuration has been restored. The PBX is now rebooting."
-msgstr ""
+msgstr "设置已被恢复还原。PBX正在重启。"
 
 msgid "The configuration could not be restored."
-msgstr ""
+msgstr "设置不能被恢复。"
 
 #, php-format
 msgid "XML error: %s"
-msgstr ""
+msgstr "XML错误：%s"
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr ""
+msgstr "设置不能被恢复（文件上传错误）。"
 
 msgid "Backup configuration"
-msgstr ""
+msgstr "备份设置"
 
 msgid "Click this button to download the system configuration in XML format."
-msgstr ""
+msgstr "点击这个按钮下载XML格式的系统设置。"
 
 msgid "Download configuration"
-msgstr ""
+msgstr "下载设置"
 
 msgid "Restore configuration"
-msgstr ""
+msgstr "恢复设置"
 
 msgid ""
 "Open an AskoziaPBX configuration XML file and click the button below to "
 "restore the configuration."
-msgstr ""
+msgstr "打开一个AskoziaPBX的XML设置文档并点击下面的按钮恢复设置。"
 
 msgid "The PBX will reboot after restoring the configuration."
-msgstr ""
+msgstr "PBX将在恢复设置后重启。"
 
 msgid "Factory Defaults"
-msgstr ""
+msgstr "出厂默认设置"
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
 "take a minute."
-msgstr ""
+msgstr "系统被设置到了出厂默认状态并正在重启。这可能需要一分钟。"
 
 msgid ""
 "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
@@ -1989,18 +2062,21 @@ msgid ""
 "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
 "password will be set to 'askozia'."
 msgstr ""
+"如果您点击了 &quot;是&quot;，那么PBX会被重置到出厂状态并立即重启整个系统的设"
+"置将会被覆盖。内网IP地址将会被重置为 192.168.1.2并且密码也会改为默认"
+"的'askozia'。"
 
 msgid "Are you sure you want to proceed?"
-msgstr ""
+msgstr "您真的想要进行？"
 
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 msgid "No"
-msgstr ""
+msgstr "不"
 
 msgid "Firmware"
-msgstr ""
+msgstr "固件"
 
 msgid ""
 "AskoziaPBX's firmware can be kept up to date here. The system's "
@@ -2009,31 +2085,33 @@ msgid ""
 "releases are digitally signed before distribution and checked upon "
 "installation."
 msgstr ""
+"AskPBX的固件可以在这里不断更新。系统设置在升级后将得到保持。升级后系统将自动"
+"重启。正式版的固件镜像在发布前都经过数字签名和安装测试。"
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
-msgstr ""
+msgstr "上传的镜像文件不是这个平台的(%s)。"
 
 msgid "Image upload failed (out of memory?)"
-msgstr ""
+msgstr "上传镜像失败(内存不足？)"
 
 msgid "The digital signature on this image is invalid."
-msgstr ""
+msgstr "这个镜像的数字签名是无效的。"
 
 msgid "This image is not digitally signed."
-msgstr ""
+msgstr "这个镜像没有经过数字签名。"
 
 msgid "There has been an error verifying the signature on this image."
-msgstr ""
+msgstr "这个镜像上的数字签名在验证中出错。"
 
 msgid "The image file is corrupt."
-msgstr ""
+msgstr "这个镜像文件被损坏了。"
 
 msgid "The firmware is now being installed. The PBX will reboot automatically."
-msgstr ""
+msgstr "这个固件已经被安装。PBX会自动重启。"
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr ""
+msgstr "这个平台不支持固件上传。"
 
 #, php-format
 msgid ""
@@ -2043,37 +2121,40 @@ msgid ""
 "make sure that the image has not been tampered with.<br><br> Do you want to "
 "install this image anyway (at your own risk)?"
 msgstr ""
+"<strong>%s</strong><br>这意味着您上传了一个没有经过官方认证的镜像，并且可能造"
+"成意外行为或者安全漏洞。安装的镜像只有来自您信任的渠道，并且请确保其没有被篡"
+"改。<br><br>您真的还是要安装这个镜像(风险自担)？"
 
 msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr ""
+msgstr "点击下面的&quot;允许固件升级&quot;。"
 
 #, php-format
 msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
-msgstr ""
+msgstr "选择新的固件镜像文件(pbx-%s-*.img)用来安装。"
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr ""
+msgstr "点击&quot;升级固件&quot;开始升级过程。"
 
 msgid "Enable firmware upload"
-msgstr ""
+msgstr "允许固件升级"
 
 msgid "Disable firmware upload"
-msgstr ""
+msgstr "禁止固件升级"
 
 msgid "Firmware image file:"
-msgstr ""
+msgstr "固件镜像文件："
 
 msgid "Upgrade firmware"
-msgstr ""
+msgstr "升级固件"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr ""
+msgstr "在升级固件前您需要重启系统"
 
 msgid "DO NOT abort the firmware upgrade once it has started."
-msgstr ""
+msgstr "请切勿在升级过程中退出。"
 
 msgid "Packages"
-msgstr ""
+msgstr "软件包"
 
 msgid ""
 "Packages to expand system functionality can be installed and updated here. "
@@ -2081,39 +2162,41 @@ msgid ""
 "available packages. All packages are digitally signed before distribution "
 "and checked upon installation."
 msgstr ""
+"这里可以安装并升级软件包以扩展系统功能。请点击<img src=\"add.png\" border=\"0"
+"\">开始查看新可用的软件包。所有的软件包在发布前都做过数字签名和安装测试。"
 
 msgid "The digital signature on this package is invalid."
-msgstr ""
+msgstr "这个软件包的数字签名是无效的。"
 
 msgid "This package is not digitally signed."
-msgstr ""
+msgstr "这个软件包没有数字签名。"
 
 msgid "There has been an error verifying the signature on this package."
-msgstr ""
+msgstr "验证这个软件包的数字签名时出错。"
 
 msgid "The package is corrupt and has been deleted."
-msgstr ""
+msgstr "这个软件包已经损坏并已被删除。"
 
 msgid "Package already exists, install failed."
-msgstr ""
+msgstr "软件包已经存在，安装失败。"
 
 msgid "Extracted package not found, install failed."
-msgstr ""
+msgstr "没有找到解开的软件包，安装失败"
 
 msgid "Existing package not found, update failed."
-msgstr ""
+msgstr "没有找到现有的软件包，升级失败。"
 
 msgid ""
 "The uploaded package is not newer than the existing package, update failed."
-msgstr ""
+msgstr "上传的软件包比现有的要版本要老，升级失败。"
 
 msgid "There are updates available for packages on your system."
-msgstr ""
+msgstr "您的系统上有软件包可以更新。"
 
 msgid ""
 "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
 "install the updated packages."
-msgstr ""
+msgstr "点击下面的图标<img src=\"update.png\" border=\"0\"> 并安装升级包。"
 
 msgid ""
 "The following packages issued warnings while verifying their digital "
@@ -2123,144 +2206,150 @@ msgid ""
 "tampered with.<br><br>Check the packages you wish to install despite this "
 "warning."
 msgstr ""
+"下列软件包在验证数字签名时候发出警告。这意味着他们不是官方支持验证过的软件"
+"包，并且可能造成意外行为或者安全漏洞。安装的软件包只有来自您信任的渠道，并且"
+"请确保其没有被篡改。<br><br>"
 
 msgid "Continue"
-msgstr ""
+msgstr "继续"
 
 msgid "Do you really want to disable this package?"
-msgstr ""
+msgstr "您真的要禁用这个软件包？"
 
 msgid "click to disable package"
-msgstr ""
+msgstr "点击以禁用软件包"
 
 msgid "click to enable package"
-msgstr ""
+msgstr "点击以启用软件包"
 
 msgid "backup package data"
-msgstr ""
+msgstr "备份数据包数据"
 
 msgid ""
 "Do you really want to permanently delete this package\\'s configuration and "
 "data?"
-msgstr ""
+msgstr "您真的要永久的删除这个软件包数据及其设置？"
 
 msgid "delete package configuration and data"
-msgstr ""
+msgstr "删除软件包的数据和设置"
 
 msgid "install new package"
-msgstr ""
+msgstr "安装新软件包"
 
 msgid "update package to newer version"
-msgstr ""
+msgstr "升级软件包到新版本"
 
 msgid "restore package data"
-msgstr ""
+msgstr "恢复软件包数据"
 
 msgid "Update Installed Package"
-msgstr ""
+msgstr "升级安装了的软件包"
 
 msgid ""
 "Select which packages you would like to update, existing package data will "
 "be preserved."
-msgstr ""
+msgstr "选择您希望升级的软件包，现有的软件包数据将被保存。"
 
 msgid "Update"
-msgstr ""
+msgstr "升级"
 
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
-msgstr ""
+msgstr "从您的电脑里选择一个 .pbxpkg 文件用来升级，现有的软件包数据将被保存。"
 
 msgid "Manual Update"
-msgstr ""
+msgstr "人工升级"
 
 msgid "Install a New Package"
-msgstr ""
+msgstr "安装一个新软件包"
 
 msgid "Select which packages you would like to install."
-msgstr ""
+msgstr "选择一个您希望安装的软件包。"
 
 msgid "Install"
-msgstr ""
+msgstr "安装"
 
 msgid "Select a .pbxpkg file from your computer to install."
-msgstr ""
+msgstr "从您的电脑中选择一个.pbxpkg文件安装。"
 
 msgid "Manual Install"
-msgstr ""
+msgstr "人工安装"
 
 msgid "Restore from a Backup Archive"
-msgstr ""
+msgstr "从备份恢复存档。"
 
 msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr ""
+msgstr "选择一个备份.tgz存档并按下'恢复'"
 
 msgid "Package data and logic will be replaced by the backup."
-msgstr ""
+msgstr "软件包数据和逻辑将被备份取代。"
 
 msgid "Restore"
-msgstr ""
+msgstr "恢复"
 
 msgid "Reboot"
-msgstr ""
+msgstr "重启"
 
 msgid "The system is rebooting now. This may take a minute."
-msgstr ""
+msgstr "系统正在重启。这可能会需要一分钟。"
 
 msgid "Are you sure you want to reboot the system?"
-msgstr ""
+msgstr "您真的要重启系统？"
 
 msgid "ERR Could not save configuration.\n"
-msgstr ""
+msgstr "ERR 无法保存设置。\n"
 
 msgid "OK\n"
-msgstr ""
+msgstr "好\n"
 
 msgid "ERR Could not install configuration.\n"
-msgstr ""
+msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
-msgstr ""
+msgstr "ERR 收到无效的配置。\n"
 
 msgid "generate password"
 msgstr ""
 
+#, fuzzy
 msgid "use this password"
-msgstr ""
+msgstr "这个账号的密码。"
 
 msgid "webGUI language"
-msgstr ""
+msgstr "网页设置页面语言"
 
 msgid "Select in which language you want the webGUI to be displayed."
-msgstr ""
+msgstr "请选择您希望本设置界面显示的语言。"
 
 msgid "Audio Codecs"
-msgstr ""
+msgstr "音频编解码"
 
 msgid "Enabled"
-msgstr ""
+msgstr "允许的"
 
 msgid "Video Codecs"
-msgstr ""
+msgstr "视频编解码"
 
 msgid "Group Members"
-msgstr ""
+msgstr "组成员"
 
 msgid "Non-Members"
-msgstr ""
+msgstr "非成员"
 
 msgid ""
 "All group members will be called at the same time. <strong>The voicemail "
 "account associated with the first member will be used if the call is not "
 "answered."
 msgstr ""
+"所有组成员会同时被呼叫。<strong>如果通话无应答，相关成员中第一个成员的语音信"
+"件账号将会被使用。"
 
 msgid "Incoming Extension(s)"
-msgstr ""
+msgstr "打入的分机"
 
 msgid "add incoming extension mapping"
-msgstr ""
+msgstr "添加打入分机的映射"
 
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To "
@@ -2278,115 +2367,133 @@ msgid ""
 " \t<li><strong>!</strong> - matches zero or more characters</li>\n"
 " </ul>\n"
 msgstr ""
+"输入一个模式或者一个电话号码并选择一个目标分机.要让多个电话同时响铃，只需设置"
+"其为同一模式即可。如果输入一个电话号码，它会被用作\"外部\"号码无应答的通话。"
+"如果留空，所有电话会直接连到其目的分机。<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - 匹配了数字 0-9</li>\n"
+" \t<li><strong>Z</strong> - 匹配了数字 1-9</li>\n"
+" \t<li><strong>N</strong> - 匹配了数字 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - 匹配方括号内的任何数字 (这里, 1,3,4,5)</"
+"li>\n"
+" \t<li><strong>.</strong> - 匹配一个或多个字符</li>\n"
+" \t<li><strong>!</strong> - 匹配零个或多个字符</li>\n"
+" </ul>\n"
 
 msgid "DTMF Mode"
-msgstr ""
+msgstr "DTMF 模式"
 
 msgid "Registration"
-msgstr ""
+msgstr "注册"
 
 msgid "Do not register with this provider."
-msgstr ""
+msgstr "请勿与此提供商注册。"
 
 msgid "Qualify"
-msgstr ""
+msgstr "资格"
 
 msgid ""
 "Packets will be sent to this account every <i>n</i> seconds to check its "
 "status.<br>Defaults to '2'. Set to '0' to disable."
 msgstr ""
+"软件包会被送到这个账号，每隔<i>n</i>秒以检查其状态。<br>默认为'2'。设置"
+"为'0'则禁用。"
 
 msgid "always use NAT mode."
-msgstr ""
+msgstr "一直使用NAT模式"
 
 msgid "only use NAT mode according to RFC3581 (rport)"
-msgstr ""
+msgstr "只使用NAT模式根据RFC3581(rport)。"
 
 msgid "never attempt NAT mode or RFC3581 support"
-msgstr ""
+msgstr "从不尝试NAT模式或RFC3581的支持"
 
 msgid "assume NAT mode but don't send rport "
-msgstr ""
+msgstr "承担NAT模式但不发送rport"
 
 msgid "NAT"
-msgstr ""
+msgstr "NAT"
 
 msgid ""
 "Is there a NATing device between AskoziaPBX and this account? Setting this "
 "to 'yes' will work in most cases. The options 'never' and 'route' are only "
 "rarely used for certain buggy SIP phones."
 msgstr ""
+"是否有一个NATing设备在这个账号和askoziaPBX之间？大多情况下设置此为'是'会有"
+"效。选项'决不'和'路由'只用在某些特别的有瑕疵的SIP话机上。"
 
 msgid "indefinitely"
-msgstr ""
+msgstr "无限期"
 
 msgid "Ring Length"
-msgstr ""
+msgstr "响铃时长"
 
 msgid ""
 "The number of seconds this phone will ring before being reported as "
 "unanswered."
-msgstr ""
+msgstr "响铃时间的秒数，之后将被认为无人应答。"
 
 msgid "Line Gain"
-msgstr ""
+msgstr "线路增益"
 
 msgid "receive"
-msgstr ""
+msgstr "接收"
 
 msgid "transmit"
-msgstr ""
+msgstr "传输"
 
 msgid ""
 "Some analog connections may need adjustment to achieve an acceptable audio "
 "level. Adjust the receive and transmit gain in decibels to amplify or quiet "
 "the line."
 msgstr ""
+"一些模拟连接可能需要调整，以达到一个可以接收的音频水平。调节接收和传输增益以"
+"放大或减轻线路的分贝。"
 
 msgid "Incoming Caller ID Overrides"
-msgstr ""
+msgstr "呼入Caller ID覆盖"
 
 msgid "Source Name &lt;number&gt;"
-msgstr ""
+msgstr "源名字&lt;号码&gt;"
 
 msgid "Prepend with string"
-msgstr ""
+msgstr "加在字符串前"
 
 msgid "Replace with string"
-msgstr ""
+msgstr "替代字符串"
 
 msgid "Replace calling name with calling number."
-msgstr ""
+msgstr "把呼叫名字替换为呼叫号码。"
 
 msgid "Disable overrides"
-msgstr ""
+msgstr "禁用覆盖"
 
 msgid "Outgoing Caller ID"
-msgstr ""
+msgstr "呼出的Caller ID"
 
 msgid "Your Name &lt;number&gt;"
-msgstr ""
+msgstr "您名字的&lt;号码&gt;"
 
 msgid "Send string defined above&nbsp;"
-msgstr ""
+msgstr "传输字符串的上述定义&nbsp;"
 
 msgid "Send phones' Caller ID"
-msgstr ""
+msgstr "发送话机的Caller ID"
 
 msgid "There are currently no providers defined."
-msgstr ""
+msgstr "目前尚未定义任何提供商。"
 
 msgid "direct outbound dialing via SIP uris"
-msgstr ""
+msgstr "通过SIP uris对外直接拨号"
 
 msgid "Checked providers will be accessible from this phone."
-msgstr ""
+msgstr "选出的提供商可以让这个电话连接使用。"
 
 msgid "There are currently no phones defined."
-msgstr ""
+msgstr "目前没有被定义的电话。"
 
 msgid "Checked phones will have access to this provider."
-msgstr ""
+msgstr "选出的电话会拥有连接使用这个提供商的权利。"
 
 msgid ""
 "Enter patterns, one per line, to define this provider's routing. Enter \"X!"
@@ -2409,65 +2516,83 @@ msgid ""
 "before | or +)</li>\n"
 " </ul>\n"
 msgstr ""
+"为每条线路输入模式，为供应商定义路由。输入 \"X!\"用于这个提供商的呼出电话。如"
+"要让这个提供商只用作\"9\"开头的号码则输入\"9|.\"。如果没有输入模式，那么只有"
+"呼入的电话会被接受。<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - 加入一个前缀 (如 \"1+555\" 匹配 \"555\" 并传递 "
+"\"1555\" 给提供商)</li>\n"
+" \t<li><strong>|</strong> - 去掉一个前缀 (如 \"1|555\" 匹配 \"1555\" 但只传"
+"递 \"555\" 给提供商)</li>\n"
+" \t<li><strong>X</strong> - 匹配数字 0-9</li>\n"
+" \t<li><strong>Z</strong> - 匹配数字 1-9</li>\n"
+" \t<li><strong>N</strong> - 匹配数字 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - 匹配方括号里的素有数字 (这里, 1,3,4,5)</"
+"li>\n"
+" \t<li><strong>.</strong> - 匹配一个或多个字符 (不允许 在 | 或 + 前)</li>\n"
+" \t<li><strong>!</strong> - 匹配零个或多个字符 (不允许 在 | or + 前)</li>\n"
+" </ul>\n"
 
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
-msgstr ""
+msgstr "音频提示将以为这个账号设置好的语言回放。"
 
 msgid "send missed call notifications"
-msgstr ""
+msgstr "发送错过的电话通知"
 
 msgid "don't send to voicemail when busy"
-msgstr ""
+msgstr "不要发送语音信件如果状态为忙时。"
 
 msgid ""
 "An e-mail address. If entered, voicemail will be enabled on this extension. "
 "Incoming messages will be sent to the given address."
 msgstr ""
+"一个电子邮件地址。如果输入了，语音信件会在这个分机上起效。呼入信息会被传送到"
+"这个地址。"
 
 msgid "Voicemail Services"
-msgstr ""
+msgstr "语音信件服务"
 
 msgid "must be configured</a> before this feature will work."
-msgstr ""
+msgstr "在功能起效前，必须先设置。"
 
 msgid "Public Direct Dial"
-msgstr ""
+msgstr "公共直接拨打"
 
 msgid "allow extension to be directly dialed over public networks"
-msgstr ""
+msgstr "允许分机可以直接通过公共网络拨号。"
 
 msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr ""
+msgstr "公开名字。输入一个字符串并把它映射给这个分机。"
 
 #, php-format
 msgid ""
 "Enabling this option will allow this extension to be reachable via SIP and "
 "IAX2 uris (extension@%s)"
-msgstr ""
+msgstr "启用这个选项会允许这个分机可以被SIP和IAX2 uris呼叫。(extension@%s)"
 
 msgid "Call Limit"
-msgstr ""
+msgstr "通话限制"
 
 msgid "calls"
-msgstr ""
+msgstr "通话"
 
 msgid "Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)"
-msgstr ""
+msgstr "只允许 n 个呼出通话和 n 个呼入通话（默认：2）。"
 
 msgid "Busy Limit"
-msgstr ""
+msgstr "忙限制"
 
 msgid ""
 "Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
 "1)"
-msgstr ""
+msgstr "电话状态被设置到'忙'及'n'并行呼叫(默认：1)。"
 
 msgid "Logic"
-msgstr ""
+msgstr "逻辑"
 
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
@@ -2481,15 +2606,23 @@ msgid ""
 "is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
 "target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
+"输入应用的逻辑，一行一个命令如： <br> <pre> 1,Answer()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>为AskoziaPBX的应用编程需要Asterisk拨号计划(dialplan)的知识。您的输"
+"入将会被很好的验证，但是不完善的应用逻辑仍然有可能使AskoziaPBX安装不能使用一"
+"个应用的参考，程序或者通话可以在这里找到<strong><a href="
+"\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</"
+"a></strong>。</p>"
 
 msgid "Advanced Settings"
-msgstr ""
+msgstr "高级设置"
 
 msgid "show"
-msgstr ""
+msgstr "显示"
 
 msgid "Manual Attributes"
-msgstr ""
+msgstr "手动属性"
 
 msgid ""
 "Manual key-value pairs can be entered in addition to the generated "
@@ -2499,122 +2632,129 @@ msgid ""
 "field. Improperly formed values can break system functionality and/or open "
 "security holes."
 msgstr ""
+"可以在生成的设置中手动加入关键值对(比如<em>configoption=value</em>)。这些设置"
+"将会被附加到这个项目的Asterisk配置文件中。除非您非常特殊的需要这样做，不然的"
+"话请留空这个区域。不正确的设置值可能打破系统功能并且/或者打开安全漏洞。"
 
 msgid "Text to be displayed for Caller ID."
-msgstr ""
+msgstr "为Caller ID显示的文本"
 
 msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
+msgstr "您在这里输入一个描述，供您参考（不解析）。"
 
 msgid "Public Number"
-msgstr ""
+msgstr "公共号码"
 
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
 "the internal extension this call was routed to will be read back."
 msgstr ""
+"这个'外部'号码会被主叫方读回，如果遇到语音邮件；默认的会到帐户的用户名，前提"
+"是名字是数字。如果不是数字的话，将会被读回到相应的内部分机上。"
 
 msgid "auto"
-msgstr ""
+msgstr "自动"
 
 msgid "plain"
-msgstr ""
+msgstr "plain"
 
 msgid "login"
-msgstr ""
+msgstr "登入"
 
 msgid "cram-md5"
-msgstr ""
+msgstr "cram-md5"
 
 msgid "external"
-msgstr ""
+msgstr "外部"
 
 msgid "Authentication Method"
-msgstr ""
+msgstr "验证方法"
 
 msgid ""
 "Most accounts will work using 'auto'. If this fails, select an "
 "authentication method appropriate for your server."
 msgstr ""
+"大多数账号在'auto'下就能工作。如果这样出错了，请选择一个适合您服务器的验证方"
+"法。"
 
 msgid "of"
-msgstr ""
+msgstr "of"
 
 msgid "You are using the most recent version of AskoziaPBX."
-msgstr ""
+msgstr "您正在使用AskoziaPBX的最新版本。"
 
 msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
-msgstr ""
+msgstr "您正在使用AskoziaPBX最新的<strong>beta</strong>版本。"
 
 msgid "A newer version of AskoziaPBX is available!"
-msgstr ""
+msgstr "一个AskoziaPBX的新版本已经可用。"
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
-msgstr ""
+msgstr "一个AskoziaPBX的新<strong>beta</strong>版本已经可用了！"
 
 msgid "print"
-msgstr ""
+msgstr "打印"
 
 msgid "Summary"
-msgstr ""
+msgstr "摘要"
 
 msgid "Manager"
-msgstr ""
+msgstr "管理"
 
 msgid "Ping/Traceroute"
-msgstr ""
+msgstr "Ping/Traceroute"
 
 msgid "ARP Table"
-msgstr ""
+msgstr "ARP表"
 
 msgid "webGUI Configuration"
-msgstr ""
+msgstr "网页设置界面"
 
 msgid "Live Stats"
-msgstr ""
+msgstr "实时统计"
 
 msgid "add a new item"
-msgstr ""
+msgstr "添加一个新项目"
 
 msgid "item is disabled, click to enable"
-msgstr ""
+msgstr "项目是禁用的，点击启用"
 
 msgid "item is enabled, click to disable"
-msgstr ""
+msgstr "项目是启用的，点击禁用"
 
 msgid "edit an item"
-msgstr ""
+msgstr "编辑一个项目"
 
 msgid "permanently delete an item"
-msgstr ""
+msgstr "永久删除一个项目"
 
 msgid "check for package updates"
-msgstr ""
+msgstr "检查软件包更新"
 
 msgid "restore a backup archive"
-msgstr ""
+msgstr "恢复一个备份的文档"
 
 msgid "download a backup archive"
-msgstr ""
+msgstr "下载备份文档"
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
-msgstr ""
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 
 msgid "view license"
-msgstr ""
+msgstr "查看证书"
 
 msgid "LAN net"
-msgstr ""
+msgstr "局域网"
 
 msgid "autoselect"
-msgstr ""
+msgstr "自动选择"
 
 msgid "100BASE-TX full-duplex"
-msgstr ""
+msgstr "100BASE-TX full-duplex"
 
 msgid "100BASE-TX half-duplex"
-msgstr ""
+msgstr "100BASE-TX half-duplex"
 
 msgid "10BASE-T full-duplex"
 msgstr ""
@@ -2623,392 +2763,398 @@ msgid "10BASE-T half-duplex"
 msgstr ""
 
 msgid "1000BASE-TX full-duplex"
-msgstr ""
+msgstr "1000BASE-TX full-duplex"
 
 msgid "G.711 u-law"
-msgstr ""
+msgstr "G.711 u-law"
 
 msgid "G.711 A-law"
-msgstr ""
+msgstr "G.711 A-law"
 
 msgid "GSM"
-msgstr ""
+msgstr "GSM"
 
 msgid "G.729A"
-msgstr ""
+msgstr "G.729A"
 
 msgid "iLBC"
-msgstr ""
+msgstr "iLBC"
 
 msgid "SpeeX"
-msgstr ""
+msgstr "SpeeX"
 
 msgid "G.723.1"
-msgstr ""
+msgstr "G.723.1"
 
 msgid "G.726 AAL2"
-msgstr ""
+msgstr "G.726 AAL2"
 
 msgid "ADPCM"
-msgstr ""
+msgstr "ADPCM"
 
 msgid "16 bit Signed Linear PCM"
-msgstr ""
+msgstr "16 bit Signed Linear PCM"
 
 msgid "LPC10"
-msgstr ""
+msgstr "LPC10"
 
 msgid "G.726 RFC3551"
-msgstr ""
+msgstr "G.726 RFC3551"
 
 msgid "G722"
-msgstr ""
+msgstr "G722"
 
 msgid "H.261"
-msgstr ""
+msgstr "H.261"
 
 msgid "H.263"
-msgstr ""
+msgstr "H.263"
 
 msgid "H.263+"
-msgstr ""
+msgstr "H.263+"
 
 msgid "H.264"
-msgstr ""
+msgstr "H.264"
 
 msgid "Public IP address"
-msgstr ""
+msgstr "公网IP地址"
 
 msgid "NAT + static public IP"
-msgstr ""
+msgstr "NAT + 静态公网IP"
 
 msgid "NAT + dynamic public IP"
-msgstr ""
+msgstr "NAT + 动态公网IP"
 
 msgid "Kewl Start"
-msgstr ""
+msgstr "Kewl 开始"
 
 msgid "Ground Start"
-msgstr ""
+msgstr "基础(Ground)开始"
 
 msgid "Loop Start"
-msgstr ""
+msgstr "循环(Loop)开始"
 
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
-msgstr ""
+msgstr "把音频和音频在收到后立即传回到呼叫方。用来测试连接延迟。"
 
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
+msgstr "产生一个稳定的1000hz的声音。用来测试连接质量。"
 
 msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
-msgstr ""
+msgstr "呼叫唤醒管理。呼叫设置或取消这个分机的电话唤醒服务。"
 
 msgid "English (US)"
-msgstr ""
+msgstr "英语（美国）"
 
 msgid "English (UK)"
-msgstr ""
+msgstr "英语（英国）"
 
 msgid "Danish"
-msgstr ""
+msgstr "丹麦语"
 
 msgid "Dutch"
-msgstr ""
+msgstr "荷兰语"
 
 msgid "French (France)"
-msgstr ""
+msgstr "法语（法国）"
 
 msgid "French (Canada)"
-msgstr ""
+msgstr "法语（加拿大）"
 
 msgid "German"
-msgstr ""
+msgstr "德语"
 
 msgid "Italian"
-msgstr ""
+msgstr "意大利语"
 
 msgid "Japanese"
-msgstr ""
+msgstr "日语"
 
 msgid "Russian"
-msgstr ""
+msgstr "俄罗斯语"
 
 msgid "Spanish"
-msgstr ""
+msgstr "西班牙语"
 
 msgid "Swedish"
-msgstr ""
+msgstr "瑞典语"
 
 msgid "English"
-msgstr ""
+msgstr "英语"
 
 msgid "English (formal)"
-msgstr ""
+msgstr "英语（正式）"
 
 msgid "Danish (formal)"
-msgstr ""
+msgstr "丹麦语（正式）"
 
 msgid "Dutch (formal)"
-msgstr ""
+msgstr "荷兰语（正式）"
 
 msgid "Finnish"
-msgstr ""
+msgstr "芬兰语"
 
 msgid "Finnish (formal)"
-msgstr ""
+msgstr "芬兰语（正式）"
 
 msgid "French"
-msgstr ""
+msgstr "法语"
 
 msgid "French (formal)"
-msgstr ""
+msgstr "法语（正式）"
 
 msgid "German (formal)"
-msgstr ""
+msgstr "德语（正式）"
 
 msgid "Italian (formal)"
-msgstr ""
+msgstr "意大利语（正式）"
 
 msgid "Polish"
-msgstr ""
+msgstr "波兰语"
 
 msgid "Polish (formal)"
-msgstr ""
+msgstr "波兰语（正式）"
 
 msgid "Portuguese, Brazil"
-msgstr ""
+msgstr "葡萄牙语，巴西"
 
 msgid "Portuguese, Brazil (formal)"
-msgstr ""
+msgstr "葡萄牙语，巴西（正式）"
 
 msgid "Russian (formal)"
-msgstr ""
+msgstr "俄语（正式）"
 
 msgid "Spanish (formal)"
-msgstr ""
+msgstr "西班牙语（正式）"
 
 msgid "point-to-multipoint, terminal equipment"
-msgstr ""
+msgstr "点对多，终端设备"
 
 msgid "multipoint-to-point, network termination"
-msgstr ""
+msgstr "多对点，网络终端"
 
 msgid "point-to-point, terminal equipment"
-msgstr ""
+msgstr "点对点，终端设备"
 
 msgid "point-to-point, network termination"
-msgstr ""
+msgstr "点对点，网络终端"
 
 msgid "United States / North America"
-msgstr ""
+msgstr "美国/北美"
 
 msgid "Australia"
-msgstr ""
+msgstr "澳大利亚"
 
 msgid "Austria"
-msgstr ""
+msgstr "奥地利"
 
 msgid "Belgium"
-msgstr ""
+msgstr "比利时"
 
 msgid "Chile"
-msgstr ""
+msgstr "智利"
 
 msgid "China"
-msgstr ""
+msgstr "中国"
 
 msgid "Finland"
-msgstr ""
+msgstr "芬兰"
 
 msgid "France"
-msgstr ""
+msgstr "法国"
 
 msgid "Greece"
-msgstr ""
+msgstr "希腊"
 
 msgid "Italy"
-msgstr ""
+msgstr "意大利"
 
 msgid "Japan"
-msgstr ""
+msgstr "日本"
 
 msgid "Malaysia"
-msgstr ""
+msgstr "马来西亚"
 
 msgid "Netherlands"
-msgstr ""
+msgstr "荷兰"
 
 msgid "New Zealand"
-msgstr ""
+msgstr "新西兰"
 
 msgid "Norway"
-msgstr ""
+msgstr "挪威"
 
 msgid "Russia"
-msgstr ""
+msgstr "俄罗斯"
 
 msgid "Spain"
-msgstr ""
+msgstr "西班牙"
 
 msgid "Sweden"
-msgstr ""
+msgstr "瑞典"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "台湾"
 
 msgid "United Kingdom"
-msgstr ""
+msgstr "英联邦"
 
 msgid "United States Circa 1950/ North America"
-msgstr ""
+msgstr "美国1950/北美"
 
 msgid "Brazil"
-msgstr ""
+msgstr "巴西"
 
 msgid "Bulgaria"
-msgstr ""
+msgstr "保加利亚"
 
 msgid "Czech Republic"
-msgstr ""
+msgstr "捷克共和国"
 
 msgid "Denmark"
-msgstr ""
+msgstr "丹麦"
 
 msgid "Estonia"
-msgstr ""
+msgstr "爱沙尼亚"
 
 msgid "Germany"
-msgstr ""
+msgstr "德国"
 
 msgid "Hungary"
-msgstr ""
+msgstr "匈牙利"
 
 msgid "India"
-msgstr ""
+msgstr "印度"
 
 msgid "Israel"
-msgstr ""
+msgstr "以色列"
 
 msgid "Lithuania"
-msgstr ""
+msgstr "立陶宛"
 
 msgid "Mexico"
-msgstr ""
+msgstr "墨西哥"
 
 msgid "Philippines"
-msgstr ""
+msgstr "菲律宾"
 
 msgid "Poland"
-msgstr ""
+msgstr "波兰"
 
 msgid "Portugal"
-msgstr ""
+msgstr "葡萄牙"
 
 msgid "Russia / ex Soviet Union"
-msgstr ""
+msgstr "俄罗斯 / 前苏联"
 
 msgid "Singapore"
-msgstr ""
+msgstr "新加坡"
 
 msgid "South Africa"
-msgstr ""
+msgstr "南非"
 
 msgid "Switzerland"
-msgstr ""
+msgstr "瑞士"
 
 msgid "Thailand"
-msgstr ""
+msgstr "泰国"
 
 msgid "Venezuela / South America"
-msgstr ""
+msgstr "委内瑞拉 / 南美"
 
 msgid "agent"
-msgstr ""
+msgstr "代理"
 
 msgid "call"
-msgstr ""
+msgstr "通话"
 
 msgid "command"
-msgstr ""
+msgstr "命令"
 
 msgid "config"
-msgstr ""
+msgstr "设置"
 
 msgid "log"
-msgstr ""
+msgstr "日志"
 
 msgid "user"
-msgstr ""
+msgstr "用户"
 
 msgid "verbose"
-msgstr ""
+msgstr "详细"
 
 msgid "system"
-msgstr ""
+msgstr "系统"
 
 #, php-format
 msgid "The field '%s' contains invalid characters."
-msgstr ""
+msgstr "'%s' 段含有无效字符。"
 
 #, php-format
 msgid "The field '%s' is required."
-msgstr ""
+msgstr "'%s' 区域需要填入。 "
 
 msgid "The following input errors were detected:"
-msgstr ""
+msgstr "发现以下输入错误："
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
 msgstr ""
+"改动被保存。您必须 <a href=\"/system_reboot.php\">重启</a> 您的PBX使其生效。"
 
 msgid "The changes have been applied successfully."
-msgstr ""
+msgstr "改动应用成功。"
 
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr ""
+msgstr "错误：无法应用改动（错误代码 %s）。"
 
 msgid "reset filter and reload firewall logs page"
-msgstr ""
+msgstr "重置过滤器并重载防火墙日志页"
 
 msgid "Firewall"
-msgstr ""
+msgstr "防火墙"
 
 msgid "reload page"
-msgstr ""
+msgstr "重载页面"
 
 msgid "Package activated successfully."
-msgstr ""
+msgstr "软件包成功启用。"
 
 msgid "Package deactivated successfully."
-msgstr ""
+msgstr "软件包成功停用。"
 
 msgid "Package deleted successfully."
-msgstr ""
+msgstr "软件包成功删除。"
 
 msgid "Package restored successfully."
-msgstr ""
+msgstr "软件包成功还原。"
 
 msgid "Package installed successfully."
-msgstr ""
+msgstr "软件包成功安装。"
 
 #, php-format
 msgid "%.2f GB"
-msgstr ""
+msgstr "%.2f GB"
 
 #, php-format
 msgid "%.2f MB"
-msgstr ""
+msgstr "%.2f MB"
 
 #, php-format
 msgid "%.0f KB"
-msgstr ""
+msgstr "%.0f KB"
 
 #, php-format
 msgid "%d bytes"
-msgstr ""
+msgstr "%d bytes"
+
+#~ msgid ""
+#~ "To configure this type of account, make sure an appropriately configured "
+#~ "interface is present on the %s page"
+#~ msgstr "设置这类账号时，请确认一个适当配置的接口已经存在于 %t 页。 "
