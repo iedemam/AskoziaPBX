@@ -2,7 +2,7 @@
 # $Id$
 #
 # part of AskoziaPBX (http://askozia.com/pbx)
-# Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de>
 # All rights reserved.
 #
 # Authors:
@@ -15,726 +15,690 @@ msgstr ""
 "POT-Creation-Date: 2008-07-30 15:03+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
 
 msgid "Accounts"
-msgstr ""
+msgstr "Lijnen"
 
 msgid "Phones"
-msgstr ""
+msgstr "Telefoons"
 
-msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
-msgstr ""
+msgid "Phone Accounts allow you to configure internal extensions and their access to Provider Accounts. Click an account type below to get started."
+msgstr "Telefoon account laat je toe om interne toestellen te configureren en hun toegang naar Provider Accounts. Click op een account type hieronder om te starten."
 
 msgid "SIP"
 msgstr "SIP"
 
 msgid "IAX"
-msgstr ""
+msgstr "IAX"
 
 msgid "ISDN"
-msgstr ""
+msgstr "ISDN"
 
 msgid "Analog"
-msgstr ""
+msgstr "Analoog"
 
 msgid "External"
-msgstr ""
+msgstr "Buiten"
 
 msgid "Extension"
-msgstr ""
+msgstr "Toestel"
 
 msgid "Caller ID"
-msgstr ""
+msgstr "Beller ID"
 
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgid "click to enable phone"
-msgstr ""
+msgstr "Click om te telefoon te activeren"
 
 msgid "Do you really want to disable this phone?"
-msgstr ""
+msgstr "Wil je deze telefoon uitschakelen?"
 
 msgid "click to disable phone"
-msgstr ""
+msgstr "Click om de telefoon uit te schakelen."
 
 msgid "edit phone"
-msgstr ""
+msgstr "Telefoon bewerken"
 
 msgid "Do you really want to delete this phone?"
-msgstr ""
+msgstr "Wil je deze telfoon verwijderen?"
 
 msgid "delete phone"
-msgstr ""
+msgstr "Telefoon verwijderen"
 
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgid "Dialstring"
-msgstr ""
+msgstr "Belstring"
 
 msgid "Providers"
-msgstr ""
+msgstr "Providers"
 
-msgid ""
-"Provider Accounts allow you to configure routes to and from external sources "
-"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
-"Click an account type below to get started."
-msgstr ""
+msgid "Provider Accounts allow you to configure routes to and from external sources (i.e. VoIP service providers or attached ISDN / Analog interface hardware). Click an account type below to get started."
+msgstr "Provider Accounts laten je toe om routes te configureren naar en van externe bronnen. (Bvb. Voip service providers of aangesloten ISDN / analoge interface hardware). Click op een onderstaande account type om te kunnen starten."
 
 msgid "Pattern(s)"
-msgstr ""
+msgstr "Patroo(n)(e)n "
 
 msgid "Username"
-msgstr ""
+msgstr "Gebruikersnaam"
 
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 msgid "click to enable provider"
-msgstr ""
+msgstr "Click om de provider te activeren"
 
 msgid "Do you really want to disable this provider?"
-msgstr ""
+msgstr "Wil je de provider werkelijk uitschakelen?"
 
 msgid "click to disable provider"
-msgstr ""
+msgstr "Click om de provider uit te schakelen"
 
 msgid "edit provider"
-msgstr ""
+msgstr "Provider bewerken"
 
 msgid "Do you really want to delete this provider?"
-msgstr ""
+msgstr "Wil je deze provider echt verwijderen?"
 
 msgid "delete provider"
-msgstr ""
+msgstr "Provider verwijderen"
 
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgid "Interface"
-msgstr ""
+msgstr "Interfac"
 
 msgid "Advanced"
-msgstr ""
+msgstr "Geavanceerd"
 
 msgid "Tone Zones"
-msgstr ""
+msgstr "Toon Zone's"
 
 msgid "Loaded"
-msgstr ""
+msgstr "Geladen"
 
 msgid "drag-and-drop"
-msgstr ""
+msgstr "Slepen"
 
 msgid "Inactive"
-msgstr ""
+msgstr "Inactief"
 
 msgid "Note:"
-msgstr ""
+msgstr "Nota:"
 
-msgid ""
-"Select all indication tone zones the analog hardware should support. "
-"<strong>The first tone zone will be the default tonezone."
-msgstr ""
+msgid "Select all indication tone zones the analog hardware should support. <strong>The first tone zone will be the default tonezone."
+msgstr "Selecteer al de indicatie toon zones welke de analoge hardware moet supporteren. <strong> De eerste toon zone zal de standaard toonzone zijn."
 
 msgid "GUI Options"
-msgstr ""
+msgstr "GUI Optie's"
 
-msgid ""
-"A self-signed certificate could not be generated because the system's clock "
-"is not set."
-msgstr ""
+msgid "A self-signed certificate could not be generated because the system's clock is not set."
+msgstr "Een zelf getekend certificaat kan niet worden gegenereerd om de systeem klok niet is ingesteld."
 
-msgid ""
-"A self-signed certificate and private key have been automatically generated."
-msgstr ""
+msgid "A self-signed certificate and private key have been automatically generated."
+msgstr "Een zelf getekend certificaat en een private sleutel werden automatisch aangemaakt."
 
 msgid "Certificate and key must always be specified together."
-msgstr ""
+msgstr "Certificaat en sleuterl moeten altijd tegelijk worden gebruikt."
 
 msgid "This certificate does not appear to be valid."
-msgstr ""
+msgstr "Het certificaat lijkt niet geldig te zijn."
 
 msgid "This key does not appear to be valid."
-msgstr ""
+msgstr "Deze sleute lijkt niet geldig te zijn."
 
 msgid "webGUI SSL certificate/key"
-msgstr ""
+msgstr "webGUI SSL certificaat/sleutel"
 
 msgid "Certificate"
-msgstr ""
+msgstr "Certificaat"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr ""
+msgstr "Plak een getekend certificaat in x.509 PEM formaat hier."
 
 msgid "Key"
-msgstr ""
+msgstr "Sleutel"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr ""
+msgstr "Plak een RSA private sleutel in PEM formaat hier."
 
 msgid "Generate self-signed certificate"
-msgstr ""
+msgstr "Genereer een zelf-getekend certificaat"
 
 msgid "Save"
-msgstr ""
+msgstr "Bewaar"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Divers"
 
 msgid "Console menu"
-msgstr ""
+msgstr "Console mene"
 
 msgid "Disable console menu"
-msgstr ""
+msgstr "Console menu uitschakelen"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr ""
+msgstr "Wijzigingen aan deze optie zullen pas van kracht zijn na een herstart."
 
 msgid "Firmware version check"
-msgstr ""
+msgstr "Firmware versie controle"
 
 msgid "Disable firmware version check"
-msgstr ""
+msgstr "Firmware versie controle uitschakelen."
 
-msgid ""
-"This will cause AskoziaPBX not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
+msgid "This will cause AskoziaPBX not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+msgstr "Dit zorgt ervoor datt AskoziaPBX niet langer zal zoeken naar nieuwe firmware versies wanneer de <a href=\"system_firmware.php\">Systeem: Firmware</a> pagina wordt bekeken."
 
 msgid "Package version checks"
-msgstr ""
+msgstr "Paket versie controle"
 
 msgid "Disable package version checks"
-msgstr ""
+msgstr "Paket versie controle uitschakelen"
 
-msgid ""
-"This will cause AskoziaPBX not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
+msgid "This will cause AskoziaPBX not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed."
+msgstr "Dit zorgt ervoor dat AskoziaPBX niet langer zal zoeken naar nieuwe pakketen versies wanneer de <a href=\"system_packages.php\">Systeem: Paketten</a> pagina wordt bekeken."
 
 msgid "Hard disk standby time"
-msgstr ""
+msgstr "Harde schrijf standby tijd"
 
 msgid "Always on"
-msgstr ""
+msgstr "Altijd aan"
 
 msgid "minutes"
-msgstr ""
+msgstr "minuten"
 
-msgid ""
-"Puts the hard disk into standby mode when the selected amount of time after "
-"the last access has elapsed. <em>Do not set this for CF cards."
-msgstr ""
+msgid "Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards."
+msgstr "Zet de harde schijf in standby mode wanneer de geselecteerde tijd is verstreken na de laatste toegang. <em>Niet gebruiken in combinatie met CF kaart."
 
 msgid "Navigation"
-msgstr ""
+msgstr "Navigatie"
 
 msgid "Keep diagnostics in navigation expanded"
-msgstr ""
+msgstr "Laat de diagnostische gegevens uitgebreidt in de navigatie"
 
 msgid "Keep advanced options in navigation expanded"
-msgstr ""
+msgstr "Laat de geavanceerde optie gegevens uitgebreit in het navigatievester"
 
 msgid "Hide SIP related options"
-msgstr ""
+msgstr "Laat SIP gerelateerd instellingen niet zien."
 
 msgid "Hide IAX related options"
-msgstr ""
+msgstr "Laat IAX gerelateerd instellingen niet zien."
 
 msgid "Hide ISDN related options"
-msgstr ""
+msgstr "Laat ISDN gerelateerd instellingen niet zien."
 
 msgid "Hide Analog related options"
-msgstr ""
+msgstr "Laat Analoog gerelateerd instellingen niet zien."
 
 msgid "Port"
-msgstr ""
+msgstr "Poort"
 
 msgid "A valid port must be specified."
-msgstr ""
+msgstr "Een geldige poort moet geselecteerd worden."
 
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 msgid "Binding Port"
-msgstr ""
+msgstr "Bindende poort"
 
 msgid "Jitterbuffer"
-msgstr ""
+msgstr "Storingsbuffer"
 
 msgid "Enable"
-msgstr ""
+msgstr "Inschakelen"
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
-msgstr ""
+msgstr "Storringsbuffer inschakelen op IAX connecties beheerd door AskoziaPBX."
 
 msgid "Force"
-msgstr ""
+msgstr "Kracht"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
-msgstr ""
+msgstr "Gebruik Storingsbuffer ook in gebrugde mode tussen 2 eind punten."
 
 msgid "National Prefix, International Prefix"
-msgstr ""
+msgstr "Nationale Prefix, Internationale Prefix"
 
 msgid "A valid national prefix must be specified."
-msgstr ""
+msgstr "Een geldige nationale prefix moet worden gekozen."
 
 msgid "A valid international prefix must be specified."
-msgstr ""
+msgstr "Een geldige internationale prefix moet worden gekozen."
 
 msgid "National Prefix"
-msgstr ""
+msgstr "Nationale Prefix"
 
 msgid "International Prefix"
-msgstr ""
+msgstr "Internationale Prefix"
 
 msgid "Audio"
-msgstr ""
+msgstr "Geluid"
 
 msgid "A-law"
-msgstr ""
+msgstr "A-law"
 
 msgid "u-law"
-msgstr ""
+msgstr "u-law"
 
 msgid "Manager Interface"
-msgstr ""
+msgstr "Beheerders Interface"
 
 msgid "Permissions"
-msgstr ""
+msgstr "Toegang"
 
 msgid "read:"
-msgstr ""
+msgstr "Lezen:"
 
 msgid "write:"
-msgstr ""
+msgstr "Schrijven:"
 
 msgid "edit manager room"
-msgstr ""
+msgstr "bewerk beheerders ruimte"
 
 msgid "Do you really want to delete this manager user?"
-msgstr ""
+msgstr "Wil je werkelijk deze beheerder verwijderen?"
 
 msgid "delete manager user"
-msgstr ""
+msgstr "verwijder beheerder gebruiker"
 
 msgid "add manager user"
-msgstr ""
+msgstr "voeg beheerder gebruiker toe"
 
 msgid "Edit User"
-msgstr ""
+msgstr "Gebruiker wijzigen"
 
 msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr ""
+msgstr "Gebruikersnaam,Geheim,Negeer IP,Negeer Netmask,IP Toelaten,Netmask Toelaten"
 
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
-msgstr ""
+msgstr "De gebruikersnaam \"admin\" is reeds intern in gebruik door AskoziaPBX."
 
 msgid "Secret"
-msgstr ""
+msgstr "Geheim"
 
 msgid "Deny Network"
-msgstr ""
+msgstr "Negeer Netwerk"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
-msgstr ""
+msgstr "zet '0.0.0.0 / 0.0.0.0' in om alles te negeren"
 
 msgid "Permit Network"
-msgstr ""
+msgstr "Netwerk Toelaten"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
-msgstr ""
+msgstr "zet '0.0.0.0 / 0.0.0.0'  in om alles toe te staan"
 
 msgid "Read"
-msgstr ""
+msgstr "Lees"
 
 msgid "Write"
-msgstr ""
+msgstr "Schrijf"
 
 msgid "RTP"
-msgstr ""
+msgstr "RTP"
 
 msgid "Low RTP Port,High RTP Port"
-msgstr ""
+msgstr "Lage RTP Poort,Hoge RTP poort"
 
 msgid "The high RTP port must be greater than the low RTP port."
-msgstr ""
+msgstr "De hoge RTP poort moet groter zijn dan de lage RTP poort."
 
 msgid "RTP Port Range"
-msgstr ""
+msgstr "RTP Poort Reeks"
 
 msgid "The port range which RTP streams should use. (default:"
-msgstr ""
+msgstr "De poort reeks welke RTP stromen moet gebruiken. (standaard:"
 
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 msgid "after you click &quot;Save&quot;, all current calls will be dropped."
-msgstr ""
+msgstr "Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken verloren gaan."
 
-msgid ""
-"A whole number of seconds must be entered for the \"Default Registration "
-"Expiration\" timeout."
-msgstr ""
+msgid "A whole number of seconds must be entered for the \"Default Registration Expiration\" timeout."
+msgstr "Een volledig cijfer van seconden moet ingevuld worden voor de \"Default Registration Expiration\" timeout."
 
-msgid ""
-"A whole number of seconds must be entered for the \"Minimum Registration "
-"Expiration\" timeout."
-msgstr ""
+msgid "A whole number of seconds must be entered for the \"Minimum Registration Expiration\" timeout."
+msgstr "Een volledig cijfer van seconden moet ingevuld worden voor de \"Minimum Registration Expiration\" timeout."
 
-msgid ""
-"A whole number of seconds must be entered for the \"Maximum Registration "
-"Expiration\" timeout."
-msgstr ""
+msgid "A whole number of seconds must be entered for the \"Maximum Registration Expiration\" timeout."
+msgstr "Een volledig cijfer van seconden moet ingevuld worden voor de \"Maximum Registration Expiration\" timeout."
 
 msgid "Registration Expiration Timeouts"
-msgstr ""
+msgstr "Registratie Verval Timeouts"
 
 msgid "min:"
-msgstr ""
+msgstr "min:"
 
 msgid "max:"
-msgstr ""
+msgstr "max:"
 
 msgid "default:"
-msgstr ""
+msgstr "algemeen:"
 
-msgid ""
-"The minimum, maximum and default number of seconds that incoming and "
-"outgoing registrations and subscriptions remain valid."
-msgstr ""
+msgid "The minimum, maximum and default number of seconds that incoming and outgoing registrations and subscriptions remain valid."
+msgstr "De minimum, maximum en standaard aantal van seconden dat inkomend en uitgaande rigistraties en  abonnementen geldig blijven."
 
 msgid "Default values are 60, 3600 and 120 respectively."
-msgstr ""
+msgstr "Standaard waren zijn 60, 3600 en 120 respectivelijk."
 
 msgid "DNS Service Records"
-msgstr ""
+msgstr "DNS Service Records"
 
 msgid "Disable DNS SRV lookups."
-msgstr ""
+msgstr "DNS SRV lookups uitschakelen."
 
 msgid "Debug"
-msgstr ""
+msgstr "Debug"
 
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 msgid "ISDN Interface"
-msgstr ""
+msgstr "ISDN Interface"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgid "Debugging"
-msgstr ""
+msgstr "Debugging"
 
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 msgid "Debug Ouptut"
-msgstr ""
+msgstr "Debug Ouptut"
 
 msgid "Restart"
-msgstr ""
+msgstr "Herstart"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnostics"
 
 msgid "ARP table"
-msgstr ""
+msgstr "ARP tabel"
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP adres"
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC adres"
 
 msgid "Hostname"
-msgstr ""
+msgstr "Hostnaam"
 
 msgid "delete arp entry"
-msgstr ""
+msgstr "verwijder arp ingave"
 
 msgid "remove all entries from arp table"
-msgstr ""
+msgstr "verwijder alle ingaven van de arp tabel"
 
 msgid "Editor"
-msgstr ""
+msgstr "Bewerken"
 
 #, php-format
 msgid "The specified file (%s) does not exist."
-msgstr ""
+msgstr "Het gespecifieerde bestand (%s) bestaat niet."
 
 #, php-format
 msgid "File contents (%s) saved."
-msgstr ""
+msgstr "Bestands inhoud (%s) bewaard."
 
 msgid "File"
-msgstr ""
+msgstr "Bestand"
 
 msgid "Contents"
-msgstr ""
+msgstr "Inhoud"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Afbreken"
 
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
 msgid "Logs"
-msgstr ""
+msgstr "Logs"
 
 msgid "No matches found."
-msgstr ""
+msgstr "Geen overeenstemmingen gevonden?"
 
 msgid "System"
-msgstr ""
+msgstr "systeem"
 
 msgid "PBX"
-msgstr ""
+msgstr "PBX"
 
 msgid "Calls"
-msgstr ""
+msgstr "Gesprekken"
 
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 msgid "filter"
-msgstr ""
+msgstr "filter"
 
 msgid "System log entries"
-msgstr ""
+msgstr "Systeem log ingaves"
 
 msgid "Clear Log"
-msgstr ""
+msgstr "Log Wissen"
 
 msgid "Call Records"
-msgstr ""
+msgstr "Bel Geschiedenis"
 
 msgid "start"
-msgstr ""
+msgstr "start"
 
 msgid "src"
-msgstr ""
+msgstr "src"
 
 msgid "dst"
-msgstr ""
+msgstr "dst"
 
 msgid "channels"
-msgstr ""
+msgstr "kanalen"
 
 msgid "last app"
-msgstr ""
+msgstr "laatste app"
 
 msgid "sec."
-msgstr ""
+msgstr "sec."
 
 msgid "bill"
-msgstr ""
+msgstr "rekening"
 
 msgid "disposition"
-msgstr ""
+msgstr "dispositie"
 
 msgid "Clear log"
-msgstr ""
+msgstr "Log wissen"
 
 msgid "Asterisk log entries"
-msgstr ""
+msgstr "Asteris log ingaves"
 
 msgid "A valid IP address must be specified."
-msgstr ""
+msgstr "Een geldig ip adres moet worden gekozen."
 
 msgid "Number of log entries to show must be between 50 and 1000."
-msgstr ""
+msgstr "Nummer om log ingave te bekijken moet tussen de 50 en 1000 zijn."
 
 msgid "Number of log entries to show:"
-msgstr ""
+msgstr "Nummer van log ingaven welke zichtbaar zijn:"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
+msgstr "Syslog'ing naar een remote syslog server inschakelen"
 
 msgid "Remote syslog server"
-msgstr ""
+msgstr "Remote syslog server"
 
 msgid "IP address of remote syslog server"
-msgstr ""
+msgstr "IP adres van de remote syslog server"
 
 msgid "system events"
-msgstr ""
+msgstr "Systeem gebeurtenissen"
 
 msgid "pbx events"
-msgstr ""
+msgstr "PBX gebeurtenissen"
 
 msgid "call detail records"
-msgstr ""
+msgstr "details van bel geschiedenis"
 
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from AskoziaPBX."
-msgstr ""
+msgid "syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from AskoziaPBX."
+msgstr "syslog zend UDP datagrammen naar poort 514 op de gespecifieerde syslog server. Zorg dat syslogd op de remote server  syslog boodschappen van AskoziaPBX kan aanvaarden."
 
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
+msgid "This page allows direct execution of commands on the Asterisk console. Execute \"help\" to see a list of possible commands."
+msgstr "Deze pagina zorgt voor de directe uitvoering van commando's op de Asterisk console. Voer \"help\" uit om een lijst te zien van mogelijke commando's."
 
 msgid "Command"
-msgstr ""
+msgstr "Commando"
 
 msgid "Output"
-msgstr ""
+msgstr "Output"
 
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 msgid "Host,Count"
-msgstr ""
+msgstr "Host,Tellen"
 
 #, php-format
 msgid "Count must be between 1 and %d"
-msgstr ""
+msgstr "Tellen moet tussen de 1 en %d "
 
 msgid "Traceroute"
-msgstr ""
+msgstr "Traceroute"
 
 msgid "Count"
-msgstr ""
+msgstr "Tellen"
 
 msgid "Ping output:"
-msgstr ""
+msgstr "Ping output:"
 
 msgid "Host,ttl"
-msgstr ""
+msgstr "Host,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
-msgstr ""
+msgstr "Maximum aantal hops moet tussen de 1 en %d "
 
 msgid "Maximum number of hops"
-msgstr ""
+msgstr "Maximum aantal hops"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr ""
+msgstr "Zoek de IP adressen vanaf de hostnamen"
 
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
+msgid "Traceroute may take a while to complete.  You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
+msgstr "Traceroute kan er een tijdje over doen voor een volledig resultaat. Je kan op elk moment op de Stop knop drukken van je browser om te zien hoever gefaalde traceroutes staan."
 
 msgid "Traceroute output:"
-msgstr ""
+msgstr "Traceroute output:"
 
 msgid "Dialplan"
-msgstr ""
+msgstr "Belplan"
 
 msgid "Applications"
-msgstr ""
+msgstr "Programma's"
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to AskoziaPBX. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
-msgstr ""
+msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to AskoziaPBX. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
+msgstr "Met wat kennis van hoe het Asterisk belplan werkt, kunnen basis toepassingen toegevoegd worden aan AskoziaPBX. Deze toepassingen kunnen dan via hun gedefineerde post worden bereikt of gebruikt als een bestemming voor inkomende gesprekken van Providers."
 
 msgid "name"
-msgstr ""
+msgstr "naam"
 
 msgid "descr"
-msgstr ""
+msgstr "omschr"
 
 msgid "edit application mapping"
-msgstr ""
+msgstr "bewerk programma mapping"
 
 msgid "Do you really want to delete this application mapping?"
-msgstr ""
+msgstr "Wil je werkelijk deze programma mapping verwijderen?"
 
 msgid "delete application mapping"
-msgstr ""
+msgstr "programma mapping verwijderen"
 
 msgid "add application mapping"
-msgstr ""
+msgstr "programma mapping toevoegen"
 
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 msgid "Name,Extension,Application Logic"
-msgstr ""
+msgstr "Naam,Post,Programma Logica"
 
 msgid "A valid extension must be entered."
-msgstr ""
+msgstr "Een geldig post moet worden gekozen."
 
 msgid "Internal extension used to reach this application."
-msgstr ""
+msgstr "Interne posten gebruikt voor deze toepassing"
 
 msgid "Call Groups"
-msgstr ""
+msgstr "Bel Groepen"
 
-msgid ""
-"Groups of extensions can be configured to ring concurrently. These groups "
-"can then be dialed via their defined extensions or used as a destination for "
-"incoming calls from Providers."
-msgstr ""
+msgid "Groups of extensions can be configured to ring concurrently. These groups can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
+msgstr "Groep van posten die gelijktijdig kunnen bellen. Deze groep kan dan worden opgebeld met het voor gedefineerde post nummer of gebruikt worden als bestemming voor incomende gesprekken van Providers."
 
 msgid "Members"
-msgstr ""
+msgstr "Leden"
 
 msgid "edit call group"
-msgstr ""
+msgstr "bewerk bel groep"
 
 msgid "Do you really want to delete this call group?"
-msgstr ""
+msgstr "Wil je werkelijk deze bel groep verwijderen?"
 
 msgid "delete call group"
-msgstr ""
+msgstr "verwijder bel groep"
 
 msgid "add call group"
-msgstr ""
+msgstr "bel groep toevoegen"
 
 msgid "Group name"
-msgstr ""
+msgstr "groep naam"
 
 msgid "Internal extension used to reach this call group."
-msgstr ""
+msgstr "Interne post welke deze bel groep bereikt."
 
 msgid "Transfers"
-msgstr ""
+msgstr "Doorschakelen"
 
-msgid ""
-"A variety of settings are here which define how call transfers and call "
-"parking are handled. The defaults should work in most situations."
-msgstr ""
+msgid "A variety of settings are here which define how call transfers and call parking are handled. The defaults should work in most situations."
+msgstr "Een verscheidenheid aan instellingen kan u hier zien welke bepalen hoe doorschakelen en parkeren gebeurd. De standaard waarden zouden in meeste gevallen moeten werken."
 
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr ""
+msgid "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
+msgstr "Post Parkeren,Parkeren Start Positie,Parkeren Stop Positie, Parkeer Tijd"
 
 msgid "A valid parking start position must be specified."
-msgstr ""
+msgstr "Een geldige Parkeer start positie moet worden gekozen."
 
 msgid "A valid parking stop position must be specified."
-msgstr ""
+msgstr "Een geldige Parkeer stop positie moet worden gekozen."
 
 msgid "The end parking position must be larger than the start position."
-msgstr ""
+msgstr "Het einde van parkeer positie moet hoger zijn dan de start positie."
 
 msgid "A valid parking extension must be specified."
-msgstr ""
+msgstr "Een geldig parkeer post moet worden gekozen."
 
 msgid "A valid park time must be specified."
-msgstr ""
+msgstr "Een geldige parkeertijd moet worden gekozen."
 
 msgid "A valid key timeout must be specified."
-msgstr ""
+msgstr "Een geldige sleutel timeout moet worden gekozen."
 
 msgid "A valid attended transfer timeout must be specified."
 msgstr ""
@@ -743,72 +707,60 @@ msgid "A valid extension digit timeout must be specified."
 msgstr ""
 
 msgid "Hot Keys"
-msgstr ""
+msgstr "Hot Keys"
 
 msgid "Attended"
-msgstr ""
+msgstr "Volgen"
 
 msgid "This key combination activates an attended transfer (default **)."
 msgstr ""
 
 msgid "Blind"
-msgstr ""
+msgstr "Blind"
 
 msgid "This key combination activates a blind transfer (default ##)."
 msgstr ""
 
 msgid "Call Parking"
-msgstr ""
+msgstr "Parkeren"
 
 msgid "Park Extension"
-msgstr ""
+msgstr "Post Parkeren"
 
-msgid ""
-"Blind transfer to this extension to park a call (default 700). The number "
-"read back to you after transfering is the extension where the call was "
-"parked."
+msgid "Blind transfer to this extension to park a call (default 700). The number read back to you after transfering is the extension where the call was parked."
 msgstr ""
 
 msgid "Parking Range"
-msgstr ""
+msgstr "Parkeer Reeks"
 
-msgid ""
-"This range of extensions is where parked calls reside (default 701-720)."
+msgid "This range of extensions is where parked calls reside (default 701-720)."
 msgstr ""
 
 msgid "Timeouts"
-msgstr ""
+msgstr "Timeouts"
 
 msgid "Attended Transfer Answer"
 msgstr ""
 
-msgid ""
-"Maximum number of seconds an attended transfer can go unanswered (default "
-"15)."
+msgid "Maximum number of seconds an attended transfer can go unanswered (default 15)."
 msgstr ""
 
 msgid "Transfer Key"
-msgstr ""
+msgstr "Doorschakel sleutel"
 
-msgid ""
-"Maximum number of milliseconds between key presses for transfer activation "
-"(default 500)."
+msgid "Maximum number of milliseconds between key presses for transfer activation (default 500)."
 msgstr ""
 
 msgid "Extension Digit"
 msgstr ""
 
-msgid ""
-"Maximum number of seconds to wait between digits when transferring a call "
-"(default 3)."
+msgid "Maximum number of seconds to wait between digits when transferring a call (default 3)."
 msgstr ""
 
 msgid "Park Time"
-msgstr ""
+msgstr "Parkeer Tijd"
 
-msgid ""
-"Maximum number of seconds a call can be parked before it is transfered back "
-"to the parker (default 30)."
+msgid "Maximum number of seconds a call can be parked before it is transfered back to the parker (default 30)."
 msgstr ""
 
 msgid "AskoziaPBX: execute command"
@@ -821,121 +773,116 @@ msgid "Command:"
 msgstr ""
 
 msgid "Execute"
-msgstr ""
+msgstr "uitvoeren"
 
 msgid "Clear"
-msgstr ""
+msgstr "Wis"
 
 msgid "Download:"
-msgstr ""
+msgstr "Download:"
 
 msgid "Upload:"
-msgstr ""
+msgstr "Upload:"
 
 msgid "Upload"
-msgstr ""
+msgstr "upload"
 
 msgid "In"
-msgstr ""
+msgstr "In"
 
 msgid "Out"
-msgstr ""
+msgstr "Uit"
 
 msgid "Switch to bytes/s"
-msgstr ""
+msgstr "Schakel naar bytes/s "
 
 msgid "AutoScale"
-msgstr ""
+msgstr "Autoschaling"
 
 msgid "Graph shows last"
-msgstr ""
+msgstr "Grafiek laat laatste zien"
 
 msgid "seconds"
-msgstr ""
+msgstr "Seconden"
 
 msgid "Collecting initial data, please wait..."
-msgstr ""
+msgstr "Initiële data wordt opgebouwd, even wachten..."
 
 msgid "75%"
-msgstr ""
+msgstr "75%"
 
 msgid "50%"
-msgstr ""
+msgstr "50%"
 
 msgid "25%"
-msgstr ""
+msgstr "25%"
 
 msgid "Cannot get CPU load"
-msgstr ""
+msgstr "Kan de CPU belasting niet vinden"
 
 msgid "AskoziaPBX webGUI"
-msgstr ""
+msgstr "AskoziaPBX webGUI"
 
 msgid "System Information"
-msgstr ""
+msgstr "Systeem Informatie"
 
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 msgid "built on"
-msgstr ""
+msgstr "gebouwd op"
 
 msgid "Platform"
-msgstr ""
+msgstr "Platvorm"
 
 msgid "Uptime"
-msgstr ""
+msgstr "Uptime"
 
 #, php-format
 msgid "%s days, "
-msgstr ""
+msgstr "%s dagen, "
 
 msgid "Last Config Change"
-msgstr ""
+msgstr "Laatste Configuratie Wijziging"
 
 msgid "Active Calls"
-msgstr ""
+msgstr "Actieve telefoons."
 
 msgid "Active Channels"
-msgstr ""
+msgstr "Actieve Kanalen"
 
 msgid "Memory Usage"
-msgstr ""
+msgstr "Geheugen Gebruik"
 
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 msgid "Interfaces"
-msgstr ""
+msgstr "Interfaces"
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them."
+msgid "Detected ports on this page must be edited and saved before the system can utilize them."
 msgstr ""
 
 msgid "Network"
-msgstr ""
+msgstr "Netwerk"
 
 msgid "Wireless"
-msgstr ""
+msgstr "Draadloos"
 
 msgid "Storage"
-msgstr ""
+msgstr "Opslag"
 
 msgid "No compatible analog interfaces detected."
 msgstr ""
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+msgid "If an analog interface is present but was not detected, please send <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 
 msgid "Unit"
 msgstr ""
 
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgid "Gain (rx/tx)"
 msgstr ""
@@ -952,16 +899,10 @@ msgstr ""
 msgid "forget interface settings"
 msgstr ""
 
-msgid ""
-"FXS interfaces connect to telephones and FXO interfaces connect to provider "
-"lines. FXS interfaces produce electricity to power the telephone and FXO "
-"interfaces accept the electricity generated by the provider."
+msgid "FXS interfaces connect to telephones and FXO interfaces connect to provider lines. FXS interfaces produce electricity to power the telephone and FXO interfaces accept the electricity generated by the provider."
 msgstr ""
 
-msgid ""
-"Connecting a provider line to an FXS port can damage your hardware! If you "
-"are unsure which ports are FXO or FXS on your card, configure and connect "
-"your phone accounts before connecting any provider lines."
+msgid "Connecting a provider line to an FXS port can damage your hardware! If you are unsure which ports are FXO or FXS on your card, configure and connect your phone accounts before connecting any provider lines."
 msgstr ""
 
 msgid "Edit Analog"
@@ -974,23 +915,21 @@ msgid "Descriptive name for this interface"
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Uitgeschakeld"
 
 msgid "32"
-msgstr ""
+msgstr "32"
 
 msgid "64"
-msgstr ""
+msgstr "64"
 
 msgid "128"
-msgstr ""
+msgstr "128"
 
 msgid "256"
-msgstr ""
+msgstr "256"
 
-msgid ""
-"The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
-"require more processing power."
+msgid "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but require more processing power."
 msgstr ""
 
 msgid "Start Signaling"
@@ -1005,29 +944,20 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
+msgid "Detected ports on this page must be edited and saved before the system can utilize them. Be careful when configuring ISDN interfaces. Having a single port on a card incorrectly configured can result in the entire card being unusable by the system."
 msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr ""
 
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+msgid "If an ISDN interface is present but was not detected, please send <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
 
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
+msgid "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/udesc_dump\">this output</a> as well."
 msgstr ""
 
 msgid "Operating Mode"
-msgstr ""
+msgstr "Operatie Mode"
 
 msgid "edit ISDN interface"
 msgstr ""
@@ -1035,24 +965,16 @@ msgstr ""
 msgid "Operating Modes"
 msgstr ""
 
-msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+msgid "point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system"
 msgstr ""
 
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
+msgid "multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones"
 msgstr ""
 
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
+msgid "point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system"
 msgstr ""
 
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
+msgid "point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system"
 msgstr ""
 
 #, php-format
@@ -1068,14 +990,11 @@ msgstr ""
 msgid "PCM Timing Slave"
 msgstr ""
 
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
+msgid "There is already another card present which provides the timing.<br><em>(Unless more than one inteface card is present in the system, this should not be changed."
 msgstr ""
 
 msgid "Disable Power Save"
-msgstr ""
+msgstr "Power Save Uitschakelen"
 
 msgid "Disable power save mode. (sometimes needed for older cards)"
 msgstr ""
@@ -1086,12 +1005,7 @@ msgstr ""
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr ""
 
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgid "The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default AskoziaPBX requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
 
 msgid "IP address,Subnet bit count,Gateway,Network topology"
@@ -1106,9 +1020,7 @@ msgstr ""
 msgid "A valid gateway must be specified."
 msgstr ""
 
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
+msgid "A valid IP address must be specified for the primary/secondary/tertiary DNS server."
 msgstr ""
 
 msgid "A public IP address must be entered for this topology."
@@ -1130,41 +1042,33 @@ msgid "Checked interfaces will be bridged to the main interface."
 msgstr ""
 
 msgid "IP Address"
-msgstr ""
+msgstr "Ip Adres"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 msgid "DNS Servers"
-msgstr ""
+msgstr "DNS Servers"
 
 msgid "IP Addresses"
-msgstr ""
+msgstr "IP Adressen"
 
 msgid "MAC Address"
-msgstr ""
+msgstr "MAC Adressen"
 
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
+msgid "This field can be used to modify (&quot;spoof&quot;) the MAC address of the network interface<br>Enter a MAC address in the following format: xx:xx:xx:xx:xx:xx or leave blank"
 msgstr ""
 
 msgid "Topology"
-msgstr ""
+msgstr "Topology"
 
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
+msgid "NAT + Static Public IP: this PBX is behind a NAT which has a static public IP. Enter this IP below."
 msgstr ""
 
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
+msgid "NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public IP. A hostname, constantly updated to point to this network is required. Enter this information below."
 msgstr ""
 
 msgid "Static Public IP"
@@ -1177,31 +1081,28 @@ msgid "This information should be updated by:"
 msgstr ""
 
 msgid "My Router"
-msgstr ""
+msgstr "Mijn Router"
 
 msgid "AskoziaPBX"
 msgstr ""
 
 msgid "Dynamic DNS Client"
-msgstr ""
+msgstr "Dynamische DNS Cliënt"
 
 msgid "Service Type"
-msgstr ""
+msgstr "Service Type"
 
 msgid "Password"
-msgstr ""
+msgstr "Wachtwoord"
 
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
+msgid "after you click &quot;Save&quot;, all current calls will be dropped. You may also have to do one or more of the following steps before you can access your PBX again:"
 msgstr ""
 
 msgid "restart the PBX"
-msgstr ""
+msgstr "De pbx herstarten"
 
 msgid "change the IP address of your computer"
 msgstr ""
@@ -1209,22 +1110,18 @@ msgstr ""
 msgid "access the webGUI with the new IP address"
 msgstr ""
 
-msgid ""
-"AskoziaPBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
+msgid "AskoziaPBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space."
 msgstr ""
 
 msgid "The system storage media is not large enough to install packages."
 msgstr ""
 
 #, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
+msgid "A minimum of %sMB is required. In the future, external media will be able to be used, but currently packages must be stored on the internal system media."
 msgstr ""
 
 msgid "Capacity"
-msgstr ""
+msgstr "Capaciteit"
 
 msgid "State"
 msgstr ""
@@ -1241,10 +1138,7 @@ msgstr ""
 msgid "descriptive name"
 msgstr ""
 
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that "
-"AskoziaPBX is connected to."
+msgid "If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that AskoziaPBX is connected to."
 msgstr ""
 
 msgid "SSID,Channel"
@@ -1259,8 +1153,7 @@ msgstr ""
 msgid "The WPA PSK must be between 8 and 63 characters long."
 msgstr ""
 
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgid "802.11a channels can only be selected if the standard is set to 802.11a too."
 msgstr ""
 
 msgid "802.11a can only be selected if an 802.11a channel is selected too."
@@ -1281,11 +1174,7 @@ msgstr ""
 msgid "Hide SSID"
 msgstr ""
 
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
+msgid "If this option is selected, the SSID will not be broadcast in hostap mode, and onlyclients that know the exact SSID will be able to connect. Note that this option should never be used as a substitute for proper security/encryption settings."
 msgstr ""
 
 msgid "Channel"
@@ -1298,13 +1187,13 @@ msgid "WPA"
 msgstr ""
 
 msgid "WPA settings"
-msgstr ""
+msgstr "WPA instellingen"
 
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 msgid "none"
-msgstr ""
+msgstr "geen"
 
 msgid "PSK"
 msgstr ""
@@ -1333,14 +1222,10 @@ msgstr ""
 msgid "TKIP + AES/CCMP"
 msgstr ""
 
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
+msgid "AES/CCMP provides better security than TKIP, but TKIP is more compatible with older hardware."
 msgstr ""
 
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
+msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."
 msgstr ""
 
 msgid "WEP"
@@ -1364,14 +1249,10 @@ msgstr ""
 msgid "Key 4:"
 msgstr ""
 
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
+msgid "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits preceded by '0x'."
 msgstr ""
 
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
+msgid "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits preceded by '0x'."
 msgstr ""
 
 msgid "Edit Analog Line"
@@ -1394,9 +1275,7 @@ msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
 #, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -1417,9 +1296,7 @@ msgstr ""
 msgid "Descriptive name for this phone."
 msgstr ""
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Number or string to be dialed to reach this telephone. This will be dialed directly; outgoing pattern matching rules do not apply"
 msgstr ""
 
 msgid "Provider"
@@ -1437,8 +1314,7 @@ msgstr ""
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
+msgid "The phone number assigned to this account. Also this account's username."
 msgstr ""
 
 msgid "plaintext"
@@ -1477,10 +1353,7 @@ msgstr ""
 msgid "Audio Prompts"
 msgstr ""
 
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
+msgid "Below is a list of the currently defined phones along with a basic Dial() command to call them. Many additional options are available for this command, please read its reference documentation in the Applications tab."
 msgstr ""
 
 msgid "Caller ID / Name"
@@ -1554,9 +1427,7 @@ msgstr ""
 msgid "A valid default number (MSN) must be specified."
 msgstr ""
 
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
+msgid "The default telephone number (MSN) assigned to this line. Individual MSN mappings can be defined below."
 msgstr ""
 
 msgid "A valid \"fromuser\" must be specified."
@@ -1568,25 +1439,19 @@ msgstr ""
 msgid "Authorization User"
 msgstr ""
 
-msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
-"username entered above."
+msgid "Some providers require a seperate authorization username.<br>Defaults to username entered above."
 msgstr ""
 
 msgid "From User"
 msgstr ""
 
-msgid ""
-"Some providers require a seperate 'from' user.<br>Defaults to username "
-"entered above."
+msgid "Some providers require a seperate 'from' user.<br>Defaults to username entered above."
 msgstr ""
 
 msgid "From Domain"
 msgstr ""
 
-msgid ""
-"Some providers require a seperate 'from' domain. <br>Defaults to host "
-"entered above."
+msgid "Some providers require a seperate 'from' domain. <br>Defaults to host entered above."
 msgstr ""
 
 msgid "Services"
@@ -1595,11 +1460,7 @@ msgstr ""
 msgid "Conferencing"
 msgstr ""
 
-msgid ""
-"Conference rooms with optional pin authentication can be configured here. "
-"The system's performance is the only limiting factor on the number of "
-"concurrent members. These rooms can then be dialed via their defined "
-"extensions or used as a destination for incoming calls from Providers."
+msgid "Conference rooms with optional pin authentication can be configured here. The system's performance is the only limiting factor on the number of concurrent members. These rooms can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
 msgstr ""
 
 msgid "Room Number"
@@ -1635,9 +1496,7 @@ msgstr ""
 msgid "Conference pins must be numeric."
 msgstr ""
 
-msgid ""
-"The conference room's number, also the extension that this conference is "
-"reachable at."
+msgid "The conference room's number, also the extension that this conference is reachable at."
 msgstr ""
 
 msgid "Access PIN"
@@ -1649,9 +1508,7 @@ msgstr ""
 msgid "Voicemail"
 msgstr ""
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
+msgid "In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here."
 msgstr ""
 
 msgid "Host,E-mail Address"
@@ -1693,17 +1550,13 @@ msgstr ""
 msgid "E-Mail Language"
 msgstr ""
 
-msgid ""
-"E-mail notifications for new voicemail will be delivered in this language."
+msgid "E-mail notifications for new voicemail will be delivered in this language."
 msgstr ""
 
 msgid "<p>This status page includes the following information:\n"
 msgstr ""
 
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
+msgid "Note: make sure to remove any sensitive information (passwords, maybe also IP addresses) before posting information from this page in public places (like mailing lists)!"
 msgstr ""
 
 msgid "Passwords in config.xml have been automatically removed."
@@ -1735,7 +1588,7 @@ msgid "Member"
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "tijd"
 
 msgid "Do you really want to kick this member?"
 msgstr ""
@@ -1747,15 +1600,13 @@ msgid "Live"
 msgstr ""
 
 msgid "CPU Load"
-msgstr ""
+msgstr "CPU gebruik"
 
-msgid ""
-"if you can't see the graph, you may have to install the <a href=\"http://www."
-"adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+msgid "if you can't see the graph, you may have to install the <a href=\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 
 msgid "Network Traffic"
-msgstr ""
+msgstr "Netwerk Trafiek"
 
 msgid "Subnet Mask"
 msgstr ""
@@ -1770,7 +1621,7 @@ msgid "In/Out Errors"
 msgstr ""
 
 msgid "Collisions"
-msgstr ""
+msgstr "Botsingen"
 
 msgid "Last scan results"
 msgstr ""
@@ -1782,7 +1633,7 @@ msgid "Rate"
 msgstr ""
 
 msgid "Signal"
-msgstr ""
+msgstr "Signaal"
 
 msgid "Noise"
 msgstr ""
@@ -1802,10 +1653,7 @@ msgstr ""
 msgid "Capabilities"
 msgstr ""
 
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+msgid "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
 msgstr ""
 
 msgid "No stations are associated at this time."
@@ -1824,7 +1672,7 @@ msgid "Driver Type"
 msgstr ""
 
 msgid "Channels"
-msgstr ""
+msgstr "Kanalen"
 
 msgid "Serial"
 msgstr ""
@@ -1835,11 +1683,7 @@ msgstr ""
 msgid "General Setup"
 msgstr ""
 
-msgid ""
-"This is the first page which needs configuring upon installing a new system. "
-"Most importantly, the default password should be changed. Then, ensure your "
-"host/domain name, time zone and country's indication tones are set correctly "
-"before continuing."
+msgid "This is the first page which needs configuring upon installing a new system. Most importantly, the default password should be changed. Then, ensure your host/domain name, time zone and country's indication tones are set correctly before continuing."
 msgstr ""
 
 msgid "Hostname,Domain,Username"
@@ -1860,12 +1704,10 @@ msgstr ""
 msgid "The passwords do not match."
 msgstr ""
 
-msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr ""
 
-msgid ""
-"A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
 msgid "name of the pbx host, without domain part"
@@ -1875,21 +1717,18 @@ msgid "e.g. <em>pbx"
 msgstr ""
 
 msgid "Domain"
-msgstr ""
+msgstr "Domein"
 
 msgid "e.g. <em>mycorp.com"
 msgstr ""
 
-msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+msgid "If you want to change the username for accessing the webGUI, enter it here."
 msgstr ""
 
 msgid "confirmation"
-msgstr ""
+msgstr "bevestiging"
 
-msgid ""
-"If you want to change the password for accessing the webGUI, enter it here "
-"twice."
+msgid "If you want to change the password for accessing the webGUI, enter it here twice."
 msgstr ""
 
 msgid "webGUI protocol"
@@ -1904,9 +1743,7 @@ msgstr ""
 msgid "webGUI port"
 msgstr ""
 
-msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
-"default (80 for HTTP, 443 for HTTPS)."
+msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 
 msgid "Indications Tonezone"
@@ -1916,10 +1753,10 @@ msgid "Select which country's indication tones are to be used."
 msgstr ""
 
 msgid "Time zone"
-msgstr ""
+msgstr "Tijd zone"
 
 msgid "Select the location closest to you"
-msgstr ""
+msgstr "Selecteer de bestemming dichts bij jouw"
 
 msgid "Time update interval"
 msgstr ""
@@ -1928,25 +1765,22 @@ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 msgstr ""
 
 msgid "NTP time server"
-msgstr ""
+msgstr "NTP tijd server"
 
-msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr ""
 
 msgid "Backup/Restore"
-msgstr ""
+msgstr "Bewaar/Herstel"
 
-msgid ""
-"The entire system configuration can be backed up and restored via this page."
-msgstr ""
+msgid "The entire system configuration can be backed up and restored via this page."
+msgstr "De gehele systeem configuratie can via deze pagina worden opgeslagen en hersteld"
 
 msgid "The configuration has been restored. The PBX is now rebooting."
-msgstr ""
+msgstr "De configuratie is hersteld. De PBX is nu aan het heropstarten."
 
 msgid "The configuration could not be restored."
-msgstr ""
+msgstr "De configuratie kan niet worden hersteld."
 
 #, php-format
 msgid "XML error: %s"
@@ -1956,20 +1790,18 @@ msgid "The configuration could not be restored (file upload error)."
 msgstr ""
 
 msgid "Backup configuration"
-msgstr ""
+msgstr "Configuratie bewaren"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr ""
 
 msgid "Download configuration"
-msgstr ""
+msgstr "Configuratie downloaden"
 
 msgid "Restore configuration"
-msgstr ""
+msgstr "Configuratie herstellen"
 
-msgid ""
-"Open an AskoziaPBX configuration XML file and click the button below to "
-"restore the configuration."
+msgid "Open an AskoziaPBX configuration XML file and click the button below to restore the configuration."
 msgstr ""
 
 msgid "The PBX will reboot after restoring the configuration."
@@ -1978,36 +1810,25 @@ msgstr ""
 msgid "Factory Defaults"
 msgstr ""
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults and is now rebooting. This may take a minute."
 msgstr ""
 
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to 'askozia'."
+msgid "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to 'askozia'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "No"
-msgstr ""
+msgstr "Neen"
 
 msgid "Firmware"
-msgstr ""
+msgstr "Firmware"
 
-msgid ""
-"AskoziaPBX's firmware can be kept up to date here. The system's "
-"configuration will be maintained through the upgrade. The system will reboot "
-"automatically after installing the new firmware. Firmware images of formal "
-"releases are digitally signed before distribution and checked upon "
-"installation."
+msgid "AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation."
 msgstr ""
 
 #, php-format
@@ -2036,12 +1857,7 @@ msgid "Firmware uploading is not supported on this platform."
 msgstr ""
 
 #, php-format
-msgid ""
-"<strong>%s</strong><br>This means that the image you uploaded is not an "
-"official/supported image and may lead to unexpected behavior or security "
-"compromises. Only install images that come from sources that you trust, and "
-"make sure that the image has not been tampered with.<br><br> Do you want to "
-"install this image anyway (at your own risk)?"
+msgid "<strong>%s</strong><br>This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br> Do you want to install this image anyway (at your own risk)?"
 msgstr ""
 
 msgid "Click &quot;Enable firmware upload&quot; below."
@@ -2055,10 +1871,10 @@ msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
 
 msgid "Enable firmware upload"
-msgstr ""
+msgstr "Firmware upload activeren"
 
 msgid "Disable firmware upload"
-msgstr ""
+msgstr "Firmware upload deactiveren"
 
 msgid "Firmware image file:"
 msgstr ""
@@ -2067,7 +1883,7 @@ msgid "Upgrade firmware"
 msgstr ""
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr ""
+msgstr "Je moet het systeem herstarten alvorens de nieuwe firmware kan worden geüpgrade. "
 
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr ""
@@ -2075,11 +1891,7 @@ msgstr ""
 msgid "Packages"
 msgstr ""
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
+msgid "Packages to expand system functionality can be installed and updated here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly available packages. All packages are digitally signed before distribution and checked upon installation."
 msgstr ""
 
 msgid "The digital signature on this package is invalid."
@@ -2103,25 +1915,16 @@ msgstr ""
 msgid "Existing package not found, update failed."
 msgstr ""
 
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
+msgid "The uploaded package is not newer than the existing package, update failed."
 msgstr ""
 
 msgid "There are updates available for packages on your system."
 msgstr ""
 
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
+msgid "Click the <img src=\"update.png\" border=\"0\"> icon below to select and install the updated packages."
 msgstr ""
 
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
+msgid "The following packages issued warnings while verifying their digital signature. This means that they are not official/supported packages and may lead to unexpected behavior or security compromises. Only install packages that come from sources that you trust, and make sure that they have not been tampered with.<br><br>Check the packages you wish to install despite this warning."
 msgstr ""
 
 msgid "Continue"
@@ -2139,9 +1942,7 @@ msgstr ""
 msgid "backup package data"
 msgstr ""
 
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
+msgid "Do you really want to permanently delete this package\\'s configuration and data?"
 msgstr ""
 
 msgid "delete package configuration and data"
@@ -2159,17 +1960,13 @@ msgstr ""
 msgid "Update Installed Package"
 msgstr ""
 
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
+msgid "Select which packages you would like to update, existing package data will be preserved."
 msgstr ""
 
 msgid "Update"
 msgstr ""
 
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
+msgid "Select a .pbxpkg file from your computer to update from, existing package data will be preserved."
 msgstr ""
 
 msgid "Manual Update"
@@ -2182,13 +1979,13 @@ msgid "Select which packages you would like to install."
 msgstr ""
 
 msgid "Install"
-msgstr ""
+msgstr "Installeren"
 
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr ""
 
 msgid "Manual Install"
-msgstr ""
+msgstr "Manueel installeren"
 
 msgid "Restore from a Backup Archive"
 msgstr ""
@@ -2200,10 +1997,10 @@ msgid "Package data and logic will be replaced by the backup."
 msgstr ""
 
 msgid "Restore"
-msgstr ""
+msgstr "Terugzetten"
 
 msgid "Reboot"
-msgstr ""
+msgstr "Herstarten"
 
 msgid "The system is rebooting now. This may take a minute."
 msgstr ""
@@ -2224,13 +2021,13 @@ msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
 msgid "generate password"
-msgstr ""
+msgstr "genereer wachtwoord"
 
 msgid "use this password"
-msgstr ""
+msgstr "gebruik dit wachtwoord"
 
 msgid "webGUI language"
-msgstr ""
+msgstr "webGUI taal"
 
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
@@ -2250,10 +2047,7 @@ msgstr ""
 msgid "Non-Members"
 msgstr ""
 
-msgid ""
-"All group members will be called at the same time. <strong>The voicemail "
-"account associated with the first member will be used if the call is not "
-"answered."
+msgid "All group members will be called at the same time. <strong>The voicemail account associated with the first member will be used if the call is not answered."
 msgstr ""
 
 msgid "Incoming Extension(s)"
@@ -2263,17 +2057,12 @@ msgid "add incoming extension mapping"
 msgstr ""
 
 msgid ""
-"Enter a pattern or a phone number and select a destination extension. To "
-"ring multiple phones, simply define them with the same pattern. If a phone "
-"number is entered, it will used as the \"external\" number on unanswered "
-"calls. If nothing is entered, all calls will be directed to the destination "
-"extension.<br>\n"
+"Enter a pattern or a phone number and select a destination extension. To ring multiple phones, simply define them with the same pattern. If a phone number is entered, it will used as the \"external\" number on unanswered calls. If nothing is entered, all calls will be directed to the destination extension.<br>\n"
 " <ul>\n"
 " \t<li><strong>X</strong> - matches digits 0-9</li>\n"
 " \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
 " \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n"
 " \t<li><strong>.</strong> - matches one or more characters</li>\n"
 " \t<li><strong>!</strong> - matches zero or more characters</li>\n"
 " </ul>\n"
@@ -2291,9 +2080,7 @@ msgstr ""
 msgid "Qualify"
 msgstr ""
 
-msgid ""
-"Packets will be sent to this account every <i>n</i> seconds to check its "
-"status.<br>Defaults to '2'. Set to '0' to disable."
+msgid "Packets will be sent to this account every <i>n</i> seconds to check its status.<br>Defaults to '2'. Set to '0' to disable."
 msgstr ""
 
 msgid "always use NAT mode."
@@ -2311,10 +2098,7 @@ msgstr ""
 msgid "NAT"
 msgstr ""
 
-msgid ""
-"Is there a NATing device between AskoziaPBX and this account? Setting this "
-"to 'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between AskoziaPBX and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones."
 msgstr ""
 
 msgid "indefinitely"
@@ -2323,9 +2107,7 @@ msgstr ""
 msgid "Ring Length"
 msgstr ""
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+msgid "The number of seconds this phone will ring before being reported as unanswered."
 msgstr ""
 
 msgid "Line Gain"
@@ -2337,10 +2119,7 @@ msgstr ""
 msgid "transmit"
 msgstr ""
 
-msgid ""
-"Some analog connections may need adjustment to achieve an acceptable audio "
-"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
-"the line."
+msgid "Some analog connections may need adjustment to achieve an acceptable audio level. Adjust the receive and transmit gain in decibels to amplify or quiet the line."
 msgstr ""
 
 msgid "Incoming Caller ID Overrides"
@@ -2389,32 +2168,23 @@ msgid "Checked phones will have access to this provider."
 msgstr ""
 
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!\" to use this Provider for all outgoing calls. To only use this Provider for calls starting with the number \"9\" enter \"9|.\". If no patterns are entered, only incoming calls will be accepted.<br>\n"
 " <ul>\n"
-" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
-"and passes \"1555\" to the provider)</li>\n"
-" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
-"\" but only passes \"555\" to the provider)</li>\n"
+" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n"
+" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n"
 " \t<li><strong>X</strong> - matches digits 0-9</li>\n"
 " \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
 " \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters (not allowed "
-"before | or +)</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
-"before | or +)</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n"
 " </ul>\n"
 msgstr ""
 
 msgid "Language"
 msgstr ""
 
-msgid ""
-"Audio prompts will be played back in the selected language for this account."
+msgid "Audio prompts will be played back in the selected language for this account."
 msgstr ""
 
 msgid "send missed call notifications"
@@ -2423,9 +2193,7 @@ msgstr ""
 msgid "don't send to voicemail when busy"
 msgstr ""
 
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
+msgid "An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address."
 msgstr ""
 
 msgid "Voicemail Services"
@@ -2444,9 +2212,7 @@ msgid "Public name. Enter a string to map a friendly name to this extension."
 msgstr ""
 
 #, php-format
-msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+msgid "Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@%s)"
 msgstr ""
 
 msgid "Call Limit"
@@ -2461,25 +2227,17 @@ msgstr ""
 msgid "Busy Limit"
 msgstr ""
 
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
+msgid "Phone status will be switched to 'busy' with 'n' concurrent calls (default: 1)"
 msgstr ""
 
 msgid "Logic"
 msgstr ""
 
 msgid ""
-"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
-"()\n"
+"Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n"
 " 2,Echo()\n"
 " 3,Hangup()\n"
-" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the "
-"Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an AskoziaPBX install may be rendered useless by "
-"faulty application logic. A reference of applications, functions and phones "
-"is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
-"target=\"_blank\">Element Library</a></strong>.</p>"
+" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
 
 msgid "Advanced Settings"
@@ -2491,13 +2249,7 @@ msgstr ""
 msgid "Manual Attributes"
 msgstr ""
 
-msgid ""
-"Manual key-value pairs can be entered in addition to the generated "
-"configuration (i.e. <em>configoption=value</em>). These settings will be "
-"appended to this item's Asterisk configuration file or context. Unless you "
-"have a very specific need to do this, nothing should be entered in this "
-"field. Improperly formed values can break system functionality and/or open "
-"security holes."
+msgid "Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes."
 msgstr ""
 
 msgid "Text to be displayed for Caller ID."
@@ -2509,10 +2261,7 @@ msgstr ""
 msgid "Public Number"
 msgstr ""
 
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
+msgid "This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back."
 msgstr ""
 
 msgid "auto"
@@ -2533,9 +2282,7 @@ msgstr ""
 msgid "Authentication Method"
 msgstr ""
 
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
+msgid "Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server."
 msgstr ""
 
 msgid "of"
@@ -2593,422 +2340,417 @@ msgid "check for package updates"
 msgstr ""
 
 msgid "restore a backup archive"
-msgstr ""
+msgstr "herstel een backup archief"
 
 msgid "download a backup archive"
-msgstr ""
+msgstr "download een backup archief"
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
-msgstr ""
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. Alle rechten voorbehouden."
 
 msgid "view license"
-msgstr ""
+msgstr "Bekijke de licentie"
 
 msgid "LAN net"
-msgstr ""
+msgstr "LAN net"
 
 msgid "autoselect"
-msgstr ""
+msgstr "autoselect"
 
 msgid "100BASE-TX full-duplex"
-msgstr ""
+msgstr "100BASE-TX full-duplex"
 
 msgid "100BASE-TX half-duplex"
-msgstr ""
+msgstr "100BASE-TX half-duplex"
 
 msgid "10BASE-T full-duplex"
-msgstr ""
+msgstr "10BASE-T full-duplex"
 
 msgid "10BASE-T half-duplex"
-msgstr ""
+msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
-msgstr ""
+msgstr "1000BASE-TX full-duplex"
 
 msgid "G.711 u-law"
-msgstr ""
+msgstr "G.711 u-law"
 
 msgid "G.711 A-law"
-msgstr ""
+msgstr "G.711 A-law"
 
 msgid "GSM"
-msgstr ""
+msgstr "GSM"
 
 msgid "G.729A"
-msgstr ""
+msgstr "G.729A"
 
 msgid "iLBC"
-msgstr ""
+msgstr "iLBC"
 
 msgid "SpeeX"
-msgstr ""
+msgstr "SpeeX"
 
 msgid "G.723.1"
-msgstr ""
+msgstr "G.723.1"
 
 msgid "G.726 AAL2"
-msgstr ""
+msgstr "G.726 AAL2"
 
 msgid "ADPCM"
-msgstr ""
+msgstr "ADPCM"
 
 msgid "16 bit Signed Linear PCM"
-msgstr ""
+msgstr "16 bit getekende  Linaire PCM"
 
 msgid "LPC10"
-msgstr ""
+msgstr "LPC10"
 
 msgid "G.726 RFC3551"
-msgstr ""
+msgstr "G.726 RFC3551"
 
 msgid "G722"
-msgstr ""
+msgstr "G722"
 
 msgid "H.261"
-msgstr ""
+msgstr "H.261"
 
 msgid "H.263"
-msgstr ""
+msgstr "H.263"
 
 msgid "H.263+"
-msgstr ""
+msgstr "H.263+"
 
 msgid "H.264"
-msgstr ""
+msgstr "H.264"
 
 msgid "Public IP address"
-msgstr ""
+msgstr "publiek IP adres"
 
 msgid "NAT + static public IP"
-msgstr ""
+msgstr "NAT + statisch publiek IP"
 
 msgid "NAT + dynamic public IP"
-msgstr ""
+msgstr "NAT + dynamicch publiek IP"
 
 msgid "Kewl Start"
-msgstr ""
+msgstr "Kewl Start"
 
 msgid "Ground Start"
-msgstr ""
+msgstr "Ground Start"
 
 msgid "Loop Start"
-msgstr ""
+msgstr "Loop Start"
 
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
+msgid "Echos audio and video back to the caller as soon as it is received. Used to test connection delay."
+msgstr "Echoed het geluid en de video terug naar de beller van zodra het ontvangen is. Gebruikt om verbindings vertragingen te testen."
 
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
+msgstr "Genereerd een constante 1000Hz toon. Wordt gebruikt om de qualiteit te testen."
 
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
+msgid "Wake-Up call manager. Call to set and cancel wake-up calls on the current extension."
+msgstr "Wake-Up beheerder. Bel hiernaar om een uur in te stellen of te verwijderen vanop de huidige posten."
 
 msgid "English (US)"
-msgstr ""
+msgstr "Engels (VS)"
 
 msgid "English (UK)"
-msgstr ""
+msgstr "Engels (VK)"
 
 msgid "Danish"
-msgstr ""
+msgstr "Deens"
 
 msgid "Dutch"
-msgstr ""
+msgstr "Nederlands"
 
 msgid "French (France)"
-msgstr ""
+msgstr "Frans (Frankrijk)"
 
 msgid "French (Canada)"
-msgstr ""
+msgstr "Frans (Canada)"
 
 msgid "German"
-msgstr ""
+msgstr "Duits"
 
 msgid "Italian"
-msgstr ""
+msgstr "Italiaans"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Japanees"
 
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 msgid "Swedish"
-msgstr ""
+msgstr "Zweeds"
 
 msgid "English"
-msgstr ""
+msgstr "Engels"
 
 msgid "English (formal)"
-msgstr ""
+msgstr "Engels (formeel)"
 
 msgid "Danish (formal)"
-msgstr ""
+msgstr "Deens (formeel)"
 
 msgid "Dutch (formal)"
-msgstr ""
+msgstr "Nederlands (formeel)"
 
 msgid "Finnish"
-msgstr ""
+msgstr "Fins"
 
 msgid "Finnish (formal)"
-msgstr ""
+msgstr "Fins (formeel)"
 
 msgid "French"
-msgstr ""
+msgstr "Frans"
 
 msgid "French (formal)"
-msgstr ""
+msgstr "Frans (formeel)"
 
 msgid "German (formal)"
-msgstr ""
+msgstr "Duits (formeel)"
 
 msgid "Italian (formal)"
-msgstr ""
+msgstr "Italiaans (formeel)"
 
 msgid "Polish"
-msgstr ""
+msgstr "Pools"
 
 msgid "Polish (formal)"
-msgstr ""
+msgstr "Pools (formeel)"
 
 msgid "Portuguese, Brazil"
-msgstr ""
+msgstr "Portugees , (Brazilië)"
 
 msgid "Portuguese, Brazil (formal)"
-msgstr ""
+msgstr "Portugees, (Brazilië) (formeel)"
 
 msgid "Russian (formal)"
-msgstr ""
+msgstr "Russisch (formeel)"
 
 msgid "Spanish (formal)"
-msgstr ""
+msgstr "Spaans (formeel)"
 
 msgid "point-to-multipoint, terminal equipment"
-msgstr ""
+msgstr "Punt-naar-multipunt, terminal equipment"
 
 msgid "multipoint-to-point, network termination"
-msgstr ""
+msgstr "multipunt-naar-punt, netwerk termination"
 
 msgid "point-to-point, terminal equipment"
-msgstr ""
+msgstr "punt-naar-punt, terminal equipment"
 
 msgid "point-to-point, network termination"
-msgstr ""
+msgstr "punt-naar-punt, network termination"
 
 msgid "United States / North America"
-msgstr ""
+msgstr "Verenigde Staten / Noord Amerika"
 
 msgid "Australia"
-msgstr ""
+msgstr "Australië"
 
 msgid "Austria"
-msgstr ""
+msgstr "Oostenrijk"
 
 msgid "Belgium"
-msgstr ""
+msgstr "België"
 
 msgid "Chile"
-msgstr ""
+msgstr "Chilië"
 
 msgid "China"
-msgstr ""
+msgstr "China"
 
 msgid "Finland"
-msgstr ""
+msgstr "Finland"
 
 msgid "France"
-msgstr ""
+msgstr "Frankrijk"
 
 msgid "Greece"
-msgstr ""
+msgstr "Griekenland"
 
 msgid "Italy"
-msgstr ""
+msgstr "Italië"
 
 msgid "Japan"
-msgstr ""
+msgstr "Japan"
 
 msgid "Malaysia"
-msgstr ""
+msgstr "Maleisië"
 
 msgid "Netherlands"
-msgstr ""
+msgstr "Nederland"
 
 msgid "New Zealand"
-msgstr ""
+msgstr "Nieuw Zeeland"
 
 msgid "Norway"
-msgstr ""
+msgstr "Noorwegen"
 
 msgid "Russia"
-msgstr ""
+msgstr "Rusland"
 
 msgid "Spain"
-msgstr ""
+msgstr "Spanje"
 
 msgid "Sweden"
-msgstr ""
+msgstr "Zweden"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 msgid "United Kingdom"
-msgstr ""
+msgstr "Verenigd Koningrijk"
 
 msgid "United States Circa 1950/ North America"
-msgstr ""
+msgstr "Verenigde Staten Circa 1950/ Noord Amerika"
 
 msgid "Brazil"
-msgstr ""
+msgstr "Brazilië"
 
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgarije"
 
 msgid "Czech Republic"
-msgstr ""
+msgstr "Tsjechië"
 
 msgid "Denmark"
-msgstr ""
+msgstr "Denemarken"
 
 msgid "Estonia"
-msgstr ""
+msgstr "Estland"
 
 msgid "Germany"
-msgstr ""
+msgstr "Duitsland"
 
 msgid "Hungary"
-msgstr ""
+msgstr "Hongarijë"
 
 msgid "India"
-msgstr ""
+msgstr "Indië"
 
 msgid "Israel"
-msgstr ""
+msgstr "Israël"
 
 msgid "Lithuania"
-msgstr ""
+msgstr "Lithouwen"
 
 msgid "Mexico"
-msgstr ""
+msgstr "Mexico"
 
 msgid "Philippines"
-msgstr ""
+msgstr "Philipijnen"
 
 msgid "Poland"
-msgstr ""
+msgstr "Polen"
 
 msgid "Portugal"
-msgstr ""
+msgstr "Portugal"
 
 msgid "Russia / ex Soviet Union"
-msgstr ""
+msgstr "Rusland / Ex Sovjetunië"
 
 msgid "Singapore"
-msgstr ""
+msgstr "Singapoor"
 
 msgid "South Africa"
-msgstr ""
+msgstr "Zuid Afrika"
 
 msgid "Switzerland"
-msgstr ""
+msgstr "Zwitserland"
 
 msgid "Thailand"
-msgstr ""
+msgstr "Thailand"
 
 msgid "Venezuela / South America"
-msgstr ""
+msgstr "Venezuela / Zuid Amerika"
 
 msgid "agent"
-msgstr ""
+msgstr "agent"
 
 msgid "call"
-msgstr ""
+msgstr "bel"
 
 msgid "command"
-msgstr ""
+msgstr "commando"
 
 msgid "config"
-msgstr ""
+msgstr "configuratie"
 
 msgid "log"
-msgstr ""
+msgstr "log"
 
 msgid "user"
-msgstr ""
+msgstr "gebruiker"
 
 msgid "verbose"
-msgstr ""
+msgstr "verbose"
 
 msgid "system"
-msgstr ""
+msgstr "systeem"
 
 #, php-format
 msgid "The field '%s' contains invalid characters."
-msgstr ""
+msgstr "Het veld '%s' bevat ongeldige karakters."
 
 #, php-format
 msgid "The field '%s' is required."
-msgstr ""
+msgstr "het veld '%s' is verplicht."
 
 msgid "The following input errors were detected:"
-msgstr ""
+msgstr "De volgende input fouten werden herkend:"
 
-msgid ""
-"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
-"a> your pbx for the changes to take effect."
-msgstr ""
+msgid "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</a> your pbx for the changes to take effect."
+msgstr "De wijzigingen zijn opgeslagen. Je moet de centrale<a href=\"/system_reboot.php\">herstarten</a> zodat de wijzigingen kunnen worden doorgevoerd."
 
 msgid "The changes have been applied successfully."
-msgstr ""
+msgstr "De wijzigingen zijn succesvol aangepast"
 
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr ""
+msgstr "FOUT: de wijzigingen kunnen niet worden doorgevoerd (fout code %s)."
 
 msgid "reset filter and reload firewall logs page"
-msgstr ""
+msgstr "reset filter en herlaad de firewall log pagina"
 
 msgid "Firewall"
-msgstr ""
+msgstr "Firewall"
 
 msgid "reload page"
-msgstr ""
+msgstr "Pagina herladen"
 
 msgid "Package activated successfully."
-msgstr ""
+msgstr "Pakket succesvol geactiveerd."
 
 msgid "Package deactivated successfully."
-msgstr ""
+msgstr "Pakket succesvol gedeactiveerd."
 
 msgid "Package deleted successfully."
-msgstr ""
+msgstr "Pakket succesvol verwijderd."
 
 msgid "Package restored successfully."
-msgstr ""
+msgstr "Pakket succesvol hersteld."
 
 msgid "Package installed successfully."
-msgstr ""
+msgstr "Pakket succesvol gëinstalleerd"
 
 #, php-format
 msgid "%.2f GB"
-msgstr ""
+msgstr "%.2f GB"
 
 #, php-format
 msgid "%.2f MB"
-msgstr ""
+msgstr "%.2f MB"
 
 #, php-format
 msgid "%.0f KB"
-msgstr ""
+msgstr "%.0f KB"
 
 #, php-format
 msgid "%d bytes"
-msgstr ""
+msgstr "%d bytes"
+

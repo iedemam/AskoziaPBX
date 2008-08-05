@@ -262,7 +262,7 @@ function display_gui_language_selector($current_language) {
 		"fr_FR" => "Français (0%)",
 		"it_IT" => "Italiano (70%)",
 		"pl_PL" => "Język polski (0%)",
-		"nl_NL" => "Nederlands (0%)",
+		"nl_NL" => "Nederlands (50%)",
 		"pt_BR" => "Português (0%)",
 		"fi_FI" => "Suomi",
 		"se_SE" => "Svenska (0%)",
