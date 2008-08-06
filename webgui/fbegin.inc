@@ -314,7 +314,7 @@ if (!$pgtitle_omit) {
 	?></p><?
 
 	if ($pghelp) {
-		?><div class="pghelp" name="pghelp" id="pghelp" style="display:none;"><?=$pghelp;?><?
+		?><div class="pghelp" name="pghelp" id="pghelp" style="display:none;"><?=gettext($pghelp);?><?
 
 		if ($pglegend) {
 			$legendtext['add'] = gettext("add a new item");
@@ -327,7 +327,7 @@ if (!$pgtitle_omit) {
 			$legendtext['backup'] = gettext("download a backup archive");
 			echo "<br>\n";
 			foreach ($pglegend as $legend) {
-				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=$legendtext[$legend];?><?
+				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=gettext($legendtext[$legend]);?><?
 			}
 		}
 
