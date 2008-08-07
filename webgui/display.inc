@@ -61,7 +61,7 @@ function display_calculate_pages_sqlite($filter=null, $logpath, $nentries) {
 	return $pages;
 }
 
-function display_get_query($start, $stop, $nentries, $current_page, $filter=null) {		
+function display_get_query($start, $stop, $nentries, $current_page, $filter=null, $sort=null) {		
 	
 	if($current_page == 0 || $current_page == 1) {
 		$start = 0;
@@ -73,10 +73,20 @@ function display_get_query($start, $stop, $nentries, $current_page, $filter=null
 
 	
 	if($filter) {
-		$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' LIMIT $start,$stop";
+		if($sort) {
+			$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' ORDER BY id DESC LIMIT $start,$stop";
+		}
+		else {
+			$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' ORDER BY id ASC LIMIT $start,$stop";
+		}
 	}
 	else {
-		$query = "SELECT * FROM cdr LIMIT $start,$stop";
+		if($sort) {
+			$query = "SELECT * FROM cdr ORDER BY id DESC LIMIT $start,$stop";
+		}
+		else {
+			$query = "SELECT * FROM cdr ORDER BY id ASC LIMIT $start,$stop";
+		}
 	}
 
 	return $query;
@@ -101,19 +111,24 @@ function display_calculate_pages($filter=null, $logpath, $source, $nentries) {
 	return $pages;
 }
 
-function display_calculate_current_page($pages) {
+function display_calculate_current_page($pages, $sort=null) {
 	
 	if($_GET['page']) {
 		$current_page = $_GET['page'];
 	}
-	else { 
-		$current_page = $pages;
+	else {
+		if($sort) {
+			$current_page = 1;
+		}
+		else {
+			$current_page = $pages;
+		}
 	}
 
 	return $current_page;
 }
 
-function display_get_command($current_page, $nentries, $source, $filter=null, $logpath) {
+function display_get_command($current_page, $nentries, $source, $filter=null, $logpath, $sort=null) {
 
 	if($current_page == 0 || $current_page == 1) {
 		$start = 1;
@@ -125,16 +140,40 @@ function display_get_command($current_page, $nentries, $source, $filter=null, $l
 	$stop = (($start+$nentries)-1);
 
 	if($source == "internal") {
-		if($filter)
-			$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/sed '$start,$stop!d'";
-		else 
-			$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
+		if($filter) {
+			if($sort) {
+				$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+			}
+			else {
+				$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/sed '$start,$stop!d'";
+			}
+		}
+		else {
+			if($sort) {
+				$command = "/usr/sbin/clog $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+			}
+			else {
+				$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
+			}
+		}
 	}
 	else {
-		if($filter)
-			$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/sed '$start,$stop!d'";
-		else
-			$command = "/usr/bin/sed '$start,$stop!d' $logpath";
+		if($filter) {
+			if($sort) {
+				$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+			}
+			else {
+				$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/sed '$start,$stop!d'";
+			}
+		}
+		else {
+			if($sort) {
+				$command = "/usr/bin/tail -r $logpath | /usr/bin/sed '$start,$stop!d'";
+			}
+			else {
+				$command = "/usr/bin/sed '$start,$stop!d' $logpath";
+			}
+		}
 	}
 	
 	return $command;

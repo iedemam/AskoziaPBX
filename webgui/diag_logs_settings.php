@@ -32,6 +32,7 @@
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
 
+$pconfig['reverse'] = isset($config['syslog']['reverse']);
 $pconfig['nentries'] = $config['syslog']['nentries'];
 $pconfig['remoteserver'] = $config['syslog']['remoteserver'];
 $pconfig['system'] = isset($config['syslog']['system']);
@@ -56,6 +57,7 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
+		$config['syslog']['reverse'] = $_POST['reverse'] ? true : false;
 		$config['syslog']['nentries'] = (int)$_POST['nentries'];
 		$config['syslog']['remoteserver'] = $_POST['remoteserver'];
 		$config['syslog']['system'] = $_POST['system'] ? true : false;
@@ -115,6 +117,12 @@ if ($savemsg) print_info_box($savemsg);
 	<tr> 
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr> 
+					<td width="22%" valign="top" class="vtable">&nbsp;</td>
+					<td width="78%" class="vtable"> 
+					<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
+					<strong><?=gettext("Show log entries in reverse order (newest entries on top)");?></strong></td>
+				</tr>
 				<tr> 
 					<td width="22%" valign="top" class="vtable">&nbsp;</td>
 					<td width="78%" class="vtable">

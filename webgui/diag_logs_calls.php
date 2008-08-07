@@ -47,6 +47,10 @@ if (!$nentries) {
 
 //-------------pagination/filter logic start----------------------
 
+if(isset($config['syslog']['reverse'])) {
+	$sort = true;
+}
+
 if (isset($logging_pkg['active'])) {
 	$source = "package";
 	$logpath = $logging_pkg['datapath'] . "/asterisk/cdr.db";
@@ -61,8 +65,8 @@ if (isset($logging_pkg['active'])) {
 		$message = gettext("No matches found.");
 	}
 
-	$current_page = display_calculate_current_page($pages);
-	$query = display_get_query($start, $stop, $nentries, $current_page, $filter);
+	$current_page = display_calculate_current_page($pages, $sort);
+	$query = display_get_query($start, $stop, $nentries, $current_page, $filter, $sort);
 }
 else {
 	$source = "internal";
@@ -78,8 +82,8 @@ else {
 		$message = gettext("No matches found.");
 	}
 
-	$current_page = display_calculate_current_page($pages);
-	$command = display_get_command($current_page, $nentries, $source, $filter, $logpath);
+	$current_page = display_calculate_current_page($pages, $sort);
+	$command = display_get_command($current_page, $nentries, $source, $filter, $logpath, $sort);
 }
 
 $print_pageselector = display_page_selector($current_page, $pages, 12, $filter);

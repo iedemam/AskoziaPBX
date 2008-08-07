@@ -56,17 +56,22 @@ else {
 
 //---------------pagination/filter logic start----------------------------
 
+if(isset($config['syslog']['reverse'])) {
+	$sort = true;
+}
+
 if($_GET['filter']) {
 	$filter = $_GET['filter'];
 }
+
 $pages = display_calculate_pages($filter, $logpath, $source, $nentries);
 
 if(!$pages) {
 	$message = gettext("No matches found.");
 }
 
-$current_page = display_calculate_current_page($pages);
-$command = display_get_command($current_page, $nentries, $source, $filter, $logpath);
+$current_page = display_calculate_current_page($pages, $sort);
+$command = display_get_command($current_page, $nentries, $source, $filter, $logpath, $sort);
 $print_pageselector = display_page_selector($current_page, $pages, 12, $filter);
 
 //---------------pagination/filter logic end----------------------------
