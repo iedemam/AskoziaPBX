@@ -263,7 +263,7 @@ function verify_manual_attributes($kv_lines) {
  */
 function verify_is_dialstring($dialstring) {
 
-	$regex = "/^[a-zA-Z0-9\-\.]+$/";
+	$regex = "/^[a-zA-Z0-9\-\.\+\@]+$/";
 
 	if (!preg_match($regex, $dialstring)) {
 		return "An invalid dialstring was entered!";

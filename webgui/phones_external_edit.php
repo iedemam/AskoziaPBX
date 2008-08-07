@@ -164,7 +164,10 @@ if ($_POST) {
 						<option value="<?=$provider['uniqid'];?>" <?php 
 						if ($provider['uniqid'] == $pconfig['dialprovider']) 
 							echo "selected"; ?>><?=htmlspecialchars($provider['name']); ?></option>
-					<? endforeach; ?>
+						<? endforeach; ?>
+						<option value="sipuri" <? if ($pconfig['dialprovider'] == "sipuri") echo "selected"; ?>>SIP URI</option>
+						<option value="iaxuri" <? if ($pconfig['dialprovider'] == "iaxuri") echo "selected"; ?>>IAX URI</option>
+					</select>
 					<br><span class="vexpl"><?=gettext("Outgoing provider to be used to reach this telephone.");?></span>
 				</td>
 			</tr>

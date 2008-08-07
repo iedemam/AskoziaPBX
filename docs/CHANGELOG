@@ -1,3 +1,9 @@
+2008.xx.xx - pb14.1
+ - added: SIP & IAX2 URIs are now usable as dialstrings for external phone accounts
+ - added: log reverse sort order option reinstated
+ - localization: Simplified and Traditional Chinese
+ - localization: Dutch
+
 2008.07.31 - pb14
  - new platform: Live + Install CD
  - added: system storage media larger than 96MB will automatically be partitioned with a permanent storage partition

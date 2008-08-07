@@ -470,6 +470,14 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		return "ZAP/" . $phone['interface'];
 	
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
+
+		if ($phone['dialprovider'] == "sipuri") {
+			return "SIP/" . $phone['dialstring'];
+
+		} else if ($phone['dialprovider'] == "iaxuri") {
+			return "IAX2/" . $phone['dialstring'];
+		}
+
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		if ($technology == "ZAP") {
 			$prov = analog_get_provider($phone['dialprovider']);
@@ -710,8 +718,17 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
  */
 function extensions_generate_external_phone_extension($p, $from_public=false, $readbacknum=false, $extension=false) {
 	global $defaults;
-	
-	$tech = pbx_uniqid_to_technology($p['dialprovider']);
+
+	if ($p['dialprovider'] == "sipuri") {
+		$tech = "SIP";
+		$directdial = true;
+	} else if ($p['dialprovider'] == "iaxuri") {
+		$tech = "IAX2";
+		$directdial = true;
+	} else {
+		$tech = pbx_uniqid_to_technology($p['dialprovider']);
+	}
+
 	$transfer_flags = (!$from_public) ? "tT" : "t";
 	$phone_exten = $p['extension'];
 	$exten = ($extension !== false) ? $extension : $phone_exten;
@@ -739,6 +756,10 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 		$prov = isdn_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
 				"Macro(main|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+
+	} else if (($tech == "SIP" || $tech == "IAX2") && $directdial) {
+		$conf .= "exten => $exten,n,".
+			"Macro(main|$tech/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,".

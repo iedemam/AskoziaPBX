@@ -433,9 +433,15 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($p['dialstring'] . " via " . pbx_uniqid_to_name($p['dialprovider']));?></td>
-		<td valign="middle" nowrap class="list"><a href="phones_external_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+		<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td><?
+
+		if ($p['dialprovider'] == "sipuri" || $p['dialprovider'] == "iaxuri") {
+			?><td class="listr"><?=htmlspecialchars($p['dialstring']);?></td><?
+		} else {
+			?><td class="listr"><?=htmlspecialchars($p['dialstring'] . " via " . pbx_uniqid_to_name($p['dialprovider']));?></td><?
+		}
+
+		?><td valign="middle" nowrap class="list"><a href="phones_external_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
