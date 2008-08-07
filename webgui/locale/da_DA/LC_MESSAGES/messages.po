@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 23:01+0000\n"
+"POT-Creation-Date: 2008-08-06 23:43+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -421,6 +421,9 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "ISDN Interface"
 msgstr ""
 
@@ -827,9 +830,6 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
-msgstr ""
-
-msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1394,6 +1394,12 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2569,6 +2575,9 @@ msgid "webGUI Configuration"
 msgstr ""
 
 msgid "Live Stats"
+msgstr ""
+
+msgid "Help"
 msgstr ""
 
 msgid "add a new item"

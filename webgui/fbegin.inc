@@ -309,7 +309,7 @@ if (!$pgtitle_omit) {
 	?><p class="pgtitle"><?
 		echo gentitle($pgtitle);
 		if ($pghelp) {
-			?>&nbsp;<a href="javascript:{}" onclick="jQuery('#pghelp').toggle()"><img src="help.png" border="0"></a><?
+			?>&nbsp;<a href="javascript:{}" onclick="jQuery('#pghelp').toggle()"><img src="help.png" border="0" title="<?=gettext("Help");?>"></a><?
 		}
 	?></p><?
 
