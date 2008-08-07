@@ -47,7 +47,7 @@ $a_providers = pbx_get_providers();			// already sorted by name
 	<body>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
-				<td colspan="3" align="right"><img src="logo.gif" width="150" height="47" border="0"></td>
+				<td colspan="3" align="right"><img src="logo.png" width="150" height="47" border="0"></td>
 			</tr>
 
 
