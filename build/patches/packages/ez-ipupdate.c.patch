@@ -1,5 +1,14 @@
 --- ez-ipupdate.c.orig	2008-07-25 13:17:46.000000000 +0200
 +++ ez-ipupdate.c	2008-07-25 12:42:02.000000000 +0200
+@@ -95,7 +95,7 @@
+ #define HN_DEFAULT_PORT "80"
+ #define HN_REQUEST "/vanity/update"
+
+-#define ZONEEDIT_DEFAULT_SERVER "www.zoneedit.com"
++#define ZONEEDIT_DEFAULT_SERVER "dynamic.zoneedit.com"
+ #define ZONEEDIT_DEFAULT_PORT "80"
+ #define ZONEEDIT_REQUEST "/auth/dynamic.html"
+
 @@ -798,7 +798,7 @@
      sprintf(buf, "message incomplete because your OS sucks: %s\n", fmt);
  #endif
