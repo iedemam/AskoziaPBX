@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 13:16+0200\n"
+"POT-Creation-Date: 2008-08-05 23:01+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -460,9 +460,6 @@ msgstr "DNS SRV lookups uitschakelen."
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Download"
-
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -593,6 +590,9 @@ msgstr "Een geldig ip adres moet worden gekozen."
 
 msgid "Number of log entries to show must be between 50 and 1000."
 msgstr "Nummer om log ingave te bekijken moet tussen de 50 en 1000 zijn."
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr ""
 
 msgid "Number of log entries to show:"
 msgstr "Nummer van log ingaven welke zichtbaar zijn:"
@@ -886,6 +886,9 @@ msgstr "Wis"
 
 msgid "Download:"
 msgstr "Download:"
+
+msgid "Download"
+msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -1449,12 +1452,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2634,9 +2631,6 @@ msgid "webGUI Configuration"
 msgstr ""
 
 msgid "Live Stats"
-msgstr ""
-
-msgid "Help"
 msgstr ""
 
 msgid "add a new item"

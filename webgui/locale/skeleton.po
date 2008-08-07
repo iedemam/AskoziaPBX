@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-30 15:03+0200\n"
+"POT-Creation-Date: 2008-08-05 23:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,9 +397,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "ISDN Interface"
 msgstr ""
 
@@ -529,6 +526,9 @@ msgid "A valid IP address must be specified."
 msgstr ""
 
 msgid "Number of log entries to show must be between 50 and 1000."
+msgstr ""
+
+msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
 
 msgid "Number of log entries to show:"
@@ -774,6 +774,9 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1267,10 +1270,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."

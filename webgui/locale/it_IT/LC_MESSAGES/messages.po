@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-30 15:03+0200\n"
+"POT-Creation-Date: 2008-08-05 23:01+0000\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -461,9 +461,6 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Scaricare"
-
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -600,6 +597,11 @@ msgid "Number of log entries to show must be between 50 and 1000."
 msgstr ""
 "Il numero delle voci di registro da mostrare deve essere compreso tra 5 e "
 "1000."
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr ""
+"Visualizza le voci di registro in ordine inverso (le voci più recenti in "
+"alto)"
 
 msgid "Number of log entries to show:"
 msgstr "Numero di voci di registro da mostrare:"
@@ -904,6 +906,9 @@ msgstr "Pulisci"
 
 msgid "Download:"
 msgstr "Scaricare:"
+
+msgid "Download"
+msgstr "Scaricare"
 
 msgid "Upload:"
 msgstr "Caricare:"
@@ -1542,12 +1547,6 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -3426,11 +3425,6 @@ msgstr "%d bytes"
 
 #~ msgid "Last "
 #~ msgstr "Ultimo "
-
-#~ msgid "Show log entries in reverse order (newest entries on top)"
-#~ msgstr ""
-#~ "Visualizza le voci di registro in ordine inverso (le voci più recenti in "
-#~ "alto)"
 
 #~ msgid " seconds"
 #~ msgstr "secondi"

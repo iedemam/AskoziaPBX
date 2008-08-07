@@ -1,18 +1,15 @@
-#
-# $Id$
-#
 # part of AskoziaPBX (http://askozia.com/pbx)
 # Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
 # All rights reserved.
 #
 # Authors:
-# 	Cao Xing
+# 	Cao Xing <Caostern@googlemail.com>
 #
 #
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 16:38+0000\n"
+"POT-Creation-Date: 2008-08-05 23:01+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -86,7 +83,7 @@ msgid ""
 "Click an account type below to get started."
 msgstr ""
 "通过提供商账号允许您设置与外部来源来往的路由。(即VoIP服务提供商或附加的ISDN/"
-"模拟电话硬件接口)。点击下面的一个账号开始。"
+"模拟电话接口的硬件)。点击下面的一个账号开始。"
 
 msgid "Pattern(s)"
 msgstr "模式"
@@ -125,7 +122,7 @@ msgid "Advanced"
 msgstr "高级"
 
 msgid "Tone Zones"
-msgstr "Tone Zones"
+msgstr "响铃区域"
 
 msgid "Loaded"
 msgstr "已载入"
@@ -142,8 +139,7 @@ msgstr "注意："
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
-msgstr ""
-"选择所有模拟硬件支持的Tone Zones。<strong>第一个Tone Zone将会是是默认的。"
+msgstr "选择所有模拟硬件支持的响铃区。<strong>第一个响铃区将会是是默认的。"
 
 msgid "GUI Options"
 msgstr "用户界面选项"
@@ -279,7 +275,7 @@ msgid "Enable"
 msgstr "允许"
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
-msgstr ""
+msgstr "允许IAX连接上的时基误差(Jitter)缓存被AskoziaPBX终止。"
 
 msgid "Force"
 msgstr "强制"
@@ -547,7 +543,7 @@ msgid "bill"
 msgstr "清单"
 
 msgid "disposition"
-msgstr ""
+msgstr "分类"
 
 msgid "Clear log"
 msgstr "清空日志"
@@ -562,7 +558,7 @@ msgid "Number of log entries to show must be between 50 and 1000."
 msgstr "显示的日志条目数必须在50到1000之间。"
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr ""
+msgstr "翻转显示条目的顺序(最近的条目置于顶端)"
 
 msgid "Number of log entries to show:"
 msgstr "显示的日志条目数："
@@ -815,12 +811,12 @@ msgid ""
 msgstr "最大呼叫转移按键的响应毫秒数（默认500毫秒）。"
 
 msgid "Extension Digit"
-msgstr "分机数字"
+msgstr "分机数字(Extension Digit)"
 
 msgid ""
 "Maximum number of seconds to wait between digits when transferring a call "
 "(default 3)."
-msgstr "呼叫转移时数字间最大的间隔秒数（默认 3）。"
+msgstr "呼叫转移时各数字间最大的间隔秒数（默认 3）。"
 
 msgid "Park Time"
 msgstr "停泊时间"
@@ -928,7 +924,7 @@ msgid "Notes"
 msgstr "Notes"
 
 msgid "Interfaces"
-msgstr "界面(Interfaces)"
+msgstr "界面"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -967,7 +963,7 @@ msgid "Gain (rx/tx)"
 msgstr "增益 (rx/tx)"
 
 msgid "Echo Canceller"
-msgstr "回身补偿器"
+msgstr "回声补偿器"
 
 msgid "edit analog interface"
 msgstr "编辑模拟接口"
@@ -2520,9 +2516,9 @@ msgstr ""
 "要让这个提供商只用作\"9\"开头的号码则输入\"9|.\"。如果没有输入模式，那么只有"
 "呼入的电话会被接受。<br>\n"
 " <ul>\n"
-" \t<li><strong>+</strong> - 加入一个前缀 (如 \"1+555\" 匹配 \"555\" 并传递 "
+" \t<li><strong>+</strong> - 加入一个前缀 (即 \"1+555\" 匹配 \"555\" 并传递 "
 "\"1555\" 给提供商)</li>\n"
-" \t<li><strong>|</strong> - 去掉一个前缀 (如 \"1|555\" 匹配 \"1555\" 但只传"
+" \t<li><strong>|</strong> - 去掉一个前缀 (即 \"1|555\" 匹配 \"1555\" 但只传"
 "递 \"555\" 给提供商)</li>\n"
 " \t<li><strong>X</strong> - 匹配数字 0-9</li>\n"
 " \t<li><strong>Z</strong> - 匹配数字 1-9</li>\n"
@@ -2632,9 +2628,9 @@ msgid ""
 "field. Improperly formed values can break system functionality and/or open "
 "security holes."
 msgstr ""
-"可以在生成的设置中手动加入关键值对(比如<em>configoption=value</em>)。这些设置"
-"将会被附加到这个项目的Asterisk配置文件中。除非您非常特殊的需要这样做，不然的"
-"话请留空这个区域。不正确的设置值可能打破系统功能并且/或者打开安全漏洞。"
+"可以在生成的设置中手动加入关键值对(即<em>configoption=value</em>)。这些设置将"
+"会被附加到这个项目的Asterisk配置文件中。除非您非常特殊的需要这样做，不然的话"
+"请留空这个区域。不正确的设置值可能打破系统功能并且/或者打开安全漏洞。"
 
 msgid "Text to be displayed for Caller ID."
 msgstr "为Caller ID显示的文本"
@@ -2757,10 +2753,10 @@ msgid "100BASE-TX half-duplex"
 msgstr "100BASE-TX half-duplex"
 
 msgid "10BASE-T full-duplex"
-msgstr ""
+msgstr "10BASE-T full-duplex"
 
 msgid "10BASE-T half-duplex"
-msgstr ""
+msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"

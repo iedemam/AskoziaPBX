@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 12:22+0000\n"
+"POT-Creation-Date: 2008-08-05 23:01+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -580,6 +580,9 @@ msgstr "Kelpaava IP osoite on oltava määritettynä."
 
 msgid "Number of log entries to show must be between 50 and 1000."
 msgstr "Loki tallennuksien määrä jota näytetään on oltava 50 ja 1000 välissä."
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr "Näytä loki vastakkaisena järjestyksessä (uusin tapahtuma ensin)"
 
 msgid "Number of log entries to show:"
 msgstr "Loki tallennuksien määrä:"
@@ -1155,7 +1158,7 @@ msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Yritä poistaa kaikua linjalta. (suositeltavaa)"
 
 msgid "PCM Timing Slave"
-msgstr "PCM Ajanotto Orja"
+msgstr "PCM Timing Slave"
 
 msgid ""
 "There is already another card present which provides the timing.<br><em>"
