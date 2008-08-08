@@ -1,6 +1,8 @@
-2008.xx.xx - pb14.1
+2008.08.08 - pb14.1
  - added: SIP & IAX2 URIs are now usable as dialstrings for external phone accounts
  - added: log reverse sort order option reinstated
+ - added: user definable voicemail notification e-mail text
+ - updated: jquery to 1.2.6
  - localization: Simplified and Traditional Chinese
  - localization: Dutch
  - localization: Danish
