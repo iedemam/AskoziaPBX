@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 23:43+0200\n"
+"POT-Creation-Date: 2008-08-06 06:54+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -460,9 +460,6 @@ msgstr "DNS SRV lookups uitschakelen."
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Download"
-
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -889,6 +886,9 @@ msgstr "Wis"
 
 msgid "Download:"
 msgstr "Download:"
+
+msgid "Download"
+msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -1454,12 +1454,6 @@ msgstr ""
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-
 msgid "Internal extension used to reach this phone."
 msgstr ""
 
@@ -1715,6 +1709,9 @@ msgid ""
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
 
+msgid "Host,E-mail Address,Subject,Body"
+msgstr ""
+
 msgid "Host,E-mail Address"
 msgstr ""
 
@@ -1735,6 +1732,10 @@ msgstr ""
 
 msgid "Options"
 msgstr ""
+
+#, fuzzy
+msgid "Account uses TLS"
+msgstr "Lijnen"
 
 msgid "TLS certificates are currently not verified."
 msgstr ""
@@ -1757,6 +1758,10 @@ msgstr ""
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
 msgstr ""
+
+#, fuzzy
+msgid "User defined e-mail text"
+msgstr "Gebruikersnaam"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr ""
@@ -2286,6 +2291,31 @@ msgid "ERR Could not install configuration.\n"
 msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
+msgstr ""
+
+#, fuzzy
+msgid "Subject"
+msgstr "Geheim"
+
+msgid "Body"
+msgstr ""
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+
+msgid "extension number of voicemail box"
+msgstr ""
+
+msgid "name of voicemail recipient"
+msgstr ""
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr ""
+
+msgid "caller id of person leaving the message"
+msgstr ""
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
 msgstr ""
 
 msgid "generate password"
@@ -3088,3 +3118,11 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#, fuzzy
+#~ msgid "A notification subject must be specified."
+#~ msgstr "Een geldige nationale prefix moet worden gekozen."
+
+#, fuzzy
+#~ msgid "A notification message must be specified."
+#~ msgstr "Een geldige parkeertijd moet worden gekozen."

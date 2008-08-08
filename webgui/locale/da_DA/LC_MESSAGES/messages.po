@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 02:56+0200\n"
+"POT-Creation-Date: 2008-08-06 06:54+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -449,9 +449,6 @@ msgstr "Deaktiver DNS SRV lookups."
 msgid "Debug"
 msgstr "Fejlsøg"
 
-msgid "Download"
-msgstr "Download"
-
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -866,6 +863,9 @@ msgstr "Slet"
 
 msgid "Download:"
 msgstr "Download:"
+
+msgid "Download"
+msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -1458,14 +1458,6 @@ msgstr "En gyldig e-mail addresse skal angives."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Ingen kompatible grænseflader fundet!</strong><br><br>"
 
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-"For at konfigurere denne type konto, sørg for at passende konfigureret "
-"grænseflade er tilstede på %s side"
-
 msgid "Internal extension used to reach this phone."
 msgstr "Intern extension brugt til at nå denne telefon."
 
@@ -1739,6 +1731,10 @@ msgid ""
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
 
+#, fuzzy
+msgid "Host,E-mail Address,Subject,Body"
+msgstr "Host,E-mail addresse"
+
 msgid "Host,E-mail Address"
 msgstr "Host,E-mail addresse"
 
@@ -1759,6 +1755,10 @@ msgstr "E-mail addresse"
 
 msgid "Options"
 msgstr "Indstillinger"
+
+#, fuzzy
+msgid "Account uses TLS"
+msgstr "Konti"
 
 msgid "TLS certificates are currently not verified."
 msgstr "TLS certifikater er i øjeblikket ikke verificeret"
@@ -1785,6 +1785,9 @@ msgid ""
 msgstr ""
 "E-mail notifikation for nye beskeder på telefonsvarer vil blive afleveret i "
 "dette sprog."
+
+msgid "User defined e-mail text"
+msgstr ""
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Denne status side indeholder følgende informationer:\n"
@@ -2355,6 +2358,31 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+msgid "Subject"
+msgstr "Hemmeligt"
+
+msgid "Body"
+msgstr ""
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+
+msgid "extension number of voicemail box"
+msgstr ""
+
+msgid "name of voicemail recipient"
+msgstr ""
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr ""
+
+msgid "caller id of person leaving the message"
+msgstr ""
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr ""
 
 msgid "generate password"
 msgstr "generer kodeord"
@@ -3222,6 +3250,13 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#~ msgid ""
+#~ "To configure this type of account, make sure an appropriately configured "
+#~ "interface is present on the %s page"
+#~ msgstr ""
+#~ "For at konfigurere denne type konto, sørg for at passende konfigureret "
+#~ "grænseflade er tilstede på %s side"
 
 #~ msgid "Main MSN"
 #~ msgstr "Hoved MSN"

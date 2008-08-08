@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 23:43+0200\n"
+"POT-Creation-Date: 2008-08-06 06:54+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -425,9 +425,6 @@ msgstr "禁用DNS SRV查找"
 
 msgid "Debug"
 msgstr "除錯"
-
-msgid "Download"
-msgstr "下載"
 
 msgid "ISDN Interface"
 msgstr "ISDN界面"
@@ -846,6 +843,9 @@ msgstr "清空"
 
 msgid "Download:"
 msgstr "下載："
+
+msgid "Download"
+msgstr "下載"
 
 msgid "Upload:"
 msgstr "上載："
@@ -1447,12 +1447,6 @@ msgstr "必須指定一個有效的e-mail地址。"
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>沒有找到相容的介面！</strong><br><br>"
 
-#, fuzzy, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr "設置這類帳戶時，請確認一個適當設定的介面已經存在於 %t 頁。 "
-
 msgid "Internal extension used to reach this phone."
 msgstr "內部分機用於達到此話機。"
 
@@ -1714,6 +1708,10 @@ msgstr ""
 "為了通過電子郵件發送錯過電話通知和記錄下的語音信息，這裏需要正確的設定一個郵"
 "件伺服器。"
 
+#, fuzzy
+msgid "Host,E-mail Address,Subject,Body"
+msgstr "主機，電郵地址"
+
 msgid "Host,E-mail Address"
 msgstr "主機，電郵地址"
 
@@ -1734,6 +1732,10 @@ msgstr "電郵地址"
 
 msgid "Options"
 msgstr "選項"
+
+#, fuzzy
+msgid "Account uses TLS"
+msgstr "帳戶"
 
 msgid "TLS certificates are currently not verified."
 msgstr "TLS證書，現在尚未驗證。"
@@ -1756,6 +1758,10 @@ msgstr "電郵語言"
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
 msgstr "通過投遞這種語言的電郵來通知新的語音郵件。"
+
+#, fuzzy
+msgid "User defined e-mail text"
+msgstr "發送錯過的電話通知"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>這個狀態頁包括以下信息：\n"
@@ -2309,6 +2315,31 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+msgid "Subject"
+msgstr "秘密"
+
+msgid "Body"
+msgstr ""
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+
+msgid "extension number of voicemail box"
+msgstr ""
+
+msgid "name of voicemail recipient"
+msgstr ""
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr ""
+
+msgid "caller id of person leaving the message"
+msgstr ""
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr ""
 
 msgid "generate password"
 msgstr ""
@@ -3157,3 +3188,21 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#, fuzzy
+#~ msgid "A notification subject must be specified."
+#~ msgstr "必須輸入一個有效的密碼。"
+
+#, fuzzy
+#~ msgid "A notification message must be specified."
+#~ msgstr "必須指定一個用戶名。"
+
+#, fuzzy
+#~ msgid "User Defined"
+#~ msgstr "用戶名"
+
+#, fuzzy
+#~ msgid ""
+#~ "To configure this type of account, make sure an appropriately configured "
+#~ "interface is present on the %s page"
+#~ msgstr "設置這類帳戶時，請確認一個適當設定的介面已經存在於 %t 頁。 "

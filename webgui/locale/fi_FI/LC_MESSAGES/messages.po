@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 23:43+0200\n"
+"POT-Creation-Date: 2008-08-06 06:54+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -450,9 +450,6 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
-msgid "Download"
-msgstr "Lataa"
-
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -885,6 +882,9 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
+
+msgid "Download"
+msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -1533,12 +1533,6 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
 
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
@@ -1815,6 +1809,9 @@ msgstr ""
 "Jotta voi lähettää vastaamaton puhelu ilmoituksia ja vastaaja viestejä "
 "sähköpostiin, s-posti palvelin on oltava oikein määritetty."
 
+msgid "Host,E-mail Address,Subject,Body"
+msgstr "Isäntä,S-posti Osoite, Aihe, Viesti"
+
 msgid "Host,E-mail Address"
 msgstr "Isäntä,S-posti Osoite"
 
@@ -1837,6 +1834,9 @@ msgstr "S-posti Osoite"
 msgid "Options"
 msgstr "Valinnat"
 
+msgid "Account uses TLS"
+msgstr "Tili käyttää TLS"
+
 msgid "TLS certificates are currently not verified."
 msgstr "TLS sertifikaatit eivät ole tarkastettuja"
 
@@ -1858,6 +1858,9 @@ msgstr "S-posti Kieli"
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
 msgstr "S-posti ilmoitukset uusista viesteistä tulee olemaan tällä kielellä."
+
+msgid "User defined e-mail text"
+msgstr "Käyttäjän määritelty s-posti viesti"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Tämä tila sivu antaa seuraavat tiedot:\n"
@@ -2446,6 +2449,30 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+msgid "Subject"
+msgstr "Aihe"
+
+msgid "Body"
+msgstr "Viesti"
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr "Seuraavat avainsanat voi käyttää s-posti ilmoituksessa"
+
+msgid "extension number of voicemail box"
+msgstr "vastaajan jatkenumero"
+
+msgid "name of voicemail recipient"
+msgstr "vastaajan omistajan nimi"
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr "viestin pituus (t.s. 0:58)"
+
+msgid "caller id of person leaving the message"
+msgstr "viestin jättäneen tunnus"
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr "päivämäärä / aika (t.s. 2025-11-20 (15:45))"
+
 msgid "generate password"
 msgstr "generoi salasana"
 
@@ -2872,7 +2899,7 @@ msgid "Live Stats"
 msgstr "Tilastot Suorana"
 
 msgid "Help"
-msgstr ""
+msgstr "Apua"
 
 msgid "add a new item"
 msgstr "lisää uusi"

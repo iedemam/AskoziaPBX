@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 23:43+0200\n"
+"POT-Creation-Date: 2008-08-06 06:54+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -421,9 +421,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "ISDN Interface"
 msgstr ""
 
@@ -830,6 +827,9 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1396,12 +1396,6 @@ msgstr ""
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-
 msgid "Internal extension used to reach this phone."
 msgstr ""
 
@@ -1657,6 +1651,9 @@ msgid ""
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
 
+msgid "Host,E-mail Address,Subject,Body"
+msgstr ""
+
 msgid "Host,E-mail Address"
 msgstr ""
 
@@ -1676,6 +1673,9 @@ msgid "E-mail Address"
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Account uses TLS"
 msgstr ""
 
 msgid "TLS certificates are currently not verified."
@@ -1698,6 +1698,9 @@ msgstr ""
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
+msgstr ""
+
+msgid "User defined e-mail text"
 msgstr ""
 
 msgid "<p>This status page includes the following information:\n"
@@ -2224,6 +2227,30 @@ msgid "ERR Could not install configuration.\n"
 msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Body"
+msgstr ""
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+
+msgid "extension number of voicemail box"
+msgstr ""
+
+msgid "name of voicemail recipient"
+msgstr ""
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr ""
+
+msgid "caller id of person leaving the message"
+msgstr ""
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
 msgstr ""
 
 msgid "generate password"

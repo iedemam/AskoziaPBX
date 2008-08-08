@@ -91,6 +91,10 @@ textarea.pre {
 	font-family: Courier New, Courier, monospaced;
 	font-size: 10px;
 }
+textarea.userdefined {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
 .vvcell {
 	background-color: #FFFFC6;
 }

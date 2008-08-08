@@ -350,7 +350,33 @@ function javascript_generate_passwd($part) {
 
 	<? else : ?>
 
-		ERROR: no part defined in javascript_filter_textbox()!
+		ERROR: no part defined in javascript_generate_passwd()!
+
+	<? endif;
+}
+
+function javascript_userdefined_email_notification($part) {
+
+	if ($part == "functions") : ?>
+
+		function slide_fields() {
+			if (jQuery("#user_defined").is(":checked")) {
+				jQuery("#maillanguage").attr("disabled","disabled");
+				jQuery("#email_notification_wrapper").slideDown();
+			} else {
+				jQuery("#email_notification_wrapper").slideUp();
+				jQuery("#maillanguage").removeAttr("disabled");
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#user_defined").click(slide_fields);
+		slide_fields();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_userdefined_email_notification()!
 
 	<? endif;
 }

@@ -247,7 +247,17 @@ EOD;
 		$conf .= "serveremail=AskoziaPBX\n\n";
 	}
 
-	if ($config['voicemail']['maillanguage']) {
+	if (isset($config['voicemail']['user_defined'])) {
+
+		$tokens = array("VM_MAILBOX", "VM_NAME", "VM_DURATION", "VM_CALLERID","VM_DATE");
+		$replacetokens = array("$" . "{VM_MAILBOX}", "$" . "{VM_NAME}", "$" ."{VM_DUR}", "$" . "{VM_CALLERID}", "$" . "{VM_DATE}");
+
+		$subject = str_replace($tokens, $replacetokens, base64_decode($config['voicemail']['user_subject']));
+		$body = preg_replace('/\x0A/', "\\n", str_replace($tokens, $replacetokens, base64_decode($config['voicemail']['user_body'])));
+
+		$conf .= "emailsubject=" . $subject . "\n";
+		$conf .= "emailbody=" . $body . "\n\n";
+	} else if ($config['voicemail']['maillanguage']) {
 		$vm_lang = $config['voicemail']['maillanguage'];
 		$conf .= "emailsubject=" . $vm_emailsubject[$vm_lang] . "\n";
 		$conf .= "emailbody=" . $vm_emailbody[$vm_lang] . "\n\n";

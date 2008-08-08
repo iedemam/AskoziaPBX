@@ -28,14 +28,29 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+function display_userdefined_email_notification($subj, $body) {
+
+	?><span id="email_notification_wrapper" class="display_none">
+		<br><?=gettext("Subject");?>
+		<br><input type="text" name="user_subject" id="user_subject" size="40" value="<?=$subj?>">
+		<br><br><?=gettext("Body");?>
+		<br><textarea name="user_body" cols="60" rows="3" id="user_body" class="userdefined"><?=$body?></textarea><br>
+		<br><strong><?=gettext("The following variables can be used in the e-mail notification");?>:</strong>
+		<br>VM_MAILBOX = <?=gettext("extension number of voicemail box");?>
+		<br>VM_NAME = <?=gettext("name of voicemail recipient");?>
+		<br>VM_DURATION = <?=gettext("duration of the message (i.e. 0:58)");?>
+		<br>VM_CALLERID = <?=gettext("caller id of person leaving the message");?>
+		<br>VM_DATE = <?=gettext("full date / time (i.e. 2025-11-20 (15:45))");?>
+	</span><?
+}
+
 function display_passwd_generation() {
-?>
-	<a href="javascript:{}"><img class='verticalalign' src='key_go.png' name='generate' id="generate" title="<?=gettext("generate password");?>"></a>
+
+	?><a href="javascript:{}"><img class='verticalalign' src='key_go.png' name='generate' id="generate" title="<?=gettext("generate password");?>"></a>
 	<span name="generator_wrapper" id="generator_wrapper" class="display_none">
 	<br><input type="text" name="gen_passwd" id="gen_passwd" value="">
 	<a href="javascript:{}"><img class='verticalalign' src='add.png' name='use' id="use" title="<?=gettext("use this password");?>"></a>
-	</span>
-<?	
+	</span><?	
 }
 
 //------------- pagination/filter logic -------------

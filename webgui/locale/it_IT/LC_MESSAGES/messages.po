@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 23:43+0200\n"
+"POT-Creation-Date: 2008-08-06 06:54+0000\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -461,9 +461,6 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Scaricare"
-
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -909,6 +906,9 @@ msgstr "Pulisci"
 
 msgid "Download:"
 msgstr "Scaricare:"
+
+msgid "Download"
+msgstr "Scaricare"
 
 msgid "Upload:"
 msgstr "Caricare:"
@@ -1549,12 +1549,6 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-
 msgid "Internal extension used to reach this phone."
 msgstr "Interno usato per raggiungere questo telefono."
 
@@ -1839,6 +1833,10 @@ msgid ""
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
 
+#, fuzzy
+msgid "Host,E-mail Address,Subject,Body"
+msgstr "Host, Indirizzo E-Mail"
+
 msgid "Host,E-mail Address"
 msgstr "Host, Indirizzo E-Mail"
 
@@ -1860,6 +1858,10 @@ msgstr "Indirizzo E-mail"
 
 msgid "Options"
 msgstr "Opzioni"
+
+#, fuzzy
+msgid "Account uses TLS"
+msgstr "Accounts"
 
 msgid "TLS certificates are currently not verified."
 msgstr "I certificati TLS non sono verificati."
@@ -1884,6 +1886,10 @@ msgid ""
 msgstr ""
 "Le notifiche E-mail per un nuovo messaggio vocale verranno consegnate in "
 "questa lingua."
+
+#, fuzzy
+msgid "User defined e-mail text"
+msgstr "invia le notifiche di chiamata"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Questa pagina di stato include le seguenti informazioni:\n"
@@ -2486,6 +2492,31 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#, fuzzy
+msgid "Subject"
+msgstr "Parola segreta"
+
+msgid "Body"
+msgstr ""
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+
+msgid "extension number of voicemail box"
+msgstr ""
+
+msgid "name of voicemail recipient"
+msgstr ""
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr ""
+
+msgid "caller id of person leaving the message"
+msgstr ""
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr ""
 
 msgid "generate password"
 msgstr ""
@@ -3382,6 +3413,18 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#, fuzzy
+#~ msgid "A notification subject must be specified."
+#~ msgstr "Deve essere specificata parola segreta valida."
+
+#, fuzzy
+#~ msgid "A notification message must be specified."
+#~ msgstr "Deve essere specificato un nome utente."
+
+#, fuzzy
+#~ msgid "User Defined"
+#~ msgstr "Nome utente"
 
 #, fuzzy
 #~ msgid "The dynamic DNS host name contains invalid characters."
