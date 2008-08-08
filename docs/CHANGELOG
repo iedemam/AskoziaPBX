@@ -3,6 +3,8 @@
  - added: log reverse sort order option reinstated
  - localization: Simplified and Traditional Chinese
  - localization: Dutch
+ - localization: Danish
+ - bug: zoneedit dynamic dns update server address corrected
 
 2008.07.31 - pb14
  - new platform: Live + Install CD
