@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 06:54+0000\n"
+"POT-Creation-Date: 2008-08-08 10:44+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -32,7 +32,7 @@ msgid ""
 "to Provider Accounts. Click an account type below to get started."
 msgstr ""
 "Telefoon account laat je toe om interne toestellen te configureren en hun "
-"toegang naar Provider Accounts. Click op een account type hieronder om te "
+"toegang naar Provider Accounts. kick op een account type hieronder om te "
 "starten."
 
 msgid "SIP"
@@ -460,6 +460,9 @@ msgstr "DNS SRV lookups uitschakelen."
 msgid "Debug"
 msgstr "Debug"
 
+msgid "Download"
+msgstr "Download"
+
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -795,10 +798,10 @@ msgid "A valid key timeout must be specified."
 msgstr "Een geldige sleutel timeout moet worden gekozen."
 
 msgid "A valid attended transfer timeout must be specified."
-msgstr ""
+msgstr "Een geldige gecontroleerde doorschakeltijd moet gespecifieerd worden."
 
 msgid "A valid extension digit timeout must be specified."
-msgstr ""
+msgstr "Een geldige post digit timeout moet worden gespecifeerd"
 
 msgid "Hot Keys"
 msgstr "Hot Keys"
@@ -808,12 +811,14 @@ msgstr "Volgen"
 
 msgid "This key combination activates an attended transfer (default **)."
 msgstr ""
+"Deze toetsen combinatie activeert de gecontroleerde doorschakeling "
+"(standaard **)."
 
 msgid "Blind"
 msgstr "Blind"
 
 msgid "This key combination activates a blind transfer (default ##)."
-msgstr ""
+msgstr "Deze toetsen combinatie activeert een blinde doorschakeling"
 
 msgid "Call Parking"
 msgstr "Parkeren"
@@ -826,6 +831,9 @@ msgid ""
 "read back to you after transfering is the extension where the call was "
 "parked."
 msgstr ""
+"Blinde doorschakeling naar deze post parkeerd een telefoon (standaard 700). "
+"Het nummer dat u te horen krijgt is het nummer na doorschakeling waar uw "
+"telefoon geparkeerd staat."
 
 msgid "Parking Range"
 msgstr "Parkeer Reeks"
@@ -833,17 +841,21 @@ msgstr "Parkeer Reeks"
 msgid ""
 "This range of extensions is where parked calls reside (default 701-720)."
 msgstr ""
+"Deze reeks van posten is waar geparkeerde telefoons staan (standaard 701-"
+"720)."
 
 msgid "Timeouts"
 msgstr "Timeouts"
 
 msgid "Attended Transfer Answer"
-msgstr ""
+msgstr "Gecontroleerde doorschakeling beantwoorden."
 
 msgid ""
 "Maximum number of seconds an attended transfer can go unanswered (default "
 "15)."
 msgstr ""
+"Maximum tijd in seconden dat een gecontroleerde doorschakeling onbeantwoord "
+"mag blijven (standaard 15)."
 
 msgid "Transfer Key"
 msgstr "Doorschakel sleutel"
@@ -852,14 +864,18 @@ msgid ""
 "Maximum number of milliseconds between key presses for transfer activation "
 "(default 500)."
 msgstr ""
+"Maximum aantal milliseconden tussen toetsaanslagen voor doorschakel "
+"activering (standaard 500)."
 
 msgid "Extension Digit"
-msgstr ""
+msgstr "Post Cijfer"
 
 msgid ""
 "Maximum number of seconds to wait between digits when transferring a call "
 "(default 3)."
 msgstr ""
+"Maximum aantal seconden tussen de cijfers voor doorschakelen van een gesprek "
+"(standaard 3)."
 
 msgid "Park Time"
 msgstr "Parkeer Tijd"
@@ -868,15 +884,17 @@ msgid ""
 "Maximum number of seconds a call can be parked before it is transfered back "
 "to the parker (default 30)."
 msgstr ""
+"Maximum aantal seconden dat een gesprek kan worden geparkeerd voordat het "
+"wordt teruggebracht naar de orgininele parkeerder (standaard 30)."
 
 msgid "AskoziaPBX: execute command"
-msgstr ""
+msgstr "AskoziaPBX: voer commando uit"
 
 msgid "enter a command below..."
-msgstr ""
+msgstr "Voer een commando is onderaan..."
 
 msgid "Command:"
-msgstr ""
+msgstr "Commando:"
 
 msgid "Execute"
 msgstr "uitvoeren"
@@ -886,9 +904,6 @@ msgstr "Wis"
 
 msgid "Download:"
 msgstr "Download:"
-
-msgid "Download"
-msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -973,6 +988,8 @@ msgid ""
 "Detected ports on this page must be edited and saved before the system can "
 "utilize them."
 msgstr ""
+"Ontdekte poorten op deze pagina moet worden bewerkt en opgeslagen voordat "
+"het systeem deze kan gebruiken."
 
 msgid "Network"
 msgstr "Netwerk"
@@ -984,55 +1001,67 @@ msgid "Storage"
 msgstr "Opslag"
 
 msgid "No compatible analog interfaces detected."
-msgstr ""
+msgstr "Geen compatibele analoge interfaces ontdekt."
 
 msgid ""
 "If an analog interface is present but was not detected, please send <a href="
 "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
+"Als een analoge interface aanwezig is, maar deze werd niet gedetecteerd, "
+"stuurt u <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
+"sbin/dmesg\"> deze output </ a> naar <a href=\"mailto:michael@askozia.com\"> "
+"michael@askozia.com </ a>."
 
 msgid "Unit"
-msgstr ""
+msgstr "Unit"
 
 msgid "Type"
 msgstr "Type"
 
 msgid "Gain (rx/tx)"
-msgstr ""
+msgstr "Gain (rx/tx)"
 
 msgid "Echo Canceller"
-msgstr ""
+msgstr "Echo verwijderen"
 
 msgid "edit analog interface"
-msgstr ""
+msgstr "bewerk analoge interface"
 
 msgid "Do you really want to forget this interface\\'s settings?"
-msgstr ""
+msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
 
 msgid "forget interface settings"
-msgstr ""
+msgstr "vergeet de interface instellingen"
 
 msgid ""
 "FXS interfaces connect to telephones and FXO interfaces connect to provider "
 "lines. FXS interfaces produce electricity to power the telephone and FXO "
 "interfaces accept the electricity generated by the provider."
 msgstr ""
+"FXS interfaces verbinden telefoons en FXO interfaces verbinden met "
+"providerlijnen. FXS interfaces produceren elektriciteit om de telefoons te "
+"voeden en FXO interfaces accepteren de elektriciteit die van een provider "
+"komen."
 
 msgid ""
 "Connecting a provider line to an FXS port can damage your hardware! If you "
 "are unsure which ports are FXO or FXS on your card, configure and connect "
 "your phone accounts before connecting any provider lines."
 msgstr ""
+"Aansluiting van een provider lijn naar een FXS poort kan schade veroorzaken "
+"aan uw hardware! Als u niet zeker weet welke poorten FXS of FXO op uw kaart "
+"zijn, configureer en verbind dan uw telefoon accounts voor het aansluiten "
+"van uw provider lijn."
 
 msgid "Edit Analog"
-msgstr ""
+msgstr "Bewerk Analoog"
 
 msgid "Interface #"
-msgstr ""
+msgstr "Interface #"
 
 msgid "Descriptive name for this interface"
-msgstr ""
+msgstr "Beschrijvende naam voor deze interface"
 
 msgid "Disabled"
 msgstr "Uitgeschakeld"
@@ -1053,18 +1082,20 @@ msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
 "require more processing power."
 msgstr ""
+"De echo verwijdering 'tap' grootte. Grotere getalen zullen beter de echo "
+"verwijderen maar meer processor verwerkingskracht eisen."
 
 msgid "Start Signaling"
-msgstr ""
+msgstr "Start Signalering"
 
 msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
-msgstr ""
+msgstr "In bijna alle gevallen, \"kewl Start 'is de juiste keuze hier."
 
 msgid "Warning:"
-msgstr ""
+msgstr "Waarschuwing:"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
-msgstr ""
+msgstr "clicking &quot;Save&quot; zal alle huidige verbindingen verbreken."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -1072,80 +1103,102 @@ msgid ""
 "port on a card incorrectly configured can result in the entire card being "
 "unusable by the system."
 msgstr ""
+"Ontdekte poorte op deze pagina moeten worden bewerkt en opgeslagen voordat "
+"het systeem deze kan gebruiken. Wees voorzichtig bij het configureren van "
+"ISDN-interfaces. één poort op een kaart onjuist geconfigureerd hebben, kan "
+"leiden tot een onherstelbare volledige kaart welke niet meer op het systeem "
+"kan worden gebruikt"
 
 msgid "No compatible ISDN interfaces detected."
-msgstr ""
+msgstr "Geen compatibele ISDN interface gedetecteerd."
 
 msgid ""
 "If an ISDN interface is present but was not detected, please send <a href="
 "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
+"Als een ISDN interface aanwezig is, maar niet gedetecteerd werd, stuurt u <a "
+"href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\"> "
+"deze output </ a> naar <a href=\"mailto:michael@askozia.com\"> "
+"michael@askozia.com </ a>."
 
 msgid ""
 "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
 "udesc_dump\">this output</a> as well."
 msgstr ""
+"Als dit een USB ISDN toestel is, stuur <a href=\"ajax.cgi?exec_shell=/sbin/"
+"udesc_dump\">deze output</a> ook."
 
 msgid "Operating Mode"
 msgstr "Operatie Mode"
 
 msgid "edit ISDN interface"
-msgstr ""
+msgstr "bewerk ISDN interface"
 
 msgid "Operating Modes"
-msgstr ""
+msgstr "Bedienings Moded"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 "calls and is attached to the public ISDN network or another PBX system"
 msgstr ""
+"punt-naar-multipunt, eindapparatuur: deze poort aanvaardt MSNs om gesprekken "
+"door te sturen naar het openbare ISDN-netwerk of een andere PBX-systeemen"
 
 msgid ""
 "multipoint-to-point, network termination: this port provides MSNs to route "
 "calls and is attached to one or more telephones"
 msgstr ""
+"multipunt-naar-punt, eindstations van het netwerk: deze poort biedt MSNs om "
+"telefoons te routeren  en is aangsloten op een of meerdere telefoons"
 
 msgid ""
 "point-to-point, terminal equipment: this port accepts DID to route calls and "
 "is connected directly to another PBX system"
 msgstr ""
+"punt-naar-punt, eindapparatuur: deze poort aanvaardt DID route om gesprekken "
+"te sturen en is direct verbonden met een ander PBX-systeem"
 
 msgid ""
 "point-to-point, network termination: this port provides DID to route calls "
 "and is connected directly to another PBX system"
 msgstr ""
+"punt-naar-punt, eindstations van het netwerk: deze poort biedt DID om te "
+"bellen en is direct verbonden met een ander PBX-systeem"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
-msgstr ""
+msgstr "Bewerk ISDN Interface #%s"
 
 msgid "An Operating Mode must be selected for this interface."
-msgstr ""
+msgstr "Een wijze van werken, moet worden gekozen voor deze interface."
 
 msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr ""
+msgstr "Probeer de echo's te verwijderen uit de lijn. (aanbevolen)"
 
 msgid "PCM Timing Slave"
-msgstr ""
+msgstr "PCM Tijd Slaaf"
 
 msgid ""
 "There is already another card present which provides the timing.<br><em>"
 "(Unless more than one inteface card is present in the system, this should "
 "not be changed."
 msgstr ""
+"Er is al een andere kaart aanwezig die de tijd stuurt. <br> <em> (Tenzij er "
+"meer dan één interface-kaart in het systeem aanwezig is, moet dit niet "
+"worden gewijzigd."
 
 msgid "Disable Power Save"
 msgstr "Power Save Uitschakelen"
 
 msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
+msgstr "Schakel energiebesparende modus uit. (soms nodig voor oudere kaarten)"
 
 msgid "Enable Polling Mode"
-msgstr ""
+msgstr "Polling-modus inschakelen"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr ""
+msgstr "Polling-modus inschakelen (soms nodig voor oudere kaarten)"
 
 msgid ""
 "The settings on this page are critical to ensuring connectivity to VoIP "
@@ -1154,41 +1207,51 @@ msgid ""
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
+"De instellingen op deze pagina zijn van essentieel belang om voor de "
+"connectiviteit met VoIP Providers te zorgen. Met name de topologie door "
+"onjuiste instellingen kan dit zorgen dat binnenkomende gesprekken niet "
+"worden verbonden. Als dit systeem zich achter een NAT bevind, standaard "
+"vereist AskoziaPBX dat de volgende poorten worden geforward aan het: 5060 "
+"UDP (SIP), 4569 UDP (IAX) en 10000-10200 UDP (RTP Audio)"
 
 msgid "IP address,Subnet bit count,Gateway,Network topology"
-msgstr ""
+msgstr "IP-adres, Subnet bit count, Gateway, netwerktopologie"
 
 msgid "A valid MAC address must be specified."
-msgstr ""
+msgstr "Een geldig MAC-adres moeten worden opgegeven."
 
 msgid "A valid subnet bit count must be specified."
-msgstr ""
+msgstr "Een geldige subnet bits berekening moet worden vermeld."
 
 msgid "A valid gateway must be specified."
-msgstr ""
+msgstr "Een geldig gateway moeten worden vermeld."
 
 msgid ""
 "A valid IP address must be specified for the primary/secondary/tertiary DNS "
 "server."
 msgstr ""
+"Een geldig IP-adres moet worden opgegeven voor de primaire / secundaire / "
+"tertiaire DNS-server."
 
 msgid "A public IP address must be entered for this topology."
-msgstr ""
+msgstr "Een publieke IP-adres moet worden ingevoerd voor deze topologie."
 
 msgid "A valid public IP address must be entered for this topology."
 msgstr ""
+"Een geldige openbaar IP-adres moet worden ingevoerd voor deze topologie."
 
 msgid "A public hostname must be entered for this topology."
-msgstr ""
+msgstr "Een publieke hostnaam moet worden ingevoerd voor deze topologie."
 
 msgid "A valid public hostname must be entered for this topology."
 msgstr ""
+"Een geldige publieke hostnaam moet worden ingevoerd voor deze topologie."
 
 msgid "The dynamic DNS username contains invalid characters."
-msgstr ""
+msgstr "De dynamische DNS-gebruikersnaam bevat ongeldige tekens."
 
 msgid "Checked interfaces will be bridged to the main interface."
-msgstr ""
+msgstr "Aangevinkte interfaces worden overbrugd naar de hoofd interface."
 
 msgid "IP Address"
 msgstr "Ip Adres"
@@ -1210,38 +1273,46 @@ msgid ""
 "network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
 "xx:xx:xx or leave blank"
 msgstr ""
+"Dit veld kan worden gebruikt voor het aanpassen ( \"spoof\") het MAC adres "
+"van de netwerk interface <br> Geef een MAC-adres in de volgende vorm: xx: "
+"xx: xx: xx: xx: xx of laat leeg"
 
 msgid "Topology"
 msgstr "Topology"
 
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr ""
+msgstr "Publiek IP-adres: deze PBX heeft een routable IP-adres (zie hierboven)"
 
 msgid ""
 "NAT + Static Public IP: this PBX is behind a NAT which has a static public "
 "IP. Enter this IP below."
 msgstr ""
+"NAT + Statisch Publiek IP: deze PBX is achter een NAT welke een statisch "
+"publiek-IP heeft. Geef dit IP-adres hieronder."
 
 msgid ""
 "NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
 "IP. A hostname, constantly updated to point to this network is required. "
 "Enter this information below."
 msgstr ""
+"NAT + Dynamisch Publiek IP: deze PBX is achter een NAT die beschikt over een "
+"dynamische publieke IP. Een hostnaam, die voortdurend wordt bijgewerkt is "
+"noodzakelijk. Voer deze gegevens hieronder in."
 
 msgid "Static Public IP"
-msgstr ""
+msgstr "Statisch publiek IP"
 
 msgid "Public Hostname"
-msgstr ""
+msgstr "Publieke Hostnaam"
 
 msgid "This information should be updated by:"
-msgstr ""
+msgstr "Deze informatie moet worden bijgewerkt door:"
 
 msgid "My Router"
 msgstr "Mijn Router"
 
 msgid "AskoziaPBX"
-msgstr ""
+msgstr "AskoziaPBX"
 
 msgid "Dynamic DNS Client"
 msgstr "Dynamische DNS Cliënt"
@@ -1253,45 +1324,56 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr ""
+msgstr "Ja, alias \"*.hostname.domain\" naar hostnaam hierboven omschreven."
 
 msgid ""
 "after you click &quot;Save&quot;, all current calls will be dropped. You may "
 "also have to do one or more of the following steps before you can access "
 "your PBX again:"
 msgstr ""
+"nadat u klikt op &quot;Save&quot;, worden huidige gesprekken bëindigd. Het "
+"kan ook zijn dat u één van de volgende stappen moet uitvoeren voordat u "
+"opnieuw toegang krijgt tot uw PBX:"
 
 msgid "restart the PBX"
 msgstr "De pbx herstarten"
 
 msgid "change the IP address of your computer"
-msgstr ""
+msgstr "verander het IP-adres van uw computer"
 
 msgid "access the webGUI with the new IP address"
-msgstr ""
+msgstr "toegang tot de WebGUI met het nieuwe IP-adres"
 
 msgid ""
 "AskoziaPBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
 msgstr ""
+"AskoziaPBX deelt automatisch de resterende ruimte voor permanente opslag "
+"toe. Pakketten die dienen tot uitbreiding van de functionaliteit van het "
+"systeem kunnen geïnstalleerd worden in deze ruimte."
 
 msgid "The system storage media is not large enough to install packages."
 msgstr ""
+"De systeem opslagmedia is niet groot genoeg voor de installatie van "
+"pakketten."
 
 #, php-format
 msgid ""
 "A minimum of %sMB is required. In the future, external media will be able to "
 "be used, but currently packages must be stored on the internal system media."
 msgstr ""
+"Een minimum van %sMB is vereist. In de toekomst, zullen externe media kunnen "
+"worden gebruikt, maar momenteel moeten paketten worden opgeslagen op het "
+"interne systeem."
 
 msgid "Capacity"
 msgstr "Capaciteit"
 
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgid "Installed Packages"
-msgstr ""
+msgstr "Gëinstalleerde Paketten"
 
 msgid "system storage partition"
 msgstr ""
@@ -1452,6 +1534,12 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -1759,9 +1847,8 @@ msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
 msgstr ""
 
-#, fuzzy
 msgid "User defined e-mail text"
-msgstr "Gebruikersnaam"
+msgstr ""
 
 msgid "<p>This status page includes the following information:\n"
 msgstr ""
@@ -3118,11 +3205,3 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
-
-#, fuzzy
-#~ msgid "A notification subject must be specified."
-#~ msgstr "Een geldige nationale prefix moet worden gekozen."
-
-#, fuzzy
-#~ msgid "A notification message must be specified."
-#~ msgstr "Een geldige parkeertijd moet worden gekozen."
