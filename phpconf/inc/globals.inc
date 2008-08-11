@@ -59,7 +59,7 @@ $defaults['accounts']['phones']['ringlength'] = "20";
 
 $defaults['analog'] = array();
 $defaults['analog']['interface'] = array();
-$defaults['analog']['interface']['name'] = "(unconfigured)";
+$defaults['analog']['interface']['name'] = "(" . gettext("unconfigured") . ")";
 $defaults['analog']['interface']['startsignal'] = "ks";
 $defaults['analog']['interface']['echocancel'] = "128";
 $defaults['analog']['interface']['rxgain'] = "0.0";
@@ -87,7 +87,7 @@ $defaults['internationalization']['prompt-language'] = "en";
 
 $defaults['isdn'] = array();
 $defaults['isdn']['interface'] = array();
-$defaults['isdn']['interface']['name'] = "(unconfigured)";
+$defaults['isdn']['interface']['name'] = "(" . gettext("unconfigured") . ")";
 $defaults['isdn']['law'] = "alaw";
 $defaults['isdn']['nationalprefix'] = "0";
 $defaults['isdn']['internationalprefix'] = "00";
