@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 06:54+0000\n"
+"POT-Creation-Date: 2008-08-11 14:32+0200\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -461,6 +461,9 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
+msgid "Download"
+msgstr "Scaricare"
+
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -906,9 +909,6 @@ msgstr "Pulisci"
 
 msgid "Download:"
 msgstr "Scaricare:"
-
-msgid "Download"
-msgstr "Scaricare"
 
 msgid "Upload:"
 msgstr "Caricare:"
@@ -1547,6 +1547,12 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr ""
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -3413,148 +3419,3 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
-
-#, fuzzy
-#~ msgid "A notification subject must be specified."
-#~ msgstr "Deve essere specificata parola segreta valida."
-
-#, fuzzy
-#~ msgid "A notification message must be specified."
-#~ msgstr "Deve essere specificato un nome utente."
-
-#, fuzzy
-#~ msgid "User Defined"
-#~ msgstr "Nome utente"
-
-#, fuzzy
-#~ msgid "The dynamic DNS host name contains invalid characters."
-#~ msgstr "Il campo '%s' contiene dei caratteri non validi."
-
-#~ msgid "Backup/restore"
-#~ msgstr "Salvataggio/ripristino"
-
-#, fuzzy
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. The system will "
-#~ "reboot automatically after storing the new firmware. The configuration "
-#~ "will be maintained."
-#~ msgstr ""
-#~ "NON interrompere l'aggiornamento firmware una volta iniziato. Il sistema "
-#~ "si riavvierà automaticamente dopo la memorizzazione del nuovo firmware.La "
-#~ "configurazione verrà mantenuta. "
-
-#~ msgid "Main MSN"
-#~ msgstr "MSN principale"
-
-#~ msgid "Hint:"
-#~ msgstr "Suggerimento"
-
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-#~ "hostnames&quot; is checked on the"
-#~ msgstr ""
-#~ "Gli indirizzi IP vengono risolti in nomi host se \"Risolvere gli "
-#~ "indirizzi IP a nomi host\" è selezionato"
-
-#~ msgid "Diagnostics: Logs</a> page."
-#~ msgstr "Diagnostica: Pagina dei registri."
-
-#~ msgid "This is also this account's username."
-#~ msgstr "Questo è anche l'account del utente."
-
-#~ msgid "A valid Main MSN must be specified (all digits)."
-#~ msgstr ""
-#~ "Deve essere specificato un numero MSN principale valido (tutte le cifre)."
-
-#~ msgid "General setup"
-#~ msgstr "Impostazioni generali"
-
-#~ msgid "Readback Number"
-#~ msgstr "Numero letto all'interlocutore"
-
-#~ msgid "System: Firmware</a> page is viewed."
-#~ msgstr "Sistema: Firmware</a> è mostrata."
-
-#~ msgid "Last "
-#~ msgstr "Ultimo "
-
-#~ msgid " seconds"
-#~ msgstr "secondi"
-
-#~ msgid "If an analog interface is present but was not detected, please send "
-#~ msgstr ""
-#~ "Se un interfaccia analogica è stata installata ma non rilevata, per "
-#~ "favore inviare "
-
-#~ msgid "this output</a> to "
-#~ msgstr "questo resoconto </a> a "
-
-#~ msgid "If an ISDN interface is present but was not detected, please send "
-#~ msgstr ""
-#~ "Se è presente un interfaccia ISDN ma non è stata rilevata, per favore "
-#~ "manda "
-
-#~ msgid "If this is a USB ISDN device, send "
-#~ msgstr "Se questa è un dispositivo ISDN USB, manda "
-
-#~ msgid "this output</a> as well."
-#~ msgstr "questo resoconto</a>."
-
-#~ msgid " A minimum of "
-#~ msgstr "Un minimo di"
-
-#~ msgid "An extension must be a one to four digit number."
-#~ msgstr "L'interno deve essere un numero composto da 1 a quattro cifre."
-
-#~ msgid "Dial()"
-#~ msgstr "Dial()"
-
-#~ msgid " Command"
-#~ msgstr " Comando"
-
-#~ msgid "Warning: "
-#~ msgstr "Avvertenza:"
-
-#~ msgid "Conference "
-#~ msgstr "Conferenze"
-
-#~ msgid " if you can't see the graph, you may have to install the "
-#~ msgstr ""
-#~ "se non è possibile visualizzare il grafico, potrebbe essere necessario "
-#~ "installare il "
-
-#~ msgid "Adobe SVG viewer"
-#~ msgstr "Visualizzatore Adobe SVG"
-
-#~ msgid " Interface"
-#~ msgstr "Interfaccia"
-
-#~ msgid "activate package from backup data"
-#~ msgstr "attiva il pacchetto dai dati di backup"
-
-#~ msgid "Select a package .tgz archive and press 'Install'"
-#~ msgstr "Seleziona una pacchetto .tgz e premi 'Installa'"
-
-#~ msgid "cancel"
-#~ msgstr "annulla"
-
-#~ msgid "Select a package .tgz archive and press 'Update'"
-#~ msgstr "Seleziona un pacchetto .tgz e premi 'Aggiorna'"
-
-#~ msgid "display_incoming_extension_selector"
-#~ msgstr "display_incoming_extension_selector"
-
-#~ msgid "display_phone_access_selector"
-#~ msgstr "display_phone_access_selector"
-
-#~ msgid "display_provider_dialpattern_editor"
-#~ msgstr "display_provider_dialpattern_editor"
-
-#~ msgid "display_application_logic_editor"
-#~ msgstr "display_application_logic_editor"
-
-#~ msgid "display_manual_attributes_editor"
-#~ msgstr "display_manual_attributes_editor"
-
-#~ msgid "% of "
-#~ msgstr "% di"

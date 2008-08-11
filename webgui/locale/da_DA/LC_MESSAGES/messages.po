@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 06:54+0000\n"
+"POT-Creation-Date: 2008-08-11 14:32+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -449,6 +449,9 @@ msgstr "Deaktiver DNS SRV lookups."
 msgid "Debug"
 msgstr "Fejlsøg"
 
+msgid "Download"
+msgstr "Download"
+
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -863,9 +866,6 @@ msgstr "Slet"
 
 msgid "Download:"
 msgstr "Download:"
-
-msgid "Download"
-msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -1457,6 +1457,14 @@ msgstr "En gyldig e-mail addresse skal angives."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Ingen kompatible grænseflader fundet!</strong><br><br>"
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+"For at konfigurere denne type konto, sørg for at passende konfigureret "
+"grænseflade er tilstede på %s side"
 
 msgid "Internal extension used to reach this phone."
 msgstr "Intern extension brugt til at nå denne telefon."
@@ -3250,52 +3258,3 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
-
-#~ msgid ""
-#~ "To configure this type of account, make sure an appropriately configured "
-#~ "interface is present on the %s page"
-#~ msgstr ""
-#~ "For at konfigurere denne type konto, sørg for at passende konfigureret "
-#~ "grænseflade er tilstede på %s side"
-
-#~ msgid "Main MSN"
-#~ msgstr "Hoved MSN"
-
-#~ msgid "Hint:"
-#~ msgstr "Tip:"
-
-#~ msgid "Diagnostics: Logs</a> page."
-#~ msgstr "Diagnosticering: Logfiler</a> side."
-
-#~ msgid "This is also this account's username."
-#~ msgstr "Dette er også denne konto's brugernavn."
-
-#~ msgid "A valid Main MSN must be specified (all digits)."
-#~ msgstr "En gyldig hoved MSN skal angives (alle tal)"
-
-#~ msgid "General setup"
-#~ msgstr "General opsætning"
-
-#~ msgid "Backup/restore"
-#~ msgstr "Backup/reeatabler"
-
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. The system will "
-#~ "reboot automatically after storing the new firmware. The configuration "
-#~ "will be maintained."
-#~ msgstr ""
-#~ "Du må IKKE afbryde firmware opdateringen når den først er statet. "
-#~ "Systemmet vil genstarte automatisk når den nye firmware er gemt. "
-#~ "Konfigurationen bliver bevaret."
-
-#~ msgid "activate package from backup data"
-#~ msgstr "aktivere pakke fra backup data"
-
-#~ msgid "Select a .pbxpkg file and press 'Update'"
-#~ msgstr "Vælg en .pbxpkg fil og klik 'Opdater'"
-
-#~ msgid "Existing package data will be preserved."
-#~ msgstr "Eksisterende pakke data vil blive husket."
-
-#~ msgid "Readback Number"
-#~ msgstr "Vis nummer"

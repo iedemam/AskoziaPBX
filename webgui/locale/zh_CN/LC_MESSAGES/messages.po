@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 06:54+0000\n"
+"POT-Creation-Date: 2008-08-11 14:32+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -425,6 +425,9 @@ msgstr "禁用DNS SRV查找"
 
 msgid "Debug"
 msgstr "调试"
+
+msgid "Download"
+msgstr "下载"
 
 msgid "ISDN Interface"
 msgstr "ISDN界面"
@@ -843,9 +846,6 @@ msgstr "清空"
 
 msgid "Download:"
 msgstr "下载："
-
-msgid "Download"
-msgstr "下载"
 
 msgid "Upload:"
 msgstr "上载："
@@ -1449,6 +1449,12 @@ msgstr "必须指定一个有效的e-mail地址。"
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>没有找到兼容的接口！</strong><br><br>"
+
+#, fuzzy, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr "设置这类账号时，请确认一个适当配置的接口已经存在于 %t 页。 "
 
 msgid "Internal extension used to reach this phone."
 msgstr "内部分机用于达到此话机。"
@@ -3189,21 +3195,3 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
-
-#, fuzzy
-#~ msgid "A notification subject must be specified."
-#~ msgstr "必须输入一个有效的密码。"
-
-#, fuzzy
-#~ msgid "A notification message must be specified."
-#~ msgstr "必须指定一个用户名。"
-
-#, fuzzy
-#~ msgid "User Defined"
-#~ msgstr "用户名"
-
-#, fuzzy
-#~ msgid ""
-#~ "To configure this type of account, make sure an appropriately configured "
-#~ "interface is present on the %s page"
-#~ msgstr "设置这类账号时，请确认一个适当配置的接口已经存在于 %t 页。 "

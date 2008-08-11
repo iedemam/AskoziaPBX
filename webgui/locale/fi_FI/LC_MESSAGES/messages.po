@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 06:54+0000\n"
+"POT-Creation-Date: 2008-08-11 14:32+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -450,6 +450,9 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
+msgid "Download"
+msgstr "Lataa"
+
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -882,9 +885,6 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
-
-msgid "Download"
-msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -1532,6 +1532,12 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
