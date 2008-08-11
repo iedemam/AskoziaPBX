@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1013,18 +1013,6 @@ msgstr "Beskrivelse for dette interface"
 
 msgid "Disabled"
 msgstr "Deaktiveret"
-
-msgid "32"
-msgstr "32"
-
-msgid "64"
-msgstr "64"
-
-msgid "128"
-msgstr "128"
-
-msgid "256"
-msgstr "256"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -3228,6 +3216,10 @@ msgstr "Ildmur"
 msgid "reload page"
 msgstr "genopfrisk side"
 
+#, fuzzy
+msgid "unconfigured"
+msgstr "konfig"
+
 msgid "Package activated successfully."
 msgstr "Pakke aktiveret tilfredsstillende."
 
@@ -3258,3 +3250,15 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"

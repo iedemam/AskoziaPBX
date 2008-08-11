@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1044,18 +1044,6 @@ msgstr "Kuvaileva nimi tälle käyttöliittymälle"
 
 msgid "Disabled"
 msgstr "Poissa käytöstä"
-
-msgid "32"
-msgstr "32"
-
-msgid "64"
-msgstr "64"
-
-msgid "128"
-msgstr "128"
-
-msgid "256"
-msgstr "256"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -3321,6 +3309,10 @@ msgstr "Palomuuri"
 msgid "reload page"
 msgstr "Lataa sivua uudelleen"
 
+#, fuzzy
+msgid "unconfigured"
+msgstr "konfigurointi"
+
 msgid "Package activated successfully."
 msgstr "Paketti aktivoitiin onnistuneesti."
 
@@ -3351,3 +3343,15 @@ msgstr "%.0f Kt"
 #, php-format
 msgid "%d bytes"
 msgstr "%d tavua"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"

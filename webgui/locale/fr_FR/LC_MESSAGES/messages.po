@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -977,18 +977,6 @@ msgid "Descriptive name for this interface"
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
-
-msgid "32"
-msgstr ""
-
-msgid "64"
-msgstr ""
-
-msgid "128"
-msgstr ""
-
-msgid "256"
 msgstr ""
 
 msgid ""
@@ -3019,6 +3007,9 @@ msgid "Firewall"
 msgstr ""
 
 msgid "reload page"
+msgstr ""
+
+msgid "unconfigured"
 msgstr ""
 
 msgid "Package activated successfully."

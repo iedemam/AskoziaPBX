@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1067,18 +1067,6 @@ msgstr "Nome descrittivo di questa interfaccia"
 
 msgid "Disabled"
 msgstr "Disabilitato"
-
-msgid "32"
-msgstr "32"
-
-msgid "64"
-msgstr "64"
-
-msgid "128"
-msgstr "128"
-
-msgid "256"
-msgstr "256"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -3389,6 +3377,10 @@ msgstr "Firewall"
 msgid "reload page"
 msgstr "ricarica la pagina"
 
+#, fuzzy
+msgid "unconfigured"
+msgstr "config"
+
 msgid "Package activated successfully."
 msgstr "Pacchetto attivato correttamente."
 
@@ -3419,3 +3411,15 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"

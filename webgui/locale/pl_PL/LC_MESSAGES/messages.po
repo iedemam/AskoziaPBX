@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1009,18 +1009,6 @@ msgstr "Opisowa nazwa tego interfejsu"
 
 msgid "Disabled"
 msgstr "Wyłączony"
-
-msgid "32"
-msgstr "32"
-
-msgid "64"
-msgstr "64"
-
-msgid "128"
-msgstr "128"
-
-msgid "256"
-msgstr "256"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -3202,6 +3190,10 @@ msgstr "Zapora"
 msgid "reload page"
 msgstr "przeładuj stronę"
 
+#, fuzzy
+msgid "unconfigured"
+msgstr "konfiguracja"
+
 msgid "Package activated successfully."
 msgstr "Pakiet włączony poprawnie"
 
@@ -3232,3 +3224,15 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bajtów"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"

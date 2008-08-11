@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1001,18 +1001,6 @@ msgstr "这个接口的描述名"
 
 msgid "Disabled"
 msgstr "禁用"
-
-msgid "32"
-msgstr "32"
-
-msgid "64"
-msgstr "64"
-
-msgid "128"
-msgstr "128"
-
-msgid "256"
-msgstr "256"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -3165,6 +3153,10 @@ msgstr "防火墙"
 msgid "reload page"
 msgstr "重载页面"
 
+#, fuzzy
+msgid "unconfigured"
+msgstr "设置"
+
 msgid "Package activated successfully."
 msgstr "软件包成功启用。"
 
@@ -3195,3 +3187,15 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"

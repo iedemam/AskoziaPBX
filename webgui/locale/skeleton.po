@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 14:32+0200\n"
+"POT-Creation-Date: 2008-08-11 17:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -913,18 +913,6 @@ msgid "Descriptive name for this interface"
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
-
-msgid "32"
-msgstr ""
-
-msgid "64"
-msgstr ""
-
-msgid "128"
-msgstr ""
-
-msgid "256"
 msgstr ""
 
 msgid "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but require more processing power."
@@ -2755,6 +2743,9 @@ msgid "Firewall"
 msgstr ""
 
 msgid "reload page"
+msgstr ""
+
+msgid "unconfigured"
 msgstr ""
 
 msgid "Package activated successfully."
