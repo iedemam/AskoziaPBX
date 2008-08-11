@@ -1,3 +1,6 @@
+2008.xx.xx - pb14.2
+ - localization: Polish
+
 2008.08.08 - pb14.1
  - added: SIP & IAX2 URIs are now usable as dialstrings for external phone accounts
  - added: log reverse sort order option reinstated

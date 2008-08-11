@@ -315,7 +315,7 @@ function display_gui_language_selector($current_language) {
 		"de_DE" => "Deutsch (0%)",
 		"fr_FR" => "Français (0%)",
 		"it_IT" => "Italiano (70%)",
-		"pl_PL" => "Język polski (0%)",
+		"pl_PL" => "Język polski (90%)",
 		"nl_NL" => "Nederlands (60%)",
 		"pt_BR" => "Português (0%)",
 		"fi_FI" => "Suomi",
