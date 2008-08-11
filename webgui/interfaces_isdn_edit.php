@@ -45,13 +45,7 @@ $a_isdninterfaces = &$config['interfaces']['isdn-unit'];
 
 $configured_units = array();
 foreach ($a_isdninterfaces as $interface) {
-	$configured_units[$interface['unit']]['name'] = $interface['name'];
-	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
-	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
-	$configured_units[$interface['unit']]['pcmslave'] = $interface['pcmslave'];
-	$configured_units[$interface['unit']]['nopwrsave'] = $interface['nopwrsave'];
-	$configured_units[$interface['unit']]['pollmode'] = $interface['pollmode'];
-	$configured_units[$interface['unit']]['manual-attribute'] = $interface['manual-attribute'];
+	$configured_units[$interface['unit']] = $interface;
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();
@@ -67,17 +61,11 @@ for ($i = 0; $i <= $n; $i++) {
 		continue;
 	}
 	if (isset($configured_units[$i])) {
+		$merged_units[$i] = $configured_units[$i];
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = $configured_units[$i]['name'];
-		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
-		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
-		$merged_units[$i]['pcmslave'] = $configured_units[$i]['pcmslave'];
-		$merged_units[$i]['nopwrsave'] = $configured_units[$i]['nopwrsave'];
-		$merged_units[$i]['pollmode'] = $configured_units[$i]['pollmode'];
-		$merged_units[$i]['manual-attribute'] = $configured_units[$i]['manual-attribute'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = "(unconfigured)";
+		$merged_units[$i]['name'] = $defaults['isdn']['interface']['name'];
 	}
 }
 
@@ -164,7 +152,7 @@ if ($_POST) {
 	<tr> 
 		<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		<td width="80%" class="vtable">
-			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != "(unconfigured)") ? $pconfig['name'] : "isdn #$unit");?>"> 
+			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != $defaults['isdn']['interface']['name']) ? $pconfig['name'] : "isdn #$unit");?>"> 
 			<br><span class="vexpl"><?=gettext("Descriptive name for this interface");?></span>
 		</td>
 	</tr>

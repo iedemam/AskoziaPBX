@@ -42,16 +42,9 @@ analog_sort_ab_interfaces();
 $a_abinterfaces = &$config['interfaces']['ab-unit'];
 
 
-
-
 $configured_units = array();
 foreach ($a_abinterfaces as $interface) {
-	$configured_units[$interface['unit']]['name'] = $interface['name'];
-	$configured_units[$interface['unit']]['type'] = $interface['type'];
-	$configured_units[$interface['unit']]['startsignal'] = $interface['startsignal'];
-	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
-	$configured_units[$interface['unit']]['rxgain'] = $interface['rxgain'];
-	$configured_units[$interface['unit']]['txgain'] = $interface['txgain'];
+	$configured_units[$interface['unit']] = $interface;
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -67,19 +60,14 @@ for ($i = 0; $i <= $n; $i++) {
 		continue;
 	}
 	if (isset($configured_units[$i])) {
+		$merged_units[$i] = $configured_units[$i];
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = $configured_units[$i]['name'];
-		$merged_units[$i]['type'] = $configured_units[$i]['type'];
-		$merged_units[$i]['startsignal'] = $configured_units[$i]['startsignal'];
-		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
-		$merged_units[$i]['rxgain'] = $configured_units[$i]['rxgain'];
-		$merged_units[$i]['txgain'] = $configured_units[$i]['txgain'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = "(unconfigured)";
+		$merged_units[$i]['name'] = $defaults['analog']['interface']['name'];
 		$merged_units[$i]['type'] = $recognized_units[$i];
-		$merged_units[$i]['startsignal'] = "ks";
-		$merged_units[$i]['echocancel'] = "128";
+		$merged_units[$i]['startsignal'] = $defaults['analog']['interface']['startsignal'];
+		$merged_units[$i]['echocancel'] = $defaults['analog']['interface']['echocancel'];
 	}
 }
 
@@ -160,7 +148,7 @@ if (file_exists($d_analogconfdirty_path)) {
 				</tr><?	
 			
 				foreach ($merged_units as $mu) {
-					if ($mu['name'] != "(unconfigured)") {
+					if ($mu['name'] != $defaults['analog']['interface']['name']) {
 						// set start signal text
 						if (isset($mu['startsignal'])) {
 							$startsignal = $analog_startsignals[$mu['startsignal']];
@@ -184,9 +172,9 @@ if (file_exists($d_analogconfdirty_path)) {
 
 						// set echo cancel text
 						if (!isset($mu['echocancel'])) {
-							$ecfield = "128";
+							$ecfield = $defaults['analog']['interface']['echocancel'];
 						} else if ($mu['echocancel'] == "no") {
-							$ecfield = "Disabled";
+							$ecfield = gettext("Disabled");
 						} else {
 							$ecfield = $mu['echocancel'];
 						}
@@ -205,7 +193,7 @@ if (file_exists($d_analogconfdirty_path)) {
 					<td class="listr"><?=htmlspecialchars($gain);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($ecfield);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list"><a href="interfaces_analog_edit.php?unit=<?=$mu['unit'];?>&type=<?=$mu['type'];?>"><img src="edit.png" title="<?=gettext("edit analog interface");?>" border="0"></a>
-					<? if ($mu['name'] != "(unconfigured)") : ?>
+					<? if ($mu['name'] != $defaults['analog']['interface']['name']) : ?>
 						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this interface\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget interface settings");?>" border="0"></a>
 					<? endif; ?>
 					</td>

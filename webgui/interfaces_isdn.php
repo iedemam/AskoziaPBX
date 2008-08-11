@@ -43,9 +43,7 @@ $a_isdninterfaces = &$config['interfaces']['isdn-unit'];
 
 $configured_units = array();
 foreach ($a_isdninterfaces as $interface) {
-	$configured_units[$interface['unit']]['name'] = $interface['name'];
-	$configured_units[$interface['unit']]['mode'] = $interface['mode'];
-	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
+	$configured_units[$interface['unit']] = $interface;
 }
 
 $recognized_units = isdn_get_recognized_unit_numbers();
@@ -61,13 +59,11 @@ for ($i = 0; $i <= $n; $i++) {
 		continue;
 	}
 	if (isset($configured_units[$i])) {
+		$merged_units[$i] = $configured_units[$i];
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = $configured_units[$i]['name'];
-		$merged_units[$i]['mode'] = $configured_units[$i]['mode'];
-		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = "(unconfigured)";
+		$merged_units[$i]['name'] = $defaults['isdn']['interface']['name'];
 	}
 }
 
@@ -149,8 +145,8 @@ if (file_exists($d_isdnconfdirty_path)) {
 				</tr><?	
 
 			foreach ($merged_units as $mu) {
-				if ($mu['name'] != "(unconfigured)") {
-					$echocancel = $mu['echocancel'] ? "Enabled" : "Disabled";
+				if ($mu['name'] != $defaults['isdn']['interface']['name']) {
+					$echocancel = $mu['echocancel'] ? gettext("Enabled") : gettext("Disabled");
 				} else {
 					$echocancel = "";
 				}
@@ -161,7 +157,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
 					<td valign="middle" nowrap class="list"><a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="<?=gettext("edit ISDN interface");?>" border="0"></a>
-					<? if ($mu['name'] != "(unconfigured)") : ?>
+					<? if ($mu['name'] != $defaults['isdn']['interface']['name']) : ?>
 						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this interface\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget interface settings");?>" border="0"></a>
 					<? endif; ?>
 					</td>

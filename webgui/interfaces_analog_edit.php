@@ -50,16 +50,9 @@ if (!is_array($config['interfaces']['ab-unit']))
 analog_sort_ab_interfaces();
 $a_abinterfaces = &$config['interfaces']['ab-unit'];
 
-// XXX : these merging and sorting bits in isdn and analog interfaces need a rewrite
 $configured_units = array();
 foreach ($a_abinterfaces as $interface) {
-	$configured_units[$interface['unit']]['name'] = $interface['name'];
-	$configured_units[$interface['unit']]['type'] = $interface['type'];
-	$configured_units[$interface['unit']]['startsignal'] = $interface['startsignal'];
-	$configured_units[$interface['unit']]['echocancel'] = $interface['echocancel'];
-	$configured_units[$interface['unit']]['rxgain'] = $interface['rxgain'];
-	$configured_units[$interface['unit']]['txgain'] = $interface['txgain'];
-	$configured_units[$interface['unit']]['manual-attribute'] = $interface['manual-attribute'];
+	$configured_units[$interface['unit']] = $interface;
 }
 
 $recognized_units = analog_get_recognized_ab_unit_numbers();
@@ -75,19 +68,13 @@ for ($i = 0; $i <= $n; $i++) {
 		continue;
 	}
 	if (isset($configured_units[$i])) {
+		$merged_units[$i] = $configured_units[$i];
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = $configured_units[$i]['name'];
-		$merged_units[$i]['type'] = $configured_units[$i]['type'];
-		$merged_units[$i]['startsignal'] = $configured_units[$i]['startsignal'];
-		$merged_units[$i]['echocancel'] = $configured_units[$i]['echocancel'];
-		$merged_units[$i]['rxgain'] = $configured_units[$i]['rxgain'];
-		$merged_units[$i]['txgain'] = $configured_units[$i]['txgain'];
-		$merged_units[$i]['manual-attribute'] = $configured_units[$i]['manual-attribute'];
 	} else {
 		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = "(unconfigured)";
+		$merged_units[$i]['name'] = $defaults['analog']['interface']['name'];
 		$merged_units[$i]['type'] = $recognized_units[$i];
-		$merged_units[$i]['startsignal'] = "ks";
+		$merged_units[$i]['startsignal'] = $defaults['analog']['interface']['startsignal'];
 	}
 }
 
@@ -96,7 +83,7 @@ $pconfig['unit'] = $merged_units[$unit]['unit'];
 $pconfig['name'] = $merged_units[$unit]['name'];
 $pconfig['type'] = $merged_units[$unit]['type'];
 $pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
-$pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : "128";
+$pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : $defaults['analog']['interface']['echocancel'];
 $pconfig['rxgain'] = $merged_units[$unit]['rxgain'];
 $pconfig['txgain'] = $merged_units[$unit]['txgain'];
 $pconfig['manual-attribute'] = $merged_units[$unit]['manual-attribute'];
@@ -122,8 +109,8 @@ if ($_POST) {
 				if ($a_abinterfaces[$i]['unit'] == $unit) {
 					$a_abinterfaces[$i]['name'] = $_POST['name'];
 					$a_abinterfaces[$i]['type'] = $_POST['type'];
-					$a_abinterfaces[$i]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
-					$a_abinterfaces[$i]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
+					$a_abinterfaces[$i]['startsignal'] = verify_non_default($_POST['startsignal'], $defaults['analog']['interface']['startsignal']);
+					$a_abinterfaces[$i]['echocancel'] = verify_non_default($_POST['echocancel'], $defaults['analog']['interface']['echocancel']);
 					$a_abinterfaces[$i]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
 					$a_abinterfaces[$i]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
 					$a_abinterfaces[$i]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
@@ -134,8 +121,8 @@ if ($_POST) {
 			$a_abinterfaces[$n]['unit'] = $unit;
 			$a_abinterfaces[$n]['name'] = $_POST['name'];
 			$a_abinterfaces[$n]['type'] = $_POST['type'];
-			$a_abinterfaces[$n]['startsignal'] = ($_POST['startsignal'] != "ks") ? $_POST['startsignal'] : false;
-			$a_abinterfaces[$n]['echocancel'] = ($_POST['echocancel'] != "128") ? $_POST['echocancel'] : false;
+			$a_abinterfaces[$n]['startsignal'] = verify_non_default($_POST['startsignal'], $defaults['analog']['interface']['startsignal']);
+			$a_abinterfaces[$n]['echocancel'] = verify_non_default($_POST['echocancel'], $defaults['analog']['interface']['echocancel']);
 			$a_abinterfaces[$n]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
 			$a_abinterfaces[$n]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
 			$a_abinterfaces[$n]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
@@ -177,12 +164,22 @@ if ($_POST) {
 		<td valign="top" class="vncell"><?=gettext("Echo Canceller");?></td>
 		<td class="vtable">
 			<select name="echocancel" class="formfld" id="echocancel">
-				<option value="no" <? if ($pconfig['echocancel'] == "no") echo "selected"; ?>><?=gettext("Disabled");?></option>
-				<option value="32" <? if ($pconfig['echocancel'] == "32") echo "selected"; ?>><?=gettext("32");?></option>
-				<option value="64" <? if ($pconfig['echocancel'] == "64") echo "selected"; ?>><?=gettext("64");?></option>
-				<option value="128" <? if ($pconfig['echocancel'] == "128") echo "selected"; ?>><?=gettext("128");?></option>
-				<option value="256" <? if ($pconfig['echocancel'] == "256") echo "selected"; ?>><?=gettext("256");?></option>
-			</select>
+				<option value="no" <?
+				if ($pconfig['echocancel'] == "no") {
+					echo "selected";
+				}
+				?>><?=gettext("Disabled");?></option><?
+				
+				$tapvals = array(32, 64, 128, 256);
+				foreach ($tapvals as $tapval) {
+					?><option value="<?=$tapval;?>" <?
+					if ($pconfig['echocancel'] == $tapval) {
+						echo "selected";
+					}
+					?>><?=$tapval;?></option><?
+				}
+
+			?></select>
 			<br><span class="vexpl"><?=gettext("The echo canceller 'tap' size. Larger sizes more effectively cancel echo but require more processing power.");?></span>
 		</td>
 	</tr>
@@ -191,14 +188,17 @@ if ($_POST) {
 	<tr> 
 		<td valign="top" class="vncell"><?=gettext("Start Signaling");?></td>
 		<td class="vtable">
-			<select name="startsignal" class="formfld" id="startsignal">
-			<? foreach ($analog_startsignals as $signalabb => $signalname) : ?>
-			<option value="<?=$signalabb;?>" <?
-			if ($signalabb == $pconfig['startsignal'])
-				echo "selected"; ?>
-			><?=$signalname;?></option>
-			<? endforeach; ?>
-			</select>
+			<select name="startsignal" class="formfld" id="startsignal"><?
+
+			foreach ($analog_startsignals as $signalabb => $signalname) {
+				?><option value="<?=$signalabb;?>" <?
+				if ($signalabb == $pconfig['startsignal']) {
+					echo "selected";
+				}
+				?>><?=$signalname;?></option><?
+			}
+
+			?></select>
 			<br><span class="vexpl"><?=gettext("In nearly all cases, 'Kewl Start' is the appropriate choice here.");?></span>
 		</td>
 	</tr>

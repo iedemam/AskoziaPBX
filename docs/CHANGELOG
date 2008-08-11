@@ -2,6 +2,7 @@
  - localization: Polish
  - updated: PHP to 4.4.9
  - bug: reverting to jquery 1.2.1 - fixes a few javascript incompatibilities introduced in 1.2.6
+ - refactor: Analog and ISDN interface pages cleaned up
 
 2008.08.08 - pb14.1
  - added: SIP & IAX2 URIs are now usable as dialstrings for external phone accounts
