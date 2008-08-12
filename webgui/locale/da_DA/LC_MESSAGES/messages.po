@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -449,9 +449,6 @@ msgstr "Deaktiver DNS SRV lookups."
 msgid "Debug"
 msgstr "Fejlsøg"
 
-msgid "Download"
-msgstr "Download"
-
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -867,6 +864,9 @@ msgstr "Slet"
 msgid "Download:"
 msgstr "Download:"
 
+msgid "Download"
+msgstr "Download"
+
 msgid "Upload:"
 msgstr "Upload:"
 
@@ -981,6 +981,9 @@ msgstr ""
 msgid "Echo Canceller"
 msgstr "Echo Undertrykkelse"
 
+msgid "Disabled"
+msgstr "Deaktiveret"
+
 msgid "edit analog interface"
 msgstr "rediger analog interface"
 
@@ -1010,9 +1013,6 @@ msgstr "Interface #"
 
 msgid "Descriptive name for this interface"
 msgstr "Beskrivelse for dette interface"
-
-msgid "Disabled"
-msgstr "Deaktiveret"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -1055,6 +1055,9 @@ msgstr ""
 
 msgid "Operating Mode"
 msgstr ""
+
+msgid "Enabled"
+msgstr "Aktiveret"
 
 msgid "edit ISDN interface"
 msgstr "Rediger ISDN interface"
@@ -1445,14 +1448,6 @@ msgstr "En gyldig e-mail addresse skal angives."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Ingen kompatible grænseflader fundet!</strong><br><br>"
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-"For at konfigurere denne type konto, sørg for at passende konfigureret "
-"grænseflade er tilstede på %s side"
 
 msgid "Internal extension used to reach this phone."
 msgstr "Intern extension brugt til at nå denne telefon."
@@ -2395,9 +2390,6 @@ msgstr "Vælg hvilket sprog der skal bruges i webGUI."
 msgid "Audio Codecs"
 msgstr "Lyd Codecs"
 
-msgid "Enabled"
-msgstr "Aktiveret"
-
 msgid "Video Codecs"
 msgstr "Video Codecs"
 
@@ -3250,6 +3242,13 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#~ msgid ""
+#~ "To configure this type of account, make sure an appropriately configured "
+#~ "interface is present on the %s page"
+#~ msgstr ""
+#~ "For at konfigurere denne type konto, sørg for at passende konfigureret "
+#~ "grænseflade er tilstede på %s side"
 
 #~ msgid "32"
 #~ msgstr "32"

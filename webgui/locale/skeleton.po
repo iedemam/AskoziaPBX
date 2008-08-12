@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,9 +397,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Download"
-msgstr ""
-
 msgid "ISDN Interface"
 msgstr ""
 
@@ -779,6 +776,9 @@ msgstr ""
 msgid "Download:"
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Upload:"
 msgstr ""
 
@@ -888,6 +888,9 @@ msgstr ""
 msgid "Echo Canceller"
 msgstr ""
 
+msgid "Disabled"
+msgstr ""
+
 msgid "edit analog interface"
 msgstr ""
 
@@ -910,9 +913,6 @@ msgid "Interface #"
 msgstr ""
 
 msgid "Descriptive name for this interface"
-msgstr ""
-
-msgid "Disabled"
 msgstr ""
 
 msgid "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but require more processing power."
@@ -943,6 +943,9 @@ msgid "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/ud
 msgstr ""
 
 msgid "Operating Mode"
+msgstr ""
+
+msgid "Enabled"
 msgstr ""
 
 msgid "edit ISDN interface"
@@ -1258,10 +1261,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2052,9 +2051,6 @@ msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
 
 msgid "Audio Codecs"
-msgstr ""
-
-msgid "Enabled"
 msgstr ""
 
 msgid "Video Codecs"

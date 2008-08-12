@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -432,9 +432,6 @@ msgstr "Wyłącz wyszukiwania rekordów SRV DNS."
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Pobrano"
-
 msgid "ISDN Interface"
 msgstr "Interfejs ISDN"
 
@@ -851,6 +848,9 @@ msgstr "Wyczyść"
 msgid "Download:"
 msgstr "Pobrano:"
 
+msgid "Download"
+msgstr "Pobrano"
+
 msgid "Upload:"
 msgstr "Wysłano:"
 
@@ -971,6 +971,9 @@ msgstr "Gain (rx/tx)"
 msgid "Echo Canceller"
 msgstr "Echo Canceller"
 
+msgid "Disabled"
+msgstr "Wyłączony"
+
 msgid "edit analog interface"
 msgstr "edytuj interfejs analogowy"
 
@@ -1006,9 +1009,6 @@ msgstr "Interfejs #"
 
 msgid "Descriptive name for this interface"
 msgstr "Opisowa nazwa tego interfejsu"
-
-msgid "Disabled"
-msgstr "Wyłączony"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -1062,6 +1062,9 @@ msgstr ""
 
 msgid "Operating Mode"
 msgstr "Tryb Pracy"
+
+msgid "Enabled"
+msgstr "Włączony"
 
 msgid "edit ISDN interface"
 msgstr "edytuj interfejs ISDN"
@@ -1473,12 +1476,6 @@ msgstr "Należy podać poprawny adres e-mail."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Nie znaleziono kompatybilnych interfejsów! </strong><br><br>"
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr ""
@@ -2414,9 +2411,6 @@ msgstr "Wybierz język w którym chcesz używać webGUI."
 
 msgid "Audio Codecs"
 msgstr "Kodeki Audio"
-
-msgid "Enabled"
-msgstr "Włączony"
 
 msgid "Video Codecs"
 msgstr "Kodeki Video"

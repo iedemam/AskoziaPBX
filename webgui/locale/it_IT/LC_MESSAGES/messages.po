@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -461,9 +461,6 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Scaricare"
-
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -910,6 +907,9 @@ msgstr "Pulisci"
 msgid "Download:"
 msgstr "Scaricare:"
 
+msgid "Download"
+msgstr "Scaricare"
+
 msgid "Upload:"
 msgstr "Caricare:"
 
@@ -1024,6 +1024,9 @@ msgstr "Guadagno (rx/tx)"
 msgid "Echo Canceller"
 msgstr "Cancellatore eco"
 
+msgid "Disabled"
+msgstr "Disabilitato"
+
 msgid "edit analog interface"
 msgstr "modifica l'interfaccia analogica"
 
@@ -1064,9 +1067,6 @@ msgstr "l'interfaccia analogica #"
 
 msgid "Descriptive name for this interface"
 msgstr "Nome descrittivo di questa interfaccia"
-
-msgid "Disabled"
-msgstr "Disabilitato"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -1111,6 +1111,9 @@ msgstr ""
 
 msgid "Operating Mode"
 msgstr "Modo operativo"
+
+msgid "Enabled"
+msgstr "Abilitato"
 
 msgid "edit ISDN interface"
 msgstr "modifica l'interfaccia ISDN"
@@ -1535,12 +1538,6 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2527,9 +2524,6 @@ msgstr "Seleziona in quale lingua l'interfaccia WEB deve essere mostrata."
 
 msgid "Audio Codecs"
 msgstr "Codificatori Audio"
-
-msgid "Enabled"
-msgstr "Abilitato"
 
 msgid "Video Codecs"
 msgstr "Codificatori Video"

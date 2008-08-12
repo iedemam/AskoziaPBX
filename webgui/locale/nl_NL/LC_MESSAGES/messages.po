@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -460,9 +460,6 @@ msgstr "DNS SRV lookups uitschakelen."
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Download"
-
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
@@ -905,6 +902,9 @@ msgstr "Wis"
 msgid "Download:"
 msgstr "Download:"
 
+msgid "Download"
+msgstr "Download"
+
 msgid "Upload:"
 msgstr "Upload:"
 
@@ -1025,6 +1025,9 @@ msgstr "Gain (rx/tx)"
 msgid "Echo Canceller"
 msgstr "Echo verwijderen"
 
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
 msgid "edit analog interface"
 msgstr "bewerk analoge interface"
 
@@ -1062,9 +1065,6 @@ msgstr "Interface #"
 
 msgid "Descriptive name for this interface"
 msgstr "Beschrijvende naam voor deze interface"
-
-msgid "Disabled"
-msgstr "Uitgeschakeld"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -1119,6 +1119,9 @@ msgstr ""
 
 msgid "Operating Mode"
 msgstr "Operatie Mode"
+
+msgid "Enabled"
+msgstr ""
 
 msgid "edit ISDN interface"
 msgstr "bewerk ISDN interface"
@@ -1522,12 +1525,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2406,9 +2403,6 @@ msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
 
 msgid "Audio Codecs"
-msgstr ""
-
-msgid "Enabled"
 msgstr ""
 
 msgid "Video Codecs"

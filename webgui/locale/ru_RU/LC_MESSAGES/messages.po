@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -419,9 +419,6 @@ msgid "Disable DNS SRV lookups."
 msgstr ""
 
 msgid "Debug"
-msgstr ""
-
-msgid "Download"
 msgstr ""
 
 msgid "ISDN Interface"
@@ -832,6 +829,9 @@ msgstr ""
 msgid "Download:"
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Upload:"
 msgstr ""
 
@@ -946,6 +946,9 @@ msgstr ""
 msgid "Echo Canceller"
 msgstr ""
 
+msgid "Disabled"
+msgstr ""
+
 msgid "edit analog interface"
 msgstr ""
 
@@ -974,9 +977,6 @@ msgid "Interface #"
 msgstr ""
 
 msgid "Descriptive name for this interface"
-msgstr ""
-
-msgid "Disabled"
 msgstr ""
 
 msgid ""
@@ -1018,6 +1018,9 @@ msgid ""
 msgstr ""
 
 msgid "Operating Mode"
+msgstr ""
+
+msgid "Enabled"
 msgstr ""
 
 msgid "edit ISDN interface"
@@ -1382,12 +1385,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2260,9 +2257,6 @@ msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
 
 msgid "Audio Codecs"
-msgstr ""
-
-msgid "Enabled"
 msgstr ""
 
 msgid "Video Codecs"

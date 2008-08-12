@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-11 17:01+0200\n"
+"POT-Creation-Date: 2008-08-06 14:45+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -425,9 +425,6 @@ msgstr "禁用DNS SRV查找"
 
 msgid "Debug"
 msgstr "调试"
-
-msgid "Download"
-msgstr "下载"
 
 msgid "ISDN Interface"
 msgstr "ISDN界面"
@@ -847,6 +844,9 @@ msgstr "清空"
 msgid "Download:"
 msgstr "下载："
 
+msgid "Download"
+msgstr "下载"
+
 msgid "Upload:"
 msgstr "上载："
 
@@ -965,6 +965,9 @@ msgstr "增益 (rx/tx)"
 msgid "Echo Canceller"
 msgstr "回声补偿器"
 
+msgid "Disabled"
+msgstr "禁用"
+
 msgid "edit analog interface"
 msgstr "编辑模拟接口"
 
@@ -998,9 +1001,6 @@ msgstr "接口 #"
 
 msgid "Descriptive name for this interface"
 msgstr "这个接口的描述名"
-
-msgid "Disabled"
-msgstr "禁用"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -1052,6 +1052,9 @@ msgstr ""
 
 msgid "Operating Mode"
 msgstr "操作模式"
+
+msgid "Enabled"
+msgstr "允许的"
 
 msgid "edit ISDN interface"
 msgstr "编剧ISDN接口"
@@ -1437,12 +1440,6 @@ msgstr "必须指定一个有效的e-mail地址。"
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>没有找到兼容的接口！</strong><br><br>"
-
-#, fuzzy, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr "设置这类账号时，请确认一个适当配置的接口已经存在于 %t 页。 "
 
 msgid "Internal extension used to reach this phone."
 msgstr "内部分机用于达到此话机。"
@@ -2352,9 +2349,6 @@ msgstr "请选择您希望本设置界面显示的语言。"
 msgid "Audio Codecs"
 msgstr "音频编解码"
 
-msgid "Enabled"
-msgstr "允许的"
-
 msgid "Video Codecs"
 msgstr "视频编解码"
 
@@ -3187,6 +3181,12 @@ msgstr "%.0f KB"
 #, php-format
 msgid "%d bytes"
 msgstr "%d bytes"
+
+#, fuzzy
+#~ msgid ""
+#~ "To configure this type of account, make sure an appropriately configured "
+#~ "interface is present on the %s page"
+#~ msgstr "设置这类账号时，请确认一个适当配置的接口已经存在于 %t 页。 "
 
 #~ msgid "32"
 #~ msgstr "32"
