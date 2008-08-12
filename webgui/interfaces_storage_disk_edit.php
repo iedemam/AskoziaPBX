@@ -29,13 +29,13 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
+$pgtitle = array(gettext("Interfaces"), gettext("Storage"), gettext("Edit Disk"));
+
 $dev = $_GET['dev'];
 if (isset($_POST['dev']))
 	$dev = $_POST['dev'];
-
-$pgtitle = array(gettext("Interfaces"), gettext("Storage"), gettext("Edit Disk"));
-require("guiconfig.inc");
-
 
 /* merge recognized and configured info on a different level */
 /* references needed to modify disk, or finally move over to functions for updates */
@@ -61,7 +61,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 <form action="interfaces_storage_disk_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 

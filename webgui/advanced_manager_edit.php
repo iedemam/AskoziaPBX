@@ -29,10 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
+require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("Manager Interface"), gettext("Edit User"));
-require("guiconfig.inc");
 
 if (!is_array($config['services']['manager']['manager-user']))
 	$config['services']['manager']['manager-user'] = array();
@@ -64,9 +63,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "username secret denyip denynetmask permitip permitnetmask");
-	$reqdfieldsn = explode(",", gettext("Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"));
+	$reqdfieldsn = explode(",", "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask");
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['username'] == "admin") {
 		$input_errors[] = gettext("The username of \"admin\" is already used internally by AskoziaPBX.");
@@ -112,7 +111,7 @@ if ($_POST) {
 
 include("fbegin.inc");
 
-if ($input_errors) print_input_errors($input_errors);
+if ($input_errors) display_input_errors($input_errors);
 
 	?><form action="advanced_manager_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
@@ -155,7 +154,7 @@ if ($input_errors) print_input_errors($input_errors);
 				foreach ($manager_permissions as $perm) {
 					?><input name="read-<?=$perm;?>" id="read-<?=$perm;?>" type="checkbox" value="yes" <?
 					if (in_array($perm, $pconfig['read-permission'])) echo "checked"; 
-					?>><?=gettext($perm);?><br><?
+					?>><?=$perm;?><br><?
 				}
 				?></td>
 				<td width="55%" class="vtable" valign="top">
@@ -163,7 +162,7 @@ if ($input_errors) print_input_errors($input_errors);
 				foreach ($manager_permissions as $perm) {
 					?><input name="write-<?=$perm;?>" id="write-<?=$perm;?>" type="checkbox" value="yes" <?
 					if (in_array($perm, $pconfig['write-permission'])) echo "checked"; 
-					?>><?=gettext($perm);?><br><?
+					?>><?=$perm;?><br><?
 				}
 				?></td>
 			</tr>

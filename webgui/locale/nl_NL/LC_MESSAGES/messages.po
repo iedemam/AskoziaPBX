@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 14:45+0000\n"
+"POT-Creation-Date: 2008-08-12 15:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -278,9 +278,6 @@ msgstr "Laat ISDN gerelateerd instellingen niet zien."
 msgid "Hide Analog related options"
 msgstr "Laat Analoog gerelateerd instellingen niet zien."
 
-msgid "Port"
-msgstr "Poort"
-
 msgid "A valid port must be specified."
 msgstr "Een geldige poort moet geselecteerd worden."
 
@@ -304,9 +301,6 @@ msgstr "Kracht"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Gebruik Storingsbuffer ook in gebrugde mode tussen 2 eind punten."
-
-msgid "National Prefix, International Prefix"
-msgstr "Nationale Prefix, Internationale Prefix"
 
 msgid "A valid national prefix must be specified."
 msgstr "Een geldige nationale prefix moet worden gekozen."
@@ -356,10 +350,6 @@ msgstr "voeg beheerder gebruiker toe"
 msgid "Edit User"
 msgstr "Gebruiker wijzigen"
 
-msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr ""
-"Gebruikersnaam,Geheim,Negeer IP,Negeer Netmask,IP Toelaten,Netmask Toelaten"
-
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr ""
 "De gebruikersnaam \"admin\" is reeds intern in gebruik door AskoziaPBX."
@@ -387,9 +377,6 @@ msgstr "Schrijf"
 
 msgid "RTP"
 msgstr "RTP"
-
-msgid "Low RTP Port,High RTP Port"
-msgstr "Lage RTP Poort,Hoge RTP poort"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "De hoge RTP poort moet groter zijn dan de lage RTP poort."
@@ -459,6 +446,9 @@ msgstr "DNS SRV lookups uitschakelen."
 
 msgid "Debug"
 msgstr "Debug"
+
+msgid "Download"
+msgstr "Download"
 
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
@@ -640,9 +630,6 @@ msgstr "Output"
 msgid "Ping"
 msgstr "Ping"
 
-msgid "Host,Count"
-msgstr "Host,Tellen"
-
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr "Tellen moet tussen de 1 en %d "
@@ -655,9 +642,6 @@ msgstr "Tellen"
 
 msgid "Ping output:"
 msgstr "Ping output:"
-
-msgid "Host,ttl"
-msgstr "Host,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
@@ -697,9 +681,6 @@ msgstr ""
 "gedefineerde post worden bereikt of gebruikt als een bestemming voor "
 "inkomende gesprekken van Providers."
 
-msgid "name"
-msgstr "naam"
-
 msgid "descr"
 msgstr "omschr"
 
@@ -717,9 +698,6 @@ msgstr "programma mapping toevoegen"
 
 msgid "Edit"
 msgstr "Bewerken"
-
-msgid "Name,Extension,Application Logic"
-msgstr "Naam,Post,Programma Logica"
 
 msgid "A valid extension must be entered."
 msgstr "Een geldig post moet worden gekozen."
@@ -770,11 +748,6 @@ msgstr ""
 "Een verscheidenheid aan instellingen kan u hier zien welke bepalen hoe "
 "doorschakelen en parkeren gebeurd. De standaard waarden zouden in meeste "
 "gevallen moeten werken."
-
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr ""
-"Post Parkeren,Parkeren Start Positie,Parkeren Stop Positie, Parkeer Tijd"
 
 msgid "A valid parking start position must be specified."
 msgstr "Een geldige Parkeer start positie moet worden gekozen."
@@ -901,9 +874,6 @@ msgstr "Wis"
 
 msgid "Download:"
 msgstr "Download:"
-
-msgid "Download"
-msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -1204,9 +1174,6 @@ msgstr ""
 "worden verbonden. Als dit systeem zich achter een NAT bevind, standaard "
 "vereist AskoziaPBX dat de volgende poorten worden geforward aan het: 5060 "
 "UDP (SIP), 4569 UDP (IAX) en 10000-10200 UDP (RTP Audio)"
-
-msgid "IP address,Subnet bit count,Gateway,Network topology"
-msgstr "IP-adres, Subnet bit count, Gateway, netwerktopologie"
 
 msgid "A valid MAC address must be specified."
 msgstr "Een geldig MAC-adres moeten worden opgegeven."
@@ -1511,9 +1478,6 @@ msgstr ""
 msgid "Edit Analog Line"
 msgstr ""
 
-msgid "Extension,Caller ID"
-msgstr ""
-
 msgid "A valid Caller ID must be specified."
 msgstr ""
 
@@ -1527,6 +1491,12 @@ msgstr ""
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr ""
 
@@ -1534,9 +1504,6 @@ msgid "Analog Interface"
 msgstr ""
 
 msgid "Edit External Line"
-msgstr ""
-
-msgid "Extension,Name,Dialstring,Provider"
 msgstr ""
 
 msgid "The internal extension used to dial this phone."
@@ -1667,9 +1634,6 @@ msgstr ""
 msgid "Telephone number assigned to this line."
 msgstr ""
 
-msgid "Name,Username,Host"
-msgstr ""
-
 msgid "A valid username must be specified."
 msgstr ""
 
@@ -1748,9 +1712,6 @@ msgstr ""
 msgid "Edit Room"
 msgstr ""
 
-msgid "Room Number,Name"
-msgstr ""
-
 msgid "Conference room numbers must be numeric."
 msgstr ""
 
@@ -1780,12 +1741,6 @@ msgstr ""
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
-msgstr ""
-
-msgid "Host,E-mail Address,Subject,Body"
-msgstr ""
-
-msgid "Host,E-mail Address"
 msgstr ""
 
 msgid "A username must be specified."
@@ -2679,21 +2634,6 @@ msgid ""
 "the internal extension this call was routed to will be read back."
 msgstr ""
 
-msgid "auto"
-msgstr ""
-
-msgid "plain"
-msgstr ""
-
-msgid "login"
-msgstr ""
-
-msgid "cram-md5"
-msgstr ""
-
-msgid "external"
-msgstr ""
-
 msgid "Authentication Method"
 msgstr ""
 
@@ -2716,6 +2656,9 @@ msgstr ""
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
 msgstr ""
+
+msgid "The following input errors were detected:"
+msgstr "De volgende input fouten werden herkend:"
 
 msgid "print"
 msgstr ""
@@ -2791,57 +2734,6 @@ msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
-
-msgid "G.711 u-law"
-msgstr "G.711 u-law"
-
-msgid "G.711 A-law"
-msgstr "G.711 A-law"
-
-msgid "GSM"
-msgstr "GSM"
-
-msgid "G.729A"
-msgstr "G.729A"
-
-msgid "iLBC"
-msgstr "iLBC"
-
-msgid "SpeeX"
-msgstr "SpeeX"
-
-msgid "G.723.1"
-msgstr "G.723.1"
-
-msgid "G.726 AAL2"
-msgstr "G.726 AAL2"
-
-msgid "ADPCM"
-msgstr "ADPCM"
-
-msgid "16 bit Signed Linear PCM"
-msgstr "16 bit getekende  Linaire PCM"
-
-msgid "LPC10"
-msgstr "LPC10"
-
-msgid "G.726 RFC3551"
-msgstr "G.726 RFC3551"
-
-msgid "G722"
-msgstr "G722"
-
-msgid "H.261"
-msgstr "H.261"
-
-msgid "H.263"
-msgstr "H.263"
-
-msgid "H.263+"
-msgstr "H.263+"
-
-msgid "H.264"
-msgstr "H.264"
 
 msgid "Public IP address"
 msgstr "publiek IP adres"
@@ -3099,41 +2991,6 @@ msgstr "Thailand"
 msgid "Venezuela / South America"
 msgstr "Venezuela / Zuid Amerika"
 
-msgid "agent"
-msgstr "agent"
-
-msgid "call"
-msgstr "bel"
-
-msgid "command"
-msgstr "commando"
-
-msgid "config"
-msgstr "configuratie"
-
-msgid "log"
-msgstr "log"
-
-msgid "user"
-msgstr "gebruiker"
-
-msgid "verbose"
-msgstr "verbose"
-
-msgid "system"
-msgstr "systeem"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "Het veld '%s' bevat ongeldige karakters."
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "het veld '%s' is verplicht."
-
-msgid "The following input errors were detected:"
-msgstr "De volgende input fouten werden herkend:"
-
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -3192,14 +3049,10 @@ msgstr "%.0f KB"
 msgid "%d bytes"
 msgstr "%d bytes"
 
-#~ msgid "32"
-#~ msgstr "32"
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "Het veld '%s' bevat ongeldige karakters."
 
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
+#, php-format
+msgid "The field '%s' is required."
+msgstr "het veld '%s' is verplicht."

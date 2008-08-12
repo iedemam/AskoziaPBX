@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Status"), gettext("Active Channels"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Status"), gettext("Active Channels"));
 
 pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_strings);
 

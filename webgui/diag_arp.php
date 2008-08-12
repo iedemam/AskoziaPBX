@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Diagnostics"), gettext("ARP table"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Diagnostics"), gettext("ARP table"));
 
 $id = $_GET['id'];
 if (isset($_POST['id']))

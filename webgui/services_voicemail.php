@@ -29,9 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Services"), gettext("Voicemail"));
 $pghelp = gettext("In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here.");
-require("guiconfig.inc");
 
 $vmconfig = &$config['voicemail'];
 
@@ -56,13 +57,13 @@ if ($_POST) {
 	/* input validation */
 	if ($_POST['user_defined']) {
 		$reqdfields = explode(" ", "host address user_subject user_body");
-		$reqdfieldsn = explode(",", gettext("Host,E-mail Address,Subject,Body"));
+		$reqdfieldsn = explode(",", "Host,E-mail Address,Subject,Body");
 	} else {
 		$reqdfields = explode(" ", "host address");
-		$reqdfieldsn = explode(",", gettext("Host,E-mail Address"));
+		$reqdfieldsn = explode(",", "Host,E-mail Address");
 	}
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['address'] && !verify_is_email_address($_POST['address'])) {
 		$input_errors[] = gettext("A valid e-mail address must be specified.");
@@ -120,8 +121,8 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 <form action="services_voicemail.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
@@ -186,7 +187,7 @@ if ($_POST) {
 				<option value="<?=$vm_email_language;?>" <?
 				if ($vm_email_language == $pconfig['maillanguage'])
 					echo "selected"; ?>
-				><?=gettext($friendly);?></option>
+				><?=$friendly;?></option>
 				<? endforeach; ?>
 				</select>
 				<br><span class="vexpl"><?=gettext("E-mail notifications for new voicemail will be delivered in this language.");?></span>

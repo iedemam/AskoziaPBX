@@ -29,9 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("AskoziaPBX webGUI"));
 $pgtitle_omit = true;
+
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("AskoziaPBX webGUI"));
 
 if ($_POST) {
 	$config['system']['notes'] = base64_encode($_POST['notes']);

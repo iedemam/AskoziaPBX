@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Advanced"), gettext("IAX"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Advanced"), gettext("IAX"));
 
 $iaxconfig = &$config['services']['iax'];
 
@@ -47,9 +48,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "port");
-	$reqdfieldsn = explode(",", gettext("Port"));
+	$reqdfieldsn = explode(",", "Port");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid port
 	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
@@ -105,8 +106,8 @@ function jb_enable_click() {
 }
 //-->
 </script><? 
-if ($input_errors) print_input_errors($input_errors);
-if ($savemsg) print_info_box($savemsg); 
+if ($input_errors) display_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg); 
 ?><form action="advanced_iax.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 

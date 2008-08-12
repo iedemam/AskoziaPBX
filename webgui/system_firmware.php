@@ -30,9 +30,11 @@
 */
 
 $d_isfwfile = 1;
+
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 $pghelp = gettext("AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation.");
-require("guiconfig.inc"); 
 
 /* checks with downloads.askozia.com to see if a newer firmware version is available;
    returns any HTML message it gets from the server */
@@ -153,8 +155,8 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 }
 
 include("fbegin.inc");
-if ($input_errors) print_input_errors($input_errors);
-if ($savemsg) print_info_box($savemsg, "keep");
+if ($input_errors) display_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg, "keep");
 if ($fwstatus) echo display_firmware_update_info($fwstatus);
 
 if (in_array($g['platform'], $no_firmware_update_platforms)) {
@@ -165,8 +167,8 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 
 	?><form action="system_firmware.php" method="post"><?
 
-	$sig_warning = sprintf(gettext("<strong>%s</strong><br>This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br> Do you want to install this image anyway (at your own risk)?"), gettext($sig_warning));
-	print_info_box($sig_warning, "keep");
+	$sig_warning = sprintf(gettext("<strong>%s</strong><br>This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br> Do you want to install this image anyway (at your own risk)?"), $sig_warning);
+	display_info_box($sig_warning, "keep");
 
 		?><input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" <?=gettext("Yes");?> ">
 		<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" <?=gettext("No");?> ">

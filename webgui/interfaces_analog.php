@@ -29,11 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Interfaces"), gettext("Analog"));
 $pghelp = gettext("Detected ports on this page must be edited and saved before the system can utilize them.");
 $pglegend = array("edit", "delete");
-require("guiconfig.inc");
-
 
 if (!is_array($config['interfaces']['ab-unit']))
 	$config['interfaces']['ab-unit'] = array();
@@ -103,7 +103,7 @@ if (file_exists($d_analogconfdirty_path)) {
 
 <?php include("fbegin.inc"); ?>
 <form action="interfaces_analog.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

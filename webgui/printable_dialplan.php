@@ -28,6 +28,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+
 require("guiconfig.inc");
 
 /* XXX : sorting is handled in so many different ways...really time to normalize this */

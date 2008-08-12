@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Advanced"), gettext("RTP"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Advanced"), gettext("RTP"));
 
 $pconfig['highport'] = rtp_high_port();
 $pconfig['lowport'] = rtp_low_port();
@@ -42,9 +43,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "lowport highport");
-	$reqdfieldsn = explode(",", gettext("Low RTP Port,High RTP Port"));
+	$reqdfieldsn = explode(",", "Low RTP Port,High RTP Port");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['lowport'] && ($msg = rtp_low_port($_POST['lowport']))) {
 		$input_errors[] = $msg;
@@ -80,8 +81,8 @@ if (file_exists($d_rtpconfdirty_path)) {
 	}
 }
 include("fbegin.inc");
-if ($input_errors) print_input_errors($input_errors);
-if ($savemsg) print_info_box($savemsg);
+if ($input_errors) display_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg);
 ?><form action="advanced_rtp.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 

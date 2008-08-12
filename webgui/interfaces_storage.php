@@ -29,10 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Interfaces"), gettext("Storage"));
-$pghelp = gettext("AskoziaPBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space.");
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Interfaces"), gettext("Storage"));
+$pghelp = gettext("AskoziaPBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space.");
 
 if (storage_syspart_get_state() == "active") {
 	$syspart = storage_syspart_get_info();
@@ -42,8 +42,8 @@ if (storage_syspart_get_state() == "active") {
 ?>
 
 <?php include("fbegin.inc"); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 <form action="interfaces_storage.php" method="post" enctype="multipart/form-data">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

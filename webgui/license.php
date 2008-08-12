@@ -29,8 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array("License");
-require("guiconfig.inc"); 
+ 
 ?>
 <?php include("fbegin.inc"); ?>
 	<p><strong>AskoziaPBX is Copyright &copy; 2007 - 2008 IKT (<a href="http://itison-ikt.de/en/startseite">http://www.itison-ikt.de</a>).<br>

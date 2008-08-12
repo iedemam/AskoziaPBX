@@ -29,10 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Dialplan"), gettext("Call Groups"));
 $pghelp = gettext("Groups of extensions can be configured to ring concurrently. These groups can then be dialed via their defined extensions or used as a destination for incoming calls from Providers.");
 $pglegend = array("add", "edit", "delete");
-require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...
 if (!is_array($config['dialplan']['callgroup']))
@@ -74,7 +75,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 include("fbegin.inc");
 ?><form action="dialplan_callgroups.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

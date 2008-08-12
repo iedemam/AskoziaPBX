@@ -1,10 +1,9 @@
-#!/usr/local/bin/php
 <?php 
 /*
-	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	$Id: i18n.php 776 2008-08-08 09:07:33Z kryysler $
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2008 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -29,18 +28,17 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require("guiconfig.inc");
+//try to acquire the language 
+$current_language =  $config['system']['webgui']['language'];
+// default to English if nothing is still set
+if (!$current_language) {
+	$current_language = "en_US";
+}
 
-$pgtitle = array(gettext("Live"), gettext("CPU Load"));
-
-include("fbegin.inc");
-
-?><div align="center">
-<embed src="graph_cpu.php" type="image/svg+xml"
-		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
-</div>
-<br><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("if you can't see the graph, you may have to install the <a href=\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>.");
-
-include("fend.inc");
+bindtextdomain("messages", "./locale");
+bind_textdomain_codeset("messages","utf-8");
+setlocale(LC_MESSAGES, $current_language);
+putenv("LANG=$current_language");
+textdomain("messages");
 
 ?>

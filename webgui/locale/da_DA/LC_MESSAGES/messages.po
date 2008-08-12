@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 14:45+0000\n"
+"POT-Creation-Date: 2008-08-12 15:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -269,9 +269,6 @@ msgstr "Gem ISDN relaterede indstillinger"
 msgid "Hide Analog related options"
 msgstr "Gem Analog relaterede indstillinger"
 
-msgid "Port"
-msgstr "Port"
-
 msgid "A valid port must be specified."
 msgstr "En gyldig port skal angives."
 
@@ -295,9 +292,6 @@ msgstr "Tving"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Brug Jitterbuffer selv når bridging to slutpunkter."
-
-msgid "National Prefix, International Prefix"
-msgstr "Nationalt Præfix, Internationalt Præfix"
 
 msgid "A valid national prefix must be specified."
 msgstr "Et brugbart nationalt præfix skal angives."
@@ -347,9 +341,6 @@ msgstr "tilføj manager bruger"
 msgid "Edit User"
 msgstr "Rediger bruger"
 
-msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr "Brugernavn,Hemmeligt,Nægt IP,Nægt Netmaske,Tillad IP,Tillad Netmaske"
-
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr "Brugernavnet for \"admin\" er allerede i brug internt af AskoziaPBX."
 
@@ -376,9 +367,6 @@ msgstr "Skriv"
 
 msgid "RTP"
 msgstr "RTP"
-
-msgid "Low RTP Port,High RTP Port"
-msgstr "Lav RTP Port, Høj RTP Port"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "Den højeste RTP port skal være højere end laveste RTP port."
@@ -448,6 +436,9 @@ msgstr "Deaktiver DNS SRV lookups."
 
 msgid "Debug"
 msgstr "Fejlsøg"
+
+msgid "Download"
+msgstr "Download"
 
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
@@ -627,9 +618,6 @@ msgstr "Udskrift"
 msgid "Ping"
 msgstr "Ping"
 
-msgid "Host,Count"
-msgstr "Host,Tælling"
-
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr "Tælling skal være imellem 1 og %d"
@@ -642,9 +630,6 @@ msgstr "Tælling"
 
 msgid "Ping output:"
 msgstr "Ping udskrift"
-
-msgid "Host,ttl"
-msgstr "Host,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
@@ -679,9 +664,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "name"
-msgstr "navn"
-
 msgid "descr"
 msgstr "descr"
 
@@ -699,9 +681,6 @@ msgstr "tilføj applikation kortlægning"
 
 msgid "Edit"
 msgstr "Rediger"
-
-msgid "Name,Extension,Application Logic"
-msgstr "Navn,Extension,Applikation logik"
 
 msgid "A valid extension must be entered."
 msgstr "En gyldig extension skal indtasstes"
@@ -746,12 +725,6 @@ msgid ""
 "A variety of settings are here which define how call transfers and call "
 "parking are handled. The defaults should work in most situations."
 msgstr ""
-
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr ""
-"Parkering Extension,Parkering Start Position,Parkering Stop Position,"
-"Parkering Tid"
 
 msgid "A valid parking start position must be specified."
 msgstr "En gyldig parker start position skal angives."
@@ -863,9 +836,6 @@ msgstr "Slet"
 
 msgid "Download:"
 msgstr "Download:"
-
-msgid "Download"
-msgstr "Download"
 
 msgid "Upload:"
 msgstr "Upload:"
@@ -1122,9 +1092,6 @@ msgid ""
 "calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-
-msgid "IP address,Subnet bit count,Gateway,Network topology"
 msgstr ""
 
 msgid "A valid MAC address must be specified."
@@ -1433,9 +1400,6 @@ msgstr ""
 msgid "Edit Analog Line"
 msgstr "Rediger Analog Linie"
 
-msgid "Extension,Caller ID"
-msgstr "Extension,Opkalds ID"
-
 msgid "A valid Caller ID must be specified."
 msgstr "En gyldig Opkalds ID skal angives."
 
@@ -1449,6 +1413,12 @@ msgstr "En gyldig e-mail addresse skal angives."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Ingen kompatible grænseflader fundet!</strong><br><br>"
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr "Intern extension brugt til at nå denne telefon."
 
@@ -1457,9 +1427,6 @@ msgstr "Analog Interface"
 
 msgid "Edit External Line"
 msgstr "Rediger Extern Linie"
-
-msgid "Extension,Name,Dialstring,Provider"
-msgstr "Extension,Navn,Opkaldsstreng,Udbyder"
 
 msgid "The internal extension used to dial this phone."
 msgstr "Den interne extension brugt for at ringe til denne telefon"
@@ -1595,9 +1562,6 @@ msgstr "Beskrivende navn for denne udbyder."
 msgid "Telephone number assigned to this line."
 msgstr "Telefon nummer knyttet til denne linie"
 
-msgid "Name,Username,Host"
-msgstr "Navn, Brugernavn, Vært"
-
 msgid "A valid username must be specified."
 msgstr "Et gyldigt brugernavn skal angives."
 
@@ -1686,9 +1650,6 @@ msgstr "tilføj konference rum"
 msgid "Edit Room"
 msgstr "Rediger rum"
 
-msgid "Room Number,Name"
-msgstr "Rum Nummer, Navn"
-
 msgid "Conference room numbers must be numeric."
 msgstr "Konference rum skal være numerisk."
 
@@ -1721,13 +1682,6 @@ msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
-
-#, fuzzy
-msgid "Host,E-mail Address,Subject,Body"
-msgstr "Host,E-mail addresse"
-
-msgid "Host,E-mail Address"
-msgstr "Host,E-mail addresse"
 
 msgid "A username must be specified."
 msgstr "Et brugernavn skal angives."
@@ -2731,21 +2685,6 @@ msgstr ""
 "kontakt med telefonensvaren. Hvis kontoens brugernavn er nummerisk, vises "
 "dette. Hvis ikke, vises nummeret på den linie som modtog opkaldet."
 
-msgid "auto"
-msgstr "auto"
-
-msgid "plain"
-msgstr "ren"
-
-msgid "login"
-msgstr "login"
-
-msgid "cram-md5"
-msgstr "cram-md5"
-
-msgid "external"
-msgstr "ekstern"
-
 msgid "Authentication Method"
 msgstr "Godkendelses Metode"
 
@@ -2770,6 +2709,9 @@ msgstr "En nyere version af AskoziaPBX er tilgængelig!"
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
 msgstr "En nyere <strong>beta</strong> version af AskoziaPBX er tilgængelig!"
+
+msgid "The following input errors were detected:"
+msgstr "Følgende indtastnings fejl er opdaget:"
 
 msgid "print"
 msgstr "udskriv"
@@ -2845,57 +2787,6 @@ msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
-
-msgid "G.711 u-law"
-msgstr "G.711 u-law"
-
-msgid "G.711 A-law"
-msgstr "G.711 A-law"
-
-msgid "GSM"
-msgstr "GSM"
-
-msgid "G.729A"
-msgstr "G.729A"
-
-msgid "iLBC"
-msgstr "iLBC"
-
-msgid "SpeeX"
-msgstr "SpeeX"
-
-msgid "G.723.1"
-msgstr "G.723.1"
-
-msgid "G.726 AAL2"
-msgstr "G.726 AAL2"
-
-msgid "ADPCM"
-msgstr "ADPCM"
-
-msgid "16 bit Signed Linear PCM"
-msgstr "16 bit Signed Linear PCM"
-
-msgid "LPC10"
-msgstr "LPC10"
-
-msgid "G.726 RFC3551"
-msgstr "G.726 RFC3551"
-
-msgid "G722"
-msgstr "G722"
-
-msgid "H.261"
-msgstr "H.261"
-
-msgid "H.263"
-msgstr "H.263"
-
-msgid "H.263+"
-msgstr "H.263+"
-
-msgid "H.264"
-msgstr "H.264"
 
 msgid "Public IP address"
 msgstr "Offentlig IP adresse"
@@ -3150,41 +3041,6 @@ msgstr "Thailand"
 msgid "Venezuela / South America"
 msgstr "Venezuela / Syd Amerika"
 
-msgid "agent"
-msgstr "agent"
-
-msgid "call"
-msgstr "kald"
-
-msgid "command"
-msgstr "kommando"
-
-msgid "config"
-msgstr "konfig"
-
-msgid "log"
-msgstr "log"
-
-msgid "user"
-msgstr "bruger"
-
-msgid "verbose"
-msgstr "udførlig"
-
-msgid "system"
-msgstr "system"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "Feltet '%s' indeholder ulovlige tegn."
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "Feltet '%s' er krævet."
-
-msgid "The following input errors were detected:"
-msgstr "Følgende indtastnings fejl er opdaget:"
-
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -3243,21 +3099,10 @@ msgstr "%.0f KB"
 msgid "%d bytes"
 msgstr "%d bytes"
 
-#~ msgid ""
-#~ "To configure this type of account, make sure an appropriately configured "
-#~ "interface is present on the %s page"
-#~ msgstr ""
-#~ "For at konfigurere denne type konto, sørg for at passende konfigureret "
-#~ "grænseflade er tilstede på %s side"
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "Feltet '%s' indeholder ulovlige tegn."
 
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
+#, php-format
+msgid "The field '%s' is required."
+msgstr "Feltet '%s' er krævet."

@@ -31,8 +31,9 @@
 
 $needs_scriptaculous = true;
 
-$pgtitle = array(gettext("Advanced"), gettext("Analog"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Advanced"), gettext("Analog"));
 
 $analogconfig = &$config['services']['analog'];
 
@@ -58,7 +59,7 @@ if ($_POST) {
 	$reqdfields = explode(" ", "nationalprefix internationalprefix");
 	$reqdfieldsn = explode(",", "National Prefix, International Prefix");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 
 	// is valid nationalprefix
@@ -99,8 +100,8 @@ if (file_exists($d_analogconfdirty_path)) {
 
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 <form action="advanced_analog.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
@@ -110,7 +111,7 @@ if (file_exists($d_analogconfdirty_path)) {
 
 				foreach ($pconfig['loadzone'] as $loadzone) {
 					if (array_key_exists($loadzone, $zaptel_loadzones)) {
-						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars(gettext($zaptel_loadzones[$loadzone]));?></li><?
+						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars($zaptel_loadzones[$loadzone]);?></li><?
 					}
 				}
 
@@ -121,7 +122,7 @@ if (file_exists($d_analogconfdirty_path)) {
 
 				foreach ($zaptel_loadzones as $abbreviation=>$friendly) {
 					if (!in_array($abbreviation, $pconfig['loadzone'])) {
-						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars(gettext($zaptel_loadzones[$abbreviation]));?></li><?
+						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars($zaptel_loadzones[$abbreviation]);?></li><?
 					}
 				}
 

@@ -29,10 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Dialplan"), gettext("Applications"));
 $pghelp = gettext("With some knowledge of how the Asterisk dialplan works, some basic applications can be added to AskoziaPBX. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers.");
 $pglegend = array("add", "edit", "delete");
-require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...
 if (!is_array($config['dialplan']['application']))
@@ -72,7 +73,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 include("fbegin.inc");
 ?><form action="dialplan_applications.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -86,7 +87,7 @@ include("fbegin.inc");
 	<?php $i = 0; foreach ($a_applications as $app): ?>
 	<tr>
 		<td class="listlr"><?=htmlspecialchars($app['extension']);?></td>
-		<td class="listbg"><?=htmlspecialchars(gettext($app['name']));?>&nbsp;</td>
+		<td class="listbg"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars(gettext($app['descr']));?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit application mapping");?>" border="0"></a>
 			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this application mapping?");?>')"><img src="delete.png" title="<?=gettext("delete application mapping");?>" border="0"></a></td>

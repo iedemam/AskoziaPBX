@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 14:45+0000\n"
+"POT-Creation-Date: 2008-08-12 15:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -258,9 +258,6 @@ msgstr "Ukryj opcje ISDN"
 msgid "Hide Analog related options"
 msgstr "Ukryj opcje Analogowe"
 
-msgid "Port"
-msgstr "Port"
-
 msgid "A valid port must be specified."
 msgstr "Należy podać prawidłowy port."
 
@@ -284,9 +281,6 @@ msgstr "Wymuś"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Użyj Jitterbuffer nawet łącząc dwa punkty końcowe."
-
-msgid "National Prefix, International Prefix"
-msgstr "Prefix narodowy, Prefix międzynarodowy"
 
 msgid "A valid national prefix must be specified."
 msgstr "Należy podać prawidłowy prefix narodowy."
@@ -336,9 +330,6 @@ msgstr "dodaj użytkownika manager"
 msgid "Edit User"
 msgstr "Edytuj Użytkownika"
 
-msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr ""
-
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr ""
 "Nazwa użytkownika \"admin\" jest już używana wewnętrznie przez AskoziaPBX."
@@ -366,9 +357,6 @@ msgstr "Zapisano"
 
 msgid "RTP"
 msgstr "RTP"
-
-msgid "Low RTP Port,High RTP Port"
-msgstr "Początkowy port RPT, Końcowy port RPT"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "Końcowy port RPT musi być większy niż początkowy."
@@ -431,6 +419,9 @@ msgstr "Wyłącz wyszukiwania rekordów SRV DNS."
 
 msgid "Debug"
 msgstr "Debug"
+
+msgid "Download"
+msgstr "Pobrano"
 
 msgid "ISDN Interface"
 msgstr "Interfejs ISDN"
@@ -610,9 +601,6 @@ msgstr "Wynik"
 msgid "Ping"
 msgstr "Ping"
 
-msgid "Host,Count"
-msgstr "Host,Ile"
-
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr "Ilość musi być między 1 i %d"
@@ -625,9 +613,6 @@ msgstr "Ilość"
 
 msgid "Ping output:"
 msgstr "Wynik ping:"
-
-msgid "Host,ttl"
-msgstr "Host,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
@@ -662,9 +647,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "name"
-msgstr "nazwa"
-
 msgid "descr"
 msgstr "opis"
 
@@ -682,9 +664,6 @@ msgstr "dodaj mapowanie aplikacji"
 
 msgid "Edit"
 msgstr "Edytuj"
-
-msgid "Name,Extension,Application Logic"
-msgstr "Nazwa,Numer wewnętrzny,Logika Aplikacji"
 
 msgid "A valid extension must be entered."
 msgstr "Należy podać poprawny numer wewnętrzny."
@@ -728,10 +707,6 @@ msgstr "Przełączenia"
 msgid ""
 "A variety of settings are here which define how call transfers and call "
 "parking are handled. The defaults should work in most situations."
-msgstr ""
-
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
 msgstr ""
 
 msgid "A valid parking start position must be specified."
@@ -847,9 +822,6 @@ msgstr "Wyczyść"
 
 msgid "Download:"
 msgstr "Pobrano:"
-
-msgid "Download"
-msgstr "Pobrano"
 
 msgid "Upload:"
 msgstr "Wysłano:"
@@ -1142,9 +1114,6 @@ msgid ""
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
-
-msgid "IP address,Subnet bit count,Gateway,Network topology"
-msgstr "Adres IP,Maska,Brama,Topologia sieci"
 
 msgid "A valid MAC address must be specified."
 msgstr "Należy podać poprawny adres MAC."
@@ -1461,9 +1430,6 @@ msgstr ""
 msgid "Edit Analog Line"
 msgstr "Edytuj linie analogową"
 
-msgid "Extension,Caller ID"
-msgstr "Numer wewnętrzny,Caller ID"
-
 msgid "A valid Caller ID must be specified."
 msgstr "Należy podać poprawny Caller ID."
 
@@ -1477,6 +1443,12 @@ msgstr "Należy podać poprawny adres e-mail."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Nie znaleziono kompatybilnych interfejsów! </strong><br><br>"
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr ""
 
@@ -1485,9 +1457,6 @@ msgstr "Interfejs Analogowy"
 
 msgid "Edit External Line"
 msgstr "Edytuj linie Zewnętrzną"
-
-msgid "Extension,Name,Dialstring,Provider"
-msgstr ""
 
 msgid "The internal extension used to dial this phone."
 msgstr ""
@@ -1622,9 +1591,6 @@ msgstr "Opisowa nazwa dostawcy."
 msgid "Telephone number assigned to this line."
 msgstr "Numer telefonu przypisany do tej linii."
 
-msgid "Name,Username,Host"
-msgstr "Nazwa,Nazwa użytkownika,Host"
-
 msgid "A valid username must be specified."
 msgstr "Należy podać poprawną nazwę użytkownika."
 
@@ -1707,9 +1673,6 @@ msgstr "dodaj sale konferencyjną"
 msgid "Edit Room"
 msgstr "Edytuj Sale"
 
-msgid "Room Number,Name"
-msgstr "Numer Sali,Nazwa"
-
 msgid "Conference room numbers must be numeric."
 msgstr "Numery sal konferenyjnych muszą być liczbami."
 
@@ -1742,13 +1705,6 @@ msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
-
-#, fuzzy
-msgid "Host,E-mail Address,Subject,Body"
-msgstr "Host,Adres E-mail"
-
-msgid "Host,E-mail Address"
-msgstr "Host,Adres E-mail"
 
 msgid "A username must be specified."
 msgstr "Należy podać nazwę użytkownika."
@@ -2710,21 +2666,6 @@ msgid ""
 "the internal extension this call was routed to will be read back."
 msgstr ""
 
-msgid "auto"
-msgstr "auto"
-
-msgid "plain"
-msgstr "zwykły"
-
-msgid "login"
-msgstr "login"
-
-msgid "cram-md5"
-msgstr "cram-md5"
-
-msgid "external"
-msgstr "zewnętrzny"
-
 msgid "Authentication Method"
 msgstr "Metoda autoryzacji"
 
@@ -2749,6 +2690,9 @@ msgstr "Dostępna jest nowsza wersja AskoziaPBX!"
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
 msgstr "Dostępna jest nowsza wersja <strong>beta</strong> AskoziaPBX!"
+
+msgid "The following input errors were detected:"
+msgstr "Wykryto następujące błędy we wprowadzonych danych:"
 
 msgid "print"
 msgstr "drukuj"
@@ -2824,57 +2768,6 @@ msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
-
-msgid "G.711 u-law"
-msgstr "G.711 u-law"
-
-msgid "G.711 A-law"
-msgstr "G.711 A-law"
-
-msgid "GSM"
-msgstr "GSM"
-
-msgid "G.729A"
-msgstr "G.729A"
-
-msgid "iLBC"
-msgstr "iLBC"
-
-msgid "SpeeX"
-msgstr "SpeeX"
-
-msgid "G.723.1"
-msgstr "G.723.1"
-
-msgid "G.726 AAL2"
-msgstr "G.726 AAL2"
-
-msgid "ADPCM"
-msgstr "ADPCM"
-
-msgid "16 bit Signed Linear PCM"
-msgstr "16 bit Signed Linear PCM"
-
-msgid "LPC10"
-msgstr "LPC10"
-
-msgid "G.726 RFC3551"
-msgstr "G.726 RFC3551"
-
-msgid "G722"
-msgstr "G722"
-
-msgid "H.261"
-msgstr "H.261"
-
-msgid "H.263"
-msgstr "H.263"
-
-msgid "H.263+"
-msgstr "H.263+"
-
-msgid "H.264"
-msgstr "H.264"
 
 msgid "Public IP address"
 msgstr "Publiczny adres IP"
@@ -3126,41 +3019,6 @@ msgstr "Tajlandia"
 msgid "Venezuela / South America"
 msgstr "Wenezuela / Ameryka Południowa"
 
-msgid "agent"
-msgstr "agent"
-
-msgid "call"
-msgstr "połączenie"
-
-msgid "command"
-msgstr "komenda"
-
-msgid "config"
-msgstr "konfiguracja"
-
-msgid "log"
-msgstr "log"
-
-msgid "user"
-msgstr "użytkownik"
-
-msgid "verbose"
-msgstr "szczegółowo"
-
-msgid "system"
-msgstr "system"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "Pole '%s' zawiera nieprawidłowe znaki."
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "Pole '%s' jest wymagane."
-
-msgid "The following input errors were detected:"
-msgstr "Wykryto następujące błędy we wprowadzonych danych:"
-
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -3219,14 +3077,10 @@ msgstr "%.0f KB"
 msgid "%d bytes"
 msgstr "%d bajtów"
 
-#~ msgid "32"
-#~ msgstr "32"
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "Pole '%s' zawiera nieprawidłowe znaki."
 
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
+#, php-format
+msgid "The field '%s' is required."
+msgstr "Pole '%s' jest wymagane."

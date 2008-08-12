@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("System"), gettext("Reboot"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("System"), gettext("Reboot"));
 
 if ($_POST) {
 	if ($_POST['Yes']) {
@@ -43,7 +44,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg, "keep"); else: ?>
+<?php if ($rebootmsg): echo display_info_box($rebootmsg, "keep"); else: ?>
       <form action="system_reboot.php" method="post">
         <p><strong><?=gettext("Are you sure you want to reboot the system?");?></strong></p>
         <p> 

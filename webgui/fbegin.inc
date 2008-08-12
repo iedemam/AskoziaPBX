@@ -32,38 +32,14 @@ $navlevelsep = ": ";	/* navigation level separator string */
 $mandfldhtml = "";		/* display this before mandatory input fields */
 $mandfldhtmlspc = "";	/* same as above, but with spacing */
 
-//locale stuff
-//try to acquire the language 
-$current_language =  $config['system']['webgui']['language'];
-// default to English if nothing is still set
-if (!$current_language) {
-	$current_language = "en_US";
-}
-
-bindtextdomain("messages", "./locale");
-bind_textdomain_codeset("messages","utf-8");
-//setlocale(LC_ALL, $lang);
-setlocale(LC_MESSAGES, $current_language);
-putenv("LANG=$current_language");
-textdomain("messages");
-// end locale stuff
-
 function gentitle($title) {
 	global $navlevelsep;
-	//return join($navlevelsep, $title);
-	foreach ($title as $item) {
-        	echo gettext($item);
-		if(next($title)) {
-			echo ": ";
-		}
-	}
+	return join($navlevelsep, $title);
 }
 
 function genhtmltitle($title) {
 	global $config;
-	//return $config['system']['hostname'] . "." . $config['system']['domain'] . " - " . gentitle($title);
-	echo $config['system']['hostname'] . "." . $config['system']['domain'] . " - ";
-	gentitle($title);
+	return $config['system']['hostname'] . "." . $config['system']['domain'] . " - " . gentitle($title);
 }
 
 function dynamic_menu(&$menu, $menu_title) {
@@ -312,7 +288,7 @@ if (!$pgtitle_omit) {
 	?></p><?
 
 	if ($pghelp) {
-		?><div class="pghelp" name="pghelp" id="pghelp"><?=gettext($pghelp);?><?
+		?><div class="pghelp" name="pghelp" id="pghelp"><?=$pghelp;?><?
 
 		if ($pglegend) {
 			$legendtext['add'] = gettext("add a new item");
@@ -325,7 +301,7 @@ if (!$pgtitle_omit) {
 			$legendtext['backup'] = gettext("download a backup archive");
 			echo "<br>\n";
 			foreach ($pglegend as $legend) {
-				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=gettext($legendtext[$legend]);?><?
+				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=$legendtext[$legend];?><?
 			}
 		}
 

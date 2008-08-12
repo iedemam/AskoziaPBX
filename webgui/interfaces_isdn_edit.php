@@ -29,13 +29,13 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $unit = $_GET['unit'];
 if (isset($_POST['unit']))
 	$unit = $_POST['unit'];
 
 $pgtitle = array(gettext("Interfaces"), sprintf(gettext("Edit ISDN Interface #%s"),$unit));
-require("guiconfig.inc");
-
 
 if (!is_array($config['interfaces']['isdn-unit']))
 	$config['interfaces']['isdn-unit'] = array();
@@ -146,7 +146,7 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 <form action="interfaces_isdn_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 

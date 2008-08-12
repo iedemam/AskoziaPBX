@@ -29,9 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Advanced"), gettext("Manager Interface"));
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Advanced"), gettext("Manager Interface"));
 
 if (!is_array($config['services']['manager']['manager-user']))
 	$config['services']['manager']['manager-user'] = array();
@@ -65,7 +65,7 @@ if (file_exists($d_managerconfdirty_path)) {
 
 <?php include("fbegin.inc"); ?>
 <form action="advanced_manager.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

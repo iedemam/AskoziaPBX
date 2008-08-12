@@ -29,9 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("System"), gettext("Factory Defaults"));
-
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("System"), gettext("Factory Defaults"));
 
 if ($_POST) {
 	if ($_POST['Yes']) {
@@ -45,7 +45,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg, "keep"); else: ?>
+<?php if ($rebootmsg): echo display_info_box($rebootmsg, "keep"); else: ?>
 <form action="system_defaults.php" method="post">
               <p><strong><?=gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to 'askozia'.");?><br>
                 <br>

@@ -29,9 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Dialplan"), gettext("Transfers"));
 $pghelp = gettext("A variety of settings are here which define how call transfers and call parking are handled. The defaults should work in most situations.");
-require("guiconfig.inc");
 
 $parkingconfig = &$config['dialplan']['callparking'];
 $featuremapconfig = &$config['dialplan']['featuremap'];
@@ -56,9 +57,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "parkext parkposstart parkposend parktime");
-	$reqdfieldsn = explode(",", gettext("Parking Extension,Parking Start Position,Parking Stop Position,Park Time"));
+	$reqdfieldsn = explode(",", "Parking Extension,Parking Start Position,Parking Stop Position,Park Time");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 
 	if ($_POST['parkposstart'] && !verify_is_numericint($_POST['parkposstart'])) {
@@ -123,8 +124,8 @@ if (file_exists($d_featuresconfdirty_path)) {
 }
 
 include("fbegin.inc");
-if ($input_errors) print_input_errors($input_errors);
-if ($savemsg) print_info_box($savemsg);
+if ($input_errors) display_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg);
 ?><form action="dialplan_transfers.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>

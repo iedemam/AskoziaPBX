@@ -29,12 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
-
 $needs_scriptaculous = true;
 
-$pgtitle = array(gettext("Phones"), gettext("Edit SIP Account"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Phones"), gettext("Edit SIP Account"));
 
 /* grab and sort the sip phones in our config */
 if (!is_array($config['sip']['phone']))
@@ -88,9 +87,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid");
-	$reqdfieldsn = explode(",", gettext("Extension,Caller ID"));
+	$reqdfieldsn = explode(",", "Extension,Caller ID");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = gettext("A valid extension must be entered.");
@@ -198,7 +197,7 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="phones_sip_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 

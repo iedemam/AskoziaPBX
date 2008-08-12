@@ -29,10 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("System"), gettext("Packages"));
 $pghelp = gettext("Packages to expand system functionality can be installed and updated here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly available packages. All packages are digitally signed before distribution and checked upon installation.");
 $pglegend = array("add", "update", "restore", "backup", "enabled", "disabled", "edit", "delete");
-require("guiconfig.inc");
 
 function get_packages() {
 	$files = array();
@@ -148,6 +149,7 @@ if ($_GET['check'] == "update") {
 							}
 							mwexec("/bin/cp -R $srcpkg/www $destpkg");
 						}
+						// XXX : /bin should be copied as well (generalization needed...)
 						// execute the update routine
 						$ret = mwexec("/etc/rc.pkgexec $destpkg/rc update");
 						// update package meta info from built-in package
@@ -289,8 +291,8 @@ if (!isset($config['system']['disablepackagechecks']) && $syspart && !$ulpkgs) {
 
 
 include("fbegin.inc");
-if ($savemsg) print_info_box($savemsg);
-if ($input_errors) print_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg);
+if ($input_errors) display_input_errors($input_errors);
 
 ?><script type="text/javascript" charset="utf-8">
 
@@ -414,7 +416,7 @@ if (!$syspart) {
 	if ($sig_warnings || $errors) {
 
 		if ($errors) {
-			print_input_errors($errors);
+			display_input_errors($errors);
 			echo "<br><br>";
 		}
 
@@ -429,7 +431,7 @@ if (!$syspart) {
 				$warning_text .= "<strong>$sw_name</strong> - $sw_message<br>\n";
 			}
 
-			print_info_box($warning_text, "keep");	
+			display_info_box($warning_text, "keep");	
 		}
 
 		?><input name="warning_continue" type="submit" class="formbtn" value=" <?=gettext("Continue");?> ">
@@ -494,7 +496,7 @@ if (!$syspart) {
 			<td class="list"></td>
 			<td class="list" colspan="3">
 
-				<div id="update-pane" class="tabcont" class="display_none;">
+				<div id="update-pane" class="tabcont" style="display: none;">
 					<strong><?=gettext("Update Installed Package");?></strong><br>
 					<br><?
 
@@ -524,7 +526,7 @@ if (!$syspart) {
 					</form>
 				</div>
 
-				<div id="install-pane" class="tabcont" class="display_none;">
+				<div id="install-pane" class="tabcont" style="display: none;">
 					<strong><?=gettext("Install a New Package");?></strong><br>
 					<br><?
 
@@ -554,7 +556,7 @@ if (!$syspart) {
 					</form>
 				</div>
 
-				<div id="restore-pane" class="tabcont" class="display_none;">
+				<div id="restore-pane" class="tabcont" style="display: none;">
 					<strong><?=gettext("Restore from a Backup Archive");?></strong><br>
 					<br>
 					<?=gettext("Select a backup .tgz archive and press 'Restore'");?><br>

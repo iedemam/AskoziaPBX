@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Ping"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Diagnostics"), gettext("Ping"));
 
 define('MAX_COUNT', 10);
 define('DEFAULT_COUNT', 3);
@@ -41,8 +42,8 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "host count");
-	$reqdfieldsn = explode(",", gettext("Host,Count"));
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	$reqdfieldsn = explode(",", "Host,Count");
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['count'] < 1) || ($_POST['count'] > MAX_COUNT)) {
 		$input_errors[] = sprintf(gettext("Count must be between 1 and %d"), MAX_COUNT);
@@ -93,7 +94,7 @@ include("fbegin.inc");
   </td></tr>
   <tr> 
     <td class="tabcont">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 			<form action="diag_ping.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>

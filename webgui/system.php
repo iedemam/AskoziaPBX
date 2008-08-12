@@ -29,9 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("System"), gettext("General Setup"));
 $pghelp = gettext("This is the first page which needs configuring upon installing a new system. Most importantly, the default password should be changed. Then, ensure your host/domain name, time zone and country's indication tones are set correctly before continuing.");
-require("guiconfig.inc");
 
 $pconfig['language'] = $config['system']['webgui']['language'];
 $pconfig['hostname'] = $config['system']['hostname'];
@@ -72,7 +73,7 @@ if ($_POST) {
 	$reqdfields = split(" ", "hostname domain username");
 	$reqdfieldsn = split(",", gettext("Hostname,Domain,Username"));
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['hostname'] && !verify_is_hostname($_POST['hostname'])) {
 		$input_errors[] = gettext("The hostname may only contain the characters a-z, 0-9 and '-'.");
@@ -143,8 +144,8 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 		<form action="system.php" method="post">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
@@ -189,7 +190,7 @@ if ($_POST) {
 					<select name="tonezone" id="tonezone">
                       <?php foreach ($system_tonezones as $abbreviation => $friendly): ?>
                       <option value="<?=htmlspecialchars($abbreviation);?>" <?php if ($abbreviation == $pconfig['tonezone']) echo "selected"; ?>> 
-                      <?=htmlspecialchars(gettext($friendly));?>
+                      <?=htmlspecialchars($friendly);?>
                       </option>
                       <?php endforeach; ?>
                     </select>

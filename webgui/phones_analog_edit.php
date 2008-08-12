@@ -29,10 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
+require("guiconfig.inc");
 
 $pgtitle = array(gettext("Phones"), gettext("Edit Analog Line"));
-require("guiconfig.inc");
 
 /* grab and sort the analog phones in our config */
 if (!is_array($config['analog']['phone']))
@@ -69,9 +68,9 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid");
-	$reqdfieldsn = explode(",", gettext("Extension,Caller ID"));
+	$reqdfieldsn = explode(",", "Extension,Caller ID");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = gettext("A valid extension must be entered.");
@@ -146,7 +145,7 @@ include("fbegin.inc");
 //-->
 </script><?
 
-if ($input_errors) print_input_errors($input_errors);
+if ($input_errors) display_input_errors($input_errors);
 
 $analog_interfaces = analog_get_ab_interfaces("fxs");
 
@@ -155,7 +154,7 @@ if (count($analog_interfaces) == 0) {
 	$page_link = '<a href="interfaces_analog.php">' . gettext("Interfaces") . ": " . gettext("Analog") . '</a>';
 	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
 		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
-	print_info_box($interfaces_warning, "keep");
+	display_info_box($interfaces_warning, "keep");
 	
 } else {
 

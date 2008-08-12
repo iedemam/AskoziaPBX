@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
 if ($_POST['clear']) {
 	exec("/usr/sbin/clog -i -s 262144 /var/log/cdr.log");
@@ -222,7 +223,7 @@ include("fbegin.inc");
 					<td colspan="8" class="listtopic">
 					<form action="diag_logs_calls.php" method="get" id="filtering" class="display">
 						<div class="align_right">
-							<label for="filter" class="display_none"> <?=gettext("filter");?></label>
+							<label for="filter" style="display: none;"> <?=gettext("filter");?></label>
 							<input name="filter" id="filter" type="text" width="20" class="filterbox" value="<?=$filter;?>">
 							<?
 							if(!$filter)
@@ -256,7 +257,7 @@ include("fbegin.inc");
 				?><tr> 
 					<?
 					if($message)
-						echo "<td class='filter_info_message' colspan='8' height='12'>" . gettext($message) . "</td>";
+						echo "<td class='filter_info_message' colspan='8' height='12'>$message</td>";
 					else
 						echo "<td class='list' colspan='8' height='12'>&nbsp;</td>";
 					?>

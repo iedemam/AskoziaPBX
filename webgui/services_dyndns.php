@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Services", "Dynamic DNS");
 require("guiconfig.inc");
+
+$pgtitle = array("Services", "Dynamic DNS");
 
 if (!is_array($config['dnsupdate'])) {
 	$config['dnsupdate'] = array();
@@ -71,7 +72,7 @@ if ($_POST) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "dnsupdate_host dnsupdate_ttl dnsupdate_keyname dnsupdate_keydata"));
 		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Hostname,TTL,Key name,Key"));
 	}
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['host'] && !verify_is_domain($_POST['host']))) {
 		$input_errors[] = "The host name contains invalid characters.";
@@ -156,8 +157,8 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
             <form action="services_dyndns.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0" summary="content pane">
                 <tr> 

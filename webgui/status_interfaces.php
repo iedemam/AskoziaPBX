@@ -29,9 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Status"), gettext("Interfaces"));
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Status"), gettext("Interfaces"));
 
 function get_network_interface_info($ifdescr) {
 	

@@ -29,12 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
-
 $needs_scriptaculous = true;
 
-$pgtitle = array(gettext("Dialplan"), gettext("Call Groups"), gettext("Edit"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Dialplan"), gettext("Call Groups"), gettext("Edit"));
 
 if (!is_array($config['dialplan']['callgroup']))
 	$config['dialplan']['callgroup'] = array();
@@ -68,9 +67,9 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", gettext("Name"));
+	$reqdfieldsn = explode(",", "Name");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
 		$input_errors[] = $msg;
@@ -116,7 +115,7 @@ include("fbegin.inc");
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="dialplan_callgroups_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 

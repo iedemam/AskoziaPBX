@@ -29,10 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
+require("guiconfig.inc");
 
 $pgtitle = array(gettext("Phones"), gettext("Edit ISDN Line"));
-require("guiconfig.inc");
 
 /* grab and sort the isdn phones in our config */
 if (!is_array($config['isdn']['phone']))
@@ -69,9 +68,9 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid");
-	$reqdfieldsn = explode(",", gettext("Extension,Caller ID"));
+	$reqdfieldsn = explode(",", "Extension,Caller ID");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
 		$input_errors[] = gettext("A valid extension must be entered.");
@@ -145,7 +144,7 @@ include("fbegin.inc");
 //-->
 </script><?
 
-if ($input_errors) print_input_errors($input_errors);
+if ($input_errors) display_input_errors($input_errors);
 
 $isdn_interfaces = isdn_get_nt_interfaces();
 
@@ -154,7 +153,7 @@ if (count($isdn_interfaces) == 0) {
 	$page_link = '<a href="interfaces_isdn.php">' . gettext("Interfaces") . ": " . gettext("ISDN") . '</a>';
 	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
 		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
-	print_info_box($interfaces_warning, "keep");
+	display_info_box($interfaces_warning, "keep");
 	
 } else {
 

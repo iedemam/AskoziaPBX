@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
 $pconfig['reverse'] = isset($config['syslog']['reverse']);
 $pconfig['nentries'] = $config['syslog']['nentries'];
@@ -97,8 +98,8 @@ function enable_change(enable_over) {
 </script>
 <form action="diag_logs_settings.php" method="post" name="iform" id="iform"><?
 
-if ($input_errors) print_input_errors($input_errors);
-if ($savemsg) print_info_box($savemsg); 
+if ($input_errors) display_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg); 
 
 ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

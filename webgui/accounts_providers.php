@@ -29,11 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Accounts"), gettext("Providers"));
 $pghelp = gettext("Provider Accounts allow you to configure routes to and from external sources (i.e. VoIP service providers or attached ISDN / Analog interface hardware). Click an account type below to get started.");
 $pglegend = array("add", "enabled", "disabled", "edit", "delete");
-require("guiconfig.inc");
-
 
 /* delete */
 if ($_GET['action'] == "delete") {
@@ -178,7 +178,7 @@ if (file_exists($d_analogconfdirty_path)) {
 
 </script>
 <form action="accounts_providers.php" method="post">
-<? if ($savemsg) print_info_box($savemsg); ?>
+<? if ($savemsg) display_info_box($savemsg); ?>
 <? $status_info = pbx_get_peer_statuses(); ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">

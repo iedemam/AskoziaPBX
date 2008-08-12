@@ -29,11 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Services"), gettext("Conferencing"));
 $pghelp = gettext("Conference rooms with optional pin authentication can be configured here. The system's performance is the only limiting factor on the number of concurrent members. These rooms can then be dialed via their defined extensions or used as a destination for incoming calls from Providers.");
 $pglegend = array("add", "edit", "delete");
-require("guiconfig.inc");
-
 
 if (!is_array($config['conferencing']['room']))
 	$config['conferencing']['room'] = array();
@@ -70,7 +70,7 @@ if (file_exists($d_conferencingconfdirty_path)) {
 
 <?php include("fbegin.inc"); ?>
 <form action="services_conferencing.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

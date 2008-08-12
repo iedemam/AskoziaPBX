@@ -29,9 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Advanced"), gettext("GUI Options"));
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Advanced"), gettext("GUI Options"));
 
 $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
@@ -135,8 +135,8 @@ if ($_POST) {
 ?>
 <?php include("fbegin.inc"); ?>
 
-            <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <?php if ($savemsg) print_info_box($savemsg); ?>
+            <?php if ($input_errors) display_input_errors($input_errors); ?>
+            <?php if ($savemsg) display_info_box($savemsg); ?>
             <form action="advanced_guioptions.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 

@@ -30,7 +30,7 @@
 
 function display_userdefined_email_notification($subj, $body) {
 
-	?><span id="email_notification_wrapper" class="display_none">
+	?><span id="email_notification_wrapper" style="display: none;">
 		<br><?=gettext("Subject");?>
 		<br><input type="text" name="user_subject" id="user_subject" size="40" value="<?=$subj?>">
 		<br><br><?=gettext("Body");?>
@@ -47,7 +47,7 @@ function display_userdefined_email_notification($subj, $body) {
 function display_passwd_generation() {
 
 	?><a href="javascript:{}"><img class='verticalalign' src='key_go.png' name='generate' id="generate" title="<?=gettext("generate password");?>"></a>
-	<span name="generator_wrapper" id="generator_wrapper" class="display_none">
+	<span name="generator_wrapper" id="generator_wrapper" style="display: none;">
 	<br><input type="text" name="gen_passwd" id="gen_passwd" value="">
 	<a href="javascript:{}"><img class='verticalalign' src='add.png' name='use' id="use" title="<?=gettext("use this password");?>"></a>
 	</span><?	
@@ -301,8 +301,8 @@ function display_gui_language_selector($current_language) {
 		"de_DE" => "Deutsch (0%)",
 		"fr_FR" => "Français (0%)",
 		"it_IT" => "Italiano (70%)",
-		"pl_PL" => "Język polski (0%)",
-		"nl_NL" => "Nederlands (50%)",
+		"pl_PL" => "Język polski (90%)",
+		"nl_NL" => "Nederlands (60%)",
 		"pt_BR" => "Português (0%)",
 		"fi_FI" => "Suomi",
 		"se_SE" => "Svenska (0%)",
@@ -339,7 +339,7 @@ function display_audio_codec_selector($enabled_codecs) {
 			<ul id="ace" class="ace" style="min-height:50px">
 			<? foreach ($enabled_codecs as $codec): ?>
 				<? if (array_key_exists($codec, $audio_codecs)): ?>
-				<li class="ace" id="ace_<?=$codec;?>"><?=gettext($audio_codecs[$codec]);?></li>
+				<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
@@ -348,7 +348,7 @@ function display_audio_codec_selector($enabled_codecs) {
 			<ul id="acd" class="acd" style="min-height:50px">
 			<? foreach ($audio_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="acd" id="acd_<?=$codec;?>"><?=gettext($friendly);?></li>
+				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
@@ -365,7 +365,7 @@ function display_video_codec_selector($enabled_codecs) {
 			<ul id="vce" class="vce" style="min-height:50px">
 				<? foreach ($enabled_codecs as $codec): ?>
 					<? if (array_key_exists($codec, $video_codecs)): ?>
-					<li class="vce" id="vce_<?=$codec;?>"><?=gettext($video_codecs[$codec]);?></li>
+					<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
 					<? endif; ?>
 				<? endforeach; ?>
 			</ul>
@@ -374,7 +374,7 @@ function display_video_codec_selector($enabled_codecs) {
 			<ul id="vcd" class="vcd" style="min-height:50px">
 			<? foreach ($video_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="vcd" id="vcd_<?=$codec;?>"><?=gettext($friendly);?></li>
+				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
@@ -523,7 +523,7 @@ function display_natmode_selector($current_natmode, $colspan) {
 			<option value="<?=$natmode;?>" <?
 			if ($natmode == $current_natmode)
 				echo "selected"; ?>
-			><?=$natmode;?>&nbsp;-&nbsp;<?=gettext($natdesc);?></option>
+			><?=$natmode;?>&nbsp;-&nbsp;<?=$natdesc;?></option>
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl"><?=gettext("Is there a NATing device between AskoziaPBX and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones.");?></span>
@@ -748,7 +748,7 @@ function display_channel_language_selector($current_language, $colspan) {
 			<option value="<?=$prompt_language;?>" <?
 			if ($prompt_language == $current_language)
 				echo "selected"; ?>
-			><?=gettext($friendly);?></option>
+			><?=$friendly;?></option>
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl"><?=gettext("Audio prompts will be played back in the selected language for this account.");?></span>
@@ -797,7 +797,7 @@ function display_public_direct_dial_editor($current_allowdirectdial, $current_pu
 			}
 
 			?>>&nbsp;<?=gettext("allow extension to be directly dialed over public networks");?>
-			<br><span name="publicname_wrapper" id="publicname_wrapper" class="display_none">
+			<br><span name="publicname_wrapper" id="publicname_wrapper" style="display: none;">
 			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
 			<br><span class="vexpl"><?=gettext("Public name. Enter a string to map a friendly name to this extension.");?></span>
 			<br>
@@ -872,7 +872,7 @@ function display_advanced_settings_begin($colspan) {
 			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header"><?=gettext("Advanced Settings");?> (<a href="javascript:{}" id="advanced-settings-opener" class="link_color_black"><?=gettext("show");?></a>)</td>
 		</tr>
 	</table>
-	<div id="advanced-settings-container" class="display_none">
+	<div id="advanced-settings-container" style="display: none;">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 }
 
@@ -940,7 +940,7 @@ function display_description_field($current_description, $colspan) {
 	?><tr> 
 		<td valign="top" class="vncell"><?=gettext("Description");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars(gettext($current_description));?>"> 
+			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($current_description);?>"> 
 			<br><span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span>
 		</td>
 	</tr><?
@@ -961,13 +961,13 @@ function display_voicemail_authtype_selector($current_authtype, $colspan) {
 	global $defaults;
 
 	$authtypes = array(
-		gettext("auto"),
-		gettext("plain"),
-		gettext("login"),
-		gettext("cram-md5"),
+		"auto",
+		"plain",
+		"login",
+		"cram-md5",
 		//"digest-md5", (needs gnu sasl)
 		//"gssapi", (needs gnu sasl)
-		gettext("external")
+		"external"
 		//"ntlm" (needs gnu sasl)
 	);
 
@@ -1053,6 +1053,55 @@ function display_firmware_update_info($status) {
 		</p><?
 
 	}
+}
+
+function display_input_errors($input_errors) {
+
+	?><p>
+		<table border="0" cellspacing="0" cellpadding="4" width="100%">
+			<tr>
+				<td class="print_input_errors_img" width="36"><img src="err.gif" width="28" height="32"></td>
+				<td class="print_input_errors">
+
+				<span class="errmsg"><p>
+					<?=gettext("The following input errors were detected:");?>
+					<ul><?
+
+					foreach ($input_errors as $ierr) {
+							echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
+					}
+
+					?></ul>
+				</span>
+	
+				</td>
+			</tr>
+		</table>
+	</p><?
+
+}
+
+function display_info_box($msg, $keep=false) {
+
+	if (!$keep) {
+		?><script type="text/javascript" charset="utf-8">
+			jQuery(document).ready(function() {
+    	    	jQuery('#info-box').animate({opacity: 1.0}, 7000).slideUp('slow');
+    	    });
+		</script><?
+	}
+
+	?><span id="info-box">
+		<p>
+			<table border="0" cellspacing="0" cellpadding="4" width="100%">
+				<tr>
+					<td class="print_info_box_img" width="36"><img src="exclam.gif" width="28" height="32"></td>
+					<td class="print_info_box_msg"><?=$msg;?></td>
+				</tr>
+			</table>
+		</p>
+	</span><?
+
 }
 
 ?>

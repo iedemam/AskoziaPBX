@@ -29,11 +29,12 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("System"), gettext("Backup/Restore"));
-$pghelp = gettext("The entire system configuration can be backed up and restored via this page.");
-/* omit no-cache headers because it confuses IE with file downloads */
 $omit_nocacheheaders = true;
-require("guiconfig.inc"); 
+
+require("guiconfig.inc");
+
+$pgtitle = array(gettext("System"), gettext("Backup/Restore"));
+$pghelp = gettext("The entire system configuration can be backed up and restored via this page."); 
 
 if ($_POST) {
 
@@ -78,8 +79,8 @@ if ($_POST) {
 ?>
 <?php include("fbegin.inc"); ?>
             <form action="system_backup.php" method="post" enctype="multipart/form-data">
-            <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <?php if ($savemsg) print_info_box($savemsg, "keep"); ?>
+            <?php if ($input_errors) display_input_errors($input_errors); ?>
+            <?php if ($savemsg) display_info_box($savemsg, "keep"); ?>
               <table width="100%" border="0" cellspacing="0" cellpadding="6">
                 <tr> 
                   <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>

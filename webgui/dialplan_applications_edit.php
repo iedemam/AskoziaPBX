@@ -29,10 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
+require("guiconfig.inc");
 
 $pgtitle = array(gettext("Dialplan"), gettext("Applications"), gettext("Edit"));
-require("guiconfig.inc");
 
 // XXX this is_array, sort, reference stuff is all over...
 if (!is_array($config['dialplan']['application']))
@@ -63,9 +62,9 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "name extension applogic");
-	$reqdfieldsn = explode(",", gettext("Name,Extension,Application Logic"));
+	$reqdfieldsn = explode(",", "Name,Extension,Application Logic");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	/* XXX : temporary hack to allow '*' and '#' characters in application extensions */
 	if (!preg_match("/[0-9\*\#]+/", $_POST['extension'])) {
@@ -119,7 +118,7 @@ include("fbegin.inc");
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="dialplan_applications_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 
@@ -132,7 +131,7 @@ include("fbegin.inc");
 			<tr> 
 				<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td class="vtable">
-					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(gettext($pconfig['name']));?>"> 
+					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
 					<br><span class="vexpl"></span>
 				</td>
 			</tr>

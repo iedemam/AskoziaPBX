@@ -29,10 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Interfaces"), gettext("Wireless"));
-$pghelp = gettext("If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that AskoziaPBX is connected to.");
 require("guiconfig.inc");
 require("interfaces_wlan.inc");
+
+$pgtitle = array(gettext("Interfaces"), gettext("Wireless"));
+$pghelp = gettext("If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that AskoziaPBX is connected to.");
 
 /* XXX : what happens if the wireless interface changes */
 if (!is_array($config['interfaces']['wireless'])) {
@@ -102,7 +103,7 @@ if ($_POST) {
 			}*/
 		}
 		
-		do_input_validation($_POST, explode(" ", $reqdfields), explode(",", $reqdfieldsn), &$input_errors);
+		verify_input($_POST, explode(" ", $reqdfields), explode(",", $reqdfieldsn), &$input_errors);
 		
 		/*if ($_POST['radiusip'] && !verify_is_ipaddress($_POST['radiusip']))
 			$input_errors[] = "A valid RADIUS IP address must be specified.";
@@ -177,8 +178,8 @@ if ($_POST) {
 
 <?php include("fbegin.inc"); ?>
 <script language="javascript" src="interfaces_wlan.js"></script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 
 <form action="interfaces_wireless.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

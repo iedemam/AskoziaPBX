@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 14:45+0000\n"
+"POT-Creation-Date: 2008-08-12 15:45+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -268,9 +268,6 @@ msgstr "Piilota ISDN asetukset"
 msgid "Hide Analog related options"
 msgstr "Piilota Analogiset asetukset"
 
-msgid "Port"
-msgstr "Portti"
-
 msgid "A valid port must be specified."
 msgstr "Kelpaava portti on oltava määritetty."
 
@@ -295,9 +292,6 @@ msgstr "Pakota"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Käytä Jitterbufferia myös kun kaksi päätepistettä ovat silloitettuna."
-
-msgid "National Prefix, International Prefix"
-msgstr "Kansallinen Prefixi, Kansainvälinen Prefixi"
 
 msgid "A valid national prefix must be specified."
 msgstr "Kelpaava kansallinen prefixi on oltava määritettynä."
@@ -347,11 +341,6 @@ msgstr "lisää hallinnollinen käyttäjä"
 msgid "Edit User"
 msgstr "Muokkaa Käyttäjää"
 
-msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr ""
-"Käyttäjänimi,Salaisuus,Estä IP,Estä Aliverkon peitettä,Salli IP,Salli "
-"Aliverkon peitettä"
-
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr "Käyttäjänimi \"admin\" on jo sisäisesti käytössä."
 
@@ -378,9 +367,6 @@ msgstr "Kirjoita"
 
 msgid "RTP"
 msgstr "RTP"
-
-msgid "Low RTP Port,High RTP Port"
-msgstr "Alhainen RTP Portti,Korkea RTP Portti"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "Korkea RTP portti on oltava isompi kun alempi RTP portti."
@@ -449,6 +435,9 @@ msgstr "Poista DNS SRV käytöstä."
 
 msgid "Debug"
 msgstr "Virheiden etsintä"
+
+msgid "Download"
+msgstr "Lataa"
 
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
@@ -629,9 +618,6 @@ msgstr "Tuotos"
 msgid "Ping"
 msgstr "Ping"
 
-msgid "Host,Count"
-msgstr "Isäntä,Määrä"
-
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr "Määrä on oltava 1 ja %d välissä"
@@ -644,9 +630,6 @@ msgstr "Määrä"
 
 msgid "Ping output:"
 msgstr "Ping tuotos:"
-
-msgid "Host,ttl"
-msgstr "Isäntä,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
@@ -684,9 +667,6 @@ msgstr ""
 "toimintoja AskoziaPBX:ään. Niille voi sitten soittaa annetulla jatkeella tai "
 "käyttää päämäräänä sisääntuleville puheluille palveluntarjoajilta."
 
-msgid "name"
-msgstr "nimi"
-
 msgid "descr"
 msgstr ""
 
@@ -704,9 +684,6 @@ msgstr "lisää sovelluksien kartoittaminen"
 
 msgid "Edit"
 msgstr "Muokkaa"
-
-msgid "Name,Extension,Application Logic"
-msgstr "Nimi,Jatke,Sovelluslogiikka"
 
 msgid "A valid extension must be entered."
 msgstr "Kelpaava jatke on annettava."
@@ -756,12 +733,6 @@ msgid ""
 msgstr ""
 "Nämä asetukset määrittää miten puheluiden siirrot ja pysäköinti toimii. "
 "Oletukset pitäisi toimia useimissa tapauksissa."
-
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr ""
-"Pysäköinti Jatke,Pysäköinnin Aloituskohta,Pysäköinnin Lopetuskohta,"
-"Pysäköinnin Aika"
 
 msgid "A valid parking start position must be specified."
 msgstr "Kelpaava pysäköinti aloituskohta on määritettävä."
@@ -882,9 +853,6 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
-
-msgid "Download"
-msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -1185,9 +1153,6 @@ msgstr ""
 "että sisäntulevat puhelut eivät yhdistä. Jos järjestelmä on NAT:in takana, "
 "AskoziaPBX vaatii että seuraavat portit ovat välitetty sille: 5060 UDP "
 "(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Ääni)"
-
-msgid "IP address,Subnet bit count,Gateway,Network topology"
-msgstr "IP osoite,Aliverkon tavu määrä,Gateway,Verkon topologia"
 
 msgid "A valid MAC address must be specified."
 msgstr "Kelpaava MAC osoite on oltava määritetty."
@@ -1508,9 +1473,6 @@ msgstr ""
 msgid "Edit Analog Line"
 msgstr "Muokkaa Analogi Linjaa"
 
-msgid "Extension,Caller ID"
-msgstr "Jatke,Soittajan Tunnus"
-
 msgid "A valid Caller ID must be specified."
 msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
 
@@ -1524,6 +1486,12 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
@@ -1532,9 +1500,6 @@ msgstr "Analogi Käyttöliittymä"
 
 msgid "Edit External Line"
 msgstr "Muokkaa Ulkoinen Linja"
-
-msgid "Extension,Name,Dialstring,Provider"
-msgstr "Jatke,Nimi,Soittotunnus,Palveluntarjoaja"
 
 msgid "The internal extension used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
@@ -1671,9 +1636,6 @@ msgstr "Kuvaileva nimi tälle palveluntarjoajalle."
 msgid "Telephone number assigned to this line."
 msgstr "Puhelinnumero tälle linjalle."
 
-msgid "Name,Username,Host"
-msgstr "Nimi,Käyttäjänimi,Isäntä"
-
 msgid "A valid username must be specified."
 msgstr "Kelpaava käyttäjänimi on oltava määritetty."
 
@@ -1763,9 +1725,6 @@ msgstr "lisää kokoushuone"
 msgid "Edit Room"
 msgstr "Muokkaa Huonetta"
 
-msgid "Room Number,Name"
-msgstr "Huoneen Numero,Nimi"
-
 msgid "Conference room numbers must be numeric."
 msgstr "Kokoushuoneiden numerot on oltava numeeriset."
 
@@ -1799,12 +1758,6 @@ msgid ""
 msgstr ""
 "Jotta voi lähettää vastaamaton puhelu ilmoituksia ja vastaaja viestejä "
 "sähköpostiin, s-posti palvelin on oltava oikein määritetty."
-
-msgid "Host,E-mail Address,Subject,Body"
-msgstr "Isäntä,S-posti Osoite, Aihe, Viesti"
-
-msgid "Host,E-mail Address"
-msgstr "Isäntä,S-posti Osoite"
 
 msgid "A username must be specified."
 msgstr "Käyttäjänimi on oltava määritetty."
@@ -2824,21 +2777,6 @@ msgstr ""
 "vastaajaa; oletus on tilin käyttäjänimi jos se on numeerinen. Jos ei, "
 "sisäinen jatke jonne tämä puhelu reititettiin annetaan."
 
-msgid "auto"
-msgstr "automaattinen"
-
-msgid "plain"
-msgstr "selvä"
-
-msgid "login"
-msgstr "kirjautuminen"
-
-msgid "cram-md5"
-msgstr "cram-md5"
-
-msgid "external"
-msgstr "ulkoinen"
-
 msgid "Authentication Method"
 msgstr "Laillistamiskeino"
 
@@ -2864,6 +2802,9 @@ msgstr "Uudempi versio AskoziaPBX ohjelmistosta on saatavilla!"
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
 msgstr ""
 "Uudempi <strong>beta</strong> versio AskoziaPBX ohjelmistosta on saatavilla!"
+
+msgid "The following input errors were detected:"
+msgstr "Seuraavat virheet löydettiin:"
 
 msgid "print"
 msgstr "tulosta"
@@ -2939,57 +2880,6 @@ msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
-
-msgid "G.711 u-law"
-msgstr "G.711 u-laki"
-
-msgid "G.711 A-law"
-msgstr "G.711 A-laki"
-
-msgid "GSM"
-msgstr "GSM"
-
-msgid "G.729A"
-msgstr "G.729A"
-
-msgid "iLBC"
-msgstr "iLBC"
-
-msgid "SpeeX"
-msgstr "SpeeX"
-
-msgid "G.723.1"
-msgstr "G.723.1"
-
-msgid "G.726 AAL2"
-msgstr "G.726 AAL2"
-
-msgid "ADPCM"
-msgstr "ADPCM"
-
-msgid "16 bit Signed Linear PCM"
-msgstr "16 tavunen Signed Linear PCM"
-
-msgid "LPC10"
-msgstr "LPC10"
-
-msgid "G.726 RFC3551"
-msgstr "G.726 RFC3551"
-
-msgid "G722"
-msgstr "G722"
-
-msgid "H.261"
-msgstr "H.261"
-
-msgid "H.263"
-msgstr "H.263"
-
-msgid "H.263+"
-msgstr "H.263+"
-
-msgid "H.264"
-msgstr "H.264"
 
 msgid "Public IP address"
 msgstr "Julkinen IP osoite"
@@ -3245,41 +3135,6 @@ msgstr "Taimaa"
 msgid "Venezuela / South America"
 msgstr "Venezuela / Etelä Amerikka"
 
-msgid "agent"
-msgstr "agent"
-
-msgid "call"
-msgstr "puhelu"
-
-msgid "command"
-msgstr "komento"
-
-msgid "config"
-msgstr "konfigurointi"
-
-msgid "log"
-msgstr "loki"
-
-msgid "user"
-msgstr "käyttäjä"
-
-msgid "verbose"
-msgstr "verbose"
-
-msgid "system"
-msgstr "järjestelmä"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "Kohta '%s' on määritettävä."
-
-msgid "The following input errors were detected:"
-msgstr "Seuraavat virheet löydettiin:"
-
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -3336,3 +3191,11 @@ msgstr "%.0f Kt"
 #, php-format
 msgid "%d bytes"
 msgstr "%d tavua"
+
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
+
+#, php-format
+msgid "The field '%s' is required."
+msgstr "Kohta '%s' on määritettävä."

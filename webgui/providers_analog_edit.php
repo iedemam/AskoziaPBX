@@ -29,12 +29,12 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
-
 $needs_scriptaculous = true;
 
-$pgtitle = array(gettext("Providers"), gettext("Edit Analog Line"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Providers"), gettext("Edit Analog Line"));
+
 
 if (!is_array($config['analog']['provider']))
 	$config['analog']['provider'] = array();
@@ -70,9 +70,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", gettext("Name"));
+	$reqdfieldsn = explode(",", "Name");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
 		$input_errors[] = gettext("An incoming Caller ID override string must be specified.");
@@ -145,7 +145,7 @@ include("fbegin.inc");
 //-->
 </script><?
 
-if ($input_errors) print_input_errors($input_errors);
+if ($input_errors) display_input_errors($input_errors);
 
 $analog_interfaces = analog_get_ab_interfaces("fxo");
 
@@ -154,7 +154,7 @@ if (count($analog_interfaces) == 0) {
 	$page_link = '<a href="interfaces_analog.php">' . gettext("Interfaces") . ": " . gettext("Analog") . '</a>';
 	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
 		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
-	print_info_box($interfaces_warning, "keep");
+	display_info_box($interfaces_warning, "keep");
 	
 } else {
 

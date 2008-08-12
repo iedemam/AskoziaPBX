@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Advanced"), gettext("ISDN"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Advanced"), gettext("ISDN"));
 
 $isdnconfig = &$config['services']['isdn'];
 
@@ -49,9 +50,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "nationalprefix internationalprefix");
-	$reqdfieldsn = explode(",", gettext("National Prefix, International Prefix"));
+	$reqdfieldsn = explode(",", "National Prefix, International Prefix");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// is valid nationalprefix
 	if ($_POST['nationalprefix'] && !verify_is_numericint($_POST['nationalprefix'])) {
@@ -93,8 +94,8 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 <form action="advanced_isdn.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>

@@ -29,16 +29,16 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Live"), gettext("Network Traffic"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Live"), gettext("Network Traffic"));
 
 $curif = "lan";
 $ifnum = $config['interfaces'][$curif]['if'];
 
-?>
-<?php include("fbegin.inc"); ?>
+include("fbegin.inc");
 
-<div align="center">
+?><div align="center">
 <embed src="graph.php?ifnum=<?=$ifnum;?>&ifname=<?=rawurlencode($ifdescrs[$curif]);?>" type="image/svg+xml"
 		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
 </div>

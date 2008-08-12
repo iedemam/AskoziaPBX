@@ -29,10 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
+require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("Conferencing"), gettext("Edit Room"));
-require("guiconfig.inc");
 
 if (!is_array($config['conferencing']['room']))
 	$config['conferencing']['room'] = array();
@@ -62,9 +61,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "number name");
-	$reqdfieldsn = explode(",", gettext("Room Number,Name"));
+	$reqdfieldsn = explode(",", "Room Number,Name");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!verify_is_numericint($_POST['number'])) {
 		$input_errors[] = gettext("Conference room numbers must be numeric.");
@@ -123,7 +122,7 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="services_conferencing_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">		
 			<tr> 

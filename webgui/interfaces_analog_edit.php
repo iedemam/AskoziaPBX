@@ -29,6 +29,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $unit = $_GET['unit'];
 if (isset($_POST['unit']))
 	$unit = $_POST['unit'];
@@ -41,8 +43,6 @@ $pgtitle = array(
 	gettext("Interfaces"), 
 	gettext("Edit Analog") . " " . strtoupper($type) . " " . gettext("Interface #").$unit
 );
-require("guiconfig.inc");
-
 
 if (!is_array($config['interfaces']['ab-unit']))
 	$config['interfaces']['ab-unit'] = array();
@@ -150,7 +150,7 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 <form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 

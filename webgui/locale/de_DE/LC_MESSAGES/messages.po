@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 14:45+0000\n"
+"POT-Creation-Date: 2008-08-12 15:45+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -251,9 +251,6 @@ msgstr ""
 msgid "Hide Analog related options"
 msgstr ""
 
-msgid "Port"
-msgstr ""
-
 msgid "A valid port must be specified."
 msgstr ""
 
@@ -276,9 +273,6 @@ msgid "Force"
 msgstr ""
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
-msgstr ""
-
-msgid "National Prefix, International Prefix"
 msgstr ""
 
 msgid "A valid national prefix must be specified."
@@ -329,9 +323,6 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
-msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr ""
-
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr ""
 
@@ -357,9 +348,6 @@ msgid "Write"
 msgstr ""
 
 msgid "RTP"
-msgstr ""
-
-msgid "Low RTP Port,High RTP Port"
 msgstr ""
 
 msgid "The high RTP port must be greater than the low RTP port."
@@ -419,6 +407,9 @@ msgid "Disable DNS SRV lookups."
 msgstr ""
 
 msgid "Debug"
+msgstr ""
+
+msgid "Download"
 msgstr ""
 
 msgid "ISDN Interface"
@@ -596,9 +587,6 @@ msgstr ""
 msgid "Ping"
 msgstr ""
 
-msgid "Host,Count"
-msgstr ""
-
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr ""
@@ -610,9 +598,6 @@ msgid "Count"
 msgstr ""
 
 msgid "Ping output:"
-msgstr ""
-
-msgid "Host,ttl"
 msgstr ""
 
 #, php-format
@@ -646,9 +631,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "name"
-msgstr ""
-
 msgid "descr"
 msgstr ""
 
@@ -665,9 +647,6 @@ msgid "add application mapping"
 msgstr ""
 
 msgid "Edit"
-msgstr ""
-
-msgid "Name,Extension,Application Logic"
 msgstr ""
 
 msgid "A valid extension must be entered."
@@ -712,10 +691,6 @@ msgstr ""
 msgid ""
 "A variety of settings are here which define how call transfers and call "
 "parking are handled. The defaults should work in most situations."
-msgstr ""
-
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
 msgstr ""
 
 msgid "A valid parking start position must be specified."
@@ -827,9 +802,6 @@ msgid "Clear"
 msgstr ""
 
 msgid "Download:"
-msgstr ""
-
-msgid "Download"
 msgstr ""
 
 msgid "Upload:"
@@ -1086,9 +1058,6 @@ msgid ""
 "calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-
-msgid "IP address,Subnet bit count,Gateway,Network topology"
 msgstr ""
 
 msgid "A valid MAC address must be specified."
@@ -1371,9 +1340,6 @@ msgstr ""
 msgid "Edit Analog Line"
 msgstr ""
 
-msgid "Extension,Caller ID"
-msgstr ""
-
 msgid "A valid Caller ID must be specified."
 msgstr ""
 
@@ -1387,6 +1353,12 @@ msgstr ""
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr ""
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr ""
 
@@ -1394,9 +1366,6 @@ msgid "Analog Interface"
 msgstr ""
 
 msgid "Edit External Line"
-msgstr ""
-
-msgid "Extension,Name,Dialstring,Provider"
 msgstr ""
 
 msgid "The internal extension used to dial this phone."
@@ -1527,9 +1496,6 @@ msgstr ""
 msgid "Telephone number assigned to this line."
 msgstr ""
 
-msgid "Name,Username,Host"
-msgstr ""
-
 msgid "A valid username must be specified."
 msgstr ""
 
@@ -1608,9 +1574,6 @@ msgstr ""
 msgid "Edit Room"
 msgstr ""
 
-msgid "Room Number,Name"
-msgstr ""
-
 msgid "Conference room numbers must be numeric."
 msgstr ""
 
@@ -1640,12 +1603,6 @@ msgstr ""
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
-msgstr ""
-
-msgid "Host,E-mail Address,Subject,Body"
-msgstr ""
-
-msgid "Host,E-mail Address"
 msgstr ""
 
 msgid "A username must be specified."
@@ -2533,21 +2490,6 @@ msgid ""
 "the internal extension this call was routed to will be read back."
 msgstr ""
 
-msgid "auto"
-msgstr ""
-
-msgid "plain"
-msgstr ""
-
-msgid "login"
-msgstr ""
-
-msgid "cram-md5"
-msgstr ""
-
-msgid "external"
-msgstr ""
-
 msgid "Authentication Method"
 msgstr ""
 
@@ -2569,6 +2511,9 @@ msgid "A newer version of AskoziaPBX is available!"
 msgstr ""
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
+msgstr ""
+
+msgid "The following input errors were detected:"
 msgstr ""
 
 msgid "print"
@@ -2644,57 +2589,6 @@ msgid "10BASE-T half-duplex"
 msgstr ""
 
 msgid "1000BASE-TX full-duplex"
-msgstr ""
-
-msgid "G.711 u-law"
-msgstr ""
-
-msgid "G.711 A-law"
-msgstr ""
-
-msgid "GSM"
-msgstr ""
-
-msgid "G.729A"
-msgstr ""
-
-msgid "iLBC"
-msgstr ""
-
-msgid "SpeeX"
-msgstr ""
-
-msgid "G.723.1"
-msgstr ""
-
-msgid "G.726 AAL2"
-msgstr ""
-
-msgid "ADPCM"
-msgstr ""
-
-msgid "16 bit Signed Linear PCM"
-msgstr ""
-
-msgid "LPC10"
-msgstr ""
-
-msgid "G.726 RFC3551"
-msgstr ""
-
-msgid "G722"
-msgstr ""
-
-msgid "H.261"
-msgstr ""
-
-msgid "H.263"
-msgstr ""
-
-msgid "H.263+"
-msgstr ""
-
-msgid "H.264"
 msgstr ""
 
 msgid "Public IP address"
@@ -2947,41 +2841,6 @@ msgstr ""
 msgid "Venezuela / South America"
 msgstr ""
 
-msgid "agent"
-msgstr ""
-
-msgid "call"
-msgstr ""
-
-msgid "command"
-msgstr ""
-
-msgid "config"
-msgstr ""
-
-msgid "log"
-msgstr ""
-
-msgid "user"
-msgstr ""
-
-msgid "verbose"
-msgstr ""
-
-msgid "system"
-msgstr ""
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr ""
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr ""
-
-msgid "The following input errors were detected:"
-msgstr ""
-
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -3035,4 +2894,12 @@ msgstr ""
 
 #, php-format
 msgid "%d bytes"
+msgstr ""
+
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr ""
+
+#, php-format
+msgid "The field '%s' is required."
 msgstr ""

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-06 14:45+0000\n"
+"POT-Creation-Date: 2008-08-12 15:45+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -256,9 +256,6 @@ msgstr "隐藏与ISDN相关的选项"
 msgid "Hide Analog related options"
 msgstr "隐藏与模拟电话相关的选项"
 
-msgid "Port"
-msgstr "端口"
-
 msgid "A valid port must be specified."
 msgstr "必须指定一个有效的端口。"
 
@@ -282,9 +279,6 @@ msgstr "强制"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "使用時基誤差(Jitter)缓存即使桥接两个端点。"
-
-msgid "National Prefix, International Prefix"
-msgstr "国家区号，国际区号"
 
 msgid "A valid national prefix must be specified."
 msgstr "必须指定一个有效的国家区号。"
@@ -334,9 +328,6 @@ msgstr "添加管理用户"
 msgid "Edit User"
 msgstr "编辑用户"
 
-msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-msgstr "用户名，秘密，拒绝的IP，拒绝的网络掩码，许可的IP，许可的网络掩码"
-
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr "用户名\"admin\"已经被AskoziaPBX内部使用"
 
@@ -363,9 +354,6 @@ msgstr "写入"
 
 msgid "RTP"
 msgstr "RTP"
-
-msgid "Low RTP Port,High RTP Port"
-msgstr "低RTP端口，高RTP端口"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "高RTP端口必须大于低RTP端口。"
@@ -425,6 +413,9 @@ msgstr "禁用DNS SRV查找"
 
 msgid "Debug"
 msgstr "调试"
+
+msgid "Download"
+msgstr "下载"
 
 msgid "ISDN Interface"
 msgstr "ISDN界面"
@@ -603,9 +594,6 @@ msgstr "输出"
 msgid "Ping"
 msgstr "Ping"
 
-msgid "Host,Count"
-msgstr "主机，计数"
-
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr "计数必须介于1和%d之间"
@@ -618,9 +606,6 @@ msgstr "计数"
 
 msgid "Ping output:"
 msgstr "Ping输出"
-
-msgid "Host,ttl"
-msgstr "主机,ttl"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
@@ -657,9 +642,6 @@ msgstr ""
 "在了解一些Asterisk拨号计划如何运作的情况下，一些基础的应用可以被加入到"
 "AskoziaPBX中。这些应用程序既被预定的分机拨通，也可以用作提供商来电的目的地。"
 
-msgid "name"
-msgstr "名字"
-
 msgid "descr"
 msgstr "描述"
 
@@ -677,9 +659,6 @@ msgstr "添加应用映射"
 
 msgid "Edit"
 msgstr "编辑"
-
-msgid "Name,Extension,Application Logic"
-msgstr "名字，分机，应用逻辑"
 
 msgid "A valid extension must be entered."
 msgstr "必须输入一个有效的分机"
@@ -726,10 +705,6 @@ msgid ""
 "A variety of settings are here which define how call transfers and call "
 "parking are handled. The defaults should work in most situations."
 msgstr "关于一个呼叫转移和呼叫停泊的多样化设置。默认设置适用于大多数情况。"
-
-msgid ""
-"Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-msgstr "停泊的分机，停泊的开始位置，停泊的终止位置，停泊的时间"
 
 msgid "A valid parking start position must be specified."
 msgstr "必须指定一个有效的停泊开始位置。"
@@ -843,9 +818,6 @@ msgstr "清空"
 
 msgid "Download:"
 msgstr "下载："
-
-msgid "Download"
-msgstr "下载"
 
 msgid "Upload:"
 msgstr "上载："
@@ -1127,9 +1099,6 @@ msgstr ""
 "本页的设置对确保连接到VoIP供应商十分重要。实际上，不正确的网络设置可能造成电"
 "话无法接入。如果这个系统在一个NAT后，默认情况下，AskoziaPBX需要以下的端口映"
 "射：5060 UDP(SIP),4569 UDP(IAX)和10000-10200 UDP (RTP Audio)"
-
-msgid "IP address,Subnet bit count,Gateway,Network topology"
-msgstr "IP 地址，"
 
 msgid "A valid MAC address must be specified."
 msgstr "必须指定一个有效的MAC地址"
@@ -1425,9 +1394,6 @@ msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的
 msgid "Edit Analog Line"
 msgstr "编辑模拟线路"
 
-msgid "Extension,Caller ID"
-msgstr "分机，Caller ID"
-
 msgid "A valid Caller ID must be specified."
 msgstr "必须指定一个有效的Caller ID。"
 
@@ -1441,6 +1407,12 @@ msgstr "必须指定一个有效的e-mail地址。"
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>没有找到兼容的接口！</strong><br><br>"
 
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
 msgid "Internal extension used to reach this phone."
 msgstr "内部分机用于达到此话机。"
 
@@ -1449,9 +1421,6 @@ msgstr "模拟接口"
 
 msgid "Edit External Line"
 msgstr "编辑外部线路"
-
-msgid "Extension,Name,Dialstring,Provider"
-msgstr "分机，名字，拨号串，提供商"
 
 msgid "The internal extension used to dial this phone."
 msgstr "这个内部分机用来拨打这个电话。"
@@ -1583,9 +1552,6 @@ msgstr "提供商的描述性名字。"
 msgid "Telephone number assigned to this line."
 msgstr "分配给这条线的电话号码。"
 
-msgid "Name,Username,Host"
-msgstr "名字，用户名，主机"
-
 msgid "A valid username must be specified."
 msgstr "必须指定一个有效的用户名。"
 
@@ -1666,9 +1632,6 @@ msgstr "添加会议室"
 msgid "Edit Room"
 msgstr "编辑房间"
 
-msgid "Room Number,Name"
-msgstr "房间号，名字"
-
 msgid "Conference room numbers must be numeric."
 msgstr "会议室号码必须是数字。"
 
@@ -1701,13 +1664,6 @@ msgid ""
 msgstr ""
 "为了通过电子邮件发送错过电话通知和记录下的语音信息，这里需要正确的配置一个邮"
 "件服务器。"
-
-#, fuzzy
-msgid "Host,E-mail Address,Subject,Body"
-msgstr "主机，电邮地址"
-
-msgid "Host,E-mail Address"
-msgstr "主机，电邮地址"
 
 msgid "A username must be specified."
 msgstr "必须指定一个用户名。"
@@ -2084,8 +2040,8 @@ msgid ""
 "releases are digitally signed before distribution and checked upon "
 "installation."
 msgstr ""
-"AskPBX的固件可以在这里不断更新。系统设置在升级后将得到保持。升级后系统将自动"
-"重启。正式版的固件镜像在发布前都经过数字签名和安装测试。"
+"AskoziaPBX的固件可以在这里不断更新。系统设置在升级后将得到保持。升级后系统将"
+"自动重启。正式版的固件镜像在发布前都经过数字签名和安装测试。"
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
@@ -2674,21 +2630,6 @@ msgstr ""
 "这个'外部'号码会被主叫方读回，如果遇到语音邮件；默认的会到帐户的用户名，前提"
 "是名字是数字。如果不是数字的话，将会被读回到相应的内部分机上。"
 
-msgid "auto"
-msgstr "自动"
-
-msgid "plain"
-msgstr "plain"
-
-msgid "login"
-msgstr "登入"
-
-msgid "cram-md5"
-msgstr "cram-md5"
-
-msgid "external"
-msgstr "外部"
-
 msgid "Authentication Method"
 msgstr "验证方法"
 
@@ -2713,6 +2654,9 @@ msgstr "一个AskoziaPBX的新版本已经可用。"
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
 msgstr "一个AskoziaPBX的新<strong>beta</strong>版本已经可用了！"
+
+msgid "The following input errors were detected:"
+msgstr "发现以下输入错误："
 
 msgid "print"
 msgstr "打印"
@@ -2788,57 +2732,6 @@ msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
-
-msgid "G.711 u-law"
-msgstr "G.711 u-law"
-
-msgid "G.711 A-law"
-msgstr "G.711 A-law"
-
-msgid "GSM"
-msgstr "GSM"
-
-msgid "G.729A"
-msgstr "G.729A"
-
-msgid "iLBC"
-msgstr "iLBC"
-
-msgid "SpeeX"
-msgstr "SpeeX"
-
-msgid "G.723.1"
-msgstr "G.723.1"
-
-msgid "G.726 AAL2"
-msgstr "G.726 AAL2"
-
-msgid "ADPCM"
-msgstr "ADPCM"
-
-msgid "16 bit Signed Linear PCM"
-msgstr "16 bit Signed Linear PCM"
-
-msgid "LPC10"
-msgstr "LPC10"
-
-msgid "G.726 RFC3551"
-msgstr "G.726 RFC3551"
-
-msgid "G722"
-msgstr "G722"
-
-msgid "H.261"
-msgstr "H.261"
-
-msgid "H.263"
-msgstr "H.263"
-
-msgid "H.263+"
-msgstr "H.263+"
-
-msgid "H.264"
-msgstr "H.264"
 
 msgid "Public IP address"
 msgstr "公网IP地址"
@@ -3090,41 +2983,6 @@ msgstr "泰国"
 msgid "Venezuela / South America"
 msgstr "委内瑞拉 / 南美"
 
-msgid "agent"
-msgstr "代理"
-
-msgid "call"
-msgstr "通话"
-
-msgid "command"
-msgstr "命令"
-
-msgid "config"
-msgstr "设置"
-
-msgid "log"
-msgstr "日志"
-
-msgid "user"
-msgstr "用户"
-
-msgid "verbose"
-msgstr "详细"
-
-msgid "system"
-msgstr "系统"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "'%s' 段含有无效字符。"
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "'%s' 区域需要填入。 "
-
-msgid "The following input errors were detected:"
-msgstr "发现以下输入错误："
-
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
@@ -3182,20 +3040,10 @@ msgstr "%.0f KB"
 msgid "%d bytes"
 msgstr "%d bytes"
 
-#, fuzzy
-#~ msgid ""
-#~ "To configure this type of account, make sure an appropriately configured "
-#~ "interface is present on the %s page"
-#~ msgstr "设置这类账号时，请确认一个适当配置的接口已经存在于 %t 页。 "
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "'%s' 段含有无效字符。"
 
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
+#, php-format
+msgid "The field '%s' is required."
+msgstr "'%s' 区域需要填入。 "

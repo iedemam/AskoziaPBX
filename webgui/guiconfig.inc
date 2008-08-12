@@ -39,6 +39,7 @@ if (!$omit_nocacheheaders) {
 
 /* parse the configuration and include all configuration functions */
 require_once("config.inc");
+require_once("i18n.inc");
 require_once("functions.inc");
 require_once("display.inc");
 require_once("javascript.inc");
@@ -103,26 +104,26 @@ $no_firmware_update_platforms = array("generic-pc-cdrom");
 2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
 
 $audio_codecs = array(
-	"ulaw" => gettext("G.711 u-law"),
-	"alaw" => gettext("G.711 A-law"),
-	"gsm" => gettext("GSM"),
-	"g729" => gettext("G.729A"),
-	"ilbc" => gettext("iLBC"),
-	"speex" => gettext("SpeeX"),
-	"g723" => gettext("G.723.1"),
-	"g726aal2" => gettext("G.726 AAL2"),
-	"adpcm" => gettext("ADPCM"),
-	"slin" => gettext("16 bit Signed Linear PCM"),
-	"lpc10" => gettext("LPC10"),
-	"g726" => gettext("G.726 RFC3551"),
-	"g722" => gettext("G722")
+	"ulaw" => "G.711 u-law",
+	"alaw" => "G.711 A-law",
+	"gsm" => "GSM",
+	"g729" => "G.729A",
+	"ilbc" => "iLBC",
+	"speex" => "SpeeX",
+	"g723" => "G.723.1",
+	"g726aal2" => "G.726 AAL2",
+	"adpcm" => "ADPCM",
+	"slin" => "16 bit Signed Linear PCM",
+	"lpc10" => "LPC10",
+	"g726" => "G.726 RFC3551",
+	"g722" => "G722"
 );
 
 $video_codecs = array(
-	"h261" => gettext("H.261"),
-	"h263" => gettext("H.263"),
-	"h263p" => gettext("H.263+"),
-	"h264" => gettext("H.264")
+	"h261" => "H.261",
+	"h263" => "H.263",
+	"h263p" => "H.263+",
+	"h264" => "H.264"
 );
 
 $topologies = array(
@@ -278,53 +279,15 @@ $analog_signaling = array(
 );
 
 $manager_permissions = array(
-	gettext("agent"),
-	gettext("call"),
-	gettext("command"),
-	gettext("config"),
-	gettext("log"),
-	gettext("user"),
-	gettext("verbose"),
-	gettext("system")
+	"agent",
+	"call",
+	"command",
+	"config",
+	"log",
+	"user",
+	"verbose",
+	"system"
 );
-
-function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
-	
-	/* check for bad control characters */	
-	foreach ($postdata as $pn => $pd) {
-		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
-			$input_errors[] = sprintf(gettext("The field '%s' contains invalid characters."), $pn);
-		}
-	}
-	
-	for ($i = 0; $i < count($reqdfields); $i++) {
-		if (!isset($_POST[$reqdfields[$i]]) || ($_POST[$reqdfields[$i]] === "")) {
-			$input_errors[] = sprintf(gettext("The field '%s' is required."), $reqdfieldsn[$i]);
-		}
-	}	
-}
-
-function print_input_errors($input_errors) {
-	?><p>
-		<table border="0" cellspacing="0" cellpadding="4" width="100%"><br>
-			<tr>
-				<td class="print_input_errors_img" width="36"><img src="err.gif" width="28" height="32"></td><br>
-				<td class="print_input_errors">
-	
-				<span class="errmsg"><p>
-					<?=gettext("The following input errors were detected:");?>
-					<ul><br>
-						<?foreach ($input_errors as $ierr) {
-							echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
-						}?>
-					</ul>
-				</span>
-	
-				</td>
-			</tr>
-		</table>
-	</p><?
-}
 
 function exec_rc_script($scriptname) {
 	
@@ -357,26 +320,6 @@ function verify_gzip_file($fname) {
 		return 1;
 }
 
-function print_info_box($msg, $keep=false) {
-	if (!$keep) {
-		?><script type="text/javascript" charset="utf-8">
-			jQuery(document).ready(function() {
-    	    	jQuery('#info-box').animate({opacity: 1.0}, 7000).slideUp('slow');
-    	    });
-		</script><?
-	}
-	?><span id="info-box">
-		<p>
-			<table border="0" cellspacing="0" cellpadding="4" width="100%">
-				<tr>
-					<td class="print_info_box_img" width="36"><img src="exclam.gif" width="28" height="32"></td>
-					<td class="print_info_box_msg"><?=gettext($msg);?></td>
-				</tr>
-			</table>
-		</p>
-	</span><?
-}
-
 function get_std_save_message($ok) {
 	global $d_sysrebootreqd_path;
 
@@ -389,55 +332,6 @@ function get_std_save_message($ok) {
 		return sprintf(gettext("ERROR: the changes could not be applied (error code %s)."), $ok);
 	}
 }
-
-function pprint_address($adr) {
-	global $specialnets;
-
-	if (isset($adr['any'])) {
-		$padr = "*";
-	} else if ($adr['network']) {
-		$padr = $specialnets[$adr['network']];
-	} else {
-		$padr = $adr['address'];
-	}
-	
-	if (isset($adr['not']))
-		$padr = "! " . $padr;
-	
-	return $padr;
-}
-
-function pprint_port($port) {
-	global $wkports;
-
-	$pport = "";
-		
-	if (!$port)
-		echo "*";
-	else {
-		$srcport = explode("-", $port);
-		if ((!$srcport[1]) || ($srcport[0] == $srcport[1])) {
-			$pport = $srcport[0];
-			if ($wkports[$srcport[0]]) {
-				$pport .= " (" . $wkports[$srcport[0]] . ")";
-			}
-		} else
-			$pport .= $srcport[0] . " - " . $srcport[1];
-	}
-	
-	return $pport;
-}
-
-function staticroutes_sort() {
-	global $g, $config;
-
-	function staticroutecmp($a, $b) {
-		return strcmp($a['network'], $b['network']);
-	}
-
-	usort($config['staticroutes']['route'], "staticroutecmp");
-}
-
 
 function dynamic_tab_menu(&$tabs) {
 	global $allowed, $config;

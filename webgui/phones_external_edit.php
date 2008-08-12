@@ -29,12 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
-
 $needs_scriptaculous = true;
 
-$pgtitle = array(gettext("Phones"), gettext("Edit External Line"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Phones"), gettext("Edit External Line"));
 
 /* grab and sort the isdn phones in our config */
 if (!is_array($config['external']['phone']))
@@ -70,9 +69,9 @@ if ($_POST) {
 	
 	/* input validation */
 	$reqdfields = explode(" ", "extension name dialstring dialprovider");
-	$reqdfieldsn = explode(",", gettext("Extension,Name,Dialstring,Provider"));
+	$reqdfieldsn = explode(",", "Extension,Name,Dialstring,Provider");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	/* XXX : other strings should be verified with isset() to prevent false negatives */
 	if (isset($_POST['dialstring']) && ($msg = verify_is_dialstring($_POST['dialstring']))) {
 		$input_errors[] = $msg;
@@ -130,7 +129,7 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="phones_external_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 

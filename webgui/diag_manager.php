@@ -29,9 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Diagnostics"), gettext("Manager Interface"));
 $pghelp = gettext("This page allows direct execution of commands on the Asterisk console. Execute \"help\" to see a list of possible commands.");
-require("guiconfig.inc");
 
 include("fbegin.inc"); ?>
 

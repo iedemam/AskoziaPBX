@@ -29,8 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Debug"), gettext("ISDN"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Debug"), gettext("ISDN"));
 
 $state = "stopped";
 

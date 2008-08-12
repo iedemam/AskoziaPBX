@@ -29,9 +29,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Traceroute"));
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Diagnostics"), gettext("Traceroute"));
 
 define('MAX_TTL', 64);
 define('DEFAULT_TTL', 18);
@@ -42,8 +42,8 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "host ttl");
-	$reqdfieldsn = explode(",", gettext("Host,ttl"));
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	$reqdfieldsn = explode(",", "Host,ttl");
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['ttl'] < 1) || ($_POST['ttl'] > MAX_TTL)) {
 		$input_errors[] = sprintf(gettext("Maximum number of hops must be between 1 and %d"), MAX_TTL);
@@ -76,7 +76,7 @@ include("fbegin.inc");
   </td></tr>
   <tr> 
     <td class="tabcont">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 			<form action="diag_traceroute.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>

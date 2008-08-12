@@ -29,11 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Accounts"), gettext("Phones"));
 $pghelp = gettext("Phone Accounts allow you to configure internal extensions and their access to Provider Accounts. Click an account type below to get started.");
 $pglegend = array("add", "enabled", "disabled", "edit", "delete");
-require("guiconfig.inc");
-
 
 /* delete */
 if ($_GET['action'] == "delete") {
@@ -200,7 +200,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 </script>
 <form action="accounts_phones.php" method="post">
-<? if ($savemsg) print_info_box($savemsg); ?>
+<? if ($savemsg) display_info_box($savemsg); ?>
 <? $status_info = pbx_get_peer_statuses(); ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">

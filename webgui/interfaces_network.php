@@ -29,9 +29,10 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Interfaces"), gettext("Network"));
 $pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default AskoziaPBX requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
-require("guiconfig.inc");
 
 $lancfg = &$config['interfaces']['lan'];
 
@@ -65,12 +66,12 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	$reqdfields = explode(" ", "ipaddr subnet gateway topology");
-	$reqdfieldsn = explode(",", gettext("IP address,Subnet bit count,Gateway,Network topology"));
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway,Network topology");
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	if ($_POST['hostnameupdatesrc'] == "pbx") {
 		$reqdfields = array_merge($reqdfields, explode(" ", "dyndnsusername dyndnspassword dyndnstype"));
 		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Dynamic DNS Username,Dynamic DNS Password,Dynamic DNS Service Type"));
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 	
 	$_POST['spoofmac'] = str_replace("-", ":", $_POST['spoofmac']);
@@ -233,8 +234,8 @@ function lan_if_change() {
 //-->
 </script>
 <form action="interfaces_network.php" method="post" name="iform" id="iform">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -329,7 +330,7 @@ function lan_if_change() {
 					<td width="78%" class="vtable">
 						<select name="topology" class="formfld" id="topology" onchange="type_change()">
 							<? foreach ($topologies as $topo => $tfriendly): ?>
-							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=gettext($tfriendly);?></option>
+							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
 							<? endforeach; ?>
 						</select>
 						<br>
@@ -366,7 +367,7 @@ function lan_if_change() {
 				</tr>
 			</table>
 
-		<div id="dyndns_wrapper" class="display_none;">
+		<div id="dyndns_wrapper" style="display: none;">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0" summary="content pane">
 				<tr> 
 					<td valign="top" colspan="2" class="listtopic"><?=gettext("Dynamic DNS Client");?></td>

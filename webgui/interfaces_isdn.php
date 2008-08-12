@@ -29,11 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+require("guiconfig.inc");
+
 $pgtitle = array(gettext("Interfaces"), gettext("ISDN"));
 $pghelp = gettext("Detected ports on this page must be edited and saved before the system can utilize them. Be careful when configuring ISDN interfaces. Having a single port on a card incorrectly configured can result in the entire card being unusable by the system.");
 $pglegend = array("edit", "delete");
-require("guiconfig.inc");
-
 
 if (!is_array($config['interfaces']['isdn-unit']))
 	$config['interfaces']['isdn-unit'] = array();
@@ -98,8 +98,8 @@ if (file_exists($d_isdnconfdirty_path)) {
 ?>
 
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php if ($savemsg) display_info_box($savemsg); ?>
 <form action="interfaces_isdn.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>

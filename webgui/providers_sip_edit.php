@@ -29,12 +29,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
-
 $needs_scriptaculous = true;
 
-$pgtitle = array(gettext("Providers"), gettext("Edit SIP Account"));
 require("guiconfig.inc");
+
+$pgtitle = array(gettext("Providers"), gettext("Edit SIP Account"));
 
 if (!is_array($config['sip']['provider']))
 	$config['sip']['provider'] = array();
@@ -95,9 +94,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name username host");
-	$reqdfieldsn = explode(",", gettext("Name,Username,Host"));
+	$reqdfieldsn = explode(",", "Name,Username,Host");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['username'] && !pbx_is_valid_username($_POST['username']))) {
 		$input_errors[] = gettext("A valid username must be specified.");
@@ -218,7 +217,7 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="providers_sip_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			<tr> 

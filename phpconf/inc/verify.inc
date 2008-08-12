@@ -282,4 +282,20 @@ function verify_readback_number($readbacknum) {
 	return false;
 }
 
+function verify_input($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
+	
+	/* check for bad control characters */	
+	foreach ($postdata as $pn => $pd) {
+		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
+			$input_errors[] = sprintf(gettext("The field '%s' contains invalid characters."), $pn);
+		}
+	}
+
+	for ($i = 0; $i < count($reqdfields); $i++) {
+		if (!isset($_POST[$reqdfields[$i]]) || ($_POST[$reqdfields[$i]] === "")) {
+			$input_errors[] = sprintf(gettext("The field '%s' is required."), gettext($reqdfieldsn[$i]));
+		}
+	}
+}
+
 ?>
