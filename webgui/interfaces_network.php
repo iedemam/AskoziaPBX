@@ -366,7 +366,7 @@ function lan_if_change() {
 				</tr>
 			</table>
 
-		<div id="dyndns_wrapper" style="display:none;">
+		<div id="dyndns_wrapper" class="display_none;">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0" summary="content pane">
 				<tr> 
 					<td valign="top" colspan="2" class="listtopic"><?=gettext("Dynamic DNS Client");?></td>
@@ -406,27 +406,8 @@ function lan_if_change() {
 					<td width="78%" class="vtable"> 
 						<input name="dyndnswildcard" type="checkbox" id="dyndnswildcard" value="yes" <?php if ($pconfig['dyndnswildcard']) echo "checked"; ?>>
 						<?=gettext('Yes, alias "*.hostname.domain" to hostname specified above.');?></td>
-				</tr><? /*
-				<tr> 
-					<td width="22%" valign="top" class="vncell">Server</td>
-					<td width="78%" class="vtable"> 
-						<input name="server" type="text" class="formfld" id="server" size="30" value="<?=htmlspecialchars($pconfig['dyndnsserver']);?>">
-						<br>Special server to connect to.</td>
 				</tr>
-				<tr>
-					<td width="22%" valign="top" class="vncell">Port</td>
-					<td width="78%" class="vtable"> 
-						<input name="port" type="text" class="formfld" id="port" size="5" value="<?=htmlspecialchars($pconfig['dyndnsport']);?>">
-						<br>Special server port to connect to.</td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top" class="vncell">MX</td>
-					<td width="78%" class="vtable"> 
-						<input name="mx" type="text" class="formfld" id="mx" size="30" value="<?=htmlspecialchars($pconfig['dyndnsmx']);?>"> 
-						<br>
-						Set this option only if you need a special MX record. Not all services support this.</td>
-				</tr>
-		*/ ?></table>
+			</table>
 		</div>
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 

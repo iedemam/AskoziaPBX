@@ -87,21 +87,17 @@ function display_get_query($start, $stop, $nentries, $current_page, $filter=null
 	$stop = $nentries;	
 
 	
-	if($filter) {
-		if($sort) {
-			$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' ORDER BY id DESC LIMIT $start,$stop";
-		}
-		else {
-			$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' ORDER BY id ASC LIMIT $start,$stop";
-		}
+	if($filter && $sort) {
+		$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' ORDER BY id DESC LIMIT $start,$stop";
+	}
+	else if($filter) {
+		$query = "SELECT * FROM cdr WHERE start LIKE '%$filter%' OR src LIKE '%$filter%' OR dst LIKE '%$filter%' OR channel LIKE'%$filter%' OR dstchannel LIKE '%$filter%' OR lastapp LIKE '%$filter%' OR lastdata LIKE '%$filter%' OR duration LIKE '%$filter%' OR billsec LIKE '%$filter%' OR disposition LIKE '%$filter%' ORDER BY id ASC LIMIT $start,$stop";
+	}
+	else if($sort) {
+		$query = "SELECT * FROM cdr ORDER BY id DESC LIMIT $start,$stop";
 	}
 	else {
-		if($sort) {
-			$query = "SELECT * FROM cdr ORDER BY id DESC LIMIT $start,$stop";
-		}
-		else {
-			$query = "SELECT * FROM cdr ORDER BY id ASC LIMIT $start,$stop";
-		}
+		$query = "SELECT * FROM cdr ORDER BY id ASC LIMIT $start,$stop";
 	}
 
 	return $query;
@@ -131,13 +127,11 @@ function display_calculate_current_page($pages, $sort=null) {
 	if($_GET['page']) {
 		$current_page = $_GET['page'];
 	}
+	else if($sort) {
+		$current_page = 1;
+	}
 	else {
-		if($sort) {
-			$current_page = 1;
-		}
-		else {
-			$current_page = $pages;
-		}
+		$current_page = $pages;
 	}
 
 	return $current_page;
@@ -155,39 +149,31 @@ function display_get_command($current_page, $nentries, $source, $filter=null, $l
 	$stop = (($start+$nentries)-1);
 
 	if($source == "internal") {
-		if($filter) {
-			if($sort) {
-				$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
-			}
-			else {
-				$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/sed '$start,$stop!d'";
-			}
+		if($filter && $sort) {
+			$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+		}
+		else if($filter) {
+			$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/sed '$start,$stop!d'";	
+		}
+		else if($sort) {
+			$command = "/usr/sbin/clog $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
 		}
 		else {
-			if($sort) {
-				$command = "/usr/sbin/clog $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
-			}
-			else {
-				$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
-			}
+			$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
 		}
 	}
 	else {
-		if($filter) {
-			if($sort) {
-				$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
-			}
-			else {
-				$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/sed '$start,$stop!d'";
-			}
+		if($filter && $sort) {
+			$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+		}
+		else if($filter) {
+			$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/sed '$start,$stop!d'";
+		}
+		else if($sort) {
+			$command = "/usr/bin/tail -r $logpath | /usr/bin/sed '$start,$stop!d'";
 		}
 		else {
-			if($sort) {
-				$command = "/usr/bin/tail -r $logpath | /usr/bin/sed '$start,$stop!d'";
-			}
-			else {
-				$command = "/usr/bin/sed '$start,$stop!d' $logpath";
-			}
+			$command = "/usr/bin/sed '$start,$stop!d' $logpath";
 		}
 	}
 	
@@ -315,8 +301,8 @@ function display_gui_language_selector($current_language) {
 		"de_DE" => "Deutsch (0%)",
 		"fr_FR" => "Français (0%)",
 		"it_IT" => "Italiano (70%)",
-		"pl_PL" => "Język polski (90%)",
-		"nl_NL" => "Nederlands (60%)",
+		"pl_PL" => "Język polski (0%)",
+		"nl_NL" => "Nederlands (50%)",
 		"pt_BR" => "Português (0%)",
 		"fi_FI" => "Suomi",
 		"se_SE" => "Svenska (0%)",
@@ -883,7 +869,7 @@ function display_advanced_settings_begin($colspan) {
 			<td class="list" colspan="<?=$colspan + 1;?>" height="12">&nbsp;</td>
 		</tr>
 		<tr>
-			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header"><?=gettext("Advanced Settings");?> (<a href="javascript:{}" id="advanced-settings-opener" style="color: #000000; text-decoration: none;"><?=gettext("show");?></a>)</td>
+			<td colspan="<?=$colspan + 1;?>" class="listtopiclight" id="advanced-settings-header"><?=gettext("Advanced Settings");?> (<a href="javascript:{}" id="advanced-settings-opener" class="link_color_black"><?=gettext("show");?></a>)</td>
 		</tr>
 	</table>
 	<div id="advanced-settings-container" class="display_none">
@@ -1059,8 +1045,9 @@ function display_firmware_update_info($status) {
 		?><p>
 			<table border="0" cellspacing="0" cellpadding="4" width="100%">
 				<tr>
-					<td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="<?=$image;?>" width="28" height="32"></td>
-					<td bgcolor="#D9DEE8" style="padding-left: 8px"><?=$message;?></td>
+					<td class="firmware_update_info_image" align="center" valign="top" width="36">
+					<img src="<?=$image;?>" width="28" height="32"></td>
+					<td class="firmware_update_info_message"><?=$message;?></td>
 				</tr>
 			</table>
 		</p><?

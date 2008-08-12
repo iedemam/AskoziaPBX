@@ -271,7 +271,7 @@ function showhide(tspan, tri) {
 <table width="750" border="0" cellspacing="0" cellpadding="2">
   <tr valign="bottom"> 
     <td width="150" height="65" align="center" valign="middle"> <strong><a href="http://askozia.com/pbx" target="_blank"><img src="logo.png" width="150" height="46" border="0"></a></strong></td>
-    <td height="65" bgcolor="#435370">
+    <td height="65" class="webgui_bg">
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
 	  <td align="right" valign="bottom">
@@ -280,26 +280,24 @@ function showhide(tspan, tri) {
 	</td>
   </tr>
   <tr valign="top"> 
-    <td width="150" bgcolor="#9D9D9D">
+    <td width="150" class="link_table_bg">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
         <tr>
-          <td><span class="navlnk"><font color="#FFFFFF"> 
-            <?php 
-                   
-dynamic_menu($menu['System'], gettext('System'));
-dynamic_menu($menu['Accounts'], gettext('Accounts'));
-dynamic_menu($menu['Dialplan'], 'Dialplan');
-dynamic_menu($menu['Services'], gettext('Services'));
-if (isset($menu['Packages'])) {
-	dynamic_menu($menu['Packages'], gettext('Packages'));
-}
-dynamic_menu($menu['Status'], gettext('Status'));
-dynamic_menu($menu['Live Stats'], gettext('Live Stats'));
-dynamic_menu($menu['Advanced'], 'Advanced');
-dynamic_menu($menu['Diagnostics'], 'Diagnostics');
+          <td><span class="navlnk"><?
 
-?>
-			  </font></span>
+		dynamic_menu($menu['System'], gettext('System'));
+		dynamic_menu($menu['Accounts'], gettext('Accounts'));
+		dynamic_menu($menu['Dialplan'], 'Dialplan');
+		dynamic_menu($menu['Services'], gettext('Services'));
+		if (isset($menu['Packages'])) {
+			dynamic_menu($menu['Packages'], gettext('Packages'));
+		}
+		dynamic_menu($menu['Status'], gettext('Status'));
+		dynamic_menu($menu['Live Stats'], gettext('Live Stats'));
+		dynamic_menu($menu['Advanced'], 'Advanced');
+		dynamic_menu($menu['Diagnostics'], 'Diagnostics');
+
+		?></span>
             </td>
         </tr></table></td>
     <td width="600"><table width="100%" border="0" cellpadding="10" cellspacing="0">
@@ -314,7 +312,7 @@ if (!$pgtitle_omit) {
 	?></p><?
 
 	if ($pghelp) {
-		?><div class="pghelp" name="pghelp" id="pghelp" style="display:none;"><?=gettext($pghelp);?><?
+		?><div class="pghelp" name="pghelp" id="pghelp"><?=gettext($pghelp);?><?
 
 		if ($pglegend) {
 			$legendtext['add'] = gettext("add a new item");

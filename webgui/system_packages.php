@@ -383,8 +383,8 @@ if ($pkg_updates) {
 	?><p>
 		<table border="0" cellspacing="0" cellpadding="4" width="100%">
 			<tr>
-				<td bgcolor="#687BA4" align="center" valign="top" width="36"><img src="exclam.gif" width="28" height="32"></td>
-				<td bgcolor="#D9DEE8" style="padding-left: 8px"><strong><?=gettext("There are updates available for packages on your system.");?></strong><br><?=gettext("Click the <img src=\"update.png\" border=\"0\"> icon below to select and install the updated packages.");?>
+				<td class="pkg_updates_img" width="36"><img src="exclam.gif" width="28" height="32"></td>
+				<td class="pkg_updates_msg"><strong><?=gettext("There are updates available for packages on your system.");?></strong><br><?=gettext("Click the <img src=\"update.png\" border=\"0\"> icon below to select and install the updated packages.");?>
 				</td>
 			</tr>
 		</table>
@@ -494,7 +494,7 @@ if (!$syspart) {
 			<td class="list"></td>
 			<td class="list" colspan="3">
 
-				<div id="update-pane" class="tabcont" style="display: none;">
+				<div id="update-pane" class="tabcont" class="display_none;">
 					<strong><?=gettext("Update Installed Package");?></strong><br>
 					<br><?
 
@@ -524,7 +524,7 @@ if (!$syspart) {
 					</form>
 				</div>
 
-				<div id="install-pane" class="tabcont" style="display: none;">
+				<div id="install-pane" class="tabcont" class="display_none;">
 					<strong><?=gettext("Install a New Package");?></strong><br>
 					<br><?
 
@@ -554,7 +554,7 @@ if (!$syspart) {
 					</form>
 				</div>
 
-				<div id="restore-pane" class="tabcont" style="display: none;">
+				<div id="restore-pane" class="tabcont" class="display_none;">
 					<strong><?=gettext("Restore from a Backup Archive");?></strong><br>
 					<br>
 					<?=gettext("Select a backup .tgz archive and press 'Restore'");?><br>

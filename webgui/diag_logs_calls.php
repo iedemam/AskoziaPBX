@@ -100,7 +100,7 @@ function print_entry($cdr) {
 		echo "<td class=\"listr\">\n";
 		echo "\t<span title=\"".
 				htmlspecialchars($cdr['clid']).
-				"\" style=\"cursor: help; border-bottom: 1px dashed #000000;\">".
+				"\" class=\"print_entry\">".
 				htmlspecialchars($cdr['src']).
 			"</span>&nbsp;</td>\n";
 	} else {

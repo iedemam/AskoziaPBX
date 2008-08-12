@@ -46,6 +46,7 @@ p {
 	padding: 5px;
 	margin-bottom: 12px;
 	background-color: #D9DEE8;
+	display: none;
 }
 .tfrtitle {
 	font-size: 18px;
@@ -553,4 +554,64 @@ form.display {
 
 div.padding_top {
 	padding-top: 2px;
+}
+
+a.link_color_black {
+	color: #000000;
+}
+
+.firmware_update_info_image {
+	background-color: #687BA4;
+}
+
+.firmware_update_info_message {
+	padding-left: 8px;
+	background-color: #D9DEE8;
+}
+
+.print_input_errors_img {
+	background-color: #A12A2A;
+	text-align: center;
+	vertical-align: top;
+}
+
+.print_input_errors {
+	background-color: #FFD9D1;
+	padding-left: 8px;
+	padding-top: 6px;
+}
+
+.print_info_box_img {
+	text-align: center;
+	vertical-align: top;
+	background-color: #687BA4;
+}
+
+.print_info_box_msg {
+	padding-left: 8px;
+	background-color: #D9DEE8;
+}
+
+.webgui_bg {
+	background-color: #435370;
+}
+
+.link_table_bg {
+	background-color: #9D9D9D;
+}
+
+.print_entry {
+	cursor: help; 
+	border-bottom: 1px dashed #000000;
+}
+
+.pkg_updates_img {
+	background-color: #687BA4;
+	text-align: center;
+	vertical-align: top;
+}
+
+.pkg_updates_msg {
+	background-color: #D9DEE8;
+	padding-left: 8px;
 }

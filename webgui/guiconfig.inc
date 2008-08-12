@@ -305,19 +305,25 @@ function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors
 }
 
 function print_input_errors($input_errors) {
-	echo "<p><table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
-	echo "<tr><td bgcolor=\"#A12A2A\" width=\"36\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" width=\"28\" height=\"32\"></td>\n";
-	echo "<td bgcolor=\"#FFD9D1\" style=\"padding-left: 8px; padding-top: 6px\">";
+	?><p>
+		<table border="0" cellspacing="0" cellpadding="4" width="100%"><br>
+			<tr>
+				<td class="print_input_errors_img" width="36"><img src="err.gif" width="28" height="32"></td><br>
+				<td class="print_input_errors">
 	
-	echo "<span class=\"errmsg\"><p>";
-	echo gettext("The following input errors were detected:");
-	echo "<ul>\n";
-	foreach ($input_errors as $ierr) {
-		echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
-	}
-	echo "</ul></span>";
+				<span class="errmsg"><p>
+					<?=gettext("The following input errors were detected:");?>
+					<ul><br>
+						<?foreach ($input_errors as $ierr) {
+							echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
+						}?>
+					</ul>
+				</span>
 	
-	echo "</td></tr></table></p>";
+				</td>
+			</tr>
+		</table>
+	</p><?
 }
 
 function exec_rc_script($scriptname) {
@@ -363,8 +369,8 @@ function print_info_box($msg, $keep=false) {
 		<p>
 			<table border="0" cellspacing="0" cellpadding="4" width="100%">
 				<tr>
-					<td align="center" valign="top" bgcolor="#687BA4" width="36"><img src="exclam.gif" width="28" height="32"></td>
-					<td style="padding-left:8px" bgcolor="#D9DEE8"><?=gettext($msg);?></td>
+					<td class="print_info_box_img" width="36"><img src="exclam.gif" width="28" height="32"></td>
+					<td class="print_info_box_msg"><?=gettext($msg);?></td>
 				</tr>
 			</table>
 		</p>
@@ -451,13 +457,13 @@ function dynamic_tab_menu(&$tabs) {
    				if ((strpos($link,'diag_logs') > -1) && ($link != 'diag_logs_settings.php')) {
 	   				if ($desc == "Firewall") {
 	       				$msg = gettext("reset filter and reload firewall logs page");
-	       				echo '<li class="tabact"><a href="diag_logs_filter.php" style="color:black" title="'.$msg.'">';
+	       				echo '<li class="tabact"><a href="diag_logs_filter.php" class="link_color_black" title="'.$msg.'">';
 					echo gettext("Firewall");
 					echo '</a></li>';
 	   				}
 	   				else {
 	   					$msg = gettext("reload page");
-	   					echo '<li class="tabact"><a href="'.$link.'" style="color:black" title="'.$msg.'">'.$desc.'</a></li>';
+	   					echo '<li class="tabact"><a href="'.$link.'" class="link_color_black" title="'.$msg.'">'.$desc.'</a></li>';
 	   				}
 	   			}
        			else {
