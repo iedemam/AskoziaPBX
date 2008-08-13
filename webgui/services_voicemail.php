@@ -103,8 +103,17 @@ if ($_POST) {
 		config_unlock();
 		
 		$retval |= voicemail_reload();
-		
-		$savemsg = get_std_save_message($retval);
+
+		if($_POST['testmail']) {
+			$mail_sent = mail($_POST['email_addr'], 'AskoziaPBX Test E-mail', 'asdfasdfasdfasdfasdf');
+			if($mail_sent) {
+				$savemsg = "E-mail has been sent successfully.";
+			} else {
+				$input_errors[] = "E-mail was not sent, check your settings.";
+			}
+		} else {
+			$savemsg = get_std_save_message($retval);
+		}
 	}
 }
 ?>
@@ -163,7 +172,15 @@ if ($_POST) {
             			<?=gettext("Account uses TLS");?><br>
 				<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span> <?=gettext("TLS certificates are currently not verified.");?></span>
 			</td>
-        </tr>
+        	</tr>
+		<tr>
+			<td valign="top" class="vncell">Test E-mail</td>
+			<td class="vtable">
+				<input name="email_addr" type="text" class="formfld" id="email_addr" size="40" value="">
+				<input name="testmail" type="submit" class="formbtn" value="E-mail Me"><br>
+				Type in an e-mail address where you want the test mail to be sent.
+			</td>
+		</tr>
 		<tr> 
 			<td colspan="2" class="list" height="12"></td>
 		</tr>
