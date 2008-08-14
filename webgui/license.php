@@ -126,6 +126,20 @@ $pgtitle = array("License");
 	Oleksandr Tymoshenko, Dinesh Nair, Konstantin Prokazoff, Luigi Rizzo, Chris Stenton and Yuri Saltykov
 	</p>
 	<hr size="1">
+	<p>webGUI Localization Translators</p>
+	<p>
+	<ul>
+		<li>Bulgarian - Chavdar Shtiliyanov</li>
+		<li>Chinese (Traditional & Simplified) - Xing Cao</li>
+		<li>Danish - Carsten Matzon</li>
+		<li>Dutch - Wim Van Clapdurp</li>
+		<li>Finnish - Christoffer Lindqvist</li>
+		<li>German - Andreas Jud</li>
+		<li>Italian - Roberto Zilli</li>
+		<li>Polish - Marcin Hańczaruk</li>
+	</ul>
+	</p>
+	<hr size="1">
 	<p>The multilingual speech prompts used in AskoziaPBX have been made available by the following groups</p>
 	<p>Danish (<a href="http://www.globaltelip.dk/downloads/da-voice-prompts.rar" target="_blank">http://www.globaltelip.dk</a>)<br>
 	Copyright Information Unknown<br>
