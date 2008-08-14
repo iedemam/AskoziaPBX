@@ -1,6 +1,9 @@
 2008.xx.xx - pb14.2
- - localization: Polish
+ - added: SMTP settings can now be tested via "Services -> Voicemail"
  - updated: PHP to 4.4.9
+ - localization: Polish
+ - localization: German
+ - localization: Bulgarian
  - bug: reverting to jquery 1.2.1 - fixes a few javascript incompatibilities introduced in 1.2.6
  - refactor: Analog and ISDN interface pages cleaned up
  - refactor: major gettext cleanups / fixes

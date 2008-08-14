@@ -298,7 +298,7 @@ function display_gui_language_selector($current_language) {
 		"zh_CN" => "简体中文",
 		"zh_TW" => "繁體中文",
 		"da_DA" => "Dansk (90%)",
-		"de_DE" => "Deutsch (0%)",
+		"de_DE" => "Deutsch (20%)",
 		"fr_FR" => "Français (0%)",
 		"it_IT" => "Italiano (70%)",
 		"pl_PL" => "Język polski (90%)",

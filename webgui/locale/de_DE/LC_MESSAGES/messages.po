@@ -2,7 +2,7 @@
 # $Id$
 #
 # part of AskoziaPBX (http://askozia.com/pbx)
-# Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de>
 # All rights reserved.
 #
 # Authors:
@@ -11,16 +11,21 @@
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-12 15:45+0200\n"
+"POT-Creation-Date: 2008-08-14 10:43+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andreas Jud <a.jud@webflash.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Accounts"
-msgstr ""
+msgstr "Konten"
 
 msgid "Phones"
-msgstr ""
+msgstr "Telefone"
 
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
@@ -31,25 +36,25 @@ msgid "SIP"
 msgstr "SIP"
 
 msgid "IAX"
-msgstr ""
+msgstr "IAX"
 
 msgid "ISDN"
-msgstr ""
+msgstr "ISDN"
 
 msgid "Analog"
-msgstr ""
+msgstr "Analog"
 
 msgid "External"
-msgstr ""
+msgstr "Extern"
 
 msgid "Extension"
-msgstr ""
+msgstr "Erweiterung"
 
 msgid "Caller ID"
-msgstr ""
+msgstr "Anruferkennung"
 
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 msgid "click to enable phone"
 msgstr ""
@@ -61,22 +66,22 @@ msgid "click to disable phone"
 msgstr ""
 
 msgid "edit phone"
-msgstr ""
+msgstr "Telefon editieren"
 
 msgid "Do you really want to delete this phone?"
 msgstr ""
 
 msgid "delete phone"
-msgstr ""
+msgstr "Telefon löschen"
 
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgid "Dialstring"
 msgstr ""
 
 msgid "Providers"
-msgstr ""
+msgstr "Anbieter"
 
 msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
@@ -88,10 +93,10 @@ msgid "Pattern(s)"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "Benutzername"
 
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 msgid "click to enable provider"
 msgstr ""
@@ -103,22 +108,22 @@ msgid "click to disable provider"
 msgstr ""
 
 msgid "edit provider"
-msgstr ""
+msgstr "Anbieter editieren"
 
 msgid "Do you really want to delete this provider?"
 msgstr ""
 
 msgid "delete provider"
-msgstr ""
+msgstr "Anbieter löschen"
 
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgid "Interface"
-msgstr ""
+msgstr "Schnittstelle"
 
 msgid "Advanced"
-msgstr ""
+msgstr "Erweiterte"
 
 msgid "Tone Zones"
 msgstr ""
@@ -127,13 +132,13 @@ msgid "Loaded"
 msgstr ""
 
 msgid "drag-and-drop"
-msgstr ""
+msgstr "Drag & Drop"
 
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 msgid "Note:"
-msgstr ""
+msgstr "Notiz:"
 
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
@@ -141,7 +146,7 @@ msgid ""
 msgstr ""
 
 msgid "GUI Options"
-msgstr ""
+msgstr "GUI Optionen"
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -165,7 +170,7 @@ msgid "webGUI SSL certificate/key"
 msgstr ""
 
 msgid "Certificate"
-msgstr ""
+msgstr "Zertifikat"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr ""
@@ -180,13 +185,13 @@ msgid "Generate self-signed certificate"
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Sonstiges"
 
 msgid "Console menu"
-msgstr ""
+msgstr "Konsole menu"
 
 msgid "Disable console menu"
 msgstr ""
@@ -223,7 +228,7 @@ msgid "Always on"
 msgstr ""
 
 msgid "minutes"
-msgstr ""
+msgstr "minuten"
 
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
@@ -231,7 +236,7 @@ msgid ""
 msgstr ""
 
 msgid "Navigation"
-msgstr ""
+msgstr "Navigation"
 
 msgid "Keep diagnostics in navigation expanded"
 msgstr ""
@@ -255,7 +260,7 @@ msgid "A valid port must be specified."
 msgstr ""
 
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 msgid "Binding Port"
 msgstr ""
@@ -264,13 +269,13 @@ msgid "Jitterbuffer"
 msgstr ""
 
 msgid "Enable"
-msgstr ""
+msgstr "Aktivieren"
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
 msgstr ""
 
 msgid "Force"
-msgstr ""
+msgstr "Zwingen"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr ""
@@ -291,22 +296,22 @@ msgid "Audio"
 msgstr ""
 
 msgid "A-law"
-msgstr ""
+msgstr "A-law"
 
 msgid "u-law"
-msgstr ""
+msgstr "u-law"
 
 msgid "Manager Interface"
 msgstr ""
 
 msgid "Permissions"
-msgstr ""
+msgstr "Berechtigungen"
 
 msgid "read:"
-msgstr ""
+msgstr "lesen:"
 
 msgid "write:"
-msgstr ""
+msgstr "schreiben:"
 
 msgid "edit manager room"
 msgstr ""
@@ -321,13 +326,13 @@ msgid "add manager user"
 msgstr ""
 
 msgid "Edit User"
-msgstr ""
+msgstr "Benutzer Editieren"
 
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
 msgstr ""
 
 msgid "Secret"
-msgstr ""
+msgstr "Geheim"
 
 msgid "Deny Network"
 msgstr ""
@@ -342,10 +347,10 @@ msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
 msgstr ""
 
 msgid "Read"
-msgstr ""
+msgstr "Lesen"
 
 msgid "Write"
-msgstr ""
+msgstr "Schreiben"
 
 msgid "RTP"
 msgstr ""
@@ -360,7 +365,7 @@ msgid "The port range which RTP streams should use. (default:"
 msgstr ""
 
 msgid "Warning"
-msgstr ""
+msgstr "Warnung"
 
 msgid "after you click &quot;Save&quot;, all current calls will be dropped."
 msgstr ""
@@ -384,13 +389,13 @@ msgid "Registration Expiration Timeouts"
 msgstr ""
 
 msgid "min:"
-msgstr ""
+msgstr "min:"
 
 msgid "max:"
-msgstr ""
+msgstr "max:"
 
 msgid "default:"
-msgstr ""
+msgstr "Standard:"
 
 msgid ""
 "The minimum, maximum and default number of seconds that incoming and "
@@ -407,46 +412,46 @@ msgid "Disable DNS SRV lookups."
 msgstr ""
 
 msgid "Debug"
-msgstr ""
+msgstr "Debuggen"
 
 msgid "Download"
-msgstr ""
+msgstr "Herunterladen"
 
 msgid "ISDN Interface"
-msgstr ""
+msgstr "ISDN Schnittstelle"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgid "Debugging"
 msgstr ""
 
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 msgid "Debug Ouptut"
 msgstr ""
 
 msgid "Restart"
-msgstr ""
+msgstr "Neustart"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnose"
 
 msgid "ARP table"
 msgstr ""
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP Adresse"
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC Adresse"
 
 msgid "Hostname"
-msgstr ""
+msgstr "Hostname"
 
 msgid "delete arp entry"
 msgstr ""
@@ -455,7 +460,7 @@ msgid "remove all entries from arp table"
 msgstr ""
 
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #, php-format
 msgid "The specified file (%s) does not exist."
@@ -466,64 +471,64 @@ msgid "File contents (%s) saved."
 msgstr ""
 
 msgid "File"
-msgstr ""
+msgstr "Datei"
 
 msgid "Contents"
-msgstr ""
+msgstr "Inhalt"
 
 msgid "Cancel"
-msgstr ""
+msgstr "abbrechen"
 
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 msgid "Logs"
-msgstr ""
+msgstr "Logs"
 
 msgid "No matches found."
 msgstr ""
 
 msgid "System"
-msgstr ""
+msgstr "System"
 
 msgid "PBX"
-msgstr ""
+msgstr "PBX"
 
 msgid "Calls"
-msgstr ""
+msgstr "Anrufe"
 
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 msgid "filter"
-msgstr ""
+msgstr "Filter"
 
 msgid "System log entries"
 msgstr ""
 
 msgid "Clear Log"
-msgstr ""
+msgstr "Logfile leeren"
 
 msgid "Call Records"
 msgstr ""
 
 msgid "start"
-msgstr ""
+msgstr "Start"
 
 msgid "src"
-msgstr ""
+msgstr "Quelle"
 
 msgid "dst"
-msgstr ""
+msgstr "Ziel"
 
 msgid "channels"
-msgstr ""
+msgstr "Kanal"
 
 msgid "last app"
 msgstr ""
 
 msgid "sec."
-msgstr ""
+msgstr "sek."
 
 msgid "bill"
 msgstr ""
@@ -532,7 +537,7 @@ msgid "disposition"
 msgstr ""
 
 msgid "Clear log"
-msgstr ""
+msgstr "Logfile leeren"
 
 msgid "Asterisk log entries"
 msgstr ""
@@ -582,17 +587,17 @@ msgid "Command"
 msgstr ""
 
 msgid "Output"
-msgstr ""
+msgstr "Ausgabe"
 
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
 #, php-format
 msgid "Count must be between 1 and %d"
 msgstr ""
 
 msgid "Traceroute"
-msgstr ""
+msgstr "Traceroute"
 
 msgid "Count"
 msgstr ""
@@ -622,7 +627,7 @@ msgid "Dialplan"
 msgstr ""
 
 msgid "Applications"
-msgstr ""
+msgstr "Anwendungen"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -632,7 +637,7 @@ msgid ""
 msgstr ""
 
 msgid "descr"
-msgstr ""
+msgstr "Beschr"
 
 msgid "edit application mapping"
 msgstr ""
@@ -647,7 +652,7 @@ msgid "add application mapping"
 msgstr ""
 
 msgid "Edit"
-msgstr ""
+msgstr "Editieren"
 
 msgid "A valid extension must be entered."
 msgstr ""
@@ -752,7 +757,7 @@ msgid ""
 msgstr ""
 
 msgid "Timeouts"
-msgstr ""
+msgstr "Timeouts"
 
 msgid "Attended Transfer Answer"
 msgstr ""
@@ -832,44 +837,44 @@ msgid "Collecting initial data, please wait..."
 msgstr ""
 
 msgid "75%"
-msgstr ""
+msgstr "75%"
 
 msgid "50%"
-msgstr ""
+msgstr "50%"
 
 msgid "25%"
-msgstr ""
+msgstr "25%"
 
 msgid "Cannot get CPU load"
 msgstr ""
 
 msgid "AskoziaPBX webGUI"
-msgstr ""
+msgstr "AskoziaPBX webGUI"
 
 msgid "System Information"
-msgstr ""
+msgstr "System Informationen"
 
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 msgid "built on"
-msgstr ""
+msgstr "erstellt auf"
 
 msgid "Platform"
-msgstr ""
+msgstr "Plattform"
 
 msgid "Uptime"
 msgstr ""
 
 #, php-format
 msgid "%s days, "
-msgstr ""
+msgstr "%s tage,"
 
 msgid "Last Config Change"
 msgstr ""
 
 msgid "Active Calls"
-msgstr ""
+msgstr "Aktive Anrufe"
 
 msgid "Active Channels"
 msgstr ""
@@ -878,10 +883,10 @@ msgid "Memory Usage"
 msgstr ""
 
 msgid "Notes"
-msgstr ""
+msgstr "Notizen"
 
 msgid "Interfaces"
-msgstr ""
+msgstr "Schnittstelle"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -889,13 +894,13 @@ msgid ""
 msgstr ""
 
 msgid "Network"
-msgstr ""
+msgstr "Netzwerk"
 
 msgid "Wireless"
-msgstr ""
+msgstr "Wireless"
 
 msgid "Storage"
-msgstr ""
+msgstr "Speicher"
 
 msgid "No compatible analog interfaces detected."
 msgstr ""
@@ -919,7 +924,7 @@ msgid "Echo Canceller"
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Deaktiviert"
 
 msgid "edit analog interface"
 msgstr ""
@@ -946,7 +951,7 @@ msgid "Edit Analog"
 msgstr ""
 
 msgid "Interface #"
-msgstr ""
+msgstr "Schnittstelle #"
 
 msgid "Descriptive name for this interface"
 msgstr ""
@@ -963,7 +968,7 @@ msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
 msgstr ""
 
 msgid "Warning:"
-msgstr ""
+msgstr "Warnung:"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
@@ -993,7 +998,7 @@ msgid "Operating Mode"
 msgstr ""
 
 msgid "Enabled"
-msgstr ""
+msgstr "Aktiviert"
 
 msgid "edit ISDN interface"
 msgstr ""
@@ -1093,19 +1098,19 @@ msgid "Checked interfaces will be bridged to the main interface."
 msgstr ""
 
 msgid "IP Address"
-msgstr ""
+msgstr "IP Adresse:"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 msgid "DNS Servers"
-msgstr ""
+msgstr "DNS Server"
 
 msgid "IP Addresses"
-msgstr ""
+msgstr "IP Adressen"
 
 msgid "MAC Address"
-msgstr ""
+msgstr "MAC Adresse"
 
 msgid ""
 "This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
@@ -1114,7 +1119,7 @@ msgid ""
 msgstr ""
 
 msgid "Topology"
-msgstr ""
+msgstr "Topologie"
 
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
@@ -1143,7 +1148,7 @@ msgid "My Router"
 msgstr ""
 
 msgid "AskoziaPBX"
-msgstr ""
+msgstr "AskoziaPBX"
 
 msgid "Dynamic DNS Client"
 msgstr ""
@@ -1152,7 +1157,7 @@ msgid "Service Type"
 msgstr ""
 
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
@@ -1164,7 +1169,7 @@ msgid ""
 msgstr ""
 
 msgid "restart the PBX"
-msgstr ""
+msgstr "PBX neu starten"
 
 msgid "change the IP address of your computer"
 msgstr ""
@@ -1187,10 +1192,10 @@ msgid ""
 msgstr ""
 
 msgid "Capacity"
-msgstr ""
+msgstr "Kapazität"
 
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgid "Installed Packages"
 msgstr ""
@@ -1199,7 +1204,7 @@ msgid "system storage partition"
 msgstr ""
 
 msgid "Edit Disk"
-msgstr ""
+msgstr "Datenträger Editieren"
 
 msgid "descriptive name"
 msgstr ""
@@ -1233,10 +1238,10 @@ msgid "No compatible wireless interfaces detected."
 msgstr ""
 
 msgid "Enable Wireless Interface"
-msgstr ""
+msgstr "Wireless Schnittstelle aktivieren"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgid "SSID"
 msgstr ""
@@ -1363,7 +1368,7 @@ msgid "Internal extension used to reach this phone."
 msgstr ""
 
 msgid "Analog Interface"
-msgstr ""
+msgstr "Analoge Schnittstelle"
 
 msgid "Edit External Line"
 msgstr ""
@@ -1380,7 +1385,7 @@ msgid ""
 msgstr ""
 
 msgid "Provider"
-msgstr ""
+msgstr "Anbieter"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr ""
@@ -1399,7 +1404,7 @@ msgid ""
 msgstr ""
 
 msgid "plaintext"
-msgstr ""
+msgstr "klartext"
 
 msgid "md5"
 msgstr ""
@@ -1429,7 +1434,7 @@ msgid "Dialplan Element Library"
 msgstr ""
 
 msgid "Functions"
-msgstr ""
+msgstr "Funktionen"
 
 msgid "Audio Prompts"
 msgstr ""
@@ -1450,10 +1455,10 @@ msgid "Filename"
 msgstr ""
 
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 msgid "Size"
-msgstr ""
+msgstr "Grösse"
 
 msgid "Location"
 msgstr ""
@@ -1572,7 +1577,7 @@ msgid "add conference room"
 msgstr ""
 
 msgid "Edit Room"
-msgstr ""
+msgstr "Raum editieren"
 
 msgid "Conference room numbers must be numeric."
 msgstr ""
@@ -1598,7 +1603,7 @@ msgid "Optional PIN needed to access this conference room."
 msgstr ""
 
 msgid "Voicemail"
-msgstr ""
+msgstr "Voicemail"
 
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
@@ -1611,6 +1616,21 @@ msgstr ""
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+msgid "E-mail has been sent successfully."
+msgstr ""
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
 msgid "SMTP"
 msgstr ""
 
@@ -1621,12 +1641,23 @@ msgid "E-mail Address"
 msgstr ""
 
 msgid "Options"
-msgstr ""
+msgstr "Optionen"
 
 msgid "Account uses TLS"
 msgstr ""
 
 msgid "TLS certificates are currently not verified."
+msgstr ""
+
+msgid "Test E-mail"
+msgstr ""
+
+msgid "E-mail Me"
+msgstr ""
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
 msgstr ""
 
 msgid "Presentation"
@@ -1664,16 +1695,16 @@ msgid "Passwords in config.xml have been automatically removed."
 msgstr ""
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "There are currently no active channels."
 msgstr ""
 
 msgid "Application"
-msgstr ""
+msgstr "Anwendung"
 
 msgid "Conferences"
-msgstr ""
+msgstr "Konferenzen"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -1683,13 +1714,13 @@ msgid "There are currently no active conferences."
 msgstr ""
 
 msgid "Conference"
-msgstr ""
+msgstr "Konferenz"
 
 msgid "Member"
-msgstr ""
+msgstr "Mitglied"
 
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
 msgid "Do you really want to kick this member?"
 msgstr ""
@@ -1698,10 +1729,10 @@ msgid "kick conference member"
 msgstr ""
 
 msgid "Live"
-msgstr ""
+msgstr "Live"
 
 msgid "CPU Load"
-msgstr ""
+msgstr "CPU Last"
 
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
@@ -1709,13 +1740,13 @@ msgid ""
 msgstr ""
 
 msgid "Network Traffic"
-msgstr ""
+msgstr "Netzwerk Traffik"
 
 msgid "Subnet Mask"
-msgstr ""
+msgstr "Subnetzmaske"
 
 msgid "Media"
-msgstr ""
+msgstr "Medium"
 
 msgid "In/Out Packets"
 msgstr ""
@@ -1766,7 +1797,7 @@ msgid "No stations are associated at this time."
 msgstr ""
 
 msgid "Attached"
-msgstr ""
+msgstr "Angefügt"
 
 msgid "PH State"
 msgstr ""
@@ -1784,7 +1815,7 @@ msgid "Serial"
 msgstr ""
 
 msgid "Power Save"
-msgstr ""
+msgstr "Stromsparmodus"
 
 msgid "General Setup"
 msgstr ""
@@ -1829,7 +1860,7 @@ msgid "e.g. <em>pbx"
 msgstr ""
 
 msgid "Domain"
-msgstr ""
+msgstr "Domain"
 
 msgid "e.g. <em>mycorp.com"
 msgstr ""
@@ -1839,7 +1870,7 @@ msgid ""
 msgstr ""
 
 msgid "confirmation"
-msgstr ""
+msgstr "Bestätigung"
 
 msgid ""
 "If you want to change the password for accessing the webGUI, enter it here "
@@ -1847,16 +1878,16 @@ msgid ""
 msgstr ""
 
 msgid "webGUI protocol"
-msgstr ""
+msgstr "webGUI Protokoll"
 
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 msgid "webGUI port"
-msgstr ""
+msgstr "webGUI Port"
 
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
@@ -1890,7 +1921,7 @@ msgid ""
 msgstr ""
 
 msgid "Backup/Restore"
-msgstr ""
+msgstr "Backup/Restore"
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -1916,10 +1947,10 @@ msgid "Click this button to download the system configuration in XML format."
 msgstr ""
 
 msgid "Download configuration"
-msgstr ""
+msgstr "Konfiguration herunterladen"
 
 msgid "Restore configuration"
-msgstr ""
+msgstr "Konfiguration wiederherstellen"
 
 msgid ""
 "Open an AskoziaPBX configuration XML file and click the button below to "
@@ -1930,7 +1961,7 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
 msgid "Factory Defaults"
-msgstr ""
+msgstr "Herstellereinstellungen"
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
@@ -1948,13 +1979,13 @@ msgid "Are you sure you want to proceed?"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 msgid "Firmware"
-msgstr ""
+msgstr "Firmware"
 
 msgid ""
 "AskoziaPBX's firmware can be kept up to date here. The system's "
@@ -2079,7 +2110,7 @@ msgid ""
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Fortfahren"
 
 msgid "Do you really want to disable this package?"
 msgstr ""
@@ -2136,7 +2167,7 @@ msgid "Select which packages you would like to install."
 msgstr ""
 
 msgid "Install"
-msgstr ""
+msgstr "Installieren"
 
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr ""
@@ -2169,7 +2200,7 @@ msgid "ERR Could not save configuration.\n"
 msgstr ""
 
 msgid "OK\n"
-msgstr ""
+msgstr "OK\n"
 
 msgid "ERR Could not install configuration.\n"
 msgstr ""
@@ -2178,10 +2209,10 @@ msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
 msgid "Subject"
-msgstr ""
+msgstr "Betreff"
 
 msgid "Body"
-msgstr ""
+msgstr "Text"
 
 msgid "The following variables can be used in the e-mail notification"
 msgstr ""
@@ -2208,7 +2239,7 @@ msgid "use this password"
 msgstr ""
 
 msgid "webGUI language"
-msgstr ""
+msgstr "webGUI Sprache"
 
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
@@ -2284,7 +2315,7 @@ msgid "assume NAT mode but don't send rport "
 msgstr ""
 
 msgid "NAT"
-msgstr ""
+msgstr "NAT"
 
 msgid ""
 "Is there a NATing device between AskoziaPBX and this account? Setting this "
@@ -2386,7 +2417,7 @@ msgid ""
 msgstr ""
 
 msgid "Language"
-msgstr ""
+msgstr "Sprache"
 
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
@@ -2428,7 +2459,7 @@ msgid "Call Limit"
 msgstr ""
 
 msgid "calls"
-msgstr ""
+msgstr "Anrufe"
 
 msgid "Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)"
 msgstr ""
@@ -2461,7 +2492,7 @@ msgid "Advanced Settings"
 msgstr ""
 
 msgid "show"
-msgstr ""
+msgstr "anzeigen"
 
 msgid "Manual Attributes"
 msgstr ""
@@ -2538,7 +2569,7 @@ msgid "Live Stats"
 msgstr ""
 
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 msgid "add a new item"
 msgstr ""
@@ -2641,7 +2672,7 @@ msgid "French (Canada)"
 msgstr ""
 
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 msgid "Italian"
 msgstr ""
@@ -2683,7 +2714,7 @@ msgid "French (formal)"
 msgstr ""
 
 msgid "German (formal)"
-msgstr ""
+msgstr "Deutsch (formell)"
 
 msgid "Italian (formal)"
 msgstr ""
@@ -2903,3 +2934,63 @@ msgstr ""
 #, php-format
 msgid "The field '%s' is required."
 msgstr ""
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "name"
+#~ msgstr "Name"
+
+#~ msgid "external"
+#~ msgstr "extern"
+
+#~ msgid "G.711 u-law"
+#~ msgstr "G.711 u-law"
+
+#~ msgid "G.711 A-law"
+#~ msgstr "G.711 A-law"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "G.729A"
+#~ msgstr "G.729A"
+
+#~ msgid "iLBC"
+#~ msgstr "iLBC"
+
+#~ msgid "SpeeX"
+#~ msgstr "SpeeX"
+
+#~ msgid "G.723.1"
+#~ msgstr "G.723.1"
+
+#~ msgid "G.726 AAL2"
+#~ msgstr "G.726 AAL2"
+
+#~ msgid "ADPCM"
+#~ msgstr "ADPCM"
+
+#~ msgid "16 bit Signed Linear PCM"
+#~ msgstr "16 bit Signed Linear PCM"
+
+#~ msgid "LPC10"
+#~ msgstr "LPC10"
+
+#~ msgid "G.726 RFC3551"
+#~ msgstr "G.726 RFC3551"
+
+#~ msgid "G722"
+#~ msgstr "G722"
+
+#~ msgid "H.261"
+#~ msgstr "H.261"
+
+#~ msgid "H.263"
+#~ msgstr "H.263"
+
+#~ msgid "H.263+"
+#~ msgstr "H.263+"
+
+#~ msgid "H.264"
+#~ msgstr "H.264"

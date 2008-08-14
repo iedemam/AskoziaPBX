@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-12 15:45+0200\n"
+"POT-Creation-Date: 2008-08-14 10:43+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1611,6 +1611,20 @@ msgstr ""
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
+msgid "AskoziaPBX Test E-mail"
+msgstr ""
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+msgid "E-mail has been sent successfully."
+msgstr ""
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
 msgid "SMTP"
 msgstr ""
 
@@ -1627,6 +1641,17 @@ msgid "Account uses TLS"
 msgstr ""
 
 msgid "TLS certificates are currently not verified."
+msgstr ""
+
+msgid "Test E-mail"
+msgstr ""
+
+msgid "E-mail Me"
+msgstr ""
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
 msgstr ""
 
 msgid "Presentation"

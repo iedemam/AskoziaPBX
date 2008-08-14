@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-12 15:45+0200\n"
+"POT-Creation-Date: 2008-08-14 10:43+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1749,6 +1749,22 @@ msgstr ""
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX: voer commando uit"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+#, fuzzy
+msgid "E-mail has been sent successfully."
+msgstr "De wijzigingen zijn succesvol aangepast"
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
 msgid "SMTP"
 msgstr ""
 
@@ -1766,6 +1782,17 @@ msgid "Account uses TLS"
 msgstr "Lijnen"
 
 msgid "TLS certificates are currently not verified."
+msgstr ""
+
+msgid "Test E-mail"
+msgstr ""
+
+msgid "E-mail Me"
+msgstr ""
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
 msgstr ""
 
 msgid "Presentation"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-12 15:45+0200\n"
+"POT-Creation-Date: 2008-08-14 10:43+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1668,6 +1668,22 @@ msgstr "必須指定一個用戶名。"
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "必須為\"來自地址\"指定一個有效的電郵地址。"
 
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX: 執行命令"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+#, fuzzy
+msgid "E-mail has been sent successfully."
+msgstr "改動應用成功。"
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
 msgid "SMTP"
 msgstr "SMTP"
 
@@ -1686,6 +1702,18 @@ msgstr "帳戶"
 
 msgid "TLS certificates are currently not verified."
 msgstr "TLS證書，現在尚未驗證。"
+
+msgid "Test E-mail"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail Me"
+msgstr "電郵地址"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
 
 msgid "Presentation"
 msgstr "簡報"
