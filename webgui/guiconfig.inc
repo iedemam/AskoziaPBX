@@ -417,4 +417,13 @@ function gather_incomingextensionmaps($post, $multi=false) {
 	return $maps;
 }
 
+function set_language($current_language) {
+	
+	bindtextdomain("messages", "./locale");
+	bind_textdomain_codeset("messages","utf-8");
+	setlocale(LC_MESSAGES, $current_language);
+	putenv("LANG=$current_language");
+	textdomain("messages");
+}
+
 ?>

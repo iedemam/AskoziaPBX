@@ -102,6 +102,10 @@ if ($_POST) {
 		}
 	}
 
+	if ($_POST['lang']) {
+		set_language($_POST['lang']);
+	}
+
 	if (!$input_errors) {
 		$config['system']['hostname'] = strtolower($_POST['hostname']);
 		$config['system']['domain'] = strtolower($_POST['domain']);
@@ -142,11 +146,13 @@ if ($_POST) {
 		$savemsg = get_std_save_message($retval);
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
-		<form action="system.php" method="post">
+
+include("fbegin.inc");
+
+if ($input_errors) display_input_errors($input_errors);
+if ($savemsg) display_info_box($savemsg); 
+
+	?><form action="system.php" method="post">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
