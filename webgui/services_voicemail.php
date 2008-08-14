@@ -104,12 +104,16 @@ if ($_POST) {
 		
 		$retval |= voicemail_reload();
 
-		if($_POST['testmail']) {
-			$mail_sent = mail($_POST['email_addr'], 'AskoziaPBX Test E-mail', 'asdfasdfasdfasdfasdf');
-			if($mail_sent) {
-				$savemsg = "E-mail has been sent successfully.";
+		if ($_POST['testmail']) {
+			$mail_sent = mail(
+				$_POST['email_addr'],
+				gettext('AskoziaPBX Test E-mail'),
+				wordwrap(gettext('Your SMTP settings are working correctly. Voicemail via E-mail and missed-call notifications can now be used.'), 70)
+			);
+			if ($mail_sent) {
+				$savemsg = gettext("E-mail has been sent successfully.");
 			} else {
-				$input_errors[] = "E-mail was not sent, check your settings.";
+				$input_errors[] = gettext("E-mail was not sent, check your settings.");
 			}
 		} else {
 			$savemsg = get_std_save_message($retval);
@@ -174,11 +178,11 @@ if ($_POST) {
 			</td>
         	</tr>
 		<tr>
-			<td valign="top" class="vncell">Test E-mail</td>
+			<td valign="top" class="vncell"><?=gettext("Test E-mail");?></td>
 			<td class="vtable">
 				<input name="email_addr" type="text" class="formfld" id="email_addr" size="40" value="">
-				<input name="testmail" type="submit" class="formbtn" value="E-mail Me"><br>
-				Type in an e-mail address where you want the test mail to be sent.
+				<input name="testmail" type="submit" class="formbtn" value="<?=gettext("E-mail Me");?>"><br>
+				<?=gettext("Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP settings.");?>
 			</td>
 		</tr>
 		<tr> 
