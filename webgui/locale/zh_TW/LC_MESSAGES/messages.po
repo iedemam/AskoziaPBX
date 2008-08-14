@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 10:43+0200\n"
+"POT-Creation-Date: 2008-08-07 05:16+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -414,9 +414,6 @@ msgstr "禁用DNS SRV查找"
 msgid "Debug"
 msgstr "除錯"
 
-msgid "Download"
-msgstr "下載"
-
 msgid "ISDN Interface"
 msgstr "ISDN界面"
 
@@ -818,6 +815,9 @@ msgstr "清空"
 
 msgid "Download:"
 msgstr "下載："
+
+msgid "Download"
+msgstr "下載"
 
 msgid "Upload:"
 msgstr "上載："
@@ -1403,12 +1403,6 @@ msgstr "必須指定一個有效的e-mail地址。"
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>沒有找到相容的介面！</strong><br><br>"
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr "內部分機用於達到此話機。"

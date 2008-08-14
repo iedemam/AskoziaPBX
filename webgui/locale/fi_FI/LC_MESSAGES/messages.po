@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 10:43+0200\n"
+"POT-Creation-Date: 2008-08-07 05:16+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -436,9 +436,6 @@ msgstr "Poista DNS SRV käytöstä."
 msgid "Debug"
 msgstr "Virheiden etsintä"
 
-msgid "Download"
-msgstr "Lataa"
-
 msgid "ISDN Interface"
 msgstr "ISDN Käyttöliittymä"
 
@@ -853,6 +850,9 @@ msgstr "Tyhjennä"
 
 msgid "Download:"
 msgstr "Lataa:"
+
+msgid "Download"
+msgstr "Lataa"
 
 msgid "Upload:"
 msgstr "Lataa ylös:"
@@ -1486,12 +1486,6 @@ msgstr "Kelpaava s-posti osoite on oltava määritetty."
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
 
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
-
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
@@ -1766,21 +1760,20 @@ msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Kelpaava s-posti osoite on oltava määritetty \"osoitteesta\" tunnukselle."
 
-#, fuzzy
 msgid "AskoziaPBX Test E-mail"
-msgstr "AskoxiaPBX: toteuta komento"
+msgstr "AskoxiaPBX S-posti Testi"
 
 msgid ""
 "Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
 "call notifications can now be used."
 msgstr ""
+"SMTP asetuksesi toimii täydellisesti. Vastaajapalvelusi on nyt käyttövalmis."
 
-#, fuzzy
 msgid "E-mail has been sent successfully."
-msgstr "Muutokset astuivat voimaan onnistuneesti."
+msgstr "S-postin lähetys onnistui."
 
 msgid "E-mail was not sent, check your settings."
-msgstr ""
+msgstr "S-postin lähetys epäonnistui, tarkista asetukset."
 
 msgid "SMTP"
 msgstr "SMTP"
@@ -1801,16 +1794,17 @@ msgid "TLS certificates are currently not verified."
 msgstr "TLS sertifikaatit eivät ole tarkastettuja"
 
 msgid "Test E-mail"
-msgstr ""
+msgstr "Testi S-posti"
 
-#, fuzzy
 msgid "E-mail Me"
-msgstr "S-posti Osoite"
+msgstr "Lähetä"
 
 msgid ""
 "Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
 "settings."
 msgstr ""
+"Anna s-posti osoitteesi ja klikkaa &quot;Lähetä&quot; testaaksesi SMTP "
+"asetuksia."
 
 msgid "Presentation"
 msgstr "Alustus"

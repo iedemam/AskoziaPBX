@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 10:43+0200\n"
+"POT-Creation-Date: 2008-08-07 05:16+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <a.jud@webflash.ch>\n"
 "Language-Team: \n"
@@ -414,9 +414,6 @@ msgstr ""
 msgid "Debug"
 msgstr "Debuggen"
 
-msgid "Download"
-msgstr "Herunterladen"
-
 msgid "ISDN Interface"
 msgstr "ISDN Schnittstelle"
 
@@ -808,6 +805,9 @@ msgstr ""
 
 msgid "Download:"
 msgstr ""
+
+msgid "Download"
+msgstr "Herunterladen"
 
 msgid "Upload:"
 msgstr ""
@@ -1356,12 +1356,6 @@ msgstr ""
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."

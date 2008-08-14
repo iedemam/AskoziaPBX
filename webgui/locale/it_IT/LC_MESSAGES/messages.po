@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 10:43+0200\n"
+"POT-Creation-Date: 2008-08-07 05:16+0000\n"
 "PO-Revision-Date: 2008-07-18 14:46+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -448,9 +448,6 @@ msgstr "Disabilita la ricerca di server DNS"
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Scaricare"
-
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
@@ -878,6 +875,9 @@ msgstr "Pulisci"
 
 msgid "Download:"
 msgstr "Scaricare:"
+
+msgid "Download"
+msgstr "Scaricare"
 
 msgid "Upload:"
 msgstr "Caricare:"
@@ -1499,12 +1499,6 @@ msgstr "Deve essere specificato un indirizzo E-mail valido."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."

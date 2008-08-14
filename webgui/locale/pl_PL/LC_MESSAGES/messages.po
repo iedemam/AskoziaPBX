@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 10:43+0200\n"
+"POT-Creation-Date: 2008-08-07 05:16+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -420,9 +420,6 @@ msgstr "Wyłącz wyszukiwania rekordów SRV DNS."
 msgid "Debug"
 msgstr "Debug"
 
-msgid "Download"
-msgstr "Pobrano"
-
 msgid "ISDN Interface"
 msgstr "Interfejs ISDN"
 
@@ -822,6 +819,9 @@ msgstr "Wyczyść"
 
 msgid "Download:"
 msgstr "Pobrano:"
+
+msgid "Download"
+msgstr "Pobrano"
 
 msgid "Upload:"
 msgstr "Wysłano:"
@@ -1442,12 +1442,6 @@ msgstr "Należy podać poprawny adres e-mail."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Nie znaleziono kompatybilnych interfejsów! </strong><br><br>"
-
-#, php-format
-msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
-msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr ""
