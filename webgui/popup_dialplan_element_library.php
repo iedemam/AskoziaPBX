@@ -46,7 +46,7 @@ require_once("functions.inc");
 		<link href="gui.css" rel="stylesheet" type="text/css">
 	</head>
 
-	<body link="#0000CC" vlink="#0000CC" alink="#0000CC">
+	<body id="linkcolor_default">
 		<script type="text/JavaScript">
 		<!--
 			jQuery.noConflict();

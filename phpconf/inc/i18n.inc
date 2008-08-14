@@ -30,6 +30,10 @@
 
 //try to acquire the language 
 $current_language =  $config['system']['webgui']['language'];
+//are we updating the languages
+if($_POST['lang']) {
+	$current_language = $_POST['lang'];
+}
 // default to English if nothing is still set
 if (!$current_language) {
 	$current_language = "en_US";

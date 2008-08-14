@@ -27,6 +27,13 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+#linkcolor_default a {
+	color: #0000CC;
+	text-decoration: none;
+}
+a {
+	text-decoration: none;
+}
 body,td,th,input,select {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
@@ -111,9 +118,6 @@ textarea.userdefined {
 }
 .vexpl {
 	font-size: 11px;
-}
-a {
-	text-decoration: none;
 }
 .navlnk {
 	color: #FFFFFF;

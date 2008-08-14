@@ -102,10 +102,6 @@ if ($_POST) {
 		}
 	}
 
-	if ($_POST['lang']) {
-		set_language($_POST['lang']);
-	}
-
 	if (!$input_errors) {
 		$config['system']['hostname'] = strtolower($_POST['hostname']);
 		$config['system']['domain'] = strtolower($_POST['domain']);

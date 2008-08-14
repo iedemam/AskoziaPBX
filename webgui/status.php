@@ -172,7 +172,7 @@ pre {
 </style>
 </head>
 
-<body link="#0000CC" vlink="#0000CC" alink="#0000CC">
+<body id="linkcolor_default">
 <p><span class="pgtitle"><?=$pageTitle;?></span><br>
 <strong><?=$currentDate;?></strong>
 <p><span class="red"><strong><?=gettext("Note: make sure to remove any sensitive information (passwords, maybe also IP addresses) before posting information from this page in public places (like mailing lists)!");?></strong></span><br>
