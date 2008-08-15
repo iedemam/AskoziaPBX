@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-07 05:16+0000\n"
+"POT-Creation-Date: 2008-08-14 21:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1406,6 +1406,12 @@ msgstr "必须指定一个有效的e-mail地址。"
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>没有找到兼容的接口！</strong><br><br>"
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr "内部分机用于达到此话机。"

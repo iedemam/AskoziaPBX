@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-07 05:16+0000\n"
+"POT-Creation-Date: 2008-08-14 21:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1412,6 +1412,12 @@ msgstr "En gyldig e-mail addresse skal angives."
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
 msgstr "<strong>Ingen kompatible grænseflader fundet!</strong><br><br>"
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
 
 msgid "Internal extension used to reach this phone."
 msgstr "Intern extension brugt til at nå denne telefon."
