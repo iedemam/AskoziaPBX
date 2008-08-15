@@ -294,6 +294,7 @@ function display_gui_language_selector($current_language) {
 
 	$languages = array(
 		"en_US" => "English",
+		"bg_BG" => "Български (50%)",
 		"es_ES" => "Castellano (0%)",
 		"zh_CN" => "简体中文",
 		"zh_TW" => "繁體中文",

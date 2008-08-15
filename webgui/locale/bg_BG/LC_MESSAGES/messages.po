@@ -1,0 +1,3154 @@
+#
+# $Id$
+#
+# part of AskoziaPBX (http://askozia.com/pbx)
+# Copyright (C) 2008 IKT <http://www.itison-ikt.de>
+# All rights reserved.
+#
+# Authors:
+# 	Name <mail@domain>
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-14 21:25+0200\n"
+"PO-Revision-Date: 2008-08-13 23:37+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Accounts"
+msgstr "Линии"
+
+msgid "Phones"
+msgstr "Вътрешни"
+
+msgid ""
+"Phone Accounts allow you to configure internal extensions and their access "
+"to Provider Accounts. Click an account type below to get started."
+msgstr ""
+"Вътрешните Линии ви позволяват да конфигурирате вътрешен номер и съответно "
+"досъпа му до външни линии. Кликнете върху желания тип линия за да продължите."
+
+msgid "SIP"
+msgstr "SIP"
+
+msgid "IAX"
+msgstr "IAX"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+msgid "Analog"
+msgstr "Аналогови"
+
+msgid "External"
+msgstr "Отдалечен"
+
+msgid "Extension"
+msgstr "Вътрешен Номер"
+
+msgid "Caller ID"
+msgstr "Caller ID"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "click to enable phone"
+msgstr "кликнете за да разрешите вътрешната линия"
+
+msgid "Do you really want to disable this phone?"
+msgstr "Сигурни ли сте че искате да забраните вътрешната линия?"
+
+msgid "click to disable phone"
+msgstr "кликнете за да забраните вътрешната линия"
+
+msgid "edit phone"
+msgstr "редактирай вътрешна линия"
+
+msgid "Do you really want to delete this phone?"
+msgstr "Сигурни ли сте че искате да изтриете вътрешната линия?"
+
+msgid "delete phone"
+msgstr "изтрий вътрешна линия"
+
+msgid "Name"
+msgstr "Име"
+
+msgid "Dialstring"
+msgstr "Поредица за избиране"
+
+msgid "Providers"
+msgstr "Външни"
+
+msgid ""
+"Provider Accounts allow you to configure routes to and from external sources "
+"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
+"Click an account type below to get started."
+msgstr ""
+"Външните Линии ви позволяват да конфигурирате изходящи маршрути от и към "
+"външни източници ( VoIP доставчици или ISDN/Аналогови линии от включен "
+"хардуер ). Кликнете върху желания тип линия за да продължите."
+
+msgid "Pattern(s)"
+msgstr "Схема(и)"
+
+msgid "Username"
+msgstr "Потребителско Име"
+
+msgid "Host"
+msgstr "Host"
+
+msgid "click to enable provider"
+msgstr "кликнете за да разрешите външната линия"
+
+msgid "Do you really want to disable this provider?"
+msgstr "Сигурни ли сте че искате да забраните външната линия?"
+
+msgid "click to disable provider"
+msgstr "кликнете за да забраните външната линия"
+
+msgid "edit provider"
+msgstr "редактирай външна линия"
+
+msgid "Do you really want to delete this provider?"
+msgstr "Сигурни ли сте че искате да изтриете външната линия?"
+
+msgid "delete provider"
+msgstr "изтрий външна линия"
+
+msgid "Number"
+msgstr "Номер"
+
+msgid "Interface"
+msgstr "Интерфейс"
+
+msgid "Advanced"
+msgstr "Разширени"
+
+msgid "Tone Zones"
+msgstr "Сигнализации"
+
+msgid "Loaded"
+msgstr "Заредени"
+
+msgid "drag-and-drop"
+msgstr "влачи-и-пусни"
+
+msgid "Inactive"
+msgstr "Неизползвани"
+
+msgid "Note:"
+msgstr "Забележкa:"
+
+msgid ""
+"Select all indication tone zones the analog hardware should support. "
+"<strong>The first tone zone will be the default tonezone."
+msgstr ""
+"Изберете всички зони за сигнализации които поддържа вашия хардуер за "
+"аналогови линии. <strong>Първата зона ще бъде зона по подразбиране."
+
+msgid "GUI Options"
+msgstr "GUI Настройки"
+
+msgid ""
+"A self-signed certificate could not be generated because the system's clock "
+"is not set."
+msgstr ""
+"Идентификационният сертификат не може да бъде генериран защото не е настроен "
+"системния часовник. "
+
+msgid ""
+"A self-signed certificate and private key have been automatically generated."
+msgstr ""
+"Идентификационният сертификат и личния ключ бяха автоматично генерирани."
+
+msgid "Certificate and key must always be specified together."
+msgstr "Сертификатът и ключа трябва да се изработват едновременно."
+
+msgid "This certificate does not appear to be valid."
+msgstr "Сертификатът не е валиден."
+
+msgid "This key does not appear to be valid."
+msgstr "Ключът не е валиден."
+
+msgid "webGUI SSL certificate/key"
+msgstr "webGUI SSL сертификат/ключ"
+
+msgid "Certificate"
+msgstr "Сертификат"
+
+msgid "Paste a signed certificate in X.509 PEM format here."
+msgstr "Вмъкнете идентификационен сертификат в X.509 PEM формат тук."
+
+msgid "Key"
+msgstr "Ключ"
+
+msgid "Paste an RSA private key in PEM format here."
+msgstr "Вмъкнете RSA личен ключ в PEM формат тук."
+
+msgid "Generate self-signed certificate"
+msgstr "Генерирай идентификационен сертификат"
+
+msgid "Save"
+msgstr "Запиши"
+
+msgid "Miscellaneous"
+msgstr "Други"
+
+msgid "Console menu"
+msgstr "Конзолно меню"
+
+msgid "Disable console menu"
+msgstr "Забрани конзолното меню"
+
+msgid "Changes to this option will take effect after a reboot."
+msgstr "Промените в тази опция ще имат ефект след рестарт."
+
+msgid "Firmware version check"
+msgstr "Проверка на програмна версия"
+
+msgid "Disable firmware version check"
+msgstr "Забрани проверката на програмната версия"
+
+msgid ""
+"This will cause AskoziaPBX not to check for newer firmware versions when the "
+"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+msgstr ""
+"Това ще накара АскозияPBX да не проверява за нови програмни версии когато <a "
+"href=\"system_firmware.php\">Главни: Програма</a> страница се разглежда."
+
+msgid "Package version checks"
+msgstr "Проверка версия на пакетите"
+
+msgid "Disable package version checks"
+msgstr "Забрани проверката на версията на пакетите"
+
+msgid ""
+"This will cause AskoziaPBX not to check for package updates when the <a href="
+"\"system_packages.php\">System: Packages</a> page is viewed."
+msgstr ""
+"Това ще накара АскозияPBX да не проверява за нови версии на пакетите когато "
+"<a href=\"system_packages.php\">Главни: Пакети</a> страница се разглежда."
+
+msgid "Hard disk standby time"
+msgstr "Време на готовност на твърдия диск"
+
+msgid "Always on"
+msgstr "Постоянно"
+
+msgid "minutes"
+msgstr "минути"
+
+msgid ""
+"Puts the hard disk into standby mode when the selected amount of time after "
+"the last access has elapsed. <em>Do not set this for CF cards."
+msgstr ""
+"Посравя твърдия диск в режим на готовност когато избрания период от време "
+"след последното използване изтече. <em>Не го използвайте за Компакт Флаш "
+"карти."
+
+msgid "Navigation"
+msgstr "Навигационен панел"
+
+msgid "Keep diagnostics in navigation expanded"
+msgstr "Задръж диагностики в навигационния панел изведени"
+
+msgid "Keep advanced options in navigation expanded"
+msgstr "Задръж разширените опции в навигационния панел изведени"
+
+msgid "Hide SIP related options"
+msgstr "Скрий SIP опциите"
+
+msgid "Hide IAX related options"
+msgstr "Скрий IAX опциите"
+
+msgid "Hide ISDN related options"
+msgstr "Скрий ISDN опциите"
+
+msgid "Hide Analog related options"
+msgstr "Скрий Аналоговите опции"
+
+msgid "A valid port must be specified."
+msgstr "Трябва да бъде определен валиден порт."
+
+msgid "General"
+msgstr "Обши"
+
+msgid "Binding Port"
+msgstr "Порт за Връзка"
+
+msgid "Jitterbuffer"
+msgstr "Jitterbuffer"
+
+msgid "Enable"
+msgstr "Разреши"
+
+msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
+msgstr "Разреши Jitterbuffer на IAX връзките прекратени от АскозияPBX."
+
+msgid "Force"
+msgstr "Принуди"
+
+msgid "Use Jitterbuffer even when bridging two endpoints."
+msgstr "Използвай Jitterbuffer дори при връзка на два телефона."
+
+msgid "A valid national prefix must be specified."
+msgstr "Трябва да бъде определен валиден национален префикс."
+
+msgid "A valid international prefix must be specified."
+msgstr "Трябва да бъде определен валиден международен префикс."
+
+msgid "National Prefix"
+msgstr "Национален Префикс"
+
+msgid "International Prefix"
+msgstr "Международен Префикс"
+
+msgid "Audio"
+msgstr "Аудио"
+
+msgid "A-law"
+msgstr "A-law"
+
+msgid "u-law"
+msgstr "u-law"
+
+msgid "Manager Interface"
+msgstr "Астериск Конзола"
+
+msgid "Permissions"
+msgstr "Забрани"
+
+msgid "read:"
+msgstr "четене:"
+
+msgid "write:"
+msgstr "запис:"
+
+msgid "edit manager room"
+msgstr "редактирай административен акаунт"
+
+msgid "Do you really want to delete this manager user?"
+msgstr "Сигурни ли сте че искате да изтриете този административен потребител?"
+
+msgid "delete manager user"
+msgstr "изтрий административен потребител"
+
+msgid "add manager user"
+msgstr "добави административен потребител"
+
+msgid "Edit User"
+msgstr "Редактирай Потребител"
+
+msgid "The username of \"admin\" is already used internally by AskoziaPBX."
+msgstr "Потребителското Име \"admin\" се използва служебно от АскозияPBX."
+
+msgid "Secret"
+msgstr "Парола"
+
+msgid "Deny Network"
+msgstr "Забранени Мрежи"
+
+msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
+msgstr "Въведете '0.0.0.0 / 0.0.0.0' за да забраните всички мрежи"
+
+msgid "Permit Network"
+msgstr "Разрешени Мрежи"
+
+msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
+msgstr "Въведете '0.0.0.0 / 0.0.0.0' за да разрешите всички мрежи"
+
+msgid "Read"
+msgstr "Четене"
+
+msgid "Write"
+msgstr "Запис"
+
+msgid "RTP"
+msgstr "RTP"
+
+msgid "The high RTP port must be greater than the low RTP port."
+msgstr "Големият RTP порт трябва да е с по-голяма стойност от малкия RTP порт."
+
+msgid "RTP Port Range"
+msgstr "Диапазон RTP Портове"
+
+msgid "The port range which RTP streams should use. (default:"
+msgstr "Диапазонът който RTP потоците ще използват. (по подразбиране:"
+
+msgid "Warning"
+msgstr "Внимание"
+
+msgid "after you click &quot;Save&quot;, all current calls will be dropped."
+msgstr ""
+"След като кликнете &quot;Запиши&quot;, всички активни разговори ще прекъснат."
+
+msgid ""
+"A whole number of seconds must be entered for the \"Default Registration "
+"Expiration\" timeout."
+msgstr ""
+"Цяло число в секунди трябва да бъде въведено за  \"Прекратяване на "
+"Регистрацията По Подразбиране\" пауза."
+
+msgid ""
+"A whole number of seconds must be entered for the \"Minimum Registration "
+"Expiration\" timeout."
+msgstr ""
+"Цяло число в секунди трябва да бъде въведено за  \"Прекратяване на "
+"Регистрацията Минимално\" пауза."
+
+msgid ""
+"A whole number of seconds must be entered for the \"Maximum Registration "
+"Expiration\" timeout."
+msgstr ""
+"Цяло число в секунди трябва да бъде въведено за  \"Прекратяване на "
+"Регистрацията Максимално\" пауза."
+
+msgid "Registration Expiration Timeouts"
+msgstr "Пауза на Прекратяване на Регистрации"
+
+msgid "min:"
+msgstr "най-малко:"
+
+msgid "max:"
+msgstr "най-много:"
+
+msgid "default:"
+msgstr "по подразбиране:"
+
+msgid ""
+"The minimum, maximum and default number of seconds that incoming and "
+"outgoing registrations and subscriptions remain valid."
+msgstr ""
+"Минималното, максималното и по подразбиране число в секунди които входящите "
+"и изходящите регистрации и подписи остават валидни."
+
+msgid "Default values are 60, 3600 and 120 respectively."
+msgstr "Стоностите по подразбиране са съответно 60, 3600 и 120."
+
+msgid "DNS Service Records"
+msgstr "DNS Услуга Записи"
+
+msgid "Disable DNS SRV lookups."
+msgstr "Забрани DNS SRV следене."
+
+msgid "Debug"
+msgstr "Debug"
+
+msgid "ISDN Interface"
+msgstr "ISDN Интерфейс"
+
+msgid "Start"
+msgstr "Старт"
+
+msgid "Debugging"
+msgstr "Debugging"
+
+msgid "Stop"
+msgstr "Стоп"
+
+msgid "Debug Ouptut"
+msgstr "Debug Ouptut"
+
+msgid "Restart"
+msgstr "Рестарт"
+
+msgid "Diagnostics"
+msgstr "Диагностики"
+
+msgid "ARP table"
+msgstr "ARP таблица"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid "IP address"
+msgstr "IP адрес"
+
+msgid "MAC address"
+msgstr "MAC адрес"
+
+msgid "Hostname"
+msgstr "Име на Host"
+
+msgid "delete arp entry"
+msgstr "изтрий внесения arp"
+
+msgid "remove all entries from arp table"
+msgstr "премахни всички внесени в arp таблицата"
+
+msgid "Editor"
+msgstr "Редактор"
+
+#, php-format
+msgid "The specified file (%s) does not exist."
+msgstr "Посоченият файл (%s) не съществува."
+
+#, php-format
+msgid "File contents (%s) saved."
+msgstr "Файлът съдържащ (%s) записан."
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Contents"
+msgstr "Съдържащи"
+
+msgid "Cancel"
+msgstr "Отмени"
+
+msgid "Open"
+msgstr "Отвори"
+
+msgid "Logs"
+msgstr "Логове"
+
+msgid "No matches found."
+msgstr "Не са намерени съвпадения."
+
+msgid "System"
+msgstr "Главни"
+
+msgid "PBX"
+msgstr "PBX"
+
+msgid "Calls"
+msgstr "Разговори"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "filter"
+msgstr "филтър"
+
+msgid "System log entries"
+msgstr "Системни логове"
+
+msgid "Clear Log"
+msgstr "Изчисти Логовете"
+
+msgid "Call Records"
+msgstr "Отчети на Разговорите"
+
+msgid "start"
+msgstr "начало"
+
+msgid "src"
+msgstr "източник"
+
+msgid "dst"
+msgstr "направление"
+
+msgid "channels"
+msgstr "канали"
+
+msgid "last app"
+msgstr "последно приложение"
+
+msgid "sec."
+msgstr "секунди"
+
+msgid "bill"
+msgstr "стойност"
+
+msgid "disposition"
+msgstr "край"
+
+msgid "Clear log"
+msgstr "Изчисти Отчетите"
+
+msgid "Asterisk log entries"
+msgstr "Астериск логове"
+
+msgid "A valid IP address must be specified."
+msgstr "Въведете валиден IP адрес."
+
+msgid "Number of log entries to show must be between 50 and 1000."
+msgstr ""
+"Броят на записите в лога които да се показват трябва да е между 50 и 1000."
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr "Покажи записите в обратен ред ( най-новите да са най-отгоре )"
+
+msgid "Number of log entries to show:"
+msgstr "Брой записи на страница:"
+
+msgid "Enable syslog'ing to remote syslog server"
+msgstr "Разреши изпращане на логовете към отдалечен syslog сървър"
+
+msgid "Remote syslog server"
+msgstr "Отдалечен syslog сървър"
+
+msgid "IP address of remote syslog server"
+msgstr "IP адрес на отдалечен syslog сървър"
+
+msgid "system events"
+msgstr "системни логове"
+
+msgid "pbx events"
+msgstr "астериск логове"
+
+msgid "call detail records"
+msgstr "отчети на разговорите"
+
+msgid ""
+"syslog sends UDP datagrams to port 514 on the specified remote syslog "
+"server. Be sure to set syslogd on the remote server to accept syslog "
+"messages from AskoziaPBX."
+msgstr ""
+"syslog изпраща UDP пакети с информация на порт 514 на указания отдалечен "
+"syslog сървър. Проверете дали е стартиран syslogd на отдалечения сървър "
+"който приема syslog съобщенията от АскозияPBX."
+
+msgid ""
+"This page allows direct execution of commands on the Asterisk console. "
+"Execute \"help\" to see a list of possible commands."
+msgstr ""
+"Тази страница позволява директно изпълнение на команди в Астериск конзолата. "
+"Напишете \"help\" за да видите списъка с възможните команди."
+
+msgid "Command"
+msgstr "Команда"
+
+msgid "Output"
+msgstr "Резултат"
+
+msgid "Ping"
+msgstr "Ping"
+
+#, php-format
+msgid "Count must be between 1 and %d"
+msgstr "Броят трябва да е между 1 и %d"
+
+msgid "Traceroute"
+msgstr "Traceroute"
+
+msgid "Count"
+msgstr "Брой"
+
+msgid "Ping output:"
+msgstr "Ping резултат:"
+
+#, php-format
+msgid "Maximum number of hops must be between 1 and %d"
+msgstr "Максималният брой на скоковете трябва да е между 1 and %d"
+
+msgid "Maximum number of hops"
+msgstr "Максимален брой скокове"
+
+msgid "Resolve IP addresses to hostnames"
+msgstr "Превърни IP адрес в име на host"
+
+msgid ""
+"Traceroute may take a while to complete.  You may hit the Stop button on "
+"your browser at any time to see the progress of failed traceroutes."
+msgstr ""
+"Възможно е да отнеме малко време за приключване на Traceroute.  Натиснете "
+"Стоп бутона на браузера си когато видите че процеса е замръзнал."
+
+msgid "Traceroute output:"
+msgstr "Traceroute резултат:"
+
+msgid "Dialplan"
+msgstr "Dialplan"
+
+msgid "Applications"
+msgstr "Приложения"
+
+msgid ""
+"With some knowledge of how the Asterisk dialplan works, some basic "
+"applications can be added to AskoziaPBX. These applications can then be "
+"dialed via their defined extensions or used as a destination for incoming "
+"calls from Providers."
+msgstr ""
+"С малко знание как работи схемата на избиране на Астериск, някои основни "
+"приложения могат да бъдат добавени в АскозияPBX. Тези приложения могат да "
+"бъдат избирани с техните дефинирани вътрешни номера или да се използват като "
+"дестинация за входящи обаждания от външни линии."
+
+msgid "descr"
+msgstr "описание"
+
+msgid "edit application mapping"
+msgstr "редактирай приложението"
+
+msgid "Do you really want to delete this application mapping?"
+msgstr "Сигурни ли сте че искате да изтриете приложението?"
+
+msgid "delete application mapping"
+msgstr "изтрий приложението"
+
+msgid "add application mapping"
+msgstr "добави приложения"
+
+msgid "Edit"
+msgstr "Редактирай"
+
+msgid "A valid extension must be entered."
+msgstr "Въведете валиден вътрешен номер"
+
+msgid "Internal extension used to reach this application."
+msgstr "Вътрешен номер използван за достъп до приложението"
+
+msgid "Call Groups"
+msgstr "Групи на Звънене"
+
+msgid ""
+"Groups of extensions can be configured to ring concurrently. These groups "
+"can then be dialed via their defined extensions or used as a destination for "
+"incoming calls from Providers."
+msgstr ""
+"Групи от вътрешни номера могат да бъдат конфигурирани да звънят "
+"едновременно. Тези групи могат да бъдат избирани с техните дефинирани "
+"вътрешни номера или да се използват като дестинация за входящи обаждания от "
+"външни линии."
+
+msgid "Members"
+msgstr "Участващи"
+
+msgid "edit call group"
+msgstr "редактирай група на звънене"
+
+msgid "Do you really want to delete this call group?"
+msgstr "Сигурни ли сте че искате да изтриете тази група на звънене?"
+
+msgid "delete call group"
+msgstr "изтрий група на звънене"
+
+msgid "add call group"
+msgstr "добави група на звънене"
+
+msgid "Group name"
+msgstr "Име на групата"
+
+msgid "Internal extension used to reach this call group."
+msgstr "Вътрешен номер използван за достъп до групата на звънене."
+
+msgid "Transfers"
+msgstr "Трансфер"
+
+msgid ""
+"A variety of settings are here which define how call transfers and call "
+"parking are handled. The defaults should work in most situations."
+msgstr ""
+"Тези настройки определят как да се управлява прехвърлянето и паркирането на "
+"разговорите. Настройките по подразбиране би трябввало да работят в повечето "
+"от случаите."
+
+msgid "A valid parking start position must be specified."
+msgstr "Въведете валидна начална позиция за паркиране."
+
+msgid "A valid parking stop position must be specified."
+msgstr "Въведете валидна крайна позиция за паркиране."
+
+msgid "The end parking position must be larger than the start position."
+msgstr ""
+"Крайната позиция за паркиране трябва да е по-голяма от началната позиция."
+
+msgid "A valid parking extension must be specified."
+msgstr "Въведете валиден вътрешен номер за паркиране."
+
+msgid "A valid park time must be specified."
+msgstr "Въведете валиден период за паркиране."
+
+msgid "A valid key timeout must be specified."
+msgstr ""
+"Въведете валиден период между натиснати бутони за активиране на "
+"прехвърлянето."
+
+msgid "A valid attended transfer timeout must be specified."
+msgstr "Въведете валиден период за отговор на прехвърлянето."
+
+msgid "A valid extension digit timeout must be specified."
+msgstr "Въведете валиден период между натиснати бутони за вътрешен номер."
+
+msgid "Hot Keys"
+msgstr "Код за Активиране"
+
+msgid "Attended"
+msgstr "С предизвестие"
+
+msgid "This key combination activates an attended transfer (default **)."
+msgstr ""
+"Комбинация от бутони за прехвърляне с предизвестие (по подразбиране **)."
+
+msgid "Blind"
+msgstr "Без предизвестие"
+
+msgid "This key combination activates a blind transfer (default ##)."
+msgstr ""
+"Комбинация от бутони за прехвърляне без предизвестие (по подразбиране ##)."
+
+msgid "Call Parking"
+msgstr "Паркиране на Разговор"
+
+msgid "Park Extension"
+msgstr "Вътрешен Номер за Паркиране на Разговор"
+
+msgid ""
+"Blind transfer to this extension to park a call (default 700). The number "
+"read back to you after transfering is the extension where the call was "
+"parked."
+msgstr ""
+"Прехвърлете без предизвестие към този вътрешен номер за паркиране на "
+"раговора (по подразбиране 700). След прехвърлянето ще ви бъде продиктуван "
+"вътрешния номер на който е паркиран разговора."
+
+msgid "Parking Range"
+msgstr "Диапазон от Номера за Паркиране на Разговор"
+
+msgid ""
+"This range of extensions is where parked calls reside (default 701-720)."
+msgstr ""
+"Този диапазон от вътрешни номера определя къде могат да се паркират "
+"разговорите (по подразбиране 701-720)."
+
+msgid "Timeouts"
+msgstr "Времена"
+
+msgid "Attended Transfer Answer"
+msgstr "Отговор на Прехвърляне"
+
+msgid ""
+"Maximum number of seconds an attended transfer can go unanswered (default "
+"15)."
+msgstr ""
+"Максималното време в секунди за което прехвърлянето с предизвестие може да "
+"остане без отговор (по подразбиране 15)."
+
+msgid "Transfer Key"
+msgstr "Комбинация за Прехвърляне"
+
+msgid ""
+"Maximum number of milliseconds between key presses for transfer activation "
+"(default 500)."
+msgstr ""
+"Максималното време в милисекунди между натискането на бутоните за активиране "
+"на прехвърлянето (по подразбиране 500)."
+
+msgid "Extension Digit"
+msgstr "Избиране на Вътрешен Номер"
+
+msgid ""
+"Maximum number of seconds to wait between digits when transferring a call "
+"(default 3)."
+msgstr ""
+"Максималното време в секунди за изчакване между цифрите когато се прехвърля "
+"разговор (по подразбиране 3). "
+
+msgid "Park Time"
+msgstr "Време за Паркиране"
+
+msgid ""
+"Maximum number of seconds a call can be parked before it is transfered back "
+"to the parker (default 30)."
+msgstr ""
+"Максималното време в секунди за което разговора може да бъде паркиран преди "
+"да се върне обратно към паркиращия (по подразбиране 30)."
+
+msgid "AskoziaPBX: execute command"
+msgstr "АскозияPBX: изпълнение на команди"
+
+msgid "enter a command below..."
+msgstr "въведете командата по-долу"
+
+msgid "Command:"
+msgstr "Команда:"
+
+msgid "Execute"
+msgstr "Изпълни"
+
+msgid "Clear"
+msgstr "Изчисти"
+
+msgid "Download:"
+msgstr "Изтегли:"
+
+msgid "Download"
+msgstr "Изтегли"
+
+msgid "Upload:"
+msgstr "Зареди:"
+
+msgid "Upload"
+msgstr "Зареди"
+
+msgid "In"
+msgstr "Входящи"
+
+msgid "Out"
+msgstr "Изходящи"
+
+msgid "Switch to bytes/s"
+msgstr "Превключи на байтове"
+
+msgid "AutoScale"
+msgstr "Автоматично Оразмеряване"
+
+msgid "Graph shows last"
+msgstr "Графиката показва последните"
+
+msgid "seconds"
+msgstr "секунди"
+
+msgid "Collecting initial data, please wait..."
+msgstr "Събиране на първоначална информация, моля изчакайте..."
+
+msgid "75%"
+msgstr "75%"
+
+msgid "50%"
+msgstr "50%"
+
+msgid "25%"
+msgstr "25%"
+
+msgid "Cannot get CPU load"
+msgstr "Не мога да взема данни за CPU"
+
+msgid "AskoziaPBX webGUI"
+msgstr "АскозияPBX webGUI"
+
+msgid "System Information"
+msgstr "Информация за Системата"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "built on"
+msgstr "направена на"
+
+msgid "Platform"
+msgstr "Платформа"
+
+msgid "Uptime"
+msgstr "Време на работа"
+
+#, php-format
+msgid "%s days, "
+msgstr "%s дни, "
+
+msgid "Last Config Change"
+msgstr "Последна Промяна"
+
+msgid "Active Calls"
+msgstr "Активни Разговори"
+
+msgid "Active Channels"
+msgstr "Активни Канали"
+
+msgid "Memory Usage"
+msgstr "Използвана Памет"
+
+msgid "Notes"
+msgstr "Бележки"
+
+msgid "Interfaces"
+msgstr "Интерфейси"
+
+msgid ""
+"Detected ports on this page must be edited and saved before the system can "
+"utilize them."
+msgstr ""
+"Откритите портове на тази страница трябва да бъдат редактирани и записани "
+"преди системата да може да ги използва."
+
+msgid "Network"
+msgstr "Мрежов"
+
+msgid "Wireless"
+msgstr "Безжичен"
+
+msgid "Storage"
+msgstr "Памет"
+
+msgid "No compatible analog interfaces detected."
+msgstr "Не е открит съвместим аналогов интерфейс."
+
+msgid ""
+"If an analog interface is present but was not detected, please send <a href="
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
+"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+msgstr ""
+"Ако аналоговият интерфейс е монтиран но не се открива, моля изпратете <a "
+"href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+"\">този резултат</a> на <a href=\"mailto:michael@askozia.com"
+"\">michael@askozia.com</a>."
+
+msgid "Unit"
+msgstr "Устройство"
+
+msgid "Type"
+msgstr "Модел"
+
+msgid "Gain (rx/tx)"
+msgstr "Усилване (rx/tx)"
+
+msgid "Echo Canceller"
+msgstr "Ехо Неутрализатор"
+
+msgid "Disabled"
+msgstr "Забрани"
+
+msgid "edit analog interface"
+msgstr "редактирай аналогов интерфейс"
+
+msgid "Do you really want to forget this interface\\'s settings?"
+msgstr ""
+"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+
+msgid "forget interface settings"
+msgstr "пропусни настройките на интерфейса"
+
+msgid ""
+"FXS interfaces connect to telephones and FXO interfaces connect to provider "
+"lines. FXS interfaces produce electricity to power the telephone and FXO "
+"interfaces accept the electricity generated by the provider."
+msgstr ""
+"Към FXS интерфейса се включват телефонните апарати, а  към FXO интерфейса се "
+"включват външите линии. FXS интерфейса подава захранване към телефоните, а "
+"FXO интерфейса получава захранване от външните линии."
+
+msgid ""
+"Connecting a provider line to an FXS port can damage your hardware! If you "
+"are unsure which ports are FXO or FXS on your card, configure and connect "
+"your phone accounts before connecting any provider lines."
+msgstr ""
+"Включване на външна линия към FXS порта може да повреди вашия хардуер! Ако "
+"не сте сигурни кои портове са FXO или FXS на вашата карта, настройте и "
+"включете вътрешните телефони преди да включите някоя от външните линии."
+
+msgid "Edit Analog"
+msgstr "Редактирай Аналогов"
+
+msgid "Interface #"
+msgstr "Интерфейс #"
+
+msgid "Descriptive name for this interface"
+msgstr "Описание за този интерфейс"
+
+msgid ""
+"The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
+"require more processing power."
+msgstr ""
+"Размер на 'затихване' на  ехо неутрализатор. По-голям стойност може по-"
+"ефективно да намали ехото, но изисква повече ресурси от процесора."
+
+msgid "Start Signaling"
+msgstr "Започни Сигнализация"
+
+msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
+msgstr "В повечето случаи, 'Kewl Start' е предпочитания избор тук."
+
+msgid "Warning:"
+msgstr "Внимание:"
+
+msgid "clicking &quot;Save&quot; will drop all current calls."
+msgstr ""
+"кликането върху  &quot;Запиши&quot; ще прекъсне всички активни разговори."
+
+msgid ""
+"Detected ports on this page must be edited and saved before the system can "
+"utilize them. Be careful when configuring ISDN interfaces. Having a single "
+"port on a card incorrectly configured can result in the entire card being "
+"unusable by the system."
+msgstr ""
+"Откритите портове на тази страница трябва да бъдат редактирани и записани "
+"преди системата да може да ги използва. Бъдете внимателни когато настройвате "
+"ISDN интерфейси. Ако имате дори един неправилно конфигуриран порт на картата "
+"може да доведе до неизползваемост на цялата карта от системата."
+
+msgid "No compatible ISDN interfaces detected."
+msgstr "Не е открит съвместим ISDN интерфейс."
+
+msgid ""
+"If an ISDN interface is present but was not detected, please send <a href="
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
+"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+msgstr ""
+"Ако ISDN интерфейса е монтиран но не се открива, моля изпратете <a href="
+"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">този "
+"резултат</a> на <a href=\"mailto:michael@askozia.com\">michael@askozia.com</"
+"a>."
+
+msgid ""
+"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+"udesc_dump\">this output</a> as well."
+msgstr ""
+"Ако това е USB ISDN устройство, изпратете <a href=\"ajax.cgi?exec_shell=/"
+"sbin/udesc_dump\">този резултат</a> също."
+
+msgid "Operating Mode"
+msgstr "Режим на Работа"
+
+msgid "Enabled"
+msgstr ""
+
+msgid "edit ISDN interface"
+msgstr "редактирай ISDN интерфейс"
+
+msgid "Operating Modes"
+msgstr "Режими на Работа"
+
+msgid ""
+"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+"calls and is attached to the public ISDN network or another PBX system"
+msgstr ""
+
+msgid ""
+"multipoint-to-point, network termination: this port provides MSNs to route "
+"calls and is attached to one or more telephones"
+msgstr ""
+
+msgid ""
+"point-to-point, terminal equipment: this port accepts DID to route calls and "
+"is connected directly to another PBX system"
+msgstr ""
+
+msgid ""
+"point-to-point, network termination: this port provides DID to route calls "
+"and is connected directly to another PBX system"
+msgstr ""
+
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Редактирай ISDN Интерфейс #%s"
+
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Трябва да се избере Режим на Работа за този интерфейс."
+
+msgid "Attempt to remove echoes from the line. (recommended)"
+msgstr "Премахване на ехо от линията. (препоръчително)"
+
+msgid "PCM Timing Slave"
+msgstr "PCM Синхронизиране"
+
+msgid ""
+"There is already another card present which provides the timing.<br><em>"
+"(Unless more than one inteface card is present in the system, this should "
+"not be changed."
+msgstr ""
+"Вече има друга карта която извършва синхронизирането.<br><em>(Освен ако има "
+"повече от една карта в системата, това не трябва да се променя.)"
+
+msgid "Disable Power Save"
+msgstr "Забрани Power Save"
+
+msgid "Disable power save mode. (sometimes needed for older cards)"
+msgstr "Забранява power save режима. (понякога е необходим за по-стари карти)"
+
+msgid "Enable Polling Mode"
+msgstr "Забрани Polling Режим"
+
+msgid "Enable polling mode. (sometimes needed for older cards)"
+msgstr "Забранява polling режима. (понякога е необходим за по-стари карти)"
+
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"Настройките на тази страница са критични за осигуряване връзката към VoIP "
+"доставчици. В частност, грешни топологични настройки могат да предотвратят "
+"входящо обаждане от свързване. Ако тази система е зад рутер, по подразбиране "
+"АскозияPBX изисква следните портове да бъдат пренасочени към нея: 5060 UDP "
+"(SIP), 4569 UDP (IAX) и 10000-10200 UDP (RTP Аудио)"
+
+msgid "A valid MAC address must be specified."
+msgstr "Въведете валиден MAC адрес."
+
+msgid "A valid subnet bit count must be specified."
+msgstr "Въведете валидна Mask."
+
+msgid "A valid gateway must be specified."
+msgstr "Въведете валиден Шлюз."
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr "Въведете валиден IP адрес за първи/втори/трети DNS сървър."
+
+msgid "A public IP address must be entered for this topology."
+msgstr "Въведете валиден IP адрес за тази топология."
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr "Въведете валиден външен IP адрес за тази топология."
+
+msgid "A public hostname must be entered for this topology."
+msgstr "Въведете валидно име на host за тази топология."
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr "Въведете валидно външно име на host за тази топология."
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "Потребителското име на динамичният DNS  съдържа невалидни символи."
+
+msgid "Checked interfaces will be bridged to the main interface."
+msgstr "Провереният интерфейс ще бъде привързан към главния интерфейс."
+
+msgid "IP Address"
+msgstr "IP Адрес"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "DNS Servers"
+msgstr "DNS Сървъри"
+
+msgid "IP Addresses"
+msgstr "IP Адреси"
+
+msgid "MAC Address"
+msgstr "MAC Адрес"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"Това поле може да се използва за промяна MAC адреса на мрежовия интерфейс."
+"<br>Въведете MAC адрес в следния формат: xx:xx:xx:xx:xx:xx или оставете "
+"празно."
+
+msgid "Topology"
+msgstr "Топология"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr "Външен IP Адрес: тази централа има рутиран IP адрес (въведен по-горе)"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + Статично Външно IP: тази централа е зад рутер който има статично "
+"външно IP. Въведете това IP по-долу."
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + Динамично Външно IP:тази централа е зад рутер който има динамично "
+"външно IP. Името на host-а, постоянно се променя до значение необходимо за "
+"тази мрежа. Въведете тази информация по-долу."
+
+msgid "Static Public IP"
+msgstr "Статично Външно IP"
+
+msgid "Public Hostname"
+msgstr "Външно Име на Host"
+
+msgid "This information should be updated by:"
+msgstr "Тази информация трябва да се обнови от:"
+
+msgid "My Router"
+msgstr "Моят Рутер"
+
+msgid "AskoziaPBX"
+msgstr "АскозияPBX"
+
+msgid "Dynamic DNS Client"
+msgstr "Динамичен DNS Клиент"
+
+msgid "Service Type"
+msgstr "Вид Услуга"
+
+msgid "Password"
+msgstr "Парола"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr "Да, именувай \"*.hostname.domain\" за име на host определе по-горе."
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"след като кликнете &quot;Запиши&quot;, всички активни разговори ще "
+"прекъснат. Възможно е да трябва да направите една или повече от следните "
+"стъпки преди да получите достъп до вашата централа отново:"
+
+msgid "restart the PBX"
+msgstr "рестартирай централата"
+
+msgid "change the IP address of your computer"
+msgstr "промени IP адреса на компютъра"
+
+msgid "access the webGUI with the new IP address"
+msgstr "достъп до webGUI с нов IP адрес"
+
+msgid ""
+"AskoziaPBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"АскозияPBX автоматично определя свободното пространство от памета. Пакетите "
+"за разширяване на системнатафункционалност могат  да бъдат инсталирани на "
+"това пространство."
+
+msgid "The system storage media is not large enough to install packages."
+msgstr "Системната запомняща медия е недостатъчна за инсталиране на пакетите."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Най-малко %sMBса необходими. В бъдеще, външна медия ще може да бъде "
+"използвана, но текущите пакети трябва да дъдат съхранени на вътрешната "
+"системна медия."
+
+msgid "Capacity"
+msgstr "Капацитет"
+
+msgid "State"
+msgstr "Състояние"
+
+msgid "Installed Packages"
+msgstr "Инсталирани Пакети"
+
+msgid "system storage partition"
+msgstr "разделяне на системна памет"
+
+msgid "Edit Disk"
+msgstr "Редактирай Диск"
+
+msgid "descriptive name"
+msgstr "Описание"
+
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that "
+"AskoziaPBX is connected to."
+msgstr ""
+
+msgid "SSID,Channel"
+msgstr ""
+
+msgid ",WPA version,WPA cipher"
+msgstr ""
+
+msgid ",WPA PSK"
+msgstr ""
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr ""
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr ""
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Не са намерени съвместими безжични интерфейси."
+
+msgid "Enable Wireless Interface"
+msgstr ""
+
+msgid "Standard"
+msgstr ""
+
+msgid "SSID"
+msgstr ""
+
+msgid "Hide SSID"
+msgstr ""
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+
+msgid "Channel"
+msgstr ""
+
+msgid "Auto"
+msgstr ""
+
+msgid "WPA"
+msgstr ""
+
+msgid "WPA settings"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid "PSK"
+msgstr ""
+
+msgid "WPA only"
+msgstr ""
+
+msgid "WPA2 only"
+msgstr ""
+
+msgid "WPA + WPA2"
+msgstr ""
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr ""
+
+msgid "Cipher"
+msgstr ""
+
+msgid "TKIP"
+msgstr ""
+
+msgid "AES/CCMP"
+msgstr ""
+
+msgid "TKIP + AES/CCMP"
+msgstr ""
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+
+msgid "WEP"
+msgstr ""
+
+msgid "Enable WEP"
+msgstr ""
+
+msgid "TX key"
+msgstr ""
+
+msgid "Key 1:"
+msgstr ""
+
+msgid "Key 2:"
+msgstr ""
+
+msgid "Key 3:"
+msgstr ""
+
+msgid "Key 4:"
+msgstr ""
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+
+msgid "Edit Analog Line"
+msgstr "Редактирай Аналогова Линия"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Въведете валиден Caller ID."
+
+msgid "A phone with this extension already exists."
+msgstr "Телефон с такъв вътрешен номер вече съществува."
+
+msgid "A valid e-mail address must be specified."
+msgstr "Въведет валиден e-mail адрес."
+
+#, php-format
+msgid "<strong>No compatible interfaces found!</strong><br><br>"
+msgstr "<strong>Не е намерен съвместим интерфейс!</strong><br><br>"
+
+#, php-format
+msgid ""
+"To configure this type of account, make sure an appropriately configured "
+"interface is present on the %s page"
+msgstr ""
+
+msgid "Internal extension used to reach this phone."
+msgstr "Вътрешен Номер използван за достъп до този телефон."
+
+msgid "Analog Interface"
+msgstr "Аналогов Интерфейс"
+
+msgid "Edit External Line"
+msgstr "Редактирай Външна Линия"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Вътрешен Номер използван за избиране на този телефон."
+
+msgid "Descriptive name for this phone."
+msgstr "Описание за този телефон."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"Номер или поредица за избиране за достъп до този телефон. Това ще бъде "
+"избирано директно: правилата за изходящо избиране не се взимат под внимание"
+
+msgid "Provider"
+msgstr "Външна линия"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr "Изходяща линия използвана за достъп до този телефон."
+
+msgid "Edit IAX Account"
+msgstr ""
+
+msgid "A valid secret must be specified."
+msgstr ""
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+
+msgid "plaintext"
+msgstr ""
+
+msgid "md5"
+msgstr ""
+
+msgid "This account's password and authentication scheme."
+msgstr ""
+
+msgid "Edit ISDN Line"
+msgstr ""
+
+msgid "This phone's number (MSN)."
+msgstr ""
+
+msgid "Edit SIP Account"
+msgstr ""
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr ""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr ""
+
+msgid "This account's password."
+msgstr ""
+
+msgid "Dialplan Element Library"
+msgstr ""
+
+msgid "Functions"
+msgstr ""
+
+msgid "Audio Prompts"
+msgstr ""
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+
+msgid "Caller ID / Name"
+msgstr ""
+
+msgid "Basic"
+msgstr ""
+
+msgid "Filename"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Printable Dialplan"
+msgstr ""
+
+msgid "Internal Phones"
+msgstr ""
+
+msgid "External Phones"
+msgstr ""
+
+msgid "Conference Rooms"
+msgstr ""
+
+msgid "Pin"
+msgstr "Код"
+
+msgid "Custom Applications"
+msgstr ""
+
+msgid "Dialing Pattern(s)"
+msgstr ""
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr ""
+
+#, php-format
+msgid "The dial-pattern \"%s\" is invalid. %s"
+msgstr ""
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr ""
+
+msgid "Descriptive name for this provider."
+msgstr ""
+
+msgid "Telephone number assigned to this line."
+msgstr ""
+
+msgid "A valid username must be specified."
+msgstr ""
+
+msgid "A valid Caller ID string must be specified."
+msgstr ""
+
+msgid "IAX proxy host URL or IP address and optional port."
+msgstr ""
+
+msgid "A valid default number (MSN) must be specified."
+msgstr ""
+
+msgid ""
+"The default telephone number (MSN) assigned to this line. Individual MSN "
+"mappings can be defined below."
+msgstr ""
+
+msgid "A valid \"fromuser\" must be specified."
+msgstr ""
+
+msgid "SIP proxy host URL or IP address and optional port."
+msgstr ""
+
+msgid "Authorization User"
+msgstr ""
+
+msgid ""
+"Some providers require a seperate authorization username.<br>Defaults to "
+"username entered above."
+msgstr ""
+
+msgid "From User"
+msgstr ""
+
+msgid ""
+"Some providers require a seperate 'from' user.<br>Defaults to username "
+"entered above."
+msgstr ""
+
+msgid "From Domain"
+msgstr ""
+
+msgid ""
+"Some providers require a seperate 'from' domain. <br>Defaults to host "
+"entered above."
+msgstr ""
+
+msgid "Services"
+msgstr "Услуги"
+
+msgid "Conferencing"
+msgstr "Конференция"
+
+msgid ""
+"Conference rooms with optional pin authentication can be configured here. "
+"The system's performance is the only limiting factor on the number of "
+"concurrent members. These rooms can then be dialed via their defined "
+"extensions or used as a destination for incoming calls from Providers."
+msgstr ""
+"Стаи за коференции с допълнителна оторизация с код могат да бъдат "
+"конфигурирани тук. Производителноста на системата е единствения ограничаващ "
+"фактор за броя на едновремените посетители. Тези стаи могат да бъдат "
+"избирани с определения им вътрешен номер или да се използват като дестинация "
+"за входящи обаждания от външни линии."
+
+msgid "Room Number"
+msgstr "Стая номер"
+
+msgid "edit conference room"
+msgstr ""
+
+msgid "Do you really want to delete this conference room?"
+msgstr ""
+
+msgid "delete conference room"
+msgstr ""
+
+msgid "add conference room"
+msgstr ""
+
+msgid "Edit Room"
+msgstr ""
+
+msgid "Conference room numbers must be numeric."
+msgstr ""
+
+msgid "Conference number already exists."
+msgstr ""
+
+msgid "Conference number matches an existing extension."
+msgstr ""
+
+msgid "Conference pins must be numeric."
+msgstr ""
+
+msgid ""
+"The conference room's number, also the extension that this conference is "
+"reachable at."
+msgstr ""
+
+msgid "Access PIN"
+msgstr ""
+
+msgid "Optional PIN needed to access this conference room."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "Гласова Поща"
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"Ако искате да изпращате известия за пропуснати обаждания и записани гласови "
+"съобщения чрез e-mail, конфигурирайте пощенски сървър тук."
+
+msgid "A username must be specified."
+msgstr ""
+
+msgid "A valid e-mail address must be specified for the \"from address\"."
+msgstr "A valid e-mail address must be specified for the \"from address\"."
+
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "АскозияPBX: изпълнение на команди"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+msgid "E-mail has been sent successfully."
+msgstr ""
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
+msgid "SMTP"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr "SMTP host URL или IP адрес и порт."
+
+msgid "E-mail Address"
+msgstr "E-mail Адрес"
+
+msgid "Options"
+msgstr "Опции"
+
+msgid "Account uses TLS"
+msgstr "Акаунта използва TLS"
+
+msgid "TLS certificates are currently not verified."
+msgstr "TLS сертификатите за момента не са одобрени."
+
+msgid "Test E-mail"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail Me"
+msgstr "E-mail Адрес"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+
+msgid "Presentation"
+msgstr "Представяне"
+
+msgid "From Address"
+msgstr "От Адрес"
+
+msgid "This will be shown as voicemail service's sending address."
+msgstr "Това ще се показва като подател на гласовата поща."
+
+msgid "Defaults to the e-mail address entered above."
+msgstr "По подразбиране за e-mail адреса въведен по-горе."
+
+msgid "E-Mail Language"
+msgstr "E-mail Език"
+
+msgid ""
+"E-mail notifications for new voicemail will be delivered in this language."
+msgstr "E-mail известията за нова гласова поща ще се изпращат на този език."
+
+msgid "User defined e-mail text"
+msgstr "Различно e-mail съдържание"
+
+msgid "<p>This status page includes the following information:\n"
+msgstr ""
+
+msgid ""
+"Note: make sure to remove any sensitive information (passwords, maybe also "
+"IP addresses) before posting information from this page in public places "
+"(like mailing lists)!"
+msgstr ""
+
+msgid "Passwords in config.xml have been automatically removed."
+msgstr ""
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "There are currently no active channels."
+msgstr "В момента няма активни канали."
+
+msgid "Application"
+msgstr ""
+
+msgid "Conferences"
+msgstr "Конференции"
+
+#, php-format
+msgid "Member %s has been kicked from conference %s."
+msgstr ""
+
+msgid "There are currently no active conferences."
+msgstr "В момента няма активни конференции."
+
+msgid "Conference"
+msgstr ""
+
+msgid "Member"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Do you really want to kick this member?"
+msgstr ""
+
+msgid "kick conference member"
+msgstr ""
+
+msgid "Live"
+msgstr ""
+
+msgid "CPU Load"
+msgstr "CPU Натоварване"
+
+msgid ""
+"if you can't see the graph, you may have to install the <a href=\"http://www."
+"adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+msgstr ""
+"Ако не виждате графиката, може би трябва да инсталирате <a href=\"http://www."
+"adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+
+msgid "Network Traffic"
+msgstr "Мрежов Трафик"
+
+msgid "Subnet Mask"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "In/Out Packets"
+msgstr "In/Out Пакети"
+
+msgid "In/Out Errors"
+msgstr "In/Out Грешки"
+
+msgid "Collisions"
+msgstr "Колизии"
+
+msgid "Last scan results"
+msgstr ""
+
+msgid "BSSID"
+msgstr ""
+
+msgid "Rate"
+msgstr ""
+
+msgid "Signal"
+msgstr ""
+
+msgid "Noise"
+msgstr ""
+
+msgid "hidden"
+msgstr ""
+
+msgid "Associated stations"
+msgstr ""
+
+msgid "RSSI"
+msgstr ""
+
+msgid "Flags"
+msgstr ""
+
+msgid "Capabilities"
+msgstr ""
+
+msgid ""
+"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
+"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+msgstr ""
+
+msgid "No stations are associated at this time."
+msgstr ""
+
+msgid "Attached"
+msgstr ""
+
+msgid "PH State"
+msgstr ""
+
+msgid "Dialtone"
+msgstr ""
+
+msgid "Driver Type"
+msgstr ""
+
+msgid "Channels"
+msgstr "Канали"
+
+msgid "Serial"
+msgstr ""
+
+msgid "Power Save"
+msgstr ""
+
+msgid "General Setup"
+msgstr "Общи Настройки"
+
+msgid ""
+"This is the first page which needs configuring upon installing a new system. "
+"Most importantly, the default password should be changed. Then, ensure your "
+"host/domain name, time zone and country's indication tones are set correctly "
+"before continuing."
+msgstr ""
+"Това е първата страница, която се използва за настройки веднага след "
+"инсталиране на нова система. Най-важното е да се промени паролата по "
+"подразбиране. След това се уверете, че вашите име на host/domain, часова "
+"зона и национални значения на тоновете са правилно конфигурирани."
+
+msgid "Hostname,Domain,Username"
+msgstr "Име на Host,Domain,Потребителско Име"
+
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+msgstr "Името на host може да съдържа само символите a-z, 0-9 и '-'."
+
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr "Името на domain може да съдържа само символите a-z, 0-9 и '-'."
+
+msgid "The username may only contain the characters a-z, A-Z and 0-9."
+msgstr "Потребителското Име може да съдържа само символите a-z, A-Z и 0-9."
+
+msgid "A valid TCP/IP port must be specified for the webGUI port."
+msgstr "Въведете валиден TCP/IP порт за  webGUI порт."
+
+msgid "The passwords do not match."
+msgstr "Паролата не съвпада."
+
+msgid ""
+"The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgstr ""
+"Интервалът на обновяване трябва да бъде 0 (изключено) или между 6 и 1440."
+
+msgid ""
+"A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr ""
+"Името на NTP сървъра може да съдържа само символите a-z, 0-9, '-' и '.'."
+
+msgid "name of the pbx host, without domain part"
+msgstr "Име на host на централата, без domain"
+
+msgid "e.g. <em>pbx"
+msgstr "например <em>pbx"
+
+msgid "Domain"
+msgstr "Domain"
+
+msgid "e.g. <em>mycorp.com"
+msgstr "например. <em>mycorp.com"
+
+msgid ""
+"If you want to change the username for accessing the webGUI, enter it here."
+msgstr "Потребителското име за достъп до webGUI."
+
+msgid "confirmation"
+msgstr "потвърждение"
+
+msgid ""
+"If you want to change the password for accessing the webGUI, enter it here "
+"twice."
+msgstr ""
+"Ако искате да промените паролата за достъп до webGUI, въведете я тук два "
+"пъти."
+
+msgid "webGUI protocol"
+msgstr "webGUI протокол"
+
+msgid "HTTP"
+msgstr "HTTP"
+
+msgid "HTTPS"
+msgstr "HTTPS"
+
+msgid "webGUI port"
+msgstr "webGUI порт"
+
+msgid ""
+"Enter a custom port number for the webGUI above if you want to override the "
+"default (80 for HTTP, 443 for HTTPS)."
+msgstr ""
+"Въведете номер на порт по ваш избор за webGUI по-горе ако желаете да "
+"промените порта по подразбиране (80 за HTTP, 443 за HTTPS)."
+
+msgid "Indications Tonezone"
+msgstr "Значения на Тонове"
+
+msgid "Select which country's indication tones are to be used."
+msgstr "Изберете кои национални значения на тоновете да бъдат използвани."
+
+msgid "Time zone"
+msgstr "Часова Зона"
+
+msgid "Select the location closest to you"
+msgstr "Изберете най-близкото до вас местоположение."
+
+msgid "Time update interval"
+msgstr "Интрервал на Обновяване"
+
+msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgstr ""
+"Минути между синхронизиране на времето (препоръчително 300, или 0 за "
+"изключване)"
+
+msgid "NTP time server"
+msgstr "NTP сървър"
+
+msgid ""
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
+msgstr ""
+"Използвайте интервал за да раделите host-овете ( само един е неоходим ). Не "
+"забравяйте да настроите поне един DNS сървър ако въведете име на host тук!"
+
+msgid "Backup/Restore"
+msgstr "Архивиране"
+
+msgid ""
+"The entire system configuration can be backed up and restored via this page."
+msgstr ""
+"Всички системни настройки могат да бъдат архивирани и възстановени чрез тази "
+"страница."
+
+msgid "The configuration has been restored. The PBX is now rebooting."
+msgstr "Конфигурацията беше възстановена. Централата се рестартира."
+
+msgid "The configuration could not be restored."
+msgstr "Конфигурацията не може да бъде възстановена"
+
+#, php-format
+msgid "XML error: %s"
+msgstr "XML грешка: %s"
+
+msgid "The configuration could not be restored (file upload error)."
+msgstr ""
+"Конфигурацията не може да бъде възстановена (грешка при качване на файл)."
+
+msgid "Backup configuration"
+msgstr "Архивиране на настройките"
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr ""
+"Кликнете върху този бутон за да изтеглите системните настройки в XML формат."
+
+msgid "Download configuration"
+msgstr "Изтегли настройките"
+
+msgid "Restore configuration"
+msgstr "Възстановяване на настройките"
+
+msgid ""
+"Open an AskoziaPBX configuration XML file and click the button below to "
+"restore the configuration."
+msgstr ""
+"Изберете АскозияPBX конфигурационен XML файл и кликнете върху бутона по-долу "
+"за да възстановите системните настройки."
+
+msgid "The PBX will reboot after restoring the configuration."
+msgstr ""
+"Централата ще се рестартира след възстановяване на системните настройки."
+
+msgid "Factory Defaults"
+msgstr "По подразбиране"
+
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
+msgstr ""
+"Системата беше възстановена по подразбиране и сега се рестартира. Това може "
+"да отнеме известно време."
+
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to 'askozia'."
+msgstr ""
+"Ако кликнете &quot;Да&quot;, централата ще се възстанови до по подразбиране "
+"и ще се рестартира. Всички системни настройки ще бъдат презаписани. LAN IP "
+"адреса ще се въстанови на 192.168.1.2 и паролата ще бъде 'askozia'."
+
+msgid "Are you sure you want to proceed?"
+msgstr "Сигурни ли сте че искате да продължите?"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Не"
+
+msgid "Firmware"
+msgstr "Обновяване"
+
+msgid ""
+"AskoziaPBX's firmware can be kept up to date here. The system's "
+"configuration will be maintained through the upgrade. The system will reboot "
+"automatically after installing the new firmware. Firmware images of formal "
+"releases are digitally signed before distribution and checked upon "
+"installation."
+msgstr ""
+"Програмата на АскозияPBX може да бъде обновена от тук. Системните настройки "
+"ще се запазят след обновяването. Системата ще се рестартира автоматично след "
+"приключване на обновяването. Новите версии са цифрово подписани преди "
+"предлагането им и се проверяват при инсталирането."
+
+#, php-format
+msgid "The uploaded image file is not for this platform (%s)."
+msgstr ""
+
+msgid "Image upload failed (out of memory?)"
+msgstr ""
+
+msgid "The digital signature on this image is invalid."
+msgstr ""
+
+msgid "This image is not digitally signed."
+msgstr ""
+
+msgid "There has been an error verifying the signature on this image."
+msgstr ""
+
+msgid "The image file is corrupt."
+msgstr ""
+
+msgid "The firmware is now being installed. The PBX will reboot automatically."
+msgstr ""
+
+msgid "Firmware uploading is not supported on this platform."
+msgstr ""
+
+#, php-format
+msgid ""
+"<strong>%s</strong><br>This means that the image you uploaded is not an "
+"official/supported image and may lead to unexpected behavior or security "
+"compromises. Only install images that come from sources that you trust, and "
+"make sure that the image has not been tampered with.<br><br> Do you want to "
+"install this image anyway (at your own risk)?"
+msgstr ""
+
+msgid "Click &quot;Enable firmware upload&quot; below."
+msgstr ""
+
+#, php-format
+msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
+msgstr "Изберете нов файл с образ на програма (pbx-%s-*.img) за инсталиране."
+
+msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
+msgstr ""
+"Кликнете върху &quot;Обнови програмата&quot; за да стратирате процеса на "
+"обновяване."
+
+msgid "Enable firmware upload"
+msgstr ""
+
+msgid "Disable firmware upload"
+msgstr ""
+
+msgid "Firmware image file:"
+msgstr "Файл с образ на програмата:"
+
+msgid "Upgrade firmware"
+msgstr "Обнови програмата"
+
+msgid "You must reboot the system before you can upgrade the firmware."
+msgstr ""
+
+msgid "DO NOT abort the firmware upgrade once it has started."
+msgstr "НЕ ПРЕКЪСВАЙТЕ обновяването на програмата след като е започнало."
+
+msgid "Packages"
+msgstr "Пакети"
+
+msgid ""
+"Packages to expand system functionality can be installed and updated here. "
+"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
+"available packages. All packages are digitally signed before distribution "
+"and checked upon installation."
+msgstr ""
+
+msgid "The digital signature on this package is invalid."
+msgstr ""
+
+msgid "This package is not digitally signed."
+msgstr ""
+
+msgid "There has been an error verifying the signature on this package."
+msgstr ""
+
+msgid "The package is corrupt and has been deleted."
+msgstr ""
+
+msgid "Package already exists, install failed."
+msgstr ""
+
+msgid "Extracted package not found, install failed."
+msgstr ""
+
+msgid "Existing package not found, update failed."
+msgstr ""
+
+msgid ""
+"The uploaded package is not newer than the existing package, update failed."
+msgstr ""
+
+msgid "There are updates available for packages on your system."
+msgstr ""
+
+msgid ""
+"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
+"install the updated packages."
+msgstr ""
+
+msgid ""
+"The following packages issued warnings while verifying their digital "
+"signature. This means that they are not official/supported packages and may "
+"lead to unexpected behavior or security compromises. Only install packages "
+"that come from sources that you trust, and make sure that they have not been "
+"tampered with.<br><br>Check the packages you wish to install despite this "
+"warning."
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Do you really want to disable this package?"
+msgstr ""
+
+msgid "click to disable package"
+msgstr ""
+
+msgid "click to enable package"
+msgstr ""
+
+msgid "backup package data"
+msgstr ""
+
+msgid ""
+"Do you really want to permanently delete this package\\'s configuration and "
+"data?"
+msgstr ""
+
+msgid "delete package configuration and data"
+msgstr ""
+
+msgid "install new package"
+msgstr ""
+
+msgid "update package to newer version"
+msgstr ""
+
+msgid "restore package data"
+msgstr ""
+
+msgid "Update Installed Package"
+msgstr ""
+
+msgid ""
+"Select which packages you would like to update, existing package data will "
+"be preserved."
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid ""
+"Select a .pbxpkg file from your computer to update from, existing package "
+"data will be preserved."
+msgstr ""
+
+msgid "Manual Update"
+msgstr ""
+
+msgid "Install a New Package"
+msgstr ""
+
+msgid "Select which packages you would like to install."
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Select a .pbxpkg file from your computer to install."
+msgstr ""
+
+msgid "Manual Install"
+msgstr ""
+
+msgid "Restore from a Backup Archive"
+msgstr ""
+
+msgid "Select a backup .tgz archive and press 'Restore'"
+msgstr ""
+
+msgid "Package data and logic will be replaced by the backup."
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Reboot"
+msgstr "Рестарт"
+
+msgid "The system is rebooting now. This may take a minute."
+msgstr ""
+
+msgid "Are you sure you want to reboot the system?"
+msgstr "Сигурни ли сте че искате да рестартирате системата?"
+
+msgid "ERR Could not save configuration.\n"
+msgstr ""
+
+msgid "OK\n"
+msgstr ""
+
+msgid "ERR Could not install configuration.\n"
+msgstr ""
+
+msgid "ERR Invalid configuration received.\n"
+msgstr ""
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "Body"
+msgstr "Оформление"
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr "Следните променливи могат да бъдат използвани в e-mail известието"
+
+msgid "extension number of voicemail box"
+msgstr "вътрешен номер на пощенска кутия"
+
+msgid "name of voicemail recipient"
+msgstr "име на получателя"
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr "продължителност на съобщението (например 0:58)"
+
+msgid "caller id of person leaving the message"
+msgstr "caller id на лицето оставило съобщението"
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr "пълна дата / час (например 2025-11-20 (15:45))"
+
+msgid "generate password"
+msgstr ""
+
+msgid "use this password"
+msgstr ""
+
+msgid "webGUI language"
+msgstr "Език на webGUI"
+
+msgid "Select in which language you want the webGUI to be displayed."
+msgstr "Изберете на какъв език искате webGUI да работи."
+
+msgid "Audio Codecs"
+msgstr ""
+
+msgid "Video Codecs"
+msgstr ""
+
+msgid "Group Members"
+msgstr ""
+
+msgid "Non-Members"
+msgstr "Неучастващи"
+
+msgid ""
+"All group members will be called at the same time. <strong>The voicemail "
+"account associated with the first member will be used if the call is not "
+"answered."
+msgstr ""
+
+msgid "Incoming Extension(s)"
+msgstr ""
+
+msgid "add incoming extension mapping"
+msgstr ""
+
+msgid ""
+"Enter a pattern or a phone number and select a destination extension. To "
+"ring multiple phones, simply define them with the same pattern. If a phone "
+"number is entered, it will used as the \"external\" number on unanswered "
+"calls. If nothing is entered, all calls will be directed to the destination "
+"extension.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
+" </ul>\n"
+msgstr ""
+
+msgid "DTMF Mode"
+msgstr ""
+
+msgid "Registration"
+msgstr ""
+
+msgid "Do not register with this provider."
+msgstr ""
+
+msgid "Qualify"
+msgstr ""
+
+msgid ""
+"Packets will be sent to this account every <i>n</i> seconds to check its "
+"status.<br>Defaults to '2'. Set to '0' to disable."
+msgstr ""
+
+msgid "always use NAT mode."
+msgstr ""
+
+msgid "only use NAT mode according to RFC3581 (rport)"
+msgstr ""
+
+msgid "never attempt NAT mode or RFC3581 support"
+msgstr ""
+
+msgid "assume NAT mode but don't send rport "
+msgstr ""
+
+msgid "NAT"
+msgstr ""
+
+msgid ""
+"Is there a NATing device between AskoziaPBX and this account? Setting this "
+"to 'yes' will work in most cases. The options 'never' and 'route' are only "
+"rarely used for certain buggy SIP phones."
+msgstr ""
+
+msgid "indefinitely"
+msgstr ""
+
+msgid "Ring Length"
+msgstr ""
+
+msgid ""
+"The number of seconds this phone will ring before being reported as "
+"unanswered."
+msgstr ""
+
+msgid "Line Gain"
+msgstr ""
+
+msgid "receive"
+msgstr ""
+
+msgid "transmit"
+msgstr ""
+
+msgid ""
+"Some analog connections may need adjustment to achieve an acceptable audio "
+"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
+"the line."
+msgstr ""
+
+msgid "Incoming Caller ID Overrides"
+msgstr ""
+
+msgid "Source Name &lt;number&gt;"
+msgstr ""
+
+msgid "Prepend with string"
+msgstr ""
+
+msgid "Replace with string"
+msgstr ""
+
+msgid "Replace calling name with calling number."
+msgstr ""
+
+msgid "Disable overrides"
+msgstr ""
+
+msgid "Outgoing Caller ID"
+msgstr ""
+
+msgid "Your Name &lt;number&gt;"
+msgstr ""
+
+msgid "Send string defined above&nbsp;"
+msgstr ""
+
+msgid "Send phones' Caller ID"
+msgstr ""
+
+msgid "There are currently no providers defined."
+msgstr ""
+
+msgid "direct outbound dialing via SIP uris"
+msgstr ""
+
+msgid "Checked providers will be accessible from this phone."
+msgstr ""
+
+msgid "There are currently no phones defined."
+msgstr ""
+
+msgid "Checked phones will have access to this provider."
+msgstr ""
+
+msgid ""
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
+"\" to use this Provider for all outgoing calls. To only use this Provider "
+"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
+"entered, only incoming calls will be accepted.<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
+"and passes \"1555\" to the provider)</li>\n"
+" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
+"\" but only passes \"555\" to the provider)</li>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters (not allowed "
+"before | or +)</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
+"before | or +)</li>\n"
+" </ul>\n"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid ""
+"Audio prompts will be played back in the selected language for this account."
+msgstr ""
+
+msgid "send missed call notifications"
+msgstr ""
+
+msgid "don't send to voicemail when busy"
+msgstr ""
+
+msgid ""
+"An e-mail address. If entered, voicemail will be enabled on this extension. "
+"Incoming messages will be sent to the given address."
+msgstr ""
+
+msgid "Voicemail Services"
+msgstr ""
+
+msgid "must be configured</a> before this feature will work."
+msgstr ""
+
+msgid "Public Direct Dial"
+msgstr ""
+
+msgid "allow extension to be directly dialed over public networks"
+msgstr ""
+
+msgid "Public name. Enter a string to map a friendly name to this extension."
+msgstr ""
+
+#, php-format
+msgid ""
+"Enabling this option will allow this extension to be reachable via SIP and "
+"IAX2 uris (extension@%s)"
+msgstr ""
+
+msgid "Call Limit"
+msgstr ""
+
+msgid "calls"
+msgstr ""
+
+msgid "Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)"
+msgstr ""
+
+msgid "Busy Limit"
+msgstr ""
+
+msgid ""
+"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
+"1)"
+msgstr ""
+
+msgid "Logic"
+msgstr ""
+
+msgid ""
+"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
+"()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the "
+"Asterisk dialplan. An effort is made to verify this input but the "
+"possibility remains that an AskoziaPBX install may be rendered useless by "
+"faulty application logic. A reference of applications, functions and phones "
+"is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"target=\"_blank\">Element Library</a></strong>.</p>"
+msgstr ""
+
+msgid "Advanced Settings"
+msgstr ""
+
+msgid "show"
+msgstr ""
+
+msgid "Manual Attributes"
+msgstr "Допълнителни Настройки"
+
+msgid ""
+"Manual key-value pairs can be entered in addition to the generated "
+"configuration (i.e. <em>configoption=value</em>). These settings will be "
+"appended to this item's Asterisk configuration file or context. Unless you "
+"have a very specific need to do this, nothing should be entered in this "
+"field. Improperly formed values can break system functionality and/or open "
+"security holes."
+msgstr ""
+"Допълнителните настройки могат да бъдат въведени в допълнение на  "
+"създадената конфигурация (нампример <em>configoption=value</em>). Тези "
+"настройки ще се прилагат за Астериск конфигурационен файл или контекст. "
+"Освен ако не се нуждаете от нещо строго специфично, не трябва да се въвежда "
+"нищо в това поле. Неправилна формулировка може да повреди системата или да "
+"отвори дупки в сигурноста."
+
+msgid "Text to be displayed for Caller ID."
+msgstr ""
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
+
+msgid "Public Number"
+msgstr ""
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+
+msgid "Authentication Method"
+msgstr "Метод на Оторизация"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"Повечето акаунти ще работят ако използвате 'auto'. Ако това не успее, "
+"изберете метод на оторизация използван от вашия сървър."
+
+msgid "of"
+msgstr ""
+
+msgid "You are using the most recent version of AskoziaPBX."
+msgstr "Вие използвате най-новата версия на АскозияPBX."
+
+msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
+msgstr ""
+
+msgid "A newer version of AskoziaPBX is available!"
+msgstr ""
+
+msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
+msgstr ""
+
+msgid "The following input errors were detected:"
+msgstr ""
+
+msgid "print"
+msgstr "за печат"
+
+msgid "Summary"
+msgstr "Резюме"
+
+msgid "Manager"
+msgstr "Управление"
+
+msgid "Ping/Traceroute"
+msgstr ""
+
+msgid "ARP Table"
+msgstr ""
+
+msgid "webGUI Configuration"
+msgstr ""
+
+msgid "Live Stats"
+msgstr "Реален Статус"
+
+msgid "Help"
+msgstr ""
+
+msgid "add a new item"
+msgstr ""
+
+msgid "item is disabled, click to enable"
+msgstr ""
+
+msgid "item is enabled, click to disable"
+msgstr ""
+
+msgid "edit an item"
+msgstr ""
+
+msgid "permanently delete an item"
+msgstr ""
+
+msgid "check for package updates"
+msgstr ""
+
+msgid "restore a backup archive"
+msgstr ""
+
+msgid "download a backup archive"
+msgstr ""
+
+msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+msgstr ""
+
+msgid "view license"
+msgstr ""
+
+msgid "LAN net"
+msgstr ""
+
+msgid "autoselect"
+msgstr ""
+
+msgid "100BASE-TX full-duplex"
+msgstr ""
+
+msgid "100BASE-TX half-duplex"
+msgstr ""
+
+msgid "10BASE-T full-duplex"
+msgstr ""
+
+msgid "10BASE-T half-duplex"
+msgstr ""
+
+msgid "1000BASE-TX full-duplex"
+msgstr ""
+
+msgid "Public IP address"
+msgstr ""
+
+msgid "NAT + static public IP"
+msgstr ""
+
+msgid "NAT + dynamic public IP"
+msgstr ""
+
+msgid "Kewl Start"
+msgstr ""
+
+msgid "Ground Start"
+msgstr ""
+
+msgid "Loop Start"
+msgstr ""
+
+msgid ""
+"Echos audio and video back to the caller as soon as it is received. Used to "
+"test connection delay."
+msgstr ""
+
+msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+msgstr ""
+
+msgid ""
+"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+"extension."
+msgstr ""
+
+msgid "English (US)"
+msgstr ""
+
+msgid "English (UK)"
+msgstr ""
+
+msgid "Danish"
+msgstr ""
+
+msgid "Dutch"
+msgstr ""
+
+msgid "French (France)"
+msgstr ""
+
+msgid "French (Canada)"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Swedish"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "English (formal)"
+msgstr ""
+
+msgid "Danish (formal)"
+msgstr ""
+
+msgid "Dutch (formal)"
+msgstr ""
+
+msgid "Finnish"
+msgstr ""
+
+msgid "Finnish (formal)"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "French (formal)"
+msgstr ""
+
+msgid "German (formal)"
+msgstr ""
+
+msgid "Italian (formal)"
+msgstr ""
+
+msgid "Polish"
+msgstr ""
+
+msgid "Polish (formal)"
+msgstr ""
+
+msgid "Portuguese, Brazil"
+msgstr ""
+
+msgid "Portuguese, Brazil (formal)"
+msgstr ""
+
+msgid "Russian (formal)"
+msgstr ""
+
+msgid "Spanish (formal)"
+msgstr ""
+
+msgid "point-to-multipoint, terminal equipment"
+msgstr ""
+
+msgid "multipoint-to-point, network termination"
+msgstr ""
+
+msgid "point-to-point, terminal equipment"
+msgstr ""
+
+msgid "point-to-point, network termination"
+msgstr ""
+
+msgid "United States / North America"
+msgstr ""
+
+msgid "Australia"
+msgstr ""
+
+msgid "Austria"
+msgstr ""
+
+msgid "Belgium"
+msgstr ""
+
+msgid "Chile"
+msgstr ""
+
+msgid "China"
+msgstr ""
+
+msgid "Finland"
+msgstr ""
+
+msgid "France"
+msgstr ""
+
+msgid "Greece"
+msgstr ""
+
+msgid "Italy"
+msgstr ""
+
+msgid "Japan"
+msgstr ""
+
+msgid "Malaysia"
+msgstr ""
+
+msgid "Netherlands"
+msgstr ""
+
+msgid "New Zealand"
+msgstr ""
+
+msgid "Norway"
+msgstr ""
+
+msgid "Russia"
+msgstr ""
+
+msgid "Spain"
+msgstr ""
+
+msgid "Sweden"
+msgstr ""
+
+msgid "Taiwan"
+msgstr ""
+
+msgid "United Kingdom"
+msgstr ""
+
+msgid "United States Circa 1950/ North America"
+msgstr ""
+
+msgid "Brazil"
+msgstr ""
+
+msgid "Bulgaria"
+msgstr ""
+
+msgid "Czech Republic"
+msgstr ""
+
+msgid "Denmark"
+msgstr ""
+
+msgid "Estonia"
+msgstr ""
+
+msgid "Germany"
+msgstr ""
+
+msgid "Hungary"
+msgstr ""
+
+msgid "India"
+msgstr ""
+
+msgid "Israel"
+msgstr ""
+
+msgid "Lithuania"
+msgstr ""
+
+msgid "Mexico"
+msgstr ""
+
+msgid "Philippines"
+msgstr ""
+
+msgid "Poland"
+msgstr ""
+
+msgid "Portugal"
+msgstr ""
+
+msgid "Russia / ex Soviet Union"
+msgstr ""
+
+msgid "Singapore"
+msgstr ""
+
+msgid "South Africa"
+msgstr ""
+
+msgid "Switzerland"
+msgstr ""
+
+msgid "Thailand"
+msgstr ""
+
+msgid "Venezuela / South America"
+msgstr ""
+
+msgid ""
+"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
+"a> your pbx for the changes to take effect."
+msgstr ""
+
+msgid "The changes have been applied successfully."
+msgstr ""
+
+#, php-format
+msgid "ERROR: the changes could not be applied (error code %s)."
+msgstr ""
+
+msgid "reset filter and reload firewall logs page"
+msgstr ""
+
+msgid "Firewall"
+msgstr ""
+
+msgid "reload page"
+msgstr ""
+
+msgid "unconfigured"
+msgstr ""
+
+msgid "Package activated successfully."
+msgstr ""
+
+msgid "Package deactivated successfully."
+msgstr ""
+
+msgid "Package deleted successfully."
+msgstr ""
+
+msgid "Package restored successfully."
+msgstr ""
+
+msgid "Package installed successfully."
+msgstr ""
+
+#, php-format
+msgid "%.2f GB"
+msgstr ""
+
+#, php-format
+msgid "%.2f MB"
+msgstr ""
+
+#, php-format
+msgid "%.0f KB"
+msgstr ""
+
+#, php-format
+msgid "%d bytes"
+msgstr ""
+
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr ""
+
+#, php-format
+msgid "The field '%s' is required."
+msgstr ""
+
+#~ msgid "Port"
+#~ msgstr "Порт"
+
+#~ msgid "National Prefix, International Prefix"
+#~ msgstr "Национален Префикс, Международен Префикс"
+
+#~ msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
+#~ msgstr ""
+#~ "Потребителско Име, Парола, Забранени IP, Забранени Netmask, Разрешени IP, "
+#~ "Разрешени Netmask"
+
+#~ msgid "Low RTP Port,High RTP Port"
+#~ msgstr "Малък RTP Порт,Голям RTP Порт"
+
+#~ msgid "Host,Count"
+#~ msgstr "Host,Брой"
+
+#~ msgid "Host,ttl"
+#~ msgstr "Host,ttl"
+
+#~ msgid "name"
+#~ msgstr "име"
+
+#~ msgid "Name,Extension,Application Logic"
+#~ msgstr "Име,Вътрешен Номер,Логика на Приложението"
+
+#~ msgid ""
+#~ "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
+#~ msgstr ""
+#~ "Вътрешен Номер за Паркиране,Начална Позиция за Паркиране,Крайна Позиция "
+#~ "за Паркиране,Време за Паркиране"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"
+
+#~ msgid "IP address,Subnet bit count,Gateway,Network topology"
+#~ msgstr "IP адрес,Mask,Шлюз,Мрежова топология"
+
+#~ msgid "Extension,Caller ID"
+#~ msgstr "Вътрешен Номер,Caller ID"
+
+#~ msgid "Extension,Name,Dialstring,Provider"
+#~ msgstr "Вътрешен Номер,Име,Поредица за Избиране,Външна Линия"
