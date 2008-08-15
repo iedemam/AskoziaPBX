@@ -46,6 +46,7 @@ $g = array(
     "debug" => false,
     "wireless_hostap_regex" => "/^(wi|ath|ral|ural)/",
     "latest_config" => "1.5",
+	"package_system" => "1.0",
 	"technologies" => array("sip", "iax", "isdn", "analog"),
 	"phone_types" => array("sip", "iax", "isdn", "analog", "external"),
 	"provider_types" => array("sip", "iax", "isdn", "analog")
