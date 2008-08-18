@@ -134,8 +134,8 @@ $pgtitle = array("License");
 		<li>Danish - Carsten Matzon</li>
 		<li>Dutch - Wim Van Clapdurp</li>
 		<li>Finnish - Christoffer Lindqvist</li>
-		<li>German - Andreas Jud</li>
-		<li>Italian - Roberto Zilli</li>
+		<li>German - Andreas Jud, Helge Ulrich</li>
+		<li>Italian - Roberto Zilli, Giovanni Vallesi</li>
 		<li>Polish - Marcin Hańczaruk</li>
 	</ul>
 	</p>

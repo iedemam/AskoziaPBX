@@ -1,3 +1,7 @@
+2008.xx.xx - pb14.3
+ - bug: ACPI issues fixed
+ - localization: updated German (90%) & Italian (100%)
+
 2008.08.15 - pb14.2
  - added: SMTP settings can now be tested via "Services -> Voicemail"
  - updated: PHP to 4.4.9
