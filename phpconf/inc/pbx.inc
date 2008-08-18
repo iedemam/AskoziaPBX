@@ -206,7 +206,12 @@ function pbx_is_valid_extension($extension) {
  * XXX : unimplemented
  */
 function pbx_is_valid_callerid($id) {
-	return true;
+
+	if(preg_match("/^[a-z0-9]+(\s{1}[a-z0-9]|[a-z0-9])+$/i", $id)) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 /**
@@ -214,7 +219,13 @@ function pbx_is_valid_callerid($id) {
  * XXX : unimplemented
  */
 function pbx_is_valid_callerid_string($string) {
-	return true;
+
+	if(preg_match("/^[a-z0-9]+(\s{1}[a-z0-9]|[a-z0-9])+\s{1}<{1}([0-9]+(\s{1}[0-9]|[0-9])+)+>$/i", $string)) {
+		return true;
+	} else {
+		return false;
+	}
+
 }
 
 /**
