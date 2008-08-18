@@ -43,7 +43,7 @@ $versions = array(
 	"msntp"			=> "msntp-1.6",
 	"pecl_sqlite"	=> "SQLite-1.0.3",
 	"php"			=> "php-4.4.9",
-	"scriptaculous"	=> "scriptaculous-js-1.7.1_beta3",
+	"scriptaculous"	=> "scriptaculous-js-1.8.1",
 	"udesc_dump"	=> "udesc_dump-1.3.9",
 	"zaptel"		=> "zaptel-trunk"
 );
@@ -277,7 +277,8 @@ function build_asterisk() {
 			"chan_sip_default_cid",
 			"chan_sip_show_statuses",
 			"chan_iax2_show_statuses",
-			"chan_local_jitterbuffer"
+			"chan_local_jitterbuffer",
+			"unix_connection_message"
 			//"chan_sip_423"
 		);
 		foreach ($patches as $patch) {

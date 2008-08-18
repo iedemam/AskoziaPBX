@@ -1,0 +1,24 @@
+--- main/asterisk.orig	2008-08-18 13:00:49.000000000 +0200
++++ main/asterisk.c	2008-08-18 13:01:16.000000000 +0200
+@@ -963,8 +963,8 @@
+ 				break;
+ 		}
+ 	}
+-	if (option_verbose > 2) 
+-		ast_verbose(VERBOSE_PREFIX_3 "Remote UNIX connection disconnected\n");
++	/*if (option_verbose > 2) 
++		ast_verbose(VERBOSE_PREFIX_3 "Remote UNIX connection disconnected\n");*/
+ 	close(con->fd);
+ 	close(con->p[0]);
+ 	close(con->p[1]);
+@@ -1031,8 +1031,8 @@
+ 				ast_log(LOG_WARNING, "No more connections allowed\n");
+ 				close(s);
+ 			} else if (consoles[x].fd > -1) {
+-				if (option_verbose > 2) 
+-					ast_verbose(VERBOSE_PREFIX_3 "Remote UNIX connection\n");
++				/*if (option_verbose > 2) 
++					ast_verbose(VERBOSE_PREFIX_3 "Remote UNIX connection\n");*/
+ 			}
+ 		}
+ 	}
