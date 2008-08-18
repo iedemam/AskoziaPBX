@@ -123,7 +123,7 @@ function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 	} else {
 		insert_string += '<td valign="middle">'
 			+ '<img src="delete.png" title="remove incoming extension mapping" border="0" '
-			+ 'style="cursor: pointer; cursor: hand;" onclick="remove_incoming_extension_selector(' + id + ')">'
+			+ 'style="cursor:pointer;" onclick="remove_incoming_extension_selector(' + id + ')">'
 			+ '</td>' +
 			'</tr>';
 	}

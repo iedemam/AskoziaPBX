@@ -337,7 +337,7 @@ function display_audio_codec_selector($enabled_codecs) {
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Audio Codecs");?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
-			<ul id="ace" class="ace" style="min-height:50px">
+			<ul id="ace" class="ace" style="min-height:50px; cursor:pointer;">
 			<? foreach ($enabled_codecs as $codec): ?>
 				<? if (array_key_exists($codec, $audio_codecs)): ?>
 				<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
@@ -346,7 +346,7 @@ function display_audio_codec_selector($enabled_codecs) {
 			</ul>
 		</td>
 		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Disabled");?></strong>
-			<ul id="acd" class="acd" style="min-height:50px">
+			<ul id="acd" class="acd" style="min-height:50px; cursor:pointer;">
 			<? foreach ($audio_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
 				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
@@ -363,7 +363,7 @@ function display_video_codec_selector($enabled_codecs) {
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Video Codecs");?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Enabled");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
-			<ul id="vce" class="vce" style="min-height:50px">
+			<ul id="vce" class="vce" style="min-height:50px; cursor:pointer;">
 				<? foreach ($enabled_codecs as $codec): ?>
 					<? if (array_key_exists($codec, $video_codecs)): ?>
 					<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
@@ -372,7 +372,7 @@ function display_video_codec_selector($enabled_codecs) {
 			</ul>
 		</td>
 		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Disabled");?></strong>
-			<ul id="vcd" class="vcd" style="min-height:50px">
+			<ul id="vcd" class="vcd" style="min-height:50px; cursor:pointer;">
 			<? foreach ($video_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
 				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
@@ -404,7 +404,7 @@ function display_callgroup_member_selector($current_members) {
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Group Members");?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Members");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
-			<ul id="gme" class="gme" style="min-height:50px"><? 
+			<ul id="gme" class="gme" style="min-height:50px; cursor:pointer;"><? 
 			
 			foreach ($current_members as $member) {
 				if (array_key_exists($member, $indexed_phones)) {
@@ -415,7 +415,7 @@ function display_callgroup_member_selector($current_members) {
 			?></ul>
 		</td>
 		<td width="40%" class="vtable" valign="top"><strong><?=gettext("Non-Members");?></strong>
-			<ul id="gmd" class="gmd" style="min-height:50px"><?
+			<ul id="gmd" class="gmd" style="min-height:50px; cursor:pointer;"><?
 			
 
 			foreach ($indexed_phones as $uniqid=>$phone) {
@@ -448,7 +448,7 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 			<table id="<?=$table_id;?>">
 				<tr id="<?=$row_id;?>">
 					<td>&nbsp;</td>
-					<td><img src="add.png" title="<?=gettext("add incoming extension mapping");?>" border="0" style="cursor: pointer; cursor: hand;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
+					<td><img src="add.png" title="<?=gettext("add incoming extension mapping");?>" border="0" style="cursor:pointer;" onclick="add_incoming_extension_selector(<?=$add_params;?>)"></td>
 				</tr>
 			</table><br><?
 			
