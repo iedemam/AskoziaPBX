@@ -4,7 +4,7 @@ cpu			I586_CPU
 cpu			I686_CPU
 ident		ASKOZIAPBX_GENERIC
 
-makeoptions	MODULES_OVERRIDE="ugen"
+makeoptions	MODULES_OVERRIDE="ugen acpi"
 
 options		HZ=1000
 
