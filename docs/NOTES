@@ -5,8 +5,6 @@ RELAX e-mail validation (forum post)
 
 handle '+' and ' ' characters in extensions routed over providers
 
-// askozia-bugs.doc
-
 // iax tos options
 - revamp password field to make it a bit friendlier / eliminate auto-complete problems
 - make pbx_sort_ functions even more generic...no need for sip_sort_phones etc
