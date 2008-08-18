@@ -1090,10 +1090,12 @@ function populate_pointstaging($image_name) {
 	}
 
 	_exec("cd /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/; " .
-		"cp ugen/ugen.ko $image_name/pointstaging");
+		"cp ugen/ugen.ko $image_name/pointstaging; " .
+		"cp acpi/acpi/acpi.ko $image_name/pointstaging");
 
 	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
 	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
+	
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
 	_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot $image_name/pointstaging");
@@ -1154,7 +1156,10 @@ function package($platform, $image_name) {
 	// ...system modules		
 	_exec("mkdir tmp/stage/boot");
 	_exec("mkdir tmp/stage/boot/kernel");
-	_exec("cp $image_name/pointstaging/*.ko tmp/stage/boot/kernel/");
+	_exec("cp $image_name/pointstaging/i4b.ko $image_name/pointstaging/ugen.ko " .
+		"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
+		"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
+		"tmp/stage/boot/kernel/");
 
 	if ($platform != "generic-pc") {
 		foreach ($low_power_libraries as $lpl) {
@@ -1198,6 +1203,9 @@ function package($platform, $image_name) {
 	_exec("mkdir tmp/stage/boot/kernel");
 	_exec("cp $image_name/pointstaging/loader tmp/stage/boot/");
 	_exec("cp $image_name/pointstaging/loader.rc_$platform tmp/stage/boot/loader.rc");
+	if (strpos($platform, "generic-pc") !== false) {
+		_exec("cp $image_name/pointstaging/acpi.ko tmp/stage/boot/kernel");
+	}
 	
 	// ...conf
 	_exec("mkdir tmp/stage/conf");
@@ -1244,7 +1252,7 @@ function package($platform, $image_name) {
 	_exec("mount /dev/md0b tmp/mnt");
 	_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
 	// XXX quick fix to remove low power modules
-	if ($platform != "generic-pc") {
+	if (strpos($platform, "generic-pc") === false) {
 		foreach ($low_power_modules as $lpm) {
 			_exec("rm tmp/mnt/modules/$lpm");
 		}
