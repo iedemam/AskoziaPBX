@@ -1312,13 +1312,16 @@ function package_cd($image_name) {
 	// ...system modules		
 	_exec("mkdir tmp/stage/boot");
 	_exec("mkdir tmp/stage/boot/kernel");
-	_exec("cp $image_name/pointstaging/*.ko tmp/stage/boot/kernel/");
+	_exec("cp $image_name/pointstaging/i4b.ko $image_name/pointstaging/ugen.ko " .
+		"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
+		"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
+		"tmp/stage/boot/kernel/");
 
 	// ...stamps
 	_exec("echo \"$image_version\" > tmp/stage/etc/version");
 	_exec("echo `date` > tmp/stage/etc/version.buildtime");
 	_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
-	_exec("echo $platform > tmp/stage/etc/platform");		
+	_exec("echo $platform > tmp/stage/etc/platform");
 
 	// get size and package mfsroot
 	$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
@@ -1347,10 +1350,12 @@ function package_cd($image_name) {
 	_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/cdroot/kernel.gz");
    
 	_exec("mkdir tmp/cdroot/boot");
+	_exec("mkdir tmp/cdroot/boot/kernel");
 	_exec("cp $image_name/pointstaging/cdboot tmp/cdroot/boot/");
 	_exec("cp $image_name/pointstaging/loader tmp/cdroot/boot/");
 	_exec("cp $image_name/pointstaging/boot tmp/cdroot/boot/");
 	_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
+	_exec("cp $image_name/pointstaging/acpi.ko tmp/cdroot/boot/kernel");
     
 	_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"AskoziaPBX CD-ROM image\" ".
 		"-c \"boot/boot.catalog\" -d -r -publisher \"askozia.com\" ".
