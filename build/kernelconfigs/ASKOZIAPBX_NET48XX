@@ -2,6 +2,8 @@ machine		i386
 cpu			I586_CPU
 ident		ASKOZIAPBX_NET48XX
 
+makeoptions	MODULES_OVERRIDE="ugen"
+
 options		HZ=1000
 options		CPU_GEODE
 options		CPU_SOEKRIS
