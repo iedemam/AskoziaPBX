@@ -67,3 +67,16 @@
  		if (!PCI_INTERRUPT_VALID(irq))
  			irq = pci_pir_choose_irq(pci_link, pir_bios_irqs);
  		if (!PCI_INTERRUPT_VALID(irq))
+--- sys/dev/pci/pci.c.orig	2007-08-15 22:56:09.000000000 +0200
++++ sys/dev/pci/pci.c	2008-07-24 21:56:35.000000000 +0200
+@@ -1898,7 +1898,9 @@
+ 	/* ATA devices needs special map treatment */
+ 	if ((pci_get_class(dev) == PCIC_STORAGE) &&
+ 	    (pci_get_subclass(dev) == PCIS_STORAGE_IDE) &&
+-	    (pci_get_progif(dev) & PCIP_STORAGE_IDE_MASTERDEV))
++	    ((pci_get_progif(dev) & PCIP_STORAGE_IDE_MASTERDEV) ||
++	     (!pci_read_config(dev, PCIR_BAR(0), 4) &&
++	      !pci_read_config(dev, PCIR_BAR(2), 4))) )
+ 		pci_ata_maps(pcib, bus, dev, b, s, f, rl, force, prefetchmask);
+ 	else
+ 		for (i = 0; i < cfg->nummaps;)
