@@ -56,6 +56,9 @@ if (isset($id) && $a_analogproviders[$id]) {
 	$pconfig['number'] = $a_analogproviders[$id]['number'];
 	$pconfig['language'] = $a_analogproviders[$id]['language'];
 	$pconfig['dialpattern'] = $a_analogproviders[$id]['dialpattern'];
+	$pconfig['calleridsource'] = 
+		isset($a_analogproviders[$id]['calleridsource']) ? $a_analogproviders[$id]['calleridsource'] : "phones";
+	$pconfig['calleridstring'] = $a_analogproviders[$id]['calleridstring'];
 	$pconfig['incomingextensionmap'] = $a_analogproviders[$id]['incomingextensionmap'];
 	$pconfig['override'] = $a_analogproviders[$id]['override'];
 	$pconfig['overridestring'] = $a_analogproviders[$id]['overridestring'];
@@ -74,6 +77,9 @@ if ($_POST) {
 	
 	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
+	if ($_POST['calleridsource'] == "string" && !pbx_is_valid_callerid_string($_POST['calleridstring'])) {
+		$input_errors[] = gettext("A valid Caller ID string must be specified.");
+	}
 	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
 		$input_errors[] = gettext("An incoming Caller ID override string must be specified.");
 	}
@@ -108,6 +114,9 @@ if ($_POST) {
 		$ap['interface'] = $_POST['interface'];
 		$ap['number'] = $_POST['number'];
 		$ap['language'] = $_POST['language'];
+
+		$ap['calleridsource'] = $_POST['calleridsource'];
+		$ap['calleridstring'] = $_POST['calleridstring'];
 		
 		$ap['dialpattern'] = $_POST['dialpattern'];
 		$ap['incomingextensionmap'] = $_POST['incomingextensionmap'];
@@ -190,6 +199,7 @@ if (count($analog_interfaces) == 0) {
 					?></select>
 				</td>
 			</tr>
+			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_incoming_extension_selector(1); ?>
 			<? display_advanced_settings_begin(1); ?>
