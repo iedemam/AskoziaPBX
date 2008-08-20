@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "PO-Revision-Date: 2008-08-17 14:44+0100\n"
 "Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
 "Language-Team: Italian\n"
@@ -1675,6 +1675,9 @@ msgstr "Applicazioni personalizzate"
 msgid "Dialing Pattern(s)"
 msgstr "Schema(i) di selezione"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "Deve essere specificato un Identificativo del chiamante (CID) valido."
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr ""
 "Deve essere specificata una stringa per la sovrascrittura del ID chiamante "
@@ -1696,9 +1699,6 @@ msgstr "Numero telefonico assegnato a questa linea."
 
 msgid "A valid username must be specified."
 msgstr "Deve essere specificato un nome utente valido."
-
-msgid "A valid Caller ID string must be specified."
-msgstr "Deve essere specificato un Identificativo del chiamante (CID) valido."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "Indirizzo del proxy IAX o indirizzo IP e porta opzionale."
@@ -3081,6 +3081,10 @@ msgstr "Italiano"
 
 msgid "Japanese"
 msgstr "Giapponese"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Portoghese, Brasiliano"
 
 msgid "Russian"
 msgstr "Russo"

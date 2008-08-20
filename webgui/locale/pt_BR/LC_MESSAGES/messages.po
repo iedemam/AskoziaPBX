@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1479,6 +1479,9 @@ msgstr ""
 msgid "Dialing Pattern(s)"
 msgstr ""
 
+msgid "A valid Caller ID string must be specified."
+msgstr ""
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr ""
 
@@ -1497,9 +1500,6 @@ msgid "Telephone number assigned to this line."
 msgstr ""
 
 msgid "A valid username must be specified."
-msgstr ""
-
-msgid "A valid Caller ID string must be specified."
 msgstr ""
 
 msgid "IAX proxy host URL or IP address and optional port."
@@ -2672,6 +2672,9 @@ msgid "Italian"
 msgstr ""
 
 msgid "Japanese"
+msgstr ""
+
+msgid "Portuguese (Brazil)"
 msgstr ""
 
 msgid "Russian"

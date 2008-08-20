@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1619,6 +1619,9 @@ msgstr "Omat Sovellukset"
 msgid "Dialing Pattern(s)"
 msgstr "Soittokaava(t)"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "Kelpaava Soittajan Tunnus tunnus on oltava määritetty."
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr "Sisääntuleva Soittajan Tunnus 'override' tunnus on oltava määritetty."
 
@@ -1638,9 +1641,6 @@ msgstr "Puhelinnumero tälle linjalle."
 
 msgid "A valid username must be specified."
 msgstr "Kelpaava käyttäjänimi on oltava määritetty."
-
-msgid "A valid Caller ID string must be specified."
-msgstr "Kelpaava Soittajan Tunnus tunnus on oltava määritetty."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy isäntä URL tai IP osoite sekä valinnainen portti."
@@ -2970,6 +2970,10 @@ msgstr "Italian kieli"
 
 msgid "Japanese"
 msgstr "Japanin kieli"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Portugalin kieli, Brasilia"
 
 msgid "Russian"
 msgstr "Venäjän kieli"

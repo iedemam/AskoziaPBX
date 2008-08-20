@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1532,6 +1532,9 @@ msgstr "自定義應用程序"
 msgid "Dialing Pattern(s)"
 msgstr "撥號模式"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "必須指定一個有效的Caller ID字符串。"
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr "必須為一個呼入電話的Caller ID指定一個補充字符串。"
 
@@ -1551,9 +1554,6 @@ msgstr "分配給這條線的電話號碼。"
 
 msgid "A valid username must be specified."
 msgstr "必須指定一個有效的用戶名。"
-
-msgid "A valid Caller ID string must be specified."
-msgstr "必須指定一個有效的Caller ID字符串。"
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX代理主機的網址或IP地址，還有它可選的埠。"
@@ -2817,6 +2817,10 @@ msgstr "意大利語"
 
 msgid "Japanese"
 msgstr "日語"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "葡萄牙語，巴西"
 
 msgid "Russian"
 msgstr "俄羅斯語"

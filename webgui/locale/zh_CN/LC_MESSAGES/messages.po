@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1535,6 +1535,9 @@ msgstr "自定义应用程序"
 msgid "Dialing Pattern(s)"
 msgstr "拨号模式"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "必须指定一个有效的Caller ID字符串。"
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr "必须为一个呼入电话的Caller ID指定一个补充字符串。"
 
@@ -1554,9 +1557,6 @@ msgstr "分配给这条线的电话号码。"
 
 msgid "A valid username must be specified."
 msgstr "必须指定一个有效的用户名。"
-
-msgid "A valid Caller ID string must be specified."
-msgstr "必须指定一个有效的Caller ID字符串。"
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX代理主机的网址或IP地址，还有它可选的端口。"
@@ -2818,6 +2818,10 @@ msgstr "意大利语"
 
 msgid "Japanese"
 msgstr "日语"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "葡萄牙语，巴西"
 
 msgid "Russian"
 msgstr "俄罗斯语"

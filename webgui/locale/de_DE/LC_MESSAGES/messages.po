@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Test <Test@Test.de>\n"
 "Language-Team: \n"
@@ -1604,6 +1604,9 @@ msgstr "Benutzer-Applikationen"
 msgid "Dialing Pattern(s)"
 msgstr "Wähl-Muster"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "Ein gültiger Caller-ID-String muß angegeben werden."
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr ""
 
@@ -1623,9 +1626,6 @@ msgstr ""
 
 msgid "A valid username must be specified."
 msgstr "Ein gültiger Benutzername muß angegeben werden."
-
-msgid "A valid Caller ID string must be specified."
-msgstr "Ein gültiger Caller-ID-String muß angegeben werden."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX-Proxy Url oder IP-Adresse und Port."
@@ -2998,6 +2998,10 @@ msgstr "Italienisch"
 
 msgid "Japanese"
 msgstr "Japanisch"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Potugisisch,Brasilien"
 
 msgid "Russian"
 msgstr "Russisch"

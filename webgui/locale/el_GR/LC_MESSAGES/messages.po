@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 12:58+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "PO-Revision-Date: 2008-08-20 08:26+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1671,6 +1671,9 @@ msgstr "Εφαρμογές"
 msgid "Dialing Pattern(s)"
 msgstr "Πρότυπο/α κλήσης"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "Πρέπει να καταχωρήσετε μία έγκυρη ταυτότητα καλούντος."
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr "Πρέπει να καταχωρήσετε μία υπερισχύουσα ταυτότητα καλούντος."
 
@@ -1690,9 +1693,6 @@ msgstr "Ο αριθμός κλήσης αυτής της γραμμής."
 
 msgid "A valid username must be specified."
 msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο όνομα χρήστη."
-
-msgid "A valid Caller ID string must be specified."
-msgstr "Πρέπει να καταχωρήσετε μία έγκυρη ταυτότητα καλούντος."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr ""
@@ -3099,6 +3099,10 @@ msgstr "Ιταλικά"
 
 msgid "Japanese"
 msgstr "Ιαπωνικά"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Πορτογαλικά [Βραζιλία]"
 
 msgid "Russian"
 msgstr "Ρώσικα"

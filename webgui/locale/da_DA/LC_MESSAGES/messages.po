@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 11:04+0200\n"
+"POT-Creation-Date: 2008-08-20 14:27+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1545,6 +1545,9 @@ msgstr "Brugerdefineret program"
 msgid "Dialing Pattern(s)"
 msgstr "Opkaldsmønster"
 
+msgid "A valid Caller ID string must be specified."
+msgstr "En gyldig Opkalds ID streng skal angives."
+
 msgid "An incoming Caller ID override string must be specified."
 msgstr "En erstatningstekst for det indkomne opkalds id skal angives."
 
@@ -1564,9 +1567,6 @@ msgstr "Telefon nummer knyttet til denne linie"
 
 msgid "A valid username must be specified."
 msgstr "Et gyldigt brugernavn skal angives."
-
-msgid "A valid Caller ID string must be specified."
-msgstr "En gyldig Opkalds ID streng skal angives."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy vært URL eller IP adresse og/eller port."
@@ -2876,6 +2876,10 @@ msgstr "Italiensk"
 
 msgid "Japanese"
 msgstr "Japansk"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Portugisisk, Brasiliansk"
 
 msgid "Russian"
 msgstr "Russisk"
