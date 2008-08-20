@@ -300,6 +300,7 @@ function display_gui_language_selector($current_language) {
 		"zh_TW" => "繁體中文",
 		"da_DA" => "Dansk (90%)",
 		"de_DE" => "Deutsch (90%)",
+		"el_GR" => "Ελληνικά",
 		"fr_FR" => "Français (0%)",
 		"it_IT" => "Italiano",
 		"pl_PL" => "Język polski (90%)",
