@@ -52,7 +52,7 @@ $versions = array(
 
 $core_sounds_version= "1.4.8";
 $extra_sounds_version="1.4.7";
-$sound_languages	= explode(" ", "en en-gb da de it es fr fr-ca jp nl se ru");
+$sound_languages	= explode(" ", "en en-gb da de it es fr fr-ca jp nl pt-br se ru");
 $sounds				= explode(" ", 
 						"agent-pass. ".
 						"auth-thankyou. auth-incorrect. ".
@@ -912,6 +912,36 @@ function populate_sounds($image_name) {
 			}
 			foreach($digits as $digit) {
 				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/$digit.* $image_name/asterisk/sounds/digits/ru");
+			}
+
+
+		} else if ($sound_language == "pt-br") {
+			// wav -> ulaw
+			$distname = "Disc-OS-Sounds-1.0-pt_BR";
+			$disturl = "http://mesh.dl.sourceforge.net/sourceforge/disc-os/";
+
+			if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
+				_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
+			}
+
+			if (!file_exists("{$dirs['sounds']}/$distname")) {
+				_exec("mkdir {$dirs['sounds']}/$distname");
+				_exec("cd {$dirs['sounds']}; tar zxf $distname.tar.gz -C $distname");
+			}
+
+			foreach ($sounds as $sound) {
+				if (!file_exists("{$dirs['sounds']}/$distname/sounds/pt_BR/$sound" . "ulaw")) {
+					_exec("cd {$dirs['sounds']}/$distname/sounds/pt_BR/; " .
+					"sox -V $sound" . "wav -r 8000 -c 1 -t ul -w $sound" . "ulaw");
+				}
+				_exec("cp {$dirs['sounds']}/$distname/sounds/pt_BR/$sound" . "ulaw $image_name/asterisk/sounds/pt-br");
+			}
+			foreach($digits as $digit) {
+				if (!file_exists("{$dirs['sounds']}/$distname/sounds/digits/pt_BR/$digit.ulaw")) {
+					_exec("cd {$dirs['sounds']}/$distname/sounds/digits/pt_BR/; " .
+					"sox -V $digit.wav -r 8000 -c 1 -t ul -w $digit.ulaw");
+				}
+				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/pt_BR/$digit.ulaw $image_name/asterisk/sounds/digits/pt-br");
 			}
 		}
 	}
