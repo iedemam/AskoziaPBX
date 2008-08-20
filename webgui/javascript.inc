@@ -381,4 +381,57 @@ function javascript_userdefined_email_notification($part) {
 	<? endif;
 }
 
+function javascript_dyndns($part) {
+
+	if ($part == "functions") : ?>
+
+		function dyndns_slide() {
+			if (jQuery("#hostnameupdatesrcpbx").is(":checked") && jQuery("#topology option:selected").val() == "natdynamichost") {
+				jQuery("#dyndns_wrapper").slideDown();
+			} else {
+				jQuery("#dyndns_wrapper").slideUp();
+			}
+		}
+
+		function attr_change() {
+			switch (jQuery("#topology option:selected").val()) {
+				case "public":
+					jQuery("#extipaddr").attr("disabled","disabled");
+					jQuery("#exthostname").attr("disabled","disabled");
+					jQuery("#hostnameupdatesrcpbx").attr("disabled","disabled");
+					jQuery("#hostnameupdatesrcrouter").attr("disabled","disabled");
+					break;
+				case "natstatic":
+					jQuery("#extipaddr").removeAttr("disabled");
+					jQuery("#exthostname").attr("disabled","disabled");
+					jQuery("#hostnameupdatesrcpbx").attr("disabled","disabled");
+					jQuery("#hostnameupdatesrcrouter").attr("disabled","disabled");
+					break;
+				case "natdynamichost":
+					jQuery("#extipaddr").attr("disabled","disabled");
+					jQuery("#exthostname").removeAttr("disabled");	
+					jQuery("#hostnameupdatesrcpbx").removeAttr("disabled");
+					jQuery("#hostnameupdatesrcrouter").removeAttr("disabled");
+					break;
+			}
+			dyndns_slide();
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("input[@name='hostnameupdatesrc']").click(dyndns_slide);
+		jQuery("select[@name='topology']").change(attr_change);
+		if (!jQuery("input[@name='hostnameupdatesrc']:checked").val()) {
+			jQuery("#hostnameupdatesrcrouter").attr("checked", "checked")
+		}
+		dyndns_slide();
+		attr_change();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_dyndns()!
+
+	<? endif;
+}
+
 ?>

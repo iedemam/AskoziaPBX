@@ -173,50 +173,14 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
+<script type="text/JavaScript">
 <!--
-	function dyndns_slide() {
-		if (jQuery("input[@name='hostnameupdatesrc']:checked").val() == "pbx" &&
-			document.iform.topology.selectedIndex == 2) {
-			jQuery("#dyndns_wrapper").slideDown();
-		} else {
-			jQuery("#dyndns_wrapper").slideUp();
-		}
-	}
+	<?=javascript_dyndns("functions");?>
 
 	jQuery(document).ready(function(){
 
-		jQuery("input[@name='hostnameupdatesrc']").change(dyndns_slide);
-		if (!jQuery("input[@name='hostnameupdatesrc']:checked").val()) {
-			jQuery("#hostnameupdatesrc_router").attr("checked", "checked")
-		}
-		dyndns_slide();
-
+		<?=javascript_dyndns("ready");?>
 	});
-
-function type_change() {
-	dyndns_slide();
-	switch (document.iform.topology.selectedIndex) {
-		case 0:
-			document.iform.extipaddr.disabled = 1;
-			document.iform.exthostname.disabled = 1;
-			document.iform.hostnameupdatesrc_pbx.disabled = 1;
-			document.iform.hostnameupdatesrc_router.disabled = 1;
-			break;
-		case 1:
-			document.iform.extipaddr.disabled = 0;
-			document.iform.exthostname.disabled = 1;	
-			document.iform.hostnameupdatesrc_pbx.disabled = 1;
-			document.iform.hostnameupdatesrc_router.disabled = 1;
-			break;
-		case 2:
-			document.iform.extipaddr.disabled = 1;
-			document.iform.exthostname.disabled = 0;	
-			document.iform.hostnameupdatesrc_pbx.disabled = 0;
-			document.iform.hostnameupdatesrc_router.disabled = 0;
-			break;
-	}
-}
 
 function lan_if_change() {
 	switch (document.iform.if.value) {
@@ -328,7 +292,7 @@ function lan_if_change() {
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq"><?=gettext("Topology");?></td>
 					<td width="78%" class="vtable">
-						<select name="topology" class="formfld" id="topology" onchange="type_change()">
+						<select name="topology" class="formfld" id="topology">
 							<? foreach ($topologies as $topo => $tfriendly): ?>
 							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
 							<? endforeach; ?>
@@ -355,10 +319,10 @@ function lan_if_change() {
 						<input name="exthostname" type="text" class="formfld" id="exthostname" size="20" value="<?=htmlspecialchars($pconfig['exthostname']);?>"><br>
 						<br>
 						<?=gettext("This information should be updated by:");?><br>
-						<input name="hostnameupdatesrc" id="hostnameupdatesrc_router" type="radio" value="router" 
+						<input name="hostnameupdatesrc" id="hostnameupdatesrcrouter" type="radio" value="router" 
 						<?php if ($pconfig['hostnameupdatesrc'] == "router") echo "checked"; ?>><?=gettext("My Router");?>
 						&nbsp;&nbsp;
-						<input name="hostnameupdatesrc" id="hostnameupdatesrc_pbx" type="radio" value="pbx"
+						<input name="hostnameupdatesrc" id="hostnameupdatesrcpbx" type="radio" value="pbx"
 						<?php if ($pconfig['hostnameupdatesrc'] == "pbx") echo "checked"; ?>><?=gettext("AskoziaPBX");?>
 					</td>
 				</tr>
@@ -367,7 +331,7 @@ function lan_if_change() {
 				</tr>
 			</table>
 
-		<div id="dyndns_wrapper" style="display: none;">
+		<span id="dyndns_wrapper" style="display: none;">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0" summary="content pane">
 				<tr> 
 					<td valign="top" colspan="2" class="listtopic"><?=gettext("Dynamic DNS Client");?></td>
@@ -409,7 +373,7 @@ function lan_if_change() {
 						<?=gettext('Yes, alias "*.hostname.domain" to hostname specified above.');?></td>
 				</tr>
 			</table>
-		</div>
+		</span>
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
 					<td width="22%" valign="top">&nbsp;</td>
