@@ -173,6 +173,10 @@ $pgtitle = array("License");
 	Voice: Eri Takeda.<br>
 	Edited by VoIP-Info.jp.<br>
 	<br>
+	Portuguese (Brazil) (<a href="http://www.disc-os.org" target="_blank">http://www.disc-os.org</a>)<br>
+	Copyright &copy; Intelbras S/A<br>
+	Released under the <a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank">Creative Commons Attribution-ShareAlike 2.5 License</a><br>
+	<br>
 	Russian (<a href="http://www.asterisk-support.ru/files/ivr/" target="_blank">http://www.asterisk-support.ru</a>)<br>
 	Copyright Information Unknown<br>
 	<br>
