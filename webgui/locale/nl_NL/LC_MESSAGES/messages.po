@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
+"POT-Creation-Date: 2008-08-21 12:47+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -579,7 +579,7 @@ msgid "Number of log entries to show must be between 50 and 1000."
 msgstr "Nummer om log ingave te bekijken moet tussen de 50 en 1000 zijn."
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr ""
+msgstr "Toon log entries in omgekeerde volgorde (nieuwste gegevens bovenaan)"
 
 msgid "Number of log entries to show:"
 msgstr "Nummer van log ingaven welke zichtbaar zijn:"
@@ -1091,7 +1091,7 @@ msgid "Operating Mode"
 msgstr "Operatie Mode"
 
 msgid "Enabled"
-msgstr ""
+msgstr "Ingeschakeld"
 
 msgid "edit ISDN interface"
 msgstr "bewerk ISDN interface"
@@ -1334,53 +1334,60 @@ msgid "Installed Packages"
 msgstr "Gëinstalleerde Paketten"
 
 msgid "system storage partition"
-msgstr ""
+msgstr "Ssyteem opslag partitie"
 
 msgid "Edit Disk"
-msgstr ""
+msgstr "Bewerk Disk"
 
 msgid "descriptive name"
-msgstr ""
+msgstr "beschrijvende naam"
 
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
 "to act as an Access Point. It will be bridged to the wired network that "
 "AskoziaPBX is connected to."
 msgstr ""
+"Als een compatibele draadloze kaart in het systeem aanwezig is, kan deze "
+"worden geconfigureerd om  als een Access Point te dienen. Het zal worden "
+"overbrugd met het netwerk waarop AskoziaPBX is aangesloten."
 
 msgid "SSID,Channel"
-msgstr ""
+msgstr "SSID, Kanaal"
 
 msgid ",WPA version,WPA cipher"
-msgstr ""
+msgstr ", WPA-versie, WPA-codering"
 
 msgid ",WPA PSK"
-msgstr ""
+msgstr ",WPA PSK"
 
 msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr ""
+msgstr "De WPA-PSK moet tussen de 8 en 63 tekens lang zijn."
 
 msgid ""
 "802.11a channels can only be selected if the standard is set to 802.11a too."
 msgstr ""
+"802.11a kanalen kunnen enkel worden gekozen als de standaard is ingesteld op "
+"802.11a."
 
 msgid "802.11a can only be selected if an 802.11a channel is selected too."
 msgstr ""
+"802.11a kan alleen worden geselecteerd als een 802.11a-kanaal is "
+"geselecteerd."
 
 msgid "No compatible wireless interfaces detected."
-msgstr ""
+msgstr "Geen compatibele draadloze interfaces ontdekt."
 
 msgid "Enable Wireless Interface"
-msgstr ""
+msgstr "Schakel draadloze interface in"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standaard"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "Verberg SSID"
 
 msgid ""
 "If this option is selected, the SSID will not be broadcast in hostap mode, "
@@ -1388,15 +1395,19 @@ msgid ""
 "this option should never be used as a substitute for proper security/"
 "encryption settings."
 msgstr ""
+"Als deze optie is geselecteerd, wordt de SSID niet meer uitgezonden in "
+"hostap mode, en enkel cliënten die de exacte SSID kennen zullen in staat "
+"zijn om verbinding te maken. Merk op dat deze optie nooit mag worden "
+"gebruikt als vervanging voor een goede beveiliging / encryptie-instellingen."
 
 msgid "Channel"
-msgstr ""
+msgstr "Kanaal"
 
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 msgid "WPA"
-msgstr ""
+msgstr "WPA"
 
 msgid "WPA settings"
 msgstr "WPA instellingen"
@@ -1408,154 +1419,172 @@ msgid "none"
 msgstr "geen"
 
 msgid "PSK"
-msgstr ""
+msgstr "PSK"
 
 msgid "WPA only"
-msgstr ""
+msgstr "Enkel WPA"
 
 msgid "WPA2 only"
-msgstr ""
+msgstr "Enkel WPA2"
 
 msgid "WPA + WPA2"
-msgstr ""
+msgstr "WPA + WPA2"
 
 msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr ""
+msgstr "In de meeste gevallen moet u kiezen &quot;WPA + WPA2&quot; hier."
 
 msgid "Cipher"
-msgstr ""
+msgstr "Codering"
 
 msgid "TKIP"
-msgstr ""
+msgstr "TKIP"
 
 msgid "AES/CCMP"
-msgstr ""
+msgstr "AES/CCMP"
 
 msgid "TKIP + AES/CCMP"
-msgstr ""
+msgstr "TKIP + AES/CCMP"
 
 msgid ""
 "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
 "with older hardware."
 msgstr ""
+"AES / CCMP biedt een betere beveiliging dan TKIP, maar TKIP is meer "
+"compatibel met oudere hardware."
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
+"Voer de wachtwoordzin in die zal worden gebruikt in WPA-PSK-modus. Deze moet "
+"tussen de 8 en 63 tekens lang zijn."
 
 msgid "WEP"
-msgstr ""
+msgstr "WEP"
 
 msgid "Enable WEP"
-msgstr ""
+msgstr "Schakel WEP in"
 
 msgid "TX key"
-msgstr ""
+msgstr "TX key"
 
 msgid "Key 1:"
-msgstr ""
+msgstr "Sleutel 1:"
 
 msgid "Key 2:"
-msgstr ""
+msgstr "Sleutel 2:"
 
 msgid "Key 3:"
-msgstr ""
+msgstr "Sleutel 3:"
 
 msgid "Key 4:"
-msgstr ""
+msgstr "Sleutel 4:"
 
 msgid ""
 "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
 "preceded by '0x'."
 msgstr ""
+"40 (64) bits sleutels kunnen worden ingeschreven als 5 ASCII tekens of 10 "
+"hexadecimale cijfers, voorafgegaan door een '0x'."
 
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
 msgstr ""
+"104 (128) bit sleutels kunnen worden ingeschreven als 13 ASCII tekens of 26 "
+"hexadecimale cijfers, voorafgegaan door een '0x'."
 
 msgid "Edit Analog Line"
-msgstr ""
+msgstr "Bewerk Analoge Lijn"
 
 msgid "A valid Caller ID must be specified."
-msgstr ""
+msgstr "Een geldig Beller ID moeten worden vermeld."
 
 msgid "A phone with this extension already exists."
-msgstr ""
+msgstr "Een telefoon met deze post bestaat reeds."
 
 msgid "A valid e-mail address must be specified."
-msgstr ""
+msgstr "Een geldig e-mailadres moet worden opgegeven."
 
 #, php-format
 msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
+msgstr "<strong>Geen compatibele interfaces gevonden!</strong><br><br>"
 
 #, php-format
 msgid ""
 "To configure this type of account, make sure an appropriately configured "
 "interface is present on the %s page"
 msgstr ""
+"Voor het configureren van dit type account, controleer of er een passende "
+"configuratie-interface  aanwezig is op de %s pagina"
 
 msgid "Internal extension used to reach this phone."
-msgstr ""
+msgstr "Interne post gebruikt om deze telefoon te bereiken."
 
 msgid "Analog Interface"
-msgstr ""
+msgstr "Analoge interface"
 
 msgid "Edit External Line"
-msgstr ""
+msgstr "Bewerk externe lijn"
 
 msgid "The internal extension used to dial this phone."
-msgstr ""
+msgstr "De interne post gebruikt om deze telefoon te bellen."
 
 msgid "Descriptive name for this phone."
-msgstr ""
+msgstr "Beschrijvende naam voor deze telefoon."
 
 msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
 msgstr ""
+"Nummer of string gebruikt om deze telefoon te bereiken. Dit zal rechtstreeks "
+"worden gekozen, uitgaande patroon dat overeenkomt met de regels zijn niet "
+"van toepassing"
 
 msgid "Provider"
-msgstr ""
+msgstr "Provider"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr ""
+"Uitgaande provider welke gebruikt wordt voor het bereiken van deze telefoon."
 
 msgid "Edit IAX Account"
-msgstr ""
+msgstr "Bewerk IAX Account"
 
 msgid "A valid secret must be specified."
-msgstr ""
+msgstr "Een geldig geheim moeten worden vermeld."
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
+"Een heel aantal seconden moet worden opgenomen voor de \"in aanmerking "
+"komende\" time-out."
 
 msgid ""
 "The phone number assigned to this account. Also this account's username."
 msgstr ""
+"Het telefoonnummer is toegewezen aan deze account. Ook de accounts "
+"gebruikersnaam."
 
 msgid "plaintext"
-msgstr ""
+msgstr "plaintext"
 
 msgid "md5"
-msgstr ""
+msgstr "md5"
 
 msgid "This account's password and authentication scheme."
-msgstr ""
+msgstr "Deze account zijn wachtwoord en de authenticatie-regeling."
 
 msgid "Edit ISDN Line"
-msgstr ""
+msgstr "Bewerk ISDN Lijn"
 
 msgid "This phone's number (MSN)."
-msgstr ""
+msgstr "Deze telefoon zijn nummer (MSN)."
 
 msgid "Edit SIP Account"
-msgstr ""
+msgstr "Bewerk SIP Account"
 
 msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
+msgstr "Een volledig nummer moet worden ingevuld voor de \"bel limiet.\""
 
 msgid "A whole number of calls must be entered for the \"busy limit.\""
 msgstr ""
@@ -1567,10 +1596,10 @@ msgid "Dialplan Element Library"
 msgstr ""
 
 msgid "Functions"
-msgstr ""
+msgstr "Functies"
 
 msgid "Audio Prompts"
-msgstr ""
+msgstr "Audio Zinnen"
 
 msgid ""
 "Below is a list of the currently defined phones along with a basic Dial() "
@@ -1579,49 +1608,50 @@ msgid ""
 msgstr ""
 
 msgid "Caller ID / Name"
-msgstr ""
+msgstr "Beller ID / Naam"
 
 msgid "Basic"
-msgstr ""
+msgstr "Basis"
 
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
 msgid "Format"
-msgstr ""
+msgstr "Formaat"
 
 msgid "Size"
-msgstr ""
+msgstr "Grootte"
 
 msgid "Location"
-msgstr ""
+msgstr "Locatie"
 
 msgid "Printable Dialplan"
-msgstr ""
+msgstr "Afdrukbaar Belplan"
 
 msgid "Internal Phones"
-msgstr ""
+msgstr "Interne telefoons"
 
 msgid "External Phones"
-msgstr ""
+msgstr "Externe Telefoons"
 
 msgid "Conference Rooms"
-msgstr ""
+msgstr "Conferentie ruimte"
 
 msgid "Pin"
-msgstr ""
+msgstr "Pin"
 
 msgid "Custom Applications"
-msgstr ""
+msgstr "Eigen Applicatie's"
 
 msgid "Dialing Pattern(s)"
-msgstr ""
+msgstr "Bel Patronen"
 
 msgid "A valid Caller ID string must be specified."
-msgstr ""
+msgstr "Een geldig Caller ID string moeten worden vermeld."
 
 msgid "An incoming Caller ID override string must be specified."
 msgstr ""
+"Een binnenkomende beller-ID string moeten worden vermeld om te overschrijven."
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
@@ -1632,24 +1662,26 @@ msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr ""
 
 msgid "Descriptive name for this provider."
-msgstr ""
+msgstr "Beschrijvende naam voor deze aanbieder."
 
 msgid "Telephone number assigned to this line."
-msgstr ""
+msgstr "Telefoon nummer dat is toegewezen aan deze lijn."
 
 msgid "A valid username must be specified."
-msgstr ""
+msgstr "Een geldige gebruikersnaam moet worden gedefineerd."
 
 msgid "IAX proxy host URL or IP address and optional port."
-msgstr ""
+msgstr "IAX proxyhost URL of het IP-adres en optionele poort."
 
 msgid "A valid default number (MSN) must be specified."
-msgstr ""
+msgstr "Een geldige standaard (MSN) moeten worden vermeld."
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr ""
+"De standaard telefoonnummer (MSN) toegewezen aan deze lijn. Individuele MSN "
+"mappings kunnen worden omschreven."
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr ""
@@ -1658,7 +1690,7 @@ msgid "SIP proxy host URL or IP address and optional port."
 msgstr ""
 
 msgid "Authorization User"
-msgstr ""
+msgstr "Autorisatie Gebruiker."
 
 msgid ""
 "Some providers require a seperate authorization username.<br>Defaults to "
@@ -1666,7 +1698,7 @@ msgid ""
 msgstr ""
 
 msgid "From User"
-msgstr ""
+msgstr "Van Gebruiker"
 
 msgid ""
 "Some providers require a seperate 'from' user.<br>Defaults to username "
@@ -1674,18 +1706,20 @@ msgid ""
 msgstr ""
 
 msgid "From Domain"
-msgstr ""
+msgstr "Van Domein"
 
 msgid ""
 "Some providers require a seperate 'from' domain. <br>Defaults to host "
 "entered above."
 msgstr ""
+"Sommige aanbiedere vereisen een aparte 'van' domein. <br> Standaard zoals de "
+"host hierboven opgegeven."
 
 msgid "Services"
-msgstr ""
+msgstr "Services"
 
 msgid "Conferencing"
-msgstr ""
+msgstr "Conferencing"
 
 msgid ""
 "Conference rooms with optional pin authentication can be configured here. "
@@ -1693,18 +1727,23 @@ msgid ""
 "concurrent members. These rooms can then be dialed via their defined "
 "extensions or used as a destination for incoming calls from Providers."
 msgstr ""
+"Vergaderzalen met een optionele pin authenticatie kan hier worden "
+"geconfigureerd. De kracht van het systeem is de enige beperkende factor voor "
+"het aantal gelijktijdige leden. Deze kamers kunnen dan worden gekozen via "
+"hun gedefinieerd posten of gebruikt als een bestemming voor inkomende "
+"oproepen uit de aanbieders."
 
 msgid "Room Number"
-msgstr ""
+msgstr "Kamer Nummer"
 
 msgid "edit conference room"
-msgstr ""
+msgstr "Bewerk vergaderzaal"
 
 msgid "Do you really want to delete this conference room?"
-msgstr ""
+msgstr "Wilt u echt deze vergaderzaal verwijderen?"
 
 msgid "delete conference room"
-msgstr ""
+msgstr "verwijder vergaderzaal"
 
 msgid "add conference room"
 msgstr ""
@@ -1777,9 +1816,8 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#, fuzzy
 msgid "Account uses TLS"
-msgstr "Lijnen"
+msgstr "Lijn gebruikt TLS"
 
 msgid "TLS certificates are currently not verified."
 msgstr ""
@@ -1830,16 +1868,16 @@ msgid "Passwords in config.xml have been automatically removed."
 msgstr ""
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "There are currently no active channels."
 msgstr ""
 
 msgid "Application"
-msgstr ""
+msgstr "Toepassingen"
 
 msgid "Conferences"
-msgstr ""
+msgstr "Conferenties"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -1849,22 +1887,22 @@ msgid "There are currently no active conferences."
 msgstr ""
 
 msgid "Conference"
-msgstr ""
+msgstr "Vergadreing"
 
 msgid "Member"
-msgstr ""
+msgstr "Lid"
 
 msgid "Time"
 msgstr "tijd"
 
 msgid "Do you really want to kick this member?"
-msgstr ""
+msgstr "Wil je werkelijk dit lid uitsluiten?"
 
 msgid "kick conference member"
-msgstr ""
+msgstr "Sluit vergaderlid uit"
 
 msgid "Live"
-msgstr ""
+msgstr "Live"
 
 msgid "CPU Load"
 msgstr "CPU gebruik"
@@ -1878,10 +1916,10 @@ msgid "Network Traffic"
 msgstr "Netwerk Trafiek"
 
 msgid "Subnet Mask"
-msgstr ""
+msgstr "Subnet Mask"
 
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 msgid "In/Out Packets"
 msgstr ""
@@ -1896,25 +1934,25 @@ msgid "Last scan results"
 msgstr ""
 
 msgid "BSSID"
-msgstr ""
+msgstr "BSSID"
 
 msgid "Rate"
-msgstr ""
+msgstr "Ratio"
 
 msgid "Signal"
 msgstr "Signaal"
 
 msgid "Noise"
-msgstr ""
+msgstr "Noise"
 
 msgid "hidden"
-msgstr ""
+msgstr "verborgen"
 
 msgid "Associated stations"
 msgstr ""
 
 msgid "RSSI"
-msgstr ""
+msgstr "RSSI"
 
 msgid "Flags"
 msgstr ""
@@ -1932,13 +1970,13 @@ msgid "No stations are associated at this time."
 msgstr ""
 
 msgid "Attached"
-msgstr ""
+msgstr "Aangesloten"
 
 msgid "PH State"
 msgstr ""
 
 msgid "Dialtone"
-msgstr ""
+msgstr "Beltoon"
 
 msgid "Driver Type"
 msgstr ""
@@ -1947,10 +1985,10 @@ msgid "Channels"
 msgstr "Kanalen"
 
 msgid "Serial"
-msgstr ""
+msgstr "Serieël"
 
 msgid "Power Save"
-msgstr ""
+msgstr "Energie bezuinigen"
 
 msgid "General Setup"
 msgstr ""
@@ -1978,7 +2016,7 @@ msgid "A valid TCP/IP port must be specified for the webGUI port."
 msgstr ""
 
 msgid "The passwords do not match."
-msgstr ""
+msgstr "De wachtwoorden komen niet overeen."
 
 msgid ""
 "The time update interval must be either 0 (disabled) or between 6 and 1440."
@@ -2272,13 +2310,13 @@ msgid "delete package configuration and data"
 msgstr ""
 
 msgid "install new package"
-msgstr ""
+msgstr "Installeer nieuw pakket"
 
 msgid "update package to newer version"
 msgstr ""
 
 msgid "restore package data"
-msgstr ""
+msgstr "Herstel pakket data"
 
 msgid "Update Installed Package"
 msgstr ""
@@ -2289,7 +2327,7 @@ msgid ""
 msgstr ""
 
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
@@ -2297,10 +2335,10 @@ msgid ""
 msgstr ""
 
 msgid "Manual Update"
-msgstr ""
+msgstr "Manuele Update"
 
 msgid "Install a New Package"
-msgstr ""
+msgstr "Installeer een nieuw pakket"
 
 msgid "Select which packages you would like to install."
 msgstr ""
@@ -2347,9 +2385,8 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
-#, fuzzy
 msgid "Subject"
-msgstr "Geheim"
+msgstr "Onderwerp"
 
 msgid "Body"
 msgstr ""
@@ -2388,13 +2425,13 @@ msgid "Audio Codecs"
 msgstr ""
 
 msgid "Video Codecs"
-msgstr ""
+msgstr "Video Codecs"
 
 msgid "Group Members"
-msgstr ""
+msgstr "Groepsleden"
 
 msgid "Non-Members"
-msgstr ""
+msgstr "Niet Leden"
 
 msgid ""
 "All group members will be called at the same time. <strong>The voicemail "
@@ -2403,7 +2440,7 @@ msgid ""
 msgstr ""
 
 msgid "Incoming Extension(s)"
-msgstr ""
+msgstr "Binnekomende post(en)"
 
 msgid "add incoming extension mapping"
 msgstr ""
@@ -2426,13 +2463,13 @@ msgid ""
 msgstr ""
 
 msgid "DTMF Mode"
-msgstr ""
+msgstr "DTMF Mode"
 
 msgid "Registration"
-msgstr ""
+msgstr "Registratie"
 
 msgid "Do not register with this provider."
-msgstr ""
+msgstr "Niet registreren met deze aanbieder"
 
 msgid "Qualify"
 msgstr ""
@@ -2443,7 +2480,7 @@ msgid ""
 msgstr ""
 
 msgid "always use NAT mode."
-msgstr ""
+msgstr "Altijd NAT mode gebruiken."
 
 msgid "only use NAT mode according to RFC3581 (rport)"
 msgstr ""
@@ -2455,7 +2492,7 @@ msgid "assume NAT mode but don't send rport "
 msgstr ""
 
 msgid "NAT"
-msgstr ""
+msgstr "NAT"
 
 msgid ""
 "Is there a NATing device between AskoziaPBX and this account? Setting this "
@@ -2464,7 +2501,7 @@ msgid ""
 msgstr ""
 
 msgid "indefinitely"
-msgstr ""
+msgstr "onbeperkt"
 
 msgid "Ring Length"
 msgstr ""
@@ -3087,3 +3124,130 @@ msgstr "Het veld '%s' bevat ongeldige karakters."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "het veld '%s' is verplicht."
+
+#~ msgid "Port"
+#~ msgstr "Poort"
+
+#~ msgid "National Prefix, International Prefix"
+#~ msgstr "Nationale Prefix, Internationale Prefix"
+
+#~ msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
+#~ msgstr ""
+#~ "Gebruikersnaam,Geheim,Negeer IP,Negeer Netmask,IP Toelaten,Netmask "
+#~ "Toelaten"
+
+#~ msgid "Low RTP Port,High RTP Port"
+#~ msgstr "Lage RTP Poort,Hoge RTP poort"
+
+#~ msgid "Host,Count"
+#~ msgstr "Host,Tellen"
+
+#~ msgid "Host,ttl"
+#~ msgstr "Host,ttl"
+
+#~ msgid "name"
+#~ msgstr "naam"
+
+#~ msgid "Name,Extension,Application Logic"
+#~ msgstr "Naam,Post,Programma Logica"
+
+#~ msgid ""
+#~ "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
+#~ msgstr ""
+#~ "Post Parkeren,Parkeren Start Positie,Parkeren Stop Positie, Parkeer Tijd"
+
+#~ msgid "32"
+#~ msgstr "32"
+
+#~ msgid "64"
+#~ msgstr "64"
+
+#~ msgid "128"
+#~ msgstr "128"
+
+#~ msgid "256"
+#~ msgstr "256"
+
+#~ msgid "IP address,Subnet bit count,Gateway,Network topology"
+#~ msgstr "IP-adres, Subnet bit count, Gateway, netwerktopologie"
+
+#~ msgid "Extension,Caller ID"
+#~ msgstr "Post, Beller-ID"
+
+#~ msgid "Extension,Name,Dialstring,Provider"
+#~ msgstr "Post, Naam, Dialstring, Provider"
+
+#~ msgid "Name,Username,Host"
+#~ msgstr "Naam,Gebruikersnaam,Host"
+
+#~ msgid "G.711 u-law"
+#~ msgstr "G.711 u-law"
+
+#~ msgid "G.711 A-law"
+#~ msgstr "G.711 A-law"
+
+#~ msgid "GSM"
+#~ msgstr "GSM"
+
+#~ msgid "G.729A"
+#~ msgstr "G.729A"
+
+#~ msgid "iLBC"
+#~ msgstr "iLBC"
+
+#~ msgid "SpeeX"
+#~ msgstr "SpeeX"
+
+#~ msgid "G.723.1"
+#~ msgstr "G.723.1"
+
+#~ msgid "G.726 AAL2"
+#~ msgstr "G.726 AAL2"
+
+#~ msgid "ADPCM"
+#~ msgstr "ADPCM"
+
+#~ msgid "16 bit Signed Linear PCM"
+#~ msgstr "16 bit getekende  Linaire PCM"
+
+#~ msgid "LPC10"
+#~ msgstr "LPC10"
+
+#~ msgid "G.726 RFC3551"
+#~ msgstr "G.726 RFC3551"
+
+#~ msgid "G722"
+#~ msgstr "G722"
+
+#~ msgid "H.261"
+#~ msgstr "H.261"
+
+#~ msgid "H.263"
+#~ msgstr "H.263"
+
+#~ msgid "H.263+"
+#~ msgstr "H.263+"
+
+#~ msgid "H.264"
+#~ msgstr "H.264"
+
+#~ msgid "agent"
+#~ msgstr "agent"
+
+#~ msgid "call"
+#~ msgstr "bel"
+
+#~ msgid "command"
+#~ msgstr "commando"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "user"
+#~ msgstr "gebruiker"
+
+#~ msgid "verbose"
+#~ msgstr "verbose"
+
+#~ msgid "system"
+#~ msgstr "systeem"

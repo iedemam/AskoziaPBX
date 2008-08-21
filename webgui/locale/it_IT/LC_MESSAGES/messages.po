@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
-"PO-Revision-Date: 2008-08-17 14:44+0100\n"
+"POT-Creation-Date: 2008-08-21 12:47+0200\n"
+"PO-Revision-Date: 2008-08-20 19:00+0100\n"
 "Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -140,8 +140,8 @@ msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
 msgstr ""
-"Seleziona tutti toni regionali che l'hardware dovrebbe supportare. "
-"<strong>La prima voce selezionata è quella predefinita."
+"Seleziona tutte le segnalazioni regionali che l'hardware dovrebbe "
+"supportare. <b>La prima voce selezionata è quella predefinita</b>."
 
 msgid "GUI Options"
 msgstr "Opzioni Interfaccia"
@@ -179,7 +179,7 @@ msgstr "Incolla qui il certificato nel formato X.509 PEM."
 
 #, fuzzy
 msgid "Key"
-msgstr "Chiave 1:"
+msgstr "Chiave"
 
 msgid "Paste an RSA private key in PEM format here."
 msgstr "Incolla qui una chiave privata RSA in formato PEM."
@@ -325,25 +325,23 @@ msgstr "lettura:"
 msgid "write:"
 msgstr "scrittura:"
 
-#, fuzzy
 msgid "edit manager room"
-msgstr "modifica la stanza manager"
+msgstr "modifica utente AMI"
 
 msgid "Do you really want to delete this manager user?"
 msgstr "Vuoi cancellare questo utente amministratore?"
 
 msgid "delete manager user"
-msgstr "cancella un utente amministratore"
+msgstr "cancella un utente AMI"
 
 msgid "add manager user"
-msgstr "aggiungi utente amministratore"
+msgstr "aggiungi utente AMI"
 
 msgid "Edit User"
 msgstr "Modifica Utente"
 
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
-msgstr ""
-"Il nome utente &quot;admin&quot; è utilizzato internamente da AskoziaPBX"
+msgstr "Il nome utente \"admin\" è utilizzato internamente da AskoziaPBX"
 
 msgid "Secret"
 msgstr "Parola segreta"
@@ -352,15 +350,14 @@ msgstr "Parola segreta"
 msgid "Deny Network"
 msgstr "Rete negata"
 
-#, fuzzy
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
-msgstr "impostare a  '0.0.0.0 / 0.0.0.0' per negare l'accesso completo."
+msgstr "Impostare a  '0.0.0.0/0.0.0.0' per negare l'accesso da ogni rete."
 
 msgid "Permit Network"
-msgstr "Permetti Rete"
+msgstr "Rete consentita"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
-msgstr "impostare a '0.0.0.0 / 0.0.0.0' per consentire tutto"
+msgstr "Impostare a '0.0.0.0/0.0.0.0' per consentire l'accesso da ogni rete."
 
 msgid "Read"
 msgstr "Lettura"
@@ -380,7 +377,6 @@ msgstr "Intervallo Porte RTP"
 msgid "The port range which RTP streams should use. (default:"
 msgstr "Intervallo di porte utilizzato per i flussi RTP. (predefinito: "
 
-#, fuzzy
 msgid "Warning"
 msgstr "Avvertenza:"
 
@@ -603,9 +599,9 @@ msgid ""
 "server. Be sure to set syslogd on the remote server to accept syslog "
 "messages from AskoziaPBX."
 msgstr ""
-"syslog invia pacchetti verso la porta 514 sul server remoto specificato. "
-"Assicurarsi che le impostazioni del syslogd sul server remoto accettino i "
-"messaggi syslog da AskoziaPBX."
+"Il servizio syslog invia pacchetti verso la porta 514 sul server remoto "
+"specificato. Assicurarsi che le impostazioni del syslogd sul server remoto "
+"accetti i messaggi da AskoziaPBX."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -679,16 +675,16 @@ msgid "descr"
 msgstr "descr"
 
 msgid "edit application mapping"
-msgstr "modificare la mappatura delle applicazioni"
+msgstr "Modifica questa applicazione"
 
 msgid "Do you really want to delete this application mapping?"
 msgstr "Vuoi veramente eliminare questa applicazione?"
 
 msgid "delete application mapping"
-msgstr "cancella la mappatura applicazioni"
+msgstr "Cancella questa applicazione"
 
 msgid "add application mapping"
-msgstr "aggiunge una mappatura applicazioni"
+msgstr "Aggiungere una nuova applicazione"
 
 msgid "Edit"
 msgstr "Modifica"
@@ -816,7 +812,6 @@ msgstr ""
 "Indica l'arco di numerazione dove risiedono le chiamate parcheggiate "
 "(impostazione predefinita 701-720)."
 
-#, fuzzy
 msgid "Timeouts"
 msgstr "Temporizzazioni di sistema"
 
@@ -1043,13 +1038,13 @@ msgstr "l'interfaccia #"
 msgid "Descriptive name for this interface"
 msgstr "Nome descrittivo di questa interfaccia"
 
-#, fuzzy
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
 "require more processing power."
 msgstr ""
-"La grandezza del 'tappo' per l'echo canceller. La Valori più elevati sono "
-"più efficaci ma richiedono maggior potenza di elaborazione."
+"Lunghezza di campionamento per il cancellatore d'eco. Valori più elevati "
+"potrebbero rivelarsi più efficaci ma richiedono maggior potenza di "
+"elaborazione."
 
 msgid "Start Signaling"
 msgstr "Messaggio di partenza"
@@ -1113,7 +1108,7 @@ msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 "calls and is attached to the public ISDN network or another PBX system"
 msgstr ""
-"punto-multipunto, dispositivo terminale (TE): questa porta accetta MSN "
+"punto-multipunto (PMP), dispositivo terminale (TE): questa porta accetta MSN "
 "(numeri multipli) per instradare le chiamate ed è collegata alla rete "
 "pubblica o ad un altro centralino"
 
@@ -1121,34 +1116,33 @@ msgid ""
 "multipoint-to-point, network termination: this port provides MSNs to route "
 "calls and is attached to one or more telephones"
 msgstr ""
-"multipunto-a-punto, terminazione di rete: questa porta fornisce numeri MSN "
-"(numeri multipli) per instradare le chiamate ed è collegata ad uno o più "
-"telefoni"
+"punto-multipunto (PMP), terminazione di rete (NT): questa porta fornisce "
+"numeri MSN (numeri multipli) per instradare le chiamate ed è collegata ad "
+"uno o più telefoni"
 
 msgid ""
 "point-to-point, terminal equipment: this port accepts DID to route calls and "
 "is connected directly to another PBX system"
 msgstr ""
-"punto-punto, dispositivo terminale: questa porta accetta DID per instradare "
-"le chiamate ed è collegato direttamente a un altro sistema PBX"
+"punto-punto (PTP), dispositivo terminale (TE): questa porta accetta DID per "
+"instradare le chiamate ed è collegato direttamente a un altro sistema PBX"
 
 msgid ""
 "point-to-point, network termination: this port provides DID to route calls "
 "and is connected directly to another PBX system"
 msgstr ""
-"punto-punto, terminazione di rete: questa porta fornisce DID per instradare "
-"le chimate ed è collegata direttamente ad un altro centralino"
+"punto-punto (PTP), terminazione di rete (NT): questa porta fornisce DID per "
+"instradare le chiamate ed è collegata direttamente ad un altro centralino"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
 msgstr "Modifica l'interfaccia ISDN #%s"
 
 msgid "An Operating Mode must be selected for this interface."
-msgstr "Un modo operativo deve essere selezionato per questa interfaccia."
+msgstr "Deve essere selezionata una modalità operativa per questa interfaccia."
 
-#, fuzzy
 msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Tenta di rimuovere l'eco dalla linea telefonica."
+msgstr "Attiva il cancellatore d'eco per questa linea (consigliato)."
 
 msgid "PCM Timing Slave"
 msgstr "PCM Timing Slave"
@@ -1623,7 +1617,7 @@ msgid "Functions"
 msgstr "Funzioni"
 
 msgid "Audio Prompts"
-msgstr "Suggerimento Audio"
+msgstr "Messaggi guida vocale"
 
 msgid ""
 "Below is a list of the currently defined phones along with a basic Dial() "
@@ -2239,11 +2233,9 @@ msgstr ""
 msgid "Are you sure you want to proceed?"
 msgstr "Sei sicuro di voler procedere?"
 
-#, fuzzy
 msgid "Yes"
 msgstr " Sì "
 
-#, fuzzy
 msgid "No"
 msgstr " No "
 
@@ -2306,9 +2298,8 @@ msgstr ""
 "<br><br>Vuoi installare comunque questa immagine (a proprio rischio e "
 "pericolo)?"
 
-#, fuzzy
 msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Clicca &quot;Abilita caricamento firmware&quot; qui sotto."
+msgstr "Clicca \"Abilita caricamento firmware\" qui sotto."
 
 #, php-format
 msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
@@ -2541,9 +2532,8 @@ msgstr "Data/Ora in formato esteso (es: 31-12-2025 (15:45))"
 msgid "generate password"
 msgstr "crea password"
 
-#, fuzzy
 msgid "use this password"
-msgstr "La password di questo account."
+msgstr "Utilizza questa password."
 
 msgid "webGUI language"
 msgstr "Lingua del interfaccia WEB"
@@ -2866,8 +2856,8 @@ msgstr ""
 "del dialplan di Asterisk. Un notevole sforzo è stato fatto per verificare "
 "questi inserimenti ma rimane la possibilità che una installazione di "
 "AskoziaPBX sia resa inutilizzabile da un applicazione con una logica errata. "
-"Un riferimento per le applicazioni, le funzioni e i telefoni è disponibile "
-"presso <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
+"Un riferimento per le applicazioni, le funzioni ed i derivati è disponibile "
+"nella <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
 "\">Element Library</a></strong>.</p>"
 
 msgid "Advanced Settings"
@@ -2950,7 +2940,7 @@ msgid "Summary"
 msgstr "Sommario"
 
 msgid "Manager"
-msgstr "Amministratore"
+msgstr "Accesso AMI"
 
 msgid "Ping/Traceroute"
 msgstr "Ping/Traceroute"
@@ -3082,9 +3072,8 @@ msgstr "Italiano"
 msgid "Japanese"
 msgstr "Giapponese"
 
-#, fuzzy
 msgid "Portuguese (Brazil)"
-msgstr "Portoghese, Brasiliano"
+msgstr "Portoghese (Brasile)"
 
 msgid "Russian"
 msgstr "Russo"
@@ -3144,16 +3133,16 @@ msgid "Spanish (formal)"
 msgstr "Spagnolo (formale)"
 
 msgid "point-to-multipoint, terminal equipment"
-msgstr "punto-a-multipunto, dispositivo terminale"
+msgstr "punto-multipunto, dispositivo terminale (TE, PMP)"
 
 msgid "multipoint-to-point, network termination"
-msgstr "multipunto-a-punto, terminazione di rete"
+msgstr "punto-multipunto, terminazione di rete (NT, PMP)"
 
 msgid "point-to-point, terminal equipment"
-msgstr "punto-a-punto, dispositivo terminale"
+msgstr "punto-punto, dispositivo terminale (TE, PTP)"
 
 msgid "point-to-point, network termination"
-msgstr "punto-a-punto, terminazione di rete"
+msgstr "punto-punto, terminazione di rete (NT, PTP)"
 
 msgid "United States / North America"
 msgstr "Stati Uniti/Nord America"
