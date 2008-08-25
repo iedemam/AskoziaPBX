@@ -543,7 +543,7 @@ if (!$syspart) {
 						?><br><input name="package_install" type="submit" id="install_submit" class="formbtn" value="<?=gettext("Install");?>" onclick="start_downloads('install')"><?
 
 					} else if (!$disablepackagechecks) {
-						?><em>No new packages available.</em><br><?
+						?><em><?=gettext("No new packages available.");?></em><br><?
 					}
 
 					?><br>

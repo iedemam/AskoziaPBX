@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Network"));
+$pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Network"));
 $pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default AskoziaPBX requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
 
 $lancfg = &$config['interfaces']['lan'];

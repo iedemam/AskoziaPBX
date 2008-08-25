@@ -163,8 +163,7 @@ $isdn_interfaces = isdn_get_te_interfaces();
 if (count($isdn_interfaces) == 0) {
 
 	$page_link = '<a href="interfaces_isdn.php">' . gettext("Interfaces") . ": " . gettext("ISDN") . '</a>';
-	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
-		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
+	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br> To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
 	display_info_box($interfaces_warning, "keep");
 	
 } else {

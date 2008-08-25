@@ -152,8 +152,7 @@ $analog_interfaces = analog_get_ab_interfaces("fxs");
 if (count($analog_interfaces) == 0) {
 
 	$page_link = '<a href="interfaces_analog.php">' . gettext("Interfaces") . ": " . gettext("Analog") . '</a>';
-	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br>" .
-		"To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
+	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br> To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
 	display_info_box($interfaces_warning, "keep");
 	
 } else {
