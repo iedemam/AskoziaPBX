@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Storage"));
+$pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Storage"));
 $pghelp = gettext("AskoziaPBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space.");
 
 if (storage_syspart_get_state() == "active") {

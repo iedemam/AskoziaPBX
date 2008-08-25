@@ -525,7 +525,7 @@ function display_natmode_selector($current_natmode, $colspan) {
 			<option value="<?=$natmode;?>" <?
 			if ($natmode == $current_natmode)
 				echo "selected"; ?>
-			><?=$natmode;?>&nbsp;-&nbsp;<?=$natdesc;?></option>
+			><?=$natdesc;?></option>
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl"><?=gettext("Is there a NATing device between AskoziaPBX and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones.");?></span>

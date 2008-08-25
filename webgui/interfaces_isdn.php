@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("ISDN"));
+$pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("ISDN"));
 $pghelp = gettext("Detected ports on this page must be edited and saved before the system can utilize them. Be careful when configuring ISDN interfaces. Having a single port on a card incorrectly configured can result in the entire card being unusable by the system.");
 $pglegend = array("edit", "delete");
 
