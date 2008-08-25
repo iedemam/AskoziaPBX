@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1401,13 +1401,10 @@ msgid "A valid e-mail address must be specified."
 msgstr "必須指定一個有效的e-mail地址。"
 
 #, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr "<strong>沒有找到相容的介面！</strong><br><br>"
-
-#, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2251,6 +2248,9 @@ msgstr "選擇一個您希望安裝的軟體套件。"
 
 msgid "Install"
 msgstr "安裝"
+
+msgid "No new packages available."
+msgstr ""
 
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr "從您的電腦中選擇一個.pbxpkg文件安裝。"

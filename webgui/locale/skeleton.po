@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1227,11 +1227,7 @@ msgid "A valid e-mail address must be specified."
 msgstr ""
 
 #, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-
-#, php-format
-msgid "To configure this type of account, make sure an appropriately configured interface is present on the %s page"
+msgid "<strong>No compatible interfaces found!</strong><br><br> To configure this type of account, make sure an appropriately configured interface is present on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -1950,6 +1946,9 @@ msgid "Select which packages you would like to install."
 msgstr ""
 
 msgid "Install"
+msgstr ""
+
+msgid "No new packages available."
 msgstr ""
 
 msgid "Select a .pbxpkg file from your computer to install."

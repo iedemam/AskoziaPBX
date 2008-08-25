@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1407,7 +1407,7 @@ msgid "WPA + WPA2"
 msgstr "WPA + WPA2"
 
 msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "Useimissa tapaksissa sinun on valittava &quot;WPA + WPA2&quot; tässä."
+msgstr "Useimissa tapauksissa sinun on valittava &quot;WPA + WPA2&quot; tässä."
 
 msgid "Cipher"
 msgstr "Salaus"
@@ -1483,14 +1483,13 @@ msgid "A valid e-mail address must be specified."
 msgstr "Kelpaava s-posti osoite on oltava määritetty."
 
 #, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr "<strong>Yhteensopivia käyttöliittymiä ei löytynyt!</strong><br><br>"
-
-#, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
+"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
+"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
 
 msgid "Internal extension used to reach this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
@@ -2382,6 +2381,9 @@ msgstr "Valitse paketit mitkä haluat asentaa."
 msgid "Install"
 msgstr "Asenna"
 
+msgid "No new packages available."
+msgstr "Uusia paketteja ei ole saatavilla."
+
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr "Valitse .pbxpkg tiedosto jonka haluat asentaa."
 
@@ -2971,9 +2973,8 @@ msgstr "Italian kieli"
 msgid "Japanese"
 msgstr "Japanin kieli"
 
-#, fuzzy
 msgid "Portuguese (Brazil)"
-msgstr "Portugalin kieli, Brasilia"
+msgstr "Portugalin kieli (Brasilia)"
 
 msgid "Russian"
 msgstr "Venäjän kieli"

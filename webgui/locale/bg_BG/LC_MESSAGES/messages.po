@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "PO-Revision-Date: 2008-08-13 23:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1468,13 +1468,10 @@ msgid "A valid e-mail address must be specified."
 msgstr "Въведет валиден e-mail адрес."
 
 #, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr "<strong>Не е намерен съвместим интерфейс!</strong><br><br>"
-
-#, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2326,6 +2323,9 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
+msgid "No new packages available."
+msgstr ""
+
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr ""
 
@@ -3102,56 +3102,3 @@ msgstr ""
 #, php-format
 msgid "The field '%s' is required."
 msgstr ""
-
-#~ msgid "Port"
-#~ msgstr "Порт"
-
-#~ msgid "National Prefix, International Prefix"
-#~ msgstr "Национален Префикс, Международен Префикс"
-
-#~ msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-#~ msgstr ""
-#~ "Потребителско Име, Парола, Забранени IP, Забранени Netmask, Разрешени IP, "
-#~ "Разрешени Netmask"
-
-#~ msgid "Low RTP Port,High RTP Port"
-#~ msgstr "Малък RTP Порт,Голям RTP Порт"
-
-#~ msgid "Host,Count"
-#~ msgstr "Host,Брой"
-
-#~ msgid "Host,ttl"
-#~ msgstr "Host,ttl"
-
-#~ msgid "name"
-#~ msgstr "име"
-
-#~ msgid "Name,Extension,Application Logic"
-#~ msgstr "Име,Вътрешен Номер,Логика на Приложението"
-
-#~ msgid ""
-#~ "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-#~ msgstr ""
-#~ "Вътрешен Номер за Паркиране,Начална Позиция за Паркиране,Крайна Позиция "
-#~ "за Паркиране,Време за Паркиране"
-
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
-
-#~ msgid "IP address,Subnet bit count,Gateway,Network topology"
-#~ msgstr "IP адрес,Mask,Шлюз,Мрежова топология"
-
-#~ msgid "Extension,Caller ID"
-#~ msgstr "Вътрешен Номер,Caller ID"
-
-#~ msgid "Extension,Name,Dialstring,Provider"
-#~ msgstr "Вътрешен Номер,Име,Поредица за Избиране,Външна Линия"

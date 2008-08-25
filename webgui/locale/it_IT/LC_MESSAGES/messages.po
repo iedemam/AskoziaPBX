@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-21 12:47+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "PO-Revision-Date: 2008-08-20 19:00+0100\n"
 "Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
 "Language-Team: Italian\n"
@@ -1520,16 +1520,11 @@ msgstr "Un telefono con questo interno già esiste."
 msgid "A valid e-mail address must be specified."
 msgstr "Deve essere specificato un indirizzo E-mail valido."
 
-#, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr ""
-"<strong>Non è stata rilevata nessuna interfaccia compatibile!</"
-"strong><br><br>"
-
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 "Per configurare questo tipo di profilo assicuratevi di aver correttamente "
 "impostato una interfaccia adeguata nella relativa pagina %s"
@@ -2461,6 +2456,9 @@ msgstr "Selezionate quali pacchetti installare."
 
 msgid "Install"
 msgstr "Installa"
+
+msgid "No new packages available."
+msgstr ""
 
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr "Selezionate sul vostro computer un file .pbxpkg  per l'installazione."

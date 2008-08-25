@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 14:27+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1410,13 +1410,10 @@ msgid "A valid e-mail address must be specified."
 msgstr "En gyldig e-mail addresse skal angives."
 
 #, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr "<strong>Ingen kompatible grænseflader fundet!</strong><br><br>"
-
-#, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 
 msgid "Internal extension used to reach this phone."
@@ -2292,6 +2289,9 @@ msgstr "Vælg hvilken pakke du gerne vil installere."
 
 msgid "Install"
 msgstr "Installer"
+
+msgid "No new packages available."
+msgstr ""
 
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr "Vælg en .pbxpkg fil fra din computer for at installere."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-21 12:47+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Test <Test@Test.de>\n"
 "Language-Team: \n"
@@ -1507,14 +1507,11 @@ msgstr "Es gibt bereits eine Nebenstelle mit dieser Nummer. "
 msgid "A valid e-mail address must be specified."
 msgstr "Eine gültige eMail-Adresse muß angegeben werden."
 
-#, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr "<strong>Keine kompatiblen Interfaces gefunden!</strong><br><br>"
-
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 "Um diesen Kontentyp konfigurieren zu können muß ein entsprechendes Interface "
 "auf der %s Seite vorhanden sein."
@@ -2399,6 +2396,9 @@ msgstr "Wählen Sie die Packages aus, die Sie installieren möchten."
 msgid "Install"
 msgstr "Installieren"
 
+msgid "No new packages available."
+msgstr ""
+
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr ""
 
@@ -3266,256 +3266,3 @@ msgstr "Das Feld  '%s' enthält ungültige Zeichen."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Das Feld '%s' ist ein Pflichtfeld."
-
-#~ msgid "Main MSN"
-#~ msgstr "Haupt-MSN"
-
-#~ msgid "System: Firmware</a> page is viewed."
-#~ msgstr "System: Firmware</a> Seite angezeigt wird."
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "National Prefix, International Prefix"
-#~ msgstr "Nationaler Prefix, Internationaler Prefix"
-
-#~ msgid "Low RTP Port,High RTP Port"
-#~ msgstr "niedrigster RTP-Port, höchster RTP-Port"
-
-#~ msgid "Hint:"
-#~ msgstr "Hinweis:"
-
-#~ msgid ""
-#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-#~ "hostnames&quot; is checked on the"
-#~ msgstr ""
-#~ "IP-Adressen werden zu Hostnamen aufgelöst, wenn &quot;IP-Adressen zu "
-#~ "Hostnamen auflösen&quot; ausgewählt ist auf der "
-
-#~ msgid "Diagnostics: Logs</a> page."
-#~ msgstr "Diagnose: Logs</a> Seite."
-
-#~ msgid "Host,Count"
-#~ msgstr "Host,Anzahl"
-
-#~ msgid "Host,ttl"
-#~ msgstr "Host,ttl"
-
-#~ msgid "name"
-#~ msgstr "Name"
-
-#~ msgid "Name,Extension,Application Logic"
-#~ msgstr "Name, Nebenstelle, Applikations-Logik"
-
-#~ msgid " seconds"
-#~ msgstr " Sekunden"
-
-#~ msgid "If an analog interface is present but was not detected, please send "
-#~ msgstr ""
-#~ "Wenn ein Analog-Interface vorhanden ist, aber nicht gefunden wurde bitte "
-#~ "diese"
-
-#~ msgid "this output</a> to "
-#~ msgstr "Ausgabe </a> senden an "
-
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
-
-#~ msgid "If an ISDN interface is present but was not detected, please send "
-#~ msgstr "If an ISDN interface is present but was not detected, please send "
-
-#~ msgid "If this is a USB ISDN device, send "
-#~ msgstr "Wenn es ein USB-gerät ist, dann bitte diese"
-
-#~ msgid "this output</a> as well."
-#~ msgstr "Ausgabe auch </a> mitsenden."
-
-#~ msgid "IP address,Subnet bit count,Gateway,Network topology"
-#~ msgstr "IP-Adresse,Subnet Bits,Gateway,Netzwerk-Topologie "
-
-#~ msgid " A minimum of "
-#~ msgstr "Es werden wenigstens "
-
-#~ msgid "Extension,Caller ID"
-#~ msgstr "Nebenstelle,Caller-ID"
-
-#~ msgid "Extension,Name,Dialstring,Provider"
-#~ msgstr "Nebenstelle,Name; Dialstring,Provider"
-
-#~ msgid "Dial()"
-#~ msgstr "Dial()"
-
-#~ msgid " Command"
-#~ msgstr "Befehl"
-
-#~ msgid "Name,Username,Host"
-#~ msgstr "Name,Benutzername,Host"
-
-#~ msgid "A valid Main MSN must be specified (all digits)."
-#~ msgstr "Eine gültige numerische Haupt-MSN muß angegeben werden."
-
-#~ msgid "Room Number,Name"
-#~ msgstr "Raum-Nummer, Name"
-
-#~ msgid "Warning: "
-#~ msgstr "Achtung:"
-
-#~ msgid "Conference "
-#~ msgstr "Konferenz"
-
-#~ msgid " if you can't see the graph, you may have to install the "
-#~ msgstr " wenn sie keine Grafik sehen, sollten sie folgendes installieren:"
-
-#~ msgid "Adobe SVG viewer"
-#~ msgstr "Adobe SVG viewer"
-
-#~ msgid " Interface"
-#~ msgstr " Interface"
-
-#~ msgid "General setup"
-#~ msgstr "Allgemeine Einstellungen"
-
-#~ msgid "Backup/restore"
-#~ msgstr "Backup/Restore"
-
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started.The system will "
-#~ "reboot automatically after storing the new firmware.The configuration "
-#~ "will be maintained."
-#~ msgstr ""
-#~ "Achtung! Der Firmware-Upgrade darf nicht abgebrochen werden, nachdem mit "
-#~ "dem Hochladen begonnen wurde. Das System wird automatisch nach dem "
-#~ "Speichern der neuen Firmware  einen Neustart ausführen. Die Konfiguration "
-#~ "wird nicht überschrieben."
-
-#~ msgid "activate package from backup data"
-#~ msgstr "Package aus Sicherungsdaten wiederherstellen"
-
-#~ msgid "Select a package .tgz archive and press 'Install'"
-#~ msgstr ""
-#~ "Bitte wählen sie eine Package (im .tgz-Format) aus und drücken Sie "
-#~ "'Installieren'"
-
-#~ msgid "cancel"
-#~ msgstr "abbrechen"
-
-#~ msgid "Select a package .tgz archive and press 'Update'"
-#~ msgstr ""
-#~ "Wählen Sie ein Package-Archiv (Format .tgz) aus und drücken Sie 'Update'."
-
-#~ msgid "display_phone_access_selector"
-#~ msgstr "display_phone_access_selector"
-
-#~ msgid "display_provider_dialpattern_editor"
-#~ msgstr "display_provider_dialpattern_editor"
-
-#~ msgid "display_application_logic_editor"
-#~ msgstr "display_application_logic_editor"
-
-#~ msgid "display_manual_attributes_editor"
-#~ msgstr "display_manual_attributes_editor"
-
-#~ msgid "Readback Number"
-#~ msgstr "Readback Number"
-
-#~ msgid "auto"
-#~ msgstr "auto"
-
-#~ msgid "plain"
-#~ msgstr "einfach"
-
-#~ msgid "login"
-#~ msgstr "Login"
-
-#~ msgid "cram-md5"
-#~ msgstr "cram-md5"
-
-#~ msgid "external"
-#~ msgstr "extern"
-
-#~ msgid "% of "
-#~ msgstr "% von "
-
-#~ msgid "Your version of AskoziaPBX was not recognized."
-#~ msgstr "Ihre Version von AskoziaPBX kann nicht ermittelt werden."
-
-#~ msgid "G.711 u-law"
-#~ msgstr "G.711 u-law"
-
-#~ msgid "G.711 A-law"
-#~ msgstr "G.711 A-law"
-
-#~ msgid "GSM"
-#~ msgstr "GSM"
-
-#~ msgid "G.729A"
-#~ msgstr "G.729A"
-
-#~ msgid "iLBC"
-#~ msgstr "iLBC"
-
-#~ msgid "SpeeX"
-#~ msgstr "SpeeX"
-
-#~ msgid "G.723.1"
-#~ msgstr "G.723.1"
-
-#~ msgid "G.726 AAL2"
-#~ msgstr "G.726 AAL2"
-
-#~ msgid "ADPCM"
-#~ msgstr "ADPCM"
-
-#~ msgid "16 bit Signed Linear PCM"
-#~ msgstr "16 bit Signed Linear PCM"
-
-#~ msgid "LPC10"
-#~ msgstr "LPC10"
-
-#~ msgid "G.726 RFC3551"
-#~ msgstr "G.726 RFC3551"
-
-#~ msgid "G722"
-#~ msgstr "G722"
-
-#~ msgid "H.261"
-#~ msgstr "H.261"
-
-#~ msgid "H.263"
-#~ msgstr "H.263"
-
-#~ msgid "H.263+"
-#~ msgstr "H.263+"
-
-#~ msgid "H.264"
-#~ msgstr "H.264"
-
-#~ msgid "agent"
-#~ msgstr "Agent"
-
-#~ msgid "call"
-#~ msgstr "Gespräch"
-
-#~ msgid "command"
-#~ msgstr "Befehl"
-
-#~ msgid "log"
-#~ msgstr "Log"
-
-#~ msgid "user"
-#~ msgstr "Benutzer"
-
-#~ msgid "verbose"
-#~ msgstr "ausführlich"
-
-#~ msgid "system"
-#~ msgstr "System"

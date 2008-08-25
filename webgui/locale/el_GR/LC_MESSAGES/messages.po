@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-22 03:33+0200\n"
+"POT-Creation-Date: 2008-08-25 10:49+0000\n"
 "PO-Revision-Date: 2008-08-21 16:18+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1525,14 +1525,11 @@ msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσω�
 msgid "A valid e-mail address must be specified."
 msgstr "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail."
 
-#, php-format
-msgid "<strong>No compatible interfaces found!</strong><br><br>"
-msgstr "<strong>Δεν βρέθηκαν συμβατές διεπαφές!</strong><br><br>"
-
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"To configure this type of account, make sure an appropriately configured "
-"interface is present on the %s page"
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 "Για να κάνετε ρυθμίσεις σε αυτό το είδος του λογαρισμού, σιγουρευτείτε ότι "
 "υπάρχει διαθέσιμη μια κατάλληλη διεπαφή στη σελίδα %s."
@@ -2490,6 +2487,9 @@ msgstr "Επιλέξτε ποια πακέτα θέλετε να εγκατασ�
 msgid "Install"
 msgstr "Εγκατάσταση"
 
+msgid "No new packages available."
+msgstr ""
+
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr "Επιλέξτε ένα αρχείο με κατάληξη .pbxpkg για την εγκατάσταση."
 
@@ -3371,155 +3371,3 @@ msgstr "Το πεδίο '%s' περιέχει μη έγκυρους χαρακτ
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Το πεδίο '%s' είναι αναγκαίο."
-
-#~ msgid "Port"
-#~ msgstr "Θύρα"
-
-#~ msgid "National Prefix, International Prefix"
-#~ msgstr "Εθνικό πρόθεμα,Διεθνές πρόθεμα"
-
-#~ msgid "Username,Secret,Deny IP,Deny Netmask,Permit IP,Permit Netmask"
-#~ msgstr ""
-#~ "Όνομα χρήστη,Μυστικό,Μη επιτρεπτή διεύθυνση IP,Μη επιτρεπτή μάσκα δικτύου,"
-#~ "Επιτρεπτή διεύθυνση IP,Επιτρεπτή μάσκα δικτύου"
-
-#~ msgid "Low RTP Port,High RTP Port"
-#~ msgstr "Χαμηλή θύρα RTP,Υψηλή θύρα RTP"
-
-#~ msgid "Host,Count"
-#~ msgstr "Συσκευή,Πλήθος"
-
-#~ msgid "Host,ttl"
-#~ msgstr "Συσκευή,ttl"
-
-#~ msgid "name"
-#~ msgstr "ονομασία"
-
-#~ msgid "Name,Extension,Application Logic"
-#~ msgstr "Όνομα,Εσωτερικό,Λογική εφαρμογής"
-
-#~ msgid ""
-#~ "Parking Extension,Parking Start Position,Parking Stop Position,Park Time"
-#~ msgstr ""
-#~ "Εσωτερικό στάθμευσης,Αρχική θέση στάθμευσης,Τελική θέση στάθμευσης,Χρόνος "
-#~ "στάθμευσης"
-
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "64"
-#~ msgstr "64"
-
-#~ msgid "128"
-#~ msgstr "128"
-
-#~ msgid "256"
-#~ msgstr "256"
-
-#~ msgid "IP address,Subnet bit count,Gateway,Network topology"
-#~ msgstr "διεύθυνση IP,Πλήθος bits υποδικτύου,Πύλη,Τοπολογία δικτύου"
-
-#~ msgid "Extension,Caller ID"
-#~ msgstr "Εσωτερικό,Ταυτότητα καλούντος"
-
-#~ msgid "Extension,Name,Dialstring,Provider"
-#~ msgstr "Εσωτερικό,Όνομα,Κείμενο κλήσης,Πάροχος"
-
-#~ msgid "Name,Username,Host"
-#~ msgstr "Όνομα,Όνομα χρήστη,Όνομα συσκευής"
-
-#~ msgid "Room Number,Name"
-#~ msgstr "Αριθμός δωματίου,Όνομα"
-
-#~ msgid "Host,E-mail Address,Subject,Body"
-#~ msgstr "Συσκευή,Διεύθυνση e-mail,Θέμα,Κείμενο"
-
-#~ msgid "Host,E-mail Address"
-#~ msgstr "Συσκευή,Διεύθυνση e-mail"
-
-#~ msgid "auto"
-#~ msgstr "αυτόματη"
-
-#~ msgid "plain"
-#~ msgstr "κείμενο (plain)"
-
-#~ msgid "login"
-#~ msgstr "όνομα χρήστη και συνθηματικό (login)"
-
-#~ msgid "cram-md5"
-#~ msgstr "cram-md5"
-
-#~ msgid "external"
-#~ msgstr "εξωτερική"
-
-#~ msgid "G.711 u-law"
-#~ msgstr "G.711 u-law"
-
-#~ msgid "G.711 A-law"
-#~ msgstr "G.711 A-law"
-
-#~ msgid "GSM"
-#~ msgstr "GSM"
-
-#~ msgid "G.729A"
-#~ msgstr "G.729A"
-
-#~ msgid "iLBC"
-#~ msgstr "iLBC"
-
-#~ msgid "SpeeX"
-#~ msgstr "SpeeX"
-
-#~ msgid "G.723.1"
-#~ msgstr "G.723.1"
-
-#~ msgid "G.726 AAL2"
-#~ msgstr "G.726 AAL2"
-
-#~ msgid "ADPCM"
-#~ msgstr "ADPCM"
-
-#~ msgid "16 bit Signed Linear PCM"
-#~ msgstr "16 bit Signed Linear PCM"
-
-#~ msgid "LPC10"
-#~ msgstr "LPC10"
-
-#~ msgid "G.726 RFC3551"
-#~ msgstr "G.726 RFC3551"
-
-#~ msgid "G722"
-#~ msgstr "G722"
-
-#~ msgid "H.261"
-#~ msgstr "H.261"
-
-#~ msgid "H.263"
-#~ msgstr "H.263"
-
-#~ msgid "H.263+"
-#~ msgstr "H.263+"
-
-#~ msgid "H.264"
-#~ msgstr "H.264"
-
-#~ msgid "agent"
-#~ msgstr "μέσον"
-
-#~ msgid "call"
-#~ msgstr "κλήση"
-
-#~ msgid "command"
-#~ msgstr "εντολή"
-
-#~ msgid "log"
-#~ msgstr "ημερολόγιο λειτουργίας"
-
-#~ msgid "user"
-#~ msgstr "χρήστης"
-
-#~ msgid "verbose"
-#~ msgstr "με λεπτομέρειες"
-
-#~ msgid "system"
-#~ msgstr "σύστημα"
