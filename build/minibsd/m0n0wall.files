@@ -46,6 +46,7 @@ sbin/ldconfig
 sbin/mdconfig
 sbin/mdmfs
 sbin/mount
+sbin/mount_cd9660
 sbin/mount_msdosfs
 sbin/newfs
 sbin/nologin
