@@ -1338,7 +1338,6 @@ function package_cd($image_name) {
 	// add rootfs
 	_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
 	_exec("cd tmp/stage/asterisk; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
-	_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/stage/firmware.img");
 
 	// ...system modules		
 	_exec("mkdir tmp/stage/boot");
@@ -1379,6 +1378,7 @@ function package_cd($image_name) {
 	_exec("mkdir tmp/cdroot");
 	_exec("cp {$dirs['mfsroots']}/$platform-$image_version.gz tmp/cdroot/mfsroot.gz");
 	_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/cdroot/kernel.gz");
+	_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/cdroot/firmware.img");
    
 	_exec("mkdir tmp/cdroot/boot");
 	_exec("mkdir tmp/cdroot/boot/kernel");
