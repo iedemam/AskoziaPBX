@@ -120,10 +120,11 @@ if ($_POST) {
 		}
 	}
 }
-?>
 
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+
+include("fbegin.inc"); 
+
+?><script type="text/JavaScript">
 <!--
 	<?=javascript_userdefined_email_notification("functions");?>
 
