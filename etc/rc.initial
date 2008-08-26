@@ -82,7 +82,9 @@ case ${opmode} in
 	/usr/local/sbin/asterisk -r
 	;;
 8)
+	if [ "$PLATFORM" = "generic-pc-cdrom" ]; then
 	/etc/rc.initial.install
+	fi
 	;;
 9)
 	/bin/sh
