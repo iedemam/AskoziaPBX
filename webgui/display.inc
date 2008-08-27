@@ -999,16 +999,16 @@ function display_capacity_bar($sizeinbytes, $usage) {
 	<br><?=$usage;?>% <?=gettext("of");?> <?=format_bytes($sizeinbytes);?><?
 }
 
-function display_peer_status_icon($status, $id) {
+function display_peer_status_icon($status, $id) { 
 	switch ($status) {
 		case "OK":
-		return "<img id=\"" . $id . "\" src=\"bullet_green.png\" title=\"connected\">";
+		return "<img id=\"" . $id . "\" src=\"bullet_green.png\" title=\"" . gettext("connected") . "\">";
 		case "LAGGED":
-		return "<img id=\"" . $id . "\" src=\"bullet_yellow.png\" title=\"connected but lagged\">";
+		return "<img id=\"" . $id . "\" src=\"bullet_yellow.png\" title=\"" . gettext("connected but lagged") . "\">";
 		case "UNREACHABLE":
-		return "<img id=\"" . $id . "\" src=\"bullet_red.png\" title=\"unreachable\">";
+		return "<img id=\"" . $id . "\" src=\"bullet_red.png\" title=\"" . gettext("unreachable") . "\">";
 		case "UNKNOWN":
-		return "<img id=\"" . $id . "\" src=\"bullet_white.png\" title=\"status unknown\">";
+		return "<img id=\"" . $id . "\" src=\"bullet_white.png\" title=\"" . gettext("status unknown") . "\">";
 		default:
 		return "";
 	}

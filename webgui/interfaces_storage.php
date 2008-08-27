@@ -84,7 +84,7 @@ if (storage_syspart_get_state() == "active") {
 					<td class="listr"><? display_capacity_bar(
 						($syspart['size'] - ($defaults['storage']['system-partition-offset-megabytes']*1024*1024)),
 						$syspart['usage']);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars($syspart['state']);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars(gettext($syspart['state']));?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars(
 						implode(", ", array_keys($syspart['packages'])));?>&nbsp;</td>
 					<td valign="middle" nowrap class="list"><? /*

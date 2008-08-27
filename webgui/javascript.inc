@@ -30,61 +30,61 @@
 
 function javascript_incoming_extension_selector($current_incomingextensionmap, $multiple=false) {
 	
-	$options[] = array("", "Outgoing Calls Only");
+	$options[] = array("", gettext("Outgoing Calls Only"));
 	$options[] = array("", "");
 	$pad = "&nbsp;&nbsp;&nbsp;";
 
 	if (count($a_items = callgroups_get_groups())) {
-		$options[] = array("", "Call Groups");
+		$options[] = array("", gettext("Call Groups"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name']);
 		}
 	}
 	
 	if (count($a_items = sip_get_phones())) {
-		$options[] = array("", "SIP Phones");
+		$options[] = array("", gettext("SIP Phones"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
 		}
 	}
 	
 	if (count($a_items = iax_get_phones())) {
-		$options[] = array("", "IAX Phones");
+		$options[] = array("", gettext("IAX Phones"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
 		}
 	}
 	
 	if (count($a_items = isdn_get_phones())) {
-		$options[] = array("", "ISDN Phones");
+		$options[] = array("", gettext("ISDN Phones"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
 		}
 	}
 	
 	if (count($a_items = analog_get_phones())) {
-		$options[] = array("", "Analog Phones");
+		$options[] = array("", gettext("Analog Phones"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
 		}
 	}
 	
 	if (count($a_items = external_get_phones())) {
-		$options[] = array("", "External Phones");
+		$options[] = array("", gettext("External Phones"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name'] . " &lt;" . $item['dialstring'] . "&gt;");
 		}
 	}
 	
 	if (count($a_items = conferencing_get_rooms())) {
-		$options[] = array("", "Conference Rooms");
+		$options[] = array("", gettext("Conference Rooms"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name'] . " &lt;" . $item['number'] . "&gt;");
 		}
 	}
 	
 	if (count($a_items = applications_get_apps())) {
-		$options[] = array("", "Applications");
+		$options[] = array("", gettext("Applications"));
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name']);
 		}
@@ -255,27 +255,27 @@ function javascript_account_statuses($part) {
 			switch(status[1]) {
     	    
 				case "OK":
-				title = "connected";
+				title = <?gettext("connected");?>;
 				src = "bullet_green.png";
 				break;
     	    
 				case "LAGGED":
-				title = "connected but lagged";
+				title = <?gettext("connected but lagged");?>;
 				src = "bullet_yellow.png";
 				break;
     	    
 				case "UNREACHABLE":
-				title = "unreachable";
+				title = <?gettext("unreachable");?>;
 				src = "bullet_red.png";
 				break;
     	    
 				case "UNKNOWN":
-				title = "status unknown";
+				title = <?gettext("status unknown");?>;
 				src = "bullet_white.png";
 				break;
     	    
 				default:
-				title = "status unknown";
+				title = <?gettext("status unknown");?>;
 				src = "bullet_white.png";
 				break;
 			}

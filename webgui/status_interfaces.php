@@ -220,7 +220,7 @@ function get_analog_interface_info() {
 		</tr>
 		<tr> 
 			<td width="20%" class="vncellt"><?=gettext("Status");?></td>
-			<td width="80%" class="listr"><?=htmlspecialchars($ifinfo['status']);?></td>
+			<td width="80%" class="listr"><?=htmlspecialchars(gettext($ifinfo['status']));?></td>
 		</tr><?
 		
 		if ($ifinfo['macaddr']) {
@@ -328,7 +328,7 @@ function get_analog_interface_info() {
 								echo "</span>";
 							}
 							else
-								echo htmlspecialchars($ss['ssid']);
+								echo htmlspecialchars(gettext($ss['ssid']));
 			    	
 							if (strpos($ss['caps'][0], "E") !== false) {
 								?><img src="lock.gif" width="7" height="9"><?
