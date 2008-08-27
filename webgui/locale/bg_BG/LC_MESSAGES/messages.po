@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "PO-Revision-Date: 2008-08-13 23:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1316,6 +1316,10 @@ msgstr "Инсталирани Пакети"
 msgid "system storage partition"
 msgstr "разделяне на системна памет"
 
+#, fuzzy
+msgid "state"
+msgstr "начало"
+
 msgid "Edit Disk"
 msgstr "Редактирай Диск"
 
@@ -1864,6 +1868,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Мрежов Трафик"
 
+#, fuzzy
+msgid "status"
+msgstr "Статус"
+
 msgid "Subnet Mask"
 msgstr ""
 
@@ -1895,6 +1903,9 @@ msgid "Noise"
 msgstr ""
 
 msgid "hidden"
+msgstr ""
+
+msgid "ssid"
 msgstr ""
 
 msgid "Associated stations"
@@ -2697,6 +2708,18 @@ msgstr ""
 msgid "of"
 msgstr ""
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "Вие използвате най-новата версия на АскозияPBX."
 
@@ -3059,6 +3082,45 @@ msgid "Firewall"
 msgstr ""
 
 msgid "reload page"
+msgstr ""
+
+msgid "Outgoing Calls Only"
+msgstr ""
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Вътрешни"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Вътрешни"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Вътрешни"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "Вътрешни"
+
+#, fuzzy
+msgid "active"
+msgstr "Неизползвани"
+
+#, fuzzy
+msgid "inactive"
+msgstr "Неизползвани"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+msgid "associated"
+msgstr ""
+
+msgid "HIDE"
 msgstr ""
 
 msgid "unconfigured"

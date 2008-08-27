@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Test <Test@Test.de>\n"
 "Language-Team: \n"
@@ -1337,6 +1337,10 @@ msgstr "Installierte Pakete "
 msgid "system storage partition"
 msgstr "System Storage Partition"
 
+#, fuzzy
+msgid "state"
+msgstr "Beginn"
+
 msgid "Edit Disk"
 msgstr "Platte bearbeiten"
 
@@ -1917,6 +1921,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Netzwerk-Verkehr"
 
+#, fuzzy
+msgid "status"
+msgstr "Status"
+
 msgid "Subnet Mask"
 msgstr "Subnetz-Maske"
 
@@ -1949,6 +1957,10 @@ msgstr "Störung"
 
 msgid "hidden"
 msgstr "versteckt"
+
+#, fuzzy
+msgid "ssid"
+msgstr "Russland"
 
 msgid "Associated stations"
 msgstr "Zugeordnete Stationen"
@@ -2851,6 +2863,18 @@ msgstr ""
 msgid "of"
 msgstr ""
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "Sie benutzen die neueste Version von AskoziaPBX."
 
@@ -3224,6 +3248,47 @@ msgstr "Firewall"
 
 msgid "reload page"
 msgstr "Seite neu laden"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "gehende Caller-ID"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Nebenstellen"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Nebenstellen"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Nebenstellen"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "Interne Nebenstellen"
+
+#, fuzzy
+msgid "active"
+msgstr "inaktiv"
+
+#, fuzzy
+msgid "inactive"
+msgstr "inaktiv"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+#, fuzzy
+msgid "associated"
+msgstr "Zugeordnete Stationen"
+
+msgid "HIDE"
+msgstr ""
 
 msgid "unconfigured"
 msgstr "unkonfiguriert"

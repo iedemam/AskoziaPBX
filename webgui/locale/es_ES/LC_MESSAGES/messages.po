@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1198,6 +1198,9 @@ msgstr ""
 msgid "system storage partition"
 msgstr ""
 
+msgid "state"
+msgstr ""
+
 msgid "Edit Disk"
 msgstr ""
 
@@ -1733,6 +1736,9 @@ msgstr ""
 msgid "Network Traffic"
 msgstr ""
 
+msgid "status"
+msgstr ""
+
 msgid "Subnet Mask"
 msgstr ""
 
@@ -1764,6 +1770,9 @@ msgid "Noise"
 msgstr ""
 
 msgid "hidden"
+msgstr ""
+
+msgid "ssid"
 msgstr ""
 
 msgid "Associated stations"
@@ -2526,6 +2535,18 @@ msgstr ""
 msgid "of"
 msgstr ""
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr ""
 
@@ -2888,6 +2909,39 @@ msgid "Firewall"
 msgstr ""
 
 msgid "reload page"
+msgstr ""
+
+msgid "Outgoing Calls Only"
+msgstr ""
+
+msgid "SIP Phones"
+msgstr ""
+
+msgid "IAX Phones"
+msgstr ""
+
+msgid "ISDN Phones"
+msgstr ""
+
+msgid "Analog Phones"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "inactive"
+msgstr ""
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+msgid "associated"
+msgstr ""
+
+msgid "HIDE"
 msgstr ""
 
 msgid "unconfigured"

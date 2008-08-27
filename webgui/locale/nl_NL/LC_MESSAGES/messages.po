@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1336,6 +1336,10 @@ msgstr "Gëinstalleerde Paketten"
 msgid "system storage partition"
 msgstr "Ssyteem opslag partitie"
 
+#, fuzzy
+msgid "state"
+msgstr "start"
+
 msgid "Edit Disk"
 msgstr "Bewerk Disk"
 
@@ -1912,6 +1916,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Netwerk Trafiek"
 
+#, fuzzy
+msgid "status"
+msgstr "Status"
+
 msgid "Subnet Mask"
 msgstr "Subnet Mask"
 
@@ -1944,6 +1952,10 @@ msgstr "Noise"
 
 msgid "hidden"
 msgstr "verborgen"
+
+#, fuzzy
+msgid "ssid"
+msgstr "Rusland"
 
 msgid "Associated stations"
 msgstr ""
@@ -2709,6 +2721,18 @@ msgstr ""
 msgid "of"
 msgstr ""
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr ""
 
@@ -3081,6 +3105,45 @@ msgstr "Firewall"
 
 msgid "reload page"
 msgstr "Pagina herladen"
+
+msgid "Outgoing Calls Only"
+msgstr ""
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Telefoons"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Telefoons"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Telefoons"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "Interne telefoons"
+
+#, fuzzy
+msgid "active"
+msgstr "Inactief"
+
+#, fuzzy
+msgid "inactive"
+msgstr "Inactief"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+msgid "associated"
+msgstr ""
+
+msgid "HIDE"
+msgstr ""
 
 #, fuzzy
 msgid "unconfigured"

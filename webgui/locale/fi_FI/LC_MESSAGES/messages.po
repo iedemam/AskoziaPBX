@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1316,6 +1316,9 @@ msgstr "Asennetut Paketit"
 msgid "system storage partition"
 msgstr "järjestelmän tallennus osio"
 
+msgid "state"
+msgstr "tila"
+
 msgid "Edit Disk"
 msgstr "Muokkaa Levyä"
 
@@ -1898,6 +1901,9 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Verkon Liikenne"
 
+msgid "status"
+msgstr "status"
+
 msgid "Subnet Mask"
 msgstr "Aliverkon Peite"
 
@@ -1930,6 +1936,9 @@ msgstr "Melu"
 
 msgid "hidden"
 msgstr "piilotettu"
+
+msgid "ssid"
+msgstr "ssid"
 
 msgid "Associated stations"
 msgstr "Liittyvät asemat"
@@ -2820,6 +2829,18 @@ msgstr ""
 msgid "of"
 msgstr ""
 
+msgid "connected"
+msgstr "yhdistetty"
+
+msgid "connected but lagged"
+msgstr "yhdistetty mutta viiveellä"
+
+msgid "unreachable"
+msgstr "ei tavoitettavissa"
+
+msgid "status unknown"
+msgstr "tila ei saatavissa"
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "Käytät uusinta AskoziaPBX ohjelmistoversiota"
 
@@ -3190,6 +3211,39 @@ msgstr "Palomuuri"
 
 msgid "reload page"
 msgstr "Lataa sivua uudelleen"
+
+msgid "Outgoing Calls Only"
+msgstr "Vain Ulosmeneviä Puheluita"
+
+msgid "SIP Phones"
+msgstr "SIP Puhelimet"
+
+msgid "IAX Phones"
+msgstr "IAX Puhelimet"
+
+msgid "ISDN Phones"
+msgstr "ISDN Puhelimet"
+
+msgid "Analog Phones"
+msgstr "Analogiset Puhelimet"
+
+msgid "active"
+msgstr "aktiivinen"
+
+msgid "inactive"
+msgstr "toimeton"
+
+msgid "up"
+msgstr "yhdistetty"
+
+msgid "down"
+msgstr "ei yhteyttä"
+
+msgid "associated"
+msgstr "liittyvä"
+
+msgid "HIDE"
+msgstr "PIILOTA"
 
 msgid "unconfigured"
 msgstr "ei konfiguroitu"

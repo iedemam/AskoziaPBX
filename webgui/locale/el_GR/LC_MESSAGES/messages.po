@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "PO-Revision-Date: 2008-08-21 16:18+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1355,6 +1355,10 @@ msgstr "Εγκατεστημένα πακέτα"
 msgid "system storage partition"
 msgstr "αποθηκευτικός χώρος συστήματος"
 
+#, fuzzy
+msgid "state"
+msgstr "έναρξη"
+
 msgid "Edit Disk"
 msgstr "Επεξεργασία δίσκου"
 
@@ -1969,6 +1973,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Κίνηση δικτύου"
 
+#, fuzzy
+msgid "status"
+msgstr "Κατάσταση"
+
 msgid "Subnet Mask"
 msgstr "Μάσκα υποδικτύου"
 
@@ -2001,6 +2009,10 @@ msgstr "Θόρυβος"
 
 msgid "hidden"
 msgstr "κρυφό"
+
+#, fuzzy
+msgid "ssid"
+msgstr "Ρωσία"
 
 msgid "Associated stations"
 msgstr "Συνδεδεμένοι σταθμοί"
@@ -2952,6 +2964,18 @@ msgstr ""
 msgid "of"
 msgstr "από"
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "Χρησιμοποιείτε την τελευταία έκδοση του AskoziaPBX"
 
@@ -3329,6 +3353,47 @@ msgstr "Τοίχος προστασίας"
 
 msgid "reload page"
 msgstr "επαναφόρτωση σελίδας"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "Εξερχόμενη ταυτότητα καλούντος"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Τηλέφωνα"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Τηλέφωνα"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Τηλέφωνα"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "εσωτερικά τηλέφωνα"
+
+#, fuzzy
+msgid "active"
+msgstr "Ανενεργές"
+
+#, fuzzy
+msgid "inactive"
+msgstr "Ανενεργές"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+#, fuzzy
+msgid "associated"
+msgstr "Συνδεδεμένοι σταθμοί"
+
+msgid "HIDE"
+msgstr ""
 
 msgid "unconfigured"
 msgstr "μη ρυθμισμένο"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1242,6 +1242,10 @@ msgstr "Installerede pakker"
 msgid "system storage partition"
 msgstr "system lager partition"
 
+#, fuzzy
+msgid "state"
+msgstr "start"
+
 msgid "Edit Disk"
 msgstr "Rediger Disk"
 
@@ -1824,6 +1828,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Netværk Traffik"
 
+#, fuzzy
+msgid "status"
+msgstr "Status"
+
 msgid "Subnet Mask"
 msgstr "Undernetmaske"
 
@@ -1856,6 +1864,10 @@ msgstr "Støj"
 
 msgid "hidden"
 msgstr "gemt"
+
+#, fuzzy
+msgid "ssid"
+msgstr "Rusland"
 
 msgid "Associated stations"
 msgstr "Associerede stationer"
@@ -2726,6 +2738,18 @@ msgstr ""
 msgid "of"
 msgstr "af"
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "Du bruger den nyeste version af AskoziaPBX"
 
@@ -3095,6 +3119,47 @@ msgstr "Ildmur"
 
 msgid "reload page"
 msgstr "genopfrisk side"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "Udgående opkalds ID"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Telefoner"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Telefoner"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Telefoner"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "Interne Telefoner"
+
+#, fuzzy
+msgid "active"
+msgstr "Inaktiv"
+
+#, fuzzy
+msgid "inactive"
+msgstr "Inaktiv"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+#, fuzzy
+msgid "associated"
+msgstr "Associerede stationer"
+
+msgid "HIDE"
+msgstr ""
 
 #, fuzzy
 msgid "unconfigured"

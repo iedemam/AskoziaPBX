@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1245,6 +1245,10 @@ msgstr "已安裝的包"
 msgid "system storage partition"
 msgstr "系統存儲分區"
 
+#, fuzzy
+msgid "state"
+msgstr "開始"
+
 msgid "Edit Disk"
 msgstr "編輯磁盤"
 
@@ -1799,6 +1803,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "網路流量"
 
+#, fuzzy
+msgid "status"
+msgstr "狀態"
+
 msgid "Subnet Mask"
 msgstr "子網掩碼"
 
@@ -1831,6 +1839,10 @@ msgstr "噪音"
 
 msgid "hidden"
 msgstr "隱藏"
+
+#, fuzzy
+msgid "ssid"
+msgstr "俄羅斯"
 
 msgid "Associated stations"
 msgstr "相關監測站"
@@ -2670,6 +2682,18 @@ msgstr ""
 msgid "of"
 msgstr "of"
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "您正在使用AskoziaPBX的最新版本。"
 
@@ -3035,6 +3059,47 @@ msgstr "防火墻"
 
 msgid "reload page"
 msgstr "重載頁面"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "呼出的Caller ID"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "電話"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "電話"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "電話"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "內部電話"
+
+#, fuzzy
+msgid "active"
+msgstr "互動"
+
+#, fuzzy
+msgid "inactive"
+msgstr "互動"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+#, fuzzy
+msgid "associated"
+msgstr "相關監測站"
+
+msgid "HIDE"
+msgstr ""
 
 #, fuzzy
 msgid "unconfigured"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 10:49+0000\n"
+"POT-Creation-Date: 2008-08-27 11:57+0000\n"
 "PO-Revision-Date: 2008-08-20 19:00+0100\n"
 "Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
 "Language-Team: Italian\n"
@@ -1352,6 +1352,10 @@ msgstr "Packages Installati"
 msgid "system storage partition"
 msgstr "partizione di sistema"
 
+#, fuzzy
+msgid "state"
+msgstr "Data/Ora"
+
 msgid "Edit Disk"
 msgstr "Modifica disco"
 
@@ -1955,6 +1959,10 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Traffico di rete"
 
+#, fuzzy
+msgid "status"
+msgstr "Stati"
+
 msgid "Subnet Mask"
 msgstr "Maschera sottorete"
 
@@ -1988,6 +1996,10 @@ msgstr "Rumore"
 #, fuzzy
 msgid "hidden"
 msgstr "(nascosto)"
+
+#, fuzzy
+msgid "ssid"
+msgstr "Russia"
 
 msgid "Associated stations"
 msgstr "Stazioni associate"
@@ -2916,6 +2928,18 @@ msgstr ""
 msgid "of"
 msgstr "di"
 
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "E' in uso la versione più aggiornata di AskoziaPBX."
 
@@ -3287,6 +3311,47 @@ msgstr "Firewall"
 
 msgid "reload page"
 msgstr "ricarica la pagina"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "Identificativo del chiamante uscente"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "Telefoni interni"
+
+#, fuzzy
+msgid "active"
+msgstr "inattivo"
+
+#, fuzzy
+msgid "inactive"
+msgstr "inattivo"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+#, fuzzy
+msgid "associated"
+msgstr "Stazioni associate"
+
+msgid "HIDE"
+msgstr ""
 
 msgid "unconfigured"
 msgstr "non configurato"
