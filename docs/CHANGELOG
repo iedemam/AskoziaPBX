@@ -4,6 +4,7 @@
  - changed: CD now carries over config changes upon installation
  - changed: CD installs directly from medium instead of memory disk, saving memory
  - bug: disk name extraction fixed
+ - bug: custom voicemail subject lines with quotes in them now saved/displayed correctly (reported by devon in the forums)
 
 2008.08.21 - pb14.3
  - added: outgoing Caller ID options added to ISDN and Analog Providers

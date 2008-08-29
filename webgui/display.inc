@@ -32,9 +32,9 @@ function display_userdefined_email_notification($subj, $body) {
 
 	?><span id="email_notification_wrapper" style="display: none;">
 		<br><?=gettext("Subject");?>
-		<br><input type="text" name="user_subject" id="user_subject" size="40" value="<?=$subj?>">
+		<br><input type="text" name="user_subject" id="user_subject" size="40" value="<?=htmlspecialchars($subj);?>">
 		<br><br><?=gettext("Body");?>
-		<br><textarea name="user_body" cols="60" rows="3" id="user_body" class="userdefined"><?=$body?></textarea><br>
+		<br><textarea name="user_body" cols="60" rows="3" id="user_body" class="userdefined"><?=htmlspecialchars($body);?></textarea><br>
 		<br><strong><?=gettext("The following variables can be used in the e-mail notification");?>:</strong>
 		<br>VM_MAILBOX = <?=gettext("extension number of voicemail box");?>
 		<br>VM_NAME = <?=gettext("name of voicemail recipient");?>
