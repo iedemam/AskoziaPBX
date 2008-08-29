@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-27 11:57+0000\n"
+"POT-Creation-Date: 2008-08-29 06:41+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2467,6 +2467,11 @@ msgstr "Verkkokäyttöliittymän kieli"
 
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Valitse verkkokäyttöliittymän kieli oheisesta valikosta."
+
+msgid ""
+"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
+"to provide a new translation."
+msgstr ""
 
 msgid "Audio Codecs"
 msgstr "Äänen pakkauksenhallinta"
