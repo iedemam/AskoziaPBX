@@ -1,3 +1,10 @@
+2008.xx.xx - xxx
+ - localization: updated Greek
+ - localization: more missing gettext strings marked
+ - changed: CD now carries over config changes upon installation
+ - changed: CD installs directly from medium instead of memory disk, saving memory
+ - bug: disk name extraction fixed
+
 2008.08.21 - pb14.3
  - added: outgoing Caller ID options added to ISDN and Analog Providers
  - added: Portuguese (Brazil) audio prompts
