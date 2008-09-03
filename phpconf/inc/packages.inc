@@ -234,7 +234,8 @@ function packages_shutdown_all() {
 function packages_check_server_versions() {
 	global $g;
 	$post = "&check=pbxpackage&platform=" . rawurlencode($g['fullplatform']) . 
-		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
+		"&version=" . rawurlencode(trim(file_get_contents("/etc/version"))) .
+		"&packagesystemversion=" . rawurlencode($g['package_system']);
 		
 	$rfd = @fsockopen("downloads.askozia.com", 80, $errno, $errstr, 3);
 	if ($rfd) {

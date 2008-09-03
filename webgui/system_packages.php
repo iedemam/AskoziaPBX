@@ -142,14 +142,17 @@ if ($_GET['check'] == "update") {
 						$destpkg = "$syspart_path/" . $ulpkgs[$i]['name'] . ".pkg";
 						// copy the new rc file
 						mwexec("/bin/cp $srcpkg/rc $destpkg");
-						// copy the new www files if present
-						if (file_exists("$srcpkg/www")) {
-							if (!file_exists("$destpkg/www")) {
-								mkdir("$destpkg/www");
+						// remove existing and update with new /bin /www /etc content
+						$pkg_dh = opendir($srcpkg);
+						while (($filename = readdir($pkg_dh)) !== false) {
+							if (($filename != "data") && ($filename != ".") && ($filename != "..") && is_dir("$srcpkg/$filename")) {
+								if (file_exists("$destpkg/$filename")) {
+									mwexec("rm -rf $destpkg/$filename");
+								}
+								mwexec("/bin/cp -R $srcpkg/$filename $destpkg");
 							}
-							mwexec("/bin/cp -R $srcpkg/www $destpkg");
 						}
-						// XXX : /bin should be copied as well (generalization needed...)
+						closedir($pkg_dh);
 						// execute the update routine
 						$ret = mwexec("/etc/rc.pkgexec $destpkg/rc update");
 						// update package meta info from built-in package
