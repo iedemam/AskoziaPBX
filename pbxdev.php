@@ -595,20 +595,15 @@ function populate_asterisk($image_name) {
 function populate_sounds($image_name) {
 	global $dirs, $core_sounds_version, $extra_sounds_version, 
 			$sound_languages, $sounds, $wake_me_sounds, $digits, $musiconhold;
-	
-	// create english directories
+
 	_exec("mkdir $image_name/asterisk/sounds");
-	_exec("mkdir $image_name/asterisk/sounds/silence");
-	_exec("mkdir $image_name/asterisk/sounds/digits");
-	
+
 	// sounds
 	foreach($sound_languages as $sound_language) {
 		
 		// create other language directories
-		if ($sound_language != "en") {
-			_exec("mkdir $image_name/asterisk/sounds/$sound_language");
-			_exec("mkdir $image_name/asterisk/sounds/digits/$sound_language");
-		}
+		_exec("mkdir $image_name/asterisk/sounds/$sound_language");
+		_exec("mkdir $image_name/asterisk/sounds/$sound_language/digits");
 
 		// us-english
 		if ($sound_language == "en") {
@@ -627,27 +622,28 @@ function populate_sounds($image_name) {
 				}
 				
 				foreach($sounds as $sound) {
-					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds");
+					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/en");
 				}
 				foreach($digits as $digit) {
-					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits");
+					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/en/digits");
 				}
 				
-				_exec("cp {$dirs['sounds']}/$distname/beep* $image_name/asterisk/sounds");
-				_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/silence");
+				_exec("cp {$dirs['sounds']}/$distname/beep* $image_name/asterisk/sounds/en");
+				_exec("mkdir $image_name/asterisk/sounds/en/silence");
+				_exec("cp {$dirs['sounds']}/$distname/silence/* $image_name/asterisk/sounds/en/silence");
 				
 				
 				// wakeme sounds
-				_exec("cp {$dirs['sounds']}/$distname/minutes.* $image_name/asterisk/sounds");
-				_exec("cp {$dirs['sounds']}/$distname/digits/a-m.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/p-m.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/1*.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/20.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/30.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/40.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/50.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/oclock.* $image_name/asterisk/sounds/digits");
-				_exec("cp {$dirs['sounds']}/$distname/digits/oh.* $image_name/asterisk/sounds/digits");
+				_exec("cp {$dirs['sounds']}/$distname/minutes.* $image_name/asterisk/sounds/en");
+				_exec("cp {$dirs['sounds']}/$distname/digits/a-m.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/p-m.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/1*.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/20.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/30.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/40.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/50.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/oclock.* $image_name/asterisk/sounds/en/digits");
+				_exec("cp {$dirs['sounds']}/$distname/digits/oh.* $image_name/asterisk/sounds/en/digits");
 
 				$distname = "asterisk-extra-sounds-en-$format-$extra_sounds_version";
 				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
@@ -659,7 +655,7 @@ function populate_sounds($image_name) {
 				}
 
 				foreach($wake_me_sounds as $sound) {
-					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds");
+					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/en");
 				}
 			}
 
@@ -681,7 +677,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/en-gb/$sound". "ulaw");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/en-gb/$digit.ulaw");
+				_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/en-gb/digits/$digit.ulaw");
 			}
 
 		// french
@@ -704,7 +700,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/fr/$sound* $image_name/asterisk/sounds/fr");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/digits/fr/$digit.* $image_name/asterisk/sounds/digits/fr");
+				_exec("cp {$dirs['sounds']}/$distname/digits/fr/$digit.* $image_name/asterisk/sounds/fr/digits");
 			}
 
 
@@ -728,7 +724,7 @@ function populate_sounds($image_name) {
 					_exec("cp {$dirs['sounds']}/$distname/$sound* $image_name/asterisk/sounds/fr-ca");
 				}
 				foreach($digits as $digit) {
-					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/digits/fr-ca");
+					_exec("cp {$dirs['sounds']}/$distname/digits/$digit.* $image_name/asterisk/sounds/fr-ca/digits");
 				}
 			}
 
@@ -752,7 +748,7 @@ function populate_sounds($image_name) {
 					_exec("cp {$dirs['sounds']}/$distname/es/$sound* $image_name/asterisk/sounds/es");
 				}
 				foreach($digits as $digit) {
-					_exec("cp {$dirs['sounds']}/$distname/es/digits/$digit.* $image_name/asterisk/sounds/digits/es");
+					_exec("cp {$dirs['sounds']}/$distname/es/digits/$digit.* $image_name/asterisk/sounds/es/digits");
 				}
 			}
 
@@ -777,7 +773,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/sounds/da/$sound* $image_name/asterisk/sounds/da");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/sounds/da/digits/$digit.* $image_name/asterisk/sounds/digits/da");
+				_exec("cp {$dirs['sounds']}/$distname/sounds/da/digits/$digit.* $image_name/asterisk/sounds/da/digits");
 			}
 
 
@@ -799,7 +795,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/de/$sound* $image_name/asterisk/sounds/de");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/digits/de/$digit.* $image_name/asterisk/sounds/digits/de");
+				_exec("cp {$dirs['sounds']}/$distname/digits/de/$digit.* $image_name/asterisk/sounds/de/digits");
 			}
 			
 
@@ -821,7 +817,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/sounds_it_2006_05_10/$sound* $image_name/asterisk/sounds/it");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/sounds_it_2006_05_10/digits/$digit.* $image_name/asterisk/sounds/digits/it");
+				_exec("cp {$dirs['sounds']}/$distname/sounds_it_2006_05_10/digits/$digit.* $image_name/asterisk/sounds/it/digits");
 			}
 		
 		
@@ -843,7 +839,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/jp/$sound* $image_name/asterisk/sounds/jp");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/digits/jp/$digit.* $image_name/asterisk/sounds/digits/jp");
+				_exec("cp {$dirs['sounds']}/$distname/digits/jp/$digit.* $image_name/asterisk/sounds/jp/digits");
 			}
 
 
@@ -865,7 +861,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/asterisksounds/$sound* $image_name/asterisk/sounds/nl");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/asterisksounds/digits/$digit.* $image_name/asterisk/sounds/digits/nl");
+				_exec("cp {$dirs['sounds']}/$distname/asterisksounds/digits/$digit.* $image_name/asterisk/sounds/nl/digits");
 			}
 
 		// swedish
@@ -886,7 +882,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/sounds/se/$sound* $image_name/asterisk/sounds/se");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/se/$digit.* $image_name/asterisk/sounds/digits/se");
+				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/se/$digit.* $image_name/asterisk/sounds/se/digits");
 			}
 
 		// russian
@@ -911,7 +907,7 @@ function populate_sounds($image_name) {
 				_exec("cp {$dirs['sounds']}/$distname/sounds/$sound* $image_name/asterisk/sounds/ru");
 			}
 			foreach($digits as $digit) {
-				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/$digit.* $image_name/asterisk/sounds/digits/ru");
+				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/$digit.* $image_name/asterisk/sounds/ru/digits");
 			}
 
 
@@ -941,7 +937,7 @@ function populate_sounds($image_name) {
 					_exec("cd {$dirs['sounds']}/$distname/sounds/digits/pt_BR/; " .
 					"sox -V $digit.wav -r 8000 -c 1 -t ul -w $digit.ulaw");
 				}
-				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/pt_BR/$digit.ulaw $image_name/asterisk/sounds/digits/pt-br");
+				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/pt_BR/$digit.ulaw $image_name/asterisk/sounds/pt-br/digits");
 			}
 		}
 	}

@@ -858,6 +858,7 @@ verbose = 3
 dumpcore = no
 internal_timing = yes
 highpriority = yes
+languageprefix = yes
 
 EOD;
 
