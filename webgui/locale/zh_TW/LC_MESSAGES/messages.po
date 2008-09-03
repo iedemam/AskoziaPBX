@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 06:41+0200\n"
+"POT-Creation-Date: 2008-09-03 00:05+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2865,6 +2865,13 @@ msgstr "英語"
 
 msgid "English (formal)"
 msgstr "英語（正式）"
+
+msgid "Czech"
+msgstr ""
+
+#, fuzzy
+msgid "Czech (formal)"
+msgstr "法語（正式）"
 
 msgid "Danish (formal)"
 msgstr "丹麥語（正式）"

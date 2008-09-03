@@ -36,6 +36,10 @@ require_once("functions.inc");
  */
 $vm_emailsubject = array(
 
+	// czech
+	"cs-informal" => 	"Máte zprávu v hlasové schránce (schránka: $\{VM_MAILBOX})",
+	"cs-formal" => 		"Vaše hlasová schárnka obsahuje novou zprávu  (schránka: $\{VM_MAILBOX})",
+
 	// danish
 	"da-informal" => 	"Ny telefonsvarer besked (boks: $\{VM_MAILBOX})",
 	"da-formal" => 		"Ny telefonsvarer besked (boks: $\{VM_MAILBOX})",
@@ -88,6 +92,17 @@ $vm_emailsubject = array(
  * XXX : consolidate in help.inc or something like languages.inc
  */
 $vm_emailbody = array(
+
+	// czech
+	"cs-informal" => 	"Vážený/vázená $\{VM_NAME},\\n\\n".
+						"ve vaší schránce byl zanechán vzkaz. ". 
+						"Zpráva byla zaznamenána $\{VM_DATE} a je $\{VM_DUR} dlouhá.\\n\\n".
+						"-AskoziaPBX",
+
+	"cs-formal" => 		"Vážený/vázená $\{VM_NAME},\\n\\n".
+						"vaše hlasová schárnka obsahuje novou zprávu. ".
+						"Zpráva byla zanechána dne $\{VM_DATE}. Delka zprávy: $\{VM_DUR}.\\n\\n".
+						"-AskoziaPBX",
 
 	// danish
 	"da-informal" => 	"Kære $\{VM_NAME},\\n\\n".

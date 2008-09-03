@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 06:41+0200\n"
+"POT-Creation-Date: 2008-09-03 00:05+0200\n"
 "PO-Revision-Date: 2008-08-20 19:00+0100\n"
 "Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
 "Language-Team: Italian\n"
@@ -3116,6 +3116,13 @@ msgstr "Inglese"
 
 msgid "English (formal)"
 msgstr "Inglese (formale)"
+
+msgid "Czech"
+msgstr ""
+
+#, fuzzy
+msgid "Czech (formal)"
+msgstr "Francese (formale)"
 
 msgid "Danish (formal)"
 msgstr "Danese (formale)"

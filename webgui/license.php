@@ -131,6 +131,7 @@ $pgtitle = array("License");
 	<ul>
 		<li>Bulgarian - Chavdar Shtiliyanov</li>
 		<li>Chinese (Traditional & Simplified) - Xing Cao</li>
+		<li>Czech - David Moravec</li>
 		<li>Danish - Carsten Matzon</li>
 		<li>Dutch - Wim Van Clapdurp</li>
 		<li>Finnish - Christoffer Lindqvist</li>

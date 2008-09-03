@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 06:41+0200\n"
+"POT-Creation-Date: 2008-09-03 00:05+0200\n"
 "PO-Revision-Date: 2008-08-13 23:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2889,6 +2889,12 @@ msgid "English"
 msgstr ""
 
 msgid "English (formal)"
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
+msgid "Czech (formal)"
 msgstr ""
 
 msgid "Danish (formal)"

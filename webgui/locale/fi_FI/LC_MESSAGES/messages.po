@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 06:41+0200\n"
+"POT-Creation-Date: 2008-09-03 00:05+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3016,6 +3016,13 @@ msgstr "Englannin kieli"
 
 msgid "English (formal)"
 msgstr "Englannin kilei (virallinen)"
+
+msgid "Czech"
+msgstr ""
+
+#, fuzzy
+msgid "Czech (formal)"
+msgstr "Ranskan kieli (virallinen)"
 
 msgid "Danish (formal)"
 msgstr "Tanskan kieli (virallinen)"

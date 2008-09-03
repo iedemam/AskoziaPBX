@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 06:41+0200\n"
+"POT-Creation-Date: 2008-09-03 00:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -2902,6 +2902,13 @@ msgstr "Angielski"
 
 msgid "English (formal)"
 msgstr "Angielski (formalny)"
+
+msgid "Czech"
+msgstr ""
+
+#, fuzzy
+msgid "Czech (formal)"
+msgstr "Francuski (formalny)"
 
 msgid "Danish (formal)"
 msgstr "Duński (formalny)"
