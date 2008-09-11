@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1551,9 +1551,6 @@ msgstr "Format"
 msgid "Size"
 msgstr "Rozmiar"
 
-msgid "Location"
-msgstr "Lokalizacja"
-
 msgid "Printable Dialplan"
 msgstr "Drukowalny dialplan"
 
@@ -1804,6 +1801,9 @@ msgstr "Status"
 
 msgid "There are currently no active channels."
 msgstr "Nie ma w tej chwili aktywnych kanałów."
+
+msgid "Location"
+msgstr "Lokalizacja"
 
 msgid "Application"
 msgstr "Aplikacja"
@@ -2930,6 +2930,14 @@ msgstr "Francuski (formalny)"
 
 msgid "German (formal)"
 msgstr "Niemiecki (formalny)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Grecja"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Francuski (formalny)"
 
 msgid "Italian (formal)"
 msgstr "Włoski (formalny)"

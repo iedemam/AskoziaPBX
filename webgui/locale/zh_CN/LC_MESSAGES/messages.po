@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1512,9 +1512,6 @@ msgstr "格式"
 msgid "Size"
 msgstr "大小"
 
-msgid "Location"
-msgstr "位置"
-
 msgid "Printable Dialplan"
 msgstr "可打印的拨号计划"
 
@@ -1761,6 +1758,9 @@ msgstr "状态"
 
 msgid "There are currently no active channels."
 msgstr "目前没有活动的信道。"
+
+msgid "Location"
+msgstr "位置"
 
 msgid "Application"
 msgstr "应用"
@@ -2894,6 +2894,14 @@ msgstr "法语（正式）"
 
 msgid "German (formal)"
 msgstr "德语（正式）"
+
+#, fuzzy
+msgid "Greek"
+msgstr "希腊"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "法语（正式）"
 
 msgid "Italian (formal)"
 msgstr "意大利语（正式）"

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
-"PO-Revision-Date: 2008-08-20 19:00+0100\n"
-"Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
+"PO-Revision-Date: 2008-09-11 16:03+0100\n"
+"Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1644,9 +1644,6 @@ msgstr "Formato"
 msgid "Size"
 msgstr "Grandezza"
 
-msgid "Location"
-msgstr "Localizzazione"
-
 msgid "Printable Dialplan"
 msgstr "Piano di chiamata per la stampa."
 
@@ -1914,6 +1911,9 @@ msgstr "Stati"
 msgid "There are currently no active channels."
 msgstr "Al momento non ci sono canali attivi."
 
+msgid "Location"
+msgstr "Localizzazione"
+
 msgid "Application"
 msgstr "Applicazione"
 
@@ -1997,9 +1997,8 @@ msgstr "Rumore"
 msgid "hidden"
 msgstr "(nascosto)"
 
-#, fuzzy
 msgid "ssid"
-msgstr "Russia"
+msgstr "ssid"
 
 msgid "Associated stations"
 msgstr "Stazioni associate"
@@ -2470,7 +2469,7 @@ msgid "Install"
 msgstr "Installa"
 
 msgid "No new packages available."
-msgstr ""
+msgstr "Nessun nuovo package disponibile."
 
 msgid "Select a .pbxpkg file from your computer to install."
 msgstr "Selezionate sul vostro computer un file .pbxpkg  per l'installazione."
@@ -2555,6 +2554,8 @@ msgid ""
 "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
 "to provide a new translation."
 msgstr ""
+"Per favore <a href=\"mailto:michael@askozia.com\">contattaci</a> se sei in "
+"grado di fornire una nuova traduzione."
 
 msgid "Audio Codecs"
 msgstr "Codificatori Audio"
@@ -2934,16 +2935,16 @@ msgid "of"
 msgstr "di"
 
 msgid "connected"
-msgstr ""
+msgstr "connesso"
 
 msgid "connected but lagged"
-msgstr ""
+msgstr "connesso ma ritardato"
 
 msgid "unreachable"
-msgstr ""
+msgstr "irraggiungibile"
 
 msgid "status unknown"
-msgstr ""
+msgstr "stato indefinito"
 
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "E' in uso la versione più aggiornata di AskoziaPBX."
@@ -3118,11 +3119,10 @@ msgid "English (formal)"
 msgstr "Inglese (formale)"
 
 msgid "Czech"
-msgstr ""
+msgstr "Ceco"
 
-#, fuzzy
 msgid "Czech (formal)"
-msgstr "Francese (formale)"
+msgstr "Ceco (formale)"
 
 msgid "Danish (formal)"
 msgstr "Danese (formale)"
@@ -3144,6 +3144,14 @@ msgstr "Francese (formale)"
 
 msgid "German (formal)"
 msgstr "Tedesco (formale)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Grecia"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Francese (formale)"
 
 msgid "Italian (formal)"
 msgstr "Italiano (formale)"
@@ -3344,26 +3352,24 @@ msgstr "Derivati"
 msgid "Analog Phones"
 msgstr "Telefoni interni"
 
-#, fuzzy
 msgid "active"
-msgstr "inattivo"
+msgstr "attivo"
 
-#, fuzzy
 msgid "inactive"
 msgstr "inattivo"
 
 msgid "up"
-msgstr ""
+msgstr "su"
 
 msgid "down"
-msgstr ""
+msgstr "giù"
 
 #, fuzzy
 msgid "associated"
 msgstr "Stazioni associate"
 
 msgid "HIDE"
-msgstr ""
+msgstr "NASCONDI"
 
 msgid "unconfigured"
 msgstr "non configurato"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1623,9 +1623,6 @@ msgstr "Formaat"
 msgid "Size"
 msgstr "Grootte"
 
-msgid "Location"
-msgstr "Locatie"
-
 msgid "Printable Dialplan"
 msgstr "Afdrukbaar Belplan"
 
@@ -1873,6 +1870,9 @@ msgstr "Status"
 
 msgid "There are currently no active channels."
 msgstr ""
+
+msgid "Location"
+msgstr "Locatie"
 
 msgid "Application"
 msgstr "Toepassingen"
@@ -2938,6 +2938,14 @@ msgstr "Frans (formeel)"
 
 msgid "German (formal)"
 msgstr "Duits (formeel)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Griekenland"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Frans (formeel)"
 
 msgid "Italian (formal)"
 msgstr "Italiaans (formeel)"

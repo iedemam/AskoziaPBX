@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
 "PO-Revision-Date: 2008-09-02 15:54+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1456,9 +1456,6 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-msgid "Location"
-msgstr ""
-
 msgid "Printable Dialplan"
 msgstr ""
 
@@ -1693,6 +1690,9 @@ msgid "Status"
 msgstr ""
 
 msgid "There are currently no active channels."
+msgstr ""
+
+msgid "Location"
 msgstr ""
 
 msgid "Application"
@@ -2746,6 +2746,14 @@ msgstr "Francouzština (oficiální)"
 
 msgid "German (formal)"
 msgstr "Němčina (oficiální)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Řecko"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Francouzština (oficiální)"
 
 msgid "Italian (formal)"
 msgstr "Italština (oficiální)"

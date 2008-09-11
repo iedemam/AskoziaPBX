@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1455,9 +1455,6 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-msgid "Location"
-msgstr ""
-
 msgid "Printable Dialplan"
 msgstr ""
 
@@ -1692,6 +1689,9 @@ msgid "Status"
 msgstr ""
 
 msgid "There are currently no active channels."
+msgstr ""
+
+msgid "Location"
 msgstr ""
 
 msgid "Application"
@@ -2743,6 +2743,12 @@ msgid "French (formal)"
 msgstr ""
 
 msgid "German (formal)"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Greek (formal)"
 msgstr ""
 
 msgid "Italian (formal)"

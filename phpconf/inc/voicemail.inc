@@ -63,6 +63,10 @@ $vm_emailsubject = array(
 	"fr-informal" => 	"tu as reçu un nouveau message dans ta boite vocale",
 	"fr-formal" => 		"vous avez reçu un nouveau message dans votre boite vocale",
 
+	// greek
+	"gr-informal" => 	"Νέο φωνητικό μήνυμα (θυρίδα: $\{VM_MAILBOX})",
+	"gr-formal" => 		"Νέο φωνητικό μήνυμα (θυρίδα: $\{VM_MAILBOX})",
+
 	// italian
 	"it-formal" => 		"Nuovo messaggio voicemail (box: $\{VM_MAILBOX})",
 	"it-informal" =>	"Nuovo messaggio voicemail per te (box: $\{VM_MAILBOX})",
@@ -89,7 +93,6 @@ $vm_emailsubject = array(
 
 /**
  * Voicemail notification e-mail bodies
- * XXX : consolidate in help.inc or something like languages.inc
  */
 $vm_emailbody = array(
 
@@ -159,6 +162,17 @@ $vm_emailbody = array(
 	"fr-formal" => 		"Cher $\{VM_NAME},\\n\\n".
 						"Un message de $\{VM_CALLERID} vous attend dans votre boite vocale.\\n\\n".
 						"Vous trouverez en pièce jointe le message d'une durée de $\{VM_DUR} qui vous a été laissé en date du $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	// greek
+	"gr-formal" => 		"Αγαπητέ/ή $\{VM_NAME},\\n\\n".
+						"Έχετε ένα νέο ηχητικό μήνυμα διάρκειας $\{VM_DUR}. ".
+						"Το μήνυμα ηχογραφήθηκε στις $\{VM_DATE} από το $\{VM_CALLERID}.\\n\\n".
+						"-AskoziaPBX",
+
+	"gr-informal" => 	"Αγαπητέ/ή $\{VM_NAME},\\n\\n".
+						"Μια κλήση από το $\{VM_CALLERID} έφτασε στη θυρίδα σας στις $\{VM_DATE}. ".
+						"Ακολουθεί το μήνυμα με διάρκεια $\{VM_DUR}.\\n\\n".
 						"-AskoziaPBX",
 
 	// italian

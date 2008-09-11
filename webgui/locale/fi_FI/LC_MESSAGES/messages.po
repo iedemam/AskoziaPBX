@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 00:05+0200\n"
+"POT-Creation-Date: 2008-09-11 16:34+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1597,9 +1597,6 @@ msgstr "Formaatti"
 msgid "Size"
 msgstr "Koko"
 
-msgid "Location"
-msgstr "Paikka"
-
 msgid "Printable Dialplan"
 msgstr "Tulostettava Soittosuunitelma"
 
@@ -1856,6 +1853,9 @@ msgstr "Status"
 
 msgid "There are currently no active channels."
 msgstr "Tällä hetkellä ei löydy aktiivista kanavaa."
+
+msgid "Location"
+msgstr "Paikka"
 
 msgid "Application"
 msgstr "Sovellus"
@@ -3044,6 +3044,14 @@ msgstr "Ranskan kieli (virallinen)"
 
 msgid "German (formal)"
 msgstr "Saksan kieli (virallinen)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Kreikka"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Ranskan kieli (virallinen)"
 
 msgid "Italian (formal)"
 msgstr "Italian kieli (virallinen)"
