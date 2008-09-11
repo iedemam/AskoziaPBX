@@ -273,17 +273,7 @@ require_once("functions.inc");
 					$base_path = "/asterisk/sounds";
 					$dh = opendir($base_path);
 					while (false !== ($filename = readdir($dh))) {
-						/* english (us) prompts */
-						if (preg_match("/\S+\.\S+/", $filename)) {
-							$prompts['en'][] = array(
-								get_filename($filename),
-								get_format($filename),
-								format_bytes(filesize($base_path . "/" . $filename)),
-								"default"
-							);
-
-						/* all other international prompt subdirectories */
-						} else if (in_array($filename, $languages)) {
+						if (in_array($filename, $languages)) {
 							$lang = $filename;
 							$path = $base_path . "/" . $lang;
 							$dh_sub = opendir($path);
@@ -292,40 +282,7 @@ require_once("functions.inc");
 									$prompts[$lang][] = array(
 										get_filename($filename),
 										get_format($filename),
-										format_bytes(filesize($path . "/" . $filename)),
-										"default"
-									);
-								}
-							}
-							closedir($dh_sub);
-						}
-					}
-					closedir($dh);
-
-					$digits_path = "/asterisk/sounds/digits";
-					$dh = opendir($digits_path);
-					while (false !== ($filename = readdir($dh))) {
-						/* english (us) digits */
-						if (preg_match("/\S+\.\S+/", $filename)) {
-							$prompts['en'][] = array(
-								"digits/" . get_filename($filename),
-								get_format($filename),
-								format_bytes(filesize($digits_path . "/" . $filename)),
-								"default"
-							);
-                    
-						/* all other international digits */
-						} else if (in_array($filename, $languages)) {
-							$lang = $filename;
-							$path = $digits_path . "/" . $lang;
-							$dh_sub = opendir($path);
-							while (false !== ($filename = readdir($dh_sub))) {
-								if (preg_match("/\S+\.\S+/", $filename)) {
-									$prompts[$lang][] = array(
-										"digits/" . get_filename($filename),
-										get_format($filename),
-										format_bytes(filesize($path . "/" . $filename)),
-										"default"
+										format_bytes(filesize($path . "/" . $filename))
 									);
 								}
 							}
@@ -351,7 +308,6 @@ require_once("functions.inc");
 								<td><strong><?=gettext("Filename");?></strong></td>
 								<td><strong><?=gettext("Format");?></strong></td>
 								<td><strong><?=gettext("Size");?></strong></td>
-								<td><strong><?=gettext("Location");?></strong></td>
 							</tr><?
 
 							/* for each prompt... */
@@ -360,12 +316,11 @@ require_once("functions.inc");
 									<td><?=$prompt[0];?></td>
 									<td><?=$prompt[1];?></td>
 									<td><?=$prompt[2];?></td>
-									<td><?=$prompt[3];?></td>
 								</tr><?
 							}
 
 							?><tr>
-								<td class="list" colspan="4" height="12">&nbsp;</td>
+								<td class="list" colspan="3" height="12">&nbsp;</td>
 							</tr><?
 
 						}
