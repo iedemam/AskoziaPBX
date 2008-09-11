@@ -255,27 +255,27 @@ function javascript_account_statuses($part) {
 			switch(status[1]) {
     	    
 				case "OK":
-				title = <?gettext("connected");?>;
+				title = "<?=gettext("connected");?>";
 				src = "bullet_green.png";
 				break;
     	    
 				case "LAGGED":
-				title = <?gettext("connected but lagged");?>;
+				title = "<?=gettext("connected but lagged");?>";
 				src = "bullet_yellow.png";
 				break;
     	    
 				case "UNREACHABLE":
-				title = <?gettext("unreachable");?>;
+				title = "<?=gettext("unreachable");?>";
 				src = "bullet_red.png";
 				break;
     	    
 				case "UNKNOWN":
-				title = <?gettext("status unknown");?>;
+				title = "<?=gettext("status unknown");?>";
 				src = "bullet_white.png";
 				break;
     	    
 				default:
-				title = <?gettext("status unknown");?>;
+				title = "<?=gettext("status unknown");?>";
 				src = "bullet_white.png";
 				break;
 			}
