@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:10+0200\n"
-"PO-Revision-Date: 2008-08-13 23:37+0200\n"
+"POT-Creation-Date: 2008-09-16 13:19+0200\n"
+"PO-Revision-Date: 2008-09-15 19:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -220,7 +220,7 @@ msgid ""
 "<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
 "Това ще накара АскозияPBX да не проверява за нови програмни версии когато <a "
-"href=\"system_firmware.php\">Главни: Програма</a> страница се разглежда."
+"href=\"system_firmware.php\">Главни: Обновяване</a> страница се разглежда."
 
 msgid "Package version checks"
 msgstr "Проверка версия на пакетите"
@@ -248,7 +248,7 @@ msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last access has elapsed. <em>Do not set this for CF cards."
 msgstr ""
-"Посравя твърдия диск в режим на готовност когато избрания период от време "
+"Поставя твърдия диск в режим на готовност когато избрания период от време "
 "след последното използване изтече. <em>Не го използвайте за Компакт Флаш "
 "карти."
 
@@ -379,7 +379,7 @@ msgid "RTP Port Range"
 msgstr "Диапазон RTP Портове"
 
 msgid "The port range which RTP streams should use. (default:"
-msgstr "Диапазонът който RTP потоците ще използват. (по подразбиране:"
+msgstr "Диапазонът който RTP потоците ще използват (по подразбиране:"
 
 msgid "Warning"
 msgstr "Внимание"
@@ -425,8 +425,8 @@ msgid ""
 "The minimum, maximum and default number of seconds that incoming and "
 "outgoing registrations and subscriptions remain valid."
 msgstr ""
-"Минималното, максималното и по подразбиране число в секунди които входящите "
-"и изходящите регистрации и подписи остават валидни."
+"Минималното, максималното и по подразбиране време в секунди за което "
+"входящите и изходящите регистрации и подписи остават валидни."
 
 msgid "Default values are 60, 3600 and 120 respectively."
 msgstr "Стоностите по подразбиране са съответно 60, 3600 и 120."
@@ -852,31 +852,31 @@ msgstr ""
 "да се върне обратно към паркиращия (по подразбиране 30)."
 
 msgid "AskoziaPBX: execute command"
-msgstr "АскозияPBX: изпълнение на команди"
+msgstr "АскозияPBX: Изпълнение на Команди"
 
 msgid "enter a command below..."
-msgstr "въведете командата по-долу"
+msgstr "въведете командата по-долу..."
 
 msgid "Command:"
-msgstr "Команда:"
+msgstr "Command:"
 
 msgid "Execute"
-msgstr "Изпълни"
+msgstr "Execute"
 
 msgid "Clear"
-msgstr "Изчисти"
+msgstr "Clear"
 
 msgid "Download:"
-msgstr "Изтегли:"
+msgstr "Download:"
 
 msgid "Download"
-msgstr "Изтегли"
+msgstr "Download"
 
 msgid "Upload:"
-msgstr "Зареди:"
+msgstr "Upload:"
 
 msgid "Upload"
-msgstr "Зареди"
+msgstr "Upload"
 
 msgid "In"
 msgstr "Входящи"
@@ -993,7 +993,7 @@ msgid "Echo Canceller"
 msgstr "Ехо Неутрализатор"
 
 msgid "Disabled"
-msgstr "Забрани"
+msgstr "Забранени"
 
 msgid "edit analog interface"
 msgstr "редактирай аналогов интерфейс"
@@ -1087,7 +1087,7 @@ msgid "Operating Mode"
 msgstr "Режим на Работа"
 
 msgid "Enabled"
-msgstr ""
+msgstr "Разрешени"
 
 msgid "edit ISDN interface"
 msgstr "редактирай ISDN интерфейс"
@@ -1099,21 +1099,30 @@ msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 "calls and is attached to the public ISDN network or another PBX system"
 msgstr ""
+"point-to-multipoint, крайно устройство: този порт приема MSN-и за рутиране "
+"на обажданията и е свързан към национална ISDN мрежа или друга телефонна "
+"централа"
 
 msgid ""
 "multipoint-to-point, network termination: this port provides MSNs to route "
 "calls and is attached to one or more telephones"
 msgstr ""
+"multipoint-to-point, мрежово свързване: този порт предоставя MSN-и за "
+"рутиране на обажданиятаи е свързан към един или повече телефонни апарата"
 
 msgid ""
 "point-to-point, terminal equipment: this port accepts DID to route calls and "
 "is connected directly to another PBX system"
 msgstr ""
+"point-to-point, крайно устройство: този порт приема DID за рутиране на "
+"обажданията и е свързан директно към друга телефонна централа"
 
 msgid ""
 "point-to-point, network termination: this port provides DID to route calls "
 "and is connected directly to another PBX system"
 msgstr ""
+"point-to-point, мрежово свързване: този порт предоставя DID за рутиране на "
+"обажданията и е свързан директно към друга телефонна централа"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -1316,9 +1325,8 @@ msgstr "Инсталирани Пакети"
 msgid "system storage partition"
 msgstr "разделяне на системна памет"
 
-#, fuzzy
 msgid "state"
-msgstr "начало"
+msgstr "състояние"
 
 msgid "Edit Disk"
 msgstr "Редактирай Диск"
@@ -1331,40 +1339,44 @@ msgid ""
 "to act as an Access Point. It will be bridged to the wired network that "
 "AskoziaPBX is connected to."
 msgstr ""
+"Ако съвместима безжична карта е монтирана в системата, тя може да бъде "
+"конфигурирана да работи като Access Point. Ще бъде свързана към кабелната "
+"мрежа към която е включена и АскозияPBX."
 
 msgid "SSID,Channel"
-msgstr ""
+msgstr "SSID,Канал"
 
 msgid ",WPA version,WPA cipher"
-msgstr ""
+msgstr ",WPA версия,WPA код"
 
 msgid ",WPA PSK"
-msgstr ""
+msgstr ",WPA PSK"
 
 msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr ""
+msgstr "WPA PSK трябва да е между 8 и 63 символа дълъг."
 
 msgid ""
 "802.11a channels can only be selected if the standard is set to 802.11a too."
 msgstr ""
+"802.11a канали могат да бъдат избирани ако е избран стандарт 802.11a също."
 
 msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
+msgstr "802.11a може да бъде избран ако 802.11a канал е избран също."
 
 msgid "No compatible wireless interfaces detected."
 msgstr "Не са намерени съвместими безжични интерфейси."
 
 msgid "Enable Wireless Interface"
-msgstr ""
+msgstr "Разреши Безжичен Интерфейс"
 
 msgid "Standard"
-msgstr ""
+msgstr "Стандарт"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "Скрий SSID"
 
 msgid ""
 "If this option is selected, the SSID will not be broadcast in hostap mode, "
@@ -1372,92 +1384,104 @@ msgid ""
 "this option should never be used as a substitute for proper security/"
 "encryption settings."
 msgstr ""
+"Ако тази опция е избрана, SSID няма да се излъчва в hostap режим, и само "
+"клиенти които знаят точната SSID ще могат да се закачат. Имайте впредвид че "
+"тази опция никога не трябва да се използва за заместител на защитните "
+"настройки."
 
 msgid "Channel"
-msgstr ""
+msgstr "Канал"
 
 msgid "Auto"
-msgstr ""
+msgstr "Автоматично"
 
 msgid "WPA"
-msgstr ""
+msgstr "WPA"
 
 msgid "WPA settings"
-msgstr ""
+msgstr "WPA настройки"
 
 msgid "Mode"
-msgstr ""
+msgstr "Режим"
 
 msgid "none"
-msgstr ""
+msgstr "без"
 
 msgid "PSK"
-msgstr ""
+msgstr "PSK"
 
 msgid "WPA only"
-msgstr ""
+msgstr "WPA"
 
 msgid "WPA2 only"
-msgstr ""
+msgstr "WPA2"
 
 msgid "WPA + WPA2"
-msgstr ""
+msgstr "WPA + WPA2"
 
 msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr ""
+msgstr "В повечето случаи, би трябвало да изберете &quot;WPA + WPA2&quot; тук."
 
 msgid "Cipher"
-msgstr ""
+msgstr "Код"
 
 msgid "TKIP"
-msgstr ""
+msgstr "TKIP"
 
 msgid "AES/CCMP"
-msgstr ""
+msgstr "AES/CCMP"
 
 msgid "TKIP + AES/CCMP"
-msgstr ""
+msgstr "TKIP + AES/CCMP"
 
 msgid ""
 "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
 "with older hardware."
 msgstr ""
+"AES/CCMP предоставя по-добра защита от TKIP, но TKIP е по съвместим с по-"
+"стар хардуер."
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
+"Въведете кодова дума която ще бъде използвана в WPA-PSK режим. Трябва да е "
+"между 8 и 63 символа дълга."
 
 msgid "WEP"
-msgstr ""
+msgstr "WEP"
 
 msgid "Enable WEP"
-msgstr ""
+msgstr "Разреши WEP"
 
 msgid "TX key"
-msgstr ""
+msgstr "TX код"
 
 msgid "Key 1:"
-msgstr ""
+msgstr "Код 1:"
 
 msgid "Key 2:"
-msgstr ""
+msgstr "Код 2:"
 
 msgid "Key 3:"
-msgstr ""
+msgstr "Код 3:"
 
 msgid "Key 4:"
-msgstr ""
+msgstr "Код 4:"
 
 msgid ""
 "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
 "preceded by '0x'."
 msgstr ""
+"40 (64) bit кодове може да се въвеждат с 5 ASCII символа или 10 "
+"шестнадесетични символа предхождани от '0x'."
 
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
 msgstr ""
+"104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
+"шестнадесетични символа предхождани от '0x'."
 
 msgid "Edit Analog Line"
 msgstr "Редактирай Аналогова Линия"
@@ -1477,6 +1501,9 @@ msgid ""
 "type of account, make sure an appropriately configured interface is present "
 "on the %s page"
 msgstr ""
+"<strong>Не са намерени съвместими интерфейси!</strong><br><br> За да "
+"конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
+"интерфейс присъства в %s страница"
 
 msgid "Internal extension used to reach this phone."
 msgstr "Вътрешен Номер използван за достъп до този телефон."
@@ -1507,159 +1534,174 @@ msgid "Outgoing provider to be used to reach this telephone."
 msgstr "Изходяща линия използвана за достъп до този телефон."
 
 msgid "Edit IAX Account"
-msgstr ""
+msgstr "Редактирай IAX Акаунт"
 
 msgid "A valid secret must be specified."
-msgstr ""
+msgstr "Трябва да бъде определена валидна парола."
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
+msgstr "Цяло число в секунди трябва да бъде въведено за  \"qualify\" пауза."
 
 msgid ""
 "The phone number assigned to this account. Also this account's username."
 msgstr ""
+"Телефонен номер определен за този акаунт. Също и потребителско име на този "
+"акаунт."
 
 msgid "plaintext"
-msgstr ""
+msgstr "прав текст"
 
 msgid "md5"
-msgstr ""
+msgstr "md5"
 
 msgid "This account's password and authentication scheme."
-msgstr ""
+msgstr "Парола и схема на удостоверяване на този акаунт."
 
 msgid "Edit ISDN Line"
-msgstr ""
+msgstr "Редактирай ISDN Линия"
 
 msgid "This phone's number (MSN)."
-msgstr ""
+msgstr "Телефонни номера (MSN)."
 
 msgid "Edit SIP Account"
-msgstr ""
+msgstr "Редактирай SIP Акаунт"
 
 msgid "A whole number of calls must be entered for the \"call limit.\""
 msgstr ""
+"Цяло число за брой обаждания трябва да бъде въведено за \"call limit.\""
 
 msgid "A whole number of calls must be entered for the \"busy limit.\""
 msgstr ""
+"Цяло число за брой обаждания трябва да бъде въведено за \"busy limit.\""
 
 msgid "This account's password."
-msgstr ""
+msgstr "Парола на акаунта."
 
 msgid "Dialplan Element Library"
-msgstr ""
+msgstr "Dialplan Element Библиотека"
 
 msgid "Functions"
-msgstr ""
+msgstr "Функции"
 
 msgid "Audio Prompts"
-msgstr ""
+msgstr "Аудио Съобщения"
 
 msgid ""
 "Below is a list of the currently defined phones along with a basic Dial() "
 "command to call them. Many additional options are available for this "
 "command, please read its reference documentation in the Applications tab."
 msgstr ""
+"По-долу е списъка с текущи дефинирани телефони заедно с основни Dial() "
+"команди за избирането им. Много допълнителни опции са възможни за тази "
+"команда, моля прочетете прилежащата и документация в меню Приложения."
 
 msgid "Caller ID / Name"
-msgstr ""
+msgstr "Caller ID / Име"
 
 msgid "Basic"
-msgstr ""
+msgstr "Основен"
 
 msgid "Filename"
-msgstr ""
+msgstr "Име на файл"
 
 msgid "Format"
-msgstr ""
+msgstr "Формат"
 
 msgid "Size"
-msgstr ""
+msgstr "Големина"
 
 msgid "Printable Dialplan"
-msgstr ""
+msgstr "Годен за Печат Dialplan"
 
 msgid "Internal Phones"
-msgstr ""
+msgstr "Вътрешни Телефони"
 
 msgid "External Phones"
-msgstr ""
+msgstr "Външни Телефони"
 
 msgid "Conference Rooms"
-msgstr ""
+msgstr "Стаи за Конференции"
 
 msgid "Pin"
 msgstr "Код"
 
 msgid "Custom Applications"
-msgstr ""
+msgstr "Ръчно Направени Приложения"
 
 msgid "Dialing Pattern(s)"
-msgstr ""
+msgstr "Схеми на Избиране"
 
 msgid "A valid Caller ID string must be specified."
-msgstr ""
+msgstr "Трябва да бъде въведен валиден Caller ID стринг."
 
 msgid "An incoming Caller ID override string must be specified."
-msgstr ""
+msgstr "Трябва да бъде въведен входящ Caller ID отменящ стринг."
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr ""
+msgstr "Схемата на избиране \"%s\" е неправилна. %s"
 
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr ""
+msgstr "Входящата схема на вътрешен номер \"%s\" е неправилна. %s"
 
 msgid "Descriptive name for this provider."
-msgstr ""
+msgstr "Описващо име за тази външна линия."
 
 msgid "Telephone number assigned to this line."
-msgstr ""
+msgstr "Телефонен номер определен за тази линия."
 
 msgid "A valid username must be specified."
-msgstr ""
+msgstr "Трябва да бъде въведено валидно потребителско име ."
 
 msgid "IAX proxy host URL or IP address and optional port."
-msgstr ""
+msgstr "IAX прокси host URL или IP адрес и порт по избор."
 
 msgid "A valid default number (MSN) must be specified."
-msgstr ""
+msgstr "Трябва да бъде въведен валиден номер по подразбиране (MSN) ."
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr ""
+"Телефонен номер по подразбиране (MSN) определен за тази линия. Индивидуално "
+"MSN рутиране може да се дефинира по-долу."
 
 msgid "A valid \"fromuser\" must be specified."
-msgstr ""
+msgstr "Трябва да бъде въведен валиден \"fromuser\" ."
 
 msgid "SIP proxy host URL or IP address and optional port."
-msgstr ""
+msgstr "SIP прокси host URL или IP адрес и порт по избор."
 
 msgid "Authorization User"
-msgstr ""
+msgstr "Упълномощаващ Потребител"
 
 msgid ""
 "Some providers require a seperate authorization username.<br>Defaults to "
 "username entered above."
 msgstr ""
+"Някои доставчици изискват отделно упълмощавашо потребителско име.<br>По "
+"подразбиране потребителското име въведено по-горе."
 
 msgid "From User"
-msgstr ""
+msgstr "From User"
 
 msgid ""
 "Some providers require a seperate 'from' user.<br>Defaults to username "
 "entered above."
 msgstr ""
+"Някои доставчици изискват отделно 'from' user.<br>По подразбиране "
+"потребителското име въведено по-горе."
 
 msgid "From Domain"
-msgstr ""
+msgstr "From Domain"
 
 msgid ""
 "Some providers require a seperate 'from' domain. <br>Defaults to host "
 "entered above."
 msgstr ""
+"Някои доставчици изискват отделен 'from' domain. <br>По подразбиране host-а "
+"въведен по-горе."
 
 msgid "Services"
 msgstr "Услуги"
@@ -1683,42 +1725,44 @@ msgid "Room Number"
 msgstr "Стая номер"
 
 msgid "edit conference room"
-msgstr ""
+msgstr "редактирай стая за конференции"
 
 msgid "Do you really want to delete this conference room?"
-msgstr ""
+msgstr "Сигурни ли сте че искате да изтриете тази стая за конференции?"
 
 msgid "delete conference room"
-msgstr ""
+msgstr "изтрий стая за конференции"
 
 msgid "add conference room"
-msgstr ""
+msgstr "добави стая за конференции"
 
 msgid "Edit Room"
-msgstr ""
+msgstr "Редактирай Стаята"
 
 msgid "Conference room numbers must be numeric."
-msgstr ""
+msgstr "Номера на стая за конференции трябва да е от цифри."
 
 msgid "Conference number already exists."
-msgstr ""
+msgstr "Конференцията вече съществува."
 
 msgid "Conference number matches an existing extension."
-msgstr ""
+msgstr "Конференцията съвпада със съществуващ вътрешен номер."
 
 msgid "Conference pins must be numeric."
-msgstr ""
+msgstr "Кодът на конференцията трябва да е от цифри."
 
 msgid ""
 "The conference room's number, also the extension that this conference is "
 "reachable at."
 msgstr ""
+"Номера на стаи за конференции, също така и вътрешен номер с който тази "
+"конференция ще се избира."
 
 msgid "Access PIN"
-msgstr ""
+msgstr "Код за Достъп"
 
 msgid "Optional PIN needed to access this conference room."
-msgstr ""
+msgstr "Незадължителен код необходим за достъп до тази стая за конференции."
 
 msgid "Voicemail"
 msgstr "Гласова Поща"
@@ -1731,28 +1775,29 @@ msgstr ""
 "съобщения чрез e-mail, конфигурирайте пощенски сървър тук."
 
 msgid "A username must be specified."
-msgstr ""
+msgstr "Трябва да бъде въведено потребителско име."
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "A valid e-mail address must be specified for the \"from address\"."
 
-#, fuzzy
 msgid "AskoziaPBX Test E-mail"
-msgstr "АскозияPBX: изпълнение на команди"
+msgstr "АскозияPBX Тестов E-mail"
 
 msgid ""
 "Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
 "call notifications can now be used."
 msgstr ""
+"Вашите SMTP настройки работят нормално. Гласова поща към E-mail и съобщения "
+"за пропуснати обаждания вече могат да се използват."
 
 msgid "E-mail has been sent successfully."
-msgstr ""
+msgstr "E-mail беше изпратен успешно."
 
 msgid "E-mail was not sent, check your settings."
-msgstr ""
+msgstr "E-mail не беше изпратен, проверете вашите настройки."
 
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 msgid "SMTP host URL or IP address and optional port."
 msgstr "SMTP host URL или IP адрес и порт."
@@ -1770,16 +1815,17 @@ msgid "TLS certificates are currently not verified."
 msgstr "TLS сертификатите за момента не са одобрени."
 
 msgid "Test E-mail"
-msgstr ""
+msgstr "Тестов E-mail"
 
-#, fuzzy
 msgid "E-mail Me"
-msgstr "E-mail Адрес"
+msgstr "Изпрати ми E-mail"
 
 msgid ""
 "Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
 "settings."
 msgstr ""
+"Въведете e-mail и кликнете &quot;Изпрати ми E-mail&quot; за да проверите "
+"вашите SMTP настройки."
 
 msgid "Presentation"
 msgstr "Представяне"
@@ -1804,16 +1850,19 @@ msgid "User defined e-mail text"
 msgstr "Различно e-mail съдържание"
 
 msgid "<p>This status page includes the following information:\n"
-msgstr ""
+msgstr "<p>Тази статус страница съдържа следната информация:\n"
 
 msgid ""
 "Note: make sure to remove any sensitive information (passwords, maybe also "
 "IP addresses) before posting information from this page in public places "
 "(like mailing lists)!"
 msgstr ""
+"Забележка: бъдете сигурни че сте пре премахнали всяка важна иформация "
+"(пароли, може би и IP адреси) преди да публикувате информация от тази "
+"страница на публични места (като mailing листове)!"
 
 msgid "Passwords in config.xml have been automatically removed."
-msgstr ""
+msgstr "Паролите в config.xml бяха автоматично премахнати."
 
 msgid "Status"
 msgstr "Статус"
@@ -1822,38 +1871,38 @@ msgid "There are currently no active channels."
 msgstr "В момента няма активни канали."
 
 msgid "Location"
-msgstr ""
+msgstr "Местонахождение"
 
 msgid "Application"
-msgstr ""
+msgstr "Приложение"
 
 msgid "Conferences"
 msgstr "Конференции"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
-msgstr ""
+msgstr "Потребител %s беше изхвърлен от конференцията %s."
 
 msgid "There are currently no active conferences."
 msgstr "В момента няма активни конференции."
 
 msgid "Conference"
-msgstr ""
+msgstr "Конференция"
 
 msgid "Member"
-msgstr ""
+msgstr "Потребител"
 
 msgid "Time"
-msgstr ""
+msgstr "Време"
 
 msgid "Do you really want to kick this member?"
-msgstr ""
+msgstr "Сигурни ли сте че искате да изхвърлите този потребител?"
 
 msgid "kick conference member"
-msgstr ""
+msgstr "изхвърли потребител"
 
 msgid "Live"
-msgstr ""
+msgstr "Актуални"
 
 msgid "CPU Load"
 msgstr "CPU Натоварване"
@@ -1868,15 +1917,14 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Мрежов Трафик"
 
-#, fuzzy
 msgid "status"
-msgstr "Статус"
+msgstr "статус"
 
 msgid "Subnet Mask"
-msgstr ""
+msgstr "Маска на Подмрежа"
 
 msgid "Media"
-msgstr ""
+msgstr "Медия"
 
 msgid "In/Out Packets"
 msgstr "In/Out Пакети"
@@ -1888,67 +1936,70 @@ msgid "Collisions"
 msgstr "Колизии"
 
 msgid "Last scan results"
-msgstr ""
+msgstr "Резултати от последно сканиране"
 
 msgid "BSSID"
-msgstr ""
+msgstr "BSSID"
 
 msgid "Rate"
-msgstr ""
+msgstr "Скорост"
 
 msgid "Signal"
-msgstr ""
+msgstr "Сигнал"
 
 msgid "Noise"
-msgstr ""
+msgstr "Шум"
 
 msgid "hidden"
-msgstr ""
+msgstr "скрит"
 
 msgid "ssid"
-msgstr ""
+msgstr "ssid"
 
 msgid "Associated stations"
-msgstr ""
+msgstr "Свързани станции"
 
 msgid "RSSI"
-msgstr ""
+msgstr "RSSI"
 
 msgid "Flags"
-msgstr ""
+msgstr "Флагове"
 
 msgid "Capabilities"
-msgstr ""
+msgstr "Възможности"
 
 msgid ""
 "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
 "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
 "P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
 msgstr ""
+"Флагове: A = authorized, E = Extended Rate (802.11g), P = Power save "
+"mode<br>Възможности: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
+"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
 
 msgid "No stations are associated at this time."
-msgstr ""
+msgstr "Няма свързани станции за момента."
 
 msgid "Attached"
-msgstr ""
+msgstr "Привързани"
 
 msgid "PH State"
-msgstr ""
+msgstr "PH Състояние"
 
 msgid "Dialtone"
-msgstr ""
+msgstr "Dialtone"
 
 msgid "Driver Type"
-msgstr ""
+msgstr "Тип Драйвер"
 
 msgid "Channels"
 msgstr "Канали"
 
 msgid "Serial"
-msgstr ""
+msgstr "Сериен"
 
 msgid "Power Save"
-msgstr ""
+msgstr "Съхранение на Енергия"
 
 msgid "General Setup"
 msgstr "Общи Настройки"
@@ -2160,28 +2211,28 @@ msgstr ""
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
-msgstr ""
+msgstr "Каченият файл с образ не е за тази платформа (%s)."
 
 msgid "Image upload failed (out of memory?)"
-msgstr ""
+msgstr "Качването на образ се провали (недостатъчно памет?)"
 
 msgid "The digital signature on this image is invalid."
-msgstr ""
+msgstr "Цифровият подпис на този образ е неправилен."
 
 msgid "This image is not digitally signed."
-msgstr ""
+msgstr "Този образ не е цифрово подписан."
 
 msgid "There has been an error verifying the signature on this image."
-msgstr ""
+msgstr "Грешка при прорерка на подписа на този образ."
 
 msgid "The image file is corrupt."
-msgstr ""
+msgstr "Файлът на образа е повреден."
 
 msgid "The firmware is now being installed. The PBX will reboot automatically."
-msgstr ""
+msgstr "Програмата се инсталира. Централата ще се рестартира автоматично."
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr ""
+msgstr "Качването на програмата не се поддържа от тази платформа."
 
 #, php-format
 msgid ""
@@ -2191,9 +2242,14 @@ msgid ""
 "make sure that the image has not been tampered with.<br><br> Do you want to "
 "install this image anyway (at your own risk)?"
 msgstr ""
+"<strong>%s</strong><br>Това означава че образа който сте качили не е "
+"официален/поддържан образ и може да доведе до неочаквани проблеми или пробив "
+"в сигурноста. Инсталирайте само образи които идват от източници на които "
+"може да се доверите, и бъдете сигурни че с образа не са си играли.<br><br> "
+"Искате ли да инсталирате този образ въпреки всичко (на ваш риск)?"
 
 msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr ""
+msgstr "Кликнете върху &quot;Разреши качване на програма&quot; по-долу."
 
 #, php-format
 msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
@@ -2205,10 +2261,10 @@ msgstr ""
 "обновяване."
 
 msgid "Enable firmware upload"
-msgstr ""
+msgstr "Разреши качване на програма"
 
 msgid "Disable firmware upload"
-msgstr ""
+msgstr "Забрани качване на програма"
 
 msgid "Firmware image file:"
 msgstr "Файл с образ на програмата:"
@@ -2217,7 +2273,7 @@ msgid "Upgrade firmware"
 msgstr "Обнови програмата"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr ""
+msgstr "Трябва да рестартирате системата преди да можете да качите програмата."
 
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "НЕ ПРЕКЪСВАЙТЕ обновяването на програмата след като е започнало."
@@ -2231,39 +2287,46 @@ msgid ""
 "available packages. All packages are digitally signed before distribution "
 "and checked upon installation."
 msgstr ""
+"Пакетите разширяващи функционалноста на системата могат да бъдат инсталирани "
+"и обновени от тук. Започнете с кликане върху <img src=\"add.png\" border=\"0"
+"\"> за да проверите за нови пакети. Всички пакети са цифрово подписани преди "
+"предоставянето им и проверени при инсталиране."
 
 msgid "The digital signature on this package is invalid."
-msgstr ""
+msgstr "Цифровият подпис на този пакет е невалиден."
 
 msgid "This package is not digitally signed."
-msgstr ""
+msgstr "Този пакет не е цифрово подписан."
 
 msgid "There has been an error verifying the signature on this package."
-msgstr ""
+msgstr "Грешка при проверка на подписа на този пакет."
 
 msgid "The package is corrupt and has been deleted."
-msgstr ""
+msgstr "Пакетът е повреден и беше изтрит."
 
 msgid "Package already exists, install failed."
-msgstr ""
+msgstr "Пакетът вече съществува, инсталирането е прекъснато."
 
 msgid "Extracted package not found, install failed."
-msgstr ""
+msgstr "Разархивираният пакет не е намерен, инсталирането е прекъснато."
 
 msgid "Existing package not found, update failed."
-msgstr ""
+msgstr "Съществуващият пакет не е намерен, обновяването е прекъснато."
 
 msgid ""
 "The uploaded package is not newer than the existing package, update failed."
 msgstr ""
+"Каченият пакет не е по-нов от вече съществуващия, обновяването е прекъснато."
 
 msgid "There are updates available for packages on your system."
-msgstr ""
+msgstr "На разположение са обновявания на пакети за вашата система."
 
 msgid ""
 "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
 "install the updated packages."
 msgstr ""
+"Кликнете върху <img src=\"update.png\" border=\"0\"> иконата по-долуза да "
+"изберете и инсталирате обновените пакети."
 
 msgid ""
 "The following packages issued warnings while verifying their digital "
@@ -2273,108 +2336,119 @@ msgid ""
 "tampered with.<br><br>Check the packages you wish to install despite this "
 "warning."
 msgstr ""
+"Предупреждения за проблеми в пакетите при проверка на цифровите им подписи. "
+"Това означава че те не са официални/поддържани пакети и могат да доведат до "
+"неочаквани проблеми и пробив в сигурноста. Инсталирайте само пакети които "
+"идват от източници на които може да се доверите, и бъдете сигурни че не са "
+"си играли с тях.<br><br> Отбележете пакетите които искате да инсталирате "
+"независимо от предупрежденията."
 
 msgid "Continue"
-msgstr ""
+msgstr "Продължи"
 
 msgid "Do you really want to disable this package?"
-msgstr ""
+msgstr "Сигурни ли сте че искате да забраните този пакет?"
 
 msgid "click to disable package"
-msgstr ""
+msgstr "кликнете за да забраните пакета"
 
 msgid "click to enable package"
-msgstr ""
+msgstr "кликнете за да активирате пакета"
 
 msgid "backup package data"
-msgstr ""
+msgstr "архивирайте информацията от пакета"
 
 msgid ""
 "Do you really want to permanently delete this package\\'s configuration and "
 "data?"
 msgstr ""
+"Сигурни ли сте че искате да изтриете завинаги този пакет и информацията му?"
 
 msgid "delete package configuration and data"
-msgstr ""
+msgstr "изтрий пакета заедно с информацията"
 
 msgid "install new package"
-msgstr ""
+msgstr "инсталирай нов пакет"
 
 msgid "update package to newer version"
-msgstr ""
+msgstr "обнови пакета с нова версия"
 
 msgid "restore package data"
-msgstr ""
+msgstr "възстанови информацията на пакета"
 
 msgid "Update Installed Package"
-msgstr ""
+msgstr "Обновяване на Инсталиран Пакет"
 
 msgid ""
 "Select which packages you would like to update, existing package data will "
 "be preserved."
 msgstr ""
+"Изберете кои пакети желаете да бъдат обновени, съществуващата информация от "
+"пакетите ще се запази."
 
 msgid "Update"
-msgstr ""
+msgstr "Обнови"
 
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
 msgstr ""
+"Изберете .pbxpkg файл за обновяване от вашия компютър, съществуващата "
+"информация от пакетите ще се запази."
 
 msgid "Manual Update"
-msgstr ""
+msgstr "Ръчно Обновяване"
 
 msgid "Install a New Package"
-msgstr ""
+msgstr "Инсталиране на Нов Пакет"
 
 msgid "Select which packages you would like to install."
-msgstr ""
+msgstr "Изберете кои пакети желаете да бъдат инсталирани."
 
 msgid "Install"
-msgstr ""
+msgstr "Инсталирай"
 
 msgid "No new packages available."
-msgstr ""
+msgstr "Не са достъпни нови пакети."
 
 msgid "Select a .pbxpkg file from your computer to install."
-msgstr ""
+msgstr "Изберете .pbxpkg файл за инсталиране от вашия компютър."
 
 msgid "Manual Install"
-msgstr ""
+msgstr "Ръчно Инсталиране"
 
 msgid "Restore from a Backup Archive"
-msgstr ""
+msgstr "Възстановяване от Архив"
 
 msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr ""
+msgstr "Изберете backup .tgz архив и натиснете 'Възстанови'"
 
 msgid "Package data and logic will be replaced by the backup."
-msgstr ""
+msgstr "Информацията и логиката на пакета ще бъде заменена с архивната."
 
 msgid "Restore"
-msgstr ""
+msgstr "Възстанови"
 
 msgid "Reboot"
 msgstr "Рестарт"
 
 msgid "The system is rebooting now. This may take a minute."
-msgstr ""
+msgstr "Системата се рестартира. Това може да отнеме минута."
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Сигурни ли сте че искате да рестартирате системата?"
 
 msgid "ERR Could not save configuration.\n"
-msgstr ""
+msgstr "ГРЕШКА Не мога да запиша конфигурацията.\n"
 
 msgid "OK\n"
-msgstr ""
+msgstr "OK\n"
 
 msgid "ERR Could not install configuration.\n"
-msgstr ""
+msgstr "ГРЕШКА Не мога да инсталирам конфигурацията.\n"
 
 msgid "ERR Invalid configuration received.\n"
-msgstr ""
+msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
 
 msgid "Subject"
 msgstr "Тема"
@@ -2401,10 +2475,10 @@ msgid "full date / time (i.e. 2025-11-20 (15:45))"
 msgstr "пълна дата / час (например 2025-11-20 (15:45))"
 
 msgid "generate password"
-msgstr ""
+msgstr "генерирай парола"
 
 msgid "use this password"
-msgstr ""
+msgstr "използвай тази парола"
 
 msgid "webGUI language"
 msgstr "Език на webGUI"
@@ -2416,15 +2490,17 @@ msgid ""
 "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
 "to provide a new translation."
 msgstr ""
+"Моля <a href=\"mailto:michael@askozia.com\">свържете се с нас</a> ако можете "
+"да предоставите нов превод."
 
 msgid "Audio Codecs"
-msgstr ""
+msgstr "Аудио Кодеци"
 
 msgid "Video Codecs"
-msgstr ""
+msgstr "Видео Кодеци"
 
 msgid "Group Members"
-msgstr ""
+msgstr "Потребители на Групата"
 
 msgid "Non-Members"
 msgstr "Неучастващи"
@@ -2434,12 +2510,15 @@ msgid ""
 "account associated with the first member will be used if the call is not "
 "answered."
 msgstr ""
+"Всички потребители на групата ще бъдат повикани едновременно. "
+"<strong>Гласовата поща на първия потребител ще бъде използвана ако никой не "
+"отговори на повикването."
 
 msgid "Incoming Extension(s)"
-msgstr ""
+msgstr "Рутиране Входящи Обаждания"
 
 msgid "add incoming extension mapping"
-msgstr ""
+msgstr "добави рутиране на входящи обаждания"
 
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To "
@@ -2457,115 +2536,139 @@ msgid ""
 " \t<li><strong>!</strong> - matches zero or more characters</li>\n"
 " </ul>\n"
 msgstr ""
+"Въведете схема или телефонен номер и изберете вътрешен номер за "
+"направление . За да звънят наколко телефона, просто им определете същата "
+"схема. Ако е въведен телефонен номер, ще бъде използван като \"външен\" "
+"номер за пропуснатите обаждания. Ако не е въведено нищо, всички обаждания ще "
+"бъдат насочвани към избрания вътрешен номер.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - отговаря на цифрите от 0-9</li>\n"
+" \t<li><strong>Z</strong> - отговаря на цифрите от 1-9</li>\n"
+" \t<li><strong>N</strong> - отговаря на цифрите от 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - отговаря на всяка от цифрите в скобите "
+"(последователно, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - отговаря на един или повече символа</li>\n"
+" \t<li><strong>!</strong> - отговаря на нула или повече символа</li>\n"
+" </ul>\n"
 
 msgid "DTMF Mode"
-msgstr ""
+msgstr "DTMF Режим"
 
 msgid "Registration"
-msgstr ""
+msgstr "Регистриране"
 
 msgid "Do not register with this provider."
-msgstr ""
+msgstr "Не се регистрирай с този доставчик."
 
 msgid "Qualify"
-msgstr ""
+msgstr "Окачествяване"
 
 msgid ""
 "Packets will be sent to this account every <i>n</i> seconds to check its "
 "status.<br>Defaults to '2'. Set to '0' to disable."
 msgstr ""
+"Пакети ще се изпращат до този акаунт на всеки <i>n</i> секунди за проверка "
+"на статуса.<br>По подразбиране '2'. Установете '0' за забрана."
 
 msgid "always use NAT mode."
-msgstr ""
+msgstr "винаги изпозвай NAT режим."
 
 msgid "only use NAT mode according to RFC3581 (rport)"
-msgstr ""
+msgstr "използвай само NAT режим отговарящ на RFC3581 (rport)"
 
 msgid "never attempt NAT mode or RFC3581 support"
-msgstr ""
+msgstr "не използвай NAT режим или RFC3581 поддръжка"
 
 msgid "assume NAT mode but don't send rport "
-msgstr ""
+msgstr "допускай NAT режим но не изпращай rport "
 
 msgid "NAT"
-msgstr ""
+msgstr "NAT"
 
 msgid ""
 "Is there a NATing device between AskoziaPBX and this account? Setting this "
 "to 'yes' will work in most cases. The options 'never' and 'route' are only "
 "rarely used for certain buggy SIP phones."
 msgstr ""
+"Има ли маскиращо устройство между АскозияPBX и този акаунт? Избирането на "
+"'yes' би работило в повечето случаи. Опциите 'never' и 'route' се използват "
+"рядко при некачествени SIP телефони."
 
 msgid "indefinitely"
-msgstr ""
+msgstr "безкрайно"
 
 msgid "Ring Length"
-msgstr ""
+msgstr "Продължителност на Звънене"
 
 msgid ""
 "The number of seconds this phone will ring before being reported as "
 "unanswered."
 msgstr ""
+"Брой секунди през които този телефон ще звъни преди да се отбележи като "
+"пропуснато обаждане."
 
 msgid "Line Gain"
-msgstr ""
+msgstr "Ниво на Линията"
 
 msgid "receive"
-msgstr ""
+msgstr "приемане"
 
 msgid "transmit"
-msgstr ""
+msgstr "изпращане"
 
 msgid ""
 "Some analog connections may need adjustment to achieve an acceptable audio "
 "level. Adjust the receive and transmit gain in decibels to amplify or quiet "
 "the line."
 msgstr ""
+"Някои аналогови линии може да се нуждаят от настройки за достигане на "
+"допустими аудио нива. Регулирайте приемащите и изпращащите нива в децибели "
+"за да усилите или намалите звука."
 
 msgid "Incoming Caller ID Overrides"
-msgstr ""
+msgstr "Отменяне на Входящ Caller ID"
 
 msgid "Source Name &lt;number&gt;"
-msgstr ""
+msgstr "Източник Име &lt;номер&gt;"
 
 msgid "Prepend with string"
-msgstr ""
+msgstr "Предхождай със стринг"
 
 msgid "Replace with string"
-msgstr ""
+msgstr "Замени със стринг"
 
 msgid "Replace calling name with calling number."
-msgstr ""
+msgstr "Замени името с номера на обаждащия се"
 
 msgid "Disable overrides"
-msgstr ""
+msgstr "Забрани отменянето"
 
 msgid "Outgoing Caller ID"
-msgstr ""
+msgstr "Изходящ Caller ID"
 
 msgid "Your Name &lt;number&gt;"
-msgstr ""
+msgstr "Вашето Име &lt;номер&gt;"
 
 msgid "Send string defined above&nbsp;"
-msgstr ""
+msgstr "Изпрати стринга дефиниран по-горе&nbsp;"
 
 msgid "Send phones' Caller ID"
-msgstr ""
+msgstr "Изпрати Caller ID на телефона"
 
 msgid "There are currently no providers defined."
-msgstr ""
+msgstr "Не са определени външни линии."
 
 msgid "direct outbound dialing via SIP uris"
-msgstr ""
+msgstr "директно изходящо избиране чрез SIP URI"
 
 msgid "Checked providers will be accessible from this phone."
-msgstr ""
+msgstr "Маркираните външни линии ще са достъпни за тази вътрешна линия."
 
 msgid "There are currently no phones defined."
-msgstr ""
+msgstr "Не са определени вътрешни номера."
 
 msgid "Checked phones will have access to this provider."
-msgstr ""
+msgstr "Маркираните вътрешни номера ще имат достъп до тази външна линия."
 
 msgid ""
 "Enter patterns, one per line, to define this provider's routing. Enter \"X!"
@@ -2588,65 +2691,96 @@ msgid ""
 "before | or +)</li>\n"
 " </ul>\n"
 msgstr ""
+"Въведете схеми, по една на ред, за да определите рутирането на външната "
+"линия. Въведете \"X!\" за да използвате тази линия за всички изходящи "
+"обаждания. За да използвате тази Външна Линия само за обаждания започващи с "
+"\"9\" въведете \"9|.\". Ако не са въведени схеми, ще се допускат само "
+"входящи обаждания.<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - добавя префикс (например \"1+555\" отговаря на "
+"\"555\" и изпраща \"1555\" към външната линия)</li>\n"
+" \t<li><strong>|</strong> - премахва префикс (например \"1|555\" отговаря на "
+"\"1555\" но изпраща само \"555\" към външната линия)</li>\n"
+" \t<li><strong>X</strong> - отговаря на цифрите от 0-9</li>\n"
+" \t<li><strong>Z</strong> - отговаря на цифрите от 1-9</li>\n"
+" \t<li><strong>N</strong> - отговаря на цифрите от 1-9</li>\n"
+" \t<li><strong>[13-5]</strong> - отговаря на всяка от цифрите в скобите "
+"(последователно, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - отговаря на един или повече символа (не се "
+"позволява преди | или +)</li>\n"
+" \t<li><strong>!</strong> - отговаря на нула или повече символа (не се "
+"позволява преди | или +)</li>\n"
+" </ul>\n"
 
 msgid "Language"
-msgstr ""
+msgstr "Език"
 
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr ""
+"Аудио съобщенията ще се възпроизвеждат на избрания език за този акаунт."
 
 msgid "send missed call notifications"
-msgstr ""
+msgstr "изпращай съобщения за пропуснатите обаждания"
 
 msgid "don't send to voicemail when busy"
-msgstr ""
+msgstr "не изпращай към гласова поща когато дава заето"
 
 msgid ""
 "An e-mail address. If entered, voicemail will be enabled on this extension. "
 "Incoming messages will be sent to the given address."
 msgstr ""
+"E-mail адрес. Ако е въведен, ще се активира гласовата поща на този вътрешен "
+"номер. Входящите съобщения ще се изпращат на този адрес."
 
 msgid "Voicemail Services"
-msgstr ""
+msgstr "Услуги Гласова Поща"
 
 msgid "must be configured</a> before this feature will work."
-msgstr ""
+msgstr "трябва да е настроена</a> за да работи тази услуга."
 
 msgid "Public Direct Dial"
-msgstr ""
+msgstr "Общодостъпно Директно Избиране"
 
 msgid "allow extension to be directly dialed over public networks"
 msgstr ""
+"позволява вътрешния номер да бъде директно избиран от общодостъпни мрежи"
 
 msgid "Public name. Enter a string to map a friendly name to this extension."
 msgstr ""
+"Общодостъпно име. Въведете стринг за да дадете име на този вътрешен номер."
 
 #, php-format
 msgid ""
 "Enabling this option will allow this extension to be reachable via SIP and "
 "IAX2 uris (extension@%s)"
 msgstr ""
+"Разрешяването на тази опция ще позволи на този вътрешен номер да бъде "
+"достиган чрез SIP и IAX2 URI (вътрешен_номер@%s)"
 
 msgid "Call Limit"
-msgstr ""
+msgstr "Лимит на Разговорите"
 
 msgid "calls"
-msgstr ""
+msgstr "обаждания"
 
+#, fuzzy
 msgid "Permit only 'n' concurrent calls (default: 2)"
 msgstr ""
+"Разрешава само 'n' изходящи и 'n' входящи обаждания (по подразбиране: 2)"
 
 msgid "Busy Limit"
-msgstr ""
+msgstr "Лимит за Заето"
 
 msgid ""
 "Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
 "1)"
 msgstr ""
+"Състоянието на телефона ще превключи на 'заето' при 'n' едновременни "
+"разговора (по подразбиране: 1)"
 
 msgid "Logic"
-msgstr ""
+msgstr "Логика"
 
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
@@ -2660,12 +2794,22 @@ msgid ""
 "is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
 "target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
+"Въведете логика на приложението, една команда на ред както е показано: <br> "
+"<pre> 1,Answer()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Писането на приложения за АскозияPBX изисква познаване на "
+"Астериск dialplan. Направен е опит за проверка на въведеното, но остава "
+"възможноста АскозияPBX да остане безпомощна пред грешна логика на "
+"приложението. Справка с приложенията, функциите и телефоните е на "
+"разположение в <strong><a href=\"popup_dialplan_element_library.php\" target="
+"\"_blank\">Element Библиотеката</a></strong>.</p>"
 
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Допълнителни Настройки"
 
 msgid "show"
-msgstr ""
+msgstr "покажи"
 
 msgid "Manual Attributes"
 msgstr "Допълнителни Настройки"
@@ -2686,19 +2830,25 @@ msgstr ""
 "отвори дупки в сигурноста."
 
 msgid "Text to be displayed for Caller ID."
-msgstr ""
+msgstr "Текст който да се показва за Caller ID."
 
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
+"Тук можете да въведете описание за ваше използване (не се следи за "
+"синтаксис)."
 
 msgid "Public Number"
-msgstr ""
+msgstr "Общодостъпен Номер"
 
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
 "the internal extension this call was routed to will be read back."
 msgstr ""
+"Този 'външен' номер ще бъде продиктуван на обаждащия се когато е пренасочен "
+"към гласова поща; по подразбиране вътрешния номер на акаунта ако е от цифри. "
+"Ако не е, вътрешния номер към който това обаждане е рутирано ще бъде "
+"продиктуван."
 
 msgid "Authentication Method"
 msgstr "Метод на Оторизация"
@@ -2711,34 +2861,34 @@ msgstr ""
 "изберете метод на оторизация използван от вашия сървър."
 
 msgid "of"
-msgstr ""
+msgstr "на"
 
 msgid "connected"
-msgstr ""
+msgstr "свързан"
 
 msgid "connected but lagged"
-msgstr ""
+msgstr "свързан но лагнат"
 
 msgid "unreachable"
-msgstr ""
+msgstr "недостъпен"
 
 msgid "status unknown"
-msgstr ""
+msgstr "статус неясен"
 
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr "Вие използвате най-новата версия на АскозияPBX."
 
 msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
-msgstr ""
+msgstr "Вие използвате най-новата <strong>бета</strong> версия на АскозиаPBX."
 
 msgid "A newer version of AskoziaPBX is available!"
-msgstr ""
+msgstr "Достъпна е нова версия на АскозиаPBX!"
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
-msgstr ""
+msgstr "Достъпна е нова <strong>бета</strong> версия на АскозиаPBX!"
 
 msgid "The following input errors were detected:"
-msgstr ""
+msgstr "Открити са следните входни грешки:"
 
 msgid "print"
 msgstr "за печат"
@@ -2750,434 +2900,438 @@ msgid "Manager"
 msgstr "Управление"
 
 msgid "Ping/Traceroute"
-msgstr ""
+msgstr "Ping/Traceroute"
 
 msgid "ARP Table"
-msgstr ""
+msgstr "ARP Таблица"
 
 msgid "webGUI Configuration"
-msgstr ""
+msgstr "webGUI Конфигурация"
 
 msgid "Live Stats"
 msgstr "Реален Статус"
 
 msgid "Help"
-msgstr ""
+msgstr "Помощ"
 
 msgid "add a new item"
-msgstr ""
+msgstr "добавяне на нов артикул"
 
 msgid "item is disabled, click to enable"
-msgstr ""
+msgstr "артикула е забранен, кликнете за разрешаване"
 
 msgid "item is enabled, click to disable"
-msgstr ""
+msgstr "артикула е разрешен, кликнете за забраняване"
 
 msgid "edit an item"
-msgstr ""
+msgstr "редактиране на артикул"
 
 msgid "permanently delete an item"
-msgstr ""
+msgstr "изтриване на артикул"
 
 msgid "check for package updates"
-msgstr ""
+msgstr "проверява за обновени пакети"
 
 msgid "restore a backup archive"
-msgstr ""
+msgstr "възстановяване от архив"
 
 msgid "download a backup archive"
-msgstr ""
+msgstr "изтегляне на архив"
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
-msgstr ""
+msgstr "АскозияPBX &copy; 2007-2008 IKT. Всички права са запазени."
 
 msgid "view license"
-msgstr ""
+msgstr "виж лиценза"
 
 msgid "LAN net"
-msgstr ""
+msgstr "LAN мрежа"
 
 msgid "autoselect"
-msgstr ""
+msgstr "автоматичен избор"
 
 msgid "100BASE-TX full-duplex"
-msgstr ""
+msgstr "100BASE-TX full-duplex"
 
 msgid "100BASE-TX half-duplex"
-msgstr ""
+msgstr "100BASE-TX half-duplex"
 
 msgid "10BASE-T full-duplex"
-msgstr ""
+msgstr "10BASE-T full-duplex"
 
 msgid "10BASE-T half-duplex"
-msgstr ""
+msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
-msgstr ""
+msgstr "1000BASE-TX full-duplex"
 
 msgid "Public IP address"
-msgstr ""
+msgstr "Външен IP адрес"
 
 msgid "NAT + static public IP"
-msgstr ""
+msgstr "NAT + статично външно IP"
 
 msgid "NAT + dynamic public IP"
-msgstr ""
+msgstr "NAT + динамично външно IP"
 
 msgid "Kewl Start"
-msgstr ""
+msgstr "Kewl Start"
 
 msgid "Ground Start"
-msgstr ""
+msgstr "Ground Start"
 
 msgid "Loop Start"
-msgstr ""
+msgstr "Loop Start"
 
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
 msgstr ""
+"Ехото от аудиото и видеото върнато към обаждашия се веднага както е прието. "
+"Използва се за проверка на забавянето на връзката."
 
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
 msgstr ""
+"Генерира постоянен тон 1000Hz. Използва се за проверка на качеството на "
+"връзката."
 
 msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr ""
+"Събуди-Ме оператор. Използва се за влючване и изключване на събуди-ме "
+"обаждания от текущия вътрешен номер."
 
 msgid "English (US)"
-msgstr ""
+msgstr "Английски (US)"
 
 msgid "English (UK)"
-msgstr ""
+msgstr "Английски (UK)"
 
 msgid "Danish"
-msgstr ""
+msgstr "Датски"
 
 msgid "Dutch"
-msgstr ""
+msgstr "Холандски"
 
 msgid "French (France)"
-msgstr ""
+msgstr "Френски (Франция)"
 
 msgid "French (Canada)"
-msgstr ""
+msgstr "Френски (Канада)"
 
 msgid "German"
-msgstr ""
+msgstr "Немски"
 
 msgid "Italian"
-msgstr ""
+msgstr "Италиански"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Японски"
 
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Португалски (Бразилия)"
 
 msgid "Russian"
-msgstr ""
+msgstr "Руски"
 
 msgid "Spanish"
-msgstr ""
+msgstr "Испански"
 
 msgid "Swedish"
-msgstr ""
+msgstr "Шведски"
 
 msgid "English"
-msgstr ""
+msgstr "Английски"
 
 msgid "English (formal)"
-msgstr ""
+msgstr "Английски (официален)"
 
 msgid "Czech"
-msgstr ""
+msgstr "Чехски"
 
 msgid "Czech (formal)"
-msgstr ""
+msgstr "Чехски (официален)"
 
 msgid "Danish (formal)"
-msgstr ""
+msgstr "Датски (официален)"
 
 msgid "Dutch (formal)"
-msgstr ""
+msgstr "Холандски (официален)"
 
 msgid "Finnish"
-msgstr ""
+msgstr "Финландски"
 
 msgid "Finnish (formal)"
-msgstr ""
+msgstr "Финландски (официален)"
 
 msgid "French"
-msgstr ""
+msgstr "Френски"
 
 msgid "French (formal)"
-msgstr ""
+msgstr "Френски (официален)"
 
 msgid "German (formal)"
-msgstr ""
+msgstr "Немски (официален)"
 
+#, fuzzy
 msgid "Greek"
-msgstr ""
+msgstr "Гърция"
 
+#, fuzzy
 msgid "Greek (formal)"
-msgstr ""
+msgstr "Френски (официален)"
 
 msgid "Italian (formal)"
-msgstr ""
+msgstr "Италиански (официален)"
 
 msgid "Polish"
-msgstr ""
+msgstr "Полски"
 
 msgid "Polish (formal)"
-msgstr ""
+msgstr "Полски (официален)"
 
 msgid "Portuguese, Brazil"
-msgstr ""
+msgstr "Португалски, Бразилия"
 
 msgid "Portuguese, Brazil (formal)"
-msgstr ""
+msgstr "Португалски, Беазилия (официален)"
 
 msgid "Russian (formal)"
-msgstr ""
+msgstr "Руски (официален)"
 
 msgid "Spanish (formal)"
-msgstr ""
+msgstr "Испански"
 
 msgid "point-to-multipoint, terminal equipment"
-msgstr ""
+msgstr "point-to-multipoint, крайно устройство"
 
 msgid "multipoint-to-point, network termination"
-msgstr ""
+msgstr "multipoint-to-point, мрежово свързване"
 
 msgid "point-to-point, terminal equipment"
-msgstr ""
+msgstr "point-to-point, крайно устройство"
 
 msgid "point-to-point, network termination"
-msgstr ""
+msgstr "point-to-point, мрежово свързване"
 
 msgid "United States / North America"
-msgstr ""
+msgstr "САЩ / Северна Америка"
 
 msgid "Australia"
-msgstr ""
+msgstr "Австралия"
 
 msgid "Austria"
-msgstr ""
+msgstr "Австрия"
 
 msgid "Belgium"
-msgstr ""
+msgstr "Белгия"
 
 msgid "Chile"
-msgstr ""
+msgstr "Чили"
 
 msgid "China"
-msgstr ""
+msgstr "Китай"
 
 msgid "Finland"
-msgstr ""
+msgstr "Финландия"
 
 msgid "France"
-msgstr ""
+msgstr "Франция"
 
 msgid "Greece"
-msgstr ""
+msgstr "Гърция"
 
 msgid "Italy"
-msgstr ""
+msgstr "Италия"
 
 msgid "Japan"
-msgstr ""
+msgstr "Япония"
 
 msgid "Malaysia"
-msgstr ""
+msgstr "Малайзия"
 
 msgid "Netherlands"
-msgstr ""
+msgstr "Холандия"
 
 msgid "New Zealand"
-msgstr ""
+msgstr "Нова Зеландия"
 
 msgid "Norway"
-msgstr ""
+msgstr "Норвегия"
 
 msgid "Russia"
-msgstr ""
+msgstr "Русия"
 
 msgid "Spain"
-msgstr ""
+msgstr "Испания"
 
 msgid "Sweden"
-msgstr ""
+msgstr "Швеция"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Тайван"
 
 msgid "United Kingdom"
-msgstr ""
+msgstr "Великобритания"
 
 msgid "United States Circa 1950/ North America"
-msgstr ""
+msgstr "САЩ Около 1950/ Северна Америка"
 
 msgid "Brazil"
-msgstr ""
+msgstr "Бразилия"
 
 msgid "Bulgaria"
-msgstr ""
+msgstr "България"
 
 msgid "Czech Republic"
-msgstr ""
+msgstr "Чехия"
 
 msgid "Denmark"
-msgstr ""
+msgstr "Дания"
 
 msgid "Estonia"
-msgstr ""
+msgstr "Естония"
 
 msgid "Germany"
-msgstr ""
+msgstr "Германия"
 
 msgid "Hungary"
-msgstr ""
+msgstr "Унгария"
 
 msgid "India"
-msgstr ""
+msgstr "Индия"
 
 msgid "Israel"
-msgstr ""
+msgstr "Израел"
 
 msgid "Lithuania"
-msgstr ""
+msgstr "Литва"
 
 msgid "Mexico"
-msgstr ""
+msgstr "Мексико"
 
 msgid "Philippines"
-msgstr ""
+msgstr "Филипини"
 
 msgid "Poland"
-msgstr ""
+msgstr "Полша"
 
 msgid "Portugal"
-msgstr ""
+msgstr "Португалия"
 
 msgid "Russia / ex Soviet Union"
-msgstr ""
+msgstr "Русия / бивш СССР"
 
 msgid "Singapore"
-msgstr ""
+msgstr "Сингапур"
 
 msgid "South Africa"
-msgstr ""
+msgstr "Южна Африка"
 
 msgid "Switzerland"
-msgstr ""
+msgstr "Швейцария"
 
 msgid "Thailand"
-msgstr ""
+msgstr "Тайланд"
 
 msgid "Venezuela / South America"
-msgstr ""
+msgstr "Венецуела / Южна Америка"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
 msgstr ""
+"Промените са записани. Трябва да <a href=\"/system_reboot.php"
+"\">рестартирате</a> централата за да имат ефект."
 
 msgid "The changes have been applied successfully."
-msgstr ""
+msgstr "Промените са приложени успешно."
 
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr ""
+msgstr "ГРЕШКА: промените не могат да бъдат приложени (код за грешка %s)."
 
 msgid "reset filter and reload firewall logs page"
-msgstr ""
+msgstr "нулира филтъра и презарежда страницата с логовете на защитната стена"
 
 msgid "Firewall"
-msgstr ""
+msgstr "Защитна Стена"
 
 msgid "reload page"
-msgstr ""
+msgstr "презарежда страницата"
 
 msgid "Outgoing Calls Only"
-msgstr ""
+msgstr "Само Изходящи Обаждания"
 
-#, fuzzy
 msgid "SIP Phones"
-msgstr "Вътрешни"
+msgstr "SIP Вътрешни"
 
-#, fuzzy
 msgid "IAX Phones"
-msgstr "Вътрешни"
+msgstr "IAX Вътрешни"
 
-#, fuzzy
 msgid "ISDN Phones"
-msgstr "Вътрешни"
+msgstr "ISDN Вътрешни"
 
-#, fuzzy
 msgid "Analog Phones"
-msgstr "Вътрешни"
+msgstr "Аналогови Вътрешни"
 
-#, fuzzy
 msgid "active"
-msgstr "Неизползвани"
+msgstr "активни"
 
-#, fuzzy
 msgid "inactive"
-msgstr "Неизползвани"
+msgstr "неактивни"
 
 msgid "up"
-msgstr ""
+msgstr "нагоре"
 
 msgid "down"
-msgstr ""
+msgstr "надолу"
 
 msgid "associated"
-msgstr ""
+msgstr "асоциирани"
 
 msgid "HIDE"
-msgstr ""
+msgstr "СКРИЙ"
 
 msgid "unconfigured"
-msgstr ""
+msgstr "неконфигурирани"
 
 msgid "Package activated successfully."
-msgstr ""
+msgstr "Пакета е активиран успешно."
 
 msgid "Package deactivated successfully."
-msgstr ""
+msgstr "Пакета е деактивиран успешно."
 
 msgid "Package deleted successfully."
-msgstr ""
+msgstr "Пакета е изтрит успешно."
 
 msgid "Package restored successfully."
-msgstr ""
+msgstr "Пакета е възстановен успешно."
 
 msgid "Package installed successfully."
-msgstr ""
+msgstr "Пакета е инсталиран успешно."
 
 #, php-format
 msgid "%.2f GB"
-msgstr ""
+msgstr "%.2f GB"
 
 #, php-format
 msgid "%.2f MB"
-msgstr ""
+msgstr "%.2f MB"
 
 #, php-format
 msgid "%.0f KB"
-msgstr ""
+msgstr "%.0f KB"
 
 #, php-format
 msgid "%d bytes"
-msgstr ""
+msgstr "%d байта"
 
 #, php-format
 msgid "The field '%s' contains invalid characters."
-msgstr ""
+msgstr "Полето '%s' съдържа невалидни символи."
 
 #, php-format
 msgid "The field '%s' is required."
-msgstr ""
+msgstr "Полето '%s' е задължително."
