@@ -517,6 +517,8 @@ function extensions_generate_provider_incoming_context($p) {
 	}
 
 	// assign read back number for provider
+	$readbacknum = false;
+
 	if ($tech == "CAPI") {
 		$readbacknum = $p['msn'];
 
@@ -532,9 +534,6 @@ function extensions_generate_provider_incoming_context($p) {
 		if (isset($p['readbacknumber'])) {
 			$readbacknum = $p['readbacknumber'];
 		}
-
-	} else {
-		$readbacknum = false;
 	}
 
 	// does this channel need a wait
