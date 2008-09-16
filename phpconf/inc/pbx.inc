@@ -546,6 +546,7 @@ function pbx_delete_phone($uniqid) {
 
 		unset($GLOBALS['config'][$phone_type]['phone'][$uniqid_map[$uniqid]]);
 		dialplan_remove_incomingextensionmap_reference_from_providers($uniqid);
+		dialplan_remove_member_reference_from_callgroups($uniqid);
 		return 0;
 
 	} else {

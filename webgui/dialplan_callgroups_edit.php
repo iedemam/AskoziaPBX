@@ -64,7 +64,7 @@ if ($_POST) {
 	
 	parse_str($_POST['groupmembers']);
 	$pconfig['groupmember'] = $gme;
-	
+
 	/* input validation */
 	$reqdfields = explode(" ", "name");
 	$reqdfieldsn = explode(",", "Name");
@@ -80,7 +80,7 @@ if ($_POST) {
 		$gm['name'] = $_POST['name'];
 		$gm['extension'] = verify_non_default($_POST['extension']);
 		$gm['descr'] = verify_non_default($_POST['descr']);
-		$gm['groupmember'] = $gme;
+		$gm['groupmember'] = ($gme) ? $gme : false;
 		$gm['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
 		$gm['publicname'] = verify_non_default($_POST['publicname']);
 		$gm['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);

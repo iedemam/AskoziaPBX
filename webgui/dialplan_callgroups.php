@@ -91,7 +91,11 @@ include("fbegin.inc");
 		<td class="listbgl"><?=htmlspecialchars($cg['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($cg['extension']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($cg['descr']);?>&nbsp;</td>
-		<td class="listr"><?=@implode(", ", pbx_uniqid_to_name($cg['groupmember']));?>&nbsp;</td>
+		<td class="listr"><? 
+		if (is_array($cg['groupmember'])) {
+			echo @implode(", ", pbx_uniqid_to_name($cg['groupmember']));
+		} 
+		?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="dialplan_callgroups_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit call group");?>" border="0"></a>
 			<a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this call group?");?>')"><img src="delete.png" title="<?=gettext("delete call group");?>" border="0"></a></td>
 	</tr>

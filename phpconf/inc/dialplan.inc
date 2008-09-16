@@ -78,6 +78,25 @@ function dialplan_remove_incomingextensionmap_reference_from_providers($removed_
 	}	
 }
 
+function dialplan_remove_member_reference_from_callgroups($removed_id) {
+	global $g;
+
+	if (is_array($GLOBALS['config']['dialplan']['callgroup'])) {
+		$a_callgroups = &$GLOBALS['config']['dialplan']['callgroup'];
+		$n = count($a_callgroups);
+		for ($i = 0; $i < $n; $i++) {
+			if (is_array($a_callgroups[$i]['groupmember'])) {
+				$nn = count($a_callgroups[$i]['groupmember']);
+				for ($ii = 0; $ii < $nn; $ii++) {
+					if ($a_callgroups[$i]['groupmember'][$ii] == $removed_id) {
+						unset($a_callgroups[$i]['groupmember'][$ii]);
+					}
+				}
+			}
+		}
+	}
+}
+
 /**
  * Parses out elements for a dialstring from the given pattern.
  */

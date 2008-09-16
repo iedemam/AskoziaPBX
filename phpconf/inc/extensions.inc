@@ -779,6 +779,10 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 function extensions_generate_callgroup_extension($group, $from_public=false, $readbacknum=false, $extension=false) {
 	global $defaults;
 
+	if (!is_array($group['groupmember'])) {
+		return;
+	}
+
 	$transfer_flags = (!$from_public) ? "tT" : "t";
 	$exten = ($extension !== false) ? $extension : $group['extension'];
 	$dialstring = extensions_phone_uniqids_to_dialstring($group['groupmember']);
