@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-11 16:34+0200\n"
+"POT-Creation-Date: 2008-09-16 13:10+0200\n"
 "PO-Revision-Date: 2008-09-07 18:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2764,7 +2764,8 @@ msgstr "Лимит на Разговорите"
 msgid "calls"
 msgstr "обаждания"
 
-msgid "Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)"
+#, fuzzy
+msgid "Permit only 'n' concurrent calls (default: 2)"
 msgstr ""
 "Разрешава само 'n' изходящи и 'n' входящи обаждания (по подразбиране: 2)"
 

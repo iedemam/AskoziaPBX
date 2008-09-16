@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-11 16:34+0200\n"
+"POT-Creation-Date: 2008-09-16 13:10+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2601,7 +2601,8 @@ msgstr "通話限制"
 msgid "calls"
 msgstr "通話"
 
-msgid "Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)"
+#, fuzzy
+msgid "Permit only 'n' concurrent calls (default: 2)"
 msgstr "只允許 n 個呼出通話和 n 個呼入通話（預設：2）。"
 
 msgid "Busy Limit"

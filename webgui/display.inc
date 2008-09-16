@@ -813,7 +813,7 @@ function display_call_and_busy_limit_selector($current_calllimit, $current_busyl
 		<td valign="top" class="vncell"><?=gettext("Call Limit");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
 			<input name="calllimit" type="text" class="formfld" id="calllimit" size="5" value="<?=htmlspecialchars($current_calllimit);?>">&nbsp;<?=gettext("calls");?> 
-            <br><span class="vexpl"><?=gettext("Permit only 'n' outgoing call(s) and 'n' incoming call(s) (default: 2)");?></span>
+            <br><span class="vexpl"><?=gettext("Permit only 'n' concurrent calls (default: 2)");?></span>
 		</td>
 	</tr>
 	<tr> 
