@@ -1,3 +1,9 @@
+2008.09.xx - 1.0.1
+ - bug: providers with non-numeric usernames with no "read back" number set no longer crash in voicemail
+ - bug: deleted phone accounts now automatically removed from call groups
+ - bug: call groups with no members no longer break dialplan
+ - bug: busy/call limit documentation fixed
+
 2008.09.12 - 1.0.0
  - localization: added Czech
  - localization: updated Greek, Bulgarian and Italian
