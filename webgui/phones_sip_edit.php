@@ -80,10 +80,9 @@ if ($_POST) {
 	unset($input_errors);
 	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
-	$pconfig['codec'] = array("ulaw");
-	
 	parse_str($_POST['a_codecs']);
 	parse_str($_POST['v_codecs']);
+	$pconfig['codec'] = array_merge($ace, $vce);
 
 	/* input validation */
 	$reqdfields = explode(" ", "extension callerid");
@@ -161,8 +160,7 @@ if ($_POST) {
 			}
 		}
 		$sp['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
-		
-		$sp['codec'] = array();
+
 		$sp['codec'] = array_merge($ace, $vce);
 
 		if (isset($id) && $a_sipphones[$id]) {

@@ -71,7 +71,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['override'] = $a_iaxproviders[$id]['override'];
 	$pconfig['overridestring'] = $a_iaxproviders[$id]['overridestring'];
 	if(!is_array($pconfig['codec'] = $a_iaxproviders[$id]['codec']))
-		$pconfig['codec'] = array("ulaw", "gsm");
+		$pconfig['codec'] = array("ulaw");
 	$pconfig['manual-attribute'] = $a_iaxproviders[$id]['manual-attribute'];
 }
 
@@ -82,10 +82,9 @@ if ($_POST) {
 	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$_POST['incomingextensionmap'] = gather_incomingextensionmaps($_POST);
 	$pconfig = $_POST;
-	$pconfig['codec'] = array("ulaw", "gsm");
-	
 	parse_str($_POST['a_codecs']);
 	parse_str($_POST['v_codecs']);
+	$pconfig['codec'] = array_merge($ace, $vce);
 
 	/* input validation */
 	$reqdfields = explode(" ", "name username host");
@@ -169,9 +168,8 @@ if ($_POST) {
 		$sp['incomingextensionmap'] = $_POST['incomingextensionmap'];
 		$sp['override'] = ($_POST['override'] != "disable") ? $_POST['override'] : false;
 		$sp['overridestring'] = verify_non_default($_POST['overridestring']);
-		
-		$sp['codec'] = array();
-		$sp['codec'] = array_merge($ace, $vce);
+
+		$sp['codec'] = $pconfig['codec'];
 
 		$sp['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
