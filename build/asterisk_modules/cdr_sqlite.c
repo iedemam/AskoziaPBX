@@ -52,7 +52,7 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 69392 $")
 #include "asterisk/utils.h"
 
 /* When you change the DATE_FORMAT, be sure to change the CHAR(19) below to something else */
-#define DATE_FORMAT "%b %d %T"
+#define DATE_FORMAT "%Y-%m-%d %T"
 
 static char *name = "sqlite";
 static sqlite* db = NULL;
@@ -70,7 +70,7 @@ static char sql_create_table[] = "CREATE TABLE cdr ("
 "	dstchannel	VARCHAR(80),"
 "	lastapp		VARCHAR(80),"
 "	lastdata	VARCHAR(80),"
-"	start		VARCHAR(16),"
+"	start		CHAR(19),"
 "	answer		CHAR(19),"
 "	end			CHAR(19),"
 "	duration	INTEGER,"
