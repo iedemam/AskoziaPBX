@@ -1,9 +1,11 @@
-2008.09.xx - 1.0.1
+2008.09.19 - 1.0.1
  - bug: providers with non-numeric usernames with no "read back" number set no longer crash in voicemail
  - bug: deleted phone accounts now automatically removed from call groups
  - bug: call groups with no members no longer break dialplan
  - bug: busy/call limit documentation fixed
  - bug: the "invalid input" state of SIP/IAX provider/phone account pages no longer results in the selected codecs being reset to defaults
+ - bug: Greek translation is now in Greek instead of Bulgarian (oops)
+ - bug: sqlite CDRs now store year information
 
 2008.09.12 - 1.0.0
  - localization: added Czech

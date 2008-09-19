@@ -1,38 +1,33 @@
-#
-# $Id$
-#
-# part of AskoziaPBX (http://askozia.com/pbx)
-# Copyright (C) 2008 IKT <http://www.itison-ikt.de>
-# All rights reserved.
-#
-# Authors:
-# 	Name <mail@domain>
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:10+0200\n"
-"PO-Revision-Date: 2008-09-07 18:01+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2008-09-19 13:24+0200\n"
+"PO-Revision-Date: 2008-09-07 21:17+0200\n"
+"Last-Translator: sipahoy @ aphidnos\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Accounts"
-msgstr "Линии"
+msgstr "Λογαριασμοί"
 
 msgid "Phones"
-msgstr "Вътрешни"
+msgstr "Τηλέφωνα"
 
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
 msgstr ""
-"Вътрешните Линии ви позволяват да конфигурирате вътрешен номер и съответно "
-"досъпа му до външни линии. Кликнете върху желания тип линия за да продължите."
+"Οι λογαριασμοί τηλεφώνων σας επιτρέπουν να ρυθμίσετε εσωτερικά και την "
+"πρόσβασή τους σε λογαριασμούς παρόχων. Κάντε κλικ σε έναν από τους τύπους "
+"λογαριασμών που ακολουθούν, για να ξεκινήσετε."
 
 msgid "SIP"
 msgstr "SIP"
@@ -44,273 +39,279 @@ msgid "ISDN"
 msgstr "ISDN"
 
 msgid "Analog"
-msgstr "Аналогови"
+msgstr "PSTN"
 
 msgid "External"
-msgstr "Отдалечен"
+msgstr "Εξωτερικά"
 
 msgid "Extension"
-msgstr "Вътрешен Номер"
+msgstr "Εσωτερικό"
 
 msgid "Caller ID"
-msgstr "Caller ID"
+msgstr "Ταυτότητα καλούντος"
 
 msgid "Description"
-msgstr "Описание"
+msgstr "Περιγραφή"
 
 msgid "click to enable phone"
-msgstr "кликнете за да разрешите вътрешната линия"
+msgstr "κάντε κλικ για να ενεργοποιήσετε το τηλέφωνο"
 
 msgid "Do you really want to disable this phone?"
-msgstr "Сигурни ли сте че искате да забраните вътрешната линия?"
+msgstr "Θέλετε πραγματικά να απενεργοποιήσετε αυτό το τηλέφωνο;"
 
 msgid "click to disable phone"
-msgstr "кликнете за да забраните вътрешната линия"
+msgstr "κάντε κλικ για να απενεργοποιήσετε το τηλέφωνο"
 
 msgid "edit phone"
-msgstr "редактирай вътрешна линия"
+msgstr "επεξεργασία τηλεφώνου"
 
 msgid "Do you really want to delete this phone?"
-msgstr "Сигурни ли сте че искате да изтриете вътрешната линия?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτό το τηλέφωνο;"
 
 msgid "delete phone"
-msgstr "изтрий вътрешна линия"
+msgstr "διαγραφή τηλεφώνου"
 
 msgid "Name"
-msgstr "Име"
+msgstr "Όνομα"
 
 msgid "Dialstring"
-msgstr "Поредица за избиране"
+msgstr "Κείμενο/αριθμός κλήσης"
 
 msgid "Providers"
-msgstr "Външни"
+msgstr "Πάροχοι"
 
 msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
 "(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
 "Click an account type below to get started."
 msgstr ""
-"Външните Линии ви позволяват да конфигурирате изходящи маршрути от и към "
-"външни източници ( VoIP доставчици или ISDN/Аналогови линии от включен "
-"хардуер ). Кликнете върху желания тип линия за да продължите."
+"Οι λογαριασμοί παρόχων σας επιτρέπουν να ορίσετε δρομολογήσεις κλήσεων από "
+"και προς εξωτερικές πηγές (π.χ. παρόχους VoIP ή/και συνδεδεμένες διεπαφές "
+"ISDN και PSTN). Κάντε κλικ σε έναν τύπο λογαριασμού για να ξεκινήσετε."
 
 msgid "Pattern(s)"
-msgstr "Схема(и)"
+msgstr "Πρότυπο/α"
 
 msgid "Username"
-msgstr "Потребителско Име"
+msgstr "Όνομα χρήστη"
 
 msgid "Host"
-msgstr "Host"
+msgstr "Ονομασία υπολογιστή"
 
 msgid "click to enable provider"
-msgstr "кликнете за да разрешите външната линия"
+msgstr "κάντε κλικ για να ενεργοποιήσετε τον πάροχο"
 
 msgid "Do you really want to disable this provider?"
-msgstr "Сигурни ли сте че искате да забраните външната линия?"
+msgstr "Θέλετε πραγματικά να απενεργοποιήσετε αυτόν τον πάροχο;"
 
 msgid "click to disable provider"
-msgstr "кликнете за да забраните външната линия"
+msgstr "κάντε κλικ για να απενεργοποιήσετε τον πάροχο"
 
 msgid "edit provider"
-msgstr "редактирай външна линия"
+msgstr "επεξεργασία παρόχου"
 
 msgid "Do you really want to delete this provider?"
-msgstr "Сигурни ли сте че искате да изтриете външната линия?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτόν τον πάροχο;"
 
 msgid "delete provider"
-msgstr "изтрий външна линия"
+msgstr "διαγραφή παρόχου"
 
 msgid "Number"
-msgstr "Номер"
+msgstr "Αριθμός"
 
 msgid "Interface"
-msgstr "Интерфейс"
+msgstr " "
 
 msgid "Advanced"
-msgstr "Разширени"
+msgstr "Επιλογές για ειδικούς"
 
 msgid "Tone Zones"
-msgstr "Сигнализации"
+msgstr "Ζώνες τόνων"
 
 msgid "Loaded"
-msgstr "Заредени"
+msgstr "Ενεργές"
 
 msgid "drag-and-drop"
-msgstr "влачи-и-пусни"
+msgstr "μεταφέρετε με το ποντίκι από τη μια στήλη στην άλλη"
 
 msgid "Inactive"
-msgstr "Неизползвани"
+msgstr "Ανενεργές"
 
 msgid "Note:"
-msgstr "Забележкa:"
+msgstr "Σημείωση:"
 
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
 msgstr ""
-"Изберете всички зони за сигнализации които поддържа вашия хардуер за "
-"аналогови линии. <strong>Първата зона ще бъде зона по подразбиране."
+"Επιλέξτε όλες τις ζώνες τόνων που θέλετε να υποστηρίζονται από τις "
+"αναλογικές διεπαφές. <strong>Η πρώτη ζώνη τόνων θα είναι η προεπιλεγμένη."
 
 msgid "GUI Options"
-msgstr "GUI Настройки"
+msgstr "Επιλογές GUI"
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
 "is not set."
 msgstr ""
-"Идентификационният сертификат не може да бъде генериран защото не е настроен "
-"системния часовник. "
+"Ήταν αδύνατη η δημιουργία ενός αυτο-υπογεγραμμένου πιστοποιητικού, γιατί δεν "
+"έχει ρυθμιστεί η ώρα του συστήματος."
 
 msgid ""
 "A self-signed certificate and private key have been automatically generated."
 msgstr ""
-"Идентификационният сертификат и личния ключ бяха автоматично генерирани."
+"Δημιουργήθηκαν αυτόματα ένα αυτο-υπογεγραμμένο πιστοποιητικό και ένα "
+"ιδιωτικό κλειδί."
 
 msgid "Certificate and key must always be specified together."
-msgstr "Сертификатът и ключа трябва да се изработват едновременно."
+msgstr "Το πιστοποιητικό και το κλειδί πρέπει να ορίζονται πάντα μαζί."
 
 msgid "This certificate does not appear to be valid."
-msgstr "Сертификатът не е валиден."
+msgstr "Αυτό το πιστοποιητικό δεν φαίνεται να είναι έγκυρο."
 
 msgid "This key does not appear to be valid."
-msgstr "Ключът не е валиден."
+msgstr "Αυτό το κλειδί δεν φαίνεται να είναι έγκυρο."
 
 msgid "webGUI SSL certificate/key"
-msgstr "webGUI SSL сертификат/ключ"
+msgstr "Πιστοποιητικό/κλειδί του GUI SSL"
 
 msgid "Certificate"
-msgstr "Сертификат"
+msgstr "Πιστοποιητικό"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr "Вмъкнете идентификационен сертификат в X.509 PEM формат тук."
+msgstr "Επικολλήστε ένα υπογεγραμμένο πιστοποιητικό σε μορφή X.509 PEM."
 
 msgid "Key"
-msgstr "Ключ"
+msgstr "Κλειδί"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr "Вмъкнете RSA личен ключ в PEM формат тук."
+msgstr "Επικολλήστε ένα ιδιωτικό κλειδί RSA σε μορφή PEM."
 
 msgid "Generate self-signed certificate"
-msgstr "Генерирай идентификационен сертификат"
+msgstr "Δημιουργία αυτο-υπογεγραμμένου πιστοποιητικού"
 
 msgid "Save"
-msgstr "Запиши"
+msgstr "Αποθήκευση"
 
 msgid "Miscellaneous"
-msgstr "Други"
+msgstr "Διάφορα"
 
 msgid "Console menu"
-msgstr "Конзолно меню"
+msgstr "Μενού κονσόλας"
 
 msgid "Disable console menu"
-msgstr "Забрани конзолното меню"
+msgstr "Απενεργοποίηση μενού κονσόλας"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr "Промените в тази опция ще имат ефект след рестарт."
+msgstr ""
+"Οι μεταβολές αυτής της επιλογής θα ενεργοποιηθούν μετά την επανεκκίνηση του "
+"συστήματος."
 
 msgid "Firmware version check"
-msgstr "Проверка на програмна версия"
+msgstr "Έλεγχος έκδοσης firmware"
 
 msgid "Disable firmware version check"
-msgstr "Забрани проверката на програмната версия"
+msgstr "Απενεργοποίηση ελέγχων firmware"
 
 msgid ""
 "This will cause AskoziaPBX not to check for newer firmware versions when the "
 "<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
-"Това ще накара АскозияPBX да не проверява за нови програмни версии когато <a "
-"href=\"system_firmware.php\">Главни: Обновяване</a> страница се разглежда."
+"Αποτέλεσμα αυτής της επιλογής θα είναι να μην γίνονται έλεγχοι για νέες "
+"εκδόσεις firmware όταν φορτώνεται η σελίδα <a href=\"system_firmware.php"
+"\">Σύστημα &raquo; Firmware</a>."
 
 msgid "Package version checks"
-msgstr "Проверка версия на пакетите"
+msgstr "Έλεγχοι εκδόσεων πακέτων"
 
 msgid "Disable package version checks"
-msgstr "Забрани проверката на версията на пакетите"
+msgstr "Απενεργοποίηση των ελέγχων εκδόσεων πακέτων"
 
 msgid ""
 "This will cause AskoziaPBX not to check for package updates when the <a href="
 "\"system_packages.php\">System: Packages</a> page is viewed."
 msgstr ""
-"Това ще накара АскозияPBX да не проверява за нови версии на пакетите когато "
-"<a href=\"system_packages.php\">Главни: Пакети</a> страница се разглежда."
+"Αποτέλεσμα αυτής της επιλογής θα είναι να μην γίνονται έλεγχοι για νέες "
+"εκδόσεις πακέτων όταν φορτώνεται η σελίδα <a href=\"system_packages.php"
+"\">Σύστημα &raquo; Πακέτα</a>."
 
 msgid "Hard disk standby time"
-msgstr "Време на готовност на твърдия диск"
+msgstr "Χρόνος αναμονής σκληρού δίσκου"
 
 msgid "Always on"
-msgstr "Постоянно"
+msgstr "Πάντα ενεργό"
 
 msgid "minutes"
-msgstr "минути"
+msgstr "λεπτά"
 
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last access has elapsed. <em>Do not set this for CF cards."
 msgstr ""
-"Посравя твърдия диск в режим на готовност когато избрания период от време "
-"след последното използване изтече. <em>Не го използвайте за Компакт Флаш "
-"карти."
+"Βάζει τον σκληρό δίσκο σε κατάσταση αναμονής, όταν ο καθορισμένος χρόνος "
+"μετά την τελευταία πρόσβαση έχει περάσει. <em>Μην το ορίσετε για κάρτες CF."
 
 msgid "Navigation"
-msgstr "Навигационен панел"
+msgstr "Πλοήγηση"
 
 msgid "Keep diagnostics in navigation expanded"
-msgstr "Задръж диагностики в навигационния панел изведени"
+msgstr "Τα διαγνωστικά στο μενού να παραμένουν ανοικτά"
 
 msgid "Keep advanced options in navigation expanded"
-msgstr "Задръж разширените опции в навигационния панел изведени"
+msgstr "Οι επιλογές για ειδικούς στο μενού να παραμένουν ανοικτές"
 
 msgid "Hide SIP related options"
-msgstr "Скрий SIP опциите"
+msgstr "Απόκρυψη επιλογών SIP"
 
 msgid "Hide IAX related options"
-msgstr "Скрий IAX опциите"
+msgstr "Απόκρυψη επιλογών IAX"
 
 msgid "Hide ISDN related options"
-msgstr "Скрий ISDN опциите"
+msgstr "Απόκρυψη επιλογών ISDN"
 
 msgid "Hide Analog related options"
-msgstr "Скрий Аналоговите опции"
+msgstr "Απόκρυψη επιλογών PSTN"
 
 msgid "A valid port must be specified."
-msgstr "Трябва да бъде определен валиден порт."
+msgstr "Πρέπει να ορίσετε μία έγκυρη θύρα."
 
 msgid "General"
-msgstr "Обши"
+msgstr "Γενικά"
 
 msgid "Binding Port"
-msgstr "Порт за Връзка"
+msgstr "Θύρα"
 
 msgid "Jitterbuffer"
 msgstr "Jitterbuffer"
 
 msgid "Enable"
-msgstr "Разреши"
+msgstr "Ενεργοποίηση"
 
 msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
-msgstr "Разреши Jitterbuffer на IAX връзките прекратени от АскозияPBX."
+msgstr ""
+"Ενεργοποίηση του Jitterbuffer σε συνδέσεις IAX που τερματίζονται στο "
+"τηλεφωνικό κέντρο."
 
 msgid "Force"
-msgstr "Принуди"
+msgstr "Εξαναγκασμός"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
-msgstr "Използвай Jitterbuffer дори при връзка на два телефона."
+msgstr "Χρήση Jitterbuffer ακόμα και αν γίνεται γεφύρωση δύο τερματικών."
 
 msgid "A valid national prefix must be specified."
-msgstr "Трябва да бъде определен валиден национален префикс."
+msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εθνικό πρόθεμα."
 
 msgid "A valid international prefix must be specified."
-msgstr "Трябва да бъде определен валиден международен префикс."
+msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο διεθνές  πρόθεμα."
 
 msgid "National Prefix"
-msgstr "Национален Префикс"
+msgstr "Εθνικό πρόθεμα"
 
 msgid "International Prefix"
-msgstr "Международен Префикс"
+msgstr "Διεθνές πρόθεμα"
 
 msgid "Audio"
-msgstr "Аудио"
+msgstr "Ήχος"
 
 msgid "A-law"
 msgstr "A-law"
@@ -319,346 +320,353 @@ msgid "u-law"
 msgstr "u-law"
 
 msgid "Manager Interface"
-msgstr "Астериск Конзола"
+msgstr "Διαχείριση"
 
 msgid "Permissions"
-msgstr "Забрани"
+msgstr "Δικαιώματα"
 
 msgid "read:"
-msgstr "четене:"
+msgstr "ανάγνωση:"
 
 msgid "write:"
-msgstr "запис:"
+msgstr "εγγραφή:"
 
 msgid "edit manager room"
-msgstr "редактирай административен акаунт"
+msgstr "επεξεργασία χώρου διαχειριστή"
 
 msgid "Do you really want to delete this manager user?"
-msgstr "Сигурни ли сте че искате да изтриете този административен потребител?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτόν τον διαχειριστή;"
 
 msgid "delete manager user"
-msgstr "изтрий административен потребител"
+msgstr "διαγραφή διαχειριστή"
 
 msgid "add manager user"
-msgstr "добави административен потребител"
+msgstr "προσθήκη διαχειριστή"
 
 msgid "Edit User"
-msgstr "Редактирай Потребител"
+msgstr "Επεξεργασία χρήστη"
 
 msgid "The username of \"admin\" is already used internally by AskoziaPBX."
-msgstr "Потребителското Име \"admin\" се използва служебно от АскозияPBX."
+msgstr ""
+"Το όνομα \"admin\" χρησιμοποιείται ήδη εσωτερικά από το τηλεφωνικό κέντρο."
 
 msgid "Secret"
-msgstr "Парола"
+msgstr "Κωδικός πρόσβασης"
 
 msgid "Deny Network"
-msgstr "Забранени Мрежи"
+msgstr "Μη επιτρεπτό δίκτυο"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
-msgstr "Въведете '0.0.0.0 / 0.0.0.0' за да забраните всички мрежи"
+msgstr ""
+"Ορίστε '0.0.0.0 / 0.0.0.0' για να αποτρέψετε την πρόσβαση από όλα τα δίκτυα"
 
 msgid "Permit Network"
-msgstr "Разрешени Мрежи"
+msgstr "Επιτρεπτό δίκτυο"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
-msgstr "Въведете '0.0.0.0 / 0.0.0.0' за да разрешите всички мрежи"
+msgstr ""
+"Ορίστε '0.0.0.0 / 0.0.0.0' για να επιτρέψετε την πρόσβαση από όλα τα δίκτυα"
 
 msgid "Read"
-msgstr "Четене"
+msgstr "Ανάγνωση"
 
 msgid "Write"
-msgstr "Запис"
+msgstr "Εγγραφή"
 
 msgid "RTP"
 msgstr "RTP"
 
 msgid "The high RTP port must be greater than the low RTP port."
-msgstr "Големият RTP порт трябва да е с по-голяма стойност от малкия RTP порт."
+msgstr "Η υψηλή θύρα RTP πρέπει να είναι μεγαλύτερη από την χαμηλή θύρα RTP."
 
 msgid "RTP Port Range"
-msgstr "Диапазон RTP Портове"
+msgstr "Εύρος θυρών RTP"
 
 msgid "The port range which RTP streams should use. (default:"
-msgstr "Диапазонът който RTP потоците ще използват. (по подразбиране:"
+msgstr "Το εύρος θυρών που θα χρησιμοποιεί η ροή RTP (προεπιλεγμένη τιμή:"
 
 msgid "Warning"
-msgstr "Внимание"
+msgstr "Προειδοποίηση"
 
 msgid "after you click &quot;Save&quot;, all current calls will be dropped."
 msgstr ""
-"След като кликнете &quot;Запиши&quot;, всички активни разговори ще прекъснат."
+"αφού πιέσετε &quot;Αποθήκευση&quot;, όλες οι ενεργές κλήσεις θα διακοπούν."
 
 msgid ""
 "A whole number of seconds must be entered for the \"Default Registration "
 "Expiration\" timeout."
 msgstr ""
-"Цяло число в секунди трябва да бъде въведено за  \"Прекратяване на "
-"Регистрацията По Подразбиране\" пауза."
+"Πρέπει να εισάγετε έναν ακέραιο αριθμό δευτερολέπτων για τον \"Προεπιλεγμένο "
+"χρόνο ζωής εγγραφών\"."
 
 msgid ""
 "A whole number of seconds must be entered for the \"Minimum Registration "
 "Expiration\" timeout."
 msgstr ""
-"Цяло число в секунди трябва да бъде въведено за  \"Прекратяване на "
-"Регистрацията Минимално\" пауза."
+"Πρέπει να εισάγετε έναν ακέραιο αριθμό δευτερολέπτων για τον \"Ελάχιστο "
+"χρόνο ζωής εγγραφών\"."
 
 msgid ""
 "A whole number of seconds must be entered for the \"Maximum Registration "
 "Expiration\" timeout."
 msgstr ""
-"Цяло число в секунди трябва да бъде въведено за  \"Прекратяване на "
-"Регистрацията Максимално\" пауза."
+"Πρέπει να εισάγετε έναν ακέραιο αριθμό δευτερολέπτων για τον \"Μέγιστο χρόνο "
+"ζωής εγγραφών\"."
 
 msgid "Registration Expiration Timeouts"
-msgstr "Пауза на Прекратяване на Регистрации"
+msgstr "Χρόνος ζωής εγγραφών"
 
 msgid "min:"
-msgstr "най-малко:"
+msgstr "ελάχιστος:"
 
 msgid "max:"
-msgstr "най-много:"
+msgstr "μέγιστος:"
 
 msgid "default:"
-msgstr "по подразбиране:"
+msgstr "προεπιλεγμένος:"
 
 msgid ""
 "The minimum, maximum and default number of seconds that incoming and "
 "outgoing registrations and subscriptions remain valid."
 msgstr ""
-"Минималното, максималното и по подразбиране число в секунди които входящите "
-"и изходящите регистрации и подписи остават валидни."
+"Το ελάχιστο, μέγιστο και προεπιλεγμένο πλήθος δευτερολέπτων κατά το οποίο οι "
+"εισερχόμενες και εξερχόμενες εγγραφές και συνδρομές παραμένουν έγκυρες."
 
 msgid "Default values are 60, 3600 and 120 respectively."
-msgstr "Стоностите по подразбиране са съответно 60, 3600 и 120."
+msgstr "Οι πρεπιλεγμένες τιμές είναι 60, 3600 και 120."
 
 msgid "DNS Service Records"
-msgstr "DNS Услуга Записи"
+msgstr "Εγγραφές DNS SRV"
 
 msgid "Disable DNS SRV lookups."
-msgstr "Забрани DNS SRV следене."
+msgstr "Απενεργοποίηση αναζητήσεων DNS SRV."
 
 msgid "Debug"
-msgstr "Debug"
+msgstr "Αποσφαλμάτωση"
 
 msgid "ISDN Interface"
-msgstr "ISDN Интерфейс"
+msgstr "Διεπαφή ISDN"
 
 msgid "Start"
-msgstr "Старт"
+msgstr "Έναρξη"
 
 msgid "Debugging"
-msgstr "Debugging"
+msgstr "Αποσφλαμάτωση"
 
 msgid "Stop"
-msgstr "Стоп"
+msgstr "Τερματισμός"
 
 msgid "Debug Ouptut"
-msgstr "Debug Ouptut"
+msgstr "Αποτελέσματα αποσφαλμάτωσης"
 
 msgid "Restart"
-msgstr "Рестарт"
+msgstr "Επανεκκίνηση"
 
 msgid "Diagnostics"
-msgstr "Диагностики"
+msgstr "Διαγνωστικά"
 
 msgid "ARP table"
-msgstr "ARP таблица"
+msgstr "Πίνακας ARP"
 
 msgid "LAN"
 msgstr "LAN"
 
 msgid "IP address"
-msgstr "IP адрес"
+msgstr "Διεύθυνση IP"
 
 msgid "MAC address"
-msgstr "MAC адрес"
+msgstr "Διεύθυνση MAC"
 
 msgid "Hostname"
-msgstr "Име на Host"
+msgstr "Ονομασία υπολογιστή"
 
 msgid "delete arp entry"
-msgstr "изтрий внесения arp"
+msgstr "διαγραφή καταχώρησης arp"
 
 msgid "remove all entries from arp table"
-msgstr "премахни всички внесени в arp таблицата"
+msgstr "διαγραφή όλων των καταχωρήσεων από τον πίνακα arp"
 
 msgid "Editor"
-msgstr "Редактор"
+msgstr "Επεξεργαστής"
 
 #, php-format
 msgid "The specified file (%s) does not exist."
-msgstr "Посоченият файл (%s) не съществува."
+msgstr "Το αρχείο (%s) δεν υπάρχει."
 
 #, php-format
 msgid "File contents (%s) saved."
-msgstr "Файлът съдържащ (%s) записан."
+msgstr "Τα περιεχόμενα του αρχείου (%s) αποθηκεύτηκαν."
 
 msgid "File"
-msgstr "Файл"
+msgstr "Αρχείο"
 
 msgid "Contents"
-msgstr "Съдържащи"
+msgstr "Περιεχόμενα"
 
 msgid "Cancel"
-msgstr "Отмени"
+msgstr "Ακύρωση"
 
 msgid "Open"
-msgstr "Отвори"
+msgstr "Άνοιγμα"
 
 msgid "Logs"
-msgstr "Логове"
+msgstr "Ημερολόγια"
 
 msgid "No matches found."
-msgstr "Не са намерени съвпадения."
+msgstr "Δεν βρέθηκαν εγγραφές."
 
 msgid "System"
-msgstr "Главни"
+msgstr "Σύστημα"
 
 msgid "PBX"
-msgstr "PBX"
+msgstr "Τηλεφωνικό κέντρο"
 
 msgid "Calls"
-msgstr "Разговори"
+msgstr "Κλήσεις"
 
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Ρυθμίσεις"
 
 msgid "filter"
-msgstr "филтър"
+msgstr "φίλτρο"
 
 msgid "System log entries"
-msgstr "Системни логове"
+msgstr "Εγγραφές ημερολογίου συστήματος"
 
 msgid "Clear Log"
-msgstr "Изчисти Логовете"
+msgstr "Διαγραφή ημερολογίου"
 
 msgid "Call Records"
-msgstr "Отчети на Разговорите"
+msgstr "Εγγραφές ημερολογίου κλήσεων"
 
 msgid "start"
-msgstr "начало"
+msgstr "έναρξη"
 
 msgid "src"
-msgstr "източник"
+msgstr "από"
 
 msgid "dst"
-msgstr "направление"
+msgstr "προς"
 
 msgid "channels"
-msgstr "канали"
+msgstr "κανάλια"
 
 msgid "last app"
-msgstr "последно приложение"
+msgstr "τελευταία εφαρμογή"
 
 msgid "sec."
-msgstr "секунди"
+msgstr "συνολικός χρόνος"
 
 msgid "bill"
-msgstr "стойност"
+msgstr "χρόνος ομιλίας"
 
 msgid "disposition"
-msgstr "край"
+msgstr "κατάληξη"
 
 msgid "Clear log"
-msgstr "Изчисти Отчетите"
+msgstr "Διαγραφή ημερολογίου"
 
 msgid "Asterisk log entries"
-msgstr "Астериск логове"
+msgstr "Εγγραφές ημερολογίου Asterisk"
 
 msgid "A valid IP address must be specified."
-msgstr "Въведете валиден IP адрес."
+msgstr "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση IP."
 
 msgid "Number of log entries to show must be between 50 and 1000."
 msgstr ""
-"Броят на записите в лога които да се показват трябва да е между 50 и 1000."
+"Ο αριθμός των εγγραφών του ημερολογίου που θα παρουσιάζονται πρέπει να είναι "
+"από 50 έως 1000."
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Покажи записите в обратен ред ( най-новите да са най-отгоре )"
+msgstr ""
+"Παρουσίαση των εγγραφών του ημερολογίου με φθίνουσα ταξινόμηση (οι νεότερες "
+"εγγραφές στην κορυφή)"
 
 msgid "Number of log entries to show:"
-msgstr "Брой записи на страница:"
+msgstr "Πλήθος εγγραφών ημερολογίου για παρουσίαση:"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Разреши изпращане на логовете към отдалечен syslog сървър"
+msgstr "Ενεργοποίηση αποθήκευσης σε απομακρυσμένο διακομιστή syslog"
 
 msgid "Remote syslog server"
-msgstr "Отдалечен syslog сървър"
+msgstr "Απομακρυσμένος διακομιστής syslog"
 
 msgid "IP address of remote syslog server"
-msgstr "IP адрес на отдалечен syslog сървър"
+msgstr "Διεύθυνση IP του απομακρυσμένου διακομιστή syslog"
 
 msgid "system events"
-msgstr "системни логове"
+msgstr "γεγονότα συστήματος"
 
 msgid "pbx events"
-msgstr "астериск логове"
+msgstr "γεγονότα τηλεφωνικού κέντρου"
 
 msgid "call detail records"
-msgstr "отчети на разговорите"
+msgstr "εγγραφές κλήσεων"
 
 msgid ""
 "syslog sends UDP datagrams to port 514 on the specified remote syslog "
 "server. Be sure to set syslogd on the remote server to accept syslog "
 "messages from AskoziaPBX."
 msgstr ""
-"syslog изпраща UDP пакети с информация на порт 514 на указания отдалечен "
-"syslog сървър. Проверете дали е стартиран syslogd на отдалечения сървър "
-"който приема syslog съобщенията от АскозияPBX."
+"Το syslog στέλνει UDP datagrams στη θύρα 514 στον απομακρυσμένο διακομιστή "
+"syslog. Βεβαιωθείτε ότι ο απομακρυσμένος διακομιστής syslog μπορεί να δεχτεί "
+"τα μηνύματα αυτά από το τηλεφωνικό κέντρο."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
 "Execute \"help\" to see a list of possible commands."
 msgstr ""
-"Тази страница позволява директно изпълнение на команди в Астериск конзолата. "
-"Напишете \"help\" за да видите списъка с възможните команди."
+"Αυτή η σελίδα επιτρέπει την εκτέλεση εντολών στο τηλεφωνικό κέντρο. "
+"Εκτελέστε \"help\" για να δείτε όλες τις διαθέσιμες εντολές."
 
 msgid "Command"
-msgstr "Команда"
+msgstr "Εντολή"
 
 msgid "Output"
-msgstr "Резултат"
+msgstr "Αποτέλεσμα"
 
 msgid "Ping"
 msgstr "Ping"
 
 #, php-format
 msgid "Count must be between 1 and %d"
-msgstr "Броят трябва да е между 1 и %d"
+msgstr "Το πλήθος πρέπει να είναι μεταξύ 1 και %d"
 
 msgid "Traceroute"
 msgstr "Traceroute"
 
 msgid "Count"
-msgstr "Брой"
+msgstr "Πλήθος"
 
 msgid "Ping output:"
-msgstr "Ping резултат:"
+msgstr "Αποτέλεσμα ping:"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Максималният брой на скоковете трябва да е между 1 and %d"
+msgstr "Ο μέγιστος αριθμός βημάτων πρέπει να είναι μεταξύ του 1 και του %d."
 
 msgid "Maximum number of hops"
-msgstr "Максимален брой скокове"
+msgstr "Mέγιστος αριθμός βημάτων"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "Превърни IP адрес в име на host"
+msgstr "Μετάφραση διευθύνσεων IP σε ονόματα υπολογιστών"
 
 msgid ""
 "Traceroute may take a while to complete.  You may hit the Stop button on "
 "your browser at any time to see the progress of failed traceroutes."
 msgstr ""
-"Възможно е да отнеме малко време за приключване на Traceroute.  Натиснете "
-"Стоп бутона на браузера си когато видите че процеса е замръзнал."
+"Το traceroute μπορεί να πάρει λίγο χρόνο μέχρι να ολοκληρωθεί. Μπορείτε να "
+"πατήσετε το κουμπί \"Τερματισμός\" στον browser σας για να δείτε την πρόοδο "
+"των αποτυχημένων traceroutes."
 
 msgid "Traceroute output:"
-msgstr "Traceroute резултат:"
+msgstr "Αποτέλεσμα traceroute:"
 
 msgid "Dialplan"
-msgstr "Dialplan"
+msgstr "Πλάνο κλήσεων"
 
 msgid "Applications"
-msgstr "Приложения"
+msgstr "Εφαρμογές"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -666,238 +674,240 @@ msgid ""
 "dialed via their defined extensions or used as a destination for incoming "
 "calls from Providers."
 msgstr ""
-"С малко знание как работи схемата на избиране на Астериск, някои основни "
-"приложения могат да бъдат добавени в АскозияPBX. Тези приложения могат да "
-"бъдат избирани с техните дефинирани вътрешни номера или да се използват като "
-"дестинация за входящи обаждания от външни линии."
+"Με λίγη γνώση του τρόπου με τον οποίο λειτουργεί το πλάνο κλήσεων του "
+"Asterisk, μπορείτε να προσθέσετε κάποιες βασικές εφαρμογές στο AskoziaPBX. "
+"Αυτές οι εφαρμογές μπορούν να κληθούν μέσω των εσωτερικών που θα ορίσετε ή "
+"να χρησιμοποιηθούν για τον τερματισμό των εισερχομένων κλήσεων από τους "
+"παρόχους."
 
 msgid "descr"
-msgstr "описание"
+msgstr "περιγραφή"
 
 msgid "edit application mapping"
-msgstr "редактирай приложението"
+msgstr "επεξεργασία αντιστοίχησης εφαρμογών"
 
 msgid "Do you really want to delete this application mapping?"
-msgstr "Сигурни ли сте че искате да изтриете приложението?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτή την αντιστοίχηση εφαρμογής;"
 
 msgid "delete application mapping"
-msgstr "изтрий приложението"
+msgstr "διαγραφή αντιστοίχησης εφαμογής"
 
 msgid "add application mapping"
-msgstr "добави приложения"
+msgstr "προσθήκη αντιστοίχησης εφαρμογής"
 
 msgid "Edit"
-msgstr "Редактирай"
+msgstr "Επεξεργασία"
 
 msgid "A valid extension must be entered."
-msgstr "Въведете валиден вътрешен номер"
+msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εσωτερικό."
 
 msgid "Internal extension used to reach this application."
-msgstr "Вътрешен номер използван за достъп до приложението"
+msgstr "Ο αριθμός που θα χρησιμοποιείται για να κληθεί αυτή η εφαρμογή."
 
 msgid "Call Groups"
-msgstr "Групи на Звънене"
+msgstr "Ομάδες τηλεφώνων"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
 "can then be dialed via their defined extensions or used as a destination for "
 "incoming calls from Providers."
 msgstr ""
-"Групи от вътрешни номера могат да бъдат конфигурирани да звънят "
-"едновременно. Тези групи могат да бъдат избирани с техните дефинирани "
-"вътрешни номера или да се използват като дестинация за входящи обаждания от "
-"външни линии."
+"Μπορείτε να ομαδοποιήσετε όσα τηλέφωνα θέλετε, ώστε να κουδουνίζουν "
+"ταυτόχρονα. Αυτές οι ομάδες θα μπορούν να καλούνται μέσω των εσωτερικών τους "
+"ή να χρησιμοποιηθούν για να τερματιστούν εισερχόμενες κλήσεις από τους "
+"παρόχους."
 
 msgid "Members"
-msgstr "Участващи"
+msgstr "Μέλη"
 
 msgid "edit call group"
-msgstr "редактирай група на звънене"
+msgstr "επεξεργασία ομάδας τηλεφώνων"
 
 msgid "Do you really want to delete this call group?"
-msgstr "Сигурни ли сте че искате да изтриете тази група на звънене?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτήν την ομάδα;"
 
 msgid "delete call group"
-msgstr "изтрий група на звънене"
+msgstr "διαγραφή ομάδας τηλεφώνων"
 
 msgid "add call group"
-msgstr "добави група на звънене"
+msgstr "προσθήκη ομάδας τηλεφώνων"
 
 msgid "Group name"
-msgstr "Име на групата"
+msgstr "Ονομασία ομάδας"
 
 msgid "Internal extension used to reach this call group."
-msgstr "Вътрешен номер използван за достъп до групата на звънене."
+msgstr "Ο αριθμός που θα χρησιμοποιείται για να κληθεί αυτή η ομάδα."
 
 msgid "Transfers"
-msgstr "Трансфер"
+msgstr "Προωθήσεις"
 
 msgid ""
 "A variety of settings are here which define how call transfers and call "
 "parking are handled. The defaults should work in most situations."
 msgstr ""
-"Тези настройки определят как да се управлява прехвърлянето и паркирането на "
-"разговорите. Настройките по подразбиране би трябввало да работят в повечето "
-"от случаите."
+"Εδώ μπορείτε να ορίσετε τον χειρισμό των προωθήσεων και της στάθμευσης "
+"κλήσεων. Οι προεπιλεγμένες τιμές πρέπει να δουλεύουν στις περισσότερες "
+"περιπτώσεις."
 
 msgid "A valid parking start position must be specified."
-msgstr "Въведете валидна начална позиция за паркиране."
+msgstr "Πρέπει να καταχωρήσετε μια έγκυρη αρχική θέση στάθμευσης."
 
 msgid "A valid parking stop position must be specified."
-msgstr "Въведете валидна крайна позиция за паркиране."
+msgstr "Πρέπει να καταχωρήσετε μια έγκυρη τελική θέση στάθμευσης."
 
 msgid "The end parking position must be larger than the start position."
-msgstr ""
-"Крайната позиция за паркиране трябва да е по-голяма от началната позиция."
+msgstr "Η τελική θέση στάθμευσης πρέπει να είναι μεγαλύτερη από την αρχική."
 
 msgid "A valid parking extension must be specified."
-msgstr "Въведете валиден вътрешен номер за паркиране."
+msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εσωτερικό στάθμευσης."
 
 msgid "A valid park time must be specified."
-msgstr "Въведете валиден период за паркиране."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο χρόνο στάθμευσης."
 
 msgid "A valid key timeout must be specified."
-msgstr ""
-"Въведете валиден период между натиснати бутони за активиране на "
-"прехвърлянето."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο χρόνο αναμονής."
 
 msgid "A valid attended transfer timeout must be specified."
-msgstr "Въведете валиден период за отговор на прехвърлянето."
+msgstr ""
+"Πρέπει να καταχωρήσετε έναν έγκυρο χρόνο αναμονής για προώθηση με συνεννόηση."
 
 msgid "A valid extension digit timeout must be specified."
-msgstr "Въведете валиден период между натиснати бутони за вътрешен номер."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο χρόνο αναμονής ψηφίου."
 
 msgid "Hot Keys"
-msgstr "Код за Активиране"
+msgstr "Προθέματα"
 
 msgid "Attended"
-msgstr "С предизвестие"
+msgstr "Με συνεννόηση"
 
 msgid "This key combination activates an attended transfer (default **)."
 msgstr ""
-"Комбинация от бутони за прехвърляне с предизвестие (по подразбиране **)."
+"Αυτό ο συνδυασμός ενεργοποιεί μια προώθηση με συνεννόηση (προεπιλεγμένη "
+"τιμή: **)."
 
 msgid "Blind"
-msgstr "Без предизвестие"
+msgstr "Άμεση"
 
 msgid "This key combination activates a blind transfer (default ##)."
 msgstr ""
-"Комбинация от бутони за прехвърляне без предизвестие (по подразбиране ##)."
+"Αυτό ο συνδυασμός ενεργοποιεί μια άμεση προώθηση (προεπιλεγμένη τιμή: ##)."
 
 msgid "Call Parking"
-msgstr "Паркиране на Разговор"
+msgstr "Στάθμευση κλήσεων"
 
 msgid "Park Extension"
-msgstr "Вътрешен Номер за Паркиране на Разговор"
+msgstr "Εσωτερικό στάθμευσης"
 
 msgid ""
 "Blind transfer to this extension to park a call (default 700). The number "
 "read back to you after transfering is the extension where the call was "
 "parked."
 msgstr ""
-"Прехвърлете без предизвестие към този вътрешен номер за паркиране на "
-"раговора (по подразбиране 700). След прехвърлянето ще ви бъде продиктуван "
-"вътрешния номер на който е паркиран разговора."
+"Κάντε άμεση προώθηση σε αυτό το εσωτερικό για να σταθμεύσετε μια κλήση "
+"(προεπιλεγμένη τιμή: 700). Ο αριθμός που θα σας διαβαστεί αφού "
+"πραγματοποιήσετε την προώθηση, είναι το εσωτερικό στο οποίο έγινε η "
+"στάθμευση."
 
 msgid "Parking Range"
-msgstr "Диапазон от Номера за Паркиране на Разговор"
+msgstr "Εύρος εσωτερικών στάθμευσης"
 
 msgid ""
 "This range of extensions is where parked calls reside (default 701-720)."
 msgstr ""
-"Този диапазон от вътрешни номера определя къде могат да се паркират "
-"разговорите (по подразбиране 701-720)."
+"Το εύρος των εσωτερικών στο οποίο γίνεται στάθμευση κλήσεων (προεπλεγμένη "
+"τιμή: 701-720)."
 
 msgid "Timeouts"
-msgstr "Времена"
+msgstr "Χρόνοι αναμονής"
 
 msgid "Attended Transfer Answer"
-msgstr "Отговор на Прехвърляне"
+msgstr "Απάντηση προώθησης με συνεννόηση"
 
 msgid ""
 "Maximum number of seconds an attended transfer can go unanswered (default "
 "15)."
 msgstr ""
-"Максималното време в секунди за което прехвърлянето с предизвестие може да "
-"остане без отговор (по подразбиране 15)."
+"Ο μέγιστος χρόνος σε δευτερόλεπτα κατά τον οποίο αναμένεται απάντηση σε μια "
+"προώθηση με συνεννόηση (προεπλεγμένη τιμή: 15)."
 
 msgid "Transfer Key"
-msgstr "Комбинация за Прехвърляне"
+msgstr "Προώθηση"
 
 msgid ""
 "Maximum number of milliseconds between key presses for transfer activation "
 "(default 500)."
 msgstr ""
-"Максималното време в милисекунди между натискането на бутоните за активиране "
-"на прехвърлянето (по подразбиране 500)."
+"Μέγιστος χρόνος σε χιλιοστά του δευτερολέπτου μεταξύ πληκτρολογήσεων για μια "
+"προώθηση με συνεννόηση (προεπλεγμένη τιμή: 500)"
 
 msgid "Extension Digit"
-msgstr "Избиране на Вътрешен Номер"
+msgstr "Ψηφία"
 
 msgid ""
 "Maximum number of seconds to wait between digits when transferring a call "
 "(default 3)."
 msgstr ""
-"Максималното време в секунди за изчакване между цифрите когато се прехвърля "
-"разговор (по подразбиране 3). "
+"Μέγιστος χρόνος σε δευτερόλεπτα μεταξύ πιέσεων πλήκτρων κατά την προώθηση "
+"κλήσεων (προεπλεγμένη τιμή: 3)"
 
 msgid "Park Time"
-msgstr "Време за Паркиране"
+msgstr "Χρόνος στάθμευσης"
 
 msgid ""
 "Maximum number of seconds a call can be parked before it is transfered back "
 "to the parker (default 30)."
 msgstr ""
-"Максималното време в секунди за което разговора може да бъде паркиран преди "
-"да се върне обратно към паркиращия (по подразбиране 30)."
+"Μέγιστος χρόνος σε δευτερόλεπτα κατά τον οποίο μια κλήση μπορεί να "
+"παραμείνει σταθμευμένη, πριν επιστραφεί πίσω σε αυτόν που την στάθμευσε "
+"(προεπλεγμένη τιμή: 30)"
 
 msgid "AskoziaPBX: execute command"
-msgstr "АскозияPBX: Изпълнение на Команди"
+msgstr "Εκτέλεση εντολής"
 
 msgid "enter a command below..."
-msgstr "въведете командата по-долу..."
+msgstr "εισάγετε μια εντολή πιο κάτω..."
 
 msgid "Command:"
-msgstr "Command:"
+msgstr "Εντολή:"
 
 msgid "Execute"
-msgstr "Execute"
+msgstr "Εκτέλεση"
 
 msgid "Clear"
-msgstr "Clear"
+msgstr "Καθαρισμός"
 
 msgid "Download:"
-msgstr "Download:"
+msgstr "Λήψη:"
 
 msgid "Download"
-msgstr "Download"
+msgstr "Λήψη"
 
 msgid "Upload:"
-msgstr "Upload:"
+msgstr "Αποστολή:"
 
 msgid "Upload"
-msgstr "Upload"
+msgstr "Αποστολή"
 
 msgid "In"
-msgstr "Входящи"
+msgstr "Μέσα"
 
 msgid "Out"
-msgstr "Изходящи"
+msgstr "Έξω"
 
 msgid "Switch to bytes/s"
-msgstr "Превключи на байтове"
+msgstr "Αλλαγή σε bytes/s"
 
 msgid "AutoScale"
-msgstr "Автоматично Оразмеряване"
+msgstr "Αυτόματη διαβάθμιση"
 
 msgid "Graph shows last"
-msgstr "Графиката показва последните"
+msgstr "Το γράφημα δείχνει τα τελευταία"
 
 msgid "seconds"
-msgstr "секунди"
+msgstr "δευτερόλεπτα"
 
 msgid "Collecting initial data, please wait..."
-msgstr "Събиране на първоначална информация, моля изчакайте..."
+msgstr "Συλλογή αρχικών δεδομένων. Παρακαλώ περιμένετε..."
 
 msgid "75%"
 msgstr "75%"
@@ -909,148 +919,149 @@ msgid "25%"
 msgstr "25%"
 
 msgid "Cannot get CPU load"
-msgstr "Не мога да взема данни за CPU"
+msgstr "Αδυναμία ανάγνωσης του φόρτου της CPU"
 
 msgid "AskoziaPBX webGUI"
-msgstr "АскозияPBX webGUI"
+msgstr "GUI τηλεφωνικού κέντρου"
 
 msgid "System Information"
-msgstr "Информация за Системата"
+msgstr "Πληροφορίες συστήματος"
 
 msgid "Version"
-msgstr "Версия"
+msgstr "Έκδοση"
 
 msgid "built on"
-msgstr "направена на"
+msgstr "&raquo; "
 
 msgid "Platform"
-msgstr "Платформа"
+msgstr "Πλατφόρμα"
 
 msgid "Uptime"
-msgstr "Време на работа"
+msgstr "Χρόνος λειτουργίας"
 
 #, php-format
 msgid "%s days, "
-msgstr "%s дни, "
+msgstr "%s ημέρες, "
 
 msgid "Last Config Change"
-msgstr "Последна Промяна"
+msgstr "Τελευταία μεταβολή ρυθμίσεων"
 
 msgid "Active Calls"
-msgstr "Активни Разговори"
+msgstr "Ενεργές κλήσεις"
 
 msgid "Active Channels"
-msgstr "Активни Канали"
+msgstr "Ενεργά κανάλια"
 
 msgid "Memory Usage"
-msgstr "Използвана Памет"
+msgstr "Χρήση μνήμης"
 
 msgid "Notes"
-msgstr "Бележки"
+msgstr "Σημειώσεις"
 
 msgid "Interfaces"
-msgstr "Интерфейси"
+msgstr "Διεπαφές"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
 "utilize them."
 msgstr ""
-"Откритите портове на тази страница трябва да бъдат редактирани и записани "
-"преди системата да може да ги използва."
+"Πρέπει να επεξεργαστείτε και να αποθηκεύσετε τις θύρες που βρέθηκαν σε αυτή "
+"τη σελίδα, πριν μπορέσει να τις χρησιμοποιήσει το σύστημα."
 
 msgid "Network"
-msgstr "Мрежов"
+msgstr "Ενσύρματο δίκτυο"
 
 msgid "Wireless"
-msgstr "Безжичен"
+msgstr "Ασύρματο δίκτυο"
 
 msgid "Storage"
-msgstr "Памет"
+msgstr "Αποθήκευση"
 
 msgid "No compatible analog interfaces detected."
-msgstr "Не е открит съвместим аналогов интерфейс."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές PSTN."
 
 msgid ""
 "If an analog interface is present but was not detected, please send <a href="
 "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
-"Ако аналоговият интерфейс е монтиран но не се открива, моля изпратете <a "
-"href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
-"\">този резултат</a> на <a href=\"mailto:michael@askozia.com"
-"\">michael@askozia.com</a>."
+"Αν υπάρχει εγκατεστημένη μια διεπαφή PSTN, αλλά δεν βρέθηκε από το σύστημα, "
+"παρακαλούμε στείλτε <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/"
+"bin/echo;/sbin/dmesg\">αυτές τις πληροφορίες</a> στη διεύθυνση <a href="
+"\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 
 msgid "Unit"
-msgstr "Устройство"
+msgstr "Μονάδα"
 
 msgid "Type"
-msgstr "Модел"
+msgstr "Τύπος"
 
 msgid "Gain (rx/tx)"
-msgstr "Усилване (rx/tx)"
+msgstr "Απολαβή  (rx/tx)"
 
 msgid "Echo Canceller"
-msgstr "Ехо Неутрализатор"
+msgstr "Απαλοιφή ηχούς"
 
 msgid "Disabled"
-msgstr "Забранени"
+msgstr "Απενεργοποιημένο"
 
 msgid "edit analog interface"
-msgstr "редактирай аналогов интерфейс"
+msgstr "επεξεργασία διεπαφής PSTN"
 
 msgid "Do you really want to forget this interface\\'s settings?"
-msgstr ""
-"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
 
 msgid "forget interface settings"
-msgstr "пропусни настройките на интерфейса"
+msgstr "διαγραφή ρυθμίσεων διεπαφής"
 
 msgid ""
 "FXS interfaces connect to telephones and FXO interfaces connect to provider "
 "lines. FXS interfaces produce electricity to power the telephone and FXO "
 "interfaces accept the electricity generated by the provider."
 msgstr ""
-"Към FXS интерфейса се включват телефонните апарати, а  към FXO интерфейса се "
-"включват външите линии. FXS интерфейса подава захранване към телефоните, а "
-"FXO интерфейса получава захранване от външните линии."
+"Οι διeπαφές FXS συνδέονται σε τηλέφωνα και οι διεπαφές FXO συνδέονται σε "
+"γραμμές παρόχων. Οι διεπαφές FXS παρέχουν τάση για να τροφοδοτήσουν τα "
+"τηλέφωνα, ενώ οι διεπαφές FXO δέχονται το ηλεκτρικό ρεύμα που παράγει ο "
+"πάροχος."
 
 msgid ""
 "Connecting a provider line to an FXS port can damage your hardware! If you "
 "are unsure which ports are FXO or FXS on your card, configure and connect "
 "your phone accounts before connecting any provider lines."
 msgstr ""
-"Включване на външна линия към FXS порта може да повреди вашия хардуер! Ако "
-"не сте сигурни кои портове са FXO или FXS на вашата карта, настройте и "
-"включете вътрешните телефони преди да включите някоя от външните линии."
+"Αν συνδέσετε μια γραμμή παρόχου σε μια θύρα FXS θα καταστρέψετε τη θύρα! Αν "
+"δεν είστε σίγουροι ποιές θύρες είναι FXS και ποιές είναι FXO, ρυθμίστε και "
+"συνδέστε πρώτα τα τηλέφωνά σας, πριν συνδέσετε γραμμές παρόχων."
 
 msgid "Edit Analog"
-msgstr "Редактирай Аналогов"
+msgstr "Επεξεργασία PSTN"
 
 msgid "Interface #"
-msgstr "Интерфейс #"
+msgstr "Αριθμός διεπαφής"
 
 msgid "Descriptive name for this interface"
-msgstr "Описание за този интерфейс"
+msgstr "Επεξηγηματικό όνομα γι' αυτή τη διεπαφή"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
 "require more processing power."
 msgstr ""
-"Размер на 'затихване' на  ехо неутрализатор. По-голям стойност може по-"
-"ефективно да намали ехото, но изисква повече ресурси от процесора."
+"Το μέγεθος 'tap' της απαλοιφής ηχούς. Μεγαλύτερα μεγέθη απαλοίφουν καλύτερη "
+"την ηχώ, αλλά απαιτούν μεγαλύτερη υπολογιστική ισχύ."
 
 msgid "Start Signaling"
-msgstr "Започни Сигнализация"
+msgstr "Έναρξη σηματοδότησης"
 
 msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
-msgstr "В повечето случаи, 'Kewl Start' е предпочитания избор тук."
+msgstr "Στις περισσότερες περιπτώσεις, η πιο σωστή επιλογή είναι 'Kewl Start'."
 
 msgid "Warning:"
-msgstr "Внимание:"
+msgstr "Προειδοποίηση:"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
-"кликането върху  &quot;Запиши&quot; ще прекъсне всички активни разговори."
+"αν πατήσετε &quot;Αποθήκευση&quot;, θα τερματιστούν όλες οι τρέχουσες "
+"κλήσεις."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -1058,104 +1069,107 @@ msgid ""
 "port on a card incorrectly configured can result in the entire card being "
 "unusable by the system."
 msgstr ""
-"Откритите портове на тази страница трябва да бъдат редактирани и записани "
-"преди системата да може да ги използва. Бъдете внимателни когато настройвате "
-"ISDN интерфейси. Ако имате дори един неправилно конфигуриран порт на картата "
-"може да доведе до неизползваемост на цялата карта от системата."
+"Πρέπει να επεξεργαστείτε και να αποθηκεύσετε τις θύρες που βρέθηκαν σε αυτή "
+"τη σελίδα, πριν μπορέσει να τις χρησιμοποιήσει το σύστημα. Δείξτε προσοχή "
+"όταν ρυθμίζετε διεπαφές ISDN. Αν ρυθμίσετε λάθος μία και μόνο διεπαφή σε μία "
+"κάρτα, μπορεί να έχει σαν αποτέλεσμα να μην μπορεί να χρησιμοποιηθεί "
+"ολόκληρη η κάρτα από το σύστημα."
 
 msgid "No compatible ISDN interfaces detected."
-msgstr "Не е открит съвместим ISDN интерфейс."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές ISDN."
 
 msgid ""
 "If an ISDN interface is present but was not detected, please send <a href="
 "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
 "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 msgstr ""
-"Ако ISDN интерфейса е монтиран но не се открива, моля изпратете <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">този "
-"резултат</a> на <a href=\"mailto:michael@askozia.com\">michael@askozia.com</"
-"a>."
+"Αν υπάρχει εγκατεστημένη μια διεπαφή ISDN, αλλά δεν βρέθηκε από το σύστημα, "
+"παρακαλούμε στείλτε <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/"
+"bin/echo;/sbin/dmesg\">αυτές τις πληροφορίες</a> στη διεύθυνση <a href="
+"\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 
 msgid ""
 "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
 "udesc_dump\">this output</a> as well."
 msgstr ""
-"Ако това е USB ISDN устройство, изпратете <a href=\"ajax.cgi?exec_shell=/"
-"sbin/udesc_dump\">този резултат</a> също."
+"Αν έχετε μια συσκευή ISDN με σύνδεση μέσω USB, τότε στείλτε και <a href="
+"\"ajax.cgi?exec_shell=/sbin/udesc_dump\">αυτές τις πληροφορίες</a>."
 
 msgid "Operating Mode"
-msgstr "Режим на Работа"
+msgstr "Τρόπος λειτουργίας"
 
 msgid "Enabled"
-msgstr "Разрешени"
+msgstr "Ενεργοποιημένο"
 
 msgid "edit ISDN interface"
-msgstr "редактирай ISDN интерфейс"
+msgstr "επεξεργασία διεπαφής ISDN"
 
 msgid "Operating Modes"
-msgstr "Режими на Работа"
+msgstr "Τρόποι λειτουργίας"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 "calls and is attached to the public ISDN network or another PBX system"
 msgstr ""
-"point-to-multipoint, крайно устройство: този порт приема MSN-и за рутиране "
-"на обажданията и е свързан към национална ISDN мрежа или друга телефонна "
-"централа"
+"point-to-multipoint, TE: αυτή η θύρα δέχεται MSNs και συνδέεται στο δημόσιο "
+"δίκτυο ISDN ή σε άλλο τηλεφωνικό κέντρο"
 
 msgid ""
 "multipoint-to-point, network termination: this port provides MSNs to route "
 "calls and is attached to one or more telephones"
 msgstr ""
-"multipoint-to-point, мрежово свързване: този порт предоставя MSN-и за "
-"рутиране на обажданиятаи е свързан към един или повече телефонни апарата"
+"multipoint-to-point, NT: αυτή η θύρα παρέχει MSNs και σε αυτή συνδέονται ένα "
+"ή περισσότερα τηλέφωνα"
 
 msgid ""
 "point-to-point, terminal equipment: this port accepts DID to route calls and "
 "is connected directly to another PBX system"
 msgstr ""
-"point-to-point, крайно устройство: този порт приема DID за рутиране на "
-"обажданията и е свързан директно към друга телефонна централа"
+"point-to-point, TE: αυτή η θύρα δέχεται DIDs και συνδέεται απ' ευθείας σε "
+"άλλο τηλεφωνικό κέντρο"
 
 msgid ""
 "point-to-point, network termination: this port provides DID to route calls "
 "and is connected directly to another PBX system"
 msgstr ""
-"point-to-point, мрежово свързване: този порт предоставя DID за рутиране на "
-"обажданията и е свързан директно към друга телефонна централа"
+"point-to-point, NT: αυτή η θύρα παρέχει DIDs και συνδέεται απ' ευθείας σε "
+"άλλο τηλεφωνικό κέντρο"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
-msgstr "Редактирай ISDN Интерфейс #%s"
+msgstr "Επεξεργασία διαπαφής ISDN #%s"
 
 msgid "An Operating Mode must be selected for this interface."
-msgstr "Трябва да се избере Режим на Работа за този интерфейс."
+msgstr "Πρέπει να ορίσετε έναν τρόπο λειτουργίας γι' αυτή τη διεπαφή."
 
 msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Премахване на ехо от линията. (препоръчително)"
+msgstr "Να γίνει προσπάθεια απαλοιφής ηχούς από αυτή τη γραμμή (συνιστάται)."
 
 msgid "PCM Timing Slave"
-msgstr "PCM Синхронизиране"
+msgstr "PCM Timing Slave"
 
 msgid ""
 "There is already another card present which provides the timing.<br><em>"
 "(Unless more than one inteface card is present in the system, this should "
 "not be changed."
 msgstr ""
-"Вече има друга карта която извършва синхронизирането.<br><em>(Освен ако има "
-"повече от една карта в системата, това не трябва да се променя.)"
+"Υπάρχει ήδη μια άλλη κάρτα στο σύστημα που παρέχει τον χρονισμό.<br><em>"
+"(Εκτός και αν υπάρχουν περισσότερες από μία διεπαφές, αυτή η ρύθμιση δεν "
+"πρέπει να αλλάξει."
 
 msgid "Disable Power Save"
-msgstr "Забрани Power Save"
+msgstr "Απενεργοποίηση κατάστασης εξοικονόμησης ενέργειας."
 
 msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr "Забранява power save режима. (понякога е необходим за по-стари карти)"
+msgstr ""
+"Απενεργοποίηση κατάστασης εξοικονόμησης ενέργειας (μερικές φορές χρειάζεται "
+"για παλιότερες κάρτες)."
 
 msgid "Enable Polling Mode"
-msgstr "Забрани Polling Режим"
+msgstr "Ενεργοποίηση polling"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr "Забранява polling режима. (понякога е необходим за по-стари карти)"
+msgstr "Ενεργοποίηση polling (μερικές φορές χρειάζεται για παλιότερες κάρτες)."
 
 msgid ""
 "The settings on this page are critical to ensuring connectivity to VoIP "
@@ -1164,219 +1178,236 @@ msgid ""
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
-"Настройките на тази страница са критични за осигуряване връзката към VoIP "
-"доставчици. В частност, грешни топологични настройки могат да предотвратят "
-"входящо обаждане от свързване. Ако тази система е зад рутер, по подразбиране "
-"АскозияPBX изисква следните портове да бъдат пренасочени към нея: 5060 UDP "
-"(SIP), 4569 UDP (IAX) и 10000-10200 UDP (RTP Аудио)"
+"Οι ρυθμίσεις σε αυτή τη σελίδα είναι σημαντικές για τη σύνδεση με παρόχους "
+"VoIP. Πιο συγκεκριμένα, λανθασμένες ρυθμίσεις τοπολογίας μπορούν να "
+"αποτρέψουν τη σύνδεση εισερχομένων κλήσεων. Αν το σύστημά σας είναι πίσω από "
+"NAT, χρειάζεται να προωθήσετε τις ακόλουθες θύρες στο τηλεφωνικό σας κέντρο: "
+"5060 UDP (SIP), 4569 UDP (IAX) και 10000-10200 UDP (Ήχος RTP)"
 
 msgid "A valid MAC address must be specified."
-msgstr "Въведете валиден MAC адрес."
+msgstr "Πρέπει να ορίσετε μια έγκυρη διεύθυνση MAC."
 
 msgid "A valid subnet bit count must be specified."
-msgstr "Въведете валидна Mask."
+msgstr "Πρέπει να ορίσετε ένα έγκυρο πλήθος bits υποδικτύου."
 
 msgid "A valid gateway must be specified."
-msgstr "Въведете валиден Шлюз."
+msgstr "Πρέπει να ορίσετε μια έγκυρη πύλη."
 
 msgid ""
 "A valid IP address must be specified for the primary/secondary/tertiary DNS "
 "server."
-msgstr "Въведете валиден IP адрес за първи/втори/трети DNS сървър."
+msgstr ""
+"Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση IP  για τον πρωτεύοντα/"
+"δευτερεύοντα/τριτεύοντα διακομιστή DNS."
 
 msgid "A public IP address must be entered for this topology."
-msgstr "Въведете валиден IP адрес за тази топология."
+msgstr ""
+"Πρέπει να καταχωρήσετε μια δημόσια διεύθυνση IP γι' αυτή την τοπολογία."
 
 msgid "A valid public IP address must be entered for this topology."
-msgstr "Въведете валиден външен IP адрес за тази топология."
+msgstr ""
+"Πρέπει να καταχωρήσετε μια έγκυρη δημόσια διεύθυνση IP γι' αυτή την "
+"τοπολογία."
 
 msgid "A public hostname must be entered for this topology."
-msgstr "Въведете валидно име на host за тази топология."
+msgstr "Πρέπει να καταχωρήσετε μια ονομασία συσκευής γι' αυτήν την τοπολογία."
 
 msgid "A valid public hostname must be entered for this topology."
-msgstr "Въведете валидно външно име на host за тази топология."
+msgstr ""
+"Πρέπει να καταχωρήσετε μια έγκυρη δημόσια ονομασία συσκευής γι' αυτήν την "
+"τοπολογία."
 
 msgid "The dynamic DNS username contains invalid characters."
-msgstr "Потребителското име на динамичният DNS  съдържа невалидни символи."
+msgstr "Το όνομα χρήστη για το δυναμικό DNS περιέχει μη έγκυρους χαρακτήρες."
 
 msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Провереният интерфейс ще бъде привързан към главния интерфейс."
+msgstr "Οι επιλεγμένες διαπαφές θα γεφυρωθούν με την κύρια διεπαφή."
 
 msgid "IP Address"
-msgstr "IP Адрес"
+msgstr "Διεύθυνση IP"
 
 msgid "Gateway"
-msgstr "Шлюз"
+msgstr "Πύλη"
 
 msgid "DNS Servers"
-msgstr "DNS Сървъри"
+msgstr "Διακομιστές DNS"
 
 msgid "IP Addresses"
-msgstr "IP Адреси"
+msgstr "Διευθύνσεις IP"
 
 msgid "MAC Address"
-msgstr "MAC Адрес"
+msgstr "Διεύθυνση MAC"
 
 msgid ""
 "This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
 "network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
 "xx:xx:xx or leave blank"
 msgstr ""
-"Това поле може да се използва за промяна MAC адреса на мрежовия интерфейс."
-"<br>Въведете MAC адрес в следния формат: xx:xx:xx:xx:xx:xx или оставете "
-"празно."
+"Αυτό το πεδίο μπορεί να χρησιμοποιηθεί για να μεταβληθεί (να γίνει &quot;"
+"spoofing&quot;) η διεύθυνση MAC της κάρτας δικτύου.<br>Εισάγετε μια "
+"διεύθυνση MAC με τη μορφή: xx:xx:xx:xx:xx:xx ή αφήστε το πεδίο κενό."
 
 msgid "Topology"
-msgstr "Топология"
+msgstr "Τοπολογία"
 
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr "Външен IP Адрес: тази централа има рутиран IP адрес (въведен по-горе)"
+msgstr ""
+"Δημόσια διεύθυνση IP: αυτό το τηλεφωνικό κέντρο έχει μια διεύθυνση IP (που "
+"καταχωρήσατε πιο πάνω) η οποία είναι απ' ευθείας προσβάσιμη από τα εξωτερικά "
+"δίκτυα"
 
 msgid ""
 "NAT + Static Public IP: this PBX is behind a NAT which has a static public "
 "IP. Enter this IP below."
 msgstr ""
-"NAT + Статично Външно IP: тази централа е зад рутер който има статично "
-"външно IP. Въведете това IP по-долу."
+"NAT + στατική δημόσια διεύθυνση IP: αυτό το τηλεφωνικό κέντρο είναι πίσω από "
+"NAT το οποίο έχει μια στατική δημόσια διεύθυνση IP. Εισάγετε αυτή τη "
+"διεύθυνση πιο κάτω."
 
 msgid ""
 "NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
 "IP. A hostname, constantly updated to point to this network is required. "
 "Enter this information below."
 msgstr ""
-"NAT + Динамично Външно IP:тази централа е зад рутер който има динамично "
-"външно IP. Името на host-а, постоянно се променя до значение необходимо за "
-"тази мрежа. Въведете тази информация по-долу."
+"NAT + δυναμική δημόσια διεύθυνση IP: αυτό το τηλεφωνικό κέντρο είναι πίσω "
+"από NAT το οποίο έχει μια δυναμική δημόσια διεύθυνση IP. Απαιτείται μια "
+"ονομασία συσκευής η οποία να ενημερώνεται διαρκώς. Εισάγετε τις απαιτούμενες "
+"πληροφορίες πιο κάτω."
 
 msgid "Static Public IP"
-msgstr "Статично Външно IP"
+msgstr "Στατική δημόσια διεύθυνση IP"
 
 msgid "Public Hostname"
-msgstr "Външно Име на Host"
+msgstr "Δημόσια ονομασία συσκευής"
 
 msgid "This information should be updated by:"
-msgstr "Тази информация трябва да се обнови от:"
+msgstr "Αυτές οι πληροφορίες πρέπει να ενημερώνονται από:"
 
 msgid "My Router"
-msgstr "Моят Рутер"
+msgstr "Τον router μου"
 
 msgid "AskoziaPBX"
-msgstr "АскозияPBX"
+msgstr "Το τηλεφωνικό κέντρο"
 
 msgid "Dynamic DNS Client"
-msgstr "Динамичен DNS Клиент"
+msgstr "Πελάτης δυναμικού DNS"
 
 msgid "Service Type"
-msgstr "Вид Услуга"
+msgstr "Είδος υπηρεσίας"
 
 msgid "Password"
-msgstr "Парола"
+msgstr "Κωδικός πρόσβασης"
 
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr "Да, именувай \"*.hostname.domain\" за име на host определе по-горе."
+msgstr ""
+"Ναι, να υποκατασταθεί το \"*.hostname.domain\" με την ονομασία συσκευής που "
+"ορίστηκε πιο πάνω."
 
 msgid ""
 "after you click &quot;Save&quot;, all current calls will be dropped. You may "
 "also have to do one or more of the following steps before you can access "
 "your PBX again:"
 msgstr ""
-"след като кликнете &quot;Запиши&quot;, всички активни разговори ще "
-"прекъснат. Възможно е да трябва да направите една или повече от следните "
-"стъпки преди да получите достъп до вашата централа отново:"
+"Όταν πιέσετε &quot;Αποθήκευση&quot;, όλες οι ενεργές κλήσεις θα διακοπούν. "
+"Πιθανά να χρειαστεί να κάνετε ένα η περισσότερα από τα ακόλουθα, πριν "
+"μπορέσετε να έχετε πρόσβαση στο τηλεφωνικό κέντρο σας:"
 
 msgid "restart the PBX"
-msgstr "рестартирай централата"
+msgstr "επανεκκίνηση του τηλεφωνικού κέντρου"
 
 msgid "change the IP address of your computer"
-msgstr "промени IP адреса на компютъра"
+msgstr "μεταβολή της διεύθυνσης IP του υπολογιστή σας"
 
 msgid "access the webGUI with the new IP address"
-msgstr "достъп до webGUI с нов IP адрес"
+msgstr "πρόσβαση στο περιβάλλον διαχείρισης με τη νέα διεύθυνση IP"
 
 msgid ""
 "AskoziaPBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
 msgstr ""
-"АскозияPBX автоматично определя свободното пространство от памета. Пакетите "
-"за разширяване на системнатафункционалност могат  да бъдат инсталирани на "
-"това пространство."
+"Το σύστημα επιμερίζει αυτόματα τον χώρο που απομένει για μόνιμη αποθήκευση. "
+"Τα πακέτα που επεκτείνουν τη λειτουργικότητα του συστήματος μπορούν να "
+"εγκτασταθούν σε αυτόν τον χώρο."
 
 msgid "The system storage media is not large enough to install packages."
-msgstr "Системната запомняща медия е недостатъчна за инсталиране на пакетите."
+msgstr ""
+"Ο χώρος αποθήκευσης δεν είναι αρκετά μεγάλος για να εγκαταστήσετε πακέτα."
 
 #, php-format
 msgid ""
 "A minimum of %sMB is required. In the future, external media will be able to "
 "be used, but currently packages must be stored on the internal system media."
 msgstr ""
-"Най-малко %sMBса необходими. В бъдеще, външна медия ще може да бъде "
-"използвана, но текущите пакети трябва да дъдат съхранени на вътрешната "
-"системна медия."
+"Χρειάζονται %sMB κατ' ελάχιστο. Στο μέλλον θα έχετε τη δυνατότητα να "
+"χρησιμοποιήσετε εξωτερικό αποθηκευτικό χώρο, αλλά προς το παρόν όλα τα "
+"πακέτα πρέπει να εγκατασταθούν στον εσωτερικό αποθηκευτικό χώρο."
 
 msgid "Capacity"
-msgstr "Капацитет"
+msgstr "Χωρητικότητα"
 
 msgid "State"
-msgstr "Състояние"
+msgstr "Κατάσταση"
 
 msgid "Installed Packages"
-msgstr "Инсталирани Пакети"
+msgstr "Εγκατεστημένα πακέτα"
 
 msgid "system storage partition"
-msgstr "разделяне на системна памет"
+msgstr "αποθηκευτικός χώρος συστήματος"
 
 msgid "state"
-msgstr "състояние"
+msgstr "κατάσταση"
 
 msgid "Edit Disk"
-msgstr "Редактирай Диск"
+msgstr "Επεξεργασία δίσκου"
 
 msgid "descriptive name"
-msgstr "Описание"
+msgstr "επεξηγηματικό όνομα"
 
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
 "to act as an Access Point. It will be bridged to the wired network that "
 "AskoziaPBX is connected to."
 msgstr ""
-"Ако съвместима безжична карта е монтирана в системата, тя може да бъде "
-"конфигурирана да работи като Access Point. Ще бъде свързана към кабелната "
-"мрежа към която е включена и АскозияPBX."
+"Αν υπάρχει συμβατή ασύρματη κάρτα στο σύστημά σας, τότε το σύστημά σας "
+"μπορεί να χρησιμοποιηθεί και σαν ασύρματο σημείο πρόσβασης. Το ασύρματο "
+"δίκτυο θα γεφυρωθεί με το ενσύρματο δίκτυο στο οποίο συνδέεται το τηλεφωνικό "
+"σας κέντρο."
 
 msgid "SSID,Channel"
-msgstr "SSID,Канал"
+msgstr "SSID,Κανάλι"
 
 msgid ",WPA version,WPA cipher"
-msgstr ",WPA версия,WPA код"
+msgstr ",WPA version,WPA cipher"
 
 msgid ",WPA PSK"
 msgstr ",WPA PSK"
 
 msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK трябва да е между 8 и 63 символа дълъг."
+msgstr "Το WPA PSK πρέπει να έχει μήκος από 8 μέχρι 63 χαρακτήρες."
 
 msgid ""
 "802.11a channels can only be selected if the standard is set to 802.11a too."
 msgstr ""
-"802.11a канали могат да бъдат избирани ако е избран стандарт 802.11a също."
+"Τα κανάλια 802.11a μπορούν να επιλεγούν μόνο αν έχετε επιλέξει το πρότυπο "
+"802.11a."
 
 msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11a може да бъде избран ако 802.11a канал е избран също."
+msgstr "Το 802.11a μπορεί να επιλεγεί μόνο αν επιλέξετε ένα κανάλι 802.11a."
 
 msgid "No compatible wireless interfaces detected."
-msgstr "Не са намерени съвместими безжични интерфейси."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές ασύρματου δικτύου."
 
 msgid "Enable Wireless Interface"
-msgstr "Разреши Безжичен Интерфейс"
+msgstr "Ενεργοποίηση ασύρματης διεπαφής"
 
 msgid "Standard"
-msgstr "Стандарт"
+msgstr "Πρότυπο"
 
 msgid "SSID"
 msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr "Скрий SSID"
+msgstr "Απόκρυψη  SSID"
 
 msgid ""
 "If this option is selected, the SSID will not be broadcast in hostap mode, "
@@ -1384,46 +1415,47 @@ msgid ""
 "this option should never be used as a substitute for proper security/"
 "encryption settings."
 msgstr ""
-"Ако тази опция е избрана, SSID няма да се излъчва в hostap режим, и само "
-"клиенти които знаят точната SSID ще могат да се закачат. Имайте впредвид че "
-"тази опция никога не трябва да се използва за заместител на защитните "
-"настройки."
+"Αν επιλεγεί, το SSID δεν θα μεταδίδεται και θα μπορούν να συνδεθούν μόνο "
+"πελάτες που το γνωρίζουν. Σημειώστε ότι δεν θα πρέπει να χρησιμοποιείτε ποτέ "
+"αυτή την επιλογή σαν υποκατάστατο των ρυθμίσεων ασφαλείας και κρυπτογράφησης."
 
 msgid "Channel"
-msgstr "Канал"
+msgstr "Κανάλι"
 
 msgid "Auto"
-msgstr "Автоматично"
+msgstr "Αυτόματο"
 
 msgid "WPA"
 msgstr "WPA"
 
 msgid "WPA settings"
-msgstr "WPA настройки"
+msgstr "Ρυθμίσεις WPA"
 
 msgid "Mode"
-msgstr "Режим"
+msgstr "Τρόπος λειτουργίας"
 
 msgid "none"
-msgstr "без"
+msgstr "κανένα"
 
 msgid "PSK"
 msgstr "PSK"
 
 msgid "WPA only"
-msgstr "WPA"
+msgstr "μόνο WPA"
 
 msgid "WPA2 only"
-msgstr "WPA2"
+msgstr "μόνο WPA2"
 
 msgid "WPA + WPA2"
 msgstr "WPA + WPA2"
 
 msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "В повечето случаи, би трябвало да изберете &quot;WPA + WPA2&quot; тук."
+msgstr ""
+"Στις περισσότερες περιπτώσεις  η πιο σωστή επιλογή είναι &quot;WPA + "
+"WPA2&quot;."
 
 msgid "Cipher"
-msgstr "Код"
+msgstr "Κρυπτογραφία"
 
 msgid "TKIP"
 msgstr "TKIP"
@@ -1438,62 +1470,62 @@ msgid ""
 "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
 "with older hardware."
 msgstr ""
-"AES/CCMP предоставя по-добра защита от TKIP, но TKIP е по съвместим с по-"
-"стар хардуер."
+"Το AES/CCMP παρέχει καλύτερη ασφάλεια από το TKIP, αλλά το TKIP είναι πιο "
+"συμβατό με παλιότερες συσκευές."
 
 msgid ""
 "Enter the passphrase that will be used in WPA-PSK mode. This must be between "
 "8 and 63 characters long."
 msgstr ""
-"Въведете кодова дума която ще бъде използвана в WPA-PSK режим. Трябва да е "
-"между 8 и 63 символа дълга."
+"Εισάγετε τον κωδικό (passphrase) που θα χρησιμοποιηθεί για τον τρόπο "
+"λειτουργίας WPA-PSK. Πρέπει να έχει μήκος από 8 μέχρι και 63 χαρακτήρες."
 
 msgid "WEP"
 msgstr "WEP"
 
 msgid "Enable WEP"
-msgstr "Разреши WEP"
+msgstr "Ενεργοποίηση WEP"
 
 msgid "TX key"
-msgstr "TX код"
+msgstr "Κλειδί (TX key)"
 
 msgid "Key 1:"
-msgstr "Код 1:"
+msgstr "Κλειδί 1:"
 
 msgid "Key 2:"
-msgstr "Код 2:"
+msgstr "Κλειδί 2:"
 
 msgid "Key 3:"
-msgstr "Код 3:"
+msgstr "Κλειδί 3:"
 
 msgid "Key 4:"
-msgstr "Код 4:"
+msgstr "Κλειδί 4:"
 
 msgid ""
 "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
 "preceded by '0x'."
 msgstr ""
-"40 (64) bit кодове може да се въвеждат с 5 ASCII символа или 10 "
-"шестнадесетични символа предхождани от '0x'."
+"Τα κλειδιά 40 (64) bits μπορούν να εισαχθούν σαν 5 χαρακτήρες ASCII ή σαν 10 "
+"δεκαεξαδικά ψηφία με πρόθεμα '0x'."
 
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
 msgstr ""
-"104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
-"шестнадесетични символа предхождани от '0x'."
+"Τα κλειδιά 104 (128) bits μπορούν να εισαχθούν σαν 13 χαρακτήρες ASCII ή σαν "
+"26 δεκαεξαδικά ψηφία με πρόθεμα '0x'."
 
 msgid "Edit Analog Line"
-msgstr "Редактирай Аналогова Линия"
+msgstr "Επεξεργασία γραμμής PSTN"
 
 msgid "A valid Caller ID must be specified."
-msgstr "Въведете валиден Caller ID."
+msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
 
 msgid "A phone with this extension already exists."
-msgstr "Телефон с такъв вътрешен номер вече съществува."
+msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
 
 msgid "A valid e-mail address must be specified."
-msgstr "Въведет валиден e-mail адрес."
+msgstr "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail."
 
 #, php-format
 msgid ""
@@ -1501,213 +1533,224 @@ msgid ""
 "type of account, make sure an appropriately configured interface is present "
 "on the %s page"
 msgstr ""
-"<strong>Не са намерени съвместими интерфейси!</strong><br><br> За да "
-"конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
-"интерфейс присъства в %s страница"
+"<strong>Δεν βρέθηκαν συμβατές διεπαφές!</strong><br><br>Για να κάνετε "
+"ρυθμίσεις σε αυτό το είδος του λογαρισμού, σιγουρευτείτε ότι υπάρχει "
+"διαθέσιμη μια κατάλληλη διεπαφή στη σελίδα %s."
 
 msgid "Internal extension used to reach this phone."
-msgstr "Вътрешен Номер използван за достъп до този телефон."
+msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
 
 msgid "Analog Interface"
-msgstr "Аналогов Интерфейс"
+msgstr "Διεπαφή PSTN"
 
 msgid "Edit External Line"
-msgstr "Редактирай Външна Линия"
+msgstr "Επεξεργασία εξωτερικής γραμμής"
 
 msgid "The internal extension used to dial this phone."
-msgstr "Вътрешен Номер използван за избиране на този телефон."
+msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
 
 msgid "Descriptive name for this phone."
-msgstr "Описание за този телефон."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
 
 msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
 msgstr ""
-"Номер или поредица за избиране за достъп до този телефон. Това ще бъде "
-"избирано директно: правилата за изходящо избиране не се взимат под внимание"
+"Ο αριθμός ή το κείμενο που πρέπει να πληκτρολογηθεί για να κληθεί αυτό το "
+"τηλέφωνο. Η κλήση θα γίνει απ' ευθείας, χωρις την εφαρμογή κανόνων "
+"εξερχομένων προτύπων."
 
 msgid "Provider"
-msgstr "Външна линия"
+msgstr "Πάροχος"
 
 msgid "Outgoing provider to be used to reach this telephone."
-msgstr "Изходяща линия използвана за достъп до този телефон."
+msgstr ""
+"Ο εξερχόμενος πάροχος που θα χρησιμοποιηθεί για να κληθεί αυτό το τηλέφωνο."
 
 msgid "Edit IAX Account"
-msgstr "Редактирай IAX Акаунт"
+msgstr "Επεξεργασία λογαριασμού IAX"
 
 msgid "A valid secret must be specified."
-msgstr "Трябва да бъде определена валидна парола."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο κωδικό πρόσβασης."
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Цяло число в секунди трябва да бъде въведено за  \"qualify\" пауза."
+msgstr ""
+"Πρέπει να καταχωρήσετε ένανν ακέραιο αριθμό δευτερολέπτων για το χρονικό "
+"όριο \"πιστοποίησης\"."
 
 msgid ""
 "The phone number assigned to this account. Also this account's username."
 msgstr ""
-"Телефонен номер определен за този акаунт. Също и потребителско име на този "
-"акаунт."
+"Το τηλέφωνο που έχει συνδεθεί με αυτόν τον λογαριασμό. Επίσης, το όνομα "
+"χρήστη αυτού του λογαριασμού."
 
 msgid "plaintext"
-msgstr "прав текст"
+msgstr "κείμενο"
 
 msgid "md5"
 msgstr "md5"
 
 msgid "This account's password and authentication scheme."
-msgstr "Парола и схема на удостоверяване на този акаунт."
+msgstr "Ο κωδικός πρόσβασης και ο τρόπος ταυτοποίησης αυτού του λογαριασμού."
 
 msgid "Edit ISDN Line"
-msgstr "Редактирай ISDN Линия"
+msgstr "Επεξεργασία γραμμής ISDN"
 
 msgid "This phone's number (MSN)."
-msgstr "Телефонни номера (MSN)."
+msgstr "Ο αριθμός (MSN) αυτού του τηλεφώνου."
 
 msgid "Edit SIP Account"
-msgstr "Редактирай SIP Акаунт"
+msgstr "Επεξεργασία λογαρασμού SIP"
 
 msgid "A whole number of calls must be entered for the \"call limit.\""
 msgstr ""
-"Цяло число за брой обаждания трябва да бъде въведено за \"call limit.\""
+"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
+"κλήσεων\"."
 
 msgid "A whole number of calls must be entered for the \"busy limit.\""
 msgstr ""
-"Цяло число за брой обаждания трябва да бъде въведено за \"busy limit.\""
+"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
+"κατηλειμμένου\"."
 
 msgid "This account's password."
-msgstr "Парола на акаунта."
+msgstr "Ο κωδικός πρόσβασης αυτού του λογαριασμού."
 
 msgid "Dialplan Element Library"
-msgstr "Dialplan Element Библиотека"
+msgstr "Βιβλιοθήκη στοιχείων πλάνου κλήσεων"
 
 msgid "Functions"
-msgstr "Функции"
+msgstr "Συναρτήσεις"
 
 msgid "Audio Prompts"
-msgstr "Аудио Съобщения"
+msgstr "Ηχητικές προτροπές"
 
 msgid ""
 "Below is a list of the currently defined phones along with a basic Dial() "
 "command to call them. Many additional options are available for this "
 "command, please read its reference documentation in the Applications tab."
 msgstr ""
-"По-долу е списъка с текущи дефинирани телефони заедно с основни Dial() "
-"команди за избирането им. Много допълнителни опции са възможни за тази "
-"команда, моля прочетете прилежащата и документация в меню Приложения."
+"Ακολουθεί μια λίστα από τα ήδη καθορισμένα τηλέφωνα, μαζί με μια βασική "
+"εντολή Dial(), για να τα καλείτε. Υπάρχουν πολλές περισσότερες παράμετροι "
+"γι' αυτή την εντολή και μπορείτε να τις δείτε στην τεκμηρίωση που είναι "
+"διαθέσιμη στις Εφαρμογές."
 
 msgid "Caller ID / Name"
-msgstr "Caller ID / Име"
+msgstr "Ταυτότητα καλούντος / Όνομα"
 
 msgid "Basic"
-msgstr "Основен"
+msgstr "Βασικό"
 
 msgid "Filename"
-msgstr "Име на файл"
+msgstr "Αρχείο"
 
 msgid "Format"
-msgstr "Формат"
+msgstr "Μορφή"
 
 msgid "Size"
-msgstr "Големина"
+msgstr "Μέγεθος"
 
 msgid "Printable Dialplan"
-msgstr "Годен за Печат Dialplan"
+msgstr "Εκτυπώσιμο πλάνο κλήσεων"
 
 msgid "Internal Phones"
-msgstr "Вътрешни Телефони"
+msgstr "Εσωτερικά τηλέφωνα"
 
 msgid "External Phones"
-msgstr "Външни Телефони"
+msgstr "Εξωτερικά τηλέφωνα"
 
 msgid "Conference Rooms"
-msgstr "Стаи за Конференции"
+msgstr "Χώροι συνδιασκέψεων"
 
 msgid "Pin"
-msgstr "Код"
+msgstr "Pin"
 
 msgid "Custom Applications"
-msgstr "Ръчно Направени Приложения"
+msgstr "Εφαρμογές"
 
 msgid "Dialing Pattern(s)"
-msgstr "Схеми на Избиране"
+msgstr "Πρότυπο/α κλήσης"
 
 msgid "A valid Caller ID string must be specified."
-msgstr "Трябва да бъде въведен валиден Caller ID стринг."
+msgstr "Πρέπει να καταχωρήσετε μία έγκυρη ταυτότητα καλούντος."
 
 msgid "An incoming Caller ID override string must be specified."
-msgstr "Трябва да бъде въведен входящ Caller ID отменящ стринг."
+msgstr "Πρέπει να καταχωρήσετε μία υπερισχύουσα ταυτότητα καλούντος."
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "Схемата на избиране \"%s\" е неправилна. %s"
+msgstr "Το πρότυπο κλήσης \"%s\" δεν είναι έγκυρο. %s"
 
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "Входящата схема на вътрешен номер \"%s\" е неправилна. %s"
+msgstr "Το εισερχόμενο πρότυπο κλήσης εσωτερικών \"%s\" δεν είναι έγκυρο. %s"
 
 msgid "Descriptive name for this provider."
-msgstr "Описващо име за тази външна линия."
+msgstr "Επεξηγηματικό όνομα γι' αυτόν τον πάροχο."
 
 msgid "Telephone number assigned to this line."
-msgstr "Телефонен номер определен за тази линия."
+msgstr "Ο αριθμός κλήσης αυτής της γραμμής."
 
 msgid "A valid username must be specified."
-msgstr "Трябва да бъде въведено валидно потребителско име ."
+msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο όνομα χρήστη."
 
 msgid "IAX proxy host URL or IP address and optional port."
-msgstr "IAX прокси host URL или IP адрес и порт по избор."
+msgstr ""
+"Το URL του διακομιστή μεσολάβησης IAX, ή η διεύθυνση IP του και προαιρετικά "
+"η θύρα."
 
 msgid "A valid default number (MSN) must be specified."
-msgstr "Трябва да бъде въведен валиден номер по подразбиране (MSN) ."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο προεπιλεγμένο αριθμό (MSN)."
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr ""
-"Телефонен номер по подразбиране (MSN) определен за тази линия. Индивидуално "
-"MSN рутиране може да се дефинира по-долу."
+"Ο προεπιλεγμένος αριθμός (MSN) γι' αυτή τη γραμμή. Πρόσθετεες αντιστοιχήσεις "
+"MSNs μπορούν να οριστούν πιο κάτω."
 
 msgid "A valid \"fromuser\" must be specified."
-msgstr "Трябва да бъде въведен валиден \"fromuser\" ."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο \"αποστολέα\"."
 
 msgid "SIP proxy host URL or IP address and optional port."
-msgstr "SIP прокси host URL или IP адрес и порт по избор."
+msgstr ""
+"Το URL του διακομιστή μεσολάβησης SIP, ή η διεύθυνσή IP του και προαιρετικά "
+"η θύρα."
 
 msgid "Authorization User"
-msgstr "Упълномощаващ Потребител"
+msgstr "Χρήστης πιστοποίησης"
 
 msgid ""
 "Some providers require a seperate authorization username.<br>Defaults to "
 "username entered above."
 msgstr ""
-"Някои доставчици изискват отделно упълмощавашо потребителско име.<br>По "
-"подразбиране потребителското име въведено по-горе."
+"Μερικοί πάροχοι χρειάζονται ένα διαφορετικό όνομα χρήστη πιστοποίησης. <br>Η "
+"προεπιλεγμένη τιμή είναι το όνομα χρήστη που καταχωρήσατε πιο πάνω."
 
 msgid "From User"
-msgstr "From User"
+msgstr "Χρήστης"
 
 msgid ""
 "Some providers require a seperate 'from' user.<br>Defaults to username "
 "entered above."
 msgstr ""
-"Някои доставчици изискват отделно 'from' user.<br>По подразбиране "
-"потребителското име въведено по-горе."
+"Μερικοί πάροχοι χρειάζονται ένα διαφορετικό όνομα χρήστη. <br>Η "
+"προεπιλεγμένη τιμή είναι το όνομα που καταχωρήσατε πιο πάνω."
 
 msgid "From Domain"
-msgstr "From Domain"
+msgstr "Τομέας προέλευσης"
 
 msgid ""
 "Some providers require a seperate 'from' domain. <br>Defaults to host "
 "entered above."
 msgstr ""
-"Някои доставчици изискват отделен 'from' domain. <br>По подразбиране host-а "
-"въведен по-горе."
+"Μερικοί πάροχοι χρειάζονται ένα διαφορετικό τομέα προέλευσης. <br>Η "
+"προεπιλεγμένη τιμή είναι η ονομασία υπολογιστή που καταχωρήσατε πιο πάνω."
 
 msgid "Services"
-msgstr "Услуги"
+msgstr "Υπηρεσίες"
 
 msgid "Conferencing"
-msgstr "Конференция"
+msgstr "Συνδιασκέψεις"
 
 msgid ""
 "Conference rooms with optional pin authentication can be configured here. "
@@ -1715,294 +1758,308 @@ msgid ""
 "concurrent members. These rooms can then be dialed via their defined "
 "extensions or used as a destination for incoming calls from Providers."
 msgstr ""
-"Стаи за коференции с допълнителна оторизация с код могат да бъдат "
-"конфигурирани тук. Производителноста на системата е единствения ограничаващ "
-"фактор за броя на едновремените посетители. Тези стаи могат да бъдат "
-"избирани с определения им вътрешен номер или да се използват като дестинация "
-"за входящи обаждания от външни линии."
+"Εδώ μπορείτε να ορίσετε χώρους συνδιάσκεψης με προαιρετικά PINs για την "
+"πρόσβαση. Ο μόνος παράγοντας που επηρεάζει τα ταυτόχρονα μέλη που μπορούν να "
+"συνομιλούν σε έναν χώρο, είναι η δυναμικότητα του τηλεφωνικού κέντρου "
+"(επεξεργαστής και μνήμη). Αυτοί οι χώροι μπορούν να κληθούν μέσω των "
+"εσωτερικών τους ή να χρησιμοποιηθούν για να τερματιστούν εισερχόμενες "
+"κλήσεις από τους παρόχους."
 
 msgid "Room Number"
-msgstr "Стая номер"
+msgstr "Αριθμός χώρου"
 
 msgid "edit conference room"
-msgstr "редактирай стая за конференции"
+msgstr "επεξεργασία χώρου συνδιάσκεψης"
 
 msgid "Do you really want to delete this conference room?"
-msgstr "Сигурни ли сте че искате да изтриете тази стая за конференции?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτόν τον χώρο συνδιάσκεψης;"
 
 msgid "delete conference room"
-msgstr "изтрий стая за конференции"
+msgstr "διαγραφή χώρου συνδιάσκεψης"
 
 msgid "add conference room"
-msgstr "добави стая за конференции"
+msgstr "προσθήκη χώρου συνδιάσκεψης"
 
 msgid "Edit Room"
-msgstr "Редактирай Стаята"
+msgstr "Επεξεργασία χώρου"
 
 msgid "Conference room numbers must be numeric."
-msgstr "Номера на стая за конференции трябва да е от цифри."
+msgstr "Τα εσωτερικά των χώρων συνδιάσκεψης πρέπει να είναι αριθμητικά."
 
 msgid "Conference number already exists."
-msgstr "Конференцията вече съществува."
+msgstr "Αυτός ο αριθμός συνδιάσκεψης υπάρχει ήδη."
 
 msgid "Conference number matches an existing extension."
-msgstr "Конференцията съвпада със съществуващ вътрешен номер."
+msgstr "Ο αριθμός συνδιάσκεψης είναι ίδιος με ένα υπάρχον εσωτερικό."
 
 msgid "Conference pins must be numeric."
-msgstr "Кодът на конференцията трябва да е от цифри."
+msgstr "Τα PINs των συνδιασκέψεων πρέπει να είναι αριθμητικά."
 
 msgid ""
 "The conference room's number, also the extension that this conference is "
 "reachable at."
 msgstr ""
-"Номера на стаи за конференции, също така и вътрешен номер с който тази "
-"конференция ще се избира."
+"Ο αριθμός κλήσης αυτού του χώρου συνδιάσκεψης. Επίσης, ο αριθμός που θα "
+"χρησιμοποιείτε για να συμμετάσχετε σε αυτή τη συνδιάσκεψη."
 
 msgid "Access PIN"
-msgstr "Код за Достъп"
+msgstr "PIN πρόσβασης"
 
 msgid "Optional PIN needed to access this conference room."
-msgstr "Незадължителен код необходим за достъп до тази стая за конференции."
+msgstr ""
+"Ένα προαιρετικό PIN για να επιτραπεί η πρόσβαση σε αυτόν τον χώρο "
+"συνδιάσκεψης."
 
 msgid "Voicemail"
-msgstr "Гласова Поща"
+msgstr "Φωνητικές θυρίδες"
 
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
-"Ако искате да изпращате известия за пропуснати обаждания и записани гласови "
-"съобщения чрез e-mail, конфигурирайте пощенски сървър тук."
+"Για να μπορέσετε να στείλετε ειδοποιήσεις για αναπάντητες κλήσεις ή "
+"ηχογραφημένα μηνύματα φωνητικών θυρίδων μέσω e-mail, θα πρέπει να ορίσετε "
+"έναν διακομιστή e-mail."
 
 msgid "A username must be specified."
-msgstr "Трябва да бъде въведено потребителско име."
+msgstr "Πρέπει να καταχωρήσετε ένα όνομα χρήστη."
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
-msgstr "A valid e-mail address must be specified for the \"from address\"."
+msgstr ""
+"Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail για την \"διεύθυνση "
+"αποστολέα\""
 
 msgid "AskoziaPBX Test E-mail"
-msgstr "АскозияPBX Тестов E-mail"
+msgstr "Δοκιμαστικό e-mail"
 
 msgid ""
 "Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
 "call notifications can now be used."
 msgstr ""
-"Вашите SMTP настройки работят нормално. Гласова поща към E-mail и съобщения "
-"за пропуснати обаждания вече могат да се използват."
+"Οι ρυθμίσεις SMTP λειτουργούν χωρίς πρόβλημα. Μπορείτε τώρα να "
+"χρησιμοποιήσετε την αποστολή φωνητικών μηνυμάτων και ειδοποιήσεων "
+"αναπάντητων κλήσεων."
 
 msgid "E-mail has been sent successfully."
-msgstr "E-mail беше изпратен успешно."
+msgstr "Το e-mail στάλθηκε επιτυχώς."
 
 msgid "E-mail was not sent, check your settings."
-msgstr "E-mail не беше изпратен, проверете вашите настройки."
+msgstr "Το e-mail δεν στάλθηκε. Ελέγξτε τις ρυθμίσεις σας."
 
 msgid "SMTP"
 msgstr "SMTP"
 
 msgid "SMTP host URL or IP address and optional port."
-msgstr "SMTP host URL или IP адрес и порт."
+msgstr ""
+"Το URL του διακομιστή SMTP ή η διεύθυνση IP του και προαιρετικά η θύρα."
 
 msgid "E-mail Address"
-msgstr "E-mail Адрес"
+msgstr "Διεύθυνση e-mail αποστολέα"
 
 msgid "Options"
-msgstr "Опции"
+msgstr "Επιλογές"
 
 msgid "Account uses TLS"
-msgstr "Акаунта използва TLS"
+msgstr "Ο λογαριασμός χρησιμοποιεί TLS"
 
 msgid "TLS certificates are currently not verified."
-msgstr "TLS сертификатите за момента не са одобрени."
+msgstr "Τα πιστοποιητικά TLS προς το παρόν δεν επαληθεύονται."
 
 msgid "Test E-mail"
-msgstr "Тестов E-mail"
+msgstr "Δοκιμαστικό e-mail."
 
 msgid "E-mail Me"
-msgstr "Изпрати ми E-mail"
+msgstr "Αποστολή e-mail"
 
 msgid ""
 "Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
 "settings."
 msgstr ""
-"Въведете e-mail и кликнете &quot;Изпрати ми E-mail&quot; за да проверите "
-"вашите SMTP настройки."
+"Πληκτρολογήστε μια διεύθυνση e-mail και κάντε κλικ στην &quot;Αποστολή e-"
+"mail&quot; για να δοκιμάσετε τις ρυθμίσεις SMTP."
 
 msgid "Presentation"
-msgstr "Представяне"
+msgstr "Παρουσίαση"
 
 msgid "From Address"
-msgstr "От Адрес"
+msgstr "Διεύθυνση αποστολέα"
 
 msgid "This will be shown as voicemail service's sending address."
-msgstr "Това ще се показва като подател на гласовата поща."
+msgstr ""
+"Αυτή είναι η διεύθυνση αποστολέα που θα φαίνεται στα μηνύματα που "
+"προέρχονται από την υπηρεσία φωνητικών θυρίδων."
 
 msgid "Defaults to the e-mail address entered above."
-msgstr "По подразбиране за e-mail адреса въведен по-горе."
+msgstr "Η προεπιλεγμένη τιμή είναι η διεύθυνση e-mail που φαίνεται πιο πάνω."
 
 msgid "E-Mail Language"
-msgstr "E-mail Език"
+msgstr "Γλώσσα ηλεκτρονκών μηνυμάτων"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
-msgstr "E-mail известията за нова гласова поща ще се изпращат на този език."
+msgstr ""
+"Οι ειδοποιήσεις μέσω ηλεκτρονικού ταχυδρομείου για νέα μηνύματα φωνητικού "
+"ταχυδρομείου θα στέλνονται σε αυτή τη γλάσσα."
 
 msgid "User defined e-mail text"
-msgstr "Различно e-mail съдържание"
+msgstr "Τροποποίηση προεπιλεγμένου μηνύματος"
 
 msgid "<p>This status page includes the following information:\n"
-msgstr "<p>Тази статус страница съдържа следната информация:\n"
+msgstr "<p>Αυτή η σελίδα κατάστασης περιλαμβάνει τις ακόλουθες πληροφορίες:\n"
 
 msgid ""
 "Note: make sure to remove any sensitive information (passwords, maybe also "
 "IP addresses) before posting information from this page in public places "
 "(like mailing lists)!"
 msgstr ""
-"Забележка: бъдете сигурни че сте пре премахнали всяка важна иформация "
-"(пароли, може би и IP адреси) преди да публикувате информация от тази "
-"страница на публични места (като mailing листове)!"
+"Σημείωση: Φροντίστε να διαγράψετε ευαίσθητες πληροφορίες (κωδικούς πρόσβασης "
+"και διευθύνσεις IP) πριν αντιγράψετε πληροφορίες από αυτή τη σελίδα σε "
+"δημόσιους χώρους (π.χ. φόρα, δημόσιες συζητήσεις, chat rooms κλπ)!"
 
 msgid "Passwords in config.xml have been automatically removed."
-msgstr "Паролите в config.xml бяха автоматично премахнати."
+msgstr "Οι κωδικοί πρόσβασης διαγράφηκαν αυτόματα από το config.xml."
 
 msgid "Status"
-msgstr "Статус"
+msgstr "Κατάσταση"
 
 msgid "There are currently no active channels."
-msgstr "В момента няма активни канали."
+msgstr "Δεν υπάρχουν ενεργά κανάλια αυτή τη στιγμή."
 
 msgid "Location"
-msgstr "Местонахождение"
+msgstr "Τοποθεσία"
 
 msgid "Application"
-msgstr "Приложение"
+msgstr "Εφαρμογή"
 
 msgid "Conferences"
-msgstr "Конференции"
+msgstr "Συνδιασκέψεις"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
-msgstr "Потребител %s беше изхвърлен от конференцията %s."
+msgstr "Το μέλος %s έχει απομακρυνθεί από τη συνδιάσκεψη %s."
 
 msgid "There are currently no active conferences."
-msgstr "В момента няма активни конференции."
+msgstr "Δεν υπάρχουν ενεργές συνδιασκέψεις αυτή τη στιγμή."
 
 msgid "Conference"
-msgstr "Конференция"
+msgstr "Συνδιάσκεψη"
 
 msgid "Member"
-msgstr "Потребител"
+msgstr "Μέλος"
 
 msgid "Time"
-msgstr "Време"
+msgstr "Ώρα"
 
 msgid "Do you really want to kick this member?"
-msgstr "Сигурни ли сте че искате да изхвърлите този потребител?"
+msgstr "Θέλετε πραγματικά να απομακρύνετε αυτό το μέλος;"
 
 msgid "kick conference member"
-msgstr "изхвърли потребител"
+msgstr "απομάκρυνση μέλους συνδιάσκεψης"
 
 msgid "Live"
-msgstr "Актуални"
+msgstr "Ζωντανά"
 
 msgid "CPU Load"
-msgstr "CPU Натоварване"
+msgstr "Φόρτος CPU"
 
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
-"Ако не виждате графиката, може би трябва да инсталирате <a href=\"http://www."
-"adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+"Αν δεν μπορείτε να δείτε το γράφημα, θα πρέπει να εγκαταστήσετε το <a href="
+"\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG "
+"viewer</a>."
 
 msgid "Network Traffic"
-msgstr "Мрежов Трафик"
+msgstr "Κίνηση δικτύου"
 
 msgid "status"
-msgstr "статус"
+msgstr "κατάσταση"
 
 msgid "Subnet Mask"
-msgstr "Маска на Подмрежа"
+msgstr "Μάσκα υποδικτύου"
 
 msgid "Media"
-msgstr "Медия"
+msgstr "Μέσον"
 
 msgid "In/Out Packets"
-msgstr "In/Out Пакети"
+msgstr "Πακέτα (εισ/εξ)"
 
 msgid "In/Out Errors"
-msgstr "In/Out Грешки"
+msgstr "Σφάλματα (εισ/εξ)"
 
 msgid "Collisions"
-msgstr "Колизии"
+msgstr "Συγκρούσεις"
 
 msgid "Last scan results"
-msgstr "Резултати от последно сканиране"
+msgstr "Αποτελέσματα τελευταίας σάρωσης"
 
 msgid "BSSID"
 msgstr "BSSID"
 
 msgid "Rate"
-msgstr "Скорост"
+msgstr "Ρυθμός"
 
 msgid "Signal"
-msgstr "Сигнал"
+msgstr "Σήμα"
 
 msgid "Noise"
-msgstr "Шум"
+msgstr "Θόρυβος"
 
 msgid "hidden"
-msgstr "скрит"
+msgstr "κρυφό"
 
 msgid "ssid"
-msgstr "ssid"
+msgstr "SSID"
 
 msgid "Associated stations"
-msgstr "Свързани станции"
+msgstr "Συνδεδεμένοι σταθμοί"
 
 msgid "RSSI"
 msgstr "RSSI"
 
 msgid "Flags"
-msgstr "Флагове"
+msgstr "Ενδείξεις"
 
 msgid "Capabilities"
-msgstr "Възможности"
+msgstr "Δυνατότητες"
 
 msgid ""
 "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
 "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
 "P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
 msgstr ""
-"Флагове: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Възможности: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+"Ενδείξεις: A = Πιστοποιημένο, E = Εκτεταμένη ταχύτητα (802.11g), P = "
+"Κατάσταση εξοικονόμησης ρεύματος<br>Δυνατότητες: E = ESS (infrastructure "
+"mode), I = IBSS (ad-hoc mode), P = Εμπιστευτικότητα (WEP/TKIP/AES), S = "
+"Short preamble, s = Short slot time"
 
 msgid "No stations are associated at this time."
-msgstr "Няма свързани станции за момента."
+msgstr "Δεν υπάρχουν συνδεδεμένοι σταθμοί αυτή τη στιγμή."
 
 msgid "Attached"
-msgstr "Привързани"
+msgstr "Συνδεδεμένο"
 
 msgid "PH State"
-msgstr "PH Състояние"
+msgstr "Κατάσταση PH"
 
 msgid "Dialtone"
-msgstr "Dialtone"
+msgstr "Τόνος κλήσης"
 
 msgid "Driver Type"
-msgstr "Тип Драйвер"
+msgstr "Είδος οδηγού"
 
 msgid "Channels"
-msgstr "Канали"
+msgstr "Κανάλια"
 
 msgid "Serial"
-msgstr "Сериен"
+msgstr "Σειριακό"
 
 msgid "Power Save"
-msgstr "Съхранение на Енергия"
+msgstr "Κατάσταση εξοικονόμησης ενέργειας"
 
 msgid "General Setup"
-msgstr "Общи Настройки"
+msgstr "Γενικές ρυθμίσεις"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -2010,67 +2067,79 @@ msgid ""
 "host/domain name, time zone and country's indication tones are set correctly "
 "before continuing."
 msgstr ""
-"Това е първата страница, която се използва за настройки веднага след "
-"инсталиране на нова система. Най-важното е да се промени паролата по "
-"подразбиране. След това се уверете, че вашите име на host/domain, часова "
-"зона и национални значения на тоновете са правилно конфигурирани."
+"Αυτή είναι η πρώτη σελίδα που πρέπει να ρυθμιστεί σε ένα νέο σύστημα. Το πιο "
+"σημαντικό που πρέπει να κάνετε είναι να αλλάξετε τον κωδικό πρόσβασης. Μετά "
+"καταχωρήστε την ονομασία της συσκευής και το όνομα του τομέα, τη ζώνη ώρας "
+"και τη ζώνη τόνων."
 
 msgid "Hostname,Domain,Username"
-msgstr "Име на Host,Domain,Потребителско Име"
+msgstr "Ονομασία συσκευής,Τομέας,Όνομα χρήστη"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr "Името на host може да съдържа само символите a-z, 0-9 и '-'."
+msgstr ""
+"Η ονομασία της συσκευής μπορεί να περιέχει μόνο τους χαρακτήρες a-z, 0-9 και "
+"'-'."
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "Името на domain може да съдържа само символите a-z, 0-9 и '-'."
+msgstr ""
+"Η ονομασία του τομέα μπορεί να περιέχει μόνο τους χαρακτήρες a-z, 0-9, '-' "
+"και '.'."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "Потребителското Име може да съдържа само символите a-z, A-Z и 0-9."
+msgstr ""
+"Το όνομα χρήστη μπορεί να περιέχει μόνο τους χαρακτήρες a-z, A-Z και 0-9."
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "Въведете валиден TCP/IP порт за  webGUI порт."
+msgstr ""
+"Πρέπει να καταχωρήσετε μία έγκυρη θύρα για πρόσβαση στο περιβάλλον "
+"διαχείρισης."
 
 msgid "The passwords do not match."
-msgstr "Паролата не съвпада."
+msgstr "Οι δύο κωδικοί πρόσβασης δεν είναι ίδιοι."
 
 msgid ""
 "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr ""
-"Интервалът на обновяване трябва да бъде 0 (изключено) или между 6 и 1440."
+"Η συχνότητα ενημέρωσης ώρας μπορεί να είναι 0 (απενεργοποιημένη) ή να έχει "
+"τιμή μεταξύ 6 και 1440."
 
 msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
-"Името на NTP сървъра може да съдържа само символите a-z, 0-9, '-' и '.'."
+"Το όνομα του διακομιστή ώρας NTP μπορεί να περιέχει μόνο τους χαρακτήρες a-"
+"z, 0-9, '-' και '.'."
 
 msgid "name of the pbx host, without domain part"
-msgstr "Име на host на централата, без domain"
+msgstr "ονομασία του τηλεφωνικού κέντρου, χωρίς τον τομέα"
 
 msgid "e.g. <em>pbx"
-msgstr "например <em>pbx"
+msgstr "π.χ. <em>pbx"
 
 msgid "Domain"
-msgstr "Domain"
+msgstr "Τομέας"
 
 msgid "e.g. <em>mycorp.com"
-msgstr "например. <em>mycorp.com"
+msgstr "π.χ. <em>etaireia.gr"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
-msgstr "Потребителското име за достъп до webGUI."
+msgstr ""
+"Αν θέλετε να αλλάξετε το όνομα του χρήστη που θα έχει πρόσβαση στη "
+"διαχείριση του τηλεφωνικού κέντρου, εισάγετε το νέο όνομα εδώ."
 
 msgid "confirmation"
-msgstr "потвърждение"
+msgstr "επιβεβαίωση"
 
 msgid ""
 "If you want to change the password for accessing the webGUI, enter it here "
 "twice."
 msgstr ""
-"Ако искате да промените паролата за достъп до webGUI, въведете я тук два "
-"пъти."
+"Αν θέλετε να αλλάξετε τον κωδικό πρόσβασης που χρησιμοποιείται για πρόσβαση "
+"στη διαχείριση του τηλεφωνικού κέντρου, πληκτρολογήστε τον νέο κωδικό εδώ, "
+"δύο φορές."
 
 msgid "webGUI protocol"
-msgstr "webGUI протокол"
+msgstr "Πρωτόκολλο περιβάλλοντος διαχείρισης"
 
 msgid "HTTP"
 msgstr "HTTP"
@@ -2079,101 +2148,103 @@ msgid "HTTPS"
 msgstr "HTTPS"
 
 msgid "webGUI port"
-msgstr "webGUI порт"
+msgstr "Θύρα περιβάλλοντος διαχείρισης"
 
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Въведете номер на порт по ваш избор за webGUI по-горе ако желаете да "
-"промените порта по подразбиране (80 за HTTP, 443 за HTTPS)."
+"Καταχωρήστε μια θύρα για πρόσβαση στο περιβάλλον διαχείρισης, αν δεν θέλετε "
+"να χρησιμοποιήσετε τις προκαθορισμένες (80 για HTTP και 443 για HTTPS)."
 
 msgid "Indications Tonezone"
-msgstr "Значения на Тонове"
+msgstr "Ζώνη τόνων"
 
 msgid "Select which country's indication tones are to be used."
-msgstr "Изберете кои национални значения на тоновете да бъдат използвани."
+msgstr "Επιλέξτε τη χώρα της οποίας οι τηλεφωνικοί τόνοι θα χρησιμοποιηθούν."
 
 msgid "Time zone"
-msgstr "Часова Зона"
+msgstr "Ζώνη ώρας"
 
 msgid "Select the location closest to you"
-msgstr "Изберете най-близкото до вас местоположение."
+msgstr "Επιλέξτε την τοποθεσία που βρίκσεται πιο κοντά σε εσάς."
 
 msgid "Time update interval"
-msgstr "Интрервал на Обновяване"
+msgstr "Συχνότητα ενημέρωσης ώρας"
 
 msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 msgstr ""
-"Минути между синхронизиране на времето (препоръчително 300, или 0 за "
-"изключване)"
+"Λεπτά μεταξύ ενημερώσεων της ώρας του συστήματος μέσω δικτύου. Προτείνονται "
+"300 λεπτά. Καταχωρήστε 0 για απενεργοποίηση."
 
 msgid "NTP time server"
-msgstr "NTP сървър"
+msgstr "Διακομιστής ώρας NTP"
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
 msgstr ""
-"Използвайте интервал за да раделите host-овете ( само един е неоходим ). Не "
-"забравяйте да настроите поне един DNS сървър ако въведете име на host тук!"
+"Χρησιμοποιήστε κενά για να καταχωρήσετε πολλαπλούς διακομιστές (απαιτείται "
+"μόνο ένας). Αν καταχωρήσετε όνομα διακομιστή, αντί για διεύθυνση IP, "
+"θυμηθείτε να καταχωρήσετε και ένα διακομιστή DNS!"
 
 msgid "Backup/Restore"
-msgstr "Архивиране"
+msgstr "Αντίγρ. ασφαλείας"
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
 msgstr ""
-"Всички системни настройки могат да бъдат архивирани и възстановени чрез тази "
-"страница."
+"Σε αυτή τη σελίδα μορείτε να να δημιουργήσετε αντίγραφα ασφαλείας του "
+"τηλεφωνικού κέντρου ή να επαναφέρετε τις αποθηκευμένες ρυθμίσεις του."
 
 msgid "The configuration has been restored. The PBX is now rebooting."
-msgstr "Конфигурацията беше възстановена. Централата се рестартира."
+msgstr ""
+"Έγινε επαναφορά των ρυθμίσεων. Γίνεται επενεκκίνηση του τηλεφωνικού κέντρου."
 
 msgid "The configuration could not be restored."
-msgstr "Конфигурацията не може да бъде възстановена"
+msgstr "Ήταν αδύνατη η επαναφορά των ρυθμίσεων."
 
 #, php-format
 msgid "XML error: %s"
-msgstr "XML грешка: %s"
+msgstr "Σφάλμα XML: %s"
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr ""
-"Конфигурацията не може да бъде възстановена (грешка при качване на файл)."
+msgstr "Ήταν αδύνατη η επαναφορά των ρυθμίσεων (πρόβλημα αποστολής αρχείου)."
 
 msgid "Backup configuration"
-msgstr "Архивиране на настройките"
+msgstr "Αποθήκευση ρυθμίσεων"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr ""
-"Кликнете върху този бутон за да изтеглите системните настройки в XML формат."
+"Πιέστε αυτό το κουμπί για να λάβετε τις ρυθμίσεις του συστήματος σε μορφή "
+"XML."
 
 msgid "Download configuration"
-msgstr "Изтегли настройките"
+msgstr "Αποθήκευση ρυθμίσεων"
 
 msgid "Restore configuration"
-msgstr "Възстановяване на настройките"
+msgstr "Επαναφορά ρυθμίσεων"
 
 msgid ""
 "Open an AskoziaPBX configuration XML file and click the button below to "
 "restore the configuration."
 msgstr ""
-"Изберете АскозияPBX конфигурационен XML файл и кликнете върху бутона по-долу "
-"за да възстановите системните настройки."
+"Επιλέξτε ένα αρχείο XML που περιέχει προηγούμενες ρυθμίσεις του συστήματος "
+"και πιέστε το κουμπί για να επαναφέρετε τις ρυθμίσεις αυτές στο σύστημά σας."
 
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
-"Централата ще се рестартира след възстановяване на системните настройки."
+"Το τηλεφωνικό κέντρο θα επανεκκινήσει μετά την επαναφορά των ρυθμίσεων."
 
 msgid "Factory Defaults"
-msgstr "По подразбиране"
+msgstr "Αρχικοποίηση"
 
 msgid ""
 "The system has been reset to factory defaults and is now rebooting. This may "
 "take a minute."
 msgstr ""
-"Системата беше възстановена по подразбиране и сега се рестартира. Това може "
-"да отнеме известно време."
+"Το σύστημα έχει αρχικοποιηθεί και θα επενακκινήσει. Παρακαλώ περιμένετε για "
+"30 δευτερόλεπτα."
 
 msgid ""
 "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
@@ -2181,21 +2252,23 @@ msgid ""
 "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
 "password will be set to 'askozia'."
 msgstr ""
-"Ако кликнете &quot;Да&quot;, централата ще се възстанови до по подразбиране "
-"и ще се рестартира. Всички системни настройки ще бъдат презаписани. LAN IP "
-"адреса ще се въстанови на 192.168.1.2 и паролата ще бъде 'askozia'."
+"Αν πιέσετε &quot;Ναι&quot;, το τηλεφωνικό κέντρο θα επανέλθει στις αρχικές "
+"του ρυθμίσεις και θα επανεκκινήσει αυτόματα. Όλες οι ρυθμίσεις του "
+"συστήματος θα διαγραφούν. Η νέα διεύθυνση του συστήματος θα είναι η "
+"192.168.1.2 και ο κωδικός πρόσβασης που θα πρέπει να χρησιμοποιήσετε για "
+"πρόσβαση στο σύστημα θα είναι 'askozia'."
 
 msgid "Are you sure you want to proceed?"
-msgstr "Сигурни ли сте че искате да продължите?"
+msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
 
 msgid "Yes"
-msgstr "Да"
+msgstr "Ναι"
 
 msgid "No"
-msgstr "Не"
+msgstr "Όχι"
 
 msgid "Firmware"
-msgstr "Обновяване"
+msgstr "Firmware"
 
 msgid ""
 "AskoziaPBX's firmware can be kept up to date here. The system's "
@@ -2204,35 +2277,39 @@ msgid ""
 "releases are digitally signed before distribution and checked upon "
 "installation."
 msgstr ""
-"Програмата на АскозияPBX може да бъде обновена от тук. Системните настройки "
-"ще се запазят след обновяването. Системата ще се рестартира автоматично след "
-"приключване на обновяването. Новите версии са цифрово подписани преди "
-"предлагането им и се проверяват при инсталирането."
+"Σε αυτή τη σελίδα μπορείτε να εγκαθιστάτε την τελευταία έκδοση firmware του "
+"τηλεφωνικού σας κέντρου. Οι ρυθμίσεις του τηλεφωνικού κέντρου θα διατηρηθούν "
+"κατά τη διάρκεια της αναβάθμισης. Το σύστημα θα επανεκκινήσει αυτόματα μόλις "
+"εγκατασταθεί το νέο firmware. Το firmware που εγκαθίσταται πρέπει να είναι "
+"ηλεκτρονικά υπογεγραμμένο, κάτι το οποίο ελέγχεται κατά την εγκατάσταση."
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
-msgstr "Каченият файл с образ не е за тази платформа (%s)."
+msgstr "Το firmware που στάλθηκε δεν προορίζεται γι' αυτή την πλατφόρμα (%s)."
 
 msgid "Image upload failed (out of memory?)"
-msgstr "Качването на образ се провали (недостатъчно памет?)"
+msgstr "Η αποστολή του firmware απέτυχε (έλλειψη μνήμης;)"
 
 msgid "The digital signature on this image is invalid."
-msgstr "Цифровият подпис на този образ е неправилен."
+msgstr "Η ηλεκτρονική υπογραφή του firmware δεν είναι έγκυρη."
 
 msgid "This image is not digitally signed."
-msgstr "Този образ не е цифрово подписан."
+msgstr "To firmware δεν έχει ηλεκτρονική υπογραφή."
 
 msgid "There has been an error verifying the signature on this image."
-msgstr "Грешка при прорерка на подписа на този образ."
+msgstr ""
+"Παρουσιάστηκε ένα πρόβλημα κατά την πιστοποίηση της υπογραφής του firmware."
 
 msgid "The image file is corrupt."
-msgstr "Файлът на образа е повреден."
+msgstr "Το firmware είναι κατεστραμμένο."
 
 msgid "The firmware is now being installed. The PBX will reboot automatically."
-msgstr "Програмата се инсталира. Централата ще се рестартира автоматично."
+msgstr ""
+"Γίνεται εγκατάσταση του firmware. Το τηλεφωνικό κέντρο θα επανεκκινήσει "
+"αυτόματα."
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr "Качването на програмата не се поддържа от тази платформа."
+msgstr "Αυτή η πλατφόρμα δεν υποστηρίζει αποστολή νέου firmware."
 
 #, php-format
 msgid ""
@@ -2242,44 +2319,51 @@ msgid ""
 "make sure that the image has not been tampered with.<br><br> Do you want to "
 "install this image anyway (at your own risk)?"
 msgstr ""
-"<strong>%s</strong><br>Това означава че образа който сте качили не е "
-"официален/поддържан образ и може да доведе до неочаквани проблеми или пробив "
-"в сигурноста. Инсталирайте само образи които идват от източници на които "
-"може да се доверите, и бъдете сигурни че с образа не са си играли.<br><br> "
-"Искате ли да инсталирате този образ въпреки всичко (на ваш риск)?"
+"<strong>%s</strong><br>Αυτό σημαίνει ότι το firmware που στείλατε δεν είναι "
+"αυθεντικό/υποστηριζόμενο και μπορεί να έχει σαν αποτέλεσμα προβλήματα, "
+"απρόβλεπτη συμπεριφορά ή προβλήματα ασφάλειας. Να εγκαθιστάτε μόνο firmware "
+"το οποίο προέρχεται από πηγές που εμπιστεύεστε και να είστε σίγουροι ότι το "
+"firmware δεν έχει μεταβληθεί από κάποιον τρίτο.<br><br> Θέλετε παρ' όλα αυτά "
+"να εγκαταστήσετε το firmware (αναλαμβάνοντας τον κίνδυνο);"
 
 msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Кликнете върху &quot;Разреши качване на програма&quot; по-долу."
+msgstr "Κάντε κλικ στην &quot;Ενεργοποίηση αποστολής firmware&quot;."
 
 #, php-format
 msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
-msgstr "Изберете нов файл с образ на програма (pbx-%s-*.img) за инсталиране."
+msgstr ""
+"Επιλέξτε το αρχείο του νέου firmware (pbx-%s-*.img) που θέλετε να "
+"εγκαταστήσετε."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
-"Кликнете върху &quot;Обнови програмата&quot; за да стратирате процеса на "
-"обновяване."
+"Κάντε κλικ στην &quot;Αναβάθμιση firmware&quot; για να αρχίσετε τη "
+"διαδικασία αναβάθμισης."
 
 msgid "Enable firmware upload"
-msgstr "Разреши качване на програма"
+msgstr "Ενεργοποίηση αποστολής firmware"
 
 msgid "Disable firmware upload"
-msgstr "Забрани качване на програма"
+msgstr "Απανεργοποίηση αποστολής firmware"
 
 msgid "Firmware image file:"
-msgstr "Файл с образ на програмата:"
+msgstr "Αρχείο firmware:"
 
 msgid "Upgrade firmware"
-msgstr "Обнови програмата"
+msgstr "Αναβάθμιση firmware"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr "Трябва да рестартирате системата преди да можете да качите програмата."
+msgstr ""
+"Πρέπει να επανεκκινήσετε το σύστημα πριν μπορέσετε να αναβαθμίσετε τo "
+"firmware."
 
 msgid "DO NOT abort the firmware upgrade once it has started."
-msgstr "НЕ ПРЕКЪСВАЙТЕ обновяването на програмата след като е започнало."
+msgstr ""
+"ΜΗΝ διακόψετε την αναβάθμιση του firmware μετά την εκκίνηση της εγκατάστασής "
+"του."
 
 msgid "Packages"
-msgstr "Пакети"
+msgstr "Πακέτα"
 
 msgid ""
 "Packages to expand system functionality can be installed and updated here. "
@@ -2287,46 +2371,50 @@ msgid ""
 "available packages. All packages are digitally signed before distribution "
 "and checked upon installation."
 msgstr ""
-"Пакетите разширяващи функционалноста на системата могат да бъдат инсталирани "
-"и обновени от тук. Започнете с кликане върху <img src=\"add.png\" border=\"0"
-"\"> за да проверите за нови пакети. Всички пакети са цифрово подписани преди "
-"предоставянето им и проверени при инсталиране."
+"Εδώ μπορείτε να εγκαταστήσετε και να ενημερώσετε πακέτα το οποία επεκτείνουν "
+"τις δυνατότητες του συστήματος. Ξεκινήστε κάνοντας κλικ στο <img src=\"add."
+"png\" border=\"0\"> για να ελέγξετε για νέα διαθέσιμα πακέτα. Όλα τα πακέτα "
+"είναι υπογεγραμμένα ψηφιακά πριν τη δημοσίευσή τους και ελέγχονται κατά την "
+"εγκατάσταση."
 
 msgid "The digital signature on this package is invalid."
-msgstr "Цифровият подпис на този пакет е невалиден."
+msgstr "Η ψηφιακή υπογραφή αυτού του πακέτου είναι άκυρη."
 
 msgid "This package is not digitally signed."
-msgstr "Този пакет не е цифрово подписан."
+msgstr "Αυτό το πακέτο δεν έχει ψηφιακή υπογραφή."
 
 msgid "There has been an error verifying the signature on this package."
-msgstr "Грешка при проверка на подписа на този пакет."
+msgstr ""
+"Παρουσιάστηκε ένα πρόβλημα κατά την επικύρωση της ψηφιακής υπογραφής αυτού "
+"του πακέτου."
 
 msgid "The package is corrupt and has been deleted."
-msgstr "Пакетът е повреден и беше изтрит."
+msgstr "Αυτό το πακέτο είναι κατεστραμμένο και έχει διαγραφεί."
 
 msgid "Package already exists, install failed."
-msgstr "Пакетът вече съществува, инсталирането е прекъснато."
+msgstr "Το πακέτο υπάρχει ήδη. Η εγκατάσταση απέτυχε."
 
 msgid "Extracted package not found, install failed."
-msgstr "Разархивираният пакет не е намерен, инсталирането е прекъснато."
+msgstr "Το πακέτο δεν βρέθηκε. Η εγκατάσταση απέτυχε."
 
 msgid "Existing package not found, update failed."
-msgstr "Съществуващият пакет не е намерен, обновяването е прекъснато."
+msgstr "Το υπάρχον πακέτο δεν βρέθηκε. Η ενημέρωση απέτυχε."
 
 msgid ""
 "The uploaded package is not newer than the existing package, update failed."
 msgstr ""
-"Каченият пакет не е по-нов от вече съществуващия, обновяването е прекъснато."
+"Το πακέτο που στείλατε δεν είναι νεότερο από το ήδη υπάρχον. Η αναβάθμιση "
+"απέτυχε."
 
 msgid "There are updates available for packages on your system."
-msgstr "На разположение са обновявания на пакети за вашата система."
+msgstr "Υπάρχουν διαθέσιμες αναβαθμίσεις για τα πακέτα στο σύστημά σας."
 
 msgid ""
 "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
 "install the updated packages."
 msgstr ""
-"Кликнете върху <img src=\"update.png\" border=\"0\"> иконата по-долуза да "
-"изберете и инсталирате обновените пакети."
+"Κάντε κλικ σο εικονίδιο <img src=\"update.png\" border=\"0\">  για να "
+"επιλέξετε και να εγκαταστήσετε τις αναβαθμίσεις των πακέτων."
 
 msgid ""
 "The following packages issued warnings while verifying their digital "
@@ -2336,189 +2424,193 @@ msgid ""
 "tampered with.<br><br>Check the packages you wish to install despite this "
 "warning."
 msgstr ""
-"Предупреждения за проблеми в пакетите при проверка на цифровите им подписи. "
-"Това означава че те не са официални/поддържани пакети и могат да доведат до "
-"неочаквани проблеми и пробив в сигурноста. Инсталирайте само пакети които "
-"идват от източници на които може да се доверите, и бъдете сигурни че не са "
-"си играли с тях.<br><br> Отбележете пакетите които искате да инсталирате "
-"независимо от предупрежденията."
+"Τα ακόλουθα πακέτα εξέπεμψαν προειδοποιήσεις κατά την πιστοποίηση της "
+"ηλεκτρονικής τους υπογραφής. Αυτό σημαίνει ότι δεν είναι αυθεντικά/"
+"υποστηριζόμενα και η εγκατάστασή τους μπορεί να οδηγήσει σε απρόβλεπτη "
+"συμπεριφορά και προβλήματα ασφάλειας. Θα πρέπει να εγκαθιστάτε μόνο πακέτα "
+"που προέρχονται από πηγές που εμπιστεύεστε, και να είστε σίγουροι ότι τα "
+"πακέτα δεν έχουν μεταβληθεί από τρίτους.<br><br>Επιλέξτε τα πακέτα που "
+"θέλετε να εγκαταστήσετε παρά την προειδοποίηση αυτή."
 
 msgid "Continue"
-msgstr "Продължи"
+msgstr "Συνέχεια"
 
 msgid "Do you really want to disable this package?"
-msgstr "Сигурни ли сте че искате да забраните този пакет?"
+msgstr "Θέλετε πραγματικά να απενεργοποιήσετε αυτό το πακέτο;"
 
 msgid "click to disable package"
-msgstr "кликнете за да забраните пакета"
+msgstr "κάντε κλικ για να απενεργοποιήσετε αυτό το πακέτο"
 
 msgid "click to enable package"
-msgstr "кликнете за да активирате пакета"
+msgstr "κάντε κλικ για να ενεργοποιήσετε αυτό το πακέτο"
 
 msgid "backup package data"
-msgstr "архивирайте информацията от пакета"
+msgstr "αντίγραφο ασφαλείας των δεδομένων του πακέτου"
 
 msgid ""
 "Do you really want to permanently delete this package\\'s configuration and "
 "data?"
 msgstr ""
-"Сигурни ли сте че искате да изтриете завинаги този пакет и информацията му?"
+"Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις και τα δεδομένα του πακέτου;"
 
 msgid "delete package configuration and data"
-msgstr "изтрий пакета заедно с информацията"
+msgstr "διαγραφή των ρυθμίσεων και των δεδομένων του πακέτου"
 
 msgid "install new package"
-msgstr "инсталирай нов пакет"
+msgstr "εγκατάσταση νέου πακέτου"
 
 msgid "update package to newer version"
-msgstr "обнови пакета с нова версия"
+msgstr "αναβάθμιση πακέτου στην τελευταία έκδοση"
 
 msgid "restore package data"
-msgstr "възстанови информацията на пакета"
+msgstr "επαναφορά των δεδομένων του πακέτου"
 
 msgid "Update Installed Package"
-msgstr "Обновяване на Инсталиран Пакет"
+msgstr "Ενημέρωση εγκατεστημένου πακέτου"
 
 msgid ""
 "Select which packages you would like to update, existing package data will "
 "be preserved."
 msgstr ""
-"Изберете кои пакети желаете да бъдат обновени, съществуващата информация от "
-"пакетите ще се запази."
+"Επιλέξτε ποια πακέτα θέλετε να αναβαθμίσετε. Τα δεδομένα των πακέτων θα "
+"διατηριηθούν."
 
 msgid "Update"
-msgstr "Обнови"
+msgstr "Ενημέρωση"
 
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
 msgstr ""
-"Изберете .pbxpkg файл за обновяване от вашия компютър, съществуващата "
-"информация от пакетите ще се запази."
+"Επιλέξτε ένα αρχείο με κατάληξη .pbxpkg για να χρησιμοποιηθεί για την "
+"αναβάθμιση. Τα υπάρχοντα δεδομένα του πακέτου θα διατηριηθούν."
 
 msgid "Manual Update"
-msgstr "Ръчно Обновяване"
+msgstr "Χειροκίνητη αναβάθμιση"
 
 msgid "Install a New Package"
-msgstr "Инсталиране на Нов Пакет"
+msgstr "Εγκατάσταση νέου πακέτου"
 
 msgid "Select which packages you would like to install."
-msgstr "Изберете кои пакети желаете да бъдат инсталирани."
+msgstr "Επιλέξτε ποια πακέτα θέλετε να εγκαταστήσετε."
 
 msgid "Install"
-msgstr "Инсталирай"
+msgstr "Εγκατάσταση"
 
 msgid "No new packages available."
-msgstr "Не са достъпни нови пакети."
+msgstr "Δεν υπάρχουν νέα πακέτα διαθέσιμα."
 
 msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Изберете .pbxpkg файл за инсталиране от вашия компютър."
+msgstr "Επιλέξτε ένα αρχείο με κατάληξη .pbxpkg για την εγκατάσταση."
 
 msgid "Manual Install"
-msgstr "Ръчно Инсталиране"
+msgstr "Χειροκίνητη εγκατάσταση"
 
 msgid "Restore from a Backup Archive"
-msgstr "Възстановяване от Архив"
+msgstr "Επαναφορά αντιγράφου ασφαλείας"
 
 msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "Изберете backup .tgz архив и натиснете 'Възстанови'"
+msgstr "Επιλέξτε ένα αρχείο με κατάληξη .tgz και πιέστε 'Επαναφορά'"
 
 msgid "Package data and logic will be replaced by the backup."
-msgstr "Информацията и логиката на пакета ще бъде заменена с архивната."
+msgstr ""
+"Τα δεδομένα, η λογική και οι ρυθμίσεις του πακέτου θα αντικατασταθούν με "
+"αυτά του αντιγράφου ασφαλείας."
 
 msgid "Restore"
-msgstr "Възстанови"
+msgstr "Επαναφορά"
 
 msgid "Reboot"
-msgstr "Рестарт"
+msgstr "Επανεκκίνηση"
 
 msgid "The system is rebooting now. This may take a minute."
-msgstr "Системата се рестартира. Това може да отнеме минута."
+msgstr ""
+"Το σύστημα επανεκκινεί. Παρακαλώ περιμένετε για περίπου 30 δευτερόλεπτα."
 
 msgid "Are you sure you want to reboot the system?"
-msgstr "Сигурни ли сте че искате да рестартирате системата?"
+msgstr "Θέλετε πραγματικά να επανεκκινήσετε το σύστημα;"
 
 msgid "ERR Could not save configuration.\n"
-msgstr "ГРЕШКА Не мога да запиша конфигурацията.\n"
+msgstr "ΣΦΑΛΜΑ: Αδυναμία αποθήκευσης ρυθμίσεων.\n"
 
 msgid "OK\n"
 msgstr "OK\n"
 
 msgid "ERR Could not install configuration.\n"
-msgstr "ГРЕШКА Не мога да инсталирам конфигурацията.\n"
+msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσεων.\n"
 
 msgid "ERR Invalid configuration received.\n"
-msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 msgid "Subject"
-msgstr "Тема"
+msgstr "Θέμα"
 
 msgid "Body"
-msgstr "Оформление"
+msgstr "Κείμενο"
 
 msgid "The following variables can be used in the e-mail notification"
-msgstr "Следните променливи могат да бъдат използвани в e-mail известието"
+msgstr ""
+"Μπορείτε να χρησιμοποιήσετε τις ακόλουθες μεταβλητές στο μήνυμα ειδοποίησης"
 
 msgid "extension number of voicemail box"
-msgstr "вътрешен номер на пощенска кутия"
+msgstr "εσωτερικό κλήσης της φωνητικής θυρίδας"
 
 msgid "name of voicemail recipient"
-msgstr "име на получателя"
+msgstr "όνομα του ιδιοκτήτη της φωνητικής θυρίδας"
 
 msgid "duration of the message (i.e. 0:58)"
-msgstr "продължителност на съобщението (например 0:58)"
+msgstr "διάρκεια μηνύματος (π.χ. 0:58)"
 
 msgid "caller id of person leaving the message"
-msgstr "caller id на лицето оставило съобщението"
+msgstr "η ταυτότητα καλούντος του προσώπου που αφήνει το μήνυμα"
 
 msgid "full date / time (i.e. 2025-11-20 (15:45))"
-msgstr "пълна дата / час (например 2025-11-20 (15:45))"
+msgstr "πλήρης ημερομηνία και ώρα (π.χ. 2008-08-18 22:01)"
 
 msgid "generate password"
-msgstr "генерирай парола"
+msgstr "δημιουργία κωδικού πρόσβασης"
 
 msgid "use this password"
-msgstr "използвай тази парола"
+msgstr "χρήση αυτού του κωδικού πρόσβασης"
 
 msgid "webGUI language"
-msgstr "Език на webGUI"
+msgstr "Γλώσσα περιβάλλοντος διαχείρισης"
 
 msgid "Select in which language you want the webGUI to be displayed."
-msgstr "Изберете на какъв език искате webGUI да работи."
+msgstr "Επιλέξτε σε ποια γλώσσα θέλετε να βλέπετε το περιβάλλον διαχείρισης."
 
 msgid ""
 "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
 "to provide a new translation."
 msgstr ""
-"Моля <a href=\"mailto:michael@askozia.com\">свържете се с нас</a> ако можете "
-"да предоставите нов превод."
+"Επικοινωνήστε <a href=\"mailto:michael@askozia.com\">μαζί μας</a> αν "
+"μπορείτε να κάνετε μια νέα μετάφραση."
 
 msgid "Audio Codecs"
-msgstr "Аудио Кодеци"
+msgstr "CODECs φωνής"
 
 msgid "Video Codecs"
-msgstr "Видео Кодеци"
+msgstr "CODECs βίντεο"
 
 msgid "Group Members"
-msgstr "Потребители на Групата"
+msgstr "Μέλη ομάδας"
 
 msgid "Non-Members"
-msgstr "Неучастващи"
+msgstr "Μη-μέλη"
 
 msgid ""
 "All group members will be called at the same time. <strong>The voicemail "
 "account associated with the first member will be used if the call is not "
 "answered."
 msgstr ""
-"Всички потребители на групата ще бъдат повикани едновременно. "
-"<strong>Гласовата поща на първия потребител ще бъде използвана ако никой не "
-"отговори на повикването."
+"Όλα τα μέλη της ομάδας θα καλούνται ταυτόχρονα. <strong>Αν η κλήση δεν "
+"απαντηθεί, θα χρησιμοποιηθεί η φωνητική θυρίδα του πρώτου μέλους."
 
 msgid "Incoming Extension(s)"
-msgstr "Рутиране Входящи Обаждания"
+msgstr "Εισερχόμενο/α εσωτερικό/ά"
 
 msgid "add incoming extension mapping"
-msgstr "добави рутиране на входящи обаждания"
+msgstr "προσθήκη "
 
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To "
@@ -2536,51 +2628,55 @@ msgid ""
 " \t<li><strong>!</strong> - matches zero or more characters</li>\n"
 " </ul>\n"
 msgstr ""
-"Въведете схема или телефонен номер и изберете вътрешен номер за "
-"направление . За да звънят наколко телефона, просто им определете същата "
-"схема. Ако е въведен телефонен номер, ще бъде използван като \"външен\" "
-"номер за пропуснатите обаждания. Ако не е въведено нищо, всички обаждания ще "
-"бъдат насочвани към избрания вътрешен номер.<br>\n"
+"Εισάγετε ένα πρότυπο κλήσης ή έναν αριθμό τηλεφώνου και επιλέξτε ένα "
+"εσωτερικό. Για να καλέσετε πολλαπλά τηλέφωνα ταυτόχρνα, απλά καταχωρήστε σε "
+"όλα το ίδιο πρότυπο κλήσης. Αν καταχωρήσετε έναν αριθμό τηλεφώνου, τότε "
+"αυτός θα χρησιμοποιηθεί σαν ο \"εξωτερικός\" αριθμός στις αναπάντητες "
+"κλήσεις. Αν δεν καταχωρήσετε τίποτα, όλες οι κλήσεις θα δρομολογηθούν στο "
+"εσωτερικό που θα έχετε επιλέξει.<br>\n"
 " <ul>\n"
-" \t<li><strong>X</strong> - отговаря на цифрите от 0-9</li>\n"
-" \t<li><strong>Z</strong> - отговаря на цифрите от 1-9</li>\n"
-" \t<li><strong>N</strong> - отговаря на цифрите от 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - отговаря на всяка от цифрите в скобите "
-"(последователно, 1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - отговаря на един или повече символа</li>\n"
-" \t<li><strong>!</strong> - отговаря на нула или повече символа</li>\n"
+" \t<li><strong>X</strong> - αντιστοιχεί στα ψηφία 0-9</li>\n"
+" \t<li><strong>Z</strong> - αντιστοιχεί στα ψηφία 1-9</li>\n"
+" \t<li><strong>N</strong> - αντιστοιχεί στα ψηφία 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - αντιστοιχεί σε οποιοδήποτε ψηφίο εντός των "
+"αγκυλών (στο παράδειγμα, τα 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - αντιστοιχεί σε έναν ή περισσότερους χαρακτήρες</"
+"li>\n"
+" \t<li><strong>!</strong> - αντιστοιχεί σε κανέναν ή περισσότερους "
+"χαρακτήρες</li>\n"
 " </ul>\n"
 
 msgid "DTMF Mode"
-msgstr "DTMF Режим"
+msgstr "Μέθοδος DTMF"
 
 msgid "Registration"
-msgstr "Регистриране"
+msgstr "Εγγραφή"
 
 msgid "Do not register with this provider."
-msgstr "Не се регистрирай с този доставчик."
+msgstr "Να μην γίνει εγγραφή σε αυτόν τον πάροχο."
 
 msgid "Qualify"
-msgstr "Окачествяване"
+msgstr "Πιστοποίηση"
 
 msgid ""
 "Packets will be sent to this account every <i>n</i> seconds to check its "
 "status.<br>Defaults to '2'. Set to '0' to disable."
 msgstr ""
-"Пакети ще се изпращат до този акаунт на всеки <i>n</i> секунди за проверка "
-"на статуса.<br>По подразбиране '2'. Установете '0' за забрана."
+"Θα στέλνονται πακέτα σε αυτόν το λογαριασμό κάθε <i>n</i> δευτερόλεπτα για "
+"να ελέγχεται η κατάστασή του.<br>Προεπιλεγμένη τιμή: '2'. Καταχωρήστε '0' "
+"για απενεργοποίηση."
 
 msgid "always use NAT mode."
-msgstr "винаги изпозвай NAT режим."
+msgstr "πάντα χρήση ΝΑΤ"
 
 msgid "only use NAT mode according to RFC3581 (rport)"
-msgstr "използвай само NAT режим отговарящ на RFC3581 (rport)"
+msgstr "χρήση NAT μόνο σύμφωνα με το RFC3581 (rport)"
 
 msgid "never attempt NAT mode or RFC3581 support"
-msgstr "не използвай NAT режим или RFC3581 поддръжка"
+msgstr "να μην γίνεται ποτέ χρήση NAT ή υποστήριξης RFC3581"
 
 msgid "assume NAT mode but don't send rport "
-msgstr "допускай NAT режим но не изпращай rport "
+msgstr "υπόθεση NAT χωρίς αποστολή rport"
 
 msgid "NAT"
 msgstr "NAT"
@@ -2590,85 +2686,86 @@ msgid ""
 "to 'yes' will work in most cases. The options 'never' and 'route' are only "
 "rarely used for certain buggy SIP phones."
 msgstr ""
-"Има ли маскиращо устройство между АскозияPBX и този акаунт? Избирането на "
-"'yes' би работило в повечето случаи. Опциите 'never' и 'route' се използват "
-"рядко при некачествени SIP телефони."
+"Υπάρχει συσκευή NAT μεταξύ του τηλεφωνικού σας κέντρου και αυτού του "
+"λογαριασμού; Θέτοντας 'yes' θα λειτουργήσει στις περισσότερες περιπτώσεις. "
+"Οι επιλογές 'never' και 'route' χρησιμοποιούνται σπανιότατα και μόνο για "
+"συγκεκριμένα προβληματικά τηλέφωνα SIP."
 
 msgid "indefinitely"
-msgstr "безкрайно"
+msgstr "για πάντα"
 
 msgid "Ring Length"
-msgstr "Продължителност на Звънене"
+msgstr "Διάρκεια κουδουνίσματος"
 
 msgid ""
 "The number of seconds this phone will ring before being reported as "
 "unanswered."
 msgstr ""
-"Брой секунди през които този телефон ще звъни преди да се отбележи като "
-"пропуснато обаждане."
+"Ο χρόνος (σε δευτερόλεπτα) κατά τον οποίο θα κουδουνίζει το τηλέφωνο μέχρι η "
+"κλήση να θεωρηθεί αναπάντητη."
 
 msgid "Line Gain"
-msgstr "Ниво на Линията"
+msgstr "Απολαβή γραμμής"
 
 msgid "receive"
-msgstr "приемане"
+msgstr "λήψη"
 
 msgid "transmit"
-msgstr "изпращане"
+msgstr "αποστολή"
 
 msgid ""
 "Some analog connections may need adjustment to achieve an acceptable audio "
 "level. Adjust the receive and transmit gain in decibels to amplify or quiet "
 "the line."
 msgstr ""
-"Някои аналогови линии може да се нуждаят от настройки за достигане на "
-"допустими аудио нива. Регулирайте приемащите и изпращащите нива в децибели "
-"за да усилите или намалите звука."
+"Μερικές συνδέσεις PSTN μπορεί να χρειάζονται ρυθμίσεις για να επιτευχθεί ένα "
+"αποδεκτό ηχητικό επίπεδο. Ρυθμίστε τις απολαβές λήψης και αποστολής σε dB "
+"για να ενισχύσετε ή σιγάσετε τη γραμμή."
 
 msgid "Incoming Caller ID Overrides"
-msgstr "Отменяне на Входящ Caller ID"
+msgstr "Αντιστοιχήσεις εισερχόμενων ταυτοτήτων καλούντος"
 
 msgid "Source Name &lt;number&gt;"
-msgstr "Източник Име &lt;номер&gt;"
+msgstr "Όνομα &lt;Αριθμός&gt;"
 
 msgid "Prepend with string"
-msgstr "Предхождай със стринг"
+msgstr "Πρόθεση κειμένου"
 
 msgid "Replace with string"
-msgstr "Замени със стринг"
+msgstr "Αντικατάσταση με κείμενο"
 
 msgid "Replace calling name with calling number."
-msgstr "Замени името с номера на обаждащия се"
+msgstr "Αντικατάσταση του ονόματος καλούντος με τον αριθμό καλούντος"
 
 msgid "Disable overrides"
-msgstr "Забрани отменянето"
+msgstr "Απενεργοποίηση υπερισχύσεων"
 
 msgid "Outgoing Caller ID"
-msgstr "Изходящ Caller ID"
+msgstr "Εξερχόμενη ταυτότητα καλούντος"
 
 msgid "Your Name &lt;number&gt;"
-msgstr "Вашето Име &lt;номер&gt;"
+msgstr "Το όνομά σας &lt;Αριθμός&gt;"
 
 msgid "Send string defined above&nbsp;"
-msgstr "Изпрати стринга дефиниран по-горе&nbsp;"
+msgstr "Αποστολή του κειμένου που καταχωρήθηκε πιο πάνω&nbsp;"
 
 msgid "Send phones' Caller ID"
-msgstr "Изпрати Caller ID на телефона"
+msgstr "Αποστολή της ταυτότητας καλούντος του τηλεφώνου"
 
 msgid "There are currently no providers defined."
-msgstr "Не са определени външни линии."
+msgstr "Δεν έχουν οριστεί πάροχοι αυτή τη στιγμή."
 
 msgid "direct outbound dialing via SIP uris"
-msgstr "директно изходящо избиране чрез SIP URI"
+msgstr "Απ' ευθείας εξερχόμενες κλήσεις μέσω SIP URIs"
 
 msgid "Checked providers will be accessible from this phone."
-msgstr "Маркираните външни линии ще са достъпни за тази вътрешна линия."
+msgstr "Οι επιλεγμένοι πάροχοι θα είναι προσβάσιμοι από αυτό το τηλέφωνο."
 
 msgid "There are currently no phones defined."
-msgstr "Не са определени вътрешни номера."
+msgstr "Δεν έχουν οριστεί τηλέφωνα αυτή τη στιγμή."
 
 msgid "Checked phones will have access to this provider."
-msgstr "Маркираните вътрешни номера ще имат достъп до тази външна линия."
+msgstr "Τα επιλεγμένα τηλέφωνα θα έχουν πρόσβαση σε αυτόν τον πάροχο."
 
 msgid ""
 "Enter patterns, one per line, to define this provider's routing. Enter \"X!"
@@ -2691,96 +2788,104 @@ msgid ""
 "before | or +)</li>\n"
 " </ul>\n"
 msgstr ""
-"Въведете схеми, по една на ред, за да определите рутирането на външната "
-"линия. Въведете \"X!\" за да използвате тази линия за всички изходящи "
-"обаждания. За да използвате тази Външна Линия само за обаждания започващи с "
-"\"9\" въведете \"9|.\". Ако не са въведени схеми, ще се допускат само "
-"входящи обаждания.<br>\n"
+"Εισάγετε πρότυπα, ένα ανά γραμή, για να ορίσετε τη δρομολόγηση του παρόχου. "
+"Εισάγετε \"X!\" για να χρησιμοποιήσετε αυτόν τον πάροχο γα όλες τις "
+"εξερχόμενες κλήσεις. Για να χρησιμοποιήσετε αυτόν τον πάροχο για κλήσεις που "
+"ξεκινούν με το \"9\" εισάγετε \"9|.\". Αν δεν εισάγετε κάποιο πρότυπο, μόνο "
+"εισερχόμενες κλήσεις θα γίνονται δεντές.<br>\n"
 " <ul>\n"
-" \t<li><strong>+</strong> - добавя префикс (например \"1+555\" отговаря на "
-"\"555\" и изпраща \"1555\" към външната линия)</li>\n"
-" \t<li><strong>|</strong> - премахва префикс (например \"1|555\" отговаря на "
-"\"1555\" но изпраща само \"555\" към външната линия)</li>\n"
-" \t<li><strong>X</strong> - отговаря на цифрите от 0-9</li>\n"
-" \t<li><strong>Z</strong> - отговаря на цифрите от 1-9</li>\n"
-" \t<li><strong>N</strong> - отговаря на цифрите от 1-9</li>\n"
-" \t<li><strong>[13-5]</strong> - отговаря на всяка от цифрите в скобите "
-"(последователно, 1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - отговаря на един или повече символа (не се "
-"позволява преди | или +)</li>\n"
-" \t<li><strong>!</strong> - отговаря на нула или повече символа (не се "
-"позволява преди | или +)</li>\n"
+" \t<li><strong>+</strong> - προσθήκη προθέματος (π.χ. \"211+200\" "
+"αναγνωρίζει το \"200\" και στέλνει στον πάροχο (δηλ. καλεί) το \"211200\")</"
+"li>\n"
+" \t<li><strong>|</strong> - αφαίρεση προθέματος (π.χ. \"9|211200\" "
+"αναγνωρίζει το  \"9211200\" αλλά στέλνει στον πάροχο (δηλ. καλεί) μόνο το "
+"\"211200\")</li>\n"
+" \t<li><strong>X</strong> - αντιστοιχεί στα ψηφία 0-9</li>\n"
+" \t<li><strong>Z</strong> - αντιστοιχεί στα ψηφία 1-9</li>\n"
+" \t<li><strong>N</strong> - αντιστοιχεί στα ψηφία 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - αντιστοιχεί σε οποιοδήποτε ψηφίο εντός των "
+"αγκυλών (στο παράδειγμα, τα 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - αντιστοιχεί σε έναν ή περισσότερους χαρακτήρες "
+"(δεν είναι επιτρεπτό πριν το | ή το +)</li>\n"
+" \t<li><strong>!</strong> - αντιστοιχεί σε κανέναν ή περισσότερους "
+"χαρακτήρες (δεν είναι επιτρεπτό πριν το | ή το +)</li>\n"
 " </ul>\n"
 
 msgid "Language"
-msgstr "Език"
+msgstr "Γλώσσα"
 
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr ""
-"Аудио съобщенията ще се възпроизвеждат на избрания език за този акаунт."
+"Οι ηχητικές προτροπές θα αναπαράγονται σε αυτή τη γλώσσα γι' αυτόν το "
+"λογαριασμό."
 
 msgid "send missed call notifications"
-msgstr "изпращай съобщения за пропуснатите обаждания"
+msgstr "αποστολή ειδοποιήσεων αναπάντητων κλήσεων"
 
 msgid "don't send to voicemail when busy"
-msgstr "не изпращай към гласова поща когато дава заето"
+msgstr ""
+"να μην γίνεται εκτροπή στη φωνητική θυρίδα όταν το τηλέφωνο είναι "
+"κατειλημμένο"
 
 msgid ""
 "An e-mail address. If entered, voicemail will be enabled on this extension. "
 "Incoming messages will be sent to the given address."
 msgstr ""
-"E-mail адрес. Ако е въведен, ще се активира гласовата поща на този вътрешен "
-"номер. Входящите съобщения ще се изпращат на този адрес."
+"Μια διεύθυνση e-mail. Αν καταχωρηθεί, τότε η φωνητική θυρίδα θα "
+"ενεργοποιηθεί γι' αυτό το εσωτερικό και τα εισερχόμενα μηνύματα θα "
+"στέλνονται σε αυτή τη διεύθυνση."
 
 msgid "Voicemail Services"
-msgstr "Услуги Гласова Поща"
+msgstr "Οι υπηρεσίες φωνητικής θυρίδας"
 
 msgid "must be configured</a> before this feature will work."
-msgstr "трябва да е настроена</a> за да работи тази услуга."
+msgstr ""
+"θα πρέπει να ενεργοποιηθούν</a> για να λειτουργήσει αυτό το χαρακτηριστικό."
 
 msgid "Public Direct Dial"
-msgstr "Общодостъпно Директно Избиране"
+msgstr "Δημόσια απ' ευθείας κλήση"
 
 msgid "allow extension to be directly dialed over public networks"
-msgstr ""
-"позволява вътрешния номер да бъде директно избиран от общодостъпни мрежи"
+msgstr "το εσωτερικό μπορεί να καλείται απ' ευθείας από τα δημόσια δίκτυα"
 
 msgid "Public name. Enter a string to map a friendly name to this extension."
 msgstr ""
-"Общодостъпно име. Въведете стринг за да дадете име на този вътрешен номер."
+"Δημόσιο όνομα. Εισάγετε μία λέξη για να δημιουργήσετε ένα φιλικό όνομα το "
+"οποίο θα χρησιμοποιείται γι' αυτό το εσωτερικό."
 
 #, php-format
 msgid ""
 "Enabling this option will allow this extension to be reachable via SIP and "
 "IAX2 uris (extension@%s)"
 msgstr ""
-"Разрешяването на тази опция ще позволи на този вътрешен номер да бъде "
-"достиган чрез SIP и IAX2 URI (вътрешен_номер@%s)"
+"Η ενεργοποίηση αυτού του χαρακτηριστικού επιτρέπει την κλήση αυτού του "
+"εσωτερικού μέσω SIP ή IAX2 URIs (εσωτερικό@%s)"
 
 msgid "Call Limit"
-msgstr "Лимит на Разговорите"
+msgstr "Όριο κλήσεων"
 
 msgid "calls"
-msgstr "обаждания"
+msgstr "κλήσεις"
 
 #, fuzzy
 msgid "Permit only 'n' concurrent calls (default: 2)"
 msgstr ""
-"Разрешава само 'n' изходящи и 'n' входящи обаждания (по подразбиране: 2)"
+"Επιτρέπονται μόνο 'n' εξερχόμενες κλήσεις και 'n' εισερχόμενες κλήσεις "
+"(προεπιλεγμένη τιμή: 2)"
 
 msgid "Busy Limit"
-msgstr "Лимит за Заето"
+msgstr "Όριο κατηλειμμένων"
 
 msgid ""
 "Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
 "1)"
 msgstr ""
-"Състоянието на телефона ще превключи на 'заето' при 'n' едновременни "
-"разговора (по подразбиране: 1)"
+"Η κατάσταση του τηλεφώνου θα γίνει 'κατηλειμμένο' με 'n' ταυτόχρονες κλήσεις "
+"(προεπιλεγμένη τιμή: 1)"
 
 msgid "Logic"
-msgstr "Логика"
+msgstr "Λογική"
 
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
@@ -2794,25 +2899,26 @@ msgid ""
 "is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
 "target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
-"Въведете логика на приложението, една команда на ред както е показано: <br> "
-"<pre> 1,Answer()\n"
+"Εισάγετε τη λογική της εφαρμογής, με μία εντολή ανά γραμμή, όπως φαίνεται "
+"πιο κάτω: <br> <pre> 1,Answer()\n"
 " 2,Echo()\n"
 " 3,Hangup()\n"
-" </pre> <p>Писането на приложения за АскозияPBX изисква познаване на "
-"Астериск dialplan. Направен е опит за проверка на въведеното, но остава "
-"възможноста АскозияPBX да остане безпомощна пред грешна логика на "
-"приложението. Справка с приложенията, функциите и телефоните е на "
-"разположение в <strong><a href=\"popup_dialplan_element_library.php\" target="
-"\"_blank\">Element Библиотеката</a></strong>.</p>"
+" </pre> <p>Για να προγραμματίσετε εφαρμογές, χρειάζεται γνώση του πλάνου "
+"κλήσεων του Asterisk. Γίνεται προσπάθεια για τον έλεγχο αυτών που εισάγετε, "
+"αλλά υπάρχει η πιθανότητα να κάνετε το τηλεφωνικό σας κέντρο μη λειτουργικό "
+"με χρήση λανθασμένης προγραμματιστικής λογικής. Αναφορά σε εφαρμογές, "
+"συναρτήσεις και τηλέφωνα υπάρχει στη <strong><a href="
+"\"popup_dialplan_element_library.php\" target=\"_blank\">Βιβλιοθήκη "
+"Στοιχείων</a></strong>.</p>"
 
 msgid "Advanced Settings"
-msgstr "Допълнителни Настройки"
+msgstr "Ρυθμίσεις για ειδικούς"
 
 msgid "show"
-msgstr "покажи"
+msgstr "παρουσίαση"
 
 msgid "Manual Attributes"
-msgstr "Допълнителни Настройки"
+msgstr "Πρόσθετες ιδιότητες"
 
 msgid ""
 "Manual key-value pairs can be entered in addition to the generated "
@@ -2822,133 +2928,136 @@ msgid ""
 "field. Improperly formed values can break system functionality and/or open "
 "security holes."
 msgstr ""
-"Допълнителните настройки могат да бъдат въведени в допълнение на  "
-"създадената конфигурация (нампример <em>configoption=value</em>). Тези "
-"настройки ще се прилагат за Астериск конфигурационен файл или контекст. "
-"Освен ако не се нуждаете от нещо строго специфично, не трябва да се въвежда "
-"нищо в това поле. Неправилна формулировка може да повреди системата или да "
-"отвори дупки в сигурноста."
+"Μπορείτε να προσθέσετε ζεύγη κλειδιών-τιμών (π.χ. <em>κλειδί=τιμή</em>). "
+"Αυτές οι ρυθμίσεις θα επισυναφθούν στο αρχείο ρυθμίσεων του Asterisk ή το "
+"περιβάλλον αυτού του αντικειμένου. Εκτός και αν έχετε έναν πολύ ειδικό λόγο "
+"για να το κάνετε, δεν θα πρέπει να καταχωρήσετε τίποτα σε αυτό το πεδίο. "
+"Τιμές οι οποίες δεν είναι σωστά διαμορφωμένες μπορούν να επηρεάσουν τη "
+"λειτουργικότητα του τηλεφωνικού κέντρου ή να ανοίξουν 'τρύπες' στην ασφάλεια "
+"του συστήματος."
 
 msgid "Text to be displayed for Caller ID."
-msgstr "Текст който да се показва за Caller ID."
+msgstr "Το κείμενο που θα παρουσιαστεί ως ταυτότητα καλούντος."
 
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
-"Тук можете да въведете описание за ваше използване (не се следи за "
-"синтаксис)."
+"Μπορείτε να καταχωρήσετε μια περιγραφή σαν σημείωση, για μεταγενέστερη "
+"αναφορά (δεν χρησιμοποιείται από το σύστημα)."
 
 msgid "Public Number"
-msgstr "Общодостъпен Номер"
+msgstr "Δημόσιος αριθμός"
 
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
 "the internal extension this call was routed to will be read back."
 msgstr ""
-"Този 'външен' номер ще бъде продиктуван на обаждащия се когато е пренасочен "
-"към гласова поща; по подразбиране вътрешния номер на акаунта ако е от цифри. "
-"Ако не е, вътрешния номер към който това обаждане е рутирано ще бъде "
-"продиктуван."
+"Αυτός ο 'εξωτερικός' αριθμός θα διαβαστεί στον καλούντα όταν καλέσει τη "
+"φωνητική του θυρίδα. Η προεπιλεγμένη τιμή είναι το όνομα χρήστη του "
+"λογαριασμού, αν αυτό είναι αριθμητικό. Αν δεν είναι αριθμητικό, τότε θα "
+"διαβαστεί ο εσωτερικός αριθμός στον οποίο τερματίστηκε η κλήση."
 
 msgid "Authentication Method"
-msgstr "Метод на Оторизация"
+msgstr "Μέθοδος ταυτοποίησης"
 
 msgid ""
 "Most accounts will work using 'auto'. If this fails, select an "
 "authentication method appropriate for your server."
 msgstr ""
-"Повечето акаунти ще работят ако използвате 'auto'. Ако това не успее, "
-"изберете метод на оторизация използван от вашия сървър."
+"Οι περισσότεροι λογαριασμοί θα λειτουργήσουν με τη μέθοδο 'auto'. Σε "
+"περίπτωση που παρουσιαστούν προβλήματα, επιλέξτε τη μέθοδο ταυτοποίησης που "
+"χρησιμοποιεί ο διακομιστής σας."
 
 msgid "of"
-msgstr "на"
+msgstr "από"
 
 msgid "connected"
-msgstr "свързан"
+msgstr "συνδεδεμένο"
 
 msgid "connected but lagged"
-msgstr "свързан но лагнат"
+msgstr "συνδεδεμένο με καθυστέρηση"
 
 msgid "unreachable"
-msgstr "недостъпен"
+msgstr "απρόσιτο"
 
 msgid "status unknown"
-msgstr "статус неясен"
+msgstr "άγνωστη κατάσταση"
 
 msgid "You are using the most recent version of AskoziaPBX."
-msgstr "Вие използвате най-новата версия на АскозияPBX."
+msgstr "Χρησιμοποιείτε την τελευταία έκδοση του AskoziaPBX."
 
 msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
-msgstr "Вие използвате най-новата <strong>бета</strong> версия на АскозиаPBX."
+msgstr ""
+"Χρησιμοποιείτε την πιο πρόσφατη έκδοση <strong>beta</strong> του AskoziaPBX."
 
 msgid "A newer version of AskoziaPBX is available!"
-msgstr "Достъпна е нова версия на АскозиаPBX!"
+msgstr "Υπάρχει μια νέα έκδοση του AskoziaPBX!"
 
 msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
-msgstr "Достъпна е нова <strong>бета</strong> версия на АскозиаPBX!"
+msgstr "Υπάρχει μια νέα έκδοση <strong>beta</strong> του AskoziaPBX!"
 
 msgid "The following input errors were detected:"
-msgstr "Открити са следните входни грешки:"
+msgstr "Εντοπίστηκαν τα ακόλουθα λάθη στην καταχώρησή σας:"
 
 msgid "print"
-msgstr "за печат"
+msgstr "εκτύπωση"
 
 msgid "Summary"
-msgstr "Резюме"
+msgstr "Περίληψη"
 
 msgid "Manager"
-msgstr "Управление"
+msgstr "Διαχείριση"
 
 msgid "Ping/Traceroute"
 msgstr "Ping/Traceroute"
 
 msgid "ARP Table"
-msgstr "ARP Таблица"
+msgstr "Πίνακας ARP"
 
 msgid "webGUI Configuration"
-msgstr "webGUI Конфигурация"
+msgstr "Διαχείριση τηλεφωνικού κέντρου"
 
 msgid "Live Stats"
-msgstr "Реален Статус"
+msgstr "Ζωντανά στατιστικά"
 
 msgid "Help"
-msgstr "Помощ"
+msgstr "Βοήθεια"
 
 msgid "add a new item"
-msgstr "добавяне на нов артикул"
+msgstr "προσθήκη αντικειμένου"
 
 msgid "item is disabled, click to enable"
-msgstr "артикула е забранен, кликнете за разрешаване"
+msgstr "το αντικείμενο είναι ανενεργό - κάντε κλικ για να το ενεργοποιήσετε"
 
 msgid "item is enabled, click to disable"
-msgstr "артикула е разрешен, кликнете за забраняване"
+msgstr "το αντικείμενο είναι ενεργό - κάντε κλικ για να το απενεργοποιήσετε"
 
 msgid "edit an item"
-msgstr "редактиране на артикул"
+msgstr "επεξεργασία ενός αντικειμένου"
 
 msgid "permanently delete an item"
-msgstr "изтриване на артикул"
+msgstr "οριστιή διαγραφή ενός αντικειμένου"
 
 msgid "check for package updates"
-msgstr "проверява за обновени пакети"
+msgstr "έλεγχος για αναβαθμίσεις πακέτων"
 
 msgid "restore a backup archive"
-msgstr "възстановяване от архив"
+msgstr "επαναφορά ενός αντιγράφου ασφαλείας"
 
 msgid "download a backup archive"
-msgstr "изтегляне на архив"
+msgstr "λήψη ενός αντιγράφου ασφαλείας"
 
 msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
-msgstr "АскозияPBX &copy; 2007-2008 IKT. Всички права са запазени."
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. Με επιφύλαξη παντός δικαιώματος."
 
 msgid "view license"
-msgstr "виж лиценза"
+msgstr "άδεια χρήσης"
 
 msgid "LAN net"
-msgstr "LAN мрежа"
+msgstr "Ενσύρματο τοπικό δίκτυο"
 
 msgid "autoselect"
-msgstr "автоматичен избор"
+msgstr "αυτόματη επιλογή"
 
 msgid "100BASE-TX full-duplex"
 msgstr "100BASE-TX full-duplex"
@@ -2966,13 +3075,13 @@ msgid "1000BASE-TX full-duplex"
 msgstr "1000BASE-TX full-duplex"
 
 msgid "Public IP address"
-msgstr "Външен IP адрес"
+msgstr "Δημόσια διεύθυνση IP"
 
 msgid "NAT + static public IP"
-msgstr "NAT + статично външно IP"
+msgstr "NAT + στατική δημόσια διεύθυνση IP"
 
 msgid "NAT + dynamic public IP"
-msgstr "NAT + динамично външно IP"
+msgstr "NAT + δυναμική  δημόσια διεύθυνση IP"
 
 msgid "Kewl Start"
 msgstr "Kewl Start"
@@ -2987,330 +3096,334 @@ msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
 msgstr ""
-"Ехото от аудиото и видеото върнато към обаждашия се веднага както е прието. "
-"Използва се за проверка на забавянето на връзката."
+"Αντηχεί φωνή και βίντεο στον καλούντα όπως λαμβάνεται από το τηλεφωνικό "
+"κέντρο. Χρησιμοποιείται για να ελεγχθεί η καθυστέρηση της σύνδεσης."
 
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
 msgstr ""
-"Генерира постоянен тон 1000Hz. Използва се за проверка на качеството на "
-"връзката."
+"Παράγει έναν σταθερό τόνο 1000Hz. Χρησιμοποιείται για να ελεγχθεί η ποιότητα "
+"της σύνδεσης."
 
 msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr ""
-"Събуди-Ме оператор. Използва се за влючване и изключване на събуди-ме "
-"обаждания от текущия вътрешен номер."
+"Διαχειριστής αφύπνισης. Καλέστε για να ενεργοποιήσετε και να "
+"απενεργοποιήσετε κλήσεις αφύπνισης στο εσωτερικό από το οποίο καλείτε."
 
 msgid "English (US)"
-msgstr "Английски (US)"
+msgstr "Αγγλικά (ΗΠΑ)"
 
 msgid "English (UK)"
-msgstr "Английски (UK)"
+msgstr "Αγγλικά (Ηνωμένο Βασίλειο)"
 
 msgid "Danish"
-msgstr "Датски"
+msgstr "Δανικά"
 
 msgid "Dutch"
-msgstr "Холандски"
+msgstr "Ολλανδικά"
 
 msgid "French (France)"
-msgstr "Френски (Франция)"
+msgstr "Γαλλικά (Γαλλία)"
 
 msgid "French (Canada)"
-msgstr "Френски (Канада)"
+msgstr "Γαλλικά (Καναδάς)"
 
 msgid "German"
-msgstr "Немски"
+msgstr "Γερμανικά"
 
 msgid "Italian"
-msgstr "Италиански"
+msgstr "Ιταλικά"
 
 msgid "Japanese"
-msgstr "Японски"
+msgstr "Ιαπωνικά"
 
 msgid "Portuguese (Brazil)"
-msgstr "Португалски (Бразилия)"
+msgstr "Πορτογαλικά (Βραζιλία)"
 
 msgid "Russian"
-msgstr "Руски"
+msgstr "Ρώσικα"
 
 msgid "Spanish"
-msgstr "Испански"
+msgstr "Ισπανικά"
 
 msgid "Swedish"
-msgstr "Шведски"
+msgstr "Σουηδικά"
 
 msgid "English"
-msgstr "Английски"
+msgstr "Αγγλικά"
 
 msgid "English (formal)"
-msgstr "Английски (официален)"
+msgstr "Αγγλικά (τυπικά)"
 
 msgid "Czech"
-msgstr "Чехски"
+msgstr "Τσέχικα"
 
 msgid "Czech (formal)"
-msgstr "Чехски (официален)"
+msgstr "Τσέχικα (τυπικά)"
 
 msgid "Danish (formal)"
-msgstr "Датски (официален)"
+msgstr "Δανικά (τυπικά)"
 
 msgid "Dutch (formal)"
-msgstr "Холандски (официален)"
+msgstr "Ολλανδικά (τυπικά)"
 
 msgid "Finnish"
-msgstr "Финландски"
+msgstr "Φινλανδικά"
 
 msgid "Finnish (formal)"
-msgstr "Финландски (официален)"
+msgstr "Φινλανδικά (τυπικά)"
 
 msgid "French"
-msgstr "Френски"
+msgstr "Γαλλικά"
 
 msgid "French (formal)"
-msgstr "Френски (официален)"
+msgstr "Γαλλικά (τυπικά)"
 
 msgid "German (formal)"
-msgstr "Немски (официален)"
+msgstr "Γερμανικά (τυπικά)"
 
 #, fuzzy
 msgid "Greek"
-msgstr "Гърция"
+msgstr "Ελλάδα"
 
 #, fuzzy
 msgid "Greek (formal)"
-msgstr "Френски (официален)"
+msgstr "Γαλλικά (τυπικά)"
 
 msgid "Italian (formal)"
-msgstr "Италиански (официален)"
+msgstr "Ιταλικά (τυπικά)"
 
 msgid "Polish"
-msgstr "Полски"
+msgstr "Πολωνικά"
 
 msgid "Polish (formal)"
-msgstr "Полски (официален)"
+msgstr "Πολωνικά (τυπικά)"
 
 msgid "Portuguese, Brazil"
-msgstr "Португалски, Бразилия"
+msgstr "Πορτογαλικά (Βραζιλία)"
 
 msgid "Portuguese, Brazil (formal)"
-msgstr "Португалски, Беазилия (официален)"
+msgstr "Πορτογαλικά (Βραζιλία) (τυπικά)"
 
 msgid "Russian (formal)"
-msgstr "Руски (официален)"
+msgstr "Ρώσικα (τυπικά)"
 
 msgid "Spanish (formal)"
-msgstr "Испански"
+msgstr "Ισπανικά (τυπικά)"
 
 msgid "point-to-multipoint, terminal equipment"
-msgstr "point-to-multipoint, крайно устройство"
+msgstr "point-to-multipoint, TE"
 
 msgid "multipoint-to-point, network termination"
-msgstr "multipoint-to-point, мрежово свързване"
+msgstr "multipoint-to-point, NT"
 
 msgid "point-to-point, terminal equipment"
-msgstr "point-to-point, крайно устройство"
+msgstr "point-to-point, TE"
 
 msgid "point-to-point, network termination"
-msgstr "point-to-point, мрежово свързване"
+msgstr "point-to-point, NT"
 
 msgid "United States / North America"
-msgstr "САЩ / Северна Америка"
+msgstr "ΗΠΑ / Βόρειος Αμερική"
 
 msgid "Australia"
-msgstr "Австралия"
+msgstr "Αυστραλία"
 
 msgid "Austria"
-msgstr "Австрия"
+msgstr "Αυστρία"
 
 msgid "Belgium"
-msgstr "Белгия"
+msgstr "Βέλγιο"
 
 msgid "Chile"
-msgstr "Чили"
+msgstr "Χιλή"
 
 msgid "China"
-msgstr "Китай"
+msgstr "Κίνα"
 
 msgid "Finland"
-msgstr "Финландия"
+msgstr "Φινλανδία"
 
 msgid "France"
-msgstr "Франция"
+msgstr "Γαλλία"
 
 msgid "Greece"
-msgstr "Гърция"
+msgstr "Ελλάδα"
 
 msgid "Italy"
-msgstr "Италия"
+msgstr "Ιταλία"
 
 msgid "Japan"
-msgstr "Япония"
+msgstr "Ιαπωνία"
 
 msgid "Malaysia"
-msgstr "Малайзия"
+msgstr "Μαλαισία"
 
 msgid "Netherlands"
-msgstr "Холандия"
+msgstr "Ολλανδία"
 
 msgid "New Zealand"
-msgstr "Нова Зеландия"
+msgstr "Νέα Ζηλανδία"
 
 msgid "Norway"
-msgstr "Норвегия"
+msgstr "Νορβηγία"
 
 msgid "Russia"
-msgstr "Русия"
+msgstr "Ρωσία"
 
 msgid "Spain"
-msgstr "Испания"
+msgstr "Ισπανία"
 
 msgid "Sweden"
-msgstr "Швеция"
+msgstr "Σουηδία"
 
 msgid "Taiwan"
-msgstr "Тайван"
+msgstr "Ταϊβάν"
 
 msgid "United Kingdom"
-msgstr "Великобритания"
+msgstr "Ηνωμένο Βασίλειο"
 
 msgid "United States Circa 1950/ North America"
-msgstr "САЩ Около 1950/ Северна Америка"
+msgstr "ΗΠΑ (1950)/ Βόρειος Αμερική"
 
 msgid "Brazil"
-msgstr "Бразилия"
+msgstr "Βραζιλία"
 
 msgid "Bulgaria"
-msgstr "България"
+msgstr "Βουλγαρία"
 
 msgid "Czech Republic"
-msgstr "Чехия"
+msgstr "Τσεχία"
 
 msgid "Denmark"
-msgstr "Дания"
+msgstr "Δανία"
 
 msgid "Estonia"
-msgstr "Естония"
+msgstr "Εσθονία"
 
 msgid "Germany"
-msgstr "Германия"
+msgstr "Γερμανία"
 
 msgid "Hungary"
-msgstr "Унгария"
+msgstr "Ουγγαρία"
 
 msgid "India"
-msgstr "Индия"
+msgstr "Ινδία"
 
 msgid "Israel"
-msgstr "Израел"
+msgstr "Ισραήλ"
 
 msgid "Lithuania"
-msgstr "Литва"
+msgstr "Λιθουανία"
 
 msgid "Mexico"
-msgstr "Мексико"
+msgstr "Μεξικό"
 
 msgid "Philippines"
-msgstr "Филипини"
+msgstr "Φιλιππίνες"
 
 msgid "Poland"
-msgstr "Полша"
+msgstr "Πολωνία"
 
 msgid "Portugal"
-msgstr "Португалия"
+msgstr "Πορτογαλία"
 
 msgid "Russia / ex Soviet Union"
-msgstr "Русия / бивш СССР"
+msgstr "Ρωσία / πρώην Σοβιετική Ένωση"
 
 msgid "Singapore"
-msgstr "Сингапур"
+msgstr "Σιγκαπούρη"
 
 msgid "South Africa"
-msgstr "Южна Африка"
+msgstr "Νότια Αφρική"
 
 msgid "Switzerland"
-msgstr "Швейцария"
+msgstr "Ελβετία"
 
 msgid "Thailand"
-msgstr "Тайланд"
+msgstr "Ταϊλάνδη"
 
 msgid "Venezuela / South America"
-msgstr "Венецуела / Южна Америка"
+msgstr "Βενεζουέλα / Νότιος Αμερική"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
 "a> your pbx for the changes to take effect."
 msgstr ""
-"Промените са записани. Трябва да <a href=\"/system_reboot.php"
-"\">рестартирате</a> централата за да имат ефект."
+"Οι μεταβολές αποθηκεύτηκαν. Πρέπει να <a href=\"/system_reboot.php"
+"\">επανεκκινήσετε</a> το τηλεφωνικό σας κέντρο για να τεθούν σε εφαρμογή οι "
+"μεταβολές σας."
 
 msgid "The changes have been applied successfully."
-msgstr "Промените са приложени успешно."
+msgstr "Οι μεταβολές τέθηκαν σε εφαρμογή επιτυχώς."
 
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr "ГРЕШКА: промените не могат да бъдат приложени (код за грешка %s)."
+msgstr ""
+"ΣΦΑΛΜΑ: ήταν αδύνατο να τεθούν σε εφαρμογή οι μεταβολές (κωδικός σφάλματος %"
+"s)."
 
 msgid "reset filter and reload firewall logs page"
-msgstr "нулира филтъра и презарежда страницата с логовете на защитната стена"
+msgstr ""
+"αρχικοποίηση φίλτρου και επαναφόρτωση σελίδας ημερολογίου τοίχους προστασίας"
 
 msgid "Firewall"
-msgstr "Защитна Стена"
+msgstr "Τοίχος προστασίας"
 
 msgid "reload page"
-msgstr "презарежда страницата"
+msgstr "επαναφόρτωση σελίδας"
 
 msgid "Outgoing Calls Only"
-msgstr "Само Изходящи Обаждания"
+msgstr "Μόνο εξερχόμενες κλήσεις"
 
 msgid "SIP Phones"
-msgstr "SIP Вътрешни"
+msgstr "Τηλέφωνα SIP"
 
 msgid "IAX Phones"
-msgstr "IAX Вътрешни"
+msgstr "Τηλέφωνα IAX"
 
 msgid "ISDN Phones"
-msgstr "ISDN Вътрешни"
+msgstr "Τηλέφωνα ISDN"
 
 msgid "Analog Phones"
-msgstr "Аналогови Вътрешни"
+msgstr "Αναλογικά τηλέφωνα"
 
 msgid "active"
-msgstr "активни"
+msgstr "ενεργό"
 
 msgid "inactive"
-msgstr "неактивни"
+msgstr "ανενεργό"
 
 msgid "up"
-msgstr "нагоре"
+msgstr "ενεργό"
 
 msgid "down"
-msgstr "надолу"
+msgstr "ανενεργό"
 
 msgid "associated"
-msgstr "асоциирани"
+msgstr "συνδεδεμένο"
 
 msgid "HIDE"
-msgstr "СКРИЙ"
+msgstr "ΑΠΟΚΡΥΨΗ"
 
 msgid "unconfigured"
-msgstr "неконфигурирани"
+msgstr "μη ρυθμισμένο"
 
 msgid "Package activated successfully."
-msgstr "Пакета е активиран успешно."
+msgstr "Το πακέτο ενεργοποιήθηκε επιτυχώς."
 
 msgid "Package deactivated successfully."
-msgstr "Пакета е деактивиран успешно."
+msgstr "Το πακέτο απενεργοποιήθηκε επιτυχώς."
 
 msgid "Package deleted successfully."
-msgstr "Пакета е изтрит успешно."
+msgstr "Το πακέτο διαγράφηκε επιτυχώς."
 
 msgid "Package restored successfully."
-msgstr "Пакета е възстановен успешно."
+msgstr "Το πακέτο επαναφέρθηκε επιτυχώς."
 
 msgid "Package installed successfully."
-msgstr "Пакета е инсталиран успешно."
+msgstr "Το πακέτο εγκαταστάθηκε επιτυχώς."
 
 #, php-format
 msgid "%.2f GB"
@@ -3326,12 +3439,12 @@ msgstr "%.0f KB"
 
 #, php-format
 msgid "%d bytes"
-msgstr "%d байта"
+msgstr "%d bytes"
 
 #, php-format
 msgid "The field '%s' contains invalid characters."
-msgstr "Полето '%s' съдържа невалидни символи."
+msgstr "Το πεδίο '%s' περιέχει μη έγκυρους χαρακτήρες."
 
 #, php-format
 msgid "The field '%s' is required."
-msgstr "Полето '%s' е задължително."
+msgstr "Το πεδίο '%s' είναι αναγκαίο."
