@@ -85,16 +85,16 @@ $platforms = explode(" ", $platform_list);
 
 
 // --[ sanity checks and env info ]--------------------------------------------
-
+$target_os = strtolower(php_uname('s'));
 $dirs['pwd']				= rtrim(shell_exec("pwd"), "\n");
-$dirs['boot']				= $dirs['pwd'] . "/build/boot";
-$dirs['kernelconfigs']		= $dirs['pwd'] . "/build/kernelconfigs";
-$dirs['minibsd']			= $dirs['pwd'] . "/build/minibsd";
-$dirs['patches']			= $dirs['pwd'] . "/build/patches";
-$dirs['asterisk_modules']	= $dirs['pwd'] . "/build/asterisk_modules";
-$dirs['tools']				= $dirs['pwd'] . "/build/tools";
+$dirs['boot']				= $dirs['pwd'] . "/build/$target_os/boot";
+$dirs['kernelconfigs']		= $dirs['pwd'] . "/build/$target_os/kernelconfigs";
+$dirs['minibsd']			= $dirs['pwd'] . "/build/$target_os/minibsd";
+$dirs['patches']			= $dirs['pwd'] . "/build/$target_os/patches";
+$dirs['tools']				= $dirs['pwd'] . "/build/$target_os/tools";
 $dirs['cgi']				= $dirs['pwd'] . "/build/cgi";
-$dirs['etc']				= $dirs['pwd'] . "/etc";
+$dirs['asterisk_modules']	= $dirs['pwd'] . "/asterisk_modules";
+$dirs['rc_etc']				= $dirs['pwd'] . "/rc_etc";
 $dirs['phpconf']			= $dirs['pwd'] . "/phpconf";
 $dirs['webgui']				= $dirs['pwd'] . "/webgui";
 $dirs['files']				= $dirs['pwd'] . "/files";
@@ -123,44 +123,71 @@ foreach($dirs as $dir) {
 	}	
 }
 
+$branding_path = $dirs['pwd'] . "/../pbx-brands";
+
 // --[ the functions ]---------------------------------------------------------
 
 function prepare_environment() {
-	global $dirs;
-	
-	_exec("cd {$dirs['tools']}; gcc -o sign -lcrypto sign.c");
-	_exec("cd /usr/ports/audio/speex; make install");
-	_exec("cd /usr/ports/net/ilbc; make install");
-	_exec("cd /usr/ports/devel/newt; make install");
-	_exec("cd /usr/ports/databases/sqlite2; make install");
-	_exec("cd /usr/ports/archivers/unrar; make install");
-	_exec("cd /usr/ports/audio/sox; make install");
-	_exec("cd /usr/ports/sysutils/cdrtools; make install");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd {$dirs['tools']}; gcc -o sign -lcrypto sign.c");
+		_exec("cd /usr/ports/audio/speex; make install");
+		_exec("cd /usr/ports/net/ilbc; make install");
+		_exec("cd /usr/ports/devel/newt; make install");
+		_exec("cd /usr/ports/databases/sqlite2; make install");
+		_exec("cd /usr/ports/archivers/unrar; make install");
+		_exec("cd /usr/ports/audio/sox; make install");
+		_exec("cd /usr/ports/sysutils/cdrtools; make install");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function patch_kernel() {
-	global $dirs;
-	
-	_exec("cd /usr/src; patch -p0 < {$dirs['patches']}/kernel/kernel-6.patch");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src; patch -p0 < {$dirs['patches']}/kernel/kernel-6.patch");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function patch_syslogd() {
-	global $dirs;
+	global $dirs, $target_os;
 
-	_exec("cd /usr/src; patch < {$dirs['patches']}/user/syslogd.c.patch");
-	_exec("cd /usr/src/usr.sbin; tar xfvz {$dirs['patches']}/user/clog-1.0.1.tar.gz");
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src; patch < {$dirs['patches']}/user/syslogd.c.patch");
+		_exec("cd /usr/src/usr.sbin; tar xfvz {$dirs['patches']}/user/clog-1.0.1.tar.gz");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function patch_bootloader() {
-	global $dirs;
-	
-	_exec("cd /sys/boot/i386/libi386; patch < {$dirs['patches']}/user/libi386.patch");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /sys/boot/i386/libi386; patch < {$dirs['patches']}/user/libi386.patch");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function patch_hostapd() {
-	global $dirs;
-	
-	_exec("cd /usr/src; patch < {$dirs['patches']}/user/hostapd.patch");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src; patch < {$dirs['patches']}/user/hostapd.patch");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function patch_everything() {
@@ -172,18 +199,23 @@ function patch_everything() {
 }
 
 function build_kernel($platform) {
-	global $dirs;
-	
-	$kernel = _platform_to_kernel($platform);
+	global $dirs, $target_os;
 
-	_exec("cp {$dirs['kernelconfigs']}/ASKOZIAPBX_* /sys/i386/conf/");
-	
-	if (file_exists("/sys/i386/compile/$kernel")) {
-		_exec("rm -rf /sys/i386/compile/$kernel");
+	if ($target_os == "freebsd") {
+		$kernel = _platform_to_kernel($platform);
+
+		_exec("cp {$dirs['kernelconfigs']}/ASKOZIAPBX_* /sys/i386/conf/");
+
+		if (file_exists("/sys/i386/compile/$kernel")) {
+			_exec("rm -rf /sys/i386/compile/$kernel");
+		}
+		_exec("cd /sys/i386/conf/; config $kernel");
+		_exec("cd /sys/i386/compile/$kernel; make cleandepend; make depend; make");
+		_exec("gzip -9 /sys/i386/compile/$kernel/kernel");
+
+	} else if ($target_os == "linux") {
+
 	}
-	_exec("cd /sys/i386/conf/; config $kernel");
-	_exec("cd /sys/i386/compile/$kernel; make cleandepend; make depend; make");
-	_exec("gzip -9 /sys/i386/compile/$kernel/kernel");
 }
 
 function build_srcupdate() {
@@ -204,222 +236,309 @@ function build_kernels() {
 }
 
 function build_syslogd() {
-	_exec("cd /usr/src/usr.sbin/syslogd; make clean; make");
+	global $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src/usr.sbin/syslogd; make clean; make");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_clog() {
-	_exec("cd /usr/src/usr.sbin/clog; make clean; make obj; make");	
+	global $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src/usr.sbin/clog; make clean; make obj; make");	
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_php() {
-	global $dirs, $versions;
+	global $dirs, $versions, $target_os;
 
-	if (!file_exists("/usr/local/bin/autoconf")) {
-		_exec("cd /usr/ports/devel/autoconf213; make install clean");
-		_exec("ln -s /usr/local/bin/autoconf213 /usr/local/bin/autoconf");
-		_exec("ln -s /usr/local/bin/autoheader213 /usr/local/bin/autoheader");
+	if ($target_os == "freebsd") {
+		if (!file_exists("/usr/local/bin/autoconf")) {
+			_exec("cd /usr/ports/devel/autoconf213; make install clean");
+			_exec("ln -s /usr/local/bin/autoconf213 /usr/local/bin/autoconf");
+			_exec("ln -s /usr/local/bin/autoheader213 /usr/local/bin/autoheader");
+		}
+		if (!file_exists("{$dirs['packages']}/{$versions['php']}.tar.gz")) {
+			_exec("cd {$dirs['packages']}; " .
+					"fetch http://de.php.net/distributions/{$versions['php']}.tar.gz");
+		}
+		if (!file_exists("{$dirs['packages']}/{$versions['php']}")) {
+			_exec("cd {$dirs['packages']}; tar zxf {$versions['php']}.tar.gz");
+		}
+		if (!file_exists("{$dirs['packages']}/{$versions['php']}/ext/sqlite")) {
+			_exec("cd ". $dirs['packages'] ."/{$versions['php']}/ext; ".
+				"fetch http://pecl.php.net/get/{$versions['pecl_sqlite']}.tgz; ".
+				"tar zxf {$versions['pecl_sqlite']}.tgz; ".
+					"mv {$versions['pecl_sqlite']} sqlite");
+		}
+
+		_exec("cd {$dirs['packages']}/{$versions['php']}; ".
+				"rm configure; ".
+				"./buildconf --force; ".
+				"./configure --without-mysql --without-pear --with-openssl --with-sqlite --enable-discard-path --enable-sockets --enable-bcmath --with-gettext=/usr/local/bin; ".
+				"make");
+
+	} else if ($target_os == "linux") {
+
 	}
-	if (!file_exists("{$dirs['packages']}/{$versions['php']}.tar.gz")) {
-		_exec("cd {$dirs['packages']}; " .
-				"fetch http://de.php.net/distributions/{$versions['php']}.tar.gz");
-	}
-	if (!file_exists("{$dirs['packages']}/{$versions['php']}")) {
-		_exec("cd {$dirs['packages']}; tar zxf {$versions['php']}.tar.gz");
-	}
-	if (!file_exists("{$dirs['packages']}/{$versions['php']}/ext/sqlite")) {
-		_exec("cd ". $dirs['packages'] ."/{$versions['php']}/ext; ".
-			"fetch http://pecl.php.net/get/{$versions['pecl_sqlite']}.tgz; ".
-			"tar zxf {$versions['pecl_sqlite']}.tgz; ".
-				"mv {$versions['pecl_sqlite']} sqlite");
-	}
-	
-	_exec("cd {$dirs['packages']}/{$versions['php']}; ".
-			"rm configure; ".
-			"./buildconf --force; ".
-			"./configure --without-mysql --without-pear --with-openssl --with-sqlite --enable-discard-path --enable-sockets --enable-bcmath --with-gettext=/usr/local/bin; ".
-			"make");
 }
 
 function build_minihttpd() {
-	global $dirs, $versions;
-	
-	if (!file_exists("{$dirs['packages']}/{$versions['mini_httpd']}.tar.gz")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://www.acme.com/software/mini_httpd/{$versions['mini_httpd']}.tar.gz");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		if (!file_exists("{$dirs['packages']}/{$versions['mini_httpd']}.tar.gz")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://www.acme.com/software/mini_httpd/{$versions['mini_httpd']}.tar.gz");
+		}
+		if (!file_exists("{$dirs['packages']}/{$versions['mini_httpd']}")) {
+			_exec("cd {$dirs['packages']}; tar zxf {$versions['mini_httpd']}.tar.gz");
+		}
+		if (!_is_patched($versions['mini_httpd'])) {
+			_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; ".
+				"patch < {$dirs['patches']}/packages/mini_httpd.patch");
+			_stamp_package_as_patched($versions['mini_httpd']);
+		}
+		_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; make clean; make");
+
+	} else if ($target_os == "linux") {
+
 	}
-	if (!file_exists("{$dirs['packages']}/{$versions['mini_httpd']}")) {
-		_exec("cd {$dirs['packages']}; tar zxf {$versions['mini_httpd']}.tar.gz");
-	}
-	if (!_is_patched($versions['mini_httpd'])) {
-		_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; ".
-			"patch < {$dirs['patches']}/packages/mini_httpd.patch");
-		_stamp_package_as_patched($versions['mini_httpd']);
-	}
-	_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; make clean; make");
 }
 
 function build_asterisk() {
-	global $dirs, $versions;
-	
-	if (!file_exists("{$dirs['packages']}/{$versions['asterisk']}.tar.gz")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://ftp.digium.com/pub/asterisk/releases/{$versions['asterisk']}.tar.gz");
-	}
-	if (!file_exists("{$dirs['packages']}/{$versions['asterisk']}")) {
-		_exec("cd {$dirs['packages']}; tar zxf {$versions['asterisk']}.tar.gz");
-	}
-	if (!_is_patched($versions['asterisk'])) {
-		$patches = array(
-			"makefile",
-			"cdr_to_syslog",
-			//"channel_queue",
-			"voicemail_readback_number",
-			"chan_sip_default_cid",
-			"chan_sip_show_statuses",
-			"chan_iax2_show_statuses",
-			"chan_local_jitterbuffer",
-			"unix_connection_message"
-			//"chan_sip_423"
-		);
-		foreach ($patches as $patch) {
-			_exec("cd {$dirs['packages']}/{$versions['asterisk']}; ".
-				"patch < {$dirs['patches']}/packages/asterisk/asterisk_$patch.patch");
-			_log("\n\n --- patch: $patch -----------\n\n");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		if (!file_exists("{$dirs['packages']}/{$versions['asterisk']}.tar.gz")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://downloads.digium.com/pub/asterisk/releases/{$versions['asterisk']}.tar.gz");
 		}
-		_stamp_package_as_patched($versions['asterisk']);
+		if (!file_exists("{$dirs['packages']}/{$versions['asterisk']}")) {
+			_exec("cd {$dirs['packages']}; tar zxf {$versions['asterisk']}.tar.gz");
+		}
+		if (!_is_patched($versions['asterisk'])) {
+			$patches = array(
+				"makefile",
+				"cdr_to_syslog",
+				//"channel_queue",
+				"voicemail_readback_number",
+				"chan_sip_default_cid",
+				"chan_sip_show_statuses",
+				"chan_iax2_show_statuses",
+				"chan_local_jitterbuffer",
+				"unix_connection_message"
+				//"chan_sip_423"
+			);
+			foreach ($patches as $patch) {
+				_exec("cd {$dirs['packages']}/{$versions['asterisk']}; ".
+					"patch < {$dirs['patches']}/packages/asterisk/asterisk_$patch.patch");
+				_log("\n\n --- patch: $patch -----------\n\n");
+			}
+			_stamp_package_as_patched($versions['asterisk']);
+		}
+		// copy make options
+		_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
+		// copy wakeme application
+		_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/{$versions['asterisk']}/apps");
+		// copy cdr modules
+		_exec("cp {$dirs['asterisk_modules']}/cdr_*.c {$dirs['packages']}/{$versions['asterisk']}/cdr");
+		// reconfigure and make
+		_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ./configure; gmake; gmake install");
+
+	} else if ($target_os == "linux") {
+		
 	}
-	// copy make options
-	_exec("cp {$dirs['patches']}/packages/asterisk/menuselect.makeopts /etc/asterisk.makeopts");
-	// copy wakeme application
-	_exec("cp {$dirs['asterisk_modules']}/app_wakeme.c {$dirs['packages']}/{$versions['asterisk']}/apps");
-	// copy cdr modules
-	_exec("cp {$dirs['asterisk_modules']}/cdr_*.c {$dirs['packages']}/{$versions['asterisk']}/cdr");
-	// reconfigure and make
-	_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ./configure; gmake; gmake install");
 }
 
 function build_zaptel() {
-	global $dirs, $versions;
-	
-	if (!file_exists("{$dirs['packages']}/{$versions['zaptel']}")) {
-		_exec("cd {$dirs['packages']}; ".
-			"svn co --username svn --password svn ".
-			"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 {$versions['zaptel']}");
-	}
+	global $dirs, $versions, $target_os;
 
-	// remove old headers if they're around
-	_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
-	
-	// copy over better ztdummy.c
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}/ztdummy; cp ztdummy.c ztdummy_orig.c");
-	_exec("cp {$dirs['patches']}/packages/zaptel/ztdummy.c {$dirs['packages']}/{$versions['zaptel']}/ztdummy");
-	
-	// make stage directory, clear if present
-	if (file_exists("{$dirs['packages']}/{$versions['zaptel']}/STAGE")) {
-		_exec("rm -rf {$dirs['packages']}/{$versions['zaptel']}/STAGE");
-	}
-	_exec("mkdir {$dirs['packages']}/{$versions['zaptel']}/STAGE");
+	if ($target_os == "freebsd") {
+		if (!file_exists("{$dirs['packages']}/{$versions['zaptel']}")) {
+			_exec("cd {$dirs['packages']}; ".
+				"svn co --username svn --password svn ".
+				"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 {$versions['zaptel']}");
+		}
+    	
+		// remove old headers if they're around
+		_exec("rm -f /usr/local/include/zaptel.h /usr/local/include/tonezone.h");
+		
+		// copy over better ztdummy.c
+		_exec("cd {$dirs['packages']}/{$versions['zaptel']}/ztdummy; cp ztdummy.c ztdummy_orig.c");
+		_exec("cp {$dirs['patches']}/packages/zaptel/ztdummy.c {$dirs['packages']}/{$versions['zaptel']}/ztdummy");
+		
+		// make stage directory, clear if present
+		if (file_exists("{$dirs['packages']}/{$versions['zaptel']}/STAGE")) {
+			_exec("rm -rf {$dirs['packages']}/{$versions['zaptel']}/STAGE");
+		}
+		_exec("mkdir {$dirs['packages']}/{$versions['zaptel']}/STAGE");
+    	
+		// compile and install standard version
+		_exec("cd {$dirs['packages']}/{$versions['zaptel']}; make clean; make; make install");
+		_exec("cd {$dirs['packages']}/{$versions['zaptel']}; cp -p ".
+				"zaptel/zaptel.ko ".
+				"ztdummy/ztdummy.ko ".
+				"wcfxo/wcfxo.ko ".
+				"wcfxs/wcfxs.ko ".
+				"STAGE");
 
-	// compile and install standard version
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; make clean; make; make install");
-	_exec("cd {$dirs['packages']}/{$versions['zaptel']}; cp -p ".
-			"zaptel/zaptel.ko ".
-			"ztdummy/ztdummy.ko ".
-			"wcfxo/wcfxo.ko ".
-			"wcfxs/wcfxs.ko ".
-			"STAGE");
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_isdn() {
-	global $dirs, $versions;
-	
-	if (!file_exists("{$dirs['packages']}/{$versions['i4b']}")) {
-		_exec("cd {$dirs['packages']}; ".
-			"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b {$versions['i4b']}");
-	}
-	if (!_is_patched($versions['i4b'])) {
-		_exec("cd {$dirs['packages']}/{$versions['i4b']}; ".
-			"patch < {$dirs['patches']}/packages/i4b_alix23_ehci_usb_amd.patch");
-		_stamp_package_as_patched($versions['i4b']);
-	}
-	
-	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
-	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
-	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module; make clean; make");
+	global $dirs, $versions, $target_os;
 
-	_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/; gmake clean; gmake all");
+	if ($target_os == "freebsd") {
+		if (!file_exists("{$dirs['packages']}/{$versions['i4b']}")) {
+			_exec("cd {$dirs['packages']}; ".
+				"svn --username anonsvn --password anonsvn co svn://svn.turbocat.net/i4b {$versions['i4b']}");
+		}
+		if (!_is_patched($versions['i4b'])) {
+			_exec("cd {$dirs['packages']}/{$versions['i4b']}; ".
+				"patch < {$dirs['patches']}/packages/i4b_alix23_ehci_usb_amd.patch");
+			_stamp_package_as_patched($versions['i4b']);
+		}
+		
+		_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/FreeBSD.i4b; make S=../src package; make install");
+		_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/src/usr.sbin/i4b; make clean; make all I4B_WITHOUT_CURSES=yes; make install");
+		_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module; make clean; make");
+	
+		_exec("cd {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/; gmake clean; gmake all");	
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_msntp() {
-	_exec("cd /usr/ports/net/msntp; make clean; make");
+	global $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/ports/net/msntp; make clean; make");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_udesc_dump() {
-	_exec("cd /usr/ports/sysutils/udesc_dump; make clean; make");
+	global $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/ports/sysutils/udesc_dump; make clean; make");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_msmtp() {
-	global $dirs, $versions;
-	
-	if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}.tar")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/{$versions['msmtp']}.tar.bz2");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}.tar")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/{$versions['msmtp']}.tar.bz2");
+		}
+		if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}")) {
+			_exec("cd {$dirs['packages']}; bunzip2 {$versions['msmtp']}.tar.bz2; tar xf {$versions['msmtp']}.tar");
+		}
+
+		_exec("cd {$dirs['packages']}/{$versions['msmtp']}; ".
+			"./configure --with-ssl=openssl --without-libgsasl --without-libidn --disable-nls; ".
+			"make");
+
+	} else if ($target_os == "linux") {
+
 	}
-	if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}")) {
-		_exec("cd {$dirs['packages']}; bunzip2 {$versions['msmtp']}.tar.bz2; tar xf {$versions['msmtp']}.tar");
-	}
-	
-	_exec("cd {$dirs['packages']}/{$versions['msmtp']}; ".
-		"./configure --with-ssl=openssl --without-libgsasl --without-libidn --disable-nls; ".
-		"make");
 }
 
 function build_ezipupdate() {
-	global $dirs, $versions;
-	
-	if (!file_exists($dirs['packages'] ."/{$versions['ezipupdate']}.tar.gz")) {
-        _exec("cd ". $dirs['packages'] ."; ".
-        "fetch http://dyn.pl/client/UNIX/ez-ipupdate/{$versions['ezipupdate']}.tar.gz");
-	}
-	
-	if (!is_dir($dirs['packages'] ."/{$versions['ezipupdate']}")) {
-        _exec("cd ". $dirs['packages'] ."; ".
-              "tar zxf {$versions['ezipupdate']}.tar.gz");
-	}
-	
-	if(!_is_patched($versions['ezipupdate'])) {
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		if (!file_exists($dirs['packages'] ."/{$versions['ezipupdate']}.tar.gz")) {
+	        _exec("cd ". $dirs['packages'] ."; ".
+	        "fetch http://dyn.pl/client/UNIX/ez-ipupdate/{$versions['ezipupdate']}.tar.gz");
+		}
+
+		if (!is_dir($dirs['packages'] ."/{$versions['ezipupdate']}")) {
+	        _exec("cd ". $dirs['packages'] ."; ".
+	              "tar zxf {$versions['ezipupdate']}.tar.gz");
+		}
+
+		if(!_is_patched($versions['ezipupdate'])) {
+			_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
+					"patch < ". $dirs['patches'] ."/packages/ez-ipupdate.c.patch");
+			_stamp_package_as_patched($versions['ezipupdate']);
+		}	
 		_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
-				"patch < ". $dirs['patches'] ."/packages/ez-ipupdate.c.patch");
-		_stamp_package_as_patched($versions['ezipupdate']);
-	}	
-	_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
-			"./configure; ".
-			"make");
+				"./configure; ".
+				"make");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_tools() {
-	global $dirs;
-	
-	_exec("cd " . $dirs['tools'] . "; " .
-		"gcc -Wall -o verifysig -lcrypto verifysig.c; " .
-		"gcc -Wall -o wrapresetbtn wrapresetbtn.c; " .
-		"gcc -Wall -o alix23xresetbtn alix23xresetbtn.c; " .
-		"gcc -Wall -o minicron minicron.c");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd " . $dirs['tools'] . "; " .
+			"gcc -Wall -o verifysig -lcrypto verifysig.c; " .
+			"gcc -Wall -o wrapresetbtn wrapresetbtn.c; " .
+			"gcc -Wall -o alix23xresetbtn alix23xresetbtn.c; " .
+			"gcc -Wall -o minicron minicron.c");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_cgi() {
-	global $dirs;
-	
-	_exec("cd " . $dirs['cgi'] . "; ".
-		"gcc -Wall -o ajax.cgi ajax.c");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd " . $dirs['cgi'] . "; ".
+			"gcc -Wall -o ajax.cgi ajax.c");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_bootloader() {
-	_exec("cd /sys/boot; make clean; make obj; make");
+	global $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /sys/boot; make clean; make obj; make");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_hostapd() {
-	_exec("cd /usr/src/usr.sbin/wpa/hostapd; make clean; make; make install");	
+	global $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src/usr.sbin/wpa/hostapd; make clean; make; make install");	
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function build_srcpackages() {
@@ -453,143 +572,213 @@ function build_everything() {
 }
 
 function create($image_name) {
-	global $dirs;
+	global $dirs, $target_os;
 
-	if (file_exists($image_name)) {
-		_log("Image already exists!");
-		exit(1);
+	if ($target_os == "freebsd") {
+		if (file_exists($image_name)) {
+			_log("Image already exists!");
+			exit(1);
+		}
+
+		_exec("mkdir $image_name");
+		$rootfs = "$image_name/rootfs";
+		_exec("mkdir $rootfs");
+
+		_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc mnt libexec proc root sbin tmp usr var asterisk storage");
+		_exec("cd $rootfs/var; mkdir tmp");
+		_exec("cd $rootfs; ln -s /cf/conf conf");
+		_exec("cd $rootfs/etc/; mkdir inc pkgs");
+		_exec("cd $rootfs/usr; mkdir bin lib libexec local sbin share");
+		_exec("cd $rootfs/usr/local; mkdir bin lib sbin www etc");
+		_exec("mkdir $rootfs/usr/local/etc/asterisk");
+		_exec("cd $rootfs/usr/local; ln -s /var/run/htpasswd www/.htpasswd");
+
+		_exec("mkdir $image_name/asterisk");
+		_exec("mkdir $image_name/asterisk/moh");
+		_exec("mkdir $image_name/asterisk/modules");
+
+		_exec("mkdir $image_name/pointstaging");
+
+	} else if ($target_os == "linux") {
+
 	}
-
-	_exec("mkdir $image_name");
-	$rootfs = "$image_name/rootfs";
-	_exec("mkdir $rootfs");
-	
-	_exec("cd $rootfs; mkdir lib bin cf conf.default dev etc mnt libexec proc root sbin tmp usr var asterisk storage");
-	_exec("cd $rootfs/var; mkdir tmp");
-	_exec("cd $rootfs; ln -s /cf/conf conf");
-	_exec("cd $rootfs/etc/; mkdir inc pkgs");
-	_exec("cd $rootfs/usr; mkdir bin lib libexec local sbin share");
-	_exec("cd $rootfs/usr/local; mkdir bin lib sbin www etc");
-	_exec("mkdir $rootfs/usr/local/etc/asterisk");
-	_exec("cd $rootfs/usr/local; ln -s /var/run/htpasswd www/.htpasswd");
-	
-	_exec("mkdir $image_name/asterisk");
-	_exec("mkdir $image_name/asterisk/moh");
-	_exec("mkdir $image_name/asterisk/modules");
-
-	_exec("mkdir $image_name/pointstaging");
 }
 
 function populate_base($image_name) {
-	global $dirs;
+	global $dirs, $target_os;
 
-	_exec("perl {$dirs['minibsd']}/mkmini.pl {$dirs['minibsd']}/m0n0wall.files / $image_name/rootfs");
+	if ($target_os == "freebsd") {
+		_exec("perl {$dirs['minibsd']}/mkmini.pl {$dirs['minibsd']}/m0n0wall.files / $image_name/rootfs");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_etc($image_name) {
-	global $dirs;
-	
-	$rootfs = "$image_name/rootfs";
-		
-	_exec("cp -pR {$dirs['files']}/etc/* $rootfs/etc/");
-	_exec("cp -p {$dirs['files']}/asterisk/*.conf $rootfs/usr/local/etc/asterisk/");
-	_exec("cp {$dirs['etc']}/pubkey.pem $rootfs/etc/");
-	
-	_exec("ln -s /var/etc/resolv.conf $rootfs/etc/resolv.conf");
-	_exec("ln -s /var/etc/hosts $rootfs/etc/hosts");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		$rootfs = "$image_name/rootfs";
+
+		_exec("cp -pR {$dirs['files']}/freebsd_etc/* $rootfs/etc/");
+		_exec("cp -p {$dirs['files']}/asterisk/*.conf $rootfs/usr/local/etc/asterisk/");
+		_exec("cp {$dirs['rc_etc']}/pubkey.pem $rootfs/etc/");
+
+		_exec("ln -s /var/etc/resolv.conf $rootfs/etc/resolv.conf");
+		_exec("ln -s /var/etc/hosts $rootfs/etc/hosts");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_defaultconf($image_name) {
-	global $dirs;
-	
-	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/rootfs/conf.default/");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/rootfs/conf.default/");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_zoneinfo($image_name) {
-	global $dirs;
-	
-	_exec("cp {$dirs['files']}/zoneinfo.tgz $image_name/rootfs/usr/share/");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cp {$dirs['files']}/zoneinfo.tgz $image_name/rootfs/usr/share/");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_syslogd($image_name) {
-	global $dirs;
-	
-	_exec("cd /usr/src/usr.sbin/syslogd; ".
-			"install -s /usr/obj/usr/src/usr.sbin/syslogd/syslogd $image_name/rootfs/usr/sbin");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src/usr.sbin/syslogd; ".
+				"install -s /usr/obj/usr/src/usr.sbin/syslogd/syslogd $image_name/rootfs/usr/sbin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_clog($image_name) {
-	global $dirs;
-	
-	_exec("cd /usr/src/usr.sbin/clog; ".
-			"install -s /usr/obj/usr/src/usr.sbin/clog/clog $image_name/rootfs/usr/sbin");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/src/usr.sbin/clog; ".
+				"install -s /usr/obj/usr/src/usr.sbin/clog/clog $image_name/rootfs/usr/sbin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_php($image_name) {
-	global $dirs, $versions;
-	
-	_exec("cd {$dirs['packages']}/{$versions['php']}/; ".
-		"install -s sapi/cgi/php $image_name/rootfs/usr/local/bin");
-	_exec("cp {$dirs['files']}/php.ini $image_name/rootfs/usr/local/lib/");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd {$dirs['packages']}/{$versions['php']}/; ".
+			"install -s sapi/cgi/php $image_name/rootfs/usr/local/bin");
+		_exec("cp {$dirs['files']}/php.ini $image_name/rootfs/usr/local/lib/");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_ezipupdate($image_name) {
-	global $dirs, $versions;
-	
-	_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
-		"install -s ez-ipupdate $image_name/rootfs/usr/local/bin");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd ". $dirs['packages'] ."/{$versions['ezipupdate']}; ".
+			"install -s ez-ipupdate $image_name/rootfs/usr/local/bin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_minihttpd($image_name) {
-	global $dirs, $versions;
-	
-	_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; ".
-			"install -s mini_httpd $image_name/rootfs/usr/local/sbin");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd {$dirs['packages']}/{$versions['mini_httpd']}; ".
+				"install -s mini_httpd $image_name/rootfs/usr/local/sbin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_msntp($image_name) {
-	global $versions;
+	global $versions, $target_os;
 
-	_exec("cd /usr/ports/net/msntp; ".
-		"install -s work/{$versions['msntp']}/msntp $image_name/rootfs/usr/local/bin");
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/ports/net/msntp; ".
+			"install -s work/{$versions['msntp']}/msntp $image_name/rootfs/usr/local/bin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_udesc_dump($image_name) {
-	global $versions;
+	global $versions, $target_os;
 
-	_exec("cd /usr/ports/sysutils/udesc_dump; ".
-		"install -s work/{$versions['udesc_dump']}/udesc_dump $image_name/rootfs/sbin");
+	if ($target_os == "freebsd") {
+		_exec("cd /usr/ports/sysutils/udesc_dump; ".
+			"install -s work/{$versions['udesc_dump']}/udesc_dump $image_name/rootfs/sbin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_msmtp($image_name) {
-	global $dirs, $versions;
-	
-	_exec("cd {$dirs['packages']}/{$versions['msmtp']}/src; ".
-		"install -s msmtp $image_name/rootfs/usr/local/bin");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("cd {$dirs['packages']}/{$versions['msmtp']}/src; ".
+			"install -s msmtp $image_name/rootfs/usr/local/bin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_asterisk($image_name) {
-	global $dirs, $versions;
-	
-	$rootfs = "$image_name/rootfs";
-	
-	_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ".
-		"gmake install DESTDIR=$rootfs");
-	
-	// link sounds and moh
-	_exec("rm -rf $rootfs/usr/local/share/asterisk/sounds");
-	_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/sounds sounds");
-	_exec("rm -rf $rootfs/usr/local/share/asterisk/moh");
-	_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/moh moh");
-	
-	// move modules
-	_exec("cp $rootfs/usr/local/lib/asterisk/modules/* $image_name/asterisk/modules");
-	_exec("rm -rf $rootfs/usr/local/lib/asterisk/modules");
-	_exec("cd $rootfs/usr/local/lib/asterisk; ln -s /asterisk/modules modules");
-	
-	// clean up
-	_exec("rm -rf $rootfs/usr/local/include");
-	_exec("rm -rf $rootfs/usr/local/share/man");
+	global $dirs, $versions, $target_os;
+
+	if ($target_os == "freebsd") {
+		$rootfs = "$image_name/rootfs";
+
+		_exec("cd {$dirs['packages']}/{$versions['asterisk']}/; ".
+			"gmake install DESTDIR=$rootfs");
+
+		// link sounds and moh
+		_exec("rm -rf $rootfs/usr/local/share/asterisk/sounds");
+		_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/sounds sounds");
+		_exec("rm -rf $rootfs/usr/local/share/asterisk/moh");
+		_exec("cd $rootfs/usr/local/share/asterisk; ln -s /asterisk/moh moh");
+
+		// move modules
+		_exec("cp $rootfs/usr/local/lib/asterisk/modules/* $image_name/asterisk/modules");
+		_exec("rm -rf $rootfs/usr/local/lib/asterisk/modules");
+		_exec("cd $rootfs/usr/local/lib/asterisk; ln -s /asterisk/modules modules");
+
+		// clean up
+		_exec("rm -rf $rootfs/usr/local/include");
+		_exec("rm -rf $rootfs/usr/local/share/man");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_sounds($image_name) {
@@ -611,7 +800,7 @@ function populate_sounds($image_name) {
 			$formats = array("ulaw");
 			foreach($formats as $format) {
 				$distname = "asterisk-core-sounds-$sound_language-$format-$core_sounds_version";
-				$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
+				$disturl = "http://downloads.digium.com/pub/telephony/sounds/releases";
 				
 				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
 						_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
@@ -965,32 +1154,47 @@ function populate_sounds($image_name) {
 }
 
 function populate_isdn($image_name) {
-	global $dirs, $versions;
+	global $dirs, $versions, $target_os;
 
-	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
+	if ($target_os == "freebsd") {
+		_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/chan_capi/chan_capi.so $image_name/asterisk/modules");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_tools($image_name) {
-	global $dirs;
-	
-	$rootfs = "$image_name/rootfs";
-	
-	_exec("cd {$dirs['tools']}; ".
-		"install -s minicron $rootfs/usr/local/bin; ".
-		"install -s verifysig $rootfs/usr/local/bin; ".
-		"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
-		"install -s alix23xresetbtn $rootfs/usr/local/sbin; ".
-		/*"install -s zttest $rootfs/sbin; ".*/
-		"install runmsntp.sh $rootfs/usr/local/bin");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		$rootfs = "$image_name/rootfs";
+
+		_exec("cd {$dirs['tools']}; ".
+			"install -s minicron $rootfs/usr/local/bin; ".
+			"install -s verifysig $rootfs/usr/local/bin; ".
+			"install -s wrapresetbtn $rootfs/usr/local/sbin; ".
+			"install -s alix23xresetbtn $rootfs/usr/local/sbin; ".
+			/*"install -s zttest $rootfs/sbin; ".*/
+			"install runmsntp.sh $rootfs/usr/local/bin");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_cgi($image_name) {
-	global $dirs;
-	
-	$rootfs = "$image_name/rootfs";
-	
-	_exec("cd {$dirs['cgi']}; ".
-		"install -s ajax.cgi $rootfs/usr/local/www");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		$rootfs = "$image_name/rootfs";
+
+		_exec("cd {$dirs['cgi']}; ".
+			"install -s ajax.cgi $rootfs/usr/local/www");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_phpcode($image_name) {
@@ -999,134 +1203,164 @@ function populate_phpcode($image_name) {
 }
 
 function populate_phpconf($image_name) {
-	global $dirs;
+	global $dirs, $target_os;
 
-	_exec("cp -p {$dirs['etc']}/rc* $image_name/rootfs/etc/");
-	_exec("cp {$dirs['phpconf']}/rc* $image_name/rootfs/etc/");
-	_exec("cp {$dirs['phpconf']}/inc/* $image_name/rootfs/etc/inc/");
+	if ($target_os == "freebsd") {
+		_exec("cp -p {$dirs['rc_etc']}/rc* $image_name/rootfs/etc/");
+		_exec("cp {$dirs['phpconf']}/rc* $image_name/rootfs/etc/");
+		_exec("cp {$dirs['phpconf']}/inc/* $image_name/rootfs/etc/inc/");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_webgui($image_name) {
-	global $dirs, $versions;
-	
-	update_locales();
+	global $dirs, $versions, $target_os;
 
-	// copy over webgui files
-	_exec("cp -R {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
-	// remove the .po locale source files
-	_exec("find $image_name/rootfs/usr/local/www/locale -type f -name \"*.po\" -delete -print");
+	if ($target_os == "freebsd") {
+		update_locales();
 
-	// grab scriptaculous
-	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://script.aculo.us/dist/{$versions['scriptaculous']}.zip");
+		// copy over webgui files
+		_exec("cp -R {$dirs['webgui']}/* $image_name/rootfs/usr/local/www/");
+		// remove the .po locale source files
+		_exec("find $image_name/rootfs/usr/local/www/locale -type f -name \"*.po\" -delete -print");
+
+		// grab scriptaculous
+		if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://script.aculo.us/dist/{$versions['scriptaculous']}.zip");
+		}
+		if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}")) {
+			_exec("cd {$dirs['packages']}; unzip {$versions['scriptaculous']}.zip");
+		}
+		_exec("cd {$dirs['packages']}/{$versions['scriptaculous']}; ".
+			"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
+
+	} else if ($target_os == "linux") {
+
 	}
-	if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}")) {
-		_exec("cd {$dirs['packages']}; unzip {$versions['scriptaculous']}.zip");
-	}
-	_exec("cd {$dirs['packages']}/{$versions['scriptaculous']}; ".
-		"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
 }
 
 function update_locales() {
-	global $dirs;
+	global $dirs, $target_os;
 
-	$path = $dirs['webgui'] . "/locale";
+	if ($target_os == "freebsd") {
+		$path = $dirs['webgui'] . "/locale";
 
-	// generate a .po skeleton file
-	_exec("xgettext -o $path/skeleton.po --no-wrap --no-location --language=PHP " . 
-		"phpconf/rc.* " .
-		"webgui/*.php " .
-		"webgui/*.inc " .
-		"phpconf/inc/*.inc");
+		// generate a .po skeleton file
+		_exec("xgettext -o $path/skeleton.po --no-wrap --no-location --language=PHP " . 
+			"phpconf/rc.* " .
+			"webgui/*.php " .
+			"webgui/*.inc " .
+			"phpconf/inc/*.inc");
 
-	$dh = opendir($path);
-	while (false !== ($dirname = readdir($dh))) {
-		if (preg_match("/[a-z]{2}\_[A-Z]{2}/", $dirname)) {
-			// in every locale, make sure a messages.po file exists
-			if (!file_exists("$path/$dirname/LC_MESSAGES/messages.po")) {
-				_exec("touch $path/$dirname/LC_MESSAGES/messages.po");
+		$dh = opendir($path);
+		while (false !== ($dirname = readdir($dh))) {
+			if (preg_match("/[a-z]{2}\_[A-Z]{2}/", $dirname)) {
+				// in every locale, make sure a messages.po file exists
+				if (!file_exists("$path/$dirname/LC_MESSAGES/messages.po")) {
+					_exec("touch $path/$dirname/LC_MESSAGES/messages.po");
+				}
+				// merge skeleton.po updates
+				_exec("msgmerge $path/$dirname/LC_MESSAGES/messages.po $path/skeleton.po " .
+						"-o $path/$dirname/LC_MESSAGES/messages.po");
+				// compile .mo file
+				_exec("cd $path/$dirname/LC_MESSAGES; msgfmt -o messages.mo messages.po");
 			}
-			// merge skeleton.po updates
-			_exec("msgmerge $path/$dirname/LC_MESSAGES/messages.po $path/skeleton.po " .
-					"-o $path/$dirname/LC_MESSAGES/messages.po");
-			// compile .mo file
-			_exec("cd $path/$dirname/LC_MESSAGES; msgfmt -o messages.mo messages.po");
 		}
+
+	} else if ($target_os == "linux") {
+
 	}
 }
 
 function populate_jquery($image_name) {
-	global $dirs, $versions;
+	global $dirs, $versions, $target_os;
 
-	$repo_url = "http://jqueryjs.googlecode.com/svn/trunk/plugins";
-	$plugins = array(
-		"blockUI",
-		"selectboxes",
-		array("preloadImage", "http://plugins.jquery.com/files/jquery.preloadImages.js_1.txt")
-	);
+	if ($target_os == "freebsd") {
+		$repo_url = "http://jqueryjs.googlecode.com/svn/trunk/plugins";
+		$plugins = array(
+			"blockUI",
+			"selectboxes",
+			array("preloadImage", "http://plugins.jquery.com/files/jquery.preloadImages.js_1.txt")
+		);
 
-	// grab jquery
-	if (!file_exists("{$dirs['packages']}/{$versions['jquery']}.js")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://jqueryjs.googlecode.com/files/{$versions['jquery']}.js");
-	}
-	_exec("cp {$dirs['packages']}/{$versions['jquery']}.js $image_name/rootfs/usr/local/www/jquery.js");
-
-	foreach ($plugins as $p) {
-		if (!is_array($p)) {
-			if (!file_exists($dirs['packages'] . "/jquery." . $p . ".js")) {
-				_exec("cd " . $dirs['packages'] . "; " .
-					"fetch " . $repo_url . "/" . $p . "/jquery." . $p . ".js");
-			}
-			_exec("cp " . $dirs['packages'] . "/jquery." . $p . ".js " . $image_name . "/rootfs/usr/local/www/");
-		} else {
-			if (!file_exists($dirs['packages'] . "/jquery." . $p[0] . ".js")) {
-				_exec("cd " . $dirs['packages'] . "; " .
-					"fetch -o jquery." . $p[0] . ".js " . $p[1]);
-			}
-			_exec("cp " . $dirs['packages'] . "/jquery." . $p[0] . ".js " . $image_name . "/rootfs/usr/local/www/");
+		// grab jquery
+		if (!file_exists("{$dirs['packages']}/{$versions['jquery']}.js")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://jqueryjs.googlecode.com/files/{$versions['jquery']}.js");
 		}
-	}
+		_exec("cp {$dirs['packages']}/{$versions['jquery']}.js $image_name/rootfs/usr/local/www/jquery.js");
 
-	if (!file_exists("{$dirs['packages']}/jquery.progressbar.1.1.zip")) {
-		_exec("cd {$dirs['packages']}; ".
-			"fetch http://t.wits.sg/downloads/jquery.progressbar.1.1.zip");
-		_exec("cd {$dirs['packages']}; unzip jquery.progressbar.1.1.zip");
+		foreach ($plugins as $p) {
+			if (!is_array($p)) {
+				if (!file_exists($dirs['packages'] . "/jquery." . $p . ".js")) {
+					_exec("cd " . $dirs['packages'] . "; " .
+						"fetch " . $repo_url . "/" . $p . "/jquery." . $p . ".js");
+				}
+				_exec("cp " . $dirs['packages'] . "/jquery." . $p . ".js " . $image_name . "/rootfs/usr/local/www/");
+			} else {
+				if (!file_exists($dirs['packages'] . "/jquery." . $p[0] . ".js")) {
+					_exec("cd " . $dirs['packages'] . "; " .
+						"fetch -o jquery." . $p[0] . ".js " . $p[1]);
+				}
+				_exec("cp " . $dirs['packages'] . "/jquery." . $p[0] . ".js " . $image_name . "/rootfs/usr/local/www/");
+			}
+		}
+
+		if (!file_exists("{$dirs['packages']}/jquery.progressbar.1.1.zip")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://t.wits.sg/downloads/jquery.progressbar.1.1.zip");
+			_exec("cd {$dirs['packages']}; unzip jquery.progressbar.1.1.zip");
+		}
+		_exec("cd {$dirs['packages']}/jquery.progressbar/; ".
+			"cp js/jquery.progressbar.js images/progressbar.gif images/progressbg_black.gif ".
+			$image_name . "/rootfs/usr/local/www/");
+
+	} else if ($target_os == "linux") {
+
 	}
-	_exec("cd {$dirs['packages']}/jquery.progressbar/; ".
-		"cp js/jquery.progressbar.js images/progressbar.gif images/progressbg_black.gif ".
-		$image_name . "/rootfs/usr/local/www/");
 }
 
 function populate_libs($image_name) {
-	global $dirs;
-	
-	_exec("perl {$dirs['minibsd']}/mklibs.pl $image_name > tmp.libs");
-	_exec("perl {$dirs['minibsd']}/mkmini.pl tmp.libs / $image_name/rootfs");
-	_exec("rm tmp.libs");
+	global $dirs, $target_os;
+
+	if ($target_os == "freebsd") {
+		_exec("perl {$dirs['minibsd']}/mklibs.pl $image_name > tmp.libs");
+		_exec("perl {$dirs['minibsd']}/mkmini.pl tmp.libs / $image_name/rootfs");
+		_exec("rm tmp.libs");
+
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function populate_pointstaging($image_name) {
-	global $dirs, $versions, $platforms;
+	global $dirs, $versions, $platforms, $target_os;
 
-	foreach ($platforms as $platform) {
-		$kernel = _platform_to_kernel($platform);
-		_exec("cp /sys/i386/compile/$kernel/kernel.gz $image_name/pointstaging/kernel_$kernel.gz");
-		_exec("cp {$dirs['boot']}/$platform/loader.rc $image_name/pointstaging/loader.rc_$platform");
+	if ($target_os == "freebsd") {
+		foreach ($platforms as $platform) {
+			$kernel = _platform_to_kernel($platform);
+			_exec("cp /sys/i386/compile/$kernel/kernel.gz $image_name/pointstaging/kernel_$kernel.gz");
+			_exec("cp {$dirs['boot']}/$platform/loader.rc $image_name/pointstaging/loader.rc_$platform");
+		}
+
+		_exec("cd /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/; " .
+			"cp ugen/ugen.ko $image_name/pointstaging; " .
+			"cp acpi/acpi/acpi.ko $image_name/pointstaging");
+
+		_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
+		_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
+
+		_exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot $image_name/pointstaging");
+		_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
+		_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot $image_name/pointstaging");
+		_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/pointstaging");
+
+	} else if ($target_os == "linux") {
+
 	}
-
-	_exec("cd /sys/i386/compile/ASKOZIAPBX_GENERIC/modules/usr/src/sys/modules/; " .
-		"cp ugen/ugen.ko $image_name/pointstaging; " .
-		"cp acpi/acpi/acpi.ko $image_name/pointstaging");
-
-	_exec("cp {$dirs['packages']}/{$versions['zaptel']}/STAGE/*.ko $image_name/pointstaging");
-	_exec("cp {$dirs['packages']}/{$versions['i4b']}/trunk/i4b/module/i4b.ko $image_name/pointstaging");
-	
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/cdboot/cdboot $image_name/pointstaging");
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/loader/loader $image_name/pointstaging");
-	_exec("cp /usr/obj/usr/src/sys/boot/i386/boot2/boot $image_name/pointstaging");
-	_exec("cp {$dirs['phpconf']}/config.*.xml $image_name/pointstaging");
 }
 
 function populate_everything($image_name) {
@@ -1159,250 +1393,277 @@ function populate_everything($image_name) {
 	fclose($fd);
 }
 
-function package($platform, $image_name) {
+function package($platform, $image_name, $brand) {
 	global $dirs, $versions;
 	global $mfsroot_pad, $asterisk_pad, $image_pad;
-	global $low_power_modules, $low_power_libraries;
+	global $low_power_modules, $low_power_libraries, $target_os;
 
-	_clean_image($image_name);
-	_set_permissions($image_name);
-	
-	if (!file_exists("tmp")) {
-		mkdir("tmp");
-		mkdir("tmp/mnt");
-		mkdir("tmp/stage");
-	}
-	
-	$kernel = _platform_to_kernel($platform);
-	
-	// mfsroot
+	if ($target_os == "freebsd") {
+		_clean_image($image_name);
+		_set_permissions($image_name);
 
-	// add rootfs
-	_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
-
-	// ...system modules		
-	_exec("mkdir tmp/stage/boot");
-	_exec("mkdir tmp/stage/boot/kernel");
-	_exec("cp $image_name/pointstaging/i4b.ko $image_name/pointstaging/ugen.ko " .
-		"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
-		"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
-		"tmp/stage/boot/kernel/");
-
-	if ($platform != "generic-pc") {
-		foreach ($low_power_libraries as $lpl) {
-			_exec("rm tmp/stage/$lpl");
+		if (!file_exists("tmp")) {
+			mkdir("tmp");
+			mkdir("tmp/mnt");
+			mkdir("tmp/stage");
 		}
-	}
 
-	// ...stamps
-	_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
-	_exec("echo `date` > tmp/stage/etc/version.buildtime");
-	_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
-	_exec("echo $platform > tmp/stage/etc/platform");		
-	
-	// get size and package mfsroot
-	$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
-	
-	_exec("dd if=/dev/zero of=tmp/mfsroot ibs=1k obs=1k count=$mfsroot_size");
-	_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
+		$kernel = _platform_to_kernel($platform);
 
-	_exec("bsdlabel -rw md0 auto");
-	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
+		// mfsroot
 
-	_exec("mount /dev/md0c tmp/mnt");
-	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
-	
-	_log("---- $platform - " . basename($image_name) . " - mfsroot ----");
-	_exec("df tmp/mnt");
+		// add rootfs
+		_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
 
-	_exec("umount tmp/mnt");
-	_exec("rm -rf tmp/stage/*");
-	_exec("mdconfig -d -u 0");
-	_exec("gzip -9 tmp/mfsroot");
-	_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz");
-	
-	// add mfsroot
-	_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
-		"tmp/stage/mfsroot.gz");
-	
-	// ...boot
-	_exec("mkdir tmp/stage/boot");
-	_exec("mkdir tmp/stage/boot/kernel");
-	_exec("cp $image_name/pointstaging/loader tmp/stage/boot/");
-	_exec("cp $image_name/pointstaging/loader.rc_$platform tmp/stage/boot/loader.rc");
-	if (strpos($platform, "generic-pc") !== false) {
-		_exec("cp $image_name/pointstaging/acpi.ko tmp/stage/boot/kernel");
-	}
-	
-	// ...conf
-	_exec("mkdir tmp/stage/conf");
-	_exec("cp $image_name/pointstaging/config.$platform.xml tmp/stage/conf/config.xml");
-	_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/stage/kernel.gz");
-	
-	$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
-	$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
-	$image_size += 16 - ($image_size % 16);
-	
-	$a_size = ($image_size - $asterisk_size) * 2 - 16;
-	$b_size = $asterisk_size * 2;
-	$c_size = $image_size * 2;
-    
-	$label  = "# /dev/md0:\n";
-	$label .= "8 partitions:\n";
-	$label .= "#        size   offset    fstype   [fsize bsize bps/cpg]\n";
-	$label .= " a: " . $a_size . "  16  4.2BSD  0  0\n";
-	$label .= " b: " . $b_size . "   *  4.2BSD  0  0\n";
-	$label .= " c: " . $c_size . "   0  unused  0  0\n\n";
-    
-	$fd = fopen("tmp/formatted.label", "w");
-	if (!$fd) {
-		printf("Error: cannot open label!\n");
-		exit(1);
-	}
-	fwrite($fd, $label);
-	fclose($fd);
-	
-	_exec("dd if=/dev/zero of=tmp/image.bin ibs=1k obs=1k count=$image_size");			
-	_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
-	_exec("bsdlabel -BR -b $image_name/pointstaging/boot md0 tmp/formatted.label");
-	_exec("cp tmp/formatted.label tmp/stage/original.bsdlabel");
+		// ...system modules		
+		_exec("mkdir tmp/stage/boot");
+		_exec("mkdir tmp/stage/boot/kernel");
+		_exec("cp $image_name/pointstaging/i4b.ko $image_name/pointstaging/ugen.ko " .
+			"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
+			"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
+			"tmp/stage/boot/kernel/");
 
-	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
-	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
-
-	_exec("mount /dev/md0a tmp/mnt");
-	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
-	_log("---- $platform - " . basename($image_name) . " - system partition ----");
-	_exec("df tmp/mnt");
-	_exec("umount tmp/mnt");
-	
-	_exec("mount /dev/md0b tmp/mnt");
-	_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
-	// XXX quick fix to remove low power modules
-	if (strpos($platform, "generic-pc") === false) {
-		foreach ($low_power_modules as $lpm) {
-			_exec("rm tmp/mnt/modules/$lpm");
+		if ($platform != "generic-pc") {
+			foreach ($low_power_libraries as $lpl) {
+				_exec("rm tmp/stage/$lpl");
+			}
 		}
+
+		// ...branding
+		_brand($image_name, $brand);
+
+		// ...stamps
+		_exec("echo \"". basename($image_name) ."\" > tmp/stage/etc/version");
+		_exec("echo `date` > tmp/stage/etc/version.buildtime");
+		_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
+		_exec("echo $platform > tmp/stage/etc/platform");		
+
+		// get size and package mfsroot
+		$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
+
+		_exec("dd if=/dev/zero of=tmp/mfsroot ibs=1k obs=1k count=$mfsroot_size");
+		_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
+
+		_exec("bsdlabel -rw md0 auto");
+		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
+
+		_exec("mount /dev/md0c tmp/mnt");
+		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+
+		_log("---- $platform - " . basename($image_name) . " - mfsroot ----");
+		_exec("df tmp/mnt");
+
+		_exec("umount tmp/mnt");
+		_exec("rm -rf tmp/stage/*");
+		_exec("mdconfig -d -u 0");
+		_exec("gzip -9 tmp/mfsroot");
+		_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz");
+
+		// add mfsroot
+		_exec("cp {$dirs['mfsroots']}/$platform-". basename($image_name) .".gz ".
+			"tmp/stage/mfsroot.gz");
+
+		// ...boot
+		_exec("mkdir tmp/stage/boot");
+		_exec("mkdir tmp/stage/boot/kernel");
+		_exec("cp $image_name/pointstaging/loader tmp/stage/boot/");
+		_exec("cp $image_name/pointstaging/loader.rc_$platform tmp/stage/boot/loader.rc");
+		if (strpos($platform, "generic-pc") !== false) {
+			_exec("cp $image_name/pointstaging/acpi.ko tmp/stage/boot/kernel");
+		}
+
+		// ...conf
+		_exec("mkdir tmp/stage/conf");
+		_exec("cp $image_name/pointstaging/config.$platform.xml tmp/stage/conf/config.xml");
+		_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/stage/kernel.gz");
+
+		$asterisk_size = _get_dir_size("$image_name/asterisk") + $asterisk_pad;
+		$image_size = _get_dir_size("tmp/stage") + $asterisk_size + $image_pad;
+		$image_size += 16 - ($image_size % 16);
+
+		$a_size = ($image_size - $asterisk_size) * 2 - 16;
+		$b_size = $asterisk_size * 2;
+		$c_size = $image_size * 2;
+
+		$label  = "# /dev/md0:\n";
+		$label .= "8 partitions:\n";
+		$label .= "#        size   offset    fstype   [fsize bsize bps/cpg]\n";
+		$label .= " a: " . $a_size . "  16  4.2BSD  0  0\n";
+		$label .= " b: " . $b_size . "   *  4.2BSD  0  0\n";
+		$label .= " c: " . $c_size . "   0  unused  0  0\n\n";
+
+		$fd = fopen("tmp/formatted.label", "w");
+		if (!$fd) {
+			printf("Error: cannot open label!\n");
+			exit(1);
+		}
+		fwrite($fd, $label);
+		fclose($fd);
+
+		_exec("dd if=/dev/zero of=tmp/image.bin ibs=1k obs=1k count=$image_size");			
+		_exec("mdconfig -a -t vnode -f tmp/image.bin -u 0");
+		_exec("bsdlabel -BR -b $image_name/pointstaging/boot md0 tmp/formatted.label");
+		_exec("cp tmp/formatted.label tmp/stage/original.bsdlabel");
+
+		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0a");
+		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0b");
+
+		_exec("mount /dev/md0a tmp/mnt");
+		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+		_log("---- $platform - " . basename($image_name) . " - system partition ----");
+		_exec("df tmp/mnt");
+		_exec("umount tmp/mnt");
+
+		_exec("mount /dev/md0b tmp/mnt");
+		_exec("cd tmp/mnt; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+		// XXX quick fix to remove low power modules
+		if (strpos($platform, "generic-pc") === false) {
+			foreach ($low_power_modules as $lpm) {
+				_exec("rm tmp/mnt/modules/$lpm");
+			}
+		}
+		_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
+		_exec("df tmp/mnt");
+		_exec("umount tmp/mnt");		
+
+		// cleanup
+		_exec("mdconfig -d -u 0");
+		_exec("gzip -9 tmp/image.bin");
+
+		// rename
+		$cur_name = "pbx-$platform-". basename($image_name) .".img";
+		_exec("mv tmp/image.bin.gz {$dirs['images']}/$cur_name");
+		if ($brand != "default") {
+			_exec("cd {$dirs['images']}; mv $cur_name $brand-$cur_name");
+		}
+
+		_exec("rm -rf tmp");
+
+	} else if ($target_os == "linux") {
+
 	}
-	_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
-	_exec("df tmp/mnt");
-	_exec("umount tmp/mnt");		
-	
-	// cleanup
-	_exec("mdconfig -d -u 0");
-	_exec("gzip -9 tmp/image.bin");
-	_exec("mv tmp/image.bin.gz {$dirs['images']}/pbx-$platform-". basename($image_name) .".img");
-
-
-	_exec("rm -rf tmp");
 }
 
 function package_rootfs($image_name) {
-	global $dirs;
+	global $dirs, $target_os;
 
-	_clean_image($image_name);
-	_set_permissions($image_name);
-	$name = basename($image_name);
+	if ($target_os == "freebsd") {
+		_clean_image($image_name);
+		_set_permissions($image_name);
+		$name = basename($image_name);
 
-	// tar
-	_exec("cd {$dirs['images']}; tar -cf rootfs-$name.tar $name");
-	// zip
-	_exec("cd {$dirs['images']}; gzip -9 rootfs-$name.tar");
-	// rename
-	_exec("mv {$dirs['images']}/rootfs-$name.tar.gz {$dirs['images']}/pbx-rootfs-$name.tgz");
+		// tar
+		_exec("cd {$dirs['images']}; tar -cf rootfs-$name.tar $name");
+		// zip
+		_exec("cd {$dirs['images']}; gzip -9 rootfs-$name.tar");
+		// rename
+		_exec("mv {$dirs['images']}/rootfs-$name.tar.gz {$dirs['images']}/pbx-rootfs-$name.tgz");
 
+	} else if ($target_os == "linux") {
+
+	}
 }
 
 function package_cd($image_name) {
-	global $dirs, $versions, $mfsroot_pad;
+	global $dirs, $versions, $mfsroot_pad, $target_os;
 
-	_clean_image($image_name);
-	_set_permissions($image_name);
+	if ($target_os == "freebsd") {
+		_clean_image($image_name);
+		_set_permissions($image_name);
 
-	if (!file_exists("tmp")) {
-		mkdir("tmp");
-		mkdir("tmp/mnt");
-		mkdir("tmp/stage");
+		if (!file_exists("tmp")) {
+			mkdir("tmp");
+			mkdir("tmp/mnt");
+			mkdir("tmp/stage");
+		}
+
+		$platform = "generic-pc-cdrom";
+		$kernel = _platform_to_kernel("generic-pc");
+		$image_version = basename($image_name);
+
+		// mfsroot
+
+		// add rootfs
+		_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
+		_exec("cd tmp/stage/asterisk; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
+
+		// ...system modules		
+		_exec("mkdir tmp/stage/boot");
+		_exec("mkdir tmp/stage/boot/kernel");
+		_exec("cp $image_name/pointstaging/i4b.ko $image_name/pointstaging/ugen.ko " .
+			"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
+			"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
+			"tmp/stage/boot/kernel/");
+
+		// ...stamps
+		_exec("echo \"$image_version\" > tmp/stage/etc/version");
+		_exec("echo `date` > tmp/stage/etc/version.buildtime");
+		_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
+		_exec("echo $platform > tmp/stage/etc/platform");
+
+		// get size and package mfsroot
+		$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
+
+		_exec("dd if=/dev/zero of=tmp/mfsroot ibs=1k obs=1k count=$mfsroot_size");
+		_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
+
+		_exec("bsdlabel -rw md0 auto");
+		_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
+
+		_exec("mount /dev/md0c tmp/mnt");
+		_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
+
+		_log("---- $platform - $image_version - mfsroot ----");
+		_exec("df tmp/mnt");
+
+		_exec("umount tmp/mnt");
+		_exec("rm -rf tmp/stage/*");
+		_exec("mdconfig -d -u 0");
+		_exec("gzip -9 tmp/mfsroot");
+		_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-$image_version.gz");
+
+		// .iso
+		_exec("mkdir tmp/cdroot");
+		_exec("cp {$dirs['mfsroots']}/$platform-$image_version.gz tmp/cdroot/mfsroot.gz");
+		_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/cdroot/kernel.gz");
+		_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/cdroot/firmware.img");
+
+		_exec("mkdir tmp/cdroot/boot");
+		_exec("mkdir tmp/cdroot/boot/kernel");
+		_exec("cp $image_name/pointstaging/cdboot tmp/cdroot/boot/");
+		_exec("cp $image_name/pointstaging/loader tmp/cdroot/boot/");
+		_exec("cp $image_name/pointstaging/boot tmp/cdroot/boot/");
+		_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
+		_exec("cp $image_name/pointstaging/acpi.ko tmp/cdroot/boot/kernel");
+
+		_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"AskoziaPBX CD-ROM image\" ".
+			"-c \"boot/boot.catalog\" -d -r -publisher \"askozia.com\" ".
+			"-p \"AskoziaPBX\" -V \"AskoziaPBXCD\" -o \"AskoziaPBX.iso\" tmp/cdroot/");
+
+		_exec("mv AskoziaPBX.iso {$dirs['images']}/pbx-cdrom-$image_version.iso");
+
+		_exec("rm -rf tmp");
+
+	} else if ($target_os == "linux") {
+
 	}
-
-	$platform = "generic-pc-cdrom";
-	$kernel = _platform_to_kernel("generic-pc");
-	$image_version = basename($image_name);
-
-	// mfsroot
-
-	// add rootfs
-	_exec("cd tmp/stage; tar -cf - -C $image_name/rootfs ./ | tar -xpf -");
-	_exec("cd tmp/stage/asterisk; tar -cf - -C $image_name/asterisk ./ | tar -xpf -");
-
-	// ...system modules		
-	_exec("mkdir tmp/stage/boot");
-	_exec("mkdir tmp/stage/boot/kernel");
-	_exec("cp $image_name/pointstaging/i4b.ko $image_name/pointstaging/ugen.ko " .
-		"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
-		"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
-		"tmp/stage/boot/kernel/");
-
-	// ...stamps
-	_exec("echo \"$image_version\" > tmp/stage/etc/version");
-	_exec("echo `date` > tmp/stage/etc/version.buildtime");
-	_exec("echo " . time() . " > tmp/stage/etc/version.buildtime.unix");
-	_exec("echo $platform > tmp/stage/etc/platform");
-
-	// get size and package mfsroot
-	$mfsroot_size = _get_dir_size("tmp/stage") + $mfsroot_pad;
-
-	_exec("dd if=/dev/zero of=tmp/mfsroot ibs=1k obs=1k count=$mfsroot_size");
-	_exec("mdconfig -a -t vnode -f tmp/mfsroot -u 0");
-
-	_exec("bsdlabel -rw md0 auto");
-	_exec("newfs -O 1 -b 8192 -f 1024 -o space -m 0 /dev/md0c");
-
-	_exec("mount /dev/md0c tmp/mnt");
-	_exec("cd tmp/mnt; tar -cf - -C ../stage ./ | tar -xpf -");
-
-	_log("---- $platform - $image_version - mfsroot ----");
-	_exec("df tmp/mnt");
-
-	_exec("umount tmp/mnt");
-	_exec("rm -rf tmp/stage/*");
-	_exec("mdconfig -d -u 0");
-	_exec("gzip -9 tmp/mfsroot");
-	_exec("mv tmp/mfsroot.gz {$dirs['mfsroots']}/$platform-$image_version.gz");
-
-	// .iso
-	_exec("mkdir tmp/cdroot");
-	_exec("cp {$dirs['mfsroots']}/$platform-$image_version.gz tmp/cdroot/mfsroot.gz");
-	_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/cdroot/kernel.gz");
-	_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/cdroot/firmware.img");
-   
-	_exec("mkdir tmp/cdroot/boot");
-	_exec("mkdir tmp/cdroot/boot/kernel");
-	_exec("cp $image_name/pointstaging/cdboot tmp/cdroot/boot/");
-	_exec("cp $image_name/pointstaging/loader tmp/cdroot/boot/");
-	_exec("cp $image_name/pointstaging/boot tmp/cdroot/boot/");
-	_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
-	_exec("cp $image_name/pointstaging/acpi.ko tmp/cdroot/boot/kernel");
-    
-	_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"AskoziaPBX CD-ROM image\" ".
-		"-c \"boot/boot.catalog\" -d -r -publisher \"askozia.com\" ".
-		"-p \"AskoziaPBX\" -V \"AskoziaPBXCD\" -o \"AskoziaPBX.iso\" tmp/cdroot/");
-		
-	_exec("mv AskoziaPBX.iso {$dirs['images']}/pbx-cdrom-$image_version.iso");
-
-	_exec("rm -rf tmp");
 }
 
 function release($name) {
-	global $platforms, $dirs;
-	
-	package_rootfs($name);
-	package_cd($name);
+	global $platforms, $dirs, $target_os;
 
-	// signing
-	foreach($platforms as $platform) {
-		$filename = "pbx-" . $platform . "-" . basename($name) . ".img";
-		_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
+	if ($target_os == "freebsd") {
+		package_rootfs($name);
+		package_cd($name);
+
+		// signing
+		foreach($platforms as $platform) {
+			$filename = "pbx-" . $platform . "-" . basename($name) . ".img";
+			_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
+		}
+
+	} else if ($target_os == "linux") {
+
 	}
 }
 
@@ -1415,6 +1676,22 @@ function parse_check() {
 	passthru("find webgui/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*rc*\" -exec php -l {} \; -print | grep Parse");
 	passthru("find phpconf/ -type f -name \"*.inc\" -exec php -l {} \; -print | grep Parse");
+}
+
+function _brand($image_name, $brand) {
+	global $branding_path;
+
+	if ($brand == "default") {
+		return 0;
+	}
+	if (!file_exists("$branding_path/$brand")) {
+		_log("BRANDING FAILED : unknown brand");
+		return 0;
+	}
+
+	_log("branding $image_name with $brand");
+	_exec("cp $branding_path/$brand/webgui/* tmp/stage/usr/local/www");
+
 }
 
 function _get_dir_size($dir) {
@@ -1573,10 +1850,12 @@ if ($argv[1] == "prepare") {
 		_log("Image does not exist!");
 		exit(1);
 	}
+	// grab the brand if there is one defined
+	$brand = ($argv[4]) ? $argv[4] : "default";
 	// we're packaging all platforms go right ahead
 	if ($argv[2] == "all") {
 		foreach($platforms as $platform) {
-			package($platform, $image_name);			
+			package($platform, $image_name, $brand);			
 		}
 		package_rootfs($image_name);
 		package_cd($image_name);
@@ -1591,7 +1870,7 @@ if ($argv[1] == "prepare") {
 
 	// check the specific platform before attempting to package
 	} else if (in_array($argv[2], $platforms)) {
-		package($argv[2], $image_name);
+		package($argv[2], $image_name, $brand);
 
 	// not a valid package command...
 	} else {
@@ -1602,8 +1881,10 @@ if ($argv[1] == "prepare") {
 }  else if ($argv[1] == "release") {
 
 	$image_name = "{$dirs['images']}/" . rtrim($argv[2], "/");
+	$brand = ($argv[3]) ? $argv[3] : "default";
+
 	foreach($platforms as $platform) {
-		package($platform, $image_name);			
+		package($platform, $image_name, $brand);			
 	}
 	release($image_name);
 

@@ -1,3 +1,6 @@
+2009.xx.xx - 1.x.x
+ - refactor: pbxdev.php extended to allow for both freebsd and linux to be used as the base operating system
+
 2008.09.19 - 1.0.1
  - bug: providers with non-numeric usernames with no "read back" number set no longer crash in voicemail
  - bug: deleted phone accounts now automatically removed from call groups
