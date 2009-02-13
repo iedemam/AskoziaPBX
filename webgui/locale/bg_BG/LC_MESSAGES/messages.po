@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:19+0200\n"
-"PO-Revision-Date: 2008-09-15 19:37+0200\n"
+"POT-Creation-Date: 2009-02-11 15:46+0100\n"
+"PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -497,7 +497,7 @@ msgid "File"
 msgstr "Файл"
 
 msgid "Contents"
-msgstr "Съдържащи"
+msgstr "Съдържание"
 
 msgid "Cancel"
 msgstr "Отмени"
@@ -536,28 +536,28 @@ msgid "Call Records"
 msgstr "Отчети на Разговорите"
 
 msgid "start"
-msgstr "начало"
+msgstr "Начало"
 
 msgid "src"
-msgstr "източник"
+msgstr "Източник"
 
 msgid "dst"
-msgstr "направление"
+msgstr "Направление"
 
 msgid "channels"
-msgstr "канали"
+msgstr "Канали"
 
 msgid "last app"
-msgstr "последно приложение"
+msgstr "Приложение"
 
 msgid "sec."
-msgstr "секунди"
+msgstr "Секунди"
 
 msgid "bill"
-msgstr "стойност"
+msgstr "Стойност"
 
 msgid "disposition"
-msgstr "край"
+msgstr "Състояние"
 
 msgid "Clear log"
 msgstr "Изчисти Отчетите"
@@ -1200,7 +1200,7 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Потребителското име на динамичният DNS  съдържа невалидни символи."
 
 msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Провереният интерфейс ще бъде привързан към главния интерфейс."
+msgstr "Маркираният интерфейс ще бъде привързан към главния интерфейс."
 
 msgid "IP Address"
 msgstr "IP Адрес"
@@ -1599,7 +1599,7 @@ msgid "Caller ID / Name"
 msgstr "Caller ID / Име"
 
 msgid "Basic"
-msgstr "Основен"
+msgstr "Основна"
 
 msgid "Filename"
 msgstr "Име на файл"
@@ -2764,10 +2764,8 @@ msgstr "Лимит на Разговорите"
 msgid "calls"
 msgstr "обаждания"
 
-#, fuzzy
 msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Разрешава само 'n' изходящи и 'n' входящи обаждания (по подразбиране: 2)"
+msgstr "Разрешава само 'n' едновременни разговора (по подразбиране: 2)"
 
 msgid "Busy Limit"
 msgstr "Лимит за Заето"
@@ -2938,7 +2936,8 @@ msgstr "възстановяване от архив"
 msgid "download a backup archive"
 msgstr "изтегляне на архив"
 
-msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
 msgstr "АскозияPBX &copy; 2007-2008 IKT. Всички права са запазени."
 
 msgid "view license"
@@ -3074,13 +3073,11 @@ msgstr "Френски (официален)"
 msgid "German (formal)"
 msgstr "Немски (официален)"
 
-#, fuzzy
 msgid "Greek"
-msgstr "Гърция"
+msgstr "Гръцки"
 
-#, fuzzy
 msgid "Greek (formal)"
-msgstr "Френски (официален)"
+msgstr "Гръцки (официален)"
 
 msgid "Italian (formal)"
 msgstr "Италиански (официален)"

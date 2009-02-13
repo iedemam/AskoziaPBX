@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:10+0200\n"
+"POT-Creation-Date: 2009-02-11 15:46+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Test <Test@Test.de>\n"
 "Language-Team: \n"
@@ -2946,7 +2946,8 @@ msgstr "Wiederherstellung aus einem Backup-Archiv"
 msgid "download a backup archive"
 msgstr "Backup-Archiv downloaden"
 
-msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. All Rechte vorbehalten."
 
 msgid "view license"

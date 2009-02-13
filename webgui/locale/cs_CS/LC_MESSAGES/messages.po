@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:19+0200\n"
+"POT-Creation-Date: 2009-02-11 15:46+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2737,7 +2737,8 @@ msgstr "obnov balíček ze zálohy"
 msgid "download a backup archive"
 msgstr "vytvoř zálohu balíčku"
 
-msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
 msgstr "AskoziaPBX  &copy; 2007-2008 IKT. Všechna práva vyhrazena."
 
 msgid "view license"

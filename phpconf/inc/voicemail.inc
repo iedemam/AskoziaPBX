@@ -36,6 +36,10 @@ require_once("functions.inc");
  */
 $vm_emailsubject = array(
 
+	// bulgarian
+	"bg-informal" =>	"Ново Гласово съобщение (кутия: $\{VM_MAILBOX})",
+	"bg-formal"   =>	"Ново Гласово съобщение (кутия: $\{VM_MAILBOX})",
+
 	// czech
 	"cs-informal" => 	"Máte zprávu v hlasové schránce (schránka: $\{VM_MAILBOX})",
 	"cs-formal" => 		"Vaše hlasová schárnka obsahuje novou zprávu  (schránka: $\{VM_MAILBOX})",
@@ -95,6 +99,17 @@ $vm_emailsubject = array(
  * Voicemail notification e-mail bodies
  */
 $vm_emailbody = array(
+
+	// bulgarian
+	"bg-informal" =>	"Уважаеми $\{VM_NAME},\\n\\n".
+						"Гласово съобщение от $\{VM_CALLERID} се получи във вашата гласова поща. ".
+						"Продължителноста му е $\{VM_DUR} и е оставено на $\{VM_DATE}.\\n\\n".
+						"-AskoziaPBX",
+
+	"bg-formal" =>		"Уважаеми $\{VM_NAME},\\n\\n".
+						"Гласово съобщение с продължителност $\{VM_DUR} беше оставено за вас ".
+						"на $\{VM_DATE} от $\{VM_CALLERID}.\\n\\n".
+						"-AskoziaPBX",
 
 	// czech
 	"cs-informal" => 	"Vážený/vázená $\{VM_NAME},\\n\\n".

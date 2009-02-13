@@ -1,5 +1,9 @@
-2009.xx.xx - 1.x.x
+2009.xx.xx - 1.0.2
+ - localization: added Turkish (submitted by Akif Dinç)
+ - localization: added Japanese (submitted by Kenichi Fukaumi)
+ - localization: updated Bulgarian and Dutch
  - refactor: pbxdev.php extended to allow for both freebsd and linux to be used as the base operating system
+ - refactor: navigation menu changed to use <ul> and <li> elements
 
 2008.09.19 - 1.0.1
  - bug: providers with non-numeric usernames with no "read back" number set no longer crash in voicemail

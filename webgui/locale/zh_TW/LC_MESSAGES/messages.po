@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:10+0200\n"
+"POT-Creation-Date: 2009-02-11 15:46+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2763,7 +2763,8 @@ msgstr "恢復一個備份的文檔"
 msgid "download a backup archive"
 msgstr "下載備份文檔"
 
-msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 
 msgid "view license"

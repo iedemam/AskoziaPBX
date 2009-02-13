@@ -49,7 +49,7 @@ function dynamic_menu(&$menu, $menu_title) {
 	if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
 		unset($allowed);
    		foreach ($menu as $item) {
-        			$allowed[] = $item[0];
+        	$allowed[] = $item[0];
 		}
 	}
 	
@@ -57,35 +57,54 @@ function dynamic_menu(&$menu, $menu_title) {
 		if ($intersect = array_intersect($menu[$desc],$allowed)) {
 			
 			if (!isset($header_displayed) && ($menu_title == 'Dialplan')) {
-				echo "\n" 
-				?>
-				<strong><?=gettext("Dialplan");?></strong>&nbsp;<a href="printable_dialplan.php" class="navlnks">(<?=gettext("print");?>)</a><br>
-				<?
+				echo "\n";
+				echo "\t\t<li class=\"menuitem\">" . gettext("Dialplan") . "&nbsp;<a href=\"printable_dialplan.php\" class=\"navlnks\">(" . gettext("print") . ")</a>\n";
+				echo "\t\t\t<ul class=\"submenu\">\n";
+
 				$header_displayed = true;
 			
 			} else if (!isset($header_displayed) && !($menu_title == 'Diagnostics') && !($menu_title == 'Advanced')) {
-				echo "\n			<strong>".$menu_title.'</strong><br>';
+				echo "\n";
+				echo "\t\t<li class=\"menuitem\">" . gettext($menu_title) . "\n";
+				echo "\t\t\t<ul class=\"submenu\">\n";
+
 				$header_displayed = true;
 			
-			} else { 
-				if (!isset($header_displayed)) {
-					if ($menu_title == 'Diagnostics') {
-						if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag">
-						<? else :?>
-							<a href="javascript:showhide('diag','tri_diag')"><img src="tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br><span id="diag" style="display: none">
-						<? endif;
+			} else if (!isset($header_displayed)) {
+
+				if ($menu_title == 'Diagnostics') {
+					if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) {
+						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('diag','tri_diag')\">";
+						echo "<img src=\"tri_o.gif\" id=\"tri_diag\" width=\"14\" height=\"10\" border=\"0\"></a>";
+						echo "<a href=\"javascript:showhide('diag','tri_diag')\" class=\"navlnk\">" . gettext("Diagnostics") . "</a>\n";
+						echo "<span id=\"diag\">\n";
+					} else {
+						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('diag','tri_diag')\">";
+						echo "<img src=\"tri_c.gif\" id=\"tri_diag\" width=\"14\" height=\"10\" border=\"0\"></a>";
+						echo "<a href=\"javascript:showhide('diag','tri_diag')\" class=\"navlnk\">" . gettext("Diagnostics") . "</a>\n";
+						echo "<span id=\"diag\" style=\"display: none\">\n";
 					}
-					if ($menu_title == 'Advanced') {
-						if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_o.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced">
-						<? else :?>
-							<a href="javascript:showhide('advanced','tri_advanced')"><img src="tri_c.gif" id="tri_advanced" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('advanced','tri_advanced')" class="navlnk"><?=gettext("Advanced");?></a></strong><br><span id="advanced" style="display: none">
-						<? endif;
-					}
-					
-					$header_displayed = true;			  
+
+					echo "\t\t\t<ul class=\"submenu\">\n";
 				}
+
+				if ($menu_title == 'Advanced') {
+					if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) {
+						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">";
+						echo "<img src=\"tri_o.gif\" id=\"tri_advanced\" width=\"14\" height=\"10\" border=\"0\"></a>";
+						echo "<a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">" . gettext("Advanced") . "</a>";
+						echo "<span id=\"advanced\">\n";
+					} else {
+						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">";
+						echo "<img src=\"tri_c.gif\" id=\"tri_advanced\" width=\"14\" height=\"10\" border=\"0\"></a>";
+						echo "<a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">" . gettext("Advanced") . "</a>";
+						echo "<span id=\"advanced\" style=\"display: none\">\n";
+					}
+
+					echo "\t\t\t<ul class=\"submenu\">\n";
+				}
+
+				$header_displayed = true;
 				
 			}
 			// $intersect may contain one or more links, but we only need the first one
@@ -102,7 +121,7 @@ function dynamic_menu(&$menu, $menu_title) {
 				// Below lines are spaced out oddly to help improve the look of resulting HTML code.
 				?>
 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=$link?>" class="navlnk"><?=$desc?></a><br><?
+				<li class=\"menuitem\"><a href="<?=$link?>" class="navlnk"><?=$desc?></a></li><?
 	   			// Only need the first one, so break out of foreach
 	   			break;
 			}
@@ -111,6 +130,9 @@ function dynamic_menu(&$menu, $menu_title) {
 	if ($menu_title == 'Advanced' || $menu_title == 'Diagnostics') {
 		?></span><?
 	}
+	echo "\n";
+	echo "\t\t\t</ul>\n";
+	echo "\t\t</li>\n";
 }
         
 // Check for issues when changing the web admin username
@@ -245,21 +267,27 @@ function showhide(tspan, tri) {
 -->
 </script>
 <table width="750" border="0" cellspacing="0" cellpadding="2">
-  <tr valign="bottom"> 
-    <td width="150" height="65" align="center" valign="middle"> <strong><a href="http://askozia.com/pbx" target="_blank"><img src="logo.png" width="150" height="46" border="0"></a></strong></td>
-    <td height="65" class="webgui_bg">
-	<table border="0" cellspacing="0" cellpadding="0" width="100%">
-	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
-	  <td align="right" valign="bottom">
-	  <span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
-	  </td></tr></table>
-	</td>
-  </tr>
-  <tr valign="top"> 
-    <td width="150" class="link_table_bg">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-        <tr>
-          <td><span class="navlnk"><?
+	<tr valign="bottom"> 
+		<td width="150" height="65" align="center" valign="middle">
+			<strong><a href="http://askozia.com/pbx" target="_blank"><img src="logo.png" width="150" height="46" border="0"></a></strong>
+		</td>
+		<td height="65" class="webgui_bg">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
+	  				<td align="right" valign="bottom">
+						<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr valign="top"> 
+		<td width="150" class="link_table_bg">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr>
+					<td>
+						<ul class="framemenu"><?
 
 		dynamic_menu($menu['System'], gettext('System'));
 		dynamic_menu($menu['Accounts'], gettext('Accounts'));
@@ -273,11 +301,15 @@ function showhide(tspan, tri) {
 		dynamic_menu($menu['Advanced'], 'Advanced');
 		dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 
-		?></span>
-            </td>
-        </tr></table></td>
-    <td width="600"><table width="100%" border="0" cellpadding="10" cellspacing="0">
-        <tr><td><?
+						?></ul>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width="600">
+			<table width="100%" border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td><?
 
 if (!$pgtitle_omit) {
 	?><p class="pgtitle"><?

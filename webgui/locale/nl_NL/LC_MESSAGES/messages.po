@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:10+0200\n"
+"POT-Creation-Date: 2009-02-11 15:46+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -665,7 +665,7 @@ msgid "Dialplan"
 msgstr "Belplan"
 
 msgid "Applications"
-msgstr "Programma's"
+msgstr "Programma&quot;s"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -2801,7 +2801,8 @@ msgstr "herstel een backup archief"
 msgid "download a backup archive"
 msgstr "download een backup archief"
 
-msgid "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Alle rechten voorbehouden."
 
 msgid "view license"

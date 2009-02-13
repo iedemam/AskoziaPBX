@@ -306,9 +306,11 @@ function display_gui_language_selector($current_language) {
 		"it_IT" => "Italiano",
 		"pl_PL" => "Język polski",
 		"nl_NL" => "Nederlands (60%)",
+		"jp_JP" => "日本語",
 //		"pt_BR" => "Português (0%)",
-		"fi_FI" => "Suomi"
+		"fi_FI" => "Suomi",
 //		"se_SE" => "Svenska (0%)",
+		"tr_TR" => "Türkçe"
 //		"ru_RU" => "Русский язык (0%)"
 	);
 

@@ -35,7 +35,7 @@ $pgtitle = array("License");
  
 ?>
 <?php include("fbegin.inc"); ?>
-	<p><strong>AskoziaPBX is Copyright &copy; 2007 - 2008 IKT (<a href="http://itison-ikt.de/en/startseite">http://www.itison-ikt.de</a>).<br>
+	<p><strong>Askozia&reg;PBX is Copyright &copy; 2007 - 2009 IKT (<a href="http://itison-ikt.de/en/startseite">http://www.itison-ikt.de</a>).<br>
 	All rights reserved.</strong></p>
 	<p> Redistribution and use in source and binary forms, with or without<br>
 	modification, are permitted provided that the following conditions 
@@ -59,10 +59,10 @@ $pgtitle = array("License");
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE<br>
 	POSSIBILITY OF SUCH DAMAGE</strong>.</p>
 	<hr size="1">
-	<p>AskoziaPBX is derived from m0n0wall (<a href="http://m0n0.ch/wall" target="_blank">http://m0n0.ch/wall</a>) (FreeBSD 6 branch, r195).<br>
+	<p>AskoziaPBX is derived from m0n0wall&reg; (<a href="http://m0n0.ch/wall" target="_blank">http://m0n0.ch/wall</a>) (FreeBSD 6 branch, r195).<br>
 	Many thanks to Manuel Kasper, Chris Buechler and all of the m0n0wall contributors.<br>
 	<br>
-	<strong>m0n0wall&reg; is Copyright &copy; 2002 - 2008 Manuel Kasper (<a href="mailto:mk@neon1.net">mk@neon1.net</a>).<br>
+	<strong>m0n0wall is Copyright &copy; 2002 - 2008 Manuel Kasper (<a href="mailto:mk@neon1.net">mk@neon1.net</a>).<br>
 	m0n0wall is a registered trademark of Manuel Kasper.<br>
 	All rights reserved.</strong></p>
 	<hr size="1">
@@ -138,7 +138,9 @@ $pgtitle = array("License");
 		<li>German - Andreas Jud, Helge Ulrich</li>
 		<li>Greek - Nassa Perra (<a href="http://allvoip.gr">allVoIP.gr</a>)</li>
 		<li>Italian - Roberto Zilli, Giovanni Vallesi</li>
+		<li>Japanese - Kenichi Fukaumi</li>
 		<li>Polish - Marcin Hańczaruk</li>
+		<li>Turkish - Akif Dinç</li>
 	</ul>
 	</p>
 	<hr size="1">
