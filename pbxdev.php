@@ -1691,6 +1691,7 @@ function _brand($image_name, $brand) {
 
 	_log("branding $image_name with $brand");
 	_exec("cp $branding_path/$brand/webgui/* tmp/stage/usr/local/www");
+	_exec("cp $branding_path/$brand/conf/config.*.xml tmp/stage/conf.default");
 
 }
 
