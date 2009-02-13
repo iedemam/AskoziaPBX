@@ -121,7 +121,7 @@ function dynamic_menu(&$menu, $menu_title) {
 				// Below lines are spaced out oddly to help improve the look of resulting HTML code.
 				?>
 
-				<li class=\"menuitem\"><a href="<?=$link?>" class="navlnk"><?=$desc?></a></li><?
+				<li class="submenuitem"><a href="<?=$link?>" class="navlnk"><?=$desc?></a></li><?
 	   			// Only need the first one, so break out of foreach
 	   			break;
 			}
@@ -266,7 +266,6 @@ function showhide(tspan, tri) {
 }
 -->
 </script>
-<table width="750" border="0" cellspacing="0" cellpadding="2">
 <? include("fbegin_header.inc"); ?>
 	<tr valign="top"> 
 		<td width="150" class="link_table_bg">
