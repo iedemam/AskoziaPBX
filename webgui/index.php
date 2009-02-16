@@ -33,7 +33,8 @@ $pgtitle_omit = true;
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("AskoziaPBX webGUI"));
+$product_name = system_get_product_name();
+$pgtitle = array(gettext("$product_name webGUI"));
 
 if ($_POST) {
 	$config['system']['notes'] = base64_encode($_POST['notes']);

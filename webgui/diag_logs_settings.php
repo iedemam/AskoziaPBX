@@ -164,7 +164,7 @@ if ($savemsg) display_info_box($savemsg);
 					<td width="78%">
 						<strong><span class="red"><?=gettext("Note:");?></span></strong>
 						<br>
-						<?=gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from AskoziaPBX.");?>
+						<?=gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from this system.");?>
 					</td>
 				</tr>
 			</table>

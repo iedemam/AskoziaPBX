@@ -181,14 +181,14 @@ if ($_POST) {
                   <td class="vtable">
                     <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
                     <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br>
-    <?=gettext("This will cause AskoziaPBX not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed.");?></span></td>
+    <?=gettext("This will cause the system not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed.");?></span></td>
 			    </tr>
 				<tr>
 	              <td valign="top" class="vncell"><?=gettext("Package version checks");?></td>
 	              <td class="vtable">
 	                <input name="disablepackagechecks" type="checkbox" id="disablepackagechecks" value="yes" <?php if ($pconfig['disablepackagechecks']) echo "checked"; ?>>
 	                <strong><?=gettext("Disable package version checks");?></strong><span class="vexpl"><br>
-	    <?=gettext("This will cause AskoziaPBX not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed.");?></span></td>
+	    <?=gettext("This will cause the system not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed.");?></span></td>
 				</tr>
 <?php if ($g['platform'] == "generic-pc"): ?>
 				<tr> 

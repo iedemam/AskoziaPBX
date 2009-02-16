@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 15:46+0100\n"
+"POT-Creation-Date: 2009-02-14 15:38+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -210,8 +210,9 @@ msgstr "Laiteohjelmiston version tarkistus"
 msgid "Disable firmware version check"
 msgstr "Poista laiteohjelmiston version tarkistus käytöstä"
 
+#, fuzzy
 msgid ""
-"This will cause AskoziaPBX not to check for newer firmware versions when the "
+"This will cause the system not to check for newer firmware versions when the "
 "<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
 "AskoziaPBX ei enää tarkista jos uusi laiteohjelmistopäivitys on saatavilla "
@@ -224,8 +225,9 @@ msgstr "Pakettien version tarkistus"
 msgid "Disable package version checks"
 msgstr "Poista pakettien version tarkistus käytöstä"
 
+#, fuzzy
 msgid ""
-"This will cause AskoziaPBX not to check for package updates when the <a href="
+"This will cause the system not to check for package updates when the <a href="
 "\"system_packages.php\">System: Packages</a> page is viewed."
 msgstr ""
 "AskoziaPBX ei enää tarkista jos uudempi pakettiversio on saatavilla kun <a "
@@ -283,7 +285,8 @@ msgstr "Jitterbufferi"
 msgid "Enable"
 msgstr "Mahdollista"
 
-msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
+#, fuzzy
+msgid "Enable Jitterbuffer on IAX connections terminated by the system."
 msgstr ""
 "Mahdollista Jitterbufferi IAX yhteyksiin jotka AskoziaPBX on päättänyt."
 
@@ -341,7 +344,8 @@ msgstr "lisää hallinnollinen käyttäjä"
 msgid "Edit User"
 msgstr "Muokkaa Käyttäjää"
 
-msgid "The username of \"admin\" is already used internally by AskoziaPBX."
+#, fuzzy
+msgid "The username of \"admin\" is already used internally by the system."
 msgstr "Käyttäjänimi \"admin\" on jo sisäisesti käytössä."
 
 msgid "Secret"
@@ -591,10 +595,11 @@ msgstr "pbx tapahtumat"
 msgid "call detail records"
 msgstr "puheluiden yksityiskohdat"
 
+#, fuzzy
 msgid ""
 "syslog sends UDP datagrams to port 514 on the specified remote syslog "
 "server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from AskoziaPBX."
+"messages from this system."
 msgstr ""
 "syslog lähettää UDP datagrammeja porttiin 514 syslog serverilla. Varmista "
 "että serveri (tarkemmin syslogd) hyväksyy syslog viestejä AskoziaPBX:ltä."
@@ -654,9 +659,10 @@ msgstr "Soittosuunnitelma"
 msgid "Applications"
 msgstr "Sovellukset"
 
+#, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to AskoziaPBX. These applications can then be "
+"applications can be added to the system. These applications can then be "
 "dialed via their defined extensions or used as a destination for incoming "
 "calls from Providers."
 msgstr ""
@@ -892,9 +898,6 @@ msgstr "25%"
 
 msgid "Cannot get CPU load"
 msgstr "Prosessorin rasitus ei ole saatavissa"
-
-msgid "AskoziaPBX webGUI"
-msgstr "AskoziaPBX verkkokäyttöliittymä"
 
 msgid "System Information"
 msgstr "Järjestelmän Tiedot"
@@ -1141,10 +1144,11 @@ msgstr "Mahdollista Äänestystila"
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Poista äänestystila käytöstä. (joskus pakollinen vanhoille korteille)"
 
+#, fuzzy
 msgid ""
 "The settings on this page are critical to ensuring connectivity to VoIP "
 "Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
+"calls from connecting. If this system is behind a NAT, by default the system "
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
@@ -1249,8 +1253,8 @@ msgstr "Nämä tiedot päivittää:"
 msgid "My Router"
 msgstr "Reitittimeni"
 
-msgid "AskoziaPBX"
-msgstr "AskoziaPBX"
+msgid "This PBX"
+msgstr ""
 
 msgid "Dynamic DNS Client"
 msgstr "Dynaaminen DNS Klientti"
@@ -1283,8 +1287,9 @@ msgstr "vaihda IP osoite tälle tietokoneelle"
 msgid "access the webGUI with the new IP address"
 msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
 
+#, fuzzy
 msgid ""
-"AskoziaPBX automatically allocates leftover space for permanent storage. "
+"The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
 msgstr ""
 "AskoziaPBX varaa automaattisesti ylimääräiseksi jäänyttä tilaa jatkuvaan "
@@ -1325,10 +1330,11 @@ msgstr "Muokkaa Levyä"
 msgid "descriptive name"
 msgstr "kuvaileva nimi"
 
+#, fuzzy
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that "
-"AskoziaPBX is connected to."
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
 msgstr ""
 "Jos yhteensopiva w-lan kortti on läsnä, sitä voi konfiguroida niin että se "
 "toimii tukiasemana. Se tulee olemaan sillattuna langalliseen verkkoon johon "
@@ -2563,9 +2569,10 @@ msgstr "oleta NAT tilaa mutta älä lähetä rport"
 msgid "NAT"
 msgstr "NAT"
 
+#, fuzzy
 msgid ""
-"Is there a NATing device between AskoziaPBX and this account? Setting this "
-"to 'yes' will work in most cases. The options 'never' and 'route' are only "
+"Is there a NATing device between the pbx and this account? Setting this to "
+"'yes' will work in most cases. The options 'never' and 'route' are only "
 "rarely used for certain buggy SIP phones."
 msgstr ""
 "Löytyykö NAT laite AskoziaPBX:än ja tämän tilin välissä? Useimissa "
@@ -2757,16 +2764,17 @@ msgstr ""
 msgid "Logic"
 msgstr "Logiikka"
 
+#, fuzzy
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
 "()\n"
 " 2,Echo()\n"
 " 3,Hangup()\n"
-" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the "
+" </pre> <p>Programming applications for the PBX requires knowledge of the "
 "Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an AskoziaPBX install may be rendered useless by "
-"faulty application logic. A reference of applications, functions and phones "
-"is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"possibility remains that an install may be rendered useless by faulty "
+"application logic. A reference of applications, functions and phones is "
+"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
 "target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
 "Anna sovelluksen logiikka, yksi komento per linja kuten alla: <br> <pre> 1,"
@@ -2878,9 +2886,6 @@ msgstr "Ping/Traceroute"
 msgid "ARP Table"
 msgstr "ARP Taulukko"
 
-msgid "webGUI Configuration"
-msgstr "Verkkokäyttöliittymän Konfigurointi"
-
 msgid "Live Stats"
 msgstr "Tilastot Suorana"
 
@@ -2910,6 +2915,9 @@ msgstr "palauta varmuuskopiosta"
 
 msgid "download a backup archive"
 msgstr "Lataa varmuuskopio"
+
+msgid "webGUI Configuration"
+msgstr "Verkkokäyttöliittymän Konfigurointi"
 
 #, fuzzy
 msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
@@ -3308,3 +3316,9 @@ msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Kohta '%s' on määritettävä."
+
+#~ msgid "AskoziaPBX webGUI"
+#~ msgstr "AskoziaPBX verkkokäyttöliittymä"
+
+#~ msgid "AskoziaPBX"
+#~ msgstr "AskoziaPBX"

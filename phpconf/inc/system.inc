@@ -716,4 +716,14 @@ function system_setup_ultmp() {
 	mwexec("rm -rf /ultmp/*");
 }
 
+function system_get_product_name() {
+	global $g;
+
+	if (file_exists("{$g['etc_path']}/brand.product")) {
+		return chop(file_get_contents("{$g['etc_path']}/brand.product"));
+	} else {
+		return "AskoziaPBX";
+	}
+}
+
 ?>

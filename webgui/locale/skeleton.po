@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 15:46+0100\n"
+"POT-Creation-Date: 2009-02-14 15:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Disable firmware version check"
 msgstr ""
 
-msgid "This will cause AskoziaPBX not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+msgid "This will cause the system not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
 
 msgid "Package version checks"
@@ -199,7 +199,7 @@ msgstr ""
 msgid "Disable package version checks"
 msgstr ""
 
-msgid "This will cause AskoziaPBX not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed."
+msgid "This will cause the system not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed."
 msgstr ""
 
 msgid "Hard disk standby time"
@@ -250,7 +250,7 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
+msgid "Enable Jitterbuffer on IAX connections terminated by the system."
 msgstr ""
 
 msgid "Force"
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
-msgid "The username of \"admin\" is already used internally by AskoziaPBX."
+msgid "The username of \"admin\" is already used internally by the system."
 msgstr ""
 
 msgid "Secret"
@@ -540,7 +540,7 @@ msgstr ""
 msgid "call detail records"
 msgstr ""
 
-msgid "syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from AskoziaPBX."
+msgid "syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from this system."
 msgstr ""
 
 msgid "This page allows direct execution of commands on the Asterisk console. Execute \"help\" to see a list of possible commands."
@@ -590,7 +590,7 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to AskoziaPBX. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
+msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to the system. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
 msgstr ""
 
 msgid "descr"
@@ -791,9 +791,6 @@ msgstr ""
 msgid "Cannot get CPU load"
 msgstr ""
 
-msgid "AskoziaPBX webGUI"
-msgstr ""
-
 msgid "System Information"
 msgstr ""
 
@@ -967,7 +964,7 @@ msgstr ""
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr ""
 
-msgid "The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default AskoziaPBX requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
+msgid "The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default the system requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
 
 msgid "A valid MAC address must be specified."
@@ -1042,7 +1039,7 @@ msgstr ""
 msgid "My Router"
 msgstr ""
 
-msgid "AskoziaPBX"
+msgid "This PBX"
 msgstr ""
 
 msgid "Dynamic DNS Client"
@@ -1069,7 +1066,7 @@ msgstr ""
 msgid "access the webGUI with the new IP address"
 msgstr ""
 
-msgid "AskoziaPBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space."
+msgid "The PBX automatically allocates leftover space for permanent storage. Packages to extend the system's functionality can be installed in this space."
 msgstr ""
 
 msgid "The system storage media is not large enough to install packages."
@@ -1100,7 +1097,7 @@ msgstr ""
 msgid "descriptive name"
 msgstr ""
 
-msgid "If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that AskoziaPBX is connected to."
+msgid "If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that the PBX is connected to."
 msgstr ""
 
 msgid "SSID,Channel"
@@ -2101,7 +2098,7 @@ msgstr ""
 msgid "NAT"
 msgstr ""
 
-msgid "Is there a NATing device between AskoziaPBX and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the pbx and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones."
 msgstr ""
 
 msgid "indefinitely"
@@ -2240,7 +2237,7 @@ msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n"
 " 2,Echo()\n"
 " 3,Hangup()\n"
-" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"
+" </pre> <p>Programming applications for the PBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
 
 msgid "Advanced Settings"
@@ -2318,9 +2315,6 @@ msgstr ""
 msgid "ARP Table"
 msgstr ""
 
-msgid "webGUI Configuration"
-msgstr ""
-
 msgid "Live Stats"
 msgstr ""
 
@@ -2349,6 +2343,9 @@ msgid "restore a backup archive"
 msgstr ""
 
 msgid "download a backup archive"
+msgstr ""
+
+msgid "webGUI Configuration"
 msgstr ""
 
 msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."

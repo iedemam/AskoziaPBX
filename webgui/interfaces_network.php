@@ -32,7 +32,7 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Network"));
-$pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default AskoziaPBX requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
+$pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default the system requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
 
 $lancfg = &$config['interfaces']['lan'];
 
@@ -323,7 +323,7 @@ function lan_if_change() {
 						<?php if ($pconfig['hostnameupdatesrc'] == "router") echo "checked"; ?>><?=gettext("My Router");?>
 						&nbsp;&nbsp;
 						<input name="hostnameupdatesrc" id="hostnameupdatesrcpbx" type="radio" value="pbx"
-						<?php if ($pconfig['hostnameupdatesrc'] == "pbx") echo "checked"; ?>><?=gettext("AskoziaPBX");?>
+						<?php if ($pconfig['hostnameupdatesrc'] == "pbx") echo "checked"; ?>><?=gettext("This PBX");?>
 					</td>
 				</tr>
 				<tr> 

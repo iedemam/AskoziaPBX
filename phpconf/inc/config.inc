@@ -44,6 +44,12 @@ if (file_exists("{$g['etc_path']}/platform")) {
 	$g['platform'] = $g['fullplatform'] = "unknown";
 }
 
+if (file_exists("{$g['etc_path']}/brand.product")) {
+	$product_name = chop(file_get_contents("{$g['etc_path']}/brand.product"));
+} else {
+	$product_name = "AskoziaPBX";
+}
+
 if ($g['booting']) {
 	/* find the device where config.xml resides and write out an fstab */
 	unset($cfgdevice);
@@ -116,7 +122,7 @@ EOD;
 *******************************************************************************
 * FATAL ERROR                                                                 *
 * The device that contains the configuration file (config.xml) could not be   *
-* found. AskoziaPBX cannot continue booting.                                  *
+* found. $product_name cannot continue booting.                                  *
 *******************************************************************************
 
 
@@ -168,7 +174,7 @@ if (!$noparseconfig) {
 					
 					echo "No XML configuration file found - using factory defaults.\n";
 				} else {
-					echo "XML configuration file not found. AskoziaPBX cannot continue booting.\n"; 
+					echo "XML configuration file not found. $product_name cannot continue booting.\n"; 
 					mwexec("/sbin/halt");
 					exit;
 				}
@@ -188,9 +194,9 @@ if (!$noparseconfig) {
 *******************************************************************************
 * WARNING!                                                                    *
 * The current configuration has been created with a newer version of          *
-* AskoziaPBX than this one! This can lead to serious misbehavior and even     *
+* $product_name than this one! This can lead to serious misbehavior and even     *
 * security holes! You are urged to either upgrade to a newer version of       *
-* AskoziaPBX or revert to the default configuration immediately!              *
+* $product_name or revert to the default configuration immediately!              *
 *******************************************************************************
 
 

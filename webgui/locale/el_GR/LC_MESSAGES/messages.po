@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 15:46+0100\n"
+"POT-Creation-Date: 2009-02-14 15:38+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,8 +213,9 @@ msgstr "Έλεγχος έκδοσης firmware"
 msgid "Disable firmware version check"
 msgstr "Απενεργοποίηση ελέγχων firmware"
 
+#, fuzzy
 msgid ""
-"This will cause AskoziaPBX not to check for newer firmware versions when the "
+"This will cause the system not to check for newer firmware versions when the "
 "<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
 "Αποτέλεσμα αυτής της επιλογής θα είναι να μην γίνονται έλεγχοι για νέες "
@@ -227,8 +228,9 @@ msgstr "Έλεγχοι εκδόσεων πακέτων"
 msgid "Disable package version checks"
 msgstr "Απενεργοποίηση των ελέγχων εκδόσεων πακέτων"
 
+#, fuzzy
 msgid ""
-"This will cause AskoziaPBX not to check for package updates when the <a href="
+"This will cause the system not to check for package updates when the <a href="
 "\"system_packages.php\">System: Packages</a> page is viewed."
 msgstr ""
 "Αποτέλεσμα αυτής της επιλογής θα είναι να μην γίνονται έλεγχοι για νέες "
@@ -287,7 +289,8 @@ msgstr "Jitterbuffer"
 msgid "Enable"
 msgstr "Ενεργοποίηση"
 
-msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
+#, fuzzy
+msgid "Enable Jitterbuffer on IAX connections terminated by the system."
 msgstr ""
 "Ενεργοποίηση του Jitterbuffer σε συνδέσεις IAX που τερματίζονται στο "
 "τηλεφωνικό κέντρο."
@@ -346,7 +349,8 @@ msgstr "προσθήκη διαχειριστή"
 msgid "Edit User"
 msgstr "Επεξεργασία χρήστη"
 
-msgid "The username of \"admin\" is already used internally by AskoziaPBX."
+#, fuzzy
+msgid "The username of \"admin\" is already used internally by the system."
 msgstr ""
 "Το όνομα \"admin\" χρησιμοποιείται ήδη εσωτερικά από το τηλεφωνικό κέντρο."
 
@@ -603,10 +607,11 @@ msgstr "γεγονότα τηλεφωνικού κέντρου"
 msgid "call detail records"
 msgstr "εγγραφές κλήσεων"
 
+#, fuzzy
 msgid ""
 "syslog sends UDP datagrams to port 514 on the specified remote syslog "
 "server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from AskoziaPBX."
+"messages from this system."
 msgstr ""
 "Το syslog στέλνει UDP datagrams στη θύρα 514 στον απομακρυσμένο διακομιστή "
 "syslog. Βεβαιωθείτε ότι ο απομακρυσμένος διακομιστής syslog μπορεί να δεχτεί "
@@ -668,9 +673,10 @@ msgstr "Πλάνο κλήσεων"
 msgid "Applications"
 msgstr "Εφαρμογές"
 
+#, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to AskoziaPBX. These applications can then be "
+"applications can be added to the system. These applications can then be "
 "dialed via their defined extensions or used as a destination for incoming "
 "calls from Providers."
 msgstr ""
@@ -921,9 +927,6 @@ msgstr "25%"
 msgid "Cannot get CPU load"
 msgstr "Αδυναμία ανάγνωσης του φόρτου της CPU"
 
-msgid "AskoziaPBX webGUI"
-msgstr "GUI τηλεφωνικού κέντρου"
-
 msgid "System Information"
 msgstr "Πληροφορίες συστήματος"
 
@@ -1171,10 +1174,11 @@ msgstr "Ενεργοποίηση polling"
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Ενεργοποίηση polling (μερικές φορές χρειάζεται για παλιότερες κάρτες)."
 
+#, fuzzy
 msgid ""
 "The settings on this page are critical to ensuring connectivity to VoIP "
 "Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
+"calls from connecting. If this system is behind a NAT, by default the system "
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
@@ -1286,8 +1290,8 @@ msgstr "Αυτές οι πληροφορίες πρέπει να ενημερώ�
 msgid "My Router"
 msgstr "Τον router μου"
 
-msgid "AskoziaPBX"
-msgstr "Το τηλεφωνικό κέντρο"
+msgid "This PBX"
+msgstr ""
 
 msgid "Dynamic DNS Client"
 msgstr "Πελάτης δυναμικού DNS"
@@ -1321,8 +1325,9 @@ msgstr "μεταβολή της διεύθυνσης IP του υπολογισ�
 msgid "access the webGUI with the new IP address"
 msgstr "πρόσβαση στο περιβάλλον διαχείρισης με τη νέα διεύθυνση IP"
 
+#, fuzzy
 msgid ""
-"AskoziaPBX automatically allocates leftover space for permanent storage. "
+"The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
 msgstr ""
 "Το σύστημα επιμερίζει αυτόματα τον χώρο που απομένει για μόνιμη αποθήκευση. "
@@ -1363,10 +1368,11 @@ msgstr "Επεξεργασία δίσκου"
 msgid "descriptive name"
 msgstr "επεξηγηματικό όνομα"
 
+#, fuzzy
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that "
-"AskoziaPBX is connected to."
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
 msgstr ""
 "Αν υπάρχει συμβατή ασύρματη κάρτα στο σύστημά σας, τότε το σύστημά σας "
 "μπορεί να χρησιμοποιηθεί και σαν ασύρματο σημείο πρόσβασης. Το ασύρματο "
@@ -2681,9 +2687,10 @@ msgstr "υπόθεση NAT χωρίς αποστολή rport"
 msgid "NAT"
 msgstr "NAT"
 
+#, fuzzy
 msgid ""
-"Is there a NATing device between AskoziaPBX and this account? Setting this "
-"to 'yes' will work in most cases. The options 'never' and 'route' are only "
+"Is there a NATing device between the pbx and this account? Setting this to "
+"'yes' will work in most cases. The options 'never' and 'route' are only "
 "rarely used for certain buggy SIP phones."
 msgstr ""
 "Υπάρχει συσκευή NAT μεταξύ του τηλεφωνικού σας κέντρου και αυτού του "
@@ -2887,16 +2894,17 @@ msgstr ""
 msgid "Logic"
 msgstr "Λογική"
 
+#, fuzzy
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
 "()\n"
 " 2,Echo()\n"
 " 3,Hangup()\n"
-" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the "
+" </pre> <p>Programming applications for the PBX requires knowledge of the "
 "Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an AskoziaPBX install may be rendered useless by "
-"faulty application logic. A reference of applications, functions and phones "
-"is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"possibility remains that an install may be rendered useless by faulty "
+"application logic. A reference of applications, functions and phones is "
+"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
 "target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
 "Εισάγετε τη λογική της εφαρμογής, με μία εντολή ανά γραμμή, όπως φαίνεται "
@@ -3014,9 +3022,6 @@ msgstr "Ping/Traceroute"
 msgid "ARP Table"
 msgstr "Πίνακας ARP"
 
-msgid "webGUI Configuration"
-msgstr "Διαχείριση τηλεφωνικού κέντρου"
-
 msgid "Live Stats"
 msgstr "Ζωντανά στατιστικά"
 
@@ -3046,6 +3051,9 @@ msgstr "επαναφορά ενός αντιγράφου ασφαλείας"
 
 msgid "download a backup archive"
 msgstr "λήψη ενός αντιγράφου ασφαλείας"
+
+msgid "webGUI Configuration"
+msgstr "Διαχείριση τηλεφωνικού κέντρου"
 
 #, fuzzy
 msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
@@ -3449,3 +3457,9 @@ msgstr "Το πεδίο '%s' περιέχει μη έγκυρους χαρακτ
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Το πεδίο '%s' είναι αναγκαίο."
+
+#~ msgid "AskoziaPBX webGUI"
+#~ msgstr "GUI τηλεφωνικού κέντρου"
+
+#~ msgid "AskoziaPBX"
+#~ msgstr "Το τηλεφωνικό κέντρο"

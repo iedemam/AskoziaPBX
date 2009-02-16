@@ -38,8 +38,8 @@ while : ; do
 echo
 echo
 echo
-echo "AskoziaPBX console setup"
-echo "************************"
+echo "PBX console setup"
+echo "*****************"
 echo "1) Interfaces: assign network port"
 echo "2) Set up LAN IP address"
 echo "3) Reset webGUI password"

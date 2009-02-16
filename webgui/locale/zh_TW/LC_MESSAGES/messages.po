@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-11 15:46+0100\n"
+"POT-Creation-Date: 2009-02-14 15:38+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -201,8 +201,9 @@ msgstr "固件版本檢查"
 msgid "Disable firmware version check"
 msgstr "禁止固件版本檢查"
 
+#, fuzzy
 msgid ""
-"This will cause AskoziaPBX not to check for newer firmware versions when the "
+"This will cause the system not to check for newer firmware versions when the "
 "<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
 msgstr ""
 "這會使AskoziaPBX不去檢查新的固件版本當<a href=\"system_firmware.php\">系統："
@@ -214,8 +215,9 @@ msgstr "軟體套件版本檢查"
 msgid "Disable package version checks"
 msgstr "禁止軟體套件版本檢查"
 
+#, fuzzy
 msgid ""
-"This will cause AskoziaPBX not to check for package updates when the <a href="
+"This will cause the system not to check for package updates when the <a href="
 "\"system_packages.php\">System: Packages</a> page is viewed."
 msgstr ""
 "這會使AskoziaPBX不去檢查軟體套件的版本當<a href=\"system_packages.php\">系"
@@ -271,7 +273,8 @@ msgstr "時基誤差(Jitter)緩存"
 msgid "Enable"
 msgstr "允許"
 
-msgid "Enable Jitterbuffer on IAX connections terminated by AskoziaPBX."
+#, fuzzy
+msgid "Enable Jitterbuffer on IAX connections terminated by the system."
 msgstr "允許IAX連接上的時基誤差(Jitter)緩存被AskoziaPBX终止。"
 
 msgid "Force"
@@ -328,7 +331,8 @@ msgstr "添加管理用戶"
 msgid "Edit User"
 msgstr "編輯用戶"
 
-msgid "The username of \"admin\" is already used internally by AskoziaPBX."
+#, fuzzy
+msgid "The username of \"admin\" is already used internally by the system."
 msgstr "用戶名\"admin\"已經被AskoziaPBX內部使用"
 
 msgid "Secret"
@@ -569,10 +573,11 @@ msgstr "pbx事件"
 msgid "call detail records"
 msgstr "通話詳情記錄"
 
+#, fuzzy
 msgid ""
 "syslog sends UDP datagrams to port 514 on the specified remote syslog "
 "server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from AskoziaPBX."
+"messages from this system."
 msgstr ""
 "系統日誌通過UDP數據埠514發送到指定的遠程系統日誌伺服器。請確認遠程系統日誌伺"
 "服器的設置能夠從AskoziaPBX接收日誌資料。"
@@ -630,9 +635,10 @@ msgstr "撥號計劃"
 msgid "Applications"
 msgstr "應用"
 
+#, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to AskoziaPBX. These applications can then be "
+"applications can be added to the system. These applications can then be "
 "dialed via their defined extensions or used as a destination for incoming "
 "calls from Providers."
 msgstr ""
@@ -857,9 +863,6 @@ msgstr "25%"
 
 msgid "Cannot get CPU load"
 msgstr "CPU不能裝載"
-
-msgid "AskoziaPBX webGUI"
-msgstr "AskoziaPBX 網頁界面"
 
 msgid "System Information"
 msgstr "系統信息"
@@ -1086,10 +1089,11 @@ msgstr "允許探詢模式"
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "允許探詢模式（對一些老卡有時是必要的）"
 
+#, fuzzy
 msgid ""
 "The settings on this page are critical to ensuring connectivity to VoIP "
 "Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default AskoziaPBX "
+"calls from connecting. If this system is behind a NAT, by default the system "
 "requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
 "(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
@@ -1184,8 +1188,8 @@ msgstr "這個信息的更新應該由："
 msgid "My Router"
 msgstr "我的路由"
 
-msgid "AskoziaPBX"
-msgstr "AskoziaPBX"
+msgid "This PBX"
+msgstr ""
 
 msgid "Dynamic DNS Client"
 msgstr "動態DNS客戶端"
@@ -1216,8 +1220,9 @@ msgstr "改變您計算機的IP地址"
 msgid "access the webGUI with the new IP address"
 msgstr "用一個新IP地址訪問網頁界面"
 
+#, fuzzy
 msgid ""
-"AskoziaPBX automatically allocates leftover space for permanent storage. "
+"The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
 msgstr ""
 "AskoziaPBX 會自動分配剩余的空間用作永久存儲。系統擴展包可以被安裝到這個空間。"
@@ -1255,10 +1260,11 @@ msgstr "編輯磁盤"
 msgid "descriptive name"
 msgstr "描述名"
 
+#, fuzzy
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that "
-"AskoziaPBX is connected to."
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
 msgstr ""
 "如果在現有的系統中有一個相容的無線網卡，那麽他可以被設定成為一個接入點。它會"
 "被橋接到AskoziaPBX連接的有線網路。"
@@ -2435,9 +2441,10 @@ msgstr "承擔NAT模式但不發送rport"
 msgid "NAT"
 msgstr "NAT"
 
+#, fuzzy
 msgid ""
-"Is there a NATing device between AskoziaPBX and this account? Setting this "
-"to 'yes' will work in most cases. The options 'never' and 'route' are only "
+"Is there a NATing device between the pbx and this account? Setting this to "
+"'yes' will work in most cases. The options 'never' and 'route' are only "
 "rarely used for certain buggy SIP phones."
 msgstr ""
 "是否有一個NATing設備在這個帳戶和askoziaPBX之間？大多情況下設置此為'是'會有"
@@ -2616,16 +2623,17 @@ msgstr "電話狀態被設置到'忙'及'n'並行呼叫(預設：1)。"
 msgid "Logic"
 msgstr "邏輯"
 
+#, fuzzy
 msgid ""
 "Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
 "()\n"
 " 2,Echo()\n"
 " 3,Hangup()\n"
-" </pre> <p>Programming applications for AskoziaPBX requires knowledge of the "
+" </pre> <p>Programming applications for the PBX requires knowledge of the "
 "Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an AskoziaPBX install may be rendered useless by "
-"faulty application logic. A reference of applications, functions and phones "
-"is available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"possibility remains that an install may be rendered useless by faulty "
+"application logic. A reference of applications, functions and phones is "
+"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
 "target=\"_blank\">Element Library</a></strong>.</p>"
 msgstr ""
 "輸入應用的邏輯，一行一個命令如： <br> <pre> 1,Answer()\n"
@@ -2730,9 +2738,6 @@ msgstr "Ping/Traceroute"
 msgid "ARP Table"
 msgstr "ARP表"
 
-msgid "webGUI Configuration"
-msgstr "網頁設置界面"
-
 msgid "Live Stats"
 msgstr "實時統計"
 
@@ -2762,6 +2767,9 @@ msgstr "恢復一個備份的文檔"
 
 msgid "download a backup archive"
 msgstr "下載備份文檔"
+
+msgid "webGUI Configuration"
+msgstr "網頁設置界面"
 
 #, fuzzy
 msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
@@ -3165,3 +3173,9 @@ msgstr "'%s' 段含有無效字符。"
 #, php-format
 msgid "The field '%s' is required."
 msgstr "'%s' 區域需要填入。 "
+
+#~ msgid "AskoziaPBX webGUI"
+#~ msgstr "AskoziaPBX 網頁界面"
+
+#~ msgid "AskoziaPBX"
+#~ msgstr "AskoziaPBX"

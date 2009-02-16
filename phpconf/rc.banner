@@ -35,15 +35,16 @@
 
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
+	$product_name = system_get_product_name();
 	
 	echo <<<EOD
 
 
-*** This is AskoziaPBX, version {$version}
+*** This is {$product_name}, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
-    AskoziaPBX is Copyright (C) 2007-2008 IKT. All rights reserved.
-    m0n0wall base Copyright (C) 2002-2008 Manuel Kasper. All rights reserved.
-    Visit http://askozia.com/pbx for updates.
+    AskoziaPBX is Copyright (C) 2007-2009 IKT. All rights reserved.
+    m0n0wall base Copyright (C) 2002-2009 Manuel Kasper. All rights reserved.
+    
     
     LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}
     

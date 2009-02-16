@@ -52,6 +52,8 @@ function extensions_conf_generate() {
 	$isdn_te_interfaces = isdn_get_te_interfaces();
 	$vmconfig = $config['voicemail'];
 
+	$product_name = system_get_product_name();
+
 	$conf = <<<EOD
 
 [macro-main];
@@ -110,7 +112,7 @@ exten => mailnotification,n,System(touch $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "date: `date`" > $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "from: AskoziaPBX Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "from: $product_name Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})

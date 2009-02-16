@@ -68,7 +68,7 @@ if ($_POST) {
 	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['username'] == "admin") {
-		$input_errors[] = gettext("The username of \"admin\" is already used internally by AskoziaPBX.");
+		$input_errors[] = gettext("The username of \"admin\" is already used internally by the system.");
 	}
 	// XXX : check doubled username
 

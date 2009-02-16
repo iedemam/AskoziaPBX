@@ -1564,7 +1564,7 @@ function package_rootfs($image_name) {
 	}
 }
 
-function package_cd($image_name) {
+function package_cd($image_name, $brand) {
 	global $dirs, $versions, $mfsroot_pad, $target_os;
 
 	if ($target_os == "freebsd") {
@@ -1594,6 +1594,9 @@ function package_cd($image_name) {
 			"$image_name/pointstaging/wcfxo.ko $image_name/pointstaging/wcfxs.ko " .
 			"$image_name/pointstaging/zaptel.ko $image_name/pointstaging/ztdummy.ko ". 
 			"tmp/stage/boot/kernel/");
+
+		// ...branding
+		_brand($image_name, $brand);
 
 		// ...stamps
 		_exec("echo \"$image_version\" > tmp/stage/etc/version");
@@ -1626,7 +1629,11 @@ function package_cd($image_name) {
 		_exec("mkdir tmp/cdroot");
 		_exec("cp {$dirs['mfsroots']}/$platform-$image_version.gz tmp/cdroot/mfsroot.gz");
 		_exec("cp $image_name/pointstaging/kernel_$kernel.gz tmp/cdroot/kernel.gz");
-		_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/cdroot/firmware.img");
+		if ($brand != "default") {
+			_exec("cp {$dirs['images']}/$brand-pbx-generic-pc-$image_version.img tmp/cdroot/firmware.img");
+		} else {
+			_exec("cp {$dirs['images']}/pbx-generic-pc-$image_version.img tmp/cdroot/firmware.img");
+		}
 
 		_exec("mkdir tmp/cdroot/boot");
 		_exec("mkdir tmp/cdroot/boot/kernel");
@@ -1636,11 +1643,21 @@ function package_cd($image_name) {
 		_exec("cp {$dirs['boot']}/$platform/loader.rc tmp/cdroot/boot/");
 		_exec("cp $image_name/pointstaging/acpi.ko tmp/cdroot/boot/kernel");
 
-		_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"AskoziaPBX CD-ROM image\" ".
-			"-c \"boot/boot.catalog\" -d -r -publisher \"askozia.com\" ".
-			"-p \"AskoziaPBX\" -V \"AskoziaPBXCD\" -o \"AskoziaPBX.iso\" tmp/cdroot/");
+		$cdname = "AskoziaPBX";
+		if ($brand != "default") {
+			$cdname = $brand;
+		}
 
-		_exec("mv AskoziaPBX.iso {$dirs['images']}/pbx-cdrom-$image_version.iso");
+		_exec("mkisofs -b \"boot/cdboot\" -no-emul-boot -A \"$cdname CD-ROM image\" ".
+			"-c \"boot/boot.catalog\" -d -r -publisher \"$cdname\" ".
+			"-p \"$cdname\" -V \"$cdname\" -o \"cd.iso\" tmp/cdroot/");
+
+		// rename
+		$cur_name = "pbx-cdrom-$image_version.iso";
+		if ($brand != "default") {
+			$cur_name = "$brand-$cur_name";
+		}
+		_exec("mv cd.iso {$dirs['images']}/$cur_name");
 
 		_exec("rm -rf tmp");
 
@@ -1649,12 +1666,12 @@ function package_cd($image_name) {
 	}
 }
 
-function release($name) {
+function release($name, $brand) {
 	global $platforms, $dirs, $target_os;
 
 	if ($target_os == "freebsd") {
 		package_rootfs($name);
-		package_cd($name);
+		package_cd($name, $brand);
 
 		// signing
 		foreach($platforms as $platform) {
@@ -1690,6 +1707,7 @@ function _brand($image_name, $brand) {
 	}
 
 	_log("branding $image_name with $brand");
+	_exec("cp $branding_path/$brand/strings/* tmp/stage/etc");
 	_exec("cp $branding_path/$brand/webgui/* tmp/stage/usr/local/www");
 	_exec("cp $branding_path/$brand/conf/config.*.xml tmp/stage/conf.default");
 
@@ -1859,7 +1877,7 @@ if ($argv[1] == "prepare") {
 			package($platform, $image_name, $brand);			
 		}
 		package_rootfs($image_name);
-		package_cd($image_name);
+		package_cd($image_name, $brand);
 
 	// packaging the root file system distribution
 	} else if ($argv[2] == "rootfs") {
@@ -1867,7 +1885,7 @@ if ($argv[1] == "prepare") {
 
 	// packaging the cd iso
 	} else if ($argv[2] == "cd") {
-		package_cd($image_name);
+		package_cd($image_name, $brand);
 
 	// check the specific platform before attempting to package
 	} else if (in_array($argv[2], $platforms)) {
@@ -1887,7 +1905,7 @@ if ($argv[1] == "prepare") {
 	foreach($platforms as $platform) {
 		package($platform, $image_name, $brand);			
 	}
-	release($image_name);
+	release($image_name, $brand);
 
 // handle all two argument commands
 //

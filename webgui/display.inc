@@ -528,7 +528,7 @@ function display_natmode_selector($current_natmode, $colspan) {
 			><?=$natdesc;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl"><?=gettext("Is there a NATing device between AskoziaPBX and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones.");?></span>
+			<br><span class="vexpl"><?=gettext("Is there a NATing device between the pbx and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones.");?></span>
 		</td>
 	</tr><?
 }
@@ -858,7 +858,7 @@ function display_application_logic_editor($current_appcommands, $colspan, $idpre
 
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext("Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n 2,Echo()\n 3,Hangup()\n </pre> <p>Programming applications for AskoziaPBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an AskoziaPBX install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"); ?></span><?
+			?><br><span class="vexpl"><?=gettext("Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n 2,Echo()\n 3,Hangup()\n </pre> <p>Programming applications for the PBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"); ?></span><?
 		}
 
 		?></td>

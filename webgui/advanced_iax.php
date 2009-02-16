@@ -129,7 +129,7 @@ if ($savemsg) display_info_box($savemsg);
 		<tr> 
 			<td valign="top" class="vncell"><?=gettext("Enable");?></td>
 			<td class="vtable">
-				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>><?=gettext("Enable Jitterbuffer on IAX connections terminated by AskoziaPBX.");?>
+				<input name="jbenable" id="jbenable" type="checkbox" onchange="jb_enable_click()" value="yes" <? if ($pconfig['jbenable']) echo "checked"; ?>><?=gettext("Enable Jitterbuffer on IAX connections terminated by the system.");?>
 			</td>
 		</tr>
 		<tr> 
