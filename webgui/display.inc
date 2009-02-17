@@ -325,8 +325,7 @@ function display_gui_language_selector($current_language) {
 			><?=$langdesc;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl"><?=gettext("Select in which language you want the webGUI to be displayed."); ?><br>
-			<em><?=gettext('Please <a href="mailto:michael@askozia.com">contact us</a> if you are able to provide a new translation.');?></em>
+			<br><span class="vexpl"><?=gettext("Select in which language you want the webGUI to be displayed."); ?>
 			</span>
 		</td>
 	</tr><?
