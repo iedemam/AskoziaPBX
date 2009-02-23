@@ -92,7 +92,11 @@ $vm_emailsubject = array(
 	"ru-formal" => 		"Новое голосовое сообщение (окно: $\{VM_MAILBOX})",
 	
 	// swedish
-	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})"
+	"se-informal" => 	"Nytt röstmeddelande (box: $\{VM_MAILBOX})",
+
+	// turkish
+	"tr-informal" =>	"$\{VM_DATE} de $\{VM_MAILBOX}'e bırakılan Sesli Mesaj",
+	"tr-formal" =>		"$\{VM_DATE} de $\{VM_MAILBOX}'e bırakılan Sesli Mesaj"
 );
 
 /**
@@ -253,6 +257,17 @@ $vm_emailbody = array(
 						"Ett samtal ifrån $\{VM_CALLERID} har precis spelats in på din telesvar.\\n\\n".
 						"Meddelandet är $\{VM_DUR} långt och det lämnades $\{VM_DATE}.\\n\\n".
 						"-$product_name",
+
+	// turkish
+	"tr-informal" =>	"Merhaba ($\{VM_MAILBOX}) $\{VM_NAME},\\n\\n".
+						"seni arayan ve ulaşamayan $\{VM_CALLERID} $\{VM_DUR} uzunluğundaki ".
+						"sesli mesajı $\{VM_DATE} tarihinde bırakmıştır.\\n\\n".
+						"-$product_name",
+
+	"tr-formal" =>		"Merhaba ($\{VM_MAILBOX}) $\{VM_NAME},\\n\\n".
+						"sizi arayan ve ulaşamayan $\{VM_CALLERID} $\{VM_DUR} uzunluğundaki ".
+						"sesli mesajı $\{VM_DATE} tarihinde bırakmıştır.\\n\\n".
+						"-$product_name"
 );
 
 /**

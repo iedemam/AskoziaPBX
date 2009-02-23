@@ -170,6 +170,8 @@ $prompt_languages = array(
 $vm_email_languages = array(
 	"en-informal" => gettext("English"),
 	"en-formal" => gettext("English (formal)"),
+	"bg-informal" => gettext("Bulgarian"),
+	"bg-formal" => gettext("Bulgarian (formal)"),
 	"cs-informal" => gettext("Czech"),
 	"cs-formal" => gettext("Czech (formal)"),
 	"da-informal" => gettext("Danish"),
@@ -193,7 +195,9 @@ $vm_email_languages = array(
 	"ru-informal" => gettext("Russian"),
 	"ru-formal" => gettext("Russian (formal)"),
 	"es-formal" => gettext("Spanish (formal)"),
-	"se-informal" => gettext("Swedish")
+	"se-informal" => gettext("Swedish"),
+	"tr-informal" => gettext("Turkish"),
+	"tr-formal" => gettext("Turkish (formal)")
 );
 
 $isdn_dchannel_modes = array(

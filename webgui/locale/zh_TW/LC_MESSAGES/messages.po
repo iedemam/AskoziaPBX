@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -918,15 +918,6 @@ msgstr "儲存"
 msgid "No compatible analog interfaces detected."
 msgstr "沒有探測到相容的Analog介面。"
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"如果有一個Analog介面沒有被探測到，請發送 <a href=\"ajax.cgi?exec_shell=/usr/"
-"sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\"> 的輸出 </a> 到 <a href=\"mailto:"
-"michael@askozia.com\">michael@askozia.com</a>."
-
 msgid "Unit"
 msgstr "部件"
 
@@ -1005,22 +996,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "沒有找到相容的ISDN介面。"
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"如果一個ISDN介面已經連接但沒有被發現，請發送這個 <a href=\"ajax.cgi?"
-"exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">輸出 </a> 給 <a "
-"href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-"如果這是一個USB介面的ISDN設備，請同樣發送這個輸出 <a href=\"ajax.cgi?"
-"exec_shell=/sbin/udesc_dump\"></a>。"
 
 msgid "Operating Mode"
 msgstr "操作模式"
@@ -2347,11 +2322,6 @@ msgstr "網頁設置頁面語言"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "請選擇您希望本設置界面顯示的語言。"
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-
 msgid "Audio Codecs"
 msgstr "音頻編解碼"
 
@@ -2876,6 +2846,14 @@ msgstr "英語"
 msgid "English (formal)"
 msgstr "英語（正式）"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "保加利亞"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "意大利語（正式）"
+
 msgid "Czech"
 msgstr ""
 
@@ -2932,6 +2910,13 @@ msgstr "俄語（正式）"
 
 msgid "Spanish (formal)"
 msgstr "西班牙語（正式）"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "丹麥語（正式）"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr "點對多，終端設備"
@@ -3173,6 +3158,33 @@ msgstr "'%s' 段含有無效字符。"
 #, php-format
 msgid "The field '%s' is required."
 msgstr "'%s' 區域需要填入。 "
+
+#~ msgid ""
+#~ "If an analog interface is present but was not detected, please send <a "
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "如果有一個Analog介面沒有被探測到，請發送 <a href=\"ajax.cgi?exec_shell=/"
+#~ "usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\"> 的輸出 </a> 到 <a href="
+#~ "\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If an ISDN interface is present but was not detected, please send <a href="
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "如果一個ISDN介面已經連接但沒有被發現，請發送這個 <a href=\"ajax.cgi?"
+#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">輸出 </a> 給 "
+#~ "<a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+#~ "udesc_dump\">this output</a> as well."
+#~ msgstr ""
+#~ "如果這是一個USB介面的ISDN設備，請同樣發送這個輸出 <a href=\"ajax.cgi?"
+#~ "exec_shell=/sbin/udesc_dump\"></a>。"
 
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "AskoziaPBX 網頁界面"

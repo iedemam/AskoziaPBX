@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -983,16 +983,6 @@ msgstr "Αποθήκευση"
 msgid "No compatible analog interfaces detected."
 msgstr "Δεν βρέθηκαν συμβατές διεπαφές PSTN."
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Αν υπάρχει εγκατεστημένη μια διεπαφή PSTN, αλλά δεν βρέθηκε από το σύστημα, "
-"παρακαλούμε στείλτε <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/"
-"bin/echo;/sbin/dmesg\">αυτές τις πληροφορίες</a> στη διεύθυνση <a href="
-"\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-
 msgid "Unit"
 msgstr "Μονάδα"
 
@@ -1080,23 +1070,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "Δεν βρέθηκαν συμβατές διεπαφές ISDN."
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Αν υπάρχει εγκατεστημένη μια διεπαφή ISDN, αλλά δεν βρέθηκε από το σύστημα, "
-"παρακαλούμε στείλτε <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/"
-"bin/echo;/sbin/dmesg\">αυτές τις πληροφορίες</a> στη διεύθυνση <a href="
-"\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-"Αν έχετε μια συσκευή ISDN με σύνδεση μέσω USB, τότε στείλτε και <a href="
-"\"ajax.cgi?exec_shell=/sbin/udesc_dump\">αυτές τις πληροφορίες</a>."
 
 msgid "Operating Mode"
 msgstr "Τρόπος λειτουργίας"
@@ -2585,13 +2558,6 @@ msgstr "Γλώσσα περιβάλλοντος διαχείρισης"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Επιλέξτε σε ποια γλώσσα θέλετε να βλέπετε το περιβάλλον διαχείρισης."
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-"Επικοινωνήστε <a href=\"mailto:michael@askozia.com\">μαζί μας</a> αν "
-"μπορείτε να κάνετε μια νέα μετάφραση."
-
 msgid "Audio Codecs"
 msgstr "CODECs φωνής"
 
@@ -3165,6 +3131,14 @@ msgstr "Αγγλικά"
 msgid "English (formal)"
 msgstr "Αγγλικά (τυπικά)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Βουλγαρία"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Ιταλικά (τυπικά)"
+
 msgid "Czech"
 msgstr "Τσέχικα"
 
@@ -3220,6 +3194,13 @@ msgstr "Ρώσικα (τυπικά)"
 
 msgid "Spanish (formal)"
 msgstr "Ισπανικά (τυπικά)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Δανικά (τυπικά)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr "point-to-multipoint, TE"
@@ -3457,6 +3438,42 @@ msgstr "Το πεδίο '%s' περιέχει μη έγκυρους χαρακτ
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Το πεδίο '%s' είναι αναγκαίο."
+
+#~ msgid ""
+#~ "If an analog interface is present but was not detected, please send <a "
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Αν υπάρχει εγκατεστημένη μια διεπαφή PSTN, αλλά δεν βρέθηκε από το "
+#~ "σύστημα, παρακαλούμε στείλτε <a href=\"ajax.cgi?exec_shell=/usr/sbin/"
+#~ "pciconf%20-lv;/bin/echo;/sbin/dmesg\">αυτές τις πληροφορίες</a> στη "
+#~ "διεύθυνση <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If an ISDN interface is present but was not detected, please send <a href="
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Αν υπάρχει εγκατεστημένη μια διεπαφή ISDN, αλλά δεν βρέθηκε από το "
+#~ "σύστημα, παρακαλούμε στείλτε <a href=\"ajax.cgi?exec_shell=/usr/sbin/"
+#~ "pciconf%20-lv;/bin/echo;/sbin/dmesg\">αυτές τις πληροφορίες</a> στη "
+#~ "διεύθυνση <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+#~ "udesc_dump\">this output</a> as well."
+#~ msgstr ""
+#~ "Αν έχετε μια συσκευή ISDN με σύνδεση μέσω USB, τότε στείλτε και <a href="
+#~ "\"ajax.cgi?exec_shell=/sbin/udesc_dump\">αυτές τις πληροφορίες</a>."
+
+#~ msgid ""
+#~ "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are "
+#~ "able to provide a new translation."
+#~ msgstr ""
+#~ "Επικοινωνήστε <a href=\"mailto:michael@askozia.com\">μαζί μας</a> αν "
+#~ "μπορείτε να κάνετε μια νέα μετάφραση."
 
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "GUI τηλεφωνικού κέντρου"

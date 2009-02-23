@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -897,12 +897,6 @@ msgstr ""
 msgid "No compatible analog interfaces detected."
 msgstr ""
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-
 msgid "Unit"
 msgstr ""
 
@@ -973,17 +967,6 @@ msgid ""
 msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
-msgstr ""
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
 msgstr ""
 
 msgid "Operating Mode"
@@ -2244,11 +2227,6 @@ msgstr ""
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-
 msgid "Audio Codecs"
 msgstr ""
 
@@ -2715,6 +2693,12 @@ msgstr ""
 msgid "English (formal)"
 msgstr ""
 
+msgid "Bulgarian"
+msgstr ""
+
+msgid "Bulgarian (formal)"
+msgstr ""
+
 msgid "Czech"
 msgstr ""
 
@@ -2767,6 +2751,12 @@ msgid "Russian (formal)"
 msgstr ""
 
 msgid "Spanish (formal)"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Turkish (formal)"
 msgstr ""
 
 msgid "point-to-multipoint, terminal equipment"

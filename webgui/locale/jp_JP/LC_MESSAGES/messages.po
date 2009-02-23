@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -946,16 +946,6 @@ msgstr "ストレージ"
 msgid "No compatible analog interfaces detected."
 msgstr "対応するアナログインターフェースが見つかりませんでした。"
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"もし、アナログインタフェースが存在しているにも関わらず、見つからないと表示さ"
-"れた場合、 <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
-"sbin/dmesg\">この情報</a> を <a href=\"mailto:michael@askozia.com"
-"\">michael@askozia.com</a>にEメールで送って下さい"
-
 msgid "Unit"
 msgstr "Unit"
 
@@ -1041,23 +1031,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "対応しているISDNインタフェースが見つかりませんでした"
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"もし、ISDNインタフェースが存在しているにも関わらず、見つからないと表示された"
-"場合、 <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/"
-"dmesg\">この情報</a> を <a href=\"mailto:michael@askozia.com"
-"\">michael@askozia.com</a>にEメールで送って下さい"
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-"もし、USBタイプのISDN機器を接続している場合には、<a href=\"ajax.cgi?"
-"exec_shell=/sbin/udesc_dump\">この情報</a> をEメールで送って下さい"
 
 msgid "Operating Mode"
 msgstr "操作モード"
@@ -2480,13 +2453,6 @@ msgstr "webGUIの言語"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "webGUIの表示に使用する言語を選択して下さい"
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-"もしあなたが新たな翻訳をされた場合には、ぜひ<a href=\"mailto:michael@askozia."
-"com\">私達</a> にご連絡を下さい"
-
 msgid "Audio Codecs"
 msgstr "オーディオコーデック"
 
@@ -3039,6 +3005,14 @@ msgstr "英語"
 msgid "English (formal)"
 msgstr "英語(公式)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "ブルガリア"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "イタリア語(公式)"
+
 msgid "Czech"
 msgstr "チェコ語"
 
@@ -3092,6 +3066,13 @@ msgstr "ロシア語(公式)"
 
 msgid "Spanish (formal)"
 msgstr "スペイン語(公式)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "デンマーク語(公式)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr "ポイントtoマルチポイント,ターミナル機器"
@@ -3325,6 +3306,42 @@ msgstr "'%s' フィールドに無効な文字が含まれています"
 #, php-format
 msgid "The field '%s' is required."
 msgstr "'%s' フィールドは必須です"
+
+#~ msgid ""
+#~ "If an analog interface is present but was not detected, please send <a "
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "もし、アナログインタフェースが存在しているにも関わらず、見つからないと表示"
+#~ "された場合、 <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/"
+#~ "echo;/sbin/dmesg\">この情報</a> を <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>にEメールで送って下さい"
+
+#~ msgid ""
+#~ "If an ISDN interface is present but was not detected, please send <a href="
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "もし、ISDNインタフェースが存在しているにも関わらず、見つからないと表示され"
+#~ "た場合、 <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
+#~ "sbin/dmesg\">この情報</a> を <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>にEメールで送って下さい"
+
+#~ msgid ""
+#~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+#~ "udesc_dump\">this output</a> as well."
+#~ msgstr ""
+#~ "もし、USBタイプのISDN機器を接続している場合には、<a href=\"ajax.cgi?"
+#~ "exec_shell=/sbin/udesc_dump\">この情報</a> をEメールで送って下さい"
+
+#~ msgid ""
+#~ "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are "
+#~ "able to provide a new translation."
+#~ msgstr ""
+#~ "もしあなたが新たな翻訳をされた場合には、ぜひ<a href=\"mailto:"
+#~ "michael@askozia.com\">私達</a> にご連絡を下さい"
 
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "AskoziaPBX webGUI"

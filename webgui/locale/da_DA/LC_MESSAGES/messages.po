@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -935,12 +935,6 @@ msgstr ""
 msgid "No compatible analog interfaces detected."
 msgstr "Ingen kompatible analoge grænseflader fundet."
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-
 msgid "Unit"
 msgstr "Enhed"
 
@@ -1013,17 +1007,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "Ingen kompatible ISDN grænseflader fundet."
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
 
 msgid "Operating Mode"
 msgstr ""
@@ -2384,11 +2367,6 @@ msgstr "webGUI sprog"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Vælg hvilket sprog der skal bruges i webGUI."
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-
 msgid "Audio Codecs"
 msgstr "Lyd Codecs"
 
@@ -2932,6 +2910,14 @@ msgstr "Engelsk"
 msgid "English (formal)"
 msgstr "Engelsk (formelt)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgarien"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Italiensk (formelt)"
+
 msgid "Czech"
 msgstr ""
 
@@ -2988,6 +2974,13 @@ msgstr "Russisk (formelt)"
 
 msgid "Spanish (formal)"
 msgstr "Spansk (formelt)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Dansk (formelt)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr "point-to-multipoint, terminal udstyr"

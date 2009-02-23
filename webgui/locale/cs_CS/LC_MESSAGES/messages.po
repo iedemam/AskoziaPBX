@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -907,16 +907,6 @@ msgstr "Úložiště"
 msgid "No compatible analog interfaces detected."
 msgstr "Žádné analogové zařízení nebylo nalezeno."
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Jestliže je analogové rozhraní přítomno, ale nebylo rozpoznáno, prosím "
-"zašlete <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
-"sbin/dmesg\">tento výstup</a> na <a href=\"mailto:michael@askozia.com"
-"\">michael@askozia.com</a>."
-
 msgid "Unit"
 msgstr ""
 
@@ -988,23 +978,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "Žádné ISDN rozhraní nebylo nalezeno."
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Jestliže je ISDN rozhraní přítomno, ale nebylo rozpoznáno, prosím zašlete <a "
-"href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
-"\">tento výstup</a> na <a href=\"mailto:michael@askozia.com"
-"\">michael@askozia.com</a>."
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-"Jedná-li se o USB ISDN zařízení, zašlete prosím <a href=\"ajax.cgi?"
-"exec_shell=/sbin/udesc_dump\">tento výstup</a> také."
 
 msgid "Operating Mode"
 msgstr ""
@@ -2323,13 +2296,6 @@ msgstr "Jazyk uživatelského rozhraní"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Vyberze jazyk, ve kterém má být webGUI zobrazeno."
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-"Prosím <a href=\"mailto:michael@askozia.com\">kontaktujte nás</a> v případě, "
-"že můžete poskytnout další překlad."
-
 msgid "Audio Codecs"
 msgstr "Audio kodeky"
 
@@ -2841,6 +2807,14 @@ msgstr "Angličtina"
 msgid "English (formal)"
 msgstr "Angličtina (oficiální)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulharsko"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Italština (oficiální)"
+
 msgid "Czech"
 msgstr ""
 
@@ -2897,6 +2871,13 @@ msgstr "Ruština (oficiální)"
 
 msgid "Spanish (formal)"
 msgstr "Španělština (oficiální)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Dánština (oficiální)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr ""
@@ -3128,6 +3109,42 @@ msgstr ""
 #, php-format
 msgid "The field '%s' is required."
 msgstr ""
+
+#~ msgid ""
+#~ "If an analog interface is present but was not detected, please send <a "
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Jestliže je analogové rozhraní přítomno, ale nebylo rozpoznáno, prosím "
+#~ "zašlete <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
+#~ "sbin/dmesg\">tento výstup</a> na <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If an ISDN interface is present but was not detected, please send <a href="
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Jestliže je ISDN rozhraní přítomno, ale nebylo rozpoznáno, prosím zašlete "
+#~ "<a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/"
+#~ "dmesg\">tento výstup</a> na <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+#~ "udesc_dump\">this output</a> as well."
+#~ msgstr ""
+#~ "Jedná-li se o USB ISDN zařízení, zašlete prosím <a href=\"ajax.cgi?"
+#~ "exec_shell=/sbin/udesc_dump\">tento výstup</a> také."
+
+#~ msgid ""
+#~ "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are "
+#~ "able to provide a new translation."
+#~ msgstr ""
+#~ "Prosím <a href=\"mailto:michael@askozia.com\">kontaktujte nás</a> v "
+#~ "případě, že můžete poskytnout další překlad."
 
 #~ msgid "AskoziaPBX"
 #~ msgstr "AskoziaPBX"

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -955,16 +955,6 @@ msgstr "Tallentaminen"
 msgid "No compatible analog interfaces detected."
 msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Jos analoginen käyttöliittymä on läsnä mutta ei havaittu, ole ystävällinen "
-"ja lähetä <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
-"sbin/dmesg\">tämä tuotos</a> osoitteeseen <a href=\"mailto:michael@askozia."
-"com\">michael@askozia.com</a>."
-
 msgid "Unit"
 msgstr "Yksikkö"
 
@@ -1050,23 +1040,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Jos ISDN käyttöliittymä on läsnä mutta ei havaittu, ole ystävällinen ja "
-"lähetä <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/"
-"dmesg\">tämä tuotos</a> osoitteeseen <a href=\"mailto:michael@askozia.com"
-"\">michael@askozia.com</a>."
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-"Jos tämä on USB ISDN laite, lähetä myös <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">tämä tuotos</a>."
 
 msgid "Operating Mode"
 msgstr "Käyttötapa"
@@ -2474,11 +2447,6 @@ msgstr "Verkkokäyttöliittymän kieli"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Valitse verkkokäyttöliittymän kieli oheisesta valikosta."
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-
 msgid "Audio Codecs"
 msgstr "Äänen pakkauksenhallinta"
 
@@ -3027,6 +2995,14 @@ msgstr "Englannin kieli"
 msgid "English (formal)"
 msgstr "Englannin kilei (virallinen)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Italian kieli (virallinen)"
+
 msgid "Czech"
 msgstr ""
 
@@ -3083,6 +3059,13 @@ msgstr "Venäjän kieli (virallinen)"
 
 msgid "Spanish (formal)"
 msgstr "Espanjan kieli (virallinen)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Tanskan kieli (virallinen)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr "point-to-multipoint, konsoli apuvälineet"
@@ -3316,6 +3299,35 @@ msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Kohta '%s' on määritettävä."
+
+#~ msgid ""
+#~ "If an analog interface is present but was not detected, please send <a "
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Jos analoginen käyttöliittymä on läsnä mutta ei havaittu, ole "
+#~ "ystävällinen ja lähetä <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-"
+#~ "lv;/bin/echo;/sbin/dmesg\">tämä tuotos</a> osoitteeseen <a href=\"mailto:"
+#~ "michael@askozia.com\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If an ISDN interface is present but was not detected, please send <a href="
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Jos ISDN käyttöliittymä on läsnä mutta ei havaittu, ole ystävällinen ja "
+#~ "lähetä <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"
+#~ "sbin/dmesg\">tämä tuotos</a> osoitteeseen <a href=\"mailto:"
+#~ "michael@askozia.com\">michael@askozia.com</a>."
+
+#~ msgid ""
+#~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+#~ "udesc_dump\">this output</a> as well."
+#~ msgstr ""
+#~ "Jos tämä on USB ISDN laite, lähetä myös <a href=\"ajax.cgi?exec_shell=/"
+#~ "sbin/udesc_dump\">tämä tuotos</a>."
 
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "AskoziaPBX verkkokäyttöliittymä"

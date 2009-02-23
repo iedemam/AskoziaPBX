@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -978,16 +978,6 @@ msgstr "Memoria di massa"
 msgid "No compatible analog interfaces detected."
 msgstr "Nessuna interfaccia analogica rilevata."
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Se una interfaccia è fisicamente presente ma non è stata individuata dal "
-"sistema, cortesemente inviate il risultato di <a href=\"ajax.cgi?exec_shell=/"
-"usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">questo collegamento</a> a <a "
-"href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-
 msgid "Unit"
 msgstr "Unità"
 
@@ -1076,24 +1066,6 @@ msgstr ""
 
 msgid "No compatible ISDN interfaces detected."
 msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
-
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-"Se una interfaccia ISDN è fisicamente presente ma non è stata individuata "
-"dal sistema, cortesemente inviate il risultato di <a href=\"ajax.cgi?"
-"exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">questo "
-"collegamento</a> a <a href=\"mailto:michael@askozia.com\">michael@askozia."
-"com</a>."
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-"Se si tratta di una periferica ISDN USB, inviate anche il risultato di <a "
-"href=\"ajax.cgi?exec_shell=/sbin/udesc_dump\">questo collegamento</a>."
 
 msgid "Operating Mode"
 msgstr "Modo operativo"
@@ -2555,13 +2527,6 @@ msgstr "Lingua del interfaccia WEB"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Seleziona in quale lingua l'interfaccia WEB deve essere mostrata."
 
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
-"Per favore <a href=\"mailto:michael@askozia.com\">contattaci</a> se sei in "
-"grado di fornire una nuova traduzione."
-
 msgid "Audio Codecs"
 msgstr "Codificatori Audio"
 
@@ -3127,6 +3092,14 @@ msgstr "Inglese"
 msgid "English (formal)"
 msgstr "Inglese (formale)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Italiano (formale)"
+
 msgid "Czech"
 msgstr "Ceco"
 
@@ -3182,6 +3155,13 @@ msgstr "Russo (frmale)"
 
 msgid "Spanish (formal)"
 msgstr "Spagnolo (formale)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Danese (formale)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr "punto-multipunto, dispositivo terminale (TE, PMP)"
@@ -3421,6 +3401,44 @@ msgstr "Il campo '%s' contiene dei caratteri non validi."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Il campo '%s' è obbligatorio."
+
+#~ msgid ""
+#~ "If an analog interface is present but was not detected, please send <a "
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Se una interfaccia è fisicamente presente ma non è stata individuata dal "
+#~ "sistema, cortesemente inviate il risultato di <a href=\"ajax.cgi?"
+#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">questo "
+#~ "collegamento</a> a <a href=\"mailto:michael@askozia.com\">michael@askozia."
+#~ "com</a>."
+
+#~ msgid ""
+#~ "If an ISDN interface is present but was not detected, please send <a href="
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
+#~ "\">michael@askozia.com</a>."
+#~ msgstr ""
+#~ "Se una interfaccia ISDN è fisicamente presente ma non è stata individuata "
+#~ "dal sistema, cortesemente inviate il risultato di <a href=\"ajax.cgi?"
+#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">questo "
+#~ "collegamento</a> a <a href=\"mailto:michael@askozia.com\">michael@askozia."
+#~ "com</a>."
+
+#~ msgid ""
+#~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
+#~ "udesc_dump\">this output</a> as well."
+#~ msgstr ""
+#~ "Se si tratta di una periferica ISDN USB, inviate anche il risultato di <a "
+#~ "href=\"ajax.cgi?exec_shell=/sbin/udesc_dump\">questo collegamento</a>."
+
+#~ msgid ""
+#~ "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are "
+#~ "able to provide a new translation."
+#~ msgstr ""
+#~ "Per favore <a href=\"mailto:michael@askozia.com\">contattaci</a> se sei "
+#~ "in grado di fornire una nuova traduzione."
 
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "AskoziaPBX interfaccia WEB"

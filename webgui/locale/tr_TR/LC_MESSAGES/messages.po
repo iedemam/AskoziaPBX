@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 15:38+0100\n"
-"PO-Revision-Date: 2009-01-28 10:23+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
+"PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgid "Extension"
 msgstr "Dahili Hat"
 
 msgid "Caller ID"
-msgstr "Arayan Kimliği"
+msgstr "Arayıcı Kimliği"
 
 msgid "Description"
 msgstr "Açıklama"
@@ -185,7 +185,7 @@ msgid "Miscellaneous"
 msgstr "Değişik"
 
 msgid "Console menu"
-msgstr ""
+msgstr "İşletmen Uçbirim menüsü"
 
 msgid "Disable console menu"
 msgstr ""
@@ -194,10 +194,10 @@ msgid "Changes to this option will take effect after a reboot."
 msgstr "Bu ayarlar sistem yeniden başladığında etkin kılınacaktır."
 
 msgid "Firmware version check"
-msgstr ""
+msgstr "Bellenim sürümünü denetle"
 
 msgid "Disable firmware version check"
-msgstr ""
+msgstr "Bellenim sürümünü denetlemeyi iptal et"
 
 #, fuzzy
 msgid ""
@@ -263,7 +263,7 @@ msgid "General"
 msgstr "Genel"
 
 msgid "Binding Port"
-msgstr ""
+msgstr "Bağlanılan Kapı"
 
 msgid "Jitterbuffer"
 msgstr ""
@@ -296,16 +296,16 @@ msgid "Audio"
 msgstr "Ses"
 
 msgid "A-law"
-msgstr ""
+msgstr "A-law"
 
 msgid "u-law"
-msgstr ""
+msgstr "u-law"
 
 msgid "Manager Interface"
 msgstr "Arabirim Manajeri"
 
 msgid "Permissions"
-msgstr ""
+msgstr "İzinlemeler"
 
 msgid "read:"
 msgstr "oku:"
@@ -314,55 +314,57 @@ msgid "write:"
 msgstr "yaz:"
 
 msgid "edit manager room"
-msgstr ""
+msgstr "yönetici odasını düzenle."
 
 msgid "Do you really want to delete this manager user?"
-msgstr ""
+msgstr "Bu yönetici kullanıcıyı silmek istediğinizden emin misiniz?"
 
 msgid "delete manager user"
-msgstr ""
+msgstr "yönetici kullanıcıyı sil"
 
 msgid "add manager user"
-msgstr ""
+msgstr "yönetici kullanıcı ekle"
 
 msgid "Edit User"
-msgstr ""
+msgstr "Kullanıcı düzenle"
 
+#, fuzzy
 msgid "The username of \"admin\" is already used internally by the system."
-msgstr ""
+msgstr "\"admin\" Kullanıcısı AskoziaPBX içinde kullanılmakta."
 
 msgid "Secret"
-msgstr ""
+msgstr "Gizli"
 
 msgid "Deny Network"
-msgstr ""
+msgstr "Ağı Yasakla"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
-msgstr ""
+msgstr "tümünü yasaklamak için '0.0.0.0 / 0.0.0.0' gir"
 
 msgid "Permit Network"
-msgstr ""
+msgstr "Ağı İzinle"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
-msgstr ""
+msgstr "hepsine izin vermek için '0.0.0.0 / 0.0.0.0' gir"
 
 msgid "Read"
-msgstr ""
+msgstr "Oku"
 
 msgid "Write"
-msgstr ""
+msgstr "Yaz"
 
 msgid "RTP"
 msgstr "RTP"
 
 msgid "The high RTP port must be greater than the low RTP port."
-msgstr ""
+msgstr "Üst RTP kapısı alt RTP kapısından büyük olmalı."
 
 msgid "RTP Port Range"
-msgstr ""
+msgstr "RTP kapı alanı"
 
 msgid "The port range which RTP streams should use. (default:"
 msgstr ""
+"RTP dizgisi için kullanılmasını istediğiniz kapı alanı. (varsayılan değer:"
 
 msgid "Warning"
 msgstr "Uyarı"
@@ -389,13 +391,13 @@ msgid "Registration Expiration Timeouts"
 msgstr ""
 
 msgid "min:"
-msgstr ""
+msgstr "en küçük:"
 
 msgid "max:"
-msgstr ""
+msgstr "en büyük:"
 
 msgid "default:"
-msgstr ""
+msgstr "varsayılan:"
 
 msgid ""
 "The minimum, maximum and default number of seconds that incoming and "
@@ -403,16 +405,16 @@ msgid ""
 msgstr ""
 
 msgid "Default values are 60, 3600 and 120 respectively."
-msgstr ""
+msgstr "Standart değerler 60, 3600 ve çoğulu olan 120."
 
 msgid "DNS Service Records"
-msgstr ""
+msgstr "DNS Servis Kayıtları"
 
 msgid "Disable DNS SRV lookups."
-msgstr ""
+msgstr "DNS SRV aramaları iptal et."
 
 msgid "Debug"
-msgstr ""
+msgstr "Hata Ayıkla"
 
 msgid "ISDN Interface"
 msgstr "İSDN Arabirimi"
@@ -421,19 +423,19 @@ msgid "Start"
 msgstr "Başla"
 
 msgid "Debugging"
-msgstr ""
+msgstr "Hata Ayıklama"
 
 msgid "Stop"
 msgstr "Dur"
 
 msgid "Debug Ouptut"
-msgstr ""
+msgstr "Hata Ayıklama Sonucları"
 
 msgid "Restart"
 msgstr "Yeniden Başlat"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnozlar"
 
 msgid "ARP table"
 msgstr "ARP tabelası"
@@ -457,11 +459,11 @@ msgid "remove all entries from arp table"
 msgstr "arp tablosundan tüm kayıtları sil"
 
 msgid "Editor"
-msgstr ""
+msgstr "Metin Düzenleyici"
 
 #, php-format
 msgid "The specified file (%s) does not exist."
-msgstr ""
+msgstr "Belirtilmiş dosya (%s) mevcut değil."
 
 #, php-format
 msgid "File contents (%s) saved."
@@ -483,7 +485,7 @@ msgid "Logs"
 msgstr "Günlükler"
 
 msgid "No matches found."
-msgstr ""
+msgstr "Uyum bulunamadı."
 
 msgid "System"
 msgstr "Sistem"
@@ -543,7 +545,7 @@ msgid "A valid IP address must be specified."
 msgstr "Geçerli bir İP adresi girilmeli."
 
 msgid "Number of log entries to show must be between 50 and 1000."
-msgstr ""
+msgstr "Log kayıtları görüntüleme değeri 50 ile 1000 arası olmalı."
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Log kayıtlarını ters yönde listele (yeni kayıtlar üstte)"
@@ -552,13 +554,13 @@ msgid "Number of log entries to show:"
 msgstr "Gösterilmesi istenen log kayıt sayısı"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
+msgstr "Uzak sunucuya syslog etkinleştir"
 
 msgid "Remote syslog server"
-msgstr ""
+msgstr "Uzak syslog sunucusu"
 
 msgid "IP address of remote syslog server"
-msgstr ""
+msgstr "Uzak syslog sunucusunun İP adresi"
 
 msgid "system events"
 msgstr "Sistem olayları"
@@ -604,13 +606,13 @@ msgstr "Ping çıkışı"
 
 #, php-format
 msgid "Maximum number of hops must be between 1 and %d"
-msgstr ""
+msgstr "En büyük hoplama sayısı 1 ile %d arasında olmalı"
 
 msgid "Maximum number of hops"
-msgstr ""
+msgstr "En büyük hoplama sayısı"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr ""
+msgstr "İP adreslerini alan isimlerine dönüştür"
 
 msgid ""
 "Traceroute may take a while to complete.  You may hit the Stop button on "
@@ -621,17 +623,21 @@ msgid "Traceroute output:"
 msgstr ""
 
 msgid "Dialplan"
-msgstr ""
+msgstr "Aramaplanı"
 
 msgid "Applications"
 msgstr "Uygulamalar"
 
+#, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
 "applications can be added to the system. These applications can then be "
 "dialed via their defined extensions or used as a destination for incoming "
 "calls from Providers."
 msgstr ""
+"Dahili hat grupları beraber çalmaları sağlanabilir. Bu gruplara onlara "
+"ilişkilendirilen dahili hatlarla erişilir veya hedef olarak operatörlerden "
+"gelen aramlar kullanılır."
 
 msgid "descr"
 msgstr ""
@@ -652,40 +658,43 @@ msgid "Edit"
 msgstr "Düzenle"
 
 msgid "A valid extension must be entered."
-msgstr ""
+msgstr "Geçerli dahili hat girilmeli."
 
 msgid "Internal extension used to reach this application."
-msgstr ""
+msgstr "Bu uygulamaya erişmek için kullanılan dahili hat."
 
 msgid "Call Groups"
-msgstr ""
+msgstr "Arama Gruplar"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
 "can then be dialed via their defined extensions or used as a destination for "
 "incoming calls from Providers."
 msgstr ""
+"Dahili hat grupları beraber çalmaları sağlanabilir. Bu gruplara onlara "
+"ilişkilendirilen dahili hatlarla erişilir veya hedef olarak operatörlerden "
+"gelen aramlar kullanılır."
 
 msgid "Members"
 msgstr "Üyeler"
 
 msgid "edit call group"
-msgstr ""
+msgstr "arama grubunu düzenle"
 
 msgid "Do you really want to delete this call group?"
-msgstr ""
+msgstr "Bu arama grubunu gerçekten silmek istiyor musunuz?"
 
 msgid "delete call group"
-msgstr ""
+msgstr "arama grubunu sil"
 
 msgid "add call group"
-msgstr ""
+msgstr "arama grubu ekle"
 
 msgid "Group name"
-msgstr ""
+msgstr "Grup adı"
 
 msgid "Internal extension used to reach this call group."
-msgstr ""
+msgstr "Bu arama grubuna ulaşmak için dahili hat."
 
 msgid "Transfers"
 msgstr "Transferler"
@@ -789,16 +798,16 @@ msgid ""
 msgstr ""
 
 msgid "AskoziaPBX: execute command"
-msgstr ""
+msgstr "AskoziaPBX: yürütme komutu"
 
 msgid "enter a command below..."
-msgstr ""
+msgstr "yürütme komutu alta gir..."
 
 msgid "Command:"
 msgstr "Komut:"
 
 msgid "Execute"
-msgstr ""
+msgstr "Yürüt"
 
 msgid "Clear"
 msgstr "Sil"
@@ -822,7 +831,7 @@ msgid "Out"
 msgstr "Çıkış"
 
 msgid "Switch to bytes/s"
-msgstr ""
+msgstr "Byte/s  değiş"
 
 msgid "AutoScale"
 msgstr ""
@@ -846,7 +855,7 @@ msgid "25%"
 msgstr "25%"
 
 msgid "Cannot get CPU load"
-msgstr ""
+msgstr "İşlemci Yükü okunamadı"
 
 msgid "System Information"
 msgstr "Sistem Bilgileri"
@@ -858,17 +867,17 @@ msgid "built on"
 msgstr ""
 
 msgid "Platform"
-msgstr ""
+msgstr "Platform"
 
 msgid "Uptime"
-msgstr ""
+msgstr "Çalışma Süresi"
 
 #, php-format
 msgid "%s days, "
 msgstr "%s days, "
 
 msgid "Last Config Change"
-msgstr ""
+msgstr "Son Ayar Değişme"
 
 msgid "Active Calls"
 msgstr "Aktif Aramalar"
@@ -877,7 +886,7 @@ msgid "Active Channels"
 msgstr "Aktif Kanallar"
 
 msgid "Memory Usage"
-msgstr ""
+msgstr "Hafıza Kullanımı"
 
 msgid "Notes"
 msgstr "Notlar"
@@ -902,12 +911,6 @@ msgstr "Bellek"
 msgid "No compatible analog interfaces detected."
 msgstr "Uyum sağlayan analog arayüz bulunamadı."
 
-msgid ""
-"If an analog interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-
 msgid "Unit"
 msgstr "Birim"
 
@@ -924,7 +927,7 @@ msgid "Disabled"
 msgstr "İptal edildi"
 
 msgid "edit analog interface"
-msgstr ""
+msgstr "analog arayüzü düzenle"
 
 msgid "Do you really want to forget this interface\\'s settings?"
 msgstr ""
@@ -948,10 +951,10 @@ msgid "Edit Analog"
 msgstr "Analog düzenle"
 
 msgid "Interface #"
-msgstr ""
+msgstr "Arayüz #"
 
 msgid "Descriptive name for this interface"
-msgstr ""
+msgstr "Bu arayüz için anlaşılır isim"
 
 msgid ""
 "The echo canceller 'tap' size. Larger sizes more effectively cancel echo but "
@@ -980,17 +983,6 @@ msgstr ""
 msgid "No compatible ISDN interfaces detected."
 msgstr "Uyum sağlayan İSDN arayüzü bulunamadı."
 
-msgid ""
-"If an ISDN interface is present but was not detected, please send <a href="
-"\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">this "
-"output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
-msgstr ""
-
-msgid ""
-"If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
-"udesc_dump\">this output</a> as well."
-msgstr ""
-
 msgid "Operating Mode"
 msgstr ""
 
@@ -998,7 +990,7 @@ msgid "Enabled"
 msgstr "Uygulandı"
 
 msgid "edit ISDN interface"
-msgstr ""
+msgstr "İSDN arayüzü düzenle"
 
 msgid "Operating Modes"
 msgstr ""
@@ -1098,7 +1090,7 @@ msgid "IP Address"
 msgstr "İP Adresi"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Ağ Geçidi"
 
 msgid "DNS Servers"
 msgstr "DNS Sunucu"
@@ -1200,7 +1192,7 @@ msgid "Installed Packages"
 msgstr "Yüklenilen Paketler"
 
 msgid "system storage partition"
-msgstr ""
+msgstr "sistem kayıt bölümü"
 
 msgid "state"
 msgstr ""
@@ -1349,13 +1341,13 @@ msgid "Edit Analog Line"
 msgstr "Analog hattı düzenle"
 
 msgid "A valid Caller ID must be specified."
-msgstr ""
+msgstr "Geçerli Arayıcı İD'si girlmeli."
 
 msgid "A phone with this extension already exists."
 msgstr ""
 
 msgid "A valid e-mail address must be specified."
-msgstr ""
+msgstr "Geçerli e-posta adresi girilmeli."
 
 #, php-format
 msgid ""
@@ -1448,7 +1440,7 @@ msgid ""
 msgstr ""
 
 msgid "Caller ID / Name"
-msgstr ""
+msgstr "Arayıcı İD'si / İsim"
 
 msgid "Basic"
 msgstr ""
@@ -1484,10 +1476,10 @@ msgid "Dialing Pattern(s)"
 msgstr ""
 
 msgid "A valid Caller ID string must be specified."
-msgstr ""
+msgstr "Geçerli bir Arayıcı İD'si belirtilmeli."
 
 msgid "An incoming Caller ID override string must be specified."
-msgstr ""
+msgstr "Gelen Arayıcı İD'sini değişen dizgi girilmeli."
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
@@ -1671,7 +1663,7 @@ msgid "From Address"
 msgstr "Gönderici Adres"
 
 msgid "This will be shown as voicemail service's sending address."
-msgstr ""
+msgstr "Bu adres Sesli Mesaj servisinde gönderici olarak kullanilir."
 
 msgid "Defaults to the e-mail address entered above."
 msgstr ""
@@ -1707,7 +1699,7 @@ msgid "There are currently no active channels."
 msgstr "Şu an aktif kanal yok."
 
 msgid "Location"
-msgstr ""
+msgstr "Lokasyon"
 
 msgid "Application"
 msgstr "Uygulama"
@@ -1729,7 +1721,7 @@ msgid "Member"
 msgstr "Üye"
 
 msgid "Time"
-msgstr ""
+msgstr "Zaman"
 
 msgid "Do you really want to kick this member?"
 msgstr "Bu üyeyi gerçekten dışlamak istiyor musunuz?"
@@ -1757,7 +1749,7 @@ msgid "status"
 msgstr ""
 
 msgid "Subnet Mask"
-msgstr ""
+msgstr "Altağ Maskesi"
 
 msgid "Media"
 msgstr ""
@@ -1781,13 +1773,13 @@ msgid "Rate"
 msgstr ""
 
 msgid "Signal"
-msgstr ""
+msgstr "Sinyal"
 
 msgid "Noise"
-msgstr ""
+msgstr "Gürültü"
 
 msgid "hidden"
-msgstr ""
+msgstr "gizli"
 
 msgid "ssid"
 msgstr "ssid"
@@ -1901,7 +1893,7 @@ msgid "HTTP"
 msgstr "HTTP"
 
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 msgid "webGUI port"
 msgstr ""
@@ -1942,26 +1934,26 @@ msgstr "Yedekleme/Geridönüşüm"
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
-msgstr ""
+msgstr "Sistem ayarları bu sayfadan geriye dönüştürülür veya korunmaya alınır."
 
 msgid "The configuration has been restored. The PBX is now rebooting."
-msgstr ""
+msgstr "Ayarlama geriye dönüştürüldü. PBX yeniden çalıştırılıyor."
 
 msgid "The configuration could not be restored."
-msgstr ""
+msgstr "Ayarlamalar geriye dönüştürülemedi."
 
 #, php-format
 msgid "XML error: %s"
 msgstr "XML hata: %s"
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr ""
+msgstr "Ayarlamalar geriye dönüştürülemedi (dosya yükleme hatası)."
 
 msgid "Backup configuration"
 msgstr "Yedekleme ayarları"
 
 msgid "Click this button to download the system configuration in XML format."
-msgstr ""
+msgstr "XML biçiminde sistem ayarlarını indirmek için buraya tıklayın."
 
 msgid "Download configuration"
 msgstr "İndirme ayarları"
@@ -2247,7 +2239,7 @@ msgid "duration of the message (i.e. 0:58)"
 msgstr "mesajın süresi (örneğin 0:58)"
 
 msgid "caller id of person leaving the message"
-msgstr ""
+msgstr "mesajı bırakan kişinin arayıcı id'si"
 
 msgid "full date / time (i.e. 2025-11-20 (15:45))"
 msgstr "tam tarih / zaman (örneğin 2025-11-20 (15:45))"
@@ -2263,11 +2255,6 @@ msgstr "webGUİ dili"
 
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "webGUİ arayüzünün görüntülenmesi istediğiniz dili seçin."
-
-msgid ""
-"Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are able "
-"to provide a new translation."
-msgstr ""
 
 msgid "Audio Codecs"
 msgstr "Ses Kodlayıcı-kodçözücüsü"
@@ -2286,6 +2273,8 @@ msgid ""
 "account associated with the first member will be used if the call is not "
 "answered."
 msgstr ""
+"Tüm grup üyeleri aynı anda aranaçaktır. <strong>Çağrı cevapsız kaldığında "
+"Sesli Mesaj hesabınla ilişkilendirilmiş ilk üye kullanılaçaktır. "
 
 msgid "Incoming Extension(s)"
 msgstr "Gelen Arama Hat(lar)"
@@ -2363,10 +2352,10 @@ msgid "Line Gain"
 msgstr "Hat Kazancı"
 
 msgid "receive"
-msgstr ""
+msgstr "alma"
 
 msgid "transmit"
-msgstr ""
+msgstr "gönderme"
 
 msgid ""
 "Some analog connections may need adjustment to achieve an acceptable audio "
@@ -2375,34 +2364,34 @@ msgid ""
 msgstr ""
 
 msgid "Incoming Caller ID Overrides"
-msgstr ""
+msgstr "Gelen Arayıcı İD'si Değişen"
 
 msgid "Source Name &lt;number&gt;"
 msgstr ""
 
 msgid "Prepend with string"
-msgstr ""
+msgstr "Dizgini önüne ekle"
 
 msgid "Replace with string"
-msgstr ""
+msgstr "Dizgin ile değiş"
 
 msgid "Replace calling name with calling number."
-msgstr ""
+msgstr "Arayan ismi arayan numarasıyla değiş."
 
 msgid "Disable overrides"
 msgstr ""
 
 msgid "Outgoing Caller ID"
-msgstr ""
+msgstr "Çıkış Arayıcı İD'si"
 
 msgid "Your Name &lt;number&gt;"
-msgstr ""
+msgstr "Adınız &lt;number&gt;"
 
 msgid "Send string defined above&nbsp;"
 msgstr ""
 
 msgid "Send phones' Caller ID"
-msgstr ""
+msgstr "Telefonun Arayıcı İD'sini gönder"
 
 msgid "There are currently no providers defined."
 msgstr ""
@@ -2458,6 +2447,8 @@ msgid ""
 "An e-mail address. If entered, voicemail will be enabled on this extension. "
 "Incoming messages will be sent to the given address."
 msgstr ""
+"Bir E-posta adresi. Girildiğinde Sesli Mesaj bu dahili hat için seçilir "
+"kılınır. Gelen mesajlar girilen adrese gönderileçektir."
 
 msgid "Voicemail Services"
 msgstr "Sesli Mesaj Servisleri"
@@ -2532,7 +2523,7 @@ msgid ""
 msgstr ""
 
 msgid "Text to be displayed for Caller ID."
-msgstr ""
+msgstr "Arayıcı İD yerine gösterilen metin."
 
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
@@ -2547,7 +2538,7 @@ msgid ""
 msgstr ""
 
 msgid "Authentication Method"
-msgstr ""
+msgstr "Kimlik Denetimi"
 
 msgid ""
 "Most accounts will work using 'auto'. If this fails, select an "
@@ -2558,16 +2549,16 @@ msgid "of"
 msgstr ""
 
 msgid "connected"
-msgstr ""
+msgstr "bağlandı"
 
 msgid "connected but lagged"
 msgstr ""
 
 msgid "unreachable"
-msgstr ""
+msgstr "erişilemez"
 
 msgid "status unknown"
-msgstr ""
+msgstr "belirsiz statü"
 
 msgid "You are using the most recent version of AskoziaPBX."
 msgstr ""
@@ -2582,16 +2573,16 @@ msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
 msgstr ""
 
 msgid "The following input errors were detected:"
-msgstr ""
+msgstr "Şu giriş hataları bulundu:"
 
 msgid "print"
 msgstr "yazdır"
 
 msgid "Summary"
-msgstr ""
+msgstr "Özet"
 
 msgid "Manager"
-msgstr ""
+msgstr "Yönetmen"
 
 msgid "Ping/Traceroute"
 msgstr ""
@@ -2621,43 +2612,44 @@ msgid "permanently delete an item"
 msgstr "öğeyi geri dönüştürülememe şeklinde silin"
 
 msgid "check for package updates"
-msgstr ""
+msgstr "paket güncelleğini kontrol et"
 
 msgid "restore a backup archive"
-msgstr ""
+msgstr "yedekleme dosyasını geri dönüştür"
 
 msgid "download a backup archive"
-msgstr ""
+msgstr "yedekleme dosyasını indir"
 
 msgid "webGUI Configuration"
 msgstr "webGUİ Ayarları"
 
+#, fuzzy
 msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
-msgstr ""
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tüm haklar saklı."
 
 msgid "view license"
-msgstr ""
+msgstr "lisansa bak"
 
 msgid "LAN net"
-msgstr ""
+msgstr "LAN ağ"
 
 msgid "autoselect"
 msgstr ""
 
 msgid "100BASE-TX full-duplex"
-msgstr ""
+msgstr "100BASE-TX full-duplex"
 
 msgid "100BASE-TX half-duplex"
-msgstr ""
+msgstr "100BASE-TX half-duplex"
 
 msgid "10BASE-T full-duplex"
-msgstr ""
+msgstr "10BASE-T full-duplex"
 
 msgid "10BASE-T half-duplex"
-msgstr ""
+msgstr "10BASE-T half-duplex"
 
 msgid "1000BASE-TX full-duplex"
-msgstr ""
+msgstr "1000BASE-TX full-duplex"
 
 msgid "Public IP address"
 msgstr "Kamusal İP adres"
@@ -2683,7 +2675,7 @@ msgid ""
 msgstr ""
 
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
+msgstr "1000Hz lik sabit ses oluşturur. Bağlantı kalite testi için kullanılır."
 
 msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
@@ -2735,59 +2727,74 @@ msgstr "İngilizce"
 msgid "English (formal)"
 msgstr "İngilizce (Nazik)"
 
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgaristan"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "İtalyanca (resmi)"
+
 msgid "Czech"
 msgstr "Çekoslovakca"
 
 msgid "Czech (formal)"
-msgstr ""
+msgstr "Çek dili (resmi)"
 
 msgid "Danish (formal)"
-msgstr ""
+msgstr "Danimarkaca (resmi)"
 
 msgid "Dutch (formal)"
-msgstr ""
+msgstr "Holandaca (resmi)"
 
 msgid "Finnish"
 msgstr "Finlandaca"
 
 msgid "Finnish (formal)"
-msgstr ""
+msgstr "Finlandaca (resmi)"
 
 msgid "French"
 msgstr "Fransızca"
 
 msgid "French (formal)"
-msgstr ""
+msgstr "Fransızca (resmi)"
 
 msgid "German (formal)"
-msgstr ""
+msgstr "Almanca (resmi)"
 
 msgid "Greek"
-msgstr ""
+msgstr "Yunanca"
 
 msgid "Greek (formal)"
-msgstr ""
+msgstr "Yunanca (resmi)"
 
 msgid "Italian (formal)"
-msgstr ""
+msgstr "İtalyanca (resmi)"
 
 msgid "Polish"
-msgstr ""
+msgstr "Polonya dili"
 
 msgid "Polish (formal)"
-msgstr ""
+msgstr "Polon dili (resmi)"
 
 msgid "Portuguese, Brazil"
-msgstr ""
+msgstr "Portekiz, Brezilya"
 
 msgid "Portuguese, Brazil (formal)"
-msgstr ""
+msgstr "Portekiz, Brezilya (resmi)"
 
 msgid "Russian (formal)"
-msgstr ""
+msgstr "Rusça (resmi)"
 
 msgid "Spanish (formal)"
+msgstr "İspanyolça (resmi)"
+
+msgid "Turkish"
 msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Danimarkaca (resmi)"
 
 msgid "point-to-multipoint, terminal equipment"
 msgstr ""
@@ -2802,10 +2809,10 @@ msgid "point-to-point, network termination"
 msgstr ""
 
 msgid "United States / North America"
-msgstr ""
+msgstr "Birleşik Devletler / Kuzey Amerika"
 
 msgid "Australia"
-msgstr ""
+msgstr "Avustralya"
 
 msgid "Austria"
 msgstr "Avusturya"
@@ -2814,7 +2821,7 @@ msgid "Belgium"
 msgstr "Belçika"
 
 msgid "Chile"
-msgstr ""
+msgstr "Şili"
 
 msgid "China"
 msgstr "Çin"
@@ -2910,7 +2917,7 @@ msgid "Russia / ex Soviet Union"
 msgstr "Rusya / ex Sovyet Birliği"
 
 msgid "Singapore"
-msgstr ""
+msgstr "Singapur"
 
 msgid "South Africa"
 msgstr "Güney Afrika"
@@ -2919,10 +2926,10 @@ msgid "Switzerland"
 msgstr "İsviçre"
 
 msgid "Thailand"
-msgstr ""
+msgstr "Tayland"
 
 msgid "Venezuela / South America"
-msgstr ""
+msgstr "Venezuela / Güney Amerika"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
@@ -2946,7 +2953,7 @@ msgid "reload page"
 msgstr "sayfayı yeniden çağır"
 
 msgid "Outgoing Calls Only"
-msgstr ""
+msgstr "Sadece Dış Aramalar "
 
 msgid "SIP Phones"
 msgstr "SİP Telefonları"
@@ -2973,28 +2980,28 @@ msgid "down"
 msgstr ""
 
 msgid "associated"
-msgstr ""
+msgstr "ilişkilendirildi"
 
 msgid "HIDE"
 msgstr ""
 
 msgid "unconfigured"
-msgstr ""
+msgstr "ayarlanmamış"
 
 msgid "Package activated successfully."
-msgstr ""
+msgstr "Paket başarıyla etkinleştirildi."
 
 msgid "Package deactivated successfully."
-msgstr ""
+msgstr "Paket etkinliği başarıyla kaldırıldı."
 
 msgid "Package deleted successfully."
-msgstr ""
+msgstr "Paket başarıyla silindi."
 
 msgid "Package restored successfully."
-msgstr ""
+msgstr "Paket başarıyla önceki boyuta getirildi."
 
 msgid "Package installed successfully."
-msgstr ""
+msgstr "Paket başarıyla yüklendi."
 
 #, php-format
 msgid "%.2f GB"
