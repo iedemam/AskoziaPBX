@@ -239,33 +239,10 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script src="jquery.progressbar.js" type="text/javascript"></script>
+<script src="gui_head.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 
-<body link="#0000CC" vlink="#0000CC" alink="#0000CC">
-<script type="text/JavaScript">
-<!--
-	jQuery.noConflict();
-
-	jQuery(document).ready(function(){
-
-		jQuery.preloadImages(['/tri_o.gif', '/tri_c.gif']);
-
-	});
-
-function showhide(tspan, tri) {
-	tspanel = document.getElementById(tspan);
-	triel = document.getElementById(tri);
-	if (tspanel.style.display == 'none') {
-		jQuery("#" + tspan).slideDown("slow");
-		triel.src = "tri_o.gif";
-	} else {
-		jQuery("#" + tspan).slideUp("slow");
-		triel.src = "tri_c.gif";
-	}
-}
--->
-</script>
 <? include("fbegin_header.inc"); ?>
 	<tr valign="top"> 
 		<td width="150" class="link_table_bg">
