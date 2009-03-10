@@ -1,6 +1,7 @@
-2009.xx.xx - 1.0.2
+2009.03.10 - 1.0.2
  - localization: added Turkish (submitted by Akif Dinç)
  - localization: added Japanese (submitted by Kenichi Fukaumi)
+ - localization: added Spanish
  - localization: updated Bulgarian and Dutch
  - refactor: pbxdev.php extended to allow for both freebsd and linux to be used as the base operating system
  - refactor: navigation menu changed to use <ul> and <li> elements

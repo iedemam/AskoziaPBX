@@ -295,23 +295,23 @@ function display_gui_language_selector($current_language) {
 	$languages = array(
 		"en_US" => "English",
 		"bg_BG" => "Български",
-//		"es_ES" => "Castellano (0%)",
+		"es_ES" => "Castellano",
 		"zh_CN" => "简体中文",
 		"zh_TW" => "繁體中文",
-		"cs_CS" => "Čeština (50%)",
+		"cs_CS" => "Čeština",
 		"da_DA" => "Dansk",
 		"de_DE" => "Deutsch",
 		"el_GR" => "Ελληνικά",
-//		"fr_FR" => "Français (0%)",
+//		"fr_FR" => "Français",
 		"it_IT" => "Italiano",
 		"pl_PL" => "Język polski",
-		"nl_NL" => "Nederlands (60%)",
+		"nl_NL" => "Nederlands",
 		"jp_JP" => "日本語",
-//		"pt_BR" => "Português (0%)",
+//		"pt_BR" => "Português",
 		"fi_FI" => "Suomi",
-//		"se_SE" => "Svenska (0%)",
+//		"se_SE" => "Svenska",
 		"tr_TR" => "Türkçe"
-//		"ru_RU" => "Русский язык (0%)"
+//		"ru_RU" => "Русский язык"
 	);
 
 	?><tr> 
