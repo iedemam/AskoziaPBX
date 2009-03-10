@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 13:20+0100\n"
+"POT-Creation-Date: 2009-03-10 14:41+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -2195,23 +2195,36 @@ msgstr "Il PBX si riavvierà dopo aver ripristinato la configurazione."
 msgid "Factory Defaults"
 msgstr "Impostazioni predefinite"
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+#, fuzzy
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Il sistema è stato ripristinato con le impostazioni predefinite e si sta "
 "riavviando. Questa operazione potrebbe richiedere qualche minuto."
 
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to 'askozia'."
+#, fuzzy
+msgid "and is now rebooting. This may take a minute."
 msgstr ""
-"Se clicchi &quot;Si&quot;, il centralino sarà ripristinato alle impostazioni "
-"predefinite. L'intera configurazione di sistema verrà sovrascritta. "
-"L'indirizzo IP sarà ripristinato a 192.168.1.2 e la password sarà impostata "
-"a 'askozia'."
+"Il sistema ora si riavvierà. Questa operazione potrebbe richiedere alcuni "
+"minuti."
+
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
+msgstr ""
+"dopo aver cliccato &quot;Salva&quot;, tutte le chiamate verranno terminate."
+
+#, fuzzy, php-format
+msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgstr ""
+"Il sistema è stato ripristinato con le impostazioni predefinite e si sta "
+"riavviando. Questa operazione potrebbe richiedere qualche minuto."
+
+#, php-format
+msgid "system configuration will be overwritten. The LAN IP address will be "
+msgstr ""
+
+#, php-format
+msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgstr ""
 
 msgid "Are you sure you want to proceed?"
 msgstr "Sei sicuro di voler procedere?"
@@ -3401,6 +3414,17 @@ msgstr "Il campo '%s' contiene dei caratteri non validi."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Il campo '%s' è obbligatorio."
+
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Se clicchi &quot;Si&quot;, il centralino sarà ripristinato alle "
+#~ "impostazioni predefinite. L'intera configurazione di sistema verrà "
+#~ "sovrascritta. L'indirizzo IP sarà ripristinato a 192.168.1.2 e la "
+#~ "password sarà impostata a '%s'."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

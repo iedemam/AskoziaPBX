@@ -1676,6 +1676,9 @@ function release($name, $brand) {
 		// signing
 		foreach($platforms as $platform) {
 			$filename = "pbx-" . $platform . "-" . basename($name) . ".img";
+			if ($brand != "default") {
+				$filename = "$brand-$filename";
+			}
 			_exec("{$dirs['tools']}/sign ../sig/AskoziaPBX_private_key.pem {$dirs['images']}/$filename");
 		}
 
@@ -1711,6 +1714,9 @@ function _brand($image_name, $brand) {
 	_exec("cp $branding_path/$brand/webgui/* tmp/stage/usr/local/www");
 	_exec("cp $branding_path/$brand/conf/config.*.xml tmp/stage/conf.default");
 
+	if (file_exists("$branding_path/$brand/strings/brand.licensed")) {
+		_exec("rm tmp/stage/usr/local/www/license.php");
+	}
 }
 
 function _get_dir_size($dir) {
@@ -1907,10 +1913,10 @@ if ($argv[1] == "prepare") {
 	}
 	release($image_name, $brand);
 
+} else if ($argv[1] == "crypt") {
+	_log(crypt($argv[2]) . "\n");
+
 // handle all two argument commands
-//
-// XXX : single argument commands should be moved into functions and handled
-//			in the same manner
 } else if (isset($argv[1]) && isset($argv[2])) {
 	$f = implode("_", array_slice($argv, 1));
 	if (!function_exists($f)) {

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 13:20+0100\n"
+"POT-Creation-Date: 2009-03-10 14:41+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2130,23 +2130,34 @@ msgstr "PBX käynnistyy uudelleen konfiguroinnin palautuksen jälkeen."
 msgid "Factory Defaults"
 msgstr "Tehdasasetukset"
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+#, fuzzy
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
 "kestää muutaman minuutin."
 
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to 'askozia'."
+#, fuzzy
+msgid "and is now rebooting. This may take a minute."
+msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
+
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja käynnistyy "
-"uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP osoite tulee "
-"olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle tulee olemaan "
-"'askozia'."
+"Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
+
+#, fuzzy, php-format
+msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgstr ""
+"Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
+"kestää muutaman minuutin."
+
+#, php-format
+msgid "system configuration will be overwritten. The LAN IP address will be "
+msgstr ""
+
+#, php-format
+msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgstr ""
 
 msgid "Are you sure you want to proceed?"
 msgstr "Oletko varma että haluat edetä?"
@@ -3299,6 +3310,17 @@ msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Kohta '%s' on määritettävä."
+
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja "
+#~ "käynnistyy uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP "
+#~ "osoite tulee olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle "
+#~ "tulee olemaan '%s'."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

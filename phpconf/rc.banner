@@ -36,14 +36,18 @@
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
 	$product_name = system_get_product_name();
+	$copyright_info = "AskoziaPBX is Copyright (C) 2007-2009 IKT. All rights reserved.\n" .
+		"    m0n0wall base Copyright (C) 2002-2009 Manuel Kasper. All rights reserved.\n";
+	if (file_exists("{$g['etc_path']}/brand.licensed")) {
+		$copyright_info = "\n\n";
+	}
 	
 	echo <<<EOD
 
 
 *** This is {$product_name}, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
-    AskoziaPBX is Copyright (C) 2007-2009 IKT. All rights reserved.
-    m0n0wall base Copyright (C) 2002-2009 Manuel Kasper. All rights reserved.
+    {$copyright_info}
     
     
     LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}

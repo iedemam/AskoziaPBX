@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 13:20+0100\n"
+"POT-Creation-Date: 2009-03-10 14:41+0100\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2051,16 +2051,28 @@ msgstr "La PBX se reiniciará tras restaurar la configuración-"
 msgid "Factory Defaults"
 msgstr ""
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to 'askozia'."
+#, fuzzy
+msgid "and is now rebooting. This may take a minute."
+msgstr "El sistema está reiniciando. Esta operación puede tardar un minuto."
+
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
+msgstr ""
+"cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán colgadas."
+
+#, php-format
+msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgstr ""
+
+#, php-format
+msgid "system configuration will be overwritten. The LAN IP address will be "
+msgstr ""
+
+#, php-format
+msgid "reset to 192.168.1.2 and the password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

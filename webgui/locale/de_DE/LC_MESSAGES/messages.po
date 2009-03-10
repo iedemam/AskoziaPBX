@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 13:20+0100\n"
+"POT-Creation-Date: 2009-03-10 14:41+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Test <Test@Test.de>\n"
 "Language-Team: \n"
@@ -2154,23 +2154,35 @@ msgstr "Die Anlage wird nach der Rücksierung neu starten."
 msgid "Factory Defaults"
 msgstr "Werkseinstellungen"
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+#, fuzzy
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Das System wurde auf die Werkseinstellungen zurückgesetzt und startet jetzt "
 "neu. Das kann etwas Zeit benötigen."
 
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to 'askozia'."
+#, fuzzy
+msgid "and is now rebooting. This may take a minute."
+msgstr "Das System startet jetz neu, das kann etwas Zeit brauchen."
+
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Wenn Sie &quot;Ja&quot; klicken wird die Anlage auf Werkseinstellungen "
-"zurückgesetzt und neu gestartet. Alle gemachten Einstellungen werden "
-"zurückgesetzt. Die IP-Adresse der Anlage wird auf 192.168.1.2 "
-"zurückgesetzt . Das Passwort für ie Oberfläche wird wieder 'askozia' sein."
+"alle laufenden Verbindungen werden getrennt, wenn Sie &quot;Speichern&quot; "
+"drücken"
+
+#, fuzzy, php-format
+msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgstr ""
+"Das System wurde auf die Werkseinstellungen zurückgesetzt und startet jetzt "
+"neu. Das kann etwas Zeit benötigen."
+
+#, php-format
+msgid "system configuration will be overwritten. The LAN IP address will be "
+msgstr ""
+
+#, php-format
+msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgstr ""
 
 msgid "Are you sure you want to proceed?"
 msgstr "Möchten sie fortfahren?"
@@ -3343,6 +3355,17 @@ msgstr "Das Feld  '%s' enthält ungültige Zeichen."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Das Feld '%s' ist ein Pflichtfeld."
+
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Wenn Sie &quot;Ja&quot; klicken wird die Anlage auf Werkseinstellungen "
+#~ "zurückgesetzt und neu gestartet. Alle gemachten Einstellungen werden "
+#~ "zurückgesetzt. Die IP-Adresse der Anlage wird auf 192.168.1.2 "
+#~ "zurückgesetzt . Das Passwort für ie Oberfläche wird wieder '%s' sein."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

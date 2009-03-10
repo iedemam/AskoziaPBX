@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 13:20+0100\n"
+"POT-Creation-Date: 2009-03-10 14:41+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2147,22 +2147,34 @@ msgstr ""
 msgid "Factory Defaults"
 msgstr "По подразбиране"
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+#, fuzzy
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Системата беше възстановена по подразбиране и сега се рестартира. Това може "
 "да отнеме известно време."
 
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to 'askozia'."
+#, fuzzy
+msgid "and is now rebooting. This may take a minute."
+msgstr "Системата се рестартира. Това може да отнеме минута."
+
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Ако кликнете &quot;Да&quot;, централата ще се възстанови до по подразбиране "
-"и ще се рестартира. Всички системни настройки ще бъдат презаписани. LAN IP "
-"адреса ще се въстанови на 192.168.1.2 и паролата ще бъде 'askozia'."
+"След като кликнете &quot;Запиши&quot;, всички активни разговори ще прекъснат."
+
+#, fuzzy, php-format
+msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgstr ""
+"Системата беше възстановена по подразбиране и сега се рестартира. Това може "
+"да отнеме известно време."
+
+#, php-format
+msgid "system configuration will be overwritten. The LAN IP address will be "
+msgstr ""
+
+#, php-format
+msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgstr ""
 
 msgid "Are you sure you want to proceed?"
 msgstr "Сигурни ли сте че искате да продължите?"
@@ -3321,6 +3333,17 @@ msgstr "Полето '%s' съдържа невалидни символи."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Полето '%s' е задължително."
+
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Ако кликнете &quot;Да&quot;, централата ще се възстанови до по "
+#~ "подразбиране и ще се рестартира. Всички системни настройки ще бъдат "
+#~ "презаписани. LAN IP адреса ще се въстанови на 192.168.1.2 и паролата ще "
+#~ "бъде '%s'."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "
