@@ -239,6 +239,9 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script src="jquery.progressbar.js" type="text/javascript"></script>
+<script src="ui.core.js" type="text/javascript"></script>
+<script src="ui.draggable.js" type="text/javascript"></script>
+<script src="ui.sortable.js" type="text/javascript"></script>
 <script src="gui_head.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>

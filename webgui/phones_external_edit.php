@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = true;
+$needs_scriptaculous = false;
 
 require("guiconfig.inc");
 

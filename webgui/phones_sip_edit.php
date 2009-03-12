@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = true;
+$needs_scriptaculous = false; 
 
 require("guiconfig.inc");
 
@@ -245,20 +245,18 @@ if ($_POST) {
 <script type="text/javascript" charset="utf-8">
 // <![CDATA[
 	
-	Sortable.create("ace",
-		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});
-	Sortable.create("acd",
-		{dropOnEmpty:true,containment:["ace","acd"],constraint:false});
-	Sortable.create("vce",
-		{dropOnEmpty:true,containment:["vce","vcd"],constraint:false});
-	Sortable.create("vcd",
-		{dropOnEmpty:true,containment:["vce","vcd"],constraint:false});	
-	
+   jQuery(document).ready(function() {
+		jQuery('ul.ace').sortable({ connectWith: ['ul.acd'], revert: true });
+		jQuery('ul.acd').sortable({ connectWith: ['ul.ace'], revert: true });
+		jQuery('ul.vce').sortable({ connectWith: ['ul.vcd'], revert: true });
+		jQuery('ul.vcd').sortable({ connectWith: ['ul.vce'], revert: true });
+	});
+
 	function save_codec_states() {
 		var acs = document.getElementById('a_codecs');
-		acs.value = Sortable.serialize('ace');
+		acs.value = jQuery('ul.ace').sortable('serialize', {key: 'ace'});
 		var vcs = document.getElementById('v_codecs');
-		vcs.value = Sortable.serialize('vce');
+		vcs.value = jQuery('ul.vce').sortable('serialize', {key: 'vce'});
 	}
 // ]]>			
 </script>

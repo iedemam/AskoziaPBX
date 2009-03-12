@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = true;
+$needs_scriptaculous = false; 
 
 require("guiconfig.inc");
 
@@ -151,14 +151,14 @@ include("fbegin.inc");
 <script type="text/javascript" charset="utf-8">
 // <![CDATA[
 
-	Sortable.create("gme",
-		{dropOnEmpty:true,containment:["gme","gmd"],constraint:false});
-	Sortable.create("gmd",
-		{dropOnEmpty:true,containment:["gme","gmd"],constraint:false});
+	jQuery(document).ready(function() {
+		jQuery('ul.gme').sortable({ connectWith: ['ul.gmd'], revert: true });
+		jQuery('ul.gmd').sortable({ connectWith: ['ul.gme'], revert: true });
+	});
 
 	function save_groupmember_states() {
 		var gms = document.getElementById('groupmembers');
-		gms.value = Sortable.serialize('gme');
+		gms.value = jQuery('ul.gme').sortable('serialize', {key: 'gme'});
 	}
 // ]]>			
 </script>
