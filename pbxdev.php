@@ -34,16 +34,16 @@
 // --[ package versions ]------------------------------------------------------
 
 $versions = array(
-	"asterisk"		=> "asterisk-1.4.21.2",
+	"asterisk"		=> "asterisk-1.4.23.1",
 	"ezipupdate"	=> "ez-ipupdate-3.0.11b8",
-	"i4b"			=> "i4b-trunk",
-	"jquery"		=> "jquery-1.2.1",
+	"i4b"				=> "i4b-trunk",
+	"jqueryui"		=> "jquery.ui-1.5.3",
+	"jquery"			=> "jquery-1.2.6",
 	"mini_httpd"	=> "mini_httpd-1.19",
 	"msmtp"			=> "msmtp-1.4.11",
 	"msntp"			=> "msntp-1.6",
 	"pecl_sqlite"	=> "SQLite-1.0.3",
-	"php"			=> "php-4.4.9",
-	"scriptaculous"	=> "scriptaculous-js-1.8.1",
+	"php"				=> "php-4.4.9",
 	"udesc_dump"	=> "udesc_dump-1.3.9",
 	"zaptel"		=> "zaptel-trunk"
 );
@@ -365,7 +365,7 @@ function build_zaptel() {
 	if ($target_os == "freebsd") {
 		if (!file_exists("{$dirs['packages']}/{$versions['zaptel']}")) {
 			_exec("cd {$dirs['packages']}; ".
-				"svn co --username svn --password svn ".
+				"svn co --username svn --password svn -r169 ".
 				"https://svn.pbxpress.com:1443/repos/zaptel-bsd/branches/zaptel-1.4 {$versions['zaptel']}");
 		}
     	
@@ -449,7 +449,7 @@ function build_msmtp() {
 	if ($target_os == "freebsd") {
 		if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}.tar")) {
 			_exec("cd {$dirs['packages']}; ".
-				"fetch http://belnet.dl.sourceforge.net/sourceforge/msmtp/{$versions['msmtp']}.tar.bz2");
+				"fetch http://freefr.dl.sourceforge.net/sourceforge/msmtp/{$versions['msmtp']}.tar.bz2");
 		}
 		if (!file_exists("{$dirs['packages']}/{$versions['msmtp']}")) {
 			_exec("cd {$dirs['packages']}; bunzip2 {$versions['msmtp']}.tar.bz2; tar xf {$versions['msmtp']}.tar");
@@ -899,7 +899,7 @@ function populate_sounds($image_name) {
 			$formats = array("ulaw");
 			foreach($formats as $format) {
 				$distname = "asterisk-core-sounds-fr-$format-$core_sounds_version";
-				$disturl = "http://ftp.digium.com/pub/telephony/sounds/releases";
+				$disturl = "http://downloads.digium.com/pub/telephony/sounds/releases";
             	
 				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
 						_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
@@ -924,7 +924,7 @@ function populate_sounds($image_name) {
 			$formats = array("711u"); // XXX : files aren't automatically renamed here!
 			foreach($formats as $format) {
 				$distname = "asterisk-voces-es-v1_2-$format-voipnovatos";
-				$disturl = "http://www.voipnovatos.es/voces";
+				$disturl = "http://www.voipnovatos.es/voices";
             	
 				if (!file_exists("{$dirs['sounds']}/$distname.tar.gz"))
 						_exec("cd {$dirs['sounds']}; fetch $disturl/$distname.tar.gz");
@@ -1117,14 +1117,15 @@ function populate_sounds($image_name) {
 			foreach ($sounds as $sound) {
 				if (!file_exists("{$dirs['sounds']}/$distname/sounds/pt_BR/$sound" . "ulaw")) {
 					_exec("cd {$dirs['sounds']}/$distname/sounds/pt_BR/; " .
-					"sox -V $sound" . "wav -r 8000 -c 1 -t ul -w $sound" . "ulaw");
+					"sox -V $sound" . "wav -r 8000 -c 1 -t ul $sound" . "ulaw");
 				}
 				_exec("cp {$dirs['sounds']}/$distname/sounds/pt_BR/$sound" . "ulaw $image_name/asterisk/sounds/pt-br");
 			}
 			foreach($digits as $digit) {
 				if (!file_exists("{$dirs['sounds']}/$distname/sounds/digits/pt_BR/$digit.ulaw")) {
 					_exec("cd {$dirs['sounds']}/$distname/sounds/digits/pt_BR/; " .
-					"sox -V $digit.wav -r 8000 -c 1 -t ul -w $digit.ulaw");
+					"sox -V $digit.wav -r 8000 -c 1 -t ul $digit.ulaw");
+					//"sox -V $digit.wav -r 8000 -c 1 -t ul -w $digit.ulaw"); //-w not available
 				}
 				_exec("cp {$dirs['sounds']}/$distname/sounds/digits/pt_BR/$digit.ulaw $image_name/asterisk/sounds/pt-br/digits");
 			}
@@ -1139,7 +1140,7 @@ function populate_sounds($image_name) {
 		$distname = "asterisk-moh-freeplay-$format";
 		if (!file_exists("{$dirs['sounds']}/$distname.tar.gz")) {
 			_exec("cd {$dirs['sounds']}; ".
-				"fetch http://ftp.digium.com/pub/telephony/sounds/releases/$distname.tar.gz");
+				"fetch http://downloads.digium.com/pub/telephony/sounds/releases/$distname.tar.gz");
 		}
 		if (!file_exists("{$dirs['sounds']}/$distname")) {
 			_exec("mkdir {$dirs['sounds']}/$distname");
@@ -1226,17 +1227,6 @@ function populate_webgui($image_name) {
 		// remove the .po locale source files
 		_exec("find $image_name/rootfs/usr/local/www/locale -type f -name \"*.po\" -delete -print");
 
-		// grab scriptaculous
-		if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}.zip")) {
-			_exec("cd {$dirs['packages']}; ".
-				"fetch http://script.aculo.us/dist/{$versions['scriptaculous']}.zip");
-		}
-		if (!file_exists("{$dirs['packages']}/{$versions['scriptaculous']}")) {
-			_exec("cd {$dirs['packages']}; unzip {$versions['scriptaculous']}.zip");
-		}
-		_exec("cd {$dirs['packages']}/{$versions['scriptaculous']}; ".
-			"cp src/dragdrop.js src/effects.js src/scriptaculous.js lib/prototype.js $image_name/rootfs/usr/local/www/");
-
 	} else if ($target_os == "linux") {
 
 	}
@@ -1308,6 +1298,14 @@ function populate_jquery($image_name) {
 				_exec("cp " . $dirs['packages'] . "/jquery." . $p[0] . ".js " . $image_name . "/rootfs/usr/local/www/");
 			}
 		}
+
+		// grab jqueryui
+		if (!file_exists("{$dirs['packages']}/{$versions['jqueryui']}.zip")) {
+			_exec("cd {$dirs['packages']}; ".
+				"fetch http://jquery-ui.googlecode.com/files/{$versions['jqueryui']}.zip"); //
+			_exec("cd {$dirs['packages']}; unzip {$versions['jqueryui']}.zip");
+		}
+		_exec("cd {$dirs['packages']}/{$versions['jqueryui']}/; "."cp ui/ui.core.js ui/ui.sortable.js ui/ui.draggable.js $image_name/rootfs/usr/local/www/");
 
 		if (!file_exists("{$dirs['packages']}/jquery.progressbar.1.1.zip")) {
 			_exec("cd {$dirs['packages']}; ".
@@ -1425,7 +1423,9 @@ function package($platform, $image_name, $brand) {
 
 		if ($platform != "generic-pc") {
 			foreach ($low_power_libraries as $lpl) {
-				_exec("rm tmp/stage/$lpl");
+				if (file_exists("tmp/stage/$lpl")) {
+					_exec("rm tmp/stage/$lpl");
+				}
 			}
 		}
 
@@ -1519,7 +1519,9 @@ function package($platform, $image_name, $brand) {
 		// XXX quick fix to remove low power modules
 		if (strpos($platform, "generic-pc") === false) {
 			foreach ($low_power_modules as $lpm) {
-				_exec("rm tmp/mnt/modules/$lpm");
+				if (file_exists("tmp/mnt/modules/$lpm")) {
+					_exec("rm tmp/mnt/modules/$lpm");
+				}
 			}
 		}
 		_log("---- $platform - " . basename($image_name) . " - asterisk partition ----");
