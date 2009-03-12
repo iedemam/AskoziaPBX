@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -666,9 +666,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr "descr"
-
 msgid "edit application mapping"
 msgstr "rediger applikation kortlægning"
 
@@ -1226,10 +1223,6 @@ msgstr "Installerede pakker"
 
 msgid "system storage partition"
 msgstr "system lager partition"
-
-#, fuzzy
-msgid "state"
-msgstr "start"
 
 msgid "Edit Disk"
 msgstr "Rediger Disk"
@@ -1814,10 +1807,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Netværk Traffik"
 
-#, fuzzy
-msgid "status"
-msgstr "Status"
-
 msgid "Subnet Mask"
 msgstr "Undernetmaske"
 
@@ -1850,10 +1839,6 @@ msgstr "Støj"
 
 msgid "hidden"
 msgstr "gemt"
-
-#, fuzzy
-msgid "ssid"
-msgstr "Rusland"
 
 msgid "Associated stations"
 msgstr "Associerede stationer"
@@ -2059,34 +2044,24 @@ msgid "Factory Defaults"
 msgstr "Fabriks Indstillinger"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
-msgstr ""
-"Systemet er resat til fabriks instillinger og vil nu genstarte. Dette vil "
-"tage et minuts tid."
-
-#, fuzzy
-msgid "and is now rebooting. This may take a minute."
-msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr ""
-"efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
-"afsluttet."
-
-#, fuzzy, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Systemet er resat til fabriks instillinger og vil nu genstarte. Dette vil "
 "tage et minuts tid."
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
+"fabriksindstillingerne og vil genstarte med det samme. Hele system "
+"konfigurationen vil blive overskrevet. LAN IP adressen vil bliver nustillet "
+"til 192.168.1.2 og kodeordet bliver sat til '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Er du sikker på du vil forsætte?"
@@ -3236,16 +3211,37 @@ msgstr "Feltet '%s' indeholder ulovlige tegn."
 msgid "The field '%s' is required."
 msgstr "Feltet '%s' er krævet."
 
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "start"
+
+#, fuzzy
+#~ msgid "status"
+#~ msgstr "Status"
+
+#, fuzzy
+#~ msgid "ssid"
+#~ msgstr "Rusland"
+
+#, fuzzy
+#~ msgid "and is now rebooting. This may take a minute."
+#~ msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
 #~ msgstr ""
-#~ "Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
-#~ "fabriksindstillingerne og vil genstarte med det samme. Hele system "
-#~ "konfigurationen vil blive overskrevet. LAN IP adressen vil bliver "
-#~ "nustillet til 192.168.1.2 og kodeordet bliver sat til '%s'."
+#~ "efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
+#~ "afsluttet."
+
+#, fuzzy
+#~ msgid ""
+#~ "be reset to factory defaults and will reboot immediately. The entire "
+#~ msgstr ""
+#~ "Systemet er resat til fabriks instillinger og vil nu genstarte. Dette vil "
+#~ "tage et minuts tid."
 
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "AskoziaPBX WebGUI"

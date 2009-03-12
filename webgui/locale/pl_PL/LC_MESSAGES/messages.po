@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -651,9 +651,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr "opis"
-
 msgid "edit application mapping"
 msgstr "edytuj mapowanie aplikacji"
 
@@ -1249,10 +1246,6 @@ msgstr "Zainstalowane Pakiety"
 msgid "system storage partition"
 msgstr "partycja magazynu danych"
 
-#, fuzzy
-msgid "state"
-msgstr "start"
-
 msgid "Edit Disk"
 msgstr "Edytuj dysk"
 
@@ -1826,10 +1819,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Ruch sieciowy"
 
-#, fuzzy
-msgid "status"
-msgstr "Status"
-
 msgid "Subnet Mask"
 msgstr "Maska Podsieci"
 
@@ -1862,10 +1851,6 @@ msgstr "Szum"
 
 msgid "hidden"
 msgstr "ukryte"
-
-#, fuzzy
-msgid "ssid"
-msgstr "Rosja"
 
 msgid "Associated stations"
 msgstr "Podłączone stacje"
@@ -2073,34 +2058,23 @@ msgid "Factory Defaults"
 msgstr "Ustawienia fabryczne"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
-msgstr ""
-"System został przywrócony do ustawień fabrycznych i jest restartowany. Może "
-"to zająć chwilę."
-
-#, fuzzy
-msgid "and is now rebooting. This may take a minute."
-msgstr "System jest restartowany. To może potrwać chwilę."
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr ""
-"po kliknięciu &quot;Zapisz&quot;, wszystkie aktualne połączenia zostaną "
-"przerwane."
-
-#, fuzzy, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "System został przywrócony do ustawień fabrycznych i jest restartowany. Może "
 "to zająć chwilę."
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"Jeśli naciśniesz &quot;Tak&quot;, PBX przywróci wartości domyślne i "
+"niezwłocznie zrestartuje się. Cała konfiguracja systemu zostanie nadpisana. "
+"Adres IP interfejsu LAN zostanie ustawoiny na 192.168.1.2 a hasło na '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Czy na pewno chcesz kontynuować?"
@@ -3206,16 +3180,37 @@ msgstr "Pole '%s' zawiera nieprawidłowe znaki."
 msgid "The field '%s' is required."
 msgstr "Pole '%s' jest wymagane."
 
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
+#~ msgid "descr"
+#~ msgstr "opis"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "start"
+
+#, fuzzy
+#~ msgid "status"
+#~ msgstr "Status"
+
+#, fuzzy
+#~ msgid "ssid"
+#~ msgstr "Rosja"
+
+#, fuzzy
+#~ msgid "and is now rebooting. This may take a minute."
+#~ msgstr "System jest restartowany. To może potrwać chwilę."
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
 #~ msgstr ""
-#~ "Jeśli naciśniesz &quot;Tak&quot;, PBX przywróci wartości domyślne i "
-#~ "niezwłocznie zrestartuje się. Cała konfiguracja systemu zostanie "
-#~ "nadpisana. Adres IP interfejsu LAN zostanie ustawoiny na 192.168.1.2 a "
-#~ "hasło na '%s'."
+#~ "po kliknięciu &quot;Zapisz&quot;, wszystkie aktualne połączenia zostaną "
+#~ "przerwane."
+
+#, fuzzy
+#~ msgid ""
+#~ "be reset to factory defaults and will reboot immediately. The entire "
+#~ msgstr ""
+#~ "System został przywrócony do ustawień fabrycznych i jest restartowany. "
+#~ "Może to zająć chwilę."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -670,9 +670,6 @@ msgstr ""
 "toimintoja AskoziaPBX:ään. Niille voi sitten soittaa annetulla jatkeella tai "
 "käyttää päämäräänä sisääntuleville puheluille palveluntarjoajilta."
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr "muokkaa sovelluksien kartoittaminen"
 
@@ -1294,9 +1291,6 @@ msgstr "Asennetut Paketit"
 msgid "system storage partition"
 msgstr "järjestelmän tallennus osio"
 
-msgid "state"
-msgstr "tila"
-
 msgid "Edit Disk"
 msgstr "Muokkaa Levyä"
 
@@ -1880,9 +1874,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Verkon Liikenne"
 
-msgid "status"
-msgstr "status"
-
 msgid "Subnet Mask"
 msgstr "Aliverkon Peite"
 
@@ -1915,9 +1906,6 @@ msgstr "Melu"
 
 msgid "hidden"
 msgstr "piilotettu"
-
-msgid "ssid"
-msgstr "ssid"
 
 msgid "Associated stations"
 msgstr "Liittyvät asemat"
@@ -2131,33 +2119,23 @@ msgid "Factory Defaults"
 msgstr "Tehdasasetukset"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
-msgstr ""
-"Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
-"kestää muutaman minuutin."
-
-#, fuzzy
-msgid "and is now rebooting. This may take a minute."
-msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr ""
-"Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
-
-#, fuzzy, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
 "kestää muutaman minuutin."
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja käynnistyy "
+"uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP osoite tulee "
+"olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle tulee olemaan '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Oletko varma että haluat edetä?"
@@ -3311,16 +3289,32 @@ msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
 msgid "The field '%s' is required."
 msgstr "Kohta '%s' on määritettävä."
 
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
+#~ msgid "state"
+#~ msgstr "tila"
+
+#~ msgid "status"
+#~ msgstr "status"
+
+#~ msgid "ssid"
+#~ msgstr "ssid"
+
+#, fuzzy
+#~ msgid "and is now rebooting. This may take a minute."
 #~ msgstr ""
-#~ "Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja "
-#~ "käynnistyy uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP "
-#~ "osoite tulee olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle "
-#~ "tulee olemaan '%s'."
+#~ "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut "
+#~ "lopetetaan."
+
+#, fuzzy
+#~ msgid ""
+#~ "be reset to factory defaults and will reboot immediately. The entire "
+#~ msgstr ""
+#~ "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä "
+#~ "voi kestää muutaman minuutin."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

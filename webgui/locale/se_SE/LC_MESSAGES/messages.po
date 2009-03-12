@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -628,9 +628,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr ""
 
@@ -1178,9 +1175,6 @@ msgstr ""
 msgid "system storage partition"
 msgstr ""
 
-msgid "state"
-msgstr ""
-
 msgid "Edit Disk"
 msgstr ""
 
@@ -1716,9 +1710,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr ""
 
-msgid "status"
-msgstr ""
-
 msgid "Subnet Mask"
 msgstr ""
 
@@ -1750,9 +1741,6 @@ msgid "Noise"
 msgstr ""
 
 msgid "hidden"
-msgstr ""
-
-msgid "ssid"
 msgstr ""
 
 msgid "Associated stations"
@@ -1943,26 +1931,17 @@ msgstr ""
 msgid "Factory Defaults"
 msgstr ""
 
-msgid "The system has been reset to factory defaults "
-msgstr ""
-
-msgid "and is now rebooting. This may take a minute."
-msgstr ""
-
-#, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 
 #, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
-msgstr ""
-
-#, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
-msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

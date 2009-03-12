@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -686,9 +686,6 @@ msgstr ""
 "να χρησιμοποιηθούν για τον τερματισμό των εισερχομένων κλήσεων από τους "
 "παρόχους."
 
-msgid "descr"
-msgstr "περιγραφή"
-
 msgid "edit application mapping"
 msgstr "επεξεργασία αντιστοίχησης εφαρμογών"
 
@@ -1332,9 +1329,6 @@ msgstr "Εγκατεστημένα πακέτα"
 msgid "system storage partition"
 msgstr "αποθηκευτικός χώρος συστήματος"
 
-msgid "state"
-msgstr "κατάσταση"
-
 msgid "Edit Disk"
 msgstr "Επεξεργασία δίσκου"
 
@@ -1952,9 +1946,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Κίνηση δικτύου"
 
-msgid "status"
-msgstr "κατάσταση"
-
 msgid "Subnet Mask"
 msgstr "Μάσκα υποδικτύου"
 
@@ -1987,9 +1978,6 @@ msgstr "Θόρυβος"
 
 msgid "hidden"
 msgstr "κρυφό"
-
-msgid "ssid"
-msgstr "SSID"
 
 msgid "Associated stations"
 msgstr "Συνδεδεμένοι σταθμοί"
@@ -2219,34 +2207,25 @@ msgid "Factory Defaults"
 msgstr "Αρχικοποίηση"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
-msgstr ""
-"Το σύστημα έχει αρχικοποιηθεί και θα επενακκινήσει. Παρακαλώ περιμένετε για "
-"30 δευτερόλεπτα."
-
-#, fuzzy
-msgid "and is now rebooting. This may take a minute."
-msgstr ""
-"Το σύστημα επανεκκινεί. Παρακαλώ περιμένετε για περίπου 30 δευτερόλεπτα."
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr ""
-"αφού πιέσετε &quot;Αποθήκευση&quot;, όλες οι ενεργές κλήσεις θα διακοπούν."
-
-#, fuzzy, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Το σύστημα έχει αρχικοποιηθεί και θα επενακκινήσει. Παρακαλώ περιμένετε για "
 "30 δευτερόλεπτα."
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"Αν πιέσετε &quot;Ναι&quot;, το τηλεφωνικό κέντρο θα επανέλθει στις αρχικές "
+"του ρυθμίσεις και θα επανεκκινήσει αυτόματα. Όλες οι ρυθμίσεις του "
+"συστήματος θα διαγραφούν. Η νέα διεύθυνση του συστήματος θα είναι η "
+"192.168.1.2 και ο κωδικός πρόσβασης που θα πρέπει να χρησιμοποιήσετε για "
+"πρόσβαση στο σύστημα θα είναι '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
@@ -3450,17 +3429,34 @@ msgstr "Το πεδίο '%s' περιέχει μη έγκυρους χαρακτ
 msgid "The field '%s' is required."
 msgstr "Το πεδίο '%s' είναι αναγκαίο."
 
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
+#~ msgid "descr"
+#~ msgstr "περιγραφή"
+
+#~ msgid "state"
+#~ msgstr "κατάσταση"
+
+#~ msgid "status"
+#~ msgstr "κατάσταση"
+
+#~ msgid "ssid"
+#~ msgstr "SSID"
+
+#, fuzzy
+#~ msgid "and is now rebooting. This may take a minute."
 #~ msgstr ""
-#~ "Αν πιέσετε &quot;Ναι&quot;, το τηλεφωνικό κέντρο θα επανέλθει στις "
-#~ "αρχικές του ρυθμίσεις και θα επανεκκινήσει αυτόματα. Όλες οι ρυθμίσεις "
-#~ "του συστήματος θα διαγραφούν. Η νέα διεύθυνση του συστήματος θα είναι η "
-#~ "192.168.1.2 και ο κωδικός πρόσβασης που θα πρέπει να χρησιμοποιήσετε για "
-#~ "πρόσβαση στο σύστημα θα είναι '%s'."
+#~ "Το σύστημα επανεκκινεί. Παρακαλώ περιμένετε για περίπου 30 δευτερόλεπτα."
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "αφού πιέσετε &quot;Αποθήκευση&quot;, όλες οι ενεργές κλήσεις θα διακοπούν."
+
+#, fuzzy
+#~ msgid ""
+#~ "be reset to factory defaults and will reboot immediately. The entire "
+#~ msgstr ""
+#~ "Το σύστημα έχει αρχικοποιηθεί και θα επενακκινήσει. Παρακαλώ περιμένετε "
+#~ "για 30 δευτερόλεπτα."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

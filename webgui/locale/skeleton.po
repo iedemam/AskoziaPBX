@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -593,9 +593,6 @@ msgstr ""
 msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to the system. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr ""
 
@@ -1077,9 +1074,6 @@ msgid "Installed Packages"
 msgstr ""
 
 msgid "system storage partition"
-msgstr ""
-
-msgid "state"
 msgstr ""
 
 msgid "Edit Disk"
@@ -1566,9 +1560,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr ""
 
-msgid "status"
-msgstr ""
-
 msgid "Subnet Mask"
 msgstr ""
 
@@ -1600,9 +1591,6 @@ msgid "Noise"
 msgstr ""
 
 msgid "hidden"
-msgstr ""
-
-msgid "ssid"
 msgstr ""
 
 msgid "Associated stations"
@@ -1774,26 +1762,11 @@ msgstr ""
 msgid "Factory Defaults"
 msgstr ""
 
-msgid "The system has been reset to factory defaults "
-msgstr ""
-
-msgid "and is now rebooting. This may take a minute."
+msgid "The system has been reset to factory defaults and is now rebooting. This may take a minute."
 msgstr ""
 
 #, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr ""
-
-#, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
-msgstr ""
-
-#, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
-msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgid "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

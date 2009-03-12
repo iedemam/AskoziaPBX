@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -638,9 +638,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr ""
 
@@ -1204,9 +1201,6 @@ msgstr "Instalované balíčky"
 msgid "system storage partition"
 msgstr ""
 
-msgid "state"
-msgstr ""
-
 msgid "Edit Disk"
 msgstr ""
 
@@ -1760,9 +1754,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Využití sítě"
 
-msgid "status"
-msgstr ""
-
 msgid "Subnet Mask"
 msgstr ""
 
@@ -1794,9 +1785,6 @@ msgid "Noise"
 msgstr ""
 
 msgid "hidden"
-msgstr ""
-
-msgid "ssid"
 msgstr ""
 
 msgid "Associated stations"
@@ -1999,27 +1987,21 @@ msgstr "PBX se po obnově konfigurace restartuje."
 msgid "Factory Defaults"
 msgstr "Tovární nastavení"
 
-msgid "The system has been reset to factory defaults "
-msgstr ""
-
-msgid "and is now rebooting. This may take a minute."
-msgstr ""
-
-#, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 
 #, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
-msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"Po stisknutí tlačítka &quot;Ano&quot;, se PBX přepne do továrního nastavení "
+"a okamžitě se restartuje. Konfigurace systému bude přepsána. Adresa IP "
+"síťového rozhraní bude nastavena na 192.168.1.2 a heslo na '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Opravdu chcete pokračovat?"
@@ -3116,16 +3098,6 @@ msgstr ""
 #, php-format
 msgid "The field '%s' is required."
 msgstr ""
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Po stisknutí tlačítka &quot;Ano&quot;, se PBX přepne do továrního "
-#~ "nastavení a okamžitě se restartuje. Konfigurace systému bude přepsána. "
-#~ "Adresa IP síťového rozhraní bude nastavena na 192.168.1.2 a heslo na '%s'."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

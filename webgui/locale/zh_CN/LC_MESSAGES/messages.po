@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -645,9 +645,6 @@ msgstr ""
 "在了解一些Asterisk拨号计划如何运作的情况下，一些基础的应用可以被加入到"
 "AskoziaPBX中。这些应用程序既被预定的分机拨通，也可以用作提供商来电的目的地。"
 
-msgid "descr"
-msgstr "描述"
-
 msgid "edit application mapping"
 msgstr "编辑应用映射"
 
@@ -1225,10 +1222,6 @@ msgstr "已安装的包"
 msgid "system storage partition"
 msgstr "系统存储分区"
 
-#, fuzzy
-msgid "state"
-msgstr "开始"
-
 msgid "Edit Disk"
 msgstr "编辑磁盘"
 
@@ -1784,10 +1777,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "网络流量"
 
-#, fuzzy
-msgid "status"
-msgstr "状态"
-
 msgid "Subnet Mask"
 msgstr "子网掩码"
 
@@ -1820,10 +1809,6 @@ msgstr "噪音"
 
 msgid "hidden"
 msgstr "隐藏"
-
-#, fuzzy
-msgid "ssid"
-msgstr "俄罗斯"
 
 msgid "Associated stations"
 msgstr "相关监测站"
@@ -2022,28 +2007,20 @@ msgid "Factory Defaults"
 msgstr "出厂默认设置"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
-msgstr "系统被设置到了出厂默认状态并正在重启。这可能需要一分钟。"
-
-#, fuzzy
-msgid "and is now rebooting. This may take a minute."
-msgstr "系统正在重启。这可能会需要一分钟。"
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。"
-
-#, fuzzy, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr "系统被设置到了出厂默认状态并正在重启。这可能需要一分钟。"
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"如果您点击了 &quot;是&quot;，那么PBX会被重置到出厂状态并立即重启整个系统的设"
+"置将会被覆盖。内网IP地址将会被重置为 192.168.1.2并且密码也会改为默认的'%s'。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "您真的想要进行？"
@@ -3166,15 +3143,33 @@ msgstr "'%s' 段含有无效字符。"
 msgid "The field '%s' is required."
 msgstr "'%s' 区域需要填入。 "
 
+#~ msgid "descr"
+#~ msgstr "描述"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "开始"
+
+#, fuzzy
+#~ msgid "status"
+#~ msgstr "状态"
+
+#, fuzzy
+#~ msgid "ssid"
+#~ msgstr "俄罗斯"
+
+#, fuzzy
+#~ msgid "and is now rebooting. This may take a minute."
+#~ msgstr "系统正在重启。这可能会需要一分钟。"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr "按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。"
+
+#, fuzzy
 #~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "如果您点击了 &quot;是&quot;，那么PBX会被重置到出厂状态并立即重启整个系统的"
-#~ "设置将会被覆盖。内网IP地址将会被重置为 192.168.1.2并且密码也会改为默认的'%"
-#~ "s'。"
+#~ "be reset to factory defaults and will reboot immediately. The entire "
+#~ msgstr "系统被设置到了出厂默认状态并正在重启。这可能需要一分钟。"
 
 #, fuzzy
 #~ msgid ""

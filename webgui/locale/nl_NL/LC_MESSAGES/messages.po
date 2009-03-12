@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -684,9 +684,6 @@ msgstr ""
 "gedefineerde post worden bereikt of gebruikt als een bestemming voor "
 "inkomende gesprekken van Providers."
 
-msgid "descr"
-msgstr "omschr"
-
 msgid "edit application mapping"
 msgstr "bewerk programma mapping"
 
@@ -1314,10 +1311,6 @@ msgstr "Gëinstalleerde Paketten"
 msgid "system storage partition"
 msgstr "Ssyteem opslag partitie"
 
-#, fuzzy
-msgid "state"
-msgstr "start"
-
 msgid "Edit Disk"
 msgstr "Bewerk Disk"
 
@@ -1895,10 +1888,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Netwerk Trafiek"
 
-#, fuzzy
-msgid "status"
-msgstr "Status"
-
 msgid "Subnet Mask"
 msgstr "Subnet Mask"
 
@@ -1931,10 +1920,6 @@ msgstr "Noise"
 
 msgid "hidden"
 msgstr "verborgen"
-
-#, fuzzy
-msgid "ssid"
-msgstr "Rusland"
 
 msgid "Associated stations"
 msgstr ""
@@ -2126,28 +2111,17 @@ msgstr ""
 msgid "Factory Defaults"
 msgstr ""
 
-msgid "The system has been reset to factory defaults "
-msgstr ""
-
-msgid "and is now rebooting. This may take a minute."
-msgstr ""
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr ""
-"Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken verloren "
-"gaan."
-
-#, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
-msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"
@@ -3209,6 +3183,27 @@ msgstr "Het veld '%s' bevat ongeldige karakters."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "het veld '%s' is verplicht."
+
+#~ msgid "descr"
+#~ msgstr "omschr"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "start"
+
+#, fuzzy
+#~ msgid "status"
+#~ msgstr "Status"
+
+#, fuzzy
+#~ msgid "ssid"
+#~ msgstr "Rusland"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken "
+#~ "verloren gaan."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

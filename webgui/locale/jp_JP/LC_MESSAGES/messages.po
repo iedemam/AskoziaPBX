@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-10 14:41+0100\n"
+"POT-Creation-Date: 2009-03-12 12:11+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -666,9 +666,6 @@ msgstr ""
 "定義されたエクステンション経由でダイヤルしたり、プロバイダーからの着信呼び出"
 "しの送信先として使用することができます"
 
-msgid "descr"
-msgstr "descr"
-
 msgid "edit application mapping"
 msgstr "アプリケーション関連付けの編集"
 
@@ -1281,9 +1278,6 @@ msgstr "インストール済パッケージ"
 msgid "system storage partition"
 msgstr "システム記憶領域"
 
-msgid "state"
-msgstr "状態"
-
 msgid "Edit Disk"
 msgstr "ディスクの編集"
 
@@ -1876,9 +1870,6 @@ msgstr ""
 msgid "Network Traffic"
 msgstr "Network利用状況"
 
-msgid "status"
-msgstr "状態"
-
 msgid "Subnet Mask"
 msgstr "サブネットマスク"
 
@@ -1911,9 +1902,6 @@ msgstr "ノイズ"
 
 msgid "hidden"
 msgstr "非公開"
-
-msgid "ssid"
-msgstr "ssid"
 
 msgid "Associated stations"
 msgstr "接続(稼働)中のクライアント"
@@ -2125,32 +2113,23 @@ msgid "Factory Defaults"
 msgstr "工場出荷時に戻す"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
-msgstr ""
-"このAskoziaPBXは、工場出荷時の状態に初期化され、只今再起動中です。しばらくお"
-"待ち下さい"
-
-#, fuzzy
-msgid "and is now rebooting. This may take a minute."
-msgstr "システムは再起動中です。これには数分かかります"
-
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "システムログの一覧"
-
-#, fuzzy, php-format
-msgid "be reset to factory defaults and will reboot immediately. The entire "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "このAskoziaPBXは、工場出荷時の状態に初期化され、只今再起動中です。しばらくお"
 "待ち下さい"
 
 #, php-format
-msgid "system configuration will be overwritten. The LAN IP address will be "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-
-#, php-format
-msgid "reset to 192.168.1.2 and the password will be set to '%s'."
-msgstr ""
+"&quot;はい&quot;をクリックするとAskoziaPBXは直ぐに再起動され、工場出荷時の状"
+"態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPアドレ"
+"ス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
 
 msgid "Are you sure you want to proceed?"
 msgstr "本当に初期化しますか？"
@@ -3318,15 +3297,32 @@ msgstr "'%s' フィールドに無効な文字が含まれています"
 msgid "The field '%s' is required."
 msgstr "'%s' フィールドは必須です"
 
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#~ msgid "state"
+#~ msgstr "状態"
+
+#~ msgid "status"
+#~ msgstr "状態"
+
+#~ msgid "ssid"
+#~ msgstr "ssid"
+
+#, fuzzy
+#~ msgid "and is now rebooting. This may take a minute."
+#~ msgstr "システムは再起動中です。これには数分かかります"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr "システムログの一覧"
+
+#, fuzzy
 #~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
+#~ "be reset to factory defaults and will reboot immediately. The entire "
 #~ msgstr ""
-#~ "&quot;はい&quot;をクリックするとAskoziaPBXは直ぐに再起動され、工場出荷時の"
-#~ "状態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPア"
-#~ "ドレス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
+#~ "このAskoziaPBXは、工場出荷時の状態に初期化され、只今再起動中です。しばらく"
+#~ "お待ち下さい"
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "
