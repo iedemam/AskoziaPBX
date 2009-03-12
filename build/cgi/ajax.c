@@ -38,6 +38,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <net/if.h>
 #include <net/if_mib.h>
 #include <sys/time.h>
