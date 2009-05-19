@@ -1,0 +1,30 @@
+
+[TIMESTAMP] 1171296608 Mon Feb 12 16:10:08 2007
+[BUILDTIME] 10 (5)
+[SIZE] 0.11 MB, 14 files
+
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] libice
+[DEP] libx11
+[DEP] libxau
+[DEP] libxcb
+[DEP] libxdmcp
+[DEP] linux-header
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] sed
+[DEP] slang
+[DEP] sysfiles
+[DEP] tar

@@ -1,0 +1,31 @@
+
+[TIMESTAMP] 1133803449 Mon Dec  5 18:24:09 2005
+[BUILDTIME] 495 (5)
+[SIZE] 77.82 MB, 4592 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] blackdown-jdk
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] flex
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] openssl
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] unixodbc

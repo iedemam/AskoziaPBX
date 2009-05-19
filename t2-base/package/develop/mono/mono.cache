@@ -1,0 +1,36 @@
+
+[TIMESTAMP] 1134002642 Thu Dec  8 01:44:02 2005
+[BUILDTIME] 330 (9)
+[SIZE] 60.69 MB, 682 files
+
+[DEP] 00-dirtree
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] bison
+[DEP] boehm-gc
+[DEP] bzip2
+[DEP] cf
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glib
+[DEP] glibc
+[DEP] grep
+[DEP] imake
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] ncurses
+[DEP] net-tools
+[DEP] patch
+[DEP] pkgconfig
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] valgrind
+[DEP] zlib

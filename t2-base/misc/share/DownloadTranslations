@@ -1,0 +1,26 @@
+#!/bin/sed
+# normal user will always find their files on our mirrors, so this will be used only by developers
+
+#s,^.*tp://ftp.gnu.org/\(gnu\|pub\/gnu\)/,http://mirrors.kernel.org/gnu/,
+s,^http://www.mysql.org/Downloads/,http://www.mirrorservice.org/sites/ftp.mysql.com/Downloads/,
+
+#s,^ftp://ftp.kde.org/pub/kde/,http://ftp-stud.fht-esslingen.de/Mirrors/ftp.kde.org/pub/kde/,
+
+# loadbalancer is working weird these days
+s,^http://.*dl.\(sourceforge\|sf\).net/,http://switch.dl.sourceforge.net/,
+
+# PostgreSQL Team does not like us to use their ftp
+s,^ftp://ftp.postgresql.org/pub/source/,ftp://ftp7.us.postgresql.org/pub/postgresql/source/,
+
+# ftp connection blocks once in a while
+#s,^ftp://ftp.gnupg.org,http://ftp.gnupg.org,
+s,^ftp://ftp.kernel.org,http://ftp.kernel.org,
+
+# Apache downloads
+s,^http://dl.apache.org/,http://www.eu.apache.org/,
+
+# clip's ftp is a pain
+s,^ftp://ftp.itk.ru/,ftp://www.cis.by/pub/clip/,
+
+# evolt.org doesn't allow direct downloads
+s,http://browsers.evolt.org/download.php?,http://www.mirrorservice.org/sites/browsers.evolt.org/browsers,

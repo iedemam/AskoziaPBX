@@ -1,0 +1,26 @@
+
+[TIMESTAMP] 1134281794 Sun Dec 11 07:16:34 2005
+[BUILDTIME] 5 (9) ERROR
+[SIZE] 0.02 MB, 7 files
+
+[DEP] autoconf
+[DEP] automake
+[DEP] bash
+[DEP] bdb33
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] patch
+[DEP] perl
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] texinfo

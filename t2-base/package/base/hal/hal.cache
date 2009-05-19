@@ -1,0 +1,41 @@
+
+[TIMESTAMP] 1134323126 Sun Dec 11 18:45:26 2005
+[BUILDTIME] 45 (9)
+[SIZE] 3.12 MB, 241 files
+
+[DEP] 00-dirtree
+[DEP] bash
+[DEP] binutils
+[DEP] bzip2
+[DEP] coreutils
+[DEP] dbus
+[DEP] diffutils
+[DEP] doxygen
+[DEP] expat
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] gettext
+[DEP] glib
+[DEP] glibc
+[DEP] gnue-common
+[DEP] grep
+[DEP] libusb
+[DEP] linux-header
+[DEP] m4
+[DEP] make
+[DEP] mktemp
+[DEP] net-tools
+[DEP] numpy
+[DEP] patch
+[DEP] perl
+[DEP] perl-xml-parser
+[DEP] pil
+[DEP] pkgconfig
+[DEP] popt
+[DEP] python
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
+[DEP] util-linux
+[DEP] wxpython

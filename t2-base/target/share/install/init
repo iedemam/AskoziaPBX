@@ -1,0 +1,361 @@
+#!/bin/sh
+
+# partly based on linuxrc.c, Copyright (C) 2003, 2004 Cliford Wolf and Rene Rebe
+# converted from C to shell code and heavily cleaned and improved for the T2 SDE
+
+echo "T2 SDE early (install) userspace (C) 2005 - 2008 Rene Rebe, ExactCODE"
+
+PATH=/sbin:/bin:/usr/bin:/usr/sbin
+
+echo "Mounting /dev, /proc and /sys ..."
+mount -t tmpfs none /dev -o mode=755
+mount -t proc  none /proc
+mount -t usbfs none /proc/bus/usb 2> /dev/null
+mount -t sysfs none /sys
+ln -s /proc/self/fd /dev/fd
+
+echo "Populating u/dev ..."
+mknod /dev/null c 1 3
+mknod /dev/zero c 1 5
+udevd &
+udevtrigger
+udevsettle
+[ -e /dev/console ] || mknod /dev/console c 5 1
+[ -e /dev/tty ] || mknod /dev/tty c 5 0
+
+echo "Loading additional subsystem and filesystem driver ..."
+
+# well some hardcoded help for now ...
+for x in sbp2 ide-generic ide-disk ide-cd sd_mod sr_mod sg; do
+	modprobe $x 2> /dev/null
+done
+
+# the modular filesystems ...
+for x in /lib/modules/*/kernel/fs/{*/,}*.*o ; do
+	x=${x##*/} ; x=${x%.*o}
+	modprobe $x 2> /dev/null
+done
+
+# Only print important stuff to console
+# klogctl(8, NULL, 3);
+
+doboot()
+{
+	if [ ! -e /mnt_root/sbin/init ]; then
+	 	echo "Can't find /mnt_root/sbin/init."
+		exit_linuxrc=0
+	fi
+
+	if [ $exit_linuxrc = 1 ]; then
+		kill %1
+
+		mount /dev /mnt_root/dev -t none -o move
+		mount /proc /mnt_root/proc -t none -o move
+		mount /sys /mnt_root/sys -t none -o move
+
+		# copy stuff only in the 1st_stage image
+		mkdir -p /mnt_root/lib/modules
+		cp -ar /lib/modules/* /mnt_root/lib/modules/
+
+		# TODO: inject more first stage stuff if it was a small image
+		exec switch_root /mnt_root /sbin/init
+	else
+		umount /mnt_root
+		rmdir /mnt_root
+	fi
+}
+
+trymount()
+{
+	for fs in iso9660 ext4 ext3 ext2 minix vfat; do
+		mount $1 $2 -t $fs -o ro && return
+	done
+}
+
+select_2nd_stage()
+{
+	# choices
+	case $1 in
+	  http://*|ftp://*)
+		# the last sed is a uniq
+		images=`fget $1/ | sed 's/[<>"]/\n/g' | sed -n '/2nd_stage/p' |
+sed 'h;:b
+$b
+N; /^\(.*\)\n\1$/ {g; bb
+}
+$b
+P; D'`
+		;;
+	  *)
+		mkdir /mnt_source
+		trymount $1 /mnt_source
+		images=`cd /mnt_source ; ls 2nd_stage*.tar*`
+		umount /mnt_source; rmdir /mnt_source
+		;;
+	esac
+
+	[ "$images" ] || return 1
+
+	echo "Select a second stage image file:"
+	mem=`sed -n '/MemTotal/{s/.* \([[:digit:]]*\) .*/\1/p}' /proc/meminfo`
+	i=1; default=$i
+	for x in $images; do
+		if [[ "$x" = *small* ]]; then
+			[ $mem -le 96000 ] && default=$i
+		else
+			[ $mem -gt 96000 ] && default=$i
+		fi
+		echo "     $(( i++ )). $x"
+	done
+	echo -n "Enter number or image file name (default=$default): "
+
+	in=; [ $autoload = 0 ] && read in || echo
+	[ "$in" ] || in=$default
+
+	i=1
+	for x in $images; do
+		if [ "$(( i++ ))" = $in ]; then
+			eval $2=$x
+			return
+		fi
+	done
+}
+
+httpload() 
+{
+	baseurl=
+	filename=
+	url=
+
+	echo -en "\nEnter base URL (e.g. http://1.2.3.4/t2): "
+
+	read baseurl
+	[ "$baseurl" ] || return
+
+	select_2nd_stage "$baseurl" filename
+	if [ -z "$filename" ]; then
+		echo "Failure retrieving the second stage image."
+		return
+	fi
+
+	exit_init=1
+	url=$baseurl/$filename
+
+	echo -e "[ $url ]\n"
+	export ROCK_INSTALL_SOURCE_URL=$baseurl
+
+	exit_linuxrc=1
+	mkdir /mnt_root || exit_linuxrc=0
+
+	mount none /mnt_root -t tmpfs || exit_linuxrc=0
+
+	fget $url | ( cd /mnt_root; tar x ) # -z
+	
+	echo "finished ... continuing execution of second stage"
+	doboot
+}
+
+load_modules()
+{
+	echo "TODO: implement module loading shell"
+}
+
+getdevice()
+{
+	device=
+	devicelist=`ls /dev/cdrom* /dev/floppy* 2>/dev/null`
+
+	# FIXME review and cleanup needed:
+	if [ -z "$devicelist" ]; then
+	        # with udev, these links are not created yet, so try to find
+		# device based on sysfs
+	        for sysname in /sys/*/*/removable; do
+			[ `cat $sysname` = 1 ] || continue
+
+	                devname="`echo $sysname | sed -e 's,/removable,,' -e 's,.*/,,'`"
+
+			# FIXME as udev is not running yet we are probably save
+			# to assume that /dev/$devname exists, a check should be
+			# performed however
+	
+	                devicelist="$devicelist /dev/$devname"
+	        done
+
+		if [ -z "$devicelist" ]; then
+			echo "No device found."
+			return
+		fi
+	fi
+
+	i=1
+	default=
+	for dev in $devicelist ; do
+		x=`readlink $dev`; [ "$x" ] && [[ "$x" != /dev/* ]] && x=/dev/$x
+		[ "$x" ] && dev=$x
+		case $dev in
+		  /dev/floppy*|/dev/fd*)
+			echo "     $i. $dev	Floppy Disk Drive" ;;
+		  *)
+			model=`cat /proc/ide/${dev#/dev/}/model 2>/dev/null`
+			[ "$model" ] || model="SCSI or ATAPI CD-ROM"
+			echo "     $i. $dev	$model"
+			[ "$default" ] || default=$i
+			;;
+		esac
+		: $(( i++ ))
+	done
+	[ "$default" ] || default=1
+
+	echo -en "\nEnter number or device file name (default=$default): "
+
+	in=; [ $autoload = 0 ] && read in || echo
+	[ "$in" ] || in=$default
+	while [ -z "$device" ]; do
+		[ -z "$in" ] && return
+		if [ -e $in ]; then
+			device=$in
+		else
+			i=1
+			for x in $devicelist; do
+				[ $in = $i ] && device=$x
+				: $(( i++ ))
+			done
+		fi
+
+		if [ -z "$device" ]; then
+			echo -n "No such device found. Try again (enter=back): "
+			read in
+		fi
+	done
+
+	eval $1=$device
+}
+
+load_ramdisk_file()
+{
+	devicefile=
+	filename=
+
+	echo -e "\nSelect a device for loading the second stage system from:\n"
+
+	getdevice devicefile
+	if [ -z "$devicefile" ]; then
+		echo "No device detected."
+		return
+	fi
+
+	select_2nd_stage $devicefile filename
+	if [ -z "$filename" ]; then
+		echo "No image found."
+		return
+	fi
+
+	exit_linuxrc=1
+	echo "Using $devicefile:$filename"
+
+	mkdir /mnt_source || exit_linuxrc=0
+	trymount $devicefile /mnt_source || exit_linuxrc=0
+
+	mkdir /mnt_root || exit_linuxrc=0
+	mount none /mnt_root -t tmpfs || exit_linuxrc=0
+
+	echo "Extracting second stage filesystem ..."
+	cat /mnt_source/$filename | ( cd /mnt_root; tar x ) || # -z
+	echo "Can't run tar on $fielname."
+	
+	umount /mnt_source || exit_linuxrc=0
+	rmdir /mnt_source || exit_linuxrc=0
+
+	export ROCK_INSTALL_SOURCE_DEV=$devicefile
+	export ROCK_INSTALL_SOURCE_FILE=$filename
+	doboot
+}	
+
+activate_swap()
+{
+	echo -ne "\nEnter file name of swap device: "
+
+	read in
+	[ "$in" ] && swapon $in
+}
+
+net_config()
+{
+	echo -n "Interfaces: "; ls -A /sys/class/net/
+
+	echo -n "Enter interface name (eth0): "
+	read dev ; [ "$dev" ] || dev="eth0"
+
+	echo -n "Enter IP address (auto): "
+	read ip
+	if [ "$ip" ]; then
+		echo -n "Enter default gateway (none): "
+		read gw
+		ipconfig $ip::$gw:::$dev:none 
+	else
+		# let the link autoneg.
+		ipconfig :::::$dev:none > /dev/null 2>&1 ; sleep 4
+		echo "Auto configuration via DHCP, BOOTP, RARP ..."
+		ipconfig -d $dev -t 10
+	fi
+}
+
+exec_sh()
+{
+	echo "Exit the shell to return to the 1st stage loader."
+	sh
+}
+
+load_modules_disk ()
+{
+	mkdir /mnt_floppy
+
+	trymount /dev/floppy/0 /mnt_floppy
+	load_modules /mnt_floppy
+
+	umount /mnt_floppy
+	rmdir  /mnt_floppy
+}
+
+# try to auto-load from a disc, first
+autoload=1
+
+echo "
+T2 SDE installer (1st stage - loader) ...
+
+The T2 install system boots up in two stages. You are now in the first stage
+and if everything goes right, you will not spend much time here. Just 
+configure the installation source so the second stage boot system can be
+loaded and you can start the installation."
+exit_init=0
+while [ $exit_init = 0 ]; do
+	echo -n "
+     0. Load second stage system from local device
+     1. Load second stage system from network
+     2. Configure network interfaces
+     3. Load kernel modules from this disk
+     4. Load kernel modules from another disk
+     5. Activate already formatted swap device
+     6. Run shell (for experts!)
+
+What do you want to do [0-8] (default=0)? "
+
+	in=; [ $autoload = 0 ] && read in || echo
+	[ "$in" ] || in=0
+	case $in in
+	  0)	load_ramdisk_file ;;
+	  1)	httpload ;;
+	  2)	net_config ;;
+	  3)	load_modules ;;
+	  4)	load_modules_disk ;;
+	  5)	activate_swap ;;
+	  6)	exec_sh ;;
+	  *)    echo "No such option." ;;
+	esac
+	# only try autoload once
+	autoload=0
+done
+
+exec /sbin/init /sbin/init
+
+echo -e "\nPanic: Can't start /sbin/init!\n\n"

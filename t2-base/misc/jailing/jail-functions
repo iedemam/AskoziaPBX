@@ -1,0 +1,189 @@
+jail_lib_needed() {
+	### $1 dirtree to search for +x files (usually $jail)
+	### $2 lib list file to add needed libs to
+
+	tmplib=`mktemp`
+	cp $2 $tmplib
+
+	# Using ldd is not perfect (as I learned from Clifford) but
+	# it's simple, usually works and extra libs and bins can be
+	# hand added in specific_postmake
+	find $1 -perm +111 -type f -exec ldd {} \; | grep -v 'not' | \
+			grep -v "$1" | cut -d' ' -f3 >> $tmplib
+
+	# Always needed
+	echo /lib/libnss_files.so.2 >> $tmplib
+	echo /lib/libnss_dns.so.2 >> $tmplib
+
+	# Sorting to remove duplications (very high)
+	sort -u $tmplib > $2
+
+	rm -f $tmplib
+	unset tmplib
+}
+
+
+jail_create() {
+	### Pseudo 00-dirtree
+
+	# Path for external binaries
+	[ -a $root/$jail/bin ] || mkdir -p $root/$jail/bin
+	# Path for external libraries
+	[ -a $root/$jail/lib ] || mkdir -p $root/$jail/lib
+	[ -a $root/$jail/etc ] || mkdir -p $root/$jail/etc
+	[ -a $root/$jail/var ] || mkdir -p $root/$jail/var
+	[ -a $root/$jail/tmp ] || mkdir -p $root/$jail/tmp
+	chmod 1777 $root/$jail/tmp
+	[ -a $root/$jail/dev ] || mkdir -p $root/$jail/dev
+	[ -a $root/$jail/dev/null ] || mknod -m 666 $root/$jail/dev/null c 1 3
+	[ -a $root/$jail/dev/random ] || mknod -m 444 $root/$jail/dev/random c 1 8
+	[ -a $root/$jail/dev/urandom ] || mknod -m 444 $root/$jail/dev/urandom c 1 9
+	[ -a $root/$docdir ] || mkdir -p $root/$docdir
+
+	### END Pseudo 00-dirtree
+
+	### Make some base etc configuration if not already present
+
+	if [ ! -f $root/$jail/etc/ld.so.conf ] ; then
+		cat <<- EOT > $root/$jail/etc/ld.so.conf
+			/lib
+			/usr/lib
+		EOT
+	fi
+	if [ ! -f $root/$jail/etc/nsswitch.conf ] ; then
+		cat <<- EOT > $root/$jail/etc/nsswitch.conf
+			passwd: files
+			group: files
+			shadow: files
+			hosts: files dns
+		EOT
+	fi
+
+	### END Make some base etc configuration
+}
+
+jail_copy_needed_libs() {
+	### Copy needed libs in $root/$jail/lib if not already present
+
+	tmp=`mktemp`
+	jail_lib_needed $root/$jail $tmp
+	if [ "$SDECFG_JAILING_LIBSAFE" = 1 -a \
+			"$pkg_libsafe_support" = 1 ] ; then
+		echo "/lib/libsafe.so.2" >> $tmp
+		grep "/lib/libsafe.so.2" $root/$jail/etc/ld.so.preload > \
+			/dev/null 2>&1 || echo "/lib/libsafe.so.2" >> \
+			$root/$jail/etc/ld.so.preload
+	fi
+	for x in `grep -v $jail $tmp` ; do
+		[ -f $root/$jail/lib/${x##*/} ] || cp -vf $x $root/$jail/lib
+	done
+	rm -f $tmp
+	unset tmp x
+
+	ldconfig -r $root/$jail
+
+	### END Copy needed libs
+}
+
+
+# Ensure given users are present in jail and if not add them
+# needed groups are added too.
+jail_ensure_users() {
+	if [ "$jail" ] ; then
+		for user_name in "$@" ; do
+			if ! grep "^$user_name:" $root/$jail/etc/passwd \
+					> /dev/null 2>&1 ; then
+				# Add group to jail
+				grep "^$user_name:" /etc/passwd >> \
+					$root/$jail/etc/passwd || true
+				jail_ensure_gids `grep "^$user_name:" /etc/passwd | cut -d":" -f4`
+			fi
+		done
+	fi
+	unset user_name
+}
+
+
+# Ensure given groups gid are present in jail and if not add them.
+jail_ensure_groups() {
+	if [ "$jail" ] ; then
+		for group_name in "$@" ; do
+			if ! grep "^$group_name:" $root/$jail/etc/group \
+					> /dev/null 2>&1 ; then
+				# Add group to jail
+				grep "^$group_name:" /etc/group >> \
+					$root/$jail/etc/group || true
+			fi
+		done
+	fi
+	unset group_name
+}
+
+
+# Ensure given groups gid are present in jail and if not add them.
+jail_ensure_gids() {
+	if [ "$jail" ] ; then
+		for gid in "$@" ; do
+			if ! grep ":$gid:" $root/$jail/etc/group \
+					> /dev/null 2>&1 ; then
+				# Add group to jail
+				grep ":$gid:" /etc/group >> \
+					$root/$jail/etc/group || true
+			fi
+		done
+	fi
+	unset gid
+}
+
+
+# This function sets the 'confopt' and some other variables.
+#
+jail_set_confopt() {
+	if [ "$destvar" ] ; then
+		prefix=$root/usr
+		sysconfdir="$root/etc"
+		localstatedir="$root/var"
+	else
+		prefix="$root/$jail/usr"
+		sysconfdir="$root/$jail/etc"
+		localstatedir="$root/$jail/var"
+	fi
+
+	bindir="$prefix/bin"
+       	sbindir="$prefix/sbin"
+       	libdir="$prefix/lib"
+       	docdir="$prefix/doc/$pkg"
+       	datadir="$prefix/share"
+       	infodir="$prefix/info"
+       	mandir="$prefix/man"
+	includedir="$root/include"
+
+	confopt="--prefix=$prefix"
+	confopt="$confopt --bindir=\$bindir"
+	confopt="$confopt --sbindir=\$sbindir"
+	confopt="$confopt --libdir=\$libdir"
+	confopt="$confopt --datadir=\$datadir"
+	confopt="$confopt --infodir=\$infodir"
+	confopt="$confopt --mandir=\$mandir"
+	confopt="$confopt --sysconfdir=\$sysconfdir"
+	confopt="$confopt --localstatedir=\$localstatedir"
+	confopt="$confopt --includedir=\$includedir"
+
+	if [ "$SDECFG_CONFIGURE_OPTS" ] ; then
+		confopt="$confopt $SDECFG_CONFIGURE_OPTS"
+	fi
+
+	if [ "$SDECFG_DEBUG" = 0 ] ; then
+		confopt="$confopt --disable-debug"
+	else
+		confopt="$confopt --enable-debug"
+	fi
+
+	if ! atstage native || [ "$SDECFG_DISABLE_NLS" = 1 ] ; then
+		confopt="${confopt//--enable-nls/} --disable-nls"
+	fi
+
+	confopt="$confopt \$extraconfopt"
+	confopt="$confopt --build=\$arch_build --host=\$arch_target"
+}
+

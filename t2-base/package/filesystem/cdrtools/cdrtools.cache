@@ -1,0 +1,25 @@
+
+[TIMESTAMP] 1168516536 Thu Jan 11 11:55:36 2007
+[BUILDTIME] 35 (5)
+[SIZE] 2.97 MB, 39 files
+
+[DEP] 00-dirtree
+[DEP] acl
+[DEP] alsa-lib
+[DEP] attr
+[DEP] bash
+[DEP] binutils
+[DEP] coreutils
+[DEP] diffutils
+[DEP] findutils
+[DEP] gawk
+[DEP] gcc
+[DEP] glibc
+[DEP] grep
+[DEP] linux-header
+[DEP] make
+[DEP] net-tools
+[DEP] patch
+[DEP] sed
+[DEP] sysfiles
+[DEP] tar
