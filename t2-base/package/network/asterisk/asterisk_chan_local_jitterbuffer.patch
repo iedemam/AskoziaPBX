@@ -1,7 +1,7 @@
-Index: channels/chan_local.c
+Index: asterisk/channels/chan_local.c
 ===================================================================
---- channels/chan_local.c	(revision 84776)
-+++ channels/chan_local.c	(working copy)
+--- asterisk/channels/chan_local.c	(revision 84776)
++++ asterisk/channels/chan_local.c	(working copy)
 @@ -66,6 +66,13 @@
  
  #define IS_OUTBOUND(a,b) (a == b->chan ? 1 : 0)

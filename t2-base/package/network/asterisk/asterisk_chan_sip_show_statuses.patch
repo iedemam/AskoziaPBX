@@ -1,5 +1,5 @@
---- channels/chan_sip.c.orig	2008-06-16 12:22:14.000000000 +0200
-+++ channels/chan_sip.c	2008-06-16 13:15:12.000000000 +0200
+--- asterisk/channels/chan_sip.c.orig	2008-06-16 12:22:14.000000000 +0200
++++ asterisk/channels/chan_sip.c	2008-06-16 13:15:12.000000000 +0200
 @@ -1359,6 +1359,8 @@
  static int sip_show_users(int fd, int argc, char *argv[]);
  static int _sip_show_peers(int fd, int *total, struct mansession *s, const struct message *m, int argc, const char *argv[]);

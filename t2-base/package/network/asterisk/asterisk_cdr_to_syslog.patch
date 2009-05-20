@@ -1,6 +1,6 @@
-diff -ur include/asterisk/logger.h.orig include/asterisk/logger.h
---- include/asterisk/logger.h.orig	2006-09-28 20:05:43.000000000 +0200
-+++ include/asterisk/logger.h	2007-04-17 16:04:22.000000000 +0200
+diff -ur asterisk/include/asterisk/logger.h.orig include/asterisk/logger.h
+--- asterisk/include/asterisk/logger.h.orig	2006-09-28 20:05:43.000000000 +0200
++++ asterisk/include/asterisk/logger.h	2007-04-17 16:04:22.000000000 +0200
 @@ -129,6 +129,12 @@
  #define __LOG_DTMF  6
  #define LOG_DTMF    __LOG_DTMF, _A_
@@ -14,8 +14,8 @@ diff -ur include/asterisk/logger.h.orig include/asterisk/logger.h
  #if defined(__cplusplus) || defined(c_plusplus)
  }
  #endif
---- main/logger.c.orig	2008-11-29 17:58:29.000000000 +0100
-+++ main/logger.c	2009-02-23 13:46:49.000000000 +0100
+--- asterisk/main/logger.c.orig	2008-11-29 17:58:29.000000000 +0100
++++ asterisk/main/logger.c	2009-02-23 13:46:49.000000000 +0100
 @@ -54,7 +54,8 @@
  	LOG_WARNING,
  	LOG_ERR,

@@ -1,5 +1,5 @@
---- apps/app_voicemail.c.orig	Mon Jan 28 21:42:43 2008
-+++ apps/app_voicemail.c	Fri Feb  8 08:45:52 2008
+--- asterisk/apps/app_voicemail.c.orig	Mon Jan 28 21:42:43 2008
++++ asterisk/apps/app_voicemail.c	Fri Feb  8 08:45:52 2008
 @@ -2088,7 +2088,7 @@
  	return res;
  }

@@ -1,5 +1,5 @@
---- channels/chan_iax2.c.orig	2008-06-19 11:52:03.000000000 +0200
-+++ channels/chan_iax2.c	2008-06-19 12:21:06.000000000 +0200
+--- asterisk/channels/chan_iax2.c.orig	2008-06-19 11:52:03.000000000 +0200
++++ asterisk/channels/chan_iax2.c	2008-06-19 12:21:06.000000000 +0200
 @@ -4624,6 +4624,39 @@
  #undef FORMAT2
  }

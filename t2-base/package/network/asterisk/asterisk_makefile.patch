@@ -1,8 +1,8 @@
 # $Id: asterisk_makefile.patch 72 2007-04-26 15:59:03Z michael.iedema $
 # patch for AskoziaPBX
 
---- Makefile.orig	Wed Mar 14 10:41:41 2007
-+++ Makefile	Wed Mar 14 10:44:22 2007
+--- asterisk/Makefile.orig	Wed Mar 14 10:41:41 2007
++++ asterisk/Makefile	Wed Mar 14 10:44:22 2007
 @@ -83,7 +83,7 @@
  OVERWRITE=y
  

@@ -1,5 +1,5 @@
---- main/channel.c.orig	Sun Jul 29 19:53:10 2007
-+++ main/channel.c	Sun Jul 29 23:59:00 2007
+--- asterisk/main/channel.c.orig	Sun Jul 29 19:53:10 2007
++++ asterisk/main/channel.c	Sun Jul 29 23:59:00 2007
 @@ -898,6 +898,7 @@
  	struct ast_frame *cur;
  	int blah = 1;
