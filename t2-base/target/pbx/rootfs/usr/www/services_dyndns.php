@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php 
 /*
 	$Id: services_dyndns.php 238 2008-01-21 18:33:33Z mkasper $

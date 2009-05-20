@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php 
 /*
 	$Id: services_conferencing.php 110 2007-05-29 11:39:10Z michael.iedema $

@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php 
 /*
 	$Id: index.php 610 2008-06-26 12:18:23Z kryysler $

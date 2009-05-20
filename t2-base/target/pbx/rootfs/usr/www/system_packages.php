@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php 
 /*
 	$Id: interfaces_storage.php 567 2008-06-24 17:11:18Z michael.iedema $

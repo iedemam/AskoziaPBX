@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php 
 /*
 	$Id: interfaces_opt.php 220 2007-08-25 20:09:05Z mkasper $

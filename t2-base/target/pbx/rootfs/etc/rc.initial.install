@@ -1,4 +1,4 @@
-#!/usr/local/bin/php -f
+#!/usr/bin/php -f
 <?php
 /*
 	$Id: rc.initial.install 200 2007-09-24 12:26:27Z michael.iedema $

@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php 
 /*
 	$Id: dialplan_callgroups.php 198 2007-09-17 14:11:18Z michael.iedema $
