@@ -28,6 +28,8 @@ X linux-header
 X module-init-tools
 #X udev
 X uclibc
+X unionfs
+X e2fsprogs
 
 # boot stuff
 X grub
@@ -38,6 +40,7 @@ X autoconf
 X zlib
 X openssl
 #X libiconv
+X libtool
 X gettext
 X bzip2
 X tar
