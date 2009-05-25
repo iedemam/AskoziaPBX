@@ -37,7 +37,7 @@ require_once("functions.inc");
 function manager_conf_generate() {
 	global $config;
 	
-	$fd = fopen("/usr/local/etc/asterisk/manager.conf", "w");
+	$fd = fopen("/etc/asterisk/manager.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open manager.conf in manager_conf_generate().\n");
 		return 1;

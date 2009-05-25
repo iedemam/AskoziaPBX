@@ -145,7 +145,7 @@ function conferencing_get_members($room_number) {
 function conferencing_conf_generate() {
 	global $config;
 	
-	$fd = fopen("/usr/local/etc/asterisk/meetme.conf", "w");
+	$fd = fopen("/etc/asterisk/meetme.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open meetme.conf in conferencing_conf_generate().\n");
 		return 1;

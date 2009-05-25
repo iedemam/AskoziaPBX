@@ -310,7 +310,7 @@ function isdn_forget_interface($unit_number) {
 function isdn_conf_generate() {
 	global $config, $g;
 	
-	$fd = fopen("/usr/local/etc/asterisk/capi.conf", "w");
+	$fd = fopen("/etc/asterisk/capi.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open capi.conf in isdn_conf_generate().\n");
 		return 1;

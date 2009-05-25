@@ -163,7 +163,7 @@ function sip_get_hosts_with_multiple_accounts() {
 function sip_conf_generate() {
 	global $config, $g, $defaults;
 	
-	$fd = fopen("/usr/local/etc/asterisk/sip.conf", "w");
+	$fd = fopen("/etc/asterisk/sip.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open sip.conf in sip_conf_generate().\n");
 		return 1;

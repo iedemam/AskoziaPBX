@@ -36,7 +36,7 @@ require_once("functions.inc");
 function extensions_conf_generate() {
 	global $config, $g, $uniqid_map;
 	
-	$fd = fopen("/usr/local/etc/asterisk/extensions.conf", "w");
+	$fd = fopen("/etc/asterisk/extensions.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open extensions.conf in extensions_conf_generate().\n");
 		return 1;

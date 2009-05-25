@@ -129,7 +129,7 @@ function iax_get_dialpatterns() {
 function iax_conf_generate() {
 	global $config, $g;
 	
-	$fd = fopen("/usr/local/etc/asterisk/iax.conf", "w");
+	$fd = fopen("/etc/asterisk/iax.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open iax.conf in iax_conf_generate().\n");
 		return 1;

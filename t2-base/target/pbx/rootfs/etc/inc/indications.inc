@@ -39,7 +39,7 @@ require_once("functions.inc");
 function indications_conf_generate() {
 	global $config;
 	
-	$fd = fopen("/usr/local/etc/asterisk/indications.conf", "w");
+	$fd = fopen("/etc/asterisk/indications.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open indications.conf in indications_conf_generate().\n");
 		return 1;

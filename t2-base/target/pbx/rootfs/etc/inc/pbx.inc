@@ -805,7 +805,7 @@ function pbx_modules_conf_generate() {
 
 	$logging_pkg = packages_get_package("logging");
 
-	$fd = fopen("/usr/local/etc/asterisk/modules.conf", "w");
+	$fd = fopen("/etc/asterisk/modules.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open modules.conf in pbx_modules_conf_generate().\n");
 		return 1;
@@ -837,7 +837,7 @@ function pbx_asterisk_conf_generate() {
 		$astlogdir = $logging_pkg['datapath'] . "/asterisk";
 	}
 
-	$fd = fopen("/usr/local/etc/asterisk/asterisk.conf", "w");
+	$fd = fopen("/etc/asterisk/asterisk.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open asterisk.conf in pbx_asterisk_conf_generate().\n");
 		return 1;
@@ -845,7 +845,7 @@ function pbx_asterisk_conf_generate() {
 
 	$asteriskconf = <<<EOD
 [directories]
-astetcdir => /usr/local/etc/asterisk
+astetcdir => /etc/asterisk
 astmoddir => /usr/local/lib/asterisk/modules
 astvarlibdir => /usr/local/share/asterisk
 astdatadir => /usr/local/share/asterisk

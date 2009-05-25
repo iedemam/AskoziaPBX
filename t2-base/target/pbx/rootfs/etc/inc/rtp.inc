@@ -47,7 +47,7 @@ if (!isset($defaults['rtp'])) {
 function rtp_conf_generate() {
 	global $config;
 	
-	$fd = fopen("/usr/local/etc/asterisk/rtp.conf", "w");
+	$fd = fopen("/etc/asterisk/rtp.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open rtp.conf in rtp_conf_generate().\n");
 		return 1;

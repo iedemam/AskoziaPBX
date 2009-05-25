@@ -255,7 +255,7 @@ function analog_conf_generate() {
 function analog_zaptel_conf_generate() {
 	global $config, $g;
 
-	$fd = fopen("/usr/local/etc/zaptel.conf", "w");
+	$fd = fopen("/etc/zaptel.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open zaptel.conf in analog_zaptel_conf_generate().\n");
 		return 1;
@@ -357,7 +357,7 @@ function analog_zaptel_conf_generate() {
 function analog_zapata_conf_generate() {
 	global $config, $g, $defaults;
 
-	$fd = fopen("/usr/local/etc/asterisk/zapata.conf", "w");
+	$fd = fopen("/etc/asterisk/zapata.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open zapata.conf in analog_zapata_conf_generate().\n");
 		return 1;

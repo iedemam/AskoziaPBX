@@ -50,7 +50,7 @@ function features_conf_generate() {
 	$pc['atxfernoanswertimeout'] = isset($featuremapconfig['atxfernoanswertimeout']) ? $featuremapconfig['atxfernoanswertimeout'] : "15";
 	$pc['transferdigittimeout'] = isset($featuremapconfig['transferdigittimeout']) ? $featuremapconfig['transferdigittimeout'] : "3";
 	
-	$fd = fopen("/usr/local/etc/asterisk/features.conf", "w");
+	$fd = fopen("/etc/asterisk/features.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open features.conf in features_conf_generate().\n");
 		return 1;

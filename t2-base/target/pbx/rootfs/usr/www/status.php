@@ -134,10 +134,10 @@ defCmdT("last 200 pbx log entries","/usr/sbin/clog /var/log/pbx.log 2>&1 | tail 
 /* XXX needs to be replaced with sqlite implementation
 defCmdT("last 200 call detail records","/usr/sbin/clog /var/log/cdr.log 2>&1 | tail -n 200");*/
 
-defCmdT("extensions.conf","cat /usr/local/etc/asterisk/extensions.conf");
-defCmdT("sip.conf","cat /usr/local/etc/asterisk/sip.conf");
-defCmdT("iax.conf","cat /usr/local/etc/asterisk/iax.conf");
-defCmdT("voicemail.conf","cat /usr/local/etc/asterisk/voicemail.conf");
+defCmdT("extensions.conf","cat /etc/asterisk/extensions.conf");
+defCmdT("sip.conf","cat /etc/asterisk/sip.conf");
+defCmdT("iax.conf","cat /etc/asterisk/iax.conf");
+defCmdT("voicemail.conf","cat /etc/asterisk/voicemail.conf");
 
 defCmdT("sip show peers","/usr/local/sbin/asterisk -rx \"sip show peers\"");
 defCmdT("sip show registry", "/usr/local/sbin/asterisk -rx \"sip show registry\"");

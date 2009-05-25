@@ -277,7 +277,7 @@ $vm_emailbody = array(
 function voicemail_conf_generate() {
 	global $config, $vm_emailsubject, $vm_emailbody;
 	
-	$fd = fopen("/usr/local/etc/asterisk/voicemail.conf", "w");
+	$fd = fopen("/etc/asterisk/voicemail.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open voicemail.conf in voicemail_conf_generate().\n");
 		return 1;
