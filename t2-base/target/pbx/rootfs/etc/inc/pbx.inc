@@ -121,7 +121,7 @@ function pbx_configure() {
 }
 
 function pbx_start() {
-	return mwexec("/usr/local/sbin/asterisk");
+	return mwexec("/usr/sbin/asterisk");
 }
 
 /* XXX : room for improvement here by factoring in call volume and
@@ -846,10 +846,10 @@ function pbx_asterisk_conf_generate() {
 	$asteriskconf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
-astmoddir => /usr/local/lib/asterisk/modules
-astvarlibdir => /usr/local/share/asterisk
-astdatadir => /usr/local/share/asterisk
-astagidir => /usr/local/share/asterisk/agi-bin
+astmoddir => /usr/lib/asterisk/modules
+astvarlibdir => /usr/share/asterisk
+astdatadir => /usr/share/asterisk
+astagidir => /usr/share/asterisk/agi-bin
 astspooldir => /var/spool/asterisk
 astrundir => /var/run
 astlogdir => $astlogdir

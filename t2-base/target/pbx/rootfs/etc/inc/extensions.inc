@@ -115,7 +115,7 @@ exten => mailnotification,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})"
 exten => mailnotification,n,System(echo "from: $product_name Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(/usr/local/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
+exten => mailnotification,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
 exten => mailnotification,n,System(rm $\{TMPMAILFILE})
 exten => mailnotification,n,Return()
 

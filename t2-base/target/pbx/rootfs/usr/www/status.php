@@ -139,10 +139,10 @@ defCmdT("sip.conf","cat /etc/asterisk/sip.conf");
 defCmdT("iax.conf","cat /etc/asterisk/iax.conf");
 defCmdT("voicemail.conf","cat /etc/asterisk/voicemail.conf");
 
-defCmdT("sip show peers","/usr/local/sbin/asterisk -rx \"sip show peers\"");
-defCmdT("sip show registry", "/usr/local/sbin/asterisk -rx \"sip show registry\"");
-defCmdT("iax2 show peers", "/usr/local/sbin/asterisk -rx \"iax2 show peers\"");
-defCmdT("iax2 show registry", "/usr/local/sbin/asterisk -rx \"iax2 show registry\"");
+defCmdT("sip show peers","/usr/sbin/asterisk -rx \"sip show peers\"");
+defCmdT("sip show registry", "/usr/sbin/asterisk -rx \"sip show registry\"");
+defCmdT("iax2 show peers", "/usr/sbin/asterisk -rx \"iax2 show peers\"");
+defCmdT("iax2 show registry", "/usr/sbin/asterisk -rx \"iax2 show registry\"");
 
 defCmd("ls /conf");
 defCmd("ls /var/run");

@@ -193,7 +193,7 @@ function packages_get_www_nav() {
 
 	foreach ($packages as $package) {
 		if ($package['haspages'] && $package['active']) {
-			$symfile = "/usr/local/www/packages_" . $package['name'] . ".php";
+			$symfile = "/usr/www/packages_" . $package['name'] . ".php";
 			if (!file_exists($symfile)) {
 				symlink($package['path'] . "/www/index.php", $symfile);
 			}

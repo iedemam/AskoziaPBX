@@ -473,7 +473,7 @@ function analog_configure() {
 		return 0;
 	}
 	$res = 0;
-	$res |= mwexec("/usr/local/bin/ztcfg");
+	$res |= mwexec("/usr/bin/ztcfg");
 
 	return $res;
 }

@@ -32,7 +32,7 @@ require("guiconfig.inc");
 
 header("Content-Type: text/plain");
 
-putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
+putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin");
 passthru($_GET['cmd']);
 
 exit(0);

@@ -190,7 +190,7 @@ function verify_is_email_address($address) {
 function verify_digital_signature($fname) {
 	global $g;
 
-	return mwexec("/usr/local/bin/verifysig " .
+	return mwexec("/usr/bin/verifysig " .
 		escapeshellarg("{$g['etc_path']}/pubkey.pem") . " " .
 		escapeshellarg($fname));
 }

@@ -331,7 +331,7 @@ EOD;
 
 emaildateformat=%Y-%m-%d (%R)
 
-mailcmd=/usr/local/bin/msmtp -C /etc/msmtp.conf -t
+mailcmd=/usr/bin/msmtp -C /etc/msmtp.conf -t
 
 [zonemessages]
 eastern=America/New_York|'vm-received' Q 'digits/at' IMp

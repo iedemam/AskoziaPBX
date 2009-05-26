@@ -317,11 +317,11 @@ EOD;
 		fwrite($fd, $key);
 		fclose($fd);
 	
-		$res = mwexec("/usr/local/sbin/mini_httpd -S -E {$g['varetc_path']}/cert.pem" .
+		$res = mwexec("/usr/sbin/mini_httpd -S -E {$g['varetc_path']}/cert.pem" .
 			" -c \"**.php|**.cgi\" -u root -maxproc 16 $portarg" .
 			" -i {$g['varrun_path']}/mini_httpd.pid");
 	} else {
-		$res = mwexec("/usr/local/sbin/mini_httpd -c \"**.php|**.cgi\" -u root" .
+		$res = mwexec("/usr/sbin/mini_httpd -c \"**.php|**.cgi\" -u root" .
 			" -maxproc 16 $portarg -i {$g['varrun_path']}/mini_httpd.pid");
 	}
 	
@@ -439,7 +439,7 @@ function system_ntp_configure() {
 		foreach (explode(' ', $syscfg['timeservers']) as $ts)
 			$timeservers .= " " . $ts;
 		
-		mwexec_bg("/usr/local/bin/runmsntp.sh " .
+		mwexec_bg("/usr/bin/runmsntp.sh " .
 			escapeshellarg("{$g['varrun_path']}/runmsntp.pid") . " " .
 			escapeshellarg("{$g['varrun_path']}/msntp.pid") . " " .
 			escapeshellarg($updateinterval) . " " .
@@ -629,7 +629,7 @@ function system_check_reset_button() {
 		return 0;
 	}
 
-	$retval = mwexec("/usr/local/sbin/" . $platform . "resetbtn");
+	$retval = mwexec("/usr/sbin/" . $platform . "resetbtn");
 
 	if ($retval == 99) {
 		/* user has pressed reset button for 2 seconds - 

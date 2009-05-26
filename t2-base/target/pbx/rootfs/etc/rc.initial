@@ -79,7 +79,7 @@ case ${opmode} in
 	/etc/rc.initial.ping
 	;;
 7)
-	/usr/local/sbin/asterisk -r
+	/usr/sbin/asterisk -r
 	;;
 8)
 	if [ "$PLATFORM" = "generic-pc-cdrom" ]; then

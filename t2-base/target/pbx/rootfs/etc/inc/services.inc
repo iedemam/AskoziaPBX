@@ -114,7 +114,7 @@ EOD;
 		}
 
 		/* run ez-ipupdate */
-		mwexec("/usr/local/bin/ez-ipupdate -c {$g['varetc_path']}/ez-ipupdate.conf");
+		mwexec("/usr/bin/ez-ipupdate -c {$g['varetc_path']}/ez-ipupdate.conf");
 
 		if ($g['booting'])
 			echo "done\n";
