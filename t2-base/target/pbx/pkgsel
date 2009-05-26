@@ -24,11 +24,11 @@ X gcc
 # layout + kernel
 X 00-dirtree
 X linux-header
-#X linux26
+X linux26
 X module-init-tools
 #X udev
 X uclibc
-X unionfs
+#X unionfs
 X e2fsprogs
 
 # boot stuff
