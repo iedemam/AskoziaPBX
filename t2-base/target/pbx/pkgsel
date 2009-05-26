@@ -28,7 +28,7 @@ X linux26
 X module-init-tools
 #X udev
 X uclibc
-#X unionfs
+X unionfs
 X e2fsprogs
 
 # boot stuff
