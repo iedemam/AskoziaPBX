@@ -12,14 +12,14 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-#Description: AskoziaPBX
+#Description: x86-586
 
 # select init
 SDECFGSET_INIT='busybox'
 
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG='1'
-SDECFG_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.cfg"
+SDECFG_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"
 SDECFGSET_PKG_LINUX_CONFIG_STYLE='none'
 SDECFGSET_PKG_LINUX_USE26MODTOOLS='1'
 SDECFGSET_PKG_LINUX_ACPI_INITRD='0'
@@ -31,6 +31,10 @@ SDECFGSET_PKG_BUSYBOX_SYMLINKS='0'
 
 # optimize for size
 SDECFGSET_OPT='size'
+SDECFGSET_CREATE_DOCS=0
+
+# no package creation
+SDECFGSET_PKGFILE_TYPE='none'
 
 # use uclibc
 SDECFGSET_LIBC='uclibc'
