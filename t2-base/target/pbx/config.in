@@ -14,9 +14,32 @@
 
 #Description: AskoziaPBX
 
+# select init
 SDECFGSET_INIT='busybox'
+
+# kernel options
+SDECFGSET_PKG_LINUX_CUSTCONFIG='1'
+SDECFG_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.cfg"
+SDECFGSET_PKG_LINUX_CONFIG_STYLE='none'
+SDECFGSET_PKG_LINUX_USE26MODTOOLS='1'
+SDECFGSET_PKG_LINUX_ACPI_INITRD='0'
+SDECFG_PKG_LINUX_KEEP_SRC='0'
+SDECFG_PKG_LINUX_KEEP_BUILDSRC='1'
+
+# busybox package options
+SDECFGSET_PKG_BUSYBOX_SYMLINKS='0'
+
+# optimize for size
 SDECFGSET_OPT='size'
+
+# use uclibc
 SDECFGSET_LIBC='uclibc'
+
+# do not execute rebuild 'paranoia' stage
 SDECFGSET_DO_REBUILD_STAGE=0
+
+# force cross compiling
 SDECFGSET_CROSSBUILD=1
+
+# enable native language support
 SDECFGSET_DISABLE_NLS=0
