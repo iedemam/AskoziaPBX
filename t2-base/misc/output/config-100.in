@@ -18,7 +18,7 @@ block_begin 3
 	bool 'Use ANSI colors for terminal output' \
 		SDECFG_OUTPUT_TERM_COLOR 1
 	bool 'Print Build-Output to terminal while building' \
-		SDECFG_VERBOSE 0
+		SDECFG_VERBOSE 1
 
 	for x in misc/output/*/config.in; do
 		[ -f $x ] && . $x

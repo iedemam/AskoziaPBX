@@ -14,15 +14,6 @@
 
 #Description: AskoziaPBX
 
-# target architecture
-SDECFGSET_ARCH='x86-generic'
-
-# target format
-#SDECFGSET_IMAGE='firmware'
-
-# print build output to console
-#SDECFGSET_VERBOSE='1'
-
 # select init
 SDECFGSET_INIT='busybox'
 
