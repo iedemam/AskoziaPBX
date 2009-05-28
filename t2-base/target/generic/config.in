@@ -12,14 +12,23 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-#Description: x86-586
+#Description: AskoziaPBX
+
+# target architecture
+SDECFGSET_ARCH='x86-generic'
+
+# target format
+#SDECFGSET_IMAGE='firmware'
+
+# print build output to console
+#SDECFGSET_VERBOSE='1'
 
 # select init
 SDECFGSET_INIT='busybox'
 
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG='1'
-SDECFG_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"
+SDECFG_PKG_LINUX_CUSTCONFIG_FILE="architecture/$arch/linux.config"
 SDECFGSET_PKG_LINUX_CONFIG_STYLE='none'
 SDECFGSET_PKG_LINUX_USE26MODTOOLS='1'
 SDECFGSET_PKG_LINUX_ACPI_INITRD='0'

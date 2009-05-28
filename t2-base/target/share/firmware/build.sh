@@ -12,7 +12,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 #
-#Description: x86 firmware image
+#Description: WebGUI installable firmware image
 
 set -e
 imagelocation="$build_toolchain/rootfs"	# where the roofs is prepared

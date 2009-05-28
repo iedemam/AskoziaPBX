@@ -15,7 +15,7 @@
 
 #Description: x86 (AMD, Intel, VIA and compatible)
 
-choice SDECFG_X86_OPT i486   \
+choice SDECFG_X86_OPT generic   \
 	generic		"No special optimisation"		\
 	i386		"Optimised for Intel 386"		\
 	i486		"Optimised for Intel 486"		\
@@ -51,4 +51,4 @@ if [ $SDECFG_X86_OPT != generic ] ; then
 	SDECFG_ID="$SDECFG_ID-$SDECFG_X86_OPT"
 fi
 
-. architecture/x86/boot-config.in
+. architecture/x86-generic/boot-config.in
