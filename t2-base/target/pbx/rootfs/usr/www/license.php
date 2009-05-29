@@ -135,7 +135,8 @@ $pgtitle = array("License");
 		<li>Danish - Carsten Matzon</li>
 		<li>Dutch - Wim Van Clapdurp</li>
 		<li>Finnish - Christoffer Lindqvist</li>
-		<li>German - Andreas Jud, Helge Ulrich</li>
+		<li>French - Jean-Pierre Lozano</li>
+		<li>German - Andreas Jud, Helge Ulrich, Philipp Kempgen</li>
 		<li>Greek - Nassa Perra (<a href="http://allvoip.gr">allVoIP.gr</a>)</li>
 		<li>Italian - Roberto Zilli, Giovanni Vallesi</li>
 		<li>Japanese - Kenichi Fukaumi</li>

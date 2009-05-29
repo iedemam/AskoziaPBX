@@ -302,7 +302,7 @@ function display_gui_language_selector($current_language) {
 		"da_DA" => "Dansk",
 		"de_DE" => "Deutsch",
 		"el_GR" => "Ελληνικά",
-//		"fr_FR" => "Français",
+		"fr_FR" => "Français",
 		"it_IT" => "Italiano",
 		"pl_PL" => "Język polski",
 		"nl_NL" => "Nederlands",

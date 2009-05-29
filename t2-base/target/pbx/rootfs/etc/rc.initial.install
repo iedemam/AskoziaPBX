@@ -63,7 +63,7 @@ EOD;
 
 *******************************************************************************
 * WARNING!                                                                    *
-* AskoziaPBX is about to be installed onto the $target_disk device.                    *
+* The PBX is about to be installed onto the $target_disk device.              *
 * - everything on this device will be erased!                                 *
 * - this cannot be undone!                                                    *
 *******************************************************************************

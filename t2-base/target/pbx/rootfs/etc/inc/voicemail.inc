@@ -75,6 +75,9 @@ $vm_emailsubject = array(
 	"it-formal" => 		"Nuovo messaggio voicemail (box: $\{VM_MAILBOX})",
 	"it-informal" =>	"Nuovo messaggio voicemail per te (box: $\{VM_MAILBOX})",
 
+	// japanese
+	"jp-formal" => 		"内線番号:$\{VM_MAILBOX}に、新しいメッセージがあります。",
+
 	// dutch
 	"nl-informal" => 	"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
 	"nl-formal" => 		"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
@@ -206,6 +209,11 @@ $vm_emailbody = array(
 						"hai un messaggio vocale in voicemail!\\n\\n".
 						"Il numero telefonico del chiamante e' $\{VM_CALLERID}.\\n".
 						"Data $\{VM_DATE} - durata $\{VM_DUR}.\\n\\n".
+						"-$product_name",
+
+	// japanese
+	"jp-formal" =>		"$\{VM_NAME} 様,\\n\\n".
+						"あなた宛に、$\{VM_DATE}に$\{VM_CALLERID}からお電話があり、メッセージをお預かり致しました。(メッセージ録音時間:$\{VM_DUR})\\n\\n".
 						"-$product_name",
 
 	// dutch

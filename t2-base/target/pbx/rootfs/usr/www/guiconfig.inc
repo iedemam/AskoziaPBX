@@ -188,6 +188,7 @@ $vm_email_languages = array(
 	"gr-formal" => gettext("Greek (formal)"),
 	"it-informal" => gettext("Italian"),
 	"it-formal" => gettext("Italian (formal)"),
+	"jp-formal" => gettext("Japanese (formal)"),
 	"pl-informal" => gettext("Polish"),
 	"pl-formal" => gettext("Polish (formal)"),
 	"pt-br-informal" => gettext("Portuguese, Brazil"),
