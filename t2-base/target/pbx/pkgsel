@@ -25,11 +25,11 @@ X gcc
 X 00-dirtree
 X linux-header
 X linux26
-X module-init-tools
+#X module-init-tools - busybox conflict
 #X udev
 X uclibc
 #X unionfs
-X e2fsprogs
+#X e2fsprogs - busybox conflict
 
 # boot stuff
 X grub
@@ -43,7 +43,7 @@ X openssl
 X libtool
 X gettext
 X bzip2
-X tar
+#X tar - busybox conflict
 
 # asterisk + dahdi + mISDN
 X bison
