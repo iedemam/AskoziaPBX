@@ -26,7 +26,7 @@ X 00-dirtree
 X linux-header
 X linux26
 #X module-init-tools - busybox conflict
-#X udev
+X udev
 X uclibc
 #X unionfs
 #X e2fsprogs - busybox conflict
