@@ -87,7 +87,7 @@ EOT
 
 foreground  = FFFFFF
 background  = 09345F
-splashimage $bootdrive$bootpath/t2.xpm.gz
+#splashimage $bootdrive$bootpath/t2.xpm.gz
 EOT
 
 	create_kernel_list >> /boot/grub/menu.lst

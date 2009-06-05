@@ -17,7 +17,7 @@ arch_boot_cd_pre()
 {
 	mkdir -p $isofsdir/boot/grub
 	cp -af $build_root/boot/grub/stage{1,2,2_eltorito} $isofsdir/boot/grub/
-	cp -af $build_root/boot/t2.xpm.gz $isofsdir/boot/
+	#cp -af $build_root/boot/t2.xpm.gz $isofsdir/boot/
 
 	# header
 	sed -n '/CUT/q;p' $base/architecture/x86/boot/menu.lst \

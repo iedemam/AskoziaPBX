@@ -12,6 +12,8 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-choice SDECFG_X86_CD_LOADER grub			\
-	grub		"Use GRUB as CD loader"		\
-	isolinux	"Use Syslinux/isolinux as CD loader"
+#choice SDECFG_X86_CD_LOADER grub			\
+#	grub		"Use GRUB as CD loader"		\
+#	isolinux	"Use Syslinux/isolinux as CD loader"
+
+SDECFGSET_X86_CD_LOADER='grub'

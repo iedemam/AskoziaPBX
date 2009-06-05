@@ -20,3 +20,23 @@ set -e
 
 . target/share/initramfs/build.sh
 
+# set firmware preparation directory
+imagelocation="$build_toolchain/firmware"
+
+echo "Preparing initramfs image from build result ..."
+
+rm -rf $imagelocation{,.img}
+mkdir -p $imagelocation ; cd $imagelocation
+
+dd if=/dev/zero of=image.bin bs=1M count=20
+# sfdisk partition
+
+mkdir -p loop
+# mount boot partition
+cp ../initramfs.igz loop
+cp ../../boot/vmlinuz loop
+# add config directory
+# unmount
+# mount asterisk partition
+# cp asterisk stuff in
+# unmount
