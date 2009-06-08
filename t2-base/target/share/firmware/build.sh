@@ -12,7 +12,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 #
-#Description: WebGUI installable firmware image
+#Description: firmware
 
 . $base/misc/target/functions.in
 
@@ -27,16 +27,20 @@ echo "Preparing initramfs image from build result ..."
 
 rm -rf $imagelocation{,.img}
 mkdir -p $imagelocation ; cd $imagelocation
-
-dd if=/dev/zero of=image.bin bs=1M count=20
-# sfdisk partition
-
+mkdir -p root_stage
+mkdir -p asterisk_stage
 mkdir -p loop
-# mount boot partition
-cp ../initramfs.igz loop
-cp ../../boot/vmlinuz loop
-# add config directory
-# unmount
-# mount asterisk partition
-# cp asterisk stuff in
-# unmount
+
+cp ../initramfs.igz root_stage
+cp ../../boot/vmlinuz root_stage
+root_size=`du -ks root_stage | cut -f 1`
+echo "root_size = $root_size"
+
+cp -Rp ../../asterisk/* asterisk_stage
+asterisk_size=`du -ks asterisk_stage | cut -f 1`
+echo "asterisk_size = $asterisk_size"
+
+total_size=`expr $root_size + $asterisk_size`
+echo "total image size = $total_size kb"
+dd if=/dev/zero of=firmware.img bs=1k count=$total_size
+

@@ -85,6 +85,9 @@ find $build_root -printf "%P\n" | sed '
 /terminfo\/v\/vt220$/	{ p; d; }
 /terminfo/	d;
 
+# stuff too big for a ramfs
+/^asterisk/	d;
+
 ' > tar.input
 
 copy_with_list_from_file $build_root . $PWD/tar.input
@@ -103,6 +106,7 @@ echo "Compressing initramfs image ..."
 cd ..
 cat initramfs.cpio | gzip > initramfs.igz
 
-du -sh $imagelocation{,.cpio,.igz}
+rm ../initramfs.cpio
+du -sh $imagelocation{,.igz}
 
 echo "The image is located at $imagelocation.igz."
