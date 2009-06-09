@@ -106,7 +106,7 @@ echo "Compressing initramfs image ..."
 cd ..
 cat initramfs.cpio | gzip > initramfs.igz
 
-rm ../initramfs.cpio
+rm initramfs.cpio
 du -sh $imagelocation{,.igz}
 
 echo "The image is located at $imagelocation.igz."
