@@ -1,0 +1,40 @@
+#!/bin/sh
+
+#stty status '^T'
+
+#trap : 2
+#trap : 3
+
+HOME=/
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export HOME PATH
+
+#set -T
+#trap "echo 'Reboot interrupted'; exit 1" 3
+
+echo "Mounting /dev, /proc and /sys ..."
+mount -t tmpfs none /dev -o mode=755
+mount -t proc  none /proc
+mount -t usbfs none /proc/bus/usb 2> /dev/null
+mount -t sysfs none /sys
+ln -s /proc/self/fd /dev/fd
+
+echo "Populating u/dev ..."
+mknod /dev/null c 1 3
+mknod /dev/zero c 1 5
+udevd &
+udevadm trigger
+udevadm settle
+[ -e /dev/console ] || mknod /dev/console c 5 1
+[ -e /dev/tty ] || mknod /dev/tty c 5 0
+
+# make some directories
+mkdir /asterisk /cf /var/etc /var/db
+
+# setup symbolic links
+ln -s /cf/conf /conf
+
+#kill %1
+#exec /sbin/init $*
+exec sh --login
+

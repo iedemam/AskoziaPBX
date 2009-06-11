@@ -39,7 +39,7 @@ require_once("functions.inc");
 function network_loopback_configure() {
 	global $config, $g;
 
-	mwexec("/sbin/ifconfig lo0 127.0.0.1");
+	mwexec("/sbin/ifconfig lo 127.0.0.1");
 	
 	return 0;
 }
@@ -72,51 +72,51 @@ function network_lan_configure() {
 	}
 	
 	/* remove all addresses first */
-	while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
+	//while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
 	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
 	
 	/* MAC spoofing? */
-	if ($lancfg['spoofmac']) {
-		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
-			" link " . escapeshellarg($lancfg['spoofmac']));
-	}
+	//if ($lancfg['spoofmac']) {
+	//	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
+	//		" link " . escapeshellarg($lancfg['spoofmac']));
+	//}
 		
 	/* media */
-	if ($lancfg['media'] || $lancfg['mediaopt']) {
-		$cmd = "/sbin/ifconfig " . escapeshellarg($lancfg['if']);
-		if ($lancfg['media'])
-			$cmd .= " media " . escapeshellarg($lancfg['media']);
-		if ($lancfg['mediaopt'])
-			$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
-		mwexec($cmd);
-	}
+	//if ($lancfg['media'] || $lancfg['mediaopt']) {
+	//	$cmd = "/sbin/ifconfig " . escapeshellarg($lancfg['if']);
+	//	if ($lancfg['media'])
+	//		$cmd .= " media " . escapeshellarg($lancfg['media']);
+	//	if ($lancfg['mediaopt'])
+	//		$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
+	//	mwexec($cmd);
+	//}
 	
 	
 	/* bridging */
-	mwexec("/sbin/sysctl net.link.ether.bridge.enable=0");
-	if (is_array($lancfg['bridge'])) {
-		/* ensure that hardware TX/RX checksumming is off for bridged interfaces */
-		foreach ($lancfg['bridge'] as $b_if) {
-			mwexec("/sbin/ifconfig " . escapeshellarg($b_if) . " -rxcsum -txcsum");
-		}
-		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -rxcsum -txcsum");
-		/* build bridge configuration */
-		$bridgeconfig = implode(":0,", $lancfg['bridge']);
-		$bridgeconfig .= ":0,{$lancfg['if']}:0";
-		mwexec("/sbin/sysctl net.link.ether.bridge.config=" . $bridgeconfig);		
-		mwexec("/sbin/sysctl net.link.ether.bridge.enable=1");
-	}
-	
-	$addflags = "";
-	if (strpos($lancfg['if'], "fxp") !== false)
-		$addflags .= " link0";
+	//mwexec("/sbin/sysctl net.link.ether.bridge.enable=0");
+	//if (is_array($lancfg['bridge'])) {
+	//	/* ensure that hardware TX/RX checksumming is off for bridged interfaces */
+	//	foreach ($lancfg['bridge'] as $b_if) {
+	//		mwexec("/sbin/ifconfig " . escapeshellarg($b_if) . " -rxcsum -txcsum");
+	//	}
+	//	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -rxcsum -txcsum");
+	//	/* build bridge configuration */
+	//	$bridgeconfig = implode(":0,", $lancfg['bridge']);
+	//	$bridgeconfig .= ":0,{$lancfg['if']}:0";
+	//	mwexec("/sbin/sysctl net.link.ether.bridge.config=" . $bridgeconfig);		
+	//	mwexec("/sbin/sysctl net.link.ether.bridge.enable=1");
+	//}
+	//
+	//$addflags = "";
+	//if (strpos($lancfg['if'], "fxp") !== false)
+	//	$addflags .= " link0";
 	
 
 	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
 			escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
 			
 	/* install default route */
-	mwexec("/sbin/route delete default");
+	mwexec("/sbin/route del default");
 	mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
 
 	
@@ -162,7 +162,7 @@ function network_get_current_public_ip_address() {
 function network_get_interface_mac($interface) {
   
 	/* build interface list with netstat */
-	exec("/usr/bin/netstat -I $interface -nW -f link", $linkinfo);
+	exec("/bin/netstat -I $interface -n", $linkinfo);
 	array_shift($linkinfo);
 	$alink = preg_split("/\s+/", $linkinfo[0]);
 	$mac = chop($alink[3]);
@@ -180,7 +180,10 @@ function network_get_interfaces() {
 	global $g;
 	
 	/* build interface list with netstat */
-	exec("/usr/bin/netstat -inW -f link", $linkinfo);
+	mwexec("/sbin/ifconfig");
+	exec("/sbin/ifconfig", $linkinfo);
+	print_r($linkinfo);exit();
+	array_shift($linkinfo);
 	array_shift($linkinfo);
 	
 	$iflist = array();
@@ -188,14 +191,11 @@ function network_get_interfaces() {
 	foreach ($linkinfo as $link) {
 		$alink = preg_split("/\s+/", $link);
 		$ifname = chop($alink[0]);
-		
-		if (substr($ifname, -1) == "*")
-			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 
-		if (!preg_match("/^(ppp|sl|gif|faith|lo|ng|vlan|tun|enc|wi|ath|ral|ural|ipr)\d/", $ifname)) {
+		if (!preg_match("/^(lo)\d/", $ifname)) {
 			$iflist[$ifname] = array();
 			
-			$iflist[$ifname]['mac'] = chop($alink[3]);
+			$iflist[$ifname]['mac'] = "00:00:00:00:00:00"; // linux hack
 			$iflist[$ifname]['up'] = false;
 			
 			/* find out if the link on this interface is up */

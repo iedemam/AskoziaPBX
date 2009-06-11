@@ -9,7 +9,7 @@
 CFDEVICE=`cat /var/etc/cfdevice`
 
 if [ $1 != "upgrade" ]; then
-	/sbin/umount -f /ultmp > /dev/null 2>&1
+	/bin/umount -f /ultmp > /dev/null 2>&1
 	/sbin/mdconfig -d -u 1 > /dev/null 2>&1
 fi
 
@@ -31,8 +31,8 @@ upgrade)
 	cp -p /conf/* /tmp/configbak
 
 	# unmount /cf and /asterisk
-	/sbin/umount -f /cf
-	/sbin/umount -f /asterisk
+	/bin/umount -f /cf
+	/bin/umount -f /asterisk
 
 	# dd image onto card
 	if [ -r $2 ]; then
@@ -42,14 +42,14 @@ upgrade)
 	fi
 
 	# mount /cf
-	/sbin/mount -w -o noatime /cf
+	/bin/mount -w -o noatime /cf
 
 	# restore config
 	cp -p /tmp/configbak/* /conf
 
 	# remount /cf ro
-	/sbin/umount -f /cf
-	/sbin/mount -r /cf
+	/bin/umount -f /cf
+	/bin/mount -r /cf
 
 	echo "Done - rebooting system..."
 

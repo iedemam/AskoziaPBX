@@ -34,6 +34,8 @@ mkdir -p $imagelocation ; cd $imagelocation
 mkdir root_stage
 mkdir root_stage/boot
 mkdir root_stage/boot/grub
+mkdir root_stage/conf
+cp ../../../../target/pbx/rootfs/conf.default/config.generic-pc.xml root_stage/conf/config.xml
 mkdir asterisk_stage
 mkdir loop
 
@@ -118,4 +120,5 @@ quit
 
 " | grub --device-map=/dev/null --batch --no-pager --no-floppy --no-curses
 
-mv firmware.img ../
+gzip -9 firmware.img
+mv firmware.img.gz ../firmware.img

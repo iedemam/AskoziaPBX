@@ -42,7 +42,7 @@ function wireless_get_interfaces() {
 	global $g;
 	
 	/* build interface list with netstat */
-	exec("/usr/bin/netstat -inW -f link", $linkinfo);
+	exec("/bin/netstat -inW -f link", $linkinfo);
 	array_shift($linkinfo);
 	
 	$iflist = array();

@@ -79,7 +79,7 @@ EOD;
 
 		/* mount CD-ROM */
 		@mkdir("/cdrom");
-		if (mwexec("/sbin/mount -r -t cd9660 /dev/acd0 /cdrom") != 0) {
+		if (mwexec("/bin/mount -r -t cd9660 /dev/acd0 /cdrom") != 0) {
 			echo "failed! (cannot mount CD-ROM)";
 		} else if (!file_exists("/cdrom/firmware.img")) {
 			echo "failed! (firmware not found)\n";
@@ -90,12 +90,12 @@ EOD;
 			/* copy existing configuration */
 			echo "Copying configuration...";
 			@mkdir("/mnttmp");
-			mwexec("/sbin/mount -w -o noatime /dev/{$target_disk}a /mnttmp");
+			mwexec("/bin/mount -w -o noatime /dev/{$target_disk}a /mnttmp");
 			copy("{$g['conf_path']}/config.xml", "/mnttmp/conf/config.xml");
-			mwexec("/sbin/umount /mnttmp");
+			mwexec("/bin/umount /mnttmp");
 			echo "done\n";
         
-			mwexec("/sbin/umount /cdrom");
+			mwexec("/bin/umount /cdrom");
         
 			system_reboot_sync();
 		}

@@ -57,7 +57,7 @@ X dahdi-tools
 X asterisk
 
 # prompt sets
-X core-en-ulaw-full
+#X core-en-ulaw-full
 X core-en-gsm-full
 
 # binaries

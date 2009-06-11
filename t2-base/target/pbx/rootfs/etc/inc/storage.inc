@@ -52,9 +52,9 @@ function storage_syspart_initialize() {
 
 	if (storage_syspart_has_default_bsdlabel()) {
 		echo " - generating bsdlabel...";
-		mwexec("/sbin/umount -a");
+		mwexec("/bin/umount -a");
 		storage_syspart_update_bsdlabel();
-		mwexec("/sbin/mount -a");
+		mwexec("/bin/mount -a");
 		echo "done.\n";
 	}
 
@@ -163,12 +163,12 @@ function storage_syspart_repair() {
 }
 
 function storage_syspart_mount() {
-	mwexec("/sbin/mount -o noatime /dev/" . storage_syspart_get_device() . "d /storage");
+	mwexec("/bin/mount -o noatime /dev/" . storage_syspart_get_device() . "d /storage");
 }
 
 function storage_syspart_unmount() {
 	mwexec("/bin/sync");
-	mwexec("/sbin/umount -f /storage");
+	mwexec("/bin/umount -f /storage");
 }
 
 function storage_syspart_get_device() {

@@ -6,20 +6,20 @@
 # Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 # All rights reserved.
 
-stty status '^T'
-
-trap : 2
-trap : 3
-
-HOME=/
-PATH=/sbin:/bin:/usr/sbin:/usr/bin
-export HOME PATH
-
-set -T
-trap "echo 'Reboot interrupted'; exit 1" 3
-
-# make some directories in /var
-mkdir /var/etc /var/db /var/empty
+#	stty status '^T'
+#	
+#	trap : 2
+#	trap : 3
+#	
+#	HOME=/
+#	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+#	export HOME PATH
+#	
+#	set -T
+#	trap "echo 'Reboot interrupted'; exit 1" 3
+#	
+#	# make some directories in /var
+#	mkdir /var/etc /var/db /var/empty
 
 # generate circular logfiles
 clog -i -s 262144 /var/log/system.log

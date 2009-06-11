@@ -65,14 +65,14 @@ if ($g['booting']) {
 			$cfgpartition = "da0s1";
 			$cfgfstype = "msdos";
 			
-			if (mwexec("/sbin/mount -t msdos -r /dev/da0s1 {$g['cf_path']}") == 0) {
+			if (mwexec("/bin/mount -t msdos -r /dev/da0s1 {$g['cf_path']}") == 0) {
 				/* USB stick is OK */
 				echo "Using USB memory stick for configuration storage.\n";
-				mwexec("/sbin/umount -f {$g['cf_path']}");
+				mwexec("/bin/umount -f {$g['cf_path']}");
 			} else {
 				$cfgdevice = $cfgpartition = "fd0";
 				
-				if (mwexec("/sbin/mount -t msdos -r /dev/fd0 {$g['cf_path']}") != 0) {
+				if (mwexec("/bin/mount -t msdos -r /dev/fd0 {$g['cf_path']}") != 0) {
 					echo <<<EOD
 
 
@@ -87,26 +87,27 @@ EOD;
 					sleep(5);
 				} else {
 					echo "Using floppy disk for configuration storage.\n";
-					mwexec("/sbin/umount -f {$g['cf_path']}");
+					mwexec("/bin/umount -f {$g['cf_path']}");
 				}
 			}
 		} else {
 			/* probe kernel known disks until we find one with config.xml */
-			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+			//$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+			$disks = array("hda");	// linux hack
 			foreach ($disks as $mountdisk) {
 				/* skip mfs mounted filesystems */
 				if (strstr($mountdisk, "md"))
 					continue;
-				if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0) {
+				if (mwexec("/bin/mount -r /dev/{$mountdisk}1 {$g['cf_path']}") == 0) {
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						/* found it */
 						$cfgdevice = $mountdisk;
-						$cfgpartition = $cfgdevice . "a";
-						$cfgfstype = "ufs";
+						$cfgpartition = $cfgdevice . "1";
+						$cfgfstype = "ext2";
 						echo "Found configuration on $cfgdevice.\n";
 					}
 					
-					mwexec("/sbin/umount -f {$g['cf_path']}");
+					mwexec("/bin/umount -f {$g['cf_path']}");
 					
 					if ($cfgdevice)
 						break;
@@ -141,14 +142,14 @@ EOD;
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 		
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
-		$fstab .= "/dev/{$cfgdevice}b /asterisk ufs ro 0 0\n";
+		$fstab .= "/dev/{$cfgdevice}2 /asterisk ext2 ro 0 0\n";
 		
 		fwrite($fd, $fstab);
 		fclose($fd);
 	}
 	
 	/* mount all filesystems */
-	mwexec("/sbin/mount -a");
+	mwexec("/bin/mount -a");
 }
 
 /* parse configuration */
@@ -232,8 +233,8 @@ function conf_mount_rw() {
 
 	/* don't use mount -u anymore
 	   (doesn't sync the files properly and /bin/sync won't help either) */
-	mwexec("/sbin/umount -f {$g['cf_path']}");
-	mwexec("/sbin/mount -w -o noatime {$g['cf_path']}");
+	mwexec("/bin/umount -f {$g['cf_path']}");
+	mwexec("/bin/mount -w -o noatime {$g['cf_path']}");
 }
 
 /**
@@ -242,8 +243,8 @@ function conf_mount_rw() {
 function conf_mount_ro() {
 	global $g;
 	
-	mwexec("/sbin/umount -f {$g['cf_path']}");
-	mwexec("/sbin/mount -r {$g['cf_path']}");
+	mwexec("/bin/umount -f {$g['cf_path']}");
+	mwexec("/bin/mount -r {$g['cf_path']}");
 }
 
 /**

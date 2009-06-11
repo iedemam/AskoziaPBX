@@ -45,7 +45,7 @@ function get_network_interface_info($ifdescr) {
 	
 	/* run netstat to determine link info */
 	unset($linkinfo);
-	exec("/usr/bin/netstat -I " . $ifinfo['hwif'] . " -nWb -f link", $linkinfo);
+	exec("/bin/netstat -I " . $ifinfo['hwif'] . " -nWb -f link", $linkinfo);
 	$linkinfo = preg_split("/\s+/", $linkinfo[1]);
 	if (preg_match("/\*$/", $linkinfo[0]) || preg_match("/^$/", $linkinfo[0])) {
 		$ifinfo['status'] = "down";
