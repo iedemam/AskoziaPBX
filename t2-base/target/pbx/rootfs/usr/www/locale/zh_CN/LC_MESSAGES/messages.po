@@ -3174,23 +3174,23 @@ msgstr "'%s' 区域需要填入。 "
 #, fuzzy
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "
-#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg"
 #~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
 #~ "\">michael@askozia.com</a>."
 #~ msgstr ""
 #~ "如果有一个模拟接口没有被探测到，请发送 <a href=\"/ajax.cgi?exec_shell=/"
-#~ "usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\"> 的输出 </a> 到 <a href="
+#~ "usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\"> 的输出 </a> 到 <a href="
 #~ "\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 
 #, fuzzy
 #~ msgid ""
 #~ "If an ISDN interface is present but was not detected, please send <a href="
-#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg"
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg"
 #~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
 #~ "\">michael@askozia.com</a>."
 #~ msgstr ""
 #~ "如果一个ISDN接口已经连接但没有被发现，请发送这个 <a href=\"/ajax.cgi?"
-#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/sbin/dmesg\">输出 </a> 给 "
+#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">输出 </a> 给 "
 #~ "<a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 
 #, fuzzy
