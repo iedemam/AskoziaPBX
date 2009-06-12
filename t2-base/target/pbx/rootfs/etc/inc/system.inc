@@ -99,7 +99,9 @@ EOD;
  */
 function system_hostname_configure() {
 	global $config, $g;
-	
+
+	printf("LINUX TODO: empty system_hostname_configure()\n"); return 0;
+
 	$syscfg = $config['system'];
 	
 	/* set hostname */
@@ -113,6 +115,8 @@ function system_hostname_configure() {
  */
 function system_routing_configure() {
 	global $config, $g;
+	
+	printf("LINUX TODO: empty system_routing_configure()\n"); return 0;
 	
 	/* clear out old routes, if necessary */
 	if (file_exists("{$g['vardb_path']}/routes.db")) {
@@ -157,7 +161,9 @@ function system_routing_configure() {
  */
 function system_routing_enable() {
 	global $config, $g;
-	
+
+	printf("LINUX TODO: empty system_routing_enable()\n"); return 0;
+
 	return mwexec("/sbin/sysctl net.inet.ip.forwarding=1");
 }
 
@@ -166,7 +172,9 @@ function system_routing_enable() {
  */
 function system_syslogd_start() {
 	global $config, $g;
-	
+
+	printf("LINUX TODO: empty system_syslogd_start()\n"); return 0;
+
 	$syslogcfg = $config['syslog'];
 	$logging_pkg = packages_get_package("logging");
 
@@ -246,8 +254,9 @@ EOD;
 function system_webgui_start() {
 	global $config, $g;
 	
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "Starting webGUI... ";
+	}
 	
 	/* kill any running mini_httpd */
 	killbypid("{$g['varrun_path']}/mini_httpd.pid");
@@ -337,6 +346,8 @@ EOD;
 
 function system_upgrade_https_certificate() {
 	global $config;
+	
+	printf("LINUX TODO: empty system_upgrade_https_certificate()\n"); return 0;
 
 	if (!$config['system']['webgui']['certificate']) {
 		echo "Upgrading HTTPS to a more secure, machine-specific certificate...";
@@ -396,6 +407,8 @@ function system_password_configure() {
 function system_timezone_configure() {
 	global $config, $g;
 
+	printf("LINUX TODO: empty system_timezone_configure()\n"); return 0;
+
 	$syscfg = $config['system'];
 
 	if ($g['booting'])
@@ -418,6 +431,8 @@ function system_timezone_configure() {
  */
 function system_ntp_configure() {
 	global $config, $g;
+
+	printf("LINUX TODO: empty system_ntp_configure()\n"); return 0;
 
 	$syscfg = $config['system'];
 
@@ -505,7 +520,9 @@ function system_do_shell_commands($early = 0) {
  */
 function system_console_configure() {
 	global $config, $g;
-	
+
+	printf("LINUX TODO: empty system_console_configure()\n"); return 0;
+
 	if (isset($config['system']['disableconsolemenu'])) {
 		touch("{$g['varetc_path']}/disableconsole");
 	} else {
@@ -520,6 +537,8 @@ function system_console_configure() {
  */
 function system_set_harddisk_standby() {
 	global $g, $config;
+
+	printf("LINUX TODO: empty system_set_harddisk_standby()\n"); return 0;
 
 	if ($g['platform'] != "generic-pc")
 		return;
@@ -552,9 +571,11 @@ function system_set_harddisk_standby() {
  */
 function system_set_termcap() {
 	global $config;
-	
+
+	printf("LINUX TODO: empty system_set_termcap()\n"); return 0;
+
 	$lines = 80;
-	
+
 	$termcap = <<<EOD
 cons25w|ansiw|ansi80x25-raw:\
 	:am:bs:NP:ms:pt:AX:eo:bw:ut:km:\
@@ -656,6 +677,9 @@ EOD;
  * Returns most recent dmesg contents as a single string
  */
 function system_get_dmesg_as_string() {
+
+	printf("LINUX TODO: empty system_get_dmesg_as_string()\n"); return 0;
+
 	return implode("\n", system_get_dmesg_as_array());
 }
 
@@ -663,8 +687,10 @@ function system_get_dmesg_as_string() {
  * Returns most recent dmesg contents as an array of its lines
  */
 function system_get_dmesg_as_array() {
-	
-	exec("/sbin/dmesg", $dmesg_lines);
+
+	printf("LINUX TODO: empty system_get_dmesg_as_array()\n"); return 0;
+
+	exec("/bin/dmesg", $dmesg_lines);
 	$n = count($dmesg_lines);
 	
 	/* find last copyright line (output from previous boots may be present) */
@@ -688,6 +714,8 @@ function system_get_dmesg_as_array() {
  */
 function system_load_kernel_modules() {
 
+	printf("LINUX TODO: empty system_load_kernel_modules()\n"); return 0;
+
 	mwexec("/sbin/kldload zaptel");
 	mwexec("/sbin/kldload wcfxo");
 	mwexec("/sbin/kldload wcfxs");
@@ -697,6 +725,8 @@ function system_load_kernel_modules() {
 
 function system_setup_ultmp() {
 	global $g;
+
+	printf("LINUX TODO: empty system_setup_ultmp()\n"); return 0;
 
 	$d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
 

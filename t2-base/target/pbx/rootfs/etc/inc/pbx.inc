@@ -803,6 +803,8 @@ function pbx_uniqid_to_technology($uniqid) {
 
 function pbx_modules_conf_generate() {
 
+	printf("LINUX TODO: empty pbx_modules_conf_generate()\n"); return 0;
+
 	$logging_pkg = packages_get_package("logging");
 
 	$fd = fopen("/etc/asterisk/modules.conf", "w");
@@ -830,12 +832,12 @@ EOD;
 
 function pbx_asterisk_conf_generate() {
 
-	$logging_pkg = packages_get_package("logging");
+	//$logging_pkg = packages_get_package("logging");
 
-	$astlogdir = "/var/log/asterisk";
-	if (isset($logging_pkg['active'])) {
-		$astlogdir = $logging_pkg['datapath'] . "/asterisk";
-	}
+	//$astlogdir = "/var/asterisk/log";
+	//if (isset($logging_pkg['active'])) {
+	//	$astlogdir = $logging_pkg['datapath'] . "/asterisk";
+	//}
 
 	$fd = fopen("/etc/asterisk/asterisk.conf", "w");
 	if (!$fd) {
@@ -846,13 +848,13 @@ function pbx_asterisk_conf_generate() {
 	$asteriskconf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
-astmoddir => /usr/lib/asterisk/modules
-astvarlibdir => /usr/share/asterisk
-astdatadir => /usr/share/asterisk
-astagidir => /usr/share/asterisk/agi-bin
-astspooldir => /var/spool/asterisk
+astmoddir => /asterisk/modules
+astvarlibdir => /asterisk
+astdatadir => /asterisk
+astagidir => /asterisk/agi-bin
+astspooldir => /var/asterisk/spool
 astrundir => /var/run
-astlogdir => $astlogdir
+astlogdir => /var/asterisk/log
 
 [options]
 verbose = 3

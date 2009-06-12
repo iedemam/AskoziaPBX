@@ -48,6 +48,8 @@ function services_dyndns_reset() {
 
 function services_dyndns_configure() {
 	global $config, $g;
+	
+	printf("LINUX TODO: empty services_dyndns_configure()\n"); return 0;
 
 	/* kill any running ez-ipupdate */
 	/* ez-ipupdate needs SIGQUIT instead of SIGTERM */

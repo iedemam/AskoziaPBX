@@ -33,6 +33,8 @@ require_once("functions.inc");
 function storage_syspart_initialize() {
 	global $g, $defaults;
 
+	printf("LINUX TODO: empty storage_syspart_initialize()\n"); return 0;
+
 	if (strstr($g['platform'], "cdrom")) {
 		return 0;
 	}

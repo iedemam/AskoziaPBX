@@ -82,6 +82,8 @@ function wireless_get_interfaces() {
  */
 function wireless_configure() {
 	global $config, $g;
+
+	printf("LINUX TODO: empty wireless_configure()\n"); return 0;
 	
 	if (!is_array($config['interfaces']['wireless'])) {
 		return 0;

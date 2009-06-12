@@ -20,13 +20,13 @@ mount -t sysfs none /sys
 ln -s /proc/self/fd /dev/fd
 
 echo "Populating u/dev ..."
-mknod /dev/null c 1 3
-mknod /dev/zero c 1 5
+#mknod /dev/null c 1 3
+#mknod /dev/zero c 1 5
 udevd &
 udevadm trigger
 udevadm settle
-[ -e /dev/console ] || mknod /dev/console c 5 1
-[ -e /dev/tty ] || mknod /dev/tty c 5 0
+#[ -e /dev/console ] || mknod /dev/console c 5 1
+#[ -e /dev/tty ] || mknod /dev/tty c 5 0
 
 # make some directories
 mkdir /asterisk /cf /var/etc /var/db
@@ -34,7 +34,7 @@ mkdir /asterisk /cf /var/etc /var/db
 # setup symbolic links
 ln -s /cf/conf /conf
 
-#kill %1
-#exec /sbin/init $*
-exec sh --login
+kill %1
+exec /sbin/init $*
+#exec sh --login
 

@@ -14,15 +14,12 @@
 		<time-update-interval>300</time-update-interval>
 		<timeservers>pool.ntp.org</timeservers>
 		<webgui>
-			<protocol>https</protocol>
+			<protocol>http</protocol>
 		</webgui>
 	</system>
 	<interfaces>
 		<lan>
-			<if>eth0</if>
-			<ipaddr>192.168.1.2</ipaddr>
-			<subnet>24</subnet>
-			<gateway>192.168.1.1</gateway>
+			<if>dhcp</if>
 		</lan>
 	</interfaces>
 	<conferencing>

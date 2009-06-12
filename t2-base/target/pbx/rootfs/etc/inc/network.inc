@@ -50,7 +50,8 @@ function network_loopback_configure() {
  */
 function network_lan_configure() {
 	global $config, $g;
-	
+
+	$syscfg = $config['system'];
 	$lancfg =& $config['interfaces']['lan'];
 	$interface_names = array_keys(network_get_interfaces());
 	
@@ -60,8 +61,14 @@ function network_lan_configure() {
 		unlink_if_exists("{$g['varetc_path']}/nameservers.conf");
 	}
 
+
+	if ($lancfg['if'] == "dhcp") {
+		foreach ($interface_names as $i) {
+			mwexec("/sbin/ifconfig $i up");
+			mwexec("/sbin/udhcpc -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
+		}
 	/* no interface found? uh-oh! assign an interface and bridge everything to it */
-	if (!in_array($lancfg['if'], $interface_names)) {
+	} else if (!in_array($lancfg['if'], $interface_names)) {
 		$lancfg['if'] = $interface_names[0];
 		if (count($interface_names) > 1) {
 			$lancfg['bridge'] = array_slice($interface_names, 1);
@@ -73,7 +80,7 @@ function network_lan_configure() {
 	
 	/* remove all addresses first */
 	//while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
-	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
+	//mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
 	
 	/* MAC spoofing? */
 	//if ($lancfg['spoofmac']) {
@@ -110,14 +117,14 @@ function network_lan_configure() {
 	//$addflags = "";
 	//if (strpos($lancfg['if'], "fxp") !== false)
 	//	$addflags .= " link0";
-	
-
-	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
-			escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
-			
-	/* install default route */
-	mwexec("/sbin/route del default");
-	mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
+	//
+    //
+	//mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
+	//		escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+	//		
+	///* install default route */
+	//mwexec("/sbin/route del default");
+	//mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
 
 	
 	if (!$g['booting']) {
@@ -178,37 +185,31 @@ function network_get_interface_mac($interface) {
 function network_get_interfaces() {
 	
 	global $g;
-	
-	/* build interface list with netstat */
-	mwexec("/sbin/ifconfig");
-	exec("/sbin/ifconfig", $linkinfo);
-	print_r($linkinfo);exit();
-	array_shift($linkinfo);
-	array_shift($linkinfo);
+
+	exec("ls /proc/sys/net/ipv4/conf/ | grep eth", $i_names);
+	print_r($i_names);
 	
 	$iflist = array();
 	
-	foreach ($linkinfo as $link) {
-		$alink = preg_split("/\s+/", $link);
-		$ifname = chop($alink[0]);
+	foreach ($i_names as $i) {
 
-		if (!preg_match("/^(lo)\d/", $ifname)) {
-			$iflist[$ifname] = array();
-			
-			$iflist[$ifname]['mac'] = "00:00:00:00:00:00"; // linux hack
-			$iflist[$ifname]['up'] = false;
+		// LINUX TODO : fetch real mac address and link state info
+		if (preg_match("/^(eth)\d/", $i)) {
+			$iflist[$i] = array();
+			$iflist[$i]['mac'] = "00:00:00:00:00:00";
+			$iflist[$i]['up'] = false;
 			
 			/* find out if the link on this interface is up */
-			unset($ifinfo);
-			exec("/sbin/ifconfig {$ifname}", $ifinfo);
-			
-			foreach ($ifinfo as $ifil) {
-				if (preg_match("/status: (.*)$/", $ifil, $matches)) {
-					if ($matches[1] == "active")
-						$iflist[$ifname]['up'] = true;
-					break;
-				}
-			}
+			//unset($ifinfo);
+			//exec("/sbin/ifconfig {$ifname}", $ifinfo);
+			//
+			//foreach ($ifinfo as $ifil) {
+			//	if (preg_match("/status: (.*)$/", $ifil, $matches)) {
+			//		if ($matches[1] == "active")
+			//			$iflist[$ifname]['up'] = true;
+			//		break;
+			//	}
+			//}
 		}
 	}
 	
