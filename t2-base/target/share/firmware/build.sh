@@ -39,46 +39,52 @@ cp ../../../../target/pbx/rootfs/conf.default/config.generic-pc.xml root_stage/c
 mkdir asterisk_stage
 mkdir loop
 
-# copy system into staging directories
+echo "Copy system into staging directories ..."
 cp ../../usr/lib/grub/i386-t2/* root_stage/boot/grub/
 cp ../../../../target/share/firmware/menu.lst root_stage/boot/grub/
 cp ../../boot/vmlinuz root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../asterisk/* asterisk_stage/
 
-# root partition size calculation
+echo "Setting permissions ..."
+#chmod 644 root_stage/conf.default/config.*.xml
+
+echo "Cleaning away stray files ..."
+find ./ -type f -name "._*" -print -delete
+
+echo "Root partition size calculation ..."
 root_size=`du --bytes -s root_stage | cut -f 1`
 root_cylinder_count=`expr $root_size / $cylinder_size + 5`
 root_start_sector="63"
 root_start_offset=`expr $root_start_sector \* 512`
 root_end_sector=`expr $sectors_per_cylinder \* $root_cylinder_count`
-echo "root     = $root_size bytes"
-echo "root     = $root_cylinder_count cylinders"
-echo "root     = $root_start_offset offset start"
-echo "root     = sectors ($root_start_sector - $root_end_sector)"
+echo "   = $root_size bytes"
+echo "   = $root_cylinder_count cylinders"
+echo "   = $root_start_offset offset start"
+echo "   = sectors ($root_start_sector - $root_end_sector)"
 
-# asterisk partition size calculation
+echo "Asterisk partition size calculation ..."
 asterisk_size=`du --bytes -s asterisk_stage | cut -f 1`
 asterisk_cylinder_count=`expr $asterisk_size / $cylinder_size + 5`
 asterisk_start_sector=`expr $root_end_sector + 1`
 asterisk_start_offset=`expr $asterisk_start_sector \* 512`
 asterisk_end_sector=`expr $sectors_per_cylinder \* $asterisk_cylinder_count + $asterisk_start_sector`
-echo "asterisk = $asterisk_size bytes"
-echo "asterisk = $asterisk_cylinder_count cylinders"
-echo "asterisk = $asterisk_start_offset offset start"
-echo "asterisk = sectors ($asterisk_start_sector - $asterisk_end_sector)"
+echo "   = $asterisk_size bytes"
+echo "   = $asterisk_cylinder_count cylinders"
+echo "   = $asterisk_start_offset offset start"
+echo "   = sectors ($asterisk_start_sector - $asterisk_end_sector)"
 
-# total image size calculation
+echo "Total image size calculation ..."
 total_cylinder_count=`expr $root_cylinder_count + $asterisk_cylinder_count`
-echo "image    = $total_cylinder_count cylinders"
+echo "   = $total_cylinder_count cylinders"
 
-# write a binary container for the disk image
+echo "Writing a binary container for the disk image ..."
 dd if=/dev/zero of=firmware.img bs=$cylinder_size count=$total_cylinder_count
 
 # associate it with a loop device
 losetup /dev/loop0 firmware.img
 
-# partition the loop device
+echo "Partition the disk image ..."
 sfdisk -D -C$total_cylinder_count -S63 -H16 /dev/loop0 << EOF
 ,$root_cylinder_count,L,*
 ,,L
@@ -95,6 +101,7 @@ echo "asterisk = $asterisk_blocks blocks"
 # done partitioning, unconfigure loop device
 losetup -d /dev/loop0
 
+echo "Formatting and populating partitions ..."
 # setup loop device for root partition, format then unconfigure
 losetup -o$root_start_offset /dev/loop0 firmware.img
 mke2fs -m0 -b1024 /dev/loop0 $root_blocks
@@ -111,7 +118,7 @@ cp -Rp asterisk_stage/* loop/
 umount /dev/loop0
 losetup -d /dev/loop0
 
-# install grub onto the image
+echo "Install grub onto the image ..."
 echo "device (hd0) firmware.img
 geometry (hd0) $total_cylinder_count 16 63
 root (hd0,0)

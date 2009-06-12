@@ -30,36 +30,47 @@ find $build_root -printf "%P\n" | sed '
 
 # stuff we never need
 
-/^TOOLCHAIN/	d;
-/^var\/adm/	d;
+/^TOOLCHAIN/			d;
+/^var\/adm/				d;
 
-/\/include/	d;
-/\/src/		d;
-/\.a$/		d;
-/\.o$/		d;
-/\.old$/	d;
+/\/include/				d;
+/\/src/					d;
+/\.a$/					d;
+/\.o$/					d;
+/\.old$/				d;
 
-/\/games/	d;
-/\/local/	d;
-/^boot/		d;
+/\/games/				d;
+/\/local/				d;
+/^boot/					d;
 
-# # stuff that would be nice - but is huge and only documentation
-/\/man/		d;
-/\/doc/		d;
+/\/man/					d;
+/\/doc/					d;
 
 # /etc noise
-/^etc\/stone.d/	d;
-/^etc\/cron.d/	d;
-/^etc\/init.d/	d;
+/^etc\/asterisk/		d;
+/^etc\/conf/			d;
+/^etc\/cron.d/			d;
+/^etc\/cron.daily/		d;
+/^etc\/hotplug/			d;
+/^etc\/hotplug.d/		d;
+/^etc\/init.d/			d;
+/^etc\/opt/				d;
+/^etc\/postinstall.d/	d;
+/^etc\/profile.d/		d;
+/^etc\/rc.d/			d;
+/^etc\/skel/			d;
+/^etc\/stone.d/			d;
 
-/^etc\/skel/	d;
-/^etc\/opt/	d;
-/^etc\/conf/	d;
-/^etc\/rc.d/	d;
+/^opt/					d;
 
-/^opt/		d;
+/^\/man\//				d;
 
-/^\/man\//	d;
+# /usr/lib
+/usr\/lib\/build/		d;
+/usr\/lib\/gettext/		d;
+/usr\/lib\/grub/		d;
+/usr\/lib\/perl5/		d;
+/usr\/lib\/pkgconfig/	d;
 
 # /usr/share
 /usr\/share\/aclocal/	d;
@@ -105,6 +116,18 @@ echo generic-pc > etc/platform
 
 echo "Creating links for identical files ..."
 link_identical_files
+
+echo "Setting permissions ..."
+chmod 755 etc/rc*
+chmod 644 etc/pubkey.pem
+chmod 644 etc/inc/*
+chmod 644 usr/www/*
+chmod 755 usr/www/*.php
+#chmod 755 usr/www/*.cgi
+chmod 755 usr/share/udhcpc/default.script
+
+echo "Cleaning away stray files ..."
+find ./ -type f -name "._*" -print -delete
 
 echo "Creating initramfs image ..."
 find . | cpio -H newc -o > ../initramfs.cpio
