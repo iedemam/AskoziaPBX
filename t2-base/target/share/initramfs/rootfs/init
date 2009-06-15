@@ -12,7 +12,7 @@ export HOME PATH
 #set -T
 #trap "echo 'Reboot interrupted'; exit 1" 3
 
-echo "Mounting /dev, /proc and /sys ..."
+echo "Mounting /dev, /proc, /usbfs and /sys ..."
 mount -t tmpfs none /dev -o mode=755
 mount -t proc  none /proc
 mount -t usbfs none /proc/bus/usb 2> /dev/null
@@ -22,6 +22,9 @@ ln -s /proc/self/fd /dev/fd
 echo "Populating u/dev ..."
 #mknod /dev/null c 1 3
 #mknod /dev/zero c 1 5
+mknod /dev/tty1 c 4 1
+mknod /dev/tty2 c 4 2
+mknod /dev/tty3 c 4 3
 udevd &
 udevadm trigger
 udevadm settle
@@ -36,5 +39,3 @@ ln -s /cf/conf /conf
 
 kill %1
 exec /sbin/init $*
-#exec sh --login
-
