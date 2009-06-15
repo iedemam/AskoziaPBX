@@ -26,6 +26,7 @@ imagelocation="$build_toolchain/firmware"
 # cylinder size in bytes (16 heads x 63 sectors/track x 512 bytes/sector)
 cylinder_size="516096"
 sectors_per_cylinder="1008"
+block_pad="1024"
 
 echo "Preparing initramfs image from build result ..."
 
@@ -53,74 +54,57 @@ echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
 
 echo "Root partition size calculation ..."
-root_size=`du --bytes -s root_stage | cut -f 1`
-root_cylinder_count=`expr $root_size / $cylinder_size + 5`
-root_start_sector="63"
-root_start_offset=`expr $root_start_sector \* 512`
-root_end_sector=`expr $sectors_per_cylinder \* $root_cylinder_count`
-echo "   = $root_size bytes"
-echo "   = $root_cylinder_count cylinders"
-echo "   = $root_start_offset offset start"
-echo "   = sectors ($root_start_sector - $root_end_sector)"
+root_size=`du -B512 -s root_stage | cut -f 1`
+root_size=`expr $root_size + $block_pad`
+echo "   = $root_size sectors"
 
 echo "Asterisk partition size calculation ..."
-asterisk_size=`du --bytes -s asterisk_stage | cut -f 1`
-asterisk_cylinder_count=`expr $asterisk_size / $cylinder_size + 5`
-asterisk_start_sector=`expr $root_end_sector + 1`
-asterisk_start_offset=`expr $asterisk_start_sector \* 512`
-asterisk_end_sector=`expr $sectors_per_cylinder \* $asterisk_cylinder_count + $asterisk_start_sector`
-echo "   = $asterisk_size bytes"
-echo "   = $asterisk_cylinder_count cylinders"
-echo "   = $asterisk_start_offset offset start"
-echo "   = sectors ($asterisk_start_sector - $asterisk_end_sector)"
+asterisk_size=`du -B512 -s asterisk_stage | cut -f 1`
+asterisk_size=`expr $asterisk_size + $block_pad`
+echo "   = $asterisk_size sectors"
 
 echo "Total image size calculation ..."
-total_cylinder_count=`expr $root_cylinder_count + $asterisk_cylinder_count`
-echo "   = $total_cylinder_count cylinders"
+total_sector_count=`expr $root_size + $asterisk_size + 1`
+echo "   = $total_sector_count sectors"
 
 echo "Writing a binary container for the disk image ..."
-dd if=/dev/zero of=firmware.img bs=$cylinder_size count=$total_cylinder_count
+dd if=/dev/zero of=firmware.img bs=512 count=$total_sector_count
 
-# associate it with a loop device
-losetup /dev/loop0 firmware.img
+
+cyls_needed=`expr $total_sector_count / $sectors_per_cylinder + 1`
+echo "Cylinders needed = $total_sector_count sectors / $sectors_per_cylinder sectors-per-cyl + 1 = $cyls_needed"
+asterisk_start_sector=`expr $root_size + 1`
 
 echo "Partition the disk image ..."
-sfdisk -D -C$total_cylinder_count -S63 -H16 /dev/loop0 << EOF
-,$root_cylinder_count,L,*
-,,L
+sfdisk -C$cyls_needed -S63 -H16 -uS -f -L --no-reread firmware.img << EOF
+1,$root_size,83,*
+$asterisk_start_sector,$asterisk_size,83
 ;
 ;
 EOF
 
-# parse root and asterisk partition block counts
-root_blocks=`fdisk -l -C$total_cylinder_count -S63 -H16 -s /dev/loop0 | grep loop0p1 | sed 's/ \+/ /g' | cut -d " " -f 5 | sed 's/[^0-9]//g'`
-asterisk_blocks=`fdisk -l -C$total_cylinder_count -S63 -H16 -s /dev/loop0 | grep loop0p2 | sed 's/ \+/ /g' | cut -d " " -f 4 | sed 's/[^0-9]//g'`
-echo "root     = $root_blocks blocks"
-echo "asterisk = $asterisk_blocks blocks"
-
-# done partitioning, unconfigure loop device
-losetup -d /dev/loop0
-
 echo "Formatting and populating partitions ..."
-# setup loop device for root partition, format then unconfigure
-losetup -o$root_start_offset /dev/loop0 firmware.img
-mke2fs -m0 -b1024 /dev/loop0 $root_blocks
-mount -text2 /dev/loop0 loop
+dd if=/dev/zero of=part1.img bs=512 count=$root_size
+mke2fs -m0 -F part1.img
+tune2fs -c0 part1.img
+mount -o loop part1.img loop
 cp -Rp root_stage/* loop/
-umount /dev/loop0
-losetup -d /dev/loop0
+umount loop
 
-# setup loop device for asterisk partition, format then unconfigure
-losetup -o$asterisk_start_offset /dev/loop0 firmware.img
-mke2fs -m0 -b1024 /dev/loop0
-mount -text2 /dev/loop0 loop
+dd if=/dev/zero of=part2.img bs=512 count=$asterisk_size
+mke2fs -m0 -F part2.img
+tune2fs -c0 part2.img
+mount -o loop part2.img loop
 cp -Rp asterisk_stage/* loop/
-umount /dev/loop0
-losetup -d /dev/loop0
+umount loop
+
+dd if=part1.img of=firmware.img bs=512 seek=1
+dd if=part2.img of=firmware.img bs=512 seek=$asterisk_start_sector
+
 
 echo "Install grub onto the image ..."
 echo "device (hd0) firmware.img
-geometry (hd0) $total_cylinder_count 16 63
+geometry (hd0) $cyls_needed 16 63
 root (hd0,0)
 setup (hd0)
 quit
