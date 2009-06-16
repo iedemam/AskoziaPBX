@@ -1,0 +1,65 @@
+--- asterisk-1.4.25.1/main/asterisk.c.orig	2009-06-16 19:30:57.000000000 +0200
++++ asterisk-1.4.25.1/main/asterisk.c	2009-06-16 19:45:43.000000000 +0200
+@@ -802,7 +802,7 @@
+ int ast_safe_system(const char *s)
+ {
+ 	pid_t pid;
+-#ifdef HAVE_WORKING_FORK
++#ifdef HAVE_WORKING_VFORK
+ 	int x;
+ #endif
+ 	int res;
+@@ -812,7 +812,7 @@
+ #if defined(HAVE_WORKING_FORK) || defined(HAVE_WORKING_VFORK)
+ 	ast_replace_sigchld();
+ 
+-#ifdef HAVE_WORKING_FORK
++#ifdef HAVE_WORKING_VFORK
+ 	pid = fork();
+ #else
+ 	pid = vfork();
+@@ -828,7 +828,7 @@
+ 		}
+ 		cap_free(cap);
+ #endif
+-#ifdef HAVE_WORKING_FORK
++#ifdef HAVE_WORKING_VFORK
+ 		if (ast_opt_high_priority)
+ 			ast_set_priority(0);
+ 		/* Close file descriptors and launch system command */
+@@ -2472,7 +2472,7 @@
+ 	printf("   -U <user>       Run as a user other than the caller\n");
+ 	printf("   -c              Provide console CLI\n");
+ 	printf("   -d              Enable extra debugging\n");
+-#if HAVE_WORKING_FORK
++#if HAVE_WORKING_VFORK
+ 	printf("   -f              Do not fork\n");
+ 	printf("   -F              Always fork\n");
+ #endif
+@@ -2585,7 +2585,7 @@
+ 			if (sscanf(v->value, "%d", &option_debug) != 1) {
+ 				option_debug = ast_true(v->value);
+ 			}
+-#if HAVE_WORKING_FORK
++#if HAVE_WORKING_VFORK
+ 		/* Disable forking (-f at startup) */
+ 		} else if (!strcasecmp(v->name, "nofork")) {
+ 			ast_set2_flag(&ast_options, ast_true(v->value), AST_OPT_FLAG_NO_FORK);
+@@ -2739,7 +2739,7 @@
+ 	/* Check for options */
+ 	while ((c = getopt(argc, argv, "mtThfFdvVqprRgciInx:U:G:C:L:M:")) != -1) {
+ 		switch (c) {
+-#if HAVE_WORKING_FORK
++#if HAVE_WORKING_VFORK
+ 		case 'F':
+ 			ast_set_flag(&ast_options, AST_OPT_FLAG_ALWAYS_FORK);
+ 			break;
+@@ -3002,7 +3002,7 @@
+ 	} else
+ 		ast_log(LOG_WARNING, "Unable to open pid file '%s': %s\n", ast_config_AST_PID, strerror(errno));
+ 
+-#if HAVE_WORKING_FORK
++#if HAVE_WORKING_VFORK
+ 	if (ast_opt_always_fork || !ast_opt_no_fork) {
+ #ifndef HAVE_SBIN_LAUNCHD
+ 		if (daemon(1, 0) < 0) {
