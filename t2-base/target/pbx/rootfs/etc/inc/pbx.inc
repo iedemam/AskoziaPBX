@@ -141,13 +141,13 @@ function pbx_configure_timing() {
 
 	/* zaptel modules are all loaded at boot, 
 	if nothing was detected we fall back to ztdummy for timing */
-	if(!count(analog_get_recognized_ab_unit_numbers())) {
-		mwexec("/sbin/kldunload wcfxo");
-		mwexec("/sbin/kldunload wcfxs");
-		//mwexec("/sbin/kldunload wct1xxp");
-		//mwexec("/sbin/kldunload wct4xxp");
-		mwexec("/sbin/kldload ztdummy");
-	}
+	//if(!count(analog_get_recognized_ab_unit_numbers())) {
+	//	mwexec("/sbin/kldunload wcfxo");
+	//	mwexec("/sbin/kldunload wcfxs");
+	//	//mwexec("/sbin/kldunload wct1xxp");
+	//	//mwexec("/sbin/kldunload wct4xxp");
+	//	mwexec("/sbin/kldload ztdummy");
+	//}
 	return 0;
 }
 
@@ -803,9 +803,7 @@ function pbx_uniqid_to_technology($uniqid) {
 
 function pbx_modules_conf_generate() {
 
-	printf("LINUX TODO: empty pbx_modules_conf_generate()\n"); return 0;
-
-	$logging_pkg = packages_get_package("logging");
+	//$logging_pkg = packages_get_package("logging");
 
 	$fd = fopen("/etc/asterisk/modules.conf", "w");
 	if (!$fd) {
@@ -819,10 +817,10 @@ autoload=yes
 
 EOD;
 
-	if (!isset($logging_pkg['active'])) {
-		$modulesconf .= "noload => cdr_csv.so\n";
-		$modulesconf .= "noload => cdr_sqlite.so\n";
-	}
+	//if (!isset($logging_pkg['active'])) {
+	//	$modulesconf .= "noload => cdr_csv.so\n";
+	//	$modulesconf .= "noload => cdr_sqlite.so\n";
+	//}
 
 	fwrite($fd, $modulesconf);
 	fclose($fd);
@@ -849,11 +847,11 @@ function pbx_asterisk_conf_generate() {
 [directories]
 astetcdir => /etc/asterisk
 astmoddir => /asterisk/modules
-astvarlibdir => /asterisk
+astvarlibdir => /var/asterisk/data
 astdatadir => /asterisk
 astagidir => /asterisk/agi-bin
 astspooldir => /var/asterisk/spool
-astrundir => /var/run
+astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log
 
 [options]
