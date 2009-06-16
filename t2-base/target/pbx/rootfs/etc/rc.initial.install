@@ -81,10 +81,10 @@ EOD;
 		@mkdir("/cdrom");
 		if (mwexec("/bin/mount -r -t cd9660 /dev/acd0 /cdrom") != 0) {
 			echo "failed! (cannot mount CD-ROM)";
-		} else if (!file_exists("/cdrom/firmware.img")) {
+		} else if (!file_exists("/cdrom/firmware.img.gz")) {
 			echo "failed! (firmware not found)\n";
 		} else {
-			mwexec("/usr/bin/gunzip -S \"\" -c /cdrom/firmware.img | dd of=/dev/$target_disk ibs=64k obs=64k");
+			mwexec("/bin/gunzip -c /cdrom/firmware.img.gz | dd of=/dev/$target_disk bs=512");
 			echo "done\n";
         
 			/* copy existing configuration */

@@ -9,13 +9,13 @@
 CFDEVICE=`cat /var/etc/cfdevice`
 
 if [ $1 != "upgrade" ]; then
-	/bin/umount -f /ultmp > /dev/null 2>&1
-	/sbin/mdconfig -d -u 1 > /dev/null 2>&1
+	#/bin/umount -f /ultmp > /dev/null 2>&1
+	#/sbin/mdconfig -d -u 1 > /dev/null 2>&1
 fi
 
 case $1 in
 enable)
-	/sbin/mdmfs -s 20m md1 /ultmp > /dev/null 2>&1
+	#/sbin/mdmfs -s 20m md1 /ultmp > /dev/null 2>&1
 	;;
 upgrade)
 	# wait 5 seconds before beginning
@@ -36,7 +36,7 @@ upgrade)
 
 	# dd image onto card
 	if [ -r $2 ]; then
-		/usr/bin/gunzip -S "" -c $2 | dd of=/dev/$CFDEVICE ibs=64k obs=64k > /dev/null 2>&1
+		/bin/gunzip -c $2 | dd of=/dev/$CFDEVICE bs=512 > /dev/null 2>&1
 		echo "Image installed."
 		rm $2
 	fi
