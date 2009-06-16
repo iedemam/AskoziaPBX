@@ -323,7 +323,7 @@ function exec_rc_script_async($scriptname) {
 
 function verify_gzip_file($fname) {
 
-	$returnvar = mwexec("/usr/bin/gunzip -S \"\" -t " . escapeshellarg($fname));
+	$returnvar = mwexec("/bin/gunzip -t " . escapeshellarg($fname));
 	if ($returnvar != 0)
 		return 0;
 	else
