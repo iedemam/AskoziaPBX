@@ -84,6 +84,7 @@ m usr/share/terminfo
 m usr/share/tmac
 m usr/share/zoneinfo
 m usr/src
+m usr/www
 m var
 m var/account
 m var/adm

@@ -60,6 +60,14 @@ X asterisk
 #X core-en-ulaw-full
 X core-en-gsm-full
 
+# javascript libraries
+X jquery
+X jquery.blockui
+X jquery.preloadimages
+X jquery.progressbar
+X jquery.selectboxes
+X jquery.ui
+
 # binaries
 X busybox
 X dropbear
