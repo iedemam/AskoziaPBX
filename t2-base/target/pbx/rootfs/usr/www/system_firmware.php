@@ -86,7 +86,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	else if ($_POST['Upgrade'] || $_POST['sig_override'])
 		$mode = "upgrade";
 	else if ($_POST['sig_no'])
-		unlink("/ultmp/firmware.img");
+		unlink("/ultmp/firmware.img.gz");
 		
 	if ($mode) {
 		if ($mode == "enable") {
@@ -110,10 +110,10 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 						unlink($d_fwupenabled_path);
 				} else {
 					/* move the image so PHP won't delete it */
-					rename($_FILES['ulfile']['tmp_name'], "/ultmp/firmware.img");
+					rename($_FILES['ulfile']['tmp_name'], "/ultmp/firmware.img.gz");
 					
 					/* check digital signature */
-					$sigchk = verify_digital_signature("/ultmp/firmware.img");
+					$sigchk = verify_digital_signature("/ultmp/firmware.img.gz");
 					
 					if ($sigchk == 1)
 						$sig_warning = gettext("The digital signature on this image is invalid.");
@@ -122,9 +122,9 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 					else if (($sigchk == 3) || ($sigchk == 4))
 						$sig_warning = gettext("There has been an error verifying the signature on this image.");
 				
-					if (!verify_gzip_file("/ultmp/firmware.img")) {
+					if (!verify_gzip_file("/ultmp/firmware.img.gz")) {
 						$input_errors[] = gettext("The image file is corrupt.");
-						unlink("/ultmp/firmware.img");
+						unlink("/ultmp/firmware.img.gz");
 					}
 				}
 			}
@@ -138,12 +138,12 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 					unlink("/ultmp");
 					mkdir("/ultmp");
 					mwexec("/sbin/mdmfs -s 20m md1 /ultmp");
-					rename("/storage/ultmp/firmware.img", "/ultmp/firmware.img");
+					rename("/storage/ultmp/firmware.img.gz", "/ultmp/firmware.img.gz");
 					storage_syspart_unmount();
 				}
 				/* fire up the update script in the background */
 				touch($d_firmwarelock_path);
-				exec_rc_script_async("/etc/rc.firmware upgrade /ultmp/firmware.img");
+				exec_rc_script_async("/etc/rc.firmware upgrade /ultmp/firmware.img.gz");
 				
 				$savemsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
 			}
