@@ -676,8 +676,6 @@ EOD;
  */
 function system_get_dmesg_as_string() {
 
-	printf("LINUX TODO: empty system_get_dmesg_as_string()\n"); return 0;
-
 	return implode("\n", system_get_dmesg_as_array());
 }
 
@@ -686,25 +684,25 @@ function system_get_dmesg_as_string() {
  */
 function system_get_dmesg_as_array() {
 
-	printf("LINUX TODO: empty system_get_dmesg_as_array()\n"); return 0;
-
 	exec("/bin/dmesg", $dmesg_lines);
-	$n = count($dmesg_lines);
-	
-	/* find last copyright line (output from previous boots may be present) */
-	$lastcpline = 0;
-	for ($i = 0; $i < $n; $i++) {
-		if (strstr($dmesg_lines[$i], "Copyright (c) 1992-")) {
-			$lastcpline = $i;
-		}
-	}
-	
-	$dmesg = array();
-	for ($i = $lastcpline; $i < $n; $i++) {
-		$dmesg[] = $dmesg_lines[$i];
-	}
-	
-	return $dmesg;
+	return $dmesg_lines;
+
+	//$n = count($dmesg_lines);
+
+	///* find last copyright line (output from previous boots may be present) */
+	//$lastcpline = 0;
+	//for ($i = 0; $i < $n; $i++) {
+	//	if (strstr($dmesg_lines[$i], "Copyright (c) 1992-")) {
+	//		$lastcpline = $i;
+	//	}
+	//}
+
+	//$dmesg = array();
+	//for ($i = $lastcpline; $i < $n; $i++) {
+	//	$dmesg[] = $dmesg_lines[$i];
+	//}
+
+	//return $dmesg;
 }
 
 /**
@@ -724,21 +722,19 @@ function system_load_kernel_modules() {
 function system_setup_ultmp() {
 	global $g;
 
-	printf("LINUX TODO: empty system_setup_ultmp()\n"); return 0;
+	//$d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
 
-	$d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
-
-	if (storage_syspart_get_state() == "active") {
-		if (!file_exists("/storage/ultmp")) {
-			mkdir("/storage/ultmp");
-		} else {
-			mwexec("rm -rf /ultmp");
-		}
-		symlink("/storage/ultmp", "/ultmp");
-		touch($d_ultmpmounted_path);
-	} else {
+	//if (storage_syspart_get_state() == "active") {
+	//	if (!file_exists("/storage/ultmp")) {
+	//		mkdir("/storage/ultmp");
+	//	} else {
+	//		mwexec("rm -rf /ultmp");
+	//	}
+	//	symlink("/storage/ultmp", "/ultmp");
+	//	touch($d_ultmpmounted_path);
+	//} else {
 		mkdir("/ultmp");
-	}
+	//}
 
 	// clean up uploaded / downloaded files
 	mwexec("rm -rf /ultmp/*");
