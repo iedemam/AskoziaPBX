@@ -76,17 +76,17 @@ function system_hosts_generate() {
 	$syscfg = $config['system'];
 	$lancfg = $config['interfaces']['lan'];
 
-	$fd = fopen("{$g['varetc_path']}/hosts", "w");
+	$fd = fopen("{$g['etc_path']}/hosts", "w");
 	if (!$fd) {
 		printf("Error: cannot open hosts file in system_hosts_generate().\n");
 		return 1;
 	}
 		
-	$hosts = <<<EOD
-127.0.0.1	localhost localhost.{$syscfg['domain']}
-{$lancfg['ipaddr']}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
-
-EOD;
+	$hosts = "127.0.0.1	localhost localhost.{$syscfg['domain']}\n";
+	if ($lancfg['ipaddr']) {
+		$hosts .= "{$lancfg['ipaddr']}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}";
+	}
+	$hosts .= "\n";
 	
 	fwrite($fd, $hosts);
 	fclose($fd);
@@ -100,10 +100,8 @@ EOD;
 function system_hostname_configure() {
 	global $config, $g;
 
-	printf("LINUX TODO: empty system_hostname_configure()\n"); return 0;
-
 	$syscfg = $config['system'];
-	
+
 	/* set hostname */
 	return mwexec("/bin/hostname " .
 		escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
