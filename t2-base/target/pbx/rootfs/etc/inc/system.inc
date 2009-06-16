@@ -375,7 +375,7 @@ function system_upgrade_https_certificate() {
 function system_password_configure() {
 	global $config, $g;
 	
-	$fd = fopen("{$g['varrun_path']}/htpasswd", "w");
+	$fd = fopen("{$g['www_path']}/.htpasswd", "w");
 	if (!$fd) {
 		printf("Error: cannot open htpasswd in system_password_configure().\n");
 		return 1;
@@ -396,7 +396,7 @@ function system_password_configure() {
 	}
 	
 	fclose($fd);
-	chmod("{$g['varrun_path']}/htpasswd", 0600);
+	chmod("{$g['www_path']}/.htpasswd", 0600);
 	
 	return 0;
 }
