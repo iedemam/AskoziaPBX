@@ -46,6 +46,7 @@ cp ../../../../target/share/firmware/menu.lst root_stage/boot/grub/
 cp ../../boot/vmlinuz root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../asterisk/* asterisk_stage/
+ln -s /var/asterisk/run/astdb asterisk_stage/astdb
 
 echo "Setting permissions ..."
 #chmod 644 root_stage/conf.default/config.*.xml

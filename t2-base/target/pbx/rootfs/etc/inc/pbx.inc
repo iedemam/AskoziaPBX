@@ -815,6 +815,7 @@ function pbx_modules_conf_generate() {
 [modules]
 autoload=yes
 
+
 EOD;
 
 	//if (!isset($logging_pkg['active'])) {
@@ -847,7 +848,7 @@ function pbx_asterisk_conf_generate() {
 [directories]
 astetcdir => /etc/asterisk
 astmoddir => /asterisk/modules
-astvarlibdir => /var/asterisk/data
+astvarlibdir => /asterisk
 astdatadir => /asterisk
 astagidir => /asterisk/agi-bin
 astspooldir => /var/asterisk/spool
@@ -855,11 +856,12 @@ astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log
 
 [options]
-verbose = 3
+verbose = 50
 dumpcore = no
 internal_timing = yes
 highpriority = yes
 languageprefix = yes
+
 
 EOD;
 

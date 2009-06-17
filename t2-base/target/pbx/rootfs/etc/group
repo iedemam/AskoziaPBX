@@ -1,4 +1,4 @@
-root:x:0
+root:x:0:
 disk:x:1000:
 cdrom:x:1001:
 floppy:x:1002:
