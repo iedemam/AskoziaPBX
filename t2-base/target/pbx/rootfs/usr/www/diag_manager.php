@@ -45,7 +45,7 @@ include("fbegin.inc"); ?>
 		jQuery("#command").focus();
 		
 		jQuery("#contents_wrapper").ajaxStart(function(){
-			jQuery(this).block('<img src="ajax_busy_round.gif">');
+			jQuery(this).block({ message: '<img src="ajax_busy_round.gif">' });
 		});
 
 		jQuery("#contents_wrapper").ajaxStop(function(){

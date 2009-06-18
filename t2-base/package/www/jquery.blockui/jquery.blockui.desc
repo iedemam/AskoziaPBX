@@ -15,7 +15,7 @@
 [I] jQuery blockui plugin
 
 [T] The jQuery BlockUI Plugin lets you simulate synchronous behavior when
-[T] using AJAX, without locking the browser[1]. When activated, it will prevent
+[T] using AJAX, without locking the browser. When activated, it will prevent
 [T] user activity with the page (or part of the page) until it is deactivated.
 [T] BlockUI adds elements to the DOM  to give it both the appearance and
 [T] behavior of blocking user interaction. 
@@ -30,7 +30,7 @@
 
 [L] OpenSource
 [S] Stable
-[V] 2
+[V] 2.20
 [P] X -----5---9 188.900
 
-[D] 0 jquery.blockUI.js.txt http://plugins.jquery.com/files/
+[D] 0 jquery.blockUI.js?v2.20 http://www.malsup.com/jquery/block/
