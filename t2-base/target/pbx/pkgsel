@@ -60,7 +60,8 @@ X asterisk
 #X core-en-ulaw-full
 X core-en-gsm-full
 
-# javascript libraries
+# webgui
+X ajaxcgi
 X jquery
 X jquery.blockui
 X jquery.preloadimages

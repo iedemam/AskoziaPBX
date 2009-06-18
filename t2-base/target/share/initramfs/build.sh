@@ -123,7 +123,7 @@ chmod 644 etc/pubkey.pem
 chmod 644 etc/inc/*
 chmod 644 usr/www/*
 chmod 755 usr/www/*.php
-#chmod 755 usr/www/*.cgi
+chmod 755 usr/www/*.cgi
 chmod 755 usr/share/udhcpc/default.script
 
 echo "Cleaning away stray files ..."
