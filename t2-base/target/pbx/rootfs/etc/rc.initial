@@ -7,11 +7,11 @@
 # All rights reserved.
 
 # make sure the user can't kill us by pressing Ctrl-C
-trap : 2
-trap : 3
+#trap : 2
+#trap : 3
 
 # redirect input/output
-exec </dev/console >/dev/console 2>/dev/console
+#exec </dev/console >/dev/console 2>/dev/console
 
 # XXX : starting here, this needs to become PHP code for the gettext support
 if [ -r /var/etc/disableconsole ]; then

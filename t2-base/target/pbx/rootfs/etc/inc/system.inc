@@ -519,8 +519,6 @@ function system_do_shell_commands($early = 0) {
 function system_console_configure() {
 	global $config, $g;
 
-	printf("LINUX TODO: empty system_console_configure()\n"); return 0;
-
 	if (isset($config['system']['disableconsolemenu'])) {
 		touch("{$g['varetc_path']}/disableconsole");
 	} else {
