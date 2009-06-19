@@ -15,6 +15,9 @@
 # start with an empty package selection
 O *
 
+# file system overlay
+X pbx
+
 # toolchain
 X binutils
 X gmp
