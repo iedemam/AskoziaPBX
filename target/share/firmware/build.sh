@@ -28,7 +28,7 @@ cylinder_size="516096"
 sectors_per_cylinder="1008"
 block_pad="1024"
 
-echo "Preparing initramfs image from build result ..."
+echo "Preparing firmware image from build result ..."
 
 rm -rf $imagelocation{,.img}
 mkdir -p $imagelocation ; cd $imagelocation
@@ -36,7 +36,7 @@ mkdir root_stage
 mkdir root_stage/boot
 mkdir root_stage/boot/grub
 mkdir root_stage/conf
-cp ../../../../target/pbx/rootfs/conf.default/config.generic-pc.xml root_stage/conf/config.xml
+cp ../initramfs/conf.default/config.generic-pc.xml root_stage/conf/config.xml
 mkdir asterisk_stage
 mkdir loop
 

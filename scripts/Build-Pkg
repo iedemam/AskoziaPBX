@@ -356,7 +356,7 @@ fi
 # ----  Setting Build Variables
 #
 
-flistroot="asterisk bin boot etc lib lib64 sbin usr var opt"
+flistroot="asterisk bin boot conf.default etc lib lib64 sbin usr var opt"
 
 # remove the obvious noise: ldconfig and our /var/adm as well as due to
 # rare i18n locale directories ...
