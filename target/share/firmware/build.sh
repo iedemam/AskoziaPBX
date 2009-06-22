@@ -41,7 +41,7 @@ mkdir asterisk_stage
 mkdir loop
 
 echo "Copy system into staging directories ..."
-cp ../../usr/lib/grub/i386-t2/* root_stage/boot/grub/
+cp ../../usr/lib/grub/i386-t2/stage{1,2} root_stage/boot/grub/
 cp ../../../../target/share/firmware/menu.lst root_stage/boot/grub/
 cp ../../boot/vmlinuz root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
