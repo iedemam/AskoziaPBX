@@ -38,6 +38,7 @@ find $build_root -printf "%P\n" | sed '
 /\.a$/					d;
 /\.o$/					d;
 /\.old$/				d;
+/\.svn/					d;
 
 /\/games/				d;
 /\/local/				d;
