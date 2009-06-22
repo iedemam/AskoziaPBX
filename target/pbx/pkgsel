@@ -78,5 +78,5 @@ X dropbear
 X msmtp
 X msntp
 X php4
-#X ezipupdate
+X ezipupdate
 X mini_httpd

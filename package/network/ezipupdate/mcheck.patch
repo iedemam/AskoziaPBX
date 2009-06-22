@@ -1,0 +1,13 @@
+--- ez-ipupdate-3.0.11b8/ez-ipupdate.c.orig	2009-06-22 16:16:16.000000000 +0200
++++ ez-ipupdate-3.0.11b8/ez-ipupdate.c	2009-06-22 16:16:33.000000000 +0200
+@@ -4391,10 +4391,6 @@
+   int sock = -1;
+ #endif
+ 
+-#if defined(DEBUG) && defined(__linux__)
+-  mcheck(NULL);
+-#endif
+-
+   dprintf((stderr, "staring...\n"));
+ 
+   program_name = argv[0];
