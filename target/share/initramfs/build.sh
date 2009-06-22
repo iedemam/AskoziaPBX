@@ -43,7 +43,8 @@ find $build_root -printf "%P\n" | sed '
 /\/local/				d;
 /^boot/					d;
 
-/\/man/					d;
+/\/man\//				d;
+/^\/man\//				d;
 /\/doc/					d;
 
 # /etc noise
@@ -62,8 +63,6 @@ find $build_root -printf "%P\n" | sed '
 /^etc\/stone.d/			d;
 
 /^opt/					d;
-
-/^\/man\//				d;
 
 # /usr/lib
 /usr\/lib\/build/		d;
