@@ -49,7 +49,6 @@ find $build_root -printf "%P\n" | sed '
 /\/doc/					d;
 
 # /etc noise
-/^etc\/asterisk/		d;
 /^etc\/conf/			d;
 /^etc\/cron.d/			d;
 /^etc\/cron.daily/		d;
