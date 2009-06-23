@@ -19,7 +19,11 @@
 	</system>
 	<interfaces>
 		<lan>
-			<if>dhcp</if>
+			<dhcp/>
+			<if>eth0</if>
+			<ipaddr>192.168.1.2</ipaddr>
+			<subnet>24</subnet>
+			<gateway>192.168.1.1</gateway>
 		</lan>
 	</interfaces>
 	<conferencing>

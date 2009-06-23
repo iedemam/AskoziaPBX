@@ -35,6 +35,29 @@
 	
 	$fp = fopen('php://stdin', 'r');
 
+	// LAN IP via DHCP
+	echo "\nDo you want to use DHCP to configure your LAN interface? (y/n) ";
+
+	if (strcasecmp(chop(fgets($fp)), "y") == 0) {
+		$config['interfaces']['lan']['dhcp'] = true;
+		write_config();
+		network_lan_configure();
+		system_webgui_start();
+    
+		echo <<<EOD
+
+The LAN interface will now be configured via DHCP:
+
+Press ENTER to continue.
+
+EOD;
+
+		fgets($fp);
+		exit(0);
+	} else {
+		$config['interfaces']['lan']['dhcp'] = false;
+	}
+
 	// LAN IP address
 	do {
 		echo "\nEnter the new LAN IP address: ";

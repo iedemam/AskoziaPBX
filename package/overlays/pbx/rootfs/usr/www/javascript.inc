@@ -434,4 +434,40 @@ function javascript_dyndns($part) {
 	<? endif;
 }
 
+function javascript_lan_dhcp($part) {
+
+	if ($part == "functions") : ?>
+
+		function lanconfigure_change() {
+			if (jQuery("#lanconfigure").val() == "dhcp") {
+				jQuery("#if").attr("disabled","disabled");
+				jQuery("#ipaddr").attr("disabled","disabled");
+				jQuery("#subnet").attr("disabled","disabled");
+				jQuery("#dns1").attr("disabled","disabled");
+				jQuery("#dns2").attr("disabled","disabled");
+				jQuery("#dns3").attr("disabled","disabled");
+				jQuery("#gateway").attr("disabled","disabled");
+			} else if (jQuery("#lanconfigure").val() == "manual") {
+				jQuery("#if").removeAttr("disabled");
+				jQuery("#ipaddr").removeAttr("disabled");
+				jQuery("#subnet").removeAttr("disabled");
+				jQuery("#dns1").removeAttr("disabled");
+				jQuery("#dns2").removeAttr("disabled");
+				jQuery("#dns3").removeAttr("disabled");
+				jQuery("#gateway").removeAttr("disabled");
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#lanconfigure").change(lanconfigure_change);
+		lanconfigure_change();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_lan_dhcp()!
+
+	<? endif;
+}
+
 ?>

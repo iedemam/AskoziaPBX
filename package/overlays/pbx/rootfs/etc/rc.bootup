@@ -38,90 +38,90 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
-	
+
 	/* check whether config reset is desired (via hardware button on wrap and alix23x) */
 	system_check_reset_button();
-	
+
 	/* convert configuration, if necessary */
 	convert_config();
-	
+
 	/* load kernel modules */
 	system_load_kernel_modules();
-	
+
 	/* detect storage partition, initialize if not present, reinit bsdlabel if overwritten */
 	storage_syspart_initialize();
 
 	/* setup the temporary file upload destination */
 	system_setup_ultmp();
-	
+
 	/* run any early shell commands specified in config.xml */
 	system_do_shell_commands(1);
 
 	/* execute package boot routines */
 	packages_boot_all();
-	
-	/* set up our timezone */
-	system_timezone_configure();
-	
-	/* set up our hostname */
-	system_hostname_configure();
-	
-	/* make hosts file */
-	system_hosts_generate();
-	
-	/* generate resolv.conf */
-	system_resolvconf_generate();
-	
-	/* configure wireless interface */
-	wireless_configure();
-	
-	/* configure loopback interface */
-	network_loopback_configure();
-	
-	/* set up LAN interface */
-	network_lan_configure();
-	
-	/* set up static routes */
-	system_routing_configure();
-	
-	/* enable routing */
-	system_routing_enable();
-	
+
 	/* start syslogd */
 	system_syslogd_start();
+
+	/* set up our timezone */
+	system_timezone_configure();
+
+	/* set up our hostname */
+	system_hostname_configure();
+
+	/* make hosts file */
+	system_hosts_generate();
+
+	/* generate resolv.conf */
+	system_resolvconf_generate();
+
+	/* configure wireless interface */
+	wireless_configure();
+
+	/* configure loopback interface */
+	network_loopback_configure();
+
+	/* set up LAN interface */
+	network_lan_configure();
+
+	/* set up static routes */
+	system_routing_configure();
+
+	/* enable routing */
+	system_routing_enable();
 
 	/* generate machine specific ssl certificate */
 	system_upgrade_https_certificate();
 
 	/* start web server */
 	system_webgui_start();
-	
+
 	/* configure console menu */
 	system_console_configure();
-	
+
 	/* start dyndns service */
 	services_dyndns_configure();
-	
+
 	/* static IP address? -> attempt DNS update *//*
 	if ($config['interfaces']['lan']['topology'] == "public" ||
 		$config['interfaces']['lan']['topology'] == "natstatic")
 		services_dnsupdate_process();*/
-		
+
 	/* start the NTP client */
 	system_ntp_configure();
-	
+
 	/* set up termcap */
 	system_set_termcap();
-	
+
 	/* start up asterisk */
 	pbx_configure();
-	
+
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();
-	
+
 	/* enable HD standby */
 	system_set_harddisk_standby();
-	
+
 	/* done */
 	unlink("{$g['varrun_path']}/booting");
 ?>

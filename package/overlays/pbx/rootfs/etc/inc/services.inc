@@ -48,8 +48,6 @@ function services_dyndns_reset() {
 
 function services_dyndns_configure() {
 	global $config, $g;
-	
-	printf("LINUX TODO: empty services_dyndns_configure()\n"); return 0;
 
 	/* kill any running ez-ipupdate */
 	/* ez-ipupdate needs SIGQUIT instead of SIGTERM */
@@ -66,7 +64,7 @@ function services_dyndns_configure() {
 			sleep(1);
 
 		/* write ez-ipupdate.conf */
-		$fd = fopen("{$g['varetc_path']}/ez-ipupdate.conf", "w");
+		$fd = fopen("{$g['etc_path']}/ez-ipupdate.conf", "w");
 		if (!$fd) {
 			printf("Error: cannot open ez-ipupdate.conf in services_dyndns_configure().\n");
 			return 1;
@@ -116,7 +114,7 @@ EOD;
 		}
 
 		/* run ez-ipupdate */
-		mwexec("/usr/bin/ez-ipupdate -c {$g['varetc_path']}/ez-ipupdate.conf");
+		mwexec("/usr/bin/ez-ipupdate -c {$g['etc_path']}/ez-ipupdate.conf");
 
 		if ($g['booting'])
 			echo "done\n";
@@ -124,8 +122,6 @@ EOD;
 
 	return 0;
 }
-
-//XXX -this function is not yet working-
 
 function services_dnsupdate_process() {
 	global $config, $g;

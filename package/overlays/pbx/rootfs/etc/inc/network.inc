@@ -61,44 +61,41 @@ function network_lan_configure() {
 		unlink_if_exists("{$g['varetc_path']}/nameservers.conf");
 	}
 
-
-	if ($lancfg['if'] == "dhcp") {
+	if (isset($lancfg['dhcp'])) {
 		foreach ($interface_names as $i) {
 			mwexec("/sbin/ifconfig $i up");
 			mwexec("/sbin/udhcpc -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 		}
-	/* no interface found? uh-oh! assign an interface and bridge everything to it */
-	} else if (!in_array($lancfg['if'], $interface_names)) {
-		$lancfg['if'] = $interface_names[0];
-		if (count($interface_names) > 1) {
-			$lancfg['bridge'] = array_slice($interface_names, 1);
-		} else {
-			$lancfg['bridge'] = false;
-		}
-		write_config();
+	} else {
+		/* deconfigure */
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " 0.0.0.0");
+		mwexec("/sbin/route del default gw 0.0.0.0 dev " . escapeshellarg($lancfg['if']));
+
+		/* reconfigure */
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " .
+			escapeshellarg($lancfg['ipaddr']) . " " .
+			"netmask " . escapeshellarg(gen_subnet_mask($lancfg['subnet'])));
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " up");
+		mwexec("/sbin/route add default gw " . escapeshellarg($lancfg['gateway']) . " " .
+			"dev " . escapeshellarg($lancfg['if']));
 	}
-	
-	/* remove all addresses first */
-	//while (mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -alias") == 0);
-	//mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
-	
+	///* no interface found? uh-oh! assign an interface and bridge everything to it */
+	//} else if (!in_array($lancfg['if'], $interface_names)) {
+	//	$lancfg['if'] = $interface_names[0];
+	//	if (count($interface_names) > 1) {
+	//		$lancfg['bridge'] = array_slice($interface_names, 1);
+	//	} else {
+	//		$lancfg['bridge'] = false;
+	//	}
+	//	write_config();
+	//}
+
 	/* MAC spoofing? */
 	//if ($lancfg['spoofmac']) {
 	//	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
 	//		" link " . escapeshellarg($lancfg['spoofmac']));
 	//}
-		
-	/* media */
-	//if ($lancfg['media'] || $lancfg['mediaopt']) {
-	//	$cmd = "/sbin/ifconfig " . escapeshellarg($lancfg['if']);
-	//	if ($lancfg['media'])
-	//		$cmd .= " media " . escapeshellarg($lancfg['media']);
-	//	if ($lancfg['mediaopt'])
-	//		$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
-	//	mwexec($cmd);
-	//}
-	
-	
+
 	/* bridging */
 	//mwexec("/sbin/sysctl net.link.ether.bridge.enable=0");
 	//if (is_array($lancfg['bridge'])) {
@@ -113,18 +110,6 @@ function network_lan_configure() {
 	//	mwexec("/sbin/sysctl net.link.ether.bridge.config=" . $bridgeconfig);		
 	//	mwexec("/sbin/sysctl net.link.ether.bridge.enable=1");
 	//}
-	//
-	//$addflags = "";
-	//if (strpos($lancfg['if'], "fxp") !== false)
-	//	$addflags .= " link0";
-	//
-    //
-	//mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
-	//		escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
-	//		
-	///* install default route */
-	//mwexec("/sbin/route del default");
-	//mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
 
 	
 	if (!$g['booting']) {
@@ -187,7 +172,6 @@ function network_get_interfaces() {
 	global $g;
 
 	exec("ls /proc/sys/net/ipv4/conf/ | grep eth", $i_names);
-	print_r($i_names);
 	
 	$iflist = array();
 	

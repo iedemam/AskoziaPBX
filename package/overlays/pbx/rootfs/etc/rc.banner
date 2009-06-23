@@ -41,7 +41,13 @@
 	if (file_exists("{$g['etc_path']}/brand.licensed")) {
 		$copyright_info = "\n\n";
 	}
-	
+
+	if (isset($config['interfaces']['lan']['dhcp'])) {
+		$ip_line = "LAN IP address assigned via DHCP";
+	} else {
+		$ip_line = "LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}";
+	}
+
 	echo <<<EOD
 
 
@@ -50,7 +56,7 @@
     {$copyright_info}
     
     
-    LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}
+    {$ip_line}
     
 
 

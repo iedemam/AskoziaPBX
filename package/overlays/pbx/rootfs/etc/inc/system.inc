@@ -35,35 +35,30 @@ require_once("functions.inc");
 	
 /**
  * Generates resolv.conf
- * XXX : this needs to be cleaned up, leftovers still here from m0n0wall trim down
- * XXX : is $havedns being set correctly?
  */
 function system_resolvconf_generate($dynupdate = false) {
 	global $config, $g;
-	
+
 	$syscfg = $config['system'];
-	
-	$fd = fopen("{$g['varetc_path']}/resolv.conf", "w");
+
+	$fd = fopen("{$g['etc_path']}/resolv.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open resolv.conf in system_resolvconf_generate().\n");
 		return 1;
 	}
-		
+
 	$resolvconf = "domain {$syscfg['domain']}\n";
-	
-	$havedns = false;
-	
-	if (!$havedns && is_array($syscfg['dnsserver'])) {
+	if (is_array($syscfg['dnsserver'])) {
 		foreach ($syscfg['dnsserver'] as $ns) {
-			if ($ns)
+			if ($ns) {
 				$resolvconf .= "nameserver $ns\n";
-			$havedns = true;
+			}
 		}
 	}
-		
+
 	fwrite($fd, $resolvconf);
 	fclose($fd);
-	
+
 	return 0;
 }
 
@@ -171,8 +166,6 @@ function system_routing_enable() {
 function system_syslogd_start() {
 	global $config, $g;
 
-	printf("LINUX TODO: empty system_syslogd_start()\n"); return 0;
-
 	$syslogcfg = $config['syslog'];
 	$logging_pkg = packages_get_package("logging");
 
@@ -183,7 +176,7 @@ function system_syslogd_start() {
 	}
 
 	/* write syslog.conf */
-	$fd = fopen("{$g['varetc_path']}/syslog.conf", "w");
+	$fd = fopen("{$g['etc_path']}/syslog.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
 		return 1;
@@ -237,7 +230,7 @@ EOD;
 	fwrite($fd, $syslogconf);
 	fclose($fd);
 	
-	$retval = mwexec("/usr/sbin/syslogd -s -f {$g['varetc_path']}/syslog.conf");
+	$retval = mwexec("/sbin/syslogd -C1024");
 
 	if ($g['booting']) {
 		echo "done\n";

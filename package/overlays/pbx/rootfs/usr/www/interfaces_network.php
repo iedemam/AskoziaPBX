@@ -36,6 +36,7 @@ $pghelp = gettext("The settings on this page are critical to ensuring connectivi
 
 $lancfg = &$config['interfaces']['lan'];
 
+$pconfig['dhcp'] = isset($lancfg['dhcp']);
 $pconfig['if'] = $lancfg['if'];
 $pconfig['bridge'] = $lancfg['bridge'];
 $pconfig['ipaddr'] = $lancfg['ipaddr'];
@@ -65,20 +66,24 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "ipaddr subnet gateway topology");
-	$reqdfieldsn = explode(",", "IP address,Subnet bit count,Gateway,Network topology");
-	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	$reqdfields = explode(" ", "topology");
+	$reqdfieldsn = explode(",", "Network topology");
+
+	if ($_POST['lanconfigure'] != "dhcp") {
+		$reqdfields = array_merge($reqdfields, explode(" ", "ipaddr subnet gateway topology"));
+		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "IP address,Subnet bit count,Gateway,Network topology"));
+	}
 	if ($_POST['hostnameupdatesrc'] == "pbx") {
 		$reqdfields = array_merge($reqdfields, explode(" ", "dyndnsusername dyndnspassword dyndnstype"));
 		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Dynamic DNS Username,Dynamic DNS Password,Dynamic DNS Service Type"));
-		verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
-	
+	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
 	$_POST['spoofmac'] = str_replace("-", ":", $_POST['spoofmac']);
 	if (($_POST['spoofmac'] && !verify_is_macaddress($_POST['spoofmac']))) {
 		$input_errors[] = gettext("A valid MAC address must be specified.");
 	}
-	
+
 	if (($_POST['ipaddr'] && !verify_is_ipaddress($_POST['ipaddr']))) {
 		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
@@ -91,7 +96,7 @@ if ($_POST) {
 	if (($_POST['dns1'] && !verify_is_ipaddress($_POST['dns1'])) || ($_POST['dns2'] && !verify_is_ipaddress($_POST['dns2'])) || ($_POST['dns3'] && !verify_is_ipaddress($_POST['dns3']))) {
 		$input_errors[] = gettext("A valid IP address must be specified for the primary/secondary/tertiary DNS server.");
 	}
-	
+
 	if ($_POST['topology'] == "natstatic") {
 		if (!$_POST['extipaddr']) {
 			$input_errors[] = gettext("A public IP address must be entered for this topology.");
@@ -99,7 +104,7 @@ if ($_POST) {
 			$input_errors[] = gettext("A valid public IP address must be entered for this topology.");
 		}
 	}
-	
+
 	if (($_POST['topology'] == "natdynamichost") && ($_POST['hostnameupdatesrc'] == "router")) {
 		if (!$_POST['exthostname']) {
 			$input_errors[] = gettext("A public hostname must be entered for this topology.");
@@ -113,37 +118,50 @@ if ($_POST) {
 			$input_errors[] = gettext("The dynamic DNS username contains invalid characters.");
 		}
 	}
-	
-	
+
+
 	if (!$input_errors) {
-	
+
+		if ($_POST['lanconfigure'] == "dhcp") {
+			$pconfig['dhcp'] = $lancfg['dhcp'] = true;
+			$pconfig['ipaddr'] = $lancfg['ipaddr'];
+			$pconfig['subnet'] = $lancfg['subnet'];
+			$pconfig['gateway'] = $lancfg['gateway'];
+			list($pconfig['dns1'],$pconfig['dns2'],$pconfig['dns3']) = $config['system']['dnsserver'];
+
+		} else {
+			$lancfg['dhcp'] = false;
+			$lancfg['ipaddr'] = $_POST['ipaddr'];
+			$lancfg['subnet'] = $_POST['subnet'];
+			$lancfg['gateway'] = $_POST['gateway'];
+
+			unset($config['system']['dnsserver']);
+			if ($_POST['dns1']) {
+				$config['system']['dnsserver'][] = $_POST['dns1'];
+			}
+			if ($_POST['dns2']) {
+				$config['system']['dnsserver'][] = $_POST['dns2'];
+			}
+			if ($_POST['dns3']) {
+				$config['system']['dnsserver'][] = $_POST['dns3'];
+			}
+		}
+
 		if ($pconfig['if'] != $lancfg['if']) {
 			$lancfg['if'] = $pconfig['if'];
 			touch($d_sysrebootreqd_path);
 		}
-		
-		unset($lancfg['bridge']);
-		$lancfg['bridge'] = array();
-		$pconfig['bridge'] = array();
-		$keys = array_keys($_POST);
-		foreach ($networkinterfaces as $ifname => $ifinfo) {
-			if (in_array($ifname, $keys) && ($ifname != $pconfig['if'])) {
-				$lancfg['bridge'][] = $ifname;
-				$pconfig['bridge'][] = $ifname;
-			}
-		}
-	
-		$lancfg['ipaddr'] = $_POST['ipaddr'];
-		$lancfg['subnet'] = $_POST['subnet'];
-		$lancfg['gateway'] = $_POST['gateway'];
-		
-		unset($config['system']['dnsserver']);
-		if ($_POST['dns1'])
-			$config['system']['dnsserver'][] = $_POST['dns1'];
-		if ($_POST['dns2'])
-			$config['system']['dnsserver'][] = $_POST['dns2'];
-		if ($_POST['dns3'])
-			$config['system']['dnsserver'][] = $_POST['dns3'];	
+
+		//unset($lancfg['bridge']);
+		//$lancfg['bridge'] = array();
+		//$pconfig['bridge'] = array();
+		//$keys = array_keys($_POST);
+		//foreach ($networkinterfaces as $ifname => $ifinfo) {
+		//	if (in_array($ifname, $keys) && ($ifname != $pconfig['if'])) {
+		//		$lancfg['bridge'][] = $ifname;
+		//		$pconfig['bridge'][] = $ifname;
+		//	}
+		//}
 
 		$lancfg['topology'] = $_POST['topology'];
 		$lancfg['extipaddr'] = $_POST['extipaddr'];
@@ -155,9 +173,9 @@ if ($_POST) {
 		$config['dyndns']['username'] = $_POST['dyndnsusername'];
 		$config['dyndns']['password'] = $_POST['dyndnspassword'];
 		$config['dyndns']['wildcard'] = $_POST['dyndnswildcard'] ? true : false;
-		
+
 		write_config();
-		
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
@@ -176,10 +194,11 @@ if ($_POST) {
 <script type="text/JavaScript">
 <!--
 	<?=javascript_dyndns("functions");?>
+	<?=javascript_lan_dhcp("functions");?>
 
 	jQuery(document).ready(function(){
-
 		<?=javascript_dyndns("ready");?>
+		<?=javascript_lan_dhcp("ready");?>
 	});
 
 function lan_if_change() {
@@ -213,7 +232,7 @@ function lan_if_change() {
 				gettext('Storage')	=> 'interfaces_storage.php'
 			);
 			dynamic_tab_menu($tabs);
-			
+
 			?></ul>
 		</td>
 	</tr>
@@ -221,9 +240,17 @@ function lan_if_change() {
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("LAN");?></td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Configured");?></td>
 					<td width="78%" class="vtable">
-						
+						<select name="lanconfigure" class="formfld" id="lanconfigure">
+							<option value="dhcp" <? if ($pconfig['dhcp']) echo "selected";?>><?=gettext("via DHCP client");?></option>
+							<option value="manual" <? if (!$pconfig['dhcp']) echo "selected";?>><?=gettext("statically");?></option>
+						</select>
+					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Ports");?></td>
+					<td width="78%" class="vtable">
 						<? if (count($networkinterfaces) == 1): ?>
 							<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
 							<? echo htmlspecialchars($mainifname . " (" . $mainifinfo['mac'] . ")"); ?>
@@ -399,9 +426,4 @@ function lan_if_change() {
 	</tr>
 </table>
 </form>
-<script language="JavaScript">
-<!--
-type_change();
-//-->
-</script>
 <?php include("fend.inc"); ?>
