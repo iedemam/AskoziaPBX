@@ -124,6 +124,7 @@ echo "Setting permissions ..."
 chmod 755 etc/rc*
 chmod 644 etc/pubkey.pem
 chmod 644 etc/inc/*
+chmod 755 usr/bin/*
 chmod 644 usr/www/*
 chmod 755 usr/www/*.php
 chmod 755 usr/www/*.cgi

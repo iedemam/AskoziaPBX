@@ -423,37 +423,37 @@ function system_timezone_configure() {
 function system_ntp_configure() {
 	global $config, $g;
 
-	printf("LINUX TODO: empty system_ntp_configure()\n"); return 0;
-
 	$syscfg = $config['system'];
 
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "Starting NTP client... ";
-	else {
+	} else {
 		killbypid("{$g['varrun_path']}/runmsntp.pid");
 		killbypid("{$g['varrun_path']}/msntp.pid");
 	}
 
 	/* start ntp client if needed - needs to be forced into background */
 	$updateinterval = $syscfg['time-update-interval'];
-	
+
 	if ($updateinterval > 0) {
-		if ($updateinterval < 6)
+		if ($updateinterval < 6) {
 			$updateinterval = 6;
-		
+		}
 		$timeservers = "";
-		foreach (explode(' ', $syscfg['timeservers']) as $ts)
+		foreach (explode(' ', $syscfg['timeservers']) as $ts) {
 			$timeservers .= " " . $ts;
-		
+		}
+
 		mwexec_bg("/usr/bin/runmsntp.sh " .
 			escapeshellarg("{$g['varrun_path']}/runmsntp.pid") . " " .
 			escapeshellarg("{$g['varrun_path']}/msntp.pid") . " " .
 			escapeshellarg($updateinterval) . " " .
 			escapeshellarg($timeservers));
 	}
-		
-	if ($g['booting'])
+
+	if ($g['booting']) {
 		echo "done\n";
+	}
 }
 
 /**
