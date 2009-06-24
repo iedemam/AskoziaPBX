@@ -12,22 +12,581 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-12 12:11+0100\n"
+"POT-Creation-Date: 2009-06-24 15:54+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Accounts"
-msgstr "Tilit"
+msgid "unconfigured"
+msgstr "ei konfiguroitu"
+
+msgid "Package activated successfully."
+msgstr "Paketti aktivoitiin onnistuneesti."
+
+msgid "Package deactivated successfully."
+msgstr "Paketti deaktivoitiin onnistuneesti."
+
+msgid "Package deleted successfully."
+msgstr "Paketti poistettiin onnistuneesti."
+
+msgid "Package restored successfully."
+msgstr "Paketti palautettiin onnistuneesti."
+
+msgid "Package installed successfully."
+msgstr "Paketti asennettiin onnistuneesti."
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f Gt"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f Mt"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f Kt"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d tavua"
+
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
+
+#, php-format
+msgid "The field '%s' is required."
+msgstr "Kohta '%s' on määritettävä."
+
+msgid "Subject"
+msgstr "Aihe"
+
+msgid "Body"
+msgstr "Viesti"
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr "Seuraavat avainsanat voi käyttää s-posti ilmoituksessa"
+
+msgid "extension number of voicemail box"
+msgstr "vastaajan jatkenumero"
+
+msgid "name of voicemail recipient"
+msgstr "vastaajan omistajan nimi"
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr "viestin pituus (t.s. 0:58)"
+
+msgid "caller id of person leaving the message"
+msgstr "viestin jättäneen tunnus"
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr "päivämäärä / aika (t.s. 2025-11-20 (15:45))"
+
+msgid "generate password"
+msgstr "generoi salasana"
+
+msgid "use this password"
+msgstr "käytä salasanaa"
+
+msgid "webGUI language"
+msgstr "Verkkokäyttöliittymän kieli"
+
+msgid "Select in which language you want the webGUI to be displayed."
+msgstr "Valitse verkkokäyttöliittymän kieli oheisesta valikosta."
+
+msgid "Audio Codecs"
+msgstr "Äänen pakkauksenhallinta"
+
+msgid "Enabled"
+msgstr "Mahdollistettu"
+
+msgid "drag-and-drop"
+msgstr "vedä ja päästä irti"
+
+msgid "Disabled"
+msgstr "Poissa käytöstä"
+
+msgid "Video Codecs"
+msgstr "Videon pakkauksenhallinta"
+
+msgid "Group Members"
+msgstr "Ryhmän Jäsenet"
+
+msgid "Members"
+msgstr "Jäsenet"
+
+msgid "Non-Members"
+msgstr "Ei Jäseniä"
+
+msgid "Note:"
+msgstr "Huom:"
+
+msgid ""
+"All group members will be called at the same time. <strong>The voicemail "
+"account associated with the first member will be used if the call is not "
+"answered."
+msgstr ""
+"Kaikille ryhmän jäsenille soitetaan samaan aikaan. <strong>Ensimmäisen "
+"jäsenen vastaajaa käytetään jos puheluun ei vastata."
+
+msgid "Incoming Extension(s)"
+msgstr "Sisääntuleva Jatke/Jatkeet"
+
+msgid "add incoming extension mapping"
+msgstr "lisää sisääntulevan jatkeen kartoitus"
+
+msgid ""
+"Enter a pattern or a phone number and select a destination extension. To "
+"ring multiple phones, simply define them with the same pattern. If a phone "
+"number is entered, it will used as the \"external\" number on unanswered "
+"calls. If nothing is entered, all calls will be directed to the destination "
+"extension.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
+" </ul>\n"
+msgstr ""
+"Anna kaava tai puhelinnumero ja valitse päämäärä jatke. Soittaaksesi moneen "
+"puhelimeen sinun on vain määrittävä ne samalla tavalla. Jos puhelinnumero "
+"annetaan, sitä käytetään \"jatke\" numerona jos puheluun ei vastata. Jos ei "
+"mitään anneta, kaikki puhelut siirretään määränpää jatkeelle.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - sopii numeroille 0-9</li>\n"
+" \t<li><strong>Z</strong> - sopii numeroille 1-9</li>\n"
+" \t<li><strong>N</strong> - sopii numeroille 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - sopii kaikille numeroille sulkumerkkien "
+"sisällä (here, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - sopii yhdelle tai monelle merkille</li>\n"
+" \t<li><strong>!</strong> - sopii nollalle tai monelle merkille</li>\n"
+" </ul>\n"
+
+msgid "DTMF Mode"
+msgstr "DTMF Tila"
+
+msgid "Registration"
+msgstr "Rekisteröinti"
+
+msgid "Do not register with this provider."
+msgstr "Älä rekisteröidy tälle palveluntaroajalle."
+
+msgid "Qualify"
+msgstr "Kelpuuttaa"
+
+msgid "seconds"
+msgstr "sekunttia"
+
+msgid ""
+"Packets will be sent to this account every <i>n</i> seconds to check its "
+"status.<br>Defaults to '2'. Set to '0' to disable."
+msgstr ""
+"Pakettejä lähetetään tälle tilille joka <i>n</n> sekuntti tarkistaakseen sen "
+"tilan.<br>Oletus on '2', '0' poistaa käytöstä."
+
+msgid "always use NAT mode."
+msgstr "käytä aina NAT tilaa"
+
+msgid "only use NAT mode according to RFC3581 (rport)"
+msgstr "käytä ainoastaan NAT tilaa RFC3581 mukaan (rport)"
+
+msgid "never attempt NAT mode or RFC3581 support"
+msgstr "älä ikinä yritä NAT tilaa eikä RFC3581 tukea"
+
+msgid "assume NAT mode but don't send rport "
+msgstr "oleta NAT tilaa mutta älä lähetä rport"
+
+msgid "NAT"
+msgstr "NAT"
+
+#, fuzzy
+msgid ""
+"Is there a NATing device between the pbx and this account? Setting this to "
+"'yes' will work in most cases. The options 'never' and 'route' are only "
+"rarely used for certain buggy SIP phones."
+msgstr ""
+"Löytyykö NAT laite AskoziaPBX:än ja tämän tilin välissä? Useimissa "
+"tapauksissa 'kyllä' toimii. Valinnat 'ei koskaan' ja 'route' käytetään vain "
+"joskus tietyille SIP puhelimille."
+
+msgid "indefinitely"
+msgstr "epämääräinen"
+
+msgid "Ring Length"
+msgstr "Ympyrän pituus"
+
+msgid ""
+"The number of seconds this phone will ring before being reported as "
+"unanswered."
+msgstr ""
+"Määrä sekuntteja tämä puhelin soi ennen kun se merkitään ei vastatuksi."
+
+msgid "Line Gain"
+msgstr "Linjan Hyöty"
+
+msgid "receive"
+msgstr "Vastaanota"
+
+msgid "transmit"
+msgstr "lähetä"
+
+msgid ""
+"Some analog connections may need adjustment to achieve an acceptable audio "
+"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
+"the line."
+msgstr ""
+"Jotkut analogi yhteydet voivat tarvita säätöjä jotta ne toimivat sopivalla "
+"äänitasolla. Säädä vastaanotto ja hyöty decibeleinä vahvistaaksesi linjaa."
+
+msgid "Incoming Caller ID Overrides"
+msgstr "Sisääntulevan Soittajan Tunnuksen Kumoaminen"
+
+msgid "Source Name &lt;number&gt;"
+msgstr "Lähteen Nimi &lt;numero&gt;"
+
+msgid "Prepend with string"
+msgstr "Etuliitä tunnuksella"
+
+msgid "Replace with string"
+msgstr "Korvaa tunnuksella"
+
+msgid "Replace calling name with calling number."
+msgstr "Korvaa soittajan nimen hänen numerolla"
+
+msgid "Disable overrides"
+msgstr "Poista kumoamiset käytöstä"
+
+msgid "Outgoing Caller ID"
+msgstr "Ulosmenevän Soittajan Tunnus"
+
+msgid "Your Name &lt;number&gt;"
+msgstr "Sinun Nimesi &lt;numero&gt;"
+
+msgid "Send string defined above&nbsp;"
+msgstr "Lähetä ylhäällä annettu tunnus&nbsp;"
+
+msgid "Send phones' Caller ID"
+msgstr "Lähetä puhelimen Soittajan Tunnus"
+
+msgid "Providers"
+msgstr "Palveluntarjoajat"
+
+msgid "There are currently no providers defined."
+msgstr "Tällä hetkellä ei ole palveluntarjoajia määritettynä."
+
+msgid "direct outbound dialing via SIP uris"
+msgstr "suoran ulosmenevä soitto SIP uris:in kautta"
+
+msgid "Checked providers will be accessible from this phone."
+msgstr ""
+"Valitut palveluntarjoajat tulevat olemaan käytettävissä tästä puhelimesta."
 
 msgid "Phones"
 msgstr "Puhelimet"
 
+msgid "There are currently no phones defined."
+msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
+
+msgid "Checked phones will have access to this provider."
+msgstr "Valitut puhelimet saavat pääsyn tälle palveluntarjoajalle."
+
+msgid "Dialing Pattern(s)"
+msgstr "Soittokaava(t)"
+
 msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
+"\" to use this Provider for all outgoing calls. To only use this Provider "
+"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
+"entered, only incoming calls will be accepted.<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
+"and passes \"1555\" to the provider)</li>\n"
+" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
+"\" but only passes \"555\" to the provider)</li>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters (not allowed "
+"before | or +)</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
+"before | or +)</li>\n"
+" </ul>\n"
 msgstr ""
-"Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
-"Tiliin. Klikkaa tilityyppiä aloittaaksesi."
+"Anna kaavat, yksi per linja, jotka määrittävät tämän palveluntarjoajan "
+"reitittämisen. Anna \"X!\" käyttääksesi tätä palveluntarjoajaa kaikille "
+"ulosmeneville puheluille. Käyttääksesi tätä palveluntarjoajaa vain niille "
+"puheluille jotka alkavat numerolla \"9\" anna \"9|.\". Kaikki puhelut "
+"hyväksytään jos mitään ei anneta.<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - lisää prefixi (esim. \"1+555\" on sama kun \"555"
+"\" ja lähettää \"1555\" palveluntarjoajalle)</li>\n"
+" \t<li><strong>|</strong> - poistaa prefixin (esim. \"1|555\" on sama kun "
+"\"1555\" mutta lähettää ainoastaan \"555\")</li>\n"
+" t<li><strong>X</strong> - sopii numeroille 0-9</li>\n"
+" \t<li><strong>Z</strong> - sopii numeroille 1-9</li>\n"
+" \t<li><strong>N</strong> - sopii numeroille 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - sopii kaikille numeroille sulkumerkkien "
+"sisällä (here, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - sopii yhdelle tai monelle merkille (ei sallittu "
+"ennen | tai +)</li>\n"
+" \t<li><strong>!</strong> - sopii nollalle tai monelle merkille (ei sallittu "
+"ennen | tai +)</li>\n"
+" </ul>\n"
+
+msgid "Language"
+msgstr "Kieli"
+
+msgid ""
+"Audio prompts will be played back in the selected language for this account."
+msgstr "Ääni promptit toistetaan valitulla kielellä täälle tilille."
+
+msgid "Voicemail"
+msgstr "Vastaaja"
+
+msgid "send missed call notifications"
+msgstr "lähetä vastaamaton puhelu ilmoituksia"
+
+msgid "don't send to voicemail when busy"
+msgstr "älä lähetä vastaajaan kun tilani on varattu"
+
+msgid ""
+"An e-mail address. If entered, voicemail will be enabled on this extension. "
+"Incoming messages will be sent to the given address."
+msgstr ""
+"S-posti osoite. Jos annettu, vaastaaja kytketään päälle tälle jatkeelle. "
+"Sisääntulevat viestit lähetetään annettuun osoitteeseen."
+
+msgid "Voicemail Services"
+msgstr "Vastaajan Palvelut"
+
+msgid "must be configured</a> before this feature will work."
+msgstr "on pakko olla konfiguroitu</a> jotta tämä toiminto olisi toiminassa."
+
+msgid "Public Direct Dial"
+msgstr "Julkinen Suorapuhelu"
+
+msgid "allow extension to be directly dialed over public networks"
+msgstr "salli jatkeen suorapuhelu julkisessa verkossa"
+
+msgid "Public name. Enter a string to map a friendly name to this extension."
+msgstr "julkinen nimi. Anna mukava nimi tälle jatkeelle."
+
+#, php-format
+msgid ""
+"Enabling this option will allow this extension to be reachable via SIP and "
+"IAX2 uris (extension@%s)"
+msgstr ""
+"Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa SIP "
+"ja IAX2 uris:in kautta (jatke@%s)"
+
+msgid "Call Limit"
+msgstr "Puheluiden Raja"
+
+msgid "calls"
+msgstr "puhelut"
+
+#, fuzzy
+msgid "Permit only 'n' concurrent calls (default: 2)"
+msgstr ""
+"Salli ainoastaan 'n' ulosmenevää puhelua ja 'n' sisääntulevaa pyhelua "
+"(oletus: 2)"
+
+msgid "Busy Limit"
+msgstr "Varattu Raja"
+
+msgid ""
+"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
+"1)"
+msgstr ""
+"Puhelimen tila vaihdetaan 'varatuksi' kun on 'n' samanaikaista puhelua "
+"(oletus: 1)"
+
+msgid "Logic"
+msgstr "Logiikka"
+
+#, fuzzy
+msgid ""
+"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
+"()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Programming applications for the PBX requires knowledge of the "
+"Asterisk dialplan. An effort is made to verify this input but the "
+"possibility remains that an install may be rendered useless by faulty "
+"application logic. A reference of applications, functions and phones is "
+"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"target=\"_blank\">Element Library</a></strong>.</p>"
+msgstr ""
+"Anna sovelluksen logiikka, yksi komento per linja kuten alla: <br> <pre> 1,"
+"Answer()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Sovelluksien ohjelmoimisen AskoziaPBX:lle vaatii tietoa Asterisk "
+"soittosuunitelmasta. Yritetään tarkistamaan tätä syöttöä mutta mahdollisuus "
+"jää että AskoziaPBX asennuksesta voi tulla käyttämätön viallisen logiikan "
+"myötä. Suositus sovelluksista, toiminnoista ja puhelimista on saatavilla "
+"<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
+"\">Elementti Kirjastossa</a></strong>.</p>"
+
+msgid "Advanced Settings"
+msgstr "Lisäasetukset"
+
+msgid "show"
+msgstr "näytä"
+
+msgid "Manual Attributes"
+msgstr "Manuaaliset Ominaisuudet"
+
+msgid ""
+"Manual key-value pairs can be entered in addition to the generated "
+"configuration (i.e. <em>configoption=value</em>). These settings will be "
+"appended to this item's Asterisk configuration file or context. Unless you "
+"have a very specific need to do this, nothing should be entered in this "
+"field. Improperly formed values can break system functionality and/or open "
+"security holes."
+msgstr ""
+"Manuaaliset avain-arvo parit on mahdollista liittää generoitujen lisäksi "
+"(esim. <em>konfigurointioptio=arvo</em>). Nämä asetukset tulevat tämän "
+"Asterisk konfigurointi tiedostoon. Jos sinulla ei ole välttämätön tarve "
+"tehdä tämä, on suositeltavaa että jättät tämän alueen tyhjäksi. Virheelliset "
+"arvot voi vahingoittaa järjestelmän toimivuuden ja/tai haavoittaa "
+"turvallisuuden."
+
+msgid "Caller ID"
+msgstr "Soittajan Tunnus"
+
+msgid "Text to be displayed for Caller ID."
+msgstr "Teksti joka näytetään Soittajan Tunnukselle"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
+
+msgid "Public Number"
+msgstr "Julkinen Numero"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"Tämä 'ulkoinen' numero annetaan takaisin käyttäjälle kun hän tavoittaa "
+"vastaajaa; oletus on tilin käyttäjänimi jos se on numeerinen. Jos ei, "
+"sisäinen jatke jonne tämä puhelu reititettiin annetaan."
+
+msgid "Authentication Method"
+msgstr "Laillistamiskeino"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
+"valitse sopiva laillistamiskeino valikosta."
+
+msgid "of"
+msgstr ""
+
+msgid "connected"
+msgstr "yhdistetty"
+
+msgid "connected but lagged"
+msgstr "yhdistetty mutta viiveellä"
+
+msgid "unreachable"
+msgstr "ei tavoitettavissa"
+
+msgid "status unknown"
+msgstr "tila ei saatavissa"
+
+msgid "You are using the most recent version of AskoziaPBX."
+msgstr "Käytät uusinta AskoziaPBX ohjelmistoversiota"
+
+msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
+msgstr "Käytät uusinta AskoziaPBX <strong>beta</strong> ohjelmistoversiota."
+
+msgid "A newer version of AskoziaPBX is available!"
+msgstr "Uudempi versio AskoziaPBX ohjelmistosta on saatavilla!"
+
+msgid "Update"
+msgstr "Päivitä"
+
+msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
+msgstr ""
+"Uudempi <strong>beta</strong> versio AskoziaPBX ohjelmistosta on saatavilla!"
+
+msgid "The following input errors were detected:"
+msgstr "Seuraavat virheet löydettiin:"
+
+msgid "Dialplan"
+msgstr "Soittosuunnitelma"
+
+msgid "print"
+msgstr "tulosta"
+
+msgid "Diagnostics"
+msgstr "Diagnostiset"
+
+msgid "Advanced"
+msgstr "Lisäasetukset"
+
+msgid "General Setup"
+msgstr "Yleiset Asetukset"
+
+msgid "Interfaces"
+msgstr "Käyttöliittymät"
+
+msgid "Packages"
+msgstr "Paketit"
+
+msgid "Firmware"
+msgstr "Laiteohjelmisto"
+
+msgid "Backup/Restore"
+msgstr "Varmuuskopioi/Entisöi"
+
+msgid "Factory Defaults"
+msgstr "Tehdasasetukset"
+
+msgid "Reboot"
+msgstr "Käynnistä uudellen"
+
+msgid "Applications"
+msgstr "Sovellukset"
+
+msgid "Call Groups"
+msgstr "Puheluryhmät"
+
+msgid "Transfers"
+msgstr "Siirrot"
+
+msgid "Conferencing"
+msgstr "Konferenssit"
+
+msgid "Summary"
+msgstr "Tiivistelmä"
+
+msgid "Channels"
+msgstr "Kanavat"
+
+msgid "Conferences"
+msgstr "Konferenssit"
+
+msgid "Network Traffic"
+msgstr "Verkon Liikenne"
+
+msgid "CPU Load"
+msgstr "Prosessorin kuormitus"
+
+msgid "RTP"
+msgstr "RTP"
 
 msgid "SIP"
 msgstr "SIP"
@@ -41,17 +600,462 @@ msgstr "ISDN"
 msgid "Analog"
 msgstr "Analogi"
 
+msgid "Manager"
+msgstr "Hallitseminen"
+
+msgid "GUI Options"
+msgstr "Käyttöliit. Asetukset"
+
+msgid "Logs"
+msgstr "Loki"
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
+
+msgid "ARP Table"
+msgstr "ARP Taulukko"
+
+msgid "Manager Interface"
+msgstr "Hallinta Käyttöliit."
+
+msgid "System"
+msgstr "Järjestelmä"
+
+msgid "Accounts"
+msgstr "Tilit"
+
+msgid "Services"
+msgstr "Palvelut"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Live Stats"
+msgstr "Tilastot Suorana"
+
+msgid "Help"
+msgstr "Apua"
+
+msgid "add a new item"
+msgstr "lisää uusi"
+
+msgid "item is disabled, click to enable"
+msgstr "poissa käytöstä, klikkaa palauttaaksesi käyttöön"
+
+msgid "item is enabled, click to disable"
+msgstr "käytöstä, klikkaa poistaaksesi käytöstä"
+
+msgid "edit an item"
+msgstr "muokkaa"
+
+msgid "permanently delete an item"
+msgstr "poista pysyvästi"
+
+msgid "check for package updates"
+msgstr "tarkista jos löytyy paketeille päivityksiä"
+
+msgid "restore a backup archive"
+msgstr "palauta varmuuskopiosta"
+
+msgid "download a backup archive"
+msgstr "Lataa varmuuskopio"
+
+msgid "webGUI Configuration"
+msgstr "Verkkokäyttöliittymän Konfigurointi"
+
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
+
+msgid "view license"
+msgstr "tarkasta lisenssi"
+
+msgid "LAN net"
+msgstr "LAN verkko"
+
+msgid "autoselect"
+msgstr "automattinen"
+
+msgid "100BASE-TX full-duplex"
+msgstr "100BASE-TX full-duplex"
+
+msgid "100BASE-TX half-duplex"
+msgstr "100BASE-TX half-duplex"
+
+msgid "10BASE-T full-duplex"
+msgstr "10BASE-T full-duplex"
+
+msgid "10BASE-T half-duplex"
+msgstr "10BASE-T half-duplex"
+
+msgid "1000BASE-TX full-duplex"
+msgstr "1000BASE-TX full-duplex"
+
+msgid "Public IP address"
+msgstr "Julkinen IP osoite"
+
+msgid "NAT + static public IP"
+msgstr "NAT + staattinen julkinen IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynaaminen julkinen IP"
+
+msgid "Kewl Start"
+msgstr "Kewl Start"
+
+msgid "Ground Start"
+msgstr "Ground Start"
+
+msgid "Loop Start"
+msgstr "Loop Start"
+
+msgid ""
+"Echos audio and video back to the caller as soon as it is received. Used to "
+"test connection delay."
+msgstr ""
+"Lähettää ääni ja video kaiku takaisin soittajalle heti kun se on "
+"vastaanotettu. Testaaksesi yhteyksen viivettä."
+
+msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+msgstr "Generoi jatkuvan 1000Hz äänen. Testaaksesi yhteyksen laatua."
+
+msgid ""
+"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+"extension."
+msgstr ""
+"Herätys manageri. Puhelu herätyksen asettamiseksi tai peruttamiseksi "
+"nykyisellä jatkeella."
+
+msgid "English (US)"
+msgstr "Englannin kieli (US)"
+
+msgid "English (UK)"
+msgstr "Englannin kieli (UK)"
+
+msgid "Danish"
+msgstr "Tanskan kieli"
+
+msgid "Dutch"
+msgstr "Hollannin kieli"
+
+msgid "French (France)"
+msgstr "Ranskan kieli (Ranska)"
+
+msgid "French (Canada)"
+msgstr "Ranskan kieli (Kanada)"
+
+msgid "German"
+msgstr "Saksan kieli"
+
+msgid "Italian"
+msgstr "Italian kieli"
+
+msgid "Japanese"
+msgstr "Japanin kieli"
+
+msgid "Portuguese (Brazil)"
+msgstr "Portugalin kieli (Brasilia)"
+
+msgid "Russian"
+msgstr "Venäjän kieli"
+
+msgid "Spanish"
+msgstr "Espanjan kieli"
+
+msgid "Swedish"
+msgstr "Ruotsin kieli"
+
+msgid "English"
+msgstr "Englannin kieli"
+
+msgid "English (formal)"
+msgstr "Englannin kilei (virallinen)"
+
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Italian kieli (virallinen)"
+
+msgid "Czech"
+msgstr ""
+
+#, fuzzy
+msgid "Czech (formal)"
+msgstr "Ranskan kieli (virallinen)"
+
+msgid "Danish (formal)"
+msgstr "Tanskan kieli (virallinen)"
+
+msgid "Dutch (formal)"
+msgstr "Hollannin kieli (virallinen)"
+
+msgid "Finnish"
+msgstr "Suomen kieli"
+
+msgid "Finnish (formal)"
+msgstr "Suomen kieli (virallinen)"
+
+msgid "French"
+msgstr "Ranskan kieli"
+
+msgid "French (formal)"
+msgstr "Ranskan kieli (virallinen)"
+
+msgid "German (formal)"
+msgstr "Saksan kieli (virallinen)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Kreikka"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Ranskan kieli (virallinen)"
+
+msgid "Italian (formal)"
+msgstr "Italian kieli (virallinen)"
+
+#, fuzzy
+msgid "Japanese (formal)"
+msgstr "Espanjan kieli (virallinen)"
+
+msgid "Polish"
+msgstr "Puolan kieli"
+
+msgid "Polish (formal)"
+msgstr "Puolan kieli (virallinen)"
+
+msgid "Portuguese, Brazil"
+msgstr "Portugalin kieli, Brasilia"
+
+msgid "Portuguese, Brazil (formal)"
+msgstr "Portugalin kieli, Brasilia (virallinen)"
+
+msgid "Russian (formal)"
+msgstr "Venäjän kieli (virallinen)"
+
+msgid "Spanish (formal)"
+msgstr "Espanjan kieli (virallinen)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Tanskan kieli (virallinen)"
+
+msgid "point-to-multipoint, terminal equipment"
+msgstr "point-to-multipoint, konsoli apuvälineet"
+
+msgid "multipoint-to-point, network termination"
+msgstr "multipoint-to-point, verkon päättyminen"
+
+msgid "point-to-point, terminal equipment"
+msgstr "point-to-point, konsoli apuvälineet"
+
+msgid "point-to-point, network termination"
+msgstr "point-to-point, verkon päättyminen"
+
+msgid "United States / North America"
+msgstr "USA / Pohjois Amerikka"
+
+msgid "Australia"
+msgstr "Australia"
+
+msgid "Austria"
+msgstr "Itävalta"
+
+msgid "Belgium"
+msgstr "Belgia"
+
+msgid "Chile"
+msgstr "Chile"
+
+msgid "China"
+msgstr "Kiina"
+
+msgid "Finland"
+msgstr "Suomi"
+
+msgid "France"
+msgstr "Ranska"
+
+msgid "Greece"
+msgstr "Kreikka"
+
+msgid "Italy"
+msgstr "Italia"
+
+msgid "Japan"
+msgstr "Japani"
+
+msgid "Malaysia"
+msgstr "Malaysia"
+
+msgid "Netherlands"
+msgstr "Hollanti"
+
+msgid "New Zealand"
+msgstr "Uusi Seelanti"
+
+msgid "Norway"
+msgstr "Norja"
+
+msgid "Russia"
+msgstr "Venäjä"
+
+msgid "Spain"
+msgstr "Espanja"
+
+msgid "Sweden"
+msgstr "Ruotsi"
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+msgid "United Kingdom"
+msgstr "Englanti"
+
+msgid "United States Circa 1950/ North America"
+msgstr "USA 1950 / Pohjois Amerikka"
+
+msgid "Brazil"
+msgstr "Brasilia"
+
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+msgid "Czech Republic"
+msgstr "Tsekki"
+
+msgid "Denmark"
+msgstr "Tanska"
+
+msgid "Estonia"
+msgstr "Eesti"
+
+msgid "Germany"
+msgstr "Saksa"
+
+msgid "Hungary"
+msgstr "Unkari"
+
+msgid "India"
+msgstr "Intia"
+
+msgid "Israel"
+msgstr "Israel"
+
+msgid "Lithuania"
+msgstr "Liettua"
+
+msgid "Mexico"
+msgstr "Mexico"
+
+msgid "Philippines"
+msgstr "Filippiinit"
+
+msgid "Poland"
+msgstr "Puola"
+
+msgid "Portugal"
+msgstr "Portugali"
+
+msgid "Russia / ex Soviet Union"
+msgstr "Venäjä / entinen Neuvostoliitto"
+
+msgid "Singapore"
+msgstr "Singapore"
+
+msgid "South Africa"
+msgstr "Etelä Afrikka"
+
+msgid "Switzerland"
+msgstr "Sweitsi"
+
+msgid "Thailand"
+msgstr "Taimaa"
+
+msgid "Venezuela / South America"
+msgstr "Venezuela / Etelä Amerikka"
+
+msgid ""
+"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
+"a> your pbx for the changes to take effect."
+msgstr ""
+"Muutokset ovat tallennettu. Sinun on <a href=\"/system_reboot.php"
+"\">käynnistettävä pbx:ää uudellen</a> ennen kun muutokset astuvat voimaan."
+
+msgid "The changes have been applied successfully."
+msgstr "Muutokset astuivat voimaan onnistuneesti."
+
+#, php-format
+msgid "ERROR: the changes could not be applied (error code %s)."
+msgstr "VIRHE: muutokset eivät astunut voimaan (virhe koodi %s)."
+
+msgid "reset filter and reload firewall logs page"
+msgstr "palauta suodatin ja lataa palomuuri loki sivua"
+
+msgid "Firewall"
+msgstr "Palomuuri"
+
+msgid "reload page"
+msgstr "Lataa sivua uudelleen"
+
+msgid "Outgoing Calls Only"
+msgstr "Vain Ulosmeneviä Puheluita"
+
+msgid "SIP Phones"
+msgstr "SIP Puhelimet"
+
+msgid "IAX Phones"
+msgstr "IAX Puhelimet"
+
+msgid "ISDN Phones"
+msgstr "ISDN Puhelimet"
+
+msgid "Analog Phones"
+msgstr "Analogiset Puhelimet"
+
+msgid "External Phones"
+msgstr "Ulkoiset Puhelimet"
+
+msgid "Conference Rooms"
+msgstr "Neuvottelutilat"
+
+msgid "active"
+msgstr "aktiivinen"
+
+msgid "inactive"
+msgstr "toimeton"
+
+msgid "up"
+msgstr "yhdistetty"
+
+msgid "down"
+msgstr "ei yhteyttä"
+
+msgid "associated"
+msgstr "liittyvä"
+
+msgid "HIDE"
+msgstr "PIILOTA"
+
+msgid ""
+"Phone Accounts allow you to configure internal extensions and their access "
+"to Provider Accounts. Click an account type below to get started."
+msgstr ""
+"Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
+"Tiliin. Klikkaa tilityyppiä aloittaaksesi."
+
 msgid "External"
 msgstr "Ulkoinen"
 
 msgid "Extension"
 msgstr "Jatke"
-
-msgid "Caller ID"
-msgstr "Soittajan Tunnus"
-
-msgid "Description"
-msgstr "Kuvaus"
 
 msgid "click to enable phone"
 msgstr "klikkaa ottaaksesi puhelinta käyttöön"
@@ -76,9 +1080,6 @@ msgstr "Nimi"
 
 msgid "Dialstring"
 msgstr "Soittotunnus"
-
-msgid "Providers"
-msgstr "Palveluntarjoajat"
 
 msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
@@ -122,23 +1123,14 @@ msgstr "Numero"
 msgid "Interface"
 msgstr "Käyttöliittymä"
 
-msgid "Advanced"
-msgstr "Lisäasetukset"
-
 msgid "Tone Zones"
 msgstr "Valintaääni Vyöhykkeet"
 
 msgid "Loaded"
 msgstr "Ladattu"
 
-msgid "drag-and-drop"
-msgstr "vedä ja päästä irti"
-
 msgid "Inactive"
 msgstr "Toimeton"
-
-msgid "Note:"
-msgstr "Huom:"
 
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
@@ -146,9 +1138,6 @@ msgid ""
 msgstr ""
 "Valitse kaikki äänivyöhykkeet mitkä kyseinen analogi komponentti pitäisi "
 "tukea. <strong>Ensimmäinen äänivyöhyke tulee olemaan oletus."
-
-msgid "GUI Options"
-msgstr "Käyttöliit. Asetukset"
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -317,9 +1306,6 @@ msgstr "A-laki"
 msgid "u-law"
 msgstr "u-laki"
 
-msgid "Manager Interface"
-msgstr "Hallinta Käyttöliit."
-
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
@@ -368,9 +1354,6 @@ msgstr "Lue"
 
 msgid "Write"
 msgstr "Kirjoita"
-
-msgid "RTP"
-msgstr "RTP"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "Korkea RTP portti on oltava isompi kun alempi RTP portti."
@@ -458,9 +1441,6 @@ msgstr "Virheiden etsinnän tulokset"
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-msgid "Diagnostics"
-msgstr "Diagnostiset"
-
 msgid "ARP table"
 msgstr "ARP taulukko"
 
@@ -505,14 +1485,8 @@ msgstr "Peruuta"
 msgid "Open"
 msgstr "Avaa"
 
-msgid "Logs"
-msgstr "Loki"
-
 msgid "No matches found."
 msgstr "Osumia ei löytynyt."
-
-msgid "System"
-msgstr "Järjestelmä"
 
 msgid "PBX"
 msgstr "PBX"
@@ -653,12 +1627,6 @@ msgstr ""
 msgid "Traceroute output:"
 msgstr "Traceroute:in tuotos:"
 
-msgid "Dialplan"
-msgstr "Soittosuunnitelma"
-
-msgid "Applications"
-msgstr "Sovellukset"
-
 #, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -691,9 +1659,6 @@ msgstr "Kelpaava jatke on annettava."
 msgid "Internal extension used to reach this application."
 msgstr "Sisäinen jatke käytetty tämän sovelluksen tavoittamiseen."
 
-msgid "Call Groups"
-msgstr "Puheluryhmät"
-
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
 "can then be dialed via their defined extensions or used as a destination for "
@@ -702,9 +1667,6 @@ msgstr ""
 "Ryhmä jatkeita voi konfiguroida soimaan samaanaikaiseksi. Näille ryhmille "
 "voi sitten soittaa heidän jatkeilla tai käyttää päämäräänä sisääntuleville "
 "puheluille palveluntarjoajilta."
-
-msgid "Members"
-msgstr "Jäsenet"
 
 msgid "edit call group"
 msgstr "muokkaa puheluryhmää"
@@ -723,9 +1685,6 @@ msgstr "Ryhmän nimi"
 
 msgid "Internal extension used to reach this call group."
 msgstr "Sisäinen jatke käytetty tämän ryhmän tavoittamiseen."
-
-msgid "Transfers"
-msgstr "Siirrot"
 
 msgid ""
 "A variety of settings are here which define how call transfers and call "
@@ -878,9 +1837,6 @@ msgstr "Automaattinen skaalaus"
 msgid "Graph shows last"
 msgstr "Graafi näyttää viimeiset"
 
-msgid "seconds"
-msgstr "sekunttia"
-
 msgid "Collecting initial data, please wait..."
 msgstr "Kerää tarvittavat tiedot, ole kärsivällinen ja odota..."
 
@@ -930,9 +1886,6 @@ msgstr "Muistin käyttö"
 msgid "Notes"
 msgstr "Muistiinpanot"
 
-msgid "Interfaces"
-msgstr "Käyttöliittymät"
-
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
 "utilize them."
@@ -963,9 +1916,6 @@ msgstr "Hyöty (rx/tx)"
 
 msgid "Echo Canceller"
 msgstr "Echo Peruutus"
-
-msgid "Disabled"
-msgstr "Poissa käytöstä"
 
 msgid "edit analog interface"
 msgstr "muokkaa analogi käyttöliittymää"
@@ -1040,9 +1990,6 @@ msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
 
 msgid "Operating Mode"
 msgstr "Käyttötapa"
-
-msgid "Enabled"
-msgstr "Mahdollistettu"
 
 msgid "edit ISDN interface"
 msgstr "muokkaa ISDN käyttöliittymää"
@@ -1158,6 +2105,20 @@ msgstr "Kelpaava julkinen isäntänimi on annettava tälle topologialle."
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "Dynaaminen DNS käyttäjänimi sisältää virheellisiä merkkejä."
+
+#, fuzzy
+msgid "Configured"
+msgstr "ei konfiguroitu"
+
+msgid "via DHCP client"
+msgstr ""
+
+msgid "statically"
+msgstr ""
+
+#, fuzzy
+msgid "Ports"
+msgstr "Portugali"
 
 msgid "Checked interfaces will be bridged to the main interface."
 msgstr ""
@@ -1576,20 +2537,11 @@ msgstr "Tulostettava Soittosuunitelma"
 msgid "Internal Phones"
 msgstr "Sisäiset Puhelimet"
 
-msgid "External Phones"
-msgstr "Ulkoiset Puhelimet"
-
-msgid "Conference Rooms"
-msgstr "Neuvottelutilat"
-
 msgid "Pin"
 msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Omat Sovellukset"
-
-msgid "Dialing Pattern(s)"
-msgstr "Soittokaava(t)"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Kelpaava Soittajan Tunnus tunnus on oltava määritetty."
@@ -1663,12 +2615,6 @@ msgstr ""
 "Jotkut palveluntarjoajat haluavat erillisen 'verkkotunnukselta' tunnuksen."
 "<br> Oletus on ylhäällä annettu isäntänimi"
 
-msgid "Services"
-msgstr "Palvelut"
-
-msgid "Conferencing"
-msgstr "Konferenssit"
-
 msgid ""
 "Conference rooms with optional pin authentication can be configured here. "
 "The system's performance is the only limiting factor on the number of "
@@ -1720,9 +2666,6 @@ msgstr "PIN Koodi"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "Valinnainen koodi joka tarvitaan tähän huoneeseen."
-
-msgid "Voicemail"
-msgstr "Vastaaja"
 
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
@@ -1821,9 +2764,6 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Salasanat ovat automaattisesti poistetut config.xml tiedostosta."
 
-msgid "Status"
-msgstr "Status"
-
 msgid "There are currently no active channels."
 msgstr "Tällä hetkellä ei löydy aktiivista kanavaa."
 
@@ -1832,9 +2772,6 @@ msgstr "Paikka"
 
 msgid "Application"
 msgstr "Sovellus"
-
-msgid "Conferences"
-msgstr "Konferenssit"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -1861,18 +2798,12 @@ msgstr "poista konferenssin jäsen"
 msgid "Live"
 msgstr "Suorana"
 
-msgid "CPU Load"
-msgstr "Prosessorin kuormitus"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "jos et pysty näkemään graafia, sinun on ehkä asennettava <a href=\"http://"
 "www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
-
-msgid "Network Traffic"
-msgstr "Verkon Liikenne"
 
 msgid "Subnet Mask"
 msgstr "Aliverkon Peite"
@@ -1943,17 +2874,11 @@ msgstr "Valintaääni"
 msgid "Driver Type"
 msgstr "Ajurin tyyppi"
 
-msgid "Channels"
-msgstr "Kanavat"
-
 msgid "Serial"
 msgstr "Serial"
 
 msgid "Power Save"
 msgstr "Virransäästö"
-
-msgid "General Setup"
-msgstr "Yleiset Asetukset"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -2072,9 +2997,6 @@ msgstr ""
 "pakollinen). Muista asentaa ainakin yksi DNS serveri jos annat isäntänimen "
 "tässä!"
 
-msgid "Backup/Restore"
-msgstr "Varmuuskopioi/Entisöi"
-
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
 msgstr ""
@@ -2105,18 +3027,16 @@ msgstr "Lataa konfigurointi"
 msgid "Restore configuration"
 msgstr "Palauta konfigurointi"
 
+#, fuzzy
 msgid ""
-"Open an AskoziaPBX configuration XML file and click the button below to "
-"restore the configuration."
+"Open a PBX configuration XML file and click the button below to restore the "
+"configuration."
 msgstr ""
 "Avaa AskoziaPBX konfigurointi tiedosto (XML) ja klikkaa palauttaaksesi "
 "konfiguroinnin."
 
 msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX käynnistyy uudelleen konfiguroinnin palautuksen jälkeen."
-
-msgid "Factory Defaults"
-msgstr "Tehdasasetukset"
 
 #, fuzzy
 msgid ""
@@ -2145,9 +3065,6 @@ msgstr "Kyllä"
 
 msgid "No"
 msgstr "Ei"
-
-msgid "Firmware"
-msgstr "Laiteohjelmisto"
 
 msgid ""
 "AskoziaPBX's firmware can be kept up to date here. The system's "
@@ -2229,9 +3146,6 @@ msgstr ""
 
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "ÄLÄ pysäytä laiteohjelmisto päivitystä kun se on käynnissä."
-
-msgid "Packages"
-msgstr "Paketit"
 
 msgid ""
 "Packages to expand system functionality can be installed and updated here. "
@@ -2336,9 +3250,6 @@ msgid ""
 msgstr ""
 "Valitse paketit mitkä haluat päivittää, olevien pakettien tiedot säilytetään."
 
-msgid "Update"
-msgstr "Päivitä"
-
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
@@ -2379,9 +3290,6 @@ msgstr "Paketin tiedot sekä logiikka korvataan varmuuskopiolla."
 msgid "Restore"
 msgstr "Palauta"
 
-msgid "Reboot"
-msgstr "Käynnistä uudellen"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
 
@@ -2399,895 +3307,6 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
-
-msgid "Subject"
-msgstr "Aihe"
-
-msgid "Body"
-msgstr "Viesti"
-
-msgid "The following variables can be used in the e-mail notification"
-msgstr "Seuraavat avainsanat voi käyttää s-posti ilmoituksessa"
-
-msgid "extension number of voicemail box"
-msgstr "vastaajan jatkenumero"
-
-msgid "name of voicemail recipient"
-msgstr "vastaajan omistajan nimi"
-
-msgid "duration of the message (i.e. 0:58)"
-msgstr "viestin pituus (t.s. 0:58)"
-
-msgid "caller id of person leaving the message"
-msgstr "viestin jättäneen tunnus"
-
-msgid "full date / time (i.e. 2025-11-20 (15:45))"
-msgstr "päivämäärä / aika (t.s. 2025-11-20 (15:45))"
-
-msgid "generate password"
-msgstr "generoi salasana"
-
-msgid "use this password"
-msgstr "käytä salasanaa"
-
-msgid "webGUI language"
-msgstr "Verkkokäyttöliittymän kieli"
-
-msgid "Select in which language you want the webGUI to be displayed."
-msgstr "Valitse verkkokäyttöliittymän kieli oheisesta valikosta."
-
-msgid "Audio Codecs"
-msgstr "Äänen pakkauksenhallinta"
-
-msgid "Video Codecs"
-msgstr "Videon pakkauksenhallinta"
-
-msgid "Group Members"
-msgstr "Ryhmän Jäsenet"
-
-msgid "Non-Members"
-msgstr "Ei Jäseniä"
-
-msgid ""
-"All group members will be called at the same time. <strong>The voicemail "
-"account associated with the first member will be used if the call is not "
-"answered."
-msgstr ""
-"Kaikille ryhmän jäsenille soitetaan samaan aikaan. <strong>Ensimmäisen "
-"jäsenen vastaajaa käytetään jos puheluun ei vastata."
-
-msgid "Incoming Extension(s)"
-msgstr "Sisääntuleva Jatke/Jatkeet"
-
-msgid "add incoming extension mapping"
-msgstr "lisää sisääntulevan jatkeen kartoitus"
-
-msgid ""
-"Enter a pattern or a phone number and select a destination extension. To "
-"ring multiple phones, simply define them with the same pattern. If a phone "
-"number is entered, it will used as the \"external\" number on unanswered "
-"calls. If nothing is entered, all calls will be directed to the destination "
-"extension.<br>\n"
-" <ul>\n"
-" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
-" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
-" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
-" </ul>\n"
-msgstr ""
-"Anna kaava tai puhelinnumero ja valitse päämäärä jatke. Soittaaksesi moneen "
-"puhelimeen sinun on vain määrittävä ne samalla tavalla. Jos puhelinnumero "
-"annetaan, sitä käytetään \"jatke\" numerona jos puheluun ei vastata. Jos ei "
-"mitään anneta, kaikki puhelut siirretään määränpää jatkeelle.<br>\n"
-" <ul>\n"
-" \t<li><strong>X</strong> - sopii numeroille 0-9</li>\n"
-" \t<li><strong>Z</strong> - sopii numeroille 1-9</li>\n"
-" \t<li><strong>N</strong> - sopii numeroille 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - sopii kaikille numeroille sulkumerkkien "
-"sisällä (here, 1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - sopii yhdelle tai monelle merkille</li>\n"
-" \t<li><strong>!</strong> - sopii nollalle tai monelle merkille</li>\n"
-" </ul>\n"
-
-msgid "DTMF Mode"
-msgstr "DTMF Tila"
-
-msgid "Registration"
-msgstr "Rekisteröinti"
-
-msgid "Do not register with this provider."
-msgstr "Älä rekisteröidy tälle palveluntaroajalle."
-
-msgid "Qualify"
-msgstr "Kelpuuttaa"
-
-msgid ""
-"Packets will be sent to this account every <i>n</i> seconds to check its "
-"status.<br>Defaults to '2'. Set to '0' to disable."
-msgstr ""
-"Pakettejä lähetetään tälle tilille joka <i>n</n> sekuntti tarkistaakseen sen "
-"tilan.<br>Oletus on '2', '0' poistaa käytöstä."
-
-msgid "always use NAT mode."
-msgstr "käytä aina NAT tilaa"
-
-msgid "only use NAT mode according to RFC3581 (rport)"
-msgstr "käytä ainoastaan NAT tilaa RFC3581 mukaan (rport)"
-
-msgid "never attempt NAT mode or RFC3581 support"
-msgstr "älä ikinä yritä NAT tilaa eikä RFC3581 tukea"
-
-msgid "assume NAT mode but don't send rport "
-msgstr "oleta NAT tilaa mutta älä lähetä rport"
-
-msgid "NAT"
-msgstr "NAT"
-
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
-msgstr ""
-"Löytyykö NAT laite AskoziaPBX:än ja tämän tilin välissä? Useimissa "
-"tapauksissa 'kyllä' toimii. Valinnat 'ei koskaan' ja 'route' käytetään vain "
-"joskus tietyille SIP puhelimille."
-
-msgid "indefinitely"
-msgstr "epämääräinen"
-
-msgid "Ring Length"
-msgstr "Ympyrän pituus"
-
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
-msgstr ""
-"Määrä sekuntteja tämä puhelin soi ennen kun se merkitään ei vastatuksi."
-
-msgid "Line Gain"
-msgstr "Linjan Hyöty"
-
-msgid "receive"
-msgstr "Vastaanota"
-
-msgid "transmit"
-msgstr "lähetä"
-
-msgid ""
-"Some analog connections may need adjustment to achieve an acceptable audio "
-"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
-"the line."
-msgstr ""
-"Jotkut analogi yhteydet voivat tarvita säätöjä jotta ne toimivat sopivalla "
-"äänitasolla. Säädä vastaanotto ja hyöty decibeleinä vahvistaaksesi linjaa."
-
-msgid "Incoming Caller ID Overrides"
-msgstr "Sisääntulevan Soittajan Tunnuksen Kumoaminen"
-
-msgid "Source Name &lt;number&gt;"
-msgstr "Lähteen Nimi &lt;numero&gt;"
-
-msgid "Prepend with string"
-msgstr "Etuliitä tunnuksella"
-
-msgid "Replace with string"
-msgstr "Korvaa tunnuksella"
-
-msgid "Replace calling name with calling number."
-msgstr "Korvaa soittajan nimen hänen numerolla"
-
-msgid "Disable overrides"
-msgstr "Poista kumoamiset käytöstä"
-
-msgid "Outgoing Caller ID"
-msgstr "Ulosmenevän Soittajan Tunnus"
-
-msgid "Your Name &lt;number&gt;"
-msgstr "Sinun Nimesi &lt;numero&gt;"
-
-msgid "Send string defined above&nbsp;"
-msgstr "Lähetä ylhäällä annettu tunnus&nbsp;"
-
-msgid "Send phones' Caller ID"
-msgstr "Lähetä puhelimen Soittajan Tunnus"
-
-msgid "There are currently no providers defined."
-msgstr "Tällä hetkellä ei ole palveluntarjoajia määritettynä."
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "suoran ulosmenevä soitto SIP uris:in kautta"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr ""
-"Valitut palveluntarjoajat tulevat olemaan käytettävissä tästä puhelimesta."
-
-msgid "There are currently no phones defined."
-msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
-
-msgid "Checked phones will have access to this provider."
-msgstr "Valitut puhelimet saavat pääsyn tälle palveluntarjoajalle."
-
-msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
-" <ul>\n"
-" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
-"and passes \"1555\" to the provider)</li>\n"
-" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
-"\" but only passes \"555\" to the provider)</li>\n"
-" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
-" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
-" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters (not allowed "
-"before | or +)</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
-"before | or +)</li>\n"
-" </ul>\n"
-msgstr ""
-"Anna kaavat, yksi per linja, jotka määrittävät tämän palveluntarjoajan "
-"reitittämisen. Anna \"X!\" käyttääksesi tätä palveluntarjoajaa kaikille "
-"ulosmeneville puheluille. Käyttääksesi tätä palveluntarjoajaa vain niille "
-"puheluille jotka alkavat numerolla \"9\" anna \"9|.\". Kaikki puhelut "
-"hyväksytään jos mitään ei anneta.<br>\n"
-" <ul>\n"
-" \t<li><strong>+</strong> - lisää prefixi (esim. \"1+555\" on sama kun \"555"
-"\" ja lähettää \"1555\" palveluntarjoajalle)</li>\n"
-" \t<li><strong>|</strong> - poistaa prefixin (esim. \"1|555\" on sama kun "
-"\"1555\" mutta lähettää ainoastaan \"555\")</li>\n"
-" t<li><strong>X</strong> - sopii numeroille 0-9</li>\n"
-" \t<li><strong>Z</strong> - sopii numeroille 1-9</li>\n"
-" \t<li><strong>N</strong> - sopii numeroille 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - sopii kaikille numeroille sulkumerkkien "
-"sisällä (here, 1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - sopii yhdelle tai monelle merkille (ei sallittu "
-"ennen | tai +)</li>\n"
-" \t<li><strong>!</strong> - sopii nollalle tai monelle merkille (ei sallittu "
-"ennen | tai +)</li>\n"
-" </ul>\n"
-
-msgid "Language"
-msgstr "Kieli"
-
-msgid ""
-"Audio prompts will be played back in the selected language for this account."
-msgstr "Ääni promptit toistetaan valitulla kielellä täälle tilille."
-
-msgid "send missed call notifications"
-msgstr "lähetä vastaamaton puhelu ilmoituksia"
-
-msgid "don't send to voicemail when busy"
-msgstr "älä lähetä vastaajaan kun tilani on varattu"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"S-posti osoite. Jos annettu, vaastaaja kytketään päälle tälle jatkeelle. "
-"Sisääntulevat viestit lähetetään annettuun osoitteeseen."
-
-msgid "Voicemail Services"
-msgstr "Vastaajan Palvelut"
-
-msgid "must be configured</a> before this feature will work."
-msgstr "on pakko olla konfiguroitu</a> jotta tämä toiminto olisi toiminassa."
-
-msgid "Public Direct Dial"
-msgstr "Julkinen Suorapuhelu"
-
-msgid "allow extension to be directly dialed over public networks"
-msgstr "salli jatkeen suorapuhelu julkisessa verkossa"
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr "julkinen nimi. Anna mukava nimi tälle jatkeelle."
-
-#, php-format
-msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
-msgstr ""
-"Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa SIP "
-"ja IAX2 uris:in kautta (jatke@%s)"
-
-msgid "Call Limit"
-msgstr "Puheluiden Raja"
-
-msgid "calls"
-msgstr "puhelut"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Salli ainoastaan 'n' ulosmenevää puhelua ja 'n' sisääntulevaa pyhelua "
-"(oletus: 2)"
-
-msgid "Busy Limit"
-msgstr "Varattu Raja"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr ""
-"Puhelimen tila vaihdetaan 'varatuksi' kun on 'n' samanaikaista puhelua "
-"(oletus: 1)"
-
-msgid "Logic"
-msgstr "Logiikka"
-
-#, fuzzy
-msgid ""
-"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
-"()\n"
-" 2,Echo()\n"
-" 3,Hangup()\n"
-" </pre> <p>Programming applications for the PBX requires knowledge of the "
-"Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an install may be rendered useless by faulty "
-"application logic. A reference of applications, functions and phones is "
-"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
-"target=\"_blank\">Element Library</a></strong>.</p>"
-msgstr ""
-"Anna sovelluksen logiikka, yksi komento per linja kuten alla: <br> <pre> 1,"
-"Answer()\n"
-" 2,Echo()\n"
-" 3,Hangup()\n"
-" </pre> <p>Sovelluksien ohjelmoimisen AskoziaPBX:lle vaatii tietoa Asterisk "
-"soittosuunitelmasta. Yritetään tarkistamaan tätä syöttöä mutta mahdollisuus "
-"jää että AskoziaPBX asennuksesta voi tulla käyttämätön viallisen logiikan "
-"myötä. Suositus sovelluksista, toiminnoista ja puhelimista on saatavilla "
-"<strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
-"\">Elementti Kirjastossa</a></strong>.</p>"
-
-msgid "Advanced Settings"
-msgstr "Lisäasetukset"
-
-msgid "show"
-msgstr "näytä"
-
-msgid "Manual Attributes"
-msgstr "Manuaaliset Ominaisuudet"
-
-msgid ""
-"Manual key-value pairs can be entered in addition to the generated "
-"configuration (i.e. <em>configoption=value</em>). These settings will be "
-"appended to this item's Asterisk configuration file or context. Unless you "
-"have a very specific need to do this, nothing should be entered in this "
-"field. Improperly formed values can break system functionality and/or open "
-"security holes."
-msgstr ""
-"Manuaaliset avain-arvo parit on mahdollista liittää generoitujen lisäksi "
-"(esim. <em>konfigurointioptio=arvo</em>). Nämä asetukset tulevat tämän "
-"Asterisk konfigurointi tiedostoon. Jos sinulla ei ole välttämätön tarve "
-"tehdä tämä, on suositeltavaa että jättät tämän alueen tyhjäksi. Virheelliset "
-"arvot voi vahingoittaa järjestelmän toimivuuden ja/tai haavoittaa "
-"turvallisuuden."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Teksti joka näytetään Soittajan Tunnukselle"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
-
-msgid "Public Number"
-msgstr "Julkinen Numero"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"Tämä 'ulkoinen' numero annetaan takaisin käyttäjälle kun hän tavoittaa "
-"vastaajaa; oletus on tilin käyttäjänimi jos se on numeerinen. Jos ei, "
-"sisäinen jatke jonne tämä puhelu reititettiin annetaan."
-
-msgid "Authentication Method"
-msgstr "Laillistamiskeino"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
-"valitse sopiva laillistamiskeino valikosta."
-
-msgid "of"
-msgstr ""
-
-msgid "connected"
-msgstr "yhdistetty"
-
-msgid "connected but lagged"
-msgstr "yhdistetty mutta viiveellä"
-
-msgid "unreachable"
-msgstr "ei tavoitettavissa"
-
-msgid "status unknown"
-msgstr "tila ei saatavissa"
-
-msgid "You are using the most recent version of AskoziaPBX."
-msgstr "Käytät uusinta AskoziaPBX ohjelmistoversiota"
-
-msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
-msgstr "Käytät uusinta AskoziaPBX <strong>beta</strong> ohjelmistoversiota."
-
-msgid "A newer version of AskoziaPBX is available!"
-msgstr "Uudempi versio AskoziaPBX ohjelmistosta on saatavilla!"
-
-msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
-msgstr ""
-"Uudempi <strong>beta</strong> versio AskoziaPBX ohjelmistosta on saatavilla!"
-
-msgid "The following input errors were detected:"
-msgstr "Seuraavat virheet löydettiin:"
-
-msgid "print"
-msgstr "tulosta"
-
-msgid "Summary"
-msgstr "Tiivistelmä"
-
-msgid "Manager"
-msgstr "Hallitseminen"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "ARP Taulukko"
-
-msgid "Live Stats"
-msgstr "Tilastot Suorana"
-
-msgid "Help"
-msgstr "Apua"
-
-msgid "add a new item"
-msgstr "lisää uusi"
-
-msgid "item is disabled, click to enable"
-msgstr "poissa käytöstä, klikkaa palauttaaksesi käyttöön"
-
-msgid "item is enabled, click to disable"
-msgstr "käytöstä, klikkaa poistaaksesi käytöstä"
-
-msgid "edit an item"
-msgstr "muokkaa"
-
-msgid "permanently delete an item"
-msgstr "poista pysyvästi"
-
-msgid "check for package updates"
-msgstr "tarkista jos löytyy paketeille päivityksiä"
-
-msgid "restore a backup archive"
-msgstr "palauta varmuuskopiosta"
-
-msgid "download a backup archive"
-msgstr "Lataa varmuuskopio"
-
-msgid "webGUI Configuration"
-msgstr "Verkkokäyttöliittymän Konfigurointi"
-
-#, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
-msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
-
-msgid "view license"
-msgstr "tarkasta lisenssi"
-
-msgid "LAN net"
-msgstr "LAN verkko"
-
-msgid "autoselect"
-msgstr "automattinen"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Julkinen IP osoite"
-
-msgid "NAT + static public IP"
-msgstr "NAT + staattinen julkinen IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynaaminen julkinen IP"
-
-msgid "Kewl Start"
-msgstr "Kewl Start"
-
-msgid "Ground Start"
-msgstr "Ground Start"
-
-msgid "Loop Start"
-msgstr "Loop Start"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Lähettää ääni ja video kaiku takaisin soittajalle heti kun se on "
-"vastaanotettu. Testaaksesi yhteyksen viivettä."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr "Generoi jatkuvan 1000Hz äänen. Testaaksesi yhteyksen laatua."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Herätys manageri. Puhelu herätyksen asettamiseksi tai peruttamiseksi "
-"nykyisellä jatkeella."
-
-msgid "English (US)"
-msgstr "Englannin kieli (US)"
-
-msgid "English (UK)"
-msgstr "Englannin kieli (UK)"
-
-msgid "Danish"
-msgstr "Tanskan kieli"
-
-msgid "Dutch"
-msgstr "Hollannin kieli"
-
-msgid "French (France)"
-msgstr "Ranskan kieli (Ranska)"
-
-msgid "French (Canada)"
-msgstr "Ranskan kieli (Kanada)"
-
-msgid "German"
-msgstr "Saksan kieli"
-
-msgid "Italian"
-msgstr "Italian kieli"
-
-msgid "Japanese"
-msgstr "Japanin kieli"
-
-msgid "Portuguese (Brazil)"
-msgstr "Portugalin kieli (Brasilia)"
-
-msgid "Russian"
-msgstr "Venäjän kieli"
-
-msgid "Spanish"
-msgstr "Espanjan kieli"
-
-msgid "Swedish"
-msgstr "Ruotsin kieli"
-
-msgid "English"
-msgstr "Englannin kieli"
-
-msgid "English (formal)"
-msgstr "Englannin kilei (virallinen)"
-
-#, fuzzy
-msgid "Bulgarian"
-msgstr "Bulgaria"
-
-#, fuzzy
-msgid "Bulgarian (formal)"
-msgstr "Italian kieli (virallinen)"
-
-msgid "Czech"
-msgstr ""
-
-#, fuzzy
-msgid "Czech (formal)"
-msgstr "Ranskan kieli (virallinen)"
-
-msgid "Danish (formal)"
-msgstr "Tanskan kieli (virallinen)"
-
-msgid "Dutch (formal)"
-msgstr "Hollannin kieli (virallinen)"
-
-msgid "Finnish"
-msgstr "Suomen kieli"
-
-msgid "Finnish (formal)"
-msgstr "Suomen kieli (virallinen)"
-
-msgid "French"
-msgstr "Ranskan kieli"
-
-msgid "French (formal)"
-msgstr "Ranskan kieli (virallinen)"
-
-msgid "German (formal)"
-msgstr "Saksan kieli (virallinen)"
-
-#, fuzzy
-msgid "Greek"
-msgstr "Kreikka"
-
-#, fuzzy
-msgid "Greek (formal)"
-msgstr "Ranskan kieli (virallinen)"
-
-msgid "Italian (formal)"
-msgstr "Italian kieli (virallinen)"
-
-msgid "Polish"
-msgstr "Puolan kieli"
-
-msgid "Polish (formal)"
-msgstr "Puolan kieli (virallinen)"
-
-msgid "Portuguese, Brazil"
-msgstr "Portugalin kieli, Brasilia"
-
-msgid "Portuguese, Brazil (formal)"
-msgstr "Portugalin kieli, Brasilia (virallinen)"
-
-msgid "Russian (formal)"
-msgstr "Venäjän kieli (virallinen)"
-
-msgid "Spanish (formal)"
-msgstr "Espanjan kieli (virallinen)"
-
-msgid "Turkish"
-msgstr ""
-
-#, fuzzy
-msgid "Turkish (formal)"
-msgstr "Tanskan kieli (virallinen)"
-
-msgid "point-to-multipoint, terminal equipment"
-msgstr "point-to-multipoint, konsoli apuvälineet"
-
-msgid "multipoint-to-point, network termination"
-msgstr "multipoint-to-point, verkon päättyminen"
-
-msgid "point-to-point, terminal equipment"
-msgstr "point-to-point, konsoli apuvälineet"
-
-msgid "point-to-point, network termination"
-msgstr "point-to-point, verkon päättyminen"
-
-msgid "United States / North America"
-msgstr "USA / Pohjois Amerikka"
-
-msgid "Australia"
-msgstr "Australia"
-
-msgid "Austria"
-msgstr "Itävalta"
-
-msgid "Belgium"
-msgstr "Belgia"
-
-msgid "Chile"
-msgstr "Chile"
-
-msgid "China"
-msgstr "Kiina"
-
-msgid "Finland"
-msgstr "Suomi"
-
-msgid "France"
-msgstr "Ranska"
-
-msgid "Greece"
-msgstr "Kreikka"
-
-msgid "Italy"
-msgstr "Italia"
-
-msgid "Japan"
-msgstr "Japani"
-
-msgid "Malaysia"
-msgstr "Malaysia"
-
-msgid "Netherlands"
-msgstr "Hollanti"
-
-msgid "New Zealand"
-msgstr "Uusi Seelanti"
-
-msgid "Norway"
-msgstr "Norja"
-
-msgid "Russia"
-msgstr "Venäjä"
-
-msgid "Spain"
-msgstr "Espanja"
-
-msgid "Sweden"
-msgstr "Ruotsi"
-
-msgid "Taiwan"
-msgstr "Taiwan"
-
-msgid "United Kingdom"
-msgstr "Englanti"
-
-msgid "United States Circa 1950/ North America"
-msgstr "USA 1950 / Pohjois Amerikka"
-
-msgid "Brazil"
-msgstr "Brasilia"
-
-msgid "Bulgaria"
-msgstr "Bulgaria"
-
-msgid "Czech Republic"
-msgstr "Tsekki"
-
-msgid "Denmark"
-msgstr "Tanska"
-
-msgid "Estonia"
-msgstr "Eesti"
-
-msgid "Germany"
-msgstr "Saksa"
-
-msgid "Hungary"
-msgstr "Unkari"
-
-msgid "India"
-msgstr "Intia"
-
-msgid "Israel"
-msgstr "Israel"
-
-msgid "Lithuania"
-msgstr "Liettua"
-
-msgid "Mexico"
-msgstr "Mexico"
-
-msgid "Philippines"
-msgstr "Filippiinit"
-
-msgid "Poland"
-msgstr "Puola"
-
-msgid "Portugal"
-msgstr "Portugali"
-
-msgid "Russia / ex Soviet Union"
-msgstr "Venäjä / entinen Neuvostoliitto"
-
-msgid "Singapore"
-msgstr "Singapore"
-
-msgid "South Africa"
-msgstr "Etelä Afrikka"
-
-msgid "Switzerland"
-msgstr "Sweitsi"
-
-msgid "Thailand"
-msgstr "Taimaa"
-
-msgid "Venezuela / South America"
-msgstr "Venezuela / Etelä Amerikka"
-
-msgid ""
-"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
-"a> your pbx for the changes to take effect."
-msgstr ""
-"Muutokset ovat tallennettu. Sinun on <a href=\"/system_reboot.php"
-"\">käynnistettävä pbx:ää uudellen</a> ennen kun muutokset astuvat voimaan."
-
-msgid "The changes have been applied successfully."
-msgstr "Muutokset astuivat voimaan onnistuneesti."
-
-#, php-format
-msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr "VIRHE: muutokset eivät astunut voimaan (virhe koodi %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "palauta suodatin ja lataa palomuuri loki sivua"
-
-msgid "Firewall"
-msgstr "Palomuuri"
-
-msgid "reload page"
-msgstr "Lataa sivua uudelleen"
-
-msgid "Outgoing Calls Only"
-msgstr "Vain Ulosmeneviä Puheluita"
-
-msgid "SIP Phones"
-msgstr "SIP Puhelimet"
-
-msgid "IAX Phones"
-msgstr "IAX Puhelimet"
-
-msgid "ISDN Phones"
-msgstr "ISDN Puhelimet"
-
-msgid "Analog Phones"
-msgstr "Analogiset Puhelimet"
-
-msgid "active"
-msgstr "aktiivinen"
-
-msgid "inactive"
-msgstr "toimeton"
-
-msgid "up"
-msgstr "yhdistetty"
-
-msgid "down"
-msgstr "ei yhteyttä"
-
-msgid "associated"
-msgstr "liittyvä"
-
-msgid "HIDE"
-msgstr "PIILOTA"
-
-msgid "unconfigured"
-msgstr "ei konfiguroitu"
-
-msgid "Package activated successfully."
-msgstr "Paketti aktivoitiin onnistuneesti."
-
-msgid "Package deactivated successfully."
-msgstr "Paketti deaktivoitiin onnistuneesti."
-
-msgid "Package deleted successfully."
-msgstr "Paketti poistettiin onnistuneesti."
-
-msgid "Package restored successfully."
-msgstr "Paketti palautettiin onnistuneesti."
-
-msgid "Package installed successfully."
-msgstr "Paketti asennettiin onnistuneesti."
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f Gt"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f Mt"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f Kt"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d tavua"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "Kohta '%s' on määritettävä."
 
 #~ msgid "state"
 #~ msgstr "tila"
@@ -3329,9 +3348,9 @@ msgstr "Kohta '%s' on määritettävä."
 
 #~ msgid ""
 #~ "If an ISDN interface is present but was not detected, please send <a href="
-#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg"
-#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
-#~ "\">michael@askozia.com</a>."
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">this "
+#~ "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</"
+#~ "a>."
 #~ msgstr ""
 #~ "Jos ISDN käyttöliittymä on läsnä mutta ei havaittu, ole ystävällinen ja "
 #~ "lähetä <a href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/"

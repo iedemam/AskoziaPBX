@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-12 12:11+0100\n"
+"POT-Creation-Date: 2009-06-24 15:54+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -10,19 +10,595 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Accounts"
-msgstr "Profili"
+msgid "unconfigured"
+msgstr "non configurato"
+
+msgid "Package activated successfully."
+msgstr "Pacchetto attivato correttamente."
+
+msgid "Package deactivated successfully."
+msgstr "Pacchetto disattivato correttamente."
+
+msgid "Package deleted successfully."
+msgstr "Pacchetto cancellato correttamente."
+
+msgid "Package restored successfully."
+msgstr "Pacchetto ripristinato correttamente."
+
+msgid "Package installed successfully."
+msgstr "Pacchetto installato correttamente."
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f GB"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f MB"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f KB"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d bytes"
+
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "Il campo '%s' contiene dei caratteri non validi."
+
+#, php-format
+msgid "The field '%s' is required."
+msgstr "Il campo '%s' è obbligatorio."
+
+msgid "Subject"
+msgstr "Oggetto"
+
+msgid "Body"
+msgstr "Contenuto"
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+"Per personalizzare i messaggi di E-mail di notifica possono essere "
+"utilizazte le seguenti variabili"
+
+msgid "extension number of voicemail box"
+msgstr "Numero della casella vocale"
+
+msgid "name of voicemail recipient"
+msgstr "Nome del destinatario del messaggio vocale"
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr "durata del messaggio (es.: 0:58)"
+
+msgid "caller id of person leaving the message"
+msgstr "Identificativo (CLI) di chi ha lasciato il mesaggio"
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr "Data/Ora in formato esteso (es: 31-12-2025 (15:45))"
+
+msgid "generate password"
+msgstr "crea password"
+
+msgid "use this password"
+msgstr "Utilizza questa password."
+
+msgid "webGUI language"
+msgstr "Lingua del interfaccia WEB"
+
+msgid "Select in which language you want the webGUI to be displayed."
+msgstr "Seleziona in quale lingua l'interfaccia WEB deve essere mostrata."
+
+msgid "Audio Codecs"
+msgstr "Codificatori Audio"
+
+msgid "Enabled"
+msgstr "Abilitato"
+
+#, fuzzy
+msgid "drag-and-drop"
+msgstr "(trascina e rilascia)"
+
+msgid "Disabled"
+msgstr "Disabilitato"
+
+msgid "Video Codecs"
+msgstr "Codificatori Video"
+
+msgid "Group Members"
+msgstr "MEmbri del gruppo"
+
+msgid "Members"
+msgstr "Membri"
+
+msgid "Non-Members"
+msgstr "Non-Membri"
+
+msgid "Note:"
+msgstr "Note:"
+
+msgid ""
+"All group members will be called at the same time. <strong>The voicemail "
+"account associated with the first member will be used if the call is not "
+"answered."
+msgstr ""
+"Tutti i membri verranno chiamati nello stesso momento. <strong>L'account "
+"della casella vocale associato al primo membro verrà usato se la chiamata "
+"non avrà risposta."
+
+msgid "Incoming Extension(s)"
+msgstr "Interno(i) in ingresso"
+
+msgid "add incoming extension mapping"
+msgstr "aggiungi una mappatura di un interno in ingresso"
+
+msgid ""
+"Enter a pattern or a phone number and select a destination extension. To "
+"ring multiple phones, simply define them with the same pattern. If a phone "
+"number is entered, it will used as the \"external\" number on unanswered "
+"calls. If nothing is entered, all calls will be directed to the destination "
+"extension.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
+" </ul>\n"
+msgstr ""
+"Inserisci uno schema o un numero telefonico e seleziona un interno di "
+"destinazione. Per far squillare più interni, semplicemente definiscili con "
+"lo stesso schema. Se inserisci un numero di telefono, questo verrà usato "
+"come numero ripetitore (read back) sulle chiamate senza risposta. Se non "
+"viene inserito nulla, tutte le chiamate verranno indirizzate all'interno di "
+"destinazione.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - abbina numeri 0-9</li>\n"
+" \t<li><strong>Z</strong> - abbina numeri 1-9</li>\n"
+" \t<li><strong>N</strong> - abbina numeri 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - abbina qualsiasi numero nelle parentesi "
+"(nel esempio, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - abbina uno o piàù caratteri</li>\n"
+" \t<li><strong>!</strong> - abbina lo zero o più caratteri</li>\n"
+" </ul>\n"
+
+msgid "DTMF Mode"
+msgstr "Modo DTMF"
+
+msgid "Registration"
+msgstr "Registrazione"
+
+msgid "Do not register with this provider."
+msgstr "Non registrare con questo fornitore."
+
+msgid "Qualify"
+msgstr "Qualifica"
+
+msgid "seconds"
+msgstr "secondi"
+
+msgid ""
+"Packets will be sent to this account every <i>n</i> seconds to check its "
+"status.<br>Defaults to '2'. Set to '0' to disable."
+msgstr ""
+"Ogni <i>n</i> secondi verranno inviati dei pacchetti a questo account per "
+"controllare il suo stato.<br>Predefinito '2'. Impostare a 0 per disabilitare."
+
+msgid "always use NAT mode."
+msgstr "usa sempre la modalità NAT"
+
+msgid "only use NAT mode according to RFC3581 (rport)"
+msgstr "usa solo il modo NAT in secondo la RFC3581 (rport)"
+
+msgid "never attempt NAT mode or RFC3581 support"
+msgstr "non tentare mai la modalità NAT o il supporto RFC3581"
+
+msgid "assume NAT mode but don't send rport "
+msgstr "assumi la modalità NAT ma non mandare rport"
+
+msgid "NAT"
+msgstr "NAT"
+
+#, fuzzy
+msgid ""
+"Is there a NATing device between the pbx and this account? Setting this to "
+"'yes' will work in most cases. The options 'never' and 'route' are only "
+"rarely used for certain buggy SIP phones."
+msgstr ""
+"C'è un dispositivo in modalità NAT tra AskoziaPBX e questo account? "
+"Impostare a 'Si' funzionerà nella maggior parte dei casi. L'opzione 'mai' e "
+"'instradare' sono usate raramente e per certi telefoni difettati."
+
+msgid "indefinitely"
+msgstr "indefinitamente"
+
+msgid "Ring Length"
+msgstr "Lunghezza squillo"
+
+msgid ""
+"The number of seconds this phone will ring before being reported as "
+"unanswered."
+msgstr ""
+"Il numero di secondi per cui questo telefono suonerà prima che venga "
+"segnalata una non risposta."
+
+msgid "Line Gain"
+msgstr "Guadagno di linea"
+
+msgid "receive"
+msgstr "ricevere"
+
+#, fuzzy
+msgid "transmit"
+msgstr "trasmissione"
+
+msgid ""
+"Some analog connections may need adjustment to achieve an acceptable audio "
+"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
+"the line."
+msgstr ""
+"Per alcuni collegamenti analogici potrebbe essere necessaria una regolazione "
+"per raggiungere un livello audio accettabile. Regolare il guadagno in "
+"ricezione/trasmissione per amplificare o silenziare la linea."
+
+msgid "Incoming Caller ID Overrides"
+msgstr "Sovrascrive l'Identificativo del chiamante (CID) entrante"
+
+msgid "Source Name &lt;number&gt;"
+msgstr "Nome sorgente &lt;numero&gt;"
+
+msgid "Prepend with string"
+msgstr "Anteponi con stringa"
+
+msgid "Replace with string"
+msgstr "Sostituire con stringa"
+
+msgid "Replace calling name with calling number."
+msgstr "Sostituisce il nome del chiamante con il numero."
+
+msgid "Disable overrides"
+msgstr "Disabilita la sovrascrittura"
+
+msgid "Outgoing Caller ID"
+msgstr "Identificativo del chiamante uscente"
+
+msgid "Your Name &lt;number&gt;"
+msgstr "Vostro Nome &lt;numero&gt;"
+
+msgid "Send string defined above&nbsp;"
+msgstr "Manda la stringa definita sopra&nbsp;"
+
+msgid "Send phones' Caller ID"
+msgstr "Invia l'identificativo del chiamante (CLID)"
+
+msgid "Providers"
+msgstr "Operatori telefonici"
+
+msgid "There are currently no providers defined."
+msgstr "Al momento non ci sono provider predefiniti."
+
+msgid "direct outbound dialing via SIP uris"
+msgstr "chiamata diretta in uscita via SIP uris"
+
+msgid "Checked providers will be accessible from this phone."
+msgstr "I provider contrassegnati saranno accessibili da questo telefono."
 
 msgid "Phones"
 msgstr "Derivati"
 
-msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
+msgid "There are currently no phones defined."
+msgstr "Al momento non ci sono telefoni definiti."
+
+msgid "Checked phones will have access to this provider."
 msgstr ""
-"I profili dei derivati consentono di configurare gli interni del PBX e i "
-"diritti di accesso alle linee. Clicca sul tipo di profilo da attivare per "
-"iniziare."
+"I telefoni contrassegnati avranno accesso a questo operatore telefonico."
+
+msgid "Dialing Pattern(s)"
+msgstr "Schema(i) di selezione"
+
+msgid ""
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
+"\" to use this Provider for all outgoing calls. To only use this Provider "
+"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
+"entered, only incoming calls will be accepted.<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
+"and passes \"1555\" to the provider)</li>\n"
+" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
+"\" but only passes \"555\" to the provider)</li>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters (not allowed "
+"before | or +)</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
+"before | or +)</li>\n"
+" </ul>\n"
+msgstr ""
+"Immettere gli schemi di selezione, uno per riga, per definire "
+"l'instradamento delle chiamate uscenti su questo operatore telefonico. I "
+"prefissi possono essere definiti come mostrato negli esempi seguenti. Un "
+"prefisso \"9\" equivale allo schema  \"9|.\"). Se non viene immesso nessuno "
+"schema, verranno accettate da questo operatore le sole chiamate entranti."
+"<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - aggiunge un prefisso (es. \"1+555\" abbina \"555"
+"\" e passa \"1555\" all'operatore)</li>\n"
+" \t<li><strong>|</strong> - rimuove un prefisso (i.e. \"1|555\" abbina \"1555"
+"\" ma passa solo \"555\" all'operatore)</li>\n"
+" t<li><strong>X</strong> - confronta i numeri 0-9</li>\n"
+" \t<li><strong>Z</strong> - confronta i numeri 1-9</li>\n"
+" \t<li><strong>N</strong> - confronta i numeri 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - confronta qualsiasi numero nelle parentesi "
+"(nel esempio, 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - confronta uno o più caratteri (non è consentito "
+"prima di | o +)</li>\n"
+" \t<li><strong>!</strong> - confronta zero o più caratteri (non è consentito "
+"prima di | o +)</li>\n"
+" </ul>\n"
+
+msgid "Language"
+msgstr "Lingua"
+
+msgid ""
+"Audio prompts will be played back in the selected language for this account."
+msgstr ""
+"Le istruzioni audio verranno riprodotte nella lingua selezionata per questo "
+"account."
+
+msgid "Voicemail"
+msgstr "Casella vocale"
+
+msgid "send missed call notifications"
+msgstr "invia le notifiche di chiamata"
+
+msgid "don't send to voicemail when busy"
+msgstr "non mandare alla casella vocale quando è occupato"
+
+msgid ""
+"An e-mail address. If entered, voicemail will be enabled on this extension. "
+"Incoming messages will be sent to the given address."
+msgstr ""
+"Un indirizzo E-Mail. Se immesso, una casella vocale verrà abilitata su "
+"questa interno. I messaggi entranti verranno mandati all'indirizzo "
+"specificato"
+
+msgid "Voicemail Services"
+msgstr "Servizi Casella vocale"
+
+msgid "must be configured</a> before this feature will work."
+msgstr "deve essere configurato prima che questa servizio sia attivabile."
+
+msgid "Public Direct Dial"
+msgstr "Chiamate pubbliche dirette"
+
+msgid "allow extension to be directly dialed over public networks"
+msgstr ""
+"permette che gli interni possano essere chiamati attraverso la rete pubblica."
+
+msgid "Public name. Enter a string to map a friendly name to this extension."
+msgstr ""
+"Nome pubblico. Immettere una stringa per mappare un nome a questo interno."
+
+#, php-format
+msgid ""
+"Enabling this option will allow this extension to be reachable via SIP and "
+"IAX2 uris (extension@%s)"
+msgstr ""
+"L'attivazione di questa opzione consente a questo interno di essere "
+"accessibile tramite SIP e IAX2 URI (extension@%s)"
+
+msgid "Call Limit"
+msgstr "Limite di chiamata"
+
+msgid "calls"
+msgstr "chiamate"
+
+#, fuzzy
+msgid "Permit only 'n' concurrent calls (default: 2)"
+msgstr ""
+"Permette solo 'n' chiamate uscenti e 'n' chiamate entranti. (impostazione "
+"predefinita: 2)"
+
+msgid "Busy Limit"
+msgstr "Limite occupato"
+
+msgid ""
+"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
+"1)"
+msgstr ""
+"Il telefono sarà 'occupato' con 'n' chiamate simultanee (impostazione "
+"predefinita: 1)"
+
+msgid "Logic"
+msgstr "Logico"
+
+#, fuzzy
+msgid ""
+"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
+"()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Programming applications for the PBX requires knowledge of the "
+"Asterisk dialplan. An effort is made to verify this input but the "
+"possibility remains that an install may be rendered useless by faulty "
+"application logic. A reference of applications, functions and phones is "
+"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"target=\"_blank\">Element Library</a></strong>.</p>"
+msgstr ""
+"Inserire una applicazione, un comando per riga come mostato qui sotto: <br> "
+"<pre> 1,Answer()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Programmare le applicazioni per Askozia richiede la conoscenza "
+"del dialplan di Asterisk. Un notevole sforzo è stato fatto per verificare "
+"questi inserimenti ma rimane la possibilità che una installazione di "
+"AskoziaPBX sia resa inutilizzabile da un applicazione con una logica errata. "
+"Un riferimento per le applicazioni, le funzioni ed i derivati è disponibile "
+"nella <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
+"\">Element Library</a></strong>.</p>"
+
+msgid "Advanced Settings"
+msgstr "Impostazioni Avanzate"
+
+msgid "show"
+msgstr "mostra"
+
+msgid "Manual Attributes"
+msgstr "Attributi Manuali"
+
+msgid ""
+"Manual key-value pairs can be entered in addition to the generated "
+"configuration (i.e. <em>configoption=value</em>). These settings will be "
+"appended to this item's Asterisk configuration file or context. Unless you "
+"have a very specific need to do this, nothing should be entered in this "
+"field. Improperly formed values can break system functionality and/or open "
+"security holes."
+msgstr ""
+"Coppie di chiave-valore possono essere immessi in aggiunta alla "
+"configurazione generata (es. <em>opzione=valore</em>. Queste impostazioni "
+"verranno aggiunte al file di configurazione o al contesto di Asterisk. A "
+"meno che non si abbiano dei bisogni specifici per farlo, nulla deve essere "
+"indicato in questo campo. Valori immessi impropriamente possono interrompere "
+"le funzionalità di sistema o aprire buchi di sicurezza."
+
+msgid "Caller ID"
+msgstr "Numero Identificativo del chiamante"
+
+msgid "Text to be displayed for Caller ID."
+msgstr "Testo mostrato per Identificativo del chiamante (Caller ID)."
+
+msgid "Description"
+msgstr "Descrizione"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
+"Puoi inserire qui una descrizione per avere un riferimento (non verrà "
+"analizzata)."
+
+msgid "Public Number"
+msgstr "Numero pubblico"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"Questo numero 'esterno' verrà letto al chiamante quando raggiungerà la "
+"casella vocale; "
+
+msgid "Authentication Method"
+msgstr "Metodo di Autenticazione"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"La maggior parte degli profili utilizzano 'Auto'. Se questo non dovesse "
+"funzionare, selezionare un metodo appropriato di autenticazione per il "
+"vostro server."
+
+#, fuzzy
+msgid "of"
+msgstr "di"
+
+msgid "connected"
+msgstr "connesso"
+
+msgid "connected but lagged"
+msgstr "connesso ma ritardato"
+
+msgid "unreachable"
+msgstr "irraggiungibile"
+
+msgid "status unknown"
+msgstr "stato indefinito"
+
+msgid "You are using the most recent version of AskoziaPBX."
+msgstr "E' in uso la versione più aggiornata di AskoziaPBX."
+
+msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
+msgstr "E' in uso la versione <strong>beta</strong> più recente di AskoziaPBX."
+
+msgid "A newer version of AskoziaPBX is available!"
+msgstr "E' disponibile una nuova versione di AskoziaPBX!"
+
+msgid "Update"
+msgstr "Aggiorna"
+
+msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
+msgstr "E' disponibile una nuova versione <strong>beta</strong> di AskoziaPBX!"
+
+msgid "The following input errors were detected:"
+msgstr "Sono stati individuati i seguenti errori:"
+
+msgid "Dialplan"
+msgstr "Piano di numerazione"
+
+msgid "print"
+msgstr "stampa"
+
+msgid "Diagnostics"
+msgstr "Diagnostica"
+
+msgid "Advanced"
+msgstr "Avanzato"
+
+msgid "General Setup"
+msgstr "Impostazioni Generali"
+
+msgid "Interfaces"
+msgstr "Interfacce"
+
+msgid "Packages"
+msgstr "Pacchetti"
+
+msgid "Firmware"
+msgstr "Firmware"
+
+msgid "Backup/Restore"
+msgstr "Salva/Ripristina"
+
+msgid "Factory Defaults"
+msgstr "Impostazioni predefinite"
+
+msgid "Reboot"
+msgstr "Riavvia"
+
+msgid "Applications"
+msgstr "Applicazioni"
+
+msgid "Call Groups"
+msgstr "Gruppi di chiamata"
+
+msgid "Transfers"
+msgstr "Trasferimenti"
+
+msgid "Conferencing"
+msgstr "Conferenza"
+
+msgid "Summary"
+msgstr "Sommario"
+
+msgid "Channels"
+msgstr "Canali"
+
+msgid "Conferences"
+msgstr "Conferenze"
+
+msgid "Network Traffic"
+msgstr "Traffico di rete"
+
+msgid "CPU Load"
+msgstr "Carico CPU"
+
+msgid "RTP"
+msgstr "RTP"
 
 msgid "SIP"
 msgstr "SIP"
@@ -36,17 +612,470 @@ msgstr "ISDN"
 msgid "Analog"
 msgstr "Analogico"
 
+msgid "Manager"
+msgstr "Accesso AMI"
+
+msgid "GUI Options"
+msgstr "Opzioni Interfaccia"
+
+msgid "Logs"
+msgstr "Registri"
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
+
+msgid "ARP Table"
+msgstr "Tabella ARP"
+
+msgid "Manager Interface"
+msgstr "Terminale Asterisk"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Accounts"
+msgstr "Profili"
+
+msgid "Services"
+msgstr "Servizi"
+
+msgid "Status"
+msgstr "Stati"
+
+msgid "Live Stats"
+msgstr "Statistiche in tempo reale"
+
+msgid "Help"
+msgstr "Aiuto"
+
+msgid "add a new item"
+msgstr "Aggiungi una voce"
+
+msgid "item is disabled, click to enable"
+msgstr "Questa voce è disabilitata, clicca per abilitarla"
+
+msgid "item is enabled, click to disable"
+msgstr "Questa voce è abilitata, clicca per disabilitarla"
+
+msgid "edit an item"
+msgstr "Modifica una voce"
+
+msgid "permanently delete an item"
+msgstr "Elimina definitivamente una voce"
+
+msgid "check for package updates"
+msgstr "verifica aggiornamenti dei pacchetti"
+
+msgid "restore a backup archive"
+msgstr "Ripristina da una Copia archiviata"
+
+msgid "download a backup archive"
+msgstr "Salva e scarica una Copia di Archivio"
+
+msgid "webGUI Configuration"
+msgstr "Interfaccia di configurazione Web"
+
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tutti i diritti riservati."
+
+msgid "view license"
+msgstr "mostra licenza"
+
+msgid "LAN net"
+msgstr "rete LAN"
+
+msgid "autoselect"
+msgstr "Selezione automatica"
+
+msgid "100BASE-TX full-duplex"
+msgstr "100BASE-TX full-duplex"
+
+msgid "100BASE-TX half-duplex"
+msgstr "100BASE-TX half-duplex"
+
+msgid "10BASE-T full-duplex"
+msgstr "10BASE-T full-duplex"
+
+msgid "10BASE-T half-duplex"
+msgstr "10BASE-T half-duplex"
+
+msgid "1000BASE-TX full-duplex"
+msgstr "1000BASE-TX full-duplex"
+
+msgid "Public IP address"
+msgstr "Indirizzo IP pubblico"
+
+msgid "NAT + static public IP"
+msgstr "NAT + IP pubblico statico"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + IP pubblico dinamico"
+
+msgid "Kewl Start"
+msgstr "Kewl Start"
+
+msgid "Ground Start"
+msgstr "Ground Start"
+
+msgid "Loop Start"
+msgstr "Loop Start"
+
+msgid ""
+"Echos audio and video back to the caller as soon as it is received. Used to "
+"test connection delay."
+msgstr ""
+"Riproduce audio e video al chiamante non appena viene ricevuto (echo). Usato "
+"per controllare il ritardo della connessione."
+
+msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+msgstr ""
+"Genera un tono costante a 1000Hz. Usato per testare la qualità di "
+"connessione."
+
+msgid ""
+"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+"extension."
+msgstr ""
+"Gestione del servizio sveglia. Chiamando questo numero virtuale si può "
+"impostare o cancellare una chiamata di \"Sveglia\" sull'interno chiamante."
+
+msgid "English (US)"
+msgstr "Inglese (US)"
+
+msgid "English (UK)"
+msgstr "Inglese (UK)"
+
+msgid "Danish"
+msgstr "Danese"
+
+msgid "Dutch"
+msgstr "Olandese"
+
+msgid "French (France)"
+msgstr "Francese (Francia)"
+
+msgid "French (Canada)"
+msgstr "Francese (Canada)"
+
+msgid "German"
+msgstr "Tedesco"
+
+msgid "Italian"
+msgstr "Italiano"
+
+msgid "Japanese"
+msgstr "Giapponese"
+
+msgid "Portuguese (Brazil)"
+msgstr "Portoghese (Brasile)"
+
+msgid "Russian"
+msgstr "Russo"
+
+msgid "Spanish"
+msgstr "Spagnolo"
+
+msgid "Swedish"
+msgstr "Svedese"
+
+msgid "English"
+msgstr "Inglese"
+
+msgid "English (formal)"
+msgstr "Inglese (formale)"
+
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "Italiano (formale)"
+
+msgid "Czech"
+msgstr "Ceco"
+
+msgid "Czech (formal)"
+msgstr "Ceco (formale)"
+
+msgid "Danish (formal)"
+msgstr "Danese (formale)"
+
+msgid "Dutch (formal)"
+msgstr "Danese (formale)"
+
+msgid "Finnish"
+msgstr "Finlandese"
+
+msgid "Finnish (formal)"
+msgstr "Finlandese (formale)"
+
+msgid "French"
+msgstr "Francese"
+
+msgid "French (formal)"
+msgstr "Francese (formale)"
+
+msgid "German (formal)"
+msgstr "Tedesco (formale)"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Grecia"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "Francese (formale)"
+
+msgid "Italian (formal)"
+msgstr "Italiano (formale)"
+
+#, fuzzy
+msgid "Japanese (formal)"
+msgstr "Spagnolo (formale)"
+
+msgid "Polish"
+msgstr "Polacco"
+
+msgid "Polish (formal)"
+msgstr "Polacco (formale)"
+
+msgid "Portuguese, Brazil"
+msgstr "Portoghese, Brasiliano"
+
+msgid "Portuguese, Brazil (formal)"
+msgstr "Portoghese, Brasiliano (formale)"
+
+msgid "Russian (formal)"
+msgstr "Russo (frmale)"
+
+msgid "Spanish (formal)"
+msgstr "Spagnolo (formale)"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "Danese (formale)"
+
+msgid "point-to-multipoint, terminal equipment"
+msgstr "punto-multipunto, dispositivo terminale (TE, PMP)"
+
+msgid "multipoint-to-point, network termination"
+msgstr "punto-multipunto, terminazione di rete (NT, PMP)"
+
+msgid "point-to-point, terminal equipment"
+msgstr "punto-punto, dispositivo terminale (TE, PTP)"
+
+msgid "point-to-point, network termination"
+msgstr "punto-punto, terminazione di rete (NT, PTP)"
+
+msgid "United States / North America"
+msgstr "Stati Uniti/Nord America"
+
+msgid "Australia"
+msgstr "Australia"
+
+msgid "Austria"
+msgstr "Austria"
+
+msgid "Belgium"
+msgstr "Belgio"
+
+msgid "Chile"
+msgstr "Cile"
+
+msgid "China"
+msgstr "Cina"
+
+msgid "Finland"
+msgstr "Finlandia"
+
+msgid "France"
+msgstr "Francia"
+
+msgid "Greece"
+msgstr "Grecia"
+
+msgid "Italy"
+msgstr "Italia"
+
+msgid "Japan"
+msgstr "Giappone"
+
+msgid "Malaysia"
+msgstr "Malesia"
+
+msgid "Netherlands"
+msgstr "Olanda"
+
+msgid "New Zealand"
+msgstr "Nuova Zelanda"
+
+msgid "Norway"
+msgstr "Norvegia"
+
+msgid "Russia"
+msgstr "Russia"
+
+msgid "Spain"
+msgstr "Spagna"
+
+msgid "Sweden"
+msgstr "Svezia"
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+msgid "United Kingdom"
+msgstr "Regno Unito"
+
+msgid "United States Circa 1950/ North America"
+msgstr "Stati Uniti/Nord America"
+
+msgid "Brazil"
+msgstr "Brasile"
+
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+msgid "Czech Republic"
+msgstr "Repubblica ceca"
+
+msgid "Denmark"
+msgstr "Danimarca"
+
+msgid "Estonia"
+msgstr "Estonia"
+
+msgid "Germany"
+msgstr "Germania"
+
+msgid "Hungary"
+msgstr "Ungheria"
+
+msgid "India"
+msgstr "India"
+
+msgid "Israel"
+msgstr "Israele"
+
+msgid "Lithuania"
+msgstr "Lituania"
+
+msgid "Mexico"
+msgstr "Messico"
+
+msgid "Philippines"
+msgstr "Filippine"
+
+msgid "Poland"
+msgstr "Polonia"
+
+msgid "Portugal"
+msgstr "Portogallo"
+
+msgid "Russia / ex Soviet Union"
+msgstr "Russia/Ex unione sovietica"
+
+msgid "Singapore"
+msgstr "Singapore"
+
+msgid "South Africa"
+msgstr "Sud Africa"
+
+msgid "Switzerland"
+msgstr "Svizzera"
+
+msgid "Thailand"
+msgstr "Tailandia"
+
+msgid "Venezuela / South America"
+msgstr "Venezuela/Sud America"
+
+msgid ""
+"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
+"a> your pbx for the changes to take effect."
+msgstr ""
+"Le modifiche sono state salvate. Devi <a href=\"/system_reboot.php"
+"\">riavviare il PBX</a> affinché le modifiche abbiano effetto."
+
+msgid "The changes have been applied successfully."
+msgstr "Le modifiche sono state applicate con successo."
+
+#, php-format
+msgid "ERROR: the changes could not be applied (error code %s)."
+msgstr "ERRORE: le modifiche non possono essere applcate (codice errore %s)."
+
+msgid "reset filter and reload firewall logs page"
+msgstr "Ripristina i filtri e ricarica il registro del firewall."
+
+msgid "Firewall"
+msgstr "Firewall"
+
+msgid "reload page"
+msgstr "ricarica la pagina"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "Identificativo del chiamante uscente"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "Telefoni interni"
+
+msgid "External Phones"
+msgstr "Telefoni esterni"
+
+msgid "Conference Rooms"
+msgstr "Sale conferenza"
+
+msgid "active"
+msgstr "attivo"
+
+msgid "inactive"
+msgstr "inattivo"
+
+msgid "up"
+msgstr "su"
+
+msgid "down"
+msgstr "giù"
+
+#, fuzzy
+msgid "associated"
+msgstr "Stazioni associate"
+
+msgid "HIDE"
+msgstr "NASCONDI"
+
+msgid ""
+"Phone Accounts allow you to configure internal extensions and their access "
+"to Provider Accounts. Click an account type below to get started."
+msgstr ""
+"I profili dei derivati consentono di configurare gli interni del PBX e i "
+"diritti di accesso alle linee. Clicca sul tipo di profilo da attivare per "
+"iniziare."
+
 msgid "External"
 msgstr "Esterni"
 
 msgid "Extension"
 msgstr "Interno"
-
-msgid "Caller ID"
-msgstr "Numero Identificativo del chiamante"
-
-msgid "Description"
-msgstr "Descrizione"
 
 msgid "click to enable phone"
 msgstr "clicca per abilitare il telefono"
@@ -71,9 +1100,6 @@ msgstr "Nome"
 
 msgid "Dialstring"
 msgstr "Stringa di chiamata"
-
-msgid "Providers"
-msgstr "Operatori telefonici"
 
 msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
@@ -117,24 +1143,14 @@ msgstr "Numero"
 msgid "Interface"
 msgstr "Interfaccia"
 
-msgid "Advanced"
-msgstr "Avanzato"
-
 msgid "Tone Zones"
 msgstr "Toni di zona"
 
 msgid "Loaded"
 msgstr "caricato"
 
-#, fuzzy
-msgid "drag-and-drop"
-msgstr "(trascina e rilascia)"
-
 msgid "Inactive"
 msgstr "inattivo"
-
-msgid "Note:"
-msgstr "Note:"
 
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
@@ -142,9 +1158,6 @@ msgid ""
 msgstr ""
 "Seleziona tutte le segnalazioni regionali che l'hardware dovrebbe "
 "supportare. <b>La prima voce selezionata è quella predefinita</b>."
-
-msgid "GUI Options"
-msgstr "Opzioni Interfaccia"
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -316,9 +1329,6 @@ msgstr "A-law"
 msgid "u-law"
 msgstr "u-law"
 
-msgid "Manager Interface"
-msgstr "Terminale Asterisk"
-
 msgid "Permissions"
 msgstr "Permessi"
 
@@ -368,9 +1378,6 @@ msgstr "Lettura"
 
 msgid "Write"
 msgstr "Scrittura"
-
-msgid "RTP"
-msgstr "RTP"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "La porta RTP finale deve essere maggiore della porta RTP iniziale."
@@ -458,9 +1465,6 @@ msgstr "Risultato del Debug"
 msgid "Restart"
 msgstr "Riavvia"
 
-msgid "Diagnostics"
-msgstr "Diagnostica"
-
 msgid "ARP table"
 msgstr "tabella ARP"
 
@@ -505,14 +1509,8 @@ msgstr "Annulla"
 msgid "Open"
 msgstr "Apri"
 
-msgid "Logs"
-msgstr "Registri"
-
 msgid "No matches found."
 msgstr "Non è stata trovata alcuna corrispondenza."
-
-msgid "System"
-msgstr "Sistema"
 
 msgid "PBX"
 msgstr "Centralino"
@@ -659,12 +1657,6 @@ msgstr ""
 msgid "Traceroute output:"
 msgstr "Risultato del traceroute:"
 
-msgid "Dialplan"
-msgstr "Piano di numerazione"
-
-msgid "Applications"
-msgstr "Applicazioni"
-
 #, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -698,9 +1690,6 @@ msgstr "Deve essere indicato un interno valido."
 msgid "Internal extension used to reach this application."
 msgstr "Interno utilizzato per raggiungere questa applicazione"
 
-msgid "Call Groups"
-msgstr "Gruppi di chiamata"
-
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
 "can then be dialed via their defined extensions or used as a destination for "
@@ -710,9 +1699,6 @@ msgstr ""
 "contemporaneamente. Questgruppi potranno essere chiamati direttamente con il "
 "numero loro attribuito o utilizzati come destinazione per le chiamate dagli "
 "operatori."
-
-msgid "Members"
-msgstr "Membri"
 
 msgid "edit call group"
 msgstr "edita il gruppo di chiamata"
@@ -731,9 +1717,6 @@ msgstr "Nome gruppo"
 
 msgid "Internal extension used to reach this call group."
 msgstr "Numero interno usato per raggiungere questo gruppo di chiamata."
-
-msgid "Transfers"
-msgstr "Trasferimenti"
 
 msgid ""
 "A variety of settings are here which define how call transfers and call "
@@ -901,9 +1884,6 @@ msgstr "Auto scala"
 msgid "Graph shows last"
 msgstr "Il grafico mostra gli ultimi"
 
-msgid "seconds"
-msgstr "secondi"
-
 msgid "Collecting initial data, please wait..."
 msgstr "Sto raccogliendo i dati iniziali, attendere prego..."
 
@@ -953,9 +1933,6 @@ msgstr "Memoria utilizzata"
 msgid "Notes"
 msgstr "Note"
 
-msgid "Interfaces"
-msgstr "Interfacce"
-
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
 "utilize them."
@@ -986,9 +1963,6 @@ msgstr "Guadagno (rx/tx)"
 
 msgid "Echo Canceller"
 msgstr "Cancellatore eco"
-
-msgid "Disabled"
-msgstr "Disabilitato"
 
 msgid "edit analog interface"
 msgstr "modifica l'interfaccia analogica"
@@ -1066,9 +2040,6 @@ msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
 
 msgid "Operating Mode"
 msgstr "Modo operativo"
-
-msgid "Enabled"
-msgstr "Abilitato"
 
 msgid "edit ISDN interface"
 msgstr "modifica l'interfaccia ISDN"
@@ -1188,6 +2159,20 @@ msgstr ""
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "Il campo [username] per dDNS contiene dei caratteri non validi."
+
+#, fuzzy
+msgid "Configured"
+msgstr "non configurato"
+
+msgid "via DHCP client"
+msgstr ""
+
+msgid "statically"
+msgstr ""
+
+#, fuzzy
+msgid "Ports"
+msgstr "Portogallo"
 
 msgid "Checked interfaces will be bridged to the main interface."
 msgstr "L'interfaccia selezionata verrà collegata all'interfaccia principale."
@@ -1620,20 +2605,11 @@ msgstr "Piano di chiamata per la stampa."
 msgid "Internal Phones"
 msgstr "Telefoni interni"
 
-msgid "External Phones"
-msgstr "Telefoni esterni"
-
-msgid "Conference Rooms"
-msgstr "Sale conferenza"
-
 msgid "Pin"
 msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Applicazioni personalizzate"
-
-msgid "Dialing Pattern(s)"
-msgstr "Schema(i) di selezione"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Deve essere specificato un Identificativo del chiamante (CID) valido."
@@ -1709,12 +2685,6 @@ msgstr ""
 "Alcuni operatori telefonici richiedono un nome utente 'da' separato."
 "<br>Inserire il nome utente predefinito."
 
-msgid "Services"
-msgstr "Servizi"
-
-msgid "Conferencing"
-msgstr "Conferenza"
-
 msgid ""
 "Conference rooms with optional pin authentication can be configured here. "
 "The system's performance is the only limiting factor on the number of "
@@ -1770,9 +2740,6 @@ msgstr "PIN d'accesso"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "Può essere specificato un codice PIN per accedere a questa conferenza."
-
-msgid "Voicemail"
-msgstr "Casella vocale"
 
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
@@ -1875,9 +2842,6 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Le password in config.xml sono state automaticamente rimosse."
 
-msgid "Status"
-msgstr "Stati"
-
 msgid "There are currently no active channels."
 msgstr "Al momento non ci sono canali attivi."
 
@@ -1886,9 +2850,6 @@ msgstr "Localizzazione"
 
 msgid "Application"
 msgstr "Applicazione"
-
-msgid "Conferences"
-msgstr "Conferenze"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -1915,9 +2876,6 @@ msgstr "escludi un numero dalla conferenza"
 msgid "Live"
 msgstr "In diretta"
 
-msgid "CPU Load"
-msgstr "Carico CPU"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
@@ -1925,9 +2883,6 @@ msgstr ""
 "Se non vedete alcun grafico è probabile che dobbiate installare il <a href="
 "\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank"
 "\">visualizzatore SVG di Adobe</a>"
-
-msgid "Network Traffic"
-msgstr "Traffico di rete"
 
 msgid "Subnet Mask"
 msgstr "Maschera sottorete"
@@ -2000,17 +2955,11 @@ msgstr "Tono di chiamata"
 msgid "Driver Type"
 msgstr "Tipo driver"
 
-msgid "Channels"
-msgstr "Canali"
-
 msgid "Serial"
 msgstr "Seriale"
 
 msgid "Power Save"
 msgstr "Risparmio energetico"
-
-msgid "General Setup"
-msgstr "Impostazioni Generali"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -2131,9 +3080,6 @@ msgstr ""
 "Usare uno spazio per separare gli host multipli (solo uno è richiesto). "
 "Ricorda di configurare almeno un server DNS se immetti un host!"
 
-msgid "Backup/Restore"
-msgstr "Salva/Ripristina"
-
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
 msgstr ""
@@ -2168,18 +3114,16 @@ msgstr "Scarica configurazione"
 msgid "Restore configuration"
 msgstr "Ripristina configurazione"
 
+#, fuzzy
 msgid ""
-"Open an AskoziaPBX configuration XML file and click the button below to "
-"restore the configuration."
+"Open a PBX configuration XML file and click the button below to restore the "
+"configuration."
 msgstr ""
 "Apri un file XML di configurazione di AskoziaPBX e clicca sul pulsante "
 "sottostante per ripristinare la configurazione."
 
 msgid "The PBX will reboot after restoring the configuration."
 msgstr "Il PBX si riavvierà dopo aver ripristinato la configurazione."
-
-msgid "Factory Defaults"
-msgstr "Impostazioni predefinite"
 
 #, fuzzy
 msgid ""
@@ -2209,9 +3153,6 @@ msgstr " Sì "
 
 msgid "No"
 msgstr " No "
-
-msgid "Firmware"
-msgstr "Firmware"
 
 msgid ""
 "AskoziaPBX's firmware can be kept up to date here. The system's "
@@ -2298,9 +3239,6 @@ msgstr "Devi riavviare il sistema prima di poter aggiornare il firmware."
 
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "NON interrompete l'aggionamento del firmware una volta avviato."
-
-msgid "Packages"
-msgstr "Pacchetti"
 
 msgid ""
 "Packages to expand system functionality can be installed and updated here. "
@@ -2411,9 +3349,6 @@ msgstr ""
 "Seleziona i pacchetti da aggiornare, le impostazioni attualii dei pacchetti "
 "verranno mantenute."
 
-msgid "Update"
-msgstr "Aggiorna"
-
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
@@ -2454,9 +3389,6 @@ msgstr "I dati e la logica del package verranno sostituiti dal backup."
 msgid "Restore"
 msgstr "Ripristina"
 
-msgid "Reboot"
-msgstr "Riavvia"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr ""
 "Il sistema ora si riavvierà. Questa operazione potrebbe richiedere alcuni "
@@ -2476,919 +3408,6 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
-
-msgid "Subject"
-msgstr "Oggetto"
-
-msgid "Body"
-msgstr "Contenuto"
-
-msgid "The following variables can be used in the e-mail notification"
-msgstr ""
-"Per personalizzare i messaggi di E-mail di notifica possono essere "
-"utilizazte le seguenti variabili"
-
-msgid "extension number of voicemail box"
-msgstr "Numero della casella vocale"
-
-msgid "name of voicemail recipient"
-msgstr "Nome del destinatario del messaggio vocale"
-
-msgid "duration of the message (i.e. 0:58)"
-msgstr "durata del messaggio (es.: 0:58)"
-
-msgid "caller id of person leaving the message"
-msgstr "Identificativo (CLI) di chi ha lasciato il mesaggio"
-
-msgid "full date / time (i.e. 2025-11-20 (15:45))"
-msgstr "Data/Ora in formato esteso (es: 31-12-2025 (15:45))"
-
-msgid "generate password"
-msgstr "crea password"
-
-msgid "use this password"
-msgstr "Utilizza questa password."
-
-msgid "webGUI language"
-msgstr "Lingua del interfaccia WEB"
-
-msgid "Select in which language you want the webGUI to be displayed."
-msgstr "Seleziona in quale lingua l'interfaccia WEB deve essere mostrata."
-
-msgid "Audio Codecs"
-msgstr "Codificatori Audio"
-
-msgid "Video Codecs"
-msgstr "Codificatori Video"
-
-msgid "Group Members"
-msgstr "MEmbri del gruppo"
-
-msgid "Non-Members"
-msgstr "Non-Membri"
-
-msgid ""
-"All group members will be called at the same time. <strong>The voicemail "
-"account associated with the first member will be used if the call is not "
-"answered."
-msgstr ""
-"Tutti i membri verranno chiamati nello stesso momento. <strong>L'account "
-"della casella vocale associato al primo membro verrà usato se la chiamata "
-"non avrà risposta."
-
-msgid "Incoming Extension(s)"
-msgstr "Interno(i) in ingresso"
-
-msgid "add incoming extension mapping"
-msgstr "aggiungi una mappatura di un interno in ingresso"
-
-msgid ""
-"Enter a pattern or a phone number and select a destination extension. To "
-"ring multiple phones, simply define them with the same pattern. If a phone "
-"number is entered, it will used as the \"external\" number on unanswered "
-"calls. If nothing is entered, all calls will be directed to the destination "
-"extension.<br>\n"
-" <ul>\n"
-" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
-" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
-" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
-" </ul>\n"
-msgstr ""
-"Inserisci uno schema o un numero telefonico e seleziona un interno di "
-"destinazione. Per far squillare più interni, semplicemente definiscili con "
-"lo stesso schema. Se inserisci un numero di telefono, questo verrà usato "
-"come numero ripetitore (read back) sulle chiamate senza risposta. Se non "
-"viene inserito nulla, tutte le chiamate verranno indirizzate all'interno di "
-"destinazione.<br>\n"
-" <ul>\n"
-" \t<li><strong>X</strong> - abbina numeri 0-9</li>\n"
-" \t<li><strong>Z</strong> - abbina numeri 1-9</li>\n"
-" \t<li><strong>N</strong> - abbina numeri 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - abbina qualsiasi numero nelle parentesi "
-"(nel esempio, 1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - abbina uno o piàù caratteri</li>\n"
-" \t<li><strong>!</strong> - abbina lo zero o più caratteri</li>\n"
-" </ul>\n"
-
-msgid "DTMF Mode"
-msgstr "Modo DTMF"
-
-msgid "Registration"
-msgstr "Registrazione"
-
-msgid "Do not register with this provider."
-msgstr "Non registrare con questo fornitore."
-
-msgid "Qualify"
-msgstr "Qualifica"
-
-msgid ""
-"Packets will be sent to this account every <i>n</i> seconds to check its "
-"status.<br>Defaults to '2'. Set to '0' to disable."
-msgstr ""
-"Ogni <i>n</i> secondi verranno inviati dei pacchetti a questo account per "
-"controllare il suo stato.<br>Predefinito '2'. Impostare a 0 per disabilitare."
-
-msgid "always use NAT mode."
-msgstr "usa sempre la modalità NAT"
-
-msgid "only use NAT mode according to RFC3581 (rport)"
-msgstr "usa solo il modo NAT in secondo la RFC3581 (rport)"
-
-msgid "never attempt NAT mode or RFC3581 support"
-msgstr "non tentare mai la modalità NAT o il supporto RFC3581"
-
-msgid "assume NAT mode but don't send rport "
-msgstr "assumi la modalità NAT ma non mandare rport"
-
-msgid "NAT"
-msgstr "NAT"
-
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
-msgstr ""
-"C'è un dispositivo in modalità NAT tra AskoziaPBX e questo account? "
-"Impostare a 'Si' funzionerà nella maggior parte dei casi. L'opzione 'mai' e "
-"'instradare' sono usate raramente e per certi telefoni difettati."
-
-msgid "indefinitely"
-msgstr "indefinitamente"
-
-msgid "Ring Length"
-msgstr "Lunghezza squillo"
-
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
-msgstr ""
-"Il numero di secondi per cui questo telefono suonerà prima che venga "
-"segnalata una non risposta."
-
-msgid "Line Gain"
-msgstr "Guadagno di linea"
-
-msgid "receive"
-msgstr "ricevere"
-
-#, fuzzy
-msgid "transmit"
-msgstr "trasmissione"
-
-msgid ""
-"Some analog connections may need adjustment to achieve an acceptable audio "
-"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
-"the line."
-msgstr ""
-"Per alcuni collegamenti analogici potrebbe essere necessaria una regolazione "
-"per raggiungere un livello audio accettabile. Regolare il guadagno in "
-"ricezione/trasmissione per amplificare o silenziare la linea."
-
-msgid "Incoming Caller ID Overrides"
-msgstr "Sovrascrive l'Identificativo del chiamante (CID) entrante"
-
-msgid "Source Name &lt;number&gt;"
-msgstr "Nome sorgente &lt;numero&gt;"
-
-msgid "Prepend with string"
-msgstr "Anteponi con stringa"
-
-msgid "Replace with string"
-msgstr "Sostituire con stringa"
-
-msgid "Replace calling name with calling number."
-msgstr "Sostituisce il nome del chiamante con il numero."
-
-msgid "Disable overrides"
-msgstr "Disabilita la sovrascrittura"
-
-msgid "Outgoing Caller ID"
-msgstr "Identificativo del chiamante uscente"
-
-msgid "Your Name &lt;number&gt;"
-msgstr "Vostro Nome &lt;numero&gt;"
-
-msgid "Send string defined above&nbsp;"
-msgstr "Manda la stringa definita sopra&nbsp;"
-
-msgid "Send phones' Caller ID"
-msgstr "Invia l'identificativo del chiamante (CLID)"
-
-msgid "There are currently no providers defined."
-msgstr "Al momento non ci sono provider predefiniti."
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "chiamata diretta in uscita via SIP uris"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "I provider contrassegnati saranno accessibili da questo telefono."
-
-msgid "There are currently no phones defined."
-msgstr "Al momento non ci sono telefoni definiti."
-
-msgid "Checked phones will have access to this provider."
-msgstr ""
-"I telefoni contrassegnati avranno accesso a questo operatore telefonico."
-
-msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
-" <ul>\n"
-" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
-"and passes \"1555\" to the provider)</li>\n"
-" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
-"\" but only passes \"555\" to the provider)</li>\n"
-" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
-" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
-" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters (not allowed "
-"before | or +)</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
-"before | or +)</li>\n"
-" </ul>\n"
-msgstr ""
-"Immettere gli schemi di selezione, uno per riga, per definire "
-"l'instradamento delle chiamate uscenti su questo operatore telefonico. I "
-"prefissi possono essere definiti come mostrato negli esempi seguenti. Un "
-"prefisso \"9\" equivale allo schema  \"9|.\"). Se non viene immesso nessuno "
-"schema, verranno accettate da questo operatore le sole chiamate entranti."
-"<br>\n"
-" <ul>\n"
-" \t<li><strong>+</strong> - aggiunge un prefisso (es. \"1+555\" abbina \"555"
-"\" e passa \"1555\" all'operatore)</li>\n"
-" \t<li><strong>|</strong> - rimuove un prefisso (i.e. \"1|555\" abbina \"1555"
-"\" ma passa solo \"555\" all'operatore)</li>\n"
-" t<li><strong>X</strong> - confronta i numeri 0-9</li>\n"
-" \t<li><strong>Z</strong> - confronta i numeri 1-9</li>\n"
-" \t<li><strong>N</strong> - confronta i numeri 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - confronta qualsiasi numero nelle parentesi "
-"(nel esempio, 1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - confronta uno o più caratteri (non è consentito "
-"prima di | o +)</li>\n"
-" \t<li><strong>!</strong> - confronta zero o più caratteri (non è consentito "
-"prima di | o +)</li>\n"
-" </ul>\n"
-
-msgid "Language"
-msgstr "Lingua"
-
-msgid ""
-"Audio prompts will be played back in the selected language for this account."
-msgstr ""
-"Le istruzioni audio verranno riprodotte nella lingua selezionata per questo "
-"account."
-
-msgid "send missed call notifications"
-msgstr "invia le notifiche di chiamata"
-
-msgid "don't send to voicemail when busy"
-msgstr "non mandare alla casella vocale quando è occupato"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"Un indirizzo E-Mail. Se immesso, una casella vocale verrà abilitata su "
-"questa interno. I messaggi entranti verranno mandati all'indirizzo "
-"specificato"
-
-msgid "Voicemail Services"
-msgstr "Servizi Casella vocale"
-
-msgid "must be configured</a> before this feature will work."
-msgstr "deve essere configurato prima che questa servizio sia attivabile."
-
-msgid "Public Direct Dial"
-msgstr "Chiamate pubbliche dirette"
-
-msgid "allow extension to be directly dialed over public networks"
-msgstr ""
-"permette che gli interni possano essere chiamati attraverso la rete pubblica."
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr ""
-"Nome pubblico. Immettere una stringa per mappare un nome a questo interno."
-
-#, php-format
-msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
-msgstr ""
-"L'attivazione di questa opzione consente a questo interno di essere "
-"accessibile tramite SIP e IAX2 URI (extension@%s)"
-
-msgid "Call Limit"
-msgstr "Limite di chiamata"
-
-msgid "calls"
-msgstr "chiamate"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Permette solo 'n' chiamate uscenti e 'n' chiamate entranti. (impostazione "
-"predefinita: 2)"
-
-msgid "Busy Limit"
-msgstr "Limite occupato"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr ""
-"Il telefono sarà 'occupato' con 'n' chiamate simultanee (impostazione "
-"predefinita: 1)"
-
-msgid "Logic"
-msgstr "Logico"
-
-#, fuzzy
-msgid ""
-"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
-"()\n"
-" 2,Echo()\n"
-" 3,Hangup()\n"
-" </pre> <p>Programming applications for the PBX requires knowledge of the "
-"Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an install may be rendered useless by faulty "
-"application logic. A reference of applications, functions and phones is "
-"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
-"target=\"_blank\">Element Library</a></strong>.</p>"
-msgstr ""
-"Inserire una applicazione, un comando per riga come mostato qui sotto: <br> "
-"<pre> 1,Answer()\n"
-" 2,Echo()\n"
-" 3,Hangup()\n"
-" </pre> <p>Programmare le applicazioni per Askozia richiede la conoscenza "
-"del dialplan di Asterisk. Un notevole sforzo è stato fatto per verificare "
-"questi inserimenti ma rimane la possibilità che una installazione di "
-"AskoziaPBX sia resa inutilizzabile da un applicazione con una logica errata. "
-"Un riferimento per le applicazioni, le funzioni ed i derivati è disponibile "
-"nella <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank"
-"\">Element Library</a></strong>.</p>"
-
-msgid "Advanced Settings"
-msgstr "Impostazioni Avanzate"
-
-msgid "show"
-msgstr "mostra"
-
-msgid "Manual Attributes"
-msgstr "Attributi Manuali"
-
-msgid ""
-"Manual key-value pairs can be entered in addition to the generated "
-"configuration (i.e. <em>configoption=value</em>). These settings will be "
-"appended to this item's Asterisk configuration file or context. Unless you "
-"have a very specific need to do this, nothing should be entered in this "
-"field. Improperly formed values can break system functionality and/or open "
-"security holes."
-msgstr ""
-"Coppie di chiave-valore possono essere immessi in aggiunta alla "
-"configurazione generata (es. <em>opzione=valore</em>. Queste impostazioni "
-"verranno aggiunte al file di configurazione o al contesto di Asterisk. A "
-"meno che non si abbiano dei bisogni specifici per farlo, nulla deve essere "
-"indicato in questo campo. Valori immessi impropriamente possono interrompere "
-"le funzionalità di sistema o aprire buchi di sicurezza."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Testo mostrato per Identificativo del chiamante (Caller ID)."
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-"Puoi inserire qui una descrizione per avere un riferimento (non verrà "
-"analizzata)."
-
-msgid "Public Number"
-msgstr "Numero pubblico"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"Questo numero 'esterno' verrà letto al chiamante quando raggiungerà la "
-"casella vocale; "
-
-msgid "Authentication Method"
-msgstr "Metodo di Autenticazione"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"La maggior parte degli profili utilizzano 'Auto'. Se questo non dovesse "
-"funzionare, selezionare un metodo appropriato di autenticazione per il "
-"vostro server."
-
-#, fuzzy
-msgid "of"
-msgstr "di"
-
-msgid "connected"
-msgstr "connesso"
-
-msgid "connected but lagged"
-msgstr "connesso ma ritardato"
-
-msgid "unreachable"
-msgstr "irraggiungibile"
-
-msgid "status unknown"
-msgstr "stato indefinito"
-
-msgid "You are using the most recent version of AskoziaPBX."
-msgstr "E' in uso la versione più aggiornata di AskoziaPBX."
-
-msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
-msgstr "E' in uso la versione <strong>beta</strong> più recente di AskoziaPBX."
-
-msgid "A newer version of AskoziaPBX is available!"
-msgstr "E' disponibile una nuova versione di AskoziaPBX!"
-
-msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
-msgstr "E' disponibile una nuova versione <strong>beta</strong> di AskoziaPBX!"
-
-msgid "The following input errors were detected:"
-msgstr "Sono stati individuati i seguenti errori:"
-
-msgid "print"
-msgstr "stampa"
-
-msgid "Summary"
-msgstr "Sommario"
-
-msgid "Manager"
-msgstr "Accesso AMI"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "Tabella ARP"
-
-msgid "Live Stats"
-msgstr "Statistiche in tempo reale"
-
-msgid "Help"
-msgstr "Aiuto"
-
-msgid "add a new item"
-msgstr "Aggiungi una voce"
-
-msgid "item is disabled, click to enable"
-msgstr "Questa voce è disabilitata, clicca per abilitarla"
-
-msgid "item is enabled, click to disable"
-msgstr "Questa voce è abilitata, clicca per disabilitarla"
-
-msgid "edit an item"
-msgstr "Modifica una voce"
-
-msgid "permanently delete an item"
-msgstr "Elimina definitivamente una voce"
-
-msgid "check for package updates"
-msgstr "verifica aggiornamenti dei pacchetti"
-
-msgid "restore a backup archive"
-msgstr "Ripristina da una Copia archiviata"
-
-msgid "download a backup archive"
-msgstr "Salva e scarica una Copia di Archivio"
-
-msgid "webGUI Configuration"
-msgstr "Interfaccia di configurazione Web"
-
-#, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
-msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tutti i diritti riservati."
-
-msgid "view license"
-msgstr "mostra licenza"
-
-msgid "LAN net"
-msgstr "rete LAN"
-
-msgid "autoselect"
-msgstr "Selezione automatica"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Indirizzo IP pubblico"
-
-msgid "NAT + static public IP"
-msgstr "NAT + IP pubblico statico"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + IP pubblico dinamico"
-
-msgid "Kewl Start"
-msgstr "Kewl Start"
-
-msgid "Ground Start"
-msgstr "Ground Start"
-
-msgid "Loop Start"
-msgstr "Loop Start"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Riproduce audio e video al chiamante non appena viene ricevuto (echo). Usato "
-"per controllare il ritardo della connessione."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Genera un tono costante a 1000Hz. Usato per testare la qualità di "
-"connessione."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Gestione del servizio sveglia. Chiamando questo numero virtuale si può "
-"impostare o cancellare una chiamata di \"Sveglia\" sull'interno chiamante."
-
-msgid "English (US)"
-msgstr "Inglese (US)"
-
-msgid "English (UK)"
-msgstr "Inglese (UK)"
-
-msgid "Danish"
-msgstr "Danese"
-
-msgid "Dutch"
-msgstr "Olandese"
-
-msgid "French (France)"
-msgstr "Francese (Francia)"
-
-msgid "French (Canada)"
-msgstr "Francese (Canada)"
-
-msgid "German"
-msgstr "Tedesco"
-
-msgid "Italian"
-msgstr "Italiano"
-
-msgid "Japanese"
-msgstr "Giapponese"
-
-msgid "Portuguese (Brazil)"
-msgstr "Portoghese (Brasile)"
-
-msgid "Russian"
-msgstr "Russo"
-
-msgid "Spanish"
-msgstr "Spagnolo"
-
-msgid "Swedish"
-msgstr "Svedese"
-
-msgid "English"
-msgstr "Inglese"
-
-msgid "English (formal)"
-msgstr "Inglese (formale)"
-
-#, fuzzy
-msgid "Bulgarian"
-msgstr "Bulgaria"
-
-#, fuzzy
-msgid "Bulgarian (formal)"
-msgstr "Italiano (formale)"
-
-msgid "Czech"
-msgstr "Ceco"
-
-msgid "Czech (formal)"
-msgstr "Ceco (formale)"
-
-msgid "Danish (formal)"
-msgstr "Danese (formale)"
-
-msgid "Dutch (formal)"
-msgstr "Danese (formale)"
-
-msgid "Finnish"
-msgstr "Finlandese"
-
-msgid "Finnish (formal)"
-msgstr "Finlandese (formale)"
-
-msgid "French"
-msgstr "Francese"
-
-msgid "French (formal)"
-msgstr "Francese (formale)"
-
-msgid "German (formal)"
-msgstr "Tedesco (formale)"
-
-#, fuzzy
-msgid "Greek"
-msgstr "Grecia"
-
-#, fuzzy
-msgid "Greek (formal)"
-msgstr "Francese (formale)"
-
-msgid "Italian (formal)"
-msgstr "Italiano (formale)"
-
-msgid "Polish"
-msgstr "Polacco"
-
-msgid "Polish (formal)"
-msgstr "Polacco (formale)"
-
-msgid "Portuguese, Brazil"
-msgstr "Portoghese, Brasiliano"
-
-msgid "Portuguese, Brazil (formal)"
-msgstr "Portoghese, Brasiliano (formale)"
-
-msgid "Russian (formal)"
-msgstr "Russo (frmale)"
-
-msgid "Spanish (formal)"
-msgstr "Spagnolo (formale)"
-
-msgid "Turkish"
-msgstr ""
-
-#, fuzzy
-msgid "Turkish (formal)"
-msgstr "Danese (formale)"
-
-msgid "point-to-multipoint, terminal equipment"
-msgstr "punto-multipunto, dispositivo terminale (TE, PMP)"
-
-msgid "multipoint-to-point, network termination"
-msgstr "punto-multipunto, terminazione di rete (NT, PMP)"
-
-msgid "point-to-point, terminal equipment"
-msgstr "punto-punto, dispositivo terminale (TE, PTP)"
-
-msgid "point-to-point, network termination"
-msgstr "punto-punto, terminazione di rete (NT, PTP)"
-
-msgid "United States / North America"
-msgstr "Stati Uniti/Nord America"
-
-msgid "Australia"
-msgstr "Australia"
-
-msgid "Austria"
-msgstr "Austria"
-
-msgid "Belgium"
-msgstr "Belgio"
-
-msgid "Chile"
-msgstr "Cile"
-
-msgid "China"
-msgstr "Cina"
-
-msgid "Finland"
-msgstr "Finlandia"
-
-msgid "France"
-msgstr "Francia"
-
-msgid "Greece"
-msgstr "Grecia"
-
-msgid "Italy"
-msgstr "Italia"
-
-msgid "Japan"
-msgstr "Giappone"
-
-msgid "Malaysia"
-msgstr "Malesia"
-
-msgid "Netherlands"
-msgstr "Olanda"
-
-msgid "New Zealand"
-msgstr "Nuova Zelanda"
-
-msgid "Norway"
-msgstr "Norvegia"
-
-msgid "Russia"
-msgstr "Russia"
-
-msgid "Spain"
-msgstr "Spagna"
-
-msgid "Sweden"
-msgstr "Svezia"
-
-msgid "Taiwan"
-msgstr "Taiwan"
-
-msgid "United Kingdom"
-msgstr "Regno Unito"
-
-msgid "United States Circa 1950/ North America"
-msgstr "Stati Uniti/Nord America"
-
-msgid "Brazil"
-msgstr "Brasile"
-
-msgid "Bulgaria"
-msgstr "Bulgaria"
-
-msgid "Czech Republic"
-msgstr "Repubblica ceca"
-
-msgid "Denmark"
-msgstr "Danimarca"
-
-msgid "Estonia"
-msgstr "Estonia"
-
-msgid "Germany"
-msgstr "Germania"
-
-msgid "Hungary"
-msgstr "Ungheria"
-
-msgid "India"
-msgstr "India"
-
-msgid "Israel"
-msgstr "Israele"
-
-msgid "Lithuania"
-msgstr "Lituania"
-
-msgid "Mexico"
-msgstr "Messico"
-
-msgid "Philippines"
-msgstr "Filippine"
-
-msgid "Poland"
-msgstr "Polonia"
-
-msgid "Portugal"
-msgstr "Portogallo"
-
-msgid "Russia / ex Soviet Union"
-msgstr "Russia/Ex unione sovietica"
-
-msgid "Singapore"
-msgstr "Singapore"
-
-msgid "South Africa"
-msgstr "Sud Africa"
-
-msgid "Switzerland"
-msgstr "Svizzera"
-
-msgid "Thailand"
-msgstr "Tailandia"
-
-msgid "Venezuela / South America"
-msgstr "Venezuela/Sud America"
-
-msgid ""
-"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
-"a> your pbx for the changes to take effect."
-msgstr ""
-"Le modifiche sono state salvate. Devi <a href=\"/system_reboot.php"
-"\">riavviare il PBX</a> affinché le modifiche abbiano effetto."
-
-msgid "The changes have been applied successfully."
-msgstr "Le modifiche sono state applicate con successo."
-
-#, php-format
-msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr "ERRORE: le modifiche non possono essere applcate (codice errore %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "Ripristina i filtri e ricarica il registro del firewall."
-
-msgid "Firewall"
-msgstr "Firewall"
-
-msgid "reload page"
-msgstr "ricarica la pagina"
-
-#, fuzzy
-msgid "Outgoing Calls Only"
-msgstr "Identificativo del chiamante uscente"
-
-#, fuzzy
-msgid "SIP Phones"
-msgstr "Derivati"
-
-#, fuzzy
-msgid "IAX Phones"
-msgstr "Derivati"
-
-#, fuzzy
-msgid "ISDN Phones"
-msgstr "Derivati"
-
-#, fuzzy
-msgid "Analog Phones"
-msgstr "Telefoni interni"
-
-msgid "active"
-msgstr "attivo"
-
-msgid "inactive"
-msgstr "inattivo"
-
-msgid "up"
-msgstr "su"
-
-msgid "down"
-msgstr "giù"
-
-#, fuzzy
-msgid "associated"
-msgstr "Stazioni associate"
-
-msgid "HIDE"
-msgstr "NASCONDI"
-
-msgid "unconfigured"
-msgstr "non configurato"
-
-msgid "Package activated successfully."
-msgstr "Pacchetto attivato correttamente."
-
-msgid "Package deactivated successfully."
-msgstr "Pacchetto disattivato correttamente."
-
-msgid "Package deleted successfully."
-msgstr "Pacchetto cancellato correttamente."
-
-msgid "Package restored successfully."
-msgstr "Pacchetto ripristinato correttamente."
-
-msgid "Package installed successfully."
-msgstr "Pacchetto installato correttamente."
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f GB"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f MB"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f KB"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d bytes"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "Il campo '%s' contiene dei caratteri non validi."
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "Il campo '%s' è obbligatorio."
 
 #~ msgid "descr"
 #~ msgstr "descr"
@@ -3437,9 +3456,9 @@ msgstr "Il campo '%s' è obbligatorio."
 
 #~ msgid ""
 #~ "If an ISDN interface is present but was not detected, please send <a href="
-#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg"
-#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
-#~ "\">michael@askozia.com</a>."
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">this "
+#~ "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</"
+#~ "a>."
 #~ msgstr ""
 #~ "Se una interfaccia ISDN è fisicamente presente ma non è stata individuata "
 #~ "dal sistema, cortesemente inviate il risultato di <a href=\"ajax.cgi?"

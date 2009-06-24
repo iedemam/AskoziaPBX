@@ -9,22 +9,563 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-12 12:11+0100\n"
+"POT-Creation-Date: 2009-06-24 15:54+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Accounts"
-msgstr "帳戶"
+#, fuzzy
+msgid "unconfigured"
+msgstr "設置"
+
+msgid "Package activated successfully."
+msgstr "軟體套件成功啟用。"
+
+msgid "Package deactivated successfully."
+msgstr "軟體套件成功停用。"
+
+msgid "Package deleted successfully."
+msgstr "軟體套件成功刪除。"
+
+msgid "Package restored successfully."
+msgstr "軟體套件成功還原。"
+
+msgid "Package installed successfully."
+msgstr "軟體套件成功安裝。"
+
+#, php-format
+msgid "%.2f GB"
+msgstr "%.2f GB"
+
+#, php-format
+msgid "%.2f MB"
+msgstr "%.2f MB"
+
+#, php-format
+msgid "%.0f KB"
+msgstr "%.0f KB"
+
+#, php-format
+msgid "%d bytes"
+msgstr "%d bytes"
+
+#, php-format
+msgid "The field '%s' contains invalid characters."
+msgstr "'%s' 段含有無效字符。"
+
+#, php-format
+msgid "The field '%s' is required."
+msgstr "'%s' 區域需要填入。 "
+
+#, fuzzy
+msgid "Subject"
+msgstr "秘密"
+
+msgid "Body"
+msgstr ""
+
+msgid "The following variables can be used in the e-mail notification"
+msgstr ""
+
+msgid "extension number of voicemail box"
+msgstr ""
+
+msgid "name of voicemail recipient"
+msgstr ""
+
+msgid "duration of the message (i.e. 0:58)"
+msgstr ""
+
+msgid "caller id of person leaving the message"
+msgstr ""
+
+msgid "full date / time (i.e. 2025-11-20 (15:45))"
+msgstr ""
+
+msgid "generate password"
+msgstr ""
+
+#, fuzzy
+msgid "use this password"
+msgstr "這個帳戶的密碼。"
+
+msgid "webGUI language"
+msgstr "網頁設置頁面語言"
+
+msgid "Select in which language you want the webGUI to be displayed."
+msgstr "請選擇您希望本設置界面顯示的語言。"
+
+msgid "Audio Codecs"
+msgstr "音頻編解碼"
+
+msgid "Enabled"
+msgstr "允許的"
+
+msgid "drag-and-drop"
+msgstr "拖放"
+
+msgid "Disabled"
+msgstr "禁用"
+
+msgid "Video Codecs"
+msgstr "視頻編解碼"
+
+msgid "Group Members"
+msgstr "組成員"
+
+msgid "Members"
+msgstr "成員"
+
+msgid "Non-Members"
+msgstr "非成員"
+
+msgid "Note:"
+msgstr "註意："
+
+msgid ""
+"All group members will be called at the same time. <strong>The voicemail "
+"account associated with the first member will be used if the call is not "
+"answered."
+msgstr ""
+"所有組成員會同時被呼叫。<strong>如果通話無應答，相關成員中第一個成員的語音信"
+"件帳戶將會被使用。"
+
+msgid "Incoming Extension(s)"
+msgstr "打入的分機"
+
+msgid "add incoming extension mapping"
+msgstr "添加打入分機的映射"
+
+msgid ""
+"Enter a pattern or a phone number and select a destination extension. To "
+"ring multiple phones, simply define them with the same pattern. If a phone "
+"number is entered, it will used as the \"external\" number on unanswered "
+"calls. If nothing is entered, all calls will be directed to the destination "
+"extension.<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
+" </ul>\n"
+msgstr ""
+"輸入一個模式或者一個電話號碼並選擇一個目標分機.要讓多個電話同時響鈴，只需設置"
+"其為同一模式即可。如果輸入一個電話號碼，它會被用作\"外部\"號碼無應答的通話。"
+"如果留空，所有電話會直接連到其目的分機。<br>\n"
+" <ul>\n"
+" \t<li><strong>X</strong> - 匹配了數字 0-9</li>\n"
+" \t<li><strong>Z</strong> - 匹配了數字 1-9</li>\n"
+" \t<li><strong>N</strong> - 匹配了數字 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - 匹配方括號內的任何數字 (這裏, 1,3,4,5)</"
+"li>\n"
+" \t<li><strong>.</strong> - 匹配一個或多個字符</li>\n"
+" \t<li><strong>!</strong> - 匹配零個或多個字符</li>\n"
+" </ul>\n"
+
+msgid "DTMF Mode"
+msgstr "DTMF 模式"
+
+msgid "Registration"
+msgstr "註冊"
+
+msgid "Do not register with this provider."
+msgstr "請勿與此提供商註冊。"
+
+msgid "Qualify"
+msgstr "資格"
+
+msgid "seconds"
+msgstr "秒"
+
+msgid ""
+"Packets will be sent to this account every <i>n</i> seconds to check its "
+"status.<br>Defaults to '2'. Set to '0' to disable."
+msgstr ""
+"軟體套件會被送到這個帳戶，每隔<i>n</i>秒以檢查其狀態。<br>預設為'2'。設置"
+"為'0'則禁用。"
+
+msgid "always use NAT mode."
+msgstr "一直使用NAT模式"
+
+msgid "only use NAT mode according to RFC3581 (rport)"
+msgstr "只使用NAT模式根據RFC3581(rport)。"
+
+msgid "never attempt NAT mode or RFC3581 support"
+msgstr "從不嘗試NAT模式或RFC3581的支持"
+
+msgid "assume NAT mode but don't send rport "
+msgstr "承擔NAT模式但不發送rport"
+
+msgid "NAT"
+msgstr "NAT"
+
+#, fuzzy
+msgid ""
+"Is there a NATing device between the pbx and this account? Setting this to "
+"'yes' will work in most cases. The options 'never' and 'route' are only "
+"rarely used for certain buggy SIP phones."
+msgstr ""
+"是否有一個NATing設備在這個帳戶和askoziaPBX之間？大多情況下設置此為'是'會有"
+"效。選項'決不'和'路由'只用在某些特別的有瑕疵的SIP話機上。"
+
+msgid "indefinitely"
+msgstr "無限期"
+
+msgid "Ring Length"
+msgstr "響鈴時長"
+
+msgid ""
+"The number of seconds this phone will ring before being reported as "
+"unanswered."
+msgstr "響鈴時間的秒數，之後將被認為無人應答。"
+
+msgid "Line Gain"
+msgstr "線路增益"
+
+msgid "receive"
+msgstr "接收"
+
+msgid "transmit"
+msgstr "傳輸"
+
+msgid ""
+"Some analog connections may need adjustment to achieve an acceptable audio "
+"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
+"the line."
+msgstr ""
+"一些Analog連接可能需要調整，以達到一個可以接收的音頻水平。調節接收和傳輸增益"
+"以放大或減輕線路的分貝。"
+
+msgid "Incoming Caller ID Overrides"
+msgstr "呼入Caller ID覆蓋"
+
+msgid "Source Name &lt;number&gt;"
+msgstr "源名字&lt;號碼&gt;"
+
+msgid "Prepend with string"
+msgstr "加在字符串前"
+
+msgid "Replace with string"
+msgstr "替代字符串"
+
+msgid "Replace calling name with calling number."
+msgstr "把呼叫名字替換為呼叫號碼。"
+
+msgid "Disable overrides"
+msgstr "禁用覆蓋"
+
+msgid "Outgoing Caller ID"
+msgstr "呼出的Caller ID"
+
+msgid "Your Name &lt;number&gt;"
+msgstr "您名字的&lt;號碼&gt;"
+
+msgid "Send string defined above&nbsp;"
+msgstr "傳輸字符串的上述定義&nbsp;"
+
+msgid "Send phones' Caller ID"
+msgstr "發送話機的Caller ID"
+
+msgid "Providers"
+msgstr "提供商"
+
+msgid "There are currently no providers defined."
+msgstr "目前尚未定義任何提供商。"
+
+msgid "direct outbound dialing via SIP uris"
+msgstr "通過SIP uris對外直接撥號"
+
+msgid "Checked providers will be accessible from this phone."
+msgstr "選出的提供商可以讓這個電話連接使用。"
 
 msgid "Phones"
 msgstr "電話"
 
+msgid "There are currently no phones defined."
+msgstr "目前沒有被定義的電話。"
+
+msgid "Checked phones will have access to this provider."
+msgstr "選出的電話會擁有連接使用這個提供商的權利。"
+
+msgid "Dialing Pattern(s)"
+msgstr "撥號模式"
+
 msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
+"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
+"\" to use this Provider for all outgoing calls. To only use this Provider "
+"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
+"entered, only incoming calls will be accepted.<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
+"and passes \"1555\" to the provider)</li>\n"
+" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
+"\" but only passes \"555\" to the provider)</li>\n"
+" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
+" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
+" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
+"1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - matches one or more characters (not allowed "
+"before | or +)</li>\n"
+" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
+"before | or +)</li>\n"
+" </ul>\n"
 msgstr ""
-"電話帳號，允許你設置內部分機和供應商帳戶對他們的訪問。點擊下面的一個帳號類型"
-"來開始。"
+"為每條線路輸入模式，為供應商定義路由。輸入 \"X!\"用於這個提供商的呼出電話。如"
+"要讓這個提供商只用作\"9\"開頭的號碼則輸入\"9|.\"。如果沒有輸入模式，那麽只有"
+"呼入的電話會被接受。<br>\n"
+" <ul>\n"
+" \t<li><strong>+</strong> - 加入一個首碼 (即 \"1+555\" 匹配 \"555\" 並傳遞 "
+"\"1555\" 給提供商)</li>\n"
+" \t<li><strong>|</strong> - 去掉一個首碼 (即 \"1|555\" 匹配 \"1555\" 但只傳"
+"遞 \"555\" 給提供商)</li>\n"
+" \t<li><strong>X</strong> - 匹配數字 0-9</li>\n"
+" \t<li><strong>Z</strong> - 匹配數字 1-9</li>\n"
+" \t<li><strong>N</strong> - 匹配數字 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - 匹配方括號裏的素有數字 (這裏, 1,3,4,5)</"
+"li>\n"
+" \t<li><strong>.</strong> - 匹配一個或多個字符 (不允許 在 | 或 + 前)</li>\n"
+" \t<li><strong>!</strong> - 匹配零個或多個字符 (不允許 在 | or + 前)</li>\n"
+" </ul>\n"
+
+msgid "Language"
+msgstr "語言"
+
+msgid ""
+"Audio prompts will be played back in the selected language for this account."
+msgstr "音頻提示將以為這個帳戶設置好的語言回放。"
+
+msgid "Voicemail"
+msgstr "語音郵件"
+
+msgid "send missed call notifications"
+msgstr "發送錯過的電話通知"
+
+msgid "don't send to voicemail when busy"
+msgstr "不要發送語音信件如果狀態為忙時。"
+
+msgid ""
+"An e-mail address. If entered, voicemail will be enabled on this extension. "
+"Incoming messages will be sent to the given address."
+msgstr ""
+"一個電子郵件地址。如果輸入了，語音信件會在這個分機上起效。呼入信息會被傳送到"
+"這個地址。"
+
+msgid "Voicemail Services"
+msgstr "語音信件服務"
+
+msgid "must be configured</a> before this feature will work."
+msgstr "在功能起效前，必須先設置。"
+
+msgid "Public Direct Dial"
+msgstr "公共直接撥打"
+
+msgid "allow extension to be directly dialed over public networks"
+msgstr "允許分機可以直接通過公共網路撥號。"
+
+msgid "Public name. Enter a string to map a friendly name to this extension."
+msgstr "公開名字。輸入一個字符串並把它映射給這個分機。"
+
+#, php-format
+msgid ""
+"Enabling this option will allow this extension to be reachable via SIP and "
+"IAX2 uris (extension@%s)"
+msgstr "啟用這個選項會允許這個分機可以被SIP和IAX2 uris呼叫。(extension@%s)"
+
+msgid "Call Limit"
+msgstr "通話限制"
+
+msgid "calls"
+msgstr "通話"
+
+#, fuzzy
+msgid "Permit only 'n' concurrent calls (default: 2)"
+msgstr "只允許 n 個呼出通話和 n 個呼入通話（預設：2）。"
+
+msgid "Busy Limit"
+msgstr "忙限制"
+
+msgid ""
+"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
+"1)"
+msgstr "電話狀態被設置到'忙'及'n'並行呼叫(預設：1)。"
+
+msgid "Logic"
+msgstr "邏輯"
+
+#, fuzzy
+msgid ""
+"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
+"()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>Programming applications for the PBX requires knowledge of the "
+"Asterisk dialplan. An effort is made to verify this input but the "
+"possibility remains that an install may be rendered useless by faulty "
+"application logic. A reference of applications, functions and phones is "
+"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
+"target=\"_blank\">Element Library</a></strong>.</p>"
+msgstr ""
+"輸入應用的邏輯，一行一個命令如： <br> <pre> 1,Answer()\n"
+" 2,Echo()\n"
+" 3,Hangup()\n"
+" </pre> <p>為AskoziaPBX的應用編程需要Asterisk撥號計劃(dialplan)的知識。您的輸"
+"入將會被很好的驗證，但是不完善的應用邏輯仍然有可能使AskoziaPBX安裝不能使用一"
+"個應用的參考，程序或者通話可以在這裏找到<strong><a href="
+"\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</"
+"a></strong>。</p>"
+
+msgid "Advanced Settings"
+msgstr "高級設置"
+
+msgid "show"
+msgstr "顯示"
+
+msgid "Manual Attributes"
+msgstr "手動屬性"
+
+msgid ""
+"Manual key-value pairs can be entered in addition to the generated "
+"configuration (i.e. <em>configoption=value</em>). These settings will be "
+"appended to this item's Asterisk configuration file or context. Unless you "
+"have a very specific need to do this, nothing should be entered in this "
+"field. Improperly formed values can break system functionality and/or open "
+"security holes."
+msgstr ""
+"可以在生成的設置中手動加入關鍵值對(即<em>configoption=value</em>)。這些設置將"
+"會被附加到這個項目的Asterisk設定文件中。除非您非常特殊的需要這樣做，不然的話"
+"請留空這個區域。不正確的設置值可能打破系統功能並且/或者打開安全漏洞。"
+
+msgid "Caller ID"
+msgstr "呼叫者ID"
+
+msgid "Text to be displayed for Caller ID."
+msgstr "為Caller ID顯示的文本"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "您在這裏輸入一個描述，供您參考（不解析）。"
+
+msgid "Public Number"
+msgstr "公共號碼"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"這個'外部'號碼會被主叫方讀回，如果遇到語音郵件；預設的會到帳戶的用戶名，前提"
+"是名字是數字。如果不是數字的話，將會被讀回到相應的內部分機上。"
+
+msgid "Authentication Method"
+msgstr "驗證方法"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"大多數帳戶在'auto'下就能工作。如果這樣出錯了，請選擇一個適合您伺服器的驗證方"
+"法。"
+
+msgid "of"
+msgstr "of"
+
+msgid "connected"
+msgstr ""
+
+msgid "connected but lagged"
+msgstr ""
+
+msgid "unreachable"
+msgstr ""
+
+msgid "status unknown"
+msgstr ""
+
+msgid "You are using the most recent version of AskoziaPBX."
+msgstr "您正在使用AskoziaPBX的最新版本。"
+
+msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
+msgstr "您正在使用AskoziaPBX最新的<strong>beta</strong>版本。"
+
+msgid "A newer version of AskoziaPBX is available!"
+msgstr "一個AskoziaPBX的新版本已經可用。"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
+msgstr "一個AskoziaPBX的新<strong>beta</strong>版本已經可用了！"
+
+msgid "The following input errors were detected:"
+msgstr "發現以下輸入錯誤："
+
+msgid "Dialplan"
+msgstr "撥號計劃"
+
+msgid "print"
+msgstr "打印"
+
+msgid "Diagnostics"
+msgstr "癥狀"
+
+msgid "Advanced"
+msgstr "高級"
+
+msgid "General Setup"
+msgstr "一般安裝"
+
+msgid "Interfaces"
+msgstr "界面(Interfaces)"
+
+msgid "Packages"
+msgstr "軟體套件"
+
+msgid "Firmware"
+msgstr "固件"
+
+msgid "Backup/Restore"
+msgstr "備份和還原"
+
+msgid "Factory Defaults"
+msgstr "出廠預設設置"
+
+msgid "Reboot"
+msgstr "重啟"
+
+msgid "Applications"
+msgstr "應用"
+
+msgid "Call Groups"
+msgstr "通話組"
+
+msgid "Transfers"
+msgstr "轉移"
+
+msgid "Conferencing"
+msgstr "會議"
+
+msgid "Summary"
+msgstr "摘要"
+
+msgid "Channels"
+msgstr "通道"
+
+msgid "Conferences"
+msgstr "會議"
+
+msgid "Network Traffic"
+msgstr "網路流量"
+
+msgid "CPU Load"
+msgstr "CPU負載"
+
+msgid "RTP"
+msgstr "RTP"
 
 msgid "SIP"
 msgstr "SIP"
@@ -38,17 +579,466 @@ msgstr "ISDN"
 msgid "Analog"
 msgstr "Analog"
 
+msgid "Manager"
+msgstr "管理"
+
+msgid "GUI Options"
+msgstr "用戶界面選項"
+
+msgid "Logs"
+msgstr "日誌"
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
+
+msgid "ARP Table"
+msgstr "ARP表"
+
+msgid "Manager Interface"
+msgstr "管理界面"
+
+msgid "System"
+msgstr "系統"
+
+msgid "Accounts"
+msgstr "帳戶"
+
+msgid "Services"
+msgstr "服務"
+
+msgid "Status"
+msgstr "狀態"
+
+msgid "Live Stats"
+msgstr "實時統計"
+
+msgid "Help"
+msgstr ""
+
+msgid "add a new item"
+msgstr "添加一個新項目"
+
+msgid "item is disabled, click to enable"
+msgstr "項目是禁用的，點擊啟用"
+
+msgid "item is enabled, click to disable"
+msgstr "項目是啟用的，點擊禁用"
+
+msgid "edit an item"
+msgstr "編輯一個項目"
+
+msgid "permanently delete an item"
+msgstr "永久刪除一個項目"
+
+msgid "check for package updates"
+msgstr "檢查軟體套件更新"
+
+msgid "restore a backup archive"
+msgstr "恢復一個備份的文檔"
+
+msgid "download a backup archive"
+msgstr "下載備份文檔"
+
+msgid "webGUI Configuration"
+msgstr "網頁設置界面"
+
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
+
+msgid "view license"
+msgstr "查看證書"
+
+msgid "LAN net"
+msgstr "區域網絡"
+
+msgid "autoselect"
+msgstr "自動選擇"
+
+msgid "100BASE-TX full-duplex"
+msgstr "100BASE-TX full-duplex"
+
+msgid "100BASE-TX half-duplex"
+msgstr "100BASE-TX half-duplex"
+
+msgid "10BASE-T full-duplex"
+msgstr "10BASE-T full-duplex"
+
+msgid "10BASE-T half-duplex"
+msgstr "10BASE-T half-duplex"
+
+msgid "1000BASE-TX full-duplex"
+msgstr "1000BASE-TX full-duplex"
+
+msgid "Public IP address"
+msgstr "公網IP地址"
+
+msgid "NAT + static public IP"
+msgstr "NAT + 靜態公網IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + 動態公網IP"
+
+msgid "Kewl Start"
+msgstr "Kewl 開始"
+
+msgid "Ground Start"
+msgstr "基礎(Ground)開始"
+
+msgid "Loop Start"
+msgstr "循環(Loop)開始"
+
+msgid ""
+"Echos audio and video back to the caller as soon as it is received. Used to "
+"test connection delay."
+msgstr "把音頻和音頻在收到後立即傳回到呼叫方。用來測試連接延遲。"
+
+msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+msgstr "產生一個穩定的1000hz的聲音。用來測試連接質量。"
+
+msgid ""
+"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+"extension."
+msgstr "呼叫喚醒管理。呼叫設置或取消這個分機的電話喚醒服務。"
+
+msgid "English (US)"
+msgstr "英語（美國）"
+
+msgid "English (UK)"
+msgstr "英語（英國）"
+
+msgid "Danish"
+msgstr "丹麥語"
+
+msgid "Dutch"
+msgstr "荷蘭語"
+
+msgid "French (France)"
+msgstr "法語（法國）"
+
+msgid "French (Canada)"
+msgstr "法語（加拿大）"
+
+msgid "German"
+msgstr "德語"
+
+msgid "Italian"
+msgstr "意大利語"
+
+msgid "Japanese"
+msgstr "日語"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "葡萄牙語，巴西"
+
+msgid "Russian"
+msgstr "俄羅斯語"
+
+msgid "Spanish"
+msgstr "西班牙語"
+
+msgid "Swedish"
+msgstr "瑞典語"
+
+msgid "English"
+msgstr "英語"
+
+msgid "English (formal)"
+msgstr "英語（正式）"
+
+#, fuzzy
+msgid "Bulgarian"
+msgstr "保加利亞"
+
+#, fuzzy
+msgid "Bulgarian (formal)"
+msgstr "意大利語（正式）"
+
+msgid "Czech"
+msgstr ""
+
+#, fuzzy
+msgid "Czech (formal)"
+msgstr "法語（正式）"
+
+msgid "Danish (formal)"
+msgstr "丹麥語（正式）"
+
+msgid "Dutch (formal)"
+msgstr "荷蘭語（正式）"
+
+msgid "Finnish"
+msgstr "芬蘭語"
+
+msgid "Finnish (formal)"
+msgstr "芬蘭語（正式）"
+
+msgid "French"
+msgstr "法語"
+
+msgid "French (formal)"
+msgstr "法語（正式）"
+
+msgid "German (formal)"
+msgstr "德語（正式）"
+
+#, fuzzy
+msgid "Greek"
+msgstr "希臘"
+
+#, fuzzy
+msgid "Greek (formal)"
+msgstr "法語（正式）"
+
+msgid "Italian (formal)"
+msgstr "意大利語（正式）"
+
+#, fuzzy
+msgid "Japanese (formal)"
+msgstr "西班牙語（正式）"
+
+msgid "Polish"
+msgstr "波蘭語"
+
+msgid "Polish (formal)"
+msgstr "波蘭語（正式）"
+
+msgid "Portuguese, Brazil"
+msgstr "葡萄牙語，巴西"
+
+msgid "Portuguese, Brazil (formal)"
+msgstr "葡萄牙語，巴西（正式）"
+
+msgid "Russian (formal)"
+msgstr "俄語（正式）"
+
+msgid "Spanish (formal)"
+msgstr "西班牙語（正式）"
+
+msgid "Turkish"
+msgstr ""
+
+#, fuzzy
+msgid "Turkish (formal)"
+msgstr "丹麥語（正式）"
+
+msgid "point-to-multipoint, terminal equipment"
+msgstr "點對多，終端設備"
+
+msgid "multipoint-to-point, network termination"
+msgstr "多對點，網路終端"
+
+msgid "point-to-point, terminal equipment"
+msgstr "點對點，終端設備"
+
+msgid "point-to-point, network termination"
+msgstr "點對點，網路終端"
+
+msgid "United States / North America"
+msgstr "美國/北美"
+
+msgid "Australia"
+msgstr "澳大利亞"
+
+msgid "Austria"
+msgstr "奧地利"
+
+msgid "Belgium"
+msgstr "比利時"
+
+msgid "Chile"
+msgstr "智利"
+
+msgid "China"
+msgstr "中國"
+
+msgid "Finland"
+msgstr "芬蘭"
+
+msgid "France"
+msgstr "法國"
+
+msgid "Greece"
+msgstr "希臘"
+
+msgid "Italy"
+msgstr "意大利"
+
+msgid "Japan"
+msgstr "日本"
+
+msgid "Malaysia"
+msgstr "馬來西亞"
+
+msgid "Netherlands"
+msgstr "荷蘭"
+
+msgid "New Zealand"
+msgstr "新西蘭"
+
+msgid "Norway"
+msgstr "挪威"
+
+msgid "Russia"
+msgstr "俄羅斯"
+
+msgid "Spain"
+msgstr "西班牙"
+
+msgid "Sweden"
+msgstr "瑞典"
+
+msgid "Taiwan"
+msgstr "臺灣"
+
+msgid "United Kingdom"
+msgstr "英聯邦"
+
+msgid "United States Circa 1950/ North America"
+msgstr "美國1950/北美"
+
+msgid "Brazil"
+msgstr "巴西"
+
+msgid "Bulgaria"
+msgstr "保加利亞"
+
+msgid "Czech Republic"
+msgstr "捷克共和國"
+
+msgid "Denmark"
+msgstr "丹麥"
+
+msgid "Estonia"
+msgstr "愛沙尼亞"
+
+msgid "Germany"
+msgstr "德國"
+
+msgid "Hungary"
+msgstr "匈牙利"
+
+msgid "India"
+msgstr "印度"
+
+msgid "Israel"
+msgstr "以色列"
+
+msgid "Lithuania"
+msgstr "立陶宛"
+
+msgid "Mexico"
+msgstr "墨西哥"
+
+msgid "Philippines"
+msgstr "菲律賓"
+
+msgid "Poland"
+msgstr "波蘭"
+
+msgid "Portugal"
+msgstr "葡萄牙"
+
+msgid "Russia / ex Soviet Union"
+msgstr "俄羅斯 / 前蘇聯"
+
+msgid "Singapore"
+msgstr "新加坡"
+
+msgid "South Africa"
+msgstr "南非"
+
+msgid "Switzerland"
+msgstr "瑞士"
+
+msgid "Thailand"
+msgstr "泰國"
+
+msgid "Venezuela / South America"
+msgstr "委內瑞拉 / 南美"
+
+msgid ""
+"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
+"a> your pbx for the changes to take effect."
+msgstr ""
+"改動被保存。您必須 <a href=\"/system_reboot.php\">重啟</a> 您的PBX使其生效。"
+
+msgid "The changes have been applied successfully."
+msgstr "改動應用成功。"
+
+#, php-format
+msgid "ERROR: the changes could not be applied (error code %s)."
+msgstr "錯誤：無法應用改動（錯誤代碼 %s）。"
+
+msgid "reset filter and reload firewall logs page"
+msgstr "重置過濾器並重載防火墻日誌頁"
+
+msgid "Firewall"
+msgstr "防火墻"
+
+msgid "reload page"
+msgstr "重載頁面"
+
+#, fuzzy
+msgid "Outgoing Calls Only"
+msgstr "呼出的Caller ID"
+
+#, fuzzy
+msgid "SIP Phones"
+msgstr "電話"
+
+#, fuzzy
+msgid "IAX Phones"
+msgstr "電話"
+
+#, fuzzy
+msgid "ISDN Phones"
+msgstr "電話"
+
+#, fuzzy
+msgid "Analog Phones"
+msgstr "內部電話"
+
+msgid "External Phones"
+msgstr "外部電話"
+
+msgid "Conference Rooms"
+msgstr "會議室"
+
+#, fuzzy
+msgid "active"
+msgstr "互動"
+
+#, fuzzy
+msgid "inactive"
+msgstr "互動"
+
+msgid "up"
+msgstr ""
+
+msgid "down"
+msgstr ""
+
+#, fuzzy
+msgid "associated"
+msgstr "相關監測站"
+
+msgid "HIDE"
+msgstr ""
+
+msgid ""
+"Phone Accounts allow you to configure internal extensions and their access "
+"to Provider Accounts. Click an account type below to get started."
+msgstr ""
+"電話帳號，允許你設置內部分機和供應商帳戶對他們的訪問。點擊下面的一個帳號類型"
+"來開始。"
+
 msgid "External"
 msgstr "外部"
 
 msgid "Extension"
 msgstr "分機"
-
-msgid "Caller ID"
-msgstr "呼叫者ID"
-
-msgid "Description"
-msgstr "描述"
 
 msgid "click to enable phone"
 msgstr "點擊啟用電話"
@@ -73,9 +1063,6 @@ msgstr "名字"
 
 msgid "Dialstring"
 msgstr "撥號串"
-
-msgid "Providers"
-msgstr "提供商"
 
 msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
@@ -118,31 +1105,19 @@ msgstr "數量"
 msgid "Interface"
 msgstr "介面"
 
-msgid "Advanced"
-msgstr "高級"
-
 msgid "Tone Zones"
 msgstr "響鈴區域"
 
 msgid "Loaded"
 msgstr "已加載"
 
-msgid "drag-and-drop"
-msgstr "拖放"
-
 msgid "Inactive"
 msgstr "互動"
-
-msgid "Note:"
-msgstr "註意："
 
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
 msgstr "選擇所有Analog硬體支持的響鈴區。<strong>第一個響鈴區將會是是預設的。"
-
-msgid "GUI Options"
-msgstr "用戶界面選項"
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -304,9 +1279,6 @@ msgstr "A-Law"
 msgid "u-law"
 msgstr "u-Law"
 
-msgid "Manager Interface"
-msgstr "管理界面"
-
 msgid "Permissions"
 msgstr "權限"
 
@@ -355,9 +1327,6 @@ msgstr "讀取"
 
 msgid "Write"
 msgstr "寫入"
-
-msgid "RTP"
-msgstr "RTP"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "高RTP埠必須大於低RTP埠。"
@@ -436,9 +1405,6 @@ msgstr "除錯輸出"
 msgid "Restart"
 msgstr "重啟"
 
-msgid "Diagnostics"
-msgstr "癥狀"
-
 msgid "ARP table"
 msgstr "ARP表"
 
@@ -483,14 +1449,8 @@ msgstr "取消"
 msgid "Open"
 msgstr "開啟"
 
-msgid "Logs"
-msgstr "日誌"
-
 msgid "No matches found."
 msgstr "沒有找到匹配的"
-
-msgid "System"
-msgstr "系統"
 
 msgid "PBX"
 msgstr "PBX"
@@ -629,12 +1589,6 @@ msgstr ""
 msgid "Traceroute output:"
 msgstr "路由追蹤結果："
 
-msgid "Dialplan"
-msgstr "撥號計劃"
-
-msgid "Applications"
-msgstr "應用"
-
 #, fuzzy
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -666,9 +1620,6 @@ msgstr "必須輸入一個有效的分機"
 msgid "Internal extension used to reach this application."
 msgstr "內部的分機用來達到這個應用。"
 
-msgid "Call Groups"
-msgstr "通話組"
-
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
 "can then be dialed via their defined extensions or used as a destination for "
@@ -676,9 +1627,6 @@ msgid ""
 msgstr ""
 "分機擴展的組可以被設置為同時響鈴。這些組可以被各自預定的擴展分機撥通或者用作"
 "提供商來電的目的地。"
-
-msgid "Members"
-msgstr "成員"
 
 msgid "edit call group"
 msgstr "編輯通話組"
@@ -697,9 +1645,6 @@ msgstr "組名"
 
 msgid "Internal extension used to reach this call group."
 msgstr "內部分機用於聯絡這個通話組。"
-
-msgid "Transfers"
-msgstr "轉移"
 
 msgid ""
 "A variety of settings are here which define how call transfers and call "
@@ -843,9 +1788,6 @@ msgstr "自動縮放"
 msgid "Graph shows last"
 msgstr "圖表顯示"
 
-msgid "seconds"
-msgstr "秒"
-
 msgid "Collecting initial data, please wait..."
 msgstr "收集起始資料，請稍後..."
 
@@ -895,9 +1837,6 @@ msgstr "記憶體使用"
 msgid "Notes"
 msgstr "Notes"
 
-msgid "Interfaces"
-msgstr "界面(Interfaces)"
-
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
 "utilize them."
@@ -926,9 +1865,6 @@ msgstr "增益 (rx/tx)"
 
 msgid "Echo Canceller"
 msgstr "回聲補償器"
-
-msgid "Disabled"
-msgstr "禁用"
 
 msgid "edit analog interface"
 msgstr "編輯Analog介面"
@@ -996,9 +1932,6 @@ msgstr "沒有找到相容的ISDN介面。"
 
 msgid "Operating Mode"
 msgstr "操作模式"
-
-msgid "Enabled"
-msgstr "允許的"
 
 msgid "edit ISDN interface"
 msgstr "編劇ISDN介面"
@@ -1101,6 +2034,20 @@ msgstr "必須為這個網路布局輸入一個有效的主機名。"
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "動態DNS的用戶名中包含無效字符。"
+
+#, fuzzy
+msgid "Configured"
+msgstr "設置"
+
+msgid "via DHCP client"
+msgstr ""
+
+msgid "statically"
+msgstr ""
+
+#, fuzzy
+msgid "Ports"
+msgstr "葡萄牙"
 
 msgid "Checked interfaces will be bridged to the main interface."
 msgstr "選定的介面會被橋接到主介面。"
@@ -1489,20 +2436,11 @@ msgstr "可打印的撥號計劃"
 msgid "Internal Phones"
 msgstr "內部電話"
 
-msgid "External Phones"
-msgstr "外部電話"
-
-msgid "Conference Rooms"
-msgstr "會議室"
-
 msgid "Pin"
 msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "自定義應用程序"
-
-msgid "Dialing Pattern(s)"
-msgstr "撥號模式"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "必須指定一個有效的Caller ID字符串。"
@@ -1568,12 +2506,6 @@ msgid ""
 "entered above."
 msgstr "一些提供商需要單獨的'from'域。<br>預設主機填在上面。"
 
-msgid "Services"
-msgstr "服務"
-
-msgid "Conferencing"
-msgstr "會議"
-
 msgid ""
 "Conference rooms with optional pin authentication can be configured here. "
 "The system's performance is the only limiting factor on the number of "
@@ -1623,9 +2555,6 @@ msgstr "接入驗證碼(PIN)"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "接入此會議室需要可選的驗證碼。"
-
-msgid "Voicemail"
-msgstr "語音郵件"
 
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
@@ -1724,9 +2653,6 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "config.xml中的密碼被自動溢出了。"
 
-msgid "Status"
-msgstr "狀態"
-
 msgid "There are currently no active channels."
 msgstr "目前沒有活動的通道。"
 
@@ -1735,9 +2661,6 @@ msgstr "位置"
 
 msgid "Application"
 msgstr "應用"
-
-msgid "Conferences"
-msgstr "會議"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -1764,18 +2687,12 @@ msgstr "踢掉與會成員"
 msgid "Live"
 msgstr "活動的"
 
-msgid "CPU Load"
-msgstr "CPU負載"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "如果您不能看到這個圖片，那麽您可能需要安裝<a href=\"http://www.adobe.com/svg/"
 "viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>。"
-
-msgid "Network Traffic"
-msgstr "網路流量"
 
 msgid "Subnet Mask"
 msgstr "子網掩碼"
@@ -1845,17 +2762,11 @@ msgstr "撥號音"
 msgid "Driver Type"
 msgstr "驅動器類型"
 
-msgid "Channels"
-msgstr "通道"
-
 msgid "Serial"
 msgstr "串列"
 
 msgid "Power Save"
 msgstr "省電"
-
-msgid "General Setup"
-msgstr "一般安裝"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -1963,9 +2874,6 @@ msgstr ""
 "使用一個空間來分隔多個主機（只需一個）。請別忘記設置至少一個DNS伺服器，如果您"
 "在這裏輸入主機名。"
 
-msgid "Backup/Restore"
-msgstr "備份和還原"
-
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
 msgstr "通過本頁可以恢復和備份整個系統設置。"
@@ -1995,16 +2903,14 @@ msgstr "下載設置"
 msgid "Restore configuration"
 msgstr "恢復設置"
 
+#, fuzzy
 msgid ""
-"Open an AskoziaPBX configuration XML file and click the button below to "
-"restore the configuration."
+"Open a PBX configuration XML file and click the button below to restore the "
+"configuration."
 msgstr "開啟一個AskoziaPBX的XML設置文檔並點擊下面的按鈕恢復設置。"
 
 msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX將在恢復設置後重啟。"
-
-msgid "Factory Defaults"
-msgstr "出廠預設設置"
 
 #, fuzzy
 msgid ""
@@ -2030,9 +2936,6 @@ msgstr "是"
 
 msgid "No"
 msgstr "不"
-
-msgid "Firmware"
-msgstr "固件"
 
 msgid ""
 "AskoziaPBX's firmware can be kept up to date here. The system's "
@@ -2108,9 +3011,6 @@ msgstr "在更新固件前您需要重啟系統"
 
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "請切勿在更新過程中退出。"
-
-msgid "Packages"
-msgstr "軟體套件"
 
 msgid ""
 "Packages to expand system functionality can be installed and updated here. "
@@ -2207,9 +3107,6 @@ msgid ""
 "be preserved."
 msgstr "選擇您希望更新的軟體套件，現有的軟體套件資料將被保存。"
 
-msgid "Update"
-msgstr "更新"
-
 msgid ""
 "Select a .pbxpkg file from your computer to update from, existing package "
 "data will be preserved."
@@ -2249,9 +3146,6 @@ msgstr "軟體套件資料和邏輯將被備份取代。"
 msgid "Restore"
 msgstr "恢復"
 
-msgid "Reboot"
-msgstr "重啟"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "系統正在重啟。這可能會需要一分鐘。"
 
@@ -2269,881 +3163,6 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
-
-#, fuzzy
-msgid "Subject"
-msgstr "秘密"
-
-msgid "Body"
-msgstr ""
-
-msgid "The following variables can be used in the e-mail notification"
-msgstr ""
-
-msgid "extension number of voicemail box"
-msgstr ""
-
-msgid "name of voicemail recipient"
-msgstr ""
-
-msgid "duration of the message (i.e. 0:58)"
-msgstr ""
-
-msgid "caller id of person leaving the message"
-msgstr ""
-
-msgid "full date / time (i.e. 2025-11-20 (15:45))"
-msgstr ""
-
-msgid "generate password"
-msgstr ""
-
-#, fuzzy
-msgid "use this password"
-msgstr "這個帳戶的密碼。"
-
-msgid "webGUI language"
-msgstr "網頁設置頁面語言"
-
-msgid "Select in which language you want the webGUI to be displayed."
-msgstr "請選擇您希望本設置界面顯示的語言。"
-
-msgid "Audio Codecs"
-msgstr "音頻編解碼"
-
-msgid "Video Codecs"
-msgstr "視頻編解碼"
-
-msgid "Group Members"
-msgstr "組成員"
-
-msgid "Non-Members"
-msgstr "非成員"
-
-msgid ""
-"All group members will be called at the same time. <strong>The voicemail "
-"account associated with the first member will be used if the call is not "
-"answered."
-msgstr ""
-"所有組成員會同時被呼叫。<strong>如果通話無應答，相關成員中第一個成員的語音信"
-"件帳戶將會被使用。"
-
-msgid "Incoming Extension(s)"
-msgstr "打入的分機"
-
-msgid "add incoming extension mapping"
-msgstr "添加打入分機的映射"
-
-msgid ""
-"Enter a pattern or a phone number and select a destination extension. To "
-"ring multiple phones, simply define them with the same pattern. If a phone "
-"number is entered, it will used as the \"external\" number on unanswered "
-"calls. If nothing is entered, all calls will be directed to the destination "
-"extension.<br>\n"
-" <ul>\n"
-" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
-" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
-" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters</li>\n"
-" </ul>\n"
-msgstr ""
-"輸入一個模式或者一個電話號碼並選擇一個目標分機.要讓多個電話同時響鈴，只需設置"
-"其為同一模式即可。如果輸入一個電話號碼，它會被用作\"外部\"號碼無應答的通話。"
-"如果留空，所有電話會直接連到其目的分機。<br>\n"
-" <ul>\n"
-" \t<li><strong>X</strong> - 匹配了數字 0-9</li>\n"
-" \t<li><strong>Z</strong> - 匹配了數字 1-9</li>\n"
-" \t<li><strong>N</strong> - 匹配了數字 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - 匹配方括號內的任何數字 (這裏, 1,3,4,5)</"
-"li>\n"
-" \t<li><strong>.</strong> - 匹配一個或多個字符</li>\n"
-" \t<li><strong>!</strong> - 匹配零個或多個字符</li>\n"
-" </ul>\n"
-
-msgid "DTMF Mode"
-msgstr "DTMF 模式"
-
-msgid "Registration"
-msgstr "註冊"
-
-msgid "Do not register with this provider."
-msgstr "請勿與此提供商註冊。"
-
-msgid "Qualify"
-msgstr "資格"
-
-msgid ""
-"Packets will be sent to this account every <i>n</i> seconds to check its "
-"status.<br>Defaults to '2'. Set to '0' to disable."
-msgstr ""
-"軟體套件會被送到這個帳戶，每隔<i>n</i>秒以檢查其狀態。<br>預設為'2'。設置"
-"為'0'則禁用。"
-
-msgid "always use NAT mode."
-msgstr "一直使用NAT模式"
-
-msgid "only use NAT mode according to RFC3581 (rport)"
-msgstr "只使用NAT模式根據RFC3581(rport)。"
-
-msgid "never attempt NAT mode or RFC3581 support"
-msgstr "從不嘗試NAT模式或RFC3581的支持"
-
-msgid "assume NAT mode but don't send rport "
-msgstr "承擔NAT模式但不發送rport"
-
-msgid "NAT"
-msgstr "NAT"
-
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
-msgstr ""
-"是否有一個NATing設備在這個帳戶和askoziaPBX之間？大多情況下設置此為'是'會有"
-"效。選項'決不'和'路由'只用在某些特別的有瑕疵的SIP話機上。"
-
-msgid "indefinitely"
-msgstr "無限期"
-
-msgid "Ring Length"
-msgstr "響鈴時長"
-
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
-msgstr "響鈴時間的秒數，之後將被認為無人應答。"
-
-msgid "Line Gain"
-msgstr "線路增益"
-
-msgid "receive"
-msgstr "接收"
-
-msgid "transmit"
-msgstr "傳輸"
-
-msgid ""
-"Some analog connections may need adjustment to achieve an acceptable audio "
-"level. Adjust the receive and transmit gain in decibels to amplify or quiet "
-"the line."
-msgstr ""
-"一些Analog連接可能需要調整，以達到一個可以接收的音頻水平。調節接收和傳輸增益"
-"以放大或減輕線路的分貝。"
-
-msgid "Incoming Caller ID Overrides"
-msgstr "呼入Caller ID覆蓋"
-
-msgid "Source Name &lt;number&gt;"
-msgstr "源名字&lt;號碼&gt;"
-
-msgid "Prepend with string"
-msgstr "加在字符串前"
-
-msgid "Replace with string"
-msgstr "替代字符串"
-
-msgid "Replace calling name with calling number."
-msgstr "把呼叫名字替換為呼叫號碼。"
-
-msgid "Disable overrides"
-msgstr "禁用覆蓋"
-
-msgid "Outgoing Caller ID"
-msgstr "呼出的Caller ID"
-
-msgid "Your Name &lt;number&gt;"
-msgstr "您名字的&lt;號碼&gt;"
-
-msgid "Send string defined above&nbsp;"
-msgstr "傳輸字符串的上述定義&nbsp;"
-
-msgid "Send phones' Caller ID"
-msgstr "發送話機的Caller ID"
-
-msgid "There are currently no providers defined."
-msgstr "目前尚未定義任何提供商。"
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "通過SIP uris對外直接撥號"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "選出的提供商可以讓這個電話連接使用。"
-
-msgid "There are currently no phones defined."
-msgstr "目前沒有被定義的電話。"
-
-msgid "Checked phones will have access to this provider."
-msgstr "選出的電話會擁有連接使用這個提供商的權利。"
-
-msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
-" <ul>\n"
-" \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
-"and passes \"1555\" to the provider)</li>\n"
-" \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555"
-"\" but only passes \"555\" to the provider)</li>\n"
-" \t<li><strong>X</strong> - matches digits 0-9</li>\n"
-" \t<li><strong>Z</strong> - matches digits 1-9</li>\n"
-" \t<li><strong>N</strong> - matches digits 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, "
-"1,3,4,5)</li>\n"
-" \t<li><strong>.</strong> - matches one or more characters (not allowed "
-"before | or +)</li>\n"
-" \t<li><strong>!</strong> - matches zero or more characters (not allowed "
-"before | or +)</li>\n"
-" </ul>\n"
-msgstr ""
-"為每條線路輸入模式，為供應商定義路由。輸入 \"X!\"用於這個提供商的呼出電話。如"
-"要讓這個提供商只用作\"9\"開頭的號碼則輸入\"9|.\"。如果沒有輸入模式，那麽只有"
-"呼入的電話會被接受。<br>\n"
-" <ul>\n"
-" \t<li><strong>+</strong> - 加入一個首碼 (即 \"1+555\" 匹配 \"555\" 並傳遞 "
-"\"1555\" 給提供商)</li>\n"
-" \t<li><strong>|</strong> - 去掉一個首碼 (即 \"1|555\" 匹配 \"1555\" 但只傳"
-"遞 \"555\" 給提供商)</li>\n"
-" \t<li><strong>X</strong> - 匹配數字 0-9</li>\n"
-" \t<li><strong>Z</strong> - 匹配數字 1-9</li>\n"
-" \t<li><strong>N</strong> - 匹配數字 2-9</li>\n"
-" \t<li><strong>[13-5]</strong> - 匹配方括號裏的素有數字 (這裏, 1,3,4,5)</"
-"li>\n"
-" \t<li><strong>.</strong> - 匹配一個或多個字符 (不允許 在 | 或 + 前)</li>\n"
-" \t<li><strong>!</strong> - 匹配零個或多個字符 (不允許 在 | or + 前)</li>\n"
-" </ul>\n"
-
-msgid "Language"
-msgstr "語言"
-
-msgid ""
-"Audio prompts will be played back in the selected language for this account."
-msgstr "音頻提示將以為這個帳戶設置好的語言回放。"
-
-msgid "send missed call notifications"
-msgstr "發送錯過的電話通知"
-
-msgid "don't send to voicemail when busy"
-msgstr "不要發送語音信件如果狀態為忙時。"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"一個電子郵件地址。如果輸入了，語音信件會在這個分機上起效。呼入信息會被傳送到"
-"這個地址。"
-
-msgid "Voicemail Services"
-msgstr "語音信件服務"
-
-msgid "must be configured</a> before this feature will work."
-msgstr "在功能起效前，必須先設置。"
-
-msgid "Public Direct Dial"
-msgstr "公共直接撥打"
-
-msgid "allow extension to be directly dialed over public networks"
-msgstr "允許分機可以直接通過公共網路撥號。"
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr "公開名字。輸入一個字符串並把它映射給這個分機。"
-
-#, php-format
-msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
-msgstr "啟用這個選項會允許這個分機可以被SIP和IAX2 uris呼叫。(extension@%s)"
-
-msgid "Call Limit"
-msgstr "通話限制"
-
-msgid "calls"
-msgstr "通話"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr "只允許 n 個呼出通話和 n 個呼入通話（預設：2）。"
-
-msgid "Busy Limit"
-msgstr "忙限制"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr "電話狀態被設置到'忙'及'n'並行呼叫(預設：1)。"
-
-msgid "Logic"
-msgstr "邏輯"
-
-#, fuzzy
-msgid ""
-"Enter application logic, one command per line as shown: <br> <pre> 1,Answer"
-"()\n"
-" 2,Echo()\n"
-" 3,Hangup()\n"
-" </pre> <p>Programming applications for the PBX requires knowledge of the "
-"Asterisk dialplan. An effort is made to verify this input but the "
-"possibility remains that an install may be rendered useless by faulty "
-"application logic. A reference of applications, functions and phones is "
-"available in the <strong><a href=\"popup_dialplan_element_library.php\" "
-"target=\"_blank\">Element Library</a></strong>.</p>"
-msgstr ""
-"輸入應用的邏輯，一行一個命令如： <br> <pre> 1,Answer()\n"
-" 2,Echo()\n"
-" 3,Hangup()\n"
-" </pre> <p>為AskoziaPBX的應用編程需要Asterisk撥號計劃(dialplan)的知識。您的輸"
-"入將會被很好的驗證，但是不完善的應用邏輯仍然有可能使AskoziaPBX安裝不能使用一"
-"個應用的參考，程序或者通話可以在這裏找到<strong><a href="
-"\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</"
-"a></strong>。</p>"
-
-msgid "Advanced Settings"
-msgstr "高級設置"
-
-msgid "show"
-msgstr "顯示"
-
-msgid "Manual Attributes"
-msgstr "手動屬性"
-
-msgid ""
-"Manual key-value pairs can be entered in addition to the generated "
-"configuration (i.e. <em>configoption=value</em>). These settings will be "
-"appended to this item's Asterisk configuration file or context. Unless you "
-"have a very specific need to do this, nothing should be entered in this "
-"field. Improperly formed values can break system functionality and/or open "
-"security holes."
-msgstr ""
-"可以在生成的設置中手動加入關鍵值對(即<em>configoption=value</em>)。這些設置將"
-"會被附加到這個項目的Asterisk設定文件中。除非您非常特殊的需要這樣做，不然的話"
-"請留空這個區域。不正確的設置值可能打破系統功能並且/或者打開安全漏洞。"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "為Caller ID顯示的文本"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "您在這裏輸入一個描述，供您參考（不解析）。"
-
-msgid "Public Number"
-msgstr "公共號碼"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"這個'外部'號碼會被主叫方讀回，如果遇到語音郵件；預設的會到帳戶的用戶名，前提"
-"是名字是數字。如果不是數字的話，將會被讀回到相應的內部分機上。"
-
-msgid "Authentication Method"
-msgstr "驗證方法"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"大多數帳戶在'auto'下就能工作。如果這樣出錯了，請選擇一個適合您伺服器的驗證方"
-"法。"
-
-msgid "of"
-msgstr "of"
-
-msgid "connected"
-msgstr ""
-
-msgid "connected but lagged"
-msgstr ""
-
-msgid "unreachable"
-msgstr ""
-
-msgid "status unknown"
-msgstr ""
-
-msgid "You are using the most recent version of AskoziaPBX."
-msgstr "您正在使用AskoziaPBX的最新版本。"
-
-msgid "You are using the most recent <strong>beta</strong> of AskoziaPBX."
-msgstr "您正在使用AskoziaPBX最新的<strong>beta</strong>版本。"
-
-msgid "A newer version of AskoziaPBX is available!"
-msgstr "一個AskoziaPBX的新版本已經可用。"
-
-msgid "A newer <strong>beta</strong> version of AskoziaPBX is available!"
-msgstr "一個AskoziaPBX的新<strong>beta</strong>版本已經可用了！"
-
-msgid "The following input errors were detected:"
-msgstr "發現以下輸入錯誤："
-
-msgid "print"
-msgstr "打印"
-
-msgid "Summary"
-msgstr "摘要"
-
-msgid "Manager"
-msgstr "管理"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "ARP表"
-
-msgid "Live Stats"
-msgstr "實時統計"
-
-msgid "Help"
-msgstr ""
-
-msgid "add a new item"
-msgstr "添加一個新項目"
-
-msgid "item is disabled, click to enable"
-msgstr "項目是禁用的，點擊啟用"
-
-msgid "item is enabled, click to disable"
-msgstr "項目是啟用的，點擊禁用"
-
-msgid "edit an item"
-msgstr "編輯一個項目"
-
-msgid "permanently delete an item"
-msgstr "永久刪除一個項目"
-
-msgid "check for package updates"
-msgstr "檢查軟體套件更新"
-
-msgid "restore a backup archive"
-msgstr "恢復一個備份的文檔"
-
-msgid "download a backup archive"
-msgstr "下載備份文檔"
-
-msgid "webGUI Configuration"
-msgstr "網頁設置界面"
-
-#, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
-msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
-
-msgid "view license"
-msgstr "查看證書"
-
-msgid "LAN net"
-msgstr "區域網絡"
-
-msgid "autoselect"
-msgstr "自動選擇"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "公網IP地址"
-
-msgid "NAT + static public IP"
-msgstr "NAT + 靜態公網IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + 動態公網IP"
-
-msgid "Kewl Start"
-msgstr "Kewl 開始"
-
-msgid "Ground Start"
-msgstr "基礎(Ground)開始"
-
-msgid "Loop Start"
-msgstr "循環(Loop)開始"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr "把音頻和音頻在收到後立即傳回到呼叫方。用來測試連接延遲。"
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr "產生一個穩定的1000hz的聲音。用來測試連接質量。"
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr "呼叫喚醒管理。呼叫設置或取消這個分機的電話喚醒服務。"
-
-msgid "English (US)"
-msgstr "英語（美國）"
-
-msgid "English (UK)"
-msgstr "英語（英國）"
-
-msgid "Danish"
-msgstr "丹麥語"
-
-msgid "Dutch"
-msgstr "荷蘭語"
-
-msgid "French (France)"
-msgstr "法語（法國）"
-
-msgid "French (Canada)"
-msgstr "法語（加拿大）"
-
-msgid "German"
-msgstr "德語"
-
-msgid "Italian"
-msgstr "意大利語"
-
-msgid "Japanese"
-msgstr "日語"
-
-#, fuzzy
-msgid "Portuguese (Brazil)"
-msgstr "葡萄牙語，巴西"
-
-msgid "Russian"
-msgstr "俄羅斯語"
-
-msgid "Spanish"
-msgstr "西班牙語"
-
-msgid "Swedish"
-msgstr "瑞典語"
-
-msgid "English"
-msgstr "英語"
-
-msgid "English (formal)"
-msgstr "英語（正式）"
-
-#, fuzzy
-msgid "Bulgarian"
-msgstr "保加利亞"
-
-#, fuzzy
-msgid "Bulgarian (formal)"
-msgstr "意大利語（正式）"
-
-msgid "Czech"
-msgstr ""
-
-#, fuzzy
-msgid "Czech (formal)"
-msgstr "法語（正式）"
-
-msgid "Danish (formal)"
-msgstr "丹麥語（正式）"
-
-msgid "Dutch (formal)"
-msgstr "荷蘭語（正式）"
-
-msgid "Finnish"
-msgstr "芬蘭語"
-
-msgid "Finnish (formal)"
-msgstr "芬蘭語（正式）"
-
-msgid "French"
-msgstr "法語"
-
-msgid "French (formal)"
-msgstr "法語（正式）"
-
-msgid "German (formal)"
-msgstr "德語（正式）"
-
-#, fuzzy
-msgid "Greek"
-msgstr "希臘"
-
-#, fuzzy
-msgid "Greek (formal)"
-msgstr "法語（正式）"
-
-msgid "Italian (formal)"
-msgstr "意大利語（正式）"
-
-msgid "Polish"
-msgstr "波蘭語"
-
-msgid "Polish (formal)"
-msgstr "波蘭語（正式）"
-
-msgid "Portuguese, Brazil"
-msgstr "葡萄牙語，巴西"
-
-msgid "Portuguese, Brazil (formal)"
-msgstr "葡萄牙語，巴西（正式）"
-
-msgid "Russian (formal)"
-msgstr "俄語（正式）"
-
-msgid "Spanish (formal)"
-msgstr "西班牙語（正式）"
-
-msgid "Turkish"
-msgstr ""
-
-#, fuzzy
-msgid "Turkish (formal)"
-msgstr "丹麥語（正式）"
-
-msgid "point-to-multipoint, terminal equipment"
-msgstr "點對多，終端設備"
-
-msgid "multipoint-to-point, network termination"
-msgstr "多對點，網路終端"
-
-msgid "point-to-point, terminal equipment"
-msgstr "點對點，終端設備"
-
-msgid "point-to-point, network termination"
-msgstr "點對點，網路終端"
-
-msgid "United States / North America"
-msgstr "美國/北美"
-
-msgid "Australia"
-msgstr "澳大利亞"
-
-msgid "Austria"
-msgstr "奧地利"
-
-msgid "Belgium"
-msgstr "比利時"
-
-msgid "Chile"
-msgstr "智利"
-
-msgid "China"
-msgstr "中國"
-
-msgid "Finland"
-msgstr "芬蘭"
-
-msgid "France"
-msgstr "法國"
-
-msgid "Greece"
-msgstr "希臘"
-
-msgid "Italy"
-msgstr "意大利"
-
-msgid "Japan"
-msgstr "日本"
-
-msgid "Malaysia"
-msgstr "馬來西亞"
-
-msgid "Netherlands"
-msgstr "荷蘭"
-
-msgid "New Zealand"
-msgstr "新西蘭"
-
-msgid "Norway"
-msgstr "挪威"
-
-msgid "Russia"
-msgstr "俄羅斯"
-
-msgid "Spain"
-msgstr "西班牙"
-
-msgid "Sweden"
-msgstr "瑞典"
-
-msgid "Taiwan"
-msgstr "臺灣"
-
-msgid "United Kingdom"
-msgstr "英聯邦"
-
-msgid "United States Circa 1950/ North America"
-msgstr "美國1950/北美"
-
-msgid "Brazil"
-msgstr "巴西"
-
-msgid "Bulgaria"
-msgstr "保加利亞"
-
-msgid "Czech Republic"
-msgstr "捷克共和國"
-
-msgid "Denmark"
-msgstr "丹麥"
-
-msgid "Estonia"
-msgstr "愛沙尼亞"
-
-msgid "Germany"
-msgstr "德國"
-
-msgid "Hungary"
-msgstr "匈牙利"
-
-msgid "India"
-msgstr "印度"
-
-msgid "Israel"
-msgstr "以色列"
-
-msgid "Lithuania"
-msgstr "立陶宛"
-
-msgid "Mexico"
-msgstr "墨西哥"
-
-msgid "Philippines"
-msgstr "菲律賓"
-
-msgid "Poland"
-msgstr "波蘭"
-
-msgid "Portugal"
-msgstr "葡萄牙"
-
-msgid "Russia / ex Soviet Union"
-msgstr "俄羅斯 / 前蘇聯"
-
-msgid "Singapore"
-msgstr "新加坡"
-
-msgid "South Africa"
-msgstr "南非"
-
-msgid "Switzerland"
-msgstr "瑞士"
-
-msgid "Thailand"
-msgstr "泰國"
-
-msgid "Venezuela / South America"
-msgstr "委內瑞拉 / 南美"
-
-msgid ""
-"The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
-"a> your pbx for the changes to take effect."
-msgstr ""
-"改動被保存。您必須 <a href=\"/system_reboot.php\">重啟</a> 您的PBX使其生效。"
-
-msgid "The changes have been applied successfully."
-msgstr "改動應用成功。"
-
-#, php-format
-msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr "錯誤：無法應用改動（錯誤代碼 %s）。"
-
-msgid "reset filter and reload firewall logs page"
-msgstr "重置過濾器並重載防火墻日誌頁"
-
-msgid "Firewall"
-msgstr "防火墻"
-
-msgid "reload page"
-msgstr "重載頁面"
-
-#, fuzzy
-msgid "Outgoing Calls Only"
-msgstr "呼出的Caller ID"
-
-#, fuzzy
-msgid "SIP Phones"
-msgstr "電話"
-
-#, fuzzy
-msgid "IAX Phones"
-msgstr "電話"
-
-#, fuzzy
-msgid "ISDN Phones"
-msgstr "電話"
-
-#, fuzzy
-msgid "Analog Phones"
-msgstr "內部電話"
-
-#, fuzzy
-msgid "active"
-msgstr "互動"
-
-#, fuzzy
-msgid "inactive"
-msgstr "互動"
-
-msgid "up"
-msgstr ""
-
-msgid "down"
-msgstr ""
-
-#, fuzzy
-msgid "associated"
-msgstr "相關監測站"
-
-msgid "HIDE"
-msgstr ""
-
-#, fuzzy
-msgid "unconfigured"
-msgstr "設置"
-
-msgid "Package activated successfully."
-msgstr "軟體套件成功啟用。"
-
-msgid "Package deactivated successfully."
-msgstr "軟體套件成功停用。"
-
-msgid "Package deleted successfully."
-msgstr "軟體套件成功刪除。"
-
-msgid "Package restored successfully."
-msgstr "軟體套件成功還原。"
-
-msgid "Package installed successfully."
-msgstr "軟體套件成功安裝。"
-
-#, php-format
-msgid "%.2f GB"
-msgstr "%.2f GB"
-
-#, php-format
-msgid "%.2f MB"
-msgstr "%.2f MB"
-
-#, php-format
-msgid "%.0f KB"
-msgstr "%.0f KB"
-
-#, php-format
-msgid "%d bytes"
-msgstr "%d bytes"
-
-#, php-format
-msgid "The field '%s' contains invalid characters."
-msgstr "'%s' 段含有無效字符。"
-
-#, php-format
-msgid "The field '%s' is required."
-msgstr "'%s' 區域需要填入。 "
 
 #~ msgid "descr"
 #~ msgstr "描述"
@@ -3185,13 +3204,13 @@ msgstr "'%s' 區域需要填入。 "
 
 #~ msgid ""
 #~ "If an ISDN interface is present but was not detected, please send <a href="
-#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg"
-#~ "\">this output</a> to <a href=\"mailto:michael@askozia.com"
-#~ "\">michael@askozia.com</a>."
+#~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">this "
+#~ "output</a> to <a href=\"mailto:michael@askozia.com\">michael@askozia.com</"
+#~ "a>."
 #~ msgstr ""
 #~ "如果一個ISDN介面已經連接但沒有被發現，請發送這個 <a href=\"ajax.cgi?"
-#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">輸出 </a> 給 "
-#~ "<a href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
+#~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">輸出 </a> 給 <a "
+#~ "href=\"mailto:michael@askozia.com\">michael@askozia.com</a>."
 
 #~ msgid ""
 #~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"

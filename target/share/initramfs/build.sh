@@ -39,9 +39,9 @@ find $build_root -printf "%P\n" | sed '
 /\.o$/					d;
 /\.old$/				d;
 /\.svn/					d;
+/\.po/					d;
 
 /\/games/				d;
-/\/local/				d;
 /^boot/					d;
 
 /\/man\//				d;
@@ -64,6 +64,9 @@ find $build_root -printf "%P\n" | sed '
 
 /^opt/					d;
 
+# /usr/bin
+/usr\/bin\/locale/		d;
+
 # /usr/lib
 /usr\/lib\/build/		d;
 /usr\/lib\/gettext/		d;
@@ -80,6 +83,7 @@ find $build_root -printf "%P\n" | sed '
 /usr\/share\/gettext/	d;
 /usr\/share\/info/		d;
 /usr\/share\/libtool/	d;
+/usr\/share\/locale/	d;
 /usr\/share\/misc/		d;
 
 # terminfo
