@@ -29,7 +29,6 @@ sectors_per_cylinder="1008"
 block_pad="1024"
 
 echo "Preparing firmware image from build result ..."
-
 rm -rf $imagelocation{,.img}
 mkdir -p $imagelocation ; cd $imagelocation
 mkdir root_stage
@@ -37,7 +36,9 @@ mkdir root_stage/boot
 mkdir root_stage/boot/grub
 mkdir root_stage/conf
 cp ../initramfs/conf.default/config.generic-pc.xml root_stage/conf/config.xml
-mkdir asterisk_stage
+mkdir offload_stage
+mkdir offload_stage/asterisk
+mkdir offload_stage/kernel-modules
 mkdir loop
 
 echo "Copy system into staging directories ..."
@@ -45,11 +46,9 @@ cp ../../usr/lib/grub/i386-t2/stage{1,2} root_stage/boot/grub/
 cp ../../../../target/share/firmware/menu.lst root_stage/boot/grub/
 cp ../../boot/vmlinuz root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
-cp -Rp ../../asterisk/* asterisk_stage/
-ln -s /var/asterisk/run/astdb asterisk_stage/astdb
-
-echo "Setting permissions ..."
-#chmod 644 root_stage/conf.default/config.*.xml
+cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
+cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
+ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
 
 echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
@@ -59,13 +58,13 @@ root_size=`du -B512 -s root_stage | cut -f 1`
 root_size=`expr $root_size + $block_pad`
 echo "   = $root_size sectors"
 
-echo "Asterisk partition size calculation ..."
-asterisk_size=`du -B512 -s asterisk_stage | cut -f 1`
-asterisk_size=`expr $asterisk_size + $block_pad`
-echo "   = $asterisk_size sectors"
+echo "Offload partition size calculation ..."
+offload_size=`du -B512 -s offload_stage | cut -f 1`
+offload_size=`expr $offload_size + $block_pad`
+echo "   = $offload_size sectors"
 
 echo "Total image size calculation ..."
-total_sector_count=`expr $root_size + $asterisk_size + 1`
+total_sector_count=`expr $root_size + $offload_size + 1`
 echo "   = $total_sector_count sectors"
 
 echo "Writing a binary container for the disk image ..."
@@ -74,12 +73,12 @@ dd if=/dev/zero of=firmware.img bs=512 count=$total_sector_count
 
 cyls_needed=`expr $total_sector_count / $sectors_per_cylinder + 1`
 echo "Cylinders needed = $total_sector_count sectors / $sectors_per_cylinder sectors-per-cyl + 1 = $cyls_needed"
-asterisk_start_sector=`expr $root_size + 1`
+offload_start_sector=`expr $root_size + 1`
 
 echo "Partition the disk image ..."
 sfdisk -C$cyls_needed -S63 -H16 -uS -f -L --no-reread firmware.img << EOF
 1,$root_size,83,*
-$asterisk_start_sector,$asterisk_size,83
+$offload_start_sector,$offload_size,83
 ;
 ;
 EOF
@@ -92,15 +91,15 @@ mount -o loop part1.img loop
 cp -Rp root_stage/* loop/
 umount loop
 
-dd if=/dev/zero of=part2.img bs=512 count=$asterisk_size
+dd if=/dev/zero of=part2.img bs=512 count=$offload_size
 mke2fs -m0 -F part2.img
 tune2fs -c0 part2.img
 mount -o loop part2.img loop
-cp -Rp asterisk_stage/* loop/
+cp -Rp offload_stage/* loop/
 umount loop
 
 dd if=part1.img of=firmware.img bs=512 seek=1
-dd if=part2.img of=firmware.img bs=512 seek=$asterisk_start_sector
+dd if=part2.img of=firmware.img bs=512 seek=$offload_start_sector
 
 
 echo "Install grub onto the image ..."
