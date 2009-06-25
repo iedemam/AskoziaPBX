@@ -847,10 +847,10 @@ function pbx_asterisk_conf_generate() {
 	$asteriskconf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
-astmoddir => /asterisk/modules
-astvarlibdir => /asterisk
-astdatadir => /asterisk
-astagidir => /asterisk/agi-bin
+astmoddir => /offload/asterisk/modules
+astvarlibdir => /offload/asterisk
+astdatadir => /offload/asterisk
+astagidir => /offload/asterisk/agi-bin
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log

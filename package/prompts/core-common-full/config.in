@@ -21,8 +21,8 @@ prompts_extract() {
 
 prompts_main() {
 
-	mkdir -p $root/asterisk/sounds/$prompt_language
-	cp -pR * $root/asterisk/sounds/$prompt_language
+	mkdir -p $root/offload/asterisk/sounds/$prompt_language
+	cp -pR * $root/offload/asterisk/sounds/$prompt_language
 	echo "$prompt_language prompts copied into build"
 
 }

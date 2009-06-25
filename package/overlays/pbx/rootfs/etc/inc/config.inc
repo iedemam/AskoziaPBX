@@ -142,7 +142,7 @@ EOD;
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 		
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
-		$fstab .= "/dev/{$cfgdevice}2 /asterisk ext2 ro 0 0\n";
+		$fstab .= "/dev/{$cfgdevice}2 /offload ext2 ro 0 0\n";
 		
 		fwrite($fd, $fstab);
 		fclose($fd);
