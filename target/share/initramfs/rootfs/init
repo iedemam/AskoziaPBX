@@ -32,7 +32,7 @@ udevadm settle
 #[ -e /dev/tty ] || mknod /dev/tty c 5 0
 
 # make some directories
-mkdir /asterisk /cf /var/etc /var/db
+mkdir /offload /cf /var/etc /var/db
 
 # setup symbolic links
 ln -s /cf/conf /conf

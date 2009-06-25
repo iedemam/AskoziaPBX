@@ -30,77 +30,53 @@ find $build_root -printf "%P\n" | sed '
 
 # stuff we never need
 
-/^TOOLCHAIN/			d;
-/^var\/adm/				d;
+/^TOOLCHAIN/				d;
+/^offload/					d;
 
-/\/include/				d;
-/\/src/					d;
-/\.a$/					d;
-/\.o$/					d;
-/\.old$/				d;
-/\.svn/					d;
-/\.po/					d;
+/\.a$/						d;
+/\.o$/						d;
+/\.old$/					d;
+/\.svn/						d;
+/\.po/						d;
 
-/\/games/				d;
-/^boot/					d;
-
-/\/man\//				d;
-/^\/man\//				d;
-/\/doc/					d;
-
-# /etc noise
-/^etc\/conf/			d;
-/^etc\/cron.d/			d;
-/^etc\/cron.daily/		d;
-/^etc\/hotplug/			d;
-/^etc\/hotplug.d/		d;
-/^etc\/init.d/			d;
-/^etc\/opt/				d;
-/^etc\/postinstall.d/	d;
-/^etc\/profile.d/		d;
-/^etc\/rc.d/			d;
-/^etc\/skel/			d;
-/^etc\/stone.d/			d;
-
-/^opt/					d;
-
-# /usr/bin
-/usr\/bin\/locale/		d;
-
-# /usr/lib
-/usr\/lib\/build/		d;
-/usr\/lib\/gettext/		d;
-/usr\/lib\/grub/		d;
-/usr\/lib\/perl5/		d;
-/usr\/lib\/pkgconfig/	d;
-
-# /usr/share
-/usr\/share\/aclocal/	d;
-/usr\/share\/autoconf/	d;
-/usr\/share\/automake/	d;
-/usr\/share\/bison/		d;
-/usr\/share\/dict/		d;
-/usr\/share\/gettext/	d;
-/usr\/share\/info/		d;
-/usr\/share\/libtool/	d;
-/usr\/share\/locale/	d;
-/usr\/share\/misc/		d;
-
-# terminfo
-/terminfo\/a\/ansi$/	{ p; d; }
-/terminfo\/l\/linux$/	{ p; d; }
-/terminfo\/x\/xterm$/	{ p; d; }
-/terminfo\/n\/nxterm$/	{ p; d; }
-/terminfo\/x\/xterm-color$/	{ p; d; }
-/terminfo\/x\/xterm-8bit$/	{ p; d; }
-/terminfo\/x\/screen$/	{ p; d; }
-/terminfo\/v\/vt100$/	{ p; d; }
-/terminfo\/v\/vt200$/	{ p; d; }
-/terminfo\/v\/vt220$/	{ p; d; }
-/terminfo/	d;
-
-# stuff too big for a ramfs
-/^asterisk/	d;
+ /^boot/					d;
+/\/doc/						d;
+  /etc\/conf/				d;
+  /etc\/cron.d/				d;
+  /etc\/cron.daily/			d;
+  /etc\/hotplug/			d;
+  /etc\/hotplug.d/			d;
+  /etc\/init.d/				d;
+  /etc\/opt/				d;
+  /etc\/postinstall.d/		d;
+  /etc\/profile.d/			d;
+  /etc\/rc.d/				d;
+  /etc\/skel/				d;
+  /etc\/stone.d/			d;
+/\/games/					d;
+/\/include/					d;
+  /lib\/modules/			d;
+/\/opt/						d;
+/\/src/						d;
+/\/terminfo/				d;
+  /usr\/bin\/locale/		d;
+  /usr\/lib\/build/			d;
+  /usr\/lib\/gettext/		d;
+  /usr\/lib\/grub/			d;
+  /usr\/lib\/perl5/			d;
+  /usr\/lib\/pkgconfig/		d;
+  /usr\/man/				d;
+  /usr\/share\/aclocal/		d;
+  /usr\/share\/autoconf/	d;
+  /usr\/share\/automake/	d;
+  /usr\/share\/bison/		d;
+  /usr\/share\/dict/		d;
+  /usr\/share\/gettext/		d;
+  /usr\/share\/info/		d;
+  /usr\/share\/libtool/		d;
+  /usr\/share\/locale/		d;
+  /usr\/share\/misc/		d;
+  /var\/adm/				d;
 
 ' > tar.input
 
@@ -110,6 +86,9 @@ rm tar.input
 echo "Preparing initramfs image from target defined files ..."
 copy_from_source $base/target/$target/rootfs .
 copy_from_source $base/target/share/initramfs/rootfs .
+
+echo "Setup some symlinks ..."
+ln -s /offload/kernel-modules lib/modules
 
 echo "Stamping build ..."
 echo linux-pre-alpha > etc/version
@@ -121,14 +100,17 @@ echo "Creating links for identical files ..."
 link_identical_files
 
 echo "Setting permissions ..."
-chmod 755 etc/rc*
-chmod 644 etc/pubkey.pem
-chmod 644 etc/inc/*
+chmod 755 bin/*
+chmod 755 sbin/*
 chmod 755 usr/bin/*
+chmod 755 usr/sbin/*
 chmod 644 usr/www/*
 chmod 755 usr/www/*.php
 chmod 755 usr/www/*.cgi
 chmod 755 usr/share/udhcpc/default.script
+chmod 755 etc/rc*
+chmod 644 etc/pubkey.pem
+chmod 644 etc/inc/*
 
 echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
