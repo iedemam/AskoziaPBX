@@ -50,8 +50,7 @@ X termcap
 X libpri
 X dahdi-linux
 X dahdi-tools
-X misdn
-X misdnuser
+#X misdnuser
 X asterisk
 
 # prompt sets
