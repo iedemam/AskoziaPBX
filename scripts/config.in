@@ -106,20 +106,18 @@ block_end
 comment ' '
 comment_id '- Architecture, CPU and Optimization' COMMENT_ARCHCPUOPT
 block_begin 7
-	choice SDECFG_ARCH "$SDECFG_ARCH" $CFGTEMP_ARCHLIST
+	choice SDECFG_ARCH x86 $CFGTEMP_ARCHLIST
 	SDECFG_ID="$SDECFG_ID-$SDECFG_ARCH"
 
 	if [ -f architecture/$SDECFG_ARCH/config.in ]
 	then . architecture/$SDECFG_ARCH/config.in ; fi
-	bool 'This is a cross-build between architectures' SDECFG_CROSSBUILD 0
-	if [ "$SDECFG_CROSSBUILD" = 1 ]; then
-		# enable all packages flagged CROSS for stage 1,
-		# and wipe all other stage marks
-		pkgfilter sed '/ CROSS /s/^\(. .\)./\11/ ;
-		               s,^\(. ..\)[^ ]*,\1--------, ;
-		               s,^X ----------,O ----------,'
-		SDECFG_ID="$SDECFG_ID-cross" ; SDECFGSET_USE_CROSSCC=1
-	fi
+	SDECFG_CROSSBUILD=1
+	# enable all packages flagged CROSS for stage 1,
+	# and wipe all other stage marks
+	pkgfilter sed '/ CROSS /s/^\(. .\)./\11/ ;
+	               s,^\(. ..\)[^ ]*,\1--------, ;
+	               s,^X ----------,O ----------,'
+	SDECFGSET_USE_CROSSCC=1
 block_end
 
 block_begin 7
@@ -402,6 +400,6 @@ pkgfilter sed '/^[XO] --* / d;'
 [ "$SDECFG_IDCKSUM" = 1 ] &&
 	SDECFG_ID="`echo $SDECFG_ID | cksum | cut -f1 -d' '`"  
 
-const SDECFG_SHORTID "$SDECFG_ID"
-SDECFG_ID="$config-$SDECFG_ID"
+const SDECFG_SHORTID "$SDECFG_ID-$SDECFG_LIBC"
+SDECFG_ID="$config-$SDECFG_ID-$SDECFG_LIBC"
 

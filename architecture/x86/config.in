@@ -51,4 +51,4 @@ if [ $SDECFG_X86_OPT != generic ] ; then
 	SDECFG_ID="$SDECFG_ID-$SDECFG_X86_OPT"
 fi
 
-. architecture/x86-generic/boot-config.in
+. architecture/x86/boot-config.in

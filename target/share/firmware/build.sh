@@ -112,4 +112,4 @@ quit
 " | grub --device-map=/dev/null --batch --no-pager --no-floppy --no-curses
 
 gzip -9 firmware.img
-mv firmware.img.gz ../firmware.img
+mv firmware.img.gz ../$SDECFG_ID.img

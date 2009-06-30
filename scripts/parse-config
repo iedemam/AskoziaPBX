@@ -19,7 +19,7 @@
 # configuration file config/$config/config
 #
 # [BEGIN] of version section
-sdever=8.0-trunk
+sdever=askozia
 # [END] of version section
 
 crossnative=native           ; stagelevel=${stagelevel:-1} ; arch=any
