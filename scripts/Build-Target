@@ -27,7 +27,7 @@
 #   stages (stage 2..9).
 #
 
-config=default
+config=trunk
 build_only_this_job=
 daemon_mode=0
 autodownload=1

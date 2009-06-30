@@ -3142,7 +3142,7 @@ msgid "Click &quot;Enable firmware upload&quot; below."
 msgstr "Кликнете върху &quot;Разреши качване на програма&quot; по-долу."
 
 #, php-format
-msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
+msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Изберете нов файл с образ на програма (pbx-%s-*.img) за инсталиране."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."

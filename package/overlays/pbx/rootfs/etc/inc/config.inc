@@ -37,11 +37,9 @@ require_once("xmlparse.inc");
 
 /* read platform */
 if (file_exists("{$g['etc_path']}/platform")) {
-	$g['fullplatform'] = chop(file_get_contents("{$g['etc_path']}/platform"));
-	$pla = explode("_", $g['fullplatform']);
-	$g['platform'] = $pla[0];
+	$g['platform'] = chop(file_get_contents("{$g['etc_path']}/platform"));
 } else {
-	$g['platform'] = $g['fullplatform'] = "unknown";
+	$g['platform'] = "unknown";
 }
 
 if (file_exists("{$g['etc_path']}/brand.product")) {
@@ -529,7 +527,12 @@ function reset_factory_defaults() {
 	closedir($dh);
 	
 	/* copy default configuration */
-	@copy("{$g['conf_default_path']}/config.{$g['fullplatform']}.xml", "{$g['conf_path']}/config.xml");
+	if (strstr($g['platform'], "askozia-pbx-x86-")) {
+		$plname = "generic-pc";
+	} else {
+		$plname = $g['platform'];
+	}
+	@copy("{$g['conf_default_path']}/config.{$plname}.xml", "{$g['conf_path']}/config.xml");
 	
 	conf_mount_ro();
 	

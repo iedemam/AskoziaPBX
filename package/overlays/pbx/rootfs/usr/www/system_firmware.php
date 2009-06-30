@@ -40,7 +40,7 @@ $pghelp = gettext("AskoziaPBX's firmware can be kept up to date here. The system
    returns any HTML message it gets from the server */
 function check_firmware_version() {
 	global $g;
-	$post = "&check=pbxfirmware&platform=" . rawurlencode($g['fullplatform']) . 
+	$post = "&check=pbxfirmware&platform=" . rawurlencode($g['platform']) . 
 		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
 		
 	$rfd = @fsockopen("downloads.askozia.com", 80, $errno, $errstr, 3);
@@ -100,8 +100,8 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			/* XXX : system reboots if no file was uploaded...some checks are failing here */
 			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 				/* verify firmware image(s) */
-				if (!stristr($_FILES['ulfile']['name'], $g['fullplatform']) && !$_POST['sig_override'])
-					$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['fullplatform']);
+				if (!stristr($_FILES['ulfile']['name'], $g['platform']) && !$_POST['sig_override'])
+					$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
 				else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
 					/* probably out of memory for the MFS */
 					$input_errors[] = gettext("Image upload failed (out of memory?)");
@@ -186,7 +186,7 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 
 		}
 
-		?><?=sprintf(gettext("Choose the new firmware image file (pbx-%s-*.img) to be installed."), $g['fullplatform']);?><br>
+		?><?=sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."), $g['platform']);?><br>
 		<?=gettext("Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
 		<form action="system_firmware.php" method="post" enctype="multipart/form-data">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">

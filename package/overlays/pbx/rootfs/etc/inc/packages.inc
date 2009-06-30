@@ -237,7 +237,7 @@ function packages_shutdown_all() {
 
 function packages_check_server_versions() {
 	global $g;
-	$post = "&check=pbxpackage&platform=" . rawurlencode($g['fullplatform']) . 
+	$post = "&check=pbxpackage&platform=" . rawurlencode($g['platform']) . 
 		"&version=" . rawurlencode(trim(file_get_contents("/etc/version"))) .
 		"&packagesystemversion=" . rawurlencode($g['package_system']);
 		

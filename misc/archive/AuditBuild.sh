@@ -15,7 +15,7 @@
 
 MATRIX=http://www.t2-project.org/packages
 
-config=default
+config=trunk
 enabled='X'
 repositories=
 VERBOSE=

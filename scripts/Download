@@ -82,7 +82,7 @@ fi
 
 # Handle options passed on the command line
 #
-mkdir -p src/ download/ ; config=default
+mkdir -p src/ download/ ; config=trunk
 this_is_the_2nd_run=0
 mirror='' ; checkonly=0 ; altdir=''
 tryques=0 ; nocheck=0 ; options='-this_is_the_2nd_run '

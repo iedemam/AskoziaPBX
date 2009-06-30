@@ -527,8 +527,6 @@ function system_console_configure() {
 function system_set_harddisk_standby() {
 	global $g, $config;
 
-	printf("LINUX TODO: empty system_set_harddisk_standby()\n"); return 0;
-
 	if ($g['platform'] != "generic-pc")
 		return;
 

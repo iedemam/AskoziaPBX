@@ -3214,7 +3214,7 @@ msgid "Click &quot;Enable firmware upload&quot; below."
 msgstr "Clicca \"Abilita caricamento firmware\" qui sotto."
 
 #, php-format
-msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
+msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Scegli il file immagine del firmware (pbx-%s-*.img) da installare."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."

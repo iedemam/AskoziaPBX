@@ -15,7 +15,7 @@
 
 cachefiles=
 packages=
-config=default
+config=trunk
 
 if [ "$1" == "-cfg" ]; then
 	config="$2"

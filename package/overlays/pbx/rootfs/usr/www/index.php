@@ -74,7 +74,7 @@ if ($_POST) {
               <tr> 
                 <td width="25%" class="vncellt"><?=gettext("Platform");?></td>
                 <td width="75%" class="listr"> 
-                  <?=htmlspecialchars($g['fullplatform']);?>
+                  <?=htmlspecialchars($g['platform']);?>
                 </td>
               </tr>
               <tr> 

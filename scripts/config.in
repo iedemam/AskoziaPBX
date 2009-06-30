@@ -400,6 +400,6 @@ pkgfilter sed '/^[XO] --* / d;'
 [ "$SDECFG_IDCKSUM" = 1 ] &&
 	SDECFG_ID="`echo $SDECFG_ID | cksum | cut -f1 -d' '`"  
 
-const SDECFG_SHORTID "$SDECFG_ID-$SDECFG_LIBC"
-SDECFG_ID="$config-$SDECFG_ID-$SDECFG_LIBC"
+const SDECFG_SHORTID "$SDECFG_ID"
+SDECFG_ID="$SDECFG_ID-$SDECFG_LIBC-$config"
 

@@ -15,7 +15,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-config=default
+config=trunk
  
 while [ "$1" ] ; do
         case "$1" in

@@ -15,7 +15,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-config=default
+config=trunk
 jobs="" ; x11=0
  
 while [ "$1" ] ; do

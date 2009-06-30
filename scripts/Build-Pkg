@@ -20,7 +20,7 @@ exec 2>&1
 buildstart="`date "+%m/%d/%Y from %T"`"
 
 options=''
-config=default
+config=trunk
 
 clear_src=1
 norebuild=0

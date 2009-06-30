@@ -52,7 +52,7 @@
 
 
 *** This is {$product_name}, version {$version}
-    built on {$buildtime} for {$g['fullplatform']}
+    built on {$buildtime} for {$g['platform']}
     {$copyright_info}
     
     

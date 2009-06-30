@@ -2988,7 +2988,7 @@ msgid "Click &quot;Enable firmware upload&quot; below."
 msgstr "點擊下面的&quot;允許固件更新&quot;。"
 
 #, php-format
-msgid "Choose the new firmware image file (pbx-%s-*.img) to be installed."
+msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "選擇新的固件鏡像文件(pbx-%s-*.img)用來安裝。"
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
