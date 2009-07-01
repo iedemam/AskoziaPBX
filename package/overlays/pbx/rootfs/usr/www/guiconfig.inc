@@ -56,12 +56,13 @@ $d_isdnconfdirty_path = $g['varrun_path'] . "/isdnconf.dirty";
 $d_analogconfdirty_path = $g['varrun_path'] . "/analogconf.dirty";
 $d_rtpconfdirty_path = $g['varrun_path'] . "/rtpconf.dirty";
 $d_packageconfdirty_path = $g['varrun_path'] . "/packageconf.dirty";
-$d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
-$d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
+$d_fwupenabled_path = $g['varrun_path'] . "/firmware.upgrade.enabled";
+$d_fwupunsupported_path = $g['varrun_path'] . "/firmware.upgrade.unsupported";
+$d_fwlock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
 
-if (file_exists($d_firmwarelock_path)) {
+if (file_exists($d_fwlock_path)) {
 	if (!$d_isfwfile) {
 		header("Location: system_firmware.php");
 		exit;
@@ -78,10 +79,6 @@ $medias = array("auto" => gettext("autoselect"),
 		"10full" => gettext("10BASE-T full-duplex"),
 		"10half" => gettext("10BASE-T half-duplex"), 
 		"1000full" => gettext("1000BASE-TX full-duplex"));
-	
-/* platforms that do not support firmware updating */
-$no_firmware_update_platforms = array("generic-pc-cdrom");
-
 
 /*     1 (1 <<  0)      (0x1)  audio       g723   (G.723.1)
       2 (1 <<  1)      (0x2)  audio        gsm   (GSM)

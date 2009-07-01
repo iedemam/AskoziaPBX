@@ -31,6 +31,9 @@
 
 $d_isfwfile = 1;
 
+openlog("GUIDEBUG", LOG_NDELAY, LOG_LOCAL0);
+syslog(LOG_INFO, "Syslog Connection Opened and Working");
+
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));
@@ -74,84 +77,97 @@ function check_firmware_version() {
 	return null;
 }
 
-if ($_POST && !file_exists($d_firmwarelock_path)) {
+if ($_POST && !file_exists($d_fwlock_path)) {
 
 	unset($input_errors);
 	unset($sig_warning);
 	
-	if ($_POST['Enable'])
+	if ($_POST['Enable']) {
 		$mode = "enable";
-	else if ($_POST['Disable'])
+	} else if ($_POST['Disable']) {
+		syslog(LOG_INFO, "Firmware Upgrading Disabled");
 		$mode = "disable";
-	else if ($_POST['Upgrade'] || $_POST['sig_override'])
+	} else if ($_POST['Upgrade'] || $_POST['sig_override']) {
 		$mode = "upgrade";
-	else if ($_POST['sig_no'])
+	} else if ($_POST['sig_no']) {
 		unlink("/ultmp/firmware.img.gz");
+	}
 		
 	if ($mode) {
 		if ($mode == "enable") {
+			syslog(LOG_INFO, "Firmware Enable - pre-exec");
 			exec_rc_script("/etc/rc.firmware enable");
+			syslog(LOG_INFO, "Firmware Enable - post-exec");
 			touch($d_fwupenabled_path);
 		} else if ($mode == "disable") {
+			syslog(LOG_INFO, "Firmware Disable - pre-exec");
 			exec_rc_script("/etc/rc.firmware disable");
-			if (file_exists($d_fwupenabled_path))
+			syslog(LOG_INFO, "Firmware Disable - post-exec");
+			if (file_exists($d_fwupenabled_path)) {
 				unlink($d_fwupenabled_path);
+			}
 		} else if ($mode == "upgrade") {
 			/* XXX : system reboots if no file was uploaded...some checks are failing here */
 			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 				/* verify firmware image(s) */
-				if (!stristr($_FILES['ulfile']['name'], $g['platform']) && !$_POST['sig_override'])
+				syslog(LOG_INFO, "Firmware Upgrade - OK - is_uploaded_file()");
+				if (!stristr($_FILES['ulfile']['name'], $g['platform']) && !$_POST['sig_override']) {
+					syslog(LOG_INFO, "Firmware Upgrade - FAIL - firmware is not for platform");
 					$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
-				else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
+				} else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
 					/* probably out of memory for the MFS */
+					syslog(LOG_INFO, "Firmware Upgrade - FAIL - firmware file does not exists");
 					$input_errors[] = gettext("Image upload failed (out of memory?)");
 					exec_rc_script("/etc/rc.firmware disable");
-					if (file_exists($d_fwupenabled_path))
+					if (file_exists($d_fwupenabled_path)) {
 						unlink($d_fwupenabled_path);
+					}
 				} else {
 					/* move the image so PHP won't delete it */
+					syslog(LOG_INFO, "Firmware Upgrade - OK - moving file");
 					rename($_FILES['ulfile']['tmp_name'], "/ultmp/firmware.img.gz");
-					
+
 					/* check digital signature */
 					$sigchk = verify_digital_signature("/ultmp/firmware.img.gz");
-					
-					if ($sigchk == 1)
+					syslog(LOG_INFO, "Firmware Upgrade - INFO - verify_digital_signature() returned $sigchk");
+
+					if ($sigchk == 1) {
 						$sig_warning = gettext("The digital signature on this image is invalid.");
-					else if ($sigchk == 2)
+						syslog(LOG_INFO, "Firmware Upgrade - FAIL - signature on this image is invalid");
+					} else if ($sigchk == 2) {
 						$sig_warning = gettext("This image is not digitally signed.");
-					else if (($sigchk == 3) || ($sigchk == 4))
+						syslog(LOG_INFO, "Firmware Upgrade - FAIL - image is not digitally signed");
+					} else if (($sigchk == 3) || ($sigchk == 4)) {
 						$sig_warning = gettext("There has been an error verifying the signature on this image.");
-				
+						syslog(LOG_INFO, "Firmware Upgrade - FAIL - error verifying the signature on this image");
+					}
+
 					if (!verify_gzip_file("/ultmp/firmware.img.gz")) {
 						$input_errors[] = gettext("The image file is corrupt.");
+						syslog(LOG_INFO, "Firmware Upgrade - FAIL - image file is corrupt");
 						unlink("/ultmp/firmware.img.gz");
 					}
 				}
 			}
 
-			if (!$input_errors && !file_exists($d_firmwarelock_path) && (!$sig_warning || $_POST['sig_override'])) {			
+			if (!$input_errors && !file_exists($d_fwlock_path) && (!$sig_warning || $_POST['sig_override'])) {			
 				/* stop any disk activity Asterisk may be causing */
+				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing pbx_stop()");
 				pbx_stop();
-				/* if we're using the mounted temporary file upload, it must be moved to a memory disk so
-				 * the storage partition can be unmounted */
-				if (file_exists($d_ultmpmounted_path)) {
-					unlink("/ultmp");
-					mkdir("/ultmp");
-					mwexec("/sbin/mdmfs -s 20m md1 /ultmp");
-					rename("/storage/ultmp/firmware.img.gz", "/ultmp/firmware.img.gz");
-					storage_syspart_unmount();
-				}
 				/* fire up the update script in the background */
-				touch($d_firmwarelock_path);
+				touch($d_fwlock_path);
+				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing /etc/rc.firmware upgrade...");
 				exec_rc_script_async("/etc/rc.firmware upgrade /ultmp/firmware.img.gz");
-				
+				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing /etc/rc.firmware upgrade COMPLETE");
+
 				$savemsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
 			}
 		}
 	}
 } else {
-	if (!isset($config['system']['disablefirmwarecheck']))
+	if (!isset($config['system']['disablefirmwarecheck'])) {
 		$fwstatus = check_firmware_version();
+	}
 }
 
 include("fbegin.inc");
@@ -159,7 +175,7 @@ if ($input_errors) display_input_errors($input_errors);
 if ($savemsg) display_info_box($savemsg, "keep");
 if ($fwstatus) echo display_firmware_update_info($fwstatus);
 
-if (in_array($g['platform'], $no_firmware_update_platforms)) {
+if (file_exists($d_fwupunsupported_path)) {
 
 	?><p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p><?
 
@@ -176,7 +192,7 @@ if (in_array($g['platform'], $no_firmware_update_platforms)) {
 
 } else {
 
-	if (!file_exists($d_firmwarelock_path)) {
+	if (!file_exists($d_fwlock_path)) {
 
 		?><p><?
 
