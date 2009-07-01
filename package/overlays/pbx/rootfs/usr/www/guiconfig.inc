@@ -149,7 +149,7 @@ $applications = array(
 );
 
 $prompt_languages = array(
-	"en" => gettext("English (US)"),
+	"en-us" => gettext("English (US)"),
 	"en-gb" => gettext("English (UK)"),
 	"da" => gettext("Danish"),
 	"nl" => gettext("Dutch"),

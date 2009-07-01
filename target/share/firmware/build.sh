@@ -49,6 +49,8 @@ cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
+ln -s /offload/asterisk/sounds/en offload_stage/asterisk/sounds/en-us
+
 
 echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete

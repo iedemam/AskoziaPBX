@@ -121,7 +121,7 @@ function pbx_configure() {
 }
 
 function pbx_start() {
-	return mwexec("/usr/sbin/asterisk");
+	return mwexec("/usr/sbin/asterisk -p");
 }
 
 /* XXX : room for improvement here by factoring in call volume and
@@ -130,7 +130,7 @@ function pbx_start() {
 function pbx_stop() {
 	global $g;
 
-	killbypid("{$g['varrun_path']}/asterisk.pid");
+	killbyname("asterisk");
 }
 
 /**
@@ -139,15 +139,15 @@ function pbx_stop() {
  */
 function pbx_configure_timing() {
 
-	/* zaptel modules are all loaded at boot, 
-	if nothing was detected we fall back to ztdummy for timing */
-	//if(!count(analog_get_recognized_ab_unit_numbers())) {
-	//	mwexec("/sbin/kldunload wcfxo");
-	//	mwexec("/sbin/kldunload wcfxs");
-	//	//mwexec("/sbin/kldunload wct1xxp");
-	//	//mwexec("/sbin/kldunload wct4xxp");
-	//	mwexec("/sbin/kldload ztdummy");
-	//}
+	/* dahdi modules are all loaded at boot, 
+	if nothing was detected we fall back to dahdi_dummy for timing */
+	if(!count(analog_get_recognized_ab_unit_numbers())) {
+		//mwexec("/sbin/modprobe -r wcfxo");
+		//mwexec("/sbin/modprobe -r wcfxs");
+		//mwexec("/sbin/modprobe -r wct1xxp");
+		//mwexec("/sbin/modprobe -r wct4xxp");
+		mwexec("/sbin/modprobe dahdi_dummy");
+	}
 	return 0;
 }
 

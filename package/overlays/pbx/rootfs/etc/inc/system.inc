@@ -699,13 +699,9 @@ function system_get_dmesg_as_array() {
  */
 function system_load_kernel_modules() {
 
-	printf("LINUX TODO: empty system_load_kernel_modules()\n"); return 0;
-
-	mwexec("/sbin/kldload zaptel");
-	mwexec("/sbin/kldload wcfxo");
-	mwexec("/sbin/kldload wcfxs");
-	mwexec("/sbin/kldload i4b");
-	mwexec("/sbin/kldload ugen");
+	mwexec("/sbin/modprobe dahdi");
+	//mwexec("/sbin/modprobe wcfxo");
+	//mwexec("/sbin/modprobe wcfxs");
 }
 
 function system_setup_ultmp() {

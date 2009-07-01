@@ -86,7 +86,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$room = array();
 		$room['number'] = $_POST['number'];
-		$room['pin'] = $_POST['pin'];
+		$room['pin'] = verify_non_default($_POST['pin']);
 		//$room['adminpin'] = $_POST['adminpin'];
 		$room['name'] = $_POST['name'];
 		$room['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
