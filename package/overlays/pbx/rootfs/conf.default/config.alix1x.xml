@@ -10,7 +10,6 @@
 		<dnsserver>192.168.1.1</dnsserver>
 		<username>admin</username>
 		<password>$1$uRCWrAae$JD3lKuONsFj/675FnBrjU/</password>
-		<timezone>Etc/UTC</timezone>
 		<time-update-interval>300</time-update-interval>
 		<timeservers>pool.ntp.org</timeservers>
 		<webgui>

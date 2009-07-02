@@ -38,31 +38,25 @@ $pconfig['language'] = $config['system']['webgui']['language'];
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];
 $pconfig['username'] = $config['system']['username'];
-if (!$pconfig['username'])
+if (!$pconfig['username']) {
 	$pconfig['username'] = "admin";
+}
 $pconfig['webguiproto'] = $config['system']['webgui']['protocol'];
-if (!$pconfig['webguiproto'])
+if (!$pconfig['webguiproto']) {
 	$pconfig['webguiproto'] = "http";
+}
 $pconfig['webguiport'] = $config['system']['webgui']['port'];
 $pconfig['tonezone'] = $config['system']['tonezone'];
 $pconfig['timezone'] = $config['system']['timezone'];
 $pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
 $pconfig['timeservers'] = $config['system']['timeservers'];
 
-if (!isset($pconfig['timeupdateinterval']))
+if (!isset($pconfig['timeupdateinterval'])) {
 	$pconfig['timeupdateinterval'] = 300;
-if (!$pconfig['timezone'])
-	$pconfig['timezone'] = "Etc/UTC";
-if (!$pconfig['timeservers'])
-	$pconfig['timeservers'] = "pool.ntp.org";
-	
-function is_timezone($elt) {
-	return !preg_match("/\/$/", $elt);
 }
-
-exec('/usr/bin/tar -tzf /usr/share/zoneinfo.tgz', $timezonelist);
-$timezonelist = array_filter($timezonelist, 'is_timezone');
-sort($timezonelist);
+if (!$pconfig['timeservers']) {
+	$pconfig['timeservers'] = "pool.ntp.org";
+}
 
 if ($_POST) {
 
@@ -111,7 +105,12 @@ if ($_POST) {
 		$oldwebguiport = $config['system']['webgui']['port'];
 		$config['system']['webgui']['port'] = $pconfig['webguiport'];
 		$config['system']['tonezone'] = $_POST['tonezone'];
-		$config['system']['timezone'] = $_POST['timezone'];
+		if ($_POST['timezone'] != "0000") {
+			$config['system']['timezone']
+				= $_POST['timezone'] . "|" . $tz["{$_POST['timezone']}"][1];
+		} else {
+			$config['system']['timezone'] = false;
+		}
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
 		$config['system']['webgui']['language'] = $_POST['lang'];
@@ -146,83 +145,114 @@ if ($_POST) {
 include("fbegin.inc");
 
 if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg); 
+if ($savemsg) display_info_box($savemsg); ?>
 
-	?><form action="system.php" method="post">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-                  <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"> 
-                    <br> <span class="vexpl"><?=gettext("name of the pbx host, without domain part");?><br>
-                    <?=gettext("e.g. <em>pbx");?></em></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
-                  <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"> 
-                    <br> <span class="vexpl"><?=gettext("e.g. <em>mycorp.com");?></em> </span></td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncell"><?=gettext("Username");?></td>
-                  <td class="vtable"> <input name="username" type="text" class="formfld" id="username" size="20" value="<?=$pconfig['username'];?>">
-                    <br>
-                     <span class="vexpl"><?=gettext("If you want to change the username for accessing the webGUI, enter it here.");?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Password");?></td>
-                  <td width="78%" class="vtable"> <input name="password" type="password" class="formfld" id="password" size="20"> 
-                    <br> <input name="password2" type="password" class="formfld" id="password2" size="20"> 
-                    &nbsp;(<?=gettext("confirmation");?>) <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span></td>
-                </tr>
-		<? display_gui_language_selector($config['system']['webgui']['language']); ?>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("webGUI protocol");?></td>
-                  <td width="78%" class="vtable"> <input name="webguiproto" type="radio" value="http" <?php if ($pconfig['webguiproto'] == "http") echo "checked"; ?>>
-                    <?=gettext("HTTP");?> &nbsp;&nbsp;&nbsp; <input type="radio" name="webguiproto" value="https" <?php if ($pconfig['webguiproto'] == "https") echo "checked"; ?>>
-                    <?=gettext("HTTPS");?></td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncell"><?=gettext("webGUI port");?></td>
-                  <td class="vtable"> <input name="webguiport" type="text" class="formfld" id="webguiport" size="5" value="<?=htmlspecialchars($pconfig['webguiport']);?>"> 
-                    <br>
-                    <span class="vexpl"><?=gettext("Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span></td>
-                </tr>
-				<tr> 
-                  <td valign="top" class="vncell"><?=gettext("Indications Tonezone");?></td>
-                  <td class="vtable">
-					<select name="tonezone" id="tonezone">
-                      <?php foreach ($system_tonezones as $abbreviation => $friendly): ?>
-                      <option value="<?=htmlspecialchars($abbreviation);?>" <?php if ($abbreviation == $pconfig['tonezone']) echo "selected"; ?>> 
-                      <?=htmlspecialchars($friendly);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select>
-						<br> <span class="vexpl"><?=gettext("Select which country's indication tones are to be used.");?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
-                  <td width="78%" class="vtable"> <select name="timezone" id="timezone">
-                      <?php foreach ($timezonelist as $value): ?>
-                      <option value="<?=htmlspecialchars($value);?>" <?php if ($value == $pconfig['timezone']) echo "selected"; ?>> 
-                      <?=htmlspecialchars($value);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select> <br> <span class="vexpl"><?=gettext("Select the location closest to you");?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Time update interval");?></td>
-                  <td width="78%" class="vtable"> <input name="timeupdateinterval" type="text" class="formfld" id="timeupdateinterval" size="4" value="<?=htmlspecialchars($pconfig['timeupdateinterval']);?>"> 
-                    <br> <span class="vexpl"><?=gettext("Minutes between network time sync.; 300 recommended, or 0 to disable");?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("NTP time server");?></td>
-                  <td width="78%" class="vtable"> <input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>"> 
-                    <br> <span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
-                  </td>
-                </tr>
-              </table>
+<form action="system.php" method="post">
+<table width="100%" border="0" cellpadding="6" cellspacing="0">
+	<tr> 
+		<td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
+		<td width="78%" class="vtable">
+			<input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>">
+	    	<br>
+			<span class="vexpl"><?=gettext("name of the pbx host, without domain part");?>
+			<br>
+			<?=gettext("e.g. <em>pbx");?></em></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncellreq"><?=gettext("Domain");?></td>
+		<td class="vtable">
+			<input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>">
+			<br>
+			<span class="vexpl"><?=gettext("e.g. <em>mycorp.com");?></em></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Username");?></td>
+		<td class="vtable">
+			<input name="username" type="text" class="formfld" id="username" size="20" value="<?=$pconfig['username'];?>">
+			<br>
+			<span class="vexpl"><?=gettext("If you want to change the username for accessing the webGUI, enter it here.");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Password");?></td>
+		<td class="vtable">
+			<input name="password" type="password" class="formfld" id="password" size="20">
+			<br>
+			<input name="password2" type="password" class="formfld" id="password2" size="20">
+			&nbsp;(<?=gettext("confirmation");?>) <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span>
+		</td>
+	</tr>
+	<? display_gui_language_selector($config['system']['webgui']['language']); ?>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("webGUI protocol");?></td>
+		<td class="vtable">
+			<input name="webguiproto" type="radio" value="http" <? if ($pconfig['webguiproto'] == "http") echo "checked"; ?>>
+			<?=gettext("HTTP");?> &nbsp;&nbsp;&nbsp; <input type="radio" name="webguiproto" value="https" <? if ($pconfig['webguiproto'] == "https") echo "checked"; ?>><?=gettext("HTTPS");?>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("webGUI port");?></td>
+		<td class="vtable">
+			<input name="webguiport" type="text" class="formfld" id="webguiport" size="5" value="<?=htmlspecialchars($pconfig['webguiport']);?>">
+			<br>
+			<span class="vexpl"><?=gettext("Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Indications Tonezone");?></td>
+		<td class="vtable">
+			<select name="tonezone" id="tonezone"><?
+			foreach ($system_tonezones as $abbreviation => $friendly) {
+				?><option value="<?=htmlspecialchars($abbreviation);?>" <? if ($abbreviation == $pconfig['tonezone']) echo "selected"; ?>>
+				<?=htmlspecialchars($friendly);?></option><?
+			}
+			?></select>
+			<br>
+			<span class="vexpl"><?=gettext("Select which country's indication tones are to be used.");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Time zone");?></td>
+		<td class="vtable">
+			<select name="timezone" id="timezone">
+				<option value="0000">UTC</option><?
+			if ($pconfig['timezone']) {
+				$stored_id = explode("|", $pconfig['timezone']);
+				$stored_id = $stored_id[0];
+			}
+			foreach ($tz as $id => $t) {
+				?><option value="<?=$id;?>" <? if ($id == $stored_id) echo "selected"; ?>>
+				<?=htmlspecialchars($t[0]);?></option><?
+			}
+			?></select>
+			<br>
+			<span class="vexpl"><?=gettext("Select the location closest to you");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Time update interval");?></td>
+		<td class="vtable">
+			<input name="timeupdateinterval" type="text" class="formfld" id="timeupdateinterval" size="4" value="<?=htmlspecialchars($pconfig['timeupdateinterval']);?>">
+			<br>
+			<span class="vexpl"><?=gettext("Minutes between network time sync.; 300 recommended, or 0 to disable");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("NTP time server");?></td>
+		<td class="vtable">
+			<input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>">
+			<br>
+			<span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td valign="top">&nbsp;</td>
+		<td>
+			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
+		</td>
+	</tr>
+</table>
 </form>
 <?php include("fend.inc"); ?>

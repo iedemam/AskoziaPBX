@@ -7,12 +7,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 13:46+0200\n"
+"POT-Creation-Date: 2009-07-02 15:34+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "unconfigured"
@@ -943,6 +943,176 @@ msgstr "Thajsko"
 
 msgid "Venezuela / South America"
 msgstr "Venezuela / Jižní Afrika"
+
+#, fuzzy
+msgid "Asia"
+msgstr "Rakousko"
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Ulaanbaatar, Mongolia"
+msgstr ""
+
+msgid "Adelaide"
+msgstr ""
+
+msgid "Brisbane"
+msgstr ""
+
+msgid "Canberra"
+msgstr ""
+
+#, fuzzy
+msgid "Darwin"
+msgstr "Doména"
+
+#, fuzzy
+msgid "Hobart"
+msgstr "Hostitel"
+
+msgid "Melbourne"
+msgstr ""
+
+#, fuzzy
+msgid "Perth"
+msgstr "Portugalsko"
+
+msgid "Sydney"
+msgstr ""
+
+#, fuzzy
+msgid "Central and South America"
+msgstr "Venezuela / Jižní Afrika"
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Brazil, São Paulo"
+msgstr ""
+
+msgid "Central America"
+msgstr ""
+
+msgid "Europe"
+msgstr ""
+
+#, fuzzy
+msgid "Amsterdam, Netherlands"
+msgstr "Holandsko"
+
+#, fuzzy
+msgid "Athens, Greece"
+msgstr "Řecko"
+
+msgid "Barcelona, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Berlin, Germany"
+msgstr "Německo"
+
+msgid "Brussels, Belgium"
+msgstr ""
+
+msgid "Budapest, Hungary"
+msgstr ""
+
+msgid "Copenhagen, Denmark"
+msgstr ""
+
+msgid "Dublin, Ireland"
+msgstr ""
+
+#, fuzzy
+msgid "Geneva, Switzerland"
+msgstr "Švýcarsko"
+
+msgid "Helsinki, Finland"
+msgstr ""
+
+msgid "Kiev, Ukraine"
+msgstr ""
+
+#, fuzzy
+msgid "Lisbon, Portugal"
+msgstr "Portugalsko"
+
+msgid "London, Great Britain"
+msgstr ""
+
+msgid "Madrid, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Oslo, Norway"
+msgstr "Norsko"
+
+#, fuzzy
+msgid "Paris, France"
+msgstr "Francie"
+
+#, fuzzy
+msgid "Prague, Czech Republic"
+msgstr "Česká republika"
+
+#, fuzzy
+msgid "Rome, Italy"
+msgstr "Itálie"
+
+#, fuzzy
+msgid "Moscow, Russia"
+msgstr "Rusko"
+
+msgid "St.Petersburg, Russia"
+msgstr ""
+
+msgid "Stockholm, Sweden"
+msgstr ""
+
+#, fuzzy
+msgid "Tallinn, Estonia"
+msgstr "Estonsko"
+
+msgid "Auckland"
+msgstr ""
+
+msgid "Wellington"
+msgstr ""
+
+msgid "USA & Canada"
+msgstr ""
+
+msgid "Alaska Time"
+msgstr ""
+
+msgid "Atlantic Time"
+msgstr ""
+
+msgid "Atlantic Time (New Brunswick)"
+msgstr ""
+
+msgid "Central Time"
+msgstr ""
+
+#, fuzzy
+msgid "Eastern Time"
+msgstr "Uživatelské jméno"
+
+msgid "Hawaii Time"
+msgstr ""
+
+msgid "Mountain Time"
+msgstr ""
+
+msgid "Mountain Time (Arizona, no DST)"
+msgstr ""
+
+msgid "Newfoundland Time"
+msgstr ""
+
+msgid "Pacific Time"
+msgstr ""
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"

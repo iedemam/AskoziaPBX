@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 13:46+0200\n"
+"POT-Creation-Date: 2009-07-02 15:34+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -994,6 +994,179 @@ msgstr "Tailandia"
 
 msgid "Venezuela / South America"
 msgstr "Venezuela/Sud America"
+
+#, fuzzy
+msgid "Asia"
+msgstr "Austria"
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Ulaanbaatar, Mongolia"
+msgstr ""
+
+msgid "Adelaide"
+msgstr ""
+
+msgid "Brisbane"
+msgstr ""
+
+msgid "Canberra"
+msgstr ""
+
+#, fuzzy
+msgid "Darwin"
+msgstr "Dominio"
+
+#, fuzzy
+msgid "Hobart"
+msgstr "Host"
+
+msgid "Melbourne"
+msgstr ""
+
+#, fuzzy
+msgid "Perth"
+msgstr "Portogallo"
+
+msgid "Sydney"
+msgstr ""
+
+#, fuzzy
+msgid "Central and South America"
+msgstr "Venezuela/Sud America"
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Brazil, São Paulo"
+msgstr ""
+
+msgid "Central America"
+msgstr ""
+
+msgid "Europe"
+msgstr ""
+
+#, fuzzy
+msgid "Amsterdam, Netherlands"
+msgstr "Olanda"
+
+#, fuzzy
+msgid "Athens, Greece"
+msgstr "Grecia"
+
+msgid "Barcelona, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Berlin, Germany"
+msgstr "Germania"
+
+msgid "Brussels, Belgium"
+msgstr ""
+
+msgid "Budapest, Hungary"
+msgstr ""
+
+msgid "Copenhagen, Denmark"
+msgstr ""
+
+msgid "Dublin, Ireland"
+msgstr ""
+
+#, fuzzy
+msgid "Geneva, Switzerland"
+msgstr "Svizzera"
+
+msgid "Helsinki, Finland"
+msgstr ""
+
+msgid "Kiev, Ukraine"
+msgstr ""
+
+#, fuzzy
+msgid "Lisbon, Portugal"
+msgstr "Portogallo"
+
+msgid "London, Great Britain"
+msgstr ""
+
+msgid "Madrid, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Oslo, Norway"
+msgstr "Norvegia"
+
+#, fuzzy
+msgid "Paris, France"
+msgstr "Francia"
+
+#, fuzzy
+msgid "Prague, Czech Republic"
+msgstr "Repubblica ceca"
+
+#, fuzzy
+msgid "Rome, Italy"
+msgstr "Italia"
+
+#, fuzzy
+msgid "Moscow, Russia"
+msgstr "Russia"
+
+msgid "St.Petersburg, Russia"
+msgstr ""
+
+msgid "Stockholm, Sweden"
+msgstr ""
+
+#, fuzzy
+msgid "Tallinn, Estonia"
+msgstr "Estonia"
+
+msgid "Auckland"
+msgstr ""
+
+msgid "Wellington"
+msgstr ""
+
+msgid "USA & Canada"
+msgstr ""
+
+#, fuzzy
+msgid "Alaska Time"
+msgstr "Ritorno Parcheggio"
+
+msgid "Atlantic Time"
+msgstr ""
+
+msgid "Atlantic Time (New Brunswick)"
+msgstr ""
+
+msgid "Central Time"
+msgstr ""
+
+#, fuzzy
+msgid "Eastern Time"
+msgstr "Ritorno Parcheggio"
+
+#, fuzzy
+msgid "Hawaii Time"
+msgstr "Ritorno Parcheggio"
+
+msgid "Mountain Time"
+msgstr ""
+
+msgid "Mountain Time (Arizona, no DST)"
+msgstr ""
+
+msgid "Newfoundland Time"
+msgstr ""
+
+#, fuzzy
+msgid "Pacific Time"
+msgstr "Ritorno Parcheggio"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"

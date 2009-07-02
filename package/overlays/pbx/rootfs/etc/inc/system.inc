@@ -393,28 +393,27 @@ function system_password_configure() {
 }
 
 /**
- * Decompresses timezone entries and stores them in /etc/localtime
+ * Populates /etc/TZ with an appropriate time zone
  */
 function system_timezone_configure() {
 	global $config, $g;
 
-	printf("LINUX TODO: empty system_timezone_configure()\n"); return 0;
+	$timezone = $config['system']['timezone'];
 
-	$syscfg = $config['system'];
-
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "Initializing timezone... ";
+	}
 
-	/* extract appropriate timezone file */
-	$timezone = $syscfg['timezone'];
-	if (!$timezone)
-		$timezone = "Etc/UTC";
-		
-	exec("/usr/bin/tar xzfO /usr/share/zoneinfo.tgz " . 
-		escapeshellarg($timezone) . " > /etc/localtime");
+	unlink_if_exists("/etc/TZ");
+	if ($timezone) {
+		$timezone = explode("|", $timezone);
+		$timezone = $timezone[1];
+		exec("echo \"$timezone\" > /etc/TZ");
+	}
 
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "done\n";
+	}
 }
 
 /**

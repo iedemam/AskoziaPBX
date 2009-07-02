@@ -122,7 +122,6 @@ $defaults['syslog']['nentries'] = "100";
 
 $defaults['system'] = array();
 $defaults['system']['username'] = "admin";
-$defaults['system']['timezone'] = "Etc/UTC";
 $defaults['system']['timeservers'] = "pool.ntp.org";
 $defaults['system']['timeupdateinterval'] = "300";
 
