@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 15:54+0200\n"
+"POT-Creation-Date: 2009-07-02 13:46+0200\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1873,10 +1873,6 @@ msgstr "Plateforme"
 msgid "Uptime"
 msgstr "Dernier redémarrage, il y a"
 
-#, php-format
-msgid "%s days, "
-msgstr "%s jour(s), "
-
 msgid "Last Config Change"
 msgstr "Dernière modification de la configuration"
 
@@ -3347,6 +3343,9 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "%s days, "
+#~ msgstr "%s jour(s), "
 
 #~ msgid "descr"
 #~ msgstr "descr"

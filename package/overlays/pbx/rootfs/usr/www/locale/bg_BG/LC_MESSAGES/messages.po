@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 15:54+0200\n"
+"POT-Creation-Date: 2009-07-02 13:46+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1889,10 +1889,6 @@ msgstr "Платформа"
 msgid "Uptime"
 msgstr "Време на работа"
 
-#, php-format
-msgid "%s days, "
-msgstr "%s дни, "
-
 msgid "Last Config Change"
 msgstr "Последна Промяна"
 
@@ -3330,6 +3326,9 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "%s days, "
+#~ msgstr "%s дни, "
 
 #~ msgid "descr"
 #~ msgstr "описание"

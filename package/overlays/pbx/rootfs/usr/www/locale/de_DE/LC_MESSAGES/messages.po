@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 15:54+0200\n"
+"POT-Creation-Date: 2009-07-02 13:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -1911,10 +1911,6 @@ msgstr "Platform"
 msgid "Uptime"
 msgstr "Uptime"
 
-#, php-format
-msgid "%s days, "
-msgstr "%s Tage, "
-
 msgid "Last Config Change"
 msgstr "letzte Konfigurationsänderung"
 
@@ -3352,6 +3348,9 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid "%s days, "
+#~ msgstr "%s Tage, "
 
 #~ msgid "descr"
 #~ msgstr "Beschreibung"

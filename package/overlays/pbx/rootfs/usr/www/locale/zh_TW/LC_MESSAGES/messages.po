@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 15:54+0200\n"
+"POT-Creation-Date: 2009-07-02 13:46+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1818,10 +1818,6 @@ msgstr "平臺"
 msgid "Uptime"
 msgstr "正常運行時間"
 
-#, php-format
-msgid "%s days, "
-msgstr "%s 天"
-
 msgid "Last Config Change"
 msgstr "上一次設置改變"
 
@@ -3163,6 +3159,9 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "%s days, "
+#~ msgstr "%s 天"
 
 #~ msgid "descr"
 #~ msgstr "描述"

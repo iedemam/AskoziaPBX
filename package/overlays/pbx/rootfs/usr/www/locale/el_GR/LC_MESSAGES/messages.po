@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 15:54+0200\n"
+"POT-Creation-Date: 2009-07-02 13:46+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1924,10 +1924,6 @@ msgstr "Πλατφόρμα"
 msgid "Uptime"
 msgstr "Χρόνος λειτουργίας"
 
-#, php-format
-msgid "%s days, "
-msgstr "%s ημέρες, "
-
 msgid "Last Config Change"
 msgstr "Τελευταία μεταβολή ρυθμίσεων"
 
@@ -3447,6 +3443,9 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "%s days, "
+#~ msgstr "%s ημέρες, "
 
 #~ msgid "descr"
 #~ msgstr "περιγραφή"
