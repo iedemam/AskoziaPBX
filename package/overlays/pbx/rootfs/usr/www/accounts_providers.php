@@ -150,7 +150,7 @@ if (file_exists($d_analogconfdirty_path)) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= analog_zapata_conf_generate();
+		$retval |= analog_chan_dahdi_conf_generate();
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		

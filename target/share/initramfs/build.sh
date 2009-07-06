@@ -44,6 +44,7 @@ find $build_root -printf "%P\n" | sed '
   /etc\/conf/				d;
   /etc\/cron.d/				d;
   /etc\/cron.daily/			d;
+  /etc\/dahdi\/system.conf/		d;
   /etc\/hotplug/			d;
   /etc\/hotplug.d/			d;
   /etc\/init.d/				d;

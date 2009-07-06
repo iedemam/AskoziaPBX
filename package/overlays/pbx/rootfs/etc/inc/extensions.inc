@@ -469,7 +469,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		return "CAPI/" . $phone['interface'] . "/" . $phone['extension'];
 
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
-		return "ZAP/" . $phone['interface'];
+		return "DAHDI/" . $phone['interface'];
 	
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 
@@ -481,9 +481,9 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		}
 
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
-		if ($technology == "ZAP") {
+		if ($technology == "DAHDI") {
 			$prov = analog_get_provider($phone['dialprovider']);
-			return "ZAP/" . $prov['interface'] . "/" . $phone['dialstring'];
+			return "DAHDI/" . $prov['interface'] . "/" . $phone['dialstring'];
 
 		} else if ($technology == "CAPI"){
 			$prov = isdn_get_provider($phone['dialprovider']);
@@ -524,7 +524,7 @@ function extensions_generate_provider_incoming_context($p) {
 	if ($tech == "CAPI") {
 		$readbacknum = $p['msn'];
 
-	} else if ($tech == "ZAP") {
+	} else if ($tech == "DAHDI") {
 		$readbacknum = $p['number'];
 
 	} else if ($tech == "SIP" || $tech == "IAX") {
@@ -539,7 +539,7 @@ function extensions_generate_provider_incoming_context($p) {
 	}
 
 	// does this channel need a wait
-	if ($tech == "CAPI" || $tech == "ZAP") {
+	if ($tech == "CAPI" || $tech == "DAHDI") {
 		$needswait = true;
 	}
 
@@ -656,8 +656,8 @@ function extensions_generate_provider_outgoing_context($p) {
 		} else if ($tech == "CAPI") {
 			$conf .= "exten => _$pattern,n,Dial(CAPI/{$p['interface']}/$prefix$exten/bl,,T$cidflag)\n";
 
-		} else if ($tech == "ZAP") {
-			$conf .= "exten => _$pattern,n,Dial(ZAP/{$p['interface']}/$prefix$exten,,T$cidflag)\n";
+		} else if ($tech == "DAHDI") {
+			$conf .= "exten => _$pattern,n,Dial(DAHDI/{$p['interface']}/$prefix$exten,,T$cidflag)\n";
 
 		} else {
 			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
@@ -704,8 +704,8 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 	} else if ($tech == "CAPI") {
 		$conf .= "exten => $exten,n,Macro(main|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
-	} else if ($tech == "ZAP") {
-		$conf .= "exten => $exten,n,Macro(main|ZAP/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+	} else if ($tech == "DAHDI") {
+		$conf .= "exten => $exten,n,Macro(main|DAHDI/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
@@ -748,7 +748,7 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 	}
 
 	$conf .= extensions_generate_call_notification_variables($exten, $p);
-	if ($tech == "ZAP") {
+	if ($tech == "DAHDI") {
 		$prov = analog_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
 			"Macro(main|$tech/{$prov['interface']}/{$p['dialstring']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";

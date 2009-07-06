@@ -110,8 +110,8 @@ if (file_exists($d_analogconfdirty_path)) {
 				<ul id="gme" class="gme"><? 
 
 				foreach ($pconfig['loadzone'] as $loadzone) {
-					if (array_key_exists($loadzone, $zaptel_loadzones)) {
-						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars($zaptel_loadzones[$loadzone]);?></li><?
+					if (array_key_exists($loadzone, $dahdi_loadzones)) {
+						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars($dahdi_loadzones[$loadzone]);?></li><?
 					}
 				}
 
@@ -120,9 +120,9 @@ if (file_exists($d_analogconfdirty_path)) {
 			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Inactive");?></strong>
 				<ul id="gmd" class="gmd"><?
 
-				foreach ($zaptel_loadzones as $abbreviation=>$friendly) {
+				foreach ($dahdi_loadzones as $abbreviation=>$friendly) {
 					if (!in_array($abbreviation, $pconfig['loadzone'])) {
-						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars($zaptel_loadzones[$abbreviation]);?></li><?
+						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars($dahdi_loadzones[$abbreviation]);?></li><?
 					}
 				}
 

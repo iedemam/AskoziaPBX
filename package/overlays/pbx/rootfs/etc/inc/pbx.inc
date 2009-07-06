@@ -795,7 +795,7 @@ function pbx_uniqid_to_technology($uniqid) {
 		case "ISDN":
 			return "CAPI";
 		case "ANALOG":
-			return "ZAP";
+			return "DAHDI";
 	}
 
 	return "ERROR:UNIQID_TO_TECHNOLOGY_FAILED($uniqid)";

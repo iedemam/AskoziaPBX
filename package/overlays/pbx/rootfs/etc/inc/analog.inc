@@ -242,22 +242,21 @@ function analog_forget_interface($unit_number) {
 function analog_conf_generate() {
 
 	$res = 0;
-	$res |= analog_zaptel_conf_generate();
-	$res |= analog_zapata_conf_generate();
+	$res |= analog_system_conf_generate();
+	$res |= analog_chan_dahdi_conf_generate();
 
 	return $res;
 }
 
 /**
- * Generates zaptel.conf which defines modules, signaling and loadzones.
- * XXX : fx___= lines could probably be generated much more intelligently
+ * Generates dahdi's system.conf which defines modules, signaling and loadzones.
  */
-function analog_zaptel_conf_generate() {
+function analog_system_conf_generate() {
 	global $config, $g;
 
-	$fd = fopen("/etc/zaptel.conf", "w");
+	$fd = fopen("/etc/dahdi/system.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open zaptel.conf in analog_zaptel_conf_generate().\n");
+		printf("Error: cannot open system.conf in analog_system_conf_generate().\n");
 		return 1;
 	}
 
@@ -352,14 +351,14 @@ function analog_zaptel_conf_generate() {
 }
 
 /**
- * Generates zapata.conf which defines modules, signaling, ec options, busy detection etc.
+ * Generates chan_dahdi.conf which defines modules, signaling, ec options, busy detection etc.
  */
-function analog_zapata_conf_generate() {
+function analog_chan_dahdi_conf_generate() {
 	global $config, $g, $defaults;
 
-	$fd = fopen("/etc/asterisk/zapata.conf", "w");
+	$fd = fopen("/etc/asterisk/chan_dahdi.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open zapata.conf in analog_zapata_conf_generate().\n");
+		printf("Error: cannot open chan_dahdi.conf in analog_chan_dahdi_conf_generate().\n");
 		return 1;
 	}
 	
@@ -465,7 +464,7 @@ function analog_zapata_conf_generate() {
 }
 
 /**
- * Executes ztcfg to apply newly generated configuration changes, returns if no a/b units are present.
+ * Executes dahdi_cfg to apply newly generated configuration changes, returns if no a/b units are present.
  */
 function analog_configure() {
 
@@ -473,19 +472,19 @@ function analog_configure() {
 		return 0;
 	}
 	$res = 0;
-	$res |= mwexec("/usr/bin/ztcfg");
+	$res |= mwexec("/usr/sbin/dahdi_cfg");
 
 	return $res;
 }
 
 /**
- * Reloads chan_zap to apply newly generated configuration changes
+ * Reloads chan_dahdi to apply newly generated configuration changes
  */
 function analog_reload() {
 
 	$res = 0;
-	$res |= pbx_exec("module reload chan_zap.so");
-	$res |= pbx_exec("zap restart");
+	$res |= pbx_exec("module reload chan_dahdi.so");
+	$res |= pbx_exec("dahdi restart");
 
 	return $res;
 }
