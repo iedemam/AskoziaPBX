@@ -213,7 +213,7 @@ $isdn_dchannel_modes = array(
 //	"DRVR_DUMMY" => "",
 );
 
-$zaptel_loadzones = array(
+$dahdi_loadzones = array(
 	"us" => gettext("United States / North America"),
 	"au" => gettext("Australia"),
 	"at" => gettext("Austria"),
