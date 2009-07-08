@@ -26,7 +26,7 @@ imagelocation="$build_toolchain/firmware"
 # cylinder size in bytes (16 heads x 63 sectors/track x 512 bytes/sector)
 cylinder_size="516096"
 sectors_per_cylinder="1008"
-block_pad="1024"
+block_pad="2048"
 
 echo "Preparing firmware image from build result ..."
 rm -rf $imagelocation{,.img}
