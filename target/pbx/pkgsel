@@ -53,9 +53,31 @@ X dahdi-tools
 #X misdnuser
 X asterisk
 
+# text to speech
+X flite
+X app_flite
+
 # prompt sets
-#X core-en-ulaw-full
-X core-en-gsm-full
+X core-en-ulaw-base
+X core-en-g722-base
+#X core-en-g729-base
+#X core-en-gsm-base
+#X core-en-wav-base
+#X core-en-alaw-base
+#X core-en-sln16-base
+#X core-en-siren7-base
+#X core-en-siren14-base
+
+# music-on-hold
+X freeplay-ulaw-base
+X freeplay-g722-base
+#X freeplay-g729-base
+#X freeplay-gsm-base
+#X freeplay-wav-base
+#X freeplay-alaw-base
+#X freeplay-sln16-base
+#X freeplay-siren7-base
+#X freeplay-siren14-base
 
 # webgui
 X ajaxcgi
