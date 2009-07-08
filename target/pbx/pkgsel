@@ -59,7 +59,7 @@ X app_flite
 
 # prompt sets
 X core-en-ulaw-base
-X core-en-g722-base
+#X core-en-g722-base
 #X core-en-g729-base
 #X core-en-gsm-base
 #X core-en-wav-base
@@ -70,7 +70,7 @@ X core-en-g722-base
 
 # music-on-hold
 X freeplay-ulaw-base
-X freeplay-g722-base
+#X freeplay-g722-base
 #X freeplay-g729-base
 #X freeplay-gsm-base
 #X freeplay-wav-base
