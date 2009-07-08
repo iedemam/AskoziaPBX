@@ -337,8 +337,6 @@ EOD;
 
 function system_upgrade_https_certificate() {
 	global $config;
-	
-	printf("LINUX TODO: empty system_upgrade_https_certificate()\n"); return 0;
 
 	if (!$config['system']['webgui']['certificate']) {
 		echo "Upgrading HTTPS to a more secure, machine-specific certificate...";
@@ -360,7 +358,7 @@ function system_upgrade_https_certificate() {
 	}
 }
 /**
- * Generates htpasswd
+ * Generates htpasswd and sets the root password
  * XXX : still contains "local user manager" which should still be reimplemented
  */
 function system_password_configure() {
@@ -372,11 +370,17 @@ function system_password_configure() {
 		return 1;
 	}
 	
-	if ($config['system']['username'])
+	if ($config['system']['username']) {
 		$username = $config['system']['username'];
-	else
+	} else {
 		$username = "admin";
-	
+	}
+
+	mwexec("echo \"{$config['system']['password']}\n".
+		"{$config['system']['password']}\n".
+		"\n".
+		"\" | /usr/sbin/chpasswd root");
+
 	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
 
 	if (is_array($config['system']['user'])) {
