@@ -527,7 +527,7 @@ function reset_factory_defaults() {
 	closedir($dh);
 	
 	/* copy default configuration */
-	if (strstr($g['platform'], "askozia-pbx-x86-")) {
+	if (strstr($g['platform'], "askozia-pbx-generic-pc")) {
 		$plname = "generic-pc";
 	} else {
 		$plname = $g['platform'];
