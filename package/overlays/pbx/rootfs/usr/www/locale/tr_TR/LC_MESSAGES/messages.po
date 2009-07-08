@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2754,78 +2754,6 @@ msgstr ""
 "Grafiği göremiyorsanız <a href=\"http://www.adobe.com/svg/viewer/install/\" "
 "target=\"_blank\">Adobe SVG viewer</a> yüklemeniz gerekebilir."
 
-msgid "Subnet Mask"
-msgstr "Altağ Maskesi"
-
-msgid "Media"
-msgstr ""
-
-msgid "In/Out Packets"
-msgstr "Giriş/Çıkış Paketleri"
-
-msgid "In/Out Errors"
-msgstr "Giriş/Çıkış Hatalar"
-
-msgid "Collisions"
-msgstr ""
-
-msgid "Last scan results"
-msgstr ""
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr ""
-
-msgid "Signal"
-msgstr "Sinyal"
-
-msgid "Noise"
-msgstr "Gürültü"
-
-msgid "hidden"
-msgstr "gizli"
-
-msgid "Associated stations"
-msgstr ""
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr ""
-
-msgid "Capabilities"
-msgstr ""
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-
-msgid "No stations are associated at this time."
-msgstr ""
-
-msgid "Attached"
-msgstr "Eklendi"
-
-msgid "PH State"
-msgstr ""
-
-msgid "Dialtone"
-msgstr ""
-
-msgid "Driver Type"
-msgstr "Sürücü Türü"
-
-msgid "Serial"
-msgstr "Seri"
-
-msgid "Power Save"
-msgstr ""
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3200,6 +3128,39 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Altağ Maskesi"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "Giriş/Çıkış Paketleri"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "Giriş/Çıkış Hatalar"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Signal"
+#~ msgstr "Sinyal"
+
+#~ msgid "Noise"
+#~ msgstr "Gürültü"
+
+#~ msgid "hidden"
+#~ msgstr "gizli"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Attached"
+#~ msgstr "Eklendi"
+
+#~ msgid "Driver Type"
+#~ msgstr "Sürücü Türü"
+
+#~ msgid "Serial"
+#~ msgstr "Seri"
 
 #~ msgid "%s days, "
 #~ msgstr "%s days, "

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -3053,83 +3053,6 @@ msgstr ""
 "\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank"
 "\">visualizzatore SVG di Adobe</a>"
 
-msgid "Subnet Mask"
-msgstr "Maschera sottorete"
-
-msgid "Media"
-msgstr "Supporto"
-
-msgid "In/Out Packets"
-msgstr "Pacchetti Ricevuti/Inviati"
-
-msgid "In/Out Errors"
-msgstr "Errori  Ricevuti/Inviati"
-
-msgid "Collisions"
-msgstr "Collisioni"
-
-msgid "Last scan results"
-msgstr "Risultato ultima scansione"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Velocità"
-
-msgid "Signal"
-msgstr "Segnale"
-
-msgid "Noise"
-msgstr "Rumore"
-
-#, fuzzy
-msgid "hidden"
-msgstr "(nascosto)"
-
-msgid "Associated stations"
-msgstr "Stazioni associate"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Flags"
-
-msgid "Capabilities"
-msgstr "Capacità"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"Flags: A = autorizzato, E = Velocità estesa (802.11g), P = Modalità "
-"risparmio energia<br>Capacità: E = ESS (modalità infrastruttura), I = IBSS "
-"(modalità ad-hoc), P = privacy (WEP/TKIP/AES), S = preambolo breve, s = slot "
-"time breve"
-
-msgid "No stations are associated at this time."
-msgstr "Nessuna stazione associata in questo momento."
-
-msgid "Attached"
-msgstr "Collegato"
-
-msgid "PH State"
-msgstr "Stato PH"
-
-msgid "Dialtone"
-msgstr "Tono di chiamata"
-
-msgid "Driver Type"
-msgstr "Tipo driver"
-
-msgid "Serial"
-msgstr "Seriale"
-
-msgid "Power Save"
-msgstr "Risparmio energetico"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3577,6 +3500,83 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Maschera sottorete"
+
+#~ msgid "Media"
+#~ msgstr "Supporto"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "Pacchetti Ricevuti/Inviati"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "Errori  Ricevuti/Inviati"
+
+#~ msgid "Collisions"
+#~ msgstr "Collisioni"
+
+#~ msgid "Last scan results"
+#~ msgstr "Risultato ultima scansione"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Velocità"
+
+#~ msgid "Signal"
+#~ msgstr "Segnale"
+
+#~ msgid "Noise"
+#~ msgstr "Rumore"
+
+#, fuzzy
+#~ msgid "hidden"
+#~ msgstr "(nascosto)"
+
+#~ msgid "Associated stations"
+#~ msgstr "Stazioni associate"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Flags"
+
+#~ msgid "Capabilities"
+#~ msgstr "Capacità"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "Flags: A = autorizzato, E = Velocità estesa (802.11g), P = Modalità "
+#~ "risparmio energia<br>Capacità: E = ESS (modalità infrastruttura), I = "
+#~ "IBSS (modalità ad-hoc), P = privacy (WEP/TKIP/AES), S = preambolo breve, "
+#~ "s = slot time breve"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "Nessuna stazione associata in questo momento."
+
+#~ msgid "Attached"
+#~ msgstr "Collegato"
+
+#~ msgid "PH State"
+#~ msgstr "Stato PH"
+
+#~ msgid "Dialtone"
+#~ msgstr "Tono di chiamata"
+
+#~ msgid "Driver Type"
+#~ msgstr "Tipo driver"
+
+#~ msgid "Serial"
+#~ msgstr "Seriale"
+
+#~ msgid "Power Save"
+#~ msgstr "Risparmio energetico"
 
 #~ msgid "%s days, "
 #~ msgstr "%s giorni, "

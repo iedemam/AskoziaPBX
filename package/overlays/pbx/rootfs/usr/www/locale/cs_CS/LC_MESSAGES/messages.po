@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2811,78 +2811,6 @@ msgstr ""
 "jestliže se graf nezobrazuje, nainstalujte si <a href=\"http://www.adobe.com/"
 "svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 
-msgid "Subnet Mask"
-msgstr ""
-
-msgid "Media"
-msgstr ""
-
-msgid "In/Out Packets"
-msgstr "In/Out pakety"
-
-msgid "In/Out Errors"
-msgstr "In/Out chyby"
-
-msgid "Collisions"
-msgstr "Kolize"
-
-msgid "Last scan results"
-msgstr ""
-
-msgid "BSSID"
-msgstr ""
-
-msgid "Rate"
-msgstr ""
-
-msgid "Signal"
-msgstr ""
-
-msgid "Noise"
-msgstr ""
-
-msgid "hidden"
-msgstr ""
-
-msgid "Associated stations"
-msgstr ""
-
-msgid "RSSI"
-msgstr ""
-
-msgid "Flags"
-msgstr ""
-
-msgid "Capabilities"
-msgstr ""
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-
-msgid "No stations are associated at this time."
-msgstr ""
-
-msgid "Attached"
-msgstr ""
-
-msgid "PH State"
-msgstr ""
-
-msgid "Dialtone"
-msgstr ""
-
-msgid "Driver Type"
-msgstr ""
-
-msgid "Serial"
-msgstr ""
-
-msgid "Power Save"
-msgstr ""
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3282,6 +3210,15 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "In/Out Packets"
+#~ msgstr "In/Out pakety"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "In/Out chyby"
+
+#~ msgid "Collisions"
+#~ msgstr "Kolize"
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

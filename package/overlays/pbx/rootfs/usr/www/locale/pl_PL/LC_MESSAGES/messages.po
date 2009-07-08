@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -2876,82 +2876,6 @@ msgid ""
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 
-msgid "Subnet Mask"
-msgstr "Maska Podsieci"
-
-msgid "Media"
-msgstr "Medium"
-
-msgid "In/Out Packets"
-msgstr "In/Out Pakiety"
-
-msgid "In/Out Errors"
-msgstr "In/Out Błędy"
-
-msgid "Collisions"
-msgstr "Kolizje"
-
-msgid "Last scan results"
-msgstr "Ostatni wynik skanowania"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Prędkość"
-
-msgid "Signal"
-msgstr "Sygnał"
-
-msgid "Noise"
-msgstr "Szum"
-
-msgid "hidden"
-msgstr "ukryte"
-
-msgid "Associated stations"
-msgstr "Podłączone stacje"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Flagi"
-
-msgid "Capabilities"
-msgstr "Możliwości"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"Flagi: A = Autoryzowany, E = Zwiększona prędkość (802.11g), P = Tryb "
-"oszczędzania energii<br>Możliwości: E = ESS (tryb infrastructure), I = IBSS "
-"(tryb ad-hoc), P = prywatność (WEP/TKIP/AES), S = Krótka preambuła, s = "
-"Krótki time slot"
-
-msgid "No stations are associated at this time."
-msgstr "Aktualnie nie ma podłączonych klientów."
-
-msgid "Attached"
-msgstr "Podłączony"
-
-msgid "PH State"
-msgstr "PH State"
-
-msgid "Dialtone"
-msgstr "Sygnał wybierania"
-
-msgid "Driver Type"
-msgstr "Typ sterownika"
-
-msgid "Serial"
-msgstr "Serial"
-
-msgid "Power Save"
-msgstr "Oszczędzanie energii"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3367,6 +3291,82 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Maska Podsieci"
+
+#~ msgid "Media"
+#~ msgstr "Medium"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "In/Out Pakiety"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "In/Out Błędy"
+
+#~ msgid "Collisions"
+#~ msgstr "Kolizje"
+
+#~ msgid "Last scan results"
+#~ msgstr "Ostatni wynik skanowania"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Prędkość"
+
+#~ msgid "Signal"
+#~ msgstr "Sygnał"
+
+#~ msgid "Noise"
+#~ msgstr "Szum"
+
+#~ msgid "hidden"
+#~ msgstr "ukryte"
+
+#~ msgid "Associated stations"
+#~ msgstr "Podłączone stacje"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Flagi"
+
+#~ msgid "Capabilities"
+#~ msgstr "Możliwości"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "Flagi: A = Autoryzowany, E = Zwiększona prędkość (802.11g), P = Tryb "
+#~ "oszczędzania energii<br>Możliwości: E = ESS (tryb infrastructure), I = "
+#~ "IBSS (tryb ad-hoc), P = prywatność (WEP/TKIP/AES), S = Krótka preambuła, "
+#~ "s = Krótki time slot"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "Aktualnie nie ma podłączonych klientów."
+
+#~ msgid "Attached"
+#~ msgstr "Podłączony"
+
+#~ msgid "PH State"
+#~ msgstr "PH State"
+
+#~ msgid "Dialtone"
+#~ msgstr "Sygnał wybierania"
+
+#~ msgid "Driver Type"
+#~ msgstr "Typ sterownika"
+
+#~ msgid "Serial"
+#~ msgstr "Serial"
+
+#~ msgid "Power Save"
+#~ msgstr "Oszczędzanie energii"
 
 #~ msgid "%s days, "
 #~ msgstr "%s dni, "

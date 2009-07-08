@@ -195,8 +195,20 @@ function get_analog_interface_info() {
 
 ?>
 <?php include("fbegin.inc"); ?>
-<table width="100%" border="0" cellspacing="0" cellpadding="0"><?
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr> 
+		<td colspan="2" class="listtopic"><?=gettext('Network');?></td>
+	</tr>
+	<tr> 
+		<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
+		<td width="80%" class="listr"><pre><?
+			exec("/sbin/ifconfig", $output);
+			$output = implode("\n", $output);
+			echo htmlspecialchars($output);
+		?></pre></td>
+	</tr><?
 
+	/*
 	$i = 0;
 	$ifdescrs = array(
 		'lan' => gettext('Network'),
@@ -460,7 +472,7 @@ function get_analog_interface_info() {
 		</tr><?
 		
 		$i++;
-	}
+	}*/
 	
 	/* ?><tr>
 		<td colspan="2" class="list" height="12"></td>

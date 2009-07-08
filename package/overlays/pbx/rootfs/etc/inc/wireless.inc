@@ -42,7 +42,8 @@ function wireless_get_interfaces() {
 	global $g;
 	
 	/* build interface list with netstat */
-	exec("/bin/netstat -inW -f link", $linkinfo);
+	//exec("/bin/netstat -inW -f link", $linkinfo);
+	$linkinfo = array();
 	array_shift($linkinfo);
 	
 	$iflist = array();
@@ -83,7 +84,7 @@ function wireless_get_interfaces() {
 function wireless_configure() {
 	global $config, $g;
 
-	printf("LINUX TODO: empty wireless_configure()\n"); return 0;
+	/*printf("LINUX TODO: empty wireless_configure()\n");*/ return 0;
 	
 	if (!is_array($config['interfaces']['wireless'])) {
 		return 0;

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -2912,81 +2912,6 @@ msgstr ""
 "Hvis du ikke kan se grafen, så skal du måske  installere <a href=\"http://"
 "www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viserenr</a>."
 
-msgid "Subnet Mask"
-msgstr "Undernetmaske"
-
-msgid "Media"
-msgstr "Medie"
-
-msgid "In/Out Packets"
-msgstr "Ind/Ud Pakker"
-
-msgid "In/Out Errors"
-msgstr "In/Ud Fejl"
-
-msgid "Collisions"
-msgstr "Kollisioner"
-
-msgid "Last scan results"
-msgstr "Sidste scan resultater"
-
-msgid "BSSID"
-msgstr "BBSID"
-
-msgid "Rate"
-msgstr ""
-
-msgid "Signal"
-msgstr "Signal"
-
-msgid "Noise"
-msgstr "Støj"
-
-msgid "hidden"
-msgstr "gemt"
-
-msgid "Associated stations"
-msgstr "Associerede stationer"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Flag"
-
-msgid "Capabilities"
-msgstr "Muligheder"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"Flag: A = autoriseret, E = Udvidet rate (802.11g), P = Strømbesvarende "
-"tilstand<br>Muligheder: E = ESS (infrastructure tilstand), I = IBSS( ad-hoc "
-"tilstand), P = privat (WEP/TKIP/AES), S = Kort preamble, s = Kort slot tid"
-
-msgid "No stations are associated at this time."
-msgstr "Der er ikke koblet nogen stationer til på nuværende tidspunkt."
-
-msgid "Attached"
-msgstr "Tilsluttet"
-
-msgid "PH State"
-msgstr "PH tilstand"
-
-msgid "Dialtone"
-msgstr "Klartone"
-
-msgid "Driver Type"
-msgstr "Driver Type"
-
-msgid "Serial"
-msgstr "Seriel"
-
-msgid "Power Save"
-msgstr "Strømbesparende"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3397,6 +3322,79 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Undernetmaske"
+
+#~ msgid "Media"
+#~ msgstr "Medie"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "Ind/Ud Pakker"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "In/Ud Fejl"
+
+#~ msgid "Collisions"
+#~ msgstr "Kollisioner"
+
+#~ msgid "Last scan results"
+#~ msgstr "Sidste scan resultater"
+
+#~ msgid "BSSID"
+#~ msgstr "BBSID"
+
+#~ msgid "Signal"
+#~ msgstr "Signal"
+
+#~ msgid "Noise"
+#~ msgstr "Støj"
+
+#~ msgid "hidden"
+#~ msgstr "gemt"
+
+#~ msgid "Associated stations"
+#~ msgstr "Associerede stationer"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Flag"
+
+#~ msgid "Capabilities"
+#~ msgstr "Muligheder"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "Flag: A = autoriseret, E = Udvidet rate (802.11g), P = Strømbesvarende "
+#~ "tilstand<br>Muligheder: E = ESS (infrastructure tilstand), I = IBSS( ad-"
+#~ "hoc tilstand), P = privat (WEP/TKIP/AES), S = Kort preamble, s = Kort "
+#~ "slot tid"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "Der er ikke koblet nogen stationer til på nuværende tidspunkt."
+
+#~ msgid "Attached"
+#~ msgstr "Tilsluttet"
+
+#~ msgid "PH State"
+#~ msgstr "PH tilstand"
+
+#~ msgid "Dialtone"
+#~ msgstr "Klartone"
+
+#~ msgid "Driver Type"
+#~ msgstr "Driver Type"
+
+#~ msgid "Serial"
+#~ msgstr "Seriel"
+
+#~ msgid "Power Save"
+#~ msgstr "Strømbesparende"
 
 #~ msgid "%s days, "
 #~ msgstr "%s dage,"

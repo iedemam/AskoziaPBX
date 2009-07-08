@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2863,80 +2863,6 @@ msgstr ""
 "如果您不能看到这个图片，那么您可能需要安装<a href=\"http://www.adobe.com/svg/"
 "viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>。"
 
-msgid "Subnet Mask"
-msgstr "子网掩码"
-
-msgid "Media"
-msgstr "媒体"
-
-msgid "In/Out Packets"
-msgstr "进/出 包"
-
-msgid "In/Out Errors"
-msgstr "进/出 错误"
-
-msgid "Collisions"
-msgstr "冲突"
-
-msgid "Last scan results"
-msgstr "上一次扫描结果"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "比率"
-
-msgid "Signal"
-msgstr "信号"
-
-msgid "Noise"
-msgstr "噪音"
-
-msgid "hidden"
-msgstr "隐藏"
-
-msgid "Associated stations"
-msgstr "相关监测站"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "标志"
-
-msgid "Capabilities"
-msgstr "能力"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"标志：A=授权，E=扩展比率(802.11g)，P=节电模式<br>能力，E=ESS(基础结构模式)，"
-"I=IBSS(ad-hoc 模式)，P=隐私（WEP/TKIP/AES），S=短期序言，s=短期插槽时间"
-
-msgid "No stations are associated at this time."
-msgstr "在这个时候没有相关联的站。"
-
-msgid "Attached"
-msgstr "附加的"
-
-msgid "PH State"
-msgstr "PH状态"
-
-msgid "Dialtone"
-msgstr "拨号音"
-
-msgid "Driver Type"
-msgstr "驱动器类型"
-
-msgid "Serial"
-msgstr "串行"
-
-msgid "Power Save"
-msgstr "省电"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3330,6 +3256,81 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "子网掩码"
+
+#~ msgid "Media"
+#~ msgstr "媒体"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "进/出 包"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "进/出 错误"
+
+#~ msgid "Collisions"
+#~ msgstr "冲突"
+
+#~ msgid "Last scan results"
+#~ msgstr "上一次扫描结果"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "比率"
+
+#~ msgid "Signal"
+#~ msgstr "信号"
+
+#~ msgid "Noise"
+#~ msgstr "噪音"
+
+#~ msgid "hidden"
+#~ msgstr "隐藏"
+
+#~ msgid "Associated stations"
+#~ msgstr "相关监测站"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "标志"
+
+#~ msgid "Capabilities"
+#~ msgstr "能力"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "标志：A=授权，E=扩展比率(802.11g)，P=节电模式<br>能力，E=ESS(基础结构模"
+#~ "式)，I=IBSS(ad-hoc 模式)，P=隐私（WEP/TKIP/AES），S=短期序言，s=短期插槽时"
+#~ "间"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "在这个时候没有相关联的站。"
+
+#~ msgid "Attached"
+#~ msgstr "附加的"
+
+#~ msgid "PH State"
+#~ msgstr "PH状态"
+
+#~ msgid "Dialtone"
+#~ msgstr "拨号音"
+
+#~ msgid "Driver Type"
+#~ msgstr "驱动器类型"
+
+#~ msgid "Serial"
+#~ msgstr "串行"
+
+#~ msgid "Power Save"
+#~ msgstr "省电"
 
 #~ msgid "%s days, "
 #~ msgstr "%s 天"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -2993,81 +2993,6 @@ msgstr ""
 "Si vous ne voyez pas de graphique, vous devez installer <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">SVG de Adobe</a>"
 
-msgid "Subnet Mask"
-msgstr "Masque de sous-réseau"
-
-msgid "Media"
-msgstr "Moyen"
-
-msgid "In/Out Packets"
-msgstr "Paquets Réception/Emission"
-
-msgid "In/Out Errors"
-msgstr "Erreurs Réception/Emission"
-
-msgid "Collisions"
-msgstr "Collisions"
-
-msgid "Last scan results"
-msgstr "Résultat du dernier scan"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Taux"
-
-msgid "Signal"
-msgstr "Signal"
-
-msgid "Noise"
-msgstr "Noise"
-
-msgid "hidden"
-msgstr "invisible"
-
-msgid "Associated stations"
-msgstr "Stations associées"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Flags"
-
-msgid "Capabilities"
-msgstr "Capacités"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"Flags: A = autorisé, E = extension Rate (802.11g), P = la puissance en mode "
-"<br> Capacité: E = ESS (mode infrastructure), I = IBSS (mode ad-hoc), P = "
-"mode crypté (WEP / TKIP / AES), S = Short preamble, s = Short slot time"
-
-msgid "No stations are associated at this time."
-msgstr "Pas de stations associées à ce moment."
-
-msgid "Attached"
-msgstr "Lié"
-
-msgid "PH State"
-msgstr "Etat PH"
-
-msgid "Dialtone"
-msgstr "Sonnerie"
-
-msgid "Driver Type"
-msgstr "Driver Type"
-
-msgid "Serial"
-msgstr "Série"
-
-msgid "Power Save"
-msgstr "Economie d'énergie"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3516,6 +3441,82 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Masque de sous-réseau"
+
+#~ msgid "Media"
+#~ msgstr "Moyen"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "Paquets Réception/Emission"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "Erreurs Réception/Emission"
+
+#~ msgid "Collisions"
+#~ msgstr "Collisions"
+
+#~ msgid "Last scan results"
+#~ msgstr "Résultat du dernier scan"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Taux"
+
+#~ msgid "Signal"
+#~ msgstr "Signal"
+
+#~ msgid "Noise"
+#~ msgstr "Noise"
+
+#~ msgid "hidden"
+#~ msgstr "invisible"
+
+#~ msgid "Associated stations"
+#~ msgstr "Stations associées"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Flags"
+
+#~ msgid "Capabilities"
+#~ msgstr "Capacités"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "Flags: A = autorisé, E = extension Rate (802.11g), P = la puissance en "
+#~ "mode <br> Capacité: E = ESS (mode infrastructure), I = IBSS (mode ad-"
+#~ "hoc), P = mode crypté (WEP / TKIP / AES), S = Short preamble, s = Short "
+#~ "slot time"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "Pas de stations associées à ce moment."
+
+#~ msgid "Attached"
+#~ msgstr "Lié"
+
+#~ msgid "PH State"
+#~ msgstr "Etat PH"
+
+#~ msgid "Dialtone"
+#~ msgstr "Sonnerie"
+
+#~ msgid "Driver Type"
+#~ msgstr "Driver Type"
+
+#~ msgid "Serial"
+#~ msgstr "Série"
+
+#~ msgid "Power Save"
+#~ msgstr "Economie d'énergie"
 
 #~ msgid "%s days, "
 #~ msgstr "%s jour(s), "

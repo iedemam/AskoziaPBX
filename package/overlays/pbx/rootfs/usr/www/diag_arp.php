@@ -40,14 +40,14 @@ if (isset($_POST['id']))
 if ($_GET['action'] == "delete") {
 	if (isset($id)) {
 		/* remove arp entry from arp table */
-		mwexec("/usr/sbin/arp -d " . escapeshellarg($id));
+		mwexec("/sbin/arp -d " . escapeshellarg($id));
 
 		/* redirect to avoid reposting form data on refresh */
 		header("Location: diag_arp.php");
 		exit;
 	} else {
 		/* remove all entries from arp table */
-		mwexec("/usr/sbin/arp -d -a");
+		mwexec("/sbin/arp -d -a");
 
 		/* redirect to avoid reposting form data on refresh */
 		header("Location: diag_arp.php");
@@ -59,7 +59,7 @@ $resolve = isset($config['syslog']['resolve']);
 
 include("fbegin.inc");
 
-exec("/usr/sbin/arp -an",$rawdata);
+exec("/sbin/arp -an",$rawdata);
 
 $i = 0; 
 $ifdescrs = array('lan' => gettext('LAN'));

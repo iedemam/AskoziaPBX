@@ -110,9 +110,6 @@
 	/* start the NTP client */
 	system_ntp_configure();
 
-	/* set up termcap */
-	system_set_termcap();
-
 	/* start up asterisk */
 	pbx_configure();
 

@@ -64,7 +64,7 @@ function network_lan_configure() {
 	if (isset($lancfg['dhcp'])) {
 		foreach ($interface_names as $i) {
 			mwexec("/sbin/ifconfig $i up");
-			mwexec("/sbin/udhcpc -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
+			mwexec("/sbin/udhcpc -S -b -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 		}
 	} else {
 		/* deconfigure */
@@ -144,60 +144,65 @@ function network_get_current_public_ip_address() {
 		return $lancfg['extipaddr'];
 
 	} else {
-		return exec("/usr/bin/fetch -q -o - http://ip.askozia.com");
+		return exec("/usr/bin/wget -q -O - http://ip.askozia.com");
 	}
 }
 
-/**
- * Returns the given interface's MAC address
- */
-function network_get_interface_mac($interface) {
-  
-	/* build interface list with netstat */
-	exec("/bin/netstat -I $interface -n", $linkinfo);
-	array_shift($linkinfo);
-	$alink = preg_split("/\s+/", $linkinfo[0]);
-	$mac = chop($alink[3]);
-
-	return $mac;
+function network_get_interface_names() {
+	exec("ls /proc/sys/net/ipv4/conf/ | grep eth", $names);
+	return $names;
 }
 
 /**
  * Returns a list of interfaces with MAC addresses
- * - skips VLAN and other virtual interfaces
- * - also skips WLAN interfaces
  */
 function network_get_interfaces() {
 	
 	global $g;
 
-	exec("ls /proc/sys/net/ipv4/conf/ | grep eth", $i_names);
-	
+	// get network interface names
+	$i_names = network_get_interface_names();
+	// interface information array
 	$iflist = array();
-	
+	// go through each name and populate the interface information array
 	foreach ($i_names as $i) {
 
-		// LINUX TODO : fetch real mac address and link state info
 		if (preg_match("/^(eth)\d/", $i)) {
-			$iflist[$i] = array();
-			$iflist[$i]['mac'] = "00:00:00:00:00:00";
-			$iflist[$i]['up'] = false;
-			
-			/* find out if the link on this interface is up */
-			//unset($ifinfo);
-			//exec("/sbin/ifconfig {$ifname}", $ifinfo);
-			//
-			//foreach ($ifinfo as $ifil) {
-			//	if (preg_match("/status: (.*)$/", $ifil, $matches)) {
-			//		if ($matches[1] == "active")
-			//			$iflist[$ifname]['up'] = true;
-			//		break;
-			//	}
-			//}
+
+			// get ifconfig's output for this interface
+			exec("/sbin/ifconfig $i", $output);
+			$output = implode(" ", $output);
+
+			// grab the mac address
+			preg_match("/HWaddr (\S+)/", $output, $matches);
+			$iflist[$i]['mac'] = $matches[1];
+
+			// grab the ip address
+			preg_match("/inet addr:(\S+)/", $output, $matches);
+			$iflist[$i]['ipaddr'] = $matches[1];
+
+			// grab the subnet
+			preg_match("/Mask:(\S+)/", $output, $matches);
+			$iflist[$i]['subnet'] = netmask_to_cidr_bits($matches[1]);
+
+			// is the interface up
+			preg_match("/\s+(UP)\s+/", $output, $matches);
+			if ($matches[1] == "UP") {
+				$iflist[$i]['up'] = true;
+			} else {
+				$iflist[$i]['up'] = false;
+			}
+
 		}
 	}
-	
 	return $iflist;
+}
+
+function netmask_to_cidr_bits($netmask) {
+	$int = ip2long($netmask);
+	$int = $int - (($int >> 1) & 0x55555555);
+	$int = ($int & 0x33333333) + (($int >> 2) & 0x33333333);
+	return (($int + ($int >> 4) & 0xF0F0F0F) * 0x1010101) >> 24;
 }
 
 /**

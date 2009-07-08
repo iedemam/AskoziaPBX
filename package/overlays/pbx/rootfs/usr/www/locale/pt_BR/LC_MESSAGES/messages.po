@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2695,78 +2695,6 @@ msgstr ""
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
-msgstr ""
-
-msgid "Subnet Mask"
-msgstr ""
-
-msgid "Media"
-msgstr ""
-
-msgid "In/Out Packets"
-msgstr ""
-
-msgid "In/Out Errors"
-msgstr ""
-
-msgid "Collisions"
-msgstr ""
-
-msgid "Last scan results"
-msgstr ""
-
-msgid "BSSID"
-msgstr ""
-
-msgid "Rate"
-msgstr ""
-
-msgid "Signal"
-msgstr ""
-
-msgid "Noise"
-msgstr ""
-
-msgid "hidden"
-msgstr ""
-
-msgid "Associated stations"
-msgstr ""
-
-msgid "RSSI"
-msgstr ""
-
-msgid "Flags"
-msgstr ""
-
-msgid "Capabilities"
-msgstr ""
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-
-msgid "No stations are associated at this time."
-msgstr ""
-
-msgid "Attached"
-msgstr ""
-
-msgid "PH State"
-msgstr ""
-
-msgid "Dialtone"
-msgstr ""
-
-msgid "Driver Type"
-msgstr ""
-
-msgid "Serial"
-msgstr ""
-
-msgid "Power Save"
 msgstr ""
 
 msgid ""

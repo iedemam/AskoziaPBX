@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2836,78 +2836,6 @@ msgstr ""
 "Si no puede ver el gráfico, quizá deba instalar <a href=\"http://www.adobe."
 "com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 
-msgid "Subnet Mask"
-msgstr "Máscara de subred"
-
-msgid "Media"
-msgstr "Media"
-
-msgid "In/Out Packets"
-msgstr "Paquetes entrada/salida"
-
-msgid "In/Out Errors"
-msgstr "Errores entrada/salida"
-
-msgid "Collisions"
-msgstr "Colisiones"
-
-msgid "Last scan results"
-msgstr "Resultados de la última revisión"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Tasa"
-
-msgid "Signal"
-msgstr "Señal"
-
-msgid "Noise"
-msgstr "Ruido"
-
-msgid "hidden"
-msgstr "oculto"
-
-msgid "Associated stations"
-msgstr "Estaciones asociadas"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Flags"
-
-msgid "Capabilities"
-msgstr ""
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-
-msgid "No stations are associated at this time."
-msgstr ""
-
-msgid "Attached"
-msgstr ""
-
-msgid "PH State"
-msgstr ""
-
-msgid "Dialtone"
-msgstr ""
-
-msgid "Driver Type"
-msgstr "Tipo de driver"
-
-msgid "Serial"
-msgstr "Serie"
-
-msgid "Power Save"
-msgstr "Ahorro de energía"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3309,6 +3237,57 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Máscara de subred"
+
+#~ msgid "Media"
+#~ msgstr "Media"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "Paquetes entrada/salida"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "Errores entrada/salida"
+
+#~ msgid "Collisions"
+#~ msgstr "Colisiones"
+
+#~ msgid "Last scan results"
+#~ msgstr "Resultados de la última revisión"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Tasa"
+
+#~ msgid "Signal"
+#~ msgstr "Señal"
+
+#~ msgid "Noise"
+#~ msgstr "Ruido"
+
+#~ msgid "hidden"
+#~ msgstr "oculto"
+
+#~ msgid "Associated stations"
+#~ msgstr "Estaciones asociadas"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Flags"
+
+#~ msgid "Driver Type"
+#~ msgstr "Tipo de driver"
+
+#~ msgid "Serial"
+#~ msgstr "Serie"
+
+#~ msgid "Power Save"
+#~ msgstr "Ahorro de energía"
 
 #~ msgid "%s days, "
 #~ msgstr "%s días, "

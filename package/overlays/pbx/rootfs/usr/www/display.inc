@@ -107,15 +107,15 @@ function display_calculate_pages($filter=null, $logpath, $source, $nentries) {
 
 	if($filter) {
 		if($source == "internal") {
-			$lines = exec("/usr/sbin/clog $logpath | /usr/bin/grep -i $filter | /usr/bin/wc -l");
+			$lines = exec("/sbin/logread | /bin/grep -i $filter | /usr/bin/wc -l");
 		}
 		else {
-			$lines = exec("/usr/bin/grep -i $filter $logpath | /usr/bin/wc -l");
+			$lines = exec("/bin/grep -i $filter $logpath | /usr/bin/wc -l");
 		}
 		$pages = ceil($lines/$nentries);
 	}
 	else {
-		$tmp = exec("/usr/bin/wc -l $logpath");
+		$tmp = exec("/sbin/logread | /usr/bin/wc -l");
 		$lines = preg_split("/\s+/", $tmp, -1, PREG_SPLIT_NO_EMPTY);
 		$pages = ceil($lines[0]/$nentries);
 	}
@@ -150,30 +150,30 @@ function display_get_command($current_page, $nentries, $source, $filter=null, $l
 
 	if($source == "internal") {
 		if($filter && $sort) {
-			$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+			$command = "/sbin/logread | /bin/grep -i \"$filter\" | /usr/bin/tail -r | /bin/sed '$start,$stop!d'";
 		}
 		else if($filter) {
-			$command = "/usr/sbin/clog $logpath | /usr/bin/grep -i \"$filter\" | /usr/bin/sed '$start,$stop!d'";	
+			$command = "/sbin/logread | /bin/grep -i \"$filter\" | /bin/sed '$start,$stop!d'";	
 		}
 		else if($sort) {
-			$command = "/usr/sbin/clog $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+			$command = "/sbin/logread | /usr/bin/tail -r | /bin/sed '$start,$stop!d'";
 		}
 		else {
-			$command = "/usr/sbin/clog $logpath | /usr/bin/sed '$start,$stop!d'";
+			$command = "/sbin/logread | /bin/sed '$start,$stop!d'";
 		}
 	}
 	else {
 		if($filter && $sort) {
-			$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/tail -r | /usr/bin/sed '$start,$stop!d'";
+			$command = "/bin/grep -i \"$filter\" $logpath | /usr/bin/tail -r | /bin/sed '$start,$stop!d'";
 		}
 		else if($filter) {
-			$command = "/usr/bin/grep -i \"$filter\" $logpath | /usr/bin/sed '$start,$stop!d'";
+			$command = "/bin/grep -i \"$filter\" $logpath | /bin/sed '$start,$stop!d'";
 		}
 		else if($sort) {
-			$command = "/usr/bin/tail -r $logpath | /usr/bin/sed '$start,$stop!d'";
+			$command = "/usr/bin/tail -r $logpath | /bin/sed '$start,$stop!d'";
 		}
 		else {
-			$command = "/usr/bin/sed '$start,$stop!d' $logpath";
+			$command = "/bin/sed '$start,$stop!d' $logpath";
 		}
 	}
 	

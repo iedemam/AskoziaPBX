@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3075,82 +3075,6 @@ msgstr ""
 "\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG "
 "viewer</a>."
 
-msgid "Subnet Mask"
-msgstr "Μάσκα υποδικτύου"
-
-msgid "Media"
-msgstr "Μέσον"
-
-msgid "In/Out Packets"
-msgstr "Πακέτα (εισ/εξ)"
-
-msgid "In/Out Errors"
-msgstr "Σφάλματα (εισ/εξ)"
-
-msgid "Collisions"
-msgstr "Συγκρούσεις"
-
-msgid "Last scan results"
-msgstr "Αποτελέσματα τελευταίας σάρωσης"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Ρυθμός"
-
-msgid "Signal"
-msgstr "Σήμα"
-
-msgid "Noise"
-msgstr "Θόρυβος"
-
-msgid "hidden"
-msgstr "κρυφό"
-
-msgid "Associated stations"
-msgstr "Συνδεδεμένοι σταθμοί"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Ενδείξεις"
-
-msgid "Capabilities"
-msgstr "Δυνατότητες"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"Ενδείξεις: A = Πιστοποιημένο, E = Εκτεταμένη ταχύτητα (802.11g), P = "
-"Κατάσταση εξοικονόμησης ρεύματος<br>Δυνατότητες: E = ESS (infrastructure "
-"mode), I = IBSS (ad-hoc mode), P = Εμπιστευτικότητα (WEP/TKIP/AES), S = "
-"Short preamble, s = Short slot time"
-
-msgid "No stations are associated at this time."
-msgstr "Δεν υπάρχουν συνδεδεμένοι σταθμοί αυτή τη στιγμή."
-
-msgid "Attached"
-msgstr "Συνδεδεμένο"
-
-msgid "PH State"
-msgstr "Κατάσταση PH"
-
-msgid "Dialtone"
-msgstr "Τόνος κλήσης"
-
-msgid "Driver Type"
-msgstr "Είδος οδηγού"
-
-msgid "Serial"
-msgstr "Σειριακό"
-
-msgid "Power Save"
-msgstr "Κατάσταση εξοικονόμησης ενέργειας"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3616,6 +3540,82 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Μάσκα υποδικτύου"
+
+#~ msgid "Media"
+#~ msgstr "Μέσον"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "Πακέτα (εισ/εξ)"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "Σφάλματα (εισ/εξ)"
+
+#~ msgid "Collisions"
+#~ msgstr "Συγκρούσεις"
+
+#~ msgid "Last scan results"
+#~ msgstr "Αποτελέσματα τελευταίας σάρωσης"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Ρυθμός"
+
+#~ msgid "Signal"
+#~ msgstr "Σήμα"
+
+#~ msgid "Noise"
+#~ msgstr "Θόρυβος"
+
+#~ msgid "hidden"
+#~ msgstr "κρυφό"
+
+#~ msgid "Associated stations"
+#~ msgstr "Συνδεδεμένοι σταθμοί"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Ενδείξεις"
+
+#~ msgid "Capabilities"
+#~ msgstr "Δυνατότητες"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "Ενδείξεις: A = Πιστοποιημένο, E = Εκτεταμένη ταχύτητα (802.11g), P = "
+#~ "Κατάσταση εξοικονόμησης ρεύματος<br>Δυνατότητες: E = ESS (infrastructure "
+#~ "mode), I = IBSS (ad-hoc mode), P = Εμπιστευτικότητα (WEP/TKIP/AES), S = "
+#~ "Short preamble, s = Short slot time"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "Δεν υπάρχουν συνδεδεμένοι σταθμοί αυτή τη στιγμή."
+
+#~ msgid "Attached"
+#~ msgstr "Συνδεδεμένο"
+
+#~ msgid "PH State"
+#~ msgstr "Κατάσταση PH"
+
+#~ msgid "Dialtone"
+#~ msgstr "Τόνος κλήσης"
+
+#~ msgid "Driver Type"
+#~ msgstr "Είδος οδηγού"
+
+#~ msgid "Serial"
+#~ msgstr "Σειριακό"
+
+#~ msgid "Power Save"
+#~ msgstr "Κατάσταση εξοικονόμησης ενέργειας"
 
 #~ msgid "%s days, "
 #~ msgstr "%s ημέρες, "

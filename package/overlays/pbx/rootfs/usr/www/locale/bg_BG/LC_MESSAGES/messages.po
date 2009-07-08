@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2994,81 +2994,6 @@ msgstr ""
 "Ако не виждате графиката, може би трябва да инсталирате <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 
-msgid "Subnet Mask"
-msgstr "Маска на Подмрежа"
-
-msgid "Media"
-msgstr "Медия"
-
-msgid "In/Out Packets"
-msgstr "In/Out Пакети"
-
-msgid "In/Out Errors"
-msgstr "In/Out Грешки"
-
-msgid "Collisions"
-msgstr "Колизии"
-
-msgid "Last scan results"
-msgstr "Резултати от последно сканиране"
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Скорост"
-
-msgid "Signal"
-msgstr "Сигнал"
-
-msgid "Noise"
-msgstr "Шум"
-
-msgid "hidden"
-msgstr "скрит"
-
-msgid "Associated stations"
-msgstr "Свързани станции"
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr "Флагове"
-
-msgid "Capabilities"
-msgstr "Възможности"
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-"Флагове: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Възможности: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-
-msgid "No stations are associated at this time."
-msgstr "Няма свързани станции за момента."
-
-msgid "Attached"
-msgstr "Привързани"
-
-msgid "PH State"
-msgstr "PH Състояние"
-
-msgid "Dialtone"
-msgstr "Dialtone"
-
-msgid "Driver Type"
-msgstr "Тип Драйвер"
-
-msgid "Serial"
-msgstr "Сериен"
-
-msgid "Power Save"
-msgstr "Съхранение на Енергия"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3499,6 +3424,81 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Маска на Подмрежа"
+
+#~ msgid "Media"
+#~ msgstr "Медия"
+
+#~ msgid "In/Out Packets"
+#~ msgstr "In/Out Пакети"
+
+#~ msgid "In/Out Errors"
+#~ msgstr "In/Out Грешки"
+
+#~ msgid "Collisions"
+#~ msgstr "Колизии"
+
+#~ msgid "Last scan results"
+#~ msgstr "Резултати от последно сканиране"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Скорост"
+
+#~ msgid "Signal"
+#~ msgstr "Сигнал"
+
+#~ msgid "Noise"
+#~ msgstr "Шум"
+
+#~ msgid "hidden"
+#~ msgstr "скрит"
+
+#~ msgid "Associated stations"
+#~ msgstr "Свързани станции"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Flags"
+#~ msgstr "Флагове"
+
+#~ msgid "Capabilities"
+#~ msgstr "Възможности"
+
+#~ msgid ""
+#~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+#~ msgstr ""
+#~ "Флагове: A = authorized, E = Extended Rate (802.11g), P = Power save "
+#~ "mode<br>Възможности: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
+#~ "mode), P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
+
+#~ msgid "No stations are associated at this time."
+#~ msgstr "Няма свързани станции за момента."
+
+#~ msgid "Attached"
+#~ msgstr "Привързани"
+
+#~ msgid "PH State"
+#~ msgstr "PH Състояние"
+
+#~ msgid "Dialtone"
+#~ msgstr "Dialtone"
+
+#~ msgid "Driver Type"
+#~ msgstr "Тип Драйвер"
+
+#~ msgid "Serial"
+#~ msgstr "Сериен"
+
+#~ msgid "Power Save"
+#~ msgstr "Съхранение на Енергия"
 
 #~ msgid "%s days, "
 #~ msgstr "%s дни, "

@@ -34,7 +34,7 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/pbx.log");
+	exec("/sbin/logread -i -s 262144 /var/log/pbx.log");
 	header("Location: diag_logs_pbx.php");
 	exit;
 }

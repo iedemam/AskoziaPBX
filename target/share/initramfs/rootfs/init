@@ -25,5 +25,4 @@ mkdir /offload /cf /var/etc /var/db
 # setup symbolic links
 ln -s /cf/conf /conf
 
-kill %1
 exec /sbin/init $*

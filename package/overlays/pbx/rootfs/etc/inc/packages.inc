@@ -206,7 +206,7 @@ function packages_get_www_nav() {
 
 function packages_boot_all() {
 
-	printf("LINUX TODO: empty packages_boot_all()\n"); return 0;
+	/*printf("LINUX TODO: empty packages_boot_all()\n");*/ return 0;
 
 	$packages = packages_get_packages();
 
@@ -223,7 +223,7 @@ function packages_boot_all() {
 
 function packages_shutdown_all() {
 
-	printf("LINUX TODO: empty packages_shutdown_all()\n"); return 0;
+	/*printf("LINUX TODO: empty packages_shutdown_all()\n");*/ return 0;
 
 	$packages = packages_get_packages();
 

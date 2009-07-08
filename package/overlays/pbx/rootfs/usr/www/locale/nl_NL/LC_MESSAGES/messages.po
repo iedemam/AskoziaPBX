@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 15:34+0200\n"
+"POT-Creation-Date: 2009-07-08 13:52+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -2921,78 +2921,6 @@ msgid ""
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 
-msgid "Subnet Mask"
-msgstr "Subnet Mask"
-
-msgid "Media"
-msgstr "Media"
-
-msgid "In/Out Packets"
-msgstr ""
-
-msgid "In/Out Errors"
-msgstr ""
-
-msgid "Collisions"
-msgstr "Botsingen"
-
-msgid "Last scan results"
-msgstr ""
-
-msgid "BSSID"
-msgstr "BSSID"
-
-msgid "Rate"
-msgstr "Ratio"
-
-msgid "Signal"
-msgstr "Signaal"
-
-msgid "Noise"
-msgstr "Noise"
-
-msgid "hidden"
-msgstr "verborgen"
-
-msgid "Associated stations"
-msgstr ""
-
-msgid "RSSI"
-msgstr "RSSI"
-
-msgid "Flags"
-msgstr ""
-
-msgid "Capabilities"
-msgstr ""
-
-msgid ""
-"Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
-"mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc mode), "
-"P = privacy (WEP/TKIP/AES), S = Short preamble, s = Short slot time"
-msgstr ""
-
-msgid "No stations are associated at this time."
-msgstr ""
-
-msgid "Attached"
-msgstr "Aangesloten"
-
-msgid "PH State"
-msgstr ""
-
-msgid "Dialtone"
-msgstr "Beltoon"
-
-msgid "Driver Type"
-msgstr ""
-
-msgid "Serial"
-msgstr "Serieël"
-
-msgid "Power Save"
-msgstr "Energie bezuinigen"
-
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
 "Most importantly, the default password should be changed. Then, ensure your "
@@ -3370,6 +3298,45 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Subnet Mask"
+#~ msgstr "Subnet Mask"
+
+#~ msgid "Media"
+#~ msgstr "Media"
+
+#~ msgid "Collisions"
+#~ msgstr "Botsingen"
+
+#~ msgid "BSSID"
+#~ msgstr "BSSID"
+
+#~ msgid "Rate"
+#~ msgstr "Ratio"
+
+#~ msgid "Signal"
+#~ msgstr "Signaal"
+
+#~ msgid "Noise"
+#~ msgstr "Noise"
+
+#~ msgid "hidden"
+#~ msgstr "verborgen"
+
+#~ msgid "RSSI"
+#~ msgstr "RSSI"
+
+#~ msgid "Attached"
+#~ msgstr "Aangesloten"
+
+#~ msgid "Dialtone"
+#~ msgstr "Beltoon"
+
+#~ msgid "Serial"
+#~ msgstr "Serieël"
+
+#~ msgid "Power Save"
+#~ msgstr "Energie bezuinigen"
 
 #~ msgid "%s days, "
 #~ msgstr "%s dagen, "
