@@ -24,7 +24,7 @@ if [ ! "$lx_cpu" ]; then
 fi
 lx_extraversion=""
 lx_kernelrelease=""
-lx_customconf="\$base/architecture/$arch/linux.config"
+lx_customconf="\$base/target/$target/linux.config"
 
 # inject a possible pre-/ post-release patch
 # we filter out .tar`s to avoid trouble with the linuxsh kernel drop-in trees
