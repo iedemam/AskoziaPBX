@@ -376,10 +376,7 @@ function system_password_configure() {
 		$username = "admin";
 	}
 
-	mwexec("echo \"{$config['system']['password']}\n".
-		"{$config['system']['password']}\n".
-		"\n".
-		"\" | /usr/sbin/chpasswd root");
+	mwexec("echo \"root:{$config['system']['password']}\" | /usr/sbin/chpasswd -e");
 
 	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
 

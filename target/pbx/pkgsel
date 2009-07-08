@@ -54,8 +54,8 @@ X dahdi-tools
 X asterisk
 
 # text to speech
-X flite
-X app_flite
+#X flite
+#X app_flite
 
 # prompt sets
 X core-en-ulaw-base

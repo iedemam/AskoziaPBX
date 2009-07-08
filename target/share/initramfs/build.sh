@@ -59,7 +59,7 @@ find $build_root -printf "%P\n" | sed '
   /lib\/modules/						d;
 /\/opt/									d;
 /\/src/									d;
-/\/terminfo/							d;
+#/\/terminfo/							d;
   /usr\/bin\/aclocal/					d;
   /usr\/bin\/auto/						d;
   /usr\/bin\/bison/						d;
