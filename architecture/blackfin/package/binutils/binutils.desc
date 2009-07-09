@@ -12,7 +12,6 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- T2-COPYRIGHT-NOTE-END ---
 
-[V] 2.17-bfin-2009r1rc4
+[V] 2.17-bfin-r3342
 
-#[D] 0 binutils-2.17-bfin-2009r1rc4.tar.bz2 svn://sources.blackfin.uclinux.org/toolchain/tags/toolchain_09r1_rc4/binutils-2.17 -r HEAD
-[D] 0 binutils-2.17-bfin-2009r1rc4.tar.bz2 http://downloads.askozia.com/dist/
+[D] 0 binutils-2.17-bfin-r3342.tar.bz2 svn://sources.blackfin.uclinux.org/toolchain/trunk/binutils-2.17 -r 3342

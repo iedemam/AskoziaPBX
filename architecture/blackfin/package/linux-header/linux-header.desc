@@ -12,8 +12,5 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- T2-COPYRIGHT-NOTE-END ---
 
-[V] 2.6.2x.xx-bfin-r5494
-
-[D] 0 linux-kernel-2.6.2x.xx-bfin-r5494.tar.bz2 svn://sources.blackfin.uclinux.org/linux-kernel/trunk -r 5494
-#[D] 0 linux-kernel-2.6.2x.xx-bfin-2008r1.5_rc3.tar.bz2 svn://sources.blackfin.uclinux.org/linux-kernel/tags/2008R1.5-RC3 -r HEAD
-#[D] 0 linux-kernel-2.6.2x.xx-bfin-2008r1.5_rc3.tar.bz2 http://downloads.askozia.com/dist/
+[V] 2.6.30-bfin-r5494
+[D] 0 linux-kernel-2.6.30-bfin-r5494.tar.bz2 svn://sources.blackfin.uclinux.org/linux-kernel/trunk -r 5494
