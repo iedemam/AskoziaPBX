@@ -12,14 +12,14 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-#Description: AskoziaPBX - Generic PC
+#Description: AskoziaPBX - Auerswald Compact 3000
+
+# architecture
+SDECFGSET_ARCH="blackfin"
+SDECFG_BFIN_OPT="bf527"
 
 # select init
 SDECFGSET_INIT='busybox'
-
-# architecture
-SDECFG_ARCH="x86"
-SDECFG_X86_OPT="i486"
 
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"

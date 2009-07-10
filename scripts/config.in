@@ -73,7 +73,7 @@ CFGTEMP_IMAGELIST=""
 comment_id '- Target Distribution' COMMENT_TARGET
 
 block_begin 7
-	choice SDECFG_TARGET pbx $CFGTEMP_TARGETLIST
+	choice SDECFG_TARGET pbx-generic-pc $CFGTEMP_TARGETLIST
 	SDECFG_ID="$SDECFG_ID-$SDECFG_TARGET"
 
 	# detect the target chain
