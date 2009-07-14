@@ -219,6 +219,8 @@ KERNEL=="hd[a-z]", BUS=="ide", SYSFS{removable}=="1", PROGRAM=="/lib/udev/ide-me
 
 KERNEL=="hd[a-z]*", BUS=="ide", SYSFS{removable}=="1", NAME{ignore_remove}="%k"
 
+KERNEL=="sd*", SUBSYSTEMS=="scsi", ATTRS{model}=="USB 2.0 Storage Device", SYMLINK+="usbhd%n"
+
 ACTION=="add", SUBSYSTEM=="usb_device", PROGRAM="/bin/sh -c 'X=%k X=$${X#usbdev} B=$${X%%%%.*} D=$${X#*.}; echo bus/usb/$$B/$$D'", SYMLINK+="%c"
 
 # kernel firmware loader
