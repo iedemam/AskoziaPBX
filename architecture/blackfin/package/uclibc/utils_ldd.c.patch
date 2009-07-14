@@ -1,0 +1,14 @@
+--- uClibc/utils/ldd.c.orig	2009-07-14 16:02:53.000000000 +0200
++++ uClibc/utils/ldd.c	2009-07-14 16:04:13.000000000 +0200
+@@ -120,6 +120,11 @@
+ #define ELFCLASSM	ELFCLASS64
+ #endif
+ 
++#if defined(BFIN)
++#define MATCH_MACHINE(x) (x == EM_BLACKFIN)
++#define ELFCLASSM	ELFCLASS32
++#endif
++
+ #ifndef MATCH_MACHINE
+ # ifdef __linux__
+ #  include <asm/elf.h>
