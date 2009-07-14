@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -89,17 +89,13 @@ EOD;
 				}
 			}
 		} else {
-			/* probe kernel known disks until we find one with config.xml */
-			//$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
-			$disks = array("hda");	// linux hack
-			foreach ($disks as $mountdisk) {
-				/* skip mfs mounted filesystems */
-				if (strstr($mountdisk, "md"))
-					continue;
-				if (mwexec("/bin/mount -r /dev/{$mountdisk}1 {$g['cf_path']}") == 0) {
+			/* iterate through the disks fdisk finds until one contains a config.xml */
+			exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
+			foreach ($disks as $disk) {
+				if (mwexec("/bin/mount -r /dev/{$disk}1 {$g['cf_path']}") == 0) {
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						/* found it */
-						$cfgdevice = $mountdisk;
+						$cfgdevice = $disk;
 						$cfgpartition = $cfgdevice . "1";
 						$cfgfstype = "ext2";
 						echo "Found configuration on $cfgdevice.\n";
