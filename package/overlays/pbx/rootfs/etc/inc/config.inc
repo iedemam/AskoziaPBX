@@ -90,21 +90,36 @@ EOD;
 			}
 		} else {
 			/* iterate through the disks fdisk finds until one contains a config.xml */
-			exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
-			foreach ($disks as $disk) {
-				if (mwexec("/bin/mount -r /dev/{$disk}1 {$g['cf_path']}") == 0) {
-					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
-						/* found it */
-						$cfgdevice = $disk;
-						$cfgpartition = $cfgdevice . "1";
-						$cfgfstype = "ext2";
-						echo "Found configuration on $cfgdevice.\n";
+			$attempts = 2;
+			while ($attempts--) {
+				exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
+				echo "Found disks: " . implode(", ", $disks) . "\n";
+				foreach ($disks as $disk) {
+					echo "Looking for configuration on: $disk\n";
+					if (mwexec("/bin/mount -r /dev/{$disk}1 {$g['cf_path']}") == 0) {
+						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
+							$cfgdevice = $disk;
+							$cfgpartition = $cfgdevice . "1";
+							$cfgfstype = "ext2";
+							echo "Found configuration on $cfgdevice.\n";
+						}
+
+						mwexec("/bin/umount -f {$g['cf_path']}");
+
+						if ($cfgdevice) {
+							break;
+						}
 					}
-					
-					mwexec("/bin/umount -f {$g['cf_path']}");
-					
-					if ($cfgdevice)
-						break;
+				}
+
+				if ($cfgdevice) {
+					break;
+				}
+
+				if ($attempts) {
+					echo "Configuration not found.\n";
+					echo "Waiting for devices to settle and attempting again.\n";
+					sleep(5);
 				}
 			}
 		}
