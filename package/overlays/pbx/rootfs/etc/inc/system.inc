@@ -166,77 +166,103 @@ function system_routing_enable() {
 function system_syslogd_start() {
 	global $config, $g;
 
-	$syslogcfg = $config['syslog'];
-	$logging_pkg = packages_get_package("logging");
+	/*
+	LINUX TODO : Logging currently runs everything into
+	a single destination. This is OK but the GUI should
+	be extended to only show a single summary page (maybe
+	with filter buttons "All, PBX, CDR, etc...")
+	if no 'logging service' is enabled. If it is enabled,
+	the page should display all tabs again. CDR to Syslog
+	needs to be replaced with something more robust if
+	that service is enabled.
+	For now, let's not kill and restart the daemon for
+	each configuration change since that deletes our
+	in-memory buffer!
+	Long story short...logs need a rewrite!
+	*/
+
+	$retval = 0;
 
 	if ($g['booting']) {
 		echo "Starting syslog service... ";
-	} else {
-		killbypid("{$g['varrun_path']}/syslog.pid");
-	}
-
-	/* write syslog.conf */
-	$fd = fopen("{$g['etc_path']}/syslog.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
-		return 1;
-	}
-
-	$syslogconf = <<<EOD
-local0.*;mail.*							%/var/log/pbx.log
-local1.*								%/var/log/cdr.log
-*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; %/var/log/system.log
-security.*								%/var/log/system.log
-auth.info;authpriv.info;daemon.info		%/var/log/system.log
-*.emerg									*
-
-EOD;
-
-	if (isset($logging_pkg['active'])) {
-		$logpath = $logging_pkg['datapath'] . "/system";
-		$syslogconf .= <<<EOD
-local0.*;mail.*							$logpath/pbx.log
-*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; $logpath/system.log
-security.*								$logpath/system.log
-auth.info;authpriv.info;daemon.info		$logpath/system.log
-
-EOD;
-	}
-
-	if (isset($syslogcfg['enable'])) {
-
-		if (isset($syslogcfg['system'])) {
-			$syslogconf .= <<<EOD
-*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; @{$syslogcfg['remoteserver']}
-security.*								@{$syslogcfg['remoteserver']}
-auth.info;authpriv.info;daemon.info		@{$syslogcfg['remoteserver']}
-
-EOD;
-		}
-		if (isset($syslogcfg['asterisk'])) {
-			$syslogconf .= <<<EOD
-local0.*								@{$syslogcfg['remoteserver']}
-
-EOD;
-		}
-		if (isset($syslogcfg['cdr'])) {
-			$syslogconf .= <<<EOD
-local1.*								@{$syslogcfg['remoteserver']}
-
-EOD;
-		}
-	}
-
-	fwrite($fd, $syslogconf);
-	fclose($fd);
-	
-	$retval = mwexec("/sbin/syslogd -C1024");
-
-	if ($g['booting']) {
+		$retval = mwexec("/sbin/syslogd -C1024");
 		echo "done\n";
 	}
-	
+
 	return $retval;
+
+
+//	$syslogcfg = $config['syslog'];
+//	$logging_pkg = packages_get_package("logging");
+//
+//	if ($g['booting']) {
+//		echo "Starting syslog service... ";
+//	} else {
+//		killbypid("{$g['varrun_path']}/syslog.pid");
+//	}
+//
+//	/* write syslog.conf */
+//	$fd = fopen("{$g['etc_path']}/syslog.conf", "w");
+//	if (!$fd) {
+//		printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
+//		return 1;
+//	}
+//
+//	$syslogconf = <<<EOD
+//local0.*;mail.*							%/var/log/pbx.log
+//local1.*								%/var/log/cdr.log
+//*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; %/var/log/system.log
+//security.*								%/var/log/system.log
+//auth.info;authpriv.info;daemon.info		%/var/log/system.log
+//*.emerg									*
+//
+//EOD;
+//
+//	if (isset($logging_pkg['active'])) {
+//		$logpath = $logging_pkg['datapath'] . "/system";
+//		$syslogconf .= <<<EOD
+//local0.*;mail.*							$logpath/pbx.log
+//*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; $logpath/system.log
+//security.*								$logpath/system.log
+//auth.info;authpriv.info;daemon.info		$logpath/system.log
+//
+//EOD;
+//	}
+//
+//	if (isset($syslogcfg['enable'])) {
+//
+//		if (isset($syslogcfg['system'])) {
+//			$syslogconf .= <<<EOD
+//*.notice;kern.debug;lpr.info;mail.none;news.err;local0.none;local1.none; @{$syslogcfg['remoteserver']}
+//security.*								@{$syslogcfg['remoteserver']}
+//auth.info;authpriv.info;daemon.info		@{$syslogcfg['remoteserver']}
+//
+//EOD;
+//		}
+//		if (isset($syslogcfg['asterisk'])) {
+//			$syslogconf .= <<<EOD
+//local0.*								@{$syslogcfg['remoteserver']}
+//
+//EOD;
+//		}
+//		if (isset($syslogcfg['cdr'])) {
+//			$syslogconf .= <<<EOD
+//local1.*								@{$syslogcfg['remoteserver']}
+//
+//EOD;
+//		}
+//	}
+//
+//	fwrite($fd, $syslogconf);
+//	fclose($fd);
+//	
+//	$retval = mwexec("/sbin/syslogd -C1024");
+//
+//	if ($g['booting']) {
+//		echo "done\n";
+//	}
+//	
+//	return $retval;
 }
 
 /**

@@ -150,13 +150,13 @@ function display_get_command($current_page, $nentries, $source, $filter=null, $l
 
 	if($source == "internal") {
 		if($filter && $sort) {
-			$command = "/sbin/logread | /bin/grep -i \"$filter\" | /usr/bin/tail -r | /bin/sed '$start,$stop!d'";
+			$command = "/sbin/logread | /bin/grep -i \"$filter\" | /usr/bin/tac | /bin/sed '$start,$stop!d'";
 		}
 		else if($filter) {
 			$command = "/sbin/logread | /bin/grep -i \"$filter\" | /bin/sed '$start,$stop!d'";	
 		}
 		else if($sort) {
-			$command = "/sbin/logread | /usr/bin/tail -r | /bin/sed '$start,$stop!d'";
+			$command = "/sbin/logread | /usr/bin/tac | /bin/sed '$start,$stop!d'";
 		}
 		else {
 			$command = "/sbin/logread | /bin/sed '$start,$stop!d'";
@@ -164,13 +164,13 @@ function display_get_command($current_page, $nentries, $source, $filter=null, $l
 	}
 	else {
 		if($filter && $sort) {
-			$command = "/bin/grep -i \"$filter\" $logpath | /usr/bin/tail -r | /bin/sed '$start,$stop!d'";
+			$command = "/bin/grep -i \"$filter\" $logpath | /usr/bin/tac | /bin/sed '$start,$stop!d'";
 		}
 		else if($filter) {
 			$command = "/bin/grep -i \"$filter\" $logpath | /bin/sed '$start,$stop!d'";
 		}
 		else if($sort) {
-			$command = "/usr/bin/tail -r $logpath | /bin/sed '$start,$stop!d'";
+			$command = "/usr/bin/tac | $logpath | /bin/sed '$start,$stop!d'";
 		}
 		else {
 			$command = "/bin/sed '$start,$stop!d' $logpath";
