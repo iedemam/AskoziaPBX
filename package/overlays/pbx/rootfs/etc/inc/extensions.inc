@@ -813,7 +813,7 @@ function extensions_generate_application_context($a) {
 		$conf = "; " . $a['name'] . "\n";
 		$conf .= "[" . $a['uniqid'] . "]\n";
 		foreach ($a['app-command'] as $ac) {
-			$conf .= "exten => _[0-9*#]!," . base64_decode($ac) . "\n";
+			$conf .= "exten => _[0-9a-zA-Z*#]!," . base64_decode($ac) . "\n";
 		}
 		foreach ($a['app-command'] as $ac) {
 			$conf .= "exten => s," . base64_decode($ac) . "\n";
