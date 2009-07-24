@@ -160,7 +160,7 @@ $prompt_languages = array(
 	"jp" => gettext("Japanese"),
 	"pt-br" => gettext("Portuguese (Brazil)"),
 	"ru" => gettext("Russian"),
-	"es" => gettext("Spanish"),
+	"es-es" => gettext("Spanish"),
 	"se" => gettext("Swedish")
 );
 
