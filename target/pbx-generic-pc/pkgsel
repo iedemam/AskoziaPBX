@@ -42,6 +42,7 @@ X openssl
 X libtool
 X gettext
 X bzip2
+X alsa-lib
 
 # asterisk + dahdi + mISDN
 X bison
