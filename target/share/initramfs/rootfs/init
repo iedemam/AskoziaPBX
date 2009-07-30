@@ -4,11 +4,13 @@ HOME=/
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 export HOME PATH
 
-echo "Mounting /dev, /proc, /usbfs and /sys ..."
-mount -t tmpfs none /dev -o mode=755
-mount -t proc  none /proc
-mount -t usbfs none /proc/bus/usb 2> /dev/null
-mount -t sysfs none /sys
+echo "Mounting /dev, /dev/pts, /proc, /usbfs and /sys ..."
+mount -t tmpfs  none /dev -o mode=755
+mkdir /dev/pts
+mount -t devpts none /dev/pts
+mount -t proc   none /proc
+mount -t usbfs  none /proc/bus/usb 2> /dev/null
+mount -t sysfs  none /sys
 ln -s /proc/self/fd /dev/fd
 
 echo "Populating u/dev ..."
