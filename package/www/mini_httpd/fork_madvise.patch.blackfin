@@ -1,0 +1,47 @@
+--- mini_httpd-1.19/mini_httpd.c.orig	2009-07-31 10:58:02.000000000 +0200
++++ mini_httpd-1.19/mini_httpd.c	2009-07-31 11:09:07.000000000 +0200
+@@ -573,7 +573,7 @@
+ 	    exit( 1 );
+ 	    }
+ #else
+-	switch ( fork() )
++	switch ( vfork() )
+ 	    {
+ 	    case 0:
+ 	    break;
+@@ -828,7 +828,7 @@
+ 	    }
+ 
+ 	/* Fork a sub-process to handle the connection. */
+-	r = fork();
++	r = vfork();
+ 	if ( r < 0 )
+ 	    {
+ 	    syslog( LOG_CRIT, "fork - %m" );
+@@ -1730,7 +1730,7 @@
+ 
+ 	if ( pipe( p ) < 0 )
+ 	    send_error( 500, "Internal Error", "", "Something unexpected went wrong making a pipe." );
+-	r = fork();
++	r = vfork();
+ 	if ( r < 0 )
+ 	    send_error( 500, "Internal Error", "", "Something unexpected went wrong forking an interposer." );
+ 	if ( r == 0 )
+@@ -1772,7 +1772,7 @@
+ 
+ 	if ( pipe( p ) < 0 )
+ 	    send_error( 500, "Internal Error", "", "Something unexpected went wrong making a pipe." );
+-	r = fork();
++	r = vfork();
+ 	if ( r < 0 )
+ 	    send_error( 500, "Internal Error", "", "Something unexpected went wrong forking an interposer." );
+ 	if ( r == 0 )
+@@ -2589,7 +2589,7 @@
+ 	    (void) my_write( ptr, size_size );
+ 	    (void) munmap( ptr, size_size );
+ 	    }
+-#ifdef MADV_SEQUENTIAL
++#if 0
+ 	/* If we have madvise, might as well call it.  Although sequential
+ 	** access is probably already the default.
+ 	*/
