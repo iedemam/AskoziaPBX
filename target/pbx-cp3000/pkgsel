@@ -27,12 +27,9 @@ X gcc
 # layout + kernel
 X 00-dirtree
 X linux-header
-#X linux26
+X linux26
 #X udev
 X uclibc
-
-# boot stuff
-#X grub
 
 # common deps
 X automake
@@ -52,7 +49,7 @@ X libpri
 X dahdi-linux
 X dahdi-tools
 #X misdnuser
-#X asterisk
+X asterisk
 
 # text to speech
 #X flite
@@ -96,4 +93,4 @@ X msmtp
 X msntp
 X php4
 X ezipupdate
-#X mini_httpd
+X mini_httpd
