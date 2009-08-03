@@ -1,0 +1,462 @@
+--- dahdi-linux-2.2.0/drivers/dahdi/wcb4xxp/base.c.orig	2009-08-03 13:46:16.000000000 +0200
++++ dahdi-linux-2.2.0/drivers/dahdi/wcb4xxp/base.c	2009-08-03 14:27:49.000000000 +0200
+@@ -47,6 +47,14 @@
+ 
+ #include "wcb4xxp.h"
+ 
++#ifndef BIT
++#define BIT(i)			(1UL << (i))
++#endif
++#define BIT_SET(x, i)		((x) |= BIT(i))
++#define BIT_CLR(x, i)		((x) &= ~BIT(i))
++#define IS_SET(x, i)		(((x) & BIT(i)) != 0)
++#define BITMASK(i)		(((u64)1 << (i)) - 1)
++
+ #if (DAHDI_CHUNKSIZE != 8)
+ #error Sorry, wcb4xxp does not support chunksize != 8
+ #endif
+@@ -72,10 +80,10 @@
+ #define DBG_HDLC		(debug & DEBUG_HDLC)
+ #define DBG_ALARM		(debug & DEBUG_ALARM)
+ 
+-#define DBG_SPANFILTER		((1 << bspan->port) & spanfilter)
++#define DBG_SPANFILTER		(BIT(bspan->port) & spanfilter)
+ 
+ static int debug = 0;
+-static int spanfilter = 15;
++static int spanfilter = 0xFF;	/* Bitmap for ports 1-8 */
+ #ifdef LOOPBACK_SUPPORTED
+ static int loopback = 0;
+ #endif
+@@ -114,9 +122,22 @@
+ struct devtype {
+ 	char *desc;
+ 	unsigned int flags;
++	int ports;			/* Number of ports the card has */
++	enum cards_ids card_type;	/* Card type - Digium B410P...  */
+ };
+ 
+-static struct devtype wcb4xxp = { "Wildcard B410P", 0 };
++static struct devtype wcb4xxp =		{"Wildcard B410P", .ports = 4, .card_type = B410P  };
++static struct devtype hfc2s =		{"HFC-2S Junghanns.NET duoBRI PCI", .ports = 2, .card_type = DUOBRI };
++static struct devtype hfc4s =		{"HFC-4S Junghanns.NET quadBRI PCI", .ports = 4, .card_type = QUADBRI };
++static struct devtype hfc8s =		{"HFC-4S Junghanns.NET octoBRI PCI", .ports = 8, .card_type = OCTOBRI };
++static struct devtype hfc2s_OV =	{"OpenVox B200P", .ports = 2, .card_type = B200P_OV };
++static struct devtype hfc4s_OV =	{"OpenVox B400P", .ports = 4, .card_type = B400P_OV };
++static struct devtype hfc8s_OV =	{"OpenVox B800P", .ports = 8, .card_type = B800P_OV };
++static struct devtype hfc2s_BN =	{"BeroNet BN2S0", .ports = 2, .card_type = BN2S0 };
++static struct devtype hfc4s_BN =	{"BeroNet BN4S0", .ports = 4, .card_type = BN4S0 };
++static struct devtype hfc8s_BN =	{"BeroNet BN8S0", .ports = 8, .card_type = BN8S0 };
++ 
++#define CARD_HAS_EC(card) ((card)->card_type == B410P)
+ 
+ static int echocan_create(struct dahdi_chan *chan, struct dahdi_echocanparams *ecp,
+ 			   struct dahdi_echocanparam *p, struct dahdi_echocan_state **ec);
+@@ -403,7 +424,18 @@
+ 
+ 	mb();
+ 
+-	b4xxp_setreg8(b4, R_GPIO_SEL, 0xf0);	/* GPIO0..7 S/T, 8..15 GPIO */
++	switch (b4->card_type) {
++		case OCTOBRI:  /* fall through */
++		case B800P_OV: /* fall through */
++		case BN8S0:
++			/* GPIO0..15 S/T - HFC-8S uses GPIO8-15 for S/T ports 5-8 */
++			b4xxp_setreg8(b4, R_GPIO_SEL, 0x00);
++			break;
++		default:
++			/* GPIO0..7 S/T, 8..15 GPIO */
++			b4xxp_setreg8(b4, R_GPIO_SEL, 0xf0);
++			break;
++	}
+ 
+ 	mb();
+ 
+@@ -618,13 +650,17 @@
+ 	unsigned char b;
+ 	unsigned int i, j, mask;
+ 
++	if (!CARD_HAS_EC(b4)) {
++		return;
++	}
++
+ /* Setup GPIO */
+ 	for (i=0; i < NUM_EC; i++) {
+ 		b = ec_read(b4, i, 0x1a0);
+ 
+ 		dev_info(b4->dev, "VPM %d/%d init: chip ver %02x\n", i, NUM_EC - 1, b);
+ 
+-		for (j=0; j < 4; j++) {
++		for (j=0; j < b4->numspans; j++) {
+ 			ec_write(b4, i, 0x1a8 + j, 0x00);	/* GPIO out */
+ 			ec_write(b4, i, 0x1ac + j, 0x00);	/* GPIO dir */
+ 			ec_write(b4, i, 0x1b0 + j, 0x00);	/* GPIO sel */
+@@ -1008,7 +1044,18 @@
+ 	int fifo, hfc_chan;
+ 	unsigned long irq_flags;
+ 
+-	fifo = port + 8;
++	switch (b4->card_type) {
++		case B800P_OV: /* fall through */
++		case OCTOBRI: /* fall through */
++		case BN8S0:
++			/* In HFC-8S cards we can't use ports 8-11 for dchan FIFOs */
++			fifo = port + 16;
++			break;
++		default:
++			fifo = port + 8;
++			break;
++	}
++
+ 	hfc_chan = (port * 4) + 2;
+ 
+ /* record the host's FIFO # in the span fifo array */
+@@ -1210,7 +1257,7 @@
+ 	int i, j;
+ 	struct b4xxp_span *s;
+ 
+-	for (i=0; i < 4; i++) {
++	for (i=0; i < b4->numspans; i++) {
+ 		s = &b4->spans[i];
+ 
+ 		for (j=HFC_T1; j <= HFC_T3; j++) {
+@@ -1413,15 +1460,25 @@
+ 
+ 	gpio = b4xxp_getreg8(b4, R_GPI_IN3);
+ 
+-	for (i=0; i < 4; i++) {
++	for (i=0; i < b4->numspans; i++) {
+ 		s = &b4->spans[i];
+ 		s->parent = b4;
+ 		s->port = i;
+ 
+-		nt = ((gpio & (1 << (i + 4))) == 0);		/* GPIO=0 = NT mode */
+-		s->te_mode = !nt;
++		/* The way the Digium B410P card reads the NT/TE mode
++		 * jumper is the oposite of how other HFC-4S cards do:
++		 * - In B410P: GPIO=0: NT
++		 * - In Junghanns: GPIO=0: TE
++		 */
++		if (b4->card_type == B410P) {
++			nt = ((gpio & (1 << (i + 4))) == 0);
++		} else {
++			nt = ((gpio & (1 << (i + 4))) != 0);
++		}
+ 
+-		dev_info(b4->dev, "Port %d: %s mode\n", i + 1, (nt ? "NT" : "TE"));
++		s->te_mode = !nt;
++		//dev_info(b4->dev, "Port %d: %s mode\n", i + 1, (nt ? "NT" : "TE"));
++		dev_info(b4->dev, "Port %d: %s mode\n", i , (nt ? "NT" : "TE"));
+ 
+ 		hfc_reset_st(s);
+ 		hfc_start_st(s);
+@@ -1774,9 +1831,15 @@
+ 
+ /*
+  * set up the clock controller
+- * we have a 24.576MHz crystal, so the PCM clock is 2x the incoming clock.
++ * B410P has a 24.576MHz crystal, so the PCM clock is 2x the incoming clock.
++ * Other cards have a 49.152Mhz crystal, so the PCM clock equals incoming clock.
+  */
+-	b4xxp_setreg8(b4, R_BRG_PCM_CFG, 0x02);
++	if (b4->card_type == B410P) {
++		b4xxp_setreg8(b4, R_BRG_PCM_CFG, 0x02);
++	} else {
++		b4xxp_setreg8(b4, R_BRG_PCM_CFG, V_PCM_CLK);
++	}
++
+ 	flush_pci();
+ 
+ 	udelay(100);				/* wait a bit for clock to settle */
+@@ -1807,7 +1870,7 @@
+ 
+ /*
+  * set up the flow controller.
+- * B channel map:
++ * B channel map: (4 ports cards with Hardware Echo Cancel present & active)
+  * FIFO 0 connects Port 1 B0 using HFC channel 16 and PCM timeslots 0/1.
+  * FIFO 1 connects Port 1 B1 using HFC channel 17 and PCM timeslots 4/5.
+  * FIFO 2 connects Port 2 B0 using HFC channel 20 and PCM timeslots 8/9.
+@@ -1822,14 +1885,35 @@
+  *
+  * D channels are handled by FIFOs 8-11.
+  * FIFO 8 connects Port 1 D using HFC channel 3
+- * FIFO 9 connects Port 1 D using HFC channel 7
+- * FIFO 10 connects Port 1 D using HFC channel 11
+- * FIFO 11 connects Port 1 D using HFC channel 15
++ * FIFO 9 connects Port 2 D using HFC channel 7
++ * FIFO 10 connects Port 3 D using HFC channel 11
++ * FIFO 11 connects Port 4 D using HFC channel 15
++ *
++ * D channel FIFOs are operated in HDLC mode and interrupt on end of frame.
+  *
++ * B channel map: (8 ports cards without Hardware Echo Cancel)
++ * FIFO 0 connects Port 1 B0 using HFC channel 0
++ * FIFO 1 connects Port 1 B1 using HFC channel 1
++ * FIFO 2 connects Port 2 B0 using HFC channel 4
++ * FIFO 3 connects Port 2 B1 using HFC channel 5
++ * .........................
++ * FIFO 14 connects Port 8 B0 using HFC channel 28
++ * FIFO 15 connects Port 8 B1 using HFC channel 29
++ *
++ * All B channel FIFOs have their HDLC controller in transparent mode,
++ * and only the FIFO for B0 on each port has its interrupt operational.
++ *
++ * D channels are handled by FIFOs 16-23.
++ * FIFO 16 connects Port 1 D using HFC channel 3
++ * FIFO 17 connects Port 2 D using HFC channel 7
++ * FIFO 18 connects Port 3 D using HFC channel 11
++ * FIFO 19 connects Port 4 D using HFC channel 15
++ * ................
++ * FIFO 23 connects Port 8 D using HFC channel 31
+  * D channel FIFOs are operated in HDLC mode and interrupt on end of frame.
+  */
+ 	for (span=0; span < b4->numspans; span++) {
+-		if (vpmsupport) {
++		if ((vpmsupport) && (CARD_HAS_EC(b4))) {
+ 			hfc_assign_bchan_fifo_ec(b4, span, 0);
+ 			hfc_assign_bchan_fifo_ec(b4, span, 1);
+ 		} else {
+@@ -1854,6 +1938,79 @@
+ 	ec_write(b4, 0, 0x1a8 + 3, val);
+ }
+ 
++static void b4xxp_update_leds_hfc_8s(struct b4xxp *b4)
++{
++	unsigned long lled = 0; /* A bit set is a led OFF */
++	unsigned long leddw;
++	int j;
++	struct b4xxp_span *bspan;
++
++	b4->blinktimer++;
++	for (j = 7; j >= 0; j--) {
++		bspan = &b4->spans[7 - j];
++		if (!(bspan->span.flags & DAHDI_FLAG_RUNNING) ||
++				bspan->span.alarms) {
++			BIT_SET(lled, j);
++			continue;  /* Led OFF */
++		}
++
++		if (bspan->span.mainttimer || bspan->span.maintstat) {
++			/* Led Blinking in maint state */
++			if (b4->blinktimer >= 0x7f)
++				BIT_SET(lled, j);
++		}
++		/* Else: Led on */
++	}
++
++	/* Write Leds...*/
++	leddw = lled << 24 | lled << 16 | lled << 8 | lled;
++	b4xxp_setreg8(b4, R_BRG_PCM_CFG, 0x21);
++	iowrite16(0x4000, b4->ioaddr + 4);
++	iowrite32(leddw, b4->ioaddr);
++	b4xxp_setreg8(b4, R_BRG_PCM_CFG, 0x20);
++
++	if (b4->blinktimer == 0xff)
++		b4->blinktimer = -1;
++}
++
++/* So far only tested for OpenVox cards. Please test it for other hardware */
++static void b4xxp_update_leds_hfc(struct b4xxp *b4)
++{
++	int i;
++	int leds = 0, green_leds = 0; /* Default: off */
++	struct b4xxp_span *bspan;
++
++	b4->blinktimer++;
++	for (i=0; i < b4->numspans; i++) {
++		bspan = &b4->spans[i];
++
++		if (!(bspan->span.flags & DAHDI_FLAG_RUNNING))
++			continue; /* Leds are off */
++
++		if (bspan->span.alarms) {
++			/* Red blinking -> Alarm */
++			if (b4->blinktimer >= 0x7f)
++				BIT_SET(leds, i);
++		} else if (bspan->span.mainttimer || bspan->span.maintstat) {
++			/* Green blinking -> Maint status */
++			if (b4->blinktimer >= 0x7f)
++				BIT_SET(green_leds, i);
++		} else {
++			/* Steady grean -> No Alarm */
++			BIT_SET(green_leds, i);
++		}
++	}
++
++	/* Actually set them. for red: just set the bit in R_GPIO_EN1.
++	   For green: in both R_GPIO_EN1 and R_GPIO_OUT1. */
++	leds |= green_leds;
++	b4xxp_setreg8(b4, R_GPIO_EN1, leds);
++	b4xxp_setreg8(b4, R_GPIO_OUT1, green_leds);
++
++	if (b4->blinktimer == 0xff)
++		b4->blinktimer = -1;
++}
++
+ static void b4xxp_set_span_led(struct b4xxp *b4, int span, unsigned char val)
+ {
+ 	int shift, spanmask;
+@@ -1871,6 +2028,18 @@
+ 	int i;
+ 	struct b4xxp_span *bspan;
+ 
++	if (b4->numspans == 8) {
++		/* Use the alternative function for non-Digium HFC-8S cards */
++		b4xxp_update_leds_hfc_8s(b4);
++		return;
++	}
++
++	if (b4->card_type != B410P) {
++		/* Use the alternative function for non-Digium HFC-4S cards */
++		b4xxp_update_leds_hfc(b4);
++		return;
++	}
++
+ 	b4->blinktimer++;
+ 	for (i=0; i < b4->numspans; i++) {
+ 		bspan = &b4->spans[i];
+@@ -2174,8 +2343,9 @@
+ 		bspan->span.close  = b4xxp_close;
+ 		bspan->span.ioctl = b4xxp_ioctl;
+ 		bspan->span.hdlc_hard_xmit = b4xxp_hdlc_hard_xmit;
+-		if (vpmsupport)
++		if (vpmsupport && CARD_HAS_EC(b4)) {
+ 			bspan->span.echocan_create = echocan_create;
++		}
+ 
+ /* HDLC stuff */
+ 		bspan->sigchan = NULL;
+@@ -2281,13 +2451,21 @@
+ static void b4xxp_bottom_half(unsigned long data)
+ {
+ 	struct b4xxp *b4 = (struct b4xxp *)data;
+-	int i, j, k, gotrxfifo, fifo;
++	int i, j, k, gotrxfifo, fifo, fifo_low, fifo_high;
+ 	unsigned char b, b2;
+ 
+ 	if (b4->shutdown)
+ 		return;
+ 
+ 	gotrxfifo = 0;
++	/* HFC-4S d-chan fifos 8-11 *** HFC-8S d-chan fifos 16-23 */
++	if (b4->numspans == 8) {
++		fifo_low = 16;
++		fifo_high = 23;
++	} else {
++		fifo_low = 8;
++		fifo_high = 11;
++	}
+ 
+ 	for (i=0; i < 8; i++) {
+ 		b = b2 = b4->fifo_irqstatus[i];
+@@ -2296,7 +2474,7 @@
+ 			fifo = i*4 + j;
+ 
+ 			if (b & V_IRQ_FIFOx_TX) {
+-				if (fifo >=8 && fifo <= 11) {		/* d-chan fifo */
++				if (fifo >= fifo_low && fifo <= fifo_high) { /* d-chan fifos */
+ /*
+  * WOW I don't like this.
+  * It's bad enough that I have to send a fake frame to get an HDLC TX FIFO interrupt,
+@@ -2305,7 +2483,7 @@
+  * Yuck.  It works well, but yuck.
+  */
+ 					do {
+-						k = hdlc_tx_frame(&b4->spans[fifo - 8]);
++						k = hdlc_tx_frame(&b4->spans[fifo - fifo_low]);
+ 					}  while (k);
+ 				} else {
+ 					if (printk_ratelimit())
+@@ -2314,7 +2492,7 @@
+ 			}
+ 
+ 			if (b & V_IRQ_FIFOx_RX) {
+-				if (fifo >=8 && fifo <= 11) {
++				if (fifo >= fifo_low && fifo <= fifo_high) {	/* dchan fifos */
+ /*
+  * I have to loop here until hdlc_rx_frame says there are no more frames waiting.
+  * for whatever reason, the HFC will not generate another interrupt if there are
+@@ -2322,7 +2500,7 @@
+  * i.e. I get an int when F1 changes, not when F1 != F2.
+  */
+ 					do {
+-						k = hdlc_rx_frame(&b4->spans[fifo - 8]);
++						k = hdlc_rx_frame(&b4->spans[fifo - fifo_low]);
+ 					} while (k);
+ 				} else {
+ 					if (printk_ratelimit())
+@@ -2404,8 +2582,8 @@
+ 	sprintf(sBuf, "Card %d, PCI identifier %s, IRQ %d\n", b4->cardno + 1, b4->dev->bus_id, b4->irq);
+ 
+ 	strcat(sBuf,"Tx:\n");
+-	for (j=0; j<8; j++) {
+-		for (i=0; i<12; i++) {
++	for (j=0; j<(b4->numspans * 2) ; j++) {			/* B Channels */
++		for (i=0; i<(b4->numspans * 3) ; i++) {		/* All Channels */
+ 			chan = b4->spans[i/3].chans[i%3];
+ 			sprintf(str, "%02x ", chan->writechunk[j]);
+ 			strcat(sBuf, str);
+@@ -2424,7 +2602,7 @@
+ 	}
+ 
+ 	strcat(sBuf, "\nPort states:\n");
+-	for (i=0; i < 4; i++) {
++	for (i=0; i < b4->numspans; i++) {
+ 		int state;
+ 		char *x;
+ 		struct b4xxp_span *s = &b4->spans[i];
+@@ -2520,6 +2698,7 @@
+ 	b4->magic = WCB4XXP_MAGIC;
+ 	b4->variety = dt->desc;
+ 
++	b4->card_type = dt->card_type;
+ 	b4->pdev = pdev;
+ 	b4->dev = &pdev->dev;
+ 	pci_set_drvdata(pdev, b4);
+@@ -2533,7 +2712,7 @@
+ 	spin_lock_init(&b4->fifolock);
+ 
+ 	x = b4xxp_getreg8(b4, R_CHIP_ID);
+-	if (x != 0xc0) {				/* wrong chip? */
++	if ((x != 0xc0) && (x != 0x80)) {		/* wrong chip? */
+ 		dev_err(&pdev->dev, "Unknown/unsupported controller detected (R_CHIP_ID = 0x%02x)\n", x);
+ 		goto err_out_free_mem;
+ 	}
+@@ -2548,7 +2727,7 @@
+ */
+ 
+ /* TODO: determine whether this is a 2, 4 or 8 port card */
+-	b4->numspans = 4;
++	b4->numspans = dt->ports;
+ 	b4->syncspan = -1;		/* sync span is unknown */
+ 	if (b4->numspans > MAX_SPANS_PER_CARD) {
+ 		dev_err(b4->dev, "Driver does not know how to handle a %d span card!\n", b4->numspans);
+@@ -2696,7 +2875,17 @@
+ static struct pci_device_id b4xx_ids[] __devinitdata =
+ {
+ 	{ 0xd161, 0xb410, PCI_ANY_ID, PCI_ANY_ID, 0, 0, (unsigned long)&wcb4xxp },
+-	{ 0, }
++	{ 0x1397, 0x16b8, 0x1397, 0xe552, 0, 0, (unsigned long)&hfc8s },
++	{ 0x1397, 0x08b4, 0x1397, 0xb520, 0, 0, (unsigned long)&hfc4s },
++	{ 0x1397, 0x08b4, 0x1397, 0xb556, 0, 0, (unsigned long)&hfc2s },
++	{ 0x1397, 0x08b4, 0x1397, 0xe884, 0, 0, (unsigned long)&hfc2s_OV },
++	{ 0x1397, 0x08b4, 0x1397, 0xe888, 0, 0, (unsigned long)&hfc4s_OV },
++	{ 0x1397, 0x16b8, 0x1397, 0xe998, 0, 0, (unsigned long)&hfc8s_OV },
++	{ 0x1397, 0x08b4, 0x1397, 0xb566, 0, 0, (unsigned long)&hfc2s_BN },
++	{ 0x1397, 0x08b4, 0x1397, 0xb560, 0, 0, (unsigned long)&hfc4s_BN },
++	{ 0x1397, 0x16b8, 0x1397, 0xb562, 0, 0, (unsigned long)&hfc8s_BN },
++	{0, }
++
+ };
+ 
+ static struct pci_driver b4xx_driver = {
+@@ -2756,7 +2945,7 @@
+ MODULE_PARM_DESC(timer_3_ms, "TE: msec to wait for link activation, NT: unused.");
+ 
+ MODULE_AUTHOR("Digium Incorporated <support@digium.com>");
+-MODULE_DESCRIPTION("B410P quad-port BRI module driver.");
++MODULE_DESCRIPTION("B410P & Similars multi-port BRI module driver.");
+ MODULE_LICENSE("GPL");
+ 
+ MODULE_DEVICE_TABLE(pci, b4xx_ids);

@@ -1,0 +1,21 @@
+--- libpri-1.4.10.1/q931.c.orig	2009-08-03 13:19:18.000000000 +0200
++++ libpri-1.4.10.1/q931.c	2009-08-03 13:23:05.000000000 +0200
+@@ -2669,8 +2669,16 @@
+ 	q931_call *cur = NULL;
+ 	if (!cause)
+ 		cause = PRI_CAUSE_RESPONSE_TO_STATUS_ENQUIRY;
+-	if (c->cr > -1)
+-		cur = *pri->callpool;
++	if (c->cr > -1) {
++		/* we need to find the master who has the callpool first */
++		if (pri->master) {
++			/* this call is not the master, set callpool to master */
++			cur = *pri->master->callpool;
++		} else {
++			/* this call is the master */
++			cur = *pri->callpool;
++		}
++	}
+ 	while(cur) {
+ 		if (cur->cr == c->cr) {
+ 			cur->cause=cause;
