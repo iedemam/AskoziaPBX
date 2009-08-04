@@ -114,7 +114,7 @@ include("fbegin.inc");
 					echo('</strong><br>');
 					echo('<pre>');
 					ob_end_flush();
-					system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
+					system("/usr/bin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
 					echo('</pre>');
 				}
 				?>

@@ -125,11 +125,11 @@ include("fbegin.inc");
 					echo('</strong><br>');
 					echo('<pre>');
 					ob_end_flush();
-					$ifaddr = get_interface_addr($interface);
-					if ($ifaddr)
-						system("/sbin/ping -S$ifaddr -c$count " . escapeshellarg($host));
-					else
-						system("/sbin/ping -c$count " . escapeshellarg($host));
+					//$ifaddr = get_interface_addr($interface); LINUX TODO : double implementation
+					//if ($ifaddr)
+					//	system("/bin/ping -I$ifaddr -c$count " . escapeshellarg($host));
+					//else
+						system("/bin/ping -c$count " . escapeshellarg($host));
 					echo('</pre>');
 				}
 				?>
