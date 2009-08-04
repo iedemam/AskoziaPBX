@@ -1,0 +1,17 @@
+--- dahdi-linux/drivers/dahdi/Kbuild.orig	2009-01-21 16:17:20.000000000 +0100
++++ dahdi-linux/drivers/dahdi/Kbuild	2009-07-15 11:56:57.000000000 +0200
+@@ -31,12 +31,12 @@
+ 
+ # Only enable this if you think you know what you're doing. This is not
+ # supported yet:
+-#obj-m += dahdi_echocan_oslec.o
++obj-m += dahdi_echocan_oslec.o
+ #
+ # A quick and dirty way to build OSLEC, if you happened to place it
+ # yourself in the dahdi source tree. This is experimental. See README
+ # regarding OSLEC.
+-#obj-m += ../staging/echo/
++obj-m += ../staging/echo/
+ 
+ CFLAGS_MODULE += -I$(DAHDI_INCLUDE) -I$(src)
+ 
