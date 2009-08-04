@@ -35,7 +35,7 @@ mkdir root_stage
 mkdir root_stage/boot
 mkdir root_stage/boot/grub
 mkdir root_stage/conf
-cp ../initramfs/conf.default/config.generic-pc.xml root_stage/conf/config.xml
+cp $base/target/$target/config.xml root_stage/conf/config.xml
 mkdir offload_stage
 mkdir offload_stage/asterisk
 mkdir offload_stage/kernel-modules

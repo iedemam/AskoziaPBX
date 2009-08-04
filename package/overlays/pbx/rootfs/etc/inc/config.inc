@@ -538,12 +538,7 @@ function reset_factory_defaults() {
 	closedir($dh);
 	
 	/* copy default configuration */
-	if (strstr($g['platform'], "askozia-pbx-generic-pc")) {
-		$plname = "generic-pc";
-	} else {
-		$plname = $g['platform'];
-	}
-	@copy("{$g['conf_default_path']}/config.{$plname}.xml", "{$g['conf_path']}/config.xml");
+	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
 	
 	conf_mount_ro();
 	

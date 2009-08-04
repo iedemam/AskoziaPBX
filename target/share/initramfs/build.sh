@@ -118,6 +118,10 @@ echo "Preparing initramfs image from target defined files ..."
 copy_from_source $base/target/$target/rootfs .
 copy_from_source $base/target/share/initramfs/rootfs .
 
+echo "Storing default config.xml ..."
+mkdir conf.default
+cp $base/target/$target/config.xml conf.default/
+
 echo "Setup some symlinks ..."
 ln -s /offload/kernel-modules lib/modules
 
