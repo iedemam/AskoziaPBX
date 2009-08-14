@@ -6,3 +6,4 @@ arch_sizeof_char_p=4
 arch_bigendian=no
 arch_machine=bfin
 arch_target=bfin-t2-linux-gnu # with uclinux gcc lacks -mfdpic support
+#arch_target=bfin-uclinux

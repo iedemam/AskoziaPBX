@@ -12,7 +12,7 @@
 # GNU General Public License can be found in the file COPYING.
 # --- T2-COPYRIGHT-NOTE-END ---
 
-var_append GCC_WRAPPER_INSERT " " "-mfdpic"
+#var_append GCC_WRAPPER_INSERT " " "-mstack-check-l1"
 if [ "$SDECFG_BFIN_OPT" ] ; then
 	var_append GCC_WRAPPER_INSERT " " "-mcpu=$SDECFG_BFIN_OPT"
 fi
