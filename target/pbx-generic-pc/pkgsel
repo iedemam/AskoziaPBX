@@ -28,7 +28,6 @@ X gcc
 X 00-dirtree
 X linux-header
 X linux26
-X udev
 X uclibc
 
 # boot stuff
