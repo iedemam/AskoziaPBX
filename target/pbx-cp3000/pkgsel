@@ -23,12 +23,13 @@ X binutils
 X gmp
 X mpfr
 X gcc
+X toolchain-bfin-uclinux
+#X u-boot
 
 # layout + kernel
 X 00-dirtree
 X linux-header
 X linux26
-#X udev
 X uclibc
 
 # common deps
@@ -46,8 +47,8 @@ X bison
 X ncurses
 X termcap
 X libpri
-X dahdi-linux
-X dahdi-tools
+#X dahdi-linux
+#X dahdi-tools
 #X misdnuser
 X asterisk
 
