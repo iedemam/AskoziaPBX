@@ -13,6 +13,9 @@ mount -t usbfs  none /proc/bus/usb 2> /dev/null
 mount -t sysfs  none /sys
 ln -s /proc/self/fd /dev/fd
 
+echo "Increasing verbosity ..."
+echo 9 > /proc/sys/kernel/printk
+
 echo "Populating u/dev ..."
 mknod /dev/tty1 c 4 1
 mknod /dev/tty2 c 4 2
