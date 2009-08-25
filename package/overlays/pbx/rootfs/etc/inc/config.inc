@@ -51,25 +51,25 @@ if (file_exists("{$g['etc_path']}/brand.product")) {
 if ($g['booting']) {
 	/* find the device where config.xml resides and write out an fstab */
 	unset($cfgdevice);
-	
+
 	/* check if there's already an fstab (NFS booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-	
+
 		if (strstr($g['platform'], "cdrom")) {
 			/* config is either on floppy disk or USB stick for CD-ROM version */
-			
+
 			/* try the USB stick at da0 first, and if this fails, use the floppy disk  */
 			$cfgdevice = "da0";
 			$cfgpartition = "da0s1";
 			$cfgfstype = "msdos";
-			
+
 			if (mwexec("/bin/mount -t msdos -r /dev/da0s1 {$g['cf_path']}") == 0) {
 				/* USB stick is OK */
 				echo "Using USB memory stick for configuration storage.\n";
 				mwexec("/bin/umount -f {$g['cf_path']}");
 			} else {
 				$cfgdevice = $cfgpartition = "fd0";
-				
+
 				if (mwexec("/bin/mount -t msdos -r /dev/fd0 {$g['cf_path']}") != 0) {
 					echo <<<EOD
 
@@ -92,7 +92,13 @@ EOD;
 			/* iterate through the disks fdisk finds until one contains a config.xml */
 			$attempts = 2;
 			while ($attempts--) {
-				exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
+				if ($g['platform'] == "COMpact 3000") {
+					$disks[] = "mmcblk0p";
+					$cfgfstype = "msdos";
+				} else {
+					exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
+					$cfgfstype = "ext2";
+				}
 				echo "Found disks: " . implode(", ", $disks) . "\n";
 				foreach ($disks as $disk) {
 					echo "Looking for configuration on: $disk\n";
@@ -100,7 +106,6 @@ EOD;
 						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 							$cfgdevice = $disk;
 							$cfgpartition = $cfgdevice . "1";
-							$cfgfstype = "ext2";
 							echo "Found configuration on $cfgdevice.\n";
 						}
 
@@ -123,7 +128,7 @@ EOD;
 				}
 			}
 		}
-		
+
 		if (!$cfgdevice) {
 			/* no device found, print an error and die */
 			echo <<<EOD
@@ -141,47 +146,47 @@ EOD;
 			mwexec("/sbin/halt");
 			exit;
 		}
-		
+
 		/* write device name to a file for rc.firmware */
 		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
 		fwrite($fd, $cfgdevice . "\n");
 		fclose($fd);
-		
+
 		/* write out an fstab */
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
-		
+
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
 		$fstab .= "/dev/{$cfgdevice}2 /offload ext2 ro 0 0\n";
-		
+
 		fwrite($fd, $fstab);
 		fclose($fd);
 	}
-	
+
 	/* mount all filesystems */
 	mwexec("/bin/mount -a");
 }
 
 /* parse configuration */
 if (!$noparseconfig) {
-	
+
 	config_lock();
-	
+
 	/* see if there's a newer cache file */
 	if (file_exists("{$g['tmp_path']}/config.cache") && 
 		(filemtime("{$g['tmp_path']}/config.cache") >= 
 		 filemtime("{$g['conf_path']}/config.xml"))) {
-		
+
 		/* read cache */
 		$config = unserialize(file_get_contents("{$g['tmp_path']}/config.cache"));
 		$uniqid_map = unserialize(file_get_contents("{$g['tmp_path']}/uniqid_map.cache"));
 	} else {
-	
+
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if ($g['booting']) {
 				if (strstr($g['platform'], "cdrom")) {
 					/* try copying the default config. to the floppy/USB stick */
 					reset_factory_defaults();
-					
+
 					echo "No XML configuration file found - using factory defaults.\n";
 				} else {
 					echo "XML configuration file not found. $product_name cannot continue booting.\n"; 
@@ -193,9 +198,9 @@ if (!$noparseconfig) {
 				exit(0);
 			}
 		}
-		
+
 		$config = xml_to_array("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
-		
+
 		if ((float)$config['version'] > (float)$g['latest_config']) {
 			if ($g['booting']) {
 				echo <<<EOD
@@ -213,14 +218,14 @@ if (!$noparseconfig) {
 EOD;
 			}
 		}
-		
+
 		/* write config cache */
 		$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
 		if ($fd) {
 			fwrite($fd, serialize($config));
 			fclose($fd);
 		}
-		
+
 		/* write uniqid_map cache */
 		$uniqid_map = config_build_uniqid_map($config);
 		$fd = @fopen("{$g['tmp_path']}/uniqid_map.cache", "wb");
@@ -229,7 +234,7 @@ EOD;
 			fclose($fd);
 		}
 	}
-	
+
 	config_unlock();
 
 }
@@ -251,7 +256,7 @@ function conf_mount_rw() {
  */
 function conf_mount_ro() {
 	global $g;
-	
+
 	mwexec("/bin/umount -f {$g['cf_path']}");
 	mwexec("/bin/mount -r {$g['cf_path']}");
 }
@@ -261,159 +266,14 @@ function conf_mount_ro() {
  */
 function convert_config() {
 	global $config, $g;
-	
-	if ($config['version'] == $g['latest_config'])
-		return;		/* already at latest version */
-	
-	if ($g['booting'])
-		echo "Converting configuration... ";
-	
-	/* convert 1.0 -> 1.1 */
-	if ($config['version'] == "1.0") {
 
-		// update sip provider prefixes and patterns
-		$n = count($config['sip']['provider']);
-		for($i = 0; $i < $n; $i++) {
-			$p = &$config['sip']['provider'][$i];
-			
-			$p['dialpattern'] = array();
-			if ($p['prefix']) {
-				$p['dialpattern'][] = $p['prefix'] . "|.";
-				unset($p['prefix']);
-			}
-			if ($p['pattern']) {
-				$p['dialpattern'][] = $p['pattern'];
-				unset($p['pattern']);
-			}
-		}
-
-		// update iax provider prefixes and patterns
-		$n = count($config['iax']['provider']);
-		for($i = 0; $i < $n; $i++) {
-			$p = &$config['iax']['provider'][$i];
-			
-			$p['dialpattern'] = array();
-			if ($p['prefix']) {
-				$p['dialpattern'][] = $p['prefix'] . "|.";
-				unset($p['prefix']);
-			}
-			if ($p['pattern']) {
-				$p['dialpattern'][] = $p['pattern'];
-				unset($p['pattern']);
-			}
-		}
-		
-		$config['version'] = "1.1";
-	}
-	
-	/* convert 1.1 -> 1.2 */
-	if ($config['version'] == "1.1") {
-		
-		// add default applications to new mapper
-		$apps[] = array(
-				"name" => "Echo",
-				"extension" => "00003246",
-				"uniqid" => "APPLICATION-MAPPING-83606076846f835d8828a4");
-
-		$apps[] = array(
-				"name" => "Milliwatt",
-				"extension" => "000064554",
-				"uniqid" => "APPLICATION-MAPPING-48856682646f8381701993");
-
-		$apps[] = array(
-				"name" => "WakeMe",
-				"extension" => "00009253",
-				"uniqid" => "APPLICATION-MAPPING-202074715246f8385a7a820");
-		
-		$config['dialplan']['application'] = $apps;
-		
-		$config['version'] = "1.2";
-	}
-	
-	/* convert 1.2 -> 1.3 */
-	if ($config['version'] == "1.2") {
-
-		// convert incomingextensions to new representation
-		$techs = array("sip", "iax", "isdn", "analog");
-		foreach ($techs as $tech) {
-			if (!isset($config[$tech]['provider'])) continue; // missed this the first time...
-			$n = count($config[$tech]['provider']);
-			for($i = 0; $i < $n; $i++) {
-				$p = &$config[$tech]['provider'][$i];
-				
-				if ($p['incomingextension']) {
-					$destinationid = $p['incomingextension'];
-					$p['incomingextensionmap'] = array();
-					$p['incomingextensionmap'][0]['destinationid'] = $destinationid;
-				}
-				unset($p['incomingextension']);
-			}
-		}
-		
-		$config['version'] = "1.3";
-	}
-	
-	/* convert 1.3 -> 1.4 */
-	if ($config['version'] == "1.3") {
-
-		// clean up bug from 1.2 -> 1.3 upgrade
-		$techs = array("sip", "iax", "isdn", "analog");
-		foreach ($techs as $tech) {
-			if (isset($config[$tech]['provider']) && (count($config[$tech]['provider'], COUNT_RECURSIVE) == 1)) {
-				unset($config[$tech]['provider']);
-				if ($g['booting']) {
-					echo "- fixed $tech config\n";
-				}
-			}
-		}
-		
-		$config['version'] = "1.4";
-	}
-
-	/* convert 1.4 -> 1.5 */
-	if ($config['version'] == "1.4") {
-
-		// convert applications to new representation
-		if (is_array($config['dialplan']['application'])) {
-			$n = count($config['dialplan']['application']);
-			for($i = 0; $i < $n; $i++) {
-				$a = &$config['dialplan']['application'][$i];
-				
-				if ($a['name'] == "Echo") {
-					$a['app-command'] = array(
-						base64_encode("1,Answer()"),
-						base64_encode("2,Echo()"),
-						base64_encode("3,Hangup()")
-					);
-					$a['descr'] = "Echos audio and video back to the caller as soon as it is received. Used to test connection delay.";
-
-				} else if ($a['name'] == "Milliwatt") {
-					$a['app-command'] = array(
-						base64_encode("1,Answer()"),
-						base64_encode("2,Milliwatt()"),
-						base64_encode("3,Hangup()")
-					);
-					$a['descr'] = "Generates a constant 1000Hz tone. Used to test connection quality.";
-
-				} else if ($a['name'] == "WakeMe") {
-					$a['app-command'] = array(
-						base64_encode("1,Answer()"),
-						base64_encode("2,Set(CHANNEL(language)=en)"),
-						base64_encode("3,WakeMe()"),
-						base64_encode("4,Hangup()")
-					);
-					$a['descr'] = "Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.";
-				}
-			}
-		}
-
-		$config['version'] = "1.5";
+	/* already at latest version */
+	if ($config['version'] == $g['latest_config']) {
+		return;
 	}
 
 	write_config();
-	
-	if ($g['booting'])
-		echo "done\n";
+
 }
 
 /**
@@ -426,45 +286,46 @@ function write_config() {
 	config_lock();
 
 	conf_mount_rw();
-	
-	if (time() > mktime(0, 0, 0, 9, 1, 2004))	/* make sure the clock settings are plausible */
+
+	/* make sure the clock settings are plausible */
+	if (time() > mktime(0, 0, 0, 9, 1, 2004)) {
 		$config['lastchange'] = time();
-	
+	}
+
 	/* generate configuration XML */
 	$xmlconfig = array_to_xml($config, $g['xml_rootobj']);
-	
+
 	/* write configuration */
 	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
-	
-	if (!$fd)
+
+	if (!$fd) {
 		die("Unable to open config.xml for writing in write_config()\n");
-		
+	}
+
 	fwrite($fd, $xmlconfig);
 	fclose($fd);
-	
+
 	conf_mount_ro();
-	
+
 	/* re-read configuration */
 	$config = xml_to_array("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 	/* build uniqid_map */
 	$uniqid_map = config_build_uniqid_map($config);
-	
-	
+
 	/* write config cache */
 	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
 	if ($fd) {
 		fwrite($fd, serialize($config));
 		fclose($fd);
 	}
-	
+
 	/* write uniqid_map cache */
 	$fd = @fopen("{$g['tmp_path']}/uniqid_map.cache", "wb");
 	if ($fd) {
 		fwrite($fd, serialize($uniqid_map));
 		fclose($fd);
 	}
-	
-	
+
 	config_unlock();
 }
 
@@ -491,25 +352,25 @@ function config_build_uniqid_map($config) {
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['external']['phone'][$i]['uniqid']] = $i;
 	}
-	
+
 	// conferencing
 	$n = count($config['conferencing']['room']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['conferencing']['room'][$i]['uniqid']] = $i;
 	}
-	
+
 	// callgroups
 	$n = count($config['dialplan']['callgroup']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['dialplan']['callgroup'][$i]['uniqid']] = $i;
 	}
-	
+
 	// applications
 	$n = count($config['dialplan']['application']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['dialplan']['application'][$i]['uniqid']] = $i;
 	}
-	
+
 	return $uniqid_map;
 }
 
@@ -519,15 +380,16 @@ function config_build_uniqid_map($config) {
 function reset_factory_defaults() {
 	
 	global $g;
-	
+
 	config_lock();
-	
+
 	conf_mount_rw();
-	
+
 	/* create conf directory, if necessary */
-	if (!file_exists("{$g['cf_conf_path']}"))
+	if (!file_exists("{$g['cf_conf_path']}")) {
 		@mkdir("{$g['cf_conf_path']}");
-	
+	}
+
 	/* clear out /conf */
 	$dh = opendir($g['conf_path']); 
 	while ($filename = readdir($dh)) {
@@ -536,14 +398,14 @@ function reset_factory_defaults() {
 		} 
 	}
 	closedir($dh);
-	
+
 	/* copy default configuration */
 	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
-	
+
 	conf_mount_ro();
-	
+
 	config_unlock();
-	
+
 	return 0;
 }
 
@@ -553,21 +415,23 @@ function reset_factory_defaults() {
 function config_install($conffile) {
 
 	global $config, $g;
-	
-	if (!file_exists($conffile))
-		return 1;
 
-	if (!config_validate($conffile))
+	if (!file_exists($conffile)) {
 		return 1;
+	}
+
+	if (!config_validate($conffile)) {
+		return 1;
+	}
 
 	config_lock();
 	conf_mount_rw();
-	
+
 	copy($conffile, "{$g['conf_path']}/config.xml");
-	
+
 	conf_mount_ro();
 	config_unlock();
-	
+
 	return 0;
 }
 
@@ -579,12 +443,12 @@ function config_validate($conffile) {
 	global $g, $xmlerr;
 
 	$xml_parser = xml_parser_create();
-	
+
 	if (!($fp = fopen($conffile, "r"))) {
 		$xmlerr = "XML error: unable to open file";
 		return false;
 	}
-	
+
 	while ($data = fread($fp, 4096)) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
 			$xmlerr = sprintf("%s at line %d",
@@ -594,9 +458,9 @@ function config_validate($conffile) {
 		}
 	}
 	xml_parser_free($xml_parser);
-	
+
 	fclose($fp);
-	
+
 	return true;
 }
 
@@ -605,11 +469,11 @@ function config_validate($conffile) {
  * Lock is invalidated after 10 seconds.
  */
 function config_lock() {
-	
+
 	global $g;
-	
+
 	$lockfile = "{$g['varrun_path']}/config.lock";
-	
+
 	$n = 0;
 	while ($n < 10) {
 		/* open the lock file in append mode to avoid race condition */
@@ -629,13 +493,14 @@ function config_lock() {
  * Unlocks access to the configuration file
  */
 function config_unlock() {
-	
+
 	global $g;
-	
+
 	$lockfile = "{$g['varrun_path']}/config.lock";
-	
-	if (file_exists($lockfile))
+
+	if (file_exists($lockfile)) {
 		unlink($lockfile);
+	}
 }
 
 ?>

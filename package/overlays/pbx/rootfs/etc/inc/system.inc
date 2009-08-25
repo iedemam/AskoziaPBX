@@ -166,6 +166,11 @@ function system_routing_enable() {
 function system_syslogd_start() {
 	global $config, $g;
 
+	if ($g['platform'] == "COMpact 3000") {
+		echo "skipping... ";
+		return 0;
+	}
+
 	/*
 	LINUX TODO : Logging currently runs everything into
 	a single destination. This is OK but the GUI should
@@ -184,9 +189,7 @@ function system_syslogd_start() {
 	$retval = 0;
 
 	if ($g['booting']) {
-		echo "Starting syslog service... ";
 		$retval = mwexec("/sbin/syslogd -C1024");
-		echo "done\n";
 	}
 
 	return $retval;
@@ -270,27 +273,24 @@ function system_syslogd_start() {
  */
 function system_webgui_start() {
 	global $config, $g;
-	
-	if ($g['booting']) {
-		echo "Starting webGUI... ";
-	}
-	
+
 	/* kill any running mini_httpd */
 	killbypid("{$g['varrun_path']}/mini_httpd.pid");
-	
+
 	/* generate password file */
 	system_password_configure();
-	
+
 	chdir($g['www_path']);
-	
+
 	/* non-standard port? */
-	if ($config['system']['webgui']['port'])
+	if ($config['system']['webgui']['port']) {
 		$portarg = "-p {$config['system']['webgui']['port']}";
-	else
+	} else {
 		$portarg = "";
-	
+	}
+
 	if ($config['system']['webgui']['protocol'] == "https") {
-	
+
 		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
 			$cert = base64_decode($config['system']['webgui']['certificate']);
 			$key = base64_decode($config['system']['webgui']['private-key']);
@@ -331,7 +331,7 @@ PySEYdVmWraYGpQLkQJARzMpatUv43+SXGPCI6syywO+efB/pz/HAdBc4syMLUUi
 
 EOD;
 		}
-		
+
 		$fd = fopen("{$g['varetc_path']}/cert.pem", "w");
 		if (!$fd) {
 			printf("Error: cannot open cert.pem in system_webgui_start().\n");
@@ -342,7 +342,7 @@ EOD;
 		fwrite($fd, "\n");
 		fwrite($fd, $key);
 		fclose($fd);
-	
+
 		$res = mwexec("/usr/sbin/mini_httpd -S -E {$g['varetc_path']}/cert.pem" .
 			" -c \"**.php|**.cgi\" -u root -maxproc 16 $portarg" .
 			" -i {$g['varrun_path']}/mini_httpd.pid");
@@ -350,15 +350,58 @@ EOD;
 		$res = mwexec("/usr/sbin/mini_httpd -c \"**.php|**.cgi\" -u root" .
 			" -maxproc 16 $portarg -i {$g['varrun_path']}/mini_httpd.pid");
 	}
-	
-	if ($g['booting']) {
-		if ($res == 0)
-			echo "done\n";
-		else
-			echo "failed\n";
-	}
-	
+
 	return $res;
+}
+
+/**
+ * Configures and (re)starts the busybox httpd process
+ */
+function system_httpd_start() {
+	global $config, $g;
+
+	/*
+	Usage: httpd [-c conffile] [-p [ip:]port] [-i] [-f] [-v[v]] [-u user[:grp]] [-r realm] [-m pass] [-h home] [-d/-e string]
+
+	Listen for incoming HTTP requests
+
+	Options:
+	        -c FILE         Configuration file (default httpd.conf)
+	        -p [IP:]PORT    Bind to ip:port (default *:80)
+	        -i              Inetd mode
+	        -f              Do not daemonize
+	        -v[v]           Verbose
+	        -u USER[:GRP]   Set uid/gid after binding to port
+	        -r REALM        Authentication Realm for Basic Authentication
+	        -m PASS         Crypt PASS with md5 algorithm
+	        -h HOME         Home directory (default .)
+	        -e STRING       HTML encode STRING
+	        -d STRING       URL decode STRING
+	*/
+
+	killbyname("httpd");
+
+	$fd = fopen("{$g['etc_path']}/httpd.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open httpd.conf in system_httpd_start().\n");
+		return 1;
+	}
+	fwrite($fd,
+		"/:admin:askozia\n".
+		"\n".
+		"I:index.php\n".
+		"\n".
+		"*.php:/usr/bin/php\n".
+		"\n"
+	);
+	fclose($fd);
+	chmod("{$g['etc_path']}/httpd.conf", 0600);
+
+	if ($config['system']['webgui']['port']) {
+		$portarg = "-p {$config['system']['webgui']['port']}";
+	}
+
+	return mwexec("httpd -u root $portarg -h {$g['www_path']}");
 }
 
 function system_upgrade_https_certificate() {
@@ -427,19 +470,11 @@ function system_timezone_configure() {
 
 	$timezone = $config['system']['timezone'];
 
-	if ($g['booting']) {
-		echo "Initializing timezone... ";
-	}
-
 	unlink_if_exists("/etc/TZ");
 	if ($timezone) {
 		$timezone = explode("|", $timezone);
 		$timezone = $timezone[1];
 		exec("echo \"$timezone\" > /etc/TZ");
-	}
-
-	if ($g['booting']) {
-		echo "done\n";
 	}
 }
 
@@ -451,9 +486,7 @@ function system_ntp_configure() {
 
 	$syscfg = $config['system'];
 
-	if ($g['booting']) {
-		echo "Starting NTP client... ";
-	} else {
+	if (!$g['booting']) {
 		killbypid("{$g['varrun_path']}/runmsntp.pid");
 		killbypid("{$g['varrun_path']}/msntp.pid");
 	}
@@ -475,10 +508,6 @@ function system_ntp_configure() {
 			escapeshellarg("{$g['varrun_path']}/msntp.pid") . " " .
 			escapeshellarg($updateinterval) . " " .
 			escapeshellarg($timeservers));
-	}
-
-	if ($g['booting']) {
-		echo "done\n";
 	}
 }
 
@@ -553,14 +582,12 @@ function system_console_configure() {
 function system_set_harddisk_standby() {
 	global $g, $config;
 
-	if ($g['platform'] != "generic-pc")
+	if ($g['platform'] != "Generic") {
 		return;
+	}
 
 	if (isset($config['system']['harddiskstandby']) && 
 			($config['system']['harddiskstandby'] > 0)) {
-		if ($g['booting']) {
-			echo 'Setting harddisk standby time... ';
-		}
 
 		$standby = $config['system']['harddiskstandby'];
 		// Check for a numeric value
@@ -572,8 +599,6 @@ function system_set_harddisk_standby() {
 			if ($g['booting']) {
 				echo "done\n";
 			}
-		} else if ($g['booting']) {
-			echo "failed\n";
 		}
 	}
 }

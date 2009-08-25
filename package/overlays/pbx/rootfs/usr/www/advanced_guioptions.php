@@ -46,8 +46,9 @@ $pconfig['hideiax'] = isset($config['system']['webgui']['hideiax']);
 $pconfig['hideisdn'] = isset($config['system']['webgui']['hideisdn']);
 $pconfig['hideanalog'] = isset($config['system']['webgui']['hideanalog']);
 
-if ($g['platform'] == "generic-pc")
+if ($g['platform'] == "Generic") {
 	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
+}
 $pconfig['noantilockout'] = isset($config['system']['webgui']['noantilockout']);
 $pconfig['polling_enable'] = isset($config['system']['polling']);
 
@@ -97,7 +98,7 @@ if ($_POST) {
 		$config['system']['webgui']['hideisdn'] = $_POST['hideisdn'] ? true : false;
 		$config['system']['webgui']['hideanalog'] = $_POST['hideanalog'] ? true : false;
 		
-		if ($g['platform'] == "generic-pc") {
+		if ($g['platform'] == "Generic") {
 			$oldharddiskstandby = $config['system']['harddiskstandby'];
 			$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
 		}
@@ -112,7 +113,7 @@ if ($_POST) {
 				|| ($config['system']['polling'] != $oldpolling)) {
 			touch($d_sysrebootreqd_path);
 		}
-		if (($g['platform'] == "generic-pc") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
+		if (($g['platform'] == "Generic") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
 			if (!$config['system']['harddiskstandby']) {
 				// Reboot needed to deactivate standby due to a stupid ATA-protocol
 				touch($d_sysrebootreqd_path);
@@ -190,7 +191,7 @@ if ($_POST) {
 	                <strong><?=gettext("Disable package version checks");?></strong><span class="vexpl"><br>
 	    <?=gettext("This will cause the system not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed.");?></span></td>
 				</tr>
-<?php if ($g['platform'] == "generic-pc"): ?>
+<?php if ($g['platform'] == "Generic"): ?>
 				<tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time");?></td>
                   <td width="78%" class="vtable"> 

@@ -37,85 +37,76 @@ require_once("functions.inc");
 function pbx_configure() {
 	global $config, $g;
 
-	if ($g['booting']) {
-		echo "Starting Asterisk...\n";
-	} else {
+	if (!$g['booting']) {
 		pbx_stop();
 	}
 
 	$res = 0;
-	if ($g['booting']) echo " - generating Asterisk process configuration...";
+	if ($g['booting']) echo "   |- generating Asterisk process configuration...";
 	$res |= pbx_asterisk_conf_generate();
 	if ($g['booting']) echo "done\n";
 
-	if ($g['booting']) echo " - generating modules configuration...";
+	if ($g['booting']) echo "   |- generating modules configuration...";
 	$res |= pbx_modules_conf_generate();
 	if ($g['booting']) echo "done\n";
 
-	if ($g['booting']) echo " - generating indications configuration...";
+	if ($g['booting']) echo "   |- generating indications configuration...";
 	$res |= indications_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating manager configuration...";
+
+	if ($g['booting']) echo "   |- generating manager configuration...";
 	$res |= manager_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating rtp configuration...";
+
+	if ($g['booting']) echo "   |- generating rtp configuration...";
 	$res |= rtp_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating sip configuration...";
+
+	if ($g['booting']) echo "   |- generating sip configuration...";
 	$res |= sip_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating iax configuration...";
+
+	if ($g['booting']) echo "   |- generating iax configuration...";
 	$res |= iax_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating conferencing configuration...";
+
+	if ($g['booting']) echo "   |- generating conferencing configuration...";
 	$res |= conferencing_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating dialplan...";
+
+	if ($g['booting']) echo "   |- generating dialplan...";
 	$res |= extensions_conf_generate();
 	$res |= features_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating voicemail configuration...";
+
+	if ($g['booting']) echo "   |- generating voicemail configuration...";
 	$res |= voicemail_conf_generate();
 	$res |= msmtp_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating isdn configuration...";
+
+	if ($g['booting']) echo "   |- generating isdn configuration...";
 	$res |= isdn_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - applying isdn configuration...";
+
+	if ($g['booting']) echo "   |- applying isdn configuration...";
 	$res |= isdn_configure();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - generating analog configuration...";
+
+	if ($g['booting']) echo "   |- generating analog configuration...";
 	$res |= analog_conf_generate();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - applying analog configuration...";
+
+	if ($g['booting']) echo "   |- applying analog configuration...";
 	$res |= analog_configure();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - configuring timing source...";
+
+	if ($g['booting']) echo "   |- configuring timing source...";
 	$res |= pbx_configure_timing();
 	if ($g['booting']) echo "done\n";
-	
-	if ($g['booting']) echo " - executing Asterisk...";
+
+	if ($g['booting']) echo "   |- executing Asterisk...";
 	$res |= pbx_start();
 	if ($g['booting']) echo "done\n";
-
-	if ($g['booting']) {
-		if ($res == 0)
-			echo "done\n";
-		else
-			echo "failed\n";
-	}
 
 	return $res;
 }

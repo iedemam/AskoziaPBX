@@ -64,7 +64,7 @@ function network_lan_configure() {
 	if (isset($lancfg['dhcp'])) {
 		foreach ($interface_names as $i) {
 			mwexec("/sbin/ifconfig $i up");
-			mwexec("/sbin/udhcpc -S -b -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
+			mwexec("/sbin/udhcpc -S -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 		}
 	} else {
 		/* deconfigure */
