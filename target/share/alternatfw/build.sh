@@ -42,7 +42,7 @@ mkdir loop
 
 echo "Copy system into staging directories ..."
 cp ../../boot/vmImage root_stage/alternat.img
-cp ../initramfs.igz root_stage/
+#cp ../initramfs.igz root_stage/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
@@ -88,7 +88,7 @@ dd if=/dev/zero of=part1.img bs=512 count=$root_size
 echo " - part1 - losetup..."
 losetup /dev/loop0 part1.img
 echo " - part1 - mkfs.vfat..."
-mkfs.vfat /dev/loop0
+mkfs.vfat -n system /dev/loop0
 echo " - part1 - mount..."
 mount -t msdos /dev/loop0 loop
 echo " - part1 - cp root_stage..."
@@ -101,7 +101,7 @@ losetup -d /dev/loop0
 echo " - part2 - dd..."
 dd if=/dev/zero of=part2.img bs=512 count=$offload_size
 echo " - part2 - mke2fs..."
-mke2fs -m0 -F part2.img
+mke2fs -m0 -L offload -F part2.img
 echo " - part2 - tune2fs..."
 tune2fs -c0 part2.img
 echo " - part2 - mount..."

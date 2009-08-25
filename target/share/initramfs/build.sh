@@ -129,7 +129,7 @@ echo "Stamping build ..."
 echo $config > etc/version
 echo `date` > etc/version.buildtime
 #_exec("echo " . time() . " > etc/version.buildtime.unix");
-echo $SDECFG_SHORTID > etc/platform
+#echo $SDECFG_SHORTID > etc/platform
 
 echo "Creating links for identical files ..."
 link_identical_files
