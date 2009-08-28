@@ -18,8 +18,6 @@
 
 set -e
 
-. target/share/initramfs/build.sh
-
 # set firmware preparation directory
 imagelocation="$build_toolchain/firmware"
 
@@ -42,7 +40,6 @@ mkdir loop
 
 echo "Copy system into staging directories ..."
 cp ../../boot/vmImage root_stage/alternat.img
-#cp ../initramfs.igz root_stage/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb

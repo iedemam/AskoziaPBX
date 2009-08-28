@@ -18,12 +18,11 @@
 
 set -e
 
-# set initramfs preparation directory
-imagelocation="$build_toolchain/initramfs"
+prev_pwd=$PWD
 
 echo "Preparing initramfs image from build result ..."
 
-rm -rf $imagelocation{,.cpio,.igz}
+rm -rf $imagelocation{,.igz}
 mkdir -p $imagelocation ; cd $imagelocation
 
 find $build_root -printf "%P\n" | sed '
@@ -128,8 +127,6 @@ ln -s /offload/kernel-modules lib/modules
 echo "Stamping build ..."
 echo $config > etc/version
 echo `date` > etc/version.buildtime
-#_exec("echo " . time() . " > etc/version.buildtime.unix");
-#echo $SDECFG_SHORTID > etc/platform
 
 echo "Creating links for identical files ..."
 link_identical_files
@@ -151,13 +148,8 @@ echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
 
 echo "Creating initramfs image ..."
-find . | cpio -H newc -o > ../initramfs.cpio
+find . | cpio -H newc -o | gzip > ../initramfs.igz
 
-echo "Compressing initramfs image ..."
-cd ..
-cat initramfs.cpio | gzip > initramfs.igz
+echo "The image is located at $imagelocation.igz"
 
-rm initramfs.cpio
-du -sh $imagelocation{,.igz}
-
-echo "The image is located at $imagelocation.igz."
+cd $prev_pwd

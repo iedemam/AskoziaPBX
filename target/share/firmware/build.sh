@@ -18,6 +18,10 @@
 
 set -e
 
+# set initramfs preparation directory and build
+build_root="$base/build/$SDECFG_ID"
+build_toolchain="$base/build/$SDECFG_ID/TOOLCHAIN"
+imagelocation="$build_toolchain/initramfs"
 . target/share/initramfs/build.sh
 
 # set firmware preparation directory
@@ -78,29 +82,46 @@ echo "Cylinders needed = $total_sector_count sectors / $sectors_per_cylinder sec
 offload_start_sector=`expr $root_size + 1`
 
 echo "Partition the disk image ..."
-sfdisk -C$cyls_needed -S63 -H16 -uS -f -L --no-reread firmware.img << EOF
-1,$root_size,83,*
+sfdisk -C$cyls_needed -S63 -H16 -uS -f -D --no-reread firmware.img << EOF
+1,$root_size,6,*
 $offload_start_sector,$offload_size,83
 ;
 ;
 EOF
 
+
 echo "Formatting and populating partitions ..."
+echo " - part1 - dd..."
 dd if=/dev/zero of=part1.img bs=512 count=$root_size
-mke2fs -m0 -F part1.img
-tune2fs -c0 part1.img
-mount -o loop part1.img loop
+echo " - part1 - losetup..."
+losetup /dev/loop0 part1.img
+echo " - part1 - mkfs.vfat..."
+mkfs.vfat -n system /dev/loop0
+echo " - part1 - mount..."
+mount -t msdos /dev/loop0 loop
+echo " - part1 - cp root_stage..."
 cp -Rp root_stage/* loop/
-umount loop
+echo " - part1 - unmount..."
+umount /dev/loop0
+echo " - part1 - losetup -d..."
+losetup -d /dev/loop0
 
+echo " - part2 - dd..."
 dd if=/dev/zero of=part2.img bs=512 count=$offload_size
-mke2fs -m0 -F part2.img
+echo " - part2 - mke2fs..."
+mke2fs -m0 -L offload -F part2.img
+echo " - part2 - tune2fs..."
 tune2fs -c0 part2.img
+echo " - part2 - mount..."
 mount -o loop part2.img loop
+echo " - part2 - cp offload_stage..."
 cp -Rp offload_stage/* loop/
+echo " - part2 - umount..."
 umount loop
 
+echo " - dd part1 -> firmware.img..."
 dd if=part1.img of=firmware.img bs=512 seek=1
+echo " - dd part2 -> firmware.img..."
 dd if=part2.img of=firmware.img bs=512 seek=$offload_start_sector
 
 
