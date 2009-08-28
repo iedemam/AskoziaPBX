@@ -24,7 +24,6 @@ X gmp
 X mpfr
 X gcc
 X toolchain-bfin-uclinux
-#X u-boot
 
 # layout + kernel
 X 00-dirtree
