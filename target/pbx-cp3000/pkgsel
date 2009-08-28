@@ -49,7 +49,6 @@ X termcap
 X libpri
 #X dahdi-linux
 #X dahdi-tools
-#X misdnuser
 X asterisk
 
 # text to speech
@@ -94,4 +93,3 @@ X msmtp
 X msntp
 X php4
 X ezipupdate
-X mini_httpd
