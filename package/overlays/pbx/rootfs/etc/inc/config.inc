@@ -94,10 +94,8 @@ EOD;
 			while ($attempts--) {
 				if ($g['platform'] == "COMpact 3000") {
 					$disks[] = "mmcblk0p";
-					$cfgfstype = "msdos";
 				} else {
 					exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
-					$cfgfstype = "ext2";
 				}
 				echo "Found disks: " . implode(", ", $disks) . "\n";
 				foreach ($disks as $disk) {
@@ -155,7 +153,7 @@ EOD;
 		/* write out an fstab */
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 
-		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
+		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} msdos ro 1 1\n";
 		$fstab .= "/dev/{$cfgdevice}2 /offload ext2 ro 0 0\n";
 
 		fwrite($fd, $fstab);
