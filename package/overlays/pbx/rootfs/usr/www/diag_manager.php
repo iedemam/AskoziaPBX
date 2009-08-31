@@ -54,7 +54,7 @@ include("fbegin.inc"); ?>
 
 		jQuery("#command").keyup(function(e){
 			if (e.keyCode == 13) {
-				jQuery.get("ajax.cgi", { exec_ami: '"' + jQuery("#command").val() + '"' }, function(data){
+				jQuery.get("cgi-bin/ajax.cgi", { exec_ami: '"' + jQuery("#command").val() + '"' }, function(data){
 					jQuery("#contents").val(data);
 				});
 			}

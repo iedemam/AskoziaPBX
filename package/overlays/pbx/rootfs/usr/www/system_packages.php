@@ -359,7 +359,7 @@ if ($input_errors) display_input_errors($input_errors);
 	}
 
 	function update_dl_progress() {
-		jQuery.get("ajax.cgi?exec_shell=ls%20-l%20/ultmp/" + currentfile, function(data) {
+		jQuery.get("cgi-bin/ajax.cgi?exec_shell=ls%20-l%20/ultmp/" + currentfile, function(data) {
 			var pieces = data.split(/\s+/);
 			if (!pieces[4]) {
 				alert("download update failed!");

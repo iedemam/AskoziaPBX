@@ -138,7 +138,7 @@ chmod 755 usr/bin/*
 chmod 755 usr/sbin/*
 chmod 644 usr/www/*
 chmod 755 usr/www/*.php
-chmod 755 usr/www/*.cgi
+chmod 755 usr/www/cgi-bin/*.cgi
 chmod 755 usr/share/udhcpc/default.script
 chmod 755 etc/rc*
 chmod 644 etc/pubkey.pem

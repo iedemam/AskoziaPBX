@@ -40,7 +40,7 @@ $ifname=@$_GET["ifname"]?$_GET["ifname"]:"LAN";  //Interface name that will be s
 $scale_type="up";               //Autoscale default setup : "up" = only increase scale; "follow" = increase and decrease scale according to current graphed datas
 $nb_plot=120;                   //NB plot in graph
 $time_interval=1;		//Refresh time Interval
-$fetch_link = "ajax.cgi?get_stat_network=$ifnum";
+$fetch_link = "cgi-bin/ajax.cgi?get_stat_network=$ifnum";
 
 //SVG attributes
 $attribs['axis']='fill="black" stroke="black"';

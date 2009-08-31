@@ -293,14 +293,14 @@ function javascript_account_statuses($part) {
 			var src;
 			var i = 0;
     	
-			jQuery.get('ajax.cgi', { exec_ami: '"sip show statuses"' }, function(data){
+			jQuery.get('cgi-bin/ajax.cgi', { exec_ami: '"sip show statuses"' }, function(data){
 				lines = data.split(/\n/);
 				for (i = 0; i < lines.length; i++) {
 					pieces = lines[i].split(" ");
 					update_statuses_sub(pieces);
 				}
 			});
-			jQuery.get('ajax.cgi', { exec_ami: '"iax2 show statuses"' }, function(data){
+			jQuery.get('cgi-bin/ajax.cgi', { exec_ami: '"iax2 show statuses"' }, function(data){
 				lines = data.split(/\n/);
 				for (i = 0; i < lines.length; i++) {
 					pieces = lines[i].split(" ");

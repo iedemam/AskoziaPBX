@@ -115,7 +115,7 @@ function puts( $arg ) { echo "$arg\n"; }
 				arrRecallBuffer[arrRecallBuffer.length] = command;
 			}
 		}
-		jQuery.get("ajax.cgi", { exec_shell: command }, function(data){
+		jQuery.get("cgi-bin/ajax.cgi", { exec_shell: command }, function(data){
 			jQuery("#contents_wrapper").text(data);
 		});
 	}

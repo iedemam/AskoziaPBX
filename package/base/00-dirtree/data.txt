@@ -85,6 +85,7 @@ m usr/share/tmac
 m usr/share/zoneinfo
 m usr/src
 m usr/www
+m usr/www/cgi-bin
 m var
 m var/account
 m var/adm
