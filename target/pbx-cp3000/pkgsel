@@ -41,7 +41,7 @@ X libiconv
 X gettext
 X bzip2
 
-# asterisk + dahdi + mISDN
+# asterisk + dahdi
 X bison
 X ncurses
 X termcap

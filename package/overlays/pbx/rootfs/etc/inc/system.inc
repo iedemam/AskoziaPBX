@@ -388,10 +388,8 @@ function system_httpd_start() {
 	}
 	fwrite($fd,
 		"/:admin:askozia\n".
-		"\n".
-		"I:index.php\n".
-		"\n".
 		"*.php:/usr/bin/php\n".
+		"I:index.php\n".
 		"\n"
 	);
 	fclose($fd);
