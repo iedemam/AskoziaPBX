@@ -14,12 +14,15 @@
 
 #Description: AskoziaPBX - Auerswald Compact 3000
 
+# select init
+SDECFGSET_INIT='busybox'
+
 # architecture
 SDECFGSET_ARCH="blackfin"
 SDECFG_BFIN_OPT="bf527"
 
-# select init
-SDECFGSET_INIT='busybox'
+# firmware type
+SDECFGSET_IMAGE='alternatfw'
 
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"
