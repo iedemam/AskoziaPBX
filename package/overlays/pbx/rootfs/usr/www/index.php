@@ -67,7 +67,7 @@ if ($_POST) {
 		<td class="listr"><strong><?
 			readfile("/etc/version");
 			?></strong><br><?
-			echo gettext("built on");
+			echo gettext("built on") . " ";
 			readfile("/etc/version.buildtime");
 		?></td>
 	</tr>
