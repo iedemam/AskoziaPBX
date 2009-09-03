@@ -21,8 +21,8 @@ moh_extract() {
 
 moh_main() {
 
-	cp -p fpm-* $root/offload/asterisk/moh/
-	echo "freeplay music-on-hold full set copied into build"
+	cp -p macroform-* manolo_camp-* reno_project-* $root/offload/asterisk/moh/
+	echo "opsound music-on-hold full set copied into build"
 
 }
 

@@ -21,8 +21,8 @@ moh_extract() {
 
 moh_main() {
 
-	cp -p fpm-calm-river.* $root/offload/asterisk/moh/
-	echo "freeplay music-on-hold base set copied into build"
+	cp -p manolo_camp-morning_coffee.* $root/offload/asterisk/moh/
+	echo "opsound music-on-hold base set copied into build"
 
 }
 
