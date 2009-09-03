@@ -56,7 +56,8 @@ echo
 fi
 echo
 
-read -p "Enter a number: " opmode
+echo -n "Enter a number: "
+read opmode
 
 # see what the user has chosen
 case ${opmode} in
