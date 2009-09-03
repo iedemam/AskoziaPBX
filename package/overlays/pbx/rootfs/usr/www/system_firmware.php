@@ -111,7 +111,7 @@ if ($_POST && !file_exists($d_fwlock_path)) {
 			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 				/* verify firmware image(s) */
 				syslog(LOG_INFO, "Firmware Upgrade - OK - is_uploaded_file()");
-				if (!stristr($_FILES['ulfile']['name'], $g['platform']) && !$_POST['sig_override']) {
+				if (!stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && !$_POST['sig_override']) {
 					syslog(LOG_INFO, "Firmware Upgrade - FAIL - firmware is not for platform");
 					$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
 				} else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
@@ -202,7 +202,7 @@ if (file_exists($d_fwupunsupported_path)) {
 
 		}
 
-		?><?=sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."), $g['platform']);?><br>
+		?><?=sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."), chop(file_get_contents("{$g['etc_path']}/firmwarepattern")));?><br>
 		<?=gettext("Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
 		<form action="system_firmware.php" method="post" enctype="multipart/form-data">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
