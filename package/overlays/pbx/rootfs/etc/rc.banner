@@ -43,7 +43,16 @@
 	}
 
 	if (isset($config['interfaces']['lan']['dhcp'])) {
-		$ip_line = "LAN IP address assigned via DHCP";
+		$ip_line = "LAN IP address assigned via DHCP: ";
+		$interfaces = network_get_interfaces();
+		foreach ($interfaces as $i) {
+			$ips[] = $i['ipaddr'];
+		}
+		if ($ips) {
+			$ip_line .= implode(", ", $ips);
+		} else {
+			$ip_line .= "unassigned";
+		}
 	} else {
 		$ip_line = "LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}";
 	}
