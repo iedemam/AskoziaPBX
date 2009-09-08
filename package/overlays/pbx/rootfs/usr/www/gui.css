@@ -103,6 +103,12 @@ textarea.userdefined {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 }
+
+textarea.code {
+	font-family: Courier New, Courier, monospaced;
+	font-size: 1.2em;
+}
+
 .vvcell {
 	background-color: #FFFFC6;
 }

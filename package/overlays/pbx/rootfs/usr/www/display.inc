@@ -844,7 +844,7 @@ function display_application_logic_editor($current_appcommands, $colspan, $idpre
 			$idstring = "applogic";
 		}
 
-			?><textarea name="<?=$idstring;?>" cols="65" rows="<?=$n;?>" id="<?=$idstring;?>" class="notes"><?
+		?><textarea name="<?=$idstring;?>" cols="80" rows="<?=$n;?>" id="<?=$idstring;?>" class="code"><?
 
 			// print the pattern(s)
 			if (is_array($current_appcommands)) {

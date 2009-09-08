@@ -74,7 +74,7 @@ if ($_POST) {
 		$input_errors[] = $msg;
 	}
 	if ($msg = verify_application_logic($_POST['applogic'])) {
-		$input_errors[] = $msg;
+		$input_errors = array_merge($input_errors, $msg);
 	}
 
 	// this is a messy fix for properly and encoding the app-command content

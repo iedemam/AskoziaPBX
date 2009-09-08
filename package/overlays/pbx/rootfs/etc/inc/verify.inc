@@ -230,17 +230,125 @@ function verify_is_public_name($name) {
 }
 
 /**
+* check mixed matching parentheses
+* 
+* @param string $string
+*/
+function verify_match_parentheses($string) {
+	$rcounter = 0;
+	$scounter = 0;
+	$ccounter = 0;
+	$backtrace = array();
+	$length = strlen($string);
+	for($i = 0; $i < $length; $i ++) {
+		$char = $string[$i];
+		$bcount = count($backtrace);
+		if (!($char == '(' | $char == ')' | $char == '[' | $char == ']' | $char == '{' | $char == '}')) { continue; }
+		switch ($char) {
+			case '(': {
+				$rcounter++;
+				$backtrace[] = $char;
+				break;
+			}
+			case ')': {
+				$rcounter--;
+				if ($bcount > 0){
+					if ($backtrace[$bcount-1] == '(') {
+						array_pop($backtrace);
+					}
+					else return $i+1;
+				}
+				 break;
+			}
+			case '[': {
+				$scounter++;
+				$backtrace[] = $char;
+				break;
+			}
+			case ']': {
+				$scounter--;
+				if ($bcount > 0){
+					if ($backtrace[$bcount-1] == '[') {
+						array_pop($backtrace);
+					}
+					else return $i+1;
+				}
+				 break;
+			}
+			case '{': {
+				$ccounter++;
+				$backtrace[] = $char;
+				break;
+			}
+			case '}':{
+				$ccounter--;
+				if ($bcount > 0){
+					if ($backtrace[$bcount-1] == '{') {
+						array_pop($backtrace);
+					}
+					else return $i+1;
+				}
+				 break;
+			}
+		}
+		if($rcounter < 0 | $scounter < 0 | $ccounter < 0) {
+			return $i+1;
+		}
+	}
+	if ($rcounter == 0 & $scounter == 0 & $ccounter == 0) {
+		return true;
+	}
+	else return $i+1;
+}
+
+/**
  * Verifies user provided application logic
  * This is a very basic check at the moment.
+ * Alloweds syntax:
+ * - numbered priority,command -> 1,hangup()
+ * - numbered priority(label),command -> 1(label),hangup()
+ * - unnumbered priority,command -> n,hangup()
+ * - unnumbered priority(label),command -> n(label),hangup()
+ * Allowed additional directives:
+ * - Include => <somecontext> 
+ * Check for matching parentheses
  */
 function verify_application_logic($app_lines) {
-
 	$n = count($app_lines);
+	$app_index = 0;
+	$err_list = array();
 	for ($i = 1; $i <= $n; $i++) {
-		if (!preg_match("/^$i,[A-Za-z0-9]+\(.*\)/", $app_lines[$i-1])) {
-			return "Application logic line number $i is invalid. ".
-				"Incorrect numbering or missing parenthesis?";
-		}	
+		$app_index++;
+		// check for include directive
+		if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', $app_lines[$i-1])) {
+			$app_index--;
+			continue;
+		}
+		// check for application rules:
+		if (preg_match('/^(?P<pri>[\d]+|n)(?:\((?P<lbl>[A-Za-z]{2,})\))??,(?P<cmd>[A-Za-z]{2,}(?:\(.*\)))/i', $app_lines[$i-1], $groups)) {
+			// check for matching parentheses in commands
+			$result = verify_match_parentheses($groups['cmd']);
+			if ($result !== true) {
+				$err_list[] = "Line $i -> Parenthesis mismatch in the dialplan command before position $result";
+			}
+			if ($groups['pri'] == 'n') {
+				// first priority must be numbered
+				if ($app_index == 1) {
+					$err_list[] = "Line $i -> Wrong numbering, first priority must always be 1!";
+				}
+				continue; 
+			}
+			if ($groups['pri'] <> $app_index) {
+				$err_list[] = "Line $i -> Incorrect priority number (expected $app_index, found {$groups['pri']}).";
+			}
+		}
+		else {
+			$err_list[] = "Line $i -> Invalid syntax (missing parenthesis, commas...).";
+		}
+	}
+	// report found error(s) where found...
+	if (count($err_list) > 0) {
+		return $err_list;
 	}
 }
 

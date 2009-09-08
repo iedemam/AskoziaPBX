@@ -808,18 +808,27 @@ function extensions_generate_callgroup_extension($group, $from_public=false, $re
  * Generates an application context
  */
 function extensions_generate_application_context($a) {
-
+	// init local vars
+	$conf = '';
+	$conf_pre ='';
+	$conf_act ='';
+	//	
 	if (is_array($a['app-command'])) {
 		$conf = "; " . $a['name'] . "\n";
 		$conf .= "[" . $a['uniqid'] . "]\n";
+		//
 		foreach ($a['app-command'] as $ac) {
-			$conf .= "exten => _[0-9a-zA-Z*#]!," . base64_decode($ac) . "\n";
-		}
-		foreach ($a['app-command'] as $ac) {
-			$conf .= "exten => s," . base64_decode($ac) . "\n";
+			// allow for include statements, don't process it
+			if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', base64_decode($ac))) {
+				$conf .= base64_decode($ac) . "\n";
+			}
+			else {
+				$conf_pre .= "exten => _[0-9a-zA-Z*#]!," . base64_decode($ac) . "\n";
+				$conf_act .= "exten => s," . base64_decode($ac) . "\n";
+			}
 		}
 	}
-
+	$conf .= $conf_pre . $conf_act;
 	return $conf;
 }
 
