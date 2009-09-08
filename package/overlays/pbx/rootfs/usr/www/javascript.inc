@@ -28,6 +28,16 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+function escape_jstring($in_str) {
+	$out_str = '';
+	$len_in_str = strlen($in_str);
+	for($i = 0; $i < $len_in_str; $i++) {
+		$dec = ord(substr($in_str, $i, 1));
+		$out_str .= '\\x' . dechex($dec);
+	}
+	return $out_str;
+}
+
 function javascript_incoming_extension_selector($current_incomingextensionmap, $multiple=false) {
 	
 	$options[] = array("", gettext("Outgoing Calls Only"));
@@ -92,6 +102,7 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 	
 	$n = count($options);
 	for ($i = 0; $i < $n; $i++) {
+		$options[$i][1] = escape_jstring($options[$i][1]);
 		$add_options_string .= "\t\t+ '<option value=\"{$options[$i][0]}\">{$options[$i][1]}</option>'\n";
 	}
 
