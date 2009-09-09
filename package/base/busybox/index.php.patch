@@ -4,9 +4,9 @@
  		}
  		send_cgi_and_exit(urlcopy, prequest, length, cookie, content_type);
  	}
-+	if (prequest != request_GET && prequest != request_HEAD) {
-+		send_headers_and_exit(HTTP_NOT_IMPLEMENTED);
-+	}
++	//if (prequest != request_GET && prequest != request_HEAD) {
++	//	send_headers_and_exit(HTTP_NOT_IMPLEMENTED);
++	//}
 +#endif
 +
 +	if (urlp[-1] == '/')
