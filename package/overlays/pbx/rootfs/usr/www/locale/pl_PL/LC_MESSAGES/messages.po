@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1121,15 +1121,6 @@ msgstr "Zmiany wprowadzono poprawnie."
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "BŁĄD: zmiany nie mogły być wprowadzone (kod błędu %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "wyczyść filter i przeładuj stronę z logami firewalla"
-
-msgid "Firewall"
-msgstr "Zapora"
-
-msgid "reload page"
-msgstr "przeładuj stronę"
 
 #, fuzzy
 msgid "Outgoing Calls Only"
@@ -3291,6 +3282,15 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "wyczyść filter i przeładuj stronę z logami firewalla"
+
+#~ msgid "Firewall"
+#~ msgstr "Zapora"
+
+#~ msgid "reload page"
+#~ msgstr "przeładuj stronę"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Maska Podsieci"

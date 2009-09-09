@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1080,15 +1080,6 @@ msgstr ""
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr ""
-
-msgid "reset filter and reload firewall logs page"
-msgstr ""
-
-msgid "Firewall"
-msgstr "Güvenlik Duvarı"
-
-msgid "reload page"
-msgstr "sayfayı yeniden çağır"
 
 msgid "Outgoing Calls Only"
 msgstr "Sadece Dış Aramalar "
@@ -3128,6 +3119,12 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Firewall"
+#~ msgstr "Güvenlik Duvarı"
+
+#~ msgid "reload page"
+#~ msgstr "sayfayı yeniden çağır"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Altağ Maskesi"

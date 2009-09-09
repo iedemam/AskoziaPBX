@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1166,15 +1166,6 @@ msgstr "Les modifications ont étés effectuées avec succès."
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr ""
 "ERREUR: les changements ne peuvent pas êtres appliqués (codice errore %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "Réinitialiser le filtre et recharger la page des logs du pare-feu."
-
-msgid "Firewall"
-msgstr "Pare-feu"
-
-msgid "reload page"
-msgstr "réactualiser la page"
 
 msgid "Outgoing Calls Only"
 msgstr "Appels sortants seulement"
@@ -3441,6 +3432,15 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "Réinitialiser le filtre et recharger la page des logs du pare-feu."
+
+#~ msgid "Firewall"
+#~ msgstr "Pare-feu"
+
+#~ msgid "reload page"
+#~ msgstr "réactualiser la page"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Masque de sous-réseau"

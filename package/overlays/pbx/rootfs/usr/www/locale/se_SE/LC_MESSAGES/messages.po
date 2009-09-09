@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1056,15 +1056,6 @@ msgstr ""
 
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
-msgstr ""
-
-msgid "reset filter and reload firewall logs page"
-msgstr ""
-
-msgid "Firewall"
-msgstr ""
-
-msgid "reload page"
 msgstr ""
 
 msgid "Outgoing Calls Only"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1195,16 +1195,6 @@ msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr ""
 "ΣΦΑΛΜΑ: ήταν αδύνατο να τεθούν σε εφαρμογή οι μεταβολές (κωδικός σφάλματος %"
 "s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr ""
-"αρχικοποίηση φίλτρου και επαναφόρτωση σελίδας ημερολογίου τοίχους προστασίας"
-
-msgid "Firewall"
-msgstr "Τοίχος προστασίας"
-
-msgid "reload page"
-msgstr "επαναφόρτωση σελίδας"
 
 msgid "Outgoing Calls Only"
 msgstr "Μόνο εξερχόμενες κλήσεις"
@@ -3540,6 +3530,17 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr ""
+#~ "αρχικοποίηση φίλτρου και επαναφόρτωση σελίδας ημερολογίου τοίχους "
+#~ "προστασίας"
+
+#~ msgid "Firewall"
+#~ msgstr "Τοίχος προστασίας"
+
+#~ msgid "reload page"
+#~ msgstr "επαναφόρτωση σελίδας"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Μάσκα υποδικτύου"

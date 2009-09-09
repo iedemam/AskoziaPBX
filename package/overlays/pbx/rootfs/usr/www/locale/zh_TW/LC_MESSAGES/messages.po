@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1143,15 +1143,6 @@ msgstr "改動應用成功。"
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "錯誤：無法應用改動（錯誤代碼 %s）。"
-
-msgid "reset filter and reload firewall logs page"
-msgstr "重置過濾器並重載防火墻日誌頁"
-
-msgid "Firewall"
-msgstr "防火墻"
-
-msgid "reload page"
-msgstr "重載頁面"
 
 #, fuzzy
 msgid "Outgoing Calls Only"
@@ -3258,6 +3249,15 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "重置過濾器並重載防火墻日誌頁"
+
+#~ msgid "Firewall"
+#~ msgstr "防火墻"
+
+#~ msgid "reload page"
+#~ msgstr "重載頁面"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "子網掩碼"

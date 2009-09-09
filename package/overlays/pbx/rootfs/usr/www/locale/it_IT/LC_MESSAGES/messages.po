@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1181,15 +1181,6 @@ msgstr "Le modifiche sono state applicate con successo."
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "ERRORE: le modifiche non possono essere applcate (codice errore %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "Ripristina i filtri e ricarica il registro del firewall."
-
-msgid "Firewall"
-msgstr "Firewall"
-
-msgid "reload page"
-msgstr "ricarica la pagina"
 
 #, fuzzy
 msgid "Outgoing Calls Only"
@@ -3500,6 +3491,15 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "Ripristina i filtri e ricarica il registro del firewall."
+
+#~ msgid "Firewall"
+#~ msgstr "Firewall"
+
+#~ msgid "reload page"
+#~ msgstr "ricarica la pagina"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Maschera sottorete"

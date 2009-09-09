@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1172,15 +1172,6 @@ msgstr "Ændringer er tilføjet tilfredsstillende."
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "FEJL: ændringerne kunne ikke tilføjes (fejl kode %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "reset filter og genopfrisk firewall logbog side"
-
-msgid "Firewall"
-msgstr "Ildmur"
-
-msgid "reload page"
-msgstr "genopfrisk side"
 
 #, fuzzy
 msgid "Outgoing Calls Only"
@@ -3322,6 +3313,15 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "reset filter og genopfrisk firewall logbog side"
+
+#~ msgid "Firewall"
+#~ msgstr "Ildmur"
+
+#~ msgid "reload page"
+#~ msgstr "genopfrisk side"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Undernetmaske"

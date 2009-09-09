@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1098,15 +1098,6 @@ msgstr "Los cambios han sido efectuados con éxito."
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "ERROR: los cambios no pudieron ser aplicados (código de error %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "resetear filtro y refrescar página de logs del firewall"
-
-msgid "Firewall"
-msgstr "Firewall"
-
-msgid "reload page"
-msgstr "refrescar página"
 
 msgid "Outgoing Calls Only"
 msgstr "Sólo llamadas salientes "
@@ -3237,6 +3228,15 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "resetear filtro y refrescar página de logs del firewall"
+
+#~ msgid "Firewall"
+#~ msgstr "Firewall"
+
+#~ msgid "reload page"
+#~ msgstr "refrescar página"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Máscara de subred"

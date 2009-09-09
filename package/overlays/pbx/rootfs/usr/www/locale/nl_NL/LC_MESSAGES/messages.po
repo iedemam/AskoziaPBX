@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1100,15 +1100,6 @@ msgstr "De wijzigingen zijn succesvol aangepast"
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "FOUT: de wijzigingen kunnen niet worden doorgevoerd (fout code %s)."
-
-msgid "reset filter and reload firewall logs page"
-msgstr "reset filter en herlaad de firewall log pagina"
-
-msgid "Firewall"
-msgstr "Firewall"
-
-msgid "reload page"
-msgstr "Pagina herladen"
 
 msgid "Outgoing Calls Only"
 msgstr ""
@@ -3298,6 +3289,15 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "reset filter en herlaad de firewall log pagina"
+
+#~ msgid "Firewall"
+#~ msgstr "Firewall"
+
+#~ msgid "reload page"
+#~ msgstr "Pagina herladen"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "Subnet Mask"

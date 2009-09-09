@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-08 13:52+0200\n"
+"POT-Creation-Date: 2009-09-09 15:08+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1171,15 +1171,6 @@ msgstr "変更は、適切に反映されました"
 #, php-format
 msgid "ERROR: the changes could not be applied (error code %s)."
 msgstr "エラー: この変更は適用されませんでした(エラーコード %s)"
-
-msgid "reset filter and reload firewall logs page"
-msgstr "フィルターリセットと、ファイヤウォールログページの再読み込み"
-
-msgid "Firewall"
-msgstr "ファイアウォール"
-
-msgid "reload page"
-msgstr "ページ再読み込み"
 
 msgid "Outgoing Calls Only"
 msgstr "発信のみ"
@@ -3409,6 +3400,15 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "reset filter and reload firewall logs page"
+#~ msgstr "フィルターリセットと、ファイヤウォールログページの再読み込み"
+
+#~ msgid "Firewall"
+#~ msgstr "ファイアウォール"
+
+#~ msgid "reload page"
+#~ msgstr "ページ再読み込み"
 
 #~ msgid "Subnet Mask"
 #~ msgstr "サブネットマスク"
