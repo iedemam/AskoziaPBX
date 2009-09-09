@@ -402,42 +402,22 @@ function get_std_save_message($ok) {
 
 function dynamic_tab_menu(&$tabs) {
 	global $allowed, $config;
-	
+
 	if ($_SERVER['REMOTE_USER'] == $config['system']['username']) {
 		$authorized = &$tabs;
 	} else {
 		$authorized = &$allowed;
 	}
-	
-	// Below needed to add the "1" onto the end of the class name for the first tab, if it is inactive.
-    $linkStyle = '1';
-   	foreach ($tabs as $desc => $link) {
-   		if (in_array($link,$authorized)) {
-            if ($link == basename($_SERVER['PHP_SELF'])) {
-   				// special handling for diagnostic Logs tabs.
-   				if ((strpos($link,'diag_logs') > -1) && ($link != 'diag_logs_settings.php')) {
-	   				if ($desc == "Firewall") {
-	       				$msg = gettext("reset filter and reload firewall logs page");
-	       				echo '<li class="tabact"><a href="diag_logs_filter.php" class="link_color_black" title="'.$msg.'">';
-					echo gettext("Firewall");
-					echo '</a></li>';
-	   				}
-	   				else {
-	   					$msg = gettext("reload page");
-	   					echo '<li class="tabact"><a href="'.$link.'" class="link_color_black" title="'.$msg.'">'.$desc.'</a></li>';
-	   				}
-	   			}
-       			else {
-       				echo '<li class="tabact">'.$desc.'</li>';
-       			}
-   				$linkStyle = '';
-   			}
-   			else {
-   				echo '<li class="tabinact'.$linkStyle.'"><a href="'.$link.'">'.$desc.'</a></li>';
-   				$linkStyle = '';
-   			}
-   		}
-    }	
+
+	foreach ($tabs as $desc => $link) {
+		if (in_array($link,$authorized)) {
+			if ($link == basename($_SERVER['SCRIPT_FILENAME'])) {
+				echo '<li class="tabact">'.$desc.'</li>';
+			} else {
+				echo '<li class="tabinact"><a href="'.$link.'">'.$desc.'</a></li>';
+			}
+		}
+	}
 }
 
 function print_r_html($data, $return_data=true) {
