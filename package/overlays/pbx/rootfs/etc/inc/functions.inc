@@ -37,6 +37,7 @@ require_once("applications.inc");
 require_once("callgroups.inc");
 require_once("conferencing.inc");
 require_once("config.inc");
+require_once("dahdi.inc");
 require_once("dialplan.inc");
 require_once("extensions.inc");
 require_once("external.inc");
