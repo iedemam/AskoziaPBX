@@ -586,7 +586,7 @@ function extensions_generate_provider_incoming_context($p) {
 				$conf .= "exten => _$pattern,n,Wait(1)\n";
 			}
 			$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
-			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, "_ " . $pattern);
+			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, '_' . $pattern);
 		}
 		$conf .= "\n";
 	}
