@@ -278,7 +278,7 @@ function system_webgui_start() {
 	killbypid("{$g['varrun_path']}/mini_httpd.pid");
 
 	/* generate password file */
-	system_password_configure();
+	system_update_shell_password();
 
 	chdir($g['www_path']);
 
@@ -357,37 +357,24 @@ EOD;
 /**
  * Configures and (re)starts the busybox httpd process
  */
-function system_httpd_start() {
+function system_update_httpd_settings() {
 	global $config, $g;
 
-	/*
-	Usage: httpd [-c conffile] [-p [ip:]port] [-i] [-f] [-v[v]] [-u user[:grp]] [-r realm] [-m pass] [-h home] [-d/-e string]
-
-	Listen for incoming HTTP requests
-
-	Options:
-	        -c FILE         Configuration file (default httpd.conf)
-	        -p [IP:]PORT    Bind to ip:port (default *:80)
-	        -i              Inetd mode
-	        -f              Do not daemonize
-	        -v[v]           Verbose
-	        -u USER[:GRP]   Set uid/gid after binding to port
-	        -r REALM        Authentication Realm for Basic Authentication
-	        -m PASS         Crypt PASS with md5 algorithm
-	        -h HOME         Home directory (default .)
-	        -e STRING       HTML encode STRING
-	        -d STRING       URL decode STRING
-	*/
+	if ($config['system']['username']) {
+		$username = $config['system']['username'];
+	} else {
+		$username = "admin";
+	}
 
 	killbyname("httpd");
 
 	$fd = fopen("{$g['etc_path']}/httpd.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open httpd.conf in system_httpd_start().\n");
+		printf("Error: cannot open httpd.conf in system_update_httpd_settings().\n");
 		return 1;
 	}
 	fwrite($fd,
-		"/:admin:askozia\n".
+		"/:" . $username . ":" . $config['system']['password'] . "\n".
 		"*.php:/usr/bin/php\n".
 		"I:index.php\n".
 		"\n"
@@ -426,37 +413,12 @@ function system_upgrade_https_certificate() {
 }
 /**
  * Generates htpasswd and sets the root password
- * XXX : still contains "local user manager" which should still be reimplemented
  */
-function system_password_configure() {
-	global $config, $g;
-	
-	$fd = fopen("{$g['www_path']}/.htpasswd", "w");
-	if (!$fd) {
-		printf("Error: cannot open htpasswd in system_password_configure().\n");
-		return 1;
-	}
-	
-	if ($config['system']['username']) {
-		$username = $config['system']['username'];
-	} else {
-		$username = "admin";
-	}
+function system_update_shell_password() {
+	global $config;
 
-	mwexec("echo \"root:{$config['system']['password']}\" | /usr/sbin/chpasswd -e");
+	mwexec("echo \"root:" . crypt($config['system']['password']) . "\" | /usr/sbin/chpasswd -e");
 
-	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
-
-	if (is_array($config['system']['user'])) {
-		foreach ($config['system']['user'] as $userent) {
-			    fwrite($fd, $userent['name'] . ":" 
-		              . $userent['password'] . "\n");
-		}
-	}
-	
-	fclose($fd);
-	chmod("{$g['www_path']}/.htpasswd", 0600);
-	
 	return 0;
 }
 

@@ -116,7 +116,8 @@ if ($_POST) {
 		$config['system']['webgui']['language'] = $_POST['lang'];
 				
 		if ($_POST['password']) {
-			$config['system']['password'] = crypt($_POST['password']);
+			$config['system']['password'] = $_POST['password'];
+			touch($d_passworddirty_path);
 		}
 		
 		write_config();
@@ -130,7 +131,6 @@ if ($_POST) {
 			config_lock();
 			$retval = system_hostname_configure();
 			$retval |= system_hosts_generate();
-			$retval |= system_password_configure();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
 			$retval |= indications_conf_generate();

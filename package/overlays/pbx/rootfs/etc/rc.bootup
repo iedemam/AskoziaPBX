@@ -131,7 +131,7 @@
 
 	/* start web server */
 	echo " - Starting webgui... ";
-	system_httpd_start();
+	system_update_httpd_settings();
 	echo "done\n";
 
 	/* configure console menu */

@@ -5,4 +5,13 @@
   </tr>
 </table>
 </body>
-</html>
+</html><?
+
+if (file_exists($d_passworddirty_path)) {
+	sleep(3);
+	system_update_shell_password();
+	system_update_httpd_settings();
+	unlink($d_passworddirty_path);
+}
+
+?>

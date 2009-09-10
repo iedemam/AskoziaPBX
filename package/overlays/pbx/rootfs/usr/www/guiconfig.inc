@@ -61,6 +61,7 @@ $d_fwupenabled_path = $g['varrun_path'] . "/firmware.upgrade.enabled";
 $d_fwupunsupported_path = $g['varrun_path'] . "/firmware.upgrade.unsupported";
 $d_fwlock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
+$d_passworddirty_path = $g['varrun_path'] . "/password.dirty";
 
 if (file_exists($d_fwlock_path)) {
 	if (!$d_isfwfile) {

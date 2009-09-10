@@ -42,7 +42,7 @@
 		$config['interfaces']['lan']['dhcp'] = true;
 		write_config();
 		network_lan_configure();
-		system_httpd_start();
+		system_update_httpd_settings();
     
 		echo <<<EOD
 
@@ -123,7 +123,7 @@ EOD;
 	write_config();
 	network_lan_configure();
 	if ($webgui_restart) {
-		system_httpd_start();
+		system_update_httpd_settings();
 	}
 	
 	echo <<<EOD
