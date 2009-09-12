@@ -46,8 +46,8 @@ X bison
 X ncurses
 X termcap
 X libpri
-#X dahdi-linux
-#X dahdi-tools
+X dahdi-linux
+X dahdi-tools
 X asterisk
 
 # text to speech
