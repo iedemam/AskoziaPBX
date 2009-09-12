@@ -424,7 +424,7 @@ function msmtp_conf_generate() {
 		$conf .= "port {$vmconfig['port']}\n";
 	}
 	
-	$conf .= "syslog LOG_MAIL\n";
+	$conf .= "syslog LOG_LOCAL0\n";
 
 	fwrite($fd, $conf);
 	fclose($fd);
