@@ -28,7 +28,7 @@
 
 [L] GPL
 [S] Stable
-[V] 08r1.5-14
+[V] 09r1-10
 [P] X -----5---9 100.000
 
-[D] 0 blackfin-toolchain-08r1.5-14.i386.tar.bz2 http://blackfin.uclinux.org/gf/download/frsrelease/392/5087/
+[D] 0 blackfin-toolchain-09r1-10.i386.tar.bz2 http://blackfin.uclinux.org/gf/download/frsrelease/449/6843/
