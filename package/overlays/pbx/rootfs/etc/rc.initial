@@ -47,13 +47,13 @@ echo "4) Reset to factory defaults"
 echo "5) Reboot system"
 echo "6) Ping host"
 echo "7) Asterisk Console"
-# need an install option?
-PLATFORM=`cat /etc/platform`
-if [ $PLATFORM = "generic-pc-cdrom" ]; then
-echo "8) Install on Hard Drive";
-else 
+## need an install option?
+#PLATFORM=`cat /etc/platform`
+#if [ $PLATFORM = "generic-pc-cdrom" ]; then
+#echo "8) Install on Hard Drive";
+#else 
 echo
-fi
+#fi
 echo
 
 echo -n "Enter a number: "
@@ -83,9 +83,9 @@ case ${opmode} in
 	/usr/sbin/asterisk -r
 	;;
 8)
-	if [ "$PLATFORM" = "generic-pc-cdrom" ]; then
-	/etc/rc.initial.install
-	fi
+#	if [ "$PLATFORM" = "generic-pc-cdrom" ]; then
+#	/etc/rc.initial.install
+#	fi
 	;;
 9)
 	/bin/sh
