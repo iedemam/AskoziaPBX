@@ -112,7 +112,7 @@ function pbx_configure() {
 }
 
 function pbx_start() {
-	return mwexec("/usr/sbin/asterisk");
+	return mwexec_bg("/usr/sbin/asterisk");
 }
 
 /* XXX : room for improvement here by factoring in call volume and
