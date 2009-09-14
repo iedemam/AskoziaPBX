@@ -130,3 +130,9 @@ quit
 
 gzip -9 firmware.img
 mv firmware.img.gz ../$SDECFG_ID.img
+
+cd $build_toolchain
+cd initramfs
+du -a | sort -n > sizes.out
+cd ../firmware/
+du -a | sort -n >> sizes.out
