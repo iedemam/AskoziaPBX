@@ -1,5 +1,2 @@
-#::sysinit:/etc/rc.bootup
-#tty1::respawn:/etc/rc.initial
-#tty2::respawn:/sbin/getty 38400 tty2
-#tty3::respawn:/sbin/getty 38400 tty3
-ttyBF0::respawn:/sbin/getty 57600 ttyBF0
+::sysinit:/etc/rc.bootup
+ttyBF0::respawn:/etc/rc.initial
