@@ -1,0 +1,16 @@
+
+# the kernel requires a different toolchain tuple
+# - set bfin-uclinux instead of bfin-t2-uclibc 
+if [ "$pkg" = linux26 ]; then
+        arch_target=bfin-uclinux
+        archprefix="${arch_target}-"
+        export CC="${archprefix}cc"     CXX="${archprefix}c++"          CPP="${archprefix}cpp"
+        export AS="${archprefix}as"     STRIP="${archprefix}strip"      OBJCOPY="${archprefix}objcopy"
+        export LD="${archprefix}ld"     GASP="${archprefix}gasp"        OBJDUMP="${archprefix}objdump"
+        export AR="${archprefix}ar"     RANLIB="${archprefix}ranlib"
+        export NM="${archprefix}nm"     KCC="${archprefix}kcc"
+        export F77="${archprefix}f77"
+        set_confopt
+	echo "arch/bfin/parse-config: switched arch_target to bfin-uclinux" 
+fi
+
