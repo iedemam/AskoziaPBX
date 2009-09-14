@@ -9,7 +9,7 @@
 		<domain>local</domain>
 		<dnsserver>192.168.1.1</dnsserver>
 		<username>admin</username>
-		<password>E2G6msNBKWqnk</password>
+		<password>askozia</password>
 		<time-update-interval>300</time-update-interval>
 		<timeservers>pool.ntp.org</timeservers>
 		<webgui>
