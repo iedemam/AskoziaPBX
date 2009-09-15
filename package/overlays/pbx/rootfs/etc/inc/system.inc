@@ -444,6 +444,8 @@ function system_timezone_configure() {
 function system_ntp_configure() {
 	global $config, $g;
 
+	return; // LINUX TODO : ntp time sync broken
+
 	$syscfg = $config['system'];
 
 	if (!$g['booting']) {
