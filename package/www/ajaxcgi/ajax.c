@@ -159,82 +159,48 @@ void exec_ami(char * command) {
 	pclose(shell_pipe);
 }
 
-//void get_stat_cpu() {
-//
-//	long cp_time1[CPUSTATES], cp_time2[CPUSTATES];
-//	long total1, total2;
-//	size_t len;
-//	double cpuload;
-//
-//	len = sizeof(cp_time1);
-//
-//	if (sysctlbyname("kern.cp_time", &cp_time1, &len, NULL, 0) < 0)
-//		exit(1);
-//
-//	sleep(1);
-//
-//	len = sizeof(cp_time2);
-//
-//	if (sysctlbyname("kern.cp_time", &cp_time2, &len, NULL, 0) < 0)
-//		exit(1);
-//
-//	total1 = cp_time1[CP_USER] + cp_time1[CP_NICE] + cp_time1[CP_SYS] + 
-//			 cp_time1[CP_INTR] + cp_time1[CP_IDLE];
-//	total2 = cp_time2[CP_USER] + cp_time2[CP_NICE] + cp_time2[CP_SYS] + 
-//			 cp_time2[CP_INTR] + cp_time2[CP_IDLE];
-//
-//	cpuload = 1 - ((double)(cp_time2[CP_IDLE] - cp_time1[CP_IDLE]) / (double)(total2 - total1));
-//
-//	printf("%.0f\n", 100.0*cpuload);
-//}
-//
-//void get_stat_network(char *cl) {
-//
-//	struct ifmibdata	ifmd;
-//	size_t				ifmd_size =	sizeof(ifmd);
-//	int					nr_network_devs;
-//	size_t				int_size = sizeof(nr_network_devs);
-//	int					name[6];
-//	int					i;
-//	struct timeval		tv;
-//	double				uusec;
-//	
-//	/* check interface name syntax */
-//	for (i = 0; cl[i]; i++) {
-//		if (!((cl[i] >= 'a' && cl[i] <= 'z') || (cl[i] >= '0' && cl[i] <= '9')))
-//			exit(1);	
-//	}
-//
-//	name[0] = CTL_NET;
-//	name[1] = PF_LINK;
-//	name[2] = NETLINK_GENERIC;
-//	name[3] = IFMIB_IFDATA; 	name[5] = IFDATA_GENERAL;
-//
-//	if (sysctlbyname("net.link.generic.system.ifcount", &nr_network_devs,
-//		&int_size, (void*)0, 0) == -1) {
-//		
-//		exit(1);
-//	
-//	} else {    
-//		
-//		for (i = 1; i <= nr_network_devs; i++) {
-//			
-//			name[4] = i;    /* row of the ifmib table */
-//			
-//			if (sysctl(name, 6, &ifmd, &ifmd_size, (void*)0, 0) == -1) {    
-//				continue;
-//			}
-//			
-//			if (strncmp(ifmd.ifmd_name, cl, strlen(cl)) == 0) {
-//				gettimeofday(&tv, NULL);
-//				uusec = (double)tv.tv_sec + (double)tv.tv_usec / 1000000.0;
-//				printf("%lf|%u|%u\n", uusec,
-//					ifmd.ifmd_data.ifi_ibytes, ifmd.ifmd_data.ifi_obytes);
-//				exit(0);
-//			}
-//		}
-//	}
-//}
+void get_stat_cpu() {
+
+	FILE *f1, *f2;
+	char line1[256], line2[256];
+	unsigned long long user1, nice1, system1, idle1, iowait1, irq1, softirq1;
+	unsigned long long user2, nice2, system2, idle2, iowait2, irq2, softirq2;
+	unsigned long long total1, total2;
+	double cpuload;
+
+	f1 = fopen("/proc/stat", "r");
+	if (f1) {
+		fgets(line1, 256, f1);
+		fclose(f1);
+		sscanf(line1, "cpu  %llu %llu %llu %llu %llu %llu %llu",
+			&user1, &nice1, &system1, &idle1, &iowait1, &irq1, &softirq1);
+
+		sleep(1);
+
+		f2 = fopen("/proc/stat", "r");
+		if (f2) {
+			fgets(line2, 256, f2);
+			fclose(f2);
+			sscanf(line2, "cpu  %llu %llu %llu %llu %llu %llu %llu",
+				&user2, &nice2, &system2, &idle2, &iowait2, &irq2, &softirq2);
+
+			total1 = user1 + nice1 + system1 + idle1 + iowait1 + irq1 + softirq1;
+			total2 = user2 + nice2 + system2 + idle2 + iowait2 + irq2 + softirq2;
+			//printf("user-diff    : %llu\n", user2-user1);
+			//printf("nice-diff    : %llu\n", nice2-nice1);
+			//printf("system-diff  : %llu\n", system2-system1);
+			//printf("idle-diff    : %llu\n", idle2-idle1);
+			//printf("iowait-diff  : %llu\n", iowait2-iowait1);
+			//printf("irq-diff     : %llu\n", irq2-irq1);
+			//printf("softirq-diff : %llu\n", softirq2-softirq1);
+			//printf("total-diff   : %llu\n", total2-total1);
+
+			cpuload = 1 - ((double)(idle2 - idle1) / (double)(total2 - total1));
+
+			printf("%.0f\n", 100.0*cpuload);
+		}
+	}
+}
 
 int main(int argc, char *argv[]) {
 
@@ -268,9 +234,9 @@ int main(int argc, char *argv[]) {
 		} else if (strcmp(next_command_name, "exec_ami") == 0) {
 			exec_ami(next_command_string);
 
-		///* get statistic cpu load or current usage */
-		//} else if (strcmp(next_command_name, "get_stat_cpu") == 0) {
-		//	get_stat_cpu(next_command_string);
+		/* get statistic cpu load or current usage */
+		} else if (strcmp(next_command_name, "get_stat_cpu") == 0) {
+			get_stat_cpu();
 
 		///* get network interface statistics */
 		//} else if (strcmp(next_command_name, "get_stat_network") == 0) {
