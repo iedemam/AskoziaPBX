@@ -51,8 +51,6 @@ echo "7) Asterisk Console"
 #PLATFORM=`cat /etc/platform`
 #if [ $PLATFORM = "generic-pc-cdrom" ]; then
 #echo "8) Install on Hard Drive";
-#else 
-echo
 #fi
 echo
 
