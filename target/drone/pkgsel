@@ -15,6 +15,9 @@
 # start with an empty package selection
 O *
 
+# overlays
+X drone
+
 # toolchain
 X binutils
 X gmp
@@ -33,7 +36,7 @@ X grub
 # common deps
 #X automake
 #X autoconf
-#X zlib
+X zlib
 #X openssl
 #X libtool
 #X gettext
@@ -76,6 +79,7 @@ X grub
 #X freeplay-siren14-base
 
 # webgui
+X iui
 #X ajaxcgi
 #X jquery
 #X jquery.blockui
@@ -86,8 +90,10 @@ X grub
 
 # binaries
 X busybox
-#X dropbear
+X dropbear
 #X msmtp
 #X msntp
 #X php4
 #X ezipupdate
+X mdnsresponder
+
