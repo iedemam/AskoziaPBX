@@ -1,0 +1,12 @@
+root:x:0:root
+disk:x:1000:
+cdrom:x:1001:
+floppy:x:1002:
+tape:x:1003:
+audio:x:1004:
+video:x:1005:
+lp:x:1006:
+tty:x:1007:
+dialout:x:1008:
+kmem:x:1009:
+uucp:x:1010:
