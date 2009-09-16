@@ -25,7 +25,7 @@
 [A] Apple Computer, Inc.
 [M] Rene Rebe <rene@t2-project.org>
 
-[F] NOPARALLEL
+[F] NOPARALLEL CROSS
 [C] extra/network
 
 [L] APSL
