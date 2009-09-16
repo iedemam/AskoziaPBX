@@ -86,6 +86,7 @@ X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
 X jquery.ui
+X iui
 
 # binaries
 X busybox
@@ -94,3 +95,4 @@ X msmtp
 X msntp
 X php4
 X ezipupdate
+
