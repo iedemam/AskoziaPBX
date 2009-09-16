@@ -269,97 +269,12 @@ function system_syslogd_start() {
 }
 
 /**
- * Configures and (re)starts the mini_httpd process
- */
-function system_webgui_start() {
-	global $config, $g;
-
-	/* kill any running mini_httpd */
-	killbypid("{$g['varrun_path']}/mini_httpd.pid");
-
-	/* generate password file */
-	system_update_shell_password();
-
-	chdir($g['www_path']);
-
-	/* non-standard port? */
-	if ($config['system']['webgui']['port']) {
-		$portarg = "-p {$config['system']['webgui']['port']}";
-	} else {
-		$portarg = "";
-	}
-
-	if ($config['system']['webgui']['protocol'] == "https") {
-
-		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
-			$cert = base64_decode($config['system']['webgui']['certificate']);
-			$key = base64_decode($config['system']['webgui']['private-key']);
-		} else {
-			/* default certificate/key */
-			$cert = <<<EOD
------BEGIN CERTIFICATE-----
-MIIBtzCCASACCQCfbBuIBnO/HDANBgkqhkiG9w0BAQQFADAgMRAwDgYDVQQKEwdB
-c2tvemlhMQwwCgYDVQQLEwNQQlgwHhcNMDcwNTI0MDQxMTAzWhcNMDgwNTIzMDQx
-MTAzWjAgMRAwDgYDVQQKEwdBc2tvemlhMQwwCgYDVQQLEwNQQlgwgZ8wDQYJKoZI
-hvcNAQEBBQADgY0AMIGJAoGBALnUNDOIXFAVTdanBSPTEidJRAHGUTESaC+bgQl5
-XskMsHZ4b7OViAqVg/AcCJ2CoMXz13xmSJqvbbdr1kEVxeFabpfIkKZ139yJsFe8
-HIzjuqoMiYTYDhH2MHIK3sTZmX6NnpsfSbRWhMNUepq/tFu6QoPewRqW2/F9B8ne
-fbEFAgMBAAEwDQYJKoZIhvcNAQEEBQADgYEAT0wAzz3m5rpItKFBigZPRS8aqVAi
-ffwFDMUcAo72KX7i8gpVe22rNUUfDkNiPubegfNKj0gWG+8d/h3l/zALvGqfC4aa
-VdoqS2VEspLQBiDm3BZ6YyS+ZNohXt/s3qJdBWClj0KZT4UouIZhMuEOX7/fEDmC
-Ni0EbQa+fsuwYgA=
------END CERTIFICATE-----
-
-EOD;
-
-			$key = <<<EOD
------BEGIN RSA PRIVATE KEY-----
-MIICWwIBAAKBgQC51DQziFxQFU3WpwUj0xInSUQBxlExEmgvm4EJeV7JDLB2eG+z
-lYgKlYPwHAidgqDF89d8Zkiar223a9ZBFcXhWm6XyJCmdd/cibBXvByM47qqDImE
-2A4R9jByCt7E2Zl+jZ6bH0m0VoTDVHqav7RbukKD3sEaltvxfQfJ3n2xBQIDAQAB
-AoGADWRYmroiBPd0E5sXyLwmW8Rw7TvQkBvGfF/Vjcw8Y3rRoMgPLL8C/dhGmOA8
-UrWeRoXLKsDoTJWF76kK2Mfr6bE6j7Trkf3gXImXl0P1ge5h+uEBsfJj3TCJwnxF
-w6ZRsVEKQiLQNZAX+YVDYIydYOg8zw6ou36Y5D1l6E13EmECQQDgW1gH0in8fW0x
-mwfEJy0d2pbsYvRzEks2SActKQhfzoXO81kSWJM9GZbkiL2DCZdOS8iqYuKAl0X+
-zNduVUGNAkEA1AnEXHQtzTeXnoo8UT4sqmY2aZB6ma3NH6/h8qxBRKfQUu/Qp4J7
-HSEnRm5S90qVSTw0DTDXzgyUK5Adq/pDWQJAJTD/NsywCRsBrud0MiAMapaBzk3Z
-F/pAXY8zIVlb+gXSSKwuZ8wnHEnRqbDBOaetXV1StmwOACMTh1mNnMylQQJAPFPD
-EGLlnRuSAcNmwd6kqp6GIKbAmvS+BaPu7zJfJ39vYAlnHiGbkYAbQoilBkKsErgU
-PySEYdVmWraYGpQLkQJARzMpatUv43+SXGPCI6syywO+efB/pz/HAdBc4syMLUUi
-1sy5CWZE63NhtedF332qYOt+8dmT8tO/DzN4rqUEqg==
------END RSA PRIVATE KEY-----
-
-EOD;
-		}
-
-		$fd = fopen("{$g['varetc_path']}/cert.pem", "w");
-		if (!$fd) {
-			printf("Error: cannot open cert.pem in system_webgui_start().\n");
-			return 1;
-		}
-		chmod("{$g['varetc_path']}/cert.pem", 0600);
-		fwrite($fd, $cert);
-		fwrite($fd, "\n");
-		fwrite($fd, $key);
-		fclose($fd);
-
-		$res = mwexec("/usr/sbin/mini_httpd -S -E {$g['varetc_path']}/cert.pem" .
-			" -c \"**.php|**.cgi\" -u root -maxproc 16 $portarg" .
-			" -i {$g['varrun_path']}/mini_httpd.pid");
-	} else {
-		$res = mwexec("/usr/sbin/mini_httpd -c \"**.php|**.cgi\" -u root" .
-			" -maxproc 16 $portarg -i {$g['varrun_path']}/mini_httpd.pid");
-	}
-
-	return $res;
-}
-
-/**
  * Configures and (re)starts the busybox httpd process
  */
 function system_update_httpd_settings() {
 	global $config, $g;
 
+	// non-default username?
 	if ($config['system']['username']) {
 		$username = $config['system']['username'];
 	} else {
@@ -367,7 +282,9 @@ function system_update_httpd_settings() {
 	}
 
 	killbyname("httpd");
+	killbyname("sslwrap");
 
+	// setup httpd with password protection and a php interpreter
 	$fd = fopen("{$g['etc_path']}/httpd.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open httpd.conf in system_update_httpd_settings().\n");
@@ -382,11 +299,43 @@ function system_update_httpd_settings() {
 	fclose($fd);
 	chmod("{$g['etc_path']}/httpd.conf", 0600);
 
-	if ($config['system']['webgui']['port']) {
-		$portarg = "-p {$config['system']['webgui']['port']}";
+	if ($config['system']['webgui']['protocol'] == "https") {
+		// non-default https certificate?
+		if ($config['system']['webgui']['certificate'] 
+			&& $config['system']['webgui']['private-key']) {
+    	
+			$cert = base64_decode($config['system']['webgui']['certificate']);
+			$key = base64_decode($config['system']['webgui']['private-key']);
+    	
+			$fd = fopen("{$g['etc_path']}/httpscert.pem", "w");
+			if (!$fd) {
+				printf("Error: cannot open httpscert.pem in system_update_httpd_settings().\n");
+				return 1;
+			}
+			chmod("{$g['etc_path']}/httpscert.pem", 0600);
+			fwrite($fd, $cert . "\n" . $key);
+			fclose($fd);
+		}
+
+		if ($config['system']['webgui']['port']) {
+			$portarg = "-accept " . $config['system']['webgui']['port'];
+		} else {
+			$portarg = "-accept 443";
+		}
+
+		$res = mwexec("httpd -u root -p 127.0.0.1:80 -h {$g['www_path']}");
+		$res |= mwexec_bg("sslwrap -cert {$g['etc_path']}/httpscert.pem -port 80 $portarg");
+
+	} else {
+
+		if ($config['system']['webgui']['port']) {
+			$portarg = "-p " . $config['system']['webgui']['port'];
+		}
+
+		$res = mwexec("httpd -u root $portarg -h {$g['www_path']}");
 	}
 
-	return mwexec("httpd -u root $portarg -h {$g['www_path']}");
+	return $res;
 }
 
 function system_upgrade_https_certificate() {

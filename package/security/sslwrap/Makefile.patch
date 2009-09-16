@@ -1,0 +1,35 @@
+--- sslwrap206/Makefile.orig	2009-09-16 16:09:05.000000000 +0200
++++ sslwrap206/Makefile	2009-09-16 16:29:30.000000000 +0200
+@@ -1,6 +1,6 @@
+ 
+ SRC = s_server.c s_socket.c s_cb.c
+-
++SBINDIR = ${PREFIX}/usr/sbin
+ # For Solaris2.6
+ #EXTLIBS = -lxnet
+ 
+@@ -9,15 +9,19 @@
+ OPT = -O2
+ 
+ # Define 
+-OPENSSL="\"openssl/\""
+-#OPENSSL=""
++#OPENSSL="\"openssl/\""
++OPENSSL=""
+ 
+ all :
+-	gcc -o sslwrap ${SRC} ${OPT} -DFLAT_INC -DOPENSSL=${OPENSSL} \
+-		-L/usr/local/ssl/lib -lssl -lcrypto \
+-		-I/usr/local/ssl/include \
++	${CC} -o sslwrap ${SRC} ${OPT} -DFLAT_INC -DOPENSSL=${OPENSSL} \
++		-L${PREFIX}/usr/lib -lssl -lcrypto \
++		-I${PREFIX}/usr/include/openssl \
+ 		${EXTLIBS}
+ 
++install:	all
++	rm -f ${SBINDIR}/sslwrap
++	cp sslwrap ${SBINDIR}
++
+ clean:
+ 	rm -f sslwrap *.o *~
+ 

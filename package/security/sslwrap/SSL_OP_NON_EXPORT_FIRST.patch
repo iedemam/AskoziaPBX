@@ -1,0 +1,11 @@
+--- sslwrap206/s_server.c.orig	2009-09-16 16:22:05.000000000 +0200
++++ sslwrap206/s_server.c	2009-09-16 16:22:47.000000000 +0200
+@@ -468,7 +468,7 @@
+ 
+ 	if (bugs) SSL_CTX_set_options(ctx,SSL_OP_ALL);
+ 	if (hack) SSL_CTX_set_options(ctx,SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG);
+-	if (hack) SSL_CTX_set_options(ctx,SSL_OP_NON_EXPORT_FIRST);
++	if (hack) SSL_CTX_set_options(ctx,SSL_OP_CIPHER_SERVER_PREFERENCE);
+ 
+ 	if (state) SSL_CTX_set_info_callback(ctx,apps_ssl_info_callback);
+ 
