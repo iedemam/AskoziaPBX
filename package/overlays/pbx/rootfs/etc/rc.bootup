@@ -135,8 +135,10 @@
 	echo "done\n";
 
 	/* configure console menu */
-	echo " - Configuring console menu... ";
+	echo " - Configuring console ... ";
+	system_update_shell_password();
 	system_console_configure();
+	system_sshd_configure();
 	echo "done\n";
 
 	/* start dyndns service */

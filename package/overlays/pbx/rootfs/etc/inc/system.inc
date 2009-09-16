@@ -417,7 +417,7 @@ function system_upgrade_https_certificate() {
 function system_update_shell_password() {
 	global $config;
 
-	mwexec("echo \"root:" . crypt($config['system']['password']) . "\" | /usr/sbin/chpasswd -e");
+	mwexec("echo \"root:" . $config['system']['password'] . "\" | /usr/sbin/chpasswd");
 
 	return 0;
 }
@@ -471,6 +471,18 @@ function system_ntp_configure() {
 			escapeshellarg($updateinterval) . " " .
 			escapeshellarg($timeservers));
 	}
+}
+
+/**
+ * Configures and (re)starts dropbear ssh daemon
+ */
+function system_sshd_configure() {
+	global $config, $g;
+
+	killbyname("dropbear");
+	mwexec("dropbear");
+
+	return 0;
 }
 
 /**
