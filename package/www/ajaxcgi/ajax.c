@@ -202,6 +202,37 @@ void get_stat_cpu() {
 	}
 }
 
+void get_stat_network() {
+	FILE *f;
+	char line[256];
+	unsigned long long c1, c2, c3, c4, c5, c6, c7, c8, c9;
+	unsigned long long tx, rx;
+	struct timeval tv;
+	double uusec;
+
+	f = fopen("/proc/net/dev", "r");
+	if (f) {
+		do {
+			fgets(line, 256, f);
+		} while (strstr(line, "eth0") == NULL);
+		fclose(f);
+
+		if (strstr(line, "eth0: ")) {
+			sscanf(line, "%*[ ]eth0:%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu",
+				&c1, &c2, &c3, &c4, &c5, &c6, &c7, &c8, &c9);
+		} else if (strstr(line, "eth0:")) {
+			sscanf(line, "%*[ ]eth0:%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu%*[ ]%llu",
+				&c1, &c2, &c3, &c4, &c5, &c6, &c7, &c8, &c9);
+		}
+		rx = c1;
+		tx = c9;
+
+		gettimeofday(&tv, NULL);
+		uusec = (double)tv.tv_sec + (double)tv.tv_usec / 1000000.0; 
+		printf("%lf|%llu|%llu\n", uusec, rx*8, tx*8);
+	}
+}
+
 int main(int argc, char *argv[]) {
 
 	get_request_method_and_query_string();
@@ -238,9 +269,10 @@ int main(int argc, char *argv[]) {
 		} else if (strcmp(next_command_name, "get_stat_cpu") == 0) {
 			get_stat_cpu();
 
-		///* get network interface statistics */
-		//} else if (strcmp(next_command_name, "get_stat_network") == 0) {
-		//	get_stat_network(next_command_string);
+		/* get network interface statistics */
+		} else if (strcmp(next_command_name, "get_stat_network") == 0) {
+			//get_stat_network(next_command_string); LINUX TODO : defaults to eth0
+			get_stat_network();
 
 		/* uh-oh! */
 		} else {
