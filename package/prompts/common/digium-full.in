@@ -1,0 +1,16 @@
+prompts_extract() {
+	echo "Extracting $1 ($taropt) ... "
+	mkdir $pkg-$ver
+	tar -v $taropt $1 --exclude="*asterisk-core*$ver*" --exclude="core-sounds*.txt" -C $pkg-$ver | sed 's,^,$pkg-$ver/,' > untar.txt
+}
+
+prompts_main() {
+
+	mkdir -p $root/offload/asterisk/sounds/$prompt_language
+	cp -pR * $root/offload/asterisk/sounds/$prompt_language
+	echo "$prompt_language prompts full set copied into build"
+
+}
+
+custextract="prompts_extract"
+custmain="prompts_main"

@@ -1,0 +1,35 @@
+prompts_extract() {
+	echo "Extracting $1 ($taropt) ... "
+	mkdir $pkg-$ver
+	tar -v $taropt $1 --exclude="*asterisk-core*$ver*" --exclude="core-sounds*.txt" -C $pkg-$ver | sed 's,^,$pkg-$ver/,' > untar.txt
+}
+
+prompts_main() {
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language
+	cp -p $src_language/* $root/offload/asterisk/sounds/$dst_language
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/dictate
+	cp -p dictate/$src_language/* $root/offload/asterisk/sounds/$dst_language/dictate
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/digits
+	cp -p digits/$src_language/* $root/offload/asterisk/sounds/$dst_language/digits
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/followme
+	cp -p followme/$src_language/* $root/offload/asterisk/sounds/$dst_language/followme
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/letters
+	cp -p letters/$src_language/* $root/offload/asterisk/sounds/$dst_language/letters
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/phonetic
+	cp -p phonetic/$src_language/* $root/offload/asterisk/sounds/$dst_language/phonetic
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/silence
+	cp -p silence/$src_language/* $root/offload/asterisk/sounds/$dst_language/silence
+
+	echo "$dst_language prompts full set copied into build"
+
+}
+
+custextract="prompts_extract"
+custmain="prompts_main"

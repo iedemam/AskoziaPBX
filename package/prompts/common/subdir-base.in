@@ -1,0 +1,22 @@
+prompts_extract() {
+	echo "Extracting $1 ($taropt) ... "
+	mkdir $pkg-$ver
+	cd $pkg-$ver
+	tar -v $taropt $1 --wildcards --no-anchored $src_language/agent-pass.* $src_language/auth-thankyou.* $src_language/auth-incorrect.* $src_language/conf-onlyperson.* $src_language/conf-getpin.* $src_language/conf-invalidpin.* $src_language/conf-kicked.* $src_language/pbx-transfer.* $src_language/pbx-invalid.* $src_language/pbx-invalidpark.* $src_language/vm-intro.* $src_language/vm-theperson.* $src_language/vm-isunavail.* $src_language/vm-isonphone.* $src_language/vm-goodbye.* $src_language/vm-password.* digits/$src_language/0.* digits/$src_language/1.* digits/$src_language/2.* digits/$src_language/3.* digits/$src_language/4.* digits/$src_language/5.* digits/$src_language/6.* digits/$src_language/7.* digits/$src_language/8.* digits/$src_language/9.* | sed 's,^,$pkg-$ver/,' > ../untar.txt
+	cd ..
+}
+
+prompts_main() {
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language
+	cp -p $src_language/* $root/offload/asterisk/sounds/$dst_language
+
+	mkdir -p $root/offload/asterisk/sounds/$dst_language/digits
+	cp -p digits/$src_language/* $root/offload/asterisk/sounds/$dst_language/digits
+
+	echo "$dst_language prompts base set copied into build"
+
+}
+
+custextract="prompts_extract"
+custmain="prompts_main"

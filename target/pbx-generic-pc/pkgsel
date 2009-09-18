@@ -57,15 +57,12 @@ X asterisk
 #X app_flite
 
 # prompt sets
-X core-en-ulaw-base
-#X core-en-g722-base
-#X core-en-g729-base
-#X core-en-gsm-base
-#X core-en-wav-base
-#X core-en-alaw-base
-#X core-en-sln16-base
-#X core-en-siren7-base
-#X core-en-siren14-base
+X en-us-ulaw-base
+X en-gb-ulaw-base
+X es-es-ulaw-base
+X fr-ca-ulaw-base
+X de-de-wav-base
+X it-it-gsm-base
 
 # music-on-hold
 X freeplay-ulaw-base

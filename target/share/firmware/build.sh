@@ -55,6 +55,15 @@ cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
 ln -s /offload/asterisk/sounds/en-us offload_stage/asterisk/sounds/en
 
+echo "Cleaning up asterisk sounds ..."
+rmdir offload_stage/asterisk/sounds/{es,fr}
+find offload_stage/asterisk/sounds/ -type f -name "*.pdf" -print -delete
+find offload_stage/asterisk/sounds/ -type f -name "*.txt" -print -delete
+for FILE in `find offload_stage/asterisk/sounds/ -name *g711u`
+do
+NEW=`echo $FILE | sed -e 's/g711u/ulaw/'`
+mv "$FILE" "$NEW"
+done
 
 echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
