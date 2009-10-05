@@ -267,7 +267,10 @@ EOD;
 		if($p['fromuser']) {
 			$conf .= "fromuser={$p['fromuser']}\n";
 		} else {
-			$conf .= "fromuser={$p['username']}\n";
+			// omit the fromuser config key if an explicit caller id name/number defined
+			if ($p['calleridsource'] != 'string') {
+				$conf .= "fromuser={$p['username']}\n";
+			}
 		}
 
 		$conf .= "host={$p['host']}\n";
