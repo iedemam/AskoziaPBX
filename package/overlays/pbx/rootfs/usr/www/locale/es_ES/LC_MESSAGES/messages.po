@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1576,97 +1576,8 @@ msgstr "Cancelar"
 msgid "Open"
 msgstr "Abrir"
 
-msgid "No matches found."
-msgstr "No se encontraron coincidencias."
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "Llamadas"
-
-msgid "Settings"
-msgstr "Ajustes"
-
-msgid "filter"
-msgstr "filtro"
-
 msgid "System log entries"
 msgstr "Entradas del Log del sistema"
-
-msgid "Clear Log"
-msgstr "Limpiar Log"
-
-msgid "Call Records"
-msgstr ""
-
-msgid "start"
-msgstr "comenzar"
-
-msgid "src"
-msgstr "src"
-
-msgid "dst"
-msgstr "dst"
-
-msgid "channels"
-msgstr "canales"
-
-msgid "last app"
-msgstr "última aplicación"
-
-msgid "sec."
-msgstr "seg."
-
-msgid "bill"
-msgstr "factura"
-
-msgid "disposition"
-msgstr "disposición"
-
-msgid "Clear log"
-msgstr "Limpiar log"
-
-msgid "Asterisk log entries"
-msgstr "Entradas del Lod de Asterisk"
-
-msgid "A valid IP address must be specified."
-msgstr "Debe ser especificada una dirección IP válida."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr ""
-"El número de entradas para mostrar en el log debe estar comprendido entre 50 "
-"y 1000. "
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Mostrar entradas del log en orden inverso (primero las mas nuevas)"
-
-msgid "Number of log entries to show:"
-msgstr "Número de entradas del log a mostrar:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
-
-msgid "Remote syslog server"
-msgstr ""
-
-msgid "IP address of remote syslog server"
-msgstr ""
-
-msgid "system events"
-msgstr "eventos del sistema"
-
-msgid "pbx events"
-msgstr "eventos de pbx"
-
-msgid "call detail records"
-msgstr ""
-
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2132,6 +2043,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Debe ser especificada una dirección MAC válida"
+
+msgid "A valid IP address must be specified."
+msgstr "Debe ser especificada una dirección IP válida."
 
 msgid "A valid subnet bit count must be specified."
 msgstr ""
@@ -3228,6 +3142,71 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "No matches found."
+#~ msgstr "No se encontraron coincidencias."
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "Llamadas"
+
+#~ msgid "Settings"
+#~ msgstr "Ajustes"
+
+#~ msgid "filter"
+#~ msgstr "filtro"
+
+#~ msgid "Clear Log"
+#~ msgstr "Limpiar Log"
+
+#~ msgid "start"
+#~ msgstr "comenzar"
+
+#~ msgid "src"
+#~ msgstr "src"
+
+#~ msgid "dst"
+#~ msgstr "dst"
+
+#~ msgid "channels"
+#~ msgstr "canales"
+
+#~ msgid "last app"
+#~ msgstr "última aplicación"
+
+#~ msgid "sec."
+#~ msgstr "seg."
+
+#~ msgid "bill"
+#~ msgstr "factura"
+
+#~ msgid "disposition"
+#~ msgstr "disposición"
+
+#~ msgid "Clear log"
+#~ msgstr "Limpiar log"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Entradas del Lod de Asterisk"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr ""
+#~ "El número de entradas para mostrar en el log debe estar comprendido entre "
+#~ "50 y 1000. "
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "Mostrar entradas del log en orden inverso (primero las mas nuevas)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Número de entradas del log a mostrar:"
+
+#~ msgid "system events"
+#~ msgstr "eventos del sistema"
+
+#~ msgid "pbx events"
+#~ msgstr "eventos de pbx"
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "resetear filtro y refrescar página de logs del firewall"

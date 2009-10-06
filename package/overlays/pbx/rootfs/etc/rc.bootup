@@ -74,11 +74,6 @@
 	packages_boot_all();
 	echo "done\n";
 
-	/* start syslogd */
-	echo " - Starting syslogd... ";
-	system_syslogd_start();
-	echo "done\n";
-
 	/* set up our timezone */
 	echo " - Configuring timezone... ";
 	system_timezone_configure();
@@ -112,16 +107,6 @@
 	/* set up LAN interface */
 	echo " - Configuring LAN interface... ";
 	network_lan_configure();
-	echo "done\n";
-
-	/* set up static routes */
-	echo " - Configuring routing... ";
-	system_routing_configure();
-	echo "done\n";
-
-	/* enable routing */
-	echo " - Enabling routing... ";
-	system_routing_enable();
 	echo "done\n";
 
 	/* generate machine specific ssl certificate */
@@ -167,9 +152,9 @@
 	echo "done\n";
 
 	/* enable HD standby */
-	echo " - Enabling hdd standby... ";
-	system_set_harddisk_standby();
-	echo "done\n";
+	//echo " - Enabling hdd standby... ";
+	//system_set_harddisk_standby();
+	//echo "done\n";
 
 	/* done */
 	unlink("{$g['varrun_path']}/booting");

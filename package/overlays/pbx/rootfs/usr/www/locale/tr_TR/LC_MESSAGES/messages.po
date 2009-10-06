@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1540,95 +1540,8 @@ msgstr "İptal"
 msgid "Open"
 msgstr "Aç"
 
-msgid "No matches found."
-msgstr "Uyum bulunamadı."
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "Aramalar"
-
-msgid "Settings"
-msgstr "Ayarlar"
-
-msgid "filter"
-msgstr "filitre"
-
 msgid "System log entries"
 msgstr "Sistem günlük kayıtları"
-
-msgid "Clear Log"
-msgstr "Günlüğü Sil"
-
-msgid "Call Records"
-msgstr "Arama Kayıtları"
-
-msgid "start"
-msgstr "başlangiç"
-
-msgid "src"
-msgstr "kaynak"
-
-msgid "dst"
-msgstr "hedef"
-
-msgid "channels"
-msgstr "kanallar"
-
-msgid "last app"
-msgstr "son uygulama"
-
-msgid "sec."
-msgstr "sn."
-
-msgid "bill"
-msgstr "fatura"
-
-msgid "disposition"
-msgstr "tahsis"
-
-msgid "Clear log"
-msgstr "Log sil"
-
-msgid "Asterisk log entries"
-msgstr "Asterisk log kayıtları"
-
-msgid "A valid IP address must be specified."
-msgstr "Geçerli bir İP adresi girilmeli."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "Log kayıtları görüntüleme değeri 50 ile 1000 arası olmalı."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Log kayıtlarını ters yönde listele (yeni kayıtlar üstte)"
-
-msgid "Number of log entries to show:"
-msgstr "Gösterilmesi istenen log kayıt sayısı"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Uzak sunucuya syslog etkinleştir"
-
-msgid "Remote syslog server"
-msgstr "Uzak syslog sunucusu"
-
-msgid "IP address of remote syslog server"
-msgstr "Uzak syslog sunucusunun İP adresi"
-
-msgid "system events"
-msgstr "Sistem olayları"
-
-msgid "pbx events"
-msgstr "pbx olayları"
-
-msgid "call detail records"
-msgstr "arama detay kayıtları"
-
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2075,6 +1988,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Geçerli MAX adresi belirtilmeli."
+
+msgid "A valid IP address must be specified."
+msgstr "Geçerli bir İP adresi girilmeli."
 
 msgid "A valid subnet bit count must be specified."
 msgstr ""
@@ -3119,6 +3035,84 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "No matches found."
+#~ msgstr "Uyum bulunamadı."
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "Aramalar"
+
+#~ msgid "Settings"
+#~ msgstr "Ayarlar"
+
+#~ msgid "filter"
+#~ msgstr "filitre"
+
+#~ msgid "Clear Log"
+#~ msgstr "Günlüğü Sil"
+
+#~ msgid "Call Records"
+#~ msgstr "Arama Kayıtları"
+
+#~ msgid "start"
+#~ msgstr "başlangiç"
+
+#~ msgid "src"
+#~ msgstr "kaynak"
+
+#~ msgid "dst"
+#~ msgstr "hedef"
+
+#~ msgid "channels"
+#~ msgstr "kanallar"
+
+#~ msgid "last app"
+#~ msgstr "son uygulama"
+
+#~ msgid "sec."
+#~ msgstr "sn."
+
+#~ msgid "bill"
+#~ msgstr "fatura"
+
+#~ msgid "disposition"
+#~ msgstr "tahsis"
+
+#~ msgid "Clear log"
+#~ msgstr "Log sil"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asterisk log kayıtları"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr "Log kayıtları görüntüleme değeri 50 ile 1000 arası olmalı."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "Log kayıtlarını ters yönde listele (yeni kayıtlar üstte)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Gösterilmesi istenen log kayıt sayısı"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Uzak sunucuya syslog etkinleştir"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Uzak syslog sunucusu"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "Uzak syslog sunucusunun İP adresi"
+
+#~ msgid "system events"
+#~ msgstr "Sistem olayları"
+
+#~ msgid "pbx events"
+#~ msgstr "pbx olayları"
+
+#~ msgid "call detail records"
+#~ msgstr "arama detay kayıtları"
 
 #~ msgid "Firewall"
 #~ msgstr "Güvenlik Duvarı"

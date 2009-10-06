@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1643,99 +1643,8 @@ msgstr "キャンセル"
 msgid "Open"
 msgstr "開く"
 
-msgid "No matches found."
-msgstr "該当する項目が見つかりません"
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "呼/コール"
-
-msgid "Settings"
-msgstr "設定"
-
-msgid "filter"
-msgstr "フィルター"
-
 msgid "System log entries"
 msgstr "システムログの記録"
-
-msgid "Clear Log"
-msgstr "ログを消去する"
-
-msgid "Call Records"
-msgstr "通話録音"
-
-msgid "start"
-msgstr "開始"
-
-msgid "src"
-msgstr "発信元"
-
-msgid "dst"
-msgstr "発信先"
-
-msgid "channels"
-msgstr "チャンネル"
-
-msgid "last app"
-msgstr "last app"
-
-msgid "sec."
-msgstr "秒"
-
-msgid "bill"
-msgstr "課金"
-
-msgid "disposition"
-msgstr "処理"
-
-msgid "Clear log"
-msgstr "ログを消去する"
-
-msgid "Asterisk log entries"
-msgstr "Asterisk(AskoziaPBX)ログの一覧"
-
-msgid "A valid IP address must be specified."
-msgstr "有効なIPアドレスを指定する必要があります"
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "ログの表示件数は、50から1000の間でなければなりません"
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "ログの記録を逆の順番で表示する(最新の記録が一番上に表示される)"
-
-msgid "Number of log entries to show:"
-msgstr "表示させるログの件数:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "リモートのSyslogサーバーでのSyslog記録を有効にする"
-
-msgid "Remote syslog server"
-msgstr "リモートSyslogサーバー"
-
-msgid "IP address of remote syslog server"
-msgstr "リモートSyslogサーバーのIPアドレス"
-
-msgid "system events"
-msgstr "システムイベント"
-
-msgid "pbx events"
-msgstr "PBXイベント"
-
-msgid "call detail records"
-msgstr "通話詳細の記録"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"指定したリモートのsyslogサーバーの514番ポートに、UDPデータグラムを送信しま"
-"す。必ずリモートサーバーのsyslogdにて、AskoziaPBXからのsyslogメッセージが届い"
-"ているか、確認して下さい"
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2229,6 +2138,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "有効なMACアドレスを指定する必要があります"
+
+msgid "A valid IP address must be specified."
+msgstr "有効なIPアドレスを指定する必要があります"
 
 msgid "A valid subnet bit count must be specified."
 msgstr "有効なサブネットのビット数を指定する必要があります"
@@ -3400,6 +3312,94 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "No matches found."
+#~ msgstr "該当する項目が見つかりません"
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "呼/コール"
+
+#~ msgid "Settings"
+#~ msgstr "設定"
+
+#~ msgid "filter"
+#~ msgstr "フィルター"
+
+#~ msgid "Clear Log"
+#~ msgstr "ログを消去する"
+
+#~ msgid "Call Records"
+#~ msgstr "通話録音"
+
+#~ msgid "start"
+#~ msgstr "開始"
+
+#~ msgid "src"
+#~ msgstr "発信元"
+
+#~ msgid "dst"
+#~ msgstr "発信先"
+
+#~ msgid "channels"
+#~ msgstr "チャンネル"
+
+#~ msgid "last app"
+#~ msgstr "last app"
+
+#~ msgid "sec."
+#~ msgstr "秒"
+
+#~ msgid "bill"
+#~ msgstr "課金"
+
+#~ msgid "disposition"
+#~ msgstr "処理"
+
+#~ msgid "Clear log"
+#~ msgstr "ログを消去する"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asterisk(AskoziaPBX)ログの一覧"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr "ログの表示件数は、50から1000の間でなければなりません"
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "ログの記録を逆の順番で表示する(最新の記録が一番上に表示される)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "表示させるログの件数:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "リモートのSyslogサーバーでのSyslog記録を有効にする"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "リモートSyslogサーバー"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "リモートSyslogサーバーのIPアドレス"
+
+#~ msgid "system events"
+#~ msgstr "システムイベント"
+
+#~ msgid "pbx events"
+#~ msgstr "PBXイベント"
+
+#~ msgid "call detail records"
+#~ msgstr "通話詳細の記録"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "指定したリモートのsyslogサーバーの514番ポートに、UDPデータグラムを送信しま"
+#~ "す。必ずリモートサーバーのsyslogdにて、AskoziaPBXからのsyslogメッセージが"
+#~ "届いているか、確認して下さい"
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "フィルターリセットと、ファイヤウォールログページの再読み込み"

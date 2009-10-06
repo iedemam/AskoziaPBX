@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1613,98 +1613,8 @@ msgstr "取消"
 msgid "Open"
 msgstr "打开"
 
-msgid "No matches found."
-msgstr "没有找到匹配的"
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "电话"
-
-msgid "Settings"
-msgstr "设置"
-
-msgid "filter"
-msgstr "过滤"
-
 msgid "System log entries"
 msgstr "系统日志条目"
-
-msgid "Clear Log"
-msgstr "清空日志"
-
-msgid "Call Records"
-msgstr "电话记录"
-
-msgid "start"
-msgstr "开始"
-
-msgid "src"
-msgstr "源头"
-
-msgid "dst"
-msgstr "目的地"
-
-msgid "channels"
-msgstr "信道"
-
-msgid "last app"
-msgstr "上一个app"
-
-msgid "sec."
-msgstr "秒."
-
-msgid "bill"
-msgstr "清单"
-
-msgid "disposition"
-msgstr "分类"
-
-msgid "Clear log"
-msgstr "清空日志"
-
-msgid "Asterisk log entries"
-msgstr "Asterisk日志条目"
-
-msgid "A valid IP address must be specified."
-msgstr "必须指定一个有效的IP地址"
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "显示的日志条目数必须在50到1000之间。"
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "翻转显示条目的顺序(最近的条目置于顶端)"
-
-msgid "Number of log entries to show:"
-msgstr "显示的日志条目数："
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "允许系统日志到远程系统日志服务器"
-
-msgid "Remote syslog server"
-msgstr "远程系统日志服务器"
-
-msgid "IP address of remote syslog server"
-msgstr "远程系统日志服务器的IP地址"
-
-msgid "system events"
-msgstr "系统事件"
-
-msgid "pbx events"
-msgstr "pbx事件"
-
-msgid "call detail records"
-msgstr "通话详情记录"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"系统日志通过UDP数据端口514发送到指定的远程系统日志服务器。请确认远程系统日志"
-"服务器的设置能够从AskoziaPBX接收日志数据。"
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2168,6 +2078,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "必须指定一个有效的MAC地址"
+
+msgid "A valid IP address must be specified."
+msgstr "必须指定一个有效的IP地址"
 
 msgid "A valid subnet bit count must be specified."
 msgstr "必须指定一个有效的子网位计数。"
@@ -3247,6 +3160,93 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "No matches found."
+#~ msgstr "没有找到匹配的"
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "电话"
+
+#~ msgid "Settings"
+#~ msgstr "设置"
+
+#~ msgid "filter"
+#~ msgstr "过滤"
+
+#~ msgid "Clear Log"
+#~ msgstr "清空日志"
+
+#~ msgid "Call Records"
+#~ msgstr "电话记录"
+
+#~ msgid "start"
+#~ msgstr "开始"
+
+#~ msgid "src"
+#~ msgstr "源头"
+
+#~ msgid "dst"
+#~ msgstr "目的地"
+
+#~ msgid "channels"
+#~ msgstr "信道"
+
+#~ msgid "last app"
+#~ msgstr "上一个app"
+
+#~ msgid "sec."
+#~ msgstr "秒."
+
+#~ msgid "bill"
+#~ msgstr "清单"
+
+#~ msgid "disposition"
+#~ msgstr "分类"
+
+#~ msgid "Clear log"
+#~ msgstr "清空日志"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asterisk日志条目"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr "显示的日志条目数必须在50到1000之间。"
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "翻转显示条目的顺序(最近的条目置于顶端)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "显示的日志条目数："
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "允许系统日志到远程系统日志服务器"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "远程系统日志服务器"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "远程系统日志服务器的IP地址"
+
+#~ msgid "system events"
+#~ msgstr "系统事件"
+
+#~ msgid "pbx events"
+#~ msgstr "pbx事件"
+
+#~ msgid "call detail records"
+#~ msgstr "通话详情记录"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "系统日志通过UDP数据端口514发送到指定的远程系统日志服务器。请确认远程系统日"
+#~ "志服务器的设置能够从AskoziaPBX接收日志数据。"
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "重置过滤器并重载防火墙日志页"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1673,102 +1673,8 @@ msgstr "Annulla"
 msgid "Open"
 msgstr "Apri"
 
-msgid "No matches found."
-msgstr "Non è stata trovata alcuna corrispondenza."
-
-msgid "PBX"
-msgstr "Centralino"
-
-msgid "Calls"
-msgstr "Chiamate"
-
-msgid "Settings"
-msgstr "Impostazioni"
-
-msgid "filter"
-msgstr "filtro"
-
 msgid "System log entries"
 msgstr "Voci del registro degli eventi di sistema"
-
-msgid "Clear Log"
-msgstr "Pulisci registro"
-
-msgid "Call Records"
-msgstr " Registro Chiamate"
-
-msgid "start"
-msgstr "Data/Ora"
-
-msgid "src"
-msgstr "Sorg."
-
-msgid "dst"
-msgstr "Dest."
-
-msgid "channels"
-msgstr "Canale"
-
-msgid "last app"
-msgstr "Ultima app."
-
-msgid "sec."
-msgstr "Sec."
-
-msgid "bill"
-msgstr "Addebitabile"
-
-msgid "disposition"
-msgstr "Stato"
-
-msgid "Clear log"
-msgstr "Pulisci registro"
-
-msgid "Asterisk log entries"
-msgstr "Voci del registro degli eventi di Asterisk"
-
-msgid "A valid IP address must be specified."
-msgstr "Deve essere specificato un indirizzo IP valido."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr ""
-"Il numero di voci da mostrare dal registro deve essere compreso tra 5 e 1000."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr ""
-"Visualizza le voci di registro in ordine inverso (mostra le voci più recenti "
-"per prime)"
-
-msgid "Number of log entries to show:"
-msgstr "Numero di voci di registro da mostrare:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Abilita la registrazione al syslog server remoto"
-
-msgid "Remote syslog server"
-msgstr "Syslog server remoto"
-
-msgid "IP address of remote syslog server"
-msgstr "Indirizzo IP del syslog server remoto"
-
-msgid "system events"
-msgstr "eventi di sistema"
-
-msgid "pbx events"
-msgstr "eventi del centralino"
-
-msgid "call detail records"
-msgstr "registro dettaglio chiamate"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"Il servizio syslog invia pacchetti verso la porta 514 sul server remoto "
-"specificato. Assicurarsi che le impostazioni del syslogd sul server remoto "
-"accetti i messaggi da AskoziaPBX."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2289,6 +2195,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Deve essere specificato un MAC address valido."
+
+msgid "A valid IP address must be specified."
+msgstr "Deve essere specificato un indirizzo IP valido."
 
 msgid "A valid subnet bit count must be specified."
 msgstr "Deve essere specificato un numero di bit per la sottomaschera valido."
@@ -3491,6 +3400,98 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "No matches found."
+#~ msgstr "Non è stata trovata alcuna corrispondenza."
+
+#~ msgid "PBX"
+#~ msgstr "Centralino"
+
+#~ msgid "Calls"
+#~ msgstr "Chiamate"
+
+#~ msgid "Settings"
+#~ msgstr "Impostazioni"
+
+#~ msgid "filter"
+#~ msgstr "filtro"
+
+#~ msgid "Clear Log"
+#~ msgstr "Pulisci registro"
+
+#~ msgid "Call Records"
+#~ msgstr " Registro Chiamate"
+
+#~ msgid "start"
+#~ msgstr "Data/Ora"
+
+#~ msgid "src"
+#~ msgstr "Sorg."
+
+#~ msgid "dst"
+#~ msgstr "Dest."
+
+#~ msgid "channels"
+#~ msgstr "Canale"
+
+#~ msgid "last app"
+#~ msgstr "Ultima app."
+
+#~ msgid "sec."
+#~ msgstr "Sec."
+
+#~ msgid "bill"
+#~ msgstr "Addebitabile"
+
+#~ msgid "disposition"
+#~ msgstr "Stato"
+
+#~ msgid "Clear log"
+#~ msgstr "Pulisci registro"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Voci del registro degli eventi di Asterisk"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr ""
+#~ "Il numero di voci da mostrare dal registro deve essere compreso tra 5 e "
+#~ "1000."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr ""
+#~ "Visualizza le voci di registro in ordine inverso (mostra le voci più "
+#~ "recenti per prime)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Numero di voci di registro da mostrare:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Abilita la registrazione al syslog server remoto"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Syslog server remoto"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "Indirizzo IP del syslog server remoto"
+
+#~ msgid "system events"
+#~ msgstr "eventi di sistema"
+
+#~ msgid "pbx events"
+#~ msgstr "eventi del centralino"
+
+#~ msgid "call detail records"
+#~ msgstr "registro dettaglio chiamate"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "Il servizio syslog invia pacchetti verso la porta 514 sul server remoto "
+#~ "specificato. Assicurarsi che le impostazioni del syslogd sul server "
+#~ "remoto accetti i messaggi da AskoziaPBX."
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "Ripristina i filtri e ricarica il registro del firewall."

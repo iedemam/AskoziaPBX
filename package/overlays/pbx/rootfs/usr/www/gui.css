@@ -528,44 +528,6 @@ ul#tabnav li.tabact a {
 	background-color: #FFD9D1;
 }
 
-div.pagination {
-	margin: 0px 0px 10px 0px;
-	padding: 0px;
-}
-
-div.pagination a {
-	padding: 2px 5px 2px 5px;
-	margin: 2px;
-	border: 1px solid #AAAADD;
-	text-decoration: none;
-	color: #000099;
-}
-div.pagination a.leftmost {
-	margin: 2px 2px 0px 0px;
-}
-div.pagination a:hover, div.pagination a:active {
-	border: 1px solid #435370;
-	color: #000;
-}
-div.pagination span.current {
-	padding: 2px 5px 2px 5px;
-	margin: 2px;
-	border: 1px solid #435370;
-	font-weight: bold;
-	background-color: #435370;
-	color: #FFF;
-}
-div.pagination span.disabled {
-	padding: 2px 5px;
-	margin: 3px;
-	color: #777777;
-}
-
-input.filterbox {
-	border: 1px solid #777777;
-	background-color: #FFFFFF;
-}
-
 .verticalalign {
 	vertical-align: middle;
 	text-decoration: none;
@@ -655,4 +617,15 @@ a.link_color_black {
 .pkg_updates_msg {
 	background-color: #D9DEE8;
 	padding-left: 8px;
+}
+
+.logentry {
+	background-color: #FFFFFF;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }

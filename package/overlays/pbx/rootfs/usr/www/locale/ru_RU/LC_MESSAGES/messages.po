@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1507,94 +1507,7 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-msgid "No matches found."
-msgstr ""
-
-msgid "PBX"
-msgstr ""
-
-msgid "Calls"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
-msgid "filter"
-msgstr ""
-
 msgid "System log entries"
-msgstr ""
-
-msgid "Clear Log"
-msgstr ""
-
-msgid "Call Records"
-msgstr ""
-
-msgid "start"
-msgstr ""
-
-msgid "src"
-msgstr ""
-
-msgid "dst"
-msgstr ""
-
-msgid "channels"
-msgstr ""
-
-msgid "last app"
-msgstr ""
-
-msgid "sec."
-msgstr ""
-
-msgid "bill"
-msgstr ""
-
-msgid "disposition"
-msgstr ""
-
-msgid "Clear log"
-msgstr ""
-
-msgid "Asterisk log entries"
-msgstr ""
-
-msgid "A valid IP address must be specified."
-msgstr ""
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr ""
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr ""
-
-msgid "Number of log entries to show:"
-msgstr ""
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
-
-msgid "Remote syslog server"
-msgstr ""
-
-msgid "IP address of remote syslog server"
-msgstr ""
-
-msgid "system events"
-msgstr ""
-
-msgid "pbx events"
-msgstr ""
-
-msgid "call detail records"
-msgstr ""
-
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
 msgstr ""
 
 msgid ""
@@ -2034,6 +1947,9 @@ msgid ""
 msgstr ""
 
 msgid "A valid MAC address must be specified."
+msgstr ""
+
+msgid "A valid IP address must be specified."
 msgstr ""
 
 msgid "A valid subnet bit count must be specified."

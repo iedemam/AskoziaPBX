@@ -214,10 +214,7 @@ $menu['Advanced'][gettext("Manager")] 			= array('advanced_manager.php',
 $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 
 /* Diagnostics */
-$menu['Diagnostics'][gettext("Logs")]			= array('diag_logs.php',
-												'diag_logs_pbx.php',
-												'diag_logs_calls.php',
-							  					'diag_logs_settings.php');
+$menu['Diagnostics'][gettext("Logs")]			= array('diag_logs.php');
 $menu['Diagnostics'][gettext('Ping/Traceroute')] = array('diag_ping.php',
 												'diag_traceroute.php');
 $menu['Diagnostics'][gettext("ARP Table")] 		= array('diag_arp.php');

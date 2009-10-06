@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1655,99 +1655,8 @@ msgstr "Fortryd"
 msgid "Open"
 msgstr "Åben"
 
-msgid "No matches found."
-msgstr "Ingen matchende fundet."
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "Opkald"
-
-msgid "Settings"
-msgstr "Indstillinger"
-
-msgid "filter"
-msgstr "filter"
-
 msgid "System log entries"
 msgstr "System punkter logbog "
-
-msgid "Clear Log"
-msgstr "Nulstil Logbog"
-
-msgid "Call Records"
-msgstr "Opkalds Detaljer"
-
-msgid "start"
-msgstr "start"
-
-msgid "src"
-msgstr "src"
-
-msgid "dst"
-msgstr "dst"
-
-msgid "channels"
-msgstr "kanaler"
-
-msgid "last app"
-msgstr "last app"
-
-msgid "sec."
-msgstr "sec."
-
-msgid "bill"
-msgstr "bill"
-
-msgid "disposition"
-msgstr "disposition"
-
-msgid "Clear log"
-msgstr "Nulstil logbog"
-
-msgid "Asterisk log entries"
-msgstr "Asterisk logbog punkter"
-
-msgid "A valid IP address must be specified."
-msgstr "En gyldig IP addresse skal angives."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "Antal af log elementer som vises skal være et antal mellem 50 og 1000."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr ""
-
-msgid "Number of log entries to show:"
-msgstr "Antal af log elementer som vises:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Aktiver syslog'ing til ekstern server"
-
-msgid "Remote syslog server"
-msgstr "Ekstern syslog server"
-
-msgid "IP address of remote syslog server"
-msgstr "IP addresse på den eksterne syslog server"
-
-msgid "system events"
-msgstr "system hændelser"
-
-msgid "pbx events"
-msgstr "pbx hændelser"
-
-msgid "call detail records"
-msgstr "opkald detalje punkter"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"syslog sender UDP datagrammer til port 514 til den specificerede eksterne "
-"syslog server. Husk at sætte syslogd på den eksterne til at acceptere syslog "
-"beskeder fra AskoziaPBX."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2190,6 +2099,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "En gyldig MAC adresse skal angives."
+
+msgid "A valid IP address must be specified."
+msgstr "En gyldig IP addresse skal angives."
 
 msgid "A valid subnet bit count must be specified."
 msgstr "Et gyldigt subnet bit tal skal angives."
@@ -3313,6 +3225,92 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "No matches found."
+#~ msgstr "Ingen matchende fundet."
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "Opkald"
+
+#~ msgid "Settings"
+#~ msgstr "Indstillinger"
+
+#~ msgid "filter"
+#~ msgstr "filter"
+
+#~ msgid "Clear Log"
+#~ msgstr "Nulstil Logbog"
+
+#~ msgid "Call Records"
+#~ msgstr "Opkalds Detaljer"
+
+#~ msgid "start"
+#~ msgstr "start"
+
+#~ msgid "src"
+#~ msgstr "src"
+
+#~ msgid "dst"
+#~ msgstr "dst"
+
+#~ msgid "channels"
+#~ msgstr "kanaler"
+
+#~ msgid "last app"
+#~ msgstr "last app"
+
+#~ msgid "sec."
+#~ msgstr "sec."
+
+#~ msgid "bill"
+#~ msgstr "bill"
+
+#~ msgid "disposition"
+#~ msgstr "disposition"
+
+#~ msgid "Clear log"
+#~ msgstr "Nulstil logbog"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asterisk logbog punkter"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr ""
+#~ "Antal af log elementer som vises skal være et antal mellem 50 og 1000."
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Antal af log elementer som vises:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Aktiver syslog'ing til ekstern server"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Ekstern syslog server"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "IP addresse på den eksterne syslog server"
+
+#~ msgid "system events"
+#~ msgstr "system hændelser"
+
+#~ msgid "pbx events"
+#~ msgstr "pbx hændelser"
+
+#~ msgid "call detail records"
+#~ msgstr "opkald detalje punkter"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "syslog sender UDP datagrammer til port 514 til den specificerede eksterne "
+#~ "syslog server. Husk at sætte syslogd på den eksterne til at acceptere "
+#~ "syslog beskeder fra AskoziaPBX."
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "reset filter og genopfrisk firewall logbog side"

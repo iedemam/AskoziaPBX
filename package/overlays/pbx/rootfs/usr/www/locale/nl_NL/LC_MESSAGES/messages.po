@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1593,99 +1593,8 @@ msgstr "Afbreken"
 msgid "Open"
 msgstr "Open"
 
-msgid "No matches found."
-msgstr "Geen overeenstemmingen gevonden?"
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "Gesprekken"
-
-msgid "Settings"
-msgstr "Instellingen"
-
-msgid "filter"
-msgstr "filter"
-
 msgid "System log entries"
 msgstr "Systeem log ingaves"
-
-msgid "Clear Log"
-msgstr "Log Wissen"
-
-msgid "Call Records"
-msgstr "Bel Geschiedenis"
-
-msgid "start"
-msgstr "start"
-
-msgid "src"
-msgstr "src"
-
-msgid "dst"
-msgstr "dst"
-
-msgid "channels"
-msgstr "kanalen"
-
-msgid "last app"
-msgstr "laatste app"
-
-msgid "sec."
-msgstr "sec."
-
-msgid "bill"
-msgstr "rekening"
-
-msgid "disposition"
-msgstr "dispositie"
-
-msgid "Clear log"
-msgstr "Log wissen"
-
-msgid "Asterisk log entries"
-msgstr "Asteris log ingaves"
-
-msgid "A valid IP address must be specified."
-msgstr "Een geldig ip adres moet worden gekozen."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "Nummer om log ingave te bekijken moet tussen de 50 en 1000 zijn."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Toon log entries in omgekeerde volgorde (nieuwste gegevens bovenaan)"
-
-msgid "Number of log entries to show:"
-msgstr "Nummer van log ingaven welke zichtbaar zijn:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Syslog'ing naar een remote syslog server inschakelen"
-
-msgid "Remote syslog server"
-msgstr "Remote syslog server"
-
-msgid "IP address of remote syslog server"
-msgstr "IP adres van de remote syslog server"
-
-msgid "system events"
-msgstr "Systeem gebeurtenissen"
-
-msgid "pbx events"
-msgstr "PBX gebeurtenissen"
-
-msgid "call detail records"
-msgstr "details van bel geschiedenis"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"syslog zend UDP datagrammen naar poort 514 op de gespecifieerde syslog "
-"server. Zorg dat syslogd op de remote server  syslog boodschappen van "
-"AskoziaPBX kan aanvaarden."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2191,6 +2100,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Een geldig MAC-adres moeten worden opgegeven."
+
+msgid "A valid IP address must be specified."
+msgstr "Een geldig ip adres moet worden gekozen."
 
 msgid "A valid subnet bit count must be specified."
 msgstr "Een geldige subnet bits berekening moet worden vermeld."
@@ -3289,6 +3201,95 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "No matches found."
+#~ msgstr "Geen overeenstemmingen gevonden?"
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "Gesprekken"
+
+#~ msgid "Settings"
+#~ msgstr "Instellingen"
+
+#~ msgid "filter"
+#~ msgstr "filter"
+
+#~ msgid "Clear Log"
+#~ msgstr "Log Wissen"
+
+#~ msgid "Call Records"
+#~ msgstr "Bel Geschiedenis"
+
+#~ msgid "start"
+#~ msgstr "start"
+
+#~ msgid "src"
+#~ msgstr "src"
+
+#~ msgid "dst"
+#~ msgstr "dst"
+
+#~ msgid "channels"
+#~ msgstr "kanalen"
+
+#~ msgid "last app"
+#~ msgstr "laatste app"
+
+#~ msgid "sec."
+#~ msgstr "sec."
+
+#~ msgid "bill"
+#~ msgstr "rekening"
+
+#~ msgid "disposition"
+#~ msgstr "dispositie"
+
+#~ msgid "Clear log"
+#~ msgstr "Log wissen"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asteris log ingaves"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr "Nummer om log ingave te bekijken moet tussen de 50 en 1000 zijn."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr ""
+#~ "Toon log entries in omgekeerde volgorde (nieuwste gegevens bovenaan)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Nummer van log ingaven welke zichtbaar zijn:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Syslog'ing naar een remote syslog server inschakelen"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Remote syslog server"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "IP adres van de remote syslog server"
+
+#~ msgid "system events"
+#~ msgstr "Systeem gebeurtenissen"
+
+#~ msgid "pbx events"
+#~ msgstr "PBX gebeurtenissen"
+
+#~ msgid "call detail records"
+#~ msgstr "details van bel geschiedenis"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "syslog zend UDP datagrammen naar poort 514 op de gespecifieerde syslog "
+#~ "server. Zorg dat syslogd op de remote server  syslog boodschappen van "
+#~ "AskoziaPBX kan aanvaarden."
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "reset filter en herlaad de firewall log pagina"

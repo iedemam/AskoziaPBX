@@ -1,2 +1,3 @@
+::sysinit:/sbin/syslogd -S -C512
 ::sysinit:/etc/rc.bootup
 ttyBF0::respawn:/etc/rc.initial

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -1681,101 +1681,8 @@ msgstr "Abbrechen"
 msgid "Open"
 msgstr "Öffnen"
 
-msgid "No matches found."
-msgstr "Keine Treffer."
-
-msgid "PBX"
-msgstr "Nebenstellenanlage"
-
-msgid "Calls"
-msgstr "Verbindungen"
-
-msgid "Settings"
-msgstr "Einstellungen"
-
-msgid "filter"
-msgstr "Filter"
-
 msgid "System log entries"
 msgstr "System-Log-Einträge"
-
-msgid "Clear Log"
-msgstr "Log löschen"
-
-msgid "Call Records"
-msgstr "Gesprächsdaten"
-
-msgid "start"
-msgstr "Beginn"
-
-msgid "src"
-msgstr "Quelle"
-
-msgid "dst"
-msgstr "Ziel"
-
-msgid "channels"
-msgstr "Kanäle"
-
-msgid "last app"
-msgstr "letzte App."
-
-msgid "sec."
-msgstr "Sek."
-
-msgid "bill"
-msgstr "Abrechnung"
-
-#, fuzzy
-msgid "disposition"
-msgstr "Disposition"
-
-msgid "Clear log"
-msgstr "Log löschen"
-
-msgid "Asterisk log entries"
-msgstr "Asterisk-Log-Einträge"
-
-msgid "A valid IP address must be specified."
-msgstr "Eine gültige IP-Adresse muß angegeben werden."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr ""
-"Die Anzahl der anzuzeigenden Log-Einträge muß zwischen 50 und 1000 liegen."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Log-Einträge in absteigender Sortierung anzeigen (neueste oben)"
-
-msgid "Number of log entries to show:"
-msgstr "Anzahl der anzuzeigendnen Log-Einträge:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Syslog an Remote-Syslog-Server übertragen"
-
-msgid "Remote syslog server"
-msgstr "Remote-Syslog-Server"
-
-msgid "IP address of remote syslog server"
-msgstr "IP-Adresse des Remote-Syslog-Servers"
-
-msgid "system events"
-msgstr "System-Ereignisse"
-
-msgid "pbx events"
-msgstr "PBX-Ereignisse"
-
-msgid "call detail records"
-msgstr "Verbindungsdaten"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"Syslog sendet UDP-Pakete an Port 514 des angegebenen Remote-Syslog-Servers. "
-"Konfigurieren Sie den syslog-Server auf dem Remote-Syslog-Server so, daß er "
-"Syslog-Meldungen von AskoziaPBX akzeptiert."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2279,6 +2186,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Eine gültige MAC-Adresse muß angegeben werden."
+
+msgid "A valid IP address must be specified."
+msgstr "Eine gültige IP-Adresse muß angegeben werden."
 
 msgid "A valid subnet bit count must be specified."
 msgstr ""
@@ -3437,6 +3347,96 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid "No matches found."
+#~ msgstr "Keine Treffer."
+
+#~ msgid "PBX"
+#~ msgstr "Nebenstellenanlage"
+
+#~ msgid "Calls"
+#~ msgstr "Verbindungen"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
+
+#~ msgid "filter"
+#~ msgstr "Filter"
+
+#~ msgid "Clear Log"
+#~ msgstr "Log löschen"
+
+#~ msgid "Call Records"
+#~ msgstr "Gesprächsdaten"
+
+#~ msgid "start"
+#~ msgstr "Beginn"
+
+#~ msgid "src"
+#~ msgstr "Quelle"
+
+#~ msgid "dst"
+#~ msgstr "Ziel"
+
+#~ msgid "channels"
+#~ msgstr "Kanäle"
+
+#~ msgid "last app"
+#~ msgstr "letzte App."
+
+#~ msgid "sec."
+#~ msgstr "Sek."
+
+#~ msgid "bill"
+#~ msgstr "Abrechnung"
+
+#, fuzzy
+#~ msgid "disposition"
+#~ msgstr "Disposition"
+
+#~ msgid "Clear log"
+#~ msgstr "Log löschen"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asterisk-Log-Einträge"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr ""
+#~ "Die Anzahl der anzuzeigenden Log-Einträge muß zwischen 50 und 1000 liegen."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "Log-Einträge in absteigender Sortierung anzeigen (neueste oben)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Anzahl der anzuzeigendnen Log-Einträge:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Syslog an Remote-Syslog-Server übertragen"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Remote-Syslog-Server"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "IP-Adresse des Remote-Syslog-Servers"
+
+#~ msgid "system events"
+#~ msgstr "System-Ereignisse"
+
+#~ msgid "pbx events"
+#~ msgstr "PBX-Ereignisse"
+
+#~ msgid "call detail records"
+#~ msgstr "Verbindungsdaten"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "Syslog sendet UDP-Pakete an Port 514 des angegebenen Remote-Syslog-"
+#~ "Servers. Konfigurieren Sie den syslog-Server auf dem Remote-Syslog-Server "
+#~ "so, daß er Syslog-Meldungen von AskoziaPBX akzeptiert."
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "Filter zurücksetzen und Firewall-Log Seite neu laden"

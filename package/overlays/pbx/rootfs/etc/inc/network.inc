@@ -54,12 +54,6 @@ function network_lan_configure() {
 	$syscfg = $config['system'];
 	$lancfg =& $config['interfaces']['lan'];
 	$interface_names = array_keys(network_get_interfaces());
-	
-	if ($g['booting'])
-		echo "Configuring LAN interface... ";
-	else {
-		unlink_if_exists("{$g['varetc_path']}/nameservers.conf");
-	}
 
 	if (isset($lancfg['dhcp'])) {
 		foreach ($interface_names as $i) {
@@ -79,53 +73,15 @@ function network_lan_configure() {
 		mwexec("/sbin/route add default gw " . escapeshellarg($lancfg['gateway']) . " " .
 			"dev " . escapeshellarg($lancfg['if']));
 	}
-	///* no interface found? uh-oh! assign an interface and bridge everything to it */
-	//} else if (!in_array($lancfg['if'], $interface_names)) {
-	//	$lancfg['if'] = $interface_names[0];
-	//	if (count($interface_names) > 1) {
-	//		$lancfg['bridge'] = array_slice($interface_names, 1);
-	//	} else {
-	//		$lancfg['bridge'] = false;
-	//	}
-	//	write_config();
-	//}
 
-	/* MAC spoofing? */
-	//if ($lancfg['spoofmac']) {
-	//	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
-	//		" link " . escapeshellarg($lancfg['spoofmac']));
-	//}
-
-	/* bridging */
-	//mwexec("/sbin/sysctl net.link.ether.bridge.enable=0");
-	//if (is_array($lancfg['bridge'])) {
-	//	/* ensure that hardware TX/RX checksumming is off for bridged interfaces */
-	//	foreach ($lancfg['bridge'] as $b_if) {
-	//		mwexec("/sbin/ifconfig " . escapeshellarg($b_if) . " -rxcsum -txcsum");
-	//	}
-	//	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " -rxcsum -txcsum");
-	//	/* build bridge configuration */
-	//	$bridgeconfig = implode(":0,", $lancfg['bridge']);
-	//	$bridgeconfig .= ":0,{$lancfg['if']}:0";
-	//	mwexec("/sbin/sysctl net.link.ether.bridge.config=" . $bridgeconfig);		
-	//	mwexec("/sbin/sysctl net.link.ether.bridge.enable=1");
-	//}
-
-	
 	if (!$g['booting']) {
-		/* reconfigure static routes (kernel may have deleted them) */
-		system_routing_configure();
-		
 		/* restart ez-ipupdate */
 		services_dyndns_configure();
 		
 		/* force DNS update *//*
 		services_dnsupdate_process();*/
 	}
-	
-	if ($g['booting'])
-		echo "done\n";
-	
+
 	return 0;
 }
 

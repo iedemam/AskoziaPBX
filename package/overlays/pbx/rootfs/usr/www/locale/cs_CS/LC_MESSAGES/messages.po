@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1580,99 +1580,8 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-msgid "No matches found."
-msgstr ""
-
-msgid "PBX"
-msgstr ""
-
-msgid "Calls"
-msgstr "Hovory"
-
-msgid "Settings"
-msgstr "Nastavení"
-
-msgid "filter"
-msgstr "filtr"
-
 msgid "System log entries"
 msgstr "Záznamy systému"
-
-msgid "Clear Log"
-msgstr "Vymazat záznamy"
-
-msgid "Call Records"
-msgstr "Zaznamy hovorů"
-
-msgid "start"
-msgstr "začátek"
-
-msgid "src"
-msgstr "zdroj"
-
-msgid "dst"
-msgstr "cíl"
-
-msgid "channels"
-msgstr "kanály"
-
-msgid "last app"
-msgstr "poslední aplikace"
-
-msgid "sec."
-msgstr "vteřin"
-
-msgid "bill"
-msgstr "účtováno"
-
-msgid "disposition"
-msgstr "stav"
-
-msgid "Clear log"
-msgstr "Vymazat záznamy"
-
-msgid "Asterisk log entries"
-msgstr "Záznamy Asterisku"
-
-msgid "A valid IP address must be specified."
-msgstr "Musí být zadána validní IP adresa."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "Počet zobrazovaných záznamů v logu musí být mezi 50 a 1000."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Zobrazit záznamy v opačném pořadí (nejnovější jako první)"
-
-msgid "Number of log entries to show:"
-msgstr "Počet zobrazovaných záznamů:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Aktivovat logování na syslog server (pomocí syslogd)"
-
-msgid "Remote syslog server"
-msgstr "Vzdálený syslog server"
-
-msgid "IP address of remote syslog server"
-msgstr "IP adresa syslog serveru"
-
-msgid "system events"
-msgstr "systémové události"
-
-msgid "pbx events"
-msgstr "události pbx"
-
-msgid "call detail records"
-msgstr "záznamy o hovorech"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"Syslog odesílá UDP datagramy na port 514 specifikovaného syslog serveru. "
-"Ujistěte se, že syslogd je na vzdáleném servu nastaven tak, aby akceptoval "
-"zprávy od AskoziaPBX."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2120,6 +2029,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr ""
+
+msgid "A valid IP address must be specified."
+msgstr "Musí být zadána validní IP adresa."
 
 msgid "A valid subnet bit count must be specified."
 msgstr ""
@@ -3201,6 +3113,88 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Calls"
+#~ msgstr "Hovory"
+
+#~ msgid "Settings"
+#~ msgstr "Nastavení"
+
+#~ msgid "filter"
+#~ msgstr "filtr"
+
+#~ msgid "Clear Log"
+#~ msgstr "Vymazat záznamy"
+
+#~ msgid "Call Records"
+#~ msgstr "Zaznamy hovorů"
+
+#~ msgid "start"
+#~ msgstr "začátek"
+
+#~ msgid "src"
+#~ msgstr "zdroj"
+
+#~ msgid "dst"
+#~ msgstr "cíl"
+
+#~ msgid "channels"
+#~ msgstr "kanály"
+
+#~ msgid "last app"
+#~ msgstr "poslední aplikace"
+
+#~ msgid "sec."
+#~ msgstr "vteřin"
+
+#~ msgid "bill"
+#~ msgstr "účtováno"
+
+#~ msgid "disposition"
+#~ msgstr "stav"
+
+#~ msgid "Clear log"
+#~ msgstr "Vymazat záznamy"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Záznamy Asterisku"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr "Počet zobrazovaných záznamů v logu musí být mezi 50 a 1000."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "Zobrazit záznamy v opačném pořadí (nejnovější jako první)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Počet zobrazovaných záznamů:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Aktivovat logování na syslog server (pomocí syslogd)"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Vzdálený syslog server"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "IP adresa syslog serveru"
+
+#~ msgid "system events"
+#~ msgstr "systémové události"
+
+#~ msgid "pbx events"
+#~ msgstr "události pbx"
+
+#~ msgid "call detail records"
+#~ msgstr "záznamy o hovorech"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "Syslog odesílá UDP datagramy na port 514 specifikovaného syslog serveru. "
+#~ "Ujistěte se, že syslogd je na vzdáleném servu nastaven tak, aby "
+#~ "akceptoval zprávy od AskoziaPBX."
 
 #~ msgid "In/Out Packets"
 #~ msgstr "In/Out pakety"

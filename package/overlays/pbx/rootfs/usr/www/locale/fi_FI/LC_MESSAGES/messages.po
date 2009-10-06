@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1649,98 +1649,8 @@ msgstr "Peruuta"
 msgid "Open"
 msgstr "Avaa"
 
-msgid "No matches found."
-msgstr "Osumia ei löytynyt."
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "Puhelut"
-
-msgid "Settings"
-msgstr "Asetukset"
-
-msgid "filter"
-msgstr "suodatin"
-
 msgid "System log entries"
 msgstr "Järjestelmän loki tallennukset"
-
-msgid "Clear Log"
-msgstr "Tyhjennä loki"
-
-msgid "Call Records"
-msgstr "Puhelutiedot"
-
-msgid "start"
-msgstr "aloitettu"
-
-msgid "src"
-msgstr "lähde"
-
-msgid "dst"
-msgstr "määränpää"
-
-msgid "channels"
-msgstr "kanavat"
-
-msgid "last app"
-msgstr "viimeisin"
-
-msgid "sec."
-msgstr "sek."
-
-msgid "bill"
-msgstr "lasku"
-
-msgid "disposition"
-msgstr "tila"
-
-msgid "Clear log"
-msgstr "Tyhjennä loki"
-
-msgid "Asterisk log entries"
-msgstr "Asterisk loki tallennukset"
-
-msgid "A valid IP address must be specified."
-msgstr "Kelpaava IP osoite on oltava määritettynä."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "Loki tallennuksien määrä jota näytetään on oltava 50 ja 1000 välissä."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Näytä loki vastakkaisena järjestyksessä (uusin tapahtuma ensin)"
-
-msgid "Number of log entries to show:"
-msgstr "Loki tallennuksien määrä:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Mahdollista syslog'ing syslog serverille"
-
-msgid "Remote syslog server"
-msgstr "Syslog serveri"
-
-msgid "IP address of remote syslog server"
-msgstr "Syslog serverin IP osoite"
-
-msgid "system events"
-msgstr "järjestelmä tapahtumat"
-
-msgid "pbx events"
-msgstr "pbx tapahtumat"
-
-msgid "call detail records"
-msgstr "puheluiden yksityiskohdat"
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"syslog lähettää UDP datagrammeja porttiin 514 syslog serverilla. Varmista "
-"että serveri (tarkemmin syslogd) hyväksyy syslog viestejä AskoziaPBX:ltä."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2237,6 +2147,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Kelpaava MAC osoite on oltava määritetty."
+
+msgid "A valid IP address must be specified."
+msgstr "Kelpaava IP osoite on oltava määritettynä."
 
 msgid "A valid subnet bit count must be specified."
 msgstr "kelpaava aliverkon tavu määrä on oltava määritetty."
@@ -3392,6 +3305,94 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "No matches found."
+#~ msgstr "Osumia ei löytynyt."
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "Puhelut"
+
+#~ msgid "Settings"
+#~ msgstr "Asetukset"
+
+#~ msgid "filter"
+#~ msgstr "suodatin"
+
+#~ msgid "Clear Log"
+#~ msgstr "Tyhjennä loki"
+
+#~ msgid "Call Records"
+#~ msgstr "Puhelutiedot"
+
+#~ msgid "start"
+#~ msgstr "aloitettu"
+
+#~ msgid "src"
+#~ msgstr "lähde"
+
+#~ msgid "dst"
+#~ msgstr "määränpää"
+
+#~ msgid "channels"
+#~ msgstr "kanavat"
+
+#~ msgid "last app"
+#~ msgstr "viimeisin"
+
+#~ msgid "sec."
+#~ msgstr "sek."
+
+#~ msgid "bill"
+#~ msgstr "lasku"
+
+#~ msgid "disposition"
+#~ msgstr "tila"
+
+#~ msgid "Clear log"
+#~ msgstr "Tyhjennä loki"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Asterisk loki tallennukset"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr ""
+#~ "Loki tallennuksien määrä jota näytetään on oltava 50 ja 1000 välissä."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr "Näytä loki vastakkaisena järjestyksessä (uusin tapahtuma ensin)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Loki tallennuksien määrä:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Mahdollista syslog'ing syslog serverille"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Syslog serveri"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "Syslog serverin IP osoite"
+
+#~ msgid "system events"
+#~ msgstr "järjestelmä tapahtumat"
+
+#~ msgid "pbx events"
+#~ msgstr "pbx tapahtumat"
+
+#~ msgid "call detail records"
+#~ msgstr "puheluiden yksityiskohdat"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "syslog lähettää UDP datagrammeja porttiin 514 syslog serverilla. Varmista "
+#~ "että serveri (tarkemmin syslogd) hyväksyy syslog viestejä AskoziaPBX:ltä."
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "palauta suodatin ja lataa palomuuri loki sivua"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 15:08+0200\n"
+"POT-Creation-Date: 2009-10-06 13:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1592,99 +1592,8 @@ msgstr "Anuluj"
 msgid "Open"
 msgstr "Otwórz"
 
-msgid "No matches found."
-msgstr "Brak trafień."
-
-msgid "PBX"
-msgstr "PBX"
-
-msgid "Calls"
-msgstr "Połączenia"
-
-msgid "Settings"
-msgstr "Ustawienia"
-
-msgid "filter"
-msgstr "filter"
-
 msgid "System log entries"
 msgstr "Pozycje logu systemowego"
-
-msgid "Clear Log"
-msgstr "Wyczyść Log"
-
-msgid "Call Records"
-msgstr "Biling"
-
-msgid "start"
-msgstr "start"
-
-msgid "src"
-msgstr "od"
-
-msgid "dst"
-msgstr "do"
-
-msgid "channels"
-msgstr "kanały"
-
-msgid "last app"
-msgstr "ost aplik"
-
-msgid "sec."
-msgstr "sek."
-
-msgid "bill"
-msgstr "rachunek"
-
-msgid "disposition"
-msgstr "dyspozycja"
-
-msgid "Clear log"
-msgstr "Wyczyść log"
-
-msgid "Asterisk log entries"
-msgstr "Log Asteriska"
-
-msgid "A valid IP address must be specified."
-msgstr "Należy podać poprawny adres IP."
-
-msgid "Number of log entries to show must be between 50 and 1000."
-msgstr "Ilość pozycji logu do pokazania musi być między 5 a 1000."
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Pokaż pozycje logu w odwrotnym kierunku (najnowsze pozycje na górze)"
-
-msgid "Number of log entries to show:"
-msgstr "Ilość pozycji logu do pokazania:"
-
-msgid "Enable syslog'ing to remote syslog server"
-msgstr "Włącz wysyłanie logów na zewnętrzny serwer syslog"
-
-msgid "Remote syslog server"
-msgstr "Zewnętrzny serwer syslog"
-
-msgid "IP address of remote syslog server"
-msgstr "Adres IP zewnętrznego serwera syslog"
-
-msgid "system events"
-msgstr "zdarzenia systemowe"
-
-msgid "pbx events"
-msgstr "zdarzenia pbx"
-
-msgid "call detail records"
-msgstr ""
-
-#, fuzzy
-msgid ""
-"syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from this system."
-msgstr ""
-"syslog wysyła pakiety UDP na port 514 wskazanego zdalnego serwera syslog. "
-"Upewnij się, że zdalny serwer syslog ustawiony jest na akceptacje logów z "
-"AskoziaPBX."
 
 msgid ""
 "This page allows direct execution of commands on the Asterisk console. "
@@ -2155,6 +2064,9 @@ msgstr ""
 
 msgid "A valid MAC address must be specified."
 msgstr "Należy podać poprawny adres MAC."
+
+msgid "A valid IP address must be specified."
+msgstr "Należy podać poprawny adres IP."
 
 msgid "A valid subnet bit count must be specified."
 msgstr "Należy podać poprawną ilość bitów maski sieciowej."
@@ -3282,6 +3194,92 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "No matches found."
+#~ msgstr "Brak trafień."
+
+#~ msgid "PBX"
+#~ msgstr "PBX"
+
+#~ msgid "Calls"
+#~ msgstr "Połączenia"
+
+#~ msgid "Settings"
+#~ msgstr "Ustawienia"
+
+#~ msgid "filter"
+#~ msgstr "filter"
+
+#~ msgid "Clear Log"
+#~ msgstr "Wyczyść Log"
+
+#~ msgid "Call Records"
+#~ msgstr "Biling"
+
+#~ msgid "start"
+#~ msgstr "start"
+
+#~ msgid "src"
+#~ msgstr "od"
+
+#~ msgid "dst"
+#~ msgstr "do"
+
+#~ msgid "channels"
+#~ msgstr "kanały"
+
+#~ msgid "last app"
+#~ msgstr "ost aplik"
+
+#~ msgid "sec."
+#~ msgstr "sek."
+
+#~ msgid "bill"
+#~ msgstr "rachunek"
+
+#~ msgid "disposition"
+#~ msgstr "dyspozycja"
+
+#~ msgid "Clear log"
+#~ msgstr "Wyczyść log"
+
+#~ msgid "Asterisk log entries"
+#~ msgstr "Log Asteriska"
+
+#~ msgid "Number of log entries to show must be between 50 and 1000."
+#~ msgstr "Ilość pozycji logu do pokazania musi być między 5 a 1000."
+
+#~ msgid "Show log entries in reverse order (newest entries on top)"
+#~ msgstr ""
+#~ "Pokaż pozycje logu w odwrotnym kierunku (najnowsze pozycje na górze)"
+
+#~ msgid "Number of log entries to show:"
+#~ msgstr "Ilość pozycji logu do pokazania:"
+
+#~ msgid "Enable syslog'ing to remote syslog server"
+#~ msgstr "Włącz wysyłanie logów na zewnętrzny serwer syslog"
+
+#~ msgid "Remote syslog server"
+#~ msgstr "Zewnętrzny serwer syslog"
+
+#~ msgid "IP address of remote syslog server"
+#~ msgstr "Adres IP zewnętrznego serwera syslog"
+
+#~ msgid "system events"
+#~ msgstr "zdarzenia systemowe"
+
+#~ msgid "pbx events"
+#~ msgstr "zdarzenia pbx"
+
+#, fuzzy
+#~ msgid ""
+#~ "syslog sends UDP datagrams to port 514 on the specified remote syslog "
+#~ "server. Be sure to set syslogd on the remote server to accept syslog "
+#~ "messages from this system."
+#~ msgstr ""
+#~ "syslog wysyła pakiety UDP na port 514 wskazanego zdalnego serwera syslog. "
+#~ "Upewnij się, że zdalny serwer syslog ustawiony jest na akceptacje logów z "
+#~ "AskoziaPBX."
 
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "wyczyść filter i przeładuj stronę z logami firewalla"
