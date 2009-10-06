@@ -222,19 +222,14 @@ function system_timezone_configure() {
 }
 
 /**
- * Configures and (re)starts msntp
+ * Configures and (re)starts ntpclient
  */
 function system_ntp_configure() {
 	global $config, $g;
 
-	return; // LINUX TODO : ntp time sync broken
+	killbyname("ntpclient");
 
 	$syscfg = $config['system'];
-
-	if (!$g['booting']) {
-		killbypid("{$g['varrun_path']}/runmsntp.pid");
-		killbypid("{$g['varrun_path']}/msntp.pid");
-	}
 
 	/* start ntp client if needed - needs to be forced into background */
 	$updateinterval = $syscfg['time-update-interval'];
@@ -243,16 +238,11 @@ function system_ntp_configure() {
 		if ($updateinterval < 6) {
 			$updateinterval = 6;
 		}
-		$timeservers = "";
-		foreach (explode(' ', $syscfg['timeservers']) as $ts) {
-			$timeservers .= " " . $ts;
-		}
 
-		mwexec_bg("/usr/bin/runmsntp.sh " .
-			escapeshellarg("{$g['varrun_path']}/runmsntp.pid") . " " .
-			escapeshellarg("{$g['varrun_path']}/msntp.pid") . " " .
-			escapeshellarg($updateinterval) . " " .
-			escapeshellarg($timeservers));
+		mwexec_bg("ntpclient" .
+			" -h " . escapeshellarg($syscfg['timeservers']) .
+			" -i " . escapeshellarg($updateinterval*60)
+		);
 	}
 }
 

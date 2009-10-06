@@ -1,0 +1,12 @@
+--- ntpclient-2007/Makefile.orig	2009-10-06 13:53:16.000000000 +0200
++++ ntpclient-2007/Makefile	2009-10-06 13:59:50.000000000 +0200
+@@ -27,5 +27,9 @@
+ 
+ adjtimex: adjtimex.o
+ 
++install: all
++	rm -f ${PREFIX}/usr/bin/ntpclient
++	cp ntpclient ${PREFIX}/usr/bin
++
+ clean:
+ 	rm -f ntpclient adjtimex *.o

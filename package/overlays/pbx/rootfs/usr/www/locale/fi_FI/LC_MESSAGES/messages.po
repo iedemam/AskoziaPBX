@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 13:07+0200\n"
+"POT-Creation-Date: 2009-10-06 14:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2987,9 +2987,10 @@ msgstr ""
 msgid "NTP time server"
 msgstr "NTP aikaserveri"
 
+#, fuzzy
 msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
+"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
+"server if you enter a host name here!"
 msgstr ""
 "Käytä välilyöntiä jos haluat antaa monta isäntänimeä (vain yksi on "
 "pakollinen). Muista asentaa ainakin yksi DNS serveri jos annat isäntänimen "

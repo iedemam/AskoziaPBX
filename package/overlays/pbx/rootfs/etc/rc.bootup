@@ -137,9 +137,9 @@
 		services_dnsupdate_process();*/
 
 	/* start the NTP client */
-	//echo " - Configuring ntp client... ";
-	//system_ntp_configure();
-	//echo "done\n";
+	echo " - Configuring ntp client... ";
+	system_ntp_configure();
+	echo "done\n";
 
 	/* start up asterisk */
 	echo " - Starting Asterisk... ";

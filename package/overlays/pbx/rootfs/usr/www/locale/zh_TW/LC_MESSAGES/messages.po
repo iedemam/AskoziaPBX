@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 13:07+0200\n"
+"POT-Creation-Date: 2009-10-06 14:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2866,9 +2866,10 @@ msgstr "網路時間同步的分鐘數；300推薦，或者0禁用。"
 msgid "NTP time server"
 msgstr "NTP時間伺服器"
 
+#, fuzzy
 msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
+"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
+"server if you enter a host name here!"
 msgstr ""
 "使用一個空間來分隔多個主機（只需一個）。請別忘記設置至少一個DNS伺服器，如果您"
 "在這裏輸入主機名。"

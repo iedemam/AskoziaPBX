@@ -87,7 +87,7 @@ X iui
 X busybox
 X dropbear
 X msmtp
-X msntp
+X ntpclient
 X php4
 X ezipupdate
 X sslwrap

@@ -244,7 +244,7 @@ if ($savemsg) display_info_box($savemsg); ?>
 		<td class="vtable">
 			<input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>">
 			<br>
-			<span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span>
+			<span class="vexpl"><?=gettext("Enter a NTP server to synchronize with. Remember to set up at least one DNS server if you enter a host name here!");?></span>
 		</td>
 	</tr>
 	<tr> 
