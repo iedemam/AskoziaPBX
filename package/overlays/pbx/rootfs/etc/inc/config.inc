@@ -93,17 +93,22 @@ EOD;
 			$attempts = 2;
 			while ($attempts--) {
 				if ($g['platform'] == "COMpact 3000") {
-					$disks[] = "mmcblk0p";
+					$disks[] = "mmcblk0";
 				} else {
 					exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);
 				}
 				echo "Found disks: " . implode(", ", $disks) . "\n";
 				foreach ($disks as $disk) {
 					echo "Looking for configuration on: $disk\n";
-					if (mwexec("/bin/mount -r /dev/{$disk}1 {$g['cf_path']}") == 0) {
+					if (strpos($disk, "mmcblk") !== false) {
+						$part = "p1";
+					} else {
+						$part = "1";
+					}
+					if (mwexec("/bin/mount -r /dev/{$disk}{$part} {$g['cf_path']}") == 0) {
 						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 							$cfgdevice = $disk;
-							$cfgpartition = $cfgdevice . "1";
+							$cfgpartition = $cfgdevice . $part;
 							echo "Found configuration on $cfgdevice.\n";
 						}
 
@@ -154,7 +159,12 @@ EOD;
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} msdos ro 1 1\n";
-		$fstab .= "/dev/{$cfgdevice}2 /offload ext2 ro 0 0\n";
+		if (strpos($disk, "mmcblk") !== false) {
+			$part = "p2";
+		} else {
+			$part = "2";
+		}
+		$fstab .= "/dev/{$cfgdevice}{$part} /offload ext2 ro 0 0\n";
 
 		fwrite($fd, $fstab);
 		fclose($fd);
