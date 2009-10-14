@@ -109,6 +109,11 @@
 	network_lan_configure();
 	echo "done\n";
 
+	/* initial NTP sync */
+	echo " - Initial NTP time sync... ";
+	system_ntp_initial_sync();
+	echo "done\n";
+
 	/* generate machine specific ssl certificate */
 	//echo " - Upgrading https certificate... ";
 	//system_upgrade_https_certificate();
@@ -136,11 +141,6 @@
 		$config['interfaces']['lan']['topology'] == "natstatic")
 		services_dnsupdate_process();*/
 
-	/* start the NTP client */
-	echo " - Configuring ntp client... ";
-	system_ntp_configure();
-	echo "done\n";
-
 	/* start up asterisk */
 	echo " - Starting Asterisk... ";
 	pbx_configure();
@@ -155,6 +155,10 @@
 	//echo " - Enabling hdd standby... ";
 	//system_set_harddisk_standby();
 	//echo "done\n";
+
+	echo " - Configuring cron services... ";
+	system_cron_configure();
+	echo "done\n";
 
 	/* done */
 	unlink("{$g['varrun_path']}/booting");

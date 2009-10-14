@@ -1,0 +1,105 @@
+--- ntpclient-2007/ntpclient.c.orig	2009-10-12 13:53:12.000000000 +0200
++++ ntpclient-2007/ntpclient.c	2009-10-13 13:51:07.000000000 +0200
+@@ -70,6 +70,18 @@
+ #define DEBUG_OPTION
+ #endif
+ 
++#ifdef ENABLE_SYSLOG
++#include <syslog.h>
++#define	SYSLOG_IDENT	"ntpclient"
++#define	SYSLOG_OPTIONS	(LOG_NOWAIT | LOG_PID)
++#define	SYSLOG_FACILITY	LOG_CRON
++#define	LOG_OPTION	"L"
++int	logging = 0 ;
++#else
++#define	LOG_OPTION
++#define	logging	0
++#endif
++
+ #ifdef ENABLE_REPLAY
+ #define  REPLAY_OPTION   "r"
+ #else
+@@ -189,6 +201,11 @@
+ 	if (debug) {
+ 		printf("set time to %lu.%.9lu\n", tv_set.tv_sec, tv_set.tv_nsec);
+ 	}
++#ifdef ENABLE_SYSLOG
++	if (logging) {
++		syslog(LOG_NOTICE, "Time set from remote server via clock_settime()");
++	}
++#endif
+ #else
+ 	/* Traditional Linux way to set the system clock
+ 	 */
+@@ -204,6 +221,11 @@
+ 	if (debug) {
+ 		printf("set time to %lu.%.6lu\n", tv_set.tv_sec, tv_set.tv_usec);
+ 	}
++#ifdef ENABLE_SYSLOG
++	if (logging) {
++		syslog(LOG_NOTICE, "Time set from remote server via settimeofday()");
++	}
++#endif
+ #endif
+ }
+ 
+@@ -423,6 +445,11 @@
+ 		arrival->fine/4294967, el_time, st_time,
+ 		(skew1-skew2)/2, sec2u(disp), freq);
+ 	fflush(stdout);
++#ifdef ENABLE_SYSLOG
++	if (logging) {
++		syslog(LOG_NOTICE, "Skew %.1fmS, freq adjust %d", (skew1-skew2)/2000, freq);
++	}
++#endif
+ 	*error = el_time-st_time;
+ 
+ 	return 0;
+@@ -585,6 +612,9 @@
+ {
+ 	fprintf(stderr,
+ 	"Usage: %s [-c count]"
++#ifdef ENABLE_SYSLOG
++	" [-L]"
++#endif
+ #ifdef ENABLE_DEBUG
+ 	" [-d]"
+ #endif
+@@ -613,8 +643,12 @@
+ 	ntpc.goodness=0;
+ 	ntpc.cross_check=1;
+ 
++#ifdef ENABLE_SYSLOG
++	openlog(SYSLOG_IDENT, SYSLOG_OPTIONS, SYSLOG_FACILITY);
++#endif
++
+ 	for (;;) {
+-		c = getopt( argc, argv, "c:" DEBUG_OPTION "f:g:h:i:lp:q:" REPLAY_OPTION "st");
++		c = getopt( argc, argv, "c:" DEBUG_OPTION LOG_OPTION "f:g:h:i:lp:q:" REPLAY_OPTION "st");
+ 		if (c == EOF) break;
+ 		switch (c) {
+ 			case 'c':
+@@ -649,6 +683,11 @@
+ 			case 'q':
+ 				min_delay = atof(optarg);
+ 				break;
++#ifdef ENABLE_SYSLOG
++			case 'L':
++				logging++ ;
++				break ;
++#endif
+ #ifdef ENABLE_REPLAY
+ 			case 'r':
+ 				do_replay();
+@@ -707,6 +746,11 @@
+ 
+ 	setup_transmit(usd, hostname, NTP_PORT, &ntpc);
+ 
++#ifdef ENABLE_SYSLOG
++	if (logging) {
++		syslog(LOG_NOTICE, "Using server: %s", hostname);
++	}
++#endif
+ 	primary_loop(usd, &ntpc);
+ 
+ 	close(usd);

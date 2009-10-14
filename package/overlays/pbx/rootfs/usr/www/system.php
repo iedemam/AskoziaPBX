@@ -132,7 +132,7 @@ if ($_POST) {
 			$retval = system_hostname_configure();
 			$retval |= system_hosts_generate();
 			$retval |= system_timezone_configure();
- 			$retval |= system_ntp_configure();
+ 			$retval |= system_cron_configure();
 			$retval |= indications_conf_generate();
 			$retval |= indications_reload();
 			config_unlock();

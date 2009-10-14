@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -194,6 +194,7 @@ function system_upgrade_https_certificate() {
 		}
 	}
 }
+
 /**
  * Generates htpasswd and sets the root password
  */
@@ -222,28 +223,12 @@ function system_timezone_configure() {
 }
 
 /**
- * Configures and (re)starts ntpclient
+ * Initial NTP time sync
  */
-function system_ntp_configure() {
-	global $config, $g;
+function system_ntp_initial_sync() {
+	global $config;
 
-	killbyname("ntpclient");
-
-	$syscfg = $config['system'];
-
-	/* start ntp client if needed - needs to be forced into background */
-	$updateinterval = $syscfg['time-update-interval'];
-
-	if ($updateinterval > 0) {
-		if ($updateinterval < 6) {
-			$updateinterval = 6;
-		}
-
-		mwexec_bg("ntpclient" .
-			" -h " . escapeshellarg($syscfg['timeservers']) .
-			" -i " . escapeshellarg($updateinterval*60)
-		);
-	}
+	mwexec("ntpclient -L -s -h " . escapeshellarg($config['system']['timeservers']));
 }
 
 /**
@@ -460,6 +445,36 @@ function system_get_product_name() {
 	} else {
 		return "AskoziaPBX";
 	}
+}
+
+function system_cron_configure() {
+	global $g, $config;
+
+	killbyname("crond");
+
+	/* ntp */
+	$mins = $config['system']['time-update-interval'];
+	if ($mins > 0) {
+		if ($mins < 6) {
+			$mins = 6;
+		}
+
+		$cron .= "*/" . $mins . " * * * * ntpclient -L -s -h " .
+			$config['system']['timeservers'] . "\n";
+	}
+	$cron .= "\n";
+
+	$fd = fopen("/var/spool/cron/crontabs/root", "w");
+	if (!$fd) {
+		printf("Error: cannot open /var/spool/cron/crontabs/root in system_cron_configure().\n");
+		return 1;
+	}
+	fwrite($fd, $cron);
+	fclose($fd);
+
+	mwexec("crond -l 0");
+
+	return 0;
 }
 
 ?>
