@@ -3,6 +3,6 @@
 # copy cache file to /conf for permanent storage
 /bin/umount -f /cf
 /bin/mount -w -o noatime /cf
-/bin/cp /var/db/ez-ipupdate.cache /conf
+/bin/cp /var/db/ezipupca.che /conf
 /bin/umount -f /cf
 /bin/mount -r /cf

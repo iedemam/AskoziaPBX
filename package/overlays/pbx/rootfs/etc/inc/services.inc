@@ -33,13 +33,13 @@ require_once("functions.inc");
 function services_dyndns_reset() {
 	global $config, $g;
 
-	if (file_exists("{$g['vardb_path']}/ez-ipupdate.cache")) {
-		unlink("{$g['vardb_path']}/ez-ipupdate.cache");
+	if (file_exists("{$g['vardb_path']}/ezipupca.che")) {
+		unlink("{$g['vardb_path']}/ezipupca.che");
 	}	
 	
-	if (file_exists("{$g['conf_path']}/ez-ipupdate.cache")) {
+	if (file_exists("{$g['conf_path']}/ezipupca.che")) {
 		conf_mount_rw();
-		unlink("{$g['conf_path']}/ez-ipupdate.cache");
+		unlink("{$g['conf_path']}/ezipupca.che");
 		conf_mount_ro();
 	}
 	
@@ -78,7 +78,7 @@ interface=web-detect
 period=600
 max-interval=2073600
 pid-file={$g['varrun_path']}/ez-ipupdate.pid
-cache-file={$g['vardb_path']}/ez-ipupdate.cache
+cache-file={$g['vardb_path']}/ezipupca.che
 execute=/etc/rc.dyndns.storecache
 daemon
 
@@ -108,13 +108,13 @@ EOD;
 
 		/* if we're booting, copy the cache file from /conf */
 		if ($g['booting']) {
-			if (file_exists("{$g['conf_path']}/ez-ipupdate.cache")) {
-				copy("{$g['conf_path']}/ez-ipupdate.cache", "{$g['vardb_path']}/ez-ipupdate.cache");
+			if (file_exists("{$g['conf_path']}/ezipupca.che")) {
+				copy("{$g['conf_path']}/ezipupca.che", "{$g['vardb_path']}/ezipupca.che");
 			}
 		}
 
 		/* run ez-ipupdate */
-		mwexec("/usr/bin/ez-ipupdate -c {$g['etc_path']}/ez-ipupdate.conf");
+		mwexec_bg("/usr/bin/ez-ipupdate -c {$g['etc_path']}/ez-ipupdate.conf");
 
 		if ($g['booting'])
 			echo "done\n";

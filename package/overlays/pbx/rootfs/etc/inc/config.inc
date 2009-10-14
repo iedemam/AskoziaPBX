@@ -180,13 +180,13 @@ if (!$noparseconfig) {
 	config_lock();
 
 	/* see if there's a newer cache file */
-	if (file_exists("{$g['tmp_path']}/config.cache") && 
-		(filemtime("{$g['tmp_path']}/config.cache") >= 
+	if (file_exists("{$g['tmp_path']}/configca.che") && 
+		(filemtime("{$g['tmp_path']}/configca.che") >= 
 		 filemtime("{$g['conf_path']}/config.xml"))) {
 
 		/* read cache */
-		$config = unserialize(file_get_contents("{$g['tmp_path']}/config.cache"));
-		$uniqid_map = unserialize(file_get_contents("{$g['tmp_path']}/uniqid_map.cache"));
+		$config = unserialize(file_get_contents("{$g['tmp_path']}/configca.che"));
+		$uniqid_map = unserialize(file_get_contents("{$g['tmp_path']}/uniqidca.che"));
 	} else {
 
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
@@ -228,7 +228,7 @@ EOD;
 		}
 
 		/* write config cache */
-		$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
+		$fd = @fopen("{$g['tmp_path']}/configca.che", "wb");
 		if ($fd) {
 			fwrite($fd, serialize($config));
 			fclose($fd);
@@ -236,7 +236,7 @@ EOD;
 
 		/* write uniqid_map cache */
 		$uniqid_map = config_build_uniqid_map($config);
-		$fd = @fopen("{$g['tmp_path']}/uniqid_map.cache", "wb");
+		$fd = @fopen("{$g['tmp_path']}/uniqidca.che", "wb");
 		if ($fd) {
 			fwrite($fd, serialize($uniqid_map));
 			fclose($fd);
@@ -321,14 +321,14 @@ function write_config() {
 	$uniqid_map = config_build_uniqid_map($config);
 
 	/* write config cache */
-	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
+	$fd = @fopen("{$g['tmp_path']}/configca.che", "wb");
 	if ($fd) {
 		fwrite($fd, serialize($config));
 		fclose($fd);
 	}
 
 	/* write uniqid_map cache */
-	$fd = @fopen("{$g['tmp_path']}/uniqid_map.cache", "wb");
+	$fd = @fopen("{$g['tmp_path']}/uniqidca.che", "wb");
 	if ($fd) {
 		fwrite($fd, serialize($uniqid_map));
 		fclose($fd);

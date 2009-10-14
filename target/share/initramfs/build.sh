@@ -50,7 +50,7 @@ find $build_root -printf "%P\n" | sed '
   /etc\/opt/							d;
   /etc\/postinstall.d/					d;
   /etc\/profile.d/						d;
-  /etc\/rc.d/							d;
+  /etc\/rc.d\//							d;
   /etc\/skel/							d;
   /etc\/stone.d/						d;
 /\/games/								d;

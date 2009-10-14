@@ -107,7 +107,7 @@ exten => vm-h,n,GosubIf($[("$\{SENDNOTIFICATIONS}" != "") & ("$\{MISSEDCAUSE}" !
 exten => vm-h,n,Hangup()
 
 ; mail missed call notification
-exten => mailnotification,1,Set(TMPMAILFILE=/var/spool/asterisk/tmp/email-$\{MD5($\{UNIQUEID})})
+exten => mailnotification,1,Set(TMPMAILFILE=/var/asterisk/spool/tmp/email-$\{MD5($\{UNIQUEID})})
 exten => mailnotification,n,System(touch $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "date: `date`" > $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
