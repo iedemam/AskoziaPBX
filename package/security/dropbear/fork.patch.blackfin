@@ -1,0 +1,65 @@
+--- dropbear/Makefile.in_orig	2009-04-15 02:42:11.000000000 -0500
++++ dropbear/Makefile.in	2009-04-15 02:42:59.000000000 -0500
+@@ -10,7 +10,7 @@
+ # Hopefully that seems intuitive.
+ 
+ ifndef PROGRAMS
+-	PROGRAMS=dropbear dbclient dropbearkey dropbearconvert
++	PROGRAMS=dropbear dbclient dropbearkey dropbearconvert ssh scp
+ endif
+ 
+ LTC=libtomcrypt/libtomcrypt.a
+--- dropbear/svr-main.c_orig	2009-04-15 02:52:21.000000000 -0500
++++ dropbear/svr-main.c	2009-04-15 02:56:01.000000000 -0500
+@@ -269,7 +269,11 @@
+ #ifdef DEBUG_NOFORK
+ 			fork_ret = 0;
+ #else
++	#ifdef __uClinux__
++			fork_ret = vfork();
++	#else
+ 			fork_ret = fork();
++	#endif
+ #endif
+ 			if (fork_ret < 0) {
+ 				dropbear_log(LOG_WARNING, "error forking: %s", strerror(errno));
+--- dropbear/compat.c_orig	2009-04-15 02:56:58.000000000 -0500
++++ dropbear/compat.c	2009-04-15 02:58:29.000000000 -0500
+@@ -162,7 +162,11 @@
+ 
+ 	int fd;
+ 
++#ifdef __uClinux__
++	switch (vfork()) {
++#else
+ 	switch (fork()) {
++#endif
+ 		case -1:
+ 			return (-1);
+ 		case 0:
+--- dropbear/cli-authpasswd.c_orig	2009-04-15 02:59:54.000000000 -0500
++++ dropbear/cli-authpasswd.c	2009-04-15 03:01:04.000000000 -0500
+@@ -66,7 +66,11 @@
+ 		return NULL;
+ 	}
+ 
++#ifdef __uClinux__
++	pid = vfork();
++#else
+ 	pid = fork();
++#endif
+ 
+ 	if (pid < 0) {
+ 		TRACE(("fork error"))
+--- dropbear/options.h_orig	2009-04-15 03:03:30.000000000 -0500
++++ dropbear/options.h	2009-04-15 03:04:13.000000000 -0500
+@@ -232,7 +232,7 @@
+ 
+ /* This is used by the scp binary when used as a client binary. If you're
+  * not using the Dropbear client, you'll need to change it */
+-#define _PATH_SSH_PROGRAM "/usr/bin/dbclient"
++#define _PATH_SSH_PROGRAM "/bin/dbclient"
+ 
+ /* Whether to log commands executed by a client. This only logs the 
+  * (single) command sent to the server, not what a user did in a 
+
