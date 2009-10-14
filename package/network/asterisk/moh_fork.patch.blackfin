@@ -1,0 +1,19 @@
+--- asterisk-1.4.26/res/res_musiconhold.c.orig	2009-10-14 14:49:12.000000000 +0200
++++ asterisk-1.4.26/res/res_musiconhold.c	2009-10-14 14:50:18.000000000 +0200
+@@ -28,7 +28,6 @@
+ /*** MODULEINFO
+ 	<conflict>win32</conflict>
+ 	<use>dahdi</use>
+-	<depend>working_fork</depend>
+  ***/
+ 
+ #include "asterisk.h"
+@@ -444,7 +443,7 @@
+ 	pthread_sigmask(SIG_BLOCK, &signal_set, &old_set);
+ 
+ 	time(&class->start);
+-	class->pid = fork();
++	class->pid = vfork();
+ 	if (class->pid < 0) {
+ 		close(fds[0]);
+ 		close(fds[1]);
