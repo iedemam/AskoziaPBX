@@ -167,12 +167,14 @@ if ($_POST) {
 <script type="text/JavaScript">
 <!--
 	<?=javascript_public_direct_dial_editor("functions");?>
+	<?=javascript_codec_selector("functions");?>
 
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_direct_dial_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 		<?=javascript_generate_passwd("ready");?>
+		<?=javascript_codec_selector("ready");?>
 
 	});
 
@@ -232,23 +234,4 @@ if ($_POST) {
 			</tr>
 		</table>
 	</form>
-<script type="text/javascript" charset="utf-8">
-// <![CDATA[
-
-   jQuery(document).ready(function() {
-      jQuery('ul.ace').sortable({ connectWith: ['ul.acd'], revert: true });
-      jQuery('ul.acd').sortable({ connectWith: ['ul.ace'], revert: true });
-      jQuery('ul.vce').sortable({ connectWith: ['ul.vcd'], revert: true });
-      jQuery('ul.vcd').sortable({ connectWith: ['ul.vce'], revert: true });
-   });
-
-   function save_codec_states() {
-      var acs = document.getElementById('a_codecs');
-      acs.value = jQuery('ul.ace').sortable('serialize', {key: 'ace'});
-      var vcs = document.getElementById('v_codecs');
-      vcs.value = jQuery('ul.vce').sortable('serialize', {key: 'vce'});
-   }
-						
-// ]]>			
-</script>
 <?php include("fend.inc"); ?>

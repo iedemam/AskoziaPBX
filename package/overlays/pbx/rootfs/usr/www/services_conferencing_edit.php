@@ -149,7 +149,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_rooms[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>

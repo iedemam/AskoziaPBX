@@ -169,7 +169,7 @@ if ($input_errors) display_input_errors($input_errors);
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
+					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_users[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>

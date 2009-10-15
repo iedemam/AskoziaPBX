@@ -28,6 +28,31 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+function javascript_codec_selector($part) {
+
+	if ($part == "functions") : ?>
+
+		function save_codec_states() {
+			var acs = document.getElementById('a_codecs');
+			acs.value = jQuery('ul.ace').sortable('serialize', {key: 'ace'});
+			var vcs = document.getElementById('v_codecs');
+			vcs.value = jQuery('ul.vce').sortable('serialize', {key: 'vce'});
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery('ul.ace').sortable({ connectWith: ['ul.acd'], revert: true });
+		jQuery('ul.acd').sortable({ connectWith: ['ul.ace'], revert: true });
+		jQuery('ul.vce').sortable({ connectWith: ['ul.vcd'], revert: true });
+		jQuery('ul.vcd').sortable({ connectWith: ['ul.vce'], revert: true });
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_codec_selector()!
+
+	<? endif;
+}
+
 function escape_jstring($in_str) {
 	$out_str = '';
 	$len_in_str = strlen($in_str);
@@ -116,7 +141,7 @@ function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 		pattern = '';
 	}
 
-	var id = next_incoming_extension_selector_id;
+	var id = next_incoming_extension_selector_id++;
 
 	var insert_string =
 		'<tr id="incoming_extension_selector_' + id + '">'
@@ -128,7 +153,7 @@ function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 		+ '</select>'
 		+ '</td>';
 
-	if (next_incoming_extension_selector_id == 0) {
+	if (id == 0) {
 		insert_string += '<td valign="middle">&nbsp;</td></tr>';
 
 	} else {
@@ -145,7 +170,6 @@ function add_incoming_extension_selector(destination_id, pattern, provider_id) {
 		jQuery('#destinationid_' + id).selectOptions(destination_id, true);
 	}
 
-	next_incoming_extension_selector_id++;		
 }
 
 function remove_incoming_extension_selector(id) {

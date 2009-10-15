@@ -14,12 +14,11 @@
 
 [I] jQuery selectboxes plugin
 
-[T] Uses jQuery to replace original <select> tag into fully skinable
-[T] replacement.
+[T] A suite of plugins for working with drop down lists.
 
-[U] http://info.wsisiz.edu.pl/~suszynsk/jQuery/demos/jquery-selectbox/
+[U] http://www.texotela.co.uk/code/jquery/select
 
-[A] Krzysztof Suszyński <k.suszynski@wit.edu.pl>
+[A] Sam Collett
 [M] Michael Iedema <michael@askozia.com>
 
 [C] extra/server
@@ -27,7 +26,7 @@
 
 [L] OpenSource
 [S] Stable
-[V] 0.6.1
+[V] 2.2.4
 [P] X -----5---9 188.900
 
-[D] 0 jquery.selectbox-0.6.1.js.txt http://plugins.jquery.com/files/
+[D] 0 selectboxes_7.zip http://plugins.jquery.com/files/

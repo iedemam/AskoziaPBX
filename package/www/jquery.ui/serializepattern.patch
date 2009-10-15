@@ -1,0 +1,11 @@
+--- jquery.ui-1.5.3/ui/ui.sortable.js.orig	2009-10-15 14:55:20.000000000 +0200
++++ jquery.ui-1.5.3/ui/ui.sortable.js	2009-10-15 14:55:40.000000000 +0200
+@@ -68,7 +68,7 @@
+ 		var str = []; o = o || {};
+ 		
+ 		items.each(function() {
+-			var res = ($(this).attr(o.attribute || 'id') || '').match(o.expression || (/(.+)[-=_](.+)/));
++			var res = ($(this).attr(o.attribute || 'id') || '').match(o.expression || (/(.+)[_](.+)/));
+ 			if(res) str.push((o.key || res[1])+'[]='+(o.key && o.expression ? res[1] : res[2]));
+ 		});
+ 		
