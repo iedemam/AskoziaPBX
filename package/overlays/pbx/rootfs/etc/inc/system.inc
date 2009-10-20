@@ -228,7 +228,7 @@ function system_timezone_configure() {
 function system_ntp_initial_sync() {
 	global $config;
 
-	mwexec("ntpclient -L -s -h " . escapeshellarg($config['system']['timeservers']));
+	mwexec("ntpclient -i 10 -L -s -h " . escapeshellarg($config['system']['timeservers']));
 }
 
 /**
@@ -459,7 +459,7 @@ function system_cron_configure() {
 			$mins = 6;
 		}
 
-		$cron .= "*/" . $mins . " * * * * ntpclient -L -s -h " .
+		$cron .= "*/" . $mins . " * * * * ntpclient -i 10 -L -s -h " .
 			$config['system']['timeservers'] . "\n";
 	}
 	$cron .= "\n";
