@@ -1,0 +1,18 @@
+prompts_extract() {
+	echo "Extracting $1 ($taropt) ... "
+	mkdir $pkg-$ver
+	cd $pkg-$ver
+	tar -v $taropt $1 --wildcards --no-anchored 'this-is-yr-wakeup-call.*' 'to-snooze-for.*' 'to-cancel-wakeup.*' 'for.*' 'press-0.*' 'press-1.*' 'wakeup-call-cancelled.*' 'to-rqst-wakeup-call.*' 'enter-a-time.*' 'im-sorry.*' '1-for-am-2-for-pm.*' 'rqsted-wakeup-for.*' '1-yes-2-no.*' 'thank-you-for-calling.*' 'goodbye.*' | sed 's,^,$pkg-$ver/,' > ../untar.txt
+	cd ..
+}
+
+prompts_main() {
+
+	mkdir -p $root/offload/asterisk/sounds/$prompt_language
+	cp -pR * $root/offload/asterisk/sounds/$prompt_language
+	echo "$prompt_language prompts base set copied into build"
+
+}
+
+custextract="prompts_extract"
+custmain="prompts_main"

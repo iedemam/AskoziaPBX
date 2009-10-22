@@ -57,6 +57,7 @@ X asterisk
 
 # prompt sets
 X en-us-ulaw-base
+X en-us-ulaw-wakeme
 X en-gb-ulaw-base
 X es-es-ulaw-base
 X fr-ca-ulaw-base
