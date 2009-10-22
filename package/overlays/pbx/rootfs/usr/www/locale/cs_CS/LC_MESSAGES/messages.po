@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:50+0200\n"
+"POT-Creation-Date: 2009-10-22 13:57+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2067,6 +2067,9 @@ msgid "configured via DHCP client"
 msgstr ""
 
 msgid "configured manually"
+msgstr ""
+
+msgid "use DHCP settings permanently"
 msgstr ""
 
 msgid "IP Address"

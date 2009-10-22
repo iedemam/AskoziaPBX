@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:50+0200\n"
+"POT-Creation-Date: 2009-10-22 13:57+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2247,6 +2247,9 @@ msgstr ""
 #, fuzzy
 msgid "configured manually"
 msgstr "μη ρυθμισμένο"
+
+msgid "use DHCP settings permanently"
+msgstr ""
 
 msgid "IP Address"
 msgstr "Διεύθυνση IP"

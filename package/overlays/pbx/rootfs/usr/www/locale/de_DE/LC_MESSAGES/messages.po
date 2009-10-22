@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:50+0200\n"
+"POT-Creation-Date: 2009-10-22 13:57+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -2233,6 +2233,9 @@ msgstr ""
 #, fuzzy
 msgid "configured manually"
 msgstr "unkonfiguriert"
+
+msgid "use DHCP settings permanently"
+msgstr ""
 
 msgid "IP Address"
 msgstr "IP-Adresse"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:50+0200\n"
+"POT-Creation-Date: 2009-10-22 13:57+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2205,6 +2205,9 @@ msgstr ""
 #, fuzzy
 msgid "configured manually"
 msgstr "неконфигурирани"
+
+msgid "use DHCP settings permanently"
+msgstr ""
 
 msgid "IP Address"
 msgstr "IP Адрес"

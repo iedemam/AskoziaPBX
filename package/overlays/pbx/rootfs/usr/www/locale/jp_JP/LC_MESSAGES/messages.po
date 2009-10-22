@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:50+0200\n"
+"POT-Creation-Date: 2009-10-22 13:57+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -2178,6 +2178,9 @@ msgstr ""
 #, fuzzy
 msgid "configured manually"
 msgstr "未設定"
+
+msgid "use DHCP settings permanently"
+msgstr ""
 
 msgid "IP Address"
 msgstr "IPアドレス"

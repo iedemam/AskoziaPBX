@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:50+0200\n"
+"POT-Creation-Date: 2009-10-22 13:57+0200\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -2200,6 +2200,9 @@ msgstr ""
 #, fuzzy
 msgid "configured manually"
 msgstr "Non configuré"
+
+msgid "use DHCP settings permanently"
+msgstr ""
 
 msgid "IP Address"
 msgstr "Adresse IP"
