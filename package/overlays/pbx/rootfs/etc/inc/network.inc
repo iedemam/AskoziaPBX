@@ -45,27 +45,38 @@ function network_loopback_configure() {
 }
 
 /**
- * Configures the system's main LAN interface, bridging additional interfaces
- * to it as selected in the GUI.
+ * Configures the system's main LAN interface
  */
 function network_lan_configure() {
 	global $config, $g;
 
 	$syscfg = $config['system'];
-	$lancfg =& $config['interfaces']['lan'];
-	$interface_names = array_keys(network_get_interfaces());
+	$lancfg = $config['interfaces']['lan'];
 
+	/* bring interface down */
+	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " down");
+
+	/* mac spoofing? */
+	if ($lancfg['spoofmac']) {
+		putenv('ethaddr=' . $lancfg['spoofmac']);
+	}
+
+	/* mac environment override? */
+	if (verify_is_macaddress(getenv('ethaddr'))) {
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) .
+			" hw ether " . escapeshellarg(getenv('ethaddr')));
+	}
+
+	/* deconfigure */
+	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " 0.0.0.0");
+	mwexec("/sbin/route del default gw 0.0.0.0 dev " . escapeshellarg($lancfg['if']));
+
+	/* set address & route */
 	if (isset($lancfg['dhcp'])) {
-		foreach ($interface_names as $i) {
-			mwexec("/sbin/ifconfig $i up");
-			mwexec("/sbin/udhcpc -S -q -i $i -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
-		}
+		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " up");
+		mwexec("/sbin/udhcpc -S -q -i " . escapeshellarg($lancfg['if']) . 
+			" -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 	} else {
-		/* deconfigure */
-		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " 0.0.0.0");
-		mwexec("/sbin/route del default gw 0.0.0.0 dev " . escapeshellarg($lancfg['if']));
-
-		/* reconfigure */
 		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " .
 			escapeshellarg($lancfg['ipaddr']) . " " .
 			"netmask " . escapeshellarg(gen_subnet_mask($lancfg['subnet'])));
@@ -77,7 +88,7 @@ function network_lan_configure() {
 	if (!$g['booting']) {
 		/* restart ez-ipupdate */
 		services_dyndns_configure();
-		
+
 		/* force DNS update *//*
 		services_dnsupdate_process();*/
 	}

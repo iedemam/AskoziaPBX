@@ -7,31 +7,38 @@ RESOLV_CONF="/etc/resolv.conf"
 [ -n "$subnet" ] && NETMASK="netmask $subnet"
 
 case "$1" in
-       deconfig)
-               ifconfig $interface 0.0.0.0
-               ;;
+	deconfig)
+		ifconfig $interface 0.0.0.0
+		;;
 
-       renew|bound)
-               ifconfig $interface $ip $BROADCAST $NETMASK
+	renew|bound)
+		ifconfig $interface $ip $BROADCAST $NETMASK
 
-               if [ -n "$router" ] ; then
-                       echo "deleting routers"
-                       while route del default gw 0.0.0.0 dev $interface ; do
-                               :
-                       done
+		if [ -n "$router" ] ; then
+			echo "deleting routers"
+			while route del default gw 0.0.0.0 dev $interface ; do
+				:
+			done
 
-                       for i in $router ; do
-                               route add default gw $i dev $interface
-                       done
-               fi
+			for i in $router ; do
+				route add default gw $i dev $interface
+			done
+		fi
 
-               echo -n > $RESOLV_CONF
-               [ -n "$domain" ] && echo search $domain >> $RESOLV_CONF
-               for i in $dns ; do
-                       echo adding dns $i
-                       echo nameserver $i >> $RESOLV_CONF
-               done
-               ;;
+		echo -n > $RESOLV_CONF
+		[ -n "$domain" ] && echo search $domain >> $RESOLV_CONF
+		for i in $dns ; do
+			echo adding dns $i
+			echo nameserver $i >> $RESOLV_CONF
+		done
+
+#		if [ -n "$ethaddr" ] ; then
+#			ifconfig $interface down
+#			ifconfig $interface hw ether $ethaddr
+#			ifconfig $interface up
+#		fi
+
+		;;
 esac
 
 exit 0

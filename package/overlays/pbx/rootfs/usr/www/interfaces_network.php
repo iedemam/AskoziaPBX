@@ -180,9 +180,9 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			services_dyndns_reset();
-			$retval = network_lan_configure();
+			$retval = system_resolvconf_generate();
+			$retval |= network_lan_configure();
 			$retval |= pbx_configure();
-			$retval |= system_resolvconf_generate();
 			$retval |= services_dyndns_configure();
 			config_unlock();
 		}
