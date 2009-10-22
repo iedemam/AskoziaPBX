@@ -121,6 +121,7 @@ EOD;
 	}
 	
 	write_config();
+	system_resolvconf_generate();
 	network_lan_configure();
 	if ($webgui_restart) {
 		system_update_httpd_settings();

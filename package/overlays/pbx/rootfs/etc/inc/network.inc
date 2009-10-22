@@ -74,7 +74,7 @@ function network_lan_configure() {
 	/* set address & route */
 	if (isset($lancfg['dhcp'])) {
 		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " up");
-		mwexec("/sbin/udhcpc -S -q -i " . escapeshellarg($lancfg['if']) . 
+		mwexec("/sbin/udhcpc -S -q -n -i " . escapeshellarg($lancfg['if']) . 
 			" -h " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 	} else {
 		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " .
@@ -120,6 +120,49 @@ function network_get_interface_names() {
 	return $names;
 }
 
+function network_get_interface($name) {
+
+	$interface = array();
+
+	// get ifconfig's output for this interface
+	exec("/sbin/ifconfig $name", $output);
+	$output = implode(" ", $output);
+
+	// grab the mac address
+	preg_match("/HWaddr (\S+)/", $output, $matches);
+	$interface['mac'] = $matches[1];
+
+	// grab the ip address
+	preg_match("/inet addr:(\S+)/", $output, $matches);
+	$interface['ipaddr'] = $matches[1];
+
+	// grab the subnet
+	preg_match("/Mask:(\S+)/", $output, $matches);
+	$interface['subnet'] = netmask_to_cidr_bits($matches[1]);
+
+	// is the interface up
+	preg_match("/\s+(UP)\s+/", $output, $matches);
+	if ($matches[1] == "UP") {
+		$interface['up'] = true;
+	} else {
+		$interface['up'] = false;
+	}
+
+	exec('/sbin/route | grep "$name" | grep "default" | cut -d " " -f 10', $gwout);
+	if (verify_is_ipaddress($gwout[0])) {
+		$interface['gateway'] = $gwout[0];
+	}
+
+	exec('cat /etc/resolv.conf | grep "nameserver" | cut -d " " -f 2', $dnsout);
+	foreach ($dnsout as $line) {
+		if (verify_is_ipaddress($line)) {
+			$interface['dns'][] = $line;
+		}
+	}
+
+	return $interface;
+}
+
 /**
  * Returns a list of interfaces with MAC addresses
  */
@@ -133,33 +176,8 @@ function network_get_interfaces() {
 	$iflist = array();
 	// go through each name and populate the interface information array
 	foreach ($i_names as $i) {
-
 		if (preg_match("/^(eth)\d/", $i)) {
-
-			// get ifconfig's output for this interface
-			exec("/sbin/ifconfig $i", $output);
-			$output = implode(" ", $output);
-
-			// grab the mac address
-			preg_match("/HWaddr (\S+)/", $output, $matches);
-			$iflist[$i]['mac'] = $matches[1];
-
-			// grab the ip address
-			preg_match("/inet addr:(\S+)/", $output, $matches);
-			$iflist[$i]['ipaddr'] = $matches[1];
-
-			// grab the subnet
-			preg_match("/Mask:(\S+)/", $output, $matches);
-			$iflist[$i]['subnet'] = netmask_to_cidr_bits($matches[1]);
-
-			// is the interface up
-			preg_match("/\s+(UP)\s+/", $output, $matches);
-			if ($matches[1] == "UP") {
-				$iflist[$i]['up'] = true;
-			} else {
-				$iflist[$i]['up'] = false;
-			}
-
+			$iflist[$i] = network_get_interface($i);
 		}
 	}
 	return $iflist;

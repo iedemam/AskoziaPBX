@@ -201,19 +201,6 @@ if ($_POST) {
 		<?=javascript_lan_dhcp("ready");?>
 	});
 
-function lan_if_change() {
-	switch (document.iform.if.value) {
-		<? foreach ($networkinterfaces as $ifname => $ifinfo): ?>
-		case "<?=$ifname;?>":
-			<? foreach ($networkinterfaces as $i_ifname => $i_ifinfo): ?>
-			document.iform.<?=$i_ifname;?>.disabled = 0;
-			document.iform.<?=$i_ifname;?>.checked = 0;
-			<? endforeach; ?>
-			document.iform.<?=$ifname;?>.disabled = 1;	
-			break;
-		<? endforeach; ?>
-	}
-}
 //-->
 </script>
 <form action="interfaces_network.php" method="post" name="iform" id="iform">
@@ -240,16 +227,7 @@ function lan_if_change() {
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr> 
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("Configured");?></td>
-					<td width="78%" class="vtable">
-						<select name="lanconfigure" class="formfld" id="lanconfigure">
-							<option value="dhcp" <? if ($pconfig['dhcp']) echo "selected";?>><?=gettext("via DHCP client");?></option>
-							<option value="manual" <? if (!$pconfig['dhcp']) echo "selected";?>><?=gettext("statically");?></option>
-						</select>
-					</td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("Ports");?></td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
 					<td width="78%" class="vtable">
 						<? if (count($networkinterfaces) == 1): ?>
 							<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
@@ -257,25 +235,27 @@ function lan_if_change() {
 							<input id="if" name="if" type="hidden" value="<?=$mainifname;?>">
 							<? endforeach; ?>
 						<? else: ?>
-							<select name="if" class="formfld" id="if" onchange="lan_if_change()">
+							<select name="if" class="formfld" id="if">
 							<? foreach ($networkinterfaces as $mainifname => $mainifinfo): ?>
 								<option value="<?=$mainifname;?>" <? if ($mainifname == $pconfig['if']) echo "selected";?>> 
 							<? echo htmlspecialchars($mainifname . " (" . $mainifinfo['mac'] . ")"); ?></option>
 							<? endforeach; ?>
 							</select>
-							&nbsp;&nbsp;
-							<? foreach ($networkinterfaces as $ifname => $ifinfo): ?>
-								<input name="<?=$ifname;?>" id="<?=$ifname;?>" type="checkbox" value="yes"<?
-								if (in_array($ifname, $pconfig['bridge'])) 
-									echo "checked";
-								else if ($ifname == $pconfig['if'])
-									echo "disabled";
-								?>><?=$ifname;?>&nbsp;&nbsp;
-							<? endforeach; ?>
-							<br>
-							<span class="vexpl"><?=gettext("Checked interfaces will be bridged to the main interface.");?></span>
 						<? endif; ?>
 					</td>
+				</tr>
+				<tr> 
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Settings");?></td>
+					<td width="78%" class="vtable">
+						<select name="lanconfigure" class="formfld" id="lanconfigure">
+							<option value="dhcp" <? if ($pconfig['dhcp']) echo "selected";?>><?=gettext("configured via DHCP client");?></option>
+							<option value="manual" <? if (!$pconfig['dhcp']) echo "selected";?>><?=gettext("configured manually");?></option>
+						</select>
+						&nbsp; <?
+						if ($pconfig['dhcp']) {
+							?><a href="javascript:{}" id="applydhcp"><?=gettext("use DHCP settings permanently");?></a><?
+						}
+					?></td>
 				</tr>
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq"><?=gettext("IP Address");?></td>

@@ -43,18 +43,16 @@
 	}
 
 	if (isset($config['interfaces']['lan']['dhcp'])) {
-		$ip_line = "LAN IP address assigned via DHCP: ";
-		$interfaces = network_get_interfaces();
-		foreach ($interfaces as $i) {
-			$ips[] = $i['ipaddr'];
-		}
-		if ($ips) {
-			$ip_line .= implode(", ", $ips);
-		} else {
-			$ip_line .= "unassigned";
+		$ip_line = "LAN IP address assigned via DHCP";
+		$ip_info = "unassigned";
+		$interface = network_get_interface($config['interfaces']['lan']['if']);
+		if ($interface['ipaddr']) {
+			$ip_info = $interface['ipaddr'];
 		}
 	} else {
-		$ip_line = "LAN IP address: {$config['interfaces']['lan']['ipaddr']} on {$config['interfaces']['lan']['if']}";
+		$ip_line = "LAN IP address";
+		$ip_info = $config['interfaces']['lan']['ipaddr'] . " on " .
+			$config['interfaces']['lan']['if'];
 	}
 
 	echo <<<EOD
@@ -65,7 +63,7 @@
     {$copyright_info}
     
     
-    {$ip_line}
+    {$ip_line}: {$ip_info}
     
 
 

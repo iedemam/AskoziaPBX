@@ -470,12 +470,14 @@ function javascript_dyndns($part) {
 }
 
 function javascript_lan_dhcp($part) {
+	global $config;
+
+	$laninfo = network_get_interface($config['interfaces']['lan']['if']);
 
 	if ($part == "functions") : ?>
 
 		function lanconfigure_change() {
 			if (jQuery("#lanconfigure").val() == "dhcp") {
-				jQuery("#if").attr("disabled","disabled");
 				jQuery("#ipaddr").attr("disabled","disabled");
 				jQuery("#subnet").attr("disabled","disabled");
 				jQuery("#dns1").attr("disabled","disabled");
@@ -483,7 +485,6 @@ function javascript_lan_dhcp($part) {
 				jQuery("#dns3").attr("disabled","disabled");
 				jQuery("#gateway").attr("disabled","disabled");
 			} else if (jQuery("#lanconfigure").val() == "manual") {
-				jQuery("#if").removeAttr("disabled");
 				jQuery("#ipaddr").removeAttr("disabled");
 				jQuery("#subnet").removeAttr("disabled");
 				jQuery("#dns1").removeAttr("disabled");
@@ -493,10 +494,23 @@ function javascript_lan_dhcp($part) {
 			}
 		}
 
+		function applydhcp() {
+			jQuery("#lanconfigure").selectOptions("manual", true);
+			jQuery("#ipaddr").val("<?=$laninfo['ipaddr'];?>");
+			jQuery("#subnet").val("<?=$laninfo['subnet'];?>");
+			jQuery("#dns1").val("<?=$laninfo['dns'][0];?>");
+			jQuery("#dns2").val("<?=$laninfo['dns'][1];?>");
+			jQuery("#dns3").val("<?=$laninfo['dns'][2];?>");
+			jQuery("#gateway").val("<?=$laninfo['gateway'];?>");
+			lanconfigure_change();
+		}
+
 	<? elseif ($part == "ready") : ?>
 
 		jQuery("#lanconfigure").change(lanconfigure_change);
 		lanconfigure_change();
+
+		jQuery("#applydhcp").click(applydhcp);
 
 	<? else : ?>
 
