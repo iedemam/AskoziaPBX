@@ -298,10 +298,10 @@ function voicemail_conf_generate() {
 format=wav49
 attach=yes
 skipms=3000
-maxsilence=10
+maxsilence=4
 silencethreshold=128
 maxlogins=3
-minmessage=3
+minmessage=5
 charset=UTF-8
 
 fromstring=$product_name Voicemail
