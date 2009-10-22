@@ -95,9 +95,9 @@
 	echo "done\n";
 
 	/* configure wireless interface */
-	echo " - Configuring wireless... ";
-	wireless_configure();
-	echo "done\n";
+	//echo " - Configuring wireless... ";
+	//wireless_configure();
+	//echo "done\n";
 
 	/* configure loopback interface */
 	echo " - Configuring network loopback interface... ";

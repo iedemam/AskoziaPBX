@@ -108,7 +108,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 			$tabs = array(
 				gettext('Network')	=> 'interfaces_network.php',
-				gettext('Wireless')	=> 'interfaces_wireless.php',
+				//gettext('Wireless')	=> 'interfaces_wireless.php',
 				gettext('ISDN')		=> 'interfaces_isdn.php',
 				gettext('Analog')	=> 'interfaces_analog.php',
 				gettext('Storage')	=> 'interfaces_storage.php'

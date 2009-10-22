@@ -56,7 +56,7 @@ require_once("system.inc");
 require_once("util.inc");
 require_once("verify.inc");
 require_once("voicemail.inc");
-require_once("wireless.inc");
+//require_once("wireless.inc");
 require_once("services.inc");
 
 ?>
