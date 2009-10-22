@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1966,9 +1966,6 @@ msgstr ""
 msgid "Network"
 msgstr "Verkko"
 
-msgid "Wireless"
-msgstr "Langaton"
-
 msgid "Storage"
 msgstr "Tallentaminen"
 
@@ -2180,23 +2177,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Dynaaminen DNS käyttäjänimi sisältää virheellisiä merkkejä."
 
 #, fuzzy
-msgid "Configured"
-msgstr "ei konfiguroitu"
+msgid "Port"
+msgstr "Portugali"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Asetukset"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugali"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr ""
-"Valitut käyttöliittymät tulevat olemaan sillattuja ensisijaiseen "
-"käyttäliittymään."
+msgid "configured manually"
+msgstr "ei konfiguroitu"
 
 msgid "IP Address"
 msgstr "IP Osoite"
@@ -2330,6 +2322,9 @@ msgstr "Muokkaa Levyä"
 
 msgid "descriptive name"
 msgstr "kuvaileva nimi"
+
+msgid "Wireless"
+msgstr "Langaton"
 
 #, fuzzy
 msgid ""
@@ -3307,6 +3302,15 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "ei konfiguroitu"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr ""
+#~ "Valitut käyttöliittymät tulevat olemaan sillattuja ensisijaiseen "
+#~ "käyttäliittymään."
+
 #~ msgid "No matches found."
 #~ msgstr "Osumia ei löytynyt."
 
@@ -3315,9 +3319,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Calls"
 #~ msgstr "Puhelut"
-
-#~ msgid "Settings"
-#~ msgstr "Asetukset"
 
 #~ msgid "filter"
 #~ msgstr "suodatin"

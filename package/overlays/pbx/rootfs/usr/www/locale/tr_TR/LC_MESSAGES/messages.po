@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1840,9 +1840,6 @@ msgstr ""
 msgid "Network"
 msgstr "Ağ"
 
-msgid "Wireless"
-msgstr "Telsiz"
-
 msgid "Storage"
 msgstr "Bellek"
 
@@ -2019,21 +2016,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr ""
 
 #, fuzzy
-msgid "Configured"
-msgstr "ayarlanmamış"
+msgid "Port"
+msgstr "Portekiz"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Ayarlar"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portekiz"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr ""
+msgid "configured manually"
+msgstr "ayarlanmamış"
 
 msgid "IP Address"
 msgstr "İP Adresi"
@@ -2148,6 +2142,9 @@ msgstr "Sürücüyü Düzenle"
 
 msgid "descriptive name"
 msgstr "açıklayıcı isim"
+
+msgid "Wireless"
+msgstr "Telsiz"
 
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
@@ -3036,6 +3033,10 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "ayarlanmamış"
+
 #~ msgid "No matches found."
 #~ msgstr "Uyum bulunamadı."
 
@@ -3044,9 +3045,6 @@ msgstr ""
 
 #~ msgid "Calls"
 #~ msgstr "Aramalar"
-
-#~ msgid "Settings"
-#~ msgstr "Ayarlar"
 
 #~ msgid "filter"
 #~ msgstr "filitre"

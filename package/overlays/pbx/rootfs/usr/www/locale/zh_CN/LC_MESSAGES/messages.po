@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1915,9 +1915,6 @@ msgstr "在本页探测到的端口必须加以编辑和保存后方能被系统
 msgid "Network"
 msgstr "网络"
 
-msgid "Wireless"
-msgstr "无线"
-
 msgid "Storage"
 msgstr "储存"
 
@@ -2109,21 +2106,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "动态DNS的用户名中包含无效字符。"
 
 #, fuzzy
-msgid "Configured"
+msgid "Port"
+msgstr "葡萄牙"
+
+msgid "Settings"
 msgstr "设置"
 
-msgid "via DHCP client"
-msgstr ""
-
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "葡萄牙"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "选定的接口会被桥接到主接口。"
+msgid "configured manually"
+msgstr "设置"
 
 msgid "IP Address"
 msgstr "IP地址"
@@ -2247,6 +2241,9 @@ msgstr "编辑磁盘"
 
 msgid "descriptive name"
 msgstr "描述名"
+
+msgid "Wireless"
+msgstr "无线"
 
 #, fuzzy
 msgid ""
@@ -3162,6 +3159,13 @@ msgstr "ERR 无法安装设置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "设置"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "选定的接口会被桥接到主接口。"
+
 #~ msgid "No matches found."
 #~ msgstr "没有找到匹配的"
 
@@ -3170,9 +3174,6 @@ msgstr "ERR 收到无效的配置。\n"
 
 #~ msgid "Calls"
 #~ msgstr "电话"
-
-#~ msgid "Settings"
-#~ msgstr "设置"
 
 #~ msgid "filter"
 #~ msgstr "过滤"

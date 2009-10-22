@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -2009,9 +2009,6 @@ msgstr ""
 msgid "Network"
 msgstr "Rete"
 
-msgid "Wireless"
-msgstr "Rete senza fili"
-
 msgid "Storage"
 msgstr "Memoria di massa"
 
@@ -2230,21 +2227,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Il campo [username] per dDNS contiene dei caratteri non validi."
 
 #, fuzzy
-msgid "Configured"
-msgstr "non configurato"
+msgid "Port"
+msgstr "Portogallo"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Impostazioni"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portogallo"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "L'interfaccia selezionata verrà collegata all'interfaccia principale."
+msgid "configured manually"
+msgstr "non configurato"
 
 msgid "IP Address"
 msgstr "Indirizzo IP"
@@ -2384,6 +2378,9 @@ msgstr "Modifica disco"
 
 msgid "descriptive name"
 msgstr "nome descrittivo"
+
+msgid "Wireless"
+msgstr "Rete senza fili"
 
 #, fuzzy
 msgid ""
@@ -3402,6 +3399,14 @@ msgstr "ERR Non posso installare la configurazione. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "non configurato"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr ""
+#~ "L'interfaccia selezionata verrà collegata all'interfaccia principale."
+
 #~ msgid "No matches found."
 #~ msgstr "Non è stata trovata alcuna corrispondenza."
 
@@ -3410,9 +3415,6 @@ msgstr "ERR La configurazione ricevuta no è valida.\n"
 
 #~ msgid "Calls"
 #~ msgstr "Chiamate"
-
-#~ msgid "Settings"
-#~ msgstr "Impostazioni"
 
 #~ msgid "filter"
 #~ msgstr "filtro"

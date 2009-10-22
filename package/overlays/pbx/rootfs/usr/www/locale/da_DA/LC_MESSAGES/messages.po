@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1950,9 +1950,6 @@ msgstr ""
 msgid "Network"
 msgstr "Netværk"
 
-msgid "Wireless"
-msgstr "Trådløst"
-
 msgid "Storage"
 msgstr ""
 
@@ -2132,22 +2129,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Det dynamiske DNS brugernavn indeholder ugyldige tegn."
 
 #, fuzzy
-msgid "Configured"
-msgstr "konfig"
+msgid "Port"
+msgstr "Portugal"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Indstillinger"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr ""
-"Afkrydsende interfaces vil blive sammenkoblet til det pimære interface."
+msgid "configured manually"
+msgstr "konfig"
 
 msgid "IP Address"
 msgstr "IP adresse"
@@ -2267,6 +2260,9 @@ msgstr "Rediger Disk"
 
 msgid "descriptive name"
 msgstr "beskrivende navn"
+
+msgid "Wireless"
+msgstr "Trådløst"
 
 #, fuzzy
 msgid ""
@@ -3227,6 +3223,14 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "konfig"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr ""
+#~ "Afkrydsende interfaces vil blive sammenkoblet til det pimære interface."
+
 #~ msgid "No matches found."
 #~ msgstr "Ingen matchende fundet."
 
@@ -3235,9 +3239,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Calls"
 #~ msgstr "Opkald"
-
-#~ msgid "Settings"
-#~ msgstr "Indstillinger"
 
 #~ msgid "filter"
 #~ msgstr "filter"

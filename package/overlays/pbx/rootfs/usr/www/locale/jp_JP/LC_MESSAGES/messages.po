@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1957,9 +1957,6 @@ msgstr ""
 msgid "Network"
 msgstr "ネットワーク"
 
-msgid "Wireless"
-msgstr "ワイヤレス"
-
 msgid "Storage"
 msgstr "ストレージ"
 
@@ -2169,23 +2166,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "ダイナミックDNSのユーザー名に、無効な文字が含まれています"
 
 #, fuzzy
-msgid "Configured"
-msgstr "未設定"
+msgid "Port"
+msgstr "ポルトガル"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "設定"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "ポルトガル"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr ""
-"インターフェースをチェックすると、主たるインターフェースをブリッジさせる事が"
-"出来ます"
+msgid "configured manually"
+msgstr "未設定"
 
 msgid "IP Address"
 msgstr "IPアドレス"
@@ -2317,6 +2309,9 @@ msgstr "ディスクの編集"
 
 msgid "descriptive name"
 msgstr "判り易い名前"
+
+msgid "Wireless"
+msgstr "ワイヤレス"
 
 #, fuzzy
 msgid ""
@@ -3314,6 +3309,15 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "未設定"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr ""
+#~ "インターフェースをチェックすると、主たるインターフェースをブリッジさせる事"
+#~ "が出来ます"
+
 #~ msgid "No matches found."
 #~ msgstr "該当する項目が見つかりません"
 
@@ -3322,9 +3326,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Calls"
 #~ msgstr "呼/コール"
-
-#~ msgid "Settings"
-#~ msgstr "設定"
 
 #~ msgid "filter"
 #~ msgstr "フィルター"

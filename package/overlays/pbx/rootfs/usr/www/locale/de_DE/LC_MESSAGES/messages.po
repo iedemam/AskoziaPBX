@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -2007,9 +2007,6 @@ msgstr ""
 msgid "Network"
 msgstr "Netzwerk"
 
-msgid "Wireless"
-msgstr "WLAN"
-
 msgid "Storage"
 msgstr "Storage"
 
@@ -2224,21 +2221,18 @@ msgstr ""
 "Der Benutzername für den dynamischen DNS-Account enthält ungültige Zeichen."
 
 #, fuzzy
-msgid "Configured"
-msgstr "unkonfiguriert"
+msgid "Port"
+msgstr "Portugal"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Einstellungen"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Die ausgewählten Interfaces werden mit dem Hauptinferface gebrückt. "
+msgid "configured manually"
+msgstr "unkonfiguriert"
 
 msgid "IP Address"
 msgstr "IP-Adresse"
@@ -2372,6 +2366,9 @@ msgstr "Platte bearbeiten"
 
 msgid "descriptive name"
 msgstr "sprechender Name"
+
+msgid "Wireless"
+msgstr "WLAN"
 
 #, fuzzy
 msgid ""
@@ -3349,6 +3346,14 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "unkonfiguriert"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr ""
+#~ "Die ausgewählten Interfaces werden mit dem Hauptinferface gebrückt. "
+
 #~ msgid "No matches found."
 #~ msgstr "Keine Treffer."
 
@@ -3357,9 +3362,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "Calls"
 #~ msgstr "Verbindungen"
-
-#~ msgid "Settings"
-#~ msgstr "Einstellungen"
 
 #~ msgid "filter"
 #~ msgstr "Filter"

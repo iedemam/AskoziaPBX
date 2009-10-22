@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1919,9 +1919,6 @@ msgstr ""
 msgid "Network"
 msgstr "Netwerk"
 
-msgid "Wireless"
-msgstr "Draadloos"
-
 msgid "Storage"
 msgstr "Opslag"
 
@@ -2135,21 +2132,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "De dynamische DNS-gebruikersnaam bevat ongeldige tekens."
 
 #, fuzzy
-msgid "Configured"
-msgstr "configuratie"
+msgid "Port"
+msgstr "Portugal"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Instellingen"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Aangevinkte interfaces worden overbrugd naar de hoofd interface."
+msgid "configured manually"
+msgstr "configuratie"
 
 msgid "IP Address"
 msgstr "Ip Adres"
@@ -2282,6 +2276,9 @@ msgstr "Bewerk Disk"
 
 msgid "descriptive name"
 msgstr "beschrijvende naam"
+
+msgid "Wireless"
+msgstr "Draadloos"
 
 #, fuzzy
 msgid ""
@@ -3202,6 +3199,13 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "configuratie"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "Aangevinkte interfaces worden overbrugd naar de hoofd interface."
+
 #~ msgid "No matches found."
 #~ msgstr "Geen overeenstemmingen gevonden?"
 
@@ -3210,9 +3214,6 @@ msgstr ""
 
 #~ msgid "Calls"
 #~ msgstr "Gesprekken"
-
-#~ msgid "Settings"
-#~ msgstr "Instellingen"
 
 #~ msgid "filter"
 #~ msgstr "filter"

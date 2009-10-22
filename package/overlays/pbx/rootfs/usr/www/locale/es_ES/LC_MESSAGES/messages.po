@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1883,9 +1883,6 @@ msgstr ""
 msgid "Network"
 msgstr "Red"
 
-msgid "Wireless"
-msgstr "Red inalámbrica"
-
 msgid "Storage"
 msgstr "Almacenamiento"
 
@@ -2077,21 +2074,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "El nombre de usuario del DNS dinámico contiene carácteres inválidos."
 
 #, fuzzy
-msgid "Configured"
-msgstr "desconfigurado"
+msgid "Port"
+msgstr "Portugal"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Ajustes"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Los interfaces comprobados serán puenteados al interfaz principal."
+msgid "configured manually"
+msgstr "desconfigurado"
 
 msgid "IP Address"
 msgstr "Dirección IP"
@@ -2221,6 +2215,9 @@ msgstr "Editar Disco"
 
 msgid "descriptive name"
 msgstr "nombre descriptivo"
+
+msgid "Wireless"
+msgstr "Red inalámbrica"
 
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
@@ -3143,6 +3140,13 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "desconfigurado"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "Los interfaces comprobados serán puenteados al interfaz principal."
+
 #~ msgid "No matches found."
 #~ msgstr "No se encontraron coincidencias."
 
@@ -3151,9 +3155,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Calls"
 #~ msgstr "Llamadas"
-
-#~ msgid "Settings"
-#~ msgstr "Ajustes"
 
 #~ msgid "filter"
 #~ msgstr "filtro"

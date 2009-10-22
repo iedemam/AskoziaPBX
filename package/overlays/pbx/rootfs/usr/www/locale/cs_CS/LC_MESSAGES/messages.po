@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1875,9 +1875,6 @@ msgstr ""
 msgid "Network"
 msgstr "Síť"
 
-msgid "Wireless"
-msgstr "Bezdrátová síť"
-
 msgid "Storage"
 msgstr "Úložiště"
 
@@ -2059,21 +2056,18 @@ msgstr ""
 msgid "The dynamic DNS username contains invalid characters."
 msgstr ""
 
-msgid "Configured"
-msgstr ""
-
-msgid "via DHCP client"
-msgstr ""
-
-msgid "statically"
-msgstr ""
-
 #, fuzzy
-msgid "Ports"
+msgid "Port"
 msgstr "Portugalsko"
 
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Zaškrtnutá rozhraní budou přemostěna na hlavní rozhraní."
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+msgid "configured manually"
+msgstr ""
 
 msgid "IP Address"
 msgstr "Adresa IP"
@@ -2196,6 +2190,9 @@ msgstr ""
 
 msgid "descriptive name"
 msgstr ""
+
+msgid "Wireless"
+msgstr "Bezdrátová síť"
 
 #, fuzzy
 msgid ""
@@ -3115,11 +3112,11 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "Zaškrtnutá rozhraní budou přemostěna na hlavní rozhraní."
+
 #~ msgid "Calls"
 #~ msgstr "Hovory"
-
-#~ msgid "Settings"
-#~ msgstr "Nastavení"
 
 #~ msgid "filter"
 #~ msgstr "filtr"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1972,9 +1972,6 @@ msgstr ""
 msgid "Network"
 msgstr "Réseau"
 
-msgid "Wireless"
-msgstr "Wifi"
-
 msgid "Storage"
 msgstr "Stockage"
 
@@ -2191,21 +2188,18 @@ msgstr ""
 "Le nom d'utilisateur du DNS dynamique contient des caractères non valides."
 
 #, fuzzy
-msgid "Configured"
-msgstr "Non configuré"
+msgid "Port"
+msgstr "Portugal"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Paramètres"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "L'interface sélectionnée sera relié à l'interface principale."
+msgid "configured manually"
+msgstr "Non configuré"
 
 msgid "IP Address"
 msgstr "Adresse IP"
@@ -2337,6 +2331,9 @@ msgstr "Configuration du disque"
 
 msgid "descriptive name"
 msgstr "nom descriptif"
+
+msgid "Wireless"
+msgstr "Wifi"
 
 msgid ""
 "If a compatible wireless card is present in the system, it can be configured "
@@ -3346,6 +3343,13 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "Non configuré"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "L'interface sélectionnée sera relié à l'interface principale."
+
 #~ msgid "No matches found."
 #~ msgstr "Aucunes données disponibles."
 
@@ -3354,9 +3358,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Calls"
 #~ msgstr "Appels"
-
-#~ msgid "Settings"
-#~ msgstr "Paramètres"
 
 #~ msgid "filter"
 #~ msgstr "Filtrer"

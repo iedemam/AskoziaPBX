@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1986,9 +1986,6 @@ msgstr ""
 msgid "Network"
 msgstr "Мрежов"
 
-msgid "Wireless"
-msgstr "Безжичен"
-
 msgid "Storage"
 msgstr "Памет"
 
@@ -2196,21 +2193,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Потребителското име на динамичният DNS  съдържа невалидни символи."
 
 #, fuzzy
-msgid "Configured"
-msgstr "неконфигурирани"
+msgid "Port"
+msgstr "Португалия"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Настройки"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Португалия"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Маркираният интерфейс ще бъде привързан към главния интерфейс."
+msgid "configured manually"
+msgstr "неконфигурирани"
 
 msgid "IP Address"
 msgstr "IP Адрес"
@@ -2341,6 +2335,9 @@ msgstr "Редактирай Диск"
 
 msgid "descriptive name"
 msgstr "Описание"
+
+msgid "Wireless"
+msgstr "Безжичен"
 
 #, fuzzy
 msgid ""
@@ -3328,6 +3325,13 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "неконфигурирани"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "Маркираният интерфейс ще бъде привързан към главния интерфейс."
+
 #~ msgid "No matches found."
 #~ msgstr "Не са намерени съвпадения."
 
@@ -3336,9 +3340,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Calls"
 #~ msgstr "Разговори"
-
-#~ msgid "Settings"
-#~ msgstr "Настройки"
 
 #~ msgid "filter"
 #~ msgstr "филтър"

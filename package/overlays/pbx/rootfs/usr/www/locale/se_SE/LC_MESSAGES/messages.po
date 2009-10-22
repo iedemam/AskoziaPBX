@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1800,9 +1800,6 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
-msgid "Wireless"
-msgstr ""
-
 msgid "Storage"
 msgstr ""
 
@@ -1978,19 +1975,16 @@ msgstr ""
 msgid "The dynamic DNS username contains invalid characters."
 msgstr ""
 
-msgid "Configured"
+msgid "Port"
 msgstr ""
 
-msgid "via DHCP client"
+msgid "Settings"
 msgstr ""
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
-msgid "Ports"
-msgstr ""
-
-msgid "Checked interfaces will be bridged to the main interface."
+msgid "configured manually"
 msgstr ""
 
 msgid "IP Address"
@@ -2103,6 +2097,9 @@ msgid "Edit Disk"
 msgstr ""
 
 msgid "descriptive name"
+msgstr ""
+
+msgid "Wireless"
 msgstr ""
 
 msgid ""

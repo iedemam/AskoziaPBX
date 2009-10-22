@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2017,9 +2017,6 @@ msgstr ""
 msgid "Network"
 msgstr "Ενσύρματο δίκτυο"
 
-msgid "Wireless"
-msgstr "Ασύρματο δίκτυο"
-
 msgid "Storage"
 msgstr "Αποθήκευση"
 
@@ -2238,21 +2235,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Το όνομα χρήστη για το δυναμικό DNS περιέχει μη έγκυρους χαρακτήρες."
 
 #, fuzzy
-msgid "Configured"
-msgstr "μη ρυθμισμένο"
+msgid "Port"
+msgstr "Πορτογαλία"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Ρυθμίσεις"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Πορτογαλία"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Οι επιλεγμένες διαπαφές θα γεφυρωθούν με την κύρια διεπαφή."
+msgid "configured manually"
+msgstr "μη ρυθμισμένο"
 
 msgid "IP Address"
 msgstr "Διεύθυνση IP"
@@ -2391,6 +2385,9 @@ msgstr "Επεξεργασία δίσκου"
 
 msgid "descriptive name"
 msgstr "επεξηγηματικό όνομα"
+
+msgid "Wireless"
+msgstr "Ασύρματο δίκτυο"
 
 #, fuzzy
 msgid ""
@@ -3440,6 +3437,13 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "μη ρυθμισμένο"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "Οι επιλεγμένες διαπαφές θα γεφυρωθούν με την κύρια διεπαφή."
+
 #~ msgid "No matches found."
 #~ msgstr "Δεν βρέθηκαν εγγραφές."
 
@@ -3448,9 +3452,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Calls"
 #~ msgstr "Κλήσεις"
-
-#~ msgid "Settings"
-#~ msgstr "Ρυθμίσεις"
 
 #~ msgid "filter"
 #~ msgstr "φίλτρο"

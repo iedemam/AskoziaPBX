@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-06 14:25+0200\n"
+"POT-Creation-Date: 2009-10-22 13:50+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1892,9 +1892,6 @@ msgstr ""
 msgid "Network"
 msgstr "Sieć"
 
-msgid "Wireless"
-msgstr "Sieć bezprzewodowa"
-
 msgid "Storage"
 msgstr "Magazyn"
 
@@ -2096,21 +2093,18 @@ msgid "The dynamic DNS username contains invalid characters."
 msgstr "Nazwa użytkownika dynamicznego DNS zawiera nieprawidłowe znaki."
 
 #, fuzzy
-msgid "Configured"
-msgstr "konfiguracja"
+msgid "Port"
+msgstr "Portugalia"
 
-msgid "via DHCP client"
-msgstr ""
+msgid "Settings"
+msgstr "Ustawienia"
 
-msgid "statically"
+msgid "configured via DHCP client"
 msgstr ""
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugalia"
-
-msgid "Checked interfaces will be bridged to the main interface."
-msgstr "Zaznaczone interfejsy będą zmostkowane z głównym interfejsem."
+msgid "configured manually"
+msgstr "konfiguracja"
 
 msgid "IP Address"
 msgstr "Adres IP"
@@ -2241,6 +2235,9 @@ msgstr "Edytuj dysk"
 
 msgid "descriptive name"
 msgstr "nazwa opisowa"
+
+msgid "Wireless"
+msgstr "Sieć bezprzewodowa"
 
 #, fuzzy
 msgid ""
@@ -3196,6 +3193,13 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
+#, fuzzy
+#~ msgid "Configured"
+#~ msgstr "konfiguracja"
+
+#~ msgid "Checked interfaces will be bridged to the main interface."
+#~ msgstr "Zaznaczone interfejsy będą zmostkowane z głównym interfejsem."
+
 #~ msgid "No matches found."
 #~ msgstr "Brak trafień."
 
@@ -3204,9 +3208,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Calls"
 #~ msgstr "Połączenia"
-
-#~ msgid "Settings"
-#~ msgstr "Ustawienia"
 
 #~ msgid "filter"
 #~ msgstr "filter"
