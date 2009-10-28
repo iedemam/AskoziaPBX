@@ -193,11 +193,13 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script type="text/JavaScript">
 <!--
+	<?=javascript_codec_selector("functions");?>
 
 	jQuery(document).ready(function(){
 
 		<?=javascript_advanced_settings("ready");?>
 		<?=javascript_generate_passwd("ready");?>
+		<?=javascript_codec_selector("ready");?>
 
 	});
 
