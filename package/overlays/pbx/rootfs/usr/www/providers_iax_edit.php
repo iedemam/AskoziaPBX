@@ -63,6 +63,7 @@ if (isset($id) && $a_iaxproviders[$id]) {
 	$pconfig['dialpattern'] = $a_iaxproviders[$id]['dialpattern'];
 	$pconfig['language'] = $a_iaxproviders[$id]['language'];
 	$pconfig['noregister'] = $a_iaxproviders[$id]['noregister'];
+	$pconfig['manualregister'] = $a_iaxproviders[$id]['manualregister'];
 	$pconfig['qualify'] = $a_iaxproviders[$id]['qualify'];
 	$pconfig['calleridsource'] = 
 		isset($a_iaxproviders[$id]['calleridsource']) ? $a_iaxproviders[$id]['calleridsource'] : "phones";
@@ -160,6 +161,7 @@ if ($_POST) {
 		
 		$sp['language'] = $_POST['language'];
 		$sp['noregister'] = $_POST['noregister'];
+		$sp['manualregister'] = $_POST['manualregister'];
 		$sp['qualify'] = $_POST['qualify'];
 		
 		$sp['calleridsource'] = $_POST['calleridsource'];
@@ -256,7 +258,7 @@ if ($_POST) {
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<? display_advanced_settings_begin(2); ?>
-			<? display_registration_options($pconfig['noregister'], 1); ?>
+			<? display_registration_options($pconfig['noregister'], $pconfig['manualregister'], 1); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>

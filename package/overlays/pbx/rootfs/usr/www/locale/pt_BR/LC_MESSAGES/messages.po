@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-22 13:57+0200\n"
+"POT-Creation-Date: 2009-10-28 12:53+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -157,6 +157,11 @@ msgid "Registration"
 msgstr ""
 
 msgid "Do not register with this provider."
+msgstr ""
+
+msgid ""
+"Completely override the generated registration string with a manually "
+"defined one."
 msgstr ""
 
 msgid "Qualify"

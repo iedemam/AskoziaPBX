@@ -173,19 +173,26 @@ EOD;
 
 	// provider registrations
 	foreach($iaxproviders as $p) {
-		if ($p['noregister'])
-			continue;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		$conf .= "; {$p['name']}\n";
-		$conf .= "register => {$p['username']}";
-		if($p['secret']) {
-			$conf .= ":{$p['secret']}";
+		if ($p['noregister']) {
+			continue;
 		}
-		$conf .= "@{$p['host']}";
-		if($p['port']) {
-			$conf .= ":{$p['port']}";	
+
+		$conf .= "; {$p['name']}\n";
+
+		if ($p['manualregister']) {
+			$conf .= $p['manualregister'];
+		} else {
+			$conf .= "register => {$p['username']}";
+			if($p['secret']) {
+				$conf .= ":{$p['secret']}";
+			}
+			$conf .= "@{$p['host']}";
+			if($p['port']) {
+				$conf .= ":{$p['port']}";
+			}
 		}
 
 		$conf .= "\n\n";

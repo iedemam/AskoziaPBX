@@ -240,21 +240,29 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if ($p['noregister'])
+		if ($p['noregister']) {
 			continue;
+		}
+
 		$conf .= "; {$p['name']}\n";
-		$conf .= "register => {$p['username']}";
-		if($p['secret']) {
-			$conf .= ":{$p['secret']}";
-			if($p['authuser']) {
-				$conf.= ":{$p['authuser']}";
+
+		if ($p['manualregister']) {
+			$conf .= $p['manualregister'];
+		} else {
+			$conf .= "register => {$p['username']}";
+			if($p['secret']) {
+				$conf .= ":{$p['secret']}";
+				if($p['authuser']) {
+					$conf.= ":{$p['authuser']}";
+				}
 			}
+			$conf .= "@{$p['host']}";
+			if($p['port']) {
+				$conf .= ":{$p['port']}";
+			}
+			$conf .= "/{$p['username']}";
 		}
-		$conf .= "@{$p['host']}";
-		if($p['port']) {
-			$conf .= ":{$p['port']}";	
-		}
-		$conf .= "/{$p['username']}";	
+
 		$conf .= "\n\n";
 	}
 	

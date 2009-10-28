@@ -59,6 +59,7 @@ if (isset($id) && $a_sipproviders[$id]) {
 	$pconfig['host'] = $a_sipproviders[$id]['host'];
 	$pconfig['fromdomain'] = $a_sipproviders[$id]['fromdomain'];
 	$pconfig['noregister'] = $a_sipproviders[$id]['noregister'];
+	$pconfig['manualregister'] = $a_sipproviders[$id]['manualregister'];
 	$pconfig['port'] = $a_sipproviders[$id]['port'];
 	$pconfig['prefix'] = $a_sipproviders[$id]['prefix'];
 	$pconfig['dialpattern'] = $a_sipproviders[$id]['dialpattern'];
@@ -163,6 +164,7 @@ if ($_POST) {
 		$sp['port'] = $_POST['port'];
 		$sp['fromdomain'] = $_POST['fromdomain'];
 		$sp['noregister'] = $_POST['noregister'];
+		$sp['manualregister'] = $_POST['manualregister'];
 
 		$sp['dialpattern'] = $_POST['dialpattern'];
 
@@ -279,7 +281,7 @@ if ($_POST) {
 			<? display_natmode_selector($pconfig['natmode'], 1); ?>
 			<? display_qualify_options($pconfig['qualify'], 1); ?>
 			<? display_dtmfmode_selector($pconfig['dtmfmode'], 1); ?>
-			<? display_registration_options($pconfig['noregister'], 1); ?>
+			<? display_registration_options($pconfig['noregister'], $pconfig['manualregister'], 1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>
 			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
 			<? display_advanced_settings_end(); ?>

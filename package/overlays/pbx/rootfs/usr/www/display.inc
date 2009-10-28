@@ -243,12 +243,14 @@ function display_dtmfmode_selector($current_dtmfmode, $colspan) {
 	</tr><?
 }
 
-function display_registration_options($current_noregister, $colspan) {
+function display_registration_options($current_noregister, $current_manualregister, $colspan) {
 	
 	?><tr> 
 		<td valign="top" class="vncell"><?=gettext("Registration");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
 			<input name="noregister" id="noregister" type="checkbox" value="yes" <? if ($current_noregister) echo "checked"; ?>><?=gettext("Do not register with this provider.");?>
+			<br>
+			<input name="manualregister" type="text" class="formfld" id="manualregister" size="50" value="<?=htmlspecialchars($current_manualregister);?>"><br><?=gettext("Completely override the generated registration string with a manually defined one.");?> 
 		</td>
 	</tr><?
 }
