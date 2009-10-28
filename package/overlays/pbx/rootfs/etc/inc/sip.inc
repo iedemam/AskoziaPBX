@@ -212,13 +212,19 @@ EOD;
 	$lancfg = $config['interfaces']['lan'];
 	if ($lancfg['topology'] == "natstatic") {
 		$conf .= "externip=" . $lancfg['extipaddr'] . "\n";
-		$baseaddr = long2ip(ip2long($lancfg['ipaddr']) & gen_subnet_mask_long($lancfg['subnet']));
-		$conf .= "localnet=" . $baseaddr . "/" . $lancfg['subnet'] . "\n";
 	} else if ($lancfg['topology'] == "natdynamichost") {
 		$conf .= "externhost=" . $lancfg['exthostname'] . "\n";
 		$conf .= "externrefresh=10\n";
-		$baseaddr = long2ip(ip2long($lancfg['ipaddr']) & gen_subnet_mask_long($lancfg['subnet']));
-		$conf .= "localnet=" . $baseaddr . "/" . $lancfg['subnet'] . "\n";
+	}
+	if ($lancfg['topology'] && $lancfg['topology'] != "public") {
+		if (isset($lancfg['dhcp'])) {
+			$laninfo = network_get_interface($lancfg['if']);
+			$baseaddr = long2ip(ip2long($laninfo['ipaddr']) & gen_subnet_mask_long($laninfo['subnet']));
+			$conf .= "localnet=" . $baseaddr . "/" . $laninfo['subnet'] . "\n";
+		} else {
+			$baseaddr = long2ip(ip2long($lancfg['ipaddr']) & gen_subnet_mask_long($lancfg['subnet']));
+			$conf .= "localnet=" . $baseaddr . "/" . $lancfg['subnet'] . "\n";
+		}
 	}
 
 	$conf .= util_gen_manual_attributes($sipconfig['manual-attribute']);
