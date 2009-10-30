@@ -52,10 +52,10 @@ $pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
 $pconfig['timeservers'] = $config['system']['timeservers'];
 
 if (!isset($pconfig['timeupdateinterval'])) {
-	$pconfig['timeupdateinterval'] = $defaults['system']['timeupdateinterval']
+	$pconfig['timeupdateinterval'] = 300;
 }
 if (!$pconfig['timeservers']) {
-	$pconfig['timeservers'] = $defaults['system']['timeservers']
+	$pconfig['timeservers'] = "pool.ntp.org";
 }
 
 if ($_POST) {
