@@ -56,7 +56,12 @@ ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
 ln -s /offload/asterisk/sounds/en-us offload_stage/asterisk/sounds/en
 
 echo "Cleaning up asterisk sounds ..."
-rmdir offload_stage/asterisk/sounds/{es,fr}
+if [[ -d "offload_stage/asterisk/sounds/es" ]] ; then
+	rmdir offload_stage/asterisk/sounds/es
+fi
+if [[ -d "offload_stage/asterisk/sounds/fr" ]] ; then
+	rmdir offload_stage/asterisk/sounds/fr
+fi
 find offload_stage/asterisk/sounds/ -type f -name "*.pdf" -print -delete
 find offload_stage/asterisk/sounds/ -type f -name "*.txt" -print -delete
 for FILE in `find offload_stage/asterisk/sounds/ -name *g711u`
