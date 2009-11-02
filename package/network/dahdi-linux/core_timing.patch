@@ -1,0 +1,11 @@
+--- dahdi-linux-2.2.0.2/include/dahdi/dahdi_config.h.orig	2009-11-02 14:16:13.000000000 +0100
++++ dahdi-linux-2.2.0.2/include/dahdi/dahdi_config.h	2009-11-02 14:16:34.000000000 +0100
+@@ -119,7 +119,7 @@
+  * Define CONFIG_DAHDI_CORE_TIMER if you would like dahdi to always provide a
+  * timing source regardless of which spans / drivers are configured.
+  */
+-/* #define CONFIG_DAHDI_CORE_TIMER */
++#define CONFIG_DAHDI_CORE_TIMER
+ 
+ /* 
+  * Uncomment if you happen have an early TDM400P Rev H which 

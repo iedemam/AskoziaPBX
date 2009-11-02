@@ -100,10 +100,6 @@ function pbx_configure() {
 	$res |= analog_configure();
 	if ($g['booting']) echo "done\n";
 
-	if ($g['booting']) echo "   |- configuring timing source...";
-	$res |= pbx_configure_timing();
-	if ($g['booting']) echo "done\n";
-
 	if ($g['booting']) echo "   |- executing Asterisk...";
 	$res |= pbx_start();
 	if ($g['booting']) echo "done\n";
@@ -122,24 +118,6 @@ function pbx_stop() {
 	global $g;
 
 	killbyname("asterisk");
-}
-
-/**
- * Loads an appropriate combination of kernel modules to provide a timing source
- * depending on what hardware is available.
- */
-function pbx_configure_timing() {
-
-	/* dahdi modules are all loaded at boot, 
-	if nothing was detected we fall back to dahdi_dummy for timing */
-	if(!count(analog_get_recognized_ab_unit_numbers())) {
-		//mwexec("/sbin/modprobe -r wcfxo");
-		//mwexec("/sbin/modprobe -r wcfxs");
-		//mwexec("/sbin/modprobe -r wct1xxp");
-		//mwexec("/sbin/modprobe -r wct4xxp");
-		mwexec("/sbin/modprobe dahdi_dummy");
-	}
-	return 0;
 }
 
 /**
