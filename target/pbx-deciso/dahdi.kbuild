@@ -1,22 +1,22 @@
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI)			+= dahdi.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DUMMY)		+= dahdi_dummy.o
-obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC)		+= dahdi_dynamic.o
+#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC)		+= dahdi_dynamic.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC_LOC)	+= dahdi_dynamic_loc.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC_ETH)	+= dahdi_dynamic_eth.o
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TRANSCODE)		+= dahdi_transcode.o
 
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCT4XXP)		+= wct4xxp/
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTC4XXP)		+= wctc4xxp/
-obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTDM24XXP)	+= wctdm24xxp/
+#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTDM24XXP)	+= wctdm24xxp/
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTE12XP)		+= wcte12xp/
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTDM)		+= wctdm.o
-obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_VOICEBUS)		+= voicebus/
+#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_VOICEBUS)		+= voicebus/
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCB4XXP)		+= wcb4xxp/
 
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCT1XXP)		+= wct1xxp.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTE11XP)		+= wcte11xp.o
 
-obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCFXO)		+= wcfxo.o
+#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCFXO)		+= wcfxo.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TOR2)		+= tor2.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_PCIRADIO)		+= pciradio.o
 
@@ -69,23 +69,23 @@ dahdi-objs := dahdi-base.o
 # Find appropriate ARCH value for VPMADT032 and HPEC binary modules
 ###############################################################################
 
-ifeq ($(ARCH),i386)
-  DAHDI_ARCH=x86_32
-else
-  ifeq ($(ARCH),x86_64)
-    DAHDI_ARCH=x86_64
-  else
-    ifeq ($(ARCH),x86)
-      ifeq ($(CONFIG_X86_32),y)
-        DAHDI_ARCH=x86_32
-      else
-        DAHDI_ARCH=x86_64
-      endif
-    else
-$(warning CPU Architecture '$(ARCH)' does not support VPMADT032 or HPEC. Skipping.)
-    endif
-  endif
-endif
+#ifeq ($(ARCH),i386)
+#  DAHDI_ARCH=x86_32
+#else
+#  ifeq ($(ARCH),x86_64)
+#    DAHDI_ARCH=x86_64
+#  else
+#    ifeq ($(ARCH),x86)
+#      ifeq ($(CONFIG_X86_32),y)
+#        DAHDI_ARCH=x86_32
+#      else
+#        DAHDI_ARCH=x86_64
+#      endif
+#    else
+#$(warning CPU Architecture '$(ARCH)' does not support VPMADT032 or HPEC. Skipping.)
+#    endif
+#  endif
+#endif
 
 ###############################################################################
 # VPMADT032 Loader
