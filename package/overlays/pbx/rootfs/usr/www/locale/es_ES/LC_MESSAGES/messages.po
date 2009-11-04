@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2776,24 +2776,12 @@ msgid "The passwords do not match."
 msgstr "Las contraseñas no coinciden."
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
-msgid "name of the pbx host, without domain part"
-msgstr ""
-
-msgid "e.g. <em>pbx"
-msgstr "por ejemplo <em>pbx"
-
-msgid "Domain"
-msgstr "Dominio"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "por ejemplo <em>mycorp.com"
+#, fuzzy
+msgid "Security"
+msgstr "Secreto"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2830,30 +2818,71 @@ msgstr ""
 "Introduzca un número de puerto personalizado para el webGUI arriba si desea "
 "sobreescribir el por defecto (80 para HTTP, 443 para HTTPS)"
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "Reiniciar la PBX"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "por ejemplo <em>mycorp.com"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Ajustes"
+
+msgid "Indication Tones"
 msgstr ""
 
-msgid "Select which country's indication tones are to be used."
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr ""
 
 msgid "Time zone"
 msgstr "Zona horaria"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "Seleccione la situación mas cercana a usted"
 
-msgid "Time update interval"
+msgid "Time Synchronization"
 msgstr ""
 
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#, fuzzy
+msgid "Update Interval"
+msgstr "Actualizar paquetes no instalados"
+
+msgid "disable time synchronization"
 msgstr ""
 
-msgid "NTP time server"
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "minutos"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "minutos"
+
+msgid "every hour"
 msgstr ""
 
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "Servidores DNS"
+
+msgid "Enter a server to synchronize with."
 msgstr ""
 
 msgid ""
@@ -3147,6 +3176,12 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "por ejemplo <em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "Dominio"
 
 #, fuzzy
 #~ msgid "Configured"

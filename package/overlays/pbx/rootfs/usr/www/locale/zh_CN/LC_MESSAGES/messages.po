@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2800,24 +2800,12 @@ msgid "The passwords do not match."
 msgstr "密码不正确。"
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr "更新时间的间隔必须是0（禁用）或者在6和1440之间。"
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "一个NTP时间服务器名只能包含a-z，0-9，'-'以及'.'。"
 
-msgid "name of the pbx host, without domain part"
-msgstr "pbx的主机名，不含域名部分"
-
-msgid "e.g. <em>pbx"
-msgstr "例如 <em>pbx"
-
-msgid "Domain"
-msgstr "域"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "例如<em>mycorp.com"
+#, fuzzy
+msgid "Security"
+msgstr "秘密"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2850,34 +2838,74 @@ msgstr ""
 "在上方为网页设置界面输入一个定制的端口号，如果您想替代其默认设置的话。(80 为 "
 "HTTP, 443 为 HTTPS)。"
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "重启PBX"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "例如<em>mycorp.com"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "设置"
+
+#, fuzzy
+msgid "Indication Tones"
 msgstr "提示音"
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr "请选择要使用的国家提示音。"
 
 msgid "Time zone"
 msgstr "时区"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "选择一个离您最近的地点。"
 
-msgid "Time update interval"
-msgstr "时间更新间隔"
-
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
-msgstr "网络时间同步的分钟数；300推荐，或者0禁用。"
-
-msgid "NTP time server"
-msgstr "NTP时间服务器"
+msgid "Time Synchronization"
+msgstr ""
 
 #, fuzzy
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Update Interval"
+msgstr "时间更新间隔"
+
+msgid "disable time synchronization"
 msgstr ""
-"使用一个空间来分隔多个主机（只需一个）。请别忘记设置至少一个DNS服务器，如果您"
-"在这里输入主机名。"
+
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "分钟"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "分钟"
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "NTP时间服务器"
+
+msgid "Enter a server to synchronize with."
+msgstr ""
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -3166,6 +3194,31 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid ""
+#~ "The time update interval must be either 0 (disabled) or between 6 and "
+#~ "1440."
+#~ msgstr "更新时间的间隔必须是0（禁用）或者在6和1440之间。"
+
+#~ msgid "name of the pbx host, without domain part"
+#~ msgstr "pbx的主机名，不含域名部分"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "例如 <em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "域"
+
+#~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#~ msgstr "网络时间同步的分钟数；300推荐，或者0禁用。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a NTP server to synchronize with. Remember to set up at least one "
+#~ "DNS server if you enter a host name here!"
+#~ msgstr ""
+#~ "使用一个空间来分隔多个主机（只需一个）。请别忘记设置至少一个DNS服务器，如"
+#~ "果您在这里输入主机名。"
 
 #, fuzzy
 #~ msgid "Configured"

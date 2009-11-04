@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -2907,25 +2907,13 @@ msgid "The passwords do not match."
 msgstr "パスワードが間違っています"
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr "時間の更新間隔は、0(無効)もしくは、6から 1440の間で指定して下さい"
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 "NTPサーバー名として使用出来る文字は、a-z, 0-9, '-' もしくは '.'のみです"
 
-msgid "name of the pbx host, without domain part"
-msgstr "AskoziaPBXの名前(ドメイン部分を除いた名前)"
-
-msgid "e.g. <em>pbx"
-msgstr "例;<em>pbx"
-
-msgid "Domain"
-msgstr "ドメイン名"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "例; <em>askoziapbx.co.jp"
+#, fuzzy
+msgid "Security"
+msgstr "パスワード"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2962,35 +2950,74 @@ msgstr ""
 "標準のwebGUIポート(HTTPは80番,HTTPSは443番)以外を使用する場合には、上の欄に"
 "ポート番号を入力して下さい"
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "PBXの再起動"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "例; <em>askoziapbx.co.jp"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "設定"
+
+#, fuzzy
+msgid "Indication Tones"
 msgstr "トーン音種別"
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr "使用する国のトーン音(発信音/受信音)を選択して下さい"
 
 msgid "Time zone"
 msgstr "タイムゾーン"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "AskoziaPBXの設置場所に一番近いエリアを選択して下さい"
 
-msgid "Time update interval"
-msgstr "時刻同期の間隔"
-
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
-msgstr "時刻同期の間隔(分);(推奨 300,もしくは0[時刻同期無効])"
-
-msgid "NTP time server"
-msgstr "NTPサーバー"
+msgid "Time Synchronization"
+msgstr ""
 
 #, fuzzy
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Update Interval"
+msgstr "時刻同期の間隔"
+
+msgid "disable time synchronization"
 msgstr ""
-"複数のNTPサーバーを設定する場合は、スペースを空けて、入力して下さい(推奨は１"
-"ホストのみ)。又、NTPサーバーを利用する場合は[接続経路]->[ネットワーク]->[DNS"
-"サーバー]の設定を忘れずに行って下さい"
+
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "分"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "分"
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "NTPサーバー"
+
+msgid "Enter a server to synchronize with."
+msgstr ""
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -3316,6 +3343,32 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid ""
+#~ "The time update interval must be either 0 (disabled) or between 6 and "
+#~ "1440."
+#~ msgstr "時間の更新間隔は、0(無効)もしくは、6から 1440の間で指定して下さい"
+
+#~ msgid "name of the pbx host, without domain part"
+#~ msgstr "AskoziaPBXの名前(ドメイン部分を除いた名前)"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "例;<em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "ドメイン名"
+
+#~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#~ msgstr "時刻同期の間隔(分);(推奨 300,もしくは0[時刻同期無効])"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a NTP server to synchronize with. Remember to set up at least one "
+#~ "DNS server if you enter a host name here!"
+#~ msgstr ""
+#~ "複数のNTPサーバーを設定する場合は、スペースを空けて、入力して下さい(推奨は"
+#~ "１ホストのみ)。又、NTPサーバーを利用する場合は[接続経路]->[ネットワーク]->"
+#~ "[DNSサーバー]の設定を忘れずに行って下さい"
 
 #, fuzzy
 #~ msgid "Configured"

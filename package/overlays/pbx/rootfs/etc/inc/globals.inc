@@ -45,7 +45,7 @@ $g = array(
 	"xml_rootobj" => "askoziapbx",
 	"debug" => false,
 	"wireless_hostap_regex" => "/^(wi|ath|ral|ural)/",
-	"latest_config" => "1.5",
+	"latest_config" => "1.6",
 	"package_system" => "1.0",
 	"technologies" => array("sip", "iax", "isdn", "analog"),
 	"phone_types" => array("sip", "iax", "isdn", "analog", "external"),
@@ -123,7 +123,7 @@ $defaults['syslog']['nentries'] = "100";
 $defaults['system'] = array();
 $defaults['system']['username'] = "admin";
 $defaults['system']['timeservers'] = "pool.ntp.org";
-$defaults['system']['timeupdateinterval'] = "300";
+$defaults['system']['timeupdateinterval'] = "4-hours";
 
 $defaults['webgui'] = array();
 $defaults['webgui']['protocol'] = "https";

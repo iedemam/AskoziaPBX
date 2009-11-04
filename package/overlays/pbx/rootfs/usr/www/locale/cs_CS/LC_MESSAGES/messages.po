@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2748,24 +2748,11 @@ msgid "The passwords do not match."
 msgstr ""
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
-msgid "name of the pbx host, without domain part"
-msgstr "název hostitele bez doménové části"
-
-msgid "e.g. <em>pbx"
-msgstr "např. <em>pbx"
-
-msgid "Domain"
-msgstr "Doména"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "např. <em>mojedoména.cz"
+msgid "Security"
+msgstr ""
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2798,37 +2785,72 @@ msgstr ""
 "Pokud chcete změnit standardní nastavení (80 pro HTTP, 443 pro HTTPS), "
 "zadejte libovolné číslo portu."
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "restartovat PBX"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "např. <em>mojedoména.cz"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Nastavení"
+
+#, fuzzy
+msgid "Indication Tones"
 msgstr "Zvuky"
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr "Vyberte zemi jejíž zvuky budou použity."
 
 msgid "Time zone"
 msgstr "Časové pásmo"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "Vyberte nejbližší lokalitu."
 
-msgid "Time update interval"
-msgstr "Interval aktualizace"
-
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgid "Time Synchronization"
 msgstr ""
-"Minuty mezi jednotlivými synchronizacemi času.; doporučená hodnota - 300, 0 "
-"znamená vypnuto"
-
-msgid "NTP time server"
-msgstr "NTP server"
 
 #, fuzzy
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Update Interval"
+msgstr "Interval aktualizace"
+
+msgid "disable time synchronization"
 msgstr ""
-"K oddělení více serverů použijte mezeru (požadovaný je pouze jeden NTP "
-"server). V případě, že zadáte název hostitele, nezapomeňte nastavit alespoň "
-"jeden DNS server."
+
+msgid "every 10 minutes"
+msgstr ""
+
+msgid "every 30 minutes"
+msgstr ""
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "NTP server"
+
+msgid "Enter a server to synchronize with."
+msgstr ""
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -3119,6 +3141,29 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "name of the pbx host, without domain part"
+#~ msgstr "název hostitele bez doménové části"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "např. <em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "Doména"
+
+#~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#~ msgstr ""
+#~ "Minuty mezi jednotlivými synchronizacemi času.; doporučená hodnota - 300, "
+#~ "0 znamená vypnuto"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a NTP server to synchronize with. Remember to set up at least one "
+#~ "DNS server if you enter a host name here!"
+#~ msgstr ""
+#~ "K oddělení více serverů použijte mezeru (požadovaný je pouze jeden NTP "
+#~ "server). V případě, že zadáte název hostitele, nezapomeňte nastavit "
+#~ "alespoň jeden DNS server."
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "Zaškrtnutá rozhraní budou přemostěna na hlavní rozhraní."

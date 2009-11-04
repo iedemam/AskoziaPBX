@@ -280,6 +280,15 @@ function convert_config() {
 		return;
 	}
 
+	/* 
+	convert 1.5 -> 1.6
+		- upgrade to new ntp interval method
+	*/
+	if ($config['version'] == "1.5") {
+		$config['system']['time-update-interval'] = "4-hours";
+		$config['version'] = "1.6";
+	}
+
 	write_config();
 
 }

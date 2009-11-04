@@ -142,7 +142,7 @@
 		services_dnsupdate_process();*/
 
 	/* start up asterisk */
-	echo " - Starting Asterisk... ";
+	echo " - Starting Asterisk... \n";
 	pbx_configure();
 	echo "done\n";
 

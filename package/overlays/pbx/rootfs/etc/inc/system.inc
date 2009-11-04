@@ -228,7 +228,9 @@ function system_timezone_configure() {
 function system_ntp_initial_sync() {
 	global $config;
 
-	mwexec("ntpclient -i 10 -L -s -h " . escapeshellarg($config['system']['timeservers']));
+	if ($config['system']['time-update-interval'] != "disable") {
+		mwexec("ntpclient -i 10 -L -s -h " . escapeshellarg($config['system']['timeservers']));
+	}
 }
 
 /**
@@ -453,23 +455,39 @@ function system_cron_configure() {
 	killbyname("crond");
 
 	/* ntp */
-	$mins = $config['system']['time-update-interval'];
-	if ($mins > 0) {
-		if ($mins < 6) {
-			$mins = 6;
+	$interval = $config['system']['time-update-interval'];
+	if ($interval != "disable") {
+		switch ($interval) {
+			case "10-minutes":
+				$ntp .= "*/10 * * * *";
+				break;
+			case "30-minutes":
+				$ntp .= "*/30 * * * *";
+				break;
+			case "1-hour":
+				$ntp .= "0 * * * *";
+				break;
+			case "4-hours":
+				$ntp .= "0 */4 * * *";
+				break;
+			case "12-hours":
+				$ntp .= "0 */12 * * *";
+				break;
+			case "1-day":
+				$ntp .= "0 0 * * *";
+				break;
 		}
 
-		$cron .= "*/" . $mins . " * * * * ntpclient -i 10 -L -s -h " .
-			$config['system']['timeservers'] . "\n";
+		$ntp .= " ntpclient -i 10 -L -s -h " . $config['system']['timeservers'] . "\n";
 	}
-	$cron .= "\n";
 
 	$fd = fopen("/var/spool/cron/crontabs/root", "w");
 	if (!$fd) {
 		printf("Error: cannot open /var/spool/cron/crontabs/root in system_cron_configure().\n");
 		return 1;
 	}
-	fwrite($fd, $cron);
+	fwrite($fd, $ntp);
+	fwrite($fd, "\n");
 	fclose($fd);
 
 	mwexec("crond -l 0");

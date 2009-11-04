@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -2952,28 +2952,14 @@ msgid "The passwords do not match."
 msgstr "Die Passwörter stimmen nicht überein."
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-"Der Intervall für die Zeit-Aktualisierung muß entweder '0' sein (=keine "
-"Aktualisierung) oder zwischen 6 und 1440 liegen. "
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 "Der NTP-Server-Name darf nur aus folgenden Zeichen bestehen: a-z, 0-9, '-' "
 "and '.'."
 
-msgid "name of the pbx host, without domain part"
-msgstr "Name der Telefonanlage, ohne den Domänenteil"
-
-msgid "e.g. <em>pbx"
-msgstr "z.B. <em>pbx"
-
-msgid "Domain"
-msgstr "Domain"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "z.B. <em>mycorp.com"
+#, fuzzy
+msgid "Security"
+msgstr "Passwort"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -3010,37 +2996,74 @@ msgstr ""
 "Geben sie bei Bedarf einen anderen Port für die webGUI oben ein, falls sie "
 "die Defaults (80 für HTTP, 443 für HTTPS) nicht nutzen wollen."
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "Telefonanlage neu starten"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "z.B. <em>mycorp.com"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Einstellungen"
+
+#, fuzzy
+msgid "Indication Tones"
 msgstr "Tonschema"
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr "Bitte ein landesspezifisches Tonschema auswählen."
 
 msgid "Time zone"
 msgstr "Zeitzone"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "Wählen Sie den Ihnen am nächsten liegenden Ort."
 
-msgid "Time update interval"
-msgstr "Zeit-Aktualisierungs-Intervall"
-
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgid "Time Synchronization"
 msgstr ""
-"Minuten zwischen den Netzwerk-Zeitsynchronisierungen; Vorschlagswert: 300 - "
-"zum deaktivieren '0' eintragen."
-
-msgid "NTP time server"
-msgstr "NTP-Zeit-Server"
 
 #, fuzzy
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Update Interval"
+msgstr "Zeit-Aktualisierungs-Intervall"
+
+msgid "disable time synchronization"
 msgstr ""
-"Nur ein Hostname ist notwendig; benutzen Sie Leerzeichen alls Trennzeichen, "
-"wenn sie mehrere Hosts eintragen. Bite beachten Sie, daß Sieauch einen DNS-"
-"Server angeben müssen, wenn Sie hier Hostnamen eintragen! "
+
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "Minuten"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "Minuten"
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "NTP-Zeit-Server"
+
+msgid "Enter a server to synchronize with."
+msgstr ""
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -3353,6 +3376,37 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid ""
+#~ "The time update interval must be either 0 (disabled) or between 6 and "
+#~ "1440."
+#~ msgstr ""
+#~ "Der Intervall für die Zeit-Aktualisierung muß entweder '0' sein (=keine "
+#~ "Aktualisierung) oder zwischen 6 und 1440 liegen. "
+
+#~ msgid "name of the pbx host, without domain part"
+#~ msgstr "Name der Telefonanlage, ohne den Domänenteil"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "z.B. <em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "Domain"
+
+#~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#~ msgstr ""
+#~ "Minuten zwischen den Netzwerk-Zeitsynchronisierungen; Vorschlagswert: 300 "
+#~ "- zum deaktivieren '0' eintragen."
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a NTP server to synchronize with. Remember to set up at least one "
+#~ "DNS server if you enter a host name here!"
+#~ msgstr ""
+#~ "Nur ein Hostname ist notwendig; benutzen Sie Leerzeichen alls "
+#~ "Trennzeichen, wenn sie mehrere Hosts eintragen. Bite beachten Sie, daß "
+#~ "Sieauch einen DNS-Server angeben müssen, wenn Sie hier Hostnamen "
+#~ "eintragen! "
 
 #, fuzzy
 #~ msgid "Configured"

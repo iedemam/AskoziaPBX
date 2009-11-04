@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -2855,24 +2855,12 @@ msgid "The passwords do not match."
 msgstr "De wachtwoorden komen niet overeen."
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
-msgid "name of the pbx host, without domain part"
-msgstr ""
-
-msgid "e.g. <em>pbx"
-msgstr ""
-
-msgid "Domain"
-msgstr "Domein"
-
-msgid "e.g. <em>mycorp.com"
-msgstr ""
+#, fuzzy
+msgid "Security"
+msgstr "Geheim"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2903,30 +2891,69 @@ msgid ""
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "De pbx herstarten"
+
+msgid "e.g. <em>pbx . mydomain.com"
 msgstr ""
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Instellingen"
+
+msgid "Indication Tones"
+msgstr ""
+
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr ""
 
 msgid "Time zone"
 msgstr "Tijd zone"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "Selecteer de bestemming dichts bij jouw"
 
-msgid "Time update interval"
+msgid "Time Synchronization"
 msgstr ""
 
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgid "Update Interval"
 msgstr ""
 
-msgid "NTP time server"
+msgid "disable time synchronization"
+msgstr ""
+
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "minuten"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "minuten"
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
 msgstr "NTP tijd server"
 
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Enter a server to synchronize with."
 msgstr ""
 
 msgid ""
@@ -3206,6 +3233,9 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Domain"
+#~ msgstr "Domein"
 
 #, fuzzy
 #~ msgid "Configured"

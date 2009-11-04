@@ -3,8 +3,10 @@
 /*
 	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
-	
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
+
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -52,10 +54,10 @@ $pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
 $pconfig['timeservers'] = $config['system']['timeservers'];
 
 if (!isset($pconfig['timeupdateinterval'])) {
-	$pconfig['timeupdateinterval'] = 300;
+	$pconfig['timeupdateinterval'] = $defaults['system']['timeupdateinterval'];
 }
 if (!$pconfig['timeservers']) {
-	$pconfig['timeservers'] = "pool.ntp.org";
+	$pconfig['timeservers'] = $defaults['system']['timeservers'];
 }
 
 if ($_POST) {
@@ -85,11 +87,7 @@ if ($_POST) {
 	if (($_POST['password']) && ($_POST['password'] != $_POST['password2'])) {
 		$input_errors[] = gettext("The passwords do not match.");
 	}
-	
-	$t = (int)$_POST['timeupdateinterval'];
-	if (($t < 0) || (($t > 0) && ($t < 6)) || ($t > 1440)) {
-		$input_errors[] = gettext("The time update interval must be either 0 (disabled) or between 6 and 1440.");
-	}
+
 	foreach (explode(' ', $_POST['timeservers']) as $ts) {
 		if (!verify_is_domain($ts)) {
 			$input_errors[] = gettext("A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'.");
@@ -150,22 +148,7 @@ if ($savemsg) display_info_box($savemsg); ?>
 <form action="system.php" method="post">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-		<td width="78%" class="vtable">
-			<input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>">
-	    	<br>
-			<span class="vexpl"><?=gettext("name of the pbx host, without domain part");?>
-			<br>
-			<?=gettext("e.g. <em>pbx");?></em></span>
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncellreq"><?=gettext("Domain");?></td>
-		<td class="vtable">
-			<input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>">
-			<br>
-			<span class="vexpl"><?=gettext("e.g. <em>mycorp.com");?></em></span>
-		</td>
+		<td colspan="2" valign="top" class="listtopic"><?=gettext("Security");?></td>
 	</tr>
 	<tr> 
 		<td valign="top" class="vncell"><?=gettext("Username");?></td>
@@ -184,7 +167,6 @@ if ($savemsg) display_info_box($savemsg); ?>
 			&nbsp;(<?=gettext("confirmation");?>) <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span>
 		</td>
 	</tr>
-	<? display_gui_language_selector($config['system']['webgui']['language']); ?>
 	<tr> 
 		<td valign="top" class="vncell"><?=gettext("webGUI protocol");?></td>
 		<td class="vtable">
@@ -201,7 +183,30 @@ if ($savemsg) display_info_box($savemsg); ?>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell"><?=gettext("Indications Tonezone");?></td>
+		<td colspan="2" class="list" height="12"></td>
+	</tr>
+	<tr> 
+		<td colspan="2" valign="top" class="listtopic"><?=gettext("Hostname");?></td>
+	</tr>
+	<tr> 
+		<td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
+		<td width="78%" class="vtable">
+			<input name="hostname" type="text" class="formfld" id="hostname" size="25" value="<?=htmlspecialchars($pconfig['hostname']);?>"> . <input name="domain" type="text" class="formfld" id="domain" size="25" value="<?=htmlspecialchars($pconfig['domain']);?>">
+	    	<br>
+			<span class="vexpl"><?=gettext("Hostname of the PBX.");?>
+			<br>
+			<?=gettext("e.g. <em>pbx . mydomain.com");?></em></span>
+		</td>
+	</tr>
+	<tr> 
+		<td colspan="2" class="list" height="12"></td>
+	</tr>
+	<tr> 
+		<td colspan="2" valign="top" class="listtopic"><?=gettext("Regional Settings");?></td>
+	</tr>
+	<? display_gui_language_selector($config['system']['webgui']['language']); ?>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Indication Tones");?></td>
 		<td class="vtable">
 			<select name="tonezone" id="tonezone"><?
 			foreach ($system_tonezones as $abbreviation => $friendly) {
@@ -210,7 +215,7 @@ if ($savemsg) display_info_box($savemsg); ?>
 			}
 			?></select>
 			<br>
-			<span class="vexpl"><?=gettext("Select which country's indication tones are to be used.");?></span>
+			<span class="vexpl"><?=gettext("Select which country's indication tones (the ringing, busy and error tones) to be used.");?></span>
 		</td>
 	</tr>
 	<tr> 
@@ -228,23 +233,37 @@ if ($savemsg) display_info_box($savemsg); ?>
 			}
 			?></select>
 			<br>
-			<span class="vexpl"><?=gettext("Select the location closest to you");?></span>
+			<span class="vexpl"><?=gettext("Select the location closest to you.");?></span>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell"><?=gettext("Time update interval");?></td>
+		<td colspan="2" class="list" height="12"></td>
+	</tr>
+	<tr> 
+		<td colspan="2" valign="top" class="listtopic"><?=gettext("Time Synchronization");?></td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Update Interval");?></td>
 		<td class="vtable">
-			<input name="timeupdateinterval" type="text" class="formfld" id="timeupdateinterval" size="4" value="<?=htmlspecialchars($pconfig['timeupdateinterval']);?>">
+			<select name="timeupdateinterval" id="timeupdateinterval">
+				<option value="diasble" <? if ($pconfig['timeupdateinterval'] == "disable") echo "selected";?>><?=gettext("disable time synchronization");?></option>
+				<option value="10-minutes" <? if ($pconfig['timeupdateinterval'] == "10-minutes") echo "selected";?>><?=gettext("every 10 minutes");?></option>
+				<option value="30-minutes" <? if ($pconfig['timeupdateinterval'] == "30-minutes") echo "selected";?>><?=gettext("every 30 minutes");?></option>
+				<option value="1-hour" <? if ($pconfig['timeupdateinterval'] == "1-hour") echo "selected";?>><?=gettext("every hour");?></option>
+				<option value="4-hours" <? if ($pconfig['timeupdateinterval'] == "4-hours") echo "selected";?>><?=gettext("every 4 hours");?></option>
+				<option value="12-hours" <? if ($pconfig['timeupdateinterval'] == "12-hours") echo "selected";?>><?=gettext("every 12 hours");?></option>
+				<option value="1-day" <? if ($pconfig['timeupdateinterval'] == "1-day") echo "selected";?>><?=gettext("every day");?></option>
+			</select>
 			<br>
-			<span class="vexpl"><?=gettext("Minutes between network time sync.; 300 recommended, or 0 to disable");?></span>
+			<span class="vexpl"><?=gettext("Select how often the time should be synchronized.");?></span>
 		</td>
 	</tr>
 	<tr> 
-		<td valign="top" class="vncell"><?=gettext("NTP time server");?></td>
+		<td valign="top" class="vncell"><?=gettext("NTP Server");?></td>
 		<td class="vtable">
 			<input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>">
 			<br>
-			<span class="vexpl"><?=gettext("Enter a NTP server to synchronize with. Remember to set up at least one DNS server if you enter a host name here!");?></span>
+			<span class="vexpl"><?=gettext("Enter a server to synchronize with.");?></span>
 		</td>
 	</tr>
 	<tr> 

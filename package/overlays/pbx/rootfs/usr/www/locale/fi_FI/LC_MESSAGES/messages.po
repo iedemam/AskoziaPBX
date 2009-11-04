@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2912,27 +2912,13 @@ msgid "The passwords do not match."
 msgstr "Salasanat eivät täsmää."
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-"Ajan päivitysväli on oltava jompikumpi 0 (poissa käytöstä) tai 6 ja 1440 "
-"välissä."
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 "NTP Aika serverinimi ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
 
-msgid "name of the pbx host, without domain part"
-msgstr "pbx:än isäntänimi, ilman verkkotunnusta"
-
-msgid "e.g. <em>pbx"
-msgstr "esim. <em>pbx"
-
-msgid "Domain"
-msgstr "Verkkotunnus"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "esim. <em>yhtiöni.fi"
+#, fuzzy
+msgid "Security"
+msgstr "Salaisuus"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2967,37 +2953,74 @@ msgstr ""
 "Anna oma portti verkkokäyttöliittymälle jos haluat kumota oletus asetuksen "
 "(http käyttää portin 80 ja https 443)."
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "käynnistä PBX:ää uudelleen"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "esim. <em>yhtiöni.fi"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Asetukset"
+
+#, fuzzy
+msgid "Indication Tones"
 msgstr "Merkkiäänivyöhyke"
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr "Valtse minkä maan merkkiäänet tulee käyttää."
 
 msgid "Time zone"
 msgstr "Aikavyöhyke"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "Valitse paikka lähellä sinua"
 
-msgid "Time update interval"
-msgstr "Ajan päivitysväli"
-
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgid "Time Synchronization"
 msgstr ""
-"Montako minuuttia verkon ajan tahdistuksien välillä.; 300 on suositeltava, 0 "
-"on poissa käytöstä"
-
-msgid "NTP time server"
-msgstr "NTP aikaserveri"
 
 #, fuzzy
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Update Interval"
+msgstr "Ajan päivitysväli"
+
+msgid "disable time synchronization"
 msgstr ""
-"Käytä välilyöntiä jos haluat antaa monta isäntänimeä (vain yksi on "
-"pakollinen). Muista asentaa ainakin yksi DNS serveri jos annat isäntänimen "
-"tässä!"
+
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "minuttia"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "minuttia"
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "NTP aikaserveri"
+
+msgid "Enter a server to synchronize with."
+msgstr ""
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -3309,6 +3332,36 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid ""
+#~ "The time update interval must be either 0 (disabled) or between 6 and "
+#~ "1440."
+#~ msgstr ""
+#~ "Ajan päivitysväli on oltava jompikumpi 0 (poissa käytöstä) tai 6 ja 1440 "
+#~ "välissä."
+
+#~ msgid "name of the pbx host, without domain part"
+#~ msgstr "pbx:än isäntänimi, ilman verkkotunnusta"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "esim. <em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "Verkkotunnus"
+
+#~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#~ msgstr ""
+#~ "Montako minuuttia verkon ajan tahdistuksien välillä.; 300 on "
+#~ "suositeltava, 0 on poissa käytöstä"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a NTP server to synchronize with. Remember to set up at least one "
+#~ "DNS server if you enter a host name here!"
+#~ msgstr ""
+#~ "Käytä välilyöntiä jos haluat antaa monta isäntänimeä (vain yksi on "
+#~ "pakollinen). Muista asentaa ainakin yksi DNS serveri jos annat "
+#~ "isäntänimen tässä!"
 
 #, fuzzy
 #~ msgid "Configured"

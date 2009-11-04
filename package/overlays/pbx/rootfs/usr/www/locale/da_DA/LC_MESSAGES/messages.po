@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -2845,26 +2845,12 @@ msgid "The passwords do not match."
 msgstr "Adgangskoderne er ikke ens."
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-"Tidsintervallet for tidsopdatering skal enten være 0 (deaktiveret) eller "
-"mellem 6 og 1440."
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Et NTP tids server navn må kun indeholde tegnene a-z, 0-9, '-' og '.'."
 
-msgid "name of the pbx host, without domain part"
-msgstr "navn på pbx vært, uden domæne delen"
-
-msgid "e.g. <em>pbx"
-msgstr "eks. <em>pbx"
-
-msgid "Domain"
-msgstr "Domæne"
-
-msgid "e.g. <em>mycorp.com"
-msgstr "eks. <em>ditfirma.dk"
+#, fuzzy
+msgid "Security"
+msgstr "Hemmeligt"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
@@ -2898,36 +2884,74 @@ msgstr ""
 "ønsker at angive en anden port en standardporten (80 for HTTP, 443 for "
 "HTTPS)."
 
-msgid "Indications Tonezone"
+#, fuzzy
+msgid "Hostname of the PBX."
+msgstr "genstart pbx"
+
+#, fuzzy
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr "eks. <em>ditfirma.dk"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Indstillinger"
+
+#, fuzzy
+msgid "Indication Tones"
 msgstr "Indikering Tonezone"
 
-msgid "Select which country's indication tones are to be used."
+#, fuzzy
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr "Vælg hvilket land's tone indikation som skal bruges."
 
 msgid "Time zone"
 msgstr "Tids zone"
 
-msgid "Select the location closest to you"
+#, fuzzy
+msgid "Select the location closest to you."
 msgstr "Vælg den lokation der er tættest på dig"
 
-msgid "Time update interval"
-msgstr "Opdatering af tid interval"
-
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgid "Time Synchronization"
 msgstr ""
-"Antal minutter mellem tidsopdateringen via netværk. Det anbefales at benytte "
-"300, eller 0 for at deaktiverer opdateringen."
-
-msgid "NTP time server"
-msgstr "NTP tids server"
 
 #, fuzzy
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "Update Interval"
+msgstr "Opdatering af tid interval"
+
+msgid "disable time synchronization"
 msgstr ""
-"Brug mellemrum tegn til at adskille flere værter (der kræves kun 1). Husk at "
-"oplyse mindst en DNS server, hvis der er et værtsnavn du oplyser."
+
+#, fuzzy
+msgid "every 10 minutes"
+msgstr "minutter"
+
+#, fuzzy
+msgid "every 30 minutes"
+msgstr "minutter"
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+#, fuzzy
+msgid "NTP Server"
+msgstr "NTP tids server"
+
+msgid "Enter a server to synchronize with."
+msgstr ""
 
 msgid ""
 "The entire system configuration can be backed up and restored via this page."
@@ -3230,6 +3254,35 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid ""
+#~ "The time update interval must be either 0 (disabled) or between 6 and "
+#~ "1440."
+#~ msgstr ""
+#~ "Tidsintervallet for tidsopdatering skal enten være 0 (deaktiveret) eller "
+#~ "mellem 6 og 1440."
+
+#~ msgid "name of the pbx host, without domain part"
+#~ msgstr "navn på pbx vært, uden domæne delen"
+
+#~ msgid "e.g. <em>pbx"
+#~ msgstr "eks. <em>pbx"
+
+#~ msgid "Domain"
+#~ msgstr "Domæne"
+
+#~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+#~ msgstr ""
+#~ "Antal minutter mellem tidsopdateringen via netværk. Det anbefales at "
+#~ "benytte 300, eller 0 for at deaktiverer opdateringen."
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter a NTP server to synchronize with. Remember to set up at least one "
+#~ "DNS server if you enter a host name here!"
+#~ msgstr ""
+#~ "Brug mellemrum tegn til at adskille flere værter (der kræves kun 1). Husk "
+#~ "at oplyse mindst en DNS server, hvis der er et værtsnavn du oplyser."
 
 #, fuzzy
 #~ msgid "Configured"

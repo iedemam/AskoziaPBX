@@ -2,7 +2,7 @@
 <!-- AskoziaPBX default system configuration -->
 <!-- $Id: config.xml 1066 2009-08-04 15:34:11Z michael.iedema $ -->
 <askoziapbx>
-	<version>1.5</version>
+	<version>1.6</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>AskoziaPBX</hostname>
@@ -10,7 +10,7 @@
 		<dnsserver>192.168.1.1</dnsserver>
 		<username>admin</username>
 		<password>askozia</password>
-		<time-update-interval>300</time-update-interval>
+		<time-update-interval>4-hours</time-update-interval>
 		<timeservers>pool.ntp.org</timeservers>
 		<webgui>
 			<protocol>http</protocol>

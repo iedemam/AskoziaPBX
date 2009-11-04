@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-28 12:53+0100\n"
+"POT-Creation-Date: 2009-11-04 13:15+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2635,23 +2635,10 @@ msgid "The passwords do not match."
 msgstr ""
 
 msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr ""
-
-msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
-msgid "name of the pbx host, without domain part"
-msgstr ""
-
-msgid "e.g. <em>pbx"
-msgstr ""
-
-msgid "Domain"
-msgstr ""
-
-msgid "e.g. <em>mycorp.com"
+msgid "Security"
 msgstr ""
 
 msgid ""
@@ -2683,30 +2670,63 @@ msgid ""
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 
-msgid "Indications Tonezone"
+msgid "Hostname of the PBX."
 msgstr ""
 
-msgid "Select which country's indication tones are to be used."
+msgid "e.g. <em>pbx . mydomain.com"
+msgstr ""
+
+msgid "Regional Settings"
+msgstr ""
+
+msgid "Indication Tones"
+msgstr ""
+
+msgid ""
+"Select which country's indication tones (the ringing, busy and error tones) "
+"to be used."
 msgstr ""
 
 msgid "Time zone"
 msgstr ""
 
-msgid "Select the location closest to you"
+msgid "Select the location closest to you."
 msgstr ""
 
-msgid "Time update interval"
+msgid "Time Synchronization"
 msgstr ""
 
-msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
+msgid "Update Interval"
 msgstr ""
 
-msgid "NTP time server"
+msgid "disable time synchronization"
 msgstr ""
 
-msgid ""
-"Enter a NTP server to synchronize with. Remember to set up at least one DNS "
-"server if you enter a host name here!"
+msgid "every 10 minutes"
+msgstr ""
+
+msgid "every 30 minutes"
+msgstr ""
+
+msgid "every hour"
+msgstr ""
+
+msgid "every 4 hours"
+msgstr ""
+
+msgid "every 12 hours"
+msgstr ""
+
+msgid "every day"
+msgstr ""
+
+msgid "Select how often the time should be synchronized."
+msgstr ""
+
+msgid "NTP Server"
+msgstr ""
+
+msgid "Enter a server to synchronize with."
 msgstr ""
 
 msgid ""
