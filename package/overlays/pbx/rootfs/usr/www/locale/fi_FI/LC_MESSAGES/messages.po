@@ -12,9 +12,13 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "Portugali"
 
 msgid "unconfigured"
 msgstr "ei konfiguroitu"
@@ -2016,6 +2020,33 @@ msgstr ""
 "järjestelmäsi! Jos olet epävarma mikä portti on fxs tai fxo sinun kortilla, "
 "konfiguroi ja yhdistä puhelin tilisi ennen kun yhdistät linjoja."
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
+
+#, fuzzy
+msgid "Card"
+msgstr "Tyhjennä"
+
+#, fuzzy
+msgid "Phone"
+msgstr "Puhelimet"
+
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "muokkaa analogi käyttöliittymää"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+
+#, fuzzy
+msgid "forget port settings"
+msgstr "unohda käyttöliittymän asetukset"
+
 msgid "Edit Analog"
 msgstr "Muokkaa Analogi"
 
@@ -2045,6 +2076,14 @@ msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
 "katkaistaan."
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "Muokkaa Analogi"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "Kuvaileva nimi tälle puhelimelle."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2180,10 +2219,6 @@ msgstr "Kelpaava julkinen isäntänimi on annettava tälle topologialle."
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "Dynaaminen DNS käyttäjänimi sisältää virheellisiä merkkejä."
-
-#, fuzzy
-msgid "Port"
-msgstr "Portugali"
 
 msgid "Settings"
 msgstr "Asetukset"
@@ -2525,9 +2560,6 @@ msgid ""
 msgstr ""
 "Numero tai tunnus joka käytetään tämän puhelimen tavoittamiseen. Tämä "
 "käytetään suoraan; ulosmenevät kaava-säännöt eivät päte tähän"
-
-msgid "Provider"
-msgstr "Palveluntarjoaja"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr ""

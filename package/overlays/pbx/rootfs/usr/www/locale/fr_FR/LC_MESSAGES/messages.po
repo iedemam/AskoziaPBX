@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: French\n"
 "X-Poedit-Country: FRANCE\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "Portugal"
 
 msgid "unconfigured"
 msgstr "Non configuré"
@@ -2024,6 +2028,33 @@ msgstr ""
 "carte, configurez et connectez votre téléphone avant de brancher les comptes "
 "du fournisseur de lignes."
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "Aucune interface analogique détectée."
+
+#, fuzzy
+msgid "Card"
+msgstr "Effacer"
+
+#, fuzzy
+msgid "Phone"
+msgstr "Extensions"
+
+msgid "Provider"
+msgstr "Opérateur"
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "Configuration de l'interface analogique"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
+
+#, fuzzy
+msgid "forget port settings"
+msgstr "annuler les paramètres de l'interface"
+
 msgid "Edit Analog"
 msgstr "Configuration ligne analogique"
 
@@ -2053,6 +2084,14 @@ msgstr "Attention:"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "Cliquer sur \"Enregistrer\" et tous les appels seront terminés."
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "Configuration ligne analogique"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "Nom descriptif de cette ligne."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2191,10 +2230,6 @@ msgstr "Un nom d'hôte public valide doit être indiqué pour cette topologie."
 msgid "The dynamic DNS username contains invalid characters."
 msgstr ""
 "Le nom d'utilisateur du DNS dynamique contient des caractères non valides."
-
-#, fuzzy
-msgid "Port"
-msgstr "Portugal"
 
 msgid "Settings"
 msgstr "Paramètres"
@@ -2535,9 +2570,6 @@ msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
 msgstr ""
-
-msgid "Provider"
-msgstr "Opérateur"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr "Un opérateur sortant doit être utilisé pour accéder à ce téléphone."

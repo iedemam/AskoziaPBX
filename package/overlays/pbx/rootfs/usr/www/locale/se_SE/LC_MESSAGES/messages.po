@@ -12,9 +12,12 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Port"
+msgstr ""
 
 msgid "unconfigured"
 msgstr ""
@@ -1844,6 +1847,27 @@ msgid ""
 "your phone accounts before connecting any provider lines."
 msgstr ""
 
+msgid "No compatible analog ports were detected."
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "edit analog port"
+msgstr ""
+
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr ""
+
+msgid "forget port settings"
+msgstr ""
+
 msgid "Edit Analog"
 msgstr ""
 
@@ -1868,6 +1892,12 @@ msgid "Warning:"
 msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
+msgstr ""
+
+msgid "Edit Analog Port"
+msgstr ""
+
+msgid "Descriptive name for this port"
 msgstr ""
 
 msgid ""
@@ -1978,9 +2008,6 @@ msgid "A valid public hostname must be entered for this topology."
 msgstr ""
 
 msgid "The dynamic DNS username contains invalid characters."
-msgstr ""
-
-msgid "Port"
 msgstr ""
 
 msgid "Settings"
@@ -2280,9 +2307,6 @@ msgstr ""
 msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
-msgstr ""
-
-msgid "Provider"
 msgstr ""
 
 msgid "Outgoing provider to be used to reach this telephone."

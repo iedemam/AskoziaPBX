@@ -34,6 +34,7 @@ require_once("functions.inc");
  * Returns dahdi_scan output split into an array of span information
  */
 function dahdi_scan_to_spans() {
+	$spans = array();
 	// get output from dahdi_scan
 	exec("dahdi_scan", $out);
 	// start our count at -1 to avoid initial condition logic
@@ -62,20 +63,289 @@ function dahdi_scan_to_spans() {
 	return $spans;
 }
 
-function dahdi_spans_to_isdn_cards($spans) {
-	foreach ($spans as $s) {
-		if (strpos($s['type'], "digital-") !== false) {
-			$cards[md5($s['location'])][] = $s;
+function dahdi_get_physical_ports() {
+	$spans = dahdi_scan_to_spans();
+	$i = 0;
+	foreach ($spans as $span) {
+
+		// analog span, multiple ports per span
+		if ($span['type'] == "analog") {
+			foreach ($span['port'] as $port) {
+				// split up "basechannel,porttype"
+				$port = explode(',', $port);
+
+				// common info from card
+				$ports[$i]['location'] = $span['location'];
+				$ports[$i]['card'] = $span['devicetype'];
+				$ports[$i]['technology'] = "analog";
+
+				// per port specifics
+				$ports[$i]['basechannel'] = $port[0];
+				$ports[$i]['type'] = strtolower($port[1]);
+
+				$i++;
+			}
 		}
+		//// digital span, single port per span
+		//} else if (strpos($s['type'], "digital-") !== false) {
+		//	// is pri?
+		//	// is bri?
+		//	// i++;
+		//}
 	}
-	return $cards;
+
+	return $ports;
 }
 
-function dahdi_spans_to_analog_cards($spans) {
-	foreach ($spans as $s) {
-		if ($s['type'] == "analog") {
-			$cards[md5($s['location'])][] = $s;
+function dahdi_store_detected_ports() {
+	global $defaults;
+
+	$ports = dahdi_get_physical_ports();
+	foreach ($ports as $p) {
+		$uniqid = "DAHDIPORT-" . strtoupper($p['type']) . "-" . 
+			md5($p['location'] . $p['basechannel']);
+
+		if (!dahdi_get_port($uniqid)) {
+			$p['uniqid'] = $uniqid;
+
+			$p['name'] = gettext("Port") . " " . $p['basechannel'];
+
+			$p['echo-module'] = $defaults['dahdi']['echo-module'];
+			$p['echo-taps'] = $defaults['dahdi']['echo-taps'];
+			$p['echo-enabled'] = $defaults['dahdi']['echo-enabled'];
+
+			if ($p['type'] == "fxo" || $p['type'] == "fxs") {
+				$p['startsignaling'] = $defaults['dahdi']['analog']['startsignaling'];
+			}
+
+			dahdi_save_port($uniqid, $p);
 		}
 	}
-	return $cards;
+}
+
+function dahdi_get_ports($filter=null) {
+	global $config;
+
+	$all_ports = $config['interfaces']['dahdi-port'];
+	$all_ports = is_array($all_ports) ? $all_ports : array();
+
+	if ($filter) {
+		$filtered_ports = array();
+		foreach ($all_ports as $port) {
+			if ($port['technology'] == $filter) {
+				$filtered_ports[] = $port;
+			}
+		}
+		return $filtered_ports;
+
+	} else {
+		return $all_ports;
+	}
+}
+
+function dahdi_get_port($uniqid) {
+	global $config, $uniqid_map;
+
+	return $config['interfaces']['dahdi-port'][$uniqid_map[$uniqid]];
+}
+
+function dahdi_save_port($uniqid, $port) {
+	global $config, $uniqid_map;
+
+	if (dahdi_get_port($uniqid)) {
+		$config['interfaces']['dahdi-port'][$uniqid_map[$uniqid]] = $port;
+	} else {
+		$config['interfaces']['dahdi-port'][] = $port;
+	}
+
+	write_config();
+}
+
+function dahdi_generate_system_conf($ports) {
+	global $config, $g, $defaults;
+
+	$conf = "# Hardware Info\n";
+	foreach ($ports as $port) {
+		if ($port['technology'] == "analog") {
+			$name = ($port['name']) ? $port['name'] : "default";
+			$conf .= "# analog " . $port['type'] . " channel " . $port['basechannel'] . " (" . $name . ") is on card " . $port['card'] . "\n";
+		}
+	}
+	$conf .= "\n";
+
+
+	$conf .= "# Spans\n";
+	// span=<span num>,<timing source>,<line build out (LBO)>,<framing>,<coding>[,yellow]
+	$conf .= "\n";
+
+
+	$conf .= "# Channels\n";
+	// <device>=<channel list>
+	foreach ($ports as $port) {
+		// analog port config
+		if ($port['technology'] == "analog") {
+			// signaling override or default?
+			$startsignaling = ($port['startsignaling']) ?
+				$port['startsignaling'] : $defaults['dahdi']['analog']['startsignaling'];
+			$conf .= $port['type'] . $startsignaling . "," . $port['basechannel'] . "\n";
+		}
+	}
+	$conf .= "\n";
+
+
+	$conf .= "# Tone Zones\n";
+	// loadzone=<zone>
+	// defaultzone=<zone>
+	$conf .= "\n";
+
+
+	$conf .= "# PCM Encoding\n";
+	// mulaw=1-4
+	// alaw=1-4
+	$conf .= "\n";
+
+
+	$conf .= "# Echo Cancellers\n";
+	// echocanceller=<echocanceller name>,<channel(s)>
+	foreach ($ports as $port) {
+		// analog port config
+		if ($port['technology'] == "analog") {
+			if (!$port['disable-echocanceller']) {
+				$echocanceller = ($port['echo-module']) ?
+					$port['echo-module'] : $defaults['dahdi']['echo-module'];
+				$conf .= "echocanceller=" . $echocanceller . "," . $port['basechannel'] . "\n";
+			}
+		}
+	}
+	$conf .= "\n";
+
+
+	$fd = fopen("/etc/system.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open system.conf in dahdi_generate_system_conf().\n");
+		return 1;
+	}
+	fwrite($fd, $conf);
+	fclose($fd);
+}
+
+function dahdi_generate_chan_conf($ports) {
+	global $config, $g, $defaults;
+
+	$conf .= "[trunkgroups]\n\n";
+
+	$conf .= "[channels]\n";
+
+	$analogproviders = analog_get_providers();
+	foreach ($analogproviders as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
+		$interface = analog_get_ab_interface($p['interface']);
+
+		if ($interface['startsignal']) {
+			$conf .= "signalling=fxs_{$interface['startsignal']}\n";
+		} else {
+			$conf .= "signalling=fxs_ks\n";
+		}
+
+		if ($interface['rxgain']) {
+			$conf .= "rxgain=" . $interface['rxgain'] . "\n";
+		} else {
+			$conf .= "rxgain=" . $defaults['analog']['interface']['rxgain'] . "\n";
+		}
+		if ($interface['txgain']) {
+			$conf .= "txgain=" . $interface['txgain'] . "\n";
+		} else {
+			$conf .= "txgain=" . $defaults['analog']['interface']['txgain'] . "\n";
+		}
+
+		if ($interface['echocancel']) {
+			$conf .= "echocancel={$interface['echocancel']}\n";
+		} else {
+			$conf .= "echocancel=128\n";
+		}
+		$conf .= "echocancelwhenbridged=no\n";
+		
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
+		
+		if (!$p['language']) {
+			$conf .= "language=en\n";
+		} else {
+			$conf .= "language={$p['language']}\n";
+		}
+		$conf .= "context={$p['uniqid']}-incoming\n";
+		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		$conf .= "channel => {$p['interface']}\n";
+		$conf .= "\n";
+	}
+	
+	$analogphones = analog_get_phones();
+	foreach ($analogphones as $p) {
+		$interface = analog_get_ab_interface($p['interface']);
+		
+		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
+
+		if ($interface['startsignal']) {
+			$conf .= "signalling=fxo_{$interface['startsignal']}\n";
+		} else {
+			$conf .= "signalling=fxo_ks\n";
+		}
+
+		if ($interface['rxgain']) {
+			$conf .= "rxgain=" . $interface['rxgain'] . "\n";
+		} else {
+			$conf .= "rxgain=" . $defaults['analog']['interface']['rxgain'] . "\n";
+		}
+		if ($interface['txgain']) {
+			$conf .= "txgain=" . $interface['txgain'] . "\n";
+		} else {
+			$conf .= "txgain=" . $defaults['analog']['interface']['txgain'] . "\n";
+		}
+
+		if ($interface['echocancel']) {
+			$conf .= "echocancel={$interface['echocancel']}\n";
+		} else {
+			$conf .= "echocancel=128\n";
+		}
+		$conf .= "echocancelwhenbridged=no\n";
+		
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
+		
+		if (!$p['language']) {
+			$conf .= "language=en\n";
+		} else {
+			$conf .= "language={$p['language']}\n";
+		}
+		$conf .= "context={$p['uniqid']}\n";
+		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		$conf .= "channel => {$p['interface']}\n";
+		$conf .= "\n";
+	}
+
+	$conf .= "\n";
+
+	$fd = fopen("/etc/asterisk/chan_dahdi.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open chan_dahdi.conf in dahdi_generate_chan_conf().\n");
+		return 1;
+	}
+	fwrite($fd, $conf);
+	fclose($fd);
+
+	return 0;
+}
+
+function dahdi_configure() {
+	$ports = dahdi_get_physical_ports();
+	dahdi_generate_system_conf($ports);
+	dahdi_generate_chan_conf($ports);
+	dahdi_apply();
+}
+
+function dahdi_apply() {
+	mwexec("/usr/sbin/dahdi_cfg");
+	// if asterisk running, restart
 }

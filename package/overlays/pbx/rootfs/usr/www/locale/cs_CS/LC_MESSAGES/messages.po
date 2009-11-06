@@ -7,13 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "Portugalsko"
 
 msgid "unconfigured"
 msgstr ""
@@ -1919,6 +1923,31 @@ msgid ""
 "your phone accounts before connecting any provider lines."
 msgstr ""
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "Žádné analogové zařízení nebylo nalezeno."
+
+msgid "Card"
+msgstr ""
+
+#, fuzzy
+msgid "Phone"
+msgstr "Telefonní účty"
+
+msgid "Provider"
+msgstr ""
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "změnit položku"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "Opravdu chcete smazat tento telefonní účet?"
+
+msgid "forget port settings"
+msgstr ""
+
 msgid "Edit Analog"
 msgstr ""
 
@@ -1944,6 +1973,14 @@ msgstr "Upozornění:"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "změnit položku"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "Popisnější název tohoto poskytovatele."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2060,10 +2097,6 @@ msgstr ""
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr ""
-
-#, fuzzy
-msgid "Port"
-msgstr "Portugalsko"
 
 msgid "Settings"
 msgstr "Nastavení"
@@ -2376,9 +2409,6 @@ msgstr ""
 msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
-msgstr ""
-
-msgid "Provider"
 msgstr ""
 
 msgid "Outgoing provider to be used to reach this telephone."

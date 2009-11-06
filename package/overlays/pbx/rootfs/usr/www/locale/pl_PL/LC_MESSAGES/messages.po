@@ -12,13 +12,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "Portugalia"
 
 #, fuzzy
 msgid "unconfigured"
@@ -1942,6 +1946,33 @@ msgstr ""
 "Jeśli nie jesteś pewien które porty na karcie to FXS a które FXO najpierw "
 "podłącz i skonfiguruj telefony."
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
+
+#, fuzzy
+msgid "Card"
+msgstr "Wyczyść"
+
+#, fuzzy
+msgid "Phone"
+msgstr "Telefony"
+
+msgid "Provider"
+msgstr "Dostawca"
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "edytuj interfejs analogowy"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
+
+#, fuzzy
+msgid "forget port settings"
+msgstr "wyczyść ustawienia interfejsu"
+
 msgid "Edit Analog"
 msgstr "Edytuj Analogowe"
 
@@ -1969,6 +2000,14 @@ msgstr "Ostrzeżenie:"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "kliknięcie &quot;Zapisz&quot; przerwie wszystkie bieżące połączenia."
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "Edytuj Analogowe"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "Opisowa nazwa telefonu."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2096,10 +2135,6 @@ msgstr "W tej topologii należy podać publiczną nazwę hosta."
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "Nazwa użytkownika dynamicznego DNS zawiera nieprawidłowe znaki."
-
-#, fuzzy
-msgid "Port"
-msgstr "Portugalia"
 
 msgid "Settings"
 msgstr "Ustawienia"
@@ -2436,9 +2471,6 @@ msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
 msgstr ""
-
-msgid "Provider"
-msgstr "Dostawca"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr ""

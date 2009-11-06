@@ -57,9 +57,7 @@ $spans = dahdi_scan_to_spans();
 	</tr>
 	<tr> 
 		<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
-		<td width="80%" class="listr"><?
-			echo print_r_html(dahdi_spans_to_isdn_cards($spans));
-		?></td>
+		<td width="80%" class="listr">&nbsp;</td>
 	</tr>
 	<tr>
 		<td colspan="2" class="list" height="12"></td>
@@ -69,9 +67,7 @@ $spans = dahdi_scan_to_spans();
 	</tr>
 	<tr> 
 		<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
-		<td width="80%" class="listr"><?
-			echo print_r_html(dahdi_spans_to_analog_cards($spans));
-		?></td>
+		<td width="80%" class="listr">&nbsp;</td>
 	</tr>
 </table>
 <?php include("fend.inc"); ?>

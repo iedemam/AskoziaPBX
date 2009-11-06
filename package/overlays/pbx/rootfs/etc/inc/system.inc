@@ -412,10 +412,9 @@ function system_get_dmesg_as_array() {
 function system_load_kernel_modules() {
 
 	mwexec("/sbin/modprobe dahdi");
-	//mwexec("/sbin/modprobe wctdm");
+	mwexec("/sbin/modprobe wctdm");
 	//mwexec("/sbin/modprobe wcb4xxp");
-	//mwexec("/sbin/modprobe wcfxo");
-	//mwexec("/sbin/modprobe wcfxs");
+
 }
 
 function system_setup_ultmp() {

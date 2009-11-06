@@ -9,9 +9,13 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "葡萄牙"
 
 #, fuzzy
 msgid "unconfigured"
@@ -1963,6 +1967,33 @@ msgstr ""
 "连接一个供应商线路到FXS接口可能损坏您的硬件。如果您不清楚您的卡上哪个接口是"
 "FXO或者FXS，在连接任何供应商线路之前，先设置并连接你的电话账号。"
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "没有探测到兼容的模拟接口。"
+
+#, fuzzy
+msgid "Card"
+msgstr "清空"
+
+#, fuzzy
+msgid "Phone"
+msgstr "电话"
+
+msgid "Provider"
+msgstr "提供商"
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "编辑模拟接口"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "真的要忽略这个接口的设定？"
+
+#, fuzzy
+msgid "forget port settings"
+msgstr "忽略接口设定"
+
 msgid "Edit Analog"
 msgstr "编辑模拟电话"
 
@@ -1989,6 +2020,14 @@ msgstr "警告："
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "点击&quot;保存&quot;会导致所有正在进行的通话断线。"
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "编辑模拟电话"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "这个电话的描述性名称。"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2109,10 +2148,6 @@ msgstr "必须为这个网络布局输入一个有效的主机名。"
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "动态DNS的用户名中包含无效字符。"
-
-#, fuzzy
-msgid "Port"
-msgstr "葡萄牙"
 
 msgid "Settings"
 msgstr "设置"
@@ -2429,9 +2464,6 @@ msgid ""
 "Number or string to be dialed to reach this telephone. This will be dialed "
 "directly; outgoing pattern matching rules do not apply"
 msgstr "数字或者字串用来拨打这个电话。这会是直接拨打，不会应用在外线模式中。"
-
-msgid "Provider"
-msgstr "提供商"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr "外线提供商用来达到这个电话。"

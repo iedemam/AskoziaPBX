@@ -54,6 +54,14 @@ $g = array(
 
 $defaults = array();
 
+$defaults['dahdi']['echo-module'] = 'oslec';
+$defaults['dahdi']['echo-taps'] = '256';
+$defaults['dahdi']['echo-enabled'] = true;
+$defaults['dahdi']['analog']['startsignaling'] = 'ks';
+$defaults['dahdi']['bri']['lbo'] = 0;
+$defaults['dahdi']['bri']['framing'] = 'ccs';
+$defaults['dahdi']['bri']['coding'] = 'ami';
+
 $defaults['accounts'] = array();
 $defaults['accounts']['phones'] = array();
 $defaults['accounts']['phones']['ringlength'] = "20";

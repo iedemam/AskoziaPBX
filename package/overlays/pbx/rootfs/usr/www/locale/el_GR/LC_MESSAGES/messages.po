@@ -7,13 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "Πορτογαλία"
 
 msgid "unconfigured"
 msgstr "μη ρυθμισμένο"
@@ -2068,6 +2072,33 @@ msgstr ""
 "δεν είστε σίγουροι ποιές θύρες είναι FXS και ποιές είναι FXO, ρυθμίστε και "
 "συνδέστε πρώτα τα τηλέφωνά σας, πριν συνδέσετε γραμμές παρόχων."
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές PSTN."
+
+#, fuzzy
+msgid "Card"
+msgstr "Καθαρισμός"
+
+#, fuzzy
+msgid "Phone"
+msgstr "Τηλέφωνα"
+
+msgid "Provider"
+msgstr "Πάροχος"
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "επεξεργασία διεπαφής PSTN"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
+
+#, fuzzy
+msgid "forget port settings"
+msgstr "διαγραφή ρυθμίσεων διεπαφής"
+
 msgid "Edit Analog"
 msgstr "Επεξεργασία PSTN"
 
@@ -2097,6 +2128,14 @@ msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "αν πατήσετε &quot;Αποθήκευση&quot;, θα τερματιστούν όλες οι τρέχουσες "
 "κλήσεις."
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "Επεξεργασία PSTN"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2238,10 +2277,6 @@ msgstr ""
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "Το όνομα χρήστη για το δυναμικό DNS περιέχει μη έγκυρους χαρακτήρες."
-
-#, fuzzy
-msgid "Port"
-msgstr "Πορτογαλία"
 
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -2594,9 +2629,6 @@ msgstr ""
 "Ο αριθμός ή το κείμενο που πρέπει να πληκτρολογηθεί για να κληθεί αυτό το "
 "τηλέφωνο. Η κλήση θα γίνει απ' ευθείας, χωρις την εφαρμογή κανόνων "
 "εξερχομένων προτύπων."
-
-msgid "Provider"
-msgstr "Πάροχος"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-04 13:15+0100\n"
+"POT-Creation-Date: 2009-11-06 14:44+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "X-Poedit-Language: Japanese\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#, fuzzy
+msgid "Port"
+msgstr "ポルトガル"
 
 msgid "unconfigured"
 msgstr "未設定"
@@ -2008,6 +2012,33 @@ msgstr ""
 "接続する前に、そのポートに内線番号を割り当てた上で電話機を接続してみて、FXSな"
 "のかどうか、切り分けてから使用して下さい"
 
+#, fuzzy
+msgid "No compatible analog ports were detected."
+msgstr "対応するアナログインターフェースが見つかりませんでした。"
+
+#, fuzzy
+msgid "Card"
+msgstr "消去"
+
+#, fuzzy
+msgid "Phone"
+msgstr "電話機"
+
+msgid "Provider"
+msgstr "プロバイダー(もしくは電話会社)"
+
+#, fuzzy
+msgid "edit analog port"
+msgstr "アナログ回線の編集"
+
+#, fuzzy
+msgid "Do you really want to forget this port\\'s settings?"
+msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
+
+#, fuzzy
+msgid "forget port settings"
+msgstr "インタフェース設定を忘れる"
+
 msgid "Edit Analog"
 msgstr "アナログの編集"
 
@@ -2036,6 +2067,14 @@ msgstr "警告;"
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "clicking &quot;Save&quot; 全ての呼を切断します"
+
+#, fuzzy
+msgid "Edit Analog Port"
+msgstr "アナログの編集"
+
+#, fuzzy
+msgid "Descriptive name for this port"
+msgstr "この電話の判り易い名前"
 
 msgid ""
 "Detected ports on this page must be edited and saved before the system can "
@@ -2169,10 +2208,6 @@ msgstr "有効なパブリックホストネームをこのトポロジに入力
 
 msgid "The dynamic DNS username contains invalid characters."
 msgstr "ダイナミックDNSのユーザー名に、無効な文字が含まれています"
-
-#, fuzzy
-msgid "Port"
-msgstr "ポルトガル"
 
 msgid "Settings"
 msgstr "設定"
@@ -2513,9 +2548,6 @@ msgid ""
 msgstr ""
 "この電話機に到達する事が出来る番号もしくは文字列。これは直接ダイヤル出来ます;"
 "外線発信パターンのルールは、適用されません"
-
-msgid "Provider"
-msgstr "プロバイダー(もしくは電話会社)"
 
 msgid "Outgoing provider to be used to reach this telephone."
 msgstr "この電話機に到達する為に使用される発信用電話会社"
