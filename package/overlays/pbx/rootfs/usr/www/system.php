@@ -246,7 +246,7 @@ if ($savemsg) display_info_box($savemsg); ?>
 		<td valign="top" class="vncell"><?=gettext("Update Interval");?></td>
 		<td class="vtable">
 			<select name="timeupdateinterval" id="timeupdateinterval">
-				<option value="diasble" <? if ($pconfig['timeupdateinterval'] == "disable") echo "selected";?>><?=gettext("disable time synchronization");?></option>
+				<option value="disable" <? if ($pconfig['timeupdateinterval'] == "disable") echo "selected";?>><?=gettext("disable time synchronization");?></option>
 				<option value="10-minutes" <? if ($pconfig['timeupdateinterval'] == "10-minutes") echo "selected";?>><?=gettext("every 10 minutes");?></option>
 				<option value="30-minutes" <? if ($pconfig['timeupdateinterval'] == "30-minutes") echo "selected";?>><?=gettext("every 30 minutes");?></option>
 				<option value="1-hour" <? if ($pconfig['timeupdateinterval'] == "1-hour") echo "selected";?>><?=gettext("every hour");?></option>
