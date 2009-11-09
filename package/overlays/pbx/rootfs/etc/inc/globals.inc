@@ -49,14 +49,17 @@ $g = array(
 	"package_system" => "1.0",
 	"technologies" => array("sip", "iax", "isdn", "analog"),
 	"phone_types" => array("sip", "iax", "isdn", "analog", "external"),
-	"provider_types" => array("sip", "iax", "isdn", "analog")
+	"provider_types" => array("sip", "iax", "isdn", "analog"),
+
+	"dahdi_dirty_path" => "/var/run/dahdi.dirty"
 );
 
 $defaults = array();
 
 $defaults['dahdi']['echo-module'] = 'oslec';
-$defaults['dahdi']['echo-taps'] = '256';
-$defaults['dahdi']['echo-enabled'] = true;
+$defaults['dahdi']['echo-taps'] = 128;
+$defaults['dahdi']['rxgain'] = 0.0;
+$defaults['dahdi']['txgain'] = 0.0;
 $defaults['dahdi']['analog']['startsignaling'] = 'ks';
 $defaults['dahdi']['bri']['lbo'] = 0;
 $defaults['dahdi']['bri']['framing'] = 'ccs';
@@ -65,16 +68,6 @@ $defaults['dahdi']['bri']['coding'] = 'ami';
 $defaults['accounts'] = array();
 $defaults['accounts']['phones'] = array();
 $defaults['accounts']['phones']['ringlength'] = "20";
-
-$defaults['analog'] = array();
-$defaults['analog']['interface'] = array();
-$defaults['analog']['interface']['name'] = "(" . gettext("unconfigured") . ")";
-$defaults['analog']['interface']['startsignal'] = "ks";
-$defaults['analog']['interface']['echocancel'] = "128";
-$defaults['analog']['interface']['rxgain'] = "0.0";
-$defaults['analog']['interface']['txgain'] = "0.0";
-
-$defaults['analog']['loadzone'] = array("us");
 
 $defaults['codec'] = array("ulaw");
 

@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -30,189 +30,116 @@
 */
 
 require("guiconfig.inc");
+$pgtitle = array(gettext("Interfaces"), gettext("Edit Analog Port"));
 
-$unit = $_GET['unit'];
-if (isset($_POST['unit']))
-	$unit = $_POST['unit'];
-	
-$type = $_GET['type'];
-if (isset($_POST['type']))
-	$type = $_POST['type'];
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
+}
 
-$pgtitle = array(
-	gettext("Interfaces"), 
-	gettext("Edit Analog") . " " . strtoupper($type) . " " . gettext("Interface #").$unit
+$carryovers = array(
+	"location", "card", "technology", "type", "echo-module", "basechannel", "uniqid"
 );
 
-if (!is_array($config['interfaces']['ab-unit']))
-	$config['interfaces']['ab-unit'] = array();
-
-analog_sort_ab_interfaces();
-$a_abinterfaces = &$config['interfaces']['ab-unit'];
-
-$configured_units = array();
-foreach ($a_abinterfaces as $interface) {
-	$configured_units[$interface['unit']] = $interface;
-}
-
-$recognized_units = analog_get_recognized_ab_unit_numbers();
-if (!count($recognized_units)) {
-	$n = 0;
-} else {
-	$n = max(array_keys($recognized_units));
-	$n = ($n == 0) ? 1 : $n;
-}
-$merged_units = array();
-for ($i = 0; $i <= $n; $i++) {
-	if (!isset($recognized_units[$i])) {
-		continue;
-	}
-	if (isset($configured_units[$i])) {
-		$merged_units[$i] = $configured_units[$i];
-		$merged_units[$i]['unit'] = $i;
-	} else {
-		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = $defaults['analog']['interface']['name'];
-		$merged_units[$i]['type'] = $recognized_units[$i];
-		$merged_units[$i]['startsignal'] = $defaults['analog']['interface']['startsignal'];
-	}
-}
-
-/* pull current config into pconfig */
-$pconfig['unit'] = $merged_units[$unit]['unit'];
-$pconfig['name'] = $merged_units[$unit]['name'];
-$pconfig['type'] = $merged_units[$unit]['type'];
-$pconfig['startsignal'] = $merged_units[$unit]['startsignal'];
-$pconfig['echocancel'] = $merged_units[$unit]['echocancel'] ? $merged_units[$unit]['echocancel'] : $defaults['analog']['interface']['echocancel'];
-$pconfig['rxgain'] = $merged_units[$unit]['rxgain'];
-$pconfig['txgain'] = $merged_units[$unit]['txgain'];
-$pconfig['manual-attribute'] = $merged_units[$unit]['manual-attribute'];
 
 if ($_POST) {
 
-	unset($input_errors);
-	$_POST['manualattributes'] = split_and_clean_lines($_POST['manualattributes']);
 	$pconfig = $_POST;
-	
-	if ($msg = verify_manual_attributes($_POST['manualattributes'])) {
-		$input_errors[] = $msg;
+
+	$port['name'] = $_POST['name'] ? $_POST['name'] : gettext("Port") . " " . $_POST['basechannel'];
+	$port['startsignaling'] = $_POST['startsignaling'];
+	$port['echo-taps'] = $_POST['echo-taps'];
+	$port['rxgain'] = $_POST['rxgain'];
+	$port['txgain'] = $_POST['txgain'];
+
+	foreach ($carryovers as $co) {
+		$port[$co] = $_POST[$co];
 	}
 
-	// this is a messy fix for properly and encoding the content
-	$pconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
-	
-	if (!$input_errors) {
-		// XXX : these merging and sorting bits in isdn and analog interfaces need a rewrite
-		$n = count($a_abinterfaces);
-		if (isset($configured_units[$unit])) {
-			for ($i = 0; $i < $n; $i++) {
-				if ($a_abinterfaces[$i]['unit'] == $unit) {
-					$a_abinterfaces[$i]['name'] = $_POST['name'];
-					$a_abinterfaces[$i]['type'] = $_POST['type'];
-					$a_abinterfaces[$i]['startsignal'] = verify_non_default($_POST['startsignal'], $defaults['analog']['interface']['startsignal']);
-					$a_abinterfaces[$i]['echocancel'] = verify_non_default($_POST['echocancel'], $defaults['analog']['interface']['echocancel']);
-					$a_abinterfaces[$i]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
-					$a_abinterfaces[$i]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
-					$a_abinterfaces[$i]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
-				}
-			}
+	dahdi_save_port($port);
 
-		} else {
-			$a_abinterfaces[$n]['unit'] = $unit;
-			$a_abinterfaces[$n]['name'] = $_POST['name'];
-			$a_abinterfaces[$n]['type'] = $_POST['type'];
-			$a_abinterfaces[$n]['startsignal'] = verify_non_default($_POST['startsignal'], $defaults['analog']['interface']['startsignal']);
-			$a_abinterfaces[$n]['echocancel'] = verify_non_default($_POST['echocancel'], $defaults['analog']['interface']['echocancel']);
-			$a_abinterfaces[$n]['rxgain'] = verify_non_default($_POST['rxgain'], $defaults['analog']['interface']['rxgain']);
-			$a_abinterfaces[$n]['txgain'] = verify_non_default($_POST['txgain'], $defaults['analog']['interface']['txgain']);
-			$a_abinterfaces[$n]['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
-		}
-
-
-		touch($d_analogconfdirty_path);
-
-		write_config();
-
-		header("Location: interfaces_analog.php");
-		exit;
-	}
+	header("Location: interfaces_analog.php");
+	exit;
 }
+
+$pconfig = dahdi_get_port($uniqid);
+
 ?>
 <?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
-<!--
-
-	jQuery(document).ready(function(){
-
-		<?=javascript_advanced_settings("ready");?>
-
-	});
-
-//-->
-</script>
 <?php if ($input_errors) display_input_errors($input_errors); ?>
 <form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
-		<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Name");?></td>
 		<td width="80%" class="vtable">
-			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars(($pconfig['name'] != "(unconfigured)") ? $pconfig['name'] : "$type #$unit");?>"> 
-			<br><span class="vexpl"><?=gettext("Descriptive name for this interface");?></span>
+			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
+			<br><span class="vexpl"><?
+			$type = ($pconfig['type'] == "fxs") ? gettext("telephones") : gettext("provider lines");
+			echo sprintf(gettext("This port can be connected to %s."), $type) . " " .
+				gettext("Enter a descriptive name for this port.");
+			?></span>
 		</td>
 	</tr>
-	<tr> 
-		<td valign="top" class="vncell"><?=gettext("Echo Canceller");?></td>
+	<tr>
+		<td valign="top" class="vncell"><?=gettext("Echo Cancellation");?></td>
 		<td class="vtable">
-			<select name="echocancel" class="formfld" id="echocancel">
-				<option value="no" <?
-				if ($pconfig['echocancel'] == "no") {
+			<select name="echo-taps" class="formfld" id="echo-taps">
+				<option value="disable" <?
+				if ($pconfig['echo-taps'] == "disable") {
 					echo "selected";
 				}
-				?>><?=gettext("Disabled");?></option><?
+				?>><?=gettext("disable echo cancellation");?></option><?
 				
 				$tapvals = array(32, 64, 128, 256);
 				foreach ($tapvals as $tapval) {
 					?><option value="<?=$tapval;?>" <?
-					if ($pconfig['echocancel'] == $tapval) {
+					if ($pconfig['echo-taps'] == $tapval) {
 						echo "selected";
 					}
-					?>><?=$tapval;?></option><?
+					?>><?=$tapval/8 . " " . gettext("milliseconds");?></option><?
 				}
 
 			?></select>
-			<br><span class="vexpl"><?=gettext("The echo canceller 'tap' size. Larger sizes more effectively cancel echo but require more processing power.");?></span>
+			<br><span class="vexpl"><?=gettext("The echo canceller window size. If your calls have echo, try increasing this window.");?></span>
 		</td>
 	</tr>
-	<? display_advanced_settings_begin(1); ?>
-	<? display_analog_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
-	<tr> 
+	<? display_port_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
+	<tr>
 		<td valign="top" class="vncell"><?=gettext("Start Signaling");?></td>
 		<td class="vtable">
-			<select name="startsignal" class="formfld" id="startsignal"><?
+			<select name="startsignaling" class="formfld" id="startsignaling"><?
 
-			foreach ($analog_startsignals as $signalabb => $signalname) {
+			$startsignals = array(
+				"ks" => gettext("Kewl Start"),
+				"gs" => gettext("Ground Start"),
+				"ls" => gettext("Loop Start")
+			);
+			foreach ($startsignals as $signalabb => $signalname) {
 				?><option value="<?=$signalabb;?>" <?
-				if ($signalabb == $pconfig['startsignal']) {
+				if ($signalabb == $pconfig['startsignaling']) {
 					echo "selected";
 				}
 				?>><?=$signalname;?></option><?
 			}
 
 			?></select>
-			<br><span class="vexpl"><?=gettext("In nearly all cases, 'Kewl Start' is the appropriate choice here.");?></span>
+			<br><span class="vexpl"><?=gettext("This is the how your system determines if a phone has been hung-up or picked-up. Usually \"Kewl Start\" is the best choice but some providers work better with one of the other options. If your calls are not starting or ending reliably, try adjusting this setting.");?></span>
 		</td>
 	</tr>
-	<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
-	<? display_advanced_settings_end(); ?>
-	<tr> 
+	<tr>
 		<td width="20%" valign="top">&nbsp;</td>
 		<td width="80%">
-			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-			<input name="unit" type="hidden" value="<?=$unit;?>">
-			<input name="type" type="hidden" value="<?=$type;?>">
-		</td>
+			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><?
+
+			foreach ($carryovers as $co) {
+				?>
+				<input name="<?=$co;?>" id="<?=$co;?>" type="hidden" value="<?=$pconfig[$co];?>">
+				<?
+			}
+
+		?></td>
 	</tr>
-	<tr> 
+	<tr>
 		<td valign="top">&nbsp;</td>
 		<td>
 			<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?><br>

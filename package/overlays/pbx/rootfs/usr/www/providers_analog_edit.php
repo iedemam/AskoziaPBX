@@ -156,7 +156,7 @@ include("fbegin.inc");
 
 if ($input_errors) display_input_errors($input_errors);
 
-$analog_interfaces = analog_get_ab_interfaces("fxo");
+$analog_interfaces = dahdi_get_ports("analog", "fxo");
 
 if (count($analog_interfaces) == 0) {
 

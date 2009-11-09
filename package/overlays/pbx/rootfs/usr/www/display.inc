@@ -326,22 +326,15 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 	</tr><?
 }
 
-function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan) {
+function display_port_gain_selector($current_rxgain, $current_txgain, $colspan) {
 	global $defaults;
 
 	$mingain = -10;
 	$maxgain = 10;
 	$stepping = 0.1;
 
-	if (!$current_rxgain) {
-		$current_rxgain = $defaults['analog']['interface']['rxgain'];
-	}
-	if (!$current_txgain) {
-		$current_txgain = $defaults['analog']['interface']['txgain'];
-	}
-
 	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=gettext("Line Gain");?></td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Volume");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="rxgain" class="formfld" id="rxgain">
 			<? for ($i = $mingain; $i <= $maxgain; $i += $stepping) : ?>
@@ -362,7 +355,7 @@ function display_analog_gain_selector($current_rxgain, $current_txgain, $colspan
 			><?=sprintf("%0.1f\n", $i);?></option>
 			<? endfor; ?>
 			</select>&nbsp;<?=gettext("transmit");?>
-			<br><span class="vexpl"><?=gettext("Some analog connections may need adjustment to achieve an acceptable audio level. Adjust the receive and transmit gain in decibels to amplify or quiet the line.");?></span>
+			<br><span class="vexpl"><?=gettext("If calls coming through this port are too loud or too quiet, make adjustments here. Receive and transmit levels (in decibels) can be adjusted independently.");?></span>
 		</td>
 	</tr><?
 }

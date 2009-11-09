@@ -137,12 +137,6 @@ $dtmfmodes = array(
 	"info"
 );
 
-$analog_startsignals = array(
-	"ks" => gettext("Kewl Start"),
-	"gs" => gettext("Ground Start"),
-	"ls" => gettext("Loop Start")
-);
-
 $applications = array(
 	"Echo" => gettext("Echos audio and video back to the caller as soon as it is received. Used to test connection delay."),
 	"Milliwatt" => gettext("Generates a constant 1000Hz tone. Used to test connection quality."),
