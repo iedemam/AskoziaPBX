@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -237,9 +237,8 @@ msgstr "indefinitely"
 msgid "Ring Length"
 msgstr "呼び出し時間の長さ"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr "応答無しと判断するまでのこの電話機の呼び出し時間を入力して下さい(秒)"
 
 msgid "Volume"
@@ -287,17 +286,12 @@ msgstr "上記で定義された文字列を送信します&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "電話機のCaller IDを送信する"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "接続回線"
 
-msgid "There are currently no providers defined."
-msgstr "現在、定義されている電話会社はありません"
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "SIP URIでのダイヤル発信"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "この電話機が接続可能な回線にチェックを入れて下さい"
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "電話機"
@@ -384,20 +378,20 @@ msgid "must be configured</a> before this feature will work."
 msgstr ""
 "この機能を有効にするには、[サービス]->[ボイスメール]の設定が必要です</a>"
 
-msgid "Public Direct Dial"
-msgstr "公開用直通ダイヤル"
+#, fuzzy
+msgid "Public Access"
+msgstr "Public IP address"
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr "公開されたネットワークから、直接ダイヤルして接続する事を許可する"
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "prevent public access to this extension"
 msgstr ""
-"パブリック名。この内線にフレンドリーな名前をつける為の文字列を入力して下さい"
 
-#, php-format
+msgid "Use a word or name instead of the extension number."
+msgstr ""
+
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 "このオプションを有効にすると、外部のネットワークからこの内線番号に対し、次の"
 "様なURIを宛先に指定する事で、SIP及びIAX2プロトコルでのダイヤル及び接続が可能"
@@ -568,6 +562,9 @@ msgstr "工場出荷時に戻す"
 
 msgid "Reboot"
 msgstr "再起動"
+
+msgid "Providers"
+msgstr "接続回線"
 
 msgid "Applications"
 msgstr "アプリケーション"
@@ -2497,21 +2494,9 @@ msgstr "この内線番号の電話は、既に存在しています"
 msgid "A valid e-mail address must be specified."
 msgstr "有効なe-mailアドレスを指定する必要があります"
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
-"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
-"さい"
-
-msgid "Internal extension used to reach this phone."
-msgstr "Internal extensionはこの電話に到達可能"
-
-msgid "Analog Interface"
-msgstr "アナログ回線"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Internal extensionは、この電話にダイヤル可能"
 
 msgid "Edit External Line"
 msgstr "外線の編集"
@@ -2559,6 +2544,16 @@ msgstr "このアカウントのパスワード及び認証方式を設定して
 
 msgid "Edit ISDN Line"
 msgstr "ISDNの編集"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
+"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
+"さい"
 
 msgid "This phone's number (MSN)."
 msgstr "この電話機の番号(MSN)"
@@ -2639,6 +2634,9 @@ msgstr "このアカウントの名前"
 
 msgid "Telephone number assigned to this line."
 msgstr "この回線に電話番号が割り当てられました"
+
+msgid "Analog Interface"
+msgstr "アナログ回線"
 
 msgid "A valid username must be specified."
 msgstr "有効なユーザー名を指定する必要があります"
@@ -3355,6 +3353,30 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "公開用直通ダイヤル"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr "公開されたネットワークから、直接ダイヤルして接続する事を許可する"
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr ""
+#~ "パブリック名。この内線にフレンドリーな名前をつける為の文字列を入力して下さ"
+#~ "い"
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "現在、定義されている電話会社はありません"
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "SIP URIでのダイヤル発信"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "この電話機が接続可能な回線にチェックを入れて下さい"
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Internal extensionはこの電話に到達可能"
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

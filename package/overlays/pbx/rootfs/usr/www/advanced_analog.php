@@ -75,27 +75,22 @@ if ($_POST) {
 		$analogconfig['loadzone'] = $pconfig['loadzone'];
 		
 		write_config();
-		touch($d_analogconfdirty_path);
+		touch($g['analog_dirty_path']);
 		header("Location: advanced_analog.php");
 		exit;
 	}
 }
 
-if (file_exists($d_analogconfdirty_path)) {
+if (file_exists($g['dahdi_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= analog_conf_generate();
-		$retval |= analog_configure();
+		$retval |= dahdi_configure();
+		$retval |= pbx_restart();
 		config_unlock();
-		
-		$retval |= pbx_configure();
 	}
 
 	$savemsg = get_std_save_message($retval);
-	if ($retval == 0) {
-		unlink($d_analogconfdirty_path);
-	}
 }
 
 ?>

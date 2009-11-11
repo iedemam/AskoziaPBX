@@ -69,7 +69,7 @@ if ($successful_action) {
 	$provider_type = strtolower($pieces[0]);
 	switch ($provider_type) {
 		case "analog":
-			touch($d_analogconfdirty_path);
+			touch($g['analog_dirty_path']);
 			break;
 		case "external":
 			touch($d_extensionsconfdirty_path);
@@ -146,21 +146,21 @@ if (file_exists($d_isdnconfdirty_path)) {
 }
 
 /* dirty analog config? */
-if (file_exists($d_analogconfdirty_path)) {
+if (file_exists($g['analog_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= analog_chan_dahdi_conf_generate();
+		$retval |= dahdi_generate_chan_conf();
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= analog_reload();
+		$retval |= dahdi_chan_reload();
 		$retval |= extensions_reload();
 	}
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_analogconfdirty_path);
+		unlink($g['analog_dirty_path']);
 	}
 }
 ?>

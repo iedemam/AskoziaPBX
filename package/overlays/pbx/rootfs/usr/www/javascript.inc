@@ -204,26 +204,26 @@ function javascript_default_value_setter($id, $value) {
 	return $a;
 }
 
-function javascript_public_direct_dial_editor($part) {
+function javascript_public_access_editor($part) {
 
 	if ($part == "functions") : ?>
 
 		function publicname_slide() {
-			if (jQuery("#allowdirectdial").is(":checked")) {
-				jQuery("#publicname_wrapper").slideDown();
-			} else {
+			if (jQuery("#blockpublicaccess").is(":checked")) {
 				jQuery("#publicname_wrapper").slideUp();
+			} else {
+				jQuery("#publicname_wrapper").slideDown();
 			}
 		}
 
 	<? elseif ($part == "ready") : ?>
 
-		jQuery("#allowdirectdial").click(publicname_slide);
+		jQuery("#blockpublicaccess").click(publicname_slide);
 		publicname_slide();
 
 	<? else : ?>
 
-		ERROR: no part defined in javascript_public_direct_dial_editor()!
+		ERROR: no part defined in javascript_public_access_editor()!
 
 	<? endif;
 }

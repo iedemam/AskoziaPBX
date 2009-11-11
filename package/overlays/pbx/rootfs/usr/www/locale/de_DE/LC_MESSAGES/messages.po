@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -238,9 +238,8 @@ msgstr "unendlich"
 msgid "Ring Length"
 msgstr "Rufdauer"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 "Die Zeit die das Telefon klingelt, bevor das Gespräch als 'nicht angenommen' "
 "behandelt wird."
@@ -290,17 +289,12 @@ msgstr "Die Zeichenkette oben senden&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Caller-ID mitsenden"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Provider"
 
-msgid "There are currently no providers defined."
-msgstr "Derzeit sind keine Provider angelegt."
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "direkte gehende Wahl mit SIP uris"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "Die ausgewählten Provider sind vom Telefon aus benutzbar."
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "Nebenstellen"
@@ -387,22 +381,20 @@ msgstr "Voicemail Dienst"
 msgid "must be configured</a> before this feature will work."
 msgstr "muß konfiguriert sein</a>bevor diese Funktion nutzbar ist."
 
-msgid "Public Direct Dial"
-msgstr "Direktanwahl von aussen."
+#, fuzzy
+msgid "Public Access"
+msgstr "Öffentliche IP-Adresse"
 
-msgid "allow extension to be directly dialed over public networks"
+msgid "prevent public access to this extension"
 msgstr ""
-"erlaubt, daß die Nebenstelle direkt über öffentliche Netzwerke angewählt wird"
 
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "Use a word or name instead of the extension number."
 msgstr ""
-"Anzeigename. Bitte einen sprechenden Namen eingeben, der dieser Nebenstelle "
-"zugeordnet wird."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 "Die Auswahl dieser Option erlaubt die Anwahl der Nebenstelle über SIP und "
 "IAX2 uris (extension@%s)"
@@ -582,6 +574,9 @@ msgstr "Werkseinstellungen"
 
 msgid "Reboot"
 msgstr "Reboot"
+
+msgid "Providers"
+msgstr "Provider"
 
 msgid "Applications"
 msgstr "Applicationen"
@@ -2559,21 +2554,9 @@ msgstr "Es gibt bereits eine Nebenstelle mit dieser Nummer. "
 msgid "A valid e-mail address must be specified."
 msgstr "Eine gültige E-Mail-Adresse muß angegeben werden."
 
-#, fuzzy, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Keine kompatiblen Interfaces gefunden!</strong><br><br> Um diesen "
-"Kontentyp konfigurieren zu können muß ein entsprechendes Interface auf der %"
-"s Seite vorhanden sein."
-
-msgid "Internal extension used to reach this phone."
-msgstr "Interne Rufnummer dieses Telefons."
-
-msgid "Analog Interface"
-msgstr "Analog-Interface"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Die interne Nebenstellennummer für dieses Telefon."
 
 msgid "Edit External Line"
 msgstr "Externe Leitung bearbeiten"
@@ -2621,6 +2604,16 @@ msgstr "Der Benutzername für das Konto und die Authentifizierungs-Methode."
 
 msgid "Edit ISDN Line"
 msgstr "ISDN-Leitung bearbeiten"
+
+#, fuzzy, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Keine kompatiblen Interfaces gefunden!</strong><br><br> Um diesen "
+"Kontentyp konfigurieren zu können muß ein entsprechendes Interface auf der %"
+"s Seite vorhanden sein."
 
 msgid "This phone's number (MSN)."
 msgstr "Rufnummer der Nebenstelle (MSN)."
@@ -2698,6 +2691,9 @@ msgstr "Sprechender Name für diesen Provider."
 
 msgid "Telephone number assigned to this line."
 msgstr "Rufnummer dieser Leitung."
+
+msgid "Analog Interface"
+msgstr "Analog-Interface"
 
 msgid "A valid username must be specified."
 msgstr "Ein gültiger Benutzername muß angegeben werden."
@@ -3389,6 +3385,32 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "Direktanwahl von aussen."
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr ""
+#~ "erlaubt, daß die Nebenstelle direkt über öffentliche Netzwerke angewählt "
+#~ "wird"
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr ""
+#~ "Anzeigename. Bitte einen sprechenden Namen eingeben, der dieser "
+#~ "Nebenstelle zugeordnet wird."
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "Derzeit sind keine Provider angelegt."
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "direkte gehende Wahl mit SIP uris"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "Die ausgewählten Provider sind vom Telefon aus benutzbar."
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Interne Rufnummer dieses Telefons."
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

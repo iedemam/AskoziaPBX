@@ -49,11 +49,10 @@ if (isset($id) && $a_isdnphones[$id]) {
 	$pconfig['extension'] = $a_isdnphones[$id]['extension'];
 	$pconfig['callerid'] = $a_isdnphones[$id]['callerid'];
 	$pconfig['provider'] = $a_isdnphones[$id]['provider'];
-	$pconfig['outbounduridial'] = isset($a_isdnphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_isdnphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_isdnphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_isdnphones[$id]['novmwhenbusy']);
-	$pconfig['allowdirectdial'] = isset($a_isdnphones[$id]['allowdirectdial']);
+	$pconfig['blockpublicaccess'] = isset($a_isdnphones[$id]['blockpublicaccess']);
 	$pconfig['publicname'] = $a_isdnphones[$id]['publicname'];
 	$pconfig['interface'] = $a_isdnphones[$id]['interface'];
 	$pconfig['language'] = $a_isdnphones[$id]['language'];
@@ -95,7 +94,7 @@ if ($_POST) {
 		$ip['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ip['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ip['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$ip['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$ip['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
 		$ip['publicname'] = verify_non_default($_POST['publicname']);
 		$ip['interface'] = $_POST['interface'];
 		$ip['language'] = $_POST['language'];
@@ -109,7 +108,6 @@ if ($_POST) {
 				$ip['provider'][] = $provider['uniqid'];
 			}
 		}
-		$ip['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
 		
 		if (isset($id) && $a_isdnphones[$id]) {
 			$ip['uniqid'] = $a_isdnphones[$id]['uniqid'];
@@ -132,11 +130,11 @@ include("fbegin.inc");
 
 ?><script type="text/JavaScript">
 <!--
-	<?=javascript_public_direct_dial_editor("functions");?>
+	<?=javascript_public_access_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
-		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_public_access_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 
 	});
@@ -167,7 +165,7 @@ if (count($isdn_interfaces) == 0) {
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 1); ?>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>
 				<td class="vtable">
@@ -185,7 +183,7 @@ if (count($isdn_interfaces) == 0) {
 				</td>
 			</tr>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 1); ?>
+			<? display_provider_access_selector($pconfig['provider'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
 			<? display_advanced_settings_begin(1); ?>
 			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>

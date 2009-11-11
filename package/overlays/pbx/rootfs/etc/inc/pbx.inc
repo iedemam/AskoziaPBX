@@ -84,20 +84,8 @@ function pbx_configure() {
 	$res |= msmtp_conf_generate();
 	if ($g['booting']) echo "done\n";
 
-	if ($g['booting']) echo "   |- generating isdn configuration...";
-	$res |= isdn_conf_generate();
-	if ($g['booting']) echo "done\n";
-
-	if ($g['booting']) echo "   |- applying isdn configuration...";
-	$res |= isdn_configure();
-	if ($g['booting']) echo "done\n";
-
-	if ($g['booting']) echo "   |- generating analog configuration...";
-	$res |= analog_conf_generate();
-	if ($g['booting']) echo "done\n";
-
-	if ($g['booting']) echo "   |- applying analog configuration...";
-	$res |= analog_configure();
+	if ($g['booting']) echo "   |- generating DAHDI configuration...";
+	$res |= dahdi_configure();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- executing Asterisk...";
@@ -111,13 +99,15 @@ function pbx_start() {
 	return mwexec_bg("/usr/sbin/asterisk");
 }
 
-/* XXX : room for improvement here by factoring in call volume and
- * giving feedback to force a restart
- */
 function pbx_stop() {
-	global $g;
-
 	killbyname("asterisk");
+}
+
+function pbx_restart() {
+	$res = 0;
+	$res |= pbx_stop();
+	$res |= pbx_start();
+	return $res;
 }
 
 /**
@@ -341,6 +331,18 @@ function pbx_get_extensions() {
 		callgroups_get_extensions(),
 		applications_get_extensions()
 	);
+}
+
+function pbx_get_next_default_phone_extension() {
+	global $defaults;
+
+	$all_extensions = pbx_get_extensions();
+	$new_extension = $defaults['accounts']['phones']['default-extension-start'];
+	while(in_array($new_extension, $all_extensions)) {
+		$new_extension++;
+	}
+
+	return $new_extension;
 }
 
 /**

@@ -56,11 +56,10 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['authentication'] = $a_iaxphones[$id]['authentication'];
 	$pconfig['secret'] = $a_iaxphones[$id]['secret'];
 	$pconfig['provider'] = $a_iaxphones[$id]['provider'];
-	$pconfig['outbounduridial'] = isset($a_iaxphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_iaxphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_iaxphones[$id]['novmwhenbusy']);
-	$pconfig['allowdirectdial'] = isset($a_iaxphones[$id]['allowdirectdial']);
+	$pconfig['blockpublicaccess'] = isset($a_iaxphones[$id]['blockpublicaccess']);
 	$pconfig['publicname'] = $a_iaxphones[$id]['publicname'];
 	$pconfig['language'] = $a_iaxphones[$id]['language'];
 	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
@@ -126,7 +125,7 @@ if ($_POST) {
 		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$sp['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$sp['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$sp['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
 		$sp['publicname'] = verify_non_default($_POST['publicname']);
 		$sp['language'] = $_POST['language'];
 		$sp['descr'] = verify_non_default($_POST['descr']);
@@ -142,7 +141,6 @@ if ($_POST) {
 				$sp['provider'][] = $provider['uniqid'];
 			}
 		}
-		$sp['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
 
 		$sp['codec'] = $pconfig['codec'];
 
@@ -166,12 +164,12 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script type="text/JavaScript">
 <!--
-	<?=javascript_public_direct_dial_editor("functions");?>
+	<?=javascript_public_access_editor("functions");?>
 	<?=javascript_codec_selector("functions");?>
 
 	jQuery(document).ready(function(){
 
-		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_public_access_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 		<?=javascript_generate_passwd("ready");?>
 		<?=javascript_codec_selector("ready");?>
@@ -210,9 +208,9 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 2); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
+			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
-			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 2); ?>
+			<? display_provider_access_selector($pconfig['provider'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>
 			<? display_video_codec_selector($pconfig['codec']); ?>
 			<? display_description_field($pconfig['descr'], 2); ?>

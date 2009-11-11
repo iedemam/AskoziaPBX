@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -212,9 +212,7 @@ msgstr "onbeperkt"
 msgid "Ring Length"
 msgstr ""
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 
 msgid "Volume"
@@ -262,16 +260,11 @@ msgstr ""
 msgid "Send phones' Caller ID"
 msgstr ""
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Providers"
 
-msgid "There are currently no providers defined."
-msgstr ""
-
-msgid "direct outbound dialing via SIP uris"
-msgstr ""
-
-msgid "Checked providers will be accessible from this phone."
+msgid "Block access to the providers selected above."
 msgstr ""
 
 msgid "Phones"
@@ -335,19 +328,20 @@ msgstr ""
 msgid "must be configured</a> before this feature will work."
 msgstr ""
 
-msgid "Public Direct Dial"
+#, fuzzy
+msgid "Public Access"
+msgstr "publiek IP adres"
+
+msgid "prevent public access to this extension"
 msgstr ""
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr ""
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "Use a word or name instead of the extension number."
 msgstr ""
 
 #, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 
 msgid "Call Limit"
@@ -495,6 +489,9 @@ msgstr ""
 
 msgid "Reboot"
 msgstr "Herstarten"
+
+msgid "Providers"
+msgstr "Providers"
 
 msgid "Applications"
 msgstr "Programma&quot;s"
@@ -2471,20 +2468,9 @@ msgstr "Een telefoon met deze post bestaat reeds."
 msgid "A valid e-mail address must be specified."
 msgstr "Een geldig e-mailadres moet worden opgegeven."
 
-#, fuzzy, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"Voor het configureren van dit type account, controleer of er een passende "
-"configuratie-interface  aanwezig is op de %s pagina"
-
-msgid "Internal extension used to reach this phone."
-msgstr "Interne post gebruikt om deze telefoon te bereiken."
-
-msgid "Analog Interface"
-msgstr "Analoge interface"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "De interne post gebruikt om deze telefoon te bellen."
 
 msgid "Edit External Line"
 msgstr "Bewerk externe lijn"
@@ -2535,6 +2521,15 @@ msgstr "Deze account zijn wachtwoord en de authenticatie-regeling."
 
 msgid "Edit ISDN Line"
 msgstr "Bewerk ISDN Lijn"
+
+#, fuzzy, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"Voor het configureren van dit type account, controleer of er een passende "
+"configuratie-interface  aanwezig is op de %s pagina"
 
 msgid "This phone's number (MSN)."
 msgstr "Deze telefoon zijn nummer (MSN)."
@@ -2613,6 +2608,9 @@ msgstr "Beschrijvende naam voor deze aanbieder."
 
 msgid "Telephone number assigned to this line."
 msgstr "Telefoon nummer dat is toegewezen aan deze lijn."
+
+msgid "Analog Interface"
+msgstr "Analoge interface"
 
 msgid "A valid username must be specified."
 msgstr "Een geldige gebruikersnaam moet worden gedefineerd."
@@ -3248,6 +3246,9 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Interne post gebruikt om deze telefoon te bereiken."
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

@@ -52,7 +52,7 @@ if (isset($id) && $a_callgroups[$id]) {
 	$pconfig['extension'] = $a_callgroups[$id]['extension'];
 	$pconfig['descr'] = $a_callgroups[$id]['descr'];
 	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
-	$pconfig['allowdirectdial'] = isset($a_callgroups[$id]['allowdirectdial']);
+	$pconfig['blockpublicaccess'] = isset($a_callgroups[$id]['blockpublicaccess']);
 	$pconfig['publicname'] = $a_callgroups[$id]['publicname'];
 	$pconfig['ringlength'] = $a_callgroups[$id]['ringlength'];
 }
@@ -81,7 +81,7 @@ if ($_POST) {
 		$gm['extension'] = verify_non_default($_POST['extension']);
 		$gm['descr'] = verify_non_default($_POST['descr']);
 		$gm['groupmember'] = ($gme) ? $gme : false;
-		$gm['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$gm['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
 		$gm['publicname'] = verify_non_default($_POST['publicname']);
 		$gm['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 
@@ -105,11 +105,11 @@ if ($_POST) {
 include("fbegin.inc");
 ?><script type="text/JavaScript">
 <!--
-	<?=javascript_public_direct_dial_editor("functions");?>
+	<?=javascript_public_access_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
-		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_public_access_editor("ready");?>
 
 	});
 
@@ -132,7 +132,7 @@ include("fbegin.inc");
 					<br><span class="vexpl"><?=gettext("Internal extension used to reach this call group.");?></span>
 				</td>
 			</tr>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 2); ?>
+			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 2); ?>
 			<? display_description_field($pconfig['descr'], 2); ?>
 			<? display_phone_ringlength_selector($pconfig['ringlength'], 2); ?>
 			<? display_callgroup_member_selector($pconfig['groupmember']); ?>

@@ -298,7 +298,7 @@ function convert_config() {
  */
 function write_config() {
 
-	global $config, $g;
+	global $config, $g, $uniqid_map;
 
 	config_lock();
 

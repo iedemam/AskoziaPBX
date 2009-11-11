@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -227,9 +227,8 @@ msgstr "indefinitamente"
 msgid "Ring Length"
 msgstr "Lunghezza squillo"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 "Il numero di secondi per cui questo telefono suonerà prima che venga "
 "segnalata una non risposta."
@@ -280,17 +279,12 @@ msgstr "Manda la stringa definita sopra&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Invia l'identificativo del chiamante (CLID)"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Operatori telefonici"
 
-msgid "There are currently no providers defined."
-msgstr "Al momento non ci sono provider predefiniti."
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "chiamata diretta in uscita via SIP uris"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "I provider contrassegnati saranno accessibili da questo telefono."
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "Derivati"
@@ -380,21 +374,20 @@ msgstr "Servizi Casella vocale"
 msgid "must be configured</a> before this feature will work."
 msgstr "deve essere configurato prima che questa servizio sia attivabile."
 
-msgid "Public Direct Dial"
-msgstr "Chiamate pubbliche dirette"
+#, fuzzy
+msgid "Public Access"
+msgstr "Indirizzo IP pubblico"
 
-msgid "allow extension to be directly dialed over public networks"
+msgid "prevent public access to this extension"
 msgstr ""
-"permette che gli interni possano essere chiamati attraverso la rete pubblica."
 
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "Use a word or name instead of the extension number."
 msgstr ""
-"Nome pubblico. Immettere una stringa per mappare un nome a questo interno."
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 "L'attivazione di questa opzione consente a questo interno di essere "
 "accessibile tramite SIP e IAX2 URI (extension@%s)"
@@ -575,6 +568,9 @@ msgstr "Impostazioni predefinite"
 
 msgid "Reboot"
 msgstr "Riavvia"
+
+msgid "Providers"
+msgstr "Operatori telefonici"
 
 msgid "Applications"
 msgstr "Applicazioni"
@@ -2567,20 +2563,9 @@ msgstr "Un telefono con questo interno già esiste."
 msgid "A valid e-mail address must be specified."
 msgstr "Deve essere specificato un indirizzo E-mail valido."
 
-#, fuzzy, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"Per configurare questo tipo di profilo assicuratevi di aver correttamente "
-"impostato una interfaccia adeguata nella relativa pagina %s"
-
-msgid "Internal extension used to reach this phone."
-msgstr "Interno usato per raggiungere questo telefono."
-
-msgid "Analog Interface"
-msgstr "Interfaccia analogica"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Interno usato per chiamare questo telefono."
 
 msgid "Edit External Line"
 msgstr "Modifica linea esterna"
@@ -2630,6 +2615,15 @@ msgstr "La password del account e lo schema di autenticazione."
 
 msgid "Edit ISDN Line"
 msgstr "Modifica linea ISDN"
+
+#, fuzzy, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"Per configurare questo tipo di profilo assicuratevi di aver correttamente "
+"impostato una interfaccia adeguata nella relativa pagina %s"
 
 msgid "This phone's number (MSN)."
 msgstr "Il numero di questo telefono (MSN)."
@@ -2717,6 +2711,9 @@ msgstr "Nome descrittivo di questo provider."
 
 msgid "Telephone number assigned to this line."
 msgstr "Numero telefonico assegnato a questa linea."
+
+msgid "Analog Interface"
+msgstr "Interfaccia analogica"
 
 msgid "A valid username must be specified."
 msgstr "Deve essere specificato un nome utente valido."
@@ -3441,6 +3438,31 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "Chiamate pubbliche dirette"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr ""
+#~ "permette che gli interni possano essere chiamati attraverso la rete "
+#~ "pubblica."
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr ""
+#~ "Nome pubblico. Immettere una stringa per mappare un nome a questo interno."
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "Al momento non ci sono provider predefiniti."
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "chiamata diretta in uscita via SIP uris"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "I provider contrassegnati saranno accessibili da questo telefono."
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Interno usato per raggiungere questo telefono."
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

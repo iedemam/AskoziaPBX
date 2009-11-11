@@ -131,7 +131,7 @@ if ($_POST) {
 			$a_analogproviders[] = $ap;
 		}
 		
-		touch($d_analogconfdirty_path);
+		touch($g['analog_dirty_path']);
 		
 		write_config();
 		

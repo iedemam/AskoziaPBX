@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -236,9 +236,8 @@ msgstr "uendelig"
 msgid "Ring Length"
 msgstr "Ringe Længde"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 "Antal sekunder denne telefon skal ringe før den opfattes som ubesvaret."
 
@@ -287,17 +286,12 @@ msgstr "Send teksten angivet ovenfor&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Send telefon's Opkalds ID"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Udbyder"
 
-msgid "There are currently no providers defined."
-msgstr "Der er endnu ikke oprettet nogen udbydere"
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "direkte udgående opkald via uris"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "Afkrydsede udbydere vil være tilgængelig fra denne telefon."
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "Telefoner"
@@ -375,21 +369,20 @@ msgstr "Telefonsvarer Tjenester"
 msgid "must be configured</a> before this feature will work."
 msgstr "Skal indstilles </a> før denne funktion virker."
 
-msgid "Public Direct Dial"
-msgstr "Offentlig Direkte Opkald"
+#, fuzzy
+msgid "Public Access"
+msgstr "Offentlig IP adresse"
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr "giver mulighed for at linien kan ringes op via offentlige netværk."
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "prevent public access to this extension"
 msgstr ""
-"Offentligt navn. Indtast en tekst for at knytte et brugervenligt navn til "
-"denne linie."
 
-#, php-format
+msgid "Use a word or name instead of the extension number."
+msgstr ""
+
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 "Aktiveres denne option bliver det muligt at tilgå denne linie via SIP og "
 "IAX2 uris (linie@%s)"
@@ -567,6 +560,9 @@ msgstr "Fabriks Indstillinger"
 
 msgid "Reboot"
 msgstr "Genstart"
+
+msgid "Providers"
+msgstr "Udbyder"
 
 msgid "Applications"
 msgstr "Applikationer"
@@ -2460,18 +2456,9 @@ msgstr "En telefon med den extension er allerede eksisterende."
 msgid "A valid e-mail address must be specified."
 msgstr "En gyldig e-mail addresse skal angives."
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "Internal extension used to reach this phone."
-msgstr "Intern extension brugt til at nå denne telefon."
-
-msgid "Analog Interface"
-msgstr "Analog Interface"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Den interne extension brugt for at ringe til denne telefon"
 
 msgid "Edit External Line"
 msgstr "Rediger Extern Linie"
@@ -2516,6 +2503,13 @@ msgstr "Denne kontos kodeord og authentofikations skema"
 
 msgid "Edit ISDN Line"
 msgstr "Rediger ISDN linie"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid "This phone's number (MSN)."
 msgstr "Denne telefon's nummer (MSN)"
@@ -2597,6 +2591,9 @@ msgstr "Beskrivende navn for denne udbyder."
 
 msgid "Telephone number assigned to this line."
 msgstr "Telefon nummer knyttet til denne linie"
+
+msgid "Analog Interface"
+msgstr "Analog Interface"
 
 msgid "A valid username must be specified."
 msgstr "Et gyldigt brugernavn skal angives."
@@ -3277,6 +3274,30 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "Offentlig Direkte Opkald"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr "giver mulighed for at linien kan ringes op via offentlige netværk."
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr ""
+#~ "Offentligt navn. Indtast en tekst for at knytte et brugervenligt navn til "
+#~ "denne linie."
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "Der er endnu ikke oprettet nogen udbydere"
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "direkte udgående opkald via uris"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "Afkrydsede udbydere vil være tilgængelig fra denne telefon."
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Intern extension brugt til at nå denne telefon."
 
 #~ msgid "No compatible analog interfaces detected."
 #~ msgstr "Ingen kompatible analoge grænseflader fundet."

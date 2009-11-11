@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -225,9 +225,8 @@ msgstr "無限期"
 msgid "Ring Length"
 msgstr "響鈴時長"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr "響鈴時間的秒數，之後將被認為無人應答。"
 
 msgid "Volume"
@@ -275,17 +274,12 @@ msgstr "傳輸字符串的上述定義&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "發送話機的Caller ID"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "提供商"
 
-msgid "There are currently no providers defined."
-msgstr "目前尚未定義任何提供商。"
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "通過SIP uris對外直接撥號"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "選出的提供商可以讓這個電話連接使用。"
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "電話"
@@ -366,19 +360,20 @@ msgstr "語音信件服務"
 msgid "must be configured</a> before this feature will work."
 msgstr "在功能起效前，必須先設置。"
 
-msgid "Public Direct Dial"
-msgstr "公共直接撥打"
+#, fuzzy
+msgid "Public Access"
+msgstr "公網IP地址"
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr "允許分機可以直接通過公共網路撥號。"
+msgid "prevent public access to this extension"
+msgstr ""
 
-msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr "公開名字。輸入一個字符串並把它映射給這個分機。"
+msgid "Use a word or name instead of the extension number."
+msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr "啟用這個選項會允許這個分機可以被SIP和IAX2 uris呼叫。(extension@%s)"
 
 msgid "Call Limit"
@@ -543,6 +538,9 @@ msgstr "出廠預設設置"
 
 msgid "Reboot"
 msgstr "重啟"
+
+msgid "Providers"
+msgstr "提供商"
 
 msgid "Applications"
 msgstr "應用"
@@ -2426,18 +2424,9 @@ msgstr "已經存在這個分機了。"
 msgid "A valid e-mail address must be specified."
 msgstr "必須指定一個有效的e-mail地址。"
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "Internal extension used to reach this phone."
-msgstr "內部分機用於達到此話機。"
-
-msgid "Analog Interface"
-msgstr "Analog介面"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "這個內部分機用來撥打這個電話。"
 
 msgid "Edit External Line"
 msgstr "編輯外部線路"
@@ -2480,6 +2469,13 @@ msgstr "這個帳戶的密碼和驗證計劃。"
 
 msgid "Edit ISDN Line"
 msgstr "編輯ISDN線路"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid "This phone's number (MSN)."
 msgstr "這個電話的號碼（MSN）。"
@@ -2559,6 +2555,9 @@ msgstr "提供商的描述性名字。"
 
 msgid "Telephone number assigned to this line."
 msgstr "分配給這條線的電話號碼。"
+
+msgid "Analog Interface"
+msgstr "Analog介面"
 
 msgid "A valid username must be specified."
 msgstr "必須指定一個有效的用戶名。"
@@ -3216,6 +3215,28 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "公共直接撥打"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr "允許分機可以直接通過公共網路撥號。"
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr "公開名字。輸入一個字符串並把它映射給這個分機。"
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "目前尚未定義任何提供商。"
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "通過SIP uris對外直接撥號"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "選出的提供商可以讓這個電話連接使用。"
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "內部分機用於達到此話機。"
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

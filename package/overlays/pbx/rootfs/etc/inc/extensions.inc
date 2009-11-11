@@ -145,7 +145,7 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if (isset($p['allowdirectdial'])) {
+		if (!isset($p['blockpublicaccess'])) {
 			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
 				$conf .= "exten => {$p['extension']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
@@ -162,7 +162,7 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if (isset($p['allowdirectdial'])) {
+		if (!isset($p['blockpublicaccess'])) {
 			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
 				$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['name']} - <{$p['extension']}>)\n";
@@ -179,7 +179,7 @@ EOD;
 		if (!isset($cg['extension']) || !strlen($cg['extension'])) {
 			continue;
 		}
-		if (isset($cg['allowdirectdial'])) {
+		if (!isset($cg['blockpublicaccess'])) {
 			$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
 			if (!$cg['publicname']) {
 				$conf .= "exten => {$cg['extension']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
@@ -193,7 +193,7 @@ EOD;
 
 	// application extensions
 	foreach ($applications as $a) {
-		if (isset($a['allowdirectdial'])) {
+		if (!isset($a['blockpublicaccess'])) {
 			$conf .= "; application : {$a['name']}\n";
 			if (!$a['publicname']) {
 				$conf .= "exten => {$a['extension']},1,NoOp(public calling application: {$a['name']})\n";
@@ -207,7 +207,7 @@ EOD;
 
 	// conference room extensions
 	foreach ($conference_rooms as $r) {
-		if (isset($r['allowdirectdial'])) {
+		if (!isset($r['blockpublicaccess'])) {
 			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
 			if (!$r['publicname']) {
 				$conf .= "exten => {$r['number']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
@@ -310,17 +310,20 @@ EOD;
 		$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "include => internal\n";
-		if (isset($p['provider'])) {
-			foreach ($p['provider'] as $provider) {
-				if (pbx_provider_is_active($provider)) {
+		// include each provider's contexts unless blocked
+		foreach ($providers as $provider) {
+			if (!isset($p['provider'])) {
+				if (pbx_provider_is_active($provider['uniqid'])) {
+					$conf .= "include => " . $provider['uniqid'] . "\n";
+				}
+			} else {
+				if (!in_array($provider['uniqid'], $p['provider']) &&
+					pbx_provider_is_active($provider)) {
 					$conf .= "include => $provider\n";
 				}
 			}
 		}
-		// allow direct outward dialing via sip uris
-		if (isset($p['outbounduridial'])) {
-			$conf .= "include => outgoing-uri\n";
-		}
+		$conf .= "include => outgoing-uri\n";
 		$conf .= "\n";
 	}
 
@@ -469,7 +472,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		return "CAPI/" . $phone['interface'] . "/" . $phone['extension'];
 
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
-		return "DAHDI/" . $phone['interface'];
+		return "DAHDI/" . $phone['port'];
 	
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 
@@ -483,7 +486,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		if ($technology == "DAHDI") {
 			$prov = analog_get_provider($phone['dialprovider']);
-			return "DAHDI/" . $prov['interface'] . "/" . $phone['dialstring'];
+			return "DAHDI/" . $prov['port'] . "/" . $phone['dialstring'];
 
 		} else if ($technology == "CAPI"){
 			$prov = isdn_get_provider($phone['dialprovider']);
@@ -687,7 +690,6 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 	}
 
 	// ring length
-	$ringlength = $defaults['accounts']['phones']['ringlength'];
 	if ($p['ringlength'] == "indefinitely") {
 		$ringlength = "";
 	} else if ($p['ringlength']) {
@@ -705,7 +707,8 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 		$conf .= "exten => $exten,n,Macro(main|CAPI/{$p['interface']}/$phone_exten|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else if ($tech == "DAHDI") {
-		$conf .= "exten => $exten,n,Macro(main|DAHDI/{$p['interface']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
+		$dahdi_port = dahdi_get_port($p['port']);
+		$conf .= "exten => $exten,n,Macro(main|DAHDI/{$dahdi_port['basechannel']}|$phone_exten|$readbacknum|" . $transfer_flags . "o|$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";

@@ -64,10 +64,12 @@ if ($_POST) {
 
 $pconfig = dahdi_get_port($uniqid);
 
-?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
+
+include("fbegin.inc");
+if ($input_errors) {
+	display_input_errors($input_errors);
+}
+?><form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Name");?></td>

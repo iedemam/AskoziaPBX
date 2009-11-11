@@ -302,7 +302,6 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 
 	$ringlengths = array(
 		"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60",
-		"70", "80", "90", "100", "110", "120", "150", "180",
 		gettext("indefinitely")
 	);
 
@@ -321,7 +320,7 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 			><?=$ringlength;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl"><?=gettext("The number of seconds this phone will ring before being reported as unanswered.");?></span>
+			<br><span class="vexpl"><?=gettext("The number of seconds this phone will ring before giving up.");?></span>
 		</td>
 	</tr><?
 }
@@ -384,34 +383,25 @@ function display_outgoing_callerid_options($current_callerid_source, $current_ca
 	</tr><?
 }
 
-function display_provider_access_selector($current_providers, $current_outbounduridial, $colspan) {
+function display_provider_access_selector($current_providers, $colspan) {
 	
-	$a_providers = pbx_get_providers();
+	$providers = pbx_get_providers();
+	if (!count($providers)) {
+		return;
+	}
 
-	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=gettext("Providers");?></td>
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Block Providers");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
-		
-		$n = count($a_providers);
-		if ($n == 0) {
-			?><span class="vexpl"><i><?=gettext("There are currently no providers defined.");?></i></span><br><?
 
-		} else {
-			for($i = 0; $i < $n; $i++) {
-				$provider = $a_providers[$i];
-			
-				?><input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? 
-				if (in_array($provider['uniqid'], $current_providers)) echo "checked"; 
-				?>><?=$provider['name']?><br><?
-			}
+		foreach ($providers as $provider) {
+			?><input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? 
+			if (in_array($provider['uniqid'], $current_providers)) echo "checked"; 
+			?>><?=$provider['name']?><br><?
 		}
 
-		?><input name="outbounduridial" id="outbounduridial" type="checkbox" value="yes" <? 
-		if ($current_outbounduridial) echo "checked"; 
-		?>><?=gettext("direct outbound dialing via SIP uris");?><br><?
-
 		?><br>
-		<span class="vexpl"><?=gettext("Checked providers will be accessible from this phone.");?></span>
+		<span class="vexpl"><?=gettext("Block access to the providers selected above.");?></span>
 		</td>
 	</tr><?
 }
@@ -541,27 +531,27 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 	</tr><?
 }
 
-function display_public_direct_dial_editor($current_allowdirectdial, $current_publicname, $colspan, $getjs=false) {
+function display_public_access_editor($current_blockpublicaccess, $current_publicname, $colspan, $getjs=false) {
 	global $config;
 
 	$fullhostname = $config['system']['hostname'] . "." . $config['system']['domain'];
 
 	?><tr> 
-		<td valign="top" class="vncell"><?=gettext("Public Direct Dial");?></td>
+		<td valign="top" class="vncell"><?=gettext("Public Access");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="allowdirectdial" id="allowdirectdial" type="checkbox" value="yes" <?
+			<input name="blockpublicaccess" id="blockpublicaccess" type="checkbox" value="yes" <?
 			
-			if ($current_allowdirectdial) {
+			if ($current_blockpublicaccess) {
 				echo "checked";
 			}
 
-			?>>&nbsp;<?=gettext("allow extension to be directly dialed over public networks");?>
-			<br><span name="publicname_wrapper" id="publicname_wrapper" style="display: none;">
+			?>>&nbsp;<?=gettext("prevent public access to this extension");?>
+			<br><span name="publicname_wrapper" id="publicname_wrapper">
 			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
-			<br><span class="vexpl"><?=gettext("Public name. Enter a string to map a friendly name to this extension.");?></span>
+			<br><span class="vexpl"><?=gettext("Use a word or name instead of the extension number.");?></span>
 			<br>
 			</span>
-			<br><span class="vexpl"><?=sprintf(gettext("Enabling this option will allow this extension to be reachable via SIP and IAX2 uris (extension@%s)"), $fullhostname);?></span>
+			<br><span class="vexpl"><?=sprintf(gettext("This extension is reachable via SIP and IAX2 URIs (extension@%s) unless disabled here."), $fullhostname);?></span>
 		</td>
 	</tr><?
 }

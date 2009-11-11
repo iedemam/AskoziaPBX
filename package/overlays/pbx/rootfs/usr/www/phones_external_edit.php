@@ -55,7 +55,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_extphones[$id]['novmwhenbusy']);
-	$pconfig['allowdirectdial'] = isset($a_extphones[$id]['allowdirectdial']);
+	$pconfig['blockpublicaccess'] = isset($a_extphones[$id]['blockpublicaccess']);
 	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
 	$pconfig['descr'] = $a_extphones[$id]['descr'];
@@ -92,7 +92,7 @@ if ($_POST) {
 		$ep['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ep['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$ep['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$ep['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
 		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
 		$ep['descr'] = verify_non_default($_POST['descr']);
@@ -118,11 +118,11 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script type="text/JavaScript">
 <!--
-	<?=javascript_public_direct_dial_editor("functions");?>
+	<?=javascript_public_access_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
-		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_public_access_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 
 	});
@@ -171,7 +171,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
 			<? display_advanced_settings_begin(1); ?>

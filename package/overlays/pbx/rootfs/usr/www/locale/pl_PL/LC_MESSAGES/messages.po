@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -216,9 +216,8 @@ msgstr "w nieskończoność"
 msgid "Ring Length"
 msgstr "Długość dzwonka"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 "Ilość sekund którą telefon będzie dzwonił zanim połączenie zostanie uznane "
 "za nieodebrane."
@@ -268,17 +267,12 @@ msgstr "Wysyłaj łańcuch zdefiniowany powyżej&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr ""
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Dostawcy"
 
-msgid "There are currently no providers defined."
-msgstr "Nie zdefiniowano dostawców."
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "bezpośrednie połączenia wychodzące SIP przy pomocy SIP uris"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "Zaznaczeni dostawcy będą dostępni z tego telefonu."
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "Telefony"
@@ -343,20 +337,20 @@ msgstr "Poczta Głosowa"
 msgid "must be configured</a> before this feature will work."
 msgstr "musi być skonfigurowane</a> zanim zacznie działać."
 
-msgid "Public Direct Dial"
-msgstr "Publiczne Bezpośrednie Wybieranie"
+#, fuzzy
+msgid "Public Access"
+msgstr "Publiczny adres IP"
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr ""
-"zezwól na bezpośrednie wybieranie numeru wewnętrznego z sieci publicznych"
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "prevent public access to this extension"
 msgstr ""
 
-#, php-format
+msgid "Use a word or name instead of the extension number."
+msgstr ""
+
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 "Włączenie tej opcji zezwoli na bezpośrednie wybieranie tego numeru przy "
 "pomocy SIP i IAX2 uris (numer wewnętrzny@%s)"
@@ -522,6 +516,9 @@ msgstr "Ustawienia fabryczne"
 
 msgid "Reboot"
 msgstr "Restartuj"
+
+msgid "Providers"
+msgstr "Dostawcy"
 
 msgid "Applications"
 msgstr "Aplikacje"
@@ -2430,18 +2427,9 @@ msgstr "Telefon z tym numerem wewnętrznym już istnieje."
 msgid "A valid e-mail address must be specified."
 msgstr "Należy podać poprawny adres e-mail."
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "Internal extension used to reach this phone."
-msgstr ""
-
-msgid "Analog Interface"
-msgstr "Interfejs Analogowy"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
 msgid "Edit External Line"
 msgstr "Edytuj linie Zewnętrzną"
@@ -2486,6 +2474,13 @@ msgstr ""
 
 msgid "Edit ISDN Line"
 msgstr "Edytuj linie ISDN"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid "This phone's number (MSN)."
 msgstr ""
@@ -2566,6 +2561,9 @@ msgstr "Opisowa nazwa dostawcy."
 
 msgid "Telephone number assigned to this line."
 msgstr "Numer telefonu przypisany do tej linii."
+
+msgid "Analog Interface"
+msgstr "Interfejs Analogowy"
 
 msgid "A valid username must be specified."
 msgstr "Należy podać poprawną nazwę użytkownika."
@@ -3239,6 +3237,22 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "Publiczne Bezpośrednie Wybieranie"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr ""
+#~ "zezwól na bezpośrednie wybieranie numeru wewnętrznego z sieci publicznych"
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "Nie zdefiniowano dostawców."
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "bezpośrednie połączenia wychodzące SIP przy pomocy SIP uris"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "Zaznaczeni dostawcy będą dostępni z tego telefonu."
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

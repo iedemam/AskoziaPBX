@@ -33,27 +33,25 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Phones"), gettext("Edit Analog Line"));
 
-/* grab and sort the analog phones in our config */
-if (!is_array($config['analog']['phone']))
-	$config['analog']['phone'] = array();
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
+}
 
-analog_sort_phones();
-$a_analogphones = &$config['analog']['phone'];
+$carryovers = array(
+	"uniqid"
+);
 
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
 
 /* pull current config into pconfig */
 if (isset($id) && $a_analogphones[$id]) {
 	$pconfig['extension'] = $a_analogphones[$id]['extension'];
 	$pconfig['callerid'] = $a_analogphones[$id]['callerid'];
 	$pconfig['provider'] = $a_analogphones[$id]['provider'];
-	$pconfig['outbounduridial'] = isset($a_analogphones[$id]['outbounduridial']);
 	$pconfig['voicemailbox'] = $a_analogphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_analogphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_analogphones[$id]['novmwhenbusy']);
-	$pconfig['allowdirectdial'] = isset($a_analogphones[$id]['allowdirectdial']);
+	$pconfig['blockpublicaccess'] = isset($a_analogphones[$id]['blockpublicaccess']);
 	$pconfig['publicname'] = $a_analogphones[$id]['publicname'];
 	$pconfig['interface'] = $a_analogphones[$id]['interface'];
 	$pconfig['language'] = $a_analogphones[$id]['language'];
@@ -95,7 +93,7 @@ if ($_POST) {
 		$ap['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ap['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ap['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$ap['allowdirectdial'] = $_POST['allowdirectdial'] ? true : false;
+		$ap['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
 		$ap['publicname'] = verify_non_default($_POST['publicname']);
 		$ap['interface'] = $_POST['interface'];
 		$ap['language'] = $_POST['language'];
@@ -109,7 +107,6 @@ if ($_POST) {
 				$ap['provider'][] = $provider['uniqid'];
 			}
 		}
-		$ap['outbounduridial'] = $_POST['outbounduridial'] ? true : false;
 		
 		
 		if (isset($id) && $a_analogphones[$id]) {
@@ -120,7 +117,7 @@ if ($_POST) {
 			$a_analogphones[] = $ap;
 		}
 		
-		touch($d_analogconfdirty_path);
+		touch($g['analog_dirty_path']);
 		
 		write_config();
 		
@@ -129,15 +126,21 @@ if ($_POST) {
 	}
 }
 
+if ($uniqid) {
+	$pconfig = analog_get_phone($uniqid);
+} else {
+	$pconfig = analog_generate_default_phone();
+}
+
 include("fbegin.inc");
 
 ?><script type="text/JavaScript">
 <!--
-	<?=javascript_public_direct_dial_editor("functions");?>
+	<?=javascript_public_access_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
-		<?=javascript_public_direct_dial_editor("ready");?>
+		<?=javascript_public_access_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 
 	});
@@ -145,63 +148,59 @@ include("fbegin.inc");
 //-->
 </script><?
 
-if ($input_errors) display_input_errors($input_errors);
-
-$analog_interfaces = analog_get_ab_interfaces("fxs");
-
-if (count($analog_interfaces) == 0) {
-
-	$page_link = '<a href="interfaces_analog.php">' . gettext("Interfaces") . ": " . gettext("Analog") . '</a>';
-	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br> To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
-	display_info_box($interfaces_warning, "keep");
-	
-} else {
-
-	?><form action="phones_analog_edit.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			<tr> 
-				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
-				<td width="80%" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>">
-					<br><span class="vexpl"><?=gettext("Internal extension used to reach this phone.");?></span>
-				</td>
-			</tr>
-			<? display_caller_id_field($pconfig['callerid'], 2); ?>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-			<? display_public_direct_dial_editor($pconfig['allowdirectdial'], $pconfig['publicname'], 1); ?>
-			<tr> 
-				<td valign="top" class="vncell"><?=gettext("Analog Interface");?></td>
-				<td class="vtable">
-					<select name="interface" class="formfld" id="interface"><?
-
-					foreach ($analog_interfaces as $interface) {
-						?><option value="<?=$interface['unit'];?>" <?
-						if ($interface['unit'] == $pconfig['interface']) {
-							echo "selected";
-						}
-						?>><?=$interface['name'];?></option><?
-					}
-					
-					?></select>
-				</td>
-			</tr>
-			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_provider_access_selector($pconfig['provider'], $pconfig['outbounduridial'], 1); ?>
-			<? display_description_field($pconfig['descr'], 1); ?>
-			<? display_advanced_settings_begin(1); ?>
-			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
-			<? display_advanced_settings_end(); ?>
-			<tr> 
-				<td valign="top">&nbsp;</td>
-				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-					<?php if (isset($id) && $a_analogphones[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>"> 
-					<?php endif; ?>
-				</td>
-			</tr>
-		</table>
-	</form><?
+if ($input_errors) {
+	display_input_errors($input_errors);
 }
+
+$ports = dahdi_get_ports("analog", "fxs");
+
+
+?><form action="phones_analog_edit.php" method="post" name="iform" id="iform">
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr> 
+			<td width="20%" valign="top" class="vncellreq"><?=gettext("Number");?></td>
+			<td width="80%" class="vtable">
+				<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>">
+				<br><span class="vexpl"><?=gettext("Number used to dial this phone.");?></span>
+			</td>
+		</tr>
+		<? display_caller_id_field($pconfig['callerid'], 2); ?>
+		<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
+		<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
+		<tr> 
+			<td valign="top" class="vncell"><?=gettext("Port");?></td>
+			<td class="vtable">
+				<select name="port" class="formfld" id="port"><?
+
+				foreach ($ports as $port) {
+					?><option value="<?=$port['uniqid'];?>" <?
+					if ($port['uniqid'] == $pconfig['port']) {
+						echo "selected";
+					}
+					?>><?=$port['name'];?></option><?
+				}
+				
+				?></select>
+			</td>
+		</tr>
+		<? display_channel_language_selector($pconfig['language'], 1); ?>
+		<? display_provider_access_selector($pconfig['provider'], 1); ?>
+		<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
+		<? display_description_field($pconfig['descr'], 1); ?>
+		<tr> 
+			<td valign="top">&nbsp;</td>
+			<td>
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><?
+
+				foreach ($carryovers as $co) {
+					?>
+					<input name="<?=$co;?>" id="<?=$co;?>" type="hidden" value="<?=$pconfig[$co];?>">
+					<?
+				}
+
+			?></td>
+		</tr>
+	</table>
+</form><?
 
 include("fend.inc");

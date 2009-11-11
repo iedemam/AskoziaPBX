@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -227,9 +227,8 @@ msgstr "epämääräinen"
 msgid "Ring Length"
 msgstr "Ympyrän pituus"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 "Määrä sekuntteja tämä puhelin soi ennen kun se merkitään ei vastatuksi."
 
@@ -278,18 +277,12 @@ msgstr "Lähetä ylhäällä annettu tunnus&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Lähetä puhelimen Soittajan Tunnus"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Palveluntarjoajat"
 
-msgid "There are currently no providers defined."
-msgstr "Tällä hetkellä ei ole palveluntarjoajia määritettynä."
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "suoran ulosmenevä soitto SIP uris:in kautta"
-
-msgid "Checked providers will be accessible from this phone."
+msgid "Block access to the providers selected above."
 msgstr ""
-"Valitut palveluntarjoajat tulevat olemaan käytettävissä tästä puhelimesta."
 
 msgid "Phones"
 msgstr "Puhelimet"
@@ -374,19 +367,20 @@ msgstr "Vastaajan Palvelut"
 msgid "must be configured</a> before this feature will work."
 msgstr "on pakko olla konfiguroitu</a> jotta tämä toiminto olisi toiminassa."
 
-msgid "Public Direct Dial"
-msgstr "Julkinen Suorapuhelu"
+#, fuzzy
+msgid "Public Access"
+msgstr "Julkinen IP osoite"
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr "salli jatkeen suorapuhelu julkisessa verkossa"
+msgid "prevent public access to this extension"
+msgstr ""
 
-msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr "julkinen nimi. Anna mukava nimi tälle jatkeelle."
+msgid "Use a word or name instead of the extension number."
+msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 "Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa SIP "
 "ja IAX2 uris:in kautta (jatke@%s)"
@@ -564,6 +558,9 @@ msgstr "Tehdasasetukset"
 
 msgid "Reboot"
 msgstr "Käynnistä uudellen"
+
+msgid "Providers"
+msgstr "Palveluntarjoajat"
 
 msgid "Applications"
 msgstr "Sovellukset"
@@ -2513,20 +2510,9 @@ msgstr "Puhelin tällä jatkeella on jo olemassa."
 msgid "A valid e-mail address must be specified."
 msgstr "Kelpaava s-posti osoite on oltava määritetty."
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
-"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
-
-msgid "Internal extension used to reach this phone."
+#, fuzzy
+msgid "Number used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
-
-msgid "Analog Interface"
-msgstr "Analogi Käyttöliittymä"
 
 msgid "Edit External Line"
 msgstr "Muokkaa Ulkoinen Linja"
@@ -2572,6 +2558,15 @@ msgstr "Tämän tilin salasana sekä todennus määritelmä."
 
 msgid "Edit ISDN Line"
 msgstr "Muokkaa ISDN Linjaa"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
+"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
 
 msgid "This phone's number (MSN)."
 msgstr "Tämän puhelimen numero (MSN)."
@@ -2653,6 +2648,9 @@ msgstr "Kuvaileva nimi tälle palveluntarjoajalle."
 
 msgid "Telephone number assigned to this line."
 msgstr "Puhelinnumero tälle linjalle."
+
+msgid "Analog Interface"
+msgstr "Analogi Käyttöliittymä"
 
 msgid "A valid username must be specified."
 msgstr "Kelpaava käyttäjänimi on oltava määritetty."
@@ -3347,6 +3345,29 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "Julkinen Suorapuhelu"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr "salli jatkeen suorapuhelu julkisessa verkossa"
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr "julkinen nimi. Anna mukava nimi tälle jatkeelle."
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "Tällä hetkellä ei ole palveluntarjoajia määritettynä."
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "suoran ulosmenevä soitto SIP uris:in kautta"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr ""
+#~ "Valitut palveluntarjoajat tulevat olemaan käytettävissä tästä puhelimesta."
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

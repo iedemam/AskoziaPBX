@@ -51,12 +51,13 @@ $g = array(
 	"phone_types" => array("sip", "iax", "isdn", "analog", "external"),
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
-	"dahdi_dirty_path" => "/var/run/dahdi.dirty"
+	"dahdi_dirty_path" => "/var/run/dahdi.dirty",
+	"analog_dirty_path" => "/var/run/analog.dirty"
 );
 
 $defaults = array();
 
-$defaults['dahdi']['echo-module'] = 'oslec';
+$defaults['dahdi']['echo-module'] = 'mg2';
 $defaults['dahdi']['echo-taps'] = 128;
 $defaults['dahdi']['rxgain'] = 0.0;
 $defaults['dahdi']['txgain'] = 0.0;
@@ -65,12 +66,15 @@ $defaults['dahdi']['bri']['lbo'] = 0;
 $defaults['dahdi']['bri']['framing'] = 'ccs';
 $defaults['dahdi']['bri']['coding'] = 'ami';
 
-$defaults['accounts'] = array();
-$defaults['accounts']['phones'] = array();
-$defaults['accounts']['phones']['ringlength'] = "20";
+$defaults['accounts']['language'] = 'en-us';
+$defaults['accounts']['codec'] = array('ulaw');
 
-$defaults['codec'] = array("ulaw");
+$defaults['accounts']['phones']['ringlength'] = 15;
+$defaults['accounts']['phones']['default-extension-start'] = 101;
+$defaults['accounts']['phones']['callerid'] = "Extension";
+$defaults['accounts']['phones']['novmwhenbusy'] = true;
 
+//
 $defaults['featuremap'] = array();
 $defaults['featuremap']['attendedtransfer'] = "**";
 $defaults['featuremap']['blindtransfer'] = "##";

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,9 +205,7 @@ msgstr "sonsuz"
 msgid "Ring Length"
 msgstr "Uyarı Ses Uzunluğu"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 
 msgid "Volume"
@@ -255,16 +253,11 @@ msgstr ""
 msgid "Send phones' Caller ID"
 msgstr "Telefonun Arayıcı İD'sini gönder"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Sunucular"
 
-msgid "There are currently no providers defined."
-msgstr ""
-
-msgid "direct outbound dialing via SIP uris"
-msgstr ""
-
-msgid "Checked providers will be accessible from this phone."
+msgid "Block access to the providers selected above."
 msgstr ""
 
 msgid "Phones"
@@ -330,19 +323,20 @@ msgstr "Sesli Mesaj Servisleri"
 msgid "must be configured</a> before this feature will work."
 msgstr ""
 
-msgid "Public Direct Dial"
+#, fuzzy
+msgid "Public Access"
+msgstr "Kamusal İP adres"
+
+msgid "prevent public access to this extension"
 msgstr ""
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr ""
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "Use a word or name instead of the extension number."
 msgstr ""
 
 #, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 
 msgid "Call Limit"
@@ -490,6 +484,9 @@ msgstr "Fabrika Çıkış Ayarları"
 
 msgid "Reboot"
 msgstr "Sistemi yeniden çalıştır"
+
+msgid "Providers"
+msgstr "Sunucular"
 
 msgid "Applications"
 msgstr "Uygulamalar"
@@ -2328,20 +2325,9 @@ msgstr ""
 msgid "A valid e-mail address must be specified."
 msgstr "Geçerli e-posta adresi girilmeli."
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
-"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
-
-msgid "Internal extension used to reach this phone."
-msgstr "Bu telefona ulaşmak için dahili hat"
-
-msgid "Analog Interface"
-msgstr "Analog Arayüz"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
 msgid "Edit External Line"
 msgstr "Harici Hattı Düzenle"
@@ -2384,6 +2370,15 @@ msgstr ""
 
 msgid "Edit ISDN Line"
 msgstr "İSDN Hattını düzenle"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
+"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
 
 msgid "This phone's number (MSN)."
 msgstr "Bu telefonun numarası (MSN)"
@@ -2461,6 +2456,9 @@ msgstr "Bu at için belirlenmiş telefon numarası."
 
 msgid "Telephone number assigned to this line."
 msgstr "Bu hatta atanmış telefon numarası."
+
+msgid "Analog Interface"
+msgstr "Analog Arayüz"
 
 msgid "A valid username must be specified."
 msgstr "Geçerli kullanıcı adı belirtilmeli."
@@ -3093,6 +3091,9 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "Bu telefona ulaşmak için dahili hat"
 
 #~ msgid "No compatible analog interfaces detected."
 #~ msgstr "Uyum sağlayan analog arayüz bulunamadı."

@@ -141,13 +141,15 @@
 		$config['interfaces']['lan']['topology'] == "natstatic")
 		services_dnsupdate_process();*/
 
-	/* setup DAHDI devices */
-	echo " - Configuring DAHDI ports... ";
-	dahdi_store_detected_ports();
-	dahdi_configure();
+	echo " - Auto configuring DAHDI ports... ";
+	dahdi_autoconfigure_ports();
 	echo "done\n";
 
-	/* start up asterisk */
+	echo " - Auto configuring Analog phones... ";
+	analog_autoconfigure_phones();
+	echo "done\n";
+
+	/* start up Asterisk */
 	echo " - Starting Asterisk... \n";
 	pbx_configure();
 	echo "done\n";

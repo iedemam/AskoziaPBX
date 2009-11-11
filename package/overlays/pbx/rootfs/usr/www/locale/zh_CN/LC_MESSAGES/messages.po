@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -225,9 +225,8 @@ msgstr "无限期"
 msgid "Ring Length"
 msgstr "响铃时长"
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+#, fuzzy
+msgid "The number of seconds this phone will ring before giving up."
 msgstr "响铃时间的秒数，之后将被认为无人应答。"
 
 msgid "Volume"
@@ -275,17 +274,12 @@ msgstr "传输字符串的上述定义&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "发送话机的Caller ID"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "提供商"
 
-msgid "There are currently no providers defined."
-msgstr "目前尚未定义任何提供商。"
-
-msgid "direct outbound dialing via SIP uris"
-msgstr "通过SIP uris对外直接拨号"
-
-msgid "Checked providers will be accessible from this phone."
-msgstr "选出的提供商可以让这个电话连接使用。"
+msgid "Block access to the providers selected above."
+msgstr ""
 
 msgid "Phones"
 msgstr "电话"
@@ -366,19 +360,20 @@ msgstr "语音信件服务"
 msgid "must be configured</a> before this feature will work."
 msgstr "在功能起效前，必须先设置。"
 
-msgid "Public Direct Dial"
-msgstr "公共直接拨打"
+#, fuzzy
+msgid "Public Access"
+msgstr "公网IP地址"
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr "允许分机可以直接通过公共网络拨号。"
+msgid "prevent public access to this extension"
+msgstr ""
 
-msgid "Public name. Enter a string to map a friendly name to this extension."
-msgstr "公开名字。输入一个字符串并把它映射给这个分机。"
+msgid "Use a word or name instead of the extension number."
+msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr "启用这个选项会允许这个分机可以被SIP和IAX2 uris呼叫。(extension@%s)"
 
 msgid "Call Limit"
@@ -543,6 +538,9 @@ msgstr "出厂默认设置"
 
 msgid "Reboot"
 msgstr "重启"
+
+msgid "Providers"
+msgstr "提供商"
 
 msgid "Applications"
 msgstr "应用"
@@ -2426,18 +2424,9 @@ msgstr "已经存在这个分机了。"
 msgid "A valid e-mail address must be specified."
 msgstr "必须指定一个有效的e-mail地址。"
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "Internal extension used to reach this phone."
-msgstr "内部分机用于达到此话机。"
-
-msgid "Analog Interface"
-msgstr "模拟接口"
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "这个内部分机用来拨打这个电话。"
 
 msgid "Edit External Line"
 msgstr "编辑外部线路"
@@ -2480,6 +2469,13 @@ msgstr "这个账号的密码和验证计划。"
 
 msgid "Edit ISDN Line"
 msgstr "编辑ISDN线路"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid "This phone's number (MSN)."
 msgstr "这个电话的号码（MSN）。"
@@ -2559,6 +2555,9 @@ msgstr "提供商的描述性名字。"
 
 msgid "Telephone number assigned to this line."
 msgstr "分配给这条线的电话号码。"
+
+msgid "Analog Interface"
+msgstr "模拟接口"
 
 msgid "A valid username must be specified."
 msgstr "必须指定一个有效的用户名。"
@@ -3214,6 +3213,28 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "Public Direct Dial"
+#~ msgstr "公共直接拨打"
+
+#~ msgid "allow extension to be directly dialed over public networks"
+#~ msgstr "允许分机可以直接通过公共网络拨号。"
+
+#~ msgid ""
+#~ "Public name. Enter a string to map a friendly name to this extension."
+#~ msgstr "公开名字。输入一个字符串并把它映射给这个分机。"
+
+#~ msgid "There are currently no providers defined."
+#~ msgstr "目前尚未定义任何提供商。"
+
+#~ msgid "direct outbound dialing via SIP uris"
+#~ msgstr "通过SIP uris对外直接拨号"
+
+#~ msgid "Checked providers will be accessible from this phone."
+#~ msgstr "选出的提供商可以让这个电话连接使用。"
+
+#~ msgid "Internal extension used to reach this phone."
+#~ msgstr "内部分机用于达到此话机。"
 
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "

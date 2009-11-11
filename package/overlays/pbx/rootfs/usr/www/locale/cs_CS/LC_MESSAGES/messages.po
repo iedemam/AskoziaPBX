@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 15:54+0100\n"
+"POT-Creation-Date: 2009-11-11 15:09+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,9 +221,7 @@ msgstr ""
 msgid "Ring Length"
 msgstr ""
 
-msgid ""
-"The number of seconds this phone will ring before being reported as "
-"unanswered."
+msgid "The number of seconds this phone will ring before giving up."
 msgstr ""
 
 msgid "Volume"
@@ -271,16 +269,11 @@ msgstr "Odeslat výše vložený řetězec&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Odeslat ID volajícího z telefonního přístroje"
 
-msgid "Providers"
+#, fuzzy
+msgid "Block Providers"
 msgstr "Operátoři"
 
-msgid "There are currently no providers defined."
-msgstr ""
-
-msgid "direct outbound dialing via SIP uris"
-msgstr ""
-
-msgid "Checked providers will be accessible from this phone."
+msgid "Block access to the providers selected above."
 msgstr ""
 
 msgid "Phones"
@@ -365,19 +358,20 @@ msgstr ""
 msgid "must be configured</a> before this feature will work."
 msgstr ""
 
-msgid "Public Direct Dial"
+#, fuzzy
+msgid "Public Access"
+msgstr "Veřejná adresa IP"
+
+msgid "prevent public access to this extension"
 msgstr ""
 
-msgid "allow extension to be directly dialed over public networks"
-msgstr ""
-
-msgid "Public name. Enter a string to map a friendly name to this extension."
+msgid "Use a word or name instead of the extension number."
 msgstr ""
 
 #, php-format
 msgid ""
-"Enabling this option will allow this extension to be reachable via SIP and "
-"IAX2 uris (extension@%s)"
+"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+"disabled here."
 msgstr ""
 
 msgid "Call Limit"
@@ -532,6 +526,9 @@ msgstr "Tovární nastavení"
 
 msgid "Reboot"
 msgstr "Restart"
+
+msgid "Providers"
+msgstr "Operátoři"
 
 msgid "Applications"
 msgstr ""
@@ -2378,18 +2375,9 @@ msgstr ""
 msgid "A valid e-mail address must be specified."
 msgstr ""
 
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "Internal extension used to reach this phone."
-msgstr ""
-
-msgid "Analog Interface"
-msgstr ""
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
 msgid "Edit External Line"
 msgstr ""
@@ -2431,6 +2419,13 @@ msgid "This account's password and authentication scheme."
 msgstr ""
 
 msgid "Edit ISDN Line"
+msgstr ""
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 
 msgid "This phone's number (MSN)."
@@ -2508,6 +2503,9 @@ msgid "Descriptive name for this provider."
 msgstr "Popisnější název tohoto poskytovatele."
 
 msgid "Telephone number assigned to this line."
+msgstr ""
+
+msgid "Analog Interface"
 msgstr ""
 
 msgid "A valid username must be specified."

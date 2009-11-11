@@ -32,11 +32,18 @@
 require("guiconfig.inc");
 $pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Analog"));
 
+if ($_GET['action'] == "forget") { 
+	dahdi_forget_port($_GET['uniqid']);
+	header("Location: interfaces_analog.php"); 
+	exit;
+}
+
 if (file_exists($g['dahdi_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= dahdi_configure();
+		$retval |= pbx_restart();
 		config_unlock();
 	}
 
@@ -84,10 +91,10 @@ if ($savemsg) {
 
 				?><tr>
 					<td width="5%" class="listhdrr">#</td>
-					<td width="40%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
 					<td width="35%" class="listhdrr"><?=gettext("Card");?></td>
 					<td width="15%" class="listhdrr"><?=gettext("Type");?></td>
-					<td width="5%" class="list"></td>
+					<td width="10%" class="list"></td>
 				</tr><?	
 			
 				foreach ($analog_ports as $port) {
@@ -98,7 +105,8 @@ if ($savemsg) {
 					<td class="listbg"><?=htmlspecialchars($port['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($port['card']);?></td>
 					<td class="listr"><?=htmlspecialchars($type);?></td>
-					<td valign="middle" nowrap class="list"><a href="interfaces_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a></td>
+					<td valign="middle" nowrap class="list"><a href="interfaces_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a>
+					<a href="?action=forget&uniqid=<?=$port['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this port\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget port settings");?>" border="0"></a></td>
 				</tr><?
 			}
 
