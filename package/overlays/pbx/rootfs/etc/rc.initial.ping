@@ -40,7 +40,7 @@
 	$pinghost = chop(fgets($fp));
 	if ($pinghost) {
 		echo "\n";
-		passthru("/sbin/ping -c 3 -n " . escapeshellarg($pinghost));
+		passthru("/bin/ping -c3 " . escapeshellarg($pinghost));
 		echo "\nPress ENTER to continue.\n";
 		fgets($fp);
 	}
