@@ -69,9 +69,9 @@ $defaults['dahdi']['bri']['coding'] = 'ami';
 $defaults['accounts']['language'] = 'en-us';
 $defaults['accounts']['codec'] = array('ulaw');
 
-$defaults['accounts']['phones']['ringlength'] = 15;
+$defaults['accounts']['phones']['ringlength'] = "indefinitely";
 $defaults['accounts']['phones']['default-extension-start'] = 101;
-$defaults['accounts']['phones']['callerid'] = "Extension";
+$defaults['accounts']['phones']['callerid'] = "Default Extension";
 $defaults['accounts']['phones']['novmwhenbusy'] = true;
 
 //
