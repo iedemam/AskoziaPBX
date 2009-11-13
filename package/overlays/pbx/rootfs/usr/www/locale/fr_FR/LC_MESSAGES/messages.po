@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -484,16 +484,6 @@ msgid ""
 msgstr ""
 "Ce numéro 'extérieur sera lu lorsque l'appel arrive sur la boîte vocale."
 
-msgid "Authentication Method"
-msgstr "Méthode d'authentification"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"La plupart des comptes utilisent la position 'auto'. Si cela échoue, "
-"choisissez une méthode d'authentification approprié pour votre serveur."
-
 msgid "of"
 msgstr "de"
 
@@ -528,6 +518,13 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "Les erreurs suivantes ont été détectés:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Réseau"
+
+msgid "Analog"
+msgstr "Analogique"
+
 msgid "Dialplan"
 msgstr "Plan de numérotation"
 
@@ -543,12 +540,6 @@ msgstr "Configuration Avancée"
 msgid "General Setup"
 msgstr "Configuration Générale"
 
-msgid "Interfaces"
-msgstr "Interfaces"
-
-msgid "Packages"
-msgstr "Paquets"
-
 msgid "Firmware"
 msgstr "Mise à jour du système"
 
@@ -561,6 +552,10 @@ msgstr "Configuration d'origine"
 msgid "Reboot"
 msgstr "Redémarrage"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Portugal"
+
 msgid "Providers"
 msgstr "Opérateurs"
 
@@ -572,6 +567,10 @@ msgstr "Groupes d'appels"
 
 msgid "Transfers"
 msgstr "Transferts"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Envoyer l'E-mail"
 
 msgid "Conferencing"
 msgstr "Conférences"
@@ -603,9 +602,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "RNIS"
 
-msgid "Analog"
-msgstr "Analogique"
-
 msgid "Manager"
 msgstr "Gestionnaire"
 
@@ -627,11 +623,22 @@ msgstr "Console Asterisk"
 msgid "System"
 msgstr "Système"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Mise à jour du système"
+
 msgid "Accounts"
 msgstr "Comptes"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Situation"
+
 msgid "Services"
 msgstr "Services"
+
+msgid "Packages"
+msgstr "Paquets"
 
 msgid "Status"
 msgstr "Etats"
@@ -1955,11 +1962,399 @@ msgstr "Mémoire utilisée"
 msgid "Notes"
 msgstr "Notes"
 
-msgid "Network"
-msgstr "Réseau"
+msgid "Interfaces"
+msgstr "Interfaces"
 
 msgid "Storage"
 msgstr "Stockage"
+
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"Le PABX utilise automatiquement l'espace libre de stockage en tant que zone "
+"de stockage permanente. Dans cette zone il peut être installé des paquets "
+"pour étendre les fonctionnalités du système."
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"Le système de stockage n'a pas assez de place pour installer des paquets."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Un minimum de %sMB est nécessaire. Dans le futur, les médias extérieurs "
+"pourront être utilisés, mais, actuellement, les paquets doivent être stockés "
+"sur le système interne."
+
+msgid "Capacity"
+msgstr "Capacité"
+
+msgid "State"
+msgstr "Etat"
+
+msgid "Installed Packages"
+msgstr "Paquets installés"
+
+msgid "system storage partition"
+msgstr "Partition Système"
+
+msgid "Edit Disk"
+msgstr "Configuration du disque"
+
+msgid "descriptive name"
+msgstr "nom descriptif"
+
+msgid "Wireless"
+msgstr "Wifi"
+
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"Si le système possède une carte Wifi, il peut être configuré pour "
+"fonctionner comme un point d'accès sans fil. L'appareil sans fil sera "
+"connecté à la passerelle du PABX relié au réseau câblé."
+
+msgid "SSID,Channel"
+msgstr "Canal, SSID"
+
+msgid ",WPA version,WPA cipher"
+msgstr ", version WPA, code WPA"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "Le WPA PSK doit être compris entre 8 et 63 caractères de long."
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+"Le canal 802.11a peut être sélectionné si la norme choisie est 802.11a ou "
+"supérieure."
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr ""
+"802.11a ne peut pas être sélectionné si un canal 802.11a est déjâ choisi."
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Aucune interface compatible Wifi détectée."
+
+msgid "Enable Wireless Interface"
+msgstr "Activer l'interface Wifi"
+
+msgid "Standard"
+msgstr "Norme"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Masquer SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"Si cette option est sélectionnée, le SSID ne sera pas diffusé, et seuls les "
+"clients qui connaissent exactement le SSID seront en mesure de se connecter. "
+"Notez que cette option ne devrait jamais être utilisée comme un substitut à "
+"une bonne sécurité et paramètres de chiffrement."
+
+msgid "Channel"
+msgstr "Canal"
+
+msgid "Auto"
+msgstr "Automatique"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "Paramètres WPA"
+
+msgid "Mode"
+msgstr "Mode"
+
+msgid "none"
+msgstr "aucun"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "WPA (seul)"
+
+msgid "WPA2 only"
+msgstr "WPA2 (seul)"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "Dans la plupart des cas, vous devez sélectionner \"WPA + WPA2\" ici."
+
+msgid "Cipher"
+msgstr "Code secret"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES / CCMP offrent une meilleure sécurité, mais TKIP est plus compatible "
+"avec le matériel plus ancien."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"Entrez le mot de passe qui sera utilisé dans le mode WPA-PSK. Cela doit être "
+"compris entre 8 et 63 caractères de long."
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "Activer le WEP"
+
+msgid "TX key"
+msgstr "Clé TX"
+
+msgid "Key 1:"
+msgstr "Clé 1:"
+
+msgid "Key 2:"
+msgstr "Clé 2:"
+
+msgid "Key 3:"
+msgstr "Clé 3:"
+
+msgid "Key 4:"
+msgstr "Clé 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"40 (64) bit à 5 caractères ASCII ou 10 chiffres hexadécimaux précédés par'0 "
+"x '."
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"104 (128) bit à 13 caractères ASCII ou 26 chiffres hexadécimaux précédés "
+"par'0 x '."
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"Pour envoyer des notifications d'appels manqués et les messages laissés sur "
+"votre boite vocale via l'E-mail, un serveur de courrier doit être "
+"correctement configuré ici."
+
+msgid "A valid e-mail address must be specified."
+msgstr "Une adresse E-mail valide doit être indiquée."
+
+msgid "A username must be specified."
+msgstr "Un nom d'utilisateur doit être spécifié."
+
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX: vérification de l'E-mail"
+
+#, fuzzy
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+"Le serveur SMTP est configuré correctement. Vous pouvez maintenant utiliser "
+"les notifications de Boite vocale par E-mail."
+
+msgid "E-mail has been sent successfully."
+msgstr "L'E-mail a été envoyé avec succès"
+
+msgid "E-mail was not sent, check your settings."
+msgstr "L'E-mail n'a pas été envoyée, vérifiez vos paramètres."
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr "Adresse IP ou nom du serveur SMTP et en option le port utilisé."
+
+msgid "E-mail Address"
+msgstr "Adresse E-mail"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Authentication Method"
+msgstr "Méthode d'authentification"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"La plupart des comptes utilisent la position 'auto'. Si cela échoue, "
+"choisissez une méthode d'authentification approprié pour votre serveur."
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Account uses TLS"
+msgstr "Utiliser un compte TLS"
+
+msgid "Test E-mail"
+msgstr "Vérifier l'E-mail"
+
+msgid "E-mail Me"
+msgstr "Envoyer l'E-mail"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+"Saisir une adresse e-mail et cliquer sur \"Envoyer l'E-mail\" pour tester "
+"vos paramètres SMTP."
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Configuration ligne analogique"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Un numéro d'identification valide doit être indiqué."
+
+msgid "A phone with this extension already exists."
+msgstr "Cette extension existe déjà."
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Extension interne utilisée pour composer ce numéro."
+
+msgid "Edit External Line"
+msgstr "Configuration de la ligne externe"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Extension interne utilisée pour composer ce numéro."
+
+msgid "Descriptive name for this phone."
+msgstr "Nom descriptif de cette ligne."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+
+msgid "Provider"
+msgstr "Opérateur"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr "Un opérateur sortant doit être utilisé pour accéder à ce téléphone."
+
+msgid "Edit IAX Account"
+msgstr "Configuration du compte IAX"
+
+msgid "A valid secret must be specified."
+msgstr "Un mot de passe valide doit être spécifié."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+"Un grand nombre de secondes doit être spécifié pour \"préciser\" le délai "
+"d'attente."
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+"Numéro de téléphone assigné à ce compte. Il s'agit aussi du nom "
+"d'utilisateur de ce compte."
+
+msgid "plaintext"
+msgstr "plain text"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "Le mot de passe du compte et le système d'authentification."
+
+msgid "Edit ISDN Line"
+msgstr "Configuration de la ligne RNIS"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Aucune interface compatible trouvée !</strong><br><br> Pour "
+"configurer ce type de compte, assurez-vous d'avoir entré les bonnes données "
+"sur la page %s"
+
+msgid "This phone's number (MSN)."
+msgstr "Numéro de ce téléphone (MSN)."
+
+msgid "Edit SIP Account"
+msgstr "Configuration du compte SIP"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr ""
+"Un grand nombre d'appels doivent être spécifiés pour \"l'appel limite.\""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr "Un grand nombre d'appels doivent être spécifiés pour \"l'occupation.\""
+
+msgid "This account's password."
+msgstr "Le mot de passe associé à ce compte."
+
+msgid "Dialplan Element Library"
+msgstr "Bibliothèque d'éléments du plan de numérotation"
+
+msgid "Functions"
+msgstr "Fonctions"
+
+msgid "Audio Prompts"
+msgstr "Messages vocaux"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"Voici une liste d'extensions actuellement définies avec une base Dial () "
+"commande pour les appeler. De nombreuses autres options sont disponibles "
+"pour cette commande, vous pourvez lire les documents de référence dans "
+"l'onglet Applications."
+
+msgid "Caller ID / Name"
+msgstr "Numéro/Nom d'identification"
+
+msgid "Basic"
+msgstr "De base"
+
+msgid "Filename"
+msgstr "Nom du fichier"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Size"
+msgstr "Taille"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1976,9 +2371,6 @@ msgstr "Type"
 msgid "Phone"
 msgstr "Extensions"
 
-msgid "Provider"
-msgstr "Opérateur"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "Configuration de l'interface analogique"
@@ -1991,21 +2383,9 @@ msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
 msgid "forget port settings"
 msgstr "annuler les paramètres de l'interface"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Configuration ligne analogique"
-
-#, fuzzy
-msgid "telephones"
-msgstr "Supprimer l'extension"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Opérateurs"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2286,9 +2666,6 @@ msgstr "Client DNS dynamique"
 msgid "Service Type"
 msgstr "Type de service"
 
-msgid "Password"
-msgstr "Mot de passe"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 
@@ -2310,321 +2687,6 @@ msgstr "Changer l'adresse IP de votre ordinateur"
 msgid "access the webGUI with the new IP address"
 msgstr "Accéder à l'interface WEB avec la nouvelle adresse IP"
 
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"Le PABX utilise automatiquement l'espace libre de stockage en tant que zone "
-"de stockage permanente. Dans cette zone il peut être installé des paquets "
-"pour étendre les fonctionnalités du système."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"Le système de stockage n'a pas assez de place pour installer des paquets."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Un minimum de %sMB est nécessaire. Dans le futur, les médias extérieurs "
-"pourront être utilisés, mais, actuellement, les paquets doivent être stockés "
-"sur le système interne."
-
-msgid "Capacity"
-msgstr "Capacité"
-
-msgid "State"
-msgstr "Etat"
-
-msgid "Installed Packages"
-msgstr "Paquets installés"
-
-msgid "system storage partition"
-msgstr "Partition Système"
-
-msgid "Edit Disk"
-msgstr "Configuration du disque"
-
-msgid "descriptive name"
-msgstr "nom descriptif"
-
-msgid "Wireless"
-msgstr "Wifi"
-
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Si le système possède une carte Wifi, il peut être configuré pour "
-"fonctionner comme un point d'accès sans fil. L'appareil sans fil sera "
-"connecté à la passerelle du PABX relié au réseau câblé."
-
-msgid "SSID,Channel"
-msgstr "Canal, SSID"
-
-msgid ",WPA version,WPA cipher"
-msgstr ", version WPA, code WPA"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "Le WPA PSK doit être compris entre 8 et 63 caractères de long."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"Le canal 802.11a peut être sélectionné si la norme choisie est 802.11a ou "
-"supérieure."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-"802.11a ne peut pas être sélectionné si un canal 802.11a est déjâ choisi."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Aucune interface compatible Wifi détectée."
-
-msgid "Enable Wireless Interface"
-msgstr "Activer l'interface Wifi"
-
-msgid "Standard"
-msgstr "Norme"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Masquer SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Si cette option est sélectionnée, le SSID ne sera pas diffusé, et seuls les "
-"clients qui connaissent exactement le SSID seront en mesure de se connecter. "
-"Notez que cette option ne devrait jamais être utilisée comme un substitut à "
-"une bonne sécurité et paramètres de chiffrement."
-
-msgid "Channel"
-msgstr "Canal"
-
-msgid "Auto"
-msgstr "Automatique"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "Paramètres WPA"
-
-msgid "Mode"
-msgstr "Mode"
-
-msgid "none"
-msgstr "aucun"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPA (seul)"
-
-msgid "WPA2 only"
-msgstr "WPA2 (seul)"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "Dans la plupart des cas, vous devez sélectionner \"WPA + WPA2\" ici."
-
-msgid "Cipher"
-msgstr "Code secret"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES / CCMP offrent une meilleure sécurité, mais TKIP est plus compatible "
-"avec le matériel plus ancien."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Entrez le mot de passe qui sera utilisé dans le mode WPA-PSK. Cela doit être "
-"compris entre 8 et 63 caractères de long."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Activer le WEP"
-
-msgid "TX key"
-msgstr "Clé TX"
-
-msgid "Key 1:"
-msgstr "Clé 1:"
-
-msgid "Key 2:"
-msgstr "Clé 2:"
-
-msgid "Key 3:"
-msgstr "Clé 3:"
-
-msgid "Key 4:"
-msgstr "Clé 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bit à 5 caractères ASCII ou 10 chiffres hexadécimaux précédés par'0 "
-"x '."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bit à 13 caractères ASCII ou 26 chiffres hexadécimaux précédés "
-"par'0 x '."
-
-msgid "Edit Analog Line"
-msgstr "Configuration de la ligne analogique"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Un numéro d'identification valide doit être indiqué."
-
-msgid "A phone with this extension already exists."
-msgstr "Cette extension existe déjà."
-
-msgid "A valid e-mail address must be specified."
-msgstr "Une adresse E-mail valide doit être indiquée."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Extension interne utilisée pour composer ce numéro."
-
-msgid "Edit External Line"
-msgstr "Configuration de la ligne externe"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Extension interne utilisée pour composer ce numéro."
-
-msgid "Descriptive name for this phone."
-msgstr "Nom descriptif de cette ligne."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr "Un opérateur sortant doit être utilisé pour accéder à ce téléphone."
-
-msgid "Edit IAX Account"
-msgstr "Configuration du compte IAX"
-
-msgid "A valid secret must be specified."
-msgstr "Un mot de passe valide doit être spécifié."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"Un grand nombre de secondes doit être spécifié pour \"préciser\" le délai "
-"d'attente."
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr ""
-"Numéro de téléphone assigné à ce compte. Il s'agit aussi du nom "
-"d'utilisateur de ce compte."
-
-msgid "plaintext"
-msgstr "plain text"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "Le mot de passe du compte et le système d'authentification."
-
-msgid "Edit ISDN Line"
-msgstr "Configuration de la ligne RNIS"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Aucune interface compatible trouvée !</strong><br><br> Pour "
-"configurer ce type de compte, assurez-vous d'avoir entré les bonnes données "
-"sur la page %s"
-
-msgid "This phone's number (MSN)."
-msgstr "Numéro de ce téléphone (MSN)."
-
-msgid "Edit SIP Account"
-msgstr "Configuration du compte SIP"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
-"Un grand nombre d'appels doivent être spécifiés pour \"l'appel limite.\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "Un grand nombre d'appels doivent être spécifiés pour \"l'occupation.\""
-
-msgid "This account's password."
-msgstr "Le mot de passe associé à ce compte."
-
-msgid "Dialplan Element Library"
-msgstr "Bibliothèque d'éléments du plan de numérotation"
-
-msgid "Functions"
-msgstr "Fonctions"
-
-msgid "Audio Prompts"
-msgstr "Messages vocaux"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"Voici une liste d'extensions actuellement définies avec une base Dial () "
-"commande pour les appeler. De nombreuses autres options sont disponibles "
-"pour cette commande, vous pourvez lire les documents de référence dans "
-"l'onglet Applications."
-
-msgid "Caller ID / Name"
-msgstr "Numéro/Nom d'identification"
-
-msgid "Basic"
-msgstr "De base"
-
-msgid "Filename"
-msgstr "Nom du fichier"
-
-msgid "Format"
-msgstr "Format"
-
-msgid "Size"
-msgstr "Taille"
-
 msgid "Printable Dialplan"
 msgstr "Plan de numérotation imprimable"
 
@@ -2636,6 +2698,9 @@ msgstr "Code PIN"
 
 msgid "Custom Applications"
 msgstr "Applications Personnalisés"
+
+msgid "Edit Analog Line"
+msgstr "Configuration de la ligne analogique"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Un numéro de téléphone valide doit être spécifié."
@@ -2767,69 +2832,11 @@ msgid "Optional PIN needed to access this conference room."
 msgstr ""
 "Un code PIN peut être défini pour permettre l'accés à la salle de conférence."
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Pour envoyer des notifications d'appels manqués et les messages laissés sur "
-"votre boite vocale via l'E-mail, un serveur de courrier doit être "
-"correctement configuré ici."
-
-msgid "A username must be specified."
-msgstr "Un nom d'utilisateur doit être spécifié."
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Une adresse E-mail valide doit être spécifiée pour \"from address\"."
 
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoziaPBX: vérification de l'E-mail"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-"Le serveur SMTP est configuré correctement. Vous pouvez maintenant utiliser "
-"les notifications de Boite vocale par E-mail."
-
-msgid "E-mail has been sent successfully."
-msgstr "L'E-mail a été envoyé avec succès"
-
-msgid "E-mail was not sent, check your settings."
-msgstr "L'E-mail n'a pas été envoyée, vérifiez vos paramètres."
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr "Adresse IP ou nom du serveur SMTP et en option le port utilisé."
-
-msgid "E-mail Address"
-msgstr "Adresse E-mail"
-
-msgid "Options"
-msgstr "Options"
-
-msgid "Account uses TLS"
-msgstr "Utiliser un compte TLS"
-
-msgid "TLS certificates are currently not verified."
-msgstr "Les certificats TLS ne sont pas vérifiés."
-
-msgid "Test E-mail"
-msgstr "Vérifier l'E-mail"
-
-msgid "E-mail Me"
-msgstr "Envoyer l'E-mail"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-"Saisir une adresse e-mail et cliquer sur \"Envoyer l'E-mail\" pour tester "
-"vos paramètres SMTP."
-
-msgid "Presentation"
-msgstr "Présentation"
 
 msgid "From Address"
 msgstr "Expéditeur"
@@ -2837,11 +2844,9 @@ msgstr "Expéditeur"
 msgid "This will be shown as voicemail service's sending address."
 msgstr "Adresse E-mail affichée lors de l'envoi d'un message."
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr "Entrer ici un e-mail par défaut."
-
-msgid "E-Mail Language"
-msgstr "Langue de l'E-mail"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2907,6 +2912,9 @@ msgid ""
 msgstr ""
 "Si vous ne voyez pas de graphique, vous devez installer <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">SVG de Adobe</a>"
+
+msgid "Network"
+msgstr "Réseau"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3380,6 +3388,26 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "Supprimer l'extension"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Opérateurs"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "Les certificats TLS ne sont pas vérifiés."
+
+#~ msgid "Presentation"
+#~ msgstr "Présentation"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "Langue de l'E-mail"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "Appel direct public"

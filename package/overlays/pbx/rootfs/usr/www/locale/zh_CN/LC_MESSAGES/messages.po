@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -463,16 +463,6 @@ msgstr ""
 "这个'外部'号码会被主叫方读回，如果遇到语音邮件；默认的会到帐户的用户名，前提"
 "是名字是数字。如果不是数字的话，将会被读回到相应的内部分机上。"
 
-msgid "Authentication Method"
-msgstr "验证方法"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"大多数账号在'auto'下就能工作。如果这样出错了，请选择一个适合您服务器的验证方"
-"法。"
-
 msgid "of"
 msgstr "of"
 
@@ -506,6 +496,13 @@ msgstr "一个AskoziaPBX的新<strong>beta</strong>版本已经可用了！"
 msgid "The following input errors were detected:"
 msgstr "发现以下输入错误："
 
+#, fuzzy
+msgid "Local Network"
+msgstr "网络"
+
+msgid "Analog"
+msgstr "模拟"
+
 msgid "Dialplan"
 msgstr "拨号计划"
 
@@ -521,12 +518,6 @@ msgstr "高级"
 msgid "General Setup"
 msgstr "一般安装"
 
-msgid "Interfaces"
-msgstr "界面"
-
-msgid "Packages"
-msgstr "软件包"
-
 msgid "Firmware"
 msgstr "固件"
 
@@ -539,6 +530,10 @@ msgstr "出厂默认设置"
 msgid "Reboot"
 msgstr "重启"
 
+#, fuzzy
+msgid "Ports"
+msgstr "葡萄牙"
+
 msgid "Providers"
 msgstr "提供商"
 
@@ -550,6 +545,10 @@ msgstr "通话组"
 
 msgid "Transfers"
 msgstr "转移"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "电邮地址"
 
 msgid "Conferencing"
 msgstr "会议"
@@ -581,9 +580,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "模拟"
-
 msgid "Manager"
 msgstr "管理"
 
@@ -605,11 +601,22 @@ msgstr "管理界面"
 msgid "System"
 msgstr "系统"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "固件"
+
 msgid "Accounts"
 msgstr "账号"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "位置"
+
 msgid "Services"
 msgstr "服务"
+
+msgid "Packages"
+msgstr "软件包"
 
 msgid "Status"
 msgstr "状态"
@@ -1903,11 +1910,371 @@ msgstr "内存使用"
 msgid "Notes"
 msgstr "Notes"
 
-msgid "Network"
-msgstr "网络"
+msgid "Interfaces"
+msgstr "界面"
 
 msgid "Storage"
 msgstr "储存"
+
+#, fuzzy
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"AskoziaPBX 会自动分配剩余的空间用作永久存储。系统扩展包可以被安装到这个空间。"
+
+msgid "The system storage media is not large enough to install packages."
+msgstr "系统剩余的储存空间不够安装这个包。"
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"最小需要 %s MB 空间。在将来，使用外接的储存媒介会成为可能，但是现在，包必须储"
+"存在内部媒介上。"
+
+msgid "Capacity"
+msgstr "容量"
+
+msgid "State"
+msgstr "状态"
+
+msgid "Installed Packages"
+msgstr "已安装的包"
+
+msgid "system storage partition"
+msgstr "系统存储分区"
+
+msgid "Edit Disk"
+msgstr "编辑磁盘"
+
+msgid "descriptive name"
+msgstr "描述名"
+
+msgid "Wireless"
+msgstr "无线"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"如果在现有的系统中有一个兼容的无线网卡，那么他可以被配置成为一个接入点。它会"
+"被桥接到AskoziaPBX连接的有线网络。"
+
+msgid "SSID,Channel"
+msgstr "SSID，信道"
+
+msgid ",WPA version,WPA cipher"
+msgstr "WPA版本，WPA 密钥"
+
+msgid ",WPA PSK"
+msgstr "WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "WPA PSK密钥必须由长度8到63个字符组成。"
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr "只有当标准同样是802.11a的时候，才能选择802.11a的信道。"
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr "只有选择了802.11a的信道，才能选用802.11a。"
+
+msgid "No compatible wireless interfaces detected."
+msgstr "没有检测到兼容的无线接口。"
+
+msgid "Enable Wireless Interface"
+msgstr "允许无线接口"
+
+msgid "Standard"
+msgstr "标准"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "隐藏SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"如果勾选此选项，则SSID不会被以HostAP的模式被广播，并且只有知道确切SSID的客户"
+"端才能连接。注意的是，请不要用此选项来代替安全/加密的设置。"
+
+msgid "Channel"
+msgstr "信道"
+
+msgid "Auto"
+msgstr "自动"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA设置"
+
+msgid "Mode"
+msgstr "模式"
+
+msgid "none"
+msgstr "没有"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "仅WPA"
+
+msgid "WPA2 only"
+msgstr "仅WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "在大多数情况下，您应该在这里选择&quot;WPA + WPA2&quot;。"
+
+msgid "Cipher"
+msgstr "密钥"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP与老的硬件有更好的兼容性。"
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr "请输入WPA-PSK将用到的密码。其长度必须在8到63之间。"
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "允许 WEP"
+
+msgid "TX key"
+msgstr "TX Key"
+
+msgid "Key 1:"
+msgstr "Key 1:"
+
+msgid "Key 2:"
+msgstr "Key 2:"
+
+msgid "Key 3:"
+msgstr "Key 3:"
+
+msgid "Key 4:"
+msgstr "Key 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr "40 (64) 位的密钥可以用5位的ASCII码或者10位以0x开头的16进制输入。"
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"为了通过电子邮件发送错过电话通知和记录下的语音信息，这里需要正确的配置一个邮"
+"件服务器。"
+
+msgid "A valid e-mail address must be specified."
+msgstr "必须指定一个有效的e-mail地址。"
+
+msgid "A username must be specified."
+msgstr "必须指定一个用户名。"
+
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX: 执行命令"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+#, fuzzy
+msgid "E-mail has been sent successfully."
+msgstr "改动应用成功。"
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr "SMTP主机URL或者IP地址以及可选的端口。"
+
+msgid "E-mail Address"
+msgstr "电邮地址"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Authentication Method"
+msgstr "验证方法"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"大多数账号在'auto'下就能工作。如果这样出错了，请选择一个适合您服务器的验证方"
+"法。"
+
+msgid "Options"
+msgstr "选项"
+
+#, fuzzy
+msgid "Account uses TLS"
+msgstr "账号"
+
+msgid "Test E-mail"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail Me"
+msgstr "电邮地址"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "编辑模拟电话"
+
+msgid "A valid Caller ID must be specified."
+msgstr "必须指定一个有效的Caller ID。"
+
+msgid "A phone with this extension already exists."
+msgstr "已经存在这个分机了。"
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "这个内部分机用来拨打这个电话。"
+
+msgid "Edit External Line"
+msgstr "编辑外部线路"
+
+msgid "The internal extension used to dial this phone."
+msgstr "这个内部分机用来拨打这个电话。"
+
+msgid "Descriptive name for this phone."
+msgstr "这个电话的描述性名称。"
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr "数字或者字串用来拨打这个电话。这会是直接拨打，不会应用在外线模式中。"
+
+msgid "Provider"
+msgstr "提供商"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr "外线提供商用来达到这个电话。"
+
+msgid "Edit IAX Account"
+msgstr "编辑IAX账号"
+
+msgid "A valid secret must be specified."
+msgstr "必须输入一个有效的密码。"
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "必须为\"qualify\"输入一个超时的秒数。"
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr "这个电话号码被分配到这个账号和它的用户名。"
+
+msgid "plaintext"
+msgstr "明文"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "这个账号的密码和验证计划。"
+
+msgid "Edit ISDN Line"
+msgstr "编辑ISDN线路"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+
+msgid "This phone's number (MSN)."
+msgstr "这个电话的号码（MSN）。"
+
+msgid "Edit SIP Account"
+msgstr "编辑SIP账号"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr "请输入一个数字给\"call limit(呼叫限制)。\""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr "请输入一个数字给\"busy limit(繁忙限制).\""
+
+msgid "This account's password."
+msgstr "这个账号的密码。"
+
+msgid "Dialplan Element Library"
+msgstr "拨号计划元素库"
+
+msgid "Functions"
+msgstr "功能"
+
+msgid "Audio Prompts"
+msgstr "音频提示"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"以下的这个清单，列出了目前定义的用基本dial()命令就能拨通的电话。很多附加的选"
+"项可以加入这个命令中，请在应用程序选项卡中阅读它的参考文档。"
+
+msgid "Caller ID / Name"
+msgstr "Caller ID / 名字"
+
+msgid "Basic"
+msgstr "基本"
+
+msgid "Filename"
+msgstr "文件名"
+
+msgid "Format"
+msgstr "格式"
+
+msgid "Size"
+msgstr "大小"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1924,9 +2291,6 @@ msgstr "类型"
 msgid "Phone"
 msgstr "电话"
 
-msgid "Provider"
-msgstr "提供商"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "编辑模拟接口"
@@ -1939,21 +2303,9 @@ msgstr "真的要忽略这个接口的设定？"
 msgid "forget port settings"
 msgstr "忽略接口设定"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "编辑模拟电话"
-
-#, fuzzy
-msgid "telephones"
-msgstr "删除电话"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "提供商"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2212,9 +2564,6 @@ msgstr "动态DNS客户端"
 msgid "Service Type"
 msgstr "服务类型"
 
-msgid "Password"
-msgstr "密码"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr "是的，别名 \"*.hostname.domain\" 到上述指定的主机。"
 
@@ -2235,295 +2584,6 @@ msgstr "改变您计算机的IP地址"
 msgid "access the webGUI with the new IP address"
 msgstr "用一个新IP地址访问网页界面"
 
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX 会自动分配剩余的空间用作永久存储。系统扩展包可以被安装到这个空间。"
-
-msgid "The system storage media is not large enough to install packages."
-msgstr "系统剩余的储存空间不够安装这个包。"
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"最小需要 %s MB 空间。在将来，使用外接的储存媒介会成为可能，但是现在，包必须储"
-"存在内部媒介上。"
-
-msgid "Capacity"
-msgstr "容量"
-
-msgid "State"
-msgstr "状态"
-
-msgid "Installed Packages"
-msgstr "已安装的包"
-
-msgid "system storage partition"
-msgstr "系统存储分区"
-
-msgid "Edit Disk"
-msgstr "编辑磁盘"
-
-msgid "descriptive name"
-msgstr "描述名"
-
-msgid "Wireless"
-msgstr "无线"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"如果在现有的系统中有一个兼容的无线网卡，那么他可以被配置成为一个接入点。它会"
-"被桥接到AskoziaPBX连接的有线网络。"
-
-msgid "SSID,Channel"
-msgstr "SSID，信道"
-
-msgid ",WPA version,WPA cipher"
-msgstr "WPA版本，WPA 密钥"
-
-msgid ",WPA PSK"
-msgstr "WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK密钥必须由长度8到63个字符组成。"
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr "只有当标准同样是802.11a的时候，才能选择802.11a的信道。"
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "只有选择了802.11a的信道，才能选用802.11a。"
-
-msgid "No compatible wireless interfaces detected."
-msgstr "没有检测到兼容的无线接口。"
-
-msgid "Enable Wireless Interface"
-msgstr "允许无线接口"
-
-msgid "Standard"
-msgstr "标准"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "隐藏SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"如果勾选此选项，则SSID不会被以HostAP的模式被广播，并且只有知道确切SSID的客户"
-"端才能连接。注意的是，请不要用此选项来代替安全/加密的设置。"
-
-msgid "Channel"
-msgstr "信道"
-
-msgid "Auto"
-msgstr "自动"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA设置"
-
-msgid "Mode"
-msgstr "模式"
-
-msgid "none"
-msgstr "没有"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "仅WPA"
-
-msgid "WPA2 only"
-msgstr "仅WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "在大多数情况下，您应该在这里选择&quot;WPA + WPA2&quot;。"
-
-msgid "Cipher"
-msgstr "密钥"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP与老的硬件有更好的兼容性。"
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr "请输入WPA-PSK将用到的密码。其长度必须在8到63之间。"
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "允许 WEP"
-
-msgid "TX key"
-msgstr "TX Key"
-
-msgid "Key 1:"
-msgstr "Key 1:"
-
-msgid "Key 2:"
-msgstr "Key 2:"
-
-msgid "Key 3:"
-msgstr "Key 3:"
-
-msgid "Key 4:"
-msgstr "Key 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr "40 (64) 位的密钥可以用5位的ASCII码或者10位以0x开头的16进制输入。"
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
-
-msgid "Edit Analog Line"
-msgstr "编辑模拟线路"
-
-msgid "A valid Caller ID must be specified."
-msgstr "必须指定一个有效的Caller ID。"
-
-msgid "A phone with this extension already exists."
-msgstr "已经存在这个分机了。"
-
-msgid "A valid e-mail address must be specified."
-msgstr "必须指定一个有效的e-mail地址。"
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "这个内部分机用来拨打这个电话。"
-
-msgid "Edit External Line"
-msgstr "编辑外部线路"
-
-msgid "The internal extension used to dial this phone."
-msgstr "这个内部分机用来拨打这个电话。"
-
-msgid "Descriptive name for this phone."
-msgstr "这个电话的描述性名称。"
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr "数字或者字串用来拨打这个电话。这会是直接拨打，不会应用在外线模式中。"
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr "外线提供商用来达到这个电话。"
-
-msgid "Edit IAX Account"
-msgstr "编辑IAX账号"
-
-msgid "A valid secret must be specified."
-msgstr "必须输入一个有效的密码。"
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "必须为\"qualify\"输入一个超时的秒数。"
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr "这个电话号码被分配到这个账号和它的用户名。"
-
-msgid "plaintext"
-msgstr "明文"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "这个账号的密码和验证计划。"
-
-msgid "Edit ISDN Line"
-msgstr "编辑ISDN线路"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "This phone's number (MSN)."
-msgstr "这个电话的号码（MSN）。"
-
-msgid "Edit SIP Account"
-msgstr "编辑SIP账号"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "请输入一个数字给\"call limit(呼叫限制)。\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "请输入一个数字给\"busy limit(繁忙限制).\""
-
-msgid "This account's password."
-msgstr "这个账号的密码。"
-
-msgid "Dialplan Element Library"
-msgstr "拨号计划元素库"
-
-msgid "Functions"
-msgstr "功能"
-
-msgid "Audio Prompts"
-msgstr "音频提示"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"以下的这个清单，列出了目前定义的用基本dial()命令就能拨通的电话。很多附加的选"
-"项可以加入这个命令中，请在应用程序选项卡中阅读它的参考文档。"
-
-msgid "Caller ID / Name"
-msgstr "Caller ID / 名字"
-
-msgid "Basic"
-msgstr "基本"
-
-msgid "Filename"
-msgstr "文件名"
-
-msgid "Format"
-msgstr "格式"
-
-msgid "Size"
-msgstr "大小"
-
 msgid "Printable Dialplan"
 msgstr "可打印的拨号计划"
 
@@ -2535,6 +2595,9 @@ msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "自定义应用程序"
+
+msgid "Edit Analog Line"
+msgstr "编辑模拟线路"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "必须指定一个有效的Caller ID字符串。"
@@ -2653,68 +2716,11 @@ msgstr "接入验证码(PIN)"
 msgid "Optional PIN needed to access this conference room."
 msgstr "接入此会议室需要可选的验证码。"
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"为了通过电子邮件发送错过电话通知和记录下的语音信息，这里需要正确的配置一个邮"
-"件服务器。"
-
-msgid "A username must be specified."
-msgstr "必须指定一个用户名。"
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "必须为\"来自地址\"指定一个有效的电邮地址。"
 
-#, fuzzy
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoziaPBX: 执行命令"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-
-#, fuzzy
-msgid "E-mail has been sent successfully."
-msgstr "改动应用成功。"
-
-msgid "E-mail was not sent, check your settings."
-msgstr ""
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr "SMTP主机URL或者IP地址以及可选的端口。"
-
-msgid "E-mail Address"
-msgstr "电邮地址"
-
-msgid "Options"
-msgstr "选项"
-
-#, fuzzy
-msgid "Account uses TLS"
-msgstr "账号"
-
-msgid "TLS certificates are currently not verified."
-msgstr "TLS证书，现在尚未验证。"
-
-msgid "Test E-mail"
-msgstr ""
-
-#, fuzzy
-msgid "E-mail Me"
-msgstr "电邮地址"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-
-msgid "Presentation"
-msgstr "简报"
 
 msgid "From Address"
 msgstr "从地址"
@@ -2722,11 +2728,9 @@ msgstr "从地址"
 msgid "This will be shown as voicemail service's sending address."
 msgstr "这会被显示为语音邮件服务器的发送地址。"
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr "默认的电邮地址在上方输入。"
-
-msgid "E-Mail Language"
-msgstr "电邮语言"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2790,6 +2794,9 @@ msgid ""
 msgstr ""
 "如果您不能看到这个图片，那么您可能需要安装<a href=\"http://www.adobe.com/svg/"
 "viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>。"
+
+msgid "Network"
+msgstr "网络"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3213,6 +3220,26 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "删除电话"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "提供商"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "TLS证书，现在尚未验证。"
+
+#~ msgid "Presentation"
+#~ msgstr "简报"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "电邮语言"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "公共直接拨打"

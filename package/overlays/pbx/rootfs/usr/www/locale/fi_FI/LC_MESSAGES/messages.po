@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -482,16 +482,6 @@ msgstr ""
 "vastaajaa; oletus on tilin käyttäjänimi jos se on numeerinen. Jos ei, "
 "sisäinen jatke jonne tämä puhelu reititettiin annetaan."
 
-msgid "Authentication Method"
-msgstr "Laillistamiskeino"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
-"valitse sopiva laillistamiskeino valikosta."
-
 msgid "of"
 msgstr ""
 
@@ -526,6 +516,13 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "Seuraavat virheet löydettiin:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Verkko"
+
+msgid "Analog"
+msgstr "Analogi"
+
 msgid "Dialplan"
 msgstr "Soittosuunnitelma"
 
@@ -541,12 +538,6 @@ msgstr "Lisäasetukset"
 msgid "General Setup"
 msgstr "Yleiset Asetukset"
 
-msgid "Interfaces"
-msgstr "Käyttöliittymät"
-
-msgid "Packages"
-msgstr "Paketit"
-
 msgid "Firmware"
 msgstr "Laiteohjelmisto"
 
@@ -559,6 +550,10 @@ msgstr "Tehdasasetukset"
 msgid "Reboot"
 msgstr "Käynnistä uudellen"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Portugali"
+
 msgid "Providers"
 msgstr "Palveluntarjoajat"
 
@@ -570,6 +565,10 @@ msgstr "Puheluryhmät"
 
 msgid "Transfers"
 msgstr "Siirrot"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Lähetä"
 
 msgid "Conferencing"
 msgstr "Konferenssit"
@@ -601,9 +600,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "Analogi"
-
 msgid "Manager"
 msgstr "Hallitseminen"
 
@@ -625,11 +621,22 @@ msgstr "Hallinta Käyttöliit."
 msgid "System"
 msgstr "Järjestelmä"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Laiteohjelmisto"
+
 msgid "Accounts"
 msgstr "Tilit"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Paikka"
+
 msgid "Services"
 msgstr "Palvelut"
+
+msgid "Packages"
+msgstr "Paketit"
 
 msgid "Status"
 msgstr "Status"
@@ -1951,11 +1958,393 @@ msgstr "Muistin käyttö"
 msgid "Notes"
 msgstr "Muistiinpanot"
 
-msgid "Network"
-msgstr "Verkko"
+msgid "Interfaces"
+msgstr "Käyttöliittymät"
 
 msgid "Storage"
 msgstr "Tallentaminen"
+
+#, fuzzy
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"AskoziaPBX varaa automaattisesti ylimääräiseksi jäänyttä tilaa jatkuvaan "
+"tallennukseen. Paketit jotka täydentävät ohjelmiston toimintaa voi asentaa "
+"tähän."
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa "
+"paketteja."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Minimi %sMt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, "
+"mutta tällä hetkellä paketit on tallennettava sisäiselle medialle."
+
+msgid "Capacity"
+msgstr "Kapasiteetti"
+
+msgid "State"
+msgstr "Tila"
+
+msgid "Installed Packages"
+msgstr "Asennetut Paketit"
+
+msgid "system storage partition"
+msgstr "järjestelmän tallennus osio"
+
+msgid "Edit Disk"
+msgstr "Muokkaa Levyä"
+
+msgid "descriptive name"
+msgstr "kuvaileva nimi"
+
+msgid "Wireless"
+msgstr "Langaton"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"Jos yhteensopiva w-lan kortti on läsnä, sitä voi konfiguroida niin että se "
+"toimii tukiasemana. Se tulee olemaan sillattuna langalliseen verkkoon johon "
+"AskoziaPBX on kytketty."
+
+msgid "SSID,Channel"
+msgstr "SSID,Kanava"
+
+msgid ",WPA version,WPA cipher"
+msgstr ".WPA versio,WPA salaus"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "WPA PSK on oltava 8 ja 63 merkin pituinen."
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+"802.11a kanavat on vain käytettävissä jos standardi on asetettu 802.11a:ksi."
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr "802.11a voi ainoastaan valita jos 802.11a kanava on myös valittu."
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Yhteensopivaa langatonta käyttöliittymää ei havaittu"
+
+msgid "Enable Wireless Interface"
+msgstr "Mahdollista Langatonta Käyttöliittymää"
+
+msgid "Standard"
+msgstr "Standardi"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Piilota SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"Jos tämä on valittu SSID ei lähetetä hostap tilassa, ja ainoastaan käyttäjät "
+"jotka tietävät SSID:een voivat yhdistää. Huomioi että tämä vaihtoehto ei "
+"missään nimessä ole korvike kunnolliselle turvallisuus/salaus asetukselle."
+
+msgid "Channel"
+msgstr "Kanava"
+
+msgid "Auto"
+msgstr "Automattinen"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA asetukset"
+
+msgid "Mode"
+msgstr "Tila"
+
+msgid "none"
+msgstr "ei yhtään"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "vain WPA"
+
+msgid "WPA2 only"
+msgstr "vain WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "Useimissa tapauksissa sinun on valittava &quot;WPA + WPA2&quot; tässä."
+
+msgid "Cipher"
+msgstr "Salaus"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES/CCMP antaa paremman suojauksen kun TKIP, mutta TKIP on yhteensopiva "
+"vanhempien laitteiden kanssa."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"Anna salasana mikä käytetään WPA-PSK tilassa. Sen on oltava 8 ja 63 merkin "
+"pituinen."
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "Mahdollista WEP"
+
+msgid "TX key"
+msgstr "TX avain"
+
+msgid "Key 1:"
+msgstr "Avain 1:"
+
+msgid "Key 2:"
+msgstr "Avain 2:"
+
+msgid "Key 3:"
+msgstr "Avain 3:"
+
+msgid "Key 4:"
+msgstr "Avain 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"40 (64) tavuinen avain on annettava 5 ASCII merkillä tai 10 HEX numeroilla "
+"jonka ennen tulee laittaa '0x'."
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"104 (128) tavuinen avain on annettava 13 ASCII merkillä tai 26 HEX "
+"numeroilla jonka ennen tulee laittaa '0x'."
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"Jotta voi lähettää vastaamaton puhelu ilmoituksia ja vastaaja viestejä "
+"sähköpostiin, s-posti palvelin on oltava oikein määritetty."
+
+msgid "A valid e-mail address must be specified."
+msgstr "Kelpaava s-posti osoite on oltava määritetty."
+
+msgid "A username must be specified."
+msgstr "Käyttäjänimi on oltava määritetty."
+
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoxiaPBX S-posti Testi"
+
+#, fuzzy
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+"SMTP asetuksesi toimii täydellisesti. Vastaajapalvelusi on nyt käyttövalmis."
+
+msgid "E-mail has been sent successfully."
+msgstr "S-postin lähetys onnistui."
+
+msgid "E-mail was not sent, check your settings."
+msgstr "S-postin lähetys epäonnistui, tarkista asetukset."
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr "SMTP isäntä URL tai IP osoite ja valinnainen portti."
+
+msgid "E-mail Address"
+msgstr "S-posti Osoite"
+
+msgid "Password"
+msgstr "Salasana"
+
+msgid "Authentication Method"
+msgstr "Laillistamiskeino"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
+"valitse sopiva laillistamiskeino valikosta."
+
+msgid "Options"
+msgstr "Valinnat"
+
+msgid "Account uses TLS"
+msgstr "Tili käyttää TLS"
+
+msgid "Test E-mail"
+msgstr "Testi S-posti"
+
+msgid "E-mail Me"
+msgstr "Lähetä"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+"Anna s-posti osoitteesi ja klikkaa &quot;Lähetä&quot; testaaksesi SMTP "
+"asetuksia."
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Muokkaa Analogi"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
+
+msgid "A phone with this extension already exists."
+msgstr "Puhelin tällä jatkeella on jo olemassa."
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
+
+msgid "Edit External Line"
+msgstr "Muokkaa Ulkoinen Linja"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
+
+msgid "Descriptive name for this phone."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"Numero tai tunnus joka käytetään tämän puhelimen tavoittamiseen. Tämä "
+"käytetään suoraan; ulosmenevät kaava-säännöt eivät päte tähän"
+
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr ""
+"Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
+
+msgid "Edit IAX Account"
+msgstr "Muokkaa IAX Tiliä"
+
+msgid "A valid secret must be specified."
+msgstr "Kelpaava salaisuus on oltava määritetty."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr "Puhelinnumero tälle tilille. Myös tämän tilin käyttäjänimi."
+
+msgid "plaintext"
+msgstr "ilman suojausta"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "Tämän tilin salasana sekä todennus määritelmä."
+
+msgid "Edit ISDN Line"
+msgstr "Muokkaa ISDN Linjaa"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
+"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
+
+msgid "This phone's number (MSN)."
+msgstr "Tämän puhelimen numero (MSN)."
+
+msgid "Edit SIP Account"
+msgstr "Muokkaa SIP Tiliä"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr "Yhtenäinen määrä puheluita on annettava \"puhelu rajaksi.\""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr "Yhtenäinen määrä puheluita on annettava \"varattu rajaksi.\""
+
+msgid "This account's password."
+msgstr "Tämän tilin salasana."
+
+msgid "Dialplan Element Library"
+msgstr "Soittosuunitelman Elementti Kirjasto"
+
+msgid "Functions"
+msgstr "Toiminnat"
+
+msgid "Audio Prompts"
+msgstr "Ääni Promptit"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"Lista alapuolella näyttää tällä hetkellä määritetyt puhelimet sekä "
+"peruskäsky (Dial()) soittaakseen niitä. Tälle käskylle löytyy monta "
+"lisäasetusta, lue lisää niistä julkaisudokumentoinnissa Sovellus "
+"välilehdessä."
+
+msgid "Caller ID / Name"
+msgstr "Soittajan tunnus / nimi"
+
+msgid "Basic"
+msgstr "Perus"
+
+msgid "Filename"
+msgstr "Tiedostonimi"
+
+msgid "Format"
+msgstr "Formaatti"
+
+msgid "Size"
+msgstr "Koko"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1972,9 +2361,6 @@ msgstr "Tyyppi"
 msgid "Phone"
 msgstr "Puhelimet"
 
-msgid "Provider"
-msgstr "Palveluntarjoaja"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "muokkaa analogi käyttöliittymää"
@@ -1987,21 +2373,9 @@ msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
 msgid "forget port settings"
 msgstr "unohda käyttöliittymän asetukset"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Muokkaa Analogi"
-
-#, fuzzy
-msgid "telephones"
-msgstr "poista puhelin"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Palveluntarjoajat"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2281,9 +2655,6 @@ msgstr "Dynaaminen DNS Klientti"
 msgid "Service Type"
 msgstr "Palvelu Tyyppi"
 
-msgid "Password"
-msgstr "Salasana"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 "Kyllä, alias \"*.isäntänimi.verkkotunnus\" yllä annettuun isäntänimeen."
@@ -2306,317 +2677,6 @@ msgstr "vaihda IP osoite tälle tietokoneelle"
 msgid "access the webGUI with the new IP address"
 msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
 
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX varaa automaattisesti ylimääräiseksi jäänyttä tilaa jatkuvaan "
-"tallennukseen. Paketit jotka täydentävät ohjelmiston toimintaa voi asentaa "
-"tähän."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa "
-"paketteja."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Minimi %sMt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, "
-"mutta tällä hetkellä paketit on tallennettava sisäiselle medialle."
-
-msgid "Capacity"
-msgstr "Kapasiteetti"
-
-msgid "State"
-msgstr "Tila"
-
-msgid "Installed Packages"
-msgstr "Asennetut Paketit"
-
-msgid "system storage partition"
-msgstr "järjestelmän tallennus osio"
-
-msgid "Edit Disk"
-msgstr "Muokkaa Levyä"
-
-msgid "descriptive name"
-msgstr "kuvaileva nimi"
-
-msgid "Wireless"
-msgstr "Langaton"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Jos yhteensopiva w-lan kortti on läsnä, sitä voi konfiguroida niin että se "
-"toimii tukiasemana. Se tulee olemaan sillattuna langalliseen verkkoon johon "
-"AskoziaPBX on kytketty."
-
-msgid "SSID,Channel"
-msgstr "SSID,Kanava"
-
-msgid ",WPA version,WPA cipher"
-msgstr ".WPA versio,WPA salaus"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK on oltava 8 ja 63 merkin pituinen."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"802.11a kanavat on vain käytettävissä jos standardi on asetettu 802.11a:ksi."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11a voi ainoastaan valita jos 802.11a kanava on myös valittu."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Yhteensopivaa langatonta käyttöliittymää ei havaittu"
-
-msgid "Enable Wireless Interface"
-msgstr "Mahdollista Langatonta Käyttöliittymää"
-
-msgid "Standard"
-msgstr "Standardi"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Piilota SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Jos tämä on valittu SSID ei lähetetä hostap tilassa, ja ainoastaan käyttäjät "
-"jotka tietävät SSID:een voivat yhdistää. Huomioi että tämä vaihtoehto ei "
-"missään nimessä ole korvike kunnolliselle turvallisuus/salaus asetukselle."
-
-msgid "Channel"
-msgstr "Kanava"
-
-msgid "Auto"
-msgstr "Automattinen"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA asetukset"
-
-msgid "Mode"
-msgstr "Tila"
-
-msgid "none"
-msgstr "ei yhtään"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "vain WPA"
-
-msgid "WPA2 only"
-msgstr "vain WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "Useimissa tapauksissa sinun on valittava &quot;WPA + WPA2&quot; tässä."
-
-msgid "Cipher"
-msgstr "Salaus"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP antaa paremman suojauksen kun TKIP, mutta TKIP on yhteensopiva "
-"vanhempien laitteiden kanssa."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Anna salasana mikä käytetään WPA-PSK tilassa. Sen on oltava 8 ja 63 merkin "
-"pituinen."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Mahdollista WEP"
-
-msgid "TX key"
-msgstr "TX avain"
-
-msgid "Key 1:"
-msgstr "Avain 1:"
-
-msgid "Key 2:"
-msgstr "Avain 2:"
-
-msgid "Key 3:"
-msgstr "Avain 3:"
-
-msgid "Key 4:"
-msgstr "Avain 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) tavuinen avain on annettava 5 ASCII merkillä tai 10 HEX numeroilla "
-"jonka ennen tulee laittaa '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) tavuinen avain on annettava 13 ASCII merkillä tai 26 HEX "
-"numeroilla jonka ennen tulee laittaa '0x'."
-
-msgid "Edit Analog Line"
-msgstr "Muokkaa Analogi Linjaa"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
-
-msgid "A phone with this extension already exists."
-msgstr "Puhelin tällä jatkeella on jo olemassa."
-
-msgid "A valid e-mail address must be specified."
-msgstr "Kelpaava s-posti osoite on oltava määritetty."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
-
-msgid "Edit External Line"
-msgstr "Muokkaa Ulkoinen Linja"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
-
-msgid "Descriptive name for this phone."
-msgstr "Kuvaileva nimi tälle puhelimelle."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-"Numero tai tunnus joka käytetään tämän puhelimen tavoittamiseen. Tämä "
-"käytetään suoraan; ulosmenevät kaava-säännöt eivät päte tähän"
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
-"Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
-
-msgid "Edit IAX Account"
-msgstr "Muokkaa IAX Tiliä"
-
-msgid "A valid secret must be specified."
-msgstr "Kelpaava salaisuus on oltava määritetty."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr "Puhelinnumero tälle tilille. Myös tämän tilin käyttäjänimi."
-
-msgid "plaintext"
-msgstr "ilman suojausta"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "Tämän tilin salasana sekä todennus määritelmä."
-
-msgid "Edit ISDN Line"
-msgstr "Muokkaa ISDN Linjaa"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
-"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
-
-msgid "This phone's number (MSN)."
-msgstr "Tämän puhelimen numero (MSN)."
-
-msgid "Edit SIP Account"
-msgstr "Muokkaa SIP Tiliä"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "Yhtenäinen määrä puheluita on annettava \"puhelu rajaksi.\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "Yhtenäinen määrä puheluita on annettava \"varattu rajaksi.\""
-
-msgid "This account's password."
-msgstr "Tämän tilin salasana."
-
-msgid "Dialplan Element Library"
-msgstr "Soittosuunitelman Elementti Kirjasto"
-
-msgid "Functions"
-msgstr "Toiminnat"
-
-msgid "Audio Prompts"
-msgstr "Ääni Promptit"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"Lista alapuolella näyttää tällä hetkellä määritetyt puhelimet sekä "
-"peruskäsky (Dial()) soittaakseen niitä. Tälle käskylle löytyy monta "
-"lisäasetusta, lue lisää niistä julkaisudokumentoinnissa Sovellus "
-"välilehdessä."
-
-msgid "Caller ID / Name"
-msgstr "Soittajan tunnus / nimi"
-
-msgid "Basic"
-msgstr "Perus"
-
-msgid "Filename"
-msgstr "Tiedostonimi"
-
-msgid "Format"
-msgstr "Formaatti"
-
-msgid "Size"
-msgstr "Koko"
-
 msgid "Printable Dialplan"
 msgstr "Tulostettava Soittosuunitelma"
 
@@ -2628,6 +2688,9 @@ msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Omat Sovellukset"
+
+msgid "Edit Analog Line"
+msgstr "Muokkaa Analogi Linjaa"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Kelpaava Soittajan Tunnus tunnus on oltava määritetty."
@@ -2756,68 +2819,12 @@ msgstr "PIN Koodi"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Valinnainen koodi joka tarvitaan tähän huoneeseen."
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Jotta voi lähettää vastaamaton puhelu ilmoituksia ja vastaaja viestejä "
-"sähköpostiin, s-posti palvelin on oltava oikein määritetty."
-
-msgid "A username must be specified."
-msgstr "Käyttäjänimi on oltava määritetty."
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Kelpaava s-posti osoite on oltava määritetty \"osoitteesta\" tunnukselle."
 
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoxiaPBX S-posti Testi"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-"SMTP asetuksesi toimii täydellisesti. Vastaajapalvelusi on nyt käyttövalmis."
-
-msgid "E-mail has been sent successfully."
-msgstr "S-postin lähetys onnistui."
-
-msgid "E-mail was not sent, check your settings."
-msgstr "S-postin lähetys epäonnistui, tarkista asetukset."
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr "SMTP isäntä URL tai IP osoite ja valinnainen portti."
-
-msgid "E-mail Address"
-msgstr "S-posti Osoite"
-
-msgid "Options"
-msgstr "Valinnat"
-
-msgid "Account uses TLS"
-msgstr "Tili käyttää TLS"
-
-msgid "TLS certificates are currently not verified."
-msgstr "TLS sertifikaatit eivät ole tarkastettuja"
-
-msgid "Test E-mail"
-msgstr "Testi S-posti"
-
-msgid "E-mail Me"
-msgstr "Lähetä"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-"Anna s-posti osoitteesi ja klikkaa &quot;Lähetä&quot; testaaksesi SMTP "
-"asetuksia."
-
-msgid "Presentation"
-msgstr "Alustus"
 
 msgid "From Address"
 msgstr "Osoitteesta"
@@ -2825,11 +2832,9 @@ msgstr "Osoitteesta"
 msgid "This will be shown as voicemail service's sending address."
 msgstr "Tämä näytetään vastaaja palvelun lähettäjä osoitteena."
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr "Oletus on ylhäällä annettu s-posti osoite."
-
-msgid "E-Mail Language"
-msgstr "S-posti Kieli"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2893,6 +2898,9 @@ msgid ""
 msgstr ""
 "jos et pysty näkemään graafia, sinun on ehkä asennettava <a href=\"http://"
 "www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+
+msgid "Network"
+msgstr "Verkko"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3345,6 +3353,26 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "poista puhelin"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Palveluntarjoajat"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "TLS sertifikaatit eivät ole tarkastettuja"
+
+#~ msgid "Presentation"
+#~ msgstr "Alustus"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "S-posti Kieli"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "Julkinen Suorapuhelu"

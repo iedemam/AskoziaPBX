@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -491,16 +491,6 @@ msgstr ""
 "Ако не е, вътрешния номер към който това обаждане е рутирано ще бъде "
 "продиктуван."
 
-msgid "Authentication Method"
-msgstr "Метод на Оторизация"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"Повечето акаунти ще работят ако използвате 'auto'. Ако това не успее, "
-"изберете метод на оторизация използван от вашия сървър."
-
 msgid "of"
 msgstr "на"
 
@@ -534,6 +524,13 @@ msgstr "Достъпна е нова <strong>бета</strong> версия на
 msgid "The following input errors were detected:"
 msgstr "Открити са следните входни грешки:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Мрежов"
+
+msgid "Analog"
+msgstr "Аналогови"
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -549,12 +546,6 @@ msgstr "Разширени"
 msgid "General Setup"
 msgstr "Общи Настройки"
 
-msgid "Interfaces"
-msgstr "Интерфейси"
-
-msgid "Packages"
-msgstr "Пакети"
-
 msgid "Firmware"
 msgstr "Обновяване"
 
@@ -567,6 +558,10 @@ msgstr "По подразбиране"
 msgid "Reboot"
 msgstr "Рестарт"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Португалия"
+
 msgid "Providers"
 msgstr "Външни"
 
@@ -578,6 +573,10 @@ msgstr "Групи на Звънене"
 
 msgid "Transfers"
 msgstr "Трансфер"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Изпрати ми E-mail"
 
 msgid "Conferencing"
 msgstr "Конференция"
@@ -609,9 +608,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "Аналогови"
-
 msgid "Manager"
 msgstr "Управление"
 
@@ -633,11 +629,22 @@ msgstr "Астериск Конзола"
 msgid "System"
 msgstr "Главни"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Обновяване"
+
 msgid "Accounts"
 msgstr "Линии"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Местонахождение"
+
 msgid "Services"
 msgstr "Услуги"
+
+msgid "Packages"
+msgstr "Пакети"
 
 msgid "Status"
 msgstr "Статус"
@@ -1969,11 +1976,397 @@ msgstr "Използвана Памет"
 msgid "Notes"
 msgstr "Бележки"
 
-msgid "Network"
-msgstr "Мрежов"
+msgid "Interfaces"
+msgstr "Интерфейси"
 
 msgid "Storage"
 msgstr "Памет"
+
+#, fuzzy
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"АскозияPBX автоматично определя свободното пространство от памета. Пакетите "
+"за разширяване на системнатафункционалност могат  да бъдат инсталирани на "
+"това пространство."
+
+msgid "The system storage media is not large enough to install packages."
+msgstr "Системната запомняща медия е недостатъчна за инсталиране на пакетите."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Най-малко %sMBса необходими. В бъдеще, външна медия ще може да бъде "
+"използвана, но текущите пакети трябва да дъдат съхранени на вътрешната "
+"системна медия."
+
+msgid "Capacity"
+msgstr "Капацитет"
+
+msgid "State"
+msgstr "Състояние"
+
+msgid "Installed Packages"
+msgstr "Инсталирани Пакети"
+
+msgid "system storage partition"
+msgstr "разделяне на системна памет"
+
+msgid "Edit Disk"
+msgstr "Редактирай Диск"
+
+msgid "descriptive name"
+msgstr "Описание"
+
+msgid "Wireless"
+msgstr "Безжичен"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"Ако съвместима безжична карта е монтирана в системата, тя може да бъде "
+"конфигурирана да работи като Access Point. Ще бъде свързана към кабелната "
+"мрежа към която е включена и АскозияPBX."
+
+msgid "SSID,Channel"
+msgstr "SSID,Канал"
+
+msgid ",WPA version,WPA cipher"
+msgstr ",WPA версия,WPA код"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "WPA PSK трябва да е между 8 и 63 символа дълъг."
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+"802.11a канали могат да бъдат избирани ако е избран стандарт 802.11a също."
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr "802.11a може да бъде избран ако 802.11a канал е избран също."
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Не са намерени съвместими безжични интерфейси."
+
+msgid "Enable Wireless Interface"
+msgstr "Разреши Безжичен Интерфейс"
+
+msgid "Standard"
+msgstr "Стандарт"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Скрий SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"Ако тази опция е избрана, SSID няма да се излъчва в hostap режим, и само "
+"клиенти които знаят точната SSID ще могат да се закачат. Имайте впредвид че "
+"тази опция никога не трябва да се използва за заместител на защитните "
+"настройки."
+
+msgid "Channel"
+msgstr "Канал"
+
+msgid "Auto"
+msgstr "Автоматично"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA настройки"
+
+msgid "Mode"
+msgstr "Режим"
+
+msgid "none"
+msgstr "без"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "WPA"
+
+msgid "WPA2 only"
+msgstr "WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "В повечето случаи, би трябвало да изберете &quot;WPA + WPA2&quot; тук."
+
+msgid "Cipher"
+msgstr "Код"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES/CCMP предоставя по-добра защита от TKIP, но TKIP е по съвместим с по-"
+"стар хардуер."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"Въведете кодова дума която ще бъде използвана в WPA-PSK режим. Трябва да е "
+"между 8 и 63 символа дълга."
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "Разреши WEP"
+
+msgid "TX key"
+msgstr "TX код"
+
+msgid "Key 1:"
+msgstr "Код 1:"
+
+msgid "Key 2:"
+msgstr "Код 2:"
+
+msgid "Key 3:"
+msgstr "Код 3:"
+
+msgid "Key 4:"
+msgstr "Код 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"40 (64) bit кодове може да се въвеждат с 5 ASCII символа или 10 "
+"шестнадесетични символа предхождани от '0x'."
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
+"шестнадесетични символа предхождани от '0x'."
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"Ако искате да изпращате известия за пропуснати обаждания и записани гласови "
+"съобщения чрез e-mail, конфигурирайте пощенски сървър тук."
+
+msgid "A valid e-mail address must be specified."
+msgstr "Въведет валиден e-mail адрес."
+
+msgid "A username must be specified."
+msgstr "Трябва да бъде въведено потребителско име."
+
+msgid "AskoziaPBX Test E-mail"
+msgstr "АскозияPBX Тестов E-mail"
+
+#, fuzzy
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+"Вашите SMTP настройки работят нормално. Гласова поща към E-mail и съобщения "
+"за пропуснати обаждания вече могат да се използват."
+
+msgid "E-mail has been sent successfully."
+msgstr "E-mail беше изпратен успешно."
+
+msgid "E-mail was not sent, check your settings."
+msgstr "E-mail не беше изпратен, проверете вашите настройки."
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr "SMTP host URL или IP адрес и порт."
+
+msgid "E-mail Address"
+msgstr "E-mail Адрес"
+
+msgid "Password"
+msgstr "Парола"
+
+msgid "Authentication Method"
+msgstr "Метод на Оторизация"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"Повечето акаунти ще работят ако използвате 'auto'. Ако това не успее, "
+"изберете метод на оторизация използван от вашия сървър."
+
+msgid "Options"
+msgstr "Опции"
+
+msgid "Account uses TLS"
+msgstr "Акаунта използва TLS"
+
+msgid "Test E-mail"
+msgstr "Тестов E-mail"
+
+msgid "E-mail Me"
+msgstr "Изпрати ми E-mail"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+"Въведете e-mail и кликнете &quot;Изпрати ми E-mail&quot; за да проверите "
+"вашите SMTP настройки."
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Редактирай Аналогов"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Въведете валиден Caller ID."
+
+msgid "A phone with this extension already exists."
+msgstr "Телефон с такъв вътрешен номер вече съществува."
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Вътрешен Номер използван за избиране на този телефон."
+
+msgid "Edit External Line"
+msgstr "Редактирай Външна Линия"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Вътрешен Номер използван за избиране на този телефон."
+
+msgid "Descriptive name for this phone."
+msgstr "Описание за този телефон."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"Номер или поредица за избиране за достъп до този телефон. Това ще бъде "
+"избирано директно: правилата за изходящо избиране не се взимат под внимание"
+
+msgid "Provider"
+msgstr "Външна линия"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr "Изходяща линия използвана за достъп до този телефон."
+
+msgid "Edit IAX Account"
+msgstr "Редактирай IAX Акаунт"
+
+msgid "A valid secret must be specified."
+msgstr "Трябва да бъде определена валидна парола."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "Цяло число в секунди трябва да бъде въведено за  \"qualify\" пауза."
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+"Телефонен номер определен за този акаунт. Също и потребителско име на този "
+"акаунт."
+
+msgid "plaintext"
+msgstr "прав текст"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "Парола и схема на удостоверяване на този акаунт."
+
+msgid "Edit ISDN Line"
+msgstr "Редактирай ISDN Линия"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Не са намерени съвместими интерфейси!</strong><br><br> За да "
+"конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
+"интерфейс присъства в %s страница"
+
+msgid "This phone's number (MSN)."
+msgstr "Телефонни номера (MSN)."
+
+msgid "Edit SIP Account"
+msgstr "Редактирай SIP Акаунт"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr ""
+"Цяло число за брой обаждания трябва да бъде въведено за \"call limit.\""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr ""
+"Цяло число за брой обаждания трябва да бъде въведено за \"busy limit.\""
+
+msgid "This account's password."
+msgstr "Парола на акаунта."
+
+msgid "Dialplan Element Library"
+msgstr "Dialplan Element Библиотека"
+
+msgid "Functions"
+msgstr "Функции"
+
+msgid "Audio Prompts"
+msgstr "Аудио Съобщения"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"По-долу е списъка с текущи дефинирани телефони заедно с основни Dial() "
+"команди за избирането им. Много допълнителни опции са възможни за тази "
+"команда, моля прочетете прилежащата и документация в меню Приложения."
+
+msgid "Caller ID / Name"
+msgstr "Caller ID / Име"
+
+msgid "Basic"
+msgstr "Основна"
+
+msgid "Filename"
+msgstr "Име на файл"
+
+msgid "Format"
+msgstr "Формат"
+
+msgid "Size"
+msgstr "Големина"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1990,9 +2383,6 @@ msgstr "Модел"
 msgid "Phone"
 msgstr "Вътрешни"
 
-msgid "Provider"
-msgstr "Външна линия"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "редактирай аналогов интерфейс"
@@ -2006,21 +2396,9 @@ msgstr ""
 msgid "forget port settings"
 msgstr "пропусни настройките на интерфейса"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Редактирай Аналогов"
-
-#, fuzzy
-msgid "telephones"
-msgstr "изтрий вътрешна линия"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Външни"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2295,9 +2673,6 @@ msgstr "Динамичен DNS Клиент"
 msgid "Service Type"
 msgstr "Вид Услуга"
 
-msgid "Password"
-msgstr "Парола"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr "Да, именувай \"*.hostname.domain\" за име на host определе по-горе."
 
@@ -2319,320 +2694,6 @@ msgstr "промени IP адреса на компютъра"
 msgid "access the webGUI with the new IP address"
 msgstr "достъп до webGUI с нов IP адрес"
 
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"АскозияPBX автоматично определя свободното пространство от памета. Пакетите "
-"за разширяване на системнатафункционалност могат  да бъдат инсталирани на "
-"това пространство."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr "Системната запомняща медия е недостатъчна за инсталиране на пакетите."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Най-малко %sMBса необходими. В бъдеще, външна медия ще може да бъде "
-"използвана, но текущите пакети трябва да дъдат съхранени на вътрешната "
-"системна медия."
-
-msgid "Capacity"
-msgstr "Капацитет"
-
-msgid "State"
-msgstr "Състояние"
-
-msgid "Installed Packages"
-msgstr "Инсталирани Пакети"
-
-msgid "system storage partition"
-msgstr "разделяне на системна памет"
-
-msgid "Edit Disk"
-msgstr "Редактирай Диск"
-
-msgid "descriptive name"
-msgstr "Описание"
-
-msgid "Wireless"
-msgstr "Безжичен"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Ако съвместима безжична карта е монтирана в системата, тя може да бъде "
-"конфигурирана да работи като Access Point. Ще бъде свързана към кабелната "
-"мрежа към която е включена и АскозияPBX."
-
-msgid "SSID,Channel"
-msgstr "SSID,Канал"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA версия,WPA код"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK трябва да е между 8 и 63 символа дълъг."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"802.11a канали могат да бъдат избирани ако е избран стандарт 802.11a също."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11a може да бъде избран ако 802.11a канал е избран също."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Не са намерени съвместими безжични интерфейси."
-
-msgid "Enable Wireless Interface"
-msgstr "Разреши Безжичен Интерфейс"
-
-msgid "Standard"
-msgstr "Стандарт"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Скрий SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Ако тази опция е избрана, SSID няма да се излъчва в hostap режим, и само "
-"клиенти които знаят точната SSID ще могат да се закачат. Имайте впредвид че "
-"тази опция никога не трябва да се използва за заместител на защитните "
-"настройки."
-
-msgid "Channel"
-msgstr "Канал"
-
-msgid "Auto"
-msgstr "Автоматично"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA настройки"
-
-msgid "Mode"
-msgstr "Режим"
-
-msgid "none"
-msgstr "без"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPA"
-
-msgid "WPA2 only"
-msgstr "WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "В повечето случаи, би трябвало да изберете &quot;WPA + WPA2&quot; тук."
-
-msgid "Cipher"
-msgstr "Код"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP предоставя по-добра защита от TKIP, но TKIP е по съвместим с по-"
-"стар хардуер."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Въведете кодова дума която ще бъде използвана в WPA-PSK режим. Трябва да е "
-"между 8 и 63 символа дълга."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Разреши WEP"
-
-msgid "TX key"
-msgstr "TX код"
-
-msgid "Key 1:"
-msgstr "Код 1:"
-
-msgid "Key 2:"
-msgstr "Код 2:"
-
-msgid "Key 3:"
-msgstr "Код 3:"
-
-msgid "Key 4:"
-msgstr "Код 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bit кодове може да се въвеждат с 5 ASCII символа или 10 "
-"шестнадесетични символа предхождани от '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
-"шестнадесетични символа предхождани от '0x'."
-
-msgid "Edit Analog Line"
-msgstr "Редактирай Аналогова Линия"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Въведете валиден Caller ID."
-
-msgid "A phone with this extension already exists."
-msgstr "Телефон с такъв вътрешен номер вече съществува."
-
-msgid "A valid e-mail address must be specified."
-msgstr "Въведет валиден e-mail адрес."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Вътрешен Номер използван за избиране на този телефон."
-
-msgid "Edit External Line"
-msgstr "Редактирай Външна Линия"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Вътрешен Номер използван за избиране на този телефон."
-
-msgid "Descriptive name for this phone."
-msgstr "Описание за този телефон."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-"Номер или поредица за избиране за достъп до този телефон. Това ще бъде "
-"избирано директно: правилата за изходящо избиране не се взимат под внимание"
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr "Изходяща линия използвана за достъп до този телефон."
-
-msgid "Edit IAX Account"
-msgstr "Редактирай IAX Акаунт"
-
-msgid "A valid secret must be specified."
-msgstr "Трябва да бъде определена валидна парола."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Цяло число в секунди трябва да бъде въведено за  \"qualify\" пауза."
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr ""
-"Телефонен номер определен за този акаунт. Също и потребителско име на този "
-"акаунт."
-
-msgid "plaintext"
-msgstr "прав текст"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "Парола и схема на удостоверяване на този акаунт."
-
-msgid "Edit ISDN Line"
-msgstr "Редактирай ISDN Линия"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Не са намерени съвместими интерфейси!</strong><br><br> За да "
-"конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
-"интерфейс присъства в %s страница"
-
-msgid "This phone's number (MSN)."
-msgstr "Телефонни номера (MSN)."
-
-msgid "Edit SIP Account"
-msgstr "Редактирай SIP Акаунт"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
-"Цяло число за брой обаждания трябва да бъде въведено за \"call limit.\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-"Цяло число за брой обаждания трябва да бъде въведено за \"busy limit.\""
-
-msgid "This account's password."
-msgstr "Парола на акаунта."
-
-msgid "Dialplan Element Library"
-msgstr "Dialplan Element Библиотека"
-
-msgid "Functions"
-msgstr "Функции"
-
-msgid "Audio Prompts"
-msgstr "Аудио Съобщения"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"По-долу е списъка с текущи дефинирани телефони заедно с основни Dial() "
-"команди за избирането им. Много допълнителни опции са възможни за тази "
-"команда, моля прочетете прилежащата и документация в меню Приложения."
-
-msgid "Caller ID / Name"
-msgstr "Caller ID / Име"
-
-msgid "Basic"
-msgstr "Основна"
-
-msgid "Filename"
-msgstr "Име на файл"
-
-msgid "Format"
-msgstr "Формат"
-
-msgid "Size"
-msgstr "Големина"
-
 msgid "Printable Dialplan"
 msgstr "Годен за Печат Dialplan"
 
@@ -2644,6 +2705,9 @@ msgstr "Код"
 
 msgid "Custom Applications"
 msgstr "Ръчно Направени Приложения"
+
+msgid "Edit Analog Line"
+msgstr "Редактирай Аналогова Линия"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Трябва да бъде въведен валиден Caller ID стринг."
@@ -2775,68 +2839,11 @@ msgstr "Код за Достъп"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Незадължителен код необходим за достъп до тази стая за конференции."
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Ако искате да изпращате известия за пропуснати обаждания и записани гласови "
-"съобщения чрез e-mail, конфигурирайте пощенски сървър тук."
-
-msgid "A username must be specified."
-msgstr "Трябва да бъде въведено потребителско име."
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "A valid e-mail address must be specified for the \"from address\"."
 
-msgid "AskoziaPBX Test E-mail"
-msgstr "АскозияPBX Тестов E-mail"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-"Вашите SMTP настройки работят нормално. Гласова поща към E-mail и съобщения "
-"за пропуснати обаждания вече могат да се използват."
-
-msgid "E-mail has been sent successfully."
-msgstr "E-mail беше изпратен успешно."
-
-msgid "E-mail was not sent, check your settings."
-msgstr "E-mail не беше изпратен, проверете вашите настройки."
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr "SMTP host URL или IP адрес и порт."
-
-msgid "E-mail Address"
-msgstr "E-mail Адрес"
-
-msgid "Options"
-msgstr "Опции"
-
-msgid "Account uses TLS"
-msgstr "Акаунта използва TLS"
-
-msgid "TLS certificates are currently not verified."
-msgstr "TLS сертификатите за момента не са одобрени."
-
-msgid "Test E-mail"
-msgstr "Тестов E-mail"
-
-msgid "E-mail Me"
-msgstr "Изпрати ми E-mail"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-"Въведете e-mail и кликнете &quot;Изпрати ми E-mail&quot; за да проверите "
-"вашите SMTP настройки."
-
-msgid "Presentation"
-msgstr "Представяне"
 
 msgid "From Address"
 msgstr "От Адрес"
@@ -2844,11 +2851,9 @@ msgstr "От Адрес"
 msgid "This will be shown as voicemail service's sending address."
 msgstr "Това ще се показва като подател на гласовата поща."
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr "По подразбиране за e-mail адреса въведен по-горе."
-
-msgid "E-Mail Language"
-msgstr "E-mail Език"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2912,6 +2917,9 @@ msgid ""
 msgstr ""
 "Ако не виждате графиката, може би трябва да инсталирате <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+
+msgid "Network"
+msgstr "Мрежов"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3369,6 +3377,26 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "изтрий вътрешна линия"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Външни"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "TLS сертификатите за момента не са одобрени."
+
+#~ msgid "Presentation"
+#~ msgstr "Представяне"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "E-mail Език"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "Общодостъпно Директно Избиране"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -411,14 +411,6 @@ msgid ""
 "the internal extension this call was routed to will be read back."
 msgstr ""
 
-msgid "Authentication Method"
-msgstr "Kimlik Denetimi"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-
 msgid "of"
 msgstr ""
 
@@ -452,6 +444,13 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "Şu giriş hataları bulundu:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Ağ"
+
+msgid "Analog"
+msgstr "Analog"
+
 msgid "Dialplan"
 msgstr "Aramaplanı"
 
@@ -467,12 +466,6 @@ msgstr "Gelişmiş"
 msgid "General Setup"
 msgstr "Genel Ayar"
 
-msgid "Interfaces"
-msgstr "Arayüzler"
-
-msgid "Packages"
-msgstr "Paketler"
-
 msgid "Firmware"
 msgstr "Bellenim"
 
@@ -485,6 +478,10 @@ msgstr "Fabrika Çıkış Ayarları"
 msgid "Reboot"
 msgstr "Sistemi yeniden çalıştır"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Portekiz"
+
 msgid "Providers"
 msgstr "Sunucular"
 
@@ -496,6 +493,10 @@ msgstr "Arama Gruplar"
 
 msgid "Transfers"
 msgstr "Transferler"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Bana E-posta"
 
 msgid "Conferencing"
 msgstr "Konferanslaşma"
@@ -527,9 +528,6 @@ msgstr "İAX"
 msgid "ISDN"
 msgstr "İSDN"
 
-msgid "Analog"
-msgstr "Analog"
-
 msgid "Manager"
 msgstr "Yönetmen"
 
@@ -551,11 +549,22 @@ msgstr "Arabirim Manajeri"
 msgid "System"
 msgstr "Sistem"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Bellenim"
+
 msgid "Accounts"
 msgstr "Hesaplar"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Lokasyon"
+
 msgid "Services"
 msgstr "Servisler"
+
+msgid "Packages"
+msgstr "Paketler"
 
 msgid "Status"
 msgstr "Statü"
@@ -1829,11 +1838,362 @@ msgstr "Hafıza Kullanımı"
 msgid "Notes"
 msgstr "Notlar"
 
-msgid "Network"
-msgstr "Ağ"
+msgid "Interfaces"
+msgstr "Arayüzler"
 
 msgid "Storage"
 msgstr "Bellek"
+
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+
+msgid "Capacity"
+msgstr "Kapasite"
+
+msgid "State"
+msgstr ""
+
+msgid "Installed Packages"
+msgstr "Yüklenilen Paketler"
+
+msgid "system storage partition"
+msgstr "sistem kayıt bölümü"
+
+msgid "Edit Disk"
+msgstr "Sürücüyü Düzenle"
+
+msgid "descriptive name"
+msgstr "açıklayıcı isim"
+
+msgid "Wireless"
+msgstr "Telsiz"
+
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+
+msgid "SSID,Channel"
+msgstr "SSİD, Kanal"
+
+msgid ",WPA version,WPA cipher"
+msgstr ""
+
+msgid ",WPA PSK"
+msgstr ""
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr ""
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr ""
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Uyum sağlayan telsiz arayüzü bulunamadı."
+
+msgid "Enable Wireless Interface"
+msgstr ""
+
+msgid "Standard"
+msgstr "Standart"
+
+msgid "SSID"
+msgstr "SSİD"
+
+msgid "Hide SSID"
+msgstr "SSİD Gizle"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Auto"
+msgstr ""
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA ayarları"
+
+msgid "Mode"
+msgstr ""
+
+msgid "none"
+msgstr "hiçbiri"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "Sade WPA"
+
+msgid "WPA2 only"
+msgstr "Sade WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "Burada genelde seçmeniz gereken &quot;WPA + WPA2&quot;."
+
+msgid "Cipher"
+msgstr ""
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES/CCMP TKİP'den daha güvenirli, fakat TKİP eski hardwarelerle daha uyumlu."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "WEP geçerli kıl"
+
+msgid "TX key"
+msgstr "TX anahtarı"
+
+msgid "Key 1:"
+msgstr "Anahtar 1:"
+
+msgid "Key 2:"
+msgstr "Anahtar 2:"
+
+msgid "Key 3:"
+msgstr "Anahtar 3:"
+
+msgid "Key 4:"
+msgstr "Anahtar 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"Kaçırılmış aramları ve kaydedilmiş sesli mesajlar için uyarı iletisi (e-"
+"posta) gönderilebilinmesi için bir e-posta sunucusu burada ayarlı olmalı "
+
+msgid "A valid e-mail address must be specified."
+msgstr "Geçerli e-posta adresi girilmeli."
+
+msgid "A username must be specified."
+msgstr "Kullanıcı adı belirtilmeli."
+
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX Test E-postası"
+
+#, fuzzy
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+"SMTP ayarlarınız çalışıyor. E-posta iletisi ile sesli mesaj ve kaçırılan "
+"aramalar  uyarıları kullanılabilir."
+
+msgid "E-mail has been sent successfully."
+msgstr "E-posta başarıyla gönderildi."
+
+msgid "E-mail was not sent, check your settings."
+msgstr "Ayarlarınızı birdaha gözden geçirin, E-postası gönderilmedi."
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr ""
+
+msgid "E-mail Address"
+msgstr "E-posta Adresi"
+
+msgid "Password"
+msgstr "Şifre"
+
+msgid "Authentication Method"
+msgstr "Kimlik Denetimi"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+
+msgid "Options"
+msgstr "Seçenekler"
+
+msgid "Account uses TLS"
+msgstr "Hesap TLS gerektirmekte"
+
+msgid "Test E-mail"
+msgstr "Test E-postası"
+
+msgid "E-mail Me"
+msgstr "Bana E-posta"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+"SMPT ayarlarınızı denemek için e-posta adresi girin ve &quot;E-mail Me&quot; "
+"tıklayın. "
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Analog düzenle"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Geçerli Arayıcı İD'si girlmeli."
+
+msgid "A phone with this extension already exists."
+msgstr ""
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Bu telefonu aramak için kullanılan dahili hat."
+
+msgid "Edit External Line"
+msgstr "Harici Hattı Düzenle"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Bu telefonu aramak için kullanılan dahili hat."
+
+msgid "Descriptive name for this phone."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+
+msgid "Provider"
+msgstr "Sunucu"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr ""
+
+msgid "Edit IAX Account"
+msgstr "İAX Hesabı düzenle"
+
+msgid "A valid secret must be specified."
+msgstr "Geçerli bir şifre belirtilmeli."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+
+msgid "plaintext"
+msgstr "şifresiz belge"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr ""
+
+msgid "Edit ISDN Line"
+msgstr "İSDN Hattını düzenle"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
+"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
+
+msgid "This phone's number (MSN)."
+msgstr "Bu telefonun numarası (MSN)"
+
+msgid "Edit SIP Account"
+msgstr "SİP Hesabını Düzenle"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr ""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr ""
+
+msgid "This account's password."
+msgstr "Bu hesabın şifresi"
+
+msgid "Dialplan Element Library"
+msgstr ""
+
+msgid "Functions"
+msgstr "Fonksyonlar"
+
+msgid "Audio Prompts"
+msgstr ""
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+
+msgid "Caller ID / Name"
+msgstr "Arayıcı İD'si / İsim"
+
+msgid "Basic"
+msgstr ""
+
+msgid "Filename"
+msgstr "Dosya adı"
+
+msgid "Format"
+msgstr "Biçim"
+
+msgid "Size"
+msgstr "Boyut"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1850,9 +2210,6 @@ msgstr "Tür"
 msgid "Phone"
 msgstr "Telefonlar"
 
-msgid "Provider"
-msgstr "Sunucu"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "analog arayüzü düzenle"
@@ -1864,21 +2221,9 @@ msgstr "Bu telefon silinsin mi?"
 msgid "forget port settings"
 msgstr ""
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Analog düzenle"
-
-#, fuzzy
-msgid "telephones"
-msgstr "telefonu sil"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Sunucular"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2121,9 +2466,6 @@ msgstr "Dinamik DNS istemci"
 msgid "Service Type"
 msgstr "Servis Türü"
 
-msgid "Password"
-msgstr "Şifre"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 "Evet, \"*.hostname.domain\"'i yukarıda belirtilen bilgisayara alternatif ad "
@@ -2144,287 +2486,6 @@ msgstr "bilgisayarınızın İP adresini değişin"
 msgid "access the webGUI with the new IP address"
 msgstr "webGUİ'ye yeni İP adresinizle bağlanın"
 
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-
-msgid "Capacity"
-msgstr "Kapasite"
-
-msgid "State"
-msgstr ""
-
-msgid "Installed Packages"
-msgstr "Yüklenilen Paketler"
-
-msgid "system storage partition"
-msgstr "sistem kayıt bölümü"
-
-msgid "Edit Disk"
-msgstr "Sürücüyü Düzenle"
-
-msgid "descriptive name"
-msgstr "açıklayıcı isim"
-
-msgid "Wireless"
-msgstr "Telsiz"
-
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-
-msgid "SSID,Channel"
-msgstr "SSİD, Kanal"
-
-msgid ",WPA version,WPA cipher"
-msgstr ""
-
-msgid ",WPA PSK"
-msgstr ""
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr ""
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Uyum sağlayan telsiz arayüzü bulunamadı."
-
-msgid "Enable Wireless Interface"
-msgstr ""
-
-msgid "Standard"
-msgstr "Standart"
-
-msgid "SSID"
-msgstr "SSİD"
-
-msgid "Hide SSID"
-msgstr "SSİD Gizle"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-
-msgid "Channel"
-msgstr "Kanal"
-
-msgid "Auto"
-msgstr ""
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA ayarları"
-
-msgid "Mode"
-msgstr ""
-
-msgid "none"
-msgstr "hiçbiri"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "Sade WPA"
-
-msgid "WPA2 only"
-msgstr "Sade WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "Burada genelde seçmeniz gereken &quot;WPA + WPA2&quot;."
-
-msgid "Cipher"
-msgstr ""
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP TKİP'den daha güvenirli, fakat TKİP eski hardwarelerle daha uyumlu."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "WEP geçerli kıl"
-
-msgid "TX key"
-msgstr "TX anahtarı"
-
-msgid "Key 1:"
-msgstr "Anahtar 1:"
-
-msgid "Key 2:"
-msgstr "Anahtar 2:"
-
-msgid "Key 3:"
-msgstr "Anahtar 3:"
-
-msgid "Key 4:"
-msgstr "Anahtar 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-
-msgid "Edit Analog Line"
-msgstr "Analog hattı düzenle"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Geçerli Arayıcı İD'si girlmeli."
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
-msgid "A valid e-mail address must be specified."
-msgstr "Geçerli e-posta adresi girilmeli."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Bu telefonu aramak için kullanılan dahili hat."
-
-msgid "Edit External Line"
-msgstr "Harici Hattı Düzenle"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Bu telefonu aramak için kullanılan dahili hat."
-
-msgid "Descriptive name for this phone."
-msgstr "Bu telefon için açıklayıcı bir isim."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
-
-msgid "Edit IAX Account"
-msgstr "İAX Hesabı düzenle"
-
-msgid "A valid secret must be specified."
-msgstr "Geçerli bir şifre belirtilmeli."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr ""
-
-msgid "plaintext"
-msgstr "şifresiz belge"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr ""
-
-msgid "Edit ISDN Line"
-msgstr "İSDN Hattını düzenle"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
-"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
-
-msgid "This phone's number (MSN)."
-msgstr "Bu telefonun numarası (MSN)"
-
-msgid "Edit SIP Account"
-msgstr "SİP Hesabını Düzenle"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-
-msgid "This account's password."
-msgstr "Bu hesabın şifresi"
-
-msgid "Dialplan Element Library"
-msgstr ""
-
-msgid "Functions"
-msgstr "Fonksyonlar"
-
-msgid "Audio Prompts"
-msgstr ""
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-
-msgid "Caller ID / Name"
-msgstr "Arayıcı İD'si / İsim"
-
-msgid "Basic"
-msgstr ""
-
-msgid "Filename"
-msgstr "Dosya adı"
-
-msgid "Format"
-msgstr "Biçim"
-
-msgid "Size"
-msgstr "Boyut"
-
 msgid "Printable Dialplan"
 msgstr ""
 
@@ -2436,6 +2497,9 @@ msgstr "Pin Kodu"
 
 msgid "Custom Applications"
 msgstr ""
+
+msgid "Edit Analog Line"
+msgstr "Analog hattı düzenle"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Geçerli bir Arayıcı İD'si belirtilmeli."
@@ -2552,67 +2616,10 @@ msgstr "Giriş PİN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Bu konferans odasına giriş için isteğe bağlı PİN gerekli."
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Kaçırılmış aramları ve kaydedilmiş sesli mesajlar için uyarı iletisi (e-"
-"posta) gönderilebilinmesi için bir e-posta sunucusu burada ayarlı olmalı "
-
-msgid "A username must be specified."
-msgstr "Kullanıcı adı belirtilmeli."
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\" için geçerli e-posta adresi belirtilmeli."
 
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoziaPBX Test E-postası"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
-msgstr ""
-"SMTP ayarlarınız çalışıyor. E-posta iletisi ile sesli mesaj ve kaçırılan "
-"aramalar  uyarıları kullanılabilir."
-
-msgid "E-mail has been sent successfully."
-msgstr "E-posta başarıyla gönderildi."
-
-msgid "E-mail was not sent, check your settings."
-msgstr "Ayarlarınızı birdaha gözden geçirin, E-postası gönderilmedi."
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr ""
-
-msgid "E-mail Address"
-msgstr "E-posta Adresi"
-
-msgid "Options"
-msgstr "Seçenekler"
-
-msgid "Account uses TLS"
-msgstr "Hesap TLS gerektirmekte"
-
-msgid "TLS certificates are currently not verified."
-msgstr "TLS sertifikaları şu an geçerli değil."
-
-msgid "Test E-mail"
-msgstr "Test E-postası"
-
-msgid "E-mail Me"
-msgstr "Bana E-posta"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-"SMPT ayarlarınızı denemek için e-posta adresi girin ve &quot;E-mail Me&quot; "
-"tıklayın. "
-
-msgid "Presentation"
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
 
 msgid "From Address"
@@ -2621,11 +2628,9 @@ msgstr "Gönderici Adres"
 msgid "This will be shown as voicemail service's sending address."
 msgstr "Bu adres Sesli Mesaj servisinde gönderici olarak kullanilir."
 
-msgid "Defaults to the e-mail address entered above."
+#, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr ""
-
-msgid "E-Mail Language"
-msgstr "E-postada kullanılan dil"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2688,6 +2693,9 @@ msgid ""
 msgstr ""
 "Grafiği göremiyorsanız <a href=\"http://www.adobe.com/svg/viewer/install/\" "
 "target=\"_blank\">Adobe SVG viewer</a> yüklemeniz gerekebilir."
+
+msgid "Network"
+msgstr "Ağ"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3091,6 +3099,23 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "telefonu sil"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Sunucular"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "TLS sertifikaları şu an geçerli değil."
+
+#~ msgid "E-Mail Language"
+#~ msgstr "E-postada kullanılan dil"
 
 #~ msgid "Internal extension used to reach this phone."
 #~ msgstr "Bu telefona ulaşmak için dahili hat"

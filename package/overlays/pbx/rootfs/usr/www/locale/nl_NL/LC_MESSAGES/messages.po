@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -416,14 +416,6 @@ msgid ""
 "the internal extension this call was routed to will be read back."
 msgstr ""
 
-msgid "Authentication Method"
-msgstr ""
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-
 msgid "of"
 msgstr ""
 
@@ -457,6 +449,13 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "De volgende input fouten werden herkend:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Netwerk"
+
+msgid "Analog"
+msgstr "Analoog"
+
 msgid "Dialplan"
 msgstr "Belplan"
 
@@ -472,12 +471,6 @@ msgstr "Geavanceerd"
 msgid "General Setup"
 msgstr ""
 
-msgid "Interfaces"
-msgstr "Interfaces"
-
-msgid "Packages"
-msgstr ""
-
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -490,6 +483,10 @@ msgstr ""
 msgid "Reboot"
 msgstr "Herstarten"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Portugal"
+
 msgid "Providers"
 msgstr "Providers"
 
@@ -501,6 +498,9 @@ msgstr "Bel Groepen"
 
 msgid "Transfers"
 msgstr "Doorschakelen"
+
+msgid "E-Mail"
+msgstr ""
 
 msgid "Conferencing"
 msgstr "Conferencing"
@@ -532,9 +532,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "Analoog"
-
 msgid "Manager"
 msgstr ""
 
@@ -556,11 +553,22 @@ msgstr "Beheerders Interface"
 msgid "System"
 msgstr "systeem"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
 msgid "Accounts"
 msgstr "Lijnen"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Locatie"
+
 msgid "Services"
 msgstr "Services"
+
+msgid "Packages"
+msgstr ""
 
 msgid "Status"
 msgstr "Status"
@@ -1906,11 +1914,393 @@ msgstr "Geheugen Gebruik"
 msgid "Notes"
 msgstr "Notas"
 
-msgid "Network"
-msgstr "Netwerk"
+msgid "Interfaces"
+msgstr "Interfaces"
 
 msgid "Storage"
 msgstr "Opslag"
+
+#, fuzzy
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"AskoziaPBX deelt automatisch de resterende ruimte voor permanente opslag "
+"toe. Pakketten die dienen tot uitbreiding van de functionaliteit van het "
+"systeem kunnen geïnstalleerd worden in deze ruimte."
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"De systeem opslagmedia is niet groot genoeg voor de installatie van "
+"pakketten."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Een minimum van %sMB is vereist. In de toekomst, zullen externe media kunnen "
+"worden gebruikt, maar momenteel moeten paketten worden opgeslagen op het "
+"interne systeem."
+
+msgid "Capacity"
+msgstr "Capaciteit"
+
+msgid "State"
+msgstr "Status"
+
+msgid "Installed Packages"
+msgstr "Gëinstalleerde Paketten"
+
+msgid "system storage partition"
+msgstr "Ssyteem opslag partitie"
+
+msgid "Edit Disk"
+msgstr "Bewerk Disk"
+
+msgid "descriptive name"
+msgstr "beschrijvende naam"
+
+msgid "Wireless"
+msgstr "Draadloos"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"Als een compatibele draadloze kaart in het systeem aanwezig is, kan deze "
+"worden geconfigureerd om  als een Access Point te dienen. Het zal worden "
+"overbrugd met het netwerk waarop AskoziaPBX is aangesloten."
+
+msgid "SSID,Channel"
+msgstr "SSID, Kanaal"
+
+msgid ",WPA version,WPA cipher"
+msgstr ", WPA-versie, WPA-codering"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "De WPA-PSK moet tussen de 8 en 63 tekens lang zijn."
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+"802.11a kanalen kunnen enkel worden gekozen als de standaard is ingesteld op "
+"802.11a."
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr ""
+"802.11a kan alleen worden geselecteerd als een 802.11a-kanaal is "
+"geselecteerd."
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Geen compatibele draadloze interfaces ontdekt."
+
+msgid "Enable Wireless Interface"
+msgstr "Schakel draadloze interface in"
+
+msgid "Standard"
+msgstr "Standaard"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Verberg SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"Als deze optie is geselecteerd, wordt de SSID niet meer uitgezonden in "
+"hostap mode, en enkel cliënten die de exacte SSID kennen zullen in staat "
+"zijn om verbinding te maken. Merk op dat deze optie nooit mag worden "
+"gebruikt als vervanging voor een goede beveiliging / encryptie-instellingen."
+
+msgid "Channel"
+msgstr "Kanaal"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA instellingen"
+
+msgid "Mode"
+msgstr "Mode"
+
+msgid "none"
+msgstr "geen"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "Enkel WPA"
+
+msgid "WPA2 only"
+msgstr "Enkel WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "In de meeste gevallen moet u kiezen &quot;WPA + WPA2&quot; hier."
+
+msgid "Cipher"
+msgstr "Codering"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES / CCMP biedt een betere beveiliging dan TKIP, maar TKIP is meer "
+"compatibel met oudere hardware."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"Voer de wachtwoordzin in die zal worden gebruikt in WPA-PSK-modus. Deze moet "
+"tussen de 8 en 63 tekens lang zijn."
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "Schakel WEP in"
+
+msgid "TX key"
+msgstr "TX key"
+
+msgid "Key 1:"
+msgstr "Sleutel 1:"
+
+msgid "Key 2:"
+msgstr "Sleutel 2:"
+
+msgid "Key 3:"
+msgstr "Sleutel 3:"
+
+msgid "Key 4:"
+msgstr "Sleutel 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"40 (64) bits sleutels kunnen worden ingeschreven als 5 ASCII tekens of 10 "
+"hexadecimale cijfers, voorafgegaan door een '0x'."
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"104 (128) bit sleutels kunnen worden ingeschreven als 13 ASCII tekens of 26 "
+"hexadecimale cijfers, voorafgegaan door een '0x'."
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+
+msgid "A valid e-mail address must be specified."
+msgstr "Een geldig e-mailadres moet worden opgegeven."
+
+msgid "A username must be specified."
+msgstr ""
+
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX: voer commando uit"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+#, fuzzy
+msgid "E-mail has been sent successfully."
+msgstr "De wijzigingen zijn succesvol aangepast"
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr ""
+
+msgid "E-mail Address"
+msgstr ""
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Authentication Method"
+msgstr ""
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Account uses TLS"
+msgstr "Lijn gebruikt TLS"
+
+msgid "Test E-mail"
+msgstr ""
+
+msgid "E-mail Me"
+msgstr ""
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Bewerk Analoog"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Een geldig Beller ID moeten worden vermeld."
+
+msgid "A phone with this extension already exists."
+msgstr "Een telefoon met deze post bestaat reeds."
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "De interne post gebruikt om deze telefoon te bellen."
+
+msgid "Edit External Line"
+msgstr "Bewerk externe lijn"
+
+msgid "The internal extension used to dial this phone."
+msgstr "De interne post gebruikt om deze telefoon te bellen."
+
+msgid "Descriptive name for this phone."
+msgstr "Beschrijvende naam voor deze telefoon."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"Nummer of string gebruikt om deze telefoon te bereiken. Dit zal rechtstreeks "
+"worden gekozen, uitgaande patroon dat overeenkomt met de regels zijn niet "
+"van toepassing"
+
+msgid "Provider"
+msgstr "Provider"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr ""
+"Uitgaande provider welke gebruikt wordt voor het bereiken van deze telefoon."
+
+msgid "Edit IAX Account"
+msgstr "Bewerk IAX Account"
+
+msgid "A valid secret must be specified."
+msgstr "Een geldig geheim moeten worden vermeld."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+"Een heel aantal seconden moet worden opgenomen voor de \"in aanmerking "
+"komende\" time-out."
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+"Het telefoonnummer is toegewezen aan deze account. Ook de accounts "
+"gebruikersnaam."
+
+msgid "plaintext"
+msgstr "plaintext"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "Deze account zijn wachtwoord en de authenticatie-regeling."
+
+msgid "Edit ISDN Line"
+msgstr "Bewerk ISDN Lijn"
+
+#, fuzzy, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"Voor het configureren van dit type account, controleer of er een passende "
+"configuratie-interface  aanwezig is op de %s pagina"
+
+msgid "This phone's number (MSN)."
+msgstr "Deze telefoon zijn nummer (MSN)."
+
+msgid "Edit SIP Account"
+msgstr "Bewerk SIP Account"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr "Een volledig nummer moet worden ingevuld voor de \"bel limiet.\""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr ""
+
+msgid "This account's password."
+msgstr ""
+
+msgid "Dialplan Element Library"
+msgstr ""
+
+msgid "Functions"
+msgstr "Functies"
+
+msgid "Audio Prompts"
+msgstr "Audio Zinnen"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+
+msgid "Caller ID / Name"
+msgstr "Beller ID / Naam"
+
+msgid "Basic"
+msgstr "Basis"
+
+msgid "Filename"
+msgstr "Bestandsnaam"
+
+msgid "Format"
+msgstr "Formaat"
+
+msgid "Size"
+msgstr "Grootte"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1927,9 +2317,6 @@ msgstr "Type"
 msgid "Phone"
 msgstr "Telefoons"
 
-msgid "Provider"
-msgstr "Provider"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "bewerk analoge interface"
@@ -1942,21 +2329,9 @@ msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
 msgid "forget port settings"
 msgstr "vergeet de interface instellingen"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Bewerk Analoog"
-
-#, fuzzy
-msgid "telephones"
-msgstr "Telefoon verwijderen"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Providers"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2235,9 +2610,6 @@ msgstr "Dynamische DNS Cliënt"
 msgid "Service Type"
 msgstr "Service Type"
 
-msgid "Password"
-msgstr "Wachtwoord"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr "Ja, alias \"*.hostname.domain\" naar hostnaam hierboven omschreven."
 
@@ -2259,323 +2631,6 @@ msgstr "verander het IP-adres van uw computer"
 msgid "access the webGUI with the new IP address"
 msgstr "toegang tot de WebGUI met het nieuwe IP-adres"
 
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX deelt automatisch de resterende ruimte voor permanente opslag "
-"toe. Pakketten die dienen tot uitbreiding van de functionaliteit van het "
-"systeem kunnen geïnstalleerd worden in deze ruimte."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"De systeem opslagmedia is niet groot genoeg voor de installatie van "
-"pakketten."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Een minimum van %sMB is vereist. In de toekomst, zullen externe media kunnen "
-"worden gebruikt, maar momenteel moeten paketten worden opgeslagen op het "
-"interne systeem."
-
-msgid "Capacity"
-msgstr "Capaciteit"
-
-msgid "State"
-msgstr "Status"
-
-msgid "Installed Packages"
-msgstr "Gëinstalleerde Paketten"
-
-msgid "system storage partition"
-msgstr "Ssyteem opslag partitie"
-
-msgid "Edit Disk"
-msgstr "Bewerk Disk"
-
-msgid "descriptive name"
-msgstr "beschrijvende naam"
-
-msgid "Wireless"
-msgstr "Draadloos"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Als een compatibele draadloze kaart in het systeem aanwezig is, kan deze "
-"worden geconfigureerd om  als een Access Point te dienen. Het zal worden "
-"overbrugd met het netwerk waarop AskoziaPBX is aangesloten."
-
-msgid "SSID,Channel"
-msgstr "SSID, Kanaal"
-
-msgid ",WPA version,WPA cipher"
-msgstr ", WPA-versie, WPA-codering"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "De WPA-PSK moet tussen de 8 en 63 tekens lang zijn."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"802.11a kanalen kunnen enkel worden gekozen als de standaard is ingesteld op "
-"802.11a."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-"802.11a kan alleen worden geselecteerd als een 802.11a-kanaal is "
-"geselecteerd."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Geen compatibele draadloze interfaces ontdekt."
-
-msgid "Enable Wireless Interface"
-msgstr "Schakel draadloze interface in"
-
-msgid "Standard"
-msgstr "Standaard"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Verberg SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Als deze optie is geselecteerd, wordt de SSID niet meer uitgezonden in "
-"hostap mode, en enkel cliënten die de exacte SSID kennen zullen in staat "
-"zijn om verbinding te maken. Merk op dat deze optie nooit mag worden "
-"gebruikt als vervanging voor een goede beveiliging / encryptie-instellingen."
-
-msgid "Channel"
-msgstr "Kanaal"
-
-msgid "Auto"
-msgstr "Auto"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA instellingen"
-
-msgid "Mode"
-msgstr "Mode"
-
-msgid "none"
-msgstr "geen"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "Enkel WPA"
-
-msgid "WPA2 only"
-msgstr "Enkel WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "In de meeste gevallen moet u kiezen &quot;WPA + WPA2&quot; hier."
-
-msgid "Cipher"
-msgstr "Codering"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES / CCMP biedt een betere beveiliging dan TKIP, maar TKIP is meer "
-"compatibel met oudere hardware."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Voer de wachtwoordzin in die zal worden gebruikt in WPA-PSK-modus. Deze moet "
-"tussen de 8 en 63 tekens lang zijn."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Schakel WEP in"
-
-msgid "TX key"
-msgstr "TX key"
-
-msgid "Key 1:"
-msgstr "Sleutel 1:"
-
-msgid "Key 2:"
-msgstr "Sleutel 2:"
-
-msgid "Key 3:"
-msgstr "Sleutel 3:"
-
-msgid "Key 4:"
-msgstr "Sleutel 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bits sleutels kunnen worden ingeschreven als 5 ASCII tekens of 10 "
-"hexadecimale cijfers, voorafgegaan door een '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bit sleutels kunnen worden ingeschreven als 13 ASCII tekens of 26 "
-"hexadecimale cijfers, voorafgegaan door een '0x'."
-
-msgid "Edit Analog Line"
-msgstr "Bewerk Analoge Lijn"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Een geldig Beller ID moeten worden vermeld."
-
-msgid "A phone with this extension already exists."
-msgstr "Een telefoon met deze post bestaat reeds."
-
-msgid "A valid e-mail address must be specified."
-msgstr "Een geldig e-mailadres moet worden opgegeven."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "De interne post gebruikt om deze telefoon te bellen."
-
-msgid "Edit External Line"
-msgstr "Bewerk externe lijn"
-
-msgid "The internal extension used to dial this phone."
-msgstr "De interne post gebruikt om deze telefoon te bellen."
-
-msgid "Descriptive name for this phone."
-msgstr "Beschrijvende naam voor deze telefoon."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-"Nummer of string gebruikt om deze telefoon te bereiken. Dit zal rechtstreeks "
-"worden gekozen, uitgaande patroon dat overeenkomt met de regels zijn niet "
-"van toepassing"
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
-"Uitgaande provider welke gebruikt wordt voor het bereiken van deze telefoon."
-
-msgid "Edit IAX Account"
-msgstr "Bewerk IAX Account"
-
-msgid "A valid secret must be specified."
-msgstr "Een geldig geheim moeten worden vermeld."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"Een heel aantal seconden moet worden opgenomen voor de \"in aanmerking "
-"komende\" time-out."
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr ""
-"Het telefoonnummer is toegewezen aan deze account. Ook de accounts "
-"gebruikersnaam."
-
-msgid "plaintext"
-msgstr "plaintext"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "Deze account zijn wachtwoord en de authenticatie-regeling."
-
-msgid "Edit ISDN Line"
-msgstr "Bewerk ISDN Lijn"
-
-#, fuzzy, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"Voor het configureren van dit type account, controleer of er een passende "
-"configuratie-interface  aanwezig is op de %s pagina"
-
-msgid "This phone's number (MSN)."
-msgstr "Deze telefoon zijn nummer (MSN)."
-
-msgid "Edit SIP Account"
-msgstr "Bewerk SIP Account"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "Een volledig nummer moet worden ingevuld voor de \"bel limiet.\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-
-msgid "This account's password."
-msgstr ""
-
-msgid "Dialplan Element Library"
-msgstr ""
-
-msgid "Functions"
-msgstr "Functies"
-
-msgid "Audio Prompts"
-msgstr "Audio Zinnen"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-
-msgid "Caller ID / Name"
-msgstr "Beller ID / Naam"
-
-msgid "Basic"
-msgstr "Basis"
-
-msgid "Filename"
-msgstr "Bestandsnaam"
-
-msgid "Format"
-msgstr "Formaat"
-
-msgid "Size"
-msgstr "Grootte"
-
 msgid "Printable Dialplan"
 msgstr "Afdrukbaar Belplan"
 
@@ -2587,6 +2642,9 @@ msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Eigen Applicatie's"
+
+msgid "Edit Analog Line"
+msgstr "Bewerk Analoge Lijn"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Een geldig Caller ID string moeten worden vermeld."
@@ -2713,63 +2771,10 @@ msgstr ""
 msgid "Optional PIN needed to access this conference room."
 msgstr ""
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-
-msgid "A username must be specified."
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
-#, fuzzy
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoziaPBX: voer commando uit"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
-msgstr ""
-
-#, fuzzy
-msgid "E-mail has been sent successfully."
-msgstr "De wijzigingen zijn succesvol aangepast"
-
-msgid "E-mail was not sent, check your settings."
-msgstr ""
-
-msgid "SMTP"
-msgstr ""
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr ""
-
-msgid "E-mail Address"
-msgstr ""
-
-msgid "Options"
-msgstr ""
-
-msgid "Account uses TLS"
-msgstr "Lijn gebruikt TLS"
-
-msgid "TLS certificates are currently not verified."
-msgstr ""
-
-msgid "Test E-mail"
-msgstr ""
-
-msgid "E-mail Me"
-msgstr ""
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-
-msgid "Presentation"
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
 
 msgid "From Address"
@@ -2778,10 +2783,8 @@ msgstr ""
 msgid "This will be shown as voicemail service's sending address."
 msgstr ""
 
-msgid "Defaults to the e-mail address entered above."
-msgstr ""
-
-msgid "E-Mail Language"
+#, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr ""
 
 msgid ""
@@ -2841,6 +2844,9 @@ msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
+
+msgid "Network"
+msgstr "Netwerk"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3246,6 +3252,14 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "Telefoon verwijderen"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Providers"
 
 #~ msgid "Internal extension used to reach this phone."
 #~ msgstr "Interne post gebruikt om deze telefoon te bereiken."

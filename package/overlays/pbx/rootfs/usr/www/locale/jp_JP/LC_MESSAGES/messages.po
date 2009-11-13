@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -487,16 +487,6 @@ msgstr ""
 "では、ユーザー名が数字だった場合。もし違う場合には、この呼がルーティングされ"
 "た内部内線番号が復唱されます"
 
-msgid "Authentication Method"
-msgstr "認証方式"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"ほとんどの場合、'auto'で問題有りません。もし上手く動作しない場合には、あなた"
-"が使っているメールサーバーの認証方式を指定して下さい"
-
 msgid "of"
 msgstr "の"
 
@@ -530,6 +520,13 @@ msgstr "最新のAskoziaPBXのベータ版が、見つかりました！"
 msgid "The following input errors were detected:"
 msgstr "下記の入力エラーが検出されました"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "ネットワーク"
+
+msgid "Analog"
+msgstr "アナログ"
+
 msgid "Dialplan"
 msgstr "ダイヤルプラン"
 
@@ -545,12 +542,6 @@ msgstr "拡張"
 msgid "General Setup"
 msgstr "全般設定"
 
-msgid "Interfaces"
-msgstr "インターフェース"
-
-msgid "Packages"
-msgstr "パッケージ"
-
 msgid "Firmware"
 msgstr "ファームウェア"
 
@@ -563,6 +554,10 @@ msgstr "工場出荷時に戻す"
 msgid "Reboot"
 msgstr "再起動"
 
+#, fuzzy
+msgid "Ports"
+msgstr "ポルトガル"
+
 msgid "Providers"
 msgstr "接続回線"
 
@@ -574,6 +569,10 @@ msgstr "グループ"
 
 msgid "Transfers"
 msgstr "転送"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "私にメールを送る"
 
 msgid "Conferencing"
 msgstr "電話会議"
@@ -605,9 +604,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "アナログ"
-
 msgid "Manager"
 msgstr "マネージャー"
 
@@ -629,11 +625,22 @@ msgstr "管理者画面"
 msgid "System"
 msgstr "システム"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "ファームウェア"
+
 msgid "Accounts"
 msgstr "設定名"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "場所"
+
 msgid "Services"
 msgstr "サービス"
+
+msgid "Packages"
+msgstr "パッケージ"
 
 msgid "Status"
 msgstr "ステータス"
@@ -1941,11 +1948,397 @@ msgstr "メモリー使用状況"
 msgid "Notes"
 msgstr "メモ"
 
-msgid "Network"
-msgstr "ネットワーク"
+msgid "Interfaces"
+msgstr "インターフェース"
 
 msgid "Storage"
 msgstr "ストレージ"
+
+#, fuzzy
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"AskoziaPBX はストレージに残ったスペースを自動的に割り当てます。 システムの機"
+"能を拡張するパッケージは、この領域にインストールできます"
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"このシステムのストレージメディアは、パッケージをインストールするには容量が足"
+"りません"
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"最低 %sMBが必要です。将来外部メディアが使用出来る様になりますが、現在は内部の"
+"メディアにパッケージを保存する必要があります"
+
+msgid "Capacity"
+msgstr "容量"
+
+msgid "State"
+msgstr "状態"
+
+msgid "Installed Packages"
+msgstr "インストール済パッケージ"
+
+msgid "system storage partition"
+msgstr "システム記憶領域"
+
+msgid "Edit Disk"
+msgstr "ディスクの編集"
+
+msgid "descriptive name"
+msgstr "判り易い名前"
+
+msgid "Wireless"
+msgstr "ワイヤレス"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"互換性のあるワイヤレス カードがシステムに存在する場合、AskoziaPBXをアクセスポ"
+"イントとして動作させる事ができます。それは、AskoziaPBX に接続されている有線"
+"ネットワークのブリッジとして動作します"
+
+msgid "SSID,Channel"
+msgstr "SSID,チャンネル"
+
+msgid ",WPA version,WPA cipher"
+msgstr ",WPA version,WPA cipher"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "WPA PSKは、8から63文字の間である必要があります"
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr "標準が802.11a に設定されている場合、802.11aチャネルだけ選択できます"
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr "802.11aチャネルが選択されている場合、802.11a だけ選択できます"
+
+msgid "No compatible wireless interfaces detected."
+msgstr "互換性のあるワイヤレスインタフェースは検出されませんでした"
+
+msgid "Enable Wireless Interface"
+msgstr "ワイヤレス接続を有効にする"
+
+msgid "Standard"
+msgstr "標準"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "SSIDを隠す"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"もしこのオプションが選択されると、SSIDはhostapモードではbroadcastされません。"
+"そして正確なSSIDを知っている端末だけが、接続出来る様になります。但しこのオプ"
+"ションは、決してセキュリティー/暗号化設定の代替えにはならない事に注意して下さ"
+"い"
+
+msgid "Channel"
+msgstr "チャンネル"
+
+msgid "Auto"
+msgstr "自動"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA設定"
+
+msgid "Mode"
+msgstr "モード"
+
+msgid "none"
+msgstr "無し"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "WPAのみ"
+
+msgid "WPA2 only"
+msgstr "WPA2のみ"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "ほとんどの場合、ここで&quot;WPA + WPA2&quot; を選択する必要があります"
+
+msgid "Cipher"
+msgstr "暗号化方式"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES/CCMPは、TKIPよりも優れたセキュリティーを提供します。しかしTKIPは古いハー"
+"ドウェアへの互換性に優れています"
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"WPA-PSKモードで使用するパスワードを入力して下さい。8から63文字の間である必要"
+"があります"
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "WEP有効"
+
+msgid "TX key"
+msgstr "TX key"
+
+msgid "Key 1:"
+msgstr "Key 1:"
+
+msgid "Key 2:"
+msgstr "Key 2:"
+
+msgid "Key 3:"
+msgstr "Key 3:"
+
+msgid "Key 4:"
+msgstr "Key 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"40 (64) bitキーは、5文字のASCII文字または頭に'0x'を付けた10文字の16進数を入力"
+"する必要があります"
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"104 (128) bitキーは、13文字のASCII文字または頭に'0x'を付けた26文字の16進数を"
+"入力する必要があります"
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"不在着信のお知らせやe-mail経由での録音されたヴォイスメールメッセージを使用す"
+"るには、ここでメールサーバーを正しく設定する必要があります"
+
+msgid "A valid e-mail address must be specified."
+msgstr "有効なe-mailアドレスを指定する必要があります"
+
+msgid "A username must be specified."
+msgstr "ユーザー名は、必須です。"
+
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBXのEメールテスト"
+
+#, fuzzy
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+"あなたのSMTP設定は、正しく動作しています。E-mailによるヴォイスメールや不在着"
+"信のお知らせを使用できます"
+
+msgid "E-mail has been sent successfully."
+msgstr "Eメールの送信が、完了しました"
+
+msgid "E-mail was not sent, check your settings."
+msgstr "Eメールは、送信されませんでした。あなたの設定をご確認下さい"
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr ""
+"SMTPサーバーのURL、もしくはIPアドレスを入力して下さい。(ポート番号はオプショ"
+"ン)"
+
+msgid "E-mail Address"
+msgstr "E-mailアドレス"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Authentication Method"
+msgstr "認証方式"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"ほとんどの場合、'auto'で問題有りません。もし上手く動作しない場合には、あなた"
+"が使っているメールサーバーの認証方式を指定して下さい"
+
+msgid "Options"
+msgstr "オプション"
+
+msgid "Account uses TLS"
+msgstr "TLSを使用する"
+
+msgid "Test E-mail"
+msgstr "テスト用メール送信"
+
+msgid "E-mail Me"
+msgstr "私にメールを送る"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+"あなたのEメールアドレスを入力し、&quot;私にEメールを送る&quot;をクリックし"
+"て、SMTP設定に間違いが無いか、確認して下さい"
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "アナログの編集"
+
+msgid "A valid Caller ID must be specified."
+msgstr "有効なCaller IDを指定する必要があります"
+
+msgid "A phone with this extension already exists."
+msgstr "この内線番号の電話は、既に存在しています"
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Internal extensionは、この電話にダイヤル可能"
+
+msgid "Edit External Line"
+msgstr "外線の編集"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Internal extensionは、この電話にダイヤル可能"
+
+msgid "Descriptive name for this phone."
+msgstr "この電話の判り易い名前"
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"この電話機に到達する事が出来る番号もしくは文字列。これは直接ダイヤル出来ます;"
+"外線発信パターンのルールは、適用されません"
+
+msgid "Provider"
+msgstr "プロバイダー(もしくは電話会社)"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr "この電話機に到達する為に使用される発信用電話会社"
+
+msgid "Edit IAX Account"
+msgstr "IAXアカウントの編集"
+
+msgid "A valid secret must be specified."
+msgstr "有効なパスワードを指定する必要があります"
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+"\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+"このアカウントに割り当てる番号を指定します、一般的には内線番号を入力します。"
+"また、この番号がユーザー名となります"
+
+msgid "plaintext"
+msgstr "プレーンテキスト"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
+
+msgid "Edit ISDN Line"
+msgstr "ISDNの編集"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
+"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
+"さい"
+
+msgid "This phone's number (MSN)."
+msgstr "この電話機の番号(MSN)"
+
+msgid "Edit SIP Account"
+msgstr "SIPアカウントの設定"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr "\"call limit.\"として、全体の秒数を入力する必要があります"
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr "\"busy limit.\"として、全体の秒数を入力する必要があります"
+
+msgid "This account's password."
+msgstr "このアカウントのパスワードを入力して下さい"
+
+msgid "Dialplan Element Library"
+msgstr "ダイヤルプラン要素のライブラリー"
+
+msgid "Functions"
+msgstr "機能"
+
+msgid "Audio Prompts"
+msgstr "音声"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"下記は、現在定義されている電話と、これらを呼び出す為の基本的なDial()コマンド"
+"のリストです。このコマンドには、多くの追加オプションが用意されています。ぜひ"
+"アプリケーションタブにあるリファレンスドキュメントをお読み下さい"
+
+msgid "Caller ID / Name"
+msgstr "Caller ID / Name"
+
+msgid "Basic"
+msgstr "基本"
+
+msgid "Filename"
+msgstr "ファイル名"
+
+msgid "Format"
+msgstr "フォーマット"
+
+msgid "Size"
+msgstr "サイズ"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1962,9 +2355,6 @@ msgstr "Type"
 msgid "Phone"
 msgstr "電話機"
 
-msgid "Provider"
-msgstr "プロバイダー(もしくは電話会社)"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "アナログ回線の編集"
@@ -1977,21 +2367,9 @@ msgstr "本当に、このインターフェース\\の設定を、忘れても�
 msgid "forget port settings"
 msgstr "インタフェース設定を忘れる"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "アナログの編集"
-
-#, fuzzy
-msgid "telephones"
-msgstr "電話機の削除"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "接続回線"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2267,9 +2645,6 @@ msgstr "Dynamic DNS Client"
 msgid "Service Type"
 msgstr "サービスタイプ"
 
-msgid "Password"
-msgstr "パスワード"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr "はい、上記で指定したエイリアス \"*.hostname.domain\"をホスト名にします"
 
@@ -2291,318 +2666,6 @@ msgstr "あなたのコンピュータのIPアドレスを変更する"
 msgid "access the webGUI with the new IP address"
 msgstr "新しいwebGUIのアドレスで、アクセスする"
 
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX はストレージに残ったスペースを自動的に割り当てます。 システムの機"
-"能を拡張するパッケージは、この領域にインストールできます"
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"このシステムのストレージメディアは、パッケージをインストールするには容量が足"
-"りません"
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"最低 %sMBが必要です。将来外部メディアが使用出来る様になりますが、現在は内部の"
-"メディアにパッケージを保存する必要があります"
-
-msgid "Capacity"
-msgstr "容量"
-
-msgid "State"
-msgstr "状態"
-
-msgid "Installed Packages"
-msgstr "インストール済パッケージ"
-
-msgid "system storage partition"
-msgstr "システム記憶領域"
-
-msgid "Edit Disk"
-msgstr "ディスクの編集"
-
-msgid "descriptive name"
-msgstr "判り易い名前"
-
-msgid "Wireless"
-msgstr "ワイヤレス"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"互換性のあるワイヤレス カードがシステムに存在する場合、AskoziaPBXをアクセスポ"
-"イントとして動作させる事ができます。それは、AskoziaPBX に接続されている有線"
-"ネットワークのブリッジとして動作します"
-
-msgid "SSID,Channel"
-msgstr "SSID,チャンネル"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA version,WPA cipher"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSKは、8から63文字の間である必要があります"
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr "標準が802.11a に設定されている場合、802.11aチャネルだけ選択できます"
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11aチャネルが選択されている場合、802.11a だけ選択できます"
-
-msgid "No compatible wireless interfaces detected."
-msgstr "互換性のあるワイヤレスインタフェースは検出されませんでした"
-
-msgid "Enable Wireless Interface"
-msgstr "ワイヤレス接続を有効にする"
-
-msgid "Standard"
-msgstr "標準"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "SSIDを隠す"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"もしこのオプションが選択されると、SSIDはhostapモードではbroadcastされません。"
-"そして正確なSSIDを知っている端末だけが、接続出来る様になります。但しこのオプ"
-"ションは、決してセキュリティー/暗号化設定の代替えにはならない事に注意して下さ"
-"い"
-
-msgid "Channel"
-msgstr "チャンネル"
-
-msgid "Auto"
-msgstr "自動"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA設定"
-
-msgid "Mode"
-msgstr "モード"
-
-msgid "none"
-msgstr "無し"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPAのみ"
-
-msgid "WPA2 only"
-msgstr "WPA2のみ"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "ほとんどの場合、ここで&quot;WPA + WPA2&quot; を選択する必要があります"
-
-msgid "Cipher"
-msgstr "暗号化方式"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMPは、TKIPよりも優れたセキュリティーを提供します。しかしTKIPは古いハー"
-"ドウェアへの互換性に優れています"
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"WPA-PSKモードで使用するパスワードを入力して下さい。8から63文字の間である必要"
-"があります"
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "WEP有効"
-
-msgid "TX key"
-msgstr "TX key"
-
-msgid "Key 1:"
-msgstr "Key 1:"
-
-msgid "Key 2:"
-msgstr "Key 2:"
-
-msgid "Key 3:"
-msgstr "Key 3:"
-
-msgid "Key 4:"
-msgstr "Key 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bitキーは、5文字のASCII文字または頭に'0x'を付けた10文字の16進数を入力"
-"する必要があります"
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bitキーは、13文字のASCII文字または頭に'0x'を付けた26文字の16進数を"
-"入力する必要があります"
-
-msgid "Edit Analog Line"
-msgstr "アナログの編集"
-
-msgid "A valid Caller ID must be specified."
-msgstr "有効なCaller IDを指定する必要があります"
-
-msgid "A phone with this extension already exists."
-msgstr "この内線番号の電話は、既に存在しています"
-
-msgid "A valid e-mail address must be specified."
-msgstr "有効なe-mailアドレスを指定する必要があります"
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Internal extensionは、この電話にダイヤル可能"
-
-msgid "Edit External Line"
-msgstr "外線の編集"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Internal extensionは、この電話にダイヤル可能"
-
-msgid "Descriptive name for this phone."
-msgstr "この電話の判り易い名前"
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-"この電話機に到達する事が出来る番号もしくは文字列。これは直接ダイヤル出来ます;"
-"外線発信パターンのルールは、適用されません"
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr "この電話機に到達する為に使用される発信用電話会社"
-
-msgid "Edit IAX Account"
-msgstr "IAXアカウントの編集"
-
-msgid "A valid secret must be specified."
-msgstr "有効なパスワードを指定する必要があります"
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr ""
-"このアカウントに割り当てる番号を指定します、一般的には内線番号を入力します。"
-"また、この番号がユーザー名となります"
-
-msgid "plaintext"
-msgstr "プレーンテキスト"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
-
-msgid "Edit ISDN Line"
-msgstr "ISDNの編集"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
-"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
-"さい"
-
-msgid "This phone's number (MSN)."
-msgstr "この電話機の番号(MSN)"
-
-msgid "Edit SIP Account"
-msgstr "SIPアカウントの設定"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "\"call limit.\"として、全体の秒数を入力する必要があります"
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "\"busy limit.\"として、全体の秒数を入力する必要があります"
-
-msgid "This account's password."
-msgstr "このアカウントのパスワードを入力して下さい"
-
-msgid "Dialplan Element Library"
-msgstr "ダイヤルプラン要素のライブラリー"
-
-msgid "Functions"
-msgstr "機能"
-
-msgid "Audio Prompts"
-msgstr "音声"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"下記は、現在定義されている電話と、これらを呼び出す為の基本的なDial()コマンド"
-"のリストです。このコマンドには、多くの追加オプションが用意されています。ぜひ"
-"アプリケーションタブにあるリファレンスドキュメントをお読み下さい"
-
-msgid "Caller ID / Name"
-msgstr "Caller ID / Name"
-
-msgid "Basic"
-msgstr "基本"
-
-msgid "Filename"
-msgstr "ファイル名"
-
-msgid "Format"
-msgstr "フォーマット"
-
-msgid "Size"
-msgstr "サイズ"
-
 msgid "Printable Dialplan"
 msgstr "印刷可能なダイヤルプラン"
 
@@ -2614,6 +2677,9 @@ msgstr "パスワード"
 
 msgid "Custom Applications"
 msgstr "カスタムアプリケーション"
+
+msgid "Edit Analog Line"
+msgstr "アナログの編集"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "有効なCaller IDの文字列を指定する必要があります"
@@ -2745,70 +2811,11 @@ msgstr "入室用パスワード"
 msgid "Optional PIN needed to access this conference room."
 msgstr "この会議室に入室するのに必要なパスワード(オプション)"
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"不在着信のお知らせやe-mail経由での録音されたヴォイスメールメッセージを使用す"
-"るには、ここでメールサーバーを正しく設定する必要があります"
-
-msgid "A username must be specified."
-msgstr "ユーザー名は、必須です。"
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\"に対して、有効なe-mailアドレスを指定する必要があります"
 
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoziaPBXのEメールテスト"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-"あなたのSMTP設定は、正しく動作しています。E-mailによるヴォイスメールや不在着"
-"信のお知らせを使用できます"
-
-msgid "E-mail has been sent successfully."
-msgstr "Eメールの送信が、完了しました"
-
-msgid "E-mail was not sent, check your settings."
-msgstr "Eメールは、送信されませんでした。あなたの設定をご確認下さい"
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr ""
-"SMTPサーバーのURL、もしくはIPアドレスを入力して下さい。(ポート番号はオプショ"
-"ン)"
-
-msgid "E-mail Address"
-msgstr "E-mailアドレス"
-
-msgid "Options"
-msgstr "オプション"
-
-msgid "Account uses TLS"
-msgstr "TLSを使用する"
-
-msgid "TLS certificates are currently not verified."
-msgstr "TLS認証は、現在まだ検証されていません"
-
-msgid "Test E-mail"
-msgstr "テスト用メール送信"
-
-msgid "E-mail Me"
-msgstr "私にメールを送る"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-"あなたのEメールアドレスを入力し、&quot;私にEメールを送る&quot;をクリックし"
-"て、SMTP設定に間違いが無いか、確認して下さい"
-
-msgid "Presentation"
-msgstr "表示"
 
 msgid "From Address"
 msgstr "送信者アドレス"
@@ -2817,11 +2824,9 @@ msgid "This will be shown as voicemail service's sending address."
 msgstr ""
 "ここに設定したアドレスが、ボイスメールの送信者アドレスとして、表示されます"
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr "標準となるEメールアドレスを、上記に入力して下さい"
-
-msgid "E-Mail Language"
-msgstr "Eメール用言語"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2886,6 +2891,9 @@ msgid ""
 msgstr ""
 "もしグラフが見えない場合には、 <a href=\"http://www.adobe.com/svg/viewer/"
 "install/\" target=\"_blank\">Adobe SVG viewer</a>をインストールして下さい"
+
+msgid "Network"
+msgstr "ネットワーク"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3353,6 +3361,26 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "電話機の削除"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "接続回線"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "TLS認証は、現在まだ検証されていません"
+
+#~ msgid "Presentation"
+#~ msgstr "表示"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "Eメール用言語"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "公開用直通ダイヤル"

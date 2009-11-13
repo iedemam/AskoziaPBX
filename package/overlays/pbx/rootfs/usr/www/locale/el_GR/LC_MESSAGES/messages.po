@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -502,17 +502,6 @@ msgstr ""
 "λογαριασμού, αν αυτό είναι αριθμητικό. Αν δεν είναι αριθμητικό, τότε θα "
 "διαβαστεί ο εσωτερικός αριθμός στον οποίο τερματίστηκε η κλήση."
 
-msgid "Authentication Method"
-msgstr "Μέθοδος ταυτοποίησης"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"Οι περισσότεροι λογαριασμοί θα λειτουργήσουν με τη μέθοδο 'auto'. Σε "
-"περίπτωση που παρουσιαστούν προβλήματα, επιλέξτε τη μέθοδο ταυτοποίησης που "
-"χρησιμοποιεί ο διακομιστής σας."
-
 msgid "of"
 msgstr "από"
 
@@ -547,6 +536,13 @@ msgstr "Υπάρχει μια νέα έκδοση <strong>beta</strong> του A
 msgid "The following input errors were detected:"
 msgstr "Εντοπίστηκαν τα ακόλουθα λάθη στην καταχώρησή σας:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Ενσύρματο δίκτυο"
+
+msgid "Analog"
+msgstr "PSTN"
+
 msgid "Dialplan"
 msgstr "Πλάνο κλήσεων"
 
@@ -562,12 +558,6 @@ msgstr "Επιλογές για ειδικούς"
 msgid "General Setup"
 msgstr "Γενικές ρυθμίσεις"
 
-msgid "Interfaces"
-msgstr "Διεπαφές"
-
-msgid "Packages"
-msgstr "Πακέτα"
-
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -580,6 +570,10 @@ msgstr "Αρχικοποίηση"
 msgid "Reboot"
 msgstr "Επανεκκίνηση"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Πορτογαλία"
+
 msgid "Providers"
 msgstr "Πάροχοι"
 
@@ -591,6 +585,10 @@ msgstr "Ομάδες τηλεφώνων"
 
 msgid "Transfers"
 msgstr "Προωθήσεις"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Αποστολή e-mail"
 
 msgid "Conferencing"
 msgstr "Συνδιασκέψεις"
@@ -622,9 +620,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "PSTN"
-
 msgid "Manager"
 msgstr "Διαχείριση"
 
@@ -646,11 +641,22 @@ msgstr "Διαχείριση"
 msgid "System"
 msgstr "Σύστημα"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
 msgid "Accounts"
 msgstr "Λογαριασμοί"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Τοποθεσία"
+
 msgid "Services"
 msgstr "Υπηρεσίες"
+
+msgid "Packages"
+msgstr "Πακέτα"
 
 msgid "Status"
 msgstr "Κατάσταση"
@@ -2000,11 +2006,412 @@ msgstr "Χρήση μνήμης"
 msgid "Notes"
 msgstr "Σημειώσεις"
 
-msgid "Network"
-msgstr "Ενσύρματο δίκτυο"
+msgid "Interfaces"
+msgstr "Διεπαφές"
 
 msgid "Storage"
 msgstr "Αποθήκευση"
+
+#, fuzzy
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+"Το σύστημα επιμερίζει αυτόματα τον χώρο που απομένει για μόνιμη αποθήκευση. "
+"Τα πακέτα που επεκτείνουν τη λειτουργικότητα του συστήματος μπορούν να "
+"εγκτασταθούν σε αυτόν τον χώρο."
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"Ο χώρος αποθήκευσης δεν είναι αρκετά μεγάλος για να εγκαταστήσετε πακέτα."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Χρειάζονται %sMB κατ' ελάχιστο. Στο μέλλον θα έχετε τη δυνατότητα να "
+"χρησιμοποιήσετε εξωτερικό αποθηκευτικό χώρο, αλλά προς το παρόν όλα τα "
+"πακέτα πρέπει να εγκατασταθούν στον εσωτερικό αποθηκευτικό χώρο."
+
+msgid "Capacity"
+msgstr "Χωρητικότητα"
+
+msgid "State"
+msgstr "Κατάσταση"
+
+msgid "Installed Packages"
+msgstr "Εγκατεστημένα πακέτα"
+
+msgid "system storage partition"
+msgstr "αποθηκευτικός χώρος συστήματος"
+
+msgid "Edit Disk"
+msgstr "Επεξεργασία δίσκου"
+
+msgid "descriptive name"
+msgstr "επεξηγηματικό όνομα"
+
+msgid "Wireless"
+msgstr "Ασύρματο δίκτυο"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"Αν υπάρχει συμβατή ασύρματη κάρτα στο σύστημά σας, τότε το σύστημά σας "
+"μπορεί να χρησιμοποιηθεί και σαν ασύρματο σημείο πρόσβασης. Το ασύρματο "
+"δίκτυο θα γεφυρωθεί με το ενσύρματο δίκτυο στο οποίο συνδέεται το τηλεφωνικό "
+"σας κέντρο."
+
+msgid "SSID,Channel"
+msgstr "SSID,Κανάλι"
+
+msgid ",WPA version,WPA cipher"
+msgstr ",WPA version,WPA cipher"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "Το WPA PSK πρέπει να έχει μήκος από 8 μέχρι 63 χαρακτήρες."
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+"Τα κανάλια 802.11a μπορούν να επιλεγούν μόνο αν έχετε επιλέξει το πρότυπο "
+"802.11a."
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr "Το 802.11a μπορεί να επιλεγεί μόνο αν επιλέξετε ένα κανάλι 802.11a."
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές ασύρματου δικτύου."
+
+msgid "Enable Wireless Interface"
+msgstr "Ενεργοποίηση ασύρματης διεπαφής"
+
+msgid "Standard"
+msgstr "Πρότυπο"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Απόκρυψη  SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"Αν επιλεγεί, το SSID δεν θα μεταδίδεται και θα μπορούν να συνδεθούν μόνο "
+"πελάτες που το γνωρίζουν. Σημειώστε ότι δεν θα πρέπει να χρησιμοποιείτε ποτέ "
+"αυτή την επιλογή σαν υποκατάστατο των ρυθμίσεων ασφαλείας και κρυπτογράφησης."
+
+msgid "Channel"
+msgstr "Κανάλι"
+
+msgid "Auto"
+msgstr "Αυτόματο"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "Ρυθμίσεις WPA"
+
+msgid "Mode"
+msgstr "Τρόπος λειτουργίας"
+
+msgid "none"
+msgstr "κανένα"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "μόνο WPA"
+
+msgid "WPA2 only"
+msgstr "μόνο WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA + WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr ""
+"Στις περισσότερες περιπτώσεις  η πιο σωστή επιλογή είναι &quot;WPA + "
+"WPA2&quot;."
+
+msgid "Cipher"
+msgstr "Κρυπτογραφία"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"Το AES/CCMP παρέχει καλύτερη ασφάλεια από το TKIP, αλλά το TKIP είναι πιο "
+"συμβατό με παλιότερες συσκευές."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"Εισάγετε τον κωδικό (passphrase) που θα χρησιμοποιηθεί για τον τρόπο "
+"λειτουργίας WPA-PSK. Πρέπει να έχει μήκος από 8 μέχρι και 63 χαρακτήρες."
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "Ενεργοποίηση WEP"
+
+msgid "TX key"
+msgstr "Κλειδί (TX key)"
+
+msgid "Key 1:"
+msgstr "Κλειδί 1:"
+
+msgid "Key 2:"
+msgstr "Κλειδί 2:"
+
+msgid "Key 3:"
+msgstr "Κλειδί 3:"
+
+msgid "Key 4:"
+msgstr "Κλειδί 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"Τα κλειδιά 40 (64) bits μπορούν να εισαχθούν σαν 5 χαρακτήρες ASCII ή σαν 10 "
+"δεκαεξαδικά ψηφία με πρόθεμα '0x'."
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"Τα κλειδιά 104 (128) bits μπορούν να εισαχθούν σαν 13 χαρακτήρες ASCII ή σαν "
+"26 δεκαεξαδικά ψηφία με πρόθεμα '0x'."
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+"Για να μπορέσετε να στείλετε ειδοποιήσεις για αναπάντητες κλήσεις ή "
+"ηχογραφημένα μηνύματα φωνητικών θυρίδων μέσω e-mail, θα πρέπει να ορίσετε "
+"έναν διακομιστή e-mail."
+
+msgid "A valid e-mail address must be specified."
+msgstr "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail."
+
+msgid "A username must be specified."
+msgstr "Πρέπει να καταχωρήσετε ένα όνομα χρήστη."
+
+msgid "AskoziaPBX Test E-mail"
+msgstr "Δοκιμαστικό e-mail"
+
+#, fuzzy
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+"Οι ρυθμίσεις SMTP λειτουργούν χωρίς πρόβλημα. Μπορείτε τώρα να "
+"χρησιμοποιήσετε την αποστολή φωνητικών μηνυμάτων και ειδοποιήσεων "
+"αναπάντητων κλήσεων."
+
+msgid "E-mail has been sent successfully."
+msgstr "Το e-mail στάλθηκε επιτυχώς."
+
+msgid "E-mail was not sent, check your settings."
+msgstr "Το e-mail δεν στάλθηκε. Ελέγξτε τις ρυθμίσεις σας."
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr ""
+"Το URL του διακομιστή SMTP ή η διεύθυνση IP του και προαιρετικά η θύρα."
+
+msgid "E-mail Address"
+msgstr "Διεύθυνση e-mail αποστολέα"
+
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+msgid "Authentication Method"
+msgstr "Μέθοδος ταυτοποίησης"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"Οι περισσότεροι λογαριασμοί θα λειτουργήσουν με τη μέθοδο 'auto'. Σε "
+"περίπτωση που παρουσιαστούν προβλήματα, επιλέξτε τη μέθοδο ταυτοποίησης που "
+"χρησιμοποιεί ο διακομιστής σας."
+
+msgid "Options"
+msgstr "Επιλογές"
+
+msgid "Account uses TLS"
+msgstr "Ο λογαριασμός χρησιμοποιεί TLS"
+
+msgid "Test E-mail"
+msgstr "Δοκιμαστικό e-mail."
+
+msgid "E-mail Me"
+msgstr "Αποστολή e-mail"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+"Πληκτρολογήστε μια διεύθυνση e-mail και κάντε κλικ στην &quot;Αποστολή e-"
+"mail&quot; για να δοκιμάσετε τις ρυθμίσεις SMTP."
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Επεξεργασία PSTN"
+
+msgid "A valid Caller ID must be specified."
+msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
+
+msgid "A phone with this extension already exists."
+msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
+
+msgid "Edit External Line"
+msgstr "Επεξεργασία εξωτερικής γραμμής"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
+
+msgid "Descriptive name for this phone."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"Ο αριθμός ή το κείμενο που πρέπει να πληκτρολογηθεί για να κληθεί αυτό το "
+"τηλέφωνο. Η κλήση θα γίνει απ' ευθείας, χωρις την εφαρμογή κανόνων "
+"εξερχομένων προτύπων."
+
+msgid "Provider"
+msgstr "Πάροχος"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr ""
+"Ο εξερχόμενος πάροχος που θα χρησιμοποιηθεί για να κληθεί αυτό το τηλέφωνο."
+
+msgid "Edit IAX Account"
+msgstr "Επεξεργασία λογαριασμού IAX"
+
+msgid "A valid secret must be specified."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο κωδικό πρόσβασης."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+"Πρέπει να καταχωρήσετε ένανν ακέραιο αριθμό δευτερολέπτων για το χρονικό "
+"όριο \"πιστοποίησης\"."
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr ""
+"Το τηλέφωνο που έχει συνδεθεί με αυτόν τον λογαριασμό. Επίσης, το όνομα "
+"χρήστη αυτού του λογαριασμού."
+
+msgid "plaintext"
+msgstr "κείμενο"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "Ο κωδικός πρόσβασης και ο τρόπος ταυτοποίησης αυτού του λογαριασμού."
+
+msgid "Edit ISDN Line"
+msgstr "Επεξεργασία γραμμής ISDN"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Δεν βρέθηκαν συμβατές διεπαφές!</strong><br><br>Για να κάνετε "
+"ρυθμίσεις σε αυτό το είδος του λογαρισμού, σιγουρευτείτε ότι υπάρχει "
+"διαθέσιμη μια κατάλληλη διεπαφή στη σελίδα %s."
+
+msgid "This phone's number (MSN)."
+msgstr "Ο αριθμός (MSN) αυτού του τηλεφώνου."
+
+msgid "Edit SIP Account"
+msgstr "Επεξεργασία λογαρασμού SIP"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr ""
+"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
+"κλήσεων\"."
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr ""
+"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
+"κατηλειμμένου\"."
+
+msgid "This account's password."
+msgstr "Ο κωδικός πρόσβασης αυτού του λογαριασμού."
+
+msgid "Dialplan Element Library"
+msgstr "Βιβλιοθήκη στοιχείων πλάνου κλήσεων"
+
+msgid "Functions"
+msgstr "Συναρτήσεις"
+
+msgid "Audio Prompts"
+msgstr "Ηχητικές προτροπές"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"Ακολουθεί μια λίστα από τα ήδη καθορισμένα τηλέφωνα, μαζί με μια βασική "
+"εντολή Dial(), για να τα καλείτε. Υπάρχουν πολλές περισσότερες παράμετροι "
+"γι' αυτή την εντολή και μπορείτε να τις δείτε στην τεκμηρίωση που είναι "
+"διαθέσιμη στις Εφαρμογές."
+
+msgid "Caller ID / Name"
+msgstr "Ταυτότητα καλούντος / Όνομα"
+
+msgid "Basic"
+msgstr "Βασικό"
+
+msgid "Filename"
+msgstr "Αρχείο"
+
+msgid "Format"
+msgstr "Μορφή"
+
+msgid "Size"
+msgstr "Μέγεθος"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -2021,9 +2428,6 @@ msgstr "Τύπος"
 msgid "Phone"
 msgstr "Τηλέφωνα"
 
-msgid "Provider"
-msgstr "Πάροχος"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "επεξεργασία διεπαφής PSTN"
@@ -2036,21 +2440,9 @@ msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυ�
 msgid "forget port settings"
 msgstr "διαγραφή ρυθμίσεων διεπαφής"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Επεξεργασία PSTN"
-
-#, fuzzy
-msgid "telephones"
-msgstr "διαγραφή τηλεφώνου"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Πάροχοι"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2340,9 +2732,6 @@ msgstr "Πελάτης δυναμικού DNS"
 msgid "Service Type"
 msgstr "Είδος υπηρεσίας"
 
-msgid "Password"
-msgstr "Κωδικός πρόσβασης"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 "Ναι, να υποκατασταθεί το \"*.hostname.domain\" με την ονομασία συσκευής που "
@@ -2366,331 +2755,6 @@ msgstr "μεταβολή της διεύθυνσης IP του υπολογισ�
 msgid "access the webGUI with the new IP address"
 msgstr "πρόσβαση στο περιβάλλον διαχείρισης με τη νέα διεύθυνση IP"
 
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"Το σύστημα επιμερίζει αυτόματα τον χώρο που απομένει για μόνιμη αποθήκευση. "
-"Τα πακέτα που επεκτείνουν τη λειτουργικότητα του συστήματος μπορούν να "
-"εγκτασταθούν σε αυτόν τον χώρο."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"Ο χώρος αποθήκευσης δεν είναι αρκετά μεγάλος για να εγκαταστήσετε πακέτα."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Χρειάζονται %sMB κατ' ελάχιστο. Στο μέλλον θα έχετε τη δυνατότητα να "
-"χρησιμοποιήσετε εξωτερικό αποθηκευτικό χώρο, αλλά προς το παρόν όλα τα "
-"πακέτα πρέπει να εγκατασταθούν στον εσωτερικό αποθηκευτικό χώρο."
-
-msgid "Capacity"
-msgstr "Χωρητικότητα"
-
-msgid "State"
-msgstr "Κατάσταση"
-
-msgid "Installed Packages"
-msgstr "Εγκατεστημένα πακέτα"
-
-msgid "system storage partition"
-msgstr "αποθηκευτικός χώρος συστήματος"
-
-msgid "Edit Disk"
-msgstr "Επεξεργασία δίσκου"
-
-msgid "descriptive name"
-msgstr "επεξηγηματικό όνομα"
-
-msgid "Wireless"
-msgstr "Ασύρματο δίκτυο"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Αν υπάρχει συμβατή ασύρματη κάρτα στο σύστημά σας, τότε το σύστημά σας "
-"μπορεί να χρησιμοποιηθεί και σαν ασύρματο σημείο πρόσβασης. Το ασύρματο "
-"δίκτυο θα γεφυρωθεί με το ενσύρματο δίκτυο στο οποίο συνδέεται το τηλεφωνικό "
-"σας κέντρο."
-
-msgid "SSID,Channel"
-msgstr "SSID,Κανάλι"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA version,WPA cipher"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "Το WPA PSK πρέπει να έχει μήκος από 8 μέχρι 63 χαρακτήρες."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"Τα κανάλια 802.11a μπορούν να επιλεγούν μόνο αν έχετε επιλέξει το πρότυπο "
-"802.11a."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "Το 802.11a μπορεί να επιλεγεί μόνο αν επιλέξετε ένα κανάλι 802.11a."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Δεν βρέθηκαν συμβατές διεπαφές ασύρματου δικτύου."
-
-msgid "Enable Wireless Interface"
-msgstr "Ενεργοποίηση ασύρματης διεπαφής"
-
-msgid "Standard"
-msgstr "Πρότυπο"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Απόκρυψη  SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Αν επιλεγεί, το SSID δεν θα μεταδίδεται και θα μπορούν να συνδεθούν μόνο "
-"πελάτες που το γνωρίζουν. Σημειώστε ότι δεν θα πρέπει να χρησιμοποιείτε ποτέ "
-"αυτή την επιλογή σαν υποκατάστατο των ρυθμίσεων ασφαλείας και κρυπτογράφησης."
-
-msgid "Channel"
-msgstr "Κανάλι"
-
-msgid "Auto"
-msgstr "Αυτόματο"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "Ρυθμίσεις WPA"
-
-msgid "Mode"
-msgstr "Τρόπος λειτουργίας"
-
-msgid "none"
-msgstr "κανένα"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "μόνο WPA"
-
-msgid "WPA2 only"
-msgstr "μόνο WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr ""
-"Στις περισσότερες περιπτώσεις  η πιο σωστή επιλογή είναι &quot;WPA + "
-"WPA2&quot;."
-
-msgid "Cipher"
-msgstr "Κρυπτογραφία"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"Το AES/CCMP παρέχει καλύτερη ασφάλεια από το TKIP, αλλά το TKIP είναι πιο "
-"συμβατό με παλιότερες συσκευές."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Εισάγετε τον κωδικό (passphrase) που θα χρησιμοποιηθεί για τον τρόπο "
-"λειτουργίας WPA-PSK. Πρέπει να έχει μήκος από 8 μέχρι και 63 χαρακτήρες."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Ενεργοποίηση WEP"
-
-msgid "TX key"
-msgstr "Κλειδί (TX key)"
-
-msgid "Key 1:"
-msgstr "Κλειδί 1:"
-
-msgid "Key 2:"
-msgstr "Κλειδί 2:"
-
-msgid "Key 3:"
-msgstr "Κλειδί 3:"
-
-msgid "Key 4:"
-msgstr "Κλειδί 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"Τα κλειδιά 40 (64) bits μπορούν να εισαχθούν σαν 5 χαρακτήρες ASCII ή σαν 10 "
-"δεκαεξαδικά ψηφία με πρόθεμα '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"Τα κλειδιά 104 (128) bits μπορούν να εισαχθούν σαν 13 χαρακτήρες ASCII ή σαν "
-"26 δεκαεξαδικά ψηφία με πρόθεμα '0x'."
-
-msgid "Edit Analog Line"
-msgstr "Επεξεργασία γραμμής PSTN"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
-
-msgid "A phone with this extension already exists."
-msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
-
-msgid "A valid e-mail address must be specified."
-msgstr "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
-
-msgid "Edit External Line"
-msgstr "Επεξεργασία εξωτερικής γραμμής"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
-
-msgid "Descriptive name for this phone."
-msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-"Ο αριθμός ή το κείμενο που πρέπει να πληκτρολογηθεί για να κληθεί αυτό το "
-"τηλέφωνο. Η κλήση θα γίνει απ' ευθείας, χωρις την εφαρμογή κανόνων "
-"εξερχομένων προτύπων."
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
-"Ο εξερχόμενος πάροχος που θα χρησιμοποιηθεί για να κληθεί αυτό το τηλέφωνο."
-
-msgid "Edit IAX Account"
-msgstr "Επεξεργασία λογαριασμού IAX"
-
-msgid "A valid secret must be specified."
-msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο κωδικό πρόσβασης."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"Πρέπει να καταχωρήσετε ένανν ακέραιο αριθμό δευτερολέπτων για το χρονικό "
-"όριο \"πιστοποίησης\"."
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr ""
-"Το τηλέφωνο που έχει συνδεθεί με αυτόν τον λογαριασμό. Επίσης, το όνομα "
-"χρήστη αυτού του λογαριασμού."
-
-msgid "plaintext"
-msgstr "κείμενο"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "Ο κωδικός πρόσβασης και ο τρόπος ταυτοποίησης αυτού του λογαριασμού."
-
-msgid "Edit ISDN Line"
-msgstr "Επεξεργασία γραμμής ISDN"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Δεν βρέθηκαν συμβατές διεπαφές!</strong><br><br>Για να κάνετε "
-"ρυθμίσεις σε αυτό το είδος του λογαρισμού, σιγουρευτείτε ότι υπάρχει "
-"διαθέσιμη μια κατάλληλη διεπαφή στη σελίδα %s."
-
-msgid "This phone's number (MSN)."
-msgstr "Ο αριθμός (MSN) αυτού του τηλεφώνου."
-
-msgid "Edit SIP Account"
-msgstr "Επεξεργασία λογαρασμού SIP"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
-"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
-"κλήσεων\"."
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
-"κατηλειμμένου\"."
-
-msgid "This account's password."
-msgstr "Ο κωδικός πρόσβασης αυτού του λογαριασμού."
-
-msgid "Dialplan Element Library"
-msgstr "Βιβλιοθήκη στοιχείων πλάνου κλήσεων"
-
-msgid "Functions"
-msgstr "Συναρτήσεις"
-
-msgid "Audio Prompts"
-msgstr "Ηχητικές προτροπές"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"Ακολουθεί μια λίστα από τα ήδη καθορισμένα τηλέφωνα, μαζί με μια βασική "
-"εντολή Dial(), για να τα καλείτε. Υπάρχουν πολλές περισσότερες παράμετροι "
-"γι' αυτή την εντολή και μπορείτε να τις δείτε στην τεκμηρίωση που είναι "
-"διαθέσιμη στις Εφαρμογές."
-
-msgid "Caller ID / Name"
-msgstr "Ταυτότητα καλούντος / Όνομα"
-
-msgid "Basic"
-msgstr "Βασικό"
-
-msgid "Filename"
-msgstr "Αρχείο"
-
-msgid "Format"
-msgstr "Μορφή"
-
-msgid "Size"
-msgstr "Μέγεθος"
-
 msgid "Printable Dialplan"
 msgstr "Εκτυπώσιμο πλάνο κλήσεων"
 
@@ -2702,6 +2766,9 @@ msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Εφαρμογές"
+
+msgid "Edit Analog Line"
+msgstr "Επεξεργασία γραμμής PSTN"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Πρέπει να καταχωρήσετε μία έγκυρη ταυτότητα καλούντος."
@@ -2840,73 +2907,13 @@ msgstr ""
 "Ένα προαιρετικό PIN για να επιτραπεί η πρόσβαση σε αυτόν τον χώρο "
 "συνδιάσκεψης."
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Για να μπορέσετε να στείλετε ειδοποιήσεις για αναπάντητες κλήσεις ή "
-"ηχογραφημένα μηνύματα φωνητικών θυρίδων μέσω e-mail, θα πρέπει να ορίσετε "
-"έναν διακομιστή e-mail."
-
-msgid "A username must be specified."
-msgstr "Πρέπει να καταχωρήσετε ένα όνομα χρήστη."
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail για την \"διεύθυνση "
 "αποστολέα\""
 
-msgid "AskoziaPBX Test E-mail"
-msgstr "Δοκιμαστικό e-mail"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-"Οι ρυθμίσεις SMTP λειτουργούν χωρίς πρόβλημα. Μπορείτε τώρα να "
-"χρησιμοποιήσετε την αποστολή φωνητικών μηνυμάτων και ειδοποιήσεων "
-"αναπάντητων κλήσεων."
-
-msgid "E-mail has been sent successfully."
-msgstr "Το e-mail στάλθηκε επιτυχώς."
-
-msgid "E-mail was not sent, check your settings."
-msgstr "Το e-mail δεν στάλθηκε. Ελέγξτε τις ρυθμίσεις σας."
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr ""
-"Το URL του διακομιστή SMTP ή η διεύθυνση IP του και προαιρετικά η θύρα."
-
-msgid "E-mail Address"
-msgstr "Διεύθυνση e-mail αποστολέα"
-
-msgid "Options"
-msgstr "Επιλογές"
-
-msgid "Account uses TLS"
-msgstr "Ο λογαριασμός χρησιμοποιεί TLS"
-
-msgid "TLS certificates are currently not verified."
-msgstr "Τα πιστοποιητικά TLS προς το παρόν δεν επαληθεύονται."
-
-msgid "Test E-mail"
-msgstr "Δοκιμαστικό e-mail."
-
-msgid "E-mail Me"
-msgstr "Αποστολή e-mail"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-"Πληκτρολογήστε μια διεύθυνση e-mail και κάντε κλικ στην &quot;Αποστολή e-"
-"mail&quot; για να δοκιμάσετε τις ρυθμίσεις SMTP."
-
-msgid "Presentation"
-msgstr "Παρουσίαση"
 
 msgid "From Address"
 msgstr "Διεύθυνση αποστολέα"
@@ -2916,11 +2923,9 @@ msgstr ""
 "Αυτή είναι η διεύθυνση αποστολέα που θα φαίνεται στα μηνύματα που "
 "προέρχονται από την υπηρεσία φωνητικών θυρίδων."
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr "Η προεπιλεγμένη τιμή είναι η διεύθυνση e-mail που φαίνεται πιο πάνω."
-
-msgid "E-Mail Language"
-msgstr "Γλώσσα ηλεκτρονκών μηνυμάτων"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2987,6 +2992,9 @@ msgstr ""
 "Αν δεν μπορείτε να δείτε το γράφημα, θα πρέπει να εγκαταστήσετε το <a href="
 "\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG "
 "viewer</a>."
+
+msgid "Network"
+msgstr "Ενσύρματο δίκτυο"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3477,6 +3485,26 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "διαγραφή τηλεφώνου"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Πάροχοι"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "Τα πιστοποιητικά TLS προς το παρόν δεν επαληθεύονται."
+
+#~ msgid "Presentation"
+#~ msgstr "Παρουσίαση"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "Γλώσσα ηλεκτρονκών μηνυμάτων"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "Δημόσια απ' ευθείας κλήση"

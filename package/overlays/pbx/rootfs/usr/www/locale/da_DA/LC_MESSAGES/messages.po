@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-11 15:09+0100\n"
+"POT-Creation-Date: 2009-11-13 15:45+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -485,16 +485,6 @@ msgstr ""
 "kontakt med telefonensvaren. Hvis kontoens brugernavn er nummerisk, vises "
 "dette. Hvis ikke, vises nummeret på den linie som modtog opkaldet."
 
-msgid "Authentication Method"
-msgstr "Godkendelses Metode"
-
-msgid ""
-"Most accounts will work using 'auto'. If this fails, select an "
-"authentication method appropriate for your server."
-msgstr ""
-"De fleste konti vil fungerer med 'auto'. Hvis dette fejler, vælg en "
-"authentifikations metode som passer til din server."
-
 msgid "of"
 msgstr "af"
 
@@ -528,6 +518,13 @@ msgstr "En nyere <strong>beta</strong> version af AskoziaPBX er tilgængelig!"
 msgid "The following input errors were detected:"
 msgstr "Følgende indtastnings fejl er opdaget:"
 
+#, fuzzy
+msgid "Local Network"
+msgstr "Netværk"
+
+msgid "Analog"
+msgstr "Analog"
+
 msgid "Dialplan"
 msgstr "dialplan"
 
@@ -543,12 +540,6 @@ msgstr "Avanceret"
 msgid "General Setup"
 msgstr "General opsætning"
 
-msgid "Interfaces"
-msgstr "Interfaces"
-
-msgid "Packages"
-msgstr "Pakker"
-
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -561,6 +552,10 @@ msgstr "Fabriks Indstillinger"
 msgid "Reboot"
 msgstr "Genstart"
 
+#, fuzzy
+msgid "Ports"
+msgstr "Portugal"
+
 msgid "Providers"
 msgstr "Udbyder"
 
@@ -572,6 +567,10 @@ msgstr "Opkalds gruppe"
 
 msgid "Transfers"
 msgstr "Overførsler"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "E-mail addresse"
 
 msgid "Conferencing"
 msgstr "Konference"
@@ -603,9 +602,6 @@ msgstr "IAX"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "Analog"
-msgstr "Analog"
-
 msgid "Manager"
 msgstr "Manager"
 
@@ -627,11 +623,22 @@ msgstr "Manager Interface"
 msgid "System"
 msgstr "System"
 
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
 msgid "Accounts"
 msgstr "Konti"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Lokation"
+
 msgid "Services"
 msgstr "Tjenester"
+
+msgid "Packages"
+msgstr "Pakker"
 
 msgid "Status"
 msgstr "Status"
@@ -1935,11 +1942,385 @@ msgstr "Hukommelses Forbrug"
 msgid "Notes"
 msgstr "Noter"
 
-msgid "Network"
-msgstr "Netværk"
+msgid "Interfaces"
+msgstr "Interfaces"
 
 msgid "Storage"
 msgstr ""
+
+msgid ""
+"The PBX automatically allocates leftover space for permanent storage. "
+"Packages to extend the system's functionality can be installed in this space."
+msgstr ""
+
+msgid "The system storage media is not large enough to install packages."
+msgstr ""
+"System opbevarings mediet er ikke stort nok til at kunne installere pakker."
+
+#, php-format
+msgid ""
+"A minimum of %sMB is required. In the future, external media will be able to "
+"be used, but currently packages must be stored on the internal system media."
+msgstr ""
+"Et minimum af %sMB er et krav. I fremtiden, vil externe medier være en "
+"mulighed, men i øjeblikket må alle pakker opbevares på det interne system "
+"medie."
+
+msgid "Capacity"
+msgstr "Kapacitet"
+
+msgid "State"
+msgstr "Tilstand"
+
+msgid "Installed Packages"
+msgstr "Installerede pakker"
+
+msgid "system storage partition"
+msgstr "system lager partition"
+
+msgid "Edit Disk"
+msgstr "Rediger Disk"
+
+msgid "descriptive name"
+msgstr "beskrivende navn"
+
+msgid "Wireless"
+msgstr "Trådløst"
+
+#, fuzzy
+msgid ""
+"If a compatible wireless card is present in the system, it can be configured "
+"to act as an Access Point. It will be bridged to the wired network that the "
+"PBX is connected to."
+msgstr ""
+"Hvis et kompatibelt trådløst kort er tilstede i systemet, så kan det "
+"konfigureres til at virke som et Access Point. Det vil blive bridged til det "
+"trådførte netværk som AskoziaPBX er tilsluttet."
+
+msgid "SSID,Channel"
+msgstr "SSID, Kanal"
+
+msgid ",WPA version,WPA cipher"
+msgstr ",WPA version, WPA ciffer"
+
+msgid ",WPA PSK"
+msgstr ",WPA PSK"
+
+msgid "The WPA PSK must be between 8 and 63 characters long."
+msgstr "WPA PSK skal være imellem 8 og 63 karakterer lang."
+
+msgid ""
+"802.11a channels can only be selected if the standard is set to 802.11a too."
+msgstr ""
+"802.11a kanaler kan kun benyttes hvis også 802.11a standarden er valgt."
+
+msgid "802.11a can only be selected if an 802.11a channel is selected too."
+msgstr "802.11a kan kun benyttes hvis der også er valgt en 802.11a kanal."
+
+msgid "No compatible wireless interfaces detected."
+msgstr "Ingen kompatible trådløse interfaces fundet."
+
+msgid "Enable Wireless Interface"
+msgstr "Aktiver Trådløst Interface"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Gem SSID"
+
+msgid ""
+"If this option is selected, the SSID will not be broadcast in hostap mode, "
+"and onlyclients that know the exact SSID will be able to connect. Note that "
+"this option should never be used as a substitute for proper security/"
+"encryption settings."
+msgstr ""
+"Hvis denne option benyttes, bliver SSID ikke udsendt i hostap tilstanden, og "
+"det er kun klienter der har kendskab til den præcise SSID, der vil kunne "
+"opnå en forbindelse. Bemærk: Denne option skal aldrig benyttes som erstaning "
+"for de øvrige sikkerheds og kryterings muligheder."
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "WPA"
+msgstr "WPA"
+
+msgid "WPA settings"
+msgstr "WPA indstillinger"
+
+msgid "Mode"
+msgstr "Tilstand"
+
+msgid "none"
+msgstr "ingen"
+
+msgid "PSK"
+msgstr "PSK"
+
+msgid "WPA only"
+msgstr "Kun WPA"
+
+msgid "WPA2 only"
+msgstr "kun WPA2"
+
+msgid "WPA + WPA2"
+msgstr "WPA og WPA2"
+
+msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+msgstr "I de fleste tilfælde, skal du vælge &quot;WPA og WPA2&quot; her."
+
+msgid "Cipher"
+msgstr "ciffer"
+
+msgid "TKIP"
+msgstr "TKIP"
+
+msgid "AES/CCMP"
+msgstr "AES/CCMP"
+
+msgid "TKIP + AES/CCMP"
+msgstr "TKIP + AES/CCMP"
+
+msgid ""
+"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+"with older hardware."
+msgstr ""
+"AES/CCMP tilbyder bedre sikkerhed end TKIP, men TKIP er mere kompatibelt med "
+"ældre hardware."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+"Skriv den kode som skal bruges i WPA-PSK tilstand. Den skal være imellem 8 "
+"og 63 karakterer lang."
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "Enable WEP"
+msgstr "Aktiver WEP"
+
+msgid "TX key"
+msgstr "TX nøgle"
+
+msgid "Key 1:"
+msgstr "Nøgle 1:"
+
+msgid "Key 2:"
+msgstr "Nøgle 2:"
+
+msgid "Key 3:"
+msgstr "Nøgle 3:"
+
+msgid "Key 4:"
+msgstr "Nøgle 4:"
+
+msgid ""
+"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+"preceded by '0x'."
+msgstr ""
+"40 (64) bit nøgle kan indtastes som 5 ASCII tegn eller som 10 hex tal, med "
+"foranstillet '0x'."
+
+msgid ""
+"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+"preceded by '0x'."
+msgstr ""
+"104 (128) bit nøgle kan indtastes som 13 ASCII tegn eller som 26 hex tal, "
+"med foranstillet '0x'."
+
+msgid ""
+"In order to send missed call notifications and recorded voicemail messages "
+"via e-mail, a mail server must be correctly configured here."
+msgstr ""
+
+msgid "A valid e-mail address must be specified."
+msgstr "En gyldig e-mail addresse skal angives."
+
+msgid "A username must be specified."
+msgstr "Et brugernavn skal angives."
+
+#, fuzzy
+msgid "AskoziaPBX Test E-mail"
+msgstr "AskoziaPBX: udfør kommando"
+
+msgid ""
+"Your SMTP settings are working correctly. Voicemail to E-mail and missed-"
+"call notifications can now be used."
+msgstr ""
+
+#, fuzzy
+msgid "E-mail has been sent successfully."
+msgstr "Ændringer er tilføjet tilfredsstillende."
+
+msgid "E-mail was not sent, check your settings."
+msgstr ""
+
+msgid "SMTP Client Setup"
+msgstr ""
+
+msgid "SMTP host URL or IP address and optional port."
+msgstr "SMTP vært URL eller IP adresse og valgfri port."
+
+msgid "E-mail Address"
+msgstr "E-mail addresse"
+
+msgid "Password"
+msgstr "Adgangskode"
+
+msgid "Authentication Method"
+msgstr "Godkendelses Metode"
+
+msgid ""
+"Most accounts will work using 'auto'. If this fails, select an "
+"authentication method appropriate for your server."
+msgstr ""
+"De fleste konti vil fungerer med 'auto'. Hvis dette fejler, vælg en "
+"authentifikations metode som passer til din server."
+
+msgid "Options"
+msgstr "Indstillinger"
+
+#, fuzzy
+msgid "Account uses TLS"
+msgstr "Konti"
+
+msgid "Test E-mail"
+msgstr ""
+
+#, fuzzy
+msgid "E-mail Me"
+msgstr "E-mail addresse"
+
+msgid ""
+"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
+"settings."
+msgstr ""
+
+#, fuzzy
+msgid "Edit Analog Phone"
+msgstr "Rediger Analog"
+
+msgid "A valid Caller ID must be specified."
+msgstr "En gyldig Opkalds ID skal angives."
+
+msgid "A phone with this extension already exists."
+msgstr "En telefon med den extension er allerede eksisterende."
+
+#, fuzzy
+msgid "Number used to dial this phone."
+msgstr "Den interne extension brugt for at ringe til denne telefon"
+
+msgid "Edit External Line"
+msgstr "Rediger Extern Linie"
+
+msgid "The internal extension used to dial this phone."
+msgstr "Den interne extension brugt for at ringe til denne telefon"
+
+msgid "Descriptive name for this phone."
+msgstr "Beskrivende navn på denne telefon."
+
+msgid ""
+"Number or string to be dialed to reach this telephone. This will be dialed "
+"directly; outgoing pattern matching rules do not apply"
+msgstr ""
+"Nummer eller tekst der skal benyttes ved opkald til denne telefon. Opringen "
+"vil ske direkte og evt. udgående mønstre benyttes ikke."
+
+msgid "Provider"
+msgstr "Udbyder"
+
+msgid "Outgoing provider to be used to reach this telephone."
+msgstr "Udgående udbyder som skal bruges for at nå denne telefon."
+
+msgid "Edit IAX Account"
+msgstr "Rediger IAX konto"
+
+msgid "A valid secret must be specified."
+msgstr "En gyldig hemmelighed skal angives."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "Der skal angives et helt antal sekunder for \"Kvalificer\" udløb."
+
+msgid ""
+"The phone number assigned to this account. Also this account's username."
+msgstr "Telefon nummer knyttet til denne konto. Også denne konto's brugernavn."
+
+msgid "plaintext"
+msgstr "ren tekst"
+
+msgid "md5"
+msgstr "md5"
+
+msgid "This account's password and authentication scheme."
+msgstr "Denne kontos kodeord og authentofikations skema"
+
+msgid "Edit ISDN Line"
+msgstr "Rediger ISDN linie"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+
+msgid "This phone's number (MSN)."
+msgstr "Denne telefon's nummer (MSN)"
+
+msgid "Edit SIP Account"
+msgstr "Rediger SIP konto"
+
+msgid "A whole number of calls must be entered for the \"call limit.\""
+msgstr "Der skal angives et heltal for \"Opkald grænse\""
+
+msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgstr "Der skal angives et heltal for \"Optaget grænse\""
+
+msgid "This account's password."
+msgstr "Denne konto's kodeord"
+
+msgid "Dialplan Element Library"
+msgstr "Opkaldsplan element bibliotek"
+
+msgid "Functions"
+msgstr "Funktioner"
+
+msgid "Audio Prompts"
+msgstr "Lyd promter"
+
+msgid ""
+"Below is a list of the currently defined phones along with a basic Dial() "
+"command to call them. Many additional options are available for this "
+"command, please read its reference documentation in the Applications tab."
+msgstr ""
+"Nedenfor er vist en liste med aktuelle telefonnumre sammen med en Dial() "
+"kommando for at ringe til dem. Der er mulighed for at angive en del flere "
+"optioner til denne kommendo. Læs venligst mere i den angivne "
+"dokumentationsreference på Program fanen."
+
+msgid "Caller ID / Name"
+msgstr "Opkalds ID / Navn"
+
+msgid "Basic"
+msgstr "Simpel"
+
+msgid "Filename"
+msgstr "Filnavn"
+
+msgid "Format"
+msgstr "Formater"
+
+msgid "Size"
+msgstr "Størrelse"
 
 #, fuzzy
 msgid "No compatible analog ports were detected."
@@ -1956,9 +2337,6 @@ msgstr "Type"
 msgid "Phone"
 msgstr "Telefoner"
 
-msgid "Provider"
-msgstr "Udbyder"
-
 #, fuzzy
 msgid "edit analog port"
 msgstr "rediger analog interface"
@@ -1971,21 +2349,9 @@ msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
 msgid "forget port settings"
 msgstr "glem interface indstillinger"
 
-#, fuzzy
-msgid "Edit Analog Port"
+#, fuzzy, php-format
+msgid "Edit Analog %s Port"
 msgstr "Rediger Analog"
-
-#, fuzzy
-msgid "telephones"
-msgstr "slet telefon"
-
-#, fuzzy
-msgid "provider lines"
-msgstr "Udbyder"
-
-#, php-format
-msgid "This port can be connected to %s."
-msgstr ""
 
 #, fuzzy
 msgid "Enter a descriptive name for this port."
@@ -2231,9 +2597,6 @@ msgstr "Dynamisk DNS Klient"
 msgid "Service Type"
 msgstr "Tjeneste Type"
 
-msgid "Password"
-msgstr "Adgangskode"
-
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
 msgstr ""
 
@@ -2255,311 +2618,6 @@ msgstr "ændr ip adressen på din computer"
 msgid "access the webGUI with the new IP address"
 msgstr "tilgå webGUI med den nye IP adresse"
 
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"System opbevarings mediet er ikke stort nok til at kunne installere pakker."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Et minimum af %sMB er et krav. I fremtiden, vil externe medier være en "
-"mulighed, men i øjeblikket må alle pakker opbevares på det interne system "
-"medie."
-
-msgid "Capacity"
-msgstr "Kapacitet"
-
-msgid "State"
-msgstr "Tilstand"
-
-msgid "Installed Packages"
-msgstr "Installerede pakker"
-
-msgid "system storage partition"
-msgstr "system lager partition"
-
-msgid "Edit Disk"
-msgstr "Rediger Disk"
-
-msgid "descriptive name"
-msgstr "beskrivende navn"
-
-msgid "Wireless"
-msgstr "Trådløst"
-
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Hvis et kompatibelt trådløst kort er tilstede i systemet, så kan det "
-"konfigureres til at virke som et Access Point. Det vil blive bridged til det "
-"trådførte netværk som AskoziaPBX er tilsluttet."
-
-msgid "SSID,Channel"
-msgstr "SSID, Kanal"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA version, WPA ciffer"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK skal være imellem 8 og 63 karakterer lang."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"802.11a kanaler kan kun benyttes hvis også 802.11a standarden er valgt."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11a kan kun benyttes hvis der også er valgt en 802.11a kanal."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Ingen kompatible trådløse interfaces fundet."
-
-msgid "Enable Wireless Interface"
-msgstr "Aktiver Trådløst Interface"
-
-msgid "Standard"
-msgstr "Standard"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Gem SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Hvis denne option benyttes, bliver SSID ikke udsendt i hostap tilstanden, og "
-"det er kun klienter der har kendskab til den præcise SSID, der vil kunne "
-"opnå en forbindelse. Bemærk: Denne option skal aldrig benyttes som erstaning "
-"for de øvrige sikkerheds og kryterings muligheder."
-
-msgid "Channel"
-msgstr "Kanal"
-
-msgid "Auto"
-msgstr "Auto"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA indstillinger"
-
-msgid "Mode"
-msgstr "Tilstand"
-
-msgid "none"
-msgstr "ingen"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "Kun WPA"
-
-msgid "WPA2 only"
-msgstr "kun WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA og WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "I de fleste tilfælde, skal du vælge &quot;WPA og WPA2&quot; her."
-
-msgid "Cipher"
-msgstr "ciffer"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP tilbyder bedre sikkerhed end TKIP, men TKIP er mere kompatibelt med "
-"ældre hardware."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Skriv den kode som skal bruges i WPA-PSK tilstand. Den skal være imellem 8 "
-"og 63 karakterer lang."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Aktiver WEP"
-
-msgid "TX key"
-msgstr "TX nøgle"
-
-msgid "Key 1:"
-msgstr "Nøgle 1:"
-
-msgid "Key 2:"
-msgstr "Nøgle 2:"
-
-msgid "Key 3:"
-msgstr "Nøgle 3:"
-
-msgid "Key 4:"
-msgstr "Nøgle 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bit nøgle kan indtastes som 5 ASCII tegn eller som 10 hex tal, med "
-"foranstillet '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bit nøgle kan indtastes som 13 ASCII tegn eller som 26 hex tal, "
-"med foranstillet '0x'."
-
-msgid "Edit Analog Line"
-msgstr "Rediger Analog Linie"
-
-msgid "A valid Caller ID must be specified."
-msgstr "En gyldig Opkalds ID skal angives."
-
-msgid "A phone with this extension already exists."
-msgstr "En telefon med den extension er allerede eksisterende."
-
-msgid "A valid e-mail address must be specified."
-msgstr "En gyldig e-mail addresse skal angives."
-
-#, fuzzy
-msgid "Number used to dial this phone."
-msgstr "Den interne extension brugt for at ringe til denne telefon"
-
-msgid "Edit External Line"
-msgstr "Rediger Extern Linie"
-
-msgid "The internal extension used to dial this phone."
-msgstr "Den interne extension brugt for at ringe til denne telefon"
-
-msgid "Descriptive name for this phone."
-msgstr "Beskrivende navn på denne telefon."
-
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr ""
-"Nummer eller tekst der skal benyttes ved opkald til denne telefon. Opringen "
-"vil ske direkte og evt. udgående mønstre benyttes ikke."
-
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr "Udgående udbyder som skal bruges for at nå denne telefon."
-
-msgid "Edit IAX Account"
-msgstr "Rediger IAX konto"
-
-msgid "A valid secret must be specified."
-msgstr "En gyldig hemmelighed skal angives."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Der skal angives et helt antal sekunder for \"Kvalificer\" udløb."
-
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr "Telefon nummer knyttet til denne konto. Også denne konto's brugernavn."
-
-msgid "plaintext"
-msgstr "ren tekst"
-
-msgid "md5"
-msgstr "md5"
-
-msgid "This account's password and authentication scheme."
-msgstr "Denne kontos kodeord og authentofikations skema"
-
-msgid "Edit ISDN Line"
-msgstr "Rediger ISDN linie"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "This phone's number (MSN)."
-msgstr "Denne telefon's nummer (MSN)"
-
-msgid "Edit SIP Account"
-msgstr "Rediger SIP konto"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "Der skal angives et heltal for \"Opkald grænse\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "Der skal angives et heltal for \"Optaget grænse\""
-
-msgid "This account's password."
-msgstr "Denne konto's kodeord"
-
-msgid "Dialplan Element Library"
-msgstr "Opkaldsplan element bibliotek"
-
-msgid "Functions"
-msgstr "Funktioner"
-
-msgid "Audio Prompts"
-msgstr "Lyd promter"
-
-msgid ""
-"Below is a list of the currently defined phones along with a basic Dial() "
-"command to call them. Many additional options are available for this "
-"command, please read its reference documentation in the Applications tab."
-msgstr ""
-"Nedenfor er vist en liste med aktuelle telefonnumre sammen med en Dial() "
-"kommando for at ringe til dem. Der er mulighed for at angive en del flere "
-"optioner til denne kommendo. Læs venligst mere i den angivne "
-"dokumentationsreference på Program fanen."
-
-msgid "Caller ID / Name"
-msgstr "Opkalds ID / Navn"
-
-msgid "Basic"
-msgstr "Simpel"
-
-msgid "Filename"
-msgstr "Filnavn"
-
-msgid "Format"
-msgstr "Formater"
-
-msgid "Size"
-msgstr "Størrelse"
-
 msgid "Printable Dialplan"
 msgstr "Printbar Dialplan"
 
@@ -2571,6 +2629,9 @@ msgstr "Pin"
 
 msgid "Custom Applications"
 msgstr "Brugerdefineret program"
+
+msgid "Edit Analog Line"
+msgstr "Rediger Analog Linie"
 
 msgid "A valid Caller ID string must be specified."
 msgstr "En gyldig Opkalds ID streng skal angives."
@@ -2699,66 +2760,11 @@ msgstr "Adgangs PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Optinal PIN kode for at få adgang til dette konference rum."
 
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-
-msgid "A username must be specified."
-msgstr "Et brugernavn skal angives."
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "En gyldig email adresse skal angives i \"fra addesse\"."
 
-#, fuzzy
-msgid "AskoziaPBX Test E-mail"
-msgstr "AskoziaPBX: udfør kommando"
-
-msgid ""
-"Your SMTP settings are working correctly. Voicemail via E-mail and missed-"
-"call notifications can now be used."
+msgid "Voicemail to E-Mail Presentation"
 msgstr ""
-
-#, fuzzy
-msgid "E-mail has been sent successfully."
-msgstr "Ændringer er tilføjet tilfredsstillende."
-
-msgid "E-mail was not sent, check your settings."
-msgstr ""
-
-msgid "SMTP"
-msgstr "SMTP"
-
-msgid "SMTP host URL or IP address and optional port."
-msgstr "SMTP vært URL eller IP adresse og valgfri port."
-
-msgid "E-mail Address"
-msgstr "E-mail addresse"
-
-msgid "Options"
-msgstr "Indstillinger"
-
-#, fuzzy
-msgid "Account uses TLS"
-msgstr "Konti"
-
-msgid "TLS certificates are currently not verified."
-msgstr "TLS certifikater er i øjeblikket ikke verificeret"
-
-msgid "Test E-mail"
-msgstr ""
-
-#, fuzzy
-msgid "E-mail Me"
-msgstr "E-mail addresse"
-
-msgid ""
-"Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP "
-"settings."
-msgstr ""
-
-msgid "Presentation"
-msgstr "Præsentation"
 
 msgid "From Address"
 msgstr "Fra Adresse"
@@ -2766,13 +2772,11 @@ msgstr "Fra Adresse"
 msgid "This will be shown as voicemail service's sending address."
 msgstr "Dette vil blive vist som telefonsvarer tjenesten's afsender adresse."
 
-msgid "Defaults to the e-mail address entered above."
+#, fuzzy, php-format
+msgid "Defaults to the e-mail address used in the %s setup."
 msgstr ""
 "Udfyldes automatisk med email adressen ovenfor, hvis dette felt ikke "
 "udfyldes."
-
-msgid "E-Mail Language"
-msgstr "E-mail sprogvalg"
 
 msgid ""
 "E-mail notifications for new voicemail will be delivered in this language."
@@ -2838,6 +2842,9 @@ msgid ""
 msgstr ""
 "Hvis du ikke kan se grafen, så skal du måske  installere <a href=\"http://"
 "www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viserenr</a>."
+
+msgid "Network"
+msgstr "Netværk"
 
 msgid ""
 "This is the first page which needs configuring upon installing a new system. "
@@ -3274,6 +3281,26 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+#~ msgid "telephones"
+#~ msgstr "slet telefon"
+
+#, fuzzy
+#~ msgid "provider lines"
+#~ msgstr "Udbyder"
+
+#~ msgid "SMTP"
+#~ msgstr "SMTP"
+
+#~ msgid "TLS certificates are currently not verified."
+#~ msgstr "TLS certifikater er i øjeblikket ikke verificeret"
+
+#~ msgid "Presentation"
+#~ msgstr "Præsentation"
+
+#~ msgid "E-Mail Language"
+#~ msgstr "E-mail sprogvalg"
 
 #~ msgid "Public Direct Dial"
 #~ msgstr "Offentlig Direkte Opkald"
