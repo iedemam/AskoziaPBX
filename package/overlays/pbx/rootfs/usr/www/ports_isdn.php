@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("ISDN"));
+$pgtitle = array(gettext("Hardware"), gettext("Ports"), gettext("ISDN"));
 $pghelp = gettext("Detected ports on this page must be edited and saved before the system can utilize them. Be careful when configuring ISDN interfaces. Having a single port on a card incorrectly configured can result in the entire card being unusable by the system.");
 $pglegend = array("edit", "delete");
 
@@ -71,7 +71,7 @@ if ($_GET['action'] == "forget") {
 	if(!($msg = isdn_forget_interface($_GET['unit']))) {
 		write_config();
 		touch($d_isdnconfdirty_path);
-		header("Location: interfaces_isdn.php");
+		header("Location: ports_isdn.php");
 		exit;
 	} else {
 		$input_errors[] = $msg;	
@@ -100,24 +100,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) display_input_errors($input_errors); ?>
 <?php if ($savemsg) display_info_box($savemsg); ?>
-<form action="interfaces_isdn.php" method="post">
+<form action="ports_isdn.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td class="tabnavtbl">
-			<ul id="tabnav"><?
-
-			$tabs = array(
-				gettext('Network')	=> 'interfaces_network.php',
-				//gettext('Wireless')	=> 'interfaces_wireless.php',
-				gettext('ISDN')		=> 'interfaces_isdn.php',
-				gettext('Analog')	=> 'interfaces_analog.php',
-				gettext('Storage')	=> 'interfaces_storage.php'
-			);
-			dynamic_tab_menu($tabs);
-			
-			?></ul>
-		</td>
-	</tr>
+	<? display_ports_tab_menu(); ?>
 	<tr>
 		<td class="tabcont"><?
 
@@ -152,7 +137,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
 					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
-					<td valign="middle" nowrap class="list"><a href="interfaces_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="<?=gettext("edit ISDN interface");?>" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="ports_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="<?=gettext("edit ISDN interface");?>" border="0"></a>
 					<? if ($mu['name'] != $defaults['isdn']['interface']['name']) : ?>
 						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this interface\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget interface settings");?>" border="0"></a>
 					<? endif; ?>

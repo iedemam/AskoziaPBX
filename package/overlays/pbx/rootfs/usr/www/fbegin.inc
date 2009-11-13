@@ -149,32 +149,31 @@ if ((!is_array($allowed)) and
 
 /* System */
 $menu['System'][gettext("General Setup")]		= array('system.php');
-$menu['System'][gettext("Interfaces")] 			= array('interfaces_network.php',
-												'interfaces_isdn.php',
-												'interfaces_isdn_edit.php',
-												'interfaces_analog.php',
-												'interfaces_analog_edit.php',
-												'interfaces_storage.php',
-												'interfaces_storage_syspart_edit.php',
-												'interfaces_storage_disk_edit.php');
-$menu['System'][gettext("Packages")]			= array('system_packages.php');
+//$menu['System'][gettext("Packages")]			= array('system_packages.php');
 $menu['System'][gettext("Firmware")]			= array('system_firmware.php');
 $menu['System'][gettext("Backup/Restore")] 		= array('system_backup.php');
 $menu['System'][gettext("Factory Defaults")]	= array('system_defaults.php');
 $menu['System'][gettext("Reboot")] 				= array('system_reboot.php');
 
+/* Hardware */
+$menu['Hardware'][gettext("Ports")] 			= array('ports_lan.php',
+												'ports_isdn.php',
+												'ports_isdn_edit.php',
+												'ports_analog.php',
+												'ports_analog_edit.php');
+
 /* Accounts */
-$menu['Accounts'][gettext("Providers")]			= array('accounts_providers.php',
-												'providers_sip_edit.php',
-												'providers_iax_edit.php',
-												'providers_isdn_edit.php',
-												'providers_analog_edit.php');
 $menu['Accounts'][gettext("Phones")]			= array('accounts_phones.php',
 												'phones_sip_edit.php',
 												'phones_iax_edit.php',
 												'phones_isdn_edit.php',
 												'phones_analog_edit.php',
 												'phones_external_edit.php');
+$menu['Accounts'][gettext("Providers")]			= array('accounts_providers.php',
+												'providers_sip_edit.php',
+												'providers_iax_edit.php',
+												'providers_isdn_edit.php',
+												'providers_analog_edit.php');
 
 /* Dialplan */
 $menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications.php',
@@ -182,26 +181,29 @@ $menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications.php',
 $menu['Dialplan'][gettext("Call Groups")]		= array('dialplan_callgroups.php',
 												'dialplan_callgroups_edit.php');
 $menu['Dialplan'][gettext("Transfers")]			= array('dialplan_transfers.php');
-											
+
+/* Notifications */
+$menu['Notifications'][gettext("E-Mail")]		= array('notifications_email.php');
+
 /* Services */
+$menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
-$menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 
 /* Packages */
-if ($nav = packages_get_www_nav()) {
-	$menu['Packages'] = $nav;
-}
+//if ($nav = packages_get_www_nav()) {
+//	$menu['Packages'] = $nav;
+//}
 
 /* Status */
 $menu['Status'][gettext("Summary")]				= array('index.php');
-$menu['Status'][gettext("Interfaces")]			= array('status_interfaces.php');
-$menu['Status'][gettext("Channels")]				= array('status_channels.php');
+$menu['Status'][gettext("Ports")]				= array('status_ports.php');
+$menu['Status'][gettext("Channels")]			= array('status_channels.php');
 $menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
 
 /* Live Stats */
 $menu['Live Stats'][gettext("Network Traffic")]	= array('status_graph_traffic.php');
-$menu['Live Stats'][gettext("CPU Load")]			= array('status_graph_cpu.php');
+$menu['Live Stats'][gettext("CPU Load")]		= array('status_graph_cpu.php');
 
 /* Advanced */
 $menu['Advanced'][gettext("RTP")] 				= array('advanced_rtp.php');
@@ -252,8 +254,10 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 						<ul class="framemenu"><?
 
 		dynamic_menu($menu['System'], gettext('System'));
+		dynamic_menu($menu['Hardware'], gettext('Hardware'));
 		dynamic_menu($menu['Accounts'], gettext('Accounts'));
 		dynamic_menu($menu['Dialplan'], 'Dialplan');
+		dynamic_menu($menu['Notifications'], gettext('Notifications'));
 		dynamic_menu($menu['Services'], gettext('Services'));
 		if (isset($menu['Packages'])) {
 			dynamic_menu($menu['Packages'], gettext('Packages'));

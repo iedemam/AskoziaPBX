@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Status"), gettext("Interfaces"));
+$pgtitle = array(gettext("Status"), gettext("Ports"));
 
 $spans = dahdi_scan_to_spans();
 

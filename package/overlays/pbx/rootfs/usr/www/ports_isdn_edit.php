@@ -35,7 +35,7 @@ $unit = $_GET['unit'];
 if (isset($_POST['unit']))
 	$unit = $_POST['unit'];
 
-$pgtitle = array(gettext("Interfaces"), sprintf(gettext("Edit ISDN Interface #%s"),$unit));
+$pgtitle = array(gettext("Ports"), sprintf(gettext("Edit ISDN Interface #%s"),$unit));
 
 if (!is_array($config['interfaces']['isdn-unit']))
 	$config['interfaces']['isdn-unit'] = array();
@@ -129,7 +129,7 @@ if ($_POST) {
 
 		write_config();
 
-		header("Location: interfaces_isdn.php");
+		header("Location: ports_isdn.php");
 		exit;
 	}
 }
@@ -147,7 +147,7 @@ if ($_POST) {
 //-->
 </script>
 <?php if ($input_errors) display_input_errors($input_errors); ?>
-<form action="interfaces_isdn_edit.php" method="post" name="iform" id="iform">
+<form action="ports_isdn_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
 		<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>

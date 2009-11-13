@@ -183,22 +183,7 @@ if ($_POST) {
 
 <form action="interfaces_wireless.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td class="tabnavtbl">
-			<ul id="tabnav"><?
-
-			$tabs = array(
-				gettext('Network')	=> 'interfaces_network.php',
-				gettext('Wireless')	=> 'interfaces_wireless.php',
-				gettext('ISDN')		=> 'interfaces_isdn.php',
-				gettext('Analog')	=> 'interfaces_analog.php',
-				gettext('Storage')	=> 'interfaces_storage.php'
-			);
-			dynamic_tab_menu($tabs);
-			
-			?></ul>
-		</td>
-	</tr>
+	<? display_ports_tab_menu(); ?>
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0"><?

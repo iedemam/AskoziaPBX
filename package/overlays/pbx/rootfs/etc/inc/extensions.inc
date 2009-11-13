@@ -50,7 +50,7 @@ function extensions_conf_generate() {
 	$providers = pbx_get_providers();
 	$isdn_nt_interfaces = isdn_get_nt_interfaces();
 	$isdn_te_interfaces = isdn_get_te_interfaces();
-	$vmconfig = $config['voicemail'];
+	$vmconfig = voicemail_get_configuration();
 
 	$product_name = system_get_product_name();
 

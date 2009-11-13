@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
     
     Redistribution and use in source and binary forms, with or without
@@ -46,6 +46,7 @@ require_once("iax.inc");
 require_once("indications.inc");
 require_once("isdn.inc");
 require_once("manager.inc");
+require_once("notifications.inc");
 require_once("network.inc");
 require_once("packages.inc");
 require_once("pbx.inc");

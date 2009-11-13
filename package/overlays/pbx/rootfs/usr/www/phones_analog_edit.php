@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Phones"), gettext("Edit Analog Line"));
+$pgtitle = array(gettext("Accounts"), gettext("Edit Analog Phone"));
 
 $uniqid = $_GET['uniqid'];
 if (isset($_POST['uniqid'])) {
@@ -131,6 +131,8 @@ if ($uniqid) {
 } else {
 	$pconfig = analog_generate_default_phone();
 }
+$ports = dahdi_get_ports("analog", "fxs");
+
 
 include("fbegin.inc");
 
@@ -151,9 +153,6 @@ include("fbegin.inc");
 if ($input_errors) {
 	display_input_errors($input_errors);
 }
-
-$ports = dahdi_get_ports("analog", "fxs");
-
 
 ?><form action="phones_analog_edit.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">

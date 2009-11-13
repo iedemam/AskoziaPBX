@@ -30,11 +30,11 @@
 */
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Analog"));
+$pgtitle = array(gettext("Hardware"), gettext("Ports"), gettext("Analog"));
 
 if ($_GET['action'] == "forget") { 
 	dahdi_forget_port($_GET['uniqid']);
-	header("Location: interfaces_analog.php"); 
+	header("Location: ports_analog.php"); 
 	exit;
 }
 
@@ -54,28 +54,13 @@ $analog_ports = dahdi_get_ports("analog");
 
 include("fbegin.inc");
 
-?><form action="interfaces_analog.php" method="post"><?
+?><form action="ports_analog.php" method="post"><?
 if ($savemsg) {
 	display_info_box($savemsg);
 }
 
 ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td class="tabnavtbl">
-			<ul id="tabnav"><?
-
-			$tabs = array(
-				gettext('Network')	=> 'interfaces_network.php',
-				//gettext('Wireless')	=> 'interfaces_wireless.php',
-				gettext('ISDN')		=> 'interfaces_isdn.php',
-				gettext('Analog')	=> 'interfaces_analog.php',
-				gettext('Storage')	=> 'interfaces_storage.php'
-			);
-			dynamic_tab_menu($tabs);
-			
-			?></ul>
-		</td>
-	</tr>
+	<? display_ports_tab_menu(); ?>
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
@@ -105,7 +90,7 @@ if ($savemsg) {
 					<td class="listbg"><?=htmlspecialchars($port['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($port['card']);?></td>
 					<td class="listr"><?=htmlspecialchars($type);?></td>
-					<td valign="middle" nowrap class="list"><a href="interfaces_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="ports_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a>
 					<a href="?action=forget&uniqid=<?=$port['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this port\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget port settings");?>" border="0"></a></td>
 				</tr><?
 			}

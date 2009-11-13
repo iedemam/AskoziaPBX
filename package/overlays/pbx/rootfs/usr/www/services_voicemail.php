@@ -32,22 +32,9 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("Voicemail"));
-$pghelp = gettext("In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here.");
+$pghelp = "";
 
-$vmconfig = &$config['voicemail'];
-
-$pconfig['host'] = $vmconfig['host'];
-$pconfig['address'] = $vmconfig['address'];
-$pconfig['username'] = $vmconfig['username'];
-$pconfig['password'] = $vmconfig['password'];
-$pconfig['port'] = $vmconfig['port'];
-$pconfig['tls'] = $vmconfig['tls'];
-$pconfig['authtype'] = $vmconfig['authtype'];
-$pconfig['fromaddress'] = $vmconfig['fromaddress'];
-$pconfig['maillanguage'] = $vmconfig['maillanguage'];
-$pconfig['user_defined'] = isset($vmconfig['user_defined']);
-$pconfig['user_subject'] = base64_decode($vmconfig['user_subject']);
-$pconfig['user_body'] = base64_decode($vmconfig['user_body']);
+$pconfig = voicemail_get_configuration();
 
 if ($_POST) {
 
@@ -56,68 +43,33 @@ if ($_POST) {
 
 	/* input validation */
 	if ($_POST['user_defined']) {
-		$reqdfields = explode(" ", "host address user_subject user_body");
-		$reqdfieldsn = explode(",", "Host,E-mail Address,Subject,Body");
-	} else {
-		$reqdfields = explode(" ", "host address");
-		$reqdfieldsn = explode(",", "Host,E-mail Address");
+		$reqdfields = explode(" ", "user_subject user_body");
+		$reqdfieldsn = explode(",", "Subject,Body");
 	}
-	
+
 	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if ($_POST['address'] && !verify_is_email_address($_POST['address'])) {
-		$input_errors[] = gettext("A valid e-mail address must be specified.");
-	}
-	
-	if ($_POST['password'] && !$_POST['username']) {
-		$input_errors[] = gettext("A username must be specified.");
-	}
-	
 	if ($_POST['fromaddress'] && !verify_is_email_address($_POST['fromaddress'])) {
 		$input_errors[] = gettext("A valid e-mail address must be specified for the \"from address\".");
 	}
-	
-	if ($_POST['port'] && !verify_is_port($_POST['port'])) {
-		$input_errors[] = gettext("A valid port must be specified.");
-	}
 
 	if (!$input_errors) {
-		$vmconfig['host'] = $_POST['host'];
-		$vmconfig['address'] = $_POST['address'];
-		$vmconfig['username'] = $_POST['username'];
-		$vmconfig['password'] = $_POST['password'];
-		$vmconfig['port'] = $_POST['port'];
-		$vmconfig['tls'] = $_POST['tls'];
-		$vmconfig['authtype'] = verify_non_default($_POST['authtype'], $defaults['voicemail']['authtype']);
 		$vmconfig['fromaddress'] = $_POST['fromaddress'];
 		$vmconfig['maillanguage'] = $_POST['maillanguage'];
 		$vmconfig['user_defined'] = isset($_POST['user_defined']);
 		$vmconfig['user_subject'] = base64_encode($_POST['user_subject']);
 		$vmconfig['user_body'] = base64_encode($_POST['user_body']);
-		
-		write_config();
-		
+
+		voicemail_save_configuration($vmconfig);
+
 		config_lock();
 		$retval |= voicemail_conf_generate();
-		$retval |= msmtp_conf_generate();
+		$retval |= notifications_msmtp_conf_generate();
 		config_unlock();
-		
-		$retval |= voicemail_reload();
 
-		if ($_POST['testmail']) {
-			$mail_sent = mail(
-				$_POST['email_addr'],
-				gettext('AskoziaPBX Test E-mail'),
-				wordwrap(gettext('Your SMTP settings are working correctly. Voicemail via E-mail and missed-call notifications can now be used.'), 70)
-			);
-			if ($mail_sent) {
-				$savemsg = gettext("E-mail has been sent successfully.");
-			} else {
-				$input_errors[] = gettext("E-mail was not sent, check your settings.");
-			}
-		} else {
-			$savemsg = get_std_save_message($retval);
-		}
+		$retval |= pbx_exec("module reload app_voicemail.so");
+
+		$savemsg = get_std_save_message($retval);
 	}
 }
 
@@ -134,63 +86,19 @@ include("fbegin.inc");
 	});
 
 //-->
-</script>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
-<form action="services_voicemail.php" method="post" name="iform" id="iform">
+</script><?
+
+if ($input_errors) {
+	display_input_errors($input_errors);
+}
+if ($savemsg) {
+	display_info_box($savemsg);
+}
+
+?><form action="services_voicemail.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
-			<td colspan="2" valign="top" class="listtopic"><?=gettext("SMTP");?></td>
-		</tr>
-		<tr>
-			<td width="20%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
-			<td width="80%" class="vtable">
-				<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
-				:
-				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
-				<br><span class="vexpl"><?=gettext("SMTP host URL or IP address and optional port.");?></span>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncellreq"><?=gettext("E-mail Address");?></td>
-			<td class="vtable">
-				<input name="address" type="text" class="formfld" id="address" size="40" value="<?=htmlspecialchars($pconfig['address']);?>">
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Username");?></td>
-			<td class="vtable">
-				<input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Password");?></td>
-			<td class="vtable">
-				<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-			</td>
-		</tr>
-		<? display_voicemail_authtype_selector($pconfig['authtype'], 1); ?>
-		<tr> 
-			<td valign="top" class="vncell"><?=gettext("Options");?></td>
-			<td class="vtable"> 
-				<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
-            			<?=gettext("Account uses TLS");?><br>
-				<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span> <?=gettext("TLS certificates are currently not verified.");?></span>
-			</td>
-        	</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Test E-mail");?></td>
-			<td class="vtable">
-				<input name="email_addr" type="text" class="formfld" id="email_addr" size="40" value="">
-				<input name="testmail" type="submit" class="formbtn" value="<?=gettext("E-mail Me");?>"><br>
-				<?=gettext("Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP settings.");?>
-			</td>
-		</tr>
-		<tr> 
-			<td colspan="2" class="list" height="12"></td>
-		</tr>
-		<tr> 
-			<td colspan="2" valign="top" class="listtopic"><?=gettext("Presentation");?></td>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("Voicemail to E-Mail Presentation");?></td>
 		</tr>
 		<tr>
 			<td width="20%" valign="top" class="vncell"><?=gettext("From Address");?></td>
@@ -198,11 +106,15 @@ include("fbegin.inc");
 				<input name="fromaddress" type="text" class="formfld" id="fromaddress" size="40" value="<?=htmlspecialchars($pconfig['fromaddress']);?>">
 				<br>
 				<?=gettext("This will be shown as voicemail service's sending address.");?>
-				<br><?=gettext("Defaults to the e-mail address entered above.");?>
+				<br><?=sprintf(
+					gettext("Defaults to the e-mail address used in the %s setup."),
+					"<a href=\"notifications_email.php\">" .
+					gettext("Notifications") . " &raquo; " . gettext("E-Mail") .
+					"</a>");?>
 			</td>
 		</tr>
 		<tr> 
-			<td width="20%" valign="top" class="vncell"><?=gettext("E-Mail Language");?></td>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Language");?></td>
 			<td width="80%" class="vtable">
 				<select name="maillanguage" class="formfld" id="maillanguage">
 				<? foreach($vm_email_languages as $vm_email_language=>$friendly) : ?>
@@ -213,8 +125,8 @@ include("fbegin.inc");
 				<? endforeach; ?>
 				</select>
 				<br><span class="vexpl"><?=gettext("E-mail notifications for new voicemail will be delivered in this language.");?></span>
-				<br><input name="user_defined" type="checkbox" id="user_defined" value="yes" <?php if ($pconfig['user_defined']) echo "checked"; ?>> <?=gettext("User defined e-mail text");?>
-				<? display_userdefined_email_notification($pconfig['user_subject'], $pconfig['user_body']); ?>
+				<br><input name="user_defined" type="checkbox" id="user_defined" value="yes" <?php if (isset($pconfig['user_defined'])) echo "checked"; ?>> <?=gettext("User defined e-mail text");?>
+				<? display_userdefined_email_notification(base64_decode($pconfig['user_subject']), base64_decode($pconfig['user_body'])); ?>
 			</td>
 		</tr>
 		<tr> 

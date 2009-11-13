@@ -81,7 +81,7 @@ function pbx_configure() {
 
 	if ($g['booting']) echo "   |- generating voicemail configuration...";
 	$res |= voicemail_conf_generate();
-	$res |= msmtp_conf_generate();
+	$res |= notifications_msmtp_conf_generate();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- generating DAHDI configuration...";

@@ -46,22 +46,7 @@ if (storage_syspart_get_state() == "active") {
 <?php if ($input_errors) display_input_errors($input_errors); ?>
 <form action="interfaces_storage.php" method="post" enctype="multipart/form-data">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td class="tabnavtbl">
-			<ul id="tabnav"><?
-
-			$tabs = array(
-				gettext('Network')	=> 'interfaces_network.php',
-				//gettext('Wireless')	=> 'interfaces_wireless.php',
-				gettext('ISDN')		=> 'interfaces_isdn.php',
-				gettext('Analog')	=> 'interfaces_analog.php',
-				gettext('Storage')	=> 'interfaces_storage.php'
-			);
-			dynamic_tab_menu($tabs);
-
-			?></ul>
-		</td>
-	</tr>
+	<? display_ports_tab_menu(); ?>
 	<tr>
 		<td class="tabcont"><?
 

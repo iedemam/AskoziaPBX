@@ -100,7 +100,7 @@ if (file_exists($d_sipconfdirty_path)) {
 		
 		$retval |= sip_reload();
 		$retval |= extensions_reload();
-		$retval |= voicemail_reload();
+		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
@@ -120,7 +120,7 @@ if (file_exists($d_iaxconfdirty_path)) {
 		
 		$retval |= iax_reload();
 		$retval |= extensions_reload();
-		$retval |= voicemail_reload();
+		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
@@ -140,7 +140,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 		
 		$retval |= isdn_reload();
 		$retval |= extensions_reload();
-		$retval |= voicemail_reload();
+		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
@@ -160,7 +160,7 @@ if (file_exists($g['analog_dirty_path'])) {
 		
 		$retval |= dahdi_chan_reload();
 		$retval |= extensions_reload();
-		$retval |= voicemail_reload();
+		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
@@ -178,7 +178,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		config_unlock();
 		
 		$retval |= extensions_reload();
-		$retval |= voicemail_reload();
+		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {

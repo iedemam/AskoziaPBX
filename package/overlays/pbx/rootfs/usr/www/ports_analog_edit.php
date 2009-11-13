@@ -30,7 +30,6 @@
 */
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("Interfaces"), gettext("Edit Analog Port"));
 
 $uniqid = $_GET['uniqid'];
 if (isset($_POST['uniqid'])) {
@@ -58,28 +57,26 @@ if ($_POST) {
 
 	dahdi_save_port($port);
 
-	header("Location: interfaces_analog.php");
+	header("Location: ports_analog.php");
 	exit;
 }
 
 $pconfig = dahdi_get_port($uniqid);
 
+$porttype = ($pconfig['type'] == "fxs") ? gettext("Phone") : gettext("Provider");
+$pgtitle = array(gettext("Ports"), sprintf(gettext("Edit Analog %s Port"), $porttype));
 
 include("fbegin.inc");
 if ($input_errors) {
 	display_input_errors($input_errors);
 }
-?><form action="interfaces_analog_edit.php" method="post" name="iform" id="iform">
+?><form action="ports_analog_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
 		<td width="20%" valign="top" class="vncell"><?=gettext("Name");?></td>
 		<td width="80%" class="vtable">
 			<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
-			<br><span class="vexpl"><?
-			$type = ($pconfig['type'] == "fxs") ? gettext("telephones") : gettext("provider lines");
-			echo sprintf(gettext("This port can be connected to %s."), $type) . " " .
-				gettext("Enter a descriptive name for this port.");
-			?></span>
+			<br><span class="vexpl"><?=gettext("Enter a descriptive name for this port.");?></span>
 		</td>
 	</tr>
 	<tr>

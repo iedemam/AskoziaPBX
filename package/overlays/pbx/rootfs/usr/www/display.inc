@@ -706,40 +706,6 @@ function display_readback_number_field($current_readbacknumber, $colspan) {
 	</tr><?
 }
 
-function display_voicemail_authtype_selector($current_authtype, $colspan) {
-	global $defaults;
-
-	$authtypes = array(
-		"auto",
-		"plain",
-		"login",
-		"cram-md5",
-		//"digest-md5", (needs gnu sasl)
-		//"gssapi", (needs gnu sasl)
-		"external"
-		//"ntlm" (needs gnu sasl)
-	);
-
-	if (!$current_authtype) {
-		$current_authtype = $defaults['voicemail']['authmode'];
-	}
-
-	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=gettext("Authentication Method");?></td>
-		<td width="80%" colspan="<?=$colspan?>" class="vtable">
-			<select name="authtype" class="formfld" id="authtype">
-			<? foreach ($authtypes as $authtype) : ?>
-			<option value="<?=$authtype;?>" <?
-			if ($authtype == $current_authtype)
-				echo "selected"; ?>
-			><?=$authtype;?></option>
-			<? endforeach; ?>
-			</select>
-			<br><span class="vexpl"><?=gettext("Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server.");?></span>
-		</td>
-	</tr><?
-}
-
 function display_capacity_bar($sizeinbytes, $usage) {
 
 	?><img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'><img src='bar_blue.gif' height='15' width='<?=$usage;?>' border='0' align='absmiddle'><img src='bar_gray.gif' height='15' width='<?=100-$usage;?>' border='0' align='absmiddle'><img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'>
@@ -850,6 +816,26 @@ function display_info_box($msg, $keep=false) {
 			</table>
 		</p>
 	</span><?
+
+}
+
+function display_ports_tab_menu() {
+
+	?><tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array(
+				gettext('Local Network')	=> 'ports_lan.php',
+				//gettext('Wireless')		=> 'ports_wireless.php',
+				//gettext('ISDN')			=> 'ports_isdn.php',
+				gettext('Analog')			=> 'ports_analog.php'
+			);
+			dynamic_tab_menu($tabs);
+
+			?></ul>
+		</td>
+	</tr><?
 
 }
 

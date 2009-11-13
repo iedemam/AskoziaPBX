@@ -30,6 +30,16 @@
 
 require_once("functions.inc");
 
+
+function voicemail_get_configuration() {
+	return $GLOBALS['config']['voicemail'];
+}
+
+function voicemail_save_configuration($newconfig) {
+	$GLOBALS['config']['voicemail'] = $newconfig;
+	write_config();
+}
+
 /**
  * Voicemail notification e-mail subject lines
  * XXX : consolidate in help.inc or something like languages.inc
@@ -283,13 +293,10 @@ $vm_emailbody = array(
  * XXX : security issues here with 0000 password on mail-only accounts?
  */
 function voicemail_conf_generate() {
-	global $config, $vm_emailsubject, $vm_emailbody;
-	
-	$fd = fopen("/etc/asterisk/voicemail.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open voicemail.conf in voicemail_conf_generate().\n");
-		return 1;
-	}
+	global $vm_emailsubject, $vm_emailbody;
+
+	$voicemail_config = voicemail_get_configuration();
+	$email_config = notifications_get_email_configuration();
 
 	$product_name = system_get_product_name();
 	$conf = <<<EOD
@@ -308,26 +315,24 @@ fromstring=$product_name Voicemail
 
 EOD;
 
-	if ($config['voicemail']['fromaddress']) {
-		$conf .= "serveremail=" . $config['voicemail']['fromaddress'] . "\n\n";
-	} else if ($config['voicemail']['address']) {
-		$conf .= "serveremail=" . $config['voicemail']['address'] . "\n\n";
+	if ($voicemail_config['fromaddress']) {
+		$conf .= "serveremail=" . $voicemail_config['fromaddress'] . "\n";
 	} else {
-		$conf .= "serveremail=$product_name\n\n";
+		$conf .= "serveremail=" . $email_config['address'] . "\n";
 	}
 
-	if (isset($config['voicemail']['user_defined'])) {
+	if (isset($voicemail_config['user_defined'])) {
 
 		$tokens = array("VM_MAILBOX", "VM_NAME", "VM_DURATION", "VM_CALLERID","VM_DATE");
 		$replacetokens = array("$" . "{VM_MAILBOX}", "$" . "{VM_NAME}", "$" ."{VM_DUR}", "$" . "{VM_CALLERID}", "$" . "{VM_DATE}");
 
-		$subject = str_replace($tokens, $replacetokens, base64_decode($config['voicemail']['user_subject']));
-		$body = preg_replace('/\x0A/', "\\n", str_replace($tokens, $replacetokens, base64_decode($config['voicemail']['user_body'])));
+		$subject = str_replace($tokens, $replacetokens, base64_decode($voicemail_config['user_subject']));
+		$body = preg_replace('/\x0A/', "\\n", str_replace($tokens, $replacetokens, base64_decode($voicemail_config['user_body'])));
 
 		$conf .= "emailsubject=" . $subject . "\n";
 		$conf .= "emailbody=" . $body . "\n\n";
-	} else if ($config['voicemail']['maillanguage']) {
-		$vm_lang = $config['voicemail']['maillanguage'];
+	} else if ($voicemail_config['maillanguage']) {
+		$vm_lang = $voicemail_config['maillanguage'];
 		$conf .= "emailsubject=" . $vm_emailsubject[$vm_lang] . "\n";
 		$conf .= "emailbody=" . $vm_emailbody[$vm_lang] . "\n\n";
 	} else {
@@ -361,7 +366,7 @@ EOD;
 		// this default password from being a privacy risk?
 		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
 	}
-	
+
 	// external phones
 	$extphones = external_get_phones();
 	foreach($extphones as $p) {
@@ -369,76 +374,16 @@ EOD;
 			continue;
 		$conf .= "{$p['extension']} => 0000,{$p['name']},{$p['voicemailbox']},,delete=yes\n";
 	}
-		
-	fwrite($fd, $conf);
-	fclose($fd);
-	
-	return 0;
-}
 
-/**
- * Generates msmtp.conf for smtp client
- */
-function msmtp_conf_generate() {
-	global $config;
-	
-	$fd = fopen("/etc/msmtp.conf", "w");
+	$fd = fopen("/etc/asterisk/voicemail.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open msmtp.conf in msmtp_conf_generate().\n");
+		printf("Error: cannot open voicemail.conf in voicemail_conf_generate().\n");
 		return 1;
 	}
-	
-	$vmconfig = $config['voicemail'];
-
-	$address = explode("@", $vmconfig['address']);
-	$domain = $address[1];
-	
-	$conf = "account default\n";
-	$conf .= "host {$vmconfig['host']}\n";
-	
-	if ($vmconfig['username']) {
-		if ($vmconfig['authtype']) {
-			$conf .= "auth {$vmconfig['authtype']}\n";
-		} else {
-			$conf .= "auth on\n";
-		}
-		$conf .= "user {$vmconfig['username']}\n";
-		$conf .= "password {$vmconfig['password']}\n";
-	}
-	
-	if ($vmconfig['tls']) {
-		$conf .= "tls on\n";
-		$conf .= "tls_starttls on\n";
-		$conf .= "tls_certcheck off\n";
-	}
-	
-	if ($vmconfig['fromaddress']) {
-		$conf .= "from {$vmconfig['fromaddress']}\n";
-	} else {
-		$conf .= "from {$vmconfig['address']}\n";
-	}
-	
-	$conf .= "maildomain $domain\n";
-	
-	if ($vmconfig['port']) {
-		$conf .= "port {$vmconfig['port']}\n";
-	}
-	
-	$conf .= "syslog LOG_LOCAL0\n";
-
 	fwrite($fd, $conf);
 	fclose($fd);
-	
-	chmod("/etc/msmtp.conf", 0600);
 
 	return 0;
-}
-
-/**
- * Reloads app_voicemail to apply newly generated changes
- */
-function voicemail_reload() {
-	return pbx_exec("module reload app_voicemail.so");
 }
 
 ?>

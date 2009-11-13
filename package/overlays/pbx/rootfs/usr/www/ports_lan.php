@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Network"));
+$pgtitle = array(gettext("Hardware"), gettext("Ports"), gettext("Local Network"));
 $pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default the system requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
 
 $lancfg = &$config['interfaces']['lan'];
@@ -203,26 +203,11 @@ if ($_POST) {
 
 //-->
 </script>
-<form action="interfaces_network.php" method="post" name="iform" id="iform">
+<form action="ports_lan.php" method="post" name="iform" id="iform">
 <?php if ($input_errors) display_input_errors($input_errors); ?>
 <?php if ($savemsg) display_info_box($savemsg); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td class="tabnavtbl">
-			<ul id="tabnav"><?
-
-			$tabs = array(
-				gettext('Network')	=> 'interfaces_network.php',
-				//gettext('Wireless')	=> 'interfaces_wireless.php',
-				gettext('ISDN')		=> 'interfaces_isdn.php',
-				gettext('Analog')	=> 'interfaces_analog.php',
-				gettext('Storage')	=> 'interfaces_storage.php'
-			);
-			dynamic_tab_menu($tabs);
-
-			?></ul>
-		</td>
-	</tr>
+	<? display_ports_tab_menu(); ?>
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
