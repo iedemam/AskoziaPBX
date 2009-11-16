@@ -55,7 +55,7 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_extphones[$id]['novmwhenbusy']);
-	$pconfig['blockpublicaccess'] = isset($a_extphones[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_extphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
 	$pconfig['descr'] = $a_extphones[$id]['descr'];
@@ -92,7 +92,7 @@ if ($_POST) {
 		$ep['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ep['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$ep['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$ep['publicaccess'] = $_POST['publicaccess'];
 		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
 		$ep['descr'] = verify_non_default($_POST['descr']);
@@ -171,7 +171,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
 			<? display_advanced_settings_begin(1); ?>

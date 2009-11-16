@@ -208,18 +208,21 @@ function javascript_public_access_editor($part) {
 
 	if ($part == "functions") : ?>
 
-		function publicname_slide() {
-			if (jQuery("#blockpublicaccess").is(":checked")) {
-				jQuery("#publicname_wrapper").slideUp();
+		function publicaccess_toggle() {
+			var publicaccessvar = jQuery('input[name=publicaccess]:checked').val();
+			if (publicaccessvar == "allow") {
+				jQuery("#publicaccess_enabled_wrapper").show();
+				jQuery("#publicaccess_disabled_wrapper").hide();
 			} else {
-				jQuery("#publicname_wrapper").slideDown();
+				jQuery("#publicaccess_enabled_wrapper").hide();
+				jQuery("#publicaccess_disabled_wrapper").show();
 			}
 		}
 
 	<? elseif ($part == "ready") : ?>
 
-		jQuery("#blockpublicaccess").click(publicname_slide);
-		publicname_slide();
+		jQuery('input[name=publicaccess]:radio').change(publicaccess_toggle);
+		publicaccess_toggle();
 
 	<? else : ?>
 

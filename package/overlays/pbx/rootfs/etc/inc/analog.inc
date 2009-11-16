@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -160,6 +160,7 @@ function analog_generate_default_phone() {
 	$phone['callerid'] = $defaults['accounts']['phones']['callerid'];
 	$phone['language'] = $defaults['accounts']['language'];
 	$phone['ringlength'] = $defaults['accounts']['phones']['ringlength'];
+	$phone['publicaccess'] = $defaults['accounts']['phones']['publicaccess'];
 	$phone['uniqid'] = "ANALOG-PHONE-" . uniqid(rand());
 
 	return $phone;
@@ -172,6 +173,52 @@ function analog_save_phone($phone) {
 		$config['analog']['phone'][$uniqid_map[$port['uniqid']]] = $phone;
 	} else {
 		$config['analog']['phone'][] = $phone;
+	}
+    
+	write_config();
+	touch($g['analog_dirty_path']);
+}
+
+
+
+
+function analog_autoconfigure_providers() {
+	global $g;
+
+	$all_ports = dahdi_get_ports("analog", "fxo");
+
+	foreach ($all_ports as $port) {
+		if (isset($port['unused'])) {
+			$provider = analog_generate_default_provider();
+			$provider['port'] = $provider['uniqid'];
+			analog_save_provider($provider);
+
+			unset($port['unused']);
+			dahdi_save_port($port);
+		}
+	}
+
+	unlink_if_exists($g['analog_dirty_path']);
+	unlink_if_exists($g['dahdi_dirty_path']);
+}
+
+function analog_generate_default_provider() {
+	global $defaults;
+
+	$provider = array();
+	$provider['language'] = $defaults['accounts']['language'];
+	$provider['uniqid'] = "ANALOG-PROVIDER-" . uniqid(rand());
+
+	return $phone;
+}
+
+function analog_save_provider($provider) {
+	global $g, $config, $uniqid_map;
+    
+	if (analog_get_provider($port['uniqid'])) {
+		$config['analog']['provider'][$uniqid_map[$port['uniqid']]] = $provider;
+	} else {
+		$config['analog']['provider'][] = $provider;
 	}
     
 	write_config();

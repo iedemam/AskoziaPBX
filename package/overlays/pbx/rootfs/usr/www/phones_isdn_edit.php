@@ -52,7 +52,7 @@ if (isset($id) && $a_isdnphones[$id]) {
 	$pconfig['voicemailbox'] = $a_isdnphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_isdnphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_isdnphones[$id]['novmwhenbusy']);
-	$pconfig['blockpublicaccess'] = isset($a_isdnphones[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_isdnphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_isdnphones[$id]['publicname'];
 	$pconfig['interface'] = $a_isdnphones[$id]['interface'];
 	$pconfig['language'] = $a_isdnphones[$id]['language'];
@@ -94,7 +94,7 @@ if ($_POST) {
 		$ip['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ip['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ip['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$ip['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$ip['publicaccess'] = $_POST['publicaccess'];
 		$ip['publicname'] = verify_non_default($_POST['publicname']);
 		$ip['interface'] = $_POST['interface'];
 		$ip['language'] = $_POST['language'];
@@ -165,7 +165,7 @@ if (count($isdn_interfaces) == 0) {
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 1); ?>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>
 				<td class="vtable">

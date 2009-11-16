@@ -57,7 +57,7 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_sipphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_sipphones[$id]['novmwhenbusy']);
-	$pconfig['blockpublicaccess'] = isset($a_sipphones[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_sipphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_sipphones[$id]['publicname'];
 	$pconfig['language'] = $a_sipphones[$id]['language'];
 	$pconfig['dtmfmode'] = $a_sipphones[$id]['dtmfmode'];
@@ -135,7 +135,7 @@ if ($_POST) {
 		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$sp['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$sp['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$sp['publicaccess'] = $_POST['publicaccess'];
 		$sp['publicname'] = verify_non_default($_POST['publicname']);
 		$sp['language'] = $_POST['language'];
 		$sp['dtmfmode'] = $_POST['dtmfmode'];
@@ -215,7 +215,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 2); ?>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 2); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_provider_access_selector($pconfig['provider'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>

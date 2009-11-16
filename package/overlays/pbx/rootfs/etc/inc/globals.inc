@@ -73,6 +73,7 @@ $defaults['accounts']['phones']['ringlength'] = "indefinitely";
 $defaults['accounts']['phones']['default-extension-start'] = 101;
 $defaults['accounts']['phones']['callerid'] = "Default Extension";
 $defaults['accounts']['phones']['novmwhenbusy'] = true;
+$defaults['accounts']['phones']['publicaccess'] = "allow";
 
 //
 $defaults['featuremap'] = array();

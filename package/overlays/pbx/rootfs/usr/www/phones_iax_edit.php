@@ -59,7 +59,7 @@ if (isset($id) && $a_iaxphones[$id]) {
 	$pconfig['voicemailbox'] = $a_iaxphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_iaxphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_iaxphones[$id]['novmwhenbusy']);
-	$pconfig['blockpublicaccess'] = isset($a_iaxphones[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_iaxphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_iaxphones[$id]['publicname'];
 	$pconfig['language'] = $a_iaxphones[$id]['language'];
 	$pconfig['qualify'] = $a_iaxphones[$id]['qualify'];
@@ -125,7 +125,7 @@ if ($_POST) {
 		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$sp['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$sp['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$sp['publicaccess'] = $_POST['publicaccess'];
 		$sp['publicname'] = verify_non_default($_POST['publicname']);
 		$sp['language'] = $_POST['language'];
 		$sp['descr'] = verify_non_default($_POST['descr']);
@@ -208,7 +208,7 @@ if ($_POST) {
 				</td>
 			</tr>
 			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 2); ?>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 2); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_provider_access_selector($pconfig['provider'], 2); ?>
 			<? display_audio_codec_selector($pconfig['codec']); ?>

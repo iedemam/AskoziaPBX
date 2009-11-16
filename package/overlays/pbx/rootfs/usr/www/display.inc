@@ -320,7 +320,7 @@ function display_phone_ringlength_selector($current_ringlength, $colspan) {
 			><?=$ringlength;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl"><?=gettext("The number of seconds this phone will ring before giving up.");?></span>
+			<br><span class="vexpl"><?=gettext("The number of seconds this phone will ring before giving up or going to voicemail.");?></span>
 		</td>
 	</tr><?
 }
@@ -531,7 +531,7 @@ function display_call_notifications_editor($current_voicemailbox, $current_sendc
 	</tr><?
 }
 
-function display_public_access_editor($current_blockpublicaccess, $current_publicname, $colspan, $getjs=false) {
+function display_public_access_editor($current_publicaccess, $current_publicname, $colspan) {
 	global $config;
 
 	$fullhostname = $config['system']['hostname'] . "." . $config['system']['domain'];
@@ -539,19 +539,19 @@ function display_public_access_editor($current_blockpublicaccess, $current_publi
 	?><tr> 
 		<td valign="top" class="vncell"><?=gettext("Public Access");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="blockpublicaccess" id="blockpublicaccess" type="checkbox" value="yes" <?
-			
-			if ($current_blockpublicaccess) {
-				echo "checked";
-			}
-
-			?>>&nbsp;<?=gettext("prevent public access to this extension");?>
-			<br><span name="publicname_wrapper" id="publicname_wrapper">
-			<br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">@<?=$fullhostname;?>
-			<br><span class="vexpl"><?=gettext("Use a word or name instead of the extension number.");?></span>
-			<br>
+			<input name="publicaccess" type="radio" value="allow" 
+			<?php if ($current_publicaccess == "allow") echo "checked"; ?>><?=gettext("allow");?>
+			&nbsp;&nbsp;&nbsp;
+			<input name="publicaccess" type="radio" value="block"
+			<?php if ($current_publicaccess == "block") echo "checked"; ?>><?=gettext("block");?>
+			<br><span name="publicaccess_disabled_wrapper" id="publicaccess_disabled_wrapper">
+				<span class="vexpl"><?=gettext("This number is not directly reachable over the Internet.");?></span>
 			</span>
-			<br><span class="vexpl"><?=sprintf(gettext("This extension is reachable via SIP and IAX2 URIs (extension@%s) unless disabled here."), $fullhostname);?></span>
+			<span name="publicaccess_enabled_wrapper" id="publicaccess_enabled_wrapper">
+				<span class="vexpl"><?=gettext("This number is directly reachable over the Internet.");?>
+				<br><br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">
+				<br><?=gettext("Optional: Set a friendly name above if you would like to use a word or name instead of the extension number.");?></span>
+			</span>
 		</td>
 	</tr><?
 }

@@ -51,7 +51,7 @@ if (isset($id) && $a_analogphones[$id]) {
 	$pconfig['voicemailbox'] = $a_analogphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_analogphones[$id]['sendcallnotifications']);
 	$pconfig['novmwhenbusy'] = isset($a_analogphones[$id]['novmwhenbusy']);
-	$pconfig['blockpublicaccess'] = isset($a_analogphones[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_analogphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_analogphones[$id]['publicname'];
 	$pconfig['interface'] = $a_analogphones[$id]['interface'];
 	$pconfig['language'] = $a_analogphones[$id]['language'];
@@ -93,7 +93,7 @@ if ($_POST) {
 		$ap['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ap['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
 		$ap['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
-		$ap['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$ap['publicaccess'] = $_POST['publicaccess'];
 		$ap['publicname'] = verify_non_default($_POST['publicname']);
 		$ap['interface'] = $_POST['interface'];
 		$ap['language'] = $_POST['language'];
@@ -160,14 +160,14 @@ if ($input_errors) {
 			<td width="20%" valign="top" class="vncellreq"><?=gettext("Number");?></td>
 			<td width="80%" class="vtable">
 				<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>">
-				<br><span class="vexpl"><?=gettext("Number used to dial this phone.");?></span>
+				<br><span class="vexpl"><?=gettext("The number used to dial this phone.");?></span>
 			</td>
 		</tr>
 		<? display_caller_id_field($pconfig['callerid'], 2); ?>
 		<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-		<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
+		<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 		<tr> 
-			<td valign="top" class="vncell"><?=gettext("Port");?></td>
+			<td valign="top" class="vncell"><?=gettext("Hardware Port");?></td>
 			<td class="vtable">
 				<select name="port" class="formfld" id="port"><?
 
@@ -180,6 +180,7 @@ if ($input_errors) {
 				}
 				
 				?></select>
+				<br><span class="vexpl"><?=gettext("The analog port this phone is connected to.");?></span>
 			</td>
 		</tr>
 		<? display_channel_language_selector($pconfig['language'], 1); ?>

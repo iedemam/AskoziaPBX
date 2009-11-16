@@ -49,7 +49,7 @@ if (isset($id) && $a_applications[$id]) {
 	$pconfig['name'] = $a_applications[$id]['name'];
 	$pconfig['extension'] = $a_applications[$id]['extension'];
 	$pconfig['app-command'] = $a_applications[$id]['app-command'];
-	$pconfig['blockpublicaccess'] = isset($a_applications[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_applications[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_applications[$id]['publicname'];
 	$pconfig['descr'] = $a_applications[$id]['descr'];
 }
@@ -85,7 +85,7 @@ if ($_POST) {
 		$app['name'] = $_POST['name'];
 		$app['extension'] = $_POST['extension'];
 		$app['app-command'] = array_map("base64_encode", $_POST['applogic']);
-		$app['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$app['publicaccess'] = $_POST['publicaccess'];
 		$app['publicname'] = verify_non_default($_POST['publicname']);
 		$app['descr'] = verify_non_default($_POST['descr']);
 
@@ -136,7 +136,7 @@ include("fbegin.inc");
 				</td>
 			</tr>
 			<? display_application_logic_editor($pconfig['app-command'], 1); ?>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

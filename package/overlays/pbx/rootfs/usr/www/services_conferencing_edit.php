@@ -49,7 +49,7 @@ if (isset($id) && $a_rooms[$id]) {
 	$pconfig['name'] = $a_rooms[$id]['name'];
 	$pconfig['pin'] = $a_rooms[$id]['pin'];
 	//$pconfig['adminpin'] = $a_rooms[$id]['adminpin'];
-	$pconfig['blockpublicaccess'] = isset($a_rooms[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_rooms[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_rooms[$id]['publicname'];
 }
 
@@ -89,7 +89,7 @@ if ($_POST) {
 		$room['pin'] = verify_non_default($_POST['pin']);
 		//$room['adminpin'] = $_POST['adminpin'];
 		$room['name'] = $_POST['name'];
-		$room['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$room['publicaccess'] = $_POST['publicaccess'];
 		$room['publicname'] = verify_non_default($_POST['publicname']);
 
 		if (isset($id) && $a_rooms[$id]) {
@@ -145,7 +145,7 @@ if ($_POST) {
 					<br><span class="vexpl"><?=gettext("Optional PIN needed to access this conference room.");?></span>
 				</td>
 			</tr>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

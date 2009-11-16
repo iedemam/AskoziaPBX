@@ -52,7 +52,7 @@ if (isset($id) && $a_callgroups[$id]) {
 	$pconfig['extension'] = $a_callgroups[$id]['extension'];
 	$pconfig['descr'] = $a_callgroups[$id]['descr'];
 	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
-	$pconfig['blockpublicaccess'] = isset($a_callgroups[$id]['blockpublicaccess']);
+	$pconfig['publicaccess'] = $a_callgroups[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_callgroups[$id]['publicname'];
 	$pconfig['ringlength'] = $a_callgroups[$id]['ringlength'];
 }
@@ -81,7 +81,7 @@ if ($_POST) {
 		$gm['extension'] = verify_non_default($_POST['extension']);
 		$gm['descr'] = verify_non_default($_POST['descr']);
 		$gm['groupmember'] = ($gme) ? $gme : false;
-		$gm['blockpublicaccess'] = $_POST['blockpublicaccess'] ? true : false;
+		$gm['publicaccess'] = $_POST['publicaccess'];
 		$gm['publicname'] = verify_non_default($_POST['publicname']);
 		$gm['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
 
@@ -132,7 +132,7 @@ include("fbegin.inc");
 					<br><span class="vexpl"><?=gettext("Internal extension used to reach this call group.");?></span>
 				</td>
 			</tr>
-			<? display_public_access_editor($pconfig['blockpublicaccess'], $pconfig['publicname'], 2); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 2); ?>
 			<? display_description_field($pconfig['descr'], 2); ?>
 			<? display_phone_ringlength_selector($pconfig['ringlength'], 2); ?>
 			<? display_callgroup_member_selector($pconfig['groupmember']); ?>
