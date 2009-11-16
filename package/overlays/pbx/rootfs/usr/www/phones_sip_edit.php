@@ -56,7 +56,6 @@ if (isset($id) && $a_sipphones[$id]) {
 	$pconfig['provider'] = $a_sipphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_sipphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_sipphones[$id]['sendcallnotifications']);
-	$pconfig['novmwhenbusy'] = isset($a_sipphones[$id]['novmwhenbusy']);
 	$pconfig['publicaccess'] = $a_sipphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_sipphones[$id]['publicname'];
 	$pconfig['language'] = $a_sipphones[$id]['language'];
@@ -134,7 +133,6 @@ if ($_POST) {
 		$sp['secret'] = $_POST['secret'];
 		$sp['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$sp['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
-		$sp['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$sp['publicaccess'] = $_POST['publicaccess'];
 		$sp['publicname'] = verify_non_default($_POST['publicname']);
 		$sp['language'] = $_POST['language'];
@@ -182,11 +180,15 @@ if ($_POST) {
 <script type="text/JavaScript">
 <!--
 	<?=javascript_public_access_editor("functions");?>
+	<?=javascript_notifications_editor("functions");?>
+	<?=javascript_voicemail_editor("functions");?>
 	<?=javascript_codec_selector("functions");?>
 
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_access_editor("ready");?>
+		<?=javascript_notifications_editor("ready");?>
+		<?=javascript_voicemail_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 		<?=javascript_generate_passwd("ready");?>
 		<?=javascript_codec_selector("ready");?>
@@ -214,7 +216,8 @@ if ($_POST) {
                     <br><span class="vexpl"><?=gettext("This account's password.");?></span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 2); ?>
+			<? display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 2); ?>
+			<? display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 2); ?>
 			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 2); ?>
 			<? display_channel_language_selector($pconfig['language'], 2); ?>
 			<? display_provider_access_selector($pconfig['provider'], 2); ?>

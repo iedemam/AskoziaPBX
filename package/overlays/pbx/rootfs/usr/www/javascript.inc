@@ -204,24 +204,69 @@ function javascript_default_value_setter($id, $value) {
 	return $a;
 }
 
-function javascript_public_access_editor($part) {
+function javascript_notifications_editor($part) {
 
 	if ($part == "functions") : ?>
 
-		function publicaccess_toggle() {
-			var publicaccessvar = jQuery('input[name=publicaccess]:checked').val();
-			if (publicaccessvar == "allow") {
-				jQuery("#publicaccess_enabled_wrapper").show();
-				jQuery("#publicaccess_disabled_wrapper").hide();
+		function emailnotify_toggle() {
+			if (jQuery("#emailcallnotify").is(":checked")) {
+				jQuery("#emailnotify_wrapper").show();
 			} else {
-				jQuery("#publicaccess_enabled_wrapper").hide();
-				jQuery("#publicaccess_disabled_wrapper").show();
+				jQuery("#emailnotify_wrapper").hide();
 			}
 		}
 
 	<? elseif ($part == "ready") : ?>
 
-		jQuery('input[name=publicaccess]:radio').change(publicaccess_toggle);
+		jQuery("#emailcallnotify").click(emailnotify_toggle);
+		emailnotify_toggle();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_notifications_editor()!
+
+	<? endif;
+}
+
+function javascript_voicemail_editor($part) {
+
+	if ($part == "functions") : ?>
+
+		function vmtoemail_toggle() {
+			if (jQuery("#vmtoemail").is(":checked")) {
+				jQuery("#vmtoemail_wrapper").show();
+			} else {
+				jQuery("#vmtoemail_wrapper").hide();
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#vmtoemail").click(vmtoemail_toggle);
+		vmtoemail_toggle();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_voicemail_editor()!
+
+	<? endif;
+}
+
+function javascript_public_access_editor($part) {
+
+	if ($part == "functions") : ?>
+
+		function publicaccess_toggle() {
+			if (jQuery("#publicaccess").is(":checked")) {
+				jQuery("#publicaccess_wrapper").show();
+			} else {
+				jQuery("#publicaccess_wrapper").hide();;
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#publicaccess").click(publicaccess_toggle);
 		publicaccess_toggle();
 
 	<? else : ?>

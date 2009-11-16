@@ -391,18 +391,16 @@ EOD;
  */
 function extensions_generate_call_notification_variables($exten, $phone) {
 
-	if ($phone['voicemailbox']) {
-
-		$dial = "exten => $exten,n,Set(HASVOICEMAIL=\"yes\")\n";
-
-		if (isset($phone['sendcallnotifications'])) {
-			$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['voicemailbox']}\")\n";
-		}
-
-		if (isset($phone['novmwhenbusy'])) {
-			$dial .= "exten => $exten,n,Set(NOVOICEMAILWHENBUSY=\"yes\")\n";
-		}
+	if ($phone['vmtoemail'] == "enabled") {
+		$dial .= "exten => $exten,n,Set(HASVOICEMAIL=\"yes\")\n";
 	}
+	if ($phone['emailcallnotify'] == "enabled") {
+		$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['emailcallnotifyaddress']}\")\n";
+	}
+
+	//if ($phone['vmwhenbusy'] == "no") {
+	$dial .= "exten => $exten,n,Set(NOVOICEMAILWHENBUSY=\"yes\")\n";
+	//}
 
 	return $dial;
 }

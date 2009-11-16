@@ -54,7 +54,6 @@ if (isset($id) && $a_extphones[$id]) {
 	$pconfig['dialprovider'] = $a_extphones[$id]['dialprovider'];
 	$pconfig['voicemailbox'] = $a_extphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_extphones[$id]['sendcallnotifications']);
-	$pconfig['novmwhenbusy'] = isset($a_extphones[$id]['novmwhenbusy']);
 	$pconfig['publicaccess'] = $a_extphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_extphones[$id]['publicname'];
 	$pconfig['language'] = $a_extphones[$id]['language'];
@@ -91,7 +90,6 @@ if ($_POST) {
 		$ep['dialprovider'] = $_POST['dialprovider'];
 		$ep['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ep['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
-		$ep['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$ep['publicaccess'] = $_POST['publicaccess'];
 		$ep['publicname'] = verify_non_default($_POST['publicname']);
 		$ep['language'] = $_POST['language'];
@@ -119,10 +117,14 @@ if ($_POST) {
 <script type="text/JavaScript">
 <!--
 	<?=javascript_public_access_editor("functions");?>
+	<?=javascript_notifications_editor("functions");?>
+	<?=javascript_voicemail_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_access_editor("ready");?>
+		<?=javascript_notifications_editor("ready");?>
+		<?=javascript_voicemail_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 
 	});
@@ -170,7 +172,8 @@ if ($_POST) {
 					<br><span class="vexpl"><?=gettext("Outgoing provider to be used to reach this telephone.");?></span>
 				</td>
 			</tr>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
+			<? display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 1); ?>
+			<? display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 1); ?>
 			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 			<? display_channel_language_selector($pconfig['language'], 1); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>

@@ -406,45 +406,6 @@ function display_provider_access_selector($current_providers, $colspan) {
 	</tr><?
 }
 
-function display_phone_access_selector($provider_uniqid, $colspan, $idprefix=false) {
-	
-	$a_phones = pbx_get_phones();
-
-	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=gettext("Phones");?></td>
-		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
-		
-		$n = count($a_phones);
-		if ($n == 0) {
-			?><span class="vexpl"><i><?=gettext("There are currently no phones defined.");?></i></span><br><?
-
-		} else {
-			for($i = 0; $i < $n; $i++) {
-				$phone = $a_phones[$i];
-				
-				if($idprefix) {
-					?><input name="<?=$idprefix."_".$phone['uniqid'];?>" id="<?=$idprefix."_".$phone['uniqid'];?>" type="checkbox" value="<?=$idprefix;?>"<?
-				
-				} else {
-					?><input name="<?=$phone['uniqid'];?>" id="<?=$phone['uniqid'];?>" type="checkbox" value="yes"<?
-				}
-				
-				if (in_array($provider_uniqid, $phone['provider']))
-					echo "checked"; 
-
-				?>><?=$phone['callerid'];?> &lt;<?=$phone['extension'];?>&gt;<br><?
-			}
-		}
-		
-		// multiple instances don't need help for every instance
-		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=gettext("Checked phones will have access to this provider."); ?></span><?
-		}
-		
-		?></td>
-	</tr><?
-}
-
 function display_provider_dialpattern_editor($current_patterns, $colspan, $idprefix=false) {
 	
 	$n = count($current_patterns);
@@ -505,31 +466,42 @@ function display_channel_language_selector($current_language, $colspan) {
 	</tr><?
 }
 
-function display_call_notifications_editor($current_voicemailbox, $current_sendcallnotifications, $current_novmwhenbusy, $colspan) {
-	
-	?><tr> 
-		<td valign="top" class="vncell"><?=gettext("Voicemail");?></td>
-		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="voicemailbox" type="text" class="formfld" id="voicemailbox" size="40" value="<?=htmlspecialchars($current_voicemailbox);?>">
-			<br><input name="sendcallnotifications" id="sendcallnotifications" type="checkbox" value="yes"<?
-			
-			if ($current_sendcallnotifications) {
-				echo "checked";
-			}
+function display_notifications_editor($current_emailcallnotify, $current_emailcallnotifyaddress, $colspan) {
 
-			?>>&nbsp;<?=gettext("send missed call notifications");?><br>
-			<input name="novmwhenbusy" id="novmwhenbusy" type="checkbox" value="yes"<?
-            
-			if ($current_novmwhenbusy) {
-				echo "checked";
-			}
-            
-			?>>&nbsp;<?=gettext("don't send to voicemail when busy");?><br>
-			<br><span class="vexpl"><?=gettext("An e-mail address. If entered, voicemail will be enabled on this extension. Incoming messages will be sent to the given address.");?>
-			<br><span class="red"><strong><?=gettext("Note:");?></strong></span> <?=gettext("Voicemail Services");?> <a href="services_voicemail.php"><?=gettext("must be configured</a> before this feature will work.");?></span>
+	?><tr>
+		<td valign="top" class="vncell"><?=gettext("Notifications");?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="emailcallnotify" type="hidden" value="disabled"><input name="emailcallnotify" id="emailcallnotify" type="checkbox" value="enabled">&nbsp;<?=gettext("notify me of missed calls via e-mail");?>
+			<span name="emailnotify_wrapper" id="emailnotify_wrapper">
+				<br><?=gettext("address");?>:&nbsp;<input name="emailcallnotifyaddress" id="emailcallnotifyaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_emailcallnotifyaddress);?>">
+		<br><br><span class="vexpl"><?=gettext("Note:");?>
+		<?=gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work.");?></span>
+			</span>
 		</td>
 	</tr><?
+
 }
+
+function display_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress, $colspan) {
+
+	?><tr>
+		<td valign="top" class="vncell"><?=gettext("Voicemail");?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="vmtoemail" type="hidden" value="disabled"><input name="vmtoemail" id="vmtoemail" type="checkbox" value="enabled" <?
+			if ($current_vmtoemail == "enabled") {
+				echo "checked";
+			}
+			?>>&nbsp;<?=gettext("enable voicemail to e-mail");?>
+			<span name="vmtoemail_wrapper" id="vmtoemail_wrapper">
+				<br><?=gettext("address");?>:&nbsp;<input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
+				<br><br><span class="vexpl"><?=gettext("Note:");?>
+				<?=gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work.");?></span>
+			</span>
+		</td>
+	</tr><?
+
+}
+
 
 function display_public_access_editor($current_publicaccess, $current_publicname, $colspan) {
 	global $config;
@@ -539,18 +511,14 @@ function display_public_access_editor($current_publicaccess, $current_publicname
 	?><tr> 
 		<td valign="top" class="vncell"><?=gettext("Public Access");?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="publicaccess" type="radio" value="allow" 
-			<?php if ($current_publicaccess == "allow") echo "checked"; ?>><?=gettext("allow");?>
-			&nbsp;&nbsp;&nbsp;
-			<input name="publicaccess" type="radio" value="block"
-			<?php if ($current_publicaccess == "block") echo "checked"; ?>><?=gettext("block");?>
-			<br><span name="publicaccess_disabled_wrapper" id="publicaccess_disabled_wrapper">
-				<span class="vexpl"><?=gettext("This number is not directly reachable over the Internet.");?></span>
-			</span>
-			<span name="publicaccess_enabled_wrapper" id="publicaccess_enabled_wrapper">
-				<span class="vexpl"><?=gettext("This number is directly reachable over the Internet.");?>
-				<br><br><input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">
-				<br><?=gettext("Optional: Set a friendly name above if you would like to use a word or name instead of the extension number.");?></span>
+			<input name="publicaccess" type="hidden" value="block"><input name="publicaccess" id="publicaccess" type="checkbox" value="allow" <?
+			if ($current_publicaccess == "allow") {
+				echo "checked";
+			}
+			?>>&nbsp;<?=gettext("allow this number to be reachable over the Internet");?>
+			<span name="publicaccess_wrapper" id="publicaccess_wrapper">
+				<br><?=gettext("alias");?>:&nbsp;<input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">&nbsp(<?=gettext("optional");?>)
+				<br><br><span class="vexpl"><?=gettext("Set a friendlier alias above if you would like to use a word or name instead of the extension number.");?></span>
 			</span>
 		</td>
 	</tr><?

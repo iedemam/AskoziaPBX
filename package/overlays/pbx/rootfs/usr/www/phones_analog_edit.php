@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -43,24 +43,7 @@ $carryovers = array(
 );
 
 
-/* pull current config into pconfig */
-if (isset($id) && $a_analogphones[$id]) {
-	$pconfig['extension'] = $a_analogphones[$id]['extension'];
-	$pconfig['callerid'] = $a_analogphones[$id]['callerid'];
-	$pconfig['provider'] = $a_analogphones[$id]['provider'];
-	$pconfig['voicemailbox'] = $a_analogphones[$id]['voicemailbox'];
-	$pconfig['sendcallnotifications'] = isset($a_analogphones[$id]['sendcallnotifications']);
-	$pconfig['novmwhenbusy'] = isset($a_analogphones[$id]['novmwhenbusy']);
-	$pconfig['publicaccess'] = $a_analogphones[$id]['publicaccess'];
-	$pconfig['publicname'] = $a_analogphones[$id]['publicname'];
-	$pconfig['interface'] = $a_analogphones[$id]['interface'];
-	$pconfig['language'] = $a_analogphones[$id]['language'];
-	$pconfig['descr'] = $a_analogphones[$id]['descr'];
-	$pconfig['ringlength'] = $a_analogphones[$id]['ringlength'];
-}
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 	
@@ -92,7 +75,6 @@ if ($_POST) {
 		$ap['callerid'] = $_POST['callerid'];
 		$ap['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ap['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
-		$ap['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$ap['publicaccess'] = $_POST['publicaccess'];
 		$ap['publicname'] = verify_non_default($_POST['publicname']);
 		$ap['interface'] = $_POST['interface'];
@@ -103,7 +85,7 @@ if ($_POST) {
 		$a_providers = pbx_get_providers();
 		$ap['provider'] = array();
 		foreach ($a_providers as $provider) {
-			if($_POST[$provider['uniqid']] == true) {
+			if ($_POST[$provider['uniqid']] == true) {
 				$ap['provider'][] = $provider['uniqid'];
 			}
 		}
@@ -139,10 +121,14 @@ include("fbegin.inc");
 ?><script type="text/JavaScript">
 <!--
 	<?=javascript_public_access_editor("functions");?>
+	<?=javascript_notifications_editor("functions");?>
+	<?=javascript_voicemail_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_access_editor("ready");?>
+		<?=javascript_notifications_editor("ready");?>
+		<?=javascript_voicemail_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 
 	});
@@ -156,17 +142,24 @@ if ($input_errors) {
 
 ?><form action="phones_analog_edit.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr> 
+		<tr>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("General");?></td>
+		</tr>
+		<tr>
 			<td width="20%" valign="top" class="vncellreq"><?=gettext("Number");?></td>
 			<td width="80%" class="vtable">
 				<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>">
 				<br><span class="vexpl"><?=gettext("The number used to dial this phone.");?></span>
 			</td>
 		</tr>
-		<? display_caller_id_field($pconfig['callerid'], 2); ?>
-		<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
-		<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
-		<tr> 
+
+		<?
+		display_caller_id_field($pconfig['callerid'], 1);
+		display_channel_language_selector($pconfig['language'], 1);
+		display_phone_ringlength_selector($pconfig['ringlength'], 1);
+		?>
+
+		<tr>
 			<td valign="top" class="vncell"><?=gettext("Hardware Port");?></td>
 			<td class="vtable">
 				<select name="port" class="formfld" id="port"><?
@@ -180,13 +173,38 @@ if ($input_errors) {
 				}
 				
 				?></select>
-				<br><span class="vexpl"><?=gettext("The analog port this phone is connected to.");?></span>
+				<br><span class="vexpl"><?=gettext("The hardware port this phone is connected to.");?></span>
 			</td>
 		</tr>
-		<? display_channel_language_selector($pconfig['language'], 1); ?>
-		<? display_provider_access_selector($pconfig['provider'], 1); ?>
-		<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
-		<? display_description_field($pconfig['descr'], 1); ?>
+
+		<?
+		display_description_field($pconfig['descr'], 1);
+		?>
+
+		<tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr>
+		<tr>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("Security");?></td>
+		</tr>
+
+		<?
+		display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1);
+		display_provider_access_selector($pconfig['provider'], 1);
+		?>
+
+		<tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr>
+		<tr>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("Call Notifications & Voicemail");?></td>
+		</tr>
+
+		<?
+		display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 1);
+		display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 1);
+		?>
+
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td>

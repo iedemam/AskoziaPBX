@@ -51,7 +51,6 @@ if (isset($id) && $a_isdnphones[$id]) {
 	$pconfig['provider'] = $a_isdnphones[$id]['provider'];
 	$pconfig['voicemailbox'] = $a_isdnphones[$id]['voicemailbox'];
 	$pconfig['sendcallnotifications'] = isset($a_isdnphones[$id]['sendcallnotifications']);
-	$pconfig['novmwhenbusy'] = isset($a_isdnphones[$id]['novmwhenbusy']);
 	$pconfig['publicaccess'] = $a_isdnphones[$id]['publicaccess'];
 	$pconfig['publicname'] = $a_isdnphones[$id]['publicname'];
 	$pconfig['interface'] = $a_isdnphones[$id]['interface'];
@@ -93,7 +92,6 @@ if ($_POST) {
 		$ip['callerid'] = $_POST['callerid'];
 		$ip['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
 		$ip['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
-		$ip['novmwhenbusy'] = $_POST['novmwhenbusy'] ? true : false;
 		$ip['publicaccess'] = $_POST['publicaccess'];
 		$ip['publicname'] = verify_non_default($_POST['publicname']);
 		$ip['interface'] = $_POST['interface'];
@@ -131,10 +129,14 @@ include("fbegin.inc");
 ?><script type="text/JavaScript">
 <!--
 	<?=javascript_public_access_editor("functions");?>
+	<?=javascript_notifications_editor("functions");?>
+	<?=javascript_voicemail_editor("functions");?>
 
 	jQuery(document).ready(function(){
 
 		<?=javascript_public_access_editor("ready");?>
+		<?=javascript_notifications_editor("ready");?>
+		<?=javascript_voicemail_editor("ready");?>
 		<?=javascript_advanced_settings("ready");?>
 
 	});
@@ -164,7 +166,8 @@ if (count($isdn_interfaces) == 0) {
 				</td>
 			</tr>
 			<? display_caller_id_field($pconfig['callerid'], 1); ?>
-			<? display_call_notifications_editor($pconfig['voicemailbox'], $pconfig['sendcallnotifications'], $pconfig['novmwhenbusy'], 1); ?>
+			<? display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 1); ?>
+			<? display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 1); ?>
 			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
 			<tr> 
 				<td valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>

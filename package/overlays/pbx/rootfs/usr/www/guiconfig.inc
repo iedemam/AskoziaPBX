@@ -335,11 +335,6 @@ $tz['4600'] = array($tmp.", ".gettext("Mountain Time (Arizona, no DST)"), "MST7"
 $tz['4700'] = array($tmp.", ".gettext("Newfoundland Time"), "NST+3:30NDT+2:30,M4.1.0/00:01:00,M10.5.0/00:01:00");
 $tz['4800'] = array($tmp.", ".gettext("Pacific Time"), "PST8PDT");
 
-$analog_signaling = array(
-	"fxs" => "fxo",
-	"fxo" => "fxs"
-);
-
 $manager_permissions = array(
 	"agent",
 	"call",

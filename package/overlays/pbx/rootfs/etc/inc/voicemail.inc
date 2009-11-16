@@ -360,19 +360,21 @@ EOD;
 	// internal phones
 	$intphones = pbx_get_phones();
 	foreach($intphones as $p) {
-		if(!$p['voicemailbox'])
+		if ($p['vmtoemail'] != "enabled") {
 			continue;
+		}
 		// is eliminating VoiceMailMain from the dialplan enough to keep
 		// this default password from being a privacy risk?
-		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['voicemailbox']},,delete=yes\n";
+		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['vmtoemailaddress']},,delete=yes\n";
 	}
 
 	// external phones
 	$extphones = external_get_phones();
 	foreach($extphones as $p) {
-		if(!$p['voicemailbox'])
+		if ($p['vmtoemail'] != "enabled") {
 			continue;
-		$conf .= "{$p['extension']} => 0000,{$p['name']},{$p['voicemailbox']},,delete=yes\n";
+		}
+		$conf .= "{$p['extension']} => 0000,{$p['name']},{$p['vmtoemailaddress']},,delete=yes\n";
 	}
 
 	$fd = fopen("/etc/asterisk/voicemail.conf", "w");
