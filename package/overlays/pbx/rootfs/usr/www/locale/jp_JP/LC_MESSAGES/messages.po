@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-13 15:45+0100\n"
+"POT-Creation-Date: 2009-11-16 19:04+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -238,7 +238,9 @@ msgid "Ring Length"
 msgstr "呼び出し時間の長さ"
 
 #, fuzzy
-msgid "The number of seconds this phone will ring before giving up."
+msgid ""
+"The number of seconds this phone will ring before giving up or going to "
+"voicemail."
 msgstr "応答無しと判断するまでのこの電話機の呼び出し時間を入力して下さい(秒)"
 
 msgid "Volume"
@@ -293,15 +295,6 @@ msgstr "接続回線"
 msgid "Block access to the providers selected above."
 msgstr ""
 
-msgid "Phones"
-msgstr "電話機"
-
-msgid "There are currently no phones defined."
-msgstr "現在、電話は定義されていません"
-
-msgid "Checked phones will have access to this provider."
-msgstr "チェック済みの電話が、この電話会社に接続出来る様になります"
-
 msgid "Dialing Pattern(s)"
 msgstr "ダイヤルパターン"
 
@@ -355,47 +348,48 @@ msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "このアカウントで使用する音声ファイルの言語を選択して下さい"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "場所"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IPアドレス"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
 msgid "Voicemail"
 msgstr "ボイスメール"
 
-msgid "send missed call notifications"
-msgstr "不在着信のお知らせを送る"
-
-msgid "don't send to voicemail when busy"
-msgstr "話し中の時には、ボイスメールは送らない"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"上の欄にEメールアドレスを入力すると、このアカウントのボイスメールが有効になり"
-"ます。届いたメッセージは、上記で指定されたアドレスに送られます"
-
-msgid "Voicemail Services"
-msgstr "ボイスメールサービスは"
-
-msgid "must be configured</a> before this feature will work."
-msgstr ""
-"この機能を有効にするには、[サービス]->[ボイスメール]の設定が必要です</a>"
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "ボイスメールの受信者名"
 
 #, fuzzy
 msgid "Public Access"
 msgstr "Public IP address"
 
-msgid "prevent public access to this extension"
+msgid "allow this number to be reachable over the Internet"
 msgstr ""
 
-msgid "Use a word or name instead of the extension number."
-msgstr ""
+#, fuzzy
+msgid "alias"
+msgstr "イタリア語"
 
-#, fuzzy, php-format
+#, fuzzy
+msgid "optional"
+msgstr "オプション"
+
 msgid ""
-"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
-"disabled here."
+"Set a friendlier alias above if you would like to use a word or name instead "
+"of the extension number."
 msgstr ""
-"このオプションを有効にすると、外部のネットワークからこの内線番号に対し、次の"
-"様なURIを宛先に指定する事で、SIP及びIAX2プロトコルでのダイヤル及び接続が可能"
-"となります (extension@%s)"
 
 msgid "Call Limit"
 msgstr "通話制限"
@@ -558,6 +552,9 @@ msgstr "再起動"
 msgid "Ports"
 msgstr "ポルトガル"
 
+msgid "Phones"
+msgstr "電話機"
+
 msgid "Providers"
 msgstr "接続回線"
 
@@ -631,10 +628,6 @@ msgstr "ファームウェア"
 
 msgid "Accounts"
 msgstr "設定名"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "場所"
 
 msgid "Services"
 msgstr "サービス"
@@ -2229,8 +2222,23 @@ msgid "A phone with this extension already exists."
 msgstr "この内線番号の電話は、既に存在しています"
 
 #, fuzzy
-msgid "Number used to dial this phone."
+msgid "The number used to dial this phone."
 msgstr "Internal extensionは、この電話にダイヤル可能"
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "ファームウェア"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Security"
+msgstr "パスワード"
+
+#, fuzzy
+msgid "Call Notifications & Voicemail"
+msgstr "場所"
 
 msgid "Edit External Line"
 msgstr "外線の編集"
@@ -2929,10 +2937,6 @@ msgid ""
 msgstr ""
 "NTPサーバー名として使用出来る文字は、a-z, 0-9, '-' もしくは '.'のみです"
 
-#, fuzzy
-msgid "Security"
-msgstr "パスワード"
-
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr ""
@@ -3361,6 +3365,41 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "There are currently no phones defined."
+#~ msgstr "現在、電話は定義されていません"
+
+#~ msgid "Checked phones will have access to this provider."
+#~ msgstr "チェック済みの電話が、この電話会社に接続出来る様になります"
+
+#~ msgid "send missed call notifications"
+#~ msgstr "不在着信のお知らせを送る"
+
+#~ msgid "don't send to voicemail when busy"
+#~ msgstr "話し中の時には、ボイスメールは送らない"
+
+#~ msgid ""
+#~ "An e-mail address. If entered, voicemail will be enabled on this "
+#~ "extension. Incoming messages will be sent to the given address."
+#~ msgstr ""
+#~ "上の欄にEメールアドレスを入力すると、このアカウントのボイスメールが有効に"
+#~ "なります。届いたメッセージは、上記で指定されたアドレスに送られます"
+
+#~ msgid "Voicemail Services"
+#~ msgstr "ボイスメールサービスは"
+
+#~ msgid "must be configured</a> before this feature will work."
+#~ msgstr ""
+#~ "この機能を有効にするには、[サービス]->[ボイスメール]の設定が必要です</a>"
+
+#, fuzzy
+#~ msgid ""
+#~ "This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+#~ "disabled here."
+#~ msgstr ""
+#~ "このオプションを有効にすると、外部のネットワークからこの内線番号に対し、次"
+#~ "の様なURIを宛先に指定する事で、SIP及びIAX2プロトコルでのダイヤル及び接続が"
+#~ "可能となります (extension@%s)"
 
 #, fuzzy
 #~ msgid "telephones"

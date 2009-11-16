@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-13 15:45+0100\n"
+"POT-Creation-Date: 2009-11-16 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -239,7 +239,9 @@ msgid "Ring Length"
 msgstr "Rufdauer"
 
 #, fuzzy
-msgid "The number of seconds this phone will ring before giving up."
+msgid ""
+"The number of seconds this phone will ring before giving up or going to "
+"voicemail."
 msgstr ""
 "Die Zeit die das Telefon klingelt, bevor das Gespräch als 'nicht angenommen' "
 "behandelt wird."
@@ -296,15 +298,6 @@ msgstr "Provider"
 msgid "Block access to the providers selected above."
 msgstr ""
 
-msgid "Phones"
-msgstr "Nebenstellen"
-
-msgid "There are currently no phones defined."
-msgstr "Derzeit sind keine Telefone angelegt."
-
-msgid "Checked phones will have access to this provider."
-msgstr "Die ausgewählten Nebenstellen haben Zugriff auf den Provider"
-
 msgid "Dialing Pattern(s)"
 msgstr "Wähl-Muster"
 
@@ -359,45 +352,48 @@ msgid ""
 msgstr ""
 "Sprachprompts werden für dieses Konto in der gewählten Sprache ausgegeben.  "
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Ort"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IP-Adresse"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
 msgid "Voicemail"
 msgstr "Voicemail"
 
-msgid "send missed call notifications"
-msgstr "Nachrichten über entgangene Anrufe senden"
-
-msgid "don't send to voicemail when busy"
-msgstr "Im Besetztfall nicht zur Voicemail weiterleiten."
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"Eine eMail-adresse. Falls gesetzt, ist Voicemail für die Nebenstelle aktiv. "
-"Nachrichten werden an die eingegebene Adresse verschickt. "
-
-msgid "Voicemail Services"
-msgstr "Voicemail Dienst"
-
-msgid "must be configured</a> before this feature will work."
-msgstr "muß konfiguriert sein</a>bevor diese Funktion nutzbar ist."
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "Name des Voicemail-Empfängers"
 
 #, fuzzy
 msgid "Public Access"
 msgstr "Öffentliche IP-Adresse"
 
-msgid "prevent public access to this extension"
+msgid "allow this number to be reachable over the Internet"
 msgstr ""
 
-msgid "Use a word or name instead of the extension number."
-msgstr ""
+#, fuzzy
+msgid "alias"
+msgstr "Italienisch"
 
-#, fuzzy, php-format
+#, fuzzy
+msgid "optional"
+msgstr "Optionen"
+
 msgid ""
-"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
-"disabled here."
+"Set a friendlier alias above if you would like to use a word or name instead "
+"of the extension number."
 msgstr ""
-"Die Auswahl dieser Option erlaubt die Anwahl der Nebenstelle über SIP und "
-"IAX2 uris (extension@%s)"
 
 msgid "Call Limit"
 msgstr "Maximale Verbindungsanzahl"
@@ -570,6 +566,9 @@ msgstr "Reboot"
 msgid "Ports"
 msgstr "Portugal"
 
+msgid "Phones"
+msgstr "Nebenstellen"
+
 msgid "Providers"
 msgstr "Provider"
 
@@ -643,10 +642,6 @@ msgstr "Firmware"
 
 msgid "Accounts"
 msgstr "Konten"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "Ort"
 
 msgid "Services"
 msgstr "Dienste"
@@ -2278,8 +2273,23 @@ msgid "A phone with this extension already exists."
 msgstr "Es gibt bereits eine Nebenstelle mit dieser Nummer. "
 
 #, fuzzy
-msgid "Number used to dial this phone."
+msgid "The number used to dial this phone."
 msgstr "Die interne Nebenstellennummer für dieses Telefon."
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Firmware"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Security"
+msgstr "Passwort"
+
+#, fuzzy
+msgid "Call Notifications & Voicemail"
+msgstr "Ort"
 
 msgid "Edit External Line"
 msgstr "Externe Leitung bearbeiten"
@@ -2974,10 +2984,6 @@ msgstr ""
 "Der NTP-Server-Name darf nur aus folgenden Zeichen bestehen: a-z, 0-9, '-' "
 "and '.'."
 
-#, fuzzy
-msgid "Security"
-msgstr "Passwort"
-
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr ""
@@ -3393,6 +3399,39 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid "There are currently no phones defined."
+#~ msgstr "Derzeit sind keine Telefone angelegt."
+
+#~ msgid "Checked phones will have access to this provider."
+#~ msgstr "Die ausgewählten Nebenstellen haben Zugriff auf den Provider"
+
+#~ msgid "send missed call notifications"
+#~ msgstr "Nachrichten über entgangene Anrufe senden"
+
+#~ msgid "don't send to voicemail when busy"
+#~ msgstr "Im Besetztfall nicht zur Voicemail weiterleiten."
+
+#~ msgid ""
+#~ "An e-mail address. If entered, voicemail will be enabled on this "
+#~ "extension. Incoming messages will be sent to the given address."
+#~ msgstr ""
+#~ "Eine eMail-adresse. Falls gesetzt, ist Voicemail für die Nebenstelle "
+#~ "aktiv. Nachrichten werden an die eingegebene Adresse verschickt. "
+
+#~ msgid "Voicemail Services"
+#~ msgstr "Voicemail Dienst"
+
+#~ msgid "must be configured</a> before this feature will work."
+#~ msgstr "muß konfiguriert sein</a>bevor diese Funktion nutzbar ist."
+
+#, fuzzy
+#~ msgid ""
+#~ "This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+#~ "disabled here."
+#~ msgstr ""
+#~ "Die Auswahl dieser Option erlaubt die Anwahl der Nebenstelle über SIP und "
+#~ "IAX2 uris (extension@%s)"
 
 #, fuzzy
 #~ msgid "telephones"

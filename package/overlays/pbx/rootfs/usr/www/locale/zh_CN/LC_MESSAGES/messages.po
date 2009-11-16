@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-13 15:45+0100\n"
+"POT-Creation-Date: 2009-11-16 19:04+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -226,7 +226,9 @@ msgid "Ring Length"
 msgstr "响铃时长"
 
 #, fuzzy
-msgid "The number of seconds this phone will ring before giving up."
+msgid ""
+"The number of seconds this phone will ring before giving up or going to "
+"voicemail."
 msgstr "响铃时间的秒数，之后将被认为无人应答。"
 
 msgid "Volume"
@@ -281,15 +283,6 @@ msgstr "提供商"
 msgid "Block access to the providers selected above."
 msgstr ""
 
-msgid "Phones"
-msgstr "电话"
-
-msgid "There are currently no phones defined."
-msgstr "目前没有被定义的电话。"
-
-msgid "Checked phones will have access to this provider."
-msgstr "选出的电话会拥有连接使用这个提供商的权利。"
-
 msgid "Dialing Pattern(s)"
 msgstr "拨号模式"
 
@@ -338,43 +331,47 @@ msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "音频提示将以为这个账号设置好的语言回放。"
 
+#, fuzzy
+msgid "Notifications"
+msgstr "位置"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IP地址"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
 msgid "Voicemail"
 msgstr "语音邮件"
 
-msgid "send missed call notifications"
-msgstr "发送错过的电话通知"
-
-msgid "don't send to voicemail when busy"
-msgstr "不要发送语音信件如果状态为忙时。"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
+msgid "enable voicemail to e-mail"
 msgstr ""
-"一个电子邮件地址。如果输入了，语音信件会在这个分机上起效。呼入信息会被传送到"
-"这个地址。"
-
-msgid "Voicemail Services"
-msgstr "语音信件服务"
-
-msgid "must be configured</a> before this feature will work."
-msgstr "在功能起效前，必须先设置。"
 
 #, fuzzy
 msgid "Public Access"
 msgstr "公网IP地址"
 
-msgid "prevent public access to this extension"
+msgid "allow this number to be reachable over the Internet"
 msgstr ""
 
-msgid "Use a word or name instead of the extension number."
-msgstr ""
+#, fuzzy
+msgid "alias"
+msgstr "意大利语"
 
-#, fuzzy, php-format
+#, fuzzy
+msgid "optional"
+msgstr "选项"
+
 msgid ""
-"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
-"disabled here."
-msgstr "启用这个选项会允许这个分机可以被SIP和IAX2 uris呼叫。(extension@%s)"
+"Set a friendlier alias above if you would like to use a word or name instead "
+"of the extension number."
+msgstr ""
 
 msgid "Call Limit"
 msgstr "通话限制"
@@ -534,6 +531,9 @@ msgstr "重启"
 msgid "Ports"
 msgstr "葡萄牙"
 
+msgid "Phones"
+msgstr "电话"
+
 msgid "Providers"
 msgstr "提供商"
 
@@ -607,10 +607,6 @@ msgstr "固件"
 
 msgid "Accounts"
 msgstr "账号"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "位置"
 
 msgid "Services"
 msgstr "服务"
@@ -2174,8 +2170,23 @@ msgid "A phone with this extension already exists."
 msgstr "已经存在这个分机了。"
 
 #, fuzzy
-msgid "Number used to dial this phone."
+msgid "The number used to dial this phone."
 msgstr "这个内部分机用来拨打这个电话。"
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "固件"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Security"
+msgstr "秘密"
+
+#, fuzzy
+msgid "Call Notifications & Voicemail"
+msgstr "位置"
 
 msgid "Edit External Line"
 msgstr "编辑外部线路"
@@ -2829,10 +2840,6 @@ msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "一个NTP时间服务器名只能包含a-z，0-9，'-'以及'.'。"
 
-#, fuzzy
-msgid "Security"
-msgstr "秘密"
-
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr "如果您想改变登陆本设置界面的用户名，请输入到这里。"
@@ -3220,6 +3227,37 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "There are currently no phones defined."
+#~ msgstr "目前没有被定义的电话。"
+
+#~ msgid "Checked phones will have access to this provider."
+#~ msgstr "选出的电话会拥有连接使用这个提供商的权利。"
+
+#~ msgid "send missed call notifications"
+#~ msgstr "发送错过的电话通知"
+
+#~ msgid "don't send to voicemail when busy"
+#~ msgstr "不要发送语音信件如果状态为忙时。"
+
+#~ msgid ""
+#~ "An e-mail address. If entered, voicemail will be enabled on this "
+#~ "extension. Incoming messages will be sent to the given address."
+#~ msgstr ""
+#~ "一个电子邮件地址。如果输入了，语音信件会在这个分机上起效。呼入信息会被传送"
+#~ "到这个地址。"
+
+#~ msgid "Voicemail Services"
+#~ msgstr "语音信件服务"
+
+#~ msgid "must be configured</a> before this feature will work."
+#~ msgstr "在功能起效前，必须先设置。"
+
+#, fuzzy
+#~ msgid ""
+#~ "This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+#~ "disabled here."
+#~ msgstr "启用这个选项会允许这个分机可以被SIP和IAX2 uris呼叫。(extension@%s)"
 
 #, fuzzy
 #~ msgid "telephones"

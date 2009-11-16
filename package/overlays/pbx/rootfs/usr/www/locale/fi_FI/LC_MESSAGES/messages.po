@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-13 15:45+0100\n"
+"POT-Creation-Date: 2009-11-16 19:04+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -228,7 +228,9 @@ msgid "Ring Length"
 msgstr "Ympyrän pituus"
 
 #, fuzzy
-msgid "The number of seconds this phone will ring before giving up."
+msgid ""
+"The number of seconds this phone will ring before giving up or going to "
+"voicemail."
 msgstr ""
 "Määrä sekuntteja tämä puhelin soi ennen kun se merkitään ei vastatuksi."
 
@@ -284,15 +286,6 @@ msgstr "Palveluntarjoajat"
 msgid "Block access to the providers selected above."
 msgstr ""
 
-msgid "Phones"
-msgstr "Puhelimet"
-
-msgid "There are currently no phones defined."
-msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
-
-msgid "Checked phones will have access to this provider."
-msgstr "Valitut puhelimet saavat pääsyn tälle palveluntarjoajalle."
-
 msgid "Dialing Pattern(s)"
 msgstr "Soittokaava(t)"
 
@@ -345,45 +338,48 @@ msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "Ääni promptit toistetaan valitulla kielellä täälle tilille."
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Paikka"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IP osoite"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
 msgid "Voicemail"
 msgstr "Vastaaja"
 
-msgid "send missed call notifications"
-msgstr "lähetä vastaamaton puhelu ilmoituksia"
-
-msgid "don't send to voicemail when busy"
-msgstr "älä lähetä vastaajaan kun tilani on varattu"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"S-posti osoite. Jos annettu, vaastaaja kytketään päälle tälle jatkeelle. "
-"Sisääntulevat viestit lähetetään annettuun osoitteeseen."
-
-msgid "Voicemail Services"
-msgstr "Vastaajan Palvelut"
-
-msgid "must be configured</a> before this feature will work."
-msgstr "on pakko olla konfiguroitu</a> jotta tämä toiminto olisi toiminassa."
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "vastaajan omistajan nimi"
 
 #, fuzzy
 msgid "Public Access"
 msgstr "Julkinen IP osoite"
 
-msgid "prevent public access to this extension"
+msgid "allow this number to be reachable over the Internet"
 msgstr ""
 
-msgid "Use a word or name instead of the extension number."
-msgstr ""
+#, fuzzy
+msgid "alias"
+msgstr "Italian kieli"
 
-#, fuzzy, php-format
+#, fuzzy
+msgid "optional"
+msgstr "Valinnat"
+
 msgid ""
-"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
-"disabled here."
+"Set a friendlier alias above if you would like to use a word or name instead "
+"of the extension number."
 msgstr ""
-"Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa SIP "
-"ja IAX2 uris:in kautta (jatke@%s)"
 
 msgid "Call Limit"
 msgstr "Puheluiden Raja"
@@ -554,6 +550,9 @@ msgstr "Käynnistä uudellen"
 msgid "Ports"
 msgstr "Portugali"
 
+msgid "Phones"
+msgstr "Puhelimet"
+
 msgid "Providers"
 msgstr "Palveluntarjoajat"
 
@@ -627,10 +626,6 @@ msgstr "Laiteohjelmisto"
 
 msgid "Accounts"
 msgstr "Tilit"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "Paikka"
 
 msgid "Services"
 msgstr "Palvelut"
@@ -2237,8 +2232,23 @@ msgid "A phone with this extension already exists."
 msgstr "Puhelin tällä jatkeella on jo olemassa."
 
 #, fuzzy
-msgid "Number used to dial this phone."
+msgid "The number used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Laiteohjelmisto"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Security"
+msgstr "Salaisuus"
+
+#, fuzzy
+msgid "Call Notifications & Voicemail"
+msgstr "Paikka"
 
 msgid "Edit External Line"
 msgstr "Muokkaa Ulkoinen Linja"
@@ -2937,10 +2947,6 @@ msgid ""
 msgstr ""
 "NTP Aika serverinimi ei saa sisältää muita merkkejä kun a-z, 0-9 ja '-'."
 
-#, fuzzy
-msgid "Security"
-msgstr "Salaisuus"
-
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr "Jos haluat vaihtaa verkkokäyttöliittymän käyttäjänimen, tee se tässä."
@@ -3353,6 +3359,40 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "There are currently no phones defined."
+#~ msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."
+
+#~ msgid "Checked phones will have access to this provider."
+#~ msgstr "Valitut puhelimet saavat pääsyn tälle palveluntarjoajalle."
+
+#~ msgid "send missed call notifications"
+#~ msgstr "lähetä vastaamaton puhelu ilmoituksia"
+
+#~ msgid "don't send to voicemail when busy"
+#~ msgstr "älä lähetä vastaajaan kun tilani on varattu"
+
+#~ msgid ""
+#~ "An e-mail address. If entered, voicemail will be enabled on this "
+#~ "extension. Incoming messages will be sent to the given address."
+#~ msgstr ""
+#~ "S-posti osoite. Jos annettu, vaastaaja kytketään päälle tälle jatkeelle. "
+#~ "Sisääntulevat viestit lähetetään annettuun osoitteeseen."
+
+#~ msgid "Voicemail Services"
+#~ msgstr "Vastaajan Palvelut"
+
+#~ msgid "must be configured</a> before this feature will work."
+#~ msgstr ""
+#~ "on pakko olla konfiguroitu</a> jotta tämä toiminto olisi toiminassa."
+
+#, fuzzy
+#~ msgid ""
+#~ "This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
+#~ "disabled here."
+#~ msgstr ""
+#~ "Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa "
+#~ "SIP ja IAX2 uris:in kautta (jatke@%s)"
 
 #, fuzzy
 #~ msgid "telephones"

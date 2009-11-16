@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-13 15:45+0100\n"
+"POT-Creation-Date: 2009-11-16 19:04+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -205,7 +205,9 @@ msgstr ""
 msgid "Ring Length"
 msgstr ""
 
-msgid "The number of seconds this phone will ring before giving up."
+msgid ""
+"The number of seconds this phone will ring before giving up or going to "
+"voicemail."
 msgstr ""
 
 msgid "Volume"
@@ -259,15 +261,6 @@ msgstr ""
 msgid "Block access to the providers selected above."
 msgstr ""
 
-msgid "Phones"
-msgstr ""
-
-msgid "There are currently no phones defined."
-msgstr ""
-
-msgid "Checked phones will have access to this provider."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr ""
 
@@ -300,39 +293,41 @@ msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr ""
 
-msgid "Voicemail"
+msgid "Notifications"
 msgstr ""
 
-msgid "send missed call notifications"
+msgid "notify me of missed calls via e-mail"
 msgstr ""
 
-msgid "don't send to voicemail when busy"
+msgid "address"
 msgstr ""
 
 msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
 msgstr ""
 
-msgid "Voicemail Services"
+msgid "Voicemail"
 msgstr ""
 
-msgid "must be configured</a> before this feature will work."
+msgid "enable voicemail to e-mail"
 msgstr ""
 
 msgid "Public Access"
 msgstr ""
 
-msgid "prevent public access to this extension"
+msgid "allow this number to be reachable over the Internet"
 msgstr ""
 
-msgid "Use a word or name instead of the extension number."
+msgid "alias"
 msgstr ""
 
-#, php-format
+msgid "optional"
+msgstr ""
+
 msgid ""
-"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
-"disabled here."
+"Set a friendlier alias above if you would like to use a word or name instead "
+"of the extension number."
 msgstr ""
 
 msgid "Call Limit"
@@ -476,6 +471,9 @@ msgstr ""
 msgid "Ports"
 msgstr ""
 
+msgid "Phones"
+msgstr ""
+
 msgid "Providers"
 msgstr ""
 
@@ -546,9 +544,6 @@ msgid "Hardware"
 msgstr ""
 
 msgid "Accounts"
-msgstr ""
-
-msgid "Notifications"
 msgstr ""
 
 msgid "Services"
@@ -2035,7 +2030,19 @@ msgstr ""
 msgid "A phone with this extension already exists."
 msgstr ""
 
-msgid "Number used to dial this phone."
+msgid "The number used to dial this phone."
+msgstr ""
+
+msgid "Hardware Port"
+msgstr ""
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Call Notifications & Voicemail"
 msgstr ""
 
 msgid "Edit External Line"
@@ -2650,9 +2657,6 @@ msgstr ""
 
 msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
-
-msgid "Security"
 msgstr ""
 
 msgid ""

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-13 15:45+0100\n"
+"POT-Creation-Date: 2009-11-16 19:04+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,7 +205,9 @@ msgstr "sonsuz"
 msgid "Ring Length"
 msgstr "Uyarı Ses Uzunluğu"
 
-msgid "The number of seconds this phone will ring before giving up."
+msgid ""
+"The number of seconds this phone will ring before giving up or going to "
+"voicemail."
 msgstr ""
 
 msgid "Volume"
@@ -260,15 +262,6 @@ msgstr "Sunucular"
 msgid "Block access to the providers selected above."
 msgstr ""
 
-msgid "Phones"
-msgstr "Telefonlar"
-
-msgid "There are currently no phones defined."
-msgstr ""
-
-msgid "Checked phones will have access to this provider."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr ""
 
@@ -301,42 +294,47 @@ msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr ""
 
+#, fuzzy
+msgid "Notifications"
+msgstr "Lokasyon"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "İP adres"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
 msgid "Voicemail"
 msgstr "Sesli Mesaj"
 
-msgid "send missed call notifications"
-msgstr "kaçırılan aramalar uyarısı gönder"
-
-msgid "don't send to voicemail when busy"
-msgstr "meşgul olduğunda sesli mesaj kutusuna yönlendirme"
-
-msgid ""
-"An e-mail address. If entered, voicemail will be enabled on this extension. "
-"Incoming messages will be sent to the given address."
-msgstr ""
-"Bir E-posta adresi. Girildiğinde Sesli Mesaj bu dahili hat için seçilir "
-"kılınır. Gelen mesajlar girilen adrese gönderileçektir."
-
-msgid "Voicemail Services"
-msgstr "Sesli Mesaj Servisleri"
-
-msgid "must be configured</a> before this feature will work."
-msgstr ""
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "sesli mesaj alıcının adı"
 
 #, fuzzy
 msgid "Public Access"
 msgstr "Kamusal İP adres"
 
-msgid "prevent public access to this extension"
+msgid "allow this number to be reachable over the Internet"
 msgstr ""
 
-msgid "Use a word or name instead of the extension number."
-msgstr ""
+#, fuzzy
+msgid "alias"
+msgstr "İtalyanca"
 
-#, php-format
+#, fuzzy
+msgid "optional"
+msgstr "Seçenekler"
+
 msgid ""
-"This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
-"disabled here."
+"Set a friendlier alias above if you would like to use a word or name instead "
+"of the extension number."
 msgstr ""
 
 msgid "Call Limit"
@@ -482,6 +480,9 @@ msgstr "Sistemi yeniden çalıştır"
 msgid "Ports"
 msgstr "Portekiz"
 
+msgid "Phones"
+msgstr "Telefonlar"
+
 msgid "Providers"
 msgstr "Sunucular"
 
@@ -555,10 +556,6 @@ msgstr "Bellenim"
 
 msgid "Accounts"
 msgstr "Hesaplar"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "Lokasyon"
 
 msgid "Services"
 msgstr "Servisler"
@@ -2093,8 +2090,23 @@ msgid "A phone with this extension already exists."
 msgstr ""
 
 #, fuzzy
-msgid "Number used to dial this phone."
+msgid "The number used to dial this phone."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Bellenim"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Security"
+msgstr "Gizli"
+
+#, fuzzy
+msgid "Call Notifications & Voicemail"
+msgstr "Lokasyon"
 
 msgid "Edit External Line"
 msgstr "Harici Hattı Düzenle"
@@ -2726,10 +2738,6 @@ msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
-#, fuzzy
-msgid "Security"
-msgstr "Gizli"
-
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr ""
@@ -3099,6 +3107,22 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "send missed call notifications"
+#~ msgstr "kaçırılan aramalar uyarısı gönder"
+
+#~ msgid "don't send to voicemail when busy"
+#~ msgstr "meşgul olduğunda sesli mesaj kutusuna yönlendirme"
+
+#~ msgid ""
+#~ "An e-mail address. If entered, voicemail will be enabled on this "
+#~ "extension. Incoming messages will be sent to the given address."
+#~ msgstr ""
+#~ "Bir E-posta adresi. Girildiğinde Sesli Mesaj bu dahili hat için seçilir "
+#~ "kılınır. Gelen mesajlar girilen adrese gönderileçektir."
+
+#~ msgid "Voicemail Services"
+#~ msgstr "Sesli Mesaj Servisleri"
 
 #, fuzzy
 #~ msgid "telephones"
