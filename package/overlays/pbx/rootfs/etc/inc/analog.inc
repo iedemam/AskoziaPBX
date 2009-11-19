@@ -166,15 +166,41 @@ function analog_generate_default_phone() {
 	return $phone;
 }
 
+function analog_verify_phone($post, $errors) {
+
+	$phone = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_extension(&$phone, &$post, &$errors);
+	v_callerid(&$phone, &$post, &$errors);
+	v_optional('descr', &$phone, &$post);
+	v_public_access_editor(&$phone, &$post, &$errors);
+	v_notifications_editor(&$phone, &$post, &$errors);
+	v_voicemail_editor(&$phone, &$post, &$errors);
+	v_provider_access_selector(&$phone, &$post);
+
+	$trusted = array(
+		'uniqid',
+		'port',
+		'language',
+		'ringlength'
+	);
+	foreach ($trusted as $t) {
+		$phone[$t] = $post[$t];
+	}
+
+	return $phone;
+}
+
 function analog_save_phone($phone) {
 	global $g, $config, $uniqid_map;
-    
-	if (analog_get_phone($port['uniqid'])) {
-		$config['analog']['phone'][$uniqid_map[$port['uniqid']]] = $phone;
+
+	if (analog_get_phone($phone['uniqid'])) {
+		$config['analog']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
 	} else {
 		$config['analog']['phone'][] = $phone;
 	}
-    
+
 	write_config();
 	touch($g['analog_dirty_path']);
 }

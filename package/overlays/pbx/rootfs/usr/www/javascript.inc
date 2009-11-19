@@ -45,6 +45,7 @@ function javascript_codec_selector($part) {
 		jQuery('ul.acd').sortable({ connectWith: ['ul.ace'], revert: true });
 		jQuery('ul.vce').sortable({ connectWith: ['ul.vcd'], revert: true });
 		jQuery('ul.vcd').sortable({ connectWith: ['ul.vce'], revert: true });
+		jQuery('#submit').click(save_codec_states);
 
 	<? else : ?>
 

@@ -145,7 +145,7 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if ($p['publicaccess'] == "allow") {
+		if ($p['publicaccess'] == "enabled") {
 			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
 				$conf .= "exten => {$p['extension']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
@@ -162,7 +162,7 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if ($p['publicaccess'] == "allow") {
+		if ($p['publicaccess'] == "enabled") {
 			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
 				$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['name']} - <{$p['extension']}>)\n";
@@ -179,7 +179,7 @@ EOD;
 		if (!isset($cg['extension']) || !strlen($cg['extension'])) {
 			continue;
 		}
-		if ($cg['publicaccess'] == "allow") {
+		if ($cg['publicaccess'] == "enabled") {
 			$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
 			if (!$cg['publicname']) {
 				$conf .= "exten => {$cg['extension']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
@@ -193,7 +193,7 @@ EOD;
 
 	// application extensions
 	foreach ($applications as $a) {
-		if ($a['publicaccess'] == "allow") {
+		if ($a['publicaccess'] == "enabled") {
 			$conf .= "; application : {$a['name']}\n";
 			if (!$a['publicname']) {
 				$conf .= "exten => {$a['extension']},1,NoOp(public calling application: {$a['name']})\n";
@@ -207,7 +207,7 @@ EOD;
 
 	// conference room extensions
 	foreach ($conference_rooms as $r) {
-		if ($r['publicaccess'] == "allow") {
+		if ($r['publicaccess'] == "enabled") {
 			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
 			if (!$r['publicname']) {
 				$conf .= "exten => {$r['number']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";

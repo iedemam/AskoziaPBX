@@ -110,7 +110,6 @@ function dahdi_autoconfigure_ports() {
 
 			$p['name'] = gettext("Port") . " " . $p['basechannel'];
 
-			$p['echo-module'] = $defaults['dahdi']['echo-module'];
 			$p['echo-taps'] = $defaults['dahdi']['echo-taps'];
 
 			$p['rxgain'] = $defaults['dahdi']['rxgain'];
@@ -248,9 +247,7 @@ function dahdi_generate_system_conf($ports) {
 		// analog port config
 		if ($port['technology'] == "analog") {
 			if (!$port['disable-echocanceller']) {
-				$echocanceller = ($port['echo-module']) ?
-					$port['echo-module'] : $defaults['dahdi']['echo-module'];
-				$conf .= "echocanceller=" . $echocanceller . "," . $port['basechannel'] . "\n";
+				$conf .= "echocanceller=mg2," . $port['basechannel'] . "\n";
 			}
 		}
 	}

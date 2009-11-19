@@ -199,7 +199,7 @@ if (count($analog_interfaces) == 0) {
 				</td>
 			</tr>
 			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 1); ?>
-			<? display_channel_language_selector($pconfig['language'], 1); ?>
+			<? display_channel_language_selector($pconfig['language']); ?>
 			<? display_incoming_extension_selector(1); ?>
 			<? display_advanced_settings_begin(1); ?>
 			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>

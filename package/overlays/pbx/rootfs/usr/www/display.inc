@@ -95,8 +95,26 @@ function display_gui_language_selector($current_language) {
 }
 
 function display_audio_codec_selector($enabled_codecs) {
-	global $audio_codecs;
-	
+	global $scripts;
+
+	$scripts['javascript_codec_selector'] = true;
+
+	$audio_codecs = array(
+		"ulaw" => "G.711 u-law",
+		"alaw" => "G.711 A-law",
+		"gsm" => "GSM",
+		"g729" => "G.729A",
+		"ilbc" => "iLBC",
+		"speex" => "SpeeX",
+		"g723" => "G.723.1",
+		"g726aal2" => "G.726 AAL2",
+		"adpcm" => "ADPCM",
+		"slin" => "16 bit Signed Linear PCM",
+		"lpc10" => "LPC10",
+		"g726" => "G.726 RFC3551",
+		"g722" => "G722"
+	);
+
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Audio Codecs"));?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Enabled"));?></strong>&nbsp;<i>(<?=spanify(gettext("drag-and-drop"));?>)</i>
@@ -121,8 +139,17 @@ function display_audio_codec_selector($enabled_codecs) {
 }
 
 function display_video_codec_selector($enabled_codecs) {
-	global $video_codecs;
-	
+	global $scripts;
+
+	$scripts['javascript_codec_selector'] = true;
+
+	$video_codecs = array(
+		"h261" => "H.261",
+		"h263" => "H.263",
+		"h263p" => "H.263+",
+		"h264" => "H.264"
+	);
+
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Video Codecs"));?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Enabled"));?></strong>&nbsp;<i>(<?=spanify(gettext("drag-and-drop"));?>)</i>
@@ -297,7 +324,7 @@ function display_natmode_selector($current_natmode, $colspan) {
 	</tr><?
 }
 
-function display_phone_ringlength_selector($current_ringlength, $colspan) {
+function display_phone_ringlength_selector($current_ringlength, $colspan=1) {
 	global $defaults;
 
 	$ringlengths = array(
@@ -383,29 +410,6 @@ function display_outgoing_callerid_options($current_callerid_source, $current_ca
 	</tr><?
 }
 
-function display_provider_access_selector($current_providers, $colspan) {
-	
-	$providers = pbx_get_providers();
-	if (!count($providers)) {
-		return;
-	}
-
-	?><tr>
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Block Providers"));?></td>
-		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
-
-		foreach ($providers as $provider) {
-			?><input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? 
-			if (in_array($provider['uniqid'], $current_providers)) echo "checked"; 
-			?>><?=$provider['name']?><br><?
-		}
-
-		?><br>
-		<span class="vexpl"><?=spanify(gettext("Block access to the providers selected above."));?></span>
-		</td>
-	</tr><?
-}
-
 function display_provider_dialpattern_editor($current_patterns, $colspan, $idprefix=false) {
 	
 	$n = count($current_patterns);
@@ -444,7 +448,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 	</tr><?
 }
 
-function display_channel_language_selector($current_language, $colspan) {
+function display_channel_language_selector($current_language, $colspan=1) {
 	global $prompt_languages;
 
 	// XXX : needs to be changed from always being English and instead
@@ -466,53 +470,16 @@ function display_channel_language_selector($current_language, $colspan) {
 	</tr><?
 }
 
-function display_notifications_editor($current_emailcallnotify, $current_emailcallnotifyaddress, $colspan) {
+function display_public_access_editor($current_publicaccess, $current_publicname, $colspan=1) {
+	global $scripts;
 
-	?><tr>
-		<td valign="top" class="vncell"><?=spanify(gettext("Notifications"));?></td>
-		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="emailcallnotify" type="hidden" value="disabled"><input name="emailcallnotify" id="emailcallnotify" type="checkbox" value="enabled">&nbsp;<?=spanify(gettext("notify me of missed calls via e-mail"));?>
-			<span name="emailnotify_wrapper" id="emailnotify_wrapper">
-				<br><?=spanify(gettext("address"));?>:&nbsp;<input name="emailcallnotifyaddress" id="emailcallnotifyaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_emailcallnotifyaddress);?>">
-		<br><br><span class="vexpl"><?=spanify(gettext("Note:"));?>
-		<?=spanify(gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work."));?></span>
-			</span>
-		</td>
-	</tr><?
-
-}
-
-function display_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress, $colspan) {
-
-	?><tr>
-		<td valign="top" class="vncell"><?=spanify(gettext("Voicemail"));?></td>
-		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="vmtoemail" type="hidden" value="disabled"><input name="vmtoemail" id="vmtoemail" type="checkbox" value="enabled" <?
-			if ($current_vmtoemail == "enabled") {
-				echo "checked";
-			}
-			?>>&nbsp;<?=spanify(gettext("enable voicemail to e-mail"));?>
-			<span name="vmtoemail_wrapper" id="vmtoemail_wrapper">
-				<br><?=spanify(gettext("address"));?>:&nbsp;<input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
-				<br><br><span class="vexpl"><?=spanify(gettext("Note:"));?>
-				<?=spanify(gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work."));?></span>
-			</span>
-		</td>
-	</tr><?
-
-}
-
-
-function display_public_access_editor($current_publicaccess, $current_publicname, $colspan) {
-	global $config;
-
-	$fullhostname = $config['system']['hostname'] . "." . $config['system']['domain'];
+	$scripts['javascript_public_access_editor'] = true;
 
 	?><tr> 
 		<td valign="top" class="vncell"><?=spanify(gettext("Public Access"));?></td>
 		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="publicaccess" type="hidden" value="block"><input name="publicaccess" id="publicaccess" type="checkbox" value="allow" <?
-			if ($current_publicaccess == "allow") {
+			<input name="publicaccess" id="publicaccess" type="checkbox" value="enabled" <?
+			if ($current_publicaccess == "enabled") {
 				echo "checked";
 			}
 			?>>&nbsp;<?=spanify(gettext("allow this number to be reachable over the Internet"));?>
@@ -522,6 +489,7 @@ function display_public_access_editor($current_publicaccess, $current_publicname
 			</span>
 		</td>
 	</tr><?
+
 }
 
 function display_call_and_busy_limit_selector($current_calllimit, $current_busylimit, $colspan) {
@@ -641,39 +609,6 @@ function display_manual_attributes_editor($current_manual, $colspan, $idprefix=f
 	</tr><?
 }
 
-function display_caller_id_field($current_callerid, $colspan) {
-
-	?><tr> 
-		<td valign="top" class="vncellreq"><?=spanify(gettext("Caller ID"));?></td>
-		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="callerid" type="text" class="formfld" id="callerid" size="40" value="<?=htmlspecialchars($current_callerid);?>"> 
-			<br><span class="vexpl"><?=spanify(gettext("Text to be displayed for Caller ID."));?></span>
-		</td>
-	</tr><?
-}
-
-function display_description_field($current_description, $colspan) {
-
-	?><tr> 
-		<td valign="top" class="vncell"><?=spanify(gettext("Description"));?></td>
-		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($current_description);?>"> 
-			<br><span class="vexpl"><?=spanify(gettext("You may enter a description here for your reference (not parsed)."));?></span>
-		</td>
-	</tr><?
-}
-
-function display_readback_number_field($current_readbacknumber, $colspan) {
-
-	?><tr> 
-		<td valign="top" class="vncell"><?=spanify(gettext("Public Number"));?></td>
-		<td colspan="<?=$colspan;?>" class="vtable">
-			<input name="readbacknumber" type="text" class="formfld" id="readbacknumber" size="40" value="<?=htmlspecialchars($current_readbacknumber);?>"> 
-			<br><span class="vexpl"><?=spanify(gettext("This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back."));?></span>
-		</td>
-	</tr><?
-}
-
 function display_capacity_bar($sizeinbytes, $usage) {
 
 	?><img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'><img src='bar_blue.gif' height='15' width='<?=$usage;?>' border='0' align='absmiddle'><img src='bar_gray.gif' height='15' width='<?=100-$usage;?>' border='0' align='absmiddle'><img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'>
@@ -751,7 +686,7 @@ function display_input_errors($input_errors) {
 					<ul><?
 
 					foreach ($input_errors as $ierr) {
-							echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
+							echo "<li>" . spanify(htmlspecialchars($ierr)) . "</li>\n";
 					}
 
 					?></ul>
@@ -805,6 +740,227 @@ function display_ports_tab_menu() {
 		</td>
 	</tr><?
 
+}
+
+function display_description_field($current_description, $colspan) {
+
+	?><tr> 
+		<td valign="top" class="vncell"><?=spanify(gettext("Description"));?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($current_description);?>"> 
+			<br><span class="vexpl"><?=spanify();?></span>
+		</td>
+	</tr><?
+}
+
+function display_readback_number_field($current_readbacknumber, $colspan) {
+
+	?><tr> 
+		<td valign="top" class="vncell"><?=spanify(gettext("Public Number"));?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="readbacknumber" type="text" class="formfld" id="readbacknumber" size="40" value="<?=htmlspecialchars($current_readbacknumber);?>"> 
+			<br><span class="vexpl"><?=spanify(gettext("This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back."));?></span>
+		</td>
+	</tr><?
+}
+
+
+
+
+
+function d_start($formname=false) {
+
+	if ($formname) {
+?>
+<form action="<?=$formname;?>" method="post" name="iform" id="iform">
+<?
+	}
+?>
+<table width="100%" border="0" cellpadding="6" cellspacing="0">
+<?
+}
+
+function d_header($title, $light=false) {
+	global $colspan;
+
+	$class = ($light) ? "listtopiclight" : "listtopic";
+?>
+	<tr>
+		<td colspan="<?=($colspan+1);?>" valign="top" class="<?=$class;?>"><?=spanify($title);?></td>
+	</tr>
+<?
+}
+
+function d_field($title, $name, $width, $help=false, $required=false) {
+	global $form, $colspan;
+
+	$class = ($required) ? "vncellreq" : "vncell";
+?>
+	<tr> 
+		<td width="20%" valign="top" class="<?=$class;?>"><?=spanify($title);?></td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
+			<input name="<?=$name;?>" type="text" class="formfld" id="<?=$name;?>" size="<?=$width;?>" value="<?=htmlspecialchars($form[$name]);?>"> 
+			<br><span class="vexpl"><?=spanify($help);?></span>
+		</td>
+	</tr>
+<?
+}
+
+function d_spacer() {
+	global $colspan;
+?>
+	<tr>
+		<td colspan="<?=($colspan+1);?>" class="list" height="12"></td>
+	</tr>
+<?
+}
+
+function d_submit() {
+	global $form, $carryovers, $colspan;
+?>
+	<tr> 
+		<td valign="top">&nbsp;</td>
+		<td colspan="<?=$colspan;?>">
+<?
+		if (is_array($carryovers)) {
+			foreach ($carryovers as $co) {
+?>
+			<input name="<?=$co;?>" id="<?=$co;?>" type="hidden" value="<?=$form[$co];?>">
+<?
+			}
+		}
+?>
+			<input name="Submit" id="submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+		</td>
+	</tr>
+</table>
+</form>
+<?
+d_scripts();
+}
+
+function d_scripts() {
+	global $scripts;
+
+	$scripts = array_keys($scripts);
+?>
+<script type="text/JavaScript">
+<!--
+<?
+	foreach ($scripts as $script) {
+		$script("functions");
+	}
+?>
+	jQuery(document).ready(function(){
+<?
+		foreach ($scripts as $script) {
+			$script("ready");
+		}
+?>
+	});
+//-->
+</script>
+<?
+}
+
+function d_hwport_selector($techfilter=null, $typefilter=null) {
+	global $colspan;
+
+	$ports = dahdi_get_ports($techfilter, $typefilter);
+
+	if ($techfilter == "analog" && $typefilter == "fxs") {
+		$help = gettext("The hardware port this phone is connected to.");
+	}
+?>
+	<tr>
+		<td valign="top" class="vncell"><?=spanify(gettext("Hardware Port"));?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<select name="port" class="formfld" id="port"><?
+
+			
+			foreach ($ports as $port) {
+				?><option value="<?=$port['uniqid'];?>" <?
+				if ($port['uniqid'] == $form['port']) {
+					echo "selected";
+				}
+				?>><?=$port['name'];?></option><?
+			}
+			
+			?></select>
+			<br><span class="vexpl"><?=spanify($help);?></span>
+		</td>
+	</tr>
+<?
+}
+
+function d_notifications_editor($current_emailcallnotify, $current_emailcallnotifyaddress) {
+	global $scripts, $colspan;
+
+	$scripts['javascript_notifications_editor'] = true;
+?>
+	<tr>
+		<td valign="top" class="vncell"><?=spanify(gettext("Notifications"));?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="emailcallnotify" id="emailcallnotify" type="checkbox" value="enabled" <?
+			if ($current_emailcallnotify == "enabled") {
+				echo "checked";
+			}?>>&nbsp;<?=spanify(gettext("notify me of missed calls via e-mail"));?>
+			<span name="emailnotify_wrapper" id="emailnotify_wrapper">
+			<br><?=spanify(gettext("address"));?>:&nbsp;<input name="emailcallnotifyaddress" id="emailcallnotifyaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_emailcallnotifyaddress);?>">
+			<br>
+			<br><span class="vexpl"><?=spanify(gettext("Note:")) . " " .
+				spanify(gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work."));?></span>
+			</span>
+		</td>
+	</tr>
+<?
+}
+
+function d_provider_access_selector($current_providers) {
+	global $colspan;
+
+	$providers = pbx_get_providers();
+	if (!count($providers)) {
+		return;
+	}
+
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Block Providers"));?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
+
+		foreach ($providers as $provider) {
+			?><input name="<?=$provider['uniqid']?>" id="<?=$provider['uniqid']?>" type="checkbox" value="yes" <? 
+			if (in_array($provider['uniqid'], $current_providers)) echo "checked"; 
+			?>><?=$provider['name']?><br><?
+		}
+
+		?><br>
+		<span class="vexpl"><?=spanify(gettext("Block access to the providers selected above."));?></span>
+		</td>
+	</tr><?
+}
+
+function d_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress) {
+	global $scripts, $colspan;
+
+	$scripts['javascript_voicemail_editor'] = true;
+
+	?><tr>
+		<td valign="top" class="vncell"><?=spanify(gettext("Voicemail"));?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<input name="vmtoemail" id="vmtoemail" type="checkbox" value="enabled" <?
+			if ($current_vmtoemail == "enabled") {
+				echo "checked";
+			}
+			?>>&nbsp;<?=spanify(gettext("enable voicemail to e-mail"));?>
+			<span name="vmtoemail_wrapper" id="vmtoemail_wrapper">
+				<br><?=spanify(gettext("address"));?>:&nbsp;<input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
+				<br>
+				<br><span class="vexpl"><?=spanify(gettext("Note:")) . " " .
+					spanify(gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work."));?></span>
+			</span>
+		</td>
+	</tr><?
 }
 
 ?>

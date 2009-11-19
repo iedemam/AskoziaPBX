@@ -37,7 +37,7 @@ if (isset($_POST['uniqid'])) {
 }
 
 $carryovers = array(
-	"location", "card", "technology", "type", "echo-module", "basechannel", "uniqid"
+	"location", "card", "technology", "type", "basechannel", "uniqid"
 );
 
 

@@ -406,4 +406,86 @@ function verify_input($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	}
 }
 
+
+
+
+
+
+
+
+function v_cleanliness($post, $errors) {
+	foreach ($post as $pn => $pd) {
+		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
+			$errors[] = sprintf(gettext("The field '%s' contains invalid characters."), $pn);
+		}
+	}
+}
+
+function v_extension($element, $post, $errors) {
+	if (!strlen($post['extension'])) {
+		$errors[] = gettext("Missing extension number.");
+	} else if (preg_match("/[^0-9]/", $post['extension'])) {
+		$errors[] = gettext("Invalid extension number. Use only numerals.");
+	}
+	$element['extension'] = $post['extension'];
+}
+
+function v_callerid($element, $post, $errors) {
+	if (!strlen($post['callerid'])) { //|| preg_match("/^[a-z0-9]+(\s{1}[a-z0-9]|[a-z0-9])+$/i", $post['callerid'])) {
+		$errors[] = gettext("Missing caller id.");
+	}
+	$element['callerid'] = $post['callerid'];
+}
+
+function v_optional($field, $element, $post) {
+	if (strlen($post[$field])) {
+		$element[$field] = $post[$field];
+	}
+}
+
+function v_public_access_editor($element, $post, $errors) {
+	if ($post['publicaccess'] == 'enabled' && !v_is_publicname($post['publicname'])) {
+		$errors[] = gettext("Invalid public access alias.");
+	}
+	$element['publicaccess'] = v_strip($post['publicaccess']);
+	$element['publicname'] = v_strip($post['publicname']);
+}
+
+function v_is_publicname($s) {
+	return !preg_match("/^[a-zA-Z0-9\-\(\)\.]+$/", $s);
+}
+
+function v_notifications_editor($element, $post, $errors) {
+	if ($post['emailcallnotify'] == 'enabled' && !v_is_email($post['emailcallnotifyaddress'])) {
+		$errors[] = gettext("E-Mail notifications enabled but the e-mail address is invalid or missing.");
+	}
+	$element['emailcallnotify'] = v_strip($post['emailcallnotify']);
+	$element['emailcallnotifyaddress'] = v_strip($post['emailcallnotifyaddress']);
+}
+
+function v_voicemail_editor($element, $post, $errors) {
+	if ($post['vmtoemail'] == 'enabled' && !v_is_email($post['vmtoemailaddress'])) {
+		$errors[] = gettext("Voicemail to e-mail enabled but the e-mail address is invalid or missing.");
+	}
+	$element['vmtoemail'] = v_strip($post['vmtoemail']);
+	$element['vmtoemailaddress'] = v_strip($post['vmtoemailaddress']);
+}
+
+function v_is_email($s) {
+	return eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,6}$", $s);
+}
+
+function v_provider_access_selector($element, $post) {
+	$all_providers = pbx_get_providers();
+	foreach ($all_providers as $provider) {
+		if ($post[$provider['uniqid']] == true) {
+			$element['provider'][] = $provider['uniqid'];
+		}
+	}
+}
+
+function v_strip($s) {
+	return (strlen($s)) ? $s : false;
+}
+
 ?>

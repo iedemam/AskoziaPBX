@@ -229,10 +229,6 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 <head>
 <title><?=genhtmltitle($pgtitle);?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<?php if ($needs_scriptaculous) :?>
-<script src="prototype.js" type="text/javascript"></script>
-<script src="scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
-<?php endif; ?>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
@@ -306,4 +302,14 @@ if (!$pgtitle_omit) {
 		?></div><?
 	}
 }
+
+if ($input_errors) {
+	display_input_errors($input_errors);
+}
+if ($savemsg) {
+	display_info_box($savemsg);
+}
+
+$scripts = array();
+
 ?>

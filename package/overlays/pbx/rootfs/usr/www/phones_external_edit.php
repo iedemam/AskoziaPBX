@@ -29,11 +29,17 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = false;
 
 require("guiconfig.inc");
-
 $pgtitle = array(gettext("Phones"), gettext("Edit External Line"));
+
+
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
+}
+$carryovers[] = "uniqid";
+
 
 /* grab and sort the isdn phones in our config */
 if (!is_array($config['external']['phone']))
@@ -112,83 +118,78 @@ if ($_POST) {
 		exit;
 	}
 }
+
+
+include("fbegin.inc");
+
+$colspan = 1;
+$form = $pconfig;
+
+d_start("phones_external_edit.php");
+
+
+	// General
+	d_header(gettext("General"));
+
+	d_field(gettext("Number"), "extension", 20,
+		gettext("The number used to dial this phone."), "required");
+
+	d_field(gettext("Name"), "name", 40,
+		gettext("Descriptive name for this phone."), "required");
+
+	display_channel_language_selector($form['language']);
+	
+	display_phone_ringlength_selector($form['ringlength']);
+	
+	d_field(gettext("Description"), "descr", 40,
+		gettext("You may enter a description here for your reference (not parsed)."));
+	d_spacer();
+
+
+	// Routing
+	d_header(gettext("Phone Connectivity"));
 ?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
-<!--
-	<?=javascript_public_access_editor("functions");?>
-	<?=javascript_notifications_editor("functions");?>
-	<?=javascript_voicemail_editor("functions");?>
+	<tr> 
+		<td valign="top" class="vncellreq"><?=gettext("Provider");?></td>
+		<td class="vtable">
+			<select name="dialprovider" class="formfld" id="dialprovider">
+				<option></option>
+				<? $a_providers = pbx_get_providers(); ?>
+				<? foreach ($a_providers as $provider): ?>
+				<option value="<?=$provider['uniqid'];?>" <?php 
+				if ($provider['uniqid'] == $form['dialprovider']) 
+					echo "selected"; ?>><?=htmlspecialchars($provider['name']); ?></option>
+				<? endforeach; ?>
+				<option value="sipuri" <? if ($form['dialprovider'] == "sipuri") echo "selected"; ?>>SIP URI</option>
+				<option value="iaxuri" <? if ($form['dialprovider'] == "iaxuri") echo "selected"; ?>>IAX URI</option>
+			</select>
+			<br><span class="vexpl"><?=gettext("Outgoing provider used to reach this telephone.");?></span>
+		</td>
+	</tr>
+<?
+	d_field(gettext("Dialstring"), "dialstring", 40,
+		gettext("Number or string to be dialed to reach this telephone."), "required");
+	d_spacer();
 
-	jQuery(document).ready(function(){
 
-		<?=javascript_public_access_editor("ready");?>
-		<?=javascript_notifications_editor("ready");?>
-		<?=javascript_voicemail_editor("ready");?>
-		<?=javascript_advanced_settings("ready");?>
+	// Call Notifications & Voicemail
+	d_header(gettext("Call Notifications & Voicemail"));
 
-	});
+	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
 
-//-->
-</script>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-	<form action="phones_external_edit.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			<tr> 
-				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
-				<td width="80%" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl"><?=gettext("The internal extension used to dial this phone.");?></span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq"><?=gettext("Name");?></td>
-				<td class="vtable">
-					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl"><?=gettext("Descriptive name for this phone.");?></span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq"><?=gettext("Dialstring");?></td>
-				<td class="vtable">
-					<input name="dialstring" type="text" class="formfld" id="dialstring" size="40" value="<?=htmlspecialchars($pconfig['dialstring']);?>"> 
-					<br><span class="vexpl"><?=gettext("Number or string to be dialed to reach this telephone. This will be dialed directly; outgoing pattern matching rules do not apply");?></span>
-				</td>
-			</tr>
-			<tr> 
-				<td valign="top" class="vncellreq"><?=gettext("Provider");?></td>
-				<td class="vtable">
-					<select name="dialprovider" class="formfld" id="dialprovider">
-						<option></option>
-						<? $a_providers = pbx_get_providers(); ?>
-						<? foreach ($a_providers as $provider): ?>
-						<option value="<?=$provider['uniqid'];?>" <?php 
-						if ($provider['uniqid'] == $pconfig['dialprovider']) 
-							echo "selected"; ?>><?=htmlspecialchars($provider['name']); ?></option>
-						<? endforeach; ?>
-						<option value="sipuri" <? if ($pconfig['dialprovider'] == "sipuri") echo "selected"; ?>>SIP URI</option>
-						<option value="iaxuri" <? if ($pconfig['dialprovider'] == "iaxuri") echo "selected"; ?>>IAX URI</option>
-					</select>
-					<br><span class="vexpl"><?=gettext("Outgoing provider to be used to reach this telephone.");?></span>
-				</td>
-			</tr>
-			<? display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 1); ?>
-			<? display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 1); ?>
-			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
-			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_description_field($pconfig['descr'], 1); ?>
-			<? display_advanced_settings_begin(1); ?>
-			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
-			<? display_advanced_settings_end(); ?>
-			<tr> 
-				<td valign="top">&nbsp;</td>
-				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-					<?php if (isset($id) && $a_extphones[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>"> 
-					<?php endif; ?>
-				</td>
-			</tr>
-		</table>
-	</form>
-<?php include("fend.inc"); ?>
+	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+?>
+	<tr> 
+		<td valign="top">&nbsp;</td>
+		<td>
+			<input name="Submit" id="submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+			<?php if (isset($id) && $a_extphones[$id]): ?>
+			<input name="id" type="hidden" value="<?=$id;?>"> 
+			<?php endif; ?>
+		</td>
+	</tr>
+</table>
+</form>
+<?
+d_scripts();
+include("fend.inc");

@@ -136,7 +136,7 @@ include("fbegin.inc");
 				</td>
 			</tr>
 			<? display_application_logic_editor($pconfig['app-command'], 1); ?>
-			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname']); ?>
 			<? display_description_field($pconfig['descr'], 1); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>

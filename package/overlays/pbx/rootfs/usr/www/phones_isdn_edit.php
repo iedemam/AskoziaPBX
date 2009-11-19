@@ -124,85 +124,51 @@ if ($_POST) {
 	}
 }
 
+
+$colspan = 1;
 include("fbegin.inc");
 
-?><script type="text/JavaScript">
-<!--
-	<?=javascript_public_access_editor("functions");?>
-	<?=javascript_notifications_editor("functions");?>
-	<?=javascript_voicemail_editor("functions");?>
+$form = $pconfig; //$form = ($uniqid) ? isdn_get_phone($uniqid) : isdn_generate_default_phone();
+d_start("phones_isdn_edit.php");
 
-	jQuery(document).ready(function(){
 
-		<?=javascript_public_access_editor("ready");?>
-		<?=javascript_notifications_editor("ready");?>
-		<?=javascript_voicemail_editor("ready");?>
-		<?=javascript_advanced_settings("ready");?>
+	// General
+	d_header(gettext("General"));
 
-	});
+	d_field(gettext("Number"), "extension", 20,
+		gettext("The number used to dial this phone."), "required");
 
-//-->
-</script><?
+	d_field(gettext("Caller ID"), "callerid", 40,
+		gettext("Text to be displayed for Caller ID."), "required");
 
-if ($input_errors) display_input_errors($input_errors);
+	display_channel_language_selector($form['language']);
 
-$isdn_interfaces = isdn_get_nt_interfaces();
+	display_phone_ringlength_selector($form['ringlength']);
 
-if (count($isdn_interfaces) == 0) {
+	//d_hwport_selector("isdn", "asdf");
 
-	$page_link = '<a href="ports_isdn.php">' . gettext("Ports") . ": " . gettext("ISDN") . '</a>';
-	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br> To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
-	display_info_box($interfaces_warning, "keep");
-	
-} else {
+	d_field(gettext("Description"), "descr", 40,
+		gettext("You may enter a description here for your reference (not parsed)."));
+	d_spacer();
 
-	?><form action="phones_isdn_edit.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			<tr> 
-				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
-				<td width="80%" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>">
-					<br><span class="vexpl"><?=gettext("This phone's number (MSN).");?></span>
-				</td>
-			</tr>
-			<? display_caller_id_field($pconfig['callerid'], 1); ?>
-			<? display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 1); ?>
-			<? display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 1); ?>
-			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
-			<tr> 
-				<td valign="top" class="vncell"><?=gettext("ISDN Interface");?></td>
-				<td class="vtable">
-					<select name="interface" class="formfld" id="interface"><?
 
-					foreach ($isdn_interfaces as $interface) {
-						?><option value="<?=$interface['unit'];?>" <?
-						if ($interface['unit'] == $pconfig['interface']) {
-							echo "selected";
-						}
-						?>><?=$interface['name'];?></option><?
-					}
+	// Security
+	d_header(gettext("Security"));
 
-					?></select>
-				</td>
-			</tr>
-			<? display_channel_language_selector($pconfig['language'], 1); ?>
-			<? display_provider_access_selector($pconfig['provider'], 1); ?>
-			<? display_description_field($pconfig['descr'], 1); ?>
-			<? display_advanced_settings_begin(1); ?>
-			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
-			<? display_advanced_settings_end(); ?>
-			<tr> 
-				<td valign="top">&nbsp;</td>
-				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-					<?php if (isset($id) && $a_isdnphones[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>"> 
-					<?php endif; ?>
-				</td>
-			</tr>
-		</table>
-	</form><?
+	display_public_access_editor($form['publicaccess'], $form['publicname']);
 
-}
+	d_provider_access_selector($form['provider']);
+	d_spacer();
 
+
+	// Call Notifications & Voicemail
+	d_header(gettext("Call Notifications & Voicemail"));
+
+	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
+
+	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+
+
+d_submit();
 include("fend.inc");
+?>

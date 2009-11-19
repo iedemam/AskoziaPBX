@@ -101,29 +101,6 @@ $medias = array("auto" => gettext("autoselect"),
 1048576 (1 << 20) (0x100000)  video      h263p   (H.263+ Video)
 2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
 
-$audio_codecs = array(
-	"ulaw" => "G.711 u-law",
-	"alaw" => "G.711 A-law",
-	"gsm" => "GSM",
-	"g729" => "G.729A",
-	"ilbc" => "iLBC",
-	"speex" => "SpeeX",
-	"g723" => "G.723.1",
-	"g726aal2" => "G.726 AAL2",
-	"adpcm" => "ADPCM",
-	"slin" => "16 bit Signed Linear PCM",
-	"lpc10" => "LPC10",
-	"g726" => "G.726 RFC3551",
-	"g722" => "G722"
-);
-
-$video_codecs = array(
-	"h261" => "H.261",
-	"h263" => "H.263",
-	"h263p" => "H.263+",
-	"h264" => "H.264"
-);
-
 $topologies = array(
 	"public" => gettext("Public IP address"),
 	"natstatic" => gettext("NAT + static public IP"),

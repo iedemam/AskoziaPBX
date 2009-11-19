@@ -57,7 +57,6 @@ $g = array(
 
 $defaults = array();
 
-$defaults['dahdi']['echo-module'] = 'mg2';
 $defaults['dahdi']['echo-taps'] = 128;
 $defaults['dahdi']['rxgain'] = 0.0;
 $defaults['dahdi']['txgain'] = 0.0;
@@ -72,7 +71,7 @@ $defaults['accounts']['codec'] = array('ulaw');
 $defaults['accounts']['phones']['ringlength'] = "indefinitely";
 $defaults['accounts']['phones']['default-extension-start'] = 101;
 $defaults['accounts']['phones']['callerid'] = "Default Extension";
-$defaults['accounts']['phones']['publicaccess'] = "allow";
+$defaults['accounts']['phones']['publicaccess'] = "enabled";
 
 //
 $defaults['featuremap'] = array();

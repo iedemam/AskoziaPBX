@@ -145,7 +145,7 @@ if ($_POST) {
 					<br><span class="vexpl"><?=gettext("Optional PIN needed to access this conference room.");?></span>
 				</td>
 			</tr>
-			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 1); ?>
+			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname']); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>

@@ -29,11 +29,15 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = false;
 
 require("guiconfig.inc");
-
 $pgtitle = array(gettext("Phones"), gettext("Edit IAX Account"));
+
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
+}
+$carryovers[] = "uniqid";
 
 
 /* grab and sort the iax phones in our config */
@@ -158,8 +162,8 @@ if ($_POST) {
 		exit;
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
+$colspan = 2;
+include("fbegin.inc"); ?>
 <script type="text/JavaScript">
 <!--
 	<?=javascript_public_access_editor("functions");?>
@@ -180,59 +184,99 @@ if ($_POST) {
 
 //-->
 </script>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-	<form action="phones_iax_edit.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			<tr> 
-				<td width="20%" valign="top" class="vncellreq"><?=gettext("Extension");?></td>
-				<td width="80%" colspan="2" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
-					<br><span class="vexpl"><?=gettext("The phone number assigned to this account. Also this account's username.");?></span>
-				</td>
-			</tr>
-			<? display_caller_id_field($pconfig['callerid'], 2); ?>
-			<tr>
-				<td valign="top" class="vncell"><?=gettext("Password");?></td>
-				<td colspan="2" class="vtable">
-					<select name="authentication" class="formfld" id="authentication">
-						<option value="plaintext" <? 
-							if ($pconfig['authentication'] == "plaintext") 
-								echo "selected"; 
-							?>><?=gettext("plaintext");?></option>
-						<option value="md5" <? 
-							if ($pconfig['authentication'] == "md5") 
-								echo "selected"; 
-							?>><?=gettext("md5");?></option>
-					</select>&nbsp;
-					<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-					<? display_passwd_generation(); ?>
-                    <br><span class="vexpl"><?=gettext("This account's password and authentication scheme.");?></span>
-				</td>
-			</tr>
-			<? display_notifications_editor($pconfig['emailcallnotify'], $pconfig['emailcallnotifyaddress'], 2); ?>
-			<? display_voicemail_editor($pconfig['vmtoemail'], $pconfig['vmtoemailaddress'], 2); ?>
-			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 2); ?>
-			<? display_channel_language_selector($pconfig['language'], 2); ?>
-			<? display_provider_access_selector($pconfig['provider'], 2); ?>
-			<? display_audio_codec_selector($pconfig['codec']); ?>
-			<? display_video_codec_selector($pconfig['codec']); ?>
-			<? display_description_field($pconfig['descr'], 2); ?>
-			<? display_advanced_settings_begin(2); ?>
-			<? display_phone_ringlength_selector($pconfig['ringlength'], 1); ?>
-			<? display_qualify_options($pconfig['qualify'], 1); ?>
-			<? display_manual_attributes_editor($pconfig['manual-attribute'], 1); ?>
-			<? display_advanced_settings_end(); ?>
-			<tr> 
-				<td valign="top">&nbsp;</td>
-				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
-					<input id="a_codecs" name="a_codecs" type="hidden" value="">
-					<input id="v_codecs" name="v_codecs" type="hidden" value="">
-					<?php if (isset($id) && $a_iaxphones[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>"> 
-					<?php endif; ?>
-				</td>
-			</tr>
-		</table>
-	</form>
-<?php include("fend.inc"); ?>
+<?
+
+$colspan = 2;
+$form = $pconfig;
+
+d_start("phones_iax_edit.php");
+
+
+	// General
+	d_header(gettext("General"));
+
+	d_field(gettext("Number"), "extension", 20,
+		gettext("The number used to dial this phone.") . " " .
+		gettext("Use this number as your username."), "required");
+
+	d_field(gettext("Caller ID"), "callerid", 40,
+		gettext("Text to be displayed for Caller ID."), "required");
+
+	display_channel_language_selector($form['language'], 2);
+
+	display_phone_ringlength_selector($form['ringlength'], 2);
+
+	d_field(gettext("Description"), "descr", 40,
+		gettext("You may enter a description here for your reference (not parsed)."));
+	d_spacer();
+
+
+	// Security
+	d_header(gettext("Security"));
+
+	?><tr>
+		<td valign="top" class="vncell"><?=gettext("Password");?></td>
+		<td colspan="2" class="vtable">
+			<select name="authentication" class="formfld" id="authentication">
+				<option value="plaintext" <? 
+					if ($form['authentication'] == "plaintext") 
+						echo "selected"; 
+					?>><?=gettext("plaintext");?></option>
+				<option value="md5" <? 
+					if ($form['authentication'] == "md5") 
+						echo "selected"; 
+					?>><?=gettext("md5");?></option>
+			</select>&nbsp;
+			<input name="secret" type="password" class="formfld" id="secret" size="40" value="<?=htmlspecialchars($form['secret']);?>"> 
+			<? display_passwd_generation(); ?>
+			<br><span class="vexpl"><?=gettext("This account's password and authentication scheme.");?></span>
+		</td>
+	</tr><?
+
+	display_public_access_editor($form['publicaccess'], $form['publicname'], 2);
+
+	d_provider_access_selector($form['provider']);
+	d_spacer();
+
+
+	// Call Notifications & Voicemail
+	d_header(gettext("Call Notifications & Voicemail"));
+
+	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
+
+	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+	d_spacer();
+
+
+	// Codecs
+	d_header(gettext("Codecs"));
+
+	display_audio_codec_selector($form['codec']);
+
+	display_video_codec_selector($form['codec']);
+	d_spacer();
+
+
+	// Advanced IAX Options
+	d_header(gettext("Advanced IAX Options"));
+
+	display_qualify_options($form['qualify'], 2);
+
+
+?>
+	<tr>
+		<td valign="top">&nbsp;</td>
+		<td>
+			<input name="Submit" id="submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
+			<input id="a_codecs" name="a_codecs" type="hidden" value="">
+			<input id="v_codecs" name="v_codecs" type="hidden" value="">
+			<?php if (isset($id) && $a_iaxphones[$id]): ?>
+			<input name="id" type="hidden" value="<?=$id;?>"> 
+			<?php endif; ?>
+		</td>
+	</tr>
+</table>
+</form>
+<?
+d_scripts();
+include("fend.inc");

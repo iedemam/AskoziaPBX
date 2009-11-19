@@ -29,8 +29,6 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = false; 
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("Analog"));
