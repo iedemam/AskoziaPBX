@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -66,6 +66,27 @@ msgstr "Pole '%s' zawiera nieprawidłowe znaki."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Pole '%s' jest wymagane."
+
+msgid "Missing extension number."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid extension number. Use only numerals."
+msgstr "Należy podać poprawny numer wewnętrzny."
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
 
 msgid "Subject"
 msgstr ""
@@ -269,13 +290,6 @@ msgstr "Wysyłaj łańcuch zdefiniowany powyżej&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr ""
 
-#, fuzzy
-msgid "Block Providers"
-msgstr "Dostawcy"
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr "Wzorce wybierania"
 
@@ -307,28 +321,6 @@ msgstr "Język"
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "Zapowiedzi głosowe będą odgrywane w wybranym dla tego konta języku."
-
-#, fuzzy
-msgid "Notifications"
-msgstr "Lokalizacja"
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-#, fuzzy
-msgid "address"
-msgstr "Adres IP"
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr "Poczta głosowa"
-
-msgid "enable voicemail to e-mail"
-msgstr ""
 
 #, fuzzy
 msgid "Public Access"
@@ -415,27 +407,6 @@ msgid ""
 "security holes."
 msgstr ""
 
-msgid "Caller ID"
-msgstr "Caller ID"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Tekst wyświetlany jako Caller ID."
-
-msgid "Description"
-msgstr "Opis"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Można dodać tutaj opis dla własnej informacji (nie jest parsowany)."
-
-msgid "Public Number"
-msgstr "Publiczny numer"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-
 msgid "of"
 msgstr "z"
 
@@ -475,6 +446,57 @@ msgstr "Sieć"
 
 msgid "Analog"
 msgstr "Analogowe"
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Public Number"
+msgstr "Publiczny numer"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Notifications"
+msgstr "Lokalizacja"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "Adres IP"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+#, fuzzy
+msgid "Block Providers"
+msgstr "Dostawcy"
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "Poczta głosowa"
+
+msgid "enable voicemail to e-mail"
+msgstr ""
 
 msgid "Dialplan"
 msgstr "Dialplan"
@@ -1178,6 +1200,9 @@ msgstr "Zewnętrzne"
 msgid "Extension"
 msgstr "Numer wewnętrzny"
 
+msgid "Caller ID"
+msgstr "Caller ID"
+
 msgid "click to enable phone"
 msgstr "kliknij aby włączyć ten telefon"
 
@@ -1291,9 +1316,6 @@ msgstr "Wklej prywatny klucz RSA w formacie PEM."
 
 msgid "Generate self-signed certificate"
 msgstr "Wygeneruj certyfikat"
-
-msgid "Save"
-msgstr "Zapisz"
 
 msgid "Miscellaneous"
 msgstr "Różne"
@@ -2150,22 +2172,15 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr "Edytuj Analogowe"
 
-msgid "A valid Caller ID must be specified."
-msgstr "Należy podać poprawny Caller ID."
-
-msgid "A phone with this extension already exists."
-msgstr "Telefon z tym numerem wewnętrznym już istnieje."
-
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
-#, fuzzy
-msgid "Hardware Port"
-msgstr "Firmware"
+msgid "Text to be displayed for Caller ID."
+msgstr "Tekst wyświetlany jako Caller ID."
 
-msgid "The hardware port this phone is connected to."
-msgstr ""
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Można dodać tutaj opis dla własnej informacji (nie jest parsowany)."
 
 msgid "Security"
 msgstr ""
@@ -2177,37 +2192,40 @@ msgstr "Lokalizacja"
 msgid "Edit External Line"
 msgstr "Edytuj linie Zewnętrzną"
 
-msgid "The internal extension used to dial this phone."
-msgstr ""
-
 msgid "Descriptive name for this phone."
 msgstr "Opisowa nazwa telefonu."
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Phone Connectivity"
 msgstr ""
 
 msgid "Provider"
 msgstr "Dostawca"
 
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
+#, fuzzy
+msgid "Outgoing provider used to reach this telephone."
+msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
+
+#, fuzzy
+msgid "Number or string to be dialed to reach this telephone."
+msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
 msgid "Edit IAX Account"
 msgstr "Edytuj konto IAX"
 
+msgid "A valid Caller ID must be specified."
+msgstr "Należy podać poprawny Caller ID."
+
 msgid "A valid secret must be specified."
 msgstr "Należy podać poprawne hasło."
+
+msgid "A phone with this extension already exists."
+msgstr "Telefon z tym numerem wewnętrznym już istnieje."
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
+msgid "Use this number as your username."
 msgstr ""
-"Numer telefonu przypisany do tego konta. Również nazwa użytkownika tego "
-"konta."
 
 msgid "plaintext"
 msgstr "zwykły tekst"
@@ -2218,18 +2236,16 @@ msgstr "md5"
 msgid "This account's password and authentication scheme."
 msgstr ""
 
+#, fuzzy
+msgid "Codecs"
+msgstr "Kodeki Audio"
+
+#, fuzzy
+msgid "Advanced IAX Options"
+msgstr "Ustawienia zaawansowane"
+
 msgid "Edit ISDN Line"
 msgstr "Edytuj linie ISDN"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "This phone's number (MSN)."
-msgstr ""
 
 msgid "Edit SIP Account"
 msgstr "Edytuj Konto SIP"
@@ -2242,6 +2258,10 @@ msgstr ""
 
 msgid "This account's password."
 msgstr "Hasło do tego konta."
+
+#, fuzzy
+msgid "Advanced SIP Options"
+msgstr "Ustawienia zaawansowane"
 
 msgid "Dialplan Element Library"
 msgstr "Biblioteka elementów dialplanu"
@@ -2624,6 +2644,13 @@ msgstr "Wzorzec wybierania \"%s\" jest nieprawidłowy. %s"
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr "Wzorzec numeru przychodzącego \"%s\" jest nieprawidłowy. %s"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid "Descriptive name for this provider."
 msgstr "Opisowa nazwa dostawcy."
@@ -3249,6 +3276,12 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid ""
+#~ "The phone number assigned to this account. Also this account's username."
+#~ msgstr ""
+#~ "Numer telefonu przypisany do tego konta. Również nazwa użytkownika tego "
+#~ "konta."
 
 #~ msgid "There are currently no phones defined."
 #~ msgstr "Nie zdefiniowano telefonów."

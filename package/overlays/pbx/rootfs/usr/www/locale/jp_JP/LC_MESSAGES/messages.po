@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -63,6 +63,27 @@ msgstr "'%s' フィールドに無効な文字が含まれています"
 #, php-format
 msgid "The field '%s' is required."
 msgstr "'%s' フィールドは必須です"
+
+msgid "Missing extension number."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid extension number. Use only numerals."
+msgstr "有効な内線番号を入力する必要があります"
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
 
 msgid "Subject"
 msgstr "件名"
@@ -288,13 +309,6 @@ msgstr "上記で定義された文字列を送信します&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "電話機のCaller IDを送信する"
 
-#, fuzzy
-msgid "Block Providers"
-msgstr "接続回線"
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr "ダイヤルパターン"
 
@@ -347,29 +361,6 @@ msgstr "言語"
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "このアカウントで使用する音声ファイルの言語を選択して下さい"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "場所"
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-#, fuzzy
-msgid "address"
-msgstr "IPアドレス"
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr "ボイスメール"
-
-#, fuzzy
-msgid "enable voicemail to e-mail"
-msgstr "ボイスメールの受信者名"
 
 #, fuzzy
 msgid "Public Access"
@@ -457,30 +448,6 @@ msgstr ""
 "項目には何もすべきではありません。不適切な値はシステムの機能を停止させ、更に/"
 "もしくはセキュリティーホールを空けてしまいます"
 
-msgid "Caller ID"
-msgstr "発信者ID"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "表示させる発信者IDを入力して下さい"
-
-msgid "Description"
-msgstr "説明"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "参考の為にメモを入れる事が出来ます"
-
-msgid "Public Number"
-msgstr "パブリックナンバー"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"この外部番号は、発信者がヴォイスメールに到達した際に、復唱されます;デフォルト"
-"では、ユーザー名が数字だった場合。もし違う場合には、この呼がルーティングされ"
-"た内部内線番号が復唱されます"
-
 msgid "of"
 msgstr "の"
 
@@ -520,6 +487,61 @@ msgstr "ネットワーク"
 
 msgid "Analog"
 msgstr "アナログ"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Public Number"
+msgstr "パブリックナンバー"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"この外部番号は、発信者がヴォイスメールに到達した際に、復唱されます;デフォルト"
+"では、ユーザー名が数字だった場合。もし違う場合には、この呼がルーティングされ"
+"た内部内線番号が復唱されます"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "ファームウェア"
+
+#, fuzzy
+msgid "Notifications"
+msgstr "場所"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IPアドレス"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+#, fuzzy
+msgid "Block Providers"
+msgstr "接続回線"
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "ボイスメール"
+
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "ボイスメールの受信者名"
 
 msgid "Dialplan"
 msgstr "ダイヤルプラン"
@@ -1218,6 +1240,9 @@ msgstr "外部"
 msgid "Extension"
 msgstr "内線"
 
+msgid "Caller ID"
+msgstr "発信者ID"
+
 msgid "click to enable phone"
 msgstr "電話機を有効にします"
 
@@ -1334,9 +1359,6 @@ msgstr "PEMフォーマットのRSAプライベート鍵を、ここにペース
 
 msgid "Generate self-signed certificate"
 msgstr "自己署名証明書の作成"
-
-msgid "Save"
-msgstr "保存"
 
 msgid "Miscellaneous"
 msgstr "その他"
@@ -2215,22 +2237,15 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr "アナログの編集"
 
-msgid "A valid Caller ID must be specified."
-msgstr "有効なCaller IDを指定する必要があります"
-
-msgid "A phone with this extension already exists."
-msgstr "この内線番号の電話は、既に存在しています"
-
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Internal extensionは、この電話にダイヤル可能"
 
-#, fuzzy
-msgid "Hardware Port"
-msgstr "ファームウェア"
+msgid "Text to be displayed for Caller ID."
+msgstr "表示させる発信者IDを入力して下さい"
 
-msgid "The hardware port this phone is connected to."
-msgstr ""
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "参考の為にメモを入れる事が出来ます"
 
 #, fuzzy
 msgid "Security"
@@ -2243,40 +2258,41 @@ msgstr "場所"
 msgid "Edit External Line"
 msgstr "外線の編集"
 
-msgid "The internal extension used to dial this phone."
-msgstr "Internal extensionは、この電話にダイヤル可能"
-
 msgid "Descriptive name for this phone."
 msgstr "この電話の判り易い名前"
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Phone Connectivity"
 msgstr ""
-"この電話機に到達する事が出来る番号もしくは文字列。これは直接ダイヤル出来ます;"
-"外線発信パターンのルールは、適用されません"
 
 msgid "Provider"
 msgstr "プロバイダー(もしくは電話会社)"
 
-msgid "Outgoing provider to be used to reach this telephone."
+#, fuzzy
+msgid "Outgoing provider used to reach this telephone."
+msgstr "この電話機に到達する為に使用される発信用電話会社"
+
+#, fuzzy
+msgid "Number or string to be dialed to reach this telephone."
 msgstr "この電話機に到達する為に使用される発信用電話会社"
 
 msgid "Edit IAX Account"
 msgstr "IAXアカウントの編集"
 
+msgid "A valid Caller ID must be specified."
+msgstr "有効なCaller IDを指定する必要があります"
+
 msgid "A valid secret must be specified."
 msgstr "有効なパスワードを指定する必要があります"
+
+msgid "A phone with this extension already exists."
+msgstr "この内線番号の電話は、既に存在しています"
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
 "\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
+msgid "Use this number as your username."
 msgstr ""
-"このアカウントに割り当てる番号を指定します、一般的には内線番号を入力します。"
-"また、この番号がユーザー名となります"
 
 msgid "plaintext"
 msgstr "プレーンテキスト"
@@ -2287,21 +2303,16 @@ msgstr "md5"
 msgid "This account's password and authentication scheme."
 msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
 
+#, fuzzy
+msgid "Codecs"
+msgstr "オーディオコーデック"
+
+#, fuzzy
+msgid "Advanced IAX Options"
+msgstr "拡張設定"
+
 msgid "Edit ISDN Line"
 msgstr "ISDNの編集"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
-"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
-"さい"
-
-msgid "This phone's number (MSN)."
-msgstr "この電話機の番号(MSN)"
 
 msgid "Edit SIP Account"
 msgstr "SIPアカウントの設定"
@@ -2314,6 +2325,10 @@ msgstr "\"busy limit.\"として、全体の秒数を入力する必要があり
 
 msgid "This account's password."
 msgstr "このアカウントのパスワードを入力して下さい"
+
+#, fuzzy
+msgid "Advanced SIP Options"
+msgstr "拡張設定"
 
 msgid "Dialplan Element Library"
 msgstr "ダイヤルプラン要素のライブラリー"
@@ -2702,6 +2717,16 @@ msgstr "このダイヤルパターン\"%s\"は無効です。%s"
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr "この着信用ダイヤルプラン\"%s\"は無効です。%s"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
+"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
+"さい"
 
 msgid "Descriptive name for this provider."
 msgstr "このアカウントの名前"
@@ -3365,6 +3390,25 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "The internal extension used to dial this phone."
+#~ msgstr "Internal extensionは、この電話にダイヤル可能"
+
+#~ msgid ""
+#~ "Number or string to be dialed to reach this telephone. This will be "
+#~ "dialed directly; outgoing pattern matching rules do not apply"
+#~ msgstr ""
+#~ "この電話機に到達する事が出来る番号もしくは文字列。これは直接ダイヤル出来ま"
+#~ "す;外線発信パターンのルールは、適用されません"
+
+#~ msgid ""
+#~ "The phone number assigned to this account. Also this account's username."
+#~ msgstr ""
+#~ "このアカウントに割り当てる番号を指定します、一般的には内線番号を入力しま"
+#~ "す。また、この番号がユーザー名となります"
+
+#~ msgid "This phone's number (MSN)."
+#~ msgstr "この電話機の番号(MSN)"
 
 #~ msgid "There are currently no phones defined."
 #~ msgstr "現在、電話は定義されていません"

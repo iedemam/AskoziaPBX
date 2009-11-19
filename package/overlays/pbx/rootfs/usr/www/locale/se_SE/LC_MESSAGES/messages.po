@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -59,6 +59,26 @@ msgstr ""
 
 #, php-format
 msgid "The field '%s' is required."
+msgstr ""
+
+msgid "Missing extension number."
+msgstr ""
+
+msgid "Invalid extension number. Use only numerals."
+msgstr ""
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
 
 msgid "Subject"
@@ -255,12 +275,6 @@ msgstr ""
 msgid "Send phones' Caller ID"
 msgstr ""
 
-msgid "Block Providers"
-msgstr ""
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr ""
 
@@ -291,26 +305,6 @@ msgstr ""
 
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
-msgstr ""
-
-msgid "Notifications"
-msgstr ""
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-msgid "address"
-msgstr ""
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr ""
-
-msgid "enable voicemail to e-mail"
 msgstr ""
 
 msgid "Public Access"
@@ -381,27 +375,6 @@ msgid ""
 "security holes."
 msgstr ""
 
-msgid "Caller ID"
-msgstr ""
-
-msgid "Text to be displayed for Caller ID."
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-
-msgid "Public Number"
-msgstr ""
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-
 msgid "of"
 msgstr ""
 
@@ -439,6 +412,53 @@ msgid "Local Network"
 msgstr ""
 
 msgid "Analog"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Public Number"
+msgstr ""
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+msgid "Hardware Port"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+msgid "Block Providers"
+msgstr ""
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr ""
+
+msgid "enable voicemail to e-mail"
 msgstr ""
 
 msgid "Dialplan"
@@ -1101,6 +1121,9 @@ msgstr ""
 msgid "Extension"
 msgstr ""
 
+msgid "Caller ID"
+msgstr ""
+
 msgid "click to enable phone"
 msgstr ""
 
@@ -1212,9 +1235,6 @@ msgid "Paste an RSA private key in PEM format here."
 msgstr ""
 
 msgid "Generate self-signed certificate"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Miscellaneous"
@@ -2024,19 +2044,13 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr ""
 
-msgid "A valid Caller ID must be specified."
-msgstr ""
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
 msgid "The number used to dial this phone."
 msgstr ""
 
-msgid "Hardware Port"
+msgid "Text to be displayed for Caller ID."
 msgstr ""
 
-msgid "The hardware port this phone is connected to."
+msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
 msgid "Security"
@@ -2048,34 +2062,37 @@ msgstr ""
 msgid "Edit External Line"
 msgstr ""
 
-msgid "The internal extension used to dial this phone."
-msgstr ""
-
 msgid "Descriptive name for this phone."
 msgstr ""
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Phone Connectivity"
 msgstr ""
 
 msgid "Provider"
 msgstr ""
 
-msgid "Outgoing provider to be used to reach this telephone."
+msgid "Outgoing provider used to reach this telephone."
+msgstr ""
+
+msgid "Number or string to be dialed to reach this telephone."
 msgstr ""
 
 msgid "Edit IAX Account"
 msgstr ""
 
+msgid "A valid Caller ID must be specified."
+msgstr ""
+
 msgid "A valid secret must be specified."
+msgstr ""
+
+msgid "A phone with this extension already exists."
 msgstr ""
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
+msgid "Use this number as your username."
 msgstr ""
 
 msgid "plaintext"
@@ -2087,17 +2104,13 @@ msgstr ""
 msgid "This account's password and authentication scheme."
 msgstr ""
 
+msgid "Codecs"
+msgstr ""
+
+msgid "Advanced IAX Options"
+msgstr ""
+
 msgid "Edit ISDN Line"
-msgstr ""
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "This phone's number (MSN)."
 msgstr ""
 
 msgid "Edit SIP Account"
@@ -2110,6 +2123,9 @@ msgid "A whole number of calls must be entered for the \"busy limit.\""
 msgstr ""
 
 msgid "This account's password."
+msgstr ""
+
+msgid "Advanced SIP Options"
 msgstr ""
 
 msgid "Dialplan Element Library"
@@ -2450,6 +2466,13 @@ msgstr ""
 
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 
 msgid "Descriptive name for this provider."

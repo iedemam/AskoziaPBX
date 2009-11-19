@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,27 @@ msgstr " '%s' alanı geçersiz karekter içermekte."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "'%s' alanı zorunludur."
+
+msgid "Missing extension number."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid extension number. Use only numerals."
+msgstr "Geçerli dahili hat girilmeli."
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
 
 msgid "Subject"
 msgstr "Konu"
@@ -255,13 +276,6 @@ msgstr ""
 msgid "Send phones' Caller ID"
 msgstr "Telefonun Arayıcı İD'sini gönder"
 
-#, fuzzy
-msgid "Block Providers"
-msgstr "Sunucular"
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr ""
 
@@ -293,29 +307,6 @@ msgstr "Dil"
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr ""
-
-#, fuzzy
-msgid "Notifications"
-msgstr "Lokasyon"
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-#, fuzzy
-msgid "address"
-msgstr "İP adres"
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr "Sesli Mesaj"
-
-#, fuzzy
-msgid "enable voicemail to e-mail"
-msgstr "sesli mesaj alıcının adı"
 
 #, fuzzy
 msgid "Public Access"
@@ -388,27 +379,6 @@ msgid ""
 "security holes."
 msgstr ""
 
-msgid "Caller ID"
-msgstr "Arayıcı Kimliği"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Arayıcı İD yerine gösterilen metin."
-
-msgid "Description"
-msgstr "Açıklama"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-
-msgid "Public Number"
-msgstr "Kamusal Numara"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-
 msgid "of"
 msgstr ""
 
@@ -448,6 +418,58 @@ msgstr "Ağ"
 
 msgid "Analog"
 msgstr "Analog"
+
+msgid "Description"
+msgstr "Açıklama"
+
+msgid "Public Number"
+msgstr "Kamusal Numara"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Bellenim"
+
+#, fuzzy
+msgid "Notifications"
+msgstr "Lokasyon"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "İP adres"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+#, fuzzy
+msgid "Block Providers"
+msgstr "Sunucular"
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "Sesli Mesaj"
+
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "sesli mesaj alıcının adı"
 
 msgid "Dialplan"
 msgstr "Aramaplanı"
@@ -1136,6 +1158,9 @@ msgstr "Harici"
 msgid "Extension"
 msgstr "Dahili Hat"
 
+msgid "Caller ID"
+msgstr "Arayıcı Kimliği"
+
 msgid "click to enable phone"
 msgstr "telefonu geçerli kılmak için tıkla"
 
@@ -1248,9 +1273,6 @@ msgstr ""
 
 msgid "Generate self-signed certificate"
 msgstr ""
-
-msgid "Save"
-msgstr "Kaydet"
 
 msgid "Miscellaneous"
 msgstr "Değişik"
@@ -2083,21 +2105,14 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr "Analog düzenle"
 
-msgid "A valid Caller ID must be specified."
-msgstr "Geçerli Arayıcı İD'si girlmeli."
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
-#, fuzzy
-msgid "Hardware Port"
-msgstr "Bellenim"
+msgid "Text to be displayed for Caller ID."
+msgstr "Arayıcı İD yerine gösterilen metin."
 
-msgid "The hardware port this phone is connected to."
+msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
 #, fuzzy
@@ -2111,34 +2126,39 @@ msgstr "Lokasyon"
 msgid "Edit External Line"
 msgstr "Harici Hattı Düzenle"
 
-msgid "The internal extension used to dial this phone."
-msgstr "Bu telefonu aramak için kullanılan dahili hat."
-
 msgid "Descriptive name for this phone."
 msgstr "Bu telefon için açıklayıcı bir isim."
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Phone Connectivity"
 msgstr ""
 
 msgid "Provider"
 msgstr "Sunucu"
 
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
+#, fuzzy
+msgid "Outgoing provider used to reach this telephone."
+msgstr "Bu telefona ulaşmak için dahili hat"
+
+#, fuzzy
+msgid "Number or string to be dialed to reach this telephone."
+msgstr "Bu telefona ulaşmak için dahili hat"
 
 msgid "Edit IAX Account"
 msgstr "İAX Hesabı düzenle"
 
+msgid "A valid Caller ID must be specified."
+msgstr "Geçerli Arayıcı İD'si girlmeli."
+
 msgid "A valid secret must be specified."
 msgstr "Geçerli bir şifre belirtilmeli."
+
+msgid "A phone with this extension already exists."
+msgstr ""
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
+msgid "Use this number as your username."
 msgstr ""
 
 msgid "plaintext"
@@ -2150,20 +2170,16 @@ msgstr "md5"
 msgid "This account's password and authentication scheme."
 msgstr ""
 
+#, fuzzy
+msgid "Codecs"
+msgstr "Ses Kodlayıcı-kodçözücüsü"
+
+#, fuzzy
+msgid "Advanced IAX Options"
+msgstr "Gelişmiş Ayarlar"
+
 msgid "Edit ISDN Line"
 msgstr "İSDN Hattını düzenle"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
-"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
-
-msgid "This phone's number (MSN)."
-msgstr "Bu telefonun numarası (MSN)"
 
 msgid "Edit SIP Account"
 msgstr "SİP Hesabını Düzenle"
@@ -2176,6 +2192,10 @@ msgstr ""
 
 msgid "This account's password."
 msgstr "Bu hesabın şifresi"
+
+#, fuzzy
+msgid "Advanced SIP Options"
+msgstr "Gelişmiş Ayarlar"
 
 msgid "Dialplan Element Library"
 msgstr ""
@@ -2526,6 +2546,15 @@ msgstr ""
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr ""
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
+"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
 
 msgid "Descriptive name for this provider."
 msgstr "Bu at için belirlenmiş telefon numarası."
@@ -3108,6 +3137,12 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#~ msgid "The internal extension used to dial this phone."
+#~ msgstr "Bu telefonu aramak için kullanılan dahili hat."
+
+#~ msgid "This phone's number (MSN)."
+#~ msgstr "Bu telefonun numarası (MSN)"
+
 #~ msgid "send missed call notifications"
 #~ msgstr "kaçırılan aramalar uyarısı gönder"
 
@@ -3140,9 +3175,6 @@ msgstr ""
 
 #~ msgid "E-Mail Language"
 #~ msgstr "E-postada kullanılan dil"
-
-#~ msgid "Internal extension used to reach this phone."
-#~ msgstr "Bu telefona ulaşmak için dahili hat"
 
 #~ msgid "No compatible analog interfaces detected."
 #~ msgstr "Uyum sağlayan analog arayüz bulunamadı."

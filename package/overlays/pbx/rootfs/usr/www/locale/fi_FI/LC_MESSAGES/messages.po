@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -61,6 +61,27 @@ msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
 #, php-format
 msgid "The field '%s' is required."
 msgstr "Kohta '%s' on määritettävä."
+
+msgid "Missing extension number."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid extension number. Use only numerals."
+msgstr "Kelpaava jatke on annettava."
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
 
 msgid "Subject"
 msgstr "Aihe"
@@ -279,13 +300,6 @@ msgstr "Lähetä ylhäällä annettu tunnus&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Lähetä puhelimen Soittajan Tunnus"
 
-#, fuzzy
-msgid "Block Providers"
-msgstr "Palveluntarjoajat"
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr "Soittokaava(t)"
 
@@ -337,29 +351,6 @@ msgstr "Kieli"
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "Ääni promptit toistetaan valitulla kielellä täälle tilille."
-
-#, fuzzy
-msgid "Notifications"
-msgstr "Paikka"
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-#, fuzzy
-msgid "address"
-msgstr "IP osoite"
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr "Vastaaja"
-
-#, fuzzy
-msgid "enable voicemail to e-mail"
-msgstr "vastaajan omistajan nimi"
 
 #, fuzzy
 msgid "Public Access"
@@ -454,30 +445,6 @@ msgstr ""
 "arvot voi vahingoittaa järjestelmän toimivuuden ja/tai haavoittaa "
 "turvallisuuden."
 
-msgid "Caller ID"
-msgstr "Soittajan Tunnus"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Teksti joka näytetään Soittajan Tunnukselle"
-
-msgid "Description"
-msgstr "Kuvaus"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
-
-msgid "Public Number"
-msgstr "Julkinen Numero"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"Tämä 'ulkoinen' numero annetaan takaisin käyttäjälle kun hän tavoittaa "
-"vastaajaa; oletus on tilin käyttäjänimi jos se on numeerinen. Jos ei, "
-"sisäinen jatke jonne tämä puhelu reititettiin annetaan."
-
 msgid "of"
 msgstr ""
 
@@ -518,6 +485,61 @@ msgstr "Verkko"
 
 msgid "Analog"
 msgstr "Analogi"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Public Number"
+msgstr "Julkinen Numero"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"Tämä 'ulkoinen' numero annetaan takaisin käyttäjälle kun hän tavoittaa "
+"vastaajaa; oletus on tilin käyttäjänimi jos se on numeerinen. Jos ei, "
+"sisäinen jatke jonne tämä puhelu reititettiin annetaan."
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Laiteohjelmisto"
+
+#, fuzzy
+msgid "Notifications"
+msgstr "Paikka"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IP osoite"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+#, fuzzy
+msgid "Block Providers"
+msgstr "Palveluntarjoajat"
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "Vastaaja"
+
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "vastaajan omistajan nimi"
 
 msgid "Dialplan"
 msgstr "Soittosuunnitelma"
@@ -1218,6 +1240,9 @@ msgstr "Ulkoinen"
 msgid "Extension"
 msgstr "Jatke"
 
+msgid "Caller ID"
+msgstr "Soittajan Tunnus"
+
 msgid "click to enable phone"
 msgstr "klikkaa ottaaksesi puhelinta käyttöön"
 
@@ -1336,9 +1361,6 @@ msgstr "Liitä yksityinen RSA avain PEM muodossa."
 
 msgid "Generate self-signed certificate"
 msgstr "Generoi sertifikaatti"
-
-msgid "Save"
-msgstr "Tallenna"
 
 msgid "Miscellaneous"
 msgstr "Sekalaiset"
@@ -2225,22 +2247,15 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr "Muokkaa Analogi"
 
-msgid "A valid Caller ID must be specified."
-msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
-
-msgid "A phone with this extension already exists."
-msgstr "Puhelin tällä jatkeella on jo olemassa."
-
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
-#, fuzzy
-msgid "Hardware Port"
-msgstr "Laiteohjelmisto"
+msgid "Text to be displayed for Caller ID."
+msgstr "Teksti joka näytetään Soittajan Tunnukselle"
 
-msgid "The hardware port this phone is connected to."
-msgstr ""
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
 
 #, fuzzy
 msgid "Security"
@@ -2253,38 +2268,42 @@ msgstr "Paikka"
 msgid "Edit External Line"
 msgstr "Muokkaa Ulkoinen Linja"
 
-msgid "The internal extension used to dial this phone."
-msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
-
 msgid "Descriptive name for this phone."
 msgstr "Kuvaileva nimi tälle puhelimelle."
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Phone Connectivity"
 msgstr ""
-"Numero tai tunnus joka käytetään tämän puhelimen tavoittamiseen. Tämä "
-"käytetään suoraan; ulosmenevät kaava-säännöt eivät päte tähän"
 
 msgid "Provider"
 msgstr "Palveluntarjoaja"
 
-msgid "Outgoing provider to be used to reach this telephone."
+#, fuzzy
+msgid "Outgoing provider used to reach this telephone."
+msgstr ""
+"Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
+
+#, fuzzy
+msgid "Number or string to be dialed to reach this telephone."
 msgstr ""
 "Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
 
 msgid "Edit IAX Account"
 msgstr "Muokkaa IAX Tiliä"
 
+msgid "A valid Caller ID must be specified."
+msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
+
 msgid "A valid secret must be specified."
 msgstr "Kelpaava salaisuus on oltava määritetty."
+
+msgid "A phone with this extension already exists."
+msgstr "Puhelin tällä jatkeella on jo olemassa."
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr "Puhelinnumero tälle tilille. Myös tämän tilin käyttäjänimi."
+msgid "Use this number as your username."
+msgstr ""
 
 msgid "plaintext"
 msgstr "ilman suojausta"
@@ -2295,20 +2314,16 @@ msgstr "md5"
 msgid "This account's password and authentication scheme."
 msgstr "Tämän tilin salasana sekä todennus määritelmä."
 
+#, fuzzy
+msgid "Codecs"
+msgstr "Äänen pakkauksenhallinta"
+
+#, fuzzy
+msgid "Advanced IAX Options"
+msgstr "Lisäasetukset"
+
 msgid "Edit ISDN Line"
 msgstr "Muokkaa ISDN Linjaa"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
-"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
-
-msgid "This phone's number (MSN)."
-msgstr "Tämän puhelimen numero (MSN)."
 
 msgid "Edit SIP Account"
 msgstr "Muokkaa SIP Tiliä"
@@ -2321,6 +2336,10 @@ msgstr "Yhtenäinen määrä puheluita on annettava \"varattu rajaksi.\""
 
 msgid "This account's password."
 msgstr "Tämän tilin salasana."
+
+#, fuzzy
+msgid "Advanced SIP Options"
+msgstr "Lisäasetukset"
 
 msgid "Dialplan Element Library"
 msgstr "Soittosuunitelman Elementti Kirjasto"
@@ -2715,6 +2734,15 @@ msgstr "Soitto-kaava \"%s\" on kelvoton. %s"
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr "Sisääntuleva jatke-kaava \"%s\" on kelvoton. %s"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
+"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
+"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
 
 msgid "Descriptive name for this provider."
 msgstr "Kuvaileva nimi tälle palveluntarjoajalle."
@@ -3359,6 +3387,23 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "The internal extension used to dial this phone."
+#~ msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
+
+#~ msgid ""
+#~ "Number or string to be dialed to reach this telephone. This will be "
+#~ "dialed directly; outgoing pattern matching rules do not apply"
+#~ msgstr ""
+#~ "Numero tai tunnus joka käytetään tämän puhelimen tavoittamiseen. Tämä "
+#~ "käytetään suoraan; ulosmenevät kaava-säännöt eivät päte tähän"
+
+#~ msgid ""
+#~ "The phone number assigned to this account. Also this account's username."
+#~ msgstr "Puhelinnumero tälle tilille. Myös tämän tilin käyttäjänimi."
+
+#~ msgid "This phone's number (MSN)."
+#~ msgstr "Tämän puhelimen numero (MSN)."
 
 #~ msgid "There are currently no phones defined."
 #~ msgstr "Tällä hetkelle ei löytynyt määritettyjä puhelimia."

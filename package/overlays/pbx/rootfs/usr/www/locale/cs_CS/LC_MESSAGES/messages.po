@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,6 +59,26 @@ msgstr ""
 
 #, php-format
 msgid "The field '%s' is required."
+msgstr ""
+
+msgid "Missing extension number."
+msgstr ""
+
+msgid "Invalid extension number. Use only numerals."
+msgstr ""
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
 
 msgid "Subject"
@@ -271,13 +291,6 @@ msgstr "Odeslat výše vložený řetězec&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Odeslat ID volajícího z telefonního přístroje"
 
-#, fuzzy
-msgid "Block Providers"
-msgstr "Operátoři"
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr "Směrovací pravidlo(a)"
 
@@ -330,28 +343,6 @@ msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr ""
 "U tohoto účtu budou hlasové nápovědy a výzvy přehrávány ve vybraném jazyce."
-
-msgid "Notifications"
-msgstr ""
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-#, fuzzy
-msgid "address"
-msgstr "IP adresa"
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr "Hlasová schránka"
-
-#, fuzzy
-msgid "enable voicemail to e-mail"
-msgstr "jméno uživatele hlasové schránky"
 
 #, fuzzy
 msgid "Public Access"
@@ -427,31 +418,6 @@ msgid ""
 "security holes."
 msgstr ""
 
-msgid "Caller ID"
-msgstr "ID volajícího"
-
-msgid "Text to be displayed for Caller ID."
-msgstr ""
-
-msgid "Description"
-msgstr "Poznámka"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-
-msgid "Public Number"
-msgstr ""
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"Toto číslo bude přečteno volajícímu při přesměrování hovoru do hlasové "
-"schránky; odpovídá uživatelskému jménu Telefonního účtu. Pokud číslo není "
-"shodné s uživatelským jménem (provolbou), volajícímu bude přečtena provolba, "
-"na kterou byl hovor přesměrován."
-
 msgid "of"
 msgstr ""
 
@@ -491,6 +457,61 @@ msgstr "Síť"
 
 msgid "Analog"
 msgstr "Analog"
+
+msgid "Description"
+msgstr "Poznámka"
+
+msgid "Public Number"
+msgstr ""
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"Toto číslo bude přečteno volajícímu při přesměrování hovoru do hlasové "
+"schránky; odpovídá uživatelskému jménu Telefonního účtu. Pokud číslo není "
+"shodné s uživatelským jménem (provolbou), volajícímu bude přečtena provolba, "
+"na kterou byl hovor přesměrován."
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "Firmware"
+
+msgid "Notifications"
+msgstr ""
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IP adresa"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+#, fuzzy
+msgid "Block Providers"
+msgstr "Operátoři"
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "Hlasová schránka"
+
+#, fuzzy
+msgid "enable voicemail to e-mail"
+msgstr "jméno uživatele hlasové schránky"
 
 msgid "Dialplan"
 msgstr ""
@@ -1182,6 +1203,9 @@ msgstr "Externí"
 msgid "Extension"
 msgstr "Provolba"
 
+msgid "Caller ID"
+msgstr "ID volajícího"
+
 msgid "click to enable phone"
 msgstr "kliknutím aktivujete účet"
 
@@ -1297,9 +1321,6 @@ msgstr ""
 
 msgid "Generate self-signed certificate"
 msgstr ""
-
-msgid "Save"
-msgstr "Uložit"
 
 msgid "Miscellaneous"
 msgstr "Ostatní"
@@ -2119,21 +2140,14 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr "změnit položku"
 
-msgid "A valid Caller ID must be specified."
-msgstr ""
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
-#, fuzzy
-msgid "Hardware Port"
-msgstr "Firmware"
+msgid "Text to be displayed for Caller ID."
+msgstr ""
 
-msgid "The hardware port this phone is connected to."
+msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
 msgid "Security"
@@ -2145,34 +2159,39 @@ msgstr ""
 msgid "Edit External Line"
 msgstr ""
 
-msgid "The internal extension used to dial this phone."
-msgstr ""
-
 msgid "Descriptive name for this phone."
 msgstr ""
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
+msgid "Phone Connectivity"
 msgstr ""
 
 msgid "Provider"
 msgstr ""
 
-msgid "Outgoing provider to be used to reach this telephone."
-msgstr ""
+#, fuzzy
+msgid "Outgoing provider used to reach this telephone."
+msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
+
+#, fuzzy
+msgid "Number or string to be dialed to reach this telephone."
+msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
 msgid "Edit IAX Account"
+msgstr ""
+
+msgid "A valid Caller ID must be specified."
 msgstr ""
 
 msgid "A valid secret must be specified."
 msgstr ""
 
+msgid "A phone with this extension already exists."
+msgstr ""
+
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr ""
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
+msgid "Use this number as your username."
 msgstr ""
 
 msgid "plaintext"
@@ -2184,17 +2203,15 @@ msgstr ""
 msgid "This account's password and authentication scheme."
 msgstr ""
 
+#, fuzzy
+msgid "Codecs"
+msgstr "Audio kodeky"
+
+#, fuzzy
+msgid "Advanced IAX Options"
+msgstr "Upřesňující nastavení"
+
 msgid "Edit ISDN Line"
-msgstr ""
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "This phone's number (MSN)."
 msgstr ""
 
 msgid "Edit SIP Account"
@@ -2208,6 +2225,10 @@ msgstr ""
 
 msgid "This account's password."
 msgstr "Heslo k tomuto účtu."
+
+#, fuzzy
+msgid "Advanced SIP Options"
+msgstr "Upřesňující nastavení"
 
 msgid "Dialplan Element Library"
 msgstr ""
@@ -2569,6 +2590,13 @@ msgstr ""
 
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr ""
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
 msgstr ""
 
 msgid "Descriptive name for this provider."

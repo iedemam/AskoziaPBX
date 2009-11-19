@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-16 19:04+0100\n"
+"POT-Creation-Date: 2009-11-19 15:46+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -59,6 +59,27 @@ msgstr "'%s' 段含有无效字符。"
 #, php-format
 msgid "The field '%s' is required."
 msgstr "'%s' 区域需要填入。 "
+
+msgid "Missing extension number."
+msgstr ""
+
+#, fuzzy
+msgid "Invalid extension number. Use only numerals."
+msgstr "必须输入一个有效的分机"
+
+msgid "Missing caller id."
+msgstr ""
+
+msgid "Invalid public access alias."
+msgstr ""
+
+msgid ""
+"E-Mail notifications enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid ""
+"Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
 
 #, fuzzy
 msgid "Subject"
@@ -276,13 +297,6 @@ msgstr "传输字符串的上述定义&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "发送话机的Caller ID"
 
-#, fuzzy
-msgid "Block Providers"
-msgstr "提供商"
-
-msgid "Block access to the providers selected above."
-msgstr ""
-
 msgid "Dialing Pattern(s)"
 msgstr "拨号模式"
 
@@ -330,28 +344,6 @@ msgstr "语言"
 msgid ""
 "Audio prompts will be played back in the selected language for this account."
 msgstr "音频提示将以为这个账号设置好的语言回放。"
-
-#, fuzzy
-msgid "Notifications"
-msgstr "位置"
-
-msgid "notify me of missed calls via e-mail"
-msgstr ""
-
-#, fuzzy
-msgid "address"
-msgstr "IP地址"
-
-msgid ""
-"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
-"configured correctly before this will work."
-msgstr ""
-
-msgid "Voicemail"
-msgstr "语音邮件"
-
-msgid "enable voicemail to e-mail"
-msgstr ""
 
 #, fuzzy
 msgid "Public Access"
@@ -437,29 +429,6 @@ msgstr ""
 "会被附加到这个项目的Asterisk配置文件中。除非您非常特殊的需要这样做，不然的话"
 "请留空这个区域。不正确的设置值可能打破系统功能并且/或者打开安全漏洞。"
 
-msgid "Caller ID"
-msgstr "呼叫者ID"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "为Caller ID显示的文本"
-
-msgid "Description"
-msgstr "描述"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "您在这里输入一个描述，供您参考（不解析）。"
-
-msgid "Public Number"
-msgstr "公共号码"
-
-msgid ""
-"This 'external' number will be read back to the caller when reaching "
-"voicemail; defaults to account's username if it is numeric. If it is not, "
-"the internal extension this call was routed to will be read back."
-msgstr ""
-"这个'外部'号码会被主叫方读回，如果遇到语音邮件；默认的会到帐户的用户名，前提"
-"是名字是数字。如果不是数字的话，将会被读回到相应的内部分机上。"
-
 msgid "of"
 msgstr "of"
 
@@ -499,6 +468,59 @@ msgstr "网络"
 
 msgid "Analog"
 msgstr "模拟"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Public Number"
+msgstr "公共号码"
+
+msgid ""
+"This 'external' number will be read back to the caller when reaching "
+"voicemail; defaults to account's username if it is numeric. If it is not, "
+"the internal extension this call was routed to will be read back."
+msgstr ""
+"这个'外部'号码会被主叫方读回，如果遇到语音邮件；默认的会到帐户的用户名，前提"
+"是名字是数字。如果不是数字的话，将会被读回到相应的内部分机上。"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "The hardware port this phone is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Hardware Port"
+msgstr "固件"
+
+#, fuzzy
+msgid "Notifications"
+msgstr "位置"
+
+msgid "notify me of missed calls via e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "address"
+msgstr "IP地址"
+
+msgid ""
+"<a href=\"notifications_email.php\">E-Mail Notifications</a> must be "
+"configured correctly before this will work."
+msgstr ""
+
+#, fuzzy
+msgid "Block Providers"
+msgstr "提供商"
+
+msgid "Block access to the providers selected above."
+msgstr ""
+
+msgid "Voicemail"
+msgstr "语音邮件"
+
+msgid "enable voicemail to e-mail"
+msgstr ""
 
 msgid "Dialplan"
 msgstr "拨号计划"
@@ -1203,6 +1225,9 @@ msgstr "外部"
 msgid "Extension"
 msgstr "分机"
 
+msgid "Caller ID"
+msgstr "呼叫者ID"
+
 msgid "click to enable phone"
 msgstr "点击启用电话"
 
@@ -1317,9 +1342,6 @@ msgstr "在这里粘贴一个PEM格式的RSA私人密钥。"
 
 msgid "Generate self-signed certificate"
 msgstr "产生一个自签发的证书"
-
-msgid "Save"
-msgstr "保存"
 
 msgid "Miscellaneous"
 msgstr "杂项"
@@ -2163,22 +2185,15 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr "编辑模拟电话"
 
-msgid "A valid Caller ID must be specified."
-msgstr "必须指定一个有效的Caller ID。"
-
-msgid "A phone with this extension already exists."
-msgstr "已经存在这个分机了。"
-
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "这个内部分机用来拨打这个电话。"
 
-#, fuzzy
-msgid "Hardware Port"
-msgstr "固件"
+msgid "Text to be displayed for Caller ID."
+msgstr "为Caller ID显示的文本"
 
-msgid "The hardware port this phone is connected to."
-msgstr ""
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "您在这里输入一个描述，供您参考（不解析）。"
 
 #, fuzzy
 msgid "Security"
@@ -2191,35 +2206,40 @@ msgstr "位置"
 msgid "Edit External Line"
 msgstr "编辑外部线路"
 
-msgid "The internal extension used to dial this phone."
-msgstr "这个内部分机用来拨打这个电话。"
-
 msgid "Descriptive name for this phone."
 msgstr "这个电话的描述性名称。"
 
-msgid ""
-"Number or string to be dialed to reach this telephone. This will be dialed "
-"directly; outgoing pattern matching rules do not apply"
-msgstr "数字或者字串用来拨打这个电话。这会是直接拨打，不会应用在外线模式中。"
+msgid "Phone Connectivity"
+msgstr ""
 
 msgid "Provider"
 msgstr "提供商"
 
-msgid "Outgoing provider to be used to reach this telephone."
+#, fuzzy
+msgid "Outgoing provider used to reach this telephone."
+msgstr "外线提供商用来达到这个电话。"
+
+#, fuzzy
+msgid "Number or string to be dialed to reach this telephone."
 msgstr "外线提供商用来达到这个电话。"
 
 msgid "Edit IAX Account"
 msgstr "编辑IAX账号"
 
+msgid "A valid Caller ID must be specified."
+msgstr "必须指定一个有效的Caller ID。"
+
 msgid "A valid secret must be specified."
 msgstr "必须输入一个有效的密码。"
+
+msgid "A phone with this extension already exists."
+msgstr "已经存在这个分机了。"
 
 msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
 msgstr "必须为\"qualify\"输入一个超时的秒数。"
 
-msgid ""
-"The phone number assigned to this account. Also this account's username."
-msgstr "这个电话号码被分配到这个账号和它的用户名。"
+msgid "Use this number as your username."
+msgstr ""
 
 msgid "plaintext"
 msgstr "明文"
@@ -2230,18 +2250,16 @@ msgstr "md5"
 msgid "This account's password and authentication scheme."
 msgstr "这个账号的密码和验证计划。"
 
+#, fuzzy
+msgid "Codecs"
+msgstr "音频编解码"
+
+#, fuzzy
+msgid "Advanced IAX Options"
+msgstr "高级设置"
+
 msgid "Edit ISDN Line"
 msgstr "编辑ISDN线路"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid "This phone's number (MSN)."
-msgstr "这个电话的号码（MSN）。"
 
 msgid "Edit SIP Account"
 msgstr "编辑SIP账号"
@@ -2254,6 +2272,10 @@ msgstr "请输入一个数字给\"busy limit(繁忙限制).\""
 
 msgid "This account's password."
 msgstr "这个账号的密码。"
+
+#, fuzzy
+msgid "Advanced SIP Options"
+msgstr "高级设置"
 
 msgid "Dialplan Element Library"
 msgstr "拨号计划元素库"
@@ -2623,6 +2645,13 @@ msgstr "无效的拨号\"%s\"模式。%s"
 #, php-format
 msgid "The incoming extension pattern \"%s\" is invalid. %s"
 msgstr "这个呼入分机模式\"%s\"是无效的。%s"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid "Descriptive name for this provider."
 msgstr "提供商的描述性名字。"
@@ -3227,6 +3256,22 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "The internal extension used to dial this phone."
+#~ msgstr "这个内部分机用来拨打这个电话。"
+
+#~ msgid ""
+#~ "Number or string to be dialed to reach this telephone. This will be "
+#~ "dialed directly; outgoing pattern matching rules do not apply"
+#~ msgstr ""
+#~ "数字或者字串用来拨打这个电话。这会是直接拨打，不会应用在外线模式中。"
+
+#~ msgid ""
+#~ "The phone number assigned to this account. Also this account's username."
+#~ msgstr "这个电话号码被分配到这个账号和它的用户名。"
+
+#~ msgid "This phone's number (MSN)."
+#~ msgstr "这个电话的号码（MSN）。"
 
 #~ msgid "There are currently no phones defined."
 #~ msgstr "目前没有被定义的电话。"
