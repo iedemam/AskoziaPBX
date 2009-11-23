@@ -374,7 +374,7 @@ EOD;
 		if ($p['vmtoemail'] != "enabled") {
 			continue;
 		}
-		$conf .= "{$p['extension']} => 0000,{$p['name']},{$p['vmtoemailaddress']},,delete=yes\n";
+		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['vmtoemailaddress']},,delete=yes\n";
 	}
 
 	$fd = fopen("/etc/asterisk/voicemail.conf", "w");

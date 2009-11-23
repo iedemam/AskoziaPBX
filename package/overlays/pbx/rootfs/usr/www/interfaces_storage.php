@@ -39,12 +39,8 @@ if (storage_syspart_get_state() == "active") {
 	$packages = packages_get_packages();
 }
 
-?>
-
-<?php include("fbegin.inc"); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<form action="interfaces_storage.php" method="post" enctype="multipart/form-data">
+include("fbegin.inc");
+?><form action="interfaces_storage.php" method="post" enctype="multipart/form-data">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<? display_ports_tab_menu(); ?>
 	<tr>

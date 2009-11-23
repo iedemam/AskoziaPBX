@@ -115,6 +115,10 @@ function display_audio_codec_selector($enabled_codecs) {
 		"g722" => "G722"
 	);
 
+	if (!is_array($enabled_codecs)) {
+		$enabled_codecs = array();
+	}
+
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Audio Codecs"));?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Enabled"));?></strong>&nbsp;<i>(<?=spanify(gettext("drag-and-drop"));?>)</i>
@@ -133,7 +137,7 @@ function display_audio_codec_selector($enabled_codecs) {
 				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
 				<? endif; ?>
 			<? endforeach; ?>
-			</ul>
+			</ul><input id="a_codecs" name="a_codecs" type="hidden" value="">
 		</td>
 	</tr><?	
 }
@@ -149,6 +153,10 @@ function display_video_codec_selector($enabled_codecs) {
 		"h263p" => "H.263+",
 		"h264" => "H.264"
 	);
+
+	if (!is_array($enabled_codecs)) {
+		$enabled_codecs = array();
+	}
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Video Codecs"));?></td>
@@ -168,7 +176,7 @@ function display_video_codec_selector($enabled_codecs) {
 				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
 				<? endif; ?>
 			<? endforeach; ?>
-			</ul>
+			</ul><input id="v_codecs" name="v_codecs" type="hidden" value="">
 		</td>
 	</tr><?
 }
@@ -253,8 +261,14 @@ function display_incoming_extension_selector($colspan, $idprefix=false) {
 }
 
 function display_dtmfmode_selector($current_dtmfmode, $colspan) {
-	global $dtmfmodes;
-	
+
+	$dtmfmodes = array(
+		"auto",
+		"rfc2833",
+		"inband",
+		"info"
+	);
+
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("DTMF Mode"));?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
@@ -293,20 +307,15 @@ function display_qualify_options($current_qualify, $colspan) {
 	</tr><?
 }
 
-// XXX : first option to fully implement the $defaults array, time to start updating the others
 function display_natmode_selector($current_natmode, $colspan) {
 	global $defaults;
 
 	$natmodes = array(
-		"yes" => spanify(gettext("always use NAT mode.")),
-		"no" => spanify(gettext("only use NAT mode according to RFC3581 (rport)")),
-		"never" => spanify(gettext("never attempt NAT mode or RFC3581 support")),
-		"route" => spanify(gettext("assume NAT mode but don't send rport "))
+		"yes" => gettext("always use NAT mode."),
+		"no" => gettext("only use NAT mode according to RFC3581 (rport)"),
+		"never" => gettext("never attempt NAT mode or RFC3581 support"),
+		"route" => gettext("assume NAT mode but don't send rport ")
 	);
-
-	if (!$current_natmode) {
-		$current_natmode = $defaults['sip']['natmode'];
-	}
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("NAT"));?></td>
@@ -328,23 +337,30 @@ function display_phone_ringlength_selector($current_ringlength, $colspan=1) {
 	global $defaults;
 
 	$ringlengths = array(
-		"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60",
-		gettext("indefinitely")
+		5 => "5",
+		10 => "10",
+		15 => "15",
+		20 => "20",
+		25 => "25",
+		30 => "30",
+		35 => "35",
+		40 => "40",
+		45 => "45",
+		50 => "50",
+		55 => "55",
+		60 => "60",
+		"indefinitely" => gettext("indefinitely")
 	);
-
-	if (!$current_ringlength) {
-		$current_ringlength = $defaults['accounts']['phones']['ringlength'];
-	}
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Ring Length"));?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<select name="ringlength" class="formfld" id="ringlength">
-			<? foreach ($ringlengths as $ringlength) : ?>
-			<option value="<?=$ringlength;?>" <?
-			if ($ringlength == $current_ringlength)
+			<? foreach ($ringlengths as $v => $s) : ?>
+			<option value="<?=$v;?>" <?
+			if ($v == $current_ringlength)
 				echo "selected"; ?>
-			><?=$ringlength;?></option>
+			><?=$s;?></option>
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl"><?=spanify(gettext("The number of seconds this phone will ring before giving up or going to voicemail."));?></span>
@@ -449,10 +465,22 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 }
 
 function display_channel_language_selector($current_language, $colspan=1) {
-	global $prompt_languages;
 
-	// XXX : needs to be changed from always being English and instead
-	//			to recognize the webgui language
+	$prompt_languages = array(
+		"en-us" => gettext("English (US)"),
+		"en-gb" => gettext("English (UK)"),
+		//"da" => gettext("Danish"),
+		//"nl" => gettext("Dutch"),
+		//"fr" => gettext("French (France)"),
+		"fr-ca" => gettext("French (Canada)"),
+		"de-de" => gettext("German"),
+		"it-it" => gettext("Italian"),
+		//"jp" => gettext("Japanese"),
+		//"pt-br" => gettext("Portuguese (Brazil)"),
+		"ru" => gettext("Russian"),
+		"es-es" => gettext("Spanish (Spain)")
+		//"se" => gettext("Swedish")
+	);
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Language"));?></td>
@@ -490,24 +518,6 @@ function display_public_access_editor($current_publicaccess, $current_publicname
 		</td>
 	</tr><?
 
-}
-
-function display_call_and_busy_limit_selector($current_calllimit, $current_busylimit, $colspan) {
-	
-	?><tr> 
-		<td valign="top" class="vncell"><?=spanify(gettext("Call Limit"));?></td>
-		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="calllimit" type="text" class="formfld" id="calllimit" size="5" value="<?=htmlspecialchars($current_calllimit);?>">&nbsp;<?=spanify(gettext("calls"));?> 
-            <br><span class="vexpl"><?=spanify(gettext("Permit only 'n' concurrent calls (default: 2)"));?></span>
-		</td>
-	</tr>
-	<tr> 
-		<td valign="top" class="vncell"><?=spanify(gettext("Busy Limit"));?></td>
-		<td colspan="<?=$colspan?>" class="vtable">
-			<input name="busylimit" type="text" class="formfld" id="busylimit" size="5" value="<?=htmlspecialchars($current_busylimit);?>">&nbsp;<?=spanify(gettext("calls"));?> 
-            <br><span class="vexpl"><?=spanify(gettext("Phone status will be switched to 'busy' with 'n' concurrent calls (default: 1)"));?></span>
-		</td>
-	</tr><?
 }
 
 function display_application_logic_editor($current_appcommands, $colspan, $idprefix=false) {

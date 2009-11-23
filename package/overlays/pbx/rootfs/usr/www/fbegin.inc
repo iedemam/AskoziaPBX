@@ -309,6 +309,9 @@ if ($input_errors) {
 if ($savemsg) {
 	display_info_box($savemsg);
 }
+if ($keepmsg) {
+	display_info_box($keepmsg, "keep");
+}
 
 $scripts = array();
 

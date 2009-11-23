@@ -83,7 +83,7 @@ $a_providers = pbx_get_providers();			// already sorted by name
 			</tr>
 			<tr>
 				<td width="15%" class="listhdr"><?=gettext("Extension");?></td>
-				<td width="30%" class="listhdr"><?=gettext("Name");?></td>
+				<td width="30%" class="listhdr"><?=gettext("Caller ID");?></td>
 				<td width="55%" class="listhdr"><?=gettext("Description");?></td>
 			</tr>
 			<?php foreach ($a_extphones as $p):
@@ -92,7 +92,7 @@ $a_providers = pbx_get_providers();			// already sorted by name
 				}
 			?><tr>
 				<td class="listlr"><?=htmlspecialchars($p['extension']);?>&nbsp;</td>
-				<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td>
+				<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 				<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
 			</tr>
 			<?php endforeach; ?>

@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -36,32 +36,31 @@ require_once("functions.inc");
  * This should be changed to return by reference to eliminate a lot of repetitive code.
  */
 function sip_get_providers() {
-	global $config;
-	
-	if (!is_array($config['sip']['provider']))
-		$config['sip']['provider'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['sip']['provider'])) {
+		$GLOBALS['config']['sip']['provider'] = array();
+	}
 	sip_sort_providers();
-		
-	return $config['sip']['provider'];
+
+	return $GLOBALS['config']['sip']['provider'];
 }
 
 /**
  * Returns a specific provider based on its uniqid
  */
 function sip_get_provider($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['sip']['provider'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['sip']['provider'][$uniqid_map[$uniqid]];
 }
 
 /**
  * Sorts providers by name
  */
 function sip_sort_providers() {
-	global $g, $config;
+	global $g;
 
-	usort($config['sip']['provider'], "pbx_sort_by_name");	
+	usort($GLOBALS['config']['sip']['provider'], "pbx_sort_by_name");	
 }
 
 /**
@@ -69,44 +68,42 @@ function sip_sort_providers() {
  * If no phones are defined, the global array is initialized.
  */
 function sip_get_phones() {
-	global $config;
-	
-	if (!is_array($config['sip']['phone']))
-		$config['sip']['phone'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['sip']['phone'])) {
+		$GLOBALS['config']['sip']['phone'] = array();
+	}
 	sip_sort_phones();
-		
-	return $config['sip']['phone'];
+
+	return $GLOBALS['config']['sip']['phone'];
 }
 
 /**
  * Sorts phones by extension
  */
 function sip_sort_phones() {
-	global $g, $config;
+	global $g;
 
-	usort($config['sip']['phone'], "pbx_sort_by_extension");	
+	usort($GLOBALS['config']['sip']['phone'], "pbx_sort_by_extension");
 }
 
 /**
  * Returns a specific phone based on its uniqid
  */
 function sip_get_phone($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['sip']['phone'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['sip']['phone'][$uniqid_map[$uniqid]];
 }
 
 /**
  * Returns an array of all assigned phone extensions
  */
 function sip_get_extensions() {
-	global $config;
-	
+
 	$extensions = array();
 
-	if (is_array($config['sip']['phone'])) {
-		foreach($config['sip']['phone'] as $phone) {
+	if (is_array($GLOBALS['config']['sip']['phone'])) {
+		foreach($GLOBALS['config']['sip']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}
@@ -118,12 +115,11 @@ function sip_get_extensions() {
  * Returns an array of all assigned provider dialpatterns
  */
 function sip_get_dialpatterns() {
-	global $config;
-	
+
 	$dialpatterns = array();
 
-	if (is_array($config['sip']['provider'])) {
-		foreach($config['sip']['provider'] as $provider) {
+	if (is_array($GLOBALS['config']['sip']['provider'])) {
+		foreach($GLOBALS['config']['sip']['provider'] as $provider) {
 			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
 		}
 	}
@@ -158,22 +154,22 @@ function sip_get_hosts_with_multiple_accounts() {
 
 /**
  * Generates sip.conf
- * XXX : the way in which defaults are used must be normalized
  */
 function sip_conf_generate() {
-	global $config, $g, $defaults;
-	
+	global $g, $config, $defaults;
+
 	$fd = fopen("/etc/asterisk/sip.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open sip.conf in sip_conf_generate().\n");
 		return 1;
 	}
-	
+
 	$sipconfig = $config['services']['sip'];
-	
+
 	$port = "5060";
-	if (isset($sipconfig['port']))
+	if (isset($sipconfig['port'])) {
 		$port = $sipconfig['port'];
+	}
 
 	$srvlookup = "yes";
 	if (isset($sipconfig['disablesrv'])) {
@@ -355,83 +351,107 @@ EOD;
 	}
 
 	// phones
-	$sipphones = sip_get_phones();
-	
-	foreach($sipphones as $p) {
-		$conf .= "; {$p['callerid']}\n";
-		$conf .= "[{$p['extension']}]\n";
+	$phones = sip_get_phones();
+	foreach($phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
+		$conf .= "; Caller ID: " . $p['callerid'] . "\n";
+		if ($p['descr']) {
+			$conf .= "; Description: " . $p['descr'] . "\n";
+		}
+		$conf .= "[" . $p['extension'] . "]\n";
 		$conf .= "type=friend\n";
-		$conf .= "secret={$p['secret']}\n";
-		$conf .= "context={$p['uniqid']}\n";
-		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
+		$conf .= "secret=" . $p['secret'] . "\n";
+		$conf .= "context=" . $p['uniqid'] . "\n";
+		$conf .= "callerid=" . $p['callerid'] . " <" . $p['extension'] . ">\n";
 		$conf .= "host=dynamic\n";
-
-		// language selection
-		if ($p['language']) {
-			$conf .= "language=" . $p['language'] . "\n";
-		} else {
-			$conf .= "language=en\n";
-		}
-
-		// nat settings
-		if ($p['natmode']) {
-			$conf .= "nat=" . $p['natmode'] . "\n";
-		} else {
-			$conf .= "nat=" . $defaults['sip']['natmode'] . "\n";
-		}
-		
-		if ($p['qualify'] == "0") {
-			$conf .= "qualify=no\n";
-		} else if ($p['qualify']) {
-			$conf .= "qualify=". $p['qualify']*1000 ."\n";
-		} else {
-			$conf .= "qualify=yes\n";
-		}
-
+		$conf .= "language=" . $p['language'] . "\n";
+		$conf .= "nat=" . $p['natmode'] . "\n";
+		$conf .= "dtmfmode=" . $p['dtmfmode'] . "\n";
+		$conf .= "qualify=yes\n";
 		$conf .= "canreinvite=no\n";
-		
-		if ($p['dtmfmode']) {
-			$conf .= "dtmfmode={$p['dtmfmode']}\n";
-		} else {
-			$conf .= "dtmfmode=auto\n";
-		}
-		
-		if ($p['calllimit']) {
-			$conf .= "call-limit={$p['calllimit']}\n";
-		} else {
-			$conf .= "call-limit=2\n";
-		}
-		if ($p['busylimit']) {
-			$conf .= "busy-limit={$p['busylimit']}\n";
-		} else {
-			$conf .= "busy-limit=1\n";
-		}
-		
+		$conf .= "call-limit=2\n";
+		$conf .= "busy-limit=1\n";		
+
 		$conf .= "disallow=all\n";
-	
 		if(is_array($p['codec'])) {
-			foreach ($p['codec'] as $codec)
-				$conf .= "allow=$codec\n";
-		} else {
-			$conf .= "allow={$p['codec']}\n";
+			foreach ($p['codec'] as $codec) {
+				$conf .= "allow=" . $codec . "\n";
+			}
 		}
 
 		$conf .= util_gen_manual_attributes($p['manual-attribute']);
-		
+
 		$conf .= "\n\n";
 	}
 
 	fwrite($fd, $conf);
 	fclose($fd);
-	
+
 	return 0;
 }
 
-/**
- * Reloads chan_sip to apply newly generated configuration changes
- */
-function sip_reload() {
-	return pbx_exec("module reload chan_sip.so");
+function sip_generate_default_phone() {
+	global $defaults;
+
+	$phone = array();
+
+	$phone['extension'] = pbx_get_next_default_phone_extension();
+	$phone['callerid'] = $defaults['accounts']['phones']['callerid'];
+	$phone['language'] = $defaults['accounts']['language'];
+	$phone['ringlength'] = $defaults['accounts']['phones']['ringlength'];
+	$phone['publicaccess'] = $defaults['accounts']['phones']['publicaccess'];
+	$phone['uniqid'] = "SIP-PHONE-" . uniqid(rand());
+
+	$phone['secret'] = util_pwgen();
+	$phone['codec'] = $defaults['accounts']['codec'];
+	$phone['dtmfmode'] = $defaults['sip']['dtmfmode'];
+	$phone['natmode'] = $defaults['sip']['natmode'];
+
+	return $phone;
+}
+
+function sip_verify_phone($post, $errors) {
+
+	$phone = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_extension(&$phone, &$post, &$errors);
+	v_callerid(&$phone, &$post, &$errors);
+	v_optional('descr', &$phone, &$post);
+	v_public_access_editor(&$phone, &$post, &$errors);
+	v_notifications_editor(&$phone, &$post, &$errors);
+	v_voicemail_editor(&$phone, &$post, &$errors);
+	v_provider_access_selector(&$phone, &$post);
+	v_codecs(&$phone, &$post);
+	v_password(&$phone, &$post);
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'ringlength',
+		'natmode',
+		'dtmfmode'
+	);
+	foreach ($trusted as $t) {
+		$phone[$t] = $post[$t];
+	}
+
+	return $phone;
+}
+
+function sip_save_phone($phone) {
+	global $g, $uniqid_map;
+
+	if (sip_get_phone($phone['uniqid'])) {
+		$GLOBALS['config']['sip']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
+	} else {
+		$GLOBALS['config']['sip']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['sip_dirty_path']);
 }
 
 ?>

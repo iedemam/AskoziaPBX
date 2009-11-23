@@ -70,25 +70,25 @@ if ($_POST) {
 		$iaxconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 		
 		write_config();
-		touch($d_iaxconfdirty_path);
+		touch($g['iax_dirty_path']);
 		header("Location: advanced_iax.php");
 		exit;
 	}
 }
 
-if (file_exists($d_iaxconfdirty_path)) {
+if (file_exists($g['iax_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= iax_conf_generate();
 		config_unlock();
 		
-		$retval |= iax_reload();
+		$retval |= pbx_exec("module reload chan_iax2.so");
 	}
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_iaxconfdirty_path);
+		unlink($g['iax_dirty_path']);
 	}
 }
 
@@ -105,10 +105,8 @@ function jb_enable_click() {
 	}
 }
 //-->
-</script><? 
-if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg); 
-?><form action="advanced_iax.php" method="post" name="iform" id="iform">
+</script>
+<form action="advanced_iax.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
 			<td valign="top" colspan="2" class="listtopic"><?=gettext("General");?></td>

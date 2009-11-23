@@ -115,7 +115,7 @@ if (file_exists($d_featuresconfdirty_path)) {
 		$retval |= features_conf_generate();
 		config_unlock();
 		
-		$retval |= features_reload();
+		$retval |= pbx_exec("module reload res_features.so");
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
 			unlink($d_featuresconfdirty_path);
@@ -124,8 +124,6 @@ if (file_exists($d_featuresconfdirty_path)) {
 }
 
 include("fbegin.inc");
-if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg);
 ?><form action="dialplan_transfers.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>

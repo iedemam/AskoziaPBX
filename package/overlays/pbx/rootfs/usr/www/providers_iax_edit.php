@@ -183,7 +183,7 @@ if ($_POST) {
 			$a_iaxproviders[] = $sp;
 		}
 		
-		touch($d_iaxconfdirty_path);
+		touch($g['iax_dirty_path']);
 		
 		write_config();
 		

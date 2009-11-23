@@ -162,7 +162,7 @@ if ($_POST && !file_exists($d_fwlock_path)) {
 				exec_rc_script_async("/etc/rc.firmware upgrade /ultmp/firmware.img.gz");
 				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing /etc/rc.firmware upgrade COMPLETE");
 
-				$savemsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
+				$keepmsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
 			}
 		}
 	}
@@ -173,8 +173,6 @@ if ($_POST && !file_exists($d_fwlock_path)) {
 }
 
 include("fbegin.inc");
-if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg, "keep");
 if ($fwstatus) echo display_firmware_update_info($fwstatus);
 
 if (file_exists($d_fwupunsupported_path)) {

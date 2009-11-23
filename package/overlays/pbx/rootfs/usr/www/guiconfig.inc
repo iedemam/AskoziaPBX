@@ -45,8 +45,6 @@ require_once("display.inc");
 require_once("javascript.inc");
 
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
-$d_sipconfdirty_path = $g['varrun_path'] . "/sipconf.dirty";
-$d_iaxconfdirty_path = $g['varrun_path'] . "/iaxconf.dirty";
 $d_extensionsconfdirty_path = $g['varrun_path'] . "/extensionsconf.dirty";
 $d_featuresconfdirty_path = $g['varrun_path'] . "/featuresconf.dirty";
 $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
@@ -72,68 +70,10 @@ if (file_exists($d_fwlock_path)) {
 	}
 }
 
-$specialnets = array("lan" => gettext("LAN net"));
-	
-$medias = array("auto" => gettext("autoselect"), 
-		"100full" => gettext("100BASE-TX full-duplex"),
-		"100half" => gettext("100BASE-TX half-duplex"), 
-		"10full" => gettext("10BASE-T full-duplex"),
-		"10half" => gettext("10BASE-T half-duplex"), 
-		"1000full" => gettext("1000BASE-TX full-duplex"));
-
-/*     1 (1 <<  0)      (0x1)  audio       g723   (G.723.1)
-      2 (1 <<  1)      (0x2)  audio        gsm   (GSM)
-      4 (1 <<  2)      (0x4)  audio       ulaw   (G.711 u-law)
-      8 (1 <<  3)      (0x8)  audio       alaw   (G.711 A-law)
-     16 (1 <<  4)     (0x10)  audio   g726aal2   (G.726 AAL2)
-     32 (1 <<  5)     (0x20)  audio      adpcm   (ADPCM)
-     64 (1 <<  6)     (0x40)  audio       slin   (16 bit Signed Linear PCM)
-    128 (1 <<  7)     (0x80)  audio      lpc10   (LPC10)
-    256 (1 <<  8)    (0x100)  audio       g729   (G.729A)
-    512 (1 <<  9)    (0x200)  audio      speex   (SpeeX)
-   1024 (1 << 10)    (0x400)  audio       ilbc   (iLBC)
-   2048 (1 << 11)    (0x800)  audio       g726   (G.726 RFC3551)
-   4096 (1 << 12)   (0x1000)  audio       g722   (G722)
-  65536 (1 << 16)  (0x10000)  image       jpeg   (JPEG image)
- 131072 (1 << 17)  (0x20000)  image        png   (PNG image)
- 262144 (1 << 18)  (0x40000)  video       h261   (H.261 Video)
- 524288 (1 << 19)  (0x80000)  video       h263   (H.263 Video)
-1048576 (1 << 20) (0x100000)  video      h263p   (H.263+ Video)
-2097152 (1 << 21) (0x200000)  video       h264   (H.264 Video)     */
-
-$topologies = array(
-	"public" => gettext("Public IP address"),
-	"natstatic" => gettext("NAT + static public IP"),
-	"natdynamichost" => gettext("NAT + dynamic public IP")
-);
-
-$dtmfmodes = array(
-	"auto",
-	"rfc2833",
-	"inband",
-	"info"
-);
-
 $applications = array(
 	"Echo" => gettext("Echos audio and video back to the caller as soon as it is received. Used to test connection delay."),
 	"Milliwatt" => gettext("Generates a constant 1000Hz tone. Used to test connection quality."),
 	"WakeMe" => gettext("Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.")
-);
-
-$prompt_languages = array(
-	"en-us" => gettext("English (US)"),
-	"en-gb" => gettext("English (UK)"),
-	"da" => gettext("Danish"),
-	"nl" => gettext("Dutch"),
-	"fr" => gettext("French (France)"),
-	"fr-ca" => gettext("French (Canada)"),
-	"de" => gettext("German"),
-	"it" => gettext("Italian"),
-	"jp" => gettext("Japanese"),
-	"pt-br" => gettext("Portuguese (Brazil)"),
-	"ru" => gettext("Russian"),
-	"es-es" => gettext("Spanish"),
-	"se" => gettext("Swedish")
 );
 
 $vm_email_languages = array(

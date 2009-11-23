@@ -72,13 +72,13 @@ if ($successful_action) {
 			touch($g['analog_dirty_path']);
 			break;
 		case "external":
-			touch($d_extensionsconfdirty_path);
+			touch($g['external_dirty_path']);
 			break;
 		case "iax":
-			touch($d_iaxconfdirty_path);
+			touch($g['iax_dirty_path']);
 			break;
 		case "sip":
-			touch($d_sipconfdirty_path);
+			touch($g['sip_dirty_path']);
 			break;
 		case "isdn":
 			touch($d_isdnconfdirty_path);	
@@ -89,7 +89,7 @@ if ($successful_action) {
 }
 
 /* dirty sip config? */
-if (file_exists($d_sipconfdirty_path)) {
+if (file_exists($g['sip_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
@@ -98,18 +98,18 @@ if (file_exists($d_sipconfdirty_path)) {
 		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
-		$retval |= sip_reload();
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("module reload chan_sip.so");
+		$retval |= pbx_exec("dialplan reload");
 		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_sipconfdirty_path);
+		unlink($g['sip_dirty_path']);
 	}
 }
 
 /* dirty iax config? */
-if (file_exists($d_iaxconfdirty_path)) {
+if (file_exists($g['iax_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
@@ -118,13 +118,13 @@ if (file_exists($d_iaxconfdirty_path)) {
 		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
-		$retval |= iax_reload();
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("module reload chan_iax2.so");
+		$retval |= pbx_exec("dialplan reload");
 		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_iaxconfdirty_path);
+		unlink($g['iax_dirty_path']);
 	}
 }
 
@@ -138,8 +138,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
-		$retval |= isdn_reload();
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("module reload chan_dahdi.so");
+		$retval |= pbx_exec("dahdi restart");
+		$retval |= pbx_exec("dialplan reload");
 		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
@@ -157,9 +158,10 @@ if (file_exists($g['analog_dirty_path'])) {
 		$retval |= extensions_conf_generate();
 		$retval |= voicemail_conf_generate();
 		config_unlock();
-		
-		$retval |= dahdi_chan_reload();
-		$retval |= extensions_reload();
+
+		$retval |= pbx_exec("module reload chan_dahdi.so");
+		$retval |= pbx_exec("dahdi restart");
+		$retval |= pbx_exec("dialplan reload");
 		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
@@ -169,7 +171,7 @@ if (file_exists($g['analog_dirty_path'])) {
 }
 
 /* dirty external config? */
-if (file_exists($d_extensionsconfdirty_path)) {
+if (file_exists($g['external_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
@@ -177,12 +179,12 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		$retval |= voicemail_conf_generate();
 		config_unlock();
 		
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("dialplan reload");
 		$retval |= pbx_exec("module reload app_voicemail.so");
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_extensionsconfdirty_path);
+		unlink($g['external_dirty_path']);
 	}
 }
 ?>
@@ -200,7 +202,6 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 </script>
 <form action="accounts_phones.php" method="post">
-<? if ($savemsg) display_info_box($savemsg); ?>
 <? $status_info = pbx_get_peer_statuses(); ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
@@ -241,7 +242,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<? $i = 0; foreach ($sip_phones as $p): ?>
+	<? foreach ($sip_phones as $p): ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -260,10 +261,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_sip_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="phones_sip_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
-	<? $i++; endforeach; ?>
+	<? endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="5" height="12">&nbsp;</td>
@@ -285,7 +286,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<? $i = 0; foreach ($iax_phones as $p): ?>
+	<? foreach ($iax_phones as $p): ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -304,10 +305,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_iax_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="phones_iax_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
-	<? $i++; endforeach; ?>
+	<? endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="5" height="12">&nbsp;</td>
@@ -329,7 +330,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<? $i = 0; foreach ($isdn_phones as $p): ?>
+	<? foreach ($isdn_phones as $p): ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -348,10 +349,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="phones_isdn_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="phones_isdn_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
-	<? $i++; endforeach; ?>
+	<? endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="5" height="12">&nbsp;</td>
@@ -373,7 +374,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<? $i = 0; foreach ($analog_phones as $p): ?>
+	<? foreach ($analog_phones as $p): ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -395,7 +396,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		<td valign="middle" nowrap class="list"><a href="phones_analog_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
-	<? $i++; endforeach; ?>
+	<? endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="5" height="12">&nbsp;</td>
@@ -412,12 +413,12 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	<tr>
 		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
-		<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Caller ID");?></td>
 		<td width="35%" class="listhdr"><?=gettext("Dialstring");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
-	<? $i = 0; foreach ($external_phones as $p): ?>
+	<? foreach ($external_phones as $p): ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -434,7 +435,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=htmlspecialchars($p['name']);?>&nbsp;</td><?
+		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td><?
 
 		if ($p['dialprovider'] == "sipuri" || $p['dialprovider'] == "iaxuri") {
 			?><td class="listr"><?=htmlspecialchars($p['dialstring']);?></td><?
@@ -442,10 +443,10 @@ if (file_exists($d_extensionsconfdirty_path)) {
 			?><td class="listr"><?=htmlspecialchars($p['dialstring'] . " via " . pbx_uniqid_to_name($p['dialprovider']));?></td><?
 		}
 
-		?><td valign="middle" nowrap class="list"><a href="phones_external_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+		?><td valign="middle" nowrap class="list"><a href="phones_external_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
-	<? $i++; endforeach; ?>
+	<? endforeach; ?>
 
 	<tr> 
 		<td class="list" colspan="5" height="12">&nbsp;</td>

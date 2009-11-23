@@ -182,4 +182,8 @@ function generate_self_signed_cert() {
 		return false;
 }
 
+function util_pwgen() {
+	return exec("openssl rand -base64 6");
+}
+
 ?>

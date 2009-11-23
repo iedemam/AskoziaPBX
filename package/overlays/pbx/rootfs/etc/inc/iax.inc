@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -36,23 +36,20 @@ require_once("functions.inc");
  * This should be changed to return by reference to eliminate a lot of repetitive code.
  */
 function iax_get_providers() {
-	global $config;
-	
-	if (!is_array($config['iax']['provider']))
-		$config['iax']['provider'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['iax']['provider'])) {
+		$GLOBALS['config']['iax']['provider'] = array();
+	}
 	iax_sort_providers();
-		
-	return $config['iax']['provider'];
+
+	return $GLOBALS['config']['iax']['provider'];
 }
 
 /**
  * Sorts providers by name
  */
 function iax_sort_providers() {
-	global $g, $config;
-
-	usort($config['iax']['provider'], "pbx_sort_by_name");	
+	usort($GLOBALS['config']['iax']['provider'], "pbx_sort_by_name");	
 }
 
 /**
@@ -60,44 +57,40 @@ function iax_sort_providers() {
  * If no phones are defined, the global array is initialized.
  */
 function iax_get_phones() {
-	global $config;
-	
-	if (!is_array($config['iax']['phone']))
-		$config['iax']['phone'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['iax']['phone'])) {
+		$GLOBALS['config']['iax']['phone'] = array();
+	}
 	iax_sort_phones();
 		
-	return $config['iax']['phone'];
+	return $GLOBALS['config']['iax']['phone'];
 }
 
 /**
  * Sorts phones by extension
  */
 function iax_sort_phones() {
-	global $g, $config;
-
-	usort($config['iax']['phone'], "pbx_sort_by_extension");	
+	usort($GLOBALS['config']['iax']['phone'], "pbx_sort_by_extension");
 }
 
 /**
  * Returns a specific phone based on its uniqid
  */
 function iax_get_phone($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['iax']['phone'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['iax']['phone'][$uniqid_map[$uniqid]];
 }
 
 /**
  * Returns an array of all assigned phone extensions
  */
 function iax_get_extensions() {
-	global $config;
-	
+
 	$extensions = array();
 
-	if (is_array($config['iax']['phone'])) {
-		foreach($config['iax']['phone'] as $phone) {
+	if (is_array($GLOBALS['config']['iax']['phone'])) {
+		foreach($GLOBALS['config']['iax']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}
@@ -109,12 +102,11 @@ function iax_get_extensions() {
  * Returns an array of all assigned provider dialpatterns
  */
 function iax_get_dialpatterns() {
-	global $config;
-	
+
 	$dialpatterns = array();
 
-	if (is_array($config['iax']['provider'])) {
-		foreach($config['iax']['provider'] as $provider) {
+	if (is_array($GLOBALS['config']['iax']['provider'])) {
+		foreach($GLOBALS['config']['iax']['provider'] as $provider) {
 			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
 		}
 	}
@@ -124,7 +116,6 @@ function iax_get_dialpatterns() {
 
 /**
  * Generates iax.conf
- * XXX : the way in which defaults are used must be normalized
  */
 function iax_conf_generate() {
 	global $config, $g;
@@ -305,48 +296,31 @@ EOD;
 	}
 
 	// phones
-	$iaxphones = iax_get_phones();
-	
-	foreach($iaxphones as $p) {
-		$conf .= "; {$p['callerid']}\n";
-		$conf .= "[{$p['extension']}]\n";
+	$phones = iax_get_phones();
+	foreach($phones as $p) {
+		if (isset($p['disabled'])) {
+			continue;
+		}
+		$conf .= "; Caller ID: " . $p['callerid'] . "\n";
+		if ($p['descr']) {
+			$conf .= "; Description: " . $p['descr'] . "\n";
+		}
+		$conf .= "[" . $p['extension'] . "]\n";
 		$conf .= "type=friend\n";
-		
-		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
-			$conf .= "auth=plaintext\n";
-			$conf .= "secret={$p['secret']}\n";
-		} else if ($p['authentication'] == "md5") {
-			$conf .= "auth=md5\n";
-			$conf .= "secret={$p['secret']}\n";
-		}
-		
-		$conf .= "context={$p['uniqid']}\n";
-		$conf .= "callerid={$p['callerid']} <{$p['extension']}>\n";
+		$conf .= "auth=" . $p['authentication'] . "\n";
+		$conf .= "secret=" . $p['secret'] . "\n";
+		$conf .= "context=" . $p['uniqid'] . "\n";
+		$conf .= "callerid=" . $p['callerid'] . " <" . $p['extension'] . ">\n";
 		$conf .= "host=dynamic\n";
-		
-		// language selection
-		if ($p['language']) {
-			$conf .= "language=" . $p['language'] . "\n";
-		} else {
-			$conf .= "language=en\n";
-		}
-		
-		if ($p['qualify'] == "0") {
-			$conf .= "qualify=no\n";
-		} else if ($p['qualify']) {
-			$conf .= "qualify=". $p['qualify']*1000 ."\n";
-		} else {
-			$conf .= "qualify=yes\n";
-		}
-		
+		$conf .= "language=" . $p['language'] . "\n";
+		$conf .= "qualify=yes\n";
 		$conf .= "transfer=mediaonly\n";
+
 		$conf .= "disallow=all\n";
-	
 		if(is_array($p['codec'])) {
-			foreach ($p['codec'] as $codec)
-				$conf .= "allow=$codec\n";
-		} else {
-			$conf .= "allow={$p['codec']}\n";
+			foreach ($p['codec'] as $codec) {
+				$conf .= "allow=" . $codec . "\n";
+			}
 		}
 
 		$conf .= util_gen_manual_attributes($p['manual-attribute']);
@@ -356,15 +330,68 @@ EOD;
 
 	fwrite($fd, $conf);
 	fclose($fd);
-	
+
 	return 0;
 }
 
-/**
- * Reloads chan_iax2 to apply newly generated configuration changes
- */
-function iax_reload() {
-	return pbx_exec("module reload chan_iax2.so");
+function iax_generate_default_phone() {
+	global $defaults;
+
+	$phone = array();
+
+	$phone['extension'] = pbx_get_next_default_phone_extension();
+	$phone['callerid'] = $defaults['accounts']['phones']['callerid'];
+	$phone['language'] = $defaults['accounts']['language'];
+	$phone['ringlength'] = $defaults['accounts']['phones']['ringlength'];
+	$phone['publicaccess'] = $defaults['accounts']['phones']['publicaccess'];
+	$phone['uniqid'] = "IAX-PHONE-" . uniqid(rand());
+
+	$phone['secret'] = util_pwgen();
+	$phone['codec'] = $defaults['accounts']['codec'];
+	$phone['authentication'] = $defaults['iax']['authentication'];
+
+	return $phone;
+}
+
+function iax_verify_phone($post, $errors) {
+
+	$phone = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_extension(&$phone, &$post, &$errors);
+	v_callerid(&$phone, &$post, &$errors);
+	v_optional('descr', &$phone, &$post);
+	v_public_access_editor(&$phone, &$post, &$errors);
+	v_notifications_editor(&$phone, &$post, &$errors);
+	v_voicemail_editor(&$phone, &$post, &$errors);
+	v_provider_access_selector(&$phone, &$post);
+	v_codecs(&$phone, &$post);
+	v_password(&$phone, &$post);
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'ringlength',
+		'authentication'
+	);
+	foreach ($trusted as $t) {
+		$phone[$t] = $post[$t];
+	}
+
+	return $phone;
+}
+
+function iax_save_phone($phone) {
+	global $g, $uniqid_map;
+
+	if (iax_get_phone($phone['uniqid'])) {
+		$GLOBALS['config']['iax']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
+	} else {
+		$GLOBALS['config']['iax']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['iax_dirty_path']);
 }
 
 ?>

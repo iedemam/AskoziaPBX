@@ -294,9 +294,6 @@ if (!isset($config['system']['disablepackagechecks']) && $syspart && !$ulpkgs) {
 
 
 include("fbegin.inc");
-if ($savemsg) display_info_box($savemsg);
-if ($input_errors) display_input_errors($input_errors);
-
 ?><script type="text/javascript" charset="utf-8">
 
 	var type;

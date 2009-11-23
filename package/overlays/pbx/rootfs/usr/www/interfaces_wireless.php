@@ -174,13 +174,8 @@ if ($_POST) {
 	}
 }
 
-?>
-
-<?php include("fbegin.inc"); ?>
-<script language="javascript" src="interfaces_wlan.js"></script>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
-
+include("fbegin.inc");
+?><script language="javascript" src="interfaces_wlan.js"></script>
 <form action="interfaces_wireless.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<? display_ports_tab_menu(); ?>

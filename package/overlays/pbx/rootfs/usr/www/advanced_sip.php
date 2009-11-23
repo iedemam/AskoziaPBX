@@ -86,31 +86,29 @@ if ($_POST) {
 		$sipconfig['manual-attribute'] = array_map("base64_encode", $_POST['manualattributes']);
 
 		write_config();
-		touch($d_sipconfdirty_path);
+		touch($g['sip_dirty_path']);
 		header("Location: advanced_sip.php");
 		exit;
 	}
 }
 
-if (file_exists($d_sipconfdirty_path)) {
+if (file_exists($g['sip_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= sip_conf_generate();
 		config_unlock();
 		
-		$retval |= sip_reload();
+		$retval |= pbx_exec("module reload chan_sip.so");
 	}
 	
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_sipconfdirty_path);
+		unlink($g['sip_dirty_path']);
 	}
 }
 
 include("fbegin.inc");
-if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg);
 ?><form action="advanced_sip.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>

@@ -63,7 +63,7 @@ if ($_POST) {
 			if (is_uploaded_file($_FILES['conffile']['tmp_name'])) {
 				if (config_install($_FILES['conffile']['tmp_name']) == 0) {
 					system_reboot();
-					$savemsg = gettext("The configuration has been restored. The PBX is now rebooting.");
+					$keepmsg = gettext("The configuration has been restored. The PBX is now rebooting.");
 				} else {
 					$errstr = gettext("The configuration could not be restored.");
 					if ($xmlerr)
@@ -76,11 +76,10 @@ if ($_POST) {
 		}
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-            <form action="system_backup.php" method="post" enctype="multipart/form-data">
-            <?php if ($input_errors) display_input_errors($input_errors); ?>
-            <?php if ($savemsg) display_info_box($savemsg, "keep"); ?>
+
+
+include("fbegin.inc");
+            ?><form action="system_backup.php" method="post" enctype="multipart/form-data">
               <table width="100%" border="0" cellspacing="0" cellpadding="6">
                 <tr> 
                   <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>

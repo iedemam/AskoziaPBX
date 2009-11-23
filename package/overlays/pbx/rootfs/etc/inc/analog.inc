@@ -37,32 +37,31 @@ require_once("functions.inc");
  * This should be changed to return by reference to eliminate a lot of repetitive code.
  */
 function analog_get_providers() {
-	global $config;
-	
-	if (!is_array($config['analog']['provider']))
-		$config['analog']['provider'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['analog']['provider'])) {
+		$GLOBALS['config']['analog']['provider'] = array();
+	}
 	analog_sort_providers();
-		
-	return $config['analog']['provider'];
+
+	return $GLOBALS['config']['analog']['provider'];
 }
 
 /**
  * Sorts providers by name
  */
 function analog_sort_providers() {
-	global $g, $config;
+	global $g;
 
-	usort($config['analog']['provider'], "pbx_sort_by_name");	
+	usort($GLOBALS['config']['analog']['provider'], "pbx_sort_by_name");	
 }
 
 /**
  * Returns a specific provider based on its uniqid
  */
 function analog_get_provider($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['analog']['provider'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['analog']['provider'][$uniqid_map[$uniqid]];
 }
 
 /**
@@ -70,44 +69,41 @@ function analog_get_provider($uniqid) {
  * If no phones are defined, the global array is initialized.
  */
 function analog_get_phones() {
-	global $config;
-	
-	if (!is_array($config['analog']['phone']))
-		$config['analog']['phone'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['analog']['phone'])) {
+		$GLOBALS['config']['analog']['phone'] = array();
+	}
 	analog_sort_phones();
-		
-	return $config['analog']['phone'];
+
+	return $GLOBALS['config']['analog']['phone'];
 }
 
 /**
  * Sorts phones by extension
  */
 function analog_sort_phones() {
-	global $g, $config;
 
-	usort($config['analog']['phone'], "pbx_sort_by_extension");	
+	usort($GLOBALS['config']['analog']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
  * Returns a specific phone based on its uniqid
  */
 function analog_get_phone($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['analog']['phone'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['analog']['phone'][$uniqid_map[$uniqid]];
 }
 
 /**
  * Returns an array of all assigned phone extensions
  */
 function analog_get_extensions() {
-	global $config;
-	
+
 	$extensions = array();
 
-	if (is_array($config['analog']['phone'])) {
-		foreach($config['analog']['phone'] as $phone) {
+	if (is_array($GLOBALS['config']['analog']['phone'])) {
+		foreach($GLOBALS['config']['analog']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}
@@ -119,12 +115,11 @@ function analog_get_extensions() {
  * Returns an array of all assigned provider dialpatterns
  */
 function analog_get_dialpatterns() {
-	global $config;
-	
+
 	$dialpatterns = array();
 
-	if (is_array($config['analog']['provider'])) {
-		foreach($config['analog']['provider'] as $provider) {
+	if (is_array($GLOBALS['config']['analog']['provider'])) {
+		foreach($GLOBALS['config']['analog']['provider'] as $provider) {
 			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
 		}
 	}
@@ -156,6 +151,7 @@ function analog_generate_default_phone() {
 	global $defaults;
 
 	$phone = array();
+
 	$phone['extension'] = pbx_get_next_default_phone_extension();
 	$phone['callerid'] = $defaults['accounts']['phones']['callerid'];
 	$phone['language'] = $defaults['accounts']['language'];
@@ -193,12 +189,12 @@ function analog_verify_phone($post, $errors) {
 }
 
 function analog_save_phone($phone) {
-	global $g, $config, $uniqid_map;
+	global $g, $uniqid_map;
 
 	if (analog_get_phone($phone['uniqid'])) {
-		$config['analog']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
+		$GLOBALS['config']['analog']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
 	} else {
-		$config['analog']['phone'][] = $phone;
+		$GLOBALS['config']['analog']['phone'][] = $phone;
 	}
 
 	write_config();
@@ -239,12 +235,12 @@ function analog_generate_default_provider() {
 }
 
 function analog_save_provider($provider) {
-	global $g, $config, $uniqid_map;
+	global $g, $uniqid_map;
     
 	if (analog_get_provider($port['uniqid'])) {
-		$config['analog']['provider'][$uniqid_map[$port['uniqid']]] = $provider;
+		$GLOBALS['config']['analog']['provider'][$uniqid_map[$port['uniqid']]] = $provider;
 	} else {
-		$config['analog']['provider'][] = $provider;
+		$GLOBALS['config']['analog']['provider'][] = $provider;
 	}
     
 	write_config();

@@ -61,12 +61,8 @@ if (file_exists($d_managerconfdirty_path)) {
 	}
 }
 
-?>
-
-<?php include("fbegin.inc"); ?>
+include("fbegin.inc"); ?>
 <form action="advanced_manager.php" method="post">
-<?php if ($savemsg) display_info_box($savemsg); ?>
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="20%" class="listhdrr"><?=gettext("Username");?></td>

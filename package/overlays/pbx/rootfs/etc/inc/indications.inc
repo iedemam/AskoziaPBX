@@ -737,11 +737,4 @@ EOD;
 
 }
 
-/**
- * Reloads res_indications to apply newly generated configuration changes
- */
-function indications_reload() {
-	return pbx_exec("module reload res_indications.so");
-}
-
 ?>

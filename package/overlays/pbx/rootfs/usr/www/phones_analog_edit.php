@@ -102,6 +102,7 @@ d_start("phones_analog_edit.php");
 	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
 
 	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+	d_spacer();
 
 
 d_submit();

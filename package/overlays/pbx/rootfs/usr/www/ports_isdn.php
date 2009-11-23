@@ -86,7 +86,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 		$retval |= isdn_conf_generate();
 		config_unlock();
 		
-		$retval |= isdn_reload();
+		$retval |= pbx_exec("module reload chan_iax2.so");
 	}
 	
 	$savemsg = get_std_save_message($retval);
@@ -95,12 +95,9 @@ if (file_exists($d_isdnconfdirty_path)) {
 	}
 }
 
-?>
 
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
-<form action="ports_isdn.php" method="post">
+include("fbegin.inc");
+?><form action="ports_isdn.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<? display_ports_tab_menu(); ?>
 	<tr>

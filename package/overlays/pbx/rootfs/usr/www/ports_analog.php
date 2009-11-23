@@ -54,12 +54,8 @@ $analog_ports = dahdi_get_ports("analog");
 
 include("fbegin.inc");
 
-?><form action="ports_analog.php" method="post"><?
-if ($savemsg) {
-	display_info_box($savemsg);
-}
-
-?><table width="100%" border="0" cellpadding="0" cellspacing="0">
+?><form action="ports_analog.php" method="post">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<? display_ports_tab_menu(); ?>
 	<tr>
 		<td class="tabcont">

@@ -438,9 +438,7 @@ function v_callerid($element, $post, $errors) {
 }
 
 function v_optional($field, $element, $post) {
-	if (strlen($post[$field])) {
-		$element[$field] = $post[$field];
-	}
+	$element[$field] = v_strip($post[$field]);
 }
 
 function v_public_access_editor($element, $post, $errors) {
@@ -452,7 +450,11 @@ function v_public_access_editor($element, $post, $errors) {
 }
 
 function v_is_publicname($s) {
-	return !preg_match("/^[a-zA-Z0-9\-\(\)\.]+$/", $s);
+	if (strlen($s)) {
+		return preg_match("/^[a-zA-Z0-9\-\(\)\.]+$/", $s);
+	} else {
+		return true;
+	}
 }
 
 function v_notifications_editor($element, $post, $errors) {
@@ -486,6 +488,28 @@ function v_provider_access_selector($element, $post) {
 
 function v_strip($s) {
 	return (strlen($s)) ? $s : false;
+}
+
+function v_codecs($element, $post) {
+	parse_str($post['a_codecs']);
+	parse_str($post['v_codecs']);
+	$element['codec'] = $post['codec'] = array_merge($ace, $vce);
+}
+
+function v_password($element, $post) {
+	if (!strlen($s)) {
+		$errors[] = gettext("Missing password.");
+	}
+	$element['secret'] = $post['secret'];
+}
+
+function v_dialstring($element, $post, $errors) {
+	if (!strlen($post['dialstring'])) {
+		$errors[] = gettext("Missing dialstring.");
+	} else if (!preg_match("/^[a-zA-Z0-9\-\.\+\@]+$/", $post['dialstring'])) {
+		$errors[] = gettext("An invalid dialstring was entered.");
+	}
+	$element['dialstring'] = $post['dialstring'];
 }
 
 ?>

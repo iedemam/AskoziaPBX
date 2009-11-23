@@ -81,11 +81,4 @@ function features_conf_generate() {
 	return 0;
 }
 
-/**
- * Reloads res_features to apply newly generated configuration changes
- */
-function features_reload() {
-	return pbx_exec("module reload res_features.so");
-}
-
 ?>

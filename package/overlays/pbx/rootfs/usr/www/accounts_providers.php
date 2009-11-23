@@ -75,10 +75,10 @@ if ($successful_action) {
 			touch($d_extensionsconfdirty_path);
 			break;
 		case "iax":
-			touch($d_iaxconfdirty_path);
+			touch($g['iax_dirty_path']);
 			break;
 		case "sip":
-			touch($d_sipconfdirty_path);
+			touch($g['sip_dirty_path']);
 			break;
 		case "isdn":
 			touch($d_isdnconfdirty_path);	
@@ -89,7 +89,7 @@ if ($successful_action) {
 }
 
 /* dirty sip config? */
-if (file_exists($d_sipconfdirty_path)) {
+if (file_exists($g['sip_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
@@ -97,18 +97,18 @@ if (file_exists($d_sipconfdirty_path)) {
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= sip_reload();
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("module reload chan_sip.so");
+		$retval |= pbx_exec("dialplan reload");
 	}
 	
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_sipconfdirty_path);
+		unlink($g['sip_dirty_path']);
 	}
 }
 
 /* dirty iax config? */
-if (file_exists($d_iaxconfdirty_path)) {
+if (file_exists($g['iax_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
@@ -116,13 +116,13 @@ if (file_exists($d_iaxconfdirty_path)) {
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= iax_reload();
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("module reload chan_iax2.so");
+		$retval |= pbx_exec("dialplan reload");
 	}
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_iaxconfdirty_path);
+		unlink($g['iax_dirty_path']);
 	}
 }
 
@@ -135,8 +135,8 @@ if (file_exists($d_isdnconfdirty_path)) {
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= isdn_reload();
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("module reload chan_iax2.so");
+		$retval |= pbx_exec("dialplan reload");
 	}
 
 	$savemsg = get_std_save_message($retval);
@@ -153,9 +153,10 @@ if (file_exists($g['analog_dirty_path'])) {
 		$retval |= dahdi_generate_chan_conf();
 		$retval |= extensions_conf_generate();
 		config_unlock();
-		
-		$retval |= dahdi_chan_reload();
-		$retval |= extensions_reload();
+
+		$retval |= pbx_exec("module reload chan_dahdi.so");
+		$retval |= pbx_exec("dahdi restart");
+		$retval |= pbx_exec("dialplan reload");
 	}
 
 	$savemsg = get_std_save_message($retval);
@@ -178,7 +179,6 @@ if (file_exists($g['analog_dirty_path'])) {
 
 </script>
 <form action="accounts_providers.php" method="post">
-<? if ($savemsg) display_info_box($savemsg); ?>
 <? $status_info = pbx_get_peer_statuses(); ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">

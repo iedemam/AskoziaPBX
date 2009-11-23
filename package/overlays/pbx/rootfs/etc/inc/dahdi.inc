@@ -359,11 +359,4 @@ function dahdi_configure() {
 	unlink_if_exists($g['dahdi_dirty_path']);
 }
 
-function dahdi_chan_reload() {
-
-	$res = 0;
-	$res |= pbx_exec("module reload chan_dahdi.so");
-	$res |= pbx_exec("dahdi restart");
-
-	return $res;
-}
+?>

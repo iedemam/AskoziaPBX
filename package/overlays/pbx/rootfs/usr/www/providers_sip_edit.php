@@ -192,7 +192,7 @@ if ($_POST) {
 			$a_sipproviders[] = $sp;
 		}
 		
-		touch($d_sipconfdirty_path);
+		touch($g['sip_dirty_path']);
 		
 		write_config();
 		

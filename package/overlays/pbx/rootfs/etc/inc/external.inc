@@ -35,49 +35,103 @@ require_once("functions.inc");
  * If no phones are defined, the global array is initialized.
  */
 function external_get_phones() {
-	global $config;
-	
-	if (!is_array($config['external']['phone']))
-		$config['external']['phone'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['external']['phone'])) {
+		$GLOBALS['config']['external']['phone'] = array();
+	}
 	external_sort_phones();
-		
-	return $config['external']['phone'];
+
+	return $GLOBALS['config']['external']['phone'];
 }
 
 /**
  * Sorts phones by extension
  */
 function external_sort_phones() {
-	global $g, $config;
-
-	usort($config['external']['phone'], "pbx_sort_by_extension");	
+	usort($GLOBALS['config']['external']['phone'], "pbx_sort_by_extension");
 }
 
 /**
  * Returns a specific phone based on its uniqid
  */
 function external_get_phone($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['external']['phone'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['external']['phone'][$uniqid_map[$uniqid]];
 }
 
 /**
  * Returns an array of all assigned phone extensions
  */
 function external_get_extensions() {
-	global $config;
-	
+
 	$extensions = array();
 
-	if (is_array($config['external']['phone'])) {
-		foreach($config['external']['phone'] as $phone) {
+	if (is_array($GLOBALS['config']['external']['phone'])) {
+		foreach($GLOBALS['config']['external']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}
 
 	return $extensions;
+}
+
+
+
+
+function external_generate_default_phone() {
+	global $defaults;
+
+	$phone = array();
+
+	$phone['extension'] = pbx_get_next_default_phone_extension();
+	$phone['callerid'] = $defaults['accounts']['phones']['callerid'];
+	$phone['language'] = $defaults['accounts']['language'];
+	$phone['ringlength'] = $defaults['accounts']['phones']['ringlength'];
+	$phone['uniqid'] = "EXTERNAL-PHONE-" . uniqid(rand());
+
+	$phone['dialprovider'] = $defaults['accounts']['phones']['dialprovider'];
+
+	return $phone;
+}
+
+function external_verify_phone($post, $errors) {
+
+	$phone = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_extension(&$phone, &$post, &$errors);
+	v_callerid(&$phone, &$post, &$errors);
+	v_optional('descr', &$phone, &$post);
+	v_public_access_editor(&$phone, &$post, &$errors);
+	v_notifications_editor(&$phone, &$post, &$errors);
+	v_voicemail_editor(&$phone, &$post, &$errors);
+	v_dialstring(&$phone, &$post, &$errors);
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'ringlength',
+		'dialprovider'
+	);
+	foreach ($trusted as $t) {
+		$phone[$t] = $post[$t];
+	}
+
+	return $phone;
+}
+
+function external_save_phone($phone) {
+	global $g, $uniqid_map;
+
+	if (external_get_phone($phone['uniqid'])) {
+		$GLOBALS['config']['external']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
+	} else {
+		$GLOBALS['config']['external']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['external_dirty_path']);
 }
 
 ?>

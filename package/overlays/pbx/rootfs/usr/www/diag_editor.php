@@ -65,10 +65,6 @@ if ($_POST) {
 }
 
 include("fbegin.inc");
-
-if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg);
-
 ?><form action="diag_editor.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<?php if ($mode == "edit"): ?>

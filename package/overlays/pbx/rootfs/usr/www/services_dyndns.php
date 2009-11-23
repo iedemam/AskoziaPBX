@@ -157,8 +157,6 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
             <form action="services_dyndns.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0" summary="content pane">
                 <tr> 

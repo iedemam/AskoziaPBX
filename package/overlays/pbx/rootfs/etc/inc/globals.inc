@@ -52,7 +52,10 @@ $g = array(
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
 	"dahdi_dirty_path" => "/var/run/dahdi.dirty",
-	"analog_dirty_path" => "/var/run/analog.dirty"
+	"analog_dirty_path" => "/var/run/analog.dirty",
+	"sip_dirty_path" => "/var/run/sip.dirty",
+	"iax_dirty_path" => "/var/run/iax.dirty",
+	"external_dirty_path" => "/var/run/external.dirty"
 );
 
 $defaults = array();
@@ -68,70 +71,25 @@ $defaults['dahdi']['bri']['coding'] = 'ami';
 $defaults['accounts']['language'] = 'en-us';
 $defaults['accounts']['codec'] = array('ulaw');
 
-$defaults['accounts']['phones']['ringlength'] = "indefinitely";
+$defaults['accounts']['phones']['ringlength'] = 'indefinitely';
 $defaults['accounts']['phones']['default-extension-start'] = 101;
-$defaults['accounts']['phones']['callerid'] = "Default Extension";
-$defaults['accounts']['phones']['publicaccess'] = "enabled";
+$defaults['accounts']['phones']['callerid'] = 'Default Extension';
+$defaults['accounts']['phones']['dialprovider'] = 'sipuri';
+
+$defaults['sip']['dtmfmode'] = 'auto';
+$defaults['sip']['natmode'] = 'yes';
+
+$defaults['iax']['authentication'] = 'md5';
 
 //
-$defaults['featuremap'] = array();
-$defaults['featuremap']['attendedtransfer'] = "**";
-$defaults['featuremap']['blindtransfer'] = "##";
-$defaults['featuremap']['featuredigittimeout'] = "500";
-$defaults['featuremap']['atxfernoanswertimeout'] = "15";
-$defaults['featuremap']['transferdigittimeout'] = "3";
 
-$defaults['iax'] = array();
-$defaults['iax']['port'] = "4569";
-$defaults['iax']['authentication'] = "plaintext";
-$defaults['iax']['provider'] = array();
-$defaults['iax']['provider']['calleridsource'] = "phones";
-
-$defaults['internationalization'] = array();
-$defaults['internationalization']['prompt-language'] = "en";
-
-$defaults['isdn'] = array();
-$defaults['isdn']['interface'] = array();
-$defaults['isdn']['interface']['name'] = "(" . gettext("unconfigured") . ")";
-$defaults['isdn']['law'] = "alaw";
-$defaults['isdn']['nationalprefix'] = "0";
-$defaults['isdn']['internationalprefix'] = "00";
-
-$defaults['parking'] = array();
-$defaults['parking']['parkext'] = "700";
-$defaults['parking']['parkposstart'] = "701";
-$defaults['parking']['parkposend'] = "720";
-$defaults['parking']['parktime'] = "30";
-
-$defaults['qos'] = array();
-$defaults['qos']['qualify'] = "2";
-
-$defaults['sip'] = array();
-$defaults['sip']['port'] = "5060";
-$defaults['sip']['defaultexpiry'] = "120";
-$defaults['sip']['minexpiry'] = "60";
-$defaults['sip']['maxexpiry'] = "3600";
-$defaults['sip']['natmode'] = "yes";
-$defaults['sip']['phone'] = array();
-$defaults['sip']['phone']['calllimit'] = "2";
-$defaults['sip']['phone']['busylimit'] = "1";
-$defaults['sip']['provider'] = array();
-$defaults['sip']['provider']['calleridsource'] = "phones";
 
 $defaults['storage']['system-partition-offset-megabytes'] = "64";
 $defaults['storage']['system-media-minimum-size'] = "96";
-
-$defaults['syslog'] = array();
-$defaults['syslog']['nentries'] = "100";
 
 $defaults['system'] = array();
 $defaults['system']['username'] = "admin";
 $defaults['system']['timeservers'] = "pool.ntp.org";
 $defaults['system']['timeupdateinterval'] = "4-hours";
-
-$defaults['webgui'] = array();
-$defaults['webgui']['protocol'] = "https";
-
-$defaults['voicemail']['authtype'] = "auto";
 
 ?>

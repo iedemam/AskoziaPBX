@@ -189,9 +189,9 @@ if ($_POST) {
 		$savemsg = get_std_save_message($retval);
 	}
 }
-?>
-<?php include("fbegin.inc"); ?>
-<script type="text/JavaScript">
+
+include("fbegin.inc");
+?><script type="text/JavaScript">
 <!--
 	<?=javascript_dyndns("functions");?>
 	<?=javascript_lan_dhcp("functions");?>
@@ -204,8 +204,6 @@ if ($_POST) {
 //-->
 </script>
 <form action="ports_lan.php" method="post" name="iform" id="iform">
-<?php if ($input_errors) display_input_errors($input_errors); ?>
-<?php if ($savemsg) display_info_box($savemsg); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<? display_ports_tab_menu(); ?>
 	<tr>
@@ -284,11 +282,18 @@ if ($_POST) {
 				<tr> 
 					<td width="22%" valign="top" class="vncellreq"><?=gettext("Topology");?></td>
 					<td width="78%" class="vtable">
-						<select name="topology" class="formfld" id="topology">
-							<? foreach ($topologies as $topo => $tfriendly): ?>
-							<option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option>
-							<? endforeach; ?>
-						</select>
+						<select name="topology" class="formfld" id="topology"><?
+
+						$topologies = array(
+							"public" => gettext("Public IP address"),
+							"natstatic" => gettext("NAT + static public IP"),
+							"natdynamichost" => gettext("NAT + dynamic public IP")
+						);
+						foreach ($topologies as $topo => $tfriendly) {
+							?><option value="<?=$topo;?>" <? if ($topo == $pconfig['topology']) echo "selected"; ?>><?=$tfriendly;?></option><?
+						}
+
+						?></select>
 						<br>
 						<span class="vexpl">
 							<ul>

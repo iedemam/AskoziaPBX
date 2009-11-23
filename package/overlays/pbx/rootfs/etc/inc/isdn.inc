@@ -464,11 +464,4 @@ function isdn_configure() {
 	return $res;
 }
 
-/**
- * Reloads chan_capi to apply newly generated configuration changes
- */
-function isdn_reload() {
-	return pbx_exec("module reload chan_capi.so");
-}
-
 ?>

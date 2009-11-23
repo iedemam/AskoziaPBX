@@ -86,16 +86,8 @@ include("fbegin.inc");
 	});
 
 //-->
-</script><?
-
-if ($input_errors) {
-	display_input_errors($input_errors);
-}
-if ($savemsg) {
-	display_info_box($savemsg);
-}
-
-?><form action="services_voicemail.php" method="post" name="iform" id="iform">
+</script>
+<form action="services_voicemail.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
 			<td colspan="2" valign="top" class="listtopic"><?=gettext("Voicemail to E-Mail Presentation");?></td>

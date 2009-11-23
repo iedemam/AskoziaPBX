@@ -132,7 +132,7 @@ if ($_POST) {
 			$retval |= system_timezone_configure();
  			$retval |= system_cron_configure();
 			$retval |= indications_conf_generate();
-			$retval |= indications_reload();
+			$retval |= pbx_exec("module reload res_indications.so");
 			config_unlock();
 		}
 		
@@ -140,12 +140,9 @@ if ($_POST) {
 	}
 }
 
+
 include("fbegin.inc");
-
-if ($input_errors) display_input_errors($input_errors);
-if ($savemsg) display_info_box($savemsg); ?>
-
-<form action="system.php" method="post">
+?><form action="system.php" method="post">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
 	<tr> 
 		<td colspan="2" valign="top" class="listtopic"><?=gettext("Security");?></td>

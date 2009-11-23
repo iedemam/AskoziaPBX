@@ -64,7 +64,7 @@ if (file_exists($d_extensionsconfdirty_path)) {
 		$retval |= extensions_conf_generate();
 		config_unlock();
 
-		$retval |= extensions_reload();
+		$retval |= pbx_exec("dialplan reload");
 	}
 
 	$savemsg = get_std_save_message($retval);
@@ -75,8 +75,6 @@ if (file_exists($d_extensionsconfdirty_path)) {
 
 include("fbegin.inc");
 ?><form action="dialplan_callgroups.php" method="post">
-<?php if ($savemsg) display_info_box($savemsg); ?>
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="15%" class="listhdrr"><?=gettext("Name");?></td>

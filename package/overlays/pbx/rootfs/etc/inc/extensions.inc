@@ -163,12 +163,12 @@ EOD;
 			continue;
 		}
 		if ($p['publicaccess'] == "enabled") {
-			$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
+			$conf .= "; external phone : {$p['callerid']} - <{$p['extension']}>\n";
 			if (!$p['publicname']) {
-				$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['name']} - <{$p['extension']}>)\n";
+				$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
 				$conf .= extensions_generate_external_phone_extension($p, true);
 			} else {
-				$conf .= "exten => {$p['publicname']},1,NoOp(public calling external phone: {$p['name']} - <{$p['extension']}>)\n";
+				$conf .= "exten => {$p['publicname']},1,NoOp(public calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
 				$conf .= extensions_generate_external_phone_extension($p, true, false, $p['publicname']);
 			}
 		}
@@ -239,8 +239,8 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		$conf .= "; external phone : {$p['name']} - <{$p['extension']}>\n";
-		$conf .= "exten => {$p['extension']},1,NoOp(internal calling external phone: {$p['name']} - <{$p['extension']}>)\n";
+		$conf .= "; external phone : {$p['callerid']} - <{$p['extension']}>\n";
+		$conf .= "exten => {$p['extension']},1,NoOp(internal calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
 		$conf .= extensions_generate_external_phone_extension($p);
 	}
 
@@ -902,13 +902,6 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 	} else {
 		return "ERROR: unmatched case in extensions_generate_extension_from_uniqid!";
 	}
-}
-
-/**
- * Reloads dialplan to apply newly generated configuration changes
- */
-function extensions_reload() {
-	return pbx_exec("dialplan reload");
 }
 
 ?>

@@ -58,7 +58,7 @@ if (file_exists($d_conferencingconfdirty_path)) {
 	$retval |= extensions_conf_generate();
 	config_unlock();
 	
-	$retval |= extensions_reload();
+	$retval |= pbx_exec("dialplan reload");
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
@@ -66,12 +66,9 @@ if (file_exists($d_conferencingconfdirty_path)) {
 	}
 }
 
-?>
 
-<?php include("fbegin.inc"); ?>
-<form action="services_conferencing.php" method="post">
-<?php if ($savemsg) display_info_box($savemsg); ?>
-
+include("fbegin.inc");
+?><form action="services_conferencing.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="20%" class="listhdrr"><?=gettext("Room Number");?></td>
