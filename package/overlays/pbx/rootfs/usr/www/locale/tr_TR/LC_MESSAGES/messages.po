@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,6 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "Portekiz"
-
-msgid "unconfigured"
-msgstr "ayarlanmamış"
 
 msgid "Package activated successfully."
 msgstr "Paket başarıyla etkinleştirildi."
@@ -79,6 +76,17 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "bu şifreyi kullan"
+
+msgid "Missing dialstring."
+msgstr ""
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "Geçerli dahili hat girilmeli."
 
 msgid "Subject"
 msgstr "Konu"
@@ -301,6 +309,28 @@ msgid ""
 " </ul>\n"
 msgstr ""
 
+msgid "English (US)"
+msgstr "İngilizce (US)"
+
+msgid "English (UK)"
+msgstr "İngilizce (UK)"
+
+msgid "French (Canada)"
+msgstr "Fransızca (Kanada)"
+
+msgid "German"
+msgstr "Almanca"
+
+msgid "Italian"
+msgstr "İtalyanca"
+
+msgid "Russian"
+msgstr "Rusca"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "İspanyolça (resmi)"
+
 msgid "Language"
 msgstr "Dil"
 
@@ -326,23 +356,6 @@ msgstr "Seçenekler"
 msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
-msgstr ""
-
-msgid "Call Limit"
-msgstr "Arama Limiti"
-
-msgid "calls"
-msgstr "aramalar"
-
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-
-msgid "Busy Limit"
-msgstr "Meşgul Limiti"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
 msgstr ""
 
 msgid "Logic"
@@ -628,36 +641,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tüm haklar saklı."
 msgid "view license"
 msgstr "lisansa bak"
 
-msgid "LAN net"
-msgstr "LAN ağ"
-
-msgid "autoselect"
-msgstr ""
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Kamusal İP adres"
-
-msgid "NAT + static public IP"
-msgstr "NAT + sabit kamusal IP"
-
-msgid "NAT + dynamic public IP"
-msgstr ""
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -670,45 +653,6 @@ msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr ""
-
-msgid "English (US)"
-msgstr "İngilizce (US)"
-
-msgid "English (UK)"
-msgstr "İngilizce (UK)"
-
-msgid "Danish"
-msgstr "Danimarkaca"
-
-msgid "Dutch"
-msgstr "Hollandaca"
-
-msgid "French (France)"
-msgstr "Fransızca (Fransa)"
-
-msgid "French (Canada)"
-msgstr "Fransızca (Kanada)"
-
-msgid "German"
-msgstr "Almanca"
-
-msgid "Italian"
-msgstr "İtalyanca"
-
-msgid "Japanese"
-msgstr "Japonca"
-
-msgid "Portuguese (Brazil)"
-msgstr "Portekizce (Brezilya)"
-
-msgid "Russian"
-msgstr "Rusca"
-
-msgid "Spanish"
-msgstr "İspanyolca"
-
-msgid "Swedish"
-msgstr "İsveçce"
 
 msgid "English"
 msgstr "İngilizce"
@@ -730,8 +674,14 @@ msgstr "Çekoslovakca"
 msgid "Czech (formal)"
 msgstr "Çek dili (resmi)"
 
+msgid "Danish"
+msgstr "Danimarkaca"
+
 msgid "Danish (formal)"
 msgstr "Danimarkaca (resmi)"
+
+msgid "Dutch"
+msgstr "Hollandaca"
 
 msgid "Dutch (formal)"
 msgstr "Holandaca (resmi)"
@@ -781,6 +731,9 @@ msgstr "Rusça (resmi)"
 
 msgid "Spanish (formal)"
 msgstr "İspanyolça (resmi)"
+
+msgid "Swedish"
+msgstr "İsveçce"
 
 msgid "Turkish"
 msgstr ""
@@ -1179,9 +1132,6 @@ msgstr "Bu telefon silinsin mi?"
 msgid "delete phone"
 msgstr "telefonu sil"
 
-msgid "Name"
-msgstr "Ad"
-
 msgid "Dialstring"
 msgstr ""
 
@@ -1190,6 +1140,9 @@ msgid ""
 "(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
 "Click an account type below to get started."
 msgstr ""
+
+msgid "Name"
+msgstr "Ad"
 
 msgid "Pattern(s)"
 msgstr "Örüntü(ler)"
@@ -2123,11 +2076,13 @@ msgstr "Gizli"
 msgid "Call Notifications & Voicemail"
 msgstr "Lokasyon"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "Harici Hattı Düzenle"
 
-msgid "Descriptive name for this phone."
-msgstr "Bu telefon için açıklayıcı bir isim."
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2136,30 +2091,22 @@ msgid "Provider"
 msgstr "Sunucu"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr "Bu telefona ulaşmak için dahili hat"
 
 #, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
 msgstr "Bu telefona ulaşmak için dahili hat"
 
-msgid "Edit IAX Account"
-msgstr "İAX Hesabı düzenle"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Geçerli Arayıcı İD'si girlmeli."
-
-msgid "A valid secret must be specified."
-msgstr "Geçerli bir şifre belirtilmeli."
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "Analog düzenle"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "Bu hesabın şifresi"
 
 msgid "plaintext"
 msgstr "şifresiz belge"
@@ -2167,34 +2114,25 @@ msgstr "şifresiz belge"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr ""
-
 #, fuzzy
 msgid "Codecs"
 msgstr "Ses Kodlayıcı-kodçözücüsü"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "Gelişmiş Ayarlar"
-
 msgid "Edit ISDN Line"
 msgstr "İSDN Hattını düzenle"
 
-msgid "Edit SIP Account"
-msgstr "SİP Hesabını Düzenle"
+msgid "A valid Caller ID must be specified."
+msgstr "Geçerli Arayıcı İD'si girlmeli."
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
+msgid "A phone with this extension already exists."
 msgstr ""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-
-msgid "This account's password."
-msgstr "Bu hesabın şifresi"
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "SİP Telefonları"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Gelişmiş Ayarlar"
 
 msgid "Dialplan Element Library"
@@ -2463,6 +2401,15 @@ msgstr ""
 msgid "Topology"
 msgstr ""
 
+msgid "Public IP address"
+msgstr "Kamusal İP adres"
+
+msgid "NAT + static public IP"
+msgstr "NAT + sabit kamusal IP"
+
+msgid "NAT + dynamic public IP"
+msgstr ""
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 
@@ -2565,8 +2512,20 @@ msgstr "Bu hatta atanmış telefon numarası."
 msgid "Analog Interface"
 msgstr "Analog Arayüz"
 
+msgid "Edit IAX Account"
+msgstr "İAX Hesabı düzenle"
+
 msgid "A valid username must be specified."
 msgstr "Geçerli kullanıcı adı belirtilmeli."
+
+msgid "A valid secret must be specified."
+msgstr "Geçerli bir şifre belirtilmeli."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+
+msgid "This account's password and authentication scheme."
+msgstr ""
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr ""
@@ -2578,6 +2537,9 @@ msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr ""
+
+msgid "Edit SIP Account"
+msgstr "SİP Hesabını Düzenle"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr ""
@@ -3136,6 +3098,55 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "unconfigured"
+#~ msgstr "ayarlanmamış"
+
+#~ msgid "Call Limit"
+#~ msgstr "Arama Limiti"
+
+#~ msgid "calls"
+#~ msgstr "aramalar"
+
+#~ msgid "Busy Limit"
+#~ msgstr "Meşgul Limiti"
+
+#~ msgid "LAN net"
+#~ msgstr "LAN ağ"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "Fransızca (Fransa)"
+
+#~ msgid "Japanese"
+#~ msgstr "Japonca"
+
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "Portekizce (Brezilya)"
+
+#~ msgid "Spanish"
+#~ msgstr "İspanyolca"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "Bu telefon için açıklayıcı bir isim."
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "Gelişmiş Ayarlar"
 
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr "Bu telefonu aramak için kullanılan dahili hat."

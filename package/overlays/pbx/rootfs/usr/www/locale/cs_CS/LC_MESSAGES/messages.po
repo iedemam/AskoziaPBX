@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,6 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "Portugalsko"
-
-msgid "unconfigured"
-msgstr ""
 
 msgid "Package activated successfully."
 msgstr "Balíček byl úspěšně aktivován."
@@ -79,6 +76,16 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "použij toto heslo"
+
+msgid "Missing dialstring."
+msgstr ""
+
+msgid "An invalid dialstring was entered."
 msgstr ""
 
 msgid "Subject"
@@ -336,6 +343,28 @@ msgstr ""
 "před | nebo +)</li>\n"
 " </ul>\n"
 
+msgid "English (US)"
+msgstr "Angličtina (Spojené státy)"
+
+msgid "English (UK)"
+msgstr "Angličtina (Spojené království)"
+
+msgid "French (Canada)"
+msgstr "Francouzština (Kanada)"
+
+msgid "German"
+msgstr "Němčina"
+
+msgid "Italian"
+msgstr "Italština"
+
+msgid "Russian"
+msgstr "Ruština"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "Španělština (oficiální)"
+
 msgid "Language"
 msgstr "Jazyk"
 
@@ -363,26 +392,6 @@ msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
 msgstr ""
-
-msgid "Call Limit"
-msgstr "Počet hovorů"
-
-msgid "calls"
-msgstr "hovor(y)"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr "Povol pouze 'n' odchozích a 'n' příchozích hovorů (výchozí hodnota: 2)"
-
-msgid "Busy Limit"
-msgstr "Obsazeno při"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr ""
-"Status telefonu bude přepnut na 'obsazeno' při 'n' současně probíhajících "
-"hovorech (výchozí hodnota: 1)"
 
 msgid "Logic"
 msgstr ""
@@ -670,36 +679,6 @@ msgstr "AskoziaPBX  &copy; 2007-2008 IKT. Všechna práva vyhrazena."
 msgid "view license"
 msgstr "zobrazit licenci"
 
-msgid "LAN net"
-msgstr ""
-
-msgid "autoselect"
-msgstr ""
-
-msgid "100BASE-TX full-duplex"
-msgstr ""
-
-msgid "100BASE-TX half-duplex"
-msgstr ""
-
-msgid "10BASE-T full-duplex"
-msgstr ""
-
-msgid "10BASE-T half-duplex"
-msgstr ""
-
-msgid "1000BASE-TX full-duplex"
-msgstr ""
-
-msgid "Public IP address"
-msgstr "Veřejná adresa IP"
-
-msgid "NAT + static public IP"
-msgstr "NAT + veřejná statická IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + veřejná dynamická IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -712,45 +691,6 @@ msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr ""
-
-msgid "English (US)"
-msgstr "Angličtina (Spojené státy)"
-
-msgid "English (UK)"
-msgstr "Angličtina (Spojené království)"
-
-msgid "Danish"
-msgstr "Dánština"
-
-msgid "Dutch"
-msgstr "Holandština"
-
-msgid "French (France)"
-msgstr "Francouzština (Francie)"
-
-msgid "French (Canada)"
-msgstr "Francouzština (Kanada)"
-
-msgid "German"
-msgstr "Němčina"
-
-msgid "Italian"
-msgstr "Italština"
-
-msgid "Japanese"
-msgstr "Japonština"
-
-msgid "Portuguese (Brazil)"
-msgstr "Portugalština (Brazílie)"
-
-msgid "Russian"
-msgstr "Ruština"
-
-msgid "Spanish"
-msgstr "Španělština"
-
-msgid "Swedish"
-msgstr "Švédština"
 
 msgid "English"
 msgstr "Angličtina"
@@ -773,8 +713,14 @@ msgstr ""
 msgid "Czech (formal)"
 msgstr "Francouzština (oficiální)"
 
+msgid "Danish"
+msgstr "Dánština"
+
 msgid "Danish (formal)"
 msgstr "Dánština (oficiální)"
+
+msgid "Dutch"
+msgstr "Holandština"
 
 msgid "Dutch (formal)"
 msgstr "Holandština (oficiální)"
@@ -826,6 +772,9 @@ msgstr "Ruština (oficiální)"
 
 msgid "Spanish (formal)"
 msgstr "Španělština (oficiální)"
+
+msgid "Swedish"
+msgstr "Švédština"
 
 msgid "Turkish"
 msgstr ""
@@ -1224,9 +1173,6 @@ msgstr "Opravdu chcete smazat tento telefonní účet?"
 msgid "delete phone"
 msgstr "smazat účet"
 
-msgid "Name"
-msgstr "Název"
-
 msgid "Dialstring"
 msgstr ""
 
@@ -1238,6 +1184,9 @@ msgstr ""
 "Účty operátorů umožnují nastavit směrování do a z externích zdrojů (např. "
 "VoIP operátori nebo připojené ISDN / analogové hardwarové rozhraní). Pro "
 "začátek klikněte na příslušný typ účtu."
+
+msgid "Name"
+msgstr "Název"
 
 msgid "Pattern(s)"
 msgstr "Šablona(y)"
@@ -2156,11 +2105,13 @@ msgstr ""
 msgid "Call Notifications & Voicemail"
 msgstr ""
 
-msgid "Edit External Line"
-msgstr ""
+#, fuzzy
+msgid "Edit External Phone"
+msgstr "změnit položku"
 
-msgid "Descriptive name for this phone."
-msgstr ""
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2169,30 +2120,22 @@ msgid "Provider"
 msgstr ""
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
 #, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
 msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
-msgid "Edit IAX Account"
-msgstr ""
-
-msgid "A valid Caller ID must be specified."
-msgstr ""
-
-msgid "A valid secret must be specified."
-msgstr ""
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "změnit položku"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "Heslo k tomuto účtu."
 
 msgid "plaintext"
 msgstr ""
@@ -2200,34 +2143,25 @@ msgstr ""
 msgid "md5"
 msgstr ""
 
-msgid "This account's password and authentication scheme."
-msgstr ""
-
 #, fuzzy
 msgid "Codecs"
 msgstr "Audio kodeky"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "Upřesňující nastavení"
-
 msgid "Edit ISDN Line"
 msgstr ""
 
-msgid "Edit SIP Account"
-msgstr "Změnit účet SIP"
-
-msgid "A whole number of calls must be entered for the \"call limit.\""
+msgid "A valid Caller ID must be specified."
 msgstr ""
 
-msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgid "A phone with this extension already exists."
 msgstr ""
-
-msgid "This account's password."
-msgstr "Heslo k tomuto účtu."
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "SIP telefony"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Upřesňující nastavení"
 
 msgid "Dialplan Element Library"
@@ -2502,6 +2436,15 @@ msgstr ""
 msgid "Topology"
 msgstr "Topologie"
 
+msgid "Public IP address"
+msgstr "Veřejná adresa IP"
+
+msgid "NAT + static public IP"
+msgstr "NAT + veřejná statická IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + veřejná dynamická IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr "Veřejná adresa IP: tato PBX má routovatelnou IP adresu (vloženou výše)"
 
@@ -2608,7 +2551,19 @@ msgstr ""
 msgid "Analog Interface"
 msgstr ""
 
+msgid "Edit IAX Account"
+msgstr ""
+
 msgid "A valid username must be specified."
+msgstr ""
+
+msgid "A valid secret must be specified."
+msgstr ""
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+
+msgid "This account's password and authentication scheme."
 msgstr ""
 
 msgid "IAX proxy host URL or IP address and optional port."
@@ -2621,6 +2576,9 @@ msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr ""
+
+msgid "Edit SIP Account"
+msgstr "Změnit účet SIP"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr ""
@@ -3206,6 +3164,43 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Call Limit"
+#~ msgstr "Počet hovorů"
+
+#~ msgid "calls"
+#~ msgstr "hovor(y)"
+
+#, fuzzy
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr ""
+#~ "Povol pouze 'n' odchozích a 'n' příchozích hovorů (výchozí hodnota: 2)"
+
+#~ msgid "Busy Limit"
+#~ msgstr "Obsazeno při"
+
+#~ msgid ""
+#~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
+#~ "(default: 1)"
+#~ msgstr ""
+#~ "Status telefonu bude přepnut na 'obsazeno' při 'n' současně probíhajících "
+#~ "hovorech (výchozí hodnota: 1)"
+
+#~ msgid "French (France)"
+#~ msgstr "Francouzština (Francie)"
+
+#~ msgid "Japanese"
+#~ msgstr "Japonština"
+
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "Portugalština (Brazílie)"
+
+#~ msgid "Spanish"
+#~ msgstr "Španělština"
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "Upřesňující nastavení"
 
 #, fuzzy
 #~ msgid "telephones"

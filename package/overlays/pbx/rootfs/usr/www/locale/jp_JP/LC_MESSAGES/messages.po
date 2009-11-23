@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -21,9 +21,6 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "ポルトガル"
-
-msgid "unconfigured"
-msgstr "未設定"
 
 msgid "Package activated successfully."
 msgstr "パッケージが、有効になりました"
@@ -84,6 +81,18 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "このパスワードを使用"
+
+#, fuzzy
+msgid "Missing dialstring."
+msgstr "電話番号列"
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "有効な内線番号を入力する必要があります"
 
 msgid "Subject"
 msgstr "件名"
@@ -355,6 +364,28 @@ msgstr ""
 "せん)</li>\n"
 " </ul>\n"
 
+msgid "English (US)"
+msgstr "英語(アメリカ)"
+
+msgid "English (UK)"
+msgstr "英語(イギリス)"
+
+msgid "French (Canada)"
+msgstr "フランス語(カナダ)"
+
+msgid "German"
+msgstr "ドイツ語"
+
+msgid "Italian"
+msgstr "イタリア語"
+
+msgid "Russian"
+msgstr "ロシア語"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "スペイン語(公式)"
+
 msgid "Language"
 msgstr "言語"
 
@@ -381,23 +412,6 @@ msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
 msgstr ""
-
-msgid "Call Limit"
-msgstr "通話制限"
-
-msgid "calls"
-msgstr "通話"
-
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr "同時通話数を 'n' 通話に制限する(標準: 2)"
-
-msgid "Busy Limit"
-msgstr "話し中制限"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr "'n' 回線同時通話になると、'話し中'の状態に切り替える(標準: 1)"
 
 msgid "Logic"
 msgstr "ロジック"
@@ -700,36 +714,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 msgid "view license"
 msgstr "ライセンスを表示する"
 
-msgid "LAN net"
-msgstr "LAN net"
-
-msgid "autoselect"
-msgstr "自動選択"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Public IP address"
-
-msgid "NAT + static public IP"
-msgstr "NAT + static public IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynamic public IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -747,45 +731,6 @@ msgid ""
 msgstr ""
 "モーニングコールマネージャー:この内線番号でのモーニングコールを設定もしくは"
 "キャンセルする"
-
-msgid "English (US)"
-msgstr "英語(アメリカ)"
-
-msgid "English (UK)"
-msgstr "英語(イギリス)"
-
-msgid "Danish"
-msgstr "デンマーク語"
-
-msgid "Dutch"
-msgstr "オランダ語"
-
-msgid "French (France)"
-msgstr "フランス語(フランス)"
-
-msgid "French (Canada)"
-msgstr "フランス語(カナダ)"
-
-msgid "German"
-msgstr "ドイツ語"
-
-msgid "Italian"
-msgstr "イタリア語"
-
-msgid "Japanese"
-msgstr "日本語"
-
-msgid "Portuguese (Brazil)"
-msgstr "ポルトガル語(ブラジル)"
-
-msgid "Russian"
-msgstr "ロシア語"
-
-msgid "Spanish"
-msgstr "スペイン語"
-
-msgid "Swedish"
-msgstr "スウェーデン語"
 
 msgid "English"
 msgstr "英語"
@@ -807,8 +752,14 @@ msgstr "チェコ語"
 msgid "Czech (formal)"
 msgstr "チェコ語(公式)"
 
+msgid "Danish"
+msgstr "デンマーク語"
+
 msgid "Danish (formal)"
 msgstr "デンマーク語(公式)"
+
+msgid "Dutch"
+msgstr "オランダ語"
 
 msgid "Dutch (formal)"
 msgstr "オランダ語(公式)"
@@ -858,6 +809,9 @@ msgstr "ロシア語(公式)"
 
 msgid "Spanish (formal)"
 msgstr "スペイン語(公式)"
+
+msgid "Swedish"
+msgstr "スウェーデン語"
 
 msgid "Turkish"
 msgstr ""
@@ -1261,9 +1215,6 @@ msgstr "本当にこの電話機を削除しますか？"
 msgid "delete phone"
 msgstr "電話機の削除"
 
-msgid "Name"
-msgstr "名前"
-
 msgid "Dialstring"
 msgstr "電話番号列"
 
@@ -1274,6 +1225,9 @@ msgid ""
 msgstr ""
 "「接続回線設定」接続経路、及び着信させる外線の種類を設定します。種類を選択"
 "し、設定を開始して下さい。"
+
+msgid "Name"
+msgstr "名前"
 
 msgid "Pattern(s)"
 msgstr "パターン"
@@ -2255,11 +2209,13 @@ msgstr "パスワード"
 msgid "Call Notifications & Voicemail"
 msgstr "場所"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "外線の編集"
 
-msgid "Descriptive name for this phone."
-msgstr "この電話の判り易い名前"
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Internal extensionは、この電話にダイヤル可能"
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2268,31 +2224,22 @@ msgid "Provider"
 msgstr "プロバイダー(もしくは電話会社)"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr "この電話機に到達する為に使用される発信用電話会社"
 
 #, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
 msgstr "この電話機に到達する為に使用される発信用電話会社"
 
-msgid "Edit IAX Account"
-msgstr "IAXアカウントの編集"
-
-msgid "A valid Caller ID must be specified."
-msgstr "有効なCaller IDを指定する必要があります"
-
-msgid "A valid secret must be specified."
-msgstr "有効なパスワードを指定する必要があります"
-
-msgid "A phone with this extension already exists."
-msgstr "この内線番号の電話は、既に存在しています"
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "アナログの編集"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "このアカウントのパスワードを入力して下さい"
 
 msgid "plaintext"
 msgstr "プレーンテキスト"
@@ -2300,34 +2247,25 @@ msgstr "プレーンテキスト"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
-
 #, fuzzy
 msgid "Codecs"
 msgstr "オーディオコーデック"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "拡張設定"
-
 msgid "Edit ISDN Line"
 msgstr "ISDNの編集"
 
-msgid "Edit SIP Account"
-msgstr "SIPアカウントの設定"
+msgid "A valid Caller ID must be specified."
+msgstr "有効なCaller IDを指定する必要があります"
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "\"call limit.\"として、全体の秒数を入力する必要があります"
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "\"busy limit.\"として、全体の秒数を入力する必要があります"
-
-msgid "This account's password."
-msgstr "このアカウントのパスワードを入力して下さい"
+msgid "A phone with this extension already exists."
+msgstr "この内線番号の電話は、既に存在しています"
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "SIP電話機"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "拡張設定"
 
 msgid "Dialplan Element Library"
@@ -2627,6 +2565,15 @@ msgstr ""
 msgid "Topology"
 msgstr "接続形態"
 
+msgid "Public IP address"
+msgstr "Public IP address"
+
+msgid "NAT + static public IP"
+msgstr "NAT + static public IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynamic public IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 "パブリックIPアドレス:このPBXにはルーティング可能なIPアドレス(上記入力)があり"
@@ -2737,8 +2684,21 @@ msgstr "この回線に電話番号が割り当てられました"
 msgid "Analog Interface"
 msgstr "アナログ回線"
 
+msgid "Edit IAX Account"
+msgstr "IAXアカウントの編集"
+
 msgid "A valid username must be specified."
 msgstr "有効なユーザー名を指定する必要があります"
+
+msgid "A valid secret must be specified."
+msgstr "有効なパスワードを指定する必要があります"
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+"\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
+
+msgid "This account's password and authentication scheme."
+msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr ""
@@ -2754,6 +2714,9 @@ msgid ""
 msgstr ""
 "このデフォルトの電話番号(MSN)が、この回線に割り当てられました。個々のMSNマッ"
 "ピングは、下記で定義出来ます"
+
+msgid "Edit SIP Account"
+msgstr "SIPアカウントの設定"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr "有効な\"fromuser\"を指定する必要があります"
@@ -3390,6 +3353,72 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "unconfigured"
+#~ msgstr "未設定"
+
+#~ msgid "Call Limit"
+#~ msgstr "通話制限"
+
+#~ msgid "calls"
+#~ msgstr "通話"
+
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr "同時通話数を 'n' 通話に制限する(標準: 2)"
+
+#~ msgid "Busy Limit"
+#~ msgstr "話し中制限"
+
+#~ msgid ""
+#~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
+#~ "(default: 1)"
+#~ msgstr "'n' 回線同時通話になると、'話し中'の状態に切り替える(標準: 1)"
+
+#~ msgid "LAN net"
+#~ msgstr "LAN net"
+
+#~ msgid "autoselect"
+#~ msgstr "自動選択"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "フランス語(フランス)"
+
+#~ msgid "Japanese"
+#~ msgstr "日本語"
+
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "ポルトガル語(ブラジル)"
+
+#~ msgid "Spanish"
+#~ msgstr "スペイン語"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "この電話の判り易い名前"
+
+#~ msgid "A whole number of calls must be entered for the \"call limit.\""
+#~ msgstr "\"call limit.\"として、全体の秒数を入力する必要があります"
+
+#~ msgid "A whole number of calls must be entered for the \"busy limit.\""
+#~ msgstr "\"busy limit.\"として、全体の秒数を入力する必要があります"
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "拡張設定"
 
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr "Internal extensionは、この電話にダイヤル可能"

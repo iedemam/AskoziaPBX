@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,6 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "Πορτογαλία"
-
-msgid "unconfigured"
-msgstr "μη ρυθμισμένο"
 
 msgid "Package activated successfully."
 msgstr "Το πακέτο ενεργοποιήθηκε επιτυχώς."
@@ -81,6 +78,18 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "χρήση αυτού του κωδικού πρόσβασης"
+
+#, fuzzy
+msgid "Missing dialstring."
+msgstr "Κείμενο/αριθμός κλήσης"
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εσωτερικό."
 
 msgid "Subject"
 msgstr "Θέμα"
@@ -354,6 +363,28 @@ msgstr ""
 "χαρακτήρες (δεν είναι επιτρεπτό πριν το | ή το +)</li>\n"
 " </ul>\n"
 
+msgid "English (US)"
+msgstr "Αγγλικά (ΗΠΑ)"
+
+msgid "English (UK)"
+msgstr "Αγγλικά (Ηνωμένο Βασίλειο)"
+
+msgid "French (Canada)"
+msgstr "Γαλλικά (Καναδάς)"
+
+msgid "German"
+msgstr "Γερμανικά"
+
+msgid "Italian"
+msgstr "Ιταλικά"
+
+msgid "Russian"
+msgstr "Ρώσικα"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "Ισπανικά (τυπικά)"
+
 msgid "Language"
 msgstr "Γλώσσα"
 
@@ -382,28 +413,6 @@ msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
 msgstr ""
-
-msgid "Call Limit"
-msgstr "Όριο κλήσεων"
-
-msgid "calls"
-msgstr "κλήσεις"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Επιτρέπονται μόνο 'n' εξερχόμενες κλήσεις και 'n' εισερχόμενες κλήσεις "
-"(προεπιλεγμένη τιμή: 2)"
-
-msgid "Busy Limit"
-msgstr "Όριο κατηλειμμένων"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr ""
-"Η κατάσταση του τηλεφώνου θα γίνει 'κατηλειμμένο' με 'n' ταυτόχρονες κλήσεις "
-"(προεπιλεγμένη τιμή: 1)"
 
 msgid "Logic"
 msgstr "Λογική"
@@ -712,36 +721,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Με επιφύλαξη παντός δ
 msgid "view license"
 msgstr "άδεια χρήσης"
 
-msgid "LAN net"
-msgstr "Ενσύρματο τοπικό δίκτυο"
-
-msgid "autoselect"
-msgstr "αυτόματη επιλογή"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Δημόσια διεύθυνση IP"
-
-msgid "NAT + static public IP"
-msgstr "NAT + στατική δημόσια διεύθυνση IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + δυναμική  δημόσια διεύθυνση IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -760,45 +739,6 @@ msgid ""
 msgstr ""
 "Διαχειριστής αφύπνισης. Καλέστε για να ενεργοποιήσετε και να "
 "απενεργοποιήσετε κλήσεις αφύπνισης στο εσωτερικό από το οποίο καλείτε."
-
-msgid "English (US)"
-msgstr "Αγγλικά (ΗΠΑ)"
-
-msgid "English (UK)"
-msgstr "Αγγλικά (Ηνωμένο Βασίλειο)"
-
-msgid "Danish"
-msgstr "Δανικά"
-
-msgid "Dutch"
-msgstr "Ολλανδικά"
-
-msgid "French (France)"
-msgstr "Γαλλικά (Γαλλία)"
-
-msgid "French (Canada)"
-msgstr "Γαλλικά (Καναδάς)"
-
-msgid "German"
-msgstr "Γερμανικά"
-
-msgid "Italian"
-msgstr "Ιταλικά"
-
-msgid "Japanese"
-msgstr "Ιαπωνικά"
-
-msgid "Portuguese (Brazil)"
-msgstr "Πορτογαλικά (Βραζιλία)"
-
-msgid "Russian"
-msgstr "Ρώσικα"
-
-msgid "Spanish"
-msgstr "Ισπανικά"
-
-msgid "Swedish"
-msgstr "Σουηδικά"
 
 msgid "English"
 msgstr "Αγγλικά"
@@ -820,8 +760,14 @@ msgstr "Τσέχικα"
 msgid "Czech (formal)"
 msgstr "Τσέχικα (τυπικά)"
 
+msgid "Danish"
+msgstr "Δανικά"
+
 msgid "Danish (formal)"
 msgstr "Δανικά (τυπικά)"
+
+msgid "Dutch"
+msgstr "Ολλανδικά"
 
 msgid "Dutch (formal)"
 msgstr "Ολλανδικά (τυπικά)"
@@ -873,6 +819,9 @@ msgstr "Ρώσικα (τυπικά)"
 
 msgid "Spanish (formal)"
 msgstr "Ισπανικά (τυπικά)"
+
+msgid "Swedish"
+msgstr "Σουηδικά"
 
 msgid "Turkish"
 msgstr ""
@@ -1280,9 +1229,6 @@ msgstr "Θέλετε πραγματικά να διαγράψετε αυτό τ�
 msgid "delete phone"
 msgstr "διαγραφή τηλεφώνου"
 
-msgid "Name"
-msgstr "Όνομα"
-
 msgid "Dialstring"
 msgstr "Κείμενο/αριθμός κλήσης"
 
@@ -1294,6 +1240,9 @@ msgstr ""
 "Οι λογαριασμοί παρόχων σας επιτρέπουν να ορίσετε δρομολογήσεις κλήσεων από "
 "και προς εξωτερικές πηγές (π.χ. παρόχους VoIP ή/και συνδεδεμένες διεπαφές "
 "ISDN και PSTN). Κάντε κλικ σε έναν τύπο λογαριασμού για να ξεκινήσετε."
+
+msgid "Name"
+msgstr "Όνομα"
 
 msgid "Pattern(s)"
 msgstr "Πρότυπο/α"
@@ -2318,11 +2267,13 @@ msgstr "Κωδικός πρόσβασης"
 msgid "Call Notifications & Voicemail"
 msgstr "Τοποθεσία"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "Επεξεργασία εξωτερικής γραμμής"
 
-msgid "Descriptive name for this phone."
-msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2331,7 +2282,7 @@ msgid "Provider"
 msgstr "Πάροχος"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr ""
 "Ο εξερχόμενος πάροχος που θα χρησιμοποιηθεί για να κληθεί αυτό το τηλέφωνο."
 
@@ -2340,25 +2291,15 @@ msgid "Number or string to be dialed to reach this telephone."
 msgstr ""
 "Ο εξερχόμενος πάροχος που θα χρησιμοποιηθεί για να κληθεί αυτό το τηλέφωνο."
 
-msgid "Edit IAX Account"
-msgstr "Επεξεργασία λογαριασμού IAX"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
-
-msgid "A valid secret must be specified."
-msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο κωδικό πρόσβασης."
-
-msgid "A phone with this extension already exists."
-msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"Πρέπει να καταχωρήσετε ένανν ακέραιο αριθμό δευτερολέπτων για το χρονικό "
-"όριο \"πιστοποίησης\"."
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "Επεξεργασία PSTN"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "Ο κωδικός πρόσβασης αυτού του λογαριασμού."
 
 msgid "plaintext"
 msgstr "κείμενο"
@@ -2366,38 +2307,25 @@ msgstr "κείμενο"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr "Ο κωδικός πρόσβασης και ο τρόπος ταυτοποίησης αυτού του λογαριασμού."
-
 #, fuzzy
 msgid "Codecs"
 msgstr "CODECs φωνής"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "Ρυθμίσεις για ειδικούς"
-
 msgid "Edit ISDN Line"
 msgstr "Επεξεργασία γραμμής ISDN"
 
-msgid "Edit SIP Account"
-msgstr "Επεξεργασία λογαρασμού SIP"
+msgid "A valid Caller ID must be specified."
+msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
-"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
-"κλήσεων\"."
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-"Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
-"κατηλειμμένου\"."
-
-msgid "This account's password."
-msgstr "Ο κωδικός πρόσβασης αυτού του λογαριασμού."
+msgid "A phone with this extension already exists."
+msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "Τηλέφωνα SIP"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Ρυθμίσεις για ειδικούς"
 
 msgid "Dialplan Element Library"
@@ -2708,6 +2636,15 @@ msgstr ""
 msgid "Topology"
 msgstr "Τοπολογία"
 
+msgid "Public IP address"
+msgstr "Δημόσια διεύθυνση IP"
+
+msgid "NAT + static public IP"
+msgstr "NAT + στατική δημόσια διεύθυνση IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + δυναμική  δημόσια διεύθυνση IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 "Δημόσια διεύθυνση IP: αυτό το τηλεφωνικό κέντρο έχει μια διεύθυνση IP (που "
@@ -2824,8 +2761,22 @@ msgstr "Ο αριθμός κλήσης αυτής της γραμμής."
 msgid "Analog Interface"
 msgstr "Διεπαφή PSTN"
 
+msgid "Edit IAX Account"
+msgstr "Επεξεργασία λογαριασμού IAX"
+
 msgid "A valid username must be specified."
 msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο όνομα χρήστη."
+
+msgid "A valid secret must be specified."
+msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο κωδικό πρόσβασης."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+"Πρέπει να καταχωρήσετε ένανν ακέραιο αριθμό δευτερολέπτων για το χρονικό "
+"όριο \"πιστοποίησης\"."
+
+msgid "This account's password and authentication scheme."
+msgstr "Ο κωδικός πρόσβασης και ο τρόπος ταυτοποίησης αυτού του λογαριασμού."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr ""
@@ -2841,6 +2792,9 @@ msgid ""
 msgstr ""
 "Ο προεπιλεγμένος αριθμός (MSN) γι' αυτή τη γραμμή. Πρόσθετεες αντιστοιχήσεις "
 "MSNs μπορούν να οριστούν πιο κάτω."
+
+msgid "Edit SIP Account"
+msgstr "Επεξεργασία λογαρασμού SIP"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr "Πρέπει να καταχωρήσετε έναν έγκυρο \"αποστολέα\"."
@@ -3512,6 +3466,81 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "unconfigured"
+#~ msgstr "μη ρυθμισμένο"
+
+#~ msgid "Call Limit"
+#~ msgstr "Όριο κλήσεων"
+
+#~ msgid "calls"
+#~ msgstr "κλήσεις"
+
+#, fuzzy
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr ""
+#~ "Επιτρέπονται μόνο 'n' εξερχόμενες κλήσεις και 'n' εισερχόμενες κλήσεις "
+#~ "(προεπιλεγμένη τιμή: 2)"
+
+#~ msgid "Busy Limit"
+#~ msgstr "Όριο κατηλειμμένων"
+
+#~ msgid ""
+#~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
+#~ "(default: 1)"
+#~ msgstr ""
+#~ "Η κατάσταση του τηλεφώνου θα γίνει 'κατηλειμμένο' με 'n' ταυτόχρονες "
+#~ "κλήσεις (προεπιλεγμένη τιμή: 1)"
+
+#~ msgid "LAN net"
+#~ msgstr "Ενσύρματο τοπικό δίκτυο"
+
+#~ msgid "autoselect"
+#~ msgstr "αυτόματη επιλογή"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "Γαλλικά (Γαλλία)"
+
+#~ msgid "Japanese"
+#~ msgstr "Ιαπωνικά"
+
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "Πορτογαλικά (Βραζιλία)"
+
+#~ msgid "Spanish"
+#~ msgstr "Ισπανικά"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+#~ msgid "A whole number of calls must be entered for the \"call limit.\""
+#~ msgstr ""
+#~ "Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
+#~ "κλήσεων\"."
+
+#~ msgid "A whole number of calls must be entered for the \"busy limit.\""
+#~ msgstr ""
+#~ "Πρέπει να καταχωρήσετε έναν ακέραιο αριθμό δευτερολέπτων για το \"όριο "
+#~ "κατηλειμμένου\"."
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "Ρυθμίσεις για ειδικούς"
 
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr ""

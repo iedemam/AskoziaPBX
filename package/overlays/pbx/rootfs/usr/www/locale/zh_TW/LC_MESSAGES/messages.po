@@ -9,17 +9,13 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #, fuzzy
 msgid "Port"
 msgstr "葡萄牙"
-
-#, fuzzy
-msgid "unconfigured"
-msgstr "設置"
 
 msgid "Package activated successfully."
 msgstr "軟體套件成功啟用。"
@@ -80,6 +76,18 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "這個帳戶的密碼。"
+
+#, fuzzy
+msgid "Missing dialstring."
+msgstr "撥號串"
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "必須輸入一個有效的分機"
 
 #, fuzzy
 msgid "Subject"
@@ -338,6 +346,28 @@ msgstr ""
 " \t<li><strong>!</strong> - 匹配零個或多個字符 (不允許 在 | or + 前)</li>\n"
 " </ul>\n"
 
+msgid "English (US)"
+msgstr "英語（美國）"
+
+msgid "English (UK)"
+msgstr "英語（英國）"
+
+msgid "French (Canada)"
+msgstr "法語（加拿大）"
+
+msgid "German"
+msgstr "德語"
+
+msgid "Italian"
+msgstr "意大利語"
+
+msgid "Russian"
+msgstr "俄羅斯語"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "西班牙語（正式）"
+
 msgid "Language"
 msgstr "語言"
 
@@ -364,24 +394,6 @@ msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
 msgstr ""
-
-msgid "Call Limit"
-msgstr "通話限制"
-
-msgid "calls"
-msgstr "通話"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr "只允許 n 個呼出通話和 n 個呼入通話（預設：2）。"
-
-msgid "Busy Limit"
-msgstr "忙限制"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr "電話狀態被設置到'忙'及'n'並行呼叫(預設：1)。"
 
 msgid "Logic"
 msgstr "邏輯"
@@ -679,36 +691,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 msgid "view license"
 msgstr "查看證書"
 
-msgid "LAN net"
-msgstr "區域網絡"
-
-msgid "autoselect"
-msgstr "自動選擇"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "公網IP地址"
-
-msgid "NAT + static public IP"
-msgstr "NAT + 靜態公網IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + 動態公網IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -721,46 +703,6 @@ msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr "呼叫喚醒管理。呼叫設置或取消這個分機的電話喚醒服務。"
-
-msgid "English (US)"
-msgstr "英語（美國）"
-
-msgid "English (UK)"
-msgstr "英語（英國）"
-
-msgid "Danish"
-msgstr "丹麥語"
-
-msgid "Dutch"
-msgstr "荷蘭語"
-
-msgid "French (France)"
-msgstr "法語（法國）"
-
-msgid "French (Canada)"
-msgstr "法語（加拿大）"
-
-msgid "German"
-msgstr "德語"
-
-msgid "Italian"
-msgstr "意大利語"
-
-msgid "Japanese"
-msgstr "日語"
-
-#, fuzzy
-msgid "Portuguese (Brazil)"
-msgstr "葡萄牙語，巴西"
-
-msgid "Russian"
-msgstr "俄羅斯語"
-
-msgid "Spanish"
-msgstr "西班牙語"
-
-msgid "Swedish"
-msgstr "瑞典語"
 
 msgid "English"
 msgstr "英語"
@@ -783,8 +725,14 @@ msgstr ""
 msgid "Czech (formal)"
 msgstr "法語（正式）"
 
+msgid "Danish"
+msgstr "丹麥語"
+
 msgid "Danish (formal)"
 msgstr "丹麥語（正式）"
+
+msgid "Dutch"
+msgstr "荷蘭語"
 
 msgid "Dutch (formal)"
 msgstr "荷蘭語（正式）"
@@ -836,6 +784,9 @@ msgstr "俄語（正式）"
 
 msgid "Spanish (formal)"
 msgstr "西班牙語（正式）"
+
+msgid "Swedish"
+msgstr "瑞典語"
 
 msgid "Turkish"
 msgstr ""
@@ -1246,9 +1197,6 @@ msgstr "真的要刪除這個電話？"
 msgid "delete phone"
 msgstr "刪除電話"
 
-msgid "Name"
-msgstr "名字"
-
 msgid "Dialstring"
 msgstr "撥號串"
 
@@ -1259,6 +1207,9 @@ msgid ""
 msgstr ""
 "通過提供商帳戶允許您設置與外部來源來往的路由。(即VoIP服務提供商或附加的ISDN/"
 "Analog電話介面的硬體)。點擊下面的一個帳戶開始。"
+
+msgid "Name"
+msgstr "名字"
 
 msgid "Pattern(s)"
 msgstr "模式"
@@ -2203,11 +2154,13 @@ msgstr "秘密"
 msgid "Call Notifications & Voicemail"
 msgstr "位置"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "編輯外部線路"
 
-msgid "Descriptive name for this phone."
-msgstr "這個電話的描述性名稱。"
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "這個內部分機用來撥打這個電話。"
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2216,30 +2169,22 @@ msgid "Provider"
 msgstr "提供商"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr "外線提供商用來達到這個電話。"
 
 #, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
 msgstr "外線提供商用來達到這個電話。"
 
-msgid "Edit IAX Account"
-msgstr "編輯IAX帳戶"
-
-msgid "A valid Caller ID must be specified."
-msgstr "必須指定一個有效的Caller ID。"
-
-msgid "A valid secret must be specified."
-msgstr "必須輸入一個有效的密碼。"
-
-msgid "A phone with this extension already exists."
-msgstr "已經存在這個分機了。"
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "必須為\"qualify\"輸入一個超時的秒數。"
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "編輯Analog電話"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "這個帳戶的密碼。"
 
 msgid "plaintext"
 msgstr "明文"
@@ -2247,34 +2192,25 @@ msgstr "明文"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr "這個帳戶的密碼和驗證計劃。"
-
 #, fuzzy
 msgid "Codecs"
 msgstr "音頻編解碼"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "高級設置"
-
 msgid "Edit ISDN Line"
 msgstr "編輯ISDN線路"
 
-msgid "Edit SIP Account"
-msgstr "編輯SIP帳戶"
+msgid "A valid Caller ID must be specified."
+msgstr "必須指定一個有效的Caller ID。"
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "請輸入一個數字給\"call limit(呼叫限制)。\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "請輸入一個數字給\"busy limit(繁忙限制).\""
-
-msgid "This account's password."
-msgstr "這個帳戶的密碼。"
+msgid "A phone with this extension already exists."
+msgstr "已經存在這個分機了。"
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "電話"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "高級設置"
 
 msgid "Dialplan Element Library"
@@ -2559,6 +2495,15 @@ msgstr ""
 msgid "Topology"
 msgstr "網路布局"
 
+msgid "Public IP address"
+msgstr "公網IP地址"
+
+msgid "NAT + static public IP"
+msgstr "NAT + 靜態公網IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + 動態公網IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr "公網IP地址：這個PBX由一個可路由的IP地址（上面輸入的）"
 
@@ -2662,8 +2607,20 @@ msgstr "分配給這條線的電話號碼。"
 msgid "Analog Interface"
 msgstr "Analog介面"
 
+msgid "Edit IAX Account"
+msgstr "編輯IAX帳戶"
+
 msgid "A valid username must be specified."
 msgstr "必須指定一個有效的用戶名。"
+
+msgid "A valid secret must be specified."
+msgstr "必須輸入一個有效的密碼。"
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "必須為\"qualify\"輸入一個超時的秒數。"
+
+msgid "This account's password and authentication scheme."
+msgstr "這個帳戶的密碼和驗證計劃。"
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX代理主機的網址或IP地址，還有它可選的埠。"
@@ -2675,6 +2632,9 @@ msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr "分配給這條線路的預設的電話號碼（MSN）。"
+
+msgid "Edit SIP Account"
+msgstr "編輯SIP帳戶"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr "必須指定一個有效的\"fromuser\"。"
@@ -3258,6 +3218,75 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+#~ msgid "unconfigured"
+#~ msgstr "設置"
+
+#~ msgid "Call Limit"
+#~ msgstr "通話限制"
+
+#~ msgid "calls"
+#~ msgstr "通話"
+
+#, fuzzy
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr "只允許 n 個呼出通話和 n 個呼入通話（預設：2）。"
+
+#~ msgid "Busy Limit"
+#~ msgstr "忙限制"
+
+#~ msgid ""
+#~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
+#~ "(default: 1)"
+#~ msgstr "電話狀態被設置到'忙'及'n'並行呼叫(預設：1)。"
+
+#~ msgid "LAN net"
+#~ msgstr "區域網絡"
+
+#~ msgid "autoselect"
+#~ msgstr "自動選擇"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "法語（法國）"
+
+#~ msgid "Japanese"
+#~ msgstr "日語"
+
+#, fuzzy
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "葡萄牙語，巴西"
+
+#~ msgid "Spanish"
+#~ msgstr "西班牙語"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "這個電話的描述性名稱。"
+
+#~ msgid "A whole number of calls must be entered for the \"call limit.\""
+#~ msgstr "請輸入一個數字給\"call limit(呼叫限制)。\""
+
+#~ msgid "A whole number of calls must be entered for the \"busy limit.\""
+#~ msgstr "請輸入一個數字給\"busy limit(繁忙限制).\""
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "高級設置"
 
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr "這個內部分機用來撥打這個電話。"

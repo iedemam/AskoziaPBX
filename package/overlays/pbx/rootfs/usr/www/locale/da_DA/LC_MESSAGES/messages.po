@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -26,10 +26,6 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "Portugal"
-
-#, fuzzy
-msgid "unconfigured"
-msgstr "konfig"
 
 msgid "Package activated successfully."
 msgstr "Pakke aktiveret tilfredsstillende."
@@ -90,6 +86,18 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "brug dette kodeord"
+
+#, fuzzy
+msgid "Missing dialstring."
+msgstr "Opkaldsstreng"
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "En gyldig extension skal indtasstes"
 
 #, fuzzy
 msgid "Subject"
@@ -347,6 +355,28 @@ msgstr ""
 " \t<li><strong>!</strong> - matcher nul eller flere tegn</li>\n"
 " </ul>\n"
 
+msgid "English (US)"
+msgstr "Engelsk (US)"
+
+msgid "English (UK)"
+msgstr "Engelsk (UK)"
+
+msgid "French (Canada)"
+msgstr "Fransk (Kanada)"
+
+msgid "German"
+msgstr "Tysk"
+
+msgid "Italian"
+msgstr "Italiensk"
+
+msgid "Russian"
+msgstr "Russisk"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "Spansk (formelt)"
+
 msgid "Language"
 msgstr "Sprog"
 
@@ -373,28 +403,6 @@ msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
 msgstr ""
-
-msgid "Call Limit"
-msgstr "Opkalds Grænse"
-
-msgid "calls"
-msgstr "opkald"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Tillad kun 'x' antal udgående opkald og 'x' antal indgående opkald "
-"(standard: 2)"
-
-msgid "Busy Limit"
-msgstr "Optaget grænse"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr ""
-"Tilfon status ændres til 'optaget' når der modtages 'x' antal opkald. "
-"(standard: 1)"
 
 msgid "Logic"
 msgstr "Logisk"
@@ -699,36 +707,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 msgid "view license"
 msgstr "se licens"
 
-msgid "LAN net"
-msgstr "LAN net"
-
-msgid "autoselect"
-msgstr "Autovælg"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Offentlig IP adresse"
-
-msgid "NAT + static public IP"
-msgstr "NAT + statisk offentligt IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynamisk offentligt IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -744,46 +722,6 @@ msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr "Telefonvækning. Ring for at indstille eller slette vækning"
-
-msgid "English (US)"
-msgstr "Engelsk (US)"
-
-msgid "English (UK)"
-msgstr "Engelsk (UK)"
-
-msgid "Danish"
-msgstr "Dansk"
-
-msgid "Dutch"
-msgstr "Hollandsk"
-
-msgid "French (France)"
-msgstr "Fransk (Frankrig)"
-
-msgid "French (Canada)"
-msgstr "Fransk (Kanada)"
-
-msgid "German"
-msgstr "Tysk"
-
-msgid "Italian"
-msgstr "Italiensk"
-
-msgid "Japanese"
-msgstr "Japansk"
-
-#, fuzzy
-msgid "Portuguese (Brazil)"
-msgstr "Portugisisk, Brasiliansk"
-
-msgid "Russian"
-msgstr "Russisk"
-
-msgid "Spanish"
-msgstr "Spansk"
-
-msgid "Swedish"
-msgstr "Svensk"
 
 msgid "English"
 msgstr "Engelsk"
@@ -806,8 +744,14 @@ msgstr ""
 msgid "Czech (formal)"
 msgstr "Fransk (formelt)"
 
+msgid "Danish"
+msgstr "Dansk"
+
 msgid "Danish (formal)"
 msgstr "Dansk (formelt)"
+
+msgid "Dutch"
+msgstr "Hollandsk"
 
 msgid "Dutch (formal)"
 msgstr "Hollandsk (formelt)"
@@ -859,6 +803,9 @@ msgstr "Russisk (formelt)"
 
 msgid "Spanish (formal)"
 msgstr "Spansk (formelt)"
+
+msgid "Swedish"
+msgstr "Svensk"
 
 msgid "Turkish"
 msgstr ""
@@ -1268,9 +1215,6 @@ msgstr "Vil du virkeligt slette denne telefon?"
 msgid "delete phone"
 msgstr "slet telefon"
 
-msgid "Name"
-msgstr "Navn"
-
 msgid "Dialstring"
 msgstr "Opkaldsstreng"
 
@@ -1279,6 +1223,9 @@ msgid ""
 "(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
 "Click an account type below to get started."
 msgstr ""
+
+msgid "Name"
+msgstr "Navn"
 
 msgid "Pattern(s)"
 msgstr "Mønstre"
@@ -2243,11 +2190,13 @@ msgstr "Hemmeligt"
 msgid "Call Notifications & Voicemail"
 msgstr "Lokation"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "Rediger Extern Linie"
 
-msgid "Descriptive name for this phone."
-msgstr "Beskrivende navn på denne telefon."
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Den interne extension brugt for at ringe til denne telefon"
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2256,30 +2205,22 @@ msgid "Provider"
 msgstr "Udbyder"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr "Udgående udbyder som skal bruges for at nå denne telefon."
 
 #, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
 msgstr "Udgående udbyder som skal bruges for at nå denne telefon."
 
-msgid "Edit IAX Account"
-msgstr "Rediger IAX konto"
-
-msgid "A valid Caller ID must be specified."
-msgstr "En gyldig Opkalds ID skal angives."
-
-msgid "A valid secret must be specified."
-msgstr "En gyldig hemmelighed skal angives."
-
-msgid "A phone with this extension already exists."
-msgstr "En telefon med den extension er allerede eksisterende."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Der skal angives et helt antal sekunder for \"Kvalificer\" udløb."
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "Rediger Analog"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "Denne konto's kodeord"
 
 msgid "plaintext"
 msgstr "ren tekst"
@@ -2287,34 +2228,25 @@ msgstr "ren tekst"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr "Denne kontos kodeord og authentofikations skema"
-
 #, fuzzy
 msgid "Codecs"
 msgstr "Lyd Codecs"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "Avancerede indstillinger"
-
 msgid "Edit ISDN Line"
 msgstr "Rediger ISDN linie"
 
-msgid "Edit SIP Account"
-msgstr "Rediger SIP konto"
+msgid "A valid Caller ID must be specified."
+msgstr "En gyldig Opkalds ID skal angives."
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "Der skal angives et heltal for \"Opkald grænse\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "Der skal angives et heltal for \"Optaget grænse\""
-
-msgid "This account's password."
-msgstr "Denne konto's kodeord"
+msgid "A phone with this extension already exists."
+msgstr "En telefon med den extension er allerede eksisterende."
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "Telefoner"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Avancerede indstillinger"
 
 msgid "Dialplan Element Library"
@@ -2591,6 +2523,15 @@ msgstr ""
 msgid "Topology"
 msgstr "Topologi"
 
+msgid "Public IP address"
+msgstr "Offentlig IP adresse"
+
+msgid "NAT + static public IP"
+msgstr "NAT + statisk offentligt IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynamisk offentligt IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr "Offentlig IP adresse: denne PBX har en rutebar IP adresse"
 
@@ -2692,8 +2633,20 @@ msgstr "Telefon nummer knyttet til denne linie"
 msgid "Analog Interface"
 msgstr "Analog Interface"
 
+msgid "Edit IAX Account"
+msgstr "Rediger IAX konto"
+
 msgid "A valid username must be specified."
 msgstr "Et gyldigt brugernavn skal angives."
+
+msgid "A valid secret must be specified."
+msgstr "En gyldig hemmelighed skal angives."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "Der skal angives et helt antal sekunder for \"Kvalificer\" udløb."
+
+msgid "This account's password and authentication scheme."
+msgstr "Denne kontos kodeord og authentofikations skema"
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy vært URL eller IP adresse og/eller port."
@@ -2709,6 +2662,9 @@ msgstr ""
 "Hovednummeret der er knyttet til denne linie (det korteste mulige nummer, "
 "der kan benyttes til opkald af denne linie). Det er muligt at angive "
 "individuelle MSN mapninger nedenfor."
+
+msgid "Edit SIP Account"
+msgstr "Rediger SIP konto"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr "En gyldig \"fra bruger\" skal angives."
@@ -3313,6 +3269,79 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+#~ msgid "unconfigured"
+#~ msgstr "konfig"
+
+#~ msgid "Call Limit"
+#~ msgstr "Opkalds Grænse"
+
+#~ msgid "calls"
+#~ msgstr "opkald"
+
+#, fuzzy
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr ""
+#~ "Tillad kun 'x' antal udgående opkald og 'x' antal indgående opkald "
+#~ "(standard: 2)"
+
+#~ msgid "Busy Limit"
+#~ msgstr "Optaget grænse"
+
+#~ msgid ""
+#~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
+#~ "(default: 1)"
+#~ msgstr ""
+#~ "Tilfon status ændres til 'optaget' når der modtages 'x' antal opkald. "
+#~ "(standard: 1)"
+
+#~ msgid "LAN net"
+#~ msgstr "LAN net"
+
+#~ msgid "autoselect"
+#~ msgstr "Autovælg"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "Fransk (Frankrig)"
+
+#~ msgid "Japanese"
+#~ msgstr "Japansk"
+
+#, fuzzy
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "Portugisisk, Brasiliansk"
+
+#~ msgid "Spanish"
+#~ msgstr "Spansk"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "Beskrivende navn på denne telefon."
+
+#~ msgid "A whole number of calls must be entered for the \"call limit.\""
+#~ msgstr "Der skal angives et heltal for \"Opkald grænse\""
+
+#~ msgid "A whole number of calls must be entered for the \"busy limit.\""
+#~ msgstr "Der skal angives et heltal for \"Optaget grænse\""
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "Avancerede indstillinger"
 
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr "Den interne extension brugt for at ringe til denne telefon"

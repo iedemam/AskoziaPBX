@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -23,10 +23,6 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "Portugalia"
-
-#, fuzzy
-msgid "unconfigured"
-msgstr "konfiguracja"
 
 msgid "Package activated successfully."
 msgstr "Pakiet włączony poprawnie"
@@ -87,6 +83,17 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "użyj tego hasła"
+
+msgid "Missing dialstring."
+msgstr ""
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "Należy podać poprawny numer wewnętrzny."
 
 msgid "Subject"
 msgstr ""
@@ -315,6 +322,28 @@ msgid ""
 " </ul>\n"
 msgstr ""
 
+msgid "English (US)"
+msgstr "Angielski (US)"
+
+msgid "English (UK)"
+msgstr "Angielski (UK)"
+
+msgid "French (Canada)"
+msgstr "Francuski (Kanada)"
+
+msgid "German"
+msgstr "Niemiecki"
+
+msgid "Italian"
+msgstr "Włoski"
+
+msgid "Russian"
+msgstr "Rosyjski"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "Hiszpański (formalny)"
+
 msgid "Language"
 msgstr "Język"
 
@@ -340,26 +369,6 @@ msgstr "Opcje"
 msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
-msgstr ""
-
-msgid "Call Limit"
-msgstr ""
-
-msgid "calls"
-msgstr "połączenia"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Zezwól tylko na 'n' połączeń wychodzących i 'n' połączeń przychodzących "
-"(domyślnie: 2)"
-
-msgid "Busy Limit"
-msgstr ""
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
 msgstr ""
 
 msgid "Logic"
@@ -655,36 +664,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Wszystkie prawa zastrzeżone."
 msgid "view license"
 msgstr "pokaż licencje"
 
-msgid "LAN net"
-msgstr "sieć LAN"
-
-msgid "autoselect"
-msgstr "automatyczny wybór"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Publiczny adres IP"
-
-msgid "NAT + static public IP"
-msgstr "NAT + statyczny publiczny IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynamiczny publiczny IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -697,46 +676,6 @@ msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
 msgstr ""
-
-msgid "English (US)"
-msgstr "Angielski (US)"
-
-msgid "English (UK)"
-msgstr "Angielski (UK)"
-
-msgid "Danish"
-msgstr "Duński"
-
-msgid "Dutch"
-msgstr "Holenderski"
-
-msgid "French (France)"
-msgstr "Francuski (Francja)"
-
-msgid "French (Canada)"
-msgstr "Francuski (Kanada)"
-
-msgid "German"
-msgstr "Niemiecki"
-
-msgid "Italian"
-msgstr "Włoski"
-
-msgid "Japanese"
-msgstr "Japoński"
-
-#, fuzzy
-msgid "Portuguese (Brazil)"
-msgstr "Portugalski, Brazylia"
-
-msgid "Russian"
-msgstr "Rosyjski"
-
-msgid "Spanish"
-msgstr "Hiszpański"
-
-msgid "Swedish"
-msgstr "Szwecki"
 
 msgid "English"
 msgstr "Angielski"
@@ -759,8 +698,14 @@ msgstr ""
 msgid "Czech (formal)"
 msgstr "Francuski (formalny)"
 
+msgid "Danish"
+msgstr "Duński"
+
 msgid "Danish (formal)"
 msgstr "Duński (formalny)"
+
+msgid "Dutch"
+msgstr "Holenderski"
 
 msgid "Dutch (formal)"
 msgstr "Holenderski (formalny)"
@@ -812,6 +757,9 @@ msgstr "Rosyjski (formalny)"
 
 msgid "Spanish (formal)"
 msgstr "Hiszpański (formalny)"
+
+msgid "Swedish"
+msgstr "Szwecki"
 
 msgid "Turkish"
 msgstr ""
@@ -1221,9 +1169,6 @@ msgstr "Czy na pewno chcesz usunąć ten telefon?"
 msgid "delete phone"
 msgstr "usuń telefon"
 
-msgid "Name"
-msgstr "Nazwa"
-
 msgid "Dialstring"
 msgstr ""
 
@@ -1232,6 +1177,9 @@ msgid ""
 "(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
 "Click an account type below to get started."
 msgstr ""
+
+msgid "Name"
+msgstr "Nazwa"
 
 msgid "Pattern(s)"
 msgstr "Wzorzec(ce)"
@@ -2189,11 +2137,13 @@ msgstr ""
 msgid "Call Notifications & Voicemail"
 msgstr "Lokalizacja"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "Edytuj linie Zewnętrzną"
 
-msgid "Descriptive name for this phone."
-msgstr "Opisowa nazwa telefonu."
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2202,30 +2152,22 @@ msgid "Provider"
 msgstr "Dostawca"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
 #, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
 msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
-msgid "Edit IAX Account"
-msgstr "Edytuj konto IAX"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Należy podać poprawny Caller ID."
-
-msgid "A valid secret must be specified."
-msgstr "Należy podać poprawne hasło."
-
-msgid "A phone with this extension already exists."
-msgstr "Telefon z tym numerem wewnętrznym już istnieje."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "Edytuj Analogowe"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "Hasło do tego konta."
 
 msgid "plaintext"
 msgstr "zwykły tekst"
@@ -2233,34 +2175,25 @@ msgstr "zwykły tekst"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr ""
-
 #, fuzzy
 msgid "Codecs"
 msgstr "Kodeki Audio"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "Ustawienia zaawansowane"
-
 msgid "Edit ISDN Line"
 msgstr "Edytuj linie ISDN"
 
-msgid "Edit SIP Account"
-msgstr "Edytuj Konto SIP"
+msgid "A valid Caller ID must be specified."
+msgstr "Należy podać poprawny Caller ID."
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr ""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr ""
-
-msgid "This account's password."
-msgstr "Hasło do tego konta."
+msgid "A phone with this extension already exists."
+msgstr "Telefon z tym numerem wewnętrznym już istnieje."
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "Telefony"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Ustawienia zaawansowane"
 
 msgid "Dialplan Element Library"
@@ -2554,6 +2487,15 @@ msgstr ""
 msgid "Topology"
 msgstr "Topologia"
 
+msgid "Public IP address"
+msgstr "Publiczny adres IP"
+
+msgid "NAT + static public IP"
+msgstr "NAT + statyczny publiczny IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynamiczny publiczny IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 "Publiczny adres IP: pbx posiada routowalny adres IP (wprowadzony powyżej)"
@@ -2661,8 +2603,20 @@ msgstr "Numer telefonu przypisany do tej linii."
 msgid "Analog Interface"
 msgstr "Interfejs Analogowy"
 
+msgid "Edit IAX Account"
+msgstr "Edytuj konto IAX"
+
 msgid "A valid username must be specified."
 msgstr "Należy podać poprawną nazwę użytkownika."
+
+msgid "A valid secret must be specified."
+msgstr "Należy podać poprawne hasło."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+
+msgid "This account's password and authentication scheme."
+msgstr ""
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy host URL lub adres IP i opcjonalny port."
@@ -2676,6 +2630,9 @@ msgid ""
 msgstr ""
 "Domyślny numer telefonu (MSN) przypisany do tej linii. Indywidualne "
 "mapowania MSN można zdefiniować poniżej."
+
+msgid "Edit SIP Account"
+msgstr "Edytuj Konto SIP"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr ""
@@ -3276,6 +3233,60 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#, fuzzy
+#~ msgid "unconfigured"
+#~ msgstr "konfiguracja"
+
+#~ msgid "calls"
+#~ msgstr "połączenia"
+
+#, fuzzy
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr ""
+#~ "Zezwól tylko na 'n' połączeń wychodzących i 'n' połączeń przychodzących "
+#~ "(domyślnie: 2)"
+
+#~ msgid "LAN net"
+#~ msgstr "sieć LAN"
+
+#~ msgid "autoselect"
+#~ msgstr "automatyczny wybór"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "Francuski (Francja)"
+
+#~ msgid "Japanese"
+#~ msgstr "Japoński"
+
+#, fuzzy
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "Portugalski, Brazylia"
+
+#~ msgid "Spanish"
+#~ msgstr "Hiszpański"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "Opisowa nazwa telefonu."
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "Ustawienia zaawansowane"
 
 #~ msgid ""
 #~ "The phone number assigned to this account. Also this account's username."

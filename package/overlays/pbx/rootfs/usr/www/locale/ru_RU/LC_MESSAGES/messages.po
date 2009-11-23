@@ -12,14 +12,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Port"
-msgstr ""
-
-msgid "unconfigured"
 msgstr ""
 
 msgid "Package activated successfully."
@@ -79,6 +76,15 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "Missing password."
+msgstr ""
+
+msgid "Missing dialstring."
+msgstr ""
+
+msgid "An invalid dialstring was entered."
 msgstr ""
 
 msgid "Subject"
@@ -300,6 +306,27 @@ msgid ""
 " </ul>\n"
 msgstr ""
 
+msgid "English (US)"
+msgstr ""
+
+msgid "English (UK)"
+msgstr ""
+
+msgid "French (Canada)"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Spanish (Spain)"
+msgstr ""
+
 msgid "Language"
 msgstr ""
 
@@ -322,23 +349,6 @@ msgstr ""
 msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
-msgstr ""
-
-msgid "Call Limit"
-msgstr ""
-
-msgid "calls"
-msgstr ""
-
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-
-msgid "Busy Limit"
-msgstr ""
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
 msgstr ""
 
 msgid "Logic"
@@ -614,36 +624,6 @@ msgstr ""
 msgid "view license"
 msgstr ""
 
-msgid "LAN net"
-msgstr ""
-
-msgid "autoselect"
-msgstr ""
-
-msgid "100BASE-TX full-duplex"
-msgstr ""
-
-msgid "100BASE-TX half-duplex"
-msgstr ""
-
-msgid "10BASE-T full-duplex"
-msgstr ""
-
-msgid "10BASE-T half-duplex"
-msgstr ""
-
-msgid "1000BASE-TX full-duplex"
-msgstr ""
-
-msgid "Public IP address"
-msgstr ""
-
-msgid "NAT + static public IP"
-msgstr ""
-
-msgid "NAT + dynamic public IP"
-msgstr ""
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -655,45 +635,6 @@ msgstr ""
 msgid ""
 "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
 "extension."
-msgstr ""
-
-msgid "English (US)"
-msgstr ""
-
-msgid "English (UK)"
-msgstr ""
-
-msgid "Danish"
-msgstr ""
-
-msgid "Dutch"
-msgstr ""
-
-msgid "French (France)"
-msgstr ""
-
-msgid "French (Canada)"
-msgstr ""
-
-msgid "German"
-msgstr ""
-
-msgid "Italian"
-msgstr ""
-
-msgid "Japanese"
-msgstr ""
-
-msgid "Portuguese (Brazil)"
-msgstr ""
-
-msgid "Russian"
-msgstr ""
-
-msgid "Spanish"
-msgstr ""
-
-msgid "Swedish"
 msgstr ""
 
 msgid "English"
@@ -714,7 +655,13 @@ msgstr ""
 msgid "Czech (formal)"
 msgstr ""
 
+msgid "Danish"
+msgstr ""
+
 msgid "Danish (formal)"
+msgstr ""
+
+msgid "Dutch"
 msgstr ""
 
 msgid "Dutch (formal)"
@@ -763,6 +710,9 @@ msgid "Russian (formal)"
 msgstr ""
 
 msgid "Spanish (formal)"
+msgstr ""
+
+msgid "Swedish"
 msgstr ""
 
 msgid "Turkish"
@@ -1142,9 +1092,6 @@ msgstr ""
 msgid "delete phone"
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
 msgid "Dialstring"
 msgstr ""
 
@@ -1152,6 +1099,9 @@ msgid ""
 "Provider Accounts allow you to configure routes to and from external sources "
 "(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
 "Click an account type below to get started."
+msgstr ""
+
+msgid "Name"
 msgstr ""
 
 msgid "Pattern(s)"
@@ -2059,10 +2009,10 @@ msgstr ""
 msgid "Call Notifications & Voicemail"
 msgstr ""
 
-msgid "Edit External Line"
+msgid "Edit External Phone"
 msgstr ""
 
-msgid "Descriptive name for this phone."
+msgid "The internal number used to dial this phone."
 msgstr ""
 
 msgid "Phone Connectivity"
@@ -2071,28 +2021,19 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr ""
 
 msgid "Number or string to be dialed to reach this telephone."
 msgstr ""
 
-msgid "Edit IAX Account"
-msgstr ""
-
-msgid "A valid Caller ID must be specified."
-msgstr ""
-
-msgid "A valid secret must be specified."
-msgstr ""
-
-msgid "A phone with this extension already exists."
-msgstr ""
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgid "Edit IAX Phone"
 msgstr ""
 
 msgid "Use this number as your username."
+msgstr ""
+
+msgid "This account's password."
 msgstr ""
 
 msgid "plaintext"
@@ -2101,31 +2042,22 @@ msgstr ""
 msgid "md5"
 msgstr ""
 
-msgid "This account's password and authentication scheme."
-msgstr ""
-
 msgid "Codecs"
-msgstr ""
-
-msgid "Advanced IAX Options"
 msgstr ""
 
 msgid "Edit ISDN Line"
 msgstr ""
 
-msgid "Edit SIP Account"
+msgid "A valid Caller ID must be specified."
 msgstr ""
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
+msgid "A phone with this extension already exists."
 msgstr ""
 
-msgid "A whole number of calls must be entered for the \"busy limit.\""
+msgid "Edit SIP Phone"
 msgstr ""
 
-msgid "This account's password."
-msgstr ""
-
-msgid "Advanced SIP Options"
+msgid "Advanced Options"
 msgstr ""
 
 msgid "Dialplan Element Library"
@@ -2386,6 +2318,15 @@ msgstr ""
 msgid "Topology"
 msgstr ""
 
+msgid "Public IP address"
+msgstr ""
+
+msgid "NAT + static public IP"
+msgstr ""
+
+msgid "NAT + dynamic public IP"
+msgstr ""
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 
@@ -2484,7 +2425,19 @@ msgstr ""
 msgid "Analog Interface"
 msgstr ""
 
+msgid "Edit IAX Account"
+msgstr ""
+
 msgid "A valid username must be specified."
+msgstr ""
+
+msgid "A valid secret must be specified."
+msgstr ""
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr ""
+
+msgid "This account's password and authentication scheme."
 msgstr ""
 
 msgid "IAX proxy host URL or IP address and optional port."
@@ -2496,6 +2449,9 @@ msgstr ""
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
+msgstr ""
+
+msgid "Edit SIP Account"
 msgstr ""
 
 msgid "A valid \"fromuser\" must be specified."

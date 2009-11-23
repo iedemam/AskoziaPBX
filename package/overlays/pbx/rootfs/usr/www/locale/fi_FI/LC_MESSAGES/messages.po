@@ -12,16 +12,13 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-19 15:46+0100\n"
+"POT-Creation-Date: 2009-11-23 17:53+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #, fuzzy
 msgid "Port"
 msgstr "Portugali"
-
-msgid "unconfigured"
-msgstr "ei konfiguroitu"
 
 msgid "Package activated successfully."
 msgstr "Paketti aktivoitiin onnistuneesti."
@@ -82,6 +79,18 @@ msgstr ""
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
+
+#, fuzzy
+msgid "Missing password."
+msgstr "käytä salasanaa"
+
+#, fuzzy
+msgid "Missing dialstring."
+msgstr "Soittotunnus"
+
+#, fuzzy
+msgid "An invalid dialstring was entered."
+msgstr "Kelpaava jatke on annettava."
 
 msgid "Subject"
 msgstr "Aihe"
@@ -345,6 +354,28 @@ msgstr ""
 "ennen | tai +)</li>\n"
 " </ul>\n"
 
+msgid "English (US)"
+msgstr "Englannin kieli (US)"
+
+msgid "English (UK)"
+msgstr "Englannin kieli (UK)"
+
+msgid "French (Canada)"
+msgstr "Ranskan kieli (Kanada)"
+
+msgid "German"
+msgstr "Saksan kieli"
+
+msgid "Italian"
+msgstr "Italian kieli"
+
+msgid "Russian"
+msgstr "Venäjän kieli"
+
+#, fuzzy
+msgid "Spanish (Spain)"
+msgstr "Espanjan kieli (virallinen)"
+
 msgid "Language"
 msgstr "Kieli"
 
@@ -371,28 +402,6 @@ msgid ""
 "Set a friendlier alias above if you would like to use a word or name instead "
 "of the extension number."
 msgstr ""
-
-msgid "Call Limit"
-msgstr "Puheluiden Raja"
-
-msgid "calls"
-msgstr "puhelut"
-
-#, fuzzy
-msgid "Permit only 'n' concurrent calls (default: 2)"
-msgstr ""
-"Salli ainoastaan 'n' ulosmenevää puhelua ja 'n' sisääntulevaa pyhelua "
-"(oletus: 2)"
-
-msgid "Busy Limit"
-msgstr "Varattu Raja"
-
-msgid ""
-"Phone status will be switched to 'busy' with 'n' concurrent calls (default: "
-"1)"
-msgstr ""
-"Puhelimen tila vaihdetaan 'varatuksi' kun on 'n' samanaikaista puhelua "
-"(oletus: 1)"
 
 msgid "Logic"
 msgstr "Logiikka"
@@ -698,36 +707,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
 msgid "view license"
 msgstr "tarkasta lisenssi"
 
-msgid "LAN net"
-msgstr "LAN verkko"
-
-msgid "autoselect"
-msgstr "automattinen"
-
-msgid "100BASE-TX full-duplex"
-msgstr "100BASE-TX full-duplex"
-
-msgid "100BASE-TX half-duplex"
-msgstr "100BASE-TX half-duplex"
-
-msgid "10BASE-T full-duplex"
-msgstr "10BASE-T full-duplex"
-
-msgid "10BASE-T half-duplex"
-msgstr "10BASE-T half-duplex"
-
-msgid "1000BASE-TX full-duplex"
-msgstr "1000BASE-TX full-duplex"
-
-msgid "Public IP address"
-msgstr "Julkinen IP osoite"
-
-msgid "NAT + static public IP"
-msgstr "NAT + staattinen julkinen IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynaaminen julkinen IP"
-
 msgid ""
 "Echos audio and video back to the caller as soon as it is received. Used to "
 "test connection delay."
@@ -744,45 +723,6 @@ msgid ""
 msgstr ""
 "Herätys manageri. Puhelu herätyksen asettamiseksi tai peruttamiseksi "
 "nykyisellä jatkeella."
-
-msgid "English (US)"
-msgstr "Englannin kieli (US)"
-
-msgid "English (UK)"
-msgstr "Englannin kieli (UK)"
-
-msgid "Danish"
-msgstr "Tanskan kieli"
-
-msgid "Dutch"
-msgstr "Hollannin kieli"
-
-msgid "French (France)"
-msgstr "Ranskan kieli (Ranska)"
-
-msgid "French (Canada)"
-msgstr "Ranskan kieli (Kanada)"
-
-msgid "German"
-msgstr "Saksan kieli"
-
-msgid "Italian"
-msgstr "Italian kieli"
-
-msgid "Japanese"
-msgstr "Japanin kieli"
-
-msgid "Portuguese (Brazil)"
-msgstr "Portugalin kieli (Brasilia)"
-
-msgid "Russian"
-msgstr "Venäjän kieli"
-
-msgid "Spanish"
-msgstr "Espanjan kieli"
-
-msgid "Swedish"
-msgstr "Ruotsin kieli"
 
 msgid "English"
 msgstr "Englannin kieli"
@@ -805,8 +745,14 @@ msgstr ""
 msgid "Czech (formal)"
 msgstr "Ranskan kieli (virallinen)"
 
+msgid "Danish"
+msgstr "Tanskan kieli"
+
 msgid "Danish (formal)"
 msgstr "Tanskan kieli (virallinen)"
+
+msgid "Dutch"
+msgstr "Hollannin kieli"
 
 msgid "Dutch (formal)"
 msgstr "Hollannin kieli (virallinen)"
@@ -858,6 +804,9 @@ msgstr "Venäjän kieli (virallinen)"
 
 msgid "Spanish (formal)"
 msgstr "Espanjan kieli (virallinen)"
+
+msgid "Swedish"
+msgstr "Ruotsin kieli"
 
 msgid "Turkish"
 msgstr ""
@@ -1261,9 +1210,6 @@ msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
 msgid "delete phone"
 msgstr "poista puhelin"
 
-msgid "Name"
-msgstr "Nimi"
-
 msgid "Dialstring"
 msgstr "Soittotunnus"
 
@@ -1275,6 +1221,9 @@ msgstr ""
 "Voit konfiguroida reittejä ulkoisille lähteille (esim. VoIP "
 "palveluntarjoajille tai attached ISDN / Analogi käyttöliittymä "
 "laitteistolle). Klikkaa tilityyppiä aloittaaksesi."
+
+msgid "Name"
+msgstr "Nimi"
 
 msgid "Pattern(s)"
 msgstr "Kaavat(s)"
@@ -2265,11 +2214,13 @@ msgstr "Salaisuus"
 msgid "Call Notifications & Voicemail"
 msgstr "Paikka"
 
-msgid "Edit External Line"
+#, fuzzy
+msgid "Edit External Phone"
 msgstr "Muokkaa Ulkoinen Linja"
 
-msgid "Descriptive name for this phone."
-msgstr "Kuvaileva nimi tälle puhelimelle."
+#, fuzzy
+msgid "The internal number used to dial this phone."
+msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2278,7 +2229,7 @@ msgid "Provider"
 msgstr "Palveluntarjoaja"
 
 #, fuzzy
-msgid "Outgoing provider used to reach this telephone."
+msgid "Outgoing provider or protocol used to reach this telephone."
 msgstr ""
 "Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
 
@@ -2287,23 +2238,15 @@ msgid "Number or string to be dialed to reach this telephone."
 msgstr ""
 "Ulosmenevä palveluntarjoaja joka käytetään tämän puhelimen tavoittamiseen."
 
-msgid "Edit IAX Account"
-msgstr "Muokkaa IAX Tiliä"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
-
-msgid "A valid secret must be specified."
-msgstr "Kelpaava salaisuus on oltava määritetty."
-
-msgid "A phone with this extension already exists."
-msgstr "Puhelin tällä jatkeella on jo olemassa."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
+#, fuzzy
+msgid "Edit IAX Phone"
+msgstr "Muokkaa Analogi"
 
 msgid "Use this number as your username."
 msgstr ""
+
+msgid "This account's password."
+msgstr "Tämän tilin salasana."
 
 msgid "plaintext"
 msgstr "ilman suojausta"
@@ -2311,34 +2254,25 @@ msgstr "ilman suojausta"
 msgid "md5"
 msgstr "md5"
 
-msgid "This account's password and authentication scheme."
-msgstr "Tämän tilin salasana sekä todennus määritelmä."
-
 #, fuzzy
 msgid "Codecs"
 msgstr "Äänen pakkauksenhallinta"
 
-#, fuzzy
-msgid "Advanced IAX Options"
-msgstr "Lisäasetukset"
-
 msgid "Edit ISDN Line"
 msgstr "Muokkaa ISDN Linjaa"
 
-msgid "Edit SIP Account"
-msgstr "Muokkaa SIP Tiliä"
+msgid "A valid Caller ID must be specified."
+msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
 
-msgid "A whole number of calls must be entered for the \"call limit.\""
-msgstr "Yhtenäinen määrä puheluita on annettava \"puhelu rajaksi.\""
-
-msgid "A whole number of calls must be entered for the \"busy limit.\""
-msgstr "Yhtenäinen määrä puheluita on annettava \"varattu rajaksi.\""
-
-msgid "This account's password."
-msgstr "Tämän tilin salasana."
+msgid "A phone with this extension already exists."
+msgstr "Puhelin tällä jatkeella on jo olemassa."
 
 #, fuzzy
-msgid "Advanced SIP Options"
+msgid "Edit SIP Phone"
+msgstr "SIP Puhelimet"
+
+#, fuzzy
+msgid "Advanced Options"
 msgstr "Lisäasetukset"
 
 msgid "Dialplan Element Library"
@@ -2643,6 +2577,15 @@ msgstr ""
 msgid "Topology"
 msgstr "Topologia"
 
+msgid "Public IP address"
+msgstr "Julkinen IP osoite"
+
+msgid "NAT + static public IP"
+msgstr "NAT + staattinen julkinen IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynaaminen julkinen IP"
+
 msgid "Public IP Address: this PBX has a routable IP address (entered above)"
 msgstr ""
 "Julkinen IP Osoite: tällä PBX:llä on reitittävä IP osoite (annettu ylhäällä)"
@@ -2753,8 +2696,20 @@ msgstr "Puhelinnumero tälle linjalle."
 msgid "Analog Interface"
 msgstr "Analogi Käyttöliittymä"
 
+msgid "Edit IAX Account"
+msgstr "Muokkaa IAX Tiliä"
+
 msgid "A valid username must be specified."
 msgstr "Kelpaava käyttäjänimi on oltava määritetty."
+
+msgid "A valid secret must be specified."
+msgstr "Kelpaava salaisuus on oltava määritetty."
+
+msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
+msgstr "Yhtenäinen määrä sekuntteja tulee antaa \"qualify\" ajanjaksolle."
+
+msgid "This account's password and authentication scheme."
+msgstr "Tämän tilin salasana sekä todennus määritelmä."
 
 msgid "IAX proxy host URL or IP address and optional port."
 msgstr "IAX proxy isäntä URL tai IP osoite sekä valinnainen portti."
@@ -2768,6 +2723,9 @@ msgid ""
 msgstr ""
 "Oletus puhelinnumero (MSN) määritetty tälle linjalle. Henkilökohtaiset MSN "
 "kartoitukset pystyy määrittämään alla."
+
+msgid "Edit SIP Account"
+msgstr "Muokkaa SIP Tiliä"
 
 msgid "A valid \"fromuser\" must be specified."
 msgstr "Kelpaava \"käyttäjältä\" on oltava määritetty."
@@ -3387,6 +3345,77 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "unconfigured"
+#~ msgstr "ei konfiguroitu"
+
+#~ msgid "Call Limit"
+#~ msgstr "Puheluiden Raja"
+
+#~ msgid "calls"
+#~ msgstr "puhelut"
+
+#, fuzzy
+#~ msgid "Permit only 'n' concurrent calls (default: 2)"
+#~ msgstr ""
+#~ "Salli ainoastaan 'n' ulosmenevää puhelua ja 'n' sisääntulevaa pyhelua "
+#~ "(oletus: 2)"
+
+#~ msgid "Busy Limit"
+#~ msgstr "Varattu Raja"
+
+#~ msgid ""
+#~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
+#~ "(default: 1)"
+#~ msgstr ""
+#~ "Puhelimen tila vaihdetaan 'varatuksi' kun on 'n' samanaikaista puhelua "
+#~ "(oletus: 1)"
+
+#~ msgid "LAN net"
+#~ msgstr "LAN verkko"
+
+#~ msgid "autoselect"
+#~ msgstr "automattinen"
+
+#~ msgid "100BASE-TX full-duplex"
+#~ msgstr "100BASE-TX full-duplex"
+
+#~ msgid "100BASE-TX half-duplex"
+#~ msgstr "100BASE-TX half-duplex"
+
+#~ msgid "10BASE-T full-duplex"
+#~ msgstr "10BASE-T full-duplex"
+
+#~ msgid "10BASE-T half-duplex"
+#~ msgstr "10BASE-T half-duplex"
+
+#~ msgid "1000BASE-TX full-duplex"
+#~ msgstr "1000BASE-TX full-duplex"
+
+#~ msgid "French (France)"
+#~ msgstr "Ranskan kieli (Ranska)"
+
+#~ msgid "Japanese"
+#~ msgstr "Japanin kieli"
+
+#~ msgid "Portuguese (Brazil)"
+#~ msgstr "Portugalin kieli (Brasilia)"
+
+#~ msgid "Spanish"
+#~ msgstr "Espanjan kieli"
+
+#~ msgid "Descriptive name for this phone."
+#~ msgstr "Kuvaileva nimi tälle puhelimelle."
+
+#~ msgid "A whole number of calls must be entered for the \"call limit.\""
+#~ msgstr "Yhtenäinen määrä puheluita on annettava \"puhelu rajaksi.\""
+
+#~ msgid "A whole number of calls must be entered for the \"busy limit.\""
+#~ msgstr "Yhtenäinen määrä puheluita on annettava \"varattu rajaksi.\""
+
+#, fuzzy
+#~ msgid "Advanced SIP Options"
+#~ msgstr "Lisäasetukset"
 
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
