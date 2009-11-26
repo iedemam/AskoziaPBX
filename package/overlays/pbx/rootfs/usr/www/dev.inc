@@ -38,12 +38,12 @@
 		margin-bottom: 10px;
 		display: none;
 	}
-	
+
 	#devtranslationpanel {
 		width: 100%;
 		display: none;
 	}
-	
+
 	.devoutput {
 		border: 2px solid #435370;
 		background: #F0F0F0;

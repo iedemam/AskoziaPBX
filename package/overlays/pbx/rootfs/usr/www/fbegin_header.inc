@@ -1,6 +1,6 @@
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC"><?
 
-	include("fbegin_header.inc");
+	include("dev.inc");
 
 	?><table width="750" border="0" cellspacing="0" cellpadding="2">
 		<tr valign="bottom"> 
