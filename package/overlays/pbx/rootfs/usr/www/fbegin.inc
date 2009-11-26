@@ -233,12 +233,14 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 <script src="jqueryui/js/ui.core.js" type="text/javascript"></script>
 <script src="jqueryui/js/ui.draggable.js" type="text/javascript"></script>
 <script src="jqueryui/js/ui.sortable.js" type="text/javascript"></script>
+<script src="jqueryui/js/ui.tabs.js" type="text/javascript"></script>
 <script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script src="jquery.progressbar.js" type="text/javascript"></script>
 <script src="gui_head.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
+<link href="jqueryui/css/ui.css" rel="stylesheet" type="text/css">
 </head>
 
 <? include("fbegin_header.inc"); ?>
