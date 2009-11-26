@@ -29,17 +29,25 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-if ($_POST) {
-	report(
+
+if ($_POST['report'] == "translation") {
+	report_translation(
 		$_POST['devmodever'],
 		$_POST['page'],
 		$_POST['language'],
 		$_POST['original'],
 		$_POST['improved']
 	);
+
+} else if ($_POST['report'] == "hardware") {
+	report_hardware(
+		$_POST['devmodever'],
+		$_POST['description']
+	);
 }
 
-function report($devmodever, $page, $language, $original, $improved) {
+
+function report_translation($devmodever, $page, $language, $original, $improved) {
 	$mail_sent = mail(
 		"localebot@askozia.com",
 		"Localization Improvement (" . $language . ") " . $page,
@@ -53,6 +61,28 @@ function report($devmodever, $page, $language, $original, $improved) {
 		"improved:\n" .
 		$improved . "\n",
 		"From: localebot@askozia.com\r\n"
+	);
+
+	if ($mail_sent) {
+		echo "Submitted successfully. Thanks!";
+	} else {
+		echo "Failed to send. Check e-mail notifications settings.";
+	}
+}
+
+function report_hardware($devmodever, $description) {
+	$lspci = array();
+	exec("lspci -v", $lspci);
+	$mail_sent = mail(
+		"hardwarebot@askozia.com",
+		"Hardware Report",
+		"developer mode version: " . $devmodever . "\n" .
+		"description: " . $description . "\n" .
+		"\n" .
+		"lspci:\n" .
+		implode("\n", $lspci) .
+		"\n",
+		"From: hardwarebot@askozia.com\r\n"
 	);
 
 	if ($mail_sent) {

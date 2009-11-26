@@ -80,6 +80,9 @@
 			// translation tab selected
 			} else if (tmp.indexOf('#devtabs-3') != -1) {
 				dev_translation_enable();
+			// hardware tab selected
+			} else if (tmp.indexOf('#devtabs-4') != -1) {
+				dev_translation_disable();
 			}
 		});
 
@@ -141,6 +144,7 @@
 	//--- TRANSLATION PANEL ---//
 	function dev_translation_submit() {
 		jQuery.post("dev.php",{
+			report: "translation",
 			devmodever: devmodeversion,
 			page: '<?=$_SERVER["SCRIPT_NAME"];?>',
 			language: '<?=$current_language;?>',
@@ -171,6 +175,20 @@
 		jQuery('.spannit').unbind('mouseout');
 	}
 
+
+	//--- HARDWARE PANEL ---//
+	function dev_hardware_submit() {
+		jQuery.post("dev.php",{
+			report: "hardware",
+			devmodever: devmodeversion,
+			description: jQuery("#devhardwaredescription").val()
+
+		},function(data){
+			alert(data);
+			jQuery("#devhardwaredescription").val("");
+		});
+	}
+
 //-->
 </script>
 <div id="devpanel">
@@ -180,6 +198,7 @@
 			<li><a href="#devtabs-1">Console</a></li>
 			<li><a href="#devtabs-2">Asterisk Manager Interface</a></li>
 			<li><a href="#devtabs-3">Fix a Translation</a></li>
+			<li><a href="#devtabs-4">Report New Hardware</a></li>
 		</ul>
 		<div id="devtabs-1">
 			<input id="devconsolecmd" type="text" size="60" value="">
@@ -191,15 +210,26 @@
 		</div>
 		<div id="devtabs-3">
 			<ul>
-				<li>E-Mail notifications must be configured correctly to submit changes.</li>
 				<li>Compatible strings react when moused-over.</li>
 				<li>Click on the string to open a submission form.</li>
+				<li><strong>Note:</strong> E-Mail notifications must be configured correctly to submit reports.</li>
 			</ul>
 			<br>
 			<div id="devtranslationpanel">
 				<textarea id="devlocaleoldstring" cols="30" rows="3" disabled="true"></textarea>
 				<textarea id="devlocalenewstring" cols="30" rows="3"></textarea>
 				<br><a href="javascript:{}" onclick='jQuery("#devtranslationpanel").slideUp("slow");'>cancel</a>&nbsp;|&nbsp;<a href="javascript:{}" onclick="dev_translation_submit();">submit locale improvement</a>
+			</div>
+		</div>
+		<div id="devtabs-4">
+			<ul>
+				<li>Describe what is not being recognized on your system.</li>
+				<li>Technical details about your hardware will automatically be submitted.</li>
+				<li><strong>Note:</strong> E-Mail notifications must be configured correctly to submit reports.</li>
+			</ul>
+			<br>
+			<textarea id="devhardwaredescription" cols="60" rows="6"></textarea>
+			<br><a href="javascript:{}" onclick="dev_hardware_submit();">submit hardware report</a>
 			</div>
 		</div>
 	</div>
