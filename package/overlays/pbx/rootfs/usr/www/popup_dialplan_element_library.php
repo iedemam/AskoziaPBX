@@ -39,7 +39,7 @@ require_once("functions.inc");
 	<head>
 		<title><?=gettext("Dialplan Element Library");?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-		<script src="jquery.js" type="text/javascript"></script>
+		<script src="jqueryui/js/jquery.js" type="text/javascript"></script>
 		<script src="jquery.blockUI.js" type="text/javascript"></script>
 		<script src="jquery.selectboxes.js" type="text/javascript"></script>
 		<script src="jquery.preloadImage.js" type="text/javascript"></script>

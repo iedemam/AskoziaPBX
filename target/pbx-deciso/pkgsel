@@ -77,12 +77,11 @@ X freeplay-ulaw-base
 
 # webgui
 X ajaxcgi
-X jquery
+X jquery.ui
 X jquery.blockui
 X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
-X jquery.ui
 X iui
 
 # binaries

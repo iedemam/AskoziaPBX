@@ -79,7 +79,7 @@ function puts( $arg ) { echo "$arg\n"; }
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title><?=gettext("AskoziaPBX: execute command");?></title>
-<script src="jquery.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.js" type="text/javascript"></script>
 <script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script language="javascript">

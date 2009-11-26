@@ -229,14 +229,14 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 <head>
 <title><?=genhtmltitle($pgtitle);?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<script src="jquery.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.js" type="text/javascript"></script>
+<script src="jqueryui/js/ui.core.js" type="text/javascript"></script>
+<script src="jqueryui/js/ui.draggable.js" type="text/javascript"></script>
+<script src="jqueryui/js/ui.sortable.js" type="text/javascript"></script>
 <script src="jquery.blockUI.js" type="text/javascript"></script>
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script src="jquery.progressbar.js" type="text/javascript"></script>
-<script src="ui.core.js" type="text/javascript"></script>
-<script src="ui.draggable.js" type="text/javascript"></script>
-<script src="ui.sortable.js" type="text/javascript"></script>
 <script src="gui_head.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 </head>
