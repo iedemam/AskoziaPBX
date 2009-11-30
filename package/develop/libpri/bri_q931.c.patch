@@ -5,15 +5,15 @@
  	if (!cause)
  		cause = PRI_CAUSE_RESPONSE_TO_STATUS_ENQUIRY;
 -	if (c->cr > -1)
--		cur = *pri->callpool;
+-		cur = *ctrl->callpool;
 +	if (c->cr > -1) {
 +		/* we need to find the master who has the callpool first */
-+		if (pri->master) {
++		if (ctrl->master) {
 +			/* this call is not the master, set callpool to master */
-+			cur = *pri->master->callpool;
++			cur = *ctrl->master->callpool;
 +		} else {
 +			/* this call is the master */
-+			cur = *pri->callpool;
++			cur = *ctrl->callpool;
 +		}
 +	}
  	while(cur) {
