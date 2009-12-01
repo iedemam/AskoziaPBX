@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -495,12 +495,22 @@ msgstr "最新のAskoziaPBXのベータ版が、見つかりました！"
 msgid "The following input errors were detected:"
 msgstr "下記の入力エラーが検出されました"
 
-#, fuzzy
-msgid "Local Network"
-msgstr "ネットワーク"
-
 msgid "Analog"
 msgstr "アナログ"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+#, fuzzy
+msgid "Local Area Network"
+msgstr "ネットワーク"
+
+msgid "Phones"
+msgstr "電話機"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "私にメールを送る"
 
 msgid "Description"
 msgstr "説明"
@@ -585,11 +595,12 @@ msgid "Reboot"
 msgstr "再起動"
 
 #, fuzzy
-msgid "Ports"
-msgstr "ポルトガル"
+msgid "Networking"
+msgstr "ネットワーク"
 
-msgid "Phones"
-msgstr "電話機"
+#, fuzzy
+msgid "Telephony Ports"
+msgstr "電話機の削除"
 
 msgid "Providers"
 msgstr "接続回線"
@@ -603,15 +614,15 @@ msgstr "グループ"
 msgid "Transfers"
 msgstr "転送"
 
-#, fuzzy
-msgid "E-Mail"
-msgstr "私にメールを送る"
-
 msgid "Conferencing"
 msgstr "電話会議"
 
 msgid "Summary"
 msgstr "概要"
+
+#, fuzzy
+msgid "Ports"
+msgstr "ポルトガル"
 
 msgid "Channels"
 msgstr "チャンネル"
@@ -634,9 +645,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr "IAX"
 
-msgid "ISDN"
-msgstr "ISDN"
-
 msgid "Manager"
 msgstr "マネージャー"
 
@@ -658,9 +666,8 @@ msgstr "管理者画面"
 msgid "System"
 msgstr "システム"
 
-#, fuzzy
-msgid "Hardware"
-msgstr "ファームウェア"
+msgid "Connectivity"
+msgstr ""
 
 msgid "Accounts"
 msgstr "設定名"
@@ -2114,6 +2121,169 @@ msgstr ""
 "104 (128) bitキーは、13文字のASCII文字または頭に'0x'を付けた26文字の16進数を"
 "入力する必要があります"
 
+#, fuzzy
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"このページの設定は、VoIPプロバイダーへの接続性を確実にするのに重要です。具体"
+"的には、誤ったトポロジー設定は、接続先からの着信を妨げてしまいます。もしこの"
+"システムがNATの内側にいるのであれば、AskoziaPBXの標準設定では、下記のポートを"
+"フォワードさせる必要があります: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-"
+"10200 UDP (RTP Audio)"
+
+msgid "A valid MAC address must be specified."
+msgstr "有効なMACアドレスを指定する必要があります"
+
+msgid "A valid IP address must be specified."
+msgstr "有効なIPアドレスを指定する必要があります"
+
+msgid "A valid subnet bit count must be specified."
+msgstr "有効なサブネットのビット数を指定する必要があります"
+
+msgid "A valid gateway must be specified."
+msgstr "有効なゲートウェイを指定する必要があります"
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr "DNSサーバーの有効なIPアドレスを指定する必要があります"
+
+msgid "A public IP address must be entered for this topology."
+msgstr "パブリック IP アドレスをこのトポロジに入力する必要があります"
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr "有効なパブリックIPアドレスを入力する必要があります"
+
+msgid "A public hostname must be entered for this topology."
+msgstr "パブリックホストネームをこのトポロジに入力する必要があります"
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr "有効なパブリックホストネームをこのトポロジに入力する必要があります"
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "ダイナミックDNSのユーザー名に、無効な文字が含まれています"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+#, fuzzy
+msgid "configured manually"
+msgstr "未設定"
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IPアドレス"
+
+msgid "Gateway"
+msgstr "ゲートウェイ"
+
+msgid "DNS Servers"
+msgstr "DNSサーバー"
+
+msgid "IP Addresses"
+msgstr "IPアドレス"
+
+msgid "MAC Address"
+msgstr "MACアドレス"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"この項目は、ネットワークインターフェースのMACアドレスを (&quot;なりすまし"
+"&quot;) する事が出来ます。<br>MACアドレスを次の書式: xx:xx:xx:xx:xx:xx で入力"
+"するか、ブランク(空白)にしておいて下さい"
+
+msgid "Topology"
+msgstr "接続形態"
+
+msgid "Public IP address"
+msgstr "Public IP address"
+
+msgid "NAT + static public IP"
+msgstr "NAT + static public IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynamic public IP"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr ""
+"パブリックIPアドレス:このPBXにはルーティング可能なIPアドレス(上記入力)があり"
+"ます"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + 静的パブリックIP:このPBXは静的なパブリックIP NATの内側にあります。この"
+"IPアドレスを入力して下さい"
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + 動的パブリックIP:このPBXは動的なパブリックIP NATの内側にあります。常に"
+"このネットワークを指すホスト名が必要です。この情報を入力して下さい"
+
+msgid "Static Public IP"
+msgstr "固定IP"
+
+msgid "Public Hostname"
+msgstr "公開するホスト名"
+
+msgid "This information should be updated by:"
+msgstr "この情報は、次のシステムにより更新管理させます"
+
+msgid "My Router"
+msgstr "Myルーター"
+
+msgid "This PBX"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr "Dynamic DNS Client"
+
+msgid "Service Type"
+msgstr "サービスタイプ"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr "はい、上記で指定したエイリアス \"*.hostname.domain\"をホスト名にします"
+
+msgid "Warning:"
+msgstr "警告;"
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"&quot;保存&quot;をクリックすると、現在通話中の全ての通話が切断されます。ま"
+"た、再度このAskoziaPBXにアクセスする前に、下記の何れかもしくは複数の項目を行"
+"う必要が有ります"
+
+msgid "restart the PBX"
+msgstr "PBXの再起動"
+
+msgid "change the IP address of your computer"
+msgstr "あなたのコンピュータのIPアドレスを変更する"
+
+msgid "access the webGUI with the new IP address"
+msgstr "新しいwebGUIのアドレスで、アクセスする"
+
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
@@ -2154,9 +2324,6 @@ msgstr ""
 
 msgid "E-mail Address"
 msgstr "E-mailアドレス"
-
-msgid "Password"
-msgstr "パスワード"
 
 msgid "Authentication Method"
 msgstr "認証方式"
@@ -2371,9 +2538,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr "警告;"
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "clicking &quot;Save&quot; 全ての呼を切断します"
 
@@ -2478,163 +2642,6 @@ msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr ""
 "ポーリングモードを有効(古いタイプのカードでは、まれにこの設定が必要になりま"
 "す)"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"このページの設定は、VoIPプロバイダーへの接続性を確実にするのに重要です。具体"
-"的には、誤ったトポロジー設定は、接続先からの着信を妨げてしまいます。もしこの"
-"システムがNATの内側にいるのであれば、AskoziaPBXの標準設定では、下記のポートを"
-"フォワードさせる必要があります: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-"
-"10200 UDP (RTP Audio)"
-
-msgid "A valid MAC address must be specified."
-msgstr "有効なMACアドレスを指定する必要があります"
-
-msgid "A valid IP address must be specified."
-msgstr "有効なIPアドレスを指定する必要があります"
-
-msgid "A valid subnet bit count must be specified."
-msgstr "有効なサブネットのビット数を指定する必要があります"
-
-msgid "A valid gateway must be specified."
-msgstr "有効なゲートウェイを指定する必要があります"
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr "DNSサーバーの有効なIPアドレスを指定する必要があります"
-
-msgid "A public IP address must be entered for this topology."
-msgstr "パブリック IP アドレスをこのトポロジに入力する必要があります"
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr "有効なパブリックIPアドレスを入力する必要があります"
-
-msgid "A public hostname must be entered for this topology."
-msgstr "パブリックホストネームをこのトポロジに入力する必要があります"
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr "有効なパブリックホストネームをこのトポロジに入力する必要があります"
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr "ダイナミックDNSのユーザー名に、無効な文字が含まれています"
-
-msgid "Settings"
-msgstr "設定"
-
-msgid "configured via DHCP client"
-msgstr ""
-
-#, fuzzy
-msgid "configured manually"
-msgstr "未設定"
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr "IPアドレス"
-
-msgid "Gateway"
-msgstr "ゲートウェイ"
-
-msgid "DNS Servers"
-msgstr "DNSサーバー"
-
-msgid "IP Addresses"
-msgstr "IPアドレス"
-
-msgid "MAC Address"
-msgstr "MACアドレス"
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-"この項目は、ネットワークインターフェースのMACアドレスを (&quot;なりすまし"
-"&quot;) する事が出来ます。<br>MACアドレスを次の書式: xx:xx:xx:xx:xx:xx で入力"
-"するか、ブランク(空白)にしておいて下さい"
-
-msgid "Topology"
-msgstr "接続形態"
-
-msgid "Public IP address"
-msgstr "Public IP address"
-
-msgid "NAT + static public IP"
-msgstr "NAT + static public IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynamic public IP"
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr ""
-"パブリックIPアドレス:このPBXにはルーティング可能なIPアドレス(上記入力)があり"
-"ます"
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-"NAT + 静的パブリックIP:このPBXは静的なパブリックIP NATの内側にあります。この"
-"IPアドレスを入力して下さい"
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-"NAT + 動的パブリックIP:このPBXは動的なパブリックIP NATの内側にあります。常に"
-"このネットワークを指すホスト名が必要です。この情報を入力して下さい"
-
-msgid "Static Public IP"
-msgstr "固定IP"
-
-msgid "Public Hostname"
-msgstr "公開するホスト名"
-
-msgid "This information should be updated by:"
-msgstr "この情報は、次のシステムにより更新管理させます"
-
-msgid "My Router"
-msgstr "Myルーター"
-
-msgid "This PBX"
-msgstr ""
-
-msgid "Dynamic DNS Client"
-msgstr "Dynamic DNS Client"
-
-msgid "Service Type"
-msgstr "サービスタイプ"
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr "はい、上記で指定したエイリアス \"*.hostname.domain\"をホスト名にします"
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-"&quot;保存&quot;をクリックすると、現在通話中の全ての通話が切断されます。ま"
-"た、再度このAskoziaPBXにアクセスする前に、下記の何れかもしくは複数の項目を行"
-"う必要が有ります"
-
-msgid "restart the PBX"
-msgstr "PBXの再起動"
-
-msgid "change the IP address of your computer"
-msgstr "あなたのコンピュータのIPアドレスを変更する"
-
-msgid "access the webGUI with the new IP address"
-msgstr "新しいwebGUIのアドレスで、アクセスする"
 
 msgid "Printable Dialplan"
 msgstr "印刷可能なダイヤルプラン"
@@ -3354,6 +3361,10 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "ファームウェア"
+
 #~ msgid "unconfigured"
 #~ msgstr "未設定"
 
@@ -3473,10 +3484,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ "このオプションを有効にすると、外部のネットワークからこの内線番号に対し、次"
 #~ "の様なURIを宛先に指定する事で、SIP及びIAX2プロトコルでのダイヤル及び接続が"
 #~ "可能となります (extension@%s)"
-
-#, fuzzy
-#~ msgid "telephones"
-#~ msgstr "電話機の削除"
 
 #, fuzzy
 #~ msgid "provider lines"

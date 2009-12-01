@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -432,12 +432,21 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "De volgende input fouten werden herkend:"
 
-#, fuzzy
-msgid "Local Network"
-msgstr "Netwerk"
-
 msgid "Analog"
 msgstr "Analoog"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+#, fuzzy
+msgid "Local Area Network"
+msgstr "Netwerk"
+
+msgid "Phones"
+msgstr "Telefoons"
+
+msgid "E-Mail"
+msgstr ""
 
 msgid "Description"
 msgstr "Omschrijving"
@@ -518,11 +527,12 @@ msgid "Reboot"
 msgstr "Herstarten"
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
+msgid "Networking"
+msgstr "Netwerk"
 
-msgid "Phones"
-msgstr "Telefoons"
+#, fuzzy
+msgid "Telephony Ports"
+msgstr "Telefoon verwijderen"
 
 msgid "Providers"
 msgstr "Providers"
@@ -536,14 +546,15 @@ msgstr "Bel Groepen"
 msgid "Transfers"
 msgstr "Doorschakelen"
 
-msgid "E-Mail"
-msgstr ""
-
 msgid "Conferencing"
 msgstr "Conferencing"
 
 msgid "Summary"
 msgstr ""
+
+#, fuzzy
+msgid "Ports"
+msgstr "Portugal"
 
 msgid "Channels"
 msgstr "Kanalen"
@@ -566,9 +577,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr "IAX"
 
-msgid "ISDN"
-msgstr "ISDN"
-
 msgid "Manager"
 msgstr ""
 
@@ -590,9 +598,8 @@ msgstr "Beheerders Interface"
 msgid "System"
 msgstr "systeem"
 
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
+msgid "Connectivity"
+msgstr ""
 
 msgid "Accounts"
 msgstr "Lijnen"
@@ -2089,6 +2096,173 @@ msgstr ""
 "104 (128) bit sleutels kunnen worden ingeschreven als 13 ASCII tekens of 26 "
 "hexadecimale cijfers, voorafgegaan door een '0x'."
 
+#, fuzzy
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"De instellingen op deze pagina zijn van essentieel belang om voor de "
+"connectiviteit met VoIP Providers te zorgen. Met name de topologie door "
+"onjuiste instellingen kan dit zorgen dat binnenkomende gesprekken niet "
+"worden verbonden. Als dit systeem zich achter een NAT bevind, standaard "
+"vereist AskoziaPBX dat de volgende poorten worden geforward aan het: 5060 "
+"UDP (SIP), 4569 UDP (IAX) en 10000-10200 UDP (RTP Audio)"
+
+msgid "A valid MAC address must be specified."
+msgstr "Een geldig MAC-adres moeten worden opgegeven."
+
+msgid "A valid IP address must be specified."
+msgstr "Een geldig ip adres moet worden gekozen."
+
+msgid "A valid subnet bit count must be specified."
+msgstr "Een geldige subnet bits berekening moet worden vermeld."
+
+msgid "A valid gateway must be specified."
+msgstr "Een geldig gateway moeten worden vermeld."
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr ""
+"Een geldig IP-adres moet worden opgegeven voor de primaire / secundaire / "
+"tertiaire DNS-server."
+
+msgid "A public IP address must be entered for this topology."
+msgstr "Een publieke IP-adres moet worden ingevoerd voor deze topologie."
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr ""
+"Een geldige openbaar IP-adres moet worden ingevoerd voor deze topologie."
+
+msgid "A public hostname must be entered for this topology."
+msgstr "Een publieke hostnaam moet worden ingevoerd voor deze topologie."
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr ""
+"Een geldige publieke hostnaam moet worden ingevoerd voor deze topologie."
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "De dynamische DNS-gebruikersnaam bevat ongeldige tekens."
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+#, fuzzy
+msgid "configured manually"
+msgstr "configuratie"
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr "Ip Adres"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "DNS Servers"
+msgstr "DNS Servers"
+
+msgid "IP Addresses"
+msgstr "IP Adressen"
+
+msgid "MAC Address"
+msgstr "MAC Adressen"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"Dit veld kan worden gebruikt voor het aanpassen ( \"spoof\") het MAC adres "
+"van de netwerk interface <br> Geef een MAC-adres in de volgende vorm: xx: "
+"xx: xx: xx: xx: xx of laat leeg"
+
+msgid "Topology"
+msgstr "Topology"
+
+msgid "Public IP address"
+msgstr "publiek IP adres"
+
+msgid "NAT + static public IP"
+msgstr "NAT + statisch publiek IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynamicch publiek IP"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr "Publiek IP-adres: deze PBX heeft een routable IP-adres (zie hierboven)"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + Statisch Publiek IP: deze PBX is achter een NAT welke een statisch "
+"publiek-IP heeft. Geef dit IP-adres hieronder."
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + Dynamisch Publiek IP: deze PBX is achter een NAT die beschikt over een "
+"dynamische publieke IP. Een hostnaam, die voortdurend wordt bijgewerkt is "
+"noodzakelijk. Voer deze gegevens hieronder in."
+
+msgid "Static Public IP"
+msgstr "Statisch publiek IP"
+
+msgid "Public Hostname"
+msgstr "Publieke Hostnaam"
+
+msgid "This information should be updated by:"
+msgstr "Deze informatie moet worden bijgewerkt door:"
+
+msgid "My Router"
+msgstr "Mijn Router"
+
+msgid "This PBX"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr "Dynamische DNS Cliënt"
+
+msgid "Service Type"
+msgstr "Service Type"
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr "Ja, alias \"*.hostname.domain\" naar hostnaam hierboven omschreven."
+
+msgid "Warning:"
+msgstr "Waarschuwing:"
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"nadat u klikt op &quot;Save&quot;, worden huidige gesprekken bëindigd. Het "
+"kan ook zijn dat u één van de volgende stappen moet uitvoeren voordat u "
+"opnieuw toegang krijgt tot uw PBX:"
+
+msgid "restart the PBX"
+msgstr "De pbx herstarten"
+
+msgid "change the IP address of your computer"
+msgstr "verander het IP-adres van uw computer"
+
+msgid "access the webGUI with the new IP address"
+msgstr "toegang tot de WebGUI met het nieuwe IP-adres"
+
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
@@ -2124,9 +2298,6 @@ msgstr ""
 
 msgid "E-mail Address"
 msgstr ""
-
-msgid "Password"
-msgstr "Wachtwoord"
 
 msgid "Authentication Method"
 msgstr ""
@@ -2336,9 +2507,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr "Waarschuwing:"
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "clicking &quot;Save&quot; zal alle huidige verbindingen verbreken."
 
@@ -2442,167 +2610,6 @@ msgstr "Polling-modus inschakelen"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Polling-modus inschakelen (soms nodig voor oudere kaarten)"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"De instellingen op deze pagina zijn van essentieel belang om voor de "
-"connectiviteit met VoIP Providers te zorgen. Met name de topologie door "
-"onjuiste instellingen kan dit zorgen dat binnenkomende gesprekken niet "
-"worden verbonden. Als dit systeem zich achter een NAT bevind, standaard "
-"vereist AskoziaPBX dat de volgende poorten worden geforward aan het: 5060 "
-"UDP (SIP), 4569 UDP (IAX) en 10000-10200 UDP (RTP Audio)"
-
-msgid "A valid MAC address must be specified."
-msgstr "Een geldig MAC-adres moeten worden opgegeven."
-
-msgid "A valid IP address must be specified."
-msgstr "Een geldig ip adres moet worden gekozen."
-
-msgid "A valid subnet bit count must be specified."
-msgstr "Een geldige subnet bits berekening moet worden vermeld."
-
-msgid "A valid gateway must be specified."
-msgstr "Een geldig gateway moeten worden vermeld."
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr ""
-"Een geldig IP-adres moet worden opgegeven voor de primaire / secundaire / "
-"tertiaire DNS-server."
-
-msgid "A public IP address must be entered for this topology."
-msgstr "Een publieke IP-adres moet worden ingevoerd voor deze topologie."
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr ""
-"Een geldige openbaar IP-adres moet worden ingevoerd voor deze topologie."
-
-msgid "A public hostname must be entered for this topology."
-msgstr "Een publieke hostnaam moet worden ingevoerd voor deze topologie."
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr ""
-"Een geldige publieke hostnaam moet worden ingevoerd voor deze topologie."
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr "De dynamische DNS-gebruikersnaam bevat ongeldige tekens."
-
-msgid "Settings"
-msgstr "Instellingen"
-
-msgid "configured via DHCP client"
-msgstr ""
-
-#, fuzzy
-msgid "configured manually"
-msgstr "configuratie"
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr "Ip Adres"
-
-msgid "Gateway"
-msgstr "Gateway"
-
-msgid "DNS Servers"
-msgstr "DNS Servers"
-
-msgid "IP Addresses"
-msgstr "IP Adressen"
-
-msgid "MAC Address"
-msgstr "MAC Adressen"
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-"Dit veld kan worden gebruikt voor het aanpassen ( \"spoof\") het MAC adres "
-"van de netwerk interface <br> Geef een MAC-adres in de volgende vorm: xx: "
-"xx: xx: xx: xx: xx of laat leeg"
-
-msgid "Topology"
-msgstr "Topology"
-
-msgid "Public IP address"
-msgstr "publiek IP adres"
-
-msgid "NAT + static public IP"
-msgstr "NAT + statisch publiek IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynamicch publiek IP"
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr "Publiek IP-adres: deze PBX heeft een routable IP-adres (zie hierboven)"
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-"NAT + Statisch Publiek IP: deze PBX is achter een NAT welke een statisch "
-"publiek-IP heeft. Geef dit IP-adres hieronder."
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-"NAT + Dynamisch Publiek IP: deze PBX is achter een NAT die beschikt over een "
-"dynamische publieke IP. Een hostnaam, die voortdurend wordt bijgewerkt is "
-"noodzakelijk. Voer deze gegevens hieronder in."
-
-msgid "Static Public IP"
-msgstr "Statisch publiek IP"
-
-msgid "Public Hostname"
-msgstr "Publieke Hostnaam"
-
-msgid "This information should be updated by:"
-msgstr "Deze informatie moet worden bijgewerkt door:"
-
-msgid "My Router"
-msgstr "Mijn Router"
-
-msgid "This PBX"
-msgstr ""
-
-msgid "Dynamic DNS Client"
-msgstr "Dynamische DNS Cliënt"
-
-msgid "Service Type"
-msgstr "Service Type"
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr "Ja, alias \"*.hostname.domain\" naar hostnaam hierboven omschreven."
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-"nadat u klikt op &quot;Save&quot;, worden huidige gesprekken bëindigd. Het "
-"kan ook zijn dat u één van de volgende stappen moet uitvoeren voordat u "
-"opnieuw toegang krijgt tot uw PBX:"
-
-msgid "restart the PBX"
-msgstr "De pbx herstarten"
-
-msgid "change the IP address of your computer"
-msgstr "verander het IP-adres van uw computer"
-
-msgid "access the webGUI with the new IP address"
-msgstr "toegang tot de WebGUI met het nieuwe IP-adres"
 
 msgid "Printable Dialplan"
 msgstr "Afdrukbaar Belplan"
@@ -3249,6 +3256,10 @@ msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
+#, fuzzy
 #~ msgid "unconfigured"
 #~ msgstr "configuratie"
 
@@ -3311,10 +3322,6 @@ msgstr ""
 
 #~ msgid "This phone's number (MSN)."
 #~ msgstr "Deze telefoon zijn nummer (MSN)."
-
-#, fuzzy
-#~ msgid "telephones"
-#~ msgstr "Telefoon verwijderen"
 
 #, fuzzy
 #~ msgid "provider lines"

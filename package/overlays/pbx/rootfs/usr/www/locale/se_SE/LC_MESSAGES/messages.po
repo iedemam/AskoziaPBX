@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -418,10 +418,19 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr ""
 
-msgid "Local Network"
+msgid "Analog"
 msgstr ""
 
-msgid "Analog"
+msgid "ISDN"
+msgstr ""
+
+msgid "Local Area Network"
+msgstr ""
+
+msgid "Phones"
+msgstr ""
+
+msgid "E-Mail"
 msgstr ""
 
 msgid "Description"
@@ -498,10 +507,10 @@ msgstr ""
 msgid "Reboot"
 msgstr ""
 
-msgid "Ports"
+msgid "Networking"
 msgstr ""
 
-msgid "Phones"
+msgid "Telephony Ports"
 msgstr ""
 
 msgid "Providers"
@@ -516,13 +525,13 @@ msgstr ""
 msgid "Transfers"
 msgstr ""
 
-msgid "E-Mail"
-msgstr ""
-
 msgid "Conferencing"
 msgstr ""
 
 msgid "Summary"
+msgstr ""
+
+msgid "Ports"
 msgstr ""
 
 msgid "Channels"
@@ -546,9 +555,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr ""
 
-msgid "ISDN"
-msgstr ""
-
 msgid "Manager"
 msgstr ""
 
@@ -570,7 +576,7 @@ msgstr ""
 msgid "System"
 msgstr ""
 
-msgid "Hardware"
+msgid "Connectivity"
 msgstr ""
 
 msgid "Accounts"
@@ -1930,6 +1936,150 @@ msgid ""
 msgstr ""
 
 msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+
+msgid "A valid MAC address must be specified."
+msgstr ""
+
+msgid "A valid IP address must be specified."
+msgstr ""
+
+msgid "A valid subnet bit count must be specified."
+msgstr ""
+
+msgid "A valid gateway must be specified."
+msgstr ""
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr ""
+
+msgid "A public IP address must be entered for this topology."
+msgstr ""
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr ""
+
+msgid "A public hostname must be entered for this topology."
+msgstr ""
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr ""
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "configured via DHCP client"
+msgstr ""
+
+msgid "configured manually"
+msgstr ""
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "DNS Servers"
+msgstr ""
+
+msgid "IP Addresses"
+msgstr ""
+
+msgid "MAC Address"
+msgstr ""
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+
+msgid "Topology"
+msgstr ""
+
+msgid "Public IP address"
+msgstr ""
+
+msgid "NAT + static public IP"
+msgstr ""
+
+msgid "NAT + dynamic public IP"
+msgstr ""
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr ""
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+
+msgid "Static Public IP"
+msgstr ""
+
+msgid "Public Hostname"
+msgstr ""
+
+msgid "This information should be updated by:"
+msgstr ""
+
+msgid "My Router"
+msgstr ""
+
+msgid "This PBX"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr ""
+
+msgid "Service Type"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr ""
+
+msgid "Warning:"
+msgstr ""
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+
+msgid "restart the PBX"
+msgstr ""
+
+msgid "change the IP address of your computer"
+msgstr ""
+
+msgid "access the webGUI with the new IP address"
+msgstr ""
+
+msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
 msgstr ""
@@ -1961,9 +2111,6 @@ msgid "SMTP host URL or IP address and optional port."
 msgstr ""
 
 msgid "E-mail Address"
-msgstr ""
-
-msgid "Password"
 msgstr ""
 
 msgid "Authentication Method"
@@ -2151,9 +2298,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr ""
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 
@@ -2240,144 +2384,6 @@ msgid "Enable Polling Mode"
 msgstr ""
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr ""
-
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-
-msgid "A valid MAC address must be specified."
-msgstr ""
-
-msgid "A valid IP address must be specified."
-msgstr ""
-
-msgid "A valid subnet bit count must be specified."
-msgstr ""
-
-msgid "A valid gateway must be specified."
-msgstr ""
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr ""
-
-msgid "A public IP address must be entered for this topology."
-msgstr ""
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr ""
-
-msgid "A public hostname must be entered for this topology."
-msgstr ""
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr ""
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
-msgid "configured via DHCP client"
-msgstr ""
-
-msgid "configured manually"
-msgstr ""
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr ""
-
-msgid "Gateway"
-msgstr ""
-
-msgid "DNS Servers"
-msgstr ""
-
-msgid "IP Addresses"
-msgstr ""
-
-msgid "MAC Address"
-msgstr ""
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-
-msgid "Topology"
-msgstr ""
-
-msgid "Public IP address"
-msgstr ""
-
-msgid "NAT + static public IP"
-msgstr ""
-
-msgid "NAT + dynamic public IP"
-msgstr ""
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr ""
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-
-msgid "Static Public IP"
-msgstr ""
-
-msgid "Public Hostname"
-msgstr ""
-
-msgid "This information should be updated by:"
-msgstr ""
-
-msgid "My Router"
-msgstr ""
-
-msgid "This PBX"
-msgstr ""
-
-msgid "Dynamic DNS Client"
-msgstr ""
-
-msgid "Service Type"
-msgstr ""
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr ""
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-
-msgid "restart the PBX"
-msgstr ""
-
-msgid "change the IP address of your computer"
-msgstr ""
-
-msgid "access the webGUI with the new IP address"
 msgstr ""
 
 msgid "Printable Dialplan"

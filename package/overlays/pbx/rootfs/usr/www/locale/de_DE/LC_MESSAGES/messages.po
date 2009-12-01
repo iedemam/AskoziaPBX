@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -504,12 +504,22 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "Die folgenden Fehler wurden in der Eingabe gefunden:"
 
-#, fuzzy
-msgid "Local Network"
-msgstr "Netzwerk"
-
 msgid "Analog"
 msgstr "Analog"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+#, fuzzy
+msgid "Local Area Network"
+msgstr "Netzwerk"
+
+msgid "Phones"
+msgstr "Nebenstellen"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "per E-Mail benachrichtigen"
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -594,11 +604,12 @@ msgid "Reboot"
 msgstr "Reboot"
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugal"
+msgid "Networking"
+msgstr "Netzwerk"
 
-msgid "Phones"
-msgstr "Nebenstellen"
+#, fuzzy
+msgid "Telephony Ports"
+msgstr "Nebenstelle löschen"
 
 msgid "Providers"
 msgstr "Provider"
@@ -612,15 +623,15 @@ msgstr "Rufgruppen"
 msgid "Transfers"
 msgstr "Gesprächsübergabe"
 
-#, fuzzy
-msgid "E-Mail"
-msgstr "per E-Mail benachrichtigen"
-
 msgid "Conferencing"
 msgstr "Telefonkonferenzen"
 
 msgid "Summary"
 msgstr "Zusammenfassung"
+
+#, fuzzy
+msgid "Ports"
+msgstr "Portugal"
 
 msgid "Channels"
 msgstr "Kanäle"
@@ -643,9 +654,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr "IAX"
 
-msgid "ISDN"
-msgstr "ISDN"
-
 msgid "Manager"
 msgstr "Manager"
 
@@ -667,9 +675,8 @@ msgstr "Manager-Interface"
 msgid "System"
 msgstr "System"
 
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
+msgid "Connectivity"
+msgstr ""
 
 msgid "Accounts"
 msgstr "Konten"
@@ -2163,6 +2170,178 @@ msgstr ""
 "104-(128)-bit-Schlüssel (=Keys) können als 13 ASCII-Zeichen oder 26 Hex-"
 "Zeichen eingegeben werden. Hex-Eingaben ist das Präfix '0x' voranzustellen."
 
+#, fuzzy
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"Diese Einstellungen sind wichtig für die Verbindung zu VoIP-Providern. "
+"Falsche Einstellungen bezüglich der Netzwerk-Topologie können die "
+"Vermittlung von Gesprächen verhindern. Wenn sich dieses System hinter einem "
+"NAT befindet, benötigt AskoziaPBX folgende Port-Weiterleitungen: 5060 UDP "
+"(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
+
+msgid "A valid MAC address must be specified."
+msgstr "Eine gültige MAC-Adresse muß angegeben werden."
+
+msgid "A valid IP address must be specified."
+msgstr "Eine gültige IP-Adresse muß angegeben werden."
+
+msgid "A valid subnet bit count must be specified."
+msgstr ""
+"Ein gültiger Wert für die Anzahl der Subnetz-Bits muß angegeben werden."
+
+msgid "A valid gateway must be specified."
+msgstr "Ein gültiges Gateway muß angegeben werden."
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr ""
+"Eine gültige IP-Adresse muß für den ersten/zweiten/dritten DNS-Server "
+"eingegeben werden."
+
+msgid "A public IP address must be entered for this topology."
+msgstr "Eine öffentliche IP-Adresse muß für diese Topologie eingegeben werden."
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr ""
+"Eine gültige öffentliche IP-Adresse muß für diese Topologie eingegeben "
+"werden."
+
+msgid "A public hostname must be entered for this topology."
+msgstr "Ein öffentlicher Hostname muß für diese Topologie eingegeben werden."
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr ""
+"Ein gültiger öffentlicher Hostname muß für diese Topologie eingegeben werden."
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr ""
+"Der Benutzername für den dynamischen DNS-Account enthält ungültige Zeichen."
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+#, fuzzy
+msgid "configured manually"
+msgstr "unkonfiguriert"
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP-Adresse"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "DNS Servers"
+msgstr "DNS-Server"
+
+msgid "IP Addresses"
+msgstr "IP-Adressen"
+
+msgid "MAC Address"
+msgstr "MAC-Adresse"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"Dieses Feld kann verwendet werden um die MAC-Adresse des Netzwerkinterfaces "
+"zu modifizieren (&quot;spoof&quot;) <br>Eine MAC-Adresse im Format: xx:xx:xx:"
+"xx:xx:xx eingeben oder leer lassen."
+
+msgid "Topology"
+msgstr "Topologie"
+
+msgid "Public IP address"
+msgstr "Öffentliche IP-Adresse"
+
+msgid "NAT + static public IP"
+msgstr "NAT + statische öffentliche IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynamische öffentliche IP"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr ""
+"Öffentliche IP-Adresse: Diese Anlage hat eine routbare IP-Adresse (oben "
+"eingegeben)"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + statische öffentliche IP-Adreesse: Diese Anlage ist hinter einem NAT, "
+"das eine statische öffentliche IP-Adresse hat. IP bitte unten eingeben."
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + dynamische öffentliche IP-Adreesse: Diese Anlage ist hinter einem NAT, "
+"das eine dynamische öffentliche IP-Adresse hat. Hostname mit dyn. DNS-"
+"Aktualisierung bitte unten eingeben."
+
+msgid "Static Public IP"
+msgstr "Statische öffentliche IP"
+
+msgid "Public Hostname"
+msgstr "Öffentlicher Hostname"
+
+msgid "This information should be updated by:"
+msgstr "Diese Information sollte ersetzt werden durch:"
+
+msgid "My Router"
+msgstr "Mein Router"
+
+msgid "This PBX"
+msgstr "Diese TK-Anlage"
+
+msgid "Dynamic DNS Client"
+msgstr "Dynamischer DNS-Client"
+
+msgid "Service Type"
+msgstr "Dienste"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr "Ja, \"*.hostname.domain\" auf den oben angegebenen Hostnamen mappen."
+
+msgid "Warning:"
+msgstr "Warnung:"
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"wenn Sie &quot;Speichern&quot; klicken weden alle laufenden Verbindungen "
+"getrennt. Es ist auch möglich, daß Sie eine oder mehrere der folgenden "
+"Aktionen durchführen müssen um sich wieder mit der Telefonanlage verbinden "
+"zu können:"
+
+msgid "restart the PBX"
+msgstr "Telefonanlage neu starten"
+
+msgid "change the IP address of your computer"
+msgstr "IP-Adresse Ihres Computers ändern"
+
+msgid "access the webGUI with the new IP address"
+msgstr "auf die webGUI unter der neuen IP-Adresse zugreifen"
+
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
@@ -2202,9 +2381,6 @@ msgstr ""
 
 msgid "E-mail Address"
 msgstr "E-Mail-Adresse"
-
-msgid "Password"
-msgstr "Passwort"
 
 msgid "Authentication Method"
 msgstr "Authentifizierungs-Methode"
@@ -2416,9 +2592,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr "Warnung:"
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "&quot;Speichern&quot; trennt alle laufenden Verbindungen."
 
@@ -2522,172 +2695,6 @@ msgstr "Polling-Modus aktivieren"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Polling-Modus aktivieren. (manchmal nötig für ältere Karten)"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"Diese Einstellungen sind wichtig für die Verbindung zu VoIP-Providern. "
-"Falsche Einstellungen bezüglich der Netzwerk-Topologie können die "
-"Vermittlung von Gesprächen verhindern. Wenn sich dieses System hinter einem "
-"NAT befindet, benötigt AskoziaPBX folgende Port-Weiterleitungen: 5060 UDP "
-"(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
-
-msgid "A valid MAC address must be specified."
-msgstr "Eine gültige MAC-Adresse muß angegeben werden."
-
-msgid "A valid IP address must be specified."
-msgstr "Eine gültige IP-Adresse muß angegeben werden."
-
-msgid "A valid subnet bit count must be specified."
-msgstr ""
-"Ein gültiger Wert für die Anzahl der Subnetz-Bits muß angegeben werden."
-
-msgid "A valid gateway must be specified."
-msgstr "Ein gültiges Gateway muß angegeben werden."
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr ""
-"Eine gültige IP-Adresse muß für den ersten/zweiten/dritten DNS-Server "
-"eingegeben werden."
-
-msgid "A public IP address must be entered for this topology."
-msgstr "Eine öffentliche IP-Adresse muß für diese Topologie eingegeben werden."
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr ""
-"Eine gültige öffentliche IP-Adresse muß für diese Topologie eingegeben "
-"werden."
-
-msgid "A public hostname must be entered for this topology."
-msgstr "Ein öffentlicher Hostname muß für diese Topologie eingegeben werden."
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr ""
-"Ein gültiger öffentlicher Hostname muß für diese Topologie eingegeben werden."
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr ""
-"Der Benutzername für den dynamischen DNS-Account enthält ungültige Zeichen."
-
-msgid "Settings"
-msgstr "Einstellungen"
-
-msgid "configured via DHCP client"
-msgstr ""
-
-#, fuzzy
-msgid "configured manually"
-msgstr "unkonfiguriert"
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr "IP-Adresse"
-
-msgid "Gateway"
-msgstr "Gateway"
-
-msgid "DNS Servers"
-msgstr "DNS-Server"
-
-msgid "IP Addresses"
-msgstr "IP-Adressen"
-
-msgid "MAC Address"
-msgstr "MAC-Adresse"
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-"Dieses Feld kann verwendet werden um die MAC-Adresse des Netzwerkinterfaces "
-"zu modifizieren (&quot;spoof&quot;) <br>Eine MAC-Adresse im Format: xx:xx:xx:"
-"xx:xx:xx eingeben oder leer lassen."
-
-msgid "Topology"
-msgstr "Topologie"
-
-msgid "Public IP address"
-msgstr "Öffentliche IP-Adresse"
-
-msgid "NAT + static public IP"
-msgstr "NAT + statische öffentliche IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynamische öffentliche IP"
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr ""
-"Öffentliche IP-Adresse: Diese Anlage hat eine routbare IP-Adresse (oben "
-"eingegeben)"
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-"NAT + statische öffentliche IP-Adreesse: Diese Anlage ist hinter einem NAT, "
-"das eine statische öffentliche IP-Adresse hat. IP bitte unten eingeben."
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-"NAT + dynamische öffentliche IP-Adreesse: Diese Anlage ist hinter einem NAT, "
-"das eine dynamische öffentliche IP-Adresse hat. Hostname mit dyn. DNS-"
-"Aktualisierung bitte unten eingeben."
-
-msgid "Static Public IP"
-msgstr "Statische öffentliche IP"
-
-msgid "Public Hostname"
-msgstr "Öffentlicher Hostname"
-
-msgid "This information should be updated by:"
-msgstr "Diese Information sollte ersetzt werden durch:"
-
-msgid "My Router"
-msgstr "Mein Router"
-
-msgid "This PBX"
-msgstr "Diese TK-Anlage"
-
-msgid "Dynamic DNS Client"
-msgstr "Dynamischer DNS-Client"
-
-msgid "Service Type"
-msgstr "Dienste"
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr "Ja, \"*.hostname.domain\" auf den oben angegebenen Hostnamen mappen."
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-"wenn Sie &quot;Speichern&quot; klicken weden alle laufenden Verbindungen "
-"getrennt. Es ist auch möglich, daß Sie eine oder mehrere der folgenden "
-"Aktionen durchführen müssen um sich wieder mit der Telefonanlage verbinden "
-"zu können:"
-
-msgid "restart the PBX"
-msgstr "Telefonanlage neu starten"
-
-msgid "change the IP address of your computer"
-msgstr "IP-Adresse Ihres Computers ändern"
-
-msgid "access the webGUI with the new IP address"
-msgstr "auf die webGUI unter der neuen IP-Adresse zugreifen"
 
 msgid "Printable Dialplan"
 msgstr "Druckbarer Dialplan"
@@ -3386,6 +3393,10 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
 #~ msgid "unconfigured"
 #~ msgstr "unkonfiguriert"
 
@@ -3500,10 +3511,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 #~ msgstr ""
 #~ "Die Auswahl dieser Option erlaubt die Anwahl der Nebenstelle über SIP und "
 #~ "IAX2 uris (extension@%s)"
-
-#, fuzzy
-#~ msgid "telephones"
-#~ msgstr "Nebenstelle löschen"
 
 #, fuzzy
 #~ msgid "provider lines"

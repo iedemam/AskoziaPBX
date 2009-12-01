@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -488,12 +488,22 @@ msgstr ""
 msgid "The following input errors were detected:"
 msgstr "Seuraavat virheet löydettiin:"
 
-#, fuzzy
-msgid "Local Network"
-msgstr "Verkko"
-
 msgid "Analog"
 msgstr "Analogi"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+#, fuzzy
+msgid "Local Area Network"
+msgstr "Verkko"
+
+msgid "Phones"
+msgstr "Puhelimet"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Lähetä"
 
 msgid "Description"
 msgstr "Kuvaus"
@@ -578,11 +588,12 @@ msgid "Reboot"
 msgstr "Käynnistä uudellen"
 
 #, fuzzy
-msgid "Ports"
-msgstr "Portugali"
+msgid "Networking"
+msgstr "Verkko"
 
-msgid "Phones"
-msgstr "Puhelimet"
+#, fuzzy
+msgid "Telephony Ports"
+msgstr "poista puhelin"
 
 msgid "Providers"
 msgstr "Palveluntarjoajat"
@@ -596,15 +607,15 @@ msgstr "Puheluryhmät"
 msgid "Transfers"
 msgstr "Siirrot"
 
-#, fuzzy
-msgid "E-Mail"
-msgstr "Lähetä"
-
 msgid "Conferencing"
 msgstr "Konferenssit"
 
 msgid "Summary"
 msgstr "Tiivistelmä"
+
+#, fuzzy
+msgid "Ports"
+msgstr "Portugali"
 
 msgid "Channels"
 msgstr "Kanavat"
@@ -627,9 +638,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr "IAX"
 
-msgid "ISDN"
-msgstr "ISDN"
-
 msgid "Manager"
 msgstr "Hallitseminen"
 
@@ -651,9 +659,8 @@ msgstr "Hallinta Käyttöliit."
 msgid "System"
 msgstr "Järjestelmä"
 
-#, fuzzy
-msgid "Hardware"
-msgstr "Laiteohjelmisto"
+msgid "Connectivity"
+msgstr ""
 
 msgid "Accounts"
 msgstr "Tilit"
@@ -2122,6 +2129,172 @@ msgstr ""
 "104 (128) tavuinen avain on annettava 13 ASCII merkillä tai 26 HEX "
 "numeroilla jonka ennen tulee laittaa '0x'."
 
+#, fuzzy
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"Asetukset tällä sivulla ovat kriittiset varmistaaksesi yhteys VoIP "
+"Palveluntarjoajille. Erityisesti väärä Topologia asetus voi aiheuttaa sitä "
+"että sisäntulevat puhelut eivät yhdistä. Jos järjestelmä on NAT:in takana, "
+"AskoziaPBX vaatii että seuraavat portit ovat välitetty sille: 5060 UDP "
+"(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Ääni)"
+
+msgid "A valid MAC address must be specified."
+msgstr "Kelpaava MAC osoite on oltava määritetty."
+
+msgid "A valid IP address must be specified."
+msgstr "Kelpaava IP osoite on oltava määritettynä."
+
+msgid "A valid subnet bit count must be specified."
+msgstr "kelpaava aliverkon tavu määrä on oltava määritetty."
+
+msgid "A valid gateway must be specified."
+msgstr "kelpaava gateway on oltava määritetty."
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr ""
+"kelpaava IP osoite on oltava määritettynä ensisijaiselle, toissijaiselle ja "
+"kolmannelle DNS serverille."
+
+msgid "A public IP address must be entered for this topology."
+msgstr "Julkinen IP osoite on annettava tälle topologialle."
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr "Kelpaava IP osoite on annettava tälle topologialle."
+
+msgid "A public hostname must be entered for this topology."
+msgstr "Julkinen isäntänimi on annettava tälle topologialle."
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr "Kelpaava julkinen isäntänimi on annettava tälle topologialle."
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "Dynaaminen DNS käyttäjänimi sisältää virheellisiä merkkejä."
+
+msgid "Settings"
+msgstr "Asetukset"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+#, fuzzy
+msgid "configured manually"
+msgstr "ei konfiguroitu"
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP Osoite"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "DNS Servers"
+msgstr "DNS Serverit"
+
+msgid "IP Addresses"
+msgstr "IP Osoitteet"
+
+msgid "MAC Address"
+msgstr "MAC Osoite"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"Tämä kenttä voi käyttää (&quot;huijaamaan&quot;) verkon käyttöliittymän MAC "
+"osoitetta<br>Anna MAC osoite seuraavassa muodossa: xx:xx:xx:xx:xx:xx tai "
+"jätä tyhjäksi."
+
+msgid "Topology"
+msgstr "Topologia"
+
+msgid "Public IP address"
+msgstr "Julkinen IP osoite"
+
+msgid "NAT + static public IP"
+msgstr "NAT + staattinen julkinen IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + dynaaminen julkinen IP"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr ""
+"Julkinen IP Osoite: tällä PBX:llä on reitittävä IP osoite (annettu ylhäällä)"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + Staattinen Julkinen IP: tämä PBX on NAT:in takana jolla on staattinen "
+"julkinen IP. Anna tämä IP alhaalla."
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + Dynaaminen Julkinen IP: tämä PBX on NAT:in takana jolla on dynaaminen "
+"julkinen IP. Isäntänimi joka koko ajan osoittaa tähän verkkoon on "
+"pakollinen. Anna nämä tiedot alhaalla"
+
+msgid "Static Public IP"
+msgstr "Staattinen Julkinen IP"
+
+msgid "Public Hostname"
+msgstr "Julkinen Isäntänimi"
+
+msgid "This information should be updated by:"
+msgstr "Nämä tiedot päivittää:"
+
+msgid "My Router"
+msgstr "Reitittimeni"
+
+msgid "This PBX"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr "Dynaaminen DNS Klientti"
+
+msgid "Service Type"
+msgstr "Palvelu Tyyppi"
+
+msgid "Password"
+msgstr "Salasana"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr ""
+"Kyllä, alias \"*.isäntänimi.verkkotunnus\" yllä annettuun isäntänimeen."
+
+msgid "Warning:"
+msgstr "Varoitus:"
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"Kun klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
+"lopetetaan. Sinun on ehkä myös pakko seurattava näitä toiminpideitä ennen "
+"kuin voit käyttää PBX:ää uudelleen:"
+
+msgid "restart the PBX"
+msgstr "käynnistä PBX:ää uudelleen"
+
+msgid "change the IP address of your computer"
+msgstr "vaihda IP osoite tälle tietokoneelle"
+
+msgid "access the webGUI with the new IP address"
+msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
+
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
@@ -2159,9 +2332,6 @@ msgstr "SMTP isäntä URL tai IP osoite ja valinnainen portti."
 
 msgid "E-mail Address"
 msgstr "S-posti Osoite"
-
-msgid "Password"
-msgstr "Salasana"
 
 msgid "Authentication Method"
 msgstr "Laillistamiskeino"
@@ -2379,9 +2549,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr "Varoitus:"
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
@@ -2488,166 +2655,6 @@ msgstr "Mahdollista Äänestystila"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Poista äänestystila käytöstä. (joskus pakollinen vanhoille korteille)"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"Asetukset tällä sivulla ovat kriittiset varmistaaksesi yhteys VoIP "
-"Palveluntarjoajille. Erityisesti väärä Topologia asetus voi aiheuttaa sitä "
-"että sisäntulevat puhelut eivät yhdistä. Jos järjestelmä on NAT:in takana, "
-"AskoziaPBX vaatii että seuraavat portit ovat välitetty sille: 5060 UDP "
-"(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Ääni)"
-
-msgid "A valid MAC address must be specified."
-msgstr "Kelpaava MAC osoite on oltava määritetty."
-
-msgid "A valid IP address must be specified."
-msgstr "Kelpaava IP osoite on oltava määritettynä."
-
-msgid "A valid subnet bit count must be specified."
-msgstr "kelpaava aliverkon tavu määrä on oltava määritetty."
-
-msgid "A valid gateway must be specified."
-msgstr "kelpaava gateway on oltava määritetty."
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr ""
-"kelpaava IP osoite on oltava määritettynä ensisijaiselle, toissijaiselle ja "
-"kolmannelle DNS serverille."
-
-msgid "A public IP address must be entered for this topology."
-msgstr "Julkinen IP osoite on annettava tälle topologialle."
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr "Kelpaava IP osoite on annettava tälle topologialle."
-
-msgid "A public hostname must be entered for this topology."
-msgstr "Julkinen isäntänimi on annettava tälle topologialle."
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr "Kelpaava julkinen isäntänimi on annettava tälle topologialle."
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr "Dynaaminen DNS käyttäjänimi sisältää virheellisiä merkkejä."
-
-msgid "Settings"
-msgstr "Asetukset"
-
-msgid "configured via DHCP client"
-msgstr ""
-
-#, fuzzy
-msgid "configured manually"
-msgstr "ei konfiguroitu"
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr "IP Osoite"
-
-msgid "Gateway"
-msgstr "Gateway"
-
-msgid "DNS Servers"
-msgstr "DNS Serverit"
-
-msgid "IP Addresses"
-msgstr "IP Osoitteet"
-
-msgid "MAC Address"
-msgstr "MAC Osoite"
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-"Tämä kenttä voi käyttää (&quot;huijaamaan&quot;) verkon käyttöliittymän MAC "
-"osoitetta<br>Anna MAC osoite seuraavassa muodossa: xx:xx:xx:xx:xx:xx tai "
-"jätä tyhjäksi."
-
-msgid "Topology"
-msgstr "Topologia"
-
-msgid "Public IP address"
-msgstr "Julkinen IP osoite"
-
-msgid "NAT + static public IP"
-msgstr "NAT + staattinen julkinen IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + dynaaminen julkinen IP"
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr ""
-"Julkinen IP Osoite: tällä PBX:llä on reitittävä IP osoite (annettu ylhäällä)"
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-"NAT + Staattinen Julkinen IP: tämä PBX on NAT:in takana jolla on staattinen "
-"julkinen IP. Anna tämä IP alhaalla."
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-"NAT + Dynaaminen Julkinen IP: tämä PBX on NAT:in takana jolla on dynaaminen "
-"julkinen IP. Isäntänimi joka koko ajan osoittaa tähän verkkoon on "
-"pakollinen. Anna nämä tiedot alhaalla"
-
-msgid "Static Public IP"
-msgstr "Staattinen Julkinen IP"
-
-msgid "Public Hostname"
-msgstr "Julkinen Isäntänimi"
-
-msgid "This information should be updated by:"
-msgstr "Nämä tiedot päivittää:"
-
-msgid "My Router"
-msgstr "Reitittimeni"
-
-msgid "This PBX"
-msgstr ""
-
-msgid "Dynamic DNS Client"
-msgstr "Dynaaminen DNS Klientti"
-
-msgid "Service Type"
-msgstr "Palvelu Tyyppi"
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr ""
-"Kyllä, alias \"*.isäntänimi.verkkotunnus\" yllä annettuun isäntänimeen."
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-"Kun klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
-"lopetetaan. Sinun on ehkä myös pakko seurattava näitä toiminpideitä ennen "
-"kuin voit käyttää PBX:ää uudelleen:"
-
-msgid "restart the PBX"
-msgstr "käynnistä PBX:ää uudelleen"
-
-msgid "change the IP address of your computer"
-msgstr "vaihda IP osoite tälle tietokoneelle"
-
-msgid "access the webGUI with the new IP address"
-msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
 
 msgid "Printable Dialplan"
 msgstr "Tulostettava Soittosuunitelma"
@@ -3346,6 +3353,10 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Laiteohjelmisto"
+
 #~ msgid "unconfigured"
 #~ msgstr "ei konfiguroitu"
 
@@ -3467,10 +3478,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgstr ""
 #~ "Tämän valinnan mahdollistaminen tarkoittaa että jatke on tavoitettavissa "
 #~ "SIP ja IAX2 uris:in kautta (jatke@%s)"
-
-#, fuzzy
-#~ msgid "telephones"
-#~ msgstr "poista puhelin"
 
 #, fuzzy
 #~ msgid "provider lines"

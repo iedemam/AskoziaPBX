@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -496,12 +496,22 @@ msgstr "Достъпна е нова <strong>бета</strong> версия на
 msgid "The following input errors were detected:"
 msgstr "Открити са следните входни грешки:"
 
-#, fuzzy
-msgid "Local Network"
-msgstr "Мрежов"
-
 msgid "Analog"
 msgstr "Аналогови"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+#, fuzzy
+msgid "Local Area Network"
+msgstr "Мрежов"
+
+msgid "Phones"
+msgstr "Вътрешни"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Изпрати ми E-mail"
 
 msgid "Description"
 msgstr "Описание"
@@ -587,11 +597,12 @@ msgid "Reboot"
 msgstr "Рестарт"
 
 #, fuzzy
-msgid "Ports"
-msgstr "Португалия"
+msgid "Networking"
+msgstr "Мрежов"
 
-msgid "Phones"
-msgstr "Вътрешни"
+#, fuzzy
+msgid "Telephony Ports"
+msgstr "изтрий вътрешна линия"
 
 msgid "Providers"
 msgstr "Външни"
@@ -605,15 +616,15 @@ msgstr "Групи на Звънене"
 msgid "Transfers"
 msgstr "Трансфер"
 
-#, fuzzy
-msgid "E-Mail"
-msgstr "Изпрати ми E-mail"
-
 msgid "Conferencing"
 msgstr "Конференция"
 
 msgid "Summary"
 msgstr "Резюме"
+
+#, fuzzy
+msgid "Ports"
+msgstr "Португалия"
 
 msgid "Channels"
 msgstr "Канали"
@@ -636,9 +647,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr "IAX"
 
-msgid "ISDN"
-msgstr "ISDN"
-
 msgid "Manager"
 msgstr "Управление"
 
@@ -660,9 +668,8 @@ msgstr "Астериск Конзола"
 msgid "System"
 msgstr "Главни"
 
-#, fuzzy
-msgid "Hardware"
-msgstr "Обновяване"
+msgid "Connectivity"
+msgstr ""
 
 msgid "Accounts"
 msgstr "Линии"
@@ -2141,6 +2148,168 @@ msgstr ""
 "104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
 "шестнадесетични символа предхождани от '0x'."
 
+#, fuzzy
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"Настройките на тази страница са критични за осигуряване връзката към VoIP "
+"доставчици. В частност, грешни топологични настройки могат да предотвратят "
+"входящо обаждане от свързване. Ако тази система е зад рутер, по подразбиране "
+"АскозияPBX изисква следните портове да бъдат пренасочени към нея: 5060 UDP "
+"(SIP), 4569 UDP (IAX) и 10000-10200 UDP (RTP Аудио)"
+
+msgid "A valid MAC address must be specified."
+msgstr "Въведете валиден MAC адрес."
+
+msgid "A valid IP address must be specified."
+msgstr "Въведете валиден IP адрес."
+
+msgid "A valid subnet bit count must be specified."
+msgstr "Въведете валидна Mask."
+
+msgid "A valid gateway must be specified."
+msgstr "Въведете валиден Шлюз."
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr "Въведете валиден IP адрес за първи/втори/трети DNS сървър."
+
+msgid "A public IP address must be entered for this topology."
+msgstr "Въведете валиден IP адрес за тази топология."
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr "Въведете валиден външен IP адрес за тази топология."
+
+msgid "A public hostname must be entered for this topology."
+msgstr "Въведете валидно име на host за тази топология."
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr "Въведете валидно външно име на host за тази топология."
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "Потребителското име на динамичният DNS  съдържа невалидни символи."
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+#, fuzzy
+msgid "configured manually"
+msgstr "неконфигурирани"
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP Адрес"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "DNS Servers"
+msgstr "DNS Сървъри"
+
+msgid "IP Addresses"
+msgstr "IP Адреси"
+
+msgid "MAC Address"
+msgstr "MAC Адрес"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"Това поле може да се използва за промяна MAC адреса на мрежовия интерфейс."
+"<br>Въведете MAC адрес в следния формат: xx:xx:xx:xx:xx:xx или оставете "
+"празно."
+
+msgid "Topology"
+msgstr "Топология"
+
+msgid "Public IP address"
+msgstr "Външен IP адрес"
+
+msgid "NAT + static public IP"
+msgstr "NAT + статично външно IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + динамично външно IP"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr "Външен IP Адрес: тази централа има рутиран IP адрес (въведен по-горе)"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + Статично Външно IP: тази централа е зад рутер който има статично "
+"външно IP. Въведете това IP по-долу."
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + Динамично Външно IP:тази централа е зад рутер който има динамично "
+"външно IP. Името на host-а, постоянно се променя до значение необходимо за "
+"тази мрежа. Въведете тази информация по-долу."
+
+msgid "Static Public IP"
+msgstr "Статично Външно IP"
+
+msgid "Public Hostname"
+msgstr "Външно Име на Host"
+
+msgid "This information should be updated by:"
+msgstr "Тази информация трябва да се обнови от:"
+
+msgid "My Router"
+msgstr "Моят Рутер"
+
+msgid "This PBX"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr "Динамичен DNS Клиент"
+
+msgid "Service Type"
+msgstr "Вид Услуга"
+
+msgid "Password"
+msgstr "Парола"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr "Да, именувай \"*.hostname.domain\" за име на host определе по-горе."
+
+msgid "Warning:"
+msgstr "Внимание:"
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"след като кликнете &quot;Запиши&quot;, всички активни разговори ще "
+"прекъснат. Възможно е да трябва да направите една или повече от следните "
+"стъпки преди да получите достъп до вашата централа отново:"
+
+msgid "restart the PBX"
+msgstr "рестартирай централата"
+
+msgid "change the IP address of your computer"
+msgstr "промени IP адреса на компютъра"
+
+msgid "access the webGUI with the new IP address"
+msgstr "достъп до webGUI с нов IP адрес"
+
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
@@ -2179,9 +2348,6 @@ msgstr "SMTP host URL или IP адрес и порт."
 
 msgid "E-mail Address"
 msgstr "E-mail Адрес"
-
-msgid "Password"
-msgstr "Парола"
 
 msgid "Authentication Method"
 msgstr "Метод на Оторизация"
@@ -2399,9 +2565,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr "Внимание:"
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "кликането върху  &quot;Запиши&quot; ще прекъсне всички активни разговори."
@@ -2506,162 +2669,6 @@ msgstr "Забрани Polling Режим"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "Забранява polling режима. (понякога е необходим за по-стари карти)"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"Настройките на тази страница са критични за осигуряване връзката към VoIP "
-"доставчици. В частност, грешни топологични настройки могат да предотвратят "
-"входящо обаждане от свързване. Ако тази система е зад рутер, по подразбиране "
-"АскозияPBX изисква следните портове да бъдат пренасочени към нея: 5060 UDP "
-"(SIP), 4569 UDP (IAX) и 10000-10200 UDP (RTP Аудио)"
-
-msgid "A valid MAC address must be specified."
-msgstr "Въведете валиден MAC адрес."
-
-msgid "A valid IP address must be specified."
-msgstr "Въведете валиден IP адрес."
-
-msgid "A valid subnet bit count must be specified."
-msgstr "Въведете валидна Mask."
-
-msgid "A valid gateway must be specified."
-msgstr "Въведете валиден Шлюз."
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr "Въведете валиден IP адрес за първи/втори/трети DNS сървър."
-
-msgid "A public IP address must be entered for this topology."
-msgstr "Въведете валиден IP адрес за тази топология."
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr "Въведете валиден външен IP адрес за тази топология."
-
-msgid "A public hostname must be entered for this topology."
-msgstr "Въведете валидно име на host за тази топология."
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr "Въведете валидно външно име на host за тази топология."
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr "Потребителското име на динамичният DNS  съдържа невалидни символи."
-
-msgid "Settings"
-msgstr "Настройки"
-
-msgid "configured via DHCP client"
-msgstr ""
-
-#, fuzzy
-msgid "configured manually"
-msgstr "неконфигурирани"
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr "IP Адрес"
-
-msgid "Gateway"
-msgstr "Шлюз"
-
-msgid "DNS Servers"
-msgstr "DNS Сървъри"
-
-msgid "IP Addresses"
-msgstr "IP Адреси"
-
-msgid "MAC Address"
-msgstr "MAC Адрес"
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-"Това поле може да се използва за промяна MAC адреса на мрежовия интерфейс."
-"<br>Въведете MAC адрес в следния формат: xx:xx:xx:xx:xx:xx или оставете "
-"празно."
-
-msgid "Topology"
-msgstr "Топология"
-
-msgid "Public IP address"
-msgstr "Външен IP адрес"
-
-msgid "NAT + static public IP"
-msgstr "NAT + статично външно IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + динамично външно IP"
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr "Външен IP Адрес: тази централа има рутиран IP адрес (въведен по-горе)"
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-"NAT + Статично Външно IP: тази централа е зад рутер който има статично "
-"външно IP. Въведете това IP по-долу."
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-"NAT + Динамично Външно IP:тази централа е зад рутер който има динамично "
-"външно IP. Името на host-а, постоянно се променя до значение необходимо за "
-"тази мрежа. Въведете тази информация по-долу."
-
-msgid "Static Public IP"
-msgstr "Статично Външно IP"
-
-msgid "Public Hostname"
-msgstr "Външно Име на Host"
-
-msgid "This information should be updated by:"
-msgstr "Тази информация трябва да се обнови от:"
-
-msgid "My Router"
-msgstr "Моят Рутер"
-
-msgid "This PBX"
-msgstr ""
-
-msgid "Dynamic DNS Client"
-msgstr "Динамичен DNS Клиент"
-
-msgid "Service Type"
-msgstr "Вид Услуга"
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr "Да, именувай \"*.hostname.domain\" за име на host определе по-горе."
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-"след като кликнете &quot;Запиши&quot;, всички активни разговори ще "
-"прекъснат. Възможно е да трябва да направите една или повече от следните "
-"стъпки преди да получите достъп до вашата централа отново:"
-
-msgid "restart the PBX"
-msgstr "рестартирай централата"
-
-msgid "change the IP address of your computer"
-msgstr "промени IP адреса на компютъра"
-
-msgid "access the webGUI with the new IP address"
-msgstr "достъп до webGUI с нов IP адрес"
 
 msgid "Printable Dialplan"
 msgstr "Годен за Печат Dialplan"
@@ -3368,6 +3375,10 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Обновяване"
+
 #~ msgid "unconfigured"
 #~ msgstr "неконфигурирани"
 
@@ -3490,10 +3501,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgstr ""
 #~ "Разрешяването на тази опция ще позволи на този вътрешен номер да бъде "
 #~ "достиган чрез SIP и IAX2 URI (вътрешен_номер@%s)"
-
-#, fuzzy
-#~ msgid "telephones"
-#~ msgstr "изтрий вътрешна линия"
 
 #, fuzzy
 #~ msgid "provider lines"

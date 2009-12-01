@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-23 17:53+0100\n"
+"POT-Creation-Date: 2009-12-01 17:15+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -474,12 +474,22 @@ msgstr "一个AskoziaPBX的新<strong>beta</strong>版本已经可用了！"
 msgid "The following input errors were detected:"
 msgstr "发现以下输入错误："
 
-#, fuzzy
-msgid "Local Network"
-msgstr "网络"
-
 msgid "Analog"
 msgstr "模拟"
+
+msgid "ISDN"
+msgstr "ISDN"
+
+#, fuzzy
+msgid "Local Area Network"
+msgstr "网络"
+
+msgid "Phones"
+msgstr "电话"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "电邮地址"
 
 msgid "Description"
 msgstr "描述"
@@ -562,11 +572,12 @@ msgid "Reboot"
 msgstr "重启"
 
 #, fuzzy
-msgid "Ports"
-msgstr "葡萄牙"
+msgid "Networking"
+msgstr "网络"
 
-msgid "Phones"
-msgstr "电话"
+#, fuzzy
+msgid "Telephony Ports"
+msgstr "删除电话"
 
 msgid "Providers"
 msgstr "提供商"
@@ -580,15 +591,15 @@ msgstr "通话组"
 msgid "Transfers"
 msgstr "转移"
 
-#, fuzzy
-msgid "E-Mail"
-msgstr "电邮地址"
-
 msgid "Conferencing"
 msgstr "会议"
 
 msgid "Summary"
 msgstr "摘要"
+
+#, fuzzy
+msgid "Ports"
+msgstr "葡萄牙"
 
 msgid "Channels"
 msgstr "信道"
@@ -611,9 +622,6 @@ msgstr "SIP"
 msgid "IAX"
 msgstr "IAX"
 
-msgid "ISDN"
-msgstr "ISDN"
-
 msgid "Manager"
 msgstr "管理"
 
@@ -635,9 +643,8 @@ msgstr "管理界面"
 msgid "System"
 msgstr "系统"
 
-#, fuzzy
-msgid "Hardware"
-msgstr "固件"
+msgid "Connectivity"
+msgstr ""
 
 msgid "Accounts"
 msgstr "账号"
@@ -2062,6 +2069,162 @@ msgid ""
 "preceded by '0x'."
 msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
 
+#, fuzzy
+msgid ""
+"The settings on this page are critical to ensuring connectivity to VoIP "
+"Providers. In particular, incorrect Topology settings can prevent incoming "
+"calls from connecting. If this system is behind a NAT, by default the system "
+"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
+"(IAX) and 10000-10200 UDP (RTP Audio)"
+msgstr ""
+"本页的设置对确保连接到VoIP供应商十分重要。实际上，不正确的网络设置可能造成电"
+"话无法接入。如果这个系统在一个NAT后，默认情况下，AskoziaPBX需要以下的端口映"
+"射：5060 UDP(SIP),4569 UDP(IAX)和10000-10200 UDP (RTP Audio)"
+
+msgid "A valid MAC address must be specified."
+msgstr "必须指定一个有效的MAC地址"
+
+msgid "A valid IP address must be specified."
+msgstr "必须指定一个有效的IP地址"
+
+msgid "A valid subnet bit count must be specified."
+msgstr "必须指定一个有效的子网位计数。"
+
+msgid "A valid gateway must be specified."
+msgstr "必须指定一个有效的网关。"
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary/tertiary DNS "
+"server."
+msgstr "必须为首选/备用的DNS服务器指定一个有效地IP地址。"
+
+msgid "A public IP address must be entered for this topology."
+msgstr "必须为这个网络布局指定一个公网IP。"
+
+msgid "A valid public IP address must be entered for this topology."
+msgstr "必须为这个网络布局输入一个有效的公网IP。"
+
+msgid "A public hostname must be entered for this topology."
+msgstr "必须为这个网络布局输入一个公共的主机名。"
+
+msgid "A valid public hostname must be entered for this topology."
+msgstr "必须为这个网络布局输入一个有效的主机名。"
+
+msgid "The dynamic DNS username contains invalid characters."
+msgstr "动态DNS的用户名中包含无效字符。"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "configured via DHCP client"
+msgstr ""
+
+#, fuzzy
+msgid "configured manually"
+msgstr "设置"
+
+msgid "use DHCP settings permanently"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP地址"
+
+msgid "Gateway"
+msgstr "网关"
+
+msgid "DNS Servers"
+msgstr "DNS服务器"
+
+msgid "IP Addresses"
+msgstr "IP地址"
+
+msgid "MAC Address"
+msgstr "MAC地址"
+
+msgid ""
+"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
+"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
+"xx:xx:xx or leave blank"
+msgstr ""
+"这里可以用来修改 (&quot;欺骗&quot;) 网络接口的MAC地址。 <br>输入一个格式为： "
+"xx:xx:xx:xx:xx:xx 的MAC地址或留空。"
+
+msgid "Topology"
+msgstr "网络布局"
+
+msgid "Public IP address"
+msgstr "公网IP地址"
+
+msgid "NAT + static public IP"
+msgstr "NAT + 静态公网IP"
+
+msgid "NAT + dynamic public IP"
+msgstr "NAT + 动态公网IP"
+
+msgid "Public IP Address: this PBX has a routable IP address (entered above)"
+msgstr "公网IP地址：这个PBX由一个可路由的IP地址（上面输入的）"
+
+msgid ""
+"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
+"IP. Enter this IP below."
+msgstr ""
+"NAT + 固定公网IP：这个PBX处于一个有固定公网IP的NAT之后。请在下面输入这个IP。"
+
+msgid ""
+"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
+"IP. A hostname, constantly updated to point to this network is required. "
+"Enter this information below."
+msgstr ""
+"NAT + 动态公网IP：这个PBX处于一个有动态公网IP的NAT之后。持续的更新指向这个网"
+"络的主机名是必要的。请在下面输入这个信息。"
+
+msgid "Static Public IP"
+msgstr "固定公网IP"
+
+msgid "Public Hostname"
+msgstr "公共主机名"
+
+msgid "This information should be updated by:"
+msgstr "这个信息的更新应该由："
+
+msgid "My Router"
+msgstr "我的路由"
+
+msgid "This PBX"
+msgstr ""
+
+msgid "Dynamic DNS Client"
+msgstr "动态DNS客户端"
+
+msgid "Service Type"
+msgstr "服务类型"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
+msgstr "是的，别名 \"*.hostname.domain\" 到上述指定的主机。"
+
+msgid "Warning:"
+msgstr "警告："
+
+msgid ""
+"after you click &quot;Save&quot;, all current calls will be dropped. You may "
+"also have to do one or more of the following steps before you can access "
+"your PBX again:"
+msgstr ""
+"按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。在您重新您访问PBX之前，"
+"也可以做如下的几步："
+
+msgid "restart the PBX"
+msgstr "重启PBX"
+
+msgid "change the IP address of your computer"
+msgstr "改变您计算机的IP地址"
+
+msgid "access the webGUI with the new IP address"
+msgstr "用一个新IP地址访问网页界面"
+
 msgid ""
 "In order to send missed call notifications and recorded voicemail messages "
 "via e-mail, a mail server must be correctly configured here."
@@ -2099,9 +2262,6 @@ msgstr "SMTP主机URL或者IP地址以及可选的端口。"
 
 msgid "E-mail Address"
 msgstr "电邮地址"
-
-msgid "Password"
-msgstr "密码"
 
 msgid "Authentication Method"
 msgstr "验证方法"
@@ -2315,9 +2475,6 @@ msgid ""
 "reliably, try adjusting this setting."
 msgstr ""
 
-msgid "Warning:"
-msgstr "警告："
-
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "点击&quot;保存&quot;会导致所有正在进行的通话断线。"
 
@@ -2411,156 +2568,6 @@ msgstr "允许探询模式"
 
 msgid "Enable polling mode. (sometimes needed for older cards)"
 msgstr "允许探询模式（对一些老卡有时是必要的）"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"本页的设置对确保连接到VoIP供应商十分重要。实际上，不正确的网络设置可能造成电"
-"话无法接入。如果这个系统在一个NAT后，默认情况下，AskoziaPBX需要以下的端口映"
-"射：5060 UDP(SIP),4569 UDP(IAX)和10000-10200 UDP (RTP Audio)"
-
-msgid "A valid MAC address must be specified."
-msgstr "必须指定一个有效的MAC地址"
-
-msgid "A valid IP address must be specified."
-msgstr "必须指定一个有效的IP地址"
-
-msgid "A valid subnet bit count must be specified."
-msgstr "必须指定一个有效的子网位计数。"
-
-msgid "A valid gateway must be specified."
-msgstr "必须指定一个有效的网关。"
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary/tertiary DNS "
-"server."
-msgstr "必须为首选/备用的DNS服务器指定一个有效地IP地址。"
-
-msgid "A public IP address must be entered for this topology."
-msgstr "必须为这个网络布局指定一个公网IP。"
-
-msgid "A valid public IP address must be entered for this topology."
-msgstr "必须为这个网络布局输入一个有效的公网IP。"
-
-msgid "A public hostname must be entered for this topology."
-msgstr "必须为这个网络布局输入一个公共的主机名。"
-
-msgid "A valid public hostname must be entered for this topology."
-msgstr "必须为这个网络布局输入一个有效的主机名。"
-
-msgid "The dynamic DNS username contains invalid characters."
-msgstr "动态DNS的用户名中包含无效字符。"
-
-msgid "Settings"
-msgstr "设置"
-
-msgid "configured via DHCP client"
-msgstr ""
-
-#, fuzzy
-msgid "configured manually"
-msgstr "设置"
-
-msgid "use DHCP settings permanently"
-msgstr ""
-
-msgid "IP Address"
-msgstr "IP地址"
-
-msgid "Gateway"
-msgstr "网关"
-
-msgid "DNS Servers"
-msgstr "DNS服务器"
-
-msgid "IP Addresses"
-msgstr "IP地址"
-
-msgid "MAC Address"
-msgstr "MAC地址"
-
-msgid ""
-"This field can be used to modify (&quot;spoof&quot;) the MAC address of the "
-"network interface<br>Enter a MAC address in the following format: xx:xx:xx:"
-"xx:xx:xx or leave blank"
-msgstr ""
-"这里可以用来修改 (&quot;欺骗&quot;) 网络接口的MAC地址。 <br>输入一个格式为： "
-"xx:xx:xx:xx:xx:xx 的MAC地址或留空。"
-
-msgid "Topology"
-msgstr "网络布局"
-
-msgid "Public IP address"
-msgstr "公网IP地址"
-
-msgid "NAT + static public IP"
-msgstr "NAT + 静态公网IP"
-
-msgid "NAT + dynamic public IP"
-msgstr "NAT + 动态公网IP"
-
-msgid "Public IP Address: this PBX has a routable IP address (entered above)"
-msgstr "公网IP地址：这个PBX由一个可路由的IP地址（上面输入的）"
-
-msgid ""
-"NAT + Static Public IP: this PBX is behind a NAT which has a static public "
-"IP. Enter this IP below."
-msgstr ""
-"NAT + 固定公网IP：这个PBX处于一个有固定公网IP的NAT之后。请在下面输入这个IP。"
-
-msgid ""
-"NAT + Dynamic Public IP: this PBX is behind a NAT which has a dynamic public "
-"IP. A hostname, constantly updated to point to this network is required. "
-"Enter this information below."
-msgstr ""
-"NAT + 动态公网IP：这个PBX处于一个有动态公网IP的NAT之后。持续的更新指向这个网"
-"络的主机名是必要的。请在下面输入这个信息。"
-
-msgid "Static Public IP"
-msgstr "固定公网IP"
-
-msgid "Public Hostname"
-msgstr "公共主机名"
-
-msgid "This information should be updated by:"
-msgstr "这个信息的更新应该由："
-
-msgid "My Router"
-msgstr "我的路由"
-
-msgid "This PBX"
-msgstr ""
-
-msgid "Dynamic DNS Client"
-msgstr "动态DNS客户端"
-
-msgid "Service Type"
-msgstr "服务类型"
-
-msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr "是的，别名 \"*.hostname.domain\" 到上述指定的主机。"
-
-msgid ""
-"after you click &quot;Save&quot;, all current calls will be dropped. You may "
-"also have to do one or more of the following steps before you can access "
-"your PBX again:"
-msgstr ""
-"按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。在您重新您访问PBX之前，"
-"也可以做如下的几步："
-
-msgid "restart the PBX"
-msgstr "重启PBX"
-
-msgid "change the IP address of your computer"
-msgstr "改变您计算机的IP地址"
-
-msgid "access the webGUI with the new IP address"
-msgstr "用一个新IP地址访问网页界面"
 
 msgid "Printable Dialplan"
 msgstr "可打印的拨号计划"
@@ -3218,6 +3225,10 @@ msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
 
 #, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "固件"
+
+#, fuzzy
 #~ msgid "unconfigured"
 #~ msgstr "设置"
 
@@ -3332,10 +3343,6 @@ msgstr "ERR 收到无效的配置。\n"
 #~ "This extension is reachable via SIP and IAX2 URIs (extension@%s) unless "
 #~ "disabled here."
 #~ msgstr "启用这个选项会允许这个分机可以被SIP和IAX2 uris呼叫。(extension@%s)"
-
-#, fuzzy
-#~ msgid "telephones"
-#~ msgstr "删除电话"
 
 #, fuzzy
 #~ msgid "provider lines"
