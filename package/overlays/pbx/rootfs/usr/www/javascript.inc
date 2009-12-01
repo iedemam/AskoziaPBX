@@ -503,9 +503,9 @@ function javascript_dyndns($part) {
 
 	<? elseif ($part == "ready") : ?>
 
-		jQuery("input[@name='hostnameupdatesrc']").click(dyndns_slide);
-		jQuery("select[@name='topology']").change(attr_change);
-		if (!jQuery("input[@name='hostnameupdatesrc']:checked").val()) {
+		jQuery("input[name='hostnameupdatesrc']").click(dyndns_slide);
+		jQuery("select[name='topology']").change(attr_change);
+		if (!jQuery("input[name='hostnameupdatesrc']:checked").val()) {
 			jQuery("#hostnameupdatesrcrouter").attr("checked", "checked")
 		}
 		dyndns_slide();
