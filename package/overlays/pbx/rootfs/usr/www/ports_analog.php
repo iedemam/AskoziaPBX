@@ -30,7 +30,7 @@
 */
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("Hardware"), gettext("Ports"), gettext("Analog"));
+$pgtitle = array(gettext("Telephony Ports"), gettext("Analog"));
 
 if ($_GET['action'] == "forget") { 
 	dahdi_forget_port($_GET['uniqid']);

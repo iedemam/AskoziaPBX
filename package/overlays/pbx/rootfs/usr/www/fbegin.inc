@@ -155,12 +155,13 @@ $menu['System'][gettext("Backup/Restore")] 		= array('system_backup.php');
 $menu['System'][gettext("Factory Defaults")]	= array('system_defaults.php');
 $menu['System'][gettext("Reboot")] 				= array('system_reboot.php');
 
-/* Hardware */
-$menu['Hardware'][gettext("Ports")] 			= array('ports_lan.php',
+/* Connectivity */
+$menu['Connectivity'][gettext("Networking")]	= array('network_lan.php',
+												'network_phones.php');
+$menu['Connectivity'][gettext("Telephony Ports")]= array('ports_analog.php',
+												'ports_analog_edit.php',
 												'ports_isdn.php',
-												'ports_isdn_edit.php',
-												'ports_analog.php',
-												'ports_analog_edit.php');
+												'ports_isdn_edit.php');
 
 /* Accounts */
 $menu['Accounts'][gettext("Phones")]			= array('accounts_phones.php',
@@ -182,10 +183,8 @@ $menu['Dialplan'][gettext("Call Groups")]		= array('dialplan_callgroups.php',
 												'dialplan_callgroups_edit.php');
 $menu['Dialplan'][gettext("Transfers")]			= array('dialplan_transfers.php');
 
-/* Notifications */
-$menu['Notifications'][gettext("E-Mail")]		= array('notifications_email.php');
-
 /* Services */
+$menu['Services'][gettext("Notifications")]		= array('notifications_email.php');
 $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
@@ -252,10 +251,9 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 						<ul class="framemenu"><?
 
 		dynamic_menu($menu['System'], gettext('System'));
-		dynamic_menu($menu['Hardware'], gettext('Hardware'));
+		dynamic_menu($menu['Connectivity'], gettext('Connectivity'));
 		dynamic_menu($menu['Accounts'], gettext('Accounts'));
 		dynamic_menu($menu['Dialplan'], 'Dialplan');
-		dynamic_menu($menu['Notifications'], gettext('Notifications'));
 		dynamic_menu($menu['Services'], gettext('Services'));
 		if (isset($menu['Packages'])) {
 			dynamic_menu($menu['Packages'], gettext('Packages'));

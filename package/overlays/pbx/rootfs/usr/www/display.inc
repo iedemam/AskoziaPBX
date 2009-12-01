@@ -739,10 +739,43 @@ function display_ports_tab_menu() {
 			<ul id="tabnav"><?
 
 			$tabs = array(
-				gettext('Local Network')	=> 'ports_lan.php',
-				//gettext('Wireless')		=> 'ports_wireless.php',
-				//gettext('ISDN')			=> 'ports_isdn.php',
-				gettext('Analog')			=> 'ports_analog.php'
+				gettext('Analog')	=> 'ports_analog.php',
+				gettext('ISDN')		=> 'ports_isdn.php'
+			);
+			dynamic_tab_menu($tabs);
+
+			?></ul>
+		</td>
+	</tr><?
+
+}
+
+function display_networking_tab_menu() {
+
+	?><tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array(
+				gettext('Local Area Network')	=> 'network_lan.php',
+				gettext('Phones')				=> 'network_phones.php'
+			);
+			dynamic_tab_menu($tabs);
+
+			?></ul>
+		</td>
+	</tr><?
+
+}
+
+function display_notifications_tab_menu() {
+
+	?><tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array(
+				gettext('E-Mail')	=> 'notifications_email.php'
 			);
 			dynamic_tab_menu($tabs);
 

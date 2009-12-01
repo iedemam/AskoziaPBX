@@ -98,84 +98,91 @@ if ($_POST) {
 
 include("fbegin.inc"); 
 ?><form action="notifications_email.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr>
-			<td colspan="2" valign="top" class="listtopic"><?=gettext("SMTP Client Setup");?></td>
-		</tr>
-		<tr>
-			<td width="20%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
-			<td width="80%" class="vtable">
-				<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
-				:
-				<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
-				<br><span class="vexpl"><?=gettext("SMTP host URL or IP address and optional port.");?></span>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncellreq"><?=gettext("E-mail Address");?></td>
-			<td class="vtable">
-				<input name="address" type="text" class="formfld" id="address" size="40" value="<?=htmlspecialchars($pconfig['address']);?>">
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Username");?></td>
-			<td class="vtable">
-				<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Password");?></td>
-			<td class="vtable">
-				<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-			</td>
-		</tr><?
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<? display_notifications_tab_menu(); ?>
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr>
+					<td colspan="2" valign="top" class="listtopic"><?=gettext("SMTP Client Setup");?></td>
+				</tr>
+				<tr>
+					<td width="20%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
+					<td width="80%" class="vtable">
+						<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($pconfig['host']);?>">
+						:
+						<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($pconfig['port']);?>">
+						<br><span class="vexpl"><?=gettext("SMTP host URL or IP address and optional port.");?></span>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="vncellreq"><?=gettext("E-mail Address");?></td>
+					<td class="vtable">
+						<input name="address" type="text" class="formfld" id="address" size="40" value="<?=htmlspecialchars($pconfig['address']);?>">
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="vncell"><?=gettext("Username");?></td>
+					<td class="vtable">
+						<input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="vncell"><?=gettext("Password");?></td>
+					<td class="vtable">
+						<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
+					</td>
+				</tr><?
 
-		$authtypes = array(
-			"on" => "auto",
-			"plain" => "plain",
-			"login" => "login",
-			"cram-md5" => "cram-md5",
-			//"digest-md5", (needs gnu sasl)
-			//"gssapi", (needs gnu sasl)
-			"external" => "external"
-			//"ntlm" (needs gnu sasl)
-		);
+				$authtypes = array(
+					"on" => "auto",
+					"plain" => "plain",
+					"login" => "login",
+					"cram-md5" => "cram-md5",
+					//"digest-md5", (needs gnu sasl)
+					//"gssapi", (needs gnu sasl)
+					"external" => "external"
+					//"ntlm" (needs gnu sasl)
+				);
 
-		?><tr>
-			<td valign="top" class="vncell"><?=gettext("Authentication Method");?></td>
-			<td class="vtable">
-				<select name="authtype" class="formfld" id="authtype">
-				<? foreach ($authtypes as $authval => $authstring) : ?>
-				<option value="<?=$authval;?>" <?
-				if ($authval == $pconfig['authtype'])
-					echo "selected"; ?>
-				><?=$authstring;?></option>
-				<? endforeach; ?>
-				</select>
-				<br><span class="vexpl"><?=gettext("Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server.");?></span>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Options");?></td>
-			<td class="vtable"> 
-				<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
-				<?=gettext("Account uses TLS");?>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" class="vncell"><?=gettext("Test E-mail");?></td>
-			<td class="vtable">
-				<input name="email_addr" type="text" class="formfld" id="email_addr" size="40" value="">
-				<input name="testmail" type="submit" class="formbtn" value="<?=gettext("E-mail Me");?>"><br>
-				<?=gettext("Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP settings.");?>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top">&nbsp;</td>
-			<td>
-				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-			</td>
-		</tr>
-	</table>
+				?><tr>
+					<td valign="top" class="vncell"><?=gettext("Authentication Method");?></td>
+					<td class="vtable">
+						<select name="authtype" class="formfld" id="authtype">
+						<? foreach ($authtypes as $authval => $authstring) : ?>
+						<option value="<?=$authval;?>" <?
+						if ($authval == $pconfig['authtype'])
+							echo "selected"; ?>
+						><?=$authstring;?></option>
+						<? endforeach; ?>
+						</select>
+						<br><span class="vexpl"><?=gettext("Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server.");?></span>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="vncell"><?=gettext("Options");?></td>
+					<td class="vtable"> 
+						<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
+						<?=gettext("Account uses TLS");?>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" class="vncell"><?=gettext("Test E-mail");?></td>
+					<td class="vtable">
+						<input name="email_addr" type="text" class="formfld" id="email_addr" size="40" value="">
+						<input name="testmail" type="submit" class="formbtn" value="<?=gettext("E-mail Me");?>"><br>
+						<?=gettext("Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP settings.");?>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">&nbsp;</td>
+					<td>
+						<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
 </form>
 <?php include("fend.inc"); ?>

@@ -3,8 +3,10 @@
 /*
 	$Id$
 	part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -31,7 +33,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Hardware"), gettext("Ports"), gettext("Local Network"));
+$pgtitle = array(gettext("Networking"), gettext("Local Area Network"));
 $pghelp = gettext("The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default the system requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)");
 
 $lancfg = &$config['interfaces']['lan'];
@@ -203,9 +205,9 @@ include("fbegin.inc");
 
 //-->
 </script>
-<form action="ports_lan.php" method="post" name="iform" id="iform">
+<form action="network_lan.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<? display_ports_tab_menu(); ?>
+	<? display_networking_tab_menu(); ?>
 	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
