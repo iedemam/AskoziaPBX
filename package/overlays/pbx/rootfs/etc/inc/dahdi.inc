@@ -64,6 +64,8 @@ function dahdi_scan_to_spans() {
 }
 
 function dahdi_get_physical_ports() {
+	$ports = array();
+
 	$spans = dahdi_scan_to_spans();
 	$i = 0;
 	foreach ($spans as $span) {
