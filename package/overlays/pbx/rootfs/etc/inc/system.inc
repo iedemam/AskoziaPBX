@@ -411,10 +411,24 @@ function system_get_dmesg_as_array() {
  */
 function system_load_kernel_modules() {
 
-	mwexec("/sbin/modprobe dahdi");
-	mwexec("/sbin/modprobe wctdm");
-	//mwexec("/sbin/modprobe wcb4xxp");
+	$modules = array("wctdm", "wcb4xxp");
 
+	mwexec("/sbin/modprobe -q dahdi");
+	foreach ($modules as $m) {
+		// record the current span count
+		$prev_count = count(dahdi_scan_to_spans());
+		// load the module
+		mwexec("/sbin/modprobe -q " . $m);
+		// if no new spans were recognized...
+		if ($prev_count == count(dahdi_scan_to_spans())) {
+			// unload the module
+			mwexec("/sbin/modprobe -q -r " . $m);
+		}
+	}
+
+	// make sure dahdi core is loaded if none of the modules
+	// have found compatible hardware
+	mwexec("/sbin/modprobe -q dahdi");
 }
 
 function system_setup_ultmp() {
