@@ -83,7 +83,7 @@ function dahdi_get_physical_ports() {
 
 				// per port specifics
 				$ports[$i]['basechannel'] = $port[0];
-				$ports[$i]['type'] = strtolower($port[1]);
+				$ports[$i]['type'] = strtolower(substr($port[1], 0, 3));
 
 				$i++;
 			}
