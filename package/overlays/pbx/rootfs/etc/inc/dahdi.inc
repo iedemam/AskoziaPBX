@@ -90,9 +90,20 @@ function dahdi_get_physical_ports() {
 		}
 		//// digital span, single port per span
 		//} else if (strpos($s['type'], "digital-") !== false) {
-		//	// is pri?
-		//	// is bri?
-		//	// i++;
+		//	// nt, bri port: use for phones in ptmp mode
+		//	if ($s['type'] == "digital-NT" &&  $s['totchans'] == 3) {
+		//		// common info from card
+		//		$ports[$i]['location'] = $span['location'];
+		//		$ports[$i]['card'] = $span['devicetype'];
+		//		$ports[$i]['technology'] = "bri";
+        //
+		//		// per port specifics
+		//		$ports[$i]['basechannel'] = $span['basechan'];
+		//		$ports[$i]['type'] = "nt";
+		//		$ports[$i]['connectsto'] = "phones";
+        //
+		//		$i++;
+		//	}
 		//}
 	}
 
