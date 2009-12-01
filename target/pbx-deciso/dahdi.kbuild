@@ -20,7 +20,7 @@ obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCB4XXP)		+= wcb4xxp/
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TOR2)		+= tor2.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_PCIRADIO)		+= pciradio.o
 
-#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_XPP)		+= xpp/
+obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_XPP)		+= xpp/
 
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_JPAH)	+= dahdi_echocan_jpah.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_STEVE)	+= dahdi_echocan_sec.o
