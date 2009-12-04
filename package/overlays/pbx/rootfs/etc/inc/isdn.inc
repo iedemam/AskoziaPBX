@@ -37,32 +37,30 @@ require_once("functions.inc");
  * This should be changed to return by reference to eliminate a lot of repetitive code.
  */
 function isdn_get_providers() {
-	global $config;
-	
-	if (!is_array($config['isdn']['provider']))
-		$config['isdn']['provider'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['isdn']['provider'])) {
+		$GLOBALS['config']['isdn']['provider'] = array();
+	}
 	isdn_sort_providers();
-		
-	return $config['isdn']['provider'];
+
+	return $GLOBALS['config']['isdn']['provider'];
 }
 
 /**
  * Sorts providers by name
  */
 function isdn_sort_providers() {
-	global $g, $config;
 
-	usort($config['isdn']['provider'], "pbx_sort_by_name");	
+	usort($GLOBALS['config']['isdn']['provider'], "pbx_sort_by_name");	
 }
 
 /**
  * Returns a specific provider based on its uniqid
  */
 function isdn_get_provider($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['isdn']['provider'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['isdn']['provider'][$uniqid_map[$uniqid]];
 }
 
 /**
@@ -70,44 +68,41 @@ function isdn_get_provider($uniqid) {
  * If no phones are defined, the global array is initialized.
  */
 function isdn_get_phones() {
-	global $config;
-	
-	if (!is_array($config['isdn']['phone']))
-		$config['isdn']['phone'] = array();
-		
+
+	if (!is_array($GLOBALS['config']['isdn']['phone'])) {
+		$GLOBALS['config']['isdn']['phone'] = array();
+	}
 	isdn_sort_phones();
-		
-	return $config['isdn']['phone'];
+
+	return $GLOBALS['config']['isdn']['phone'];
 }
 
 /**
  * Sorts phones by extension
  */
 function isdn_sort_phones() {
-	global $g, $config;
 
-	usort($config['isdn']['phone'], "pbx_sort_by_extension");	
+	usort($GLOBALS['config']['isdn']['phone'], "pbx_sort_by_extension");	
 }
 
 /**
  * Returns a specific phone based on its uniqid
  */
 function isdn_get_phone($uniqid) {
-	global $config, $uniqid_map;
+	global $uniqid_map;
 
-	return $config['isdn']['phone'][$uniqid_map[$uniqid]];
+	return $GLOBALS['config']['isdn']['phone'][$uniqid_map[$uniqid]];
 }
 
 /**
  * Returns an array of all assigned phone extensions
  */
 function isdn_get_extensions() {
-	global $config;
-	
+
 	$extensions = array();
 
-	if (is_array($config['isdn']['phone'])) {
-		foreach($config['isdn']['phone'] as $phone) {
+	if (is_array($GLOBALS['config']['isdn']['phone'])) {
+		foreach($GLOBALS['config']['isdn']['phone'] as $phone) {
 			$extensions[] = $phone['extension'];
 		}
 	}
@@ -119,12 +114,11 @@ function isdn_get_extensions() {
  * Returns an array of all assigned provider dialpatterns
  */
 function isdn_get_dialpatterns() {
-	global $config;
-	
+
 	$dialpatterns = array();
 
-	if (is_array($config['isdn']['provider'])) {
-		foreach($config['isdn']['provider'] as $provider) {
+	if (is_array($GLOBALS['config']['isdn']['provider'])) {
+		foreach($GLOBALS['config']['isdn']['provider'] as $provider) {
 			$dialpatterns[$provider['uniqid']] = $provider['dialpattern'];
 		}
 	}
@@ -133,113 +127,10 @@ function isdn_get_dialpatterns() {
 }
 
 /**
- * Searches dmesg for recognized ISDN units.
- * Returns an array indexed by module number.
- */
-function isdn_get_recognized_unit_numbers() {
-
-	$dmesg_lines = system_get_dmesg_as_array();
-
-	$controllers = array();
-	foreach ($dmesg_lines as $line) {
-		if (strpos($line, "Attaching I4B controller") !== false) {
-			preg_match("/\b[0-9]+\b/", $line, &$matches);
-			$controllers[$matches[0]] = "found";
-		}
-	}
-	
-	return $controllers;
-}
-
-/**
- * Returns all configured ISDN units still present in the system sorted by unit number.
- * If no units are configured, the global array is initialized.
- */
-function isdn_get_interfaces() {
-	global $config;
-	
-	if (!is_array($config['interfaces']['isdn-unit']))
-		$config['interfaces']['isdn-unit'] = array();
-		
-	isdn_sort_interfaces();
-
-	$recognized_units = array_keys(isdn_get_recognized_unit_numbers());
-	$interfaces = array();
-	foreach ($config['interfaces']['isdn-unit'] as $i) {
-		if (in_array($i['unit'], $recognized_units)) {
-			$interfaces[] = $i;
-		}
-	}
-
-	return $interfaces;
-}
-
-/**
- * Sorts ISDN units by unit number
- */
-function isdn_sort_interfaces() {
-	global $config;
-
-	usort($config['interfaces']['isdn-unit'], "pbx_sort_by_unit");	
-}
-
-/**
- * Returns an ISDN unit based on its unit number
- */
-function isdn_get_interface($unit) {
-	
-	$interfaces = isdn_get_interfaces();
-
-	foreach ($interfaces as $interface) {
-		if ($interface['unit'] == $unit) {
-			return $interface;
-		}
-	}
-}
-
-/**
- * Returns all "NT" configured ISDN units
- * If no units are configured, an empty array is returned
- */
-function isdn_get_nt_interfaces() {
-	
-	$interfaces = isdn_get_interfaces();
-	
-	$nt_interfaces = array();
-	foreach ($interfaces as $interface) {
-		if (strpos($interface['mode'], "NT") === false) {
-			continue;
-		}
-		$nt_interfaces[] = $interface;
-	}
-		
-	return $nt_interfaces;
-}
-
-/**
- * Returns all "TE" configured ISDN units
- * If no units are configured, an empty array is returned
- */
-function isdn_get_te_interfaces() {
-	
-	$interfaces = isdn_get_interfaces();
-	
-	$te_interfaces = array();
-	foreach ($interfaces as $interface) {
-		if (strpos($interface['mode'], "TE") === false) {
-			continue;
-		}
-		$te_interfaces[] = $interface;
-	}
-		
-	return $te_interfaces;
-}
-
-/**
  * Returns all phones associated with a particular ISDN unit
  * If no phones are associated with the supplied unit, an empty array is returned
  */
-function isdn_get_phones_on_unit($unit_number) {
+function isdn_get_phones_on_unit($uniqid) {
 	
 	$phones = isdn_get_phones();
 	
@@ -248,7 +139,7 @@ function isdn_get_phones_on_unit($unit_number) {
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if ($p['interface'] != $unit_number) {
+		if ($p['port'] != $uniqid) {
 			continue;
 		}
 		$unit_phones[] = $p;
@@ -261,7 +152,7 @@ function isdn_get_phones_on_unit($unit_number) {
  * Returns all providers associated with a particular ISDN unit
  * If no providers are associated with the supplied unit, an empty array is returned
  */
-function isdn_get_providers_on_unit($unit_number) {
+function isdn_get_providers_on_unit($uniqid) {
 	
 	$providers = isdn_get_providers();
 
@@ -270,7 +161,7 @@ function isdn_get_providers_on_unit($unit_number) {
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if ($p['interface'] != $unit_number) {
+		if ($p['port'] != $uniqid) {
 			continue;
 		}
 		$unit_providers[] = $p;
@@ -279,30 +170,6 @@ function isdn_get_providers_on_unit($unit_number) {
 	return $unit_providers;
 }
 
-/**
- * Forgets previously defined interface settings
- */
-function isdn_forget_interface($unit_number) {
-	global $config;
-
-	$interfaces = $config['interfaces']['isdn-unit'];
-	$n = count($interfaces);
-	$unset = false;
-
-	for ($i = 0; $i < $n; $i++) {
-		if ($interfaces[$i]['unit'] == $unit_number) {
-			unset($GLOBALS['config']['interfaces']['isdn-unit'][$i]);
-			$unset = true;
-			break;
-		}
-	}
-
-	if (!$unset) {
-		return "Interface unable to be found, settings remain.";
-	}
-
-	return 0;
-}
 
 /**
  * Generates capi.conf
@@ -429,39 +296,88 @@ EOD;
 	return 0;
 }
 
-/**
- * Executes isdnconfig to apply newly generated configuration changes
- */
-function isdn_configure() {
-	
-	$res = 0;
-	$interfaces = isdn_get_interfaces();
-	foreach ($interfaces as $interface) {
-		
-		$command = "/usr/sbin/isdnconfig -u {$interface['unit']} -p {$interface['mode']}";
-		
-		if ($interface['pcmslave']) {
-			$command .= " pcm_slave";
-		} else {
-			$command .= " pcm_master";
+
+
+
+
+
+
+
+
+
+
+function isdn_autoconfigure_phones() {
+	global $g;
+
+	$all_ports = dahdi_get_ports("isdn", "nt", 3);
+
+	foreach ($all_ports as $port) {
+		if (isset($port['unused'])) {
+			$phone = isdn_generate_default_phone();
+			$phone['port'] = $port['uniqid'];
+			isdn_save_phone($phone);
+
+			unset($port['unused']);
+			dahdi_save_port($port);
 		}
-		
-		if ($interface['nopwrsave']) {
-			$command .= " power_on";
-		} else {
-			$command .= " pwr_save";
-		}
-		
-		if ($interface['pollmode']) {
-			$command .= " poll_mode";
-		} else {
-			$command .= " intr_mode";
-		}
-		
-		$res |= mwexec($command);
 	}
 
-	return $res;
+	unlink_if_exists($g['isdn_dirty_path']);
+	unlink_if_exists($g['dahdi_dirty_path']);
+}
+
+function isdn_generate_default_phone() {
+	global $defaults;
+
+	$phone = array();
+
+	$phone['extension'] = pbx_get_next_default_phone_extension();
+	$phone['callerid'] = $defaults['accounts']['phones']['callerid'];
+	$phone['language'] = $defaults['accounts']['language'];
+	$phone['ringlength'] = $defaults['accounts']['phones']['ringlength'];
+	$phone['publicaccess'] = $defaults['accounts']['phones']['publicaccess'];
+	$phone['uniqid'] = "ISDN-PHONE-" . uniqid(rand());
+
+	return $phone;
+}
+
+function isdn_verify_phone($post, $errors) {
+
+	$phone = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_extension(&$phone, &$post, &$errors);
+	v_callerid(&$phone, &$post, &$errors);
+	v_optional('descr', &$phone, &$post);
+	v_public_access_editor(&$phone, &$post, &$errors);
+	v_notifications_editor(&$phone, &$post, &$errors);
+	v_voicemail_editor(&$phone, &$post, &$errors);
+	v_provider_access_selector(&$phone, &$post);
+
+	$trusted = array(
+		'uniqid',
+		'port',
+		'language',
+		'ringlength'
+	);
+	foreach ($trusted as $t) {
+		$phone[$t] = $post[$t];
+	}
+
+	return $phone;
+}
+
+function isdn_save_phone($phone) {
+	global $g, $uniqid_map;
+
+	if (isdn_get_phone($phone['uniqid'])) {
+		$GLOBALS['config']['isdn']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
+	} else {
+		$GLOBALS['config']['isdn']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['isdn_dirty_path']);
 }
 
 ?>

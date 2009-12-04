@@ -48,8 +48,8 @@ function extensions_conf_generate() {
 	$applications = applications_get_apps();
 	$conference_rooms = conferencing_get_rooms();
 	$providers = pbx_get_providers();
-	$isdn_nt_interfaces = isdn_get_nt_interfaces();
-	$isdn_te_interfaces = isdn_get_te_interfaces();
+	$isdn_nt_interfaces = dahdi_get_ports("isdn", "nt");
+	$isdn_te_interfaces = dahdi_get_ports("isdn", "te");
 	$vmconfig = voicemail_get_configuration();
 
 	$product_name = system_get_product_name();
@@ -329,12 +329,12 @@ EOD;
 
 	// isdn nt port contexts
 	foreach ($isdn_nt_interfaces as $i) {
-		$phones = isdn_get_phones_on_unit($i['unit']);
+		$phones = isdn_get_phones_on_unit($i['uniqid']);
 		if (!count($phones)) {
 			continue;
 		}
 		$conf .= "; isdn nt interface \"{$i['name']}\" incoming\n";
-		$conf .= "[isdn-unit-{$i['unit']}-incoming]\n";
+		$conf .= "[{$i['uniqid']}-incoming]\n";
 		foreach ($phones as $p) {
 			$phone_lang = "en";
 			if ($p['language']) {
@@ -348,12 +348,12 @@ EOD;
 
 	// isdn te port contexts
 	foreach ($isdn_te_interfaces as $i) {
-		$providers = isdn_get_providers_on_unit($i['unit']);
+		$providers = isdn_get_providers_on_unit($i['uniqid']);
 		if (!count($providers)) {
 			continue;
 		}
 		$conf .= "; isdn te interface \"{$i['name']}\" incoming\n";
-		$conf .= "[isdn-unit-{$i['unit']}-incoming]\n";
+		$conf .= "[{$i['uniqid']}-incoming]\n";
 		foreach ($providers as $p) {
 			// XXX : multiple providers on a single s0 is broken
 			$provider_lang = "en";
@@ -467,7 +467,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		return "IAX2/" . $phone['extension'];
 
 	} else if (strstr($uniqid, "ISDN-PHONE")) {
-		return "CAPI/" . $phone['interface'] . "/" . $phone['extension'];
+		return "DAHDI/" . $phone['port'] . "/" . $phone['extension'];
 
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
 		return "DAHDI/" . $phone['port'];
@@ -485,7 +485,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		if ($technology == "DAHDI") {
 			$prov = analog_get_provider($phone['dialprovider']);
 			return "DAHDI/" . $prov['port'] . "/" . $phone['dialstring'];
-
+		// LINUX TODO !! need new way to tell difference between these prov. types
 		} else if ($technology == "CAPI"){
 			$prov = isdn_get_provider($phone['dialprovider']);
 			return "CAPI/" . $prov['interface'] . "/" . $phone['dialstring'];

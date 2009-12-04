@@ -87,24 +87,22 @@ function dahdi_get_physical_ports() {
 
 				$i++;
 			}
+
+		// digital span, single port per span
+		} else if (strpos($span['type'], "digital-") !== false) {
+			// common info from card
+			$ports[$i]['location'] = $span['location'];
+			$ports[$i]['card'] = $span['devicetype'];
+			$ports[$i]['technology'] = "isdn";
+
+			// per port specifics
+			$ports[$i]['span'] = strtolower(substr($span['name'], strrpos($span['name'], '/') + 1));
+			$ports[$i]['basechannel'] = $span['basechan'];
+			$ports[$i]['totalchannels'] = $span['totchans'];
+			$ports[$i]['type'] = strtolower(substr($span['type'], strrpos($span['type'], '-') + 1));
+
+			$i++;
 		}
-		//// digital span, single port per span
-		//} else if (strpos($s['type'], "digital-") !== false) {
-		//	// nt, bri port: use for phones in ptmp mode
-		//	if ($s['type'] == "digital-NT" &&  $s['totchans'] == 3) {
-		//		// common info from card
-		//		$ports[$i]['location'] = $span['location'];
-		//		$ports[$i]['card'] = $span['devicetype'];
-		//		$ports[$i]['technology'] = "bri";
-        //
-		//		// per port specifics
-		//		$ports[$i]['basechannel'] = $span['basechan'];
-		//		$ports[$i]['type'] = "nt";
-		//		$ports[$i]['connectsto'] = "phones";
-        //
-		//		$i++;
-		//	}
-		//}
 	}
 
 	return $ports;
@@ -130,6 +128,11 @@ function dahdi_autoconfigure_ports() {
 
 			if ($p['technology'] == "analog") {
 				$p['startsignaling'] = $defaults['dahdi']['analog']['startsignaling'];
+
+			} else if ($p['technology'] == "isdn") {
+				if ($p['totalchannels'] == 3 && $p['type'] == "nt") {
+					$p['signaling'] = "bri_net_ptmp";
+				}
 			}
 
 			$p['unused'] = true;
@@ -139,25 +142,29 @@ function dahdi_autoconfigure_ports() {
 	}
 }
 
-function dahdi_get_ports($techfilter=null, $typefilter=null) {
+function dahdi_get_ports($techfilter=null, $typefilter=null, $chancountfilter=null) {
 	global $config;
 
 	$all_ports = $config['interfaces']['dahdi-port'];
 	$all_ports = is_array($all_ports) ? $all_ports : array();
 
-	if (!$techfilter && !$typefilter) {
+	if (!$techfilter && !$typefilter && !$chancountfilter) {
 		return $all_ports;
 	}
 
 	$filtered_ports = array();
 	foreach ($all_ports as $port) {
-		if ($port['technology'] == $techfilter) {
-			if (!$typefilter) {
-				$filtered_ports[] = $port;
-			} else if ($port['type'] == $typefilter){
-				$filtered_ports[] = $port;
-			}
+		if ($techfilter && $port['technology'] != $techfilter) {
+			continue;
 		}
+		if ($typefilter && $port['type'] != $typefilter) {
+			continue;
+		}
+		if ($chancountfilter && $port['totalchannels'] != $chancountfilter) {
+			continue;
+		}
+
+		$filtered_ports[] = $port;
 	}
 
 	return $filtered_ports;
@@ -200,6 +207,10 @@ function dahdi_generate_system_conf($ports) {
 		if ($port['technology'] == "analog") {
 			$name = ($port['name']) ? $port['name'] : "default";
 			$conf .= "# analog " . $port['type'] . " channel " . $port['basechannel'] . " (" . $name . ") is on card " . $port['card'] . "\n";
+
+		} else if ($port['technology'] == "isdn") {
+			$name = ($port['name']) ? $port['name'] : "default";
+			$conf .= "# isdn " . $port['type'] . " port, basechannel " . $port['basechannel'] . " (" . $name . ") is on card " . $port['card'] . " w/" . $port['totalchannels'] .  " channels\n";
 		}
 	}
 	$conf .= "\n";
@@ -207,6 +218,19 @@ function dahdi_generate_system_conf($ports) {
 
 	$conf .= "# Spans\n";
 	// span=<span num>,<timing source>,<line build out (LBO)>,<framing>,<coding>[,yellow]
+	$timingprio = 1;
+	foreach ($ports as $port) {
+		if ($port['technology'] == "isdn" && $port['totalchannels'] == 3) {
+			// bri 'phone' ports:
+			//	- lbo = 0, not used in bri
+			//	- framing and coding always ccs and ami respectively
+			if ($port['type'] == "nt") {
+				$conf .= "span=" . $port['span'] . ",0,0,ccs,ami\n";
+			} else {
+				$conf .= "span=" . $port['span'] . "," . $timingprio++ . ",0,ccs,ami\n";
+			}
+		}
+	}
 	$conf .= "\n";
 
 
@@ -219,9 +243,16 @@ function dahdi_generate_system_conf($ports) {
 			$startsignaling = ($port['startsignaling']) ?
 				$port['startsignaling'] : $defaults['dahdi']['analog']['startsignaling'];
 			// use fxo signaling for fxs ports and fxs signaling for fxo
-			$signaling = ($port['type'] == "fxs") ?
-				"fxo" : "fxs";
+			$signaling = ($port['type'] == "fxs") ? "fxo" : "fxs";
 			$conf .= $signaling . $startsignaling . "=" . $port['basechannel'] . "\n";
+
+		} else if ($port['technology'] == "isdn" && $port['totalchannels'] == 3) {
+			// bri 'phone' ports
+			if ($port['type'] == "nt") {
+				$conf .= "bchan=" . $port['basechannel'] . "\n";
+				$conf .= "bchan=" . ($port['basechannel'] + 1) . "\n";
+				$conf .= "hardhdlc=" . ($port['basechannel'] + 2) . "\n";
+			}
 		}
 	}
 	$conf .= "\n";
@@ -259,8 +290,16 @@ function dahdi_generate_system_conf($ports) {
 	foreach ($ports as $port) {
 		// analog port config
 		if ($port['technology'] == "analog") {
-			if (!$port['disable-echocanceller']) {
+			if ($port['echo-taps'] != "disable") {
 				$conf .= "echocanceller=mg2," . $port['basechannel'] . "\n";
+			}
+
+		} else if ($port['technology'] == "isdn" && $port['totalchannels'] == 3) {
+			// bri 'phone' ports
+			if ($port['type'] == "nt") {
+				if ($port['echo-taps'] != "disable") {
+					$conf .= "echocanceller=mg2," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+				}
 			}
 		}
 	}
@@ -284,6 +323,10 @@ function dahdi_generate_chan_conf($ports) {
 		if ($port['technology'] == "analog") {
 			$name = ($port['name']) ? $port['name'] : "default";
 			$conf .= "; analog " . $port['type'] . " channel " . $port['basechannel'] . " (" . $name . ") is on card " . $port['card'] . "\n";
+
+		} else if ($port['technology'] == "isdn") {
+			$name = ($port['name']) ? $port['name'] : "default";
+			$conf .= "; isdn " . $port['type'] . " port, basechannel " . $port['basechannel'] . " (" . $name . ") is on card " . $port['card'] . " w/" . $port['totalchannels'] .  " channels\n";
 		}
 	}
 	$conf .= "\n";
@@ -343,6 +386,33 @@ function dahdi_generate_chan_conf($ports) {
 		$conf .= "context=" . $phone['uniqid'] . "\n";
 		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
 		$conf .= "channel => " . $port['basechannel'] . "\n";
+		$conf .= "\n";
+	}
+
+	$isdnphones = isdn_get_phones();
+	foreach ($isdnphones as $phone) {
+		if (isset($phone['disabled'])) {
+			continue;
+		}
+		$port = dahdi_get_port($phone['port']);
+
+		$conf .= "; Phone: " . $phone['extension'] . "\n";
+		$conf .= "callerid=" . $phone['callerid'] . " <" . $phone['extension'] . ">\n";
+		$conf .= "signalling=bri_net_ptmp\n";
+		//$conf .= "overlapdial=yes\n";
+		$conf .= "rxgain=" . $port['rxgain'] . "\n";
+		$conf .= "txgain=" . $port['txgain'] . "\n";
+
+		if ($port['echo-taps'] == "disable") {
+			$conf .= "echocancel=no\n";
+		} else {
+			$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+		}
+
+		$conf .= "language=" . $phone['language'] . "\n";
+		$conf .= "context=" . $phone['uniqid'] . "\n";
+		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 		$conf .= "\n";
 	}
 

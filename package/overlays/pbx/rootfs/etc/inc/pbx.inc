@@ -764,7 +764,7 @@ function pbx_uniqid_to_technology($uniqid) {
 		case "IAX":
 			return "IAX2";
 		case "ISDN":
-			return "CAPI";
+			return "DAHDI";
 		case "ANALOG":
 			return "DAHDI";
 	}

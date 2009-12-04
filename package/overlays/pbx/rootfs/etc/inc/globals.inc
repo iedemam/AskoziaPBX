@@ -55,6 +55,7 @@ $g = array(
 	"analog_dirty_path" => "/var/run/analog.dirty",
 	"sip_dirty_path" => "/var/run/sip.dirty",
 	"iax_dirty_path" => "/var/run/iax.dirty",
+	"isdn_dirty_path" => "/var/run/isdn.dirty",
 	"external_dirty_path" => "/var/run/external.dirty"
 );
 

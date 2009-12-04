@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -30,128 +30,71 @@
 */
 
 require("guiconfig.inc");
-
 $pgtitle = array(gettext("Telephony Ports"), gettext("ISDN"));
-$pghelp = gettext("Detected ports on this page must be edited and saved before the system can utilize them. Be careful when configuring ISDN interfaces. Having a single port on a card incorrectly configured can result in the entire card being unusable by the system.");
-$pglegend = array("edit", "delete");
 
-if (!is_array($config['interfaces']['isdn-unit']))
-	$config['interfaces']['isdn-unit'] = array();
-
-isdn_sort_interfaces();
-$a_isdninterfaces = &$config['interfaces']['isdn-unit'];
-
-$configured_units = array();
-foreach ($a_isdninterfaces as $interface) {
-	$configured_units[$interface['unit']] = $interface;
+if ($_GET['action'] == "forget") { 
+	dahdi_forget_port($_GET['uniqid']);
+	header("Location: ports_isdn.php"); 
+	exit;
 }
 
-$recognized_units = isdn_get_recognized_unit_numbers();
-if (!count($recognized_units)) {
-	$n = 0;
-} else {
-	$n = max(array_keys($recognized_units));
-	$n = ($n == 0) ? 1 : $n;
-}
-$merged_units = array();
-for ($i = 0; $i <= $n; $i++) {
-	if (!isset($recognized_units[$i])) {
-		continue;
-	}
-	if (isset($configured_units[$i])) {
-		$merged_units[$i] = $configured_units[$i];
-		$merged_units[$i]['unit'] = $i;
-	} else {
-		$merged_units[$i]['unit'] = $i;
-		$merged_units[$i]['name'] = $defaults['isdn']['interface']['name'];
-	}
-}
-
-if ($_GET['action'] == "forget") {
-	if(!($msg = isdn_forget_interface($_GET['unit']))) {
-		write_config();
-		touch($d_isdnconfdirty_path);
-		header("Location: ports_isdn.php");
-		exit;
-	} else {
-		$input_errors[] = $msg;	
-	}
-}
-
-if (file_exists($d_isdnconfdirty_path)) {
+if (file_exists($g['dahdi_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= isdn_configure();
-		$retval |= isdn_conf_generate();
+		$retval |= dahdi_configure();
+		$retval |= pbx_restart();
 		config_unlock();
-		
-		$retval |= pbx_exec("module reload chan_iax2.so");
 	}
-	
+
 	$savemsg = get_std_save_message($retval);
-	if ($retval == 0) {
-		unlink($d_isdnconfdirty_path);
-	}
 }
 
+$isdn_ports = dahdi_get_ports("isdn");
 
 include("fbegin.inc");
+
 ?><form action="ports_isdn.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<? display_ports_tab_menu(); ?>
 	<tr>
-		<td class="tabcont"><?
+		<td class="tabcont">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
 
-		if (!count($recognized_units)) {
+		if (!count($isdn_ports)) {
 
-			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr> 
-					<td><strong><?=gettext("No compatible ISDN interfaces detected.");?></strong></td>
+				?><tr> 
+					<td><strong><?=gettext("No compatible isdn ports were detected.");?></strong></td>
 				</tr>
 			</table><?
 
 		} else {
 
-			?><table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
-					<td width="10%" class="listhdrr"><?=gettext("Unit");?></td>
-					<td width="25%" class="listhdrr"><?=gettext("Name");?></td>		
-					<td width="30%" class="listhdrr"><?=gettext("Operating Mode");?></td>
-					<td width="25%" class="listhdr"><?=gettext("Echo Canceller");?></td>
+				?><tr>
+					<td width="5%" class="listhdrr">#</td>
+					<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Card");?></td>
+					<td width="15%" class="listhdrr"><?=gettext("Type");?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Channels");?></td>
 					<td width="10%" class="list"></td>
 				</tr><?	
 
-			foreach ($merged_units as $mu) {
-				if ($mu['name'] != $defaults['isdn']['interface']['name']) {
-					$echocancel = $mu['echocancel'] ? gettext("Enabled") : gettext("Disabled");
-				} else {
-					$echocancel = "";
-				}
+				foreach ($isdn_ports as $port) {
+					$type = ($port['type'] == "nt") ? gettext("Phone") : gettext("Provider");
 
 				?><tr>
-					<td class="listlr"><?=htmlspecialchars($mu['unit']);?></td>
-					<td class="listbg"><?=htmlspecialchars($mu['name']);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars($isdn_dchannel_modes[$mu['mode']]);?>&nbsp;</td>
-					<td class="listr"><?=htmlspecialchars($echocancel);?>&nbsp;</td>
-					<td valign="middle" nowrap class="list"><a href="ports_isdn_edit.php?unit=<?=$mu['unit'];?>"><img src="edit.png" title="<?=gettext("edit ISDN interface");?>" border="0"></a>
-					<? if ($mu['name'] != $defaults['isdn']['interface']['name']) : ?>
-						<a href="?action=forget&unit=<?=$mu['unit'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this interface\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget interface settings");?>" border="0"></a>
-					<? endif; ?>
-					</td>
+					<td class="listlr"><?=htmlspecialchars($port['basechannel']);?></td>
+					<td class="listbg"><?=htmlspecialchars($port['name']);?></td>
+					<td class="listr"><?=htmlspecialchars($port['card']);?></td>
+					<td class="listr"><?=htmlspecialchars($type);?></td>
+					<td class="listr"><?=htmlspecialchars($port['totalchannels']);?></td>
+					<td valign="middle" nowrap class="list"><a href="ports_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a>
+					<a href="?action=forget&uniqid=<?=$port['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this port\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget port settings");?>" border="0"></a></td>
 				</tr><?
 			}
 
-			?></table>
-			<br>
-			<span class="vexpl"><strong><?=gettext("Operating Modes");?></strong>
-				<ul>
-					<li><?=gettext("point-to-multipoint, terminal equipment: this port accepts MSNs to route calls and is attached to the public ISDN network or another PBX system");?></li>
-					<li><?=gettext("multipoint-to-point, network termination: this port provides MSNs to route calls and is attached to one or more telephones");?></li>
-					<li><?=gettext("point-to-point, terminal equipment: this port accepts DID to route calls and is connected directly to another PBX system")?></li>
-					<li><?=gettext("point-to-point, network termination: this port provides DID to route calls and is connected directly to another PBX system");?></li>
-				</ul>
-			</span><?
+			?></table><?
+
 		}
 
 		?></td>

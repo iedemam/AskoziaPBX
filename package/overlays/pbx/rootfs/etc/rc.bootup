@@ -149,6 +149,10 @@
 	analog_autoconfigure_phones();
 	echo "done\n";
 
+	echo " - Auto configuring ISDN phones... ";
+	isdn_autoconfigure_phones();
+	echo "done\n";
+
 	/* start up Asterisk */
 	echo " - Starting Asterisk... \n";
 	pbx_configure();

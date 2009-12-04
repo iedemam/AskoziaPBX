@@ -48,7 +48,7 @@ foreach ($a_isdninterfaces as $interface) {
 	$configured_units[$interface['unit']] = $interface;
 }
 
-$recognized_units = isdn_get_recognized_unit_numbers();
+//$recognized_units = isdn_get_recognized_unit_numbers();
 if (!count($recognized_units)) {
 	$n = 0;
 } else {
