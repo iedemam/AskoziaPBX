@@ -1,0 +1,12 @@
+--- trunk/menuselect/Makefile.orig	2009-12-03 14:26:51.000000000 +0100
++++ trunk/menuselect/Makefile	2009-12-03 14:27:28.000000000 +0100
+@@ -112,8 +112,7 @@
+ 	(cd test; ../$< menuselect.makeopts)
+ 
+ clean:
+-	rm -f menuselect cmenuselect gmenuselect nmenuselect $(OBJS) $(M_OBJS) $(C_OBJS) $(G_OBJS) $(N_OBJS)
+-	@if test -f mxml/Makefile ; then $(MAKE) -C mxml clean ; fi
++	echo "supposed to be cleaning here but i dont want to!!!"
+ 
+ dist-clean: distclean
+ 
