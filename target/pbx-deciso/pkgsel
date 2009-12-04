@@ -49,7 +49,7 @@ X termcap
 X libpri
 X dahdi-linux
 X dahdi-tools
-X asterisk16
+X asterisktrunk
 
 # text to speech
 #X flite
