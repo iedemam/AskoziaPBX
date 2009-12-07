@@ -1,0 +1,27 @@
+#!/bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+echo "attempting to mount /offload partition..."
+disks=$(fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq)
+for disk in $disks
+do
+	echo " - trying ${disk}"
+	mount /dev/${disk}2 /offload
+	echo "   - mount returned: $?"
+	if [ -d /offload/rootfs ]; then
+		echo "   - found rootfs!"
+		exit 0
+	fi
+	echo "   - failed to find rootfs!"
+done
+
+echo
+echo "The system was unable to find the /offload partition!"
+echo
+echo "Send in the output of (ls /dev) and (fdisk -l) to the"
+echo "development team to get this fixed."
+echo "Thanks...and sorry this is not already working better!"
+
+exit 1

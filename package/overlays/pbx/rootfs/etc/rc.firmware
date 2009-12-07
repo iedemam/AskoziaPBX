@@ -34,8 +34,10 @@ upgrade)
 	# unmount /cf and /offload
 	/bin/umount -f /cf
 	logger "rc.firmware - unmounted /cf"
+	df | logger
 	/bin/umount -f /offload
 	logger "rc.firmware - unmounted /offload"
+	df | logger
 
 	# dd image onto card
 	if [ -r $2 ]; then
@@ -67,6 +69,9 @@ upgrade)
 	unset SERVER_SOFTWARE HTTP_REFERER SERVER_PROTOCOL REQUEST_METHOD
 	unset SERVER_PORT SCRIPT_NAME SERVER_NAME
 
-	/etc/rc.cleanreboot
+	#/etc/rc.cleanreboot
+	# ^^^ requires php, new usr/* offloading makes php inaccessible at this point
+	# due to missing libs...trying to make start-up and shut-down php independent
+	/etc/rc.reboot
 	;;
 esac

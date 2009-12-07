@@ -44,6 +44,9 @@ mkdir offload_stage
 mkdir offload_stage/asterisk
 mkdir offload_stage/kernel-modules
 mkdir loop
+# new bits to move usr/* out of the initramfs and into /offload
+mkdir offload_stage/rootfs
+mkdir offload_stage/rootfs/usr/
 
 echo "Copy system into staging directories ..."
 cp ../../usr/lib/grub/i386-t2/stage{1,2} root_stage/boot/grub/
@@ -54,6 +57,63 @@ cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
 ln -s /offload/asterisk/sounds/en-us offload_stage/asterisk/sounds/en
+# new bits to move usr/* out of the initramfs and into /offload
+cp -Rp ../../usr/* offload_stage/rootfs/usr/
+rm -rf offload_stage/rootfs/usr/bin/aclocal
+rm -rf offload_stage/rootfs/usr/bin/auto
+rm -rf offload_stage/rootfs/usr/bin/bison
+rm -rf offload_stage/rootfs/usr/bin/flite
+rm -rf offload_stage/rootfs/usr/bin/gettext
+rm -rf offload_stage/rootfs/usr/bin/libtool
+rm -rf offload_stage/rootfs/usr/bin/locale
+rm -rf offload_stage/rootfs/usr/bin/ngettext
+rm -rf offload_stage/rootfs/usr/bin/msg
+rm -rf offload_stage/rootfs/usr/bin/php-config
+rm -rf offload_stage/rootfs/usr/bin/phpize
+rm -rf offload_stage/rootfs/usr/bin/recode-sr-latin
+rm -rf offload_stage/rootfs/usr/bin/xgettext
+rm -rf offload_stage/rootfs/usr/bin/yacc
+rm -rf offload_stage/rootfs/usr/games
+rm -rf offload_stage/rootfs/usr/include
+rm -rf offload_stage/rootfs/usr/lib/build/
+rm -rf offload_stage/rootfs/usr/lib/gettext/
+rm -rf offload_stage/rootfs/usr/lib/grub/
+rm -rf offload_stage/rootfs/usr/lib/perl5/
+rm -rf offload_stage/rootfs/usr/lib/pkgconfig/
+rm -rf offload_stage/rootfs/usr/man
+rm -rf offload_stage/rootfs/usr/sbin/autosupport
+rm -rf offload_stage/rootfs/usr/sbin/dahdi_genconf
+rm -rf offload_stage/rootfs/usr/sbin/dahdi_hardware
+rm -rf offload_stage/rootfs/usr/sbin/dahdi_registration
+rm -rf offload_stage/rootfs/usr/sbin/grub
+rm -rf offload_stage/rootfs/usr/sbin/lsdahdi
+rm -rf offload_stage/rootfs/usr/sbin/xpp_blink
+rm -rf offload_stage/rootfs/usr/sbin/xpp_sync
+rm -rf offload_stage/rootfs/usr/share/aclocal*
+rm -rf offload_stage/rootfs/usr/share/autoconf*
+rm -rf offload_stage/rootfs/usr/share/automake*
+rm -rf offload_stage/rootfs/usr/share/bison
+rm -rf offload_stage/rootfs/usr/share/dahdi
+rm -rf offload_stage/rootfs/usr/share/doc
+rm -rf offload_stage/rootfs/usr/share/dict
+rm -rf offload_stage/rootfs/usr/share/games
+rm -rf offload_stage/rootfs/usr/share/gettext
+rm -rf offload_stage/rootfs/usr/share/info
+rm -rf offload_stage/rootfs/usr/share/libtool
+rm -rf offload_stage/rootfs/usr/share/locale
+rm -rf offload_stage/rootfs/usr/share/man
+rm -rf offload_stage/rootfs/usr/share/misc
+rm -rf offload_stage/rootfs/usr/share/nls
+rm -rf offload_stage/rootfs/usr/share/tmac
+rm -rf offload_stage/rootfs/usr/src
+
+chmod 644 offload_stage/rootfs/usr/www/*
+chmod 755 offload_stage/rootfs/usr/www/*.php
+chmod 755 offload_stage/rootfs/usr/www/cgi-bin/*.cgi
+#chmod -f 755 offload_stage/rootfs/usr/bin/*
+#chmod 755 offload_stage/rootfs/usr/sbin/*
+chmod 755 offload_stage/rootfs/usr/share/udhcpc/default.script
+
 
 echo "Cleaning up asterisk sounds ..."
 if [[ -d "offload_stage/asterisk/sounds/es" ]] ; then
@@ -72,6 +132,9 @@ done
 
 echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
+find ./ -type f -name "*.a" -print -delete
+find ./ -type f -name "*.po" -print -delete
+rm -vrf `find ./ -name ".svn"`
 
 echo "Root partition size calculation ..."
 root_size=`du -B512 -s root_stage | cut -f 1`

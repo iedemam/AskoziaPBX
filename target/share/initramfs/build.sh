@@ -40,6 +40,10 @@ find $build_root -printf "%P\n" | sed '
 
  /^boot/								d;
 /\/doc/									d;
+/\/games/								d;
+/\/include/								d;
+/\/opt/									d;
+/\/src/									d;
   /etc\/conf/							d;
   /etc\/cron.d/							d;
   /etc\/cron.daily/						d;
@@ -53,60 +57,10 @@ find $build_root -printf "%P\n" | sed '
   /etc\/rc.d\//							d;
   /etc\/skel/							d;
   /etc\/stone.d/						d;
-/\/games/								d;
-/\/include/								d;
   /lib\/modules/						d;
-/\/opt/									d;
-/\/src/									d;
-#/\/terminfo/							d;
-  /usr\/bin\/aclocal/					d;
-  /usr\/bin\/auto/						d;
-  /usr\/bin\/bison/						d;
-  /usr\/bin\/flite/						d;
-  /usr\/bin\/gettext/					d;
-  /usr\/bin\/libtool/					d;
-  /usr\/bin\/locale/					d;
-  /usr\/bin\/ngettext/					d;
-  /usr\/bin\/msg/						d;
-  /usr\/bin\/php-config/				d;
-  /usr\/bin\/phpize/					d;
-  /usr\/bin\/recode-sr-latin/			d;
-  /usr\/bin\/xgettext/					d;
-  /usr\/bin\/yacc/						d;
-  /usr\/lib\/build/						d;
-  /usr\/lib\/gettext/					d;
-  /usr\/lib\/grub/						d;
-  /usr\/lib\/perl5/						d;
-  /usr\/lib\/pkgconfig/					d;
-  /usr\/man/							d;
-  /usr\/sbin\/astgenkey/				d;
-  /usr\/sbin\/autosupport/				d;
-  /usr\/sbin\/dahdi_genconf/			d;
-  /usr\/sbin\/dahdi_hardware/			d;
-  /usr\/sbin\/dahdi_registration/		d;
-  /usr\/sbin\/grub/						d;
-  /usr\/sbin\/lsdahdi/					d;
-  /usr\/sbin\/muted/					d;
-  /usr\/sbin\/safe_asterisk/			d;
-  /usr\/sbin\/sethdlc/					d;
-  /usr\/sbin\/stereoize/				d;
-  /usr\/sbin\/streamplayer/				d;
-  /usr\/sbin\/xpp_blink/				d;
-  /usr\/sbin\/xpp_sync/					d;
-  /usr\/share\/aclocal/					d;
-  /usr\/share\/autoconf/				d;
-  /usr\/share\/automake/				d;
-  /usr\/share\/bison/					d;
-  /usr\/share\/dahdi/					d;
-  /usr\/share\/dict/					d;
-  /usr\/share\/gettext/					d;
-  /usr\/share\/info/					d;
-  /usr\/share\/libtool/					d;
-  /usr\/share\/locale/					d;
-  /usr\/share\/man/						d;
-  /usr\/share\/misc/					d;
-  /usr\/share\/nls/						d;
   /var\/adm/							d;
+# new bits to move usr/* out of the initramfs and into /offload
+  /usr/									d;
 
 ' > tar.input
 
@@ -134,12 +88,6 @@ link_identical_files
 echo "Setting permissions ..."
 chmod 755 bin/*
 chmod 755 sbin/*
-chmod 755 usr/bin/*
-chmod 755 usr/sbin/*
-chmod 644 usr/www/*
-chmod 755 usr/www/*.php
-chmod 755 usr/www/cgi-bin/*.cgi
-chmod 755 usr/share/udhcpc/default.script
 chmod 755 etc/rc*
 chmod 644 etc/pubkey.pem
 chmod 644 etc/inc/*

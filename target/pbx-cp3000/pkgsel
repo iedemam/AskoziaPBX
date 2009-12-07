@@ -50,10 +50,6 @@ X dahdi-linux
 X dahdi-tools
 X asterisk16
 
-# text to speech
-#X flite
-#X app_flite
-
 # prompt sets
 X en-us-ulaw-base
 X en-us-ulaw-wakeme
@@ -62,7 +58,7 @@ X es-es-ulaw-base
 X fr-ca-ulaw-base
 X de-de-wav-base
 X it-it-gsm-base
- 
+
 # music-on-hold
 X freeplay-ulaw-base
 #X freeplay-g722-base
@@ -81,8 +77,7 @@ X jquery.blockui
 X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
-X iui
- 
+
 # binaries
 X busybox
 X dropbear
