@@ -4,7 +4,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 export PATH
 
 echo "attempting to mount /offload partition..."
-disks=$(fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq)
+disks=$(fdisk -l | grep "^/dev/" | busybox cut -c 6-8 | busybox uniq)
 for disk in $disks
 do
 	echo " - trying ${disk}"
