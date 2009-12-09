@@ -189,7 +189,7 @@ relaxdtmf=yes
 alwaysauthreject=yes
 videosupport=yes
 notifybusy=yes
-limitonpeer=yes
+counteronpeer=yes
 notifyhold=no
 pedantic=yes
 
@@ -271,7 +271,7 @@ EOD;
 		$conf .= "; {$p['name']}\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "type=friend\n";
-		$conf .= "username={$p['username']}\n";
+		$conf .= "defaultuser={$p['username']}\n";
 		$conf .= "secret={$p['secret']}\n";
 		
 		if($p['fromuser']) {
@@ -371,7 +371,6 @@ EOD;
 		$conf .= "dtmfmode=" . $p['dtmfmode'] . "\n";
 		$conf .= "qualify=yes\n";
 		$conf .= "canreinvite=no\n";
-		$conf .= "call-limit=2\n";
 		$conf .= "busy-limit=1\n";		
 
 		$conf .= "disallow=all\n";

@@ -308,7 +308,7 @@ skipms=3000
 maxsilence=4
 silencethreshold=128
 maxlogins=3
-minmessage=5
+minsecs=5
 charset=UTF-8
 
 fromstring=$product_name Voicemail
