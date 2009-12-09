@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1558,27 +1558,6 @@ msgstr "Service d'enregistrement DNS"
 msgid "Disable DNS SRV lookups."
 msgstr "Désactiver le serveur DNS de recherche."
 
-msgid "Debug"
-msgstr "Déboguer"
-
-msgid "ISDN Interface"
-msgstr "Interface RNIS"
-
-msgid "Start"
-msgstr "Début"
-
-msgid "Debugging"
-msgstr "Débogage"
-
-msgid "Stop"
-msgstr "Fin"
-
-msgid "Debug Ouptut"
-msgstr "Résultat du débogage"
-
-msgid "Restart"
-msgstr "Redémarrer"
-
 msgid "ARP table"
 msgstr "Table ARP"
 
@@ -2561,41 +2540,22 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "Cliquer sur \"Enregistrer\" et tous les appels seront terminés."
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Les ports identifiés et affichés sur cette page ont besoin de paramètres "
-"appropriés avant qu'ils puissent être utilisés par le système. Portez une "
-"attention particulière à la configuration des interfaces RNIS. Une erreur de "
-"configuration d'un port unique dans une carte peut rendre le système "
-"inutilisable."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Aucune interface analogique détectée."
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Aucune interface RNIS détectée."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Configuration de l'interface RNIS #%s"
 
-msgid "Unit"
-msgstr "Unité"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Un mode de fonctionnement doit être sélectionné pour cette interface."
+
+msgid "Descriptive name for this interface"
+msgstr "Nom descriptif de cette interface"
 
 msgid "Operating Mode"
 msgstr "Mode de fonctionnement"
-
-msgid "Echo Canceller"
-msgstr "Supprime l'echo"
-
-msgid "edit ISDN interface"
-msgstr "Configuration de l'interface RNIS"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
-
-msgid "forget interface settings"
-msgstr "annuler les paramètres de l'interface"
-
-msgid "Operating Modes"
-msgstr "Modes de fonctionnement"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2625,15 +2585,8 @@ msgstr ""
 "point à point, terminaison de réseau: ce port permet d'acheminer des appels "
 "de DID et est relié directement à un autre système PABX"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Configuration de l'interface RNIS #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Un mode de fonctionnement doit être sélectionné pour cette interface."
-
-msgid "Descriptive name for this interface"
-msgstr "Nom descriptif de cette interface"
+msgid "Echo Canceller"
+msgstr "Supprime l'echo"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Activer la suppression de l'écho pour cette ligne (recommandé)."
@@ -2740,6 +2693,9 @@ msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr "Numéro principal assigné à cette ligne."
+
+msgid "ISDN Interface"
+msgstr "Interface RNIS"
 
 msgid "Edit SIP Account"
 msgstr "Configuration du compte SIP"
@@ -3389,6 +3345,54 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "Debug"
+#~ msgstr "Déboguer"
+
+#~ msgid "Start"
+#~ msgstr "Début"
+
+#~ msgid "Debugging"
+#~ msgstr "Débogage"
+
+#~ msgid "Stop"
+#~ msgstr "Fin"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Résultat du débogage"
+
+#~ msgid "Restart"
+#~ msgstr "Redémarrer"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Les ports identifiés et affichés sur cette page ont besoin de paramètres "
+#~ "appropriés avant qu'ils puissent être utilisés par le système. Portez une "
+#~ "attention particulière à la configuration des interfaces RNIS. Une erreur "
+#~ "de configuration d'un port unique dans une carte peut rendre le système "
+#~ "inutilisable."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Aucune interface RNIS détectée."
+
+#~ msgid "Unit"
+#~ msgstr "Unité"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "Configuration de l'interface RNIS"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "annuler les paramètres de l'interface"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Modes de fonctionnement"
 
 #, fuzzy
 #~ msgid "Hardware"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1489,27 +1489,6 @@ msgstr ""
 msgid "Disable DNS SRV lookups."
 msgstr ""
 
-msgid "Debug"
-msgstr "Depurar"
-
-msgid "ISDN Interface"
-msgstr "Interfaz RDSI"
-
-msgid "Start"
-msgstr "Comenzar"
-
-msgid "Debugging"
-msgstr "Depurando"
-
-msgid "Stop"
-msgstr "Parar"
-
-msgid "Debug Ouptut"
-msgstr "Salida de depurado"
-
-msgid "Restart"
-msgstr "Comenzar de nuevo"
-
 msgid "ARP table"
 msgstr "Tabla ARP"
 
@@ -2446,41 +2425,22 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Los puertos detectados en esta página deben ser editados y guardados antes "
-"de que el sistema pueda utilizarlos. Tenga cuidado cuando configure los "
-"interfaces RDSI. Teniendo simplemente un puerto de una tarjeta mal "
-"configurado puede significar que la tarjeta al completo sea inutilizable por "
-"el sistema."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Interfaces analógicos compatibles no encontrados."
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "No se han detectado interfaces RDSI compatibles."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Editar interfaz RDSI #%s"
 
-msgid "Unit"
-msgstr "Unidad"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Debe ser seleccionado un medo operativo para este interfaz."
+
+msgid "Descriptive name for this interface"
+msgstr "Nombre descriptivo para este interfaz"
 
 msgid "Operating Mode"
 msgstr "Modo operativo"
-
-msgid "Echo Canceller"
-msgstr "Cancelador de eco"
-
-msgid "edit ISDN interface"
-msgstr "editar interfaz RDSI"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "¿Realmente quiere olvidar los ajustes de este interfaz?"
-
-msgid "forget interface settings"
-msgstr "olvidar los ajustes de este interfaz"
-
-msgid "Operating Modes"
-msgstr "Modos operativos"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2502,15 +2462,8 @@ msgid ""
 "and is connected directly to another PBX system"
 msgstr ""
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Editar interfaz RDSI #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Debe ser seleccionado un medo operativo para este interfaz."
-
-msgid "Descriptive name for this interface"
-msgstr "Nombre descriptivo para este interfaz"
+msgid "Echo Canceller"
+msgstr "Cancelador de eco"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Intento de eliminar ecos de la linea (recomendado)"
@@ -2607,6 +2560,9 @@ msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr ""
+
+msgid "ISDN Interface"
+msgstr "Interfaz RDSI"
 
 msgid "Edit SIP Account"
 msgstr "Editar cuenta SIP"
@@ -3202,6 +3158,54 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "Debug"
+#~ msgstr "Depurar"
+
+#~ msgid "Start"
+#~ msgstr "Comenzar"
+
+#~ msgid "Debugging"
+#~ msgstr "Depurando"
+
+#~ msgid "Stop"
+#~ msgstr "Parar"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Salida de depurado"
+
+#~ msgid "Restart"
+#~ msgstr "Comenzar de nuevo"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Los puertos detectados en esta página deben ser editados y guardados "
+#~ "antes de que el sistema pueda utilizarlos. Tenga cuidado cuando configure "
+#~ "los interfaces RDSI. Teniendo simplemente un puerto de una tarjeta mal "
+#~ "configurado puede significar que la tarjeta al completo sea inutilizable "
+#~ "por el sistema."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "No se han detectado interfaces RDSI compatibles."
+
+#~ msgid "Unit"
+#~ msgstr "Unidad"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "editar interfaz RDSI"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "¿Realmente quiere olvidar los ajustes de este interfaz?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "olvidar los ajustes de este interfaz"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Modos operativos"
 
 #, fuzzy
 #~ msgid "Hardware"

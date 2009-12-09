@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1502,27 +1502,6 @@ msgstr ""
 msgid "Disable DNS SRV lookups."
 msgstr "Wyłącz wyszukiwania rekordów SRV DNS."
 
-msgid "Debug"
-msgstr "Debug"
-
-msgid "ISDN Interface"
-msgstr "Interfejs ISDN"
-
-msgid "Start"
-msgstr "Start"
-
-msgid "Debugging"
-msgstr "Debugging"
-
-msgid "Stop"
-msgstr "Stop"
-
-msgid "Debug Ouptut"
-msgstr "Debug Ouptut"
-
-msgid "Restart"
-msgstr "Restart"
-
 msgid "ARP table"
 msgstr "tablica ARP"
 
@@ -2464,40 +2443,22 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "kliknięcie &quot;Zapisz&quot; przerwie wszystkie bieżące połączenia."
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Porty wykryte na tej stronie muszę zostać wyedytowane i zapisane aby system "
-"mógł ich użyć. Ostrożnie z konfiguracją interfejsów ISDN. Wystarczy jeden "
-"port na karcie błędnie skonfigurowany aby cała karta była nieużywalna dla "
-"systemu."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Nie znaleziono kompatybilnych interfejsów ISDN."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Edytuj interfejs ISDN #%s"
 
-msgid "Unit"
-msgstr "Jednostka"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Nalezy wybrać Tryb Pracy dla tego urządzenia."
+
+msgid "Descriptive name for this interface"
+msgstr "Opisowa nazwa tego interfejsu"
 
 msgid "Operating Mode"
 msgstr "Tryb Pracy"
-
-msgid "Echo Canceller"
-msgstr "Echo Canceller"
-
-msgid "edit ISDN interface"
-msgstr "edytuj interfejs ISDN"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
-
-msgid "forget interface settings"
-msgstr "wyczyść ustawienia interfejsu"
-
-msgid "Operating Modes"
-msgstr "Tryby Pracy"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2528,15 +2489,8 @@ msgstr ""
 "point-to-point, network termination: taki port dostarcza DID do "
 "przekazywania połączeń i podłączony jest bezpośrednio do innego PBX"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Edytuj interfejs ISDN #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Nalezy wybrać Tryb Pracy dla tego urządzenia."
-
-msgid "Descriptive name for this interface"
-msgstr "Opisowa nazwa tego interfejsu"
+msgid "Echo Canceller"
+msgstr "Echo Canceller"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Spróbuj usunąć echo z linii. (zalecane)"
@@ -2637,6 +2591,9 @@ msgid ""
 msgstr ""
 "Domyślny numer telefonu (MSN) przypisany do tej linii. Indywidualne "
 "mapowania MSN można zdefiniować poniżej."
+
+msgid "ISDN Interface"
+msgstr "Interfejs ISDN"
 
 msgid "Edit SIP Account"
 msgstr "Edytuj Konto SIP"
@@ -3240,6 +3197,53 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "Debug"
+#~ msgstr "Debug"
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Debugging"
+#~ msgstr "Debugging"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Debug Ouptut"
+
+#~ msgid "Restart"
+#~ msgstr "Restart"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Porty wykryte na tej stronie muszę zostać wyedytowane i zapisane aby "
+#~ "system mógł ich użyć. Ostrożnie z konfiguracją interfejsów ISDN. "
+#~ "Wystarczy jeden port na karcie błędnie skonfigurowany aby cała karta była "
+#~ "nieużywalna dla systemu."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Nie znaleziono kompatybilnych interfejsów ISDN."
+
+#~ msgid "Unit"
+#~ msgstr "Jednostka"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "edytuj interfejs ISDN"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "wyczyść ustawienia interfejsu"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Tryby Pracy"
 
 #, fuzzy
 #~ msgid "Hardware"

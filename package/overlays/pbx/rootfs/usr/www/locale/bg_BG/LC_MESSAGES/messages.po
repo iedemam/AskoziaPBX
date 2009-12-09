@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1566,27 +1566,6 @@ msgstr "DNS Услуга Записи"
 msgid "Disable DNS SRV lookups."
 msgstr "Забрани DNS SRV следене."
 
-msgid "Debug"
-msgstr "Debug"
-
-msgid "ISDN Interface"
-msgstr "ISDN Интерфейс"
-
-msgid "Start"
-msgstr "Старт"
-
-msgid "Debugging"
-msgstr "Debugging"
-
-msgid "Stop"
-msgstr "Стоп"
-
-msgid "Debug Ouptut"
-msgstr "Debug Ouptut"
-
-msgid "Restart"
-msgstr "Рестарт"
-
 msgid "ARP table"
 msgstr "ARP таблица"
 
@@ -2569,41 +2548,22 @@ msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "кликането върху  &quot;Запиши&quot; ще прекъсне всички активни разговори."
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Откритите портове на тази страница трябва да бъдат редактирани и записани "
-"преди системата да може да ги използва. Бъдете внимателни когато настройвате "
-"ISDN интерфейси. Ако имате дори един неправилно конфигуриран порт на картата "
-"може да доведе до неизползваемост на цялата карта от системата."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Не е открит съвместим аналогов интерфейс."
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Не е открит съвместим ISDN интерфейс."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Редактирай ISDN Интерфейс #%s"
 
-msgid "Unit"
-msgstr "Устройство"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Трябва да се избере Режим на Работа за този интерфейс."
+
+msgid "Descriptive name for this interface"
+msgstr "Описание за този интерфейс"
 
 msgid "Operating Mode"
 msgstr "Режим на Работа"
-
-msgid "Echo Canceller"
-msgstr "Ехо Неутрализатор"
-
-msgid "edit ISDN interface"
-msgstr "редактирай ISDN интерфейс"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr ""
-"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
-
-msgid "forget interface settings"
-msgstr "пропусни настройките на интерфейса"
-
-msgid "Operating Modes"
-msgstr "Режими на Работа"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2634,15 +2594,8 @@ msgstr ""
 "point-to-point, мрежово свързване: този порт предоставя DID за рутиране на "
 "обажданията и е свързан директно към друга телефонна централа"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Редактирай ISDN Интерфейс #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Трябва да се избере Режим на Работа за този интерфейс."
-
-msgid "Descriptive name for this interface"
-msgstr "Описание за този интерфейс"
+msgid "Echo Canceller"
+msgstr "Ехо Неутрализатор"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Премахване на ехо от линията. (препоръчително)"
@@ -2745,6 +2698,9 @@ msgid ""
 msgstr ""
 "Телефонен номер по подразбиране (MSN) определен за тази линия. Индивидуално "
 "MSN рутиране може да се дефинира по-долу."
+
+msgid "ISDN Interface"
+msgstr "ISDN Интерфейс"
 
 msgid "Edit SIP Account"
 msgstr "Редактирай SIP Акаунт"
@@ -3374,6 +3330,55 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Debug"
+#~ msgstr "Debug"
+
+#~ msgid "Start"
+#~ msgstr "Старт"
+
+#~ msgid "Debugging"
+#~ msgstr "Debugging"
+
+#~ msgid "Stop"
+#~ msgstr "Стоп"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Debug Ouptut"
+
+#~ msgid "Restart"
+#~ msgstr "Рестарт"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Откритите портове на тази страница трябва да бъдат редактирани и записани "
+#~ "преди системата да може да ги използва. Бъдете внимателни когато "
+#~ "настройвате ISDN интерфейси. Ако имате дори един неправилно конфигуриран "
+#~ "порт на картата може да доведе до неизползваемост на цялата карта от "
+#~ "системата."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Не е открит съвместим ISDN интерфейс."
+
+#~ msgid "Unit"
+#~ msgstr "Устройство"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "редактирай ISDN интерфейс"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr ""
+#~ "Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "пропусни настройките на интерфейса"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Режими на Работа"
 
 #, fuzzy
 #~ msgid "Hardware"

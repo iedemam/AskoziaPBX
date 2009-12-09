@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1586,27 +1586,6 @@ msgstr "Εγγραφές DNS SRV"
 msgid "Disable DNS SRV lookups."
 msgstr "Απενεργοποίηση αναζητήσεων DNS SRV."
 
-msgid "Debug"
-msgstr "Αποσφαλμάτωση"
-
-msgid "ISDN Interface"
-msgstr "Διεπαφή ISDN"
-
-msgid "Start"
-msgstr "Έναρξη"
-
-msgid "Debugging"
-msgstr "Αποσφλαμάτωση"
-
-msgid "Stop"
-msgstr "Τερματισμός"
-
-msgid "Debug Ouptut"
-msgstr "Αποτελέσματα αποσφαλμάτωσης"
-
-msgid "Restart"
-msgstr "Επανεκκίνηση"
-
 msgid "ARP table"
 msgstr "Πίνακας ARP"
 
@@ -2617,41 +2596,22 @@ msgstr ""
 "αν πατήσετε &quot;Αποθήκευση&quot;, θα τερματιστούν όλες οι τρέχουσες "
 "κλήσεις."
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Πρέπει να επεξεργαστείτε και να αποθηκεύσετε τις θύρες που βρέθηκαν σε αυτή "
-"τη σελίδα, πριν μπορέσει να τις χρησιμοποιήσει το σύστημα. Δείξτε προσοχή "
-"όταν ρυθμίζετε διεπαφές ISDN. Αν ρυθμίσετε λάθος μία και μόνο διεπαφή σε μία "
-"κάρτα, μπορεί να έχει σαν αποτέλεσμα να μην μπορεί να χρησιμοποιηθεί "
-"ολόκληρη η κάρτα από το σύστημα."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές PSTN."
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Δεν βρέθηκαν συμβατές διεπαφές ISDN."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Επεξεργασία διαπαφής ISDN #%s"
 
-msgid "Unit"
-msgstr "Μονάδα"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Πρέπει να ορίσετε έναν τρόπο λειτουργίας γι' αυτή τη διεπαφή."
+
+msgid "Descriptive name for this interface"
+msgstr "Επεξηγηματικό όνομα γι' αυτή τη διεπαφή"
 
 msgid "Operating Mode"
 msgstr "Τρόπος λειτουργίας"
-
-msgid "Echo Canceller"
-msgstr "Απαλοιφή ηχούς"
-
-msgid "edit ISDN interface"
-msgstr "επεξεργασία διεπαφής ISDN"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
-
-msgid "forget interface settings"
-msgstr "διαγραφή ρυθμίσεων διεπαφής"
-
-msgid "Operating Modes"
-msgstr "Τρόποι λειτουργίας"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2681,15 +2641,8 @@ msgstr ""
 "point-to-point, NT: αυτή η θύρα παρέχει DIDs και συνδέεται απ' ευθείας σε "
 "άλλο τηλεφωνικό κέντρο"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Επεξεργασία διαπαφής ISDN #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Πρέπει να ορίσετε έναν τρόπο λειτουργίας γι' αυτή τη διεπαφή."
-
-msgid "Descriptive name for this interface"
-msgstr "Επεξηγηματικό όνομα γι' αυτή τη διεπαφή"
+msgid "Echo Canceller"
+msgstr "Απαλοιφή ηχούς"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Να γίνει προσπάθεια απαλοιφής ηχούς από αυτή τη γραμμή (συνιστάται)."
@@ -2799,6 +2752,9 @@ msgid ""
 msgstr ""
 "Ο προεπιλεγμένος αριθμός (MSN) γι' αυτή τη γραμμή. Πρόσθετεες αντιστοιχήσεις "
 "MSNs μπορούν να οριστούν πιο κάτω."
+
+msgid "ISDN Interface"
+msgstr "Διεπαφή ISDN"
 
 msgid "Edit SIP Account"
 msgstr "Επεξεργασία λογαρασμού SIP"
@@ -3473,6 +3429,54 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "Debug"
+#~ msgstr "Αποσφαλμάτωση"
+
+#~ msgid "Start"
+#~ msgstr "Έναρξη"
+
+#~ msgid "Debugging"
+#~ msgstr "Αποσφλαμάτωση"
+
+#~ msgid "Stop"
+#~ msgstr "Τερματισμός"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Αποτελέσματα αποσφαλμάτωσης"
+
+#~ msgid "Restart"
+#~ msgstr "Επανεκκίνηση"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Πρέπει να επεξεργαστείτε και να αποθηκεύσετε τις θύρες που βρέθηκαν σε "
+#~ "αυτή τη σελίδα, πριν μπορέσει να τις χρησιμοποιήσει το σύστημα. Δείξτε "
+#~ "προσοχή όταν ρυθμίζετε διεπαφές ISDN. Αν ρυθμίσετε λάθος μία και μόνο "
+#~ "διεπαφή σε μία κάρτα, μπορεί να έχει σαν αποτέλεσμα να μην μπορεί να "
+#~ "χρησιμοποιηθεί ολόκληρη η κάρτα από το σύστημα."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Δεν βρέθηκαν συμβατές διεπαφές ISDN."
+
+#~ msgid "Unit"
+#~ msgstr "Μονάδα"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "επεξεργασία διεπαφής ISDN"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
+
+#~ msgid "forget interface settings"
+#~ msgstr "διαγραφή ρυθμίσεων διεπαφής"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Τρόποι λειτουργίας"
 
 #, fuzzy
 #~ msgid "Hardware"

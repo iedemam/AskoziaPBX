@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1559,27 +1559,6 @@ msgstr "DNS Palvelu Asiakirjat"
 msgid "Disable DNS SRV lookups."
 msgstr "Poista DNS SRV käytöstä."
 
-msgid "Debug"
-msgstr "Virheiden etsintä"
-
-msgid "ISDN Interface"
-msgstr "ISDN Käyttöliittymä"
-
-msgid "Start"
-msgstr "Aloita"
-
-msgid "Debugging"
-msgstr "Virheiden etsiminen"
-
-msgid "Stop"
-msgstr "Pysäytä"
-
-msgid "Debug Ouptut"
-msgstr "Virheiden etsinnän tulokset"
-
-msgid "Restart"
-msgstr "Käynnistä uudelleen"
-
 msgid "ARP table"
 msgstr "ARP taulukko"
 
@@ -2554,40 +2533,22 @@ msgstr ""
 "Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
 "katkaistaan."
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Havaitut portit tällä sivulla on muokattava ja tallennettava ennen kun "
-"järjestelmä pystyy hyödyntämään niitä. Ole varovainen konfiguroidessasi ISDN "
-"käyttöliittymiä. Vain yksi väärin konfiguroitu portti kortilla voi "
-"tarkoittaa sitä että järjestelmä ei pysty käyttämään sitä."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Muokkaa ISDN käyttöliittymää #%s"
 
-msgid "Unit"
-msgstr "Yksikkö"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Käyttötapa on oltava valittu tälle käyttöliittymälle."
+
+msgid "Descriptive name for this interface"
+msgstr "Kuvaileva nimi tälle käyttöliittymälle"
 
 msgid "Operating Mode"
 msgstr "Käyttötapa"
-
-msgid "Echo Canceller"
-msgstr "Echo Peruutus"
-
-msgid "edit ISDN interface"
-msgstr "muokkaa ISDN käyttöliittymää"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
-
-msgid "forget interface settings"
-msgstr "unohda käyttöliittymän asetukset"
-
-msgid "Operating Modes"
-msgstr "Käyttötavat"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2618,15 +2579,8 @@ msgstr ""
 "point-to-point, verkon päättyminen: tämä portti mahdollistaa DID "
 "reitittämään puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Muokkaa ISDN käyttöliittymää #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Käyttötapa on oltava valittu tälle käyttöliittymälle."
-
-msgid "Descriptive name for this interface"
-msgstr "Kuvaileva nimi tälle käyttöliittymälle"
+msgid "Echo Canceller"
+msgstr "Echo Peruutus"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Yritä poistaa kaikua linjalta. (suositeltavaa)"
@@ -2730,6 +2684,9 @@ msgid ""
 msgstr ""
 "Oletus puhelinnumero (MSN) määritetty tälle linjalle. Henkilökohtaiset MSN "
 "kartoitukset pystyy määrittämään alla."
+
+msgid "ISDN Interface"
+msgstr "ISDN Käyttöliittymä"
 
 msgid "Edit SIP Account"
 msgstr "Muokkaa SIP Tiliä"
@@ -3352,6 +3309,53 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Debug"
+#~ msgstr "Virheiden etsintä"
+
+#~ msgid "Start"
+#~ msgstr "Aloita"
+
+#~ msgid "Debugging"
+#~ msgstr "Virheiden etsiminen"
+
+#~ msgid "Stop"
+#~ msgstr "Pysäytä"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Virheiden etsinnän tulokset"
+
+#~ msgid "Restart"
+#~ msgstr "Käynnistä uudelleen"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Havaitut portit tällä sivulla on muokattava ja tallennettava ennen kun "
+#~ "järjestelmä pystyy hyödyntämään niitä. Ole varovainen konfiguroidessasi "
+#~ "ISDN käyttöliittymiä. Vain yksi väärin konfiguroitu portti kortilla voi "
+#~ "tarkoittaa sitä että järjestelmä ei pysty käyttämään sitä."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Yhteensopivaa ISDN käyttöliittymää ei havaittu."
+
+#~ msgid "Unit"
+#~ msgstr "Yksikkö"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "muokkaa ISDN käyttöliittymää"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "unohda käyttöliittymän asetukset"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Käyttötavat"
 
 #, fuzzy
 #~ msgid "Hardware"

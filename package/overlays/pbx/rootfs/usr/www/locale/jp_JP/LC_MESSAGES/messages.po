@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1555,27 +1555,6 @@ msgstr "DNSサービスレコード"
 msgid "Disable DNS SRV lookups."
 msgstr "DNS SRV lookupsを無効にする。"
 
-msgid "Debug"
-msgstr "デバッグ"
-
-msgid "ISDN Interface"
-msgstr "ISDNインターフェース"
-
-msgid "Start"
-msgstr "開始"
-
-msgid "Debugging"
-msgstr "デバッグ"
-
-msgid "Stop"
-msgstr "停止"
-
-msgid "Debug Ouptut"
-msgstr "デバッグ出力"
-
-msgid "Restart"
-msgstr "再起動"
-
 msgid "ARP table"
 msgstr "ARPテーブル"
 
@@ -2541,39 +2520,21 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "clicking &quot;Save&quot; 全ての呼を切断します"
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"システムで使用する前に、このページで検出されたポートを編集して、保存する必要"
-"があります。注意：ISDNインタフェースを設定する時に、カード上に一つ正しく設定"
-"されていないポートが有ると、結果としてカード全体がシステムから利用出来なく"
-"なってしまいます"
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "対応するアナログインターフェースが見つかりませんでした。"
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "対応しているISDNインタフェースが見つかりませんでした"
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "ISDNインターフェース#%sを編集"
 
-msgid "Unit"
-msgstr "Unit"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "操作モードをこのインタフェースに選択する必要があります"
+
+msgid "Descriptive name for this interface"
+msgstr "このインターフェイスのわかりやすい名前"
 
 msgid "Operating Mode"
-msgstr "操作モード"
-
-msgid "Echo Canceller"
-msgstr "エコーキャンセラー"
-
-msgid "edit ISDN interface"
-msgstr "ISDN回線の編集"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
-
-msgid "forget interface settings"
-msgstr "インタフェース設定を忘れる"
-
-msgid "Operating Modes"
 msgstr "操作モード"
 
 msgid ""
@@ -2604,15 +2565,8 @@ msgstr ""
 "ポイントtoポイント,ネットワークターミネーション:このポートは、DIDのルート呼び"
 "出しと、他のPBXシステムへの直接接続を提供します"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "ISDNインターフェース#%sを編集"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "操作モードをこのインタフェースに選択する必要があります"
-
-msgid "Descriptive name for this interface"
-msgstr "このインターフェイスのわかりやすい名前"
+msgid "Echo Canceller"
+msgstr "エコーキャンセラー"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "この回線からエコーを除去します(推奨)"
@@ -2721,6 +2675,9 @@ msgid ""
 msgstr ""
 "このデフォルトの電話番号(MSN)が、この回線に割り当てられました。個々のMSNマッ"
 "ピングは、下記で定義出来ます"
+
+msgid "ISDN Interface"
+msgstr "ISDNインターフェース"
 
 msgid "Edit SIP Account"
 msgstr "SIPアカウントの設定"
@@ -3360,6 +3317,53 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "Debug"
+#~ msgstr "デバッグ"
+
+#~ msgid "Start"
+#~ msgstr "開始"
+
+#~ msgid "Debugging"
+#~ msgstr "デバッグ"
+
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "デバッグ出力"
+
+#~ msgid "Restart"
+#~ msgstr "再起動"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "システムで使用する前に、このページで検出されたポートを編集して、保存する必"
+#~ "要があります。注意：ISDNインタフェースを設定する時に、カード上に一つ正しく"
+#~ "設定されていないポートが有ると、結果としてカード全体がシステムから利用出来"
+#~ "なくなってしまいます"
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "対応しているISDNインタフェースが見つかりませんでした"
+
+#~ msgid "Unit"
+#~ msgstr "Unit"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "ISDN回線の編集"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
+
+#~ msgid "forget interface settings"
+#~ msgstr "インタフェース設定を忘れる"
+
+#~ msgid "Operating Modes"
+#~ msgstr "操作モード"
 
 #, fuzzy
 #~ msgid "Hardware"

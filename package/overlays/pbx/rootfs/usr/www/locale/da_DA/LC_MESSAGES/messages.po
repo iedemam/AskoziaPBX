@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1560,27 +1560,6 @@ msgstr "DNS Tjeneste Poster"
 msgid "Disable DNS SRV lookups."
 msgstr "Deaktiver DNS SRV lookups."
 
-msgid "Debug"
-msgstr "Fejlsøg"
-
-msgid "ISDN Interface"
-msgstr "ISDN Interface"
-
-msgid "Start"
-msgstr "Start"
-
-msgid "Debugging"
-msgstr "Fejlsøgning"
-
-msgid "Stop"
-msgstr "Stop"
-
-msgid "Debug Ouptut"
-msgstr "Fejlsøg udskrift"
-
-msgid "Restart"
-msgstr "Genstart"
-
 msgid "ARP table"
 msgstr "ARP faneblad"
 
@@ -2510,35 +2489,21 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "At klikke &quot;Gem&quot; vil smide alle igangværende opkald. "
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Ingen kompatible analoge grænseflader fundet."
+
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Rediger ISDN Interface #%s"
+
+msgid "An Operating Mode must be selected for this interface."
 msgstr ""
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Ingen kompatible ISDN grænseflader fundet."
-
-msgid "Unit"
-msgstr "Enhed"
+msgid "Descriptive name for this interface"
+msgstr "Beskrivelse for dette interface"
 
 msgid "Operating Mode"
-msgstr ""
-
-msgid "Echo Canceller"
-msgstr "Echo Undertrykkelse"
-
-msgid "edit ISDN interface"
-msgstr "Rediger ISDN interface"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
-
-msgid "forget interface settings"
-msgstr "glem interface indstillinger"
-
-msgid "Operating Modes"
 msgstr ""
 
 msgid ""
@@ -2561,15 +2526,8 @@ msgid ""
 "and is connected directly to another PBX system"
 msgstr ""
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Rediger ISDN Interface #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr ""
-
-msgid "Descriptive name for this interface"
-msgstr "Beskrivelse for dette interface"
+msgid "Echo Canceller"
+msgstr "Echo Undertrykkelse"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Forsøg at fjerne ekkoer fra denne linie. (anbefalet)"
@@ -2669,6 +2627,9 @@ msgstr ""
 "Hovednummeret der er knyttet til denne linie (det korteste mulige nummer, "
 "der kan benyttes til opkald af denne linie). Det er muligt at angive "
 "individuelle MSN mapninger nedenfor."
+
+msgid "ISDN Interface"
+msgstr "ISDN Interface"
 
 msgid "Edit SIP Account"
 msgstr "Rediger SIP konto"
@@ -3276,6 +3237,39 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Debug"
+#~ msgstr "Fejlsøg"
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#~ msgid "Debugging"
+#~ msgstr "Fejlsøgning"
+
+#~ msgid "Stop"
+#~ msgstr "Stop"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Fejlsøg udskrift"
+
+#~ msgid "Restart"
+#~ msgstr "Genstart"
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Ingen kompatible ISDN grænseflader fundet."
+
+#~ msgid "Unit"
+#~ msgstr "Enhed"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "Rediger ISDN interface"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "glem interface indstillinger"
 
 #, fuzzy
 #~ msgid "Hardware"

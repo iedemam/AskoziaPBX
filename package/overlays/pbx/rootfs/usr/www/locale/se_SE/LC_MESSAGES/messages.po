@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1411,27 +1411,6 @@ msgstr ""
 msgid "Disable DNS SRV lookups."
 msgstr ""
 
-msgid "Debug"
-msgstr ""
-
-msgid "ISDN Interface"
-msgstr ""
-
-msgid "Start"
-msgstr ""
-
-msgid "Debugging"
-msgstr ""
-
-msgid "Stop"
-msgstr ""
-
-msgid "Debug Ouptut"
-msgstr ""
-
-msgid "Restart"
-msgstr ""
-
 msgid "ARP table"
 msgstr ""
 
@@ -2301,35 +2280,20 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
+msgid "No compatible isdn ports were detected."
 msgstr ""
 
-msgid "No compatible ISDN interfaces detected."
+#, php-format
+msgid "Edit ISDN Interface #%s"
 msgstr ""
 
-msgid "Unit"
+msgid "An Operating Mode must be selected for this interface."
+msgstr ""
+
+msgid "Descriptive name for this interface"
 msgstr ""
 
 msgid "Operating Mode"
-msgstr ""
-
-msgid "Echo Canceller"
-msgstr ""
-
-msgid "edit ISDN interface"
-msgstr ""
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr ""
-
-msgid "forget interface settings"
-msgstr ""
-
-msgid "Operating Modes"
 msgstr ""
 
 msgid ""
@@ -2352,14 +2316,7 @@ msgid ""
 "and is connected directly to another PBX system"
 msgstr ""
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr ""
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr ""
-
-msgid "Descriptive name for this interface"
+msgid "Echo Canceller"
 msgstr ""
 
 msgid "Attempt to remove echoes from the line. (recommended)"
@@ -2455,6 +2412,9 @@ msgstr ""
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
+msgstr ""
+
+msgid "ISDN Interface"
 msgstr ""
 
 msgid "Edit SIP Account"

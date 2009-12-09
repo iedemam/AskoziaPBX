@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1527,27 +1527,6 @@ msgstr "DNS伺服器記錄"
 msgid "Disable DNS SRV lookups."
 msgstr "禁用DNS SRV查找"
 
-msgid "Debug"
-msgstr "除錯"
-
-msgid "ISDN Interface"
-msgstr "ISDN界面"
-
-msgid "Start"
-msgstr "開始"
-
-msgid "Debugging"
-msgstr "正在除錯"
-
-msgid "Stop"
-msgstr "停止"
-
-msgid "Debug Ouptut"
-msgstr "除錯輸出"
-
-msgid "Restart"
-msgstr "重啟"
-
 msgid "ARP table"
 msgstr "ARP表"
 
@@ -2478,37 +2457,21 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "點擊&quot;保存&quot;會導致所有正在進行的通話斷線。"
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"本頁找到的埠必須編輯和保存後才能被系統利用。請小心設置ISDN介面。一個埠設置的"
-"錯誤，可能導致整卡都不能被系統使用。"
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "沒有探測到相容的Analog介面。"
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "沒有找到相容的ISDN介面。"
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "編輯ISDN埠 #%s"
 
-msgid "Unit"
-msgstr "部件"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "必須給這個介面選擇一個操作模式。"
+
+msgid "Descriptive name for this interface"
+msgstr "這個介面的描述名"
 
 msgid "Operating Mode"
-msgstr "操作模式"
-
-msgid "Echo Canceller"
-msgstr "回聲補償器"
-
-msgid "edit ISDN interface"
-msgstr "編劇ISDN介面"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "真的要忽略這個介面的設定？"
-
-msgid "forget interface settings"
-msgstr "忽略介面設定"
-
-msgid "Operating Modes"
 msgstr "操作模式"
 
 msgid ""
@@ -2533,15 +2496,8 @@ msgid ""
 "and is connected directly to another PBX system"
 msgstr "點對點，網路終端：這個埠提供DID路由通話並直接連接到另一個PBX系統。 "
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "編輯ISDN埠 #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "必須給這個介面選擇一個操作模式。"
-
-msgid "Descriptive name for this interface"
-msgstr "這個介面的描述名"
+msgid "Echo Canceller"
+msgstr "回聲補償器"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "嘗試去除回聲。（推薦）"
@@ -2639,6 +2595,9 @@ msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
 msgstr "分配給這條線路的預設的電話號碼（MSN）。"
+
+msgid "ISDN Interface"
+msgstr "ISDN界面"
 
 msgid "Edit SIP Account"
 msgstr "編輯SIP帳戶"
@@ -3225,6 +3184,51 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "Debug"
+#~ msgstr "除錯"
+
+#~ msgid "Start"
+#~ msgstr "開始"
+
+#~ msgid "Debugging"
+#~ msgstr "正在除錯"
+
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "除錯輸出"
+
+#~ msgid "Restart"
+#~ msgstr "重啟"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "本頁找到的埠必須編輯和保存後才能被系統利用。請小心設置ISDN介面。一個埠設置"
+#~ "的錯誤，可能導致整卡都不能被系統使用。"
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "沒有找到相容的ISDN介面。"
+
+#~ msgid "Unit"
+#~ msgstr "部件"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "編劇ISDN介面"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "真的要忽略這個介面的設定？"
+
+#~ msgid "forget interface settings"
+#~ msgstr "忽略介面設定"
+
+#~ msgid "Operating Modes"
+#~ msgstr "操作模式"
 
 #, fuzzy
 #~ msgid "Hardware"

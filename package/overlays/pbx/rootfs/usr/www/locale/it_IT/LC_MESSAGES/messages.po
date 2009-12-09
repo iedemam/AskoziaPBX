@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-01 17:15+0100\n"
+"POT-Creation-Date: 2009-12-08 12:54+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1576,27 +1576,6 @@ msgstr "Servizio dei Registri DNS"
 msgid "Disable DNS SRV lookups."
 msgstr "Disabilita la ricerca di server DNS"
 
-msgid "Debug"
-msgstr "Debug"
-
-msgid "ISDN Interface"
-msgstr "Interfaccia ISDN"
-
-msgid "Start"
-msgstr "Inizio"
-
-msgid "Debugging"
-msgstr "Debugging"
-
-msgid "Stop"
-msgstr "Ferma"
-
-msgid "Debug Ouptut"
-msgstr "Risultato del Debug"
-
-msgid "Restart"
-msgstr "Riavvia"
-
 msgid "ARP table"
 msgstr "tabella ARP"
 
@@ -2603,42 +2582,22 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "cliccando &quot;Salva&quot; tutte le chiamate verranno terminate."
 
-msgid ""
-"Detected ports on this page must be edited and saved before the system can "
-"utilize them. Be careful when configuring ISDN interfaces. Having a single "
-"port on a card incorrectly configured can result in the entire card being "
-"unusable by the system."
-msgstr ""
-"Le porte individuate e mostrate in questa pagina necessitano di opportune "
-"impostazioni prima di poterle utilizzare nel sistema. Prestate particolare "
-"attenzione nella configurazione delle interfacce ISDN. Una errata "
-"configurazione di una singola porta in una determinata scheda potrebbe "
-"rendere inutilizzabili dal sistema anche le altre porte della medesima "
-"scheda."
+#, fuzzy
+msgid "No compatible isdn ports were detected."
+msgstr "Nessuna interfaccia analogica rilevata."
 
-msgid "No compatible ISDN interfaces detected."
-msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
+#, php-format
+msgid "Edit ISDN Interface #%s"
+msgstr "Modifica l'interfaccia ISDN #%s"
 
-msgid "Unit"
-msgstr "Unità"
+msgid "An Operating Mode must be selected for this interface."
+msgstr "Deve essere selezionata una modalità operativa per questa interfaccia."
+
+msgid "Descriptive name for this interface"
+msgstr "Nome descrittivo di questa interfaccia"
 
 msgid "Operating Mode"
 msgstr "Modo operativo"
-
-msgid "Echo Canceller"
-msgstr "Cancellatore eco"
-
-msgid "edit ISDN interface"
-msgstr "modifica l'interfaccia ISDN"
-
-msgid "Do you really want to forget this interface\\'s settings?"
-msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
-
-msgid "forget interface settings"
-msgstr "annulla le impostazioni dell'interfaccia"
-
-msgid "Operating Modes"
-msgstr "Modi operativi"
 
 msgid ""
 "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
@@ -2670,15 +2629,8 @@ msgstr ""
 "punto-punto (PTP), terminazione di rete (NT): questa porta fornisce DID per "
 "instradare le chiamate ed è collegata direttamente ad un altro centralino"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Modifica l'interfaccia ISDN #%s"
-
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Deve essere selezionata una modalità operativa per questa interfaccia."
-
-msgid "Descriptive name for this interface"
-msgstr "Nome descrittivo di questa interfaccia"
+msgid "Echo Canceller"
+msgstr "Cancellatore eco"
 
 msgid "Attempt to remove echoes from the line. (recommended)"
 msgstr "Attiva il cancellatore d'eco per questa linea (consigliato)."
@@ -2786,6 +2738,9 @@ msgid ""
 msgstr ""
 "Il numero principale assegnato a questa linea. La mappatura dei singoli "
 "numeri aggiuntivi (MSN) possono essere definite qui di seguito."
+
+msgid "ISDN Interface"
+msgstr "Interfaccia ISDN"
 
 msgid "Edit SIP Account"
 msgstr "Modifica l'account SIP"
@@ -3436,6 +3391,55 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "Debug"
+#~ msgstr "Debug"
+
+#~ msgid "Start"
+#~ msgstr "Inizio"
+
+#~ msgid "Debugging"
+#~ msgstr "Debugging"
+
+#~ msgid "Stop"
+#~ msgstr "Ferma"
+
+#~ msgid "Debug Ouptut"
+#~ msgstr "Risultato del Debug"
+
+#~ msgid "Restart"
+#~ msgstr "Riavvia"
+
+#~ msgid ""
+#~ "Detected ports on this page must be edited and saved before the system "
+#~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
+#~ "single port on a card incorrectly configured can result in the entire "
+#~ "card being unusable by the system."
+#~ msgstr ""
+#~ "Le porte individuate e mostrate in questa pagina necessitano di opportune "
+#~ "impostazioni prima di poterle utilizzare nel sistema. Prestate "
+#~ "particolare attenzione nella configurazione delle interfacce ISDN. Una "
+#~ "errata configurazione di una singola porta in una determinata scheda "
+#~ "potrebbe rendere inutilizzabili dal sistema anche le altre porte della "
+#~ "medesima scheda."
+
+#~ msgid "No compatible ISDN interfaces detected."
+#~ msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
+
+#~ msgid "Unit"
+#~ msgstr "Unità"
+
+#~ msgid "edit ISDN interface"
+#~ msgstr "modifica l'interfaccia ISDN"
+
+#~ msgid "Do you really want to forget this interface\\'s settings?"
+#~ msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
+
+#~ msgid "forget interface settings"
+#~ msgstr "annulla le impostazioni dell'interfaccia"
+
+#~ msgid "Operating Modes"
+#~ msgstr "Modi operativi"
 
 #, fuzzy
 #~ msgid "Hardware"
