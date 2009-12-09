@@ -49,11 +49,7 @@ X termcap
 X libpri
 X dahdi-linux
 X dahdi-tools
-X asterisktrunk
-
-# text to speech
-#X flite
-#X app_flite
+X asterisk16
 
 # prompt sets
 X en-us-ulaw-base
@@ -82,7 +78,6 @@ X jquery.blockui
 X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
-X iui
 
 # binaries
 X busybox
