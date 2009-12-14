@@ -167,9 +167,10 @@ if ($_POST && !file_exists($d_fwlock_path)) {
 		}
 	}
 } else {
-	if (!isset($config['system']['disablefirmwarecheck'])) {
-		$fwstatus = check_firmware_version();
-	}
+	// LINUX TODO : currently disabled...needs to be handled with ajax
+	//if (!isset($config['system']['disablefirmwarecheck'])) {
+	//	$fwstatus = check_firmware_version();
+	//}
 }
 
 include("fbegin.inc");
