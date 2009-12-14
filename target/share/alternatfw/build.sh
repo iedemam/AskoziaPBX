@@ -37,9 +37,6 @@ mkdir offload_stage
 mkdir offload_stage/asterisk
 mkdir offload_stage/kernel-modules
 mkdir loop
-# new bits to move usr/* out of the initramfs and into /offload
-mkdir offload_stage/rootfs
-mkdir offload_stage/rootfs/usr/
 
 echo "Copy system into staging directories ..."
 cp ../../boot/vmImage root_stage/alternat.img
@@ -48,62 +45,70 @@ cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
 ln -s /offload/asterisk/sounds/en-us offload_stage/asterisk/sounds/en
 # new bits to move usr/* out of the initramfs and into /offload
-cp -Rp ../../usr/* offload_stage/rootfs/usr/
-rm -rf offload_stage/rootfs/usr/bin/aclocal
-rm -rf offload_stage/rootfs/usr/bin/auto
+mkdir offload_stage/rootfs
+mkdir offload_stage/rootfs/usr/
+# usr/bin
+cp -Rp ../../usr/bin offload_stage/rootfs/usr/
+rm -rf offload_stage/rootfs/usr/bin/aclocal*
+rm -rf offload_stage/rootfs/usr/bin/auto*
 rm -rf offload_stage/rootfs/usr/bin/bison
+rm -rf offload_stage/rootfs/usr/bin/bzdiff
+rm -rf offload_stage/rootfs/usr/bin/bzgrep
+rm -rf offload_stage/rootfs/usr/bin/bzip2recover
+rm -rf offload_stage/rootfs/usr/bin/bzmore
+rm -rf offload_stage/rootfs/usr/bin/c_rehash
+rm -rf offload_stage/rootfs/usr/bin/dbclient
+rm -rf offload_stage/rootfs/usr/bin/envsubst
 rm -rf offload_stage/rootfs/usr/bin/flite
-rm -rf offload_stage/rootfs/usr/bin/gettext
-rm -rf offload_stage/rootfs/usr/bin/libtool
+rm -rf offload_stage/rootfs/usr/bin/gettextize
+rm -rf offload_stage/rootfs/usr/bin/ifnames
+rm -rf offload_stage/rootfs/usr/bin/libtool*
 rm -rf offload_stage/rootfs/usr/bin/locale
 rm -rf offload_stage/rootfs/usr/bin/ngettext
-rm -rf offload_stage/rootfs/usr/bin/msg
+rm -rf offload_stage/rootfs/usr/bin/msg*
 rm -rf offload_stage/rootfs/usr/bin/php-config
 rm -rf offload_stage/rootfs/usr/bin/phpize
 rm -rf offload_stage/rootfs/usr/bin/recode-sr-latin
 rm -rf offload_stage/rootfs/usr/bin/xgettext
 rm -rf offload_stage/rootfs/usr/bin/yacc
-rm -rf offload_stage/rootfs/usr/games
-rm -rf offload_stage/rootfs/usr/include
+# usr/lib
+cp -Rp ../../usr/lib offload_stage/rootfs/usr/
 rm -rf offload_stage/rootfs/usr/lib/build/
+rm -rf offload_stage/rootfs/usr/lib/engines/
 rm -rf offload_stage/rootfs/usr/lib/gettext/
 rm -rf offload_stage/rootfs/usr/lib/grub/
 rm -rf offload_stage/rootfs/usr/lib/perl5/
 rm -rf offload_stage/rootfs/usr/lib/pkgconfig/
-rm -rf offload_stage/rootfs/usr/man
-rm -rf offload_stage/rootfs/usr/sbin/autosupport
+# usr/sbin
+cp -Rp ../../usr/sbin offload_stage/rootfs/usr/
 rm -rf offload_stage/rootfs/usr/sbin/dahdi_genconf
 rm -rf offload_stage/rootfs/usr/sbin/dahdi_hardware
 rm -rf offload_stage/rootfs/usr/sbin/dahdi_registration
 rm -rf offload_stage/rootfs/usr/sbin/grub
-rm -rf offload_stage/rootfs/usr/sbin/lsdahdi
-rm -rf offload_stage/rootfs/usr/sbin/xpp_blink
-rm -rf offload_stage/rootfs/usr/sbin/xpp_sync
-rm -rf offload_stage/rootfs/usr/share/aclocal*
-rm -rf offload_stage/rootfs/usr/share/autoconf*
-rm -rf offload_stage/rootfs/usr/share/automake*
-rm -rf offload_stage/rootfs/usr/share/bison
-rm -rf offload_stage/rootfs/usr/share/dahdi
-rm -rf offload_stage/rootfs/usr/share/doc
-rm -rf offload_stage/rootfs/usr/share/dict
-rm -rf offload_stage/rootfs/usr/share/games
-rm -rf offload_stage/rootfs/usr/share/gettext
-rm -rf offload_stage/rootfs/usr/share/info
-rm -rf offload_stage/rootfs/usr/share/libtool
-rm -rf offload_stage/rootfs/usr/share/locale
-rm -rf offload_stage/rootfs/usr/share/man
-rm -rf offload_stage/rootfs/usr/share/misc
-rm -rf offload_stage/rootfs/usr/share/nls
-rm -rf offload_stage/rootfs/usr/share/tmac
-rm -rf offload_stage/rootfs/usr/src
-
+# usr/share
+mkdir offload_stage/rootfs/usr/share
+cp -Rp ../../usr/share/dahdi offload_stage/rootfs/usr/share/
+mkdir offload_stage/rootfs/usr/share/terminfo
+mkdir offload_stage/rootfs/usr/share/terminfo/a
+cp -Rp ../../usr/share/terminfo/a/ansi offload_stage/rootfs/usr/share/terminfo/a/
+mkdir offload_stage/rootfs/usr/share/terminfo/l
+cp -Rp ../../usr/share/terminfo/l/linux offload_stage/rootfs/usr/share/terminfo/l/
+mkdir offload_stage/rootfs/usr/share/terminfo/s
+cp -Rp ../../usr/share/terminfo/s/screen offload_stage/rootfs/usr/share/terminfo/s/
+mkdir offload_stage/rootfs/usr/share/terminfo/v
+cp -Rp ../../usr/share/terminfo/v/vt100 offload_stage/rootfs/usr/share/terminfo/v/
+cp -Rp ../../usr/share/terminfo/v/vt200 offload_stage/rootfs/usr/share/terminfo/v/
+mkdir offload_stage/rootfs/usr/share/terminfo/x
+cp -Rp ../../usr/share/terminfo/x/xterm offload_stage/rootfs/usr/share/terminfo/x/
+cp -Rp ../../usr/share/terminfo/x/xterm-color offload_stage/rootfs/usr/share/terminfo/x/
+cp -Rp ../../usr/share/terminfo/x/xterm-xfree86 offload_stage/rootfs/usr/share/terminfo/x/
+cp -Rp ../../usr/share/udhcpc offload_stage/rootfs/usr/share/
+chmod 755 offload_stage/rootfs/usr/share/udhcpc/default.script
+# usr/www
+cp -Rp ../../usr/www offload_stage/rootfs/usr/
 chmod 644 offload_stage/rootfs/usr/www/*
 chmod 755 offload_stage/rootfs/usr/www/*.php
 chmod 755 offload_stage/rootfs/usr/www/cgi-bin/*.cgi
-#chmod -f 755 offload_stage/rootfs/usr/bin/*
-#chmod 755 offload_stage/rootfs/usr/sbin/*
-chmod 755 offload_stage/rootfs/usr/share/udhcpc/default.script
-
 
 echo "Cleaning up asterisk sounds ..."
 if [[ -d "offload_stage/asterisk/sounds/es" ]] ; then
