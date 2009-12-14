@@ -79,6 +79,7 @@ rm -rf offload_stage/rootfs/usr/lib/gettext/
 rm -rf offload_stage/rootfs/usr/lib/grub/
 rm -rf offload_stage/rootfs/usr/lib/perl5/
 rm -rf offload_stage/rootfs/usr/lib/pkgconfig/
+rm -rf offload_stage/rootfs/usr/lib/preloadable_libiconv.so
 # usr/sbin
 cp -Rp ../../usr/sbin offload_stage/rootfs/usr/
 rm -rf offload_stage/rootfs/usr/sbin/dahdi_genconf
@@ -126,9 +127,11 @@ mv "$FILE" "$NEW"
 done
 
 echo "Cleaning away stray files ..."
-find ./ -type f -name "._*" -print -delete
-find ./ -type f -name "*.a" -print -delete
-find ./ -type f -name "*.po" -print -delete
+find ./ -name "._*" -print -delete
+find ./ -name "*.a" -print -delete
+find ./ -name "*.c" -print -delete
+find ./ -name "*.o" -print -delete
+find ./ -name "*.po" -print -delete
 rm -vrf `find ./ -name ".svn"`
 
 echo "Root partition size calculation ..."
