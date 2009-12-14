@@ -190,10 +190,13 @@ if (file_exists($g['analog_dirty_path'])) {
 		if (!isset($config['system']['webgui']['hideiax'])) {
 			?><a href="providers_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
+		/* bri_cpe_* signaling not yet ported...disabling
 		if (!isset($config['system']['webgui']['hideisdn'])) {
 			?><a href="providers_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
-		if (!isset($config['system']['webgui']['hideanalog'])) {
+		*/
+		if (!isset($config['system']['webgui']['hideanalog']) &&
+			count(dahdi_get_ports("analog", "fxo"))) {
 			?><a href="providers_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png"><?
 		}
 		?></td>
