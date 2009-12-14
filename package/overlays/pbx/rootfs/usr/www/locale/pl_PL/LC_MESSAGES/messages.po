@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-08 12:54+0100\n"
+"POT-Creation-Date: 2009-12-12 15:52+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1603,6 +1603,9 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
+msgid "descr"
+msgstr "opis"
+
 msgid "edit application mapping"
 msgstr "edytuj mapowanie aplikacji"
 
@@ -1873,6 +1876,10 @@ msgstr "Zainstalowane Pakiety"
 
 msgid "system storage partition"
 msgstr "partycja magazynu danych"
+
+#, fuzzy
+msgid "state"
+msgstr "start"
 
 msgid "Edit Disk"
 msgstr "Edytuj dysk"
@@ -2934,23 +2941,16 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX zrestaruje się po przywróceniu konfiguracji."
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "System został przywrócony do ustawień fabrycznych i jest restartowany. Może "
 "to zająć chwilę."
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Jeśli naciśniesz &quot;Tak&quot;, PBX przywróci wartości domyślne i "
-"niezwłocznie zrestartuje się. Cała konfiguracja systemu zostanie nadpisana. "
-"Adres IP interfejsu LAN zostanie ustawoiny na 192.168.1.2 a hasło na '%s'."
+"po kliknięciu &quot;Zapisz&quot;, wszystkie aktualne połączenia zostaną "
+"przerwane."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Czy na pewno chcesz kontynuować?"
@@ -3197,6 +3197,17 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Jeśli naciśniesz &quot;Tak&quot;, PBX przywróci wartości domyślne i "
+#~ "niezwłocznie zrestartuje się. Cała konfiguracja systemu zostanie "
+#~ "nadpisana. Adres IP interfejsu LAN zostanie ustawoiny na 192.168.1.2 a "
+#~ "hasło na '%s'."
 
 #~ msgid "Debug"
 #~ msgstr "Debug"
@@ -3635,13 +3646,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ msgid "%s days, "
 #~ msgstr "%s dni, "
 
-#~ msgid "descr"
-#~ msgstr "opis"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "start"
-
 #, fuzzy
 #~ msgid "status"
 #~ msgstr "Status"
@@ -3653,12 +3657,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #, fuzzy
 #~ msgid "and is now rebooting. This may take a minute."
 #~ msgstr "System jest restartowany. To może potrwać chwilę."
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "po kliknięciu &quot;Zapisz&quot;, wszystkie aktualne połączenia zostaną "
-#~ "przerwane."
 
 #, fuzzy
 #~ msgid ""

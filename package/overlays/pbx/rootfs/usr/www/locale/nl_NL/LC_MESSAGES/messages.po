@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-08 12:54+0100\n"
+"POT-Creation-Date: 2009-12-12 15:52+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1621,6 +1621,9 @@ msgstr ""
 "gedefineerde post worden bereikt of gebruikt als een bestemming voor "
 "inkomende gesprekken van Providers."
 
+msgid "descr"
+msgstr "omschr"
+
 msgid "edit application mapping"
 msgstr "bewerk programma mapping"
 
@@ -1912,6 +1915,10 @@ msgstr "Gëinstalleerde Paketten"
 
 msgid "system storage partition"
 msgstr "Ssyteem opslag partitie"
+
+#, fuzzy
+msgid "state"
+msgstr "start"
 
 msgid "Edit Disk"
 msgstr "Bewerk Disk"
@@ -2972,18 +2979,14 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
+"Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken verloren "
+"gaan."
 
 msgid "Are you sure you want to proceed?"
 msgstr ""
@@ -3533,13 +3536,6 @@ msgstr ""
 #~ msgid "%s days, "
 #~ msgstr "%s dagen, "
 
-#~ msgid "descr"
-#~ msgstr "omschr"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "start"
-
 #, fuzzy
 #~ msgid "status"
 #~ msgstr "Status"
@@ -3547,12 +3543,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "ssid"
 #~ msgstr "Rusland"
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken "
-#~ "verloren gaan."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

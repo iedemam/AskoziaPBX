@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-08 12:54+0100\n"
+"POT-Creation-Date: 2009-12-12 15:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1510,6 +1510,9 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
+msgid "descr"
+msgstr ""
+
 msgid "edit application mapping"
 msgstr ""
 
@@ -1770,6 +1773,9 @@ msgid "Installed Packages"
 msgstr ""
 
 msgid "system storage partition"
+msgstr ""
+
+msgid "state"
 msgstr ""
 
 msgid "Edit Disk"
@@ -2729,17 +2735,11 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 
 #, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

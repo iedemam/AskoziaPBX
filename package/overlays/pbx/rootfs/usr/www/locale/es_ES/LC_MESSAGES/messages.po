@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-08 12:54+0100\n"
+"POT-Creation-Date: 2009-12-12 15:52+0000\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1597,6 +1597,9 @@ msgstr ""
 "pueden ser marcadas a través de sus extensiones definidas, o usadas como "
 "destino para las llamadas entrantes de los proveedores."
 
+msgid "descr"
+msgstr "descr"
+
 msgid "edit application mapping"
 msgstr "editar el mapeo de aplicaciones"
 
@@ -1866,6 +1869,9 @@ msgstr "Paquetes instalados"
 
 msgid "system storage partition"
 msgstr "partición del sistema de almacenamiento"
+
+msgid "state"
+msgstr "estado"
 
 msgid "Edit Disk"
 msgstr "Editar Disco"
@@ -2909,18 +2915,13 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "La PBX se reiniciará tras restaurar la configuración-"
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr "El sistema está reiniciando. Esta operación puede tardar un minuto."
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
+"cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán colgadas."
 
 msgid "Are you sure you want to proceed?"
 msgstr "¿Está seguro de que quiere realizar esta operación?"
@@ -3523,12 +3524,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 #~ msgid "%s days, "
 #~ msgstr "%s días, "
 
-#~ msgid "descr"
-#~ msgstr "descr"
-
-#~ msgid "state"
-#~ msgstr "estado"
-
 #~ msgid "status"
 #~ msgstr "status"
 
@@ -3538,12 +3533,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 #, fuzzy
 #~ msgid "and is now rebooting. This may take a minute."
 #~ msgstr "El sistema está reiniciando. Esta operación puede tardar un minuto."
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán "
-#~ "colgadas."
 
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "

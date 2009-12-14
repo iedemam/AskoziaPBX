@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-08 12:54+0100\n"
+"POT-Creation-Date: 2009-12-12 15:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1631,6 +1631,9 @@ msgstr ""
 "在瞭解一些Asterisk撥號計劃如何運作的情況下，一些基礎的應用可以被加入到"
 "AskoziaPBX中。這些應用程序既被預定的分機撥通，也可以用作提供商來電的目的地。"
 
+msgid "descr"
+msgstr "描述"
+
 msgid "edit application mapping"
 msgstr "編輯應用映射"
 
@@ -1900,6 +1903,10 @@ msgstr "已安裝的包"
 
 msgid "system storage partition"
 msgstr "系統存儲分區"
+
+#, fuzzy
+msgid "state"
+msgstr "開始"
 
 msgid "Edit Disk"
 msgstr "編輯磁盤"
@@ -2934,20 +2941,12 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX將在恢復設置後重啟。"
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr "系統被設置到了出廠預設狀態並正在重啟。這可能需要一分鐘。"
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
-msgstr ""
-"如果您點擊了 &quot;是&quot;，那麽PBX會被重置到出廠狀態並立即重啟整個系統的設"
-"置將會被覆蓋。內網IP地址將會被重置為 192.168.1.2並且密碼也會改為預設的'%s'。"
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
+msgstr "按下 &quot;保存&quot; 後，所有正在進行的通話將會掉線。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "您真的想要進行？"
@@ -3184,6 +3183,16 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "如果您點擊了 &quot;是&quot;，那麽PBX會被重置到出廠狀態並立即重啟整個系統的"
+#~ "設置將會被覆蓋。內網IP地址將會被重置為 192.168.1.2並且密碼也會改為預設的'%"
+#~ "s'。"
 
 #~ msgid "Debug"
 #~ msgstr "除錯"
@@ -3652,13 +3661,6 @@ msgstr "ERR 收到無效的設定。\n"
 #~ msgid "%s days, "
 #~ msgstr "%s 天"
 
-#~ msgid "descr"
-#~ msgstr "描述"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "開始"
-
 #, fuzzy
 #~ msgid "status"
 #~ msgstr "狀態"
@@ -3670,10 +3672,6 @@ msgstr "ERR 收到無效的設定。\n"
 #, fuzzy
 #~ msgid "and is now rebooting. This may take a minute."
 #~ msgstr "系統正在重啟。這可能會需要一分鐘。"
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr "按下 &quot;保存&quot; 後，所有正在進行的通話將會掉線。"
 
 #, fuzzy
 #~ msgid ""

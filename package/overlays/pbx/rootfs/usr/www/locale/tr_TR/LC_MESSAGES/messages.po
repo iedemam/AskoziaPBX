@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-08 12:54+0100\n"
+"POT-Creation-Date: 2009-12-12 15:52+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1563,6 +1563,9 @@ msgstr ""
 "ilişkilendirilen dahili hatlarla erişilir veya hedef olarak operatörlerden "
 "gelen aramlar kullanılır."
 
+msgid "descr"
+msgstr ""
+
 msgid "edit application mapping"
 msgstr ""
 
@@ -1827,6 +1830,10 @@ msgstr "Yüklenilen Paketler"
 
 msgid "system storage partition"
 msgstr "sistem kayıt bölümü"
+
+#, fuzzy
+msgid "state"
+msgstr "başlangiç"
 
 msgid "Edit Disk"
 msgstr "Sürücüyü Düzenle"
@@ -2830,17 +2837,11 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr "Sistem yeniden başlatılıyor. Bu işlem bir kaç dakika zaman alabilir."
 
 #, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
 
 msgid "Are you sure you want to proceed?"
@@ -3228,9 +3229,6 @@ msgstr ""
 
 #~ msgid "Call Records"
 #~ msgstr "Arama Kayıtları"
-
-#~ msgid "start"
-#~ msgstr "başlangiç"
 
 #~ msgid "src"
 #~ msgstr "kaynak"
