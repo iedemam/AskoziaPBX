@@ -33,153 +33,77 @@
 
 $d_isfwfile = 1;
 
-openlog("GUIDEBUG", LOG_NDELAY, LOG_LOCAL0);
-syslog(LOG_INFO, "Syslog Connection Opened and Working");
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 $pghelp = gettext("AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation.");
 
-/* checks with downloads.askozia.com to see if a newer firmware version is available;
-   returns any HTML message it gets from the server */
-function check_firmware_version() {
-	global $g;
-	$post = "&check=pbxfirmware&platform=" . rawurlencode($g['platform']) . 
-		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
-		
-	$rfd = @fsockopen("downloads.askozia.com", 80, $errno, $errstr, 3);
-	if ($rfd) {
-		$hdr = "POST /index.php HTTP/1.0\r\n";
-		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$hdr .= "User-Agent: AskoziaPBX-webGUI/1.0\r\n";
-		$hdr .= "Host: downloads.askozia.com\r\n";
-		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
-		
-		fwrite($rfd, $hdr);
-		fwrite($rfd, $post);
-		
-		$inhdr = true;
-		$resp = "";
-		while (!feof($rfd)) {
-			$line = fgets($rfd);
-			if ($inhdr) {
-				if (trim($line) == "")
-					$inhdr = false;
-			} else {
-				$resp .= $line;
-			}
-		}
-		
-		fclose($rfd);
-		
-		return $resp;
-	}
-	
-	return null;
-}
-
-if ($_POST && !file_exists($d_fwlock_path)) {
+if ($_POST) {
 
 	unset($input_errors);
 	unset($sig_warning);
 	
-	if ($_POST['Enable']) {
-		$mode = "enable";
-	} else if ($_POST['Disable']) {
-		syslog(LOG_INFO, "Firmware Upgrading Disabled");
-		$mode = "disable";
-	} else if ($_POST['Upgrade'] || $_POST['sig_override']) {
-		$mode = "upgrade";
+	if ($_POST['Upgrade'] || $_POST['sig_override']) {
+		$upgrading = true;
 	} else if ($_POST['sig_no']) {
 		unlink("/ultmp/firmware.img.gz");
 	}
-		
-	if ($mode) {
-		if ($mode == "enable") {
-			syslog(LOG_INFO, "Firmware Enable - pre-exec");
-			exec_rc_script("/etc/rc.firmware enable");
-			syslog(LOG_INFO, "Firmware Enable - post-exec");
-			touch($d_fwupenabled_path);
-		} else if ($mode == "disable") {
-			syslog(LOG_INFO, "Firmware Disable - pre-exec");
-			exec_rc_script("/etc/rc.firmware disable");
-			syslog(LOG_INFO, "Firmware Disable - post-exec");
-			if (file_exists($d_fwupenabled_path)) {
-				unlink($d_fwupenabled_path);
-			}
-		} else if ($mode == "upgrade") {
-			/* XXX : system reboots if no file was uploaded...some checks are failing here */
-			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
-				/* verify firmware image(s) */
-				syslog(LOG_INFO, "Firmware Upgrade - OK - is_uploaded_file()");
-				if (!stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && !$_POST['sig_override']) {
-					syslog(LOG_INFO, "Firmware Upgrade - FAIL - firmware is not for platform");
-					$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
-				} else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
-					/* probably out of memory for the MFS */
-					syslog(LOG_INFO, "Firmware Upgrade - FAIL - firmware file does not exists");
-					$input_errors[] = gettext("Image upload failed (out of memory?)");
-					exec_rc_script("/etc/rc.firmware disable");
-					if (file_exists($d_fwupenabled_path)) {
-						unlink($d_fwupenabled_path);
-					}
-				} else {
-					/* move the image so PHP won't delete it */
-					syslog(LOG_INFO, "Firmware Upgrade - OK - moving file");
-					rename($_FILES['ulfile']['tmp_name'], "/ultmp/firmware.img.gz");
 
-					/* check digital signature */
-					$sigchk = verify_digital_signature("/ultmp/firmware.img.gz");
-					syslog(LOG_INFO, "Firmware Upgrade - INFO - verify_digital_signature() returned $sigchk");
+	// we're upgrading the firmware, start sanity checking
+	if ($upgrading) {
 
-					if ($sigchk == 1) {
-						$sig_warning = gettext("The digital signature on this image is invalid.");
-						syslog(LOG_INFO, "Firmware Upgrade - FAIL - signature on this image is invalid");
-					} else if ($sigchk == 2) {
-						$sig_warning = gettext("This image is not digitally signed.");
-						syslog(LOG_INFO, "Firmware Upgrade - FAIL - image is not digitally signed");
-					} else if (($sigchk == 3) || ($sigchk == 4)) {
-						$sig_warning = gettext("There has been an error verifying the signature on this image.");
-						syslog(LOG_INFO, "Firmware Upgrade - FAIL - error verifying the signature on this image");
-					}
+		// verify that this file was uploaded through HTTP POST and not via another means
+		if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 
-					if (!verify_gzip_file("/ultmp/firmware.img.gz")) {
-						$input_errors[] = gettext("The image file is corrupt.");
-						syslog(LOG_INFO, "Firmware Upgrade - FAIL - image file is corrupt");
-						unlink("/ultmp/firmware.img.gz");
-					}
+			// check to see if the uploaded firmware is compatible with the platform based on its name
+			if (!stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && 
+				!$_POST['sig_override']) {
+				$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
+
+			// does the file still exist? this usually means we've exhausted the memory
+			} else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
+				$input_errors[] = gettext("Image upload failed (out of memory?)");
+				mwexec("rm -rf /ultmp/*");
+
+			// everything seems OK...continue
+			} else {
+				// move the image so PHP won't delete it
+				rename($_FILES['ulfile']['tmp_name'], "/ultmp/firmware.img.gz");
+
+				// check digital signature
+				$sigchk = verify_digital_signature("/ultmp/firmware.img.gz");
+				if ($sigchk == 1) {
+					$sig_warning = gettext("The digital signature on this image is invalid.");
+				} else if ($sigchk == 2) {
+					$sig_warning = gettext("This image is not digitally signed.");
+				} else if (($sigchk == 3) || ($sigchk == 4)) {
+					$sig_warning = gettext("There has been an error verifying the signature on this image.");
+				}
+
+				// check the integrity of gzip file
+				if (!verify_gzip_file("/ultmp/firmware.img.gz")) {
+					$input_errors[] = gettext("The image file is corrupt.");
+					unlink("/ultmp/firmware.img.gz");
 				}
 			}
+		}
 
-			if (!$input_errors && !file_exists($d_fwlock_path) && (!$sig_warning || $_POST['sig_override'])) {			
-				/* stop any disk activity Asterisk may be causing */
-				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing pbx_stop()");
-				pbx_stop();
-				/* fire up the update script in the background */
-				touch($d_fwlock_path);
-				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing /etc/rc.firmware upgrade...");
-				exec_rc_script_async("/etc/rc.firmware upgrade /ultmp/firmware.img.gz");
-				syslog(LOG_INFO, "Firmware Upgrade - INFO - executing /etc/rc.firmware upgrade COMPLETE");
-
-				$keepmsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
-			}
+		if (!$input_errors && (!$sig_warning || $_POST['sig_override'])) {
+			// fire up the update script in the background
+			exec("busybox nohup /etc/rc.firmware upgrade /ultmp/firmware.img.gz >/dev/null 2>&1 &");
+			$keepmsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
 		}
 	}
-} else {
-	// LINUX TODO : currently disabled...needs to be handled with ajax
-	//if (!isset($config['system']['disablefirmwarecheck'])) {
-	//	$fwstatus = check_firmware_version();
-	//}
 }
 
 include("fbegin.inc");
-if ($fwstatus) echo display_firmware_update_info($fwstatus);
 
-if (file_exists($d_fwupunsupported_path)) {
+// firmware upgrades not supported
+if (file_exists($g['varrun_path'] . "/firmware.upgrade.unsupported")) {
 
 	?><p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p><?
 
+// signature warning needs confirmation
 } else if ($sig_warning && !$input_errors) {
 
 	?><form action="system_firmware.php" method="post"><?
@@ -191,66 +115,44 @@ if (file_exists($d_fwupunsupported_path)) {
 		<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" <?=gettext("No");?> ">
 	</form><?
 
-} else {
+// default firmware upgrade screen
+} else if (!$keepmsg) {
 
-	if (!file_exists($d_fwlock_path)) {
+	?><p><?=sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."),
+		chop(file_get_contents("{$g['etc_path']}/firmwarepattern")));?><br>
+	<?=gettext("Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
 
-		?><p><?
+	<form action="system_firmware.php" method="post" enctype="multipart/form-data">
+		<table width="100%" border="0" cellpadding="6" cellspacing="0">
+			<tr> 
+				<td width="22%" valign="top">&nbsp;</td>
+				<td width="78%"><?
 
-		if (!file_exists($d_ultmpmounted_path)) {
+				if (!file_exists($d_sysrebootreqd_path)) {
 
-		?><?=gettext("Click &quot;Enable firmware upload&quot; below.");?> <?
-
-		}
-
-		?><?=sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."), chop(file_get_contents("{$g['etc_path']}/firmwarepattern")));?><br>
-		<?=gettext("Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
-		<form action="system_firmware.php" method="post" enctype="multipart/form-data">
-			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr> 
-					<td width="22%" valign="top">&nbsp;</td>
-					<td width="78%"><?
-
-			if (!file_exists($d_sysrebootreqd_path)) {
-
-				if (!file_exists($d_fwupenabled_path) && !file_exists($d_ultmpmounted_path)) {
-
-					?><input name="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>"><?
-
-				} else {
-
-					if (!file_exists($d_ultmpmounted_path)) {
-
-					?><input name="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>"><br>
-					<br><?
-
-					}
-
-					?><strong><?=gettext("Firmware image file:");?></strong>&nbsp;<input name="ulfile" type="file" class="formfld"><br>
+					?><strong><?=gettext("Firmware image file:");?></strong>
+					<input name="ulfile" type="file" class="formfld"><br>
 					<br>
 					<input name="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>"><?
 
+				} else {
+
+					?><strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong><?
+
 				}
 
-			} else {
+				?></td>
+			</tr>
+			<tr>
+				<td width="22%" valign="top">&nbsp;</td>
+				<td width="78%">
+					<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span><br>
+					<?=gettext("DO NOT abort the firmware upgrade once it has started.");?></span>
+				</td>
+			</tr>
+		</table>
+	</form><?
 
-				?><strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong><?
-
-			}
-
-					?></td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top">&nbsp;</td>
-					<td width="78%">
-						<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span><br>
-						<?=gettext("DO NOT abort the firmware upgrade once it has started.");?></span>
-					</td>
-				</tr>
-			</table>
-		</form><?
-
-	}
 }
 
 include("fend.inc");

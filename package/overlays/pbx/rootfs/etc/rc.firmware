@@ -26,15 +26,18 @@ upgrade)
 	cp -p /conf/* /tmp/configbak
 
 	# kill everything which may still be holding on to the partitions
-	killall -q dropbear
-	killall -q ajax.cgi
-	killall -q httpd
-	killall -q astcanary
-	killall -q asterisk
+	busybox killall -KILL asterisk
+	busybox killall -KILL astcanary
+	#busybox killall -KILL crond
+	#busybox killall -KILL php
+	#busybox killall -KILL dropbear
+	#busybox killall -KILL ajax.cgi
+	#busybox killall -KILL httpd
+	sleep 3
 
 	# unmount /cf and /offload
 	/bin/umount -f /cf
-	/bin/umount -l /offload
+	/bin/umount -f /offload
 	sleep 3
 
 	# dd image onto card

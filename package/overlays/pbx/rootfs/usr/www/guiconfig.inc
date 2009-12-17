@@ -55,20 +55,8 @@ $d_analogconfdirty_path = $g['varrun_path'] . "/analogconf.dirty";
 $d_rtpconfdirty_path = $g['varrun_path'] . "/rtpconf.dirty";
 $d_packageconfdirty_path = $g['varrun_path'] . "/packageconf.dirty";
 $d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
-$d_fwupenabled_path = $g['varrun_path'] . "/firmware.upgrade.enabled";
-$d_fwupunsupported_path = $g['varrun_path'] . "/firmware.upgrade.unsupported";
-$d_fwlock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
 $d_passworddirty_path = $g['varrun_path'] . "/password.dirty";
-
-if (file_exists($d_fwlock_path)) {
-	if (!$d_isfwfile) {
-		header("Location: system_firmware.php");
-		exit;
-	} else {
-		return;
-	}
-}
 
 $applications = array(
 	"Echo" => gettext("Echos audio and video back to the caller as soon as it is received. Used to test connection delay."),
