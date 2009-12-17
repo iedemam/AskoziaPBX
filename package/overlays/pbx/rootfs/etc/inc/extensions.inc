@@ -330,7 +330,7 @@ EOD;
 		$conf .= "; isdn nt interface \"{$i['name']}\" incoming\n";
 		$conf .= "[{$i['uniqid']}-incoming]\n";
 		foreach ($phones as $p) {
-			$phone_lang = "en";
+			$phone_lang = "en-us";
 			if ($p['language']) {
 				$phone_lang = $p['language'];
 			}
@@ -350,7 +350,7 @@ EOD;
 		$conf .= "[{$i['uniqid']}-incoming]\n";
 		foreach ($providers as $p) {
 			// XXX : multiple providers on a single s0 is broken
-			$provider_lang = "en";
+			$provider_lang = "en-us";
 			if ($p['language']) {
 				$provider_lang = $p['language'];
 			}
