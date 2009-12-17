@@ -846,7 +846,7 @@ astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log
 
 [options]
-verbose = 50
+verbose = 3
 dumpcore = no
 internal_timing = yes
 highpriority = yes
