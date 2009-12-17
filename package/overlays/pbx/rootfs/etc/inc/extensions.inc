@@ -33,14 +33,8 @@ require_once("functions.inc");
 /**
  * Responsible for generating extensions.conf, the entire system's dialplan
  */
-function extensions_conf_generate() {
+function extensions_conf_generate($return=false) {
 	global $config, $g, $uniqid_map;
-	
-	$fd = fopen("/etc/asterisk/extensions.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open extensions.conf in extensions_conf_generate().\n");
-		return 1;
-	}
 
 	$internal_phones = pbx_get_phones();
 	$external_phones = external_get_phones(); // XXX : refactor needed here re: internal vs external function names
@@ -377,10 +371,7 @@ EOD;
 
 	$conf .= "\n";
 
-	fwrite($fd, $conf);
-	fclose($fd);
-	
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/extensions.conf", $conf);
 }
 
 /**

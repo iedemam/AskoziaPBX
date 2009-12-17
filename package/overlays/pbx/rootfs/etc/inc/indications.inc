@@ -36,15 +36,9 @@ require_once("functions.inc");
  * Generates indications.conf which contains regional tone information and sets this
  * installation's tonezone country
  */
-function indications_conf_generate() {
+function indications_conf_generate($return=false) {
 	global $config;
-	
-	$fd = fopen("/etc/asterisk/indications.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open indications.conf in indications_conf_generate().\n");
-		return 1;
-	}
-	
+
 	$conf = "[general]\n";
 	
 	if ($config['system']['tonezone']) {
@@ -730,10 +724,7 @@ stutter = !400*33/100,!0/100,!400*33/100,!0/100,!400*33/100,!0/100,!400*33/100,!
 
 EOD;
 
-	fwrite($fd, $conf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/indications.conf", $conf);
 
 }
 

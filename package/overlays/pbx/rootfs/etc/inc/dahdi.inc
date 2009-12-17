@@ -199,8 +199,12 @@ function dahdi_forget_port($uniqid) {
 	touch($g['dahdi_dirty_path']);
 }
 
-function dahdi_generate_system_conf($ports) {
+function dahdi_generate_system_conf($return=false, $ports=false) {
 	global $g, $config, $defaults;
+
+	if (!$ports) {
+		$ports = dahdi_get_ports();
+	}
 
 	$conf = "# Hardware Info\n";
 	foreach ($ports as $port) {
@@ -305,18 +309,15 @@ function dahdi_generate_system_conf($ports) {
 	}
 	$conf .= "\n";
 
-
-	$fd = fopen("/etc/dahdi/system.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open system.conf in dahdi_generate_system_conf().\n");
-		return 1;
-	}
-	fwrite($fd, $conf);
-	fclose($fd);
+	return ($return) ? $conf : util_file_write("/etc/dahdi/system.conf", $conf);
 }
 
-function dahdi_generate_chan_conf($ports) {
+function chan_dahdi_conf_generate($return=false, $ports=false) {
 	global $g, $config, $defaults;
+
+	if (!$ports) {
+		$ports = dahdi_get_ports();
+	}
 
 	$conf = "; Hardware Info\n";
 	foreach ($ports as $port) {
@@ -418,15 +419,7 @@ function dahdi_generate_chan_conf($ports) {
 
 	$conf .= "\n";
 
-	$fd = fopen("/etc/asterisk/chan_dahdi.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open chan_dahdi.conf in dahdi_generate_chan_conf().\n");
-		return 1;
-	}
-	fwrite($fd, $conf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/chan_dahdi.conf", $conf);
 }
 
 function dahdi_configure() {
@@ -434,8 +427,8 @@ function dahdi_configure() {
 
 	$ports = dahdi_get_ports();
 
-	dahdi_generate_system_conf($ports);
-	dahdi_generate_chan_conf($ports);
+	dahdi_generate_system_conf(false, $ports);
+	chan_dahdi_conf_generate(false, $ports);
 
 	mwexec("/usr/sbin/dahdi_cfg");
 

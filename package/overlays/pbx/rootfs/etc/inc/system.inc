@@ -462,47 +462,41 @@ function system_get_product_name() {
 	}
 }
 
-function system_cron_configure() {
-	global $g, $config;
+function system_cron_generate($return=false) {
 
-	killbyname("crond");
-
-	/* ntp */
-	$interval = $config['system']['time-update-interval'];
+	$interval = $GLOBALS['config']['system']['time-update-interval'];
 	if ($interval != "disable") {
 		switch ($interval) {
 			case "10-minutes":
-				$ntp .= "*/10 * * * *";
+				$conf .= "*/10 * * * *";
 				break;
 			case "30-minutes":
-				$ntp .= "*/30 * * * *";
+				$conf .= "*/30 * * * *";
 				break;
 			case "1-hour":
-				$ntp .= "0 * * * *";
+				$conf .= "0 * * * *";
 				break;
 			case "4-hours":
-				$ntp .= "0 */4 * * *";
+				$conf .= "0 */4 * * *";
 				break;
 			case "12-hours":
-				$ntp .= "0 */12 * * *";
+				$conf .= "0 */12 * * *";
 				break;
 			case "1-day":
-				$ntp .= "0 0 * * *";
+				$conf .= "0 0 * * *";
 				break;
 		}
 
-		$ntp .= " ntpclient -i 10 -L -s -h " . $config['system']['timeservers'] . "\n";
+		$conf .= " ntpclient -i 10 -L -s -h " . $GLOBALS['config']['system']['timeservers'] . "\n";
 	}
 
-	$fd = fopen("/var/spool/cron/crontabs/root", "w");
-	if (!$fd) {
-		printf("Error: cannot open /var/spool/cron/crontabs/root in system_cron_configure().\n");
-		return 1;
-	}
-	fwrite($fd, $ntp);
-	fwrite($fd, "\n");
-	fclose($fd);
+	return ($return) ? $conf : util_file_write("/var/spool/cron/crontabs/root", $conf);
+}
 
+function system_cron_configure() {
+
+	killbyname("crond");
+	system_cron_generate();
 	mwexec("crond -l 0");
 
 	return 0;

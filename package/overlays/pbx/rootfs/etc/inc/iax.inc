@@ -117,15 +117,9 @@ function iax_get_dialpatterns() {
 /**
  * Generates iax.conf
  */
-function iax_conf_generate() {
+function iax_conf_generate($return=false) {
 	global $config, $g;
-	
-	$fd = fopen("/etc/asterisk/iax.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open iax.conf in iax_conf_generate().\n");
-		return 1;
-	}
-	
+
 	$iaxconfig = $config['services']['iax'];
 	
 	$port = "4569";
@@ -328,10 +322,7 @@ EOD;
 		$conf .= "\n\n";
 	}
 
-	fwrite($fd, $conf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/iax.conf", $conf);
 }
 
 function iax_generate_default_phone() {

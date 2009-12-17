@@ -43,11 +43,11 @@ function pbx_configure() {
 
 	$res = 0;
 	if ($g['booting']) echo "   |- generating Asterisk process configuration...";
-	$res |= pbx_asterisk_conf_generate();
+	$res |= asterisk_conf_generate();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- generating modules configuration...";
-	$res |= pbx_modules_conf_generate();
+	$res |= modules_conf_generate();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- generating indications configuration...";
@@ -71,7 +71,7 @@ function pbx_configure() {
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- generating conferencing configuration...";
-	$res |= conferencing_conf_generate();
+	$res |= meetme_conf_generate();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- generating dialplan...";
@@ -772,50 +772,21 @@ function pbx_uniqid_to_technology($uniqid) {
 	return "ERROR:UNIQID_TO_TECHNOLOGY_FAILED($uniqid)";
 }
 
-function pbx_modules_conf_generate() {
+function modules_conf_generate($return=false) {
 
-	//$logging_pkg = packages_get_package("logging");
-
-	$fd = fopen("/etc/asterisk/modules.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open modules.conf in pbx_modules_conf_generate().\n");
-		return 1;
-	}
-
-	$modulesconf = <<<EOD
+	$conf = <<<EOD
 [modules]
 autoload=yes
 
 
 EOD;
 
-	//if (!isset($logging_pkg['active'])) {
-	//	$modulesconf .= "noload => cdr_csv.so\n";
-	//	$modulesconf .= "noload => cdr_sqlite.so\n";
-	//}
-
-	fwrite($fd, $modulesconf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/modules.conf", $conf);
 }
 
-function pbx_asterisk_conf_generate() {
+function asterisk_conf_generate($return=false) {
 
-	//$logging_pkg = packages_get_package("logging");
-
-	//$astlogdir = "/var/asterisk/log";
-	//if (isset($logging_pkg['active'])) {
-	//	$astlogdir = $logging_pkg['datapath'] . "/asterisk";
-	//}
-
-	$fd = fopen("/etc/asterisk/asterisk.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open asterisk.conf in pbx_asterisk_conf_generate().\n");
-		return 1;
-	}
-
-	$asteriskconf = <<<EOD
+	$conf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
 astmoddir => /offload/asterisk/modules
@@ -835,10 +806,7 @@ highpriority = yes
 
 EOD;
 
-	fwrite($fd, $asteriskconf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/asterisk.conf", $conf);
 }
 
 ?>

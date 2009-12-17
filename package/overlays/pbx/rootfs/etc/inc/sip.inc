@@ -155,14 +155,8 @@ function sip_get_hosts_with_multiple_accounts() {
 /**
  * Generates sip.conf
  */
-function sip_conf_generate() {
+function sip_conf_generate($return=false) {
 	global $g, $config, $defaults;
-
-	$fd = fopen("/etc/asterisk/sip.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open sip.conf in sip_conf_generate().\n");
-		return 1;
-	}
 
 	$sipconfig = $config['services']['sip'];
 
@@ -385,10 +379,7 @@ EOD;
 		$conf .= "\n\n";
 	}
 
-	fwrite($fd, $conf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/sip.conf", $conf);
 }
 
 function sip_generate_default_phone() {

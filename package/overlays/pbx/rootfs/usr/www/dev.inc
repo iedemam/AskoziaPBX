@@ -44,6 +44,11 @@
 		display: none;
 	}
 
+	#devfilepanel {
+		width: 100%;
+		display: none;
+	}
+
 	.devoutput {
 		border: 2px solid #435370;
 		background: #F0F0F0;
@@ -52,6 +57,11 @@
 		white-space: pre;
 		line-height: 10pt;
 		font-size: 10pt;
+	}
+
+	.devfixedwidth {
+		font-family: Courier New, Courier, monospaced;
+		font-size: 10px;
 	}
 
 </style>
@@ -77,11 +87,14 @@
 			// ami tab selected
 			} else if (tmp.indexOf('#devtabs-2') != -1) {
 				dev_translation_disable();
-			// translation tab selected
+			// file tab selected
 			} else if (tmp.indexOf('#devtabs-3') != -1) {
+				dev_translation_disable();
+			// translation tab selected
+			} else if (tmp.indexOf('#devtabs-4') != -1) {
 				dev_translation_enable();
 			// hardware tab selected
-			} else if (tmp.indexOf('#devtabs-4') != -1) {
+			} else if (tmp.indexOf('#devtabs-5') != -1) {
 				dev_translation_disable();
 			}
 		});
@@ -189,6 +202,43 @@
 		});
 	}
 
+
+	//--- FILE PANEL ---//
+	function dev_file_get() {
+		jQuery.get("dev.php?genfile=" + jQuery("#devfilelist").val(),function(data){                                                      
+			jQuery("#devfilecontents").val(data);
+		});
+		jQuery.getJSON("dev.php?getfile=" + jQuery("#devfilelist").val(),function(data){                                                      
+			jQuery("#devfilemanualcontents").val(data['contents']);
+			if (data['mode'] == 'append') {
+				jQuery("input[name=devfilemode]")[0].checked = true;
+			} else {
+				jQuery("input[name=devfilemode]")[1].checked = true;
+			}
+			dev_file_edit_start();
+		});
+	}
+	function dev_file_put() {
+		jQuery.post("dev.php",{
+			putfile: "yes",
+			fullpath: jQuery("#devfilelist").val(),
+			contents: jQuery("#devfilemanualcontents").val(),
+			mode: jQuery("input[name=devfilemode]:checked").val()
+
+		},function(data){
+			dev_file_edit_stop();
+		});
+	}
+	function dev_file_edit_start() {
+		jQuery("#devfilelist").attr("disabled","disabled");
+		jQuery("#devfilepanel").slideDown("slow");
+	}
+	function dev_file_edit_stop() {
+		jQuery("#devfilepanel").slideUp("slow");
+		jQuery("#devfilelist").removeAttr("disabled");
+	}
+
+
 //-->
 </script>
 <div id="devpanel">
@@ -196,9 +246,10 @@
 	<div id="devtabs">
 		<ul>
 			<li><a href="#devtabs-1">Console</a></li>
-			<li><a href="#devtabs-2">Asterisk Manager Interface</a></li>
-			<li><a href="#devtabs-3">Fix a Translation</a></li>
-			<li><a href="#devtabs-4">Report New Hardware</a></li>
+			<li><a href="#devtabs-2">AMI</a></li>
+			<li><a href="#devtabs-3">Files</a></li>
+			<li><a href="#devtabs-4">Report Hardware</a></li>
+			<li><a href="#devtabs-5">Fix Translations</a></li>
 		</ul>
 		<div id="devtabs-1">
 			<input id="devconsolecmd" type="text" size="60" value="">
@@ -209,6 +260,41 @@
 			<br><pre id="devamioutput" class="devoutput">...enter command above</pre>
 		</div>
 		<div id="devtabs-3">
+			<select name="devfilelist" id="devfilelist">
+				<option value="/etc/asterisk/asterisk.conf">/etc/asterisk/asterisk.conf</option>
+				<option value="/etc/asterisk/chan_dahdi.conf">/etc/asterisk/chan_dahdi.conf</option>
+				<option value="/etc/asterisk/extensions.conf">/etc/asterisk/extensions.conf</option>
+				<option value="/etc/asterisk/features.conf">/etc/asterisk/features.conf</option>
+				<option value="/etc/asterisk/iax.conf">/etc/asterisk/iax.conf</option>
+				<option value="/etc/asterisk/indications.conf">/etc/asterisk/indications.conf</option>
+				<option value="/etc/asterisk/manager.conf">/etc/asterisk/manager.conf</option>
+				<option value="/etc/asterisk/meetme.conf">/etc/asterisk/meetme.conf</option>
+				<option value="/etc/asterisk/modules.conf">/etc/asterisk/modules.conf</option>
+				<option value="/etc/asterisk/rtp.conf">/etc/asterisk/rtp.conf</option>
+				<option value="/etc/asterisk/sip.conf">/etc/asterisk/sip.conf</option>
+				<option value="/etc/asterisk/voicemail.conf">/etc/asterisk/voicemail.conf</option>
+				<option value="/etc/dahdi/system.conf">/etc/dahdi/system.conf</option>
+				<option value="/var/spool/cron/crontabs/root">/var/spool/cron/crontabs/root</option>
+			</select>
+			&nbsp;<a href="javascript:{}" onclick="dev_file_get();" class="ui-state-default ui-corner-all">edit</a>
+			<br>
+			<br>
+			<div id="devfilepanel">
+				<strong>System Auto-Generated Content</strong><br>
+				<textarea id="devfilecontents" cols="80" rows="15" class="devfixedwidth" disabled="true"></textarea>
+				<br>
+				<br>
+				<br>
+				<strong>Append</strong><input name="devfilemode" type="radio" value="append">
+				or <strong>Override</strong><input name="devfilemode" type="radio" value="override">
+				with this text
+				<br><textarea id="devfilemanualcontents" cols="80" rows="15" class="devfixedwidth"></textarea>
+				<br>
+				<a href="javascript:{}" onclick='dev_file_edit_stop();' class="ui-state-default ui-corner-all">cancel</a>
+				<a href="javascript:{}" onclick="dev_file_put();" class="ui-state-default ui-corner-all">save file contents</a>
+			</div>
+		</div>
+		<div id="devtabs-4">
 			<ul>
 				<li>Compatible strings react when moused-over.</li>
 				<li>Click on the string to open a submission form.</li>
@@ -218,10 +304,12 @@
 			<div id="devtranslationpanel">
 				<textarea id="devlocaleoldstring" cols="30" rows="3" disabled="true"></textarea>
 				<textarea id="devlocalenewstring" cols="30" rows="3"></textarea>
-				<br><a href="javascript:{}" onclick='jQuery("#devtranslationpanel").slideUp("slow");'>cancel</a>&nbsp;|&nbsp;<a href="javascript:{}" onclick="dev_translation_submit();">submit locale improvement</a>
+				<br>
+				<a href="javascript:{}" onclick='jQuery("#devtranslationpanel").slideUp("slow");' class="ui-state-default ui-corner-all">cancel</a>
+				<a href="javascript:{}" onclick="dev_translation_submit();" class="ui-state-default ui-corner-all">submit locale improvement</a>
 			</div>
 		</div>
-		<div id="devtabs-4">
+		<div id="devtabs-5">
 			<ul>
 				<li>Describe what is not being recognized on your system.</li>
 				<li>Technical details about your hardware will automatically be submitted.</li>
@@ -229,8 +317,8 @@
 			</ul>
 			<br>
 			<textarea id="devhardwaredescription" cols="60" rows="6"></textarea>
-			<br><a href="javascript:{}" onclick="dev_hardware_submit();">submit hardware report</a>
-			</div>
+			<br>
+			<a href="javascript:{}" onclick="dev_hardware_submit();" class="ui-state-default ui-corner-all">submit hardware report</a>
 		</div>
 	</div>
 </div>

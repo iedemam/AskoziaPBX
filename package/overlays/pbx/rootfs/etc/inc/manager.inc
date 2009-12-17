@@ -34,15 +34,9 @@ require_once("functions.inc");
 /**
  * Generates manager.conf which contains extra AMI users defined in the GUI
  */
-function manager_conf_generate() {
+function manager_conf_generate($return=false) {
 	global $config;
-	
-	$fd = fopen("/etc/asterisk/manager.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open manager.conf in manager_conf_generate().\n");
-		return 1;
-	}
-	
+
 	$managerconfig = $config['services']['manager'];
 
 	$conf = <<<EOD
@@ -81,11 +75,8 @@ EOD;
 		}
 	}
 	$conf .= "\n";
-	
-	fwrite($fd, $conf);
-	fclose($fd);
 
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/manager.conf", $conf);
 }
 
 /**

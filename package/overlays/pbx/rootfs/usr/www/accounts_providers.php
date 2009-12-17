@@ -150,7 +150,7 @@ if (file_exists($g['analog_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= dahdi_generate_chan_conf();
+		$retval |= chan_dahdi_conf_generate();
 		$retval |= extensions_conf_generate();
 		config_unlock();
 

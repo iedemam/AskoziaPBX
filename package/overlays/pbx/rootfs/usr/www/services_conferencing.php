@@ -54,7 +54,7 @@ if ($_GET['action'] == "delete") {
 if (file_exists($d_conferencingconfdirty_path)) {
 	$retval = 0;
 	config_lock();
-	$retval |= conferencing_conf_generate();
+	$retval |= meetme_conf_generate();
 	$retval |= extensions_conf_generate();
 	config_unlock();
 	

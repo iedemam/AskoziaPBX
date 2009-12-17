@@ -142,20 +142,13 @@ function conferencing_get_members($room_number) {
 /**
  * Generates meetme.conf which defines conference rooms and their access information
  */
-function conferencing_conf_generate() {
-	global $config;
-	
-	$fd = fopen("/etc/asterisk/meetme.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open meetme.conf in conferencing_conf_generate().\n");
-		return 1;
-	}	
+function meetme_conf_generate($return=false) {
 
 	$conf = "[general]\n\n".
 			"[rooms]\n";
 
 	$rooms = conferencing_get_rooms();
-	
+
 	// Usage is conf => confno[,pin][,adminpin]
 	foreach ($rooms as $room) {
 		$conf .= "conf => {$room['number']}";
@@ -164,13 +157,10 @@ function conferencing_conf_generate() {
 		}
 		$conf .= "\n";
 	}
-	
+
 	$conf .= "\n";
-	
-	fwrite($fd, $conf);
-	fclose($fd);
-	
-	return 0;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/meetme.conf", $conf);
 }
 
 ?>

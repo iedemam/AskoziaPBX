@@ -44,6 +44,46 @@ if ($_POST['report'] == "translation") {
 		$_POST['devmodever'],
 		$_POST['description']
 	);
+
+
+} else if ($_GET['genfile']) {
+	require_once('functions.inc');
+
+	$gen = file_path_to_generate_function($_GET['genfile']);
+	echo ($gen) ? $gen('return') : "unable to load system generated contents... (" . $gen . ")";
+
+
+} else if ($_GET['getfile']) {
+	require_once('JSON.php');
+	$json = new Services_JSON();
+
+	require_once('config.inc');
+	echo $json->encode(util_file_get($_GET['getfile']));
+
+} else if ($_POST['putfile']) {
+	require_once('functions.inc');
+	// store in config
+	util_file_put($_POST['fullpath'], $_POST['contents'], $_POST['mode']);
+	// write out updated file
+	$gen = file_path_to_generate_function($_POST['fullpath']);
+	if ($gen) {
+		$gen();
+	}
+}
+
+
+function file_path_to_generate_function($path) {
+
+	if (dirname($path) == '/etc/asterisk') {
+		$genfunc = substr(basename($path), 0, -5) . '_conf_generate';
+		return function_exists($genfunc) ? $genfunc : false;
+	} else if ($path == '/etc/dahdi/system.conf') {
+		return 'dahdi_generate_system_conf';
+	} else if ($path == '/var/spool/cron/crontabs/root') {
+		return 'system_cron_generate';
+	}
+
+	return false;
 }
 
 

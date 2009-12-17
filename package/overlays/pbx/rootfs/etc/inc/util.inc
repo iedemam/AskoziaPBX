@@ -186,4 +186,77 @@ function util_pwgen() {
 	return exec("openssl rand -base64 6");
 }
 
+function util_file_get($fullpath) {
+	// search config for a stored file
+	$files = $GLOBALS['config']['manual-file'];
+	$n = count($files);
+	for ($i = 0; $i < $n; $i++) {
+		if ($files[$i]['full-path'] == $fullpath) {
+			$file = $files[$i];
+			$file['contents'] = base64_decode($file['encoded-contents']);
+			return $file;
+		}
+	}
+
+	// nothing found, return a blank file
+	$file['full-path'] = $fullpath;
+	$file['contents'] = '';
+	$file['mode'] = 'append';
+
+	return $file;
+}
+
+function util_file_put($fullpath, $contents, $mode) {
+	// search config for a stored file and remove it
+	$n = count($GLOBALS['config']['manual-file']);
+	for ($i = 0; $i < $n; $i++) {
+		if ($GLOBALS['config']['manual-file'][$i]['full-path'] == $fullpath) {
+			unset($GLOBALS['config']['manual-file'][$i]);
+			break;
+		}
+	}
+
+	// construct the new file if there is content
+	if (strlen($contents)) {
+		$file['full-path'] = $fullpath;
+		$file['encoded-contents'] = base64_encode($contents);
+		$file['mode'] = $mode;
+		// add it to the config
+		$GLOBALS['config']['manual-file'][] = $file;
+	}
+
+	write_config();
+}
+
+function util_file_write($fullpath, $contents) {
+	// open the file for writing
+	$fd = fopen($fullpath, "w");
+	if (!$fd) {
+		printf("Error: cannot open " . $fullpath . "for writing!\n");
+		return 1;
+	}
+
+	// should this file be appended or overridden with any manual input?
+	$files = $GLOBALS['config']['manual-file'];
+	$n = count($files);
+	for ($i = 0; $i < $n; $i++) {
+		if ($files[$i]['full-path'] == $fullpath) {
+		 	if ($files[$i]['mode'] == 'append') {
+				$append = base64_decode($files[$i]['encoded-contents']);
+			} else if ($files[$i]['mode'] == 'override') {
+				$contents = base64_decode($files[$i]['encoded-contents']);
+			}
+		}
+	}
+
+	// write out contents and append
+	fwrite($fd, $contents . "\n");
+	if ($append) {
+		fwrite($fd, "\n\n" . $append . "\n");
+	}
+	fclose($fd);
+
+	return 0;
+}
+
 ?>

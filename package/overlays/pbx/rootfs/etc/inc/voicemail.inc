@@ -292,7 +292,7 @@ $vm_emailbody = array(
  * Generates voicemail.conf
  * XXX : security issues here with 0000 password on mail-only accounts?
  */
-function voicemail_conf_generate() {
+function voicemail_conf_generate($return=false) {
 	global $vm_emailsubject, $vm_emailbody;
 
 	$voicemail_config = voicemail_get_configuration();
@@ -377,15 +377,7 @@ EOD;
 		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['vmtoemailaddress']},,delete=yes\n";
 	}
 
-	$fd = fopen("/etc/asterisk/voicemail.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open voicemail.conf in voicemail_conf_generate().\n");
-		return 1;
-	}
-	fwrite($fd, $conf);
-	fclose($fd);
-
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/voicemail.conf", $conf);
 }
 
 ?>

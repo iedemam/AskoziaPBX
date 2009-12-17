@@ -44,27 +44,17 @@ if (!isset($defaults['rtp'])) {
 /**
  * Generates rtp.conf which contains the RTP port range Asterisk uses
  */
-function rtp_conf_generate() {
-	global $config;
-	
-	$fd = fopen("/etc/asterisk/rtp.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open rtp.conf in rtp_conf_generate().\n");
-		return 1;
-	}
+function rtp_conf_generate($return=false) {
 
 	$low_port = rtp_low_port();
 	$high_port = rtp_high_port();
-	
+
 	$conf = "[general]\n";
 	$conf .= "rtpstart=$low_port\n";
 	$conf .= "rtpend=$high_port\n";
 	$conf .= "\n";
-	
-	fwrite($fd, $conf);
-	fclose($fd);
 
-	return 0;
+	return ($return) ? $conf : util_file_write("/etc/asterisk/rtp.conf", $conf);
 }
 
 /**

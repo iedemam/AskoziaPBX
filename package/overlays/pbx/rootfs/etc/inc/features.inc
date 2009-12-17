@@ -33,7 +33,7 @@ require_once("functions.inc");
 /**
  * Generates features.conf which contains call parking, transfer settings and feature maps
  */
-function features_conf_generate() {
+function features_conf_generate($return=false) {
 	global $config;
 	
 	$parkingconfig = $config['dialplan']['callparking'];
@@ -49,12 +49,6 @@ function features_conf_generate() {
 	$pc['featuredigittimeout'] = isset($featuremapconfig['featuredigittimeout']) ? $featuremapconfig['featuredigittimeout'] : "500";
 	$pc['atxfernoanswertimeout'] = isset($featuremapconfig['atxfernoanswertimeout']) ? $featuremapconfig['atxfernoanswertimeout'] : "15";
 	$pc['transferdigittimeout'] = isset($featuremapconfig['transferdigittimeout']) ? $featuremapconfig['transferdigittimeout'] : "3";
-	
-	$fd = fopen("/etc/asterisk/features.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open features.conf in features_conf_generate().\n");
-		return 1;
-	}	
 
 	$conf = "[general]\n";
 
@@ -72,13 +66,10 @@ function features_conf_generate() {
 	$conf .= "blindxfer => " . $pc['blindtransfer'] . "\n";
 //	$conf .= "disconnect => ". $pc['disconnect'] . "\n";
 //	$conf .= "automon => *1\n";//                  ; One Touch Record
-	
+
 	$conf .= "\n";
-	
-	fwrite($fd, $conf);
-	fclose($fd);
-	
-	return 0;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/features.conf", $conf);
 }
 
 ?>
