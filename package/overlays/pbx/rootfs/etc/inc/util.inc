@@ -51,14 +51,14 @@ function sigkillbypid($pidfile, $sig) {
  * Kills a process by name
  */
 function killbyname($procname) {
-	return mwexec("/usr/bin/killall " . escapeshellarg($procname));
+	return mwexec("busybox killall " . escapeshellarg($procname));
 }
 
 /**
  * Kills a process by name
  */
 function sigkillbyname($procname, $sig) {
-	return mwexec("/usr/bin/killall -{$sig} " . escapeshellarg($procname));
+	return mwexec("busybox killall -{$sig} " . escapeshellarg($procname));
 }
 
 /**
