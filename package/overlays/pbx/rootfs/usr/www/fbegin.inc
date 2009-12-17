@@ -197,8 +197,8 @@ $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 /* Status */
 $menu['Status'][gettext("Summary")]				= array('index.php');
 $menu['Status'][gettext("Ports")]				= array('status_ports.php');
-$menu['Status'][gettext("Channels")]			= array('status_channels.php');
-$menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
+//$menu['Status'][gettext("Channels")]			= array('status_channels.php');
+//$menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
 
 /* Live Stats */
 $menu['Live Stats'][gettext("Network Traffic")]	= array('status_graph_traffic.php');
