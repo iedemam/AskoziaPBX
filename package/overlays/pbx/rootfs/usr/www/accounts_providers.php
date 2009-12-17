@@ -173,7 +173,7 @@ if (file_exists($g['analog_dirty_path'])) {
 
 	jQuery(document).ready(function(){
 	
-		<?=javascript_account_statuses("ready");?>
+		<? /*=javascript_account_statuses("ready");*/ ?>
 	
 	});
 
