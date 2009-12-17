@@ -776,8 +776,55 @@ function modules_conf_generate($return=false) {
 
 	$conf = <<<EOD
 [modules]
-autoload=yes
-
+autoload=no
+;
+; this is the minimum set of modules to support the
+; functionality built into the AskoziaPBX GUI
+;
+load => app_dial.so
+load => app_echo.so
+load => app_exec.so
+load => app_macro.so
+load => app_meetme.so
+load => app_milliwatt.so
+load => app_playback.so
+load => app_setcallerid.so
+load => app_stack.so
+load => app_system.so
+load => app_verbose.so
+load => app_voicemail.so
+load => app_wakeme.so
+load => app_while.so
+load => chan_dahdi.so
+load => chan_iax2.so
+load => chan_local.so
+load => chan_sip.so
+load => codec_a_mu.so
+load => codec_adpcm.so
+load => codec_alaw.so
+load => codec_dahdi.so
+load => codec_g722.so
+load => codec_gsm.so
+load => codec_ulaw.so
+load => format_gsm.so
+load => format_pcm.so
+load => format_sln.so
+load => format_wav.so
+load => format_wav_gsm.so
+load => func_callerid.so
+load => func_channel.so
+load => func_config.so
+load => func_db.so
+load => func_logic.so
+load => func_shell.so
+load => pbx_config.so
+load => pbx_loopback.so
+load => pbx_spool.so
+load => res_adsi.so
+load => res_indications.so
+load => res_limit.so
+load => res_musiconhold.so
+load => res_smdi.so
 
 EOD;
 
