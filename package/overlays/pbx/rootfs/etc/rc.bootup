@@ -59,11 +59,6 @@
 	storage_syspart_initialize();
 	echo "done\n";
 
-	/* setup the temporary file upload destination */
-	echo " - Setting up ultmp... ";
-	system_setup_ultmp();
-	echo "done\n";
-
 	/* run any early shell commands specified in config.xml */
 	echo " - Running early shell commands... ";
 	system_do_shell_commands(1);

@@ -431,27 +431,6 @@ function system_load_kernel_modules() {
 	mwexec("/sbin/modprobe -q dahdi");
 }
 
-function system_setup_ultmp() {
-	global $g;
-
-	//$d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
-
-	//if (storage_syspart_get_state() == "active") {
-	//	if (!file_exists("/storage/ultmp")) {
-	//		mkdir("/storage/ultmp");
-	//	} else {
-	//		mwexec("rm -rf /ultmp");
-	//	}
-	//	symlink("/storage/ultmp", "/ultmp");
-	//	touch($d_ultmpmounted_path);
-	//} else {
-		mkdir("/ultmp");
-	//}
-
-	// clean up uploaded / downloaded files
-	mwexec("rm -rf /ultmp/*");
-}
-
 function system_get_product_name() {
 	global $g;
 
