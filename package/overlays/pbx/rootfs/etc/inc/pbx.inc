@@ -100,6 +100,7 @@ function pbx_start() {
 }
 
 function pbx_stop() {
+	killbyname("astcanary");
 	killbyname("asterisk");
 }
 
