@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -506,15 +506,17 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Мрежов"
 
-msgid "Phones"
-msgstr "Вътрешни"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "Изпрати ми E-mail"
 
 msgid "Description"
 msgstr "Описание"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
+"Тук можете да въведете описание за ваше използване (не се следи за "
+"синтаксис)."
 
 msgid "Public Number"
 msgstr "Общодостъпен Номер"
@@ -604,6 +606,9 @@ msgstr "Мрежов"
 msgid "Telephony Ports"
 msgstr "изтрий вътрешна линия"
 
+msgid "Phones"
+msgstr "Вътрешни"
+
 msgid "Providers"
 msgstr "Външни"
 
@@ -625,12 +630,6 @@ msgstr "Резюме"
 #, fuzzy
 msgid "Ports"
 msgstr "Португалия"
-
-msgid "Channels"
-msgstr "Канали"
-
-msgid "Conferences"
-msgstr "Конференции"
 
 msgid "Network Traffic"
 msgstr "Мрежов Трафик"
@@ -1920,12 +1919,6 @@ msgstr "Време на работа"
 msgid "Last Config Change"
 msgstr "Последна Промяна"
 
-msgid "Active Calls"
-msgstr "Активни Разговори"
-
-msgid "Active Channels"
-msgstr "Активни Канали"
-
 msgid "Memory Usage"
 msgstr "Използвана Памет"
 
@@ -2374,11 +2367,6 @@ msgstr "Вътрешен Номер използван за избиране н�
 msgid "Text to be displayed for Caller ID."
 msgstr "Текст който да се показва за Caller ID."
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-"Тук можете да въведете описание за ваше използване (не се следи за "
-"синтаксис)."
-
 #, fuzzy
 msgid "Security"
 msgstr "Парола"
@@ -2557,6 +2545,9 @@ msgstr ""
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Не е открит съвместим аналогов интерфейс."
+
+msgid "Channels"
+msgstr "Канали"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2840,6 +2831,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Паролите в config.xml бяха автоматично премахнати."
 
+msgid "Active Channels"
+msgstr "Активни Канали"
+
 msgid "There are currently no active channels."
 msgstr "В момента няма активни канали."
 
@@ -2848,6 +2842,9 @@ msgstr "Местонахождение"
 
 msgid "Application"
 msgstr "Приложение"
+
+msgid "Conferences"
+msgstr "Конференции"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -3136,9 +3133,6 @@ msgstr ""
 "може да се доверите, и бъдете сигурни че с образа не са си играли.<br><br> "
 "Искате ли да инсталирате този образ въпреки всичко (на ваш риск)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Кликнете върху &quot;Разреши качване на програма&quot; по-долу."
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Изберете нов файл с образ на програма (pbx-%s-*.img) за инсталиране."
@@ -3147,12 +3141,6 @@ msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
 "Кликнете върху &quot;Обнови програмата&quot; за да стратирате процеса на "
 "обновяване."
-
-msgid "Enable firmware upload"
-msgstr "Разреши качване на програма"
-
-msgid "Disable firmware upload"
-msgstr "Забрани качване на програма"
 
 msgid "Firmware image file:"
 msgstr "Файл с образ на програмата:"
@@ -3328,6 +3316,18 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Active Calls"
+#~ msgstr "Активни Разговори"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below."
+#~ msgstr "Кликнете върху &quot;Разреши качване на програма&quot; по-долу."
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Разреши качване на програма"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Забрани качване на програма"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -499,15 +499,15 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Netværk"
 
-msgid "Phones"
-msgstr "Telefoner"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "E-mail addresse"
 
 msgid "Description"
 msgstr "Beskrivelse"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Her kan du angive en beskrivelse, (bliver ikke tolket)."
 
 msgid "Public Number"
 msgstr "Offentlig Nummer"
@@ -595,6 +595,9 @@ msgstr "Netværk"
 msgid "Telephony Ports"
 msgstr "slet telefon"
 
+msgid "Phones"
+msgstr "Telefoner"
+
 msgid "Providers"
 msgstr "Udbyder"
 
@@ -616,12 +619,6 @@ msgstr "Oversigt"
 #, fuzzy
 msgid "Ports"
 msgstr "Portugal"
-
-msgid "Channels"
-msgstr "Kanaler"
-
-msgid "Conferences"
-msgstr "Konference"
 
 msgid "Network Traffic"
 msgstr "Netværk Traffik"
@@ -1882,12 +1879,6 @@ msgstr "Oppetid"
 msgid "Last Config Change"
 msgstr "Sidste Konfigurations ændring"
 
-msgid "Active Calls"
-msgstr "Aktive Opkald"
-
-msgid "Active Channels"
-msgstr "Aktive Kanaler"
-
 msgid "Memory Usage"
 msgstr "Hukommelses Forbrug"
 
@@ -2319,9 +2310,6 @@ msgstr "Den interne extension brugt for at ringe til denne telefon"
 msgid "Text to be displayed for Caller ID."
 msgstr "Tekst der skal vises som Opkalds ID."
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Her kan du angive en beskrivelse, (bliver ikke tolket)."
-
 #, fuzzy
 msgid "Security"
 msgstr "Hemmeligt"
@@ -2499,6 +2487,9 @@ msgstr "At klikke &quot;Gem&quot; vil smide alle igangværende opkald. "
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Ingen kompatible analoge grænseflader fundet."
+
+msgid "Channels"
+msgstr "Kanaler"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2769,6 +2760,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Adgangskoder i config.xml er automatisk fjernet."
 
+msgid "Active Channels"
+msgstr "Aktive Kanaler"
+
 msgid "There are currently no active channels."
 msgstr "Der er i øjeblikket ingen aktive kanaler."
 
@@ -2777,6 +2771,9 @@ msgstr "Lokation"
 
 msgid "Application"
 msgstr "Applikation"
+
+msgid "Conferences"
+msgstr "Konference"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -3051,21 +3048,12 @@ msgstr ""
 "har tillid til og vær sikker på at filen ikke er blevet pillet ved."
 "<br><br>Er du sikker på at du vil installerer filen alligvel?"
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Klik &quot;Aktiver firmware upload&quot; nedenunder."
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Vælg det nye firmware image (pbx-%s-*.img)  som skal installeres."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Klik &quot;Opdatere firmware&quot; for at starte opdateringsprocessen."
-
-msgid "Enable firmware upload"
-msgstr "Aktiver firmware upload"
-
-msgid "Disable firmware upload"
-msgstr "Deaktiver firmware upload"
 
 msgid "Firmware image file:"
 msgstr "Firmware image fil:"
@@ -3236,6 +3224,18 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Active Calls"
+#~ msgstr "Aktive Opkald"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below."
+#~ msgstr "Klik &quot;Aktiver firmware upload&quot; nedenunder."
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Aktiver firmware upload"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Deaktiver firmware upload"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -382,13 +382,13 @@ msgstr ""
 msgid "Local Area Network"
 msgstr ""
 
-msgid "Phones"
-msgstr ""
-
 msgid "E-Mail"
 msgstr ""
 
 msgid "Description"
+msgstr ""
+
+msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
 msgid "Public Number"
@@ -463,6 +463,9 @@ msgstr ""
 msgid "Telephony Ports"
 msgstr ""
 
+msgid "Phones"
+msgstr ""
+
 msgid "Providers"
 msgstr ""
 
@@ -482,12 +485,6 @@ msgid "Summary"
 msgstr ""
 
 msgid "Ports"
-msgstr ""
-
-msgid "Channels"
-msgstr ""
-
-msgid "Conferences"
 msgstr ""
 
 msgid "Network Traffic"
@@ -1626,12 +1623,6 @@ msgstr ""
 msgid "Last Config Change"
 msgstr ""
 
-msgid "Active Calls"
-msgstr ""
-
-msgid "Active Channels"
-msgstr ""
-
 msgid "Memory Usage"
 msgstr ""
 
@@ -1981,9 +1972,6 @@ msgstr ""
 msgid "Text to be displayed for Caller ID."
 msgstr ""
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-
 msgid "Security"
 msgstr ""
 
@@ -2127,6 +2115,9 @@ msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 
 msgid "No compatible isdn ports were detected."
+msgstr ""
+
+msgid "Channels"
 msgstr ""
 
 #, php-format
@@ -2347,6 +2338,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr ""
 
+msgid "Active Channels"
+msgstr ""
+
 msgid "There are currently no active channels."
 msgstr ""
 
@@ -2354,6 +2348,9 @@ msgid "Location"
 msgstr ""
 
 msgid "Application"
+msgstr ""
+
+msgid "Conferences"
 msgstr ""
 
 #, php-format
@@ -2574,20 +2571,11 @@ msgstr ""
 msgid "<strong>%s</strong><br>This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br> Do you want to install this image anyway (at your own risk)?"
 msgstr ""
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr ""
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr ""
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr ""
-
-msgid "Enable firmware upload"
-msgstr ""
-
-msgid "Disable firmware upload"
 msgstr ""
 
 msgid "Firmware image file:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -444,15 +444,15 @@ msgstr "RDSI"
 msgid "Local Area Network"
 msgstr "Red"
 
-msgid "Phones"
-msgstr "Teléfonos"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "Mándame un e-mail"
 
 msgid "Description"
 msgstr "Descripción"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Puede introducir aquí una descripción para su aclaración (sin parsear)"
 
 msgid "Public Number"
 msgstr "Número público"
@@ -537,6 +537,9 @@ msgstr "Red"
 msgid "Telephony Ports"
 msgstr "borrar teléfono"
 
+msgid "Phones"
+msgstr "Teléfonos"
+
 msgid "Providers"
 msgstr "Proveedores"
 
@@ -558,12 +561,6 @@ msgstr "Resumen"
 #, fuzzy
 msgid "Ports"
 msgstr "Portugal"
-
-msgid "Channels"
-msgstr "Canales"
-
-msgid "Conferences"
-msgstr "Conferencias"
 
 msgid "Network Traffic"
 msgstr "Tráfico de red"
@@ -1821,12 +1818,6 @@ msgstr ""
 msgid "Last Config Change"
 msgstr "Último cambio"
 
-msgid "Active Calls"
-msgstr "Llamadas activas"
-
-msgid "Active Channels"
-msgstr "Canales activos"
-
 msgid "Memory Usage"
 msgstr "Uso de memoria"
 
@@ -2258,9 +2249,6 @@ msgstr "¿Realmente quiere deshabilitar este teléfono?"
 msgid "Text to be displayed for Caller ID."
 msgstr "Texto que será mostrado para el ID llamante"
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Puede introducir aquí una descripción para su aclaración (sin parsear)"
-
 #, fuzzy
 msgid "Security"
 msgstr "Secreto"
@@ -2434,6 +2422,9 @@ msgstr ""
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Interfaces analógicos compatibles no encontrados."
+
+msgid "Channels"
+msgstr "Canales"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2694,6 +2685,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "La contraseña de config.xml ha sido eliminada automáticamente."
 
+msgid "Active Channels"
+msgstr "Canales activos"
+
 msgid "There are currently no active channels."
 msgstr "Actualmente no hay canales activas."
 
@@ -2702,6 +2696,9 @@ msgstr "Localización"
 
 msgid "Application"
 msgstr "Aplicación"
+
+msgid "Conferences"
+msgstr "Conferencias"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -2979,21 +2976,12 @@ msgid ""
 "install this image anyway (at your own risk)?"
 msgstr ""
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr ""
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr ""
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
-
-msgid "Enable firmware upload"
-msgstr "Habilitar subida de firmware"
-
-msgid "Disable firmware upload"
-msgstr "Deshabilitar subida de firmware"
 
 msgid "Firmware image file:"
 msgstr "Archivo imagen Firmware:"
@@ -3159,6 +3147,15 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "Active Calls"
+#~ msgstr "Llamadas activas"
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Habilitar subida de firmware"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Deshabilitar subida de firmware"
 
 #~ msgid "Debug"
 #~ msgstr "Depurar"

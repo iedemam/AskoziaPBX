@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -498,15 +498,15 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Verkko"
 
-msgid "Phones"
-msgstr "Puhelimet"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "Lähetä"
 
 msgid "Description"
 msgstr "Kuvaus"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
 
 msgid "Public Number"
 msgstr "Julkinen Numero"
@@ -595,6 +595,9 @@ msgstr "Verkko"
 msgid "Telephony Ports"
 msgstr "poista puhelin"
 
+msgid "Phones"
+msgstr "Puhelimet"
+
 msgid "Providers"
 msgstr "Palveluntarjoajat"
 
@@ -616,12 +619,6 @@ msgstr "Tiivistelmä"
 #, fuzzy
 msgid "Ports"
 msgstr "Portugali"
-
-msgid "Channels"
-msgstr "Kanavat"
-
-msgid "Conferences"
-msgstr "Konferenssit"
 
 msgid "Network Traffic"
 msgstr "Verkon Liikenne"
@@ -1901,12 +1898,6 @@ msgstr "Käynnissäoloaika"
 msgid "Last Config Change"
 msgstr "Viimeisin Muutos"
 
-msgid "Active Calls"
-msgstr "Aktiiviset Puhelut"
-
-msgid "Active Channels"
-msgstr "Aktiiviset Kanavat"
-
 msgid "Memory Usage"
 msgstr "Muistin käyttö"
 
@@ -2358,9 +2349,6 @@ msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 msgid "Text to be displayed for Caller ID."
 msgstr "Teksti joka näytetään Soittajan Tunnukselle"
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Voit antaa suosituksesi kuvaus (ei parsattu)."
-
 #, fuzzy
 msgid "Security"
 msgstr "Salaisuus"
@@ -2542,6 +2530,9 @@ msgstr ""
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
+
+msgid "Channels"
+msgstr "Kanavat"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2824,6 +2815,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Salasanat ovat automaattisesti poistetut config.xml tiedostosta."
 
+msgid "Active Channels"
+msgstr "Aktiiviset Kanavat"
+
 msgid "There are currently no active channels."
 msgstr "Tällä hetkellä ei löydy aktiivista kanavaa."
 
@@ -2832,6 +2826,9 @@ msgstr "Paikka"
 
 msgid "Application"
 msgstr "Sovellus"
+
+msgid "Conferences"
+msgstr "Konferenssit"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -3116,9 +3113,6 @@ msgstr ""
 "turvallisuuden vaarantamiseen. Älä asenna levykuvaa jos et luota lähteeseen."
 "<br><br>Haluatko asentaa tämän levykuvan?"
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Klikkaa &quot;Mahdollista laiteohjelmiston päivittäminen&quot;"
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Valitse haluamasi levykuva (pbx-%s-*.img) minkä haluat asentaa."
@@ -3126,12 +3120,6 @@ msgstr "Valitse haluamasi levykuva (pbx-%s-*.img) minkä haluat asentaa."
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
 "Klikkaa &quot;Päivitä laiteohjelmistoa&quot; aloittaaksesi päivityksen."
-
-msgid "Enable firmware upload"
-msgstr "Mahdollista laiteohjelmiston päivittäminen"
-
-msgid "Disable firmware upload"
-msgstr "Poista laiteohjelmiston päivittäminen käytöstä"
 
 msgid "Firmware image file:"
 msgstr "Laiteohjelmisto tiedosto:"
@@ -3307,6 +3295,18 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Active Calls"
+#~ msgstr "Aktiiviset Puhelut"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below."
+#~ msgstr "Klikkaa &quot;Mahdollista laiteohjelmiston päivittäminen&quot;"
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Mahdollista laiteohjelmiston päivittäminen"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Poista laiteohjelmiston päivittäminen käytöstä"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

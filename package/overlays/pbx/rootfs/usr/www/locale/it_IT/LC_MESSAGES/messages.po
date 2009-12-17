@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -504,15 +504,17 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Rete"
 
-msgid "Phones"
-msgstr "Derivati"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "Inviami E-mail"
 
 msgid "Description"
 msgstr "Descrizione"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
+"Puoi inserire qui una descrizione per avere un riferimento (non verrà "
+"analizzata)."
 
 msgid "Public Number"
 msgstr "Numero pubblico"
@@ -600,6 +602,9 @@ msgstr "Rete"
 msgid "Telephony Ports"
 msgstr "cancella il telefono"
 
+msgid "Phones"
+msgstr "Derivati"
+
 msgid "Providers"
 msgstr "Operatori telefonici"
 
@@ -621,12 +626,6 @@ msgstr "Sommario"
 #, fuzzy
 msgid "Ports"
 msgstr "Portogallo"
-
-msgid "Channels"
-msgstr "Canali"
-
-msgid "Conferences"
-msgstr "Conferenze"
 
 msgid "Network Traffic"
 msgstr "Traffico di rete"
@@ -1937,12 +1936,6 @@ msgstr "tempo di funzionamento"
 msgid "Last Config Change"
 msgstr "Ultima modifica alla configurazione"
 
-msgid "Active Calls"
-msgstr "Chiamate attive"
-
-msgid "Active Channels"
-msgstr "Canali attivi"
-
 msgid "Memory Usage"
 msgstr "Memoria utilizzata"
 
@@ -2409,11 +2402,6 @@ msgstr "Interno usato per chiamare questo telefono."
 msgid "Text to be displayed for Caller ID."
 msgstr "Testo mostrato per Identificativo del chiamante (Caller ID)."
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-"Puoi inserire qui una descrizione per avere un riferimento (non verrà "
-"analizzata)."
-
 #, fuzzy
 msgid "Security"
 msgstr "Parola segreta"
@@ -2592,6 +2580,9 @@ msgstr "cliccando &quot;Salva&quot; tutte le chiamate verranno terminate."
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Nessuna interfaccia analogica rilevata."
+
+msgid "Channels"
+msgstr "Canali"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2885,6 +2876,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Le password in config.xml sono state automaticamente rimosse."
 
+msgid "Active Channels"
+msgstr "Canali attivi"
+
 msgid "There are currently no active channels."
 msgstr "Al momento non ci sono canali attivi."
 
@@ -2893,6 +2887,9 @@ msgstr "Localizzazione"
 
 msgid "Application"
 msgstr "Applicazione"
+
+msgid "Conferences"
+msgstr "Conferenze"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -3191,9 +3188,6 @@ msgstr ""
 "<br><br>Vuoi installare comunque questa immagine (a proprio rischio e "
 "pericolo)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Clicca \"Abilita caricamento firmware\" qui sotto."
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Scegli il file immagine del firmware (pbx-%s-*.img) da installare."
@@ -3202,12 +3196,6 @@ msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
 "Clicca &quot;Caricamento firmware&quot; per iniziare il processo di "
 "aggiornamento."
-
-msgid "Enable firmware upload"
-msgstr "Abilita il caricamento firmware"
-
-msgid "Disable firmware upload"
-msgstr "Disabilita il caricamento firmware"
 
 msgid "Firmware image file:"
 msgstr "Nome file immagine firmware:"
@@ -3389,6 +3377,18 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "Active Calls"
+#~ msgstr "Chiamate attive"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below."
+#~ msgstr "Clicca \"Abilita caricamento firmware\" qui sotto."
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Abilita il caricamento firmware"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Disabilita il caricamento firmware"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

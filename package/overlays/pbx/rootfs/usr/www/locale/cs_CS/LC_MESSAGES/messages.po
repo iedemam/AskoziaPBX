@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -470,15 +470,15 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Síť"
 
-msgid "Phones"
-msgstr "Telefonní účty"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "Otestuj"
 
 msgid "Description"
 msgstr "Poznámka"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
 
 msgid "Public Number"
 msgstr ""
@@ -567,6 +567,9 @@ msgstr "Síť"
 msgid "Telephony Ports"
 msgstr "smazat účet"
 
+msgid "Phones"
+msgstr "Telefonní účty"
+
 msgid "Providers"
 msgstr "Operátoři"
 
@@ -588,12 +591,6 @@ msgstr "Souhrn"
 #, fuzzy
 msgid "Ports"
 msgstr "Portugalsko"
-
-msgid "Channels"
-msgstr "Kanály"
-
-msgid "Conferences"
-msgstr "Telekonference"
 
 msgid "Network Traffic"
 msgstr "Využití sítě"
@@ -1818,12 +1815,6 @@ msgstr "Doba provozu"
 msgid "Last Config Change"
 msgstr "Poslední změna kofigurace"
 
-msgid "Active Calls"
-msgstr "Aktivní hovory"
-
-msgid "Active Channels"
-msgstr "Aktivní kanály"
-
 msgid "Memory Usage"
 msgstr "Využití paměti"
 
@@ -2246,9 +2237,6 @@ msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 msgid "Text to be displayed for Caller ID."
 msgstr ""
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-
 msgid "Security"
 msgstr ""
 
@@ -2417,6 +2405,9 @@ msgstr ""
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Žádné analogové zařízení nebylo nalezeno."
+
+msgid "Channels"
+msgstr "Kanály"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2676,6 +2667,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr ""
 
+msgid "Active Channels"
+msgstr "Aktivní kanály"
+
 msgid "There are currently no active channels."
 msgstr "Nejsou aktivní žádné kanály."
 
@@ -2684,6 +2678,9 @@ msgstr ""
 
 msgid "Application"
 msgstr ""
+
+msgid "Conferences"
+msgstr "Telekonference"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -2952,20 +2949,11 @@ msgid ""
 "install this image anyway (at your own risk)?"
 msgstr ""
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr ""
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr ""
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr ""
-
-msgid "Enable firmware upload"
-msgstr ""
-
-msgid "Disable firmware upload"
 msgstr ""
 
 msgid "Firmware image file:"
@@ -3130,6 +3118,9 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Active Calls"
+#~ msgstr "Aktivní hovory"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

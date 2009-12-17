@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -459,15 +459,15 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Sieć"
 
-msgid "Phones"
-msgstr "Telefony"
-
 #, fuzzy
 msgid "E-Mail"
 msgstr "Adres E-mail"
 
 msgid "Description"
 msgstr "Opis"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Można dodać tutaj opis dla własnej informacji (nie jest parsowany)."
 
 msgid "Public Number"
 msgstr "Publiczny numer"
@@ -552,6 +552,9 @@ msgstr "Sieć"
 msgid "Telephony Ports"
 msgstr "usuń telefon"
 
+msgid "Phones"
+msgstr "Telefony"
+
 msgid "Providers"
 msgstr "Dostawcy"
 
@@ -573,12 +576,6 @@ msgstr "Podsumowanie"
 #, fuzzy
 msgid "Ports"
 msgstr "Portugalia"
-
-msgid "Channels"
-msgstr "Kanały"
-
-msgid "Conferences"
-msgstr "Konferencje"
 
 msgid "Network Traffic"
 msgstr "Ruch sieciowy"
@@ -1827,12 +1824,6 @@ msgstr "Uptime"
 msgid "Last Config Change"
 msgstr "Ostatnia zmiana konfiguracji"
 
-msgid "Active Calls"
-msgstr "Aktywne połączenia"
-
-msgid "Active Channels"
-msgstr "Aktywne kanały"
-
 msgid "Memory Usage"
 msgstr "Użycie pamięci"
 
@@ -2275,9 +2266,6 @@ msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 msgid "Text to be displayed for Caller ID."
 msgstr "Tekst wyświetlany jako Caller ID."
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Można dodać tutaj opis dla własnej informacji (nie jest parsowany)."
-
 msgid "Security"
 msgstr ""
 
@@ -2453,6 +2441,9 @@ msgstr "kliknięcie &quot;Zapisz&quot; przerwie wszystkie bieżące połączenia
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
+
+msgid "Channels"
+msgstr "Kanały"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2727,6 +2718,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr "Hasła w config.xml zostały automatycznie usunięte."
 
+msgid "Active Channels"
+msgstr "Aktywne kanały"
+
 msgid "There are currently no active channels."
 msgstr "Nie ma w tej chwili aktywnych kanałów."
 
@@ -2735,6 +2729,9 @@ msgstr "Lokalizacja"
 
 msgid "Application"
 msgstr "Aplikacja"
+
+msgid "Conferences"
+msgstr "Konferencje"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -3009,21 +3006,12 @@ msgstr ""
 "pochodzące z zaufanych źródeł i upewnić się, że nie zostały zmodyfikowane."
 "<br><br> Czy na pewno chcesz zainstalować ten obraz (na swoje ryzyko)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr "Kliknij &quot;Włącz aktualizacje firmware&quot; poniżej."
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Wybierz obraz nowego firmwaru (pbx-%s-*.img) do zainstalowania."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
-
-msgid "Enable firmware upload"
-msgstr "Włącz upload firmware"
-
-msgid "Disable firmware upload"
-msgstr "Wyłącz upload firmware"
 
 msgid "Firmware image file:"
 msgstr "Plik obrazu firmware: "
@@ -3197,6 +3185,18 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "Active Calls"
+#~ msgstr "Aktywne połączenia"
+
+#~ msgid "Click &quot;Enable firmware upload&quot; below."
+#~ msgstr "Kliknij &quot;Włącz aktualizacje firmware&quot; poniżej."
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Włącz upload firmware"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Wyłącz upload firmware"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

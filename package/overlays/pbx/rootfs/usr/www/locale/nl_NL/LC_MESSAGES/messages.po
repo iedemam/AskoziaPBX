@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-12 15:52+0000\n"
+"POT-Creation-Date: 2009-12-17 10:47+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -442,14 +442,14 @@ msgstr "ISDN"
 msgid "Local Area Network"
 msgstr "Netwerk"
 
-msgid "Phones"
-msgstr "Telefoons"
-
 msgid "E-Mail"
 msgstr ""
 
 msgid "Description"
 msgstr "Omschrijving"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
 
 msgid "Public Number"
 msgstr ""
@@ -534,6 +534,9 @@ msgstr "Netwerk"
 msgid "Telephony Ports"
 msgstr "Telefoon verwijderen"
 
+msgid "Phones"
+msgstr "Telefoons"
+
 msgid "Providers"
 msgstr "Providers"
 
@@ -555,12 +558,6 @@ msgstr ""
 #, fuzzy
 msgid "Ports"
 msgstr "Portugal"
-
-msgid "Channels"
-msgstr "Kanalen"
-
-msgid "Conferences"
-msgstr "Conferenties"
 
 msgid "Network Traffic"
 msgstr "Netwerk Trafiek"
@@ -1863,12 +1860,6 @@ msgstr "Uptime"
 msgid "Last Config Change"
 msgstr "Laatste Configuratie Wijziging"
 
-msgid "Active Calls"
-msgstr "Actieve telefoons."
-
-msgid "Active Channels"
-msgstr "Actieve Kanalen"
-
 msgid "Memory Usage"
 msgstr "Geheugen Gebruik"
 
@@ -2321,9 +2312,6 @@ msgstr "De interne post gebruikt om deze telefoon te bellen."
 msgid "Text to be displayed for Caller ID."
 msgstr ""
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-
 #, fuzzy
 msgid "Security"
 msgstr "Geheim"
@@ -2499,6 +2487,9 @@ msgstr "clicking &quot;Save&quot; zal alle huidige verbindingen verbreken."
 #, fuzzy
 msgid "No compatible isdn ports were detected."
 msgstr "Geen compatibele analoge interfaces ontdekt."
+
+msgid "Channels"
+msgstr "Kanalen"
 
 #, php-format
 msgid "Edit ISDN Interface #%s"
@@ -2775,6 +2766,9 @@ msgstr ""
 msgid "Passwords in config.xml have been automatically removed."
 msgstr ""
 
+msgid "Active Channels"
+msgstr "Actieve Kanalen"
+
 msgid "There are currently no active channels."
 msgstr ""
 
@@ -2783,6 +2777,9 @@ msgstr "Locatie"
 
 msgid "Application"
 msgstr "Toepassingen"
+
+msgid "Conferences"
+msgstr "Conferenties"
 
 #, php-format
 msgid "Member %s has been kicked from conference %s."
@@ -3039,21 +3036,12 @@ msgid ""
 "install this image anyway (at your own risk)?"
 msgstr ""
 
-msgid "Click &quot;Enable firmware upload&quot; below."
-msgstr ""
-
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr ""
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr ""
-
-msgid "Enable firmware upload"
-msgstr "Firmware upload activeren"
-
-msgid "Disable firmware upload"
-msgstr "Firmware upload deactiveren"
 
 msgid "Firmware image file:"
 msgstr ""
@@ -3213,6 +3201,15 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Active Calls"
+#~ msgstr "Actieve telefoons."
+
+#~ msgid "Enable firmware upload"
+#~ msgstr "Firmware upload activeren"
+
+#~ msgid "Disable firmware upload"
+#~ msgstr "Firmware upload deactiveren"
 
 #~ msgid "Debug"
 #~ msgstr "Debug"
