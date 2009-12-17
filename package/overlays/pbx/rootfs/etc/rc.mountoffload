@@ -17,6 +17,21 @@ do
 	echo "   - failed to find rootfs!"
 done
 
+echo "waiting for disks to settle and trying again..."
+sleep 5
+disks=$(fdisk -l | grep "^/dev/" | busybox cut -c 6-8 | busybox uniq)
+for disk in $disks
+do
+	echo " - trying ${disk}"
+	mount /dev/${disk}2 /offload
+	echo "   - mount returned: $?"
+	if [ -d /offload/rootfs ]; then
+		echo "   - found rootfs!"
+		exit 0
+	fi
+	echo "   - failed to find rootfs!"
+done
+
 echo
 echo "The system was unable to find the /offload partition!"
 echo
