@@ -24,7 +24,7 @@ echo /sbin/mdev > /proc/sys/kernel/hotplug
 mdev -s
 
 # make some directories
-mkdir /offload /cf /var/etc /var/db
+mkdir /ultmp /offload /cf /var/etc /var/db
 
 # setup symbolic links
 ln -s /cf/conf /conf
