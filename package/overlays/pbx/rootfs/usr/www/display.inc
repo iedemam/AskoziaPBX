@@ -757,8 +757,8 @@ function display_networking_tab_menu() {
 			<ul id="tabnav"><?
 
 			$tabs = array(
-				gettext('Local Area Network')	=> 'network_lan.php',
-				gettext('Phones')				=> 'network_phones.php'
+				gettext('Local Area Network')	=> 'network_lan.php'
+				//gettext('Phones')				=> 'network_phones.php'
 			);
 			dynamic_tab_menu($tabs);
 
