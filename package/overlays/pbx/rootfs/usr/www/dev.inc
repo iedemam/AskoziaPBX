@@ -242,14 +242,14 @@
 //-->
 </script>
 <div id="devpanel">
-	<h1>Developer Panel</h1>
+	<h1>Integrator Panel</h1>
 	<div id="devtabs">
 		<ul>
 			<li><a href="#devtabs-1">Console</a></li>
 			<li><a href="#devtabs-2">AMI</a></li>
 			<li><a href="#devtabs-3">Files</a></li>
-			<li><a href="#devtabs-4">Report Hardware</a></li>
-			<li><a href="#devtabs-5">Fix Translations</a></li>
+			<li><a href="#devtabs-4">Fix Translations</a></li>
+			<li><a href="#devtabs-5">Report Hardware</a></li>
 		</ul>
 		<div id="devtabs-1">
 			<input id="devconsolecmd" type="text" size="60" value="">
