@@ -1,0 +1,40 @@
+#!/bin/sh
+
+PATH=/sbin:/bin
+export PATH
+
+echo "attempting to unmount /offload partition cleanly..."
+#handles=$(lsof -t/offload | busybox cut -d ' ' -f 1 | busybox uniq)
+handles=$(lsof -t /offload)
+for handle in $handles
+do
+	if [ $handle != COMMAND ]; then
+		echo "  |- process ${handle} still has an open handle handle on /offload"
+		echo "  |- trying to TERMinate ${handle}"
+		kill -TERM ${handle}
+		echo "     -> killall returned: $?"
+	fi
+done
+echo
+echo "done attempting to TERMinate, going in for the KILL..."
+handles=$(lsof -t /offload)
+for handle in $handles
+do
+	if [ $handle != COMMAND ]; then
+		echo "  |- process ${handle} STILL has an open handle handle on /offload"
+		echo "  |- trying to KILL ${handle}"
+		kill -KILL ${handle}
+		echo "     -> killall returned: $?"
+	fi
+done
+echo
+echo "done attempting to KILL, anything left?"
+handles=$(lsof -t /offload)
+for handle in $handles
+do
+	if [ $handle != COMMAND ]; then
+		echo "!!!! -> ${handle} STILL IS NOT DEAD"
+	fi
+done
+
+exit 0

@@ -25,15 +25,8 @@ upgrade)
 	mkdir /tmp/configbak
 	cp -p /conf/* /tmp/configbak
 
-	# kill everything which may still be holding on to the partitions
-	busybox killall -KILL asterisk
-	busybox killall -KILL astcanary
-	#busybox killall -KILL crond
-	#busybox killall -KILL php
-	#busybox killall -KILL dropbear
-	#busybox killall -KILL ajax.cgi
-	#busybox killall -KILL httpd
-	sleep 3
+	# kill everything which may still be holding on to /offload
+	/etc/rc.freeupoffload
 
 	# unmount /cf and /offload
 	/bin/umount -f /cf
