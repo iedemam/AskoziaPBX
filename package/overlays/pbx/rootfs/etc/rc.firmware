@@ -11,57 +11,50 @@ CFDEVICE=`cat /var/etc/cfdevice`
 case $1 in
 enable)
 	#/sbin/mdmfs -s 20m md1 /ultmp > /dev/null 2>&1
-	logger "rc.firmware - enable start"
 	;;
 upgrade)
-	logger "rc.firmware - upgrade start"
 	# wait 5 seconds before beginning
-	logger "rc.firmware - sleeping for 5 seconds"
 	sleep 5
-	logger "rc.firmware - done"
 
 	exec </dev/console >/dev/console 2>/dev/console
-	logger "rc.firmware - output redirected"
 
 	echo
 	echo "Firmware upgrade in progress..."
-	logger "rc.firmware - Firmware upgrade in progress..."
 
 	# backup config
 	mkdir /tmp/configbak
 	cp -p /conf/* /tmp/configbak
 
+	# kill everything which may still be holding on to the partitions
+	killall -q dropbear
+	killall -q ajax.cgi
+	killall -q httpd
+	killall -q astcanary
+	killall -q asterisk
+
 	# unmount /cf and /offload
 	/bin/umount -f /cf
-	logger "rc.firmware - unmounted /cf"
-	df | logger
-	/bin/umount -f /offload
-	logger "rc.firmware - unmounted /offload"
-	df | logger
+	/bin/umount -l /offload
+	sleep 3
 
 	# dd image onto card
 	if [ -r $2 ]; then
 		/bin/gunzip -c $2 | dd of=/dev/$CFDEVICE bs=512 > /dev/null 2>&1
 		echo "Image installed."
-		logger "rc.firmware - Image installed."
 		rm $2
 	fi
 
 	# mount /cf
 	/bin/mount -w -o noatime /cf
-	logger "rc.firmware - remounted /cf"
 
 	# restore config
 	cp -p /tmp/configbak/* /conf
-	logger "rc.firmware - restored config"
 
 	# remount /cf ro
 	/bin/umount -f /cf
 	/bin/mount -r /cf
-	logger "rc.firmware - remounting /cf read-only"
 
 	echo "Done - rebooting system..."
-	logger "rc.firmware - Done - rebooting system..."
 
 	# unset CGI environment variables so as not to confuse PHP
 	unset CONTENT_TYPE GATEWAY_INTERFACE REMOTE_USER REMOTE_ADDR AUTH_TYPE
