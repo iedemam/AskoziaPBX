@@ -93,6 +93,7 @@ if ($config['lastchange']) {
 		</td>
 	</tr><?
 }
+	/*
 	pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list);
 	?><tr> 
 		<td class="vncellt"><?=spanify(gettext("Active Calls"));?></td>
@@ -102,7 +103,8 @@ if ($config['lastchange']) {
 		<td class="vncellt"><?=spanify(gettext("Active Channels"));?></td>
 		<td class="listr"><?=$active_channels;?>&nbsp;</td>
 	</tr>
-	<tr> 
+	*/
+	?><tr> 
 		<td class="vncellt"><?=spanify(gettext("Memory Usage"));?></td>
 		<td class="listr"><?
 			exec("/usr/bin/free", $memory);
