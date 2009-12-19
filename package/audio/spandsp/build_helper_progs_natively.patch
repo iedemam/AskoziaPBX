@@ -1,0 +1,18 @@
+--- spandsp-0.0.6/src/Makefile.am.orig	2009-12-18 15:12:13.000000000 +0000
++++ spandsp-0.0.6/src/Makefile.am	2009-12-18 15:34:09.000000000 +0000
+@@ -281,11 +281,11 @@
+                         v17tx_constellation_maps.h \
+                         v29tx_constellation_maps.h
+ 
+-noinst_PROGRAMS = make_at_dictionary \
+-                  make_modem_filter
++make_at_dictionary$(EXEEXT): make_at_dictionary.c
++	$(CC_FOR_BUILD) -o make_at_dictionary$(EXEEXT) make_at_dictionary.c  -DHAVE_CONFIG_H
+ 
+-make_modem_filter_SOURCES = make_modem_filter.c \
+-                            filter_tools.c
++make_modem_filter$(EXEEXT): make_modem_filter.c filter_tools.c
++	$(CC_FOR_BUILD) -o make_modem_filter$(EXEEXT) make_modem_filter.c filter_tools.c -DHAVE_CONFIG_H -lm
+ 
+ # We need to run make_at_dictionary, so it generates the
+ # at_interpreter_dictionary.h file
