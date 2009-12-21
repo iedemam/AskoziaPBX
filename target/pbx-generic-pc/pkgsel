@@ -65,14 +65,6 @@ X it-it-gsm-base
 
 # music-on-hold
 X freeplay-ulaw-base
-#X freeplay-g722-base
-#X freeplay-g729-base
-#X freeplay-gsm-base
-#X freeplay-wav-base
-#X freeplay-alaw-base
-#X freeplay-sln16-base
-#X freeplay-siren7-base
-#X freeplay-siren14-base
 
 # webgui
 X php4
