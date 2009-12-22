@@ -13,6 +13,9 @@ enable)
 	#/sbin/mdmfs -s 20m md1 /ultmp > /dev/null 2>&1
 	;;
 upgrade)
+	# get out of /usr/www
+	cd /
+
 	# wait 5 seconds before beginning
 	sleep 5
 
