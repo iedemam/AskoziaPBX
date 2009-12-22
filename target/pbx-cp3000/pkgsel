@@ -81,7 +81,6 @@ X dropbear
 X msmtp
 X ntpclient
 X ezipupdate
-X pciutils
 
 # file system overlay
 X pbx
