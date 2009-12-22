@@ -1,0 +1,34 @@
+--- dahdi-linux/drivers/dahdi/dahdi-base.c.orig	2009/10/29 18:26:14	7436
++++ dahdi-linux/drivers/dahdi/dahdi-base.c	2009/10/29 18:26:16	7437
+@@ -8144,6 +8144,7 @@
+ 	const unsigned long MAX_INTERVAL = 100000L;
+ 	const unsigned long FOURMS_INTERVAL = HZ/250;
+ 	const unsigned long ONESEC_INTERVAL = HZ;
++	const unsigned long MS_LIMIT = 3000;
+ 
+ 	now = current_kernel_time();
+ 
+@@ -8158,6 +8159,23 @@
+ 			mod_timer(&core_timer.timer, jiffies + FOURMS_INTERVAL);
+ 
+ 		ms_since_start = core_diff_ms(&core_timer.start_interval, &now);
++
++		/*
++		 * If the system time has changed, it is possible for us to be
++		 * far behind.  If we are more than MS_LIMIT milliseconds
++		 * behind, just reset our time base and continue so that we do
++		 * not hang the system here.
++		 *
++		 */
++		if (unlikely((ms_since_start - atomic_read(&core_timer.count)) > MS_LIMIT)) {
++			if (printk_ratelimit())
++				module_printk(KERN_INFO, "Detected time shift.\n");
++			atomic_set(&core_timer.count, 0);
++			atomic_set(&core_timer.last_count, 0);
++			core_timer.start_interval = now;
++			return;
++		}
++
+ 		while (ms_since_start > atomic_read(&core_timer.count))
+ 			process_masterspan();
+ 
