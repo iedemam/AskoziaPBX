@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Live"), gettext("Network Traffic"));
+$pgtitle = array(gettext("Status"), gettext("Network Traffic"));
 
 $curif = "lan";
 $ifnum = $config['interfaces'][$curif]['if'];

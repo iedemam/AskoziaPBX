@@ -63,7 +63,7 @@ function dynamic_menu(&$menu, $menu_title) {
 
 				$header_displayed = true;
 			
-			} else if (!isset($header_displayed) && !($menu_title == 'Diagnostics') && !($menu_title == 'Advanced')) {
+			} else if (!isset($header_displayed) && !($menu_title == 'Advanced')) {
 				echo "\n";
 				echo "\t\t<li class=\"menuitem\">" . spanify(gettext($menu_title)) . "\n";
 				echo "\t\t\t<ul class=\"submenu\">\n";
@@ -71,22 +71,6 @@ function dynamic_menu(&$menu, $menu_title) {
 				$header_displayed = true;
 			
 			} else if (!isset($header_displayed)) {
-
-				if ($menu_title == 'Diagnostics') {
-					if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_")) {
-						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('diag','tri_diag')\">";
-						echo "<img src=\"tri_o.gif\" id=\"tri_diag\" width=\"14\" height=\"10\" border=\"0\"></a>";
-						echo "<a href=\"javascript:showhide('diag','tri_diag')\" class=\"navlnk\">" . spanify(gettext("Diagnostics")) . "</a>\n";
-						echo "<span id=\"diag\">\n";
-					} else {
-						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('diag','tri_diag')\">";
-						echo "<img src=\"tri_c.gif\" id=\"tri_diag\" width=\"14\" height=\"10\" border=\"0\"></a>";
-						echo "<a href=\"javascript:showhide('diag','tri_diag')\" class=\"navlnk\">" . spanify(gettext("Diagnostics")) . "</a>\n";
-						echo "<span id=\"diag\" style=\"display: none\">\n";
-					}
-
-					echo "\t\t\t<ul class=\"submenu\">\n";
-				}
 
 				if ($menu_title == 'Advanced') {
 					if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) {
@@ -127,7 +111,7 @@ function dynamic_menu(&$menu, $menu_title) {
 			}
 		}
 	}
-	if ($menu_title == 'Advanced' || $menu_title == 'Diagnostics') {
+	if ($menu_title == 'Advanced') {
 		?></span><?
 	}
 	echo "\n";
@@ -199,10 +183,9 @@ $menu['Status'][gettext("Summary")]				= array('index.php');
 $menu['Status'][gettext("Ports")]				= array('status_ports.php');
 //$menu['Status'][gettext("Channels")]			= array('status_channels.php');
 //$menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
-
-/* Live Stats */
-$menu['Live Stats'][gettext("Network Traffic")]	= array('status_graph_traffic.php');
-$menu['Live Stats'][gettext("CPU Load")]		= array('status_graph_cpu.php');
+$menu['Status'][gettext("Network Traffic")]		= array('status_graph_traffic.php');
+$menu['Status'][gettext("CPU Load")]			= array('status_graph_cpu.php');
+$menu['Status'][gettext("Logs")]				= array('status_logs.php');
 
 /* Advanced */
 $menu['Advanced'][gettext("RTP")] 				= array('advanced_rtp.php');
@@ -214,12 +197,6 @@ $menu['Advanced'][gettext("Manager")] 			= array('advanced_manager.php',
 												'advanced_manager_edit.php');
 $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 
-/* Diagnostics */
-$menu['Diagnostics'][gettext("Logs")]			= array('diag_logs.php');
-$menu['Diagnostics'][gettext('Ping/Traceroute')] = array('diag_ping.php',
-												'diag_traceroute.php');
-$menu['Diagnostics'][gettext("ARP Table")] 		= array('diag_arp.php');
-$menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 
 ?>
 
@@ -259,9 +236,7 @@ $menu['Diagnostics'][gettext("Manager Interface")]= array('diag_manager.php');
 			dynamic_menu($menu['Packages'], gettext('Packages'));
 		}
 		dynamic_menu($menu['Status'], gettext('Status'));
-		dynamic_menu($menu['Live Stats'], gettext('Live Stats'));
 		dynamic_menu($menu['Advanced'], 'Advanced');
-		dynamic_menu($menu['Diagnostics'], 'Diagnostics');
 
 						?></ul>
 					</td>

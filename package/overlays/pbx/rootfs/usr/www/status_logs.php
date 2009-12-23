@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
+$pgtitle = array(gettext("Status"), gettext("Logs"));
 
 
 include("fbegin.inc");

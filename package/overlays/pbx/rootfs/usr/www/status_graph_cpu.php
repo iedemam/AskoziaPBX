@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Live"), gettext("CPU Load"));
+$pgtitle = array(gettext("Status"), gettext("CPU Load"));
 
 include("fbegin.inc");
 
