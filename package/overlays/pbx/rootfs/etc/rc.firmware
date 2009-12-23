@@ -24,36 +24,33 @@ upgrade)
 	echo
 	echo "Firmware upgrade in progress..."
 
-	# backup config
+	echo " | - backing up configuration..."
 	mkdir /tmp/configbak
 	cp -p /conf/* /tmp/configbak
 
-	# kill everything which may still be holding on to /offload
+	echo " | - stopping all processes using the /offload partition..."
 	/etc/rc.freeupoffload
 
-	# unmount /cf and /offload
+	echo " | - unmounting /cf..."
 	/bin/umount -f /cf
+	echo " | - unmounting /offload..."
 	/bin/umount -f /offload
-	sleep 3
 
-	# dd image onto card
+	echo " | - installing image..."
 	if [ -r $2 ]; then
 		/bin/gunzip -c $2 | dd of=/dev/$CFDEVICE bs=512 > /dev/null 2>&1
-		echo "Image installed."
 		rm $2
 	fi
 
-	# mount /cf
+	echo " | - re-mounting /cf read/write..."
 	/bin/mount -w -o noatime /cf
 
-	# restore config
+	echo " | - restoring configuration"
 	cp -p /tmp/configbak/* /conf
 
-	# remount /cf ro
+	echo " | - re-mounting /cf read-only..."
 	/bin/umount -f /cf
 	/bin/mount -r /cf
-
-	echo "Done - rebooting system..."
 
 	# unset CGI environment variables so as not to confuse PHP
 	unset CONTENT_TYPE GATEWAY_INTERFACE REMOTE_USER REMOTE_ADDR AUTH_TYPE
@@ -61,9 +58,7 @@ upgrade)
 	unset SERVER_SOFTWARE HTTP_REFERER SERVER_PROTOCOL REQUEST_METHOD
 	unset SERVER_PORT SCRIPT_NAME SERVER_NAME
 
-	#/etc/rc.cleanreboot
-	# ^^^ requires php, new usr/* offloading makes php inaccessible at this point
-	# due to missing libs...trying to make start-up and shut-down php independent
+	echo " | - rebooting system..."
 	/etc/rc.reboot
 	;;
 esac
