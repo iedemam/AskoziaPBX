@@ -21,6 +21,9 @@ SDECFGSET_INIT='busybox'
 SDECFG_ARCH="x86"
 SDECFG_X86_OPT="i486"
 
+# firmware type
+SDECFGSET_IMAGE='firmware'
+
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"
 SDECFGSET_PKG_LINUX_CONFIG_STYLE='none'
