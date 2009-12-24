@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -582,9 +582,6 @@ msgstr "Πλάνο κλήσεων"
 msgid "print"
 msgstr "εκτύπωση"
 
-msgid "Diagnostics"
-msgstr "Διαγνωστικά"
-
 msgid "Advanced"
 msgstr "Επιλογές για ειδικούς"
 
@@ -642,6 +639,9 @@ msgstr "Κίνηση δικτύου"
 msgid "CPU Load"
 msgstr "Φόρτος CPU"
 
+msgid "Logs"
+msgstr "Ημερολόγια"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -656,18 +656,6 @@ msgstr "Διαχείριση"
 
 msgid "GUI Options"
 msgstr "Επιλογές GUI"
-
-msgid "Logs"
-msgstr "Ημερολόγια"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "Πίνακας ARP"
-
-msgid "Manager Interface"
-msgstr "Διαχείριση"
 
 msgid "System"
 msgstr "Σύστημα"
@@ -686,9 +674,6 @@ msgstr "Πακέτα"
 
 msgid "Status"
 msgstr "Κατάσταση"
-
-msgid "Live Stats"
-msgstr "Ζωντανά στατιστικά"
 
 msgid "Help"
 msgstr "Βοήθεια"
@@ -1468,6 +1453,9 @@ msgstr "A-law"
 msgid "u-law"
 msgstr "u-law"
 
+msgid "Manager Interface"
+msgstr "Διαχείριση"
+
 msgid "Permissions"
 msgstr "Δικαιώματα"
 
@@ -1584,103 +1572,6 @@ msgstr "Εγγραφές DNS SRV"
 
 msgid "Disable DNS SRV lookups."
 msgstr "Απενεργοποίηση αναζητήσεων DNS SRV."
-
-msgid "ARP table"
-msgstr "Πίνακας ARP"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "Διεύθυνση IP"
-
-msgid "MAC address"
-msgstr "Διεύθυνση MAC"
-
-msgid "Hostname"
-msgstr "Ονομασία υπολογιστή"
-
-msgid "delete arp entry"
-msgstr "διαγραφή καταχώρησης arp"
-
-msgid "remove all entries from arp table"
-msgstr "διαγραφή όλων των καταχωρήσεων από τον πίνακα arp"
-
-msgid "Editor"
-msgstr "Επεξεργαστής"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "Το αρχείο (%s) δεν υπάρχει."
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "Τα περιεχόμενα του αρχείου (%s) αποθηκεύτηκαν."
-
-msgid "File"
-msgstr "Αρχείο"
-
-msgid "Contents"
-msgstr "Περιεχόμενα"
-
-msgid "Cancel"
-msgstr "Ακύρωση"
-
-msgid "Open"
-msgstr "Άνοιγμα"
-
-msgid "System log entries"
-msgstr "Εγγραφές ημερολογίου συστήματος"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-"Αυτή η σελίδα επιτρέπει την εκτέλεση εντολών στο τηλεφωνικό κέντρο. "
-"Εκτελέστε \"help\" για να δείτε όλες τις διαθέσιμες εντολές."
-
-msgid "Command"
-msgstr "Εντολή"
-
-msgid "Output"
-msgstr "Αποτέλεσμα"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Το πλήθος πρέπει να είναι μεταξύ 1 και %d"
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Πλήθος"
-
-msgid "Ping output:"
-msgstr "Αποτέλεσμα ping:"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Ο μέγιστος αριθμός βημάτων πρέπει να είναι μεταξύ του 1 και του %d."
-
-msgid "Maximum number of hops"
-msgstr "Mέγιστος αριθμός βημάτων"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "Μετάφραση διευθύνσεων IP σε ονόματα υπολογιστών"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Το traceroute μπορεί να πάρει λίγο χρόνο μέχρι να ολοκληρωθεί. Μπορείτε να "
-"πατήσετε το κουμπί \"Τερματισμός\" στον browser σας για να δείτε την πρόοδο "
-"των αποτυχημένων traceroutes."
-
-msgid "Traceroute output:"
-msgstr "Αποτέλεσμα traceroute:"
 
 #, fuzzy
 msgid ""
@@ -2506,6 +2397,9 @@ msgstr "Ταυτότητα καλούντος / Όνομα"
 msgid "Basic"
 msgstr "Βασικό"
 
+msgid "Command"
+msgstr "Εντολή"
+
 msgid "Filename"
 msgstr "Αρχείο"
 
@@ -2933,9 +2827,6 @@ msgstr "Θέλετε πραγματικά να απομακρύνετε αυτό
 msgid "kick conference member"
 msgstr "απομάκρυνση μέλους συνδιάσκεψης"
 
-msgid "Live"
-msgstr "Ζωντανά"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
@@ -2943,6 +2834,9 @@ msgstr ""
 "Αν δεν μπορείτε να δείτε το γράφημα, θα πρέπει να εγκαταστήσετε το <a href="
 "\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG "
 "viewer</a>."
+
+msgid "System log entries"
+msgstr "Εγγραφές ημερολογίου συστήματος"
 
 msgid "Network"
 msgstr "Ενσύρματο δίκτυο"
@@ -3024,6 +2918,9 @@ msgid ""
 msgstr ""
 "Καταχωρήστε μια θύρα για πρόσβαση στο περιβάλλον διαχείρισης, αν δεν θέλετε "
 "να χρησιμοποιήσετε τις προκαθορισμένες (80 για HTTP και 443 για HTTPS)."
+
+msgid "Hostname"
+msgstr "Ονομασία υπολογιστή"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3413,6 +3310,105 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "Diagnostics"
+#~ msgstr "Διαγνωστικά"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "Πίνακας ARP"
+
+#~ msgid "Live Stats"
+#~ msgstr "Ζωντανά στατιστικά"
+
+#~ msgid "ARP table"
+#~ msgstr "Πίνακας ARP"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "Διεύθυνση IP"
+
+#~ msgid "MAC address"
+#~ msgstr "Διεύθυνση MAC"
+
+#~ msgid "delete arp entry"
+#~ msgstr "διαγραφή καταχώρησης arp"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "διαγραφή όλων των καταχωρήσεων από τον πίνακα arp"
+
+#~ msgid "Editor"
+#~ msgstr "Επεξεργαστής"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "Το αρχείο (%s) δεν υπάρχει."
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "Τα περιεχόμενα του αρχείου (%s) αποθηκεύτηκαν."
+
+#~ msgid "File"
+#~ msgstr "Αρχείο"
+
+#~ msgid "Contents"
+#~ msgstr "Περιεχόμενα"
+
+#~ msgid "Cancel"
+#~ msgstr "Ακύρωση"
+
+#~ msgid "Open"
+#~ msgstr "Άνοιγμα"
+
+#~ msgid ""
+#~ "This page allows direct execution of commands on the Asterisk console. "
+#~ "Execute \"help\" to see a list of possible commands."
+#~ msgstr ""
+#~ "Αυτή η σελίδα επιτρέπει την εκτέλεση εντολών στο τηλεφωνικό κέντρο. "
+#~ "Εκτελέστε \"help\" για να δείτε όλες τις διαθέσιμες εντολές."
+
+#~ msgid "Output"
+#~ msgstr "Αποτέλεσμα"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Το πλήθος πρέπει να είναι μεταξύ 1 και %d"
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Πλήθος"
+
+#~ msgid "Ping output:"
+#~ msgstr "Αποτέλεσμα ping:"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "Ο μέγιστος αριθμός βημάτων πρέπει να είναι μεταξύ του 1 και του %d."
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Mέγιστος αριθμός βημάτων"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "Μετάφραση διευθύνσεων IP σε ονόματα υπολογιστών"
+
+#~ msgid ""
+#~ "Traceroute may take a while to complete.  You may hit the Stop button on "
+#~ "your browser at any time to see the progress of failed traceroutes."
+#~ msgstr ""
+#~ "Το traceroute μπορεί να πάρει λίγο χρόνο μέχρι να ολοκληρωθεί. Μπορείτε "
+#~ "να πατήσετε το κουμπί \"Τερματισμός\" στον browser σας για να δείτε την "
+#~ "πρόοδο των αποτυχημένων traceroutes."
+
+#~ msgid "Traceroute output:"
+#~ msgstr "Αποτέλεσμα traceroute:"
+
+#~ msgid "Live"
+#~ msgstr "Ζωντανά"
 
 #~ msgid "Active Calls"
 #~ msgstr "Ενεργές κλήσεις"

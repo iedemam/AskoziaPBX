@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -577,9 +577,6 @@ msgstr "Dialplan"
 msgid "print"
 msgstr "за печат"
 
-msgid "Diagnostics"
-msgstr "Диагностики"
-
 msgid "Advanced"
 msgstr "Разширени"
 
@@ -637,6 +634,9 @@ msgstr "Мрежов Трафик"
 msgid "CPU Load"
 msgstr "CPU Натоварване"
 
+msgid "Logs"
+msgstr "Логове"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -651,18 +651,6 @@ msgstr "Управление"
 
 msgid "GUI Options"
 msgstr "GUI Настройки"
-
-msgid "Logs"
-msgstr "Логове"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "ARP Таблица"
-
-msgid "Manager Interface"
-msgstr "Астериск Конзола"
 
 msgid "System"
 msgstr "Главни"
@@ -681,9 +669,6 @@ msgstr "Пакети"
 
 msgid "Status"
 msgstr "Статус"
-
-msgid "Live Stats"
-msgstr "Реален Статус"
 
 msgid "Help"
 msgstr "Помощ"
@@ -1451,6 +1436,9 @@ msgstr "A-law"
 msgid "u-law"
 msgstr "u-law"
 
+msgid "Manager Interface"
+msgstr "Астериск Конзола"
+
 msgid "Permissions"
 msgstr "Забрани"
 
@@ -1564,102 +1552,6 @@ msgstr "DNS Услуга Записи"
 
 msgid "Disable DNS SRV lookups."
 msgstr "Забрани DNS SRV следене."
-
-msgid "ARP table"
-msgstr "ARP таблица"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "IP адрес"
-
-msgid "MAC address"
-msgstr "MAC адрес"
-
-msgid "Hostname"
-msgstr "Име на Host"
-
-msgid "delete arp entry"
-msgstr "изтрий внесения arp"
-
-msgid "remove all entries from arp table"
-msgstr "премахни всички внесени в arp таблицата"
-
-msgid "Editor"
-msgstr "Редактор"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "Посоченият файл (%s) не съществува."
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "Файлът съдържащ (%s) записан."
-
-msgid "File"
-msgstr "Файл"
-
-msgid "Contents"
-msgstr "Съдържание"
-
-msgid "Cancel"
-msgstr "Отмени"
-
-msgid "Open"
-msgstr "Отвори"
-
-msgid "System log entries"
-msgstr "Системни логове"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-"Тази страница позволява директно изпълнение на команди в Астериск конзолата. "
-"Напишете \"help\" за да видите списъка с възможните команди."
-
-msgid "Command"
-msgstr "Команда"
-
-msgid "Output"
-msgstr "Резултат"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Броят трябва да е между 1 и %d"
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Брой"
-
-msgid "Ping output:"
-msgstr "Ping резултат:"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Максималният брой на скоковете трябва да е между 1 and %d"
-
-msgid "Maximum number of hops"
-msgstr "Максимален брой скокове"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "Превърни IP адрес в име на host"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Възможно е да отнеме малко време за приключване на Traceroute.  Натиснете "
-"Стоп бутона на браузера си когато видите че процеса е замръзнал."
-
-msgid "Traceroute output:"
-msgstr "Traceroute резултат:"
 
 #, fuzzy
 msgid ""
@@ -2458,6 +2350,9 @@ msgstr "Caller ID / Име"
 msgid "Basic"
 msgstr "Основна"
 
+msgid "Command"
+msgstr "Команда"
+
 msgid "Filename"
 msgstr "Име на файл"
 
@@ -2868,15 +2763,15 @@ msgstr "Сигурни ли сте че искате да изхвърлите �
 msgid "kick conference member"
 msgstr "изхвърли потребител"
 
-msgid "Live"
-msgstr "Актуални"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "Ако не виждате графиката, може би трябва да инсталирате <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+
+msgid "System log entries"
+msgstr "Системни логове"
 
 msgid "Network"
 msgstr "Мрежов"
@@ -2947,6 +2842,9 @@ msgid ""
 msgstr ""
 "Въведете номер на порт по ваш избор за webGUI по-горе ако желаете да "
 "промените порта по подразбиране (80 за HTTP, 443 за HTTPS)."
+
+msgid "Hostname"
+msgstr "Име на Host"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3316,6 +3214,104 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Diagnostics"
+#~ msgstr "Диагностики"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "ARP Таблица"
+
+#~ msgid "Live Stats"
+#~ msgstr "Реален Статус"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP таблица"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "IP адрес"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC адрес"
+
+#~ msgid "delete arp entry"
+#~ msgstr "изтрий внесения arp"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "премахни всички внесени в arp таблицата"
+
+#~ msgid "Editor"
+#~ msgstr "Редактор"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "Посоченият файл (%s) не съществува."
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "Файлът съдържащ (%s) записан."
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "Contents"
+#~ msgstr "Съдържание"
+
+#~ msgid "Cancel"
+#~ msgstr "Отмени"
+
+#~ msgid "Open"
+#~ msgstr "Отвори"
+
+#~ msgid ""
+#~ "This page allows direct execution of commands on the Asterisk console. "
+#~ "Execute \"help\" to see a list of possible commands."
+#~ msgstr ""
+#~ "Тази страница позволява директно изпълнение на команди в Астериск "
+#~ "конзолата. Напишете \"help\" за да видите списъка с възможните команди."
+
+#~ msgid "Output"
+#~ msgstr "Резултат"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Броят трябва да е между 1 и %d"
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Брой"
+
+#~ msgid "Ping output:"
+#~ msgstr "Ping резултат:"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "Максималният брой на скоковете трябва да е между 1 and %d"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Максимален брой скокове"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "Превърни IP адрес в име на host"
+
+#~ msgid ""
+#~ "Traceroute may take a while to complete.  You may hit the Stop button on "
+#~ "your browser at any time to see the progress of failed traceroutes."
+#~ msgstr ""
+#~ "Възможно е да отнеме малко време за приключване на Traceroute.  Натиснете "
+#~ "Стоп бутона на браузера си когато видите че процеса е замръзнал."
+
+#~ msgid "Traceroute output:"
+#~ msgstr "Traceroute резултат:"
+
+#~ msgid "Live"
+#~ msgstr "Актуални"
 
 #~ msgid "Active Calls"
 #~ msgstr "Активни Разговори"

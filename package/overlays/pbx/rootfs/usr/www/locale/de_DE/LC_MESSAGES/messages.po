@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -584,9 +584,6 @@ msgstr "Dialplan"
 msgid "print"
 msgstr "drucken"
 
-msgid "Diagnostics"
-msgstr "Diagnose"
-
 msgid "Advanced"
 msgstr "Erweitert"
 
@@ -644,6 +641,9 @@ msgstr "Netzwerk-Verkehr"
 msgid "CPU Load"
 msgstr "CPU-Last"
 
+msgid "Logs"
+msgstr "Logs"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -658,18 +658,6 @@ msgstr "Manager"
 
 msgid "GUI Options"
 msgstr "GUI-Optionen"
-
-msgid "Logs"
-msgstr "Logs"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "ARP-Tabelle"
-
-msgid "Manager Interface"
-msgstr "Manager-Interface"
 
 msgid "System"
 msgstr "System"
@@ -688,9 +676,6 @@ msgstr "Pakete"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "Live Stats"
-msgstr "Live-Status"
 
 msgid "Help"
 msgstr "Hilfe"
@@ -1471,6 +1456,9 @@ msgstr "a-Law"
 msgid "u-law"
 msgstr "u-Law"
 
+msgid "Manager Interface"
+msgstr "Manager-Interface"
+
 msgid "Permissions"
 msgstr "Berechtigungen"
 
@@ -1586,104 +1574,6 @@ msgstr "DNS Service Records"
 
 msgid "Disable DNS SRV lookups."
 msgstr "keine DNS-SRV-Anfragen durchführen."
-
-msgid "ARP table"
-msgstr "ARP-Tabelle"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "IP-Adresse"
-
-msgid "MAC address"
-msgstr "MAC-Adresse"
-
-msgid "Hostname"
-msgstr "Hostname"
-
-msgid "delete arp entry"
-msgstr "ARP-Eintrag löschen"
-
-msgid "remove all entries from arp table"
-msgstr "alle Einträge aus der ARP-Tabelle löschen"
-
-msgid "Editor"
-msgstr "Editor"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "Die angegebene Datei (%s) existiert nicht."
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "Dateiinhalt (%s) gespeichert."
-
-msgid "File"
-msgstr "Datei"
-
-msgid "Contents"
-msgstr "Kontexte"
-
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgid "Open"
-msgstr "Öffnen"
-
-msgid "System log entries"
-msgstr "System-Log-Einträge"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-"Diese Seite erlaubt die direkte Ausführung von Kommandos auf der Asterisk-"
-"Konsole. Geben Sie \"help\" ein, um eine Liste der möglichen Kommandos zu "
-"bekommen."
-
-msgid "Command"
-msgstr "Befehl"
-
-msgid "Output"
-msgstr "Ausgabe"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Anzahl muß zwischen 1 und %d liegen "
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Anzahl"
-
-msgid "Ping output:"
-msgstr "Ping-Ausgabe:"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Die maximale Anzahl Hops muß zwischen 1 und %d liegen"
-
-msgid "Maximum number of hops"
-msgstr "maximale Anzahl Hops"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "IP-Adressen zu Hostnamen auflösen"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Traceroute braucht eine gewisse Zeit. Sie können den Stop-Knopf Ihres "
-"Browsers zu jeder Zeit drücken um den Fortschritt nicht erfolgreicher "
-"Traceroutes anzuzeigen."
-
-msgid "Traceroute output:"
-msgstr "Traceroute-Ausgabe:"
 
 #, fuzzy
 msgid ""
@@ -2487,6 +2377,9 @@ msgstr "Caller-ID/-Name"
 msgid "Basic"
 msgstr "Standard"
 
+msgid "Command"
+msgstr "Befehl"
+
 msgid "Filename"
 msgstr "Dateiname"
 
@@ -2896,13 +2789,13 @@ msgstr "Wollen Sie dieses Mitglied wirklich aus der Konferenz entfernen?"
 msgid "kick conference member"
 msgstr "Konferenz-Mitglied entfernen"
 
-msgid "Live"
-msgstr "Live"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
+
+msgid "System log entries"
+msgstr "System-Log-Einträge"
 
 msgid "Network"
 msgstr "Netzwerk"
@@ -2972,6 +2865,9 @@ msgid ""
 msgstr ""
 "Geben sie bei Bedarf einen anderen Port für die webGUI oben ein, falls sie "
 "die Defaults (80 für HTTP, 443 für HTTPS) nicht nutzen wollen."
+
+msgid "Hostname"
+msgstr "Hostname"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3336,6 +3232,106 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid "Diagnostics"
+#~ msgstr "Diagnose"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "ARP-Tabelle"
+
+#~ msgid "Live Stats"
+#~ msgstr "Live-Status"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP-Tabelle"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "IP-Adresse"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC-Adresse"
+
+#~ msgid "delete arp entry"
+#~ msgstr "ARP-Eintrag löschen"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "alle Einträge aus der ARP-Tabelle löschen"
+
+#~ msgid "Editor"
+#~ msgstr "Editor"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "Die angegebene Datei (%s) existiert nicht."
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "Dateiinhalt (%s) gespeichert."
+
+#~ msgid "File"
+#~ msgstr "Datei"
+
+#~ msgid "Contents"
+#~ msgstr "Kontexte"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "Open"
+#~ msgstr "Öffnen"
+
+#~ msgid ""
+#~ "This page allows direct execution of commands on the Asterisk console. "
+#~ "Execute \"help\" to see a list of possible commands."
+#~ msgstr ""
+#~ "Diese Seite erlaubt die direkte Ausführung von Kommandos auf der Asterisk-"
+#~ "Konsole. Geben Sie \"help\" ein, um eine Liste der möglichen Kommandos zu "
+#~ "bekommen."
+
+#~ msgid "Output"
+#~ msgstr "Ausgabe"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Anzahl muß zwischen 1 und %d liegen "
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Anzahl"
+
+#~ msgid "Ping output:"
+#~ msgstr "Ping-Ausgabe:"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "Die maximale Anzahl Hops muß zwischen 1 und %d liegen"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "maximale Anzahl Hops"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "IP-Adressen zu Hostnamen auflösen"
+
+#~ msgid ""
+#~ "Traceroute may take a while to complete.  You may hit the Stop button on "
+#~ "your browser at any time to see the progress of failed traceroutes."
+#~ msgstr ""
+#~ "Traceroute braucht eine gewisse Zeit. Sie können den Stop-Knopf Ihres "
+#~ "Browsers zu jeder Zeit drücken um den Fortschritt nicht erfolgreicher "
+#~ "Traceroutes anzuzeigen."
+
+#~ msgid "Traceroute output:"
+#~ msgstr "Traceroute-Ausgabe:"
+
+#~ msgid "Live"
+#~ msgstr "Live"
 
 #~ msgid "Active Calls"
 #~ msgstr "Aktive Gespräche"

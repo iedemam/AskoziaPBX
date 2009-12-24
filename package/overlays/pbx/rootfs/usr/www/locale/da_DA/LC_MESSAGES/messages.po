@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -566,9 +566,6 @@ msgstr "dialplan"
 msgid "print"
 msgstr "udskriv"
 
-msgid "Diagnostics"
-msgstr "Diagnose"
-
 msgid "Advanced"
 msgstr "Avanceret"
 
@@ -626,6 +623,9 @@ msgstr "Netværk Traffik"
 msgid "CPU Load"
 msgstr "CPU Forbrug"
 
+msgid "Logs"
+msgstr "Logbøger"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -640,18 +640,6 @@ msgstr "Manager"
 
 msgid "GUI Options"
 msgstr "GUI Indstillinger"
-
-msgid "Logs"
-msgstr "Logbøger"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "ARP tabel"
-
-msgid "Manager Interface"
-msgstr "Manager Interface"
 
 msgid "System"
 msgstr "System"
@@ -670,9 +658,6 @@ msgstr "Pakker"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "Live Stats"
-msgstr "Aktuel status"
 
 msgid "Help"
 msgstr "Hjælp"
@@ -1442,6 +1427,9 @@ msgstr "A-law"
 msgid "u-law"
 msgstr "U-law"
 
+msgid "Manager Interface"
+msgstr "Manager Interface"
+
 msgid "Permissions"
 msgstr "Rettigheder"
 
@@ -1556,100 +1544,6 @@ msgstr "DNS Tjeneste Poster"
 
 msgid "Disable DNS SRV lookups."
 msgstr "Deaktiver DNS SRV lookups."
-
-msgid "ARP table"
-msgstr "ARP faneblad"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "IP adresse"
-
-msgid "MAC address"
-msgstr "MAC adresse"
-
-msgid "Hostname"
-msgstr "Hostnavn"
-
-msgid "delete arp entry"
-msgstr "fjerne arp element"
-
-msgid "remove all entries from arp table"
-msgstr "fjern alle elementer fra arp faneblad"
-
-msgid "Editor"
-msgstr "Editor"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "Den specificerede fil (%s) eksisterer ikke."
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "Fil indhold (%s) gemt."
-
-msgid "File"
-msgstr "Fil"
-
-msgid "Contents"
-msgstr "Indhold"
-
-msgid "Cancel"
-msgstr "Fortryd"
-
-msgid "Open"
-msgstr "Åben"
-
-msgid "System log entries"
-msgstr "System punkter logbog "
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-
-msgid "Command"
-msgstr "Kommando"
-
-msgid "Output"
-msgstr "Udskrift"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Tælling skal være imellem 1 og %d"
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Tælling"
-
-msgid "Ping output:"
-msgstr "Ping udskrift"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Maximum antal af hop skal være imellem 1 og %d"
-
-msgid "Maximum number of hops"
-msgstr "Maxmimum antal af hop"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr ""
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Traceroute kan tage et stykke tid at genneføre. Du kan til enhver tid trykke "
-"Stop knappen i din browser for at se fremgangen af fejlede traceroutes."
-
-msgid "Traceroute output:"
-msgstr "Traceroute udskrift:"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -2402,6 +2296,9 @@ msgstr "Opkalds ID / Navn"
 msgid "Basic"
 msgstr "Simpel"
 
+msgid "Command"
+msgstr "Kommando"
+
 msgid "Filename"
 msgstr "Filnavn"
 
@@ -2797,15 +2694,15 @@ msgstr "Vil du virkeligt smide denne konference bruger af?"
 msgid "kick conference member"
 msgstr "drop konference bruger"
 
-msgid "Live"
-msgstr "Live"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "Hvis du ikke kan se grafen, så skal du måske  installere <a href=\"http://"
 "www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viserenr</a>."
+
+msgid "System log entries"
+msgstr "System punkter logbog "
 
 msgid "Network"
 msgstr "Netværk"
@@ -2870,6 +2767,9 @@ msgstr ""
 "Indtast et brugerdefineret port nummer for den viste webGUI ovenfor, hvis du "
 "ønsker at angive en anden port en standardporten (80 for HTTP, 443 for "
 "HTTPS)."
+
+msgid "Hostname"
+msgstr "Hostnavn"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3224,6 +3124,95 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Diagnostics"
+#~ msgstr "Diagnose"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "ARP tabel"
+
+#~ msgid "Live Stats"
+#~ msgstr "Aktuel status"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP faneblad"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "IP adresse"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC adresse"
+
+#~ msgid "delete arp entry"
+#~ msgstr "fjerne arp element"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "fjern alle elementer fra arp faneblad"
+
+#~ msgid "Editor"
+#~ msgstr "Editor"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "Den specificerede fil (%s) eksisterer ikke."
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "Fil indhold (%s) gemt."
+
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Contents"
+#~ msgstr "Indhold"
+
+#~ msgid "Cancel"
+#~ msgstr "Fortryd"
+
+#~ msgid "Open"
+#~ msgstr "Åben"
+
+#~ msgid "Output"
+#~ msgstr "Udskrift"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Tælling skal være imellem 1 og %d"
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Tælling"
+
+#~ msgid "Ping output:"
+#~ msgstr "Ping udskrift"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "Maximum antal af hop skal være imellem 1 og %d"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Maxmimum antal af hop"
+
+#~ msgid ""
+#~ "Traceroute may take a while to complete.  You may hit the Stop button on "
+#~ "your browser at any time to see the progress of failed traceroutes."
+#~ msgstr ""
+#~ "Traceroute kan tage et stykke tid at genneføre. Du kan til enhver tid "
+#~ "trykke Stop knappen i din browser for at se fremgangen af fejlede "
+#~ "traceroutes."
+
+#~ msgid "Traceroute output:"
+#~ msgstr "Traceroute udskrift:"
+
+#~ msgid "Live"
+#~ msgstr "Live"
 
 #~ msgid "Active Calls"
 #~ msgstr "Aktive Opkald"

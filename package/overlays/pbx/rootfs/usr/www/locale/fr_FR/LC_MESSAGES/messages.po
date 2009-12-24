@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -572,9 +572,6 @@ msgstr "Plan de numérotation"
 msgid "print"
 msgstr "Imprimer"
 
-msgid "Diagnostics"
-msgstr "Diagnostics"
-
 msgid "Advanced"
 msgstr "Configuration Avancée"
 
@@ -632,6 +629,9 @@ msgstr "Traffic réseau"
 msgid "CPU Load"
 msgstr "Charge CPU"
 
+msgid "Logs"
+msgstr "Logs"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -646,18 +646,6 @@ msgstr "Gestionnaire"
 
 msgid "GUI Options"
 msgstr "Options de l'interface"
-
-msgid "Logs"
-msgstr "Logs"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "Table ARP"
-
-msgid "Manager Interface"
-msgstr "Console Asterisk"
 
 msgid "System"
 msgstr "Système"
@@ -676,9 +664,6 @@ msgstr "Paquets"
 
 msgid "Status"
 msgstr "Etats"
-
-msgid "Live Stats"
-msgstr "Statistiques en direct"
 
 msgid "Help"
 msgstr "Aide"
@@ -1444,6 +1429,9 @@ msgstr "A-law"
 msgid "u-law"
 msgstr "u-law"
 
+msgid "Manager Interface"
+msgstr "Console Asterisk"
+
 msgid "Permissions"
 msgstr "Autorisations"
 
@@ -1556,103 +1544,6 @@ msgstr "Service d'enregistrement DNS"
 
 msgid "Disable DNS SRV lookups."
 msgstr "Désactiver le serveur DNS de recherche."
-
-msgid "ARP table"
-msgstr "Table ARP"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "Adresse IP"
-
-msgid "MAC address"
-msgstr "Adresse MAC"
-
-msgid "Hostname"
-msgstr "Nom du PABX"
-
-msgid "delete arp entry"
-msgstr "supprimer les entrées ARP"
-
-msgid "remove all entries from arp table"
-msgstr "supprimer toutes les entrées de la table ARP"
-
-msgid "Editor"
-msgstr "Editeur"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "Le fichier spécifié (% s) n'existe pas."
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "Contenu du dossier sauvegardé à (%s)."
-
-msgid "File"
-msgstr "Fichier"
-
-msgid "Contents"
-msgstr "Contenus"
-
-msgid "Cancel"
-msgstr "Annuler"
-
-msgid "Open"
-msgstr "Ouvrir"
-
-msgid "System log entries"
-msgstr "Système logs"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-"Cette page permet d'éxecuter les commandes de la console Asterisk. Taper "
-"\"help\" pour obtenir la liste des commandes."
-
-msgid "Command"
-msgstr "Commande"
-
-msgid "Output"
-msgstr "Résultat"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Le nombre doit être compris entre 1 et %d"
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Nombre de ping"
-
-msgid "Ping output:"
-msgstr "Résultat du ping:"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Le nombre maximum de sauts doit être compris entre 1 et %d"
-
-msgid "Maximum number of hops"
-msgstr "Nombre maximum de sauts"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "Résoudre les adresses IP des noms d'hôtes"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"Traceroute: L'execution de cette commande prend un certain temps. Il est "
-"possible d'appuyer sur le bouton Arrêt à tout moment pour consulter l'état "
-"de l'opération."
-
-msgid "Traceroute output:"
-msgstr "Résultat du traceroute:"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -2453,6 +2344,9 @@ msgstr "Numéro/Nom d'identification"
 msgid "Basic"
 msgstr "De base"
 
+msgid "Command"
+msgstr "Commande"
+
 msgid "Filename"
 msgstr "Nom du fichier"
 
@@ -2868,15 +2762,15 @@ msgstr "Voulez-vous exclure ce membre ?"
 msgid "kick conference member"
 msgstr "Exclure ce membre de la conférence"
 
-msgid "Live"
-msgstr "En direct"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "Si vous ne voyez pas de graphique, vous devez installer <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">SVG de Adobe</a>"
+
+msgid "System log entries"
+msgstr "Système logs"
 
 msgid "Network"
 msgstr "Réseau"
@@ -2952,6 +2846,9 @@ msgid ""
 msgstr ""
 "Vous pouvez personnaliser le port utilisé pour accéder à l'interface WEB "
 "(les ports par défaut sont 80 pour le HTTP, 443 pour le HTTPS)."
+
+msgid "Hostname"
+msgstr "Nom du PABX"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3332,6 +3229,105 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "Diagnostics"
+#~ msgstr "Diagnostics"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "Table ARP"
+
+#~ msgid "Live Stats"
+#~ msgstr "Statistiques en direct"
+
+#~ msgid "ARP table"
+#~ msgstr "Table ARP"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "Adresse IP"
+
+#~ msgid "MAC address"
+#~ msgstr "Adresse MAC"
+
+#~ msgid "delete arp entry"
+#~ msgstr "supprimer les entrées ARP"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "supprimer toutes les entrées de la table ARP"
+
+#~ msgid "Editor"
+#~ msgstr "Editeur"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "Le fichier spécifié (% s) n'existe pas."
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "Contenu du dossier sauvegardé à (%s)."
+
+#~ msgid "File"
+#~ msgstr "Fichier"
+
+#~ msgid "Contents"
+#~ msgstr "Contenus"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
+
+#~ msgid "Open"
+#~ msgstr "Ouvrir"
+
+#~ msgid ""
+#~ "This page allows direct execution of commands on the Asterisk console. "
+#~ "Execute \"help\" to see a list of possible commands."
+#~ msgstr ""
+#~ "Cette page permet d'éxecuter les commandes de la console Asterisk. Taper "
+#~ "\"help\" pour obtenir la liste des commandes."
+
+#~ msgid "Output"
+#~ msgstr "Résultat"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Le nombre doit être compris entre 1 et %d"
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Nombre de ping"
+
+#~ msgid "Ping output:"
+#~ msgstr "Résultat du ping:"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "Le nombre maximum de sauts doit être compris entre 1 et %d"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Nombre maximum de sauts"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "Résoudre les adresses IP des noms d'hôtes"
+
+#~ msgid ""
+#~ "Traceroute may take a while to complete.  You may hit the Stop button on "
+#~ "your browser at any time to see the progress of failed traceroutes."
+#~ msgstr ""
+#~ "Traceroute: L'execution de cette commande prend un certain temps. Il est "
+#~ "possible d'appuyer sur le bouton Arrêt à tout moment pour consulter "
+#~ "l'état de l'opération."
+
+#~ msgid "Traceroute output:"
+#~ msgstr "Résultat du traceroute:"
+
+#~ msgid "Live"
+#~ msgstr "En direct"
 
 #~ msgid "Active Calls"
 #~ msgstr "Appel(s) en cours"

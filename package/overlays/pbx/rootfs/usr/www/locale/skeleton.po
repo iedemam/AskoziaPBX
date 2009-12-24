@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -436,9 +436,6 @@ msgstr ""
 msgid "print"
 msgstr ""
 
-msgid "Diagnostics"
-msgstr ""
-
 msgid "Advanced"
 msgstr ""
 
@@ -493,6 +490,9 @@ msgstr ""
 msgid "CPU Load"
 msgstr ""
 
+msgid "Logs"
+msgstr ""
+
 msgid "RTP"
 msgstr ""
 
@@ -506,18 +506,6 @@ msgid "Manager"
 msgstr ""
 
 msgid "GUI Options"
-msgstr ""
-
-msgid "Logs"
-msgstr ""
-
-msgid "Ping/Traceroute"
-msgstr ""
-
-msgid "ARP Table"
-msgstr ""
-
-msgid "Manager Interface"
 msgstr ""
 
 msgid "System"
@@ -536,9 +524,6 @@ msgid "Packages"
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Live Stats"
 msgstr ""
 
 msgid "Help"
@@ -1232,6 +1217,9 @@ msgstr ""
 msgid "u-law"
 msgstr ""
 
+msgid "Manager Interface"
+msgstr ""
+
 msgid "Permissions"
 msgstr ""
 
@@ -1326,94 +1314,6 @@ msgid "DNS Service Records"
 msgstr ""
 
 msgid "Disable DNS SRV lookups."
-msgstr ""
-
-msgid "ARP table"
-msgstr ""
-
-msgid "LAN"
-msgstr ""
-
-msgid "IP address"
-msgstr ""
-
-msgid "MAC address"
-msgstr ""
-
-msgid "Hostname"
-msgstr ""
-
-msgid "delete arp entry"
-msgstr ""
-
-msgid "remove all entries from arp table"
-msgstr ""
-
-msgid "Editor"
-msgstr ""
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr ""
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr ""
-
-msgid "File"
-msgstr ""
-
-msgid "Contents"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Open"
-msgstr ""
-
-msgid "System log entries"
-msgstr ""
-
-msgid "This page allows direct execution of commands on the Asterisk console. Execute \"help\" to see a list of possible commands."
-msgstr ""
-
-msgid "Command"
-msgstr ""
-
-msgid "Output"
-msgstr ""
-
-msgid "Ping"
-msgstr ""
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr ""
-
-msgid "Traceroute"
-msgstr ""
-
-msgid "Count"
-msgstr ""
-
-msgid "Ping output:"
-msgstr ""
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr ""
-
-msgid "Maximum number of hops"
-msgstr ""
-
-msgid "Resolve IP addresses to hostnames"
-msgstr ""
-
-msgid "Traceroute may take a while to complete.  You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-
-msgid "Traceroute output:"
 msgstr ""
 
 msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to the system. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
@@ -2047,6 +1947,9 @@ msgstr ""
 msgid "Basic"
 msgstr ""
 
+msgid "Command"
+msgstr ""
+
 msgid "Filename"
 msgstr ""
 
@@ -2375,10 +2278,10 @@ msgstr ""
 msgid "kick conference member"
 msgstr ""
 
-msgid "Live"
+msgid "if you can't see the graph, you may have to install the <a href=\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 
-msgid "if you can't see the graph, you may have to install the <a href=\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+msgid "System log entries"
 msgstr ""
 
 msgid "Network"
@@ -2430,6 +2333,9 @@ msgid "webGUI port"
 msgstr ""
 
 msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
+msgstr ""
+
+msgid "Hostname"
 msgstr ""
 
 msgid "Hostname of the PBX."

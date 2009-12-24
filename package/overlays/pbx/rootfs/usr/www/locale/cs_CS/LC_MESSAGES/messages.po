@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -538,9 +538,6 @@ msgstr ""
 msgid "print"
 msgstr "tiskni"
 
-msgid "Diagnostics"
-msgstr "Diagnostika"
-
 msgid "Advanced"
 msgstr ""
 
@@ -598,6 +595,9 @@ msgstr "Využití sítě"
 msgid "CPU Load"
 msgstr "Využití CPU"
 
+msgid "Logs"
+msgstr "Logy"
+
 msgid "RTP"
 msgstr ""
 
@@ -612,18 +612,6 @@ msgstr ""
 
 msgid "GUI Options"
 msgstr ""
-
-msgid "Logs"
-msgstr "Logy"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "Tabulka ARP"
-
-msgid "Manager Interface"
-msgstr "Příkazová řádka"
 
 msgid "System"
 msgstr "Systém"
@@ -642,9 +630,6 @@ msgstr "Balíčky"
 
 msgid "Status"
 msgstr "Stav"
-
-msgid "Live Stats"
-msgstr "On-line statistiky"
 
 msgid "Help"
 msgstr "Nápověda"
@@ -1389,6 +1374,9 @@ msgstr ""
 msgid "u-law"
 msgstr ""
 
+msgid "Manager Interface"
+msgstr "Příkazová řádka"
+
 msgid "Permissions"
 msgstr ""
 
@@ -1492,100 +1480,6 @@ msgstr ""
 
 msgid "Disable DNS SRV lookups."
 msgstr ""
-
-msgid "ARP table"
-msgstr "Tabulka ARP"
-
-msgid "LAN"
-msgstr ""
-
-msgid "IP address"
-msgstr "IP adresa"
-
-msgid "MAC address"
-msgstr "MAC adresa"
-
-msgid "Hostname"
-msgstr "Název hostitele"
-
-msgid "delete arp entry"
-msgstr "odstranit arp záznam"
-
-msgid "remove all entries from arp table"
-msgstr "vymazat všechny záznamy z tabulky arp"
-
-msgid "Editor"
-msgstr ""
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr ""
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr ""
-
-msgid "File"
-msgstr ""
-
-msgid "Contents"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Open"
-msgstr ""
-
-msgid "System log entries"
-msgstr "Záznamy systému"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-"Tato stránka umožňuje vykonání příkazů pomocí Astrisk konzoly. Zadejte \"help"
-"\" pro zobrazení seznamu příkazů."
-
-msgid "Command"
-msgstr "Příkaz"
-
-msgid "Output"
-msgstr "Výstup"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Počet musí být mezi 1 a %d"
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Počet"
-
-msgid "Ping output:"
-msgstr "Výstup:"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "Maximální počet hopů musí být mezi 1 a %d"
-
-msgid "Maximum number of hops"
-msgstr "Maximální počet hopů"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "Přeložit IP adresu na název hostitele"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-
-msgid "Traceroute output:"
-msgstr "Výstup:"
 
 msgid ""
 "With some knowledge of how the Asterisk dialplan works, some basic "
@@ -2323,6 +2217,9 @@ msgstr ""
 msgid "Basic"
 msgstr ""
 
+msgid "Command"
+msgstr "Příkaz"
+
 msgid "Filename"
 msgstr ""
 
@@ -2704,15 +2601,15 @@ msgstr ""
 msgid "kick conference member"
 msgstr ""
 
-msgid "Live"
-msgstr "On-line"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "jestliže se graf nezobrazuje, nainstalujte si <a href=\"http://www.adobe.com/"
 "svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
+
+msgid "System log entries"
+msgstr "Záznamy systému"
 
 msgid "Network"
 msgstr "Síť"
@@ -2779,6 +2676,9 @@ msgid ""
 msgstr ""
 "Pokud chcete změnit standardní nastavení (80 pro HTTP, 443 pro HTTPS), "
 "zadejte libovolné číslo portu."
+
+msgid "Hostname"
+msgstr "Název hostitele"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3118,6 +3018,73 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Diagnostics"
+#~ msgstr "Diagnostika"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "Tabulka ARP"
+
+#~ msgid "Live Stats"
+#~ msgstr "On-line statistiky"
+
+#~ msgid "ARP table"
+#~ msgstr "Tabulka ARP"
+
+#~ msgid "IP address"
+#~ msgstr "IP adresa"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC adresa"
+
+#~ msgid "delete arp entry"
+#~ msgstr "odstranit arp záznam"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "vymazat všechny záznamy z tabulky arp"
+
+#~ msgid ""
+#~ "This page allows direct execution of commands on the Asterisk console. "
+#~ "Execute \"help\" to see a list of possible commands."
+#~ msgstr ""
+#~ "Tato stránka umožňuje vykonání příkazů pomocí Astrisk konzoly. Zadejte "
+#~ "\"help\" pro zobrazení seznamu příkazů."
+
+#~ msgid "Output"
+#~ msgstr "Výstup"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Počet musí být mezi 1 a %d"
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Počet"
+
+#~ msgid "Ping output:"
+#~ msgstr "Výstup:"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "Maximální počet hopů musí být mezi 1 a %d"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Maximální počet hopů"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "Přeložit IP adresu na název hostitele"
+
+#~ msgid "Traceroute output:"
+#~ msgstr "Výstup:"
+
+#~ msgid "Live"
+#~ msgstr "On-line"
 
 #~ msgid "Active Calls"
 #~ msgstr "Aktivní hovory"

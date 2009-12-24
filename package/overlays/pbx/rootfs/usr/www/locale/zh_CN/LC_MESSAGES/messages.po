@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -550,9 +550,6 @@ msgstr "拨号计划"
 msgid "print"
 msgstr "打印"
 
-msgid "Diagnostics"
-msgstr "症状"
-
 msgid "Advanced"
 msgstr "高级"
 
@@ -610,6 +607,9 @@ msgstr "网络流量"
 msgid "CPU Load"
 msgstr "CPU负载"
 
+msgid "Logs"
+msgstr "日志"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -624,18 +624,6 @@ msgstr "管理"
 
 msgid "GUI Options"
 msgstr "用户界面选项"
-
-msgid "Logs"
-msgstr "日志"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
-
-msgid "ARP Table"
-msgstr "ARP表"
-
-msgid "Manager Interface"
-msgstr "管理界面"
 
 msgid "System"
 msgstr "系统"
@@ -654,9 +642,6 @@ msgstr "软件包"
 
 msgid "Status"
 msgstr "状态"
-
-msgid "Live Stats"
-msgstr "实时统计"
 
 msgid "Help"
 msgstr ""
@@ -1419,6 +1404,9 @@ msgstr "A-Law"
 msgid "u-law"
 msgstr "u-Law"
 
+msgid "Manager Interface"
+msgstr "管理界面"
+
 msgid "Permissions"
 msgstr "权限"
 
@@ -1523,100 +1511,6 @@ msgstr "DNS服务器记录"
 
 msgid "Disable DNS SRV lookups."
 msgstr "禁用DNS SRV查找"
-
-msgid "ARP table"
-msgstr "ARP表"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "IP地址"
-
-msgid "MAC address"
-msgstr "MAC地址"
-
-msgid "Hostname"
-msgstr "主机名"
-
-msgid "delete arp entry"
-msgstr "删除arp条目"
-
-msgid "remove all entries from arp table"
-msgstr "删除arp表的所有条目"
-
-msgid "Editor"
-msgstr "编辑器"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "指定的文件 (%s) 不存在。"
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "文件内容 (%s) 已保存。"
-
-msgid "File"
-msgstr "文件"
-
-msgid "Contents"
-msgstr ""
-
-msgid "Cancel"
-msgstr "取消"
-
-msgid "Open"
-msgstr "打开"
-
-msgid "System log entries"
-msgstr "系统日志条目"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr "本页允许直接在Asterisk控制台上运行命令。运行 \"help\" 查看命令列表。"
-
-msgid "Command"
-msgstr "命令"
-
-msgid "Output"
-msgstr "输出"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "计数必须介于1和%d之间"
-
-msgid "Traceroute"
-msgstr "路由追踪(Traceroute)"
-
-msgid "Count"
-msgstr "计数"
-
-msgid "Ping output:"
-msgstr "Ping输出"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "最大跳数(hops)必须介于1和%d之间"
-
-msgid "Maximum number of hops"
-msgstr "最大跳数(hops)"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "解析IP地址为主机名"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-"路由追踪需要一些时间来完成。您可以在任何时候点击浏览器的停止按钮来查看失败的"
-"追踪进程。"
-
-msgid "Traceroute output:"
-msgstr "路由追踪结果："
 
 #, fuzzy
 msgid ""
@@ -2370,6 +2264,9 @@ msgstr "Caller ID / 名字"
 msgid "Basic"
 msgstr "基本"
 
+msgid "Command"
+msgstr "命令"
+
 msgid "Filename"
 msgstr "文件名"
 
@@ -2755,15 +2652,15 @@ msgstr "您真的要踢掉这个成员？"
 msgid "kick conference member"
 msgstr "踢掉与会成员"
 
-msgid "Live"
-msgstr "活动的"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "如果您不能看到这个图片，那么您可能需要安装<a href=\"http://www.adobe.com/svg/"
 "viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>。"
+
+msgid "System log entries"
+msgstr "系统日志条目"
 
 msgid "Network"
 msgstr "网络"
@@ -2829,6 +2726,9 @@ msgid ""
 msgstr ""
 "在上方为网页设置界面输入一个定制的端口号，如果您想替代其默认设置的话。(80 为 "
 "HTTP, 443 为 HTTPS)。"
+
+msgid "Hostname"
+msgstr "主机名"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3169,6 +3069,100 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "Diagnostics"
+#~ msgstr "症状"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "ARP Table"
+#~ msgstr "ARP表"
+
+#~ msgid "Live Stats"
+#~ msgstr "实时统计"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP表"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "IP地址"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC地址"
+
+#~ msgid "delete arp entry"
+#~ msgstr "删除arp条目"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "删除arp表的所有条目"
+
+#~ msgid "Editor"
+#~ msgstr "编辑器"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "指定的文件 (%s) 不存在。"
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "文件内容 (%s) 已保存。"
+
+#~ msgid "File"
+#~ msgstr "文件"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid "Open"
+#~ msgstr "打开"
+
+#~ msgid ""
+#~ "This page allows direct execution of commands on the Asterisk console. "
+#~ "Execute \"help\" to see a list of possible commands."
+#~ msgstr ""
+#~ "本页允许直接在Asterisk控制台上运行命令。运行 \"help\" 查看命令列表。"
+
+#~ msgid "Output"
+#~ msgstr "输出"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "计数必须介于1和%d之间"
+
+#~ msgid "Traceroute"
+#~ msgstr "路由追踪(Traceroute)"
+
+#~ msgid "Count"
+#~ msgstr "计数"
+
+#~ msgid "Ping output:"
+#~ msgstr "Ping输出"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "最大跳数(hops)必须介于1和%d之间"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "最大跳数(hops)"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "解析IP地址为主机名"
+
+#~ msgid ""
+#~ "Traceroute may take a while to complete.  You may hit the Stop button on "
+#~ "your browser at any time to see the progress of failed traceroutes."
+#~ msgstr ""
+#~ "路由追踪需要一些时间来完成。您可以在任何时候点击浏览器的停止按钮来查看失败"
+#~ "的追踪进程。"
+
+#~ msgid "Traceroute output:"
+#~ msgstr "路由追踪结果："
+
+#~ msgid "Live"
+#~ msgstr "活动的"
 
 #~ msgid "Active Calls"
 #~ msgstr "活动的通话"

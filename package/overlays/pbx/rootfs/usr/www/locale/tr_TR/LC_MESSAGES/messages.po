@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-17 10:47+0000\n"
+"POT-Creation-Date: 2009-12-23 16:04+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -500,9 +500,6 @@ msgstr "Aramaplanı"
 msgid "print"
 msgstr "yazdır"
 
-msgid "Diagnostics"
-msgstr "Diagnozlar"
-
 msgid "Advanced"
 msgstr "Gelişmiş"
 
@@ -560,6 +557,9 @@ msgstr "Ağ trafiği"
 msgid "CPU Load"
 msgstr "İşlemçi Yükü"
 
+msgid "Logs"
+msgstr "Günlükler"
+
 msgid "RTP"
 msgstr "RTP"
 
@@ -574,18 +574,6 @@ msgstr "Yönetmen"
 
 msgid "GUI Options"
 msgstr "Arayüz seçenekleri"
-
-msgid "Logs"
-msgstr "Günlükler"
-
-msgid "Ping/Traceroute"
-msgstr ""
-
-msgid "ARP Table"
-msgstr "ARP Tablosu"
-
-msgid "Manager Interface"
-msgstr "Arabirim Manajeri"
 
 msgid "System"
 msgstr "Sistem"
@@ -604,9 +592,6 @@ msgstr "Paketler"
 
 msgid "Status"
 msgstr "Statü"
-
-msgid "Live Stats"
-msgstr "Çanlı Veriler"
 
 msgid "Help"
 msgstr "Yardım"
@@ -1351,6 +1336,9 @@ msgstr "A-law"
 msgid "u-law"
 msgstr "u-law"
 
+msgid "Manager Interface"
+msgstr "Arabirim Manajeri"
+
 msgid "Permissions"
 msgstr "İzinlemeler"
 
@@ -1456,98 +1444,6 @@ msgstr "DNS Servis Kayıtları"
 
 msgid "Disable DNS SRV lookups."
 msgstr "DNS SRV aramaları iptal et."
-
-msgid "ARP table"
-msgstr "ARP tabelası"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "IP address"
-msgstr "İP adres"
-
-msgid "MAC address"
-msgstr "MAC adres"
-
-msgid "Hostname"
-msgstr "Bilgisayar adı"
-
-msgid "delete arp entry"
-msgstr "arp kaydını sil"
-
-msgid "remove all entries from arp table"
-msgstr "arp tablosundan tüm kayıtları sil"
-
-msgid "Editor"
-msgstr "Metin Düzenleyici"
-
-#, php-format
-msgid "The specified file (%s) does not exist."
-msgstr "Belirtilmiş dosya (%s) mevcut değil."
-
-#, php-format
-msgid "File contents (%s) saved."
-msgstr "Dosya içerikleri (%s) kayedildi."
-
-msgid "File"
-msgstr "Dosya"
-
-msgid "Contents"
-msgstr "İçerik"
-
-msgid "Cancel"
-msgstr "İptal"
-
-msgid "Open"
-msgstr "Aç"
-
-msgid "System log entries"
-msgstr "Sistem günlük kayıtları"
-
-msgid ""
-"This page allows direct execution of commands on the Asterisk console. "
-"Execute \"help\" to see a list of possible commands."
-msgstr ""
-
-msgid "Command"
-msgstr "Komut"
-
-msgid "Output"
-msgstr "Çıkış"
-
-msgid "Ping"
-msgstr "Ping"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Sayaç 1 ile %d arası olması gerekiyor"
-
-msgid "Traceroute"
-msgstr "Traceroute"
-
-msgid "Count"
-msgstr "Sayaç"
-
-msgid "Ping output:"
-msgstr "Ping çıkışı"
-
-#, php-format
-msgid "Maximum number of hops must be between 1 and %d"
-msgstr "En büyük hoplama sayısı 1 ile %d arasında olmalı"
-
-msgid "Maximum number of hops"
-msgstr "En büyük hoplama sayısı"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "İP adreslerini alan isimlerine dönüştür"
-
-msgid ""
-"Traceroute may take a while to complete.  You may hit the Stop button on "
-"your browser at any time to see the progress of failed traceroutes."
-msgstr ""
-
-msgid "Traceroute output:"
-msgstr ""
 
 #, fuzzy
 msgid ""
@@ -2281,6 +2177,9 @@ msgstr "Arayıcı İD'si / İsim"
 msgid "Basic"
 msgstr ""
 
+msgid "Command"
+msgstr "Komut"
+
 msgid "Filename"
 msgstr "Dosya adı"
 
@@ -2659,15 +2558,15 @@ msgstr "Bu üyeyi gerçekten dışlamak istiyor musunuz?"
 msgid "kick conference member"
 msgstr "konferans üyesini dışla"
 
-msgid "Live"
-msgstr "Canlı"
-
 msgid ""
 "if you can't see the graph, you may have to install the <a href=\"http://www."
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 "Grafiği göremiyorsanız <a href=\"http://www.adobe.com/svg/viewer/install/\" "
 "target=\"_blank\">Adobe SVG viewer</a> yüklemeniz gerekebilir."
+
+msgid "System log entries"
+msgstr "Sistem günlük kayıtları"
 
 msgid "Network"
 msgstr "Ağ"
@@ -2729,6 +2628,9 @@ msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
+
+msgid "Hostname"
+msgstr "Bilgisayar adı"
 
 #, fuzzy
 msgid "Hostname of the PBX."
@@ -3055,6 +2957,84 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Diagnostics"
+#~ msgstr "Diagnozlar"
+
+#~ msgid "ARP Table"
+#~ msgstr "ARP Tablosu"
+
+#~ msgid "Live Stats"
+#~ msgstr "Çanlı Veriler"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP tabelası"
+
+#~ msgid "LAN"
+#~ msgstr "LAN"
+
+#~ msgid "IP address"
+#~ msgstr "İP adres"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC adres"
+
+#~ msgid "delete arp entry"
+#~ msgstr "arp kaydını sil"
+
+#~ msgid "remove all entries from arp table"
+#~ msgstr "arp tablosundan tüm kayıtları sil"
+
+#~ msgid "Editor"
+#~ msgstr "Metin Düzenleyici"
+
+#~ msgid "The specified file (%s) does not exist."
+#~ msgstr "Belirtilmiş dosya (%s) mevcut değil."
+
+#~ msgid "File contents (%s) saved."
+#~ msgstr "Dosya içerikleri (%s) kayedildi."
+
+#~ msgid "File"
+#~ msgstr "Dosya"
+
+#~ msgid "Contents"
+#~ msgstr "İçerik"
+
+#~ msgid "Cancel"
+#~ msgstr "İptal"
+
+#~ msgid "Open"
+#~ msgstr "Aç"
+
+#~ msgid "Output"
+#~ msgstr "Çıkış"
+
+#~ msgid "Ping"
+#~ msgstr "Ping"
+
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Sayaç 1 ile %d arası olması gerekiyor"
+
+#~ msgid "Traceroute"
+#~ msgstr "Traceroute"
+
+#~ msgid "Count"
+#~ msgstr "Sayaç"
+
+#~ msgid "Ping output:"
+#~ msgstr "Ping çıkışı"
+
+#~ msgid "Maximum number of hops must be between 1 and %d"
+#~ msgstr "En büyük hoplama sayısı 1 ile %d arasında olmalı"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "En büyük hoplama sayısı"
+
+#~ msgid "Resolve IP addresses to hostnames"
+#~ msgstr "İP adreslerini alan isimlerine dönüştür"
+
+#~ msgid "Live"
+#~ msgstr "Canlı"
 
 #~ msgid "Active Calls"
 #~ msgstr "Aktif Aramalar"
