@@ -191,7 +191,7 @@ $menu['Status'][gettext("Logs")]				= array('status_logs.php');
 $menu['Advanced'][gettext("RTP")] 				= array('advanced_rtp.php');
 $menu['Advanced'][gettext("SIP")] 				= array('advanced_sip.php');
 $menu['Advanced'][gettext("IAX")] 				= array('advanced_iax.php');
-$menu['Advanced'][gettext("ISDN")] 				= array('advanced_isdn.php');
+//$menu['Advanced'][gettext("ISDN")] 				= array('advanced_isdn.php');
 $menu['Advanced'][gettext("Analog")] 			= array('advanced_analog.php');
 $menu['Advanced'][gettext("Manager")] 			= array('advanced_manager.php',
 												'advanced_manager_edit.php');

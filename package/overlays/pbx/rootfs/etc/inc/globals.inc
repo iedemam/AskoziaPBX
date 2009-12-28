@@ -69,6 +69,8 @@ $defaults['dahdi']['bri']['lbo'] = 0;
 $defaults['dahdi']['bri']['framing'] = 'ccs';
 $defaults['dahdi']['bri']['coding'] = 'ami';
 
+$defaults['dahdi']['loadzones'] = array('us');
+
 $defaults['accounts']['language'] = 'en-us';
 $defaults['accounts']['codec'] = array('ulaw');
 

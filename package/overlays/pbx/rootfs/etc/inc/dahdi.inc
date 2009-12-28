@@ -206,6 +206,8 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 		$ports = dahdi_get_ports();
 	}
 
+	$loadzones = dahdi_get_loadzones();
+
 	$conf = "# Hardware Info\n";
 	foreach ($ports as $port) {
 		if ($port['technology'] == "analog") {
@@ -265,21 +267,10 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 	$conf .= "# Tone Zones\n";
 	// loadzone=<zone>
 	// defaultzone=<zone>
-
-	//$analogconfig = $config['services']['analog'];
-	//
-	//if (!is_array($analogconfig['loadzone'])) {
-	//	$loadzones[] = "us";
-	//} else {
-	//	$loadzones = $analogconfig['loadzone'];
-	//}
-	//
-	//$n = count($loadzones);
-	//for ($i = 0; $i < $n; $i++) {
-	//	$conf .= "loadzone={$loadzones[$i]}\n";
-	//}
-	//$conf .= "defaultzone={$loadzones[0]}\n";
-
+	foreach ($loadzones as $zone) {
+		$conf .= "loadzone=" . $zone . "\n";
+	}
+	$conf .= "defaultzone=" . $loadzones[0] . "\n";
 	$conf .= "\n";
 
 
@@ -420,6 +411,29 @@ function chan_dahdi_conf_generate($return=false, $ports=false) {
 	$conf .= "\n";
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/chan_dahdi.conf", $conf);
+}
+
+function dahdi_get_loadzones() {
+	global $defaults;
+
+	if (is_array($GLOBALS['config']['interfaces']['dahdi-options']['loadzone'])) {
+		return $GLOBALS['config']['interfaces']['dahdi-options']['loadzone'];
+	}
+
+	return $defaults['dahdi']['loadzones'];
+}
+
+function dahdi_save_loadzones($loadzones) {
+	global $defaults, $g;
+
+	if (is_array($loadzones)) {
+		$GLOBALS['config']['interfaces']['dahdi-options']['loadzone'] = $loadzones;
+	} else {
+		$GLOBALS['config']['interfaces']['dahdi-options']['loadzone'] = $defaults['dahdi']['loadzones'];
+	}
+
+	write_config();
+	touch($g['dahdi_dirty_path']);
 }
 
 function dahdi_configure() {

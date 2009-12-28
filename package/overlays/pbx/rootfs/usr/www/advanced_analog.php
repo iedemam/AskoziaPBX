@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -33,47 +33,19 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("Analog"));
 
-$analogconfig = &$config['services']['analog'];
-
-if (!is_array($analogconfig['loadzone'])) {
-	$pconfig['loadzone'][] = "us";
-} else {
-	$pconfig['loadzone'] = $analogconfig['loadzone'];
-}
+$form['loadzone'] = dahdi_get_loadzones();
 
 
 if ($_POST) {
 
 	unset($input_errors);
-	$pconfig = $_POST;
-	
+	$form = $_POST;
+
 	parse_str($_POST['loadzones']);
-	$pconfig['loadzone'] = $gme;
-	if (!is_array($pconfig['loadzone'])) {
-		$pconfig['loadzone'][] = "us";
-	}
-
-	/* input validation *//*
-	$reqdfields = explode(" ", "nationalprefix internationalprefix");
-	$reqdfieldsn = explode(",", "National Prefix, International Prefix");
-	
-	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-
-	// is valid nationalprefix
-	if ($_POST['nationalprefix'] && !verify_is_numericint($_POST['nationalprefix'])) {
-		$input_errors[] = "A valid national prefix must be specified.";
-	}
-	// is valid internationalprefix
-	if ($_POST['internationalprefix'] && !verify_is_numericint($_POST['internationalprefix'])) {
-		$input_errors[] = "A valid international prefix must be specified.";
-	}*/
+	$form['loadzone'] = $gme;
 
 	if (!$input_errors) {
-		$analogconfig['loadzone'] = $pconfig['loadzone'];
-		
-		write_config();
-		touch($g['analog_dirty_path']);
+		dahdi_save_loadzones($form['loadzone']);
 		header("Location: advanced_analog.php");
 		exit;
 	}
@@ -91,18 +63,42 @@ if (file_exists($g['dahdi_dirty_path'])) {
 	$savemsg = get_std_save_message($retval);
 }
 
-?>
-<?php include("fbegin.inc"); ?>
-<form action="advanced_analog.php" method="post" name="iform" id="iform">
+include("fbegin.inc");
+
+$dahdi_loadzones = array(
+	"us" => gettext("United States / North America"),
+	"au" => gettext("Australia"),
+	"at" => gettext("Austria"),
+	"be" => gettext("Belgium"),
+	"cl" => gettext("Chile"),
+	"cn" => gettext("China"),
+	"fi" => gettext("Finland"),
+	"fr" => gettext("France"),
+	"gr" => gettext("Greece"),
+	"it" => gettext("Italy"),
+	"jp" => gettext("Japan"),
+	"my" => gettext("Malaysia"),
+	"nl" => gettext("Netherlands"),
+	"nz" => gettext("New Zealand"),
+	"no" => gettext("Norway"),
+	"ru" => gettext("Russia"),
+	"es" => gettext("Spain"),
+	"se" => gettext("Sweden"),
+	"tw" => gettext("Taiwan"),
+	"uk" => gettext("United Kingdom"),
+	"us-old" => gettext("United States Circa 1950/ North America")
+);
+
+?><form action="advanced_analog.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
 			<td width="20%" valign="top" class="vncell"><?=gettext("Tone Zones");?></td>
 			<td width="40%" class="vtable" valign="top"><strong><?=gettext("Loaded");?></strong>&nbsp;<i>(<?=gettext("drag-and-drop");?>)</i>
 				<ul id="gme" class="gme"><? 
 
-				foreach ($pconfig['loadzone'] as $loadzone) {
+				foreach ($form['loadzone'] as $loadzone) {
 					if (array_key_exists($loadzone, $dahdi_loadzones)) {
-						?><li class="gme" id="gme_<?=$loadzone;?>"><?=htmlspecialchars($dahdi_loadzones[$loadzone]);?></li><?
+						?><li class="gme" id="gme[]_<?=$loadzone;?>"><?=htmlspecialchars($dahdi_loadzones[$loadzone]);?></li><?
 					}
 				}
 
@@ -112,8 +108,8 @@ if (file_exists($g['dahdi_dirty_path'])) {
 				<ul id="gmd" class="gmd"><?
 
 				foreach ($dahdi_loadzones as $abbreviation=>$friendly) {
-					if (!in_array($abbreviation, $pconfig['loadzone'])) {
-						?><li class="gmd" id="gmd_<?=$abbreviation;?>"><?=htmlspecialchars($dahdi_loadzones[$abbreviation]);?></li><?
+					if (!in_array($abbreviation, $form['loadzone'])) {
+						?><li class="gmd" id="gmd[]_<?=$abbreviation;?>"><?=htmlspecialchars($dahdi_loadzones[$abbreviation]);?></li><?
 					}
 				}
 
@@ -146,8 +142,8 @@ if (file_exists($g['dahdi_dirty_path'])) {
 
 	function save_loadzone_states() {
 		var gms = document.getElementById('loadzones');
-		gms.value = jQuery('ul.gme').sortable('serialize', {key: 'gme'});
+		gms.value = jQuery('ul.gme').sortable('serialize', {key: 'gme[]'});
 	}
-// ]]>			
+// ]]>
 </script>
 <? include("fend.inc"); ?>

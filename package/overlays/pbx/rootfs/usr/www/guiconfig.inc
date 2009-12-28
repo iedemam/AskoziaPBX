@@ -1,10 +1,11 @@
 <?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
+	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -111,30 +112,6 @@ $isdn_dchannel_modes = array(
 //	"DRVR_AMV_B1_TE" => "",
 //	"DRVR_D64S" => "This driver can be used on single B-channel leased lines.",
 //	"DRVR_DUMMY" => "",
-);
-
-$dahdi_loadzones = array(
-	"us" => gettext("United States / North America"),
-	"au" => gettext("Australia"),
-	"at" => gettext("Austria"),
-	"be" => gettext("Belgium"),
-	"cl" => gettext("Chile"),
-	"cn" => gettext("China"),
-	"fi" => gettext("Finland"),
-	"fr" => gettext("France"),
-	"gr" => gettext("Greece"),
-	"it" => gettext("Italy"),
-	"jp" => gettext("Japan"),
-	"my" => gettext("Malaysia"),
-	"nl" => gettext("Netherlands"),
-	"nz" => gettext("New Zealand"),
-	"no" => gettext("Norway"),
-	"ru" => gettext("Russia"),
-	"es" => gettext("Spain"),
-	"se" => gettext("Sweden"),
-	"tw" => gettext("Taiwan"),
-	"uk" => gettext("United Kingdom"),
-	"us-old" => gettext("United States Circa 1950/ North America")
 );
 
 $system_tonezones = array(
