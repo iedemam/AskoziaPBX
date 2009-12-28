@@ -135,7 +135,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
-		$retval |= pbx_exec("module reload chan_iax2.so");
+		$retval |= pbx_exec("module reload chan_dahdi.so");
 		$retval |= pbx_exec("dialplan reload");
 	}
 
