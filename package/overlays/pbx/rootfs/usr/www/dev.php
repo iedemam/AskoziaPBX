@@ -100,7 +100,8 @@ function report_translation($devmodever, $page, $language, $original, $improved)
 		"\n" .
 		"improved:\n" .
 		$improved . "\n",
-		"From: localebot@askozia.com\r\n"
+		"From: localebot@askozia.com\r\n" .
+		"Date: " . gmdate("D, d M Y H:i:s") . " +0000\r\n"
 	);
 
 	if ($mail_sent) {
@@ -122,7 +123,8 @@ function report_hardware($devmodever, $description) {
 		"lspci:\n" .
 		implode("\n", $lspci) .
 		"\n",
-		"From: hardwarebot@askozia.com\r\n"
+		"From: hardwarebot@askozia.com\r\n" .
+		"Date: " . gmdate("D, d M Y H:i:s") . " +0000\r\n"
 	);
 
 	if ($mail_sent) {

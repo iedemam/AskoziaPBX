@@ -82,7 +82,8 @@ if ($_POST) {
 				$_POST['email_addr'],
 				gettext('AskoziaPBX Test E-mail'),
 				wordwrap(gettext('Your SMTP settings are working correctly. Voicemail to E-mail and missed-call notifications can now be used.'), 70),
-				"From: " . $_POST['address'] . "\r\n"
+				"From: " . $_POST['address'] . "\r\n" .
+				"Date: " . gmdate("D, d M Y H:i:s") . " +0000\r\n"
 			);
 			if ($mail_sent) {
 				$savemsg = gettext("E-mail has been sent successfully.");
