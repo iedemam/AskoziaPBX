@@ -125,7 +125,7 @@ function display_audio_codec_selector($enabled_codecs) {
 			<ul id="ace" class="ace" style="min-height:50px; cursor:pointer;">
 			<? foreach ($enabled_codecs as $codec): ?>
 				<? if (array_key_exists($codec, $audio_codecs)): ?>
-				<li class="ace" id="ace_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
+				<li class="ace" id="ace[]_<?=$codec;?>"><?=$audio_codecs[$codec];?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul>
@@ -134,7 +134,7 @@ function display_audio_codec_selector($enabled_codecs) {
 			<ul id="acd" class="acd" style="min-height:50px; cursor:pointer;">
 			<? foreach ($audio_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="acd" id="acd_<?=$codec;?>"><?=$friendly;?></li>
+				<li class="acd" id="acd[]_<?=$codec;?>"><?=$friendly;?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul><input id="a_codecs" name="a_codecs" type="hidden" value="">
@@ -164,7 +164,7 @@ function display_video_codec_selector($enabled_codecs) {
 			<ul id="vce" class="vce" style="min-height:50px; cursor:pointer;">
 				<? foreach ($enabled_codecs as $codec): ?>
 					<? if (array_key_exists($codec, $video_codecs)): ?>
-					<li class="vce" id="vce_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
+					<li class="vce" id="vce[]_<?=$codec;?>"><?=$video_codecs[$codec];?></li>
 					<? endif; ?>
 				<? endforeach; ?>
 			</ul>
@@ -173,7 +173,7 @@ function display_video_codec_selector($enabled_codecs) {
 			<ul id="vcd" class="vcd" style="min-height:50px; cursor:pointer;">
 			<? foreach ($video_codecs as $codec=>$friendly): ?>
 				<? if (!in_array($codec, $enabled_codecs)): ?>
-				<li class="vcd" id="vcd_<?=$codec;?>"><?=$friendly;?></li>
+				<li class="vcd" id="vcd[]_<?=$codec;?>"><?=$friendly;?></li>
 				<? endif; ?>
 			<? endforeach; ?>
 			</ul><input id="v_codecs" name="v_codecs" type="hidden" value="">
@@ -206,7 +206,7 @@ function display_callgroup_member_selector($current_members) {
 			
 			foreach ($current_members as $member) {
 				if (array_key_exists($member, $indexed_phones)) {
-					?><li class="gme" id="gme_<?=$member;?>"><?=pbx_uniqid_to_name($member);?>&nbsp;&lt;<?=$indexed_phones[$member]['extension'];?>&gt;</li><?
+					?><li class="gme" id="gme[]_<?=$member;?>"><?=pbx_uniqid_to_name($member);?>&nbsp;&lt;<?=$indexed_phones[$member]['extension'];?>&gt;</li><?
 				}
 			}
 			
@@ -218,7 +218,7 @@ function display_callgroup_member_selector($current_members) {
 
 			foreach ($indexed_phones as $uniqid=>$phone) {
 				if (!in_array($uniqid, $current_members)) {
-					?><li class="gmd" id="gmd_<?=$uniqid;?>"><?=pbx_uniqid_to_name($phone['uniqid']);?>&nbsp;&lt;<?=$phone['extension'];?>&gt;</li><?
+					?><li class="gmd" id="gmd[]_<?=$uniqid;?>"><?=pbx_uniqid_to_name($phone['uniqid']);?>&nbsp;&lt;<?=$phone['extension'];?>&gt;</li><?
 				}
 			}
 			

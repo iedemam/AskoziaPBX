@@ -158,7 +158,7 @@ include("fbegin.inc");
 
 	function save_groupmember_states() {
 		var gms = document.getElementById('groupmembers');
-		gms.value = jQuery('ul.gme').sortable('serialize', {key: 'gme'});
+		gms.value = jQuery('ul.gme').sortable('serialize', {key: 'gme[]'});
 	}
 // ]]>			
 </script>

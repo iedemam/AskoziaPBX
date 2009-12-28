@@ -266,9 +266,7 @@ if ($_POST) {
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_codec_states()">
-					<input id="a_codecs" name="a_codecs" type="hidden" value="">
-					<input id="v_codecs" name="v_codecs" type="hidden" value="">					 
+					<input id="submit" name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 					<?php if (isset($id) && $a_iaxproviders[$id]): ?>
 					<input name="id" type="hidden" value="<?=$id;?>"> 
 					<?php endif; ?>

@@ -34,9 +34,9 @@ function javascript_codec_selector($part) {
 
 		function save_codec_states() {
 			var acs = document.getElementById('a_codecs');
-			acs.value = jQuery('ul.ace').sortable('serialize', {key: 'ace'});
+			acs.value = jQuery('ul.ace').sortable('serialize', {key: 'ace[]'});
 			var vcs = document.getElementById('v_codecs');
-			vcs.value = jQuery('ul.vce').sortable('serialize', {key: 'vce'});
+			vcs.value = jQuery('ul.vce').sortable('serialize', {key: 'vce[]'});
 		}
 
 	<? elseif ($part == "ready") : ?>
