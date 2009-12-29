@@ -1,0 +1,6 @@
+default 0
+timeout 5
+
+title AskoziaPBX LiveCD
+kernel (cd)/boot/vmlinuz
+initrd (cd)/boot/initramfs.igz
