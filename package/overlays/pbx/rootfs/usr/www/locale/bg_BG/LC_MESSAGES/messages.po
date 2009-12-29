@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -838,62 +838,17 @@ msgstr "Австрия"
 msgid "Belgium"
 msgstr "Белгия"
 
-msgid "Chile"
-msgstr "Чили"
-
-msgid "China"
-msgstr "Китай"
-
-msgid "Finland"
-msgstr "Финландия"
-
-msgid "France"
-msgstr "Франция"
-
-msgid "Greece"
-msgstr "Гърция"
-
-msgid "Italy"
-msgstr "Италия"
-
-msgid "Japan"
-msgstr "Япония"
-
-msgid "Malaysia"
-msgstr "Малайзия"
-
-msgid "Netherlands"
-msgstr "Холандия"
-
-msgid "New Zealand"
-msgstr "Нова Зеландия"
-
-msgid "Norway"
-msgstr "Норвегия"
-
-msgid "Russia"
-msgstr "Русия"
-
-msgid "Spain"
-msgstr "Испания"
-
-msgid "Sweden"
-msgstr "Швеция"
-
-msgid "Taiwan"
-msgstr "Тайван"
-
-msgid "United Kingdom"
-msgstr "Великобритания"
-
-msgid "United States Circa 1950/ North America"
-msgstr "САЩ Около 1950/ Северна Америка"
-
 msgid "Brazil"
 msgstr "Бразилия"
 
 msgid "Bulgaria"
 msgstr "България"
+
+msgid "Chile"
+msgstr "Чили"
+
+msgid "China"
+msgstr "Китай"
 
 msgid "Czech Republic"
 msgstr "Чехия"
@@ -904,8 +859,17 @@ msgstr "Дания"
 msgid "Estonia"
 msgstr "Естония"
 
+msgid "Finland"
+msgstr "Финландия"
+
+msgid "France"
+msgstr "Франция"
+
 msgid "Germany"
 msgstr "Германия"
+
+msgid "Greece"
+msgstr "Гърция"
 
 msgid "Hungary"
 msgstr "Унгария"
@@ -916,11 +880,29 @@ msgstr "Индия"
 msgid "Israel"
 msgstr "Израел"
 
+msgid "Italy"
+msgstr "Италия"
+
+msgid "Japan"
+msgstr "Япония"
+
 msgid "Lithuania"
 msgstr "Литва"
 
+msgid "Malaysia"
+msgstr "Малайзия"
+
 msgid "Mexico"
 msgstr "Мексико"
+
+msgid "Netherlands"
+msgstr "Холандия"
+
+msgid "New Zealand"
+msgstr "Нова Зеландия"
+
+msgid "Norway"
+msgstr "Норвегия"
 
 msgid "Philippines"
 msgstr "Филипини"
@@ -940,11 +922,26 @@ msgstr "Сингапур"
 msgid "South Africa"
 msgstr "Южна Африка"
 
+msgid "Spain"
+msgstr "Испания"
+
+msgid "Sweden"
+msgstr "Швеция"
+
 msgid "Switzerland"
 msgstr "Швейцария"
 
+msgid "Taiwan"
+msgstr "Тайван"
+
 msgid "Thailand"
 msgstr "Тайланд"
+
+msgid "United Kingdom"
+msgstr "Великобритания"
+
+msgid "United States Circa 1950/ North America"
+msgstr "САЩ Около 1950/ Северна Америка"
 
 msgid "Venezuela / South America"
 msgstr "Венецуела / Южна Америка"
@@ -1256,6 +1253,9 @@ msgstr "Номер"
 
 msgid "Interface"
 msgstr "Интерфейс"
+
+msgid "Russia"
+msgstr "Русия"
 
 msgid "Tone Zones"
 msgstr "Сигнализации"

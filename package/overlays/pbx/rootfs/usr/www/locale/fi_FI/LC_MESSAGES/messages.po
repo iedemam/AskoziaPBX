@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -828,62 +828,17 @@ msgstr "Itävalta"
 msgid "Belgium"
 msgstr "Belgia"
 
-msgid "Chile"
-msgstr "Chile"
-
-msgid "China"
-msgstr "Kiina"
-
-msgid "Finland"
-msgstr "Suomi"
-
-msgid "France"
-msgstr "Ranska"
-
-msgid "Greece"
-msgstr "Kreikka"
-
-msgid "Italy"
-msgstr "Italia"
-
-msgid "Japan"
-msgstr "Japani"
-
-msgid "Malaysia"
-msgstr "Malaysia"
-
-msgid "Netherlands"
-msgstr "Hollanti"
-
-msgid "New Zealand"
-msgstr "Uusi Seelanti"
-
-msgid "Norway"
-msgstr "Norja"
-
-msgid "Russia"
-msgstr "Venäjä"
-
-msgid "Spain"
-msgstr "Espanja"
-
-msgid "Sweden"
-msgstr "Ruotsi"
-
-msgid "Taiwan"
-msgstr "Taiwan"
-
-msgid "United Kingdom"
-msgstr "Englanti"
-
-msgid "United States Circa 1950/ North America"
-msgstr "USA 1950 / Pohjois Amerikka"
-
 msgid "Brazil"
 msgstr "Brasilia"
 
 msgid "Bulgaria"
 msgstr "Bulgaria"
+
+msgid "Chile"
+msgstr "Chile"
+
+msgid "China"
+msgstr "Kiina"
 
 msgid "Czech Republic"
 msgstr "Tsekki"
@@ -894,8 +849,17 @@ msgstr "Tanska"
 msgid "Estonia"
 msgstr "Eesti"
 
+msgid "Finland"
+msgstr "Suomi"
+
+msgid "France"
+msgstr "Ranska"
+
 msgid "Germany"
 msgstr "Saksa"
+
+msgid "Greece"
+msgstr "Kreikka"
 
 msgid "Hungary"
 msgstr "Unkari"
@@ -906,11 +870,29 @@ msgstr "Intia"
 msgid "Israel"
 msgstr "Israel"
 
+msgid "Italy"
+msgstr "Italia"
+
+msgid "Japan"
+msgstr "Japani"
+
 msgid "Lithuania"
 msgstr "Liettua"
 
+msgid "Malaysia"
+msgstr "Malaysia"
+
 msgid "Mexico"
 msgstr "Mexico"
+
+msgid "Netherlands"
+msgstr "Hollanti"
+
+msgid "New Zealand"
+msgstr "Uusi Seelanti"
+
+msgid "Norway"
+msgstr "Norja"
 
 msgid "Philippines"
 msgstr "Filippiinit"
@@ -930,11 +912,26 @@ msgstr "Singapore"
 msgid "South Africa"
 msgstr "Etelä Afrikka"
 
+msgid "Spain"
+msgstr "Espanja"
+
+msgid "Sweden"
+msgstr "Ruotsi"
+
 msgid "Switzerland"
 msgstr "Sweitsi"
 
+msgid "Taiwan"
+msgstr "Taiwan"
+
 msgid "Thailand"
 msgstr "Taimaa"
+
+msgid "United Kingdom"
+msgstr "Englanti"
+
+msgid "United States Circa 1950/ North America"
+msgstr "USA 1950 / Pohjois Amerikka"
 
 msgid "Venezuela / South America"
 msgstr "Venezuela / Etelä Amerikka"
@@ -1246,6 +1243,9 @@ msgstr "Numero"
 
 msgid "Interface"
 msgstr "Käyttöliittymä"
+
+msgid "Russia"
+msgstr "Venäjä"
 
 msgid "Tone Zones"
 msgstr "Valintaääni Vyöhykkeet"

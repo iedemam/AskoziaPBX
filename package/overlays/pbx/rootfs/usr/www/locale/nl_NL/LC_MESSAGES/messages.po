@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -769,62 +769,17 @@ msgstr "Oostenrijk"
 msgid "Belgium"
 msgstr "België"
 
-msgid "Chile"
-msgstr "Chilië"
-
-msgid "China"
-msgstr "China"
-
-msgid "Finland"
-msgstr "Finland"
-
-msgid "France"
-msgstr "Frankrijk"
-
-msgid "Greece"
-msgstr "Griekenland"
-
-msgid "Italy"
-msgstr "Italië"
-
-msgid "Japan"
-msgstr "Japan"
-
-msgid "Malaysia"
-msgstr "Maleisië"
-
-msgid "Netherlands"
-msgstr "Nederland"
-
-msgid "New Zealand"
-msgstr "Nieuw Zeeland"
-
-msgid "Norway"
-msgstr "Noorwegen"
-
-msgid "Russia"
-msgstr "Rusland"
-
-msgid "Spain"
-msgstr "Spanje"
-
-msgid "Sweden"
-msgstr "Zweden"
-
-msgid "Taiwan"
-msgstr "Taiwan"
-
-msgid "United Kingdom"
-msgstr "Verenigd Koningrijk"
-
-msgid "United States Circa 1950/ North America"
-msgstr "Verenigde Staten Circa 1950/ Noord Amerika"
-
 msgid "Brazil"
 msgstr "Brazilië"
 
 msgid "Bulgaria"
 msgstr "Bulgarije"
+
+msgid "Chile"
+msgstr "Chilië"
+
+msgid "China"
+msgstr "China"
 
 msgid "Czech Republic"
 msgstr "Tsjechië"
@@ -835,8 +790,17 @@ msgstr "Denemarken"
 msgid "Estonia"
 msgstr "Estland"
 
+msgid "Finland"
+msgstr "Finland"
+
+msgid "France"
+msgstr "Frankrijk"
+
 msgid "Germany"
 msgstr "Duitsland"
+
+msgid "Greece"
+msgstr "Griekenland"
 
 msgid "Hungary"
 msgstr "Hongarijë"
@@ -847,11 +811,29 @@ msgstr "Indië"
 msgid "Israel"
 msgstr "Israël"
 
+msgid "Italy"
+msgstr "Italië"
+
+msgid "Japan"
+msgstr "Japan"
+
 msgid "Lithuania"
 msgstr "Lithouwen"
 
+msgid "Malaysia"
+msgstr "Maleisië"
+
 msgid "Mexico"
 msgstr "Mexico"
+
+msgid "Netherlands"
+msgstr "Nederland"
+
+msgid "New Zealand"
+msgstr "Nieuw Zeeland"
+
+msgid "Norway"
+msgstr "Noorwegen"
 
 msgid "Philippines"
 msgstr "Philipijnen"
@@ -871,11 +853,26 @@ msgstr "Singapoor"
 msgid "South Africa"
 msgstr "Zuid Afrika"
 
+msgid "Spain"
+msgstr "Spanje"
+
+msgid "Sweden"
+msgstr "Zweden"
+
 msgid "Switzerland"
 msgstr "Zwitserland"
 
+msgid "Taiwan"
+msgstr "Taiwan"
+
 msgid "Thailand"
 msgstr "Thailand"
+
+msgid "United Kingdom"
+msgstr "Verenigd Koningrijk"
+
+msgid "United States Circa 1950/ North America"
+msgstr "Verenigde Staten Circa 1950/ Noord Amerika"
 
 msgid "Venezuela / South America"
 msgstr "Venezuela / Zuid Amerika"
@@ -1195,6 +1192,9 @@ msgstr "Nummer"
 
 msgid "Interface"
 msgstr "Interfac"
+
+msgid "Russia"
+msgstr "Rusland"
 
 msgid "Tone Zones"
 msgstr "Toon Zone's"

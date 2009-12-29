@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -845,62 +845,17 @@ msgstr "Αυστρία"
 msgid "Belgium"
 msgstr "Βέλγιο"
 
-msgid "Chile"
-msgstr "Χιλή"
-
-msgid "China"
-msgstr "Κίνα"
-
-msgid "Finland"
-msgstr "Φινλανδία"
-
-msgid "France"
-msgstr "Γαλλία"
-
-msgid "Greece"
-msgstr "Ελλάδα"
-
-msgid "Italy"
-msgstr "Ιταλία"
-
-msgid "Japan"
-msgstr "Ιαπωνία"
-
-msgid "Malaysia"
-msgstr "Μαλαισία"
-
-msgid "Netherlands"
-msgstr "Ολλανδία"
-
-msgid "New Zealand"
-msgstr "Νέα Ζηλανδία"
-
-msgid "Norway"
-msgstr "Νορβηγία"
-
-msgid "Russia"
-msgstr "Ρωσία"
-
-msgid "Spain"
-msgstr "Ισπανία"
-
-msgid "Sweden"
-msgstr "Σουηδία"
-
-msgid "Taiwan"
-msgstr "Ταϊβάν"
-
-msgid "United Kingdom"
-msgstr "Ηνωμένο Βασίλειο"
-
-msgid "United States Circa 1950/ North America"
-msgstr "ΗΠΑ (1950)/ Βόρειος Αμερική"
-
 msgid "Brazil"
 msgstr "Βραζιλία"
 
 msgid "Bulgaria"
 msgstr "Βουλγαρία"
+
+msgid "Chile"
+msgstr "Χιλή"
+
+msgid "China"
+msgstr "Κίνα"
 
 msgid "Czech Republic"
 msgstr "Τσεχία"
@@ -911,8 +866,17 @@ msgstr "Δανία"
 msgid "Estonia"
 msgstr "Εσθονία"
 
+msgid "Finland"
+msgstr "Φινλανδία"
+
+msgid "France"
+msgstr "Γαλλία"
+
 msgid "Germany"
 msgstr "Γερμανία"
+
+msgid "Greece"
+msgstr "Ελλάδα"
 
 msgid "Hungary"
 msgstr "Ουγγαρία"
@@ -923,11 +887,29 @@ msgstr "Ινδία"
 msgid "Israel"
 msgstr "Ισραήλ"
 
+msgid "Italy"
+msgstr "Ιταλία"
+
+msgid "Japan"
+msgstr "Ιαπωνία"
+
 msgid "Lithuania"
 msgstr "Λιθουανία"
 
+msgid "Malaysia"
+msgstr "Μαλαισία"
+
 msgid "Mexico"
 msgstr "Μεξικό"
+
+msgid "Netherlands"
+msgstr "Ολλανδία"
+
+msgid "New Zealand"
+msgstr "Νέα Ζηλανδία"
+
+msgid "Norway"
+msgstr "Νορβηγία"
 
 msgid "Philippines"
 msgstr "Φιλιππίνες"
@@ -947,11 +929,26 @@ msgstr "Σιγκαπούρη"
 msgid "South Africa"
 msgstr "Νότια Αφρική"
 
+msgid "Spain"
+msgstr "Ισπανία"
+
+msgid "Sweden"
+msgstr "Σουηδία"
+
 msgid "Switzerland"
 msgstr "Ελβετία"
 
+msgid "Taiwan"
+msgstr "Ταϊβάν"
+
 msgid "Thailand"
 msgstr "Ταϊλάνδη"
+
+msgid "United Kingdom"
+msgstr "Ηνωμένο Βασίλειο"
+
+msgid "United States Circa 1950/ North America"
+msgstr "ΗΠΑ (1950)/ Βόρειος Αμερική"
 
 msgid "Venezuela / South America"
 msgstr "Βενεζουέλα / Νότιος Αμερική"
@@ -1267,6 +1264,9 @@ msgstr "Αριθμός"
 
 msgid "Interface"
 msgstr " "
+
+msgid "Russia"
+msgstr "Ρωσία"
 
 msgid "Tone Zones"
 msgstr "Ζώνες τόνων"

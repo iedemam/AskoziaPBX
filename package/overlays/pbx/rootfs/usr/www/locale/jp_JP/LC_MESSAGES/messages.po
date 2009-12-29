@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -833,62 +833,17 @@ msgstr "オーストリア"
 msgid "Belgium"
 msgstr "ベルギー"
 
-msgid "Chile"
-msgstr "チリ"
-
-msgid "China"
-msgstr "中華人民共和国"
-
-msgid "Finland"
-msgstr "フィンランド"
-
-msgid "France"
-msgstr "フランス"
-
-msgid "Greece"
-msgstr "ギリシャ"
-
-msgid "Italy"
-msgstr "イタリア"
-
-msgid "Japan"
-msgstr "日本"
-
-msgid "Malaysia"
-msgstr "マレーシア"
-
-msgid "Netherlands"
-msgstr "オランダ"
-
-msgid "New Zealand"
-msgstr "ニュージーランド"
-
-msgid "Norway"
-msgstr "ノルウェー"
-
-msgid "Russia"
-msgstr "ロシア"
-
-msgid "Spain"
-msgstr "スペイン"
-
-msgid "Sweden"
-msgstr "スウェーデン"
-
-msgid "Taiwan"
-msgstr "台湾"
-
-msgid "United Kingdom"
-msgstr "イギリス"
-
-msgid "United States Circa 1950/ North America"
-msgstr "United States Circa 1950/ North America"
-
 msgid "Brazil"
 msgstr "ブラジル"
 
 msgid "Bulgaria"
 msgstr "ブルガリア"
+
+msgid "Chile"
+msgstr "チリ"
+
+msgid "China"
+msgstr "中華人民共和国"
 
 msgid "Czech Republic"
 msgstr "チェコ共和国"
@@ -899,8 +854,17 @@ msgstr "デンマーク"
 msgid "Estonia"
 msgstr "エストニア"
 
+msgid "Finland"
+msgstr "フィンランド"
+
+msgid "France"
+msgstr "フランス"
+
 msgid "Germany"
 msgstr "ドイツ"
+
+msgid "Greece"
+msgstr "ギリシャ"
 
 msgid "Hungary"
 msgstr "ハンガリー"
@@ -911,11 +875,29 @@ msgstr "インド"
 msgid "Israel"
 msgstr "イスラエル"
 
+msgid "Italy"
+msgstr "イタリア"
+
+msgid "Japan"
+msgstr "日本"
+
 msgid "Lithuania"
 msgstr "リトアニア"
 
+msgid "Malaysia"
+msgstr "マレーシア"
+
 msgid "Mexico"
 msgstr "メキシコ"
+
+msgid "Netherlands"
+msgstr "オランダ"
+
+msgid "New Zealand"
+msgstr "ニュージーランド"
+
+msgid "Norway"
+msgstr "ノルウェー"
 
 msgid "Philippines"
 msgstr "フィリピン"
@@ -935,11 +917,26 @@ msgstr "シンガポール"
 msgid "South Africa"
 msgstr "南アフリカ"
 
+msgid "Spain"
+msgstr "スペイン"
+
+msgid "Sweden"
+msgstr "スウェーデン"
+
 msgid "Switzerland"
 msgstr "スイス"
 
+msgid "Taiwan"
+msgstr "台湾"
+
 msgid "Thailand"
 msgstr "タイ"
+
+msgid "United Kingdom"
+msgstr "イギリス"
+
+msgid "United States Circa 1950/ North America"
+msgstr "United States Circa 1950/ North America"
 
 msgid "Venezuela / South America"
 msgstr "べネズエラ"
@@ -1250,6 +1247,9 @@ msgstr "番号"
 
 msgid "Interface"
 msgstr "接続インターフェース"
+
+msgid "Russia"
+msgstr "ロシア"
 
 msgid "Tone Zones"
 msgstr "タイムゾーン"

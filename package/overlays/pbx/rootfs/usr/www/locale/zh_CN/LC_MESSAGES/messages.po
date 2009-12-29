@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -808,62 +808,17 @@ msgstr "奥地利"
 msgid "Belgium"
 msgstr "比利时"
 
-msgid "Chile"
-msgstr "智利"
-
-msgid "China"
-msgstr "中国"
-
-msgid "Finland"
-msgstr "芬兰"
-
-msgid "France"
-msgstr "法国"
-
-msgid "Greece"
-msgstr "希腊"
-
-msgid "Italy"
-msgstr "意大利"
-
-msgid "Japan"
-msgstr "日本"
-
-msgid "Malaysia"
-msgstr "马来西亚"
-
-msgid "Netherlands"
-msgstr "荷兰"
-
-msgid "New Zealand"
-msgstr "新西兰"
-
-msgid "Norway"
-msgstr "挪威"
-
-msgid "Russia"
-msgstr "俄罗斯"
-
-msgid "Spain"
-msgstr "西班牙"
-
-msgid "Sweden"
-msgstr "瑞典"
-
-msgid "Taiwan"
-msgstr "台湾"
-
-msgid "United Kingdom"
-msgstr "英联邦"
-
-msgid "United States Circa 1950/ North America"
-msgstr "美国1950/北美"
-
 msgid "Brazil"
 msgstr "巴西"
 
 msgid "Bulgaria"
 msgstr "保加利亚"
+
+msgid "Chile"
+msgstr "智利"
+
+msgid "China"
+msgstr "中国"
 
 msgid "Czech Republic"
 msgstr "捷克共和国"
@@ -874,8 +829,17 @@ msgstr "丹麦"
 msgid "Estonia"
 msgstr "爱沙尼亚"
 
+msgid "Finland"
+msgstr "芬兰"
+
+msgid "France"
+msgstr "法国"
+
 msgid "Germany"
 msgstr "德国"
+
+msgid "Greece"
+msgstr "希腊"
 
 msgid "Hungary"
 msgstr "匈牙利"
@@ -886,11 +850,29 @@ msgstr "印度"
 msgid "Israel"
 msgstr "以色列"
 
+msgid "Italy"
+msgstr "意大利"
+
+msgid "Japan"
+msgstr "日本"
+
 msgid "Lithuania"
 msgstr "立陶宛"
 
+msgid "Malaysia"
+msgstr "马来西亚"
+
 msgid "Mexico"
 msgstr "墨西哥"
+
+msgid "Netherlands"
+msgstr "荷兰"
+
+msgid "New Zealand"
+msgstr "新西兰"
+
+msgid "Norway"
+msgstr "挪威"
 
 msgid "Philippines"
 msgstr "菲律宾"
@@ -910,11 +892,26 @@ msgstr "新加坡"
 msgid "South Africa"
 msgstr "南非"
 
+msgid "Spain"
+msgstr "西班牙"
+
+msgid "Sweden"
+msgstr "瑞典"
+
 msgid "Switzerland"
 msgstr "瑞士"
 
+msgid "Taiwan"
+msgstr "台湾"
+
 msgid "Thailand"
 msgstr "泰国"
+
+msgid "United Kingdom"
+msgstr "英联邦"
+
+msgid "United States Circa 1950/ North America"
+msgstr "美国1950/北美"
 
 msgid "Venezuela / South America"
 msgstr "委内瑞拉 / 南美"
@@ -1232,6 +1229,9 @@ msgstr "数量"
 
 msgid "Interface"
 msgstr "接口"
+
+msgid "Russia"
+msgstr "俄罗斯"
 
 msgid "Tone Zones"
 msgstr "响铃区域"

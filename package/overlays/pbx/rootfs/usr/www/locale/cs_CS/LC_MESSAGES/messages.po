@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -796,62 +796,17 @@ msgstr "Rakousko"
 msgid "Belgium"
 msgstr "Belgie"
 
-msgid "Chile"
-msgstr "Chile"
-
-msgid "China"
-msgstr "Čína"
-
-msgid "Finland"
-msgstr "Finsko"
-
-msgid "France"
-msgstr "Francie"
-
-msgid "Greece"
-msgstr "Řecko"
-
-msgid "Italy"
-msgstr "Itálie"
-
-msgid "Japan"
-msgstr "Japonsko"
-
-msgid "Malaysia"
-msgstr "Malajsie"
-
-msgid "Netherlands"
-msgstr "Holandsko"
-
-msgid "New Zealand"
-msgstr "Nový Zéland"
-
-msgid "Norway"
-msgstr "Norsko"
-
-msgid "Russia"
-msgstr "Rusko"
-
-msgid "Spain"
-msgstr "Španělsko"
-
-msgid "Sweden"
-msgstr "Švédsko"
-
-msgid "Taiwan"
-msgstr "Tajwan"
-
-msgid "United Kingdom"
-msgstr "Spojené království"
-
-msgid "United States Circa 1950/ North America"
-msgstr ""
-
 msgid "Brazil"
 msgstr "Brazílie"
 
 msgid "Bulgaria"
 msgstr "Bulharsko"
+
+msgid "Chile"
+msgstr "Chile"
+
+msgid "China"
+msgstr "Čína"
 
 msgid "Czech Republic"
 msgstr "Česká republika"
@@ -862,8 +817,17 @@ msgstr "Dánsko"
 msgid "Estonia"
 msgstr "Estonsko"
 
+msgid "Finland"
+msgstr "Finsko"
+
+msgid "France"
+msgstr "Francie"
+
 msgid "Germany"
 msgstr "Německo"
+
+msgid "Greece"
+msgstr "Řecko"
 
 msgid "Hungary"
 msgstr "Maďarsko"
@@ -874,11 +838,29 @@ msgstr "Indie"
 msgid "Israel"
 msgstr "Izrael"
 
+msgid "Italy"
+msgstr "Itálie"
+
+msgid "Japan"
+msgstr "Japonsko"
+
 msgid "Lithuania"
 msgstr "Litva"
 
+msgid "Malaysia"
+msgstr "Malajsie"
+
 msgid "Mexico"
 msgstr "Mexiko"
+
+msgid "Netherlands"
+msgstr "Holandsko"
+
+msgid "New Zealand"
+msgstr "Nový Zéland"
+
+msgid "Norway"
+msgstr "Norsko"
 
 msgid "Philippines"
 msgstr "Filipíny"
@@ -898,11 +880,26 @@ msgstr "Singapur"
 msgid "South Africa"
 msgstr "Jižní Afrika"
 
+msgid "Spain"
+msgstr "Španělsko"
+
+msgid "Sweden"
+msgstr "Švédsko"
+
 msgid "Switzerland"
 msgstr "Švýcarsko"
 
+msgid "Taiwan"
+msgstr "Tajwan"
+
 msgid "Thailand"
 msgstr "Thajsko"
+
+msgid "United Kingdom"
+msgstr "Spojené království"
+
+msgid "United States Circa 1950/ North America"
+msgstr ""
 
 msgid "Venezuela / South America"
 msgstr "Venezuela / Jižní Afrika"
@@ -1209,6 +1206,9 @@ msgstr ""
 
 msgid "Interface"
 msgstr "Rozhraní"
+
+msgid "Russia"
+msgstr "Rusko"
 
 msgid "Tone Zones"
 msgstr ""

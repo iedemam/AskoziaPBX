@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:04+0000\n"
+"POT-Creation-Date: 2009-12-29 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -679,61 +679,16 @@ msgstr ""
 msgid "Belgium"
 msgstr ""
 
-msgid "Chile"
-msgstr ""
-
-msgid "China"
-msgstr ""
-
-msgid "Finland"
-msgstr ""
-
-msgid "France"
-msgstr ""
-
-msgid "Greece"
-msgstr ""
-
-msgid "Italy"
-msgstr ""
-
-msgid "Japan"
-msgstr ""
-
-msgid "Malaysia"
-msgstr ""
-
-msgid "Netherlands"
-msgstr ""
-
-msgid "New Zealand"
-msgstr ""
-
-msgid "Norway"
-msgstr ""
-
-msgid "Russia"
-msgstr ""
-
-msgid "Spain"
-msgstr ""
-
-msgid "Sweden"
-msgstr ""
-
-msgid "Taiwan"
-msgstr ""
-
-msgid "United Kingdom"
-msgstr ""
-
-msgid "United States Circa 1950/ North America"
-msgstr ""
-
 msgid "Brazil"
 msgstr ""
 
 msgid "Bulgaria"
+msgstr ""
+
+msgid "Chile"
+msgstr ""
+
+msgid "China"
 msgstr ""
 
 msgid "Czech Republic"
@@ -745,7 +700,16 @@ msgstr ""
 msgid "Estonia"
 msgstr ""
 
+msgid "Finland"
+msgstr ""
+
+msgid "France"
+msgstr ""
+
 msgid "Germany"
+msgstr ""
+
+msgid "Greece"
 msgstr ""
 
 msgid "Hungary"
@@ -757,10 +721,28 @@ msgstr ""
 msgid "Israel"
 msgstr ""
 
+msgid "Italy"
+msgstr ""
+
+msgid "Japan"
+msgstr ""
+
 msgid "Lithuania"
 msgstr ""
 
+msgid "Malaysia"
+msgstr ""
+
 msgid "Mexico"
+msgstr ""
+
+msgid "Netherlands"
+msgstr ""
+
+msgid "New Zealand"
+msgstr ""
+
+msgid "Norway"
 msgstr ""
 
 msgid "Philippines"
@@ -781,10 +763,25 @@ msgstr ""
 msgid "South Africa"
 msgstr ""
 
+msgid "Spain"
+msgstr ""
+
+msgid "Sweden"
+msgstr ""
+
 msgid "Switzerland"
 msgstr ""
 
+msgid "Taiwan"
+msgstr ""
+
 msgid "Thailand"
+msgstr ""
+
+msgid "United Kingdom"
+msgstr ""
+
+msgid "United States Circa 1950/ North America"
 msgstr ""
 
 msgid "Venezuela / South America"
@@ -1062,6 +1059,9 @@ msgid "Number"
 msgstr ""
 
 msgid "Interface"
+msgstr ""
+
+msgid "Russia"
 msgstr ""
 
 msgid "Tone Zones"
