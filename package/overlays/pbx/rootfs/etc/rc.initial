@@ -1,9 +1,11 @@
 #!/bin/sh
 
 # $Id$
-# part of m0n0wall (http://m0n0.ch/wall)
-#
-# Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+# originally part of m0n0wall (http://m0n0.ch/wall)
+# continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
+
+# Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+# Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
 # All rights reserved.
 
 # make sure the user can't kill us by pressing Ctrl-C
@@ -47,11 +49,10 @@ echo "4) Reset to factory defaults"
 echo "5) Reboot system"
 echo "6) Ping host"
 echo "7) Asterisk Console"
-## need an install option?
-#PLATFORM=`cat /etc/platform`
-#if [ $PLATFORM = "generic-pc-cdrom" ]; then
-#echo "8) Install on Hard Drive";
-#fi
+# need an install option?
+if [ -f /offload/livecd ]; then
+echo "8) Install on Hard Drive";
+fi
 echo
 
 echo -n "Enter a number: "
@@ -81,9 +82,9 @@ case ${opmode} in
 	/usr/sbin/asterisk -r
 	;;
 8)
-#	if [ "$PLATFORM" = "generic-pc-cdrom" ]; then
-#	/etc/rc.initial.install
-#	fi
+	if [ -f /offload/livecd ]; then
+	/etc/rc.initial.install
+	fi
 	;;
 9)
 	/bin/sh

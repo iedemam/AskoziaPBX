@@ -55,22 +55,23 @@ if ($g['booting']) {
 	/* check if there's already an fstab (NFS booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
 
-		if (strstr($g['platform'], "cdrom")) {
+		if (file_exists("/offload/livecd")) {
+			$livecd = true;
 			/* config is either on floppy disk or USB stick for CD-ROM version */
 
 			/* try the USB stick at da0 first, and if this fails, use the floppy disk  */
-			$cfgdevice = "da0";
-			$cfgpartition = "da0s1";
-			$cfgfstype = "msdos";
-
-			if (mwexec("/bin/mount -t msdos -r /dev/da0s1 {$g['cf_path']}") == 0) {
-				/* USB stick is OK */
-				echo "Using USB memory stick for configuration storage.\n";
-				mwexec("/bin/umount -f {$g['cf_path']}");
-			} else {
-				$cfgdevice = $cfgpartition = "fd0";
-
-				if (mwexec("/bin/mount -t msdos -r /dev/fd0 {$g['cf_path']}") != 0) {
+			//$cfgdevice = "da0";
+			//$cfgpartition = "da0s1";
+			//$cfgfstype = "msdos";
+            //
+			//if (mwexec("/bin/mount -t msdos -r /dev/da0s1 {$g['cf_path']}") == 0) {
+			//	/* USB stick is OK */
+			//	echo "Using USB memory stick for configuration storage.\n";
+			//	mwexec("/bin/umount -f {$g['cf_path']}");
+			//} else {
+			//	$cfgdevice = $cfgpartition = "fd0";
+            //
+			//	if (mwexec("/bin/mount -t msdos -r /dev/fd0 {$g['cf_path']}") != 0) {
 					echo <<<EOD
 
 
@@ -83,11 +84,12 @@ if ($g['booting']) {
 
 EOD;
 					sleep(5);
-				} else {
-					echo "Using floppy disk for configuration storage.\n";
-					mwexec("/bin/umount -f {$g['cf_path']}");
-				}
-			}
+
+			//	} else {
+			//		echo "Using floppy disk for configuration storage.\n";
+			//		mwexec("/bin/umount -f {$g['cf_path']}");
+			//	}
+			//}
 		} else {
 			/* iterate through the disks fdisk finds until one contains a config.xml */
 			$attempts = 2;
@@ -132,7 +134,7 @@ EOD;
 			}
 		}
 
-		if (!$cfgdevice) {
+		if (!$cfgdevice && !$livecd) {
 			/* no device found, print an error and die */
 			echo <<<EOD
 
@@ -191,7 +193,7 @@ if (!$noparseconfig) {
 
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if ($g['booting']) {
-				if (strstr($g['platform'], "cdrom")) {
+				if ($livecd) {
 					/* try copying the default config. to the floppy/USB stick */
 					reset_factory_defaults();
 

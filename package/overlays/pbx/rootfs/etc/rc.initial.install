@@ -4,7 +4,7 @@
 	$Id: rc.initial.install 200 2007-09-24 12:26:27Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2008-2009 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,16 @@
 	$fp = fopen('php://stdin', 'r');
 
 	$disks = storage_disk_get_devices();
+	$optdrvs = storage_cdrom_get_devices();
 
+	$stack = array();
+	foreach ($disks as $disk) {
+		if (!in_array($disk, $optdrvs)) {
+			$disk = substr($disk, 0,3);
+			array_push($stack, $disk);
+		}
+	}
+	$disks = array_unique($stack);
 	echo <<<EOD
 
 Valid disks are:
@@ -45,9 +54,7 @@ Valid disks are:
 EOD;
 
 	foreach ($disks as $disk) {
-		$info = storage_read_diskinfo($disk);
-		$name = storage_disk_get_name($disk);
-		echo $disk . "\t$name\t" . format_bytes($info['sizeinbytes']) . "\n";
+		echo (exec("dmesg | grep $disk | grep sector")) . "\n";
 	}
 
 	do {
@@ -76,29 +83,18 @@ EOD;
 	if (strcasecmp(chop(fgets($fp)), "y") == 0) {
 
 		echo "Installing...";
+		mwexec("/bin/gunzip -c /offload/firmware.img.gz | dd of=/dev/{$target_disk} bs=512");
+		echo "done\n";
 
-		/* mount CD-ROM */
-		@mkdir("/cdrom");
-		if (mwexec("/bin/mount -r -t cd9660 /dev/acd0 /cdrom") != 0) {
-			echo "failed! (cannot mount CD-ROM)";
-		} else if (!file_exists("/cdrom/firmware.img.gz")) {
-			echo "failed! (firmware not found)\n";
-		} else {
-			mwexec("/bin/gunzip -c /cdrom/firmware.img.gz | dd of=/dev/$target_disk bs=512");
-			echo "done\n";
-        
-			/* copy existing configuration */
-			echo "Copying configuration...";
-			@mkdir("/mnttmp");
-			mwexec("/bin/mount -w -o noatime /dev/{$target_disk}a /mnttmp");
-			copy("{$g['conf_path']}/config.xml", "/mnttmp/conf/config.xml");
-			mwexec("/bin/umount /mnttmp");
-			echo "done\n";
-        
-			mwexec("/bin/umount /cdrom");
-        
-			system_reboot_sync();
-		}
+		/* copy existing configuration */
+		echo "Copying configuration...";
+		@mkdir("/mnttmp");
+		mwexec("/bin/mount -w -o noatime /dev/{$target_disk}1 /mnttmp");
+		mwexec("cp {$g['conf_path']}/config.xml /mnttmp/conf/");
+		mwexec("/bin/umount /mnttmp");
+		echo "done\n";
+
+		system_reboot_sync();
 	}
 
 ?>

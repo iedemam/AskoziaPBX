@@ -276,10 +276,12 @@ function storage_read_diskinfo($device) {
 
 
 
-
+function storage_cdrom_get_devices() {
+	return explode(" ", trim(preg_replace("/drive name: /", "", exec("/sbin/sysctl -n dev.cdrom.info |grep \"drive name\""))));
+}
 
 function storage_disk_get_devices() {
-	return explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+	return explode(" ", trim(exec("/bin/ls /dev | grep '[s|h]d[a-z]' | tr \"\n\" \" \"")));
 }
 
 function storage_disk_get_name($device) {

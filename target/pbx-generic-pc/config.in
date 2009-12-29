@@ -22,7 +22,7 @@ SDECFG_ARCH="x86"
 SDECFG_X86_OPT="i486"
 
 # firmware type
-SDECFGSET_IMAGE='firmware'
+SDECFG_IMAGE='livecd'
 
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"

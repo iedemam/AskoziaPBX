@@ -3,6 +3,13 @@
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 export PATH
 
+echo "checking for livecd..."
+mount /dev/hdc /offload
+if [ -f /offload/livecd ]; then
+	echo " - found!"
+	exit 0
+fi
+
 echo "attempting to mount /offload partition..."
 disks=$(fdisk -l | grep "^/dev/" | busybox cut -c 6-8 | busybox uniq)
 for disk in $disks
