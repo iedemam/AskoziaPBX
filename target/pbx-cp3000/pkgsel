@@ -38,7 +38,7 @@ X ncurses
 X termcap
 X libiconv
 
-X common deps
+# common deps
 X bzip2
 X zlib
 X openssl
