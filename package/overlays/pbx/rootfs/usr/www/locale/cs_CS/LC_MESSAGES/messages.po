@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -662,7 +662,7 @@ msgid "webGUI Configuration"
 msgstr "webGUI konfigurace"
 
 #, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "AskoziaPBX  &copy; 2007-2008 IKT. Všechna práva vyhrazena."
 
 msgid "view license"
@@ -2608,8 +2608,17 @@ msgstr ""
 "jestliže se graf nezobrazuje, nainstalujte si <a href=\"http://www.adobe.com/"
 "svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 
+msgid "Stopped updates"
+msgstr ""
+
+msgid "Resuming updates"
+msgstr ""
+
 msgid "System log entries"
 msgstr "Záznamy systému"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "Síť"

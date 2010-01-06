@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2009-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -40,10 +40,25 @@ include("fbegin.inc");
 <!--
 
 	var last_line;
+	var auto_updating = true;
+	var msg_disabled = '<?=gettext("Stopped updates");?>';
+	var msg_enabled = '<?=gettext("Resuming updates");?>';
 
 	jQuery(document).ready(function(){
 		update();
 	});
+
+	function toggle_auto_updating() {
+		if (auto_updating) {
+			auto_updating = false;
+		} else {
+			auto_updating = true;
+			jQuery("#log_contents").append(
+				'<div class="logentry">' + msg_enabled + '</div>'
+			);
+			update();
+		}
+	}
 
 	function update() {
 		jQuery.get("cgi-bin/ajax.cgi", { exec_shell: "logread" }, function(data){
@@ -73,7 +88,13 @@ include("fbegin.inc");
 
 		});
 
-		setTimeout("update()", 5000);
+		if (!auto_updating) {
+			jQuery("#log_contents").append(
+				'<div class="logentry">' + msg_disabled + '</div>'
+			);
+		} else {
+			setTimeout("update()", 5000);
+		}
 	}
 
 //-->
@@ -87,6 +108,9 @@ include("fbegin.inc");
 				</tr>
 			</table>
 			<div id="log_contents"></div>
+			<div style="float:right; padding-top:5px" id="log_controls">
+				<input id=update_toggle" type="submit" class="formbtn" value="<?=gettext("Toggle auto-updates");?>" onclick="toggle_auto_updating()">
+			</div>
 		</td>
 	</tr>
 </table>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -631,7 +631,8 @@ msgstr "descargar un archivo de backup"
 msgid "webGUI Configuration"
 msgstr "Configuración del webGUI"
 
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+#, fuzzy
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "Askozia&reg;PBX &copy; 2007-2009 IKT. Todos los derechos reservados."
 
 msgid "view license"
@@ -2623,8 +2624,18 @@ msgstr ""
 "Si no puede ver el gráfico, quizá deba instalar <a href=\"http://www.adobe."
 "com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 
+msgid "Stopped updates"
+msgstr ""
+
+#, fuzzy
+msgid "Resuming updates"
+msgstr "minutos"
+
 msgid "System log entries"
 msgstr "Entradas del Log del sistema"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "Red"

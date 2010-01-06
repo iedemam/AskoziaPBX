@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -624,7 +624,7 @@ msgid "webGUI Configuration"
 msgstr "webGUİ Ayarları"
 
 #, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tüm haklar saklı."
 
 msgid "view license"
@@ -2565,8 +2565,18 @@ msgstr ""
 "Grafiği göremiyorsanız <a href=\"http://www.adobe.com/svg/viewer/install/\" "
 "target=\"_blank\">Adobe SVG viewer</a> yüklemeniz gerekebilir."
 
+msgid "Stopped updates"
+msgstr ""
+
+#, fuzzy
+msgid "Resuming updates"
+msgstr "dakika"
+
 msgid "System log entries"
 msgstr "Sistem günlük kayıtları"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "Ağ"

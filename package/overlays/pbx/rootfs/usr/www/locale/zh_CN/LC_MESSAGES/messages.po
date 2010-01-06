@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -674,7 +674,7 @@ msgid "webGUI Configuration"
 msgstr "网页设置界面"
 
 #, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 
 msgid "view license"
@@ -2659,8 +2659,18 @@ msgstr ""
 "如果您不能看到这个图片，那么您可能需要安装<a href=\"http://www.adobe.com/svg/"
 "viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>。"
 
+msgid "Stopped updates"
+msgstr ""
+
+#, fuzzy
+msgid "Resuming updates"
+msgstr "分钟"
+
 msgid "System log entries"
 msgstr "系统日志条目"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "网络"

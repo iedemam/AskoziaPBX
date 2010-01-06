@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -706,7 +706,7 @@ msgid "webGUI Configuration"
 msgstr "Διαχείριση τηλεφωνικού κέντρου"
 
 #, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Με επιφύλαξη παντός δικαιώματος."
 
 msgid "view license"
@@ -2835,8 +2835,18 @@ msgstr ""
 "\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG "
 "viewer</a>."
 
+msgid "Stopped updates"
+msgstr ""
+
+#, fuzzy
+msgid "Resuming updates"
+msgstr "λεπτά"
+
 msgid "System log entries"
 msgstr "Εγγραφές ημερολογίου συστήματος"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "Ενσύρματο δίκτυο"

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -690,7 +690,7 @@ msgid "webGUI Configuration"
 msgstr "Verkkokäyttöliittymän Konfigurointi"
 
 #, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
 
 msgid "view license"
@@ -2754,8 +2754,18 @@ msgstr ""
 "jos et pysty näkemään graafia, sinun on ehkä asennettava <a href=\"http://"
 "www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 
+msgid "Stopped updates"
+msgstr ""
+
+#, fuzzy
+msgid "Resuming updates"
+msgstr "minuttia"
+
 msgid "System log entries"
 msgstr "Järjestelmän loki tallennukset"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "Verkko"

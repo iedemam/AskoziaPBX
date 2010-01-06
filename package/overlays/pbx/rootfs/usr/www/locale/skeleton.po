@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -556,7 +556,7 @@ msgstr ""
 msgid "webGUI Configuration"
 msgstr ""
 
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr ""
 
 msgid "view license"
@@ -2281,7 +2281,16 @@ msgstr ""
 msgid "if you can't see the graph, you may have to install the <a href=\"http://www.adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 
+msgid "Stopped updates"
+msgstr ""
+
+msgid "Resuming updates"
+msgstr ""
+
 msgid "System log entries"
+msgstr ""
+
+msgid "Toggle auto-updates"
 msgstr ""
 
 msgid "Network"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-29 13:12+0000\n"
+"POT-Creation-Date: 2010-01-06 13:42+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -647,7 +647,7 @@ msgid "webGUI Configuration"
 msgstr "Konfiguracja webGUI"
 
 #, fuzzy
-msgid "Askozia&reg;PBX &copy; 2007-2009 IKT. All rights reserved."
+msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr "AskoziaPBX &copy; 2007-2008 IKT. Wszystkie prawa zastrzeżone."
 
 msgid "view license"
@@ -2657,8 +2657,18 @@ msgid ""
 "adobe.com/svg/viewer/install/\" target=\"_blank\">Adobe SVG viewer</a>."
 msgstr ""
 
+msgid "Stopped updates"
+msgstr ""
+
+#, fuzzy
+msgid "Resuming updates"
+msgstr "minut"
+
 msgid "System log entries"
 msgstr "Pozycje logu systemowego"
+
+msgid "Toggle auto-updates"
+msgstr ""
 
 msgid "Network"
 msgstr "Sieć"
