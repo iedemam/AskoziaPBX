@@ -56,7 +56,7 @@
 			<extension>00009253</extension>
 			<uniqid>APPLICATION-MAPPING-202074715246f8385a7a820</uniqid>
 			<app-command>MSxBbnN3ZXIoKQ==</app-command>
-			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4p</app-command>
+			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4tdXMp</app-command>
 			<app-command>MyxXYWtlTWUoKQ==</app-command>
 			<app-command>NCxIYW5ndXAoKQ==</app-command>
 			<descr>Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.</descr>
