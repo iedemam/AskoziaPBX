@@ -429,6 +429,21 @@ function system_load_kernel_modules() {
 	// make sure dahdi core is loaded if none of the modules
 	// have found compatible hardware
 	mwexec("/sbin/modprobe -q dahdi");
+
+
+	// is xorcom stuff compiled for this platform?
+	if (file_exists("/etc/xorcom")) {
+		mwexec("/sbin/modprobe -q xpp");
+		mwexec("/sbin/modprobe -q xpp_usb");
+		mwexec("/sbin/modprobe -q xpd_fxo");
+		// nothing detected? unload...
+		mwexec("/sbin/modprobe -q xpd_fxs");
+		// nothing detected? unload...
+		mwexec("/sbin/modprobe -q xpd_pri");
+		// nothing detected? unload...
+		mwexec("/sbin/modprobe -q xpd_bri");
+		// nothing detected? unload...
+	}
 }
 
 function system_get_product_name() {
