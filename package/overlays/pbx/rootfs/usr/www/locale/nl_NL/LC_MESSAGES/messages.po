@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -21,9 +21,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Name"
+msgstr "Naam"
+
+msgid "Number"
+msgstr "Nummer"
+
 #, fuzzy
 msgid "Port"
 msgstr "Portugal"
+
+msgid "Host"
+msgstr "Host"
+
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+msgid "Public Number"
+msgstr ""
 
 msgid "Package activated successfully."
 msgstr "Pakket succesvol geactiveerd."
@@ -39,6 +54,41 @@ msgstr "Pakket succesvol hersteld."
 
 msgid "Package installed successfully."
 msgstr "Pakket succesvol gëinstalleerd"
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr "Het veld '%s' bevat ongeldige karakters."
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -97,6 +147,33 @@ msgstr "Belstring"
 msgid "An invalid dialstring was entered."
 msgstr "Een geldig post moet worden gekozen."
 
+#, fuzzy
+msgid "An invalid port was entered."
+msgstr "Een geldig post moet worden gekozen."
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr ""
+
+#, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr ""
+
+msgid "A valid Caller ID string must be specified."
+msgstr "Een geldig Caller ID string moeten worden vermeld."
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr ""
+"Een binnenkomende beller-ID string moeten worden vermeld om te overschrijven."
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "het veld '%s' is verplicht."
+
+#, php-format
+msgid "The %s field must be numeric."
+msgstr ""
+
 msgid "Subject"
 msgstr "Onderwerp"
 
@@ -133,8 +210,8 @@ msgstr "webGUI taal"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr ""
 
-msgid "Audio Codecs"
-msgstr ""
+msgid "Audio"
+msgstr "Geluid"
 
 msgid "Enabled"
 msgstr "Ingeschakeld"
@@ -145,8 +222,8 @@ msgstr "Slepen"
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-msgid "Video Codecs"
-msgstr "Video Codecs"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "Groepsleden"
@@ -166,7 +243,8 @@ msgid ""
 "answered."
 msgstr ""
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "Binnekomende post(en)"
 
 msgid "add incoming extension mapping"
@@ -261,8 +339,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr ""
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "Binnekomende post(en)"
 
 msgid "Source Name &lt;number&gt;"
 msgstr ""
@@ -279,7 +358,7 @@ msgstr ""
 msgid "Disable overrides"
 msgstr ""
 
-msgid "Outgoing Caller ID"
+msgid "Outgoing Presentation"
 msgstr ""
 
 msgid "Your Name &lt;number&gt;"
@@ -291,14 +370,15 @@ msgstr ""
 msgid "Send phones' Caller ID"
 msgstr ""
 
-msgid "Dialing Pattern(s)"
+#, fuzzy
+msgid "Outgoing Patterns"
 msgstr "Bel Patronen"
 
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -451,9 +531,6 @@ msgstr "Omschrijving"
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
-msgid "Public Number"
-msgstr ""
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -497,6 +574,17 @@ msgid "Voicemail"
 msgstr ""
 
 msgid "enable voicemail to e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "Provider host URL or IP address and optional port."
+msgstr "IAX proxyhost URL of het IP-adres en optionele poort."
+
+#, fuzzy
+msgid "disabled"
+msgstr "Uitgeschakeld"
+
+msgid "The provider will be contacted this often to check its availability."
 msgstr ""
 
 msgid "Dialplan"
@@ -1157,17 +1245,8 @@ msgstr ""
 "interface hardware). Click op een onderstaande account type om te kunnen "
 "starten."
 
-msgid "Name"
-msgstr "Naam"
-
 msgid "Pattern(s)"
 msgstr "Patroo(n)(e)n "
-
-msgid "Username"
-msgstr "Gebruikersnaam"
-
-msgid "Host"
-msgstr "Host"
 
 msgid "click to enable provider"
 msgstr "Click om de provider te activeren"
@@ -1186,9 +1265,6 @@ msgstr "Wil je deze provider echt verwijderen?"
 
 msgid "delete provider"
 msgstr "Provider verwijderen"
-
-msgid "Number"
-msgstr "Nummer"
 
 msgid "Interface"
 msgstr "Interfac"
@@ -1368,9 +1444,6 @@ msgstr "Nationale Prefix"
 
 msgid "International Prefix"
 msgstr "Internationale Prefix"
-
-msgid "Audio"
-msgstr "Geluid"
 
 msgid "A-law"
 msgstr "A-law"
@@ -1739,17 +1812,26 @@ msgstr "Systeem Informatie"
 msgid "Version"
 msgstr "Versie"
 
+#, fuzzy
+msgid "on"
+msgstr "geen"
+
 msgid "built on"
 msgstr "gebouwd op"
 
-msgid "Platform"
-msgstr "Platvorm"
+msgid "Last Config Change"
+msgstr "Laatste Configuratie Wijziging"
 
 msgid "Uptime"
 msgstr "Uptime"
 
-msgid "Last Config Change"
-msgstr "Laatste Configuratie Wijziging"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "Actieve Kanalen"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "Bel Groepen"
 
 msgid "Memory Usage"
 msgstr "Geheugen Gebruik"
@@ -2197,6 +2279,10 @@ msgid "Edit Analog Phone"
 msgstr "Bewerk Analoog"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "Instellingen"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "De interne post gebruikt om deze telefoon te bellen."
 
@@ -2468,23 +2554,41 @@ msgstr "Pin"
 msgid "Custom Applications"
 msgstr "Eigen Applicatie's"
 
-msgid "Edit Analog Line"
-msgstr "Bewerk Analoge Lijn"
+msgid "Dialing Pattern(s)"
+msgstr "Bel Patronen"
 
-msgid "A valid Caller ID string must be specified."
-msgstr "Een geldig Caller ID string moeten worden vermeld."
+#, fuzzy
+msgid "Edit Analog Provider"
+msgstr "Bewerk Analoog"
 
-msgid "An incoming Caller ID override string must be specified."
-msgstr ""
-"Een binnenkomende beller-ID string moeten worden vermeld om te overschrijven."
+msgid "Descriptive name for this provider."
+msgstr "Beschrijvende naam voor deze aanbieder."
+
+msgid "Telephone number assigned to this line."
+msgstr "Telefoon nummer dat is toegewezen aan deze lijn."
+
+#, fuzzy
+msgid "Call Routing"
+msgstr "Parkeren"
+
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "Beller ID"
+
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "Bewerk Analoog"
+
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "Autorisatie Gebruiker."
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
 msgstr ""
 
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr ""
+msgid "A valid default number (MSN) must be specified."
+msgstr "Een geldige standaard (MSN) moeten worden vermeld."
 
 #, fuzzy, php-format
 msgid ""
@@ -2494,38 +2598,6 @@ msgid ""
 msgstr ""
 "Voor het configureren van dit type account, controleer of er een passende "
 "configuratie-interface  aanwezig is op de %s pagina"
-
-msgid "Descriptive name for this provider."
-msgstr "Beschrijvende naam voor deze aanbieder."
-
-msgid "Telephone number assigned to this line."
-msgstr "Telefoon nummer dat is toegewezen aan deze lijn."
-
-msgid "Analog Interface"
-msgstr "Analoge interface"
-
-msgid "Edit IAX Account"
-msgstr "Bewerk IAX Account"
-
-msgid "A valid username must be specified."
-msgstr "Een geldige gebruikersnaam moet worden gedefineerd."
-
-msgid "A valid secret must be specified."
-msgstr "Een geldig geheim moeten worden vermeld."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"Een heel aantal seconden moet worden opgenomen voor de \"in aanmerking "
-"komende\" time-out."
-
-msgid "This account's password and authentication scheme."
-msgstr "Deze account zijn wachtwoord en de authenticatie-regeling."
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr "IAX proxyhost URL of het IP-adres en optionele poort."
-
-msgid "A valid default number (MSN) must be specified."
-msgstr "Een geldige standaard (MSN) moeten worden vermeld."
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
@@ -2537,22 +2609,20 @@ msgstr ""
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
-msgid "Edit SIP Account"
-msgstr "Bewerk SIP Account"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr ""
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr ""
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "Telefoons"
 
 msgid "Authorization User"
 msgstr "Autorisatie Gebruiker."
 
+#, fuzzy
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr ""
+"Sommige aanbiedere vereisen een aparte 'van' domein. <br> Standaard zoals de "
+"host hierboven opgegeven."
 
 msgid "From User"
 msgstr "Van Gebruiker"
@@ -3108,6 +3178,39 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Video Codecs"
+#~ msgstr "Video Codecs"
+
+#~ msgid "Platform"
+#~ msgstr "Platvorm"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "Bewerk Analoge Lijn"
+
+#~ msgid "Analog Interface"
+#~ msgstr "Analoge interface"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "Bewerk IAX Account"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "Een geldige gebruikersnaam moet worden gedefineerd."
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "Een geldig geheim moeten worden vermeld."
+
+#~ msgid ""
+#~ "A whole number of seconds must be entered for the \"qualify\" timeout."
+#~ msgstr ""
+#~ "Een heel aantal seconden moet worden opgenomen voor de \"in aanmerking "
+#~ "komende\" time-out."
+
+#~ msgid "This account's password and authentication scheme."
+#~ msgstr "Deze account zijn wachtwoord en de authenticatie-regeling."
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "Bewerk SIP Account"
 
 #~ msgid "Diagnostics"
 #~ msgstr "Diagnostics"

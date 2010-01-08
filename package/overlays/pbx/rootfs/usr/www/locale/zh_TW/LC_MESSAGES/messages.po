@@ -9,13 +9,28 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Name"
+msgstr "名字"
+
+msgid "Number"
+msgstr "數量"
 
 #, fuzzy
 msgid "Port"
 msgstr "葡萄牙"
+
+msgid "Host"
+msgstr "主機"
+
+msgid "Username"
+msgstr "用戶名"
+
+msgid "Public Number"
+msgstr "公共號碼"
 
 msgid "Package activated successfully."
 msgstr "軟體套件成功啟用。"
@@ -31,6 +46,41 @@ msgstr "軟體套件成功還原。"
 
 msgid "Package installed successfully."
 msgstr "軟體套件成功安裝。"
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr "'%s' 段含有無效字符。"
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -90,6 +140,32 @@ msgid "An invalid dialstring was entered."
 msgstr "必須輸入一個有效的分機"
 
 #, fuzzy
+msgid "An invalid port was entered."
+msgstr "必須輸入一個有效的分機"
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr "這個呼入分機模式\"%s\"是無效的。%s"
+
+#, fuzzy, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr "無效的撥號\"%s\"模式。%s"
+
+msgid "A valid Caller ID string must be specified."
+msgstr "必須指定一個有效的Caller ID字符串。"
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr "必須為一個呼入電話的Caller ID指定一個補充字符串。"
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "'%s' 區域需要填入。 "
+
+#, fuzzy, php-format
+msgid "The %s field must be numeric."
+msgstr "會議室認證碼必須是數字。"
+
+#, fuzzy
 msgid "Subject"
 msgstr "秘密"
 
@@ -127,8 +203,8 @@ msgstr "網頁設置頁面語言"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "請選擇您希望本設置界面顯示的語言。"
 
-msgid "Audio Codecs"
-msgstr "音頻編解碼"
+msgid "Audio"
+msgstr "音頻"
 
 msgid "Enabled"
 msgstr "允許的"
@@ -139,8 +215,8 @@ msgstr "拖放"
 msgid "Disabled"
 msgstr "禁用"
 
-msgid "Video Codecs"
-msgstr "視頻編解碼"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "組成員"
@@ -162,7 +238,8 @@ msgstr ""
 "所有組成員會同時被呼叫。<strong>如果通話無應答，相關成員中第一個成員的語音信"
 "件帳戶將會被使用。"
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "打入的分機"
 
 msgid "add incoming extension mapping"
@@ -275,8 +352,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr "呼入Caller ID覆蓋"
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "打入的分機"
 
 msgid "Source Name &lt;number&gt;"
 msgstr "源名字&lt;號碼&gt;"
@@ -293,8 +371,9 @@ msgstr "把呼叫名字替換為呼叫號碼。"
 msgid "Disable overrides"
 msgstr "禁用覆蓋"
 
-msgid "Outgoing Caller ID"
-msgstr "呼出的Caller ID"
+#, fuzzy
+msgid "Outgoing Presentation"
+msgstr "簡報"
 
 msgid "Your Name &lt;number&gt;"
 msgstr "您名字的&lt;號碼&gt;"
@@ -305,14 +384,16 @@ msgstr "傳輸字符串的上述定義&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "發送話機的Caller ID"
 
-msgid "Dialing Pattern(s)"
-msgstr "撥號模式"
+#, fuzzy
+msgid "Outgoing Patterns"
+msgstr "呼出的Caller ID"
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -494,9 +575,6 @@ msgstr "描述"
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr "您在這裏輸入一個描述，供您參考（不解析）。"
 
-msgid "Public Number"
-msgstr "公共號碼"
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -542,6 +620,17 @@ msgid "Voicemail"
 msgstr "語音郵件"
 
 msgid "enable voicemail to e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "Provider host URL or IP address and optional port."
+msgstr "SMTP主機URL或者IP地址以及可選的埠。"
+
+#, fuzzy
+msgid "disabled"
+msgstr "禁用"
+
+msgid "The provider will be contacted this often to check its availability."
 msgstr ""
 
 msgid "Dialplan"
@@ -1194,17 +1283,8 @@ msgstr ""
 "通過提供商帳戶允許您設置與外部來源來往的路由。(即VoIP服務提供商或附加的ISDN/"
 "Analog電話介面的硬體)。點擊下面的一個帳戶開始。"
 
-msgid "Name"
-msgstr "名字"
-
 msgid "Pattern(s)"
 msgstr "模式"
-
-msgid "Username"
-msgstr "用戶名"
-
-msgid "Host"
-msgstr "主機"
 
 msgid "click to enable provider"
 msgstr "點擊啟用提供商"
@@ -1223,9 +1303,6 @@ msgstr "真的要刪除這個提供商?"
 
 msgid "delete provider"
 msgstr "刪除提供商"
-
-msgid "Number"
-msgstr "數量"
 
 msgid "Interface"
 msgstr "介面"
@@ -1394,9 +1471,6 @@ msgstr "國家區號"
 
 msgid "International Prefix"
 msgstr "國際區號"
-
-msgid "Audio"
-msgstr "音頻"
 
 msgid "A-law"
 msgstr "A-Law"
@@ -1735,17 +1809,26 @@ msgstr "系統信息"
 msgid "Version"
 msgstr "版本"
 
+#, fuzzy
+msgid "on"
+msgstr "沒有"
+
 msgid "built on"
 msgstr "基於"
 
-msgid "Platform"
-msgstr "平臺"
+msgid "Last Config Change"
+msgstr "上一次設置改變"
 
 msgid "Uptime"
 msgstr "正常運行時間"
 
-msgid "Last Config Change"
-msgstr "上一次設置改變"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "活動的通道"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "通話組"
 
 msgid "Memory Usage"
 msgstr "記憶體使用"
@@ -2168,6 +2251,10 @@ msgid "Edit Analog Phone"
 msgstr "編輯Analog電話"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "設置"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "這個內部分機用來撥打這個電話。"
 
@@ -2432,29 +2519,12 @@ msgstr "Pin"
 msgid "Custom Applications"
 msgstr "自定義應用程序"
 
-msgid "Edit Analog Line"
-msgstr "編輯Analog線路"
+msgid "Dialing Pattern(s)"
+msgstr "撥號模式"
 
-msgid "A valid Caller ID string must be specified."
-msgstr "必須指定一個有效的Caller ID字符串。"
-
-msgid "An incoming Caller ID override string must be specified."
-msgstr "必須為一個呼入電話的Caller ID指定一個補充字符串。"
-
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "無效的撥號\"%s\"模式。%s"
-
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "這個呼入分機模式\"%s\"是無效的。%s"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Provider"
+msgstr "編輯Analog電話"
 
 msgid "Descriptive name for this provider."
 msgstr "提供商的描述性名字。"
@@ -2462,29 +2532,35 @@ msgstr "提供商的描述性名字。"
 msgid "Telephone number assigned to this line."
 msgstr "分配給這條線的電話號碼。"
 
-msgid "Analog Interface"
-msgstr "Analog介面"
+#, fuzzy
+msgid "Call Routing"
+msgstr "呼叫停泊"
 
-msgid "Edit IAX Account"
-msgstr "編輯IAX帳戶"
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "呼叫者ID"
 
-msgid "A valid username must be specified."
-msgstr "必須指定一個有效的用戶名。"
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "編輯Analog電話"
 
-msgid "A valid secret must be specified."
-msgstr "必須輸入一個有效的密碼。"
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "驗證方法"
 
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "必須為\"qualify\"輸入一個超時的秒數。"
-
-msgid "This account's password and authentication scheme."
-msgstr "這個帳戶的密碼和驗證計劃。"
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr "IAX代理主機的網址或IP地址，還有它可選的埠。"
+#, php-format
+msgid "The dial-pattern \"%s\" is invalid. %s"
+msgstr "無效的撥號\"%s\"模式。%s"
 
 msgid "A valid default number (MSN) must be specified."
 msgstr "必須指定一個預設的數量(MSN)。"
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
@@ -2494,20 +2570,16 @@ msgstr "分配給這條線路的預設的電話號碼（MSN）。"
 msgid "ISDN Interface"
 msgstr "ISDN界面"
 
-msgid "Edit SIP Account"
-msgstr "編輯SIP帳戶"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr "必須指定一個有效的\"fromuser\"。"
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr "SIP代理主機的網址或IP地址，還有它可選的埠。"
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "電話"
 
 msgid "Authorization User"
 msgstr "授權用戶"
 
+#, fuzzy
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr "一些提供商需要單獨授權的用戶名。<br>預設用戶名填在上面。"
 
@@ -3082,6 +3154,52 @@ msgstr "ERR 無法安裝設置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
 
+#~ msgid "Audio Codecs"
+#~ msgstr "音頻編解碼"
+
+#~ msgid "Video Codecs"
+#~ msgstr "視頻編解碼"
+
+#~ msgid "Incoming Caller ID Overrides"
+#~ msgstr "呼入Caller ID覆蓋"
+
+#~ msgid "Platform"
+#~ msgstr "平臺"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "編輯Analog線路"
+
+#~ msgid "Analog Interface"
+#~ msgstr "Analog介面"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "編輯IAX帳戶"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "必須指定一個有效的用戶名。"
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "必須輸入一個有效的密碼。"
+
+#~ msgid ""
+#~ "A whole number of seconds must be entered for the \"qualify\" timeout."
+#~ msgstr "必須為\"qualify\"輸入一個超時的秒數。"
+
+#~ msgid "This account's password and authentication scheme."
+#~ msgstr "這個帳戶的密碼和驗證計劃。"
+
+#~ msgid "IAX proxy host URL or IP address and optional port."
+#~ msgstr "IAX代理主機的網址或IP地址，還有它可選的埠。"
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "編輯SIP帳戶"
+
+#~ msgid "A valid \"fromuser\" must be specified."
+#~ msgstr "必須指定一個有效的\"fromuser\"。"
+
+#~ msgid "SIP proxy host URL or IP address and optional port."
+#~ msgstr "SIP代理主機的網址或IP地址，還有它可選的埠。"
+
 #~ msgid "Diagnostics"
 #~ msgstr "癥狀"
 
@@ -3372,9 +3490,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "TLS certificates are currently not verified."
 #~ msgstr "TLS證書，現在尚未驗證。"
-
-#~ msgid "Presentation"
-#~ msgstr "簡報"
 
 #~ msgid "E-Mail Language"
 #~ msgstr "電郵語言"

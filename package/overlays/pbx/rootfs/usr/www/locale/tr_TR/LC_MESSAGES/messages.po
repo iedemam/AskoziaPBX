@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,9 +13,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Name"
+msgstr "Ad"
+
+msgid "Number"
+msgstr "Numara"
+
 #, fuzzy
 msgid "Port"
 msgstr "Portekiz"
+
+msgid "Host"
+msgstr "Anasistem"
+
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+msgid "Public Number"
+msgstr "Kamusal Numara"
 
 msgid "Package activated successfully."
 msgstr "Paket başarıyla etkinleştirildi."
@@ -31,6 +46,41 @@ msgstr "Paket başarıyla önceki boyuta getirildi."
 
 msgid "Package installed successfully."
 msgstr "Paket başarıyla yüklendi."
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr " '%s' alanı geçersiz karekter içermekte."
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -88,6 +138,32 @@ msgstr ""
 msgid "An invalid dialstring was entered."
 msgstr "Geçerli dahili hat girilmeli."
 
+#, fuzzy
+msgid "An invalid port was entered."
+msgstr "Geçerli dahili hat girilmeli."
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr ""
+
+#, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr ""
+
+msgid "A valid Caller ID string must be specified."
+msgstr "Geçerli bir Arayıcı İD'si belirtilmeli."
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr "Gelen Arayıcı İD'sini değişen dizgi girilmeli."
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "'%s' alanı zorunludur."
+
+#, fuzzy, php-format
+msgid "The %s field must be numeric."
+msgstr "Konferans PİN'leri sayısal olmalı."
+
 msgid "Subject"
 msgstr "Konu"
 
@@ -124,8 +200,8 @@ msgstr "webGUİ dili"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "webGUİ arayüzünün görüntülenmesi istediğiniz dili seçin."
 
-msgid "Audio Codecs"
-msgstr "Ses Kodlayıcı-kodçözücüsü"
+msgid "Audio"
+msgstr "Ses"
 
 msgid "Enabled"
 msgstr "Uygulandı"
@@ -136,8 +212,8 @@ msgstr "sürükle bırak"
 msgid "Disabled"
 msgstr "İptal edildi"
 
-msgid "Video Codecs"
-msgstr "Görüntü Kodlayıcı-kodçözücüsü"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "Grup Üyeleri"
@@ -159,7 +235,8 @@ msgstr ""
 "Tüm grup üyeleri aynı anda aranaçaktır. <strong>Çağrı cevapsız kaldığında "
 "Sesli Mesaj hesabınla ilişkilendirilmiş ilk üye kullanılaçaktır. "
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "Gelen Arama Hat(lar)"
 
 msgid "add incoming extension mapping"
@@ -254,8 +331,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr "Gelen Arayıcı İD'si Değişen"
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "Gelen Arama Hat(lar)"
 
 msgid "Source Name &lt;number&gt;"
 msgstr ""
@@ -272,8 +350,8 @@ msgstr "Arayan ismi arayan numarasıyla değiş."
 msgid "Disable overrides"
 msgstr ""
 
-msgid "Outgoing Caller ID"
-msgstr "Çıkış Arayıcı İD'si"
+msgid "Outgoing Presentation"
+msgstr ""
 
 msgid "Your Name &lt;number&gt;"
 msgstr "Adınız &lt;number&gt;"
@@ -284,14 +362,15 @@ msgstr ""
 msgid "Send phones' Caller ID"
 msgstr "Telefonun Arayıcı İD'sini gönder"
 
-msgid "Dialing Pattern(s)"
-msgstr ""
+#, fuzzy
+msgid "Outgoing Patterns"
+msgstr "Çıkış Arayıcı İD'si"
 
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -445,9 +524,6 @@ msgstr "Açıklama"
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
-msgid "Public Number"
-msgstr "Kamusal Numara"
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -493,6 +569,16 @@ msgstr "Sesli Mesaj"
 #, fuzzy
 msgid "enable voicemail to e-mail"
 msgstr "sesli mesaj alıcının adı"
+
+msgid "Provider host URL or IP address and optional port."
+msgstr ""
+
+#, fuzzy
+msgid "disabled"
+msgstr "İptal edildi"
+
+msgid "The provider will be contacted this often to check its availability."
+msgstr ""
 
 msgid "Dialplan"
 msgstr "Aramaplanı"
@@ -1127,17 +1213,8 @@ msgid ""
 "Click an account type below to get started."
 msgstr ""
 
-msgid "Name"
-msgstr "Ad"
-
 msgid "Pattern(s)"
 msgstr "Örüntü(ler)"
-
-msgid "Username"
-msgstr "Kullanıcı adı"
-
-msgid "Host"
-msgstr "Anasistem"
 
 msgid "click to enable provider"
 msgstr "sunucuyu geçerli yapmak için tıkla"
@@ -1156,9 +1233,6 @@ msgstr "Bu sunucuyu gerçekten silmek istiyor musunuz?"
 
 msgid "delete provider"
 msgstr "sunucuyu sil"
-
-msgid "Number"
-msgstr "Numara"
 
 msgid "Interface"
 msgstr "Arabirim"
@@ -1326,9 +1400,6 @@ msgstr "Ulusal Alan Kodu"
 
 msgid "International Prefix"
 msgstr "Uluslararası Alan Kodu"
-
-msgid "Audio"
-msgstr "Ses"
 
 msgid "A-law"
 msgstr "A-law"
@@ -1668,17 +1739,26 @@ msgstr "Sistem Bilgileri"
 msgid "Version"
 msgstr "Sürüm"
 
+#, fuzzy
+msgid "on"
+msgstr "hiçbiri"
+
 msgid "built on"
 msgstr ""
 
-msgid "Platform"
-msgstr "Platform"
+msgid "Last Config Change"
+msgstr "Son Ayar Değişme"
 
 msgid "Uptime"
 msgstr "Çalışma Süresi"
 
-msgid "Last Config Change"
-msgstr "Son Ayar Değişme"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "Aktif Kanallar"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "Arama Gruplar"
 
 msgid "Memory Usage"
 msgstr "Hafıza Kullanımı"
@@ -2083,6 +2163,10 @@ msgid "Edit Analog Phone"
 msgstr "Analog düzenle"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "Ayarlar"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
@@ -2339,22 +2423,41 @@ msgstr "Pin Kodu"
 msgid "Custom Applications"
 msgstr ""
 
-msgid "Edit Analog Line"
-msgstr "Analog hattı düzenle"
+msgid "Dialing Pattern(s)"
+msgstr ""
 
-msgid "A valid Caller ID string must be specified."
-msgstr "Geçerli bir Arayıcı İD'si belirtilmeli."
+#, fuzzy
+msgid "Edit Analog Provider"
+msgstr "Analog düzenle"
 
-msgid "An incoming Caller ID override string must be specified."
-msgstr "Gelen Arayıcı İD'sini değişen dizgi girilmeli."
+msgid "Descriptive name for this provider."
+msgstr "Bu at için belirlenmiş telefon numarası."
+
+msgid "Telephone number assigned to this line."
+msgstr "Bu hatta atanmış telefon numarası."
+
+#, fuzzy
+msgid "Call Routing"
+msgstr "Arama Gruplar"
+
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "Arayıcı Kimliği"
+
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "Analog düzenle"
+
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "Kimlik Denetimi"
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
 msgstr ""
 
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr ""
+msgid "A valid default number (MSN) must be specified."
+msgstr "Geçerli standart numara (MSN) belirtilmeli."
 
 #, php-format
 msgid ""
@@ -2365,36 +2468,6 @@ msgstr ""
 "<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
 "düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
 
-msgid "Descriptive name for this provider."
-msgstr "Bu at için belirlenmiş telefon numarası."
-
-msgid "Telephone number assigned to this line."
-msgstr "Bu hatta atanmış telefon numarası."
-
-msgid "Analog Interface"
-msgstr "Analog Arayüz"
-
-msgid "Edit IAX Account"
-msgstr "İAX Hesabı düzenle"
-
-msgid "A valid username must be specified."
-msgstr "Geçerli kullanıcı adı belirtilmeli."
-
-msgid "A valid secret must be specified."
-msgstr "Geçerli bir şifre belirtilmeli."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-
-msgid "This account's password and authentication scheme."
-msgstr ""
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr ""
-
-msgid "A valid default number (MSN) must be specified."
-msgstr "Geçerli standart numara (MSN) belirtilmeli."
-
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
@@ -2403,20 +2476,15 @@ msgstr ""
 msgid "ISDN Interface"
 msgstr "İSDN Arabirimi"
 
-msgid "Edit SIP Account"
-msgstr "SİP Hesabını Düzenle"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr ""
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr ""
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "SİP Telefonları"
 
 msgid "Authorization User"
 msgstr ""
 
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr ""
 
@@ -2967,6 +3035,36 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Audio Codecs"
+#~ msgstr "Ses Kodlayıcı-kodçözücüsü"
+
+#~ msgid "Video Codecs"
+#~ msgstr "Görüntü Kodlayıcı-kodçözücüsü"
+
+#~ msgid "Incoming Caller ID Overrides"
+#~ msgstr "Gelen Arayıcı İD'si Değişen"
+
+#~ msgid "Platform"
+#~ msgstr "Platform"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "Analog hattı düzenle"
+
+#~ msgid "Analog Interface"
+#~ msgstr "Analog Arayüz"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "İAX Hesabı düzenle"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "Geçerli kullanıcı adı belirtilmeli."
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "Geçerli bir şifre belirtilmeli."
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "SİP Hesabını Düzenle"
 
 #~ msgid "Diagnostics"
 #~ msgstr "Diagnozlar"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -23,9 +23,24 @@ msgstr ""
 "X-Poedit-Language: Danish\n"
 "X-Poedit-Country: DENMARK\n"
 
+msgid "Name"
+msgstr "Navn"
+
+msgid "Number"
+msgstr "Nummer"
+
 #, fuzzy
 msgid "Port"
 msgstr "Portugal"
+
+msgid "Host"
+msgstr "Vært"
+
+msgid "Username"
+msgstr "brugernavn"
+
+msgid "Public Number"
+msgstr "Offentlig Nummer"
 
 msgid "Package activated successfully."
 msgstr "Pakke aktiveret tilfredsstillende."
@@ -41,6 +56,41 @@ msgstr "Pakke reetableret tilfredstillende."
 
 msgid "Package installed successfully."
 msgstr "Pakke installeret tilfredstillende."
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr "Feltet '%s' indeholder ulovlige tegn."
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -100,6 +150,32 @@ msgid "An invalid dialstring was entered."
 msgstr "En gyldig extension skal indtasstes"
 
 #, fuzzy
+msgid "An invalid port was entered."
+msgstr "En gyldig extension skal indtasstes"
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr "Det indkomne linie mønster \"%s\" er ugyldig. %s"
+
+#, fuzzy, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr "Opkaldsmønster \"%s\" er ugyldig. %s"
+
+msgid "A valid Caller ID string must be specified."
+msgstr "En gyldig Opkalds ID streng skal angives."
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr "En erstatningstekst for det indkomne opkalds id skal angives."
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "Feltet '%s' er krævet."
+
+#, fuzzy, php-format
+msgid "The %s field must be numeric."
+msgstr "Konference PIN skal være numerisk"
+
+#, fuzzy
 msgid "Subject"
 msgstr "Hemmeligt"
 
@@ -136,8 +212,8 @@ msgstr "webGUI sprog"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Vælg hvilket sprog der skal bruges i webGUI."
 
-msgid "Audio Codecs"
-msgstr "Lyd Codecs"
+msgid "Audio"
+msgstr "Audio"
 
 msgid "Enabled"
 msgstr "Aktiveret"
@@ -148,8 +224,8 @@ msgstr "træk-og-slip"
 msgid "Disabled"
 msgstr "Deaktiveret"
 
-msgid "Video Codecs"
-msgstr "Video Codecs"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "Gruppe Medlemmer"
@@ -171,7 +247,8 @@ msgstr ""
 "Alle gruppe medlemmer vil blive ringet op samtidig. <strong>Telefonsvarer "
 "konto til den første bruger vil blive brugt hvis opkaldet ikke bliver taget."
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "Indkomne Extension(s)"
 
 msgid "add incoming extension mapping"
@@ -287,8 +364,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr "Indkomne opkalds ID"
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "Indkomne Extension(s)"
 
 msgid "Source Name &lt;number&gt;"
 msgstr "Kilde navn &lt;number&gt;"
@@ -305,8 +383,9 @@ msgstr "Erstat opkaldsnavn med nummer"
 msgid "Disable overrides"
 msgstr "Deaktiver tilsidesætning"
 
-msgid "Outgoing Caller ID"
-msgstr "Udgående opkalds ID"
+#, fuzzy
+msgid "Outgoing Presentation"
+msgstr "Præsentation"
 
 msgid "Your Name &lt;number&gt;"
 msgstr "Dit navn &lt;nummer&gt;"
@@ -317,14 +396,16 @@ msgstr "Send teksten angivet ovenfor&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Send telefon's Opkalds ID"
 
-msgid "Dialing Pattern(s)"
-msgstr "Opkaldsmønster"
+#, fuzzy
+msgid "Outgoing Patterns"
+msgstr "Udgående opkalds ID"
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -509,9 +590,6 @@ msgstr "Beskrivelse"
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr "Her kan du angive en beskrivelse, (bliver ikke tolket)."
 
-msgid "Public Number"
-msgstr "Offentlig Nummer"
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -558,6 +636,17 @@ msgid "Voicemail"
 msgstr "Telefonsvarer"
 
 msgid "enable voicemail to e-mail"
+msgstr ""
+
+#, fuzzy
+msgid "Provider host URL or IP address and optional port."
+msgstr "SMTP vært URL eller IP adresse og valgfri port."
+
+#, fuzzy
+msgid "disabled"
+msgstr "Deaktiveret"
+
+msgid "The provider will be contacted this often to check its availability."
 msgstr ""
 
 msgid "Dialplan"
@@ -1210,17 +1299,8 @@ msgid ""
 "Click an account type below to get started."
 msgstr ""
 
-msgid "Name"
-msgstr "Navn"
-
 msgid "Pattern(s)"
 msgstr "Mønstre"
-
-msgid "Username"
-msgstr "brugernavn"
-
-msgid "Host"
-msgstr "Vært"
 
 msgid "click to enable provider"
 msgstr "klik for at aktivere udbyder"
@@ -1239,9 +1319,6 @@ msgstr "Vil du virkeligt slette denne udbyder?"
 
 msgid "delete provider"
 msgstr "Slet udbyder"
-
-msgid "Number"
-msgstr "Nummer"
 
 msgid "Interface"
 msgstr "Interface"
@@ -1417,9 +1494,6 @@ msgstr "Nationalt præfix"
 
 msgid "International Prefix"
 msgstr "Internationalt præfix"
-
-msgid "Audio"
-msgstr "Audio"
 
 msgid "A-law"
 msgstr "A-law"
@@ -1761,17 +1835,26 @@ msgstr "System information"
 msgid "Version"
 msgstr "Version"
 
+#, fuzzy
+msgid "on"
+msgstr "ingen"
+
 msgid "built on"
 msgstr "bygget den"
 
-msgid "Platform"
-msgstr "Platform"
+msgid "Last Config Change"
+msgstr "Sidste Konfigurations ændring"
 
 msgid "Uptime"
 msgstr "Oppetid"
 
-msgid "Last Config Change"
-msgstr "Sidste Konfigurations ændring"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "Aktive Kanaler"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "Opkalds gruppe"
 
 msgid "Memory Usage"
 msgstr "Hukommelses Forbrug"
@@ -2198,6 +2281,10 @@ msgid "Edit Analog Phone"
 msgstr "Rediger Analog"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "Indstillinger"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Den interne extension brugt for at ringe til denne telefon"
 
@@ -2460,29 +2547,12 @@ msgstr "Pin"
 msgid "Custom Applications"
 msgstr "Brugerdefineret program"
 
-msgid "Edit Analog Line"
-msgstr "Rediger Analog Linie"
+msgid "Dialing Pattern(s)"
+msgstr "Opkaldsmønster"
 
-msgid "A valid Caller ID string must be specified."
-msgstr "En gyldig Opkalds ID streng skal angives."
-
-msgid "An incoming Caller ID override string must be specified."
-msgstr "En erstatningstekst for det indkomne opkalds id skal angives."
-
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "Opkaldsmønster \"%s\" er ugyldig. %s"
-
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "Det indkomne linie mønster \"%s\" er ugyldig. %s"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Provider"
+msgstr "Rediger Analog"
 
 msgid "Descriptive name for this provider."
 msgstr "Beskrivende navn for denne udbyder."
@@ -2490,29 +2560,35 @@ msgstr "Beskrivende navn for denne udbyder."
 msgid "Telephone number assigned to this line."
 msgstr "Telefon nummer knyttet til denne linie"
 
-msgid "Analog Interface"
-msgstr "Analog Interface"
+#, fuzzy
+msgid "Call Routing"
+msgstr "Parker Opkald"
 
-msgid "Edit IAX Account"
-msgstr "Rediger IAX konto"
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "Opkalds ID"
 
-msgid "A valid username must be specified."
-msgstr "Et gyldigt brugernavn skal angives."
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "Rediger Analog"
 
-msgid "A valid secret must be specified."
-msgstr "En gyldig hemmelighed skal angives."
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "Godkendelses Metode"
 
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Der skal angives et helt antal sekunder for \"Kvalificer\" udløb."
-
-msgid "This account's password and authentication scheme."
-msgstr "Denne kontos kodeord og authentofikations skema"
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr "IAX proxy vært URL eller IP adresse og/eller port."
+#, php-format
+msgid "The dial-pattern \"%s\" is invalid. %s"
+msgstr "Opkaldsmønster \"%s\" er ugyldig. %s"
 
 msgid "A valid default number (MSN) must be specified."
 msgstr "Et gyldigt nummer (MSN)  skal angives."
+
+#, php-format
+msgid ""
+"<strong>No compatible interfaces found!</strong><br><br> To configure this "
+"type of account, make sure an appropriately configured interface is present "
+"on the %s page"
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -2526,20 +2602,16 @@ msgstr ""
 msgid "ISDN Interface"
 msgstr "ISDN Interface"
 
-msgid "Edit SIP Account"
-msgstr "Rediger SIP konto"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr "En gyldig \"fra bruger\" skal angives."
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr "SIP proxy værl URL eller IP adressen og/eller port."
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "Telefoner"
 
 msgid "Authorization User"
 msgstr "Autorisationsbruger"
 
+#, fuzzy
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr ""
 "Nogle udbydere kræver at der er angivet et særskilt autorisationsbrugernavn."
@@ -3135,6 +3207,52 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
+#~ msgid "Audio Codecs"
+#~ msgstr "Lyd Codecs"
+
+#~ msgid "Video Codecs"
+#~ msgstr "Video Codecs"
+
+#~ msgid "Incoming Caller ID Overrides"
+#~ msgstr "Indkomne opkalds ID"
+
+#~ msgid "Platform"
+#~ msgstr "Platform"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "Rediger Analog Linie"
+
+#~ msgid "Analog Interface"
+#~ msgstr "Analog Interface"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "Rediger IAX konto"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "Et gyldigt brugernavn skal angives."
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "En gyldig hemmelighed skal angives."
+
+#~ msgid ""
+#~ "A whole number of seconds must be entered for the \"qualify\" timeout."
+#~ msgstr "Der skal angives et helt antal sekunder for \"Kvalificer\" udløb."
+
+#~ msgid "This account's password and authentication scheme."
+#~ msgstr "Denne kontos kodeord og authentofikations skema"
+
+#~ msgid "IAX proxy host URL or IP address and optional port."
+#~ msgstr "IAX proxy vært URL eller IP adresse og/eller port."
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "Rediger SIP konto"
+
+#~ msgid "A valid \"fromuser\" must be specified."
+#~ msgstr "En gyldig \"fra bruger\" skal angives."
+
+#~ msgid "SIP proxy host URL or IP address and optional port."
+#~ msgstr "SIP proxy værl URL eller IP adressen og/eller port."
+
 #~ msgid "Diagnostics"
 #~ msgstr "Diagnose"
 
@@ -3417,9 +3535,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "TLS certificates are currently not verified."
 #~ msgstr "TLS certifikater er i øjeblikket ikke verificeret"
-
-#~ msgid "Presentation"
-#~ msgstr "Præsentation"
 
 #~ msgid "E-Mail Language"
 #~ msgstr "E-mail sprogvalg"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,9 +21,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Name"
+msgstr "Име"
+
+msgid "Number"
+msgstr "Номер"
+
 #, fuzzy
 msgid "Port"
 msgstr "Португалия"
+
+msgid "Host"
+msgstr "Host"
+
+msgid "Username"
+msgstr "Потребителско Име"
+
+msgid "Public Number"
+msgstr "Общодостъпен Номер"
 
 msgid "Package activated successfully."
 msgstr "Пакета е активиран успешно."
@@ -39,6 +54,41 @@ msgstr "Пакета е възстановен успешно."
 
 msgid "Package installed successfully."
 msgstr "Пакета е инсталиран успешно."
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr "Полето '%s' съдържа невалидни символи."
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -97,6 +147,32 @@ msgstr "Поредица за избиране"
 msgid "An invalid dialstring was entered."
 msgstr "Въведете валиден вътрешен номер"
 
+#, fuzzy
+msgid "An invalid port was entered."
+msgstr "Въведете валиден вътрешен номер"
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr "Входящата схема на вътрешен номер \"%s\" е неправилна. %s"
+
+#, fuzzy, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr "Схемата на избиране \"%s\" е неправилна. %s"
+
+msgid "A valid Caller ID string must be specified."
+msgstr "Трябва да бъде въведен валиден Caller ID стринг."
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr "Трябва да бъде въведен входящ Caller ID отменящ стринг."
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "Полето '%s' е задължително."
+
+#, fuzzy, php-format
+msgid "The %s field must be numeric."
+msgstr "Кодът на конференцията трябва да е от цифри."
+
 msgid "Subject"
 msgstr "Тема"
 
@@ -133,8 +209,8 @@ msgstr "Език на webGUI"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Изберете на какъв език искате webGUI да работи."
 
-msgid "Audio Codecs"
-msgstr "Аудио Кодеци"
+msgid "Audio"
+msgstr "Аудио"
 
 msgid "Enabled"
 msgstr "Разрешени"
@@ -145,8 +221,8 @@ msgstr "влачи-и-пусни"
 msgid "Disabled"
 msgstr "Забранени"
 
-msgid "Video Codecs"
-msgstr "Видео Кодеци"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "Потребители на Групата"
@@ -169,7 +245,8 @@ msgstr ""
 "<strong>Гласовата поща на първия потребител ще бъде използвана ако никой не "
 "отговори на повикването."
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "Рутиране Входящи Обаждания"
 
 msgid "add incoming extension mapping"
@@ -287,8 +364,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr "Отменяне на Входящ Caller ID"
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "Рутиране Входящи Обаждания"
 
 msgid "Source Name &lt;number&gt;"
 msgstr "Източник Име &lt;номер&gt;"
@@ -305,8 +383,9 @@ msgstr "Замени името с номера на обаждащия се"
 msgid "Disable overrides"
 msgstr "Забрани отменянето"
 
-msgid "Outgoing Caller ID"
-msgstr "Изходящ Caller ID"
+#, fuzzy
+msgid "Outgoing Presentation"
+msgstr "Представяне"
 
 msgid "Your Name &lt;number&gt;"
 msgstr "Вашето Име &lt;номер&gt;"
@@ -317,14 +396,16 @@ msgstr "Изпрати стринга дефиниран по-горе&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Изпрати Caller ID на телефона"
 
-msgid "Dialing Pattern(s)"
-msgstr "Схеми на Избиране"
+#, fuzzy
+msgid "Outgoing Patterns"
+msgstr "Изходящ Caller ID"
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -518,9 +599,6 @@ msgstr ""
 "Тук можете да въведете описание за ваше използване (не се следи за "
 "синтаксис)."
 
-msgid "Public Number"
-msgstr "Общодостъпен Номер"
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -570,6 +648,17 @@ msgstr "Гласова Поща"
 #, fuzzy
 msgid "enable voicemail to e-mail"
 msgstr "име на получателя"
+
+#, fuzzy
+msgid "Provider host URL or IP address and optional port."
+msgstr "SMTP host URL или IP адрес и порт."
+
+#, fuzzy
+msgid "disabled"
+msgstr "Забранени"
+
+msgid "The provider will be contacted this often to check its availability."
+msgstr ""
 
 msgid "Dialplan"
 msgstr "Dialplan"
@@ -1218,17 +1307,8 @@ msgstr ""
 "външни източници ( VoIP доставчици или ISDN/Аналогови линии от включен "
 "хардуер ). Кликнете върху желания тип линия за да продължите."
 
-msgid "Name"
-msgstr "Име"
-
 msgid "Pattern(s)"
 msgstr "Схема(и)"
-
-msgid "Username"
-msgstr "Потребителско Име"
-
-msgid "Host"
-msgstr "Host"
 
 msgid "click to enable provider"
 msgstr "кликнете за да разрешите външната линия"
@@ -1247,9 +1327,6 @@ msgstr "Сигурни ли сте че искате да изтриете въ�
 
 msgid "delete provider"
 msgstr "изтрий външна линия"
-
-msgid "Number"
-msgstr "Номер"
 
 msgid "Interface"
 msgstr "Интерфейс"
@@ -1426,9 +1503,6 @@ msgstr "Национален Префикс"
 
 msgid "International Prefix"
 msgstr "Международен Префикс"
-
-msgid "Audio"
-msgstr "Аудио"
 
 msgid "A-law"
 msgstr "A-law"
@@ -1799,17 +1873,26 @@ msgstr "Информация за Системата"
 msgid "Version"
 msgstr "Версия"
 
+#, fuzzy
+msgid "on"
+msgstr "надолу"
+
 msgid "built on"
 msgstr "направена на"
 
-msgid "Platform"
-msgstr "Платформа"
+msgid "Last Config Change"
+msgstr "Последна Промяна"
 
 msgid "Uptime"
 msgstr "Време на работа"
 
-msgid "Last Config Change"
-msgstr "Последна Промяна"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "Активни Канали"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "Групи на Звънене"
 
 msgid "Memory Usage"
 msgstr "Използвана Памет"
@@ -2253,6 +2336,10 @@ msgid "Edit Analog Phone"
 msgstr "Редактирай Аналогов"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "Настройки"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Вътрешен Номер използван за избиране на този телефон."
 
@@ -2527,22 +2614,41 @@ msgstr "Код"
 msgid "Custom Applications"
 msgstr "Ръчно Направени Приложения"
 
-msgid "Edit Analog Line"
-msgstr "Редактирай Аналогова Линия"
+msgid "Dialing Pattern(s)"
+msgstr "Схеми на Избиране"
 
-msgid "A valid Caller ID string must be specified."
-msgstr "Трябва да бъде въведен валиден Caller ID стринг."
+#, fuzzy
+msgid "Edit Analog Provider"
+msgstr "Редактирай Аналогов"
 
-msgid "An incoming Caller ID override string must be specified."
-msgstr "Трябва да бъде въведен входящ Caller ID отменящ стринг."
+msgid "Descriptive name for this provider."
+msgstr "Описващо име за тази външна линия."
+
+msgid "Telephone number assigned to this line."
+msgstr "Телефонен номер определен за тази линия."
+
+#, fuzzy
+msgid "Call Routing"
+msgstr "Паркиране на Разговор"
+
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "Caller ID"
+
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "Редактирай Аналогов"
+
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "Метод на Оторизация"
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
 msgstr "Схемата на избиране \"%s\" е неправилна. %s"
 
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "Входящата схема на вътрешен номер \"%s\" е неправилна. %s"
+msgid "A valid default number (MSN) must be specified."
+msgstr "Трябва да бъде въведен валиден номер по подразбиране (MSN) ."
 
 #, php-format
 msgid ""
@@ -2554,36 +2660,6 @@ msgstr ""
 "конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
 "интерфейс присъства в %s страница"
 
-msgid "Descriptive name for this provider."
-msgstr "Описващо име за тази външна линия."
-
-msgid "Telephone number assigned to this line."
-msgstr "Телефонен номер определен за тази линия."
-
-msgid "Analog Interface"
-msgstr "Аналогов Интерфейс"
-
-msgid "Edit IAX Account"
-msgstr "Редактирай IAX Акаунт"
-
-msgid "A valid username must be specified."
-msgstr "Трябва да бъде въведено валидно потребителско име ."
-
-msgid "A valid secret must be specified."
-msgstr "Трябва да бъде определена валидна парола."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr "Цяло число в секунди трябва да бъде въведено за  \"qualify\" пауза."
-
-msgid "This account's password and authentication scheme."
-msgstr "Парола и схема на удостоверяване на този акаунт."
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr "IAX прокси host URL или IP адрес и порт по избор."
-
-msgid "A valid default number (MSN) must be specified."
-msgstr "Трябва да бъде въведен валиден номер по подразбиране (MSN) ."
-
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
@@ -2594,20 +2670,16 @@ msgstr ""
 msgid "ISDN Interface"
 msgstr "ISDN Интерфейс"
 
-msgid "Edit SIP Account"
-msgstr "Редактирай SIP Акаунт"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr "Трябва да бъде въведен валиден \"fromuser\" ."
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr "SIP прокси host URL или IP адрес и порт по избор."
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "SIP Вътрешни"
 
 msgid "Authorization User"
 msgstr "Упълномощаващ Потребител"
 
+#, fuzzy
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr ""
 "Някои доставчици изискват отделно упълмощавашо потребителско име.<br>По "
@@ -3225,6 +3297,52 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
 
+#~ msgid "Audio Codecs"
+#~ msgstr "Аудио Кодеци"
+
+#~ msgid "Video Codecs"
+#~ msgstr "Видео Кодеци"
+
+#~ msgid "Incoming Caller ID Overrides"
+#~ msgstr "Отменяне на Входящ Caller ID"
+
+#~ msgid "Platform"
+#~ msgstr "Платформа"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "Редактирай Аналогова Линия"
+
+#~ msgid "Analog Interface"
+#~ msgstr "Аналогов Интерфейс"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "Редактирай IAX Акаунт"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "Трябва да бъде въведено валидно потребителско име ."
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "Трябва да бъде определена валидна парола."
+
+#~ msgid ""
+#~ "A whole number of seconds must be entered for the \"qualify\" timeout."
+#~ msgstr "Цяло число в секунди трябва да бъде въведено за  \"qualify\" пауза."
+
+#~ msgid "This account's password and authentication scheme."
+#~ msgstr "Парола и схема на удостоверяване на този акаунт."
+
+#~ msgid "IAX proxy host URL or IP address and optional port."
+#~ msgstr "IAX прокси host URL или IP адрес и порт по избор."
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "Редактирай SIP Акаунт"
+
+#~ msgid "A valid \"fromuser\" must be specified."
+#~ msgstr "Трябва да бъде въведен валиден \"fromuser\" ."
+
+#~ msgid "SIP proxy host URL or IP address and optional port."
+#~ msgstr "SIP прокси host URL или IP адрес и порт по избор."
+
 #~ msgid "Diagnostics"
 #~ msgstr "Диагностики"
 
@@ -3531,9 +3649,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "TLS certificates are currently not verified."
 #~ msgstr "TLS сертификатите за момента не са одобрени."
-
-#~ msgid "Presentation"
-#~ msgstr "Представяне"
 
 #~ msgid "E-Mail Language"
 #~ msgstr "E-mail Език"

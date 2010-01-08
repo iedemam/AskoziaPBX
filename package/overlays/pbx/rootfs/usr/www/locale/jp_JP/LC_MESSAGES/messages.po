@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -18,9 +18,24 @@ msgstr ""
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
+msgid "Name"
+msgstr "名前"
+
+msgid "Number"
+msgstr "番号"
+
 #, fuzzy
 msgid "Port"
 msgstr "ポルトガル"
+
+msgid "Host"
+msgstr "ホスト"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Public Number"
+msgstr "パブリックナンバー"
 
 msgid "Package activated successfully."
 msgstr "パッケージが、有効になりました"
@@ -36,6 +51,41 @@ msgstr "パッケージの復旧が、完了致しました"
 
 msgid "Package installed successfully."
 msgstr "パッケージのインストールが、完了致しました"
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr "'%s' フィールドに無効な文字が含まれています"
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -94,6 +144,32 @@ msgstr "電話番号列"
 msgid "An invalid dialstring was entered."
 msgstr "有効な内線番号を入力する必要があります"
 
+#, fuzzy
+msgid "An invalid port was entered."
+msgstr "有効な内線番号を入力する必要があります"
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr "この着信用ダイヤルプラン\"%s\"は無効です。%s"
+
+#, fuzzy, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr "このダイヤルパターン\"%s\"は無効です。%s"
+
+msgid "A valid Caller ID string must be specified."
+msgstr "有効なCaller IDの文字列を指定する必要があります"
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr "着信Claller IDを上書きする文字列を指定する必要があります"
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "'%s' フィールドは必須です"
+
+#, fuzzy, php-format
+msgid "The %s field must be numeric."
+msgstr "電話会議室のピンコードは、数字である必要があります"
+
 msgid "Subject"
 msgstr "件名"
 
@@ -130,8 +206,8 @@ msgstr "webGUIの言語"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "webGUIの表示に使用する言語を選択して下さい"
 
-msgid "Audio Codecs"
-msgstr "オーディオコーデック"
+msgid "Audio"
+msgstr "オーディオ"
 
 msgid "Enabled"
 msgstr "有効"
@@ -142,8 +218,8 @@ msgstr "ドラッグアンドドロップ"
 msgid "Disabled"
 msgstr "無効"
 
-msgid "Video Codecs"
-msgstr "ビデオコーデック"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "グループメンバー"
@@ -165,7 +241,8 @@ msgstr ""
 "すべてのグループのメンバーが同時に呼ばれます。<strong>誰も呼び出しに答えられ"
 "ないと、一番目のメンバーのヴォイスメールアカウントが使用されます"
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "内線番号(着信用)"
 
 msgid "add incoming extension mapping"
@@ -288,8 +365,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr "着信時に発信者IDの上書きをする"
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "内線番号(着信用)"
 
 msgid "Source Name &lt;number&gt;"
 msgstr "発信元の名前 &lt;number&gt;"
@@ -306,8 +384,9 @@ msgstr "calling nameをcalling numberで入れ替えます"
 msgid "Disable overrides"
 msgstr "上書き無効"
 
-msgid "Outgoing Caller ID"
-msgstr "発信者ID(発信用)"
+#, fuzzy
+msgid "Outgoing Presentation"
+msgstr "表示"
 
 msgid "Your Name &lt;number&gt;"
 msgstr "あなたの名前 &lt;number&gt;"
@@ -318,14 +397,16 @@ msgstr "上記で定義された文字列を送信します&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "電話機のCaller IDを送信する"
 
-msgid "Dialing Pattern(s)"
-msgstr "ダイヤルパターン"
+#, fuzzy
+msgid "Outgoing Patterns"
+msgstr "発信者ID(発信用)"
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -515,9 +596,6 @@ msgstr "説明"
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr "参考の為にメモを入れる事が出来ます"
 
-msgid "Public Number"
-msgstr "パブリックナンバー"
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -566,6 +644,19 @@ msgstr "ボイスメール"
 #, fuzzy
 msgid "enable voicemail to e-mail"
 msgstr "ボイスメールの受信者名"
+
+#, fuzzy
+msgid "Provider host URL or IP address and optional port."
+msgstr ""
+"SMTPサーバーのURL、もしくはIPアドレスを入力して下さい。(ポート番号はオプショ"
+"ン)"
+
+#, fuzzy
+msgid "disabled"
+msgstr "無効"
+
+msgid "The provider will be contacted this often to check its availability."
+msgstr ""
 
 msgid "Dialplan"
 msgstr "ダイヤルプラン"
@@ -1212,17 +1303,8 @@ msgstr ""
 "「接続回線設定」接続経路、及び着信させる外線の種類を設定します。種類を選択"
 "し、設定を開始して下さい。"
 
-msgid "Name"
-msgstr "名前"
-
 msgid "Pattern(s)"
 msgstr "パターン"
-
-msgid "Username"
-msgstr "ユーザー名"
-
-msgid "Host"
-msgstr "ホスト"
 
 msgid "click to enable provider"
 msgstr "接続回線を有効にする"
@@ -1241,9 +1323,6 @@ msgstr "本当にこの接続回線を無効にしますか？"
 
 msgid "delete provider"
 msgstr "接続回線の削除"
-
-msgid "Number"
-msgstr "番号"
 
 msgid "Interface"
 msgstr "接続インターフェース"
@@ -1418,9 +1497,6 @@ msgstr "国番号"
 
 msgid "International Prefix"
 msgstr "国際識別番号"
-
-msgid "Audio"
-msgstr "オーディオ"
 
 msgid "A-law"
 msgstr "A-law"
@@ -1770,17 +1846,26 @@ msgstr "システム情報"
 msgid "Version"
 msgstr "バージョン"
 
+#, fuzzy
+msgid "on"
+msgstr "下"
+
 msgid "built on"
 msgstr "built on"
 
-msgid "Platform"
-msgstr "プラットフォーム"
+msgid "Last Config Change"
+msgstr "前回の設定変更"
 
 msgid "Uptime"
 msgstr "稼働時間"
 
-msgid "Last Config Change"
-msgstr "前回の設定変更"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "有効なチャンネル"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "グループ"
 
 msgid "Memory Usage"
 msgstr "メモリー使用状況"
@@ -2226,6 +2311,10 @@ msgid "Edit Analog Phone"
 msgstr "アナログの編集"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "設定"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Internal extensionは、この電話にダイヤル可能"
 
@@ -2500,22 +2589,41 @@ msgstr "パスワード"
 msgid "Custom Applications"
 msgstr "カスタムアプリケーション"
 
-msgid "Edit Analog Line"
+msgid "Dialing Pattern(s)"
+msgstr "ダイヤルパターン"
+
+#, fuzzy
+msgid "Edit Analog Provider"
 msgstr "アナログの編集"
 
-msgid "A valid Caller ID string must be specified."
-msgstr "有効なCaller IDの文字列を指定する必要があります"
+msgid "Descriptive name for this provider."
+msgstr "このアカウントの名前"
 
-msgid "An incoming Caller ID override string must be specified."
-msgstr "着信Claller IDを上書きする文字列を指定する必要があります"
+msgid "Telephone number assigned to this line."
+msgstr "この回線に電話番号が割り当てられました"
+
+#, fuzzy
+msgid "Call Routing"
+msgstr "コールパーキング"
+
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "発信者ID"
+
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "アナログの編集"
+
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "認証方式"
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
 msgstr "このダイヤルパターン\"%s\"は無効です。%s"
 
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "この着信用ダイヤルプラン\"%s\"は無効です。%s"
+msgid "A valid default number (MSN) must be specified."
+msgstr "有効なデフォルトの電話番号(MSN)を指定する必要があります"
 
 #, php-format
 msgid ""
@@ -2527,39 +2635,6 @@ msgstr ""
 "線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
 "さい"
 
-msgid "Descriptive name for this provider."
-msgstr "このアカウントの名前"
-
-msgid "Telephone number assigned to this line."
-msgstr "この回線に電話番号が割り当てられました"
-
-msgid "Analog Interface"
-msgstr "アナログ回線"
-
-msgid "Edit IAX Account"
-msgstr "IAXアカウントの編集"
-
-msgid "A valid username must be specified."
-msgstr "有効なユーザー名を指定する必要があります"
-
-msgid "A valid secret must be specified."
-msgstr "有効なパスワードを指定する必要があります"
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
-
-msgid "This account's password and authentication scheme."
-msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr ""
-"IAXプロキシーのURLもしくは、IPアドレスを設定して下さい。(ポート番号はオプショ"
-"ン)"
-
-msgid "A valid default number (MSN) must be specified."
-msgstr "有効なデフォルトの電話番号(MSN)を指定する必要があります"
-
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
 "mappings can be defined below."
@@ -2570,21 +2645,16 @@ msgstr ""
 msgid "ISDN Interface"
 msgstr "ISDNインターフェース"
 
-msgid "Edit SIP Account"
-msgstr "SIPアカウントの設定"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr "有効な\"fromuser\"を指定する必要があります"
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr ""
-"SIPプロキシーホストのURL、もしくはIPアドレスと、オプショナルのポート番号"
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "SIP電話機"
 
 msgid "Authorization User"
 msgstr "Authorization User"
 
+#, fuzzy
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr ""
 "いくつかの電話会社では、別の認証用ユーザー名が必要となります。<br>上記に入力"
@@ -3210,6 +3280,56 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#~ msgid "Audio Codecs"
+#~ msgstr "オーディオコーデック"
+
+#~ msgid "Video Codecs"
+#~ msgstr "ビデオコーデック"
+
+#~ msgid "Incoming Caller ID Overrides"
+#~ msgstr "着信時に発信者IDの上書きをする"
+
+#~ msgid "Platform"
+#~ msgstr "プラットフォーム"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "アナログの編集"
+
+#~ msgid "Analog Interface"
+#~ msgstr "アナログ回線"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "IAXアカウントの編集"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "有効なユーザー名を指定する必要があります"
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "有効なパスワードを指定する必要があります"
+
+#~ msgid ""
+#~ "A whole number of seconds must be entered for the \"qualify\" timeout."
+#~ msgstr ""
+#~ "\"qualify\"のタイムアウト時間として、全体の秒数を入力する必要があります"
+
+#~ msgid "This account's password and authentication scheme."
+#~ msgstr "このアカウントのパスワード及び認証方式を設定して下さい"
+
+#~ msgid "IAX proxy host URL or IP address and optional port."
+#~ msgstr ""
+#~ "IAXプロキシーのURLもしくは、IPアドレスを設定して下さい。(ポート番号はオプ"
+#~ "ション)"
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "SIPアカウントの設定"
+
+#~ msgid "A valid \"fromuser\" must be specified."
+#~ msgstr "有効な\"fromuser\"を指定する必要があります"
+
+#~ msgid "SIP proxy host URL or IP address and optional port."
+#~ msgstr ""
+#~ "SIPプロキシーホストのURL、もしくはIPアドレスと、オプショナルのポート番号"
+
 #~ msgid "Diagnostics"
 #~ msgstr "機器診断"
 
@@ -3511,9 +3631,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "TLS certificates are currently not verified."
 #~ msgstr "TLS認証は、現在まだ検証されていません"
-
-#~ msgid "Presentation"
-#~ msgstr "表示"
 
 #~ msgid "E-Mail Language"
 #~ msgstr "Eメール用言語"

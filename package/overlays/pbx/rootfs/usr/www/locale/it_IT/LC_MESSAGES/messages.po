@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-06 13:42+0000\n"
+"POT-Creation-Date: 2010-01-07 12:52+0000\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -10,9 +10,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Name"
+msgstr "Nome"
+
+msgid "Number"
+msgstr "Numero"
+
 #, fuzzy
 msgid "Port"
 msgstr "Portogallo"
+
+msgid "Host"
+msgstr "Host"
+
+msgid "Username"
+msgstr "Nome utente"
+
+msgid "Public Number"
+msgstr "Numero pubblico"
 
 msgid "Package activated successfully."
 msgstr "Pacchetto attivato correttamente."
@@ -28,6 +43,41 @@ msgstr "Pacchetto ripristinato correttamente."
 
 msgid "Package installed successfully."
 msgstr "Pacchetto installato correttamente."
+
+#, fuzzy
+msgid "It contains an invalid character"
+msgstr "Il campo '%s' contiene dei caratteri non validi."
+
+msgid "It contains an doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "It contains an doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed."
+msgstr ""
+
+msgid "Unmatched square bracket."
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters."
+msgstr ""
+
+msgid "Appended prefixes may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed before a prefix which is to be "
+"removed."
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -86,6 +136,34 @@ msgstr "Stringa di chiamata"
 msgid "An invalid dialstring was entered."
 msgstr "Deve essere indicato un interno valido."
 
+#, fuzzy
+msgid "An invalid port was entered."
+msgstr "Deve essere indicato un interno valido."
+
+#, php-format
+msgid "The incoming extension pattern \"%s\" is invalid. %s"
+msgstr "Il percorso degli interni in ingresso \"%s\" non è valido. %s"
+
+#, fuzzy, php-format
+msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
+msgstr "Il percorso-chiamata \"%s\" non è valido. %s"
+
+msgid "A valid Caller ID string must be specified."
+msgstr "Deve essere specificato un Identificativo del chiamante (CID) valido."
+
+msgid "An incoming Caller ID override string must be specified."
+msgstr ""
+"Deve essere specificata una stringa per la sovrascrittura del ID chiamante "
+"per le chiamate in ingresso."
+
+#, fuzzy, php-format
+msgid "The %s field is required."
+msgstr "Il campo '%s' è obbligatorio."
+
+#, fuzzy, php-format
+msgid "The %s field must be numeric."
+msgstr "Il PIN deve essere numerico."
+
 msgid "Subject"
 msgstr "Oggetto"
 
@@ -124,8 +202,8 @@ msgstr "Lingua del interfaccia WEB"
 msgid "Select in which language you want the webGUI to be displayed."
 msgstr "Seleziona in quale lingua l'interfaccia WEB deve essere mostrata."
 
-msgid "Audio Codecs"
-msgstr "Codificatori Audio"
+msgid "Audio"
+msgstr "Audio"
 
 msgid "Enabled"
 msgstr "Abilitato"
@@ -137,8 +215,8 @@ msgstr "(trascina e rilascia)"
 msgid "Disabled"
 msgstr "Disabilitato"
 
-msgid "Video Codecs"
-msgstr "Codificatori Video"
+msgid "Video"
+msgstr ""
 
 msgid "Group Members"
 msgstr "MEmbri del gruppo"
@@ -161,7 +239,8 @@ msgstr ""
 "della casella vocale associato al primo membro verrà usato se la chiamata "
 "non avrà risposta."
 
-msgid "Incoming Extension(s)"
+#, fuzzy
+msgid "Incoming Extensions"
 msgstr "Interno(i) in ingresso"
 
 msgid "add incoming extension mapping"
@@ -281,8 +360,9 @@ msgid ""
 "independently."
 msgstr ""
 
-msgid "Incoming Caller ID Overrides"
-msgstr "Sovrascrive l'Identificativo del chiamante (CID) entrante"
+#, fuzzy
+msgid "Incoming Modification"
+msgstr "Interno(i) in ingresso"
 
 msgid "Source Name &lt;number&gt;"
 msgstr "Nome sorgente &lt;numero&gt;"
@@ -299,8 +379,9 @@ msgstr "Sostituisce il nome del chiamante con il numero."
 msgid "Disable overrides"
 msgstr "Disabilita la sovrascrittura"
 
-msgid "Outgoing Caller ID"
-msgstr "Identificativo del chiamante uscente"
+#, fuzzy
+msgid "Outgoing Presentation"
+msgstr "Presentazione"
 
 msgid "Your Name &lt;number&gt;"
 msgstr "Vostro Nome &lt;numero&gt;"
@@ -311,14 +392,16 @@ msgstr "Manda la stringa definita sopra&nbsp;"
 msgid "Send phones' Caller ID"
 msgstr "Invia l'identificativo del chiamante (CLID)"
 
-msgid "Dialing Pattern(s)"
-msgstr "Schema(i) di selezione"
+#, fuzzy
+msgid "Outgoing Patterns"
+msgstr "Identificativo del chiamante uscente"
 
+#, fuzzy
 msgid ""
-"Enter patterns, one per line, to define this provider's routing. Enter \"X!"
-"\" to use this Provider for all outgoing calls. To only use this Provider "
-"for calls starting with the number \"9\" enter \"9|.\". If no patterns are "
-"entered, only incoming calls will be accepted.<br>\n"
+"Enter patterns, one per line, to define this provider's outgoing routing. "
+"Enter \"X!\" to use this provider for all outgoing calls. To access this "
+"provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, "
+"only incoming calls will be accepted.<br>\n"
 " <ul>\n"
 " \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" "
 "and passes \"1555\" to the provider)</li>\n"
@@ -516,9 +599,6 @@ msgstr ""
 "Puoi inserire qui una descrizione per avere un riferimento (non verrà "
 "analizzata)."
 
-msgid "Public Number"
-msgstr "Numero pubblico"
-
 msgid ""
 "This 'external' number will be read back to the caller when reaching "
 "voicemail; defaults to account's username if it is numeric. If it is not, "
@@ -566,6 +646,17 @@ msgstr "Casella vocale"
 #, fuzzy
 msgid "enable voicemail to e-mail"
 msgstr "Nome del destinatario del messaggio vocale"
+
+#, fuzzy
+msgid "Provider host URL or IP address and optional port."
+msgstr "URL o indirizzo IP del server SMTP e relativa porta."
+
+#, fuzzy
+msgid "disabled"
+msgstr "Disabilitato"
+
+msgid "The provider will be contacted this often to check its availability."
+msgstr ""
 
 msgid "Dialplan"
 msgstr "Piano di numerazione"
@@ -1223,17 +1314,8 @@ msgstr ""
 "verso l'esterno (es.: operatori VoIP, linee ISDN o analogiche). Clicca su un "
 "tpio di profilo per iniziare."
 
-msgid "Name"
-msgstr "Nome"
-
 msgid "Pattern(s)"
 msgstr "Schema(i)"
-
-msgid "Username"
-msgstr "Nome utente"
-
-msgid "Host"
-msgstr "Host"
 
 msgid "click to enable provider"
 msgstr "clicca per abilitare questo operatore"
@@ -1252,9 +1334,6 @@ msgstr "Vuoi cancellare questo operatore?"
 
 msgid "delete provider"
 msgstr "cancella il operatore"
-
-msgid "Number"
-msgstr "Numero"
 
 msgid "Interface"
 msgstr "Interfaccia"
@@ -1435,9 +1514,6 @@ msgstr "Prefisso Nazionale"
 
 msgid "International Prefix"
 msgstr "Prefisso Internazionale"
-
-msgid "Audio"
-msgstr "Audio"
 
 msgid "A-law"
 msgstr "A-law"
@@ -1814,17 +1890,26 @@ msgstr "Informazioni di Sistema"
 msgid "Version"
 msgstr "Versione"
 
+#, fuzzy
+msgid "on"
+msgstr "giù"
+
 msgid "built on"
 msgstr "compilato il"
 
-msgid "Platform"
-msgstr "Piattaforma"
+msgid "Last Config Change"
+msgstr "Ultima modifica alla configurazione"
 
 msgid "Uptime"
 msgstr "tempo di funzionamento"
 
-msgid "Last Config Change"
-msgstr "Ultima modifica alla configurazione"
+#, fuzzy
+msgid "Active Channels / Calls"
+msgstr "Canali attivi"
+
+#, fuzzy
+msgid "Calls Processed"
+msgstr "Gruppi di chiamata"
 
 msgid "Memory Usage"
 msgstr "Memoria utilizzata"
@@ -2286,6 +2371,10 @@ msgid "Edit Analog Phone"
 msgstr "Modifica  porta Analogica"
 
 #, fuzzy
+msgid "General Settings"
+msgstr "Impostazioni"
+
+#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Interno usato per chiamare questo telefono."
 
@@ -2563,24 +2652,41 @@ msgstr "Pin"
 msgid "Custom Applications"
 msgstr "Applicazioni personalizzate"
 
-msgid "Edit Analog Line"
-msgstr "Modifica linea analogica"
+msgid "Dialing Pattern(s)"
+msgstr "Schema(i) di selezione"
 
-msgid "A valid Caller ID string must be specified."
-msgstr "Deve essere specificato un Identificativo del chiamante (CID) valido."
+#, fuzzy
+msgid "Edit Analog Provider"
+msgstr "Modifica  porta Analogica"
 
-msgid "An incoming Caller ID override string must be specified."
-msgstr ""
-"Deve essere specificata una stringa per la sovrascrittura del ID chiamante "
-"per le chiamate in ingresso."
+msgid "Descriptive name for this provider."
+msgstr "Nome descrittivo di questo provider."
+
+msgid "Telephone number assigned to this line."
+msgstr "Numero telefonico assegnato a questa linea."
+
+#, fuzzy
+msgid "Call Routing"
+msgstr "Parcheggio di chiamata"
+
+#, fuzzy
+msgid "Caller ID Options"
+msgstr "Numero Identificativo del chiamante"
+
+#, fuzzy
+msgid "Edit IAX Provider"
+msgstr "Modifica  porta Analogica"
+
+#, fuzzy
+msgid "Authentication Scheme"
+msgstr "Metodo di Autenticazione"
 
 #, php-format
 msgid "The dial-pattern \"%s\" is invalid. %s"
 msgstr "Il percorso-chiamata \"%s\" non è valido. %s"
 
-#, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "Il percorso degli interni in ingresso \"%s\" non è valido. %s"
+msgid "A valid default number (MSN) must be specified."
+msgstr "Deve essere specificato un Numero (MSN) valido per questa linea."
 
 #, fuzzy, php-format
 msgid ""
@@ -2590,38 +2696,6 @@ msgid ""
 msgstr ""
 "Per configurare questo tipo di profilo assicuratevi di aver correttamente "
 "impostato una interfaccia adeguata nella relativa pagina %s"
-
-msgid "Descriptive name for this provider."
-msgstr "Nome descrittivo di questo provider."
-
-msgid "Telephone number assigned to this line."
-msgstr "Numero telefonico assegnato a questa linea."
-
-msgid "Analog Interface"
-msgstr "Interfaccia analogica"
-
-msgid "Edit IAX Account"
-msgstr "Modifica Account IAX"
-
-msgid "A valid username must be specified."
-msgstr "Deve essere specificato un nome utente valido."
-
-msgid "A valid secret must be specified."
-msgstr "Deve essere specificata parola segreta valida."
-
-msgid "A whole number of seconds must be entered for the \"qualify\" timeout."
-msgstr ""
-"Un numero intero di secondi deve essere specificato per \"precisare\" il "
-"timeout."
-
-msgid "This account's password and authentication scheme."
-msgstr "La password del account e lo schema di autenticazione."
-
-msgid "IAX proxy host URL or IP address and optional port."
-msgstr "Indirizzo del proxy IAX o indirizzo IP e porta opzionale."
-
-msgid "A valid default number (MSN) must be specified."
-msgstr "Deve essere specificato un Numero (MSN) valido per questa linea."
 
 msgid ""
 "The default telephone number (MSN) assigned to this line. Individual MSN "
@@ -2633,20 +2707,16 @@ msgstr ""
 msgid "ISDN Interface"
 msgstr "Interfaccia ISDN"
 
-msgid "Edit SIP Account"
-msgstr "Modifica l'account SIP"
-
-msgid "A valid \"fromuser\" must be specified."
-msgstr "Deve essere specificato un \"da utente\" valido."
-
-msgid "SIP proxy host URL or IP address and optional port."
-msgstr "Indirizzo del proxy SIP o indirizzo IP e porta opzionale."
+#, fuzzy
+msgid "Edit SIP Provider"
+msgstr "Derivati"
 
 msgid "Authorization User"
 msgstr "Utente Autorizzato"
 
+#, fuzzy
 msgid ""
-"Some providers require a seperate authorization username.<br>Defaults to "
+"Some providers require a seperate username for authorization.<br>Defaults to "
 "username entered above."
 msgstr ""
 "Alcuni operatori telefonici richiedono l'autorizzazione con un nome utente "
@@ -3284,6 +3354,54 @@ msgstr "ERR Non posso installare la configurazione. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
 
+#~ msgid "Audio Codecs"
+#~ msgstr "Codificatori Audio"
+
+#~ msgid "Video Codecs"
+#~ msgstr "Codificatori Video"
+
+#~ msgid "Incoming Caller ID Overrides"
+#~ msgstr "Sovrascrive l'Identificativo del chiamante (CID) entrante"
+
+#~ msgid "Platform"
+#~ msgstr "Piattaforma"
+
+#~ msgid "Edit Analog Line"
+#~ msgstr "Modifica linea analogica"
+
+#~ msgid "Analog Interface"
+#~ msgstr "Interfaccia analogica"
+
+#~ msgid "Edit IAX Account"
+#~ msgstr "Modifica Account IAX"
+
+#~ msgid "A valid username must be specified."
+#~ msgstr "Deve essere specificato un nome utente valido."
+
+#~ msgid "A valid secret must be specified."
+#~ msgstr "Deve essere specificata parola segreta valida."
+
+#~ msgid ""
+#~ "A whole number of seconds must be entered for the \"qualify\" timeout."
+#~ msgstr ""
+#~ "Un numero intero di secondi deve essere specificato per \"precisare\" il "
+#~ "timeout."
+
+#~ msgid "This account's password and authentication scheme."
+#~ msgstr "La password del account e lo schema di autenticazione."
+
+#~ msgid "IAX proxy host URL or IP address and optional port."
+#~ msgstr "Indirizzo del proxy IAX o indirizzo IP e porta opzionale."
+
+#~ msgid "Edit SIP Account"
+#~ msgstr "Modifica l'account SIP"
+
+#~ msgid "A valid \"fromuser\" must be specified."
+#~ msgstr "Deve essere specificato un \"da utente\" valido."
+
+#~ msgid "SIP proxy host URL or IP address and optional port."
+#~ msgstr "Indirizzo del proxy SIP o indirizzo IP e porta opzionale."
+
 #~ msgid "Diagnostics"
 #~ msgstr "Diagnostica"
 
@@ -3599,9 +3717,6 @@ msgstr "ERR La configurazione ricevuta no è valida.\n"
 
 #~ msgid "TLS certificates are currently not verified."
 #~ msgstr "Attualmente i certificati TLS non vengono verificati."
-
-#~ msgid "Presentation"
-#~ msgstr "Presentazione"
 
 #~ msgid "E-Mail Language"
 #~ msgstr "Lingua E-mail"
