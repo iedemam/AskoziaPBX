@@ -629,3 +629,13 @@ a.link_color_black {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
+
+.d_header {
+	border-bottom: 1px solid #999999;
+	color: #435370;
+	font-size: 16px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 6px;
+	padding-right: 16px;
+}

@@ -68,7 +68,7 @@ d_start("phones_external_edit.php");
 
 
 	// General
-	d_header(gettext("General"));
+	d_header(gettext("General Settings"));
 
 	d_field(gettext("Number"), "extension", 20,
 		gettext("The internal number used to dial this phone."), "required");

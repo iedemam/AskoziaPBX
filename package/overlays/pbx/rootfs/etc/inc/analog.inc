@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -195,6 +195,55 @@ function analog_save_phone($phone) {
 		$GLOBALS['config']['analog']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
 	} else {
 		$GLOBALS['config']['analog']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['analog_dirty_path']);
+}
+
+function analog_generate_default_provider() {
+	global $defaults;
+
+	$provider = array();
+
+	$provider['language'] = $defaults['accounts']['language'];
+	$provider['calleridsource'] = $defaults['accounts']['providers']['calleridsource'];
+	$provider['uniqid'] = 'ANALOG-PROVIDER-' . uniqid(rand());
+
+	return $provider;
+}
+
+function analog_verify_provider($post, $errors) {
+
+	$provider = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$provider, &$post, &$errors);
+	v_numeric('number', gettext('Number'), &$provider, &$post, &$errors);
+	v_incoming_prov_routing(&$provider, &$post, &$errors);
+	v_incoming_prov_callerid(&$provider, &$post, &$errors);
+	v_outgoing_prov_routing(&$provider, &$post, &$errors);
+	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'port'
+	);
+	foreach ($trusted as $t) {
+		$provider[$t] = $post[$t];
+	}
+
+	return $provider;
+}
+
+function analog_save_provider($provider) {
+	global $g, $uniqid_map;
+
+	if (analog_get_provider($provider['uniqid'])) {
+		$GLOBALS['config']['analog']['provider'][$uniqid_map[$provider['uniqid']]] = $provider;
+	} else {
+		$GLOBALS['config']['analog']['provider'][] = $provider;
 	}
 
 	write_config();

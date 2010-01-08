@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -29,201 +29,75 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$needs_scriptaculous = false;
-
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Providers"), gettext("Edit Analog Line"));
+$pgtitle = array(gettext("Accounts"), gettext("Edit Analog Provider"));
 
-
-if (!is_array($config['analog']['provider']))
-	$config['analog']['provider'] = array();
-
-analog_sort_providers();
-$a_analogproviders = &$config['analog']['provider'];
-
-$a_analogphones = analog_get_phones();
-
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
-
-/* pull current config into pconfig */
-if (isset($id) && $a_analogproviders[$id]) {
-	$pconfig['name'] = $a_analogproviders[$id]['name'];
-	$pconfig['interface'] = $a_analogproviders[$id]['interface'];
-	$pconfig['number'] = $a_analogproviders[$id]['number'];
-	$pconfig['language'] = $a_analogproviders[$id]['language'];
-	$pconfig['dialpattern'] = $a_analogproviders[$id]['dialpattern'];
-	$pconfig['calleridsource'] = 
-		isset($a_analogproviders[$id]['calleridsource']) ? $a_analogproviders[$id]['calleridsource'] : "phones";
-	$pconfig['calleridstring'] = $a_analogproviders[$id]['calleridstring'];
-	$pconfig['incomingextensionmap'] = $a_analogproviders[$id]['incomingextensionmap'];
-	$pconfig['override'] = $a_analogproviders[$id]['override'];
-	$pconfig['overridestring'] = $a_analogproviders[$id]['overridestring'];
-}
 
 if ($_POST) {
-
 	unset($input_errors);
-	$_POST['dialpattern'] = split_and_clean_lines($_POST['dialpattern']);
-	$_POST['incomingextensionmap'] = gather_incomingextensionmaps($_POST);
-	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", "Name");
-	
-	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if ($_POST['calleridsource'] == "string" && !pbx_is_valid_callerid_string($_POST['calleridstring'])) {
-		$input_errors[] = gettext("A valid Caller ID string must be specified.");
-	}
-	if (($_POST['override'] == "prepend" || $_POST['override'] == "replace") && !$_POST['overridestring']) {
-		$input_errors[] = gettext("An incoming Caller ID override string must be specified.");
-	}
-
-	// pattern validation
-	if (isset($id)) {
-		$current_provider_id = $a_analogproviders[$id]['uniqid'];
-	}
-	if (is_array($_POST['dialpattern'])) {
-		foreach($_POST['dialpattern'] as $p) {
-			/*if (pbx_dialpattern_exists($p, &$return_provider_name, $current_provider_id)) {
-				$input_errors[] = "The dial-pattern \"$p\" already exists for \"$return_provider_name\".";
-			}*/
-			if (!pbx_is_valid_dialpattern($p, &$internal_error)) {
-				$input_errors[] = sprintf(gettext("The dial-pattern \"%s\" is invalid. %s"), $p, $internal_error);
-			}
-		}
-	}
-	if (is_array($_POST['incomingextensionmap'])) {
-		foreach($_POST['incomingextensionmap'] as $map) {
-			/* XXX : check for duplicates */
-			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
-				$input_errors[] = sprintf(gettext("The incoming extension pattern \"%s\" is invalid. %s"), $map['incomingpattern'], $internal_error);
-			}
-		}
-	}
-	
-
+	$provider = analog_verify_provider(&$_POST, &$input_errors);
 	if (!$input_errors) {
-		$ap = array();		
-		$ap['name'] = $_POST['name'];
-		$ap['interface'] = $_POST['interface'];
-		$ap['number'] = $_POST['number'];
-		$ap['language'] = $_POST['language'];
-
-		$ap['calleridsource'] = $_POST['calleridsource'];
-		$ap['calleridstring'] = $_POST['calleridstring'];
-		
-		$ap['dialpattern'] = $_POST['dialpattern'];
-		$ap['incomingextensionmap'] = $_POST['incomingextensionmap'];
-		$ap['override'] = ($_POST['override'] != "disable") ? $_POST['override'] : false;
-		$ap['overridestring'] = verify_non_default($_POST['overridestring']);
-		
-		if (isset($id) && $a_analogproviders[$id]) {
-			$ap['uniqid'] = $a_analogproviders[$id]['uniqid'];
-			$a_analogproviders[$id] = $ap;
-		 } else {
-			$ap['uniqid'] = "ANALOG-PROVIDER-" . uniqid(rand());
-			$a_analogproviders[] = $ap;
-		}
-		
-		touch($g['analog_dirty_path']);
-		
-		write_config();
-		
+		analog_save_provider($provider);
 		header("Location: accounts_providers.php");
 		exit;
 	}
 }
 
-include("fbegin.inc");
 
-?><script type="text/JavaScript">
-<!--
+$colspan = 1;
+$carryovers[] = "uniqid";
 
-	jQuery(document).ready(function(){
-
-		<?=javascript_advanced_settings("ready");?>
-
-	});
-
-//-->
-</script><?
-
-if ($input_errors) display_input_errors($input_errors);
-
-$analog_interfaces = dahdi_get_ports("analog", "fxo");
-
-if (count($analog_interfaces) == 0) {
-
-	$page_link = '<a href="ports_analog.php">' . gettext("Ports") . ": " . gettext("Analog") . '</a>';
-	$interfaces_warning = sprintf(gettext("<strong>No compatible interfaces found!</strong><br><br> To configure this type of account, make sure an appropriately configured interface is present on the %s page"), $page_link);
-	display_info_box($interfaces_warning, "keep");
-	
-} else {
-
-	?><form action="providers_analog_edit.php" method="post" name="iform" id="iform">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			<tr> 
-				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-				<td width="80%" colspan="1" class="vtable">
-					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-					<br><span class="vexpl"><?=gettext("Descriptive name for this provider.");?></span>
-				</td>
-			</tr>
-			<tr> 
-				<td width="20%" valign="top" class="vncellreq"><?=gettext("Number");?></td>
-				<td width="80%" colspan="1" class="vtable">
-					<input name="number" type="text" class="formfld" id="number" size="40" value="<?=htmlspecialchars($pconfig['number']);?>"> 
-					<br><span class="vexpl"><?=gettext("Telephone number assigned to this line.");?></span>
-				</td>
-			</tr>
-			<? display_provider_dialpattern_editor($pconfig['dialpattern'], 1); ?>
-			<tr> 
-				<td valign="top" class="vncell"><?=gettext("Analog Interface");?></td>
-				<td class="vtable">
-					<select name="interface" class="formfld" id="interface"><?
-
-					foreach ($analog_interfaces as $interface) {
-						?><option value="<?=$interface['unit'];?>" <?
-						if ($interface['unit'] == $pconfig['interface'])
-							echo "selected"; ?>
-						><?=$interface['name'];?></option><?
-					}
-
-					?></select>
-				</td>
-			</tr>
-			<? display_outgoing_callerid_options($pconfig['calleridsource'], $pconfig['calleridstring'], 1); ?>
-			<? display_channel_language_selector($pconfig['language']); ?>
-			<? display_incoming_extension_selector(1); ?>
-			<? display_advanced_settings_begin(1); ?>
-			<? display_incoming_callerid_override_options($pconfig['override'], $pconfig['overridestring'], 1); ?>
-			<? display_advanced_settings_end(); ?>
-			<tr> 
-				<td valign="top">&nbsp;</td>
-				<td>
-					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-					<?php if (isset($id) && $a_analogproviders[$id]): ?>
-					<input name="id" type="hidden" value="<?=$id;?>"> 
-					<?php endif; ?>
-				</td>
-			</tr>
-		</table>
-	</form><?
-
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
 }
 
-?><script language="JavaScript">
-<!-- 
+if ($_POST) {
+	$form = $_POST;
+} else if ($uniqid) {
+	$form = analog_get_provider($uniqid);
+} else {
+	$form = analog_generate_default_provider();
+}
 
-<? javascript_incoming_extension_selector($pconfig['incomingextensionmap']); ?>
+include("fbegin.inc");
+d_start("providers_analog_edit.php");
 
-//-->
-</script><?
+	// General
+	d_header(gettext("General Settings"));
+	d_field(gettext("Name"), "name", 40,
+		gettext("Descriptive name for this provider."), "required");
+	?><tr>
+		<td width="20%" valign="top" class="vncellreq"><?=gettext("Number");?></td>
+		<td width="80%" colspan="1" class="vtable">
+			<input name="number" type="text" class="formfld" id="number" size="40" value="<?=htmlspecialchars($form['number']);?>">
+			<br><span class="vexpl"><?=gettext("Telephone number assigned to this line.");?></span>
+		</td>
+	</tr><?
+	display_channel_language_selector($form['language'], 1);
+	d_hwport_selector("analog", "fxo");
+	d_spacer();
+
+
+	// Call Routing
+	d_header(gettext("Call Routing"));
+	display_provider_dialpattern_editor($form['dialpattern'], 1);
+	display_incoming_extension_selector(1);
+	d_spacer();
+
+
+	// Caller ID Options
+	d_header(gettext("Caller ID Options"));
+	display_outgoing_callerid_options($form['calleridsource'], $form['calleridstring'], 1);
+	display_incoming_callerid_override_options($form['override'], $form['overridestring'], 1);
+	d_spacer();
+
+d_submit();
+
+?><script type="text/javascript" charset="utf-8"><?
+	javascript_incoming_extension_selector($form['incomingextensionmap']);
+?></script><?
 
 include("fend.inc");

@@ -237,21 +237,21 @@ function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	
 	// invalid character
 	if (!preg_match($invalid_regex, $dialpattern)) {
-		$error = "It contains an invalid character";
+		$error = gettext("It contains an invalid character");
 		return false;
 	}
 	
 	// doubled character
 	if (substr_count($dialpattern, "|") > 1) {
-		$error = "It contains an doubled \"|\" character, only one is allowed.";
+		$error = gettext("It contains an doubled \"|\" character, only one is allowed.");
 		return false;
 	}
 	if (substr_count($dialpattern, "+") > 1) {
-		$error = "It contains an doubled \"+\" character, only one is allowed.";
+		$error = gettext("It contains an doubled \"+\" character, only one is allowed.");
 		return false;
 	}
 	if (substr_count($dialpattern, "-") > 1) {
-		$error = "It contains an doubled \"-\" character, only one is allowed.";
+		$error = gettext("It contains an doubled \"-\" character, only one is allowed.");
 		return false;
 	}
 	
@@ -262,7 +262,7 @@ function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	for($i = 0; $i < $len; $i++) {
 		if ($dialpattern[$i] == "[") {
 			if ($open) {
-				$error = "Nested square brackets are not allowed.";
+				$error = gettext("Nested square brackets are not allowed.");
 				return false;
 			} else {
 				$open = true;
@@ -270,10 +270,10 @@ function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 			}
 		} else if ($dialpattern[$i] == "]") {
 			if (!$open) {
-				$error = "Unmatched square bracket.";
+				$error = gettext("Unmatched square bracket.");
 				return false;
 			} else if (($i - $open_index) < 3) {
-				$error = "Brackets are not needed for less than 2 characters.";
+				$error = gettext("Brackets are not needed for less than 2 characters.");
 				return false;
 			} else {
 				$open = false;
@@ -293,7 +293,7 @@ function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	// XXX : incorrectly identifies "1|0+X!" as an invalid pattern
 	if (($plus_offset = strpos($dialpattern, "+")) !== false) {
 		if (!preg_match("/^[0-9\*\#]+\+/", $dialpattern)) {
-			$error = "Appended prefixes may only contain digits, '*' and '#'.";
+			$error = gettext("Appended prefixes may only contain digits, '*' and '#'.");
 			return false;
 		}
 		$dialpattern = substr($dialpattern, $plus_offset+1);
@@ -302,11 +302,11 @@ function pbx_is_valid_dialpattern($dialpattern, &$error, $incoming=false) {
 	// invalid chopped prefix
 	if (($pipe_offset = strpos($dialpattern, "|")) !== false) {
 		if (strpos(substr($dialpattern, 0, $pipe_offset), ".") !== false) {
-			$error = "The wildcard character \".\" is not allowed before a prefix which is to be removed.";
+			$error = gettext("The wildcard character \".\" is not allowed before a prefix which is to be removed.");
 			return false;
 		}
 		if (strpos(substr($dialpattern, 0, $pipe_offset), "!") !== false) {
-			$error = "The wildcard character \"!\" is not allowed before a prefix which is to be removed.";
+			$error = gettext("The wildcard character \"!\" is not allowed before a prefix which is to be removed.");
 			return false;
 		}
 	}
@@ -639,19 +639,17 @@ function pbx_sort_by_number($a, $b) {
 }
 
 /**
- * Parses "core show channels" output to return active calls, channels and a channel list
+ * Parses "core show channels" output to return a channel list
  */
-function pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list) {
+function pbx_get_active_channels(&$channel_list) {
 	
 	pbx_exec("core show channels", &$output);
 	$lines = explode("\n", $output);
 
-	$n = count($lines) - 3;
+	$n = count($lines) - 4;
 	for ($i = 1; $i <= $n; $i++) {
 		$channel_list[] = $lines[$i];
 	}
-	$active_channels = substr($lines[$n+1], 0, strpos($lines[$n+1], " "));
-	$active_calls = substr($lines[$n+2], 0, strpos($lines[$n+2], " "));
 
 	return 0;
 }

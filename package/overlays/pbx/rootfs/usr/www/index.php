@@ -2,21 +2,23 @@
 <?php 
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
-	
+	originally part of m0n0wall (http://m0n0.ch/wall)
+	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
+
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -66,16 +68,23 @@ if ($_POST) {
 		<td valign="top" class="vncellt"><?=spanify(gettext("Version"));?></td>
 		<td class="listr"><strong><?
 			readfile("/etc/version");
-			?></strong><br><?
+			?></strong><?
+			echo gettext("on") . " ";
+			echo htmlspecialchars($g['platform']);
+			?><br><?
 			echo gettext("built on") . " ";
 			readfile("/etc/version.buildtime");
 		?></td>
-	</tr>
-	<tr>
-		<td class="vncellt"><?=spanify(gettext("Platform"));?></td>
-		<td class="listr"><?=htmlspecialchars($g['platform']);?></td>
-	</tr>
-	<tr>
+	</tr><?
+if ($config['lastchange']) {
+		?><tr>
+			<td class="vncellt"><?=spanify(gettext("Last Config Change"));?></td>
+			<td class="listr"> 
+				<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>
+			</td>
+		</tr><?
+}
+	?><tr>
 		<td class="vncellt"><?=spanify(gettext("Uptime"));?></td>
 		<td class="listr"><?
 			exec("/usr/bin/uptime", $ut);
@@ -85,26 +94,22 @@ if ($_POST) {
 			echo htmlspecialchars($ut);
 		?></td>
 	</tr><?
-if ($config['lastchange']) {
+
+	pbx_exec("core show channels count", &$output);
+	$lines = explode("\n", $output);
+	$active_channels = substr($lines[0], 0, strpos($lines[0], " "));
+	$active_calls = substr($lines[1], 0, strpos($lines[1], " "));
+	$calls_processed = substr($lines[2], 0, strpos($lines[2], " "));
+
 	?><tr>
-		<td class="vncellt"><?=spanify(gettext("Last Config Change"));?></td>
-		<td class="listr"> 
-			<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>
-		</td>
-	</tr><?
-}
-	/*
-	pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_list);
-	?><tr> 
-		<td class="vncellt"><?=spanify(gettext("Active Calls"));?></td>
-		<td class="listr"><?=$active_calls;?>&nbsp;</td>
+		<td class="vncellt"><?=spanify(gettext("Active Channels / Calls"));?></td>
+		<td class="listr"><?=$active_channels . " / " . $active_calls;?>&nbsp;</td>
 	</tr>
-	<tr> 
-		<td class="vncellt"><?=spanify(gettext("Active Channels"));?></td>
-		<td class="listr"><?=$active_channels;?>&nbsp;</td>
+	<tr>
+		<td class="vncellt"><?=spanify(gettext("Calls Processed"));?></td>
+		<td class="listr"><?=$calls_processed;?>&nbsp;</td>
 	</tr>
-	*/
-	?><tr> 
+	<tr>
 		<td class="vncellt"><?=spanify(gettext("Memory Usage"));?></td>
 		<td class="listr"><?
 			exec("/usr/bin/free", $memory);
@@ -121,10 +126,10 @@ if ($config['lastchange']) {
 			echo $memUsage . "%";
 		?></td>
 	</tr>
-	<tr> 
+	<tr>
 		<td class="vncellt" valign="top"><?=spanify(gettext("Notes"));?></td>
 		<td class="listr">
-			<textarea name="notes" cols="65" rows="7" id="notes" class="notes"><?=htmlspecialchars(base64_decode($config['system']['notes']));?></textarea><br>
+			<textarea name="notes" cols="65" rows="5" id="notes" class="notes"><?=htmlspecialchars(base64_decode($config['system']['notes']));?></textarea><br>
 			<input name="Submit" type="submit" class="formbtns" value="<?=gettext("Save");?>">
 		</td>
 	</tr>

@@ -313,7 +313,7 @@ EOD;
 			} else {
 				if (!in_array($provider['uniqid'], $p['provider']) &&
 					pbx_provider_is_active($provider)) {
-					$conf .= "include => $provider\n";
+					$conf .= "include => " . $provider['uniqid'] . "\n";
 				}
 			}
 		}
@@ -461,7 +461,8 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		return "DAHDI/" . $phone['port'] . "/" . $phone['extension'];
 
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
-		return "DAHDI/" . $phone['port'];
+		$dahdi_port = dahdi_get_port($phone['port']);
+		return "DAHDI/" . $dahdi_port['basechannel'];
 	
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 
@@ -474,8 +475,9 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		if ($technology == "DAHDI") {
-			$prov = analog_get_provider($phone['dialprovider']);
-			return "DAHDI/" . $prov['port'] . "/" . $phone['dialstring'];
+			$provider = analog_get_provider($phone['dialprovider']);
+			$dahdi_port = dahdi_get_port($provider['port']);
+			return "DAHDI/" . $dahdi_port['basechannel'] . "/" . $phone['dialstring'];
 		// LINUX TODO !! need new way to tell difference between these prov. types
 		} else if ($technology == "CAPI"){
 			$prov = isdn_get_provider($phone['dialprovider']);
@@ -513,10 +515,7 @@ function extensions_generate_provider_incoming_context($p) {
 	// assign read back number for provider
 	$readbacknum = false;
 
-	if ($tech == "CAPI") {
-		$readbacknum = $p['msn'];
-
-	} else if ($tech == "DAHDI") {
+	if ($tech == "DAHDI") {
 		$readbacknum = $p['number'];
 
 	} else if ($tech == "SIP" || $tech == "IAX") {
@@ -530,11 +529,6 @@ function extensions_generate_provider_incoming_context($p) {
 		}
 	}
 
-	// does this channel need a wait
-	if ($tech == "CAPI" || $tech == "DAHDI") {
-		$needswait = true;
-	}
-
 	// generate incoming extensions
 	foreach ($groupped_mapping as $pattern => $destination) {
 		// XXX : hacky way to avoid handling multiple conditions in extensions_generate_extension_from_uniqid
@@ -542,7 +536,7 @@ function extensions_generate_provider_incoming_context($p) {
 		if (is_array($destination) && (count($destination) == 1)) {
 			$destination = $destination[0];
 		}
-		
+
 		if ($pattern == "all") {
 			$catchall = array("_[0-9*#]!", "s");
 			// can we include the incoming username as a catch all extension
@@ -551,32 +545,17 @@ function extensions_generate_provider_incoming_context($p) {
 			}
 			foreach ($catchall as $catch) {
 				$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-				if ($needswait) {
-					$conf .= "exten => $catch,n,Ringing()\n";
-					$conf .= "exten => $catch,n,Wait(1)\n";
-				}
-
 				$conf .= extensions_generate_incoming_callerid_overrides($catch, $p['override'], $p['overridestring']);
 				$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
 			}
 
-
 		} else if (verify_is_numericint($pattern)) {
 			$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-			if ($needswait) {
-				$conf .= "exten => $pattern,n,Ringing()\n";
-				$conf .= "exten => $pattern,n,Wait(1)\n";
-			}
 			$conf .= extensions_generate_incoming_callerid_overrides($pattern, $p['override'], $p['overridestring']);
 			$conf .= extensions_generate_extension_from_uniqid($destination, true, $pattern, $pattern);
 
-
 		} else {
 			$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-			if ($needswait) {
-				$conf .= "exten => _$pattern,n,Ringing()\n";
-				$conf .= "exten => _$pattern,n,Wait(1)\n";
-			}
 			$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
 			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, '_' . $pattern);
 		}
@@ -645,11 +624,9 @@ function extensions_generate_provider_outgoing_context($p) {
 		} else if ($tech == "IAX2") {
 			$conf .= "exten => _$pattern,n,Dial(IAX2/{$p['uniqid']}/$prefix$exten,,T$cidflag)\n";
 
-		} else if ($tech == "CAPI") {
-			$conf .= "exten => _$pattern,n,Dial(CAPI/{$p['interface']}/$prefix$exten/bl,,T$cidflag)\n";
-
 		} else if ($tech == "DAHDI") {
-			$conf .= "exten => _$pattern,n,Dial(DAHDI/{$p['interface']}/$prefix$exten,,T$cidflag)\n";
+			$dahdi_port = dahdi_get_port($p['port']);
+			$conf .= "exten => _$pattern,n,Dial(DAHDI/{$dahdi_port['basechannel']}/$prefix$exten,,T$cidflag)\n";
 
 		} else {
 			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
@@ -679,9 +656,7 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 	}
 
 	// ring length
-	if ($p['ringlength'] == "indefinitely") {
-		$ringlength = "";
-	} else if ($p['ringlength']) {
+	if ($p['ringlength'] != "indefinitely") {
 		$ringlength = $p['ringlength'];
 	}
 
@@ -691,9 +666,6 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 
 	} else if ($tech == "IAX2") {
 		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(IAX2/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
-
-	} else if ($tech == "CAPI") {
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(CAPI/{$p['interface']}/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else if ($tech == "DAHDI") {
 		$dahdi_port = dahdi_get_port($p['port']);
@@ -732,10 +704,7 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 	}
 
 	// ring length
-	$ringlength = $defaults['accounts']['phones']['ringlength'];
-	if ($p['ringlength'] == "indefinitely") {
-		$ringlength = "";
-	} else if ($p['ringlength']) {
+	if ($p['ringlength'] != "indefinitely") {
 		$ringlength = $p['ringlength'];
 	}
 
@@ -743,12 +712,7 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 	if ($tech == "DAHDI") {
 		$prov = analog_get_provider($p['dialprovider']);
 		$conf .= "exten => $exten,n,".
-			"Gosub(macro-main,s,1($tech/{$prov['interface']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
-
-	} else if ($tech == "CAPI") {
-		$prov = isdn_get_provider($p['dialprovider']);
-		$conf .= "exten => $exten,n,".
-				"Gosub(macro-main,s,1($tech/{$prov['interface']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+			"Gosub(macro-main,s,1($tech/{$prov['port']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else if (($tech == "SIP" || $tech == "IAX2") && $directdial) {
 		$conf .= "exten => $exten,n,".
@@ -783,10 +747,7 @@ function extensions_generate_callgroup_extension($group, $from_public=false, $re
 	$readbacknum = ($readbacknum !== false) ? $readbacknum : $vm_phone['extension'];
 
 	// ring length
-	$ringlength = $defaults['accounts']['phones']['ringlength'];
-	if ($group['ringlength'] == "indefinitely") {
-		$ringlength = "";
-	} else if ($group['ringlength']) {
+	if ($group['ringlength'] != "indefinitely") {
 		$ringlength = $group['ringlength'];
 	}
 

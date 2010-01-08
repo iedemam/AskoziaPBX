@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -437,10 +437,6 @@ function v_callerid($element, $post, $errors) {
 	$element['callerid'] = $post['callerid'];
 }
 
-function v_optional($field, $element, $post) {
-	$element[$field] = v_strip($post[$field]);
-}
-
 function v_public_access_editor($element, $post, $errors) {
 	if ($post['publicaccess'] == 'enabled' && !v_is_publicname($post['publicname'])) {
 		$errors[] = gettext("Invalid public access alias.");
@@ -487,7 +483,7 @@ function v_provider_access_selector($element, $post) {
 }
 
 function v_strip($s) {
-	return (strlen($s)) ? $s : false;
+	return strlen($s) ? $s : false;
 }
 
 function v_codecs($element, $post) {
@@ -510,6 +506,81 @@ function v_dialstring($element, $post, $errors) {
 		$errors[] = gettext("An invalid dialstring was entered.");
 	}
 	$element['dialstring'] = $post['dialstring'];
+}
+
+function v_port($element, $post, $errors) {
+	if (strlen($post['port']) && ($post['port'] < 1 || $post['port'] > 65535)) {
+		$errors[] = gettext("An invalid port was entered.");
+	}
+	$element['port'] = v_strip($post['port']);
+}
+
+function v_incoming_prov_routing($element, $post, $errors) {
+	$post['incomingextensionmap'] = gather_incomingextensionmaps($post);
+	if (is_array($post['incomingextensionmap'])) {
+		foreach($post['incomingextensionmap'] as $map) {
+			if ($map['incomingpattern'] && !pbx_is_valid_dialpattern($map['incomingpattern'], &$internal_error, true)) {
+				$errors[] = sprintf(gettext("The incoming extension pattern \"%s\" is invalid. %s"), $map['incomingpattern'], $internal_error);
+			}
+		}
+	}
+	$element['incomingextensionmap'] = $post['incomingextensionmap'];
+}
+
+function v_outgoing_prov_routing($element, $post, $errors) {
+	$post['dialpattern'] = split_and_clean_lines($post['dialpattern']);
+	if (is_array($post['dialpattern'])) {
+		foreach($post['dialpattern'] as $p) {
+			if (!pbx_is_valid_dialpattern($p, &$internal_error)) {
+				$errors[] = sprintf(gettext("The outgoing dial-pattern \"%s\" is invalid. %s"), $p, $internal_error);
+			}
+		}
+	}
+	$element['dialpattern'] = $post['dialpattern'];
+}
+
+function v_outgoing_prov_callerid($element, $post, $errors) {
+	if ($post['calleridsource'] == "string" && !pbx_is_valid_callerid_string($post['calleridstring'])) {
+		$errors[] = gettext("A valid Caller ID string must be specified.");
+	}
+	$element['calleridsource'] = $post['calleridsource'];
+	$element['calleridstring'] = v_strip($post['calleridstring']);
+}
+
+function v_incoming_prov_callerid($element, $post, $errors) {
+	if (($post['override'] == "prepend" || $post['override'] == "replace") && !$post['overridestring']) {
+		$errors[] = gettext("An incoming Caller ID override string must be specified.");
+	}
+	$element['override'] = ($post['override'] != "disable") ? $post['override'] : false;
+	$element['overridestring'] = v_strip($post['overridestring']);
+}
+
+function v_numeric($field, $name, $element, $post, $errors, $required=false) {
+	if ($required) {
+		if (!strlen($post[$field])) {
+			$errors[] = sprintf(gettext("The %s field is required."), $name);
+		} else if (preg_match("/[^0-9]/", $post[$field])) {
+			$errors[] = sprintf(gettext("The %s field must be numeric."), $name);
+		}
+		$element[$field] = $post[$field];
+
+	} else {
+		if (strlen($post[$field]) && preg_match("/[^0-9]/", $post[$field])) {
+			$errors[] = sprintf(gettext("The %s field must be numeric."), $name);
+		}
+		$element[$field] = v_strip($post[$field]);
+	}
+}
+
+function v_required($field, $name, $element, $post, $errors) {
+	if (!strlen($post[$field])) {
+		$errors[] = sprintf(gettext("The %s field is required."), $name);
+	}
+	$element[$field] = $post[$field];
+}
+
+function v_optional($field, $element, $post) {
+	$element[$field] = v_strip($post[$field]);
 }
 
 ?>

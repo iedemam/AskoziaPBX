@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -438,6 +438,77 @@ function sip_save_phone($phone) {
 		$GLOBALS['config']['sip']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
 	} else {
 		$GLOBALS['config']['sip']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['sip_dirty_path']);
+}
+
+function sip_generate_default_provider() {
+	global $defaults;
+
+	$provider = array();
+
+	$provider['language'] = $defaults['accounts']['language'];
+	$provider['codec'] = $defaults['accounts']['codec'];
+	$provider['qualify'] = $defaults['accounts']['qualify'];
+	$provider['calleridsource'] = $defaults['accounts']['providers']['calleridsource'];
+	$provider['dtmfmode'] = $defaults['sip']['dtmfmode'];
+	$provider['natmode'] = $defaults['sip']['natmode'];
+	$provider['uniqid'] = 'SIP-PROVIDER-' . uniqid(rand());
+
+	return $provider;
+}
+
+function sip_verify_provider($post, $errors) {
+
+	$provider = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$provider, &$post, &$errors);
+	v_required('host', gettext('Host'), &$provider, &$post, &$errors);
+	v_port(&$provider, &$post, &$errors);
+	v_required('username', gettext('Username'), &$provider, &$post, &$errors);
+	v_numeric('readbacknumber', gettext('Public Number'), &$provider, &$post, &$errors);
+	v_incoming_prov_routing(&$provider, &$post, &$errors);
+	v_incoming_prov_callerid(&$provider, &$post, &$errors);
+	v_outgoing_prov_routing(&$provider, &$post, &$errors);
+	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
+	v_codecs(&$provider, &$post);
+
+	$optional = array(
+		'secret',
+		'fromuser',
+		'authuser',
+		'fromdomain',
+		'noregister',
+		'manualregister'
+	);
+	foreach ($optional as $o) {
+		$provider[$o] = v_strip($post[$o]);
+	}
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'natmode',
+		'dtmfmode',
+		'qualify'
+	);
+	foreach ($trusted as $t) {
+		$provider[$t] = $post[$t];
+	}
+
+	return $provider;
+}
+
+function sip_save_provider($provider) {
+	global $g, $uniqid_map;
+
+	if (sip_get_provider($provider['uniqid'])) {
+		$GLOBALS['config']['sip']['provider'][$uniqid_map[$provider['uniqid']]] = $provider;
+	} else {
+		$GLOBALS['config']['sip']['provider'][] = $provider;
 	}
 
 	write_config();

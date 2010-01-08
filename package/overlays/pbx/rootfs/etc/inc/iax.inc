@@ -46,6 +46,15 @@ function iax_get_providers() {
 }
 
 /**
+ * Returns a specific provider based on its uniqid
+ */
+function iax_get_provider($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['iax']['provider'][$uniqid_map[$uniqid]];
+}
+
+/**
  * Sorts providers by name
  */
 function iax_sort_providers() {
@@ -379,6 +388,72 @@ function iax_save_phone($phone) {
 		$GLOBALS['config']['iax']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
 	} else {
 		$GLOBALS['config']['iax']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['iax_dirty_path']);
+}
+
+function iax_generate_default_provider() {
+	global $defaults;
+
+	$provider = array();
+
+	$provider['language'] = $defaults['accounts']['language'];
+	$provider['codec'] = $defaults['accounts']['codec'];
+	$provider['qualify'] = $defaults['accounts']['qualify'];
+	$provider['calleridsource'] = $defaults['accounts']['providers']['calleridsource'];
+	$provider['authentication'] = $defaults['iax']['authentication'];
+	$provider['uniqid'] = 'IAX-PROVIDER-' . uniqid(rand());
+
+	return $provider;
+}
+
+function iax_verify_provider($post, $errors) {
+
+	$provider = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$provider, &$post, &$errors);
+	v_required('host', gettext('Host'), &$provider, &$post, &$errors);
+	v_port(&$provider, &$post, &$errors);
+	v_required('username', gettext('Username'), &$provider, &$post, &$errors);
+	v_numeric('readbacknumber', gettext('Public Number'), &$provider, &$post, &$errors);
+	v_incoming_prov_routing(&$provider, &$post, &$errors);
+	v_incoming_prov_callerid(&$provider, &$post, &$errors);
+	v_outgoing_prov_routing(&$provider, &$post, &$errors);
+	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
+	v_codecs(&$provider, &$post);
+
+	$optional = array(
+		'secret',
+		'noregister',
+		'manualregister'
+	);
+	foreach ($optional as $o) {
+		$provider[$o] = v_strip($post[$o]);
+	}
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'authentication',
+		'qualify'
+	);
+	foreach ($trusted as $t) {
+		$provider[$t] = $post[$t];
+	}
+
+	return $provider;
+}
+
+function iax_save_provider($provider) {
+	global $g, $uniqid_map;
+
+	if (iax_get_provider($provider['uniqid'])) {
+		$GLOBALS['config']['iax']['provider'][$uniqid_map[$provider['uniqid']]] = $provider;
+	} else {
+		$GLOBALS['config']['iax']['provider'][] = $provider;
 	}
 
 	write_config();

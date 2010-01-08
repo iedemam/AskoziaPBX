@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -37,35 +37,35 @@ $pglegend = array("add", "enabled", "disabled", "edit", "delete");
 
 /* delete */
 if ($_GET['action'] == "delete") {
-	if(!($msg = pbx_delete_provider($_GET['id']))) {
+	if(!($msg = pbx_delete_provider($_GET['uniqid']))) {
 		$successful_action = true;
 	} else {
-		$savemsg = $msg;	
+		$savemsg = $msg;
 	}
 }
 
 /* disable */
 if ($_GET['action'] == "disable") {
-	if(!($msg = pbx_disable_provider($_GET['id']))) {
+	if(!($msg = pbx_disable_provider($_GET['uniqid']))) {
 		$successful_action = true;
 	} else {
-		$savemsg = $msg;	
+		$savemsg = $msg;
 	}
 }
 
 /* enable */
 if ($_GET['action'] == "enable") {
-	if(!($msg = pbx_enable_provider($_GET['id']))) {
+	if(!($msg = pbx_enable_provider($_GET['uniqid']))) {
 		$successful_action = true;
 	} else {
-		$savemsg = $msg;	
+		$savemsg = $msg;
 	}
 }
 
 /* handle successful action */
 if ($successful_action) {
 	write_config();
-	$pieces = explode("-", $_GET['id']);
+	$pieces = explode("-", $_GET['uniqid']);
 	$provider_type = strtolower($pieces[0]);
 	switch ($provider_type) {
 		case "analog":
@@ -179,7 +179,7 @@ if (file_exists($g['analog_dirty_path'])) {
 
 </script>
 <form action="accounts_providers.php" method="post">
-<? $status_info = pbx_get_peer_statuses(); ?>
+<? /* $status_info = pbx_get_peer_statuses(); */ ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
@@ -225,9 +225,9 @@ if (file_exists($g['analog_dirty_path'])) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
+			?><a href="?action=enable&uniqid=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
+			?><a href="?action=disable&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -241,8 +241,8 @@ if (file_exists($g['analog_dirty_path'])) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="providers_sip_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_sip_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -271,9 +271,9 @@ if (file_exists($g['analog_dirty_path'])) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
+			?><a href="?action=enable&uniqid=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
+			?><a href="?action=disable&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -287,8 +287,8 @@ if (file_exists($g['analog_dirty_path'])) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['username']);?></td>
 		<td class="listr"><?=htmlspecialchars($p['host']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="providers_iax_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_iax_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -318,9 +318,9 @@ if (file_exists($g['analog_dirty_path'])) {
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
+			?><a href="?action=enable&uniqid=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
+			?><a href="?action=disable&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -334,8 +334,8 @@ if (file_exists($g['analog_dirty_path'])) {
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['msn']);?></td>
 		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
-		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
+		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 
@@ -356,18 +356,18 @@ if (file_exists($g['analog_dirty_path'])) {
 		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Pattern(s)");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Number");?></td>
-		<td width="20%" class="listhdr"><?=gettext("Interface");?></td>
+		<td width="20%" class="listhdr"><?=gettext("Port");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
 	<? $i = 0; foreach ($analog_providers as $p): ?>
-	<? $interface = analog_get_ab_interface($p['interface']); ?>
+	<? $port = dahdi_get_port($p['port']); ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
-			?><a href="?action=enable&id=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
+			?><a href="?action=enable&uniqid=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable provider");?>" border="0"></a><?
 		} else {
-			?><a href="?action=disable&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
+			?><a href="?action=disable&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this provider?");?>')"><img src="enabled.png" title="<?=gettext("click to disable provider");?>" border="0"></a><?
 		}
 		?></td>
 		<td class="listbgl"><?
@@ -380,9 +380,9 @@ if (file_exists($g['analog_dirty_path'])) {
 		?></td>
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['number']);?></td>
-		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
-		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
-			<a href="?action=delete&id=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
+		<td class="listr"><?=htmlspecialchars($port['name']);?></td>
+		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>
 	<? $i++; endforeach; ?>
 

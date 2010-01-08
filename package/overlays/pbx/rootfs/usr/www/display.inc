@@ -100,19 +100,19 @@ function display_audio_codec_selector($enabled_codecs) {
 	$scripts['javascript_codec_selector'] = true;
 
 	$audio_codecs = array(
+		"gsm" => "GSM",
 		"ulaw" => "G.711 u-law",
 		"alaw" => "G.711 A-law",
-		"gsm" => "GSM",
+		"g722" => "G.722",
+		"g723" => "G.723.1",
+		"g726aal2" => "G.726 (AAL2)",
+		"g726" => "G.726 (RFC3551)",
 		"g729" => "G.729A",
 		"ilbc" => "iLBC",
 		"speex" => "SpeeX",
-		"g723" => "G.723.1",
-		"g726aal2" => "G.726 AAL2",
 		"adpcm" => "ADPCM",
 		"slin" => "16 bit Signed Linear PCM",
-		"lpc10" => "LPC10",
-		"g726" => "G.726 RFC3551",
-		"g722" => "G722"
+		"lpc10" => "LPC10"
 	);
 
 	if (!is_array($enabled_codecs)) {
@@ -120,7 +120,7 @@ function display_audio_codec_selector($enabled_codecs) {
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Audio Codecs"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Audio"));?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Enabled"));?></strong>&nbsp;<i>(<?=spanify(gettext("drag-and-drop"));?>)</i>
 			<ul id="ace" class="ace" style="min-height:50px; cursor:pointer;">
 			<? foreach ($enabled_codecs as $codec): ?>
@@ -159,7 +159,7 @@ function display_video_codec_selector($enabled_codecs) {
 	}
 
 	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Video Codecs"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Video"));?></td>
 		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Enabled"));?></strong>&nbsp;<i>(<?=spanify(gettext("drag-and-drop"));?>)</i>
 			<ul id="vce" class="vce" style="min-height:50px; cursor:pointer;">
 				<? foreach ($enabled_codecs as $codec): ?>
@@ -234,14 +234,14 @@ function display_callgroup_member_selector($current_members) {
 	</tr><?	
 }
 
-function display_incoming_extension_selector($colspan, $idprefix=false) {
-	
+function display_incoming_extension_selector($colspan) {
+
 	$table_id = $idprefix ? $idprefix . "_incoming_extension_selector" : "incoming_extension_selector";
 	$row_id = $idprefix ? $idprefix . "_incoming_extension_selector_last" : "incoming_extension_selector_last";
 	$add_params = $idprefix ? ",,\"$idprefix\"" : "";
 	
 	?><tr>
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Incoming Extension(s)"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Incoming Extensions"));?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<table id="<?=$table_id;?>">
 				<tr id="<?=$row_id;?>">
@@ -405,7 +405,7 @@ function display_port_gain_selector($current_rxgain, $current_txgain, $colspan) 
 function display_incoming_callerid_override_options($current_override, $current_overridestring, $colspan) {
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Incoming Caller ID Overrides"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Incoming Modification"));?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<input name="overridestring" type="text" class="formfld" id="overridestring" size="40" value="<?=htmlspecialchars($current_overridestring);?>">&nbsp;<i><?=spanify(gettext("Source Name &lt;number&gt;"));?></i><br>
 			<input name="override" type="radio" value="prepend" <?php if ($current_override == "prepend") echo "checked"; ?>> <?=spanify(gettext("Prepend with string"));?>&nbsp;<input name="override" type="radio" value="replace" <?php if ($current_override == "replace") echo "checked"; ?>> <?=spanify(gettext("Replace with string"));?><br>
@@ -418,7 +418,7 @@ function display_incoming_callerid_override_options($current_override, $current_
 function display_outgoing_callerid_options($current_callerid_source, $current_callerid_string, $colspan) {
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Outgoing Caller ID"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Outgoing Presentation"));?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable">
 			<input name="calleridstring" type="text" class="formfld" id="calleridstring" size="40" value="<?=htmlspecialchars($current_callerid_string);?>">&nbsp;<i><?=spanify(gettext("Your Name &lt;number&gt;"));?></i><br>
 			<input name="calleridsource" type="radio" value="string" <?php if ($current_callerid_source == "string") echo "checked"; ?>> <?=spanify(gettext("Send string defined above&nbsp;"));?><input name="calleridsource" type="radio" value="phones" <?php if ($current_callerid_source == "phones" || !$current_callerid_source) echo "checked"; ?>> <?=spanify(gettext("Send phones' Caller ID"));?>
@@ -434,7 +434,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 	}
 	
 	?><tr> 
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Dialing Pattern(s)"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Outgoing Patterns"));?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?
 
 		// multiple instances need a prefixing identifier
@@ -457,7 +457,7 @@ function display_provider_dialpattern_editor($current_patterns, $colspan, $idpre
 			
 		// multiple instances don't need help for every instance
 		if (!$idprefix) {				
-			?><br><span class="vexpl"><?=spanify(gettext("Enter patterns, one per line, to define this provider's routing. Enter \"X!\" to use this Provider for all outgoing calls. To only use this Provider for calls starting with the number \"9\" enter \"9|.\". If no patterns are entered, only incoming calls will be accepted.<br>\n <ul>\n \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n </ul>\n"));?></span><?
+			?><br><span class="vexpl"><?=spanify(gettext("Enter patterns, one per line, to define this provider's outgoing routing. Enter \"X!\" to use this provider for all outgoing calls. To access this provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, only incoming calls will be accepted.<br>\n <ul>\n \t<li><strong>+</strong> - adds a prefix (i.e. \"1+555\" matches \"555\" and passes \"1555\" to the provider)</li>\n \t<li><strong>|</strong> - removes a prefix (i.e. \"1|555\" matches \"1555\" but only passes \"555\" to the provider)</li>\n \t<li><strong>X</strong> - matches digits 0-9</li>\n \t<li><strong>Z</strong> - matches digits 1-9</li>\n \t<li><strong>N</strong> - matches digits 2-9</li>\n \t<li><strong>[13-5]</strong> - matches any digit in the brackets (here, 1,3,4,5)</li>\n \t<li><strong>.</strong> - matches one or more characters (not allowed before | or +)</li>\n \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n </ul>\n"));?></span><?
 		}
 		
 		?></td>
@@ -823,13 +823,12 @@ function d_start($formname=false) {
 <?
 }
 
-function d_header($title, $light=false) {
+function d_header($title) {
 	global $colspan;
 
-	$class = ($light) ? "listtopiclight" : "listtopic";
 ?>
 	<tr>
-		<td colspan="<?=($colspan+1);?>" valign="top" class="<?=$class;?>"><?=spanify($title);?></td>
+		<td colspan="<?=($colspan+1);?>" valign="top" class="d_header"><?=spanify($title);?></td>
 	</tr>
 <?
 }
@@ -853,7 +852,7 @@ function d_spacer() {
 	global $colspan;
 ?>
 	<tr>
-		<td colspan="<?=($colspan+1);?>" class="list" height="12"></td>
+		<td colspan="<?=($colspan+1);?>" class="list" height="22"></td>
 	</tr>
 <?
 }
@@ -1004,6 +1003,50 @@ function d_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress) {
 			</span>
 		</td>
 	</tr><?
+}
+
+function d_host_and_port_fields($current_host, $current_port) {
+	?><tr>
+		<td valign="top" class="vncellreq"><?=gettext("Host");?></td>
+		<td colspan="2" class="vtable">
+			<input name="host" type="text" class="formfld" id="host" size="40" value="<?=htmlspecialchars($current_host);?>">
+			:
+			<input name="port" type="text" class="formfld" id="port" size="10" maxlength="5" value="<?=htmlspecialchars($current_port);?>"> 
+			<br><span class="vexpl"><?=gettext("Provider host URL or IP address and optional port.");?></span>
+		</td>
+	</tr><?
+}
+
+function d_qualify_options($current_qualify) {
+	global $colspan;
+
+	$qualifylengths = array(
+		2 => "2",
+		5 => "5",
+		10 => "10",
+		20 => "20",
+		30 => "30",
+		60 => "60",
+		90 => "90",
+		120 => "120",
+		0 => gettext("disabled")
+	);
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Qualify"));?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<select name="qualify" class="formfld" id="qualify">
+			<? foreach ($qualifylengths as $v => $s) : ?>
+			<option value="<?=$v;?>" <?
+			if ($v == $current_qualify)
+				echo "selected"; ?>
+			><?=$s;?></option>
+			<? endforeach; ?>
+			</select>&nbsp;<?=spanify(gettext("seconds"));?>
+			<br><span class="vexpl"><?=spanify(gettext("The provider will be contacted this often to check its availability."));?></span>
+		</td>
+	</tr><?
+
 }
 
 ?>

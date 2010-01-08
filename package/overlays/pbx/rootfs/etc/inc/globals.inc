@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
     
     Redistribution and use in source and binary forms, with or without
@@ -73,11 +73,14 @@ $defaults['dahdi']['loadzones'] = array('us');
 
 $defaults['accounts']['language'] = 'en-us';
 $defaults['accounts']['codec'] = array('ulaw');
+$defaults['accounts']['qualify'] = 2;
 
 $defaults['accounts']['phones']['ringlength'] = 'indefinitely';
 $defaults['accounts']['phones']['default-extension-start'] = 101;
 $defaults['accounts']['phones']['callerid'] = 'Default Extension';
 $defaults['accounts']['phones']['dialprovider'] = 'sipuri';
+
+$defaults['accounts']['providers']['calleridsource'] = 'phones';
 
 $defaults['sip']['dtmfmode'] = 'auto';
 $defaults['sip']['natmode'] = 'yes';

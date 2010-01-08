@@ -33,7 +33,7 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Status"), gettext("Active Channels"));
 
-pbx_get_active_calls(&$active_calls, &$active_channels, &$channel_strings);
+pbx_get_active_channels(&$channel_strings);
 
 $channels = array();
 $n = count($channel_strings);
