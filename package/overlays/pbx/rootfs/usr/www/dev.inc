@@ -68,7 +68,7 @@
 <script type="text/JavaScript">
 <!--
 
-	var devmodeversion = "0.1";
+	var devmodeversion = "0.2";
 	var devmodeactivated = false;
 
 	jQuery(document).ready(function(){

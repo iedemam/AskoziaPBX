@@ -4,7 +4,7 @@
 	$Id: index.php 1104 2009-09-03 14:54:33Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2009-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,26 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+
+function util_dir_to_contents_array($path, &$output) {
+	$path = rtrim($path, '/');
+
+	if (is_dir($path)) {
+		$handle = opendir($path);
+		while ($entry = readdir($handle)) {
+			if ($entry != '.' && $entry != '..') {
+				util_dir_to_contents_array($path . '/' . $entry, $output);
+			}
+		}
+		closedir($handle);
+
+	} else if (is_file($path)) {
+		$output[$path] = file_get_contents($path);
+
+	} else {
+		$output[$path] = "path not found!";
+	}
+}
 
 
 if ($_POST['report'] == "translation") {
@@ -114,14 +134,31 @@ function report_translation($devmodever, $page, $language, $original, $improved)
 function report_hardware($devmodever, $description) {
 	$lspci = array();
 	exec("lspci -v", $lspci);
+
+	$dmesg = array();
+	exec("dmesg", $dmesg);
+
+	$dahdi = "";
+	util_dir_to_contents_array('/proc/dahdi', $dahdi_dir);
+	ksort($dahdi_dir);
+	foreach ($dahdi_dir as $path => $contents) {
+		$dahdi .= $path . "\n" . $contents . "\n\n";
+	}
+
 	$mail_sent = mail(
 		"hardwarebot@askozia.com",
 		"Hardware Report",
 		"developer mode version: " . $devmodever . "\n" .
 		"description: " . $description . "\n" .
-		"\n" .
-		"lspci:\n" .
+		"\n\n" .
+		"--------[  lspci  ]----------\n" .
 		implode("\n", $lspci) .
+		"\n\n" .
+		"--------[  dmesg  ]----------\n" .
+		implode("\n", $dmesg) .
+		"\n\n" .
+		"--------[  dahdi  ]----------\n" .
+		$dahdi .
 		"\n",
 		"From: hardwarebot@askozia.com\r\n" .
 		"Date: " . gmdate("D, d M Y H:i:s") . " +0000\r\n"
