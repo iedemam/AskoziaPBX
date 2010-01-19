@@ -29,7 +29,7 @@
 
 [L] GPL
 [S] Stable
-[V] 4.82
+[V] 4.83
 [P] X -----5---9 117.000
 
-[D] 3021727230 lsof_4.82.tar.bz2 ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/
+[D] 0 lsof_4.83.tar.bz2 ftp://ftp.fu-berlin.de/pub/unix/tools/lsof/
