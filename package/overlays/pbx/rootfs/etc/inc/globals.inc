@@ -72,7 +72,7 @@ $defaults['dahdi']['bri']['coding'] = 'ami';
 $defaults['dahdi']['loadzones'] = array('us');
 
 $defaults['accounts']['language'] = 'en-us';
-$defaults['accounts']['codec'] = array('ulaw');
+$defaults['accounts']['codec'] = array('ulaw', 'alaw', 'gsm');
 $defaults['accounts']['qualify'] = 2;
 
 $defaults['accounts']['phones']['ringlength'] = 'indefinitely';

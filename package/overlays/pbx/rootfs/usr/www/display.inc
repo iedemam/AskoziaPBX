@@ -833,6 +833,33 @@ function d_header($title) {
 <?
 }
 
+function d_collapsible($title) {
+	global $colspan, $scripts;
+
+	$scripts['javascript_collapsible'] = true;
+
+	$id = md5($title);
+?>
+	<tr>
+		<td colspan="<?=($colspan+1);?>" valign="top" class="d_header">
+			<a class="d_header_link" href="javascript:{}" onclick='collapsible_toggle("#wrapper-<?=$id;?>");'><?=spanify($title);?></a>
+			<img id="img-<?=$id;?>" src="magnifier.png">
+		</td>
+	</tr>
+</table>
+<div id="wrapper-<?=$id;?>" style="display:none;">
+<table width="100%" border="0" cellpadding="6" cellspacing="0">
+<?
+}
+
+function d_collapsible_end() {
+?>
+</table>
+</div>
+<table width="100%" border="0" cellpadding="6" cellspacing="0">
+<?
+}
+
 function d_field($title, $name, $width, $help=false, $required=false) {
 	global $form, $colspan;
 

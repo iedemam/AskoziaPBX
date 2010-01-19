@@ -108,16 +108,17 @@ d_start("phones_sip_edit.php");
 
 
 	// Codecs
-	d_header(gettext("Codecs"));
+	d_collapsible(gettext("Codecs"));
 
 	display_audio_codec_selector($form['codec']);
 
 	display_video_codec_selector($form['codec']);
+	d_collapsible_end();
 	d_spacer();
 
 
 	// Advanced Options
-	d_header(gettext("Advanced Options"));
+	d_collapsible(gettext("Advanced Options"));
 
 	display_natmode_selector($form['natmode'], 2);
 
@@ -130,6 +131,7 @@ d_start("phones_sip_edit.php");
 
 	//d_field(gettext("Busy Limit"), "busylimit", 5,
 	//	gettext("Phone will be busy for others with this many concurrent calls."));
+	d_collapsible_end();
 	d_spacer();
 
 

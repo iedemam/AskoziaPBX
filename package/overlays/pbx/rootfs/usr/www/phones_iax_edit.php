@@ -124,18 +124,20 @@ d_start("phones_iax_edit.php");
 
 
 	// Codecs
-	d_header(gettext("Codecs"));
+	d_collapsible(gettext("Codecs"));
 
 	display_audio_codec_selector($form['codec']);
 
 	display_video_codec_selector($form['codec']);
+	d_collapsible_end();
 	d_spacer();
 
 
 	// Advanced Options
-	//d_header(gettext("Advanced Options"));
+	//d_collapsible(gettext("Advanced Options"));
 
 	//display_qualify_options($form['qualify'], 2);
+	//d_collapsible_end();
 	//d_spacer();
 
 

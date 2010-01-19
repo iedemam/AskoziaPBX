@@ -89,9 +89,10 @@ d_start("providers_analog_edit.php");
 
 
 	// Caller ID Options
-	d_header(gettext("Caller ID Options"));
+	d_collapsible(gettext("Caller ID Options"));
 	display_outgoing_callerid_options($form['calleridsource'], $form['calleridstring'], 1);
 	display_incoming_callerid_override_options($form['override'], $form['overridestring'], 1);
+	d_collapsible_end();
 	d_spacer();
 
 d_submit();

@@ -639,3 +639,9 @@ a.link_color_black {
 	padding-left: 6px;
 	padding-right: 16px;
 }
+
+.d_header_link {
+	color: #435370;
+	font-size: 16px;
+	text-decoration: none;
+}

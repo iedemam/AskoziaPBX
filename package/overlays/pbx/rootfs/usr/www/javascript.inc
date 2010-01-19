@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -568,4 +568,20 @@ function javascript_lan_dhcp($part) {
 	<? endif;
 }
 
+function javascript_collapsible($part) {
+
+	if ($part == "functions") : ?>
+
+		function collapsible_toggle(id) {
+			jQuery(id).slideToggle();
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_collapsible()!
+
+	<? endif;
+}
 ?>

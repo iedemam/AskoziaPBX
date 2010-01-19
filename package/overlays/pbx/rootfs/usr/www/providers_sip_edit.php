@@ -85,21 +85,23 @@ d_start("providers_sip_edit.php");
 
 
 	// Caller ID Options
-	d_header(gettext("Caller ID Options"));
+	d_collapsible(gettext("Caller ID Options"));
 	display_outgoing_callerid_options($form['calleridsource'], $form['calleridstring'], 2);
 	display_incoming_callerid_override_options($form['override'], $form['overridestring'], 2);
+	d_collapsible_end();
 	d_spacer();
 
 
 	// Codecs
-	d_header(gettext("Codecs"));
+	d_collapsible(gettext("Codecs"));
 	display_audio_codec_selector($form['codec']);
 	display_video_codec_selector($form['codec']);
+	d_collapsible_end();
 	d_spacer();
 
 
 	// Advanced Options
-	d_header(gettext("Advanced Options"));
+	d_collapsible(gettext("Advanced Options"));
 	display_registration_options($form['noregister'], $form['manualregister'], 2);
 	d_qualify_options($form['qualify']);
 	display_natmode_selector($form['natmode'], 2);
@@ -110,6 +112,7 @@ d_start("providers_sip_edit.php");
 		gettext("Some providers require a seperate 'from' user.<br>Defaults to username entered above."));
 	d_field(gettext("From Domain"), "fromdomain", 40,
 		gettext("Some providers require a seperate 'from' domain. <br>Defaults to host entered above."));
+	d_collapsible_end();
 	d_spacer();
 
 d_submit();
