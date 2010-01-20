@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -32,6 +32,9 @@ msgid "Username"
 msgstr ""
 
 msgid "Public Number"
+msgstr ""
+
+msgid "Main Number"
 msgstr ""
 
 msgid "Package activated successfully."
@@ -1187,9 +1190,6 @@ msgstr ""
 msgid "delete provider"
 msgstr ""
 
-msgid "Interface"
-msgstr ""
-
 msgid "Russia"
 msgstr ""
 
@@ -1468,9 +1468,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr ""
 
@@ -1731,9 +1728,6 @@ msgid "Installed Packages"
 msgstr ""
 
 msgid "system storage partition"
-msgstr ""
-
-msgid "state"
 msgstr ""
 
 msgid "Edit Disk"
@@ -2195,7 +2189,7 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-msgid "edit analog port"
+msgid "edit port"
 msgstr ""
 
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2254,63 +2248,21 @@ msgid "Channels"
 msgstr ""
 
 #, php-format
-msgid "Edit ISDN Interface #%s"
+msgid "Edit ISDN %s Port"
 msgstr ""
 
-msgid "An Operating Mode must be selected for this interface."
+msgid "Signaling"
 msgstr ""
 
-msgid "Descriptive name for this interface"
+msgid "Point-to-Point (PTP)"
 msgstr ""
 
-msgid "Operating Mode"
-msgstr ""
-
-msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+msgid "Point-to-Multipoint (PTMP)"
 msgstr ""
 
 msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-
-msgid "Echo Canceller"
-msgstr ""
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr ""
-
-msgid "PCM Timing Slave"
-msgstr ""
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-
-msgid "Disable Power Save"
-msgstr ""
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
-
-msgid "Enable Polling Mode"
-msgstr ""
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -2349,26 +2301,10 @@ msgstr ""
 msgid "Authentication Scheme"
 msgstr ""
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
+msgid "Edit ISDN Provider"
 msgstr ""
 
-msgid "A valid default number (MSN) must be specified."
-msgstr ""
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-
-msgid "ISDN Interface"
+msgid "The main telephone number assigned to this line."
 msgstr ""
 
 msgid "Edit SIP Provider"
@@ -2695,11 +2631,17 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 
 #, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

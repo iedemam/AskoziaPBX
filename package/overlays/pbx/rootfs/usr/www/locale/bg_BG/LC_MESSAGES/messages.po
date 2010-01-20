@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,6 +39,10 @@ msgstr "Потребителско Име"
 
 msgid "Public Number"
 msgstr "Общодостъпен Номер"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Номер"
 
 msgid "Package activated successfully."
 msgstr "Пакета е активиран успешно."
@@ -1328,9 +1332,6 @@ msgstr "Сигурни ли сте че искате да изтриете въ�
 msgid "delete provider"
 msgstr "изтрий външна линия"
 
-msgid "Interface"
-msgstr "Интерфейс"
-
 msgid "Russia"
 msgstr "Русия"
 
@@ -1639,9 +1640,6 @@ msgstr ""
 "бъдат избирани с техните дефинирани вътрешни номера или да се използват като "
 "дестинация за входящи обаждания от външни линии."
 
-msgid "descr"
-msgstr "описание"
-
 msgid "edit application mapping"
 msgstr "редактирай приложението"
 
@@ -1938,9 +1936,6 @@ msgstr "Инсталирани Пакети"
 
 msgid "system storage partition"
 msgstr "разделяне на системна памет"
-
-msgid "state"
-msgstr "състояние"
 
 msgid "Edit Disk"
 msgstr "Редактирай Диск"
@@ -2465,8 +2460,8 @@ msgid "Phone"
 msgstr "Вътрешни"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "редактирай аналогов интерфейс"
+msgid "edit port"
+msgstr "редактирай вътрешна линия"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2531,76 +2526,24 @@ msgstr "Не е открит съвместим аналогов интерфе�
 msgid "Channels"
 msgstr "Канали"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Редактирай ISDN Интерфейс #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Редактирай Аналогов"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Трябва да се избере Режим на Работа за този интерфейс."
+#, fuzzy
+msgid "Signaling"
+msgstr "Сигнал"
 
-msgid "Descriptive name for this interface"
-msgstr "Описание за този интерфейс"
+msgid "Point-to-Point (PTP)"
+msgstr ""
 
-msgid "Operating Mode"
-msgstr "Режим на Работа"
+msgid "Point-to-Multipoint (PTMP)"
+msgstr ""
 
 msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
-"point-to-multipoint, крайно устройство: този порт приема MSN-и за рутиране "
-"на обажданията и е свързан към национална ISDN мрежа или друга телефонна "
-"централа"
-
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-"multipoint-to-point, мрежово свързване: този порт предоставя MSN-и за "
-"рутиране на обажданиятаи е свързан към един или повече телефонни апарата"
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-"point-to-point, крайно устройство: този порт приема DID за рутиране на "
-"обажданията и е свързан директно към друга телефонна централа"
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-"point-to-point, мрежово свързване: този порт предоставя DID за рутиране на "
-"обажданията и е свързан директно към друга телефонна централа"
-
-msgid "Echo Canceller"
-msgstr "Ехо Неутрализатор"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Премахване на ехо от линията. (препоръчително)"
-
-msgid "PCM Timing Slave"
-msgstr "PCM Синхронизиране"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-"Вече има друга карта която извършва синхронизирането.<br><em>(Освен ако има "
-"повече от една карта в системата, това не трябва да се променя.)"
-
-msgid "Disable Power Save"
-msgstr "Забрани Power Save"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr "Забранява power save режима. (понякога е необходим за по-стари карти)"
-
-msgid "Enable Polling Mode"
-msgstr "Забрани Polling Режим"
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr "Забранява polling режима. (понякога е необходим за по-стари карти)"
 
 msgid "Printable Dialplan"
 msgstr "Годен за Печат Dialplan"
@@ -2643,32 +2586,13 @@ msgstr "Редактирай Аналогов"
 msgid "Authentication Scheme"
 msgstr "Метод на Оторизация"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "Схемата на избиране \"%s\" е неправилна. %s"
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Редактирай Аналогов"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "Трябва да бъде въведен валиден номер по подразбиране (MSN) ."
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Не са намерени съвместими интерфейси!</strong><br><br> За да "
-"конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
-"интерфейс присъства в %s страница"
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-"Телефонен номер по подразбиране (MSN) определен за тази линия. Индивидуално "
-"MSN рутиране може да се дефинира по-долу."
-
-msgid "ISDN Interface"
-msgstr "ISDN Интерфейс"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "Телефонен номер определен за тази линия."
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -3043,15 +2967,23 @@ msgstr ""
 "Централата ще се рестартира след възстановяване на системните настройки."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Системата беше възстановена по подразбиране и сега се рестартира. Това може "
 "да отнеме известно време."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"След като кликнете &quot;Запиши&quot;, всички активни разговори ще прекъснат."
+"Ако кликнете &quot;Да&quot;, централата ще се възстанови до по подразбиране "
+"и ще се рестартира. Всички системни настройки ще бъдат презаписани. LAN IP "
+"адреса ще се въстанови на 192.168.1.2 и паролата ще бъде '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Сигурни ли сте че искате да продължите?"
@@ -3297,6 +3229,121 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
 
+#~ msgid "Interface"
+#~ msgstr "Интерфейс"
+
+#~ msgid "descr"
+#~ msgstr "описание"
+
+#~ msgid "state"
+#~ msgstr "състояние"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "редактирай аналогов интерфейс"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "Редактирай ISDN Интерфейс #%s"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr "Трябва да се избере Режим на Работа за този интерфейс."
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Описание за този интерфейс"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Режим на Работа"
+
+#~ msgid ""
+#~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+#~ "calls and is attached to the public ISDN network or another PBX system"
+#~ msgstr ""
+#~ "point-to-multipoint, крайно устройство: този порт приема MSN-и за "
+#~ "рутиране на обажданията и е свързан към национална ISDN мрежа или друга "
+#~ "телефонна централа"
+
+#~ msgid ""
+#~ "multipoint-to-point, network termination: this port provides MSNs to "
+#~ "route calls and is attached to one or more telephones"
+#~ msgstr ""
+#~ "multipoint-to-point, мрежово свързване: този порт предоставя MSN-и за "
+#~ "рутиране на обажданиятаи е свързан към един или повече телефонни апарата"
+
+#~ msgid ""
+#~ "point-to-point, terminal equipment: this port accepts DID to route calls "
+#~ "and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "point-to-point, крайно устройство: този порт приема DID за рутиране на "
+#~ "обажданията и е свързан директно към друга телефонна централа"
+
+#~ msgid ""
+#~ "point-to-point, network termination: this port provides DID to route "
+#~ "calls and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "point-to-point, мрежово свързване: този порт предоставя DID за рутиране "
+#~ "на обажданията и е свързан директно към друга телефонна централа"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Ехо Неутрализатор"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "Премахване на ехо от линията. (препоръчително)"
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM Синхронизиране"
+
+#~ msgid ""
+#~ "There is already another card present which provides the timing.<br><em>"
+#~ "(Unless more than one inteface card is present in the system, this should "
+#~ "not be changed."
+#~ msgstr ""
+#~ "Вече има друга карта която извършва синхронизирането.<br><em>(Освен ако "
+#~ "има повече от една карта в системата, това не трябва да се променя.)"
+
+#~ msgid "Disable Power Save"
+#~ msgstr "Забрани Power Save"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Забранява power save режима. (понякога е необходим за по-стари карти)"
+
+#~ msgid "Enable Polling Mode"
+#~ msgstr "Забрани Polling Режим"
+
+#~ msgid "Enable polling mode. (sometimes needed for older cards)"
+#~ msgstr "Забранява polling режима. (понякога е необходим за по-стари карти)"
+
+#~ msgid "The dial-pattern \"%s\" is invalid. %s"
+#~ msgstr "Схемата на избиране \"%s\" е неправилна. %s"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Трябва да бъде въведен валиден номер по подразбиране (MSN) ."
+
+#~ msgid ""
+#~ "<strong>No compatible interfaces found!</strong><br><br> To configure "
+#~ "this type of account, make sure an appropriately configured interface is "
+#~ "present on the %s page"
+#~ msgstr ""
+#~ "<strong>Не са намерени съвместими интерфейси!</strong><br><br> За да "
+#~ "конфигурирате такъв тип акаунт, проверете дали правилно конфигуриран "
+#~ "интерфейс присъства в %s страница"
+
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr ""
+#~ "Телефонен номер по подразбиране (MSN) определен за тази линия. "
+#~ "Индивидуално MSN рутиране може да се дефинира по-долу."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "ISDN Интерфейс"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "След като кликнете &quot;Запиши&quot;, всички активни разговори ще "
+#~ "прекъснат."
+
 #~ msgid "Audio Codecs"
 #~ msgstr "Аудио Кодеци"
 
@@ -3452,17 +3499,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Disable firmware upload"
 #~ msgstr "Забрани качване на програма"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Ако кликнете &quot;Да&quot;, централата ще се възстанови до по "
-#~ "подразбиране и ще се рестартира. Всички системни настройки ще бъдат "
-#~ "презаписани. LAN IP адреса ще се въстанови на 192.168.1.2 и паролата ще "
-#~ "бъде '%s'."
 
 #~ msgid "Debug"
 #~ msgstr "Debug"
@@ -3898,9 +3934,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Rate"
 #~ msgstr "Скорост"
-
-#~ msgid "Signal"
-#~ msgstr "Сигнал"
 
 #~ msgid "Noise"
 #~ msgstr "Шум"

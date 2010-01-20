@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -31,6 +31,10 @@ msgstr "用戶名"
 
 msgid "Public Number"
 msgstr "公共號碼"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "數量"
 
 msgid "Package activated successfully."
 msgstr "軟體套件成功啟用。"
@@ -1304,9 +1308,6 @@ msgstr "真的要刪除這個提供商?"
 msgid "delete provider"
 msgstr "刪除提供商"
 
-msgid "Interface"
-msgstr "介面"
-
 msgid "Russia"
 msgstr "俄羅斯"
 
@@ -1596,9 +1597,6 @@ msgstr ""
 "在瞭解一些Asterisk撥號計劃如何運作的情況下，一些基礎的應用可以被加入到"
 "AskoziaPBX中。這些應用程序既被預定的分機撥通，也可以用作提供商來電的目的地。"
 
-msgid "descr"
-msgstr "描述"
-
 msgid "edit application mapping"
 msgstr "編輯應用映射"
 
@@ -1871,10 +1869,6 @@ msgstr "已安裝的包"
 
 msgid "system storage partition"
 msgstr "系統存儲分區"
-
-#, fuzzy
-msgid "state"
-msgstr "開始"
 
 msgid "Edit Disk"
 msgstr "編輯磁盤"
@@ -2379,8 +2373,8 @@ msgid "Phone"
 msgstr "電話"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "編輯Analog介面"
+msgid "edit port"
+msgstr "編輯電話"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2443,69 +2437,24 @@ msgstr "沒有探測到相容的Analog介面。"
 msgid "Channels"
 msgstr "通道"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "編輯ISDN埠 #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "編輯Analog電話"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "必須給這個介面選擇一個操作模式。"
+#, fuzzy
+msgid "Signaling"
+msgstr "信號"
 
-msgid "Descriptive name for this interface"
-msgstr "這個介面的描述名"
-
-msgid "Operating Mode"
-msgstr "操作模式"
-
-msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+msgid "Point-to-Point (PTP)"
 msgstr ""
-"點對多，終端設備：這個埠允許MSNs路由通話並附加到公共ISDN網路或另外的PBX系統"
-"中。 "
 
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr "多對點，網路終端：這個埠提供MSNs路由通話並附加1個或多個話機上。"
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr "點對點，終端設備：這個埠允許DID路由通話並直接連接到另一個PBX系統。 "
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr "點對點，網路終端：這個埠提供DID路由通話並直接連接到另一個PBX系統。 "
-
-msgid "Echo Canceller"
-msgstr "回聲補償器"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "嘗試去除回聲。（推薦）"
-
-msgid "PCM Timing Slave"
-msgstr "PCM時序從屬(PCM Timing Slave)"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
+msgid "Point-to-Multipoint (PTMP)"
 msgstr ""
-"已經有另一個卡正在提供時鐘。<br><em>(除非系統中有一個以上的卡，這個選項不易被"
-"改動。) "
 
-msgid "Disable Power Save"
-msgstr "禁止節能"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr "禁止節能模式（對一些老卡有時是必要的）"
-
-msgid "Enable Polling Mode"
-msgstr "允許探詢模式"
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr "允許探詢模式（對一些老卡有時是必要的）"
+msgid ""
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
+msgstr ""
 
 msgid "Printable Dialplan"
 msgstr "可打印的撥號計劃"
@@ -2548,27 +2497,13 @@ msgstr "編輯Analog電話"
 msgid "Authentication Scheme"
 msgstr "驗證方法"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "無效的撥號\"%s\"模式。%s"
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "編輯Analog電話"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "必須指定一個預設的數量(MSN)。"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr "分配給這條線路的預設的電話號碼（MSN）。"
-
-msgid "ISDN Interface"
-msgstr "ISDN界面"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "分配給這條線的電話號碼。"
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2920,12 +2855,20 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX將在恢復設置後重啟。"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr "系統被設置到了出廠預設狀態並正在重啟。這可能需要一分鐘。"
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "按下 &quot;保存&quot; 後，所有正在進行的通話將會掉線。"
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
+msgstr ""
+"如果您點擊了 &quot;是&quot;，那麽PBX會被重置到出廠狀態並立即重啟整個系統的設"
+"置將會被覆蓋。內網IP地址將會被重置為 192.168.1.2並且密碼也會改為預設的'%s'。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "您真的想要進行？"
@@ -3154,6 +3097,101 @@ msgstr "ERR 無法安裝設置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
 
+#~ msgid "Interface"
+#~ msgstr "介面"
+
+#~ msgid "descr"
+#~ msgstr "描述"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "開始"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "編輯Analog介面"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "編輯ISDN埠 #%s"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr "必須給這個介面選擇一個操作模式。"
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "這個介面的描述名"
+
+#~ msgid "Operating Mode"
+#~ msgstr "操作模式"
+
+#~ msgid ""
+#~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+#~ "calls and is attached to the public ISDN network or another PBX system"
+#~ msgstr ""
+#~ "點對多，終端設備：這個埠允許MSNs路由通話並附加到公共ISDN網路或另外的PBX系"
+#~ "統中。 "
+
+#~ msgid ""
+#~ "multipoint-to-point, network termination: this port provides MSNs to "
+#~ "route calls and is attached to one or more telephones"
+#~ msgstr "多對點，網路終端：這個埠提供MSNs路由通話並附加1個或多個話機上。"
+
+#~ msgid ""
+#~ "point-to-point, terminal equipment: this port accepts DID to route calls "
+#~ "and is connected directly to another PBX system"
+#~ msgstr "點對點，終端設備：這個埠允許DID路由通話並直接連接到另一個PBX系統。 "
+
+#~ msgid ""
+#~ "point-to-point, network termination: this port provides DID to route "
+#~ "calls and is connected directly to another PBX system"
+#~ msgstr "點對點，網路終端：這個埠提供DID路由通話並直接連接到另一個PBX系統。 "
+
+#~ msgid "Echo Canceller"
+#~ msgstr "回聲補償器"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "嘗試去除回聲。（推薦）"
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM時序從屬(PCM Timing Slave)"
+
+#~ msgid ""
+#~ "There is already another card present which provides the timing.<br><em>"
+#~ "(Unless more than one inteface card is present in the system, this should "
+#~ "not be changed."
+#~ msgstr ""
+#~ "已經有另一個卡正在提供時鐘。<br><em>(除非系統中有一個以上的卡，這個選項不"
+#~ "易被改動。) "
+
+#~ msgid "Disable Power Save"
+#~ msgstr "禁止節能"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr "禁止節能模式（對一些老卡有時是必要的）"
+
+#~ msgid "Enable Polling Mode"
+#~ msgstr "允許探詢模式"
+
+#~ msgid "Enable polling mode. (sometimes needed for older cards)"
+#~ msgstr "允許探詢模式（對一些老卡有時是必要的）"
+
+#~ msgid "The dial-pattern \"%s\" is invalid. %s"
+#~ msgstr "無效的撥號\"%s\"模式。%s"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "必須指定一個預設的數量(MSN)。"
+
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr "分配給這條線路的預設的電話號碼（MSN）。"
+
+#~ msgid "ISDN Interface"
+#~ msgstr "ISDN界面"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr "按下 &quot;保存&quot; 後，所有正在進行的通話將會掉線。"
+
 #~ msgid "Audio Codecs"
 #~ msgstr "音頻編解碼"
 
@@ -3305,16 +3343,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "Disable firmware upload"
 #~ msgstr "禁止固件更新"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "如果您點擊了 &quot;是&quot;，那麽PBX會被重置到出廠狀態並立即重啟整個系統的"
-#~ "設置將會被覆蓋。內網IP地址將會被重置為 192.168.1.2並且密碼也會改為預設的'%"
-#~ "s'。"
 
 #~ msgid "Debug"
 #~ msgstr "除錯"
@@ -3725,9 +3753,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "Rate"
 #~ msgstr "比率"
-
-#~ msgid "Signal"
-#~ msgstr "信號"
 
 #~ msgid "Noise"
 #~ msgstr "噪音"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,10 @@ msgstr "Nombre de usuario"
 
 msgid "Public Number"
 msgstr "Número público"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Número"
 
 msgid "Package activated successfully."
 msgstr "Paquete activado con éxito"
@@ -1251,9 +1255,6 @@ msgstr "¿Realmente quiere borrar este proveedor?"
 msgid "delete provider"
 msgstr "borrar proveedor"
 
-msgid "Interface"
-msgstr "Interfaz"
-
 msgid "Russia"
 msgstr "Rusia"
 
@@ -1558,9 +1559,6 @@ msgstr ""
 "pueden ser marcadas a través de sus extensiones definidas, o usadas como "
 "destino para las llamadas entrantes de los proveedores."
 
-msgid "descr"
-msgstr "descr"
-
 msgid "edit application mapping"
 msgstr "editar el mapeo de aplicaciones"
 
@@ -1833,9 +1831,6 @@ msgstr "Paquetes instalados"
 
 msgid "system storage partition"
 msgstr "partición del sistema de almacenamiento"
-
-msgid "state"
-msgstr "estado"
 
 msgid "Edit Disk"
 msgstr "Editar Disco"
@@ -2342,8 +2337,8 @@ msgid "Phone"
 msgstr "Teléfonos"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "editar interfaz analógico"
+msgid "edit port"
+msgstr "editar teléfono"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2406,65 +2401,23 @@ msgstr "Interfaces analógicos compatibles no encontrados."
 msgid "Channels"
 msgstr "Canales"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Editar interfaz RDSI #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Editar analógico"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Debe ser seleccionado un medo operativo para este interfaz."
+#, fuzzy
+msgid "Signaling"
+msgstr "Señal"
 
-msgid "Descriptive name for this interface"
-msgstr "Nombre descriptivo para este interfaz"
+msgid "Point-to-Point (PTP)"
+msgstr ""
 
-msgid "Operating Mode"
-msgstr "Modo operativo"
-
-msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+msgid "Point-to-Multipoint (PTMP)"
 msgstr ""
 
 msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-
-msgid "Echo Canceller"
-msgstr "Cancelador de eco"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Intento de eliminar ecos de la linea (recomendado)"
-
-msgid "PCM Timing Slave"
-msgstr ""
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-
-msgid "Disable Power Save"
-msgstr "Deshabilitar ahorro de energía"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
-"Deshabilitar modo ahorro de energía (a veces requerido por tarjetas antiguas)"
-
-msgid "Enable Polling Mode"
-msgstr ""
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -2508,27 +2461,13 @@ msgstr "Editar analógico"
 msgid "Authentication Scheme"
 msgstr "Método de autenticación"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr ""
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Editar analógico"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "Debe ser especificado un número por defecto (MSN) válido."
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-
-msgid "ISDN Interface"
-msgstr "Interfaz RDSI"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "Número de teléfono asignado a esta linea."
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2889,13 +2828,18 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "La PBX se reiniciará tras restaurar la configuración-"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr "El sistema está reiniciando. Esta operación puede tardar un minuto."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán colgadas."
 
 msgid "Are you sure you want to proceed?"
 msgstr "¿Está seguro de que quiere realizar esta operación?"
@@ -3124,6 +3068,57 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "Interface"
+#~ msgstr "Interfaz"
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#~ msgid "state"
+#~ msgstr "estado"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "editar interfaz analógico"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "Editar interfaz RDSI #%s"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr "Debe ser seleccionado un medo operativo para este interfaz."
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Nombre descriptivo para este interfaz"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Modo operativo"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Cancelador de eco"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "Intento de eliminar ecos de la linea (recomendado)"
+
+#~ msgid "Disable Power Save"
+#~ msgstr "Deshabilitar ahorro de energía"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Deshabilitar modo ahorro de energía (a veces requerido por tarjetas "
+#~ "antiguas)"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Debe ser especificado un número por defecto (MSN) válido."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "Interfaz RDSI"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán "
+#~ "colgadas."
 
 #~ msgid "Audio Codecs"
 #~ msgstr "Audio Codecs"
@@ -3578,9 +3573,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Rate"
 #~ msgstr "Tasa"
-
-#~ msgid "Signal"
-#~ msgstr "Señal"
 
 #~ msgid "Noise"
 #~ msgstr "Ruido"

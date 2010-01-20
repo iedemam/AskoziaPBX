@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -36,6 +36,10 @@ msgstr "ユーザー名"
 
 msgid "Public Number"
 msgstr "パブリックナンバー"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "番号"
 
 msgid "Package activated successfully."
 msgstr "パッケージが、有効になりました"
@@ -1324,9 +1328,6 @@ msgstr "本当にこの接続回線を無効にしますか？"
 msgid "delete provider"
 msgstr "接続回線の削除"
 
-msgid "Interface"
-msgstr "接続インターフェース"
-
 msgid "Russia"
 msgstr "ロシア"
 
@@ -1628,9 +1629,6 @@ msgstr ""
 "定義されたエクステンション経由でダイヤルしたり、プロバイダーからの着信呼び出"
 "しの送信先として使用することができます"
 
-msgid "descr"
-msgstr "descr"
-
 msgid "edit application mapping"
 msgstr "アプリケーション関連付けの編集"
 
@@ -1911,9 +1909,6 @@ msgstr "インストール済パッケージ"
 
 msgid "system storage partition"
 msgstr "システム記憶領域"
-
-msgid "state"
-msgstr "状態"
 
 msgid "Edit Disk"
 msgstr "ディスクの編集"
@@ -2440,8 +2435,8 @@ msgid "Phone"
 msgstr "電話機"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "アナログ回線の編集"
+msgid "edit port"
+msgstr "電話機設定の編集"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2504,78 +2499,24 @@ msgstr "対応するアナログインターフェースが見つかりません
 msgid "Channels"
 msgstr "チャンネル"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "ISDNインターフェース#%sを編集"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "アナログの編集"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "操作モードをこのインタフェースに選択する必要があります"
+#, fuzzy
+msgid "Signaling"
+msgstr "シグナル"
 
-msgid "Descriptive name for this interface"
-msgstr "このインターフェイスのわかりやすい名前"
+msgid "Point-to-Point (PTP)"
+msgstr ""
 
-msgid "Operating Mode"
-msgstr "操作モード"
+msgid "Point-to-Multipoint (PTMP)"
+msgstr ""
 
 msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
-"ポイントtoマルチポイント,ターミナル機器:このポートはMSNのルート呼び出しを受け"
-"入れ、パブリックISDNネットワークもしくは他のPBXシステムへ接続されます"
-
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-"マルチポイントtoポイント,ネットワークターミネーション:このポートはMSNのルート"
-"呼び出しと、一つもしくはそれ以上の電話機への接続を提供します"
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-"ポイントtoポイント,ターミナル機器:このポートは、DIDのルート呼び出しを受け入"
-"れ、他のPBXシステムにダイレクトに接続させます"
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-"ポイントtoポイント,ネットワークターミネーション:このポートは、DIDのルート呼び"
-"出しと、他のPBXシステムへの直接接続を提供します"
-
-msgid "Echo Canceller"
-msgstr "エコーキャンセラー"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "この回線からエコーを除去します(推奨)"
-
-msgid "PCM Timing Slave"
-msgstr "PCM Timing Slave"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-"既にタイミングを提供する他のカードが有ります。<br><em>(他の一つ以上のカードが"
-"有る限り、変更は出来ません"
-
-msgid "Disable Power Save"
-msgstr "省電力無効"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
-"省電力モードを無効(古いタイプのカードでは、まれにこの設定が必要になります)"
-
-msgid "Enable Polling Mode"
-msgstr "ポーリングモード有効"
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr ""
-"ポーリングモードを有効(古いタイプのカードでは、まれにこの設定が必要になりま"
-"す)"
 
 msgid "Printable Dialplan"
 msgstr "印刷可能なダイヤルプラン"
@@ -2618,32 +2559,13 @@ msgstr "アナログの編集"
 msgid "Authentication Scheme"
 msgstr "認証方式"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "このダイヤルパターン\"%s\"は無効です。%s"
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "アナログの編集"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "有効なデフォルトの電話番号(MSN)を指定する必要があります"
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>対応するインターフェースが見つかりません!</strong><br><br> この接続回"
-"線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了させて下"
-"さい"
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-"このデフォルトの電話番号(MSN)が、この回線に割り当てられました。個々のMSNマッ"
-"ピングは、下記で定義出来ます"
-
-msgid "ISDN Interface"
-msgstr "ISDNインターフェース"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "この回線に電話番号が割り当てられました"
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -3016,14 +2938,23 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "設定をリストアした後、システムは再起動されます"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "このAskoziaPBXは、工場出荷時の状態に初期化され、只今再起動中です。しばらくお"
 "待ち下さい"
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "システムログの一覧"
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
+msgstr ""
+"&quot;はい&quot;をクリックするとAskoziaPBXは直ぐに再起動され、工場出荷時の状"
+"態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPアドレ"
+"ス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
 
 msgid "Are you sure you want to proceed?"
 msgstr "本当に初期化しますか？"
@@ -3280,6 +3211,120 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#~ msgid "Interface"
+#~ msgstr "接続インターフェース"
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#~ msgid "state"
+#~ msgstr "状態"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "アナログ回線の編集"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "ISDNインターフェース#%sを編集"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr "操作モードをこのインタフェースに選択する必要があります"
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "このインターフェイスのわかりやすい名前"
+
+#~ msgid "Operating Mode"
+#~ msgstr "操作モード"
+
+#~ msgid ""
+#~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+#~ "calls and is attached to the public ISDN network or another PBX system"
+#~ msgstr ""
+#~ "ポイントtoマルチポイント,ターミナル機器:このポートはMSNのルート呼び出しを"
+#~ "受け入れ、パブリックISDNネットワークもしくは他のPBXシステムへ接続されます"
+
+#~ msgid ""
+#~ "multipoint-to-point, network termination: this port provides MSNs to "
+#~ "route calls and is attached to one or more telephones"
+#~ msgstr ""
+#~ "マルチポイントtoポイント,ネットワークターミネーション:このポートはMSNの"
+#~ "ルート呼び出しと、一つもしくはそれ以上の電話機への接続を提供します"
+
+#~ msgid ""
+#~ "point-to-point, terminal equipment: this port accepts DID to route calls "
+#~ "and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "ポイントtoポイント,ターミナル機器:このポートは、DIDのルート呼び出しを受け"
+#~ "入れ、他のPBXシステムにダイレクトに接続させます"
+
+#~ msgid ""
+#~ "point-to-point, network termination: this port provides DID to route "
+#~ "calls and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "ポイントtoポイント,ネットワークターミネーション:このポートは、DIDのルート"
+#~ "呼び出しと、他のPBXシステムへの直接接続を提供します"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "エコーキャンセラー"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "この回線からエコーを除去します(推奨)"
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM Timing Slave"
+
+#~ msgid ""
+#~ "There is already another card present which provides the timing.<br><em>"
+#~ "(Unless more than one inteface card is present in the system, this should "
+#~ "not be changed."
+#~ msgstr ""
+#~ "既にタイミングを提供する他のカードが有ります。<br><em>(他の一つ以上のカー"
+#~ "ドが有る限り、変更は出来ません"
+
+#~ msgid "Disable Power Save"
+#~ msgstr "省電力無効"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "省電力モードを無効(古いタイプのカードでは、まれにこの設定が必要になります)"
+
+#~ msgid "Enable Polling Mode"
+#~ msgstr "ポーリングモード有効"
+
+#~ msgid "Enable polling mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "ポーリングモードを有効(古いタイプのカードでは、まれにこの設定が必要になり"
+#~ "ます)"
+
+#~ msgid "The dial-pattern \"%s\" is invalid. %s"
+#~ msgstr "このダイヤルパターン\"%s\"は無効です。%s"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "有効なデフォルトの電話番号(MSN)を指定する必要があります"
+
+#~ msgid ""
+#~ "<strong>No compatible interfaces found!</strong><br><br> To configure "
+#~ "this type of account, make sure an appropriately configured interface is "
+#~ "present on the %s page"
+#~ msgstr ""
+#~ "<strong>対応するインターフェースが見つかりません!</strong><br><br> この接"
+#~ "続回線タイプのアカウントを設定するには、%s ページにある設定を、適切に完了"
+#~ "させて下さい"
+
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr ""
+#~ "このデフォルトの電話番号(MSN)が、この回線に割り当てられました。個々のMSN"
+#~ "マッピングは、下記で定義出来ます"
+
+#~ msgid "ISDN Interface"
+#~ msgstr "ISDNインターフェース"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr "システムログの一覧"
+
 #~ msgid "Audio Codecs"
 #~ msgstr "オーディオコーデック"
 
@@ -3440,16 +3485,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Disable firmware upload"
 #~ msgstr "ファームウェアのアップロードを無効にする"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "&quot;はい&quot;をクリックするとAskoziaPBXは直ぐに再起動され、工場出荷時の"
-#~ "状態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPア"
-#~ "ドレス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
 
 #~ msgid "Debug"
 #~ msgstr "デバッグ"
@@ -3879,9 +3914,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Rate"
 #~ msgstr "レート"
-
-#~ msgid "Signal"
-#~ msgstr "シグナル"
 
 #~ msgid "Noise"
 #~ msgstr "ノイズ"

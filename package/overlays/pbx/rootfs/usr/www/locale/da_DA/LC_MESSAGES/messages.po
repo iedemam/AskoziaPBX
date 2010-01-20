@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -41,6 +41,10 @@ msgstr "brugernavn"
 
 msgid "Public Number"
 msgstr "Offentlig Nummer"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Nummer"
 
 msgid "Package activated successfully."
 msgstr "Pakke aktiveret tilfredsstillende."
@@ -1320,9 +1324,6 @@ msgstr "Vil du virkeligt slette denne udbyder?"
 msgid "delete provider"
 msgstr "Slet udbyder"
 
-msgid "Interface"
-msgstr "Interface"
-
 msgid "Russia"
 msgstr "Rusland"
 
@@ -1626,9 +1627,6 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
-msgid "descr"
-msgstr "descr"
-
 msgid "edit application mapping"
 msgstr "rediger applikation kortlægning"
 
@@ -1897,10 +1895,6 @@ msgstr "Installerede pakker"
 
 msgid "system storage partition"
 msgstr "system lager partition"
-
-#, fuzzy
-msgid "state"
-msgstr "start"
 
 msgid "Edit Disk"
 msgstr "Rediger Disk"
@@ -2411,8 +2405,8 @@ msgid "Phone"
 msgstr "Telefoner"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "rediger analog interface"
+msgid "edit port"
+msgstr "rediger telefon"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2475,64 +2469,23 @@ msgstr "Ingen kompatible analoge grænseflader fundet."
 msgid "Channels"
 msgstr "Kanaler"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Rediger ISDN Interface #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Rediger Analog"
 
-msgid "An Operating Mode must be selected for this interface."
+#, fuzzy
+msgid "Signaling"
+msgstr "Signal"
+
+msgid "Point-to-Point (PTP)"
 msgstr ""
 
-msgid "Descriptive name for this interface"
-msgstr "Beskrivelse for dette interface"
-
-msgid "Operating Mode"
-msgstr ""
-
-msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+msgid "Point-to-Multipoint (PTMP)"
 msgstr ""
 
 msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-
-msgid "Echo Canceller"
-msgstr "Echo Undertrykkelse"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Forsøg at fjerne ekkoer fra denne linie. (anbefalet)"
-
-msgid "PCM Timing Slave"
-msgstr "PCM Tids Slave"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-
-msgid "Disable Power Save"
-msgstr "Deaktiver Strøm Besparelse"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr "Deaktiver strøm spare tilstand. (indimellem nødvendigt for ældre kort)"
-
-msgid "Enable Polling Mode"
-msgstr ""
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -2576,31 +2529,13 @@ msgstr "Rediger Analog"
 msgid "Authentication Scheme"
 msgstr "Godkendelses Metode"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "Opkaldsmønster \"%s\" er ugyldig. %s"
-
-msgid "A valid default number (MSN) must be specified."
-msgstr "Et gyldigt nummer (MSN)  skal angives."
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Rediger Analog"
 
 #, fuzzy
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-"Hovednummeret der er knyttet til denne linie (det korteste mulige nummer, "
-"der kan benyttes til opkald af denne linie). Det er muligt at angive "
-"individuelle MSN mapninger nedenfor."
-
-msgid "ISDN Interface"
-msgstr "ISDN Interface"
+msgid "The main telephone number assigned to this line."
+msgstr "Telefon nummer knyttet til denne linie"
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2963,16 +2898,24 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "Denne PBX vil gestarte efter at have reeatableret konfigurationen."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Systemet er resat til fabriks instillinger og vil nu genstarte. Dette vil "
 "tage et minuts tid."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
-"afsluttet."
+"Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
+"fabriksindstillingerne og vil genstarte med det samme. Hele system "
+"konfigurationen vil blive overskrevet. LAN IP adressen vil bliver nustillet "
+"til 192.168.1.2 og kodeordet bliver sat til '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Er du sikker på du vil forsætte?"
@@ -3207,6 +3150,66 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
+#~ msgid "Interface"
+#~ msgstr "Interface"
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "start"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "rediger analog interface"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "Rediger ISDN Interface #%s"
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Beskrivelse for dette interface"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Echo Undertrykkelse"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "Forsøg at fjerne ekkoer fra denne linie. (anbefalet)"
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM Tids Slave"
+
+#~ msgid "Disable Power Save"
+#~ msgstr "Deaktiver Strøm Besparelse"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Deaktiver strøm spare tilstand. (indimellem nødvendigt for ældre kort)"
+
+#~ msgid "The dial-pattern \"%s\" is invalid. %s"
+#~ msgstr "Opkaldsmønster \"%s\" er ugyldig. %s"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Et gyldigt nummer (MSN)  skal angives."
+
+#, fuzzy
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr ""
+#~ "Hovednummeret der er knyttet til denne linie (det korteste mulige nummer, "
+#~ "der kan benyttes til opkald af denne linie). Det er muligt at angive "
+#~ "individuelle MSN mapninger nedenfor."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "ISDN Interface"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
+#~ "afsluttet."
+
 #~ msgid "Audio Codecs"
 #~ msgstr "Lyd Codecs"
 
@@ -3353,17 +3356,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Disable firmware upload"
 #~ msgstr "Deaktiver firmware upload"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
-#~ "fabriksindstillingerne og vil genstarte med det samme. Hele system "
-#~ "konfigurationen vil blive overskrevet. LAN IP adressen vil bliver "
-#~ "nustillet til 192.168.1.2 og kodeordet bliver sat til '%s'."
 
 #~ msgid "Debug"
 #~ msgstr "Fejlsøg"
@@ -3744,9 +3736,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "BSSID"
 #~ msgstr "BBSID"
-
-#~ msgid "Signal"
-#~ msgstr "Signal"
 
 #~ msgid "Noise"
 #~ msgstr "Støj"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -30,6 +30,10 @@ msgstr "Nom d'utilisateur"
 
 msgid "Public Number"
 msgstr "Numéro public"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Numéro"
 
 msgid "Package activated successfully."
 msgstr "Paquet activé avec succés."
@@ -323,8 +327,8 @@ msgid ""
 "rarely used for certain buggy SIP phones."
 msgstr ""
 "Y at-il un dispositif NAT entre les PABX et ce compte? Mettre ce paramètre à "
-"\"oui\" fonctionnera dans la plupart des cas. Les options «jamais» et "
-"«route» ne sont que rarement utilisés pour certaines téléphones SIP."
+"\"oui\" fonctionnera dans la plupart des cas. Les options «jamais» et «route» "
+"ne sont que rarement utilisés pour certaines téléphones SIP."
 
 msgid "indefinitely"
 msgstr "indéfiniment"
@@ -1321,9 +1325,6 @@ msgstr "Voulez-vous supprimer cet opérateur ?"
 msgid "delete provider"
 msgstr "Supprimer l'opérateur"
 
-msgid "Interface"
-msgstr "Interface"
-
 msgid "Russia"
 msgstr "Russie"
 
@@ -1632,9 +1633,6 @@ msgstr ""
 "leurs extensions définies ou utilisés en tant que destination pour les "
 "appels d'opérateurs."
 
-msgid "descr"
-msgstr "descr"
-
 msgid "edit application mapping"
 msgstr "Configurer la fonction"
 
@@ -1925,10 +1923,6 @@ msgstr "Paquets installés"
 
 msgid "system storage partition"
 msgstr "Partition Système"
-
-#, fuzzy
-msgid "state"
-msgstr "Data/Ora"
 
 msgid "Edit Disk"
 msgstr "Configuration du disque"
@@ -2460,8 +2454,8 @@ msgid "Phone"
 msgstr "Extensions"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "Configuration de l'interface analogique"
+msgid "edit port"
+msgstr "Configurer l'extension"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2524,79 +2518,24 @@ msgstr "Aucune interface analogique détectée."
 msgid "Channels"
 msgstr "Canaux"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Configuration de l'interface RNIS #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Configuration ligne analogique"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Un mode de fonctionnement doit être sélectionné pour cette interface."
+#, fuzzy
+msgid "Signaling"
+msgstr "Signal"
 
-msgid "Descriptive name for this interface"
-msgstr "Nom descriptif de cette interface"
+msgid "Point-to-Point (PTP)"
+msgstr ""
 
-msgid "Operating Mode"
-msgstr "Mode de fonctionnement"
+msgid "Point-to-Multipoint (PTMP)"
+msgstr ""
 
 msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
-"point à multipoint, équipement terminal:  ce port accepte MSN pour acheminer "
-"des appels et est rattaché au réseau public RNIS ou un autre système de PABX"
-
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-"multipoint vers point, terminaison de réseau: ce port permet d'acheminer des "
-"appels de MSN et est rattaché à un ou plusieurs téléphones"
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-"point à point, équipement terminal: ce port accepte DID pour acheminer des "
-"appels et est relié directement à un autre système PABX"
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-"point à point, terminaison de réseau: ce port permet d'acheminer des appels "
-"de DID et est relié directement à un autre système PABX"
-
-msgid "Echo Canceller"
-msgstr "Supprime l'echo"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Activer la suppression de l'écho pour cette ligne (recommandé)."
-
-msgid "PCM Timing Slave"
-msgstr "PCM Timing Slave"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-"Il existe une autre interface qui permet ce choix. <br> <em> (Si plus d'une "
-"interface est présente dans le système, ce choix ne devrait pas être "
-"modifié)."
-
-msgid "Disable Power Save"
-msgstr "Désactiver Power Save"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
-"Désactiver le mode économies d'énergie. (parfois nécessaire pour des cartes "
-"plus anciennes)"
-
-msgid "Enable Polling Mode"
-msgstr "Activer le mode Polling"
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr ""
-"Activer le polling. (parfois nécessaire pour des cartes plus anciennes)"
 
 msgid "Printable Dialplan"
 msgstr "Plan de numérotation imprimable"
@@ -2639,30 +2578,13 @@ msgstr "Configuration ligne analogique"
 msgid "Authentication Scheme"
 msgstr "Méthode d'authentification"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "Le chemin d'accès de l'appel \"%s\" est non valide. %s"
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Configuration ligne analogique"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "Un numéro valide par défaut (MSN) doit être spécifié."
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Aucune interface compatible trouvée !</strong><br><br> Pour "
-"configurer ce type de compte, assurez-vous d'avoir entré les bonnes données "
-"sur la page %s"
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr "Numéro principal assigné à cette ligne."
-
-msgid "ISDN Interface"
-msgstr "Interface RNIS"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "Numéro de téléphone assigné à cette extension."
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -3046,15 +2968,24 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "Le PABX redémarrera aprés la restauration de la configuration."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Le système a été restauré avec les réglages par défaut et est en cours de "
 "redémarrage. Cette action peut prendre quelques minutes."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"dopo aver cliccato &quot;Salva&quot;, tutte le chiamate verranno terminate."
+"Si vous cliquez sur \"Oui\", le PaBX retrouvera sa configuration sortie "
+"usine et redémarrera immédiatement. L'ensemble de la configuration du "
+"système sera effacée. L'adresse IP sera remise à 192.168.1.2 et le mot de "
+"passe sera '% s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Souhaitez-vous restaurer la configuration d'origine ?"
@@ -3311,6 +3242,124 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
 
+#~ msgid "Interface"
+#~ msgstr "Interface"
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "Data/Ora"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "Configuration de l'interface analogique"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "Configuration de l'interface RNIS #%s"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr ""
+#~ "Un mode de fonctionnement doit être sélectionné pour cette interface."
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Nom descriptif de cette interface"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Mode de fonctionnement"
+
+#~ msgid ""
+#~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+#~ "calls and is attached to the public ISDN network or another PBX system"
+#~ msgstr ""
+#~ "point à multipoint, équipement terminal:  ce port accepte MSN pour "
+#~ "acheminer des appels et est rattaché au réseau public RNIS ou un autre "
+#~ "système de PABX"
+
+#~ msgid ""
+#~ "multipoint-to-point, network termination: this port provides MSNs to "
+#~ "route calls and is attached to one or more telephones"
+#~ msgstr ""
+#~ "multipoint vers point, terminaison de réseau: ce port permet d'acheminer "
+#~ "des appels de MSN et est rattaché à un ou plusieurs téléphones"
+
+#~ msgid ""
+#~ "point-to-point, terminal equipment: this port accepts DID to route calls "
+#~ "and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "point à point, équipement terminal: ce port accepte DID pour acheminer "
+#~ "des appels et est relié directement à un autre système PABX"
+
+#~ msgid ""
+#~ "point-to-point, network termination: this port provides DID to route "
+#~ "calls and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "point à point, terminaison de réseau: ce port permet d'acheminer des "
+#~ "appels de DID et est relié directement à un autre système PABX"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Supprime l'echo"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "Activer la suppression de l'écho pour cette ligne (recommandé)."
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM Timing Slave"
+
+#~ msgid ""
+#~ "There is already another card present which provides the timing.<br><em>"
+#~ "(Unless more than one inteface card is present in the system, this should "
+#~ "not be changed."
+#~ msgstr ""
+#~ "Il existe une autre interface qui permet ce choix. <br> <em> (Si plus "
+#~ "d'une interface est présente dans le système, ce choix ne devrait pas "
+#~ "être modifié)."
+
+#~ msgid "Disable Power Save"
+#~ msgstr "Désactiver Power Save"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Désactiver le mode économies d'énergie. (parfois nécessaire pour des "
+#~ "cartes plus anciennes)"
+
+#~ msgid "Enable Polling Mode"
+#~ msgstr "Activer le mode Polling"
+
+#~ msgid "Enable polling mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Activer le polling. (parfois nécessaire pour des cartes plus anciennes)"
+
+#~ msgid "The dial-pattern \"%s\" is invalid. %s"
+#~ msgstr "Le chemin d'accès de l'appel \"%s\" est non valide. %s"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Un numéro valide par défaut (MSN) doit être spécifié."
+
+#~ msgid ""
+#~ "<strong>No compatible interfaces found!</strong><br><br> To configure "
+#~ "this type of account, make sure an appropriately configured interface is "
+#~ "present on the %s page"
+#~ msgstr ""
+#~ "<strong>Aucune interface compatible trouvée !</strong><br><br> Pour "
+#~ "configurer ce type de compte, assurez-vous d'avoir entré les bonnes "
+#~ "données sur la page %s"
+
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr "Numéro principal assigné à cette ligne."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "Interface RNIS"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "dopo aver cliccato &quot;Salva&quot;, tutte le chiamate verranno "
+#~ "terminate."
+
 #~ msgid "Audio Codecs"
 #~ msgstr "Codecs Audio"
 
@@ -3469,17 +3518,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Disable firmware upload"
 #~ msgstr "Désactiver le téléchargement de la mise à jour"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Si vous cliquez sur \"Oui\", le PaBX retrouvera sa configuration sortie "
-#~ "usine et redémarrera immédiatement. L'ensemble de la configuration du "
-#~ "système sera effacée. L'adresse IP sera remise à 192.168.1.2 et le mot de "
-#~ "passe sera '% s'."
 
 #~ msgid "Debug"
 #~ msgstr "Déboguer"
@@ -3908,9 +3946,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Rate"
 #~ msgstr "Taux"
-
-#~ msgid "Signal"
-#~ msgstr "Signal"
 
 #~ msgid "Noise"
 #~ msgstr "Noise"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,10 @@ msgstr "Kullanıcı adı"
 
 msgid "Public Number"
 msgstr "Kamusal Numara"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Numara"
 
 msgid "Package activated successfully."
 msgstr "Paket başarıyla etkinleştirildi."
@@ -1234,9 +1238,6 @@ msgstr "Bu sunucuyu gerçekten silmek istiyor musunuz?"
 msgid "delete provider"
 msgstr "sunucuyu sil"
 
-msgid "Interface"
-msgstr "Arabirim"
-
 msgid "Russia"
 msgstr "Rusya"
 
@@ -1527,9 +1528,6 @@ msgstr ""
 "ilişkilendirilen dahili hatlarla erişilir veya hedef olarak operatörlerden "
 "gelen aramlar kullanılır."
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr ""
 
@@ -1797,10 +1795,6 @@ msgstr "Yüklenilen Paketler"
 
 msgid "system storage partition"
 msgstr "sistem kayıt bölümü"
-
-#, fuzzy
-msgid "state"
-msgstr "başlangiç"
 
 msgid "Edit Disk"
 msgstr "Sürücüyü Düzenle"
@@ -2289,8 +2283,8 @@ msgid "Phone"
 msgstr "Telefonlar"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "analog arayüzü düzenle"
+msgid "edit port"
+msgstr "telefonu düzenle"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2351,64 +2345,23 @@ msgstr "Uyum sağlayan analog arayüz bulunamadı."
 msgid "Channels"
 msgstr "Kanallar"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Analog düzenle"
+
+#, fuzzy
+msgid "Signaling"
+msgstr "Sinyal"
+
+msgid "Point-to-Point (PTP)"
 msgstr ""
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr ""
-
-msgid "Descriptive name for this interface"
-msgstr "Bu arayüz için anlaşılır isim"
-
-msgid "Operating Mode"
-msgstr ""
-
-msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+msgid "Point-to-Multipoint (PTMP)"
 msgstr ""
 
 msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-
-msgid "Echo Canceller"
-msgstr ""
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr ""
-
-msgid "PCM Timing Slave"
-msgstr ""
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-
-msgid "Disable Power Save"
-msgstr ""
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
-
-msgid "Enable Polling Mode"
-msgstr ""
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -2452,29 +2405,13 @@ msgstr "Analog düzenle"
 msgid "Authentication Scheme"
 msgstr "Kimlik Denetimi"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr ""
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Analog düzenle"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "Geçerli standart numara (MSN) belirtilmeli."
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür hesapları "
-"düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını sağlayın."
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-
-msgid "ISDN Interface"
-msgstr "İSDN Arabirimi"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "Bu hatta atanmış telefon numarası."
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2814,11 +2751,17 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr "Sistem yeniden başlatılıyor. Bu işlem bir kaç dakika zaman alabilir."
 
 #, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"
@@ -3035,6 +2978,35 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Interface"
+#~ msgstr "Arabirim"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "başlangiç"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "analog arayüzü düzenle"
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Bu arayüz için anlaşılır isim"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Geçerli standart numara (MSN) belirtilmeli."
+
+#~ msgid ""
+#~ "<strong>No compatible interfaces found!</strong><br><br> To configure "
+#~ "this type of account, make sure an appropriately configured interface is "
+#~ "present on the %s page"
+#~ msgstr ""
+#~ "<strong>Uyum sağlayan arayüz bulunamadı!</strong><br><br> Bu tür "
+#~ "hesapları düzenlemek için, %s sayfasında gerekli arayüzün ayarlı olmasını "
+#~ "sağlayın."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "İSDN Arabirimi"
 
 #~ msgid "Audio Codecs"
 #~ msgstr "Ses Kodlayıcı-kodçözücüsü"
@@ -3386,9 +3358,6 @@ msgstr ""
 
 #~ msgid "BSSID"
 #~ msgstr "BSSID"
-
-#~ msgid "Signal"
-#~ msgstr "Sinyal"
 
 #~ msgid "Noise"
 #~ msgstr "Gürültü"

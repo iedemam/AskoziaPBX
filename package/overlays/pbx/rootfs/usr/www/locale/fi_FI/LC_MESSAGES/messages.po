@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -34,6 +34,10 @@ msgstr "Käyttäjänimi"
 
 msgid "Public Number"
 msgstr "Julkinen Numero"
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Numero"
 
 msgid "Package activated successfully."
 msgstr "Paketti aktivoitiin onnistuneesti."
@@ -1318,9 +1322,6 @@ msgstr "Oletko varma että haluat poistaa tämän palveluntarjoajan?"
 msgid "delete provider"
 msgstr "poista palveluntarjoaja"
 
-msgid "Interface"
-msgstr "Käyttöliittymä"
-
 msgid "Russia"
 msgstr "Venäjä"
 
@@ -1629,9 +1630,6 @@ msgstr ""
 "toimintoja AskoziaPBX:ään. Niille voi sitten soittaa annetulla jatkeella tai "
 "käyttää päämäräänä sisääntuleville puheluille palveluntarjoajilta."
 
-msgid "descr"
-msgstr ""
-
 msgid "edit application mapping"
 msgstr "muokkaa sovelluksien kartoittaminen"
 
@@ -1918,9 +1916,6 @@ msgstr "Asennetut Paketit"
 
 msgid "system storage partition"
 msgstr "järjestelmän tallennus osio"
-
-msgid "state"
-msgstr "tila"
 
 msgid "Edit Disk"
 msgstr "Muokkaa Levyä"
@@ -2450,8 +2445,8 @@ msgid "Phone"
 msgstr "Puhelimet"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "muokkaa analogi käyttöliittymää"
+msgid "edit port"
+msgstr "muokkaa puhelinta"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2516,78 +2511,24 @@ msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 msgid "Channels"
 msgstr "Kanavat"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Muokkaa ISDN käyttöliittymää #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Muokkaa Analogi"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Käyttötapa on oltava valittu tälle käyttöliittymälle."
+#, fuzzy
+msgid "Signaling"
+msgstr "Signaali"
 
-msgid "Descriptive name for this interface"
-msgstr "Kuvaileva nimi tälle käyttöliittymälle"
+msgid "Point-to-Point (PTP)"
+msgstr ""
 
-msgid "Operating Mode"
-msgstr "Käyttötapa"
+msgid "Point-to-Multipoint (PTMP)"
+msgstr ""
 
 msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
-"point-to-multipoint, konsoli apuvälineet: tämä portti sallii MSN "
-"reitittämään puheluita ja se on kiinni julkisessa ISDN verkossa tai toisessa "
-"PBX järjestelmässä."
-
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-"multipoint-to-point, verkon päättyminen: tämä portti mahdollistaa MSN "
-"reitittämään puheluita ja se on kiinni yhteen tai moneen puhelimeen."
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-"point-to-point, konsoli apuvälineet: tämä portti sallii DID reitittämään "
-"puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-"point-to-point, verkon päättyminen: tämä portti mahdollistaa DID "
-"reitittämään puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
-
-msgid "Echo Canceller"
-msgstr "Echo Peruutus"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Yritä poistaa kaikua linjalta. (suositeltavaa)"
-
-msgid "PCM Timing Slave"
-msgstr "PCM Timing Slave"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-"Kortti joka mahdollistaa ajanottoa on jo käytössä.<br><em>(Jos "
-"järjestelmässä ei ole enempää kuin yksi käyttöliittymäkortti, niin tätä ei "
-"pitäisi muuttaa."
-
-msgid "Disable Power Save"
-msgstr "Poista Virransäästö Käytöstä"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr ""
-"Poista virransäästötila käytöstä. (joskus pakollinen vanhoille korteille)"
-
-msgid "Enable Polling Mode"
-msgstr "Mahdollista Äänestystila"
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr "Poista äänestystila käytöstä. (joskus pakollinen vanhoille korteille)"
 
 msgid "Printable Dialplan"
 msgstr "Tulostettava Soittosuunitelma"
@@ -2630,31 +2571,13 @@ msgstr "Muokkaa Analogi"
 msgid "Authentication Scheme"
 msgstr "Laillistamiskeino"
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr "Soitto-kaava \"%s\" on kelvoton. %s"
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Muokkaa Analogi"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "Kelpaava oletus numero (MSN) on oltava määritetty."
-
-#, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> Tarkista "
-"että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-"Oletus puhelinnumero (MSN) määritetty tälle linjalle. Henkilökohtaiset MSN "
-"kartoitukset pystyy määrittämään alla."
-
-msgid "ISDN Interface"
-msgstr "ISDN Käyttöliittymä"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "Puhelinnumero tälle linjalle."
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -3024,15 +2947,23 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX käynnistyy uudelleen konfiguroinnin palautuksen jälkeen."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
 "kestää muutaman minuutin."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
+"Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja käynnistyy "
+"uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP osoite tulee "
+"olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle tulee olemaan '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Oletko varma että haluat edetä?"
@@ -3276,6 +3207,119 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#~ msgid "Interface"
+#~ msgstr "Käyttöliittymä"
+
+#~ msgid "state"
+#~ msgstr "tila"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "muokkaa analogi käyttöliittymää"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "Muokkaa ISDN käyttöliittymää #%s"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr "Käyttötapa on oltava valittu tälle käyttöliittymälle."
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Kuvaileva nimi tälle käyttöliittymälle"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Käyttötapa"
+
+#~ msgid ""
+#~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+#~ "calls and is attached to the public ISDN network or another PBX system"
+#~ msgstr ""
+#~ "point-to-multipoint, konsoli apuvälineet: tämä portti sallii MSN "
+#~ "reitittämään puheluita ja se on kiinni julkisessa ISDN verkossa tai "
+#~ "toisessa PBX järjestelmässä."
+
+#~ msgid ""
+#~ "multipoint-to-point, network termination: this port provides MSNs to "
+#~ "route calls and is attached to one or more telephones"
+#~ msgstr ""
+#~ "multipoint-to-point, verkon päättyminen: tämä portti mahdollistaa MSN "
+#~ "reitittämään puheluita ja se on kiinni yhteen tai moneen puhelimeen."
+
+#~ msgid ""
+#~ "point-to-point, terminal equipment: this port accepts DID to route calls "
+#~ "and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "point-to-point, konsoli apuvälineet: tämä portti sallii DID reitittämään "
+#~ "puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
+
+#~ msgid ""
+#~ "point-to-point, network termination: this port provides DID to route "
+#~ "calls and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "point-to-point, verkon päättyminen: tämä portti mahdollistaa DID "
+#~ "reitittämään puheluita ja on suoraan kytketty toiseen PBX järjestelmään."
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Echo Peruutus"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "Yritä poistaa kaikua linjalta. (suositeltavaa)"
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM Timing Slave"
+
+#~ msgid ""
+#~ "There is already another card present which provides the timing.<br><em>"
+#~ "(Unless more than one inteface card is present in the system, this should "
+#~ "not be changed."
+#~ msgstr ""
+#~ "Kortti joka mahdollistaa ajanottoa on jo käytössä.<br><em>(Jos "
+#~ "järjestelmässä ei ole enempää kuin yksi käyttöliittymäkortti, niin tätä "
+#~ "ei pitäisi muuttaa."
+
+#~ msgid "Disable Power Save"
+#~ msgstr "Poista Virransäästö Käytöstä"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Poista virransäästötila käytöstä. (joskus pakollinen vanhoille korteille)"
+
+#~ msgid "Enable Polling Mode"
+#~ msgstr "Mahdollista Äänestystila"
+
+#~ msgid "Enable polling mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Poista äänestystila käytöstä. (joskus pakollinen vanhoille korteille)"
+
+#~ msgid "The dial-pattern \"%s\" is invalid. %s"
+#~ msgstr "Soitto-kaava \"%s\" on kelvoton. %s"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Kelpaava oletus numero (MSN) on oltava määritetty."
+
+#~ msgid ""
+#~ "<strong>No compatible interfaces found!</strong><br><br> To configure "
+#~ "this type of account, make sure an appropriately configured interface is "
+#~ "present on the %s page"
+#~ msgstr ""
+#~ "<strong>Yhteensopivaa käyttöliittymää ei löydetty!</strong><br><br> "
+#~ "Tarkista että oikein konfiguroitu käyttöliittymä on läsnä %s sivulla."
+
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr ""
+#~ "Oletus puhelinnumero (MSN) määritetty tälle linjalle. Henkilökohtaiset "
+#~ "MSN kartoitukset pystyy määrittämään alla."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "ISDN Käyttöliittymä"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut "
+#~ "lopetetaan."
+
 #~ msgid "Audio Codecs"
 #~ msgstr "Äänen pakkauksenhallinta"
 
@@ -3431,17 +3475,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Disable firmware upload"
 #~ msgstr "Poista laiteohjelmiston päivittäminen käytöstä"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja "
-#~ "käynnistyy uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP "
-#~ "osoite tulee olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle "
-#~ "tulee olemaan '%s'."
 
 #~ msgid "Debug"
 #~ msgstr "Virheiden etsintä"
@@ -3874,9 +3907,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Rate"
 #~ msgstr "Nopeus"
-
-#~ msgid "Signal"
-#~ msgstr "Signaali"
 
 #~ msgid "Noise"
 #~ msgstr "Melu"

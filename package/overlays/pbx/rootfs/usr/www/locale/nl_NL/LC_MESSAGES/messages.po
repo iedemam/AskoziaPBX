@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 12:52+0000\n"
+"POT-Creation-Date: 2010-01-20 17:20+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -39,6 +39,10 @@ msgstr "Gebruikersnaam"
 
 msgid "Public Number"
 msgstr ""
+
+#, fuzzy
+msgid "Main Number"
+msgstr "Nummer"
 
 msgid "Package activated successfully."
 msgstr "Pakket succesvol geactiveerd."
@@ -1266,9 +1270,6 @@ msgstr "Wil je deze provider echt verwijderen?"
 msgid "delete provider"
 msgstr "Provider verwijderen"
 
-msgid "Interface"
-msgstr "Interfac"
-
 msgid "Russia"
 msgstr "Rusland"
 
@@ -1582,9 +1583,6 @@ msgstr ""
 "gedefineerde post worden bereikt of gebruikt als een bestemming voor "
 "inkomende gesprekken van Providers."
 
-msgid "descr"
-msgstr "omschr"
-
 msgid "edit application mapping"
 msgstr "bewerk programma mapping"
 
@@ -1879,10 +1877,6 @@ msgstr "Gëinstalleerde Paketten"
 
 msgid "system storage partition"
 msgstr "Ssyteem opslag partitie"
-
-#, fuzzy
-msgid "state"
-msgstr "start"
 
 msgid "Edit Disk"
 msgstr "Bewerk Disk"
@@ -2407,8 +2401,8 @@ msgid "Phone"
 msgstr "Telefoons"
 
 #, fuzzy
-msgid "edit analog port"
-msgstr "bewerk analoge interface"
+msgid "edit port"
+msgstr "Telefoon bewerken"
 
 #, fuzzy
 msgid "Do you really want to forget this port\\'s settings?"
@@ -2471,76 +2465,24 @@ msgstr "Geen compatibele analoge interfaces ontdekt."
 msgid "Channels"
 msgstr "Kanalen"
 
-#, php-format
-msgid "Edit ISDN Interface #%s"
-msgstr "Bewerk ISDN Interface #%s"
+#, fuzzy, php-format
+msgid "Edit ISDN %s Port"
+msgstr "Bewerk Analoog"
 
-msgid "An Operating Mode must be selected for this interface."
-msgstr "Een wijze van werken, moet worden gekozen voor deze interface."
+#, fuzzy
+msgid "Signaling"
+msgstr "Signaal"
 
-msgid "Descriptive name for this interface"
-msgstr "Beschrijvende naam voor deze interface"
+msgid "Point-to-Point (PTP)"
+msgstr ""
 
-msgid "Operating Mode"
-msgstr "Operatie Mode"
+msgid "Point-to-Multipoint (PTMP)"
+msgstr ""
 
 msgid ""
-"point-to-multipoint, terminal equipment: this port accepts MSNs to route "
-"calls and is attached to the public ISDN network or another PBX system"
+"Household ISDN lines are usually Point-to-Multipoint and office ISDN "
+"connections are more likely Point-to-Point."
 msgstr ""
-"punt-naar-multipunt, eindapparatuur: deze poort aanvaardt MSNs om gesprekken "
-"door te sturen naar het openbare ISDN-netwerk of een andere PBX-systeemen"
-
-msgid ""
-"multipoint-to-point, network termination: this port provides MSNs to route "
-"calls and is attached to one or more telephones"
-msgstr ""
-"multipunt-naar-punt, eindstations van het netwerk: deze poort biedt MSNs om "
-"telefoons te routeren  en is aangsloten op een of meerdere telefoons"
-
-msgid ""
-"point-to-point, terminal equipment: this port accepts DID to route calls and "
-"is connected directly to another PBX system"
-msgstr ""
-"punt-naar-punt, eindapparatuur: deze poort aanvaardt DID route om gesprekken "
-"te sturen en is direct verbonden met een ander PBX-systeem"
-
-msgid ""
-"point-to-point, network termination: this port provides DID to route calls "
-"and is connected directly to another PBX system"
-msgstr ""
-"punt-naar-punt, eindstations van het netwerk: deze poort biedt DID om te "
-"bellen en is direct verbonden met een ander PBX-systeem"
-
-msgid "Echo Canceller"
-msgstr "Echo verwijderen"
-
-msgid "Attempt to remove echoes from the line. (recommended)"
-msgstr "Probeer de echo's te verwijderen uit de lijn. (aanbevolen)"
-
-msgid "PCM Timing Slave"
-msgstr "PCM Tijd Slaaf"
-
-msgid ""
-"There is already another card present which provides the timing.<br><em>"
-"(Unless more than one inteface card is present in the system, this should "
-"not be changed."
-msgstr ""
-"Er is al een andere kaart aanwezig die de tijd stuurt. <br> <em> (Tenzij er "
-"meer dan één interface-kaart in het systeem aanwezig is, moet dit niet "
-"worden gewijzigd."
-
-msgid "Disable Power Save"
-msgstr "Power Save Uitschakelen"
-
-msgid "Disable power save mode. (sometimes needed for older cards)"
-msgstr "Schakel energiebesparende modus uit. (soms nodig voor oudere kaarten)"
-
-msgid "Enable Polling Mode"
-msgstr "Polling-modus inschakelen"
-
-msgid "Enable polling mode. (sometimes needed for older cards)"
-msgstr "Polling-modus inschakelen (soms nodig voor oudere kaarten)"
 
 msgid "Printable Dialplan"
 msgstr "Afdrukbaar Belplan"
@@ -2583,31 +2525,13 @@ msgstr "Bewerk Analoog"
 msgid "Authentication Scheme"
 msgstr "Autorisatie Gebruiker."
 
-#, php-format
-msgid "The dial-pattern \"%s\" is invalid. %s"
-msgstr ""
+#, fuzzy
+msgid "Edit ISDN Provider"
+msgstr "Bewerk Analoog"
 
-msgid "A valid default number (MSN) must be specified."
-msgstr "Een geldige standaard (MSN) moeten worden vermeld."
-
-#, fuzzy, php-format
-msgid ""
-"<strong>No compatible interfaces found!</strong><br><br> To configure this "
-"type of account, make sure an appropriately configured interface is present "
-"on the %s page"
-msgstr ""
-"Voor het configureren van dit type account, controleer of er een passende "
-"configuratie-interface  aanwezig is op de %s pagina"
-
-msgid ""
-"The default telephone number (MSN) assigned to this line. Individual MSN "
-"mappings can be defined below."
-msgstr ""
-"De standaard telefoonnummer (MSN) toegewezen aan deze lijn. Individuele MSN "
-"mappings kunnen worden omschreven."
-
-msgid "ISDN Interface"
-msgstr "ISDN Interface"
+#, fuzzy
+msgid "The main telephone number assigned to this line."
+msgstr "Telefoon nummer dat is toegewezen aan deze lijn."
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2953,14 +2877,18 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken verloren "
-"gaan."
 
 msgid "Are you sure you want to proceed?"
 msgstr ""
@@ -3178,6 +3106,120 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Interface"
+#~ msgstr "Interfac"
+
+#~ msgid "descr"
+#~ msgstr "omschr"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "start"
+
+#, fuzzy
+#~ msgid "edit analog port"
+#~ msgstr "bewerk analoge interface"
+
+#~ msgid "Edit ISDN Interface #%s"
+#~ msgstr "Bewerk ISDN Interface #%s"
+
+#~ msgid "An Operating Mode must be selected for this interface."
+#~ msgstr "Een wijze van werken, moet worden gekozen voor deze interface."
+
+#~ msgid "Descriptive name for this interface"
+#~ msgstr "Beschrijvende naam voor deze interface"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Operatie Mode"
+
+#~ msgid ""
+#~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
+#~ "calls and is attached to the public ISDN network or another PBX system"
+#~ msgstr ""
+#~ "punt-naar-multipunt, eindapparatuur: deze poort aanvaardt MSNs om "
+#~ "gesprekken door te sturen naar het openbare ISDN-netwerk of een andere "
+#~ "PBX-systeemen"
+
+#~ msgid ""
+#~ "multipoint-to-point, network termination: this port provides MSNs to "
+#~ "route calls and is attached to one or more telephones"
+#~ msgstr ""
+#~ "multipunt-naar-punt, eindstations van het netwerk: deze poort biedt MSNs "
+#~ "om telefoons te routeren  en is aangsloten op een of meerdere telefoons"
+
+#~ msgid ""
+#~ "point-to-point, terminal equipment: this port accepts DID to route calls "
+#~ "and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "punt-naar-punt, eindapparatuur: deze poort aanvaardt DID route om "
+#~ "gesprekken te sturen en is direct verbonden met een ander PBX-systeem"
+
+#~ msgid ""
+#~ "point-to-point, network termination: this port provides DID to route "
+#~ "calls and is connected directly to another PBX system"
+#~ msgstr ""
+#~ "punt-naar-punt, eindstations van het netwerk: deze poort biedt DID om te "
+#~ "bellen en is direct verbonden met een ander PBX-systeem"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Echo verwijderen"
+
+#~ msgid "Attempt to remove echoes from the line. (recommended)"
+#~ msgstr "Probeer de echo's te verwijderen uit de lijn. (aanbevolen)"
+
+#~ msgid "PCM Timing Slave"
+#~ msgstr "PCM Tijd Slaaf"
+
+#~ msgid ""
+#~ "There is already another card present which provides the timing.<br><em>"
+#~ "(Unless more than one inteface card is present in the system, this should "
+#~ "not be changed."
+#~ msgstr ""
+#~ "Er is al een andere kaart aanwezig die de tijd stuurt. <br> <em> (Tenzij "
+#~ "er meer dan één interface-kaart in het systeem aanwezig is, moet dit niet "
+#~ "worden gewijzigd."
+
+#~ msgid "Disable Power Save"
+#~ msgstr "Power Save Uitschakelen"
+
+#~ msgid "Disable power save mode. (sometimes needed for older cards)"
+#~ msgstr ""
+#~ "Schakel energiebesparende modus uit. (soms nodig voor oudere kaarten)"
+
+#~ msgid "Enable Polling Mode"
+#~ msgstr "Polling-modus inschakelen"
+
+#~ msgid "Enable polling mode. (sometimes needed for older cards)"
+#~ msgstr "Polling-modus inschakelen (soms nodig voor oudere kaarten)"
+
+#~ msgid "A valid default number (MSN) must be specified."
+#~ msgstr "Een geldige standaard (MSN) moeten worden vermeld."
+
+#, fuzzy
+#~ msgid ""
+#~ "<strong>No compatible interfaces found!</strong><br><br> To configure "
+#~ "this type of account, make sure an appropriately configured interface is "
+#~ "present on the %s page"
+#~ msgstr ""
+#~ "Voor het configureren van dit type account, controleer of er een passende "
+#~ "configuratie-interface  aanwezig is op de %s pagina"
+
+#~ msgid ""
+#~ "The default telephone number (MSN) assigned to this line. Individual MSN "
+#~ "mappings can be defined below."
+#~ msgstr ""
+#~ "De standaard telefoonnummer (MSN) toegewezen aan deze lijn. Individuele "
+#~ "MSN mappings kunnen worden omschreven."
+
+#~ msgid "ISDN Interface"
+#~ msgstr "ISDN Interface"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "Nadat u clickt op &quot;Save&quot;, zullen alle huidige gesprekken "
+#~ "verloren gaan."
 
 #~ msgid "Video Codecs"
 #~ msgstr "Video Codecs"
@@ -3606,9 +3648,6 @@ msgstr ""
 
 #~ msgid "Rate"
 #~ msgstr "Ratio"
-
-#~ msgid "Signal"
-#~ msgstr "Signaal"
 
 #~ msgid "Noise"
 #~ msgstr "Noise"
