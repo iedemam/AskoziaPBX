@@ -170,142 +170,6 @@ function isdn_get_providers_on_unit($uniqid) {
 	return $unit_providers;
 }
 
-
-/**
- * Generates capi.conf
- */
-function isdn_conf_generate() {
-	global $config, $g;
-	
-	$fd = fopen("/etc/asterisk/capi.conf", "w");
-	if (!$fd) {
-		printf("Error: cannot open capi.conf in isdn_conf_generate().\n");
-		return 1;
-	}
-	
-	$isdnconfig = $config['services']['isdn'];
-	
-	$law = "alaw";
-	if (isset($isdnconfig['law']))
-		$law = $isdnconfig['law'];
-
-	$nationalprefix = "0";
-	if (isset($isdnconfig['nationalprefix']))
-		$nationalprefix = $isdnconfig['nationalprefix'];
-
-	$internationalprefix = "00";
-	if (isset($isdnconfig['internationalprefix']))
-		$internationalprefix = $isdnconfig['internationalprefix'];
-		
-	$conf = <<<EOD
-	
-[general]
-nationalprefix=$nationalprefix
-internationalprefix=$internationalprefix
-rxgain=1.0
-txgain=1.0
-;debug=yes
-
-EOD;
-
-	if ($law != "alaw") {
-		$conf .= "ulaw=yes\n";
-	}
-	
-	$conf .= "\n\n";
-	
-	// provider (te) interfaces
-	$interfaces = isdn_get_te_interfaces();
-	foreach($interfaces as $interface) {
-		$conf .= "; {$interface['name']}\n";
-		$conf .= "[{$interface['unit']}]\n";;
-		
-		$conf .= "isdnmode=msn\n";
-		//$conf .= "msn={$p['msn']}\n";
-		$conf .= "incomingmsn=*\n";
-		$conf .= "controller={$interface['unit']}\n";
-		$conf .= "group=1\n";
-		//$conf .= ";prefix=0\n";
-		$conf .= "softdtmf=off\n";
-		$conf .= "relaxdtmf=off\n";
-		//$conf .= "accountcode=\n";
-		
-		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
-    
-		$conf .= "holdtype=local_moh\n";
-		//$conf .= "immediate=yes\n";
-    
-		if ($interface['echocancel']) {
-			$conf .= "echocancel=yes\n";
-		} else {
-			$conf .= "echocancel=no\n";
-		}
-    
-		//$conf .= ";echocancelold=yes\n";
-		$conf .= "echotail=64\n";
-		//$conf .= ";bridge=yes\n";
-		//$conf .= ";callgroup=1\n";
-		//$conf .= ";deflect=1234567\n";
-		$conf .= "devices=2\n";
-		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
-		$conf .= "\n";
-	}
-	
-	$conf .= "\n";
-	
-	// phone (nt) interfaces
-	$interfaces = isdn_get_nt_interfaces();
-	foreach($interfaces as $interface) {
-		$conf .= "; {$interface['name']}\n";
-		$conf .= "[{$interface['unit']}]\n";
-		
-		$conf .= "ntmode=yes\n";
-		$conf .= "isdnmode=did\n";
-		$conf .= "incomingmsn=*\n";
-		$conf .= "controller={$interface['unit']}\n";
-		$conf .= "group=1\n";
-		//$conf .= ";prefix=0\n";
-		$conf .= "softdtmf=off\n";
-		$conf .= "relaxdtmf=off\n";
-		//$conf .= "accountcode=\n";
-		
-		$conf .= "context=isdn-unit-{$interface['unit']}-incoming\n";
-    
-		$conf .= "holdtype=local_moh\n";
-		//$conf .= "immediate=yes\n";
-
-		if ($interface['echocancel']) {
-			$conf .= "echocancel=yes\n";
-		} else {
-			$conf .= "echocancel=no\n";
-		}
-
-		//$conf .= ";echocancelold=yes\n";
-		//$conf .= ";echotail=64\n";
-		//$conf .= ";bridge=yes\n";
-		//$conf .= ";callgroup=1\n";
-		//$conf .= ";deflect=1234567\n";
-		$conf .= "devices=2\n";
-		$conf .= util_gen_manual_attributes($interface['manual-attribute']);
-		$conf .= "\n";
-	}
-
-	fwrite($fd, $conf);
-	fclose($fd);
-
-	return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
 function isdn_autoconfigure_phones() {
 	global $g;
 
@@ -374,6 +238,55 @@ function isdn_save_phone($phone) {
 		$GLOBALS['config']['isdn']['phone'][$uniqid_map[$phone['uniqid']]] = $phone;
 	} else {
 		$GLOBALS['config']['isdn']['phone'][] = $phone;
+	}
+
+	write_config();
+	touch($g['isdn_dirty_path']);
+}
+
+function isdn_generate_default_provider() {
+	global $defaults;
+
+	$provider = array();
+
+	$provider['language'] = $defaults['accounts']['language'];
+	$provider['calleridsource'] = $defaults['accounts']['providers']['calleridsource'];
+	$provider['uniqid'] = 'ISDN-PROVIDER-' . uniqid(rand());
+
+	return $provider;
+}
+
+function isdn_verify_provider($post, $errors) {
+
+	$provider = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$provider, &$post, &$errors);
+	v_numeric('mainnumber', gettext('Main Number'), &$provider, &$post, &$errors);
+	v_incoming_prov_routing(&$provider, &$post, &$errors);
+	v_incoming_prov_callerid(&$provider, &$post, &$errors);
+	v_outgoing_prov_routing(&$provider, &$post, &$errors);
+	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
+
+	$trusted = array(
+		'uniqid',
+		'language',
+		'port'
+	);
+	foreach ($trusted as $t) {
+		$provider[$t] = $post[$t];
+	}
+
+	return $provider;
+}
+
+function isdn_save_provider($provider) {
+	global $g, $uniqid_map;
+
+	if (isdn_get_provider($provider['uniqid'])) {
+		$GLOBALS['config']['isdn']['provider'][$uniqid_map[$provider['uniqid']]] = $provider;
+	} else {
+		$GLOBALS['config']['isdn']['provider'][] = $provider;
 	}
 
 	write_config();

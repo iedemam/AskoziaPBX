@@ -81,7 +81,7 @@ if ($successful_action) {
 			touch($g['sip_dirty_path']);
 			break;
 		case "isdn":
-			touch($d_isdnconfdirty_path);	
+			touch($g['isdn_dirty_path']);	
 			break;
 	}
 	header("Location: accounts_phones.php");
@@ -129,11 +129,11 @@ if (file_exists($g['iax_dirty_path'])) {
 }
 
 /* dirty isdn config? */
-if (file_exists($d_isdnconfdirty_path)) {
+if (file_exists($g['isdn_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= isdn_conf_generate();
+		$retval |= chan_dahdi_conf_generate();
 		$retval |= extensions_conf_generate();
 		$retval |= voicemail_conf_generate();
 		config_unlock();
@@ -145,7 +145,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 	}
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_isdnconfdirty_path);
+		unlink($g['isdn_dirty_path']);
 	}
 }
 

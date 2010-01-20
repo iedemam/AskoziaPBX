@@ -322,45 +322,45 @@ EOD;
 	}
 
 	// isdn nt port contexts
-	foreach ($isdn_nt_interfaces as $i) {
-		$phones = isdn_get_phones_on_unit($i['uniqid']);
-		if (!count($phones)) {
-			continue;
-		}
-		$conf .= "; isdn nt interface \"{$i['name']}\" incoming\n";
-		$conf .= "[{$i['uniqid']}-incoming]\n";
-		foreach ($phones as $p) {
-			$phone_lang = "en-us";
-			if ($p['language']) {
-				$phone_lang = $p['language'];
-			}
-			$conf .= "exten => _[0-9*#]!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
-			$conf .= "exten => _[0-9*#]!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
-		}
-		$conf .= "\n";
-	}
+	//foreach ($isdn_nt_interfaces as $i) {
+	//	$phones = isdn_get_phones_on_unit($i['uniqid']);
+	//	if (!count($phones)) {
+	//		continue;
+	//	}
+	//	$conf .= "; isdn nt interface \"{$i['name']}\" incoming\n";
+	//	$conf .= "[{$i['uniqid']}-incoming]\n";
+	//	foreach ($phones as $p) {
+	//		$phone_lang = "en-us";
+	//		if ($p['language']) {
+	//			$phone_lang = $p['language'];
+	//		}
+	//		$conf .= "exten => _[0-9*#]!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
+	//		$conf .= "exten => _[0-9*#]!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
+	//	}
+	//	$conf .= "\n";
+	//}
 
 	// isdn te port contexts
-	foreach ($isdn_te_interfaces as $i) {
-		$providers = isdn_get_providers_on_unit($i['uniqid']);
-		if (!count($providers)) {
-			continue;
-		}
-		$conf .= "; isdn te interface \"{$i['name']}\" incoming\n";
-		$conf .= "[{$i['uniqid']}-incoming]\n";
-		foreach ($providers as $p) {
-			// XXX : multiple providers on a single s0 is broken
-			$provider_lang = "en-us";
-			if ($p['language']) {
-				$provider_lang = $p['language'];
-			}
-			$conf .= "exten => _[0-9*#]!,1,Set(CHANNEL(language)=$provider_lang)\n";
-			$conf .= "exten => _[0-9*#]!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
-			$conf .= "exten => s,1,Set(CHANNEL(language)=$provider_lang)\n";
-			$conf .= "exten => s,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
-		}
-		$conf .= "\n";
-	}
+	//foreach ($isdn_te_interfaces as $i) {
+	//	$providers = isdn_get_providers_on_unit($i['uniqid']);
+	//	if (!count($providers)) {
+	//		continue;
+	//	}
+	//	$conf .= "; isdn te interface \"{$i['name']}\" incoming\n";
+	//	$conf .= "[{$i['uniqid']}-incoming]\n";
+	//	foreach ($providers as $p) {
+	//		// XXX : multiple providers on a single s0 is broken
+	//		$provider_lang = "en-us";
+	//		if ($p['language']) {
+	//			$provider_lang = $p['language'];
+	//		}
+	//		$conf .= "exten => _[0-9*#]!,1,Set(CHANNEL(language)=$provider_lang)\n";
+	//		$conf .= "exten => _[0-9*#]!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+	//		$conf .= "exten => s,1,Set(CHANNEL(language)=$provider_lang)\n";
+	//		$conf .= "exten => s,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
+	//	}
+	//	$conf .= "\n";
+	//}
 
 	$conf .= <<<EOD
 [outgoing-uri]

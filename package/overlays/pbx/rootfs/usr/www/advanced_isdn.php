@@ -69,13 +69,13 @@ if ($_POST) {
 		$isdnconfig['internationalprefix'] = $_POST['internationalprefix'];
 		
 		write_config();
-		touch($d_isdnconfdirty_path);
+		touch($g['isdn_dirty_path']);
 		header("Location: advanced_isdn.php");
 		exit;
 	}
 }
 
-if (file_exists($d_isdnconfdirty_path)) {
+if (file_exists($g['isdn_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
@@ -88,7 +88,7 @@ if (file_exists($d_isdnconfdirty_path)) {
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_isdnconfdirty_path);
+		unlink($g['isdn_dirty_path']);
 	}
 }
 

@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2009-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -119,19 +119,26 @@ function dahdi_autoconfigure_ports() {
 		if (!dahdi_get_port($uniqid)) {
 			$p['uniqid'] = $uniqid;
 
-			$p['name'] = gettext("Port") . " " . $p['basechannel'];
-
 			$p['echo-taps'] = $defaults['dahdi']['echo-taps'];
 
 			$p['rxgain'] = $defaults['dahdi']['rxgain'];
 			$p['txgain'] = $defaults['dahdi']['txgain'];
 
+			// setup analog specific defaults
 			if ($p['technology'] == "analog") {
+				$p['name'] = gettext("Port") . " " . $p['basechannel'];
 				$p['startsignaling'] = $defaults['dahdi']['analog']['startsignaling'];
 
-			} else if ($p['technology'] == "isdn") {
-				if ($p['totalchannels'] == 3 && $p['type'] == "nt") {
-					$p['signaling'] = "bri_net_ptmp";
+			// setup bri isdn specific defaults
+			} else if ($p['technology'] == "isdn" && $p['totalchannels'] == 3) {
+				$p['name'] = gettext("Port") . " " . $p['span'];
+
+				if ($p['type'] == "nt") {
+					// once PTMP is implemented...
+					// $p['signaling'] = "bri_net_ptmp";
+					$p['signaling'] = "bri_net";
+				} else if ($p['type'] == "te") {
+					$p['signaling'] = "bri_cpe_ptmp";
 				}
 			}
 
@@ -179,7 +186,6 @@ function dahdi_get_port($uniqid) {
 function dahdi_save_port($port) {
 	global $g, $config, $uniqid_map;
 
-	print_r($uniqid_map);
 	if (dahdi_get_port($port['uniqid'])) {
 		$config['interfaces']['dahdi-port'][$uniqid_map[$port['uniqid']]] = $port;
 	} else {
@@ -232,7 +238,8 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 			//	- framing and coding always ccs and ami respectively
 			if ($port['type'] == "nt") {
 				$conf .= "span=" . $port['span'] . ",0,0,ccs,ami\n";
-			} else {
+			// bri 'provider' ports
+			} else if ($port['type'] == "te") {
 				$conf .= "span=" . $port['span'] . "," . $timingprio++ . ",0,ccs,ami\n";
 			}
 		}
@@ -252,9 +259,14 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 			$signaling = ($port['type'] == "fxs") ? "fxo" : "fxs";
 			$conf .= $signaling . $startsignaling . "=" . $port['basechannel'] . "\n";
 
+		// bri isdn
 		} else if ($port['technology'] == "isdn" && $port['totalchannels'] == 3) {
 			// bri 'phone' ports
 			if ($port['type'] == "nt") {
+				$conf .= "bchan=" . $port['basechannel'] . "\n";
+				$conf .= "bchan=" . ($port['basechannel'] + 1) . "\n";
+				$conf .= "hardhdlc=" . ($port['basechannel'] + 2) . "\n";
+			} else if ($port['type'] == "te") {
 				$conf .= "bchan=" . $port['basechannel'] . "\n";
 				$conf .= "bchan=" . ($port['basechannel'] + 1) . "\n";
 				$conf .= "hardhdlc=" . ($port['basechannel'] + 2) . "\n";
@@ -289,9 +301,14 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 				$conf .= "echocanceller=mg2," . $port['basechannel'] . "\n";
 			}
 
+		// bri ports
 		} else if ($port['technology'] == "isdn" && $port['totalchannels'] == 3) {
-			// bri 'phone' ports
+			// 'phone' ports
 			if ($port['type'] == "nt") {
+				if ($port['echo-taps'] != "disable") {
+					$conf .= "echocanceller=mg2," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+				}
+			} else if ($port['type'] == "te") {
 				if ($port['echo-taps'] != "disable") {
 					$conf .= "echocanceller=mg2," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 				}
@@ -378,6 +395,31 @@ function chan_dahdi_conf_generate($return=false, $ports=false) {
 		$conf .= "context=" . $phone['uniqid'] . "\n";
 		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
 		$conf .= "channel => " . $port['basechannel'] . "\n";
+		$conf .= "\n";
+	}
+
+	$isdnproviders = isdn_get_providers();
+	foreach ($isdnproviders as $provider) {
+		if (isset($provider['disabled'])) {
+			continue;
+		}
+		$port = dahdi_get_port($provider['port']);
+
+		$conf .= "; Provider: " . $provider['name'] . "\n";
+		$conf .= "signalling=" . $port['signaling'] . "\n";
+		$conf .= "rxgain=" . $port['rxgain'] . "\n";
+		$conf .= "txgain=" . $port['txgain'] . "\n";
+
+		if ($port['echo-taps'] == "disable") {
+			$conf .= "echocancel=no\n";
+		} else {
+			$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+		}
+
+		$conf .= "language=" . $provider['language'] . "\n";
+		$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 		$conf .= "\n";
 	}
 

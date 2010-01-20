@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -83,12 +83,12 @@ include("fbegin.inc");
 					$type = ($port['type'] == "nt") ? gettext("Phone") : gettext("Provider");
 
 				?><tr>
-					<td class="listlr"><?=htmlspecialchars($port['basechannel']);?></td>
+					<td class="listlr"><?=htmlspecialchars($port['span']);?></td>
 					<td class="listbg"><?=htmlspecialchars($port['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($port['card']);?></td>
 					<td class="listr"><?=htmlspecialchars($type);?></td>
 					<td class="listr"><?=htmlspecialchars($port['totalchannels']);?></td>
-					<td valign="middle" nowrap class="list"><a href="ports_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="ports_isdn_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit port");?>" border="0"></a>
 					<a href="?action=forget&uniqid=<?=$port['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this port\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget port settings");?>" border="0"></a></td>
 				</tr><?
 			}

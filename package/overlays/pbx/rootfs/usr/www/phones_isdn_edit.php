@@ -115,7 +115,7 @@ if ($_POST) {
 			$a_isdnphones[] = $ip;
 		}
 		
-		touch($d_isdnconfdirty_path);
+		touch($g['isdn_dirty_path']);
 		
 		write_config();
 		

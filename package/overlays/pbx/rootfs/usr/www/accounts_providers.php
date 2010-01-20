@@ -81,7 +81,7 @@ if ($successful_action) {
 			touch($g['sip_dirty_path']);
 			break;
 		case "isdn":
-			touch($d_isdnconfdirty_path);	
+			touch($g['isdn_dirty_path']);	
 			break;
 	}
 	header("Location: accounts_providers.php");
@@ -127,21 +127,22 @@ if (file_exists($g['iax_dirty_path'])) {
 }
 
 /* dirty isdn config? */
-if (file_exists($d_isdnconfdirty_path)) {
+if (file_exists($g['isdn_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= isdn_conf_generate();
+		$retval |= chan_dahdi_conf_generate();
 		$retval |= extensions_conf_generate();
 		config_unlock();
 		
 		$retval |= pbx_exec("module reload chan_dahdi.so");
+		$retval |= pbx_exec("dahdi restart");
 		$retval |= pbx_exec("dialplan reload");
 	}
 
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
-		unlink($d_isdnconfdirty_path);
+		unlink($g['isdn_dirty_path']);
 	}
 }
 
@@ -190,11 +191,10 @@ if (file_exists($g['analog_dirty_path'])) {
 		if (!isset($config['system']['webgui']['hideiax'])) {
 			?><a href="providers_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
-		/* bri_cpe_* signaling not yet ported...disabling
-		if (!isset($config['system']['webgui']['hideisdn'])) {
+		if (!isset($config['system']['webgui']['hideisdn']) &&
+			count(dahdi_get_ports("isdn", "te"))) {
 			?><a href="providers_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
-		*/
 		if (!isset($config['system']['webgui']['hideanalog']) &&
 			count(dahdi_get_ports("analog", "fxo"))) {
 			?><a href="providers_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png"><?
@@ -308,13 +308,13 @@ if (file_exists($g['analog_dirty_path'])) {
 		<td width="5%" class="list"></td>
 		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Pattern(s)");?></td>
-		<td width="20%" class="listhdrr"><?=gettext("Number");?></td>
-		<td width="20%" class="listhdr"><?=gettext("Interface");?></td>
+		<td width="20%" class="listhdrr"><?=gettext("Main Number");?></td>
+		<td width="20%" class="listhdr"><?=gettext("Port");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
 	<? $i = 0; foreach ($isdn_providers as $p): ?>
-	<? $interface = isdn_get_interface($p['interface']); ?>
+	<? $port = dahdi_get_port($p['port']); ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -332,8 +332,8 @@ if (file_exists($g['analog_dirty_path'])) {
 		}
 		?></td>
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($p['msn']);?></td>
-		<td class="listr"><?=htmlspecialchars($interface['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($p['mainnumber']);?></td>
+		<td class="listr"><?=htmlspecialchars($port['name']);?></td>
 		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>

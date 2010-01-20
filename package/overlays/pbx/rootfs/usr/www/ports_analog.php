@@ -86,7 +86,7 @@ include("fbegin.inc");
 					<td class="listbg"><?=htmlspecialchars($port['name']);?></td>
 					<td class="listr"><?=htmlspecialchars($port['card']);?></td>
 					<td class="listr"><?=htmlspecialchars($type);?></td>
-					<td valign="middle" nowrap class="list"><a href="ports_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit analog port");?>" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="ports_analog_edit.php?uniqid=<?=$port['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit port");?>" border="0"></a>
 					<a href="?action=forget&uniqid=<?=$port['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this port\'s settings?");?>')"><img src="delete.png" title="<?=gettext("forget port settings");?>" border="0"></a></td>
 				</tr><?
 			}
