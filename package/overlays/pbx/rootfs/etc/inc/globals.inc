@@ -47,8 +47,8 @@ $g = array(
 	"wireless_hostap_regex" => "/^(wi|ath|ral|ural)/",
 	"latest_config" => "1.6",
 	"package_system" => "1.0",
-	"technologies" => array("sip", "iax", "isdn", "analog"),
-	"phone_types" => array("sip", "iax", "isdn", "analog", "external"),
+	"technologies" => array("sip", "iax", "isdn", "analog", "skinny"),
+	"phone_types" => array("sip", "iax", "isdn", "analog", "skinny", "external"),
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
 	"dahdi_dirty_path" => "/var/run/dahdi.dirty",
@@ -56,6 +56,7 @@ $g = array(
 	"sip_dirty_path" => "/var/run/sip.dirty",
 	"iax_dirty_path" => "/var/run/iax.dirty",
 	"isdn_dirty_path" => "/var/run/isdn.dirty",
+	"skinny_dirty_path" => "/var/run/skinny.dirty",
 	"external_dirty_path" => "/var/run/external.dirty"
 );
 

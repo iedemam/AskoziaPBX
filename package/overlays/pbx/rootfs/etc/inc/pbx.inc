@@ -70,6 +70,10 @@ function pbx_configure() {
 	$res |= iax_conf_generate();
 	if ($g['booting']) echo "done\n";
 
+	if ($g['booting']) echo "   |- generating skinny configuration...";
+	$res |= skinny_conf_generate();
+	if ($g['booting']) echo "done\n";
+
 	if ($g['booting']) echo "   |- generating conferencing configuration...";
 	$res |= meetme_conf_generate();
 	if ($g['booting']) echo "done\n";
@@ -327,6 +331,7 @@ function pbx_get_extensions() {
 		iax_get_extensions(),
 		isdn_get_extensions(),
 		analog_get_extensions(),
+		skinny_get_extensions(),
 		conferencing_get_extensions(),
 		external_get_extensions(),
 		callgroups_get_extensions(),
@@ -470,6 +475,7 @@ function pbx_get_phones() {
 					sip_get_phones(),
 					iax_get_phones(),
 					isdn_get_phones(),
+					skinny_get_phones(),
 					analog_get_phones()
 				));
 }
@@ -490,6 +496,9 @@ function pbx_get_phone($uniqid) {
 
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
 		return analog_get_phone($uniqid);
+
+	} else if (strstr($uniqid, "SKINNY-PHONE")) {
+		return skinny_get_phone($uniqid);
 
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 		return external_get_phone($uniqid);
@@ -693,7 +702,7 @@ function pbx_get_peer_statuses() {
  */
 function pbx_replace_uniqids_with_names($string) {
 	
-	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|CONFERENCE|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL){1}-[0-9a-zA-Z]+/";
+	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|SKINNY|CONFERENCE|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL){1}-[0-9a-zA-Z]+/";
 
 	preg_match_all($uniqid_regex, $string, $uniqids);
 	if (!is_array($uniqids)) {
@@ -766,6 +775,8 @@ function pbx_uniqid_to_technology($uniqid) {
 			return "DAHDI";
 		case "ANALOG":
 			return "DAHDI";
+		case "SKINNY":
+			return "SKINNY";
 	}
 
 	return "ERROR:UNIQID_TO_TECHNOLOGY_FAILED($uniqid)";
@@ -798,6 +809,7 @@ load => chan_dahdi.so
 load => chan_iax2.so
 load => chan_local.so
 load => chan_sip.so
+load => chan_skinny.so
 load => codec_a_mu.so
 load => codec_adpcm.so
 load => codec_alaw.so

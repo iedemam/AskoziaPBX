@@ -272,6 +272,7 @@
 				<option value="/etc/asterisk/modules.conf">/etc/asterisk/modules.conf</option>
 				<option value="/etc/asterisk/rtp.conf">/etc/asterisk/rtp.conf</option>
 				<option value="/etc/asterisk/sip.conf">/etc/asterisk/sip.conf</option>
+				<option value="/etc/asterisk/skinny.conf">/etc/asterisk/skinny.conf</option>
 				<option value="/etc/asterisk/voicemail.conf">/etc/asterisk/voicemail.conf</option>
 				<option value="/etc/dahdi/system.conf">/etc/dahdi/system.conf</option>
 				<option value="/var/spool/cron/crontabs/root">/var/spool/cron/crontabs/root</option>

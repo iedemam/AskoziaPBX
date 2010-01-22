@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -82,6 +82,9 @@ if ($successful_action) {
 			break;
 		case "isdn":
 			touch($g['isdn_dirty_path']);	
+			break;
+		case "skinny":
+			touch($g['skinny_dirty_path']);	
 			break;
 	}
 	header("Location: accounts_phones.php");
@@ -185,6 +188,26 @@ if (file_exists($g['external_dirty_path'])) {
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
 		unlink($g['external_dirty_path']);
+	}
+}
+
+/* dirty skinny config? */
+if (file_exists($g['skinny_dirty_path'])) {
+	$retval = 0;
+	if (!file_exists($d_sysrebootreqd_path)) {
+		config_lock();
+		$retval |= skinny_conf_generate();
+		$retval |= extensions_conf_generate();
+		$retval |= voicemail_conf_generate();
+		config_unlock();
+		
+		$retval |= pbx_exec("module reload chan_skinny.so");
+		$retval |= pbx_exec("dialplan reload");
+		$retval |= pbx_exec("module reload app_voicemail.so");
+	}
+	$savemsg = get_std_save_message($retval);
+	if ($retval == 0) {
+		unlink($g['skinny_dirty_path']);
 	}
 }
 ?>
@@ -395,6 +418,50 @@ if (file_exists($g['external_dirty_path'])) {
 		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="phones_analog_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
+	</tr>
+	<? endforeach; ?>
+
+	<tr> 
+		<td class="list" colspan="5" height="12">&nbsp;</td>
+	</tr>
+</table>
+<? endif; ?>
+
+<? if ($skinny_phones = skinny_get_phones()) : ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="5%" class="list"></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("Skinny");?></td>
+	</tr>
+	<tr>
+		<td width="5%" class="list"></td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Caller ID");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Description");?></td>
+		<td width="10%" class="list"></td>
+	</tr>
+
+	<? foreach ($skinny_phones as $p): ?>
+	<tr>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($p['disabled'])) {
+			?><a href="?action=enable&uniqid=<?=$p['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable phone");?>" border="0"></a><?
+		} else {
+			?><a href="?action=disable&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this phone?");?>')"><img src="enabled.png" title="<?=gettext("click to disable phone");?>" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($p['disabled'])) {
+			echo display_peer_status_icon($status_info[$p['extension']], $p['extension']);
+			echo htmlspecialchars($p['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($p['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($p['callerid']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($p['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="phones_skinny_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit phone");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this phone?");?>')"><img src="delete.png" title="<?=gettext("delete phone");?>" border="0"></a></td>
 	</tr>
 	<? endforeach; ?>

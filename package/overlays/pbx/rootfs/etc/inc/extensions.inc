@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -457,6 +457,9 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 	} else if (strstr($uniqid, "IAX-PHONE")) {
 		return "IAX2/" . $phone['extension'];
 
+	} else if (strstr($uniqid, "SKINNY-PHONE")) {
+		return "SKINNY/" . $phone['extension'];
+
 	} else if (strstr($uniqid, "ISDN-PHONE")) {
 		return "DAHDI/" . $phone['port'] . "/" . $phone['extension'];
 
@@ -666,6 +669,9 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 
 	} else if ($tech == "IAX2") {
 		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(IAX2/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+
+	} else if ($tech == "SKINNY") {
+		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(SKINNY/$phone_exten@$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else if ($tech == "DAHDI") {
 		$dahdi_port = dahdi_get_port($p['port']);
