@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -1317,6 +1317,9 @@ msgstr "Möchten Sie das Telefon wirklich löschen?"
 msgid "delete phone"
 msgstr "Nebenstelle löschen"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Dialstring"
 
@@ -2435,6 +2438,18 @@ msgstr "SIP-Nebenstellen"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Erweiterte Einstellungen"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "SIP-Nebenstellen"
+
+#, fuzzy
+msgid "Device"
+msgstr "Dienste"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Die interne Nebenstellennummer für dieses Telefon."
 
 msgid "Dialplan Element Library"
 msgstr "Dialplan-Element-Bibliothek"

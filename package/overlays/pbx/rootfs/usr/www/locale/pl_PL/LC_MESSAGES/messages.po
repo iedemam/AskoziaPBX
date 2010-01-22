@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1247,6 +1247,9 @@ msgstr "Czy na pewno chcesz usunąć ten telefon?"
 msgid "delete phone"
 msgstr "usuń telefon"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr ""
 
@@ -2305,6 +2308,18 @@ msgstr "Telefony"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Ustawienia zaawansowane"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "Telefony"
+
+#, fuzzy
+msgid "Device"
+msgstr "Usługi"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
 msgid "Dialplan Element Library"
 msgstr "Biblioteka elementów dialplanu"

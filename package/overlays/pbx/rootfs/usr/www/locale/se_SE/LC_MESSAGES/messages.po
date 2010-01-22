@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1160,6 +1160,9 @@ msgstr ""
 msgid "delete phone"
 msgstr ""
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr ""
 
@@ -2142,6 +2145,15 @@ msgid "Edit SIP Phone"
 msgstr ""
 
 msgid "Advanced Options"
+msgstr ""
+
+msgid "Edit Skinny Phone"
+msgstr ""
+
+msgid "Device"
+msgstr ""
+
+msgid "The MAC address of this phone."
 msgstr ""
 
 msgid "Dialplan Element Library"

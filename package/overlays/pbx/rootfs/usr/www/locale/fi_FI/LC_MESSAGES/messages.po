@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1289,6 +1289,9 @@ msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
 msgid "delete phone"
 msgstr "poista puhelin"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Soittotunnus"
 
@@ -2391,6 +2394,18 @@ msgstr "SIP Puhelimet"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Lisäasetukset"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "SIP Puhelimet"
+
+#, fuzzy
+msgid "Device"
+msgstr "Palvelut"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
 msgid "Dialplan Element Library"
 msgstr "Soittosuunitelman Elementti Kirjasto"

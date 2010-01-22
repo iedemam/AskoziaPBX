@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1299,6 +1299,9 @@ msgstr "Сигурни ли сте че искате да изтриете въ�
 msgid "delete phone"
 msgstr "изтрий вътрешна линия"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Поредица за избиране"
 
@@ -2407,6 +2410,18 @@ msgstr "SIP Вътрешни"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Допълнителни Настройки"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "SIP Вътрешни"
+
+#, fuzzy
+msgid "Device"
+msgstr "Услуги"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Вътрешен Номер използван за избиране на този телефон."
 
 msgid "Dialplan Element Library"
 msgstr "Dialplan Element Библиотека"

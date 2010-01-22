@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1306,6 +1306,9 @@ msgstr "Vuoi veramente cancellare questo telefono?"
 msgid "delete phone"
 msgstr "cancella il telefono"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Stringa di chiamata"
 
@@ -2441,6 +2444,18 @@ msgstr "Derivati"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Impostazioni Avanzate"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "Derivati"
+
+#, fuzzy
+msgid "Device"
+msgstr "Servizi"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Interno usato per chiamare questo telefono."
 
 msgid "Dialplan Element Library"
 msgstr "Elemento della libreria del piano di numerazione"

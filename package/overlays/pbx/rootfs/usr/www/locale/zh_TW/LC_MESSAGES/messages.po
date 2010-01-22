@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1276,6 +1276,9 @@ msgstr "真的要刪除這個電話？"
 msgid "delete phone"
 msgstr "刪除電話"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "撥號串"
 
@@ -2321,6 +2324,18 @@ msgstr "電話"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "高級設置"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "電話"
+
+#, fuzzy
+msgid "Device"
+msgstr "服務"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "這個內部分機用來撥打這個電話。"
 
 msgid "Dialplan Element Library"
 msgstr "撥號計劃元素庫"

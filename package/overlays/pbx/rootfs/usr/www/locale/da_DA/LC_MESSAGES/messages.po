@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1294,6 +1294,9 @@ msgstr "Vil du virkeligt slette denne telefon?"
 msgid "delete phone"
 msgstr "slet telefon"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Opkaldsstreng"
 
@@ -2351,6 +2354,18 @@ msgstr "Telefoner"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Avancerede indstillinger"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "Telefoner"
+
+#, fuzzy
+msgid "Device"
+msgstr "Tjenester"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Den interne extension brugt for at ringe til denne telefon"
 
 msgid "Dialplan Element Library"
 msgstr "Opkaldsplan element bibliotek"

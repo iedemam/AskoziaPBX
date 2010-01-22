@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1236,6 +1236,9 @@ msgstr "Wil je deze telfoon verwijderen?"
 msgid "delete phone"
 msgstr "Telefoon verwijderen"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Belstring"
 
@@ -2351,6 +2354,18 @@ msgstr "Telefoons"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Geavanceerd"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "Telefoons"
+
+#, fuzzy
+msgid "Device"
+msgstr "Services"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "De interne post gebruikt om deze telefoon te bellen."
 
 msgid "Dialplan Element Library"
 msgstr ""

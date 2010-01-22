@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1296,6 +1296,9 @@ msgstr "本当にこの電話機を削除しますか？"
 msgid "delete phone"
 msgstr "電話機の削除"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "電話番号列"
 
@@ -2382,6 +2385,18 @@ msgstr "SIP電話機"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "拡張設定"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "SIP電話機"
+
+#, fuzzy
+msgid "Device"
+msgstr "サービス"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Internal extensionは、この電話にダイヤル可能"
 
 msgid "Dialplan Element Library"
 msgstr "ダイヤルプラン要素のライブラリー"

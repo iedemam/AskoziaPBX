@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1208,6 +1208,9 @@ msgstr "Bu telefon silinsin mi?"
 msgid "delete phone"
 msgstr "telefonu sil"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr ""
 
@@ -2233,6 +2236,18 @@ msgstr "SİP Telefonları"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Gelişmiş Ayarlar"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "SİP Telefonları"
+
+#, fuzzy
+msgid "Device"
+msgstr "Servisler"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
 msgid "Dialplan Element Library"
 msgstr ""

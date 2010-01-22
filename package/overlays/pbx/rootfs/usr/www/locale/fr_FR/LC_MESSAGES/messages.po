@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 17:20+0100\n"
+"POT-Creation-Date: 2010-01-22 09:54+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1292,6 +1292,9 @@ msgstr "Voulez-vous supprimer cette extension ?"
 msgid "delete phone"
 msgstr "Supprimer l'extension"
 
+msgid "Skinny"
+msgstr ""
+
 msgid "Dialstring"
 msgstr "Dialstring"
 
@@ -2400,6 +2403,18 @@ msgstr "Lignes SIP"
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Paramètres avancés"
+
+#, fuzzy
+msgid "Edit Skinny Phone"
+msgstr "Lignes SIP"
+
+#, fuzzy
+msgid "Device"
+msgstr "Services"
+
+#, fuzzy
+msgid "The MAC address of this phone."
+msgstr "Extension interne utilisée pour composer ce numéro."
 
 msgid "Dialplan Element Library"
 msgstr "Bibliothèque d'éléments du plan de numérotation"
