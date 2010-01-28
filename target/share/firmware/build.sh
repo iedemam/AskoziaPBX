@@ -121,6 +121,10 @@ cp -Rp ../../usr/www offload_stage/rootfs/usr/
 chmod 644 offload_stage/rootfs/usr/www/*
 chmod 755 offload_stage/rootfs/usr/www/*.php
 chmod 755 offload_stage/rootfs/usr/www/cgi-bin/*.cgi
+# usr/www_provisioning
+cp -Rp ../../usr/www_provisioning offload_stage/rootfs/usr/
+chmod 644 offload_stage/rootfs/usr/www_provisioning/*
+chmod 755 offload_stage/rootfs/usr/www_provisioning/*.php
 
 echo "Cleaning up asterisk sounds ..."
 if [[ -d "offload_stage/asterisk/sounds/es" ]] ; then

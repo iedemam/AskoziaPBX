@@ -76,6 +76,9 @@ X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
 
+# provisioning
+X snomd
+
 # binaries
 X busybox
 X dropbear

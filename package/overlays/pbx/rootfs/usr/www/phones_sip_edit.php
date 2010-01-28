@@ -117,6 +117,14 @@ d_start("phones_sip_edit.php");
 	d_spacer();
 
 
+	// Auto-Configuration
+	d_collapsible(gettext("Auto-Configuration"));
+	d_field(gettext("SNOM MAC Address"), "snom-mac", 40,
+		gettext("If this account is for a SNOM telephone, the hardware can be automatically configured when it reboots if its MAC address is entered here. The MAC address can be displayed by pressing the phone's \"Help\" button. Enter the address exactly as it appears on the screen.<br><br>The phone's HTTP interface password will be the same as this extension's password and the on-telephone admin password is the extension number."));
+	d_collapsible_end();
+	d_spacer();
+
+
 	// Advanced Options
 	d_collapsible(gettext("Advanced Options"));
 

@@ -410,6 +410,7 @@ function sip_verify_phone($post, $errors) {
 	v_extension(&$phone, &$post, &$errors);
 	v_callerid(&$phone, &$post, &$errors);
 	v_optional('descr', &$phone, &$post);
+	v_optional('snom-mac', &$phone, &$post);
 	v_public_access_editor(&$phone, &$post, &$errors);
 	v_notifications_editor(&$phone, &$post, &$errors);
 	v_voicemail_editor(&$phone, &$post, &$errors);
