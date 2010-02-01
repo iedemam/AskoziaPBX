@@ -88,5 +88,12 @@ X ezipupdate
 X pciutils
 X lsof
 
+# redfone
+X fonulator
+X libargtable
+X libfb
+X libpcap
+X libnet
+
 # file system overlay
 X pbx
