@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 09:54+0100\n"
+"POT-Creation-Date: 2010-01-28 15:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1383,6 +1383,9 @@ msgstr ""
 msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to the system. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
 msgstr ""
 
+msgid "descr"
+msgstr ""
+
 msgid "edit application mapping"
 msgstr ""
 
@@ -1622,6 +1625,9 @@ msgid "Installed Packages"
 msgstr ""
 
 msgid "system storage partition"
+msgstr ""
+
+msgid "state"
 msgstr ""
 
 msgid "Edit Disk"
@@ -1991,6 +1997,15 @@ msgid "A phone with this extension already exists."
 msgstr ""
 
 msgid "Edit SIP Phone"
+msgstr ""
+
+msgid "Auto-Configuration"
+msgstr ""
+
+msgid "SNOM MAC Address"
+msgstr ""
+
+msgid "If this account is for a SNOM telephone, the hardware can be automatically configured when it reboots if its MAC address is entered here. The MAC address can be displayed by pressing the phone's \"Help\" button. Enter the address exactly as it appears on the screen.<br><br>The phone's HTTP interface password will be the same as this extension's password and the on-telephone admin password is the extension number."
 msgstr ""
 
 msgid "Advanced Options"
@@ -2448,11 +2463,11 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
-msgid "The system has been reset to factory defaults and is now rebooting. This may take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 
 #, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to '%s'."
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

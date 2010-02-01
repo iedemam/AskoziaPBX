@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 09:54+0100\n"
+"POT-Creation-Date: 2010-01-28 15:50+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1564,6 +1564,9 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
+msgid "descr"
+msgstr ""
+
 msgid "edit application mapping"
 msgstr ""
 
@@ -1826,6 +1829,10 @@ msgstr "Instalované balíčky"
 
 msgid "system storage partition"
 msgstr ""
+
+#, fuzzy
+msgid "state"
+msgstr "Stav"
 
 msgid "Edit Disk"
 msgstr ""
@@ -2271,6 +2278,23 @@ msgstr ""
 #, fuzzy
 msgid "Edit SIP Phone"
 msgstr "SIP telefony"
+
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "Obnovit konfiguracei"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "Adresa MAC"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
 
 #, fuzzy
 msgid "Advanced Options"
@@ -2816,21 +2840,12 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX se po obnově konfigurace restartuje."
 
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 
 #, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Po stisknutí tlačítka &quot;Ano&quot;, se PBX přepne do továrního nastavení "
-"a okamžitě se restartuje. Konfigurace systému bude přepsána. Adresa IP "
-"síťového rozhraní bude nastavena na 192.168.1.2 a heslo na '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Opravdu chcete pokračovat?"
@@ -3057,12 +3072,18 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Po stisknutí tlačítka &quot;Ano&quot;, se PBX přepne do továrního "
+#~ "nastavení a okamžitě se restartuje. Konfigurace systému bude přepsána. "
+#~ "Adresa IP síťového rozhraní bude nastavena na 192.168.1.2 a heslo na '%s'."
+
 #~ msgid "Interface"
 #~ msgstr "Rozhraní"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "Stav"
 
 #, fuzzy
 #~ msgid "edit analog port"

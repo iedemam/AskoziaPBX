@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 09:54+0100\n"
+"POT-Creation-Date: 2010-01-28 15:50+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -327,8 +327,8 @@ msgid ""
 "rarely used for certain buggy SIP phones."
 msgstr ""
 "Y at-il un dispositif NAT entre les PABX et ce compte? Mettre ce paramètre à "
-"\"oui\" fonctionnera dans la plupart des cas. Les options «jamais» et «route» "
-"ne sont que rarement utilisés pour certaines téléphones SIP."
+"\"oui\" fonctionnera dans la plupart des cas. Les options «jamais» et "
+"«route» ne sont que rarement utilisés pour certaines téléphones SIP."
 
 msgid "indefinitely"
 msgstr "indéfiniment"
@@ -1636,6 +1636,9 @@ msgstr ""
 "leurs extensions définies ou utilisés en tant que destination pour les "
 "appels d'opérateurs."
 
+msgid "descr"
+msgstr "descr"
+
 msgid "edit application mapping"
 msgstr "Configurer la fonction"
 
@@ -1926,6 +1929,10 @@ msgstr "Paquets installés"
 
 msgid "system storage partition"
 msgstr "Partition Système"
+
+#, fuzzy
+msgid "state"
+msgstr "Data/Ora"
 
 msgid "Edit Disk"
 msgstr "Configuration du disque"
@@ -2399,6 +2406,23 @@ msgstr "Cette extension existe déjà."
 #, fuzzy
 msgid "Edit SIP Phone"
 msgstr "Lignes SIP"
+
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "Restauration de la configuration"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "Adresse MAC"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
 
 #, fuzzy
 msgid "Advanced Options"
@@ -2983,24 +3007,15 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "Le PABX redémarrera aprés la restauration de la configuration."
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Le système a été restauré avec les réglages par défaut et est en cours de "
 "redémarrage. Cette action peut prendre quelques minutes."
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Si vous cliquez sur \"Oui\", le PaBX retrouvera sa configuration sortie "
-"usine et redémarrera immédiatement. L'ensemble de la configuration du "
-"système sera effacée. L'adresse IP sera remise à 192.168.1.2 et le mot de "
-"passe sera '% s'."
+"dopo aver cliccato &quot;Salva&quot;, tutte le chiamate verranno terminate."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Souhaitez-vous restaurer la configuration d'origine ?"
@@ -3257,15 +3272,19 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
 
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Si vous cliquez sur \"Oui\", le PaBX retrouvera sa configuration sortie "
+#~ "usine et redémarrera immédiatement. L'ensemble de la configuration du "
+#~ "système sera effacée. L'adresse IP sera remise à 192.168.1.2 et le mot de "
+#~ "passe sera '% s'."
+
 #~ msgid "Interface"
 #~ msgstr "Interface"
-
-#~ msgid "descr"
-#~ msgstr "descr"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "Data/Ora"
 
 #, fuzzy
 #~ msgid "edit analog port"
@@ -3368,12 +3387,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "ISDN Interface"
 #~ msgstr "Interface RNIS"
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "dopo aver cliccato &quot;Salva&quot;, tutte le chiamate verranno "
-#~ "terminate."
 
 #~ msgid "Audio Codecs"
 #~ msgstr "Codecs Audio"

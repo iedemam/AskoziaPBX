@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 09:54+0100\n"
+"POT-Creation-Date: 2010-01-28 15:50+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -1664,6 +1664,9 @@ msgstr ""
 "Ihnen zugewiesenen Nebenstellen-Nummern aufgerufen werden oder als Ausgangs-"
 "Nebenstelle für eingehende Anrufe verwendet werden."
 
+msgid "descr"
+msgstr "Beschreibung"
+
 msgid "edit application mapping"
 msgstr "Applikations-Zuordnung bearbeiten"
 
@@ -1955,6 +1958,10 @@ msgstr "Installierte Pakete"
 
 msgid "system storage partition"
 msgstr "System Storage Partition"
+
+#, fuzzy
+msgid "state"
+msgstr "Status"
 
 msgid "Edit Disk"
 msgstr "Platte bearbeiten"
@@ -2434,6 +2441,23 @@ msgstr "Es gibt bereits eine Nebenstelle mit dieser Nummer. "
 #, fuzzy
 msgid "Edit SIP Phone"
 msgstr "SIP-Nebenstellen"
+
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "Konfiguration zurücksichern"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC-Adresse"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
 
 #, fuzzy
 msgid "Advanced Options"
@@ -2999,24 +3023,16 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "Die Anlage wird nach der Rücksierung neu starten."
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Das System wurde auf die Werkseinstellungen zurückgesetzt und startet jetzt "
 "neu. Das kann etwas Zeit benötigen."
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Wenn Sie &quot;Ja&quot; klicken wird die Anlage auf Werkseinstellungen "
-"zurückgesetzt und neu gestartet. Alle gemachten Einstellungen werden "
-"zurückgesetzt. Die IP-Adresse der Anlage wird auf 192.168.1.2 "
-"zurückgesetzt . Das Passwort für ie Oberfläche wird wieder '%s' sein."
+"alle laufenden Verbindungen werden getrennt, wenn Sie &quot;Speichern&quot; "
+"drücken"
 
 msgid "Are you sure you want to proceed?"
 msgstr "Möchten sie fortfahren?"
@@ -3257,15 +3273,19 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
 
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Wenn Sie &quot;Ja&quot; klicken wird die Anlage auf Werkseinstellungen "
+#~ "zurückgesetzt und neu gestartet. Alle gemachten Einstellungen werden "
+#~ "zurückgesetzt. Die IP-Adresse der Anlage wird auf 192.168.1.2 "
+#~ "zurückgesetzt . Das Passwort für ie Oberfläche wird wieder '%s' sein."
+
 #~ msgid "Interface"
 #~ msgstr "Interface"
-
-#~ msgid "descr"
-#~ msgstr "Beschreibung"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "Status"
 
 #, fuzzy
 #~ msgid "edit analog port"
@@ -3367,12 +3387,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "ISDN Interface"
 #~ msgstr "ISDN-Interface"
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "alle laufenden Verbindungen werden getrennt, wenn Sie &quot;"
-#~ "Speichern&quot; drücken"
 
 #~ msgid "Audio Codecs"
 #~ msgstr "Audio-Codecs"

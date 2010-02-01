@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 09:54+0100\n"
+"POT-Creation-Date: 2010-01-28 15:50+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1633,6 +1633,9 @@ msgstr ""
 "toimintoja AskoziaPBX:ään. Niille voi sitten soittaa annetulla jatkeella tai "
 "käyttää päämäräänä sisääntuleville puheluille palveluntarjoajilta."
 
+msgid "descr"
+msgstr ""
+
 msgid "edit application mapping"
 msgstr "muokkaa sovelluksien kartoittaminen"
 
@@ -1919,6 +1922,9 @@ msgstr "Asennetut Paketit"
 
 msgid "system storage partition"
 msgstr "järjestelmän tallennus osio"
+
+msgid "state"
+msgstr "tila"
 
 msgid "Edit Disk"
 msgstr "Muokkaa Levyä"
@@ -2390,6 +2396,23 @@ msgstr "Puhelin tällä jatkeella on jo olemassa."
 #, fuzzy
 msgid "Edit SIP Phone"
 msgstr "SIP Puhelimet"
+
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "Palauta konfigurointi"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC Osoite"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
 
 #, fuzzy
 msgid "Advanced Options"
@@ -2962,23 +2985,15 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX käynnistyy uudelleen konfiguroinnin palautuksen jälkeen."
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
 "kestää muutaman minuutin."
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja käynnistyy "
-"uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP osoite tulee "
-"olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle tulee olemaan '%s'."
+"Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Oletko varma että haluat edetä?"
@@ -3222,11 +3237,19 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja "
+#~ "käynnistyy uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP "
+#~ "osoite tulee olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle "
+#~ "tulee olemaan '%s'."
+
 #~ msgid "Interface"
 #~ msgstr "Käyttöliittymä"
-
-#~ msgid "state"
-#~ msgstr "tila"
 
 #, fuzzy
 #~ msgid "edit analog port"
@@ -3328,12 +3351,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "ISDN Interface"
 #~ msgstr "ISDN Käyttöliittymä"
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut "
-#~ "lopetetaan."
 
 #~ msgid "Audio Codecs"
 #~ msgstr "Äänen pakkauksenhallinta"

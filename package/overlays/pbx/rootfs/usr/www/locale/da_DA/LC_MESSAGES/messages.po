@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 09:54+0100\n"
+"POT-Creation-Date: 2010-01-28 15:50+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1630,6 +1630,9 @@ msgid ""
 "calls from Providers."
 msgstr ""
 
+msgid "descr"
+msgstr "descr"
+
 msgid "edit application mapping"
 msgstr "rediger applikation kortlægning"
 
@@ -1898,6 +1901,10 @@ msgstr "Installerede pakker"
 
 msgid "system storage partition"
 msgstr "system lager partition"
+
+#, fuzzy
+msgid "state"
+msgstr "start"
 
 msgid "Edit Disk"
 msgstr "Rediger Disk"
@@ -2350,6 +2357,23 @@ msgstr "En telefon med den extension er allerede eksisterende."
 #, fuzzy
 msgid "Edit SIP Phone"
 msgstr "Telefoner"
+
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "Genskab konfiguration"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC Adresse"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
 
 #, fuzzy
 msgid "Advanced Options"
@@ -2913,24 +2937,16 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "Denne PBX vil gestarte efter at have reeatableret konfigurationen."
 
 #, fuzzy
-msgid ""
-"The system has been reset to factory defaults and is now rebooting. This may "
-"take a minute."
+msgid "The system has been reset to factory defaults "
 msgstr ""
 "Systemet er resat til fabriks instillinger og vil nu genstarte. Dette vil "
 "tage et minuts tid."
 
-#, php-format
-msgid ""
-"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
-"will reboot immediately. The entire system configuration will be "
-"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-"password will be set to '%s'."
+#, fuzzy, php-format
+msgid "If you click &quot;Yes&quot;, the PBX will "
 msgstr ""
-"Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
-"fabriksindstillingerne og vil genstarte med det samme. Hele system "
-"konfigurationen vil blive overskrevet. LAN IP adressen vil bliver nustillet "
-"til 192.168.1.2 og kodeordet bliver sat til '%s'."
+"efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
+"afsluttet."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Er du sikker på du vil forsætte?"
@@ -3165,15 +3181,19 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
+#~ msgid ""
+#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
+#~ "and will reboot immediately. The entire system configuration will be "
+#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+#~ "password will be set to '%s'."
+#~ msgstr ""
+#~ "Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
+#~ "fabriksindstillingerne og vil genstarte med det samme. Hele system "
+#~ "konfigurationen vil blive overskrevet. LAN IP adressen vil bliver "
+#~ "nustillet til 192.168.1.2 og kodeordet bliver sat til '%s'."
+
 #~ msgid "Interface"
 #~ msgstr "Interface"
-
-#~ msgid "descr"
-#~ msgstr "descr"
-
-#, fuzzy
-#~ msgid "state"
-#~ msgstr "start"
 
 #, fuzzy
 #~ msgid "edit analog port"
@@ -3218,12 +3238,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "ISDN Interface"
 #~ msgstr "ISDN Interface"
-
-#, fuzzy
-#~ msgid "If you click &quot;Yes&quot;, the PBX will "
-#~ msgstr ""
-#~ "efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
-#~ "afsluttet."
 
 #~ msgid "Audio Codecs"
 #~ msgstr "Lyd Codecs"
