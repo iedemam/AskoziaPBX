@@ -1,0 +1,11 @@
+--- libnet-1.1.4/configure.orig	2010-02-01 14:23:18.000000000 +0100
++++ libnet-1.1.4/configure	2010-02-01 14:24:25.000000000 +0100
+@@ -19728,7 +19728,7 @@
+             fi
+         fi
+         rm -f conftest* core core.conftest
+-
++        ac_cv_libnet_endianess=lil
+         { echo "$as_me:$LINENO: result: $ac_cv_libnet_endianess" >&5
+ echo "${ECHO_T}$ac_cv_libnet_endianess" >&6; }
+ 
