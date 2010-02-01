@@ -1,0 +1,21 @@
+--- fonulator-2.0.1/Makefile.in.orig	2010-02-01 16:22:58.000000000 +0100
++++ fonulator-2.0.1/Makefile.in	2010-02-01 16:26:12.000000000 +0100
+@@ -54,8 +54,7 @@
+ 	tokens.$(OBJEXT) status.$(OBJEXT) dsp.$(OBJEXT) \
+ 	error.$(OBJEXT) flash.$(OBJEXT) dlist.$(OBJEXT)
+ fonulator_OBJECTS = $(am_fonulator_OBJECTS)
+-fonulator_DEPENDENCIES = @LIBOBJS@ /usr/lib/libnet.a \
+-	/usr/lib/libpcap.a /usr/lib/libargtable2.a
++fonulator_DEPENDENCIES = @LIBOBJS@
+ DEFAULT_INCLUDES = -I.@am__isrc@
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+ am__depfiles_maybe = depfiles
+@@ -179,7 +178,7 @@
+ man_MANS = fonulator.1
+ fonulator_SOURCES = fonulator.c keys.c tokens.l status.c dsp.c error.c flash.c dlist.c
+ noinst_HEADERS = config.h dsp.h error.h fonulator.h state.h status.h tokens.h tree.h ver.h dlist.h
+-fonulator_LDADD = @LIBOBJS@ @LIBFB@ /usr/lib/libnet.a /usr/lib/libpcap.a /usr/lib/libargtable2.a 
++fonulator_LDADD = @LIBOBJS@ @LIBFB@ -lnet -lpcap -largtable2 
+ EXTRA_DIST = $(man_MANS)
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
