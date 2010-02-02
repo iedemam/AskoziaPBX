@@ -1,8 +1,9 @@
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI)			+= dahdi.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DUMMY)		+= dahdi_dummy.o
-#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC)		+= dahdi_dynamic.o
+obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC)		+= dahdi_dynamic.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC_LOC)	+= dahdi_dynamic_loc.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC_ETH)	+= dahdi_dynamic_eth.o
+obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_DYNAMIC_ETHMF)	+= dahdi_dynamic_ethmf.o
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TRANSCODE)		+= dahdi_transcode.o
 
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCT4XXP)		+= wct4xxp/
@@ -62,6 +63,9 @@ endif
 ifeq (1,$(shell fgrep -q ' hrtimer_set_expires' include/linux/hrtimer.h 2>/dev/null && echo 1))
 EXTRA_CFLAGS+=-DHAVE_HRTIMER_ACCESSORS=1
 endif
+
+CFLAGS_dahdi_dynamic_eth.o := -DNEW_SKB_LINEARIZE
+CFLAGS_dahdi_dynamic_ethmf.o := -DNEW_SKB_LINEARIZE
 
 dahdi-objs := dahdi-base.o
 

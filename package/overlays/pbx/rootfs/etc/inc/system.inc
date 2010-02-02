@@ -426,13 +426,8 @@ function system_load_kernel_modules() {
 		}
 	}
 
-	// make sure dahdi core is loaded if none of the modules
-	// have found compatible hardware
-	mwexec("/sbin/modprobe -q dahdi");
-
-
 	// is xorcom stuff compiled for this platform?
-	if (file_exists("/etc/xorcom")) {
+	if (file_exists("/etc/supports.xorcom")) {
 		mwexec("/sbin/modprobe -q xpp");
 		mwexec("/sbin/modprobe -q xpp_usb");
 		mwexec("/sbin/modprobe -q xpd_fxo");
@@ -444,6 +439,16 @@ function system_load_kernel_modules() {
 		mwexec("/sbin/modprobe -q xpd_bri");
 		// nothing detected? unload...
 	}
+
+	// is redfone stuff compiled for this platform?
+	if (file_exists("/etc/supports.redfone")) {
+		mwexec("/sbin/modprobe -q dahdi_dynamic");
+		mwexec("/sbin/modprobe -q dahdi_dynamic_ethmf");
+	}
+
+	// make sure dahdi core is loaded if none of the modules
+	// have found compatible hardware
+	mwexec("/sbin/modprobe -q dahdi");
 }
 
 function system_get_product_name() {
