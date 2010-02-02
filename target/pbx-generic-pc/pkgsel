@@ -90,6 +90,7 @@ X lsof
 
 # redfone
 X fonulator
+X fbflash
 X libargtable
 X libfb
 X libpcap
