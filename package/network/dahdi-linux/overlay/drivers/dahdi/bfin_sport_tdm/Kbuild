@@ -1,0 +1,4 @@
+obj-m += bfin_sport_tdm.o
+
+EXTRA_CFLAGS += -I$(src)/.. -Wno-undef
+

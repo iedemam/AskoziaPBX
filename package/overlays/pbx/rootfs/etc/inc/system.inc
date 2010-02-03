@@ -414,6 +414,9 @@ function system_load_kernel_modules() {
 	$modules = array("wctdm", "wcb4xxp");
 
 	mwexec("/sbin/modprobe -q dahdi");
+        mwexec("/sbin/modprobe -q auerask_cp3k_mb");
+	mwexec("/sbin/modprobe -q auerask_cp3k_bri");
+
 	foreach ($modules as $m) {
 		// record the current span count
 		$prev_count = count(dahdi_scan_to_spans());
@@ -445,6 +448,8 @@ function system_load_kernel_modules() {
 		mwexec("/sbin/modprobe -q dahdi_dynamic");
 		mwexec("/sbin/modprobe -q dahdi_dynamic_ethmf");
 	}
+
+	mwexec("/sbin/modprobe -q bfin_sport_tdm");
 
 	// make sure dahdi core is loaded if none of the modules
 	// have found compatible hardware

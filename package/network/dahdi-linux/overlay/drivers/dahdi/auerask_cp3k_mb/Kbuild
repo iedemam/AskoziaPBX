@@ -1,0 +1,4 @@
+obj-m += auerask_cp3k_mb.o
+
+EXTRA_CFLAGS += -I$(src)/.. -Wno-undef
+
