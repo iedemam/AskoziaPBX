@@ -51,6 +51,7 @@ require_once("network.inc");
 require_once("packages.inc");
 require_once("provisioning.inc");
 require_once("pbx.inc");
+require_once("redfone.inc");
 require_once("rtp.inc");
 require_once("sip.inc");
 require_once("skinny.inc");

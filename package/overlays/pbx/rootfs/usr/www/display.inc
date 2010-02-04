@@ -740,7 +740,8 @@ function display_ports_tab_menu() {
 
 			$tabs = array(
 				gettext('Analog')	=> 'ports_analog.php',
-				gettext('ISDN')		=> 'ports_isdn.php'
+				gettext('ISDN')		=> 'ports_isdn.php',
+				gettext('RedFone')	=> 'ports_redfone.php'
 			);
 			dynamic_tab_menu($tabs);
 
@@ -869,6 +870,20 @@ function d_field($title, $name, $width, $help=false, $required=false) {
 		<td width="20%" valign="top" class="<?=$class;?>"><?=spanify($title);?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
 			<input name="<?=$name;?>" type="text" class="formfld" id="<?=$name;?>" size="<?=$width;?>" value="<?=htmlspecialchars($form[$name]);?>"> 
+			<br><span class="vexpl"><?=spanify($help);?></span>
+		</td>
+	</tr>
+<?
+}
+
+function d_label($title, $name) {
+	global $form, $colspan;
+
+?>
+	<tr> 
+		<td width="20%" valign="top" class="vncell"><?=spanify($title);?></td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?=$form[$name];?>
+			<input name="<?=$name;?>" type="hidden" id="<?=$name;?>" value="<?=htmlspecialchars($form[$name]);?>">
 			<br><span class="vexpl"><?=spanify($help);?></span>
 		</td>
 	</tr>
