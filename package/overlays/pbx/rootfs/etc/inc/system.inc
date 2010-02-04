@@ -410,22 +410,27 @@ function system_get_dmesg_as_array() {
  * Loads required kernel modules
  */
 function system_load_kernel_modules() {
-
-	$modules = array("wctdm", "wcb4xxp");
+	global $g;
 
 	mwexec("/sbin/modprobe -q dahdi");
-        mwexec("/sbin/modprobe -q auerask_cp3k_mb");
-	mwexec("/sbin/modprobe -q auerask_cp3k_bri");
 
-	foreach ($modules as $m) {
-		// record the current span count
-		$prev_count = count(dahdi_scan_to_spans());
-		// load the module
-		mwexec("/sbin/modprobe -q " . $m);
-		// if no new spans were recognized...
-		if ($prev_count == count(dahdi_scan_to_spans())) {
-			// unload the module
-			mwexec("/sbin/modprobe -q -r " . $m);
+	if ($g['platform'] == "COMpact 3000") {
+		mwexec("/sbin/modprobe -q auerask_cp3k_mb");
+		mwexec("/sbin/modprobe -q auerask_cp3k_bri");
+		mwexec("/sbin/modprobe -q bfin_sport_tdm");
+
+	} else {
+		$modules = array("wctdm", "wcb4xxp");
+		foreach ($modules as $m) {
+			// record the current span count
+			$prev_count = count(dahdi_scan_to_spans());
+			// load the module
+			mwexec("/sbin/modprobe -q " . $m);
+			// if no new spans were recognized...
+			if ($prev_count == count(dahdi_scan_to_spans())) {
+				// unload the module
+				mwexec("/sbin/modprobe -q -r " . $m);
+			}
 		}
 	}
 
@@ -448,12 +453,6 @@ function system_load_kernel_modules() {
 		mwexec("/sbin/modprobe -q dahdi_dynamic");
 		mwexec("/sbin/modprobe -q dahdi_dynamic_ethmf");
 	}
-
-	mwexec("/sbin/modprobe -q bfin_sport_tdm");
-
-	// make sure dahdi core is loaded if none of the modules
-	// have found compatible hardware
-	mwexec("/sbin/modprobe -q dahdi");
 }
 
 function system_get_product_name() {
