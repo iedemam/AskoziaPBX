@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,6 +86,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Brána"
+
+#, fuzzy
+msgid "Span"
+msgstr "Španělsko"
 
 #, php-format
 msgid "%.2f GB"
@@ -548,6 +556,9 @@ msgstr "Analog"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2440,6 +2451,82 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Brána"
+
+msgid "Interface"
+msgstr "Rozhraní"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Španělština"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "změnit položku"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Opravdu chcete smazat tento telefonní účet?"
+
+msgid "forget gateway settings"
+msgstr ""
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Popisnější název tohoto poskytovatele."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Počet"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Popisnější název tohoto poskytovatele."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Francie"
+
+msgid "Encoding"
+msgstr ""
+
+msgid "Master"
+msgstr ""
+
+#, fuzzy
+msgid "Slave"
+msgstr "Uložit"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr ""
 
@@ -3082,9 +3169,6 @@ msgstr ""
 #~ "nastavení a okamžitě se restartuje. Konfigurace systému bude přepsána. "
 #~ "Adresa IP síťového rozhraní bude nastavena na 192.168.1.2 a heslo na '%s'."
 
-#~ msgid "Interface"
-#~ msgstr "Rozhraní"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "změnit položku"
@@ -3150,9 +3234,6 @@ msgstr ""
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Počet"
-
 #~ msgid "Ping output:"
 #~ msgstr "Výstup:"
 
@@ -3176,10 +3257,6 @@ msgstr ""
 
 #~ msgid "No compatible ISDN interfaces detected."
 #~ msgstr "Žádné ISDN rozhraní nebylo nalezeno."
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Firmware"
 
 #~ msgid "Call Limit"
 #~ msgstr "Počet hovorů"
@@ -3210,9 +3287,6 @@ msgstr ""
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portugalština (Brazílie)"
-
-#~ msgid "Spanish"
-#~ msgstr "Španělština"
 
 #, fuzzy
 #~ msgid "Advanced SIP Options"

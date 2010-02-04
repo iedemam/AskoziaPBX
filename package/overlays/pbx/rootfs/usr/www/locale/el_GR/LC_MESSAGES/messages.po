@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,6 +87,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Πύλη"
+
+#, fuzzy
+msgid "Span"
+msgstr "Ισπανία"
 
 #, php-format
 msgid "%.2f GB"
@@ -591,6 +599,9 @@ msgstr "PSTN"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2631,6 +2642,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Πύλη"
+
+msgid "Interface"
+msgstr " "
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Ισπανικά"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "επεξεργασία ενός αντικειμένου"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "διαγραφή ρυθμίσεων διεπαφής"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Πλήθος"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Έλεγχος έκδοσης firmware"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Γαλλία"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Διαχείριση"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Αποθήκευση"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "Εκτυπώσιμο πλάνο κλήσεων"
 
@@ -3360,9 +3449,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ "192.168.1.2 και ο κωδικός πρόσβασης που θα πρέπει να χρησιμοποιήσετε για "
 #~ "πρόσβαση στο σύστημα θα είναι '%s'."
 
-#~ msgid "Interface"
-#~ msgstr " "
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "επεξεργασία διεπαφής PSTN"
@@ -3589,9 +3675,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Πλήθος"
-
 #~ msgid "Ping output:"
 #~ msgstr "Αποτέλεσμα ping:"
 
@@ -3672,15 +3755,8 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
 
-#~ msgid "forget interface settings"
-#~ msgstr "διαγραφή ρυθμίσεων διεπαφής"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Τρόποι λειτουργίας"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Firmware"
 
 #~ msgid "unconfigured"
 #~ msgstr "μη ρυθμισμένο"
@@ -3736,9 +3812,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Πορτογαλικά (Βραζιλία)"
-
-#~ msgid "Spanish"
-#~ msgstr "Ισπανικά"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."

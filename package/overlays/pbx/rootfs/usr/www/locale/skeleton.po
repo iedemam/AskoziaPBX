@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +80,12 @@ msgid "The wildcard character \".\" is not allowed before a prefix which is to b
 msgstr ""
 
 msgid "The wildcard character \"!\" is not allowed before a prefix which is to be removed."
+msgstr ""
+
+msgid "Gateway Name"
+msgstr ""
+
+msgid "Span"
 msgstr ""
 
 #, php-format
@@ -450,6 +456,9 @@ msgid "Analog"
 msgstr ""
 
 msgid "ISDN"
+msgstr ""
+
+msgid "RedFone"
 msgstr ""
 
 msgid "Local Area Network"
@@ -2128,6 +2137,69 @@ msgid "Point-to-Multipoint (PTMP)"
 msgstr ""
 
 msgid "Household ISDN lines are usually Point-to-Multipoint and office ISDN connections are more likely Point-to-Point."
+msgstr ""
+
+msgid "RedFone Gateways"
+msgstr ""
+
+msgid "Interface"
+msgstr ""
+
+msgid "MAC"
+msgstr ""
+
+msgid "IP"
+msgstr ""
+
+msgid "Spans"
+msgstr ""
+
+msgid "Hardware"
+msgstr ""
+
+msgid "edit gateway"
+msgstr ""
+
+msgid "Do you really want to forget this gateway's settings?"
+msgstr ""
+
+msgid "forget gateway settings"
+msgstr ""
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+msgid "Enter a descriptive name for this gateway."
+msgstr ""
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+msgid "Span Count"
+msgstr ""
+
+msgid "Firmware Version"
+msgstr ""
+
+msgid "Hardware Version"
+msgstr ""
+
+msgid "Enter a descriptive name for this span."
+msgstr ""
+
+msgid "Framing"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
+msgid "Master"
+msgstr ""
+
+msgid "Slave"
+msgstr ""
+
+msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -93,6 +93,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Шлюз"
+
+#, fuzzy
+msgid "Span"
+msgstr "Испания"
 
 #, php-format
 msgid "%.2f GB"
@@ -586,6 +594,9 @@ msgstr "Аналогови"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2583,6 +2594,85 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Шлюз"
+
+msgid "Interface"
+msgstr "Интерфейс"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Испански"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Обновяване"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "редактиране на артикул"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr ""
+"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "пропусни настройките на интерфейса"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Описание за този телефон."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Брой"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Проверка на програмна версия"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Обновяване"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Описание за този телефон."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Франция"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Управление"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Запиши"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "Годен за Печат Dialplan"
 
@@ -3270,9 +3360,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ "презаписани. LAN IP адреса ще се въстанови на 192.168.1.2 и паролата ще "
 #~ "бъде '%s'."
 
-#~ msgid "Interface"
-#~ msgstr "Интерфейс"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "редактирай аналогов интерфейс"
@@ -3489,9 +3576,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Брой"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping резултат:"
 
@@ -3572,15 +3656,8 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgstr ""
 #~ "Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
 
-#~ msgid "forget interface settings"
-#~ msgstr "пропусни настройките на интерфейса"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Режими на Работа"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Обновяване"
 
 #~ msgid "unconfigured"
 #~ msgstr "неконфигурирани"
@@ -3633,9 +3710,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Португалски (Бразилия)"
-
-#~ msgid "Spanish"
-#~ msgstr "Испански"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Описание за този телефон."

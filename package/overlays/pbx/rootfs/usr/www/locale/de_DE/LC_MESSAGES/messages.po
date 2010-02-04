@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -94,6 +94,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Gateway"
+
+#, fuzzy
+msgid "Span"
+msgstr "Spanien"
 
 #, php-format
 msgid "%.2f GB"
@@ -592,6 +600,9 @@ msgstr "Analog"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2607,6 +2618,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Gateway"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Spanisch"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "Element bearbeiten"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Wollen Sie die Einstellungen dieses Interfaces wirklich zurücksetzen? "
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "Einstellungen dieses Interfaces zurücksetzen"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Sprechender Name für diese Nebenstelle."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Anzahl"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Firmware-Versions-Prüfung"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Sprechender Name für diese Nebenstelle."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Frankreich"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Manager"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Speichern"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "Druckbarer Dialplan"
 
@@ -3284,9 +3373,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 #~ "zurückgesetzt. Die IP-Adresse der Anlage wird auf 192.168.1.2 "
 #~ "zurückgesetzt . Das Passwort für ie Oberfläche wird wieder '%s' sein."
 
-#~ msgid "Interface"
-#~ msgstr "Interface"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "Analog-Interface bearbeiten"
@@ -3501,9 +3587,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Anzahl"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping-Ausgabe:"
 
@@ -3585,15 +3668,8 @@ msgstr "ERR Ungültige Konfiguration.\n"
 #~ msgstr ""
 #~ "Wollen Sie die Einstellungen dieses Interfaces wirklich zurücksetzen? "
 
-#~ msgid "forget interface settings"
-#~ msgstr "Einstellungen dieses Interfaces zurücksetzen"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Betriebs-Modi"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Firmware"
 
 #~ msgid "unconfigured"
 #~ msgstr "unkonfiguriert"
@@ -3648,9 +3724,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portugiesisch (Brasilien)"
-
-#~ msgid "Spanish"
-#~ msgstr "Spanisch"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Sprechender Name für diese Nebenstelle."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -90,6 +90,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "ゲートウェイ"
+
+#, fuzzy
+msgid "Span"
+msgstr "スペイン"
 
 #, php-format
 msgid "%.2f GB"
@@ -585,6 +593,9 @@ msgstr "アナログ"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2556,6 +2567,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "ゲートウェイ"
+
+msgid "Interface"
+msgstr "接続インターフェース"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "スペイン語"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "ファームウェア"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "アイテムの編集"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "インタフェース設定を忘れる"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "この電話の判り易い名前"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "回数"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "ファームウェアのバージョン確認"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "ファームウェア"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "この電話の判り易い名前"
+
+#, fuzzy
+msgid "Framing"
+msgstr "フランス"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "マネージャー"
+
+#, fuzzy
+msgid "Slave"
+msgstr "保存"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "印刷可能なダイヤルプラン"
 
@@ -3250,9 +3339,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ "状態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPア"
 #~ "ドレス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
 
-#~ msgid "Interface"
-#~ msgstr "接続インターフェース"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "アナログ回線の編集"
@@ -3474,9 +3560,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "回数"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping出力:"
 
@@ -3556,15 +3639,8 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
 
-#~ msgid "forget interface settings"
-#~ msgstr "インタフェース設定を忘れる"
-
 #~ msgid "Operating Modes"
 #~ msgstr "操作モード"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "ファームウェア"
 
 #~ msgid "unconfigured"
 #~ msgstr "未設定"
@@ -3615,9 +3691,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "ポルトガル語(ブラジル)"
-
-#~ msgid "Spanish"
-#~ msgstr "スペイン語"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "この電話の判り易い名前"

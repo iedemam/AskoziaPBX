@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -92,6 +92,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Brama"
+
+#, fuzzy
+msgid "Span"
+msgstr "Hiszpania"
 
 #, php-format
 msgid "%.2f GB"
@@ -538,6 +546,9 @@ msgstr "Analogowe"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2480,6 +2491,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Brama"
+
+msgid "Interface"
+msgstr "Interfejs"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Hiszpański"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "edytuj interfejs"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "wyczyść ustawienia interfejsu"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Opisowa nazwa telefonu."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Ilość"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Kontrola wersji firmware"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Opisowa nazwa telefonu."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Francja"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Manager"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Zapisz"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "Drukowalny dialplan"
 
@@ -3142,9 +3231,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ "nadpisana. Adres IP interfejsu LAN zostanie ustawoiny na 192.168.1.2 a "
 #~ "hasło na '%s'."
 
-#~ msgid "Interface"
-#~ msgstr "Interfejs"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "edytuj interfejs analogowy"
@@ -3332,9 +3418,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Ilość"
-
 #~ msgid "Ping output:"
 #~ msgstr "Wynik ping:"
 
@@ -3413,15 +3496,8 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
 
-#~ msgid "forget interface settings"
-#~ msgstr "wyczyść ustawienia interfejsu"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Tryby Pracy"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Firmware"
 
 #, fuzzy
 #~ msgid "unconfigured"
@@ -3466,9 +3542,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #, fuzzy
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portugalski, Brazylia"
-
-#~ msgid "Spanish"
-#~ msgstr "Hiszpański"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Opisowa nazwa telefonu."

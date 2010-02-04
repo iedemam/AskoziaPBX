@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,6 +87,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Gateway"
+
+#, fuzzy
+msgid "Span"
+msgstr "España"
 
 #, php-format
 msgid "%.2f GB"
@@ -523,6 +531,9 @@ msgstr "Analógico"
 
 msgid "ISDN"
 msgstr "RDSI"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2458,6 +2469,83 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Gateway"
+
+msgid "Interface"
+msgstr "Interfaz"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Español"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "editar un item"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "¿Realmente quiere olvidar los ajustes de este interfaz?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "olvidar los ajustes de este interfaz"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Nombre descriptivo para este teléfono"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+msgid "Span Count"
+msgstr ""
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Comprobar la versión de firmware"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Nombre descriptivo para este teléfono"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Francia"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Gestor"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Guardar"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr ""
 
@@ -3102,9 +3190,6 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
 
-#~ msgid "Interface"
-#~ msgstr "Interfaz"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "editar interfaz analógico"
@@ -3306,15 +3391,8 @@ msgstr "ERR Recibida una configuración inválida. \n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "¿Realmente quiere olvidar los ajustes de este interfaz?"
 
-#~ msgid "forget interface settings"
-#~ msgstr "olvidar los ajustes de este interfaz"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Modos operativos"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Firmware"
 
 #~ msgid "unconfigured"
 #~ msgstr "desconfigurado"
@@ -3364,9 +3442,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portugués (Brasil)"
-
-#~ msgid "Spanish"
-#~ msgstr "Español"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Nombre descriptivo para este teléfono"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -84,6 +84,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Passerelle"
+
+#, fuzzy
+msgid "Span"
+msgstr "Espagne"
 
 #, php-format
 msgid "%.2f GB"
@@ -584,6 +592,9 @@ msgstr "Analogique"
 
 msgid "ISDN"
 msgstr "RNIS"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2576,6 +2587,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Passerelle"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Espagnol"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Mise à jour du système"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "Configuration de l'objet"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "annuler les paramètres de l'interface"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Nom descriptif de cette ligne."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Nombre de ping"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Vérifier si une nouvelle version du logiciel est disponible"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Mise à jour du système"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Nom descriptif de cette ligne."
+
+#, fuzzy
+msgid "Framing"
+msgstr "France"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Gestionnaire"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Enregistrer"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "Plan de numérotation imprimable"
 
@@ -3283,9 +3372,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #~ "système sera effacée. L'adresse IP sera remise à 192.168.1.2 et le mot de "
 #~ "passe sera '% s'."
 
-#~ msgid "Interface"
-#~ msgstr "Interface"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "Configuration de l'interface analogique"
@@ -3506,9 +3592,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Nombre de ping"
-
 #~ msgid "Ping output:"
 #~ msgstr "Résultat du ping:"
 
@@ -3589,15 +3672,8 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
 
-#~ msgid "forget interface settings"
-#~ msgstr "annuler les paramètres de l'interface"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Modes de fonctionnement"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Mise à jour du système"
 
 #~ msgid "unconfigured"
 #~ msgstr "Non configuré"
@@ -3649,9 +3725,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portugais (Brézil)"
-
-#~ msgid "Spanish"
-#~ msgstr "Espagnol"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Nom descriptif de cette ligne."

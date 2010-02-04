@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -85,6 +85,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "网关"
+
+#, fuzzy
+msgid "Span"
+msgstr "西班牙"
 
 #, php-format
 msgid "%.2f GB"
@@ -564,6 +572,9 @@ msgstr "模拟"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2495,6 +2506,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "网关"
+
+msgid "Interface"
+msgstr "接口"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "西班牙语"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "固件"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "编辑一个项目"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "真的要忽略这个接口的设定？"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "忽略接口设定"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "这个电话的描述性名称。"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "计数"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "固件版本检查"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "固件"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "这个电话的描述性名称。"
+
+#, fuzzy
+msgid "Framing"
+msgstr "法国"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "管理"
+
+#, fuzzy
+msgid "Slave"
+msgstr "保存"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "可打印的拨号计划"
 
@@ -3136,9 +3225,6 @@ msgstr "ERR 收到无效的配置。\n"
 #~ "设置将会被覆盖。内网IP地址将会被重置为 192.168.1.2并且密码也会改为默认的'%"
 #~ "s'。"
 
-#~ msgid "Interface"
-#~ msgstr "接口"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "编辑模拟接口"
@@ -3334,9 +3420,6 @@ msgstr "ERR 收到无效的配置。\n"
 #~ msgid "Traceroute"
 #~ msgstr "路由追踪(Traceroute)"
 
-#~ msgid "Count"
-#~ msgstr "计数"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping输出"
 
@@ -3413,15 +3496,8 @@ msgstr "ERR 收到无效的配置。\n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "真的要忽略这个接口的设定？"
 
-#~ msgid "forget interface settings"
-#~ msgstr "忽略接口设定"
-
 #~ msgid "Operating Modes"
 #~ msgstr "操作模式"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "固件"
 
 #, fuzzy
 #~ msgid "unconfigured"
@@ -3475,9 +3551,6 @@ msgstr "ERR 收到无效的配置。\n"
 #, fuzzy
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "葡萄牙语，巴西"
-
-#~ msgid "Spanish"
-#~ msgstr "西班牙语"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "这个电话的描述性名称。"

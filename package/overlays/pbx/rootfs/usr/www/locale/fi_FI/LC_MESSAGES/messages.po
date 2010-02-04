@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -88,6 +88,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Gateway"
+
+#, fuzzy
+msgid "Span"
+msgstr "Espanja"
 
 #, php-format
 msgid "%.2f GB"
@@ -578,6 +586,9 @@ msgstr "Analogi"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2568,6 +2579,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Gateway"
+
+msgid "Interface"
+msgstr "Käyttöliittymä"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Espanjan kieli"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Laiteohjelmisto"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "muokkaa"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "unohda käyttöliittymän asetukset"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Määrä"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Laiteohjelmiston version tarkistus"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Laiteohjelmisto"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Ranska"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Hallitseminen"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Tallenna"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "Tulostettava Soittosuunitelma"
 
@@ -3248,9 +3337,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ "osoite tulee olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle "
 #~ "tulee olemaan '%s'."
 
-#~ msgid "Interface"
-#~ msgstr "Käyttöliittymä"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "muokkaa analogi käyttöliittymää"
@@ -3468,9 +3554,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Määrä"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping tuotos:"
 
@@ -3549,15 +3632,8 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
 
-#~ msgid "forget interface settings"
-#~ msgstr "unohda käyttöliittymän asetukset"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Käyttötavat"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Laiteohjelmisto"
 
 #~ msgid "unconfigured"
 #~ msgstr "ei konfiguroitu"
@@ -3613,9 +3689,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portugalin kieli (Brasilia)"
-
-#~ msgid "Spanish"
-#~ msgstr "Espanjan kieli"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Kuvaileva nimi tälle puhelimelle."

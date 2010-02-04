@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,6 +85,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "Ağ Geçidi"
+
+#, fuzzy
+msgid "Span"
+msgstr "İspanya"
 
 #, php-format
 msgid "%.2f GB"
@@ -513,6 +521,9 @@ msgstr "Analog"
 
 msgid "ISDN"
 msgstr "İSDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2403,6 +2414,83 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "Ağ Geçidi"
+
+msgid "Interface"
+msgstr "Arabirim"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SİP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "İspanyolca"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "Bellenim"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "öğe düzenleyin"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Bu telefon silinsin mi?"
+
+msgid "forget gateway settings"
+msgstr ""
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Sayaç"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Bellenim sürümünü denetle"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "Bellenim"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+#, fuzzy
+msgid "Framing"
+msgstr "Fransa"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "Yönetmen"
+
+#, fuzzy
+msgid "Slave"
+msgstr "Kaydet"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr ""
 
@@ -3012,9 +3100,6 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
-#~ msgid "Interface"
-#~ msgstr "Arabirim"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "analog arayüzü düzenle"
@@ -3127,9 +3212,6 @@ msgstr ""
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
 
-#~ msgid "Count"
-#~ msgstr "Sayaç"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping çıkışı"
 
@@ -3181,10 +3263,6 @@ msgstr ""
 #~ msgid "edit ISDN interface"
 #~ msgstr "İSDN arayüzü düzenle"
 
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "Bellenim"
-
 #~ msgid "unconfigured"
 #~ msgstr "ayarlanmamış"
 
@@ -3223,9 +3301,6 @@ msgstr ""
 
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portekizce (Brezilya)"
-
-#~ msgid "Spanish"
-#~ msgstr "İspanyolca"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Bu telefon için açıklayıcı bir isim."

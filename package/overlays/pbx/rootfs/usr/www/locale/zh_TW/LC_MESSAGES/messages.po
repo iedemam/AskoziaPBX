@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 15:50+0100\n"
+"POT-Creation-Date: 2010-02-04 14:19+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -85,6 +85,14 @@ msgid ""
 "The wildcard character \"!\" is not allowed before a prefix which is to be "
 "removed."
 msgstr ""
+
+#, fuzzy
+msgid "Gateway Name"
+msgstr "閘道"
+
+#, fuzzy
+msgid "Span"
+msgstr "西班牙"
 
 #, php-format
 msgid "%.2f GB"
@@ -564,6 +572,9 @@ msgstr "Analog"
 
 msgid "ISDN"
 msgstr "ISDN"
+
+msgid "RedFone"
+msgstr ""
 
 #, fuzzy
 msgid "Local Area Network"
@@ -2495,6 +2506,84 @@ msgid ""
 "connections are more likely Point-to-Point."
 msgstr ""
 
+#, fuzzy
+msgid "RedFone Gateways"
+msgstr "閘道"
+
+msgid "Interface"
+msgstr "介面"
+
+msgid "MAC"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "西班牙語"
+
+#, fuzzy
+msgid "Hardware"
+msgstr "固件"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "編輯一個項目"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "真的要忽略這個介面的設定？"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "忽略介面設定"
+
+msgid "Edit RedFone Gateway"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "這個電話的描述性名稱。"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "計數"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "固件版本檢查"
+
+#, fuzzy
+msgid "Hardware Version"
+msgstr "固件"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "這個電話的描述性名稱。"
+
+#, fuzzy
+msgid "Framing"
+msgstr "法國"
+
+msgid "Encoding"
+msgstr ""
+
+#, fuzzy
+msgid "Master"
+msgstr "管理"
+
+#, fuzzy
+msgid "Slave"
+msgstr "保存"
+
+msgid "Span needs CRC4"
+msgstr ""
+
 msgid "Printable Dialplan"
 msgstr "可打印的撥號計劃"
 
@@ -3138,9 +3227,6 @@ msgstr "ERR 收到無效的設定。\n"
 #~ "設置將會被覆蓋。內網IP地址將會被重置為 192.168.1.2並且密碼也會改為預設的'%"
 #~ "s'。"
 
-#~ msgid "Interface"
-#~ msgstr "介面"
-
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "編輯Analog介面"
@@ -3334,9 +3420,6 @@ msgstr "ERR 收到無效的設定。\n"
 #~ msgid "Traceroute"
 #~ msgstr "路由追蹤(Traceroute)"
 
-#~ msgid "Count"
-#~ msgstr "計數"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping輸出"
 
@@ -3413,15 +3496,8 @@ msgstr "ERR 收到無效的設定。\n"
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "真的要忽略這個介面的設定？"
 
-#~ msgid "forget interface settings"
-#~ msgstr "忽略介面設定"
-
 #~ msgid "Operating Modes"
 #~ msgstr "操作模式"
-
-#, fuzzy
-#~ msgid "Hardware"
-#~ msgstr "固件"
 
 #, fuzzy
 #~ msgid "unconfigured"
@@ -3475,9 +3551,6 @@ msgstr "ERR 收到無效的設定。\n"
 #, fuzzy
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "葡萄牙語，巴西"
-
-#~ msgid "Spanish"
-#~ msgstr "西班牙語"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "這個電話的描述性名稱。"
