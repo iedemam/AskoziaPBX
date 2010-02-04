@@ -28,7 +28,7 @@ obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TRANSCODE)		+= dahdi_transcode.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_KB1)	+= dahdi_echocan_kb1.o
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_MG2)	+= dahdi_echocan_mg2.o
 
-obj-m += $(DAHDI_MODULES_EXTRA)
+obj-m += $(DAHDI_MODULES_EXTRA) auerask_cp3k_mb/ auerask_cp3k_bri/ bfin_sport_tdm/
 
 # Only enable this if you think you know what you're doing. This is not
 # supported yet:
