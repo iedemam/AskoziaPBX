@@ -39,7 +39,8 @@ function redfone_verify_gateway($post, $errors) {
 
 	$trusted = array(
 		'uniqid',
-		'ethif',
+		'localif',
+		'remoteif',
 		'mac',
 		'ip',
 		'firmwareversion',
@@ -62,27 +63,11 @@ function redfone_verify_gateway($post, $errors) {
 	return $gw;
 }
 
-function redfone_autodiscover_gateways() {
-	global $g;
-
-	$networkinterfaces = network_get_interfaces();
-	foreach ($networkinterfaces as $ifname => $ifinfo) {
-		$gw = redfone_fonulator_query($ifname);
-		$uniqid = "REDFONEGW-FONEBRIDGE2-" . md5($gw['mac']);
-		if (!redfone_get_gateway($uniqid)) {
-			$gw['uniqid'] = $uniqid;
-			$gw['unconfigured'] = true;
-			redfone_save_gateway($gw);
-			unlink_if_exists($g['redfone_dirty_path']);
-		}
-	}
-}
-
-function redfone_fonulator_query($ethernetif) {
+function redfone_fonulator_query() {
 	$gw = array();
-	$gw['ethif'] = $ethernetif;
-	$gw['mac'] = '01234567' . $ethernetif;
-	$gw['ip'] = '192.168.111.' . $ethernetif;
+	$gw['localif'] = 'eth1';
+	$gw['mac'] = '01234567eth1';
+	$gw['ip'] = '192.168.111.eth1';
 	$gw['spancount'] = '4';
 	$gw['firmwareversion'] = '1.0';
 	$gw['hardwareversion'] = '2.0';
@@ -127,10 +112,51 @@ function redfone_generate_default_gateway() {
 	
 }
 
-function redfone_configure() {
-	global $g;
-	unlink($g['redfone_dirty_path']);
-}
+function redfone_generate_confs($return=false, $tmpconfig=false) {
+	global $g, $config;
 
+	if ($tmpconfig) {
+		$gateways[] = $tmpconfig;
+	} else {
+		$gateways = redfone_get_gateways();
+	}
+
+	foreach ($gateways as $gw) {
+		$conf = "[globals]\n";
+
+		// IP-address of the IP Configuration port
+		// Factory defaults are; FB1=192.168.1.254 FB2=192.168.1.253
+		$conf .= "fb=" . $gw['ip'] . "\n";
+
+		// Which port to use for TDMoE Traffic (1 or 2)
+		$conf .= "port=" . $gw['remoteif'] . "\n";
+
+		// Which Asterisk server destination MAC address for TDMoE Traffic?
+		$tmpif = network_get_interface($gw['localif']);
+		$conf .= "server=" . $tmpif['mac'] . "\n";
+
+		// Determines which span is to derive timing from telco
+		// priorities=0,1,2,3
+
+		$conf .= "\n";
+
+		if (!$tmpconfig) {
+			for ($i = 1; $i < $gw['spancount'] + 1; $i++) {
+				$conf .= "# " . $gw['span' . $i . 'name'] . "\n";
+				$conf .= "[span" . $i . "]\n";
+				$conf .= "framing=" . $gw['span' . $i . 'framing'] . "\n";
+				$conf .= "encoding=" . $gw['span' . $i . 'encoding'] . "\n";
+				if (isset($gw['span' . $i . 'needscrc4'])) {
+					$conf .= "crc4\n";
+				}
+				// rbs
+				// loopback
+				$conf .= "\n";
+			}
+		}
+
+		util_file_write("/etc/redfone/" . $gw['uniqid'] . ".conf", $conf);
+	}
+}
 
 ?>

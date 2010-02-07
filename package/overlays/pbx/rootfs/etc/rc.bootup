@@ -142,12 +142,6 @@
 	dahdi_autoconfigure_ports();
 	echo "done\n";
 
-	if (file_exists("/etc/supports.redfone")) {
-		echo " - Auto discovering RedFone gateways... ";
-		redfone_autodiscover_gateways();
-		echo "done\n";
-	}
-
 	echo " - Auto configuring Analog phones... ";
 	analog_autoconfigure_phones();
 	echo "done\n";

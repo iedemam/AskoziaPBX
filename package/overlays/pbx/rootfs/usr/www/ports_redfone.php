@@ -30,7 +30,7 @@
 */
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("Telephony Ports"), gettext("RedFone Gateways"));
+$pgtitle = array(gettext("Telephony Ports"), gettext("Redfone Gateways"));
 
 if ($_GET['action'] == "forget") { 
 	redfone_forget_gateway($_GET['uniqid']);
@@ -42,7 +42,7 @@ if (file_exists($g['redfone_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= redfone_configure();
+		$retval |= redfone_generate_confs();
 		$retval |= dahdi_configure();
 		$retval |= pbx_restart();
 		config_unlock();
@@ -76,7 +76,7 @@ include("fbegin.inc");
 			foreach ($redfone_gateways as $gw) {
 
 				?><tr>
-					<td class="listbgl"><?=htmlspecialchars($gw['ethif']);?></td>
+					<td class="listbgl"><?=htmlspecialchars($gw['localif']);?></td>
 					<td class="listr"><?=htmlspecialchars($gw['mac']);?></td>
 					<td class="listr"><?=htmlspecialchars($gw['ip']);?></td>
 					<td class="listr"><?=htmlspecialchars($gw['spancount']);?></td>
@@ -88,7 +88,11 @@ include("fbegin.inc");
 
 			}
 
-			?></table>
+				?><tr>
+					<td class="list" colspan="6"></td>
+					<td class="list"><a href="ports_redfone_edit.php"><img src="add.png" title="<?=gettext("add gateway");?>" border="0"></a></td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 </table>
