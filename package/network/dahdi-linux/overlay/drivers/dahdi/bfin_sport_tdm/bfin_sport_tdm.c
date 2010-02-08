@@ -591,10 +591,14 @@ static void sport_init_matrix(void){
     }else if((result & CP3000_HW_MASK) == CP3000_HW_ISDN){
         printk(KERN_INFO "       ISDN\n");
         // init ISDN/BRI 8 kHz channel 4  + 5
-        phys_tdm[4].mode = e_kf_mode_8kHz;
+	phys_tdm[4].mode = e_kf_mode_8kHz;
         phys_tdm[4].ts_distance = 0;
+        phys_tdm[4].dahdi_rx_buf = xhfc_get_bchan_rx_buf( AUERMOD_CP3000_SLOT_S0, 0, 0 );
+        phys_tdm[4].dahdi_tx_buf = xhfc_get_bchan_tx_buf( AUERMOD_CP3000_SLOT_S0, 0, 0 );
         phys_tdm[5].mode = e_kf_mode_8kHz;
         phys_tdm[5].ts_distance = 0;
+        phys_tdm[5].dahdi_rx_buf = xhfc_get_bchan_rx_buf( AUERMOD_CP3000_SLOT_S0, 0, 1 );
+        phys_tdm[5].dahdi_tx_buf = xhfc_get_bchan_tx_buf( AUERMOD_CP3000_SLOT_S0, 0, 1 );
     }else{
         printk(KERN_INFO "       VoIP\n");
         // no additional interfaces vor CP3000 VoIP

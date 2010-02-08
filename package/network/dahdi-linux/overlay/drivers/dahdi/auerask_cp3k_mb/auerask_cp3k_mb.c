@@ -210,6 +210,24 @@ static iomem_state_e iomem_free(void)
   return iomem_state;
 }
 
+/*
+ * "calculate" a devices spi-address
+ */
+void __iomem * calc_spi_addr(unsigned cs, unsigned slot, unsigned speed, unsigned polarity, unsigned invert)
+{
+    unsigned base_address = SPI_CSNONE;
+    switch (slot) {
+        case AUERMOD_CP3000_SLOT_MOD : base_address = SPI_CSMOD;  break;
+        case AUERMOD_CP3000_SLOT_S0  : base_address = SPI_CSISDN; break;
+        case AUERMOD_CP3000_SLOT_AB  : base_address = SPI_CSTN12; break;
+    }
+    base_address |= speed;
+    base_address |= polarity;
+    base_address |= invert;
+    return (void __iomem *) base_address;
+}
+
+
 
 /**
  * Has to be called, if a kernel module wants
@@ -267,6 +285,7 @@ EXPORT_SYMBOL(auerask_cp3k_spi_init);
 EXPORT_SYMBOL(auerask_cp3k_spi_exit);
 EXPORT_SYMBOL(auerask_cp3k_read_modID);
 EXPORT_SYMBOL(auerask_cp3k_read_hwrev);
+EXPORT_SYMBOL(calc_spi_addr);
 EXPORT_SYMBOL(spi_write);
 EXPORT_SYMBOL(spi_read);
 EXPORT_SYMBOL(spi_read_stop);

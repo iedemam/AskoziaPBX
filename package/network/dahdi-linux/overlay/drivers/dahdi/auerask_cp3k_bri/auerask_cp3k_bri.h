@@ -113,13 +113,6 @@
 #define TRANSP_PACKET_SIZE 0	/* minium tranparent packet size for transmittion to upper layer */
 
 
-/* private driver_data */
-typedef struct {
-	int chip_id;
-	char *device_name;
-} xhfc_param;
-
-
 struct _xhfc_hw;
 
 
@@ -165,40 +158,29 @@ typedef struct _xhfc_hw {
 	struct list_head list;
 	spinlock_t lock;
 
+        __u8 chip_id;
+        __u8 chip_rev;
+
 	int cardnum;
+        __u8 slot;              /* our slot the device is plugged in (or on-board) */
 	__u8 param_idx;		/* used to access module param arrays */
 	int ifnum;
-	__u8 testirq;
 	int irq;
 	int iobase;
 	int nt_mode;
-	u_char *membase;
-	u_char *hw_membase;
         void __iomem * base_address; // SPI base address
 
-	xhfc_param driver_data;
 	char card_name[60];
 
-	int chip_id;
 	int num_ports;		/* number of S and U interfaces */
 	int max_fifo;		/* always 4 fifos per port */
 	__u8 max_z;		/* fifo depth -1 */
 
 	xhfc_port_t port[MAX_PORT]; /* one for each Line intercace */
 
-	__u32 irq_cnt;	/* count irqs */
-	__u32 f0_cnt;	/* last F0 counter value */
-	__u32 f0_akku;	/* akkumulated f0 counter deltas */
-
 	/* chip registers */
-	reg_r_irq_ctrl 		irq_ctrl;
-	reg_r_misc_irqmsk	misc_irqmsk;	/* mask of enabled interrupt sources */
-	reg_r_misc_irq		misc_irq;	/* collect interrupt status bits */
-	reg_r_pcm_md0		pcm_md0;
-	reg_r_pcm_md1		pcm_md1;
-
-	reg_r_su_irq		su_irq;		/* collect interrupt status bits */
-	reg_r_ti_wd		ti_wd;		/* timer interval */
+  	reg_r_irq_ctrl 		irq_ctrl;
+  	reg_r_su_irq		su_irq;		/* collect interrupt status bits */
 
 	__u32 fifo_irq;		/* fifo bl irq */
 	__u32 fifo_irqmsk;	/* fifo bl irq */

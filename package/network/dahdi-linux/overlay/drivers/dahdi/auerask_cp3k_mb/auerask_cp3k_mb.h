@@ -13,19 +13,26 @@
 #define SPI_READ_SINGLE_BC      0x80
 #define SPI_READ_MULTIPLE       0xA0
 
-                                 // Bit 0..2 = chip select code
-#define SPI_CSTN12      0x00    // codec FXO 1+2
-#define SPI_CSMOD       0x04    // plug in module
-#define SPI_CSNONE      0x07    // nothing
-                                // Bit 3 = clock frequency, 0 = 12 MHz, 1 = 25 MHz
+
+
+#define SPI_CSTN12      0x00    // Codec TN 1+2
+#define SPI_CSTN34      0x01    // Codec TN 3+4
+#define SPI_CSPOTS      0x02    // analoges Amt auf Grundboard
+#define SPI_CSISDN      0x03    // ISDN Amt auf Grundboard
+#define SPI_CSMOD       0x04    // Steckmodul
+#define SPI_CSNONE      0x07    // nichts
+#define SPI_CS1         0x00    // dummy, weil kompatibel mit CP VoIP
+                                // Bit 3 = Taktfrequenz 0 = 12 MHz, 1 = 25 MHz
 #define SPI_12M         0x00    // 12 MHz Takt
 #define SPI_25M         0x08    // 25 MHz Takt
-                                // Bit 4 = clock polarity 0 = HIGH/LOW, 1 = LOW/HIGH
-#define SPI_CLKHL       0x00    // clock signal: HIGH/LOW
-#define SPI_CLKLH       0x10    // clock signal: LOW/HIGH
-                                // Bit 5 = passive level of clock signal
+                                // Bit 4 = Clock Polarit�t 0 = HIGH/LOW, 1 = LOW/HIGH
+#define SPI_CLKHL       0x00    // Clock Signal: HIGH/LOW
+#define SPI_CLKLH       0x10    // Clock Signal: LOW/HIGH
+                                // Bit 5 = Ruhepegel des Clock-Signals
 #define SPI_NORM        0x00    // normal
-#define SPI_INV         0x20    // inverted (for XHFC)
+#define SPI_INV         0x20    // invers (fuer XHFC)
+                                // Bit 6-7 unbelegt
+                                // Reset-Zustand: 0
 
 #define WSPICS_OFS      10      // chip select and mode for spi
 
@@ -179,6 +186,11 @@ void spi_write(void __iomem * base_address, u8 data);
 
 /* Stop after the last access. */
 void spi_stop(void __iomem * base_address);
+
+/*
+ * "calculate" a devices spi-address
+ */
+void __iomem * calc_spi_addr(unsigned int cs, unsigned int slot, unsigned int speed, unsigned int polarity, unsigned int invert);
 
 /**
  * Has to be called, if a kernel module wants

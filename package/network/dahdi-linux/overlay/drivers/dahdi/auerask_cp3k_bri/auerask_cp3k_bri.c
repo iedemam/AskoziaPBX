@@ -55,6 +55,10 @@
  * out of the box will probably work on no other hardware than
  * the Auerswald COMpact 3000 PBXes together with the
  * Askozia distribution.
+ *
+ * Added code to read a hardware modules NT/TE/S0/UP0
+ * configuration. Removed useless chip configuration  for
+ * interfaces not connected.
  */
 
 #include <linux/kernel.h>
@@ -72,6 +76,11 @@
 
 
 static const char xhfc_rev[] = "$Revision: 1.12 $";
+
+#define GPIO_BITMASK 0x03
+#define UP0INT       0x01
+#define S0EXT        0x02
+#define S0INT        0x03
 
 #define MAX_CARDS	8
 static int card_cnt;
@@ -310,6 +319,7 @@ inline void write32_xhfc(xhfc_hw * xhfc, __u8 reg_addr, __u32 value)
  */
 static inline __u8 sread_xhfc(xhfc_hw * xhfc, __u8 reg_addr)
 {
+  /* Can lead to erroneous read results */
   return read_xhfc(xhfc, reg_addr);
 }
 
@@ -465,7 +475,7 @@ static int xhfc_startup(struct dahdi_span *span)
 			setup_fifo(port->hw, (port->idx * 8) + (bc * 2) + 1, 0xE6, 0, 0, 1);	// enable RX Fifo
 
 			/* PCM timeslot */
-			slot = port->idx + bc;
+			slot = ((port->hw->slot-1)*4) + bc;
 			/* TX=0, RX=1 */
 			dir = 0;
 			/* build hfc channel identifier */
@@ -551,10 +561,13 @@ static int init_dahdi_interface(xhfc_port_t * port)
 
 	sprintf(port->zspan.name, "%s%d/%d", DRIVER_NAME, port->hw->cardnum,
 		port->idx);
-	sprintf(port->zspan.desc, "Auerswald COMpact ISDN Modul");
+
+	sprintf(port->zspan.desc, port->hw->card_name);
+        sprintf(port->zspan.devicetype, port->hw->card_name);
+
 	port->zspan.manufacturer = "Auerswald GmbH & Co. KG";
 	port->zspan.spantype = (port->mode & PORT_MODE_TE) ? "TE" : "NT";
-	sprintf(port->zspan.location, "SPI Bus 00 Slot %i", port->idx+1);
+	sprintf(port->zspan.location, "SPI Bus 00 Slot %i", port->hw->slot);
 
 	for (i = 0; i < port->zspan.channels; i++) {
 		port->zchans[i] = &port->_chans[i];
@@ -580,6 +593,10 @@ static int init_dahdi_interface(xhfc_port_t * port)
 	return (0);
 }
 
+/**
+ * Polls a busy flag. This is used when switching between
+ * array registers of the same address.
+ */
 static inline void xhfc_waitbusy(xhfc_hw * hw)
 {
 	while (read_xhfc(hw, R_STATUS) & M_BUSY) ;
@@ -591,7 +608,9 @@ static inline void xhfc_selfifo(xhfc_hw * hw, __u8 fifo)
 	xhfc_waitbusy(hw);
 }
 
-/*
+/**
+ * Selects a special pcm time slot for configuration.
+ * hw   - points to the hw data structure
  * slot - pcm slot number
  * dir  - direction: 1 receive, 0 transmit
  */
@@ -1169,8 +1188,6 @@ static int init_xhfc(xhfc_hw * hw)
 	//	unsigned long flags;
 	reg_r_pcm_md0 reg_pcm_md0;
 
-	hw->chip_id = read_xhfc(hw, R_CHIP_ID);
-
 	if (debug & DEBUG_HFC_INIT)
 		printk(KERN_INFO "%s %s ChipID: 0x%x\n", hw->card_name,
 		       __FUNCTION__, hw->chip_id);
@@ -1186,9 +1203,6 @@ static int init_xhfc(xhfc_hw * hw)
 		err = -ENODEV;
 	}
 
-	/* timer irq interval 1 ms */
-	hw->ti_wd.bit_value.v_ev_ts = 0x2;
-
 	if (err) {
 		if (debug & DEBUG_HFC_INIT)
 			printk(KERN_ERR "%s %s: unkown Chip ID 0x%x\n",
@@ -1200,10 +1214,6 @@ static int init_xhfc(xhfc_hw * hw)
 	write_xhfc(hw, R_CIRM, M_SRES);
 	udelay(5);
 	write_xhfc(hw, R_CIRM, 0);
-
-	/* amplitude */
-	write_xhfc(hw, R_PWM_MD, 0x80);
-	write_xhfc(hw, R_PWM1, 0x18);
 
 	write_xhfc(hw, R_FIFO_THRES, 0x11);
 
@@ -1404,16 +1414,39 @@ static void setup_su(xhfc_hw * hw, __u8 pt, __u8 bc, __u8 enable)
 /********************************/
 static void parse_module_params(xhfc_hw * hw)
 {
-	__u8 pt;
+  __u8 pt, gpio_reg;
 
-	/* parse module parameters */
+	/*
+	 * Prepare the chips GPIOs to read the 
+	 * hardware confguration.
+	 */
+	write_xhfc(hw, R_GPIO_SEL, M_GPIO_SEL0 | M_GPIO_SEL1 );
+
+	xhfc_waitbusy(hw);
+
+	gpio_reg = read_xhfc(hw, R_GPIO_IN0);
+
+	/* read the hardware configuration */
 	for (pt = 0; pt < hw->num_ports; pt++) {
 
-	  /* JM: We only support internal S0 extensions */
-	  // testtesttesttest hw->port[pt].mode |= PORT_MODE_NT;
-	  hw->port[pt].mode |= PORT_MODE_TE;
-	  hw->port[pt].mode |= PORT_MODE_S0;
-		
+	  switch((gpio_reg >> (2*pt)) & GPIO_BITMASK )
+	    {
+	    case UP0INT:
+	      hw->port[pt].mode |= PORT_MODE_NT;
+	      hw->port[pt].mode |= PORT_MODE_UP;
+	      break;
+	    case S0EXT:
+	      hw->port[pt].mode |= PORT_MODE_TE;
+	      hw->port[pt].mode |= PORT_MODE_S0;
+	      break;
+	    case S0INT:
+	      hw->port[pt].mode |= PORT_MODE_NT;
+	      hw->port[pt].mode |= PORT_MODE_S0;
+	      break;
+	    default:
+	      printk(KERN_ERR "Fatal Error: Your hardware should send smoke signals!\n");
+	    }
+	  
 	  /* st line polarity */
 	  if (protocol[hw->param_idx + pt] & 0x04)
 	    hw->port[pt].mode |= PORT_MODE_EXCH_POL;
@@ -1519,10 +1552,9 @@ static void release_card(xhfc_hw * hw)
 
 static int __init xhfc_spi_probe(void)
 {
-	__u8 chip_id, chip_rev;
 	xhfc_hw *hw;
 	int err = -ENOMEM;
-	int module_present = 0;
+	int mod_id = 0;
 	nr_slot_t slot;
 
 	hw_p[0] = NULL; /* by definition */
@@ -1530,10 +1562,18 @@ static int __init xhfc_spi_probe(void)
 	for( slot=1; slot <= NUM_SLOTS; slot++)
 	  {
 	    /* Take a short look if the ISDN plug-in module is present. */
-	    module_present = auerask_cp3k_read_modID(slot) & MODID1S0UP0;
-
-	    if(module_present != MODID1S0UP0){
-	      continue;
+	    mod_id = auerask_cp3k_read_modID(slot);
+	    
+	    if(slot == AUERMOD_CP3000_SLOT_MOD) {
+	      if(mod_id != MODID1S0UP0){
+		hw_p[slot] = NULL;
+		continue;
+	      }
+	    } else if(slot == AUERMOD_CP3000_SLOT_S0) {
+	      if(mod_id != MODID1S0UP0){
+		hw_p[slot] = NULL;
+		continue;
+	      }
 	    }
 
 	    if (!(hw = kmalloc(sizeof(xhfc_hw), GFP_ATOMIC))) {
@@ -1547,28 +1587,31 @@ static int __init xhfc_spi_probe(void)
 	    /* Safe this pointer for shutdown purpose in module exit */
 	    hw_p[slot] = hw;
 
-	    if(slot==AUERMOD_CP3000_SLOT_MOD)
-	      hw->base_address = (void __iomem *)0x3C;
-	    else
-	      hw->base_address = NULL;
+	    hw->base_address = (void __iomem *) calc_spi_addr(SPI_CS1, slot, SPI_25M, SPI_CLKLH, SPI_INV);
 
+	    hw->slot = slot;
 	    hw->cardnum = card_cnt;
 	    hw->irq = IRQ_PF11;
-	    chip_id = read_xhfc(hw, R_CHIP_ID);
-	    chip_rev = read_xhfc(hw, R_CHIP_RV) & 0x0f;
+	    hw->chip_id = read_xhfc(hw, R_CHIP_ID);
+	    hw->chip_rev = read_xhfc(hw, R_CHIP_RV) & 0x0f;
 
-	    sprintf(hw->card_name, "%s_%d", DRIVER_NAME, hw->cardnum);
-	    
+	    if(slot == AUERMOD_CP3000_SLOT_MOD) {
+	      sprintf(hw->card_name, "AUERSWALD COMpact ISDN module");
+	    } else if(slot == AUERMOD_CP3000_SLOT_S0) {
+	      sprintf(hw->card_name, "AUERSWALD COMpact 3000 ISDN");
+	    }	    
+
+	    /* Some kind of probing is done here anyway... */
 	    err = setup_instance(hw);
 	    
 	    if (!err) {
 	      card_cnt++;
-	      printk(KERN_INFO "AUERSWALD COMpact ISDN module XHFC 0x%02x:0x%02x adapter found on SPI bus\n",
-		     chip_id, chip_rev);
+	      printk(KERN_INFO "%s XHFC 0x%02x:0x%02x interface found\n",
+		     hw->card_name, hw->chip_id, hw->chip_rev);
 	    } else {
 	      kfree(hw);
 	      hw_p[slot] = NULL;
-	      return (err);
+	      /* continue probing the other slots */
 	    }	    
 	  }
 
