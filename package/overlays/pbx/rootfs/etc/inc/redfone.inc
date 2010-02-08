@@ -30,6 +30,71 @@
 
 require_once("functions.inc");
 
+function redfone_initial_connect($settings) {
+
+	$tmpif = network_get_interface($settings['localif']);
+
+	$conf = "[globals]\n";
+	$conf .= "fb=" . $settings['remoteip'] . "\n";
+	$conf .= "port=" . $settings['remoteif'] . "\n";
+	$conf .= "server=" . $tmpif['mac'] . "\n";
+	$conf .= "\n";
+	util_file_write("/etc/redfone/tmp.conf", $conf);
+
+	if ($settings['localif'] != $GLOBALS['config']['interfaces']['lan']['if']) {
+		$ip = explode(".", $settings['remoteip']);
+		for ($i = 100; $i < 150; $i++) {
+			if ($ip[3] != $i) {
+				$ip[3] = $i;
+				break;
+			}
+		}
+		mwexec("ifconfig " . $settings['localif'] . " " . implode(".", $ip));
+	}
+
+	$query = redfone_fonulator_query("/etc/redfone/tmp.conf");
+	unlink("/etc/redfone/tmp.conf");
+
+	return $query;
+}
+
+function redfone_fonulator_query($conffile) {
+	exec("fonulator -qv " . $conffile, $output, $retval);
+	$query = array();
+	$spancount = 0;
+	foreach ($output as $out) {
+		$out =  explode(": ", $out, 2);
+		$tmpindex = strtolower(str_replace(array(" ", "[", "]"), "", $out[0]));
+		if (strpos($tmpindex, "span") !== false) {
+			$spancount++;
+			$spannumber = substr($tmpindex, 4, 1);
+			$spansettings = explode(",", $out[1]);
+			$query['span' . $spannumber . 'type'] = $spansettings[0];
+			$query['span' . $spannumber . 'framing'] = strtolower($spansettings[1]);
+			$query['span' . $spannumber . 'encoding'] = strtolower($spansettings[2]);
+		} else {
+			$query[$tmpindex] = $out[1];
+		}
+	}
+	$query['spancount'] = $spancount;
+	$query['firmwareversion'] = $query['swver'] . " (build " . $query['swbuild'] . "), " . $query['swcompiledate'];
+	$query['remotemac'] = $query['macaddress'];
+	$query['retval'] = $retval;
+
+	return $query;
+}
+
+function redfone_get_gateways() {
+	$all_gws = $GLOBALS['config']['interfaces']['redfone-gateway'];
+	return is_array($all_gws) ? $all_gws : array();
+}
+
+function redfone_get_gateway($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['interfaces']['redfone-gateway'][$uniqid_map[$uniqid]];
+}
+
 function redfone_verify_gateway($post, $errors) {
 
 	$gw = array();
@@ -41,10 +106,9 @@ function redfone_verify_gateway($post, $errors) {
 		'uniqid',
 		'localif',
 		'remoteif',
-		'mac',
-		'ip',
+		'remoteip',
+		'remotemac',
 		'firmwareversion',
-		'hardwareversion',
 		'spancount'
 	);
 	foreach ($trusted as $t) {
@@ -56,21 +120,9 @@ function redfone_verify_gateway($post, $errors) {
 		$gw['span' . $i . 'type'] = $post['span' . $i . 'type'];
 		$gw['span' . $i . 'framing'] = $post['span' . $i . 'framing'];
 		$gw['span' . $i . 'encoding'] = $post['span' . $i . 'encoding'];
-		$gw['span' . $i . 'slaveormaster'] = $post['span' . $i . 'slaveormaster'];
-		$gw['span' . $i . 'needscrc4'] = ($post['span' . $i . 'needscrc4'] == "yes");
+//		$gw['span' . $i . 'slaveormaster'] = $post['span' . $i . 'slaveormaster'];
+//		$gw['span' . $i . 'needscrc4'] = ($post['span' . $i . 'needscrc4'] == "yes");
 	}
-
-	return $gw;
-}
-
-function redfone_fonulator_query() {
-	$gw = array();
-	$gw['localif'] = 'eth1';
-	$gw['mac'] = '01234567eth1';
-	$gw['ip'] = '192.168.111.eth1';
-	$gw['spancount'] = '4';
-	$gw['firmwareversion'] = '1.0';
-	$gw['hardwareversion'] = '2.0';
 
 	return $gw;
 }
@@ -97,36 +149,21 @@ function redfone_forget_gateway($uniqid) {
 	touch($g['redfone_dirty_path']);
 }
 
-function redfone_get_gateways() {
-	$all_gws = $GLOBALS['config']['interfaces']['redfone-gateway'];
-	return is_array($all_gws) ? $all_gws : array();
-}
-
-function redfone_get_gateway($uniqid) {
-	global $uniqid_map;
-
-	return $GLOBALS['config']['interfaces']['redfone-gateway'][$uniqid_map[$uniqid]];
-}
-
 function redfone_generate_default_gateway() {
 	
 }
 
-function redfone_generate_confs($return=false, $tmpconfig=false) {
-	global $g, $config;
+function redfone_configure() {
+	global $g;
 
-	if ($tmpconfig) {
-		$gateways[] = $tmpconfig;
-	} else {
-		$gateways = redfone_get_gateways();
-	}
+	$gateways = redfone_get_gateways();
 
 	foreach ($gateways as $gw) {
 		$conf = "[globals]\n";
 
 		// IP-address of the IP Configuration port
 		// Factory defaults are; FB1=192.168.1.254 FB2=192.168.1.253
-		$conf .= "fb=" . $gw['ip'] . "\n";
+		$conf .= "fb=" . $gw['remoteip'] . "\n";
 
 		// Which port to use for TDMoE Traffic (1 or 2)
 		$conf .= "port=" . $gw['remoteif'] . "\n";
@@ -146,16 +183,18 @@ function redfone_generate_confs($return=false, $tmpconfig=false) {
 				$conf .= "[span" . $i . "]\n";
 				$conf .= "framing=" . $gw['span' . $i . 'framing'] . "\n";
 				$conf .= "encoding=" . $gw['span' . $i . 'encoding'] . "\n";
-				if (isset($gw['span' . $i . 'needscrc4'])) {
-					$conf .= "crc4\n";
-				}
+				//if (isset($gw['span' . $i . 'needscrc4'])) {
+				//	$conf .= "crc4\n";
+				//}
 				// rbs
 				// loopback
 				$conf .= "\n";
 			}
 		}
 
-		util_file_write("/etc/redfone/" . $gw['uniqid'] . ".conf", $conf);
+		$path = "/etc/redfone/" . $gw['uniqid'] . ".conf";
+		util_file_write($path, $conf);
+		mwexec("fonulator --write-config " . $path);
 	}
 }
 

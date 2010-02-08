@@ -205,16 +205,22 @@ function dahdi_forget_port($uniqid) {
 	touch($g['dahdi_dirty_path']);
 }
 
-function dahdi_generate_system_conf($return=false, $ports=false) {
+function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false) {
 	global $g, $config, $defaults;
 
 	if (!$ports) {
 		$ports = dahdi_get_ports();
 	}
+	if (!$gateways) {
+		$gateways = redfone_get_gateways();
+	}
 
 	$loadzones = dahdi_get_loadzones();
 
 	$conf = "# Hardware Info\n";
+	foreach ($gateways as $gateway) {
+		$conf .= "# Redfone gateway (" . $gateway['gwname'] . ") with " . $gateway['spancount'] . " spans\n";
+	}
 	foreach ($ports as $port) {
 		if ($port['technology'] == "analog") {
 			$name = ($port['name']) ? $port['name'] : "default";
@@ -228,9 +234,23 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 	$conf .= "\n";
 
 
+	$timingprio = 1;
+
+
+	$conf .= "# Dynamic Spans\n";
+	// dynamic=ethmf,<ethN>/<FB MAC address>/<span number>,<numchans>,<timing>
+	foreach ($gateways as $gateway) {
+		for ($i = 1; $i < $gateway['spancount'] + 1; $i++) {
+			$chancount = ($gateway['span' . $i . 'type'] == "E1") ? 31 : 24;
+			$conf .= "dynamic=ethmf," . $gateway['localif'] . "/" .
+				$gateway['remotemac'] . "/" . $i . "," . $chancount . "," . $timingprio++ . "\n";
+		}
+	}
+	$conf .= "\n";
+
+
 	$conf .= "# Spans\n";
 	// span=<span num>,<timing source>,<line build out (LBO)>,<framing>,<coding>[,yellow]
-	$timingprio = 1;
 	foreach ($ports as $port) {
 		if ($port['technology'] == "isdn" && $port['totalchannels'] == 3) {
 			// bri 'phone' ports:
@@ -249,6 +269,26 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 
 	$conf .= "# Channels\n";
 	// <device>=<channel list>
+	foreach ($gateways as $gateway) {
+		$ch = 1;
+		for ($i = 1; $i < $gateway['spancount'] + 1; $i++) {
+			if ($gateway['span' . $i . 'type'] == "E1") {
+				// bchan=1-15,17-31
+				// dchan=16
+				// alaw=1-31
+				$conf .= "bchan=" . $ch . "-" . ($ch + 14) . "," . ($ch + 16) . "-" . ($ch + 30) . "\n";
+				$conf .= "dchan=" . ($ch + 15) . "\n";
+				$conf .= "alaw=" . $ch . "-" . ($ch + 30) . "\n";
+				$ch += 31;
+			} else {
+				// bchan=1-23
+				// dchan=24
+				$conf .= "bchan=" . $ch . "-" . ($ch + 22) . "\n";
+				$conf .= "dchan=" . ($ch + 23) . "\n";
+				$ch += 24;
+			}
+		}
+	}
 	foreach ($ports as $port) {
 		// analog port config
 		if ($port['technology'] == "analog") {
@@ -283,12 +323,6 @@ function dahdi_generate_system_conf($return=false, $ports=false) {
 		$conf .= "loadzone=" . $zone . "\n";
 	}
 	$conf .= "defaultzone=" . $loadzones[0] . "\n";
-	$conf .= "\n";
-
-
-	$conf .= "# PCM Encoding\n";
-	// mulaw=1-4
-	// alaw=1-4
 	$conf .= "\n";
 
 
@@ -482,9 +516,10 @@ function dahdi_configure() {
 	global $g;
 
 	$ports = dahdi_get_ports();
+	$gateways = redfone_get_gateways();
 
-	dahdi_generate_system_conf(false, $ports);
-	chan_dahdi_conf_generate(false, $ports);
+	dahdi_generate_system_conf(false, $ports, $gateways);
+	chan_dahdi_conf_generate(false, $ports, $gateways);
 
 	mwexec("/usr/sbin/dahdi_cfg");
 

@@ -1,22 +1,22 @@
 #!/usr/bin/php
 <?php 
 /*
-	$Id: ports_isdn.php 1323 2010-01-20 16:35:29Z michael.iedema $
+	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
-	
-	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
+
+	Copyright (C) 2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -42,7 +42,7 @@ if (file_exists($g['redfone_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= redfone_generate_confs();
+		$retval |= redfone_configure();
 		$retval |= dahdi_configure();
 		$retval |= pbx_restart();
 		config_unlock();
@@ -64,24 +64,22 @@ include("fbegin.inc");
 		<td class="tabcont">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
 				<tr>
+					<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 					<td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
-					<td width="20%" class="listhdrr"><?=gettext("MAC");?></td>
 					<td width="15%" class="listhdrr"><?=gettext("IP");?></td>
 					<td width="10%" class="listhdrr"><?=gettext("Spans");?></td>
-					<td width="15%" class="listhdrr"><?=gettext("Firmware");?></td>
-					<td width="15%" class="listhdrr"><?=gettext("Hardware");?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Firmware");?></td>
 					<td width="10%" class="list"></td>
 				</tr><?	
 
 			foreach ($redfone_gateways as $gw) {
 
 				?><tr>
-					<td class="listbgl"><?=htmlspecialchars($gw['localif']);?></td>
-					<td class="listr"><?=htmlspecialchars($gw['mac']);?></td>
-					<td class="listr"><?=htmlspecialchars($gw['ip']);?></td>
+					<td class="listbgl"><?=htmlspecialchars($gw['gwname']);?></td>
+					<td class="listr"><?=htmlspecialchars($gw['localif']);?></td>
+					<td class="listr"><?=htmlspecialchars($gw['remoteip']);?></td>
 					<td class="listr"><?=htmlspecialchars($gw['spancount']);?></td>
 					<td class="listr">v<?=htmlspecialchars($gw['firmwareversion']);?></td>
-					<td class="listr">v<?=htmlspecialchars($gw['hardwareversion']);?></td>
 					<td valign="middle" nowrap class="list"><a href="ports_redfone_edit.php?uniqid=<?=$gw['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit gateway");?>" border="0"></a>
 					<a href="?action=forget&uniqid=<?=$gw['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this gateway's settings?");?>')"><img src="delete.png" title="<?=gettext("forget gateway settings");?>" border="0"></a></td>
 				</tr><?
@@ -89,7 +87,7 @@ include("fbegin.inc");
 			}
 
 				?><tr>
-					<td class="list" colspan="6"></td>
+					<td class="list" colspan="5"></td>
 					<td class="list"><a href="ports_redfone_edit.php"><img src="add.png" title="<?=gettext("add gateway");?>" border="0"></a></td>
 				</tr>
 			</table>
