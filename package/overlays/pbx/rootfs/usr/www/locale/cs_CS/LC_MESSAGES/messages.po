@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -557,7 +557,7 @@ msgstr "Analog"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -665,6 +665,10 @@ msgstr "Síť"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "smazat účet"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Brána"
 
 msgid "Phones"
 msgstr "Telefonní účty"
@@ -1748,6 +1752,102 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
+msgid "Interface"
+msgstr "Rozhraní"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Španělština"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "změnit položku"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Opravdu chcete smazat tento telefonní účet?"
+
+msgid "forget gateway settings"
+msgstr ""
+
+#, fuzzy
+msgid "add gateway"
+msgstr "změnit položku"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Brána"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Rozhraní"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Rozhraní"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "připojeno"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Nastavení"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Popisnější název tohoto poskytovatele."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Počet"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Popisnější název tohoto poskytovatele."
+
+msgid "Type"
+msgstr ""
+
+#, fuzzy
+msgid "Framing"
+msgstr "Francie"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Příchozí"
 
@@ -2219,10 +2319,6 @@ msgid "Edit Analog Phone"
 msgstr "změnit položku"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Nastavení"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
@@ -2363,9 +2459,6 @@ msgstr "Žádné analogové zařízení nebylo nalezeno."
 msgid "Card"
 msgstr ""
 
-msgid "Type"
-msgstr ""
-
 #, fuzzy
 msgid "Phone"
 msgstr "Telefonní účty"
@@ -2449,82 +2542,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Brána"
-
-msgid "Interface"
-msgstr "Rozhraní"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Španělština"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "změnit položku"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Opravdu chcete smazat tento telefonní účet?"
-
-msgid "forget gateway settings"
-msgstr ""
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Popisnější název tohoto poskytovatele."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Počet"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Popisnější název tohoto poskytovatele."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Francie"
-
-msgid "Encoding"
-msgstr ""
-
-msgid "Master"
-msgstr ""
-
-#, fuzzy
-msgid "Slave"
-msgstr "Uložit"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3158,6 +3175,18 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Uložit"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "

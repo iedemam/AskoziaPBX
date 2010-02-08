@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -600,7 +600,7 @@ msgstr "PSTN"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -712,6 +712,10 @@ msgstr "Ενσύρματο δίκτυο"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "διαγραφή τηλεφώνου"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Πύλη"
 
 msgid "Phones"
 msgstr "Τηλέφωνα"
@@ -1875,6 +1879,103 @@ msgstr "Αποστολή:"
 msgid "Upload"
 msgstr "Αποστολή"
 
+msgid "Interface"
+msgstr " "
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Ισπανικά"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "επεξεργασία ενός αντικειμένου"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "διαγραφή ρυθμίσεων διεπαφής"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "επεξεργασία ενός αντικειμένου"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Πύλη"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Διεπαφή PSTN"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr " "
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "συνδεδεμένο"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Ρυθμίσεις"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Πλήθος"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Έλεγχος έκδοσης firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+msgid "Type"
+msgstr "Τύπος"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Γαλλία"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Μέσα"
 
@@ -2396,10 +2497,6 @@ msgid "Edit Analog Phone"
 msgstr "Επεξεργασία PSTN"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Ρυθμίσεις"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
 
@@ -2549,9 +2646,6 @@ msgstr "Δεν βρέθηκαν συμβατές διεπαφές PSTN."
 msgid "Card"
 msgstr "Καθαρισμός"
 
-msgid "Type"
-msgstr "Τύπος"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Τηλέφωνα"
@@ -2640,84 +2734,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Πύλη"
-
-msgid "Interface"
-msgstr " "
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Ισπανικά"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "επεξεργασία ενός αντικειμένου"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "διαγραφή ρυθμίσεων διεπαφής"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Πλήθος"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Έλεγχος έκδοσης firmware"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Γαλλία"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Διαχείριση"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Αποθήκευση"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3437,6 +3453,22 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Διαχείριση"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Αποθήκευση"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3566,9 +3598,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "Επεξεργασία γραμμής PSTN"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Διεπαφή PSTN"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "Επεξεργασία λογαριασμού IAX"

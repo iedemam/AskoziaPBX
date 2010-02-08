@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -507,7 +507,7 @@ msgstr ""
 msgid "ISDN"
 msgstr ""
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 msgid "Local Area Network"
@@ -600,6 +600,9 @@ msgid "Networking"
 msgstr ""
 
 msgid "Telephony Ports"
+msgstr ""
+
+msgid "Gateways"
 msgstr ""
 
 msgid "Phones"
@@ -1653,6 +1656,88 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
+msgid "Interface"
+msgstr ""
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+msgid "Spans"
+msgstr ""
+
+msgid "edit gateway"
+msgstr ""
+
+msgid "Do you really want to forget this gateway's settings?"
+msgstr ""
+
+msgid "forget gateway settings"
+msgstr ""
+
+msgid "add gateway"
+msgstr ""
+
+msgid "Edit Redfone Gateway"
+msgstr ""
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+msgid "Local Interface"
+msgstr ""
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+msgid "Remote Interface"
+msgstr ""
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+msgid "Connect"
+msgstr ""
+
+msgid "General Settings"
+msgstr ""
+
+msgid "Enter a descriptive name for this gateway."
+msgstr ""
+
+msgid "Remote MAC"
+msgstr ""
+
+msgid "Span Count"
+msgstr ""
+
+msgid "Firmware Version"
+msgstr ""
+
+msgid "Enter a descriptive name for this span."
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Framing"
+msgstr ""
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr ""
 
@@ -2096,9 +2181,6 @@ msgstr ""
 msgid "Edit Analog Phone"
 msgstr ""
 
-msgid "General Settings"
-msgstr ""
-
 msgid "The number used to dial this phone."
 msgstr ""
 
@@ -2225,9 +2307,6 @@ msgstr ""
 msgid "Card"
 msgstr ""
 
-msgid "Type"
-msgstr ""
-
 msgid "Phone"
 msgstr ""
 
@@ -2305,70 +2384,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-msgid "RedFone Gateways"
-msgstr ""
-
-msgid "Interface"
-msgstr ""
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-msgid "Spans"
-msgstr ""
-
-msgid "Hardware"
-msgstr ""
-
-msgid "edit gateway"
-msgstr ""
-
-msgid "Do you really want to forget this gateway's settings?"
-msgstr ""
-
-msgid "forget gateway settings"
-msgstr ""
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-msgid "Enter a descriptive name for this gateway."
-msgstr ""
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-msgid "Span Count"
-msgstr ""
-
-msgid "Firmware Version"
-msgstr ""
-
-msgid "Hardware Version"
-msgstr ""
-
-msgid "Enter a descriptive name for this span."
-msgstr ""
-
-msgid "Framing"
-msgstr ""
-
-msgid "Encoding"
-msgstr ""
-
-msgid "Master"
-msgstr ""
-
-msgid "Slave"
-msgstr ""
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"

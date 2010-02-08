@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -587,7 +587,7 @@ msgstr "Analogi"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -695,6 +695,10 @@ msgstr "Verkko"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "poista puhelin"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Gateway"
 
 msgid "Phones"
 msgstr "Puhelimet"
@@ -1831,6 +1835,103 @@ msgstr "Lataa ylös:"
 msgid "Upload"
 msgstr "Lataa ylös"
 
+msgid "Interface"
+msgstr "Käyttöliittymä"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Espanjan kieli"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "muokkaa"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "unohda käyttöliittymän asetukset"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "muokkaa"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Gateway"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Analogi Käyttöliittymä"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Käyttöliittymä"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "yhdistetty"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Asetukset"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Määrä"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Laiteohjelmiston version tarkistus"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+msgid "Type"
+msgstr "Tyyppi"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Ranska"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Sisään"
 
@@ -2333,10 +2434,6 @@ msgid "Edit Analog Phone"
 msgstr "Muokkaa Analogi"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Asetukset"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
@@ -2486,9 +2583,6 @@ msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 msgid "Card"
 msgstr "Tyhjennä"
 
-msgid "Type"
-msgstr "Tyyppi"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Puhelimet"
@@ -2577,84 +2671,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Gateway"
-
-msgid "Interface"
-msgstr "Käyttöliittymä"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Espanjan kieli"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Laiteohjelmisto"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "muokkaa"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "unohda käyttöliittymän asetukset"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Kuvaileva nimi tälle puhelimelle."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Määrä"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Laiteohjelmiston version tarkistus"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Laiteohjelmisto"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Kuvaileva nimi tälle puhelimelle."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Ranska"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Hallitseminen"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Tallenna"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3326,6 +3342,22 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Laiteohjelmisto"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Laiteohjelmisto"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Hallitseminen"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Tallenna"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3452,9 +3484,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "Muokkaa Analogi Linjaa"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Analogi Käyttöliittymä"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "Muokkaa IAX Tiliä"

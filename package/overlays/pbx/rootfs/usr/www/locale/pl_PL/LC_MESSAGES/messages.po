@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -547,7 +547,7 @@ msgstr "Analogowe"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -651,6 +651,10 @@ msgstr "Sieć"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "usuń telefon"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Brama"
 
 msgid "Phones"
 msgstr "Telefony"
@@ -1758,6 +1762,103 @@ msgstr "Wysłano:"
 msgid "Upload"
 msgstr "Wysłano"
 
+msgid "Interface"
+msgstr "Interfejs"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Hiszpański"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "edytuj interfejs"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "wyczyść ustawienia interfejsu"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "edytuj interfejs"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Brama"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Interfejs Analogowy"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Interfejs"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "Kontyuuj"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Ustawienia"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Opisowa nazwa telefonu."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Ilość"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Kontrola wersji firmware"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Opisowa nazwa telefonu."
+
+msgid "Type"
+msgstr "Typ"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Francja"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Do"
 
@@ -2251,10 +2352,6 @@ msgid "Edit Analog Phone"
 msgstr "Edytuj Analogowe"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Ustawienia"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
@@ -2400,9 +2497,6 @@ msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
 msgid "Card"
 msgstr "Wyczyść"
 
-msgid "Type"
-msgstr "Typ"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Telefony"
@@ -2489,84 +2583,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Brama"
-
-msgid "Interface"
-msgstr "Interfejs"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Hiszpański"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "edytuj interfejs"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "wyczyść ustawienia interfejsu"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Opisowa nazwa telefonu."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Ilość"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Kontrola wersji firmware"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Opisowa nazwa telefonu."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Francja"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Manager"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Zapisz"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3220,6 +3236,22 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Manager"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Zapisz"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3333,9 +3365,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "Edytuj linie analogową"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Interfejs Analogowy"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "Edytuj konto IAX"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -595,7 +595,7 @@ msgstr "Аналогови"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -706,6 +706,10 @@ msgstr "Мрежов"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "изтрий вътрешна линия"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Шлюз"
 
 msgid "Phones"
 msgstr "Вътрешни"
@@ -1852,6 +1856,104 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "Upload"
 
+msgid "Interface"
+msgstr "Интерфейс"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Испански"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "редактиране на артикул"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr ""
+"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "пропусни настройките на интерфейса"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "редактиране на артикул"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Шлюз"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Аналогов Интерфейс"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Интерфейс"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "свързан"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Настройки"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Описание за този телефон."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Брой"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Проверка на програмна версия"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Описание за този телефон."
+
+msgid "Type"
+msgstr "Модел"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Франция"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Входящи"
 
@@ -2351,10 +2453,6 @@ msgid "Edit Analog Phone"
 msgstr "Редактирай Аналогов"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Настройки"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Вътрешен Номер използван за избиране на този телефон."
 
@@ -2501,9 +2599,6 @@ msgstr "Не е открит съвместим аналогов интерфе�
 msgid "Card"
 msgstr "Clear"
 
-msgid "Type"
-msgstr "Модел"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Вътрешни"
@@ -2592,85 +2687,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Шлюз"
-
-msgid "Interface"
-msgstr "Интерфейс"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Испански"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Обновяване"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "редактиране на артикул"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr ""
-"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "пропусни настройките на интерфейса"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Описание за този телефон."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Брой"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Проверка на програмна версия"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Обновяване"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Описание за този телефон."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Франция"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Управление"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Запиши"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3349,6 +3365,22 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Обновяване"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Обновяване"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Управление"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Запиши"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3474,9 +3506,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "Редактирай Аналогова Линия"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Аналогов Интерфейс"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "Редактирай IAX Акаунт"

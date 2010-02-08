@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -530,7 +530,7 @@ msgstr "Analoog"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -633,6 +633,10 @@ msgstr "Netwerk"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "Telefoon verwijderen"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Gateway"
 
 msgid "Phones"
 msgstr "Telefoons"
@@ -1791,6 +1795,103 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "upload"
 
+msgid "Interface"
+msgstr "Interfac"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Spaans"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "Gateway"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "vergeet de interface instellingen"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "Gateway"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Gateway"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Analoge interface"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Interfac"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "Inhoud"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Instellingen"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Beschrijvende naam voor deze telefoon."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Tellen"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Firmware versie controle"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Beschrijvende naam voor deze telefoon."
+
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Frankrijk"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "In"
 
@@ -2294,10 +2395,6 @@ msgid "Edit Analog Phone"
 msgstr "Bewerk Analoog"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Instellingen"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "De interne post gebruikt om deze telefoon te bellen."
 
@@ -2443,9 +2540,6 @@ msgstr "Geen compatibele analoge interfaces ontdekt."
 msgid "Card"
 msgstr "Wis"
 
-msgid "Type"
-msgstr "Type"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Telefoons"
@@ -2532,84 +2626,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Gateway"
-
-msgid "Interface"
-msgstr "Interfac"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Spaans"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "Gateway"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "vergeet de interface instellingen"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Beschrijvende naam voor deze telefoon."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Tellen"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Firmware versie controle"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Beschrijvende naam voor deze telefoon."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Frankrijk"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Ratio"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Bewaar"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3232,6 +3248,22 @@ msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Ratio"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Bewaar"
+
+#, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "bewerk analoge interface"
 
@@ -3338,9 +3370,6 @@ msgstr ""
 #~ msgid "Edit Analog Line"
 #~ msgstr "Bewerk Analoge Lijn"
 
-#~ msgid "Analog Interface"
-#~ msgstr "Analoge interface"
-
 #~ msgid "Edit IAX Account"
 #~ msgstr "Bewerk IAX Account"
 
@@ -3394,9 +3423,6 @@ msgstr ""
 
 #~ msgid "File"
 #~ msgstr "Bestand"
-
-#~ msgid "Contents"
-#~ msgstr "Inhoud"
 
 #~ msgid "Cancel"
 #~ msgstr "Afbreken"

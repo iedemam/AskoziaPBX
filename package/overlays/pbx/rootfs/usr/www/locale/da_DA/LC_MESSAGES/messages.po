@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -588,7 +588,7 @@ msgstr "Analog"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -695,6 +695,10 @@ msgstr "Netværk"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "slet telefon"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Gateway"
 
 msgid "Phones"
 msgstr "Telefoner"
@@ -1814,6 +1818,103 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "Upload"
 
+msgid "Interface"
+msgstr "Interface"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "Spansk"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "rediger et element"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "glem interface indstillinger"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "rediger et element"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Gateway"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Analog Interface"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Interface"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "Forsæt"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Indstillinger"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Beskrivende navn på denne telefon."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Tælling"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Firmware versions tjek"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Beskrivende navn på denne telefon."
+
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Fransk"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Ind"
 
@@ -2296,10 +2397,6 @@ msgid "Edit Analog Phone"
 msgstr "Rediger Analog"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Indstillinger"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Den interne extension brugt for at ringe til denne telefon"
 
@@ -2447,9 +2544,6 @@ msgstr "Ingen kompatible analoge grænseflader fundet."
 msgid "Card"
 msgstr "Slet"
 
-msgid "Type"
-msgstr "Type"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Telefoner"
@@ -2536,84 +2630,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Gateway"
-
-msgid "Interface"
-msgstr "Interface"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "Spansk"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "rediger et element"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "glem interface indstillinger"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Beskrivende navn på denne telefon."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Tælling"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Firmware versions tjek"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Firmware"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Beskrivende navn på denne telefon."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Fransk"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Manager"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Gem"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3270,6 +3286,22 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Firmware"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Manager"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Gem"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3339,9 +3371,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "Rediger Analog Linie"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Analog Interface"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "Rediger IAX konto"

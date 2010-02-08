@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -573,7 +573,7 @@ msgstr "模拟"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -679,6 +679,10 @@ msgstr "网络"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "删除电话"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "网关"
 
 msgid "Phones"
 msgstr "电话"
@@ -1788,6 +1792,103 @@ msgstr "上载："
 msgid "Upload"
 msgstr "上载："
 
+msgid "Interface"
+msgstr "接口"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "西班牙语"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "编辑一个项目"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "真的要忽略这个接口的设定？"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "忽略接口设定"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "编辑一个项目"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "网关"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "模拟接口"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "接口"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "继续"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "设置"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "这个电话的描述性名称。"
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "计数"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "固件版本检查"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "这个电话的描述性名称。"
+
+msgid "Type"
+msgstr "类型"
+
+#, fuzzy
+msgid "Framing"
+msgstr "法国"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "入"
 
@@ -2266,10 +2367,6 @@ msgid "Edit Analog Phone"
 msgstr "编辑模拟电话"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "设置"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "这个内部分机用来拨打这个电话。"
 
@@ -2415,9 +2512,6 @@ msgstr "没有探测到兼容的模拟接口。"
 msgid "Card"
 msgstr "清空"
 
-msgid "Type"
-msgstr "类型"
-
 #, fuzzy
 msgid "Phone"
 msgstr "电话"
@@ -2504,84 +2598,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "网关"
-
-msgid "Interface"
-msgstr "接口"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "西班牙语"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "固件"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "编辑一个项目"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "真的要忽略这个接口的设定？"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "忽略接口设定"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "这个电话的描述性名称。"
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "计数"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "固件版本检查"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "固件"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "这个电话的描述性名称。"
-
-#, fuzzy
-msgid "Framing"
-msgstr "法国"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "管理"
-
-#, fuzzy
-msgid "Slave"
-msgstr "保存"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3215,6 +3231,22 @@ msgstr "ERR 无法安装设置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "固件"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "固件"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "管理"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "保存"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3322,9 +3354,6 @@ msgstr "ERR 收到无效的配置。\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "编辑模拟线路"
-
-#~ msgid "Analog Interface"
-#~ msgstr "模拟接口"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "编辑IAX账号"

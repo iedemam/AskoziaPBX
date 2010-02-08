@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -594,7 +594,7 @@ msgstr "アナログ"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -704,6 +704,10 @@ msgstr "ネットワーク"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "電話機の削除"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "ゲートウェイ"
 
 msgid "Phones"
 msgstr "電話機"
@@ -1825,6 +1829,103 @@ msgstr "アップロード:"
 msgid "Upload"
 msgstr "アップロード"
 
+msgid "Interface"
+msgstr "接続インターフェース"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "スペイン語"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "アイテムの編集"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "インタフェース設定を忘れる"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "アイテムの編集"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "ゲートウェイ"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "アナログ回線"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "接続インターフェース"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "接続完了"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "設定"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "この電話の判り易い名前"
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "回数"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "ファームウェアのバージョン確認"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "この電話の判り易い名前"
+
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgid "Framing"
+msgstr "フランス"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "In"
 
@@ -2326,10 +2427,6 @@ msgid "Edit Analog Phone"
 msgstr "アナログの編集"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "設定"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Internal extensionは、この電話にダイヤル可能"
 
@@ -2476,9 +2573,6 @@ msgstr "対応するアナログインターフェースが見つかりません
 msgid "Card"
 msgstr "消去"
 
-msgid "Type"
-msgstr "Type"
-
 #, fuzzy
 msgid "Phone"
 msgstr "電話機"
@@ -2565,84 +2659,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "ゲートウェイ"
-
-msgid "Interface"
-msgstr "接続インターフェース"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "スペイン語"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "ファームウェア"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "アイテムの編集"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "インタフェース設定を忘れる"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "この電話の判り易い名前"
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "回数"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "ファームウェアのバージョン確認"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "ファームウェア"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "この電話の判り易い名前"
-
-#, fuzzy
-msgid "Framing"
-msgstr "フランス"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "マネージャー"
-
-#, fuzzy
-msgid "Slave"
-msgstr "保存"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3329,6 +3345,22 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "ファームウェア"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "ファームウェア"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "マネージャー"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "保存"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3454,9 +3486,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "アナログの編集"
-
-#~ msgid "Analog Interface"
-#~ msgstr "アナログ回線"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "IAXアカウントの編集"

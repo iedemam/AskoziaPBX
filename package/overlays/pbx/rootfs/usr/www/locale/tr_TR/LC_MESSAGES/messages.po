@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -522,7 +522,7 @@ msgstr "Analog"
 msgid "ISDN"
 msgstr "İSDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -626,6 +626,10 @@ msgstr "Ağ"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "telefonu sil"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "Ağ Geçidi"
 
 msgid "Phones"
 msgstr "Telefonlar"
@@ -1718,6 +1722,102 @@ msgstr "Yükle:"
 msgid "Upload"
 msgstr "Yükle"
 
+msgid "Interface"
+msgstr "Arabirim"
+
+#, fuzzy
+msgid "IP"
+msgstr "SİP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "İspanyolca"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "öğe düzenleyin"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "Bu telefon silinsin mi?"
+
+msgid "forget gateway settings"
+msgstr ""
+
+#, fuzzy
+msgid "add gateway"
+msgstr "öğe düzenleyin"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "Ağ Geçidi"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Analog Arayüz"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "Arabirim"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "bağlandı"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Ayarlar"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "Sayaç"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "Bellenim sürümünü denetle"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+msgid "Type"
+msgstr "Tür"
+
+#, fuzzy
+msgid "Framing"
+msgstr "Fransa"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "Giriş"
 
@@ -2178,10 +2278,6 @@ msgid "Edit Analog Phone"
 msgstr "Analog düzenle"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "Ayarlar"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
@@ -2325,9 +2421,6 @@ msgstr "Uyum sağlayan analog arayüz bulunamadı."
 msgid "Card"
 msgstr "Sil"
 
-msgid "Type"
-msgstr "Tür"
-
 #, fuzzy
 msgid "Phone"
 msgstr "Telefonlar"
@@ -2412,83 +2505,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "Ağ Geçidi"
-
-msgid "Interface"
-msgstr "Arabirim"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SİP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "İspanyolca"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "Bellenim"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "öğe düzenleyin"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "Bu telefon silinsin mi?"
-
-msgid "forget gateway settings"
-msgstr ""
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "Bu telefon için açıklayıcı bir isim."
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "Sayaç"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "Bellenim sürümünü denetle"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "Bellenim"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "Bu telefon için açıklayıcı bir isim."
-
-#, fuzzy
-msgid "Framing"
-msgstr "Fransa"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "Yönetmen"
-
-#, fuzzy
-msgid "Slave"
-msgstr "Kaydet"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3101,6 +3117,22 @@ msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Bellenim"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "Bellenim"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Yönetmen"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "Kaydet"
+
+#, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "analog arayüzü düzenle"
 
@@ -3136,9 +3168,6 @@ msgstr ""
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "Analog hattı düzenle"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Analog Arayüz"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "İAX Hesabı düzenle"

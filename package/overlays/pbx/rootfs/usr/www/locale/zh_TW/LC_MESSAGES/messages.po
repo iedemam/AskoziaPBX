@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-04 14:19+0100\n"
+"POT-Creation-Date: 2010-02-07 23:25+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -573,7 +573,7 @@ msgstr "Analog"
 msgid "ISDN"
 msgstr "ISDN"
 
-msgid "RedFone"
+msgid "Redfone"
 msgstr ""
 
 #, fuzzy
@@ -679,6 +679,10 @@ msgstr "網路"
 #, fuzzy
 msgid "Telephony Ports"
 msgstr "刪除電話"
+
+#, fuzzy
+msgid "Gateways"
+msgstr "閘道"
 
 msgid "Phones"
 msgstr "電話"
@@ -1788,6 +1792,103 @@ msgstr "上載："
 msgid "Upload"
 msgstr "上載："
 
+msgid "Interface"
+msgstr "介面"
+
+#, fuzzy
+msgid "IP"
+msgstr "SIP"
+
+#, fuzzy
+msgid "Spans"
+msgstr "西班牙語"
+
+#, fuzzy
+msgid "edit gateway"
+msgstr "編輯一個項目"
+
+#, fuzzy
+msgid "Do you really want to forget this gateway's settings?"
+msgstr "真的要忽略這個介面的設定？"
+
+#, fuzzy
+msgid "forget gateway settings"
+msgstr "忽略介面設定"
+
+#, fuzzy
+msgid "add gateway"
+msgstr "編輯一個項目"
+
+#, fuzzy
+msgid "Edit Redfone Gateway"
+msgstr "閘道"
+
+msgid "Initial connection successful!"
+msgstr ""
+
+msgid "Initial connection failed!"
+msgstr ""
+
+msgid "Connection Initialization"
+msgstr ""
+
+#, fuzzy
+msgid "Local Interface"
+msgstr "Analog介面"
+
+msgid "Select which ethernet port on this system the gateway is connected to."
+msgstr ""
+
+#, fuzzy
+msgid "Remote Interface"
+msgstr "介面"
+
+msgid "Select which ethernet port on the gateway this system is connected to."
+msgstr ""
+
+msgid "Remote IP"
+msgstr ""
+
+msgid "The IP address of the foneBRIDGE2 network interface."
+msgstr ""
+
+#, fuzzy
+msgid "Connect"
+msgstr "繼續"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "設置"
+
+#, fuzzy
+msgid "Enter a descriptive name for this gateway."
+msgstr "這個電話的描述性名稱。"
+
+msgid "Remote MAC"
+msgstr ""
+
+#, fuzzy
+msgid "Span Count"
+msgstr "計數"
+
+#, fuzzy
+msgid "Firmware Version"
+msgstr "固件版本檢查"
+
+#, fuzzy
+msgid "Enter a descriptive name for this span."
+msgstr "這個電話的描述性名稱。"
+
+msgid "Type"
+msgstr "類型"
+
+#, fuzzy
+msgid "Framing"
+msgstr "法國"
+
+msgid "Encoding"
+msgstr ""
+
 msgid "In"
 msgstr "入"
 
@@ -2266,10 +2367,6 @@ msgid "Edit Analog Phone"
 msgstr "編輯Analog電話"
 
 #, fuzzy
-msgid "General Settings"
-msgstr "設置"
-
-#, fuzzy
 msgid "The number used to dial this phone."
 msgstr "這個內部分機用來撥打這個電話。"
 
@@ -2415,9 +2512,6 @@ msgstr "沒有探測到相容的Analog介面。"
 msgid "Card"
 msgstr "清空"
 
-msgid "Type"
-msgstr "類型"
-
 #, fuzzy
 msgid "Phone"
 msgstr "電話"
@@ -2504,84 +2598,6 @@ msgstr ""
 msgid ""
 "Household ISDN lines are usually Point-to-Multipoint and office ISDN "
 "connections are more likely Point-to-Point."
-msgstr ""
-
-#, fuzzy
-msgid "RedFone Gateways"
-msgstr "閘道"
-
-msgid "Interface"
-msgstr "介面"
-
-msgid "MAC"
-msgstr ""
-
-#, fuzzy
-msgid "IP"
-msgstr "SIP"
-
-#, fuzzy
-msgid "Spans"
-msgstr "西班牙語"
-
-#, fuzzy
-msgid "Hardware"
-msgstr "固件"
-
-#, fuzzy
-msgid "edit gateway"
-msgstr "編輯一個項目"
-
-#, fuzzy
-msgid "Do you really want to forget this gateway's settings?"
-msgstr "真的要忽略這個介面的設定？"
-
-#, fuzzy
-msgid "forget gateway settings"
-msgstr "忽略介面設定"
-
-msgid "Edit RedFone Gateway"
-msgstr ""
-
-#, fuzzy
-msgid "Enter a descriptive name for this gateway."
-msgstr "這個電話的描述性名稱。"
-
-msgid "Select which ethernet port on this system the gateway is connected to."
-msgstr ""
-
-#, fuzzy
-msgid "Span Count"
-msgstr "計數"
-
-#, fuzzy
-msgid "Firmware Version"
-msgstr "固件版本檢查"
-
-#, fuzzy
-msgid "Hardware Version"
-msgstr "固件"
-
-#, fuzzy
-msgid "Enter a descriptive name for this span."
-msgstr "這個電話的描述性名稱。"
-
-#, fuzzy
-msgid "Framing"
-msgstr "法國"
-
-msgid "Encoding"
-msgstr ""
-
-#, fuzzy
-msgid "Master"
-msgstr "管理"
-
-#, fuzzy
-msgid "Slave"
-msgstr "保存"
-
-msgid "Span needs CRC4"
 msgstr ""
 
 msgid "Printable Dialplan"
@@ -3217,6 +3233,22 @@ msgstr "ERR 無法安裝設置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
 
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "固件"
+
+#, fuzzy
+#~ msgid "Hardware Version"
+#~ msgstr "固件"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "管理"
+
+#, fuzzy
+#~ msgid "Slave"
+#~ msgstr "保存"
+
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
 #~ "and will reboot immediately. The entire system configuration will be "
@@ -3322,9 +3354,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "Edit Analog Line"
 #~ msgstr "編輯Analog線路"
-
-#~ msgid "Analog Interface"
-#~ msgstr "Analog介面"
 
 #~ msgid "Edit IAX Account"
 #~ msgstr "編輯IAX帳戶"
