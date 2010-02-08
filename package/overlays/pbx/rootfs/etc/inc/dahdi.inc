@@ -243,7 +243,7 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 		for ($i = 1; $i < $gateway['spancount'] + 1; $i++) {
 			$chancount = ($gateway['span' . $i . 'type'] == "E1") ? 31 : 24;
 			$conf .= "dynamic=ethmf," . $gateway['localif'] . "/" .
-				$gateway['remotemac'] . "/" . $i . "," . $chancount . "," . $timingprio++ . "\n";
+				$gateway['remotemac'] . "/" . ($i - 1) . "," . $chancount . "," . $timingprio++ . "\n";
 		}
 	}
 	$conf .= "\n";
