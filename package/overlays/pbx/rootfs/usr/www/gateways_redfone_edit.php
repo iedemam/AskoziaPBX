@@ -31,7 +31,7 @@
 
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("Ports"), gettext("Edit Redfone Gateway"));
+$pgtitle = array(gettext("Gateways"), gettext("Edit Redfone Gateway"));
 
 $initialconnect = false;
 if ($_POST['connect']) {
@@ -52,7 +52,7 @@ if ($_POST['connect']) {
 	$gw = redfone_verify_gateway(&$_POST, &$input_errors);
 	if (!$input_errors) {
 		redfone_save_gateway($gw);
-		header("Location: ports_redfone.php");
+		header("Location: gateways_redfone.php");
 		exit;
 	}
 }
@@ -82,7 +82,7 @@ $framingtypes = array("cas", "ccs", "sf", "esf");
 $encodingtypes = array("ami", "b8zs", "hdb3");
 
 include("fbegin.inc");
-d_start("ports_redfone_edit.php");
+d_start("gateways_redfone_edit.php");
 
 
 if (!$initialconnect) {

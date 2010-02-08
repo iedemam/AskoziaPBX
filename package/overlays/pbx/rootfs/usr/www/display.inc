@@ -740,8 +740,24 @@ function display_ports_tab_menu() {
 
 			$tabs = array(
 				gettext('Analog')	=> 'ports_analog.php',
-				gettext('ISDN')		=> 'ports_isdn.php',
-				gettext('RedFone')	=> 'ports_redfone.php'
+				gettext('ISDN')		=> 'ports_isdn.php'
+			);
+			dynamic_tab_menu($tabs);
+
+			?></ul>
+		</td>
+	</tr><?
+
+}
+
+function display_gateways_tab_menu() {
+
+	?><tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array(
+				gettext('Redfone')	=> 'gateways_redfone.php'
 			);
 			dynamic_tab_menu($tabs);
 

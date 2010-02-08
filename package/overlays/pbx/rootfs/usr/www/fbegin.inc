@@ -146,6 +146,8 @@ $menu['Connectivity'][gettext("Telephony Ports")]= array('ports_analog.php',
 												'ports_analog_edit.php',
 												'ports_isdn.php',
 												'ports_isdn_edit.php');
+$menu['Connectivity'][gettext("Gateways")]		= array('gateways_redfone.php',
+												'gateways_redfone_edit.php');
 
 /* Accounts */
 $menu['Accounts'][gettext("Phones")]			= array('accounts_phones.php',

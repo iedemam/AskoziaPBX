@@ -30,11 +30,11 @@
 */
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("Telephony Ports"), gettext("Redfone Gateways"));
+$pgtitle = array(gettext("Gateways"), gettext("Redfone"));
 
 if ($_GET['action'] == "forget") { 
 	redfone_forget_gateway($_GET['uniqid']);
-	header("Location: ports_redfone.php"); 
+	header("Location: gateways_redfone.php"); 
 	exit;
 }
 
@@ -55,10 +55,10 @@ $redfone_gateways = redfone_get_gateways();
 
 include("fbegin.inc");
 
-?><form action="ports_redfone.php" method="post">
+?><form action="gateways_redfone.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0"><?
 
-	display_ports_tab_menu();
+	display_gateways_tab_menu();
 
 	?><tr>
 		<td class="tabcont">
@@ -80,7 +80,7 @@ include("fbegin.inc");
 					<td class="listr"><?=htmlspecialchars($gw['remoteip']);?></td>
 					<td class="listr"><?=htmlspecialchars($gw['spancount']);?></td>
 					<td class="listr">v<?=htmlspecialchars($gw['firmwareversion']);?></td>
-					<td valign="middle" nowrap class="list"><a href="ports_redfone_edit.php?uniqid=<?=$gw['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit gateway");?>" border="0"></a>
+					<td valign="middle" nowrap class="list"><a href="gateways_redfone_edit.php?uniqid=<?=$gw['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit gateway");?>" border="0"></a>
 					<a href="?action=forget&uniqid=<?=$gw['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this gateway's settings?");?>')"><img src="delete.png" title="<?=gettext("forget gateway settings");?>" border="0"></a></td>
 				</tr><?
 
@@ -88,7 +88,7 @@ include("fbegin.inc");
 
 				?><tr>
 					<td class="list" colspan="5"></td>
-					<td class="list"><a href="ports_redfone_edit.php"><img src="add.png" title="<?=gettext("add gateway");?>" border="0"></a></td>
+					<td class="list"><a href="gateways_redfone_edit.php"><img src="add.png" title="<?=gettext("add gateway");?>" border="0"></a></td>
 				</tr>
 			</table>
 		</td>
