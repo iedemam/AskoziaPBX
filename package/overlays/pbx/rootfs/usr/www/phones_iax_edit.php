@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -134,11 +134,11 @@ d_start("phones_iax_edit.php");
 
 
 	// Advanced Options
-	//d_collapsible(gettext("Advanced Options"));
-
+	d_collapsible(gettext("Advanced Options"));
 	//display_qualify_options($form['qualify'], 2);
-	//d_collapsible_end();
-	//d_spacer();
+	d_manualattributes_editor($form['manualattributes']);
+	d_collapsible_end();
+	d_spacer();
 
 
 d_submit();

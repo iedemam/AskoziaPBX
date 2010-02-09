@@ -339,7 +339,11 @@ EOD;
 			}
 		}
 
-		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+		if ($p['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($p['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 
 		$conf .= "\n\n";
 	}
@@ -374,7 +378,11 @@ EOD;
 			}
 		}
 
-		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+		if ($p['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($p['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 
 		$conf .= "\n\n";
 	}
@@ -417,6 +425,7 @@ function sip_verify_phone($post, $errors) {
 	v_provider_access_selector(&$phone, &$post);
 	v_codecs(&$phone, &$post);
 	v_password(&$phone, &$post);
+	v_manualattributes(&$phone, &$post, &$errors);
 
 	$trusted = array(
 		'uniqid',
@@ -476,6 +485,7 @@ function sip_verify_provider($post, $errors) {
 	v_outgoing_prov_routing(&$provider, &$post, &$errors);
 	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
 	v_codecs(&$provider, &$post);
+	v_manualattributes(&$provider, &$post, &$errors);
 
 	$optional = array(
 		'secret',

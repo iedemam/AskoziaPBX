@@ -112,8 +112,10 @@ d_start("providers_sip_edit.php");
 		gettext("Some providers require a seperate 'from' user.<br>Defaults to username entered above."));
 	d_field(gettext("From Domain"), "fromdomain", 40,
 		gettext("Some providers require a seperate 'from' domain. <br>Defaults to host entered above."));
+	d_manualattributes_editor($form['manualattributes']);
 	d_collapsible_end();
 	d_spacer();
+
 
 d_submit();
 

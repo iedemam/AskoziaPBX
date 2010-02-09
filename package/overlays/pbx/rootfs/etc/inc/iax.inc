@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -293,7 +293,11 @@ EOD;
 		}
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
 
-		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+		if ($p['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($p['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 
 		$conf .= "\n\n";
 	}
@@ -326,7 +330,11 @@ EOD;
 			}
 		}
 
-		$conf .= util_gen_manual_attributes($p['manual-attribute']);
+		if ($p['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($p['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 
 		$conf .= "\n\n";
 	}
@@ -367,6 +375,7 @@ function iax_verify_phone($post, $errors) {
 	v_provider_access_selector(&$phone, &$post);
 	v_codecs(&$phone, &$post);
 	v_password(&$phone, &$post);
+	v_manualattributes(&$phone, &$post, &$errors);
 
 	$trusted = array(
 		'uniqid',
@@ -424,6 +433,7 @@ function iax_verify_provider($post, $errors) {
 	v_outgoing_prov_routing(&$provider, &$post, &$errors);
 	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
 	v_codecs(&$provider, &$post);
+	v_manualattributes(&$provider, &$post, &$errors);
 
 	$optional = array(
 		'secret',

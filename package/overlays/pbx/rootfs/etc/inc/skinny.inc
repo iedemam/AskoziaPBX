@@ -93,6 +93,7 @@ function skinny_verify_phone($post, $errors) {
 	v_notifications_editor(&$phone, &$post, &$errors);
 	v_voicemail_editor(&$phone, &$post, &$errors);
 	v_provider_access_selector(&$phone, &$post);
+	v_manualattributes(&$phone, &$post, &$errors);
 
 	$trusted = array(
 		'uniqid',
@@ -150,7 +151,11 @@ EOD;
 		$conf .= "context=" . $p['uniqid'] . "\n";
 		$conf .= "line => " . $p['extension'] . "\n";
 		$conf .= "canreinvite=no\n";
-		//$conf .= util_gen_manual_attributes($p['manual-attribute']);
+		if ($p['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($p['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 	
 		$conf .= "\n\n";
 	}

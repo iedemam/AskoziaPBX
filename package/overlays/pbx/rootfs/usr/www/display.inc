@@ -1104,7 +1104,20 @@ function d_qualify_options($current_qualify) {
 			<br><span class="vexpl"><?=spanify(gettext("The provider will be contacted this often to check its availability."));?></span>
 		</td>
 	</tr><?
+}
 
+function d_manualattributes_editor($current_manualattributes) {
+	global $colspan;
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Manual Attributes"));?></td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
+			<textarea name="manualattributes" cols="65" rows="7" id="manualattributes" class="notes"><?
+				echo htmlspecialchars(base64_decode($current_manualattributes));
+			?></textarea>
+			<br><span class="vexpl"><?=spanify(gettext("Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes.")); ?></span>
+		</td>
+	</tr><?
 }
 
 ?>

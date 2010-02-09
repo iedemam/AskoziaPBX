@@ -354,14 +354,20 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 	return ($return) ? $conf : util_file_write("/etc/dahdi/system.conf", $conf);
 }
 
-function chan_dahdi_conf_generate($return=false, $ports=false) {
+function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) {
 	global $g, $config, $defaults;
 
 	if (!$ports) {
 		$ports = dahdi_get_ports();
 	}
+	if (!$gateways) {
+		$gateways = redfone_get_gateways();
+	}
 
 	$conf = "; Hardware Info\n";
+	foreach ($gateways as $gateway) {
+		$conf .= "; Redfone gateway (" . $gateway['gwname'] . ") with " . $gateway['spancount'] . " spans\n";
+	}
 	foreach ($ports as $port) {
 		if ($port['technology'] == "analog") {
 			$name = ($port['name']) ? $port['name'] : "default";
@@ -399,7 +405,11 @@ function chan_dahdi_conf_generate($return=false, $ports=false) {
 		$conf .= "busycount=3\n";
 		$conf .= "language=" . $provider['language'] . "\n";
 		$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
-		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		if ($provider['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($provider['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 		$conf .= "channel => " . $port['basechannel'] . "\n";
 		$conf .= "\n";
 	}
@@ -427,7 +437,11 @@ function chan_dahdi_conf_generate($return=false, $ports=false) {
 		$conf .= "busycount=3\n";
 		$conf .= "language=" . $phone['language'] . "\n";
 		$conf .= "context=" . $phone['uniqid'] . "\n";
-		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		if ($phone['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($phone['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 		$conf .= "channel => " . $port['basechannel'] . "\n";
 		$conf .= "\n";
 	}
@@ -452,7 +466,11 @@ function chan_dahdi_conf_generate($return=false, $ports=false) {
 
 		$conf .= "language=" . $provider['language'] . "\n";
 		$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
-		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		if ($provider['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($provider['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 		$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 		$conf .= "\n";
 	}
@@ -479,7 +497,11 @@ function chan_dahdi_conf_generate($return=false, $ports=false) {
 
 		$conf .= "language=" . $phone['language'] . "\n";
 		$conf .= "context=" . $phone['uniqid'] . "\n";
-		//$conf .= util_gen_manual_attributes($interface['manual-attribute']);
+		if ($phone['manualattributes']) {
+			$conf .= "; manual attributes\n";
+			$conf .= base64_decode($phone['manualattributes']) . "\n";
+			$conf .= "; end manual attributes\n";
+		}
 		$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 		$conf .= "\n";
 	}

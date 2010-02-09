@@ -106,5 +106,12 @@ d_start("phones_skinny_edit.php");
 	d_spacer();
 
 
+	// Advanced Options
+	d_collapsible(gettext("Advanced Options"));
+	d_manualattributes_editor($form['manualattributes']);
+	d_collapsible_end();
+	d_spacer();
+
+
 d_submit();
 include("fend.inc");

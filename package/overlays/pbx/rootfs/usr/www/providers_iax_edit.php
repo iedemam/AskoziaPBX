@@ -118,8 +118,10 @@ d_start("providers_iax_edit.php");
 					?>><?=gettext("md5");?></option>
 			</select>
 	</tr><?
+	d_manualattributes_editor($form['manualattributes']);
 	d_collapsible_end();
 	d_spacer();
+
 
 d_submit();
 

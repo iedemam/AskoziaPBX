@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -139,6 +139,8 @@ d_start("phones_sip_edit.php");
 
 	//d_field(gettext("Busy Limit"), "busylimit", 5,
 	//	gettext("Phone will be busy for others with this many concurrent calls."));
+
+	d_manualattributes_editor($form['manualattributes']);
 	d_collapsible_end();
 	d_spacer();
 

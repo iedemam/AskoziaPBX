@@ -217,6 +217,7 @@ function isdn_verify_phone($post, $errors) {
 	v_notifications_editor(&$phone, &$post, &$errors);
 	v_voicemail_editor(&$phone, &$post, &$errors);
 	v_provider_access_selector(&$phone, &$post);
+	v_manualattributes(&$phone, &$post, &$errors);
 
 	$trusted = array(
 		'uniqid',
@@ -267,6 +268,7 @@ function isdn_verify_provider($post, $errors) {
 	v_incoming_prov_callerid(&$provider, &$post, &$errors);
 	v_outgoing_prov_routing(&$provider, &$post, &$errors);
 	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
+	v_manualattributes(&$provider, &$post, &$errors);
 
 	$trusted = array(
 		'uniqid',

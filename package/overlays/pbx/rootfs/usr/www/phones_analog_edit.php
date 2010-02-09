@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -102,6 +102,13 @@ d_start("phones_analog_edit.php");
 	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
 
 	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+	d_spacer();
+
+
+	// Advanced Options
+	d_collapsible(gettext("Advanced Options"));
+	d_manualattributes_editor($form['manualattributes']);
+	d_collapsible_end();
 	d_spacer();
 
 

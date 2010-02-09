@@ -169,6 +169,13 @@ d_start("phones_isdn_edit.php");
 	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
 
 
+	// Advanced Options
+	d_collapsible(gettext("Advanced Options"));
+	d_manualattributes_editor($form['manualattributes']);
+	d_collapsible_end();
+	d_spacer();
+
+
 d_submit();
 include("fend.inc");
 ?>
