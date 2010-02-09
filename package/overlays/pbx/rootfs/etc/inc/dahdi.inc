@@ -451,28 +451,64 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		if (isset($provider['disabled'])) {
 			continue;
 		}
-		$port = dahdi_get_port($provider['port']);
 
-		$conf .= "; Provider: " . $provider['name'] . "\n";
-		$conf .= "signalling=" . $port['signaling'] . "\n";
-		$conf .= "rxgain=" . $port['rxgain'] . "\n";
-		$conf .= "txgain=" . $port['txgain'] . "\n";
+		if (strpos($provider['port'], "REDFONE") !== false) {
+			// in case redfone spans start going into the double-digits, watch out here
+			$gwid = substr($provider['port'], 0, -2);
+			$spannum = substr($provider['port'], -1);
+			$gateway = redfone_get_gateway($gwid);
+			$basechannel = redfone_get_span_basechannel($gwid, $spannum);
 
-		if ($port['echo-taps'] == "disable") {
-			$conf .= "echocancel=no\n";
-		} else {
-			$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+			$conf .= "; Provider: " . $provider['name'] . "\n";
+			$conf .= "signalling=pri_net\n";
+			//$conf .= "rxgain=" . $port['rxgain'] . "\n";
+			//$conf .= "txgain=" . $port['txgain'] . "\n";
+
+			//if ($port['echo-taps'] == "disable") {
+				$conf .= "echocancel=no\n";
+			//} else {
+			//	$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+			//}
+
+			$conf .= "language=" . $provider['language'] . "\n";
+			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+			if ($provider['manualattributes']) {
+				$conf .= "; manual attributes\n";
+				$conf .= base64_decode($provider['manualattributes']) . "\n";
+				$conf .= "; end manual attributes\n";
+			}
+			if ($gateway['span' . $spannum . 'type'] == "E1") {
+				$conf .= "channel => " . $basechannel . "-" . ($basechannel + 14) . "," .
+					($basechannel + 16) . "-" . ($basechannel + 30) . "\n";
+			} else {
+				$conf .= "channel => " . $basechannel . "-" . ($basechannel + 22) . "\n";
+			}
+			$conf .= "\n";
+
+		} else if (strpos($provider['port'], "DAHDI") !== false) {
+			$port = dahdi_get_port($provider['port']);
+
+			$conf .= "; Provider: " . $provider['name'] . "\n";
+			$conf .= "signalling=" . $port['signaling'] . "\n";
+			$conf .= "rxgain=" . $port['rxgain'] . "\n";
+			$conf .= "txgain=" . $port['txgain'] . "\n";
+
+			if ($port['echo-taps'] == "disable") {
+				$conf .= "echocancel=no\n";
+			} else {
+				$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+			}
+
+			$conf .= "language=" . $provider['language'] . "\n";
+			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+			if ($provider['manualattributes']) {
+				$conf .= "; manual attributes\n";
+				$conf .= base64_decode($provider['manualattributes']) . "\n";
+				$conf .= "; end manual attributes\n";
+			}
+			$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+			$conf .= "\n";
 		}
-
-		$conf .= "language=" . $provider['language'] . "\n";
-		$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
-		if ($provider['manualattributes']) {
-			$conf .= "; manual attributes\n";
-			$conf .= base64_decode($provider['manualattributes']) . "\n";
-			$conf .= "; end manual attributes\n";
-		}
-		$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
-		$conf .= "\n";
 	}
 
 	$isdnphones = isdn_get_phones();

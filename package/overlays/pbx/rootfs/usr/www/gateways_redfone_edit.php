@@ -183,20 +183,16 @@ if (!$initialconnect) {
 					}
 				?></select>
 			</td>
-		</tr><? /*
+		</tr>
 		<tr>
 			<td width="20%" valign="top" class="vncell"><?=gettext("Options");?></td>
 			<td width="80%" class="vtable">
-				<input name="span<?=$i;?>slaveormaster" type="radio" value="master" <?
-					if ($form['span' . $i . 'slaveormaster'] == "master") echo "checked"; ?>><?=gettext("Master");?>
-				&nbsp;&nbsp;
-				<input name="span<?=$i;?>slaveormaster" type="radio" value="slave" <?
-					if ($form['span' . $i . 'slaveormaster'] == "slave") echo "checked"; ?>><?=gettext("Slave");?>
-				<br>
 				<input name="span<?=$i;?>needscrc4" type="checkbox" id="span<?=$i;?>needscrc4" value="yes" <?
-					if (isset($form['span' . $i . 'needscrc4'])) echo "checked"; ?>> <?=gettext("Span needs CRC4");?>
+					if (isset($form['span' . $i . 'needscrc4'])) echo "checked"; ?>> <?=gettext("span should use CRC4 checking");?>
+				<br><input name="span<?=$i;?>needsloopback" type="checkbox" id="span<?=$i;?>needsloopback" value="yes" <?
+					if (isset($form['span' . $i . 'needsloopback'])) echo "checked"; ?>> <?=gettext("span should be set as a loopback");?>
 			</td>
-		</tr><? */
+		</tr><?
 		d_spacer();
 	}
 	d_submit();

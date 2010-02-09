@@ -151,6 +151,12 @@
 	//isdn_autoconfigure_phones();
 	//echo "done\n";
 
+	if (file_exists("/etc/supports.redfone")) {
+		echo " - Configuring Redfone gateways... ";
+		redfone_configure();
+		echo "done\n";
+	}
+
 	/* start up Asterisk */
 	echo " - Starting Asterisk... \n";
 	pbx_configure();

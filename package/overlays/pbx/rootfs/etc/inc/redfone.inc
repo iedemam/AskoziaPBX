@@ -120,8 +120,8 @@ function redfone_verify_gateway($post, $errors) {
 		$gw['span' . $i . 'type'] = $post['span' . $i . 'type'];
 		$gw['span' . $i . 'framing'] = $post['span' . $i . 'framing'];
 		$gw['span' . $i . 'encoding'] = $post['span' . $i . 'encoding'];
-//		$gw['span' . $i . 'slaveormaster'] = $post['span' . $i . 'slaveormaster'];
-//		$gw['span' . $i . 'needscrc4'] = ($post['span' . $i . 'needscrc4'] == "yes");
+		$gw['span' . $i . 'needscrc4'] = ($post['span' . $i . 'needscrc4'] == "yes");
+		$gw['span' . $i . 'needsloopback'] = ($post['span' . $i . 'needsloopback'] == "yes");
 	}
 
 	return $gw;
@@ -153,12 +153,39 @@ function redfone_generate_default_gateway() {
 	
 }
 
+function redfone_get_span_basechannel($uniqid, $spannumber) {
+	$gateway = redfone_get_gateway($uniqid);
+	$basechannel = 1;
+	for ($i = 1; $i < $spannumber; $i++) {
+		if ($gateway['span' . $i . 'type'] == "E1") {
+			$basechannel += 31;
+		} else {
+			$basechannel += 24;
+		}
+	}
+
+	return $basechannel;
+}
+
 function redfone_configure() {
 	global $g;
 
 	$gateways = redfone_get_gateways();
 
 	foreach ($gateways as $gw) {
+		// set the network interface talking on the correct subnet...
+		if ($gw['localif'] != $GLOBALS['config']['interfaces']['lan']['if']) {
+			$ip = explode(".", $gw['remoteip']);
+			for ($i = 100; $i < 150; $i++) {
+				if ($ip[3] != $i) {
+					$ip[3] = $i;
+					break;
+				}
+			}
+			mwexec("ifconfig " . $gw['localif'] . " " . implode(".", $ip));
+		}
+
+		// generate configuration file...
 		$conf = "[globals]\n";
 
 		// IP-address of the IP Configuration port
@@ -173,7 +200,7 @@ function redfone_configure() {
 		$conf .= "server=" . $tmpif['mac'] . "\n";
 
 		// Determines which span is to derive timing from telco
-		// priorities=0,1,2,3
+		$conf .= "priorities=0,1,2,3\n";
 
 		$conf .= "\n";
 
@@ -183,17 +210,20 @@ function redfone_configure() {
 				$conf .= "[span" . $i . "]\n";
 				$conf .= "framing=" . $gw['span' . $i . 'framing'] . "\n";
 				$conf .= "encoding=" . $gw['span' . $i . 'encoding'] . "\n";
-				//if (isset($gw['span' . $i . 'needscrc4'])) {
-				//	$conf .= "crc4\n";
-				//}
-				// rbs
-				// loopback
+				if (isset($gw['span' . $i . 'needscrc4'])) {
+					$conf .= "crc4\n";
+				}
+				if (isset($gw['span' . $i . 'needsloopback'])) {
+					$conf .= "loopback\n";
+				}
 				$conf .= "\n";
 			}
 		}
 
 		$path = "/etc/redfone/" . $gw['uniqid'] . ".conf";
 		util_file_write($path, $conf);
+
+		// write configuration to gateway...
 		mwexec("fonulator --write-config " . $path);
 	}
 }

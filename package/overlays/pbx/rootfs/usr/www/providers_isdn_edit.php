@@ -63,6 +63,9 @@ if ($_POST) {
 	$form = isdn_generate_default_provider();
 }
 
+$ports = dahdi_get_ports("isdn", "te");
+$gateways = redfone_get_gateways();
+
 include("fbegin.inc");
 d_start("providers_isdn_edit.php");
 
@@ -78,7 +81,33 @@ d_start("providers_isdn_edit.php");
 		</td>
 	</tr><?
 	display_channel_language_selector($form['language'], 1);
-	d_hwport_selector("isdn", "te");
+	?><tr>
+		<td valign="top" class="vncell"><?=spanify(gettext("Hardware Port"));?></td>
+		<td colspan="<?=$colspan;?>" class="vtable">
+			<select name="port" class="formfld" id="port"><?
+			foreach ($ports as $port) {
+				?><option value="<?=$port['uniqid'];?>" <?
+				if ($port['uniqid'] == $form['port']) {
+					echo "selected";
+				}
+				?>><?=gettext("Port");?> : <?=$port['name'];?></option><?
+			}
+
+			foreach ($gateways as $gateway) {
+				for ($i = 1; $i < $gateway['spancount'] + 1; $i++) {
+					$spanid = $gateway['uniqid'] . "-" . $i;
+					?><option value="<?=$spanid;?>" <?
+					if ($spanid == $form['port']) {
+						echo "selected";
+					}
+					?>><?=gettext("Gateway");?> : <?=$gateway['gwname'];?> - <?=$gateway['span' . $i . 'name'];?></option><?
+				}
+			}
+
+			?></select>
+			<br><span class="vexpl"><?=spanify($help);?></span>
+		</td>
+	</tr><?
 	d_spacer();
 
 

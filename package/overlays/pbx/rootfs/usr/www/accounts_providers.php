@@ -192,7 +192,7 @@ if (file_exists($g['analog_dirty_path'])) {
 			?><a href="providers_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
 		if (!isset($config['system']['webgui']['hideisdn']) &&
-			count(dahdi_get_ports("isdn", "te"))) {
+			(count(dahdi_get_ports("isdn", "te")) || count(redfone_get_gateways()))) {
 			?><a href="providers_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
 		if (!isset($config['system']['webgui']['hideanalog']) &&
@@ -314,7 +314,6 @@ if (file_exists($g['analog_dirty_path'])) {
 	</tr>
 
 	<? $i = 0; foreach ($isdn_providers as $p): ?>
-	<? $port = dahdi_get_port($p['port']); ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -332,8 +331,21 @@ if (file_exists($g['analog_dirty_path'])) {
 		}
 		?></td>
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($p['mainnumber']);?></td>
-		<td class="listr"><?=htmlspecialchars($port['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($p['mainnumber']);?></td><?
+
+		if (strpos($p['port'], "REDFONE") !== false) {
+			// in case redfone spans start going into the double-digits, watch out here
+			$gwid = substr($p['port'], 0, -2);
+			$spannum = substr($p['port'], -1);
+			$gateway = redfone_get_gateway($gwid);
+			$portname = $gateway['span' . $spannum . 'name'];
+
+		} else if (strpos($p['port'], "DAHDI") !== false) {
+			$port = dahdi_get_port($p['port']);
+			$portname = $port['name'];
+		}
+
+		?><td class="listr"><?=htmlspecialchars($portname);?></td>
 		<td valign="middle" nowrap class="list"><a href="providers_isdn_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>
