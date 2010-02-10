@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -184,6 +184,10 @@ msgstr "Полето '%s' е задължително."
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "Кодът на конференцията трябва да е от цифри."
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 msgid "Subject"
 msgstr "Тема"
@@ -1954,6 +1958,15 @@ msgstr "Франция"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "Опции"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "Входящи"
 
@@ -2429,9 +2442,6 @@ msgstr ""
 "Повечето акаунти ще работят ако използвате 'auto'. Ако това не успее, "
 "изберете метод на оторизация използван от вашия сървър."
 
-msgid "Options"
-msgstr "Опции"
-
 msgid "Account uses TLS"
 msgstr "Акаунта използва TLS"
 
@@ -2466,6 +2476,10 @@ msgstr "Парола"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "Местонахождение"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Допълнителни Настройки"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2538,10 +2552,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "Допълнителни Настройки"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,6 +162,10 @@ msgstr ""
 
 #, php-format
 msgid "The %s field must be numeric."
+msgstr ""
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
 msgstr ""
 
 msgid "Subject"
@@ -1632,6 +1636,15 @@ msgstr ""
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr ""
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr ""
 
@@ -2011,9 +2024,6 @@ msgstr ""
 msgid "Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server."
 msgstr ""
 
-msgid "Options"
-msgstr ""
-
 msgid "Account uses TLS"
 msgstr ""
 
@@ -2039,6 +2049,9 @@ msgid "Security"
 msgstr ""
 
 msgid "Call Notifications & Voicemail"
+msgstr ""
+
+msgid "Advanced Options"
 msgstr ""
 
 msgid "Edit External Phone"
@@ -2096,9 +2109,6 @@ msgid "SNOM MAC Address"
 msgstr ""
 
 msgid "If this account is for a SNOM telephone, the hardware can be automatically configured when it reboots if its MAC address is entered here. The MAC address can be displayed by pressing the phone's \"Help\" button. Enter the address exactly as it appears on the screen.<br><br>The phone's HTTP interface password will be the same as this extension's password and the on-telephone admin password is the extension number."
-msgstr ""
-
-msgid "Advanced Options"
 msgstr ""
 
 msgid "Edit Skinny Phone"

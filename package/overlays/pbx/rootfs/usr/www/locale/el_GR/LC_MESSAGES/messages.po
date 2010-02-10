@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,6 +178,10 @@ msgstr "Το πεδίο '%s' είναι αναγκαίο."
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "Τα PINs των συνδιασκέψεων πρέπει να είναι αριθμητικά."
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 msgid "Subject"
 msgstr "Θέμα"
@@ -1976,6 +1980,15 @@ msgstr "Γαλλία"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "Επιλογές"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "Μέσα"
 
@@ -2473,9 +2486,6 @@ msgstr ""
 "περίπτωση που παρουσιαστούν προβλήματα, επιλέξτε τη μέθοδο ταυτοποίησης που "
 "χρησιμοποιεί ο διακομιστής σας."
 
-msgid "Options"
-msgstr "Επιλογές"
-
 msgid "Account uses TLS"
 msgstr "Ο λογαριασμός χρησιμοποιεί TLS"
 
@@ -2510,6 +2520,10 @@ msgstr "Κωδικός πρόσβασης"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "Τοποθεσία"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Ρυθμίσεις για ειδικούς"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2584,10 +2598,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "Ρυθμίσεις για ειδικούς"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

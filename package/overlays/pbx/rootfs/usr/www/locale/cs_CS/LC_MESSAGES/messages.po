@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,6 +172,10 @@ msgstr ""
 
 #, php-format
 msgid "The %s field must be numeric."
+msgstr ""
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
 msgstr ""
 
 msgid "Subject"
@@ -1848,6 +1852,15 @@ msgstr "Francie"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "Možnosti"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "Příchozí"
 
@@ -2295,9 +2308,6 @@ msgid ""
 "authentication method appropriate for your server."
 msgstr ""
 
-msgid "Options"
-msgstr "Možnosti"
-
 msgid "Account uses TLS"
 msgstr "Účet využívá TLS"
 
@@ -2330,6 +2340,10 @@ msgstr ""
 
 msgid "Call Notifications & Voicemail"
 msgstr ""
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Upřesňující nastavení"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2402,10 +2416,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "Upřesňující nastavení"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

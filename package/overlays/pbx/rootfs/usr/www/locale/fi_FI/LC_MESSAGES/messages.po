@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -179,6 +179,10 @@ msgstr "Kohta '%s' on määritettävä."
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "Konferenssin koodi on oltava numeerinen."
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 msgid "Subject"
 msgstr "Aihe"
@@ -1932,6 +1936,15 @@ msgstr "Ranska"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "Valinnat"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "Sisään"
 
@@ -2410,9 +2423,6 @@ msgstr ""
 "Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
 "valitse sopiva laillistamiskeino valikosta."
 
-msgid "Options"
-msgstr "Valinnat"
-
 msgid "Account uses TLS"
 msgstr "Tili käyttää TLS"
 
@@ -2447,6 +2457,10 @@ msgstr "Salaisuus"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "Paikka"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Lisäasetukset"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2521,10 +2535,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "Lisäasetukset"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -176,6 +176,10 @@ msgstr "'%s' 区域需要填入。 "
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "会议室认证码必须是数字。"
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 #, fuzzy
 msgid "Subject"
@@ -1889,6 +1893,15 @@ msgstr "法国"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "选项"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "入"
 
@@ -2343,9 +2356,6 @@ msgstr ""
 "大多数账号在'auto'下就能工作。如果这样出错了，请选择一个适合您服务器的验证方"
 "法。"
 
-msgid "Options"
-msgstr "选项"
-
 #, fuzzy
 msgid "Account uses TLS"
 msgstr "账号"
@@ -2380,6 +2390,10 @@ msgstr "秘密"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "位置"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "高级设置"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2452,10 +2466,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "高级设置"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

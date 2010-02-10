@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,6 +175,10 @@ msgstr "'%s' alanı zorunludur."
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "Konferans PİN'leri sayısal olmalı."
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 msgid "Subject"
 msgstr "Konu"
@@ -1818,6 +1822,15 @@ msgstr "Fransa"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "Seçenekler"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "Giriş"
 
@@ -2254,9 +2267,6 @@ msgid ""
 "authentication method appropriate for your server."
 msgstr ""
 
-msgid "Options"
-msgstr "Seçenekler"
-
 msgid "Account uses TLS"
 msgstr "Hesap TLS gerektirmekte"
 
@@ -2291,6 +2301,10 @@ msgstr "Gizli"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "Lokasyon"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Gelişmiş Ayarlar"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2363,10 +2377,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "Gelişmiş Ayarlar"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

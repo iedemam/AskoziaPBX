@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -182,6 +182,10 @@ msgstr "Pole '%s' jest wymagane."
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "Pin do sali konferencyjnej musi być liczbą."
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 msgid "Subject"
 msgstr ""
@@ -1859,6 +1863,15 @@ msgstr "Francja"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "Opcje"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "Do"
 
@@ -2328,9 +2341,6 @@ msgstr ""
 "Większość kont działa używając 'automatycznie'. Jeśli wystąpi problem należy "
 "wybrać metodę autoryzacji dla serwera."
 
-msgid "Options"
-msgstr "Opcje"
-
 #, fuzzy
 msgid "Account uses TLS"
 msgstr "Konta"
@@ -2364,6 +2374,10 @@ msgstr ""
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "Lokalizacja"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "Ustawienia zaawansowane"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2436,10 +2450,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "Ustawienia zaawansowane"
 
 #, fuzzy
 msgid "Edit Skinny Phone"

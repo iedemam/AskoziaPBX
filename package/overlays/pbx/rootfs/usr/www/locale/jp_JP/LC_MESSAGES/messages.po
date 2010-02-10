@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 23:25+0000\n"
+"POT-Creation-Date: 2010-02-10 10:28+0000\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -181,6 +181,10 @@ msgstr "'%s' フィールドは必須です"
 #, fuzzy, php-format
 msgid "The %s field must be numeric."
 msgstr "電話会議室のピンコードは、数字である必要があります"
+
+#, php-format
+msgid "Manual Attribute line number %s is invalid."
+msgstr ""
 
 msgid "Subject"
 msgstr "件名"
@@ -1926,6 +1930,15 @@ msgstr "フランス"
 msgid "Encoding"
 msgstr ""
 
+msgid "Options"
+msgstr "オプション"
+
+msgid "span should use CRC4 checking"
+msgstr ""
+
+msgid "span should be set as a loopback"
+msgstr ""
+
 msgid "In"
 msgstr "In"
 
@@ -2403,9 +2416,6 @@ msgstr ""
 "ほとんどの場合、'auto'で問題有りません。もし上手く動作しない場合には、あなた"
 "が使っているメールサーバーの認証方式を指定して下さい"
 
-msgid "Options"
-msgstr "オプション"
-
 msgid "Account uses TLS"
 msgstr "TLSを使用する"
 
@@ -2440,6 +2450,10 @@ msgstr "パスワード"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "場所"
+
+#, fuzzy
+msgid "Advanced Options"
+msgstr "拡張設定"
 
 #, fuzzy
 msgid "Edit External Phone"
@@ -2512,10 +2526,6 @@ msgid ""
 "interface password will be the same as this extension's password and the on-"
 "telephone admin password is the extension number."
 msgstr ""
-
-#, fuzzy
-msgid "Advanced Options"
-msgstr "拡張設定"
 
 #, fuzzy
 msgid "Edit Skinny Phone"
