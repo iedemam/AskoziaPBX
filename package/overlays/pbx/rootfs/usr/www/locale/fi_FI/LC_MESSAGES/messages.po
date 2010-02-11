@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -96,6 +96,13 @@ msgstr "Gateway"
 #, fuzzy
 msgid "Span"
 msgstr "Espanja"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Palvelut"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3339,6 +3346,67 @@ msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuut
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Oletko varma että haluat käynnistää järjestelmän uudelleen?"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "klikkaa poistaaksesi paketti käytöstä"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Muokkaa Levyä"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "unohda käyttöliittymän asetukset"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Muokkaa Levyä"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Varoitus"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR Konfigurointia ei pystytty tallentamaan.\n"

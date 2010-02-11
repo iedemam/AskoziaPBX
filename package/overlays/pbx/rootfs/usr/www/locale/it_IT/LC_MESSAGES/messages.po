@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -90,6 +90,13 @@ msgstr "Gateway"
 #, fuzzy
 msgid "Span"
 msgstr "Spagna"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Servizi"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3416,6 +3423,67 @@ msgstr ""
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Sei sicuro di voler riavviare il sistema?"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "clicca per disabilitare questo pacchetto"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Vuoi veramente cancellare questo telefono?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Modifica disco"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "annulla le impostazioni dell'interfaccia"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Modifica disco"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Avvertenza:"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Nome descrittivo per questo telefono."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR Non posso salvare la configurazione. \n"

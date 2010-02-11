@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,6 +95,13 @@ msgstr "Πύλη"
 #, fuzzy
 msgid "Span"
 msgstr "Ισπανία"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Υπηρεσίες"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3450,6 +3457,67 @@ msgstr ""
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Θέλετε πραγματικά να επανεκκινήσετε το σύστημα;"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "κάντε κλικ για να απενεργοποιήσετε αυτό το πακέτο"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτό το τηλέφωνο;"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Επεξεργασία δίσκου"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "διαγραφή ρυθμίσεων διεπαφής"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Επεξεργασία δίσκου"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Προειδοποίηση"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ΣΦΑΛΜΑ: Αδυναμία αποθήκευσης ρυθμίσεων.\n"

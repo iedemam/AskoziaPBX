@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -101,6 +101,13 @@ msgstr "Шлюз"
 #, fuzzy
 msgid "Span"
 msgstr "Испания"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Услуги"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3362,6 +3369,68 @@ msgstr "Системата се рестартира. Това може да о�
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Сигурни ли сте че искате да рестартирате системата?"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "кликнете за да забраните пакета"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Сигурни ли сте че искате да изтриете вътрешната линия?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Редактирай Диск"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr ""
+"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "пропусни настройките на интерфейса"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Редактирай Диск"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Внимание"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Описание за този телефон."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ГРЕШКА Не мога да запиша конфигурацията.\n"

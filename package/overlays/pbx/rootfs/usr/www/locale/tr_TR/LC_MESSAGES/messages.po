@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,6 +93,13 @@ msgstr "Ağ Geçidi"
 #, fuzzy
 msgid "Span"
 msgstr "İspanya"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Servisler"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3113,6 +3120,65 @@ msgstr "Sistem yeniden başlatılıyor. Bu işlem bir kaç dakika zaman alabilir
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Sistemi yeniden başlatmak istediğinizden emin misiniz?"
+
+msgid "click to mount disk"
+msgstr ""
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Bu telefon silinsin mi?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Sürücüyü Düzenle"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "Bu telefon silinsin mi?"
+
+msgid "forget disk settings"
+msgstr ""
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Sürücüyü Düzenle"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Uyarı"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr ""

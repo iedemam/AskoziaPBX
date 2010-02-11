@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -92,6 +92,13 @@ msgstr "Passerelle"
 #, fuzzy
 msgid "Span"
 msgstr "Espagne"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Services"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3374,6 +3381,67 @@ msgstr "Le système redémarre. Cette opération peut prend quelques minutes. "
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Souhaitez vous redémarrer le système ?"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "Cliquer pour désactiver le paquet"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Voulez-vous supprimer cette extension ?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Configuration du disque"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "annuler les paramètres de l'interface"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Configuration du disque"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Attention:"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Nom descriptif de cette ligne."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERREUR Impossible d'enregistrer la configuration. \n"

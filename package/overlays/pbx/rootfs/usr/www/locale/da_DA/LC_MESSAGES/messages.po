@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -103,6 +103,13 @@ msgstr "Gateway"
 #, fuzzy
 msgid "Span"
 msgstr "Spanien"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Tjenester"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3283,6 +3290,67 @@ msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Er du sikker på du vil genstarte systemet?"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "klik for at deaktivere pakke"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "Vil du virkeligt slette denne telefon?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Rediger Disk"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "glem interface indstillinger"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Rediger Disk"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Advarsel"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Beskrivende navn på denne telefon."
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "FEJL: Kunne ikke gemme konfigurationen.\n"

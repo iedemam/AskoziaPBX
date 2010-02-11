@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,6 +95,13 @@ msgstr "Gateway"
 #, fuzzy
 msgid "Span"
 msgstr "España"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "Servicios"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3203,6 +3210,67 @@ msgstr "El sistema está reiniciando. Esta operación puede tardar un minuto."
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "¿Está seguro de que quiere reiniciar el sistema?"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "Pulse para deshabilitar el paquete"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "¿Realmente quiere borrar este teléfono?"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "Editar Disco"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "¿Realmente quiere olvidar los ajustes de este interfaz?"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "olvidar los ajustes de este interfaz"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "Editar Disco"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "Avertencia"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "Nombre descriptivo para este teléfono"
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR No se pudo guardar la configuración. \n"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -93,6 +93,13 @@ msgstr "閘道"
 #, fuzzy
 msgid "Span"
 msgstr "西班牙"
+
+#, fuzzy
+msgid "Disk Device"
+msgstr "服務"
+
+msgid "Mount Point"
+msgstr ""
 
 #, php-format
 msgid "%.2f GB"
@@ -3230,6 +3237,67 @@ msgstr "系統正在重啟。這可能會需要一分鐘。"
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "您真的要重啟系統？"
+
+#, fuzzy
+msgid "click to mount disk"
+msgstr "點擊以禁用軟體套件"
+
+#, fuzzy
+msgid "Do you really want to unmount this disk?"
+msgstr "真的要刪除這個電話？"
+
+msgid "click to unmount disk"
+msgstr ""
+
+#, fuzzy
+msgid "edit disk"
+msgstr "編輯磁盤"
+
+#, fuzzy
+msgid "Do you really want to forget this disk's settings?"
+msgstr "真的要忽略這個介面的設定？"
+
+#, fuzzy
+msgid "forget disk settings"
+msgstr "忽略介面設定"
+
+msgid "add disk"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Storage Disk"
+msgstr "編輯磁盤"
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid ""
+"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
+"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
+"the Integrator Panel."
+msgstr ""
+
+#, fuzzy
+msgid "warning"
+msgstr "警告"
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+#, fuzzy
+msgid "Enter a descriptive name for this disk."
+msgstr "這個電話的描述性名稱。"
+
+msgid ""
+"Enter the full path where this device should be mounted. i.e. <em>/storage/"
+"usbstick1</em>."
+msgstr ""
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR 無法保存設置。\n"

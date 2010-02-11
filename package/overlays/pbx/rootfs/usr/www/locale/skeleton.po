@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 10:28+0000\n"
+"POT-Creation-Date: 2010-02-10 17:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,6 +86,12 @@ msgid "Gateway Name"
 msgstr ""
 
 msgid "Span"
+msgstr ""
+
+msgid "Disk Device"
+msgstr ""
+
+msgid "Mount Point"
 msgstr ""
 
 #, php-format
@@ -2739,6 +2745,54 @@ msgid "The system is rebooting now. This may take a minute."
 msgstr ""
 
 msgid "Are you sure you want to reboot the system?"
+msgstr ""
+
+msgid "click to mount disk"
+msgstr ""
+
+msgid "Do you really want to unmount this disk?"
+msgstr ""
+
+msgid "click to unmount disk"
+msgstr ""
+
+msgid "edit disk"
+msgstr ""
+
+msgid "Do you really want to forget this disk's settings?"
+msgstr ""
+
+msgid "forget disk settings"
+msgstr ""
+
+msgid "add disk"
+msgstr ""
+
+msgid "Edit Storage Disk"
+msgstr ""
+
+msgid "Formatting successful!"
+msgstr ""
+
+msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "Format & Initialize"
+msgstr ""
+
+msgid "Enter the full path of the device to be used. i.e. <strong>/dev/sdb</strong>. Find available devices by executing <strong>fdisk -l</strong> in the Integrator Panel."
+msgstr ""
+
+msgid "warning"
+msgstr ""
+
+msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgstr ""
+
+msgid "Enter a descriptive name for this disk."
+msgstr ""
+
+msgid "Enter the full path where this device should be mounted. i.e. <em>/storage/usbstick1</em>."
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
