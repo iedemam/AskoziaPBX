@@ -328,7 +328,7 @@ function display_natmode_selector($current_natmode, $colspan) {
 			><?=$natdesc;?></option>
 			<? endforeach; ?>
 			</select>
-			<br><span class="vexpl"><?=spanify(gettext("Is there a NATing device between the pbx and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones."));?></span>
+			<br><span class="vexpl"><?=spanify(gettext("Is there a NATing device between the PBX and this account?"));?></span>
 		</td>
 	</tr><?
 }
