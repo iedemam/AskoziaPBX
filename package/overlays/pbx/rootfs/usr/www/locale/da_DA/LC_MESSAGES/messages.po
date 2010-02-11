@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -349,15 +349,8 @@ msgstr "antag NAT tilstand men send ikke report"
 msgid "NAT"
 msgstr "NAT"
 
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
-"Er der en NATing enhed mellem AskoziaPBX og denne konto? Indstil til 'ja' "
-"vil virke i de fleste tilfælde. De øvrige muligheder 'aldrig' og 'route' "
-"benyttes yderst sjælden og kun i forbindelse med visse SIP telefoner."
 
 msgid "indefinitely"
 msgstr "uendelig"
@@ -1926,6 +1919,17 @@ msgstr "Fransk"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "Echo Undertrykkelse"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "sekunder"
+
 msgid "Options"
 msgstr "Indstillinger"
 
@@ -2584,17 +2588,6 @@ msgstr "Rediger Analog"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "Beskrivende navn på denne telefon."
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "Echo Undertrykkelse"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "sekunder"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3330,17 +3323,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "Vælg hvilken pakke du gerne vil installere."
 
 #, fuzzy
 msgid "warning"
 msgstr "Advarsel"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy
@@ -3363,6 +3357,16 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Is there a NATing device between the pbx and this account? Setting this "
+#~ "to 'yes' will work in most cases. The options 'never' and 'route' are "
+#~ "only rarely used for certain buggy SIP phones."
+#~ msgstr ""
+#~ "Er der en NATing enhed mellem AskoziaPBX og denne konto? Indstil til 'ja' "
+#~ "vil virke i de fleste tilfælde. De øvrige muligheder 'aldrig' og 'route' "
+#~ "benyttes yderst sjælden og kun i forbindelse med visse SIP telefoner."
 
 #, fuzzy
 #~ msgid "Hardware"

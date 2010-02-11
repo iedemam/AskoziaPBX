@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,7 +294,7 @@ msgstr ""
 msgid "NAT"
 msgstr ""
 
-msgid "Is there a NATing device between the pbx and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
 
 msgid "indefinitely"
@@ -1642,6 +1642,15 @@ msgstr ""
 msgid "Encoding"
 msgstr ""
 
+msgid "Echo Cancellation"
+msgstr ""
+
+msgid "disable echo cancellation"
+msgstr ""
+
+msgid "milliseconds"
+msgstr ""
+
 msgid "Options"
 msgstr ""
 
@@ -2179,15 +2188,6 @@ msgid "Edit Analog %s Port"
 msgstr ""
 
 msgid "Enter a descriptive name for this port."
-msgstr ""
-
-msgid "Echo Cancellation"
-msgstr ""
-
-msgid "disable echo cancellation"
-msgstr ""
-
-msgid "milliseconds"
 msgstr ""
 
 msgid "The echo canceller window size. If your calls have echo, try increasing this window."
@@ -2780,13 +2780,16 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid "Enter the full path of the device to be used. i.e. <strong>/dev/sdb</strong>. Find available devices by executing <strong>fdisk -l</strong> in the Integrator Panel."
+msgid "Select which disk you would like to format."
 msgstr ""
 
 msgid "warning"
 msgstr ""
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 msgid "Enter a descriptive name for this disk."

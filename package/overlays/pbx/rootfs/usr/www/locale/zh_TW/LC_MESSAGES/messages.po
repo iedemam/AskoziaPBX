@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -339,14 +339,8 @@ msgstr "承擔NAT模式但不發送rport"
 msgid "NAT"
 msgstr "NAT"
 
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
-"是否有一個NATing設備在這個帳戶和askoziaPBX之間？大多情況下設置此為'是'會有"
-"效。選項'決不'和'路由'只用在某些特別的有瑕疵的SIP話機上。"
 
 msgid "indefinitely"
 msgstr "無限期"
@@ -1900,6 +1894,17 @@ msgstr "法國"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "回聲補償器"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "秒"
+
 msgid "Options"
 msgstr "選項"
 
@@ -2552,17 +2557,6 @@ msgstr "編輯Analog電話"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "這個電話的描述性名稱。"
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "回聲補償器"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "秒"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3277,17 +3271,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "選擇一個您希望安裝的軟體套件。"
 
 #, fuzzy
 msgid "warning"
 msgstr "警告"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy
@@ -3310,6 +3305,15 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Is there a NATing device between the pbx and this account? Setting this "
+#~ "to 'yes' will work in most cases. The options 'never' and 'route' are "
+#~ "only rarely used for certain buggy SIP phones."
+#~ msgstr ""
+#~ "是否有一個NATing設備在這個帳戶和askoziaPBX之間？大多情況下設置此為'是'會有"
+#~ "效。選項'決不'和'路由'只用在某些特別的有瑕疵的SIP話機上。"
 
 #, fuzzy
 #~ msgid "Hardware"

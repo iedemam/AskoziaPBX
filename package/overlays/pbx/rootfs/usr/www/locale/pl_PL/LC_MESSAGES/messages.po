@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -332,10 +332,7 @@ msgstr "załóż tryb NAT ale nie wysyłaj rport"
 msgid "NAT"
 msgstr "NAT"
 
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
 
 msgid "indefinitely"
@@ -1870,6 +1867,17 @@ msgstr "Francja"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "Echo Canceller"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "sekund"
+
 msgid "Options"
 msgstr "Opcje"
 
@@ -2537,17 +2545,6 @@ msgstr "Edytuj Analogowe"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "Opisowa nazwa telefonu."
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "Echo Canceller"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "sekund"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3280,17 +3277,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "Wybierz pakiet który chcesz zainstalować."
 
 #, fuzzy
 msgid "warning"
 msgstr "Ostrzeżenie"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy

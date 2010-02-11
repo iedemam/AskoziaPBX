@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -341,15 +341,8 @@ msgstr "oleta NAT tilaa mutta älä lähetä rport"
 msgid "NAT"
 msgstr "NAT"
 
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
-"Löytyykö NAT laite AskoziaPBX:än ja tämän tilin välissä? Useimissa "
-"tapauksissa 'kyllä' toimii. Valinnat 'ei koskaan' ja 'route' käytetään vain "
-"joskus tietyille SIP puhelimille."
 
 msgid "indefinitely"
 msgstr "epämääräinen"
@@ -1943,6 +1936,17 @@ msgstr "Ranska"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "Echo Peruutus"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "sekunttia"
+
 msgid "Options"
 msgstr "Valinnat"
 
@@ -2623,17 +2627,6 @@ msgstr "Muokkaa Analogi"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "Kuvaileva nimi tälle puhelimelle."
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "Echo Peruutus"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "sekunttia"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3386,17 +3379,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "Valitse paketit mitkä haluat asentaa."
 
 #, fuzzy
 msgid "warning"
 msgstr "Varoitus"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy
@@ -3419,6 +3413,16 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Is there a NATing device between the pbx and this account? Setting this "
+#~ "to 'yes' will work in most cases. The options 'never' and 'route' are "
+#~ "only rarely used for certain buggy SIP phones."
+#~ msgstr ""
+#~ "Löytyykö NAT laite AskoziaPBX:än ja tämän tilin välissä? Useimissa "
+#~ "tapauksissa 'kyllä' toimii. Valinnat 'ei koskaan' ja 'route' käytetään "
+#~ "vain joskus tietyille SIP puhelimille."
 
 #, fuzzy
 #~ msgid "Hardware"

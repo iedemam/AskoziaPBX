@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -348,15 +348,8 @@ msgstr "допускай NAT режим но не изпращай rport "
 msgid "NAT"
 msgstr "NAT"
 
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
-"Има ли маскиращо устройство между АскозияPBX и този акаунт? Избирането на "
-"'yes' би работило в повечето случаи. Опциите 'never' и 'route' се използват "
-"рядко при некачествени SIP телефони."
 
 msgid "indefinitely"
 msgstr "безкрайно"
@@ -1965,6 +1958,17 @@ msgstr "Франция"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "Ехо Неутрализатор"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "секунди"
+
 msgid "Options"
 msgstr "Опции"
 
@@ -2640,17 +2644,6 @@ msgstr "Редактирай Аналогов"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "Описание за този телефон."
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "Ехо Неутрализатор"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "секунди"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3410,17 +3403,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "Изберете кои пакети желаете да бъдат инсталирани."
 
 #, fuzzy
 msgid "warning"
 msgstr "Внимание"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy
@@ -3443,6 +3437,16 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Is there a NATing device between the pbx and this account? Setting this "
+#~ "to 'yes' will work in most cases. The options 'never' and 'route' are "
+#~ "only rarely used for certain buggy SIP phones."
+#~ msgstr ""
+#~ "Има ли маскиращо устройство между АскозияPBX и този акаунт? Избирането на "
+#~ "'yes' би работило в повечето случаи. Опциите 'never' и 'route' се "
+#~ "използват рядко при некачествени SIP телефони."
 
 #, fuzzy
 #~ msgid "Hardware"

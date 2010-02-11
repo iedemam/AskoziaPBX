@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -351,15 +351,8 @@ msgstr "NATモードを前提としていますが、rportは送信しません"
 msgid "NAT"
 msgstr "NAT"
 
-#, fuzzy
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
-"このアカウントとAskoziaPBXとの間にNATしているデバイスはありますか？ほとんどの"
-"場合、'yes'の設定で動きます。'never'と'route'は、特定のバギーなSIP電話機での"
-"み、稀に使用されます"
 
 msgid "indefinitely"
 msgstr "indefinitely"
@@ -1937,6 +1930,17 @@ msgstr "フランス"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "エコーキャンセラー"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "秒"
+
 msgid "Options"
 msgstr "オプション"
 
@@ -2613,17 +2617,6 @@ msgstr "アナログの編集"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "この電話の判り易い名前"
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "エコーキャンセラー"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "秒"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3389,17 +3382,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "インストールしたいパッケージの選択"
 
 #, fuzzy
 msgid "warning"
 msgstr "警告"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy
@@ -3422,6 +3416,16 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Is there a NATing device between the pbx and this account? Setting this "
+#~ "to 'yes' will work in most cases. The options 'never' and 'route' are "
+#~ "only rarely used for certain buggy SIP phones."
+#~ msgstr ""
+#~ "このアカウントとAskoziaPBXとの間にNATしているデバイスはありますか？ほとん"
+#~ "どの場合、'yes'の設定で動きます。'never'と'route'は、特定のバギーなSIP電話"
+#~ "機でのみ、稀に使用されます"
 
 #, fuzzy
 #~ msgid "Hardware"

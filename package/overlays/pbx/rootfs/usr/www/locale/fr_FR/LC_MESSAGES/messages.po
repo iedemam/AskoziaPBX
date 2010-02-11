@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 17:12+0000\n"
+"POT-Creation-Date: 2010-02-11 11:32+0000\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -340,14 +340,8 @@ msgstr "utiliser le mode NAT, mais de ne pas envoyer de rport"
 msgid "NAT"
 msgstr "NAT"
 
-msgid ""
-"Is there a NATing device between the pbx and this account? Setting this to "
-"'yes' will work in most cases. The options 'never' and 'route' are only "
-"rarely used for certain buggy SIP phones."
+msgid "Is there a NATing device between the PBX and this account?"
 msgstr ""
-"Y at-il un dispositif NAT entre les PABX et ce compte? Mettre ce paramètre à "
-"\"oui\" fonctionnera dans la plupart des cas. Les options «jamais» et "
-"«route» ne sont que rarement utilisés pour certaines téléphones SIP."
 
 msgid "indefinitely"
 msgstr "indéfiniment"
@@ -1951,6 +1945,17 @@ msgstr "France"
 msgid "Encoding"
 msgstr ""
 
+#, fuzzy
+msgid "Echo Cancellation"
+msgstr "Supprime l'echo"
+
+msgid "disable echo cancellation"
+msgstr ""
+
+#, fuzzy
+msgid "milliseconds"
+msgstr "secondes"
+
 msgid "Options"
 msgstr "Options"
 
@@ -2633,17 +2638,6 @@ msgstr "Configuration ligne analogique"
 #, fuzzy
 msgid "Enter a descriptive name for this port."
 msgstr "Nom descriptif de cette ligne."
-
-#, fuzzy
-msgid "Echo Cancellation"
-msgstr "Supprime l'echo"
-
-msgid "disable echo cancellation"
-msgstr ""
-
-#, fuzzy
-msgid "milliseconds"
-msgstr "secondes"
 
 msgid ""
 "The echo canceller window size. If your calls have echo, try increasing this "
@@ -3421,17 +3415,18 @@ msgstr ""
 msgid "Format & Initialize"
 msgstr ""
 
-msgid ""
-"Enter the full path of the device to be used. i.e. <strong>/dev/sdb</"
-"strong>. Find available devices by executing <strong>fdisk -l</strong> in "
-"the Integrator Panel."
-msgstr ""
+#, fuzzy
+msgid "Select which disk you would like to format."
+msgstr "Sélectionner les paquets à installer."
 
 #, fuzzy
 msgid "warning"
 msgstr "Attention:"
 
-msgid "All information on this disk will be lost after clicking \"Format\"!!!"
+msgid "All information on this disk will be lost after clicking \"Format\"!"
+msgstr ""
+
+msgid "I know, thanks for the warning."
 msgstr ""
 
 #, fuzzy
@@ -3454,6 +3449,16 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid ""
+#~ "Is there a NATing device between the pbx and this account? Setting this "
+#~ "to 'yes' will work in most cases. The options 'never' and 'route' are "
+#~ "only rarely used for certain buggy SIP phones."
+#~ msgstr ""
+#~ "Y at-il un dispositif NAT entre les PABX et ce compte? Mettre ce "
+#~ "paramètre à \"oui\" fonctionnera dans la plupart des cas. Les options "
+#~ "«jamais» et «route» ne sont que rarement utilisés pour certaines "
+#~ "téléphones SIP."
 
 #, fuzzy
 #~ msgid "Hardware"
