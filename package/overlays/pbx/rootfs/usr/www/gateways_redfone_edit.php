@@ -185,6 +185,28 @@ if (!$initialconnect) {
 			</td>
 		</tr>
 		<tr>
+			<td width="20%" valign="top" class="vncell"><?=gettext("Echo Cancellation");?></td>
+			<td width="80%" class="vtable">
+				<select name="span<?=$i;?>echo-taps" class="formfld" id="span<?=$i;?>echo-taps">
+					<option value="disable" <?
+					if ($form['span' . $i . 'echo-taps'] == "disable") {
+						echo "selected";
+					}
+					?>><?=gettext("disable echo cancellation");?></option><?
+
+					$tapvals = array(32, 64, 128, 256);
+					foreach ($tapvals as $tapval) {
+						?><option value="<?=$tapval;?>" <?
+						if ($form['span' . $i . 'echo-taps'] == $tapval) {
+							echo "selected";
+						}
+						?>><?=$tapval/8 . " " . gettext("milliseconds");?></option><?
+					}
+
+				?></select>
+			</td>
+		</tr>
+		<tr>
 			<td width="20%" valign="top" class="vncell"><?=gettext("Options");?></td>
 			<td width="80%" class="vtable">
 				<input name="span<?=$i;?>needscrc4" type="checkbox" id="span<?=$i;?>needscrc4" value="yes" <?

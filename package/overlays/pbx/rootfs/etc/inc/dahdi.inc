@@ -243,7 +243,7 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 		for ($i = 1; $i < $gateway['spancount'] + 1; $i++) {
 			$chancount = ($gateway['span' . $i . 'type'] == "E1") ? 31 : 24;
 			$conf .= "dynamic=ethmf," . $gateway['localif'] . "/" .
-				$gateway['remotemac'] . "/" . ($i - 1) . "," . $chancount . "," . $timingprio++ . "\n";
+				$gateway['remotemac'] . "/" . ($i - 1) . "," . $chancount . "," . ($gateway['spancount'] + 1 - $i) . "\n";
 		}
 	}
 	$conf .= "\n";
@@ -460,15 +460,15 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 			$basechannel = redfone_get_span_basechannel($gwid, $spannum);
 
 			$conf .= "; Provider: " . $provider['name'] . "\n";
-			$conf .= "signalling=pri_net\n";
+			$conf .= "signalling=pri_cpe\n";
 			//$conf .= "rxgain=" . $port['rxgain'] . "\n";
 			//$conf .= "txgain=" . $port['txgain'] . "\n";
 
-			//if ($port['echo-taps'] == "disable") {
+			if ($gateway['span' . $spannum . 'echo-taps'] == "disable") {
 				$conf .= "echocancel=no\n";
-			//} else {
-			//	$conf .= "echocancel=" . $port['echo-taps'] . "\n";
-			//}
+			} else {
+				$conf .= "echocancel=" . $gateway['span' . $spannum . 'echo-taps'] . "\n";
+			}
 
 			$conf .= "language=" . $provider['language'] . "\n";
 			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
@@ -478,9 +478,11 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 				$conf .= "; end manual attributes\n";
 			}
 			if ($gateway['span' . $spannum . 'type'] == "E1") {
+				$conf .= "switchtype=euroisdn\n";
 				$conf .= "channel => " . $basechannel . "-" . ($basechannel + 14) . "," .
 					($basechannel + 16) . "-" . ($basechannel + 30) . "\n";
 			} else {
+				$conf .= "switchtype=national\n";
 				$conf .= "channel => " . $basechannel . "-" . ($basechannel + 22) . "\n";
 			}
 			$conf .= "\n";

@@ -120,6 +120,7 @@ function redfone_verify_gateway($post, $errors) {
 		$gw['span' . $i . 'type'] = $post['span' . $i . 'type'];
 		$gw['span' . $i . 'framing'] = $post['span' . $i . 'framing'];
 		$gw['span' . $i . 'encoding'] = $post['span' . $i . 'encoding'];
+		$gw['span' . $i . 'echo-taps'] = $post['span' . $i . 'echo-taps'];
 		$gw['span' . $i . 'needscrc4'] = ($post['span' . $i . 'needscrc4'] == "yes");
 		$gw['span' . $i . 'needsloopback'] = ($post['span' . $i . 'needsloopback'] == "yes");
 	}
