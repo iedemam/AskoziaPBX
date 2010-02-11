@@ -45,5 +45,8 @@ echo
 echo "Send in the output of (ls /dev) and (fdisk -l) to the"
 echo "development team to get this fixed."
 echo "Thanks...and sorry this is not already working better!"
+echo
+echo "Here's a prompt, see what you can see..."
+exec /bin/sh
 
 exit 1
