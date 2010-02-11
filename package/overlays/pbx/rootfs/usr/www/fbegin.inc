@@ -133,6 +133,7 @@ if ((!is_array($allowed)) and
 
 /* System */
 $menu['System'][gettext("General Setup")]		= array('system.php');
+//$menu['System'][gettext("Storage")]				= array('system_storage.php');
 //$menu['System'][gettext("Packages")]			= array('system_packages.php');
 $menu['System'][gettext("Firmware")]			= array('system_firmware.php');
 $menu['System'][gettext("Backup/Restore")] 		= array('system_backup.php');

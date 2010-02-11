@@ -83,16 +83,36 @@ d_start("system_storage_edit.php");
 
 if (!$initialformat) {
 	d_header(gettext("Format & Initialize"));
-	d_field(gettext("Disk Device"), "device", 20,
-		gettext("Enter the full path of the device to be used. i.e. <strong>/dev/sdb</strong>. Find available devices by executing <strong>fdisk -l</strong> in the Integrator Panel."), "required");
+
+	$sysnode = "/dev/" . chop(file_get_contents("/var/etc/cfdevice"));
+	exec("fdisk -l | grep \"Disk /dev/\"", $out);
+	//Disk /dev/sda: 259 MB, 259080192 bytes
+	$devices = array();
+	foreach ($out as $o) {
+		$node = substr($o, 5, 8);
+		if ($node != $sysnode) {
+			$devices[$node] = $o;
+		}
+	}
 	?><tr>
+		<td valign="top" class="vncell"><?=gettext("Disk Device");?></td>
+		<td class="vtable">
+			<select name="device" class="formfld" id="device"><?
+			foreach ($devices as $node => $fdiskline) {
+				?><option value="<?=$node;?>" <? if ($node == $form['device']) echo "selected";?>> <?
+				echo htmlspecialchars($fdiskline); ?></option><?
+			}
+			?></select>
+			<br><span class="vexpl"><?=spanify(gettext("Select which disk you would like to format."));?></span>
+		</td>
+	</tr>
+	<tr>
 		<td valign="top">&nbsp;</td>
 		<td colspan="<?=$colspan;?>">
 			<span class="vexpl"><strong><span class="red"><?=strtoupper(gettext("warning"));?>:</span>
-			<?=gettext("All information on this disk will be lost after clicking \"Format\"!!!");?></strong></span>
+			<?=gettext("All information on this disk will be lost after clicking \"Format\"!");?></strong></span>
 			<br>
-			<br>
-			<input name="format" id="format" type="submit" class="formbtn" value="<?=gettext("Format");?>...">
+			<input type="checkbox" onclick="jQuery('#format').removeAttr('disabled');"><?=gettext("I know, thanks for the warning.");?>&nbsp;&nbsp;<input name="format" id="format" type="submit" class="formbtn" disabled="true" value="<?=gettext("Format");?>...">
 		</td>
 	</tr>
 </table>

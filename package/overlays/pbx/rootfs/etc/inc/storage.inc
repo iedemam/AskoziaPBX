@@ -376,6 +376,14 @@ function storage_format_disk($device) {
 	"\n" .
 	// to the end
 	"\n" .
+	// change type
+	"t\n" .
+	// to FAT32
+	"b\n" .
+	// set active
+	"a\n" .
+	// partition 1
+	"1\n" .
 	// and write changes
 	"w\n" .
 	"\" | fdisk " . $device, $out, $retval);
@@ -450,11 +458,23 @@ function storage_configure() {
 
 	openlog("storage_configure()", LOG_INFO, LOG_LOCAL0);
 	foreach ($disks as $disk) {
-		if (!isset($disk['unmounted'])) {
-			exec("mount -t msdos " . $disk['device'] . "1 -o noatime >> /etc/storage.debug 2>&1", $out, $retval);
+		if (isset($disk['unmounted'])) {
+			continue;
+		}
+
+		for ($i = 0; $i < 10; $i++) {
+			if (file_exists($disk['device'] . "1")) {
+				break;
+			}
+			syslog(LOG_INFO, "Device node " . $disk['device'] . "1 does not exist yet...sleeping (attempt " . $i . ")");
+			sleep(1);
+		}
+
+		exec("mount -t msdos " . $disk['device'] . "1 -o noatime >> /etc/storage.debug 2>&1", $out, $retval);
+		if ($retval != 0) {
 			syslog(LOG_INFO, "Mounting " . $disk['device'] . "1 on " . $disk['mountpoint'] . " returned " . $retval);
 		} else {
-			syslog(LOG_INFO, "SKIPPED mounting " . $disk['device'] . "1 on " . $disk['mountpoint']);
+				syslog(LOG_INFO, "Mounted " . $disk['device'] . "1 on " . $disk['mountpoint']);
 		}
 	}
 	closelog();
