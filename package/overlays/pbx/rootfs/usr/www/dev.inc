@@ -96,6 +96,9 @@
 			// hardware tab selected
 			} else if (tmp.indexOf('#devtabs-5') != -1) {
 				dev_translation_disable();
+			// beta tab selected
+			} else if (tmp.indexOf('#devtabs-6') != -1) {
+				dev_translation_disable();
 			}
 		});
 
@@ -237,7 +240,9 @@
 		jQuery("#devfilepanel").slideUp("slow");
 		jQuery("#devfilelist").removeAttr("disabled");
 	}
-
+	function dev_file_copycontents() {
+		jQuery("#devfilemanualcontents").val(jQuery("#devfilecontents").val());
+	}
 
 //-->
 </script>
@@ -250,6 +255,7 @@
 			<li><a href="#devtabs-3">Files</a></li>
 			<li><a href="#devtabs-4">Fix Translations</a></li>
 			<li><a href="#devtabs-5">Report Hardware</a></li>
+			<li><a href="#devtabs-6">Beta Features</a></li>
 		</ul>
 		<div id="devtabs-1">
 			<input id="devconsolecmd" type="text" size="60" value="">
@@ -287,7 +293,7 @@
 				<br>
 				<br>
 				<strong>Append</strong><input name="devfilemode" type="radio" value="append">
-				or <strong>Override</strong><input name="devfilemode" type="radio" value="override">
+				or <strong>Override</strong><input name="devfilemode" type="radio" value="override" onclick='dev_file_copycontents();'>
 				with this text
 				<br><textarea id="devfilemanualcontents" cols="80" rows="15" class="devfixedwidth"></textarea>
 				<br>
@@ -320,6 +326,13 @@
 			<textarea id="devhardwaredescription" cols="60" rows="6"></textarea>
 			<br>
 			<a href="javascript:{}" onclick="dev_hardware_submit();" class="ui-state-default ui-corner-all">submit hardware report</a>
+		</div>
+		<div id="devtabs-6">
+			<p>Hidden goodies not yet stable or complete enough to be linked from the main menu. Testing and feedback greatly appreciated.</p>
+			<ul>
+				<li>Storage Disks - <a href="system_storage.php">system_storage.php</a></li>
+				<li>Skinny Phones - <a href="phones_skinny_edit.php">phones_skinny_edit.php</a></li>
+			</ul>
 		</div>
 	</div>
 </div>

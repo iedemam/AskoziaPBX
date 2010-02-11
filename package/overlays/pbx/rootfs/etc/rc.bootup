@@ -56,14 +56,13 @@
 	system_load_kernel_modules();
 	echo "done\n";
 
-	/* detect storage partition, initialize if not present, reinit bsdlabel if overwritten */
-	echo " - Initializing storage partition... ";
-	storage_syspart_initialize();
-	echo "done\n";
-
 	/* run any early shell commands specified in config.xml */
 	echo " - Running early shell commands... ";
 	system_do_shell_commands(1);
+	echo "done\n";
+
+	echo " - Configuring storage... ";
+	storage_configure();
 	echo "done\n";
 
 	/* execute package boot routines */

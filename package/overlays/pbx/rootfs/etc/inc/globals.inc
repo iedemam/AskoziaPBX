@@ -58,6 +58,7 @@ $g = array(
 	"isdn_dirty_path" => "/var/run/isdn.dirty",
 	"redfone_dirty_path" => "/var/run/redfone.dirty",
 	"skinny_dirty_path" => "/var/run/skinny.dirty",
+	"storage_dirty_path" => "/var/run/storage.dirty",
 	"external_dirty_path" => "/var/run/external.dirty"
 );
 

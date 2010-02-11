@@ -297,4 +297,169 @@ function storage_disk_get_name($device) {
 	return $name;
 }
 
+
+
+
+
+
+
+
+
+
+
+function storage_get_disks() {
+	$all_disks = $GLOBALS['config']['storage']['disk'];
+	return is_array($all_disks) ? $all_disks : array();
+}
+
+function storage_get_disk($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['storage']['disk'][$uniqid_map[$uniqid]];
+}
+
+function storage_verify_disk($post, $errors) {
+
+	$disk = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$disk, &$post, &$errors);
+	v_required('device', gettext('Disk Device'), &$disk, &$post, &$errors);
+	v_required('mountpoint', gettext('Mount Point'), &$disk, &$post, &$errors);
+
+	$trusted = array(
+		'uniqid',
+		'unmounted'
+	);
+	foreach ($trusted as $t) {
+		$disk[$t] = $post[$t];
+	}
+
+	return $disk;
+}
+
+function storage_save_disk($disk) {
+	global $g, $uniqid_map;
+
+	if (storage_get_disk($disk['uniqid'])) {
+		$GLOBALS['config']['storage']['disk'][$uniqid_map[$disk['uniqid']]] = $disk;
+	} else {
+		$GLOBALS['config']['storage']['disk'][] = $disk;
+	}
+
+	write_config();
+	touch($g['storage_dirty_path']);
+}
+
+function storage_forget_disk($uniqid) {
+	global $g, $uniqid_map;
+
+	unset($GLOBALS['config']['storage']['disk'][$uniqid_map[$uniqid]]);
+
+	write_config();
+	touch($g['storage_dirty_path']);
+}
+
+function storage_format_disk($device) {
+
+	openlog("storage_format_disk()", LOG_INFO, LOG_LOCAL0);
+
+	// overwrite with fresh DOS partition table
+	exec("echo \"o\n" .
+	// create new
+	"n\n" .
+	// primary partition
+	"p\n" .
+	// number 1
+	"1\n" .
+	// from the beginning
+	"\n" .
+	// to the end
+	"\n" .
+	// and write changes
+	"w\n" .
+	"\" | fdisk " . $device, $out, $retval);
+	syslog(LOG_INFO, "fdisk returned " . $retval);
+
+	sleep(1);
+
+	exec("mkdosfs -n ASKOZIA " . $device . "1", $out, $retval);
+	syslog(LOG_INFO, "mkdosfs returned " . $retval);
+	closelog();
+
+	return $retval;
+}
+
+function storage_mount_disk($uniqid) {
+	global $g;
+
+	$disk = storage_get_disk($uniqid);
+
+	exec("mount -t msdos " . $disk['device'] . "1 -o noatime >> /etc/storage.debug 2>&1", $out, $retval);
+
+	if ($retval == 0) {
+		$disk['unmounted'] = false;
+	}
+	storage_save_disk($disk);
+	unlink($g['storage_dirty_path']);
+
+	return $retval;
+}
+
+function storage_unmount_disk($uniqid) {
+	global $g;
+
+	$disk = storage_get_disk($uniqid);
+
+	exec("umount " . $disk['device'] . "1", $out, $retval);
+
+	if ($retval == 0) {
+		$disk['unmounted'] = true;
+	}
+
+	storage_save_disk($disk);
+	unlink($g['storage_dirty_path']);
+
+	return $retval;
+}
+
+function storage_generate_default_disk() {
+	$disk = array();
+
+	$disk['unmounted'] = true;
+
+	return $disk;
+}
+
+function storage_configure() {
+	global $g;
+
+	$conf = file_get_contents("/etc/fstab.boot");
+
+	$disks = storage_get_disks();
+	foreach ($disks as $disk) {
+		$conf .= $disk['device'] . "1 " . $disk['mountpoint'] . " msdos rw 0 0\n";
+		if (!file_exists($disk['mountpoint'])) {
+			exec("mkdir -p " . $disk['mountpoint']);
+		}
+	}
+	$conf .= "\n";
+
+	util_file_write("/etc/fstab", $conf);
+	sleep(1);
+
+	openlog("storage_configure()", LOG_INFO, LOG_LOCAL0);
+	foreach ($disks as $disk) {
+		if (!isset($disk['unmounted'])) {
+			exec("mount -t msdos " . $disk['device'] . "1 -o noatime >> /etc/storage.debug 2>&1", $out, $retval);
+			syslog(LOG_INFO, "Mounting " . $disk['device'] . "1 on " . $disk['mountpoint'] . " returned " . $retval);
+		} else {
+			syslog(LOG_INFO, "SKIPPED mounting " . $disk['device'] . "1 on " . $disk['mountpoint']);
+		}
+	}
+	closelog();
+
+	unlink_if_exists($g['storage_dirty_path']);
+}
+
 ?>

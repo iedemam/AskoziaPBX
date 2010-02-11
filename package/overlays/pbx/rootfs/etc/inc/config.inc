@@ -158,7 +158,7 @@ EOD;
 		fclose($fd);
 
 		/* write out an fstab */
-		$fd = fopen("{$g['etc_path']}/fstab", "w");
+		$fd = fopen("/etc/fstab", "w");
 
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} msdos ro 1 1\n";
 		if (strpos($disk, "mmcblk") !== false) {
@@ -170,6 +170,9 @@ EOD;
 
 		fwrite($fd, $fstab);
 		fclose($fd);
+
+		/* create a copy for the fstab generator to read in */
+		copy("/etc/fstab", "/etc/fstab.boot");
 	}
 
 	/* mount all filesystems */
@@ -400,6 +403,12 @@ function config_build_uniqid_map($config) {
 	$n = count($config['interfaces']['redfone-gateway']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['interfaces']['redfone-gateway'][$i]['uniqid']] = $i;
+	}
+
+	// storage disks
+	$n = count($config['storage']['disk']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['storage']['disk'][$i]['uniqid']] = $i;
 	}
 
 	return $uniqid_map;
