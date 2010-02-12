@@ -140,9 +140,11 @@ function report_hardware($devmodever, $description) {
 
 	$dahdi = "";
 	util_dir_to_contents_array('/proc/dahdi', $dahdi_dir);
-	ksort($dahdi_dir);
-	foreach ($dahdi_dir as $path => $contents) {
-		$dahdi .= $path . "\n" . $contents . "\n\n";
+	if (is_array($dahdi_dir)) {
+		ksort($dahdi_dir);
+		foreach ($dahdi_dir as $path => $contents) {
+			$dahdi .= $path . "\n" . $contents . "\n\n";
+		}
 	}
 
 	$mail_sent = mail(
