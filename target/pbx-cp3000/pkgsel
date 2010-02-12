@@ -70,7 +70,6 @@ X php4
 X sslwrap
 X ajaxcgi
 X jquery.ui
-X jquery.blockui
 X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
