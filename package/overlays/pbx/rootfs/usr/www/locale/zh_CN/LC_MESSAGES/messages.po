@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:32+0000\n"
+"POT-Creation-Date: 2010-02-12 17:12+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -651,6 +651,22 @@ msgid "disabled"
 msgstr "禁用"
 
 msgid "The provider will be contacted this often to check its availability."
+msgstr ""
+
+#, fuzzy
+msgid "Failover Provider"
+msgstr "提供商"
+
+msgid "No other Providers for failover."
+msgstr ""
+
+msgid "none"
+msgstr "没有"
+
+msgid ""
+"If an outgoing call to this Provider fails, try routing it over the account "
+"selected above. Dialpatterns must be compatible, no extra care is yet taken "
+"to match them."
 msgstr ""
 
 msgid "Dialplan"
@@ -2092,9 +2108,6 @@ msgstr "WPA设置"
 
 msgid "Mode"
 msgstr "模式"
-
-msgid "none"
-msgstr "没有"
 
 msgid "PSK"
 msgstr "PSK"

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:32+0000\n"
+"POT-Creation-Date: 2010-02-12 17:12+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -577,6 +577,21 @@ msgid "disabled"
 msgstr ""
 
 msgid "The provider will be contacted this often to check its availability."
+msgstr ""
+
+msgid "Failover Provider"
+msgstr ""
+
+msgid "No other Providers for failover."
+msgstr ""
+
+msgid "none"
+msgstr ""
+
+msgid ""
+"If an outgoing call to this Provider fails, try routing it over the account "
+"selected above. Dialpatterns must be compatible, no extra care is yet taken "
+"to match them."
 msgstr ""
 
 msgid "Dialplan"
@@ -1927,9 +1942,6 @@ msgid "WPA settings"
 msgstr ""
 
 msgid "Mode"
-msgstr ""
-
-msgid "none"
 msgstr ""
 
 msgid "PSK"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:32+0000\n"
+"POT-Creation-Date: 2010-02-12 17:12+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -677,6 +677,22 @@ msgid "disabled"
 msgstr "Забранени"
 
 msgid "The provider will be contacted this often to check its availability."
+msgstr ""
+
+#, fuzzy
+msgid "Failover Provider"
+msgstr "Външни"
+
+msgid "No other Providers for failover."
+msgstr ""
+
+msgid "none"
+msgstr "без"
+
+msgid ""
+"If an outgoing call to this Provider fails, try routing it over the account "
+"selected above. Dialpatterns must be compatible, no extra care is yet taken "
+"to match them."
 msgstr ""
 
 msgid "Dialplan"
@@ -2162,9 +2178,6 @@ msgstr "WPA настройки"
 
 msgid "Mode"
 msgstr "Режим"
-
-msgid "none"
-msgstr "без"
 
 msgid "PSK"
 msgstr "PSK"

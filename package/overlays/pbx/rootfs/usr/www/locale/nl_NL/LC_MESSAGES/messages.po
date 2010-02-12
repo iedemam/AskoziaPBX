@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:32+0000\n"
+"POT-Creation-Date: 2010-02-12 17:12+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -608,6 +608,22 @@ msgid "disabled"
 msgstr "Uitgeschakeld"
 
 msgid "The provider will be contacted this often to check its availability."
+msgstr ""
+
+#, fuzzy
+msgid "Failover Provider"
+msgstr "Providers"
+
+msgid "No other Providers for failover."
+msgstr ""
+
+msgid "none"
+msgstr "geen"
+
+msgid ""
+"If an outgoing call to this Provider fails, try routing it over the account "
+"selected above. Dialpatterns must be compatible, no extra care is yet taken "
+"to match them."
 msgstr ""
 
 msgid "Dialplan"
@@ -2110,9 +2126,6 @@ msgstr "WPA instellingen"
 
 msgid "Mode"
 msgstr "Mode"
-
-msgid "none"
-msgstr "geen"
 
 msgid "PSK"
 msgstr "PSK"

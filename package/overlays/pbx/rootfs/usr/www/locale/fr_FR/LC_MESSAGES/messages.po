@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:32+0000\n"
+"POT-Creation-Date: 2010-02-12 17:12+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -673,6 +673,22 @@ msgid "disabled"
 msgstr "Désactivé(s)"
 
 msgid "The provider will be contacted this often to check its availability."
+msgstr ""
+
+#, fuzzy
+msgid "Failover Provider"
+msgstr "Opérateurs"
+
+msgid "No other Providers for failover."
+msgstr ""
+
+msgid "none"
+msgstr "aucun"
+
+msgid ""
+"If an outgoing call to this Provider fails, try routing it over the account "
+"selected above. Dialpatterns must be compatible, no extra care is yet taken "
+"to match them."
 msgstr ""
 
 msgid "Dialplan"
@@ -2151,9 +2167,6 @@ msgstr "Paramètres WPA"
 
 msgid "Mode"
 msgstr "Mode"
-
-msgid "none"
-msgstr "aucun"
 
 msgid "PSK"
 msgstr "PSK"

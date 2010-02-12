@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 11:32+0000\n"
+"POT-Creation-Date: 2010-02-12 17:12+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -682,6 +682,22 @@ msgid "disabled"
 msgstr "Απενεργοποιημένο"
 
 msgid "The provider will be contacted this often to check its availability."
+msgstr ""
+
+#, fuzzy
+msgid "Failover Provider"
+msgstr "Πάροχοι"
+
+msgid "No other Providers for failover."
+msgstr ""
+
+msgid "none"
+msgstr "κανένα"
+
+msgid ""
+"If an outgoing call to this Provider fails, try routing it over the account "
+"selected above. Dialpatterns must be compatible, no extra care is yet taken "
+"to match them."
 msgstr ""
 
 msgid "Dialplan"
@@ -2185,9 +2201,6 @@ msgstr "Ρυθμίσεις WPA"
 
 msgid "Mode"
 msgstr "Τρόπος λειτουργίας"
-
-msgid "none"
-msgstr "κανένα"
 
 msgid "PSK"
 msgstr "PSK"
