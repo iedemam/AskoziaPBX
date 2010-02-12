@@ -270,6 +270,13 @@ function isdn_verify_provider($post, $errors) {
 	v_outgoing_prov_callerid(&$provider, &$post, &$errors);
 	v_manualattributes(&$provider, &$post, &$errors);
 
+	$optional = array(
+		'failover'
+	);
+	foreach ($optional as $o) {
+		$provider[$o] = v_strip($post[$o]);
+	}
+
 	$trusted = array(
 		'uniqid',
 		'language',

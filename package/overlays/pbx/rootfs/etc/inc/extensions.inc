@@ -614,6 +614,8 @@ function extensions_generate_provider_outgoing_context($p) {
 		dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
 
 		$conf .= "exten => _$pattern,1,NoOp(outgoing call to provider: {$p['name']})\n";
+		$conf .= "exten => _$pattern,n,Set(ORIGEXTENSION=$\{EXTEN})\n";
+		$conf .= "exten => _$pattern,n,NoOp(original extension = $\{ORIGEXTENSION})\n";
 
 		// apply caller id override
 		if ($cidoverride) {
@@ -635,8 +637,20 @@ function extensions_generate_provider_outgoing_context($p) {
 			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
 		}
 
-		// hangup
-		$conf .= "exten => _$pattern,n,Hangup()\n";
+		if ($p['failover'] && ($failover = pbx_get_provider($p['failover']))) {
+			$conf .= "exten => _$pattern,n,NoOp(DIALSTATUS = $\{DIALSTATUS})\n";
+			$conf .= "exten => _$pattern,n,Goto({$p['uniqid']}-$\{DIALSTATUS},1)\n";
+			$conf .= "exten => {$p['uniqid']}-NOANSWER,1,Hangup()\n";
+			$conf .= "exten => {$p['uniqid']}-CANCEL,1,Hangup()\n";
+			$conf .= "exten => {$p['uniqid']}-BUSY,1,Hangup()\n";
+			$conf .= "exten => {$p['uniqid']}-CONGESTION,1,NoOp(Failover needed, now using : " . $failover['name'] . ")\n";
+			$conf .= "exten => {$p['uniqid']}-CONGESTION,n,Goto({$p['failover']},$\{ORIGEXTENSION},1)\n";
+			$conf .= "exten => {$p['uniqid']}-CHANUNAVAIL,1,NoOp(Failover needed, now using : " . $failover['name'] . ")\n";
+			$conf .= "exten => {$p['uniqid']}-CHANUNAVAIL,n,Goto({$p['failover']},$\{ORIGEXTENSION},1)\n";
+
+		} else {
+			$conf .= "exten => _$pattern,n,Hangup()\n";
+		}
 	}
 
 	return $conf;

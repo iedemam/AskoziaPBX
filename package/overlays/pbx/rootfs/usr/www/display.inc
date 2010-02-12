@@ -1120,4 +1120,34 @@ function d_manualattributes_editor($current_manualattributes) {
 	</tr><?
 }
 
+function d_failover_provider($current_failover) {
+	global $colspan;
+
+	$providers = pbx_get_providers();
+
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Failover Provider"));?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
+
+		if (!count($providers)) {
+			echo "<em>" . gettext("No other Providers for failover.") . "</em>";
+
+		} else {
+
+			?><select name="failover" class="formfld" id="failover">
+				<option><?=gettext("none");?></option><?
+			foreach ($providers as $p) {
+				?><option value="<?=$p['uniqid'];?>" <?
+				if ($p['uniqid'] == $current_failover)
+					echo "selected"; ?>
+				><?=$p['name'];?></option><?
+			}
+			?></select><?
+		}
+
+			?><br><span class="vexpl"><?=spanify(gettext("If an outgoing call to this Provider fails, try routing it over the account selected above. Dialpatterns must be compatible, no extra care is yet taken to match them."));?></span>
+		</td>
+	</tr><?
+}
+
 ?>

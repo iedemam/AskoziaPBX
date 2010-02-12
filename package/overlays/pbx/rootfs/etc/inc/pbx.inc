@@ -369,6 +369,27 @@ function pbx_get_providers() {
 }
 
 /**
+ * Returns a provider based on its uniqid
+ */
+function pbx_get_provider($uniqid) {
+
+	if (strstr($uniqid, "SIP-PROVIDER")) {
+		return sip_get_provider($uniqid);
+
+	} else if (strstr($uniqid, "IAX-PROVIDER")) {
+		return iax_get_provider($uniqid);
+
+	} else if (strstr($uniqid, "ISDN-PROVIDER")) {
+		return isdn_get_provider($uniqid);
+
+	} else if (strstr($uniqid, "ANALOG-PROVIDER")) {
+		return analog_get_provider($uniqid);
+	}
+
+	return;
+}
+
+/**
  * Deletes a provider from the configuration array.
  * XXX : as opposed to the pbx_get_* functions, this is implemented in pbx.inc itself
  * this seems more logical as there is nothing technology specific going on here.

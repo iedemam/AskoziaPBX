@@ -81,6 +81,7 @@ d_start("providers_sip_edit.php");
 	d_header(gettext("Call Routing"));
 	display_provider_dialpattern_editor($form['dialpattern'], 2);
 	display_incoming_extension_selector(2);
+	d_failover_provider($form['failover']);
 	d_spacer();
 
 
