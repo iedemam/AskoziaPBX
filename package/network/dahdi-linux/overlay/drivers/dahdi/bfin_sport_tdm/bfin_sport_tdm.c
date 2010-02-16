@@ -75,8 +75,8 @@
 //#define DEBUG
 #undef DEBUG
 
-#define NO_FXS_MOD
-//#undef NO_FXS_MOD
+//#define NO_FXS_MOD
+#undef NO_FXS_MOD
 
 //#define NO_BRI_MOD
 #undef NO_BRI_MOD
@@ -123,13 +123,13 @@ static  int16_t *conv_out_buf;
 
 #ifndef NO_BRI_MOD
 extern void xhfc_int(void);
-extern u8* xhfc_get_bchan_tx_buf(nr_slot_t slot, nr_port_t pnum, __u8 bchan);
-extern u8* xhfc_get_bchan_rx_buf(nr_slot_t slot, nr_port_t pnum, __u8 bchan);
+extern u8* xhfc_get_bchan_tx_chunk(nr_slot_t slot, nr_port_t pnum, __u8 bchan);
+extern u8* xhfc_get_bchan_rx_chunk(nr_slot_t slot, nr_port_t pnum, __u8 bchan);
 #endif
 #ifndef NO_FXS_MOD
 extern void aucp3kfxs_interrupt( void );
-extern u8* aucp3kfxs_get_chan_tx_buf( nr_slot_t slot, nr_port_t pnum );
-extern u8* aucp3kfxs_get_chan_rx_buf( nr_slot_t slot, nr_port_t pnum );
+extern u8* aucp3kfxs_get_chan_tx_chunk( nr_slot_t slot, nr_port_t pnum );
+extern u8* aucp3kfxs_get_chan_rx_chunk( nr_slot_t slot, nr_port_t pnum );
 #endif
 
 static unsigned short bfin_char_pin_req_sport[] =
@@ -165,8 +165,8 @@ typedef struct {
     int16_t     ts_distance;            // dist. between both 16 bit timeslot in a frame
     int16_t     *rx_delay_line;         // Delay line for 16<>8 kHz Filter rx / upstream
     int16_t     *tx_delay_line;         // Delay line for 8<>16 kHz Filter tx / downstream
-    u8          *dahdi_rx_buf;          // dahdi receive chunk
-    u8          *dahdi_tx_buf;          // dahdi transmit chunk
+    u8          *dahdi_rx_chunk;        // dahdi receive chunk
+    u8          *dahdi_tx_chunk;        // dahdi transmit chunk
 } t_tdm;
 
 /* COMpact 3000 TDM Map
@@ -415,7 +415,7 @@ static irqreturn_t dma_irq_handler(int irq, void *dev_id)
                  */
                 // copy samples from DMA to rx buffer
 #ifndef NO_BRI_MOD
-	      receive_buffer_byte_raw((uint8_t *)rx_buf + (chan_count^1), dest->dahdi_rx_buf);
+	      receive_buffer_byte_raw((uint8_t *)rx_buf + (chan_count^1), dest->dahdi_rx_chunk);
 #endif
 
 #ifdef SPORT_TEST_LOOPBACK
@@ -447,7 +447,7 @@ static irqreturn_t dma_irq_handler(int irq, void *dev_id)
                     swdsp_Decimate(dest->rx_delay_line, conv_in_buf, conv_out_buf, DMA_FRAMES_PER_MS*2);
 #ifndef NO_FXS_MOD
 		    for(count=0;count<DMA_FRAMES_PER_MS;++count){
-		      dest->dahdi_rx_buf[count] = linear_to_alaw(conv_out_buf[count]);
+		      dest->dahdi_rx_chunk[count] = linear_to_alaw(conv_out_buf[count]);
 		    }		    
 #endif
                 }
@@ -499,7 +499,7 @@ static irqreturn_t dma_irq_handler(int irq, void *dev_id)
                  * TODO: z.Z. nur LOOP BACK und Testtoene
                  * die test_io_xx_buf muessen durch die entsprechenden _AKTIVEN_ Dahdi Buffer ersetzt werden
                  */
-                send_buffer_byte_raw((uint8_t *)tx_buf + (chan_count^1), dest->dahdi_tx_buf);
+                send_buffer_byte_raw((uint8_t *)tx_buf + (chan_count^1), dest->dahdi_tx_chunk);
             }else{
                 /*
                  *  Active 16 kHz timeslot
@@ -509,7 +509,7 @@ static irqreturn_t dma_irq_handler(int irq, void *dev_id)
                 // 8 kHz a-Law > 16 kHz linear
                 if(dest->tx_delay_line){
                     for(count=0;count<DMA_FRAMES_PER_MS;++count){
-                        conv_in_buf[count] = alaw_to_linear(dest->dahdi_tx_buf[count]);
+                        conv_in_buf[count] = alaw_to_linear(dest->dahdi_tx_chunk[count]);
                     }
                     swdsp_Interpolate(dest->tx_delay_line, conv_in_buf, conv_out_buf, DMA_FRAMES_PER_MS);
                 }
@@ -554,14 +554,14 @@ static void sport_init_matrix(void){
 
 #ifndef NO_FXS_MOD
     // init dahdi buffer pointer
-    phys_tdm[8].dahdi_rx_buf = aucp3kfxs_get_chan_rx_buf( AUERMOD_CP3000_SLOT_AB, 0 );
-    phys_tdm[8].dahdi_tx_buf = aucp3kfxs_get_chan_tx_buf( AUERMOD_CP3000_SLOT_AB, 0 );
-    phys_tdm[10].dahdi_rx_buf = aucp3kfxs_get_chan_rx_buf( AUERMOD_CP3000_SLOT_AB, 1 );
-    phys_tdm[10].dahdi_tx_buf = aucp3kfxs_get_chan_tx_buf( AUERMOD_CP3000_SLOT_AB, 1 );
-    phys_tdm[12].dahdi_rx_buf = aucp3kfxs_get_chan_rx_buf( AUERMOD_CP3000_SLOT_AB, 2 );
-    phys_tdm[12].dahdi_tx_buf = aucp3kfxs_get_chan_tx_buf( AUERMOD_CP3000_SLOT_AB, 2 );
-    phys_tdm[14].dahdi_rx_buf = aucp3kfxs_get_chan_rx_buf( AUERMOD_CP3000_SLOT_AB, 3 );
-    phys_tdm[14].dahdi_tx_buf = aucp3kfxs_get_chan_tx_buf( AUERMOD_CP3000_SLOT_AB, 3 );
+    phys_tdm[8].dahdi_rx_chunk = aucp3kfxs_get_chan_rx_chunk( AUERMOD_CP3000_SLOT_AB, 0 );
+    phys_tdm[8].dahdi_tx_chunk = aucp3kfxs_get_chan_tx_chunk( AUERMOD_CP3000_SLOT_AB, 0 );
+    phys_tdm[10].dahdi_rx_chunk = aucp3kfxs_get_chan_rx_chunk( AUERMOD_CP3000_SLOT_AB, 1 );
+    phys_tdm[10].dahdi_tx_chunk = aucp3kfxs_get_chan_tx_chunk( AUERMOD_CP3000_SLOT_AB, 1 );
+    phys_tdm[12].dahdi_rx_chunk = aucp3kfxs_get_chan_rx_chunk( AUERMOD_CP3000_SLOT_AB, 2 );
+    phys_tdm[12].dahdi_tx_chunk = aucp3kfxs_get_chan_tx_chunk( AUERMOD_CP3000_SLOT_AB, 2 );
+    phys_tdm[14].dahdi_rx_chunk = aucp3kfxs_get_chan_rx_chunk( AUERMOD_CP3000_SLOT_AB, 3 );
+    phys_tdm[14].dahdi_tx_chunk = aucp3kfxs_get_chan_tx_chunk( AUERMOD_CP3000_SLOT_AB, 3 );
 #else
     phys_tdm[8].mode = e_kf_mode_unused;
     phys_tdm[8].ts_distance = 0;
@@ -591,14 +591,16 @@ static void sport_init_matrix(void){
     }else if((result & CP3000_HW_MASK) == CP3000_HW_ISDN){
         printk(KERN_INFO "       ISDN\n");
         // init ISDN/BRI 8 kHz channel 4  + 5
-	phys_tdm[4].mode = e_kf_mode_8kHz;
+#ifndef NO_BRI_MOD
+        phys_tdm[4].mode = e_kf_mode_8kHz;
         phys_tdm[4].ts_distance = 0;
-        phys_tdm[4].dahdi_rx_buf = xhfc_get_bchan_rx_buf( AUERMOD_CP3000_SLOT_S0, 0, 0 );
-        phys_tdm[4].dahdi_tx_buf = xhfc_get_bchan_tx_buf( AUERMOD_CP3000_SLOT_S0, 0, 0 );
+        phys_tdm[4].dahdi_rx_chunk = xhfc_get_bchan_rx_chunk( AUERMOD_CP3000_SLOT_S0, 0, 0 );
+        phys_tdm[4].dahdi_tx_chunk = xhfc_get_bchan_tx_chunk( AUERMOD_CP3000_SLOT_S0, 0, 0 );
         phys_tdm[5].mode = e_kf_mode_8kHz;
         phys_tdm[5].ts_distance = 0;
-        phys_tdm[5].dahdi_rx_buf = xhfc_get_bchan_rx_buf( AUERMOD_CP3000_SLOT_S0, 0, 1 );
-        phys_tdm[5].dahdi_tx_buf = xhfc_get_bchan_tx_buf( AUERMOD_CP3000_SLOT_S0, 0, 1 );
+        phys_tdm[5].dahdi_rx_chunk = xhfc_get_bchan_rx_chunk( AUERMOD_CP3000_SLOT_S0, 0, 1 );
+        phys_tdm[5].dahdi_tx_chunk = xhfc_get_bchan_tx_chunk( AUERMOD_CP3000_SLOT_S0, 0, 1 );
+#endif
     }else{
         printk(KERN_INFO "       VoIP\n");
         // no additional interfaces vor CP3000 VoIP
@@ -614,12 +616,12 @@ static void sport_init_matrix(void){
         printk(KERN_INFO "       1 * BRI detected\n");
         phys_tdm[0].mode = e_kf_mode_8kHz;
         phys_tdm[0].ts_distance = 0;
-        phys_tdm[0].dahdi_rx_buf = xhfc_get_bchan_rx_buf( AUERMOD_CP3000_SLOT_MOD, 0, 0 );
-        phys_tdm[0].dahdi_tx_buf = xhfc_get_bchan_tx_buf( AUERMOD_CP3000_SLOT_MOD, 0, 0 );
+        phys_tdm[0].dahdi_rx_chunk = xhfc_get_bchan_rx_chunk( AUERMOD_CP3000_SLOT_MOD, 0, 0 );
+        phys_tdm[0].dahdi_tx_chunk = xhfc_get_bchan_tx_chunk( AUERMOD_CP3000_SLOT_MOD, 0, 0 );
         phys_tdm[1].mode = e_kf_mode_8kHz;
         phys_tdm[1].ts_distance = 0;
-        phys_tdm[1].dahdi_rx_buf = xhfc_get_bchan_rx_buf( AUERMOD_CP3000_SLOT_MOD, 0, 1 );
-        phys_tdm[1].dahdi_tx_buf = xhfc_get_bchan_tx_buf( AUERMOD_CP3000_SLOT_MOD, 0, 1 );
+        phys_tdm[1].dahdi_rx_chunk = xhfc_get_bchan_rx_chunk( AUERMOD_CP3000_SLOT_MOD, 0, 1 );
+        phys_tdm[1].dahdi_tx_chunk = xhfc_get_bchan_tx_chunk( AUERMOD_CP3000_SLOT_MOD, 0, 1 );
         phys_tdm[2].mode = e_kf_mode_unused;
         phys_tdm[2].ts_distance = 0;
         phys_tdm[3].mode = e_kf_mode_unused;
@@ -632,14 +634,14 @@ static void sport_init_matrix(void){
         // init FXS 5 + 6 / wideband
         phys_tdm[0].mode = e_kf_mode_16kHz;
         phys_tdm[0].ts_distance = DISTANZ_WORD;
-        phys_tdm[0].dahdi_rx_buf = aucp3kfxs_get_chan_rx_buf( AUERMOD_CP3000_SLOT_MOD, 0 );
-        phys_tdm[0].dahdi_tx_buf = aucp3kfxs_get_chan_tx_buf( AUERMOD_CP3000_SLOT_MOD, 0 );
+        phys_tdm[0].dahdi_rx_chunk = aucp3kfxs_get_chan_rx_chunk( AUERMOD_CP3000_SLOT_MOD, 0 );
+        phys_tdm[0].dahdi_tx_chunk = aucp3kfxs_get_chan_tx_chunk( AUERMOD_CP3000_SLOT_MOD, 0 );
         phys_tdm[1].mode = e_kf_mode_unused;
         phys_tdm[1].ts_distance = 0;
         phys_tdm[2].mode = e_kf_mode_16kHz;
         phys_tdm[2].ts_distance = DISTANZ_WORD;
-        phys_tdm[2].dahdi_rx_buf = aucp3kfxs_get_chan_rx_buf( AUERMOD_CP3000_SLOT_MOD, 1 );
-        phys_tdm[2].dahdi_tx_buf = aucp3kfxs_get_chan_tx_buf( AUERMOD_CP3000_SLOT_MOD, 1 );
+        phys_tdm[2].dahdi_rx_chunk = aucp3kfxs_get_chan_rx_chunk( AUERMOD_CP3000_SLOT_MOD, 1 );
+        phys_tdm[2].dahdi_tx_chunk = aucp3kfxs_get_chan_tx_chunk( AUERMOD_CP3000_SLOT_MOD, 1 );
         phys_tdm[3].mode = e_kf_mode_unused;
         phys_tdm[3].ts_distance = 0;
 #endif

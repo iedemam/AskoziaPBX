@@ -28,6 +28,8 @@ static int iomem_ref_count = 0;
 /* for proper IO memory allocation and free */
 static iomem_state_e iomem_state = INITIAL;
 
+static pll_state_t pll_state;
+
 void spi_start(void __iomem * base_address)
 {
     /* first access configures the clock polarity and sets
@@ -213,7 +215,7 @@ static iomem_state_e iomem_free(void)
 /*
  * "calculate" a devices spi-address
  */
-void __iomem * calc_spi_addr(unsigned cs, unsigned slot, unsigned speed, unsigned polarity, unsigned invert)
+void __iomem * auerask_calc_spi_addr(unsigned cs, unsigned slot, unsigned speed, unsigned polarity, unsigned invert)
 {
     unsigned base_address = SPI_CSNONE;
     switch (slot) {
@@ -227,6 +229,75 @@ void __iomem * calc_spi_addr(unsigned cs, unsigned slot, unsigned speed, unsigne
     return (void __iomem *) base_address;
 }
 
+/*
+ * Switches the systems clocking source
+ * pll to another sync source. For now,
+ * there are just three cases.
+ */
+void write_pll_source(__u8 slot)
+{
+  switch(slot)
+    {
+    case AUERMOD_CP3000_SLOT_MOD:
+       write_wsync(WSYNC_PLLON | WSYNC_PLLMOD);
+      break;
+    case AUERMOD_CP3000_SLOT_S0:
+       write_wsync(WSYNC_PLLON);
+      break;
+    default:
+       write_wsync(WSYNC_DEFAULT);
+    }
+}
+
+
+/*
+ * Receives a syncronisation event from a driver. This
+ * routine keeps a tiny per-slot sync state data structure
+ * up to date and switches the on-board pll for clock sync
+ * if necessary. If there are multiple ports per slot that
+ * can be used as sync source extensions will have to be
+ * made here.
+ */
+void auerask_cp3k_sync_ev( __u8 sync, __u8 slot)
+{
+  if((pll_state.sync_source == 0) && (sync == AUERASK_SYNCED))
+    {
+      /* We don't have a sync source 
+	 and this one can be used. */
+      pll_state.sync_source = slot;
+      write_pll_source(slot);
+    }
+  else if((pll_state.sync_source == slot) && (sync == AUERASK_UNSYNCED))
+    {
+      /* Our currently used sync source lost sync. Search for a new one. */
+      __u8 i;
+
+      /* This gives a higher priority to slots with low numbers.
+       * Perhaps we will have to change this in future.
+       */
+      pll_state.sync_source = 0;
+      for(i=0; i<CP3000_AUERMODANZ; i++)
+	{
+	  if(pll_state.slot_state[i] == SYNCED)
+	    {
+	      /* switch to new one */
+	      pll_state.sync_source = i;
+	      write_pll_source(slot);
+	      break;
+	    }
+	}
+
+      if(!pll_state.sync_source)
+	write_pll_source(0); /* None found */
+    }
+
+  /* update our per-slot data-structure in any case */
+  if(sync == AUERASK_SYNCED)
+    pll_state.slot_state[slot] = SYNCED;  
+  else if(sync == AUERASK_UNSYNCED)
+    pll_state.slot_state[slot] = UNSYNCED;  
+
+}
 
 
 /**
@@ -264,7 +335,13 @@ iomem_state_e auerask_cp3k_spi_exit(void)
 
 static int __init auerask_cp3k_mb_init(void)
 {
-	return 0;
+  __u8 i;
+
+  pll_state.sync_source = 0;
+  for(i=0; i<CP3000_AUERMODANZ; i++)
+    pll_state.slot_state[i] = UNSYNCED;
+
+  return 0;
 }
 
 static void __exit auerask_cp3k_mb_cleanup(void)
@@ -285,7 +362,8 @@ EXPORT_SYMBOL(auerask_cp3k_spi_init);
 EXPORT_SYMBOL(auerask_cp3k_spi_exit);
 EXPORT_SYMBOL(auerask_cp3k_read_modID);
 EXPORT_SYMBOL(auerask_cp3k_read_hwrev);
-EXPORT_SYMBOL(calc_spi_addr);
+EXPORT_SYMBOL(auerask_calc_spi_addr);
+EXPORT_SYMBOL(auerask_cp3k_sync_ev);
 EXPORT_SYMBOL(spi_write);
 EXPORT_SYMBOL(spi_read);
 EXPORT_SYMBOL(spi_read_stop);

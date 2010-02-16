@@ -470,9 +470,16 @@ static int xhfc_startup(struct dahdi_span *span)
 		if (((!bc) && (!(port->mode & (PORT_MODE_LOOP_B1)))) ||
 		    (bc && (!(port->mode & (PORT_MODE_LOOP_B2))))) {
 		  __u8 slot, dir, sl_cfg, hfc_channel; 
+		  reg_a_con_hdlc a_con_hdlc_bk;
+		  
+		        a_con_hdlc_bk.reg = 0;
+		        a_con_hdlc_bk.bit_value.v_iff = 0;        /* 0 fill */
+		        a_con_hdlc_bk.bit_value.v_hdlc_trp = 1;   /* transparent mode */
+		        a_con_hdlc_bk.bit_value.v_fifo_irq = 7;   /* no interrupt, fifo active */
+		        a_con_hdlc_bk.bit_value.v_data_flow = 7;  /* PCM <-> S/T interface */
 
-		        setup_fifo(port->hw, (port->idx * 8) + (bc * 2), 0xE6, 0, 0, 1);	// enable TX Fifo
-			setup_fifo(port->hw, (port->idx * 8) + (bc * 2) + 1, 0xE6, 0, 0, 1);	// enable RX Fifo
+		        setup_fifo(port->hw, (port->idx * 8) + (bc * 2), a_con_hdlc_bk.reg, 0, 0, 1);	// enable TX Fifo
+			setup_fifo(port->hw, (port->idx * 8) + (bc * 2) + 1, a_con_hdlc_bk.reg, 0, 0, 1);	// enable RX Fifo
 
 			/* PCM timeslot */
 			slot = ((port->hw->slot-1)*4) + bc;
@@ -563,11 +570,17 @@ static int init_dahdi_interface(xhfc_port_t * port)
 		port->idx);
 
 	sprintf(port->zspan.desc, port->hw->card_name);
-        sprintf(port->zspan.devicetype, port->hw->card_name);
+	sprintf(port->zspan.devicetype, port->hw->card_name);
 
 	port->zspan.manufacturer = "Auerswald GmbH & Co. KG";
 	port->zspan.spantype = (port->mode & PORT_MODE_TE) ? "TE" : "NT";
-	sprintf(port->zspan.location, "SPI Bus 00 Slot %i", port->hw->slot);
+
+	if(port->hw->slot == AUERMOD_CP3000_SLOT_S0)
+	  sprintf(port->zspan.location, "mainboard");
+	else if(port->hw->slot == AUERMOD_CP3000_SLOT_MOD)
+	  sprintf(port->zspan.location, "plug in module");
+	else
+	  sprintf(port->zspan.location, "unknown");
 
 	for (i = 0; i < port->zspan.channels; i++) {
 		port->zchans[i] = &port->_chans[i];
@@ -735,6 +748,12 @@ static void xhfc_ph_command(xhfc_port_t * port, u_char command)
  * built into the hardware. But there are some timers to implement
  * that should be handled by software and the upper layers have to
  * be informed about certain state change events.
+ *
+ * If in TE-mode, the ISDN driver sends an event upon port sync
+ * and lost port sync. The mainboard driver will take care about
+ * it and eventually switch the systems pll to that external
+ * clock source. This is done to prevent frequncy slips that lead
+ * to disruptions in signalling.
  */
 static void su_new_state(xhfc_port_t * port, __u8 su_state)
 {
@@ -758,6 +777,7 @@ static void su_new_state(xhfc_port_t * port, __u8 su_state)
 
 			switch (new_state.bit_value.v_su_sta) {
 			case (3):
+				auerask_cp3k_sync_ev( AUERASK_UNSYNCED, port->hw->slot);
 				if (test_and_clear_bit
 				    (HFC_L1_ACTIVATED, &port->l1_flags))
 					port->t4 = HFC_TIMER_T4;
@@ -770,14 +790,18 @@ static void su_new_state(xhfc_port_t * port, __u8 su_state)
 				clear_bit(HFC_L1_ACTIVATING, &port->l1_flags);
 				set_bit(HFC_L1_ACTIVATED, &port->l1_flags);
 
+				auerask_cp3k_sync_ev( AUERASK_SYNCED, port->hw->slot);
+
 				port->zspan.alarms = DAHDI_ALARM_NONE;
 				dahdi_alarm_notify(&port->zspan);
 				break;
 
 			case (8):
 				port->t4 = HFC_TIMER_OFF;
+				auerask_cp3k_sync_ev( AUERASK_UNSYNCED, port->hw->slot);
 				break;
 			default:
+				auerask_cp3k_sync_ev( AUERASK_UNSYNCED, port->hw->slot);
 				break;
 			}
 
@@ -980,7 +1004,7 @@ static void xhfc_write_fifo_dchan(xhfc_port_t * port)
  */
 static void xhfc_irq_work(xhfc_hw * hw)
 {
-      __u8 pt, bc;
+      __u8 pt;
 
 	hw->su_irq.reg |= read_xhfc(hw, R_SU_IRQ);
 
@@ -999,6 +1023,9 @@ static void xhfc_irq_work(xhfc_hw * hw)
 					     read_xhfc(hw, A_SU_RD_STA));
 				hw->su_irq.reg &= ~(1 << pt);
 			}
+			
+			/* Do echo cancellation if wanted */
+			dahdi_ec_span(&hw->port[pt].zspan);
 
 			/* get tx buffer filled by dahdi */
 			dahdi_transmit(&hw->port[pt].zspan);
@@ -1090,9 +1117,9 @@ static void xhfc_irq_work(xhfc_hw * hw)
 
 /*
  * Lets the bfin_sport_tdm driver know where the
- * transmit buffer is. So the buffer can be filles by that driver.
+ * transmit buffer is. So the buffer can be filled by that driver.
  */
-static u8* xhfc_get_bchan_tx_buf(nr_slot_t slot, nr_port_t pnum, __u8 bchan) 
+static u8* xhfc_get_bchan_tx_chunk(nr_slot_t slot, nr_port_t pnum, __u8 bchan) 
 {
   u8* result;
 
@@ -1106,9 +1133,9 @@ static u8* xhfc_get_bchan_tx_buf(nr_slot_t slot, nr_port_t pnum, __u8 bchan)
 
 
 /*
- * Points to our receive buffer. The bfin_sport_tdm 
+ * Points to our receive buffer.
  */
-static u8* xhfc_get_bchan_rx_buf(nr_slot_t slot, nr_port_t pnum, __u8 bchan) 
+static u8* xhfc_get_bchan_rx_chunk(nr_slot_t slot, nr_port_t pnum, __u8 bchan) 
 {
   u8* result;
 
@@ -1157,7 +1184,6 @@ void xhfc_int(void)
 /*****************************************************/
 static void disable_interrupts(xhfc_hw * hw)
 {
-  unsigned long flags;
   
   if (debug & DEBUG_HFC_IRQ)
     printk(KERN_INFO "%s %s\n", hw->card_name, __FUNCTION__);
@@ -1444,6 +1470,9 @@ static void parse_module_params(xhfc_hw * hw)
 	      hw->port[pt].mode |= PORT_MODE_S0;
 	      break;
 	    default:
+	      /* fall-back */
+	      hw->port[pt].mode |= PORT_MODE_TE;
+	      hw->port[pt].mode |= PORT_MODE_S0;
 	      printk(KERN_ERR "Fatal Error: Your hardware should send smoke signals!\n");
 	    }
 	  
@@ -1565,7 +1594,7 @@ static int __init xhfc_spi_probe(void)
 	    mod_id = auerask_cp3k_read_modID(slot);
 	    
 	    if(slot == AUERMOD_CP3000_SLOT_MOD) {
-	      if(mod_id != MODID1S0UP0){
+	      if(mod_id != MODID1S0UP0 && mod_id != MODID1S0){
 		hw_p[slot] = NULL;
 		continue;
 	      }
@@ -1587,7 +1616,7 @@ static int __init xhfc_spi_probe(void)
 	    /* Safe this pointer for shutdown purpose in module exit */
 	    hw_p[slot] = hw;
 
-	    hw->base_address = (void __iomem *) calc_spi_addr(SPI_CS1, slot, SPI_25M, SPI_CLKLH, SPI_INV);
+	    hw->base_address = (void __iomem *) auerask_calc_spi_addr(SPI_CS1, slot, SPI_25M, SPI_CLKLH, SPI_INV);
 
 	    hw->slot = slot;
 	    hw->cardnum = card_cnt;
@@ -1596,7 +1625,7 @@ static int __init xhfc_spi_probe(void)
 	    hw->chip_rev = read_xhfc(hw, R_CHIP_RV) & 0x0f;
 
 	    if(slot == AUERMOD_CP3000_SLOT_MOD) {
-	      sprintf(hw->card_name, "AUERSWALD COMpact ISDN module");
+	      sprintf(hw->card_name, "AUERSWALD COMpact ISDN Modul");
 	    } else if(slot == AUERMOD_CP3000_SLOT_S0) {
 	      sprintf(hw->card_name, "AUERSWALD COMpact 3000 ISDN");
 	    }	    
@@ -1635,7 +1664,6 @@ static int __init xhfc_init(void)
 
 static void __exit xhfc_cleanup(void)
 {
-
 	nr_slot_t slot;
 
 	for( slot=1; slot <= NUM_SLOTS; slot++)
@@ -1654,5 +1682,5 @@ module_init(xhfc_init);
 module_exit(xhfc_cleanup);
 
 EXPORT_SYMBOL(xhfc_int);
-EXPORT_SYMBOL(xhfc_get_bchan_rx_buf);
-EXPORT_SYMBOL(xhfc_get_bchan_tx_buf);
+EXPORT_SYMBOL(xhfc_get_bchan_rx_chunk);
+EXPORT_SYMBOL(xhfc_get_bchan_tx_chunk);
