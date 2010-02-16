@@ -416,6 +416,7 @@ function system_load_kernel_modules() {
 
 	if ($g['platform'] == "COMpact 3000") {
 		mwexec("/sbin/modprobe -q auerask_cp3k_mb");
+		mwexec("/sbin/modprobe -q auerask_cp3k_fxs");
 		mwexec("/sbin/modprobe -q auerask_cp3k_bri");
 		mwexec("/sbin/modprobe -q bfin_sport_tdm");
 
