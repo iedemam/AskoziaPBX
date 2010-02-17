@@ -17,7 +17,7 @@ obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCB4XXP)		+= wcb4xxp/
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCT1XXP)		+= wct1xxp.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCTE11XP)		+= wcte11xp.o
 
-#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCFXO)		+= wcfxo.o
+obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_WCFXO)		+= wcfxo.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TOR2)		+= tor2.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_PCIRADIO)		+= pciradio.o
 
@@ -29,7 +29,7 @@ obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_XPP)		+= xpp/
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_KB1)	+= dahdi_echocan_kb1.o
 obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_MG2)	+= dahdi_echocan_mg2.o
 
-obj-m += $(DAHDI_MODULES_EXTRA)
+obj-m += $(DAHDI_MODULES_EXTRA) zaphfc/
 
 # Only enable this if you think you know what you're doing. This is not
 # supported yet:

@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -415,24 +415,12 @@ function system_load_kernel_modules() {
 	mwexec("/sbin/modprobe -q dahdi");
 
 	if ($g['platform'] == "COMpact 3000") {
-		mwexec("/sbin/modprobe -q auerask_cp3k_mb");
-		mwexec("/sbin/modprobe -q auerask_cp3k_fxs");
-		mwexec("/sbin/modprobe -q auerask_cp3k_bri");
-		mwexec("/sbin/modprobe -q bfin_sport_tdm");
-
+		$basemodules = array("auerask_cp3k_mb", "auerask_cp3k_fxs", "auerask_cp3k_bri", "bfin_sport_tdm");
 	} else {
-		$modules = array("wctdm", "wcb4xxp");
-		foreach ($modules as $m) {
-			// record the current span count
-			$prev_count = count(dahdi_scan_to_spans());
-			// load the module
-			mwexec("/sbin/modprobe -q " . $m);
-			// if no new spans were recognized...
-			if ($prev_count == count(dahdi_scan_to_spans())) {
-				// unload the module
-				mwexec("/sbin/modprobe -q -r " . $m);
-			}
-		}
+		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc");
+	}
+	foreach ($basemodules as $m) {
+		mwexec("/sbin/modprobe -q " . $m);
 	}
 
 	// is xorcom stuff compiled for this platform?
@@ -440,13 +428,9 @@ function system_load_kernel_modules() {
 		mwexec("/sbin/modprobe -q xpp");
 		mwexec("/sbin/modprobe -q xpp_usb");
 		mwexec("/sbin/modprobe -q xpd_fxo");
-		// nothing detected? unload...
 		mwexec("/sbin/modprobe -q xpd_fxs");
-		// nothing detected? unload...
 		mwexec("/sbin/modprobe -q xpd_pri");
-		// nothing detected? unload...
 		mwexec("/sbin/modprobe -q xpd_bri");
-		// nothing detected? unload...
 	}
 
 	// is redfone stuff compiled for this platform?
