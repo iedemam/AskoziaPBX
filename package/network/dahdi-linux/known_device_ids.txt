@@ -1,0 +1,43 @@
+#define CCAG_VID 0x1397		// Cologne Chip Vendor ID
+#define HFC4S_ID 0x08b4		// 4S Chip ID
+#define HFC8S_ID 0x16b8		// 8S Chip ID
+
+/*
+ * clock = 0: crystal frequency is 24.576 MHz
+ * dbl_clock = 1: crystal frequency is 49.152 MHz
+ */
+
+
+// need struct definition for: pci_device_id
+																							DAHDI		mISDN/I4B	mISDN
+vendor?		vendor?		device_id	device_sub	name								ports	card_type	clock		leds_type
+-----------------------------------------------------------------------------------------------------------------------------
+0x1397		0x1397		0x08b4		0xb567		BeroNet BN1S0 miniPCI				1					1			3
+0x1397		0x1397		0x08b4		0xb566		BeroNet BN2S0 PCI					2		BN2S0		1			3
+0x1397		0x1397		0x08b4		0xb569		BeroNet BN2S0 miniPCI				2					1			3
+0x1397		0x1397		0x08b4		0xb761		BeroNet BN2S0 PCIe					2					1			3
+0x1397		0x1397		0x08b4		0xb560		BeroNet BN4S0 PCI					4		BN4S0		1			2
+0x1397		0x1397		0x08b4		0xb568		BeroNet BN4S0 miniPCI				4					1			2
+0x1397		0x1397		0x08b4		0xb762		BeroNet BN4S0 PCIe					4					1			2
+0x1397		0x1397		0x16b8		0xb562		BeroNet BN8S0						8		BN8S0		1			0
+0x1397		0x1397		0x16b8		0xb56b		BeroNet BN8S0+						8					1			8
+0xd161		0xd161		0xb410		0xb410		Digium Wildcard B410P PCI			4		B410P		0			2
+0x1397		0x1397		0x08b4		0xb556		Junghanns.NET duoBRI PCI			2		DUOBRI		1
+0x1397		0x1397		0x08b4		0xb559		Junghanns.NET duoBRI miniPCI		2					1
+0x1397		0x1397		0x08b4		0xb520		Junghanns.NET quadBRI PCI			4		QUADBRI		1			2
+0x1397		0x1397		0x08b4		0xb558		Junghanns.NET quadBRI miniPCI		4					1
+0x1397		0x1397		0x08b4		0xb550		Junghanns.NET quadBRI 2.0 PCI 		4					1			2
+0x1397		0x1397		0x16b8		0xe552		Junghanns.NET octoBRI PCI			8		OCTOBRI		1
+0x1397		0x1397		0x16b8		0xb55b		Junghanns.NET octoBRI PCI			8					1			0
+0x1397		0x1397		0x08b4		0xe884		OpenVox B200P PCI					2		B200P_OV	1			2
+0x1397		0x1397		0x08b4		0xe888		OpenVox B400P PCI					4		B400P_OV	1			2
+0x1397		0x1397		0x16b8		0xe998		OpenVox B800P PCI					8		B800P_OV	1
+0x1397		0x1397		0x08b4		0xb540		Swyx 4xS0 SX2 QuadBRI				4					1			2
+0x1397		0x1397		0x08b4		0x08b4		HFC-4S CCAG Eval (old)				4					0			0
+0x1397		0x1397		0x16b8		0x16b8		HFC-8S CCAG Eval (old)				8					0			0
+0x1397		0x1397		0x08b4		0xb620		HFC-4S								4					1			2
+0x1397		0x1397		0x16b8		0xb521		HFC-8S IOB4ST Recording				8					1			0
+0x1397		0x1397		0x16b8		0xb522		HFC-8S IOB8ST						8					1			0
+0x1397		0x1397		0x16b8		0xb552		HFC-8S								8					1			0
+0x1397		0x1397		0x16b8		0xb622		HFC-8S								8					1			0
+
