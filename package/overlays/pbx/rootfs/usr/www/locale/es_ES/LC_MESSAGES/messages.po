@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1294,8 +1294,9 @@ msgstr "¿Realmente quiere borrar este proveedor?"
 msgid "delete provider"
 msgstr "borrar proveedor"
 
-msgid "Russia"
-msgstr "Rusia"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Rusia / ex Unión Soviética"
 
 msgid "Tone Zones"
 msgstr ""
@@ -3291,6 +3292,9 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "Russia"
+#~ msgstr "Rusia"
 
 #~ msgid ""
 #~ "Is there a NATing device between the pbx and this account? Setting this "

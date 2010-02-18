@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: nobody <nobody@example.com>\n"
 "Language-Team: \n"
@@ -1392,8 +1392,9 @@ msgstr "Möchten den Provider wirklich löschen?"
 msgid "delete provider"
 msgstr "Provider löschen"
 
-msgid "Russia"
-msgstr "Russland"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Russland / ehem. UdSSR"
 
 msgid "Tone Zones"
 msgstr "Ton-Schemata (Tone zones)"
@@ -3466,6 +3467,9 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid "Russia"
+#~ msgstr "Russland"
 
 #, fuzzy
 #~ msgid "Hardware"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1347,8 +1347,9 @@ msgstr "真的要刪除這個提供商?"
 msgid "delete provider"
 msgstr "刪除提供商"
 
-msgid "Russia"
-msgstr "俄羅斯"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "俄羅斯 / 前蘇聯"
 
 msgid "Tone Zones"
 msgstr "響鈴區域"
@@ -3318,6 +3319,9 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "Russia"
+#~ msgstr "俄羅斯"
 
 #, fuzzy
 #~ msgid ""

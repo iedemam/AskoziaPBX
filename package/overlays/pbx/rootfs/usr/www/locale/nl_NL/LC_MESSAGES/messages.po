@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -1312,8 +1312,9 @@ msgstr "Wil je deze provider echt verwijderen?"
 msgid "delete provider"
 msgstr "Provider verwijderen"
 
-msgid "Russia"
-msgstr "Rusland"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Rusland / Ex Sovjetunië"
 
 msgid "Tone Zones"
 msgstr "Toon Zone's"
@@ -3333,6 +3334,9 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Russia"
+#~ msgstr "Rusland"
 
 #, fuzzy
 #~ msgid "Hardware"

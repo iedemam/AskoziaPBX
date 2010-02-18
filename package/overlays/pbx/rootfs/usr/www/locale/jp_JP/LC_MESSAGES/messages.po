@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1366,8 +1366,9 @@ msgstr "本当にこの接続回線を無効にしますか？"
 msgid "delete provider"
 msgstr "接続回線の削除"
 
-msgid "Russia"
-msgstr "ロシア"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "ロシア /ソビエト共和国"
 
 msgid "Tone Zones"
 msgstr "タイムゾーン"
@@ -3429,6 +3430,9 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "Russia"
+#~ msgstr "ロシア"
 
 #, fuzzy
 #~ msgid ""

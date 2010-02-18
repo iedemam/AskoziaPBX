@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1360,8 +1360,9 @@ msgstr "Oletko varma että haluat poistaa tämän palveluntarjoajan?"
 msgid "delete provider"
 msgstr "poista palveluntarjoaja"
 
-msgid "Russia"
-msgstr "Venäjä"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Venäjä / entinen Neuvostoliitto"
 
 msgid "Tone Zones"
 msgstr "Valintaääni Vyöhykkeet"
@@ -3426,6 +3427,9 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Russia"
+#~ msgstr "Venäjä"
 
 #, fuzzy
 #~ msgid ""

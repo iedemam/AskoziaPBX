@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1364,8 +1364,9 @@ msgstr "Voulez-vous supprimer cet opérateur ?"
 msgid "delete provider"
 msgstr "Supprimer l'opérateur"
 
-msgid "Russia"
-msgstr "Russie"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Russie / Ex union soviétique"
 
 msgid "Tone Zones"
 msgstr "Tonalités"
@@ -3462,6 +3463,9 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "Russia"
+#~ msgstr "Russie"
 
 #~ msgid ""
 #~ "Is there a NATing device between the pbx and this account? Setting this "

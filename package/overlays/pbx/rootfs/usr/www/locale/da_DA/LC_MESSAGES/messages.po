@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1362,8 +1362,9 @@ msgstr "Vil du virkeligt slette denne udbyder?"
 msgid "delete provider"
 msgstr "Slet udbyder"
 
-msgid "Russia"
-msgstr "Rusland"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Russland / tidl. Sovjetunionen"
 
 msgid "Tone Zones"
 msgstr "Tids Zoner"
@@ -3370,6 +3371,9 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Russia"
+#~ msgstr "Rusland"
 
 #, fuzzy
 #~ msgid ""

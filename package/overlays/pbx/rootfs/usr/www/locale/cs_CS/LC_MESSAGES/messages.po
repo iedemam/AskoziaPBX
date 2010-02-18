@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1325,8 +1325,9 @@ msgstr "Opravdu si přejete smazat tohoto operátora?"
 msgid "delete provider"
 msgstr "odstranit operátora"
 
-msgid "Russia"
-msgstr "Rusko"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Rusko (dříve Sovětský svaz)"
 
 msgid "Tone Zones"
 msgstr ""
@@ -3261,6 +3262,9 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Russia"
+#~ msgstr "Rusko"
 
 #, fuzzy
 #~ msgid "Hardware"

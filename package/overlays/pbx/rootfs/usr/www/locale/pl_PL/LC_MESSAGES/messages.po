@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -1319,8 +1319,9 @@ msgstr "Czy na pewno chcesz usunąć tego dostawcę?"
 msgid "delete provider"
 msgstr "usuń dostawcę"
 
-msgid "Russia"
-msgstr "Rosja"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Rosja / były Związek Radziecki"
 
 msgid "Tone Zones"
 msgstr "Strefy czasowe"
@@ -3324,6 +3325,9 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "Russia"
+#~ msgstr "Rosja"
 
 #, fuzzy
 #~ msgid "Hardware"

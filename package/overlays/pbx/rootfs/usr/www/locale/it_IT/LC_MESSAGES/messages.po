@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-12 17:12+0100\n"
+"POT-Creation-Date: 2010-02-18 18:44+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -1377,8 +1377,9 @@ msgstr "Vuoi cancellare questo operatore?"
 msgid "delete provider"
 msgstr "cancella il operatore"
 
-msgid "Russia"
-msgstr "Russia"
+#, fuzzy
+msgid "Russian Federation / Former Soviet Union"
+msgstr "Russia/Ex unione sovietica"
 
 msgid "Tone Zones"
 msgstr "Toni di zona"
@@ -3503,6 +3504,9 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "Russia"
+#~ msgstr "Russia"
 
 #, fuzzy
 #~ msgid ""
