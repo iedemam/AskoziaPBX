@@ -730,9 +730,10 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 
 	$conf .= extensions_generate_call_notification_variables($exten, $p);
 	if ($tech == "DAHDI") {
-		$prov = analog_get_provider($p['dialprovider']);
+		$prov = pbx_get_provider($p['dialprovider']);
+		$dahdi_port = dahdi_get_port($prov['port']);
 		$conf .= "exten => $exten,n,".
-			"Gosub(macro-main,s,1($tech/{$prov['port']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+			"Gosub(macro-main,s,1($tech/{$dahdi_port['basechannel']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else if (($tech == "SIP" || $tech == "IAX2") && $directdial) {
 		$conf .= "exten => $exten,n,".
