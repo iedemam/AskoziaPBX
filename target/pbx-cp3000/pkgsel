@@ -83,6 +83,7 @@ X dropbear
 X msmtp
 X ntpclient
 X ezipupdate
+X lsof
 
 # file system overlay
 X pbx

@@ -1,0 +1,11 @@
+--- lsof/misc.c.orig	2010-02-18 16:41:21.000000000 +0100
++++ lsof/misc.c	2010-02-18 16:42:20.000000000 +0100
+@@ -283,7 +283,7 @@
+ 	    /*
+ 	     * Fork a child to execute functions.
+ 	     */
+-		if ((Cpid = fork()) == 0) {
++		if ((Cpid = vfork()) == 0) {
+ 
+ 		/*
+ 		 * Begin the child process.
