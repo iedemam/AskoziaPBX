@@ -1,7 +1,8 @@
+serial --speed=38400
+terminal serial
 default 0
 timeout 1
-
 title AskoziaPBX
 root (hd0,0)
-kernel /boot/vmlinuz console=tty0 console=ttyS0,38400n8
+kernel /boot/vmlinuz console=ttyS0,38400n8
 initrd /boot/initramf.igz
