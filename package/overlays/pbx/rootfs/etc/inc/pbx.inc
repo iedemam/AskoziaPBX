@@ -846,6 +846,7 @@ load => format_wav_gsm.so
 load => func_callerid.so
 load => func_channel.so
 load => func_config.so
+load => func_cut.so
 load => func_db.so
 load => func_logic.so
 load => func_shell.so

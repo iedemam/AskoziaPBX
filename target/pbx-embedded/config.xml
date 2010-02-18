@@ -34,6 +34,27 @@
 	</conferencing>
 	<dialplan>
 		<application>
+			<name>Read IP</name>
+			<extension>000047</extension>
+			<uniqid>APPLICATION-MAPPING-933337097386d45555d920</uniqid>
+			<app-command>MSxBbnN3ZXIoKQ==</app-command>
+			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4tdXMp</app-command>
+			<app-command>MyxTZXQoSVBPVVRQVVQ9JHtTSEVMTCgvZXRjL3NjcmlwdHMvcGFyc2VpcC5zaCl9KQ==</app-command>
+			<app-command>NCxOb09wKElQT1VUUFVUOiAke0lQT1VUUFVUfSk=</app-command>
+			<app-command>NSxQbGF5YmFjayhiZWVwKQ==</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMSl9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMil9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMyl9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sNCl9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixHb3RvKDUp</app-command>
+			<descr>Reads the system IP address</descr>
+		</application>
+		<application>
 			<name>Echo</name>
 			<extension>00003246</extension>
 			<uniqid>APPLICATION-MAPPING-83606076846f835d8828a4</uniqid>
