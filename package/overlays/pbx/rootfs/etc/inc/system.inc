@@ -413,6 +413,9 @@ function system_load_kernel_modules() {
 	global $g;
 
 	mwexec("/sbin/modprobe -q dahdi");
+	mwexec("/sbin/modprobe -q dahdi_transcode");
+	mwexec("/sbin/modprobe -q dahdi_echocan_mg2");
+
 
 	if ($g['platform'] == "COMpact 3000") {
 		$basemodules = array("auerask_cp3k_mb", "auerask_cp3k_fxs", "auerask_cp3k_bri", "bfin_sport_tdm");
