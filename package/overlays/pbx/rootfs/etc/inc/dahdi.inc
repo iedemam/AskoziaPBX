@@ -41,9 +41,10 @@ function dahdi_scan_to_spans() {
 	$c = -1;
 	// for each line of output...
 	foreach ($out as $l) {
-		// this is a new span definition, bump count
+		// this is a new span definition, bump count and store span number
 		if ($l[0] == '[') {
 			$c++;
+			$spans[$c]['span'] = ($c + 1);
 		// ...otherwise store span's info
 		} else {
 			// explode lines in span into value pairs
@@ -96,7 +97,7 @@ function dahdi_get_physical_ports() {
 			$ports[$i]['technology'] = "isdn";
 
 			// per port specifics
-			$ports[$i]['span'] = strtolower(substr($span['name'], strrpos($span['name'], '/') + 1));
+			$ports[$i]['span'] = $span['span'];
 			$ports[$i]['basechannel'] = $span['basechan'];
 			$ports[$i]['totalchannels'] = $span['totchans'];
 			$ports[$i]['type'] = strtolower(substr($span['type'], strrpos($span['type'], '-') + 1));
