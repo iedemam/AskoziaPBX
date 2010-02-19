@@ -466,7 +466,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 	} else if (strstr($uniqid, "ANALOG-PHONE")) {
 		$dahdi_port = dahdi_get_port($phone['port']);
 		return "DAHDI/" . $dahdi_port['basechannel'];
-	
+
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 
 		if ($phone['dialprovider'] == "sipuri") {
@@ -481,10 +481,6 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 			$provider = analog_get_provider($phone['dialprovider']);
 			$dahdi_port = dahdi_get_port($provider['port']);
 			return "DAHDI/" . $dahdi_port['basechannel'] . "/" . $phone['dialstring'];
-		// LINUX TODO !! need new way to tell difference between these prov. types
-		} else if ($technology == "CAPI"){
-			$prov = isdn_get_provider($phone['dialprovider']);
-			return "CAPI/" . $prov['interface'] . "/" . $phone['dialstring'];
 
 		} else {
 			return $technology . "/" . $phone['dialprovider'] . "/" . $phone['dialstring'];

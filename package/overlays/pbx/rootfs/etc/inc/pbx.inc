@@ -764,7 +764,7 @@ function pbx_uniqid_to_name_sub($uniqid) {
 	$pair = explode("-", substr(strtolower($uniqid), 0 , strrpos($uniqid, "-")));
 
 	if ($pair[1] == "phone" && $pair[0] == "external") {
-		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['callerid'];
 	} else if ($pair[1] == "phone") {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['callerid'];
 	}

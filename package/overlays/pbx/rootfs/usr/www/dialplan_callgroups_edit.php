@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2010 IKT <http://itison-ikt.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -46,24 +46,24 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-/* pull current config into pconfig */
+/* pull current config into form */
 if (isset($id) && $a_callgroups[$id]) {
-	$pconfig['name'] = $a_callgroups[$id]['name'];
-	$pconfig['extension'] = $a_callgroups[$id]['extension'];
-	$pconfig['descr'] = $a_callgroups[$id]['descr'];
-	$pconfig['groupmember'] = $a_callgroups[$id]['groupmember'];
-	$pconfig['publicaccess'] = $a_callgroups[$id]['publicaccess'];
-	$pconfig['publicname'] = $a_callgroups[$id]['publicname'];
-	$pconfig['ringlength'] = $a_callgroups[$id]['ringlength'];
+	$form['name'] = $a_callgroups[$id]['name'];
+	$form['extension'] = $a_callgroups[$id]['extension'];
+	$form['descr'] = $a_callgroups[$id]['descr'];
+	$form['groupmember'] = $a_callgroups[$id]['groupmember'];
+	$form['publicaccess'] = $a_callgroups[$id]['publicaccess'];
+	$form['publicname'] = $a_callgroups[$id]['publicname'];
+	$form['ringlength'] = $a_callgroups[$id]['ringlength'];
 }
 
 if ($_POST) {
 
 	unset($input_errors);
-	$pconfig = $_POST;
+	$form = $_POST;
 	
 	parse_str($_POST['groupmembers']);
-	$pconfig['groupmember'] = $gme;
+	$form['groupmember'] = $gme;
 
 	/* input validation */
 	$reqdfields = explode(" ", "name");
@@ -78,12 +78,12 @@ if ($_POST) {
 	if (!$input_errors) {
 		$gm = array();		
 		$gm['name'] = $_POST['name'];
-		$gm['extension'] = verify_non_default($_POST['extension']);
+		$gm['extension'] = $_POST['extension'];
 		$gm['descr'] = verify_non_default($_POST['descr']);
 		$gm['groupmember'] = ($gme) ? $gme : false;
 		$gm['publicaccess'] = $_POST['publicaccess'];
 		$gm['publicname'] = verify_non_default($_POST['publicname']);
-		$gm['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
+		$gm['ringlength'] = $_POST['ringlength'];
 
 		if (isset($id) && $a_callgroups[$id]) {
 			$gm['uniqid'] = $a_callgroups[$id]['uniqid'];
@@ -121,21 +121,21 @@ include("fbegin.inc");
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td width="80%" colspan="2" class="vtable">
-					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+					<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($form['name']);?>"> 
 					<br><span class="vexpl"><?=gettext("Group name");?></span>
 				</td>
 			</tr>
 			<tr> 
-				<td valign="top" class="vncell"><?=gettext("Extension");?></td>
+				<td valign="top" class="vncellreq"><?=gettext("Extension");?></td>
 				<td colspan="2" class="vtable">
-					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($pconfig['extension']);?>"> 
+					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($form['extension']);?>"> 
 					<br><span class="vexpl"><?=gettext("Internal extension used to reach this call group.");?></span>
 				</td>
 			</tr>
-			<? display_public_access_editor($pconfig['publicaccess'], $pconfig['publicname'], 2); ?>
-			<? display_description_field($pconfig['descr'], 2); ?>
-			<? display_phone_ringlength_selector($pconfig['ringlength'], 2); ?>
-			<? display_callgroup_member_selector($pconfig['groupmember']); ?>
+			<? display_public_access_editor($form['publicaccess'], $form['publicname'], 2); ?>
+			<? display_description_field($form['descr'], 2); ?>
+			<? display_phone_ringlength_selector($form['ringlength'], 2); ?>
+			<? display_callgroup_member_selector($form['groupmember']); ?>
 			<tr> 
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">
