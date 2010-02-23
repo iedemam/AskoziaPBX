@@ -131,12 +131,18 @@ include("fbegin.inc");
 					<input name="extension" type="text" class="formfld" id="extension" size="20" value="<?=htmlspecialchars($form['extension']);?>"> 
 					<br><span class="vexpl"><?=gettext("Internal extension used to reach this call group.");?></span>
 				</td>
-			</tr>
-			<? display_public_access_editor($form['publicaccess'], $form['publicname'], 2); ?>
-			<? display_description_field($form['descr'], 2); ?>
-			<? display_phone_ringlength_selector($form['ringlength'], 2); ?>
-			<? display_callgroup_member_selector($form['groupmember']); ?>
-			<tr> 
+			</tr><?
+
+			display_public_access_editor($form['publicaccess'], $form['publicname'], 2);
+			display_description_field($form['descr'], 2);
+			// temporary fix until callgroup page rewrite
+			if (!isset($form['ringlength'])) {
+				$form['ringlength'] = $defaults['accounts']['phones']['ringlength'];
+			}
+			display_phone_ringlength_selector($form['ringlength'], 2);
+			display_callgroup_member_selector($form['groupmember']);
+
+			?><tr>
 				<td valign="top">&nbsp;</td>
 				<td colspan="2">
 					<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_groupmember_states()">
