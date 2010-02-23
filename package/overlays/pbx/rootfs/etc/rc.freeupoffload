@@ -3,8 +3,13 @@
 PATH=/sbin:/bin
 export PATH
 
-#handles=$(lsof -t/offload | busybox cut -d ' ' -f 1 | busybox uniq)
-handles=$(lsof -t /offload)
+platform=`cat /etc/platform`
+if [ "$platform" = "COMpact 3000" ]; then
+	handles=$(lsof -t -O /offload)
+else
+	handles=$(lsof -t /offload)
+fi
+
 for handle in $handles
 do
 	if [ $handle != COMMAND ]; then
