@@ -19,7 +19,11 @@ do
 done
 sleep 2
 
-handles=$(lsof -t /offload)
+if [ "$platform" = "COMpact 3000" ]; then
+	handles=$(lsof -t -O /offload)
+else
+	handles=$(lsof -t /offload)
+fi
 for handle in $handles
 do
 	if [ $handle != COMMAND ]; then
