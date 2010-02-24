@@ -309,7 +309,7 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 			if ($port['type'] == "nt") {
 				$conf .= "bchan=" . $port['basechannel'] . "\n";
 				$conf .= "bchan=" . ($port['basechannel'] + 1) . "\n";
-				if (strpos($port['type'], "AUERSWALD COMpact ISDN") !== false) {
+				if (strpos($port['card'], "AUERSWALD COMpact ISDN") !== false) {
 					$conf .= "dchan=" . ($port['basechannel'] + 2) . "\n";
 				} else {
 					$conf .= "hardhdlc=" . ($port['basechannel'] + 2) . "\n";
@@ -317,7 +317,7 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 			} else if ($port['type'] == "te") {
 				$conf .= "bchan=" . $port['basechannel'] . "\n";
 				$conf .= "bchan=" . ($port['basechannel'] + 1) . "\n";
-				if (strpos($port['type'], "AUERSWALD COMpact ISDN") !== false) {
+				if (strpos($port['card'], "AUERSWALD COMpact ISDN") !== false) {
 					$conf .= "dchan=" . ($port['basechannel'] + 2) . "\n";
 				} else {
 					$conf .= "hardhdlc=" . ($port['basechannel'] + 2) . "\n";
