@@ -77,7 +77,7 @@ d_start("providers_analog_edit.php");
 		</td>
 	</tr><?
 	display_channel_language_selector($form['language'], 1);
-	d_hwport_selector("analog", "fxo");
+	d_hwport_selector($form['port'], "analog", "fxo");
 	d_spacer();
 
 

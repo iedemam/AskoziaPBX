@@ -963,7 +963,7 @@ function d_scripts() {
 <?
 }
 
-function d_hwport_selector($techfilter=null, $typefilter=null) {
+function d_hwport_selector($current_port, $techfilter=null, $typefilter=null) {
 	global $colspan;
 
 	$ports = dahdi_get_ports($techfilter, $typefilter);
@@ -980,7 +980,7 @@ function d_hwport_selector($techfilter=null, $typefilter=null) {
 			
 			foreach ($ports as $port) {
 				?><option value="<?=$port['uniqid'];?>" <?
-				if ($port['uniqid'] == $form['port']) {
+				if ($port['uniqid'] == $current_port) {
 					echo "selected";
 				}
 				?>><?=$port['name'];?></option><?

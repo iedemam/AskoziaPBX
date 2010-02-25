@@ -80,7 +80,7 @@ d_start("phones_analog_edit.php");
 
 	display_phone_ringlength_selector($form['ringlength']);
 
-	d_hwport_selector("analog", "fxs");
+	d_hwport_selector($form['port'], "analog", "fxs");
 
 	d_field(gettext("Description"), "descr", 40,
 		gettext("You may enter a description here for your reference (not parsed)."));
