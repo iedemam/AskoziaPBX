@@ -26,7 +26,7 @@ obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_TRANSCODE)		+= dahdi_transcode.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_STEVE)	+= dahdi_echocan_sec.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_STEVE2)	+= dahdi_echocan_sec2.o
 #obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_KB1)	+= dahdi_echocan_kb1.o
-obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_MG2)	+= dahdi_echocan_mg2.o
+#obj-$(DAHDI_BUILD_ALL)$(CONFIG_DAHDI_ECHOCAN_MG2)	+= dahdi_echocan_mg2.o
 
 obj-m += $(DAHDI_MODULES_EXTRA) auerask_cp3k_mb/ auerask_cp3k_fxs/ auerask_cp3k_bri/ bfin_sport_tdm/
 
@@ -37,7 +37,11 @@ obj-m += $(DAHDI_MODULES_EXTRA) auerask_cp3k_mb/ auerask_cp3k_fxs/ auerask_cp3k_
 # A quick and dirty way to build OSLEC, if you happened to place it
 # yourself in the dahdi source tree. This is experimental. See README
 # regarding OSLEC.
-#obj-m += ../staging/echo/
+ifneq (,$(wildcard $(src)/../staging/echo/echo.c))
+obj-$(DAHDI_BUILD_ALL) += ../staging/echo/echo.o
+obj-m += dahdi_echocan_oslec.o
+obj-m += ../staging/echo/
+endif
 
 CFLAGS_MODULE += -I$(DAHDI_INCLUDE) -I$(src)
 

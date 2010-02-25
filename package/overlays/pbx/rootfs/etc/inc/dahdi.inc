@@ -344,7 +344,7 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 		// analog port config
 		if ($port['technology'] == "analog") {
 			if ($port['echo-taps'] != "disable") {
-				$conf .= "echocanceller=mg2," . $port['basechannel'] . "\n";
+				$conf .= "echocanceller=oslec," . $port['basechannel'] . "\n";
 			}
 
 		// bri ports
@@ -352,11 +352,11 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 			// 'phone' ports
 			if ($port['type'] == "nt") {
 				if ($port['echo-taps'] != "disable") {
-					$conf .= "echocanceller=mg2," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+					$conf .= "echocanceller=oslec," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 				}
 			} else if ($port['type'] == "te") {
 				if ($port['echo-taps'] != "disable") {
-					$conf .= "echocanceller=mg2," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+					$conf .= "echocanceller=oslec," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 				}
 			}
 		}
