@@ -417,6 +417,7 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		$conf .= "busycount=3\n";
 		$conf .= "language=" . $provider['language'] . "\n";
 		$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+		$conf .= "group=" . $port['basechannel'] . "\n";
 		if ($provider['manualattributes']) {
 			$conf .= "; manual attributes\n";
 			$conf .= base64_decode($provider['manualattributes']) . "\n";
@@ -449,6 +450,7 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		$conf .= "busycount=3\n";
 		$conf .= "language=" . $phone['language'] . "\n";
 		$conf .= "context=" . $phone['uniqid'] . "\n";
+		$conf .= "group=" . $port['basechannel'] . "\n";
 		if ($phone['manualattributes']) {
 			$conf .= "; manual attributes\n";
 			$conf .= base64_decode($phone['manualattributes']) . "\n";
@@ -484,6 +486,7 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 
 			$conf .= "language=" . $provider['language'] . "\n";
 			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+			$conf .= "group=" . $basechannel . "\n";
 			if ($provider['manualattributes']) {
 				$conf .= "; manual attributes\n";
 				$conf .= base64_decode($provider['manualattributes']) . "\n";
@@ -515,6 +518,7 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 
 			$conf .= "language=" . $provider['language'] . "\n";
 			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+			$conf .= "group=" . $port['basechannel'] . "\n";
 			if ($provider['manualattributes']) {
 				$conf .= "; manual attributes\n";
 				$conf .= base64_decode($provider['manualattributes']) . "\n";
@@ -547,6 +551,7 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 
 		$conf .= "language=" . $phone['language'] . "\n";
 		$conf .= "context=" . $phone['uniqid'] . "\n";
+		$conf .= "group=" . $port['basechannel'] . "\n";
 		if ($phone['manualattributes']) {
 			$conf .= "; manual attributes\n";
 			$conf .= base64_decode($phone['manualattributes']) . "\n";

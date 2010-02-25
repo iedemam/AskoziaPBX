@@ -460,12 +460,9 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 	} else if (strstr($uniqid, "SKINNY-PHONE")) {
 		return "SKINNY/" . $phone['extension'];
 
-	} else if (strstr($uniqid, "ISDN-PHONE")) {
-		return "DAHDI/" . $phone['port'] . "/" . $phone['extension'];
-
-	} else if (strstr($uniqid, "ANALOG-PHONE")) {
+	} else if (strstr($uniqid, "ANALOG-PHONE") || strstr($uniqid, "ISDN-PHONE")) {
 		$dahdi_port = dahdi_get_port($phone['port']);
-		return "DAHDI/" . $dahdi_port['basechannel'];
+		return "DAHDI/g" . $dahdi_port['basechannel'];
 
 	} else if (strstr($uniqid, "EXTERNAL-PHONE")) {
 
@@ -478,9 +475,9 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		if ($technology == "DAHDI") {
-			$provider = analog_get_provider($phone['dialprovider']);
+			$provider = pbx_get_provider($phone['dialprovider']);
 			$dahdi_port = dahdi_get_port($provider['port']);
-			return "DAHDI/" . $dahdi_port['basechannel'] . "/" . $phone['dialstring'];
+			return "DAHDI/g" . $dahdi_port['basechannel'] . "/" . $phone['dialstring'];
 
 		} else {
 			return $technology . "/" . $phone['dialprovider'] . "/" . $phone['dialstring'];
@@ -627,7 +624,7 @@ function extensions_generate_provider_outgoing_context($p) {
 
 		} else if ($tech == "DAHDI") {
 			$dahdi_port = dahdi_get_port($p['port']);
-			$conf .= "exten => _$pattern,n,Dial(DAHDI/{$dahdi_port['basechannel']}/$prefix$exten,,T$cidflag)\n";
+			$conf .= "exten => _$pattern,n,Dial(DAHDI/g{$dahdi_port['basechannel']}/$prefix$exten,,T$cidflag)\n";
 
 		} else {
 			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
@@ -685,7 +682,7 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 
 	} else if ($tech == "DAHDI") {
 		$dahdi_port = dahdi_get_port($p['port']);
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(DAHDI/{$dahdi_port['basechannel']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(DAHDI/g{$dahdi_port['basechannel']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
