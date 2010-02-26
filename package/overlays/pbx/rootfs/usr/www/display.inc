@@ -206,7 +206,7 @@ function display_callgroup_member_selector($current_members) {
 			
 			foreach ($current_members as $member) {
 				if (array_key_exists($member, $indexed_phones)) {
-					?><li class="gme" id="gme[]_<?=$member;?>"><?=pbx_uniqid_to_name($member);?>&nbsp;&lt;<?=$indexed_phones[$member]['extension'];?>&gt;</li><?
+					?><li class="gme" id="gme[]_<?=$member;?>"><?=$indexed_phones[$member]['callerid'];?>&nbsp;&lt;<?=$indexed_phones[$member]['extension'];?>&gt;</li><?
 				}
 			}
 			
@@ -218,7 +218,7 @@ function display_callgroup_member_selector($current_members) {
 
 			foreach ($indexed_phones as $uniqid=>$phone) {
 				if (!in_array($uniqid, $current_members)) {
-					?><li class="gmd" id="gmd[]_<?=$uniqid;?>"><?=pbx_uniqid_to_name($phone['uniqid']);?>&nbsp;&lt;<?=$phone['extension'];?>&gt;</li><?
+					?><li class="gmd" id="gmd[]_<?=$uniqid;?>"><?=$phone['callerid'];?>&nbsp;&lt;<?=$phone['extension'];?>&gt;</li><?
 				}
 			}
 			
