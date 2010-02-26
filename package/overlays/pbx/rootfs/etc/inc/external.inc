@@ -39,16 +39,11 @@ function external_get_phones() {
 	if (!is_array($GLOBALS['config']['external']['phone'])) {
 		$GLOBALS['config']['external']['phone'] = array();
 	}
-	external_sort_phones();
 
-	return $GLOBALS['config']['external']['phone'];
-}
+	$tmp = $GLOBALS['config']['external']['phone'];
+	usort($tmp, "pbx_sort_by_extension");
 
-/**
- * Sorts phones by extension
- */
-function external_sort_phones() {
-	usort($GLOBALS['config']['external']['phone'], "pbx_sort_by_extension");
+	return $tmp;
 }
 
 /**

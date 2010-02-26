@@ -41,18 +41,11 @@ function analog_get_providers() {
 	if (!is_array($GLOBALS['config']['analog']['provider'])) {
 		$GLOBALS['config']['analog']['provider'] = array();
 	}
-	analog_sort_providers();
 
-	return $GLOBALS['config']['analog']['provider'];
-}
+	$tmp = $GLOBALS['config']['analog']['provider'];
+	usort($tmp, "pbx_sort_by_name");
 
-/**
- * Sorts providers by name
- */
-function analog_sort_providers() {
-	global $g;
-
-	usort($GLOBALS['config']['analog']['provider'], "pbx_sort_by_name");	
+	return $tmp;
 }
 
 /**
@@ -73,17 +66,11 @@ function analog_get_phones() {
 	if (!is_array($GLOBALS['config']['analog']['phone'])) {
 		$GLOBALS['config']['analog']['phone'] = array();
 	}
-	analog_sort_phones();
 
-	return $GLOBALS['config']['analog']['phone'];
-}
+	$tmp = $GLOBALS['config']['analog']['phone'];
+	usort($tmp, "pbx_sort_by_extension");
 
-/**
- * Sorts phones by extension
- */
-function analog_sort_phones() {
-
-	usort($GLOBALS['config']['analog']['phone'], "pbx_sort_by_extension");	
+	return $tmp;
 }
 
 /**

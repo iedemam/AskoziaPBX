@@ -40,9 +40,11 @@ function sip_get_providers() {
 	if (!is_array($GLOBALS['config']['sip']['provider'])) {
 		$GLOBALS['config']['sip']['provider'] = array();
 	}
-	sip_sort_providers();
 
-	return $GLOBALS['config']['sip']['provider'];
+	$tmp = $GLOBALS['config']['sip']['provider'];
+	usort($tmp, "pbx_sort_by_name");
+
+	return $tmp;
 }
 
 /**
@@ -55,15 +57,6 @@ function sip_get_provider($uniqid) {
 }
 
 /**
- * Sorts providers by name
- */
-function sip_sort_providers() {
-	global $g;
-
-	usort($GLOBALS['config']['sip']['provider'], "pbx_sort_by_name");	
-}
-
-/**
  * Returns all phones sorted by extension.
  * If no phones are defined, the global array is initialized.
  */
@@ -72,18 +65,11 @@ function sip_get_phones() {
 	if (!is_array($GLOBALS['config']['sip']['phone'])) {
 		$GLOBALS['config']['sip']['phone'] = array();
 	}
-	sip_sort_phones();
 
-	return $GLOBALS['config']['sip']['phone'];
-}
+	$tmp = $GLOBALS['config']['sip']['phone'];
+	usort($tmp, "pbx_sort_by_extension");
 
-/**
- * Sorts phones by extension
- */
-function sip_sort_phones() {
-	global $g;
-
-	usort($GLOBALS['config']['sip']['phone'], "pbx_sort_by_extension");
+	return $tmp;
 }
 
 /**

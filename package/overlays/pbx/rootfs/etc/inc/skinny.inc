@@ -37,14 +37,11 @@ function skinny_get_phones() {
 	if (!is_array($GLOBALS['config']['skinny']['phone'])) {
 		$GLOBALS['config']['skinny']['phone'] = array();
 	}
-	skinny_sort_phones();
 
-	return $GLOBALS['config']['skinny']['phone'];
-}
+	$tmp = $GLOBALS['config']['skinny']['phone'];
+	usort($tmp, "pbx_sort_by_extension");
 
-function skinny_sort_phones() {
-
-	usort($GLOBALS['config']['skinny']['phone'], "pbx_sort_by_extension");	
+	return $tmp;
 }
 
 function skinny_get_phone($uniqid) {

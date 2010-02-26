@@ -36,8 +36,7 @@ $pgtitle = array(gettext("Phones"), gettext("Edit ISDN Line"));
 /* grab and sort the isdn phones in our config */
 if (!is_array($config['isdn']['phone']))
 	$config['isdn']['phone'] = array();
-
-isdn_sort_phones();
+/* removed sort...needs rewrite when implemented! */
 $a_isdnphones = &$config['isdn']['phone'];
 
 $id = $_GET['id'];

@@ -41,17 +41,11 @@ function isdn_get_providers() {
 	if (!is_array($GLOBALS['config']['isdn']['provider'])) {
 		$GLOBALS['config']['isdn']['provider'] = array();
 	}
-	isdn_sort_providers();
 
-	return $GLOBALS['config']['isdn']['provider'];
-}
+	$tmp = $GLOBALS['config']['isdn']['provider'];
+	usort($tmp, "pbx_sort_by_name");
 
-/**
- * Sorts providers by name
- */
-function isdn_sort_providers() {
-
-	usort($GLOBALS['config']['isdn']['provider'], "pbx_sort_by_name");	
+	return $tmp;
 }
 
 /**
@@ -72,17 +66,11 @@ function isdn_get_phones() {
 	if (!is_array($GLOBALS['config']['isdn']['phone'])) {
 		$GLOBALS['config']['isdn']['phone'] = array();
 	}
-	isdn_sort_phones();
 
-	return $GLOBALS['config']['isdn']['phone'];
-}
+	$tmp = $GLOBALS['config']['isdn']['phone'];
+	usort($tmp, "pbx_sort_by_extension");
 
-/**
- * Sorts phones by extension
- */
-function isdn_sort_phones() {
-
-	usort($GLOBALS['config']['isdn']['phone'], "pbx_sort_by_extension");	
+	return $tmp;
 }
 
 /**

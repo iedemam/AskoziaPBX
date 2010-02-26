@@ -40,9 +40,11 @@ function iax_get_providers() {
 	if (!is_array($GLOBALS['config']['iax']['provider'])) {
 		$GLOBALS['config']['iax']['provider'] = array();
 	}
-	iax_sort_providers();
 
-	return $GLOBALS['config']['iax']['provider'];
+	$tmp = $GLOBALS['config']['iax']['provider'];
+	usort($tmp, "pbx_sort_by_name");
+
+	return $tmp;
 }
 
 /**
@@ -55,13 +57,6 @@ function iax_get_provider($uniqid) {
 }
 
 /**
- * Sorts providers by name
- */
-function iax_sort_providers() {
-	usort($GLOBALS['config']['iax']['provider'], "pbx_sort_by_name");	
-}
-
-/**
  * Returns all phones sorted by extension.
  * If no phones are defined, the global array is initialized.
  */
@@ -70,16 +65,11 @@ function iax_get_phones() {
 	if (!is_array($GLOBALS['config']['iax']['phone'])) {
 		$GLOBALS['config']['iax']['phone'] = array();
 	}
-	iax_sort_phones();
-		
-	return $GLOBALS['config']['iax']['phone'];
-}
 
-/**
- * Sorts phones by extension
- */
-function iax_sort_phones() {
-	usort($GLOBALS['config']['iax']['phone'], "pbx_sort_by_extension");
+	$tmp = $GLOBALS['config']['iax']['phone'];
+	usort($tmp, "pbx_sort_by_extension");
+
+	return $tmp;
 }
 
 /**
