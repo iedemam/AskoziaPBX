@@ -45,7 +45,7 @@ static char *app = "WakeMe";
 static char *synopsis = "Wake-up Call Manager";
 static char *descrip = "WakeMe allows a user to set a wake-up call on their current extension.\n";
 
-const char *spool_path = "/var/spool/asterisk/outgoing/";
+const char *spool_path = "/var/asterisk/spool/outgoing/";
 
 
 static int wakeme_exec(struct ast_channel *chan, void *data) {
@@ -84,6 +84,7 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 			time_struct = localtime(&timer);
 			time_struct->tm_hour = time_int/100;
 			time_struct->tm_min = time_int%100;
+			timer = mktime(time_struct);
 			break;
 		}
 	}
@@ -141,7 +142,7 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 				res = _play_file(chan, "for");
 			}
 			if (!res) {
-				ast_say_time(chan, mktime(time_struct), AST_DIGIT_ANY, chan->language);
+				ast_say_time(chan, timer, AST_DIGIT_ANY, chan->language);
 			}
 			if (!res) {
 				res = _play_file(chan, "press-1");
@@ -256,12 +257,13 @@ static int wakeme_exec(struct ast_channel *chan, void *data) {
 			time_struct = localtime(&timer);
 			time_struct->tm_hour = time_int/100;
 			time_struct->tm_min = time_int%100;
-			
+			timer = mktime(time_struct);
+
 			/* playback entry to confirm */
 			res = _play_file(chan, "rqsted-wakeup-for");
 
 			if (!res) {
-				res = ast_say_time(chan,mktime(time_struct), AST_DIGIT_ANY, chan->language);
+				res = ast_say_time(chan, timer, AST_DIGIT_ANY, chan->language);
 			}
 			if (!res) {
 				res = _play_file(chan, "1-yes-2-no");
