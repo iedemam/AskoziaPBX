@@ -44,6 +44,7 @@ cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 rm -rf offload_stage/asterisk/static-http/docs
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
+rm -rf offload_stage/asterisk/sounds/en
 ln -s /offload/asterisk/sounds/en-us offload_stage/asterisk/sounds/en
 # new bits to move usr/* out of the initramfs and into /offload
 mkdir offload_stage/rootfs
