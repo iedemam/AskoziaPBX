@@ -266,10 +266,26 @@ require_once("functions.inc");
 						return substr($s, 0, strpos($s, "."));
 					}
 
+					$prompt_languages = array(
+						"en-us" => gettext("English (US)"),
+						"en-gb" => gettext("English (UK)"),
+						//"da" => gettext("Danish"),
+						//"nl" => gettext("Dutch"),
+						//"fr" => gettext("French (France)"),
+						"fr-ca" => gettext("French (Canada)"),
+						"de-de" => gettext("German"),
+						"it-it" => gettext("Italian"),
+						//"jp" => gettext("Japanese"),
+						//"pt-br" => gettext("Portuguese (Brazil)"),
+						"ru" => gettext("Russian"),
+						"es-es" => gettext("Spanish (Spain)")
+						//"se" => gettext("Swedish")
+					);
+
 					$languages = array_keys($prompt_languages);
 					$prompts = array();
 
-					$base_path = "/asterisk/sounds";
+					$base_path = "/offload/asterisk/sounds";
 					$dh = opendir($base_path);
 					while (false !== ($filename = readdir($dh))) {
 						if (in_array($filename, $languages)) {
@@ -300,8 +316,11 @@ require_once("functions.inc");
 
 						<table border="0" cellspacing="0" cellpadding="6" width="100%"><?
 						foreach ($prompt_languages as $lang => $friendly) {
+							if (!count($prompts[$lang])) {
+								continue;
+							}
 							?><tr>
-								<td colspan="4" class="listtopic"><a name="<?=$lang;?>"><?=$friendly;?></a></td>
+								<td colspan="4" class="listtopiclight"><a name="<?=$lang;?>"><?=$friendly;?></a></td>
 							</tr>
 							<tr>
 								<td><strong><?=gettext("Filename");?></strong></td>
