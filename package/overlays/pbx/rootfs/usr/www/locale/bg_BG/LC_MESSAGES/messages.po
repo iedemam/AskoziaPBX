@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -30,6 +30,14 @@ msgstr "Номер"
 #, fuzzy
 msgid "Port"
 msgstr "Португалия"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Външни"
+
+#, fuzzy
+msgid "Group"
+msgstr "Име на групата"
 
 msgid "Host"
 msgstr "Host"
@@ -2630,6 +2638,9 @@ msgstr "Големина"
 msgid "No compatible analog ports were detected."
 msgstr "Не е открит съвместим аналогов интерфейс."
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Clear"
@@ -2650,6 +2661,27 @@ msgstr ""
 #, fuzzy
 msgid "forget port settings"
 msgstr "пропусни настройките на интерфейса"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Външни"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "редактирай вътрешна линия"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr ""
+"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "изтрий група на звънене"
+
+#, fuzzy
+msgid "add port group"
+msgstr "добави група на звънене"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2686,6 +2718,10 @@ msgstr ""
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "кликането върху  &quot;Запиши&quot; ще прекъсне всички активни разговори."
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Редактирай Аналогов"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

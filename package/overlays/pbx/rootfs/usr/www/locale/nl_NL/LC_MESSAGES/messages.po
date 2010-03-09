@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -30,6 +30,14 @@ msgstr "Nummer"
 #, fuzzy
 msgid "Port"
 msgstr "Portugal"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Providers"
+
+#, fuzzy
+msgid "Group"
+msgstr "groep naam"
 
 msgid "Host"
 msgstr "Host"
@@ -2575,6 +2583,9 @@ msgstr "Grootte"
 msgid "No compatible analog ports were detected."
 msgstr "Geen compatibele analoge interfaces ontdekt."
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Wis"
@@ -2594,6 +2605,26 @@ msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
 #, fuzzy
 msgid "forget port settings"
 msgstr "vergeet de interface instellingen"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Providers"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "Telefoon bewerken"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "verwijder bel groep"
+
+#, fuzzy
+msgid "add port group"
+msgstr "bel groep toevoegen"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2629,6 +2660,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "clicking &quot;Save&quot; zal alle huidige verbindingen verbreken."
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Bewerk Analoog"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

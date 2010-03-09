@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -32,6 +32,14 @@ msgstr "Nummer"
 #, fuzzy
 msgid "Port"
 msgstr "Portugal"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Udbyder"
+
+#, fuzzy
+msgid "Group"
+msgstr "Gruppe navn"
 
 msgid "Host"
 msgstr "Vært"
@@ -2575,6 +2583,9 @@ msgstr "Størrelse"
 msgid "No compatible analog ports were detected."
 msgstr "Ingen kompatible analoge grænseflader fundet."
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Slet"
@@ -2594,6 +2605,26 @@ msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
 #, fuzzy
 msgid "forget port settings"
 msgstr "glem interface indstillinger"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Udbyder"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "rediger telefon"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "fjern opkalds gruppe"
+
+#, fuzzy
+msgid "add port group"
+msgstr "tilføj opkalds gruppe"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2629,6 +2660,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "At klikke &quot;Gem&quot; vil smide alle igangværende opkald. "
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Rediger Analog"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

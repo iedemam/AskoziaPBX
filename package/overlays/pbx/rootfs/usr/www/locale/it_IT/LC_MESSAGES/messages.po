@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -19,6 +19,14 @@ msgstr "Numero"
 #, fuzzy
 msgid "Port"
 msgstr "Portogallo"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Operatori telefonici"
+
+#, fuzzy
+msgid "Group"
+msgstr "Nome gruppo"
 
 msgid "Host"
 msgstr "Host"
@@ -2666,6 +2674,9 @@ msgstr "Grandezza"
 msgid "No compatible analog ports were detected."
 msgstr "Nessuna interfaccia analogica rilevata."
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Pulisci"
@@ -2685,6 +2696,26 @@ msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
 #, fuzzy
 msgid "forget port settings"
 msgstr "annulla le impostazioni dell'interfaccia"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Operatori telefonici"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "modifica il telefono"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "cancella gruppo di chiamata"
+
+#, fuzzy
+msgid "add port group"
+msgstr "aggiungi un gruppo di chiamata"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2720,6 +2751,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "cliccando &quot;Salva&quot; tutte le chiamate verranno terminate."
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Modifica  porta Analogica"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

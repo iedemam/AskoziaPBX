@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,14 @@ msgstr "Numara"
 #, fuzzy
 msgid "Port"
 msgstr "Portekiz"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Sunucular"
+
+#, fuzzy
+msgid "Group"
+msgstr "Grup adı"
 
 msgid "Host"
 msgstr "Anasistem"
@@ -2455,6 +2463,9 @@ msgstr "Boyut"
 msgid "No compatible analog ports were detected."
 msgstr "Uyum sağlayan analog arayüz bulunamadı."
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Sil"
@@ -2473,6 +2484,26 @@ msgstr "Bu telefon silinsin mi?"
 
 msgid "forget port settings"
 msgstr ""
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Sunucular"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "telefonu düzenle"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Bu telefon silinsin mi?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "arama grubunu sil"
+
+#, fuzzy
+msgid "add port group"
+msgstr "arama grubu ekle"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2508,6 +2539,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Analog düzenle"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

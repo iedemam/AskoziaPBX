@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -29,6 +29,14 @@ msgstr "Numer"
 #, fuzzy
 msgid "Port"
 msgstr "Portugalia"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Dostawcy"
+
+#, fuzzy
+msgid "Group"
+msgstr "Nazwa grupy"
 
 msgid "Host"
 msgstr "Host"
@@ -2532,6 +2540,9 @@ msgstr "Rozmiar"
 msgid "No compatible analog ports were detected."
 msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Wyczyść"
@@ -2551,6 +2562,26 @@ msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
 #, fuzzy
 msgid "forget port settings"
 msgstr "wyczyść ustawienia interfejsu"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Dostawcy"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "edytuj telefon"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "usuń grupę telefoniczną"
+
+#, fuzzy
+msgid "add port group"
+msgstr "dodaj grupę telefoniczną"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2586,6 +2617,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "kliknięcie &quot;Zapisz&quot; przerwie wszystkie bieżące połączenia."
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Edytuj Analogowe"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,12 @@ msgid "Number"
 msgstr ""
 
 msgid "Port"
+msgstr ""
+
+msgid "All Provider Ports"
+msgstr ""
+
+msgid "Group"
 msgstr ""
 
 msgid "Host"
@@ -2177,6 +2183,9 @@ msgstr ""
 msgid "No compatible analog ports were detected."
 msgstr ""
 
+msgid "Individual Ports"
+msgstr ""
+
 msgid "Card"
 msgstr ""
 
@@ -2190,6 +2199,21 @@ msgid "Do you really want to forget this port\\'s settings?"
 msgstr ""
 
 msgid "forget port settings"
+msgstr ""
+
+msgid "Provider Port Groups"
+msgstr ""
+
+msgid "edit port group"
+msgstr ""
+
+msgid "Do you really want to delete this port group's settings?"
+msgstr ""
+
+msgid "delete port group"
+msgstr ""
+
+msgid "add port group"
 msgstr ""
 
 #, php-format
@@ -2218,6 +2242,9 @@ msgid "This is the how your system determines if a phone has been hung-up or pic
 msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
+msgstr ""
+
+msgid "Edit Provider Group"
 msgstr ""
 
 msgid "No compatible isdn ports were detected."

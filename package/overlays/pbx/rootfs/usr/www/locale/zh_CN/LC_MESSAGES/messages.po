@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -22,6 +22,14 @@ msgstr "数量"
 #, fuzzy
 msgid "Port"
 msgstr "葡萄牙"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "提供商"
+
+#, fuzzy
+msgid "Group"
+msgstr "组名"
 
 msgid "Host"
 msgstr "主机"
@@ -2544,6 +2552,9 @@ msgstr "大小"
 msgid "No compatible analog ports were detected."
 msgstr "没有探测到兼容的模拟接口。"
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "清空"
@@ -2563,6 +2574,26 @@ msgstr "真的要忽略这个接口的设定？"
 #, fuzzy
 msgid "forget port settings"
 msgstr "忽略接口设定"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "提供商"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "编辑电话"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "真的要忽略这个接口的设定？"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "删除通话组"
+
+#, fuzzy
+msgid "add port group"
+msgstr "添加通话组"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2598,6 +2629,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "点击&quot;保存&quot;会导致所有正在进行的通话断线。"
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "编辑模拟电话"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

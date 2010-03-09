@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -23,6 +23,12 @@ msgid "Number"
 msgstr ""
 
 msgid "Port"
+msgstr ""
+
+msgid "All Provider Ports"
+msgstr ""
+
+msgid "Group"
 msgstr ""
 
 msgid "Host"
@@ -2338,6 +2344,9 @@ msgstr ""
 msgid "No compatible analog ports were detected."
 msgstr ""
 
+msgid "Individual Ports"
+msgstr ""
+
 msgid "Card"
 msgstr ""
 
@@ -2351,6 +2360,21 @@ msgid "Do you really want to forget this port\\'s settings?"
 msgstr ""
 
 msgid "forget port settings"
+msgstr ""
+
+msgid "Provider Port Groups"
+msgstr ""
+
+msgid "edit port group"
+msgstr ""
+
+msgid "Do you really want to delete this port group's settings?"
+msgstr ""
+
+msgid "delete port group"
+msgstr ""
+
+msgid "add port group"
 msgstr ""
 
 #, php-format
@@ -2385,6 +2409,9 @@ msgid ""
 msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
+msgstr ""
+
+msgid "Edit Provider Group"
 msgstr ""
 
 msgid "No compatible isdn ports were detected."

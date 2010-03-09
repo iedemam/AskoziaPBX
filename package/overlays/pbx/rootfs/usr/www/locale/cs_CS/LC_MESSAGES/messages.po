@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,13 @@ msgstr ""
 #, fuzzy
 msgid "Port"
 msgstr "Portugalsko"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Operátoři"
+
+msgid "Group"
+msgstr ""
 
 msgid "Host"
 msgstr "Hostitel"
@@ -2494,6 +2501,9 @@ msgstr "Velikost"
 msgid "No compatible analog ports were detected."
 msgstr "Žádné analogové zařízení nebylo nalezeno."
 
+msgid "Individual Ports"
+msgstr ""
+
 msgid "Card"
 msgstr ""
 
@@ -2510,6 +2520,25 @@ msgid "Do you really want to forget this port\\'s settings?"
 msgstr "Opravdu chcete smazat tento telefonní účet?"
 
 msgid "forget port settings"
+msgstr ""
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Operátoři"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "změnit účet"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Opravdu chcete smazat tento telefonní účet?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "odstranit operátora"
+
+msgid "add port group"
 msgstr ""
 
 #, fuzzy, php-format
@@ -2546,6 +2575,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "změnit položku"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

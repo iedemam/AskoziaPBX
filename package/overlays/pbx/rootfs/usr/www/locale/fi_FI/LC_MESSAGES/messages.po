@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -25,6 +25,14 @@ msgstr "Numero"
 #, fuzzy
 msgid "Port"
 msgstr "Portugali"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "Palveluntarjoajat"
+
+#, fuzzy
+msgid "Group"
+msgstr "Ryhmän nimi"
 
 msgid "Host"
 msgstr "Isäntä"
@@ -2614,6 +2622,9 @@ msgstr "Koko"
 msgid "No compatible analog ports were detected."
 msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "Tyhjennä"
@@ -2633,6 +2644,26 @@ msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
 #, fuzzy
 msgid "forget port settings"
 msgstr "unohda käyttöliittymän asetukset"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "Palveluntarjoajat"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "muokkaa puhelinta"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "poista puheluryhmä"
+
+#, fuzzy
+msgid "add port group"
+msgstr "muokkaa puheluryhmää"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2670,6 +2701,10 @@ msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr ""
 "Jos klikkaat &quot;Tallenna&quot;, kaikki käynnissä olevat puhelut "
 "katkaistaan."
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "Muokkaa Analogi"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."

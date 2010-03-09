@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-18 18:44+0100\n"
+"POT-Creation-Date: 2010-03-09 17:14+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -27,6 +27,14 @@ msgstr "番号"
 #, fuzzy
 msgid "Port"
 msgstr "ポルトガル"
+
+#, fuzzy
+msgid "All Provider Ports"
+msgstr "接続回線"
+
+#, fuzzy
+msgid "Group"
+msgstr "グループ名"
 
 msgid "Host"
 msgstr "ホスト"
@@ -2604,6 +2612,9 @@ msgstr "サイズ"
 msgid "No compatible analog ports were detected."
 msgstr "対応するアナログインターフェースが見つかりませんでした。"
 
+msgid "Individual Ports"
+msgstr ""
+
 #, fuzzy
 msgid "Card"
 msgstr "消去"
@@ -2623,6 +2634,26 @@ msgstr "本当に、このインターフェース\\の設定を、忘れても�
 #, fuzzy
 msgid "forget port settings"
 msgstr "インタフェース設定を忘れる"
+
+#, fuzzy
+msgid "Provider Port Groups"
+msgstr "接続回線"
+
+#, fuzzy
+msgid "edit port group"
+msgstr "電話機設定の編集"
+
+#, fuzzy
+msgid "Do you really want to delete this port group's settings?"
+msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
+
+#, fuzzy
+msgid "delete port group"
+msgstr "グループの削除"
+
+#, fuzzy
+msgid "add port group"
+msgstr "グループの追加"
 
 #, fuzzy, php-format
 msgid "Edit Analog %s Port"
@@ -2658,6 +2689,10 @@ msgstr ""
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
 msgstr "clicking &quot;Save&quot; 全ての呼を切断します"
+
+#, fuzzy
+msgid "Edit Provider Group"
+msgstr "アナログの編集"
 
 #, fuzzy
 msgid "No compatible isdn ports were detected."
