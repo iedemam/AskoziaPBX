@@ -174,13 +174,13 @@ if (file_exists($g['analog_dirty_path'])) {
 
 	jQuery(document).ready(function(){
 	
-		<? /*=javascript_account_statuses("ready");*/ ?>
+		<?=javascript_account_statuses("ready");?>
 	
 	});
 
 </script>
 <form action="accounts_providers.php" method="post">
-<? /* $status_info = pbx_get_peer_statuses(); */ ?>
+<? $status_info = pbx_get_peer_statuses(); ?>
 
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>

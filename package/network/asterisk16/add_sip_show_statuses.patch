@@ -1,0 +1,114 @@
+--- asterisk-1.6.1.17/channels/chan_sip.c.orig	2010-03-09 13:12:23.000000000 +0100
++++ asterisk-1.6.1.17/channels/chan_sip.c	2010-03-09 13:34:16.000000000 +0100
+@@ -2092,7 +2092,9 @@
+ static int peer_status(struct sip_peer *peer, char *status, int statuslen);
+ static char *sip_show_sched(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a);
+ static char * _sip_show_peers(int fd, int *total, struct mansession *s, const struct message *m, int argc, const char *argv[]);
++static char *_sip_show_statuses(int fd, int *total, struct mansession *s, const struct message *m, int argc, const char *argv[]);
+ static char *sip_show_peers(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a);
++static char *sip_show_statuses(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a);
+ static char *sip_show_objects(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a);
+ static void  print_group(int fd, ast_group_t group, int crlf);
+ static const char *dtmfmode2str(int mode) attribute_const;
+@@ -13841,6 +13843,23 @@
+ 	return _sip_show_peers(a->fd, NULL, NULL, NULL, a->argc, (const char **) a->argv);
+ }
+ 
++/*! \brief  CLI Show Statuses command */
++static char *sip_show_statuses(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a)
++{
++	switch (cmd) {
++	case CLI_INIT:
++		e->command = "sip show statuses";
++		e->usage =
++			"Usage: sip show statuses\n"
++			"       Lists all known SIP peer statuses.\n";
++		return NULL;
++	case CLI_GENERATE:
++		return NULL;
++	}
++
++	return _sip_show_statuses(a->fd, NULL, NULL, NULL, a->argc, (const char **) a->argv);
++}
++
+ int peercomparefunc(const void *a, const void *b);
+ 
+ int peercomparefunc(const void *a, const void *b)
+@@ -14024,6 +14043,69 @@
+ #undef FORMAT2
+ }
+ 
++
++/*! \brief Execute sip show statuses command */
++static char *_sip_show_statuses(int fd, int *total, struct mansession *s, const struct message *m, int argc, const char *argv[])
++{
++	struct sip_peer *peer;
++	struct ao2_iterator i;
++
++#define FORMAT "%s %s\n"
++
++	char name[256];
++	int total_peers = 0;
++	int objcount = ao2_container_count(peers);
++	struct sip_peer **peerarray;
++	int k;
++
++	peerarray = ast_calloc(sizeof(struct sip_peer *), objcount);
++
++	switch (argc) {
++	case 3:
++		break;
++	default:
++		return CLI_SHOWUSAGE;
++	}
++
++	i = ao2_iterator_init(peers, 0);
++	while ((peer = ao2_t_iterator_next(&i, "iterate thru peers table"))) {	
++		ao2_lock(peer);
++
++		if (!(peer->type & SIP_TYPE_PEER)) {
++			ao2_unlock(peer);
++			unref_peer(peer, "unref peer because it's actually a user");
++			continue;
++		}
++
++		peerarray[total_peers++] = peer;
++		ao2_unlock(peer);
++	}
++	ao2_iterator_destroy(&i);
++
++	qsort(peerarray, total_peers, sizeof(struct sip_peer *), peercomparefunc);
++
++	for(k=0; k < total_peers; k++) {
++		char status[20] = "";
++		char pstatus;
++		peer = peerarray[k];
++
++		ao2_lock(peer);
++
++		ast_copy_string(name, peer->name, sizeof(name));
++		pstatus = peer_status(peer, status, sizeof(status));
++		ast_cli(fd, FORMAT, name, status);
++
++		ao2_unlock(peer);
++		unref_peer(peer, "toss iterator peer ptr");
++	}
++
++	ast_free(peerarray);
++
++	return CLI_SUCCESS;
++#undef FORMAT
++}
++
++
+ static int peer_dump_func(void *userobj, void *arg, int flags)
+ {
+ 	struct sip_peer *peer = userobj;
+@@ -24584,6 +24666,7 @@
+ 	AST_CLI_DEFINE(sip_show_inuse, "List all inuse/limits"),
+ 	AST_CLI_DEFINE(sip_show_objects, "List all SIP object allocations"),
+ 	AST_CLI_DEFINE(sip_show_peers, "List defined SIP peers"),
++	AST_CLI_DEFINE(sip_show_statuses, "List defined SIP peers' statuses"),
+ 	AST_CLI_DEFINE(sip_show_registry, "List SIP registration status"),
+ 	AST_CLI_DEFINE(sip_unregister, "Unregister (force expiration) a SIP peer from the registry"),
+ 	AST_CLI_DEFINE(sip_show_settings, "Show SIP global settings"),

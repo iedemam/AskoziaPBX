@@ -1,0 +1,81 @@
+--- asterisk-1.6.1.17/channels/chan_iax2.c.orig	2010-03-09 13:12:30.000000000 +0100
++++ asterisk-1.6.1.17/channels/chan_iax2.c	2010-03-09 14:15:49.000000000 +0100
+@@ -6344,6 +6344,40 @@
+ #undef FORMAT2
+ }
+ 
++static int __iax2_show_statuses(int manager, int fd, struct mansession *s, int argc, char *argv[])
++{
++	struct ao2_iterator i;
++
++#define FORMAT "%s %s\n"
++
++	struct iax2_peer *peer = NULL;
++	char name[256];
++	switch (argc) {
++	case 3:
++		break;
++	default:
++		return RESULT_SHOWUSAGE;
++	}
++
++	i = ao2_iterator_init(peers, 0);
++	for (peer = ao2_iterator_next(&i); peer;
++		peer_unref(peer), peer = ao2_iterator_next(&i)) {
++		char status[20];
++		int retstatus;
++
++		ast_copy_string(name, peer->name, sizeof(name));
++
++		retstatus = peer_status(peer, status, sizeof(status));
++
++		ast_cli(fd, FORMAT, name, status);
++	}
++	ao2_iterator_destroy(&i);
++
++	return RESULT_SUCCESS;
++#undef FORMAT
++#undef FORMAT2
++}
++
+ static char *handle_cli_iax2_show_threads(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a)
+ {
+ 	struct iax2_thread *thread = NULL;
+@@ -6506,6 +6540,29 @@
+ 	}
+ }
+ 
++static char *handle_cli_iax2_show_statuses(struct ast_cli_entry *e, int cmd, struct ast_cli_args *a)
++{
++	switch (cmd) {
++	case CLI_INIT:
++		e->command = "iax2 show statuses";
++		e->usage =
++			"Usage: iax2 show statuses\n"
++			"       Lists all known IAX2 peers' statuses.\n";
++		return NULL;
++	case CLI_GENERATE:
++		return NULL;
++	}
++
++	switch (__iax2_show_statuses(0, a->fd, NULL, a->argc, a->argv)) {
++	case RESULT_SHOWUSAGE:
++		return CLI_SHOWUSAGE;
++	case RESULT_FAILURE:
++		return CLI_FAILURE;
++	default:
++		return CLI_SUCCESS;
++	}
++}
++
+ static int manager_iax2_show_netstats(struct mansession *s, const struct message *m)
+ {
+ 	ast_cli_netstats(s, -1, 0);
+@@ -13446,6 +13503,7 @@
+ 	AST_CLI_DEFINE(handle_cli_iax2_show_netstats,       "List active IAX channel netstats"),
+ 	AST_CLI_DEFINE(handle_cli_iax2_show_peer,           "Show details on specific IAX peer"),
+ 	AST_CLI_DEFINE(handle_cli_iax2_show_peers,          "List defined IAX peers"),
++	AST_CLI_DEFINE(handle_cli_iax2_show_statuses,       "List defined IAX peers' statuses"),
+ 	AST_CLI_DEFINE(handle_cli_iax2_show_registry,       "Display IAX registration status"),
+ 	AST_CLI_DEFINE(handle_cli_iax2_show_stats,          "Display IAX statistics"),
+ 	AST_CLI_DEFINE(handle_cli_iax2_show_threads,        "Display IAX helper thread info"),
