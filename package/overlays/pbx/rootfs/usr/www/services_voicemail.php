@@ -40,6 +40,8 @@ if ($_POST) {
 
 	unset($input_errors);
 	$pconfig = $_POST;
+	$pconfig['user_subject'] = base64_encode($_POST['user_subject']);
+	$pconfig['user_body'] = base64_encode($_POST['user_body']);
 
 	/* input validation */
 	if ($_POST['user_defined']) {
@@ -57,8 +59,8 @@ if ($_POST) {
 		$vmconfig['fromaddress'] = $_POST['fromaddress'];
 		$vmconfig['maillanguage'] = $_POST['maillanguage'];
 		$vmconfig['user_defined'] = isset($_POST['user_defined']);
-		$vmconfig['user_subject'] = base64_encode($_POST['user_subject']);
-		$vmconfig['user_body'] = base64_encode($_POST['user_body']);
+		$vmconfig['user_subject'] = $pconfig['user_subject'];
+		$vmconfig['user_body'] = $pconfig['user_body'];
 
 		voicemail_save_configuration($vmconfig);
 
