@@ -51,9 +51,16 @@ function dahdi_scan_to_spans() {
 			$p = explode("=", $l, 2);
 			// there can be multiple port lines, store pair in array
 			if ($p[0] == "port") {
-				// test if hardware really exists for that port
+				// further break apart port line
 				$arr_port_specs = explode(",", $p[1]);
-				if ($arr_port_specs[1] == 'none') { continue; }
+				// ignore if no module is present
+				if ($arr_port_specs[1] == "none") {
+					continue;
+				}
+				// ignore if the module does not have power
+				if ($arr_port_specs[1] == "FXS FAILED") {
+					continue;
+				}
 				$spans[$c][$p[0]][] = $p[1];
 			// options lists should be split out into arrays
 			} else if ($p[0] == "coding_opts" || $p[0] == "framing_opts") {
