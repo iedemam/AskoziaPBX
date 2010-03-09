@@ -35,7 +35,7 @@
 $listtags = explode(" ", 
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
 	"phone provider codec room dialpattern callgroup groupmember incomingextensionmap " .
-	"dahdi-port redfone-gateway disk package loadzone bridge application " .
+	"dahdi-port dahdi-portgroup redfone-gateway disk package loadzone bridge application " .
 	"manager-user read-permission write-permission app-command manual-attribute manual-file"
 );
 

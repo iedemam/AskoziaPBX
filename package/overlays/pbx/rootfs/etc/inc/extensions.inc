@@ -476,8 +476,7 @@ function extensions_phone_uniqid_to_dialstring($uniqid) {
 		$technology = pbx_uniqid_to_technology($phone['dialprovider']);
 		if ($technology == "DAHDI") {
 			$provider = pbx_get_provider($phone['dialprovider']);
-			$dahdi_port = dahdi_get_port($provider['port']);
-			return "DAHDI/g" . $dahdi_port['basechannel'] . "/" . $phone['dialstring'];
+			return "DAHDI/g" . dahdi_get_gnumber($provider['port']) . "/" . $phone['dialstring'];
 
 		} else {
 			return $technology . "/" . $phone['dialprovider'] . "/" . $phone['dialstring'];
@@ -623,8 +622,8 @@ function extensions_generate_provider_outgoing_context($p) {
 			$conf .= "exten => _$pattern,n,Dial(IAX2/{$p['uniqid']}/$prefix$exten,,T$cidflag)\n";
 
 		} else if ($tech == "DAHDI") {
-			$dahdi_port = dahdi_get_port($p['port']);
-			$conf .= "exten => _$pattern,n,Dial(DAHDI/g{$dahdi_port['basechannel']}/$prefix$exten,,T$cidflag)\n";
+			$gnumber = dahdi_get_gnumber($p['port']);
+			$conf .= "exten => _$pattern,n,Dial(DAHDI/g$gnumber/$prefix$exten,,T$cidflag)\n";
 
 		} else {
 			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
@@ -681,8 +680,8 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(SKINNY/$phone_exten@$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else if ($tech == "DAHDI") {
-		$dahdi_port = dahdi_get_port($p['port']);
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(DAHDI/g{$dahdi_port['basechannel']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+		$gnumber = dahdi_get_gnumber($p['port']);
+		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(DAHDI/g$gnumber,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
@@ -724,9 +723,9 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 	$conf .= extensions_generate_call_notification_variables($exten, $p);
 	if ($tech == "DAHDI") {
 		$prov = pbx_get_provider($p['dialprovider']);
-		$dahdi_port = dahdi_get_port($prov['port']);
+		$gnumber = dahdi_get_gnumber($prov['port']);
 		$conf .= "exten => $exten,n,".
-			"Gosub(macro-main,s,1($tech/{$dahdi_port['basechannel']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+			"Gosub(macro-main,s,1($tech/g$gnumber/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
 
 	} else if (($tech == "SIP" || $tech == "IAX2") && $directdial) {
 		$conf .= "exten => $exten,n,".

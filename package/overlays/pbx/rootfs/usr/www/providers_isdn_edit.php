@@ -64,6 +64,7 @@ if ($_POST) {
 }
 
 $ports = dahdi_get_ports("isdn", "te");
+$groups = dahdi_get_portgroups("isdn");
 $gateways = redfone_get_gateways();
 
 include("fbegin.inc");
@@ -91,6 +92,14 @@ d_start("providers_isdn_edit.php");
 					echo "selected";
 				}
 				?>><?=gettext("Port");?> : <?=$port['name'];?></option><?
+			}
+
+			foreach ($groups as $group) {
+				?><option value="<?=$group['uniqid'];?>" <?
+				if ($group['uniqid'] == $form['port']) {
+					echo "selected";
+				}
+				?>><?=gettext("Group");?> : <?=$group['name'];?></option><?
 			}
 
 			foreach ($gateways as $gateway) {

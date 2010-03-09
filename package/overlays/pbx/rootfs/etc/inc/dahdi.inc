@@ -151,6 +151,27 @@ function dahdi_autoconfigure_ports() {
 			dahdi_save_port($p);
 		}
 	}
+
+	/* if there are multiple provider ports of the same type, auto-generate groups */
+	$provider_types = array(
+		"analog" => "fxo",
+		"isdn" => "te"
+	);
+	foreach ($provider_types as $tech => $type) {
+		$magic_uniqid = "DAHDIPORTGROUP-" . strtoupper($tech) . "-ALLPROVIDERS";
+		if (!dahdi_get_portgroup($magicuniqid)) {
+			$provider_ports = dahdi_get_ports($tech, $type);
+			if (count($provider_ports) > 1) {
+				$group = dahdi_generate_default_portgroup($tech);
+				$group['uniqid'] = $magic_uniqid;
+				$group['name'] = gettext("All Provider Ports");
+				foreach ($provider_ports as $port) {
+					$group['groupmember'][] = $port['uniqid'];
+				}
+				dahdi_save_portgroup($group);
+			}
+		}
+	}
 }
 
 function dahdi_get_ports($techfilter=null, $typefilter=null, $chancountfilter=null) {
@@ -207,6 +228,137 @@ function dahdi_forget_port($uniqid) {
 
 	write_config();
 	touch($g['dahdi_dirty_path']);
+}
+
+function dahdi_get_free_portgroup_number() {
+	$available_groups = array();
+	$ports = dahdi_get_ports();
+	$groups = dahdi_get_portgroups();
+
+	// group numbers range from 0 to 63 in chan_dahdi.conf
+	//
+	// mark port basechannel numbers as unavailable since these
+	// are used for the automatically generated groups on ports
+	foreach ($ports as $port) {
+		$used_groups[$port['basechannel']] = true;
+	}
+	// mark existing groups numbers as unavailable
+	foreach ($groups as $group) {
+		$used_groups[$group['number']] = true;
+	}
+	// return the first available group number starting from the top
+	for ($i = 63; $i >= 0; $i--) {
+		if (!$used_groups[$i]) {
+			return $i;
+		}
+	}
+
+	return false;
+}
+
+function dahdi_generate_default_portgroup($technology) {
+
+	$number = dahdi_get_free_portgroup_number();
+	if ($number === false) {
+		return false;
+	}
+
+	$group = array();
+
+	$group['name'] = gettext("Group") . " " . $number;
+	$group['number'] = $number;
+	$group['technology'] = $technology;
+	if ($technology == "analog") {
+		$group['type'] = "fxo";
+	} else if ($technology == "isdn") {
+		$group['type'] = "te";
+	}
+	$group['uniqid'] = "DAHDIPORTGROUP-" . strtoupper($technology) . "-" . uniqid(rand());
+
+	return $group;
+}
+
+function dahdi_get_portgroups($techfilter=null) {
+	global $config;
+
+	$all_groups = $config['interfaces']['dahdi-portgroup'];
+	$all_groups = is_array($all_groups) ? $all_groups : array();
+
+	if (!$techfilter) {
+		return $all_groups;
+	}
+
+	$filtered_groups = array();
+	foreach ($all_groups as $group) {
+		if ($techfilter && $group['technology'] != $techfilter) {
+			continue;
+		}
+
+		$filtered_groups[] = $group;
+	}
+
+	return $filtered_groups;
+}
+
+function dahdi_get_portgroup($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['interfaces']['dahdi-portgroup'][$uniqid_map[$uniqid]];
+}
+
+function dahdi_verify_portgroup($post, $errors) {
+
+	$group = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$group, &$post, &$errors);
+	v_draganddrop(&$group, &$post);
+
+	$trusted = array(
+		'uniqid',
+		'technology',
+		'type',
+		'number'
+	);
+	foreach ($trusted as $t) {
+		$group[$t] = $post[$t];
+	}
+
+	return $group;
+}
+
+function dahdi_save_portgroup($group) {
+	global $g, $uniqid_map;
+
+	if (dahdi_get_portgroup($group['uniqid'])) {
+		$GLOBALS['config']['interfaces']['dahdi-portgroup'][$uniqid_map[$group['uniqid']]] = $group;
+	} else {
+		$GLOBALS['config']['interfaces']['dahdi-portgroup'][] = $group;
+	}
+
+	write_config();
+	touch($g['dahdi_dirty_path']);
+}
+
+function dahdi_delete_portgroup($uniqid) {
+	global $g, $uniqid_map;
+
+	unset($GLOBALS['config']['interfaces']['dahdi-portgroup'][$uniqid_map[$uniqid]]);
+
+	write_config();
+	touch($g['dahdi_dirty_path']);
+}
+
+function dahdi_get_gnumber($uniqid) {
+	if (strpos($uniqid, "DAHDIPORT-") !== false) {
+		$port = dahdi_get_port($uniqid);
+		return $port['basechannel'];
+	} else if (strpos($uniqid, "DAHDIPORTGROUP-") !== false) {
+		$group = dahdi_get_portgroup($uniqid);
+		return $group['number'];
+	} else {
+		return "NO_GNUMBER_FOUND";
+	}
 }
 
 function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false) {
@@ -400,31 +552,44 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		if (isset($provider['disabled'])) {
 			continue;
 		}
-		$port = dahdi_get_port($provider['port']);
-
-		$conf .= "; Provider: " . $provider['name'] . "\n";
-		$conf .= "signalling=fxs_" . $port['startsignaling'] . "\n";
-		$conf .= "rxgain=" . $port['rxgain'] . "\n";
-		$conf .= "txgain=" . $port['txgain'] . "\n";
-
-		if ($port['echo-taps'] == "disable") {
-			$conf .= "echocancel=no\n";
-		} else {
-			$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+		if (strpos($provider['port'], "DAHDIPORT-") !== false) {
+			$pports[] = dahdi_get_port($provider['port']);
+		} else if (strpos($provider['port'], "DAHDIPORTGROUP-") !== false) {
+			$portgroup = dahdi_get_portgroup($provider['port']);
+			foreach ($portgroup['groupmember'] as $member) {
+				$pports[] = dahdi_get_port($member);
+			}
 		}
 
-		$conf .= "busydetect=yes\n";
-		$conf .= "busycount=3\n";
-		$conf .= "language=" . $provider['language'] . "\n";
-		$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
-		$conf .= "group=" . $port['basechannel'] . "\n";
-		if ($provider['manualattributes']) {
-			$conf .= "; manual attributes\n";
-			$conf .= base64_decode($provider['manualattributes']) . "\n";
-			$conf .= "; end manual attributes\n";
+		foreach ($pports as $pport) {
+			$conf .= "; Provider: " . $provider['name'] . ", Port " . $pport['name'] . "\n";
+			$conf .= "signalling=fxs_" . $pport['startsignaling'] . "\n";
+			$conf .= "rxgain=" . $pport['rxgain'] . "\n";
+			$conf .= "txgain=" . $pport['txgain'] . "\n";
+
+			if ($pport['echo-taps'] == "disable") {
+				$conf .= "echocancel=no\n";
+			} else {
+				$conf .= "echocancel=" . $pport['echo-taps'] . "\n";
+			}
+
+			$conf .= "busydetect=yes\n";
+			$conf .= "busycount=3\n";
+			$conf .= "language=" . $provider['language'] . "\n";
+			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+			if ($portgroup) {
+				$conf .= "group=" . $pport['basechannel'] . "," . $portgroup['number'] . "\n";
+			} else {
+				$conf .= "group=" . $pport['basechannel'] . "\n";
+			}
+			if ($provider['manualattributes']) {
+				$conf .= "; manual attributes\n";
+				$conf .= base64_decode($provider['manualattributes']) . "\n";
+				$conf .= "; end manual attributes\n";
+			}
+			$conf .= "channel => " . $pport['basechannel'] . "\n";
+			$conf .= "\n";
 		}
-		$conf .= "channel => " . $port['basechannel'] . "\n";
-		$conf .= "\n";
 	}
 	
 	$analogphones = analog_get_phones();
@@ -503,29 +668,43 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 			$conf .= "\n";
 
 		} else if (strpos($provider['port'], "DAHDI") !== false) {
-			$port = dahdi_get_port($provider['port']);
 
-			$conf .= "; Provider: " . $provider['name'] . "\n";
-			$conf .= "signalling=" . $port['signaling'] . "\n";
-			$conf .= "rxgain=" . $port['rxgain'] . "\n";
-			$conf .= "txgain=" . $port['txgain'] . "\n";
-
-			if ($port['echo-taps'] == "disable") {
-				$conf .= "echocancel=no\n";
-			} else {
-				$conf .= "echocancel=" . $port['echo-taps'] . "\n";
+			if (strpos($provider['port'], "DAHDIPORT-") !== false) {
+				$pports[] = dahdi_get_port($provider['port']);
+			} else if (strpos($provider['port'], "DAHDIPORTGROUP-") !== false) {
+				$portgroup = dahdi_get_portgroup($provider['port']);
+				foreach ($portgroup['groupmember'] as $member) {
+					$pports[] = dahdi_get_port($member);
+				}
 			}
 
-			$conf .= "language=" . $provider['language'] . "\n";
-			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
-			$conf .= "group=" . $port['basechannel'] . "\n";
-			if ($provider['manualattributes']) {
-				$conf .= "; manual attributes\n";
-				$conf .= base64_decode($provider['manualattributes']) . "\n";
-				$conf .= "; end manual attributes\n";
+			foreach ($pports as $pport) {
+				$conf .= "; Provider: " . $provider['name'] . ", Port " . $pport['name'] . "\n";
+				$conf .= "signalling=" . $pport['signaling'] . "\n";
+				$conf .= "rxgain=" . $pport['rxgain'] . "\n";
+				$conf .= "txgain=" . $pport['txgain'] . "\n";
+
+				if ($pport['echo-taps'] == "disable") {
+					$conf .= "echocancel=no\n";
+				} else {
+					$conf .= "echocancel=" . $pport['echo-taps'] . "\n";
+				}
+
+				$conf .= "language=" . $provider['language'] . "\n";
+				$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
+				if ($portgroup) {
+					$conf .= "group=" . $pport['basechannel'] . "," . $portgroup['number'] . "\n";
+				} else {
+					$conf .= "group=" . $pport['basechannel'] . "\n";
+				}
+				if ($provider['manualattributes']) {
+					$conf .= "; manual attributes\n";
+					$conf .= base64_decode($provider['manualattributes']) . "\n";
+					$conf .= "; end manual attributes\n";
+				}
+				$conf .= "channel => " . $pport['basechannel'] . "-" . ($pport['basechannel'] + 1) . "\n";
+				$conf .= "\n";
 			}
-			$conf .= "channel => " . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
-			$conf .= "\n";
 		}
 	}
 

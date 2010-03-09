@@ -584,4 +584,26 @@ function javascript_collapsible($part) {
 
 	<? endif;
 }
+
+function javascript_draganddrop($part) {
+
+	if ($part == "functions") : ?>
+
+		function save_groupmember_states() {
+			var gms = document.getElementById('groupmembers');
+			gms.value = jQuery('ul.gme').sortable('serialize', {key: 'gme[]'});
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery('ul.gme').sortable({ connectWith: ['ul.gmd'], revert: true });
+		jQuery('ul.gmd').sortable({ connectWith: ['ul.gme'], revert: true });
+		jQuery('#submit').click(save_groupmember_states);
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_draganddrop()!
+
+	<? endif;
+}
 ?>

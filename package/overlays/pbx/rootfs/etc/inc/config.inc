@@ -399,6 +399,12 @@ function config_build_uniqid_map($config) {
 		$uniqid_map[$config['interfaces']['dahdi-port'][$i]['uniqid']] = $i;
 	}
 
+	// dahdi portgroups
+	$n = count($config['interfaces']['dahdi-portgroup']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['interfaces']['dahdi-portgroup'][$i]['uniqid']] = $i;
+	}
+
 	// redfone gateways
 	$n = count($config['interfaces']['redfone-gateway']);
 	for ($i = 0; $i < $n; $i++) {

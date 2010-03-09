@@ -341,8 +341,7 @@ if (file_exists($g['analog_dirty_path'])) {
 			$portname = $gateway['span' . $spannum . 'name'];
 
 		} else if (strpos($p['port'], "DAHDI") !== false) {
-			$port = dahdi_get_port($p['port']);
-			$portname = $port['name'];
+			$portname = pbx_uniqid_to_name($p['port']);
 		}
 
 		?><td class="listr"><?=htmlspecialchars($portname);?></td>
@@ -373,7 +372,6 @@ if (file_exists($g['analog_dirty_path'])) {
 	</tr>
 
 	<? $i = 0; foreach ($analog_providers as $p): ?>
-	<? $port = dahdi_get_port($p['port']); ?>
 	<tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($p['disabled'])) {
@@ -392,7 +390,7 @@ if (file_exists($g['analog_dirty_path'])) {
 		?></td>
 		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($p['number']);?></td>
-		<td class="listr"><?=htmlspecialchars($port['name']);?></td>
+		<td class="listr"><?=htmlspecialchars(pbx_uniqid_to_name($p['port']));?></td>
 		<td valign="middle" nowrap class="list"><a href="providers_analog_edit.php?uniqid=<?=$p['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit provider");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$p['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this provider?");?>')"><img src="delete.png" title="<?=gettext("delete provider");?>" border="0"></a></td>
 	</tr>

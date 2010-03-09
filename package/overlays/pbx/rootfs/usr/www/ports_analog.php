@@ -38,6 +38,12 @@ if ($_GET['action'] == "forget") {
 	exit;
 }
 
+if ($_GET['action'] == "delete") { 
+	dahdi_delete_portgroup($_GET['uniqid']);
+	header("Location: ports_analog.php"); 
+	exit;
+}
+
 if (file_exists($g['dahdi_dirty_path'])) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
@@ -51,6 +57,7 @@ if (file_exists($g['dahdi_dirty_path'])) {
 }
 
 $analog_ports = dahdi_get_ports("analog");
+$analog_groups = dahdi_get_portgroups("analog");
 
 include("fbegin.inc");
 
@@ -71,15 +78,18 @@ include("fbegin.inc");
 		} else {
 
 				?><tr>
+					<td colspan="5" valign="top" class="d_header_nounderline"><?=gettext("Individual Ports");?></td>
+				</tr>
+				<tr>
 					<td width="5%" class="listhdrr">#</td>
 					<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
 					<td width="35%" class="listhdrr"><?=gettext("Card");?></td>
 					<td width="15%" class="listhdrr"><?=gettext("Type");?></td>
 					<td width="10%" class="list"></td>
 				</tr><?	
-			
-				foreach ($analog_ports as $port) {
-					$type = ($port['type'] == "fxs") ? gettext("Phone") : gettext("Provider");
+
+			foreach ($analog_ports as $port) {
+				$type = ($port['type'] == "fxs") ? gettext("Phone") : gettext("Provider");
 
 				?><tr>
 					<td class="listlr"><?=htmlspecialchars($port['basechannel']);?></td>
@@ -91,7 +101,40 @@ include("fbegin.inc");
 				</tr><?
 			}
 
-			?></table><?
+			?><tr>
+				<td colspan="5" class="list" height="22"></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="6" cellspacing="0">
+			<tr>
+				<td colspan="3" valign="top" class="d_header_nounderline"><?=gettext("Provider Port Groups");?></td>
+			</tr>
+			<tr>
+				<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
+				<td width="55%" class="listhdrr"><?=gettext("Members");?></td>
+				<td width="10%" class="list"></td>
+			</tr><?	
+
+			foreach ($analog_groups as $group) {
+
+			?><tr>
+				<td class="listlr"><?=htmlspecialchars($group['name']);?></td>
+				<td class="listbg"><?
+				if (is_array($group['groupmember'])) {
+					echo @implode(", ", pbx_uniqid_to_name($group['groupmember']));
+				}
+				?></td>
+				<td valign="middle" nowrap class="list"><a href="ports_groups_edit.php?uniqid=<?=$group['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit port group");?>" border="0"></a>
+				<a href="?action=delete&uniqid=<?=$group['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this port group's settings?");?>')"><img src="delete.png" title="<?=gettext("delete port group");?>" border="0"></a></td>
+			</tr><?
+
+			}
+
+			?><tr>
+				<td class="list" colspan="2"></td>
+				<td class="list"><a href="ports_groups_edit.php?technology=analog"><img src="add.png" title="<?=gettext("add port group");?>" border="0"></a></td>
+			</tr>
+		</table><?
 
 		}
 

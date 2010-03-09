@@ -492,6 +492,11 @@ function v_codecs($element, $post) {
 	$element['codec'] = $post['codec'] = array_merge($ace, $vce);
 }
 
+function v_draganddrop($element, $post) {
+	parse_str($post['groupmembers']);
+	$element['groupmember'] = $post['groupmember'] = $gme;
+}
+
 function v_password($element, $post) {
 	if (!strlen($s)) {
 		$errors[] = gettext("Missing password.");

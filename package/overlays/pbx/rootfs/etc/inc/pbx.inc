@@ -774,8 +774,16 @@ function pbx_uniqid_to_name_sub($uniqid) {
 	if ($pair[1] == "room") {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
 	}
+	// possible bug here, double check needed!! should actually by $pair[0];
 	if ($pair[1] == "callgroup") {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+	}
+
+	if ($pair[0] == "dahdiport") {
+		return $config['interfaces']['dahdi-port'][$uniqid_map[$uniqid]]['name'];
+	}
+	if ($pair[0] == "dahdiportgroup") {
+		return $config['interfaces']['dahdi-portgroup'][$uniqid_map[$uniqid]]['name'];
 	}
 
 	return "ERROR:UNIQID_TO_NAME_FAILED($uniqid)";

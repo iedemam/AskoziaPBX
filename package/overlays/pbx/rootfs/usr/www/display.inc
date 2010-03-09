@@ -968,6 +968,10 @@ function d_hwport_selector($current_port, $techfilter=null, $typefilter=null) {
 
 	$ports = dahdi_get_ports($techfilter, $typefilter);
 
+	if ($typefilter == "fxo" || $typefilter == "te") {
+		$groups = dahdi_get_portgroups($techfilter);
+	}
+
 	if ($techfilter == "analog" && $typefilter == "fxs") {
 		$help = gettext("The hardware port this phone is connected to.");
 	}
@@ -977,7 +981,6 @@ function d_hwport_selector($current_port, $techfilter=null, $typefilter=null) {
 		<td colspan="<?=$colspan;?>" class="vtable">
 			<select name="port" class="formfld" id="port"><?
 
-			
 			foreach ($ports as $port) {
 				?><option value="<?=$port['uniqid'];?>" <?
 				if ($port['uniqid'] == $current_port) {
@@ -985,7 +988,15 @@ function d_hwport_selector($current_port, $techfilter=null, $typefilter=null) {
 				}
 				?>><?=$port['name'];?></option><?
 			}
-			
+
+			foreach ($groups as $group) {
+				?><option value="<?=$group['uniqid'];?>" <?
+				if ($group['uniqid'] == $current_port) {
+					echo "selected";
+				}
+				?>><?=gettext("Group") . " : " . $group['name'];?></option><?
+			}
+
 			?></select>
 			<br><span class="vexpl"><?=spanify($help);?></span>
 		</td>
@@ -1146,6 +1157,40 @@ function d_failover_provider($current_failover) {
 		}
 
 			?><br><span class="vexpl"><?=spanify(gettext("If an outgoing call to this Provider fails, try routing it over the account selected above. Dialpatterns must be compatible, no extra care is yet taken to match them."));?></span>
+		</td>
+	</tr><?
+}
+
+function d_drag_and_drop($name, $selected_elements, $all_elements) {
+	global $colspan, $scripts;
+
+	$scripts['javascript_draganddrop'] = true;
+
+	if (!is_array($selected_elements)) {
+		$selected_elements = array();
+	}
+
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=spanify($name);?></td>
+		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Enabled"));?></strong>&nbsp;<i>(<?=spanify(gettext("drag-and-drop"));?>)</i>
+			<ul id="gme" class="gme" style="min-height:50px; cursor:pointer;"><? 
+
+			foreach ($selected_elements as $element) {
+				?><li class="gme" id="gme[]_<?=$element;?>"><?=pbx_uniqid_to_name($element);?></li><?
+			}
+
+			?></ul>
+		</td>
+		<td width="40%" class="vtable" valign="top"><strong><?=spanify(gettext("Disabled"));?></strong>
+			<ul id="gmd" class="gmd" style="min-height:50px; cursor:pointer;"><?
+
+			foreach ($all_elements as $element) {
+				if (!in_array($element, $selected_elements)) {
+					?><li class="gmd" id="gmd[]_<?=$element;?>"><?=pbx_uniqid_to_name($element);?></li><?
+				}
+			}
+
+			?></ul><input id="groupmembers" name="groupmembers" type="hidden" value="">
 		</td>
 	</tr><?
 }

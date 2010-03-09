@@ -640,6 +640,15 @@ a.link_color_black {
 	padding-right: 16px;
 }
 
+.d_header_nounderline {
+	color: #435370;
+	font-size: 16px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 6px;
+	padding-right: 16px;
+}
+
 .d_header_link {
 	color: #435370;
 	font-size: 16px;
