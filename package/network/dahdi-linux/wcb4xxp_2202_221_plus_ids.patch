@@ -30,7 +30,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/base.c dahdi-linux-2.2.1/driv
  #ifdef LOOPBACK_SUPPORTED
  static int loopback = 0;
  #endif
-@@ -114,9 +123,38 @@
+@@ -114,9 +123,39 @@
  struct devtype {
  	char *desc;
  	unsigned int flags;
@@ -65,6 +65,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/base.c dahdi-linux-2.2.1/driv
 +static struct devtype GENERIC_HFC8S_2 =     {"HFC-8S IOB8ST", .ports = 8, .card_type = GENERIC8 };
 +static struct devtype GENERIC_HFC8S_3 =     {"HFC-8S", .ports = 8, .card_type = GENERIC8 };
 +static struct devtype GENERIC_HFC8S_4 =     {"HFC-8S", .ports = 8, .card_type = GENERIC8 };
++static struct devtype CARLOFRC =            {"HFC-4S CCAG Eval (old)", .ports = 4, .card_type = GENERIC4DBLCLOCK };
 + 
 +#define CARD_HAS_EC(card) ((card)->card_type == B410P)
  
@@ -181,7 +182,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/base.c dahdi-linux-2.2.1/driv
   */
 -	b4xxp_setreg8(b4, R_BRG_PCM_CFG, 0x02);
 +
-+	if (b4->card_type == B410P)
++	if (b4->card_type == B410P || b4->card_type == GENERIC4DBLCLOCK)
 +		b4xxp_setreg8(b4, R_BRG_PCM_CFG, 0x02);
 +	else
 +		b4xxp_setreg8(b4, R_BRG_PCM_CFG, V_PCM_CLK);
@@ -464,7 +465,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/base.c dahdi-linux-2.2.1/driv
  	b4->syncspan = -1;		/* sync span is unknown */
  	if (b4->numspans > MAX_SPANS_PER_CARD) {
  		dev_err(b4->dev, "Driver does not know how to handle a %d span card!\n", b4->numspans);
-@@ -2706,7 +2900,33 @@
+@@ -2706,7 +2900,34 @@
  static struct pci_device_id b4xx_ids[] __devinitdata =
  {
  	{ 0xd161, 0xb410, PCI_ANY_ID, PCI_ANY_ID, 0, 0, (unsigned long)&wcb4xxp },
@@ -494,6 +495,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/base.c dahdi-linux-2.2.1/driv
 +	{ 0x1397, 0x16b8, 0x1397, 0xb522, 0, 0, (unsigned long)&GENERIC_HFC8S_2 },      /* HFC-8S IOB8ST */
 +	{ 0x1397, 0x16b8, 0x1397, 0xb552, 0, 0, (unsigned long)&GENERIC_HFC8S_3 },      /* HFC-8S */
 +	{ 0x1397, 0x16b8, 0x1397, 0xb622, 0, 0, (unsigned long)&GENERIC_HFC8S_4 },      /* HFC-8S */
++	{ 0x1397, 0x08b4, 0x1397, 0x08b4, 0, 0, (unsigned long)&CARLOFRC },             /* HFC-4S CCAG Eval (old) */
 +	{0, }
 +
  };
@@ -520,7 +522,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/wcb4xxp.h dahdi-linux-2.2.1/d
  
  #define WCB4XXP_CHANNELS_PER_SPAN		3	/* 2 B-channels and 1 D-Channel for each BRI span */
  #define WCB4XXP_HDLC_BUF_LEN			32	/* arbitrary, just the max # of byts we will send to DAHDI per call */
-@@ -415,6 +415,23 @@
+@@ -415,6 +415,24 @@
  	struct dahdi_chan _chans[WCB4XXP_CHANNELS_PER_SPAN]; /* Backing memory */
  };
  
@@ -538,6 +540,7 @@ diff -ur dahdi-linux-2.2.0.2/drivers/dahdi/wcb4xxp/wcb4xxp.h dahdi-linux-2.2.1/d
 +	GENERIC1,/* stuff that hasn't really been confirmed, tested, etc... */
 +	GENERIC2,
 +	GENERIC4,
++	GENERIC4DBLCLOCK,
 +	GENERIC8
 +	};
 +
