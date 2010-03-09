@@ -697,7 +697,7 @@ static int hfc_zap_initialize(struct dahdi_hfc *hfccard)
 
 		if (i == hfccard->span.channels - 1) {
 			hfccard->chans[i].sigcap = DAHDI_SIG_HARDHDLC;
-			hfccard->sigchan = &hfccard->chans[D];
+			hfccard->sigchan = &hfccard->chans[DAHDI_D];
 			hfccard->sigactive = 0;
 			atomic_set(&hfccard->hdlc_pending, 0);
 		} else {
