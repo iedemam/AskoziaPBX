@@ -899,8 +899,8 @@ secret=askozia						; password for login
 setuid=true							; drop privileges to owner of script
 basedir=/etc/asterisk/agi-bin/		; path to script folder
 
-[featival]							; text to speech engine
-text2wave=/usr/bin/flite_cmu_us_kal ; path to text2wave functionality
+[festival]							; text to speech engine
+text2wave=/usr/bin/flite_cmu_us_kal	; path to text2wave functionality
 
 [cepstral]							; alternate text to speech engine
 swift=/opt/swift/bin/swift			; path to switft binary
