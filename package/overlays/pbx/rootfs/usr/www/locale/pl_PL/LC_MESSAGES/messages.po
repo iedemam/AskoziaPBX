@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -25,6 +25,10 @@ msgstr "Nazwa"
 
 msgid "Number"
 msgstr "Numer"
+
+#, fuzzy
+msgid "New Application"
+msgstr "Aplikacja"
 
 #, fuzzy
 msgid "Port"
@@ -200,6 +204,9 @@ msgstr "Pin do sali konferencyjnej musi być liczbą."
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 msgid "Subject"
@@ -1634,6 +1641,18 @@ msgstr "usuń mapowanie aplikacji"
 msgid "add application mapping"
 msgstr "dodaj mapowanie aplikacji"
 
+#, fuzzy
+msgid "edit application"
+msgstr "edytuj mapowanie aplikacji"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "Czy na pewno chcesz usunąć to mapowanie aplikacji?"
+
+#, fuzzy
+msgid "delete application"
+msgstr "usuń mapowanie aplikacji"
+
 msgid "Edit"
 msgstr "Edytuj"
 
@@ -1642,6 +1661,25 @@ msgstr "Należy podać poprawny numer wewnętrzny."
 
 msgid "Internal extension used to reach this application."
 msgstr "Numer wewnętrzny aplikacji."
+
+#, fuzzy
+msgid "Edit Application"
+msgstr "Aplikacja"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Ustawienia"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
+
+msgid "Security"
+msgstr ""
+
+#, fuzzy
+msgid "Application Logic"
+msgstr "Aplikacja"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
@@ -1858,10 +1896,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "Kontyuuj"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "Ustawienia"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2404,9 +2438,6 @@ msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
 
 msgid "Text to be displayed for Caller ID."
 msgstr "Tekst wyświetlany jako Caller ID."
-
-msgid "Security"
-msgstr ""
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"

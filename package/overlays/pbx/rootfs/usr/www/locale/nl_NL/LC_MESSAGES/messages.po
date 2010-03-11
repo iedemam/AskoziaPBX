@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -26,6 +26,10 @@ msgstr "Naam"
 
 msgid "Number"
 msgstr "Nummer"
+
+#, fuzzy
+msgid "New Application"
+msgstr "Toepassingen"
 
 #, fuzzy
 msgid "Port"
@@ -203,6 +207,9 @@ msgstr ""
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 msgid "Subject"
@@ -1649,6 +1656,18 @@ msgstr "programma mapping verwijderen"
 msgid "add application mapping"
 msgstr "programma mapping toevoegen"
 
+#, fuzzy
+msgid "edit application"
+msgstr "bewerk programma mapping"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "Wil je werkelijk deze programma mapping verwijderen?"
+
+#, fuzzy
+msgid "delete application"
+msgstr "programma mapping verwijderen"
+
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -1657,6 +1676,26 @@ msgstr "Een geldig post moet worden gekozen."
 
 msgid "Internal extension used to reach this application."
 msgstr "Interne posten gebruikt voor deze toepassing"
+
+#, fuzzy
+msgid "Edit Application"
+msgstr "Toepassingen"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Instellingen"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "De interne post gebruikt om deze telefoon te bellen."
+
+#, fuzzy
+msgid "Security"
+msgstr "Geheim"
+
+#, fuzzy
+msgid "Application Logic"
+msgstr "Toepassingen"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
@@ -1891,10 +1930,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "Inhoud"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "Instellingen"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2447,10 +2482,6 @@ msgstr "De interne post gebruikt om deze telefoon te bellen."
 
 msgid "Text to be displayed for Caller ID."
 msgstr ""
-
-#, fuzzy
-msgid "Security"
-msgstr "Geheim"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"

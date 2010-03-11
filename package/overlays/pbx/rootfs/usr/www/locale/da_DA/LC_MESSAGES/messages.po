@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -28,6 +28,10 @@ msgstr "Navn"
 
 msgid "Number"
 msgstr "Nummer"
+
+#, fuzzy
+msgid "New Application"
+msgstr "Applikation"
 
 #, fuzzy
 msgid "Port"
@@ -204,6 +208,9 @@ msgstr "Konference PIN skal være numerisk"
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 #, fuzzy
@@ -1689,6 +1696,18 @@ msgstr "fjern applikation kortlægning"
 msgid "add application mapping"
 msgstr "tilføj applikation kortlægning"
 
+#, fuzzy
+msgid "edit application"
+msgstr "rediger applikation kortlægning"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "Vil du virkeligt slette denne applikation kortlægning? "
+
+#, fuzzy
+msgid "delete application"
+msgstr "fjern applikation kortlægning"
+
 msgid "Edit"
 msgstr "Rediger"
 
@@ -1697,6 +1716,26 @@ msgstr "En gyldig extension skal indtasstes"
 
 msgid "Internal extension used to reach this application."
 msgstr "Intern extension brugt for at nå denne applikation."
+
+#, fuzzy
+msgid "Edit Application"
+msgstr "Applikation"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Indstillinger"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "Den interne extension brugt for at ringe til denne telefon"
+
+#, fuzzy
+msgid "Security"
+msgstr "Hemmeligt"
+
+#, fuzzy
+msgid "Application Logic"
+msgstr "Applikation"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
@@ -1910,10 +1949,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "Forsæt"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "Indstillinger"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2445,10 +2480,6 @@ msgstr "Den interne extension brugt for at ringe til denne telefon"
 
 msgid "Text to be displayed for Caller ID."
 msgstr "Tekst der skal vises som Opkalds ID."
-
-#, fuzzy
-msgid "Security"
-msgstr "Hemmeligt"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"

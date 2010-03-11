@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -15,6 +15,10 @@ msgstr "Nome"
 
 msgid "Number"
 msgstr "Numero"
+
+#, fuzzy
+msgid "New Application"
+msgstr "Applicazione"
 
 #, fuzzy
 msgid "Port"
@@ -193,6 +197,9 @@ msgstr "Il PIN deve essere numerico."
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 msgid "Subject"
@@ -1714,6 +1721,18 @@ msgstr "Cancella questa applicazione"
 msgid "add application mapping"
 msgstr "Aggiungere una nuova applicazione"
 
+#, fuzzy
+msgid "edit application"
+msgstr "Modifica questa applicazione"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "Vuoi veramente eliminare questa applicazione?"
+
+#, fuzzy
+msgid "delete application"
+msgstr "Cancella questa applicazione"
+
 msgid "Edit"
 msgstr "Modifica"
 
@@ -1722,6 +1741,26 @@ msgstr "Deve essere indicato un interno valido."
 
 msgid "Internal extension used to reach this application."
 msgstr "Interno utilizzato per raggiungere questa applicazione"
+
+#, fuzzy
+msgid "Edit Application"
+msgstr "Applicazione"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Impostazioni"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "Interno usato per chiamare questo telefono."
+
+#, fuzzy
+msgid "Security"
+msgstr "Parola segreta"
+
+#, fuzzy
+msgid "Application Logic"
+msgstr "Applicazione"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
@@ -1965,10 +2004,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "connesso"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "Impostazioni"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2535,10 +2570,6 @@ msgstr "Interno usato per chiamare questo telefono."
 
 msgid "Text to be displayed for Caller ID."
 msgstr "Testo mostrato per Identificativo del chiamante (Caller ID)."
-
-#, fuzzy
-msgid "Security"
-msgstr "Parola segreta"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"

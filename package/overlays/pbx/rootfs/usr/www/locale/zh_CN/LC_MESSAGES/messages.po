@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -18,6 +18,10 @@ msgstr "名字"
 
 msgid "Number"
 msgstr "数量"
+
+#, fuzzy
+msgid "New Application"
+msgstr "应用"
 
 #, fuzzy
 msgid "Port"
@@ -194,6 +198,9 @@ msgstr "会议室认证码必须是数字。"
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 #, fuzzy
@@ -1660,6 +1667,18 @@ msgstr "删除应用映射"
 msgid "add application mapping"
 msgstr "添加应用映射"
 
+#, fuzzy
+msgid "edit application"
+msgstr "编辑应用映射"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "真的要删除这个应用映射？"
+
+#, fuzzy
+msgid "delete application"
+msgstr "删除应用映射"
+
 msgid "Edit"
 msgstr "编辑"
 
@@ -1668,6 +1687,26 @@ msgstr "必须输入一个有效的分机"
 
 msgid "Internal extension used to reach this application."
 msgstr "内部的分机用来达到这个应用。"
+
+#, fuzzy
+msgid "Edit Application"
+msgstr "应用"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "设置"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "这个内部分机用来拨打这个电话。"
+
+#, fuzzy
+msgid "Security"
+msgstr "秘密"
+
+#, fuzzy
+msgid "Application Logic"
+msgstr "应用"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
@@ -1885,10 +1924,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "继续"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "设置"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2416,10 +2451,6 @@ msgstr "这个内部分机用来拨打这个电话。"
 
 msgid "Text to be displayed for Caller ID."
 msgstr "为Caller ID显示的文本"
-
-#, fuzzy
-msgid "Security"
-msgstr "秘密"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"

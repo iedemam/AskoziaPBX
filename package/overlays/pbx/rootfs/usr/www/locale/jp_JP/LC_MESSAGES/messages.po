@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -23,6 +23,10 @@ msgstr "名前"
 
 msgid "Number"
 msgstr "番号"
+
+#, fuzzy
+msgid "New Application"
+msgstr "アプリケーション"
 
 #, fuzzy
 msgid "Port"
@@ -199,6 +203,9 @@ msgstr "電話会議室のピンコードは、数字である必要がありま
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 msgid "Subject"
@@ -1691,6 +1698,18 @@ msgstr "アプリケーションの関連付けの削除"
 msgid "add application mapping"
 msgstr "アプリケーションの関連付けの追加"
 
+#, fuzzy
+msgid "edit application"
+msgstr "アプリケーション関連付けの編集"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "本当に、このアプリケーションの関連付けを削除しますか？"
+
+#, fuzzy
+msgid "delete application"
+msgstr "アプリケーションの関連付けの削除"
+
 msgid "Edit"
 msgstr "編集"
 
@@ -1699,6 +1718,26 @@ msgstr "有効な内線番号を入力する必要があります"
 
 msgid "Internal extension used to reach this application."
 msgstr "このアプリケーションに接続させる為に割り当てる内線番号"
+
+#, fuzzy
+msgid "Edit Application"
+msgstr "アプリケーション"
+
+#, fuzzy
+msgid "General Settings"
+msgstr "設定"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "Internal extensionは、この電話にダイヤル可能"
+
+#, fuzzy
+msgid "Security"
+msgstr "パスワード"
+
+#, fuzzy
+msgid "Application Logic"
+msgstr "アプリケーション"
 
 msgid ""
 "Groups of extensions can be configured to ring concurrently. These groups "
@@ -1921,10 +1960,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "接続完了"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "設定"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2475,10 +2510,6 @@ msgstr "Internal extensionは、この電話にダイヤル可能"
 
 msgid "Text to be displayed for Caller ID."
 msgstr "表示させる発信者IDを入力して下さい"
-
-#, fuzzy
-msgid "Security"
-msgstr "パスワード"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"

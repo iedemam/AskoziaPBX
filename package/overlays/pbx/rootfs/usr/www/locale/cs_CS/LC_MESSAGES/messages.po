@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 17:14+0100\n"
+"POT-Creation-Date: 2010-03-11 17:05+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,9 @@ msgid "Name"
 msgstr "Název"
 
 msgid "Number"
+msgstr ""
+
+msgid "New Application"
 msgstr ""
 
 #, fuzzy
@@ -190,6 +193,9 @@ msgstr ""
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
+msgstr ""
+
+msgid "PHP parsing error"
 msgstr ""
 
 msgid "Subject"
@@ -1626,6 +1632,18 @@ msgstr ""
 msgid "add application mapping"
 msgstr ""
 
+#, fuzzy
+msgid "edit application"
+msgstr "změnit účet"
+
+#, fuzzy
+msgid "Do you really want to delete this application?"
+msgstr "Opravdu chcete smazat tento telefonní účet?"
+
+#, fuzzy
+msgid "delete application"
+msgstr "smazat účet"
+
 msgid "Edit"
 msgstr ""
 
@@ -1633,6 +1651,23 @@ msgid "A valid extension must be entered."
 msgstr ""
 
 msgid "Internal extension used to reach this application."
+msgstr ""
+
+msgid "Edit Application"
+msgstr ""
+
+#, fuzzy
+msgid "General Settings"
+msgstr "Nastavení"
+
+#, fuzzy
+msgid "The number used to dial this application."
+msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
+
+msgid "Security"
+msgstr ""
+
+msgid "Application Logic"
 msgstr ""
 
 msgid ""
@@ -1846,10 +1881,6 @@ msgstr ""
 #, fuzzy
 msgid "Connect"
 msgstr "připojeno"
-
-#, fuzzy
-msgid "General Settings"
-msgstr "Nastavení"
 
 #, fuzzy
 msgid "Enter a descriptive name for this gateway."
@@ -2368,9 +2399,6 @@ msgid "The number used to dial this phone."
 msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
 msgid "Text to be displayed for Caller ID."
-msgstr ""
-
-msgid "Security"
 msgstr ""
 
 msgid "Call Notifications & Voicemail"
