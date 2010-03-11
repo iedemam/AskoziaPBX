@@ -392,6 +392,10 @@ function config_build_uniqid_map($config) {
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['dialplan']['application'][$i]['uniqid']] = $i;
 	}
+	$n = count($config['dialplan']['application2']);
+	for ($i = 0; $i < $n; $i++) {
+		$uniqid_map[$config['dialplan']['application2'][$i]['uniqid']] = $i;
+	}
 
 	// dahdi ports
 	$n = count($config['interfaces']['dahdi-port']);

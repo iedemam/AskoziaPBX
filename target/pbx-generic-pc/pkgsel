@@ -49,6 +49,9 @@ X asterisk16
 X spandsp
 X libtiff
 
+# text2speech
+X flite
+
 # dahdi + deps
 X libpri
 X dahdi-tools
@@ -74,6 +77,7 @@ X jquery.ui
 X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
+X codemirror
 
 # provisioning
 X snomd

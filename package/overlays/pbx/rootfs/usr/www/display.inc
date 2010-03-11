@@ -1195,4 +1195,35 @@ function d_drag_and_drop($name, $selected_elements, $all_elements) {
 	</tr><?
 }
 
+function d_dropdown($title, $name, $items, $current_value, $help=false) {
+	global $colspan;
+
+	?><tr> 
+		<td width="20%" valign="top" class="vncell"><?=spanify($title);?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<select name="<?=$name;?>" class="formfld" id="<?=$name;?>">
+			<? foreach ($items as $item_value => $item_description) : ?>
+			<option value="<?=$item_value;?>" <?
+			if ($item_value == $current_value)
+				echo "selected"; ?>
+			><?=$item_description;?></option>
+			<? endforeach; ?>
+			</select>
+			<br><span class="vexpl"><?=spanify($help);?></span>
+		</td>
+	</tr><?
+}
+
+function d_codemirror($codemirrorcontents) {
+	global $colspan, $scripts;
+
+	$scripts['javascript_codemirror'] = true;
+
+	?><tr> 
+		<td colspan="<?=$colspan + 1 ?>" class="vtable_border">
+			<textarea name="code" id="code" cols="80" rows="30"><?=htmlspecialchars($codemirrorcontents);?></textarea>
+		</td>
+	</tr><?
+}
+
 ?>

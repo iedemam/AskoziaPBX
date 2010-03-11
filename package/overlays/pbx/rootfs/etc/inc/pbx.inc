@@ -50,6 +50,10 @@ function pbx_configure() {
 	$res |= modules_conf_generate();
 	if ($g['booting']) echo "done\n";
 
+	if ($g['booting']) echo "   |- generating PHP AGI configuration...";
+	$res |= phpagi_conf_generate();
+	if ($g['booting']) echo "done\n";
+
 	if ($g['booting']) echo "   |- generating indications configuration...";
 	$res |= indications_conf_generate();
 	if ($g['booting']) echo "done\n";
@@ -864,6 +868,7 @@ load => pbx_config.so
 load => pbx_loopback.so
 load => pbx_spool.so
 load => res_adsi.so
+load => res_agi.so
 load => res_indications.so
 load => res_limit.so
 load => res_musiconhold.so
@@ -874,6 +879,38 @@ EOD;
 	return ($return) ? $conf : util_file_write("/etc/asterisk/modules.conf", $conf);
 }
 
+function phpagi_conf_generate($return=false) {
+
+	$conf = <<<EOD
+[phpagi]
+debug=false							; enable debuging
+error_handler=true					; use internal error handler
+;admin=errors@mydomain.com			; mail errors to
+;hostname=sip.mydomain.com			; host name of this server
+tempdir=/var/spool/asterisk/tmp/	; temporary directory for storing temporary output
+
+[asmanager]
+server=localhost					; server to connect to
+port=5038							; default manager port
+username=admin						; username for login
+secret=askozia						; password for login
+
+[fastagi]
+setuid=true							; drop privileges to owner of script
+basedir=/etc/asterisk/agi-bin/		; path to script folder
+
+[featival]							; text to speech engine
+text2wave=/usr/bin/flite_cmu_us_kal ; path to text2wave functionality
+
+[cepstral]							; alternate text to speech engine
+swift=/opt/swift/bin/swift			; path to switft binary
+voice=David							; default voice
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/phpagi.conf", $conf);
+}
+
 function asterisk_conf_generate($return=false) {
 
 	$conf = <<<EOD
@@ -882,7 +919,7 @@ astetcdir => /etc/asterisk
 astmoddir => /offload/asterisk/modules
 astvarlibdir => /offload/asterisk
 astdatadir => /offload/asterisk
-astagidir => /offload/asterisk/agi-bin
+astagidir => /etc/asterisk/agi-bin
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log

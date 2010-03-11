@@ -216,6 +216,9 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script src="jquery.progressbar.js" type="text/javascript"></script>
+<? if ($needs_codemirror) { ?>
+<script src="codemirror/js/codemirror.js" type="text/javascript"></script>
+<? } ?>
 <script src="gui_head.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
 <link href="jqueryui/css/ui.css" rel="stylesheet" type="text/css">

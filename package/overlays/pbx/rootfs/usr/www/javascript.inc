@@ -126,6 +126,13 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
+	if (count($a_items = applications2_get_applications())) {
+		$options[] = array("", gettext("Applications") . "2");
+		foreach ($a_items as $item) {
+			$options[] = array($item['uniqid'], $pad . $item['name']);
+		}
+	}
+	
 	$n = count($options);
 	for ($i = 0; $i < $n; $i++) {
 		$options[$i][1] = escape_jstring($options[$i][1]);
@@ -606,4 +613,41 @@ function javascript_draganddrop($part) {
 
 	<? endif;
 }
+
+function javascript_codemirror($part) {
+
+	if ($part == "functions") : ?>
+
+
+	<? elseif ($part == "ready") : ?>
+
+		var editor = CodeMirror.fromTextArea('code', {
+			height: "350px",
+			parserfile: [
+				"parsexml.js",
+				"parsecss.js",
+				"tokenizejavascript.js",
+				"parsejavascript.js",
+				"tokenizephp.js",
+				"parsephp.js",
+				"parsephphtmlmixed.js"
+			],
+			stylesheet: [
+				"codemirror/css/xmlcolors.css",
+				"codemirror/css/jscolors.css",
+				"codemirror/css/csscolors.css",
+				"codemirror/css/phpcolors.css"
+			],
+			path: "codemirror/js/",
+			continuousScanning: 500,
+			lineNumbers: true
+		});
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_codemirror()!
+
+	<? endif;
+}
+
 ?>

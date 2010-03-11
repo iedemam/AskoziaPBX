@@ -604,4 +604,29 @@ function v_manualattributes($element, $post, $errors) {
 	$post['manualattributes'] = $element['manualattributes'] = v_strip(base64_encode(implode("\n", $lines)));
 }
 
+function v_applicationlogic($element, $post, $errors) {
+
+	$code = str_replace("\r\n", "\n", $post['code']);
+
+	if ($post['type'] == "php") {
+		$tmpfilepath = "/tmp/" . uniqid(rand());
+		util_file_write($tmpfilepath, $code);
+		exec("/etc/scripts/phpparsecheck.sh " . $tmpfilepath, $output, $retval);
+		unlink($tmpfilepath);
+		if ($retval != 0) {
+			$errormessage = gettext("PHP parsing error") . ":";
+			foreach ($output as $out) {
+				if (strpos($out, "Parse error: ") !== false) {
+					$out = str_replace("Parse error: ", "", $out);
+					$out = str_replace("in " . $tmpfilepath . " ", "", $out);
+					$errormessage .= " " . $out;
+				}
+			}
+			$errors[] = $errormessage;
+		}
+	}
+
+	$post['applicationlogic'] = $element['applicationlogic'] = base64_encode($code);
+}
+
 ?>

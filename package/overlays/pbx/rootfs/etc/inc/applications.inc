@@ -91,4 +91,100 @@ function applications_get_extensions() {
 	return $extensions;
 }
 
+
+
+
+
+
+
+
+
+
+
+function applications2_generate_default_application() {
+
+	$defaultlogic = <<<EOD
+
+<?php
+  require('phpagi.php');
+
+  \$agi = new AGI();
+
+  \$agi->answer();
+  \$agi->say_time();
+  sleep(1);
+  for($i = 0; $i < 5; $i++) {
+    \$agi-say_digits($i);
+  }
+  \$agi->hangup();
+
+?>
+
+EOD;
+
+	$application = array();
+
+	$application['name'] = gettext("New Application");
+	$application['uniqid'] = "DIALPLAN-APPLICATION-" . uniqid(rand());
+	$application['applicationlogic'] = base64_encode($defaultlogic);
+	$application['type'] = "php";
+
+	return $application;
+}
+
+function applications2_get_applications() {
+
+	$all_apps = $GLOBALS['config']['dialplan']['application2'];
+	return is_array($all_apps) ? $all_apps : array();
+}
+
+function applications2_get_application($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['dialplan']['application2'][$uniqid_map[$uniqid]];
+}
+
+function applications2_verify_application($post, $errors) {
+
+	$application = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_required('name', gettext('Name'), &$application, &$post, &$errors);
+	v_required('extension', gettext('Number'), &$application, &$post, &$errors);
+	v_optional('descr', &$application, &$post);
+	v_public_access_editor(&$application, &$post, &$errors);
+	v_applicationlogic(&$application, &$post, &$errors);
+
+	$trusted = array(
+		'uniqid',
+		'type'
+	);
+	foreach ($trusted as $t) {
+		$application[$t] = $post[$t];
+	}
+
+	return $application;
+}
+
+function applications2_save_application($application) {
+	global $g, $uniqid_map;
+
+	if (applications2_get_application($application['uniqid'])) {
+		$GLOBALS['config']['dialplan']['application2'][$uniqid_map[$application['uniqid']]] = $application;
+	} else {
+		$GLOBALS['config']['dialplan']['application2'][] = $application;
+	}
+
+	write_config();
+	touch($g['dialplan_dirty_path']);
+}
+
+function applications2_delete_application($uniqid) {
+	global $g, $uniqid_map;
+
+	unset($GLOBALS['config']['dialplan']['application2'][$uniqid_map[$uniqid]]);
+
+	write_config();
+	touch($g['dialplan_dirty_path']);
+}
 ?>

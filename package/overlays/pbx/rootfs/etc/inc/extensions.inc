@@ -40,6 +40,7 @@ function extensions_conf_generate($return=false) {
 	$external_phones = external_get_phones(); // XXX : refactor needed here re: internal vs external function names
 	$callgroups = callgroups_get_groups();
 	$applications = applications_get_apps();
+	$applications2 = applications2_get_applications();
 	$conference_rooms = conferencing_get_rooms();
 	$providers = pbx_get_providers();
 	$isdn_nt_interfaces = dahdi_get_ports("isdn", "nt");
@@ -131,6 +132,13 @@ EOD;
 	}
 	$conf .= "\n";
 
+	// application2 contexts
+	foreach ($applications2 as $a) {
+		$conf .= extensions_generate_application_context2($a);
+		$conf .= "\n";
+	}
+	$conf .= "\n";
+
 	// "public" extensions context
 	$conf .= "[public-direct-dial]\n";
 
@@ -199,6 +207,20 @@ EOD;
 		}
 	}
 
+	// application2 extensions
+	foreach ($applications2 as $a) {
+		if ($a['publicaccess'] == "enabled") {
+			$conf .= "; application : {$a['name']}\n";
+			if (!$a['publicname']) {
+				$conf .= "exten => {$a['extension']},1,NoOp(public calling application: {$a['name']})\n";
+				$conf .= extensions_generate_application_extension($a, true);
+			} else {
+				$conf .= "exten => {$a['publicname']},1,NoOp(public calling application: {$a['name']})\n";
+				$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
+			}
+		}
+	}
+
 	// conference room extensions
 	foreach ($conference_rooms as $r) {
 		if ($r['publicaccess'] == "enabled") {
@@ -250,6 +272,13 @@ EOD;
 
 	// application extensions
 	foreach ($applications as $a) {
+		$conf .= "; application : {$a['name']}\n";
+		$conf .= "exten => {$a['extension']},1,NoOp(internal calling application: {$a['name']})\n";
+		$conf .= extensions_generate_application_extension($a);
+	}
+
+	// application2 extensions
+	foreach ($applications2 as $a) {
 		$conf .= "; application : {$a['name']}\n";
 		$conf .= "exten => {$a['extension']},1,NoOp(internal calling application: {$a['name']})\n";
 		$conf .= extensions_generate_application_extension($a);
@@ -798,6 +827,28 @@ function extensions_generate_application_context($a) {
 	return $conf;
 }
 
+function extensions_generate_application_context2($a) {
+
+	if ($a['type'] == "php") {
+
+		util_file_write(
+			"/etc/asterisk/agi-bin/" . $a['uniqid'] . ".php",
+		 	"#!/usr/bin/php -f\n" . base64_decode($a['applicationlogic'])
+		);
+		chmod("/etc/asterisk/agi-bin/" . $a['uniqid'] . ".php", 0755);
+
+		$conf = "; " . $a['name'] . "\n";
+		$conf .= "[" . $a['uniqid'] . "]\n";
+		$conf .= "exten => _[0-9a-zA-Z*#]!,1,AGI(" . $a['uniqid'] . ".php)\n";
+		$conf .= "exten => _[0-9a-zA-Z*#]!,2,Hangup()\n";
+		$conf .= "exten => s,1,AGI(" . $a['uniqid'] . ".php)\n";
+		$conf .= "exten => s,2,Hangup()\n";
+		$conf .= "exten => h,1,Hangup()\n";
+	}
+
+	return $conf;
+}
+
 /**
  * Generates an extension which links to a local application
  */
@@ -862,6 +913,11 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 	// applications
 	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
 		$a = applications_get_app($uniqid);
+		return extensions_generate_application_extension($a, $from_public, $extension);
+
+	// applications2
+	} else if ($id[0] == "DIALPLAN" && $id[1] == "APPLICATION") {
+		$a = applications2_get_application($uniqid);
 		return extensions_generate_application_extension($a, $from_public, $extension);
 
 	} else {
