@@ -446,7 +446,7 @@ function storage_configure() {
 
 	$disks = storage_get_disks();
 	foreach ($disks as $disk) {
-		$conf .= $disk['device'] . "1 " . $disk['mountpoint'] . " msdos rw 0 0\n";
+		$conf .= $disk['device'] . "1 " . $disk['mountpoint'] . " vfat rw 0 0\n";
 		if (!file_exists($disk['mountpoint'])) {
 			exec("mkdir -p " . $disk['mountpoint']);
 		}
