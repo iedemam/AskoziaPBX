@@ -62,6 +62,12 @@ rm -rf offload_stage/rootfs/usr/bin/c_rehash
 rm -rf offload_stage/rootfs/usr/bin/dbclient
 rm -rf offload_stage/rootfs/usr/bin/envsubst
 rm -rf offload_stage/rootfs/usr/bin/flite
+rm -rf offload_stage/rootfs/usr/bin/flite_cmu_time_awb
+rm -rf offload_stage/rootfs/usr/bin/flite_cmu_us_awb
+rm -rf offload_stage/rootfs/usr/bin/flite_cmu_us_kal16
+rm -rf offload_stage/rootfs/usr/bin/flite_cmu_us_rms
+rm -rf offload_stage/rootfs/usr/bin/flite_cmu_us_slt
+rm -rf offload_stage/rootfs/usr/bin/flite_time
 rm -rf offload_stage/rootfs/usr/bin/gettextize
 rm -rf offload_stage/rootfs/usr/bin/ifnames
 rm -rf offload_stage/rootfs/usr/bin/libtool*

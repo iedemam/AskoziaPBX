@@ -48,6 +48,9 @@ X asterisk16
 X spandsp
 X libtiff
 
+# text2speech
+#X flite
+
 # dahdi + deps
 X libpri
 X dahdi-tools
