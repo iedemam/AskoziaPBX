@@ -4,10 +4,15 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 export PATH
 
 echo "checking for livecd..."
-mount /dev/hdc /offload
-if [ -f /offload/livecd ]; then
-	echo " - found!"
-	exit 0
+cddev=$(/sbin/sysctl -n dev.cdrom.info | /bin/busybox grep "drive name" | /bin/busybox cut -f 3)
+length=${#cddev}
+if [ "$length" -gt 2 ]; then
+	echo " - CD-ROM found at /dev/${cddev}, mounting..."
+	mount /dev/${cddev} /offload
+	if [ -f /offload/livecd ]; then
+		echo " - found flag file..."
+		exit 0
+	fi
 fi
 
 echo "attempting to mount /offload partition..."
