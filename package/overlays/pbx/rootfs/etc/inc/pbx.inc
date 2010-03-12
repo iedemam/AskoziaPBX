@@ -887,7 +887,7 @@ debug=false							; enable debuging
 error_handler=true					; use internal error handler
 ;admin=errors@mydomain.com			; mail errors to
 ;hostname=sip.mydomain.com			; host name of this server
-tempdir=/var/spool/asterisk/tmp/	; temporary directory for storing temporary output
+tempdir=/var/asterisk/spool/tmp/	; temporary directory for storing temporary output
 
 [asmanager]
 server=localhost					; server to connect to
