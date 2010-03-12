@@ -73,6 +73,7 @@ X jquery.ui
 X jquery.preloadimages
 X jquery.progressbar
 X jquery.selectboxes
+X codemirror
 
 # provisioning
 X snomd
