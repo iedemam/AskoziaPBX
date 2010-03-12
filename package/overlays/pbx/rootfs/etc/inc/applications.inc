@@ -111,11 +111,14 @@ function applications2_generate_default_application() {
   \$agi = new AGI();
 
   \$agi->answer();
+
+  \$agi->text2wav("Hello. I'm a text to speech engine!");
   \$agi->say_time();
   sleep(1);
-  for($i = 0; $i < 5; $i++) {
-    \$agi-say_digits($i);
+  for(\$i = 0; \$i < 5; \$i++) {
+    \$agi-say_digits(\$i);
   }
+
   \$agi->hangup();
 
 ?>
