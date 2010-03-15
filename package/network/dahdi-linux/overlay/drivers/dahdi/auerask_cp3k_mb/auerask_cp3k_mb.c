@@ -8,6 +8,7 @@
 #include <linux/ioport.h>
 #include <linux/spinlock.h>
 #include <asm/io.h>
+#include <asm/gptimers.h>
 
 #include "auerask_cp3k_mb.h"
 
@@ -135,7 +136,7 @@ unsigned int auerask_cp3k_read_hwrev( void )
 }
 
 /**
- * Sets up the IO memory for SPI IO use.
+ * Sets up the IO memory
  */
 static iomem_state_e iomem_alloc(void)
 {
@@ -326,26 +327,64 @@ iomem_state_e auerask_cp3k_spi_exit(void)
       iomem_ref_count--;
 
       if(iomem_ref_count == 0)
-	iomem_free();
+    iomem_free();
     }
 
   return iomem_state;
 }
 
 
-static int __init auerask_cp3k_mb_init(void)
+/**
+ * Initialize some hardware
+ * @param       exit        0 for module init, != 0 for module exit
+ */
+static void gb_io_setup( int exit )
 {
-  __u8 i;
+    unsigned int au_pwm_period;
 
-  pll_state.sync_source = 0;
-  for(i=0; i<CP3000_AUERMODANZ; i++)
-    pll_state.slot_state[i] = UNSYNCED;
+    write_wtnk14( 0 );
+    write_wtnk56( 0 );
+    write_wled( WLED_LANAKT );
+    write_wsync( WSYNC_DEFAULT );
+    write_wclock( WCLOCK_TN14_16 | WCLOCK_FS_LATE );
+    write_wspics( SPI_CSNONE );
+    // Setup timer for green power led
+    au_pwm_period = get_sclk() / 128;
+    set_gptimer_config( TIMER0_id, TIMER_MODE_PWM | TIMER_PERIOD_CNT | TIMER_PULSE_HI );
+    set_gptimer_period( TIMER0_id, au_pwm_period );
+    if( exit ) 
+    {
+        set_gptimer_pwidth( TIMER0_id, 0 );
+        disable_gptimers( TIMER0bit );
+    } else
+    {
+        set_gptimer_pwidth( TIMER0_id, au_pwm_period-1 );
+        enable_gptimers( TIMER0bit );
+    }
+    return;
+} // gb_io_setup()
 
-  return 0;
+
+static int __init auerask_cp3k_mb_init( void )
+{
+    __u8 i;
+
+    iomem_alloc();
+    gb_io_setup( 0 );
+    pll_state.sync_source = 0;
+    for( i = 0; i < CP3000_AUERMODANZ; i++ )
+    {
+        pll_state.slot_state[i] = UNSYNCED;
+    }
+    return 0;
 }
 
-static void __exit auerask_cp3k_mb_cleanup(void)
+
+static void __exit auerask_cp3k_mb_cleanup( void )
 {
+    gb_io_setup( 1 );
+    iomem_free();
+    return;
 }
 
 

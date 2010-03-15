@@ -146,6 +146,10 @@
 #define AUERMOD_MODMASK          0x01  // Bit 0 = modified hardware
 
 
+// ----------------------- General Purpose Output Ports ----------------------------
+#define PWR_GOOD    GPIO_PG11   // Power Good Signal        0=power fail 1=power OK
+#define RESTAST     GPIO_PG13   // RESET-Key                0=active     1=inactive
+
 /**
  * Types for slot- an portnumbers
  */
