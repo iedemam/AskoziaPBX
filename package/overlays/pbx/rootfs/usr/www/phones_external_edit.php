@@ -102,7 +102,7 @@ d_start("phones_external_edit.php");
 				$providers = pbx_get_providers();
 				foreach ($providers as $p) {
 					?><option value="<?=$p['uniqid'];?>" <?
-					if ($provider['uniqid'] == $form['dialprovider'])  {
+					if ($p['uniqid'] == $form['dialprovider']) {
 						echo "selected";
 					}
 					?>><?=htmlspecialchars($p['name']); ?></option><?
