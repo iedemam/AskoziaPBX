@@ -35,9 +35,12 @@ require_once("functions.inc");
 function provisioning_configure() {
 	global $config, $g;
 
+	openlog("provisioning_configure()", LOG_INFO, LOG_LOCAL0);
+
 	$laninfo = network_get_interface($config['interfaces']['lan']['if']);
 	$port = 56080;
 
+	// generate the httpd configuration file
 	$fd = fopen("{$g['etc_path']}/httpd_provisioning.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open httpd_provisioning.conf in provisioning_configure().\n");
@@ -50,8 +53,43 @@ function provisioning_configure() {
 	);
 	fclose($fd);
 	chmod("{$g['etc_path']}/httpd_provisioning.conf", 0600);
-	mwexec("httpd -c /etc/httpd_provisioning.conf -u root -p " . $port . " -h /usr/www_provisioning/");
-	mwexec_bg("/usr/sbin/snomd -l -v -u \"http://" . $laninfo['ipaddr'] . ":" . $port . "/snom.php?mac={mac}\"");
+
+	// kill any existing instances of the provisioning http server and snom daemon
+	$pid = exec('ps -w | grep "/etc/httpd_provisioning.conf" | grep -v "grep" | cut -d " " -f 2', $output);
+	syslog(LOG_INFO, "pid finder returned: " . implode("\n", $output));
+	if ($pid) {
+		syslog(LOG_INFO, "Existing httpd provisioning server running (pid: " . $pid . "), stopping.");
+		killbypidnumber($pid);
+	} else {
+		syslog(LOG_INFO, "No existing httpd provisioning server running, not killing.");
+	}
+	killbyname("snomd");
+
+	// see if any phones are setup with auto-provisioning...
+	$needs_provisioning = false;
+	$phones = sip_get_phones();
+	foreach ($phones as $phone) {
+		if (isset($phone['disabled'])) {
+			continue;
+		}
+		if ($phone['snom-mac']) {
+			$needs_provisioning = true;
+			break;
+		}
+	}
+
+	// ...and launch the appropriate daemons
+	if ($needs_provisioning) {
+		syslog(LOG_INFO, "Phones needing provisioning found, starting services.");
+		mwexec("httpd -c /etc/httpd_provisioning.conf -u root -p " . $port . " -h /usr/www_provisioning/");
+		mwexec_bg("/usr/sbin/snomd -l -v -u \"http://" . $laninfo['ipaddr'] . ":" . $port . "/snom.php?mac={mac}\"");
+	} else {
+		syslog(LOG_INFO, "No phones needing provisioning found, not starting services.");
+	}
+
+	closelog();
+
+	return 0;
 }
 
 ?>

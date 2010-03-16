@@ -61,6 +61,10 @@ function sigkillbyname($procname, $sig) {
 	return mwexec("busybox killall -{$sig} " . escapeshellarg($procname));
 }
 
+function killbypidnumber($pidnumber) {
+	return mwexec("busybox kill " . escapeshellarg($pidnumber));
+}
+
 /**
  * Wrapper for exec()
  */

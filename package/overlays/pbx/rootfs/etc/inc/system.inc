@@ -115,7 +115,10 @@ function system_update_httpd_settings() {
 		$username = "admin";
 	}
 
-	killbyname("httpd");
+	$pid = exec('ps -w | grep "/etc/httpd.conf" | grep -v "grep" | cut -d " " -f 2');
+	if ($pid) {
+		killbypidnumber($pid);
+	}
 	killbyname("sslwrap");
 
 	// setup httpd with password protection and a php interpreter
@@ -157,7 +160,7 @@ function system_update_httpd_settings() {
 			$portarg = "-accept 443";
 		}
 
-		$res = mwexec("httpd -u root -p 127.0.0.1:80 -h {$g['www_path']}");
+		$res = mwexec("httpd -c /etc/httpd.conf -u root -p 127.0.0.1:80 -h {$g['www_path']}");
 		$res |= mwexec_bg("sslwrap -cert {$g['etc_path']}/httpscert.pem -port 80 $portarg");
 
 	} else {
@@ -166,7 +169,7 @@ function system_update_httpd_settings() {
 			$portarg = "-p " . $config['system']['webgui']['port'];
 		}
 
-		$res = mwexec("httpd -u root $portarg -h {$g['www_path']}");
+		$res = mwexec("httpd -c /etc/httpd.conf -u root $portarg -h {$g['www_path']}");
 	}
 
 	return $res;
