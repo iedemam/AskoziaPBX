@@ -1,0 +1,20 @@
+--- busybox-1.15.3/include/usage.h.orig
++++ busybox-1.15.3/include/usage.h
+@@ -4558,12 +4558,14 @@
+        "and show the status for however many processes will fit on the screen." \
+ 
+ #define touch_trivial_usage \
+-       "[-c] [-d DATE] FILE [FILE]..."
++       "[OPTION]... FILE [FILE]..."
+ #define touch_full_usage "\n\n" \
+        "Update the last-modified date on the given FILE[s]\n" \
+      "\nOptions:" \
+-     "\n	-c	Do not create files" \
+-     "\n	-d DT	Date/time to use" \
++     "\n	-c		Do not create any FILE[s]" \
++     "\n	-r FILE		Use timestamp from FILE" \
++     "\n	-d DT	Use CCYYMMDDhhmm instead of current time" \
++     "\n	-t DT	Same as -d" \
+ 
+ #define touch_example_usage \
+        "$ ls -l /tmp/foo\n" \

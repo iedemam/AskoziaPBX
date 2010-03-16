@@ -1,0 +1,83 @@
+--- busybox-1.15.3/coreutils/touch.c.orig
++++ busybox-1.15.3/coreutils/touch.c
+@@ -40,38 +40,20 @@
+ int touch_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
+ int touch_main(int argc UNUSED_PARAM, char **argv)
+ {
+-#if ENABLE_DESKTOP
+-# if ENABLE_LONG_OPTS
+-	static const char touch_longopts[] ALIGN1 =
+-		/* name, has_arg, val */
+-		"no-create\0"         No_argument       "c"
+-		"reference\0"         Required_argument "r"
+-		"date\0"              Required_argument "d"
+-	;
+-# endif
+ 	struct utimbuf timebuf;
+ 	char *reference_file = NULL;
+ 	char *date_str = NULL;
+-#else
+-# define reference_file NULL
+-# define date_str       NULL
+-# define timebuf        (*(struct utimbuf*)NULL)
+-#endif
+ 	int fd;
+ 	int status = EXIT_SUCCESS;
+ 	int opts;
+-
+-#if ENABLE_DESKTOP && ENABLE_LONG_OPTS
+-	applet_long_options = touch_longopts;
+-#endif
+ 	/* -d and -t both set time. In coreutils,
+ 	 * accepted data format differs a bit between -d and -t.
+ 	 * We accept the same formats for both */
+-	opts = getopt32(argv, "c" IF_DESKTOP("r:d:t:")
++	opts = getopt32(argv, "cr:d:t:"
+ 				/*ignored:*/ "fma"
+-				IF_DESKTOP(, &reference_file)
+-				IF_DESKTOP(, &date_str)
+-				IF_DESKTOP(, &date_str)
++				, &reference_file
++				, &date_str
++				, &date_str
+ 	);
+ 
+ 	opts &= 1; /* only -c bit is left */
+@@ -87,7 +69,7 @@
+ 		timebuf.modtime = stbuf.st_mtime;
+ 	}
+ 
+-	if (date_str) {
++	else if (date_str) {
+ 		struct tm tm_time;
+ 		time_t t;
+ 
+@@ -99,13 +81,19 @@
+ 		/* Correct any day of week and day of year etc. fields */
+ 		tm_time.tm_isdst = -1;	/* Be sure to recheck dst */
+ 		t = validate_tm_time(date_str, &tm_time);
++		timebuf.actime = t;
++		timebuf.modtime = t;
++	}
+ 
++	else { /* buffer the current time*/
++		time_t t;
++		time(&t);
+ 		timebuf.actime = t;
+ 		timebuf.modtime = t;
+ 	}
+ 
+ 	do {
+-		if (utime(*argv, reference_file ? &timebuf : NULL)) {
++		if (utime(*argv, &timebuf)) {
+ 			if (errno == ENOENT) { /* no such file */
+ 				if (opts) { /* creation is disabled, so ignore */
+ 					continue;
+@@ -115,7 +103,6 @@
+ 						  S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH
+ 						  );
+ 				if ((fd >= 0) && !close(fd)) {
+-					if (reference_file)
+ 						utime(*argv, &timebuf);
+ 					continue;
+ 				}
