@@ -62,7 +62,8 @@ function notifications_msmtp_conf_generate() {
 	if ($email_config['tls']) {
 		$conf .= "tls on\n";
 		$conf .= "tls_starttls on\n";
-		$conf .= "tls_certcheck off\n";
+		$conf .= "tls_certcheck on\n";
+		$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
 	}
 
 	if ($voicemail_config['fromaddress']) {
