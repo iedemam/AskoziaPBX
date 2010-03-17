@@ -2,7 +2,7 @@
 <!-- AskoziaPBX default system configuration -->
 <!-- $Id$ -->
 <askoziapbx>
-	<version>2.0</version>
+	<version>2.01</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>AskoziaPBX</hostname>

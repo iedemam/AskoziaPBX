@@ -285,13 +285,13 @@ function convert_config() {
 		return;
 	}
 
-	/* 
-	convert 1.5 -> 1.6
-		- upgrade to new ntp interval method
-	*/
-	if ($config['version'] == "1.5") {
-		$config['system']['time-update-interval'] = "4-hours";
-		$config['version'] = "1.6";
+	/* update e-mail notifications tls variable storage now that smtps is supported */
+	if ($config['version'] == "2.0") {
+		if ($config['notifications']['email']['tls'] == "yes") {
+			$config['notifications']['email']['enctype'] = "tls";
+			unset($GLOBALS['config']['notifications']['email']['tls']);
+		}
+		$config['version'] = "2.01";
 	}
 
 	write_config();

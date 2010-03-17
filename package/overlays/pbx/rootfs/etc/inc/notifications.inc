@@ -59,9 +59,14 @@ function notifications_msmtp_conf_generate() {
 		$conf .= "password " . $email_config['password'] . "\n";
 	}
 
-	if ($email_config['tls']) {
+	if ($email_config['enctype'] == "tls") {
 		$conf .= "tls on\n";
 		$conf .= "tls_starttls on\n";
+		$conf .= "tls_certcheck on\n";
+		$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
+	} else if ($email_config['enctype'] == "smtps") {
+		$conf .= "tls on\n";
+		$conf .= "tls_starttls off\n";
 		$conf .= "tls_certcheck on\n";
 		$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
 	}

@@ -65,8 +65,8 @@ if ($_POST) {
 		$emailconfig['username'] = $_POST['username'];
 		$emailconfig['password'] = $_POST['password'];
 		$emailconfig['port'] = $_POST['port'];
-		$emailconfig['tls'] = $_POST['tls'];
 		$emailconfig['authtype'] = $_POST['authtype'];
+		$emailconfig['enctype'] = $_POST['enctype'];
 
 		notifications_save_email_configuration($emailconfig);
 
@@ -159,12 +159,25 @@ include("fbegin.inc");
 						</select>
 						<br><span class="vexpl"><?=gettext("Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server.");?></span>
 					</td>
-				</tr>
-				<tr>
-					<td valign="top" class="vncell"><?=gettext("Options");?></td>
-					<td class="vtable"> 
-						<input name="tls" type="checkbox" id="tls" value="yes" <?php if ($pconfig['tls']) echo "checked"; ?>>
-						<?=gettext("Account uses TLS");?>
+				</tr><?
+
+				$enctypes = array(
+					"none" => gettext("none"),
+					"tls" => "TLS",
+					"smtps" => "SMTPS"
+				);
+
+				?><tr>
+					<td valign="top" class="vncell"><?=gettext("Encryption Method");?></td>
+					<td class="vtable">
+						<select name="enctype" class="formfld" id="enctype">
+						<? foreach ($enctypes as $encval => $encstring) : ?>
+						<option value="<?=$encval;?>" <?
+						if ($encval == $pconfig['enctype'])
+							echo "selected"; ?>
+						><?=$encstring;?></option>
+						<? endforeach; ?>
+						</select>
 					</td>
 				</tr>
 				<tr>
