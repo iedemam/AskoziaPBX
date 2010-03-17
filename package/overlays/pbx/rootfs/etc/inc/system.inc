@@ -413,7 +413,7 @@ function system_get_dmesg_as_array() {
  * Loads required kernel modules
  */
 function system_load_kernel_modules() {
-	global $g;
+	global $g, $config;
 
 	mwexec("/sbin/modprobe -q dahdi");
 	mwexec("/sbin/modprobe -q dahdi_transcode");
@@ -427,7 +427,27 @@ function system_load_kernel_modules() {
 		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc");
 	}
 	foreach ($basemodules as $m) {
-		mwexec("/sbin/modprobe -q " . $m);
+		$module_options = '';
+		if (isset($config['system']['regional']['analog']['fxo']['daa'])) {
+			switch ($m) {
+				case 'wcfxo':
+					/* opermode support in wcfxo still incomplete and some cards
+						doesn't support some modes so here we use a very small subset (CTR21=1/FCC=0).
+						Also fail safe changing the daa mode only if TBR21/CTR21 required
+						because all the cards defaults to FCC.
+					*/
+					$int_daa_opermode = dahdi_get_daa_fallback($config['system']['regional']['analog']['fxo']['daa']);
+					if ($int_daa_opermode > 0) {
+						$module_options = " opermode={$int_daa_opermode}";
+					}
+					break;
+				case 'wctdm':
+					$module_options = " opermode={$config['system']['regional']['analog']['fxo']['daa']} fxshonormode=1";
+					break;
+			}
+		}
+		
+		mwexec("/sbin/modprobe -q " . $m . $module_options);
 	}
 
 	// is xorcom stuff compiled for this platform?

@@ -46,6 +46,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		dahdi_save_loadzones($form['loadzone']);
+		dahdi_save_daa_options($form['daa_impedance']);
 		header("Location: advanced_analog.php");
 		exit;
 	}
@@ -108,6 +109,89 @@ $dahdi_loadzones = array(
 	"ve" => gettext("Venezuela / South America")
 );
 
+/*	DAA settings opermode values;
+		parsed from fxo_modes.h rev. 5770
+*/
+$dahdi_daa_settings = array(
+	'FCC' => 'FCC',
+	'TBR21' => 'ETSI TBR21',
+	'ARGENTINA' => gettext('Argentina'),
+	'AUSTRALIA' => gettext('Australia'),
+	'AUSTRIA' => gettext('Austria'),
+	'BAHRAIN' => gettext('Bahrain'),
+	'BELGIUM' => gettext('Belgium'),
+	'BRAZIL' => gettext('Brazil'),
+	'BULGARIA' => gettext('Bulgaria'),
+	'CANADA' => gettext('Canada'),
+	'CHILE' => gettext('Chile'),
+	'CHINA' => gettext('China'),
+	'COLOMBIA' => gettext('Colombia'),
+	'CROATIA' => gettext('Croatia'),
+	'CYPRUS' => gettext('Cyprus'),
+	'CZECH' => gettext('Czech Republic'),
+	'DENMARK' => gettext('Denmark'),
+	'ECUADOR' => gettext('Ecuador'),
+	'EGYPT' => gettext('Egypt'),
+	'ELSALVADOR' => gettext('El Salvador'),
+	'FINLAND' => gettext('Finland'),
+	'FRANCE' => gettext('France'),
+	'GERMANY' => gettext('Germany'),
+	'GREECE' => gettext('Greece'),
+	'GUAM' => gettext('Guam'),
+	'HONGKONG' => gettext('Hong Kong'),
+	'HUNGARY' => gettext('Hungary'),
+	'ICELAND' => gettext('Iceland'),
+	'INDIA' => gettext('India'),
+	'INDONESIA' => gettext('Indonesia'),
+	'IRELAND' => gettext('Ireland'),
+	'ISRAEL' => gettext('Israel'),
+	'ITALY' => gettext('Italy'),
+	'JAPAN' => gettext('Japan'),
+	'JORDAN' => gettext('Jordan'),
+	'KAZAKHSTAN' => gettext('Kazakhstan'),
+	'KUWAIT' => gettext('Kuwait'),
+	'LATVIA' => gettext('Latvia'),
+	'LEBANON' => gettext('Lebanon'),
+	'LUXEMBOURG' => gettext('Luxembourg'),
+	'MACAO' => gettext('Macao'),
+	'MALAYSIA' => gettext('Malaysia'),
+	'MALTA' => gettext('Malta'),
+	'MEXICO' => gettext('Mexico'),
+	'MOROCCO' => gettext('Morocco'),
+	'NETHERLANDS' => gettext('Netherlands'),
+	'NEWZEALAND' => gettext('New Zealand'),
+	'NIGERIA' => gettext('Nigeria'),
+	'NORWAY' => gettext('Norway'),
+	'OMAN' => gettext('Oman'),
+	'PAKISTAN' => gettext('Pakistan'),
+	'PERU' => gettext('Peru'),
+	'PHILIPPINES' => gettext('Philippines'),
+	'POLAND' => gettext('Poland'),
+	'PORTUGAL' => gettext('Portugal'),
+	'ROMANIA' => gettext('Romania'),
+	'RUSSIA' => gettext('Russian Federation / Former Soviet Union'),
+	'SAUDIARABIA' => gettext('Saudi Arabia'),
+	'SINGAPORE' => gettext('Singapore'),
+	'SLOVAKIA' => gettext('Slovakia'),
+	'SLOVENIA' => gettext('Slovenia'),
+	'SOUTHAFRICA' => gettext('South Africa'),
+	'SOUTHKOREA' => gettext('South Korea'),
+	'SPAIN' => gettext('Spain'),
+	'SWEDEN' => gettext('Sweden'),
+	'SWITZERLAND' => gettext('Switzerland'),
+	'SYRIA' => gettext('Syria'),
+	'TAIWAN' => gettext('Taiwan'),
+	'THAILAND' => gettext('Thailand'),
+	'UAE' => gettext('United Arab Emirates'),
+	'UK' => gettext('United Kingdom'),
+	'USA' => gettext('United States'),
+	'YEMEN' => gettext('Yemen')
+);
+// get the default daa setting
+if (!isset($config['system']['regional']['analog']['fxo']['daa'])) {
+	$config['system']['regional']['analog']['fxo']['daa'] = $defaults['system']['regional']['analog']['fxo']['daa'];
+} 
+
 ?><form action="advanced_analog.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr> 
@@ -140,6 +224,22 @@ $dahdi_loadzones = array(
 			<td width="40%" class="vtable" valign="top" colspan="2">
 				<span class="vexpl"><strong><span class="red"><?=gettext("Note:");?></span></strong>
 				<?=gettext("Select all indication tone zones the analog hardware should support. <strong>The first tone zone will be the default tonezone.");?></strong></span>
+			</td>
+		</tr>
+		<tr> 
+			<td width="20%" valign="top" class="vncell"><?=gettext("Ports impedance");?></td>
+			<td width="40%" class="vtable" valign="top" colspan="2">
+				<select name="daa_impedance" id="daa_impedance" class="formfld">
+				<?
+				foreach ($dahdi_daa_settings as $daa_key => $daa_label) {
+					?><option value="<?=$daa_key; ?>"<? if ($daa_key == $config['system']['regional']['analog']['fxo']['daa']) { echo ' selected="selected"';} ?>><?=htmlspecialchars($daa_label); ?></option><?
+				}
+				unset($daa_key);
+				unset($daa_label);
+				?>
+				</select><br><span class="vexpl">
+				<?=gettext("Select the FXO port impedance to be used according to your country or regulatory body; FXS ports will follow the same settings.")?>
+				</span>
 			</td>
 		</tr>
 		<tr> 

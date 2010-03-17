@@ -775,6 +775,35 @@ function dahdi_save_loadzones($loadzones) {
 	touch($g['dahdi_dirty_path']);
 }
 
+function dahdi_save_daa_options($daa_setup) {
+	global $config, $d_sysrebootreqd_path;
+
+	$old_daa_setup = $config['system']['regional']['analog']['fxo']['daa'];
+	if (!empty($daa_setup)) {
+		if ($old_daa_setup != $daa_setup) {
+		$config['system']['regional']['analog']['fxo']['daa'] = $daa_setup;  
+		write_config();
+		touch($d_sysrebootreqd_path);
+		}
+	}
+}
+
+/**
+ * Because opermode support in wcfxo still incomplete that function return 
+ * the integer value 1 only for regions where TBR21 mode required (like old CTR21),
+ * else return zero.
+ */
+
+function dahdi_get_daa_fallback($text_opermode) {
+	$tbr21_keylist = explode(',', 'TBR21,AUSTRIA,BELGIUM,DENMARK,FINLAND,FRANCE,GERMANY,GREECE,ICELAND,IRELAND,ITALY,LUXEMBOURG,NETHERLANDS,NORWAY,PORTUGAL,SPAIN,SWEDEN,SWITZERLAND,UK');
+	$daa_intval = 0;
+
+	if (in_array($text_opermode, $tbr21_keylist)) {
+		$daa_intval = 1;
+	}
+	return $daa_intval;
+}
+
 function dahdi_configure() {
 	global $g;
 

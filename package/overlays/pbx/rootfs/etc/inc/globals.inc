@@ -102,4 +102,7 @@ $defaults['system']['username'] = "admin";
 $defaults['system']['timeservers'] = "pool.ntp.org";
 $defaults['system']['timeupdateinterval'] = "4-hours";
 
+// regional settings defaults
+$defaults['system']['regional']['analog']['fxo']['daa'] = 'FCC';
+
 ?>
