@@ -8,7 +8,7 @@ cddev=$(/sbin/sysctl -n dev.cdrom.info | /bin/busybox grep "drive name" | /bin/b
 length=${#cddev}
 if [ "$length" -gt 2 ]; then
 	echo " - CD-ROM found at /dev/${cddev}, mounting..."
-	mount /dev/${cddev} /offload
+	mount -r /dev/${cddev} /offload
 	if [ -f /offload/livecd ]; then
 		echo " - found flag file..."
 		exit 0
@@ -20,7 +20,7 @@ disks=$(fdisk -l | grep "^/dev/" | busybox cut -c 6-8 | busybox uniq)
 for disk in $disks
 do
 	echo " - trying ${disk}"
-	mount /dev/${disk}2 /offload
+	mount -r /dev/${disk}2 /offload
 	echo "   - mount returned: $?"
 	if [ -d /offload/rootfs ]; then
 		echo "   - found rootfs!"
@@ -35,7 +35,7 @@ disks=$(fdisk -l | grep "^/dev/" | busybox cut -c 6-8 | busybox uniq)
 for disk in $disks
 do
 	echo " - trying ${disk}"
-	mount /dev/${disk}2 /offload
+	mount -r /dev/${disk}2 /offload
 	echo "   - mount returned: $?"
 	if [ -d /offload/rootfs ]; then
 		echo "   - found rootfs!"
