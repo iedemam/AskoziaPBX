@@ -331,7 +331,6 @@
 		<div id="devtabs-6">
 			<p>Hidden goodies not yet stable or complete enough to be linked from the main menu. Testing and feedback greatly appreciated.</p>
 			<ul>
-				<li>Storage Disks - <a href="system_storage.php">system_storage.php</a></li>
 				<li>Skinny Phones - <a href="phones_skinny_edit.php">phones_skinny_edit.php</a></li>
 				<li>Dialplan Applications v2 - <a href="dialplan_applications2.php">dialplan_applications2.php</a></li>
 			</ul>

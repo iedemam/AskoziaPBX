@@ -68,34 +68,30 @@ include("fbegin.inc");
 ?><form action="system_storage.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td width="5%" class="list"></td>
-			<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Disk Device");?></td>
-			<td width="30%" class="listhdrr"><?=gettext("Mount Point");?></td>
+			<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+			<td width="20%" class="listhdrr"><?=gettext("Mount Point");?></td>
+			<td width="50%" class="listhdrr"><?=gettext("Services");?></td>
 			<td width="10%" class="list"></td>
-		</tr><?	
+		</tr><?
 
 	foreach ($disks as $disk) {
 
 		?><tr>
-			<td valign="middle" nowrap class="list"><?
-			if (isset($disk['unmounted'])) {
-				?><a href="?action=mount&uniqid=<?=$disk['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to mount disk");?>" border="0"></a><?
-			} else {
-				?><a href="?action=unmount&uniqid=<?=$disk['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to unmount this disk?");?>')"><img src="enabled.png" title="<?=gettext("click to unmount disk");?>" border="0"></a><?
-			}
-			?></td>
 			<td class="listbgl"><?=htmlspecialchars($disk['name']);?></td>
-			<td class="listr"><?=htmlspecialchars($disk['device']);?></td>
-			<td class="listr"><?=htmlspecialchars($disk['mountpoint']);?></td>
+			<td class="listr"><?=htmlspecialchars($disk['mountpoint']);?></td><?
+			$services = array();
+			if (isset($disk['media-and-db'])) {
+				$services[] = gettext("Media & Database");
+			}
+			?><td class="listr"><?=htmlspecialchars(implode(", ", $services));?>&nbsp;</td>
 			<td valign="middle" nowrap class="list"><a href="system_storage_edit.php?uniqid=<?=$disk['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit disk");?>" border="0"></a>
-			<a href="?action=forget&uniqid=<?=$disk['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this disk's settings?");?>')"><img src="delete.png" title="<?=gettext("forget disk settings");?>" border="0"></a></td>
+			<a href="?action=forget&uniqid=<?=$disk['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this disk?");?>')"><img src="delete.png" title="<?=gettext("forget disk settings");?>" border="0"></a></td>
 		</tr><?
 
 	}
 
 		?><tr>
-			<td class="list" colspan="4"></td>
+			<td class="list" colspan="3"></td>
 			<td class="list"><a href="system_storage_edit.php"><img src="add.png" title="<?=gettext("add disk");?>" border="0"></a></td>
 		</tr>
 	</table>

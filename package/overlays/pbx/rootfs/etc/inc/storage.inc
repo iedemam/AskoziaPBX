@@ -318,6 +318,60 @@ function storage_get_disk($uniqid) {
 	return $GLOBALS['config']['storage']['disk'][$uniqid_map[$uniqid]];
 }
 
+function storage_get_assigned_services($ignorethisdiskuniqid=false) {
+	global $g;
+
+	$disks = storage_get_disks();
+
+	$assignedservices = array();
+	foreach ($disks as $disk) {
+		if ($disk['uniqid'] == $ignorethisdiskuniqid) {
+			continue;
+		}
+		foreach ($g['storage_services'] as $servicetype) {
+			if (isset($disk[$servicetype])) {
+				$assignedservices[$servicetype] = $disk['name'];
+			}
+		}
+	}
+
+	return $assignedservices;
+}
+
+function storage_service_is_active($servicename) {
+
+	$disks = storage_get_disks();
+
+	foreach ($disks as $disk) {
+		if (isset($disk[$servicename])) {
+			return $disk;
+		}
+	}
+
+	return false;
+}
+
+function storage_get_unassigned_devices() {
+
+	$disks = storage_get_disks();
+
+	/* store all recognized devices */
+	exec("fdisk -l | grep \"Disk /dev/\"", $fdiskoutput);
+	foreach ($fdiskoutput as $fdiskline) {
+		$unassigned[substr($fdiskline, 5, 8)] = $fdiskline;
+	}
+
+	/* mark configured disks as assigned */
+	foreach ($disks as $disk) {
+		unset($unassigned[$disk['device']]);
+	}
+
+	/* mark system disk as assigned */
+	unset($unassigned["/dev/" . chop(file_get_contents("/var/etc/cfdevice"))]);
+
+	return $unassigned;
+}
+
 function storage_verify_disk($post, $errors) {
 
 	$disk = array();
@@ -326,10 +380,10 @@ function storage_verify_disk($post, $errors) {
 	v_required('name', gettext('Name'), &$disk, &$post, &$errors);
 	v_required('device', gettext('Disk Device'), &$disk, &$post, &$errors);
 	v_required('mountpoint', gettext('Mount Point'), &$disk, &$post, &$errors);
+	v_checkbox('media-and-db', &$disk, &$post);
 
 	$trusted = array(
-		'uniqid',
-		'unmounted'
+		'uniqid'
 	);
 	foreach ($trusted as $t) {
 		$disk[$t] = $post[$t];
@@ -399,44 +453,46 @@ function storage_format_disk($device) {
 }
 
 function storage_mount_disk($uniqid) {
-	global $g;
-
 	$disk = storage_get_disk($uniqid);
-
-	exec("mount -t msdos " . $disk['device'] . "1 -o noatime >> /etc/storage.debug 2>&1", $out, $retval);
-
-	if ($retval == 0) {
-		$disk['unmounted'] = false;
-	}
-	storage_save_disk($disk);
-	unlink($g['storage_dirty_path']);
-
+	exec("mount " . $disk['device'] . "1 -o noatime", $out, $retval);
 	return $retval;
 }
 
 function storage_unmount_disk($uniqid) {
-	global $g;
-
 	$disk = storage_get_disk($uniqid);
-
 	exec("umount " . $disk['device'] . "1", $out, $retval);
-
-	if ($retval == 0) {
-		$disk['unmounted'] = true;
-	}
-
-	storage_save_disk($disk);
-	unlink($g['storage_dirty_path']);
-
 	return $retval;
 }
 
 function storage_generate_default_disk() {
 	$disk = array();
 
-	$disk['unmounted'] = true;
+	$disk['name'] = gettext("Storage Disk");
+	$disk['mountpoint'] = "/storage/usbdisk1";
+	$disk['uniqid'] = "STORAGE-DISK-" . uniqid(rand());
 
 	return $disk;
+}
+
+function storage_initialize_service($service, $disk) {
+	global $g, $d_sysrebootreqd_path;
+
+	if ($service == 'media-and-db') {
+		$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
+		exec("mkdir " . $servicepath . "/keys");
+		exec("cp -Rp /offload/asterisk/keys/* " . $servicepath . "/keys/");
+		exec("mkdir " . $servicepath . "/moh");
+		exec("cp -Rp /offload/asterisk/moh/* " . $servicepath . "/moh/");
+		exec("mkdir " . $servicepath . "/sounds");
+		exec("cp -Rp /offload/asterisk/sounds/* " . $servicepath . "/sounds/");
+		/* operation not permitted on vfat system...workaround needed */
+		//exec("ln -s " . $servicepath . "/sounds/en-us " . $servicepath . "/sounds/en");
+		exec("cp -p /var/asterisk/run/astdb " . $servicepath . "/astdb");
+	}
+
+	if (!$g['booting']) {
+		touch($d_sysrebootreqd_path);
+	}
 }
 
 function storage_configure() {
@@ -452,16 +508,11 @@ function storage_configure() {
 		}
 	}
 	$conf .= "\n";
-
 	util_file_write("/etc/fstab", $conf);
 	sleep(1);
 
 	openlog("storage_configure()", LOG_INFO, LOG_LOCAL0);
 	foreach ($disks as $disk) {
-		if (isset($disk['unmounted'])) {
-			continue;
-		}
-
 		for ($i = 0; $i < 10; $i++) {
 			if (file_exists($disk['device'] . "1")) {
 				break;
@@ -470,11 +521,24 @@ function storage_configure() {
 			sleep(1);
 		}
 
-		exec("mount -t msdos " . $disk['device'] . "1 -o noatime >> /etc/storage.debug 2>&1", $out, $retval);
+		exec("mount -t vfat " . $disk['device'] . "1 -o noatime", $out, $retval);
 		if ($retval != 0) {
 			syslog(LOG_INFO, "Mounting " . $disk['device'] . "1 on " . $disk['mountpoint'] . " returned " . $retval);
 		} else {
-				syslog(LOG_INFO, "Mounted " . $disk['device'] . "1 on " . $disk['mountpoint']);
+			syslog(LOG_INFO, "Mounted " . $disk['device'] . "1 on " . $disk['mountpoint']);
+		}
+
+		if (!file_exists($disk['mountpoint'] . "/askoziapbx/tmp")) {
+			exec("mkdir -p " . $disk['mountpoint'] . "/askoziapbx/tmp");
+		}
+		foreach ($g['storage_services'] as $service) {
+			if (isset($disk[$service])) {
+				$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
+				if (!file_exists($servicepath)) {
+					exec("mkdir -p " . $servicepath);
+					storage_initialize_service($service, $disk);
+				}
+			}
 		}
 	}
 	closelog();

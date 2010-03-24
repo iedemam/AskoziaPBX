@@ -913,13 +913,18 @@ EOD;
 
 function asterisk_conf_generate($return=false) {
 
+	$datapath = "/offload/asterisk";
+	if ($disk = storage_service_is_active("media-and-db")) {
+		$datapath = $disk['mountpoint'] . "/askoziapbx/media";
+	}
+
 	$conf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
-astmoddir => /offload/asterisk/modules
-astvarlibdir => /offload/asterisk
-astdatadir => /offload/asterisk
 astagidir => /etc/asterisk/agi-bin
+astmoddir => /offload/asterisk/modules
+astvarlibdir => $datapath
+astdatadir => $datapath
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log

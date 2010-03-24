@@ -51,7 +51,10 @@ cp $base/target/$target/menu.lst root_stage/boot/grub/
 cp ../../boot/vmlinuz root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
-rm -rf offload_stage/asterisk/static-http/docs
+rm -rf offload_stage/asterisk/agi-bin
+rm -rf offload_stage/asterisk/firmware
+rm -rf offload_stage/asterisk/images
+rm -rf offload_stage/asterisk/static-http
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb
 rm -rf offload_stage/asterisk/sounds/en

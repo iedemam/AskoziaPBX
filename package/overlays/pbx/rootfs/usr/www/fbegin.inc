@@ -133,7 +133,7 @@ if ((!is_array($allowed)) and
 
 /* System */
 $menu['System'][gettext("General Setup")]		= array('system.php');
-//$menu['System'][gettext("Storage")]				= array('system_storage.php');
+$menu['System'][gettext("Storage")]				= array('system_storage.php');
 //$menu['System'][gettext("Packages")]			= array('system_packages.php');
 $menu['System'][gettext("Firmware")]			= array('system_firmware.php');
 $menu['System'][gettext("Backup/Restore")] 		= array('system_backup.php');
@@ -175,6 +175,10 @@ $menu['Services'][gettext("Notifications")]		= array('notifications_email.php');
 $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
+if (storage_service_is_active("media-and-db")) {
+	$menu['Services'][gettext("Media")]			= array('services_voiceprompts.php',
+												'services_musiconhold.php');
+}
 
 /* Packages */
 //if ($nav = packages_get_www_nav()) {

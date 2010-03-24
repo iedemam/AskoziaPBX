@@ -263,4 +263,35 @@ function util_file_write($fullpath, $contents) {
 	return 0;
 }
 
+/* modified from:
+	- http://icfun.blogspot.com/2008/11/php-get-remote-file-size.html
+*/
+function util_get_remote_filesize($url) {
+
+	$url = preg_replace('/http:\/\//','',$url);
+	if(!preg_match('/(.*?)(\/.*)/', $url, $match)) {
+		return -1;
+	}
+
+	$domain = $match[1];
+	$url = $match[2];
+	$http_request .= "HEAD " . $url . " HTTP/1.0\r\n";
+	$http_request .= "\r\n";
+
+	$fp = fsockopen($domain, 80, $errno, $errstr);
+	if($fp) {
+		fputs($fp, $http_request);
+		while(!feof($fp)) {
+			$http_response .= fgets($fp, 128);
+		}
+		fclose($fp);
+	}
+
+	if(preg_match("/Content\-Length: (\d+)/i", $http_response, $match)) {
+		return $match[1];
+	} else {
+		return -1;
+	}
+}
+
 ?>

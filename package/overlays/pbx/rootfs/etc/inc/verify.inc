@@ -588,6 +588,10 @@ function v_optional($field, $element, $post) {
 	$element[$field] = v_strip($post[$field]);
 }
 
+function v_checkbox($field, $element, $post) {
+	$element[$field] = isset($post[$field]);
+}
+
 function v_manualattributes($element, $post, $errors) {
 	// split textfield into lines
 	$lines = preg_split("/[\x0D\x0A]+/", $post['manualattributes'], -1, PREG_SPLIT_NO_EMPTY);

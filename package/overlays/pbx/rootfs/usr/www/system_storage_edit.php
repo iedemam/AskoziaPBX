@@ -37,7 +37,6 @@ $initialformat = false;
 if ($_POST['format']) {
 	$ret = storage_format_disk($_POST['device']);
 	if ($ret == 0) {
-		$_POST['uniqid'] = "STORAGE-DISK-" . uniqid(rand());
 		$savemsg = gettext("Formatting successful!");
 		$initialformat = true;
 	} else {
@@ -59,7 +58,6 @@ if ($_POST['format']) {
 
 $colspan = 1;
 $carryovers[] = "uniqid";
-$carryovers[] = "unmounted";
 
 
 $uniqid = $_GET['uniqid'];
@@ -67,7 +65,10 @@ if (isset($_POST['uniqid'])) {
 	$uniqid = $_POST['uniqid'];
 }
 
-if ($_POST) {
+if ($_POST['format']) {
+	$form = storage_generate_default_disk();
+	$form['device'] = $_POST['device'];
+} else if ($_POST) {
 	$form = $_POST;
 } else if ($uniqid) {
 	$form = storage_get_disk($uniqid);
@@ -77,30 +78,36 @@ if ($_POST) {
 }
 
 
+/* get available devices */
+$unassigneddisks = storage_get_unassigned_devices();
+
+/* get assigned services */
+$assignedservices = storage_get_assigned_services($form['uniqid']);
+
+
 include("fbegin.inc");
 d_start("system_storage_edit.php");
 
 
-if (!$initialformat) {
+if (!$initialformat && !count($unassigneddisks)) {
+
+	?><tr>
+		<td><strong><?=gettext("No additional storage devices were detected.");?></strong></td>
+	</tr>
+</table>
+</form><?
+
+
+} else if (!$initialformat) {
 	d_header(gettext("Format & Initialize"));
 
-	$sysnode = "/dev/" . chop(file_get_contents("/var/etc/cfdevice"));
-	exec("fdisk -l | grep \"Disk /dev/\"", $out);
-	//Disk /dev/sda: 259 MB, 259080192 bytes
-	$devices = array();
-	foreach ($out as $o) {
-		$node = substr($o, 5, 8);
-		if ($node != $sysnode) {
-			$devices[$node] = $o;
-		}
-	}
 	?><tr>
 		<td valign="top" class="vncell"><?=gettext("Disk Device");?></td>
 		<td class="vtable">
 			<select name="device" class="formfld" id="device"><?
-			foreach ($devices as $node => $fdiskline) {
-				?><option value="<?=$node;?>" <? if ($node == $form['device']) echo "selected";?>> <?
-				echo htmlspecialchars($fdiskline); ?></option><?
+			foreach ($unassigneddisks as $devicename => $devicedescription) {
+				?><option value="<?=$devicename;?>" <? if ($devicename == $form['device']) echo "selected";?>> <?
+				echo htmlspecialchars($devicedescription); ?></option><?
 			}
 			?></select>
 			<br><span class="vexpl"><?=spanify(gettext("Select which disk you would like to format."));?></span>
@@ -124,8 +131,18 @@ if (!$initialformat) {
 	d_field(gettext("Name"), "name", 40,
 		gettext("Enter a descriptive name for this disk."), "required");
 	d_field(gettext("Mount Point"), "mountpoint", 20,
-		gettext("Enter the full path where this device should be mounted. i.e. <em>/storage/usbstick1</em>."), "required");
+		gettext("Enter the full path where this device should be mounted."), "required");
 	d_label(gettext("Disk Device"), "device");
+	d_spacer();
+
+
+	d_header(gettext("Storage Services"));
+	if (!$assignedservices['media-and-db']) {
+		d_checkbox(gettext("Media & Database"), gettext("store voice prompts, music-on-hold and the Asterisk persistence database on disk"), "media-and-db");
+	} else {
+		d_blanklabel(gettext("Media & Database"),
+			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['media-and-db']));
+	}
 	d_spacer();
 
 

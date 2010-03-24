@@ -906,6 +906,17 @@ function d_label($title, $name) {
 <?
 }
 
+function d_blanklabel($title, $content) {
+	global $colspan;
+
+?>
+	<tr> 
+		<td width="20%" valign="top" class="vncell"><?=spanify($title);?></td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable"><?=$content;?></td>
+	</tr>
+<?
+}
+
 function d_spacer() {
 	global $colspan;
 ?>
@@ -935,6 +946,13 @@ function d_submit() {
 	</tr>
 </table>
 </form>
+<?
+d_scripts();
+}
+
+function d_stop() {
+?>
+</table>
 <?
 d_scripts();
 }
@@ -1224,6 +1242,22 @@ function d_codemirror($codemirrorcontents) {
 			<textarea name="code" id="code" cols="80" rows="30"><?=htmlspecialchars($codemirrorcontents);?></textarea>
 		</td>
 	</tr><?
+}
+
+function d_checkbox($title, $label, $name, $help=false, $required=false) {
+	global $form, $colspan;
+
+	$class = ($required) ? "vncellreq" : "vncell";
+?>
+	<tr> 
+		<td width="20%" valign="top" class="<?=$class;?>"><?=spanify($title);?></td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
+			<input name="<?=$name;?>" type="checkbox" class="formfld" id="<?=$name;?>" value="yes"
+			<? if (isset($form[$name])) echo "checked"; ?>>&nbsp;<?=spanify($label);?>
+			<br><span class="vexpl"><?=spanify($help);?></span>
+		</td>
+	</tr>
+<?
 }
 
 ?>
