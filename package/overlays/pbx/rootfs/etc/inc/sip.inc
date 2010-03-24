@@ -172,6 +172,7 @@ notifybusy=yes
 counteronpeer=yes
 notifyhold=no
 pedantic=yes
+callcounter=yes
 
 EOD;
 
