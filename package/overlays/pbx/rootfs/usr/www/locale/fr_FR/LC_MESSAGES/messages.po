@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: 2009-05-22 12:32+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -111,6 +111,10 @@ msgstr "Services"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Configuration du disque"
 
 #, php-format
 msgid "%.2f GB"
@@ -718,6 +722,9 @@ msgstr "Configuration Avancée"
 msgid "General Setup"
 msgstr "Configuration Générale"
 
+msgid "Storage"
+msgstr "Stockage"
+
 msgid "Firmware"
 msgstr "Mise à jour du système"
 
@@ -759,6 +766,9 @@ msgstr "Transferts"
 
 msgid "Conferencing"
 msgstr "Conférences"
+
+msgid "Media"
+msgstr "Moyen"
 
 msgid "Summary"
 msgstr "Système"
@@ -1383,6 +1393,126 @@ msgstr "Supprimer l'opérateur"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Russie / Ex union soviétique"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bulgare"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Commande"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Editeur"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Pologne"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Inde"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "lecture:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Malaisie"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Série"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Allemand"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portugal"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Domaine"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Enregistrer"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Afrique du sud"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Série"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Statistiques en direct"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Tonalités"
 
@@ -1398,6 +1528,14 @@ msgid ""
 msgstr ""
 "Sélectionner les tonalités supportées par le matériel analogique. <b>La "
 "première tonalité de la liste sera celle utilisée par défaut</b>."
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2091,9 +2229,6 @@ msgstr "Notes"
 msgid "Interfaces"
 msgstr "Interfaces"
 
-msgid "Storage"
-msgstr "Stockage"
-
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
@@ -2504,8 +2639,9 @@ msgstr ""
 "La plupart des comptes utilisent la position 'auto'. Si cela échoue, "
 "choisissez une méthode d'authentification approprié pour votre serveur."
 
-msgid "Account uses TLS"
-msgstr "Utiliser un compte TLS"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "Méthode d'authentification"
 
 msgid "Test E-mail"
 msgstr "Vérifier l'E-mail"
@@ -2937,6 +3073,38 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr "Configurer l'E-mail à envoyer lors du dépôt d'un nouveau message."
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Messages vocaux"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Télècharger"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Paramètres"
+
+#, fuzzy
+msgid "installing"
+msgstr "Signal"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Paquets installés"
+
+#, fuzzy
+msgid "add set"
+msgstr "Destination"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Cette page d'état comporte les informations suivantes:\n"
@@ -3456,15 +3624,7 @@ msgstr "Le système redémarre. Cette opération peut prend quelques minutes. "
 msgid "Are you sure you want to reboot the system?"
 msgstr "Souhaitez vous redémarrer le système ?"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "Cliquer pour désactiver le paquet"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Voulez-vous supprimer cette extension ?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3472,8 +3632,8 @@ msgid "edit disk"
 msgstr "Configuration du disque"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
+msgid "Do you really want to forget this disk?"
+msgstr "Voulez-vous supprimer cette extension ?"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3491,6 +3651,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Aucune interface analogique détectée."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3513,9 +3677,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Nom descriptif de cette ligne."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Services"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3529,6 +3704,17 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERRREUR La configuration reçue est invalide. \n"
+
+#~ msgid "Account uses TLS"
+#~ msgstr "Utiliser un compte TLS"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "Cliquer pour désactiver le paquet"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Voulez-vous vraiment annuler les paramètres de cette interface ?"
 
 #~ msgid "Russia"
 #~ msgstr "Russie"
@@ -3554,10 +3740,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Gestionnaire"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Enregistrer"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3726,9 +3908,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #~ msgid "ARP Table"
 #~ msgstr "Table ARP"
 
-#~ msgid "Live Stats"
-#~ msgstr "Statistiques en direct"
-
 #~ msgid "ARP table"
 #~ msgstr "Table ARP"
 
@@ -3746,9 +3925,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "supprimer toutes les entrées de la table ARP"
-
-#~ msgid "Editor"
-#~ msgstr "Editeur"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Le fichier spécifié (% s) n'existe pas."
@@ -3777,9 +3953,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Output"
 #~ msgstr "Résultat"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Le nombre doit être compris entre 1 et %d"
@@ -4101,9 +4274,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "exemple. <em>moncentraltéléphonique"
 
-#~ msgid "Domain"
-#~ msgstr "Domaine"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Nombre de minutes avant la prochaine synchronisation avec le serveur de "
@@ -4148,9 +4318,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "src"
 #~ msgstr "Source"
-
-#~ msgid "dst"
-#~ msgstr "Destination"
 
 #~ msgid "channels"
 #~ msgstr "Canal"
@@ -4222,9 +4389,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 #~ msgid "Subnet Mask"
 #~ msgstr "Masque de sous-réseau"
 
-#~ msgid "Media"
-#~ msgstr "Moyen"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "Paquets Réception/Emission"
 
@@ -4285,9 +4449,6 @@ msgstr "ERRREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Driver Type"
 #~ msgstr "Driver Type"
-
-#~ msgid "Serial"
-#~ msgstr "Série"
 
 #~ msgid "Power Save"
 #~ msgstr "Economie d'énergie"

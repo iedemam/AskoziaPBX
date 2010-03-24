@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -117,6 +117,10 @@ msgstr "サービス"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "ディスクの編集"
 
 #, php-format
 msgid "%.2f GB"
@@ -720,6 +724,9 @@ msgstr "拡張"
 msgid "General Setup"
 msgstr "全般設定"
 
+msgid "Storage"
+msgstr "ストレージ"
+
 msgid "Firmware"
 msgstr "ファームウェア"
 
@@ -761,6 +768,9 @@ msgstr "転送"
 
 msgid "Conferencing"
 msgstr "電話会議"
+
+msgid "Media"
+msgstr "メディア"
 
 msgid "Summary"
 msgstr "概要"
@@ -1385,6 +1395,126 @@ msgstr "接続回線の削除"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "ロシア /ソビエト共和国"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "ブルガリア"
+
+#, fuzzy
+msgid "Canada"
+msgstr "コマンド"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "エディター"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "ポーランド"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "インド"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "読み出し:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "マレーシア"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "シリアル"
+
+#, fuzzy
+msgid "Oman"
+msgstr "ドイツ語"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "ポルトガル"
+
+#, fuzzy
+msgid "Romania"
+msgstr "ドメイン名"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "保存"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "南アフリカ"
+
+#, fuzzy
+msgid "Syria"
+msgstr "シリアル"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "システム状態表示"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "タイムゾーン"
 
@@ -1400,6 +1530,14 @@ msgid ""
 msgstr ""
 "あなたのアナログ機器が対応している、全てのトーンゾーンを選んで下さい。"
 "<strong>初めに選択したトーンゾーンが、標準設定となります"
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2076,9 +2214,6 @@ msgstr "メモ"
 msgid "Interfaces"
 msgstr "インターフェース"
 
-msgid "Storage"
-msgstr "ストレージ"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2484,8 +2619,9 @@ msgstr ""
 "ほとんどの場合、'auto'で問題有りません。もし上手く動作しない場合には、あなた"
 "が使っているメールサーバーの認証方式を指定して下さい"
 
-msgid "Account uses TLS"
-msgstr "TLSを使用する"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "認証方式"
 
 msgid "Test E-mail"
 msgstr "テスト用メール送信"
@@ -2911,6 +3047,38 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr "Eメールの文面を直接指定する"
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "音声"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "ダウンロード"
+
+#, fuzzy
+msgid "extracting"
+msgstr "設定"
+
+#, fuzzy
+msgid "installing"
+msgstr "シグナル"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "インストール済パッケージ"
+
+#, fuzzy
+msgid "add set"
+msgstr "発信先"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>このステータスページは、以下の情報を含んでいます:\n"
@@ -3423,15 +3591,7 @@ msgstr "システムは再起動中です。これには数分かかります"
 msgid "Are you sure you want to reboot the system?"
 msgstr "本当にAskoziaPBXを再起動しますか？"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "クリックして、パッケージを無効にする"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "本当にこの電話機を削除しますか？"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3439,8 +3599,8 @@ msgid "edit disk"
 msgstr "ディスクの編集"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
+msgid "Do you really want to forget this disk?"
+msgstr "本当にこの電話機を削除しますか？"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3458,6 +3618,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "対応するアナログインターフェースが見つかりませんでした。"
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3480,9 +3644,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "この電話の判り易い名前"
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "サービス"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3496,6 +3671,17 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "Account uses TLS"
+#~ msgstr "TLSを使用する"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "クリックして、パッケージを無効にする"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "本当に、このインターフェース\\の設定を、忘れても宜しいですか？"
 
 #~ msgid "Russia"
 #~ msgstr "ロシア"
@@ -3521,10 +3707,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "マネージャー"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "保存"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3693,9 +3875,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ msgid "ARP Table"
 #~ msgstr "ARPテーブル"
 
-#~ msgid "Live Stats"
-#~ msgstr "システム状態表示"
-
 #~ msgid "ARP table"
 #~ msgstr "ARPテーブル"
 
@@ -3713,9 +3892,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "arpテーブルから、全ての記録を消去する"
-
-#~ msgid "Editor"
-#~ msgstr "エディター"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "指定したファイル (%s) が存在しません"
@@ -3744,9 +3920,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Output"
 #~ msgstr "出力"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "回数は、1から %dの間でなくてはなりません"
@@ -4069,9 +4242,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "例;<em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "ドメイン名"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr "時刻同期の間隔(分);(推奨 300,もしくは0[時刻同期無効])"
 
@@ -4116,9 +4286,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "src"
 #~ msgstr "発信元"
-
-#~ msgid "dst"
-#~ msgstr "発信先"
 
 #~ msgid "channels"
 #~ msgstr "チャンネル"
@@ -4190,9 +4357,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ msgid "Subnet Mask"
 #~ msgstr "サブネットマスク"
 
-#~ msgid "Media"
-#~ msgstr "メディア"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "In/Out パケット"
 
@@ -4252,9 +4416,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Driver Type"
 #~ msgstr "ドライバータイプ"
-
-#~ msgid "Serial"
-#~ msgstr "シリアル"
 
 #~ msgid "Power Save"
 #~ msgstr "省電力"

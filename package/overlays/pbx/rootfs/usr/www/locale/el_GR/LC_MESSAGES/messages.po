@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,10 @@ msgstr "Υπηρεσίες"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Επεξεργασία δίσκου"
 
 #, php-format
 msgid "%.2f GB"
@@ -727,6 +731,9 @@ msgstr "Επιλογές για ειδικούς"
 msgid "General Setup"
 msgstr "Γενικές ρυθμίσεις"
 
+msgid "Storage"
+msgstr "Αποθήκευση"
+
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -768,6 +775,9 @@ msgstr "Προωθήσεις"
 
 msgid "Conferencing"
 msgstr "Συνδιασκέψεις"
+
+msgid "Media"
+msgstr "Μέσον"
 
 msgid "Summary"
 msgstr "Περίληψη"
@@ -1400,6 +1410,126 @@ msgstr "διαγραφή παρόχου"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Ρωσία / πρώην Σοβιετική Ένωση"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Βουλγαρία"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Εντολή"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Επεξεργαστής"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Πολωνία"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Ινδία"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "ανάγνωση:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Μαλαισία"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Σειριακό"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Γερμανικά"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Πορτογαλία"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Τομέας"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Αποθήκευση"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Νότια Αφρική"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Σειριακό"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Ζωντανά στατιστικά"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Ζώνες τόνων"
 
@@ -1415,6 +1545,14 @@ msgid ""
 msgstr ""
 "Επιλέξτε όλες τις ζώνες τόνων που θέλετε να υποστηρίζονται από τις "
 "αναλογικές διεπαφές. <strong>Η πρώτη ζώνη τόνων θα είναι η προεπιλεγμένη."
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2125,9 +2263,6 @@ msgstr "Σημειώσεις"
 msgid "Interfaces"
 msgstr "Διεπαφές"
 
-msgid "Storage"
-msgstr "Αποθήκευση"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2553,8 +2688,9 @@ msgstr ""
 "περίπτωση που παρουσιαστούν προβλήματα, επιλέξτε τη μέθοδο ταυτοποίησης που "
 "χρησιμοποιεί ο διακομιστής σας."
 
-msgid "Account uses TLS"
-msgstr "Ο λογαριασμός χρησιμοποιεί TLS"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "Μέθοδος ταυτοποίησης"
 
 msgid "Test E-mail"
 msgstr "Δοκιμαστικό e-mail."
@@ -2995,6 +3131,38 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr "Τροποποίηση προεπιλεγμένου μηνύματος"
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Ηχητικές προτροπές"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Λήψη"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Ρυθμίσεις"
+
+#, fuzzy
+msgid "installing"
+msgstr "Σήμα"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Εγκατεστημένα πακέτα"
+
+#, fuzzy
+msgid "add set"
+msgstr "προς"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Αυτή η σελίδα κατάστασης περιλαμβάνει τις ακόλουθες πληροφορίες:\n"
@@ -3530,15 +3698,7 @@ msgstr ""
 msgid "Are you sure you want to reboot the system?"
 msgstr "Θέλετε πραγματικά να επανεκκινήσετε το σύστημα;"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "κάντε κλικ για να απενεργοποιήσετε αυτό το πακέτο"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Θέλετε πραγματικά να διαγράψετε αυτό το τηλέφωνο;"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3546,8 +3706,8 @@ msgid "edit disk"
 msgstr "Επεξεργασία δίσκου"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
+msgid "Do you really want to forget this disk?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτό το τηλέφωνο;"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3565,6 +3725,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Δεν βρέθηκαν συμβατές διεπαφές PSTN."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3587,9 +3751,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Υπηρεσίες"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3603,6 +3778,17 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "Account uses TLS"
+#~ msgstr "Ο λογαριασμός χρησιμοποιεί TLS"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "κάντε κλικ για να απενεργοποιήσετε αυτό το πακέτο"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Θέλετε πραγματικά να διαγράψετε τις ρυθμίσεις αυτής της διεπαφής;"
 
 #~ msgid "Russia"
 #~ msgstr "Ρωσία"
@@ -3629,10 +3815,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Διαχείριση"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Αποθήκευση"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3808,9 +3990,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ msgid "ARP Table"
 #~ msgstr "Πίνακας ARP"
 
-#~ msgid "Live Stats"
-#~ msgstr "Ζωντανά στατιστικά"
-
 #~ msgid "ARP table"
 #~ msgstr "Πίνακας ARP"
 
@@ -3828,9 +4007,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "διαγραφή όλων των καταχωρήσεων από τον πίνακα arp"
-
-#~ msgid "Editor"
-#~ msgstr "Επεξεργαστής"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Το αρχείο (%s) δεν υπάρχει."
@@ -3859,9 +4035,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Output"
 #~ msgstr "Αποτέλεσμα"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Το πλήθος πρέπει να είναι μεταξύ 1 και %d"
@@ -4202,9 +4375,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "π.χ. <em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "Τομέας"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Λεπτά μεταξύ ενημερώσεων της ώρας του συστήματος μέσω δικτύου. "
@@ -4249,9 +4419,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "src"
 #~ msgstr "από"
-
-#~ msgid "dst"
-#~ msgstr "προς"
 
 #~ msgid "channels"
 #~ msgstr "κανάλια"
@@ -4329,9 +4496,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ msgid "Subnet Mask"
 #~ msgstr "Μάσκα υποδικτύου"
 
-#~ msgid "Media"
-#~ msgstr "Μέσον"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "Πακέτα (εισ/εξ)"
 
@@ -4392,9 +4556,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Driver Type"
 #~ msgstr "Είδος οδηγού"
-
-#~ msgid "Serial"
-#~ msgstr "Σειριακό"
 
 #~ msgid "Power Save"
 #~ msgstr "Κατάσταση εξοικονόμησης ενέργειας"

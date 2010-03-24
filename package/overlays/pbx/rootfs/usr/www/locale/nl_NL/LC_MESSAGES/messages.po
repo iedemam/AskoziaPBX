@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -120,6 +120,10 @@ msgstr "Services"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Bewerk Disk"
 
 #, php-format
 msgid "%.2f GB"
@@ -653,6 +657,9 @@ msgstr "Geavanceerd"
 msgid "General Setup"
 msgstr ""
 
+msgid "Storage"
+msgstr "Opslag"
+
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -694,6 +701,9 @@ msgstr "Doorschakelen"
 
 msgid "Conferencing"
 msgstr "Conferencing"
+
+msgid "Media"
+msgstr "Media"
 
 msgid "Summary"
 msgstr ""
@@ -1331,6 +1341,126 @@ msgstr "Provider verwijderen"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Rusland / Ex Sovjetunië"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bulgarije"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Commando"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Bewerken"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Polen"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Indië"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "Lezen:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Maleisië"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Serieël"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Duits"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portugal"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Domein"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Bewaar"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Zuid Afrika"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Serieël"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Verenigde Staten / Noord Amerika"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Toon Zone's"
 
@@ -1346,6 +1476,14 @@ msgid ""
 msgstr ""
 "Selecteer al de indicatie toon zones welke de analoge hardware moet "
 "supporteren. <strong> De eerste toon zone zal de standaard toonzone zijn."
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2046,9 +2184,6 @@ msgstr "Notas"
 msgid "Interfaces"
 msgstr "Interfaces"
 
-msgid "Storage"
-msgstr "Opslag"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2458,8 +2593,8 @@ msgid ""
 "authentication method appropriate for your server."
 msgstr ""
 
-msgid "Account uses TLS"
-msgstr "Lijn gebruikt TLS"
+msgid "Encryption Method"
+msgstr ""
 
 msgid "Test E-mail"
 msgstr ""
@@ -2879,6 +3014,38 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr ""
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Audio Zinnen"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Download"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Instellingen"
+
+#, fuzzy
+msgid "installing"
+msgstr "Signaal"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Gëinstalleerde Paketten"
+
+#, fuzzy
+msgid "add set"
+msgstr "dst"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr ""
@@ -3329,14 +3496,7 @@ msgstr ""
 msgid "Are you sure you want to reboot the system?"
 msgstr ""
 
-msgid "click to mount disk"
-msgstr ""
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Wil je deze telfoon verwijderen?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3344,8 +3504,8 @@ msgid "edit disk"
 msgstr "Bewerk Disk"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
+msgid "Do you really want to forget this disk?"
+msgstr "Wil je deze telfoon verwijderen?"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3363,6 +3523,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Geen compatibele analoge interfaces ontdekt."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3384,9 +3548,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Beschrijvende naam voor deze telefoon."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Services"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3400,6 +3575,13 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Account uses TLS"
+#~ msgstr "Lijn gebruikt TLS"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Wil je werkelijk deze interface zijn instellingen verwijderen?"
 
 #~ msgid "Russia"
 #~ msgstr "Rusland"
@@ -3415,10 +3597,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Ratio"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Bewaar"
 
 #, fuzzy
 #~ msgid "edit analog port"
@@ -3569,9 +3747,6 @@ msgstr ""
 #~ msgid "remove all entries from arp table"
 #~ msgstr "verwijder alle ingaven van de arp tabel"
 
-#~ msgid "Editor"
-#~ msgstr "Bewerken"
-
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Het gespecifieerde bestand (%s) bestaat niet."
 
@@ -3597,9 +3772,6 @@ msgstr ""
 
 #~ msgid "Output"
 #~ msgstr "Output"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Tellen moet tussen de 1 en %d "
@@ -3807,9 +3979,6 @@ msgstr ""
 #~ msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
 #~ msgstr "In bijna alle gevallen, \"kewl Start 'is de juiste keuze hier."
 
-#~ msgid "Domain"
-#~ msgstr "Domein"
-
 #, fuzzy
 #~ msgid "Configured"
 #~ msgstr "configuratie"
@@ -3840,9 +4009,6 @@ msgstr ""
 
 #~ msgid "src"
 #~ msgstr "src"
-
-#~ msgid "dst"
-#~ msgstr "dst"
 
 #~ msgid "channels"
 #~ msgstr "kanalen"
@@ -3915,9 +4081,6 @@ msgstr ""
 #~ msgid "Subnet Mask"
 #~ msgstr "Subnet Mask"
 
-#~ msgid "Media"
-#~ msgstr "Media"
-
 #~ msgid "Collisions"
 #~ msgstr "Botsingen"
 
@@ -3938,9 +4101,6 @@ msgstr ""
 
 #~ msgid "Dialtone"
 #~ msgstr "Beltoon"
-
-#~ msgid "Serial"
-#~ msgstr "Serieël"
 
 #~ msgid "Power Save"
 #~ msgstr "Energie bezuinigen"

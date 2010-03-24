@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -112,6 +112,10 @@ msgstr "服務"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "編輯磁盤"
 
 #, php-format
 msgid "%.2f GB"
@@ -696,6 +700,9 @@ msgstr "高級"
 msgid "General Setup"
 msgstr "一般安裝"
 
+msgid "Storage"
+msgstr "儲存"
+
 msgid "Firmware"
 msgstr "固件"
 
@@ -737,6 +744,9 @@ msgstr "轉移"
 
 msgid "Conferencing"
 msgstr "會議"
+
+msgid "Media"
+msgstr "媒體"
 
 msgid "Summary"
 msgstr "摘要"
@@ -1366,6 +1376,126 @@ msgstr "刪除提供商"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "俄羅斯 / 前蘇聯"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "保加利亞"
+
+#, fuzzy
+msgid "Canada"
+msgstr "命令"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "編輯器"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "波蘭"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "印度"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "讀取："
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "馬來西亞"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "串列"
+
+#, fuzzy
+msgid "Oman"
+msgstr "德語"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "葡萄牙"
+
+#, fuzzy
+msgid "Romania"
+msgstr "域"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "保存"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "南非"
+
+#, fuzzy
+msgid "Syria"
+msgstr "串列"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "實時統計"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "響鈴區域"
 
@@ -1379,6 +1509,14 @@ msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
 msgstr "選擇所有Analog硬體支持的響鈴區。<strong>第一個響鈴區將會是是預設的。"
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2040,9 +2178,6 @@ msgstr "Notes"
 msgid "Interfaces"
 msgstr "界面(Interfaces)"
 
-msgid "Storage"
-msgstr "儲存"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2426,8 +2561,8 @@ msgstr ""
 "法。"
 
 #, fuzzy
-msgid "Account uses TLS"
-msgstr "帳戶"
+msgid "Encryption Method"
+msgstr "驗證方法"
 
 msgid "Test E-mail"
 msgstr ""
@@ -2842,6 +2977,38 @@ msgstr "通過投遞這種語言的電郵來通知新的語音郵件。"
 #, fuzzy
 msgid "User defined e-mail text"
 msgstr "發送錯過的電話通知"
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "音頻提示"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "下載"
+
+#, fuzzy
+msgid "extracting"
+msgstr "設置"
+
+#, fuzzy
+msgid "installing"
+msgstr "信號"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "已安裝的包"
+
+#, fuzzy
+msgid "add set"
+msgstr "目的地"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>這個狀態頁包括以下信息：\n"
@@ -3312,15 +3479,7 @@ msgstr "系統正在重啟。這可能會需要一分鐘。"
 msgid "Are you sure you want to reboot the system?"
 msgstr "您真的要重啟系統？"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "點擊以禁用軟體套件"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "真的要刪除這個電話？"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3328,8 +3487,8 @@ msgid "edit disk"
 msgstr "編輯磁盤"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "真的要忽略這個介面的設定？"
+msgid "Do you really want to forget this disk?"
+msgstr "真的要刪除這個電話？"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3347,6 +3506,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "沒有探測到相容的Analog介面。"
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3369,9 +3532,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "這個電話的描述性名稱。"
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "服務"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3385,6 +3559,18 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+#~ msgid "Account uses TLS"
+#~ msgstr "帳戶"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "點擊以禁用軟體套件"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "真的要忽略這個介面的設定？"
 
 #~ msgid "Russia"
 #~ msgstr "俄羅斯"
@@ -3409,10 +3595,6 @@ msgstr "ERR 收到無效的設定。\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "管理"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "保存"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3557,9 +3739,6 @@ msgstr "ERR 收到無效的設定。\n"
 #~ msgid "ARP Table"
 #~ msgstr "ARP表"
 
-#~ msgid "Live Stats"
-#~ msgstr "實時統計"
-
 #~ msgid "ARP table"
 #~ msgstr "ARP表"
 
@@ -3577,9 +3756,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "刪除arp表的所有條目"
-
-#~ msgid "Editor"
-#~ msgstr "編輯器"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "指定的文件 (%s) 不存在。"
@@ -3604,9 +3780,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "Output"
 #~ msgstr "輸出"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "計數必須介於1和%d之間"
@@ -3913,9 +4086,6 @@ msgstr "ERR 收到無效的設定。\n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "例如 <em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "域"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr "網路時間同步的分鐘數；300推薦，或者0禁用。"
 
@@ -3957,9 +4127,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "src"
 #~ msgstr "源頭"
-
-#~ msgid "dst"
-#~ msgstr "目的地"
 
 #~ msgid "channels"
 #~ msgstr "通道"
@@ -4030,9 +4197,6 @@ msgstr "ERR 收到無效的設定。\n"
 #~ msgid "Subnet Mask"
 #~ msgstr "子網掩碼"
 
-#~ msgid "Media"
-#~ msgstr "媒體"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "進/出 包"
 
@@ -4092,9 +4256,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "Driver Type"
 #~ msgstr "驅動器類型"
-
-#~ msgid "Serial"
-#~ msgstr "串列"
 
 #~ msgid "Power Save"
 #~ msgstr "省電"

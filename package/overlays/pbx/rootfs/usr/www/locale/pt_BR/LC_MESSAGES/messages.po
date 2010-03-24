@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -105,6 +105,9 @@ msgid "Disk Device"
 msgstr ""
 
 msgid "Mount Point"
+msgstr ""
+
+msgid "Storage Disk"
 msgstr ""
 
 #, php-format
@@ -618,6 +621,9 @@ msgstr ""
 msgid "General Setup"
 msgstr ""
 
+msgid "Storage"
+msgstr ""
+
 msgid "Firmware"
 msgstr ""
 
@@ -655,6 +661,9 @@ msgid "Transfers"
 msgstr ""
 
 msgid "Conferencing"
+msgstr ""
+
+msgid "Media"
 msgstr ""
 
 msgid "Summary"
@@ -1242,6 +1251,111 @@ msgstr ""
 msgid "Russian Federation / Former Soviet Union"
 msgstr ""
 
+msgid "Bahrain"
+msgstr ""
+
+msgid "Canada"
+msgstr ""
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+msgid "Ecuador"
+msgstr ""
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+msgid "Iceland"
+msgstr ""
+
+msgid "Indonesia"
+msgstr ""
+
+msgid "Ireland"
+msgstr ""
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+msgid "Malta"
+msgstr ""
+
+msgid "Morocco"
+msgstr ""
+
+msgid "Nigeria"
+msgstr ""
+
+msgid "Oman"
+msgstr ""
+
+msgid "Pakistan"
+msgstr ""
+
+msgid "Peru"
+msgstr ""
+
+msgid "Romania"
+msgstr ""
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+msgid "Slovenia"
+msgstr ""
+
+msgid "South Korea"
+msgstr ""
+
+msgid "Syria"
+msgstr ""
+
+msgid "United Arab Emirates"
+msgstr ""
+
+msgid "United States"
+msgstr ""
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr ""
 
@@ -1254,6 +1368,14 @@ msgstr ""
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
+msgstr ""
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
 msgstr ""
 
 msgid ""
@@ -1874,9 +1996,6 @@ msgstr ""
 msgid "Interfaces"
 msgstr ""
 
-msgid "Storage"
-msgstr ""
-
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
@@ -2231,7 +2350,7 @@ msgid ""
 "authentication method appropriate for your server."
 msgstr ""
 
-msgid "Account uses TLS"
+msgid "Encryption Method"
 msgstr ""
 
 msgid "Test E-mail"
@@ -2600,6 +2719,31 @@ msgid ""
 msgstr ""
 
 msgid "User defined e-mail text"
+msgstr ""
+
+msgid "Voice Prompts"
+msgstr ""
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+msgid "Adding"
+msgstr ""
+
+msgid "downloading"
+msgstr ""
+
+msgid "extracting"
+msgstr ""
+
+msgid "installing"
+msgstr ""
+
+msgid "installed sets"
+msgstr ""
+
+msgid "add set"
 msgstr ""
 
 msgid "<p>This status page includes the following information:\n"
@@ -3038,19 +3182,13 @@ msgstr ""
 msgid "Are you sure you want to reboot the system?"
 msgstr ""
 
-msgid "click to mount disk"
-msgstr ""
-
-msgid "Do you really want to unmount this disk?"
-msgstr ""
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 msgid "edit disk"
 msgstr ""
 
-msgid "Do you really want to forget this disk's settings?"
+msgid "Do you really want to forget this disk?"
 msgstr ""
 
 msgid "forget disk settings"
@@ -3066,6 +3204,9 @@ msgid "Formatting successful!"
 msgstr ""
 
 msgid "Formatting failed! (returned "
+msgstr ""
+
+msgid "No additional storage devices were detected."
 msgstr ""
 
 msgid "Format & Initialize"
@@ -3086,9 +3227,19 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr ""
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+msgid "Storage Services"
+msgstr ""
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

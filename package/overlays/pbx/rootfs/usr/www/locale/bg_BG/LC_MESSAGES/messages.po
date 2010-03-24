@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -120,6 +120,10 @@ msgstr "Услуги"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Редактирай Диск"
 
 #, php-format
 msgid "%.2f GB"
@@ -722,6 +726,9 @@ msgstr "Разширени"
 msgid "General Setup"
 msgstr "Общи Настройки"
 
+msgid "Storage"
+msgstr "Памет"
+
 msgid "Firmware"
 msgstr "Обновяване"
 
@@ -763,6 +770,9 @@ msgstr "Трансфер"
 
 msgid "Conferencing"
 msgstr "Конференция"
+
+msgid "Media"
+msgstr "Медия"
 
 msgid "Summary"
 msgstr "Резюме"
@@ -1389,6 +1399,126 @@ msgstr "изтрий външна линия"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Русия / бивш СССР"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "България"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Команда"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Редактор"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Полша"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Индия"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "четене:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Малайзия"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Сериен"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Немски"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Португалия"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Domain"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Запиши"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Южна Африка"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Сериен"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Реален Статус"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Сигнализации"
 
@@ -1404,6 +1534,14 @@ msgid ""
 msgstr ""
 "Изберете всички зони за сигнализации които поддържа вашия хардуер за "
 "аналогови линии. <strong>Първата зона ще бъде зона по подразбиране."
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2104,9 +2242,6 @@ msgstr "Бележки"
 msgid "Interfaces"
 msgstr "Интерфейси"
 
-msgid "Storage"
-msgstr "Памет"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2510,8 +2645,9 @@ msgstr ""
 "Повечето акаунти ще работят ако използвате 'auto'. Ако това не успее, "
 "изберете метод на оторизация използван от вашия сървър."
 
-msgid "Account uses TLS"
-msgstr "Акаунта използва TLS"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "Метод на Оторизация"
 
 msgid "Test E-mail"
 msgstr "Тестов E-mail"
@@ -2941,6 +3077,38 @@ msgstr "E-mail известията за нова гласова поща ще �
 
 msgid "User defined e-mail text"
 msgstr "Различно e-mail съдържание"
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Аудио Съобщения"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Download"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Настройки"
+
+#, fuzzy
+msgid "installing"
+msgstr "Сигнал"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Инсталирани Пакети"
+
+#, fuzzy
+msgid "add set"
+msgstr "Направление"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Тази статус страница съдържа следната информация:\n"
@@ -3444,15 +3612,7 @@ msgstr "Системата се рестартира. Това може да о�
 msgid "Are you sure you want to reboot the system?"
 msgstr "Сигурни ли сте че искате да рестартирате системата?"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "кликнете за да забраните пакета"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Сигурни ли сте че искате да изтриете вътрешната линия?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3460,9 +3620,8 @@ msgid "edit disk"
 msgstr "Редактирай Диск"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr ""
-"Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
+msgid "Do you really want to forget this disk?"
+msgstr "Сигурни ли сте че искате да изтриете вътрешната линия?"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3480,6 +3639,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Не е открит съвместим аналогов интерфейс."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3502,9 +3665,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Описание за този телефон."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Услуги"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3518,6 +3692,18 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Account uses TLS"
+#~ msgstr "Акаунта използва TLS"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "кликнете за да забраните пакета"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr ""
+#~ "Сигурни ли сте че искате да пропуснете настройките на този интерфейс\\'s?"
 
 #~ msgid "Russia"
 #~ msgstr "Русия"
@@ -3543,10 +3729,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Управление"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Запиши"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3711,9 +3893,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgid "ARP Table"
 #~ msgstr "ARP Таблица"
 
-#~ msgid "Live Stats"
-#~ msgstr "Реален Статус"
-
 #~ msgid "ARP table"
 #~ msgstr "ARP таблица"
 
@@ -3731,9 +3910,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "премахни всички внесени в arp таблицата"
-
-#~ msgid "Editor"
-#~ msgstr "Редактор"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Посоченият файл (%s) не съществува."
@@ -3762,9 +3938,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Output"
 #~ msgstr "Резултат"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Броят трябва да е между 1 и %d"
@@ -4090,9 +4263,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "например <em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "Domain"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Минути между синхронизиране на времето (препоръчително 300, или 0 за "
@@ -4137,9 +4307,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "src"
 #~ msgstr "Източник"
-
-#~ msgid "dst"
-#~ msgstr "Направление"
 
 #~ msgid "channels"
 #~ msgstr "Канали"
@@ -4213,9 +4380,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgid "Subnet Mask"
 #~ msgstr "Маска на Подмрежа"
 
-#~ msgid "Media"
-#~ msgstr "Медия"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "In/Out Пакети"
 
@@ -4275,9 +4439,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Driver Type"
 #~ msgstr "Тип Драйвер"
-
-#~ msgid "Serial"
-#~ msgstr "Сериен"
 
 #~ msgid "Power Save"
 #~ msgstr "Съхранение на Енергия"

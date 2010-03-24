@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -122,6 +122,10 @@ msgstr "Tjenester"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Rediger Disk"
 
 #, php-format
 msgid "%.2f GB"
@@ -711,6 +715,9 @@ msgstr "Avanceret"
 msgid "General Setup"
 msgstr "General opsætning"
 
+msgid "Storage"
+msgstr ""
+
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -752,6 +759,9 @@ msgstr "Overførsler"
 
 msgid "Conferencing"
 msgstr "Konference"
+
+msgid "Media"
+msgstr "Medie"
 
 msgid "Summary"
 msgstr "Oversigt"
@@ -1381,6 +1391,126 @@ msgstr "Slet udbyder"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Russland / tidl. Sovjetunionen"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bulgarien"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Kommando"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Editor"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Polen"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Indien"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "læs:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Malayasia"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Seriel"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Tysk"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portugal"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Domæne"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Gem"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Syd Afrika"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Seriel"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Aktuel status"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Tids Zoner"
 
@@ -1396,6 +1526,14 @@ msgid ""
 msgstr ""
 "Vælg alle indikerings tone zoner som analog hardware skal understøtte. "
 "<strong> Den første tone zone vil være standarden."
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2065,9 +2203,6 @@ msgstr "Noter"
 msgid "Interfaces"
 msgstr "Interfaces"
 
-msgid "Storage"
-msgstr ""
-
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
@@ -2455,8 +2590,8 @@ msgstr ""
 "authentifikations metode som passer til din server."
 
 #, fuzzy
-msgid "Account uses TLS"
-msgstr "Konti"
+msgid "Encryption Method"
+msgstr "Godkendelses Metode"
 
 msgid "Test E-mail"
 msgstr ""
@@ -2882,6 +3017,38 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr ""
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Lyd promter"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Download"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Indstillinger"
+
+#, fuzzy
+msgid "installing"
+msgstr "Signal"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Installerede pakker"
+
+#, fuzzy
+msgid "add set"
+msgstr "dst"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Denne status side indeholder følgende informationer:\n"
@@ -3364,15 +3531,7 @@ msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
 msgid "Are you sure you want to reboot the system?"
 msgstr "Er du sikker på du vil genstarte systemet?"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "klik for at deaktivere pakke"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Vil du virkeligt slette denne telefon?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3380,8 +3539,8 @@ msgid "edit disk"
 msgstr "Rediger Disk"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
+msgid "Do you really want to forget this disk?"
+msgstr "Vil du virkeligt slette denne telefon?"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3399,6 +3558,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Ingen kompatible analoge grænseflader fundet."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3421,9 +3584,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Beskrivende navn på denne telefon."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Tjenester"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3437,6 +3611,18 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+#~ msgid "Account uses TLS"
+#~ msgstr "Konti"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "klik for at deaktivere pakke"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Vil du virkeligt glemme dette interface\\'s indstillinger?"
 
 #~ msgid "Russia"
 #~ msgstr "Rusland"
@@ -3462,10 +3648,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Manager"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Gem"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3574,9 +3756,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 #~ msgid "ARP Table"
 #~ msgstr "ARP tabel"
 
-#~ msgid "Live Stats"
-#~ msgstr "Aktuel status"
-
 #~ msgid "ARP table"
 #~ msgstr "ARP faneblad"
 
@@ -3594,9 +3773,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "fjern alle elementer fra arp faneblad"
-
-#~ msgid "Editor"
-#~ msgstr "Editor"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Den specificerede fil (%s) eksisterer ikke."
@@ -3618,9 +3794,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Output"
 #~ msgstr "Udskrift"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Tælling skal være imellem 1 og %d"
@@ -3896,9 +4069,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "eks. <em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "Domæne"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Antal minutter mellem tidsopdateringen via netværk. Det anbefales at "
@@ -3943,9 +4113,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "src"
 #~ msgstr "src"
-
-#~ msgid "dst"
-#~ msgstr "dst"
 
 #~ msgid "channels"
 #~ msgstr "kanaler"
@@ -4015,9 +4182,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 #~ msgid "Subnet Mask"
 #~ msgstr "Undernetmaske"
 
-#~ msgid "Media"
-#~ msgstr "Medie"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "Ind/Ud Pakker"
 
@@ -4075,9 +4239,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Driver Type"
 #~ msgstr "Driver Type"
-
-#~ msgid "Serial"
-#~ msgstr "Seriel"
 
 #~ msgid "Power Save"
 #~ msgstr "Strømbesparende"

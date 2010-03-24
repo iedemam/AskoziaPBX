@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -119,6 +119,10 @@ msgstr "Usługi"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Edytuj dysk"
 
 #, php-format
 msgid "%.2f GB"
@@ -671,6 +675,9 @@ msgstr "Zaawansowane"
 msgid "General Setup"
 msgstr "Ogólne ustawienia"
 
+msgid "Storage"
+msgstr "Magazyn"
+
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -712,6 +719,9 @@ msgstr "Przełączenia"
 
 msgid "Conferencing"
 msgstr "Konferencje"
+
+msgid "Media"
+msgstr "Medium"
 
 msgid "Summary"
 msgstr "Podsumowanie"
@@ -1338,6 +1348,126 @@ msgstr "usuń dostawcę"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Rosja / były Związek Radziecki"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bułgaria"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Komenda"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Edytor"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Polska"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Indie"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "przeczytano:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Malezja"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Serial"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Niemiecki"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portugalia"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Domena"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Zapisz"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Południowa Afryka"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Serial"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Statystyki Live"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Strefy czasowe"
 
@@ -1350,6 +1480,14 @@ msgstr "Nieaktywne"
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
+msgstr ""
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
 msgstr ""
 
 msgid ""
@@ -2012,9 +2150,6 @@ msgstr "Notatki"
 msgid "Interfaces"
 msgstr "Interfejsy"
 
-msgid "Storage"
-msgstr "Magazyn"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2413,8 +2548,8 @@ msgstr ""
 "wybrać metodę autoryzacji dla serwera."
 
 #, fuzzy
-msgid "Account uses TLS"
-msgstr "Konta"
+msgid "Encryption Method"
+msgstr "Metoda autoryzacji"
 
 msgid "Test E-mail"
 msgstr ""
@@ -2833,6 +2968,38 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr ""
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Zapowiedzi głosowe"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Pobrano"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Ustawienia"
+
+#, fuzzy
+msgid "installing"
+msgstr "Sygnał"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Zainstalowane Pakiety"
+
+#, fuzzy
+msgid "add set"
+msgstr "do"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Strona statusu zawiera następujące informacje:\n"
@@ -3318,15 +3485,7 @@ msgstr "System jest restartowany. To może potrwać chwilę."
 msgid "Are you sure you want to reboot the system?"
 msgstr "Czy na pewno zrestartować system?"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "kliknij aby wyłączyć pakiet"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Czy na pewno chcesz usunąć ten telefon?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3334,8 +3493,8 @@ msgid "edit disk"
 msgstr "Edytuj dysk"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
+msgid "Do you really want to forget this disk?"
+msgstr "Czy na pewno chcesz usunąć ten telefon?"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3353,6 +3512,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3375,9 +3538,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Opisowa nazwa telefonu."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Usługi"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3391,6 +3565,18 @@ msgstr "BŁĄD Nie można zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#, fuzzy
+#~ msgid "Account uses TLS"
+#~ msgstr "Konta"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "kliknij aby wyłączyć pakiet"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Czy na pewno chcesz wyczyścić ustawienia tego interfejsu?"
 
 #~ msgid "Russia"
 #~ msgstr "Rosja"
@@ -3406,10 +3592,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Manager"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Zapisz"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3552,9 +3734,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ msgid "ARP Table"
 #~ msgstr "Tablica ARP"
 
-#~ msgid "Live Stats"
-#~ msgstr "Statystyki Live"
-
 #~ msgid "ARP table"
 #~ msgstr "tablica ARP"
 
@@ -3572,9 +3751,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "usuń wszystkie spisy z tablicy arp"
-
-#~ msgid "Editor"
-#~ msgstr "Edytor"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Wybrany plik (%s) nie istnieje."
@@ -3596,9 +3772,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Output"
 #~ msgstr "Wynik"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Ilość musi być między 1 i %d"
@@ -3877,9 +4050,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "np <em>pbc"
 
-#~ msgid "Domain"
-#~ msgstr "Domena"
-
 #, fuzzy
 #~ msgid ""
 #~ "Enter a NTP server to synchronize with. Remember to set up at least one "
@@ -3919,9 +4089,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "src"
 #~ msgstr "od"
-
-#~ msgid "dst"
-#~ msgstr "do"
 
 #~ msgid "channels"
 #~ msgstr "kanały"
@@ -3991,9 +4158,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 #~ msgid "Subnet Mask"
 #~ msgstr "Maska Podsieci"
 
-#~ msgid "Media"
-#~ msgstr "Medium"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "In/Out Pakiety"
 
@@ -4054,9 +4218,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Driver Type"
 #~ msgstr "Typ sterownika"
-
-#~ msgid "Serial"
-#~ msgstr "Serial"
 
 #~ msgid "Power Save"
 #~ msgstr "Oszczędzanie energii"

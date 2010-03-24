@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -115,6 +115,10 @@ msgstr "Palvelut"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Muokkaa Levyä"
 
 #, php-format
 msgid "%.2f GB"
@@ -711,6 +715,9 @@ msgstr "Lisäasetukset"
 msgid "General Setup"
 msgstr "Yleiset Asetukset"
 
+msgid "Storage"
+msgstr "Tallentaminen"
+
 msgid "Firmware"
 msgstr "Laiteohjelmisto"
 
@@ -752,6 +759,9 @@ msgstr "Siirrot"
 
 msgid "Conferencing"
 msgstr "Konferenssit"
+
+msgid "Media"
+msgstr "Tiedotusväline"
 
 msgid "Summary"
 msgstr "Tiivistelmä"
@@ -1379,6 +1389,126 @@ msgstr "poista palveluntarjoaja"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Venäjä / entinen Neuvostoliitto"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bulgaria"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Komento"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Editori"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Puola"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Intia"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "lue:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Malaysia"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Serial"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Saksan kieli"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portugali"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Verkkotunnus"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Tallenna"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Etelä Afrikka"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Serial"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Tilastot Suorana"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr "Valintaääni Vyöhykkeet"
 
@@ -1394,6 +1524,14 @@ msgid ""
 msgstr ""
 "Valitse kaikki äänivyöhykkeet mitkä kyseinen analogi komponentti pitäisi "
 "tukea. <strong>Ensimmäinen äänivyöhyke tulee olemaan oletus."
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -2082,9 +2220,6 @@ msgstr "Muistiinpanot"
 msgid "Interfaces"
 msgstr "Käyttöliittymät"
 
-msgid "Storage"
-msgstr "Tallentaminen"
-
 #, fuzzy
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
@@ -2491,8 +2626,9 @@ msgstr ""
 "Useimmat tilit toimivat 'automaattinen' asetuksella. Jos tämä ei toimi, "
 "valitse sopiva laillistamiskeino valikosta."
 
-msgid "Account uses TLS"
-msgstr "Tili käyttää TLS"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "Laillistamiskeino"
 
 msgid "Test E-mail"
 msgstr "Testi S-posti"
@@ -2922,6 +3058,38 @@ msgstr "S-posti ilmoitukset uusista viesteistä tulee olemaan tällä kielellä.
 
 msgid "User defined e-mail text"
 msgstr "Käyttäjän määritelty s-posti viesti"
+
+#, fuzzy
+msgid "Voice Prompts"
+msgstr "Ääni Promptit"
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "Lataa"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Asetukset"
+
+#, fuzzy
+msgid "installing"
+msgstr "Signaali"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Asennetut Paketit"
+
+#, fuzzy
+msgid "add set"
+msgstr "määränpää"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Tämä tila sivu antaa seuraavat tiedot:\n"
@@ -3420,15 +3588,7 @@ msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuut
 msgid "Are you sure you want to reboot the system?"
 msgstr "Oletko varma että haluat käynnistää järjestelmän uudelleen?"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "klikkaa poistaaksesi paketti käytöstä"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3436,8 +3596,8 @@ msgid "edit disk"
 msgstr "Muokkaa Levyä"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
-msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
+msgid "Do you really want to forget this disk?"
+msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
 
 #, fuzzy
 msgid "forget disk settings"
@@ -3455,6 +3615,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Yhteensopivaa analgista käyttöliittymää ei havaittu."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3477,9 +3641,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Kuvaileva nimi tälle puhelimelle."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Palvelut"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3493,6 +3668,17 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Account uses TLS"
+#~ msgstr "Tili käyttää TLS"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "klikkaa poistaaksesi paketti käytöstä"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Oletko varma että haluat unohtaa tämän käyttöliittymän asetukset?"
 
 #~ msgid "Russia"
 #~ msgstr "Venäjä"
@@ -3518,10 +3704,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Hallitseminen"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Tallenna"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3687,9 +3869,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgid "ARP Table"
 #~ msgstr "ARP Taulukko"
 
-#~ msgid "Live Stats"
-#~ msgstr "Tilastot Suorana"
-
 #~ msgid "ARP table"
 #~ msgstr "ARP taulukko"
 
@@ -3707,9 +3886,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "tyhjennä koko arp taulukko"
-
-#~ msgid "Editor"
-#~ msgstr "Editori"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Kyseinen tiedosto (%s) ei löydetty."
@@ -3738,9 +3914,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Output"
 #~ msgstr "Tuotos"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Määrä on oltava 1 ja %d välissä"
@@ -4063,9 +4236,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "esim. <em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "Verkkotunnus"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Montako minuuttia verkon ajan tahdistuksien välillä.; 300 on "
@@ -4112,9 +4282,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "src"
 #~ msgstr "lähde"
-
-#~ msgid "dst"
-#~ msgstr "määränpää"
 
 #~ msgid "channels"
 #~ msgstr "kanavat"
@@ -4186,9 +4353,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgid "Subnet Mask"
 #~ msgstr "Aliverkon Peite"
 
-#~ msgid "Media"
-#~ msgstr "Tiedotusväline"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "Sisään/Ulos Pakeetit"
 
@@ -4248,9 +4412,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Driver Type"
 #~ msgstr "Ajurin tyyppi"
-
-#~ msgid "Serial"
-#~ msgstr "Serial"
 
 #~ msgid "Power Save"
 #~ msgstr "Virransäästö"

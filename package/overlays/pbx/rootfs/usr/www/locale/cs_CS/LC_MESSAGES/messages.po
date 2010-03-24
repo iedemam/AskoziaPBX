@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,6 +111,10 @@ msgstr "Služby"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Úložiště"
 
 #, php-format
 msgid "%.2f GB"
@@ -683,6 +687,9 @@ msgstr ""
 msgid "General Setup"
 msgstr "Obecné nastavení"
 
+msgid "Storage"
+msgstr "Úložiště"
+
 msgid "Firmware"
 msgstr "Firmware"
 
@@ -724,6 +731,10 @@ msgstr ""
 
 msgid "Conferencing"
 msgstr "Telekonference"
+
+#, fuzzy
+msgid "Media"
+msgstr "Indie"
 
 msgid "Summary"
 msgstr "Souhrn"
@@ -1342,6 +1353,123 @@ msgstr "odstranit operátora"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Rusko (dříve Sovětský svaz)"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bulharsko"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Příkaz"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+msgid "Ecuador"
+msgstr ""
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Polsko"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Indie"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "Izrael"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Malajsie"
+
+msgid "Morocco"
+msgstr ""
+
+msgid "Nigeria"
+msgstr ""
+
+#, fuzzy
+msgid "Oman"
+msgstr "Němčina"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portugalsko"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Doména"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Uložit"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Jižní Afrika"
+
+msgid "Syria"
+msgstr ""
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "On-line statistiky"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr ""
 
@@ -1354,6 +1482,14 @@ msgstr ""
 msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
+msgstr ""
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
 msgstr ""
 
 msgid ""
@@ -1994,9 +2130,6 @@ msgstr "Poznámky"
 msgid "Interfaces"
 msgstr "Rozhraní"
 
-msgid "Storage"
-msgstr "Úložiště"
-
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
@@ -2374,8 +2507,9 @@ msgid ""
 "authentication method appropriate for your server."
 msgstr ""
 
-msgid "Account uses TLS"
-msgstr "Účet využívá TLS"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "Metoda ověřování"
 
 msgid "Test E-mail"
 msgstr "Testovací e-mail"
@@ -2788,6 +2922,36 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr "Text e-mailu definovaný uživatelem"
+
+msgid "Voice Prompts"
+msgstr ""
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+msgid "downloading"
+msgstr ""
+
+#, fuzzy
+msgid "extracting"
+msgstr "Nastavení"
+
+#, fuzzy
+msgid "installing"
+msgstr "Instaluj"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Instalované balíčky"
+
+#, fuzzy
+msgid "add set"
+msgstr "cíl"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr ""
@@ -3253,22 +3417,14 @@ msgstr ""
 msgid "Are you sure you want to reboot the system?"
 msgstr "Jste si jisti, že chcete restartovat systém?"
 
-#, fuzzy
-msgid "click to mount disk"
-msgstr "kliknutím deaktivujete balíček"
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Opravdu chcete smazat tento telefonní účet?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 msgid "edit disk"
 msgstr ""
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
+msgid "Do you really want to forget this disk?"
 msgstr "Opravdu chcete smazat tento telefonní účet?"
 
 msgid "forget disk settings"
@@ -3285,6 +3441,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Žádné analogové zařízení nebylo nalezeno."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3307,9 +3467,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Popisnější název tohoto poskytovatele."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Služby"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3324,6 +3495,17 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#~ msgid "Account uses TLS"
+#~ msgstr "Účet využívá TLS"
+
+#, fuzzy
+#~ msgid "click to mount disk"
+#~ msgstr "kliknutím deaktivujete balíček"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Opravdu chcete smazat tento telefonní účet?"
+
 #~ msgid "Russia"
 #~ msgstr "Rusko"
 
@@ -3334,10 +3516,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Hardware Version"
 #~ msgstr "Firmware"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Uložit"
 
 #~ msgid ""
 #~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
@@ -3377,9 +3555,6 @@ msgstr ""
 #~ msgid "ARP Table"
 #~ msgstr "Tabulka ARP"
 
-#~ msgid "Live Stats"
-#~ msgstr "On-line statistiky"
-
 #~ msgid "ARP table"
 #~ msgstr "Tabulka ARP"
 
@@ -3404,9 +3579,6 @@ msgstr ""
 
 #~ msgid "Output"
 #~ msgstr "Výstup"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Počet musí být mezi 1 a %d"
@@ -3498,9 +3670,6 @@ msgstr ""
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "např. <em>pbx"
 
-#~ msgid "Domain"
-#~ msgstr "Doména"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Minuty mezi jednotlivými synchronizacemi času.; doporučená hodnota - 300, "
@@ -3535,9 +3704,6 @@ msgstr ""
 
 #~ msgid "src"
 #~ msgstr "zdroj"
-
-#~ msgid "dst"
-#~ msgstr "cíl"
 
 #~ msgid "channels"
 #~ msgstr "kanály"

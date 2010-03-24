@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 17:05+0100\n"
+"POT-Creation-Date: 2010-03-24 17:31+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,6 +112,10 @@ msgstr "Servisler"
 
 msgid "Mount Point"
 msgstr ""
+
+#, fuzzy
+msgid "Storage Disk"
+msgstr "Sürücüyü Düzenle"
 
 #, php-format
 msgid "%.2f GB"
@@ -646,6 +650,9 @@ msgstr "Gelişmiş"
 msgid "General Setup"
 msgstr "Genel Ayar"
 
+msgid "Storage"
+msgstr "Bellek"
+
 msgid "Firmware"
 msgstr "Bellenim"
 
@@ -687,6 +694,10 @@ msgstr "Transferler"
 
 msgid "Conferencing"
 msgstr "Konferanslaşma"
+
+#, fuzzy
+msgid "Media"
+msgstr "Hindistan"
 
 msgid "Summary"
 msgstr "Özet"
@@ -1299,6 +1310,126 @@ msgstr "sunucuyu sil"
 msgid "Russian Federation / Former Soviet Union"
 msgstr "Rusya / ex Sovyet Birliği"
 
+#, fuzzy
+msgid "Bahrain"
+msgstr "Bulgaristan"
+
+#, fuzzy
+msgid "Canada"
+msgstr "Komut"
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Croatia"
+msgstr ""
+
+msgid "Cyprus"
+msgstr ""
+
+#, fuzzy
+msgid "Ecuador"
+msgstr "Metin Düzenleyici"
+
+msgid "Egypt"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Guam"
+msgstr ""
+
+msgid "Hong Kong"
+msgstr ""
+
+#, fuzzy
+msgid "Iceland"
+msgstr "Polonya"
+
+#, fuzzy
+msgid "Indonesia"
+msgstr "Hindistan"
+
+#, fuzzy
+msgid "Ireland"
+msgstr "oku:"
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Kazakhstan"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "Latvia"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Macao"
+msgstr ""
+
+#, fuzzy
+msgid "Malta"
+msgstr "Malezya"
+
+msgid "Morocco"
+msgstr ""
+
+#, fuzzy
+msgid "Nigeria"
+msgstr "Seri"
+
+#, fuzzy
+msgid "Oman"
+msgstr "Almanca"
+
+msgid "Pakistan"
+msgstr ""
+
+#, fuzzy
+msgid "Peru"
+msgstr "Portekiz"
+
+#, fuzzy
+msgid "Romania"
+msgstr "Alan Adı"
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Slovakia"
+msgstr ""
+
+#, fuzzy
+msgid "Slovenia"
+msgstr "Kaydet"
+
+#, fuzzy
+msgid "South Korea"
+msgstr "Güney Afrika"
+
+#, fuzzy
+msgid "Syria"
+msgstr "Seri"
+
+msgid "United Arab Emirates"
+msgstr ""
+
+#, fuzzy
+msgid "United States"
+msgstr "Çanlı Veriler"
+
+msgid "Yemen"
+msgstr ""
+
 msgid "Tone Zones"
 msgstr ""
 
@@ -1312,6 +1443,14 @@ msgid ""
 "Select all indication tone zones the analog hardware should support. "
 "<strong>The first tone zone will be the default tonezone."
 msgstr "tıkla-ve-çek"
+
+msgid "Ports impedance"
+msgstr ""
+
+msgid ""
+"Select the FXO port impedance to be used according to your country or "
+"regulatory body; FXS ports will follow the same settings."
+msgstr ""
 
 msgid ""
 "A self-signed certificate could not be generated because the system's clock "
@@ -1971,9 +2110,6 @@ msgstr "Notlar"
 msgid "Interfaces"
 msgstr "Arayüzler"
 
-msgid "Storage"
-msgstr "Bellek"
-
 msgid ""
 "The PBX automatically allocates leftover space for permanent storage. "
 "Packages to extend the system's functionality can be installed in this space."
@@ -2338,8 +2474,9 @@ msgid ""
 "authentication method appropriate for your server."
 msgstr ""
 
-msgid "Account uses TLS"
-msgstr "Hesap TLS gerektirmekte"
+#, fuzzy
+msgid "Encryption Method"
+msgstr "Kimlik Denetimi"
 
 msgid "Test E-mail"
 msgstr "Test E-postası"
@@ -2750,6 +2887,37 @@ msgstr ""
 
 msgid "User defined e-mail text"
 msgstr "Kullanıcı tarafından belirlenmiş e-posta metni"
+
+msgid "Voice Prompts"
+msgstr ""
+
+#, php-format
+msgid "Successfully installed %s formatted prompts for %s."
+msgstr ""
+
+#, fuzzy
+msgid "Adding"
+msgstr "Ping"
+
+#, fuzzy
+msgid "downloading"
+msgstr "İndir"
+
+#, fuzzy
+msgid "extracting"
+msgstr "Ayarlar"
+
+#, fuzzy
+msgid "installing"
+msgstr "Sinyal"
+
+#, fuzzy
+msgid "installed sets"
+msgstr "Yüklenilen Paketler"
+
+#, fuzzy
+msgid "add set"
+msgstr "hedef"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr ""
@@ -3198,14 +3366,7 @@ msgstr "Sistem yeniden başlatılıyor. Bu işlem bir kaç dakika zaman alabilir
 msgid "Are you sure you want to reboot the system?"
 msgstr "Sistemi yeniden başlatmak istediğinizden emin misiniz?"
 
-msgid "click to mount disk"
-msgstr ""
-
-#, fuzzy
-msgid "Do you really want to unmount this disk?"
-msgstr "Bu telefon silinsin mi?"
-
-msgid "click to unmount disk"
+msgid "Media & Database"
 msgstr ""
 
 #, fuzzy
@@ -3213,7 +3374,7 @@ msgid "edit disk"
 msgstr "Sürücüyü Düzenle"
 
 #, fuzzy
-msgid "Do you really want to forget this disk's settings?"
+msgid "Do you really want to forget this disk?"
 msgstr "Bu telefon silinsin mi?"
 
 msgid "forget disk settings"
@@ -3231,6 +3392,10 @@ msgstr ""
 
 msgid "Formatting failed! (returned "
 msgstr ""
+
+#, fuzzy
+msgid "No additional storage devices were detected."
+msgstr "Uyum sağlayan analog arayüz bulunamadı."
 
 msgid "Format & Initialize"
 msgstr ""
@@ -3253,9 +3418,20 @@ msgstr ""
 msgid "Enter a descriptive name for this disk."
 msgstr "Bu telefon için açıklayıcı bir isim."
 
+msgid "Enter the full path where this device should be mounted."
+msgstr ""
+
+#, fuzzy
+msgid "Storage Services"
+msgstr "Servisler"
+
 msgid ""
-"Enter the full path where this device should be mounted. i.e. <em>/storage/"
-"usbstick1</em>."
+"store voice prompts, music-on-hold and the Asterisk persistence database on "
+"disk"
+msgstr ""
+
+#, php-format
+msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
@@ -3269,6 +3445,13 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Account uses TLS"
+#~ msgstr "Hesap TLS gerektirmekte"
+
+#, fuzzy
+#~ msgid "Do you really want to forget this disk's settings?"
+#~ msgstr "Bu telefon silinsin mi?"
 
 #~ msgid "Russia"
 #~ msgstr "Rusya"
@@ -3284,10 +3467,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Yönetmen"
-
-#, fuzzy
-#~ msgid "Slave"
-#~ msgstr "Kaydet"
 
 #, fuzzy
 #~ msgid "edit analog port"
@@ -3344,9 +3523,6 @@ msgstr ""
 #~ msgid "ARP Table"
 #~ msgstr "ARP Tablosu"
 
-#~ msgid "Live Stats"
-#~ msgstr "Çanlı Veriler"
-
 #~ msgid "ARP table"
 #~ msgstr "ARP tabelası"
 
@@ -3364,9 +3540,6 @@ msgstr ""
 
 #~ msgid "remove all entries from arp table"
 #~ msgstr "arp tablosundan tüm kayıtları sil"
-
-#~ msgid "Editor"
-#~ msgstr "Metin Düzenleyici"
 
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Belirtilmiş dosya (%s) mevcut değil."
@@ -3388,9 +3561,6 @@ msgstr ""
 
 #~ msgid "Output"
 #~ msgstr "Çıkış"
-
-#~ msgid "Ping"
-#~ msgstr "Ping"
 
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Sayaç 1 ile %d arası olması gerekiyor"
@@ -3552,9 +3722,6 @@ msgstr ""
 #~ msgid "Line Gain"
 #~ msgstr "Hat Kazancı"
 
-#~ msgid "Domain"
-#~ msgstr "Alan Adı"
-
 #, fuzzy
 #~ msgid "Configured"
 #~ msgstr "ayarlanmamış"
@@ -3579,9 +3746,6 @@ msgstr ""
 
 #~ msgid "src"
 #~ msgstr "kaynak"
-
-#~ msgid "dst"
-#~ msgstr "hedef"
 
 #~ msgid "channels"
 #~ msgstr "kanallar"
@@ -3663,9 +3827,6 @@ msgstr ""
 
 #~ msgid "Driver Type"
 #~ msgstr "Sürücü Türü"
-
-#~ msgid "Serial"
-#~ msgstr "Seri"
 
 #~ msgid "%s days, "
 #~ msgstr "%s days, "
