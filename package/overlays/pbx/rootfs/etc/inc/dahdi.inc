@@ -559,6 +559,9 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		if (isset($provider['disabled'])) {
 			continue;
 		}
+
+		$pports = array();
+
 		if (strpos($provider['port'], "DAHDIPORT-") !== false) {
 			$pports[] = dahdi_get_port($provider['port']);
 		} else if (strpos($provider['port'], "DAHDIPORTGROUP-") !== false) {
@@ -675,6 +678,8 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 			$conf .= "\n";
 
 		} else if (strpos($provider['port'], "DAHDI") !== false) {
+
+			$pports = array();
 
 			if (strpos($provider['port'], "DAHDIPORT-") !== false) {
 				$pports[] = dahdi_get_port($provider['port']);
