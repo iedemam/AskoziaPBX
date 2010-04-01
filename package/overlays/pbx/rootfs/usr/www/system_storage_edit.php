@@ -137,11 +137,11 @@ if (!$initialformat && !count($unassigneddisks)) {
 
 
 	d_header(gettext("Storage Services"));
-	if (!$assignedservices['media-and-db']) {
-		d_checkbox(gettext("Media & Database"), gettext("store voice prompts, music-on-hold and the Asterisk persistence database on disk"), "media-and-db");
+	if (!$assignedservices['media']) {
+		d_checkbox(gettext("Media"), gettext("store voice prompts and music-on-hold on disk"), "media");
 	} else {
-		d_blanklabel(gettext("Media & Database"),
-			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['media-and-db']));
+		d_blanklabel(gettext("Media"),
+			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['media']));
 	}
 	d_spacer();
 

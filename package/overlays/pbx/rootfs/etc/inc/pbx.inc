@@ -914,7 +914,7 @@ EOD;
 function asterisk_conf_generate($return=false) {
 
 	$datapath = "/offload/asterisk";
-	if ($disk = storage_service_is_active("media-and-db")) {
+	if ($disk = storage_service_is_active("media")) {
 		$datapath = $disk['mountpoint'] . "/askoziapbx/media";
 	}
 
@@ -922,6 +922,7 @@ function asterisk_conf_generate($return=false) {
 [directories]
 astetcdir => /etc/asterisk
 astagidir => /etc/asterisk/agi-bin
+astdbdir => /etc/asterisk/db
 astkeydir => /etc/asterisk/keys
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run

@@ -380,7 +380,7 @@ function storage_verify_disk($post, $errors) {
 	v_required('name', gettext('Name'), &$disk, &$post, &$errors);
 	v_required('device', gettext('Disk Device'), &$disk, &$post, &$errors);
 	v_required('mountpoint', gettext('Mount Point'), &$disk, &$post, &$errors);
-	v_checkbox('media-and-db', &$disk, &$post);
+	v_checkbox('media', &$disk, &$post);
 
 	$trusted = array(
 		'uniqid'
@@ -477,7 +477,7 @@ function storage_generate_default_disk() {
 function storage_initialize_service($service, $disk) {
 	global $g, $d_sysrebootreqd_path;
 
-	if ($service == 'media-and-db') {
+	if ($service == 'media') {
 		$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
 		exec("mkdir " . $servicepath . "/moh");
 		exec("cp -Rp /offload/asterisk/moh/* " . $servicepath . "/moh/");
@@ -485,7 +485,6 @@ function storage_initialize_service($service, $disk) {
 		exec("cp -Rp /offload/asterisk/sounds/* " . $servicepath . "/sounds/");
 		/* operation not permitted on vfat system...workaround needed */
 		//exec("ln -s " . $servicepath . "/sounds/en-us " . $servicepath . "/sounds/en");
-		exec("cp -p /var/asterisk/run/astdb " . $servicepath . "/astdb");
 	}
 
 	if (!$g['booting']) {

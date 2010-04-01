@@ -175,7 +175,7 @@ $menu['Services'][gettext("Notifications")]		= array('notifications_email.php');
 $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
-if (storage_service_is_active("media-and-db")) {
+if (storage_service_is_active("media")) {
 	$menu['Services'][gettext("Media")]			= array('services_voiceprompts.php',
 												'services_musiconhold.php');
 }

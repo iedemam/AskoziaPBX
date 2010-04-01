@@ -80,8 +80,8 @@ include("fbegin.inc");
 			<td class="listbgl"><?=htmlspecialchars($disk['name']);?></td>
 			<td class="listr"><?=htmlspecialchars($disk['mountpoint']);?></td><?
 			$services = array();
-			if (isset($disk['media-and-db'])) {
-				$services[] = gettext("Media & Database");
+			if (isset($disk['media'])) {
+				$services[] = gettext("Media");
 			}
 			?><td class="listr"><?=htmlspecialchars(implode(", ", $services));?>&nbsp;</td>
 			<td valign="middle" nowrap class="list"><a href="system_storage_edit.php?uniqid=<?=$disk['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit disk");?>" border="0"></a>

@@ -33,8 +33,8 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("Services"), gettext("Voice Prompts"));
 
 
-$disk = storage_service_is_active("media-and-db");
-$promptsdir = $disk['mountpoint'] . "/askoziapbx/media-and-db/sounds";
+$disk = storage_service_is_active("media");
+$promptsdir = $disk['mountpoint'] . "/askoziapbx/media/sounds";
 $tmpdir = $disk['mountpoint'] . "/askoziapbx/tmp";
 
 if ($_GET['startdownload']) {
