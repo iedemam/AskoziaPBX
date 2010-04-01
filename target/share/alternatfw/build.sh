@@ -44,6 +44,7 @@ cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 rm -rf offload_stage/asterisk/agi-bin
 rm -rf offload_stage/asterisk/firmware
 rm -rf offload_stage/asterisk/images
+rm -rf offload_stage/asterisk/keys
 rm -rf offload_stage/asterisk/static-http
 cp -Rp ../../lib/modules/* offload_stage/kernel-modules/
 ln -s /var/asterisk/run/astdb offload_stage/asterisk/astdb

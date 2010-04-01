@@ -170,11 +170,13 @@ EOD;
 			$conf .= $p['manualregister'];
 		} else {
 			$conf .= "register => {$p['username']}";
-			if($p['secret']) {
+			if (isset($p['useoutkey'])) {
+				$conf .= ":[{$p['uniqid']}]";
+			} else if ($p['secret']) {
 				$conf .= ":{$p['secret']}";
 			}
 			$conf .= "@{$p['host']}";
-			if($p['port']) {
+			if ($p['port']) {
 				$conf .= ":{$p['port']}";
 			}
 		}
@@ -193,11 +195,15 @@ EOD;
 		$conf .= "type=peer\n";
 		$conf .= "username={$p['username']}\n";
 		
-		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
-			$conf .= "auth=plaintext\n";
-			$conf .= "secret={$p['secret']}\n";
+		if (isset($p['useoutkey'])) {
+			$conf .= "auth=rsa\n";
+			$conf .= "outkey={$p['uniqid']}\n";
+			util_file_write("/etc/asterisk/keys/" . $p['uniqid'] . ".key", base64_decode($p['outkey']));
 		} else if ($p['authentication'] == "md5") {
 			$conf .= "auth=md5\n";
+			$conf .= "secret={$p['secret']}\n";
+		} else {
+			$conf .= "auth=plaintext\n";
 			$conf .= "secret={$p['secret']}\n";
 		}
 
@@ -242,11 +248,15 @@ EOD;
 		$conf .= "[{$p['username']}]\n";
 		$conf .= "type=user\n";
 		
-		if (!$p['authentication'] || $p['authentication'] == "plaintext") {
-			$conf .= "auth=plaintext\n";
-			$conf .= "secret={$p['secret']}\n";
+		if (isset($p['useinkey'])) {
+			$conf .= "auth=rsa\n";
+			$conf .= "inkeys={$p['uniqid']}\n";
+			util_file_write("/etc/asterisk/keys/" . $p['uniqid'] . ".pub", base64_decode($p['inkey']));
 		} else if ($p['authentication'] == "md5") {
 			$conf .= "auth=md5\n";
+			$conf .= "secret={$p['secret']}\n";
+		} else {
+			$conf .= "auth=plaintext\n";
 			$conf .= "secret={$p['secret']}\n";
 		}
 		
@@ -417,6 +427,10 @@ function iax_verify_provider($post, $errors) {
 	v_required('host', gettext('Host'), &$provider, &$post, &$errors);
 	v_port(&$provider, &$post, &$errors);
 	v_required('username', gettext('Username'), &$provider, &$post, &$errors);
+	v_checkbox('useinkey', &$provider, &$post);
+	v_optional('inkey', &$provider, &$post, "base64");
+	v_checkbox('useoutkey', &$provider, &$post);
+	v_optional('outkey', &$provider, &$post, "base64");
 	v_numeric('readbacknumber', gettext('Public Number'), &$provider, &$post, &$errors);
 	v_incoming_prov_routing(&$provider, &$post, &$errors);
 	v_incoming_prov_callerid(&$provider, &$post, &$errors);

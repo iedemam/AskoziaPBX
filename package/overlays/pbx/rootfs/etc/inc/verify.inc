@@ -584,8 +584,12 @@ function v_required($field, $name, $element, $post, $errors) {
 	$element[$field] = $post[$field];
 }
 
-function v_optional($field, $element, $post) {
-	$element[$field] = v_strip($post[$field]);
+function v_optional($field, $element, $post, $base64=false) {
+	if ($base64) {
+		$post[$field] = $element[$field] = v_strip(base64_encode($post[$field]));
+	} else {
+		$element[$field] = v_strip($post[$field]);
+	}
 }
 
 function v_checkbox($field, $element, $post) {

@@ -103,22 +103,15 @@ d_start("providers_iax_edit.php");
 
 	// Advanced Options
 	d_collapsible(gettext("Advanced Options"));
+	d_dropdown(gettext("Authentication Scheme"), "authentication",
+		array(
+			"plaintext" => "plaintext",
+			"md5" => "md5"
+		)
+	);
+	d_iax_keys();
 	display_registration_options($form['noregister'], $form['manualregister'], 2);
 	d_qualify_options($form['qualify']);
-	?><tr>
-		<td valign="top" class="vncell"><?=gettext("Authentication Scheme");?></td>
-		<td colspan="2" class="vtable">
-			<select name="authentication" class="formfld" id="authentication">
-				<option value="plaintext" <? 
-					if ($form['authentication'] == "plaintext") 
-						echo "selected"; 
-					?>><?=gettext("plaintext");?></option>
-				<option value="md5" <? 
-					if ($form['authentication'] == "md5") 
-						echo "selected"; 
-					?>><?=gettext("md5");?></option>
-			</select>
-	</tr><?
 	d_manualattributes_editor($form['manualattributes']);
 	d_collapsible_end();
 	d_spacer();

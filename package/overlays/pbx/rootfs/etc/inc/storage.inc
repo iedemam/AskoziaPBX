@@ -479,8 +479,6 @@ function storage_initialize_service($service, $disk) {
 
 	if ($service == 'media-and-db') {
 		$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
-		exec("mkdir " . $servicepath . "/keys");
-		exec("cp -Rp /offload/asterisk/keys/* " . $servicepath . "/keys/");
 		exec("mkdir " . $servicepath . "/moh");
 		exec("cp -Rp /offload/asterisk/moh/* " . $servicepath . "/moh/");
 		exec("mkdir " . $servicepath . "/sounds");

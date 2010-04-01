@@ -922,12 +922,13 @@ function asterisk_conf_generate($return=false) {
 [directories]
 astetcdir => /etc/asterisk
 astagidir => /etc/asterisk/agi-bin
-astmoddir => /offload/asterisk/modules
-astvarlibdir => $datapath
-astdatadir => $datapath
+astkeydir => /etc/asterisk/keys
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
 astlogdir => /var/asterisk/log
+astmoddir => /offload/asterisk/modules
+astvarlibdir => $datapath
+astdatadir => $datapath
 
 [options]
 verbose = 3

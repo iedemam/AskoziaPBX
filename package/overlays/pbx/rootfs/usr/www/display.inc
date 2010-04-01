@@ -1213,8 +1213,8 @@ function d_drag_and_drop($name, $selected_elements, $all_elements) {
 	</tr><?
 }
 
-function d_dropdown($title, $name, $items, $current_value, $help=false) {
-	global $colspan;
+function d_dropdown($title, $name, $items, $help=false) {
+	global $colspan, $form;
 
 	?><tr> 
 		<td width="20%" valign="top" class="vncell"><?=spanify($title);?></td>
@@ -1222,7 +1222,7 @@ function d_dropdown($title, $name, $items, $current_value, $help=false) {
 			<select name="<?=$name;?>" class="formfld" id="<?=$name;?>">
 			<? foreach ($items as $item_value => $item_description) : ?>
 			<option value="<?=$item_value;?>" <?
-			if ($item_value == $current_value)
+			if ($item_value == $form[$name])
 				echo "selected"; ?>
 			><?=$item_description;?></option>
 			<? endforeach; ?>
@@ -1258,6 +1258,41 @@ function d_checkbox($title, $label, $name, $help=false, $required=false) {
 		</td>
 	</tr>
 <?
+}
+
+function d_iax_keys() {
+	global $colspan, $scripts, $form;
+
+	$scripts['javascript_iax_keys'] = true;
+
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("RSA Keys"));?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<input name="useinkey" id="useinkey" type="checkbox" value="yes" <?
+			if (isset($form['useinkey'])) {
+				echo "checked";
+			}
+			?>>&nbsp;<?=spanify(gettext("authenticate incoming calls with a public RSA key"));?>
+			<span name="inkey_wrapper" id="inkey_wrapper">
+			<br><textarea name="inkey" cols="65" rows="8" id="inkey" class="notes"><?
+				echo htmlspecialchars(base64_decode($form['inkey']));
+			?></textarea>
+			<br><?=gettext("Public RSA Key");?>
+			</span>
+			<br>
+			<input name="useoutkey" id="useoutkey" type="checkbox" value="yes" <?
+			if (isset($form['useoutkey'])) {
+				echo "checked";
+			}
+			?>>&nbsp;<?=spanify(gettext("authenticate outgoing calls with a private RSA key"));?>
+			<span name="outkey_wrapper" id="outkey_wrapper">
+			<br><textarea name="outkey" cols="65" rows="8" id="outkey" class="notes"><?
+				echo htmlspecialchars(base64_decode($form['outkey']));
+			?></textarea>
+			<br><?=gettext("Private RSA Key");?>
+			</span>
+		</td>
+	</tr><?
 }
 
 ?>

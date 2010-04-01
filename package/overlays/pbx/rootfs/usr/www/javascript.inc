@@ -650,4 +650,38 @@ function javascript_codemirror($part) {
 	<? endif;
 }
 
+function javascript_iax_keys($part) {
+
+	if ($part == "functions") : ?>
+
+		function inkey_toggle() {
+			if (jQuery("#useinkey").is(":checked")) {
+				jQuery("#inkey_wrapper").show();
+			} else {
+				jQuery("#inkey_wrapper").hide();
+			}
+		}
+
+		function outkey_toggle() {
+			if (jQuery("#useoutkey").is(":checked")) {
+				jQuery("#outkey_wrapper").show();
+			} else {
+				jQuery("#outkey_wrapper").hide();
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#useinkey").click(inkey_toggle);
+		inkey_toggle();
+		jQuery("#useoutkey").click(outkey_toggle);
+		outkey_toggle();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_iax_keys()!
+
+	<? endif;
+}
+
 ?>
