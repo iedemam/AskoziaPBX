@@ -1,0 +1,98 @@
+--- asterisk-1.6.1.18/apps/app_voicemail.c.orig	2010-03-31 20:30:27.000000000 +0200
++++ asterisk-1.6.1.18/apps/app_voicemail.c	2010-03-31 20:41:49.000000000 +0200
+@@ -4490,7 +4490,7 @@
+ 	return ast_strftime(s, len, "%a %b %e %r UTC %Y", &tm);
+ }
+ 
+-static int invent_message(struct ast_channel *chan, char *context, char *ext, int busy, char *ecodes)
++static int invent_message(struct ast_channel *chan, char *context, char *ext, int busy, char *ecodes, char *readnum)
+ {
+ 	int res;
+ 	char fn[PATH_MAX];
+@@ -4516,7 +4516,7 @@
+ 		res = ast_stream_and_wait(chan, "vm-theperson", ecodes);
+ 		if (res)
+ 			return res;
+-		res = ast_say_digit_str(chan, ext, ecodes, chan->language);
++		res = ast_say_digit_str(chan, readnum, ecodes, chan->language);
+ 		if (res)
+ 			return res;
+ 	}
+@@ -5013,7 +5013,7 @@
+  * 
+  * \return zero on success, -1 on error.
+  */
+-static int leave_voicemail(struct ast_channel *chan, char *ext, struct leave_vm_options *options)
++static int leave_voicemail(struct ast_channel *chan, char *ext, struct leave_vm_options *options, char *readnum)
+ {
+ #ifdef IMAP_STORAGE
+ 	int newmsgs, oldmsgs;
+@@ -5176,7 +5176,7 @@
+ #endif
+ 		} else {
+ 			ast_debug(1, "%s doesn't exist, doing what we can\n", prefile);
+-			res = invent_message(chan, vmu->context, ext, ast_test_flag(options, OPT_BUSY_GREETING), ecodes);
++			res = invent_message(chan, vmu->context, ext, ast_test_flag(options, OPT_BUSY_GREETING), ecodes, readnum);
+ 		}
+ 		DISPOSE(prefile, -1);
+ 		if (res < 0) {
+@@ -6628,7 +6628,7 @@
+ 		/* Send VoiceMail */
+ 		memset(&leave_options, 0, sizeof(leave_options));
+ 		leave_options.record_gain = record_gain;
+-		cmd = leave_voicemail(chan, mailbox, &leave_options);
++		cmd = leave_voicemail(chan, mailbox, &leave_options, mailbox);
+ 	} else {
+ 		/* Forward VoiceMail */
+ 		long duration = 0;
+@@ -9020,13 +9020,14 @@
+ 		AST_DECLARE_APP_ARGS(args,
+ 			AST_APP_ARG(argv0);
+ 			AST_APP_ARG(argv1);
++			AST_APP_ARG(argv2); /* added new option to hold "readback number" */
+ 		);
+ 
+ 		parse = ast_strdupa(data);
+ 
+ 		AST_STANDARD_APP_ARGS(args, parse);
+ 
+-		if (args.argc == 2) {
++		if (args.argc >= 2) {
+ 			if (ast_app_parse_options(vm_app_options, &flags, opts, args.argv1))
+ 				return -1;
+ 			if (ast_test_flag(&flags, OPT_RECORDGAIN)) {
+@@ -9697,6 +9698,7 @@
+ 	AST_DECLARE_APP_ARGS(args,
+ 		AST_APP_ARG(argv0);
+ 		AST_APP_ARG(argv1);
++		AST_APP_ARG(argv2); /* added new option to hold "readback number" */
+ 	);
+ 	
+ 	memset(&leave_options, 0, sizeof(leave_options));
+@@ -9707,7 +9709,7 @@
+ 	if (!ast_strlen_zero(data)) {
+ 		tmp = ast_strdupa(data);
+ 		AST_STANDARD_APP_ARGS(args, tmp);
+-		if (args.argc == 2) {
++		if (args.argc >= 2) {
+ 			if (ast_app_parse_options(vm_app_options, &flags, opts, args.argv1))
+ 				return -1;
+ 			ast_copy_flags(&leave_options, &flags, OPT_SILENT | OPT_BUSY_GREETING | OPT_UNAVAIL_GREETING | OPT_MESSAGE_Urgent | OPT_MESSAGE_PRIORITY | OPT_DTMFEXIT);
+@@ -9736,7 +9738,7 @@
+ 		args.argv0 = ast_strdupa(temp);
+ 	}
+ 
+-	res = leave_voicemail(chan, args.argv0, &leave_options);
++	res = leave_voicemail(chan, args.argv0, &leave_options, args.argv2);
+ 
+ 	if (res == ERROR_LOCK_PATH) {
+ 		ast_log(AST_LOG_ERROR, "Could not leave voicemail. The path is already locked.\n");
+@@ -11442,7 +11444,7 @@
+ 				
+ 				memset(&leave_options, 0, sizeof(leave_options));
+ 				leave_options.record_gain = record_gain;
+-				res = leave_voicemail(chan, mailbox, &leave_options);
++				res = leave_voicemail(chan, mailbox, &leave_options, mailbox);
+ 				if (!res)
+ 					res = 't';
+ 				ast_config_destroy(msg_cfg);
