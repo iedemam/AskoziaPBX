@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-24 17:31+0100\n"
+"POT-Creation-Date: 2010-04-06 11:09+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -710,6 +710,23 @@ msgid ""
 "If an outgoing call to this Provider fails, try routing it over the account "
 "selected above. Dialpatterns must be compatible, no extra care is yet taken "
 "to match them."
+msgstr ""
+
+#, fuzzy
+msgid "RSA Keys"
+msgstr "操作ボタン"
+
+msgid "authenticate incoming calls with a public RSA key"
+msgstr ""
+
+#, fuzzy
+msgid "Public RSA Key"
+msgstr "Public IP address"
+
+msgid "authenticate outgoing calls with a private RSA key"
+msgstr ""
+
+msgid "Private RSA Key"
 msgstr ""
 
 msgid "Dialplan"
@@ -3591,9 +3608,6 @@ msgstr "システムは再起動中です。これには数分かかります"
 msgid "Are you sure you want to reboot the system?"
 msgstr "本当にAskoziaPBXを再起動しますか？"
 
-msgid "Media & Database"
-msgstr ""
-
 #, fuzzy
 msgid "edit disk"
 msgstr "ディスクの編集"
@@ -3651,9 +3665,7 @@ msgstr ""
 msgid "Storage Services"
 msgstr "サービス"
 
-msgid ""
-"store voice prompts, music-on-hold and the Asterisk persistence database on "
-"disk"
+msgid "store voice prompts and music-on-hold on disk"
 msgstr ""
 
 #, php-format

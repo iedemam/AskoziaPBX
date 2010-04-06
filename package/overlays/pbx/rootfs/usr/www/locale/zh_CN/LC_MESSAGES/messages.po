@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-24 17:31+0100\n"
+"POT-Creation-Date: 2010-04-06 11:09+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -686,6 +686,23 @@ msgid ""
 "If an outgoing call to this Provider fails, try routing it over the account "
 "selected above. Dialpatterns must be compatible, no extra care is yet taken "
 "to match them."
+msgstr ""
+
+#, fuzzy
+msgid "RSA Keys"
+msgstr "热键"
+
+msgid "authenticate incoming calls with a public RSA key"
+msgstr ""
+
+#, fuzzy
+msgid "Public RSA Key"
+msgstr "公网IP地址"
+
+msgid "authenticate outgoing calls with a private RSA key"
+msgstr ""
+
+msgid "Private RSA Key"
 msgstr ""
 
 msgid "Dialplan"
@@ -3477,9 +3494,6 @@ msgstr "系统正在重启。这可能会需要一分钟。"
 msgid "Are you sure you want to reboot the system?"
 msgstr "您真的要重启系统？"
 
-msgid "Media & Database"
-msgstr ""
-
 #, fuzzy
 msgid "edit disk"
 msgstr "编辑磁盘"
@@ -3537,9 +3551,7 @@ msgstr ""
 msgid "Storage Services"
 msgstr "服务"
 
-msgid ""
-"store voice prompts, music-on-hold and the Asterisk persistence database on "
-"disk"
+msgid "store voice prompts and music-on-hold on disk"
 msgstr ""
 
 #, php-format

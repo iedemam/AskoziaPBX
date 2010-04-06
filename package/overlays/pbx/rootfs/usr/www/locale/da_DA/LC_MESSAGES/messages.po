@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-24 17:31+0100\n"
+"POT-Creation-Date: 2010-04-06 11:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -701,6 +701,23 @@ msgid ""
 "If an outgoing call to this Provider fails, try routing it over the account "
 "selected above. Dialpatterns must be compatible, no extra care is yet taken "
 "to match them."
+msgstr ""
+
+#, fuzzy
+msgid "RSA Keys"
+msgstr "Hurtigtaster"
+
+msgid "authenticate incoming calls with a public RSA key"
+msgstr ""
+
+#, fuzzy
+msgid "Public RSA Key"
+msgstr "Offentlig IP adresse"
+
+msgid "authenticate outgoing calls with a private RSA key"
+msgstr ""
+
+msgid "Private RSA Key"
 msgstr ""
 
 msgid "Dialplan"
@@ -3531,9 +3548,6 @@ msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
 msgid "Are you sure you want to reboot the system?"
 msgstr "Er du sikker på du vil genstarte systemet?"
 
-msgid "Media & Database"
-msgstr ""
-
 #, fuzzy
 msgid "edit disk"
 msgstr "Rediger Disk"
@@ -3591,9 +3605,7 @@ msgstr ""
 msgid "Storage Services"
 msgstr "Tjenester"
 
-msgid ""
-"store voice prompts, music-on-hold and the Asterisk persistence database on "
-"disk"
+msgid "store voice prompts and music-on-hold on disk"
 msgstr ""
 
 #, php-format
