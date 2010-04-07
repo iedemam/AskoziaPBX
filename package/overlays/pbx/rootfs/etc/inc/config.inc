@@ -294,6 +294,15 @@ function convert_config() {
 		$config['version'] = "2.01";
 	}
 
+	/* update timezone storage format to only store id */
+	if ($config['version'] == "2.01") {
+		if ($config['system']['timezone']) {
+			$pieces = explode("|", $config['system']['timezone']);
+			$config['system']['timezone'] = $pieces[0];
+		}
+		$config['version'] = "2.02";
+	}
+
 	write_config();
 
 }

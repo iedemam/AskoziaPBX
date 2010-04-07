@@ -32,6 +32,7 @@
 */
 
 require("guiconfig.inc");
+include("timezones.inc");
 
 $pgtitle = array(gettext("System"), gettext("General Setup"));
 $pghelp = gettext("This is the first page which needs configuring upon installing a new system. Most importantly, the default password should be changed. Then, ensure your host/domain name, time zone and country's indication tones are set correctly before continuing.");
@@ -103,16 +104,11 @@ if ($_POST) {
 		$oldwebguiport = $config['system']['webgui']['port'];
 		$config['system']['webgui']['port'] = $pconfig['webguiport'];
 		$config['system']['tonezone'] = $_POST['tonezone'];
-		if ($_POST['timezone'] != "0000") {
-			$config['system']['timezone']
-				= $_POST['timezone'] . "|" . $tz["{$_POST['timezone']}"][1];
-		} else {
-			$config['system']['timezone'] = false;
-		}
+		$config['system']['timezone'] = $_POST['timezone'];
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
 		$config['system']['webgui']['language'] = $_POST['lang'];
-				
+
 		if ($_POST['password']) {
 			$config['system']['password'] = $_POST['password'];
 			touch($d_passworddirty_path);

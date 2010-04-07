@@ -155,66 +155,6 @@ $system_tonezones = array(
 	"ve" => gettext("Venezuela / South America")
 );
 
-$tmp = gettext("Asia");
-$tz['0100'] = array($tmp.", ".gettext("Jakarta"), "WIB-7");
-$tz['0200'] = array($tmp.", ".gettext("Singapore"), "SGT-8");
-$tz['0300'] = array($tmp.", ".gettext("Ulaanbaatar, Mongolia"), "ULAT-8ULAST,M3.5.0/2,M9.5.0/2");
-
-$tmp = gettext("Australia");
-$tz['0400'] = array($tmp.", ".gettext("Adelaide"), "CST-9:30CDT-10:30,M10.5.0/02:00:00,M3.5.0/03:00:00");
-$tz['0500'] = array($tmp.", ".gettext("Brisbane"), "EST-10");
-$tz['0600'] = array($tmp.", ".gettext("Canberra"), "EST-10EDT-11,M10.5.0/02:00:00,M3.5.0/03:00:00");
-$tz['0700'] = array($tmp.", ".gettext("Darwin"), "CST-9:30");
-$tz['0800'] = array($tmp.", ".gettext("Hobart"), "EST-10EDT-11,M10.1.0/02:00:00,M3.5.0/03:00:00");
-$tz['0900'] = array($tmp.", ".gettext("Melbourne"), "EST-10EDT-11,M10.5.0/02:00:00,M3.5.0/03:00:00");
-$tz['1000'] = array($tmp.", ".gettext("Perth"), "WST-8");
-$tz['1100'] = array($tmp.", ".gettext("Sydney"), "EST-10EDT-11,M10.5.0/02:00:00,M3.5.0/03:00:00");
-
-$tmp = gettext("Central and South America");
-$tz['1200'] = array($tmp.", ".gettext("Argentina"), "UTC+3");
-$tz['1300'] = array($tmp.", ".gettext("Brazil, São Paulo"), "BRST+3BRDT+2,M10.3.0,M2.3.0");
-$tz['1400'] = array($tmp.", ".gettext("Central America"), "CST+6");
-
-$tmp = gettext("Europe");
-$tz['1500'] = array($tmp.", ".gettext("Amsterdam, Netherlands"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['1600'] = array($tmp.", ".gettext("Athens, Greece"), "EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00");
-$tz['1700'] = array($tmp.", ".gettext("Barcelona, Spain"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['1800'] = array($tmp.", ".gettext("Berlin, Germany"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['1900'] = array($tmp.", ".gettext("Brussels, Belgium"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['2000'] = array($tmp.", ".gettext("Budapest, Hungary"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['2100'] = array($tmp.", ".gettext("Copenhagen, Denmark"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['2200'] = array($tmp.", ".gettext("Dublin, Ireland"), "GMT+0IST-1,M3.5.0/01:00:00,M10.5.0/02:00:00");
-$tz['2300'] = array($tmp.", ".gettext("Geneva, Switzerland"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['2400'] = array($tmp.", ".gettext("Helsinki, Finland"), "EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00");
-$tz['2500'] = array($tmp.", ".gettext("Kiev, Ukraine"), "EET-2EEST,M3.5.0/3,M10.5.0/4");
-$tz['2600'] = array($tmp.", ".gettext("Lisbon, Portugal"), "WET-0WEST-1,M3.5.0/01:00:00,M10.5.0/02:00:00");
-$tz['2700'] = array($tmp.", ".gettext("London, Great Britain"), "GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00");
-$tz['2800'] = array($tmp.", ".gettext("Madrid, Spain"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['2900'] = array($tmp.", ".gettext("Oslo, Norway"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['3000'] = array($tmp.", ".gettext("Paris, France"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['3100'] = array($tmp.", ".gettext("Prague, Czech Republic"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['3200'] = array($tmp.", ".gettext("Rome, Italy"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['3300'] = array($tmp.", ".gettext("Moscow, Russia"), "MSK-3MSD,M3.5.0/2,M10.5.0/3");
-$tz['3400'] = array($tmp.", ".gettext("St.Petersburg, Russia"), "MST-3MDT,M3.5.0/2,M10.5.0/3");
-$tz['3500'] = array($tmp.", ".gettext("Stockholm, Sweden"), "CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00");
-$tz['3600'] = array($tmp.", ".gettext("Tallinn, Estonia"), "EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00");
-
-$tmp = gettext("New Zealand");
-$tz['3700'] = array($tmp.", ".gettext("Auckland"), "NZST-12NZDT-13,M10.1.0/02:00:00,M3.3.0/03:00:00");
-$tz['3800'] = array($tmp.", ".gettext("Wellington"), "NZST-12NZDT-13,M10.1.0/02:00:00,M3.3.0/03:00:00");
-
-$tmp = gettext("USA & Canada");
-$tz['3900'] = array($tmp.", ".gettext("Alaska Time"), "AKST9AKDT");
-$tz['4000'] = array($tmp.", ".gettext("Atlantic Time"), "AST4ADT");
-$tz['4100'] = array($tmp.", ".gettext("Atlantic Time (New Brunswick)"), "AST4ADT,M4.1.0/00:01:00,M10.5.0/00:01:00");
-$tz['4200'] = array($tmp.", ".gettext("Central Time"), "CST6CDT");
-$tz['4300'] = array($tmp.", ".gettext("Eastern Time"), "EST5EDT");
-$tz['4400'] = array($tmp.", ".gettext("Hawaii Time"), "HAW10");
-$tz['4500'] = array($tmp.", ".gettext("Mountain Time"), "MST7MDT");
-$tz['4600'] = array($tmp.", ".gettext("Mountain Time (Arizona, no DST)"), "MST7");
-$tz['4700'] = array($tmp.", ".gettext("Newfoundland Time"), "NST+3:30NDT+2:30,M4.1.0/00:01:00,M10.5.0/00:01:00");
-$tz['4800'] = array($tmp.", ".gettext("Pacific Time"), "PST8PDT");
-
 $manager_permissions = array(
 	"agent",
 	"call",

@@ -217,11 +217,16 @@ function system_timezone_configure() {
 
 	$timezone = $config['system']['timezone'];
 
+	include("timezones.inc");
+
 	unlink_if_exists("/etc/TZ");
+	unlink_if_exists("/etc/localtime");
+
 	if ($timezone) {
-		$timezone = explode("|", $timezone);
-		$timezone = $timezone[1];
-		exec("echo \"$timezone\" > /etc/TZ");
+		$zonestring = $tz[$timezone][1];
+		exec("echo \"$zonestring\" > /etc/TZ");
+		$zonefile = $tz[$timezone][2];
+		exec("cp /usr/share/zoneinfo/" . $zonefile . " /etc/localtime");
 	}
 }
 

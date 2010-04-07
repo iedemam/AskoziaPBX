@@ -2,7 +2,7 @@
 <!-- AskoziaPBX default system configuration -->
 <!-- $Id: config.xml 1137 2009-09-14 15:24:18Z michael.iedema $ -->
 <askoziapbx>
-	<version>2.01</version>
+	<version>2.02</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>AskoziaPBX</hostname>

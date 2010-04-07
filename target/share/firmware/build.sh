@@ -127,6 +127,8 @@ cp -Rp ../../usr/share/terminfo/x/xterm-color offload_stage/rootfs/usr/share/ter
 cp -Rp ../../usr/share/terminfo/x/xterm-xfree86 offload_stage/rootfs/usr/share/terminfo/x/
 cp -Rp ../../usr/share/udhcpc offload_stage/rootfs/usr/share/
 chmod 755 offload_stage/rootfs/usr/share/udhcpc/default.script
+mkdir offload_stage/rootfs/usr/share/zoneinfo
+cp -Rp ../../usr/share/zoneinfo offload_stage/rootfs/usr/share/
 # usr/www
 cp -Rp ../../usr/www offload_stage/rootfs/usr/
 chmod 644 offload_stage/rootfs/usr/www/*
