@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:42+0200\n"
+"POT-Creation-Date: 2010-04-07 15:24+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3493,6 +3493,9 @@ msgstr "系統正在重啟。這可能會需要一分鐘。"
 msgid "Are you sure you want to reboot the system?"
 msgstr "您真的要重啟系統？"
 
+msgid "Persistence"
+msgstr ""
+
 #, fuzzy
 msgid "edit disk"
 msgstr "編輯磁盤"
@@ -3555,6 +3558,9 @@ msgstr ""
 
 #, php-format
 msgid "service already assigned to \"%s\""
+msgstr ""
+
+msgid "store Asterisk's database on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

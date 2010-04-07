@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:42+0200\n"
+"POT-Creation-Date: 2010-04-07 15:24+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -3605,6 +3605,9 @@ msgstr "システムは再起動中です。これには数分かかります"
 msgid "Are you sure you want to reboot the system?"
 msgstr "本当にAskoziaPBXを再起動しますか？"
 
+msgid "Persistence"
+msgstr ""
+
 #, fuzzy
 msgid "edit disk"
 msgstr "ディスクの編集"
@@ -3667,6 +3670,9 @@ msgstr ""
 
 #, php-format
 msgid "service already assigned to \"%s\""
+msgstr ""
+
+msgid "store Asterisk's database on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

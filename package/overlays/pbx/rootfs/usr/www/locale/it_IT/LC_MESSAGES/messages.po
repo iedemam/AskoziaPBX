@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:42+0200\n"
+"POT-Creation-Date: 2010-04-07 15:24+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Roberto Zilli <r.zilli@ingredium.it>\n"
 "Language-Team: Italian\n"
@@ -3679,6 +3679,9 @@ msgstr ""
 msgid "Are you sure you want to reboot the system?"
 msgstr "Sei sicuro di voler riavviare il sistema?"
 
+msgid "Persistence"
+msgstr ""
+
 #, fuzzy
 msgid "edit disk"
 msgstr "Modifica disco"
@@ -3741,6 +3744,9 @@ msgstr ""
 
 #, php-format
 msgid "service already assigned to \"%s\""
+msgstr ""
+
+msgid "store Asterisk's database on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

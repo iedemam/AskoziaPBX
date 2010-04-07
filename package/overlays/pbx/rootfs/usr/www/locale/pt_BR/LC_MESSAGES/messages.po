@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:42+0200\n"
+"POT-Creation-Date: 2010-04-07 15:24+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3194,6 +3194,9 @@ msgstr ""
 msgid "Are you sure you want to reboot the system?"
 msgstr ""
 
+msgid "Persistence"
+msgstr ""
+
 msgid "edit disk"
 msgstr ""
 
@@ -3247,6 +3250,9 @@ msgstr ""
 
 #, php-format
 msgid "service already assigned to \"%s\""
+msgstr ""
+
+msgid "store Asterisk's database on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

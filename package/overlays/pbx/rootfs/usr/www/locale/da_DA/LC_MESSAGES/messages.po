@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 13:42+0200\n"
+"POT-Creation-Date: 2010-04-07 15:24+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -3545,6 +3545,9 @@ msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
 msgid "Are you sure you want to reboot the system?"
 msgstr "Er du sikker på du vil genstarte systemet?"
 
+msgid "Persistence"
+msgstr ""
+
 #, fuzzy
 msgid "edit disk"
 msgstr "Rediger Disk"
@@ -3607,6 +3610,9 @@ msgstr ""
 
 #, php-format
 msgid "service already assigned to \"%s\""
+msgstr ""
+
+msgid "store Asterisk's database on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"
