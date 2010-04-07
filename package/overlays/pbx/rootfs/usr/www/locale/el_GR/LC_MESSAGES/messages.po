@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 11:09+0200\n"
+"POT-Creation-Date: 2010-04-07 13:42+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,6 +118,185 @@ msgstr ""
 #, fuzzy
 msgid "Storage Disk"
 msgstr "Επεξεργασία δίσκου"
+
+msgid "UTC"
+msgstr ""
+
+#, fuzzy
+msgid "Asia"
+msgstr "Αυστρία"
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Singapore"
+msgstr "Σιγκαπούρη"
+
+msgid "Ulaanbaatar, Mongolia"
+msgstr ""
+
+msgid "Australia"
+msgstr "Αυστραλία"
+
+msgid "Adelaide"
+msgstr ""
+
+msgid "Brisbane"
+msgstr ""
+
+msgid "Canberra"
+msgstr ""
+
+#, fuzzy
+msgid "Darwin"
+msgstr "Τομέας"
+
+#, fuzzy
+msgid "Hobart"
+msgstr "Ονομασία υπολογιστή"
+
+msgid "Melbourne"
+msgstr ""
+
+#, fuzzy
+msgid "Perth"
+msgstr "Πορτογαλία"
+
+msgid "Sydney"
+msgstr ""
+
+#, fuzzy
+msgid "Central and South America"
+msgstr "Βενεζουέλα / Νότιος Αμερική"
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Brazil, São Paulo"
+msgstr ""
+
+msgid "Central America"
+msgstr ""
+
+msgid "Europe"
+msgstr ""
+
+#, fuzzy
+msgid "Amsterdam, Netherlands"
+msgstr "Ολλανδία"
+
+#, fuzzy
+msgid "Athens, Greece"
+msgstr "Ελλάδα"
+
+msgid "Barcelona, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Berlin, Germany"
+msgstr "Γερμανία"
+
+msgid "Brussels, Belgium"
+msgstr ""
+
+msgid "Budapest, Hungary"
+msgstr ""
+
+msgid "Copenhagen, Denmark"
+msgstr ""
+
+msgid "Dublin, Ireland"
+msgstr ""
+
+#, fuzzy
+msgid "Geneva, Switzerland"
+msgstr "Ελβετία"
+
+msgid "Helsinki, Finland"
+msgstr ""
+
+msgid "Kiev, Ukraine"
+msgstr ""
+
+#, fuzzy
+msgid "Lisbon, Portugal"
+msgstr "Πορτογαλία"
+
+msgid "London, Great Britain"
+msgstr ""
+
+msgid "Madrid, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Oslo, Norway"
+msgstr "Νορβηγία"
+
+#, fuzzy
+msgid "Paris, France"
+msgstr "Γαλλία"
+
+#, fuzzy
+msgid "Prague, Czech Republic"
+msgstr "Τσεχία"
+
+#, fuzzy
+msgid "Rome, Italy"
+msgstr "Ιταλία"
+
+#, fuzzy
+msgid "Moscow, Russia"
+msgstr "Ρωσία"
+
+msgid "Stockholm, Sweden"
+msgstr ""
+
+#, fuzzy
+msgid "Tallinn, Estonia"
+msgstr "Εσθονία"
+
+msgid "New Zealand"
+msgstr "Νέα Ζηλανδία"
+
+msgid "Auckland"
+msgstr ""
+
+msgid "Wellington"
+msgstr ""
+
+msgid "USA & Canada"
+msgstr ""
+
+#, fuzzy
+msgid "Alaska Time"
+msgstr "Χρόνος στάθμευσης"
+
+msgid "Atlantic Time"
+msgstr ""
+
+msgid "Central Time"
+msgstr ""
+
+#, fuzzy
+msgid "Eastern Time"
+msgstr "Χρόνος στάθμευσης"
+
+#, fuzzy
+msgid "Hawaii Time"
+msgstr "Χρόνος στάθμευσης"
+
+msgid "Mountain Time"
+msgstr ""
+
+msgid "Mountain Time (Arizona, no DST)"
+msgstr ""
+
+msgid "Newfoundland Time"
+msgstr ""
+
+#, fuzzy
+msgid "Pacific Time"
+msgstr "Χρόνος στάθμευσης"
 
 #, php-format
 msgid "%.2f GB"
@@ -1006,9 +1185,6 @@ msgstr "point-to-point, NT"
 msgid "United States / North America"
 msgstr "ΗΠΑ / Βόρειος Αμερική"
 
-msgid "Australia"
-msgstr "Αυστραλία"
-
 msgid "Austria"
 msgstr "Αυστρία"
 
@@ -1075,9 +1251,6 @@ msgstr "Μεξικό"
 msgid "Netherlands"
 msgstr "Ολλανδία"
 
-msgid "New Zealand"
-msgstr "Νέα Ζηλανδία"
-
 msgid "Norway"
 msgstr "Νορβηγία"
 
@@ -1092,9 +1265,6 @@ msgstr "Πορτογαλία"
 
 msgid "Russia / ex Soviet Union"
 msgstr "Ρωσία / πρώην Σοβιετική Ένωση"
-
-msgid "Singapore"
-msgstr "Σιγκαπούρη"
 
 msgid "South Africa"
 msgstr "Νότια Αφρική"
@@ -1122,179 +1292,6 @@ msgstr "ΗΠΑ (1950)/ Βόρειος Αμερική"
 
 msgid "Venezuela / South America"
 msgstr "Βενεζουέλα / Νότιος Αμερική"
-
-#, fuzzy
-msgid "Asia"
-msgstr "Αυστρία"
-
-msgid "Jakarta"
-msgstr ""
-
-msgid "Ulaanbaatar, Mongolia"
-msgstr ""
-
-msgid "Adelaide"
-msgstr ""
-
-msgid "Brisbane"
-msgstr ""
-
-msgid "Canberra"
-msgstr ""
-
-#, fuzzy
-msgid "Darwin"
-msgstr "Τομέας"
-
-#, fuzzy
-msgid "Hobart"
-msgstr "Ονομασία υπολογιστή"
-
-msgid "Melbourne"
-msgstr ""
-
-#, fuzzy
-msgid "Perth"
-msgstr "Πορτογαλία"
-
-msgid "Sydney"
-msgstr ""
-
-#, fuzzy
-msgid "Central and South America"
-msgstr "Βενεζουέλα / Νότιος Αμερική"
-
-msgid "Argentina"
-msgstr ""
-
-msgid "Brazil, São Paulo"
-msgstr ""
-
-msgid "Central America"
-msgstr ""
-
-msgid "Europe"
-msgstr ""
-
-#, fuzzy
-msgid "Amsterdam, Netherlands"
-msgstr "Ολλανδία"
-
-#, fuzzy
-msgid "Athens, Greece"
-msgstr "Ελλάδα"
-
-msgid "Barcelona, Spain"
-msgstr ""
-
-#, fuzzy
-msgid "Berlin, Germany"
-msgstr "Γερμανία"
-
-msgid "Brussels, Belgium"
-msgstr ""
-
-msgid "Budapest, Hungary"
-msgstr ""
-
-msgid "Copenhagen, Denmark"
-msgstr ""
-
-msgid "Dublin, Ireland"
-msgstr ""
-
-#, fuzzy
-msgid "Geneva, Switzerland"
-msgstr "Ελβετία"
-
-msgid "Helsinki, Finland"
-msgstr ""
-
-msgid "Kiev, Ukraine"
-msgstr ""
-
-#, fuzzy
-msgid "Lisbon, Portugal"
-msgstr "Πορτογαλία"
-
-msgid "London, Great Britain"
-msgstr ""
-
-msgid "Madrid, Spain"
-msgstr ""
-
-#, fuzzy
-msgid "Oslo, Norway"
-msgstr "Νορβηγία"
-
-#, fuzzy
-msgid "Paris, France"
-msgstr "Γαλλία"
-
-#, fuzzy
-msgid "Prague, Czech Republic"
-msgstr "Τσεχία"
-
-#, fuzzy
-msgid "Rome, Italy"
-msgstr "Ιταλία"
-
-#, fuzzy
-msgid "Moscow, Russia"
-msgstr "Ρωσία"
-
-msgid "St.Petersburg, Russia"
-msgstr ""
-
-msgid "Stockholm, Sweden"
-msgstr ""
-
-#, fuzzy
-msgid "Tallinn, Estonia"
-msgstr "Εσθονία"
-
-msgid "Auckland"
-msgstr ""
-
-msgid "Wellington"
-msgstr ""
-
-msgid "USA & Canada"
-msgstr ""
-
-#, fuzzy
-msgid "Alaska Time"
-msgstr "Χρόνος στάθμευσης"
-
-msgid "Atlantic Time"
-msgstr ""
-
-msgid "Atlantic Time (New Brunswick)"
-msgstr ""
-
-msgid "Central Time"
-msgstr ""
-
-#, fuzzy
-msgid "Eastern Time"
-msgstr "Χρόνος στάθμευσης"
-
-#, fuzzy
-msgid "Hawaii Time"
-msgstr "Χρόνος στάθμευσης"
-
-msgid "Mountain Time"
-msgstr ""
-
-msgid "Mountain Time (Arizona, no DST)"
-msgstr ""
-
-msgid "Newfoundland Time"
-msgstr ""
-
-#, fuzzy
-msgid "Pacific Time"
-msgstr "Χρόνος στάθμευσης"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 11:09+0200\n"
+"POT-Creation-Date: 2010-04-07 13:42+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -116,6 +116,185 @@ msgstr ""
 #, fuzzy
 msgid "Storage Disk"
 msgstr "編輯磁盤"
+
+msgid "UTC"
+msgstr ""
+
+#, fuzzy
+msgid "Asia"
+msgstr "奧地利"
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Singapore"
+msgstr "新加坡"
+
+msgid "Ulaanbaatar, Mongolia"
+msgstr ""
+
+msgid "Australia"
+msgstr "澳大利亞"
+
+msgid "Adelaide"
+msgstr ""
+
+msgid "Brisbane"
+msgstr ""
+
+msgid "Canberra"
+msgstr ""
+
+#, fuzzy
+msgid "Darwin"
+msgstr "域"
+
+#, fuzzy
+msgid "Hobart"
+msgstr "主機"
+
+msgid "Melbourne"
+msgstr ""
+
+#, fuzzy
+msgid "Perth"
+msgstr "葡萄牙"
+
+msgid "Sydney"
+msgstr ""
+
+#, fuzzy
+msgid "Central and South America"
+msgstr "委內瑞拉 / 南美"
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Brazil, São Paulo"
+msgstr ""
+
+msgid "Central America"
+msgstr ""
+
+msgid "Europe"
+msgstr ""
+
+#, fuzzy
+msgid "Amsterdam, Netherlands"
+msgstr "荷蘭"
+
+#, fuzzy
+msgid "Athens, Greece"
+msgstr "希臘"
+
+msgid "Barcelona, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Berlin, Germany"
+msgstr "德國"
+
+msgid "Brussels, Belgium"
+msgstr ""
+
+msgid "Budapest, Hungary"
+msgstr ""
+
+msgid "Copenhagen, Denmark"
+msgstr ""
+
+msgid "Dublin, Ireland"
+msgstr ""
+
+#, fuzzy
+msgid "Geneva, Switzerland"
+msgstr "瑞士"
+
+msgid "Helsinki, Finland"
+msgstr ""
+
+msgid "Kiev, Ukraine"
+msgstr ""
+
+#, fuzzy
+msgid "Lisbon, Portugal"
+msgstr "葡萄牙"
+
+msgid "London, Great Britain"
+msgstr ""
+
+msgid "Madrid, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Oslo, Norway"
+msgstr "挪威"
+
+#, fuzzy
+msgid "Paris, France"
+msgstr "法國"
+
+#, fuzzy
+msgid "Prague, Czech Republic"
+msgstr "捷克共和國"
+
+#, fuzzy
+msgid "Rome, Italy"
+msgstr "意大利"
+
+#, fuzzy
+msgid "Moscow, Russia"
+msgstr "俄羅斯"
+
+msgid "Stockholm, Sweden"
+msgstr ""
+
+#, fuzzy
+msgid "Tallinn, Estonia"
+msgstr "愛沙尼亞"
+
+msgid "New Zealand"
+msgstr "新西蘭"
+
+msgid "Auckland"
+msgstr ""
+
+msgid "Wellington"
+msgstr ""
+
+msgid "USA & Canada"
+msgstr ""
+
+#, fuzzy
+msgid "Alaska Time"
+msgstr "停泊時間"
+
+msgid "Atlantic Time"
+msgstr ""
+
+msgid "Central Time"
+msgstr ""
+
+#, fuzzy
+msgid "Eastern Time"
+msgstr "停泊時間"
+
+#, fuzzy
+msgid "Hawaii Time"
+msgstr "停泊時間"
+
+msgid "Mountain Time"
+msgstr ""
+
+msgid "Mountain Time (Arizona, no DST)"
+msgstr ""
+
+msgid "Newfoundland Time"
+msgstr ""
+
+#, fuzzy
+msgid "Pacific Time"
+msgstr "停泊時間"
 
 #, php-format
 msgid "%.2f GB"
@@ -970,9 +1149,6 @@ msgstr "點對點，網路終端"
 msgid "United States / North America"
 msgstr "美國/北美"
 
-msgid "Australia"
-msgstr "澳大利亞"
-
 msgid "Austria"
 msgstr "奧地利"
 
@@ -1039,9 +1215,6 @@ msgstr "墨西哥"
 msgid "Netherlands"
 msgstr "荷蘭"
 
-msgid "New Zealand"
-msgstr "新西蘭"
-
 msgid "Norway"
 msgstr "挪威"
 
@@ -1056,9 +1229,6 @@ msgstr "葡萄牙"
 
 msgid "Russia / ex Soviet Union"
 msgstr "俄羅斯 / 前蘇聯"
-
-msgid "Singapore"
-msgstr "新加坡"
 
 msgid "South Africa"
 msgstr "南非"
@@ -1086,179 +1256,6 @@ msgstr "美國1950/北美"
 
 msgid "Venezuela / South America"
 msgstr "委內瑞拉 / 南美"
-
-#, fuzzy
-msgid "Asia"
-msgstr "奧地利"
-
-msgid "Jakarta"
-msgstr ""
-
-msgid "Ulaanbaatar, Mongolia"
-msgstr ""
-
-msgid "Adelaide"
-msgstr ""
-
-msgid "Brisbane"
-msgstr ""
-
-msgid "Canberra"
-msgstr ""
-
-#, fuzzy
-msgid "Darwin"
-msgstr "域"
-
-#, fuzzy
-msgid "Hobart"
-msgstr "主機"
-
-msgid "Melbourne"
-msgstr ""
-
-#, fuzzy
-msgid "Perth"
-msgstr "葡萄牙"
-
-msgid "Sydney"
-msgstr ""
-
-#, fuzzy
-msgid "Central and South America"
-msgstr "委內瑞拉 / 南美"
-
-msgid "Argentina"
-msgstr ""
-
-msgid "Brazil, São Paulo"
-msgstr ""
-
-msgid "Central America"
-msgstr ""
-
-msgid "Europe"
-msgstr ""
-
-#, fuzzy
-msgid "Amsterdam, Netherlands"
-msgstr "荷蘭"
-
-#, fuzzy
-msgid "Athens, Greece"
-msgstr "希臘"
-
-msgid "Barcelona, Spain"
-msgstr ""
-
-#, fuzzy
-msgid "Berlin, Germany"
-msgstr "德國"
-
-msgid "Brussels, Belgium"
-msgstr ""
-
-msgid "Budapest, Hungary"
-msgstr ""
-
-msgid "Copenhagen, Denmark"
-msgstr ""
-
-msgid "Dublin, Ireland"
-msgstr ""
-
-#, fuzzy
-msgid "Geneva, Switzerland"
-msgstr "瑞士"
-
-msgid "Helsinki, Finland"
-msgstr ""
-
-msgid "Kiev, Ukraine"
-msgstr ""
-
-#, fuzzy
-msgid "Lisbon, Portugal"
-msgstr "葡萄牙"
-
-msgid "London, Great Britain"
-msgstr ""
-
-msgid "Madrid, Spain"
-msgstr ""
-
-#, fuzzy
-msgid "Oslo, Norway"
-msgstr "挪威"
-
-#, fuzzy
-msgid "Paris, France"
-msgstr "法國"
-
-#, fuzzy
-msgid "Prague, Czech Republic"
-msgstr "捷克共和國"
-
-#, fuzzy
-msgid "Rome, Italy"
-msgstr "意大利"
-
-#, fuzzy
-msgid "Moscow, Russia"
-msgstr "俄羅斯"
-
-msgid "St.Petersburg, Russia"
-msgstr ""
-
-msgid "Stockholm, Sweden"
-msgstr ""
-
-#, fuzzy
-msgid "Tallinn, Estonia"
-msgstr "愛沙尼亞"
-
-msgid "Auckland"
-msgstr ""
-
-msgid "Wellington"
-msgstr ""
-
-msgid "USA & Canada"
-msgstr ""
-
-#, fuzzy
-msgid "Alaska Time"
-msgstr "停泊時間"
-
-msgid "Atlantic Time"
-msgstr ""
-
-msgid "Atlantic Time (New Brunswick)"
-msgstr ""
-
-msgid "Central Time"
-msgstr ""
-
-#, fuzzy
-msgid "Eastern Time"
-msgstr "停泊時間"
-
-#, fuzzy
-msgid "Hawaii Time"
-msgstr "停泊時間"
-
-msgid "Mountain Time"
-msgstr ""
-
-msgid "Mountain Time (Arizona, no DST)"
-msgstr ""
-
-msgid "Newfoundland Time"
-msgstr ""
-
-#, fuzzy
-msgid "Pacific Time"
-msgstr "停泊時間"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"

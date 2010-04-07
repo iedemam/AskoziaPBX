@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-06 11:09+0200\n"
+"POT-Creation-Date: 2010-04-07 13:42+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Marcin Hańczaruk <marcin.hanczaruk@gmail.com>\n"
 "Language-Team: \n"
@@ -123,6 +123,185 @@ msgstr ""
 #, fuzzy
 msgid "Storage Disk"
 msgstr "Edytuj dysk"
+
+msgid "UTC"
+msgstr ""
+
+#, fuzzy
+msgid "Asia"
+msgstr "Austria"
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Singapore"
+msgstr "Singapur"
+
+msgid "Ulaanbaatar, Mongolia"
+msgstr ""
+
+msgid "Australia"
+msgstr "Australia"
+
+msgid "Adelaide"
+msgstr ""
+
+msgid "Brisbane"
+msgstr ""
+
+msgid "Canberra"
+msgstr ""
+
+#, fuzzy
+msgid "Darwin"
+msgstr "Domena"
+
+#, fuzzy
+msgid "Hobart"
+msgstr "Host"
+
+msgid "Melbourne"
+msgstr ""
+
+#, fuzzy
+msgid "Perth"
+msgstr "Portugalia"
+
+msgid "Sydney"
+msgstr ""
+
+#, fuzzy
+msgid "Central and South America"
+msgstr "Wenezuela / Ameryka Południowa"
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Brazil, São Paulo"
+msgstr ""
+
+msgid "Central America"
+msgstr ""
+
+msgid "Europe"
+msgstr ""
+
+#, fuzzy
+msgid "Amsterdam, Netherlands"
+msgstr "Holandia"
+
+#, fuzzy
+msgid "Athens, Greece"
+msgstr "Grecja"
+
+msgid "Barcelona, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Berlin, Germany"
+msgstr "Niemcy"
+
+msgid "Brussels, Belgium"
+msgstr ""
+
+msgid "Budapest, Hungary"
+msgstr ""
+
+msgid "Copenhagen, Denmark"
+msgstr ""
+
+msgid "Dublin, Ireland"
+msgstr ""
+
+#, fuzzy
+msgid "Geneva, Switzerland"
+msgstr "Szwajcaria"
+
+msgid "Helsinki, Finland"
+msgstr ""
+
+msgid "Kiev, Ukraine"
+msgstr ""
+
+#, fuzzy
+msgid "Lisbon, Portugal"
+msgstr "Portugalia"
+
+msgid "London, Great Britain"
+msgstr ""
+
+msgid "Madrid, Spain"
+msgstr ""
+
+#, fuzzy
+msgid "Oslo, Norway"
+msgstr "Norwegia"
+
+#, fuzzy
+msgid "Paris, France"
+msgstr "Francja"
+
+#, fuzzy
+msgid "Prague, Czech Republic"
+msgstr "Czechy"
+
+#, fuzzy
+msgid "Rome, Italy"
+msgstr "Włochy"
+
+#, fuzzy
+msgid "Moscow, Russia"
+msgstr "Rosja"
+
+msgid "Stockholm, Sweden"
+msgstr ""
+
+#, fuzzy
+msgid "Tallinn, Estonia"
+msgstr "Estonia"
+
+msgid "New Zealand"
+msgstr "Nowa Zelandia"
+
+msgid "Auckland"
+msgstr ""
+
+msgid "Wellington"
+msgstr ""
+
+msgid "USA & Canada"
+msgstr ""
+
+#, fuzzy
+msgid "Alaska Time"
+msgstr "Czas parkowania"
+
+msgid "Atlantic Time"
+msgstr ""
+
+msgid "Central Time"
+msgstr ""
+
+#, fuzzy
+msgid "Eastern Time"
+msgstr "Czas parkowania"
+
+#, fuzzy
+msgid "Hawaii Time"
+msgstr "Czas parkowania"
+
+msgid "Mountain Time"
+msgstr ""
+
+msgid "Mountain Time (Arizona, no DST)"
+msgstr ""
+
+msgid "Newfoundland Time"
+msgstr ""
+
+#, fuzzy
+msgid "Pacific Time"
+msgstr "Czas parkowania"
 
 #, php-format
 msgid "%.2f GB"
@@ -945,9 +1124,6 @@ msgstr "point-to-point, network termination"
 msgid "United States / North America"
 msgstr "Stany Zjednoczone / Ameryka Północna"
 
-msgid "Australia"
-msgstr "Australia"
-
 msgid "Austria"
 msgstr "Austria"
 
@@ -1014,9 +1190,6 @@ msgstr "Meksyk"
 msgid "Netherlands"
 msgstr "Holandia"
 
-msgid "New Zealand"
-msgstr "Nowa Zelandia"
-
 msgid "Norway"
 msgstr "Norwegia"
 
@@ -1031,9 +1204,6 @@ msgstr "Portugalia"
 
 msgid "Russia / ex Soviet Union"
 msgstr "Rosja / były Związek Radziecki"
-
-msgid "Singapore"
-msgstr "Singapur"
 
 msgid "South Africa"
 msgstr "Południowa Afryka"
@@ -1061,179 +1231,6 @@ msgstr "United States Circa 1950/ Ameryka Północna"
 
 msgid "Venezuela / South America"
 msgstr "Wenezuela / Ameryka Południowa"
-
-#, fuzzy
-msgid "Asia"
-msgstr "Austria"
-
-msgid "Jakarta"
-msgstr ""
-
-msgid "Ulaanbaatar, Mongolia"
-msgstr ""
-
-msgid "Adelaide"
-msgstr ""
-
-msgid "Brisbane"
-msgstr ""
-
-msgid "Canberra"
-msgstr ""
-
-#, fuzzy
-msgid "Darwin"
-msgstr "Domena"
-
-#, fuzzy
-msgid "Hobart"
-msgstr "Host"
-
-msgid "Melbourne"
-msgstr ""
-
-#, fuzzy
-msgid "Perth"
-msgstr "Portugalia"
-
-msgid "Sydney"
-msgstr ""
-
-#, fuzzy
-msgid "Central and South America"
-msgstr "Wenezuela / Ameryka Południowa"
-
-msgid "Argentina"
-msgstr ""
-
-msgid "Brazil, São Paulo"
-msgstr ""
-
-msgid "Central America"
-msgstr ""
-
-msgid "Europe"
-msgstr ""
-
-#, fuzzy
-msgid "Amsterdam, Netherlands"
-msgstr "Holandia"
-
-#, fuzzy
-msgid "Athens, Greece"
-msgstr "Grecja"
-
-msgid "Barcelona, Spain"
-msgstr ""
-
-#, fuzzy
-msgid "Berlin, Germany"
-msgstr "Niemcy"
-
-msgid "Brussels, Belgium"
-msgstr ""
-
-msgid "Budapest, Hungary"
-msgstr ""
-
-msgid "Copenhagen, Denmark"
-msgstr ""
-
-msgid "Dublin, Ireland"
-msgstr ""
-
-#, fuzzy
-msgid "Geneva, Switzerland"
-msgstr "Szwajcaria"
-
-msgid "Helsinki, Finland"
-msgstr ""
-
-msgid "Kiev, Ukraine"
-msgstr ""
-
-#, fuzzy
-msgid "Lisbon, Portugal"
-msgstr "Portugalia"
-
-msgid "London, Great Britain"
-msgstr ""
-
-msgid "Madrid, Spain"
-msgstr ""
-
-#, fuzzy
-msgid "Oslo, Norway"
-msgstr "Norwegia"
-
-#, fuzzy
-msgid "Paris, France"
-msgstr "Francja"
-
-#, fuzzy
-msgid "Prague, Czech Republic"
-msgstr "Czechy"
-
-#, fuzzy
-msgid "Rome, Italy"
-msgstr "Włochy"
-
-#, fuzzy
-msgid "Moscow, Russia"
-msgstr "Rosja"
-
-msgid "St.Petersburg, Russia"
-msgstr ""
-
-msgid "Stockholm, Sweden"
-msgstr ""
-
-#, fuzzy
-msgid "Tallinn, Estonia"
-msgstr "Estonia"
-
-msgid "Auckland"
-msgstr ""
-
-msgid "Wellington"
-msgstr ""
-
-msgid "USA & Canada"
-msgstr ""
-
-#, fuzzy
-msgid "Alaska Time"
-msgstr "Czas parkowania"
-
-msgid "Atlantic Time"
-msgstr ""
-
-msgid "Atlantic Time (New Brunswick)"
-msgstr ""
-
-msgid "Central Time"
-msgstr ""
-
-#, fuzzy
-msgid "Eastern Time"
-msgstr "Czas parkowania"
-
-#, fuzzy
-msgid "Hawaii Time"
-msgstr "Czas parkowania"
-
-msgid "Mountain Time"
-msgstr ""
-
-msgid "Mountain Time (Arizona, no DST)"
-msgstr ""
-
-msgid "Newfoundland Time"
-msgstr ""
-
-#, fuzzy
-msgid "Pacific Time"
-msgstr "Czas parkowania"
 
 msgid ""
 "The changes have been saved. You must <a href=\"/system_reboot.php\">reboot</"
