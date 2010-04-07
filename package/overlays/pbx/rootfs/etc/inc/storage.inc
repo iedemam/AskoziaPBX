@@ -381,6 +381,7 @@ function storage_verify_disk($post, $errors) {
 	v_required('device', gettext('Disk Device'), &$disk, &$post, &$errors);
 	v_required('mountpoint', gettext('Mount Point'), &$disk, &$post, &$errors);
 	v_checkbox('media', &$disk, &$post);
+	v_checkbox('persistence', &$disk, &$post);
 
 	$trusted = array(
 		'uniqid'
@@ -477,15 +478,21 @@ function storage_generate_default_disk() {
 function storage_initialize_service($service, $disk) {
 	global $g, $d_sysrebootreqd_path;
 
+	$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
+	exec("mkdir -p " . $servicepath);
+
 	if ($service == 'media') {
-		$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
 		exec("mkdir " . $servicepath . "/moh");
 		exec("cp -Rp /offload/asterisk/moh/* " . $servicepath . "/moh/");
 		exec("mkdir " . $servicepath . "/sounds");
 		exec("cp -Rp /offload/asterisk/sounds/* " . $servicepath . "/sounds/");
 		/* operation not permitted on vfat system...workaround needed */
 		//exec("ln -s " . $servicepath . "/sounds/en-us " . $servicepath . "/sounds/en");
+
+	} else if ($service == 'persistence') {
+		exec("cp -p /etc/asterisk/db/astdb " . $servicepath . "/");
 	}
+
 
 	if (!$g['booting']) {
 		touch($d_sysrebootreqd_path);
@@ -532,7 +539,6 @@ function storage_configure() {
 			if (isset($disk[$service])) {
 				$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
 				if (!file_exists($servicepath)) {
-					exec("mkdir -p " . $servicepath);
 					storage_initialize_service($service, $disk);
 				}
 			}

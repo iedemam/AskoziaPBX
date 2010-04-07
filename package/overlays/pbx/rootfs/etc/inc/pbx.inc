@@ -918,11 +918,16 @@ function asterisk_conf_generate($return=false) {
 		$datapath = $disk['mountpoint'] . "/askoziapbx/media";
 	}
 
+	$dbpath = "/etc/asterisk/db";
+	if ($disk = storage_service_is_active("persistence")) {
+		$dbpath = $disk['mountpoint'] . "/askoziapbx/persistence";
+	}
+
 	$conf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
 astagidir => /etc/asterisk/agi-bin
-astdbdir => /etc/asterisk/db
+astdbdir => $dbpath
 astkeydir => /etc/asterisk/keys
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run

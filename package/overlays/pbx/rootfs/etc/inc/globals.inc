@@ -51,7 +51,7 @@ $g = array(
 	"phone_types" => array("sip", "iax", "isdn", "analog", "skinny", "external"),
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
-	"storage_services" => array("media"),
+	"storage_services" => array("media", "persistence"),
 
 	"dahdi_dirty_path" => "/var/run/dahdi.dirty",
 	"analog_dirty_path" => "/var/run/analog.dirty",
