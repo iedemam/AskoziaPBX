@@ -82,6 +82,10 @@ function pbx_configure() {
 	$res |= meetme_conf_generate();
 	if ($g['booting']) echo "done\n";
 
+	if ($g['booting']) echo "   |- generating music-on-hold configuration...";
+	$res |= musiconhold_conf_generate();
+	if ($g['booting']) echo "done\n";
+
 	if ($g['booting']) echo "   |- generating dialplan...";
 	$res |= extensions_conf_generate();
 	$res |= features_conf_generate();
@@ -946,6 +950,24 @@ highpriority = yes
 EOD;
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/asterisk.conf", $conf);
+}
+
+function musiconhold_conf_generate($return=false) {
+
+	$mohpath = "/offload/asterisk/moh";
+	if ($disk = storage_service_is_active("media")) {
+		$mohpath = $disk['mountpoint'] . "/askoziapbx/media/moh";
+	}
+
+	$conf = <<<EOD
+[default]
+mode=files
+directory=$mohpath
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/musiconhold.conf", $conf);
 }
 
 ?>

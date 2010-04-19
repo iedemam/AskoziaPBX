@@ -276,6 +276,7 @@
 				<option value="/etc/asterisk/manager.conf">/etc/asterisk/manager.conf</option>
 				<option value="/etc/asterisk/meetme.conf">/etc/asterisk/meetme.conf</option>
 				<option value="/etc/asterisk/modules.conf">/etc/asterisk/modules.conf</option>
+				<option value="/etc/asterisk/musiconhold.conf">/etc/asterisk/musiconhold.conf</option>
 				<option value="/etc/asterisk/phpagi.conf">/etc/asterisk/phpagi.conf</option>
 				<option value="/etc/asterisk/rtp.conf">/etc/asterisk/rtp.conf</option>
 				<option value="/etc/asterisk/sip.conf">/etc/asterisk/sip.conf</option>
