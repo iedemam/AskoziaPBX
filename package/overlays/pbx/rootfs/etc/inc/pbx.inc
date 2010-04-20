@@ -876,6 +876,7 @@ load => res_agi.so
 load => res_indications.so
 load => res_limit.so
 load => res_musiconhold.so
+load => res_qstat.so
 load => res_smdi.so
 
 EOD;
