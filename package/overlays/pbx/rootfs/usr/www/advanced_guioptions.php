@@ -206,10 +206,7 @@ if ($_POST) {
 <?php endif; ?>
 				<tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
-                    <strong><?=gettext("Keep diagnostics in navigation expanded");?></strong>
-					<br>
+                  <td width="78%" class="vtable">
 					<input name="expandadvanced" type="checkbox" id="expandadvanced" value="yes" <?php if ($pconfig['expandadvanced']) echo "checked"; ?>>
 					<strong><?=gettext("Keep advanced options in navigation expanded");?></strong>
 					<br>
