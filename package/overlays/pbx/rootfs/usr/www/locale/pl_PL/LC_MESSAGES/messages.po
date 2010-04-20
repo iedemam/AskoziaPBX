@@ -197,10 +197,10 @@ msgid "Subject"
 msgstr "Temat"
 
 msgid "Body"
-msgstr ""
+msgstr "Zawartość"
 
 msgid "The following variables can be used in the e-mail notification"
-msgstr ""
+msgstr "W powiadomieniu możesz użyć następujących zmiennych"
 
 msgid "extension number of voicemail box"
 msgstr ""
@@ -233,13 +233,13 @@ msgid "Audio"
 msgstr "Audio"
 
 msgid "Enabled"
-msgstr "Włączony"
+msgstr "Włączone"
 
 msgid "drag-and-drop"
 msgstr "przeciągnij-i-upuść"
 
 msgid "Disabled"
-msgstr "Wyłączony"
+msgstr "Wyłączone"
 
 msgid "Video"
 msgstr "Wideo"
@@ -278,7 +278,7 @@ msgid ""
 msgstr ""
 
 msgid "DTMF Mode"
-msgstr "DTMF Mode"
+msgstr "Tryb DTMF"
 
 msgid "Registration"
 msgstr "Rejestracja"
@@ -305,7 +305,7 @@ msgid "only use NAT mode according to RFC3581 (rport)"
 msgstr "używaj tylko trybu NAT zgodnie z RFC3581 (rport)"
 
 msgid "never attempt NAT mode or RFC3581 support"
-msgstr "nigdy nie próbuj uzywać trybu NAT lub wsparcia dla RFC3581"
+msgstr "nigdy nie używaj trybu NAT lub wsparcia dla RFC3581"
 
 msgid "assume NAT mode but don't send rport "
 msgstr "załóż tryb NAT ale nie wysyłaj rport"
@@ -329,13 +329,13 @@ msgid "Volume"
 msgstr "Głośność"
 
 msgid "receive"
-msgstr "odbierane"
+msgstr "odbiór"
 
 msgid "transmit"
-msgstr "wysyłane"
+msgstr "nadawanie"
 
 msgid "If calls coming through this port are too loud or too quiet, make adjustments here. Receive and transmit levels (in decibels) can be adjusted independently."
-msgstr ""
+msgstr "Jeśli połączenia przechodzące przez ten port są zbyt głośne lub za ciche, wprowadź poprawkę tutaj. Poziomy odbioru i nadawania (w decybelach) mogą być ustawione niezależnie."
 
 msgid "Incoming Modification"
 msgstr "Modyfikacje przychodzące"
@@ -505,7 +505,7 @@ msgid "Description"
 msgstr "Opis"
 
 msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Można dodać tutaj opis dla własnej informacji (nie jest parsowany)."
+msgstr "Tutaj możesz dodać własny opis (opis ten nie jest parsowany)."
 
 msgid "This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back."
 msgstr ""
@@ -683,7 +683,7 @@ msgid "item is enabled, click to disable"
 msgstr "obiekt jest włączony, kliknij aby wyłączyć"
 
 msgid "edit an item"
-msgstr "edytuj interfejs"
+msgstr "edycja obiektu"
 
 msgid "permanently delete an item"
 msgstr "całkowicie usuń obiekt"
@@ -1459,16 +1459,16 @@ msgid "u-law"
 msgstr "u-law"
 
 msgid "Manager Interface"
-msgstr ""
+msgstr "Interfejs menedżerski"
 
 msgid "Permissions"
 msgstr "Uprawnienia"
 
 msgid "read:"
-msgstr "przeczytano:"
+msgstr "odczyt:"
 
 msgid "write:"
-msgstr "zapisano:"
+msgstr "zapis:"
 
 msgid "edit manager room"
 msgstr ""
@@ -1630,7 +1630,7 @@ msgid "Internal extension used to reach this call group."
 msgstr "Numer wewnętrzny grupy telefonicznej."
 
 msgid "A variety of settings are here which define how call transfers and call parking are handled. The defaults should work in most situations."
-msgstr ""
+msgstr "Tutaj znajdziesz różne ustawienia dotyczące zarządzania transferów połączeń oraz parkowania. Domyślne ustawienia powinny działać w większości sytuacji."
 
 msgid "A valid parking start position must be specified."
 msgstr "Należy podać prawidłową startową pozycję parkowania."
@@ -1693,7 +1693,7 @@ msgid "Attended Transfer Answer"
 msgstr ""
 
 msgid "Maximum number of seconds an attended transfer can go unanswered (default 15)."
-msgstr "Maksymalny czas (w sekundach), do odebrania kontrolowanego transferu (domyślnie: 15)."
+msgstr "Maksymalny czas (w sekundach), do odebrania nadzorowanego transferu (domyślnie: 15)."
 
 msgid "Transfer Key"
 msgstr "Klawisz przełączania"
@@ -2087,10 +2087,10 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 msgid "configured via DHCP client"
-msgstr "skonfigurowany przez klienta DHCP"
+msgstr "Konfiguracja DHCP"
 
 msgid "configured manually"
-msgstr "skonfigurowany ręcznie"
+msgstr "Konfiguracja ręczna"
 
 msgid "use DHCP settings permanently"
 msgstr "zawsze używaj ustawień DHCP"
@@ -2177,7 +2177,7 @@ msgid "access the webGUI with the new IP address"
 msgstr "dostęp do webGUI pod nowym adresem IP"
 
 msgid "In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here."
-msgstr ""
+msgstr "Aby móc wysyłać powiadomienia e-mail na temat nieodebranych połączeń lub wiadomości poczty głosowej, musisz tutaj skonfigurować serwer e-mail."
 
 msgid "A valid e-mail address must be specified."
 msgstr "Należy podać poprawny adres e-mail."
@@ -2222,13 +2222,13 @@ msgid "E-mail Me"
 msgstr "Wyślij mi e-mail"
 
 msgid "Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP settings."
-msgstr "Wprowadź adres e-mail i kliknij &quote;Wyślij mi e-mail&quote;, by przetestować twoje ustawienia SMTP."
+msgstr "Wprowadź adres e-mail i kliknij &quot;Wyślij mi e-mail&quot;, by przetestować twoje ustawienia SMTP."
 
 msgid "Edit Analog Phone"
 msgstr "Edytuj Analogowy Telefon"
 
 msgid "The number used to dial this phone."
-msgstr "Numer wywoławczy dla tego telefonu"
+msgstr "Numer wywoławczy dla tego telefonu."
 
 msgid "Text to be displayed for Caller ID."
 msgstr "Tekst wyświetlany jako Caller ID."
@@ -2259,10 +2259,10 @@ msgid "Number or string to be dialed to reach this telephone."
 msgstr "Numer lub string do wybrania by połączyć się z tym telefonem."
 
 msgid "Edit IAX Phone"
-msgstr "Edytuj Telefon IAX"
+msgstr "Edytuj telefon IAX"
 
 msgid "Use this number as your username."
-msgstr "Użyj tego numeru jako nazwy użytkownika"
+msgstr "Użyj tego numeru jako nazwy użytkownika."
 
 msgid "This account's password."
 msgstr "Hasło do tego konta."
@@ -2382,10 +2382,10 @@ msgid "Enter a descriptive name for this port."
 msgstr "Wprowadź opisową nazwę dla tego portu."
 
 msgid "The echo canceller window size. If your calls have echo, try increasing this window."
-msgstr ""
+msgstr "Wielkość okienka mechanizmu eliminacji echa. Jeśli podczas połączeń słyszysz echo, spróbuj zwiększyć tą wartość."
 
 msgid "Start Signaling"
-msgstr ""
+msgstr "Sygnalizacja"
 
 msgid "Kewl Start"
 msgstr "Kewl Start"
@@ -2400,7 +2400,7 @@ msgid "This is the how your system determines if a phone has been hung-up or pic
 msgstr "Ten parametr określa, w jaki sposób system wykrywa podniesienie bądź odłożenie słuchawki. Zazwyczaj \"Kewl Start\" jest najlepszym wyborem, ale niektórzy dostawcy działają lepiej korzystając z jednej z pozostałych opcji. Jeśli twoje połączenia nie zaczynają się lub nie kończą prawidłowo, spróbuj użyć innego ustawienia tego parametru."
 
 msgid "clicking &quot;Save&quot; will drop all current calls."
-msgstr "kliknięcie &quot;Zapisz&quot; przerwie wszystkie bieżące połączenia."
+msgstr "kliknięcie na przycisk &quot;Zapisz&quot; przerwie wszystkie bieżące połączenia."
 
 msgid "Edit Provider Group"
 msgstr "Edytuj Grupę Dostawców"
@@ -2544,17 +2544,17 @@ msgid "From Address"
 msgstr "Adres źródłowy"
 
 msgid "This will be shown as voicemail service's sending address."
-msgstr ""
+msgstr "Ten adres pokaże się jako adres źródłowy powiadomienia."
 
 #, php-format
 msgid "Defaults to the e-mail address used in the %s setup."
-msgstr ""
+msgstr "Domyślnie, zostanie użyty adres e-mail podany w menu %s."
 
 msgid "E-mail notifications for new voicemail will be delivered in this language."
 msgstr "Informacje mailowe o nowej wiadomości na poczcie głosowej będą dostarczane w tym języku."
 
 msgid "User defined e-mail text"
-msgstr ""
+msgstr "Własny e-mail tekstowy"
 
 msgid "Voice Prompts"
 msgstr "Zapowiedzi głosowe"
@@ -2640,7 +2640,7 @@ msgid "Resuming updates"
 msgstr "minut"
 
 msgid "System log entries"
-msgstr "Pozycje logu systemowego"
+msgstr "Logi systemowe"
 
 msgid "Toggle auto-updates"
 msgstr "Przełącz auto-odświeżanie"
@@ -2843,7 +2843,7 @@ msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Wybierz obraz nowego firmwaru (pbx-%s-*.img) do zainstalowania."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr "Kliknij przycisk &quote;Aktualizacja firmware&quote; by rozpocząć proces aktualizacji."
+msgstr "Kliknij przycisk &quot;Aktualizacja firmware&quot; by rozpocząć proces aktualizacji."
 
 msgid "Firmware image file:"
 msgstr "Plik obrazu firmware: "
