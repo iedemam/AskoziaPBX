@@ -29,95 +29,17 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+
 require("guiconfig.inc");
+$pgtitle = array(gettext("Accounts"), gettext("Edit ISDN Phone"));
 
-$pgtitle = array(gettext("Phones"), gettext("Edit ISDN Line"));
-
-/* grab and sort the isdn phones in our config */
-if (!is_array($config['isdn']['phone']))
-	$config['isdn']['phone'] = array();
-/* removed sort...needs rewrite when implemented! */
-$a_isdnphones = &$config['isdn']['phone'];
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
-
-/* pull current config into pconfig */
-if (isset($id) && $a_isdnphones[$id]) {
-	$pconfig['extension'] = $a_isdnphones[$id]['extension'];
-	$pconfig['callerid'] = $a_isdnphones[$id]['callerid'];
-	$pconfig['provider'] = $a_isdnphones[$id]['provider'];
-	$pconfig['voicemailbox'] = $a_isdnphones[$id]['voicemailbox'];
-	$pconfig['sendcallnotifications'] = isset($a_isdnphones[$id]['sendcallnotifications']);
-	$pconfig['publicaccess'] = $a_isdnphones[$id]['publicaccess'];
-	$pconfig['publicname'] = $a_isdnphones[$id]['publicname'];
-	$pconfig['interface'] = $a_isdnphones[$id]['interface'];
-	$pconfig['language'] = $a_isdnphones[$id]['language'];
-	$pconfig['descr'] = $a_isdnphones[$id]['descr'];
-	$pconfig['ringlength'] = $a_isdnphones[$id]['ringlength'];
-}
 
 if ($_POST) {
-
 	unset($input_errors);
-	$pconfig = $_POST;
-	
-	/* input validation */
-	$reqdfields = explode(" ", "extension callerid");
-	$reqdfieldsn = explode(",", "Extension,Caller ID");
-	
-	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (($_POST['extension'] && !pbx_is_valid_extension($_POST['extension']))) {
-		$input_errors[] = gettext("A valid extension must be entered.");
-	}
-	if (($_POST['callerid'] && !pbx_is_valid_callerid($_POST['callerid']))) {
-		$input_errors[] = gettext("A valid Caller ID must be specified.");
-	}
-	if (!isset($id) && in_array($_POST['extension'], pbx_get_extensions())) {
-		$input_errors[] = gettext("A phone with this extension already exists.");
-	}
-	if (($_POST['voicemailbox'] && !verify_is_email_address($_POST['voicemailbox']))) {
-		$input_errors[] = gettext("A valid e-mail address must be specified.");
-	}
-	if ($_POST['publicname'] && ($msg = verify_is_public_name($_POST['publicname']))) {
-		$input_errors[] = $msg;
-	}
-
+	$phone = isdn_verify_phone(&$_POST, &$input_errors);
 	if (!$input_errors) {
-		$ip = array();
-		$ip['extension'] = $_POST['extension'];
-		$ip['callerid'] = $_POST['callerid'];
-		$ip['voicemailbox'] = verify_non_default($_POST['voicemailbox']);
-		$ip['sendcallnotifications'] = $_POST['sendcallnotifications'] ? true : false;
-		$ip['publicaccess'] = $_POST['publicaccess'];
-		$ip['publicname'] = verify_non_default($_POST['publicname']);
-		$ip['interface'] = $_POST['interface'];
-		$ip['language'] = $_POST['language'];
-		$ip['descr'] = verify_non_default($_POST['descr']);
-		$ip['ringlength'] = verify_non_default($_POST['ringlength'], $defaults['accounts']['phones']['ringlength']);
-
-		$a_providers = pbx_get_providers();
-		$ip['provider'] = array();
-		foreach ($a_providers as $provider) {
-			if($_POST[$provider['uniqid']] == true) {
-				$ip['provider'][] = $provider['uniqid'];
-			}
-		}
-		
-		if (isset($id) && $a_isdnphones[$id]) {
-			$ip['uniqid'] = $a_isdnphones[$id]['uniqid'];
-			$a_isdnphones[$id] = $ip;
-		 } else {
-			$ip['uniqid'] = "ISDN-PHONE-" . uniqid(rand());
-			$a_isdnphones[] = $ip;
-		}
-		
-		touch($g['isdn_dirty_path']);
-		
-		write_config();
-		
+		isdn_save_phone($phone);
 		header("Location: accounts_phones.php");
 		exit;
 	}
@@ -125,9 +47,23 @@ if ($_POST) {
 
 
 $colspan = 1;
-include("fbegin.inc");
+$carryovers[] = "uniqid";
 
-$form = $pconfig; //$form = ($uniqid) ? isdn_get_phone($uniqid) : isdn_generate_default_phone();
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
+}
+
+if ($_POST) {
+	$form = $_POST;
+} else if ($uniqid) {
+	$form = isdn_get_phone($uniqid);
+} else {
+	$form = isdn_generate_default_phone();
+}
+
+
+include("fbegin.inc");
 d_start("phones_isdn_edit.php");
 
 
@@ -144,7 +80,7 @@ d_start("phones_isdn_edit.php");
 
 	display_phone_ringlength_selector($form['ringlength']);
 
-	//d_hwport_selector($form['port'], "isdn", "asdf");
+	d_hwport_selector($form['port'], "isdn", "nt");
 
 	d_field(gettext("Description"), "descr", 40,
 		gettext("You may enter a description here for your reference (not parsed)."));
@@ -166,6 +102,7 @@ d_start("phones_isdn_edit.php");
 	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
 
 	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+	d_spacer();
 
 
 	// Advanced Options
@@ -177,4 +114,3 @@ d_start("phones_isdn_edit.php");
 
 d_submit();
 include("fend.inc");
-?>

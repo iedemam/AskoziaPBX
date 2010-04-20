@@ -145,9 +145,7 @@ function dahdi_autoconfigure_ports() {
 				$p['name'] = gettext("Port") . " " . $p['span'];
 
 				if ($p['type'] == "nt") {
-					// once PTMP is implemented...
-					// $p['signaling'] = "bri_net_ptmp";
-					$p['signaling'] = "bri_net";
+					$p['signaling'] = "bri_net_ptmp";
 				} else if ($p['type'] == "te") {
 					$p['signaling'] = "bri_cpe_ptmp";
 				}

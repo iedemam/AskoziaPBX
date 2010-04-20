@@ -1,0 +1,12 @@
+--- asterisk-1.6.1.18/channels/chan_dahdi.c.orig	2010-04-19 18:00:30.000000000 +0200
++++ asterisk-1.6.1.18/channels/chan_dahdi.c	2010-04-19 18:02:59.000000000 +0200
+@@ -14690,7 +14690,8 @@
+ 					confp->chan.sig = SIG_BRI_PTMP;
+ 					confp->pri.nodetype = PRI_CPE;
+ 				} else if (!strcasecmp(v->value, "bri_net_ptmp")) {
+-					ast_log(LOG_WARNING, "How cool would it be if someone implemented this mode!  For now, sucks for you. (line %d)\n", v->lineno);
++					confp->chan.sig = SIG_BRI_PTMP;
++					confp->pri.nodetype = PRI_NETWORK;
+ 				} else if (!strcasecmp(v->value, "gr303fxoks_net")) {
+ 					confp->chan.sig = SIG_GR303FXOKS;
+ 					confp->pri.nodetype = PRI_NETWORK;
