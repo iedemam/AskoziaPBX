@@ -254,7 +254,7 @@ msgid "Non-Members"
 msgstr "Nienależący do grupy"
 
 msgid "Note:"
-msgstr "Notatki:"
+msgstr "Notatka:"
 
 msgid "All group members will be called at the same time. <strong>The voicemail account associated with the first member will be used if the call is not answered."
 msgstr "Telefony zadzwonią równocześnie u wszystkich członków grupy. <strong>Jeśli połączenie nie zostanie odebrane, użyta będzie skrzynka poczty głosowej przypisana do pierwszego członka grupy."
@@ -614,7 +614,7 @@ msgid "Call Groups"
 msgstr "Grupy Telefoniczne"
 
 msgid "Transfers"
-msgstr "Przełączenia"
+msgstr "Transfery"
 
 msgid "Conferencing"
 msgstr "Konferencje"
@@ -2222,7 +2222,7 @@ msgid "E-mail Me"
 msgstr "Wyślij mi e-mail"
 
 msgid "Type in an e-mail address and click &quot;E-mail Me&quot; to test your SMTP settings."
-msgstr ""
+msgstr "Wprowadź adres e-mail i kliknij &quote;Wyślij mi e-mail&quote;, by przetestować twoje ustawienia SMTP."
 
 msgid "Edit Analog Phone"
 msgstr "Edytuj Analogowy Telefon"
@@ -2342,11 +2342,10 @@ msgid "No compatible analog ports were detected."
 msgstr "Nie znaleziono kompatybilnych interfejsów analogowych"
 
 msgid "Individual Ports"
-msgstr ""
+msgstr "Poszczególne porty"
 
-#, fuzzy
 msgid "Card"
-msgstr "Wyczyść"
+msgstr "Karta"
 
 msgid "Phone"
 msgstr "Telefon"
@@ -2650,7 +2649,7 @@ msgid "Network"
 msgstr "Sieć"
 
 msgid "This is the first page which needs configuring upon installing a new system. Most importantly, the default password should be changed. Then, ensure your host/domain name, time zone and country's indication tones are set correctly before continuing."
-msgstr ""
+msgstr "To jest strona, która powinna zostać skonfigurowana w pierwszej kolejności po instalacji nowego systemu. Przede wszystkim, domyślne hasło powinno zostać zmienione. Następnie upewnij się, że twoja nazwa hosta, domeny, strefa czasowa oraz strefa tonowa twojego kraju są poprawnie ustawione."
 
 msgid "Hostname,Domain,Username"
 msgstr "Nazwa hosta,Domena,Nazwa użytkownika"
@@ -2844,7 +2843,7 @@ msgid "Choose the new firmware image file (%s-*.img) to be installed."
 msgstr "Wybierz obraz nowego firmwaru (pbx-%s-*.img) do zainstalowania."
 
 msgid "Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr ""
+msgstr "Kliknij przycisk &quote;Aktualizacja firmware&quote; by rozpocząć proces aktualizacji."
 
 msgid "Firmware image file:"
 msgstr "Plik obrazu firmware: "
