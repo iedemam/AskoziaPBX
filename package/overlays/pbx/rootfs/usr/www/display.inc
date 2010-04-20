@@ -67,7 +67,7 @@ function display_gui_language_selector($current_language) {
 		"el_GR" => "Ελληνικά",
 		"fr_FR" => "Français",
 		"it_IT" => "Italiano",
-		"pl_PL" => "Język polski",
+		"pl_PL" => "Polski",
 		"nl_NL" => "Nederlands",
 		"jp_JP" => "日本語",
 //		"pt_BR" => "Português",
