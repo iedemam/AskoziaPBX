@@ -135,13 +135,13 @@ msgid "The field '%s' is required."
 msgstr "Pole '%s' jest wymagane."
 
 msgid "Missing extension number."
-msgstr ""
+msgstr "Brak numeru wewnętrznego."
 
 msgid "Invalid extension number. Use only numerals."
 msgstr "Nieprawidłowy numer wewnętrzny. Należy użyć wyłącznie cyfr."
 
 msgid "Missing caller id."
-msgstr ""
+msgstr "Brak caller id."
 
 msgid "Invalid public access alias."
 msgstr ""
@@ -156,7 +156,7 @@ msgid "Missing password."
 msgstr "Brak hasła."
 
 msgid "Missing dialstring."
-msgstr ""
+msgstr "Brak wzorca wybierania."
 
 msgid "An invalid dialstring was entered."
 msgstr "Podano nieprawidłowy wzorzec wybierania."
@@ -365,7 +365,7 @@ msgid "Send string defined above&nbsp;"
 msgstr "Wysyłaj łańcuch zdefiniowany powyżej&nbsp;"
 
 msgid "Send phones' Caller ID"
-msgstr ""
+msgstr "Wyślij Caller ID telefonu"
 
 msgid "Outgoing Patterns"
 msgstr "Wychodzące wzorce"
@@ -523,13 +523,13 @@ msgid "Notifications"
 msgstr "Powiadomienia"
 
 msgid "notify me of missed calls via e-mail"
-msgstr ""
+msgstr "zawiadom mnie o nieodebranych połączeniach e-mailem"
 
 msgid "address"
 msgstr "adres"
 
 msgid "<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work."
-msgstr ""
+msgstr "<a href=\"notifications_email.php\">Powiadomiania E-Mail</a> muszą zostać poprawnie skonfigurowane, aby to mogło działać."
 
 msgid "Block Providers"
 msgstr "Zablokuj Dostawców"
@@ -541,7 +541,7 @@ msgid "Voicemail"
 msgstr "Poczta głosowa"
 
 msgid "enable voicemail to e-mail"
-msgstr ""
+msgstr "włącz e-mailową pocztę głosową"
 
 #, fuzzy
 msgid "Provider host URL or IP address and optional port."
@@ -1319,7 +1319,7 @@ msgid "Ports impedance"
 msgstr "Impedancja portów"
 
 msgid "Select the FXO port impedance to be used according to your country or regulatory body; FXS ports will follow the same settings."
-msgstr ""
+msgstr "Wybierz impedancję portu FXO, zależnie od twojego kraju bądź organu regulacyjnego; porty FXS użyją tej samej wartości."
 
 msgid "A self-signed certificate could not be generated because the system's clock is not set."
 msgstr "Certyfikat nie został wygenerowany ponieważ nie ustawiono zegara systemowego."
@@ -1694,25 +1694,25 @@ msgid "Attended Transfer Answer"
 msgstr ""
 
 msgid "Maximum number of seconds an attended transfer can go unanswered (default 15)."
-msgstr ""
+msgstr "Maksymalny czas (w sekundach), do odebrania kontrolowanego transferu (domyślnie: 15)."
 
 msgid "Transfer Key"
 msgstr "Klawisz przełączania"
 
 msgid "Maximum number of milliseconds between key presses for transfer activation (default 500)."
-msgstr ""
+msgstr "Maksymalny czas (w milisekundach) między klawiszami, dla aktywacji transferu (domyślnie: 500)."
 
 msgid "Extension Digit"
 msgstr "Cyfra numeru wewnętrznego"
 
 msgid "Maximum number of seconds to wait between digits when transferring a call (default 3)."
-msgstr ""
+msgstr "Maksymalny czas (w sekundach) między wybieranymi cyframi, podczas transferu połączenia (domyślnie: 3)."
 
 msgid "Park Time"
 msgstr "Czas parkowania"
 
 msgid "Maximum number of seconds a call can be parked before it is transfered back to the parker (default 30)."
-msgstr ""
+msgstr "Maksymalny czas (w sekundach), podczas którego połączenie może zostać zaparkowane, do momentu, gdy zostanie z powrotem przetransferowane do parkującego (domyślnie: 30)."
 
 msgid "AskoziaPBX: execute command"
 msgstr "AskoziaPBX: wykonaj polecenie"
@@ -1820,9 +1820,8 @@ msgstr "Francja"
 msgid "Encoding"
 msgstr ""
 
-#, fuzzy
 msgid "Echo Cancellation"
-msgstr "Echo Canceller"
+msgstr "Eliminacja Echa"
 
 msgid "disable echo cancellation"
 msgstr ""
@@ -2245,9 +2244,8 @@ msgstr "Ustawienia zaawansowane"
 msgid "Edit External Phone"
 msgstr "Edytuj zdalny telefon"
 
-#, fuzzy
 msgid "The internal number used to dial this phone."
-msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
+msgstr "Wewnętrzny numer dla tego telefonu"
 
 msgid "Phone Connectivity"
 msgstr ""
@@ -2255,13 +2253,11 @@ msgstr ""
 msgid "Provider"
 msgstr "Dostawca"
 
-#, fuzzy
 msgid "Outgoing provider or protocol used to reach this telephone."
-msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
+msgstr "Zewnętrzny dostawca lub protokół użyty by połączyć się z tym telefonem."
 
-#, fuzzy
 msgid "Number or string to be dialed to reach this telephone."
-msgstr "Czy na pewno chcesz wyłączyć ten telefon?"
+msgstr "Numer lub string do wybrania by połączyć się z tym telefonem."
 
 msgid "Edit IAX Phone"
 msgstr "Edytuj Telefon IAX"
@@ -2461,9 +2457,8 @@ msgstr "Numer telefonu przypisany do tej linii."
 msgid "Call Routing"
 msgstr "Parkowanie połączenia"
 
-#, fuzzy
 msgid "Caller ID Options"
-msgstr "Caller ID"
+msgstr "Opcje Caller ID"
 
 msgid "Edit IAX Provider"
 msgstr "Edytuj Dostawcę IAX"
@@ -2815,7 +2810,7 @@ msgid "No"
 msgstr "Nie"
 
 msgid "AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation."
-msgstr ""
+msgstr "Firmware AskoziaPBX może zostać zaktualizowany tutaj. Podczas aktualizacji, konfiguracja systemu jest zachowana. System się automatycznie zrestartuje po instalacji nowego firmware. Pliki firmware oficjalnych wydań są cyfrowo podpisane - podpis ten jest sprawdzany przed instalacją."
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
@@ -3001,7 +2996,7 @@ msgid "Formatting successful!"
 msgstr "Formatowanie zakończone!"
 
 msgid "Formatting failed! (returned "
-msgstr ""
+msgstr "Formatowanie nie powiodło się! (zwrócono "
 
 msgid "No additional storage devices were detected."
 msgstr "Nie znaleziono dodatkowych urządzeń magazynowych."
@@ -3025,7 +3020,7 @@ msgid "Enter a descriptive name for this disk."
 msgstr "Wprowadź opisową nazwę dla tego dysku."
 
 msgid "Enter the full path where this device should be mounted."
-msgstr ""
+msgstr "Wprowadź pełną ścieżkę, gdzie urządzenie powinno zostać zamontowane."
 
 msgid "Storage Services"
 msgstr "Usługi Magazynowe"
