@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1646,9 +1646,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigointi"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Pidä diagnostiset asetukset näkyvissä"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Pidä lisäasetukset näkyvissä"
 
@@ -2720,14 +2717,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "Äänen pakkauksenhallinta"
 
-msgid "Edit ISDN Line"
-msgstr "Muokkaa ISDN Linjaa"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
-
-msgid "A phone with this extension already exists."
-msgstr "Puhelin tällä jatkeella on jo olemassa."
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Muokkaa Analogi"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3683,6 +3675,18 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Pidä diagnostiset asetukset näkyvissä"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "Muokkaa ISDN Linjaa"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "Kelpaava Soittajan Tunnus on oltava määritetty."
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "Puhelin tällä jatkeella on jo olemassa."
 
 #~ msgid "Account uses TLS"
 #~ msgstr "Tili käyttää TLS"

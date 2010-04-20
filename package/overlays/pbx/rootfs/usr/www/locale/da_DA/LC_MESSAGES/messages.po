@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -1647,9 +1647,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigation"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Behold diagnosticering i menu udfoldet"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Behold avancerede instillinger i menuen udfoldet"
 
@@ -2680,14 +2677,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "Lyd Codecs"
 
-msgid "Edit ISDN Line"
-msgstr "Rediger ISDN linie"
-
-msgid "A valid Caller ID must be specified."
-msgstr "En gyldig Opkalds ID skal angives."
-
-msgid "A phone with this extension already exists."
-msgstr "En telefon med den extension er allerede eksisterende."
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Rediger Analog"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3626,6 +3618,18 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Behold diagnosticering i menu udfoldet"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "Rediger ISDN linie"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "En gyldig Opkalds ID skal angives."
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "En telefon med den extension er allerede eksisterende."
 
 #, fuzzy
 #~ msgid "Account uses TLS"

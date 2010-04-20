@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1656,9 +1656,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Навигационен панел"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Задръж диагностики в навигационния панел изведени"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Задръж разширените опции в навигационния панел изведени"
 
@@ -2737,14 +2734,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "Аудио Кодеци"
 
-msgid "Edit ISDN Line"
-msgstr "Редактирай ISDN Линия"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Въведете валиден Caller ID."
-
-msgid "A phone with this extension already exists."
-msgstr "Телефон с такъв вътрешен номер вече съществува."
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Редактирай Аналогов"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3707,6 +3699,18 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Задръж диагностики в навигационния панел изведени"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "Редактирай ISDN Линия"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "Въведете валиден Caller ID."
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "Телефон с такъв вътрешен номер вече съществува."
 
 #~ msgid "Account uses TLS"
 #~ msgstr "Акаунта използва TLS"

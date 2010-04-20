@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1477,9 +1477,6 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr ""
-
 msgid "Keep advanced options in navigation expanded"
 msgstr ""
 
@@ -2427,13 +2424,7 @@ msgstr ""
 msgid "Codecs"
 msgstr ""
 
-msgid "Edit ISDN Line"
-msgstr ""
-
-msgid "A valid Caller ID must be specified."
-msgstr ""
-
-msgid "A phone with this extension already exists."
+msgid "Edit ISDN Phone"
 msgstr ""
 
 msgid "Edit SIP Phone"

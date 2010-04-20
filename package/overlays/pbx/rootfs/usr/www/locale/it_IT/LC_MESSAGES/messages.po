@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 14:07+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: 2008-09-11 16:03+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian\n"
@@ -237,7 +237,6 @@ msgstr ""
 msgid "USA & Canada"
 msgstr ""
 
-#, fuzzy
 msgid "Alaska Time"
 msgstr ""
 
@@ -247,11 +246,9 @@ msgstr ""
 msgid "Central Time"
 msgstr ""
 
-#, fuzzy
 msgid "Eastern Time"
 msgstr ""
 
-#, fuzzy
 msgid "Hawaii Time"
 msgstr ""
 
@@ -264,7 +261,6 @@ msgstr ""
 msgid "Newfoundland Time"
 msgstr ""
 
-#, fuzzy
 msgid "Pacific Time"
 msgstr ""
 
@@ -1595,9 +1591,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigazione"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Mantieni espansa la voce \"Diagnostica\" nel menù di navigazione"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Mantieni espansa la voce \"Avanzato\" nel menù di navigazione"
 
@@ -2669,14 +2662,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "Codec Audio"
 
-msgid "Edit ISDN Line"
-msgstr "Modifica linea ISDN"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Deve essere specificato un Numero Identificativo(CID) valido."
-
-msgid "A phone with this extension already exists."
-msgstr "Un telefono con questo interno già esiste."
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Modifica Telefono IAX"
 
 msgid "Edit SIP Phone"
 msgstr "Modifica Telefoni SIP"
@@ -3627,6 +3615,18 @@ msgstr "ERR Non posso installare la configurazione. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta no è valida.\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Mantieni espansa la voce \"Diagnostica\" nel menù di navigazione"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "Modifica linea ISDN"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "Deve essere specificato un Numero Identificativo(CID) valido."
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "Un telefono con questo interno già esiste."
 
 #~ msgid "Account uses TLS"
 #~ msgstr "Questo profilo utilizza TLS"

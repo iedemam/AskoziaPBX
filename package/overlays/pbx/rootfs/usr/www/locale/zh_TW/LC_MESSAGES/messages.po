@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1625,9 +1625,6 @@ msgstr "硬盤的空閑時間超過所選的時長即進入待機模式。<em>�
 msgid "Navigation"
 msgstr "導航"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "保持導航條展開"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "保持導航條裏的高級選項展開"
 
@@ -2651,14 +2648,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "音頻編解碼"
 
-msgid "Edit ISDN Line"
-msgstr "編輯ISDN線路"
-
-msgid "A valid Caller ID must be specified."
-msgstr "必須指定一個有效的Caller ID。"
-
-msgid "A phone with this extension already exists."
-msgstr "已經存在這個分機了。"
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "編輯Analog電話"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3574,6 +3566,18 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "保持導航條展開"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "編輯ISDN線路"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "必須指定一個有效的Caller ID。"
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "已經存在這個分機了。"
 
 #, fuzzy
 #~ msgid "Account uses TLS"

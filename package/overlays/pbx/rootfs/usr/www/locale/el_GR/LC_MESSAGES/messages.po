@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1671,9 +1671,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Πλοήγηση"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Τα διαγνωστικά στο μενού να παραμένουν ανοικτά"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Οι επιλογές για ειδικούς στο μενού να παραμένουν ανοικτές"
 
@@ -2782,14 +2779,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "CODECs φωνής"
 
-msgid "Edit ISDN Line"
-msgstr "Επεξεργασία γραμμής ISDN"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
-
-msgid "A phone with this extension already exists."
-msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Επεξεργασία PSTN"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3793,6 +3785,18 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Τα διαγνωστικά στο μενού να παραμένουν ανοικτά"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "Επεξεργασία γραμμής ISDN"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "Πρέπει να καταχωρήσετε  μια έγκυρη ταυτότητα καλούντος"
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "Υπάρχει ήδη ένα τηλέφωνο με αυτό το εσωτερικό."
 
 #~ msgid "Account uses TLS"
 #~ msgstr "Ο λογαριασμός χρησιμοποιεί TLS"

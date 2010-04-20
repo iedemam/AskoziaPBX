@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1577,9 +1577,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navegación"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Mantener los diagnósticos expandidos en navegacion"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Mantener las opciones avanzadas expandidas en navegación"
 
@@ -2616,14 +2613,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "Audio Codecs"
 
-msgid "Edit ISDN Line"
-msgstr "Editar Linea RDSI"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Debe ser especificado un Identificador de llamada válido."
-
-msgid "A phone with this extension already exists."
-msgstr "Ya existe un teléfono con esta extensión."
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Editar analógico"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3547,6 +3539,18 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Mantener los diagnósticos expandidos en navegacion"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "Editar Linea RDSI"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "Debe ser especificado un Identificador de llamada válido."
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "Ya existe un teléfono con esta extensión."
 
 #~ msgid "Account uses TLS"
 #~ msgstr "La cuenta utiliza TLS"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -1649,9 +1649,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "ナビゲーション"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "展開されたナビゲーションで、診断を維持します"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "展開されたナビゲーションで、詳細オプションを維持します"
 
@@ -2711,14 +2708,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "オーディオコーデック"
 
-msgid "Edit ISDN Line"
-msgstr "ISDNの編集"
-
-msgid "A valid Caller ID must be specified."
-msgstr "有効なCaller IDを指定する必要があります"
-
-msgid "A phone with this extension already exists."
-msgstr "この内線番号の電話は、既に存在しています"
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "アナログの編集"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3686,6 +3678,18 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "展開されたナビゲーションで、診断を維持します"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "ISDNの編集"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "有効なCaller IDを指定する必要があります"
+
+#~ msgid "A phone with this extension already exists."
+#~ msgstr "この内線番号の電話は、既に存在しています"
 
 #~ msgid "Account uses TLS"
 #~ msgstr "TLSを使用する"

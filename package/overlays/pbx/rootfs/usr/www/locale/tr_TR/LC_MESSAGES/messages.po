@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-07 15:24+0200\n"
+"POT-Creation-Date: 2010-04-20 17:43+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1558,9 +1558,6 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigasyon"
 
-msgid "Keep diagnostics in navigation expanded"
-msgstr "Navigasyonda diagnozları açık tut"
-
 msgid "Keep advanced options in navigation expanded"
 msgstr "Navigasyonda gelişmiş seçenekleri açık tut"
 
@@ -2565,14 +2562,9 @@ msgstr "md5"
 msgid "Codecs"
 msgstr "Ses Kodlayıcı-kodçözücüsü"
 
-msgid "Edit ISDN Line"
-msgstr "İSDN Hattını düzenle"
-
-msgid "A valid Caller ID must be specified."
-msgstr "Geçerli Arayıcı İD'si girlmeli."
-
-msgid "A phone with this extension already exists."
-msgstr ""
+#, fuzzy
+msgid "Edit ISDN Phone"
+msgstr "Analog düzenle"
 
 #, fuzzy
 msgid "Edit SIP Phone"
@@ -3459,6 +3451,15 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Keep diagnostics in navigation expanded"
+#~ msgstr "Navigasyonda diagnozları açık tut"
+
+#~ msgid "Edit ISDN Line"
+#~ msgstr "İSDN Hattını düzenle"
+
+#~ msgid "A valid Caller ID must be specified."
+#~ msgstr "Geçerli Arayıcı İD'si girlmeli."
 
 #~ msgid "Account uses TLS"
 #~ msgstr "Hesap TLS gerektirmekte"
