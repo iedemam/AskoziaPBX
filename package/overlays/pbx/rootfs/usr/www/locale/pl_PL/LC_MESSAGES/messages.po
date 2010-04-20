@@ -78,22 +78,22 @@ msgid "It contains an doubled \"-\" character, only one is allowed."
 msgstr "Zawiera podwójny znak \"-\", tylko jeden jest dozwolony."
 
 msgid "Nested square brackets are not allowed."
-msgstr ""
+msgstr "Nawiasy kwadratowe nie są dozwolone."
 
 msgid "Unmatched square bracket."
 msgstr ""
 
 msgid "Brackets are not needed for less than 2 characters."
-msgstr ""
+msgstr "Dla mniej niż dwóch znaków nawiasy nie są wymagane."
 
 msgid "Appended prefixes may only contain digits, '*' and '#'."
-msgstr ""
+msgstr "Dodane prefiksy mogą zawierać jedynie cyfry, '*' i '#'."
 
 msgid "The wildcard character \".\" is not allowed before a prefix which is to be removed."
-msgstr ""
+msgstr "Znak wildcard \".\" nie jest dozwolony przed prefiksem, który ma zostać usunięty."
 
 msgid "The wildcard character \"!\" is not allowed before a prefix which is to be removed."
-msgstr ""
+msgstr "Znak wildcard \"!\" nie jest dozwolony przed prefiksem, który ma zostać usunięty."
 
 msgid "Gateway Name"
 msgstr "Nazwa Bramy"
@@ -144,10 +144,10 @@ msgid "Missing caller id."
 msgstr "Brak caller id."
 
 msgid "Invalid public access alias."
-msgstr ""
+msgstr "Nieprawidłowy alias publiczny."
 
 msgid "E-Mail notifications enabled but the e-mail address is invalid or missing."
-msgstr ""
+msgstr "Powiadomienia e-mail są włączone, lecz podany adres e-mail jest nieprawidłowy lub nieistniejący."
 
 msgid "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr ""
@@ -206,7 +206,7 @@ msgid "extension number of voicemail box"
 msgstr ""
 
 msgid "name of voicemail recipient"
-msgstr ""
+msgstr "nazwa adresata poczty głosowej"
 
 msgid "duration of the message (i.e. 0:58)"
 msgstr "długość komunikatu (np. 0:58)"
@@ -341,7 +341,7 @@ msgid "Incoming Modification"
 msgstr "Modyfikacje przychodzące"
 
 msgid "Source Name &lt;number&gt;"
-msgstr ""
+msgstr "Nazwa &lt;numer&gt;"
 
 msgid "Prepend with string"
 msgstr "Poprzedź łańcuchem"
@@ -543,9 +543,8 @@ msgstr "Poczta głosowa"
 msgid "enable voicemail to e-mail"
 msgstr "włącz e-mailową pocztę głosową"
 
-#, fuzzy
 msgid "Provider host URL or IP address and optional port."
-msgstr "Nazwa serwera SMTP lub jego IP oraz opcjonalnie port."
+msgstr "Nazwa (URL) dostawcy lub jego IP oraz opcjonalnie port."
 
 msgid "disabled"
 msgstr "wyłączony"
@@ -1766,10 +1765,10 @@ msgid "Edit Redfone Gateway"
 msgstr "Edytuj bramę Redfone"
 
 msgid "Initial connection successful!"
-msgstr ""
+msgstr "Połączenie powiodło się!"
 
 msgid "Initial connection failed!"
-msgstr ""
+msgstr "Połączenie nie powiodło się!"
 
 msgid "Connection Initialization"
 msgstr "Inicjalizacja połączenia"
@@ -1824,7 +1823,7 @@ msgid "Echo Cancellation"
 msgstr "Eliminacja Echa"
 
 msgid "disable echo cancellation"
-msgstr ""
+msgstr "wyłącz eliminację echa"
 
 msgid "milliseconds"
 msgstr "milisekund"
@@ -2578,9 +2577,8 @@ msgstr "wypakowywania"
 msgid "installing"
 msgstr "instalowanie"
 
-#, fuzzy
 msgid "installed sets"
-msgstr "Zainstalowane Pakiety"
+msgstr "zainstalowane pakiety"
 
 #, fuzzy
 msgid "add set"
@@ -2712,7 +2710,7 @@ msgid "Regional Settings"
 msgstr "Ustawienia Regionalne"
 
 msgid "Indication Tones"
-msgstr ""
+msgstr "Strefa tonowa"
 
 msgid "Select which country's indication tones (the ringing, busy and error tones) to be used."
 msgstr "Wybierz strefę tonową (dzwonek, sygnał zajętości, sygnały błędów), która powinna zostać użyta."
