@@ -62,13 +62,21 @@ function notifications_msmtp_conf_generate() {
 	if ($email_config['enctype'] == "tls") {
 		$conf .= "tls on\n";
 		$conf .= "tls_starttls on\n";
-		$conf .= "tls_certcheck on\n";
-		$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
+		if (isset($email_config['disablecertcheck'])) {
+			$conf .= "tls_certcheck off\n";
+		} else {
+			$conf .= "tls_certcheck on\n";
+			$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
+		}
 	} else if ($email_config['enctype'] == "smtps") {
 		$conf .= "tls on\n";
 		$conf .= "tls_starttls off\n";
-		$conf .= "tls_certcheck on\n";
-		$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
+		if (isset($email_config['disablecertcheck'])) {
+			$conf .= "tls_certcheck off\n";
+		} else {
+			$conf .= "tls_certcheck on\n";
+			$conf .= "tls_trust_file /etc/ssl/certs/ca-certificates.crt\n";
+		}
 	}
 
 	if ($voicemail_config['fromaddress']) {

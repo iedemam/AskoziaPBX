@@ -67,6 +67,7 @@ if ($_POST) {
 		$emailconfig['port'] = $_POST['port'];
 		$emailconfig['authtype'] = $_POST['authtype'];
 		$emailconfig['enctype'] = $_POST['enctype'];
+		$emailconfig['disablecertcheck'] = isset($_POST['disablecertcheck']);
 
 		notifications_save_email_configuration($emailconfig);
 
@@ -178,6 +179,9 @@ include("fbegin.inc");
 						><?=$encstring;?></option>
 						<? endforeach; ?>
 						</select>
+						<br><input name="disablecertcheck" type="checkbox" class="formfld" id="disablecertcheck" value="yes" <?
+						if (isset($pconfig['disablecertcheck'])) echo "checked"; ?>
+						>&nbsp;<?=spanify(gettext("disable certificate checking"));?>
 					</td>
 				</tr>
 				<tr>
