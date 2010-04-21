@@ -237,10 +237,9 @@ if (file_exists($g['skinny_dirty_path'])) {
 		if (!isset($config['system']['webgui']['hideiax'])) {
 			?><a href="phones_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
-		/* bri_net_ptmp signaling not supported in asterisk 1.6.1...disabling
 		if (!isset($config['system']['webgui']['hideisdn'])) {
 			?><a href="phones_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
-		}*/
+		}
 		if (!isset($config['system']['webgui']['hideanalog']) &&
 			count(dahdi_get_ports("analog", "fxs"))) {
 			?><a href="phones_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
