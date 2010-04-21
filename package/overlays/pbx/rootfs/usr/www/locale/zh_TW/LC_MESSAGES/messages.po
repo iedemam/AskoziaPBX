@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 17:43+0200\n"
+"POT-Creation-Date: 2010-04-21 11:47+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2574,6 +2574,9 @@ msgstr ""
 #, fuzzy
 msgid "Encryption Method"
 msgstr "驗證方法"
+
+msgid "disable certificate checking"
+msgstr ""
 
 msgid "Test E-mail"
 msgstr ""

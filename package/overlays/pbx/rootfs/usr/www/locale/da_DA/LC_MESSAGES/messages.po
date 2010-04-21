@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 17:43+0200\n"
+"POT-Creation-Date: 2010-04-21 11:47+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -2603,6 +2603,9 @@ msgstr ""
 #, fuzzy
 msgid "Encryption Method"
 msgstr "Godkendelses Metode"
+
+msgid "disable certificate checking"
+msgstr ""
 
 msgid "Test E-mail"
 msgstr ""

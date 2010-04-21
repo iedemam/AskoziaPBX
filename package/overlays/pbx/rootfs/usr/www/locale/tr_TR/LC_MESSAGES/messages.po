@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 17:43+0200\n"
+"POT-Creation-Date: 2010-04-21 11:47+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2487,6 +2487,9 @@ msgstr ""
 #, fuzzy
 msgid "Encryption Method"
 msgstr "Kimlik Denetimi"
+
+msgid "disable certificate checking"
+msgstr ""
 
 msgid "Test E-mail"
 msgstr "Test E-postası"

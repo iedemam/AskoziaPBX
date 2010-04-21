@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-20 17:43+0200\n"
+"POT-Creation-Date: 2010-04-21 11:47+0200\n"
 "PO-Revision-Date: 2010-04-18 22:11+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -2572,6 +2572,9 @@ msgstr ""
 
 msgid "Encryption Method"
 msgstr "Méthode d'authentification"
+
+msgid "disable certificate checking"
+msgstr ""
 
 msgid "Test E-mail"
 msgstr "Vérifier l'E-mail"
