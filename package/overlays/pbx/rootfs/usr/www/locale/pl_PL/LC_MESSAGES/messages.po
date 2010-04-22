@@ -2822,7 +2822,7 @@ msgid "The digital signature on this image is invalid."
 msgstr "Podpis cyfrowy tego obrazu jest nieprawidłowy."
 
 msgid "This image is not digitally signed."
-msgstr "Obraz nie jest podpisany cyfrowo."
+msgstr "Ten obraz nie jest cyfrowo podpisany."
 
 msgid "There has been an error verifying the signature on this image."
 msgstr "Wystąpił problem z weryfikacją podpisu obrazu."
@@ -2831,7 +2831,7 @@ msgid "The image file is corrupt."
 msgstr "Plik obrazu jest uszkodzony."
 
 msgid "The firmware is now being installed. The PBX will reboot automatically."
-msgstr "Firmware jest aktualnie instalowany. PBX zrestartuje się automatycznie."
+msgstr "Firmware jest w trakcie instalacji. System zrestartuje się automatycznie."
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "Aktualizacja firmware nie jest wspierana na tej platformie."
