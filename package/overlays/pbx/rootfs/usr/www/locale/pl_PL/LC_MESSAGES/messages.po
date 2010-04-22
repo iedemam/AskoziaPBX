@@ -881,7 +881,7 @@ msgid "view license"
 msgstr "pokaż licencje"
 
 msgid "Echos audio and video back to the caller as soon as it is received. Used to test connection delay."
-msgstr "Zwraca dźwięk i obraz z powrotem do dzwoniącego, zaraz po otrzymaniu danych. Aplikacja wykorzystywana do testu latencji połączenia."
+msgstr "Powrót dźwięku i obrazu do dzwoniącego. Aplikacja wykorzystywana do testu latencji połączenia."
 
 msgid "Generates a constant 1000Hz tone. Used to test connection quality."
 msgstr "Generuje stały ton 1000Hz. Używane do testowania jakości połączenia."
