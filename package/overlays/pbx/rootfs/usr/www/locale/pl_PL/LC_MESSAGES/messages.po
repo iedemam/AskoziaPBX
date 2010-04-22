@@ -1564,7 +1564,7 @@ msgid "DNS Service Records"
 msgstr ""
 
 msgid "Disable DNS SRV lookups."
-msgstr "Wyłącz wyszukiwania rekordów SRV DNS."
+msgstr "Wyłącz wyszukiwanie rekordów SRV DNS."
 
 msgid "With some knowledge of how the Asterisk dialplan works, some basic applications can be added to the system. These applications can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
 msgstr "Posiadając pewną wiedzę na temat działania wzorców wybierania Asterisk, możesz dodawać proste aplikacje do systemu. Aplikacje te mogą być wywoływane korzystając z ich numerów wewnętrznych, lub przekierowane z połączeń wchodzących od dostawcy."
@@ -1705,13 +1705,13 @@ msgid "Maximum number of seconds an attended transfer can go unanswered (default
 msgstr "Maksymalny czas (w sekundach), do odebrania nadzorowanego transferu (domyślnie: 15)."
 
 msgid "Transfer Key"
-msgstr "Klawisz przełączania"
+msgstr "Klawiszy transferów"
 
 msgid "Maximum number of milliseconds between key presses for transfer activation (default 500)."
 msgstr "Maksymalny czas (w milisekundach) między klawiszami, dla aktywacji transferu (domyślnie: 500)."
 
 msgid "Extension Digit"
-msgstr "Cyfra numeru wewnętrznego"
+msgstr "Cyfr numeru wewnętrznego"
 
 msgid "Maximum number of seconds to wait between digits when transferring a call (default 3)."
 msgstr "Maksymalny czas (w sekundach) między wybieranymi cyframi, podczas transferu połączenia (domyślnie: 3)."
@@ -2759,7 +2759,7 @@ msgid "Enter a server to synchronize with."
 msgstr "Wprowadź serwer synchronizacji czasu."
 
 msgid "The entire system configuration can be backed up and restored via this page."
-msgstr "Kopia zapasowa pełnej konfiguracja systemu może zostać przeprowadzona i odtworzona na tej stronie."
+msgstr "Na tej stronie możesz wykonać i odtworzyć kopię zapasową pełnej konfiguracja systemu."
 
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr "Konfiguracja została przywrócona. PBX jest restartowany."
