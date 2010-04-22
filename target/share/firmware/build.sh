@@ -63,6 +63,7 @@ ln -s /offload/asterisk/sounds/en-us offload_stage/asterisk/sounds/en
 # new bits to move usr/* out of the initramfs and into /offload
 mkdir offload_stage/rootfs
 mkdir offload_stage/rootfs/usr/
+mkdir offload_stage/rootfs/usr/libexec
 # usr/bin
 cp -Rp ../../usr/bin offload_stage/rootfs/usr/
 rm -rf offload_stage/rootfs/usr/bin/aclocal*
@@ -102,6 +103,8 @@ rm -rf offload_stage/rootfs/usr/lib/grub/
 rm -rf offload_stage/rootfs/usr/lib/perl5/
 rm -rf offload_stage/rootfs/usr/lib/pkgconfig/
 rm -rf offload_stage/rootfs/usr/lib/preloadable_libiconv.so
+# usr/libexec
+cp -Rp ../../usr/libexec/sftp-server offload_stage/rootfs/usr/libexec
 # usr/sbin
 cp -Rp ../../usr/sbin offload_stage/rootfs/usr/
 rm -rf offload_stage/rootfs/usr/sbin/dahdi_genconf

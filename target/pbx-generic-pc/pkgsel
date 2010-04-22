@@ -85,6 +85,7 @@ X snomd
 # binaries
 X busybox
 X dropbear
+X openssh
 X msmtp
 X ntpclient
 X ezipupdate

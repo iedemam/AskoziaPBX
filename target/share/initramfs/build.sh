@@ -95,6 +95,11 @@ chmod 644 etc/inc/*
 echo "Cleaning away stray files ..."
 find ./ -type f -name "._*" -print -delete
 
+#remove openssh build files
+rm -rf ../initramfs/opt/bin
+rm -rf ../initramfs/opt/etc
+rm -rf ../initramfs/opt/sbin
+
 echo "Creating initramfs image ..."
 find . | cpio -H newc -o | gzip > ../initramfs.igz
 
