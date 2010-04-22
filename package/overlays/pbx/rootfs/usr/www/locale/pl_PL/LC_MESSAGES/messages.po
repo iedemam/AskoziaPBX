@@ -2838,7 +2838,7 @@ msgstr "Aktualizacja firmware nie jest wspierana na tej platformie."
 
 #, php-format
 msgid "<strong>%s</strong><br>This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br> Do you want to install this image anyway (at your own risk)?"
-msgstr "<strong>%s</strong><br>To oznacza, że obraz który został wczytany nie jest oficjalnym/wspieranym obrazem i może doprowadzić do niespodziewanego zachowania albo luk w bezpieczeństwie. Należy instalować tylko obrazy pochodzące z zaufanych źródeł i upewnić się, że nie zostały zmodyfikowane.<br><br> Czy na pewno chcesz zainstalować ten obraz (na swoje ryzyko)?"
+msgstr "<strong>%s</strong><br>To oznacza, że obraz który został wczytany nie jest oficjalnym/wspieranym obrazem i może doprowadzić do niespodziewanego zachowania albo luk w bezpieczeństwie systemu. Należy instalować tylko obrazy pochodzące z zaufanych źródeł i upewnić się, że nie zostały one zmodyfikowane.<br><br> Czy na pewno chcesz zainstalować ten obraz (na własne ryzyko)?"
 
 #, php-format
 msgid "Choose the new firmware image file (%s-*.img) to be installed."
