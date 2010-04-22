@@ -794,7 +794,7 @@ msgid "Conferencing"
 msgstr "Konferencje"
 
 msgid "Media"
-msgstr "Medium"
+msgstr "Multimedia"
 
 msgid "Summary"
 msgstr "Podsumowanie"
@@ -2974,7 +2974,7 @@ msgid "Are you sure you want to reboot the system?"
 msgstr "Czy na pewno chcesz zrestartować system?"
 
 msgid "Persistence"
-msgstr "Częstotliwość"
+msgstr "Baza danych"
 
 msgid "edit disk"
 msgstr "edytuj dysk"
@@ -3025,14 +3025,14 @@ msgid "Storage Services"
 msgstr "Usługi Magazynowe"
 
 msgid "store voice prompts and music-on-hold on disk"
-msgstr "zapisuje zapytania głosowe oraz muzykę dla oczekujących (music-on-hold) na dysku"
+msgstr "zapisuj zapytania głosowe oraz muzykę dla oczekujących (music-on-hold) na tym dysku"
 
 #, php-format
 msgid "service already assigned to \"%s\""
 msgstr "usługa jest już przypisana do \"%s\""
 
 msgid "store Asterisk's database on disk"
-msgstr "przechowuj bazę danych Asteriska na dysku"
+msgstr "przechowuj bazę danych Asteriska na tym dysku"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "BŁĄD Nie zdołano zapisać konfiguracji.\n"
