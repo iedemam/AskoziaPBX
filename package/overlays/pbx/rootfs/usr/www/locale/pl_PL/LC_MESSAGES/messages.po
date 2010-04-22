@@ -2797,7 +2797,7 @@ msgstr "System został przywrócony do ustawień fabrycznych."
 
 #, php-format
 msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "Jeśli klikniesz na &quot;Tak&quot;, PBX "
+msgstr "Jeśli klikniesz na &quot;Tak&quot;, system"
 
 msgid "Are you sure you want to proceed?"
 msgstr "Czy na pewno chcesz kontynuować?"
@@ -3025,7 +3025,7 @@ msgid "Storage Services"
 msgstr "Usługi Magazynowe"
 
 msgid "store voice prompts and music-on-hold on disk"
-msgstr ""
+msgstr "zapisuje zapytania głosowe oraz muzykę dla oczekujących (music-on-hold) na dysku"
 
 #, php-format
 msgid "service already assigned to \"%s\""
