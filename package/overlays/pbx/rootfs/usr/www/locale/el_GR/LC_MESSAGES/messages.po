@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3446,15 +3446,25 @@ msgstr ""
 "Το τηλεφωνικό κέντρο θα επανεκκινήσει μετά την επαναφορά των ρυθμίσεων."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Το σύστημα έχει αρχικοποιηθεί και θα επενακκινήσει. Παρακαλώ περιμένετε για "
 "30 δευτερόλεπτα."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"αφού πιέσετε &quot;Αποθήκευση&quot;, όλες οι ενεργές κλήσεις θα διακοπούν."
+"Αν πιέσετε &quot;Ναι&quot;, το τηλεφωνικό κέντρο θα επανέλθει στις αρχικές "
+"του ρυθμίσεις και θα επανεκκινήσει αυτόματα. Όλες οι ρυθμίσεις του "
+"συστήματος θα διαγραφούν. Η νέα διεύθυνση του συστήματος θα είναι η "
+"192.168.1.2 και ο κωδικός πρόσβασης που θα πρέπει να χρησιμοποιήσετε για "
+"πρόσβαση στο σύστημα θα είναι '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
@@ -3789,6 +3799,11 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "αφού πιέσετε &quot;Αποθήκευση&quot;, όλες οι ενεργές κλήσεις θα διακοπούν."
+
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Τα διαγνωστικά στο μενού να παραμένουν ανοικτά"
 
@@ -3837,18 +3852,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Διαχείριση"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Αν πιέσετε &quot;Ναι&quot;, το τηλεφωνικό κέντρο θα επανέλθει στις "
-#~ "αρχικές του ρυθμίσεις και θα επανεκκινήσει αυτόματα. Όλες οι ρυθμίσεις "
-#~ "του συστήματος θα διαγραφούν. Η νέα διεύθυνση του συστήματος θα είναι η "
-#~ "192.168.1.2 και ο κωδικός πρόσβασης που θα πρέπει να χρησιμοποιήσετε για "
-#~ "πρόσβαση στο σύστημα θα είναι '%s'."
 
 #, fuzzy
 #~ msgid "edit analog port"

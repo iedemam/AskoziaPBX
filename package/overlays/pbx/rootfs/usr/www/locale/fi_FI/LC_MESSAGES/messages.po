@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3357,15 +3357,23 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX käynnistyy uudelleen konfiguroinnin palautuksen jälkeen."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Järjestelmä on palautettu tehdasasetuksiin ja käynnistyy uudelleen. Tämä voi "
 "kestää muutaman minuutin."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut lopetetaan."
+"Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja käynnistyy "
+"uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP osoite tulee "
+"olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle tulee olemaan '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Oletko varma että haluat edetä?"
@@ -3679,6 +3687,12 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "Kun klikkaat &quot;Tallenna&quot, kaikki käynnissä olevat puhelut "
+#~ "lopetetaan."
+
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Pidä diagnostiset asetukset näkyvissä"
 
@@ -3726,17 +3740,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Hallitseminen"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Jos klikkat &quot;Kyllä&quot;, PBX palautuu tehdasasetuksiin ja "
-#~ "käynnistyy uudelleen. Koko järjestelmän konfigurointi entisöidään. LAN IP "
-#~ "osoite tulee olemaan 192.168.1.2 ja salasana verkkokäyttöliittymälle "
-#~ "tulee olemaan '%s'."
 
 #, fuzzy
 #~ msgid "edit analog port"

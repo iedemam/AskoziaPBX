@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2774,11 +2774,11 @@ msgstr ""
 msgid "The PBX will reboot after restoring the configuration."
 msgstr ""
 
-msgid "The system has been reset to factory defaults "
+msgid "The system has been reset to factory defaults and is now rebooting. This may take a minute."
 msgstr ""
 
 #, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+msgid "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to '%s'."
 msgstr ""
 
 msgid "Are you sure you want to proceed?"

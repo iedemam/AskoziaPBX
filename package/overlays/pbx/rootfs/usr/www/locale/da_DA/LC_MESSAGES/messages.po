@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -3308,16 +3308,24 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "Denne PBX vil gestarte efter at have reeatableret konfigurationen."
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "Systemet er resat til fabriks instillinger og vil nu genstarte. Dette vil "
 "tage et minuts tid."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
-"afsluttet."
+"Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
+"fabriksindstillingerne og vil genstarte med det samme. Hele system "
+"konfigurationen vil blive overskrevet. LAN IP adressen vil bliver nustillet "
+"til 192.168.1.2 og kodeordet bliver sat til '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Er du sikker på du vil forsætte?"
@@ -3622,6 +3630,12 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "efter du klikker &quot;Gem&quot; vil alle igangværende opkald blive "
+#~ "afsluttet."
+
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Behold diagnosticering i menu udfoldet"
 
@@ -3670,17 +3684,6 @@ msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "Manager"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "Hvis du klikker på &quot;Ja&quot;, bliver din PBX nulstillet til "
-#~ "fabriksindstillingerne og vil genstarte med det samme. Hele system "
-#~ "konfigurationen vil blive overskrevet. LAN IP adressen vil bliver "
-#~ "nustillet til 192.168.1.2 og kodeordet bliver sat til '%s'."
 
 #, fuzzy
 #~ msgid "edit analog port"

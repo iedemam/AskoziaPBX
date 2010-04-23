@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3237,13 +3237,18 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "La PBX se reiniciará tras restaurar la configuración-"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr "El sistema está reiniciando. Esta operación puede tardar un minuto."
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
 msgstr ""
-"cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán colgadas."
 
 msgid "Are you sure you want to proceed?"
 msgstr "¿Está seguro de que quiere realizar esta operación?"
@@ -3542,6 +3547,12 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr ""
+#~ "cuando pulse &quot;Guardar&quot;, todas las llamadas en curso serán "
+#~ "colgadas."
 
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Mantener los diagnósticos expandidos en navegacion"

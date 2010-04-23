@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -3348,14 +3348,23 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "設定をリストアした後、システムは再起動されます"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr ""
 "このAskoziaPBXは、工場出荷時の状態に初期化され、只今再起動中です。しばらくお"
 "待ち下さい"
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "システムログの一覧"
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
+msgstr ""
+"&quot;はい&quot;をクリックするとAskoziaPBXは直ぐに再起動され、工場出荷時の状"
+"態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPアドレ"
+"ス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
 
 msgid "Are you sure you want to proceed?"
 msgstr "本当に初期化しますか？"
@@ -3682,6 +3691,10 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr "システムログの一覧"
+
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "展開されたナビゲーションで、診断を維持します"
 
@@ -3729,16 +3742,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "マネージャー"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "&quot;はい&quot;をクリックするとAskoziaPBXは直ぐに再起動され、工場出荷時の"
-#~ "状態に戻ります。これにより、全ての設定は初期化されますので、再起動後はIPア"
-#~ "ドレス'192.168.1.2'となり、webGUI用のパスワードは'%s'となります"
 
 #, fuzzy
 #~ msgid "edit analog port"

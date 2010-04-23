@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 11:47+0200\n"
+"POT-Creation-Date: 2010-04-23 12:34+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3266,12 +3266,20 @@ msgid "The PBX will reboot after restoring the configuration."
 msgstr "PBX将在恢复设置后重启。"
 
 #, fuzzy
-msgid "The system has been reset to factory defaults "
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take a minute."
 msgstr "系统被设置到了出厂默认状态并正在重启。这可能需要一分钟。"
 
-#, fuzzy, php-format
-msgid "If you click &quot;Yes&quot;, the PBX will "
-msgstr "按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。"
+#, php-format
+msgid ""
+"If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and "
+"will reboot immediately. The entire system configuration will be "
+"overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
+"password will be set to '%s'."
+msgstr ""
+"如果您点击了 &quot;是&quot;，那么PBX会被重置到出厂状态并立即重启整个系统的设"
+"置将会被覆盖。内网IP地址将会被重置为 192.168.1.2并且密码也会改为默认的'%s'。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "您真的想要进行？"
@@ -3568,6 +3576,10 @@ msgstr "ERR 无法安装设置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
 
+#, fuzzy
+#~ msgid "If you click &quot;Yes&quot;, the PBX will "
+#~ msgstr "按下 &quot;保存&quot; 后，所有正在进行的通话将会掉线。"
+
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "保持导航条展开"
 
@@ -3615,16 +3627,6 @@ msgstr "ERR 收到无效的配置。\n"
 #, fuzzy
 #~ msgid "Master"
 #~ msgstr "管理"
-
-#~ msgid ""
-#~ "If you click &quot;Yes&quot;, the PBX will be reset to factory defaults "
-#~ "and will reboot immediately. The entire system configuration will be "
-#~ "overwritten. The LAN IP address will be reset to 192.168.1.2 and the "
-#~ "password will be set to '%s'."
-#~ msgstr ""
-#~ "如果您点击了 &quot;是&quot;，那么PBX会被重置到出厂状态并立即重启整个系统的"
-#~ "设置将会被覆盖。内网IP地址将会被重置为 192.168.1.2并且密码也会改为默认的'%"
-#~ "s'。"
 
 #, fuzzy
 #~ msgid "edit analog port"
