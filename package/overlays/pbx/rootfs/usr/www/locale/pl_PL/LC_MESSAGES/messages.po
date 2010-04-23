@@ -45,7 +45,7 @@ msgid "Username"
 msgstr "Nazwa użytkownika"
 
 msgid "Public Number"
-msgstr "Publiczny numer"
+msgstr "Numer publiczny"
 
 msgid "Main Number"
 msgstr "Numer główny"
@@ -590,9 +590,8 @@ msgstr "pozwól, by ten numer był osiągalny przez internet"
 msgid "alias"
 msgstr "alias"
 
-#, fuzzy
 msgid "optional"
-msgstr "Opcje"
+msgstr "opcjonalny"
 
 msgid "Set a friendlier alias above if you would like to use a word or name instead of the extension number."
 msgstr ""
@@ -726,7 +725,7 @@ msgid "Failover Provider"
 msgstr "Dostawca rezerwowy"
 
 msgid "No other Providers for failover."
-msgstr ""
+msgstr "Brak innych rezerwowych dostawców."
 
 msgid "none"
 msgstr "brak"
@@ -1149,9 +1148,8 @@ msgstr "góra"
 msgid "down"
 msgstr "dół"
 
-#, fuzzy
 msgid "associated"
-msgstr "Podłączone stacje"
+msgstr "podłączone"
 
 msgid "HIDE"
 msgstr ""
@@ -1193,7 +1191,7 @@ msgid "Dialstring"
 msgstr "Wzorzec wybierania"
 
 msgid "Provider Accounts allow you to configure routes to and from external sources (i.e. VoIP service providers or attached ISDN / Analog interface hardware). Click an account type below to get started."
-msgstr ""
+msgstr "Konta dostawców pozwalają na konfigurację tras z i do zewnętrznych źródeł (np. dostawcy VoIP lub podłączonego intefejsu analogowego / ISDN). Kliknij na typ konta poniżej by dodać nowe konto."
 
 msgid "Pattern(s)"
 msgstr "Wzorzec(ce)"
@@ -1667,13 +1665,13 @@ msgid "A valid park time must be specified."
 msgstr "Należy podać poprawny czas parkowania."
 
 msgid "A valid key timeout must be specified."
-msgstr ""
+msgstr "Należy wprowadzić poprawny czas oczekiwania między przyciskami."
 
 msgid "A valid attended transfer timeout must be specified."
-msgstr ""
+msgstr "Należy wprowadzić poprawny czas oczekiwania na transfer nadzorowany."
 
 msgid "A valid extension digit timeout must be specified."
-msgstr ""
+msgstr "Należy wprowadzić poprawny czas oczekiwania między cyframi."
 
 msgid "Hot Keys"
 msgstr "Skróty klawiaturowe"
@@ -2305,9 +2303,8 @@ msgstr "Edytuj Telefon SIP"
 msgid "Auto-Configuration"
 msgstr "Auto-Konfiguracja"
 
-#, fuzzy
 msgid "SNOM MAC Address"
-msgstr "Adres MAC"
+msgstr "Adres MAC SNOM"
 
 msgid "If this account is for a SNOM telephone, the hardware can be automatically configured when it reboots if its MAC address is entered here. The MAC address can be displayed by pressing the phone's \"Help\" button. Enter the address exactly as it appears on the screen.<br><br>The phone's HTTP interface password will be the same as this extension's password and the on-telephone admin password is the extension number."
 msgstr ""
@@ -2465,9 +2462,8 @@ msgstr "Opisowa nazwa tego dostawcy."
 msgid "Telephone number assigned to this line."
 msgstr "Numer telefonu przypisany do tej linii."
 
-#, fuzzy
 msgid "Call Routing"
-msgstr "Parkowanie połączenia"
+msgstr "Routing połączeń"
 
 msgid "Caller ID Options"
 msgstr "Opcje Caller ID"
