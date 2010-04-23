@@ -943,6 +943,7 @@ astdatadir => $datapath
 
 [options]
 verbose = 3
+debug = 0
 dumpcore = no
 internal_timing = yes
 highpriority = yes
