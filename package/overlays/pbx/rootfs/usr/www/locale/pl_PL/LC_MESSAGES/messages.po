@@ -5,7 +5,8 @@
 # All rights reserved.
 #
 # Authors:
-# 	Marcin Hanczaruk <marcin.hanczaruk@gmail.com>
+#    Mateusz Viste
+#    Marcin Hanczaruk <marcin.hanczaruk@gmail.com>
 #
 #
 msgid ""
