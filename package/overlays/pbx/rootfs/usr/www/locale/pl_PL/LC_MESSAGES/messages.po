@@ -2541,7 +2541,7 @@ msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "W polu \"Adres źródłowy\" musi znajdować się poprawny adres e-mail."
 
 msgid "Voicemail to E-Mail Presentation"
-msgstr ""
+msgstr "Przedstawianie e-mailowej skrzynki głosowej"
 
 msgid "From Address"
 msgstr "Adres źródłowy"
