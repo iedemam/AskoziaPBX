@@ -58,7 +58,7 @@ if (file_exists($g['storage_dirty_path'])) {
 		config_unlock();
 	}
 
-	$savemsg = get_std_save_message($retval);
+	$keepmsg = get_std_save_message($retval);
 }
 
 $disks = storage_get_disks();
