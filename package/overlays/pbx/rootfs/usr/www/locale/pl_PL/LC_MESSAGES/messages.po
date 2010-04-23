@@ -42,7 +42,7 @@ msgid "Host"
 msgstr "Host"
 
 msgid "Username"
-msgstr "Nazwa użytkownia"
+msgstr "Nazwa użytkownika"
 
 msgid "Public Number"
 msgstr "Publiczny numer"
@@ -81,7 +81,7 @@ msgid "Nested square brackets are not allowed."
 msgstr "Nawiasy kwadratowe nie są dozwolone."
 
 msgid "Unmatched square bracket."
-msgstr ""
+msgstr "Niekompletny nawias kwadratowy."
 
 msgid "Brackets are not needed for less than 2 characters."
 msgstr "Dla mniej niż dwóch znaków nawiasy nie są wymagane."
@@ -542,6 +542,17 @@ msgid ""
 " \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n"
 " </ul>\n"
 msgstr ""
+"Wprowadź wzorce (jednej na linię), definiujące routing wychodzący tego dostawcy. Wprowadź \"X!\" by użyć tego dostawcy dla wszystkich wychodzących połączeń. Aby używać tego dostawcy korzystając z prefiksu \"9\", wprowadź \"9|.\".Przy braku wprowadzonych wzorców, zezwolone będą wyłącznie połączenia wchodzące.<br>\n"
+"<ul>\n"
+"\t<li><strong>+</strong> - dodaje prefiks (np. \"1+555\" przyjmuje \"555\" i prześle \"1555\" do dostawcy)</li>\n"
+" \t<li><strong>|</strong> - odejmuje prefiks (np. \"1|555\" przymuje \"1555\", ale prześle do dostawcy tylko \"555\")</li>\n"
+" \t<li><strong>X</strong> - przyjmuje cyfry 0-9</li>\n"
+" \t<li><strong>Z</strong> - przyjmuje cyfry 1-9</li>\n"
+" \t<li><strong>N</strong> - przyjmuje cyfry 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - pasuje do jakiejkolwiek cyfry w nawiasie (w podanym przykładzie 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - pasuje do jednego lub wielu znaków (niedozwolone przed | lub +)</li>\n"
+" \t<li><strong>!</strong> - pasuje do żadnego lub wielu znaków (niedozwolone przed | lub +)</li>\n"
+" </ul>\n"
 
 msgid "English (US)"
 msgstr "Angielski (US)"
@@ -711,9 +722,8 @@ msgstr "wyłączony"
 msgid "The provider will be contacted this often to check its availability."
 msgstr "Częstotliwość, z jaką będzie sprawdzana dostępność dostawcy."
 
-#, fuzzy
 msgid "Failover Provider"
-msgstr "Dostawcy"
+msgstr "Dostawca rezerwowy"
 
 msgid "No other Providers for failover."
 msgstr ""
@@ -722,7 +732,7 @@ msgid "none"
 msgstr "brak"
 
 msgid "If an outgoing call to this Provider fails, try routing it over the account selected above. Dialpatterns must be compatible, no extra care is yet taken to match them."
-msgstr ""
+msgstr "Jeśli jakieś połączenie wychodzące do tego dostawcy nie powiedzie się, spróbuj przekierować je na konto podane powyżej. Wzorce wybieranie dla obu kont muszą być równoznaczne."
 
 msgid "RSA Keys"
 msgstr "Klucze RSA"
@@ -1147,7 +1157,7 @@ msgid "HIDE"
 msgstr ""
 
 msgid "Phone Accounts allow you to configure internal extensions and their access to Provider Accounts. Click an account type below to get started."
-msgstr ""
+msgstr "Konta telefoniczne pozwalają na konfigurację numerów wewnętrznych, oraz dostępów do kont dostawców. Wybierz typ konta poniżej by dodać nowe konto."
 
 msgid "External"
 msgstr "Zewnętrzne"
@@ -1618,7 +1628,7 @@ msgid "Application Logic"
 msgstr "Logika Aplikacji"
 
 msgid "Groups of extensions can be configured to ring concurrently. These groups can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
-msgstr ""
+msgstr "Grupy numerów wewnętrznych mogą zostać skonfigurowane by dzwonić jednocześnie. Grupy te mogą zostać wywołane poprzez zdefiniowane numery wewnętrzne, lub wykorzystane docelowo dla połączeń wchodzących od dostawców."
 
 msgid "edit call group"
 msgstr "edytuj grupę telefoniczną"
@@ -2214,7 +2224,7 @@ msgid "E-mail Address"
 msgstr "Adres E-mail"
 
 msgid "Authentication Method"
-msgstr "Metoda autoryzacji"
+msgstr "Metoda uwierzytelniania"
 
 msgid "Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server."
 msgstr "Większość kont działa używając ustawienia 'automatycznie'. Jeśli wystąpi problem należy wybrać metodę autoryzacji dla serwera."
