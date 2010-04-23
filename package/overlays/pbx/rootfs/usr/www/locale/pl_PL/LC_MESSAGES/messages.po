@@ -1699,7 +1699,7 @@ msgid "Timeouts"
 msgstr "Timeouty"
 
 msgid "Attended Transfer Answer"
-msgstr ""
+msgstr "Odpowiedź na nadzorowany transfer"
 
 msgid "Maximum number of seconds an attended transfer can go unanswered (default 15)."
 msgstr "Maksymalny czas (w sekundach), do odebrania nadzorowanego transferu (domyślnie: 15)."
@@ -2058,7 +2058,7 @@ msgid "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits
 msgstr "klucze 104 (128) bitowe mogą być wprowadzone jako 13 znaków ASCII lub 26 cyfr hex poprzedzonych '0x'."
 
 msgid "The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default the system requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
+msgstr "Ustawienia na tej stronie mają pierwszorzędne znaczenie dla zapewnienia łączności z dostawcami VoIP. W szczególności ustawienie nieprawidłowej topologii może uniemożliwić otrzymywanie połączeń wchodzących. Jeśli system jest za NATem, wymagane jest z reguły przekierowanie następujących portów: UDP/5060 (SIP), UDP/4569 (IAX) oraz zakres UDP/10000-10200 (Audio RTP)"
 
 msgid "A valid MAC address must be specified."
 msgstr "Należy podać poprawny adres MAC."
