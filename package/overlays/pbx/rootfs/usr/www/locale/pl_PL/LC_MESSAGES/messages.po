@@ -678,7 +678,7 @@ msgid "You may enter a description here for your reference (not parsed)."
 msgstr "Tutaj możesz dodać własny opis (opis ten nie jest parsowany)."
 
 msgid "This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back."
-msgstr ""
+msgstr "Ten numer 'zewnętrzny' zostanie odczytany przy przekierowaniu do poczty głosowej. Domyślnie przyjmuje się nazwę użytkownika konta, jeśli ta jest wartością liczbową. Jeśli nie, odczytany zostaje numer wewnętrzny do którego skierowane było połączenie."
 
 msgid "Save"
 msgstr "Zapisz"
@@ -831,7 +831,7 @@ msgid "IAX"
 msgstr "IAX"
 
 msgid "Manager"
-msgstr "Menedżer"
+msgstr "Administracja"
 
 msgid "GUI Options"
 msgstr "Opcje GUI"
@@ -1186,7 +1186,7 @@ msgid "delete phone"
 msgstr "usuń telefon"
 
 msgid "Skinny"
-msgstr ""
+msgstr "Skinny"
 
 msgid "Dialstring"
 msgstr "Wzorzec wybierania"
@@ -1477,7 +1477,7 @@ msgid "u-law"
 msgstr "u-law"
 
 msgid "Manager Interface"
-msgstr "Interfejs menedżerski"
+msgstr "Interfejs administracyjny"
 
 msgid "Permissions"
 msgstr "Uprawnienia"
@@ -1489,16 +1489,16 @@ msgid "write:"
 msgstr "zapis:"
 
 msgid "edit manager room"
-msgstr ""
+msgstr "edytuj użytkownika administracyjnego"
 
 msgid "Do you really want to delete this manager user?"
-msgstr "Czy na pewno chcesz usunąć tego użytkownika menedżer?"
+msgstr "Czy na pewno chcesz usunąć tego użytkownika administracyjnego?"
 
 msgid "delete manager user"
-msgstr "usuń użytkownika menedżer"
+msgstr "usuń użytkownika administracyjnego"
 
 msgid "add manager user"
-msgstr "dodaj użytkownika menedżer"
+msgstr "dodaj użytkownika administracyjnego"
 
 msgid "Edit User"
 msgstr "Edytuj Użytkownika"
@@ -1522,10 +1522,10 @@ msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
 msgstr "ustaw '0.0.0.0 / 0.0.0.0' by zezwolić na wszystko"
 
 msgid "Read"
-msgstr "Przeczytano"
+msgstr "Odczyt"
 
 msgid "Write"
-msgstr "Zapisano"
+msgstr "Zapis"
 
 msgid "The high RTP port must be greater than the low RTP port."
 msgstr "Końcowy port RPT musi być większy niż początkowy."
