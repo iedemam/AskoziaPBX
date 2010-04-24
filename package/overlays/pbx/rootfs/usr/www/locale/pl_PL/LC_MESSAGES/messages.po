@@ -528,7 +528,7 @@ msgid "Send phones' Caller ID"
 msgstr "Wyślij Caller ID telefonu"
 
 msgid "Outgoing Patterns"
-msgstr "Wychodzące wzorce"
+msgstr "Wzorce wychodzące"
 
 msgid ""
 "Enter patterns, one per line, to define this provider's outgoing routing. Enter \"X!\" to use this provider for all outgoing calls. To access this provider by using a \"9\" prefix, enter \"9|.\". If no patterns are entered, only incoming calls will be accepted.<br>\n"
@@ -543,7 +543,7 @@ msgid ""
 " \t<li><strong>!</strong> - matches zero or more characters (not allowed before | or +)</li>\n"
 " </ul>\n"
 msgstr ""
-"Wprowadź wzorce (jednej na linię), definiujące routing wychodzący tego dostawcy. Wprowadź \"X!\" by użyć tego dostawcy dla wszystkich wychodzących połączeń. Aby używać tego dostawcy korzystając z prefiksu \"9\", wprowadź \"9|.\".Przy braku wprowadzonych wzorców, zezwolone będą wyłącznie połączenia wchodzące.<br>\n"
+"Wprowadź wzorce (jeden na linię), definiujące routing wychodzący tego dostawcy. Wprowadź \"X!\" by użyć tego dostawcy dla wszystkich wychodzących połączeń. Aby używać tego dostawcy korzystając z prefiksu \"9\", wprowadź \"9|.\".Przy braku wprowadzonych wzorców, zezwolone będą wyłącznie połączenia wchodzące.<br>\n"
 "<ul>\n"
 "\t<li><strong>+</strong> - dodaje prefiks (np. \"1+555\" przyjmuje \"555\" i prześle \"1555\" do dostawcy)</li>\n"
 " \t<li><strong>|</strong> - odejmuje prefiks (np. \"1|555\" przymuje \"1555\", ale prześle do dostawcy tylko \"555\")</li>\n"
@@ -2416,7 +2416,7 @@ msgid "Edit Provider Group"
 msgstr "Edytuj Grupę Dostawców"
 
 msgid "No compatible isdn ports were detected."
-msgstr "Nie znaleziono kompatybilnych interfejsów isdn."
+msgstr "Nie znaleziono kompatybilnych interfejsów ISDN."
 
 msgid "Channels"
 msgstr "Kanały"
@@ -2489,16 +2489,16 @@ msgid "Some providers require a seperate username for authorization.<br>Defaults
 msgstr "Niektórzy dostawcy wymagają oddzielnego użytkownika autoryzującego.<br>Domyślnie nazwa użytkownika podana wyżej."
 
 msgid "From User"
-msgstr ""
+msgstr "Nadawca"
 
 msgid "Some providers require a seperate 'from' user.<br>Defaults to username entered above."
-msgstr ""
+msgstr "Niektórzy dostawcy wymagają podania specyficznego nadawcy.<br>Domyślnie, podanawana jest nazwa uzytkownika podana powyżej."
 
 msgid "From Domain"
-msgstr "Z Domeny"
+msgstr "Domena nadawcza"
 
 msgid "Some providers require a seperate 'from' domain. <br>Defaults to host entered above."
-msgstr ""
+msgstr "Niektórzy dostawcy wymagają podania specyficznej domeny nadawczej. <br>Domyślnie, podawana jest nazwa hosta podana powyżej."
 
 msgid "Conference rooms with optional pin authentication can be configured here. The system's performance is the only limiting factor on the number of concurrent members. These rooms can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
 msgstr ""
