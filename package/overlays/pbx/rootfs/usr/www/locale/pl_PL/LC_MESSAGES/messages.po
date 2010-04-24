@@ -1522,13 +1522,13 @@ msgid "Deny Network"
 msgstr "Zablokuj sieć"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to deny everything"
-msgstr "ustaw '0.0.0.0 / 0.0.0.0' by odmówić wszystkiego"
+msgstr "ustaw '0.0.0.0 / 0.0.0.0' by odmówić dostępu z każdej sieci"
 
 msgid "Permit Network"
 msgstr "Zezwól sieć"
 
 msgid "set to '0.0.0.0 / 0.0.0.0' to permit everything"
-msgstr "ustaw '0.0.0.0 / 0.0.0.0' by zezwolić na wszystko"
+msgstr "ustaw '0.0.0.0 / 0.0.0.0' by umożliwić dostęp zewsząd"
 
 msgid "Read"
 msgstr "Odczyt"
