@@ -40,7 +40,7 @@ msgid "Group"
 msgstr "Grupa"
 
 msgid "Host"
-msgstr "Host"
+msgstr "Nazwa hosta"
 
 msgid "Username"
 msgstr "Nazwa użytkownika"
@@ -52,10 +52,10 @@ msgid "Main Number"
 msgstr "Numer główny"
 
 msgid "Package activated successfully."
-msgstr "Pakiet włączony poprawnie"
+msgstr "Pakiet został poprawnie włączony"
 
 msgid "Package deactivated successfully."
-msgstr "Pakiet wyłączony poprawnie"
+msgstr "Pakiet został poprawnie wyłączony"
 
 msgid "Package deleted successfully."
 msgstr "Pakiet usunięty poprawnie"
@@ -336,7 +336,7 @@ msgid "A valid Caller ID string must be specified."
 msgstr "Poprawny ciąg Caller ID musi zostać podany."
 
 msgid "An incoming Caller ID override string must be specified."
-msgstr ""
+msgstr "Musisz zdefiniować zastępczy Caller ID dla połączeń wchodzących."
 
 #, php-format
 msgid "The %s field is required."
@@ -456,7 +456,7 @@ msgid "Do not register with this provider."
 msgstr "Nie loguj się do tego dostawcy."
 
 msgid "Completely override the generated registration string with a manually defined one."
-msgstr ""
+msgstr "Całkowicie zastępuje automatyczny łańcuch rejestracyjny powyższym ciągiem znaków."
 
 msgid "Qualify"
 msgstr "Dostępność"
@@ -507,7 +507,7 @@ msgid "If calls coming through this port are too loud or too quiet, make adjustm
 msgstr "Jeśli połączenia przechodzące przez ten port są zbyt głośne lub za ciche, wprowadź poprawkę tutaj. Poziomy odbioru i nadawania (w decybelach) mogą być ustawione niezależnie."
 
 msgid "Incoming Modification"
-msgstr "Modyfikacje przychodzące"
+msgstr "Zmiany dla połączeń wchodzących"
 
 msgid "Source Name &lt;number&gt;"
 msgstr "Nazwa &lt;numer&gt;"
@@ -627,7 +627,7 @@ msgid "show"
 msgstr "pokaż"
 
 msgid "Manual Attributes"
-msgstr "Ustawienia manualne"
+msgstr "Ustawienia ręczne"
 
 msgid "Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes."
 msgstr "Ręczne pary klucz-wartość mogą zostać dodane tutaj (np. <em>opcja=wartość</em>). Ustawienia te zostaną dopisane do konfiguracji Asteriska dla danego pliku lub kontekstu. Niczego nie powinieneś tu dopisywać, poza bardzo szczególnymi przypadkami. Nieprawidłowe wartości mogą spowodować utratę pewnych funkcji systemu, i/lub stworzyć luki bezpieczeństwa."
