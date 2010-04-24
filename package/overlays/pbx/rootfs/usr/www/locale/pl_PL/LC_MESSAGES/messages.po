@@ -2586,9 +2586,8 @@ msgstr "instalowanie"
 msgid "installed sets"
 msgstr "zainstalowane pakiety"
 
-#, fuzzy
 msgid "add set"
-msgstr "do"
+msgstr "dodaj zestaw"
 
 msgid "<p>This status page includes the following information:\n"
 msgstr "<p>Strona statusu zawiera następujące informacje:\n"
