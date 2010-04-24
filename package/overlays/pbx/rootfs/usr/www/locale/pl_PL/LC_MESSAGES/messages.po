@@ -436,6 +436,15 @@ msgid ""
 " \t<li><strong>!</strong> - matches zero or more characters</li>\n"
 " </ul>\n"
 msgstr ""
+"Wprowadź wzorzec lub numer telefonu i wybierz docelowy numer wewnętrzny. Aby użyć kilka docelowych telefonów równocześnie, po prostu zdefiniuj im ten sam wzorzec. Jeśli wprowadzisz numer telefonu, zostanie on użyty jako \"zewnętrzny\" numer dla nieodebranych połączeń. Jeśli niczego nie wprowadzisz, wszystkie połączenie będą kierowane do docelowego numeru wewnętrznego.<br>\n"
+"<ul>\n"
+" \t<li><strong>X</strong> - przyjmuje cyfry 0-9</li>\n"
+" \t<li><strong>Z</strong> - przyjmuje cyfry 1-9</li>\n"
+" \t<li><strong>N</strong> - przyjmuje cyfry 2-9</li>\n"
+" \t<li><strong>[13-5]</strong> - pasuje do jakiejkolwiek cyfry w nawiasie (w podanym przykładzie 1,3,4,5)</li>\n"
+" \t<li><strong>.</strong> - pasuje do jednego lub wielu znaków</li>\n"
+" \t<li><strong>!</strong> - pasuje do żadnego lub wielu znaków</li>\n"
+" </ul>\n"
 
 msgid "DTMF Mode"
 msgstr "Tryb DTMF"
@@ -450,7 +459,7 @@ msgid "Completely override the generated registration string with a manually def
 msgstr ""
 
 msgid "Qualify"
-msgstr ""
+msgstr "Dostępność"
 
 msgid "seconds"
 msgstr "sekund"
@@ -595,7 +604,7 @@ msgid "optional"
 msgstr "opcjonalny"
 
 msgid "Set a friendlier alias above if you would like to use a word or name instead of the extension number."
-msgstr ""
+msgstr "Ustaw alias powyżej, jeżeli chcesz korzystać z jakiegoś słowa lub nazwy zamiast numeru wewnętrznego."
 
 msgid "Logic"
 msgstr "Logika"
@@ -699,7 +708,7 @@ msgid "address"
 msgstr "adres"
 
 msgid "<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work."
-msgstr "<a href=\"notifications_email.php\">Powiadomiania E-Mail</a> muszą zostać poprawnie skonfigurowane, aby to mogło działać."
+msgstr "<a href=\"notifications_email.php\">Powiadomienia E-Mail</a> muszą zostać poprawnie skonfigurowane, aby to mogło działać."
 
 msgid "Block Providers"
 msgstr "Zablokuj Dostawców"
@@ -1153,7 +1162,7 @@ msgid "associated"
 msgstr "podłączone"
 
 msgid "HIDE"
-msgstr ""
+msgstr "HIDE"
 
 msgid "Phone Accounts allow you to configure internal extensions and their access to Provider Accounts. Click an account type below to get started."
 msgstr "Konta telefoniczne pozwalają na konfigurację numerów wewnętrznych, oraz dostępów do kont dostawców. Wybierz typ konta poniżej by dodać nowe konto."
@@ -1570,7 +1579,7 @@ msgid "Default values are 60, 3600 and 120 respectively."
 msgstr "Domyślne wartości to 60, 3600 i odpowiednio 120."
 
 msgid "DNS Service Records"
-msgstr ""
+msgstr "Wpisy (rekordy) usługi DNS"
 
 msgid "Disable DNS SRV lookups."
 msgstr "Wyłącz wyszukiwanie rekordów SRV DNS."
@@ -1850,7 +1859,7 @@ msgid "Options"
 msgstr "Opcje"
 
 msgid "span should use CRC4 checking"
-msgstr ""
+msgstr "okres powinien korzystać z kontroli CRC4"
 
 msgid "span should be set as a loopback"
 msgstr ""
@@ -2175,7 +2184,7 @@ msgid "Password"
 msgstr "Hasło"
 
 msgid "Yes, alias \"*.hostname.domain\" to hostname specified above."
-msgstr ""
+msgstr "Tak, dodaj alias \"*.hostname.domain\" do nazwy hosta podanej powyżej."
 
 msgid "Warning:"
 msgstr "Uwaga:"
@@ -2307,7 +2316,7 @@ msgid "SNOM MAC Address"
 msgstr "Adres MAC SNOM"
 
 msgid "If this account is for a SNOM telephone, the hardware can be automatically configured when it reboots if its MAC address is entered here. The MAC address can be displayed by pressing the phone's \"Help\" button. Enter the address exactly as it appears on the screen.<br><br>The phone's HTTP interface password will be the same as this extension's password and the on-telephone admin password is the extension number."
-msgstr ""
+msgstr "Jeśli to konto należy do telefonu SNOM, sprzęt może zostać automatycznie skonfigurowany przy starcie, pod warunkiem, że jego adres MAC zostanie tutaj wprowadzony. Możesz sprawdzić adres MAC, wciskając przycisk \"Help\" telefonu. Wprowadź adres w ten sam sposób, w jaki wyświetla się na ekranie telefonu.<br><br>Hasło interfejsu HTTP telefonu będzie takie samo, jak hasło tego konta, a hasło administratora telefonu zostanie ustawione na jego numer wewnętrzny."
 
 msgid "Edit Skinny Phone"
 msgstr "Edytuj telefon Skinny"
@@ -2501,7 +2510,7 @@ msgid "Some providers require a seperate 'from' domain. <br>Defaults to host ent
 msgstr "Niektórzy dostawcy wymagają podania specyficznej domeny nadawczej. <br>Domyślnie, podawana jest nazwa hosta podana powyżej."
 
 msgid "Conference rooms with optional pin authentication can be configured here. The system's performance is the only limiting factor on the number of concurrent members. These rooms can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
-msgstr ""
+msgstr "Tutaj możesz skonfigurować pokoje konferencyjne chronione ewentualnym kodem PIN. Osiągi systemu są jedynym ogranicznikiem liczby równoległych członków. Pokoje konferencyjne mogą być wywoływane poprzez ich numery wewnętrzne, lub przekierowane z połączeń wchodzących od dostawcy."
 
 msgid "Room Number"
 msgstr "Numer Sali"
@@ -2569,7 +2578,7 @@ msgstr "Zapowiedzi głosowe"
 
 #, php-format
 msgid "Successfully installed %s formatted prompts for %s."
-msgstr ""
+msgstr "Zainstalowano %s zapytań dla %s."
 
 msgid "Adding"
 msgstr "Dodawanie"
