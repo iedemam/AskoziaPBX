@@ -876,10 +876,10 @@ msgid "item is enabled, click to disable"
 msgstr "obiekt jest włączony, kliknij aby wyłączyć"
 
 msgid "edit an item"
-msgstr "edycja obiektu"
+msgstr "edytuj obiekt"
 
 msgid "permanently delete an item"
-msgstr "całkowicie usuń obiekt"
+msgstr "usuń obiekt"
 
 msgid "check for package updates"
 msgstr "sprawdź aktualizacje pakietu"
@@ -1333,7 +1333,7 @@ msgid "Yemen"
 msgstr "Jemen"
 
 msgid "Tone Zones"
-msgstr "Strefy czasowe"
+msgstr "Strefy tonowe"
 
 msgid "Loaded"
 msgstr "Załadowano"
@@ -1393,7 +1393,7 @@ msgid "Disable console menu"
 msgstr "Wyłącz menu konsoli"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr "Zmiany w tych opcjach zaczną działać po restarcie."
+msgstr "Zmiana tej opcji dokona się po ponownym uruchomieniu systemu."
 
 msgid "Firmware version check"
 msgstr "Kontrola wersji firmware"
@@ -1411,7 +1411,7 @@ msgid "Disable package version checks"
 msgstr "Wyłącz kontrolę wersji pakietów"
 
 msgid "This will cause the system not to check for package updates when the <a href=\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr "System nie będzie sprawdzał dostępności nowszego firmware podczas otwierania strony <a href=\"system_packages.php\">System: Packages</a>."
+msgstr "System nie będzie sprawdzał dostępności nowszych wersji pakietów podczas otwierania strony <a href=\"system_packages.php\">System: Packages</a>."
 
 msgid "Hard disk standby time"
 msgstr "Ustawienia uśpienia dysku"
@@ -1429,7 +1429,7 @@ msgid "Navigation"
 msgstr "Nawigacja"
 
 msgid "Keep advanced options in navigation expanded"
-msgstr "Zawsze rozwijaj zaawansowane opcje"
+msgstr "Zawsze rozwijaj opcje zaawansowane"
 
 msgid "Hide SIP related options"
 msgstr "Ukryj opcje SIP"
@@ -1839,9 +1839,8 @@ msgstr "Opisowa nazwa okresu."
 msgid "Type"
 msgstr "Typ"
 
-#, fuzzy
 msgid "Framing"
-msgstr "Francja"
+msgstr "Framing"
 
 msgid "Encoding"
 msgstr "Kodowanie"
@@ -1862,7 +1861,7 @@ msgid "span should use CRC4 checking"
 msgstr "okres powinien korzystać z kontroli CRC4"
 
 msgid "span should be set as a loopback"
-msgstr ""
+msgstr "okres powinien zostać ustawiony jako pętla"
 
 msgid "In"
 msgstr "Do"
@@ -1901,10 +1900,10 @@ msgid "Version"
 msgstr "Wersja"
 
 msgid "on"
-msgstr ""
+msgstr "dla platformy"
 
 msgid "built on"
-msgstr ""
+msgstr "data kompilacji:"
 
 msgid "Last Config Change"
 msgstr "Ostatnia zmiana konfiguracji"
@@ -2650,9 +2649,8 @@ msgstr "jeśli nie widzisz wykresu, być może potrzebujesz wtyczki  <a href=\"h
 msgid "Stopped updates"
 msgstr "Zatrzymane aktualizacje"
 
-#, fuzzy
 msgid "Resuming updates"
-msgstr "minut"
+msgstr "Wznawianie aktualizacji"
 
 msgid "System log entries"
 msgstr "Logi systemowe"
