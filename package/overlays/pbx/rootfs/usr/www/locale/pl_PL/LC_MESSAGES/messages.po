@@ -627,7 +627,7 @@ msgid "show"
 msgstr "pokaż"
 
 msgid "Manual Attributes"
-msgstr "Ręczne ustawienia"
+msgstr "Ustawienia manualne"
 
 msgid "Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes."
 msgstr ""
@@ -1579,7 +1579,7 @@ msgid "Default values are 60, 3600 and 120 respectively."
 msgstr "Domyślne wartości to 60, 3600 i odpowiednio 120."
 
 msgid "DNS Service Records"
-msgstr "Wpisy (rekordy) usługi DNS"
+msgstr "Obsługa DNS"
 
 msgid "Disable DNS SRV lookups."
 msgstr "Wyłącz wyszukiwanie rekordów SRV DNS."
