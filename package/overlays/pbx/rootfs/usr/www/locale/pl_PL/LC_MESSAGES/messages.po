@@ -348,7 +348,7 @@ msgstr "Pole %s musi być wartością liczbową."
 
 #, php-format
 msgid "Manual Attribute line number %s is invalid."
-msgstr ""
+msgstr "Wykryto nieprawidłowy atrybut przy linii %s."
 
 msgid "PHP parsing error"
 msgstr "Błąd parsingu PHP"
@@ -630,7 +630,7 @@ msgid "Manual Attributes"
 msgstr "Ustawienia manualne"
 
 msgid "Manual key-value pairs can be entered in addition to the generated configuration (i.e. <em>configoption=value</em>). These settings will be appended to this item's Asterisk configuration file or context. Unless you have a very specific need to do this, nothing should be entered in this field. Improperly formed values can break system functionality and/or open security holes."
-msgstr ""
+msgstr "Ręczne pary klucz-wartość mogą zostać dodane tutaj (np. <em>opcja=wartość</em>). Ustawienia te zostaną dopisane do konfiguracji Asteriska dla danego pliku lub kontekstu. Niczego nie powinieneś tu dopisywać, poza bardzo szczególnymi przypadkami. Nieprawidłowe wartości mogą spowodować utratę pewnych funkcji systemu, i/lub stworzyć luki bezpieczeństwa."
 
 msgid "of"
 msgstr "z"
