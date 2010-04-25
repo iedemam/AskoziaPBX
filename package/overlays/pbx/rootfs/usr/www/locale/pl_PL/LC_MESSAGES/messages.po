@@ -411,7 +411,7 @@ msgid "Members"
 msgstr "Członkowie"
 
 msgid "Non-Members"
-msgstr "Nienależący do grupy"
+msgstr "Poza grupą"
 
 msgid "Note:"
 msgstr "Notatka:"
