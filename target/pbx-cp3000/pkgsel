@@ -64,6 +64,8 @@ X es-es-ulaw-base
 X fr-ca-ulaw-base
 X de-de-wav-base
 X it-it-gsm-base
+X pl-pl-ulaw-base
+X nl-nl-gsm-base
 
 # music-on-hold
 X freeplay-ulaw-base

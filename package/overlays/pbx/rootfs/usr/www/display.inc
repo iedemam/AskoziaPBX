@@ -470,14 +470,15 @@ function display_channel_language_selector($current_language, $colspan=1) {
 		"en-us" => gettext("English (US)"),
 		"en-gb" => gettext("English (UK)"),
 		//"da" => gettext("Danish"),
-		//"nl" => gettext("Dutch"),
+		"nl-nl" => gettext("Dutch"),
 		//"fr" => gettext("French (France)"),
 		"fr-ca" => gettext("French (Canada)"),
 		"de-de" => gettext("German"),
 		"it-it" => gettext("Italian"),
 		//"jp" => gettext("Japanese"),
+		"pl-pl" => gettext("Polish"),
 		//"pt-br" => gettext("Portuguese (Brazil)"),
-		"ru" => gettext("Russian"),
+		//"ru" => gettext("Russian"),
 		"es-es" => gettext("Spanish (Spain)")
 		//"se" => gettext("Swedish")
 	);
