@@ -247,6 +247,44 @@ function system_ntp_initial_sync() {
 function system_sshd_configure() {
 	global $config, $g;
 
+	$dirtyconfig = false;
+
+	$keytypes = array("rsa", "dss");
+	foreach($keytypes as $keytype) {
+
+		$keyfieldname = "ssh-" . $keytype . "-key";
+		$keyfilepath = "/etc/dropbear/dropbear_" . $keytype . "_host_key";
+
+		// do not disturb if the file is already present
+		if (file_exists($keyfilepath)) {
+			continue;
+		}
+
+		// prepare the dropbear configuration directory if necessary
+		if (!file_exists("/etc/dropbear")) {
+			mkdir("/etc/dropbear");
+		}
+
+		// if a key is already stored in config.xml, write it out to the system...
+		if (isset($config['system'][$keyfieldname])) {
+			echo("Restoring dropbear " . $keytype . " key ... ");
+			util_file_write($keyfilepath, base64_decode($config['system'][$keyfieldname]));
+			chmod($keyfilepath, 0600);
+			echo ("done.\n");
+		// ...otherwise generate a new key and store it in config.xml
+		} else {
+			echo("Generating dropbear " . $keytype . " key ... ");
+			exec("/usr/bin/dropbearkey -t " . $keytype . " -f " . $keyfilepath);
+			$config['system'][$keyfieldname] = base64_encode(file_get_contents($keyfilepath));
+			$dirtyconfig = true;
+			echo ("done.\n");
+		}
+	}
+
+	if ($dirtyconfig) {
+		write_config();
+	}
+
 	killbyname("dropbear");
 	mwexec("dropbear");
 
