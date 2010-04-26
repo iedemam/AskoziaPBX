@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -609,6 +609,9 @@ msgstr "İngilizce (US)"
 msgid "English (UK)"
 msgstr "İngilizce (UK)"
 
+msgid "Dutch"
+msgstr "Hollandaca"
+
 msgid "French (Canada)"
 msgstr "Fransızca (Kanada)"
 
@@ -618,8 +621,8 @@ msgstr "Almanca"
 msgid "Italian"
 msgstr "İtalyanca"
 
-msgid "Russian"
-msgstr "Rusca"
+msgid "Polish"
+msgstr "Polonya dili"
 
 #, fuzzy
 msgid "Spanish (Spain)"
@@ -1016,9 +1019,6 @@ msgstr "Danimarkaca"
 msgid "Danish (formal)"
 msgstr "Danimarkaca (resmi)"
 
-msgid "Dutch"
-msgstr "Hollandaca"
-
 msgid "Dutch (formal)"
 msgstr "Holandaca (resmi)"
 
@@ -1050,9 +1050,6 @@ msgstr "İtalyanca (resmi)"
 msgid "Japanese (formal)"
 msgstr "İspanyolça (resmi)"
 
-msgid "Polish"
-msgstr "Polonya dili"
-
 msgid "Polish (formal)"
 msgstr "Polon dili (resmi)"
 
@@ -1061,6 +1058,9 @@ msgstr "Portekiz, Brezilya"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portekiz, Brezilya (resmi)"
+
+msgid "Russian"
+msgstr "Rusca"
 
 msgid "Russian (formal)"
 msgstr "Rusça (resmi)"

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -655,6 +655,9 @@ msgstr "Englannin kieli (US)"
 msgid "English (UK)"
 msgstr "Englannin kieli (UK)"
 
+msgid "Dutch"
+msgstr "Hollannin kieli"
+
 msgid "French (Canada)"
 msgstr "Ranskan kieli (Kanada)"
 
@@ -664,8 +667,8 @@ msgstr "Saksan kieli"
 msgid "Italian"
 msgstr "Italian kieli"
 
-msgid "Russian"
-msgstr "Venäjän kieli"
+msgid "Polish"
+msgstr "Puolan kieli"
 
 #, fuzzy
 msgid "Spanish (Spain)"
@@ -1089,9 +1092,6 @@ msgstr "Tanskan kieli"
 msgid "Danish (formal)"
 msgstr "Tanskan kieli (virallinen)"
 
-msgid "Dutch"
-msgstr "Hollannin kieli"
-
 msgid "Dutch (formal)"
 msgstr "Hollannin kieli (virallinen)"
 
@@ -1125,9 +1125,6 @@ msgstr "Italian kieli (virallinen)"
 msgid "Japanese (formal)"
 msgstr "Espanjan kieli (virallinen)"
 
-msgid "Polish"
-msgstr "Puolan kieli"
-
 msgid "Polish (formal)"
 msgstr "Puolan kieli (virallinen)"
 
@@ -1136,6 +1133,9 @@ msgstr "Portugalin kieli, Brasilia"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugalin kieli, Brasilia (virallinen)"
+
+msgid "Russian"
+msgstr "Venäjän kieli"
 
 msgid "Russian (formal)"
 msgstr "Venäjän kieli (virallinen)"

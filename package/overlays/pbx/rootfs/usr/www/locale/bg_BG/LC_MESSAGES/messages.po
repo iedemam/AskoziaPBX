@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -663,6 +663,9 @@ msgstr "Английски (US)"
 msgid "English (UK)"
 msgstr "Английски (UK)"
 
+msgid "Dutch"
+msgstr "Холандски"
+
 msgid "French (Canada)"
 msgstr "Френски (Канада)"
 
@@ -672,8 +675,8 @@ msgstr "Немски"
 msgid "Italian"
 msgstr "Италиански"
 
-msgid "Russian"
-msgstr "Руски"
+msgid "Polish"
+msgstr "Полски"
 
 #, fuzzy
 msgid "Spanish (Spain)"
@@ -1101,9 +1104,6 @@ msgstr "Датски"
 msgid "Danish (formal)"
 msgstr "Датски (официален)"
 
-msgid "Dutch"
-msgstr "Холандски"
-
 msgid "Dutch (formal)"
 msgstr "Холандски (официален)"
 
@@ -1135,9 +1135,6 @@ msgstr "Италиански (официален)"
 msgid "Japanese (formal)"
 msgstr "Испански"
 
-msgid "Polish"
-msgstr "Полски"
-
 msgid "Polish (formal)"
 msgstr "Полски (официален)"
 
@@ -1146,6 +1143,9 @@ msgstr "Португалски, Бразилия"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Португалски, Беазилия (официален)"
+
+msgid "Russian"
+msgstr "Руски"
 
 msgid "Russian (formal)"
 msgstr "Руски (официален)"

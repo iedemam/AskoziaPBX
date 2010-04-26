@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -656,6 +656,9 @@ msgstr "Engelsk (US)"
 msgid "English (UK)"
 msgstr "Engelsk (UK)"
 
+msgid "Dutch"
+msgstr "Hollandsk"
+
 msgid "French (Canada)"
 msgstr "Fransk (Kanada)"
 
@@ -665,8 +668,8 @@ msgstr "Tysk"
 msgid "Italian"
 msgstr "Italiensk"
 
-msgid "Russian"
-msgstr "Russisk"
+msgid "Polish"
+msgstr "Polsk"
 
 #, fuzzy
 msgid "Spanish (Spain)"
@@ -1088,9 +1091,6 @@ msgstr "Dansk"
 msgid "Danish (formal)"
 msgstr "Dansk (formelt)"
 
-msgid "Dutch"
-msgstr "Hollandsk"
-
 msgid "Dutch (formal)"
 msgstr "Hollandsk (formelt)"
 
@@ -1124,9 +1124,6 @@ msgstr "Italiensk (formelt)"
 msgid "Japanese (formal)"
 msgstr "Spansk (formelt)"
 
-msgid "Polish"
-msgstr "Polsk"
-
 msgid "Polish (formal)"
 msgstr "Polsk (formelt)"
 
@@ -1135,6 +1132,9 @@ msgstr "Portugisisk, Brasiliansk"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugisisk, Brasiliansk (formelt)"
+
+msgid "Russian"
+msgstr "Russisk"
 
 msgid "Russian (formal)"
 msgstr "Russisk (formelt)"

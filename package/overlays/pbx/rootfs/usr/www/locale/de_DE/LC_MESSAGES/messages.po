@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -671,6 +671,9 @@ msgstr "Englisch (US)"
 msgid "English (UK)"
 msgstr "Englisch (UK)"
 
+msgid "Dutch"
+msgstr "Niederlänisch"
+
 msgid "French (Canada)"
 msgstr "Französisch (Kanada)"
 
@@ -680,8 +683,8 @@ msgstr "Deutsch"
 msgid "Italian"
 msgstr "Italienisch"
 
-msgid "Russian"
-msgstr "Russisch"
+msgid "Polish"
+msgstr "Polnisch"
 
 #, fuzzy
 msgid "Spanish (Spain)"
@@ -1109,9 +1112,6 @@ msgstr "Dänisch"
 msgid "Danish (formal)"
 msgstr "Dänisch (formell)"
 
-msgid "Dutch"
-msgstr "Niederlänisch"
-
 msgid "Dutch (formal)"
 msgstr "Niederländisch (formell)"
 
@@ -1145,9 +1145,6 @@ msgstr "Italienisch (formell)"
 msgid "Japanese (formal)"
 msgstr "Spanisch (formell)"
 
-msgid "Polish"
-msgstr "Polnisch"
-
 msgid "Polish (formal)"
 msgstr "Polnisch (formell)"
 
@@ -1156,6 +1153,9 @@ msgstr "Portugiesisch, Brasilien"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugiesisch, Brasilien (formell)"
+
+msgid "Russian"
+msgstr "Russisch"
 
 msgid "Russian (formal)"
 msgstr "Russisch (formell)"

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -576,6 +576,9 @@ msgstr ""
 msgid "English (UK)"
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "French (Canada)"
 msgstr ""
 
@@ -585,7 +588,7 @@ msgstr ""
 msgid "Italian"
 msgstr ""
 
-msgid "Russian"
+msgid "Polish"
 msgstr ""
 
 msgid "Spanish (Spain)"
@@ -961,9 +964,6 @@ msgstr ""
 msgid "Danish (formal)"
 msgstr ""
 
-msgid "Dutch"
-msgstr ""
-
 msgid "Dutch (formal)"
 msgstr ""
 
@@ -994,9 +994,6 @@ msgstr ""
 msgid "Japanese (formal)"
 msgstr ""
 
-msgid "Polish"
-msgstr ""
-
 msgid "Polish (formal)"
 msgstr ""
 
@@ -1004,6 +1001,9 @@ msgid "Portuguese, Brazil"
 msgstr ""
 
 msgid "Portuguese, Brazil (formal)"
+msgstr ""
+
+msgid "Russian"
 msgstr ""
 
 msgid "Russian (formal)"

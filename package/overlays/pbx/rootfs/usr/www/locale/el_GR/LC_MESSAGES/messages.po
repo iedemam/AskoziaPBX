@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 12:34+0200\n"
+"POT-Creation-Date: 2010-04-26 17:03+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -663,6 +663,9 @@ msgstr "Αγγλικά (ΗΠΑ)"
 msgid "English (UK)"
 msgstr "Αγγλικά (Ηνωμένο Βασίλειο)"
 
+msgid "Dutch"
+msgstr "Ολλανδικά"
+
 msgid "French (Canada)"
 msgstr "Γαλλικά (Καναδάς)"
 
@@ -672,8 +675,8 @@ msgstr "Γερμανικά"
 msgid "Italian"
 msgstr "Ιταλικά"
 
-msgid "Russian"
-msgstr "Ρώσικα"
+msgid "Polish"
+msgstr "Πολωνικά"
 
 #, fuzzy
 msgid "Spanish (Spain)"
@@ -1106,9 +1109,6 @@ msgstr "Δανικά"
 msgid "Danish (formal)"
 msgstr "Δανικά (τυπικά)"
 
-msgid "Dutch"
-msgstr "Ολλανδικά"
-
 msgid "Dutch (formal)"
 msgstr "Ολλανδικά (τυπικά)"
 
@@ -1142,9 +1142,6 @@ msgstr "Ιταλικά (τυπικά)"
 msgid "Japanese (formal)"
 msgstr "Ισπανικά (τυπικά)"
 
-msgid "Polish"
-msgstr "Πολωνικά"
-
 msgid "Polish (formal)"
 msgstr "Πολωνικά (τυπικά)"
 
@@ -1153,6 +1150,9 @@ msgstr "Πορτογαλικά (Βραζιλία)"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Πορτογαλικά (Βραζιλία) (τυπικά)"
+
+msgid "Russian"
+msgstr "Ρώσικα"
 
 msgid "Russian (formal)"
 msgstr "Ρώσικα (τυπικά)"
