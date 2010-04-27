@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-26 17:03+0200\n"
-"PO-Revision-Date: 2010-04-27 09:33+0100\n"
-"Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
+"PO-Revision-Date: 2010-04-27 22:52+0100\n"
+"Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -376,7 +376,7 @@ msgid "generate password"
 msgstr "genera password"
 
 msgid "use this password"
-msgstr "Utilizza questa password."
+msgstr "utilizza questa password"
 
 msgid "webGUI language"
 msgstr "Lingua dell'interfaccia WEB"
@@ -520,7 +520,7 @@ msgid "Disable overrides"
 msgstr "Disabilita la sovrascrittura"
 
 msgid "Outgoing Presentation"
-msgstr "Iidentificativo da presentare"
+msgstr "Identificativo da presentare"
 
 msgid "Your Name &lt;number&gt;"
 msgstr "Vostro Nome &lt;numero&gt;"
@@ -868,16 +868,16 @@ msgid "add a new item"
 msgstr "aggiungi una nuova voce"
 
 msgid "item is disabled, click to enable"
-msgstr "Questa voce è disabilitata, clicca per abilitarla"
+msgstr "questa voce è disabilitata, clicca per abilitarla"
 
 msgid "item is enabled, click to disable"
-msgstr "Questa voce è abilitata, clicca per disabilitarla"
+msgstr "questa voce è abilitata, clicca per disabilitarla"
 
 msgid "edit an item"
-msgstr "Modifica una voce"
+msgstr "modifica una voce"
 
 msgid "permanently delete an item"
-msgstr "Elimina definitivamente una voce"
+msgstr "elimina definitivamente una voce"
 
 msgid "check for package updates"
 msgstr "verifica aggiornamenti dei pacchetti"
@@ -886,7 +886,7 @@ msgid "restore a backup archive"
 msgstr "Ripristina da una Copia archiviata"
 
 msgid "download a backup archive"
-msgstr "Salva e scarica una Copia di Archivio"
+msgstr "salva e scarica una Copia di Archivio"
 
 msgid "webGUI Configuration"
 msgstr "Interfaccia di configurazione Web"
@@ -1220,7 +1220,7 @@ msgid "delete provider"
 msgstr "cancella operatore"
 
 msgid "Russian Federation / Former Soviet Union"
-msgstr "Russia/Ex unione sovietica"
+msgstr "Russia/Ex Unione Sovietica"
 
 msgid "Bahrain"
 msgstr "Bahrain"
@@ -1379,7 +1379,7 @@ msgid "Generate self-signed certificate"
 msgstr "Genera un certificato proprio (self-signed)."
 
 msgid "Miscellaneous"
-msgstr "Eterogeneo"
+msgstr "Varie"
 
 msgid "Console menu"
 msgstr "Menù console"
@@ -1556,7 +1556,7 @@ msgid "A whole number of seconds must be entered for the \"Maximum Registration 
 msgstr "Un numero intero di secondi deve essere immesso per il timeout \"Scadenza Massima di Registrazione\"."
 
 msgid "Registration Expiration Timeouts"
-msgstr "Tempo di scadenza della registrazione"
+msgstr "Tempo di Scadenza della Registrazione"
 
 msgid "min:"
 msgstr "min:"
@@ -2363,7 +2363,7 @@ msgid "Size"
 msgstr "Grandezza"
 
 msgid "No compatible analog ports were detected."
-msgstr "Non  è stata rilevata nessuna porta analogica compatibile."
+msgstr "Non è stata rilevata nessuna porta analogica compatibile."
 
 msgid "Individual Ports"
 msgstr "Singole porte"
@@ -2947,7 +2947,7 @@ msgid "restore package data"
 msgstr "ripristino dei dati del pacchetto"
 
 msgid "Update Installed Package"
-msgstr "Aggiorna un pacchetto installato."
+msgstr "Aggiorna un pacchetto installato"
 
 msgid "Select which packages you would like to update, existing package data will be preserved."
 msgstr "Seleziona i pacchetti da aggiornare, le impostazioni attualii dei pacchetti verranno mantenute."
@@ -2998,7 +2998,7 @@ msgid "Persistence"
 msgstr "Persistenza"
 
 msgid "edit disk"
-msgstr "Modifica disco"
+msgstr "modifica disco"
 
 msgid "Do you really want to forget this disk?"
 msgstr "Vuoi veramente eliminare questo disco?"
@@ -3040,7 +3040,7 @@ msgid "Enter a descriptive name for this disk."
 msgstr "Immetere un nome descrittivo per questo disco."
 
 msgid "Enter the full path where this device should be mounted."
-msgstr "Indica il percorso completo dove il disco deve essere montato"
+msgstr "Indica il percorso completo dove il disco deve essere montato."
 
 msgid "Storage Services"
 msgstr "Servizi di persistenza"
@@ -3053,7 +3053,7 @@ msgid "service already assigned to \"%s\""
 msgstr "servizio già assegnato a \"%s\""
 
 msgid "store Asterisk's database on disk"
-msgstr "Memorizza il database di Asterisk sul disco"
+msgstr "memorizza il database di Asterisk sul disco"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR Non posso salvare la configurazione. \n"
@@ -3062,26 +3062,21 @@ msgid "OK\n"
 msgstr "OK\n"
 
 msgid "ERR Could not install configuration.\n"
-msgstr "ERR Non posso installare la configurazione. \n"
+msgstr "ERR Non posso installare la configurazione.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta non è valida.\n"
 
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "
 #~ msgstr "Se clicchi &quot;Sì&quot;, il centralino"
-
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Mantieni espansa la voce \"Diagnostica\" nel menù di navigazione"
-
 #~ msgid "Edit ISDN Line"
 #~ msgstr "Modifica linea ISDN"
-
 #~ msgid "A valid Caller ID must be specified."
 #~ msgstr "Deve essere specificato un Numero Identificativo(CID) valido."
-
 #~ msgid "A phone with this extension already exists."
 #~ msgstr "Un telefono con questo interno già esiste."
-
 #~ msgid "Account uses TLS"
 #~ msgstr "Questo profilo utilizza TLS"
 
@@ -3092,7 +3087,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #, fuzzy
 #~ msgid "Do you really want to forget this disk's settings?"
 #~ msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
-
 #~ msgid "Russia"
 #~ msgstr "Russia"
 
@@ -3121,20 +3115,15 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #, fuzzy
 #~ msgid "edit analog port"
 #~ msgstr "modifica l'interfaccia analogica"
-
 #~ msgid "Edit ISDN Interface #%s"
 #~ msgstr "Modifica l'interfaccia ISDN #%s"
-
 #~ msgid "An Operating Mode must be selected for this interface."
 #~ msgstr ""
 #~ "Deve essere selezionata una modalità operativa per questa interfaccia."
-
 #~ msgid "Descriptive name for this interface"
 #~ msgstr "Nome descrittivo di questa interfaccia"
-
 #~ msgid "Operating Mode"
 #~ msgstr "Modo operativo"
-
 #~ msgid ""
 #~ "point-to-multipoint, terminal equipment: this port accepts MSNs to route "
 #~ "calls and is attached to the public ISDN network or another PBX system"
@@ -3142,7 +3131,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "punto-multipunto (PMP), dispositivo terminale (TE): questa porta accetta "
 #~ "MSN (numeri multipli) per instradare le chiamate ed è collegata alla rete "
 #~ "pubblica o ad un altro centralino"
-
 #~ msgid ""
 #~ "multipoint-to-point, network termination: this port provides MSNs to "
 #~ "route calls and is attached to one or more telephones"
@@ -3150,7 +3138,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "punto-multipunto (PMP), terminazione di rete (NT): questa porta fornisce "
 #~ "numeri MSN (numeri multipli) per instradare le chiamate ed è collegata ad "
 #~ "uno o più telefoni"
-
 #~ msgid ""
 #~ "point-to-point, terminal equipment: this port accepts DID to route calls "
 #~ "and is connected directly to another PBX system"
@@ -3158,7 +3145,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "punto-punto (PTP), dispositivo terminale (TE): questa porta accetta DID "
 #~ "per instradare le chiamate ed è collegato direttamente a un altro sistema "
 #~ "PBX"
-
 #~ msgid ""
 #~ "point-to-point, network termination: this port provides DID to route "
 #~ "calls and is connected directly to another PBX system"
@@ -3166,16 +3152,12 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "punto-punto (PTP), terminazione di rete (NT): questa porta fornisce DID "
 #~ "per instradare le chiamate ed è collegata direttamente ad un altro "
 #~ "centralino"
-
 #~ msgid "Echo Canceller"
 #~ msgstr "Cancellatore eco"
-
 #~ msgid "Attempt to remove echoes from the line. (recommended)"
 #~ msgstr "Attiva il cancellatore d'eco per questa linea (consigliato)."
-
 #~ msgid "PCM Timing Slave"
 #~ msgstr "PCM Timing Slave"
-
 #~ msgid ""
 #~ "There is already another card present which provides the timing.<br><em>"
 #~ "(Unless more than one inteface card is present in the system, this should "
@@ -3184,23 +3166,17 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Esiste un altra interfaccia che provvede a fornire il timing. <br><em>(Se "
 #~ "più di un interfaccia è presente nel sistema, questa impostazione non "
 #~ "dovrebbe essere modificata."
-
 #~ msgid "Disable Power Save"
 #~ msgstr "Disabilita il Power Save"
-
 #~ msgid "Disable power save mode. (sometimes needed for older cards)"
 #~ msgstr ""
 #~ "Disabilita il risparmio energetico. (necessario a volte per vecchie card)"
-
 #~ msgid "Enable Polling Mode"
 #~ msgstr "Abilita il modo Polling"
-
 #~ msgid "Enable polling mode. (sometimes needed for older cards)"
 #~ msgstr "Abilita il modo polling. necessario a volte per vecchie card)"
-
 #~ msgid "The dial-pattern \"%s\" is invalid. %s"
 #~ msgstr "Il percorso-chiamata \"%s\" non è valido. %s"
-
 #~ msgid "A valid default number (MSN) must be specified."
 #~ msgstr "Deve essere specificato un Numero (MSN) valido per questa linea."
 
@@ -3212,107 +3188,75 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ msgstr ""
 #~ "Per configurare questo tipo di profilo assicuratevi di aver correttamente "
 #~ "impostato una interfaccia adeguata nella relativa pagina %s"
-
 #~ msgid ""
 #~ "The default telephone number (MSN) assigned to this line. Individual MSN "
 #~ "mappings can be defined below."
 #~ msgstr ""
 #~ "Il numero principale assegnato a questa linea. La mappatura dei singoli "
 #~ "numeri aggiuntivi (MSN) possono essere definite qui di seguito."
-
 #~ msgid "ISDN Interface"
 #~ msgstr "Interfaccia ISDN"
-
 #~ msgid "Audio Codecs"
 #~ msgstr "Codificatori Audio"
-
 #~ msgid "Video Codecs"
 #~ msgstr "Codificatori Video"
-
 #~ msgid "Incoming Caller ID Overrides"
 #~ msgstr "Sovrascrive l'Identificativo del chiamante (CID) entrante"
-
 #~ msgid "Platform"
 #~ msgstr "Piattaforma"
-
 #~ msgid "Edit Analog Line"
 #~ msgstr "Modifica linea analogica"
-
 #~ msgid "Edit IAX Account"
 #~ msgstr "Modifica Account IAX"
-
 #~ msgid "A valid username must be specified."
 #~ msgstr "Deve essere specificato un nome utente valido."
-
 #~ msgid "A valid secret must be specified."
 #~ msgstr "Deve essere specificata parola segreta valida."
-
 #~ msgid ""
 #~ "A whole number of seconds must be entered for the \"qualify\" timeout."
 #~ msgstr ""
 #~ "Un numero intero di secondi deve essere specificato per \"precisare\" il "
 #~ "timeout."
-
 #~ msgid "This account's password and authentication scheme."
 #~ msgstr "La password del account e lo schema di autenticazione."
-
 #~ msgid "IAX proxy host URL or IP address and optional port."
 #~ msgstr "Indirizzo del proxy IAX o indirizzo IP e porta opzionale."
-
 #~ msgid "Edit SIP Account"
 #~ msgstr "Modifica l'account SIP"
-
 #~ msgid "A valid \"fromuser\" must be specified."
 #~ msgstr "Deve essere specificato un \"da utente\" valido."
-
 #~ msgid "SIP proxy host URL or IP address and optional port."
 #~ msgstr "Indirizzo del proxy SIP o indirizzo IP e porta opzionale."
-
 #~ msgid "Diagnostics"
 #~ msgstr "Diagnostica"
-
 #~ msgid "Ping/Traceroute"
 #~ msgstr "Ping/Traceroute"
-
 #~ msgid "ARP Table"
 #~ msgstr "Tabella ARP"
-
 #~ msgid "ARP table"
 #~ msgstr "tabella ARP"
-
 #~ msgid "LAN"
 #~ msgstr "RETE"
-
 #~ msgid "IP address"
 #~ msgstr "Indirizzo IP"
-
 #~ msgid "MAC address"
 #~ msgstr "Indirizzo MAC"
-
 #~ msgid "delete arp entry"
 #~ msgstr "cancella i dati arp"
-
 #~ msgid "remove all entries from arp table"
 #~ msgstr "eliminare tutti i dati dalla tabella arp"
-
 #~ msgid "The specified file (%s) does not exist."
 #~ msgstr "Il file specificato (%s) non esiste."
-
 #~ msgid "File contents (%s) saved."
 #~ msgstr "Contenuto del file (%s) salvato."
-
 #~ msgid "File"
 #~ msgstr "File"
-
 #~ msgid "Contents"
 #~ msgstr "Contenuti"
-
 #~ msgid "Cancel"
 #~ msgstr "Annulla"
-
 #~ msgid "Open"
 #~ msgstr "Apri"
-
 #~ msgid ""
 #~ "This page allows direct execution of commands on the Asterisk console. "
 #~ "Execute \"help\" to see a list of possible commands."
@@ -3320,28 +3264,20 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Questa pagina permette l'eseuzione diretta di comandi nella console di "
 #~ "Asterisk. Eseguite  \"help\" per visualizzare la lista dei comandi "
 #~ "disponibili."
-
 #~ msgid "Output"
 #~ msgstr "Risultato"
-
 #~ msgid "Count must be between 1 and %d"
 #~ msgstr "Numero deve essere compreso tra 1 e %d"
-
 #~ msgid "Traceroute"
 #~ msgstr "Traceroute"
-
 #~ msgid "Ping output:"
 #~ msgstr "Ping risultati:"
-
 #~ msgid "Maximum number of hops must be between 1 and %d"
 #~ msgstr "Numero massimo di salti (hops) deve essere compreso tra 1 e %d"
-
 #~ msgid "Maximum number of hops"
 #~ msgstr "Numero massimo di salti (hops)"
-
 #~ msgid "Resolve IP addresses to hostnames"
 #~ msgstr "Risolvi gli indirizzi IP in nomi host"
-
 #~ msgid ""
 #~ "Traceroute may take a while to complete.  You may hit the Stop button on "
 #~ "your browser at any time to see the progress of failed traceroutes."
@@ -3349,43 +3285,30 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Traceroute: l'esecuzione di questo comando potrebbe richiedere del tempo. "
 #~ "E' possibile premere il pulsante Stop in qualsiasi momento per "
 #~ "visualizzare lo stato dell'operazione."
-
 #~ msgid "Traceroute output:"
 #~ msgstr "Risultato del traceroute:"
-
 #~ msgid "Live"
 #~ msgstr "In diretta"
-
 #~ msgid "Active Calls"
 #~ msgstr "Chiamate attive"
-
 #~ msgid "Click &quot;Enable firmware upload&quot; below."
 #~ msgstr "Clicca \"Abilita caricamento firmware\" qui sotto."
-
 #~ msgid "Enable firmware upload"
 #~ msgstr "Abilita il caricamento firmware"
-
 #~ msgid "Disable firmware upload"
 #~ msgstr "Disabilita il caricamento firmware"
-
 #~ msgid "Debug"
 #~ msgstr "Debug"
-
 #~ msgid "Start"
 #~ msgstr "Inizio"
-
 #~ msgid "Debugging"
 #~ msgstr "Debugging"
-
 #~ msgid "Stop"
 #~ msgstr "Ferma"
-
 #~ msgid "Debug Ouptut"
 #~ msgstr "Risultato del Debug"
-
 #~ msgid "Restart"
 #~ msgstr "Riavvia"
-
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "
 #~ "can utilize them. Be careful when configuring ISDN interfaces. Having a "
@@ -3398,28 +3321,20 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "errata configurazione di una singola porta in una determinata scheda "
 #~ "potrebbe rendere inutilizzabili dal sistema anche le altre porte della "
 #~ "medesima scheda."
-
 #~ msgid "No compatible ISDN interfaces detected."
 #~ msgstr "Nessuna interfaccia ISDN compatibile è stata rilevata."
-
 #~ msgid "Unit"
 #~ msgstr "Unità"
-
 #~ msgid "edit ISDN interface"
 #~ msgstr "modifica l'interfaccia ISDN"
-
 #~ msgid "Do you really want to forget this interface\\'s settings?"
 #~ msgstr "Vuoi veramente annullare le impostazioni di questa interfaccia?"
-
 #~ msgid "Operating Modes"
 #~ msgstr "Modi operativi"
-
 #~ msgid "unconfigured"
 #~ msgstr "non configurato"
-
 #~ msgid "Call Limit"
 #~ msgstr "Limite di chiamata"
-
 #~ msgid "calls"
 #~ msgstr "chiamate"
 
@@ -3428,55 +3343,40 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ msgstr ""
 #~ "Permette solo 'n' chiamate uscenti e 'n' chiamate entranti. (impostazione "
 #~ "predefinita: 2)"
-
 #~ msgid "Busy Limit"
 #~ msgstr "Limite occupato"
-
 #~ msgid ""
 #~ "Phone status will be switched to 'busy' with 'n' concurrent calls "
 #~ "(default: 1)"
 #~ msgstr ""
 #~ "Il telefono sarà 'occupato' con 'n' chiamate simultanee (impostazione "
 #~ "predefinita: 1)"
-
 #~ msgid "LAN net"
 #~ msgstr "rete LAN"
-
 #~ msgid "autoselect"
 #~ msgstr "Selezione automatica"
-
 #~ msgid "100BASE-TX full-duplex"
 #~ msgstr "100BASE-TX full-duplex"
-
 #~ msgid "100BASE-TX half-duplex"
 #~ msgstr "100BASE-TX half-duplex"
-
 #~ msgid "10BASE-T full-duplex"
 #~ msgstr "10BASE-T full-duplex"
-
 #~ msgid "10BASE-T half-duplex"
 #~ msgstr "10BASE-T half-duplex"
-
 #~ msgid "1000BASE-TX full-duplex"
 #~ msgstr "1000BASE-TX full-duplex"
-
 #~ msgid "French (France)"
 #~ msgstr "Francese (Francia)"
-
 #~ msgid "Japanese"
 #~ msgstr "Giapponese"
-
 #~ msgid "Portuguese (Brazil)"
 #~ msgstr "Portoghese (Brasile)"
-
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Nome descrittivo per questo telefono."
-
 #~ msgid "A whole number of calls must be entered for the \"call limit.\""
 #~ msgstr ""
 #~ "Un numero intero di secondi deve essere specificato per il \"limite "
 #~ "chiamate.\""
-
 #~ msgid "A whole number of calls must be entered for the \"busy limit.\""
 #~ msgstr ""
 #~ "Un numero intero di secondi deve essere specificato per \"limite occupato."
@@ -3485,10 +3385,8 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #, fuzzy
 #~ msgid "Advanced SIP Options"
 #~ msgstr "Impostazioni Avanzate"
-
 #~ msgid "The internal extension used to dial this phone."
 #~ msgstr "Interno usato per chiamare questo telefono."
-
 #~ msgid ""
 #~ "Number or string to be dialed to reach this telephone. This will be "
 #~ "dialed directly; outgoing pattern matching rules do not apply"
@@ -3496,29 +3394,22 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Numero o stringa da chiamare per raggiungere questo telefono. Questo sarà "
 #~ "chiamato direttamente; non vengono applicate le regole per i percorsi di "
 #~ "uscita"
-
 #~ msgid ""
 #~ "The phone number assigned to this account. Also this account's username."
 #~ msgstr ""
 #~ "Numero telefonico assegnato a questo profilo. Esso è anche il nome utente "
 #~ "del profilo stesso."
-
 #~ msgid "This phone's number (MSN)."
 #~ msgstr "Il numero di questo telefono (MSN)."
-
 #~ msgid "There are currently no phones defined."
 #~ msgstr "Al momento non ci sono telefoni definiti."
-
 #~ msgid "Checked phones will have access to this provider."
 #~ msgstr ""
 #~ "I telefoni contrassegnati avranno accesso a questo operatore telefonico."
-
 #~ msgid "send missed call notifications"
 #~ msgstr "invia le notifiche di chiamata"
-
 #~ msgid "don't send to voicemail when busy"
 #~ msgstr "non mandare alla casella vocale quando è occupato"
-
 #~ msgid ""
 #~ "An e-mail address. If entered, voicemail will be enabled on this "
 #~ "extension. Incoming messages will be sent to the given address."
@@ -3526,10 +3417,8 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Un indirizzo E-Mail. Se immesso, una casella vocale verrà abilitata su "
 #~ "questa interno. I messaggi entranti verranno mandati all'indirizzo "
 #~ "specificato"
-
 #~ msgid "Voicemail Services"
 #~ msgstr "Servizi Casella vocale"
-
 #~ msgid "must be configured</a> before this feature will work."
 #~ msgstr "deve essere configurato prima che questa servizio sia attivabile."
 
@@ -3544,57 +3433,42 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #, fuzzy
 #~ msgid "provider lines"
 #~ msgstr "Operatori telefonici"
-
 #~ msgid "SMTP"
 #~ msgstr "SMTP"
-
 #~ msgid "TLS certificates are currently not verified."
 #~ msgstr "Attualmente i certificati TLS non vengono verificati."
-
 #~ msgid "E-Mail Language"
 #~ msgstr "Lingua E-mail"
-
 #~ msgid "Public Direct Dial"
 #~ msgstr "Chiamate pubbliche dirette"
-
 #~ msgid "allow extension to be directly dialed over public networks"
 #~ msgstr ""
 #~ "permette che gli interni possano essere chiamati attraverso la rete "
 #~ "pubblica."
-
 #~ msgid ""
 #~ "Public name. Enter a string to map a friendly name to this extension."
 #~ msgstr ""
 #~ "Nome pubblico. Immettere una stringa per mappare un nome a questo interno."
-
 #~ msgid "There are currently no providers defined."
 #~ msgstr "Al momento non ci sono provider predefiniti."
-
 #~ msgid "direct outbound dialing via SIP uris"
 #~ msgstr "chiamata diretta in uscita via SIP uris"
-
 #~ msgid "Checked providers will be accessible from this phone."
 #~ msgstr "I provider contrassegnati saranno accessibili da questo telefono."
-
 #~ msgid "Internal extension used to reach this phone."
 #~ msgstr "Interno usato per raggiungere questo telefono."
-
 #~ msgid ""
 #~ "Detected ports on this page must be edited and saved before the system "
 #~ "can utilize them."
 #~ msgstr ""
 #~ "Le porte individuate e mostrate in questa pagina necessitano di opportune "
 #~ "impostazioni prima di poterle utilizzare nel sistema."
-
 #~ msgid "No compatible analog interfaces detected."
 #~ msgstr "Nessuna interfaccia analogica rilevata."
-
 #~ msgid "Gain (rx/tx)"
 #~ msgstr "Guadagno (rx/tx)"
-
 #~ msgid "edit analog interface"
 #~ msgstr "modifica l'interfaccia analogica"
-
 #~ msgid ""
 #~ "FXS interfaces connect to telephones and FXO interfaces connect to "
 #~ "provider lines. FXS interfaces produce electricity to power the telephone "
@@ -3604,7 +3478,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "le linee telefoniche. Le interfaccie FXS forniscono alimentazione e "
 #~ "corrente di chiamata al telefono mentre le interfaccie FXO le ricevono "
 #~ "dall'operatore telefonico. "
-
 #~ msgid ""
 #~ "Connecting a provider line to an FXS port can damage your hardware! If "
 #~ "you are unsure which ports are FXO or FXS on your card, configure and "
@@ -3614,13 +3487,10 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "hardware! Se non siete certi quali porte siano FXS o FXO sulla vostra "
 #~ "interfaccia, configurate e connettete un telefono alla porta prima di "
 #~ "collegarvi qualsiasi linea telefonica."
-
 #~ msgid "Edit Analog"
 #~ msgstr "Modifica  porta Analogica"
-
 #~ msgid "Interface #"
 #~ msgstr "l'interfaccia #"
-
 #~ msgid ""
 #~ "The echo canceller 'tap' size. Larger sizes more effectively cancel echo "
 #~ "but require more processing power."
@@ -3628,17 +3498,14 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Lunghezza di campionamento per il cancellatore d'eco. Valori più elevati "
 #~ "potrebbero rivelarsi più efficaci ma richiedono maggior potenza di "
 #~ "elaborazione."
-
 #~ msgid "In nearly all cases, 'Kewl Start' is the appropriate choice here."
 #~ msgstr "In quasi tutti i casi, 'Kewl Start' è la scelta più appropriata."
 
 #, fuzzy
 #~ msgid "This type of account can use this port."
 #~ msgstr "La password di questo account."
-
 #~ msgid "Line Gain"
 #~ msgstr "Guadagno di linea"
-
 #~ msgid ""
 #~ "Some analog connections may need adjustment to achieve an acceptable "
 #~ "audio level. Adjust the receive and transmit gain in decibels to amplify "
@@ -3647,20 +3514,16 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Per alcuni collegamenti analogici potrebbe essere necessaria una "
 #~ "regolazione per raggiungere un livello audio accettabile. Regolare il "
 #~ "guadagno in ricezione/trasmissione per amplificare o silenziare la linea."
-
 #~ msgid ""
 #~ "The time update interval must be either 0 (disabled) or between 6 and "
 #~ "1440."
 #~ msgstr ""
 #~ "L'intervallo di aggiornamento dell'ora deve essere o 0 (disabilitato) "
 #~ "oppure tra 6 e 1440."
-
 #~ msgid "name of the pbx host, without domain part"
 #~ msgstr "nome del centralino senza la parte dominio"
-
 #~ msgid "e.g. <em>pbx"
 #~ msgstr "es. <em>centralino"
-
 #~ msgid "Minutes between network time sync.; 300 recommended, or 0 to disable"
 #~ msgstr ""
 #~ "Tempo in Minuti tra le sincronizzazioni dell'orologio di sistema; 300 "
@@ -3677,84 +3540,59 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #, fuzzy
 #~ msgid "Configured"
 #~ msgstr "non configurato"
-
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr ""
 #~ "L'interfaccia selezionata verrà collegata all'interfaccia principale."
-
 #~ msgid "No matches found."
 #~ msgstr "Non è stata trovata alcuna corrispondenza."
-
 #~ msgid "PBX"
 #~ msgstr "Centralino"
-
 #~ msgid "Calls"
 #~ msgstr "Chiamate"
-
 #~ msgid "filter"
 #~ msgstr "filtro"
-
 #~ msgid "Clear Log"
 #~ msgstr "Pulisci registro"
-
 #~ msgid "Call Records"
 #~ msgstr " Registro Chiamate"
-
 #~ msgid "start"
 #~ msgstr "Data/Ora"
-
 #~ msgid "src"
 #~ msgstr "Sorg."
-
 #~ msgid "channels"
 #~ msgstr "Canale"
-
 #~ msgid "last app"
 #~ msgstr "Ultima app."
-
 #~ msgid "sec."
 #~ msgstr "Sec."
-
 #~ msgid "bill"
 #~ msgstr "Addebitabile"
-
 #~ msgid "disposition"
 #~ msgstr "Stato"
-
 #~ msgid "Clear log"
 #~ msgstr "Pulisci registro"
-
 #~ msgid "Asterisk log entries"
 #~ msgstr "Voci del registro degli eventi di Asterisk"
-
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""
 #~ "Il numero di voci da mostrare dal registro deve essere compreso tra 5 e "
 #~ "1000."
-
 #~ msgid "Show log entries in reverse order (newest entries on top)"
 #~ msgstr ""
 #~ "Visualizza le voci di registro in ordine inverso (mostra le voci più "
 #~ "recenti per prime)"
-
 #~ msgid "Number of log entries to show:"
 #~ msgstr "Numero di voci di registro da mostrare:"
-
 #~ msgid "Enable syslog'ing to remote syslog server"
 #~ msgstr "Abilita la registrazione al syslog server remoto"
-
 #~ msgid "Remote syslog server"
 #~ msgstr "Syslog server remoto"
-
 #~ msgid "IP address of remote syslog server"
 #~ msgstr "Indirizzo IP del syslog server remoto"
-
 #~ msgid "system events"
 #~ msgstr "eventi di sistema"
-
 #~ msgid "pbx events"
 #~ msgstr "eventi del centralino"
-
 #~ msgid "call detail records"
 #~ msgstr "registro dettaglio chiamate"
 
@@ -3767,56 +3605,40 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "Il servizio syslog invia pacchetti verso la porta 514 sul server remoto "
 #~ "specificato. Assicurarsi che le impostazioni del syslogd sul server "
 #~ "remoto accetti i messaggi da AskoziaPBX."
-
 #~ msgid "reset filter and reload firewall logs page"
 #~ msgstr "Ripristina i filtri e ricarica il registro del firewall."
-
 #~ msgid "Firewall"
 #~ msgstr "Firewall"
-
 #~ msgid "reload page"
 #~ msgstr "ricarica la pagina"
-
 #~ msgid "Subnet Mask"
 #~ msgstr "Maschera sottorete"
-
 #~ msgid "In/Out Packets"
 #~ msgstr "Pacchetti Ricevuti/Inviati"
-
 #~ msgid "In/Out Errors"
 #~ msgstr "Errori  Ricevuti/Inviati"
-
 #~ msgid "Collisions"
 #~ msgstr "Collisioni"
-
 #~ msgid "Last scan results"
 #~ msgstr "Risultato ultima scansione"
-
 #~ msgid "BSSID"
 #~ msgstr "BSSID"
-
 #~ msgid "Rate"
 #~ msgstr "Velocità"
-
 #~ msgid "Noise"
 #~ msgstr "Rumore"
 
 #, fuzzy
 #~ msgid "hidden"
 #~ msgstr "(nascosto)"
-
 #~ msgid "Associated stations"
 #~ msgstr "Stazioni associate"
-
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
 #~ msgid "Flags"
 #~ msgstr "Flags"
-
 #~ msgid "Capabilities"
 #~ msgstr "Capacità"
-
 #~ msgid ""
 #~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "
 #~ "mode<br>Capabilities: E = ESS (infrastructure mode), I = IBSS (ad-hoc "
@@ -3826,32 +3648,24 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "risparmio energia<br>Capacità: E = ESS (modalità infrastruttura), I = "
 #~ "IBSS (modalità ad-hoc), P = privacy (WEP/TKIP/AES), S = preambolo breve, "
 #~ "s = slot time breve"
-
 #~ msgid "No stations are associated at this time."
 #~ msgstr "Nessuna stazione associata in questo momento."
-
 #~ msgid "Attached"
 #~ msgstr "Collegato"
-
 #~ msgid "PH State"
 #~ msgstr "Stato PH"
-
 #~ msgid "Dialtone"
 #~ msgstr "Tono di chiamata"
-
 #~ msgid "Driver Type"
 #~ msgstr "Tipo driver"
-
 #~ msgid "Power Save"
 #~ msgstr "Risparmio energetico"
-
 #~ msgid "%s days, "
 #~ msgstr "%s giorni, "
 
 #, fuzzy
 #~ msgid "status"
 #~ msgstr "Stati"
-
 #~ msgid "ssid"
 #~ msgstr "ssid"
 
@@ -3867,7 +3681,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ msgstr ""
 #~ "Il sistema è stato ripristinato con le impostazioni predefinite e si sta "
 #~ "riavviando. Questa operazione potrebbe richiedere qualche minuto."
-
 #~ msgid ""
 #~ "If an analog interface is present but was not detected, please send <a "
 #~ "href=\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg"
@@ -3879,7 +3692,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">questo "
 #~ "collegamento</a> a <a href=\"mailto:michael@askozia.com\">michael@askozia."
 #~ "com</a>."
-
 #~ msgid ""
 #~ "If an ISDN interface is present but was not detected, please send <a href="
 #~ "\"ajax.cgi?exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">this "
@@ -3891,24 +3703,22 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ "exec_shell=/usr/sbin/pciconf%20-lv;/bin/echo;/bin/dmesg\">questo "
 #~ "collegamento</a> a <a href=\"mailto:michael@askozia.com\">michael@askozia."
 #~ "com</a>."
-
 #~ msgid ""
 #~ "If this is a USB ISDN device, send <a href=\"ajax.cgi?exec_shell=/sbin/"
 #~ "udesc_dump\">this output</a> as well."
 #~ msgstr ""
 #~ "Se si tratta di una periferica ISDN USB, inviate anche il risultato di <a "
 #~ "href=\"ajax.cgi?exec_shell=/sbin/udesc_dump\">questo collegamento</a>."
-
 #~ msgid ""
 #~ "Please <a href=\"mailto:michael@askozia.com\">contact us</a> if you are "
 #~ "able to provide a new translation."
 #~ msgstr ""
 #~ "Per favore <a href=\"mailto:michael@askozia.com\">contattaci</a> se sei "
 #~ "in grado di fornire una nuova traduzione."
-
 #~ msgid "AskoziaPBX webGUI"
 #~ msgstr "AskoziaPBX interfaccia WEB"
 
 #, fuzzy
 #~ msgid "AskoziaPBX"
 #~ msgstr "AskoziaPBX interfaccia WEB"
+
