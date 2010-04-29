@@ -159,7 +159,7 @@ include("fbegin.inc");
 			<input name="password2" type="password" class="formfld" id="password2" size="20">
 			&nbsp;(<?=gettext("confirmation");?>) <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span>
 		</td>
-	</tr>
+	</tr><? /*
 	<tr> 
 		<td valign="top" class="vncell"><?=gettext("webGUI protocol");?></td>
 		<td class="vtable">
@@ -167,7 +167,7 @@ include("fbegin.inc");
 			<?=gettext("HTTP");?> &nbsp;&nbsp;&nbsp; <input type="radio" name="webguiproto" value="https" <? if ($pconfig['webguiproto'] == "https") echo "checked"; ?>><?=gettext("HTTPS");?>
 		</td>
 	</tr>
-	<tr> 
+	*/ ?><tr> 
 		<td valign="top" class="vncell"><?=gettext("webGUI port");?></td>
 		<td class="vtable">
 			<input name="webguiport" type="text" class="formfld" id="webguiport" size="5" value="<?=htmlspecialchars($pconfig['webguiport']);?>">

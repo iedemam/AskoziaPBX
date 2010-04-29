@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: 2008-09-22 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2746,23 +2746,6 @@ msgid "Edit SIP Phone"
 msgstr "SIP Вътрешни"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "Възстановяване на настройките"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MAC Адрес"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "SIP Вътрешни"
 
@@ -3242,15 +3225,6 @@ msgstr ""
 "Ако искате да промените паролата за достъп до webGUI, въведете я тук два "
 "пъти."
 
-msgid "webGUI protocol"
-msgstr "webGUI протокол"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "webGUI порт"
 
@@ -3710,6 +3684,23 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Възстановяване на настройките"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MAC Адрес"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "webGUI протокол"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

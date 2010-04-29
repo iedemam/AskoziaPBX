@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2574,23 +2574,6 @@ msgid "Edit SIP Phone"
 msgstr "SİP Telefonları"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "Geri dönüşüm ayarları"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MAC Adresi"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "SİP Telefonları"
 
@@ -3040,15 +3023,6 @@ msgid ""
 "twice."
 msgstr "webGUİ için şifrenizi değiştirmek istiyorsanız, buraya iki kez yazın."
 
-msgid "webGUI protocol"
-msgstr "webGUİ protokolü"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr ""
 
@@ -3460,6 +3434,23 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Geri dönüşüm ayarları"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MAC Adresi"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "webGUİ protokolü"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Navigasyonda diagnozları açık tut"

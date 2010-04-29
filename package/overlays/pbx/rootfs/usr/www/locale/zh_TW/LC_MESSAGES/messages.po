@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2660,23 +2660,6 @@ msgid "Edit SIP Phone"
 msgstr "電話"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "恢復設置"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MAC地址"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "電話"
 
@@ -3136,15 +3119,6 @@ msgid ""
 "twice."
 msgstr "如果您想改變登陸本設置界面的密碼，請在這裏輸入兩次。"
 
-msgid "webGUI protocol"
-msgstr "網頁設置界面傳輸協定"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "網頁設置界面埠"
 
@@ -3577,6 +3551,23 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "恢復設置"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MAC地址"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "網頁設置界面傳輸協定"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

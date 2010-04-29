@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2791,23 +2791,6 @@ msgid "Edit SIP Phone"
 msgstr "Τηλέφωνα SIP"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "Επαναφορά ρυθμίσεων"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "Διεύθυνση MAC"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "Τηλέφωνα SIP"
 
@@ -3308,15 +3291,6 @@ msgstr ""
 "στη διαχείριση του τηλεφωνικού κέντρου, πληκτρολογήστε τον νέο κωδικό εδώ, "
 "δύο φορές."
 
-msgid "webGUI protocol"
-msgstr "Πρωτόκολλο περιβάλλοντος διαχείρισης"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "Θύρα περιβάλλοντος διαχείρισης"
 
@@ -3798,6 +3772,23 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Επαναφορά ρυθμίσεων"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "Διεύθυνση MAC"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "Πρωτόκολλο περιβάλλοντος διαχείρισης"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

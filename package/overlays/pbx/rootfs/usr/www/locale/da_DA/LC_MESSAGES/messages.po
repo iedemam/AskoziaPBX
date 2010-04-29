@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carsten Matzon <carsten@matzon.dk>\n"
 "Language-Team: \n"
@@ -2689,23 +2689,6 @@ msgid "Edit SIP Phone"
 msgstr "Telefoner"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "Genskab konfiguration"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MAC Adresse"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "Telefoner"
 
@@ -3175,15 +3158,6 @@ msgid ""
 "twice."
 msgstr "Hvis du vil ændre adgangskode for adgang til webGUI, så gør det her."
 
-msgid "webGUI protocol"
-msgstr "WebGUI protokol"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "webGUI port"
 
@@ -3629,6 +3603,23 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "Fejl: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Genskab konfiguration"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MAC Adresse"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "WebGUI protokol"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

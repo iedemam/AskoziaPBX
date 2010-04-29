@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Edwin Boeve <edwin.boeve@gmail.com>\n"
 "Language-Team: \n"
@@ -2659,28 +2659,6 @@ msgstr "Bewerk ISDN Telefoon"
 msgid "Edit SIP Phone"
 msgstr "Bewerk SIP Telefoons"
 
-msgid "Auto-Configuration"
-msgstr "Automatische Configuratie"
-
-msgid "SNOM MAC Address"
-msgstr "SNOM MAC Adres"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-"Als dit account voor een SNOM telefoon is en het MAC adres is hier "
-"opgegeven, kan de hardware automatisch worden geconfigureerd wanneer deze "
-"opnieuw wordt opgestart. Het MAC-adres kan op de telefoon worden weergegeven "
-"door het indrukken van de \"Help\" toets op de telefoon. Voer het adres hier "
-"precies in zoals deze op het scherm van de telefoon staat.<br><br> De "
-"telefoon HTTP interface wachtwoord is hetzelfde als het wachtwoord van deze "
-"extensie. Het telefoon beheerder wachtwoord is het extensie nummer."
-
 msgid "Edit Skinny Phone"
 msgstr "Bewerk Skinny Telefoon"
 
@@ -3133,15 +3111,6 @@ msgid ""
 "twice."
 msgstr "U kunt hier het wachtwoord voor de webGUI wijzigen."
 
-msgid "webGUI protocol"
-msgstr "webGUI protocol"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "webGUI poort"
 
@@ -3591,6 +3560,38 @@ msgstr "FOUT Kan configuratie niet installeren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "FOUT Verkeerde configuratie ontvangen.\n"
+
+#~ msgid "Auto-Configuration"
+#~ msgstr "Automatische Configuratie"
+
+#~ msgid "SNOM MAC Address"
+#~ msgstr "SNOM MAC Adres"
+
+#~ msgid ""
+#~ "If this account is for a SNOM telephone, the hardware can be "
+#~ "automatically configured when it reboots if its MAC address is entered "
+#~ "here. The MAC address can be displayed by pressing the phone's \"Help\" "
+#~ "button. Enter the address exactly as it appears on the screen.<br><br>The "
+#~ "phone's HTTP interface password will be the same as this extension's "
+#~ "password and the on-telephone admin password is the extension number."
+#~ msgstr ""
+#~ "Als dit account voor een SNOM telefoon is en het MAC adres is hier "
+#~ "opgegeven, kan de hardware automatisch worden geconfigureerd wanneer deze "
+#~ "opnieuw wordt opgestart. Het MAC-adres kan op de telefoon worden "
+#~ "weergegeven door het indrukken van de \"Help\" toets op de telefoon. Voer "
+#~ "het adres hier precies in zoals deze op het scherm van de telefoon staat."
+#~ "<br><br> De telefoon HTTP interface wachtwoord is hetzelfde als het "
+#~ "wachtwoord van deze extensie. Het telefoon beheerder wachtwoord is het "
+#~ "extensie nummer."
+
+#~ msgid "webGUI protocol"
+#~ msgstr "webGUI protocol"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "
 #~ msgstr ""

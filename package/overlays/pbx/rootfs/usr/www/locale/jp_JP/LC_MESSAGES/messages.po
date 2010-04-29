@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -2720,23 +2720,6 @@ msgid "Edit SIP Phone"
 msgstr "SIP電話機"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "設定ファイルのリストア"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MACアドレス"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "SIP電話機"
 
@@ -3214,15 +3197,6 @@ msgstr ""
 "webGUI用のパスワードを変更したい場合には、こちらに確認を含め２回入力して下さ"
 "い"
 
-msgid "webGUI protocol"
-msgstr "webGUIで使用するプロトコル"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "webGUIで使用するポート"
 
@@ -3690,6 +3664,23 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "設定ファイルのリストア"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MACアドレス"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "webGUIで使用するプロトコル"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

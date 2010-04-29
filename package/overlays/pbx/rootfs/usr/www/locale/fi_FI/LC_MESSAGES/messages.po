@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2729,23 +2729,6 @@ msgid "Edit SIP Phone"
 msgstr "SIP Puhelimet"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "Palauta konfigurointi"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MAC Osoite"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "SIP Puhelimet"
 
@@ -3224,15 +3207,6 @@ msgstr ""
 "Jos haluat vaihtaa verkkokäyttöliittymän salasanaa, anna uusi salasana "
 "kahdesti."
 
-msgid "webGUI protocol"
-msgstr "Verkkokäyttöliittymän protokolla"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "Verkkokäyttöliittymän portti"
 
@@ -3686,6 +3660,23 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Palauta konfigurointi"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MAC Osoite"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "Verkkokäyttöliittymän protokolla"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

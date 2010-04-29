@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -2776,23 +2776,6 @@ msgstr "ISDN-Leitung bearbeiten"
 msgid "Edit SIP Phone"
 msgstr "SIP-Nebenstellen"
 
-#, fuzzy
-msgid "Auto-Configuration"
-msgstr "Konfiguration zurücksichern"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "MAC-Adresse"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
 msgid "Edit Skinny Phone"
 msgstr ""
 
@@ -3275,15 +3258,6 @@ msgstr ""
 "Wenn Sie das Passwort für den Zugriff auf dei webGUI ändern wollen, dann "
 "geben Sie hier das neue zwei mal ein."
 
-msgid "webGUI protocol"
-msgstr "webGUI-Protokoll"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "webGUI-Port"
 
@@ -3762,6 +3736,23 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Konfiguration zurücksichern"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "MAC-Adresse"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "webGUI-Protokoll"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "

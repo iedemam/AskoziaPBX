@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 17:03+0200\n"
+"POT-Creation-Date: 2010-04-29 14:46+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2625,23 +2625,6 @@ msgid "Edit SIP Phone"
 msgstr "Teléfonos SIP"
 
 #, fuzzy
-msgid "Auto-Configuration"
-msgstr "Restaurar configuración"
-
-#, fuzzy
-msgid "SNOM MAC Address"
-msgstr "Dirección MAC"
-
-msgid ""
-"If this account is for a SNOM telephone, the hardware can be automatically "
-"configured when it reboots if its MAC address is entered here. The MAC "
-"address can be displayed by pressing the phone's \"Help\" button. Enter the "
-"address exactly as it appears on the screen.<br><br>The phone's HTTP "
-"interface password will be the same as this extension's password and the on-"
-"telephone admin password is the extension number."
-msgstr ""
-
-#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "Teléfonos SIP"
 
@@ -3106,15 +3089,6 @@ msgstr ""
 "Si desea cambiar la contraseña para acceder al webGUI, introdúzcala aquí dos "
 "veces."
 
-msgid "webGUI protocol"
-msgstr "webGUI protocol"
-
-msgid "HTTP"
-msgstr "HTTP"
-
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "webGUI port"
 msgstr "puerto de webGUI"
 
@@ -3547,6 +3521,23 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#, fuzzy
+#~ msgid "Auto-Configuration"
+#~ msgstr "Restaurar configuración"
+
+#, fuzzy
+#~ msgid "SNOM MAC Address"
+#~ msgstr "Dirección MAC"
+
+#~ msgid "webGUI protocol"
+#~ msgstr "webGUI protocol"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
 
 #, fuzzy
 #~ msgid "If you click &quot;Yes&quot;, the PBX will "
