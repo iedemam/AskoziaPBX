@@ -46,6 +46,7 @@ function extensions_conf_generate($return=false) {
 	$isdn_nt_interfaces = dahdi_get_ports("isdn", "nt");
 	$isdn_te_interfaces = dahdi_get_ports("isdn", "te");
 	$vmconfig = voicemail_get_configuration();
+	$emailconfig = notifications_get_email_configuration();
 
 	$product_name = system_get_product_name();
 
@@ -107,7 +108,7 @@ exten => mailnotification,n,System(touch $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "date: `date`" > $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "from: $product_name Notifications <{$vmconfig['address']}>" >> $\{TMPMAILFILE})
+exten => mailnotification,n,System(echo "from: $product_name Notifications <{$emailconfig['address']}>" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
 exten => mailnotification,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
