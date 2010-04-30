@@ -81,6 +81,7 @@ ln -s /offload/kernel-modules lib/modules
 echo "Stamping build ..."
 echo $config > etc/version
 echo `date` > etc/version.buildtime
+svn info $base > etc/version_svn
 
 echo "Creating links for identical files ..."
 link_identical_files
