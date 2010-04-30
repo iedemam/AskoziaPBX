@@ -3,7 +3,7 @@
  * 
  * Simple Syslog CDR logger - part of AskoziaPBX <http://askozia.com/pbx>
  * 
- * Copyright (C) 2008 IKT <http://www.itison-ikt.de> 
+ * Copyright (C) 2008 tecema (a.k.a IKT) <http://www.tecema.de> 
  *
  * See http://www.asterisk.org for more information about
  * the Asterisk project. Please do not directly contact

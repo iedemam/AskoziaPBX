@@ -3,7 +3,7 @@
 # $Id: rc.firmware 88 2007-05-14 14:07:11Z michael.iedema $
 # part of AskoziaPBX (http://askozia.com/pbx)
 #
-# Copyright (C) 2008 IKT <http://itison-ikt.de>.
+# Copyright (C) 2008 tecema (a.k.a IKT) <http://www.tecema.de>.
 # All rights reserved.
 
 PKGRC=$1

@@ -3,7 +3,7 @@
 # $Id$
 # part of AskoziaPBX (http://askozia.com/pbx)
 #
-# Copyright (C) 2010 IKT <http://itison-ikt.de>.
+# Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 # All rights reserved.
 
 # unset CGI environment variables so as not to confuse PHP

@@ -2,7 +2,7 @@
 	$Id: stats.c 52 2006-02-07 14:35:14Z mkasper $
 	part of AskoziaPBX (http://askozia.com/pbx)
     
-	Copyright (C) 2007-2008 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 
 	get_stat_cpu and get_stat_network originally 

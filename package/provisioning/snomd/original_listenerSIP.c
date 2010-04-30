@@ -2,7 +2,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
     
-	Copyright (C) 2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2009 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 
 	Originally authored by Elisa Martin Caro Zapardiel <elisamcz@gmail.com>

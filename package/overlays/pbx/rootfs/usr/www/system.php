@@ -6,7 +6,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 IKT <http://itison-ikt.de>.
+	Copyright (C) 2007-2009 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
