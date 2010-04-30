@@ -36,6 +36,7 @@ cp $base/target/$target/config.xml root_stage/conf/config.xml
 mkdir offload_stage
 mkdir offload_stage/asterisk
 mkdir offload_stage/kernel-modules
+mkdir offload_stage/software-information
 mkdir loop
 
 echo "Copy system into staging directories ..."
@@ -146,6 +147,10 @@ do
 NEW=`echo $FILE | sed -e 's/g711u/ulaw/'`
 mv "$FILE" "$NEW"
 done
+
+echo "Documenting software used in this build ..."
+svn info $base > offload_stage/software-information/00-svn-revision-information
+cp ../../var/adm/packages/* offload_stage/software-information/
 
 echo "Cleaning away stray files ..."
 find ./ -name "._*" -print -delete
