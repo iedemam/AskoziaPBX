@@ -687,7 +687,7 @@ msgid "Description"
 msgstr "Opis"
 
 msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Tutaj możesz dodać własny opis (opis ten nie jest parsowany)."
+msgstr "Tutaj możesz dodać własny opis (system z niego nie korzysta)."
 
 msgid "This 'external' number will be read back to the caller when reaching voicemail; defaults to account's username if it is numeric. If it is not, the internal extension this call was routed to will be read back."
 msgstr "Ten numer 'zewnętrzny' zostanie odczytany przy przekierowaniu do poczty głosowej. Domyślnie przyjmuje się nazwę użytkownika konta, jeśli ta jest wartością liczbową. Jeśli nie, odczytany zostaje numer wewnętrzny do którego skierowane było połączenie."
@@ -2488,7 +2488,7 @@ msgid "The main telephone number assigned to this line."
 msgstr "Główny numer telefonu przypisany do tej linii."
 
 msgid "Edit SIP Provider"
-msgstr "Edytuk Dostawcę SIP"
+msgstr "Edytuj Dostawcę SIP"
 
 msgid "Authorization User"
 msgstr "Użytkownik uwierzytelniający"
