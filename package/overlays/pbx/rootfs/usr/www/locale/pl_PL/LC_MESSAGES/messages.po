@@ -816,7 +816,7 @@ msgid "Conferencing"
 msgstr "Konferencje"
 
 msgid "Media"
-msgstr "Multimedia"
+msgstr "Pliki mediów"
 
 msgid "Summary"
 msgstr "Podsumowanie"
