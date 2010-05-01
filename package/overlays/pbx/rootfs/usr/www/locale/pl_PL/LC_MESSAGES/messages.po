@@ -2786,7 +2786,7 @@ msgid "The configuration could not be restored (file upload error)."
 msgstr "Konfiguracja nie może być przywrócona (błąd wysyłania pliku)."
 
 msgid "Backup configuration"
-msgstr "Konfiguracja backupu"
+msgstr "Backup konfiguracji"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr "Kliknij aby pobrać konfigurację systemu w formacie XML."
