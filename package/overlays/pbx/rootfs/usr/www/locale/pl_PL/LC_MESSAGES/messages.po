@@ -897,10 +897,10 @@ msgid "webGUI Configuration"
 msgstr "Konfiguracja webGUI"
 
 msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
-msgstr "AskoziaPBX &copy; 2007-2008 IKT. Wszystkie prawa zastrzeżone."
+msgstr "Askozia&reg;PBX &copy; 2007-2010 IKT. Wszystkie prawa zastrzeżone."
 
 msgid "view license"
-msgstr "pokaż licencje"
+msgstr "pokaż licencję"
 
 msgid "Echos audio and video back to the caller as soon as it is received. Used to test connection delay."
 msgstr "Powrót dźwięku i obrazu do dzwoniącego. Aplikacja wykorzystywana do testu latencji połączenia."
@@ -1270,7 +1270,7 @@ msgid "Jordan"
 msgstr "Jordania"
 
 msgid "Kazakhstan"
-msgstr "Kazahstan"
+msgstr "Kazachstan"
 
 msgid "Kuwait"
 msgstr "Kuwejt"
@@ -1318,7 +1318,7 @@ msgid "Slovenia"
 msgstr "Słowenia"
 
 msgid "South Korea"
-msgstr "Koreo południowa"
+msgstr "Korea południowa"
 
 msgid "Syria"
 msgstr "Syria"
@@ -2234,7 +2234,7 @@ msgid "Authentication Method"
 msgstr "Metoda uwierzytelniania"
 
 msgid "Most accounts will work using 'auto'. If this fails, select an authentication method appropriate for your server."
-msgstr "Większość kont działa używając ustawienia 'automatycznie'. Jeśli wystąpi problem należy wybrać metodę autoryzacji dla serwera."
+msgstr "Większość kont działa używając ustawienia 'automatycznie'. Jeśli wystąpi problem należy wybrać odpowiednią metodę uwierzytelnienia dla serwera."
 
 msgid "Encryption Method"
 msgstr "Metoda Szyfrowania"
@@ -2491,10 +2491,10 @@ msgid "Edit SIP Provider"
 msgstr "Edytuk Dostawcę SIP"
 
 msgid "Authorization User"
-msgstr "Użytkownik Autoryzujący"
+msgstr "Użytkownik uwierzytelniający"
 
 msgid "Some providers require a seperate username for authorization.<br>Defaults to username entered above."
-msgstr "Niektórzy dostawcy wymagają oddzielnego użytkownika autoryzującego.<br>Domyślnie nazwa użytkownika podana wyżej."
+msgstr "Niektórzy dostawcy wymagają oddzielnego użytkownika uwierzytelniającego.<br>Domyślnie system używa nazwy użytkownika podanej powyżej."
 
 msgid "From User"
 msgstr "Nadawca"
