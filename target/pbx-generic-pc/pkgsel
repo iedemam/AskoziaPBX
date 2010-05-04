@@ -93,6 +93,7 @@ X ntpclient
 X ezipupdate
 X pciutils
 X lsof
+X verifysig
 
 # redfone
 X fonulator

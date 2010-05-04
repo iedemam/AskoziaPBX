@@ -51,6 +51,7 @@
 #include <openssl/x509.h>
 #include <openssl/err.h>
 #include <openssl/pem.h>
+#include <unistd.h>
 
 #define SIG_MAGIC		0xe14d77cb		/* XXX - not byte order safe! */
 #define SIG_INBUFLEN	65536

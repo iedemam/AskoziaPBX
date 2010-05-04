@@ -91,6 +91,7 @@ X msmtp
 X ntpclient
 X ezipupdate
 X lsof
+X verifysig
 
 # file system overlay
 X pbx
