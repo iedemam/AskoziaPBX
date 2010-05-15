@@ -2586,7 +2586,7 @@ msgid "downloading"
 msgstr "pobieranie"
 
 msgid "extracting"
-msgstr "wypakowywania"
+msgstr "rozpakowywanie"
 
 msgid "installing"
 msgstr "instalowanie"
