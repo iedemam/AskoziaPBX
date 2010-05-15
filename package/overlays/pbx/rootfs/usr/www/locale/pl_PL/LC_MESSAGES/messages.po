@@ -2577,7 +2577,7 @@ msgstr "Zapowiedzi głosowe"
 
 #, php-format
 msgid "Successfully installed %s formatted prompts for %s."
-msgstr "Zainstalowano %s zapytań dla %s."
+msgstr "Zainstalowano zestaw zapytań %s dla %s."
 
 msgid "Adding"
 msgstr "Dodawanie"
