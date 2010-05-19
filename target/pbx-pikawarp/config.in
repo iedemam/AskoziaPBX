@@ -18,15 +18,15 @@
 SDECFGSET_INIT='busybox'
 
 # architecture
-SDECFG_ARCH="powerpc"
-#SDECFG_X86_OPT="i486"
+SDECFGSET_ARCH="powerpc"
+SDECFGSET_POWERPC_ISA="powerpc"
+SDECFG_POWERPC_OPT="440fp"
 
 # firmware type
-SDECFGSET_IMAGE='firmware'
+SDECFGSET_IMAGE='ubootimage'
 
 # kernel options
 SDECFGSET_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config"
-#SDECFGSET_PKG_LINUX_CUSTCONFIG_FILE="target/$target/linux.config.nfs"
 SDECFGSET_PKG_LINUX_CONFIG_STYLE='none'
 SDECFGSET_PKG_LINUX_CUSTCONFIG='1'
 SDECFGSET_PKG_LINUX_USE26MODTOOLS='1'
