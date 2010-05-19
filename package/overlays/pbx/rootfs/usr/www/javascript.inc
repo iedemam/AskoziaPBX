@@ -127,6 +127,13 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
+	if (count($a_items = fax_get_machines())) {
+		$options[] = array("", gettext("Fax Machines"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['uniqid'], $pad . $item['name'] . " &lt;" . $item['number'] . "&gt;");
+		}
+	}
+	
 	if (count($a_items = applications_get_apps())) {
 		$options[] = array("", gettext("Applications"));
 		foreach ($a_items as $item) {

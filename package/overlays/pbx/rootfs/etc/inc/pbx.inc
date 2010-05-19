@@ -739,7 +739,7 @@ function pbx_get_peer_statuses() {
  */
 function pbx_replace_uniqids_with_names($string) {
 	
-	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|SKINNY|CONFERENCE|CALLGROUP|EXTERNAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL){1}-[0-9a-zA-Z]+/";
+	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|SKINNY|CONFERENCE|CALLGROUP|EXTERNAL|FAX){1}-(PROVIDER|PHONE|ROOM|PARALLEL|MACHINE){1}-[0-9a-zA-Z]+/";
 
 	preg_match_all($uniqid_regex, $string, $uniqids);
 	if (!is_array($uniqids)) {

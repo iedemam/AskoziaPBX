@@ -50,6 +50,7 @@ $d_extensionsconfdirty_path = $g['varrun_path'] . "/extensionsconf.dirty";
 $d_featuresconfdirty_path = $g['varrun_path'] . "/featuresconf.dirty";
 $d_conferencingconfdirty_path = $g['varrun_path'] . "/conferencingconf.dirty";
 $d_conferencing_kicked_path = $g['varrun_path'] . "/conferencing.kicked";
+$d_faxconfdirty_path = $g['varrun_path'] . "/faxconf.dirty";
 $d_managerconfdirty_path = $g['varrun_path'] . "/managerconf.dirty";
 $d_rtpconfdirty_path = $g['varrun_path'] . "/rtpconf.dirty";
 $d_packageconfdirty_path = $g['varrun_path'] . "/packageconf.dirty";
