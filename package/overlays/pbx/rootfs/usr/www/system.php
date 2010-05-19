@@ -263,6 +263,7 @@ include("fbegin.inc");
 		<td valign="top">&nbsp;</td>
 		<td>
 			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
+			<input name="webguiproto" id="webguiproto" type="hidden" value="http">
 		</td>
 	</tr>
 </table>
