@@ -46,12 +46,14 @@ function dynamic_menu(&$menu, $menu_title) {
 	global $allowed, $config;
 
 	// Make sure the admin can see everything
-	if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
+	// ...disable this check since individual user/group permissions and logins
+	// are not implemented yet...
+	//if ($_SERVER['REMOTE_USER'] === $config['system']['username']) {
 		unset($allowed);
    		foreach ($menu as $item) {
         	$allowed[] = $item[0];
 		}
-	}
+	//}
 	
 	foreach ($menu as $desc => $links) {
 		if ($intersect = array_intersect($menu[$desc],$allowed)) {
@@ -123,7 +125,7 @@ function dynamic_menu(&$menu, $menu_title) {
 // $allowed is set in auth.inc *IF* the user is not the webGUI admin
 // so, if it's not set here, they were the admin user when they submited the admin username change.
 if ((!is_array($allowed)) and 
-    ($_SERVER['PHP_SELF'] == '/system.php') and 
+    ($_SERVER['SCRIPT_NAME'] == '/system.php') and 
     ($_SERVER['REMOTE_USER'] != $config['system']['username'])) {
 	// webGUI username was just changed, let us change what PHP sees the remote user as so
 	// the menu will build properly.  When user hits next link, they will be prompted to reauthenticate.

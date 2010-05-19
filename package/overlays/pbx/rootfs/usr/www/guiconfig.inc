@@ -213,11 +213,13 @@ function get_std_save_message($ok) {
 function dynamic_tab_menu(&$tabs) {
 	global $allowed, $config;
 
-	if ($_SERVER['REMOTE_USER'] == $config['system']['username']) {
+	// ...disable this check since individual user/group permissions and logins
+	// are not implemented yet...
+	//if ($_SERVER['REMOTE_USER'] == $config['system']['username']) {
 		$authorized = &$tabs;
-	} else {
-		$authorized = &$allowed;
-	}
+	//} else {
+	//	$authorized = &$allowed;
+	//}
 
 	foreach ($tabs as $desc => $link) {
 		if (in_array($link,$authorized)) {
