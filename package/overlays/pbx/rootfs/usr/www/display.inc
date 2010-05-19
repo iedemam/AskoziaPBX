@@ -63,6 +63,13 @@ function display_passwd_generation() {
 
 function display_gui_language_selector($current_language) {
 
+	$locale_status = array();
+	$lines = explode("\n", file_get_contents("/usr/www/locale/locale_status.txt"));
+	foreach ($lines as $line) {
+		$pair = explode(" ", $line);
+		$locale_status[$pair[0]] = $pair[1];
+	}
+
 	$languages = array(
 		"en_US" => "English",
 		"bg_BG" => "Български",
@@ -78,11 +85,11 @@ function display_gui_language_selector($current_language) {
 		"pl_PL" => "Polski",
 		"nl_NL" => "Nederlands",
 		"jp_JP" => "日本語",
-//		"pt_BR" => "Português",
+		"pt_BR" => "Português",
 		"fi_FI" => "Suomi",
-//		"se_SE" => "Svenska",
-		"tr_TR" => "Türkçe"
-//		"ru_RU" => "Русский язык"
+		"se_SE" => "Svenska",
+		"tr_TR" => "Türkçe",
+		"ru_RU" => "Русский язык"
 	);
 
 	?><tr> 
@@ -93,7 +100,11 @@ function display_gui_language_selector($current_language) {
 			<option value="<?=$lang;?>" <?
 			if ($lang == $current_language)
 				echo "selected"; ?>
-			><?=$langdesc;?></option>
+			><?=$langdesc;?><?
+				if ($lang != "en_US" && $locale_status[$lang] < 85) {
+					echo " (" . $locale_status[$lang] . "%)";
+				}
+			?></option>
 			<? endforeach; ?>
 			</select>
 			<br><span class="vexpl"><?=spanify(gettext("Select in which language you want the webGUI to be displayed.")); ?>
