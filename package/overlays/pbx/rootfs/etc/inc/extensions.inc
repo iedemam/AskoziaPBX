@@ -914,13 +914,15 @@ function extensions_generate_fax_machine_extension($m, $from_public=false, $exte
     $conf .= "exten => h,n,System(echo \"to: ".$m['email']."\" >> /tmp/email-$\{UNIQUEID})\n";
     $conf .= "exten => h,n,System(echo \"subject: New FAX from \$\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
     $conf .= "exten => h,n,System(echo \"from:  $\{PRODUCTNAME} Notifications <$\{SENDEREMAIL}>\" >> /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(echo >> \${TMPMAILFILE})\n";
-//    $conf .= "exten => h,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
+    $conf .= "exten => h,n,System(echo >> /tmp/email-$\{UNIQUEID}\n";
+    $conf .= "exten => h,n,System(echo \"$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
     $conf .= "exten => h,n,System(uuencode /tmp/$\{UNIQUEID}.pdf fax.pdf >> /tmp/email-$\{UNIQUEID})\n";
     $conf .= "exten => h,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < /tmp/email-$\{UNIQUEID})\n";
-//      $conf .= "exten => h,n,System(mv /tmp/$\{UNIQUEID}.pdf /path/to/peristent_fax_archive)\n";
     $conf .= "exten => h,n,System(rm /tmp/$\{UNIQUEID})\n";
     $conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID})\n";
+	// To implement, peristent storage archive for fax-pdf
+	//      $conf .= "exten => h,n,System(mv /tmp/$\{UNIQUEID}.pdf /path/to/peristent_fax_archive)\n";
+	$conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID}.pdf)\n";
 	$conf .= "\n";
 
 	return $conf;
