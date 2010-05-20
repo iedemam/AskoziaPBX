@@ -49,7 +49,7 @@ mkdir loop
 echo "Copy system into staging directories ..."
 #cp ../../usr/lib/grub/i386-t2/stage{1,2} root_stage/boot/grub/
 #cp $base/target/$target/menu.lst root_stage/boot/grub/
-cp ../../boot/vmlinux root_stage/boot/
+cp ../../boot/cuImage.warp root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 rm -rf offload_stage/asterisk/agi-bin

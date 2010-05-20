@@ -1,0 +1,11 @@
+#!/bin/sh
+echo "Install mkimage ..."
+mkdir /tmp/setupenvironment
+cd /tmp/setupenvironment
+wget ftp://ftp.denx.de/pub/u-boot/u-boot-2010.03.tar.bz2
+tar jxf u-boot-2010.03.tar.bz2
+cd u-boot-2010.03
+make tools
+cp tools/mkimage /usr/sbin/mkimage
+
+echo "done"
