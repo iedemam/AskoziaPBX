@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Edwin Boeve <edwin.boeve@gmail.com>\n"
 "Language-Team: \n"
@@ -3003,50 +3003,6 @@ msgstr "Toegangs Pincode"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Optionele pincode vereist om in deze vergaderruimte te komen"
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Omschrijving"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Hoofd Nummer"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "Naam van voicemail ontvanger"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Bewerken"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Vergaderruimte nummers moet nummeriek zijn"
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Vergadernummer bestaat al"
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "Vergadernummer is gelijk aan een bestaande extensie."
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-"Het vergadernummer, ook wel de extensie waarop deze vergadering te bereiken "
-"is."
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Een geldig e-mail adres moet opgegeven worden voor het \"van\" adres."
 
@@ -3668,6 +3624,44 @@ msgstr "FOUT Kan configuratie niet installeren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "FOUT Verkeerde configuratie ontvangen.\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Omschrijving"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Hoofd Nummer"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "Naam van voicemail ontvanger"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Bewerken"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Vergaderruimte nummers moet nummeriek zijn"
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Vergadernummer bestaat al"
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "Vergadernummer is gelijk aan een bestaande extensie."
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr ""
+#~ "Het vergadernummer, ook wel de extensie waarop deze vergadering te "
+#~ "bereiken is."
 
 #~ msgid "Auto-Configuration"
 #~ msgstr "Automatische Configuratie"

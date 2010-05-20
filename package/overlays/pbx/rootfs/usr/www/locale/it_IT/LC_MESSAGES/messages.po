@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -3032,52 +3032,6 @@ msgstr "PIN d'accesso"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Può essere specificato un codice PIN per accedere a questa conferenza."
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Descrizione"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Numero Principale"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "Nome del destinatario della casella vocale"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Modifica"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Il numero di una sala conferenze deve contenere solo cifre."
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Questo numero di sala conferenza esiste già."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr ""
-"Il numero scelto per questo sevizio conferenza corrisponde a quello di un "
-"derivato esistente."
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-"Il numero della conferenza rappresenta quello del derivato virtuale da "
-"chiamare per parteciparvi."
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Un indirizzo di E-Mail deve essere specificato nel campo \"da indirizzo\"."
@@ -3714,6 +3668,46 @@ msgstr "ERR Non posso installare la configurazione.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta non è valida.\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Descrizione"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Numero Principale"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "Nome del destinatario della casella vocale"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Modifica"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Il numero di una sala conferenze deve contenere solo cifre."
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Questo numero di sala conferenza esiste già."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr ""
+#~ "Il numero scelto per questo sevizio conferenza corrisponde a quello di un "
+#~ "derivato esistente."
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr ""
+#~ "Il numero della conferenza rappresenta quello del derivato virtuale da "
+#~ "chiamare per parteciparvi."
 
 #~ msgid "Auto-Configuration"
 #~ msgstr "Configurazione Automatica"

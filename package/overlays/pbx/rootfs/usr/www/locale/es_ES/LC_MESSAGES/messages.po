@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2969,48 +2969,6 @@ msgstr "PIN de acceso"
 msgid "Optional PIN needed to access this conference room."
 msgstr "El PIN opcional se necesita para acceder a esta sala de conferencia."
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Descripción"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Número"
-
-msgid "email Receipient"
-msgstr ""
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Editar"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr ""
-"Los carácteres identificativos de las salas de conferencia deben ser "
-"numéricos"
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "El número de conferencia ya existe."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "El número de conferencia corresponde a una extensión existente."
-
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Debe ser especificada una dirección de e-mail para la \"dirección remitente\""
@@ -3624,6 +3582,36 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Descripción"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Número"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Editar"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr ""
+#~ "Los carácteres identificativos de las salas de conferencia deben ser "
+#~ "numéricos"
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "El número de conferencia ya existe."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "El número de conferencia corresponde a una extensión existente."
 
 #, fuzzy
 #~ msgid "Auto-Configuration"

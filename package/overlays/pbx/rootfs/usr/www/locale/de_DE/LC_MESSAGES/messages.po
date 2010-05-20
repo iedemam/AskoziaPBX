@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -3024,50 +3024,6 @@ msgstr "Zugriffs-PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "optionale PIN für den Zugriff auf diesen Konferenzraum"
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Beschreibung"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Hauptnummer"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "Name des Voicemail-Empfängers"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Bearbeiten"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Konferenzraum-Nummern müssen numerisch sein."
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Diese Konferenzraumnummer ist bereits vergeben."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "Diese Konferenzraumnummer kollidiert mit einer Nebenstelle."
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-"Konferenzraum-Nummer, diese ist gleichfalls die Nebenstelle unter der der "
-"Raum erreichbar ist."
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Eine gültige eMail-Adresse muß als \"Absender-Adresse\" angegeben werden."
@@ -3707,6 +3663,44 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Beschreibung"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Hauptnummer"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "Name des Voicemail-Empfängers"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Bearbeiten"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Konferenzraum-Nummern müssen numerisch sein."
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Diese Konferenzraumnummer ist bereits vergeben."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "Diese Konferenzraumnummer kollidiert mit einer Nebenstelle."
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr ""
+#~ "Konferenzraum-Nummer, diese ist gleichfalls die Nebenstelle unter der der "
+#~ "Raum erreichbar ist."
 
 #, fuzzy
 #~ msgid "Auto-Configuration"

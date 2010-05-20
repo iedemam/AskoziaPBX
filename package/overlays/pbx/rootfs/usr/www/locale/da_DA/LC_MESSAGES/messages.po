@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -2957,50 +2957,6 @@ msgstr "Adgangs PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Optinal PIN kode for at få adgang til dette konference rum."
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Beskrivelse"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Hoved nummer"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "navn på telefonsvaren"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Rediger"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Konference rum skal være numerisk."
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Konference nummer eksisterer allerede."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "Konference nummer er samme som en eksisterende extension."
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-"Nummeret på konferencen, som også vil være det nummer på den linie som "
-"bruges ved opkald til denne konference."
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "En gyldig email adresse skal angives i \"fra addesse\"."
 
@@ -3608,6 +3564,44 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Beskrivelse"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Hoved nummer"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "navn på telefonsvaren"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Rediger"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Konference rum skal være numerisk."
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Konference nummer eksisterer allerede."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "Konference nummer er samme som en eksisterende extension."
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr ""
+#~ "Nummeret på konferencen, som også vil være det nummer på den linie som "
+#~ "bruges ved opkald til denne konference."
 
 #~ msgid "Auto-Configuration"
 #~ msgstr "Auto-konfiguration"

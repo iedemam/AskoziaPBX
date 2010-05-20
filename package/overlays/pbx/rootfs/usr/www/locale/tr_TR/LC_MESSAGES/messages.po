@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2913,47 +2913,6 @@ msgstr "Giriş PİN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Bu konferans odasına giriş için isteğe bağlı PİN gerekli."
 
-#, fuzzy
-msgid "FAX"
-msgstr "İAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Açıklama"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Numara"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "sesli mesaj alıcının adı"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Düzenle"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Konferans oda numaraları sayısal olmalı."
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Konferans numarası zaten mevcut."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "Konferans numarası mevcut  bir hatta kullanılıyor."
-
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\" için geçerli e-posta adresi belirtilmeli."
 
@@ -3534,6 +3493,38 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "İAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Açıklama"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Numara"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "sesli mesaj alıcının adı"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Düzenle"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Konferans oda numaraları sayısal olmalı."
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Konferans numarası zaten mevcut."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "Konferans numarası mevcut  bir hatta kullanılıyor."
 
 #, fuzzy
 #~ msgid "Auto-Configuration"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3006,47 +3006,6 @@ msgstr "接入驗證碼(PIN)"
 msgid "Optional PIN needed to access this conference room."
 msgstr "接入此會議室需要可選的驗證碼。"
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "描述"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "數量"
-
-msgid "email Receipient"
-msgstr ""
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "編輯"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "會議室號碼必須是數字。"
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "會議室號碼重復。"
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "會議室號碼與一個存在的分機沖突。"
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr "會議室的號碼，就是分機可以撥打"
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "必須為\"來自地址\"指定一個有效的電郵地址。"
 
@@ -3652,6 +3611,38 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "描述"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "數量"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "編輯"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "會議室號碼必須是數字。"
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "會議室號碼重復。"
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "會議室號碼與一個存在的分機沖突。"
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr "會議室的號碼，就是分機可以撥打"
 
 #, fuzzy
 #~ msgid "Auto-Configuration"

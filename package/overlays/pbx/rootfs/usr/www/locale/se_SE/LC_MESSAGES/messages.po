@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2734,39 +2734,6 @@ msgid "Access PIN"
 msgstr ""
 
 msgid "Optional PIN needed to access this conference room."
-msgstr ""
-
-msgid "FAX"
-msgstr ""
-
-msgid "FAX-Receiver Description"
-msgstr ""
-
-msgid "Fax Number"
-msgstr ""
-
-msgid "email Receipient"
-msgstr ""
-
-msgid "add fax"
-msgstr ""
-
-msgid "Edit Fax"
-msgstr ""
-
-msgid "Fax numbers must be numeric."
-msgstr ""
-
-msgid "Fax number already exists."
-msgstr ""
-
-msgid "Fax number matches an existing extension."
-msgstr ""
-
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-
-msgid "Receipient email"
 msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."

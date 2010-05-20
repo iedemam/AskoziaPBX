@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -2976,50 +2976,6 @@ msgstr "Код за Достъп"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Незадължителен код необходим за достъп до тази стая за конференции."
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Описание"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Основен Номер"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "име на получателя"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Редактиране"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Номера на стая за конференции трябва да е от цифри."
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Конференцията вече съществува."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "Конференцията съвпада със съществуващ вътрешен номер."
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-"Номер на стая за конференции, също така и вътрешен номер с който тази "
-"конференция ще се избира."
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "A valid e-mail address must be specified for the \"from address\"."
 
@@ -3630,6 +3586,44 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Описание"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Основен Номер"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "име на получателя"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Редактиране"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Номера на стая за конференции трябва да е от цифри."
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Конференцията вече съществува."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "Конференцията съвпада със съществуващ вътрешен номер."
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr ""
+#~ "Номер на стая за конференции, също така и вътрешен номер с който тази "
+#~ "конференция ще се избира."
 
 #~ msgid "Auto-Configuration"
 #~ msgstr "Автоматично Конфигуриране"

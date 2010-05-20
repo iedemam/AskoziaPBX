@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -3075,48 +3075,6 @@ msgstr "入室用パスワード"
 msgid "Optional PIN needed to access this conference room."
 msgstr "この会議室に入室するのに必要なパスワード(オプション)"
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "説明"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "番号"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "ボイスメールの受信者名"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "編集"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "電話会議室の番号は数字である必要があります"
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "会議室番号は、既に存在しています"
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr "会議室番号が既存の内線番号と一致します"
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr "会議室番号は、内線番号と同様にダイヤルしてご利用になれます"
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\"に対して、有効なe-mailアドレスを指定する必要があります"
 
@@ -3766,6 +3724,42 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "説明"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "番号"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "ボイスメールの受信者名"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "編集"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "電話会議室の番号は数字である必要があります"
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "会議室番号は、既に存在しています"
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr "会議室番号が既存の内線番号と一致します"
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr "会議室番号は、内線番号と同様にダイヤルしてご利用になれます"
 
 #, fuzzy
 #~ msgid "Auto-Configuration"

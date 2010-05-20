@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -2964,50 +2964,6 @@ msgstr "Kod dostępu PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Opcjonalny kod PIN niezbędny do dostępu do tej sali."
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Opis"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Numer główny"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "nazwa adresata poczty głosowej"
-
-msgid "add fax"
-msgstr ""
-
-#, fuzzy
-msgid "Edit Fax"
-msgstr "Edytuj"
-
-#, fuzzy
-msgid "Fax numbers must be numeric."
-msgstr "Numery sal konferenyjnych muszą być liczbami."
-
-#, fuzzy
-msgid "Fax number already exists."
-msgstr "Numer sali konferencyjnej już istnieje."
-
-#, fuzzy
-msgid "Fax number matches an existing extension."
-msgstr ""
-"Numer sali konferencyjnych pokrywa się z istniejącym już numerem telefonu."
-
-#, fuzzy
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-"Numer sali konferencyjnej oraz numer wewnętrzny pod którą jest osiągalna."
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "W polu \"Adres źródłowy\" musi znajdować się poprawny adres e-mail."
 
@@ -3628,6 +3584,44 @@ msgstr "BŁĄD Nie zdołano zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Opis"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Numer główny"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "nazwa adresata poczty głosowej"
+
+#, fuzzy
+#~ msgid "Edit Fax"
+#~ msgstr "Edytuj"
+
+#, fuzzy
+#~ msgid "Fax numbers must be numeric."
+#~ msgstr "Numery sal konferenyjnych muszą być liczbami."
+
+#, fuzzy
+#~ msgid "Fax number already exists."
+#~ msgstr "Numer sali konferencyjnej już istnieje."
+
+#, fuzzy
+#~ msgid "Fax number matches an existing extension."
+#~ msgstr ""
+#~ "Numer sali konferencyjnych pokrywa się z istniejącym już numerem telefonu."
+
+#, fuzzy
+#~ msgid "The Fax's number, also the extension that this fax is reachable at."
+#~ msgstr ""
+#~ "Numer sali konferencyjnej oraz numer wewnętrzny pod którą jest osiągalna."
 
 #~ msgid "Auto-Configuration"
 #~ msgstr "Auto-Konfiguracja"

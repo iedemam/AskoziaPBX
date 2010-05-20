@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 14:51+0200\n"
+"POT-Creation-Date: 2010-05-20 18:07+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2948,43 +2948,6 @@ msgstr "Přístupový kód (PIN)"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Pro přístup do této konference je třeba dodatečně zadat PIN."
 
-#, fuzzy
-msgid "FAX"
-msgstr "IAX"
-
-#, fuzzy
-msgid "FAX-Receiver Description"
-msgstr "Poznámka"
-
-#, fuzzy
-msgid "Fax Number"
-msgstr "Číslo konference"
-
-#, fuzzy
-msgid "email Receipient"
-msgstr "jméno uživatele hlasové schránky"
-
-msgid "add fax"
-msgstr ""
-
-msgid "Edit Fax"
-msgstr ""
-
-msgid "Fax numbers must be numeric."
-msgstr ""
-
-msgid "Fax number already exists."
-msgstr ""
-
-msgid "Fax number matches an existing extension."
-msgstr ""
-
-msgid "The Fax's number, also the extension that this fax is reachable at."
-msgstr ""
-
-msgid "Receipient email"
-msgstr ""
-
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
@@ -3582,6 +3545,22 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "FAX"
+#~ msgstr "IAX"
+
+#, fuzzy
+#~ msgid "FAX-Receiver Description"
+#~ msgstr "Poznámka"
+
+#, fuzzy
+#~ msgid "Fax Number"
+#~ msgstr "Číslo konference"
+
+#, fuzzy
+#~ msgid "email Receipient"
+#~ msgstr "jméno uživatele hlasové schránky"
 
 #, fuzzy
 #~ msgid "Auto-Configuration"
