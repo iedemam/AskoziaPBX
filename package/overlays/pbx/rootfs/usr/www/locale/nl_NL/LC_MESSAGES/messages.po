@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Edwin Boeve <edwin.boeve@gmail.com>\n"
 "Language-Team: \n"
@@ -324,6 +324,12 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+"Voicemail naar e-mail ingeschakeld, maar het e-mail adres is verkeerd of "
+"ontbreekt."
+
+#, fuzzy
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 "Voicemail naar e-mail ingeschakeld, maar het e-mail adres is verkeerd of "
 "ontbreekt."
@@ -916,11 +922,15 @@ msgstr "Telefoon Poorten"
 msgid "Gateways"
 msgstr "Gateways"
 
+msgid "Providers"
+msgstr "Providers"
+
 msgid "Phones"
 msgstr "Telefoons"
 
-msgid "Providers"
-msgstr "Providers"
+#, fuzzy
+msgid "Faxes"
+msgstr "Vlaggen"
 
 msgid "Applications"
 msgstr "Applicaties"
@@ -1279,6 +1289,9 @@ msgstr "Externe Telefoons"
 msgid "Conference Rooms"
 msgstr "Vergaderruimtes"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "actief"
 
@@ -1297,6 +1310,46 @@ msgstr "geassocieerd"
 msgid "HIDE"
 msgstr "VERBERGEN"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"Telefoon Accounts laat u toe om interne extensies te configureren en hun "
+"toegang naar Provider Accounts. Klik onderstaand op een account type om te "
+"starten."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Portugal"
+
+msgid "Extension"
+msgstr "Extensie"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "Pakket inschakelen"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "Weet u zeker dat u dit pakket wilt uitschakelen?"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "Pakket uitschakelen"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Media"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "Weet u zeker dat u deze telefoon wilt verwijderen?"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "Telefoon verwijderen"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1307,9 +1360,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Extern"
-
-msgid "Extension"
-msgstr "Extensie"
 
 msgid "Caller ID"
 msgstr "Beller ID (nummerweergave)"
@@ -2005,6 +2055,20 @@ msgstr "Upload:"
 
 msgid "Upload"
 msgstr "upload"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Het nummer dat wordt gebruikt om deze telefoon te bellen."
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Beschrijvende naam voor dit bereikr."
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "Interface"
@@ -2938,6 +3002,50 @@ msgstr "Toegangs Pincode"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "Optionele pincode vereist om in deze vergaderruimte te komen"
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Omschrijving"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Hoofd Nummer"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "Naam van voicemail ontvanger"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Bewerken"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "Vergaderruimte nummers moet nummeriek zijn"
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "Vergadernummer bestaat al"
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "Vergadernummer is gelijk aan een bestaande extensie."
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+"Het vergadernummer, ook wel de extensie waarop deze vergadering te bereiken "
+"is."
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Een geldig e-mail adres moet opgegeven worden voor het \"van\" adres."
@@ -4231,9 +4339,6 @@ msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 
 #~ msgid "Associated stations"
 #~ msgstr "Aangesloten stations"
-
-#~ msgid "Flags"
-#~ msgstr "Vlaggen"
 
 #~ msgid ""
 #~ "Flags: A = authorized, E = Extended Rate (802.11g), P = Power save "

@@ -469,6 +469,13 @@ function v_voicemail_editor($element, $post, $errors) {
 	$element['vmtoemailaddress'] = v_strip($post['vmtoemailaddress']);
 }
 
+function v_email($element, $post, $errors) {
+	if (!v_is_email($post['email'])) {
+		$errors[] = gettext("The e-mail address is invalid or missing.");
+	}
+	$element['email'] = v_strip($post['email']);
+}
+
 function v_is_email($s) {
 	return eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,6}$", $s);
 }

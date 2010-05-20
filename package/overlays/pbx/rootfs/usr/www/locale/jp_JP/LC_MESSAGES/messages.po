@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -344,6 +344,9 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 
 #, fuzzy
@@ -950,11 +953,15 @@ msgstr "電話機の削除"
 msgid "Gateways"
 msgstr "ゲートウェイ"
 
+msgid "Providers"
+msgstr "接続回線"
+
 msgid "Phones"
 msgstr "電話機"
 
-msgid "Providers"
-msgstr "接続回線"
+#, fuzzy
+msgid "Faxes"
+msgstr "フラグ"
 
 msgid "Applications"
 msgstr "アプリケーション"
@@ -1318,6 +1325,9 @@ msgstr "外部の電話"
 msgid "Conference Rooms"
 msgstr "電話会議室"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "有効"
 
@@ -1336,6 +1346,45 @@ msgstr "接続(稼働)中"
 msgid "HIDE"
 msgstr "隠す"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"「電話機の設定」内線の設定と接続回線の設定を行います。種類を選択し、設定を開"
+"始して下さい。"
+
+#, fuzzy
+msgid "Virtual"
+msgstr "ポルトガル"
+
+msgid "Extension"
+msgstr "内線"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "クリックして、パッケージを有効にする"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "本当に、このパッケージを無効にしますか？"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "クリックして、パッケージを無効にする"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "メディア"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "本当にこの電話機を削除しますか？"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "電話機の削除"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1345,9 +1394,6 @@ msgstr ""
 
 msgid "External"
 msgstr "外部"
-
-msgid "Extension"
-msgstr "内線"
 
 msgid "Caller ID"
 msgstr "発信者ID"
@@ -2045,6 +2091,20 @@ msgstr "アップロード:"
 
 msgid "Upload"
 msgstr "アップロード"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Internal extensionは、この電話にダイヤル可能"
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "この電話の判り易い名前"
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "接続インターフェース"
@@ -3014,6 +3074,48 @@ msgstr "入室用パスワード"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "この会議室に入室するのに必要なパスワード(オプション)"
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "説明"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "番号"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "ボイスメールの受信者名"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "編集"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "電話会議室の番号は数字である必要があります"
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "会議室番号は、既に存在しています"
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "会議室番号が既存の内線番号と一致します"
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr "会議室番号は、内線番号と同様にダイヤルしてご利用になれます"
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\"に対して、有効なe-mailアドレスを指定する必要があります"
@@ -4402,9 +4504,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "フラグ"
 
 #~ msgid "Capabilities"
 #~ msgstr "能力"

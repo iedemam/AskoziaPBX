@@ -49,6 +49,7 @@ $g = array(
 	"package_system" => "1.0",
 	"technologies" => array("sip", "iax", "isdn", "analog", "skinny"),
 	"phone_types" => array("sip", "iax", "isdn", "analog", "skinny", "external"),
+	"fax_types" => array("virtual"),
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
 	"storage_services" => array("media", "persistence"),
@@ -62,7 +63,8 @@ $g = array(
 	"skinny_dirty_path" => "/var/run/skinny.dirty",
 	"storage_dirty_path" => "/var/run/storage.dirty",
 	"dialplan_dirty_path" => "/var/run/dialplan.dirty",
-	"external_dirty_path" => "/var/run/external.dirty"
+	"external_dirty_path" => "/var/run/external.dirty",
+	"virtualfax_dirty_path" => "/var/run/virtualfax.dirty"
 );
 
 $defaults = array();

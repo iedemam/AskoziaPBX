@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -338,6 +338,9 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 
 #, fuzzy
@@ -879,11 +882,15 @@ msgstr "borrar teléfono"
 msgid "Gateways"
 msgstr "Gateway"
 
+msgid "Providers"
+msgstr "Proveedores"
+
 msgid "Phones"
 msgstr "Teléfonos"
 
-msgid "Providers"
-msgstr "Proveedores"
+#, fuzzy
+msgid "Faxes"
+msgstr "Flags"
 
 msgid "Applications"
 msgstr "Aplicaciones"
@@ -1244,6 +1251,9 @@ msgstr "Teléfonos externos"
 msgid "Conference Rooms"
 msgstr "Salas de conferencia"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "activo"
 
@@ -1262,6 +1272,46 @@ msgstr "asociado"
 msgid "HIDE"
 msgstr "OCULTAR"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"Las cuentas telefónicas le permiten configurar extensiones internas, y su "
+"acceso a las cuentas del proveedor. Pulse un tipo de cuenta abajo para "
+"comenzar."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Portugal"
+
+msgid "Extension"
+msgstr "Extensión"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "Pulse para habilitar el paquete"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "¿Realmente quieres deshabilitar este paquete?"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "Pulse para deshabilitar el paquete"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Media"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "¿Realmente quiere borrar este teléfono?"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "borrar teléfono"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1272,9 +1322,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Externo"
-
-msgid "Extension"
-msgstr "Extensión"
 
 msgid "Caller ID"
 msgstr "ID Llamante"
@@ -1970,6 +2017,20 @@ msgstr "Cargar:"
 
 msgid "Upload"
 msgstr "Cargar"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "¿Realmente quiere deshabilitar este teléfono?"
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Nombre descriptivo para este teléfono"
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "Interfaz"
@@ -2907,6 +2968,48 @@ msgstr "PIN de acceso"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "El PIN opcional se necesita para acceder a esta sala de conferencia."
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Descripción"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Número"
+
+msgid "email Receipient"
+msgstr ""
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Editar"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr ""
+"Los carácteres identificativos de las salas de conferencia deben ser "
+"numéricos"
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "El número de conferencia ya existe."
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "El número de conferencia corresponde a una extensión existente."
+
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
@@ -4066,9 +4169,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "Flags"
 
 #~ msgid "Driver Type"
 #~ msgstr "Tipo de driver"

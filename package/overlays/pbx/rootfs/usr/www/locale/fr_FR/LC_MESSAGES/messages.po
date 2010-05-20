@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -316,6 +316,12 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+"Messagerie vocale par E-mail activée, mais l'adresse E-mail est invalide ou "
+"manquante."
+
+#, fuzzy
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 "Messagerie vocale par E-mail activée, mais l'adresse E-mail est invalide ou "
 "manquante."
@@ -900,11 +906,15 @@ msgstr "Interfaces"
 msgid "Gateways"
 msgstr "Passerelle"
 
+msgid "Providers"
+msgstr "Opérateur(s)"
+
 msgid "Phones"
 msgstr "Extension(s)"
 
-msgid "Providers"
-msgstr "Opérateur(s)"
+#, fuzzy
+msgid "Faxes"
+msgstr "Flags"
 
 msgid "Applications"
 msgstr "Applications"
@@ -1263,6 +1273,9 @@ msgstr "Lignes Externe"
 msgid "Conference Rooms"
 msgstr "Salle(s) de conférence"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "active"
 
@@ -1281,6 +1294,46 @@ msgstr "Station associée"
 msgid "HIDE"
 msgstr "MASQUER"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"Les comptes de téléphone vous permettent de configurer les extensions "
+"internes et leur opérateurs. Cliquer sur un type de compte ci-dessous pour "
+"commencer."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Portugal"
+
+msgid "Extension"
+msgstr "Extension"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "Cliquer pour activer le paquet"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "Voulez-vous désactiver ce paquet ?"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "Cliquer pour désactiver le paquet"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Support"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "Voulez-vous supprimer cette extension ?"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "Supprimer l'extension"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1291,9 +1344,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Externe"
-
-msgid "Extension"
-msgstr "Extension"
 
 msgid "Caller ID"
 msgstr "Nom de l'extension"
@@ -1997,6 +2047,20 @@ msgstr "Télècharger:"
 
 msgid "Upload"
 msgstr "Envoi"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Extension interne utilisée pour contacter ce téléphone."
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Nom descriptif de cette ligne."
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "Interface"
@@ -2920,6 +2984,51 @@ msgstr "Code d'accès PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr ""
 "Un code PIN peut être nécessaire pour l'accés à la salle de conférence."
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Description"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Numéro principal"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "Nom du destinataire du message"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Configuration"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "Le numéro de la salle de conférence doit être numérique."
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "Le numéro de la salle de conférence existe déjâ."
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr ""
+"Le numéro de la salle de conférence correspond à un numéro d'une extension."
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+"Le numéro de la salle de conférence, ainsi que l'extension sont accessible à "
+"l'adresse."
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Une adresse E-mail valide doit être spécifiée pour \"from address\"."
@@ -4290,9 +4399,6 @@ msgstr "ERREUR La configuration reçue est invalide. \n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "Flags"
 
 #~ msgid "Capabilities"
 #~ msgstr "Capacités"

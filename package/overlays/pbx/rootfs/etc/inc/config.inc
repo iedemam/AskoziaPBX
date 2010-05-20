@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -388,6 +388,14 @@ function config_build_uniqid_map($config) {
 	$n = count($config['conferencing']['room']);
 	for ($i = 0; $i < $n; $i++) {
 		$uniqid_map[$config['conferencing']['room'][$i]['uniqid']] = $i;
+	}
+
+	// faxes
+	foreach ($g['fax_types'] as $tech) {
+		$n = count($config[$tech]['fax']);
+		for ($i = 0; $i < $n; $i++) {
+			$uniqid_map[$config[$tech]['fax'][$i]['uniqid']] = $i;
+		}
 	}
 
 	// callgroups

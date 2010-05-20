@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -629,6 +629,61 @@ function _a_sortphones($a, $b) {
 	return strcmp($a['callerid'], $b['callerid']);
 }
 
+function pbx_delete_fax($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$fax_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "FAX" &&
+		in_array($fax_type, $g['fax_types']) &&
+		is_array($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]])) {
+
+		unset($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]]);
+		dialplan_remove_incomingextensionmap_reference_from_providers($uniqid);
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_delete_fax!";
+	}
+}
+
+function pbx_disable_fax($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$fax_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "FAX" &&
+		in_array($fax_type, $g['fax_types']) &&
+		is_array($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]])) {
+
+		$GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]]['disabled'] = true;
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_disable_fax!";
+	}
+}
+
+function pbx_enable_fax($uniqid) {
+	global $g, $uniqid_map;
+
+	$pieces = explode("-", $uniqid);
+	$fax_type = strtolower($pieces[0]);
+
+	if ($pieces[1] == "FAX" &&
+		in_array($fax_type, $g['fax_types']) &&
+		is_array($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]])) {
+
+		unset($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]]['disabled']);
+		return 0;
+
+	} else {
+		return "ERROR: invalid uniqid ($uniqid) provided in pbx_enable_fax!";
+	}
+}
+
 /**
  * Merges all *get_dialpatterns() into a single array
  * XXX : should be reimplemented to have an optional "technology" parameter
@@ -739,7 +794,7 @@ function pbx_get_peer_statuses() {
  */
 function pbx_replace_uniqids_with_names($string) {
 	
-	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|SKINNY|CONFERENCE|CALLGROUP|EXTERNAL|FAX){1}-(PROVIDER|PHONE|ROOM|PARALLEL|MACHINE){1}-[0-9a-zA-Z]+/";
+	$uniqid_regex = "/(SIP|IAX|ISDN|ANALOG|SKINNY|CONFERENCE|CALLGROUP|EXTERNAL|VIRTUAL){1}-(PROVIDER|PHONE|ROOM|PARALLEL|FAX){1}-[0-9a-zA-Z]+/";
 
 	preg_match_all($uniqid_regex, $string, $uniqids);
 	if (!is_array($uniqids)) {
@@ -788,6 +843,9 @@ function pbx_uniqid_to_name_sub($uniqid) {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
 	}
 	if ($pair[1] == "room") {
+		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
+	}
+	if ($pair[1] == "fax") {
 		return $config[$pair[0]][$pair[1]][$uniqid_map[$uniqid]]['name'];
 	}
 	// possible bug here, double check needed!! should actually by $pair[0];
@@ -839,6 +897,7 @@ autoload=no
 load => app_dial.so
 load => app_echo.so
 load => app_exec.so
+load => app_fax.so
 load => app_macro.so
 load => app_meetme.so
 load => app_milliwatt.so

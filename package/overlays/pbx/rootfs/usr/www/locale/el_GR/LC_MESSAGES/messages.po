@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -341,6 +341,9 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 
 #, fuzzy
@@ -957,11 +960,15 @@ msgstr "διαγραφή τηλεφώνου"
 msgid "Gateways"
 msgstr "Πύλη"
 
+msgid "Providers"
+msgstr "Πάροχοι"
+
 msgid "Phones"
 msgstr "Τηλέφωνα"
 
-msgid "Providers"
-msgstr "Πάροχοι"
+#, fuzzy
+msgid "Faxes"
+msgstr "Ενδείξεις"
 
 msgid "Applications"
 msgstr "Εφαρμογές"
@@ -1331,6 +1338,9 @@ msgstr "Εξωτερικά τηλέφωνα"
 msgid "Conference Rooms"
 msgstr "Χώροι συνδιασκέψεων"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "ενεργό"
 
@@ -1349,6 +1359,46 @@ msgstr "συνδεδεμένο"
 msgid "HIDE"
 msgstr "ΑΠΟΚΡΥΨΗ"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"Οι λογαριασμοί τηλεφώνων σας επιτρέπουν να ρυθμίσετε εσωτερικά και την "
+"πρόσβασή τους σε λογαριασμούς παρόχων. Κάντε κλικ σε έναν από τους τύπους "
+"λογαριασμών που ακολουθούν, για να ξεκινήσετε."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Πορτογαλία"
+
+msgid "Extension"
+msgstr "Εσωτερικό"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "κάντε κλικ για να ενεργοποιήσετε αυτό το πακέτο"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "Θέλετε πραγματικά να απενεργοποιήσετε αυτό το πακέτο;"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "κάντε κλικ για να απενεργοποιήσετε αυτό το πακέτο"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Μέσον"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "Θέλετε πραγματικά να διαγράψετε αυτό το τηλέφωνο;"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "διαγραφή τηλεφώνου"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1359,9 +1409,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Εξωτερικά"
-
-msgid "Extension"
-msgstr "Εσωτερικό"
 
 msgid "Caller ID"
 msgstr "Ταυτότητα καλούντος"
@@ -2094,6 +2141,20 @@ msgstr "Αποστολή:"
 
 msgid "Upload"
 msgstr "Αποστολή"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr " "
@@ -3094,6 +3155,50 @@ msgid "Optional PIN needed to access this conference room."
 msgstr ""
 "Ένα προαιρετικό PIN για να επιτραπεί η πρόσβαση σε αυτόν τον χώρο "
 "συνδιάσκεψης."
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Περιγραφή"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Αριθμός"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "όνομα του ιδιοκτήτη της φωνητικής θυρίδας"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Επεξεργασία"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "Τα εσωτερικά των χώρων συνδιάσκεψης πρέπει να είναι αριθμητικά."
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "Αυτός ο αριθμός συνδιάσκεψης υπάρχει ήδη."
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "Ο αριθμός συνδιάσκεψης είναι ίδιος με ένα υπάρχον εσωτερικό."
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+"Ο αριθμός κλήσης αυτού του χώρου συνδιάσκεψης. Επίσης, ο αριθμός που θα "
+"χρησιμοποιείτε για να συμμετάσχετε σε αυτή τη συνδιάσκεψη."
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
@@ -4541,9 +4646,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "Ενδείξεις"
 
 #~ msgid "Capabilities"
 #~ msgstr "Δυνατότητες"

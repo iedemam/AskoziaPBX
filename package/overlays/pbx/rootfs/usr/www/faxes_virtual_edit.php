@@ -1,6 +1,7 @@
-<?php
+#!/usr/bin/php
+<?php 
 /*
-	$Id: fax.inc 1515 2010-04-30 11:38:34Z michael.iedema $
+	$Id: faxes_virtual_edit.php 1515 2010-04-30 11:38:34Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
@@ -36,70 +37,63 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-require_once("functions.inc");
+
+require("guiconfig.inc");
+$pgtitle = array(gettext("Accounts"), gettext("Edit Virtual Fax"));
 
 
-function virtual_verify_fax($post, $errors) {
+if ($_POST) {
+	unset($input_errors);
 
-	$fax = array();
-
-	v_cleanliness(&$post, &$errors);
-	v_extension(&$fax, &$post, &$errors);
-	v_required('name', gettext('Name'), &$fax, &$post, &$errors);
-	v_email(&$fax, &$post, &$errors);
-	v_public_access_editor(&$fax, &$post, &$errors);
-
-	$trusted = array(
-		'uniqid'
-	);
-	foreach ($trusted as $t) {
-		$fax[$t] = $post[$t];
+	$fax = virtual_verify_fax(&$_POST, &$input_errors);
+	if (!$input_errors) {
+		virtual_save_fax($fax);
+		header("Location: accounts_faxes.php");
+		exit;
 	}
-
-	return $fax;
 }
 
-function virtual_save_fax($fax) {
-	global $g, $uniqid_map;
 
-	if (virtual_get_fax($fax['uniqid'])) {
-		$GLOBALS['config']['virtual']['fax'][$uniqid_map[$fax['uniqid']]] = $fax;
-	} else {
-		$GLOBALS['config']['virtual']['fax'][] = $fax;
-	}
+$colspan = 1;
+$carryovers[] = "uniqid";
 
-	write_config();
-	touch($g['virtualfax_dirty_path']);
+$uniqid = $_GET['uniqid'];
+if (isset($_POST['uniqid'])) {
+	$uniqid = $_POST['uniqid'];
 }
 
-function virtual_get_faxes() {
-
-	if (!is_array($GLOBALS['config']['virtual']['fax'])) {
-		$GLOBALS['config']['virtual']['fax'] = array();
-	}
-
-	$tmp = $GLOBALS['config']['virtual']['fax'];
-	usort($tmp, "pbx_sort_by_extension");
-
-	return $tmp;
+if ($_POST) {
+	$form = $_POST;
+} else if ($uniqid) {
+	$form = virtual_get_fax($uniqid);
+} else {
+	$form = virtual_generate_default_fax();
 }
 
-function virtual_get_fax($uniqid) {
-	global $uniqid_map;
 
-	return $GLOBALS['config']['virtual']['fax'][$uniqid_map[$uniqid]];
-}
+include("fbegin.inc");
+d_start("faxes_virtual_edit.php");
 
-function virtual_generate_default_fax() {
-	global $defaults;
 
-	$fax = array();
+	// General
+	d_header(gettext("General Settings"));
 
-	$fax['extension'] = pbx_get_next_default_phone_extension();
-	$fax['name'] = $defaults['accounts']['phones']['callerid'];
-	$fax['uniqid'] = "VIRTUAL-FAX-" . uniqid(rand());
+	d_field(gettext("Number"), "extension", 20,
+		gettext("The number used to dial this fax."), "required");
 
-	return $fax;
-}
+	d_field(gettext("Name"), "name", 40,
+		gettext("Enter a descriptive name for this fax."), "required");
 
-?>
+	d_field(gettext("E-Mail"), "email", 40,
+		gettext("Incoming faxes will be converted and sent to this e-mail address."), "required");
+	d_spacer();
+
+
+	// Security
+	d_header(gettext("Security"));
+	display_public_access_editor($form['publicaccess'], $form['publicname'], 1);
+	d_spacer();
+
+
+d_submit();
+include("fend.inc");

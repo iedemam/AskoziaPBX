@@ -50,7 +50,7 @@ function extensions_conf_generate($return=false) {
 	$applications = applications_get_apps();
 	$applications2 = applications2_get_applications();
 	$conference_rooms = conferencing_get_rooms();
-	$fax_machines = fax_get_machines();
+	$virtual_faxes = virtual_get_faxes();
 	$providers = pbx_get_providers();
 	$isdn_nt_interfaces = dahdi_get_ports("isdn", "nt");
 	$isdn_te_interfaces = dahdi_get_ports("isdn", "te");
@@ -145,6 +145,13 @@ EOD;
 	// application2 contexts
 	foreach ($applications2 as $a) {
 		$conf .= extensions_generate_application_context2($a);
+		$conf .= "\n";
+	}
+	$conf .= "\n";
+
+	// virtual fax contexts
+	foreach ($virtual_faxes as $f) {
+		$conf .= extensions_generate_virtual_fax_context($f);
 		$conf .= "\n";
 	}
 	$conf .= "\n";
@@ -246,17 +253,21 @@ EOD;
 	}
 	$conf .= "\n";
 
-	// fax machines extensions
-	foreach ($fax_machines as $m) {
-		if ($r['publicaccess'] == "enabled") {
-			$conf .= "; fax machine : {$m['name']} - <{$m['number']}>\n";
-			$conf .= "exten => {$m['number']},1,NoOp(internal calling faxmachine: {$m['name']} - <{$m['number']}>)\n";
-		
-			$conf .= extensions_generate_fax_machine_extension($m);
+	// virtual fax extensions
+	foreach ($virtual_faxes as $f) {
+		if ($f['publicaccess'] == "enabled") {
+			$conf .= "; virtual fax : {$f['name']} - <{$f['extension']}>\n";
+			if (!$f['publicname']) {
+				$conf .= "exten => {$f['extension']},1,NoOp(public calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
+				$conf .= extensions_generate_virtual_fax_extension($f, true);
+			} else {
+				$conf .= "exten => {$f['publicname']},1,NoOp(public calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
+				$conf .= extensions_generate_virtual_fax_extension($f, true, $f['publicname']);
+			}
 		}
 	}
-	$conf .= "\n"; 
-	
+	$conf .= "\n";
+
 	// internal extensions context
 	$conf .= "[internal]\n";
 
@@ -309,6 +320,13 @@ EOD;
 		$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
 		$conf .= "exten => {$r['number']},1,NoOp(internal calling conference: {$r['name']} - <{$r['number']}>)\n";
 		$conf .= extensions_generate_conference_room_extension($r);
+	}
+
+	// virtual fax extensions
+	foreach ($virtual_faxes as $f) {
+		$conf .= "; virtual fax : {$f['name']} - <{$f['extension']}>\n";
+		$conf .= "exten => {$f['extension']},1,NoOp(internal calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
+		$conf .= extensions_generate_virtual_fax_extension($f);
 	}
 
 	$conf .= "; parking lot\n";
@@ -891,41 +909,51 @@ function extensions_generate_conference_room_extension($r, $from_public=false, $
 	return $conf;
 }
 
-function extensions_generate_fax_machine_extension($m, $from_public=false, $extension=false) {
+function extensions_generate_virtual_fax_context($f, $from_public=false, $extension=false) {
 
-	$m = fax_get_machine($uniqid);
-	
-	$number = $m['number'];
-	$exten = ($extension !== false) ? $extension : $number;
-
-	// get some Config
 	$emailconfig = notifications_get_email_configuration();
 	$product_name = system_get_product_name();
-	
-	$conf .= "exten => $exten,n,Set(PRODUCTNAME=$product_name)\n";
-	$conf .= "exten => $exten,n,Set(SENDEREMAIL={$emailconfig['address']})\n";
-	$conf .= "exten => $exten,n,ringing()\n";
-	$conf .= "exten => $exten,n,wait(6)\n";
-	$conf .= "exten => $exten,n,ReceiveFAX(/tmp/$\{UNIQUEID})\n";
-	$conf .= "exten => $exten,n,Hangup()\n";
-    $conf .= "exten => h,1,System(tiff2pdf /tmp/$\{UNIQUEID} -o /tmp/$\{UNIQUEID}.pdf)\n";
-    $conf .= "exten => h,n,System(touch /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(echo \"date: \`date\`\" > /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(echo \"to: ".$m['email']."\" >> /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(echo \"subject: New FAX from \$\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(echo \"from:  $\{PRODUCTNAME} Notifications <$\{SENDEREMAIL}>\" >> /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(echo >> /tmp/email-$\{UNIQUEID}\n";
-    $conf .= "exten => h,n,System(echo \"$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(uuencode /tmp/$\{UNIQUEID}.pdf fax.pdf >> /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < /tmp/email-$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(rm /tmp/$\{UNIQUEID})\n";
-    $conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID})\n";
-	// To implement, peristent storage archive for fax-pdf
+
+	$conf = "; " . $f['name'] . "\n";
+	$conf .= "[" . $f['uniqid'] . "]\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,1,Set(PRODUCTNAME=$product_name)\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Set(SENDEREMAIL={$emailconfig['address']})\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Ringing()\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Wait(6)\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,n,ReceiveFAX(/tmp/$\{UNIQUEID})\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Hangup()\n";
+	$conf .= "exten => s,1,Set(PRODUCTNAME=$product_name)\n";
+	$conf .= "exten => s,n,Set(SENDEREMAIL={$emailconfig['address']})\n";
+	$conf .= "exten => s,n,Ringing()\n";
+	$conf .= "exten => s,n,Wait(6)\n";
+	$conf .= "exten => s,n,ReceiveFAX(/tmp/$\{UNIQUEID})\n";
+	$conf .= "exten => s,n,Hangup()\n";
+	$conf .= "exten => h,1,System(tiff2pdf /tmp/$\{UNIQUEID} -o /tmp/$\{UNIQUEID}.pdf)\n";
+	$conf .= "exten => h,n,System(touch /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"date: \`date\`\" > /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"to: ".$f['email']."\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"subject: New Fax from \$\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"from:  $\{PRODUCTNAME} Fax <$\{SENDEREMAIL}>\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo >> /tmp/email-$\{UNIQUEID}\n";
+	$conf .= "exten => h,n,System(echo \"$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(uuencode /tmp/$\{UNIQUEID}.pdf fax.pdf >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(rm /tmp/$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID})\n";
+	// TO DO : peristent storage archive for fax-pdf
 	//      $conf .= "exten => h,n,System(mv /tmp/$\{UNIQUEID}.pdf /path/to/peristent_fax_archive)\n";
 	$conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID}.pdf)\n";
 	$conf .= "\n";
 
 	return $conf;
+}
+
+function extensions_generate_virtual_fax_extension($f, $from_public=false, $extension=false) {
+
+	$internal_number = $f['extension'];
+	$exten = ($extension !== false) ? $extension : $internal_number;
+
+	return "exten => $exten,n,Dial(Local/$\{EXTEN}@" . $f['uniqid'] . "/n)\n";
 }
 
 function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, $readbacknum=false, $extension=false) {
@@ -955,11 +983,11 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 		$r = conferencing_get_room($uniqid);
 		return extensions_generate_conference_room_extension($r, $from_public, $extension);
 
-	// fax machines
-	} else if ($id[0] == "FAX" && $id[1] == "MACHINE") {
-		$m = fax_get_machine($uniqid);
-		return extensions_generate_fax_machine_extension($m, $from_public, $extension);
-		
+	// virtual faxes
+	} else if ($id[0] == "VIRTUAL" && $id[1] == "FAX") {
+		$f = virtual_get_fax($uniqid);
+		return extensions_generate_virtual_fax_extension($f, $from_public, $extension);
+
 	// impromptu parallel callgroups
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL" && $id[2] == "impromptu") {
 		return extensions_generate_callgroup_extension($impromptugroup, $from_public, $readbacknum, $extension);

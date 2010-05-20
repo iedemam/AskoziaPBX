@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,6 +336,9 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 
 #, fuzzy
@@ -872,11 +875,14 @@ msgstr "telefonu sil"
 msgid "Gateways"
 msgstr "Ağ Geçidi"
 
+msgid "Providers"
+msgstr "Sunucular"
+
 msgid "Phones"
 msgstr "Telefonlar"
 
-msgid "Providers"
-msgstr "Sunucular"
+msgid "Faxes"
+msgstr ""
 
 msgid "Applications"
 msgstr "Uygulamalar"
@@ -1234,6 +1240,9 @@ msgstr "Harici Telefonlar"
 msgid "Conference Rooms"
 msgstr "Konferans Odaları"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "etkin"
 
@@ -1252,6 +1261,45 @@ msgstr "ilişkilendirildi"
 msgid "HIDE"
 msgstr ""
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"Telefon Hesaplar, dahili hatları ve onların sunucu Hesalarını düzenlemenizi "
+"sağlar. İşlemi başlatmak için altta hesap türünü seçin."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Portekiz"
+
+msgid "Extension"
+msgstr "Dahili Hat"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "telefonu geçerli kılmak için tıkla"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "Bu telefonu gercekten erksiz kılmak isteiyor musunuz?"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "telefonu erksiz kılmak için tıkla"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Hindistan"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "Bu telefon silinsin mi?"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "telefonu sil"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1261,9 +1309,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Harici"
-
-msgid "Extension"
-msgstr "Dahili Hat"
 
 msgid "Caller ID"
 msgstr "Arayıcı Kimliği"
@@ -1942,6 +1987,20 @@ msgstr "Yükle:"
 
 msgid "Upload"
 msgstr "Yükle"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Bu telefonu aramak için kullanılan dahili hat."
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Bu telefon için açıklayıcı bir isim."
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "Arabirim"
@@ -2853,6 +2912,47 @@ msgstr "Giriş PİN"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "Bu konferans odasına giriş için isteğe bağlı PİN gerekli."
+
+#, fuzzy
+msgid "FAX"
+msgstr "İAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Açıklama"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Numara"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "sesli mesaj alıcının adı"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Düzenle"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "Konferans oda numaraları sayısal olmalı."
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "Konferans numarası zaten mevcut."
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "Konferans numarası mevcut  bir hatta kullanılıyor."
+
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\" için geçerli e-posta adresi belirtilmeli."

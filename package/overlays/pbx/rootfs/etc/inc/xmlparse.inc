@@ -6,7 +6,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ $listtags = explode(" ",
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
 	"phone provider codec room dialpattern callgroup groupmember incomingextensionmap " .
 	"dahdi-port dahdi-portgroup redfone-gateway disk package loadzone bridge application application2 " .
-	"manager-user read-permission write-permission app-command manual-attribute manual-file machine"
+	"manager-user read-permission write-permission app-command manual-attribute manual-file fax"
 );
 
 /* xml array used in parsing configuration files

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -315,6 +315,12 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+"L'inoltro dei messaggi vocali via E-Mail è abilitato ma l'indirizzo E-mail "
+"manca o non è valido."
+
+#, fuzzy
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 "L'inoltro dei messaggi vocali via E-Mail è abilitato ma l'indirizzo E-mail "
 "manca o non è valido."
@@ -917,11 +923,15 @@ msgstr "Interfacce Telef."
 msgid "Gateways"
 msgstr "Gateways"
 
+msgid "Providers"
+msgstr "Operatori"
+
 msgid "Phones"
 msgstr "Telefoni"
 
-msgid "Providers"
-msgstr "Operatori"
+#, fuzzy
+msgid "Faxes"
+msgstr "Flags"
 
 msgid "Applications"
 msgstr "Applicazioni"
@@ -1280,6 +1290,9 @@ msgstr "Telefoni Esterni"
 msgid "Conference Rooms"
 msgstr "Sale Conferenze"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "attivo"
 
@@ -1298,6 +1311,45 @@ msgstr "associato"
 msgid "HIDE"
 msgstr "NASCONDI"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"I profili consentono di configurare i derivati del PBX e i diritti di "
+"accesso alle linee. Clicca sul tipo di profilo da attivare per iniziare."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Portogallo"
+
+msgid "Extension"
+msgstr "Derivato"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "clicca per abilitare il pacchetto"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "Desideri disattivare questo pacchetto?"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "clicca per disabilitare questo pacchetto"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Supporto"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "Vuoi veramente cancellare questo telefono?"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "cancella il telefono"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1307,9 +1359,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Esterni"
-
-msgid "Extension"
-msgstr "Derivato"
 
 msgid "Caller ID"
 msgstr "Numero Identificativo del chiamante"
@@ -2015,6 +2064,21 @@ msgstr "Carica:"
 
 msgid "Upload"
 msgstr "Carica"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Numero usato per chiamare questo telefono."
+
+# Vedi nota a Span
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Immettere la descizione per questo span."
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "Interfaccia"
@@ -2967,6 +3031,52 @@ msgstr "PIN d'accesso"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "Può essere specificato un codice PIN per accedere a questa conferenza."
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Descrizione"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Numero Principale"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "Nome del destinatario della casella vocale"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Modifica"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "Il numero di una sala conferenze deve contenere solo cifre."
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "Questo numero di sala conferenza esiste già."
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr ""
+"Il numero scelto per questo sevizio conferenza corrisponde a quello di un "
+"derivato esistente."
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+"Il numero della conferenza rappresenta quello del derivato virtuale da "
+"chiamare per parteciparvi."
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
@@ -4379,9 +4489,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "Flags"
 
 #~ msgid "Capabilities"
 #~ msgstr "Capacità"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -339,6 +339,9 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 
 #, fuzzy
@@ -926,11 +929,15 @@ msgstr "删除电话"
 msgid "Gateways"
 msgstr "网关"
 
+msgid "Providers"
+msgstr "提供商"
+
 msgid "Phones"
 msgstr "电话"
 
-msgid "Providers"
-msgstr "提供商"
+#, fuzzy
+msgid "Faxes"
+msgstr "标志"
 
 msgid "Applications"
 msgstr "应用"
@@ -1296,6 +1303,9 @@ msgstr "外部电话"
 msgid "Conference Rooms"
 msgstr "会议室"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 #, fuzzy
 msgid "active"
 msgstr "交互"
@@ -1317,6 +1327,45 @@ msgstr "相关监测站"
 msgid "HIDE"
 msgstr ""
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"电话帐号，允许你设置内部分机和供应商账号对他们的访问。点击下面的一个帐号类型"
+"来开始。"
+
+#, fuzzy
+msgid "Virtual"
+msgstr "葡萄牙"
+
+msgid "Extension"
+msgstr "分机"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "点击以启用软件包"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "您真的要禁用这个软件包？"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "点击以禁用软件包"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "媒体"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "真的要删除这个电话？"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "删除电话"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1326,9 +1375,6 @@ msgstr ""
 
 msgid "External"
 msgstr "外部"
-
-msgid "Extension"
-msgstr "分机"
 
 msgid "Caller ID"
 msgstr "呼叫者ID"
@@ -2009,6 +2055,20 @@ msgstr "上载："
 
 msgid "Upload"
 msgstr "上载："
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "这个内部分机用来拨打这个电话。"
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "这个电话的描述性名称。"
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "接口"
@@ -2945,6 +3005,47 @@ msgstr "接入验证码(PIN)"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "接入此会议室需要可选的验证码。"
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "描述"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "数量"
+
+msgid "email Receipient"
+msgstr ""
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "编辑"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "会议室号码必须是数字。"
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "会议室号码重复。"
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "会议室号码与一个存在的分机冲突。"
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr "会议室的号码，就是分机可以拨打"
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "必须为\"来自地址\"指定一个有效的电邮地址。"
@@ -4241,9 +4342,6 @@ msgstr "ERR 收到无效的配置。\n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "标志"
 
 #~ msgid "Capabilities"
 #~ msgstr "能力"

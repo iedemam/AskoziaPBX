@@ -153,17 +153,19 @@ $menu['Connectivity'][gettext("Gateways")]		= array('gateways_redfone.php',
 												'gateways_redfone_edit.php');
 
 /* Accounts */
+$menu['Accounts'][gettext("Providers")]			= array('accounts_providers.php',
+												'providers_sip_edit.php',
+												'providers_iax_edit.php',
+												'providers_isdn_edit.php',
+												'providers_analog_edit.php');
 $menu['Accounts'][gettext("Phones")]			= array('accounts_phones.php',
 												'phones_sip_edit.php',
 												'phones_iax_edit.php',
 												'phones_isdn_edit.php',
 												'phones_analog_edit.php',
 												'phones_external_edit.php');
-$menu['Accounts'][gettext("Providers")]			= array('accounts_providers.php',
-												'providers_sip_edit.php',
-												'providers_iax_edit.php',
-												'providers_isdn_edit.php',
-												'providers_analog_edit.php');
+$menu['Accounts'][gettext("Faxes")]				= array('accounts_faxes.php',
+												'faxes_virtual_edit.php');
 
 /* Dialplan */
 $menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications.php',
@@ -177,8 +179,6 @@ $menu['Services'][gettext("Notifications")]		= array('notifications_email.php');
 $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
-$menu['Services'][gettext("Faxing")]			= array('services_fax.php',
-												'services_fax_edit.php');
 if (storage_service_is_active("media")) {
 	$menu['Services'][gettext("Media")]			= array('services_voiceprompts.php',
 												'services_musiconhold.php');

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-29 14:46+0200\n"
+"POT-Creation-Date: 2010-05-20 14:51+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -342,6 +342,9 @@ msgstr ""
 
 msgid ""
 "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
+msgstr ""
+
+msgid "The e-mail address is invalid or missing."
 msgstr ""
 
 #, fuzzy
@@ -941,11 +944,15 @@ msgstr "poista puhelin"
 msgid "Gateways"
 msgstr "Gateway"
 
+msgid "Providers"
+msgstr "Palveluntarjoajat"
+
 msgid "Phones"
 msgstr "Puhelimet"
 
-msgid "Providers"
-msgstr "Palveluntarjoajat"
+#, fuzzy
+msgid "Faxes"
+msgstr "Liput"
 
 msgid "Applications"
 msgstr "Sovellukset"
@@ -1311,6 +1318,9 @@ msgstr "Ulkoiset Puhelimet"
 msgid "Conference Rooms"
 msgstr "Neuvottelutilat"
 
+msgid "Virtual Faxes"
+msgstr ""
+
 msgid "active"
 msgstr "aktiivinen"
 
@@ -1329,6 +1339,45 @@ msgstr "liittyvä"
 msgid "HIDE"
 msgstr "PIILOTA"
 
+#, fuzzy
+msgid ""
+"Fax Accounts allow you to connect fax machines to your system as well as "
+"convert incoming faxes to e-mails. Click a fax type below to get started."
+msgstr ""
+"Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
+"Tiliin. Klikkaa tilityyppiä aloittaaksesi."
+
+#, fuzzy
+msgid "Virtual"
+msgstr "Portugali"
+
+msgid "Extension"
+msgstr "Jatke"
+
+#, fuzzy
+msgid "click to enable fax"
+msgstr "klikkaa mahdollistaaksesi paketti"
+
+#, fuzzy
+msgid "Do you really want to disable this fax?"
+msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
+
+#, fuzzy
+msgid "click to disable fax"
+msgstr "klikkaa poistaaksesi paketti käytöstä"
+
+#, fuzzy
+msgid "edit fax"
+msgstr "Tiedotusväline"
+
+#, fuzzy
+msgid "Do you really want to delete this fax?"
+msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
+
+#, fuzzy
+msgid "delete fax"
+msgstr "poista puhelin"
+
 msgid ""
 "Phone Accounts allow you to configure internal extensions and their access "
 "to Provider Accounts. Click an account type below to get started."
@@ -1338,9 +1387,6 @@ msgstr ""
 
 msgid "External"
 msgstr "Ulkoinen"
-
-msgid "Extension"
-msgstr "Jatke"
 
 msgid "Caller ID"
 msgstr "Soittajan Tunnus"
@@ -2051,6 +2097,20 @@ msgstr "Lataa ylös:"
 
 msgid "Upload"
 msgstr "Lataa ylös"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+#, fuzzy
+msgid "The number used to dial this fax."
+msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
+
+#, fuzzy
+msgid "Enter a descriptive name for this fax."
+msgstr "Kuvaileva nimi tälle puhelimelle."
+
+msgid "Incoming faxes will be converted and sent to this e-mail address."
+msgstr ""
 
 msgid "Interface"
 msgstr "Käyttöliittymä"
@@ -3026,6 +3086,49 @@ msgstr "PIN Koodi"
 
 msgid "Optional PIN needed to access this conference room."
 msgstr "Valinnainen koodi joka tarvitaan tähän huoneeseen."
+
+#, fuzzy
+msgid "FAX"
+msgstr "IAX"
+
+#, fuzzy
+msgid "FAX-Receiver Description"
+msgstr "Kuvaus"
+
+#, fuzzy
+msgid "Fax Number"
+msgstr "Numero"
+
+#, fuzzy
+msgid "email Receipient"
+msgstr "vastaajan omistajan nimi"
+
+msgid "add fax"
+msgstr ""
+
+#, fuzzy
+msgid "Edit Fax"
+msgstr "Muokkaa"
+
+#, fuzzy
+msgid "Fax numbers must be numeric."
+msgstr "Kokoushuoneiden numerot on oltava numeeriset."
+
+#, fuzzy
+msgid "Fax number already exists."
+msgstr "Konferenssin numero on jo käytössä."
+
+#, fuzzy
+msgid "Fax number matches an existing extension."
+msgstr "Konferenssin numero on sama kun käytössä oleva jatke."
+
+#, fuzzy
+msgid "The Fax's number, also the extension that this fax is reachable at."
+msgstr ""
+"Kokoushuoneen numero sekä jatke millä tämä konferenssi on tavoitettavissa."
+
+msgid "Receipient email"
+msgstr ""
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
@@ -4398,9 +4501,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "RSSI"
 #~ msgstr "RSSI"
-
-#~ msgid "Flags"
-#~ msgstr "Liput"
 
 #~ msgid "Capabilities"
 #~ msgstr "Kyvyt"
