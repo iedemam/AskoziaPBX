@@ -18,12 +18,6 @@
 
 set -e
 
-# set initramfs preparation directory and build
-build_root="$base/build/$SDECFG_ID"
-build_toolchain="$base/build/$SDECFG_ID/TOOLCHAIN"
-imagelocation="$build_toolchain/initramfs"
-. target/share/initramfs/build.sh
-
 # set firmware preparation directory
 imagelocation="$build_toolchain/firmware"
 
@@ -37,7 +31,6 @@ rm -rf $imagelocation{,.img}
 mkdir -p $imagelocation ; cd $imagelocation
 mkdir root_stage
 mkdir root_stage/boot
-#mkdir root_stage/boot/grub
 mkdir root_stage/conf
 cp $base/target/$target/config.xml root_stage/conf/config.xml
 mkdir offload_stage
@@ -47,10 +40,7 @@ mkdir offload_stage/software-information
 mkdir loop
 
 echo "Copy system into staging directories ..."
-#cp ../../usr/lib/grub/i386-t2/stage{1,2} root_stage/boot/grub/
-#cp $base/target/$target/menu.lst root_stage/boot/grub/
 cp ../../boot/cuImage.warp root_stage/boot/
-cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 rm -rf offload_stage/asterisk/agi-bin
 rm -rf offload_stage/asterisk/firmware
@@ -234,16 +224,6 @@ echo " - dd part1 -> firmware.img..."
 dd if=part1.img of=firmware.img bs=512 seek=1
 echo " - dd part2 -> firmware.img..."
 dd if=part2.img of=firmware.img bs=512 seek=$offload_start_sector
-
-
-#echo "Install grub onto the image ..."
-#echo "device (hd0) firmware.img
-#geometry (hd0) $cyls_needed 16 63
-#root (hd0,0)
-#setup (hd0)
-#quit
-#
-#" | grub --device-map=/dev/null --batch --no-pager --no-floppy --no-curses
 
 gzip -9 firmware.img
 mv firmware.img.gz ../$SDECFG_ID.img

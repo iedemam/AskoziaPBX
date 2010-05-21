@@ -1,0 +1,11 @@
+--- linux/arch/powerpc/boot/wrapper.orig	2010-05-21 15:42:48.000000000 +0200
++++ linux/arch/powerpc/boot/wrapper	2010-05-21 15:42:56.000000000 +0200
+@@ -138,7 +138,7 @@
+ tmp=$tmpdir/zImage.$$.o
+ ksection=.kernel:vmlinux.strip
+ isection=.kernel:initrd
+-link_address='0x400000'
++link_address='0x800000'
+ 
+ case "$platform" in
+ pseries)

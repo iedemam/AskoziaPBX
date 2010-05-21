@@ -94,7 +94,7 @@ EOD;
 			/* iterate through the disks fdisk finds until one contains a config.xml */
 			$attempts = 2;
 			while ($attempts--) {
-				if ($g['platform'] == "COMpact 3000") {
+				if ($g['platform'] == "COMpact 3000" || $g['platform'] == "Warp") {
 					$disks[] = "mmcblk0";
 				} else {
 					exec('fdisk -l | grep "^/dev/" | cut -c 6-8 | uniq', $disks);

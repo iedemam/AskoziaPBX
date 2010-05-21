@@ -28,9 +28,8 @@ mkdir /ultmp /offload /cf /var/etc /var/db /var/spool/cron /var/spool/cron/cront
 
 # setup symbolic links
 ln -s /cf/conf /conf
-
 # new bits to move usr/* out of the initramfs and into /offload
 ln -s /offload/rootfs/usr /usr
-/etc/rc.mountoffload
+mount /dev/mmcblk0p2 /offload
 
 exec /sbin/init $*
