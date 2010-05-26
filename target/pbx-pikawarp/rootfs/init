@@ -20,7 +20,7 @@ echo "Populating u/dev ..."
 mknod /dev/tty1 c 4 1
 mknod /dev/tty2 c 4 2
 mknod /dev/tty3 c 4 3
-echo /sbin/mdev > /proc/sys/kernel/hotplug
+sysctl -w kernel.hotplug=/sbin/mdev
 mdev -s
 
 # make some directories
@@ -30,6 +30,7 @@ mkdir /ultmp /offload /cf /var/etc /var/db /var/spool/cron /var/spool/cron/cront
 ln -s /cf/conf /conf
 # new bits to move usr/* out of the initramfs and into /offload
 ln -s /offload/rootfs/usr /usr
-mount /dev/mmcblk0p2 /offload
+sleep 5
+mount -r /dev/mmcblk0p2 /offload
 
 exec /sbin/init $*
