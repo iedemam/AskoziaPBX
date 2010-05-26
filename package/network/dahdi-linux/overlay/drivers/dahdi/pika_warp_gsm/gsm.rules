@@ -1,0 +1,3 @@
+#
+KERNEL=="port[0-9]", NAME="gsm/%k"
+KERNEL=="ctl[0-9]", NAME="gsm/%k"

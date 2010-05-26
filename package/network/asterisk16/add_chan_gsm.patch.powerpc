@@ -1,0 +1,15 @@
+--- asterisk-1.6.1.18/channels/Makefile.orig	2010-05-26 15:57:46.000000000 +0200
++++ asterisk-1.6.1.18/channels/Makefile	2010-05-26 16:00:43.000000000 +0200
+@@ -98,6 +98,12 @@
+ 
+ chan_usbradio.so: LIBS+=-lusb -lasound
+ 
++chan_gsm.so: chan_gsm.o gsmctl.o
++
++chan_gsm.o: chan_gsm.c
++
++gsmctl.o: gsmctl.c
++
+ h323/Makefile.ast:
+ 	$(CMD_PREFIX) $(MAKE) -C h323 Makefile.ast
+ 

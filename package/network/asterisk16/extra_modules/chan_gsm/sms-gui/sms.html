@@ -1,0 +1,206 @@
+</html>
+<script src="prototype.js"></script>
+<script src="astman.js"></script>
+<script>
+var loggedon = -1;
+var smssend = new Object;
+var ports = new Array;
+var portnumber = 0;
+var portsel = "";
+
+
+function intval(value){
+	value = parseInt(value)
+		if (isNaN(value)) {
+			return "";
+		}else{
+			return value;
+		}
+}
+
+
+function validateport(){
+	if ($('port')[$('port').selectedIndex].value == "Nr"){
+		alert("Invalid Port Number");
+	}else{
+		validatehandy();
+	}
+}
+
+
+function limited(text,max)
+{
+if($('text').value.length>=max){
+$('text').value=$('text').value.substring(0,max);
+}
+}
+
+
+function validatehandy(){
+	num=intval($('handynummer').value);
+	if ($('handynummer').value == "" || num==''){
+		alert("Invalid Mobile Phone Number");
+	}else{
+		validatetext();
+	}
+}
+
+
+function validatetext(){
+	if ($('text').value==""){
+		alert('Invalid Text');
+	}else{
+		send();
+	}
+}
+
+function loggedOn() {
+	if (loggedon == 1)
+		return;
+	loggedon = 1;
+	$('statusbar').innerHTML = "<i>Connected</i>";
+	astmanEngine.pollEvents();
+			doGetconfig();
+
+}
+
+
+
+
+function loggedOff() {
+	if (loggedon == 0)
+		return;
+	loggedon = 0;
+}
+
+smssend.logins = function(msgs) {
+	$('statusbar').innerHTML = msgs[0].headers['message'];
+	resp = msgs[0].headers['response'];
+	if (resp == "Success")
+		loggedOn();
+	else
+		loggedOff();
+};
+
+
+function doLogin() {
+	$('statusbar').innerHTML = "<i>Logging in...</i>";
+	astmanEngine.sendRequest('action=login&username=migue&secret=migue', smssend.logins);
+}
+
+
+
+
+function doGetconfig(){
+             astmanEngine.sendRequest('action=GetConfig&filename=gsm.conf', smssend.getconfigresp);
+	     }
+
+
+smssend.getconfigresp = function(msgs){
+	for (i=0 ; i<msgs[0].names.length ; i++){
+	if (msgs[0].headers[msgs[0].names[i]].split(/=/)[0] == "ports"){
+		ports[portnumber]=msgs[0].headers[msgs[0].names[i]].split(/=/)[1];
+			portnumber ++;
+		}
+	}
+	createselect()
+}
+
+
+function createselect(){
+	portsel='<select id=\"port\"><option value=\"Nr\">Nr.';
+	for (i=0 ; i<portnumber ; i++){
+	spl=ports[i].split(/,/).length;
+		for (j=0 ; j<spl; j++){
+			portsel += "<option value=" + ports[i].split(/,/)[j] + ">" + ports[i].split(/,/)[j];
+		}
+	}
+	$('portbar').innerHTML += "<br>" + portsel + "</select>" ;
+}
+
+
+function send(){
+	astmanEngine.sendRequest('action=gsmsendsms&port=' + $('port')[$('port').selectedIndex].value + "&number=" + $('handynummer').value + "&text=" + $('text').value, smssend.sent);
+
+}
+
+
+
+
+smssend.sent = function (msgs){
+resp = msgs[0].headers['response'];
+alert(resp);
+	if (resp == "Success") {
+		$('statusbar').innerHTML= "Sent";
+	} else {
+		$('statusbar').innerHTML= "Failed";
+	}
+}
+
+smssend.pongs  = function(msgs) {
+	resp = msgs[0].headers['response'];
+	if (resp == "Pong") {
+		loggedOn();
+	} else {
+		doLogin();
+	}
+};
+
+
+
+smssend.logoffs = function(msgs) {
+	$('statusbar').innerHTML = msgs[0].headers['message'];
+	loggedOff();
+};
+
+
+smssend.eventcb = function(msgs) {
+	var x;
+	if (loggedon) {
+		for (i=1;i<msgs.length - 1;i++) {
+			astmanEngine.channelUpdate(msgs[i]);
+		}
+		astmanEngine.pollEvents();
+	
+}
+}
+
+
+function localajaminit() {
+	astmanEngine.setURL('http://localhost:8088/asterisk/rawman');
+	astmanEngine.sendRequest('action=ping', smssend.pongs);
+	astmanEngine.setEventCallback(smssend.eventcb);
+}
+
+</script>
+
+<head>
+<title>Send SMS</title>
+</head>
+
+<body onload="localajaminit()">
+<h2>Send SMS</h2>
+<table>
+<tr>
+<td>Port: </td>
+<td><div id="portbar"><span style="margin-left: 4px;font-weight:bold">&nbsp;</span></div>
+</td>
+</tr>
+<tr>
+<td>Mobile Phone Number: </td>
+<td><input type="text" size="40" id="handynummer"></td>
+</tr>
+<tr>
+<td valign="top">Text: </td>
+<td><textarea id="text" cols="40" rows="10" onKeyUp="limited(this,160)" onKeyDown="limited(this,160)"></textarea></td>
+</tr>
+<tr>
+<td><input type="submit" name="Enviar" Value="Send" onclick="validateport()"></td>
+</tr>
+<tr>
+<td colspan="2">
+<center>
+<div id="statusbar"><span style="margin-left: 4px;font-weight:bold">&nbsp;</span></div><center>
+</td>
+</tr>
+<br>
