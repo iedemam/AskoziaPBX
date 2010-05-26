@@ -1,6 +1,14 @@
+#include <asterisk.h>
+
+#if defined(__NetBSD__) || defined(__FreeBSD__)
+#include <pthread.h>
+#include <signal.h>
+#else
+#include <sys/signal.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include <semaphore.h>
 #include <string.h>
 #include <sys/socket.h>
@@ -12,12 +20,11 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <sys/file.h>
-#include <signal.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
 
-#include <asterisk.h>
+#include <asterisk/lock.h>
 #include <asterisk/module.h>
 #include <asterisk/channel.h>
 #include <asterisk/config.h>
@@ -43,7 +50,7 @@
 #include <asterisk/csel.h>
 
 #include "gsmctl.h"
-#include "gsm_version.h"
+//#include "gsm_version.h"
 void* load_module_thread(void* data);
 
 ast_mutex_t gsm_mutex;
@@ -1356,7 +1363,8 @@ static char* handle_gsm_show_version(struct ast_cli_entry *e, int cmd, struct as
 		return NULL;
 	}
 
-	ast_cli(a->fd,"\nchan_gsm version (" CHAN_GSM_VERSION ")\n");
+	//ast_cli(a->fd,"\nchan_gsm version (" CHAN_GSM_VERSION ")\n");
+	ast_cli(a->fd,"\nchan_gsm version (trunk)\n");
 	return CLI_SUCCESS;
 }
 

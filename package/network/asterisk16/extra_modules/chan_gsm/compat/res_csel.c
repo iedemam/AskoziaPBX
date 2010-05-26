@@ -24,7 +24,7 @@
  */
 
 
-
+#include "asterisk/compat-16.h"
 
 
 #include "asterisk/csel.h"
