@@ -30,6 +30,6 @@ mkdir /ultmp /offload /cf /var/etc /var/db /var/spool/cron /var/spool/cron/cront
 ln -s /cf/conf /conf
 # new bits to move usr/* out of the initramfs and into /offload
 ln -s /offload/rootfs/usr /usr
-mount /dev/mmcblk0p2 /offload
+mount -r /dev/mmcblk0p2 /offload
 
 exec /sbin/init $*
