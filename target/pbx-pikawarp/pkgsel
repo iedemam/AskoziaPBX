@@ -27,6 +27,9 @@ X gmp
 X mpfr
 X gcc
 
+# debugging
+#X gdb
+
 # build deps
 X automake
 X autoconf

@@ -108,6 +108,10 @@ function pbx_configure() {
 	$res |= dahdi_configure();
 	if ($g['booting']) echo "done\n";
 
+	if ($g['booting']) echo "   |- generating gsm configuration...";
+	$res |= gsm_conf_generate();
+	if ($g['booting']) echo "done\n";
+
 	if ($g['booting']) echo "   |- executing Asterisk...";
 	$res |= pbx_start();
 	if ($g['booting']) echo "done\n";
@@ -886,6 +890,7 @@ function pbx_uniqid_to_technology($uniqid) {
 }
 
 function modules_conf_generate($return=false) {
+	global $g;
 
 	$conf = <<<EOD
 [modules]
@@ -947,6 +952,13 @@ load => res_qstat.so
 load => res_smdi.so
 
 EOD;
+
+	if ($g['platform'] == "Warp") {
+		$conf .= "load => res_csel.so\n";
+		$conf .= "load => res_statemachine.so\n";
+		$conf .= "load => res_configman.so\n";
+		$conf .= ";load => chan_gsm.so\n";
+	}
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/modules.conf", $conf);
 }

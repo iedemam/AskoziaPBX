@@ -43,6 +43,7 @@ require_once("extensions.inc");
 require_once("external.inc");
 require_once("fax.inc");
 require_once("features.inc");
+require_once("gsm.inc");
 require_once("iax.inc");
 require_once("indications.inc");
 require_once("isdn.inc");

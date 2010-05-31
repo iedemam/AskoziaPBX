@@ -279,6 +279,7 @@
 				<option value="/etc/asterisk/chan_dahdi.conf">/etc/asterisk/chan_dahdi.conf</option>
 				<option value="/etc/asterisk/extensions.conf">/etc/asterisk/extensions.conf</option>
 				<option value="/etc/asterisk/features.conf">/etc/asterisk/features.conf</option>
+				<option value="/etc/asterisk/gsm.conf">/etc/asterisk/gsm.conf</option>
 				<option value="/etc/asterisk/iax.conf">/etc/asterisk/iax.conf</option>
 				<option value="/etc/asterisk/indications.conf">/etc/asterisk/indications.conf</option>
 				<option value="/etc/asterisk/manager.conf">/etc/asterisk/manager.conf</option>
