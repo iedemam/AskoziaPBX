@@ -1,14 +1,8 @@
 #include <asterisk.h>
 
-#if defined(__NetBSD__) || defined(__FreeBSD__)
-#include <pthread.h>
-#include <signal.h>
-#else
-#include <sys/signal.h>
-#endif
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
 #include <semaphore.h>
 #include <string.h>
 #include <sys/socket.h>
@@ -20,6 +14,7 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <sys/file.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
@@ -74,7 +69,9 @@ static int gsm_save_out_msgs=0;	/* FUTURE CONFIGURATION OPTION */
 /* the main schedule context for stuff like l1 watcher, overlap dial, ... */
 static struct sched_context *gsm_tasks = NULL;
 static pthread_t gsm_tasks_thread;
+#if 0
 static pthread_t _gsm_restart_threads[MAX_GSM_PORTS];
+#endif
 
 static void _init_mod_port(int port);
 int _gsm_shutdown_port(int port, int powercycle);
@@ -614,7 +611,7 @@ static int gsm_tasks_add (int timeout, ast_sched_cb callback, void *data)
 {
 	return _gsm_tasks_add_variable(timeout, callback, data, 0);
 }
-
+#if 0
 static int gsm_check_homezone(const void *data)
 {
 	int port;
@@ -629,7 +626,7 @@ static int gsm_check_homezone(const void *data)
 
 	return 1;
 }
-
+#endif
 /* function to send sms messages */
 static int gsm_sms_sender_func(const void *data)
 {
@@ -1178,7 +1175,7 @@ static void _gsm_restart_port_sync(int port, int postwait)
 	if (gsm_debug)
 		gsm_log(GSM_DEBUG, "It took us %ld seconds\n", now-then);
 }
-
+#if 0
 /* we could just use the _sync() version of the function */
 static void* _gsm_restart_thread(void *data)
 {
@@ -1205,12 +1202,13 @@ static void* _gsm_restart_thread(void *data)
 
 	return NULL;
 }
-
+#endif
+#if 0
 static void _gsm_restart_port_async(int port, int postwait)
 {
 	pthread_create(&_gsm_restart_threads[port], NULL, _gsm_restart_thread, (void*)port); 
 }
-
+#endif
 static void _gsm_restart_port(int port, int postwait)
 {
 	_gsm_restart_port_sync(port, postwait);
@@ -2138,7 +2136,7 @@ static void sms_idx_add(int idx)
 	}
 }
 
-static int sms_idx_get_next()
+static int sms_idx_get_next(void)
 {
 	int i;
 	for (i=0; i<256; i++) {
@@ -3114,7 +3112,7 @@ static void _init_mod_port(int port)
 	char smsc[sizeof(gsm_cfg[port].smsc)];
 	char initfile[sizeof(gsm_cfg[port].initfile)];
 	char sms_pdu_mode[256];
-	int simslot;
+	int simslot=0;
 
 	if (gsm_debug)
 		ast_verbose(CHAN_GSM_VERBOSE_PREFIX "Initializing port %d(%d)\n",port, simslot);

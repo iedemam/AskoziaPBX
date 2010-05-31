@@ -1717,7 +1717,7 @@ int gsm_init( void (*cbEvent)(int port, char *event), struct gsm_config gsm_cfg[
 	return 0;
 }
 
-void gsm_shutdown()
+void gsm_shutdown(void)
 {
 	int i;
 	for (i=1;i<MAX_GSM_PORTS;i++) {

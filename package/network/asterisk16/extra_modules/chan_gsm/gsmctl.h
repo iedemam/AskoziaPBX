@@ -153,7 +153,7 @@ int gsm_send(int port, char *s, int delay);
 int gsm_send_raw(int port, char *s, int delay);
 
 int gsm_init( void (*cbEvent)(int port, char *event), struct gsm_config gsm_cfg[MAX_GSM_PORTS], int sysdebug);
-void gsm_shutdown();
+void gsm_shutdown(void);
 
 int gsm_init_port(int port, struct gsm_config *gsm_cfg);
 int gsm_wait_ready(int port);

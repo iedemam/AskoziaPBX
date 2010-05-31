@@ -26,6 +26,7 @@
  */
 
 
+#include "asterisk.h"
 #include "asterisk/hash.h"
 
 #include <string.h>

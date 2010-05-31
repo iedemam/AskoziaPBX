@@ -1,0 +1,12 @@
+--- asterisk-1.6.1.18/res/Makefile.orig	2010-05-31 15:17:34.000000000 +0200
++++ asterisk-1.6.1.18/res/Makefile	2010-05-31 15:18:32.000000000 +0200
+@@ -62,5 +62,9 @@
+ 
+ ael/pval.o: ael/pval.c
+ 
++res_configman.so: res_configman.o hash.o
++
++hash.o: hash.c
++
+ clean::
+ 	rm -f snmp/*.o snmp/*.i ael/*.o ael/*.i ais/*.o ais/*.i
