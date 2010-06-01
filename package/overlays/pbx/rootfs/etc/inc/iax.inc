@@ -224,7 +224,7 @@ EOD;
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {
-			$conf .= "language=en\n";
+			$conf .= "language=en-us\n";
 		}
 		
 		// qualify options
@@ -278,7 +278,7 @@ EOD;
 		if ($p['language']) {
 			$conf .= "language=" . $p['language'] . "\n";
 		} else {
-			$conf .= "language=en\n";
+			$conf .= "language=en-us\n";
 		}
 		
 		// qualify options
