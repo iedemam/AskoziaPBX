@@ -245,7 +245,8 @@ if (file_exists($g['skinny_dirty_path'])) {
 		if (!isset($config['system']['webgui']['hideiax'])) {
 			?><a href="phones_iax_edit.php"><?=gettext("IAX");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
-		if (!isset($config['system']['webgui']['hideisdn'])) {
+		if (!isset($config['system']['webgui']['hideisdn']) &&
+			count(dahdi_get_ports("isdn", "nt"))) {
 			?><a href="phones_isdn_edit.php"><?=gettext("ISDN");?></a><img src="bullet_add.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?
 		}
 		if (!isset($config['system']['webgui']['hideanalog']) &&
