@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -657,6 +657,9 @@ msgstr "Włoski"
 msgid "Polish"
 msgstr "Polski"
 
+msgid "Russian"
+msgstr "Rosyjski"
+
 msgid "Spanish (Spain)"
 msgstr "Hiszpański (Hiszpania)"
 
@@ -1103,9 +1106,6 @@ msgstr "Portugalski, Brazylia"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugalski, Brazylia (formalny)"
-
-msgid "Russian"
-msgstr "Rosyjski"
 
 msgid "Russian (formal)"
 msgstr "Rosyjski (formalny)"

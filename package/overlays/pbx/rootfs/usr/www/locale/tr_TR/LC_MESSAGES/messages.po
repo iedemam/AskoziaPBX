@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -627,6 +627,9 @@ msgstr "İtalyanca"
 msgid "Polish"
 msgstr "Polonya dili"
 
+msgid "Russian"
+msgstr "Rusca"
+
 #, fuzzy
 msgid "Spanish (Spain)"
 msgstr "İspanyolça (resmi)"
@@ -1064,9 +1067,6 @@ msgstr "Portekiz, Brezilya"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portekiz, Brezilya (resmi)"
-
-msgid "Russian"
-msgstr "Rusca"
 
 msgid "Russian (formal)"
 msgstr "Rusça (resmi)"

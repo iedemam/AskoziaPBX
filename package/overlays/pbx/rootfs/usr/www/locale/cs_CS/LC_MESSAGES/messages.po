@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -659,6 +659,9 @@ msgstr "Italština"
 msgid "Polish"
 msgstr "Polština"
 
+msgid "Russian"
+msgstr "Ruština"
+
 #, fuzzy
 msgid "Spanish (Spain)"
 msgstr "Španělština (oficiální)"
@@ -1104,9 +1107,6 @@ msgstr "Portugalština (Brazilie)"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugalština (Brazílie - oficiální)"
-
-msgid "Russian"
-msgstr "Ruština"
 
 msgid "Russian (formal)"
 msgstr "Ruština (oficiální)"

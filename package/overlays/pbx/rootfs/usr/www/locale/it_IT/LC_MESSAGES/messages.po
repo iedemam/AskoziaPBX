@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -657,6 +657,9 @@ msgstr "Italiano"
 msgid "Polish"
 msgstr "Polacco"
 
+msgid "Russian"
+msgstr "Russo"
+
 msgid "Spanish (Spain)"
 msgstr "Spagnolo (Spagna)"
 
@@ -1113,9 +1116,6 @@ msgstr "Portoghese, Brasiliano"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portoghese, Brasiliano (formale)"
-
-msgid "Russian"
-msgstr "Russo"
 
 msgid "Russian (formal)"
 msgstr "Russo (formale)"

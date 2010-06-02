@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -643,6 +643,9 @@ msgstr "Italiensk"
 msgid "Polish"
 msgstr "Polsk"
 
+msgid "Russian"
+msgstr "Russisk"
+
 msgid "Spanish (Spain)"
 msgstr "Spansk (Spanien)"
 
@@ -1090,9 +1093,6 @@ msgstr "Portugisisk, Brasiliansk"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugisisk, Brasiliansk (formelt)"
-
-msgid "Russian"
-msgstr "Russisk"
 
 msgid "Russian (formal)"
 msgstr "Russisk (formelt)"

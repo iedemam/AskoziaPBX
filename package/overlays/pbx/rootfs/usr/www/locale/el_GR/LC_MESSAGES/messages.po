@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -681,6 +681,9 @@ msgstr "Ιταλικά"
 msgid "Polish"
 msgstr "Πολωνικά"
 
+msgid "Russian"
+msgstr "Ρώσικα"
+
 #, fuzzy
 msgid "Spanish (Spain)"
 msgstr "Ισπανικά (τυπικά)"
@@ -1157,9 +1160,6 @@ msgstr "Πορτογαλικά (Βραζιλία)"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Πορτογαλικά (Βραζιλία) (τυπικά)"
-
-msgid "Russian"
-msgstr "Ρώσικα"
 
 msgid "Russian (formal)"
 msgstr "Ρώσικα (τυπικά)"

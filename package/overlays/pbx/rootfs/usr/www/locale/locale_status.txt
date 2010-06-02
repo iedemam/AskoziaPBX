@@ -3,7 +3,7 @@ el_GR 83
 tr_TR 71
 cs_CS 55
 zh_TW 89
-ru_RU 10
+ru_RU 100
 es_ES 79
 fr_FR 96
 se_SE 10

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -649,6 +649,9 @@ msgstr "Italien"
 msgid "Polish"
 msgstr "Polonais"
 
+msgid "Russian"
+msgstr "Russe"
+
 msgid "Spanish (Spain)"
 msgstr "Espagnol (formel)"
 
@@ -1095,9 +1098,6 @@ msgstr "Portugais, Brésil"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugais, Brésil (formel)"
-
-msgid "Russian"
-msgstr "Russe"
 
 msgid "Russian (formal)"
 msgstr "Russe (formel)"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Edwin Boeve <edwin.boeve@gmail.com>\n"
 "Language-Team: \n"
@@ -658,6 +658,9 @@ msgstr "Italiaans"
 msgid "Polish"
 msgstr "Pools"
 
+msgid "Russian"
+msgstr "Russisch"
+
 msgid "Spanish (Spain)"
 msgstr "Spaans (formeel)"
 
@@ -1112,9 +1115,6 @@ msgstr "Portugees , (Brazilië)"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "Portugees, (Brazilië) (formeel)"
-
-msgid "Russian"
-msgstr "Russisch"
 
 msgid "Russian (formal)"
 msgstr "Russisch (formeel)"

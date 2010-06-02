@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -683,6 +683,9 @@ msgstr "イタリア語"
 msgid "Polish"
 msgstr "ポーランド語"
 
+msgid "Russian"
+msgstr "ロシア語"
+
 #, fuzzy
 msgid "Spanish (Spain)"
 msgstr "スペイン語(公式)"
@@ -1147,9 +1150,6 @@ msgstr "ポルトガル語,ブラジル"
 
 msgid "Portuguese, Brazil (formal)"
 msgstr "ポルトガル語,ブラジル(公式)"
-
-msgid "Russian"
-msgstr "ロシア語"
 
 msgid "Russian (formal)"
 msgstr "ロシア語(公式)"

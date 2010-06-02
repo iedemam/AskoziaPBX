@@ -497,7 +497,7 @@ function display_channel_language_selector($current_language, $colspan=1) {
 		//"jp" => gettext("Japanese"),
 		"pl-pl" => gettext("Polish"),
 		//"pt-br" => gettext("Portuguese (Brazil)"),
-		//"ru" => gettext("Russian"),
+		"ru-ru" => gettext("Russian"),
 		"es-es" => gettext("Spanish (Spain)")
 		//"se" => gettext("Swedish")
 	);

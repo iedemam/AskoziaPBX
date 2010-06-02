@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-20 18:07+0200\n"
+"POT-Creation-Date: 2010-06-02 16:49+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -594,6 +594,9 @@ msgstr ""
 msgid "Polish"
 msgstr ""
 
+msgid "Russian"
+msgstr ""
+
 msgid "Spanish (Spain)"
 msgstr ""
 
@@ -1007,9 +1010,6 @@ msgid "Portuguese, Brazil"
 msgstr ""
 
 msgid "Portuguese, Brazil (formal)"
-msgstr ""
-
-msgid "Russian"
 msgstr ""
 
 msgid "Russian (formal)"
