@@ -33,11 +33,18 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Status"), gettext("Ports"));
 
-$spans = dahdi_scan_to_spans();
+$ports = dahdi_get_physical_ports();
+foreach ($ports as $port) {
+	if ($port['technology'] == "analog") {
+		$analog_ports[] = $port;
+	} else if ($port['technology'] == "isdn") {
+		$isdn_ports[] = $port;
+	}
+}
 
-?>
-<?php include("fbegin.inc"); ?>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+include("fbegin.inc");
+
+?><table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr> 
 		<td colspan="2" class="listtopic"><?=gettext('Network');?></td>
 	</tr>
@@ -51,23 +58,34 @@ $spans = dahdi_scan_to_spans();
 	</tr>
 	<tr>
 		<td colspan="2" class="list" height="12"></td>
-	</tr>
-	<tr> 
-		<td colspan="2" class="listtopic"><?=gettext('ISDN');?></td>
-	</tr>
-	<tr> 
-		<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
-		<td width="80%" class="listr">&nbsp;</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="list" height="12"></td>
-	</tr>
-	<tr> 
-		<td colspan="2" class="listtopic"><?=gettext('Analog');?></td>
-	</tr>
-	<tr> 
-		<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
-		<td width="80%" class="listr">&nbsp;</td>
-	</tr>
-</table>
-<?php include("fend.inc"); ?>
+	</tr><?
+
+	if ($isdn_ports) {
+		?><tr>
+			<td colspan="2" class="listtopic"><?=gettext('ISDN');?></td>
+		</tr>
+		<tr>
+			<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
+			<td width="80%" class="listr"><?=print_r_html($isdn_ports);?></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr><?
+	}
+
+	if ($analog_ports) {
+		?><tr>
+			<td colspan="2" class="listtopic"><?=gettext('Analog');?></td>
+		</tr>
+		<tr>
+			<td width="20%" class="vncellreq" valign="top">&nbsp;</td>
+			<td width="80%" class="listr"><?=print_r_html($analog_ports);?></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr><?
+	}
+
+?></table><?
+
+include("fend.inc");
