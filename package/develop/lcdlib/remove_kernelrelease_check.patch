@@ -1,0 +1,17 @@
+--- lcdlib-1.0.0-8/driver/Makefile.orig	2010-06-02 18:15:32.000000000 +0200
++++ lcdlib-1.0.0-8/driver/Makefile	2010-06-02 18:15:59.000000000 +0200
+@@ -3,7 +3,7 @@
+ 
+ EXTRA_CFLAGS += $(PIKA_KERNEL_CFLAGS)
+ 
+-ifeq ($(KERNELRELEASE),)
++#ifeq ($(KERNELRELEASE),)
+ 
+ KERNELRELEASE = $(shell uname -r)
+ 
+@@ -19,4 +19,4 @@
+ 	rm -f *.o *.ko *.mod.c .*.cmd TAGS
+ 	rm -rf .tmp_versions modules.order
+ 
+-endif
++#endif

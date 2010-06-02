@@ -98,5 +98,8 @@ X ezipupdate
 X pciutils
 X lsof
 
+# pika
+X lcdlib
+
 # file system overlay
 X pbx
