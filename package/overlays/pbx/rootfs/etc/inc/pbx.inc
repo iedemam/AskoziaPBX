@@ -50,6 +50,10 @@ function pbx_configure() {
 	}
 
 	$res = 0;
+	
+	if ($g['booting']) echo "   |- generating asterisk logger configuration...";
+	$res |= logger_conf_generate();
+	if ($g['booting']) echo "done\n";
 	if ($g['booting']) echo "   |- generating Asterisk process configuration...";
 	$res |= asterisk_conf_generate();
 	if ($g['booting']) echo "done\n";
@@ -1007,6 +1011,10 @@ function asterisk_conf_generate($return=false) {
 		$dbpath = $disk['mountpoint'] . "/askoziapbx/persistence";
 	}
 
+	$astlogpath = "/var/asterisk/log";
+	if ($disk = storage_service_is_active("astlogs")) {
+		$astlogpath = $disk['mountpoint'] . "/askoziapbx/logs/asterisk";
+	}
 	$conf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
@@ -1015,7 +1023,7 @@ astdbdir => $dbpath
 astkeydir => /etc/asterisk/keys
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
-astlogdir => /var/asterisk/log
+astlogdir => $astlogpath
 astmoddir => /offload/asterisk/modules
 astvarlibdir => $datapath
 astdatadir => $datapath
@@ -1051,4 +1059,22 @@ EOD;
 	return ($return) ? $conf : util_file_write("/etc/asterisk/musiconhold.conf", $conf);
 }
 
+function logger_conf_generate($return=false) {
+
+	$astlogopt = '';
+	if ($disk = storage_service_is_active("astlogs")) {
+		$astlogopt = 'full => verbose,notice,warning,error,debug';
+	}
+$conf = <<<EOD
+[general]
+queue_log = no
+event_log = no
+
+[logfiles]
+syslog.local0 => verbose,notice,warning,error,debug
+$astlogopt
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/logger.conf", $conf);
+}
 ?>

@@ -390,6 +390,7 @@ function storage_verify_disk($post, $errors) {
 	v_required('mountpoint', gettext('Mount Point'), &$disk, &$post, &$errors);
 	v_checkbox('media', &$disk, &$post);
 	v_checkbox('persistence', &$disk, &$post);
+	v_checkbox('astlogs', &$disk, &$post);
 
 	$trusted = array(
 		'uniqid'
@@ -499,8 +500,10 @@ function storage_initialize_service($service, $disk) {
 
 	} else if ($service == 'persistence') {
 		exec("cp -p /etc/asterisk/db/astdb " . $servicepath . "/");
-	}
 
+	} else if ($service == 'astlogs') {
+		exec("mkdir " . $servicepath . "/asterisk");
+	}
 
 	if (!$g['booting']) {
 		touch($d_sysrebootreqd_path);

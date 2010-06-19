@@ -159,6 +159,13 @@ if (!$initialformat && !count($unassigneddisks)) {
 		d_blanklabel(gettext("Persistence"),
 			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['persistence']));
 	}
+	// logs
+	if (!$assignedservices['astlogs']) {
+		d_checkbox(gettext("Asterisk logs"), gettext("store Asterisk's logs on disk"), "astlogs");
+	} else {
+		d_blanklabel(gettext("Asterisk logs"),
+			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['astlogs']));
+	}
 	d_spacer();
 
 

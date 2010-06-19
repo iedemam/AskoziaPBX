@@ -282,6 +282,7 @@
 				<option value="/etc/asterisk/gsm.conf">/etc/asterisk/gsm.conf</option>
 				<option value="/etc/asterisk/iax.conf">/etc/asterisk/iax.conf</option>
 				<option value="/etc/asterisk/indications.conf">/etc/asterisk/indications.conf</option>
+				<option value="/etc/asterisk/logger.conf">/etc/asterisk/logger.conf</option>  
 				<option value="/etc/asterisk/manager.conf">/etc/asterisk/manager.conf</option>
 				<option value="/etc/asterisk/meetme.conf">/etc/asterisk/meetme.conf</option>
 				<option value="/etc/asterisk/modules.conf">/etc/asterisk/modules.conf</option>
