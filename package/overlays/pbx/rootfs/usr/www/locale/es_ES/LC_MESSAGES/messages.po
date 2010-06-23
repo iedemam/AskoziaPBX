@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2009-03-09 00:12+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3505,6 +3505,10 @@ msgid "Persistence"
 msgstr ""
 
 #, fuzzy
+msgid "Asterisk logs"
+msgstr "Entradas del Lod de Asterisk"
+
+#, fuzzy
 msgid "edit disk"
 msgstr "Editar Disco"
 
@@ -3570,6 +3574,10 @@ msgstr ""
 
 msgid "store Asterisk's database on disk"
 msgstr ""
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
+msgstr "Entradas del Lod de Asterisk"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR No se pudo guardar la configuración. \n"
@@ -4095,9 +4103,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Clear log"
 #~ msgstr "Limpiar log"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Entradas del Lod de Asterisk"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""

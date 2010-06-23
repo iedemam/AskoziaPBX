@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -3597,6 +3597,10 @@ msgstr "Sei sicuro di voler riavviare il sistema?"
 msgid "Persistence"
 msgstr "Persistenza"
 
+#, fuzzy
+msgid "Asterisk logs"
+msgstr "Voci del registro degli eventi di Asterisk"
+
 msgid "edit disk"
 msgstr "modifica disco"
 
@@ -3655,6 +3659,10 @@ msgid "service already assigned to \"%s\""
 msgstr "servizio già assegnato a \"%s\""
 
 msgid "store Asterisk's database on disk"
+msgstr "memorizza il database di Asterisk sul disco"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "memorizza il database di Asterisk sul disco"
 
 msgid "ERR Could not save configuration.\n"
@@ -4396,9 +4404,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 
 #~ msgid "Clear log"
 #~ msgstr "Pulisci registro"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Voci del registro degli eventi di Asterisk"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""

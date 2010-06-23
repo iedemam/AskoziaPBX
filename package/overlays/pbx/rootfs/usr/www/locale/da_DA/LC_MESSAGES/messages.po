@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -3494,6 +3494,10 @@ msgstr "Er du sikker på du vil genstarte systemet?"
 msgid "Persistence"
 msgstr "Gem"
 
+#, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk logbog punkter"
+
 msgid "edit disk"
 msgstr "ret disk"
 
@@ -3551,6 +3555,10 @@ msgid "service already assigned to \"%s\""
 msgstr "service benyttes allerede af \"%s\""
 
 msgid "store Asterisk's database on disk"
+msgstr "gem Asterisk database på disk"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "gem Asterisk database på disk"
 
 msgid "ERR Could not save configuration.\n"
@@ -4160,9 +4168,6 @@ msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Clear log"
 #~ msgstr "Nulstil logbog"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk logbog punkter"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""

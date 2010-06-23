@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3220,6 +3220,9 @@ msgstr ""
 msgid "Persistence"
 msgstr ""
 
+msgid "Asterisk logs"
+msgstr ""
+
 msgid "edit disk"
 msgstr ""
 
@@ -3276,6 +3279,9 @@ msgid "service already assigned to \"%s\""
 msgstr ""
 
 msgid "store Asterisk's database on disk"
+msgstr ""
+
+msgid "store Asterisk's logs on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

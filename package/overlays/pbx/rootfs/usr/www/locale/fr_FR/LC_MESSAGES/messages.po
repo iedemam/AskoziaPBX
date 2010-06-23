@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -3539,6 +3539,10 @@ msgstr "Souhaitez vous redémarrer le système ?"
 msgid "Persistence"
 msgstr "Persistence "
 
+#, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk logs"
+
 msgid "edit disk"
 msgstr "Configuration du disque"
 
@@ -3597,6 +3601,10 @@ msgid "service already assigned to \"%s\""
 msgstr "service déja assigné à  \"%s\""
 
 msgid "store Asterisk's database on disk"
+msgstr "ecrire la base de donnée d'Asterisk sur le disque"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "ecrire la base de donnée d'Asterisk sur le disque"
 
 msgid "ERR Could not save configuration.\n"
@@ -4312,9 +4320,6 @@ msgstr "ERREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Clear log"
 #~ msgstr "Effacer les appels"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk logs"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr "Le nombre de lignes de logs doit être compris entre 50 et 1000."

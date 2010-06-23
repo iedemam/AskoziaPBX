@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Edwin Boeve <edwin.boeve@gmail.com>\n"
 "Language-Team: \n"
@@ -3551,6 +3551,10 @@ msgstr "Weet u zeker dat u het systeem wilt herstarten?"
 msgid "Persistence"
 msgstr "Persistentie"
 
+#, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk log regels"
+
 msgid "edit disk"
 msgstr "Bewerk schijf"
 
@@ -3611,6 +3615,10 @@ msgid "service already assigned to \"%s\""
 msgstr "service is a toegewezen aan \"%s\""
 
 msgid "store Asterisk's database on disk"
+msgstr "Asterisk's database opslaan op schijf"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "Asterisk's database opslaan op schijf"
 
 msgid "ERR Could not save configuration.\n"
@@ -4162,9 +4170,6 @@ msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 
 #~ msgid "Clear log"
 #~ msgstr "Log wissen"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk log regels"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr "Aantal zichtbare log regels moet tussen de 50 en 1000 zijn."

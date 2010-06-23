@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -3594,6 +3594,10 @@ msgid "Persistence"
 msgstr ""
 
 #, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk-Log-Einträge"
+
+#, fuzzy
 msgid "edit disk"
 msgstr "Disk bearbeiten"
 
@@ -3650,6 +3654,10 @@ msgid "service already assigned to \"%s\""
 msgstr "dienst ist bereits \"%s\" zugewiesen."
 
 msgid "store Asterisk's database on disk"
+msgstr "Asterisk's Datenbank auf Disk speichern"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "Asterisk's Datenbank auf Disk speichern"
 
 msgid "ERR Could not save configuration.\n"
@@ -3827,9 +3835,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "Clear log"
 #~ msgstr "Log löschen"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk-Log-Einträge"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""

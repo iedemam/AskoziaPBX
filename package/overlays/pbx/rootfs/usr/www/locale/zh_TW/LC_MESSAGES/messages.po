@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -3534,6 +3534,10 @@ msgid "Persistence"
 msgstr ""
 
 #, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk日誌條目"
+
+#, fuzzy
 msgid "edit disk"
 msgstr "編輯磁盤"
 
@@ -3599,6 +3603,10 @@ msgstr ""
 
 msgid "store Asterisk's database on disk"
 msgstr ""
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
+msgstr "Asterisk日誌條目"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR 無法保存設置。\n"
@@ -4252,9 +4260,6 @@ msgstr "ERR 收到無效的設定。\n"
 
 #~ msgid "Clear log"
 #~ msgstr "清空日誌"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk日誌條目"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr "顯示的日誌條目數必須在50到1000之間。"

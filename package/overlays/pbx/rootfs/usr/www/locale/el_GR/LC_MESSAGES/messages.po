@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3756,6 +3756,10 @@ msgid "Persistence"
 msgstr ""
 
 #, fuzzy
+msgid "Asterisk logs"
+msgstr "Εγγραφές ημερολογίου Asterisk"
+
+#, fuzzy
 msgid "edit disk"
 msgstr "Επεξεργασία δίσκου"
 
@@ -3821,6 +3825,10 @@ msgstr ""
 
 msgid "store Asterisk's database on disk"
 msgstr ""
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
+msgstr "Εγγραφές ημερολογίου Asterisk"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ΣΦΑΛΜΑ: Αδυναμία αποθήκευσης ρυθμίσεων.\n"
@@ -4552,9 +4560,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Clear log"
 #~ msgstr "Διαγραφή ημερολογίου"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Εγγραφές ημερολογίου Asterisk"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""

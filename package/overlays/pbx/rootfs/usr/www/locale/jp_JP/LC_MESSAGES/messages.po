@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2008-12-13 02:07+0900\n"
 "Last-Translator: kenichi fukaumi <kenichi@kula.co.jp>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -3647,6 +3647,10 @@ msgid "Persistence"
 msgstr ""
 
 #, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk(AskoziaPBX)ログの一覧"
+
+#, fuzzy
 msgid "edit disk"
 msgstr "ディスクの編集"
 
@@ -3712,6 +3716,10 @@ msgstr ""
 
 msgid "store Asterisk's database on disk"
 msgstr ""
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
+msgstr "Asterisk(AskoziaPBX)ログの一覧"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR 設定を保存出来ませんでした\n"
@@ -4416,9 +4424,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Clear log"
 #~ msgstr "ログを消去する"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk(AskoziaPBX)ログの一覧"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr "ログの表示件数は、50から1000の間でなければなりません"

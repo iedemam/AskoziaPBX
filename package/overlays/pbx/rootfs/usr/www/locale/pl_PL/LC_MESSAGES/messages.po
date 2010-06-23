@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -3511,6 +3511,10 @@ msgstr "Czy na pewno chcesz zrestartować system?"
 msgid "Persistence"
 msgstr "Baza danych"
 
+#, fuzzy
+msgid "Asterisk logs"
+msgstr "Log Asteriska"
+
 msgid "edit disk"
 msgstr "edytuj dysk"
 
@@ -3571,6 +3575,10 @@ msgid "service already assigned to \"%s\""
 msgstr "usługa jest już przypisana do \"%s\""
 
 msgid "store Asterisk's database on disk"
+msgstr "przechowuj bazę danych Asteriska na tym dysku"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "przechowuj bazę danych Asteriska na tym dysku"
 
 msgid "ERR Could not save configuration.\n"
@@ -4205,9 +4213,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Clear log"
 #~ msgstr "Wyczyść log"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Log Asteriska"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr "Ilość pozycji logu do pokazania musi być między 5 a 1000."

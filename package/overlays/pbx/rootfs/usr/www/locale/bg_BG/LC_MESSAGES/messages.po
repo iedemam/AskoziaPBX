@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -3517,6 +3517,10 @@ msgstr "Сигурни ли сте че искате да рестартират
 msgid "Persistence"
 msgstr "Съхраняване"
 
+#, fuzzy
+msgid "Asterisk logs"
+msgstr "Астериск логове"
+
 msgid "edit disk"
 msgstr "редактирай диск"
 
@@ -3573,6 +3577,10 @@ msgid "service already assigned to \"%s\""
 msgstr "услугата вече е назначена към \"%s\""
 
 msgid "store Asterisk's database on disk"
+msgstr "съхранявай Астериск база данни на диска"
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
 msgstr "съхранявай Астериск база данни на диска"
 
 msgid "ERR Could not save configuration.\n"
@@ -4276,9 +4284,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Clear log"
 #~ msgstr "Изчисти Отчетите"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Астериск логове"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr ""

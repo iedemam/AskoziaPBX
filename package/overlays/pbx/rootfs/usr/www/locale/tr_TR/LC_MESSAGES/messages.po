@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-02 16:49+0200\n"
+"POT-Creation-Date: 2010-06-23 10:25+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3417,6 +3417,10 @@ msgid "Persistence"
 msgstr ""
 
 #, fuzzy
+msgid "Asterisk logs"
+msgstr "Asterisk log kayıtları"
+
+#, fuzzy
 msgid "edit disk"
 msgstr "Sürücüyü Düzenle"
 
@@ -3481,6 +3485,10 @@ msgstr ""
 
 msgid "store Asterisk's database on disk"
 msgstr ""
+
+#, fuzzy
+msgid "store Asterisk's logs on disk"
+msgstr "Asterisk log kayıtları"
 
 msgid "ERR Could not save configuration.\n"
 msgstr ""
@@ -3870,9 +3878,6 @@ msgstr ""
 
 #~ msgid "Clear log"
 #~ msgstr "Log sil"
-
-#~ msgid "Asterisk log entries"
-#~ msgstr "Asterisk log kayıtları"
 
 #~ msgid "Number of log entries to show must be between 50 and 1000."
 #~ msgstr "Log kayıtları görüntüleme değeri 50 ile 1000 arası olmalı."
