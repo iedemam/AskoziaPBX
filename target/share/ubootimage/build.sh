@@ -158,7 +158,7 @@ find ./ -name "*.a" -print -delete
 find ./ -name "*.c" -print -delete
 find ./ -name "*.o" -print -delete
 find ./ -name "*.po" -print -delete
-rm -vrf `find ./ -name ".svn"`
+rm -rf `find ./ -name ".svn"`
 
 echo "Root partition size calculation ..."
 root_size=`du -B512 -s root_stage | cut -f 1`
