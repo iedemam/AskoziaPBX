@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scenario name="Registration of Testuser '[field2]'">
+
+<!-- REGISTER-VERSUCH 1 - ohne Authentication -->
+<send retrans="500">
+    <![CDATA[ REGISTER sip:[remote_ip] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+      Max-Forwards: 70
+      To: "[field2]" <sip:[field2]@[remote_ip]>
+      From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+      Call-ID: [call_id]
+      CSeq: [cseq] REGISTER
+      Contact: <sip:[field2]@[local_ip]:[local_port]>
+	  Expires: 3600
+      Content-Length: 0
+    ]]>
+</send>
+
+<!-- WAIT FOR "401 UNAUTHORIZED" -->
+<recv response="100" optional="true" />
+<recv response="401" auth="true" />
+
+<!-- REGISTER-VERSUCH 2 - mit Authentication -->
+<send>
+    <![CDATA[ REGISTER sip:[remote_ip] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+      Max-Forwards: 70
+      To: "[field2]" <sip:[field2]@[remote_ip]>
+      From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+      Call-ID: [call_id]
+      CSeq: [cseq] REGISTER
+      Contact: <sip:[field2]@[local_ip]:[local_port]>
+      Expires: 3600
+      [field3]
+      Content-Length: 0
+    ]]>
+</send>
+
+<!-- WAIT FOR "200 OK" -->
+<recv response="200" />
+
+<!-- <pause milliseconds="70000" /> -->
+</scenario>

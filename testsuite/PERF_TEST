@@ -1,0 +1,1223 @@
+#!/usr/bin/perl
+
+# TIP: Set your tabwidth to 4
+#
+# This script was written by Mark Stephan during a job as a student assistant
+# in April till August 2010 under supervision of Michael Iedema (<michael@askozia.com>).
+# Bugs, questions and reports to <mark.stephan@askozia.com>
+# PS: This is version 1.0 - it is not structured perfectly yet
+#
+# This script follows the following procedure:
+# 0. Introduction (Module-loading, parse parameters, check needed files, ...)
+#	a) Load modules
+#	b) Parse parameters
+#	c) Check dependencies
+#	d) Calculate needed test-time
+# 1. Get XML-Configfile from Askozia-Box, edit it und update Askozia-Box
+#   a) Get Configfile
+#	b) Edit it
+#	c) Re-Upload it
+# 2. Generate Users.csv-File for sipp
+#	a) For 2way-tests
+#	b) For conference tests with fixed rooms
+#	c) For conference tests with fixed calls
+# 3. Execute Performance-Tests
+#	a) Execute 2-way-performance-tests
+#	b) Execute conference-tests with fixed rooms
+#	c) Execute conference-tests with fixed calls
+# 4. Interpret and plot collocted data
+#	a) Download files
+#	b) Interpret files
+#	c) Plot files
+# 5. Restore old Askozia-Configuration
+
+
+#######################
+### 0. INTRODUCTION ###
+#######################
+
+### 0.a) load needed modules ###
+use warnings;					# Activate Warnings
+use strict;						# Activate strict code-control
+use Cwd;						# For determing the current working path
+use File::Path;					# For creating pathes
+use File::Spec;					# For assimilate relative and absolut pathes to the operating system
+use Getopt::Long;				# For parsing command-line-parameters
+use HTTP::Request::Common;		# For executing HTTP-POST-Requests
+use LWP;						# For executing HTTP-POST-Requests
+
+# install signal handler for killing all sipp-processes before being terminated
+$SIG{'INT'} = 'term_handler';	# Catch "STRG-C" for deregister all registered users
+
+# am I root? Necessary for SIPP
+(die "Must be root because sipp reserves ports.\n") if (`id -u` != 0);
+
+### 0.b) Parse parameters ###
+my $debug = 0;					# Debug-Mode? (0=off, 1=on)
+my $save_debug;					# Save debug-msgs in this file? (undef = no saving)
+my $help;						# Print help an exit? (defined = yes)
+my $xml_configfile;				# Name for saving the original AskoziaPBX-XML-Configfile
+my $term_handler_called;		# Was the TERM-Signal (STRG+C) sent? --> cancel all tests
+my $testname = "";				# Name of the test (needed for creating subdir with result-files)
+
+# Askozia-Settings
+my $ask_ip			= "10.10.10.1";					# IP of the askozia-box
+my $ask_port		= 80;							# Webport of the askozia-box
+my $ask_conf_page	= "system_backup.php";			# PHP-Page for down-/uploading the configuration-file
+my $ask_qstat_page	= "debug_qstat.php";			# PHP-Page for starting/stopping/downloading QStat-Recordings
+my $ask_reboot_page	= "system_reboot.php";
+my $ask_realm		= "Web Server Authentication";	# Realm for authentification
+my $ask_user		= "admin";						# User for down-/uploading the configuration-file
+my $ask_pw			= "askozia";					# Passwort for the user to login
+my $restore			= "old-config";					# Which configuration shell the AskoziaPBX have AFTER the test?
+													# (old-config, keep, factory-defaults)
+
+# Perfomance-Test-Settings
+my $save_sipp_log;		# Shell the sipp-output be saved in files? (extrem-debugging because very much data)
+my $local_ip;			# The IP adress of the test-computer
+my $save_users;			# Shell the "Users.csv"-File for sipp NOT be deleted?
+my $twoway_calls;		# How many calls shell be executed for the 2way-test? (0/undef = no twoway test)
+my $twoway_pause;		# One test with all users or slow-and-steadily building-up tests?
+my $conf_calls_room;	# How many calls shell be executed for the conference-tests? (0/undef = no conftest with fixed rooms)
+my $conf_rooms_room;	# How many rooms shell exist? (Here, fixed rooms: There is ALWAYS this count of rooms)
+my $conf_pause_room;	# One test with all users and rooms or slow-and-steadily building-up tests?
+my $conf_calls_call;	# How many calls shell be executed for the conference-tests? (0/undef = no conftest with fixed calls)
+my $conf_rooms_call;	# How many rooms shell exist? (Here, fixed calls: number of rooms will increase step by step)
+my $conf_pause_call;	# One test with all users and rooms or slow-and-steadily building-up tests?
+
+# Sipp-Settings
+my $sipp;																		# Name of the sipp-executable
+my $users_twoway_file		= "Users_twoway.csv";								# Name of the CSV-Injection-File for sipp for 2way-test
+my $users_conf_room_file	= "Users_conf_room.csv";							# CSV-Injection-File for sipp for conference-test with fixed rooms
+my $users_conf_call_file	= "Users_conf_call.csv";							# CSV-Injection-File for sipp for conference-test with fixed calls
+my $reg_scen				= File::Spec->rel2abs ("Register.xml"	, cwd()."/PERF_TEST_FILES");	# Name of the register-scenario
+my $der_scen				= File::Spec->rel2abs ("Deregister.xml"	, cwd()."/PERF_TEST_FILES");	# Name of the deregister-scenario
+my $inv_scen				= File::Spec->rel2abs ("Invite.xml"		, cwd()."/PERF_TEST_FILES");	# Name of the invite-scenario
+my $acc_scen				= File::Spec->rel2abs ("Accept.xml"		, cwd()."/PERF_TEST_FILES");	# Name of the accept-scenario for listening invited users
+my $sip_src_port			= 5061;												# SIPP-Source-Port of the testcomputer
+																				# (should be != 5060 becuase blocked by running softphones)
+my $sip_dst_port			= 5062;												# SIPP-Destination-Port of the testcomputer (for 2way-tests only)
+my $rtp_src_port			= 6020;												# RTP-Source-Port of the testcomputer
+my $rtp_dst_port			= 6030;												# RTP-Destination-Port of the testcomputer (for 2way-tests only)
+
+# Template-Text for the xml-configfile for a sipphone
+my $conffile_text_usertext =
+"		<phone>
+			<extension>User_userno_</extension>
+			<callerid>Performance-Test Testuser _userno_</callerid>
+			<codec>ulaw</codec>
+			<codec>alaw</codec>
+			<codec>gsm</codec>
+			<secret>0815</secret>
+			<uniqid>SIP-PHONE-1357012154bbefaaa79d96_userno_</uniqid>
+			<language>de-de</language>
+			<ringlength>indefinitely</ringlength>
+			<natmode>yes</natmode>
+			<dtmfmode>auto</dtmfmode>
+		</phone>
+";
+
+# Template-Text for the xml-configfile for a conference-room
+my $conffile_conftext = 
+"		<room>	<number>_roomno_</number>
+			<name>Default Conference</name>
+			<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6_roomno_</uniqid> </room>
+";
+
+# use "./sipp" if existing, otherwise the installed sipp-version for default executables, is overwritten if specified by command line parameter
+(-f File::Spec->rel2abs ("sipp", cwd()."/PERF_TEST_FILES"))	? ($sipp = "PERF_TEST_FILES/sipp")
+																: (($sipp = `which sipp`) && chomp $sipp);
+
+# parse command line parameters
+# for help have a look at (a) help-output of this script or (b) declaration of this variables
+Getopt::Long::GetOptions (
+	"askozia-ip=s"				=> \$ask_ip, 
+	"askozia-port=s"			=> \$ask_port,
+	"askozia-confpage=s"		=> \$ask_conf_page,
+	"askozia-qstatpage=s"		=> \$ask_qstat_page,
+	"askozia-realm=s"			=> \$ask_realm,
+	"askozia-user=s"			=> \$ask_user,
+	"askozia-pw=s"				=> \$ask_pw,
+	"save-sipp-log=s"			=> \$save_sipp_log,
+	"local-ip=s"				=> \$local_ip,
+	"save-users"				=> \$save_users,
+	"save-debug=s"				=> \$save_debug,
+	"2way-calls=i"				=> \$twoway_calls,
+	"2way-pause=i"				=> \$twoway_pause,
+	"conf-calls-room=i"			=> \$conf_calls_room,
+	"conf-rooms-room=i"			=> \$conf_rooms_room,
+	"conf-pause-room=i"			=> \$conf_pause_room,
+	"conf-calls-call=i"			=> \$conf_calls_call,
+	"conf-rooms-call=i"			=> \$conf_rooms_call,
+	"conf-pause-call=i"			=> \$conf_pause_call,
+	"sipp-exe=s"				=> \$sipp,
+	"users-2way-file=s"			=> \$users_twoway_file,
+	"users-conf-room-file=s"	=> \$users_conf_room_file,
+	"users-conf-call-file=s"	=> \$users_conf_call_file,
+	"reg-scen=s"				=> \$reg_scen,
+	"dereg-scen=s"				=> \$der_scen,
+	"inv-scen=s"				=> \$inv_scen,
+	"acc-scen=s"				=> \$acc_scen,
+	"sip-src-port=i"			=> \$sip_src_port,
+	"sip-dst-port=i"			=> \$sip_dst_port,
+	"rtp-src-port=i"			=> \$rtp_src_port,
+	"rtp-dst-port=i"			=> \$rtp_dst_port,
+	"debug"						=> \$debug,
+	"help"						=> \$help,
+	"testname=s"				=> \$testname,
+	"restore=s"					=> \$restore
+);
+
+### 0.c) Check depedencies and settings ###
+print_help() if (defined $help);
+die ("FATAL: No local ip-address specified.\n") unless (defined $local_ip);
+die ("FATAL: No test specified (no twoway-calls and no conference-calls were entered).\n")
+	if ((not defined ($twoway_calls)) && (not defined ($conf_calls_room)) && (not defined ($conf_calls_call)));
+warn ("WARN: You should use a pause-value >= 30 seconds for suitable values.\n") if (
+	((defined $twoway_pause) && ($twoway_pause < 30)) ||
+	((defined $conf_pause_call) && ($conf_pause_call < 30)) ||
+	((defined $conf_pause_room) && ($conf_pause_room < 30)));
+
+# the following lines are necessary to avoid problems if used at different operating systems (lin, win, mac, ...)
+$testname				= File::Spec->rel2abs ("$testname", cwd()."/results");		# determine subdir-path to save all results
+(File::Path::mkpath ($testname)) unless (-e $testname);								# create subdir
+$save_debug				= File::Spec->rel2abs ($save_debug, $testname);				# determine complete path of the file to save the debug-msgs
+$users_twoway_file		= File::Spec->rel2abs ($users_twoway_file, $testname);		# determine complete path of the csv-file for twoway calls
+$users_conf_room_file	= File::Spec->rel2abs ($users_conf_room_file, $testname);	# determine complete path of the csv-file for fixed rooms
+$users_conf_call_file	= File::Spec->rel2abs ($users_conf_call_file, $testname);	# determine complete path of the csv-file for fixed calls
+$sipp					= File::Spec->rel2abs ($sipp, cwd());						# determine complete path of the sipp-executable
+$reg_scen				= File::Spec->rel2abs ($reg_scen, cwd());					# determine complete path of the register-scenario
+$der_scen				= File::Spec->rel2abs ($der_scen, cwd());					# determine complete path of the deregister-scenario
+$inv_scen				= File::Spec->rel2abs ($inv_scen, cwd());					# determine complete path of the invite-scenario
+$acc_scen				= File::Spec->rel2abs ($acc_scen, cwd());					# determine complete path of the accept-scenario
+
+# print debug messages for debugging :-)
+debug ("Settings for this performance-test:");
+(defined $ask_ip)					? debug ("ask_ip is '$ask_ip'")						: debug ("ask_ip is not defined.");
+(defined $ask_port)					? debug ("ask_port is '$ask_port'")					: debug ("ask_port is not defined.");
+(defined $ask_conf_page)			? debug ("ask_conf_page is '$ask_conf_page'")		: debug ("ask_conf_page is not defined.");
+(defined $ask_qstat_page)			? debug ("ask_qstat_page is '$ask_qstat_page'")		: debug ("ask_qstat_page is not defined.");
+(defined $ask_realm)				? debug ("ask_realm is '$ask_realm'")				: debug ("ask_realm is not defined.");
+(defined $ask_user)					? debug ("ask_user is '$ask_user'")					: debug ("ask_user is not defined.");
+(defined $ask_pw)					? debug ("ask_pw is '$ask_pw'")						: debug ("ask_pw is not defined.");
+(defined $save_sipp_log)			? debug ("save_sipp_log is '$save_sipp_log'")		: debug ("save_sipp_log is not defined.");
+(defined $local_ip)					? debug ("local_ip is '$local_ip'")					: debug ("local_ip is not defined.");
+(defined $save_users)				? debug ("save_users is '$save_users'")				: debug ("save_users is not defined.");
+(defined $save_debug)				? debug ("save_debug is '$save_debug'")				: debug ("save_debug is not defined.");
+(defined $twoway_calls)				? debug ("twoway_calls is '$twoway_calls'")			: debug ("twoway_calls is not defined.");
+(defined $twoway_pause)				? debug ("twoway_pause is '$twoway_pause'")			: debug ("twoway_pause is not defined.");
+(defined $conf_calls_room)			? debug ("conf_calls_room is '$conf_calls_room'")	: debug ("conf_calls_room is not defined.");
+(defined $conf_rooms_room)			? debug ("conf_rooms_room is '$conf_rooms_room'")	: debug ("conf_rooms_room is not defined.");
+(defined $conf_pause_room)			? debug ("conf_pause_room is '$conf_pause_room'")	: debug ("conf_pause_room is not defined.");
+(defined $conf_calls_call)			? debug ("conf_calls_call is '$conf_calls_call'")	: debug ("conf_calls_call is not defined.");
+(defined $conf_rooms_call)			? debug ("conf_rooms_call is '$conf_rooms_call'")	: debug ("conf_rooms_call is not defined.");
+(defined $conf_pause_call)			? debug ("conf_pause_call is '$conf_pause_call'")	: debug ("conf_pause_call is not defined.");
+(defined $sipp)						? debug ("sipp is '$sipp'")							: debug ("sipp is not defined.");
+(defined $users_twoway_file)		? debug ("users_file is '$users_twoway_file'")		: debug ("users_file is not defined.");
+(defined $users_conf_room_file)		? debug ("users_file is '$users_conf_room_file'")	: debug ("users_file is not defined.");
+(defined $users_conf_call_file)		? debug ("users_file is '$users_conf_call_file'")	: debug ("users_file is not defined.");
+(defined $reg_scen)					? debug ("reg_scen is '$reg_scen'")					: debug ("reg_scen is not defined.");
+(defined $der_scen)					? debug ("der_scen is '$der_scen'")					: debug ("der_scen is not defined.");
+(defined $inv_scen)					? debug ("inv_scen is '$inv_scen'")					: debug ("inv_scen is not defined.");
+(defined $acc_scen)					? debug ("acc_scen is '$acc_scen'")					: debug ("acc_scen is not defined.");
+(defined $sip_src_port)				? debug ("sip_src_port is '$sip_src_port'")			: debug ("sip_src_port is not defined.");
+(defined $sip_dst_port)				? debug ("sip_dst_port is '$sip_dst_port'")			: debug ("sip_dst_port is not defined.");
+(defined $rtp_src_port)				? debug ("rtp_src_port is '$rtp_src_port'")			: debug ("rtp_src_port is not defined.");
+(defined $rtp_dst_port)				? debug ("rtp_dst_port is '$rtp_dst_port'")			: debug ("rtp_dst_port is not defined.");
+(defined $debug)					? debug ("debug is '$debug'")						: debug ("debug is not defined.");
+(defined $help)						? debug ("help is '$help'")							: debug ("help is not defined.");
+(defined $testname)					? debug ("testname is '$testname'")					: debug ("testname is not defined.");
+(defined $restore)					? debug ("restore is '$restore'")					: debug ("restore is not defined.");
+debug ();
+
+### 0.d) Calculate needed testtime ###
+my $sum_time = 60; # reboots etc.
+my $invite_time = 0;
+
+if (open (INVITE, "<", $inv_scen))
+{
+	# find out how long one call is going to need
+	my $play = 0;
+	my $line;
+	while ((defined ($line = <INVITE>)) && (not $invite_time))
+	{
+		if ($line =~ /exec play/)
+		{
+			$play = 1;
+			debug ("Found play");
+		}
+		elsif ($play && $line =~ /pause\s+milliseconds\s*=\s*"(\d+)"/)
+		{
+			$invite_time = ($1/1000);
+		}
+	}
+	close INVITE;
+	debug ("Invite-Time is '$invite_time'");
+	
+	if (defined $twoway_calls)
+	{
+		(defined $twoway_pause)		? ($sum_time += $twoway_calls * $invite_time + ($twoway_calls-1) * $twoway_pause)
+									: ($sum_time += $invite_time);
+	}
+	debug ("Sum-Time is now '$sum_time'");
+
+	if (defined $conf_calls_call)
+	{
+		(defined $conf_pause_call)	? ($sum_time += $conf_calls_call * $invite_time + ($conf_calls_call-1) * $conf_pause_call)
+									: ($sum_time += $invite_time);
+	}
+	debug ("Sum-Time is now '$sum_time'");
+	
+	if (defined $conf_calls_room)
+	{
+		(defined $conf_pause_room)	? ($sum_time += $conf_calls_room * $invite_time + ($conf_calls_room-1) * $conf_pause_room)
+									: ($sum_time += $invite_time);
+	}
+	debug ("Sum-Time is now '$sum_time'");
+
+	# convert to readable time
+	my ($sec, $min, $hour);
+	$hour = int ($sum_time/3600);
+	$min = int ($sum_time/60 - $hour*60);
+	$sec = int ($sum_time - $hour*3600 - $min*60);
+	my $text = "This test is going to need about ";
+	($text .= int($hour)." hours, ") if ($hour);
+	($text .= int($min)." minutes and ") if ($min);
+	$text .= int($sec)." seconds.";
+	print $text."\n";
+	debug ($text);
+}
+
+# Can't find out how long one call is going to need
+else
+{
+	warn "Cannot calculate estimated testtime because cannot open '$inv_scen' for reading: $!\n";
+}
+
+##########################################################
+### 1. GET XML-CONFIGFILE FROM ASKOZIA-BOX AND EDIT IT ###
+##########################################################
+debug ("### CHAPTER 1 ###");
+
+### 1.a) Execute POST-Request and download file ###
+debug ("Begin downloading configfile.");
+my $ua = new LWP::UserAgent;
+$ua->credentials ("$ask_ip:$ask_port", $ask_realm, "$ask_user" => "$ask_pw");
+my $res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data", Content => [ Download => "1"]);
+debug ("Ready downloading configfile. Status: ". $res->status_line);
+
+# Was the download successful AND the POST-Request correct?
+if ($res->is_success && $res->filename ne "system_backup.php")
+{
+	debug ("Begin saving original configfile.");
+	$xml_configfile = File::Spec->rel2abs ($res->filename, $testname);
+	open (CONFFILE, ">", $xml_configfile) || die "FATAL: Could not open '". $xml_configfile ."' for writing: $!\n";
+	print CONFFILE $res->decoded_content;
+	close CONFFILE;
+	debug ("Ready saving original configfile '". $xml_configfile ."'");
+}
+
+# Was the download successful, but we got only the "system_backup.php"-results?
+elsif ($res->is_success)
+{
+	debug ("Download successful, but we got '". $res->filename ."'");
+	die ("FATAL: Error in POST-Request-Parameters: The AskoziaPBX did not send the configfile.\n");
+}
+
+# The download was completely NOT successful
+else
+{
+	debug ("Download failed.");
+	
+	# Try to print the HTML-Error to a file
+	my $open_result = open (CONFERROR, ">", "HTML-DOWNLOAD-ERROR.txt");
+	if ($open_result)
+	{
+		print CONFERROR $res->error_as_HTML;
+		close CONFERROR;
+		die ("FATAL: Could not download xml-configfile from askozia-box: ". $res->status_line 
+			. "\nSaved output in file 'HTML-DOWNLOAD-ERROR.txt\n");
+	}
+
+	# Can't print the HTML-Error to a file, so print it at stdout
+	else
+	{
+		print $res->error_as_HTML;
+		warn "Could not open 'HTML-DOWNLOAD-ERROR.txt' for printing HTML-Error: $!\n";
+		die ("FATAL: Could not download xml-configfile from askozia-box: ". $res->status_line."\n");
+	}
+}
+
+### 1.b) Edit Configfile ###
+# calculate needed users and conference rooms
+my ($users_conf, $rooms_conf) = create_conf_contents
+	($conffile_text_usertext, $conffile_conftext, $twoway_calls, $conf_calls_room, $conf_rooms_room, $conf_calls_call, $conf_rooms_call);
+debug ("Rooms-Conf is '$rooms_conf'");
+
+# Print calculated values in new configfile
+my @orig_conffile = split (/\n/, $res->decoded_content);
+open (EDITED_CONFFILE, ">", $xml_configfile."_edited") || die "FATAL: Could not open file '". $xml_configfile ."_edited' for writing: $!\n";
+my ($active_paragraph, $sip_printed);
+for my $line (@orig_conffile)
+{
+	# Begin of Conference-Rooms-Paragraph?
+	if ($line =~ /<conferencing/)
+	{
+		# Print needed conf-rooms and end of paragraph
+		$active_paragraph = "conference_rooms";
+		print EDITED_CONFFILE "\t<conferencing>\n";
+		print EDITED_CONFFILE $rooms_conf;
+		print EDITED_CONFFILE "\t</conferencing>\n";
+	}
+	elsif (($line =~ /<sip/ || $line =~ /<\/askoziapbx>/) && (not (defined ($sip_printed))))
+	{
+		# Print needed users and end of paragraph
+		$active_paragraph = "sip_phones";
+		print EDITED_CONFFILE "\t<sip>\n";
+		print EDITED_CONFFILE $users_conf;
+		print EDITED_CONFFILE "\t</sip>\n";
+		(print EDITED_CONFFILE "</askoziapbx>") if ($line =~ /<\/askoziapbx>/);
+		$sip_printed = 1;
+	}
+	
+	# End of one of the edited paragraphs?
+	elsif ($line =~ m+</conferencing>+ || $line =~ m+</sip>+)
+	{
+		# Save that the end is reached; copy normally from now on
+		undef $active_paragraph;
+		next;
+	}
+	(print EDITED_CONFFILE $line."\n") unless (defined $active_paragraph);
+}
+
+close EDITED_CONFFILE;
+
+### 1.c) Re-Upload edited configfile ###
+debug ("Begin uploading configfile '". $xml_configfile ."_edited'");
+$res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data",
+	Content => [ Restore => "1", conffile => [ $xml_configfile."_edited" ] ]);
+debug ("Ready uploading configfile. Status: ". $res->status_line);
+reboot_askozia ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+
+#############################################
+### 2. Generate 'Users.csv'-file for sipp ###
+#############################################
+debug ("### CHAPTER 2 ###");
+debug ("Creating new csv-files.");
+
+### 2.a) Generate Users-File for 2way-tests
+if ($twoway_calls)
+{
+	debug ("Generating users for 2way-call.");
+	open (CSV, ">", $users_twoway_file) || die ("FATAL: Could not open Users-2way-File '$users_twoway_file' for writing: $!\n");
+	debug ("Opened 2way-csv-file, filling with:");
+	print CSV "SEQUENTIAL\n";
+
+	for (my $cur_call=1; $cur_call<=2*$twoway_calls; $cur_call+=2)
+	{
+		my $printtext =	"User". $cur_call .";[authentication username=User". $cur_call ." password=0815];".
+						"User". ($cur_call+1) .";[authentication username=User". ($cur_call+1) ." password=0815]";
+		print CSV $printtext."\n";
+		debug ("2way-File: ". $printtext);
+	}
+
+	close CSV;
+	debug ("Ready generating users for 2way-call.");
+}
+
+### 2.b) Generate Users-File for conference-test with fixed number of rooms
+if ($conf_calls_room)
+{
+	debug ("Generating users for conference-test with fixed number of rooms.");
+	($conf_rooms_room = 1) if ((not defined $conf_rooms_room) || $conf_rooms_room == 0);
+	open (CSV, ">", $users_conf_room_file) || die ("FATAL: Could not open Users-Conference-Room-File '$users_conf_room_file' for writing: $!\n");
+	debug ("Opened Users-Conference-Room-File, filling with:");
+	print CSV "SEQUENTIAL\n";
+
+	for (my $cur_call=0; $cur_call <= $conf_calls_room-1; $cur_call++)
+	{
+		for (my $cur_room=0; $cur_room <= $conf_rooms_room-1; $cur_room++)
+		{
+			my $userno = $cur_call * $conf_rooms_room + $cur_room + 1;
+			my $roomno = 2663 + $cur_room;
+			my $printtext = "User". $userno .";[authentication username=User". $userno ." password=0815];". $roomno;
+			print CSV $printtext."\n";
+			debug ("Conf-File with fixed rooms: ". $printtext);
+		}
+	}
+
+	close CSV;
+	debug ("Ready generating users for conference-test with fixed number of rooms.");
+}
+
+### 2.c) Generate Users-File for conference-test with fixed number of calls
+if ($conf_calls_call)
+{
+	debug ("Generating users for conference-test with fixed number of calls.");
+	($conf_rooms_call = 1) if ((not defined $conf_rooms_call) || $conf_rooms_call == 0);
+	open (CSV, ">", $users_conf_call_file) || die ("FATAL: Could not open Users-Conference-Call-File '$users_conf_call_file' for writing: $!\n");
+	debug ("Opened Users-Conference-Call-File, filling with:");
+	print CSV "SEQUENTIAL\n";
+
+	for (my $cur_room=0; $cur_room <= $conf_rooms_call-1; $cur_room++)
+	{
+		my $roomno = 2663 + $cur_room;
+		for (my $cur_call=0; $cur_call <= $conf_calls_call-1; $cur_call++)
+		{
+			my $userno = $cur_room * $conf_calls_call + $cur_call + 1;
+			my $printtext = "User". $userno .";[authentication username=User". $userno ." password=0815];". $roomno;
+			print CSV $printtext."\n";
+			debug ("Conf-File with fixed calls: ". $printtext);
+		}
+	}
+
+	close CSV;
+	debug ("Ready generating users for conference-test with fixed number of calls.");
+}
+
+####################################
+### 3. Execute performance-tests ###
+####################################
+debug ("### CHAPTER 3 ###");
+
+### 3.a) Execute 2way-tests
+if ($twoway_calls)
+{
+	debug ("Starting 2way-tests...");
+	
+	# Start QStat-Recording on AskoziaPBX
+	debug ("Starting QStat-Recording");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+twoway%27");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	sleep (1);
+
+	# shell one test with all users or a slow-and-steadily building up test with 1..$max_calls users be executed?
+	my $start_call;
+	no warnings;    # deactivate warnings because of ($start_call = ...) in next 2 lines
+	(defined $twoway_pause)	? (($start_call = 1)				&& debug ("Twoway-Pause is defined - using slow-and-steady-tests"))
+	                    	: (($start_call = $twoway_calls)	&& debug ("Twoway-Pause is not defined - using one test with all users"));
+	use warnings;	# reactivate warnings
+
+	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
+	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
+	for my $current_call ($start_call..$twoway_calls)
+	{
+		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
+		print "Starting '$current_call' 2way-calls...\n";
+		debug ("### Starting '$current_call' 2way-calls...");
+		my $constant = "$sipp -aa -inf $users_twoway_file -m $current_call -i $local_ip ";
+		my $reg_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf $reg_scen $ask_ip 2>&1";
+		my $acc_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf $acc_scen -bg $ask_ip 2>&1 &";
+		my $inv_cmd = $constant . "-p $sip_src_port -mp $rtp_src_port -sf $inv_scen $ask_ip 2>&1";
+		my $der_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf $der_scen $ask_ip 2>&1";
+
+		my @testresult;
+		# register callee and tell the callee to listen for incoming calls
+		debug ("Beginning Register...\nDEBUG: '$reg_cmd'");
+		push (@testresult, "#"x30 ." REGISTER ". "#"x30 ."\n" . `$reg_cmd`);
+		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
+		debug ("Register ready - beginning Accept (no messages here)...\nDEBUG: '$acc_cmd'");
+		`$acc_cmd`;
+		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
+
+		# START CALLS #
+		debug ("Register ready - beginning Invite...\nDEBUG: '$inv_cmd'");
+		push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
+		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
+
+		# deregister called user to avoid the askoziaPBX to send "OPTIONS" messages
+		sleep 1;
+		debug ("Calls ready - beginning deregister...\nDEBUG: '$der_cmd'");
+		push (@testresult, "#"x30 ." DEREGISTER ". "#"x30 ."\n". `$der_cmd`);
+		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
+
+		# Save the sipp-log-output in a logfile if wanted
+		if (defined $save_sipp_log)
+		{
+			debug ("Deregister ready, transferring log to file...");
+			open (LOG, ">", File::Spec->rel2abs($save_sipp_log, $testname)) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+			(print LOG $_) for (@testresult);
+			close LOG;
+		}
+
+		# Print message and wait for next call if wanted
+		print "Ready.";
+		debug ("Ready.");
+		if ((defined $twoway_pause) && ($current_call != $twoway_calls))
+		{
+			print " Sleeping '$twoway_pause'";
+			sleep $twoway_pause;
+		}
+		print "\n";
+	}
+	
+	# Stop QStat-Recording on AskoziaPBX
+	debug ("Try to stop QStat-Recordings");
+	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+
+	# Download QStat-Data (automatic save in file)
+	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+
+	# Reboot AskoziaPBX
+	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+	debug ("Finished 2way-tests");
+}
+
+### 3.b) Execute conference-tests with fixed rooms
+if ($conf_calls_room)
+{
+	debug ("Starting Conference-Tests with fixed rooms...");
+	
+	# Start QStat-Recording on AskoziaPBX
+	debug ("Starting QStat-Recording");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-call%27");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	sleep (1);
+
+	# shell one test with all users or a slow-and-steadily building up test with 1..$max_calls users be executed?
+	my $start_call;
+	no warnings;    # deactivate warnings because of ($start_call = ...) in next 2 lines
+	(defined $conf_pause_room)	? (($start_call = 1)				&& debug ("Conf-Pause-Room is defined - using slow-and-steady-tests"))
+	                	 	 	: (($start_call = $conf_calls_room)	&& debug ("Conf-Pause-Room is not defined - using one test with all users"));
+	use warnings;	# reactivate warnings
+
+	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
+	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
+	for my $current_call ($start_call..$conf_calls_room)
+	{
+		my $current_users = $current_call * $conf_rooms_room;
+		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
+		print "Starting '$current_call' conference-call(s) with fixed rooms...\n";
+		debug ("### Starting '$current_call' conference-call(s) with fixed rooms...");
+		my $inv_cmd = "$sipp -aa -inf $users_conf_room_file -m $current_users -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf $inv_scen $ask_ip 2>&1";
+
+		# START CALLS #
+		my @testresult;
+		debug ("Register ready - beginning Invite...\nDEBUG: '$inv_cmd'");
+		push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
+		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
+
+		# Save the sipp-log-output in a logfile if wanted
+		if (defined $save_sipp_log)
+		{
+			debug ("Deregister ready, transferring log to file...");
+			open (LOG, ">", File::Spec->rel2abs($save_sipp_log, cwd())) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+			(print LOG $_) for (@testresult);
+			close LOG;
+		}
+
+		# Print message and wait for next call if wanted
+		print "Ready.";
+		if ((defined $conf_pause_room) && ($current_call != $conf_calls_room))
+		{
+			print " Sleeping '$conf_pause_room'";
+			sleep $conf_pause_room;
+		}
+		print "\n";
+	}
+	
+	# Stop QStat-Recording on AskoziaPBX
+	debug ("Try to stop QStat-Recordings");
+	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+
+	# Download QStat-Data
+	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+	
+	# Reboot AskoziaPBX
+	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+	debug ("Finished conference-calls with fixed calls");
+}
+
+### 3.c) Execute conference-tests with fixed calls
+if ($conf_calls_call)
+{
+	debug ("Starting Conference-Tests with fixed calls...");
+	
+	# Start QStat-Recording on AskoziaPBX
+	debug ("Starting QStat-Recording");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-room%27");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	sleep (1);
+
+	# shell one test with all users or a slow-and-steadily building up test with 1..$max_calls users be executed?
+	my $start_room;
+	no warnings;    # deactivate warnings because of ($start_call = ...) in next 2 lines
+	(defined $conf_pause_call)	? (($start_room = 1)				&& debug ("Conf-Pause-Call is defined - using slow-and-steady-tests"))
+	                  	 	 	: (($start_room = $conf_rooms_call)	&& debug ("Conf-Pause-Call is not defined - using one test with all users"));
+	use warnings;	# reactivate warnings
+
+	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
+	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
+	for my $current_room ($start_room..$conf_rooms_call)
+	{
+		my $current_users = $conf_calls_call * $current_room;
+		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
+		print "Starting '$current_room' conference-room(s) with fixed count of calls...\n";
+		debug ("### Starting '$current_room' conference-room(s) with fixed count of calls...");
+		my $inv_cmd = "$sipp -aa -inf $users_conf_call_file -m $current_users -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf $inv_scen $ask_ip 2>&1";
+
+		# START CALLS #
+		my @testresult;
+		debug ("Register ready - beginning Invite...\nDEBUG: '$inv_cmd'");
+		push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
+		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
+
+		# Save the sipp-log-output in a logfile if wanted
+		if (defined $save_sipp_log)
+		{
+			debug ("Deregister ready, transferring log to file...");
+			open (LOG, ">", File::Spec->rel2abs($save_sipp_log, cwd())) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+			(print LOG $_) for (@testresult);
+			close LOG;
+		}
+
+		# Print message and wait for next call if wanted
+		print "Ready.";
+		if ((defined $conf_pause_call) && ($current_room != $conf_rooms_call))
+		{
+			print " Sleeping '$conf_pause_call'";
+			sleep $conf_pause_call;
+		}
+		print "\n";
+	}
+	
+	# Stop QStat-Recording on AskoziaPBX
+	debug ("Try to stop QStat-Recordings");
+	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+
+	# Download QStat-Data
+	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+
+	# Reboot AskoziaPBX
+	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+	debug ("Finished conference-calls with fixed rooms");
+}
+
+############################################
+### 4. Interpret and plot collected data ###
+############################################
+debug ("### CHAPTER 4 ###");
+
+# call interpretation-functions for all created files
+interpret_data ("twoway", $twoway_pause, $twoway_calls)								if (defined $twoway_calls);
+interpret_data ("conf-call", $conf_pause_call, $conf_rooms_call, $conf_calls_call)	if (defined $conf_calls_call);
+interpret_data ("conf-room", $conf_pause_room, $conf_calls_room, $conf_rooms_room)	if (defined $conf_calls_room);
+
+###############################################
+### 5. Restore old AskoziaPBX-Configuration ###
+###############################################
+debug ("### CHAPTER 5 ###");
+
+# Shell the old configuration BEFORE the test should be restored?
+if ($restore eq "old-config")
+{
+	debug ("The old configuration should be restored. Beginning...");
+	$res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data",
+		Content => [ Restore => "1", conffile => [ $xml_configfile ] ]);
+	debug ("The old configuration was restored.");
+}
+
+# Should the AskoziaPBX should be reset to factory-defaults?
+elsif($restore eq "factory-defaults")
+{
+	debug ("The AskoziaPBX should be reset to factory-defaults.");
+	$res = $ua->request (POST "http://$ask_ip:$ask_port/system_defaults.php", Content => [ Yes => "1" ]);
+	debug ("Factory-Defaults were restored.");
+}
+
+### END ###
+system ("killall -9 sipp");
+debug ("### FIN ###");
+exit (0);
+
+#################
+### FUNCTIONS ###
+#################
+
+
+########################
+# CREATE_CONF_CONTENTS #
+########################
+# Calculates from the number of twoway- and conference-tests
+# how many users and conference-rooms shell be added to the AskoziaPBX
+#
+# Takes following needed arguments:
+# 1. Configfile-Usertext: Template-Text for the xml-configfile for sipphone
+# 2. Confilfile-Roomtext: Template-text for the xml-configfile for conference-rooms
+# 3. Twoway-Calls: The maximum number of the twoway-calls of all performance-tests
+# 4. Conf-Calls-Room: The maximum number of conference-calls of all performance-tests with fixed number of rooms
+# 5. Conf-Rooms-Room: The maximum number of conferencing-rooms of all performance-tests with fixed number of rooms
+# 6. Conf-Calls-Call: The maximum number of conference-calls of all performance-tests with fixed number of calls
+# 7. Conf-Rooms-Call: The maximum number of conferencing-rooms of all performance-tests with fixed number of calls
+# Returns an array with following contents:
+# 1. Needed Users for the AskoziaPBX
+# 2. Needed Conference-Rooms for the AskoziaPBX
+sub create_conf_contents
+{
+	# INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	my $conffile_text_user			= shift || die "FATAL: No 'configfile-usertext'-argument specified in function '$this_function'!\n";
+	(ref $conffile_text_user)		&& die "FATAL: 'Configfile-usertext'-argument has to be scalar in function '$this_function'!\n";
+	(defined $conffile_text_user)	? debug ("conffile_text_user is '$conffile_text_user'")	: debug ("conffile_text_user is not defined.");
+	
+	my $conffile_text_room			= shift || die "FATAL: No 'configfile-roomtext'-argument specified in function '$this_function'!\n";
+	(ref $conffile_text_room)		&& die "FATAL: 'Configfile-roomtext'-argument has to be scalar in function '$this_function'!\n";
+	(defined $conffile_text_room)	? debug ("conffile_text_room is '$conffile_text_room'")	: debug ("conffile_text_room is not defined.");
+	
+	my $twoway_calls				= shift;
+	(ref $twoway_calls)				&& die "FATAL: 'Twoway_Calls'-argument has to be scalar in function '$this_function'!\n";
+	(defined $twoway_calls)			? debug ("twoway_calls is '$twoway_calls'")				: debug ("twoway_calls is not defined.");
+	
+	my $conf_calls_room				= shift;
+	(ref $conf_calls_room)			&& die "FATAL: 'Conf_calls_room'-argument has to be scalar in function '$this_function'!\n";
+	(defined $conf_calls_room)		? debug ("conf_calls_room is '$conf_calls_room'")		: debug ("conf_calls_room is not defined.");
+	
+	my $conf_rooms_room				= shift;
+	(ref $conf_rooms_room)			&& die "FATAL: 'Conf_rooms_room'-argument has to be scalar in function '$this_function'\n";
+	(defined $conf_rooms_room)		? debug ("conf_rooms_room is '$conf_rooms_room'")		: debug ("conf_rooms_room is not defined.");
+	
+	my $conf_calls_call				= shift;
+	(ref $conf_calls_call)			&& die "FATAL: 'Conf_calls_call'-argument has to be scalar in function '$this_function'!\n";
+	(defined $conf_calls_call)		? debug ("conf_calls_call is '$conf_calls_call'")		: debug ("conf_calls_call is not defined.");
+	
+	my $conf_rooms_call				= shift;
+	(ref $conf_rooms_call)			&& die "FATAL: 'Conf_rooms_call'-argument has to be scalar in function '$this_function'\n";
+	(defined $conf_rooms_call)		? debug ("conf_rooms_call is '$conf_rooms_call'")		: debug ("conf_rooms_call is not defined.");
+	
+	my $needed_users;
+	my $needed_rooms = 0;
+	my $new_usertext = "";
+	my $new_roomtext = "";
+
+	# MAIN
+
+	# determine the maximum number of users needed
+	if (defined ($twoway_calls))
+	{
+		$needed_users = 2 * $twoway_calls;
+	}
+	if (defined ($conf_calls_room))
+	{
+		($conf_rooms_room = 1) unless (defined $conf_rooms_room);
+		($needed_users = $conf_calls_room * $conf_rooms_room) if ($needed_users < ($conf_calls_room * $conf_rooms_room));
+	}
+	if (defined ($conf_calls_call))
+	{
+		($conf_rooms_call = 1) unless (defined $conf_rooms_call);
+		($needed_users = $conf_calls_call * $conf_rooms_call) if ($needed_users < ($conf_calls_call * $conf_rooms_call));
+	}
+
+	# determine the maximum number of rooms needed
+	($needed_rooms = $conf_rooms_room) if (defined $conf_rooms_room);
+	($needed_rooms = $conf_rooms_call) if ((defined $conf_rooms_call) && ($conf_rooms_call > $needed_rooms));
+
+	# Create configfile-text for users
+	for my $userno (1..$needed_users)
+	{
+		$new_usertext .= $conffile_text_user;
+		$new_usertext =~ s/_userno_/$userno/g;
+	}
+
+	# Create configfile-text for conference-rooms
+	for my $roomno (2663..2663+$needed_rooms-1)
+	{
+		$new_roomtext .= $conffile_text_room;
+		$new_roomtext =~ s/_roomno_/$roomno/g;
+	}
+
+	debug ("New roomtext is '$new_roomtext'");
+	debug ("### END FUNCTION ###");
+	return ($new_usertext, $new_roomtext);
+}
+
+################
+# TERM_HANDLER #
+################
+# this function is the reaction of sending the TERM-Signal to this script
+# (STRG+C)
+sub term_handler
+{
+	system ("killall -9 sipp");
+	$term_handler_called = 1;
+}
+
+#########
+# DEBUG #
+#########
+# Prints textmessage to stdout if $debug is set
+#
+# Takes following optional arguments:
+# 1. Textmessage to print
+BEGIN {
+my $debug_indent = 0;
+sub debug
+{
+	return unless $debug;
+
+	my $message = shift || "";
+	($debug_indent++) if ($message =~ /^### FUNCTION:/);
+	
+	print "DEBUG: " .(" "x(2*$debug_indent)). "$message\n";
+	if (defined $save_debug)
+	{
+		open (DEBUG, ">>", $save_debug) || die "Could not open '$save_debug' for appending: $!\n";
+		print DEBUG " "x(2*$debug_indent) . $message ."\n";
+		close DEBUG;
+	}
+
+	($debug_indent--) if ($message eq "### END FUNCTION ###");
+}}
+
+#######################
+# DOWNLOAD_QSTAT_DATA #
+#######################
+# downloads all existing QStat-Files from AskoziaPBX
+sub download_qstat_data
+{
+	# INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	my $ask_ip					= shift || die "FATAL: No 'Askozia-IP'-argument specified in function '$this_function'!\n";
+	(ref $ask_ip)				&& die "FATAL: 'Askozia-IP'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_ip)			? debug ("ask_ip is '$ask_ip'")	: debug ("ask_ip is not defined.");
+	
+	my $ask_port				= shift || die "FATAL: No 'Askozia-Port'-argument specified in function '$this_function'!\n";
+	(ref $ask_port)				&& die "FATAL: 'Askozia-Port'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_port)			? debug ("ask_port is '$ask_port'")	: debug ("ask_port is not defined.");
+	
+	my $ask_user				= shift || die "FATAL: No 'Askozia-User'-argument specified in function '$this_function'!\n";
+	(ref $ask_user)				&& die "FATAL: 'Askozia-User'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_user)			? debug ("ask_user is '$ask_user'")	: debug ("ask_user is not defined.");
+	
+	my $ask_pw					= shift || "";
+	(ref $ask_pw)				&& die "FATAL: 'Askozia-Password'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_pw)			? debug ("ask_pw is '$ask_pw'")				: debug ("ask_pw is not defined.");
+	
+	my $ask_realm				= shift || die "FATAL: No 'Askozia-Realm'-argument specified in function '$this_function'!\n";
+	(ref $ask_realm)			&& die "FATAL: 'Askozia-Realm'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_realm)		? debug ("ask_realm is '$ask_realm'")				: debug ("ask_realm is not defined.");
+	
+	### Download all qstat-files ###
+	# get qstat-php-file from AskoziaPBX to determine the existing file(name)s
+	debug ("Beginning with download of qstat-page");
+	my $ua = new LWP::UserAgent;
+	$ua->credentials ("$ask_ip:$ask_port", $ask_realm, "$ask_user" => "$ask_pw");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_shell=cat+/var/asterisk/log/qstat/*");
+	debug ("Answer: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	
+	# Success of executing request
+	if ($res->is_success)
+	{
+		debug ("Filter relevant qstat-data");
+		
+		my $filename;
+		my @qstat_data;
+		for my $line (split ("\n", $res->decoded_content))
+		{
+			# Comment line with evtl. relevant information
+			if ($line =~ /^#/)
+			{
+				if ($line =~ /description: (.*)$/)	{ $filename = $1; }
+			}
+	
+			# No empty line: a line with really measured values
+			elsif ($line ne "")
+			{
+	       		my @lineparts = split (/ /, $line);
+				push (@qstat_data, $lineparts[0] ."\t". $lineparts[2] ."\t". $lineparts[9]);
+			}
+		}
+
+		# Copy contents into file
+		$filename = File::Spec->rel2abs ("$filename.qstat", $testname);
+		open (QSTAT, ">", $filename) || die ("Could not open file '$filename' for writing: $!\n");
+		(print QSTAT $_."\n") for (@qstat_data);
+		close QSTAT;
+		system ("chown tk-labor ". $filename);
+
+		# Debug messages
+		debug ("QStat-Data is now:");
+		(debug ("QStat: $_")) for (@qstat_data);
+		debug ("### END FUNCTION ###");
+		return \@qstat_data;
+	}
+
+	# No success of executing request
+	else
+	{
+		warn ("No success in executing qstat-request.");
+		debug ("### END FUNCTION ###");
+		return undef;
+	}
+}
+
+##################
+# REBOOT_ASKOZIA #
+##################
+# reboots the AskoziaPBX and waits until it is completely restarted
+sub reboot_askozia
+{
+	# INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	my $ask_ip					= shift || die "FATAL: No 'Askozia-IP'-argument specified in function '$this_function'!\n";
+	(ref $ask_ip)				&& die "FATAL: 'Askozia-IP'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_ip)			? debug ("ask_ip is '$ask_ip'") : debug ("ask_ip is not defined.");
+	
+	my $ask_port				= shift || die "FATAL: No 'Askozia-Port'-argument specified in function '$this_function'!\n";
+	(ref $ask_port)				&& die "FATAL: 'Askozia-Port'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_port)			? debug ("ask_port is '$ask_port'")	: debug ("ask_port is not defined.");
+	
+	my $ask_user				= shift || die "FATAL: No 'Askozia-User'-argument specified in function '$this_function'!\n";
+	(ref $ask_user)				&& die "FATAL: 'Askozia-User'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_user)			? debug ("ask_user is '$ask_user'") : debug ("ask_user is not defined.");
+	
+	my $ask_pw					= shift || "";
+	(ref $ask_pw)				&& die "FATAL: 'Askozia-Password'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_pw)			? debug ("ask_pw is '$ask_pw'") : debug ("ask_pw is not defined.");
+	
+	my $ask_realm				= shift || die "FATAL: No 'Askozia-Realm'-argument specified in function '$this_function'!\n";
+	(ref $ask_realm)			&& die "FATAL: 'Askozia-Realm'-argument has to be scalar in function '$this_function'!\n";
+	(defined $ask_realm)		? debug ("ask_realm is '$ask_realm'") : debug ("ask_realm is not defined.");
+	
+	my $ua = new LWP::UserAgent;
+	$ua->credentials ("$ask_ip:$ask_port", $ask_realm, "$ask_user" => "$ask_pw");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_shell=reboot");
+	
+	debug ("Wait for the AskoziaPBX to be rebooted");
+	my $success = 0;
+	do
+	{
+		sleep (1);
+		$success = system ("ping -c 1 -w 1 $ask_ip > /dev/null");
+	} while (not $success);
+	
+	debug ("AskoziaPBX is rebooting now");
+	do
+	{
+		sleep (1);
+		$success = system ("ping -c 1 -w 1 $ask_ip > /dev/null");
+	} while ($success);
+	
+	debug ("AskoziaPBX is online - wait 15 seconds for completing its boot sequence...");
+	sleep (15);
+	debug ("### END FUNCTION ###");
+}
+
+##################
+# INTERPRET_DATA #
+##################
+# takes a file and creates the mittelwert-fields
+sub interpret_data
+{
+	# INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	# get parameters
+	my $type			= shift || die "FATAL: No 'Type'-argument specified in function '$this_function'!\n";
+	(ref $type)			&& die "FATAL: 'Type'-argument has to be scalar in function '$this_function'!\n";
+	(defined $type)		? debug ("Type is '$type'") : debug ("Type is not defined.");
+
+	my $pause			= shift;
+	(ref $pause)		&& die "FATAL: 'Pause'-argument has to be scalar in function '$this_function'!\n";
+	(defined $pause)	? debug ("Pause is '$pause'") : debug ("Pause is not defined.");
+
+	my $calls			= shift || die "FATAL: No 'Calls'-argument specified in function '$this_function'!\n";
+	(ref $calls)		&& die "FATAL: 'Calls'-argument has to be scalar in function '$this_function'!\n";
+	(defined $calls)	? debug ("Calls is '$calls'") : debug ("Calls is not defined.");
+
+	my $rooms			= shift || 1;
+	(ref $rooms)		&& die "FATAL: 'Rooms'-argument has to be scalar in function '$this_function'!\n";
+	(defined $rooms)	? debug ("Rooms is '$rooms'") : debug ("Rooms is not defined.");
+
+	# get file contents
+	my @old_file;
+	$type = File::Spec->rel2abs ("$type.qstat", $testname);
+	open (OLD_FILE, "<", $type) || die ("FATAL: Cannot open $type for reading: $!\n");
+	@old_file = <OLD_FILE>;
+	close OLD_FILE;
+
+	# copy old file contents in new array incl. splitting every line in a second array
+	# hint: work_file is an array of array-references
+	#       each reference in the work_file-array contains columns: "Time", "Active Calls", "CPU load"
+	#       in the first lines are additional columns: "active calls", "mean-value of all cpu-load-values of this number of calls"
+	my @work_file;
+	for my $line (@old_file)
+	{
+		chomp $line;
+		my @lineparts = split ("\t", $line);
+		push (@work_file, \@lineparts);
+		debug ("Data: ". join(" | ", @lineparts));
+	}
+
+	# this was a slow-and-steadily building-up test
+	if (defined $pause)
+	{
+		debug ("Interpreting slow-and-steadily building-up test");
+		my $cur_index;
+		my $cur_call = $rooms;
+		my @temp_mean_values;
+		my @mean_values;
+	
+		# add "0,0" at begin
+		push (@{$work_file[0]}, "0", "0");
+		
+		# go through complete array of measured values
+		for my $index (0..$#work_file)
+		{
+			my @values = @{$work_file[$index]};
+
+			# a value of the current call
+			if ($values[1] == $cur_call)
+			{
+				push (@temp_mean_values, $values[2]);
+				debug ("Adding for call '$cur_call' value '$values[2]'");
+			}
+
+			# a value that does not belong to the current call
+			elsif (@temp_mean_values && $values[1] != $cur_call)
+			{
+				debug ("No value of call '$cur_call', calculating mean-value");
+				my $sum = 0;
+				($sum += $_) for (@temp_mean_values);
+				my $line = $work_file[$cur_call/$rooms];
+				my $mean_value = 100 - ($sum/@temp_mean_values);
+				my $last_mean_value = $work_file[$cur_call/$rooms-1]->[4];
+				
+				debug ("Current mean-value is '$mean_value', the last value was '$last_mean_value'"); 
+				($mean_value >= $last_mean_value - 5)	? push (@$line, $cur_call/$rooms, $mean_value)
+														: last;
+				
+				undef @temp_mean_values;
+				$cur_call += $rooms;
+				debug ("Cur_Call is now '$cur_call'");
+			}
+		}
+	}
+
+	else
+	# this was one test with all calls
+	{
+		debug ("Interpreting one complete test");
+
+		my @mean_values;
+		for my $index (0..$#work_file)
+		{
+			my @values = @{$work_file[$index]};
+			push (@mean_values, $values[2]) if ($values[1] == $calls);
+		}
+	
+		# add mean-value fields to csv file
+		if (@mean_values)
+		{
+			my $line = $work_file[0];
+			push (@$line, "0", "0");
+			$line = $work_file[1];
+			my $sum = 0;
+			($sum += $_) for (@mean_values);
+			push (@$line, $calls, 100-$sum/@mean_values);
+		}
+	}
+
+	my @new_file;
+	(push (@new_file, join ("\t", @$_))) for (@work_file);
+	(debug ("New Data: $_")) for (@new_file);
+
+	# write new file contents in new file
+	open (NEW_FILE, ">", $type .".csv") || die ("FATAL: Cannot open $type.csv for writing: $!\n");
+	(print NEW_FILE $_."\n") for (@new_file);
+	close NEW_FILE;
+	system ("chown tk-labor $type.csv");	# *smell*
+
+	debug ("### END FUNCTION ###");
+}
+
+##############
+# PRINT_HELP #
+##############
+sub print_help
+{
+print <<EOT;
+
+PERF_TEST
+
+This script executes sip-performance-tests. Developed for AskoziaPBX-solutions.
+
+Written by Mark Stephan <mark.stephan\@askozia.com> in Summer 2010.
+Bugs, reports and questions are welcome.
+
+USAGE: 'perl PERF_TEST <options>'
+
+OPTIONS:
+	askozia-ip=<string>             The IP-Adress of the AskoziaPBX (std: "10.10.10.1")
+	askozia-port=<string>           The HTTP-Port of the Askozia-PBX (std: "80")
+	askozia-confpage=<string>       The Configuration-PHP-Page of the Askozia-PBX (std:
+	askozia-qstatpage=<string>      The QStat-PHP-Page of the AskoziaPBX (std: "debug_qstat.php")
+	askozia-realm=<string>          The Authentication-Realm of the AskoziaPBX (std: "Web Server Authentication")
+	askozia-user=<string>           Name of webfrontent-root-user of the AskoziaPBX (std: "admin")
+	askozia-pw=<string>             Password for root (std: "askozia")
+	save-sipp-log=<string>          Shell the sipp-output be saved in a file?
+	                                Set this variable to the filename for the output (std: undef = no saving)
+	local-ip=<string>               The local IP of the testcomputer (std: "10.10.10.2")
+	save-users                      Shell the automatic generated Users-files (Users_*.csv) NOT be deleted?
+	save-debug=<string>             Shell the debugmessages be saved in a file?
+	                                Set this variable to the filename for the output (std: undef = no saving)
+	2way-calls=<number>             Number of 2way-calls that shell be executed
+	2way-pause=<number>             Important option:
+	                                Defined: Slow-and-steadily building-up-tests:
+	                                         There are single tests for every number of 2way-calls from 1 to <2way-calls>
+	                                         Between every tests are <2way-pause> seconds waittime for calming down the AskoziaPBX.
+	                                Undefined: One test with <2way-calls> number of parallel calls.
+	conf-calls-room=<number>        Number of calls for conference-test with fixed number of rooms.
+	                                (Fixed number of rooms: in every test exist the same number of rooms,
+	                                e.g. 1 call:  3 conf-rooms with 1 user each
+	                                     2 calls: 3 conf-rooms with 2 users each
+	                                     3 calls: 3 conf-rooms with 3 users each
+	conf-rooms-room=<number>        Number of conference-rooms for the conference-test with fixed number of rooms.
+	conf-pause-room=<number>        The same meaning as "2way-pause", only for conference-test with fixed number of rooms.
+	conf-calls-call=<number>        Number of calls for the conference-test with fixed number of calls
+	                                (Fixed number of calls: in every test exist the same number of participants in each conf-room)	
+	conf-rooms-call=<number>        Maximum number of existing conference-rooms in conference-tests with fixed calls
+	conf-pause-call=<number>        The same meaning as "2way-pause", only for conference-test with fixed number of calls
+	sipp-exe=<string>               Path to the sipp-executable (std: ./PERF_TEST_FILES/sipp if existing, else 'which sipp') 
+	users-2way-file=<string>        Path where the automatic generated users-injection-file for sipp for 2way-tests shell be saved
+	users-conf-room-file=<string>   Path where the automatic generated users-injection-file for sipp for conf-tests with fixed rooms shell be saved
+	users-conf-call-file=<string>   Path where the automatic generated users-injection-file for sipp for conf-tests with fixed calls shell be saved
+	reg-scen=<string>               Path to the register-scenario for sipp (std: './PERF_TEST_FILES/Register.xml')
+	dereg-scen=<string>             Path to the deregister-scenario for sipp (std: './PERF_TEST_FILES/Deregister.xml')
+	inv-scen=<string>               Path to the invite-scenario...
+	acc-scen=<string>               Path to the accept-scenario...
+	sip-src-port=<number>           SIP-Source-Port of the testserver (std: 5061)
+	sip-dst-port=<number>           SIP-Dest-Port of the testserver (for 2way-calls only, receive port of the accepting user, std: 5062)
+	rtp-src-port=<number>           RTP-Source-Port of the testserver (std: 6020)
+	rtp-dst-port=<number>           RTP-Dest-port of the testserver (for 2way-calls only, receive port of the accepting user, std: 6030)
+	debug                           Print debugmessages (necessary for save-debug)
+	help                            Print this help and exit
+	testname                        Name of this test (used for making subdirectory in 'results', std: undef)
+	restore=<string>                Shell the configuration of the AskoziaPBX be restored after the test?
+	                                (none, factory-defaults, old-config, std: old-config)
+
+EOT
+
+exit (0);
+}
+
