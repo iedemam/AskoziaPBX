@@ -22,9 +22,10 @@
 #	b) For conference tests with fixed rooms
 #	c) For conference tests with fixed calls
 # 3. Execute, interpret and plot Performance-Tests
-#	a) Execute 2-way-performance-tests
-#	b) Execute conference-tests with fixed rooms
-#	c) Execute conference-tests with fixed calls
+#   a) Prepare watchdog
+#	b) Execute 2-way-performance-tests
+#	c) Execute conference-tests with fixed rooms
+#	d) Execute conference-tests with fixed calls
 # 4. Restore old Askozia-Configuration
 
 
@@ -40,6 +41,7 @@ use File::Path;					# For creating pathes
 use File::Spec;					# For assimilate relative and absolut pathes to the operating system
 use Getopt::Long;				# For parsing command-line-parameters
 use HTTP::Request::Common;		# For executing HTTP-POST-Requests
+use IO::Select;					# IPC between parent and child (fork) with autoflush
 use LWP;						# For executing HTTP-POST-Requests
 
 # install signal handler for killing all sipp-processes before being terminated
@@ -476,16 +478,95 @@ if ($conf_calls_call)
 ####################################
 debug ("### CHAPTER 3 ###");
 
-### 3.a) Execute 2way-tests
+### 3.a) Prepare watchdog
+pipe (READER, WRITER);
+WRITER->autoflush(1);
+my $pid = fork();
+
+# This is the Test-Process.
+if ($pid == 0)
+{
+	print "Test-Process started.\n";
+}
+
+# This is the watchdog process
+# it counts from 1..2*$invite_time and sends a term-signal to the test-process
+# if $invite_time is reached.
+elsif ($pid > 0)
+{
+	print "Watchdog-Process started.\n";
+	my $s = IO::Select->new;
+	$s->add(\*READER);
+
+	my $pause = 0;
+	my $current_calls = 0;
+	my $counter = 0;
+	my $watchdog_active = 0;
+
+	while (1)
+	{
+		# There is a mesage in the buffer
+		if ($s->can_read(0))
+		{
+			# Get message and interpret it
+			# here is enough space for your own commands :-)
+			chomp (my $msg = <READER>);
+			debug ("WATCHDOG: Received message '$msg'");
+			if		($msg eq "Tests finished.")				{ exit(0); }
+			elsif	($msg =~ /^set pause '(\d+)'$/)			{ $pause = $1; }
+			elsif	($msg =~ /^set current_calls '(\d+)'$/)	{ $current_calls = $1; }
+			elsif	($msg eq "watchdog start")				{ $watchdog_active = 1; }
+			elsif	($msg eq "watchdog stop")				{ $watchdog_active = 0; }
+
+			$counter = 0;
+			sleep (0.1);
+		}
+
+		# There is no message in the buffer
+		elsif ($watchdog_active)
+		{
+			# Increment the counter and look if the time has come...
+			# pause: Your pausetime has to be considered - if it is 5 minutes, the test may not be cancelled after 10 secs
+			# current_calls: if you have 50 calls to be established, you need some extra time for register and deregister
+			# x*$invite_time: with x you may decide how strict you want to be
+			debug ("WATCHDOG: Counter '$counter'");
+			if ($counter++ >= 5*$invite_time + $current_calls + $pause)
+			{
+				# Slap the testprocess with an INT-signal
+				system ("kill -INT $pid");
+				print "Sent INT-Signal to Test-Process because it is too slow.\n";
+				debug ("Sent INT-Signal to Test-Process because it is too slow.");
+			}
+			sleep (1);
+		}
+	}
+
+	exit (0);
+}
+
+# Fork does not want :-(
+else
+{
+	die "FATAL: Could not fork: $!\n";
+}
+
+### 3.b) Execute 2way-tests
 if ($twoway_calls)
 {
 	debug ("Starting 2way-tests...");
-	
+	(defined $twoway_pause)	? print WRITER "set pause '$twoway_pause'\n"
+							: print WRITER "set pause '0'\n";
+
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
 	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+twoway%27");
 	debug ("Answer: '". $res->status_line ."'");
 	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	if ($res->decoded_content ne "[qstat] started")
+	{
+		my $text = "FATAL: Could not start QStat-recording:\n";
+		($text .= "$_\n") for (split ("\n"), $res->decoded_content);
+	}
 	sleep (1);
 
 	# shell one test with all users or a slow-and-steadily building up test with 1..$max_calls users be executed?
@@ -497,8 +578,12 @@ if ($twoway_calls)
 
 	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
 	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
+	print WRITER "watchdog start\n";
 	for my $current_call ($start_call..$twoway_calls)
 	{
+		# give the AskoziaPBX enough time to register, accept, invite and deregister all users
+		print WRITER "set current_users '". 2*$current_call ."'\n";
+
 		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
 		print "Starting '$current_call' 2way-calls...\n";
 		debug ("### Starting '$current_call' 2way-calls...");
@@ -532,7 +617,8 @@ if ($twoway_calls)
 		if (defined $save_sipp_log)
 		{
 			debug ("Deregister ready, transferring log to file...");
-			open (LOG, ">", File::Spec->rel2abs($save_sipp_log, $testpath)) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+			$save_sipp_log = File::Spec->rel2abs ($save_sipp_log, $testpath);	# determine complete path of the file to save the debug-msgs
+			open (LOG, ">", $save_sipp_log) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
 			(print LOG $_) for (@testresult);
 			close LOG;
 		}
@@ -549,6 +635,7 @@ if ($twoway_calls)
 	}
 	
 	# Stop QStat-Recording on AskoziaPBX
+	print WRITER "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	undef $term_handler_called;
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
@@ -566,16 +653,23 @@ if ($twoway_calls)
 	debug ("Finished 2way-tests");
 }
 
-### 3.b) Execute conference-tests with fixed rooms
+### 3.c) Execute conference-tests with fixed rooms
 if ($conf_calls_room)
 {
 	debug ("Starting Conference-Tests with fixed rooms...");
+	(defined $conf_pause_room)	? print WRITER "set pause '$conf_pause_room'\n"
+								: print WRITER "set pause '0'\n";
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
 	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-room%27");
 	debug ("Answer: '". $res->status_line ."'");
 	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	if ($res->decoded_content ne "[qstat] started")
+	{
+		my $text = "FATAL: Could not start QStat-recording:\n";
+		($text .= "$_\n") for (split ("\n"), $res->decoded_content);
+	}
 	sleep (1);
 
 	# shell one test with all users or a slow-and-steadily building up test with 1..$max_calls users be executed?
@@ -587,9 +681,11 @@ if ($conf_calls_room)
 
 	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
 	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
+	print WRITER "watchdog start\n";
 	for my $current_call ($start_call..$conf_calls_room)
 	{
 		my $current_users = $current_call * $conf_rooms_room;
+		print WRITER "set current_users '$current_users'\n";
 		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
 		print "Starting '$current_call' conference-call(s) with fixed rooms...\n";
 		debug ("### Starting '$current_call' conference-call(s) with fixed rooms...");
@@ -622,6 +718,7 @@ if ($conf_calls_room)
 	
 	# Stop QStat-Recording on AskoziaPBX
 	undef $term_handler_called;
+	print WRITER "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
 	debug ("Answer: '". $res->status_line ."'");
@@ -638,16 +735,23 @@ if ($conf_calls_room)
 	debug ("Finished conference-calls with fixed rooms");
 }
 
-### 3.c) Execute conference-tests with fixed calls
+### 3.d) Execute conference-tests with fixed calls
 if ($conf_calls_call)
 {
 	debug ("Starting Conference-Tests with fixed calls...");
+	(defined $conf_pause_call)	? print WRITER "set pause '$conf_pause_call'\n"
+								: print WRITER "set pause '0'\n";
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
 	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-call%27");
 	debug ("Answer: '". $res->status_line ."'");
 	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	if ($res->decoded_content ne "[qstat] started")
+	{
+		my $text = "FATAL: Could not start QStat-recording:\n";
+		($text .= "$_\n") for (split ("\n"), $res->decoded_content);
+	}
 	sleep (1);
 
 	# shell one test with all users or a slow-and-steadily building up test with 1..$max_calls users be executed?
@@ -659,9 +763,11 @@ if ($conf_calls_call)
 
 	# slow-and-steadily building up tests (waittime defined): for 1..$max_rooms
 	# one test (no waittime defined): for $max_rooms..$max_rooms: only 1 execution of this loop
+	print WRITER "watchdog start\n";
 	for my $current_room ($start_room..$conf_rooms_call)
 	{
 		my $current_users = $conf_calls_call * $current_room;
+		print WRITER "set current_users '$current_users'\n";
 		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
 		print "Starting '$current_room' conference-room(s) with fixed count of calls...\n";
 		debug ("### Starting '$current_room' conference-room(s) with fixed count of calls...");
@@ -691,8 +797,9 @@ if ($conf_calls_call)
 		}
 		print "\n";
 	}
-	
+
 	# Stop QStat-Recording on AskoziaPBX
+	print WRITER "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
 	debug ("Answer: '". $res->status_line ."'");
@@ -708,6 +815,9 @@ if ($conf_calls_call)
 	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
 	debug ("Finished conference-calls with fixed calls");
 }
+
+# End watchdog
+print WRITER "Tests finished.\n";
 
 ###############################################
 ### 4. Restore old AskoziaPBX-Configuration ###
@@ -847,6 +957,7 @@ sub create_conf_contents
 sub term_handler
 {
 	system ("killall -9 sipp");
+	print WRITER "watchdog stop\n";
 	$term_handler_called = 1;
 }
 
@@ -1101,7 +1212,7 @@ sub interpret_data
 				my $last_mean_value = $work_file[$cur_call/$rooms-1]->[4];
 				
 				debug ("Current mean-value is '$mean_value', the last value was '$last_mean_value'"); 
-				($mean_value >= $last_mean_value - 7)	? push (@$line, $cur_call/$rooms, $mean_value)
+				($mean_value >= $last_mean_value - 10)	? push (@$line, $cur_call/$rooms, $mean_value)
 														: last;
 				
 				undef @temp_mean_values;
@@ -1118,7 +1229,7 @@ sub interpret_data
 			my $line = $work_file[$cur_call/$rooms];
 			my $last_mean_value = $work_file[$cur_call/$rooms-1]->[4];
 			my $mean_value = 100 - ($sum/@temp_mean_values);
-			push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value - 7);
+			push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value - 10);
 		}
 	}
 
