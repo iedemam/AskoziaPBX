@@ -1,0 +1,73 @@
+\documentclass[
+	pdftex,
+	a4paper, 
+	oneside,
+	parskip=half,
+	headsepline,
+	12pt
+]{scrartcl}
+
+\usepackage [utf8]{inputenc} % Zeichensatz, ermglicht die direkte Eingabe von Umlauten im Editor
+\usepackage {fixltx2e} %korrigiert Fehler in LaTeX
+\usepackage {fix-cm} %korrigiert Fehler in Standard-Schriften
+\usepackage [T1] {fontenc} %Ausgabecodierung
+\usepackage {textcomp} %Sonderzeichen
+\usepackage [ngerman] {babel} %Sprachunterstützung
+\usepackage [automark, autooneside, headsepline]{scrpage2}
+\usepackage [pdftex]{graphicx} % Einbindung von Grafiken (pdf, png, jpg)
+\usepackage {natbib}
+\usepackage {fixmath}
+\usepackage {subfigure}
+\usepackage {amsmath}
+\usepackage {amssymb}
+\usepackage {listings}
+\lstdefinelanguage{tcl}{
+moredelim=**[is][\itshape]{<kursiv>}{</kursiv>}
+}
+\lstset{language=tcl, basicstyle=\ttfamily}
+\usepackage {chngcntr}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+
+\renewcommand {\thefigure} {\thesection.\arabic{figure}} %Sektionsnummer mit in Abbildungsnummer
+\numberwithin {figure} {section} %Abbildungsnummer mit jeder Sektion zurücksetzen
+\renewcommand {\thetable} {\thesection.\arabic{table}} %Sektionsnummer mit in Tabellennummer
+\renewcommand {\theequation} {\thesection.\arabic{equation}} %Sektionsnummer mit in Formelnummer
+\numberwithin {equation} {section} %Formelnummer mit jeder Sektion zurücksetzen
+\counterwithout{table}{section}
+
+\begin {document}
+\pagestyle{empty}
+\include{titlepage}
+\cleardoublepage
+\pagestyle{empty}
+\tableofcontents
+\pagestyle{empty} 
+%\listoffigures
+\newpage
+%\pagestyle{empty}
+%\listoftables
+%\pagestyle{empty}
+\lstlistoflistings
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\include{introduction}
+\include{configuration}
+\include{test-operations}
+\include{twoway}
+\include{conf-call}
+\include{conf-room}
+\include{watchdog}
+\begin{appendix}
+\include{appendix}
+\end{appendix}
+\bibliographystyle {natdin}
+\bibliography{/Users/t001/Documents/praxissemester/uboot-doku/referenz.bib}
+%\printbibliography[heading=printed,type=book]
+%\printbibliography[heading=standards,type=misc]
+%\printbibliography[heading=url,type=online] 
+\nocite{*}
+\end {document}
+
