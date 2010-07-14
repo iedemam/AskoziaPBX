@@ -421,11 +421,41 @@ function v_cleanliness($post, $errors) {
 	}
 }
 
+
+/**
+ * checks the extension number for collisions
+ * returns true if $ext is not used, false otherwise
+*/
+function check_uniq ($ext)
+{
+	global $g;
+	
+	//go through config and compare $ext with every number:
+	foreach($GLOBALS['config']['sip']['phone'] as $phone) {
+		if($phone['extension'] == $ext) return false;
+	}
+	foreach($GLOBALS['config']['iax']['phone'] as $phone) {
+		if($phone['extension'] == $ext) return false;
+	}
+	foreach($GLOBALS['config']['isdn']['phone'] as $phone) {
+		if($phone['extension'] == $ext) return false;
+	}
+	foreach($GLOBALS['config']['analog']['phone'] as $phone) {
+		if($phone['extension'] == $ext) return false;
+	}
+	return true;
+	
+}
+
 function v_extension($element, $post, $errors) {
 	if (!strlen($post['extension'])) {
 		$errors[] = gettext("Missing extension number.");
 	} else if (preg_match("/[^0-9]/", $post['extension'])) {
 		$errors[] = gettext("Invalid extension number. Use only numerals.");
+	}
+	else if (!check_uniq($post['extension']))
+	{
+		$errors[] = gettext("This extension is already used. Choose another number.");
 	}
 	$element['extension'] = $post['extension'];
 }
@@ -467,13 +497,6 @@ function v_voicemail_editor($element, $post, $errors) {
 	}
 	$element['vmtoemail'] = v_strip($post['vmtoemail']);
 	$element['vmtoemailaddress'] = v_strip($post['vmtoemailaddress']);
-}
-
-function v_email($element, $post, $errors) {
-	if (!v_is_email($post['email'])) {
-		$errors[] = gettext("The e-mail address is invalid or missing.");
-	}
-	$element['email'] = v_strip($post['email']);
 }
 
 function v_is_email($s) {
