@@ -421,7 +421,6 @@ function v_cleanliness($post, $errors) {
 	}
 }
 
-
 /**
  * checks the extension number for collisions
  * returns true if $ext is not used, false otherwise
@@ -497,6 +496,13 @@ function v_voicemail_editor($element, $post, $errors) {
 	}
 	$element['vmtoemail'] = v_strip($post['vmtoemail']);
 	$element['vmtoemailaddress'] = v_strip($post['vmtoemailaddress']);
+}
+
+function v_email($element, $post, $errors) {
+	if (!v_is_email($post['email'])) {
+		$errors[] = gettext("The e-mail address is invalid or missing.");
+	}
+	$element['email'] = v_strip($post['email']);
 }
 
 function v_is_email($s) {
