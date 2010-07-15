@@ -421,38 +421,13 @@ function v_cleanliness($post, $errors) {
 	}
 }
 
-/**
- * checks the extension number for collisions
- * returns true if $ext is not used, false otherwise
-*/
-function check_uniq ($ext)
-{
-	global $g;
-	
-	//go through config and compare $ext with every number:
-	foreach($GLOBALS['config']['sip']['phone'] as $phone) {
-		if($phone['extension'] == $ext) return false;
-	}
-	foreach($GLOBALS['config']['iax']['phone'] as $phone) {
-		if($phone['extension'] == $ext) return false;
-	}
-	foreach($GLOBALS['config']['isdn']['phone'] as $phone) {
-		if($phone['extension'] == $ext) return false;
-	}
-	foreach($GLOBALS['config']['analog']['phone'] as $phone) {
-		if($phone['extension'] == $ext) return false;
-	}
-	return true;
-	
-}
-
 function v_extension($element, $post, $errors) {
 	if (!strlen($post['extension'])) {
 		$errors[] = gettext("Missing extension number.");
 	} else if (preg_match("/[^0-9]/", $post['extension'])) {
 		$errors[] = gettext("Invalid extension number. Use only numerals.");
 	}
-	else if (!check_uniq($post['extension']))
+	else if (in_array($post['extension'], pbx_get_extensions()))
 	{
 		$errors[] = gettext("This extension is already used. Choose another number.");
 	}
