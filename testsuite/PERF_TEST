@@ -41,14 +41,12 @@ use File::Path;					# For creating pathes
 use File::Spec;					# For assimilate relative and absolut pathes to the operating system
 use Getopt::Long;				# For parsing command-line-parameters
 use HTTP::Request::Common;		# For executing HTTP-POST-Requests
-use IO::Select;					# IPC between parent and child (fork) with autoflush
+use IO::Pipe;					# IPC between parent and child (fork) with autoflush
+use IO::Select;
 use LWP;						# For executing HTTP-POST-Requests
 
 # install signal handler for killing all sipp-processes before being terminated
 $SIG{'INT'} = 'term_handler';	# Catch "STRG-C" for deregister all registered users
-
-# am I root? Necessary for SIPP
-(die "Must be root because sipp reserves ports.\n") if (`id -u` != 0);
 
 ### 0.b) Parse parameters ###
 my $debug = 0;					# Debug-Mode? (0=off, 1=on)
@@ -62,7 +60,6 @@ my $testname = "";				# Name of the test (needed for creating subdir with result
 my $ask_ip			= "10.10.10.1";					# IP of the askozia-box
 my $ask_port		= 80;							# Webport of the askozia-box
 my $ask_conf_page	= "system_backup.php";			# PHP-Page for down-/uploading the configuration-file
-my $ask_qstat_page	= "debug_qstat.php";			# PHP-Page for starting/stopping/downloading QStat-Recordings
 my $ask_reboot_page	= "system_reboot.php";
 my $ask_realm		= "Web Server Authentication";	# Realm for authentification
 my $ask_user		= "admin";						# User for down-/uploading the configuration-file
@@ -73,7 +70,6 @@ my $restore			= "old-config";					# Which configuration shell the AskoziaPBX hav
 # Perfomance-Test-Settings
 my $save_sipp_log;		# Shell the sipp-output be saved in files? (extrem-debugging because very much data)
 my $local_ip;			# The IP adress of the test-computer
-my $save_users;			# Shell the "Users.csv"-File for sipp NOT be deleted?
 my $twoway_calls;		# How many calls shell be executed for the 2way-test? (0/undef = no twoway test)
 my $twoway_pause;		# One test with all users or slow-and-steadily building-up tests?
 my $conf_calls_room;	# How many calls shell be executed for the conference-tests? (0/undef = no conftest with fixed rooms)
@@ -132,13 +128,11 @@ Getopt::Long::GetOptions (
 	"askozia-ip=s"				=> \$ask_ip, 
 	"askozia-port=s"			=> \$ask_port,
 	"askozia-confpage=s"		=> \$ask_conf_page,
-	"askozia-qstatpage=s"		=> \$ask_qstat_page,
 	"askozia-realm=s"			=> \$ask_realm,
 	"askozia-user=s"			=> \$ask_user,
 	"askozia-pw=s"				=> \$ask_pw,
 	"save-sipp-log=s"			=> \$save_sipp_log,
 	"local-ip=s"				=> \$local_ip,
-	"save-users"				=> \$save_users,
 	"save-debug=s"				=> \$save_debug,
 	"2way-calls=i"				=> \$twoway_calls,
 	"2way-pause=i"				=> \$twoway_pause,
@@ -171,6 +165,8 @@ print_help() if (defined $help);
 die ("FATAL: No local ip-address specified.\n") unless (defined $local_ip);
 die ("FATAL: No test specified (no twoway-calls and no conference-calls were entered).\n")
 	if ((not defined ($twoway_calls)) && (not defined ($conf_calls_room)) && (not defined ($conf_calls_call)));
+# am I root? Necessary for SIPP
+(die "Must be root because sipp reserves ports.\n") if (`id -u` != 0);
 
 # the following lines are necessary to avoid problems if used at different operating systems (lin, win, mac, ...)
 my $testpath			= File::Spec->rel2abs ("$testname", cwd()."/results");		# determine subdir-path to save all results
@@ -179,6 +175,7 @@ $save_debug				= File::Spec->rel2abs ($save_debug, $testpath);				# determine co
 $users_twoway_file		= File::Spec->rel2abs ($users_twoway_file, $testpath);		# determine complete path of the csv-file for twoway calls
 $users_conf_room_file	= File::Spec->rel2abs ($users_conf_room_file, $testpath);	# determine complete path of the csv-file for fixed rooms
 $users_conf_call_file	= File::Spec->rel2abs ($users_conf_call_file, $testpath);	# determine complete path of the csv-file for fixed calls
+($save_sipp_log			= File::Spec->rel2abs ($save_sipp_log, $testpath)) if (defined $save_sipp_log);
 $sipp					= File::Spec->rel2abs ($sipp, cwd());						# determine complete path of the sipp-executable
 $reg_scen				= File::Spec->rel2abs ($reg_scen, cwd());					# determine complete path of the register-scenario
 $der_scen				= File::Spec->rel2abs ($der_scen, cwd());					# determine complete path of the deregister-scenario
@@ -190,13 +187,11 @@ debug ("Settings for this performance-test:");
 (defined $ask_ip)					? debug ("ask_ip is '$ask_ip'")						: debug ("ask_ip is not defined.");
 (defined $ask_port)					? debug ("ask_port is '$ask_port'")					: debug ("ask_port is not defined.");
 (defined $ask_conf_page)			? debug ("ask_conf_page is '$ask_conf_page'")		: debug ("ask_conf_page is not defined.");
-(defined $ask_qstat_page)			? debug ("ask_qstat_page is '$ask_qstat_page'")		: debug ("ask_qstat_page is not defined.");
 (defined $ask_realm)				? debug ("ask_realm is '$ask_realm'")				: debug ("ask_realm is not defined.");
 (defined $ask_user)					? debug ("ask_user is '$ask_user'")					: debug ("ask_user is not defined.");
 (defined $ask_pw)					? debug ("ask_pw is '$ask_pw'")						: debug ("ask_pw is not defined.");
 (defined $save_sipp_log)			? debug ("save_sipp_log is '$save_sipp_log'")		: debug ("save_sipp_log is not defined.");
 (defined $local_ip)					? debug ("local_ip is '$local_ip'")					: debug ("local_ip is not defined.");
-(defined $save_users)				? debug ("save_users is '$save_users'")				: debug ("save_users is not defined.");
 (defined $save_debug)				? debug ("save_debug is '$save_debug'")				: debug ("save_debug is not defined.");
 (defined $twoway_calls)				? debug ("twoway_calls is '$twoway_calls'")			: debug ("twoway_calls is not defined.");
 (defined $twoway_pause)				? debug ("twoway_pause is '$twoway_pause'")			: debug ("twoway_pause is not defined.");
@@ -253,21 +248,21 @@ if (open (INVITE, "<", $inv_scen))
 	
 	if (defined $twoway_calls)
 	{
-		(defined $twoway_pause)		? ($sum_time += $twoway_calls * $invite_time + ($twoway_calls-1) * $twoway_pause)
+		(defined $twoway_pause)		? ($sum_time += ($twoway_calls+1) * ($twoway_pause+1))
 									: ($sum_time += $invite_time);
 	}
 	debug ("Sum-Time is now '$sum_time'");
 
 	if (defined $conf_calls_call)
 	{
-		(defined $conf_pause_call)	? ($sum_time += $conf_calls_call * $invite_time + ($conf_calls_call-1) * $conf_pause_call)
+		(defined $conf_pause_call)	? ($sum_time += ($conf_calls_call+1) * ($conf_pause_call+1))
 									: ($sum_time += $invite_time);
 	}
 	debug ("Sum-Time is now '$sum_time'");
 	
 	if (defined $conf_calls_room)
 	{
-		(defined $conf_pause_room)	? ($sum_time += $conf_calls_room * $invite_time + ($conf_calls_room-1) * $conf_pause_room)
+		(defined $conf_pause_room)	? ($sum_time += ($conf_calls_room+1) * ($conf_pause_room+1))
 									: ($sum_time += $invite_time);
 	}
 	debug ("Sum-Time is now '$sum_time'");
@@ -479,13 +474,15 @@ if ($conf_calls_call)
 debug ("### CHAPTER 3 ###");
 
 ### 3.a) Prepare watchdog
-pipe (READER, WRITER);
-WRITER->autoflush(1);
+
+my $pipe = new IO::Pipe;
 my $pid = fork();
 
 # This is the Test-Process.
 if ($pid == 0)
 {
+	$pipe->writer();
+	$pipe->autoflush();
 	print "Test-Process started.\n";
 }
 
@@ -495,8 +492,9 @@ if ($pid == 0)
 elsif ($pid > 0)
 {
 	print "Watchdog-Process started.\n";
+	$pipe->reader();
 	my $s = IO::Select->new;
-	$s->add(\*READER);
+	$s->add(\*$pipe);
 
 	my $pause = 0;
 	my $current_calls = 0;
@@ -505,21 +503,22 @@ elsif ($pid > 0)
 
 	while (1)
 	{
-		# There is a mesage in the buffer
+		# Is there a message in the buffer?
 		if ($s->can_read(0))
 		{
 			# Get message and interpret it
 			# here is enough space for your own commands :-)
-			chomp (my $msg = <READER>);
+			my $msg = <$pipe>;
+			(next) if ((not defined $msg) || ($msg =~ /^(\\n)*$/));
+			chomp ($msg);
 			debug ("WATCHDOG: Received message '$msg'");
-			if		($msg eq "Tests finished.")				{ exit(0); }
-			elsif	($msg =~ /^set pause '(\d+)'$/)			{ $pause = $1; }
-			elsif	($msg =~ /^set current_calls '(\d+)'$/)	{ $current_calls = $1; }
-			elsif	($msg eq "watchdog start")				{ $watchdog_active = 1; }
-			elsif	($msg eq "watchdog stop")				{ $watchdog_active = 0; }
+			if		($msg eq "Tests finished.")				{ debug ("WATCHDOG: Accepted finishing tests.")	&& exit(0);					}
+			elsif	($msg =~ /^set pause '(\d+)'$/)			{ debug ("WATCHDOG: Pause set to '$1'.")		&& ($pause = $1);			}
+			elsif	($msg =~ /^set current_users '(\d+)'$/)	{ debug ("WATCHDOG: Users set to '$1'.")		&& ($current_calls = $1);	}
+			elsif	($msg eq "watchdog start")				{ debug ("WATCHDOG: Started.")					&& ($watchdog_active = 1);	}
+			elsif	($msg eq "watchdog stop")				{ debug ("WATCHDOG: Stopped.")					&& ($watchdog_active = 0);	}
 
 			$counter = 0;
-			sleep (0.1);
 		}
 
 		# There is no message in the buffer
@@ -529,8 +528,8 @@ elsif ($pid > 0)
 			# pause: Your pausetime has to be considered - if it is 5 minutes, the test may not be cancelled after 10 secs
 			# current_calls: if you have 50 calls to be established, you need some extra time for register and deregister
 			# x*$invite_time: with x you may decide how strict you want to be
-			debug ("WATCHDOG: Counter '$counter'");
-			if ($counter++ >= 5*$invite_time + $current_calls + $pause)
+			debug ("WATCHDOG: Counter '$counter', pause is '$pause' and users are '$current_calls'");
+			if ($counter++ >= (5 + (($current_calls+1) * ($pause+1))))
 			{
 				# Slap the testprocess with an INT-signal
 				system ("kill -INT $pid");
@@ -539,6 +538,8 @@ elsif ($pid > 0)
 			}
 			sleep (1);
 		}
+
+		else {sleep (0.1);}
 	}
 
 	exit (0);
@@ -554,8 +555,8 @@ else
 if ($twoway_calls)
 {
 	debug ("Starting 2way-tests...");
-	(defined $twoway_pause)	? print WRITER "set pause '$twoway_pause'\n"
-							: print WRITER "set pause '0'\n";
+	(defined $twoway_pause)	? print $pipe "set pause '$twoway_pause'\n"
+							: print $pipe "set pause '0'\n";
 
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
@@ -565,7 +566,7 @@ if ($twoway_calls)
 	if ($res->decoded_content ne "[qstat] started")
 	{
 		my $text = "FATAL: Could not start QStat-recording:\n";
-		($text .= "$_\n") for (split ("\n"), $res->decoded_content);
+		($text .= "$_\n") for (split ("\n", $res->decoded_content));
 	}
 	sleep (1);
 
@@ -578,20 +579,20 @@ if ($twoway_calls)
 
 	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
 	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
-	print WRITER "watchdog start\n";
+	print $pipe "watchdog start\n";
 	for my $current_call ($start_call..$twoway_calls)
 	{
 		# give the AskoziaPBX enough time to register, accept, invite and deregister all users
-		print WRITER "set current_users '". 2*$current_call ."'\n";
+		print $pipe "set current_users '". 2*$current_call ."'\n";
 
 		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
 		print "Starting '$current_call' 2way-calls...\n";
 		debug ("### Starting '$current_call' 2way-calls...");
-		my $constant = "$sipp -aa -inf $users_twoway_file -m $current_call -i $local_ip ";
-		my $reg_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf $reg_scen $ask_ip 2>&1";
-		my $acc_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf $acc_scen -bg $ask_ip 2>&1 &";
-		my $inv_cmd = $constant . "-p $sip_src_port -mp $rtp_src_port -sf $inv_scen $ask_ip 2>&1";
-		my $der_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf $der_scen $ask_ip 2>&1";
+		my $constant = "'$sipp' -aa -inf '$users_twoway_file' -m $current_call -i $local_ip ";
+		my $reg_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf '$reg_scen' $ask_ip 2>&1";
+		my $acc_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf '$acc_scen' -bg $ask_ip 2>&1 &";
+		my $inv_cmd = $constant . "-p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
+		my $der_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf '$der_scen' $ask_ip 2>&1";
 
 		my @testresult;
 		# register callee and tell the callee to listen for incoming calls
@@ -635,7 +636,7 @@ if ($twoway_calls)
 	}
 	
 	# Stop QStat-Recording on AskoziaPBX
-	print WRITER "watchdog stop\n";
+	print $pipe "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	undef $term_handler_called;
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
@@ -657,8 +658,8 @@ if ($twoway_calls)
 if ($conf_calls_room)
 {
 	debug ("Starting Conference-Tests with fixed rooms...");
-	(defined $conf_pause_room)	? print WRITER "set pause '$conf_pause_room'\n"
-								: print WRITER "set pause '0'\n";
+	(defined $conf_pause_room)	? print $pipe "set pause '$conf_pause_room'\n"
+								: print $pipe "set pause '0'\n";
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
@@ -668,7 +669,7 @@ if ($conf_calls_room)
 	if ($res->decoded_content ne "[qstat] started")
 	{
 		my $text = "FATAL: Could not start QStat-recording:\n";
-		($text .= "$_\n") for (split ("\n"), $res->decoded_content);
+		($text .= "$_\n") for (split ("\n", $res->decoded_content));
 	}
 	sleep (1);
 
@@ -681,44 +682,33 @@ if ($conf_calls_room)
 
 	# slow-and-steadily building up tests (waittime defined): for 1..$max_calls
 	# one test (no waittime defined): for $max_calls..$max_calls: only 1 execution of this loop
-	print WRITER "watchdog start\n";
-	for my $current_call ($start_call..$conf_calls_room)
+	my $current_users = $conf_calls_room * $conf_rooms_room;
+	print $pipe "set current_users '$current_users'\n";
+	sleep (1);
+	print $pipe "watchdog start\n";
+	my $inv_cmd = "'$sipp' -r 1 -rp ". $conf_pause_room ."s -aa -inf '$users_conf_room_file' -m $current_users -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
+
+	# START CALLS #
+	debug ("Beginning Invite...");
+	debug ("'$inv_cmd'");
+	my @testresult;
+	push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
+
+	# Save the sipp-log-output in a logfile if wanted
+	if (defined $save_sipp_log)
 	{
-		my $current_users = $current_call * $conf_rooms_room;
-		print WRITER "set current_users '$current_users'\n";
-		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
-		print "Starting '$current_call' conference-call(s) with fixed rooms...\n";
-		debug ("### Starting '$current_call' conference-call(s) with fixed rooms...");
-		my $inv_cmd = "$sipp -aa -inf $users_conf_room_file -m $current_users -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf $inv_scen $ask_ip 2>&1";
-
-		# START CALLS #
-		my @testresult;
-		debug ("Beginning Invite...\nDEBUG: '$inv_cmd'");
-		push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
-		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
-
-		# Save the sipp-log-output in a logfile if wanted
-		if (defined $save_sipp_log)
-		{
-			debug ("Transferring log to file...");
-			open (LOG, ">", File::Spec->rel2abs($save_sipp_log, cwd())) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
-			(print LOG $_) for (@testresult);
-			close LOG;
-		}
-
-		# Print message and wait for next call if wanted
-		print "Ready.";
-		if ((defined $conf_pause_room) && ($current_call != $conf_calls_room))
-		{
-			print " Sleeping '$conf_pause_room'";
-			sleep $conf_pause_room;
-		}
-		print "\n";
+		debug ("Saving sipp-log in file '$save_sipp_log'");
+		open (LOG, ">", $save_sipp_log) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+		(print LOG $_) for (@testresult);
+		close LOG;
+		debug ("Ready saving sipp-log.");
 	}
+	print "Ready.\n";
 	
 	# Stop QStat-Recording on AskoziaPBX
 	undef $term_handler_called;
-	print WRITER "watchdog stop\n";
+	sleep (1);
+	print $pipe "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
 	debug ("Answer: '". $res->status_line ."'");
@@ -739,8 +729,8 @@ if ($conf_calls_room)
 if ($conf_calls_call)
 {
 	debug ("Starting Conference-Tests with fixed calls...");
-	(defined $conf_pause_call)	? print WRITER "set pause '$conf_pause_call'\n"
-								: print WRITER "set pause '0'\n";
+	(defined $conf_pause_call)	? print $pipe "set pause '$conf_pause_call'\n"
+								: print $pipe "set pause '0'\n";
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
@@ -750,7 +740,7 @@ if ($conf_calls_call)
 	if ($res->decoded_content ne "[qstat] started")
 	{
 		my $text = "FATAL: Could not start QStat-recording:\n";
-		($text .= "$_\n") for (split ("\n"), $res->decoded_content);
+		($text .= "$_\n") for (split ("\n", $res->decoded_content));
 	}
 	sleep (1);
 
@@ -763,43 +753,33 @@ if ($conf_calls_call)
 
 	# slow-and-steadily building up tests (waittime defined): for 1..$max_rooms
 	# one test (no waittime defined): for $max_rooms..$max_rooms: only 1 execution of this loop
-	print WRITER "watchdog start\n";
-	for my $current_room ($start_room..$conf_rooms_call)
+	my $current_users = $conf_calls_call * $conf_rooms_call;
+	print $pipe "set current_users '$current_users'\n";
+	sleep (1);
+	print $pipe "watchdog start\n";
+	my $inv_cmd = "$sipp -aa -r 1 -rp ". $conf_pause_call ."s -inf '$users_conf_call_file' -m $current_users -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
+
+	# START CALLS #
+	debug ("Beginning Invite...");
+	debug ("'$inv_cmd'");
+	my @testresult;
+	push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
+
+	# Save the sipp-log-output in a logfile if wanted
+	if (defined $save_sipp_log)
 	{
-		my $current_users = $conf_calls_call * $current_room;
-		print WRITER "set current_users '$current_users'\n";
-		# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
-		print "Starting '$current_room' conference-room(s) with fixed count of calls...\n";
-		debug ("### Starting '$current_room' conference-room(s) with fixed count of calls...");
-		my $inv_cmd = "$sipp -aa -inf $users_conf_call_file -m $current_users -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf $inv_scen $ask_ip 2>&1";
-
-		# START CALLS #
-		my @testresult;
-		debug ("Beginning Invite...\nDEBUG: '$inv_cmd'");
-		push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
-		(last) if (defined $term_handler_called);	# cancel this test if STRG+C was pressed
-
-		# Save the sipp-log-output in a logfile if wanted
-		if (defined $save_sipp_log)
-		{
-			debug ("Transferring log to file...");
-			open (LOG, ">", File::Spec->rel2abs($save_sipp_log, cwd())) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
-			(print LOG $_) for (@testresult);
-			close LOG;
-		}
-
-		# Print message and wait for next call if wanted
-		print "Ready.";
-		if ((defined $conf_pause_call) && ($current_room != $conf_rooms_call))
-		{
-			print " Sleeping '$conf_pause_call'";
-			sleep $conf_pause_call;
-		}
-		print "\n";
+		debug ("Saving sipp-log in file '$save_sipp_log'");
+		open (LOG, ">", $save_sipp_log) || die ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+		(print LOG $_) for (@testresult);
+		close LOG;
+		debug ("Ready saving sipp-log.");
 	}
 
+	print "Ready.\n";
+
 	# Stop QStat-Recording on AskoziaPBX
-	print WRITER "watchdog stop\n";
+	sleep (1);
+	print $pipe "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
 	debug ("Answer: '". $res->status_line ."'");
@@ -817,7 +797,7 @@ if ($conf_calls_call)
 }
 
 # End watchdog
-print WRITER "Tests finished.\n";
+print $pipe "Tests finished.\n";
 
 ###############################################
 ### 4. Restore old AskoziaPBX-Configuration ###
@@ -877,11 +857,11 @@ sub create_conf_contents
 
 	my $conffile_text_user			= shift || die "FATAL: No 'configfile-usertext'-argument specified in function '$this_function'!\n";
 	(ref $conffile_text_user)		&& die "FATAL: 'Configfile-usertext'-argument has to be scalar in function '$this_function'!\n";
-	(defined $conffile_text_user)	? debug ("conffile_text_user is '$conffile_text_user'")	: debug ("conffile_text_user is not defined.");
+	(defined $conffile_text_user)	? debug ("conffile_text_user is '\n$conffile_text_user'")	: debug ("conffile_text_user is not defined.");
 	
 	my $conffile_text_room			= shift || die "FATAL: No 'configfile-roomtext'-argument specified in function '$this_function'!\n";
 	(ref $conffile_text_room)		&& die "FATAL: 'Configfile-roomtext'-argument has to be scalar in function '$this_function'!\n";
-	(defined $conffile_text_room)	? debug ("conffile_text_room is '$conffile_text_room'")	: debug ("conffile_text_room is not defined.");
+	(defined $conffile_text_room)	? debug ("conffile_text_room is '\n$conffile_text_room'")	: debug ("conffile_text_room is not defined.");
 	
 	my $twoway_calls				= shift;
 	(ref $twoway_calls)				&& die "FATAL: 'Twoway_Calls'-argument has to be scalar in function '$this_function'!\n";
@@ -957,7 +937,7 @@ sub create_conf_contents
 sub term_handler
 {
 	system ("killall -9 sipp");
-	print WRITER "watchdog stop\n";
+	print $pipe "watchdog stop\n";
 	$term_handler_called = 1;
 }
 
@@ -972,7 +952,7 @@ BEGIN {
 my $debug_indent = 0;
 sub debug
 {
-	return unless $debug;
+	(return 1) unless $debug;
 
 	my $message = shift || "";
 	($debug_indent++) if ($message =~ /^### FUNCTION:/);
@@ -986,6 +966,7 @@ sub debug
 	}
 
 	($debug_indent--) if ($message eq "### END FUNCTION ###");
+	return 1;
 }}
 
 #######################
@@ -1053,10 +1034,9 @@ sub download_qstat_data
 
 		# Copy contents into file
 		$filename = File::Spec->rel2abs ("$filename.qstat", $testpath);
-		open (QSTAT, ">", $filename) || die ("Could not open file '$filename' for writing: $!\n");
+		open (QSTAT, ">$filename") || die ("Could not open file '$filename' for writing: $!\n");
 		(print QSTAT $_."\n") for (@qstat_data);
 		close QSTAT;
-		system ("chown tk-labor ". $filename);
 
 		# Debug messages
 		debug ("QStat-Data is now:");
@@ -1124,8 +1104,8 @@ sub reboot_askozia
 		$success = system ("ping -c 1 -w 1 $ask_ip > /dev/null");
 	} while ($success);
 	
-	debug ("AskoziaPBX is online - wait 20 seconds for completing its boot sequence...");
-	sleep (20);
+	debug ("AskoziaPBX is online - wait 15 seconds for completing its boot sequence...");
+	sleep (15);
 	debug ("### END FUNCTION ###");
 }
 
@@ -1182,7 +1162,7 @@ sub interpret_data
 	{
 		debug ("Interpreting slow-and-steadily building-up test");
 		my $cur_index;
-		my $cur_call = $rooms;
+		my $cur_call = 1;
 		my @temp_mean_values;
 		my @mean_values;
 	
@@ -1205,19 +1185,37 @@ sub interpret_data
 			elsif (@temp_mean_values && $values[1] != $cur_call)
 			{
 				debug ("No value of call '$cur_call', calculating mean-value");
+				my $line = $work_file[$cur_call];
+				my @sorted_mean_values = sort {$a cmp $b} (@temp_mean_values);
+				debug ("Sorted mean values is:");
+				(debug ("- '$_'")) for (@sorted_mean_values);
+#				my $me = find_median (@sorted_mean_values);
+				my @sub_a = @sorted_mean_values[0..$#sorted_mean_values/2];
+				my @sub_b = @sorted_mean_values[$#sorted_mean_values/2..$#sorted_mean_values/2+1];
+				my $inter_start = find_median (\@sub_a);
+				debug ("Inter-Start is '$inter_start'");
+				my $inter_end = find_median (\@sub_b);
+				debug ("Inter-End is '$inter_end'");
+				my @inter_values;
+				for (@sorted_mean_values)
+				{
+					debug ("Looking at '$_'");
+					push (@inter_values, $_) if ($_ >= $inter_start && $_ <= $inter_end);
+				}
+
 				my $sum = 0;
-				($sum += $_) for (@temp_mean_values);
-				my $line = $work_file[$cur_call/$rooms];
-				my $mean_value = 100 - ($sum/@temp_mean_values);
-				my $last_mean_value = $work_file[$cur_call/$rooms-1]->[4];
+				($sum += $_) for (@inter_values);
+				my $mean_value = 100 - ($sum/@inter_values);
+				my $last_mean_value = $work_file[$cur_call]->[4];
 				
 				debug ("Current mean-value is '$mean_value', the last value was '$last_mean_value'"); 
 				($mean_value >= $last_mean_value - 10)	? push (@$line, $cur_call/$rooms, $mean_value)
 														: last;
 				
 				undef @temp_mean_values;
-				$cur_call += $rooms;
-				debug ("Cur_Call is now '$cur_call'");
+				$cur_call += 1;
+				debug ("Cur_Call is now '$cur_call', checking if the value of this line belongs to it already");
+				($index--) if ($values[1] == $cur_call);
 			}
 		}
 
@@ -1226,8 +1224,8 @@ sub interpret_data
 			debug ("End of measured values, adding last mean-values");
 			my $sum = 0;
 			($sum += $_) for (@temp_mean_values);
-			my $line = $work_file[$cur_call/$rooms];
-			my $last_mean_value = $work_file[$cur_call/$rooms-1]->[4];
+			my $line = $work_file[$cur_call];
+			my $last_mean_value = $work_file[$cur_call]->[4];
 			my $mean_value = 100 - ($sum/@temp_mean_values);
 			push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value - 10);
 		}
@@ -1265,30 +1263,32 @@ sub interpret_data
 	open (NEW_FILE, ">", $qstat_file .".csv") || die ("FATAL: Cannot open $qstat_file.csv for writing: $!\n");
 	(print NEW_FILE $_."\n") for (@new_file);
 	close NEW_FILE;
-	#system ("chown tk-labor $qstat_file.csv");	# *smell*
 
 	### CREATE GNUPLOT SCRIPTFILE ###
 
 	# Determine text for x-axis
 	my $x_text = "Unknown";
-	if		($type eq "conf-room")	{ $x_text = "Number of users per conference-room ($rooms existing room(s))"; }
-	elsif	($type eq "conf-call")	{ $x_text = "Number of conference-rooms ($rooms users in each room)"; }
-	elsif	($type eq "twoway")		{ $x_text = "Number of parallel twoway-calls"; }
+	if		($type eq "conf-room")	{ ($rooms == 1) ? ($x_text = "Number of concurrent participants of a conference")
+													: ($x_text = "Number of participants per conference room ($rooms existing rooms)"); }
+	elsif	($type eq "conf-call")	{ $x_text = "Number of parallel conference rooms ($rooms participants in each room)"; }
+	elsif	($type eq "twoway")		{ $x_text = "Number of parallel calls (twoleg calls)"; }
+
+	# get date
+	chomp (my $date = `date +"%Y-%m-%d %H:%M"`);
 
 	# Determine Platform and version
 	my ($platform, $version) = get_sut_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
-
 
 	my $gnuplot_cmd = "# Type: $type\n";
 	$gnuplot_cmd .= "set terminal png\n";
 	$gnuplot_cmd .= "set output '$qstat_file.png'\n";
 	
-	$gnuplot_cmd .= "set title 'Performance-Test of \"$platform\"-Appliance'\n";
+	$gnuplot_cmd .= "set title 'Performance test of \"$testname\" appliance'\n";
 	$gnuplot_cmd .= "set xlabel '$x_text'\n";
-	$gnuplot_cmd .= "set ylabel 'CPU-load in %'\n";
+	$gnuplot_cmd .= "set ylabel 'CPU load in %'\n";
 	$gnuplot_cmd .= "set xrange [0:$calls]\n";
 	$gnuplot_cmd .= "set yrange [0:100]\n";
-#	$gnuplot_cmd .= "set xtics 1\n";
+	($gnuplot_cmd .= "set xtics 1\n") if ($calls <= 15);
 	$gnuplot_cmd .= "set border 3\n";
 	$gnuplot_cmd .= "set xtics axis\n";
 	$gnuplot_cmd .= "set ytics axis\n";
@@ -1296,12 +1296,15 @@ sub interpret_data
 	$gnuplot_cmd .= "set yzeroaxis lw 6\n";
 	$gnuplot_cmd .= "unset grid\n";
 	$gnuplot_cmd .= "unset key\n";
+	$gnuplot_cmd .= "set pointsize 1.5\n";
 
-	$gnuplot_cmd .= "set label 'AskoziaPBX-Software-Version: $version' at 0.1,95.0\n";
+	$gnuplot_cmd .= "set label 'Askozia". chr(174) ."PBX Software Version: $version' at 0.1,95.0\n";
 	$gnuplot_cmd .= "set label 'Used Codecs: G711 A-Law' at 0.1,90.0\n";
 	$gnuplot_cmd .= "set label 'Transcoding used: no' at 0.1, 85.0\n";
+	$gnuplot_cmd .= "set label 'All participants: VoIP' at 0.1, 80.0\n";
+	$gnuplot_cmd .= "set label 'Date: $date' at 0.1, 75.0\n";
 
-	(defined $pause)	? ($gnuplot_cmd .= "plot '$qstat_file.csv' using 4:5 smooth bezier with line lw 2\n")
+	(defined $pause)	? ($gnuplot_cmd .= "plot '$qstat_file.csv' using 4:5 with points, '$qstat_file.csv' using 4:5 smooth bezier with line lw 2\n")
 #	(defined $pause)	? ($gnuplot_cmd .= "f(x)=a*x**3+b*x**2+c*x+d\n".
 #							"fit f(x) '$qstat_file.csv' using 4:5 via a,b,c,d\n".
 #							"plot f(x) with line lw 2\n")
@@ -1312,7 +1315,7 @@ sub interpret_data
 	open (GNU_FILE, ">", $qstat_file .".gplt") || die ("FATA: Cannot open ". $qstat_file .".gplt for writing: $!\n");
 	print GNU_FILE $gnuplot_cmd;
 	close GNU_FILE;
-	system ("gnuplot $qstat_file.gplt");
+	system ("gnuplot '$qstat_file.gplt'");
 
 	debug ("### END FUNCTION ###");
 }
@@ -1436,3 +1439,26 @@ EOT
 exit (0);
 }
 
+
+sub find_median
+{
+    # INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	(my $array_ref = shift) || (die "FATAL: No 'Array-Ref'-argument specified in function '$this_function'!\n");
+	(ref ($array_ref) eq "ARRAY") ||
+		(die "FATAL: 'Array-Ref'-argument has to be array-reference in function '$this_function', it is '". ref($array_ref) ."' and '$array_ref''!\n");
+	my @array = @$array_ref;
+	debug ("Array is:");
+	(debug ("- '$_'")) for (@array);
+
+	my $return;
+	(@array % 2)	? ($return = $array[$#array/2])
+					: ($return = ($array[$#array/2]+$array[$#array/2+1])/2);
+
+	debug ("Returning '$return'");
+	debug ("### END FUNCTION ###");
+	return $return;
+}
