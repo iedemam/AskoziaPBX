@@ -421,13 +421,29 @@ function v_cleanliness($post, $errors) {
 	}
 }
 
+
+
+/*
+I turned back to this variant (with extra function), because the variant with in_array() does work only if you're trying to add a new phone; when you want to edit an existing phone, it fails. 
+*/
+function lookup_phone ($ext)
+{
+	$phones = pbx_get_phones();
+	foreach ($phones as $phone)
+	{
+		if($phone['extension'] == $ext)
+			return $phone;
+	}
+	return 0;
+}
+
 function v_extension($element, $post, $errors) {
 	if (!strlen($post['extension'])) {
 		$errors[] = gettext("Missing extension number.");
 	} else if (preg_match("/[^0-9]/", $post['extension'])) {
 		$errors[] = gettext("Invalid extension number. Use only numerals.");
 	}
-	else if (in_array($post['extension'], pbx_get_extensions()))
+	else if ((($p = lookup_phone($post['extension'])) != 0) && ($p['uniqid']!=$post['uniqid'])) // if there is ANOTHER phone with such number...
 	{
 		$errors[] = gettext("This extension is already used. Choose another number.");
 	}
@@ -471,13 +487,6 @@ function v_voicemail_editor($element, $post, $errors) {
 	}
 	$element['vmtoemail'] = v_strip($post['vmtoemail']);
 	$element['vmtoemailaddress'] = v_strip($post['vmtoemailaddress']);
-}
-
-function v_email($element, $post, $errors) {
-	if (!v_is_email($post['email'])) {
-		$errors[] = gettext("The e-mail address is invalid or missing.");
-	}
-	$element['email'] = v_strip($post['email']);
 }
 
 function v_is_email($s) {
