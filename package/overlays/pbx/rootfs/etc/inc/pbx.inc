@@ -414,6 +414,20 @@ function pbx_get_provider($uniqid) {
 }
 
 /**
+ * Returns a phone by the extension number, or 0 if not found
+ */
+function pbx_get_phone_by_extension ($ext)
+{
+	$phones = pbx_get_phones();
+	foreach ($phones as $phone)
+	{
+		if($phone['extension'] == $ext)
+			return $phone;
+	}
+	return 0;
+}
+
+/**
  * Deletes a provider from the configuration array.
  * XXX : as opposed to the pbx_get_* functions, this is implemented in pbx.inc itself
  * this seems more logical as there is nothing technology specific going on here.
