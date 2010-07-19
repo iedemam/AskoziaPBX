@@ -68,8 +68,13 @@
 	}
 
 	.devfixedwidth {
-		font-family: Courier New, Courier, monospaced;
-		font-size: 10px;
+		font-family: MonoSpace !important;
+		font-size: 10pt !important;
+		overflow: scroll;
+		overflow-y: scroll;
+		overflow-x: scroll;
+		white-space: nowrap;
+		width: 98%;
 	}
 
 </style>
@@ -300,14 +305,14 @@
 			<br>
 			<div id="devfilepanel">
 				<strong>System Auto-Generated Content</strong><br>
-				<textarea id="devfilecontents" cols="80" rows="15" class="devfixedwidth" disabled="true"></textarea>
+				<textarea id="devfilecontents" rows="15" wrap="off" class="devfixedwidth" disabled="true"></textarea>
 				<br>
 				<br>
 				<br>
 				<strong>Append</strong><input name="devfilemode" type="radio" value="append">
 				or <strong>Override</strong><input name="devfilemode" type="radio" value="override" onclick='dev_file_copycontents();'>
 				with this text
-				<br><textarea id="devfilemanualcontents" cols="80" rows="15" class="devfixedwidth"></textarea>
+				<br><textarea id="devfilemanualcontents" rows="15" wrap="off" class="devfixedwidth"></textarea>
 				<br>
 				<a href="javascript:{}" onclick='dev_file_edit_stop();' class="ui-state-default ui-corner-all">cancel</a>
 				<a href="javascript:{}" onclick="dev_file_put();" class="ui-state-default ui-corner-all">save file contents</a>
