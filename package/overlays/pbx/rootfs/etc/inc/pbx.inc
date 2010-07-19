@@ -413,19 +413,6 @@ function pbx_get_provider($uniqid) {
 	return;
 }
 
-/**
- * Returns a phone by the extension number, or 0 if not found
- */
-function pbx_get_phone_by_extension ($ext)
-{
-	$phones = pbx_get_phones();
-	foreach ($phones as $phone)
-	{
-		if($phone['extension'] == $ext)
-			return $phone;
-	}
-	return 0;
-}
 
 /**
  * Deletes a provider from the configuration array.
@@ -538,6 +525,21 @@ function pbx_get_phones() {
 					analog_get_phones()
 				));
 }
+
+/**
+ * Returns a phone by the extension number, or 0 if not found
+ */
+function pbx_get_phone_by_extension ($ext)
+{
+	$phones = pbx_get_phones();
+	foreach ($phones as $phone)
+	{
+		if($phone['extension'] == $ext)
+			return $phone;
+	}
+	return 0;
+}
+
 
 /**
  * Returns a phone based on its uniqid
