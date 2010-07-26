@@ -1,10 +1,9 @@
 \section{Configuration of the AskoziaPBX}
 \label{sec:configuration}
-
-This paragraph is about the configuration of the AskoziaPBX. First of all, the used configfile from Askozia is downloaded because the
+This paragraph is about the configuration of the AskoziaPBX. There is a complete configuration file in the appendix.
+First, the used configfile from Askozia is downloaded because the
 user should not have to reconfigure the whole box including all accounts and the dialplan after every test. The target is to deliver
 the Askozia box just like it was issued. So, there are three necessary steps which are described in the next chapters.
-
 \begin{figure} [htbp]
 \centering
 \includegraphics [width=7cm] {config-1}
@@ -12,7 +11,6 @@ the Askozia box just like it was issued. So, there are three necessary steps whi
 \end{figure}
 
 \subsection{Down-/Upload Configfile}
-
 For downloading the configfile, it is necessary to send a HTML POST request to Askozia. Or, to be more precise, it has to be sent to the qstat-page of the Askozia box. The useragent has to be authenticated as root and the content type must be ``multipart/form-data''. With this POST request, Askozia sends the output of the qstat page. For downloading the configfile, the parameter ``Download'' has to be set to any desired value -- but it has to be set.
 
 In the performance test script, the following perl code is used to send this POST request:
@@ -29,16 +27,53 @@ my $res = $ua->request (POST
 \end{lstlisting}
 
 After executing this request, the following dataflow has to be expected:
-
 \begin{figure} [htbp]
 \centering
 \includegraphics [width=11cm] {config-2}
 \caption {Dataflow of configfile download}
 \end{figure}
-
 The ``200 OK'' message sent by Askozia includes the configfile in xml format.
 
 \subsection{Users}
+For executing the planned tests, it is necessary to add some testusers to the AskoziaPBX.
+The count of users depends on the parameters that were passed to the script when launching.
+Here is a table of needed users, the highest count will be added:
 
-\subsection{Conference-Rooms}
+\begin{tabular}{|p{2cm}|p{13cm}|} \hline
+	\textsc{Testtype} & \textsc{Needed users} \\ \hline \hline
+	two-way & \texttt{= 2 * 2way-calls} (User A and B for each call) \\
+	conf room & \texttt{= conf-calls-room * conf-rooms-room} \newline (``conf-calls'' users per ``conf-rooms'' conference rooms) \\
+	conf call & \texttt{= conf-calls-call * conf-rooms-call} \newline (``conf-calls'' users per ``conf-rooms'' conference rooms) \\
+	\hline
+\end{tabular}
+
+The script searches for the begin of the \texttt{sipp} paragraph and adds its information to the existing phones.
+It is not checked whether the added phones already exist. The template for adding users looks as follows, where
+\texttt{\_userno\_} is replaced by a per user incremented integer:
+\begin{lstlisting}[breaklines=true,label=code:config-post-request,caption={Conference room template} ]
+<phone>
+<extension>User_userno_</extension>
+<callerid>Performance-Test Testuser _userno_</callerid>
+<codec>ulaw</codec>
+<codec>alaw</codec>
+<codec>gsm</codec>
+<secret>0815</secret>
+<uniqid>SIP-PHONE-1357012154bbefaaa79d96_userno_</uniqid>
+<language>de-de</language>
+<ringlength>indefinitely</ringlength>
+<natmode>yes</natmode>
+<dtmfmode>auto</dtmfmode>
+</phone>
+\end{lstlisting}
+
+\subsection{Conference rooms}
+Just like the users, the needed conference rooms have to be added, too. So the script searches for the begin of the \texttt{conferencing}
+paragraph and adds its needed rooms. The template looks as follows, where \texttt{\_roomno\_} is replaced by a per room incremented integer:
+\begin{lstlisting}[breaklines=true,label=code:config-post-request,caption={Conference room template} ]
+<room>
+<number>_roomno_</number>
+<name>Default Conference</name>
+<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6_roomno_</uniqid>
+</room>
+\end{lstlisting}
 
