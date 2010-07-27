@@ -14,7 +14,7 @@ the Askozia box just like it was issued. So, there are three necessary steps whi
 For downloading the configfile, it is necessary to send a HTML POST request to Askozia. Or, to be more precise, it has to be sent to the qstat-page of the Askozia box. The useragent has to be authenticated as root and the content type must be ``multipart/form-data''. With this POST request, Askozia sends the output of the qstat page. For downloading the configfile, the parameter ``Download'' has to be set to any desired value -- but it has to be set.
 
 In the performance test script, the following perl code is used to send this POST request:
-\begin{lstlisting}[breaklines=true,label=code:config-post-request,caption={POST request for downloading configfile} ]
+\begin{lstlisting}[breaklines=true,label=code:config-post-request-download,caption={POST request for downloading configfile} ]
 use HTTP::Request::Common;
 use LWP;
 my $ua = new LWP::UserAgent;
@@ -27,12 +27,29 @@ my $res = $ua->request (POST
 \end{lstlisting}
 
 After executing this request, the following dataflow has to be expected:
-\begin{figure} [htbp]
+\begin{figure} [h!]
 \centering
 \includegraphics [width=11cm] {config-2}
 \caption {Dataflow of configfile download}
 \end{figure}
-The ``200 OK'' message sent by Askozia includes the configfile in xml format.
+
+The \texttt{200 OK} message sent by Askozia includes the configfile in xml format. The xml file is saved with its original name
+in the \texttt{./results/<testname>/} directory. Then, it is opened for reading to add the needed users and conference rooms
+(see the next sections). When finished, the edited configfile is saved with the original named followed by an \texttt{\_edited}
+string. This edited configfile is now uploaded to the AskoziaPBX as follows:
+
+\begin{figure} [htbp]
+\centering
+\includegraphics [width=11cm] {config-3}
+\caption {Dataflow of configfile upload}
+\end{figure}
+
+This dataflow is created by the following perl listing (\texttt{\$ua} and \texttt{\$res} are the existing variables declared and defined above):
+
+\begin{lstlisting}[breaklines=true,label=code:config-post-request-upload,caption={POST request for uploading configfile} ]
+$res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data",
+    Content => [ Restore => "1", conffile => [ $xml_configfile."_edited" ] ]);
+\end{lstlisting}
 
 \subsection{Users}
 For executing the planned tests, it is necessary to add some testusers to the AskoziaPBX.
@@ -47,10 +64,10 @@ Here is a table of needed users, the highest count will be added:
 	\hline
 \end{tabular}
 
-The script searches for the begin of the \texttt{sipp} paragraph and adds its information to the existing phones.
-It is not checked whether the added phones already exist. The template for adding users looks as follows, where
-\texttt{\_userno\_} is replaced by a per user incremented integer:
-\begin{lstlisting}[breaklines=true,label=code:config-post-request,caption={Conference room template} ]
+The script downloads the complete Askozia configuration file and searches for the begin of the \texttt{sipp} paragraph
+Then, it adds its information to the existing phones. It is not checked whether the added phones already exist.
+The template for adding users looks as follows, where \texttt{\_userno\_} is replaced by an integer that is incremented with each user:
+\begin{lstlisting}[breaklines=true,label=code:config-user-template,caption={User template} ]
 <phone>
 <extension>User_userno_</extension>
 <callerid>Performance-Test Testuser _userno_</callerid>
@@ -68,8 +85,8 @@ It is not checked whether the added phones already exist. The template for addin
 
 \subsection{Conference rooms}
 Just like the users, the needed conference rooms have to be added, too. So the script searches for the begin of the \texttt{conferencing}
-paragraph and adds its needed rooms. The template looks as follows, where \texttt{\_roomno\_} is replaced by a per room incremented integer:
-\begin{lstlisting}[breaklines=true,label=code:config-post-request,caption={Conference room template} ]
+paragraph and adds its needed rooms. The template looks as follows, where \texttt{\_roomno\_} is replaced by an integer that is incremented with each room:
+\begin{lstlisting}[breaklines=true,label=code:config-room-template,caption={Conference room template} ]
 <room>
 <number>_roomno_</number>
 <name>Default Conference</name>
@@ -77,3 +94,4 @@ paragraph and adds its needed rooms. The template looks as follows, where \textt
 </room>
 \end{lstlisting}
 
+Conference rooms start with number 2663. So, for a conference test that needs ten conference rooms, there are conference rooms 2663 till 2672 created.
