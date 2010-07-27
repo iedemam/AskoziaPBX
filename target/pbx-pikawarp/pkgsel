@@ -100,6 +100,7 @@ X lsof
 
 # pika
 X lcdlib
+X pikadisplay
 
 # file system overlay
 X pbx
