@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:25+0200\n"
+"POT-Creation-Date: 2010-07-27 15:24+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -297,6 +297,9 @@ msgid "Missing extension number."
 msgstr ""
 
 msgid "Invalid extension number. Use only numerals."
+msgstr ""
+
+msgid "This extension is already used. Choose another number."
 msgstr ""
 
 msgid "Missing caller id."

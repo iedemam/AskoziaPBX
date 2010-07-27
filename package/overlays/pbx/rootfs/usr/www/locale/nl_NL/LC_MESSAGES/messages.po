@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:25+0200\n"
+"POT-Creation-Date: 2010-07-27 15:24+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Edwin Boeve <edwin.boeve@gmail.com>\n"
 "Language-Team: \n"
@@ -309,6 +309,9 @@ msgstr "Ontbrekende extensie nummer."
 
 msgid "Invalid extension number. Use only numerals."
 msgstr "Ongeldig extensie nummer. Gebruik alleen nummeriek."
+
+msgid "This extension is already used. Choose another number."
+msgstr ""
 
 msgid "Missing caller id."
 msgstr "Ontbrekende Beller-ID"

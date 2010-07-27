@@ -4,7 +4,7 @@ tr_TR 71
 cs_CS 55
 zh_TW 89
 ru_RU 100
-es_ES 79
+es_ES 97
 fr_FR 96
 se_SE 10
 bg_BG 99

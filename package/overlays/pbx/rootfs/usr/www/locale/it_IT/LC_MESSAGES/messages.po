@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:25+0200\n"
+"POT-Creation-Date: 2010-07-27 15:24+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -300,6 +300,9 @@ msgstr "Numero del derivato mancante."
 
 msgid "Invalid extension number. Use only numerals."
 msgstr "Numero di derivato non valido. Deve essere una stringa numerica."
+
+msgid "This extension is already used. Choose another number."
+msgstr ""
 
 msgid "Missing caller id."
 msgstr "Identificativo del Chiamante mancante."

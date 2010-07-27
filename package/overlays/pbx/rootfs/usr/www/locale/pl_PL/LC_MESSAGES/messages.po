@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:25+0200\n"
+"POT-Creation-Date: 2010-07-27 15:24+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -307,6 +307,9 @@ msgstr "Brak numeru wewnętrznego."
 
 msgid "Invalid extension number. Use only numerals."
 msgstr "Nieprawidłowy numer wewnętrzny. Należy użyć wyłącznie cyfr."
+
+msgid "This extension is already used. Choose another number."
+msgstr ""
 
 msgid "Missing caller id."
 msgstr "Brak caller id."

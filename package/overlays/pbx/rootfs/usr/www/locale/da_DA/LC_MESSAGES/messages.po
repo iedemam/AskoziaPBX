@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:25+0200\n"
+"POT-Creation-Date: 2010-07-27 15:24+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -305,6 +305,9 @@ msgstr "Mangler linie nummer."
 
 msgid "Invalid extension number. Use only numerals."
 msgstr "Ugyldig linie nr. Der skal indtastes numerisk tegn"
+
+msgid "This extension is already used. Choose another number."
+msgstr ""
 
 msgid "Missing caller id."
 msgstr "Mangler opkalds ID."

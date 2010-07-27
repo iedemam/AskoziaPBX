@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-23 10:25+0200\n"
+"POT-Creation-Date: 2010-07-27 15:24+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,6 +323,9 @@ msgstr ""
 #, fuzzy
 msgid "Invalid extension number. Use only numerals."
 msgstr "Geçerli dahili hat girilmeli."
+
+msgid "This extension is already used. Choose another number."
+msgstr ""
 
 msgid "Missing caller id."
 msgstr ""
