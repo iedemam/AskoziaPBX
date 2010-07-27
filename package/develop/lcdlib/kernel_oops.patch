@@ -1,0 +1,120 @@
+diff -Nur lcdlib-1.0.0-8.orig/driver/lcddriver.c lcdlib-1.0.0-8/driver/lcddriver.c
+--- lcdlib-1.0.0-8.orig/driver/lcddriver.c	2010-03-24 17:19:34.000000000 -0400
++++ lcdlib-1.0.0-8/driver/lcddriver.c	2010-07-21 13:29:37.000000000 -0400
+@@ -458,7 +458,7 @@
+ }
+ 
+ 
+-int __init init_driver(struct lcd_private *lcd)
++static int __init init_driver(struct lcd_private *lcd)
+ {
+   lcd_tasklet.data = (unsigned long)lcd;
+ 
+@@ -483,17 +483,24 @@
+ 
+   // start the shift and blink thread
+   lcd->ddthread = kthread_run(lcdBlinkAndShift, lcd, "pikalcd");
++  if (IS_ERR(lcd->ddthread)) {
++	lcd->ddthread = NULL;
++	return -ENOMEM;
++  }
++
+   return 0;
+ }
+ 
+-int __exit cleanup_driver(struct lcd_private *lcd)
++int cleanup_driver(struct lcd_private *lcd)
+ {
+ 	lcd->brightnessMask = 0;
+ 
+-	// stop the threads
+-	kthread_stop(lcd->ddthread);
+-	// to ensure the thread gets out of the waiting state;
+-	delay(100);
++	if (lcd->ddthread) {
++		// stop the threads
++		kthread_stop(lcd->ddthread);
++		// to ensure the thread gets out of the waiting state;
++		delay(100);
++	}
+ 
+ 	return 0;
+ }
+@@ -542,9 +549,7 @@
+ 	    polled_write(lcd, 0x36 | 0x1000))
+ 		return -ETIMEDOUT;
+ 
+-	init_driver(lcd);
+-
+-	return 0;
++	return init_driver(lcd);
+ }
+ 
+ /* This is the only place that changes the queue_head, except for a reset. */
+diff -Nur lcdlib-1.0.0-8.orig/driver/lcddriver.h lcdlib-1.0.0-8/driver/lcddriver.h
+--- lcdlib-1.0.0-8.orig/driver/lcddriver.h	2010-03-01 15:32:49.000000000 -0500
++++ lcdlib-1.0.0-8/driver/lcddriver.h	2010-07-21 09:38:57.000000000 -0400
+@@ -36,7 +36,7 @@
+ void getCounts(struct lcd_private *lcd);
+ 
+ int __init lcd_init(struct lcd_private *lcd);
+-int __exit cleanup_driver(struct lcd_private *lcd);
++int cleanup_driver(struct lcd_private *lcd);
+ 
+ #include <linux/version.h>
+ 
+diff -Nur lcdlib-1.0.0-8.orig/driver/lcdkmd.c lcdlib-1.0.0-8/driver/lcdkmd.c
+--- lcdlib-1.0.0-8.orig/driver/lcdkmd.c	2010-03-02 15:53:39.000000000 -0500
++++ lcdlib-1.0.0-8/driver/lcdkmd.c	2010-07-21 09:40:41.000000000 -0400
+@@ -348,19 +348,18 @@
+   }
+   LCD->id = lcd_miscdev.minor;
+ 
+-  rc = request_irq(LCD->irq, lcd_ISR, IRQF_SHARED, MODNAME, LCD);
+-  if (rc) {
+-    printk(MODNAME ": Unable to request irq %d\n", rc);
+-    goto error_cleanup;
+-  }
+-
+   rc = lcd_init(LCD);
+   if (rc) {
+ 	  printk(KERN_ERR MODNAME ": lcd_init failed\n");
+-	  free_irq(LCD->irq, LCD);
+ 	  goto error_cleanup;
+   }
+ 
++  rc = request_irq(LCD->irq, lcd_ISR, IRQF_SHARED, MODNAME, LCD);
++  if (rc) {
++    printk(MODNAME ": Unable to request irq %d\n", rc);
++    goto error_cleanup;
++  }
++
+   imr = BAR0_READ(LCD, BAR0_IMR);
+   imr |= 0x20002000;
+   BAR0_WRITE(LCD, BAR0_IMR, imr);
+@@ -377,6 +376,8 @@
+   if (lcd_miscdev.minor != MISC_DYNAMIC_MINOR)
+ 	  misc_deregister(&lcd_miscdev);
+ 
++  cleanup_driver(LCD);
++
+   if (fpga)
+ 	  iounmap(fpga);
+ 
+@@ -392,14 +393,14 @@
+ 
+   printk(MODNAME ": cleanup module\n");
+ 
+-  cleanup_driver(LCD);
+-
+   imr = BAR0_READ(LCD, BAR0_IMR);
+   imr &= ~0x20002000;
+   BAR0_WRITE(LCD, BAR0_IMR, imr);
+ 
+   free_irq(LCD->irq, LCD);
+ 
++  cleanup_driver(LCD);
++
+   misc_deregister(&lcd_miscdev);
+ 
+   iounmap(LCD->bar0);
