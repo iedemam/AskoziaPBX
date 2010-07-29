@@ -27,9 +27,10 @@
 
 [C] extra/base
 
+[F] CROSS
 [L] LGPL
 [S] Beta
-[V] 0.2.1
+[V] 0.2.2
 [P] O -----5---9 110.000
 
-[D] 3668436335 uClibc++-0.2.1.tar.bz2 http://cxx.uclibc.org/src/
+[D] 0 uClibc++-0.2.2.tar.bz2 http://cxx.uclibc.org/src/
