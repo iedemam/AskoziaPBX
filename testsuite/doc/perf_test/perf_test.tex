@@ -5,14 +5,16 @@
 	parskip=half,
 	headsepline,
 	12pt
-]{scrartcl}
+]{article}
 
+\usepackage {a4wide}
 \usepackage [utf8]{inputenc} % Zeichensatz, ermglicht die direkte Eingabe von Umlauten im Editor
 \usepackage {fixltx2e} %korrigiert Fehler in LaTeX
 \usepackage {fix-cm} %korrigiert Fehler in Standard-Schriften
 \usepackage [T1] {fontenc} %Ausgabecodierung
 \usepackage {textcomp} %Sonderzeichen
-\usepackage [ngerman] {babel} %Sprachunterstützung
+%\usepackage [ngerman] {babel} %Sprachunterstützung
+\usepackage [english] {babel} %Sprachunterstützung
 \usepackage [automark, autooneside, headsepline]{scrpage2}
 \usepackage [pdftex]{graphicx} % Einbindung von Grafiken (pdf, png, jpg)
 \usepackage {fixmath}
@@ -23,7 +25,7 @@
 \lstdefinelanguage{tcl}{
 moredelim=**[is][\itshape]{<kursiv>}{</kursiv>}
 }
-\lstset{language=tcl, basicstyle=\ttfamily}
+\lstset{language=tcl, basicstyle=\footnotesize\ttfamily}
 \usepackage {chngcntr}
 \usepackage{pdfpages}
 \usepackage{hyperref}
@@ -58,6 +60,7 @@ moredelim=**[is][\itshape]{<kursiv>}{</kursiv>}
 \include{conf-call}
 \include{conf-room}
 \include{watchdog}
+\include{qstat}
 \begin{appendix}
 \include{appendix}
 \end{appendix}
