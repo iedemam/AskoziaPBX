@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!-- AskoziaPBX default system configuration -->
+<!-- $Id: config.xml 1438 2010-04-07 11:29:34Z michael.iedema $ -->
+<askoziapbx>
+	<version>2.02</version>
+	<lastchange></lastchange>
+	<system>
+		<hostname>AskoziaPBX</hostname>
+		<domain>local</domain>
+		<dnsserver>192.168.1.1</dnsserver>
+		<username>admin</username>
+		<password>askozia</password>
+		<time-update-interval>4-hours</time-update-interval>
+		<timeservers>pool.ntp.org</timeservers>
+		<webgui>
+			<protocol>http</protocol>
+		</webgui>
+	</system>
+	<interfaces>
+		<lan>
+			<dhcp/>
+			<if>eth0</if>
+			<ipaddr>192.168.1.2</ipaddr>
+			<subnet>24</subnet>
+			<gateway>192.168.1.1</gateway>
+		</lan>
+	</interfaces>
+	<conferencing>
+		<room>
+			<number>2663</number>
+			<name>Default Conference</name>
+			<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6</uniqid>
+		</room>
+	</conferencing>
+	<dialplan>
+		<application>
+			<name>Read IP</name>
+			<extension>000047</extension>
+			<uniqid>APPLICATION-MAPPING-933337097386d45555d920</uniqid>
+			<app-command>MSxBbnN3ZXIoKQ==</app-command>
+			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4tdXMp</app-command>
+			<app-command>MyxTZXQoSVBPVVRQVVQ9JHtTSEVMTCgvZXRjL3NjcmlwdHMvcGFyc2VpcC5zaCl9KQ==</app-command>
+			<app-command>NCxOb09wKElQT1VUUFVUOiAke0lQT1VUUFVUfSk=</app-command>
+			<app-command>NSxQbGF5YmFjayhiZWVwKQ==</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMSl9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMil9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMyl9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sNCl9KQ==</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
+			<app-command>bixHb3RvKDUp</app-command>
+			<descr>Reads the system IP address</descr>
+		</application>
+		<application>
+			<name>Echo</name>
+			<extension>00003246</extension>
+			<uniqid>APPLICATION-MAPPING-83606076846f835d8828a4</uniqid>
+			<app-command>MSxBbnN3ZXIoKQ==</app-command>
+			<app-command>MixFY2hvKCk=</app-command>
+			<app-command>MyxIYW5ndXAoKQ==</app-command>
+			<descr>Echos audio and video back to the caller as soon as it is received. Used to test connection delay.</descr>
+		</application>
+		<application>
+			<name>Milliwatt</name>
+			<extension>000064554</extension>
+			<uniqid>APPLICATION-MAPPING-48856682646f8381701993</uniqid>
+			<app-command>MSxBbnN3ZXIoKQ==</app-command>
+			<app-command>MixNaWxsaXdhdHQoKQ==</app-command>
+			<app-command>MyxIYW5ndXAoKQ==</app-command>
+			<descr>Generates a constant 1000Hz tone. Used to test connection quality.</descr>
+		</application>
+		<application>
+			<name>WakeMe</name>
+			<extension>00009253</extension>
+			<uniqid>APPLICATION-MAPPING-202074715246f8385a7a820</uniqid>
+			<app-command>MSxBbnN3ZXIoKQ==</app-command>
+			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4tdXMp</app-command>
+			<app-command>MyxXYWtlTWUoKQ==</app-command>
+			<app-command>NCxIYW5ndXAoKQ==</app-command>
+			<descr>Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.</descr>
+		</application>
+	</dialplan>
+</askoziapbx>
