@@ -48,6 +48,8 @@ X grub
 X asterisk16
 X spandsp
 X libtiff
+X libogg
+X speex
 
 # text2speech
 X flite
