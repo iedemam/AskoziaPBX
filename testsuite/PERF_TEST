@@ -18,14 +18,14 @@
 #	b) Edit it
 #	c) Re-Upload it
 # 2. Generate Users.csv-File for sipp
-#	a) For 2way-tests
-#	b) For conference tests with fixed rooms
-#	c) For conference tests with fixed calls
+#	a) For two-party-tests
+#	b) For "conference rooms test" 
+#	c) For "conference participants test"
 # 3. Execute, interpret and plot Performance-Tests
 #   a) Prepare watchdog
-#	b) Execute 2-way-performance-tests
-#	c) Execute conference-tests with fixed rooms
-#	d) Execute conference-tests with fixed calls
+#	b) Execute two-party-tests
+#	c) Execute "conference rooms test"
+#	d) Execute "conference participants test" 
 # 4. Restore old Askozia-Configuration
 
 
@@ -65,36 +65,34 @@ my $ask_reboot_page	= "system_reboot.php";
 my $ask_realm		= "Web Server Authentication";	# Realm for authentification
 my $ask_user		= "admin";						# User for down-/uploading the configuration-file
 my $ask_pw			= "askozia";					# Passwort for the user to login
-my $reboot_time		= 5;							# Time for completing a reboot after AskoziaPBX pings back again
+my $reboot_time		= 15;							# Time for completing a reboot after AskoziaPBX pings back again
 my $restore			= "old-config";					# Which configuration shell the AskoziaPBX have AFTER the test?
 													# (old-config, keep, factory-defaults)
 
 # Perfomance-Test-Settings
-my $save_sipp_log;		# Shell the sipp-output be saved in files? (extrem-debugging because very much data)
-my $local_ip;			# The IP adress of the test-computer
-my $twoway_calls;		# How many calls shell be executed for the 2way-test? (0/undef = no twoway test)
-my $twoway_pause;		# One test with all users or slow-and-steadily building-up tests?
-my $conf_calls_room;	# How many calls shell be executed for the conference-tests? (0/undef = no conftest with fixed rooms)
-my $conf_rooms_room;	# How many rooms shell exist? (Here, fixed rooms: There is ALWAYS this count of rooms)
-my $conf_pause_room;	# One test with all users and rooms or slow-and-steadily building-up tests?
-my $conf_calls_call;	# How many calls shell be executed for the conference-tests? (0/undef = no conftest with fixed calls)
-my $conf_rooms_call;	# How many rooms shell exist? (Here, fixed calls: number of rooms will increase step by step)
-my $conf_pause_call;	# One test with all users and rooms or slow-and-steadily building-up tests?
+my $pause = 60;
+my $max_two_party;						# How many calls shell be executed for the two-party-test? (0/undef = no twoway test)
+my $max_conf_participants;				# How many participants maximal in the "conference participants test"? (0/undef = no test)
+my $conf_participants_no_of_rooms = 1;	# How many rooms shell exist in the "conference participants test"? (developers parameter)
+my $max_conf_rooms;						# How many rooms shell exist in the "conference rooms test" maximal? ()
+my $conf_rooms_no_of_participants = 3;	# Which size should the conference rooms in the "conference rooms test" have? (dev parameter)
+my $save_sipp_log;						# Shell the sipp-output be saved in files? (extrem-debugging because very much data)
+my $local_ip;							# The IP adress of the test-computer
 
 # Sipp-Settings
-my $sipp;																		# Name of the sipp-executable
-my $users_twoway_file		= "Users_twoway.csv";								# Name of the CSV-Injection-File for sipp for 2way-test
-my $users_conf_room_file	= "Users_conf_room.csv";							# CSV-Injection-File for sipp for conference-test with fixed rooms
-my $users_conf_call_file	= "Users_conf_call.csv";							# CSV-Injection-File for sipp for conference-test with fixed calls
-my $reg_scen				= File::Spec->rel2abs ("Register.xml"	, cwd()."/PERF_TEST_FILES");	# Name of the register-scenario
-my $der_scen				= File::Spec->rel2abs ("Deregister.xml"	, cwd()."/PERF_TEST_FILES");	# Name of the deregister-scenario
-my $inv_scen				= File::Spec->rel2abs ("Invite.xml"		, cwd()."/PERF_TEST_FILES");	# Name of the invite-scenario
-my $acc_scen				= File::Spec->rel2abs ("Accept.xml"		, cwd()."/PERF_TEST_FILES");	# Name of the accept-scenario for listening invited users
+my $sipp_exe;																		# Name of the sipp-executable
+my $users_two_party_file			= "Users_two-party.csv";					# Name of the CSV-Injection-File for sipp for two-party-test
+my $users_conf_rooms_file			= "Users_conf-rooms.csv";					# CSV-Injection-File for sipp for "conference rooms test" 
+my $users_conf_participants_file	= "Users_conf-participants.csv";			# CSV-Injection-File for sipp for "conference participants test"
+my $reg_scen						= File::Spec->rel2abs ("Register.xml"	, cwd()."/PERF_TEST_FILES");	# REGISTER-scenario
+my $der_scen						= File::Spec->rel2abs ("Deregister.xml"	, cwd()."/PERF_TEST_FILES");	# De-REGISTER-scenario
+my $inv_scen						= File::Spec->rel2abs ("Invite.xml"		, cwd()."/PERF_TEST_FILES");	# INVITE-scenario
+my $acc_scen						= File::Spec->rel2abs ("Accept.xml"		, cwd()."/PERF_TEST_FILES");	# ACCEPT-scenario for listening invited users
 my $sip_src_port			= 5061;												# SIPP-Source-Port of the testcomputer
-																				# (should be != 5060 becuase blocked by running softphones)
-my $sip_dst_port			= 5062;												# SIPP-Destination-Port of the testcomputer (for 2way-tests only)
+																				# (should be != 5060 because blocked by running softphones)
+my $sip_dst_port			= 5062;												# SIPP-Destination-Port of the testcomputer (for two-party-tests only)
 my $rtp_src_port			= 6020;												# RTP-Source-Port of the testcomputer
-my $rtp_dst_port			= 6030;												# RTP-Destination-Port of the testcomputer (for 2way-tests only)
+my $rtp_dst_port			= 6030;												# RTP-Destination-Port of the testcomputer (for two-party-tests only)
 
 # Template-Text for the xml-configfile for a sipphone
 my $conffile_text_usertext =
@@ -102,12 +100,10 @@ my $conffile_text_usertext =
 			<extension>_userno_</extension>
 			<callerid>Testuser _userno_</callerid>
 			<manualattributes>cXVhbGlmeT1ubw==</manualattributes>
-			<codec>ulaw</codec>
 			<codec>alaw</codec>
-			<codec>gsm</codec>
-			<secret>0815</secret>
-			<uniqid>SIP-PHONE-1357012154bbefaaa79d96_userno_</uniqid>
-			<language>de-de</language>
+			<secret>_userno_</secret>
+			<uniqid>SIP-PHONE-_userno_</uniqid>
+			<language>en-us</language>
 			<ringlength>indefinitely</ringlength>
 			<natmode>yes</natmode>
 			<dtmfmode>auto</dtmfmode>
@@ -118,139 +114,137 @@ my $conffile_text_usertext =
 my $conffile_conftext = 
 "		<room>	<number>_roomno_</number>
 			<name>Default Conference</name>
-			<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6_roomno_</uniqid> </room>
+			<uniqid>CONFERENCE-ROOM-_roomno_</uniqid> </room>
 ";
 
-# use "./sipp" if existing, otherwise the installed sipp-version for default executables, is overwritten if specified by command line parameter
-(-f File::Spec->rel2abs ("sipp", cwd()."/PERF_TEST_FILES"))	? ($sipp = "PERF_TEST_FILES/sipp")
-																: (($sipp = `which sipp`) && chomp $sipp);
+# use "./PERF_TEST_FILES/sipp" if existing, otherwise the installed version for default executables, is overwritten if specified by command line parameter
+(-f File::Spec->rel2abs ("sipp", cwd()."/PERF_TEST_FILES"))	? ($sipp_exe = "PERF_TEST_FILES/sipp")
+															: (($sipp_exe = `which sipp`) && chomp $sipp_exe);
 
 # parse command line parameters
 # for help have a look at (a) help-output of this script or (b) declaration of this variables
 Getopt::Long::GetOptions (
-	"askozia-ip=s"				=> \$ask_ip, 
-	"askozia-port=s"			=> \$ask_port,
-	"askozia-confpage=s"		=> \$ask_conf_page,
-	"askozia-realm=s"			=> \$ask_realm,
-	"askozia-user=s"			=> \$ask_user,
-	"askozia-pw=s"				=> \$ask_pw,
-	"reboot-time=i"				=> \$reboot_time,
-	"save-sipp-log=s"			=> \$save_sipp_log,
-	"local-ip=s"				=> \$local_ip,
-	"save-debug=s"				=> \$save_debug,
-	"2way-calls=i"				=> \$twoway_calls,
-	"2way-pause=i"				=> \$twoway_pause,
-	"conf-calls-room=i"			=> \$conf_calls_room,
-	"conf-rooms-room=i"			=> \$conf_rooms_room,
-	"conf-pause-room=i"			=> \$conf_pause_room,
-	"conf-calls-call=i"			=> \$conf_calls_call,
-	"conf-rooms-call=i"			=> \$conf_rooms_call,
-	"conf-pause-call=i"			=> \$conf_pause_call,
-	"sipp-exe=s"				=> \$sipp,
-	"gnuplot-exe=s"				=> \$gnuplot_exe,
-	"users-2way-file=s"			=> \$users_twoway_file,
-	"users-conf-room-file=s"	=> \$users_conf_room_file,
-	"users-conf-call-file=s"	=> \$users_conf_call_file,
-	"reg-scen=s"				=> \$reg_scen,
-	"dereg-scen=s"				=> \$der_scen,
-	"inv-scen=s"				=> \$inv_scen,
-	"acc-scen=s"				=> \$acc_scen,
-	"sip-src-port=i"			=> \$sip_src_port,
-	"sip-dst-port=i"			=> \$sip_dst_port,
-	"rtp-src-port=i"			=> \$rtp_src_port,
-	"rtp-dst-port=i"			=> \$rtp_dst_port,
-	"debug"						=> \$debug,
-	"help"						=> \$help,
-	"testname=s"				=> \$testname,
-	"restore=s"					=> \$restore
+	"askozia-ip=s"						=> \$ask_ip, 
+	"askozia-port=s"					=> \$ask_port,
+	"askozia-confpage=s"				=> \$ask_conf_page,
+	"askozia-realm=s"					=> \$ask_realm,
+	"askozia-user=s"					=> \$ask_user,
+	"askozia-pw=s"						=> \$ask_pw,
+	"reboot-time=i"						=> \$reboot_time,
+	"save-sipp-log"						=> \$save_sipp_log,
+	"local-ip=s"						=> \$local_ip,
+	"pause=i"							=> \$pause,
+	"max-two-party-test=i"				=> \$max_two_party,
+	"max-conf-participants-test=i"		=> \$max_conf_participants,
+	"max-conf-rooms-test=i"				=> \$max_conf_rooms,
+	"conf-participants_no_of_rooms=i"	=> \$conf_participants_no_of_rooms,
+	"conf-rooms-no-of-participants=i"	=> \$conf_rooms_no_of_participants,
+	"sipp-path=s"						=> \$sipp_exe,
+	"gnuplot-path=s"					=> \$gnuplot_exe,
+	"users-two-party-file=s"			=> \$users_two_party_file,
+	"users-conf-rooms-file=s"			=> \$users_conf_rooms_file,
+	"users-conf-participants-file=s"	=> \$users_conf_participants_file,
+	"reg-scen=s"						=> \$reg_scen,
+	"dereg-scen=s"						=> \$der_scen,
+	"inv-scen=s"						=> \$inv_scen,
+	"acc-scen=s"						=> \$acc_scen,
+	"sip-src-port=i"					=> \$sip_src_port,
+	"sip-dst-port=i"					=> \$sip_dst_port,
+	"rtp-src-port=i"					=> \$rtp_src_port,
+	"rtp-dst-port=i"					=> \$rtp_dst_port,
+	"debug"								=> \$debug,
+	"help"								=> \$help,
+	"testname=s"						=> \$testname,
+	"restore=s"							=> \$restore
 );
 
 ### 0.c) Check depedencies and settings ###
 print_help() if (defined $help);
 mydie ("No local ip address specified.") unless (defined $local_ip);
-mydie ("No test specified (no two-way calls and no conference calls were entered).")
-	if ((not defined ($twoway_calls)) && (not defined ($conf_calls_room)) && (not defined ($conf_calls_call)));
-mydie ("No pause time specified for two-way tests.") if (defined ($twoway_calls) && not defined ($twoway_pause));
-mydie ("No pause time specified for conference tests with fixed calls.") if (defined ($conf_calls_call) && not defined ($conf_pause_call));
-mydie ("No pause time specified for conference tests with fixed rooms.)") if (defined ($conf_calls_room) && not defined ($conf_pause_room));
-warn ("WARN: No gnuplot executable specified, cannot create graphs at the end!") unless (defined $gnuplot_exe);
+mydie ("No test specified (no two-party tests and no conference tests were entered).")
+	if ((not defined ($max_two_party)) && (not defined ($max_conf_participants)) && (not defined ($max_conf_rooms)));
+warn ("WARN: No gnuplot executable specified, cannot create graphs at the end!") unless ($gnuplot_exe);
 # am I root? Necessary for SIPP
 (mydie ("Must be root because sipp reserves ports.\n")) if (`id -u` != 0);
 
 # the following lines are necessary to avoid problems if used at different operating systems (lin, win, mac, ...)
-my $testpath			= File::Spec->rel2abs ("$testname", cwd()."/results");		# determine subdir-path to save all results
-(File::Path::mkpath ($testpath)) unless (-e $testpath);								# create subdir
-$users_twoway_file		= File::Spec->rel2abs ($users_twoway_file, $testpath);		# determine complete path of the csv-file for twoway calls
-$users_conf_room_file	= File::Spec->rel2abs ($users_conf_room_file, $testpath);	# determine complete path of the csv-file for fixed rooms
-$users_conf_call_file	= File::Spec->rel2abs ($users_conf_call_file, $testpath);	# determine complete path of the csv-file for fixed calls
-($save_debug			= File::Spec->rel2abs ($save_debug, $testpath))		if (defined $save_debug);# file to save the debug-msgs
-($save_sipp_log			= File::Spec->rel2abs ($save_sipp_log, $testpath))	if (defined $save_sipp_log); # file to save sipp-output
-($gnuplot_exe			= File::Spec->rel2abs ($gnuplot_exe, cwd())) if (defined $gnuplot_exe);		# determine complete path of the gnuplot-executable
-$sipp					= File::Spec->rel2abs ($sipp, cwd());						# determine complete path of the sipp-executable
-$reg_scen				= File::Spec->rel2abs ($reg_scen, cwd());					# determine complete path of the register-scenario
-$der_scen				= File::Spec->rel2abs ($der_scen, cwd());					# determine complete path of the deregister-scenario
-$inv_scen				= File::Spec->rel2abs ($inv_scen, cwd());					# determine complete path of the invite-scenario
-$acc_scen				= File::Spec->rel2abs ($acc_scen, cwd());					# determine complete path of the accept-scenario
+chomp(my $timestamp			= `date +"%Y-%m-%d_%H-%M"`);
+my $testpath			= File::Spec->rel2abs ("$testname"."_$timestamp", cwd()."/results");	# determine subdir-path to save all results
+(File::Path::mkpath ($testpath)) unless (-e $testpath);										# create subdir
+$users_two_party_file	= File::Spec->rel2abs ($users_two_party_file, $testpath);			# determine complete path of the csv-file for twoway calls
+$users_conf_rooms_file	= File::Spec->rel2abs ($users_conf_rooms_file, $testpath);			# determine complete path of the csv-file for fixed rooms
+$users_conf_participants_file	= File::Spec->rel2abs ($users_conf_participants_file, $testpath);	# determine complete path of the csv-file for fixed calls
+($save_debug			= File::Spec->rel2abs ("debug.log", $testpath))	if (defined $debug);			# file to save the debug-msgs
+($save_sipp_log			= File::Spec->rel2abs ("sipp.log", $testpath))	if (defined $save_sipp_log);	# file to save sipp-output
+($gnuplot_exe			= File::Spec->rel2abs ($gnuplot_exe, cwd()))	if ($gnuplot_exe);		# determine complete path of the gnuplot-executable
+$sipp_exe				= File::Spec->rel2abs ($sipp_exe, cwd());							# determine complete path of the sipp-executable
+$reg_scen				= File::Spec->rel2abs ($reg_scen, cwd());							# determine complete path of the register-scenario
+$der_scen				= File::Spec->rel2abs ($der_scen, cwd());							# determine complete path of the deregister-scenario
+$inv_scen				= File::Spec->rel2abs ($inv_scen, cwd());							# determine complete path of the invite-scenario
+$acc_scen				= File::Spec->rel2abs ($acc_scen, cwd());							# determine complete path of the accept-scenario
 
 # print debug messages for debugging :-)
 debug ("Settings for this performance-test:");
-(defined $ask_ip)					? debug ("ask_ip is '$ask_ip'")						: debug ("ask_ip is not defined.");
-(defined $ask_port)					? debug ("ask_port is '$ask_port'")					: debug ("ask_port is not defined.");
-(defined $ask_conf_page)			? debug ("ask_conf_page is '$ask_conf_page'")		: debug ("ask_conf_page is not defined.");
-(defined $ask_realm)				? debug ("ask_realm is '$ask_realm'")				: debug ("ask_realm is not defined.");
-(defined $ask_user)					? debug ("ask_user is '$ask_user'")					: debug ("ask_user is not defined.");
-(defined $ask_pw)					? debug ("ask_pw is '$ask_pw'")						: debug ("ask_pw is not defined.");
-(defined $reboot_time)				? debug ("reboot_time is '$reboot_time'")			: debug ("reboot_time is not defined.");
-(defined $save_sipp_log)			? debug ("save_sipp_log is '$save_sipp_log'")		: debug ("save_sipp_log is not defined.");
-(defined $local_ip)					? debug ("local_ip is '$local_ip'")					: debug ("local_ip is not defined.");
-(defined $save_debug)				? debug ("save_debug is '$save_debug'")				: debug ("save_debug is not defined.");
-(defined $twoway_calls)				? debug ("twoway_calls is '$twoway_calls'")			: debug ("twoway_calls is not defined.");
-(defined $twoway_pause)				? debug ("twoway_pause is '$twoway_pause'")			: debug ("twoway_pause is not defined.");
-(defined $conf_calls_room)			? debug ("conf_calls_room is '$conf_calls_room'")	: debug ("conf_calls_room is not defined.");
-(defined $conf_rooms_room)			? debug ("conf_rooms_room is '$conf_rooms_room'")	: debug ("conf_rooms_room is not defined.");
-(defined $conf_pause_room)			? debug ("conf_pause_room is '$conf_pause_room'")	: debug ("conf_pause_room is not defined.");
-(defined $conf_calls_call)			? debug ("conf_calls_call is '$conf_calls_call'")	: debug ("conf_calls_call is not defined.");
-(defined $conf_rooms_call)			? debug ("conf_rooms_call is '$conf_rooms_call'")	: debug ("conf_rooms_call is not defined.");
-(defined $conf_pause_call)			? debug ("conf_pause_call is '$conf_pause_call'")	: debug ("conf_pause_call is not defined.");
-(defined $sipp)						? debug ("sipp is '$sipp'")							: debug ("sipp is not defined.");
-(defined $gnuplot_exe)				? debug ("gnuplot_exe is '$gnuplot_exe'")			: debug ("gnuplot_exe is not defined.");
-(defined $users_twoway_file)		? debug ("users_file is '$users_twoway_file'")		: debug ("users_file is not defined.");
-(defined $users_conf_room_file)		? debug ("users_file is '$users_conf_room_file'")	: debug ("users_file is not defined.");
-(defined $users_conf_call_file)		? debug ("users_file is '$users_conf_call_file'")	: debug ("users_file is not defined.");
-(defined $reg_scen)					? debug ("reg_scen is '$reg_scen'")					: debug ("reg_scen is not defined.");
-(defined $der_scen)					? debug ("der_scen is '$der_scen'")					: debug ("der_scen is not defined.");
-(defined $inv_scen)					? debug ("inv_scen is '$inv_scen'")					: debug ("inv_scen is not defined.");
-(defined $acc_scen)					? debug ("acc_scen is '$acc_scen'")					: debug ("acc_scen is not defined.");
-(defined $sip_src_port)				? debug ("sip_src_port is '$sip_src_port'")			: debug ("sip_src_port is not defined.");
-(defined $sip_dst_port)				? debug ("sip_dst_port is '$sip_dst_port'")			: debug ("sip_dst_port is not defined.");
-(defined $rtp_src_port)				? debug ("rtp_src_port is '$rtp_src_port'")			: debug ("rtp_src_port is not defined.");
-(defined $rtp_dst_port)				? debug ("rtp_dst_port is '$rtp_dst_port'")			: debug ("rtp_dst_port is not defined.");
-(defined $debug)					? debug ("debug is '$debug'")						: debug ("debug is not defined.");
-(defined $help)						? debug ("help is '$help'")							: debug ("help is not defined.");
-(defined $testname)					? debug ("testname is '$testname'")					: debug ("testname is not defined.");
-(defined $testpath)					? debug ("testpath is '$testpath'")					: debug ("testpath is not defined.");
-(defined $restore)					? debug ("restore is '$restore'")					: debug ("restore is not defined.");
+(defined $ask_ip)						? debug ("ask_ip is '$ask_ip'")									: debug ("ask_ip is not defined.");
+(defined $ask_port)						? debug ("ask_port is '$ask_port'")								: debug ("ask_port is not defined.");
+(defined $ask_conf_page)				? debug ("ask_conf_page is '$ask_conf_page'")					: debug ("ask_conf_page is not defined.");
+(defined $ask_realm)					? debug ("ask_realm is '$ask_realm'")							: debug ("ask_realm is not defined.");
+(defined $ask_user)						? debug ("ask_user is '$ask_user'")								: debug ("ask_user is not defined.");
+(defined $ask_pw)						? debug ("ask_pw is '$ask_pw'")									: debug ("ask_pw is not defined.");
+(defined $reboot_time)					? debug ("reboot_time is '$reboot_time'")						: debug ("reboot_time is not defined.");
+(defined $save_sipp_log)				? debug ("save_sipp_log is '$save_sipp_log'")					: debug ("save_sipp_log is not defined.");
+(defined $local_ip)						? debug ("local_ip is '$local_ip'")								: debug ("local_ip is not defined.");
+(defined $max_two_party)				? debug ("max_two_party is '$max_two_party'")					: debug ("max_two_party is not defined.");
+(defined $pause)						? debug ("pause is '$pause'")									: debug ("pause is not defined.");
+(defined $max_conf_participants)		? debug ("max_conf_participant is '$max_conf_participants'")	: debug ("conf_calls_room is not defined.");
+(defined $conf_participants_no_of_rooms)? debug ("conf_participants_no_of_rooms is '$conf_participants_no_of_rooms'")
+										: debug ("conf_participants_no_of_rooms is not defined.");
+(defined $max_conf_rooms)				? debug ("max_conf_rooms is '$max_conf_rooms'")					: debug ("max_conf_rooms is not defined.");
+(defined $conf_rooms_no_of_participants)? debug ("conf_rooms_no_of_participants is '$conf_rooms_no_of_participants'")
+										: debug ("conf_rooms_no_of_participants is not defined.");
+(defined $sipp_exe)						? debug ("sipp_exe is '$sipp_exe'")								: debug ("sipp is not defined.");
+(defined $gnuplot_exe)					? debug ("gnuplot_exe is '$gnuplot_exe'")						: debug ("gnuplot_exe is not defined.");
+(defined $users_two_party_file)			? debug ("users_two_party_file is '$users_two_party_file'")		: debug ("users_file is not defined.");
+(defined $users_conf_rooms_file)		? debug ("users_conf_rooms_file is '$users_conf_rooms_file'")	: debug ("users_conf_rooms_file is not defined.");
+(defined $users_conf_participants_file)	? debug ("users_conf_participants_file is '$users_conf_participants_file'")
+										: debug ("users_conf_participants_file is not defined.");
+(defined $reg_scen)						? debug ("reg_scen is '$reg_scen'")								: debug ("reg_scen is not defined.");
+(defined $der_scen)						? debug ("der_scen is '$der_scen'")								: debug ("der_scen is not defined.");
+(defined $inv_scen)						? debug ("inv_scen is '$inv_scen'")								: debug ("inv_scen is not defined.");
+(defined $acc_scen)						? debug ("acc_scen is '$acc_scen'")								: debug ("acc_scen is not defined.");
+(defined $sip_src_port)					? debug ("sip_src_port is '$sip_src_port'")						: debug ("sip_src_port is not defined.");
+(defined $sip_dst_port)					? debug ("sip_dst_port is '$sip_dst_port'")						: debug ("sip_dst_port is not defined.");
+(defined $rtp_src_port)					? debug ("rtp_src_port is '$rtp_src_port'")						: debug ("rtp_src_port is not defined.");
+(defined $rtp_dst_port)					? debug ("rtp_dst_port is '$rtp_dst_port'")						: debug ("rtp_dst_port is not defined.");
+(defined $debug)						? debug ("debug is '$debug'")									: debug ("debug is not defined.");
+(defined $help)							? debug ("help is '$help'")										: debug ("help is not defined.");
+(defined $testname)						? debug ("testname is '$testname'")								: debug ("testname is not defined.");
+(defined $testpath)						? debug ("testpath is '$testpath'")								: debug ("testpath is not defined.");
+(defined $restore)						? debug ("restore is '$restore'")								: debug ("restore is not defined.");
 debug ();
 
 ### 0.d) Calculate needed testtime ###
-my $sum_time = 0; # reboots etc.
-my $count_reboots = 2;
-if (defined $twoway_calls)
+my $sum_time = 0;
+my $no_of_reboots = 2;
+if (defined $max_two_party)
 {
-	$count_reboots++;
-	$sum_time += ($twoway_calls + 2) * $twoway_pause;
+	$no_of_reboots++;
+	$sum_time += ($max_two_party + 2) * $pause;
 }
-if (defined $conf_calls_call)
+debug ("Now: $sum_time");
+if (defined $max_conf_rooms)
 {
-	$count_reboots++;
-	$sum_time += ($conf_calls_call * $conf_rooms_call + 2) * $conf_pause_call;
+	$no_of_reboots++;
+	$sum_time += ($max_conf_rooms * $conf_rooms_no_of_participants + 2) * $pause;
 }
-if (defined $conf_calls_room)
+debug ("Now: $sum_time");
+if (defined $max_conf_participants)
 {
-	$count_reboots++;
-	$sum_time += ($conf_calls_room * $conf_rooms_room + 2) * $conf_pause_room;
+	$no_of_reboots++;
+	$sum_time += ($max_conf_participants * $conf_participants_no_of_rooms + 2) * $pause;
 }
-$sum_time += $count_reboots * $reboot_time;
+debug ("Now: $sum_time");
+$sum_time += $no_of_reboots * $reboot_time;
 debug ("Sum-Time is now '$sum_time'");
 
 # convert to readable time
@@ -307,8 +301,7 @@ else
 	{
 		print CONFERROR $res->error_as_HTML;
 		close CONFERROR;
-		mydie ("FATAL: Could not download xml-configfile from askozia-box: ". $res->status_line 
-			. "\nSaved output in file '$html_file'\n");
+		mydie ("Could not download xml-configfile from askozia-box: ". $res->status_line ."\nSaved output in file '$html_file'");
 	}
 
 	# Can't print the HTML-Error to a file, so print it at stdout
@@ -316,53 +309,82 @@ else
 	{
 		print $res->error_as_HTML;
 		warn "Could not open '$html_file' for printing HTML-Error: $!\n";
-		mydie ("Could not download xml-configfile from askozia-box: ". $res->status_line."");
+		mydie ("Could not download xml-configfile from askozia-box: ". $res->status_line);
 	}
 }
 
 ### 1.b) Edit Configfile ###
 # calculate needed users and conference rooms
 my ($users_conf, $rooms_conf) = create_conf_contents
-	($conffile_text_usertext, $conffile_conftext, $twoway_calls, $conf_calls_room, $conf_rooms_room, $conf_calls_call, $conf_rooms_call);
-debug ("Rooms-Conf is '\n$rooms_conf'");
+	($conffile_text_usertext, $conffile_conftext, $max_two_party, $max_conf_participants, $conf_participants_no_of_rooms, $max_conf_rooms, $conf_rooms_no_of_participants);
 
 # Print calculated values in new configfile
 my @orig_conffile = split (/\n/, $res->decoded_content);
 open (EDITED_CONFFILE, ">", $xml_configfile."_edited") || mydie ("Could not open file '". $xml_configfile ."_edited' for writing: $!");
-my ($active_paragraph, $sip_printed);
+my ($active_paragraph, $sip_printed, $conf_printed);
 for my $line (@orig_conffile)
 {
-	(print EDITED_CONFFILE $line."\n");# unless (defined $active_paragraph);
-	
-	# Begin of Conference-Rooms-Paragraph?
-	if ($line =~ /<conferencing/)
+	# Begin of sip phones paragraph?
+	if ($line =~ /<sip>/)
 	{
-		# Print needed conf-rooms and end of paragraph
-		$active_paragraph = "conference_rooms";
-#		print EDITED_CONFFILE "\t<conferencing>\n";
-		print EDITED_CONFFILE $rooms_conf;
-#		print EDITED_CONFFILE "\t</conferencing>\n";
+		print EDITED_CONFFILE "\t<sip>\n";
+		$active_paragraph = "sip";
 	}
-	elsif (($line =~ /<sip/ || $line =~ /<\/askoziapbx>/) && (not (defined ($sip_printed))))
+
+	# End of sip phones paragraph?
+	elsif ((defined $active_paragraph) && ($active_paragraph eq "sip") && ($line =~ m+</sip>+))
 	{
-		# Print needed users and end of paragraph
-		$active_paragraph = "sip_phones";
-#		print EDITED_CONFFILE "\t<sip>\n";
 		print EDITED_CONFFILE $users_conf;
-#		print EDITED_CONFFILE "\t</sip>\n";
-#		(print EDITED_CONFFILE "</askoziapbx>") if ($line =~ /<\/askoziapbx>/);
+		print EDITED_CONFFILE "\t</sip>\n";
 		$sip_printed = 1;
+		undef $active_paragraph;
 	}
 	
-	# End of one of the edited paragraphs?
-	elsif ($line =~ m+</conferencing>+ || $line =~ m+</sip>+)
+	# Begin of conferencing paragraph?
+	elsif ($line =~ /<conferencing>/)
 	{
-		# Save that the end is reached; copy normally from now on
+		print EDITED_CONFFILE "\t<conferencing>\n";
+		$active_paragraph = "conf";
+	}
+
+	# End of conferencing paragraph?
+	elsif ((defined $active_paragraph) && ($active_paragraph eq "conf") && ($line =~ m+</conferencing>+))
+	{
+		print EDITED_CONFFILE $rooms_conf;
+		print EDITED_CONFFILE "\t</conferencing>\n";
+		$conf_printed = 1;
 		undef $active_paragraph;
-		next;
+	}
+
+	# End of complete configuration file?
+	elsif ($line =~ m+</askoziapbx>+)
+	{
+		# Were no sip phones found until now?
+		unless (defined $sip_printed)
+		{
+			# Add the needed sip phones paragraph
+			print EDITED_CONFFILE "\t<sip>\n";
+			print EDITED_CONFFILE $users_conf;
+			print EDITED_CONFFILE "\t</sip>\n";
+		}
+		
+		# Were no conference rooms found until now?
+		unless (defined $conf_printed)
+		{
+			# Add the needed conference rooms paragraph
+			print EDITED_CONFFILE "\t<conferencing>\n";
+			print EDITED_CONFFILE $rooms_conf;
+			print EDITED_CONFFILE "\t</conferencing>\n";
+		}
+		print EDITED_CONFFILE "</askoziapbx>\n";
+	}
+
+#	else
+	elsif (not defined $active_paragraph)
+	{
+		print EDITED_CONFFILE "$line\n";
 	}
 }
-
 close EDITED_CONFFILE;
 
 ### 1.c) Re-Upload edited configfile ###
@@ -378,74 +400,76 @@ reboot_askozia ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
 debug ("### CHAPTER 2 ###");
 debug ("Creating new csv-files.");
 
-### 2.a) Generate Users-File for 2way-tests
-if ($twoway_calls)
+### 2.a) Generate Users-File for two-party-tests
+if ($max_two_party)
 {
-	debug ("Generating users for 2way-call.");
-	open (CSV, ">", $users_twoway_file) || mydie ("Could not open Users-2way-File '$users_twoway_file' for writing: $!");
-	debug ("Opened 2way-csv-file, filling with:");
+	debug ("Generating users for two-party-call.");
+	open (CSV, ">", $users_two_party_file) || mydie ("Could not open Users-two-party-File '$users_two_party_file' for writing: $!");
+	debug ("Opened two-party-csv-file, filling with:");
 	print CSV "SEQUENTIAL\n";
 
-	for (my $cur_call=1; $cur_call<=2*$twoway_calls; $cur_call+=2)
+	for (my $cur_call = 1; $cur_call <= 2*$max_two_party; $cur_call += 2)
 	{
-		my $printtext =	sprintf ("%03d", $cur_call) .";[authentication username=". sprintf("%03d", $cur_call) ." password=0815];".
-						sprintf ("%03d", $cur_call+1) .";[authentication username=". sprintf("%03d", $cur_call+1) ." password=0815]";
+		my $userA = sprintf ("%03d", $cur_call);
+		my $userB = sprintf ("%03d", $cur_call+1);
+		my $printtext =	"$userA;[authentication username=$userA password=$userA];".
+						"$userB;[authentication username=$userB password=$userB]";
 		print CSV $printtext."\n";
-		debug ("2way-File: ". $printtext);
+		debug ("two-party-File: ". $printtext);
 	}
 
 	close CSV;
-	debug ("Ready generating users for 2way-call.");
+	debug ("Ready generating users for two-party-call.");
 }
 
-### 2.b) Generate Users-File for conference-test with fixed number of rooms
-if ($conf_calls_room)
+### 2.b) Generate Users-File for "conference participants test" 
+if ($max_conf_participants)
 {
-	debug ("Generating users for conference-test with fixed number of rooms.");
-	($conf_rooms_room = 1) if ((not defined $conf_rooms_room) || $conf_rooms_room == 0);
-	open (CSV, ">", $users_conf_room_file) || mydie ("Could not open Users-Conference-Room-File '$users_conf_room_file' for writing: $!");
+	debug ("Generating users for 'conference participants test'");
+	open (CSV, ">", $users_conf_participants_file) || mydie ("Could not open Users-Conference-Room-File '$users_conf_participants_file' for writing: $!");
 	debug ("Opened Users-Conference-Room-File, filling with:");
 	print CSV "SEQUENTIAL\n";
 
-	for (my $cur_call=0; $cur_call <= $conf_calls_room-1; $cur_call++)
+	for (my $cur_call = 0; $cur_call <= $max_conf_participants-1; $cur_call++)
 	{
-		for (my $cur_room=0; $cur_room <= $conf_rooms_room-1; $cur_room++)
+		for (my $cur_room=0; $cur_room <= $conf_participants_no_of_rooms-1; $cur_room++)
 		{
-			my $userno = $cur_call * $conf_rooms_room + $cur_room + 1;
-			my $roomno = 2663 + $cur_room;
-			my $printtext = sprintf ("%03d", $userno) .";[authentication username=". sprintf ("%03d", $userno) ." password=0815];". $roomno;
+			my $userno = $cur_call * $conf_participants_no_of_rooms + $cur_room + 1;
+			my $roomno = 2000 + $cur_room;
+			my $user = sprintf ("%03d", $userno);
+			my $printtext = "$user;[authentication username=$user password=$user];". $roomno;
 			print CSV $printtext."\n";
-			debug ("Conf-File with fixed rooms: ". $printtext);
+			debug ("Conf-File 'participants test': ". $printtext);
 		}
 	}
 
 	close CSV;
-	debug ("Ready generating users for conference-test with fixed number of rooms.");
+	debug ("Ready generating users for 'conference participants test'");
 }
 
-### 2.c) Generate Users-File for conference-test with fixed number of calls
-if ($conf_calls_call)
+### 2.c) Generate Users-File for "conference rooms test" 
+if ($max_conf_rooms)
 {
-	debug ("Generating users for conference-test with fixed number of calls.");
-	($conf_rooms_call = 1) if ((not defined $conf_rooms_call) || $conf_rooms_call == 0);
-	open (CSV, ">", $users_conf_call_file) || mydie ("Could not open Users-Conference-Call-File '$users_conf_call_file' for writing: $!");
+	debug ("Generating users for 'conference rooms test'");
+	open (CSV, ">", $users_conf_rooms_file) || mydie ("Could not open Users-Conference-Call-File '$users_conf_rooms_file' for writing: $!");
 	debug ("Opened Users-Conference-Call-File, filling with:");
 	print CSV "SEQUENTIAL\n";
 
-	for (my $cur_room=0; $cur_room <= $conf_rooms_call-1; $cur_room++)
+	for (my $cur_room=0; $cur_room <= $conf_rooms_no_of_participants-1; $cur_room++)
 	{
-		my $roomno = 2663 + $cur_room;
-		for (my $cur_call=0; $cur_call <= $conf_calls_call-1; $cur_call++)
+		my $roomno = 2000 + $cur_room;
+		for (my $cur_call=0; $cur_call <= $max_conf_rooms-1; $cur_call++)
 		{
-			my $userno = $cur_room * $conf_calls_call + $cur_call + 1;
-			my $printtext = sprintf ("%03d", $userno) .";[authentication username=". sprintf ("%03d", $userno) ." password=0815];". $roomno;
+			my $userno = $cur_room * $max_conf_rooms + $cur_call + 1;
+			my $user = sprintf ("%03d", $userno);
+			my $printtext = "$user;[authentication username=$user password=$user];". $roomno;
 			print CSV $printtext."\n";
-			debug ("Conf-File with fixed calls: ". $printtext);
+			debug ("Conf-File 'rooms test': ". $printtext);
 		}
 	}
 
 	close CSV;
-	debug ("Ready generating users for conference-test with fixed number of calls.");
+	debug ("Ready generating users for 'conference rooms test'");
 }
 
 ####################################
@@ -516,10 +540,8 @@ elsif ($pid > 0)
 			}
 			sleep (1);
 		}
-
 		sleep (0.1);
 	}
-
 	exit (0);
 }
 
@@ -529,8 +551,8 @@ else
 	mydie ("Could not fork: $!");
 }
 
-### 3.b) Execute 2way-tests
-if ($twoway_calls)
+### 3.b) Execute two-party-tests
+if ($max_two_party)
 {
 	# 0: Prepare test
 	# 1: Register all users
@@ -538,16 +560,16 @@ if ($twoway_calls)
 	# 3: Start watchdog
 	# 4: Execute tests
 
-	debug ("Starting 2way-tests...");
-	print $pipe "set pause '$twoway_pause'\n";
+	debug ("Starting two-party-tests...");
+	print $pipe "set pause '$pause'\n";
 
 	# prepare commands for sipp to ensure that the "debug"-printed commands are REALLY the commands that were executed
 	debug ("Preparing commands");
-	my $call_duration = ($twoway_calls+2) * $twoway_pause;
-	my $constant = "'$sipp' -aa -inf '$users_twoway_file' -m $twoway_calls -i $local_ip ";
+	my $call_duration = ($max_two_party+2) * $pause;
+	my $constant = "'$sipp_exe' -aa -inf '$users_two_party_file' -m $max_two_party -i $local_ip ";
 	my $reg_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf '$reg_scen' -r 3 $ask_ip 2>&1";
 	my $acc_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf '$acc_scen' -bg $ask_ip 2>&1 &";
-	my $inv_cmd = $constant . "-p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' -r 1 -rp ". $twoway_pause ."s -d ". $call_duration ."s $ask_ip 2>&1";
+	my $inv_cmd = $constant . "-p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' -r 1 -rp ". $pause ."s -d ". $call_duration ."s $ask_ip 2>&1";
 	my $der_cmd = $constant . "-p $sip_dst_port -mp $rtp_dst_port -sf '$der_scen' -r 3 $ask_ip 2>&1";
 	
 	# Register all users that are being called
@@ -563,9 +585,9 @@ if ($twoway_calls)
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
-	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+debug+1000%27");
+#	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+debug+1000%27");
 	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+verbose+1000%27");
-	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+twoway%27");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+two-party%27");
 	debug ("Status: '". $res->status_line ."'");
 	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
 	if ($res->decoded_content ne "[qstat] started\n")
@@ -576,7 +598,7 @@ if ($twoway_calls)
 	}
 
 	# give the AskoziaPBX enough time to register, accept, invite and deregister all users
-	print $pipe "set users '$twoway_calls'\n";
+	print $pipe "set users '$max_two_party'\n";
 	sleep (1);
 	print $pipe "watchdog start\n";
 
@@ -595,12 +617,12 @@ if ($twoway_calls)
 	if (defined $save_sipp_log)
 	{
 		debug ("Saving sipp log in file '$save_sipp_log'");
-		open (LOG, ">", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+		open (LOG, ">>", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
 		(print LOG $_) for (@testresult);
 		close LOG;
 		debug ("Ready saving sipp log.");
 	}
-	debug ("Ready with two-way tests, cleaning up now");
+	debug ("Ready with two-party tests, cleaning up now");
 
 	# Cleaning up and stop qstat recording on AskoziaPBX
 	undef $term_handler_called;
@@ -619,25 +641,22 @@ if ($twoway_calls)
 	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
 	
 	# Interpret QStat-Data
-	interpret_data ("twoway", $twoway_pause, $twoway_calls);
-	print $pipe "Tests finished.\n";
-	print "READY\n";
-	exit (0);
+	interpret_data ("two-party", $pause, $max_two_party);
 	
 	# Reboot AskoziaPBX
 	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
-	debug ("Finished 2way-tests");
+	debug ("Finished two-party-tests");
 }
 
-### 3.c) Execute conference-tests with fixed rooms
-if ($conf_calls_room)
+### 3.c) Execute conference rooms test
+if ($max_conf_rooms)
 {
-	debug ("Starting Conference-Tests with fixed rooms...");
-	print $pipe "set pause '$conf_pause_room'\n";
+	debug ("Starting conference rooms test");
+	print $pipe "set pause '$pause'\n";
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
-	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-room%27");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-rooms%27");
 	debug ("Status: '". $res->status_line ."'");
 	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
 	if ($res->decoded_content ne "[qstat] started\n")
@@ -648,83 +667,14 @@ if ($conf_calls_room)
 	}
 	sleep (1);
 
-	# Prepare test
-	my $max_users = $conf_calls_room * $conf_rooms_room;
-	print $pipe "set users '$max_users'\n";
-	sleep (1);
-	print $pipe "watchdog start\n";
-	my $call_duration = ($max_users+2) * $conf_pause_room;
-	my $inv_cmd = "'$sipp' --trace_err -r 1 -rp ". $conf_pause_room ."s -aa -m $max_users -d ". $call_duration ."s".
-		" -inf '$users_conf_room_file' -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
-
-	# START CALLS #
-	debug ("Beginning Invite with command '$inv_cmd'");
-	my @testresult;
-	push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
-
-	# Save the sipp-log-output in a logfile if wanted
-	if (defined $save_sipp_log)
-	{
-		debug ("Saving sipp-log in file '$save_sipp_log'");
-		open (LOG, ">", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
-		(print LOG $_) for (@testresult);
-		close LOG;
-		debug ("Ready saving sipp-log.");
-	}
-	debug ("Ready with conf room tests, cleaning up now");
-	
-	# Cleaning up and stop QStat-Recording on AskoziaPBX
-	undef $term_handler_called;
-	print $pipe "watchdog stop\n";
-	debug ("Try to stop QStat-Recordings");
-	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
-	debug ("Status: '". $res->status_line ."'");
-	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
-	if (not($res->decoded_content =~ /^\[qstat\] stopped/) && $res->decoded_content ne "")
-	{
-		my $text = "Could not stop QStat-recording:";
-		($text .= "$_\n") for (split ("\n", $res->decoded_content));
-		mydie ("$text\n");
-	}
-
-	# Download QStat-Data
-	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
-	
-	# Interpret QStat-Data
-	interpret_data ("conf-room", $conf_pause_room, $conf_calls_room, $conf_rooms_room);
-
-	# Reboot AskoziaPBX
-	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
-	debug ("Finished conference-calls with fixed rooms");
-}
-
-### 3.d) Execute conference-tests with fixed calls
-if ($conf_calls_call)
-{
-	debug ("Starting Conference-Tests with fixed calls...");
-	print $pipe "set pause '$conf_pause_call'\n";
-	
-	# Start QStat-Recording on AskoziaPBX
-	debug ("Starting QStat-Recording");
-	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-call%27");
-	debug ("Status: '". $res->status_line ."'");
-	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
-	if ($res->decoded_content ne "[qstat] started\n")
-	{
-		my $text = "Could not start QStat-recording:";
-		($text .= "$_\n") for (split ("\n", $res->decoded_content));
-		mydie ("$text\n");
-	}
-	sleep (1);
-
-	my $max_users = $conf_calls_call * $conf_rooms_call;
+	my $max_users = $max_conf_rooms * $conf_rooms_no_of_participants;
 	print $pipe "set users '$max_users'\n";
 	debug ("Max users is '$max_users'");
 	sleep (1);
-	my $call_duration = ($max_users+2) * $conf_pause_call;
+	my $call_duration = ($max_users+2) * $pause;
 	debug ("Call duration is '$call_duration'");
-	my $inv_cmd = "'$sipp' --trace_err -r 1 -rp ". $conf_pause_call ."s -aa -m $max_users -d ". $call_duration ."s".
-		" -inf '$users_conf_call_file' -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
+	my $inv_cmd = "'$sipp_exe' --trace_err -r 1 -rp ". $pause ."s -aa -m $max_users -d ". $call_duration ."s".
+		" -inf '$users_conf_rooms_file' -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
 	print $pipe "watchdog start\n";
 
 	# START CALLS #
@@ -744,6 +694,7 @@ if ($conf_calls_call)
 	debug ("Ready with conf call tests, cleaning up now");
 
 	# Cleaning up and stop QStat-Recording on AskoziaPBX
+	undef $term_handler_called;
 	print $pipe "watchdog stop\n";
 	debug ("Try to stop QStat-Recordings");
 	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
@@ -760,11 +711,79 @@ if ($conf_calls_call)
 	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
 
 	# Interpret QStat-Data
-	interpret_data ("conf-call", $conf_pause_call, $conf_rooms_call, $conf_calls_call);
+	interpret_data ("conf-rooms", $pause, $max_conf_rooms, $conf_rooms_no_of_participants);
 
 	# Reboot AskoziaPBX
 	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
-	debug ("Finished conference-calls with fixed calls");
+	debug ("Finished conference rooms test");
+}
+
+### 3.d) Execute conference participants test
+if ($max_conf_participants)
+{
+	debug ("Starting 'conference participants test'");
+	print $pipe "set pause '$pause'\n";
+	
+	# Start QStat-Recording on AskoziaPBX
+	debug ("Starting QStat-Recording");
+	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+conf-participants%27");
+	debug ("Status: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	if ($res->decoded_content ne "[qstat] started\n")
+	{
+		my $text = "Could not start QStat-recording:";
+		($text .= "$_\n") for (split ("\n", $res->decoded_content));
+		mydie ("$text\n");
+	}
+	sleep (1);
+
+	# Prepare test
+	my $max_users = $max_conf_participants * $conf_participants_no_of_rooms;
+	print $pipe "set users '$max_users'\n";
+	sleep (1);
+	print $pipe "watchdog start\n";
+	my $call_duration = ($max_users+2) * $pause;
+	my $inv_cmd = "'$sipp_exe' --trace_err -r 1 -rp ". $pause ."s -aa -m $max_users -d ". $call_duration ."s".
+		" -inf '$users_conf_participants_file' -i $local_ip -p $sip_src_port -mp $rtp_src_port -sf '$inv_scen' $ask_ip 2>&1";
+
+	# START CALLS #
+	debug ("Beginning Invite with command '$inv_cmd'");
+	my @testresult;
+	push (@testresult, "#"x30 ." STARTING CALL ". "#"x30 ."\n". `$inv_cmd`);
+
+	# Save the sipp-log-output in a logfile if wanted
+	if (defined $save_sipp_log)
+	{
+		debug ("Saving sipp-log in file '$save_sipp_log'");
+		open (LOG, ">>", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
+		(print LOG $_) for (@testresult);
+		close LOG;
+		debug ("Ready saving sipp-log.");
+	}
+	debug ("Ready with conf room tests, cleaning up now");
+	
+	# Cleaning up and stop QStat-Recording on AskoziaPBX
+	print $pipe "watchdog stop\n";
+	debug ("Try to stop QStat-Recordings");
+	$res = $ua->request (GET "http://$ask_ip/cgi-bin/ajax.cgi?exec_ami='qstat+stop'");
+	debug ("Status: '". $res->status_line ."'");
+	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+	if (not($res->decoded_content =~ /^\[qstat\] stopped/) && $res->decoded_content ne "")
+	{
+		my $text = "Could not stop QStat-recording:";
+		($text .= "$_\n") for (split ("\n", $res->decoded_content));
+		mydie ("$text\n");
+	}
+
+	# Download QStat-Data
+	download_qstat_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+	
+	# Interpret QStat-Data
+	interpret_data ("conf-participants", $pause, $max_conf_participants, $conf_participants_no_of_rooms);
+
+	# Reboot AskoziaPBX
+	reboot_askozia($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
+	debug ("Finished conference participants test");
 }
 
 # End watchdog
@@ -796,7 +815,7 @@ elsif($restore eq "factory-defaults")
 
 ### END ###
 system ("killall -9 sipp");
-debug ("### FIN ###");
+print ("### END OF TEST ###");
 exit (0);
 
 #################
@@ -828,33 +847,33 @@ sub create_conf_contents
 	debug();
 	debug ("### FUNCTION: '$this_function' ###");
 
-	my $conffile_text_user			= shift || mydie ("No 'configfile-usertext'-argument specified in function '$this_function'!");
-	(ref $conffile_text_user)		&& mydie ("'Configfile-usertext'-argument has to be scalar in function '$this_function'!");
-	(defined $conffile_text_user)	? debug ("conffile_text_user is '\n$conffile_text_user'")	: debug ("conffile_text_user is not defined.");
+	my $conffile_text_user					= shift || mydie ("No 'configfile-usertext'-argument specified in function '$this_function'!");
+	(ref $conffile_text_user)				&& mydie ("'Configfile-usertext'-argument has to be scalar in function '$this_function'!");
+	(defined $conffile_text_user)			? debug ("conffile_text_user is '\n$conffile_text_user'")	: debug ("conffile_text_user is not defined.");
 	
-	my $conffile_text_room			= shift || mydie ("No 'configfile-roomtext'-argument specified in function '$this_function'!");
-	(ref $conffile_text_room)		&& mydie ("'Configfile-roomtext'-argument has to be scalar in function '$this_function'!");
-	(defined $conffile_text_room)	? debug ("conffile_text_room is '\n$conffile_text_room'")	: debug ("conffile_text_room is not defined.");
+	my $conffile_text_room					= shift || mydie ("No 'configfile-roomtext'-argument specified in function '$this_function'!");
+	(ref $conffile_text_room)				&& mydie ("'Configfile-roomtext'-argument has to be scalar in function '$this_function'!");
+	(defined $conffile_text_room)			? debug ("conffile_text_room is '\n$conffile_text_room'")	: debug ("conffile_text_room is not defined.");
 	
-	my $twoway_calls				= shift;
-	(ref $twoway_calls)				&& mydie ("'Twoway_Calls'-argument has to be scalar in function '$this_function'!");
-	(defined $twoway_calls)			? debug ("twoway_calls is '$twoway_calls'")				: debug ("twoway_calls is not defined.");
+	my $max_two_party					= shift;
+	(ref $max_two_party)				&& mydie ("'Twoway_Calls'-argument has to be scalar in function '$this_function'!");
+	(defined $max_two_party)			? debug ("twoway_calls is '$max_two_party'")				: debug ("twoway_calls is not defined.");
 	
-	my $conf_calls_room				= shift;
-	(ref $conf_calls_room)			&& mydie ("'Conf_calls_room'-argument has to be scalar in function '$this_function'!");
-	(defined $conf_calls_room)		? debug ("conf_calls_room is '$conf_calls_room'")		: debug ("conf_calls_room is not defined.");
+	my $max_conf_participants				= shift;
+	(ref $max_conf_participants)			&& mydie ("'Conf_calls_room'-argument has to be scalar in function '$this_function'!");
+	(defined $max_conf_participants)		? debug ("conf_calls_room is '$max_conf_participants'")		: debug ("conf_calls_room is not defined.");
 	
-	my $conf_rooms_room				= shift;
-	(ref $conf_rooms_room)			&& mydie ("'Conf_rooms_room'-argument has to be scalar in function '$this_function'");
-	(defined $conf_rooms_room)		? debug ("conf_rooms_room is '$conf_rooms_room'")		: debug ("conf_rooms_room is not defined.");
+	my $conf_participants_no_of_rooms		= shift;
+	(ref $conf_participants_no_of_rooms)	&& mydie ("'Conf_rooms_room'-argument has to be scalar in function '$this_function'");
+	(defined $conf_participants_no_of_rooms)? debug ("conf_rooms_room is '$conf_participants_no_of_rooms'")		: debug ("conf_rooms_room is not defined.");
 	
-	my $conf_calls_call				= shift;
-	(ref $conf_calls_call)			&& mydie ("'Conf_calls_call'-argument has to be scalar in function '$this_function'!");
-	(defined $conf_calls_call)		? debug ("conf_calls_call is '$conf_calls_call'")		: debug ("conf_calls_call is not defined.");
+	my $max_conf_rooms						= shift;
+	(ref $max_conf_rooms)					&& mydie ("'Conf_calls_call'-argument has to be scalar in function '$this_function'!");
+	(defined $max_conf_rooms)				? debug ("conf_calls_call is '$max_conf_rooms'")		: debug ("conf_calls_call is not defined.");
 	
-	my $conf_rooms_call				= shift;
-	(ref $conf_rooms_call)			&& mydie ("'Conf_rooms_call'-argument has to be scalar in function '$this_function'");
-	(defined $conf_rooms_call)		? debug ("conf_rooms_call is '$conf_rooms_call'")		: debug ("conf_rooms_call is not defined.");
+	my $conf_rooms_no_of_participants		= shift;
+	(ref $conf_rooms_no_of_participants)	&& mydie ("'Conf_rooms_call'-argument has to be scalar in function '$this_function'");
+	(defined $conf_rooms_no_of_participants)? debug ("conf_rooms_call is '$conf_rooms_no_of_participants'")		: debug ("conf_rooms_call is not defined.");
 	
 	my $needed_users = 0;
 	my $needed_rooms = 0;
@@ -864,24 +883,24 @@ sub create_conf_contents
 	# MAIN
 
 	# determine the maximum number of users needed
-	if (defined ($twoway_calls))
+	if (defined ($max_two_party))
 	{
-		$needed_users = 2 * $twoway_calls;
+		$needed_users = 2 * $max_two_party;
 	}
-	if (defined ($conf_calls_room))
+	if (defined ($max_conf_participants))
 	{
-		($conf_rooms_room = 1) unless (defined $conf_rooms_room);
-		($needed_users = $conf_calls_room * $conf_rooms_room) if ($needed_users < ($conf_calls_room * $conf_rooms_room));
+		($conf_participants_no_of_rooms = 1) unless (defined $conf_participants_no_of_rooms);
+		($needed_users = $max_conf_participants * $conf_participants_no_of_rooms) if ($needed_users < ($max_conf_participants * $conf_participants_no_of_rooms));
 	}
-	if (defined ($conf_calls_call))
+	if (defined ($max_conf_rooms))
 	{
-		($conf_rooms_call = 1) unless (defined $conf_rooms_call);
-		($needed_users = $conf_calls_call * $conf_rooms_call) if ($needed_users < ($conf_calls_call * $conf_rooms_call));
+		($conf_rooms_no_of_participants = 1) unless (defined $conf_rooms_no_of_participants);
+		($needed_users = $max_conf_rooms * $conf_rooms_no_of_participants) if ($needed_users < ($max_conf_rooms * $conf_rooms_no_of_participants));
 	}
 
 	# determine the maximum number of rooms needed
-	($needed_rooms = $conf_rooms_room) if (defined $conf_rooms_room);
-	($needed_rooms = $conf_rooms_call) if ((defined $conf_rooms_call) && ($conf_rooms_call > $needed_rooms));
+	($needed_rooms = $conf_participants_no_of_rooms) if (defined $conf_participants_no_of_rooms);
+	($needed_rooms = $conf_rooms_no_of_participants) if ((defined $conf_rooms_no_of_participants) && ($conf_rooms_no_of_participants > $needed_rooms));
 
 	# Create configfile-text for users
 	for my $userno (1..$needed_users)
@@ -892,7 +911,7 @@ sub create_conf_contents
 	}
 
 	# Create configfile-text for conference-rooms
-	for my $roomno (2663..2663+$needed_rooms-1)
+	for my $roomno (2000..2000+$needed_rooms-1)
 	{
 		$new_roomtext .= $conffile_text_room;
 		$new_roomtext =~ s/_roomno_/$roomno/g;
@@ -911,7 +930,7 @@ sub create_conf_contents
 sub term_handler
 {
 	system ("killall -9 sipp");
-	print $pipe "watchdog stop\n";
+	(print $pipe "watchdog stop\n") if (defined $pipe);
 	$term_handler_called = 1;
 }
 
@@ -1131,126 +1150,99 @@ sub interpret_data
 		debug ("Data: ". join(" | ", @lineparts));
 	}
 
-	# this was a slow-and-steadily building-up test
-	if (defined $pause)
-	{
-		debug ("Interpreting slow-and-steadily building-up test");
-		my $cur_index;
-		my $cur_call = 1;
-		my @temp_mean_values;
-		my @mean_values;
-	
-		# add "0,0" at begin
-		push (@{$work_file[0]}, "0", "0");
-		
-		# go through complete array of measured values
-		my $index = 0;
-		while ($index < @work_file)
-#		for my $index (0..$#work_file)
-		{
-			my @values = @{$work_file[$index]};
-			debug ("Index is '$index', looking at value '". $values[2] ."'");
+	debug ("Interpreting slow-and-steadily building-up test");
+	my $cur_index;
+	my $cur_call = 1;
+	my @temp_mean_values;
+	my @mean_values;
 
-			# a value of the current call
+	# add "0,0" at begin
+	push (@{$work_file[0]}, "0", "0");
+	
+	# go through complete array of measured values
+	my $index = 0;
+	while ($index < @work_file)
+	{
+		my @values = @{$work_file[$index]};
+		debug ("Index is '$index', looking at value '". $values[2] ."'");
+
+		# a value of the current call
+		if ($values[1] == $cur_call)
+		{
+			push (@temp_mean_values, $values[2]);
+			debug ("Adding for call '$cur_call' value '$values[2]'");
+		}
+
+		# a value that does not belong to the current call
+		elsif (@temp_mean_values && $values[1] != $cur_call)
+		{
+			debug ("No value of call '$cur_call', calculating mean-value");
+			my $line = $work_file[$cur_call];
+			my @sorted_mean_values = sort {$a <=> $b} (@temp_mean_values);
+			debug ("Sorted mean values is:");
+			(debug ("- '$_'")) for (@sorted_mean_values);
+#			my $me = find_median (@sorted_mean_values);
+			
+			my (@tmp_inter_1, @tmp_inter_2);
+			if (@sorted_mean_values % 2)
+			{
+				# odd number of array elements
+				my $middle = $#sorted_mean_values/2;
+				@tmp_inter_1 = @sorted_mean_values[0..$middle];
+				@tmp_inter_2 = @sorted_mean_values[$middle..$#sorted_mean_values];
+			}
+			else
+			{
+				# even number of array elements
+				my $middle = @sorted_mean_values/2;
+				@tmp_inter_1 = @sorted_mean_values[0..$middle-1];
+				@tmp_inter_2 = @sorted_mean_values[$middle..$#sorted_mean_values];
+			}
+			my $inter_start = find_median (\@tmp_inter_1);
+			debug ("Inter-Start is '$inter_start'");
+			my $inter_end = find_median (\@tmp_inter_2);
+			debug ("Inter-End is '$inter_end'");
+			my @inter_values;
+			for (@sorted_mean_values)
+			{
+				debug ("Looking at '$_'");
+				push (@inter_values, $_) if ($_ >= $inter_start && $_ <= $inter_end);
+			}
+
+			my $sum = 0;
+			($sum += $_) for (@inter_values);
+			my $mean_value = $sum/@inter_values;
+			debug ("Mean value is '$mean_value'");
+			$mean_value = 100 - $mean_value; # convert from idle time to cpu load
+			my $last_mean_value = $work_file[$cur_call-1]->[4];
+			debug ("Current mean-value is '$mean_value', the last value was '$last_mean_value'"); 
+#			($mean_value >= $last_mean_value - 10)	? push (@$line, $cur_call/$rooms, $mean_value)
+#			($mean_value >= $last_mean_value)		? push (@$line, $cur_call/$rooms, $mean_value)
+#													: last;
+			push (@$line, $cur_call/$rooms, $mean_value);
+			
+			undef @temp_mean_values;
+			$cur_call++;
 			if ($values[1] == $cur_call)
 			{
-				push (@temp_mean_values, $values[2]);
-				debug ("Adding for call '$cur_call' value '$values[2]'");
+				$index--;
+				debug ("The current value belongs to '$cur_call' already, decrementing index: Index is now '$index'");
 			}
-
-			# a value that does not belong to the current call
-			elsif (@temp_mean_values && $values[1] != $cur_call)
-			{
-				debug ("No value of call '$cur_call', calculating mean-value");
-				my $line = $work_file[$cur_call];
-				my @sorted_mean_values = sort {$a <=> $b} (@temp_mean_values);
-				debug ("Sorted mean values is:");
-				(debug ("- '$_'")) for (@sorted_mean_values);
-#				my $me = find_median (@sorted_mean_values);
-				
-				my (@tmp_inter_1, @tmp_inter_2);
-				if (@sorted_mean_values % 2)
-				{
-					# odd number of array elements
-					my $middle = $#sorted_mean_values/2;
-					@tmp_inter_1 = @sorted_mean_values[0..$middle];
-					@tmp_inter_2 = @sorted_mean_values[$middle..$#sorted_mean_values];
-				}
-				else
-				{
-					# even number of array elements
-					my $middle = @sorted_mean_values/2;
-					@tmp_inter_1 = @sorted_mean_values[0..$middle-1];
-					@tmp_inter_2 = @sorted_mean_values[$middle..$#sorted_mean_values];
-				}
-				my $inter_start = find_median (\@tmp_inter_1);
-				debug ("Inter-Start is '$inter_start'");
-				my $inter_end = find_median (\@tmp_inter_2);
-				debug ("Inter-End is '$inter_end'");
-				my @inter_values;
-				for (@sorted_mean_values)
-				{
-					debug ("Looking at '$_'");
-					push (@inter_values, $_) if ($_ >= $inter_start && $_ <= $inter_end);
-				}
-
-				my $sum = 0;
-				($sum += $_) for (@inter_values);
-				my $mean_value = $sum/@inter_values;
-				debug ("Mean value is '$mean_value'");
-				$mean_value = 100 - $mean_value; # convert from idle time to cpu load
-				my $last_mean_value = $work_file[$cur_call-1]->[4];
-				debug ("Current mean-value is '$mean_value', the last value was '$last_mean_value'"); 
-				($mean_value >= $last_mean_value - 10)	? push (@$line, $cur_call/$rooms, $mean_value)
-#				($mean_value >= $last_mean_value)	? push (@$line, $cur_call/$rooms, $mean_value)
-														: last;
-				
-				undef @temp_mean_values;
-				$cur_call++;
-				if ($values[1] == $cur_call)
-				{
-					$index--;
-					debug ("The current value belongs to '$cur_call' already, decrementing index: Index is now '$index'");
-				}
-			}
-			$index++;
 		}
-
-		if (@temp_mean_values)
-		{
-			debug ("End of measured values, adding last mean-values");
-			my $sum = 0;
-			($sum += $_) for (@temp_mean_values);
-			my $line = $work_file[$cur_call];
-			my $last_mean_value = $work_file[$cur_call-1]->[4];
-			my $mean_value = 100 - ($sum/@temp_mean_values);
-			push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value - 10);
-#			push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value);
-		}
+		$index++;
 	}
 
-	else
-	# this was one test with all calls
+	if (@temp_mean_values)
 	{
-		debug ("Interpreting one complete test");
-
-		my @mean_values;
-		for my $index (0..$#work_file)
-		{
-			my @values = @{$work_file[$index]};
-			push (@mean_values, $values[2]) if ($values[1] == $calls*$rooms);
-		}
-	
-		# add mean-value fields to csv file
-		if (@mean_values)
-		{
-			my $line = $work_file[0];
-			push (@$line, "0", "0");
-			$line = $work_file[1];
-			my $sum = 0;
-			($sum += $_) for (@mean_values);
-			push (@$line, $calls, 100-$sum/@mean_values);
-		}
+		debug ("End of measured values, adding last mean-values");
+		my $sum = 0;
+		($sum += $_) for (@temp_mean_values);
+		my $line = $work_file[$cur_call];
+		my $last_mean_value = $work_file[$cur_call-1]->[4];
+		my $mean_value = 100 - ($sum/@temp_mean_values);
+#		push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value - 10);
+#		push (@$line, $cur_call/$rooms, $mean_value) if ($mean_value >= $last_mean_value);
+		push (@$line, $cur_call/$rooms, $mean_value);# if ($mean_value >= $last_mean_value);
 	}
 
 	my @new_file;
@@ -1266,13 +1258,10 @@ sub interpret_data
 
 	# Determine text for x-axis
 	my $x_text = "Unknown";
-	if		($type eq "conf-room")	{ ($rooms == 1) ? ($x_text = "Number of concurrent participants of a conference")
-													: ($x_text = "Number of participants per conference room ($rooms existing rooms)"); }
-	elsif	($type eq "conf-call")	{ $x_text = "Number of parallel conference rooms ($rooms participants in each room)"; }
-	elsif	($type eq "twoway")		{ $x_text = "Number of parallel calls (twoleg calls)"; }
-
-	# get date
-	chomp (my $date = `date +"%Y-%m-%d %H:%M"`);
+	if		($type eq "conf-participants")	{ ($rooms == 1) ? ($x_text = "Number of concurrent participants of a conference")
+															: ($x_text = "Number of participants per conference room ($rooms existing rooms)"); }
+	elsif	($type eq "conf-rooms")			{ $x_text = "Number of parallel conference rooms ($rooms participants in each room)"; }
+	elsif	($type eq "two-party")			{ $x_text = "Number of parallel calls (twoleg calls)"; }
 
 	# Determine Platform and version
 	my ($platform, $version) = get_sut_data ($ask_ip, $ask_port, $ask_user, $ask_pw, $ask_realm);
@@ -1300,7 +1289,7 @@ sub interpret_data
 	$gnuplot_cmd .= "set label 'Used Codecs: G711 A-Law' at 0.1,90.0\n";
 	$gnuplot_cmd .= "set label 'Transcoding used: no' at 0.1, 85.0\n";
 	$gnuplot_cmd .= "set label 'All participants: VoIP' at 0.1, 80.0\n";
-	$gnuplot_cmd .= "set label 'Date: $date' at 0.1, 75.0\n";
+	$gnuplot_cmd .= "set label 'Date: $timestamp' at 0.1, 75.0\n";
 
 	(defined $pause)	? ($gnuplot_cmd .= "plot '$qstat_file.csv' using 4:5 with points, '$qstat_file.csv' using 4:5 smooth bezier with line lw 2\n")
 #	(defined $pause)	? ($gnuplot_cmd .= "f(x)=a*x**3+b*x**2+c*x+d\n".
@@ -1374,6 +1363,10 @@ sub print_help
 {
 print <<EOT;
 
+#
+#	HINT: THIS HELP IS DEPRECATED, PLEASE HAVE A LOOK AT THE DOCUMENTATION IN SVN !
+#
+
 PERF_TEST
 
 This script executes sip-performance-tests. Developed for AskoziaPBX-solutions.
@@ -1397,25 +1390,25 @@ OPTIONS:
 	save-users                      Shell the automatic generated Users-files (Users_*.csv) NOT be deleted?
 	save-debug=<string>             Shell the debugmessages be saved in a file?
 	                                Set this variable to the filename for the output (std: undef = no saving)
-	2way-calls=<number>             Number of 2way-calls that shell be executed
-	2way-pause=<number>             Important option:
+	two-party-calls=<number>             Number of two-party-calls that shell be executed
+	two-party-pause=<number>             Important option:
 	                                Defined: Slow-and-steadily building-up-tests:
-	                                         There are single tests for every number of 2way-calls from 1 to <2way-calls>
-	                                         Between every tests are <2way-pause> seconds waittime for calming down the AskoziaPBX.
-	                                Undefined: One test with <2way-calls> number of parallel calls.
+	                                         There are single tests for every number of two-party-calls from 1 to <two-party-calls>
+	                                         Between every tests are <two-party-pause> seconds waittime for calming down the AskoziaPBX.
+	                                Undefined: One test with <two-party-calls> number of parallel calls.
 	conf-calls-room=<number>        Number of calls for conference-test with fixed number of rooms.
 	                                (Fixed number of rooms: in every test exist the same number of rooms,
 	                                e.g. 1 call:  3 conf-rooms with 1 user each
 	                                     2 calls: 3 conf-rooms with 2 users each
 	                                     3 calls: 3 conf-rooms with 3 users each
 	conf-rooms-room=<number>        Number of conference-rooms for the conference-test with fixed number of rooms.
-	conf-pause-room=<number>        The same meaning as "2way-pause", only for conference-test with fixed number of rooms.
+	conf-pause-room=<number>        The same meaning as "two-party-pause", only for conference-test with fixed number of rooms.
 	conf-calls-call=<number>        Number of calls for the conference-test with fixed number of calls
 	                                (Fixed number of calls: in every test exist the same number of participants in each conf-room)	
 	conf-rooms-call=<number>        Maximum number of existing conference-rooms in conference-tests with fixed calls
-	conf-pause-call=<number>        The same meaning as "2way-pause", only for conference-test with fixed number of calls
+	conf-pause-call=<number>        The same meaning as "two-party-pause", only for conference-test with fixed number of calls
 	sipp-exe=<string>               Path to the sipp-executable (std: ./PERF_TEST_FILES/sipp if existing, else 'which sipp') 
-	users-2way-file=<string>        Path where the automatic generated users-injection-file for sipp for 2way-tests shell be saved
+	users-two-party-file=<string>        Path where the automatic generated users-injection-file for sipp for two-party-tests shell be saved
 	users-conf-room-file=<string>   Path where the automatic generated users-injection-file for sipp for conf-tests with fixed rooms shell be saved
 	users-conf-call-file=<string>   Path where the automatic generated users-injection-file for sipp for conf-tests with fixed calls shell be saved
 	reg-scen=<string>               Path to the register-scenario for sipp (std: './PERF_TEST_FILES/Register.xml')
@@ -1423,9 +1416,9 @@ OPTIONS:
 	inv-scen=<string>               Path to the invite-scenario...
 	acc-scen=<string>               Path to the accept-scenario...
 	sip-src-port=<number>           SIP-Source-Port of the testserver (std: 5061)
-	sip-dst-port=<number>           SIP-Dest-Port of the testserver (for 2way-calls only, receive port of the accepting user, std: 5062)
+	sip-dst-port=<number>           SIP-Dest-Port of the testserver (for two-party-calls only, receive port of the accepting user, std: 5062)
 	rtp-src-port=<number>           RTP-Source-Port of the testserver (std: 6020)
-	rtp-dst-port=<number>           RTP-Dest-port of the testserver (for 2way-calls only, receive port of the accepting user, std: 6030)
+	rtp-dst-port=<number>           RTP-Dest-port of the testserver (for two-party-calls only, receive port of the accepting user, std: 6030)
 	debug                           Print debugmessages (necessary for save-debug)
 	help                            Print this help and exit
 	testname                        Name of this test (used for making subdirectory in 'results', std: undef)
