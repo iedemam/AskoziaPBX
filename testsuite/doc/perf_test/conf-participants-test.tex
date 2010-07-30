@@ -1,34 +1,33 @@
 \section{Maximum Participants in a Single Conference Room Test}
-\label{sec:conf-participants}
+\label{sec:conf-participants-test}
 
-Conference calls with fixed number of rooms were developed primarily for simulating one conference room with any
+The conference participants test was developed primarily for simulating one conference room with any
 number of participants. So, since the number of rooms is fixed, the number of calls has to be increased step-by-step:
 
 \begin{figure} [!ht]
 \centering
-\includegraphics [width=8cm] {conf-room-1}
-\caption{Process of conference room tests}
+\includegraphics [width=8cm] {conf-participants-test-1}
+\caption{Process of conference participants test}
 \end{figure}
 
-For a conf room test with three calls and four conference rooms, the test would work like this: \newpage
-
+\newpage
+For a conference participants test with five calls, the test would work like this: 
 \begin{figure} [!ht]
 \centering
-\includegraphics [width=8cm] {conf-room-2}
-\caption{Conference room test example}
+\includegraphics [width=8cm] {conf-participants-test-2}
+\caption{Conference participants test example}
 \end{figure}
 
-So, this is the same illustration as in figure~\ref{fig:conf-call-illustration}, but the construction is another one.
-In this case, the number of conference rooms is tried to be kept constant. The command for executing \texttt{sipp} looks as follows:
+The command for executing \texttt{sipp} looks as follows:
 
-\begin{lstlisting}[breaklines=true,label=code:conf-room-invite,caption={sipp command for starting conf room tests} ]
-"'$sipp' -r 1 -aa
-  -rp ". $conf_pause_room ."s
-  -inf '$users_conf_room_file'
+\begin{lstlisting}[breaklines=true,label=code:conf-room-invite,caption={sipp command for starting conference participants tests} ]
+sipp -r 1 -aa
+  -rp 60s
+  -inf 'Users_conf-participants.csv'
   -m $current_users
   -i $local_ip
-  -p $sip_src_port
-  -mp $rtp_src_port
-  -sf '$inv_scen'
+  -p 5061
+  -mp 6020
+  -sf 'Invite.xml'
   $ask_ip 2>&1"
 \end{lstlisting}

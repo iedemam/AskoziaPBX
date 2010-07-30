@@ -4,10 +4,10 @@
 This subproject of AskoziaPBX was developed for executing performance and stress tests on different Askozia installations.
 It was written by Mark Stephan \newline (mark.stephan@askozia.com) during a job as a student assistant in Spring/Summer 2010. 
 
-% TODO
-%It is very important to understand the differences between the three test-types (two-way-calls, conference calls with fixed number of
-%calls and conference calls with fixed number of rooms). It is explained detailed in the first paragraphs of chapters
-%\ref{sec:two-way}, \ref{sec:conf-call} and \ref{sec:conf-room}.
+It was designed to execute three different test types in only one script call. The three existing test types are
+``two-party-tests'', ``conference-participants-test'' and ``conference-rooms-test''. Of course, it is also possible
+to execute only one or two of these tests. They are described in detail in chapters \ref{sec:two-party-test},
+\ref{sec:conf-rooms-test} and \ref{sec:conf-participants-test}.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Problem}%%
@@ -28,11 +28,16 @@ The current testsuite supports the following features:
 \item automatic configuration of the AskoziaPBX installations with the needed settings
 \item three different types of tests:
 	\begin{description}
-	\item [two-participants tests] %TODO The testsuite establishes a variable number of A-to-B (or end-to-end) calls between the AskoziaPBX and the testsystem. This test simulates normal telephone calls between two persons.
+	\item [two-participants tests] The testsuite establishes a variable number of A-to-B
+	(or end-to-end) calls between the AskoziaPBX installation and the system performing the test.
+	This test simulates a variable number of normal telephone calls between two parties.
 	
-	\item [conference rooms tests] %TODO The testsuite calls a variable number of different conference rooms with a fixed number of users in each room.
+	\item [conference rooms tests] The testsuite establishes a variable number of conference rooms
+	on the AskoziaPBX installation. Each conference room has three participants.
+	This test simulates a variable number of three-way conferences on the AskoziaPBX installation.
 
-	\item [conference participants tests] %TODO The testsuite calls a fix number of conference rooms with a variable number of users in each rooms.
+	\item [conference participants tests] The testsuite establishes one conference with a variable
+	number of participants. This test simulates a conference with many many participants.
 	\end{description}
 	
 \item monitoring of the CPU load of the AskoziaPBX caused by the testcalls
@@ -92,16 +97,26 @@ The IP-adress of the testcomputer that executes the testscript.
 At least one of these three following parameters is necessary, too:
 \begin{description}
 
-%TODO 
 \item {\texttt{-{}-max-two-party-test=<number>}}
+Defines the maximum number of two-party calls that should be established.
+The two-party test begins with one call, increases this number of calls
+step-by-step and finishes with the number of calls specified by this parameter.
 \newline Default: undefined (no two-way tests)
 \newline Example: \texttt{-{}-max-two-party-test=30}
 
-\item {-{}-max-conference-rooms-test}
+\item {\texttt{-{}-max-conference-rooms-test=<number>}}
+Defines the maximum number of three-way conferences that should be established.
+The conference-rooms test begins with one three-way conference, adds another one
+after a specific time and finishes with the number of three-way conferences
+set by this parameter.
 \newline Default: undefined (no conference rooms test)
 \newline Example: \texttt{-{}-max-conference-rooms-test=15}
 
-\item {-{}-max-conference-participants-test}
+\item {\texttt{-{}-max-conference-participants-test}}
+Defines the maximum number of participants in the conference-participants test.
+There is only one conference room which has only one participant at beginning.
+Step-by-step, the number of participants is increased up to the value of this
+parameter.
 \newline Default: undefined (no conference participants tests)
 \newline Example: \texttt{-{}-max-conference-participants-test=40}
 
@@ -127,18 +142,18 @@ Name of the administrator user of the AskoziaPBX webinterface.
 \newline Example: \texttt{-{}-askozia-user=admin}
 
 \item {\texttt{-{}-askozia-pw=<string>}} \newline
-Password for the administrator user of the AskoziaPBX.
+Password for the administrator user of the AskoziaPBX webinterface.
 \newline Default: \texttt{askozia}
 \newline Example: \texttt{-{}-askozia-pw=askozia}
 
 \item {\texttt{-{}-testname=<string>}} \newline
 This parameter helps to keep your results directory uncluddered. All files of the
 current script call (all tests, debug files etc.) are saved in the subdir \newline
-\texttt{./results/<testname>/}. If undefined, the files will be saved in the
-results directory directly, so it will be messy soon.
-\newline Default: undefined (direct saving of results in subdir \texttt{./results})
-\newline E.g. \texttt{-{}-testname=2010-01-01\_1030}
-\newline (saving of results in subdir \texttt{./results/2010-01-01\_1030/})
+\texttt{./results/<testname>\_<timestamp>/}. Furthermore, this testname is used
+for the appliance title in the created graphs.
+\newline Default: undefined
+\newline E.g. \texttt{-{}-testname=Hugo}
+\newline (saving of results in subdir \texttt{./results/Hugo\_2010-01-01\_1030/})
 
 \item {\texttt{-{}-debug}} \newline
 Activates debug messages. Activates automatic saving of debug messages

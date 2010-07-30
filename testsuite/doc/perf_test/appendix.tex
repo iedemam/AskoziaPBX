@@ -23,14 +23,14 @@ It is recommended to use the supplied version because it provides a standardized
 \newline E.g. \texttt{-{}-sipp-path=../sipp} or \texttt{-{}-sipp-path=/tmp/sipp}
 
 \item {\texttt{-{}-two-party-user-file=<string>}} \newline
-For executing two-way tests with sipp, there has to be a so-called injection file.
+For executing two-party tests with sipp, there has to be a so-called injection file.
 This is a csv file which is used by sipp for generating multiple calls automaticly.
 It is created by the script and contains all needed information (and not more)
 for sipp. It is possible to change the filepath and -name of this file by specifying
 this parameter and may be absolute or relative.
-\newline Default: \texttt{./results/<testname>/Users\_two-way.csv}
-\newline E.g. \texttt{-{}-users-2way-file=../Users\_two-way.csv}
-\newline or \texttt{-{}-users-2way-file=/tmp/Users\_two-way.csv}
+\newline Default: \texttt{./results/<testname>/Users\_two-party.csv}
+\newline E.g. \texttt{-{}-users-2way-file=../Users\_two-party.csv}
+\newline or \texttt{-{}-users-2way-file=/tmp/Users\_two-party.csv}
 
 \item {\texttt{-{}-participants-user-file=<string>}} \newline
 Please have a look at the parameter \texttt{-{}-users-2way-file}.
@@ -48,22 +48,22 @@ This parameter is the same only for conference tests with fixed number of calls.
 
 \item {\texttt{-{}-reg-scen=<string>}} \newline
 This parameter specifies the path to the register scenario used by sipp.
-The register scenario is needed for two-way tests only.
-For more information, please have a look at chapter \ref{sec:two-way}.
+The register scenario is needed for two-party tests only.
+For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Register.xml}
 \newline E.g. \texttt{-{}-reg-scen=../Register.xml} or \texttt{-{}-reg-scen=/tmp/Register.xml}
 
 \item {\texttt{-{}-dereg-scen=<string>}} \newline
 This parameter specifies the path to the deregister scenario used by sipp.
-The deregister scenario is needed for two-way tests only.
-For more information, please have a look at chapter \ref{sec:two-way}.
+The deregister scenario is needed for two-party tests only.
+For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Deregister.xml}
 \newline E.g. \texttt{-{}-dereg-scen=../Deregister.xml} or \texttt{-{}-dereg-scen=/tmp/Deregister.xml}
 
 \item {\texttt{-{}-acc-scen=<string>}} \newline
 This parameter specifies the path to the accept scenario used by sipp.
-The accept scenario is needed for two-way tests only.
-For more information, please have a look at chapter \ref{sec:two-way}.
+The accept scenario is needed for two-party tests only.
+For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Accept.xml}
 \newline E.g. \texttt{-{}-acc-scen=../Accept.xml} or \texttt{-{}-acc-scen=/tmp/Accept.xml}
 
@@ -71,13 +71,13 @@ For more information, please have a look at chapter \ref{sec:two-way}.
 This parameter specifies the path to the invite scneario used by sipp.
 The invite scenario is needed for every test type.
 For more information, please have a look at the description of the
-different testtypes (chapters \ref{sec:two-way}, \ref{sec:conf-call} and \ref{sec:conf-room}).
+different testtypes (chapters \ref{sec:two-party-test}, \ref{sec:conf-rooms-test} and \ref{sec:conf-participants-test}).
 \newline Default: \texttt{./PERF\_TEST\_Files/Invite.xml}
 \newline E.g. \texttt{-{}-inv-scen=../Invite.xml} or \texttt{-{}-inv-scen=/tmp/Invite.xml}
 
 \item {\texttt{-{}-sip-src-port=<number>}} \newline
 Port of the local computer (testcomputer) to communicate with Askozia.
-It is used for User A in two-way tests and for all users in conference tests.
+It is used for User A in two-party tests and for all users in conference tests.
 During the tests, there was a softphone running in background for communication
 in the office. Because of this, sipp was not able to reserve the usual sip port 5060.
 \newline Default: \texttt{5061}
@@ -85,16 +85,16 @@ in the office. Because of this, sipp was not able to reserve the usual sip port 
 
 \item {\texttt{-{}-sip-dst-port=<number>}} \newline
 Port of the local computer (testcomputer) to communicate with Askozia,
-but this time only for User B in two-way tests. The first sipp process
+but this time only for User B in two-party tests. The first sipp process
 (User A) blocks one port for communication with AskoziaPBX,
 so the second sipp process (User B) needs another one to talk to Askozia.
-This is necessary for two-way tests only.
+This is necessary for two-party tests only.
 \newline Default: \texttt{5062}
 \newline E.g. \texttt{-{}-sip-dst-port=5062}
 
 \item {\texttt{-{}-rtp-src-port=<number>}} \newline
 Port of the local computer for establishing RTP streams between the local testcomputer
-and AskoziaPBX. This one is used by User A of two-way tests and by all users of
+and AskoziaPBX. This one is used by User A of two-party tests and by all users of
 conference tests. Sipp was not able to use the standard port because of a
 softphone running on the testcomputer in background.
 \newline Default: \texttt{6020}
@@ -102,7 +102,7 @@ softphone running on the testcomputer in background.
 
 \item {\texttt{-{}-rtp-dst-port=<number>}} \newline
 Port of the local computer for establishing RTP streams between the local testcomputer
-and AskoziaPBX. This one is used by User B of two-way tests only, so it not needed
+and AskoziaPBX. This one is used by User B of two-party tests only, so it not needed
 for conference testing.
 \newline Default: \texttt{6030}
 \newline E.g. \texttt{-{}-rtp-dst-port=6030}
@@ -128,14 +128,14 @@ draw the graphs. The test can nevertheless be executed.
 \newline E.g. \texttt{-{}-gnuplot-exe=../gnuplot} or \texttt{-{}-gnuplot-exe=/tmp/gnuplot}
 
 \item {\texttt{-{}-two-party-user-file=<string>}} \newline
-For executing two-way tests with sipp, there has to be a so-called injection file.
+For executing two-party tests with sipp, there has to be a so-called injection file.
 This is a csv file which is used by sipp for generating multiple calls automaticly.
 It is created by the script and contains all needed information (and not more)
 for sipp. It is possible to change the filepath and -name of this file by specifying
 this parameter and may be absolute or relative.
-\newline Default: \texttt{./results/<testname>/Users\_two-way.csv}
-\newline E.g. \texttt{-{}-users-2way-file=../Users\_two-way.csv}
-\newline or \texttt{-{}-users-2way-file=/tmp/Users\_two-way.csv}
+\newline Default: \texttt{./results/<testname>/Users\_two-party.csv}
+\newline E.g. \texttt{-{}-users-2way-file=../Users\_two-party.csv}
+\newline or \texttt{-{}-users-2way-file=/tmp/Users\_two-party.csv}
 
 \item {\texttt{-{}-participants-user-file=<string>}} \newline
 Please have a look at the parameter \texttt{-{}-users-2way-file}.
@@ -153,22 +153,22 @@ This parameter is the same only for conference tests with fixed number of calls.
 
 \item {\texttt{-{}-reg-scen=<string>}} \newline
 This parameter specifies the path to the register scenario used by sipp.
-The register scenario is needed for two-way tests only.
-For more information, please have a look at chapter \ref{sec:two-way}.
+The register scenario is needed for two-party tests only.
+For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Register.xml}
 \newline E.g. \texttt{-{}-reg-scen=../Register.xml} or \texttt{-{}-reg-scen=/tmp/Register.xml}
 
 \item {\texttt{-{}-dereg-scen=<string>}} \newline
 This parameter specifies the path to the deregister scenario used by sipp.
-The deregister scenario is needed for two-way tests only.
-For more information, please have a look at chapter \ref{sec:two-way}.
+The deregister scenario is needed for two-party tests only.
+For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Deregister.xml}
 \newline E.g. \texttt{-{}-dereg-scen=../Deregister.xml} or \texttt{-{}-dereg-scen=/tmp/Deregister.xml}
 
 \item {\texttt{-{}-acc-scen=<string>}} \newline
 This parameter specifies the path to the accept scenario used by sipp.
-The accept scenario is needed for two-way tests only.
-For more information, please have a look at chapter \ref{sec:two-way}.
+The accept scenario is needed for two-party tests only.
+For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Accept.xml}
 \newline E.g. \texttt{-{}-acc-scen=../Accept.xml} or \texttt{-{}-acc-scen=/tmp/Accept.xml}
 
@@ -176,13 +176,13 @@ For more information, please have a look at chapter \ref{sec:two-way}.
 This parameter specifies the path to the invite scneario used by sipp.
 The invite scenario is needed for every test type.
 For more information, please have a look at the description of the
-different testtypes (chapters \ref{sec:two-way}, \ref{sec:conf-call} and \ref{sec:conf-room}).
+different testtypes (chapters \ref{sec:two-party-test}, \ref{sec:conf-rooms-test} and \ref{sec:conf-participants-test}).
 \newline Default: \texttt{./PERF\_TEST\_Files/Invite.xml}
 \newline E.g. \texttt{-{}-inv-scen=../Invite.xml} or \texttt{-{}-inv-scen=/tmp/Invite.xml}
 
 \item {\texttt{-{}-sip-src-port=<number>}} \newline
 Port of the local computer (testcomputer) to communicate with Askozia.
-It is used for User A in two-way tests and for all users in conference tests.
+It is used for User A in two-party tests and for all users in conference tests.
 During the tests, there was a softphone running in background for communication
 in the office. Because of this, sipp was not able to reserve the usual sip port 5060.
 \newline Default: \texttt{5061}
@@ -190,16 +190,16 @@ in the office. Because of this, sipp was not able to reserve the usual sip port 
 
 \item {\texttt{-{}-sip-dst-port=<number>}} \newline
 Port of the local computer (testcomputer) to communicate with Askozia,
-but this time only for User B in two-way tests. The first sipp process
+but this time only for User B in two-party tests. The first sipp process
 (User A) blocks one port for communication with AskoziaPBX,
 so the second sipp process (User B) needs another one to talk to Askozia.
-This is necessary for two-way tests only.
+This is necessary for two-party tests only.
 \newline Default: \texttt{5062}
 \newline E.g. \texttt{-{}-sip-dst-port=5062}
 
 \item {\texttt{-{}-rtp-src-port=<number>}} \newline
 Port of the local computer for establishing RTP streams between the local testcomputer
-and AskoziaPBX. This one is used by User A of two-way tests and by all users of
+and AskoziaPBX. This one is used by User A of two-party tests and by all users of
 conference tests. Sipp was not able to use the standard port because of a
 softphone running on the testcomputer in background.
 \newline Default: \texttt{6020}
@@ -207,7 +207,7 @@ softphone running on the testcomputer in background.
 
 \item {\texttt{-{}-rtp-dst-port=<number>}} \newline
 Port of the local computer for establishing RTP streams between the local testcomputer
-and AskoziaPBX. This one is used by User B of two-way tests only, so it not needed
+and AskoziaPBX. This one is used by User B of two-party tests only, so it not needed
 for conference testing.
 \newline Default: \texttt{6030}
 \newline E.g. \texttt{-{}-rtp-dst-port=6030}
