@@ -945,6 +945,7 @@ load => codec_alaw.so
 load => codec_dahdi.so
 load => codec_g722.so
 load => codec_gsm.so
+load => codec_ilbc.so
 load => codec_ulaw.so
 load => format_gsm.so
 load => format_pcm.so

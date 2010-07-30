@@ -1,0 +1,10 @@
+--- asterisk-1.6.1.18/contrib/scripts/get_ilbc_source.sh.orig	2010-07-29 15:19:09.000000000 +0000
++++ asterisk-1.6.1.18/contrib/scripts/get_ilbc_source.sh	2010-07-29 15:19:19.000000000 +0000
+@@ -18,7 +18,6 @@
+ echo "If you have not done so, you can abort the script now."
+ echo "***"
+ 
+-read tmp
+ 
+ wget -P codecs/ilbc http://www.ietf.org/rfc/rfc3951.txt
+ 
