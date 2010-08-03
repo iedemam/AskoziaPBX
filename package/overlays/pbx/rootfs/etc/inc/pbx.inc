@@ -974,6 +974,11 @@ load => res_smdi.so
 
 EOD;
 
+	if ($g['platform'] != "COMpact 3000") {
+		$conf .= "load => func_speex.so\n";
+		$conf .= "load => codec_speex.so\n";
+	}
+
 	if ($g['platform'] == "Warp") {
 		$conf .= "load => res_csel.so\n";
 		$conf .= "load => res_statemachine.so\n";
