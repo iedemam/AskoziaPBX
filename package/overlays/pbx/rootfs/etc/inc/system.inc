@@ -565,4 +565,14 @@ function system_cron_configure() {
 	return 0;
 }
 
+function system_displays_configure() {
+	global $g;
+
+	if ($g['platform'] == "Warp") {
+		mwexec_bg("/usr/sbin/pikadisplay");
+	}
+
+	return 0;
+}
+
 ?>

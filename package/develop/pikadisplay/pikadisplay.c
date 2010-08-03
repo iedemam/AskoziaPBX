@@ -112,7 +112,9 @@ int main(int argc, char *argv[])
 	clear_display(fd);
 	test_bitmap(fd);
 
-	sleep(10);
+	while(1) {
+		sleep(1);
+	}
 
 	close(fd);
 

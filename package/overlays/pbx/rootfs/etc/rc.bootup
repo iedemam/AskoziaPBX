@@ -180,6 +180,10 @@
 	system_cron_configure();
 	echo "done\n";
 
+	echo " - Configuring displays... ";
+	system_displays_configure();
+	echo "done\n";
+
 	/* done */
 	unlink("{$g['varrun_path']}/booting");
 ?>
