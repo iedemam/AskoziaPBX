@@ -966,7 +966,6 @@ load => pbx_loopback.so
 load => pbx_spool.so
 load => res_adsi.so
 load => res_agi.so
-load => res_indications.so
 load => res_limit.so
 load => res_musiconhold.so
 load => res_qstat.so

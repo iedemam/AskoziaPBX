@@ -316,7 +316,7 @@ EOD;
 			$conf .= "qualify=yes\n";
 		}
 
-		$conf .= "canreinvite=no\n";
+		$conf .= "directmedia=no\n";
 		$conf .= "insecure=port,invite\n";
 
 		// dtmf options
@@ -363,7 +363,7 @@ EOD;
 		$conf .= "nat=" . $p['natmode'] . "\n";
 		$conf .= "dtmfmode=" . $p['dtmfmode'] . "\n";
 		$conf .= "qualify=yes\n";
-		$conf .= "canreinvite=no\n";
+		$conf .= "directmedia=no\n";
 		$conf .= "busy-limit=1\n";		
 
 		$conf .= "disallow=all\n";

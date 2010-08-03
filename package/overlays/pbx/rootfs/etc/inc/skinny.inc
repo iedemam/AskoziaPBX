@@ -155,7 +155,7 @@ EOD;
 		$conf .= "device=" . $p['device'] . "\n";
 		$conf .= "context=" . $p['uniqid'] . "\n";
 		$conf .= "line => " . $p['extension'] . "\n";
-		$conf .= "canreinvite=no\n";
+		$conf .= "directmedia=no\n";
 		if ($p['manualattributes']) {
 			$conf .= "; manual attributes\n";
 			$conf .= base64_decode($p['manualattributes']) . "\n";
