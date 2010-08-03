@@ -84,9 +84,9 @@
  
 -	res = leave_voicemail(chan, args.argv0, &leave_options);
 +	res = leave_voicemail(chan, args.argv0, &leave_options, args.argv2);
- 
- 	if (res == ERROR_LOCK_PATH) {
- 		ast_log(AST_LOG_ERROR, "Could not leave voicemail. The path is already locked.\n");
+ 	if (res == OPERATOR_EXIT) {
+ 		res = 0;
+ 	}
 @@ -11442,7 +11444,7 @@
  				
  				memset(&leave_options, 0, sizeof(leave_options));
