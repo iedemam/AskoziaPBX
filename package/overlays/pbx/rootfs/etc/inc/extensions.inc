@@ -737,18 +737,15 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 	}
 
 	$conf .= extensions_generate_call_notification_variables($exten, $p);
-	if ($tech == "SIP") {
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(SIP/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
-
-	} else if ($tech == "IAX2") {
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(IAX2/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+	if ($tech == "SIP" || $tech == "IAX2") {
+		$conf .= "exten => $exten,n,Macro(main,$tech/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else if ($tech == "SKINNY") {
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(SKINNY/$phone_exten@$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+		$conf .= "exten => $exten,n,Macro(main,SKINNY/$phone_exten@$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else if ($tech == "DAHDI") {
 		$gnumber = dahdi_get_gnumber($p['port']);
-		$conf .= "exten => $exten,n,Gosub(macro-main,s,1(DAHDI/g$gnumber,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+		$conf .= "exten => $exten,n,Macro(main,DAHDI/g$gnumber,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_internal_phone_extension!";
@@ -792,15 +789,15 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 		$prov = pbx_get_provider($p['dialprovider']);
 		$gnumber = dahdi_get_gnumber($prov['port']);
 		$conf .= "exten => $exten,n,".
-			"Gosub(macro-main,s,1($tech/g$gnumber/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+			"Macro(main,DAHDI/g$gnumber/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else if (($tech == "SIP" || $tech == "IAX2") && $directdial) {
 		$conf .= "exten => $exten,n,".
-			"Gosub(macro-main,s,1($tech/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+			"Macro(main,$tech/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,".
-			"Gosub(macro-main,s,1($tech/{$p['dialprovider']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength))\n";
+			"Macro(main,$tech/{$p['dialprovider']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else {
 		$conf .= "ERROR: unmatched case in extensions_generate_external_phone_extension!";
@@ -832,7 +829,7 @@ function extensions_generate_callgroup_extension($group, $from_public=false, $re
 	}
 
 	$conf .= extensions_generate_call_notification_variables($exten, $vm_phone);
-	$conf .= "exten => $exten,n,Gosub(macro-main,s,1($dialstring,{$vm_phone['extension']},$readbacknum,$transfer_flags" . "o,$ringlength))\n";
+	$conf .= "exten => $exten,n,Macro(main,$dialstring,{$vm_phone['extension']},$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	return $conf;
 }
