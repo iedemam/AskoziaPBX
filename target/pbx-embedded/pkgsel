@@ -53,6 +53,7 @@ X speex
 X curl
 X libresample
 X sqlite
+X portaudio
 
 # text2speech
 X flite
