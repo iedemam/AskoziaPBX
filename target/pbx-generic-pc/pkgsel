@@ -52,6 +52,7 @@ X libogg
 X speex
 X curl
 X libresample
+X sqlite
 
 # text2speech
 X flite
