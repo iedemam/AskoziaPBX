@@ -54,6 +54,7 @@ X libtiff
 X libogg
 X speex
 X curl
+X libresample
 
 # text2speech
 X flite
