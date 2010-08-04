@@ -50,6 +50,7 @@ X spandsp
 X libtiff
 X libogg
 X speex
+X curl
 
 # text2speech
 X flite
