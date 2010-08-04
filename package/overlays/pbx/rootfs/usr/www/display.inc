@@ -131,7 +131,10 @@ function display_audio_codec_selector($enabled_codecs) {
 		"speex" => "SpeeX",
 		"adpcm" => "ADPCM",
 		"slin" => "16 bit Signed Linear PCM",
-		"lpc10" => "LPC10"
+		"slin16" => "16 bit Signed Linear PCM (16kHz)",
+		"lpc10" => "LPC10",
+		"siren7" => "ITU G.722.1 (Siren7, licensed from Polycom)",
+		"siren14" => "ITU G.722.1 (Siren14, licensed from Polycom)"
 	);
 
 	if (!is_array($enabled_codecs)) {
@@ -170,7 +173,8 @@ function display_video_codec_selector($enabled_codecs) {
 		"h261" => "H.261",
 		"h263" => "H.263",
 		"h263p" => "H.263+",
-		"h264" => "H.264"
+		"h264" => "H.264",
+		"mpeg4" => "MPEG-4"
 	);
 
 	if (!is_array($enabled_codecs)) {
