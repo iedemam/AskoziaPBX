@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,21 +47,6 @@ msgstr "Kamusal Numara"
 #, fuzzy
 msgid "Main Number"
 msgstr "Numara"
-
-msgid "Package activated successfully."
-msgstr "Paket başarıyla etkinleştirildi."
-
-msgid "Package deactivated successfully."
-msgstr "Paket etkinliği başarıyla kaldırıldı."
-
-msgid "Package deleted successfully."
-msgstr "Paket başarıyla silindi."
-
-msgid "Package restored successfully."
-msgstr "Paket başarıyla önceki boyuta getirildi."
-
-msgid "Package installed successfully."
-msgstr "Paket başarıyla yüklendi."
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1561,34 +1546,6 @@ msgstr ""
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Bu ayarlar sistem yeniden başladığında etkin kılınacaktır."
 
-msgid "Firmware version check"
-msgstr "Bellenim sürümünü denetle"
-
-msgid "Disable firmware version check"
-msgstr "Bellenim sürümünü denetlemeyi iptal et"
-
-#, fuzzy
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-"AskoziaPBX'nin paket güncelleştirme kontrolünü <a href=\"system_packages.php"
-"\">System: Packages</a> sayfasına bakıldığında yapmaz."
-
-msgid "Package version checks"
-msgstr "Paket sürüm kontrolü"
-
-msgid "Disable package version checks"
-msgstr "Paket sürüm kontrolünü iptal et"
-
-#, fuzzy
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-"AskoziaPBX'nin paket güncelleştirme kontrolünü <a href=\"system_packages.php"
-"\">System: Packages</a> sayfasına bakıldığında yapmaz."
-
 msgid "Hard disk standby time"
 msgstr ""
 
@@ -2181,42 +2138,6 @@ msgstr "Notlar"
 
 msgid "Interfaces"
 msgstr "Arayüzler"
-
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-
-msgid "Capacity"
-msgstr "Kapasite"
-
-msgid "State"
-msgstr ""
-
-msgid "Installed Packages"
-msgstr "Yüklenilen Paketler"
-
-msgid "system storage partition"
-msgstr "sistem kayıt bölümü"
-
-#, fuzzy
-msgid "state"
-msgstr "başlangiç"
-
-msgid "Edit Disk"
-msgstr "Sürücüyü Düzenle"
-
-msgid "descriptive name"
-msgstr "açıklayıcı isim"
 
 msgid "Wireless"
 msgstr "Telsiz"
@@ -2972,18 +2893,6 @@ msgstr "Yüklenilen Paketler"
 msgid "add set"
 msgstr "hedef"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr ""
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr ""
-
 msgid "Active Channels"
 msgstr "Aktif Kanallar"
 
@@ -2992,6 +2901,9 @@ msgstr "Şu an aktif kanal yok."
 
 msgid "Location"
 msgstr "Lokasyon"
+
+msgid "State"
+msgstr ""
 
 msgid "Application"
 msgstr "Uygulama"
@@ -3283,133 +3195,6 @@ msgstr ""
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "Bellenim güncellenmesi başladığında KESİNLİKLE yüklemeyi durdurmayın."
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-
-msgid "The digital signature on this package is invalid."
-msgstr "Bu paketin dijital imzası geçerli değil."
-
-msgid "This package is not digitally signed."
-msgstr "Bu paketin dijital imzası yok."
-
-msgid "There has been an error verifying the signature on this package."
-msgstr ""
-
-msgid "The package is corrupt and has been deleted."
-msgstr ""
-
-msgid "Package already exists, install failed."
-msgstr "Yükleme oluşmadı, paket zaten mevcut."
-
-msgid "Extracted package not found, install failed."
-msgstr ""
-
-msgid "Existing package not found, update failed."
-msgstr ""
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr ""
-
-msgid "There are updates available for packages on your system."
-msgstr ""
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr ""
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-
-msgid "Continue"
-msgstr "Devamet"
-
-msgid "Do you really want to disable this package?"
-msgstr ""
-
-msgid "click to disable package"
-msgstr ""
-
-msgid "click to enable package"
-msgstr ""
-
-msgid "backup package data"
-msgstr ""
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr ""
-
-msgid "delete package configuration and data"
-msgstr ""
-
-msgid "install new package"
-msgstr "yeni paket yükle"
-
-msgid "update package to newer version"
-msgstr ""
-
-msgid "restore package data"
-msgstr ""
-
-msgid "Update Installed Package"
-msgstr ""
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr ""
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr ""
-
-msgid "Manual Update"
-msgstr ""
-
-msgid "Install a New Package"
-msgstr "Yeni Bir Paket Yükle"
-
-msgid "Select which packages you would like to install."
-msgstr "Yüklemek istediğiniz paketleri seçin."
-
-msgid "Install"
-msgstr "Yükle"
-
-msgid "No new packages available."
-msgstr "Mevcut yeni paket yok."
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr ""
-
-msgid "Manual Install"
-msgstr ""
-
-msgid "Restore from a Backup Archive"
-msgstr ""
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr ""
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr ""
-
-msgid "Restore"
-msgstr ""
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "Sistem yeniden başlatılıyor. Bu işlem bir kaç dakika zaman alabilir."
 
@@ -3504,6 +3289,95 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Package activated successfully."
+#~ msgstr "Paket başarıyla etkinleştirildi."
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "Paket etkinliği başarıyla kaldırıldı."
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "Paket başarıyla silindi."
+
+#~ msgid "Package restored successfully."
+#~ msgstr "Paket başarıyla önceki boyuta getirildi."
+
+#~ msgid "Package installed successfully."
+#~ msgstr "Paket başarıyla yüklendi."
+
+#~ msgid "Firmware version check"
+#~ msgstr "Bellenim sürümünü denetle"
+
+#~ msgid "Disable firmware version check"
+#~ msgstr "Bellenim sürümünü denetlemeyi iptal et"
+
+#, fuzzy
+#~ msgid ""
+#~ "This will cause the system not to check for newer firmware versions when "
+#~ "the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+#~ msgstr ""
+#~ "AskoziaPBX'nin paket güncelleştirme kontrolünü <a href=\"system_packages."
+#~ "php\">System: Packages</a> sayfasına bakıldığında yapmaz."
+
+#~ msgid "Package version checks"
+#~ msgstr "Paket sürüm kontrolü"
+
+#~ msgid "Disable package version checks"
+#~ msgstr "Paket sürüm kontrolünü iptal et"
+
+#, fuzzy
+#~ msgid ""
+#~ "This will cause the system not to check for package updates when the <a "
+#~ "href=\"system_packages.php\">System: Packages</a> page is viewed."
+#~ msgstr ""
+#~ "AskoziaPBX'nin paket güncelleştirme kontrolünü <a href=\"system_packages."
+#~ "php\">System: Packages</a> sayfasına bakıldığında yapmaz."
+
+#~ msgid "The digital signature on this package is invalid."
+#~ msgstr "Bu paketin dijital imzası geçerli değil."
+
+#~ msgid "This package is not digitally signed."
+#~ msgstr "Bu paketin dijital imzası yok."
+
+#~ msgid "Package already exists, install failed."
+#~ msgstr "Yükleme oluşmadı, paket zaten mevcut."
+
+#~ msgid "Continue"
+#~ msgstr "Devamet"
+
+#~ msgid "install new package"
+#~ msgstr "yeni paket yükle"
+
+#~ msgid "Install a New Package"
+#~ msgstr "Yeni Bir Paket Yükle"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "Yüklemek istediğiniz paketleri seçin."
+
+#~ msgid "Install"
+#~ msgstr "Yükle"
+
+#~ msgid "No new packages available."
+#~ msgstr "Mevcut yeni paket yok."
+
+#~ msgid "Capacity"
+#~ msgstr "Kapasite"
+
+#~ msgid "Installed Packages"
+#~ msgstr "Yüklenilen Paketler"
+
+#~ msgid "system storage partition"
+#~ msgstr "sistem kayıt bölümü"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "başlangiç"
+
+#~ msgid "Edit Disk"
+#~ msgstr "Sürücüyü Düzenle"
+
+#~ msgid "descriptive name"
+#~ msgstr "açıklayıcı isim"
 
 #, fuzzy
 #~ msgid "FAX"

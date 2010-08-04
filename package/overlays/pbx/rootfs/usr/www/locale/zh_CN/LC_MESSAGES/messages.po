@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -47,21 +47,6 @@ msgstr "公共号码"
 #, fuzzy
 msgid "Main Number"
 msgstr "数量"
-
-msgid "Package activated successfully."
-msgstr "软件包成功启用。"
-
-msgid "Package deactivated successfully."
-msgstr "软件包成功停用。"
-
-msgid "Package deleted successfully."
-msgstr "软件包成功删除。"
-
-msgid "Package restored successfully."
-msgstr "软件包成功还原。"
-
-msgid "Package installed successfully."
-msgstr "软件包成功安装。"
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1629,34 +1614,6 @@ msgstr "禁用控制台菜单"
 msgid "Changes to this option will take effect after a reboot."
 msgstr "改变这个选项需要重启后方能生效。"
 
-msgid "Firmware version check"
-msgstr "固件版本检查"
-
-msgid "Disable firmware version check"
-msgstr "禁止固件版本检查"
-
-#, fuzzy
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-"这会使AskoziaPBX不去检查新的固件版本当<a href=\"system_firmware.php\">系统："
-"固件</a> 页面被查看的时候."
-
-msgid "Package version checks"
-msgstr "软件包版本检查"
-
-msgid "Disable package version checks"
-msgstr "禁止软件包版本检查"
-
-#, fuzzy
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-"这会使AskoziaPBX不去检查软件包的版本当<a href=\"system_packages.php\">系统："
-"软件包</a> 页面被查看的时候."
-
 msgid "Hard disk standby time"
 msgstr "硬盘待机时间"
 
@@ -2251,46 +2208,6 @@ msgstr "Notes"
 
 msgid "Interfaces"
 msgstr "界面"
-
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX 会自动分配剩余的空间用作永久存储。系统扩展包可以被安装到这个空间。"
-
-msgid "The system storage media is not large enough to install packages."
-msgstr "系统剩余的储存空间不够安装这个包。"
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"最小需要 %s MB 空间。在将来，使用外接的储存媒介会成为可能，但是现在，包必须储"
-"存在内部媒介上。"
-
-msgid "Capacity"
-msgstr "容量"
-
-msgid "State"
-msgstr "状态"
-
-msgid "Installed Packages"
-msgstr "已安装的包"
-
-msgid "system storage partition"
-msgstr "系统存储分区"
-
-#, fuzzy
-msgid "state"
-msgstr "开始"
-
-msgid "Edit Disk"
-msgstr "编辑磁盘"
-
-msgid "descriptive name"
-msgstr "描述名"
 
 msgid "Wireless"
 msgstr "无线"
@@ -3065,20 +2982,6 @@ msgstr "已安装的包"
 msgid "add set"
 msgstr "目的地"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr "<p>这个状态页包括以下信息：\n"
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-"Note：从本页发送信息到公共位置(比如邮寄名单)前，请确认移除所有敏感信息（密"
-"码，可能还有IP地址）。"
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr "config.xml中的密码被自动溢出了。"
-
 msgid "Active Channels"
 msgstr "活动的信道"
 
@@ -3087,6 +2990,9 @@ msgstr "目前没有活动的信道。"
 
 msgid "Location"
 msgstr "位置"
+
+msgid "State"
+msgstr "状态"
 
 msgid "Application"
 msgstr "应用"
@@ -3393,138 +3299,6 @@ msgstr "在升级固件前您需要重启系统"
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "请切勿在升级过程中退出。"
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-"这里可以安装并升级软件包以扩展系统功能。请点击<img src=\"add.png\" border=\"0"
-"\">开始查看新可用的软件包。所有的软件包在发布前都做过数字签名和安装测试。"
-
-msgid "The digital signature on this package is invalid."
-msgstr "这个软件包的数字签名是无效的。"
-
-msgid "This package is not digitally signed."
-msgstr "这个软件包没有数字签名。"
-
-msgid "There has been an error verifying the signature on this package."
-msgstr "验证这个软件包的数字签名时出错。"
-
-msgid "The package is corrupt and has been deleted."
-msgstr "这个软件包已经损坏并已被删除。"
-
-msgid "Package already exists, install failed."
-msgstr "软件包已经存在，安装失败。"
-
-msgid "Extracted package not found, install failed."
-msgstr "没有找到解开的软件包，安装失败"
-
-msgid "Existing package not found, update failed."
-msgstr "没有找到现有的软件包，升级失败。"
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr "上传的软件包比现有的要版本要老，升级失败。"
-
-msgid "There are updates available for packages on your system."
-msgstr "您的系统上有软件包可以更新。"
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr "点击下面的图标<img src=\"update.png\" border=\"0\"> 并安装升级包。"
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-"下列软件包在验证数字签名时候发出警告。这意味着他们不是官方支持验证过的软件"
-"包，并且可能造成意外行为或者安全漏洞。安装的软件包只有来自您信任的渠道，并且"
-"请确保其没有被篡改。<br><br>"
-
-msgid "Continue"
-msgstr "继续"
-
-msgid "Do you really want to disable this package?"
-msgstr "您真的要禁用这个软件包？"
-
-msgid "click to disable package"
-msgstr "点击以禁用软件包"
-
-msgid "click to enable package"
-msgstr "点击以启用软件包"
-
-msgid "backup package data"
-msgstr "备份数据包数据"
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr "您真的要永久的删除这个软件包数据及其设置？"
-
-msgid "delete package configuration and data"
-msgstr "删除软件包的数据和设置"
-
-msgid "install new package"
-msgstr "安装新软件包"
-
-msgid "update package to newer version"
-msgstr "升级软件包到新版本"
-
-msgid "restore package data"
-msgstr "恢复软件包数据"
-
-msgid "Update Installed Package"
-msgstr "升级安装了的软件包"
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr "选择您希望升级的软件包，现有的软件包数据将被保存。"
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr "从您的电脑里选择一个 .pbxpkg 文件用来升级，现有的软件包数据将被保存。"
-
-msgid "Manual Update"
-msgstr "人工升级"
-
-msgid "Install a New Package"
-msgstr "安装一个新软件包"
-
-msgid "Select which packages you would like to install."
-msgstr "选择一个您希望安装的软件包。"
-
-msgid "Install"
-msgstr "安装"
-
-msgid "No new packages available."
-msgstr ""
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr "从您的电脑中选择一个.pbxpkg文件安装。"
-
-msgid "Manual Install"
-msgstr "人工安装"
-
-msgid "Restore from a Backup Archive"
-msgstr "从备份恢复存档。"
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "选择一个备份.tgz存档并按下'恢复'"
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr "软件包数据和逻辑将被备份取代。"
-
-msgid "Restore"
-msgstr "恢复"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "系统正在重启。这可能会需要一分钟。"
 
@@ -3620,6 +3394,234 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "Package activated successfully."
+#~ msgstr "软件包成功启用。"
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "软件包成功停用。"
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "软件包成功删除。"
+
+#~ msgid "Package restored successfully."
+#~ msgstr "软件包成功还原。"
+
+#~ msgid "Package installed successfully."
+#~ msgstr "软件包成功安装。"
+
+#~ msgid "Firmware version check"
+#~ msgstr "固件版本检查"
+
+#~ msgid "Disable firmware version check"
+#~ msgstr "禁止固件版本检查"
+
+#, fuzzy
+#~ msgid ""
+#~ "This will cause the system not to check for newer firmware versions when "
+#~ "the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+#~ msgstr ""
+#~ "这会使AskoziaPBX不去检查新的固件版本当<a href=\"system_firmware.php\">系"
+#~ "统：固件</a> 页面被查看的时候."
+
+#~ msgid "Package version checks"
+#~ msgstr "软件包版本检查"
+
+#~ msgid "Disable package version checks"
+#~ msgstr "禁止软件包版本检查"
+
+#, fuzzy
+#~ msgid ""
+#~ "This will cause the system not to check for package updates when the <a "
+#~ "href=\"system_packages.php\">System: Packages</a> page is viewed."
+#~ msgstr ""
+#~ "这会使AskoziaPBX不去检查软件包的版本当<a href=\"system_packages.php\">系"
+#~ "统：软件包</a> 页面被查看的时候."
+
+#~ msgid ""
+#~ "Packages to expand system functionality can be installed and updated "
+#~ "here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for "
+#~ "newly available packages. All packages are digitally signed before "
+#~ "distribution and checked upon installation."
+#~ msgstr ""
+#~ "这里可以安装并升级软件包以扩展系统功能。请点击<img src=\"add.png\" border="
+#~ "\"0\">开始查看新可用的软件包。所有的软件包在发布前都做过数字签名和安装测"
+#~ "试。"
+
+#~ msgid "The digital signature on this package is invalid."
+#~ msgstr "这个软件包的数字签名是无效的。"
+
+#~ msgid "This package is not digitally signed."
+#~ msgstr "这个软件包没有数字签名。"
+
+#~ msgid "There has been an error verifying the signature on this package."
+#~ msgstr "验证这个软件包的数字签名时出错。"
+
+#~ msgid "The package is corrupt and has been deleted."
+#~ msgstr "这个软件包已经损坏并已被删除。"
+
+#~ msgid "Package already exists, install failed."
+#~ msgstr "软件包已经存在，安装失败。"
+
+#~ msgid "Extracted package not found, install failed."
+#~ msgstr "没有找到解开的软件包，安装失败"
+
+#~ msgid "Existing package not found, update failed."
+#~ msgstr "没有找到现有的软件包，升级失败。"
+
+#~ msgid ""
+#~ "The uploaded package is not newer than the existing package, update "
+#~ "failed."
+#~ msgstr "上传的软件包比现有的要版本要老，升级失败。"
+
+#~ msgid "There are updates available for packages on your system."
+#~ msgstr "您的系统上有软件包可以更新。"
+
+#~ msgid ""
+#~ "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
+#~ "install the updated packages."
+#~ msgstr "点击下面的图标<img src=\"update.png\" border=\"0\"> 并安装升级包。"
+
+#~ msgid "The system storage media is not large enough to install packages."
+#~ msgstr "系统剩余的储存空间不够安装这个包。"
+
+#~ msgid ""
+#~ "A minimum of %sMB is required. In the future, external media will be able "
+#~ "to be used, but currently packages must be stored on the internal system "
+#~ "media."
+#~ msgstr ""
+#~ "最小需要 %s MB 空间。在将来，使用外接的储存媒介会成为可能，但是现在，包必"
+#~ "须储存在内部媒介上。"
+
+#~ msgid ""
+#~ "The following packages issued warnings while verifying their digital "
+#~ "signature. This means that they are not official/supported packages and "
+#~ "may lead to unexpected behavior or security compromises. Only install "
+#~ "packages that come from sources that you trust, and make sure that they "
+#~ "have not been tampered with.<br><br>Check the packages you wish to "
+#~ "install despite this warning."
+#~ msgstr ""
+#~ "下列软件包在验证数字签名时候发出警告。这意味着他们不是官方支持验证过的软件"
+#~ "包，并且可能造成意外行为或者安全漏洞。安装的软件包只有来自您信任的渠道，并"
+#~ "且请确保其没有被篡改。<br><br>"
+
+#~ msgid "Continue"
+#~ msgstr "继续"
+
+#~ msgid "Do you really want to disable this package?"
+#~ msgstr "您真的要禁用这个软件包？"
+
+#~ msgid "click to disable package"
+#~ msgstr "点击以禁用软件包"
+
+#~ msgid "click to enable package"
+#~ msgstr "点击以启用软件包"
+
+#~ msgid "backup package data"
+#~ msgstr "备份数据包数据"
+
+#~ msgid ""
+#~ "Do you really want to permanently delete this package\\'s configuration "
+#~ "and data?"
+#~ msgstr "您真的要永久的删除这个软件包数据及其设置？"
+
+#~ msgid "delete package configuration and data"
+#~ msgstr "删除软件包的数据和设置"
+
+#~ msgid "install new package"
+#~ msgstr "安装新软件包"
+
+#~ msgid "update package to newer version"
+#~ msgstr "升级软件包到新版本"
+
+#~ msgid "restore package data"
+#~ msgstr "恢复软件包数据"
+
+#~ msgid "Update Installed Package"
+#~ msgstr "升级安装了的软件包"
+
+#~ msgid ""
+#~ "Select which packages you would like to update, existing package data "
+#~ "will be preserved."
+#~ msgstr "选择您希望升级的软件包，现有的软件包数据将被保存。"
+
+#~ msgid ""
+#~ "Select a .pbxpkg file from your computer to update from, existing package "
+#~ "data will be preserved."
+#~ msgstr ""
+#~ "从您的电脑里选择一个 .pbxpkg 文件用来升级，现有的软件包数据将被保存。"
+
+#~ msgid "Manual Update"
+#~ msgstr "人工升级"
+
+#~ msgid "Install a New Package"
+#~ msgstr "安装一个新软件包"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "选择一个您希望安装的软件包。"
+
+#~ msgid "Install"
+#~ msgstr "安装"
+
+#~ msgid "Select a .pbxpkg file from your computer to install."
+#~ msgstr "从您的电脑中选择一个.pbxpkg文件安装。"
+
+#~ msgid "Manual Install"
+#~ msgstr "人工安装"
+
+#~ msgid "Restore from a Backup Archive"
+#~ msgstr "从备份恢复存档。"
+
+#~ msgid "Select a backup .tgz archive and press 'Restore'"
+#~ msgstr "选择一个备份.tgz存档并按下'恢复'"
+
+#~ msgid "Package data and logic will be replaced by the backup."
+#~ msgstr "软件包数据和逻辑将被备份取代。"
+
+#~ msgid "Restore"
+#~ msgstr "恢复"
+
+#, fuzzy
+#~ msgid ""
+#~ "The PBX automatically allocates leftover space for permanent storage. "
+#~ "Packages to extend the system's functionality can be installed in this "
+#~ "space."
+#~ msgstr ""
+#~ "AskoziaPBX 会自动分配剩余的空间用作永久存储。系统扩展包可以被安装到这个空"
+#~ "间。"
+
+#~ msgid "Capacity"
+#~ msgstr "容量"
+
+#~ msgid "Installed Packages"
+#~ msgstr "已安装的包"
+
+#~ msgid "system storage partition"
+#~ msgstr "系统存储分区"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "开始"
+
+#~ msgid "Edit Disk"
+#~ msgstr "编辑磁盘"
+
+#~ msgid "descriptive name"
+#~ msgstr "描述名"
+
+#~ msgid "<p>This status page includes the following information:\n"
+#~ msgstr "<p>这个状态页包括以下信息：\n"
+
+#~ msgid ""
+#~ "Note: make sure to remove any sensitive information (passwords, maybe "
+#~ "also IP addresses) before posting information from this page in public "
+#~ "places (like mailing lists)!"
+#~ msgstr ""
+#~ "Note：从本页发送信息到公共位置(比如邮寄名单)前，请确认移除所有敏感信息（密"
+#~ "码，可能还有IP地址）。"
+
+#~ msgid "Passwords in config.xml have been automatically removed."
+#~ msgstr "config.xml中的密码被自动溢出了。"
 
 #, fuzzy
 #~ msgid "FAX"

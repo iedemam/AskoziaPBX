@@ -318,7 +318,7 @@ function system_reboot_sync() {
  * before restarting
  */
 function system_reboot_cleanup() {
-	packages_shutdown_all();
+
 }
 
 /**

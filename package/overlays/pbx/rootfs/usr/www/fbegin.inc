@@ -184,11 +184,6 @@ if (storage_service_is_active("media")) {
 												'services_musiconhold.php');
 }
 
-/* Packages */
-//if ($nav = packages_get_www_nav()) {
-//	$menu['Packages'] = $nav;
-//}
-
 /* Status */
 $menu['Status'][gettext("Summary")]				= array('index.php');
 $menu['Status'][gettext("Ports")]				= array('status_ports.php');

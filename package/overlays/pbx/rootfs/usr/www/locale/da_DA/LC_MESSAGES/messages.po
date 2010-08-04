@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -52,21 +52,6 @@ msgstr "Offentlig Nummer"
 
 msgid "Main Number"
 msgstr "Hoved nummer"
-
-msgid "Package activated successfully."
-msgstr "Pakke aktiveret tilfredsstillende."
-
-msgid "Package deactivated successfully."
-msgstr "Pakke deaktiveret tilfredsstillende."
-
-msgid "Package deleted successfully."
-msgstr "Pakke slettet tilfredsstillende."
-
-msgid "Package restored successfully."
-msgstr "Pakke reetableret tilfredstillende."
-
-msgid "Package installed successfully."
-msgstr "Pakke installeret tilfredstillende."
 
 msgid "It contains an invalid character"
 msgstr "Feltet '%s' indeholder ugyldig tegn."
@@ -1582,32 +1567,6 @@ msgstr "Deaktiver konsol menu"
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Ændringer i denne indstilling tages i brug efter en genstart."
 
-msgid "Firmware version check"
-msgstr "Firmware versions tjek"
-
-msgid "Disable firmware version check"
-msgstr "Deaktiver firmware versions tjek"
-
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-"Dette vil gøre at AskoziaPBX ikke fremover tjekker for ny firmware når <a "
-"href=\"system_firmware.php\">System: Firmware</a>  siden vises."
-
-msgid "Package version checks"
-msgstr "Pakke versions tjek"
-
-msgid "Disable package version checks"
-msgstr "Deaktiver pakke versions tjek"
-
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-"Denne vil få AskoziaPBX til ikke at kontrollere for pakke opdatering når <a "
-"href=\"system_packages.php\">System: Pakker</a> siden vises."
-
 msgid "Hard disk standby time"
 msgstr "Hard disk standby tid"
 
@@ -2203,47 +2162,6 @@ msgstr "Noter"
 
 msgid "Interfaces"
 msgstr "Interfaces"
-
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"PBX allokerer automatisk overskydende plads til permanent lager. Pakker til "
-"at udvide systemets funktioner kan installeres på denne plads. "
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"System opbevarings mediet er ikke stort nok til at kunne installere pakker."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Et minimum af %sMB er et krav. I fremtiden, vil externe medier være en "
-"mulighed, men i øjeblikket må alle pakker opbevares på det interne system "
-"medie."
-
-msgid "Capacity"
-msgstr "Kapacitet"
-
-msgid "State"
-msgstr "Tilstand"
-
-msgid "Installed Packages"
-msgstr "Installerede pakker"
-
-msgid "system storage partition"
-msgstr "system lager partition"
-
-msgid "state"
-msgstr "tilstand"
-
-msgid "Edit Disk"
-msgstr "Rediger Disk"
-
-msgid "descriptive name"
-msgstr "beskrivende navn"
 
 msgid "Wireless"
 msgstr "Trådløst"
@@ -3010,21 +2928,6 @@ msgstr "installerede sæt"
 msgid "add set"
 msgstr "tilføj sæt"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr "<p>Denne status side indeholder følgende informationer:\n"
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-"Bemærk: du skal sikre dig at alle følsomme oplysninger, såsom kodeord, måske "
-"også IP adresser, er fjernet, før du indsender oplsyninger fra denne side, "
-"til offentlig tilgændelige steder på nettet (mailinglister, fora etc.)"
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr "Adgangskoder i config.xml er automatisk fjernet."
-
 msgid "Active Channels"
 msgstr "Aktive Kanaler"
 
@@ -3033,6 +2936,9 @@ msgstr "Der er i øjeblikket ingen aktive kanaler."
 
 msgid "Location"
 msgstr "Lokation"
+
+msgid "State"
+msgstr "Tilstand"
 
 msgid "Application"
 msgstr "Applikation"
@@ -3343,151 +3249,6 @@ msgstr "Du skal genstarte systemet før du kan opdatere firmwaren."
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "Afbryd IKKE firmware opgraderingen når den først er igang."
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-"Pakker der udvider systemet med nye funktioner installeres eller opdateres "
-"her. Start med at klikke på <img src=\"add.png\" border=\"0\"> for at "
-"undersøge om der er nye pakker tilgængelig. Alle pakker er digitalt signeret "
-"før distribution og undersøges ved installation."
-
-msgid "The digital signature on this package is invalid."
-msgstr "Den digitale signatur til denne pakke er ikke gyldig."
-
-msgid "This package is not digitally signed."
-msgstr "Dette pakke er ikke digitalt signeret."
-
-msgid "There has been an error verifying the signature on this package."
-msgstr "Der opstod en fejl ved verificering af signatur på denne pakke."
-
-msgid "The package is corrupt and has been deleted."
-msgstr "Pakken er korrupt og er blevet slettet."
-
-msgid "Package already exists, install failed."
-msgstr "Pakke eksisterer allerede, installering fejlet."
-
-msgid "Extracted package not found, install failed."
-msgstr "Udpakket pakke ikke fundet, opdatering fejlet."
-
-msgid "Existing package not found, update failed."
-msgstr "Eksisterende pakke ikke fundet, opdatering fejlet."
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr ""
-"Den uploadede pakke er ikke nyerere end den eksisterende pakke, opdatering "
-"fejlet."
-
-msgid "There are updates available for packages on your system."
-msgstr "Der er opdateringer tilgængelig for pakker på dit system."
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr ""
-"Klik på <img src=\"update.png\" border=\"0\"> ikonet nedenfor for at vælge "
-"og installerer den opdaterer pakken"
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-"De følgende pakker har ikke et ugyldigt certifikat. Dette betyder at den fil "
-"du indlæser ikke er en officiel/supporteret fil og kan forårsage til uventet "
-"opførsel eller kompromiterer sikkerhenden. Installer kun filer som kommer "
-"fra kilder som du har tillid til og vær sikker på at filen ikke er blevet "
-"pillet ved.<br><br>Er du sikker på at du vil installerer filen alligvel?"
-
-msgid "Continue"
-msgstr "Forsæt"
-
-msgid "Do you really want to disable this package?"
-msgstr "Vil du virkeligt deaktivere denne pakke?"
-
-msgid "click to disable package"
-msgstr "klik for at deaktivere pakke"
-
-msgid "click to enable package"
-msgstr "klik for at aktivere pakke"
-
-msgid "backup package data"
-msgstr "backup pakke data"
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr ""
-"Vil du virkeligt permanent fjerne denne pakke\\'s  konfiguration og data?"
-
-msgid "delete package configuration and data"
-msgstr "fjern pakke konfiguration og data"
-
-msgid "install new package"
-msgstr "installere ny pakke"
-
-msgid "update package to newer version"
-msgstr "opdatere pakke til nyerere version"
-
-msgid "restore package data"
-msgstr "genskab pakke data"
-
-msgid "Update Installed Package"
-msgstr "Opdater Installeret Pakke"
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr ""
-"Vælg hvilken pakker du gerne vil opdatere, eksisterende pakke data vil blive "
-"bevaret."
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr ""
-"Vælg den .pbxpkg fil fra din lokale computer, som du vil opdaterer fra, "
-"eksisterende pakker bliver bevaret. "
-
-msgid "Manual Update"
-msgstr "Manual opdatering"
-
-msgid "Install a New Package"
-msgstr "Installer en ny Pakke"
-
-msgid "Select which packages you would like to install."
-msgstr "Vælg hvilken pakke du gerne vil installere."
-
-msgid "Install"
-msgstr "Installer"
-
-msgid "No new packages available."
-msgstr "Ingen nye pakker tilgængelig"
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Vælg en .pbxpkg fil fra din computer for at installere."
-
-msgid "Manual Install"
-msgstr "Manual Installering"
-
-msgid "Restore from a Backup Archive"
-msgstr "Reetabler fra et Backup Arkiv"
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "Vælg et backup .tgz arkiv og tryk 'Reetabler'"
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr "Pakke oplysninger og logik bliver erstattet af denne backup"
-
-msgid "Restore"
-msgstr "Reetabler"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "Systemet genstarter nu. Dette vil tage et minuts tid."
 
@@ -3575,6 +3336,250 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "Package activated successfully."
+#~ msgstr "Pakke aktiveret tilfredsstillende."
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "Pakke deaktiveret tilfredsstillende."
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "Pakke slettet tilfredsstillende."
+
+#~ msgid "Package restored successfully."
+#~ msgstr "Pakke reetableret tilfredstillende."
+
+#~ msgid "Package installed successfully."
+#~ msgstr "Pakke installeret tilfredstillende."
+
+#~ msgid "Firmware version check"
+#~ msgstr "Firmware versions tjek"
+
+#~ msgid "Disable firmware version check"
+#~ msgstr "Deaktiver firmware versions tjek"
+
+#~ msgid ""
+#~ "This will cause the system not to check for newer firmware versions when "
+#~ "the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+#~ msgstr ""
+#~ "Dette vil gøre at AskoziaPBX ikke fremover tjekker for ny firmware når <a "
+#~ "href=\"system_firmware.php\">System: Firmware</a>  siden vises."
+
+#~ msgid "Package version checks"
+#~ msgstr "Pakke versions tjek"
+
+#~ msgid "Disable package version checks"
+#~ msgstr "Deaktiver pakke versions tjek"
+
+#~ msgid ""
+#~ "This will cause the system not to check for package updates when the <a "
+#~ "href=\"system_packages.php\">System: Packages</a> page is viewed."
+#~ msgstr ""
+#~ "Denne vil få AskoziaPBX til ikke at kontrollere for pakke opdatering når "
+#~ "<a href=\"system_packages.php\">System: Pakker</a> siden vises."
+
+#~ msgid ""
+#~ "Packages to expand system functionality can be installed and updated "
+#~ "here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for "
+#~ "newly available packages. All packages are digitally signed before "
+#~ "distribution and checked upon installation."
+#~ msgstr ""
+#~ "Pakker der udvider systemet med nye funktioner installeres eller "
+#~ "opdateres her. Start med at klikke på <img src=\"add.png\" border=\"0\"> "
+#~ "for at undersøge om der er nye pakker tilgængelig. Alle pakker er "
+#~ "digitalt signeret før distribution og undersøges ved installation."
+
+#~ msgid "The digital signature on this package is invalid."
+#~ msgstr "Den digitale signatur til denne pakke er ikke gyldig."
+
+#~ msgid "This package is not digitally signed."
+#~ msgstr "Dette pakke er ikke digitalt signeret."
+
+#~ msgid "There has been an error verifying the signature on this package."
+#~ msgstr "Der opstod en fejl ved verificering af signatur på denne pakke."
+
+#~ msgid "The package is corrupt and has been deleted."
+#~ msgstr "Pakken er korrupt og er blevet slettet."
+
+#~ msgid "Package already exists, install failed."
+#~ msgstr "Pakke eksisterer allerede, installering fejlet."
+
+#~ msgid "Extracted package not found, install failed."
+#~ msgstr "Udpakket pakke ikke fundet, opdatering fejlet."
+
+#~ msgid "Existing package not found, update failed."
+#~ msgstr "Eksisterende pakke ikke fundet, opdatering fejlet."
+
+#~ msgid ""
+#~ "The uploaded package is not newer than the existing package, update "
+#~ "failed."
+#~ msgstr ""
+#~ "Den uploadede pakke er ikke nyerere end den eksisterende pakke, "
+#~ "opdatering fejlet."
+
+#~ msgid "There are updates available for packages on your system."
+#~ msgstr "Der er opdateringer tilgængelig for pakker på dit system."
+
+#~ msgid ""
+#~ "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
+#~ "install the updated packages."
+#~ msgstr ""
+#~ "Klik på <img src=\"update.png\" border=\"0\"> ikonet nedenfor for at "
+#~ "vælge og installerer den opdaterer pakken"
+
+#~ msgid "The system storage media is not large enough to install packages."
+#~ msgstr ""
+#~ "System opbevarings mediet er ikke stort nok til at kunne installere "
+#~ "pakker."
+
+#~ msgid ""
+#~ "A minimum of %sMB is required. In the future, external media will be able "
+#~ "to be used, but currently packages must be stored on the internal system "
+#~ "media."
+#~ msgstr ""
+#~ "Et minimum af %sMB er et krav. I fremtiden, vil externe medier være en "
+#~ "mulighed, men i øjeblikket må alle pakker opbevares på det interne system "
+#~ "medie."
+
+#~ msgid ""
+#~ "The following packages issued warnings while verifying their digital "
+#~ "signature. This means that they are not official/supported packages and "
+#~ "may lead to unexpected behavior or security compromises. Only install "
+#~ "packages that come from sources that you trust, and make sure that they "
+#~ "have not been tampered with.<br><br>Check the packages you wish to "
+#~ "install despite this warning."
+#~ msgstr ""
+#~ "De følgende pakker har ikke et ugyldigt certifikat. Dette betyder at den "
+#~ "fil du indlæser ikke er en officiel/supporteret fil og kan forårsage til "
+#~ "uventet opførsel eller kompromiterer sikkerhenden. Installer kun filer "
+#~ "som kommer fra kilder som du har tillid til og vær sikker på at filen "
+#~ "ikke er blevet pillet ved.<br><br>Er du sikker på at du vil installerer "
+#~ "filen alligvel?"
+
+#~ msgid "Continue"
+#~ msgstr "Forsæt"
+
+#~ msgid "Do you really want to disable this package?"
+#~ msgstr "Vil du virkeligt deaktivere denne pakke?"
+
+#~ msgid "click to disable package"
+#~ msgstr "klik for at deaktivere pakke"
+
+#~ msgid "click to enable package"
+#~ msgstr "klik for at aktivere pakke"
+
+#~ msgid "backup package data"
+#~ msgstr "backup pakke data"
+
+#~ msgid ""
+#~ "Do you really want to permanently delete this package\\'s configuration "
+#~ "and data?"
+#~ msgstr ""
+#~ "Vil du virkeligt permanent fjerne denne pakke\\'s  konfiguration og data?"
+
+#~ msgid "delete package configuration and data"
+#~ msgstr "fjern pakke konfiguration og data"
+
+#~ msgid "install new package"
+#~ msgstr "installere ny pakke"
+
+#~ msgid "update package to newer version"
+#~ msgstr "opdatere pakke til nyerere version"
+
+#~ msgid "restore package data"
+#~ msgstr "genskab pakke data"
+
+#~ msgid "Update Installed Package"
+#~ msgstr "Opdater Installeret Pakke"
+
+#~ msgid ""
+#~ "Select which packages you would like to update, existing package data "
+#~ "will be preserved."
+#~ msgstr ""
+#~ "Vælg hvilken pakker du gerne vil opdatere, eksisterende pakke data vil "
+#~ "blive bevaret."
+
+#~ msgid ""
+#~ "Select a .pbxpkg file from your computer to update from, existing package "
+#~ "data will be preserved."
+#~ msgstr ""
+#~ "Vælg den .pbxpkg fil fra din lokale computer, som du vil opdaterer fra, "
+#~ "eksisterende pakker bliver bevaret. "
+
+#~ msgid "Manual Update"
+#~ msgstr "Manual opdatering"
+
+#~ msgid "Install a New Package"
+#~ msgstr "Installer en ny Pakke"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "Vælg hvilken pakke du gerne vil installere."
+
+#~ msgid "Install"
+#~ msgstr "Installer"
+
+#~ msgid "No new packages available."
+#~ msgstr "Ingen nye pakker tilgængelig"
+
+#~ msgid "Select a .pbxpkg file from your computer to install."
+#~ msgstr "Vælg en .pbxpkg fil fra din computer for at installere."
+
+#~ msgid "Manual Install"
+#~ msgstr "Manual Installering"
+
+#~ msgid "Restore from a Backup Archive"
+#~ msgstr "Reetabler fra et Backup Arkiv"
+
+#~ msgid "Select a backup .tgz archive and press 'Restore'"
+#~ msgstr "Vælg et backup .tgz arkiv og tryk 'Reetabler'"
+
+#~ msgid "Package data and logic will be replaced by the backup."
+#~ msgstr "Pakke oplysninger og logik bliver erstattet af denne backup"
+
+#~ msgid "Restore"
+#~ msgstr "Reetabler"
+
+#~ msgid ""
+#~ "The PBX automatically allocates leftover space for permanent storage. "
+#~ "Packages to extend the system's functionality can be installed in this "
+#~ "space."
+#~ msgstr ""
+#~ "PBX allokerer automatisk overskydende plads til permanent lager. Pakker "
+#~ "til at udvide systemets funktioner kan installeres på denne plads. "
+
+#~ msgid "Capacity"
+#~ msgstr "Kapacitet"
+
+#~ msgid "Installed Packages"
+#~ msgstr "Installerede pakker"
+
+#~ msgid "system storage partition"
+#~ msgstr "system lager partition"
+
+#~ msgid "state"
+#~ msgstr "tilstand"
+
+#~ msgid "Edit Disk"
+#~ msgstr "Rediger Disk"
+
+#~ msgid "descriptive name"
+#~ msgstr "beskrivende navn"
+
+#~ msgid "<p>This status page includes the following information:\n"
+#~ msgstr "<p>Denne status side indeholder følgende informationer:\n"
+
+#~ msgid ""
+#~ "Note: make sure to remove any sensitive information (passwords, maybe "
+#~ "also IP addresses) before posting information from this page in public "
+#~ "places (like mailing lists)!"
+#~ msgstr ""
+#~ "Bemærk: du skal sikre dig at alle følsomme oplysninger, såsom kodeord, "
+#~ "måske også IP adresser, er fjernet, før du indsender oplsyninger fra "
+#~ "denne side, til offentlig tilgændelige steder på nettet (mailinglister, "
+#~ "fora etc.)"
+
+#~ msgid "Passwords in config.xml have been automatically removed."
+#~ msgstr "Adgangskoder i config.xml er automatisk fjernet."
 
 #, fuzzy
 #~ msgid "FAX"

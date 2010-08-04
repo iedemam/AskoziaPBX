@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,21 +47,6 @@ msgstr ""
 #, fuzzy
 msgid "Main Number"
 msgstr "Číslo konference"
-
-msgid "Package activated successfully."
-msgstr "Balíček byl úspěšně aktivován."
-
-msgid "Package deactivated successfully."
-msgstr "Balíček byl úspěšně deaktivován."
-
-msgid "Package deleted successfully."
-msgstr "Balíček byl úspěšně smazán."
-
-msgid "Package restored successfully."
-msgstr "Balíček byl úspěšně obnoven."
-
-msgid "Package installed successfully."
-msgstr "Balíček byl úspěšně nainstalován."
 
 msgid "It contains an invalid character"
 msgstr ""
@@ -1601,28 +1586,6 @@ msgstr ""
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
 
-msgid "Firmware version check"
-msgstr ""
-
-msgid "Disable firmware version check"
-msgstr ""
-
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-
-msgid "Package version checks"
-msgstr ""
-
-msgid "Disable package version checks"
-msgstr ""
-
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-
 msgid "Hard disk standby time"
 msgstr ""
 
@@ -2201,42 +2164,6 @@ msgstr "Poznámky"
 
 msgid "Interfaces"
 msgstr "Rozhraní"
-
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-
-msgid "Capacity"
-msgstr "Kapacita"
-
-msgid "State"
-msgstr "Stav"
-
-msgid "Installed Packages"
-msgstr "Instalované balíčky"
-
-msgid "system storage partition"
-msgstr ""
-
-#, fuzzy
-msgid "state"
-msgstr "Stav"
-
-msgid "Edit Disk"
-msgstr ""
-
-msgid "descriptive name"
-msgstr ""
 
 msgid "Wireless"
 msgstr "Bezdrátová síť"
@@ -3006,18 +2933,6 @@ msgstr "Instalované balíčky"
 msgid "add set"
 msgstr "cíl"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr ""
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr ""
-
 msgid "Active Channels"
 msgstr "Aktivní kanály"
 
@@ -3026,6 +2941,9 @@ msgstr "Nejsou aktivní žádné kanály."
 
 msgid "Location"
 msgstr ""
+
+msgid "State"
+msgstr "Stav"
 
 msgid "Application"
 msgstr ""
@@ -3331,139 +3249,6 @@ msgstr ""
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "NEPŘERUŠUJTE aktualizaci firmwaru po jejím zahájení."
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-"Zde mohou být instalovány a aktualizovány balíčky rozšiřující funkčnost "
-"systému. Začněte kliknutím na <img src=\"add.png\" border=\"0\">, kde "
-"zjistíte nově dostupné balíčky. Všechny balíčky jsou před distribucí "
-"prověřeny a digitálně podepsány."
-
-msgid "The digital signature on this package is invalid."
-msgstr ""
-
-msgid "This package is not digitally signed."
-msgstr ""
-
-msgid "There has been an error verifying the signature on this package."
-msgstr ""
-
-msgid "The package is corrupt and has been deleted."
-msgstr ""
-
-msgid "Package already exists, install failed."
-msgstr ""
-
-msgid "Extracted package not found, install failed."
-msgstr ""
-
-msgid "Existing package not found, update failed."
-msgstr ""
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr ""
-
-msgid "There are updates available for packages on your system."
-msgstr ""
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr ""
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-
-msgid "Continue"
-msgstr ""
-
-msgid "Do you really want to disable this package?"
-msgstr "Opravdu chcete deaktivovat tento balíček?"
-
-msgid "click to disable package"
-msgstr "kliknutím deaktivujete balíček"
-
-msgid "click to enable package"
-msgstr "kliknutím aktivujete balíček"
-
-msgid "backup package data"
-msgstr "zálohovat data balíčku"
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr "Opravdu chcete trvale odstranit konfiguraci a data tohoto balíčku?"
-
-msgid "delete package configuration and data"
-msgstr "smazat konfiguraci a data balíčku"
-
-msgid "install new package"
-msgstr "instaluj nový balíček"
-
-msgid "update package to newer version"
-msgstr "aktualizuj balíček na novější verzi"
-
-msgid "restore package data"
-msgstr "obnova data balíčku"
-
-msgid "Update Installed Package"
-msgstr "Aktualizuj instalovaný balíček"
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr ""
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr ""
-"Vyberte na vašem počítači soubor .pbxpkg, ze kterého budete aktualizovat. "
-"Existující data balíčku zůstanou zaschována."
-
-msgid "Manual Update"
-msgstr "Manuální aktualizace"
-
-msgid "Install a New Package"
-msgstr "Instlace nového balíčku"
-
-msgid "Select which packages you would like to install."
-msgstr "Vyberte balíček, který si přijete instalovat."
-
-msgid "Install"
-msgstr "Instaluj"
-
-msgid "No new packages available."
-msgstr ""
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Vyberte na vašem počítači .pbxpkg soubor k instalaci."
-
-msgid "Manual Install"
-msgstr "Manuální instalace"
-
-msgid "Restore from a Backup Archive"
-msgstr "Obnova balíčku ze zálohy"
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "Vyberte zálohovaný soubor .tgz a stiskněte tlačítko 'Obnovit'"
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr "Data balíčku a logika bude nahrazena ze zálohy."
-
-msgid "Restore"
-msgstr "Obnovit"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr ""
 
@@ -3556,6 +3341,111 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "Package activated successfully."
+#~ msgstr "Balíček byl úspěšně aktivován."
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "Balíček byl úspěšně deaktivován."
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "Balíček byl úspěšně smazán."
+
+#~ msgid "Package restored successfully."
+#~ msgstr "Balíček byl úspěšně obnoven."
+
+#~ msgid "Package installed successfully."
+#~ msgstr "Balíček byl úspěšně nainstalován."
+
+#~ msgid ""
+#~ "Packages to expand system functionality can be installed and updated "
+#~ "here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for "
+#~ "newly available packages. All packages are digitally signed before "
+#~ "distribution and checked upon installation."
+#~ msgstr ""
+#~ "Zde mohou být instalovány a aktualizovány balíčky rozšiřující funkčnost "
+#~ "systému. Začněte kliknutím na <img src=\"add.png\" border=\"0\">, kde "
+#~ "zjistíte nově dostupné balíčky. Všechny balíčky jsou před distribucí "
+#~ "prověřeny a digitálně podepsány."
+
+#~ msgid "Do you really want to disable this package?"
+#~ msgstr "Opravdu chcete deaktivovat tento balíček?"
+
+#~ msgid "click to disable package"
+#~ msgstr "kliknutím deaktivujete balíček"
+
+#~ msgid "click to enable package"
+#~ msgstr "kliknutím aktivujete balíček"
+
+#~ msgid "backup package data"
+#~ msgstr "zálohovat data balíčku"
+
+#~ msgid ""
+#~ "Do you really want to permanently delete this package\\'s configuration "
+#~ "and data?"
+#~ msgstr "Opravdu chcete trvale odstranit konfiguraci a data tohoto balíčku?"
+
+#~ msgid "delete package configuration and data"
+#~ msgstr "smazat konfiguraci a data balíčku"
+
+#~ msgid "install new package"
+#~ msgstr "instaluj nový balíček"
+
+#~ msgid "update package to newer version"
+#~ msgstr "aktualizuj balíček na novější verzi"
+
+#~ msgid "restore package data"
+#~ msgstr "obnova data balíčku"
+
+#~ msgid "Update Installed Package"
+#~ msgstr "Aktualizuj instalovaný balíček"
+
+#~ msgid ""
+#~ "Select a .pbxpkg file from your computer to update from, existing package "
+#~ "data will be preserved."
+#~ msgstr ""
+#~ "Vyberte na vašem počítači soubor .pbxpkg, ze kterého budete aktualizovat. "
+#~ "Existující data balíčku zůstanou zaschována."
+
+#~ msgid "Manual Update"
+#~ msgstr "Manuální aktualizace"
+
+#~ msgid "Install a New Package"
+#~ msgstr "Instlace nového balíčku"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "Vyberte balíček, který si přijete instalovat."
+
+#~ msgid "Install"
+#~ msgstr "Instaluj"
+
+#~ msgid "Select a .pbxpkg file from your computer to install."
+#~ msgstr "Vyberte na vašem počítači .pbxpkg soubor k instalaci."
+
+#~ msgid "Manual Install"
+#~ msgstr "Manuální instalace"
+
+#~ msgid "Restore from a Backup Archive"
+#~ msgstr "Obnova balíčku ze zálohy"
+
+#~ msgid "Select a backup .tgz archive and press 'Restore'"
+#~ msgstr "Vyberte zálohovaný soubor .tgz a stiskněte tlačítko 'Obnovit'"
+
+#~ msgid "Package data and logic will be replaced by the backup."
+#~ msgstr "Data balíčku a logika bude nahrazena ze zálohy."
+
+#~ msgid "Restore"
+#~ msgstr "Obnovit"
+
+#~ msgid "Capacity"
+#~ msgstr "Kapacita"
+
+#~ msgid "Installed Packages"
+#~ msgstr "Instalované balíčky"
+
+#, fuzzy
+#~ msgid "state"
+#~ msgstr "Stav"
 
 #, fuzzy
 #~ msgid "FAX"

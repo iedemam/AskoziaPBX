@@ -50,7 +50,6 @@ require_once("isdn.inc");
 require_once("manager.inc");
 require_once("notifications.inc");
 require_once("network.inc");
-require_once("packages.inc");
 require_once("provisioning.inc");
 require_once("pbx.inc");
 require_once("redfone.inc");

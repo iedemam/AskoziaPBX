@@ -65,11 +65,6 @@
 	storage_configure();
 	echo "done\n";
 
-	/* execute package boot routines */
-	echo " - Booting all packages... ";
-	packages_boot_all();
-	echo "done\n";
-
 	/* set up our timezone */
 	echo " - Configuring timezone... ";
 	system_timezone_configure();

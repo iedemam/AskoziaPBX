@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -53,21 +53,6 @@ msgstr "Общодостъпен Номер"
 
 msgid "Main Number"
 msgstr "Основен Номер"
-
-msgid "Package activated successfully."
-msgstr "Пакета е активиран успешно."
-
-msgid "Package deactivated successfully."
-msgstr "Пакета е деактивиран успешно."
-
-msgid "Package deleted successfully."
-msgstr "Пакета е изтрит успешно."
-
-msgid "Package restored successfully."
-msgstr "Пакета е възстановен успешно."
-
-msgid "Package installed successfully."
-msgstr "Пакета е инсталиран успешно."
 
 msgid "It contains an invalid character"
 msgstr "Съдържа невалидни символи."
@@ -1598,32 +1583,6 @@ msgstr "Забрани конзолното меню"
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Промените в тази опция ще имат ефект след рестарт."
 
-msgid "Firmware version check"
-msgstr "Проверка на програмна версия"
-
-msgid "Disable firmware version check"
-msgstr "Забрани проверката на програмната версия"
-
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-"Това ще накара системата да не проверява за нови програмни версии когато "
-"страница <a href=\"system_firmware.php\">Главни: Обновяване</a> се разглежда."
-
-msgid "Package version checks"
-msgstr "Проверка версия на пакетите"
-
-msgid "Disable package version checks"
-msgstr "Забрани проверката на версията на пакетите"
-
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-"Това ще накара системата да не проверява за нови версии на пакетите когато "
-"страница <a href=\"system_packages.php\">Главни: Пакети</a> се разглежда."
-
 msgid "Hard disk standby time"
 msgstr "Време на готовност на твърдия диск"
 
@@ -2222,47 +2181,6 @@ msgstr "Бележки"
 
 msgid "Interfaces"
 msgstr "Интерфейси"
-
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"Централата автоматично определя свободното пространство от памета. Пакетите "
-"за разширяване на функциите на системата могат  да бъдат инсталирани на това "
-"пространство."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr "Системната запомняща медия е недостатъчна за инсталиране на пакетите."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Най-малко %sMBса необходими. В бъдеще, външна медия ще може да бъде "
-"използвана, но текущите пакети трябва да дъдат съхранени на вътрешната "
-"системна медия."
-
-msgid "Capacity"
-msgstr "Капацитет"
-
-msgid "State"
-msgstr "Състояние"
-
-msgid "Installed Packages"
-msgstr "Инсталирани Пакети"
-
-msgid "system storage partition"
-msgstr "разделяне на системна памет"
-
-msgid "state"
-msgstr "състояние"
-
-msgid "Edit Disk"
-msgstr "Редактиране на Диск"
-
-msgid "descriptive name"
-msgstr "Описание"
 
 msgid "Wireless"
 msgstr "Безжичен"
@@ -3027,21 +2945,6 @@ msgstr "инсталирани"
 msgid "add set"
 msgstr "добави"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr "<p>Тази статус страница съдържа следната информация:\n"
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-"Забележка: бъдете сигурни че сте пре премахнали всяка важна иформация "
-"(пароли, може би и IP адреси) преди да публикувате информация от тази "
-"страница на публични места (като mailing листове)!"
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr "Паролите в config.xml бяха автоматично премахнати."
-
 msgid "Active Channels"
 msgstr "Активни Канали"
 
@@ -3050,6 +2953,9 @@ msgstr "В момента няма активни канали."
 
 msgid "Location"
 msgstr "Местонахождение"
+
+msgid "State"
+msgstr "Състояние"
 
 msgid "Application"
 msgstr "Приложение"
@@ -3366,151 +3272,6 @@ msgstr "Трябва да рестартирате системата преди
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "НЕ ПРЕКЪСВАЙТЕ обновяването на програмата след като е започнало."
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-"Пакетите разширяващи функционалноста на системата могат да бъдат инсталирани "
-"и обновени от тук. Започнете с кликане върху <img src=\"add.png\" border=\"0"
-"\"> за да проверите за нови пакети. Всички пакети са цифрово подписани преди "
-"предоставянето им и проверени при инсталиране."
-
-msgid "The digital signature on this package is invalid."
-msgstr "Цифровият подпис на този пакет е невалиден."
-
-msgid "This package is not digitally signed."
-msgstr "Този пакет не е цифрово подписан."
-
-msgid "There has been an error verifying the signature on this package."
-msgstr "Грешка при проверка на подписа на този пакет."
-
-msgid "The package is corrupt and has been deleted."
-msgstr "Пакетът е повреден и беше изтрит."
-
-msgid "Package already exists, install failed."
-msgstr "Пакетът вече съществува, инсталирането е прекъснато."
-
-msgid "Extracted package not found, install failed."
-msgstr "Разархивираният пакет не е намерен, инсталирането е прекъснато."
-
-msgid "Existing package not found, update failed."
-msgstr "Съществуващият пакет не е намерен, обновяването е прекъснато."
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr ""
-"Каченият пакет не е по-нов от вече съществуващия, обновяването е прекъснато."
-
-msgid "There are updates available for packages on your system."
-msgstr "На разположение са обновявания на пакети за вашата система."
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr ""
-"Кликнете върху <img src=\"update.png\" border=\"0\"> иконата по-долуза да "
-"изберете и инсталирате обновените пакети."
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-"Предупреждения за проблеми в пакетите при проверка на цифровите им подписи. "
-"Това означава че те не са официални/поддържани пакети и могат да доведат до "
-"неочаквани проблеми и пробив в сигурноста. Инсталирайте само пакети които "
-"идват от източници на които може да се доверите, и бъдете сигурни че не са "
-"си играли с тях.<br><br> Отбележете пакетите които искате да инсталирате "
-"независимо от предупрежденията."
-
-msgid "Continue"
-msgstr "Продължи"
-
-msgid "Do you really want to disable this package?"
-msgstr "Сигурни ли сте че искате да забраните този пакет?"
-
-msgid "click to disable package"
-msgstr "кликнете за да забраните пакета"
-
-msgid "click to enable package"
-msgstr "кликнете за да активирате пакета"
-
-msgid "backup package data"
-msgstr "архивирайте информацията от пакета"
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr ""
-"Сигурни ли сте че искате да изтриете завинаги този пакет и информацията му?"
-
-msgid "delete package configuration and data"
-msgstr "изтрий пакета заедно с информацията"
-
-msgid "install new package"
-msgstr "инсталирай нов пакет"
-
-msgid "update package to newer version"
-msgstr "обнови пакета с нова версия"
-
-msgid "restore package data"
-msgstr "възстанови информацията на пакета"
-
-msgid "Update Installed Package"
-msgstr "Обновяване на Инсталиран Пакет"
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr ""
-"Изберете кои пакети желаете да бъдат обновени, съществуващата информация от "
-"пакетите ще се запази."
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr ""
-"Изберете .pbxpkg файл за обновяване от вашия компютър, съществуващата "
-"информация от пакетите ще се запази."
-
-msgid "Manual Update"
-msgstr "Ръчно Обновяване"
-
-msgid "Install a New Package"
-msgstr "Инсталиране на Нов Пакет"
-
-msgid "Select which packages you would like to install."
-msgstr "Изберете кои пакети желаете да бъдат инсталирани."
-
-msgid "Install"
-msgstr "Инсталирай"
-
-msgid "No new packages available."
-msgstr "Не са достъпни нови пакети."
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Изберете .pbxpkg файл за инсталиране от вашия компютър."
-
-msgid "Manual Install"
-msgstr "Ръчно Инсталиране"
-
-msgid "Restore from a Backup Archive"
-msgstr "Възстановяване от Архив"
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "Изберете backup .tgz архив и натиснете 'Възстанови'"
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr "Информацията и логиката на пакета ще бъде заменена с архивната."
-
-msgid "Restore"
-msgstr "Възстанови"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "Системата се рестартира. Това може да отнеме минута."
 
@@ -3597,6 +3358,252 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Package activated successfully."
+#~ msgstr "Пакета е активиран успешно."
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "Пакета е деактивиран успешно."
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "Пакета е изтрит успешно."
+
+#~ msgid "Package restored successfully."
+#~ msgstr "Пакета е възстановен успешно."
+
+#~ msgid "Package installed successfully."
+#~ msgstr "Пакета е инсталиран успешно."
+
+#~ msgid "Firmware version check"
+#~ msgstr "Проверка на програмна версия"
+
+#~ msgid "Disable firmware version check"
+#~ msgstr "Забрани проверката на програмната версия"
+
+#~ msgid ""
+#~ "This will cause the system not to check for newer firmware versions when "
+#~ "the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+#~ msgstr ""
+#~ "Това ще накара системата да не проверява за нови програмни версии когато "
+#~ "страница <a href=\"system_firmware.php\">Главни: Обновяване</a> се "
+#~ "разглежда."
+
+#~ msgid "Package version checks"
+#~ msgstr "Проверка версия на пакетите"
+
+#~ msgid "Disable package version checks"
+#~ msgstr "Забрани проверката на версията на пакетите"
+
+#~ msgid ""
+#~ "This will cause the system not to check for package updates when the <a "
+#~ "href=\"system_packages.php\">System: Packages</a> page is viewed."
+#~ msgstr ""
+#~ "Това ще накара системата да не проверява за нови версии на пакетите "
+#~ "когато страница <a href=\"system_packages.php\">Главни: Пакети</a> се "
+#~ "разглежда."
+
+#~ msgid ""
+#~ "Packages to expand system functionality can be installed and updated "
+#~ "here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for "
+#~ "newly available packages. All packages are digitally signed before "
+#~ "distribution and checked upon installation."
+#~ msgstr ""
+#~ "Пакетите разширяващи функционалноста на системата могат да бъдат "
+#~ "инсталирани и обновени от тук. Започнете с кликане върху <img src=\"add."
+#~ "png\" border=\"0\"> за да проверите за нови пакети. Всички пакети са "
+#~ "цифрово подписани преди предоставянето им и проверени при инсталиране."
+
+#~ msgid "The digital signature on this package is invalid."
+#~ msgstr "Цифровият подпис на този пакет е невалиден."
+
+#~ msgid "This package is not digitally signed."
+#~ msgstr "Този пакет не е цифрово подписан."
+
+#~ msgid "There has been an error verifying the signature on this package."
+#~ msgstr "Грешка при проверка на подписа на този пакет."
+
+#~ msgid "The package is corrupt and has been deleted."
+#~ msgstr "Пакетът е повреден и беше изтрит."
+
+#~ msgid "Package already exists, install failed."
+#~ msgstr "Пакетът вече съществува, инсталирането е прекъснато."
+
+#~ msgid "Extracted package not found, install failed."
+#~ msgstr "Разархивираният пакет не е намерен, инсталирането е прекъснато."
+
+#~ msgid "Existing package not found, update failed."
+#~ msgstr "Съществуващият пакет не е намерен, обновяването е прекъснато."
+
+#~ msgid ""
+#~ "The uploaded package is not newer than the existing package, update "
+#~ "failed."
+#~ msgstr ""
+#~ "Каченият пакет не е по-нов от вече съществуващия, обновяването е "
+#~ "прекъснато."
+
+#~ msgid "There are updates available for packages on your system."
+#~ msgstr "На разположение са обновявания на пакети за вашата система."
+
+#~ msgid ""
+#~ "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
+#~ "install the updated packages."
+#~ msgstr ""
+#~ "Кликнете върху <img src=\"update.png\" border=\"0\"> иконата по-долуза да "
+#~ "изберете и инсталирате обновените пакети."
+
+#~ msgid "The system storage media is not large enough to install packages."
+#~ msgstr ""
+#~ "Системната запомняща медия е недостатъчна за инсталиране на пакетите."
+
+#~ msgid ""
+#~ "A minimum of %sMB is required. In the future, external media will be able "
+#~ "to be used, but currently packages must be stored on the internal system "
+#~ "media."
+#~ msgstr ""
+#~ "Най-малко %sMBса необходими. В бъдеще, външна медия ще може да бъде "
+#~ "използвана, но текущите пакети трябва да дъдат съхранени на вътрешната "
+#~ "системна медия."
+
+#~ msgid ""
+#~ "The following packages issued warnings while verifying their digital "
+#~ "signature. This means that they are not official/supported packages and "
+#~ "may lead to unexpected behavior or security compromises. Only install "
+#~ "packages that come from sources that you trust, and make sure that they "
+#~ "have not been tampered with.<br><br>Check the packages you wish to "
+#~ "install despite this warning."
+#~ msgstr ""
+#~ "Предупреждения за проблеми в пакетите при проверка на цифровите им "
+#~ "подписи. Това означава че те не са официални/поддържани пакети и могат да "
+#~ "доведат до неочаквани проблеми и пробив в сигурноста. Инсталирайте само "
+#~ "пакети които идват от източници на които може да се доверите, и бъдете "
+#~ "сигурни че не са си играли с тях.<br><br> Отбележете пакетите които "
+#~ "искате да инсталирате независимо от предупрежденията."
+
+#~ msgid "Continue"
+#~ msgstr "Продължи"
+
+#~ msgid "Do you really want to disable this package?"
+#~ msgstr "Сигурни ли сте че искате да забраните този пакет?"
+
+#~ msgid "click to disable package"
+#~ msgstr "кликнете за да забраните пакета"
+
+#~ msgid "click to enable package"
+#~ msgstr "кликнете за да активирате пакета"
+
+#~ msgid "backup package data"
+#~ msgstr "архивирайте информацията от пакета"
+
+#~ msgid ""
+#~ "Do you really want to permanently delete this package\\'s configuration "
+#~ "and data?"
+#~ msgstr ""
+#~ "Сигурни ли сте че искате да изтриете завинаги този пакет и информацията "
+#~ "му?"
+
+#~ msgid "delete package configuration and data"
+#~ msgstr "изтрий пакета заедно с информацията"
+
+#~ msgid "install new package"
+#~ msgstr "инсталирай нов пакет"
+
+#~ msgid "update package to newer version"
+#~ msgstr "обнови пакета с нова версия"
+
+#~ msgid "restore package data"
+#~ msgstr "възстанови информацията на пакета"
+
+#~ msgid "Update Installed Package"
+#~ msgstr "Обновяване на Инсталиран Пакет"
+
+#~ msgid ""
+#~ "Select which packages you would like to update, existing package data "
+#~ "will be preserved."
+#~ msgstr ""
+#~ "Изберете кои пакети желаете да бъдат обновени, съществуващата информация "
+#~ "от пакетите ще се запази."
+
+#~ msgid ""
+#~ "Select a .pbxpkg file from your computer to update from, existing package "
+#~ "data will be preserved."
+#~ msgstr ""
+#~ "Изберете .pbxpkg файл за обновяване от вашия компютър, съществуващата "
+#~ "информация от пакетите ще се запази."
+
+#~ msgid "Manual Update"
+#~ msgstr "Ръчно Обновяване"
+
+#~ msgid "Install a New Package"
+#~ msgstr "Инсталиране на Нов Пакет"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "Изберете кои пакети желаете да бъдат инсталирани."
+
+#~ msgid "Install"
+#~ msgstr "Инсталирай"
+
+#~ msgid "No new packages available."
+#~ msgstr "Не са достъпни нови пакети."
+
+#~ msgid "Select a .pbxpkg file from your computer to install."
+#~ msgstr "Изберете .pbxpkg файл за инсталиране от вашия компютър."
+
+#~ msgid "Manual Install"
+#~ msgstr "Ръчно Инсталиране"
+
+#~ msgid "Restore from a Backup Archive"
+#~ msgstr "Възстановяване от Архив"
+
+#~ msgid "Select a backup .tgz archive and press 'Restore'"
+#~ msgstr "Изберете backup .tgz архив и натиснете 'Възстанови'"
+
+#~ msgid "Package data and logic will be replaced by the backup."
+#~ msgstr "Информацията и логиката на пакета ще бъде заменена с архивната."
+
+#~ msgid "Restore"
+#~ msgstr "Възстанови"
+
+#~ msgid ""
+#~ "The PBX automatically allocates leftover space for permanent storage. "
+#~ "Packages to extend the system's functionality can be installed in this "
+#~ "space."
+#~ msgstr ""
+#~ "Централата автоматично определя свободното пространство от памета. "
+#~ "Пакетите за разширяване на функциите на системата могат  да бъдат "
+#~ "инсталирани на това пространство."
+
+#~ msgid "Capacity"
+#~ msgstr "Капацитет"
+
+#~ msgid "Installed Packages"
+#~ msgstr "Инсталирани Пакети"
+
+#~ msgid "system storage partition"
+#~ msgstr "разделяне на системна памет"
+
+#~ msgid "state"
+#~ msgstr "състояние"
+
+#~ msgid "Edit Disk"
+#~ msgstr "Редактиране на Диск"
+
+#~ msgid "descriptive name"
+#~ msgstr "Описание"
+
+#~ msgid "<p>This status page includes the following information:\n"
+#~ msgstr "<p>Тази статус страница съдържа следната информация:\n"
+
+#~ msgid ""
+#~ "Note: make sure to remove any sensitive information (passwords, maybe "
+#~ "also IP addresses) before posting information from this page in public "
+#~ "places (like mailing lists)!"
+#~ msgstr ""
+#~ "Забележка: бъдете сигурни че сте пре премахнали всяка важна иформация "
+#~ "(пароли, може би и IP адреси) преди да публикувате информация от тази "
+#~ "страница на публични места (като mailing листове)!"
+
+#~ msgid "Passwords in config.xml have been automatically removed."
+#~ msgstr "Паролите в config.xml бяха автоматично премахнати."
 
 #, fuzzy
 #~ msgid "FAX"

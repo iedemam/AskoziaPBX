@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -50,21 +50,6 @@ msgstr "Numer publiczny"
 
 msgid "Main Number"
 msgstr "Numer główny"
-
-msgid "Package activated successfully."
-msgstr "Pakiet został poprawnie włączony"
-
-msgid "Package deactivated successfully."
-msgstr "Pakiet został poprawnie wyłączony"
-
-msgid "Package deleted successfully."
-msgstr "Pakiet usunięty poprawnie"
-
-msgid "Package restored successfully."
-msgstr "Pakiet przywrócony poprawnie"
-
-msgid "Package installed successfully."
-msgstr "Pakiet zainstalowany poprawnie"
 
 msgid "It contains an invalid character"
 msgstr "Zawiera nieprawidłowy znak."
@@ -1593,32 +1578,6 @@ msgstr "Wyłącz menu konsoli"
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Zmiana tej opcji dokona się po ponownym uruchomieniu systemu."
 
-msgid "Firmware version check"
-msgstr "Kontrola wersji firmware"
-
-msgid "Disable firmware version check"
-msgstr "Wyłącz kontrolę wersji firmware"
-
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-"System nie będzie sprawdzał dostępności nowszego firmware podczas otwierania "
-"strony <a href=\"system_firmware.php\">System: Firmware</a>."
-
-msgid "Package version checks"
-msgstr "Kontrola wersji pakietów"
-
-msgid "Disable package version checks"
-msgstr "Wyłącz kontrolę wersji pakietów"
-
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-"System nie będzie sprawdzał dostępności nowszych wersji pakietów podczas "
-"otwierania strony <a href=\"system_packages.php\">System: Packages</a>."
-
 msgid "Hard disk standby time"
 msgstr "Ustawienia uśpienia dysku"
 
@@ -2207,46 +2166,6 @@ msgstr "Notatki"
 
 msgid "Interfaces"
 msgstr "Interfejsy"
-
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX automatycznie zaalokuje wolne miejsce na stały magazyn danych. "
-"Pakiety zwiększające funkcjonalność systemu zostaną zainstalowane w to "
-"miejsce."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr "Magazyn danych jest zbyt mały aby zainstalować pakiet."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Minimialnie %sMB jest wymagane. W przyszłości zewnętrzne media będą dostępne "
-"ale teraz pakiet musi być zapisany w wewnętrznym magazynie danych."
-
-msgid "Capacity"
-msgstr "Pojemność"
-
-msgid "State"
-msgstr "Status"
-
-msgid "Installed Packages"
-msgstr "Zainstalowane Pakiety"
-
-msgid "system storage partition"
-msgstr "partycja magazynu danych"
-
-msgid "state"
-msgstr "stan"
-
-msgid "Edit Disk"
-msgstr "Edytuj dysk"
-
-msgid "descriptive name"
-msgstr "nazwa opisowa"
 
 msgid "Wireless"
 msgstr "Sieć bezprzewodowa"
@@ -3017,21 +2936,6 @@ msgstr "zainstalowane pakiety"
 msgid "add set"
 msgstr "dodaj zestaw"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr "<p>Strona statusu zawiera następujące informacje:\n"
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-"Uwaga: upewnij się, że usunąłeś wszystkie wrażliwe informacje (hasła, adresy "
-"IP) przed obublikowaniem tych informacji w publicznym miejscu (np. na liście "
-"mailingowej)!"
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr "Hasła w config.xml zostały automatycznie usunięte."
-
 msgid "Active Channels"
 msgstr "Aktywne kanały"
 
@@ -3040,6 +2944,9 @@ msgstr "Nie ma w tej chwili aktywnych kanałów."
 
 msgid "Location"
 msgstr "Lokalizacja"
+
+msgid "State"
+msgstr "Status"
 
 msgid "Application"
 msgstr "Aplikacja"
@@ -3358,152 +3265,6 @@ msgstr ""
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "NIE PRZERYWAJ aktualizacji firmware po jej rozpoczęciu."
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-"Stąd możesz zainstalować pakiety dodające nowe funkcjonalności systemu. "
-"Kliknij <img src=\"add.png\" border=\"0\"> aby sprawdzić dostępność nowych "
-"pakietów. Wszystkie udostepnione pakiety są cyfrowo podpisane, a podpis jest "
-"sprawdzany przed ich instalacją."
-
-msgid "The digital signature on this package is invalid."
-msgstr "Podpis cyfrowy tego pakietu jest nieprawidłowy."
-
-msgid "This package is not digitally signed."
-msgstr "Pakiet nie jest podpisany cyfrowo."
-
-msgid "There has been an error verifying the signature on this package."
-msgstr "Wystąpił problem z weryfikacją podpisu pakietu."
-
-msgid "The package is corrupt and has been deleted."
-msgstr "Pakiet jest uszkodzony i został usunięty."
-
-msgid "Package already exists, install failed."
-msgstr "Pakiet już istnieje, instalacja nie powiodła się."
-
-msgid "Extracted package not found, install failed."
-msgstr "Nie znaleziono rozpakowanego pakietu, instalacja nie powiodła się."
-
-msgid "Existing package not found, update failed."
-msgstr "Nie znaleziono takiego pakietu, aktualizacja nie powiodła się."
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr ""
-"Wysłany pakiet nie jest nowszy od zainstalowanego, aktualizacja nie powiodła "
-"się."
-
-msgid "There are updates available for packages on your system."
-msgstr "Wykryto dostępne aktualizacje dla pakietów na tym systemie."
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr ""
-"Kliknij <img src=\"update.png\" border=\"0\"> poniższą ikonke aby "
-"zaistalować zaktualizowane pakiety."
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-"Napotkano ostrzeżenia podczas weryfikowania podpisu cyfrowego pakietów. "
-"Oznacza to, że nie są to oficjalne/wspierane pakiety i mogą doprowadzić do "
-"nieprzewidywanego zachowania lub luk w bezpieczeństwie. Należy instalować "
-"tylko pakiety pochodzące z zaufanego źródła i upewnić się że nie zostały "
-"zmodyfikowane.<br><br>Zaznacz pakiety, któe chcesz zainstalować niezależnie "
-"od ostrzeżenia."
-
-msgid "Continue"
-msgstr "Kontyuuj"
-
-msgid "Do you really want to disable this package?"
-msgstr "Czy na pewno chcesz wyłączyć ten pakiet?"
-
-msgid "click to disable package"
-msgstr "kliknij aby wyłączyć pakiet"
-
-msgid "click to enable package"
-msgstr "kliknij aby włączyć pakiet"
-
-msgid "backup package data"
-msgstr "archiwizuj danie pakietu"
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr ""
-"Czy na pewno chcesz całkowicie usunąć ten pakiet oraz jego konfiguracje?"
-
-msgid "delete package configuration and data"
-msgstr "usuń pakiet i jego konfiguracje"
-
-msgid "install new package"
-msgstr "zainstaluj nowy pakiet"
-
-msgid "update package to newer version"
-msgstr "aktualizuj pakiet do nowszej wersji"
-
-msgid "restore package data"
-msgstr "przywróc dane pakietu"
-
-msgid "Update Installed Package"
-msgstr "Aktualizuj zainstalowany Pakiet"
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr ""
-"Wybierz pakiet, który chcesz zaktualizować, istniejące dane pakietu zostaną "
-"zachowane."
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr ""
-"Wybierz plik .pbxpkg na swoim komputerze aby zaktualizować, istniejące dane "
-"pakietu zostaną zachowane."
-
-msgid "Manual Update"
-msgstr "Ręczna aktualizacja"
-
-msgid "Install a New Package"
-msgstr "Zainstaluj nowy Pakiet"
-
-msgid "Select which packages you would like to install."
-msgstr "Wybierz pakiet który chcesz zainstalować."
-
-msgid "Install"
-msgstr "Instaluj"
-
-msgid "No new packages available."
-msgstr "Brak nowych pakietów."
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Wybierz plik .pbxpkg na swoim komputerze aby zainstalować."
-
-msgid "Manual Install"
-msgstr "Ręczna instalacja"
-
-msgid "Restore from a Backup Archive"
-msgstr "Przywróć z Backupu"
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "Wybierz backup w postac archiwum .tgz i wciśnij 'Przywróć'"
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr "Dane pakietu i jego logika zostaną zastąpione przez dane z backupu."
-
-msgid "Restore"
-msgstr "Przywróć"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr ""
 "System jest teraz w trakcie ponownego uruchamiania. To może chwilę potrwać."
@@ -3595,6 +3356,248 @@ msgstr "BŁĄD Nie zdołano zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#~ msgid "Package activated successfully."
+#~ msgstr "Pakiet został poprawnie włączony"
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "Pakiet został poprawnie wyłączony"
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "Pakiet usunięty poprawnie"
+
+#~ msgid "Package restored successfully."
+#~ msgstr "Pakiet przywrócony poprawnie"
+
+#~ msgid "Package installed successfully."
+#~ msgstr "Pakiet zainstalowany poprawnie"
+
+#~ msgid "Firmware version check"
+#~ msgstr "Kontrola wersji firmware"
+
+#~ msgid "Disable firmware version check"
+#~ msgstr "Wyłącz kontrolę wersji firmware"
+
+#~ msgid ""
+#~ "This will cause the system not to check for newer firmware versions when "
+#~ "the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+#~ msgstr ""
+#~ "System nie będzie sprawdzał dostępności nowszego firmware podczas "
+#~ "otwierania strony <a href=\"system_firmware.php\">System: Firmware</a>."
+
+#~ msgid "Package version checks"
+#~ msgstr "Kontrola wersji pakietów"
+
+#~ msgid "Disable package version checks"
+#~ msgstr "Wyłącz kontrolę wersji pakietów"
+
+#~ msgid ""
+#~ "This will cause the system not to check for package updates when the <a "
+#~ "href=\"system_packages.php\">System: Packages</a> page is viewed."
+#~ msgstr ""
+#~ "System nie będzie sprawdzał dostępności nowszych wersji pakietów podczas "
+#~ "otwierania strony <a href=\"system_packages.php\">System: Packages</a>."
+
+#~ msgid ""
+#~ "Packages to expand system functionality can be installed and updated "
+#~ "here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for "
+#~ "newly available packages. All packages are digitally signed before "
+#~ "distribution and checked upon installation."
+#~ msgstr ""
+#~ "Stąd możesz zainstalować pakiety dodające nowe funkcjonalności systemu. "
+#~ "Kliknij <img src=\"add.png\" border=\"0\"> aby sprawdzić dostępność "
+#~ "nowych pakietów. Wszystkie udostepnione pakiety są cyfrowo podpisane, a "
+#~ "podpis jest sprawdzany przed ich instalacją."
+
+#~ msgid "The digital signature on this package is invalid."
+#~ msgstr "Podpis cyfrowy tego pakietu jest nieprawidłowy."
+
+#~ msgid "This package is not digitally signed."
+#~ msgstr "Pakiet nie jest podpisany cyfrowo."
+
+#~ msgid "There has been an error verifying the signature on this package."
+#~ msgstr "Wystąpił problem z weryfikacją podpisu pakietu."
+
+#~ msgid "The package is corrupt and has been deleted."
+#~ msgstr "Pakiet jest uszkodzony i został usunięty."
+
+#~ msgid "Package already exists, install failed."
+#~ msgstr "Pakiet już istnieje, instalacja nie powiodła się."
+
+#~ msgid "Extracted package not found, install failed."
+#~ msgstr "Nie znaleziono rozpakowanego pakietu, instalacja nie powiodła się."
+
+#~ msgid "Existing package not found, update failed."
+#~ msgstr "Nie znaleziono takiego pakietu, aktualizacja nie powiodła się."
+
+#~ msgid ""
+#~ "The uploaded package is not newer than the existing package, update "
+#~ "failed."
+#~ msgstr ""
+#~ "Wysłany pakiet nie jest nowszy od zainstalowanego, aktualizacja nie "
+#~ "powiodła się."
+
+#~ msgid "There are updates available for packages on your system."
+#~ msgstr "Wykryto dostępne aktualizacje dla pakietów na tym systemie."
+
+#~ msgid ""
+#~ "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
+#~ "install the updated packages."
+#~ msgstr ""
+#~ "Kliknij <img src=\"update.png\" border=\"0\"> poniższą ikonke aby "
+#~ "zaistalować zaktualizowane pakiety."
+
+#~ msgid "The system storage media is not large enough to install packages."
+#~ msgstr "Magazyn danych jest zbyt mały aby zainstalować pakiet."
+
+#~ msgid ""
+#~ "A minimum of %sMB is required. In the future, external media will be able "
+#~ "to be used, but currently packages must be stored on the internal system "
+#~ "media."
+#~ msgstr ""
+#~ "Minimialnie %sMB jest wymagane. W przyszłości zewnętrzne media będą "
+#~ "dostępne ale teraz pakiet musi być zapisany w wewnętrznym magazynie "
+#~ "danych."
+
+#~ msgid ""
+#~ "The following packages issued warnings while verifying their digital "
+#~ "signature. This means that they are not official/supported packages and "
+#~ "may lead to unexpected behavior or security compromises. Only install "
+#~ "packages that come from sources that you trust, and make sure that they "
+#~ "have not been tampered with.<br><br>Check the packages you wish to "
+#~ "install despite this warning."
+#~ msgstr ""
+#~ "Napotkano ostrzeżenia podczas weryfikowania podpisu cyfrowego pakietów. "
+#~ "Oznacza to, że nie są to oficjalne/wspierane pakiety i mogą doprowadzić "
+#~ "do nieprzewidywanego zachowania lub luk w bezpieczeństwie. Należy "
+#~ "instalować tylko pakiety pochodzące z zaufanego źródła i upewnić się że "
+#~ "nie zostały zmodyfikowane.<br><br>Zaznacz pakiety, któe chcesz "
+#~ "zainstalować niezależnie od ostrzeżenia."
+
+#~ msgid "Continue"
+#~ msgstr "Kontyuuj"
+
+#~ msgid "Do you really want to disable this package?"
+#~ msgstr "Czy na pewno chcesz wyłączyć ten pakiet?"
+
+#~ msgid "click to disable package"
+#~ msgstr "kliknij aby wyłączyć pakiet"
+
+#~ msgid "click to enable package"
+#~ msgstr "kliknij aby włączyć pakiet"
+
+#~ msgid "backup package data"
+#~ msgstr "archiwizuj danie pakietu"
+
+#~ msgid ""
+#~ "Do you really want to permanently delete this package\\'s configuration "
+#~ "and data?"
+#~ msgstr ""
+#~ "Czy na pewno chcesz całkowicie usunąć ten pakiet oraz jego konfiguracje?"
+
+#~ msgid "delete package configuration and data"
+#~ msgstr "usuń pakiet i jego konfiguracje"
+
+#~ msgid "install new package"
+#~ msgstr "zainstaluj nowy pakiet"
+
+#~ msgid "update package to newer version"
+#~ msgstr "aktualizuj pakiet do nowszej wersji"
+
+#~ msgid "restore package data"
+#~ msgstr "przywróc dane pakietu"
+
+#~ msgid "Update Installed Package"
+#~ msgstr "Aktualizuj zainstalowany Pakiet"
+
+#~ msgid ""
+#~ "Select which packages you would like to update, existing package data "
+#~ "will be preserved."
+#~ msgstr ""
+#~ "Wybierz pakiet, który chcesz zaktualizować, istniejące dane pakietu "
+#~ "zostaną zachowane."
+
+#~ msgid ""
+#~ "Select a .pbxpkg file from your computer to update from, existing package "
+#~ "data will be preserved."
+#~ msgstr ""
+#~ "Wybierz plik .pbxpkg na swoim komputerze aby zaktualizować, istniejące "
+#~ "dane pakietu zostaną zachowane."
+
+#~ msgid "Manual Update"
+#~ msgstr "Ręczna aktualizacja"
+
+#~ msgid "Install a New Package"
+#~ msgstr "Zainstaluj nowy Pakiet"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "Wybierz pakiet który chcesz zainstalować."
+
+#~ msgid "Install"
+#~ msgstr "Instaluj"
+
+#~ msgid "No new packages available."
+#~ msgstr "Brak nowych pakietów."
+
+#~ msgid "Select a .pbxpkg file from your computer to install."
+#~ msgstr "Wybierz plik .pbxpkg na swoim komputerze aby zainstalować."
+
+#~ msgid "Manual Install"
+#~ msgstr "Ręczna instalacja"
+
+#~ msgid "Restore from a Backup Archive"
+#~ msgstr "Przywróć z Backupu"
+
+#~ msgid "Select a backup .tgz archive and press 'Restore'"
+#~ msgstr "Wybierz backup w postac archiwum .tgz i wciśnij 'Przywróć'"
+
+#~ msgid "Package data and logic will be replaced by the backup."
+#~ msgstr "Dane pakietu i jego logika zostaną zastąpione przez dane z backupu."
+
+#~ msgid "Restore"
+#~ msgstr "Przywróć"
+
+#~ msgid ""
+#~ "The PBX automatically allocates leftover space for permanent storage. "
+#~ "Packages to extend the system's functionality can be installed in this "
+#~ "space."
+#~ msgstr ""
+#~ "AskoziaPBX automatycznie zaalokuje wolne miejsce na stały magazyn danych. "
+#~ "Pakiety zwiększające funkcjonalność systemu zostaną zainstalowane w to "
+#~ "miejsce."
+
+#~ msgid "Capacity"
+#~ msgstr "Pojemność"
+
+#~ msgid "Installed Packages"
+#~ msgstr "Zainstalowane Pakiety"
+
+#~ msgid "system storage partition"
+#~ msgstr "partycja magazynu danych"
+
+#~ msgid "state"
+#~ msgstr "stan"
+
+#~ msgid "Edit Disk"
+#~ msgstr "Edytuj dysk"
+
+#~ msgid "descriptive name"
+#~ msgstr "nazwa opisowa"
+
+#~ msgid "<p>This status page includes the following information:\n"
+#~ msgstr "<p>Strona statusu zawiera następujące informacje:\n"
+
+#~ msgid ""
+#~ "Note: make sure to remove any sensitive information (passwords, maybe "
+#~ "also IP addresses) before posting information from this page in public "
+#~ "places (like mailing lists)!"
+#~ msgstr ""
+#~ "Uwaga: upewnij się, że usunąłeś wszystkie wrażliwe informacje (hasła, "
+#~ "adresy IP) przed obublikowaniem tych informacji w publicznym miejscu (np. "
+#~ "na liście mailingowej)!"
+
+#~ msgid "Passwords in config.xml have been automatically removed."
+#~ msgstr "Hasła w config.xml zostały automatycznie usunięte."
 
 #, fuzzy
 #~ msgid "FAX"

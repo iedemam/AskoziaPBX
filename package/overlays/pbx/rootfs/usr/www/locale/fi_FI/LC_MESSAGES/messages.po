@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 15:24+0200\n"
+"POT-Creation-Date: 2010-08-04 16:48+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -50,21 +50,6 @@ msgstr "Julkinen Numero"
 #, fuzzy
 msgid "Main Number"
 msgstr "Numero"
-
-msgid "Package activated successfully."
-msgstr "Paketti aktivoitiin onnistuneesti."
-
-msgid "Package deactivated successfully."
-msgstr "Paketti deaktivoitiin onnistuneesti."
-
-msgid "Package deleted successfully."
-msgstr "Paketti poistettiin onnistuneesti."
-
-msgid "Package restored successfully."
-msgstr "Paketti palautettiin onnistuneesti."
-
-msgid "Package installed successfully."
-msgstr "Paketti asennettiin onnistuneesti."
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1647,35 +1632,6 @@ msgstr ""
 "Järjestelmä on käynnistettävä uudelleen ennen kun nämä muutokset astuvat "
 "voimaan."
 
-msgid "Firmware version check"
-msgstr "Laiteohjelmiston version tarkistus"
-
-msgid "Disable firmware version check"
-msgstr "Poista laiteohjelmiston version tarkistus käytöstä"
-
-#, fuzzy
-msgid ""
-"This will cause the system not to check for newer firmware versions when the "
-"<a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
-msgstr ""
-"AskoziaPBX ei enää tarkista jos uusi laiteohjelmistopäivitys on saatavilla "
-"kun <a href=\"system_firmware.php\">Järjestelmä: Laiteohjelmisto</a> sivu on "
-"näkyvillä."
-
-msgid "Package version checks"
-msgstr "Pakettien version tarkistus"
-
-msgid "Disable package version checks"
-msgstr "Poista pakettien version tarkistus käytöstä"
-
-#, fuzzy
-msgid ""
-"This will cause the system not to check for package updates when the <a href="
-"\"system_packages.php\">System: Packages</a> page is viewed."
-msgstr ""
-"AskoziaPBX ei enää tarkista jos uudempi pakettiversio on saatavilla kun <a "
-"href=\"system_firmware.php\">Järjestelmä: Paketit</a> sivu on näkyvillä."
-
 msgid "Hard disk standby time"
 msgstr "Kovalevyn valmiustilan aika"
 
@@ -2293,49 +2249,6 @@ msgstr "Muistiinpanot"
 
 msgid "Interfaces"
 msgstr "Käyttöliittymät"
-
-#, fuzzy
-msgid ""
-"The PBX automatically allocates leftover space for permanent storage. "
-"Packages to extend the system's functionality can be installed in this space."
-msgstr ""
-"AskoziaPBX varaa automaattisesti ylimääräiseksi jäänyttä tilaa jatkuvaan "
-"tallennukseen. Paketit jotka täydentävät ohjelmiston toimintaa voi asentaa "
-"tähän."
-
-msgid "The system storage media is not large enough to install packages."
-msgstr ""
-"Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa "
-"paketteja."
-
-#, php-format
-msgid ""
-"A minimum of %sMB is required. In the future, external media will be able to "
-"be used, but currently packages must be stored on the internal system media."
-msgstr ""
-"Minimi %sMt on pakollinen. Tulevaisuudessa, ulkoinen media tulee toimimaan, "
-"mutta tällä hetkellä paketit on tallennettava sisäiselle medialle."
-
-msgid "Capacity"
-msgstr "Kapasiteetti"
-
-msgid "State"
-msgstr "Tila"
-
-msgid "Installed Packages"
-msgstr "Asennetut Paketit"
-
-msgid "system storage partition"
-msgstr "järjestelmän tallennus osio"
-
-msgid "state"
-msgstr "tila"
-
-msgid "Edit Disk"
-msgstr "Muokkaa Levyä"
-
-msgid "descriptive name"
-msgstr "kuvaileva nimi"
 
 msgid "Wireless"
 msgstr "Langaton"
@@ -3146,21 +3059,6 @@ msgstr "Asennetut Paketit"
 msgid "add set"
 msgstr "määränpää"
 
-msgid "<p>This status page includes the following information:\n"
-msgstr "<p>Tämä tila sivu antaa seuraavat tiedot:\n"
-
-msgid ""
-"Note: make sure to remove any sensitive information (passwords, maybe also "
-"IP addresses) before posting information from this page in public places "
-"(like mailing lists)!"
-msgstr ""
-"Huom: muista poistaa kaikki herkät tiedot (salasanat, myös IP osoitteet) "
-"ennen kun postitat tältä sivulta johonkin julkiseen paikkaan (kuten "
-"postituslistoille)!"
-
-msgid "Passwords in config.xml have been automatically removed."
-msgstr "Salasanat ovat automaattisesti poistetut config.xml tiedostosta."
-
 msgid "Active Channels"
 msgstr "Aktiiviset Kanavat"
 
@@ -3169,6 +3067,9 @@ msgstr "Tällä hetkellä ei löydy aktiivista kanavaa."
 
 msgid "Location"
 msgstr "Paikka"
+
+msgid "State"
+msgstr "Tila"
 
 msgid "Application"
 msgstr "Sovellus"
@@ -3493,149 +3394,6 @@ msgstr ""
 msgid "DO NOT abort the firmware upgrade once it has started."
 msgstr "ÄLÄ pysäytä laiteohjelmisto päivitystä kun se on käynnissä."
 
-msgid ""
-"Packages to expand system functionality can be installed and updated here. "
-"Start by clicking <img src=\"add.png\" border=\"0\"> to check for newly "
-"available packages. All packages are digitally signed before distribution "
-"and checked upon installation."
-msgstr ""
-"Paketit jotka laajentaa järjestelmän toimivuutta voi asentaa täällä. Aloita "
-"klikkaamalla <img src=\"add.png\" border=\"0\"> löytääksesi uusia paketteja. "
-"Kaikki paketit ovat digitaalisesti allekirjoitettu ja tarkistettu asentaessa."
-
-msgid "The digital signature on this package is invalid."
-msgstr "Paketin digitaalinen allekirjoitus on pätemätön."
-
-msgid "This package is not digitally signed."
-msgstr "Tämä paketti ei ole digitaalisesti allekirjoitettu."
-
-msgid "There has been an error verifying the signature on this package."
-msgstr "On tapahtunut virhe todentaessa paketin allekirjoitusta."
-
-msgid "The package is corrupt and has been deleted."
-msgstr "Tämä paketti on korruptoitunut ja on poistettu."
-
-msgid "Package already exists, install failed."
-msgstr "Paketti on jo olemassa, asennus epäonnistui."
-
-msgid "Extracted package not found, install failed."
-msgstr "ladattu paketti ei löytynyt, asennus epäonnistui."
-
-msgid "Existing package not found, update failed."
-msgstr "Oleva paketti ei löytynyt, päivitys epäonnistui."
-
-msgid ""
-"The uploaded package is not newer than the existing package, update failed."
-msgstr "Ladattu paketti ei ole uudempi kun oleva paketti, asennus epäonnistui."
-
-msgid "There are updates available for packages on your system."
-msgstr ""
-"Päivityksiä on saatavilla paketeille jotka ovat asennettuna sinun "
-"järjestelmässä."
-
-msgid ""
-"Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
-"install the updated packages."
-msgstr ""
-"Klikkaa <img src=\"update.png\" border=\"0\"> ikoonia alla ja valitse sekä "
-"asenna päivitetyt paketit."
-
-msgid ""
-"The following packages issued warnings while verifying their digital "
-"signature. This means that they are not official/supported packages and may "
-"lead to unexpected behavior or security compromises. Only install packages "
-"that come from sources that you trust, and make sure that they have not been "
-"tampered with.<br><br>Check the packages you wish to install despite this "
-"warning."
-msgstr ""
-"Seuraavat paketit aiheuttivat varoituksen varmistaessa digitaalisen "
-"allekirjoituksen. Tämä tarkoittaa että ne ei ole virallisia/tuettuja "
-"paketteja ja se voi johtaa yllättävään käytökseen tai turvallisuuden "
-"vaarantamiseen. Älä asenna pakettia jos et luota lähteeseen. "
-"<br><br>Tarkista paketit jotka aiheuttivat tämän varoituksen."
-
-msgid "Continue"
-msgstr "Jatka"
-
-msgid "Do you really want to disable this package?"
-msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
-
-msgid "click to disable package"
-msgstr "klikkaa poistaaksesi paketti käytöstä"
-
-msgid "click to enable package"
-msgstr "klikkaa mahdollistaaksesi paketti"
-
-msgid "backup package data"
-msgstr "tallenna pakettitiedot"
-
-msgid ""
-"Do you really want to permanently delete this package\\'s configuration and "
-"data?"
-msgstr ""
-"Oletko varma että haluat poistaa tämän paketin konfigurointi sekä tiedot?"
-
-msgid "delete package configuration and data"
-msgstr "poista paketin konfigurointi sekä tiedot"
-
-msgid "install new package"
-msgstr "asenna uusi paketti"
-
-msgid "update package to newer version"
-msgstr "päivitä paketti"
-
-msgid "restore package data"
-msgstr "palauta pakettitiedot"
-
-msgid "Update Installed Package"
-msgstr "Päivitä Asennettu Paketti"
-
-msgid ""
-"Select which packages you would like to update, existing package data will "
-"be preserved."
-msgstr ""
-"Valitse paketit mitkä haluat päivittää, olevien pakettien tiedot säilytetään."
-
-msgid ""
-"Select a .pbxpkg file from your computer to update from, existing package "
-"data will be preserved."
-msgstr ""
-"Valitse .pkgpbx tiedosto josta haluat päivittää, olevien pakettien tiedot "
-"säilytetään."
-
-msgid "Manual Update"
-msgstr "Manuaalinen Päivitys"
-
-msgid "Install a New Package"
-msgstr "Asenna Uusi Paketti"
-
-msgid "Select which packages you would like to install."
-msgstr "Valitse paketit mitkä haluat asentaa."
-
-msgid "Install"
-msgstr "Asenna"
-
-msgid "No new packages available."
-msgstr "Uusia paketteja ei ole saatavilla."
-
-msgid "Select a .pbxpkg file from your computer to install."
-msgstr "Valitse .pbxpkg tiedosto jonka haluat asentaa."
-
-msgid "Manual Install"
-msgstr "Manuaalinen Asennus"
-
-msgid "Restore from a Backup Archive"
-msgstr "Palauta varmuuskopiosta"
-
-msgid "Select a backup .tgz archive and press 'Restore'"
-msgstr "Valitse varmuuskopion .tgz paketti ja paina 'Palauta'"
-
-msgid "Package data and logic will be replaced by the backup."
-msgstr "Paketin tiedot sekä logiikka korvataan varmuuskopiolla."
-
-msgid "Restore"
-msgstr "Palauta"
-
 msgid "The system is rebooting now. This may take a minute."
 msgstr "Järjestemä käynnistyy uuudelleen. Tämä voi kestää muutaman minuutin."
 
@@ -3731,6 +3489,255 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "Package activated successfully."
+#~ msgstr "Paketti aktivoitiin onnistuneesti."
+
+#~ msgid "Package deactivated successfully."
+#~ msgstr "Paketti deaktivoitiin onnistuneesti."
+
+#~ msgid "Package deleted successfully."
+#~ msgstr "Paketti poistettiin onnistuneesti."
+
+#~ msgid "Package restored successfully."
+#~ msgstr "Paketti palautettiin onnistuneesti."
+
+#~ msgid "Package installed successfully."
+#~ msgstr "Paketti asennettiin onnistuneesti."
+
+#~ msgid "Firmware version check"
+#~ msgstr "Laiteohjelmiston version tarkistus"
+
+#~ msgid "Disable firmware version check"
+#~ msgstr "Poista laiteohjelmiston version tarkistus käytöstä"
+
+#, fuzzy
+#~ msgid ""
+#~ "This will cause the system not to check for newer firmware versions when "
+#~ "the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed."
+#~ msgstr ""
+#~ "AskoziaPBX ei enää tarkista jos uusi laiteohjelmistopäivitys on "
+#~ "saatavilla kun <a href=\"system_firmware.php\">Järjestelmä: "
+#~ "Laiteohjelmisto</a> sivu on näkyvillä."
+
+#~ msgid "Package version checks"
+#~ msgstr "Pakettien version tarkistus"
+
+#~ msgid "Disable package version checks"
+#~ msgstr "Poista pakettien version tarkistus käytöstä"
+
+#, fuzzy
+#~ msgid ""
+#~ "This will cause the system not to check for package updates when the <a "
+#~ "href=\"system_packages.php\">System: Packages</a> page is viewed."
+#~ msgstr ""
+#~ "AskoziaPBX ei enää tarkista jos uudempi pakettiversio on saatavilla kun "
+#~ "<a href=\"system_firmware.php\">Järjestelmä: Paketit</a> sivu on "
+#~ "näkyvillä."
+
+#~ msgid ""
+#~ "Packages to expand system functionality can be installed and updated "
+#~ "here. Start by clicking <img src=\"add.png\" border=\"0\"> to check for "
+#~ "newly available packages. All packages are digitally signed before "
+#~ "distribution and checked upon installation."
+#~ msgstr ""
+#~ "Paketit jotka laajentaa järjestelmän toimivuutta voi asentaa täällä. "
+#~ "Aloita klikkaamalla <img src=\"add.png\" border=\"0\"> löytääksesi uusia "
+#~ "paketteja. Kaikki paketit ovat digitaalisesti allekirjoitettu ja "
+#~ "tarkistettu asentaessa."
+
+#~ msgid "The digital signature on this package is invalid."
+#~ msgstr "Paketin digitaalinen allekirjoitus on pätemätön."
+
+#~ msgid "This package is not digitally signed."
+#~ msgstr "Tämä paketti ei ole digitaalisesti allekirjoitettu."
+
+#~ msgid "There has been an error verifying the signature on this package."
+#~ msgstr "On tapahtunut virhe todentaessa paketin allekirjoitusta."
+
+#~ msgid "The package is corrupt and has been deleted."
+#~ msgstr "Tämä paketti on korruptoitunut ja on poistettu."
+
+#~ msgid "Package already exists, install failed."
+#~ msgstr "Paketti on jo olemassa, asennus epäonnistui."
+
+#~ msgid "Extracted package not found, install failed."
+#~ msgstr "ladattu paketti ei löytynyt, asennus epäonnistui."
+
+#~ msgid "Existing package not found, update failed."
+#~ msgstr "Oleva paketti ei löytynyt, päivitys epäonnistui."
+
+#~ msgid ""
+#~ "The uploaded package is not newer than the existing package, update "
+#~ "failed."
+#~ msgstr ""
+#~ "Ladattu paketti ei ole uudempi kun oleva paketti, asennus epäonnistui."
+
+#~ msgid "There are updates available for packages on your system."
+#~ msgstr ""
+#~ "Päivityksiä on saatavilla paketeille jotka ovat asennettuna sinun "
+#~ "järjestelmässä."
+
+#~ msgid ""
+#~ "Click the <img src=\"update.png\" border=\"0\"> icon below to select and "
+#~ "install the updated packages."
+#~ msgstr ""
+#~ "Klikkaa <img src=\"update.png\" border=\"0\"> ikoonia alla ja valitse "
+#~ "sekä asenna päivitetyt paketit."
+
+#~ msgid "The system storage media is not large enough to install packages."
+#~ msgstr ""
+#~ "Järjestelmän tallennus media ei ole riittävän iso jotta voisi asentaa "
+#~ "paketteja."
+
+#~ msgid ""
+#~ "A minimum of %sMB is required. In the future, external media will be able "
+#~ "to be used, but currently packages must be stored on the internal system "
+#~ "media."
+#~ msgstr ""
+#~ "Minimi %sMt on pakollinen. Tulevaisuudessa, ulkoinen media tulee "
+#~ "toimimaan, mutta tällä hetkellä paketit on tallennettava sisäiselle "
+#~ "medialle."
+
+#~ msgid ""
+#~ "The following packages issued warnings while verifying their digital "
+#~ "signature. This means that they are not official/supported packages and "
+#~ "may lead to unexpected behavior or security compromises. Only install "
+#~ "packages that come from sources that you trust, and make sure that they "
+#~ "have not been tampered with.<br><br>Check the packages you wish to "
+#~ "install despite this warning."
+#~ msgstr ""
+#~ "Seuraavat paketit aiheuttivat varoituksen varmistaessa digitaalisen "
+#~ "allekirjoituksen. Tämä tarkoittaa että ne ei ole virallisia/tuettuja "
+#~ "paketteja ja se voi johtaa yllättävään käytökseen tai turvallisuuden "
+#~ "vaarantamiseen. Älä asenna pakettia jos et luota lähteeseen. "
+#~ "<br><br>Tarkista paketit jotka aiheuttivat tämän varoituksen."
+
+#~ msgid "Continue"
+#~ msgstr "Jatka"
+
+#~ msgid "Do you really want to disable this package?"
+#~ msgstr "Oletko varma että haluat poistaa tämän paketin käytöstä?"
+
+#~ msgid "click to disable package"
+#~ msgstr "klikkaa poistaaksesi paketti käytöstä"
+
+#~ msgid "click to enable package"
+#~ msgstr "klikkaa mahdollistaaksesi paketti"
+
+#~ msgid "backup package data"
+#~ msgstr "tallenna pakettitiedot"
+
+#~ msgid ""
+#~ "Do you really want to permanently delete this package\\'s configuration "
+#~ "and data?"
+#~ msgstr ""
+#~ "Oletko varma että haluat poistaa tämän paketin konfigurointi sekä tiedot?"
+
+#~ msgid "delete package configuration and data"
+#~ msgstr "poista paketin konfigurointi sekä tiedot"
+
+#~ msgid "install new package"
+#~ msgstr "asenna uusi paketti"
+
+#~ msgid "update package to newer version"
+#~ msgstr "päivitä paketti"
+
+#~ msgid "restore package data"
+#~ msgstr "palauta pakettitiedot"
+
+#~ msgid "Update Installed Package"
+#~ msgstr "Päivitä Asennettu Paketti"
+
+#~ msgid ""
+#~ "Select which packages you would like to update, existing package data "
+#~ "will be preserved."
+#~ msgstr ""
+#~ "Valitse paketit mitkä haluat päivittää, olevien pakettien tiedot "
+#~ "säilytetään."
+
+#~ msgid ""
+#~ "Select a .pbxpkg file from your computer to update from, existing package "
+#~ "data will be preserved."
+#~ msgstr ""
+#~ "Valitse .pkgpbx tiedosto josta haluat päivittää, olevien pakettien tiedot "
+#~ "säilytetään."
+
+#~ msgid "Manual Update"
+#~ msgstr "Manuaalinen Päivitys"
+
+#~ msgid "Install a New Package"
+#~ msgstr "Asenna Uusi Paketti"
+
+#~ msgid "Select which packages you would like to install."
+#~ msgstr "Valitse paketit mitkä haluat asentaa."
+
+#~ msgid "Install"
+#~ msgstr "Asenna"
+
+#~ msgid "No new packages available."
+#~ msgstr "Uusia paketteja ei ole saatavilla."
+
+#~ msgid "Select a .pbxpkg file from your computer to install."
+#~ msgstr "Valitse .pbxpkg tiedosto jonka haluat asentaa."
+
+#~ msgid "Manual Install"
+#~ msgstr "Manuaalinen Asennus"
+
+#~ msgid "Restore from a Backup Archive"
+#~ msgstr "Palauta varmuuskopiosta"
+
+#~ msgid "Select a backup .tgz archive and press 'Restore'"
+#~ msgstr "Valitse varmuuskopion .tgz paketti ja paina 'Palauta'"
+
+#~ msgid "Package data and logic will be replaced by the backup."
+#~ msgstr "Paketin tiedot sekä logiikka korvataan varmuuskopiolla."
+
+#~ msgid "Restore"
+#~ msgstr "Palauta"
+
+#, fuzzy
+#~ msgid ""
+#~ "The PBX automatically allocates leftover space for permanent storage. "
+#~ "Packages to extend the system's functionality can be installed in this "
+#~ "space."
+#~ msgstr ""
+#~ "AskoziaPBX varaa automaattisesti ylimääräiseksi jäänyttä tilaa jatkuvaan "
+#~ "tallennukseen. Paketit jotka täydentävät ohjelmiston toimintaa voi "
+#~ "asentaa tähän."
+
+#~ msgid "Capacity"
+#~ msgstr "Kapasiteetti"
+
+#~ msgid "Installed Packages"
+#~ msgstr "Asennetut Paketit"
+
+#~ msgid "system storage partition"
+#~ msgstr "järjestelmän tallennus osio"
+
+#~ msgid "state"
+#~ msgstr "tila"
+
+#~ msgid "Edit Disk"
+#~ msgstr "Muokkaa Levyä"
+
+#~ msgid "descriptive name"
+#~ msgstr "kuvaileva nimi"
+
+#~ msgid "<p>This status page includes the following information:\n"
+#~ msgstr "<p>Tämä tila sivu antaa seuraavat tiedot:\n"
+
+#~ msgid ""
+#~ "Note: make sure to remove any sensitive information (passwords, maybe "
+#~ "also IP addresses) before posting information from this page in public "
+#~ "places (like mailing lists)!"
+#~ msgstr ""
+#~ "Huom: muista poistaa kaikki herkät tiedot (salasanat, myös IP osoitteet) "
+#~ "ennen kun postitat tältä sivulta johonkin julkiseen paikkaan (kuten "
+#~ "postituslistoille)!"
+
+#~ msgid "Passwords in config.xml have been automatically removed."
+#~ msgstr "Salasanat ovat automaattisesti poistetut config.xml tiedostosta."
 
 #, fuzzy
 #~ msgid "FAX"
