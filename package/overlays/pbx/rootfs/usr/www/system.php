@@ -128,7 +128,6 @@ if ($_POST) {
 			$retval |= system_timezone_configure();
  			$retval |= system_cron_configure();
 			$retval |= indications_conf_generate();
-			$retval |= pbx_exec("module reload res_indications.so");
 			config_unlock();
 		}
 		

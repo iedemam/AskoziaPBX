@@ -78,8 +78,13 @@ function pbx_configure() {
 	$res |= rtp_conf_generate();
 	if ($g['booting']) echo "done\n";
 
+	if ($g['booting']) echo "   |- generating udptl configuration...";
+	$res |= udptl_conf_generate();
+	if ($g['booting']) echo "done\n";
+
 	if ($g['booting']) echo "   |- generating sip configuration...";
 	$res |= sip_conf_generate();
+	$res |= sip_notify_conf_generate();
 	if ($g['booting']) echo "done\n";
 
 	if ($g['booting']) echo "   |- generating iax configuration...";
@@ -115,6 +120,29 @@ function pbx_configure() {
 	if ($g['booting']) echo "   |- generating gsm configuration...";
 	$res |= gsm_conf_generate();
 	if ($g['booting']) echo "done\n";
+
+	if ($g['booting']) echo "   |- generating call detail records configuration...";
+	$res |= cdr_conf_generate();
+	$res |= cdr_custom_conf_generate();
+	if ($g['booting']) echo "done\n";
+
+	if ($g['booting']) echo "   |- generating answering machine detection configuration...";
+	$res |= amd_conf_generate();
+	if ($g['booting']) echo "done\n";
+
+	if ($g['booting']) echo "   |- generating enum configuration...";
+	$res |= enum_conf_generate();
+	if ($g['booting']) echo "done\n";
+
+	if ($g['booting']) echo "   |- generating say configuration...";
+	$res |= say_conf_generate();
+	if ($g['booting']) echo "done\n";
+
+	if ($g['booting']) echo "   |- generating smdi configuration...";
+	$res |= smdi_conf_generate();
+	if ($g['booting']) echo "done\n";
+
+
 
 	if ($g['booting']) echo "   |- executing Asterisk...";
 	$res |= pbx_start();
@@ -1015,6 +1043,7 @@ text2wave=/usr/bin/flite_cmu_us_kal	; path to text2wave functionality
 swift=/opt/swift/bin/swift			; path to switft binary
 voice=David							; default voice
 
+
 EOD;
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/phpagi.conf", $conf);
@@ -1055,6 +1084,7 @@ debug = 0
 dumpcore = no
 internal_timing = yes
 highpriority = yes
+hideconnect = yes
 
 
 EOD;
@@ -1094,8 +1124,211 @@ event_log = no
 [logfiles]
 syslog.local0 => verbose,notice,warning,error,debug
 $astlogopt
+
+
 EOD;
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/logger.conf", $conf);
 }
+
+function udptl_conf_generate($return=false) {
+
+$conf = <<<EOD
+[general]
+udptlstart=4500
+udptlend=4599
+udptlfecentries=3
+udptlfecspan=3
+use_even_ports=no
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/udptl.conf", $conf);
+}
+
+function cdr_conf_generate($return=false) {
+
+$conf = <<<EOD
+[general]
+enable=yes
+
+[csv]
+usegmtime=no
+loguniqueid=no
+loguserfield=no
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr.conf", $conf);
+}
+
+function cdr_custom_conf_generate($return=false) {
+
+$conf = <<<EOD
+[mappings]
+Master.csv => "${CDR(clid)}","${CDR(src)}","${CDR(dst)}","${CDR(dcontext)}","${CDR(channel)}","${CDR(dstchannel)}","${CDR(lastapp)}","${CDR(lastdata)}","${CDR(start)}","${CDR(answer)}","${CDR(end)}","${CDR(duration)}","${CDR(billsec)}","${CDR(disposition)}","${CDR(amaflags)}","${CDR(accountcode)}","${CDR(uniqueid)}","${CDR(userfield)}"
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_custom.conf", $conf);
+}
+
+function amd_conf_generate($return=false) {
+
+$conf = <<<EOD
+[general]
+initial_silence = 2500
+greeting = 1500
+after_greeting_silence = 800
+total_analysis_time = 5000
+min_word_length = 100
+between_words_silence = 50
+maximum_number_of_words = 3
+silence_threshold = 256
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/amd.conf", $conf);
+}
+
+function enum_conf_generate($return=false) {
+
+$conf = <<<EOD
+[general]
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/enum.conf", $conf);
+}
+
+function say_conf_generate($return=false) {
+
+$conf = <<<EOD
+[general]
+mode=old
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/say.conf", $conf);
+}
+
+function smdi_conf_generate($return=false) {
+
+$conf = <<<EOD
+[interfaces]
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/smdi.conf", $conf);
+}
+
+function sip_notify_conf_generate($return=false) {
+
+$conf = <<<EOD
+[aastra-check-cfg]
+Event=>check-sync
+
+[aastra-xml]
+Event=>aastra-xml
+
+[linksys-cold-restart]
+Event=>reboot_now
+
+[linksys-warm-restart]
+Event=>restart_now
+
+[polycom-check-cfg]
+Event=>check-sync
+
+[sipura-check-cfg]
+Event=>resync
+
+[sipura-get-report]
+Event=>report
+
+[snom-check-cfg]
+Event=>check-sync\;reboot=false
+
+[snom-reboot]
+Event=>reboot
+
+[cisco-check-cfg]
+Event=>check-sync
+
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/sip_notify.conf", $conf);
+}
+
+
+
+
+
+
+
+/* boilerplate functions still needed to configure files not yet touched by the gui */
+
+/*
+adsi.conf.sample
+adtranvofr.conf.sample
+agents.conf.sample
+ais.conf.sample
+alarmreceiver.conf.sample
+alsa.conf.sample
+cdr_adaptive_odbc.conf.sample
+cdr_manager.conf.sample
+cdr_odbc.conf.sample
+cdr_pgsql.conf.sample
+cdr_sqlite3_custom.conf.sample
+cdr_tds.conf.sample
+cli.conf.sample
+cli_aliases.conf.sample
+cli_permissions.conf.sample
+codecs.conf.sample
+console.conf.sample
+dbsep.conf.sample
+dnsmgr.conf.sample
+dsp.conf.sample
+dundi.conf.sample
+extconfig.conf.sample
+extensions_minivm.conf.sample
+festival.conf.sample
+followme.conf.sample
+func_odbc.conf.sample
+gtalk.conf.sample
+h323.conf.sample
+http.conf.sample
+iaxprov.conf.sample
+jabber.conf.sample
+jingle.conf.sample
+mgcp.conf.sample
+minivm.conf.sample
+misdn.conf.sample
+muted.conf.sample
+osp.conf.sample
+oss.conf.sample
+phone.conf.sample
+phoneprov.conf.sample
+queuerules.conf.sample
+queues.conf.sample
+res_config_sqlite.conf.sample
+res_ldap.conf.sample
+res_odbc.conf.sample
+res_pgsql.conf.sample
+res_snmp.conf.sample
+sla.conf.sample
+unistim.conf.sample
+usbradio.conf.sample
+users.conf.sample
+vpb.conf.sample
+*/
+
 ?>
