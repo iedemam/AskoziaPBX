@@ -123,6 +123,7 @@ function storage_verify_disk($post, $errors) {
 	v_checkbox('media', &$disk, &$post);
 	v_checkbox('persistence', &$disk, &$post);
 	v_checkbox('astlogs', &$disk, &$post);
+	v_checkbox('faxarchive', &$disk, &$post);
 
 	$trusted = array(
 		'uniqid'

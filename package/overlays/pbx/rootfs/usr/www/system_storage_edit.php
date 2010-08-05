@@ -166,6 +166,13 @@ if (!$initialformat && !count($unassigneddisks)) {
 		d_blanklabel(gettext("Asterisk logs"),
 			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['astlogs']));
 	}
+	// Fax Archive
+	if (!$assignedservices['faxarchive']) {
+		d_checkbox(gettext("Fax Archive"), gettext("store virtual faxes on disk"), "faxarchive");
+	} else {
+		d_blanklabel(gettext("Fax Archive"),
+			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['faxarchive']));
+	}
 	d_spacer();
 
 

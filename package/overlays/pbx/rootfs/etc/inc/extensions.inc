@@ -913,33 +913,32 @@ function extensions_generate_virtual_fax_context($f, $from_public=false, $extens
 
 	$conf = "; " . $f['name'] . "\n";
 	$conf .= "[" . $f['uniqid'] . "]\n";
-	$conf .= "exten => _[0-9a-zA-Z*#]!,1,Set(PRODUCTNAME=$product_name)\n";
-	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Set(SENDEREMAIL={$emailconfig['address']})\n";
-	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Ringing()\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,1,Ringing()\n";
 	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Wait(6)\n";
-	$conf .= "exten => _[0-9a-zA-Z*#]!,n,ReceiveFAX(/tmp/$\{UNIQUEID})\n";
+	$conf .= "exten => _[0-9a-zA-Z*#]!,n,ReceiveFAX(/tmp/fax-$\{UNIQUEID})\n";
 	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Hangup()\n";
-	$conf .= "exten => s,1,Set(PRODUCTNAME=$product_name)\n";
-	$conf .= "exten => s,n,Set(SENDEREMAIL={$emailconfig['address']})\n";
-	$conf .= "exten => s,n,Ringing()\n";
+	$conf .= "exten => s,1,Ringing()\n";
 	$conf .= "exten => s,n,Wait(6)\n";
-	$conf .= "exten => s,n,ReceiveFAX(/tmp/$\{UNIQUEID})\n";
+	$conf .= "exten => s,n,ReceiveFAX(/tmp/fax-$\{UNIQUEID})\n";
 	$conf .= "exten => s,n,Hangup()\n";
-	$conf .= "exten => h,1,System(tiff2pdf /tmp/$\{UNIQUEID} -o /tmp/$\{UNIQUEID}.pdf)\n";
+	$conf .= "exten => h,1,Set(FAXFILENAME=virtualfax-" . $f['extension'] . "-$\{STRFTIME($\{EPOCH},,%Y-%m-%d-%H-%M-%S)}.pdf)\n";
+	$conf .= "exten => h,n,System(tiff2pdf /tmp/fax-$\{UNIQUEID} -o /tmp/$\{FAXFILENAME})\n";
 	$conf .= "exten => h,n,System(touch /tmp/email-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(echo \"date: \`date\`\" > /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo \"to: ".$f['email']."\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"to: " . $f['email'] . "\" >> /tmp/email-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(echo \"subject: New Fax from \$\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo \"from:  $\{PRODUCTNAME} Fax <$\{SENDEREMAIL}>\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo >> /tmp/email-$\{UNIQUEID}\n";
+	$conf .= "exten => h,n,System(echo \"from: $product_name Fax <{$emailconfig['address']}>\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo >> /tmp/email-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(echo \"$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(uuencode /tmp/$\{UNIQUEID}.pdf fax.pdf >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(uuencode /tmp/$\{FAXFILENAME} $\{FAXFILENAME} >> /tmp/email-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(rm /tmp/$\{UNIQUEID})\n";
+	if ($disk = storage_service_is_active("faxarchive")) {
+		$archivepath = $disk['mountpoint'] . "/askoziapbx/faxarchive/";
+		$conf .= "exten => h,n,System(cp /tmp/$\{FAXFILENAME} $archivepath)\n";
+	}
+	$conf .= "exten => h,n,System(rm /tmp/$\{FAXFILENAME})\n";
+	$conf .= "exten => h,n,System(rm /tmp/fax-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID})\n";
-	// TO DO : peristent storage archive for fax-pdf
-	//      $conf .= "exten => h,n,System(mv /tmp/$\{UNIQUEID}.pdf /path/to/peristent_fax_archive)\n";
-	$conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID}.pdf)\n";
 	$conf .= "\n";
 
 	return $conf;

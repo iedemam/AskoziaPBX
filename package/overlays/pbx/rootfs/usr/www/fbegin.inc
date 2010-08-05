@@ -183,6 +183,9 @@ if (storage_service_is_active("media")) {
 	$menu['Services'][gettext("Media")]			= array('services_voiceprompts.php',
 												'services_musiconhold.php');
 }
+if (storage_service_is_active("faxarchive")) {
+	$menu['Services'][gettext("Fax Archive")]	= array('services_faxarchive.php');
+}
 
 /* Status */
 $menu['Status'][gettext("Summary")]				= array('index.php');
