@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -975,6 +975,9 @@ msgstr "Συνδιασκέψεις"
 
 msgid "Media"
 msgstr "Μέσον"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Περίληψη"
@@ -3071,6 +3074,13 @@ msgstr ""
 "Ένα προαιρετικό PIN για να επιτραπεί η πρόσβαση σε αυτόν τον χώρο "
 "συνδιάσκεψης."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Δεν βρέθηκαν εγγραφές."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Πρέπει να καταχωρήσετε μια έγκυρη διεύθυνση e-mail για την \"διεύθυνση "
@@ -3579,6 +3589,10 @@ msgstr ""
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "Εγγραφές ημερολογίου Asterisk"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "Εγγραφές ημερολογίου Asterisk"
 
 msgid "ERR Could not save configuration.\n"
@@ -4525,9 +4539,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "Οι επιλεγμένες διαπαφές θα γεφυρωθούν με την κύρια διεπαφή."
-
-#~ msgid "No matches found."
-#~ msgstr "Δεν βρέθηκαν εγγραφές."
 
 #~ msgid "PBX"
 #~ msgstr "Τηλεφωνικό κέντρο"

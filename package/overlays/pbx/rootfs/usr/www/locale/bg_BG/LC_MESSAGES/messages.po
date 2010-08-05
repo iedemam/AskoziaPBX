@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -931,6 +931,9 @@ msgstr "Конференции"
 
 msgid "Media"
 msgstr "Медия"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Резюме"
@@ -2897,6 +2900,13 @@ msgstr "Код за Достъп"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Незадължителен код необходим за достъп до тази стая за конференции."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Не са намерени съвпадения."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "A valid e-mail address must be specified for the \"from address\"."
 
@@ -3345,6 +3355,10 @@ msgstr "съхранявай Астериск база данни на диск�
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "съхранявай Астериск база данни на диска"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "съхранявай Астериск база данни на диска"
 
 msgid "ERR Could not save configuration.\n"
@@ -4252,9 +4266,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "Маркираният интерфейс ще бъде привързан към главния интерфейс."
-
-#~ msgid "No matches found."
-#~ msgstr "Не са намерени съвпадения."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

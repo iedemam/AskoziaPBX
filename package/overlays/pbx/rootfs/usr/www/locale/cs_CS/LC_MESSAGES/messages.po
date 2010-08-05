@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -927,6 +927,9 @@ msgstr "Telekonference"
 #, fuzzy
 msgid "Media"
 msgstr "Indie"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Souhrn"
@@ -2878,6 +2881,12 @@ msgstr "Přístupový kód (PIN)"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Pro přístup do této konference je třeba dodatečně zadat PIN."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+msgid "no faxes found"
+msgstr ""
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
@@ -3328,6 +3337,10 @@ msgstr ""
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "Záznamy Asterisku"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "Záznamy Asterisku"
 
 msgid "ERR Could not save configuration.\n"

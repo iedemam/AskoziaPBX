@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -890,6 +890,9 @@ msgstr "Konferanslaşma"
 #, fuzzy
 msgid "Media"
 msgstr "Hindistan"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Özet"
@@ -2837,6 +2840,13 @@ msgstr "Giriş PİN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Bu konferans odasına giriş için isteğe bağlı PİN gerekli."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Uyum bulunamadı."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\" için geçerli e-posta adresi belirtilmeli."
 
@@ -3278,6 +3288,10 @@ msgstr ""
 msgid "store Asterisk's logs on disk"
 msgstr "Asterisk log kayıtları"
 
+#, fuzzy
+msgid "store virtual faxes on disk"
+msgstr "Asterisk log kayıtları"
+
 msgid "ERR Could not save configuration.\n"
 msgstr ""
 
@@ -3716,9 +3730,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Configured"
 #~ msgstr "ayarlanmamış"
-
-#~ msgid "No matches found."
-#~ msgstr "Uyum bulunamadı."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

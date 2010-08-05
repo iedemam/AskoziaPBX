@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -933,6 +933,9 @@ msgstr "Vergaderen"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Overzicht"
@@ -2908,6 +2911,14 @@ msgstr "Toegangs Pincode"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Optionele pincode vereist om in deze vergaderruimte te komen"
 
+#, fuzzy
+msgid "All Virtual Faxes"
+msgstr "Virtuele Faxen"
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Geen overeenkomsten gevonden."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Een geldig e-mail adres moet opgegeven worden voor het \"van\" adres."
 
@@ -3367,6 +3378,10 @@ msgstr "Asterisk's database opslaan op schijf"
 
 msgid "store Asterisk's logs on disk"
 msgstr "Asterisk's logs opslaan op schijf"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
+msgstr "Asterisk's database opslaan op schijf"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "FOUT Kan configuratie niet opslaan.\n"
@@ -4125,9 +4140,6 @@ msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "Aangevinkte interfaces worden overbrugd naar de hoofd interface."
-
-#~ msgid "No matches found."
-#~ msgstr "Geen overeenkomsten gevonden."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

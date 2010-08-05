@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: part of AskoziaPBX (http://askozia.com/pbx)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: 2010-07-15 08:43-0300\n"
 "Last-Translator: Facundo Ameal <facundo.ameal@railtion.com.ar>\n"
 "Language-Team: es_AR <LI@li.org>\n"
@@ -929,6 +929,9 @@ msgstr "Salas de Conferencia"
 
 msgid "Media"
 msgstr "Media"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Resumen"
@@ -2930,6 +2933,14 @@ msgstr "PIN de acceso"
 msgid "Optional PIN needed to access this conference room."
 msgstr "El PIN opcional se necesita para acceder a esta sala de conferencia."
 
+#, fuzzy
+msgid "All Virtual Faxes"
+msgstr "Editar"
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "No se encontraron coincidencias."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Debe ser especificada una dirección de e-mail para la \"dirección remitente\""
@@ -3388,6 +3399,10 @@ msgstr "almacenar base de datos de Asterisk en este disco"
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "almacenar base de datos de Asterisk en este disco"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "almacenar base de datos de Asterisk en este disco"
 
 msgid "ERR Could not save configuration.\n"
@@ -4119,9 +4134,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "Los interfaces comprobados serán puenteados al interfaz principal."
-
-#~ msgid "No matches found."
-#~ msgstr "No se encontraron coincidencias."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

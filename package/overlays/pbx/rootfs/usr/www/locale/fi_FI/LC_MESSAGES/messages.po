@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -959,6 +959,9 @@ msgstr "Konferenssit"
 
 msgid "Media"
 msgstr "Tiedotusväline"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Tiivistelmä"
@@ -3003,6 +3006,13 @@ msgstr "PIN Koodi"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Valinnainen koodi joka tarvitaan tähän huoneeseen."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Osumia ei löytynyt."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Kelpaava s-posti osoite on oltava määritetty \"osoitteesta\" tunnukselle."
@@ -3476,6 +3486,10 @@ msgstr ""
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "Asterisk loki tallennukset"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "Asterisk loki tallennukset"
 
 msgid "ERR Could not save configuration.\n"
@@ -4389,9 +4403,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ msgstr ""
 #~ "Valitut käyttöliittymät tulevat olemaan sillattuja ensisijaiseen "
 #~ "käyttäliittymään."
-
-#~ msgid "No matches found."
-#~ msgstr "Osumia ei löytynyt."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

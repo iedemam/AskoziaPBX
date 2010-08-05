@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -925,6 +925,9 @@ msgstr "電話会議"
 
 msgid "Media"
 msgstr "メディア"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "概要"
@@ -2859,6 +2862,14 @@ msgstr "入室用パスワード"
 msgid "Optional PIN needed to access this conference room."
 msgstr "この会議室に入室するのに必要なパスワード(オプション)"
 
+#, fuzzy
+msgid "All Virtual Faxes"
+msgstr "バーチャルファックス"
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "該当する項目が見つかりません"
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "\"from address\"に対して、有効なe-mailアドレスを指定する必要があります"
 
@@ -3318,6 +3329,10 @@ msgstr "Asteriskのデータベースをディスク上に保管する"
 
 msgid "store Asterisk's logs on disk"
 msgstr "ディスク上に保存されたAsterisk(AskoziaPBX)ログ"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
+msgstr "Asteriskのデータベースをディスク上に保管する"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR 設定を保存出来ませんでした\n"
@@ -4224,9 +4239,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ msgstr ""
 #~ "インターフェースをチェックすると、主たるインターフェースをブリッジさせる事"
 #~ "が出来ます"
-
-#~ msgid "No matches found."
-#~ msgstr "該当する項目が見つかりません"
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

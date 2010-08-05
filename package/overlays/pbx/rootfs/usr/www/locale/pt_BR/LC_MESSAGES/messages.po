@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -838,6 +838,9 @@ msgid "Conferencing"
 msgstr ""
 
 msgid "Media"
+msgstr ""
+
+msgid "Fax Archive"
 msgstr ""
 
 msgid "Summary"
@@ -2667,6 +2670,12 @@ msgstr ""
 msgid "Optional PIN needed to access this conference room."
 msgstr ""
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+msgid "no faxes found"
+msgstr ""
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 
@@ -3077,6 +3086,9 @@ msgid "store Asterisk's database on disk"
 msgstr ""
 
 msgid "store Asterisk's logs on disk"
+msgstr ""
+
+msgid "store virtual faxes on disk"
 msgstr ""
 
 msgid "ERR Could not save configuration.\n"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -918,6 +918,9 @@ msgstr "Konference"
 
 msgid "Media"
 msgstr "Medie"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Oversigt"
@@ -2878,6 +2881,13 @@ msgstr "Adgangs PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Optinal PIN kode for at få adgang til dette konference rum."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Ingen matchende fundet."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "En gyldig email adresse skal angives i \"fra addesse\"."
 
@@ -3323,6 +3333,10 @@ msgstr "gem Asterisk database på disk"
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "gem Asterisk database på disk"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "gem Asterisk database på disk"
 
 msgid "ERR Could not save configuration.\n"
@@ -4134,9 +4148,6 @@ msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr ""
 #~ "Afkrydsende interfaces vil blive sammenkoblet til det pimære interface."
-
-#~ msgid "No matches found."
-#~ msgstr "Ingen matchende fundet."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

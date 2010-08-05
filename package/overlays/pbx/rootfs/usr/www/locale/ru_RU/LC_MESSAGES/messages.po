@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -918,6 +918,9 @@ msgstr "Конференц-связь"
 
 msgid "Media"
 msgstr "Голосовые файлы"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Сводка"
@@ -2867,6 +2870,13 @@ msgstr "ПИН-код доступа"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Для доступа к этой конференц-комнате нужен дополнительный PIN."
 
+#, fuzzy
+msgid "All Virtual Faxes"
+msgstr "Виртуальные факсы"
+
+msgid "no faxes found"
+msgstr ""
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Адрес электронной почты, должен быть указан для \"от кого\"."
 
@@ -3316,6 +3326,10 @@ msgstr "хранить базу данных Asterisk на диске"
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "хранить базу данных Asterisk на диске"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "хранить базу данных Asterisk на диске"
 
 msgid "ERR Could not save configuration.\n"

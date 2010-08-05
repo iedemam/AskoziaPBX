@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -930,6 +930,9 @@ msgstr "Konferencje"
 
 msgid "Media"
 msgstr "Pliki mediów"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Podsumowanie"
@@ -2886,6 +2889,13 @@ msgstr "Kod dostępu PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "Opcjonalny kod PIN niezbędny do dostępu do tej sali."
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Brak trafień."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "W polu \"Adres źródłowy\" musi znajdować się poprawny adres e-mail."
 
@@ -3343,6 +3353,10 @@ msgstr "przechowuj bazę danych Asteriska na tym dysku"
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "przechowuj bazę danych Asteriska na tym dysku"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "przechowuj bazę danych Asteriska na tym dysku"
 
 msgid "ERR Could not save configuration.\n"
@@ -4177,9 +4191,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "Zaznaczone interfejsy będą zmostkowane z głównym interfejsem."
-
-#~ msgid "No matches found."
-#~ msgstr "Brak trafień."
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

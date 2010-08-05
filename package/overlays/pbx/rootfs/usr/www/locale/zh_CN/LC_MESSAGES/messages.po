@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -944,6 +944,9 @@ msgstr "会议"
 
 msgid "Media"
 msgstr "媒体"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "摘要"
@@ -2926,6 +2929,13 @@ msgstr "接入验证码(PIN)"
 msgid "Optional PIN needed to access this conference room."
 msgstr "接入此会议室需要可选的验证码。"
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "没有找到匹配的"
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "必须为\"来自地址\"指定一个有效的电邮地址。"
 
@@ -3381,6 +3391,10 @@ msgstr ""
 
 #, fuzzy
 msgid "store Asterisk's logs on disk"
+msgstr "Asterisk日志条目"
+
+#, fuzzy
+msgid "store virtual faxes on disk"
 msgstr "Asterisk日志条目"
 
 msgid "ERR Could not save configuration.\n"
@@ -4223,9 +4237,6 @@ msgstr "ERR 收到无效的配置。\n"
 
 #~ msgid "Checked interfaces will be bridged to the main interface."
 #~ msgstr "选定的接口会被桥接到主接口。"
-
-#~ msgid "No matches found."
-#~ msgstr "没有找到匹配的"
 
 #~ msgid "PBX"
 #~ msgstr "PBX"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-04 16:48+0200\n"
+"POT-Creation-Date: 2010-08-05 13:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -933,6 +933,9 @@ msgstr "Telefonkonferenzen"
 
 msgid "Media"
 msgstr "Medium"
+
+msgid "Fax Archive"
+msgstr ""
 
 msgid "Summary"
 msgstr "Zusammenfassung"
@@ -2945,6 +2948,13 @@ msgstr "Zugriffs-PIN"
 msgid "Optional PIN needed to access this conference room."
 msgstr "optionale PIN für den Zugriff auf diesen Konferenzraum"
 
+msgid "All Virtual Faxes"
+msgstr ""
+
+#, fuzzy
+msgid "no faxes found"
+msgstr "Keine Treffer."
+
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr ""
 "Eine gültige eMail-Adresse muß als \"Absender-Adresse\" angegeben werden."
@@ -3416,6 +3426,10 @@ msgstr "Asterisk's Datenbank auf Disk speichern"
 msgid "store Asterisk's logs on disk"
 msgstr "Asterisk's Datenbank auf Disk speichern"
 
+#, fuzzy
+msgid "store virtual faxes on disk"
+msgstr "Asterisk's Datenbank auf Disk speichern"
+
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR Konfiguration konnte nicht gespeichert werden.\n"
 
@@ -3799,9 +3813,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "Open"
 #~ msgstr "Öffnen"
-
-#~ msgid "No matches found."
-#~ msgstr "Keine Treffer."
 
 #~ msgid "PBX"
 #~ msgstr "Nebenstellenanlage"
