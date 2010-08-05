@@ -1168,7 +1168,7 @@ function cdr_custom_conf_generate($return=false) {
 
 $conf = <<<EOD
 [mappings]
-Master.csv => "${CDR(clid)}","${CDR(src)}","${CDR(dst)}","${CDR(dcontext)}","${CDR(channel)}","${CDR(dstchannel)}","${CDR(lastapp)}","${CDR(lastdata)}","${CDR(start)}","${CDR(answer)}","${CDR(end)}","${CDR(duration)}","${CDR(billsec)}","${CDR(disposition)}","${CDR(amaflags)}","${CDR(accountcode)}","${CDR(uniqueid)}","${CDR(userfield)}"
+Master.csv => "$\{CDR(clid)}","$\{CDR(src)}","$\{CDR(dst)}","$\{CDR(dcontext)}","$\{CDR(channel)}","$\{CDR(dstchannel)}","$\{CDR(lastapp)}","$\{CDR(lastdata)}","$\{CDR(start)}","$\{CDR(answer)}","$\{CDR(end)}","$\{CDR(duration)}","$\{CDR(billsec)}","$\{CDR(disposition)}","$\{CDR(amaflags)}","$\{CDR(accountcode)}","$\{CDR(uniqueid)}","$\{CDR(userfield)}"
 
 
 EOD;
