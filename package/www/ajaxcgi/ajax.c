@@ -140,7 +140,7 @@ void exec_ami(char * command) {
 
 	FILE * shell_pipe;
 	char output_buffer[81];
-	char * prefix = "/usr/sbin/asterisk -rx ";
+	char * prefix = "/usr/sbin/asterisk -n -rx ";
 	char total_command[strlen(prefix) + strlen(command) + 1];
 
 	strcpy(total_command, prefix);
