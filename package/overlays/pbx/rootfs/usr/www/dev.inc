@@ -281,33 +281,33 @@
 		<div id="devtabs-3">
 			<select name="devfilelist" id="devfilelist">
 				<option>Asterisk Configuration</option>
-				<option value="/etc/asterisk/amd.conf">amd.conf</option>
-				<option value="/etc/asterisk/asterisk.conf">asterisk.conf</option>
-				<option value="/etc/asterisk/cdr.conf">cdr.conf</option>
-				<option value="/etc/asterisk/cdr_custom.conf">cdr_custom.conf</option>
-				<option value="/etc/asterisk/chan_dahdi.conf">chan_dahdi.conf</option>
-				<option value="/etc/asterisk/extensions.conf">extensions.conf</option>
-				<option value="/etc/asterisk/features.conf">features.conf</option>
-				<option value="/etc/asterisk/gsm.conf">gsm.conf</option>
-				<option value="/etc/asterisk/iax.conf">iax.conf</option>
-				<option value="/etc/asterisk/indications.conf">indications.conf</option>
-				<option value="/etc/asterisk/logger.conf">logger.conf</option>  
-				<option value="/etc/asterisk/manager.conf">manager.conf</option>
-				<option value="/etc/asterisk/meetme.conf">meetme.conf</option>
-				<option value="/etc/asterisk/modules.conf">modules.conf</option>
-				<option value="/etc/asterisk/musiconhold.conf">musiconhold.conf</option>
-				<option value="/etc/asterisk/phpagi.conf">phpagi.conf</option>
-				<option value="/etc/asterisk/rtp.conf">rtp.conf</option>
-				<option value="/etc/asterisk/say.conf">say.conf</option>
-				<option value="/etc/asterisk/smdi.conf">smdi.conf</option>
-				<option value="/etc/asterisk/sip.conf">sip.conf</option>
-				<option value="/etc/asterisk/sip_notify.conf">sip_notify.conf</option>
-				<option value="/etc/asterisk/skinny.conf">skinny.conf</option>
-				<option value="/etc/asterisk/udptl.conf">udptl.conf</option>
-				<option value="/etc/asterisk/voicemail.conf">voicemail.conf</option>
+				<option value="/etc/asterisk/amd.conf"> - amd.conf</option>
+				<option value="/etc/asterisk/asterisk.conf"> - asterisk.conf</option>
+				<option value="/etc/asterisk/cdr.conf"> - cdr.conf</option>
+				<option value="/etc/asterisk/cdr_custom.conf"> - cdr_custom.conf</option>
+				<option value="/etc/asterisk/chan_dahdi.conf"> - chan_dahdi.conf</option>
+				<option value="/etc/asterisk/extensions.conf"> - extensions.conf</option>
+				<option value="/etc/asterisk/features.conf"> - features.conf</option>
+				<option value="/etc/asterisk/gsm.conf"> - gsm.conf</option>
+				<option value="/etc/asterisk/iax.conf"> - iax.conf</option>
+				<option value="/etc/asterisk/indications.conf"> - indications.conf</option>
+				<option value="/etc/asterisk/logger.conf"> - logger.conf</option>  
+				<option value="/etc/asterisk/manager.conf"> - manager.conf</option>
+				<option value="/etc/asterisk/meetme.conf"> - meetme.conf</option>
+				<option value="/etc/asterisk/modules.conf"> - modules.conf</option>
+				<option value="/etc/asterisk/musiconhold.conf"> - musiconhold.conf</option>
+				<option value="/etc/asterisk/phpagi.conf"> - phpagi.conf</option>
+				<option value="/etc/asterisk/rtp.conf"> - rtp.conf</option>
+				<option value="/etc/asterisk/say.conf"> - say.conf</option>
+				<option value="/etc/asterisk/smdi.conf"> - smdi.conf</option>
+				<option value="/etc/asterisk/sip.conf"> - sip.conf</option>
+				<option value="/etc/asterisk/sip_notify.conf"> - sip_notify.conf</option>
+				<option value="/etc/asterisk/skinny.conf"> - skinny.conf</option>
+				<option value="/etc/asterisk/udptl.conf"> - udptl.conf</option>
+				<option value="/etc/asterisk/voicemail.conf"> - voicemail.conf</option>
 				<option>Misc. Configuration</option>
-				<option value="/etc/dahdi/system.conf">/etc/dahdi/system.conf</option>
-				<option value="/var/spool/cron/crontabs/root">/var/spool/cron/crontabs/root</option>
+				<option value="/etc/dahdi/system.conf"> - /etc/dahdi/system.conf</option>
+				<option value="/var/spool/cron/crontabs/root"> - /var/spool/cron/crontabs/root</option>
 			</select>
 			&nbsp;<a href="javascript:{}" onclick="dev_file_get();" class="ui-state-default ui-corner-all">edit</a>
 			<br>
