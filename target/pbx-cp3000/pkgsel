@@ -47,6 +47,7 @@ X openssl
 X asterisk16
 X spandsp
 X libtiff
+X libresample
 
 # text2speech
 #X flite
