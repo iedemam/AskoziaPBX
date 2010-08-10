@@ -1725,7 +1725,7 @@ msgstr "lue:"
 msgid "write:"
 msgstr "kirjoita:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "muokkaa hallinto huonetta"
 
 msgid "Do you really want to delete this manager user?"

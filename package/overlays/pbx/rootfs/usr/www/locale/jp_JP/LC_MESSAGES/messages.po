@@ -1658,7 +1658,7 @@ msgstr "読み出し:"
 msgid "write:"
 msgstr "書き込み:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "管理ルームの編集"
 
 msgid "Do you really want to delete this manager user?"

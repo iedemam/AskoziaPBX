@@ -2756,7 +2756,7 @@ msgid "write:"
 msgstr "escribir:"
 
 #: advanced_manager.php:101
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr ""
 
 #: advanced_manager.php:102

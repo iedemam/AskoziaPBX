@@ -1658,7 +1658,7 @@ msgstr "læs:"
 msgid "write:"
 msgstr "skriv:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "rediger manager rum"
 
 msgid "Do you really want to delete this manager user?"

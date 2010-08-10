@@ -1635,7 +1635,7 @@ msgstr "oku:"
 msgid "write:"
 msgstr "yaz:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "yönetici odasını düzenle."
 
 msgid "Do you really want to delete this manager user?"

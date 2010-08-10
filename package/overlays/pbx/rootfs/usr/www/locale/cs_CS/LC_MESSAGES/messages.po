@@ -1675,7 +1675,7 @@ msgstr ""
 msgid "write:"
 msgstr ""
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr ""
 
 msgid "Do you really want to delete this manager user?"

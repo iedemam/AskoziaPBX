@@ -1669,7 +1669,7 @@ msgstr "odczyt:"
 msgid "write:"
 msgstr "zapis:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "edytuj użytkownika administracyjnego"
 
 msgid "Do you really want to delete this manager user?"

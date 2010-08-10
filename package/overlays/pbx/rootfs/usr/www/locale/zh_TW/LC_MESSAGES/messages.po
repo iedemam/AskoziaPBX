@@ -1704,7 +1704,7 @@ msgstr "讀取："
 msgid "write:"
 msgstr "寫入："
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "編輯管理空間"
 
 msgid "Do you really want to delete this manager user?"

@@ -1670,7 +1670,7 @@ msgstr "lecture:"
 msgid "write:"
 msgstr "écriture:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "configuration du gestionnaire de salle"
 
 msgid "Do you really want to delete this manager user?"

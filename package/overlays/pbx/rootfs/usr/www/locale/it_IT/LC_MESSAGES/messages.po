@@ -1683,7 +1683,7 @@ msgstr "lettura:"
 msgid "write:"
 msgstr "scrittura:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "modifica utente AMI"
 
 msgid "Do you really want to delete this manager user?"

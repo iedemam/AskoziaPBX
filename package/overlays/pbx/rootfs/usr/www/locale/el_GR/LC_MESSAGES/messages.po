@@ -1751,7 +1751,7 @@ msgstr "ανάγνωση:"
 msgid "write:"
 msgstr "εγγραφή:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "επεξεργασία χώρου διαχειριστή"
 
 msgid "Do you really want to delete this manager user?"

@@ -98,7 +98,7 @@ include("fbegin.inc"); ?>
 			}
 
 		?></td>
-		<td valign="middle" nowrap class="list"><a href="advanced_manager_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit manager room");?>" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="advanced_manager_edit.php?id=<?=$i;?>"><img src="edit.png" title="<?=gettext("edit manager user");?>" border="0"></a>
            <a href="?action=delete&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this manager user?");?>')"><img src="delete.png" title="<?=gettext("delete manager user");?>" border="0"></a>
 		</td>
 	</tr>

@@ -1675,7 +1675,7 @@ msgstr "четене:"
 msgid "write:"
 msgstr "запис:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "редактирай стая за управление"
 
 msgid "Do you really want to delete this manager user?"

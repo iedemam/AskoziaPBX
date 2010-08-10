@@ -1682,7 +1682,7 @@ msgstr "lesen:"
 msgid "write:"
 msgstr "schreiben:"
 
-msgid "edit manager room"
+msgid "edit manager user"
 msgstr "Manager-Raum bearbeiten"
 
 msgid "Do you really want to delete this manager user?"
