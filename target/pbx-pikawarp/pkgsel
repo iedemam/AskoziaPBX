@@ -49,6 +49,7 @@ X openssl
 
 # asterisk + deps
 X asterisk16
+X asterisk16-addons
 X spandsp
 X libtiff
 X libogg
