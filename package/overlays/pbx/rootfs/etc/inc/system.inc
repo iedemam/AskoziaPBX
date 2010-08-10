@@ -498,16 +498,6 @@ function system_load_kernel_modules() {
 		mwexec("/sbin/modprobe -q " . $m . $module_options);
 	}
 
-	// is xorcom stuff compiled for this platform?
-	if (file_exists("/etc/supports.xorcom")) {
-		mwexec("/sbin/modprobe -q xpp");
-		mwexec("/sbin/modprobe -q xpp_usb");
-		mwexec("/sbin/modprobe -q xpd_fxo");
-		mwexec("/sbin/modprobe -q xpd_fxs");
-		mwexec("/sbin/modprobe -q xpd_pri");
-		mwexec("/sbin/modprobe -q xpd_bri");
-	}
-
 	// is redfone stuff compiled for this platform?
 	if (file_exists("/etc/supports.redfone")) {
 		mwexec("/sbin/modprobe -q dahdi_dynamic");
