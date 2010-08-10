@@ -118,7 +118,7 @@ if (!$initialformat && !count($unassigneddisks)) {
 				echo htmlspecialchars($devicedescription); ?></option><?
 			}
 			?></select>
-			<br><span class="vexpl"><?=spanify(gettext("Select which disk you would like to format."));?></span>
+			<br><span class="vexpl"><?=gettext("Select which disk you would like to format.");?></span>
 		</td>
 	</tr>
 	<tr>

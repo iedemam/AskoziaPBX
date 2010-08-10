@@ -47,11 +47,6 @@
 		display: none;
 	}
 
-	#devtranslationpanel {
-		width: 100%;
-		display: none;
-	}
-
 	#devfilepanel {
 		width: 100%;
 		display: none;
@@ -81,7 +76,6 @@
 <script type="text/JavaScript">
 <!--
 
-	var devmodeversion = "0.3";
 	var devmodeactivated = false;
 
 	jQuery(document).ready(function(){
@@ -96,22 +90,16 @@
 			var tmp = ui.tab.toString();
 			// console tab selected
 			if (tmp.indexOf('#devtabs-1') != -1) {
-				dev_translation_disable();
+
 			// ami tab selected
 			} else if (tmp.indexOf('#devtabs-2') != -1) {
-				dev_translation_disable();
+
 			// file tab selected
 			} else if (tmp.indexOf('#devtabs-3') != -1) {
-				dev_translation_disable();
-			// translation tab selected
-			} else if (tmp.indexOf('#devtabs-4') != -1) {
-				dev_translation_enable();
-			// hardware tab selected
-			} else if (tmp.indexOf('#devtabs-5') != -1) {
-				dev_translation_disable();
+
 			// beta tab selected
-			} else if (tmp.indexOf('#devtabs-6') != -1) {
-				dev_translation_disable();
+			} else if (tmp.indexOf('#devtabs-4') != -1) {
+
 			}
 		});
 
@@ -170,55 +158,6 @@
 	}
 
 
-	//--- TRANSLATION PANEL ---//
-	function dev_translation_submit() {
-		jQuery.post("dev.php",{
-			report: "translation",
-			devmodever: devmodeversion,
-			page: '<?=$_SERVER["SCRIPT_NAME"];?>',
-			language: '<?=$current_language;?>',
-			original: jQuery("#devlocaleoldstring").val(),
-			improved: jQuery("#devlocalenewstring").val()
-
-		},function(data){
-			alert(data);
-			jQuery("#devtranslationpanel").slideUp("slow");
-		});
-	}
-	function dev_translation_enable() {
-		jQuery('.spannit').click(function(e) {
-			var htmlStr = jQuery(this).html();
-			jQuery('#devlocaleoldstring').val(htmlStr);
-			jQuery('#devlocalenewstring').val(htmlStr);
-			jQuery('#devtranslationpanel').slideDown('slow');
-			return false;
-		}).mouseover(function(){
-			jQuery(this).css('border','2px solid red');
-		}).mouseout(function(){
-			jQuery(this).css('border','0px solid red');
-		});
-	}
-	function dev_translation_disable() {
-		jQuery('.spannit').unbind('click');
-		jQuery('.spannit').unbind('mouseover');
-		jQuery('.spannit').unbind('mouseout');
-	}
-
-
-	//--- HARDWARE PANEL ---//
-	function dev_hardware_submit() {
-		jQuery.post("dev.php",{
-			report: "hardware",
-			devmodever: devmodeversion,
-			description: jQuery("#devhardwaredescription").val()
-
-		},function(data){
-			alert(data);
-			jQuery("#devhardwaredescription").val("");
-		});
-	}
-
-
 	//--- FILE PANEL ---//
 	function dev_file_get() {
 		jQuery.get("dev.php?genfile=" + jQuery("#devfilelist").val(),function(data){                                                      
@@ -266,9 +205,7 @@
 			<li><a href="#devtabs-1">Console</a></li>
 			<li><a href="#devtabs-2">AMI</a></li>
 			<li><a href="#devtabs-3">Files</a></li>
-			<li><a href="#devtabs-4">Fix Translations</a></li>
-			<li><a href="#devtabs-5">Report Hardware</a></li>
-			<li><a href="#devtabs-6">Beta Features</a></li>
+			<li><a href="#devtabs-4">Beta Features</a></li>
 		</ul>
 		<div id="devtabs-1">
 			<input id="devconsolecmd" type="text" size="60" value="">
@@ -328,32 +265,6 @@
 			</div>
 		</div>
 		<div id="devtabs-4">
-			<ul>
-				<li>Compatible strings react when moused-over.</li>
-				<li>Click on the string to open a submission form.</li>
-				<li><strong>Note:</strong> E-Mail notifications must be configured correctly to submit reports.</li>
-			</ul>
-			<br>
-			<div id="devtranslationpanel">
-				<textarea id="devlocaleoldstring" cols="30" rows="3" disabled="true"></textarea>
-				<textarea id="devlocalenewstring" cols="30" rows="3"></textarea>
-				<br>
-				<a href="javascript:{}" onclick='jQuery("#devtranslationpanel").slideUp("slow");' class="ui-state-default ui-corner-all">cancel</a>
-				<a href="javascript:{}" onclick="dev_translation_submit();" class="ui-state-default ui-corner-all">submit locale improvement</a>
-			</div>
-		</div>
-		<div id="devtabs-5">
-			<ul>
-				<li>Describe what is not being recognized on your system.</li>
-				<li>Technical details about your hardware will automatically be submitted.</li>
-				<li><strong>Note:</strong> E-Mail notifications must be configured correctly to submit reports.</li>
-			</ul>
-			<br>
-			<textarea id="devhardwaredescription" cols="60" rows="6"></textarea>
-			<br>
-			<a href="javascript:{}" onclick="dev_hardware_submit();" class="ui-state-default ui-corner-all">submit hardware report</a>
-		</div>
-		<div id="devtabs-6">
 			<p>Hidden goodies not yet stable or complete enough to be linked from the main menu. Testing and feedback greatly appreciated.</p>
 			<ul>
 				<li>Skinny Phones - <a href="phones_skinny_edit.php">phones_skinny_edit.php</a></li>

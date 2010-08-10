@@ -91,7 +91,7 @@ d_start("providers_isdn_edit.php");
 	</tr><?
 	display_channel_language_selector($form['language'], 1);
 	?><tr>
-		<td valign="top" class="vncell"><?=spanify(gettext("Hardware Port"));?></td>
+		<td valign="top" class="vncell"><?=gettext("Hardware Port");?></td>
 		<td colspan="<?=$colspan;?>" class="vtable">
 			<select name="port" class="formfld" id="port"><?
 			foreach ($ports as $port) {
@@ -122,7 +122,7 @@ d_start("providers_isdn_edit.php");
 			}
 
 			?></select>
-			<br><span class="vexpl"><?=spanify($help);?></span>
+			<br><span class="vexpl"><?=$help;?></span>
 		</td>
 	</tr><?
 	d_spacer();

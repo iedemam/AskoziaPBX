@@ -189,7 +189,7 @@ include("fbegin.inc");
 						</select>
 						<br><input name="disablecertcheck" type="checkbox" class="formfld" id="disablecertcheck" value="yes" <?
 						if (isset($pconfig['disablecertcheck'])) echo "checked"; ?>
-						>&nbsp;<?=spanify(gettext("disable certificate checking"));?>
+						>&nbsp;<?=gettext("disable certificate checking");?>
 					</td>
 				</tr>
 				<tr>

@@ -104,7 +104,7 @@ if (!$initialconnect) {
 				echo htmlspecialchars($ifname . " (" . $ifinfo['mac'] . ")"); ?></option><?
 			}
 			?></select>
-			<br><span class="vexpl"><?=spanify(gettext("Select which ethernet port on this system the gateway is connected to."));?></span>
+			<br><span class="vexpl"><?=gettext("Select which ethernet port on this system the gateway is connected to.");?></span>
 		</td>
 	</tr>
 	<tr>
@@ -114,7 +114,7 @@ if (!$initialconnect) {
 				<option value="1" <? if ($form['remoteif'] == 1) echo "selected";?>>FB1</option>
 				<option value="2" <? if ($form['remoteif'] == 2) echo "selected";?>>FB2</option>
 			</select>
-			<br><span class="vexpl"><?=spanify(gettext("Select which ethernet port on the gateway this system is connected to."));?></span>
+			<br><span class="vexpl"><?=gettext("Select which ethernet port on the gateway this system is connected to.");?></span>
 		</td>
 	</tr><?
 
@@ -142,7 +142,7 @@ if (!$initialconnect) {
 	</tr><?
 	d_label(gettext("Local Interface"), "localif");
 	?><tr>
-		<td width="20%" valign="top" class="vncell"><?=spanify(gettext("Remote Interface"));?></td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Remote Interface");?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable">FB<?=$form['remoteif'];?>
 			<input name="remoteif" type="hidden" id="remoteif" value="<?=$form['remoteif'];?>">
 		</td>

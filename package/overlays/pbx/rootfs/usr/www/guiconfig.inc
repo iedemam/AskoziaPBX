@@ -224,9 +224,9 @@ function dynamic_tab_menu(&$tabs) {
 	foreach ($tabs as $desc => $link) {
 		if (in_array($link,$authorized)) {
 			if ($link == basename($_SERVER['SCRIPT_FILENAME'])) {
-				echo '<li class="tabact">'.spanify($desc).'</li>';
+				echo '<li class="tabact">' . $desc . '</li>';
 			} else {
-				echo '<li class="tabinact"><a href="'.$link.'">'.spanify($desc).'</a></li>';
+				echo '<li class="tabinact"><a href="'.$link.'">' . $desc . '</a></li>';
 			}
 		}
 	}
@@ -274,10 +274,6 @@ function gather_incomingextensionmaps($post, $multi=false) {
 	}
 
 	return $maps;
-}
-
-function spanify($string) {
-	return '<span class="spannit">' . $string . '</span>';
 }
 
 ?>

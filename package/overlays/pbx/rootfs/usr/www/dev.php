@@ -57,24 +57,7 @@ function util_dir_to_contents_array($path, &$output) {
 	}
 }
 
-
-if ($_POST['report'] == "translation") {
-	report_translation(
-		$_POST['devmodever'],
-		$_POST['page'],
-		$_POST['language'],
-		$_POST['original'],
-		$_POST['improved']
-	);
-
-} else if ($_POST['report'] == "hardware") {
-	report_hardware(
-		$_POST['devmodever'],
-		$_POST['description']
-	);
-
-
-} else if ($_GET['genfile']) {
+if ($_GET['genfile']) {
 	require_once('functions.inc');
 
 	$gen = file_path_to_generate_function($_GET['genfile']);
@@ -99,7 +82,6 @@ if ($_POST['report'] == "translation") {
 	}
 }
 
-
 function file_path_to_generate_function($path) {
 
 	if (dirname($path) == '/etc/asterisk') {
@@ -112,73 +94,6 @@ function file_path_to_generate_function($path) {
 	}
 
 	return false;
-}
-
-
-function report_translation($devmodever, $page, $language, $original, $improved) {
-	$mail_sent = mail(
-		"localebot@askozia.com",
-		"Localization Improvement (" . $language . ") " . $page,
-		"developer mode version: " . $devmodever . "\n" .
-		"page: " . $page . "\n" .
-		"language: " . $language . "\n" .
-		"\n" .
-		"original:\n" .
-		$original . "\n" .
-		"\n" .
-		"improved:\n" .
-		$improved . "\n",
-		"From: localebot@askozia.com\r\n" .
-		"Date: " . gmdate("D, d M Y H:i:s") . " +0000\r\n"
-	);
-
-	if ($mail_sent) {
-		echo "Submitted successfully. Thanks!";
-	} else {
-		echo "Failed to send. Check e-mail notifications settings.";
-	}
-}
-
-function report_hardware($devmodever, $description) {
-	$lspci = array();
-	exec("lspci -v", $lspci);
-
-	$dmesg = array();
-	exec("dmesg", $dmesg);
-
-	$dahdi = "";
-	util_dir_to_contents_array('/proc/dahdi', $dahdi_dir);
-	if (is_array($dahdi_dir)) {
-		ksort($dahdi_dir);
-		foreach ($dahdi_dir as $path => $contents) {
-			$dahdi .= $path . "\n" . $contents . "\n\n";
-		}
-	}
-
-	$mail_sent = mail(
-		"hardwarebot@askozia.com",
-		"Hardware Report",
-		"developer mode version: " . $devmodever . "\n" .
-		"description: " . $description . "\n" .
-		"\n\n" .
-		"--------[  lspci  ]----------\n" .
-		implode("\n", $lspci) .
-		"\n\n" .
-		"--------[  dmesg  ]----------\n" .
-		implode("\n", $dmesg) .
-		"\n\n" .
-		"--------[  dahdi  ]----------\n" .
-		$dahdi .
-		"\n",
-		"From: hardwarebot@askozia.com\r\n" .
-		"Date: " . gmdate("D, d M Y H:i:s") . " +0000\r\n"
-	);
-
-	if ($mail_sent) {
-		echo "Submitted successfully. Thanks!";
-	} else {
-		echo "Failed to send. Check e-mail notifications settings.";
-	}
 }
 
 ?>

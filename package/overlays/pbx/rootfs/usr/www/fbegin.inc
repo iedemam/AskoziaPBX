@@ -60,14 +60,14 @@ function dynamic_menu(&$menu, $menu_title) {
 			
 			if (!isset($header_displayed) && ($menu_title == 'Dialplan')) {
 				echo "\n";
-				echo "\t\t<li class=\"menuitem\">" . spanify(gettext("Dialplan")) . "&nbsp;<a href=\"printable_dialplan.php\" class=\"navlnks\">(" . spanify(gettext("print")) . ")</a>\n";
+				echo "\t\t<li class=\"menuitem\">" . gettext("Dialplan") . "&nbsp;<a href=\"printable_dialplan.php\" class=\"navlnks\">(" . gettext("print") . ")</a>\n";
 				echo "\t\t\t<ul class=\"submenu\">\n";
 
 				$header_displayed = true;
 			
 			} else if (!isset($header_displayed) && !($menu_title == 'Advanced')) {
 				echo "\n";
-				echo "\t\t<li class=\"menuitem\">" . spanify(gettext($menu_title)) . "\n";
+				echo "\t\t<li class=\"menuitem\">" . gettext($menu_title) . "\n";
 				echo "\t\t\t<ul class=\"submenu\">\n";
 
 				$header_displayed = true;
@@ -78,12 +78,12 @@ function dynamic_menu(&$menu, $menu_title) {
 					if (isset($config['system']['webgui']['expandadvanced']) || strstr($_SERVER['SCRIPT_FILENAME'], "advanced_")) {
 						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">";
 						echo "<img src=\"tri_o.gif\" id=\"tri_advanced\" width=\"14\" height=\"10\" border=\"0\"></a>";
-						echo "<a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">" . spanify(gettext("Advanced")) . "</a>";
+						echo "<a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">" . gettext("Advanced") . "</a>";
 						echo "<span id=\"advanced\">\n";
 					} else {
 						echo "\n\t\t<li class=\"menuitem\"><a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">";
 						echo "<img src=\"tri_c.gif\" id=\"tri_advanced\" width=\"14\" height=\"10\" border=\"0\"></a>";
-						echo "<a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">" . spanify(gettext("Advanced")) . "</a>";
+						echo "<a href=\"javascript:showhide('advanced','tri_advanced')\" class=\"navlnk\">" . gettext("Advanced") . "</a>";
 						echo "<span id=\"advanced\" style=\"display: none\">\n";
 					}
 
@@ -107,7 +107,7 @@ function dynamic_menu(&$menu, $menu_title) {
 				// Below lines are spaced out oddly to help improve the look of resulting HTML code.
 				?>
 
-				<li class="submenuitem"><a href="<?=$link?>" class="navlnk"><?=spanify($desc)?></a></li><?
+				<li class="submenuitem"><a href="<?=$link?>" class="navlnk"><?=$desc?></a></li><?
 	   			// Only need the first one, so break out of foreach
 	   			break;
 			}
@@ -261,14 +261,14 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 
 if (!$pgtitle_omit) {
 	?><p class="pgtitle"><?
-		echo spanify(gentitle($pgtitle));
+		echo gentitle($pgtitle);
 		if ($pghelp) {
 			?>&nbsp;<a href="javascript:{}" onclick="jQuery('#pghelp').toggle()"><img src="help.png" border="0" title="<?=gettext("Help");?>"></a><?
 		}
 	?></p><?
 
 	if ($pghelp) {
-		?><div class="pghelp" name="pghelp" id="pghelp"><?=spanify($pghelp);?><?
+		?><div class="pghelp" name="pghelp" id="pghelp"><?=$pghelp;?><?
 
 		if ($pglegend) {
 			$legendtext['add'] = gettext("add a new item");
@@ -281,7 +281,7 @@ if (!$pgtitle_omit) {
 			$legendtext['backup'] = gettext("download a backup archive");
 			echo "<br>\n";
 			foreach ($pglegend as $legend) {
-				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=spanify($legendtext[$legend]);?><?
+				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=$legendtext[$legend];?><?
 			}
 		}
 

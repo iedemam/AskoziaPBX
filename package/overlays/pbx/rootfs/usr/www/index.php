@@ -56,16 +56,16 @@ if ($_POST) {
 		<td height="170" colspan="2"><img src="logobig.png"></td>
 	</tr>
 	<tr>
-		<td colspan="2" class="listtopic"><?=spanify(gettext("System Information"));?></td>
+		<td colspan="2" class="listtopic"><?=gettext("System Information");?></td>
 	</tr>
 	<tr>
-		<td width="30%" class="vncellt"><?=spanify(gettext("Name"));?></td>
+		<td width="30%" class="vncellt"><?=gettext("Name");?></td>
 		<td width="70%" class="listr">
 			<? echo $config['system']['hostname'] . "." . $config['system']['domain']; ?>
 		</td>
 	</tr>
 	<tr>
-		<td valign="top" class="vncellt"><?=spanify(gettext("Version"));?></td>
+		<td valign="top" class="vncellt"><?=gettext("Version");?></td>
 		<td class="listr"><strong><?
 			readfile("/etc/version");
 			?></strong><?
@@ -78,14 +78,14 @@ if ($_POST) {
 	</tr><?
 if ($config['lastchange']) {
 		?><tr>
-			<td class="vncellt"><?=spanify(gettext("Last Config Change"));?></td>
+			<td class="vncellt"><?=gettext("Last Config Change");?></td>
 			<td class="listr"> 
 				<?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>
 			</td>
 		</tr><?
 }
 	?><tr>
-		<td class="vncellt"><?=spanify(gettext("Uptime"));?></td>
+		<td class="vncellt"><?=gettext("Uptime");?></td>
 		<td class="listr"><?
 			exec("/usr/bin/uptime", $ut);
 			$start = strpos($ut[0], "up") + 2;
@@ -102,15 +102,15 @@ if ($config['lastchange']) {
 	$calls_processed = substr($lines[2], 0, strpos($lines[2], " "));
 
 	?><tr>
-		<td class="vncellt"><?=spanify(gettext("Active Channels / Calls"));?></td>
+		<td class="vncellt"><?=gettext("Active Channels / Calls");?></td>
 		<td class="listr"><?=$active_channels . " / " . $active_calls;?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td class="vncellt"><?=spanify(gettext("Calls Processed"));?></td>
+		<td class="vncellt"><?=gettext("Calls Processed");?></td>
 		<td class="listr"><?=$calls_processed;?>&nbsp;</td>
 	</tr>
 	<tr>
-		<td class="vncellt"><?=spanify(gettext("Memory Usage"));?></td>
+		<td class="vncellt"><?=gettext("Memory Usage");?></td>
 		<td class="listr"><?
 			exec("/usr/bin/free", $memory);
 			$memory = preg_split("/\s+/", $memory[1]);
@@ -127,7 +127,7 @@ if ($config['lastchange']) {
 		?></td>
 	</tr>
 	<tr>
-		<td class="vncellt" valign="top"><?=spanify(gettext("Notes"));?></td>
+		<td class="vncellt" valign="top"><?=gettext("Notes");?></td>
 		<td class="listr">
 			<textarea name="notes" cols="65" rows="5" id="notes" class="notes"><?=htmlspecialchars(base64_decode($config['system']['notes']));?></textarea><br>
 			<input name="Submit" type="submit" class="formbtns" value="<?=gettext("Save");?>">

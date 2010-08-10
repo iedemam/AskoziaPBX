@@ -10,7 +10,7 @@
 			<td height="65" class="webgui_bg">
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 					<tr>
-						<td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=spanify(gettext("webGUI Configuration"));?></span></td>
+						<td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
 		  				<td align="right" valign="bottom">
 							<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
 						</td>
