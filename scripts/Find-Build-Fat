@@ -1,0 +1,4 @@
+#!/bin/bash
+find $1/TOOLCHAIN/firmware/offload_stage -type f -size +100k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+find $1/TOOLCHAIN/firmware/root_stage -type f -size +100k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+find $1/TOOLCHAIN/initramfs -type f -size +100k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
