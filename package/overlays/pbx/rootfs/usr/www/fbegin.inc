@@ -168,8 +168,8 @@ $menu['Accounts'][gettext("Faxes")]				= array('accounts_faxes.php',
 												'faxes_virtual_edit.php');
 
 /* Dialplan */
-$menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications2.php',
-												'dialplan_applications_edit2.php');
+$menu['Dialplan'][gettext("Applications")]		= array('dialplan_applications.php',
+												'dialplan_applications_edit.php');
 $menu['Dialplan'][gettext("Call Groups")]		= array('dialplan_callgroups.php',
 												'dialplan_callgroups_edit.php');
 $menu['Dialplan'][gettext("Transfers")]			= array('dialplan_transfers.php');

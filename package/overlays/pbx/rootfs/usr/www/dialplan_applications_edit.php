@@ -48,7 +48,7 @@ if ($_POST) {
 	$application = applications_verify_application(&$_POST, &$input_errors);
 	if (!$input_errors) {
 		applications_save_application($application);
-		header("Location: dialplan_applications2.php");
+		header("Location: dialplan_applications.php");
 		exit;
 	}
 }
@@ -79,7 +79,7 @@ if ($_POST) {
 
 
 include("fbegin.inc");
-d_start("dialplan_applications_edit2.php");
+d_start("dialplan_applications_edit.php");
 
 
 	// General

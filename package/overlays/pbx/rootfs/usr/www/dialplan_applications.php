@@ -45,21 +45,21 @@ $pglegend = array("add", "enabled", "disabled", "edit", "delete");
 /* delete */
 if ($_GET['action'] == "delete") {
 	applications_delete_application($_GET['uniqid']);
-	header("Location: dialplan_applications2.php");
+	header("Location: dialplan_applications.php");
 	exit;
 }
 
 /* disable */
 if ($_GET['action'] == "disable") {
 	applications_disable_application($_GET['uniqid']);
-	header("Location: dialplan_applications2.php");
+	header("Location: dialplan_applications.php");
 	exit;
 }
 
 /* enable */
 if ($_GET['action'] == "enable") {
 	applications_enable_application($_GET['uniqid']);
-	header("Location: dialplan_applications2.php");
+	header("Location: dialplan_applications.php");
 	exit;
 }
 
@@ -84,13 +84,13 @@ if (file_exists($g['dialplan_dirty_path'])) {
 include("fbegin.inc");
 
 
-?><form action="dialplan_applications2.php" method="post">
+?><form action="dialplan_applications.php" method="post">
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
 		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
-			<a href="dialplan_applications_edit2.php?type=plaintext"><?=gettext("Plaintext");?></a><img src="bullet_add.png">
+			<a href="dialplan_applications_edit.php?type=plaintext"><?=gettext("Plaintext");?></a><img src="bullet_add.png">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="dialplan_applications_edit2.php?type=php"><?=gettext("PHP");?></a><img src="bullet_add.png">
+			<a href="dialplan_applications_edit.php?type=php"><?=gettext("PHP");?></a><img src="bullet_add.png">
 		</td>
 	</tr>
 	<tr>
@@ -131,7 +131,7 @@ if ($plaintext_applications = applications_get_applications("plaintext")) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($a['name']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($a['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit2.php?uniqid=<?=$a['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?uniqid=<?=$a['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$a['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this application?");?>')"><img src="delete.png" title="<?=gettext("delete application");?>" border="0"></a></td>
 	</tr><?
 	}
@@ -174,7 +174,7 @@ if ($php_applications = applications_get_applications("php")) {
 		?></td>
 		<td class="listr"><?=htmlspecialchars($a['name']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($a['descr']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit2.php?uniqid=<?=$a['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
+		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit.php?uniqid=<?=$a['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$a['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this application?");?>')"><img src="delete.png" title="<?=gettext("delete application");?>" border="0"></a></td>
 	</tr><?
 	}
