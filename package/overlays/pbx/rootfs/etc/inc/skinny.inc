@@ -64,7 +64,7 @@ function skinny_get_extensions() {
 
 	if (is_array($GLOBALS['config']['skinny']['phone'])) {
 		foreach($GLOBALS['config']['skinny']['phone'] as $phone) {
-			$extensions[] = $phone['extension'];
+			$extensions[$phone['uniqid']] = $phone['extension'];
 		}
 	}
 

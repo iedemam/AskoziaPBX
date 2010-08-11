@@ -99,7 +99,7 @@ function analog_get_extensions() {
 
 	if (is_array($GLOBALS['config']['analog']['phone'])) {
 		foreach($GLOBALS['config']['analog']['phone'] as $phone) {
-			$extensions[] = $phone['extension'];
+			$extensions[$phone['uniqid']] = $phone['extension'];
 		}
 	}
 

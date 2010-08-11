@@ -40,14 +40,29 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Dialplan"), gettext("Applications"));
+$pglegend = array("add", "enabled", "disabled", "edit", "delete");
 
-$applications = applications2_get_applications();
-
+/* delete */
 if ($_GET['action'] == "delete") {
-	applications2_delete_application($_GET['uniqid']);
+	applications_delete_application($_GET['uniqid']);
 	header("Location: dialplan_applications2.php");
 	exit;
 }
+
+/* disable */
+if ($_GET['action'] == "disable") {
+	applications_disable_application($_GET['uniqid']);
+	header("Location: dialplan_applications2.php");
+	exit;
+}
+
+/* enable */
+if ($_GET['action'] == "enable") {
+	applications_enable_application($_GET['uniqid']);
+	header("Location: dialplan_applications2.php");
+	exit;
+}
+
 
 if (file_exists($g['dialplan_dirty_path'])) {
 	$retval = 0;
@@ -58,38 +73,116 @@ if (file_exists($g['dialplan_dirty_path'])) {
 
 		$retval |= pbx_exec("dialplan reload");
 	}
-	
+
 	$savemsg = get_std_save_message($retval);
 	if ($retval == 0) {
 		unlink($g['dialplan_dirty_path']);
 	}
 }
 
+
 include("fbegin.inc");
+
+
 ?><form action="dialplan_applications2.php" method="post">
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
-		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
+			<a href="dialplan_applications_edit2.php?type=plaintext"><?=gettext("Plaintext");?></a><img src="bullet_add.png">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="dialplan_applications_edit2.php?type=php"><?=gettext("PHP");?></a><img src="bullet_add.png">
+		</td>
+	</tr>
+	<tr>
+		<td class="list" height="12">&nbsp;</td>
+	</tr>
+</table><?
+
+
+if ($plaintext_applications = applications_get_applications("plaintext")) {
+?><table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="5%" class="list"></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("Plaintext");?></td>
+	</tr>
+	<tr>
+		<td width="5%" class="list"></td>
+		<td width="20%" class="listhdrr"><?=gettext("Number");?></td>
 		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
-		<td width="50%" class="listhdrr"><?=gettext("Description");?></td>
+		<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 		<td width="10%" class="list"></td>
-	</tr>
-	
+	</tr><?
 
-	<?php $i = 0; foreach ($applications as $app): ?>
+	foreach ($plaintext_applications as $a) {
+	?><tr>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($a['disabled'])) {
+			?><a href="?action=enable&uniqid=<?=$a['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable application");?>" border="0"></a><?
+		} else {
+			?><a href="?action=disable&uniqid=<?=$a['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this application?");?>')"><img src="enabled.png" title="<?=gettext("click to disable application");?>" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($a['disabled'])) {
+			echo htmlspecialchars($a['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($a['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($a['name']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($a['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit2.php?uniqid=<?=$a['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$a['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this application?");?>')"><img src="delete.png" title="<?=gettext("delete application");?>" border="0"></a></td>
+	</tr><?
+	}
+
+	?><tr>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
+	</tr>
+</table><?
+}
+
+if ($php_applications = applications_get_applications("php")) {
+?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td class="listlr"><?=htmlspecialchars($app['extension']);?></td>
-		<td class="listbg"><?=htmlspecialchars($app['name']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars(gettext($app['descr']));?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit2.php?uniqid=<?=$app['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
-			<a href="?action=delete&uniqid=<?=$app['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this application?");?>')"><img src="delete.png" title="<?=gettext("delete application");?>" border="0"></a></td>
+		<td width="5%" class="list"></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("PHP");?></td>
 	</tr>
-	<?php $i++; endforeach; ?>
+	<tr>
+		<td width="5%" class="list"></td>
+		<td width="20%" class="listhdrr"><?=gettext("Number");?></td>
+		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
+		<td width="10%" class="list"></td>
+	</tr><?
 
-	<tr> 
-		<td class="list" colspan="3"></td>
-		<td class="list"><a href="dialplan_applications_edit2.php"><img src="add.png" title="<?=gettext("add application mapping");?>" border="0"></a></td>
+	foreach ($php_applications as $a) {
+	?><tr>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($a['disabled'])) {
+			?><a href="?action=enable&uniqid=<?=$a['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable application");?>" border="0"></a><?
+		} else {
+			?><a href="?action=disable&uniqid=<?=$a['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this application?");?>')"><img src="enabled.png" title="<?=gettext("click to disable application");?>" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($a['disabled'])) {
+			echo htmlspecialchars($a['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($a['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($a['name']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($a['descr']);?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="dialplan_applications_edit2.php?uniqid=<?=$a['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit application");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$a['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this application?");?>')"><img src="delete.png" title="<?=gettext("delete application");?>" border="0"></a></td>
+	</tr><?
+	}
+
+	?><tr>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
-</table>
-</form>
-<?php include("fend.inc"); ?>
+</table><?
+}
+
+include("fend.inc");

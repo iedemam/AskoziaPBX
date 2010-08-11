@@ -98,7 +98,7 @@ function iax_get_extensions() {
 
 	if (is_array($GLOBALS['config']['iax']['phone'])) {
 		foreach($GLOBALS['config']['iax']['phone'] as $phone) {
-			$extensions[] = $phone['extension'];
+			$extensions[$phone['uniqid']] = $phone['extension'];
 		}
 	}
 

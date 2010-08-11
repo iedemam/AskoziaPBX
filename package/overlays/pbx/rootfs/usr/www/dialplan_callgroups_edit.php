@@ -74,8 +74,8 @@ if ($_POST) {
 	$form['groupmember'] = $gme;
 
 	/* input validation */
-	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", "Name");
+	$reqdfields = explode(" ", "name extension");
+	$reqdfieldsn = explode(",", "Name,Extension");
 	
 	verify_input($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 

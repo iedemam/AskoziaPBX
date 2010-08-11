@@ -2,7 +2,7 @@
 <!-- AskoziaPBX default system configuration -->
 <!-- $Id: config.xml 1066 2009-08-04 15:34:11Z michael.iedema $ -->
 <askoziapbx>
-	<version>2.02</version>
+	<version>2.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>AskoziaPBX</hostname>
@@ -36,51 +36,30 @@
 		<application>
 			<name>Read IP</name>
 			<extension>000047</extension>
-			<uniqid>APPLICATION-MAPPING-933337097386d45555d920</uniqid>
-			<app-command>MSxBbnN3ZXIoKQ==</app-command>
-			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4tdXMp</app-command>
-			<app-command>MyxTZXQoSVBPVVRQVVQ9JHtTSEVMTCgvZXRjL3NjcmlwdHMvcGFyc2VpcC5zaCl9KQ==</app-command>
-			<app-command>NCxOb09wKElQT1VUUFVUOiAke0lQT1VUUFVUfSk=</app-command>
-			<app-command>NSxQbGF5YmFjayhiZWVwKQ==</app-command>
-			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMSl9KQ==</app-command>
-			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
-			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMil9KQ==</app-command>
-			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
-			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sMyl9KQ==</app-command>
-			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
-			<app-command>bixTYXlEaWdpdHMoJHtDVVQoSVBPVVRQVVQsXC4sNCl9KQ==</app-command>
-			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
-			<app-command>bixQbGF5YmFjayhzaWxlbmNlLzEp</app-command>
-			<app-command>bixHb3RvKDUp</app-command>
-			<descr>Reads the system IP address</descr>
+			<uniqid>DIALPLAN-APPLICATION-16151900034c62d16c92eba</uniqid>
+			<type>plaintext</type>
+				<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxTZXQoSVBPVVRQVVQ9JHtTSEVMTCgvZXRjL3NjcmlwdHMvcGFyc2VpcC5zaCl9KQo0LE5vT3AoSVBPVVRQVVQ6ICR7SVBPVVRQVVR9KQo1LFBsYXliYWNrKGJlZXApCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDEpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDIpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDMpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDQpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sUGxheWJhY2soc2lsZW5jZS8xKQpuLEdvdG8oNSk=</applicationlogic>
 		</application>
 		<application>
 			<name>Echo</name>
 			<extension>00003246</extension>
-			<uniqid>APPLICATION-MAPPING-83606076846f835d8828a4</uniqid>
-			<app-command>MSxBbnN3ZXIoKQ==</app-command>
-			<app-command>MixFY2hvKCk=</app-command>
-			<app-command>MyxIYW5ndXAoKQ==</app-command>
-			<descr>Echos audio and video back to the caller as soon as it is received. Used to test connection delay.</descr>
+			<uniqid>DIALPLAN-APPLICATION-14520268874c62d16c931be</uniqid>
+			<type>plaintext</type>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLEVjaG8oKQozLEhhbmd1cCgp</applicationlogic>
 		</application>
 		<application>
 			<name>Milliwatt</name>
 			<extension>000064554</extension>
-			<uniqid>APPLICATION-MAPPING-48856682646f8381701993</uniqid>
-			<app-command>MSxBbnN3ZXIoKQ==</app-command>
-			<app-command>MixNaWxsaXdhdHQoKQ==</app-command>
-			<app-command>MyxIYW5ndXAoKQ==</app-command>
-			<descr>Generates a constant 1000Hz tone. Used to test connection quality.</descr>
+			<uniqid>DIALPLAN-APPLICATION-7375249804c62d16c9336d</uniqid>
+			<type>plaintext</type>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLE1pbGxpd2F0dCgpCjMsSGFuZ3VwKCk=</applicationlogic>
 		</application>
 		<application>
 			<name>WakeMe</name>
 			<extension>00009253</extension>
-			<uniqid>APPLICATION-MAPPING-202074715246f8385a7a820</uniqid>
-			<app-command>MSxBbnN3ZXIoKQ==</app-command>
-			<app-command>MixTZXQoQ0hBTk5FTChsYW5ndWFnZSk9ZW4tdXMp</app-command>
-			<app-command>MyxXYWtlTWUoKQ==</app-command>
-			<app-command>NCxIYW5ndXAoKQ==</app-command>
-			<descr>Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.</descr>
+			<uniqid>DIALPLAN-APPLICATION-4653015014c62d16c93512</uniqid>
+			<type>plaintext</type>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxXYWtlTWUoKQo0LEhhbmd1cCgp</applicationlogic>
 		</application>
 	</dialplan>
 </askoziapbx>

@@ -86,6 +86,30 @@ function dialplan_remove_incomingextensionmap_reference_from_providers($removed_
 	}	
 }
 
+/**
+ * Replaces references to an incoming extension mapping from provider elements with an updated uniqid
+ */
+function dialplan_replace_incomingextensionmap_reference_from_providers($removed_id, $new_id) {
+	global $g;
+
+	foreach ($g['technologies'] as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['provider'])) {
+			$a_providers = &$GLOBALS['config'][$tech]['provider'];
+			$n = count($a_providers);
+			for ($i = 0; $i < $n; $i++) {
+				if (is_array($a_providers[$i]['incomingextensionmap'])) {
+					$nn = count($a_providers[$i]['incomingextensionmap']);
+					for ($ii = 0; $ii < $nn; $ii++) {
+						if ($a_providers[$i]['incomingextensionmap'][$ii]['destinationid'] == $removed_id) {
+							$a_providers[$i]['incomingextensionmap'][$ii]['destinationid'] = $new_id;
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
 function dialplan_remove_member_reference_from_callgroups($removed_id) {
 	global $g;
 

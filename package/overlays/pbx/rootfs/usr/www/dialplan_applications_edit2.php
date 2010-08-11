@@ -45,9 +45,9 @@ $needs_codemirror = true;
 if ($_POST) {
 	unset($input_errors);
 
-	$application = applications2_verify_application(&$_POST, &$input_errors);
+	$application = applications_verify_application(&$_POST, &$input_errors);
 	if (!$input_errors) {
-		applications2_save_application($application);
+		applications_save_application($application);
 		header("Location: dialplan_applications2.php");
 		exit;
 	}
@@ -64,13 +64,17 @@ $uniqid = $_GET['uniqid'];
 if (isset($_POST['uniqid'])) {
 	$uniqid = $_POST['uniqid'];
 }
+$type = $_GET['type'];
+if (isset($_POST['type'])) {
+	$type = $_POST['type'];
+}
 
 if ($_POST) {
 	$form = $_POST;
 } else if ($uniqid) {
-	$form = applications2_get_application($uniqid);
+	$form = applications_get_application($uniqid);
 } else {
-	$form = applications2_generate_default_application();
+	$form = applications_generate_default_application($type);
 }
 
 
@@ -85,17 +89,8 @@ d_start("dialplan_applications_edit2.php");
 		false, "required");
 
 	d_field(gettext("Number"), "extension", 20,
-		gettext("The number used to dial this application."), "required");
-
-	//d_dropdown(
-	//	"Type", "type",
-	//	array(
-	//		"plaintext" => "Raw Asterisk Dialplan Code",
-	//		"php" => "PHP AGI Code"
-	//	),
-	//	$form['type'],
-	//	false
-	//);
+		gettext("The number or pattern used to dial this application."), "required");
+		// verify pattern and extension for uniqueness and also validity, toggle show pattern help here
 
 	d_field(gettext("Description"), "descr", 40,
 		gettext("You may enter a description here for your reference (not parsed)."));

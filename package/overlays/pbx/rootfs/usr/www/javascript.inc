@@ -134,15 +134,8 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
-	if (count($a_items = applications_get_apps())) {
+	if (count($a_items = applications_get_applications())) {
 		$options[] = array("", gettext("Applications"));
-		foreach ($a_items as $item) {
-			$options[] = array($item['uniqid'], $pad . $item['name']);
-		}
-	}
-	
-	if (count($a_items = applications2_get_applications())) {
-		$options[] = array("", gettext("Applications") . "2");
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['name']);
 		}

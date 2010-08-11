@@ -72,7 +72,7 @@ function external_get_extensions() {
 
 	if (is_array($GLOBALS['config']['external']['phone'])) {
 		foreach($GLOBALS['config']['external']['phone'] as $phone) {
-			$extensions[] = $phone['extension'];
+			$extensions[$phone['uniqid']] = $phone['extension'];
 		}
 	}
 

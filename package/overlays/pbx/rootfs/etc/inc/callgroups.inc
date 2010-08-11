@@ -83,7 +83,7 @@ function callgroups_get_extensions() {
 
 	if (is_array($config['dialplan']['callgroup'])) {
 		foreach($config['dialplan']['callgroup'] as $group) {
-			$extensions[] = $group['extension'];
+			$extensions[$group['uniqid']] = $group['extension'];
 		}
 	}
 

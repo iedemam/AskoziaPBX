@@ -268,7 +268,6 @@
 			<ul>
 				<li>Skinny Phones - <a href="phones_skinny_edit.php">phones_skinny_edit.php</a></li>
 				<li>Q-Stat Performance Statistics Recording - <a href="debug_qstat.php">debug_qstat.php</a></li>
-				<li>Dialplan Applications v2 - <a href="dialplan_applications2.php">dialplan_applications2.php</a></li>
 			</ul>
 		</div>
 	</div>

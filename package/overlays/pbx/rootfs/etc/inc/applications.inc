@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -38,48 +38,29 @@
 
 require_once("functions.inc");
 
-/**
- * Returns all applications sorted by extension.
- * If no applications are defined, the global array is initialized.
- * This should be changed to return by reference to eliminate a lot of repetitive code.
- */
-function applications_get_apps() {
-	global $config;
-	
-	if (!is_array($config['dialplan']['application']))
-		$config['dialplan']['application'] = array();
-		
-	applications_sort_apps();
-		
-	return $config['dialplan']['application'];
-}
+function applications_get_applications($type=false) {
 
-/**
- * Sorts applications by extension
- */
-function applications_sort_apps() {
-	global $config;
+	$all_apps = $GLOBALS['config']['dialplan']['application'];
+	$all_apps = is_array($all_apps) ? $all_apps : array();
 
-	usort($config['dialplan']['application'], "pbx_sort_by_extension");	
-}
-
-/**
- * Returns a specific application based on its uniqid
- */
-function applications_get_app($uniqid) {
-	global $config, $uniqid_map;
-
-	// horribly inefficient but surely working replacement for broken uniqid_map index
-	$apps = applications_get_apps();
-	foreach ($apps as $app) {
-		if ($app['uniqid'] == $uniqid) {
-			return $app;
+	if (!$type) {
+		$return_apps = $all_apps;
+	} else {
+		$return_apps = array();
+		foreach ($all_apps as $a) {
+			if ($a['type'] == $type) {
+				$return_apps[] = $a;
+			}
 		}
 	}
-	/* $uniqid_map has regressed is unpredictable now that * and # characters are allowed in extensions
-	It is probably not the culprit but rather the unpredictable things_get_thing() internal sorting behavior
-	which should be removed so that sorting is done transparently
-	return $config['dialplan']['application'][$uniqid_map[$uniqid]]; */
+
+	return $return_apps;
+}
+
+function applications_get_application($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['dialplan']['application'][$uniqid_map[$uniqid]];
 }
 
 /**
@@ -92,26 +73,16 @@ function applications_get_extensions() {
 
 	if (is_array($config['dialplan']['application'])) {
 		foreach($config['dialplan']['application'] as $app) {
-			$extensions[] = $app['extension'];
+			$extensions[$app['uniqid']] = $app['extension'];
 		}
 	}
 
 	return $extensions;
 }
 
+function applications_generate_default_application($type) {
 
-
-
-
-
-
-
-
-
-
-function applications2_generate_default_application() {
-
-	$defaultlogic = <<<EOD
+	$defaultlogic['php'] = <<<EOD
 
 <?php
   require('phpagi.php');
@@ -133,35 +104,31 @@ function applications2_generate_default_application() {
 
 EOD;
 
+	$defaultlogic['plaintext'] = <<<EOD
+1,Answer()
+2,Echo()
+3,Hangup()
+
+EOD;
+
+
 	$application = array();
 
 	$application['name'] = gettext("New Application");
 	$application['uniqid'] = "DIALPLAN-APPLICATION-" . uniqid(rand());
-	$application['applicationlogic'] = base64_encode($defaultlogic);
-	$application['type'] = "php";
+	$application['applicationlogic'] = base64_encode($defaultlogic[$type]);
+	$application['type'] = $type;
 
 	return $application;
 }
 
-function applications2_get_applications() {
-
-	$all_apps = $GLOBALS['config']['dialplan']['application2'];
-	return is_array($all_apps) ? $all_apps : array();
-}
-
-function applications2_get_application($uniqid) {
-	global $uniqid_map;
-
-	return $GLOBALS['config']['dialplan']['application2'][$uniqid_map[$uniqid]];
-}
-
-function applications2_verify_application($post, $errors) {
+function applications_verify_application($post, $errors) {
 
 	$application = array();
 
 	v_cleanliness(&$post, &$errors);
 	v_required('name', gettext('Name'), &$application, &$post, &$errors);
-	v_required('extension', gettext('Number'), &$application, &$post, &$errors);
+	v_extensionpattern(&$application, &$post, &$errors);
 	v_optional('descr', &$application, &$post);
 	v_public_access_editor(&$application, &$post, &$errors);
 	v_applicationlogic(&$application, &$post, &$errors);
@@ -177,25 +144,48 @@ function applications2_verify_application($post, $errors) {
 	return $application;
 }
 
-function applications2_save_application($application) {
+function applications_save_application($application) {
 	global $g, $uniqid_map;
 
-	if (applications2_get_application($application['uniqid'])) {
-		$GLOBALS['config']['dialplan']['application2'][$uniqid_map[$application['uniqid']]] = $application;
+	if (applications_get_application($application['uniqid'])) {
+		$GLOBALS['config']['dialplan']['application'][$uniqid_map[$application['uniqid']]] = $application;
 	} else {
-		$GLOBALS['config']['dialplan']['application2'][] = $application;
+		$GLOBALS['config']['dialplan']['application'][] = $application;
 	}
 
 	write_config();
 	touch($g['dialplan_dirty_path']);
 }
 
-function applications2_delete_application($uniqid) {
+function applications_delete_application($uniqid) {
 	global $g, $uniqid_map;
 
-	unset($GLOBALS['config']['dialplan']['application2'][$uniqid_map[$uniqid]]);
+	unset($GLOBALS['config']['dialplan']['application'][$uniqid_map[$uniqid]]);
 
 	write_config();
 	touch($g['dialplan_dirty_path']);
 }
+
+function applications_disable_application($uniqid) {
+	global $g, $uniqid_map;
+
+	if (applications_get_application($uniqid)) {
+		$GLOBALS['config']['dialplan']['application'][$uniqid_map[$uniqid]]['disabled'] = true;
+
+		write_config();
+		touch($g['dialplan_dirty_path']);
+	}
+}
+
+function applications_enable_application($uniqid) {
+	global $g, $uniqid_map;
+
+	if (applications_get_application($uniqid)) {
+		unset($GLOBALS['config']['dialplan']['application'][$uniqid_map[$uniqid]]['disabled']);
+
+		write_config();
+		touch($g['dialplan_dirty_path']);
+	}
+}
+
 ?>

@@ -99,7 +99,7 @@ function isdn_get_extensions() {
 
 	if (is_array($GLOBALS['config']['isdn']['phone'])) {
 		foreach($GLOBALS['config']['isdn']['phone'] as $phone) {
-			$extensions[] = $phone['extension'];
+			$extensions[$phone['uniqid']] = $phone['extension'];
 		}
 	}
 

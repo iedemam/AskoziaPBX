@@ -303,6 +303,36 @@ function convert_config() {
 		$config['version'] = "2.02";
 	}
 
+	/* update applications from v1 to v2 */
+	if ($config['version'] == "2.02") {
+		$updated_applications = array();
+		// store existing v2 appliations
+		if (is_array($config['dialplan']['application2'])) {
+			$updated_applications = $config['dialplan']['application2'];
+			unset($GLOBALS['config']['dialplan']['application2']);
+		}
+		// update v1 applications
+		if (is_array($config['dialplan']['application'])) {
+			foreach ($config['dialplan']['application'] as $application_v1) {
+				$application_v2 = array();
+				$application_v2['name'] = $application_v1['name'];
+				$application_v2['extension'] = $application_v1['extension'];
+				$application_v2['uniqid'] = "DIALPLAN-APPLICATION-" . uniqid(rand());
+				$application_v2['type'] = "plaintext";
+				$decoded_logic = array();
+				foreach ($application_v1['app-command'] as $ac) {
+					$decoded_logic[] = base64_decode($ac);
+				}
+				$application_v2['applicationlogic'] = base64_encode(implode("\n", $decoded_logic));
+				$updated_applications[] = $application_v2;
+				// update incoming call mappings to new uniqid
+				dialplan_replace_incomingextensionmap_reference_from_providers($application_v1['uniqid'], $application_v2['uniqid']);
+			}
+		}
+		$config['dialplan']['application'] = $updated_applications;
+		$config['version'] = "2.1";
+	}
+
 	write_config();
 
 }

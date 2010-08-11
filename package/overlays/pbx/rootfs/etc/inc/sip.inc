@@ -98,7 +98,7 @@ function sip_get_extensions() {
 
 	if (is_array($GLOBALS['config']['sip']['phone'])) {
 		foreach($GLOBALS['config']['sip']['phone'] as $phone) {
-			$extensions[] = $phone['extension'];
+			$extensions[$phone['uniqid']] = $phone['extension'];
 		}
 	}
 

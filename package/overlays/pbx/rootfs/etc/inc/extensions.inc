@@ -47,8 +47,7 @@ function extensions_conf_generate($return=false) {
 	$internal_phones = pbx_get_phones();
 	$external_phones = external_get_phones(); // XXX : refactor needed here re: internal vs external function names
 	$callgroups = callgroups_get_groups();
-	$applications = applications_get_apps();
-	$applications2 = applications2_get_applications();
+	$applications = applications_get_applications();
 	$conference_rooms = conferencing_get_rooms();
 	$virtual_faxes = virtual_get_faxes();
 	$providers = pbx_get_providers();
@@ -135,15 +134,12 @@ exten => mailnotification,n,Return()
 
 EOD;
 
+
 	// application contexts
 	foreach ($applications as $a) {
-		$conf .= extensions_generate_application_context($a);
-		$conf .= "\n";
-	}
-	$conf .= "\n";
-
-	// application2 contexts
-	foreach ($applications2 as $a) {
+		if (isset($a['disabled'])) {
+			continue;
+		}
 		$conf .= extensions_generate_application_context2($a);
 		$conf .= "\n";
 	}
@@ -151,6 +147,9 @@ EOD;
 
 	// virtual fax contexts
 	foreach ($virtual_faxes as $f) {
+		if (isset($f['disabled'])) {
+			continue;
+		}
 		$conf .= extensions_generate_virtual_fax_context($f);
 		$conf .= "\n";
 	}
@@ -212,25 +211,15 @@ EOD;
 
 	// application extensions
 	foreach ($applications as $a) {
-		if ($a['publicaccess'] == "enabled") {
-			$conf .= "; application : {$a['name']}\n";
-			if (!$a['publicname']) {
-				$conf .= "exten => {$a['extension']},1,NoOp(public calling application: {$a['name']})\n";
-				$conf .= extensions_generate_application_extension($a, true);
-			} else {
-				$conf .= "exten => {$a['publicname']},1,NoOp(public calling application: {$a['name']})\n";
-				$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
-			}
+		if (isset($a['disabled'])) {
+			continue;
 		}
-	}
-
-	// application2 extensions
-	foreach ($applications2 as $a) {
 		if ($a['publicaccess'] == "enabled") {
 			$conf .= "; application : {$a['name']}\n";
 			if (!$a['publicname']) {
-				$conf .= "exten => {$a['extension']},1,NoOp(public calling application: {$a['name']})\n";
-				$conf .= extensions_generate_application_extension($a, true);
+				$extension = extensions_patternify($a['extension']);
+				$conf .= "exten => $extension,1,NoOp(public calling application: {$a['name']})\n";
+				$conf .= extensions_generate_application_extension($a, true, $extension);
 			} else {
 				$conf .= "exten => {$a['publicname']},1,NoOp(public calling application: {$a['name']})\n";
 				$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
@@ -255,6 +244,9 @@ EOD;
 
 	// virtual fax extensions
 	foreach ($virtual_faxes as $f) {
+		if (isset($f['disabled'])) {
+			continue;
+		}
 		if ($f['publicaccess'] == "enabled") {
 			$conf .= "; virtual fax : {$f['name']} - <{$f['extension']}>\n";
 			if (!$f['publicname']) {
@@ -303,16 +295,13 @@ EOD;
 
 	// application extensions
 	foreach ($applications as $a) {
+		if (isset($a['disabled'])) {
+			continue;
+		}
+		$extension = extensions_patternify($a['extension']);
 		$conf .= "; application : {$a['name']}\n";
-		$conf .= "exten => {$a['extension']},1,NoOp(internal calling application: {$a['name']})\n";
-		$conf .= extensions_generate_application_extension($a);
-	}
-
-	// application2 extensions
-	foreach ($applications2 as $a) {
-		$conf .= "; application : {$a['name']}\n";
-		$conf .= "exten => {$a['extension']},1,NoOp(internal calling application: {$a['name']})\n";
-		$conf .= extensions_generate_application_extension($a);
+		$conf .= "exten => $extension,1,NoOp(internal calling application: {$a['name']})\n";
+		$conf .= extensions_generate_application_extension($a, false, $extension);
 	}
 
 	// conference room extensions
@@ -324,6 +313,9 @@ EOD;
 
 	// virtual fax extensions
 	foreach ($virtual_faxes as $f) {
+		if (isset($f['disabled'])) {
+			continue;
+		}
 		$conf .= "; virtual fax : {$f['name']} - <{$f['extension']}>\n";
 		$conf .= "exten => {$f['extension']},1,NoOp(internal calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
 		$conf .= extensions_generate_virtual_fax_extension($f);
@@ -387,47 +379,6 @@ EOD;
 		$conf .= "include => outgoing-uri\n";
 		$conf .= "\n";
 	}
-
-	// isdn nt port contexts
-	//foreach ($isdn_nt_interfaces as $i) {
-	//	$phones = isdn_get_phones_on_unit($i['uniqid']);
-	//	if (!count($phones)) {
-	//		continue;
-	//	}
-	//	$conf .= "; isdn nt interface \"{$i['name']}\" incoming\n";
-	//	$conf .= "[{$i['uniqid']}-incoming]\n";
-	//	foreach ($phones as $p) {
-	//		$phone_lang = "en-us";
-	//		if ($p['language']) {
-	//			$phone_lang = $p['language'];
-	//		}
-	//		$conf .= "exten => _[0-9*#]!/{$p['extension']},1,Set(CHANNEL(language)=$phone_lang)\n";
-	//		$conf .= "exten => _[0-9*#]!/{$p['extension']},n,Goto({$p['uniqid']},$\{EXTEN},1)\n";
-	//	}
-	//	$conf .= "\n";
-	//}
-
-	// isdn te port contexts
-	//foreach ($isdn_te_interfaces as $i) {
-	//	$providers = isdn_get_providers_on_unit($i['uniqid']);
-	//	if (!count($providers)) {
-	//		continue;
-	//	}
-	//	$conf .= "; isdn te interface \"{$i['name']}\" incoming\n";
-	//	$conf .= "[{$i['uniqid']}-incoming]\n";
-	//	foreach ($providers as $p) {
-	//		// XXX : multiple providers on a single s0 is broken
-	//		$provider_lang = "en-us";
-	//		if ($p['language']) {
-	//			$provider_lang = $p['language'];
-	//		}
-	//		$conf .= "exten => _[0-9*#]!,1,Set(CHANNEL(language)=$provider_lang)\n";
-	//		$conf .= "exten => _[0-9*#]!,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
-	//		$conf .= "exten => s,1,Set(CHANNEL(language)=$provider_lang)\n";
-	//		$conf .= "exten => s,n,Goto({$p['uniqid']}-incoming,$\{EXTEN},1)\n";
-	//	}
-	//	$conf .= "\n";
-	//}
 
 	$conf .= <<<EOD
 [outgoing-uri]
@@ -834,34 +785,6 @@ function extensions_generate_callgroup_extension($group, $from_public=false, $re
 	return $conf;
 }
 
-/**
- * Generates an application context
- */
-function extensions_generate_application_context($a) {
-	// init local vars
-	$conf = '';
-	$conf_pre ='';
-	$conf_act ='';
-	//	
-	if (is_array($a['app-command'])) {
-		$conf = "; " . $a['name'] . "\n";
-		$conf .= "[" . $a['uniqid'] . "]\n";
-		//
-		foreach ($a['app-command'] as $ac) {
-			// allow for include statements, don't process it
-			if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', base64_decode($ac))) {
-				$conf .= base64_decode($ac) . "\n";
-			}
-			else {
-				$conf_pre .= "exten => _[0-9a-zA-Z*#]!," . base64_decode($ac) . "\n";
-				$conf_act .= "exten => s," . base64_decode($ac) . "\n";
-			}
-		}
-	}
-	$conf .= $conf_pre . $conf_act;
-	return $conf;
-}
-
 function extensions_generate_application_context2($a) {
 
 	if ($a['type'] == "php") {
@@ -879,6 +802,22 @@ function extensions_generate_application_context2($a) {
 		$conf .= "exten => s,1,AGI(" . $a['uniqid'] . ".php)\n";
 		$conf .= "exten => s,2,Hangup()\n";
 		$conf .= "exten => h,1,Hangup()\n";
+
+	} else if ($a['type'] == "plaintext") {
+		$lines = explode("\n", base64_decode($a['applicationlogic']));
+
+		$conf = "; " . $a['name'] . "\n";
+		$conf .= "[" . $a['uniqid'] . "]\n";
+		foreach ($lines as $l) {
+			if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', $l)) {
+				$conf .= $l . "\n";
+			} else {
+				$conf_ext1 .= "exten => _[0-9a-zA-Z*#]!," . $l . "\n";
+				$conf_ext2 .= "exten => s," . $l . "\n";
+			}
+		}
+		$conf .= $conf_ext1;
+		$conf .= $conf_ext2;
 	}
 
 	return $conf;
@@ -997,18 +936,17 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 		return extensions_generate_callgroup_extension($group, $from_public, $readbacknum, $extension);
 
 	// applications
-	} else if ($id[0] == "APPLICATION" && $id[1] == "MAPPING") {
-		$a = applications_get_app($uniqid);
-		return extensions_generate_application_extension($a, $from_public, $extension);
-
-	// applications2
 	} else if ($id[0] == "DIALPLAN" && $id[1] == "APPLICATION") {
-		$a = applications2_get_application($uniqid);
+		$a = applications_get_application($uniqid);
 		return extensions_generate_application_extension($a, $from_public, $extension);
 
 	} else {
 		return "ERROR: unmatched case in extensions_generate_extension_from_uniqid!";
 	}
+}
+
+function extensions_patternify($extension) {
+	return (!preg_match("/^[0-9]+$/", $extension)) ? "_" . $extension : $extension;
 }
 
 ?>

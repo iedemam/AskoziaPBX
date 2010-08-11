@@ -379,7 +379,7 @@ function pbx_get_extensions() {
 	global $config;
 
 	return array_merge(
-		sip_get_extensions(), 
+		sip_get_extensions(),
 		iax_get_extensions(),
 		isdn_get_extensions(),
 		analog_get_extensions(),

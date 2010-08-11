@@ -57,12 +57,6 @@ $d_ultmpmounted_path = $g['varrun_path'] . "/ultmp.mounted";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
 $d_passworddirty_path = $g['varrun_path'] . "/password.dirty";
 
-$applications = array(
-	"Echo" => gettext("Echos audio and video back to the caller as soon as it is received. Used to test connection delay."),
-	"Milliwatt" => gettext("Generates a constant 1000Hz tone. Used to test connection quality."),
-	"WakeMe" => gettext("Wake-Up call manager. Call to set and cancel wake-up calls on the current extension.")
-);
-
 $vm_email_languages = array(
 	"en-informal" => gettext("English"),
 	"en-formal" => gettext("English (formal)"),

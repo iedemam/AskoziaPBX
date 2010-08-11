@@ -428,11 +428,98 @@ function v_extension($element, $post, $errors) {
 	} else if (preg_match("/[^0-9]/", $post['extension'])) {
 		$errors[] = gettext("Invalid extension number. Use only numerals.");
 	}
-	else if ((($p = pbx_get_phone_by_extension($post['extension'])) != 0) && ($p['uniqid']!=$post['uniqid'])) // if there is ANOTHER phone with such number...
-	{
-		$errors[] = gettext("This extension is already used. Choose another number.");
-	}
+
 	$element['extension'] = $post['extension'];
+}
+
+function v_extensionpattern($element, $post, $errors) {
+
+	$element['extension'] = $post['extension'];
+
+	// extension is required
+	if (!strlen($post['extension'])) {
+		$errors[] = gettext("Missing extension.");
+		return;
+	}
+
+	// check if extension already exists
+	$all_extensions = pbx_get_extensions();
+	if (($key = array_search($post['extension'], $all_extensions)) !== false) {
+		if ($key != $post['uniqid']) {
+			$errors[] = gettext("Extension already in use, please choose another.");
+			return;
+		}
+	}
+
+	// check extension validitiy
+	$dialpattern = $post['extension'];
+
+	//  - invalid character
+	if (!preg_match("/^[XNZ0-9\-\[\]\.\!]+$/", $dialpattern)) {
+		$errors[] = gettext("Extension contains an invalid character");
+		return;
+	}
+
+	//  - doubled character
+	if (substr_count($dialpattern, "|") > 1) {
+		$errors[] = gettext("Extension contains a doubled \"|\" character, only one is allowed.");
+		return;
+	}
+	if (substr_count($dialpattern, "+") > 1) {
+		$errors[] = gettext("Extension contains a doubled \"+\" character, only one is allowed.");
+		return;
+	}
+	if (substr_count($dialpattern, "-") > 1) {
+		$errors[] = gettext("Extension contains a doubled \"-\" character, only one is allowed.");
+		return;
+	}
+
+	//  - bracketing
+	$len = strlen($dialpattern);
+	$open = false;
+	$open_index = 0;
+	for ($i = 0; $i < $len; $i++) {
+		if ($dialpattern[$i] == "[") {
+			if ($open) {
+				$errors[] = gettext("Nested square brackets are not allowed in an extension");
+				return;
+			} else {
+				$open = true;
+				$open_index = $i;
+			}
+		} else if ($dialpattern[$i] == "]") {
+			if (!$open) {
+				$errors[] = gettext("Unmatched square bracket.");
+				return;
+			} else if (($i - $open_index) < 3) {
+				$errors[] = gettext("Brackets are not needed for less than 2 characters in an extension.");
+				return;
+			} else {
+				$open = false;
+			}
+		}
+	}
+
+	//  - invalid appended prefix
+	if (($plus_offset = strpos($dialpattern, "+")) !== false) {
+		if (!preg_match("/^[0-9\*\#]+\+/", $dialpattern)) {
+			$errors[] = gettext("Appended prefixes in extensions may only contain digits, '*' and '#'.");
+			return;
+		}
+		$dialpattern = substr($dialpattern, $plus_offset+1);
+	}
+
+	//  - invalid chopped prefix
+	if (($pipe_offset = strpos($dialpattern, "|")) !== false) {
+		if (strpos(substr($dialpattern, 0, $pipe_offset), ".") !== false) {
+			$errors[] = gettext("The wildcard character \".\" is not allowed in an extension before a prefix which is to be removed.");
+			return;
+		}
+		if (strpos(substr($dialpattern, 0, $pipe_offset), "!") !== false) {
+			$errors[] = gettext("The wildcard character \"!\" is not allowed in an extension before a prefix which is to be removed.");
+			return;
+		}
+	}
 }
 
 function v_callerid($element, $post, $errors) {
@@ -643,6 +730,46 @@ function v_applicationlogic($element, $post, $errors) {
 				}
 			}
 			$errors[] = $errormessage;
+		}
+
+	} else if ($post['type'] == "plaintext") {
+		// strip extra lines, trim whitespace then store cleaned lines
+		$split_lines = preg_split("/[\x0A]+/", $code, -1, PREG_SPLIT_NO_EMPTY);
+		$n = count($split_lines);
+		for ($i = 0; $i < $n; $i++) {
+			$split_lines[$i] = trim($split_lines[$i], " ");
+		}
+		$code = implode("\n", $split_lines);
+		// verify lines
+		$n = count($split_lines);
+		$app_index = 0;
+		for ($i = 1; $i <= $n; $i++) {
+			$app_index++;
+			// check for include directive
+			if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', $split_lines[$i-1])) {
+				$app_index--;
+				continue;
+			}
+			// check for application rules:
+			if (preg_match('/^(?P<pri>[\d]+|n)(?:\((?P<lbl>[A-Za-z]{2,})\))??,(?P<cmd>[A-Za-z]{2,}(?:\(.*\)))/i', $split_lines[$i-1], $groups)) {
+				// check for matching parentheses in commands
+				$result = verify_match_parentheses($groups['cmd']);
+				if ($result !== true) {
+					$errors[] = "Line $i -> Parenthesis mismatch in the dialplan command before position $result";
+				}
+				if ($groups['pri'] == 'n') {
+					// first priority must be numbered
+					if ($app_index == 1) {
+						$errors[] = "Line $i -> Wrong numbering, first priority must always be 1!";
+					}
+					continue; 
+				}
+				if ($groups['pri'] <> $app_index) {
+					$errors[] = "Line $i -> Incorrect priority number (expected $app_index, found {$groups['pri']}).";
+				}
+			} else {
+				$errors[] = "Line $i -> Invalid syntax (missing parenthesis, commas...).";
+			}
 		}
 	}
 

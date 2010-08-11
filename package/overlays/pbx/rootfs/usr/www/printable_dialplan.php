@@ -44,7 +44,7 @@ $a_intphones = pbx_get_phones();			usort($a_intphones, "pbx_sort_by_extension");
 $a_extphones = external_get_phones();		// already sorted by extension
 $a_callgroups = callgroups_get_groups();	usort($a_callgroups, "pbx_sort_by_extension");
 $a_rooms = conferencing_get_rooms();		usort($a_rooms, "pbx_sort_by_extension");
-$a_apps = applications_get_apps();			// already sorted by extension
+$a_apps = applications_get_applications();			// already sorted by extension
 $a_providers = pbx_get_providers();			// already sorted by name
 
 ?>

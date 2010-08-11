@@ -48,7 +48,7 @@ function conferencing_get_extensions() {
 
 	if (is_array($config['conferencing']['room'])) {
 		foreach($config['conferencing']['room'] as $room) {
-			$extensions[] = $room['number'];
+			$extensions[$room['uniqid']] = $room['number'];
 		}
 	}
 
