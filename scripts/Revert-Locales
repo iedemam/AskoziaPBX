@@ -20,4 +20,5 @@
 
 svn revert package/overlays/pbx/rootfs/usr/www/locale/*/LC_MESSAGES/messages.po
 svn revert package/overlays/pbx/rootfs/usr/www/locale/skeleton.po
+svn revert package/overlays/pbx/rootfs/usr/www/locale/locale_status.txt
 
