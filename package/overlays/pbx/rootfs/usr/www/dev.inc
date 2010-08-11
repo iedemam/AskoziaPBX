@@ -132,7 +132,6 @@
 
 		} else {
 			jQuery('#devpanel').slideUp('slow');
-			dev_translation_disable();
 			devmodeactivated = false;
 		}
 	}
