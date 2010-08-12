@@ -18,6 +18,7 @@
 #define FPGA_ICCR		0x002c /* Interrupt Cause/Clear */
 #define FPGA_IMR		0x0030 /* Interrupt Mask */
 #define FPGA_STAT_LINES		0x0034 /* Status Lines */
+#define FPGA_DMA_SG_IDX		0x0E10 /* DMA SG List Index */
 
 /* xhfc board defines */
 #define MAX_XHFC_SPANS	4	/* This is per chip */
@@ -37,6 +38,7 @@
 #define SPAN_MODE_LOOP_B2	0x0040
 #define SPAN_MODE_LOOP_D	0x0080
 #define SPAN_MODE_ENDPOINT	0x0100
+#define SPAN_MODE_STARTED       0x1000
 
 #define SPAN_MODE_LOOPS		0xE0	/* mask span mode Loop B1/B2/D */
 
@@ -55,24 +57,34 @@
 
 #define BRIE_CHANS_PER_SPAN 3
 
+/* DMA - this must match wa_dma.h but we cannot include wa_dma.h */
+#define FRAMES_PER_BUFFER	320 /* 40ms / (125us per frame) */
+#define FRAMES_PER_TRANSFER	8
+#define FRAMESIZE		64
+#define DMA_CARD_ID		7
+
 /* span struct for each S/U span */
 struct xhfc_span {
-	int span_id; /* Physical span id */ /* SAM needed? */
+	int span_id; /* Physical span id */
 	int id; /* 0 based, no gaps */
 	struct xhfc *xhfc;
 	struct xhfc_chan *d_chan;
 	struct xhfc_chan *b1_chan;
 	struct xhfc_chan *b2_chan;
 
+	int timeslot;
+
+	atomic_t open_count;
+
 	/* hdlc transmit data */
 	int tx_idx;
 	int tx_size;
 	int tx_frame;
-	u8  tx_buf[128]; /* SAM Could be dynamic. */
+	u8  tx_buf[128];
 
 	/* hdlc receive data */
 	int rx_idx;
-	u8  rx_buf[128]; /* SAM Could be dynamic. */
+	u8  rx_buf[128];
 
 	u16 mode;		/* NT/TE + ST/U */
 	u8 state;
@@ -80,6 +92,10 @@ struct xhfc_span {
 	struct timer_list t3_timer;	/* for activation/deactivation */
 	struct timer_list t4_timer;	/* for activation/deactivation */
 	struct timer_list nt_timer;
+
+	/* Alarm state for dahdi */
+	int newalarm;
+	struct timer_list alarm_timer;
 
 	/* chip registers */
 	reg_a_su_ctrl0 su_ctrl0;
@@ -89,11 +105,7 @@ struct xhfc_span {
 	/* dahdi */
 	struct dahdi_span span;
 	struct dahdi_chan *chans[BRIE_CHANS_PER_SPAN]; /* Individual channels */
-	struct dahdi_chan *sigchan; /* pointer to the signalling channel for this span */
-
-	/* SAM move to channel? */
-	unsigned char writechunk[BRIE_CHANS_PER_SPAN * DAHDI_CHUNKSIZE];
-	unsigned char readchunk[BRIE_CHANS_PER_SPAN * DAHDI_CHUNKSIZE];
+	struct dahdi_chan *sigchan; /* the signaling channel for this span */
 };
 
 
@@ -102,7 +114,9 @@ struct xhfc_chan {
 	int id;
 	struct xhfc_span *span;
 
-	/* dahdi */
+	unsigned char writechunk[DAHDI_CHUNKSIZE];
+	unsigned char readchunk[DAHDI_CHUNKSIZE];
+
 	struct dahdi_chan chan;
 };
 
@@ -118,7 +132,7 @@ struct xhfc {
 	struct xhfc_chan *chan;	/* one each D/B/PCM channel */
 
 	/* chip registers */
-	reg_r_irq_ctrl 		irq_ctrl;
+	reg_r_irq_ctrl		irq_ctrl;
 	reg_r_misc_irqmsk	misc_irqmask;	/* mask of enabled interrupt
 						   sources */
 	reg_r_misc_irq		misc_irq;	/* collect interrupt status
@@ -139,8 +153,6 @@ struct xhfc {
 };
 
 struct brie {
-	int id;
-
 	void __iomem *fpga;
 	int irq;
 
@@ -156,10 +168,13 @@ struct brie {
 	struct xhfc *xhfc;
 
 	struct xhfc_span *spans[MAX_SPANS];
+
+	/* DMA */
+	void *tx_buf;
+	void *rx_buf;
 };
 
 
-/* SAM should we bring this inline with the daytona read_silabs? */
 static inline __u8 read_xhfc(struct xhfc *xhfc, __u8 reg)
 {
 	__u8 data = 0;

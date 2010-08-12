@@ -6,6 +6,7 @@ int pikadma_register_cb(int cardid, void (*cb)(int cardid));
 int pikadma_unregister(int cardid);
 void pikadma_enable(void);
 void pikadma_disable(void);
+void pikadma_get_buffers(void **rx_buf, void **tx_buf);
 
 static inline unsigned fpga_read(void __iomem *fpga, int reg)
 {
