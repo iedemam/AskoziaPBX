@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1975,10 +1975,6 @@ msgstr "Arayıcı İD yerine gösterilen metin."
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Bu telefon için açıklayıcı bir isim."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3317,6 +3313,10 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Bu telefon için açıklayıcı bir isim."
 
 #~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
 #~ msgstr ""

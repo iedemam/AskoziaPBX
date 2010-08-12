@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -2045,10 +2045,6 @@ msgstr "Numéro/Nom à afficher lors de la présentation de l'appel."
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Nom descriptif de cette ligne."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3412,6 +3408,10 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERREUR La configuration reçue est invalide. \n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Nom descriptif de cette ligne."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2119,10 +2119,6 @@ msgstr "Το κείμενο που θα παρουσιαστεί ως ταυτό
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3612,6 +3608,10 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

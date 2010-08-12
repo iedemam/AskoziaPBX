@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -2004,10 +2004,6 @@ msgstr "表示させる発信者IDを入力して下さい"
 msgid "Edit Virtual Fax"
 msgstr "バーチャルファックスの編集"
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "このファックスに判り易い名前を入力して下さい"
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr "着信したファックスを変換し、このEメールアドレスに送信します"
 
@@ -3367,6 +3363,10 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "このファックスに判り易い名前を入力して下さい"
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

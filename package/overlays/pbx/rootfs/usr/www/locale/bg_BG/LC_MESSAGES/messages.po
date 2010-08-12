@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -2041,10 +2041,6 @@ msgstr "Текст който да се показва за Caller ID."
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Моля въведете име за този канал."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3391,6 +3387,10 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Моля въведете име за този канал."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: part of AskoziaPBX (http://askozia.com/pbx)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2010-08-04 01:08-0300\n"
 "Last-Translator: Facundo Ameal <facundo.ameal@railtion.com.ar>\n"
 "Language-Team: es_ES <LI@li.org>\n"
@@ -2038,10 +2038,6 @@ msgstr "Texto que será mostrado para el ID llamante"
 msgid "Edit Virtual Fax"
 msgstr "Editar Fax Virtual"
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Ingrese un nombre descriptivo para este fax."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 "Los fax entrantes serán convertidos y enviados a esta dirección de e-mail."
@@ -3412,6 +3408,10 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Ingrese un nombre descriptivo para este fax."
 
 #~ msgid "add application mapping"
 #~ msgstr "añadir mapeo de aplicaciones"

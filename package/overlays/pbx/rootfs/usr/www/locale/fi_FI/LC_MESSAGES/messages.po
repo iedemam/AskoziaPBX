@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -2080,10 +2080,6 @@ msgstr "Teksti joka näytetään Soittajan Tunnukselle"
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Kuvaileva nimi tälle puhelimelle."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3513,6 +3509,10 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Kuvaileva nimi tälle puhelimelle."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

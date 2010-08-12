@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -2057,11 +2057,6 @@ msgstr "Testo mostrato per Identificativo del chiamante (Caller ID)."
 msgid "Edit Virtual Fax"
 msgstr ""
 
-# Vedi nota a Span
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Immettere la descizione per questo span."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3465,6 +3460,11 @@ msgstr "ERR Non posso installare la configurazione.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta non è valida.\n"
+
+# Vedi nota a Span
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Immettere la descizione per questo span."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

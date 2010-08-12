@@ -13,6 +13,6 @@ zh_CN 87
 jp_JP 100
 nl_NL 97
 pt_BR 9
-pl_PL 99
+pl_PL 98
 it_IT 96
 fi_FI 85

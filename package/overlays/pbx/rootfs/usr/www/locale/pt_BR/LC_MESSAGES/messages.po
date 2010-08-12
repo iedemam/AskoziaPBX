@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1867,9 +1867,6 @@ msgid "Text to be displayed for Caller ID."
 msgstr ""
 
 msgid "Edit Virtual Fax"
-msgstr ""
-
-msgid "Enter a name for this fax."
 msgstr ""
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."

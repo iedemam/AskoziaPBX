@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -2030,10 +2030,6 @@ msgstr "Tekst wyświetlany jako Caller ID."
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Opisowa nazwa okresu."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3393,6 +3389,10 @@ msgstr "BŁĄD Nie zdołano zainstalować konfiguracji.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Opisowa nazwa okresu."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 16:57+0200\n"
+"POT-Creation-Date: 2010-08-12 18:00+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -2044,10 +2044,6 @@ msgstr "Text der als Caller-ID angezeigt werden soll."
 msgid "Edit Virtual Fax"
 msgstr ""
 
-#, fuzzy
-msgid "Enter a name for this fax."
-msgstr "Sprechender Name für diese Nebenstelle."
-
 msgid "Incoming faxes will be converted and sent to this e-mail address."
 msgstr ""
 
@@ -3449,6 +3445,10 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#, fuzzy
+#~ msgid "Enter a name for this fax."
+#~ msgstr "Sprechender Name für diese Nebenstelle."
 
 #~ msgid ""
 #~ "Echos audio and video back to the caller as soon as it is received. Used "
