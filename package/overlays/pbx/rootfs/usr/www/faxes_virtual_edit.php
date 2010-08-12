@@ -81,8 +81,8 @@ d_start("faxes_virtual_edit.php");
 	d_field(gettext("Number"), "extension", 20,
 		gettext("The number used to dial this fax."), "required");
 
-	d_field(gettext("Name"), "callerid", 40,
-		gettext("Enter a name for this fax."), "required");
+	d_field(gettext("Caller ID"), "callerid", 40,
+		gettext("Text to be displayed for Caller ID."), "required");
 
 	d_field(gettext("E-Mail"), "email", 40,
 		gettext("Incoming faxes will be converted and sent to this e-mail address."), "required");

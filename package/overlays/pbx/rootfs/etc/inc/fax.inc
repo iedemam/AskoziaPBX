@@ -60,7 +60,7 @@ function virtual_verify_fax($post, $errors) {
 
 	v_cleanliness(&$post, &$errors);
 	v_extension(&$fax, &$post, &$errors);
-	v_required('name', gettext('Name'), &$fax, &$post, &$errors);
+	v_callerid(&$fax, &$post, &$errors);
 	v_email(&$fax, &$post, &$errors);
 
 	$trusted = array(
