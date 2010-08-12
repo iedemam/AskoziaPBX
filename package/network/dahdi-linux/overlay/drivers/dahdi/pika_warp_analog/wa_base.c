@@ -1817,12 +1817,6 @@ int __init dahdi_warp_init_module(void)
         pdx->disconnect_debounce = msecs_to_tics(DISCONNECT_DEBOUNCE_MS);
 	pdx->disconnect_hookstate_debounce = HOOK_STATE_DEBOUNCE_TIME_DEFAULT;
 
-        /* only reset the silabs once. */
-        if (daytona_silabs_reset(pdx)) {
-                printk(KERN_ERR "Unable to reset silabs\n");
-                return -ENODEV;
-        }
-
 	/* get the addresses of the DMA buffers from taco */
 	if ((rc = warp_dma_init(pdx))) {
 		goto error_cleanup;

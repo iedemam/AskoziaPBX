@@ -9,5 +9,5 @@ warp_shared-objs := daytona.o slic.o fpga.o tacokmd.o pikadma.o
 EXTRA_CFLAGS+=-DCONFIG_WARP_DAHDI
 
 # SAM Hardcode for now....
-#EXTRA_CFLAGS += -I/usr/src/work/open_warp/libpri/trunk/dahdi/linux/include
-#EXTRA_CFLAGS += -I/usr/src/work/open_warp/libpri/trunk/dahdi/linux/drivers/dahdi
+EXTRA_CFLAGS += -I/usr/src/work/open_warp/libpri/trunk/dahdi/linux/include
+EXTRA_CFLAGS += -I/usr/src/work/open_warp/libpri/trunk/dahdi/linux/drivers/dahdi

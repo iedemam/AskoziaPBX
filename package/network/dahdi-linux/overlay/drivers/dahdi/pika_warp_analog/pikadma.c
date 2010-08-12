@@ -398,6 +398,12 @@ int __init shared_dma_init_module(void)
 		goto error_cleanup;
 	}
 
+        /* only reset the silabs once. */
+        if (daytona_silabs_reset(pdx)) {
+                printk(KERN_ERR "Unable to reset silabs\n");
+                return -ENODEV;
+        }
+
 	return 0;
 
 error_cleanup:
