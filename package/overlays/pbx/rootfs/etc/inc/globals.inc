@@ -49,7 +49,7 @@ $g = array(
 	"package_system" => "1.0",
 	"technologies" => array("sip", "iax", "isdn", "analog", "skinny"),
 	"phone_types" => array("sip", "iax", "isdn", "analog", "skinny", "external"),
-	"fax_types" => array("virtual"),
+	"fax_types" => array("analog", "virtual"),
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
 	"storage_services" => array("media", "persistence", "astlogs", "faxarchive"),

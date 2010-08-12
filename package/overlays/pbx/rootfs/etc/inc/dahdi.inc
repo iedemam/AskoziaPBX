@@ -645,6 +645,27 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		$conf .= "\n";
 	}
 
+	$analogfaxes = analog_get_faxes();
+	foreach ($analogfaxes as $fax) {
+		if (isset($fax['disabled'])) {
+			continue;
+		}
+		$port = dahdi_get_port($fax['port']);
+
+		$conf .= "; Fax: " . $fax['extension'] . "\n";
+		$conf .= "callerid=" . $fax['callerid'] . " <" . $fax['extension'] . ">\n";
+		$conf .= "signalling=fxo_" . $port['startsignaling'] . "\n";
+		$conf .= "rxgain=" . $port['rxgain'] . "\n";
+		$conf .= "txgain=" . $port['txgain'] . "\n";
+		$conf .= "echocancel=no\n";
+		$conf .= "busydetect=yes\n";
+		$conf .= "busycount=3\n";
+		$conf .= "context=" . $fax['uniqid'] . "\n";
+		$conf .= "group=" . $port['basechannel'] . "\n";
+		$conf .= "channel => " . $port['basechannel'] . "\n";
+		$conf .= "\n";
+	}
+
 	$isdnproviders = isdn_get_providers();
 	foreach ($isdnproviders as $provider) {
 		if (isset($provider['disabled'])) {

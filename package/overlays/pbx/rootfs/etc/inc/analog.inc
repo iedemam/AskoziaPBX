@@ -254,4 +254,66 @@ function analog_save_provider($provider) {
 	touch($g['analog_dirty_path']);
 }
 
+function analog_verify_fax($post, $errors) {
+
+	$fax = array();
+
+	v_cleanliness(&$post, &$errors);
+	v_extension(&$fax, &$post, &$errors);
+	v_callerid(&$fax, &$post, &$errors);
+
+	$trusted = array(
+		'uniqid',
+		'port'
+	);
+	foreach ($trusted as $t) {
+		$fax[$t] = $post[$t];
+	}
+
+	return $fax;
+}
+
+function analog_save_fax($fax) {
+	global $g, $uniqid_map;
+
+	if (analog_get_fax($fax['uniqid'])) {
+		$GLOBALS['config']['analog']['fax'][$uniqid_map[$fax['uniqid']]] = $fax;
+	} else {
+		$GLOBALS['config']['analog']['fax'][] = $fax;
+	}
+
+	write_config();
+	touch($g['analog_dirty_path']);
+}
+
+function analog_get_faxes() {
+
+	if (!is_array($GLOBALS['config']['analog']['fax'])) {
+		$GLOBALS['config']['analog']['fax'] = array();
+	}
+
+	$tmp = $GLOBALS['config']['analog']['fax'];
+	usort($tmp, "pbx_sort_by_extension");
+
+	return $tmp;
+}
+
+function analog_get_fax($uniqid) {
+	global $uniqid_map;
+
+	return $GLOBALS['config']['analog']['fax'][$uniqid_map[$uniqid]];
+}
+
+function analog_generate_default_fax() {
+	global $defaults;
+
+	$fax = array();
+
+	$fax['extension'] = pbx_get_next_default_phone_extension();
+	$fax['callerid'] = $defaults['accounts']['phones']['callerid'];
+	$fax['uniqid'] = "ANALOG-FAX-" . uniqid(rand());
+
+	return $fax;
+}
+
 ?>

@@ -79,6 +79,9 @@ if ($successful_action) {
 		case "virtual":
 			touch($g['virtualfax_dirty_path']);
 			break;
+		case "analog":
+			touch($g['analog_dirty_path']);
+			break;
 	}
 	header("Location: accounts_faxes.php");
 	exit;
@@ -100,36 +103,57 @@ if (file_exists($g['virtualfax_dirty_path'])) {
 	}
 }
 
+/* dirty analog config? */
+if (file_exists($g['analog_dirty_path'])) {
+	$retval = 0;
+	if (!file_exists($d_sysrebootreqd_path)) {
+		config_lock();
+		$retval |= chan_dahdi_conf_generate();
+		$retval |= extensions_conf_generate();
+		config_unlock();
+
+		$retval |= pbx_exec("module reload chan_dahdi.so");
+		$retval |= pbx_exec("dahdi restart");
+		$retval |= pbx_exec("dialplan reload");
+	}
+	$savemsg = get_std_save_message($retval);
+	if ($retval == 0) {
+		unlink($g['analog_dirty_path']);
+	}
+}
+
 include("fbegin.inc");
 
 ?><form action="accounts_faxes.php" method="post">
 <table border="0" cellspacing="0" cellpadding="6" width="100%">
 	<tr>
 		<td class="listhdradd"><img src="add.png">&nbsp;&nbsp;&nbsp;
+			<a href="faxes_analog_edit.php"><?=gettext("Analog");?></a><img src="bullet_add.png">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="faxes_virtual_edit.php"><?=gettext("Virtual");?></a><img src="bullet_add.png">
 		</td>
 	</tr>
 	<tr>
 		<td class="list" height="12">&nbsp;</td>
 	</tr>
-</table>
+</table><?
 
-<? if ($virtual_faxes = virtual_get_faxes()) : ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+if ($analog_faxes = analog_get_faxes()) {
+?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="4" class="listtopiclight"><?=gettext("Virtual");?></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("Analog");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
 		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
 		<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
-		<td width="35%" class="listhdr"><?=gettext("E-Mail");?></td>
+		<td width="35%" class="listhdr"><?=gettext("Port");?></td>
 		<td width="10%" class="list"></td>
-	</tr>
+	</tr><?
 
-	<? foreach ($virtual_faxes as $f): ?>
-	<tr>
+	foreach ($analog_faxes as $f) {
+	?><tr>
 		<td valign="middle" nowrap class="list"><?
 		if (isset($f['disabled'])) {
 			?><a href="?action=enable&uniqid=<?=$f['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable fax");?>" border="0"></a><?
@@ -144,18 +168,63 @@ include("fbegin.inc");
 			?><span class="gray"><?=htmlspecialchars($f['extension']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=htmlspecialchars($f['name']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars($f['callerid']);?>&nbsp;</td>
+		<td class="listr"><?=htmlspecialchars(pbx_uniqid_to_name($f['port']));?>&nbsp;</td>
+		<td valign="middle" nowrap class="list"><a href="faxes_analog_edit.php?uniqid=<?=$f['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit fax");?>" border="0"></a>
+			<a href="?action=delete&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this fax?");?>')"><img src="delete.png" title="<?=gettext("delete fax");?>" border="0"></a></td>
+	</tr><?
+	}
+
+	?><tr>
+		<td class="list" colspan="5" height="12">&nbsp;</td>
+	</tr>
+</table><?
+}
+
+if ($virtual_faxes = virtual_get_faxes()) {
+?><table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="5%" class="list"></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("Virtual");?></td>
+	</tr>
+	<tr>
+		<td width="5%" class="list"></td>
+		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>
+		<td width="35%" class="listhdrr"><?=gettext("Name");?></td>
+		<td width="35%" class="listhdr"><?=gettext("E-Mail");?></td>
+		<td width="10%" class="list"></td>
+	</tr><?
+
+	foreach ($virtual_faxes as $f) {
+	?><tr>
+		<td valign="middle" nowrap class="list"><?
+		if (isset($f['disabled'])) {
+			?><a href="?action=enable&uniqid=<?=$f['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable fax");?>" border="0"></a><?
+		} else {
+			?><a href="?action=disable&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this fax?");?>')"><img src="enabled.png" title="<?=gettext("click to disable fax");?>" border="0"></a><?
+		}
+		?></td>
+		<td class="listbgl"><?
+		if (!isset($f['disabled'])) {
+			echo htmlspecialchars($f['extension']);
+		} else {
+			?><span class="gray"><?=htmlspecialchars($f['extension']);?></span><?
+		}
+		?></td>
+		<td class="listr"><?=htmlspecialchars($f['callerid']);?>&nbsp;</td>
 		<td class="listr"><?=htmlspecialchars($f['email']);?>&nbsp;</td>
 		<td valign="middle" nowrap class="list"><a href="faxes_virtual_edit.php?uniqid=<?=$f['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit fax");?>" border="0"></a>
 			<a href="?action=delete&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this fax?");?>')"><img src="delete.png" title="<?=gettext("delete fax");?>" border="0"></a></td>
-	</tr>
-	<? endforeach; ?>
+	</tr><?
+	}
 
-	<tr> 
+	?><tr>
 		<td class="list" colspan="5" height="12">&nbsp;</td>
 	</tr>
-</table>
-<? endif; ?>
-</form><?
+</table><?
+}
+
+
+?></form><?
 
 include("fend.inc");

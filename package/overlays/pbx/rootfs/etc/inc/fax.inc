@@ -38,6 +38,21 @@
 
 require_once("functions.inc");
 
+function fax_get_extensions() {
+	global $g;
+
+	$extensions = array();
+
+	foreach ($g['fax_types'] as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['fax'])) {
+			foreach($GLOBALS['config'][$tech]['fax'] as $fax) {
+				$extensions[$fax['uniqid']] = $fax['extension'];
+			}
+		}
+	}
+
+	return $extensions;
+}
 
 function virtual_verify_fax($post, $errors) {
 
@@ -47,7 +62,6 @@ function virtual_verify_fax($post, $errors) {
 	v_extension(&$fax, &$post, &$errors);
 	v_required('name', gettext('Name'), &$fax, &$post, &$errors);
 	v_email(&$fax, &$post, &$errors);
-	v_public_access_editor(&$fax, &$post, &$errors);
 
 	$trusted = array(
 		'uniqid'

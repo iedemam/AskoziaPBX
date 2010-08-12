@@ -50,6 +50,7 @@ function extensions_conf_generate($return=false) {
 	$applications = applications_get_applications();
 	$conference_rooms = conferencing_get_rooms();
 	$virtual_faxes = virtual_get_faxes();
+	$analog_faxes = analog_get_faxes();
 	$providers = pbx_get_providers();
 	$isdn_nt_interfaces = dahdi_get_ports("isdn", "nt");
 	$isdn_te_interfaces = dahdi_get_ports("isdn", "te");
@@ -242,23 +243,6 @@ EOD;
 	}
 	$conf .= "\n";
 
-	// virtual fax extensions
-	foreach ($virtual_faxes as $f) {
-		if (isset($f['disabled'])) {
-			continue;
-		}
-		if ($f['publicaccess'] == "enabled") {
-			$conf .= "; virtual fax : {$f['name']} - <{$f['extension']}>\n";
-			if (!$f['publicname']) {
-				$conf .= "exten => {$f['extension']},1,NoOp(public calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
-				$conf .= extensions_generate_virtual_fax_extension($f, true);
-			} else {
-				$conf .= "exten => {$f['publicname']},1,NoOp(public calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
-				$conf .= extensions_generate_virtual_fax_extension($f, true, $f['publicname']);
-			}
-		}
-	}
-	$conf .= "\n";
 
 	// internal extensions context
 	$conf .= "[internal]\n";
@@ -316,9 +300,19 @@ EOD;
 		if (isset($f['disabled'])) {
 			continue;
 		}
-		$conf .= "; virtual fax : {$f['name']} - <{$f['extension']}>\n";
-		$conf .= "exten => {$f['extension']},1,NoOp(internal calling virtual fax: {$f['name']} - <{$f['extension']}>)\n";
+		$conf .= "; virtual fax : {$f['callerid']} - <{$f['extension']}>\n";
+		$conf .= "exten => {$f['extension']},1,NoOp(internal calling virtual fax: {$f['callerid']} - <{$f['extension']}>)\n";
 		$conf .= extensions_generate_virtual_fax_extension($f);
+	}
+
+	// analog fax extensions
+	foreach ($analog_faxes as $f) {
+		if (isset($f['disabled'])) {
+			continue;
+		}
+		$conf .= "; analog fax : {$f['callerid']} - <{$f['extension']}>\n";
+		$conf .= "exten => {$f['extension']},1,NoOp(internal calling analog fax: {$f['callerid']} - <{$f['extension']}>)\n";
+		$conf .= extensions_generate_analog_fax_extension($f);
 	}
 
 	$conf .= "; parking lot\n";
@@ -377,6 +371,30 @@ EOD;
 			}
 		}
 		$conf .= "include => outgoing-uri\n";
+		$conf .= "\n";
+	}
+
+	// analog fax contexts
+	foreach($analog_faxes as $f) {
+		if (isset($f['disabled'])) {
+			continue;
+		}
+		$conf .= "; {$f['callerid']} - <{$f['extension']}>\n";
+		$conf .= "[{$f['uniqid']}]\n";
+		$conf .= "include => internal\n";
+		// include each provider's contexts unless blocked
+		foreach ($providers as $provider) {
+			if (!isset($f['provider'])) {
+				if (pbx_provider_is_active($provider['uniqid'])) {
+					$conf .= "include => " . $provider['uniqid'] . "\n";
+				}
+			} else {
+				if (!in_array($provider['uniqid'], $f['provider']) &&
+					pbx_provider_is_active($provider)) {
+					$conf .= "include => " . $provider['uniqid'] . "\n";
+				}
+			}
+		}
 		$conf .= "\n";
 	}
 
@@ -850,7 +868,7 @@ function extensions_generate_virtual_fax_context($f, $from_public=false, $extens
 	$emailconfig = notifications_get_email_configuration();
 	$product_name = system_get_product_name();
 
-	$conf = "; " . $f['name'] . "\n";
+	$conf = "; " . $f['callerid'] . "\n";
 	$conf .= "[" . $f['uniqid'] . "]\n";
 	$conf .= "exten => _[0-9a-zA-Z*#]!,1,Ringing()\n";
 	$conf .= "exten => _[0-9a-zA-Z*#]!,n,Wait(6)\n";
@@ -891,6 +909,15 @@ function extensions_generate_virtual_fax_extension($f, $from_public=false, $exte
 	return "exten => $exten,n,Dial(Local/$\{EXTEN}@" . $f['uniqid'] . "/n)\n";
 }
 
+function extensions_generate_analog_fax_extension($f, $from_public=false, $extension=false) {
+
+	$internal_number = $f['extension'];
+	$exten = ($extension !== false) ? $extension : $internal_number;
+	$dahdi_port = dahdi_get_port($f['port']);
+
+	return "exten => $exten,n,Dial(DAHDI/g" . $dahdi_port['basechannel'] . ")\n";
+}
+
 function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, $readbacknum=false, $extension=false) {
 
 	// handle impromptu call groups 
@@ -922,6 +949,11 @@ function extensions_generate_extension_from_uniqid($uniqid, $from_public=false, 
 	} else if ($id[0] == "VIRTUAL" && $id[1] == "FAX") {
 		$f = virtual_get_fax($uniqid);
 		return extensions_generate_virtual_fax_extension($f, $from_public, $extension);
+
+	// analog faxes
+	} else if ($id[0] == "ANALOG" && $id[1] == "FAX") {
+		$f = analog_get_fax($uniqid);
+		return extensions_generate_analog_fax_extension($f, $from_public, $extension);
 
 	// impromptu parallel callgroups
 	} else if ($id[0] == "CALLGROUP" && $id[1] == "PARALLEL" && $id[2] == "impromptu") {

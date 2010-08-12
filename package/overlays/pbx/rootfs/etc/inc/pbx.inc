@@ -152,11 +152,10 @@ function pbx_configure() {
 }
 
 function pbx_start() {
-	return mwexec_bg("/usr/sbin/asterisk");
+	return mwexec_bg("/usr/sbin/asterisk -fn");
 }
 
 function pbx_stop() {
-	killbyname("astcanary");
 	killbyname("asterisk");
 }
 
@@ -387,7 +386,8 @@ function pbx_get_extensions() {
 		conferencing_get_extensions(),
 		external_get_extensions(),
 		callgroups_get_extensions(),
-		applications_get_extensions()
+		applications_get_extensions(),
+		fax_get_extensions()
 	);
 }
 
@@ -1086,7 +1086,6 @@ verbose = 3
 debug = 0
 dumpcore = no
 internal_timing = yes
-highpriority = yes
 hideconnect = yes
 
 

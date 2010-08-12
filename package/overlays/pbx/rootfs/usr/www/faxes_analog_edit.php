@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php 
 /*
-	$Id: faxes_virtual_edit.php 1515 2010-04-30 11:38:34Z michael.iedema $
+	$Id: faxes_analog_edit.php 1515 2010-04-30 11:38:34Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
@@ -39,15 +39,15 @@
 
 
 require("guiconfig.inc");
-$pgtitle = array(gettext("Accounts"), gettext("Edit Virtual Fax"));
+$pgtitle = array(gettext("Accounts"), gettext("Edit Analog Fax"));
 
 
 if ($_POST) {
 	unset($input_errors);
 
-	$fax = virtual_verify_fax(&$_POST, &$input_errors);
+	$fax = analog_verify_fax(&$_POST, &$input_errors);
 	if (!$input_errors) {
-		virtual_save_fax($fax);
+		analog_save_fax($fax);
 		header("Location: accounts_faxes.php");
 		exit;
 	}
@@ -65,14 +65,14 @@ if (isset($_POST['uniqid'])) {
 if ($_POST) {
 	$form = $_POST;
 } else if ($uniqid) {
-	$form = virtual_get_fax($uniqid);
+	$form = analog_get_fax($uniqid);
 } else {
-	$form = virtual_generate_default_fax();
+	$form = analog_generate_default_fax();
 }
 
 
 include("fbegin.inc");
-d_start("faxes_virtual_edit.php");
+d_start("faxes_analog_edit.php");
 
 
 	// General
@@ -81,11 +81,10 @@ d_start("faxes_virtual_edit.php");
 	d_field(gettext("Number"), "extension", 20,
 		gettext("The number used to dial this fax."), "required");
 
-	d_field(gettext("Name"), "callerid", 40,
-		gettext("Enter a name for this fax."), "required");
+	d_field(gettext("Caller ID"), "callerid", 40,
+		gettext("Text to be displayed for Caller ID."), "required");
 
-	d_field(gettext("E-Mail"), "email", 40,
-		gettext("Incoming faxes will be converted and sent to this e-mail address."), "required");
+	d_hwport_selector($form['port'], "analog", "fxs");
 	d_spacer();
 
 
