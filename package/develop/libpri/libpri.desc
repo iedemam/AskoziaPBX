@@ -26,7 +26,7 @@
 
 [L] GPL
 [S] Stable
-[V] 1.4-r1351
+[V] 1.4.11.3
 [P] X -----5---9 149.000
 
-[D] 0 libpri-1.4-r1351.tar.bz2 svn+http://svn.digium.com/svn/libpri/branches/1.4 -r 1351
+[D] 0 libpri-1.4.11.3.tar.gz http://downloads.asterisk.org/pub/telephony/libpri/releases/
