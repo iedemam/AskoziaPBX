@@ -1,11 +1,10 @@
-Path: .
+Path: pikagsm
 URL: http://svn.pikatech.com/open_warp/chan_gsm/trunk/pikagsm
 Repository Root: http://svn.pikatech.com
 Repository UUID: 23da9cfa-551c-0410-93a2-a1880a72a40f
-Revision: 21822
+Revision: 22840
 Node Kind: directory
-Schedule: normal
 Last Changed Author: ukaraaslan
-Last Changed Rev: 21667
-Last Changed Date: 2010-05-14 17:10:13 +0200 (Fri, 14 May 2010)
+Last Changed Rev: 22493
+Last Changed Date: 2010-07-08 22:19:11 +0200 (Thu, 08 Jul 2010)
 

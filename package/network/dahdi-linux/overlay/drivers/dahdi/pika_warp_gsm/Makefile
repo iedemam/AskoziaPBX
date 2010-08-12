@@ -13,7 +13,7 @@ endif
 BUILD_DIR := $(shell pwd)
 
 all:
-	$(MAKE) -C $(KERNELSRCDIR) SUBDIRS=$(shell pwd)
+	$(MAKE) -C $(KERNELSRCDIR) SUBDIRS=$(shell pwd)	KBUILD_EXTRA_SYMBOLS=$(DAHDI_SYM_DIR)/Module.symvers
 
 clean:
 	rm -f *.o *.ko .*.cmd pika-gsm.mod.c
