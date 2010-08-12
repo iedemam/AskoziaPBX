@@ -50,8 +50,8 @@ function manager_conf_generate($return=false) {
 	$conf = <<<EOD
 
 [general]
-displaysystemname = yes
 enabled = yes
+webenabled = no
 port = 5038
 bindaddr = 0.0.0.0
 
