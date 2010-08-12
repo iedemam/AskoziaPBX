@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -295,8 +295,59 @@ msgstr "Ontbrekende extensie nummer."
 msgid "Invalid extension number. Use only numerals."
 msgstr "Ongeldig extensie nummer. Gebruik alleen nummeriek."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Ontbrekende extensie nummer."
+
+#, fuzzy
+msgid "Extension already in use, please choose another."
 msgstr "Deze extensie is reeds in gebruik. Gelieve een ander nummer te kiezen."
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Het bevat een ongeldige karakter."
+
+#, fuzzy
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr "Bevat een dubbel \"|\" karakter, er is er één toegestaan."
+
+#, fuzzy
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr "Bevat een dubbel \"+\" karakter, er is er één toegestaan."
+
+#, fuzzy
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr "Bevat een dubbel \"-\" karakter, er is er één toegestaan."
+
+#, fuzzy
+msgid "Nested square brackets are not allowed in an extension"
+msgstr "Geneste vierkante haken zijn niet toegestaan."
+
+#, fuzzy
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+"Vierkante haken zijn niet nodig wanneer er minder dan 2 karakters zijn."
+
+#, fuzzy
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+"Toegevoegde prefix mag alleen het volgende bevatten: cijfers, '*' en '#'."
+
+#, fuzzy
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"Het jokerteken \".\" is niet toegestaan voor een prefix die verwijderd moet "
+"worden."
+
+#, fuzzy
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"Het jokerteken \"!\" is niet toegestaan voor een prefix die verwijderd moet "
+"worden."
 
 msgid "Missing caller id."
 msgstr "Ontbrekende Beller-ID"
@@ -1020,25 +1071,6 @@ msgstr "Askozia&reg;PBX &copy; 2007-2010 IKT. Alle rechten voorbehouden."
 
 msgid "view license"
 msgstr "Bekijk licentie"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Echo het geluid en de video terug naar de beller zodra deze is ontvangen. "
-"Wordt gebruikt om verbindings vertragingen te testen."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Genereer een constante 1000Hz toon. Wordt gebruikt om de verbindings "
-"kwaliteit te testen."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Wake-Up beheerder. Bel hiernaar om op de huidige extensie een wake-up in te "
-"stellen of te verwijderen."
 
 msgid "English"
 msgstr "Engels"
@@ -1778,31 +1810,24 @@ msgstr "DNS Service Records"
 msgid "Disable DNS SRV lookups."
 msgstr "DNS SRV lookups uitschakelen."
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+#, fuzzy
+msgid "Plaintext"
+msgstr "plaintext"
+
+msgid "PHP"
 msgstr ""
-"Met wat kennis van hoe het Asterisk belplan (dialplan) werkt, kunnen basis "
-"applicaties toegevoegd worden aan het systeem. Deze applicaties kunnen "
-"gebeld worden met hun voorgedefinieerde extensies of gebruikt worden als een "
-"bestemming voor inkomende gesprekken van Providers."
 
-msgid "descr"
-msgstr "omschr"
+#, fuzzy
+msgid "click to enable application"
+msgstr "Telefoon activeren"
 
-msgid "edit application mapping"
-msgstr "Bewerk applicatie toewijzing"
-
-msgid "Do you really want to delete this application mapping?"
+#, fuzzy
+msgid "Do you really want to disable this application?"
 msgstr "Weet u zeker dat u deze applicatie wilt verwijderen?"
 
-msgid "delete application mapping"
-msgstr "Applicatie verwijderen"
-
-msgid "add application mapping"
-msgstr "Toevoegen applicatie toewijzing"
+#, fuzzy
+msgid "click to disable application"
+msgstr "Telefoon uitschakelen"
 
 msgid "edit application"
 msgstr "Bewerk applicatie"
@@ -1813,22 +1838,14 @@ msgstr "Weet u zeker dat u deze applicatie wilt verwijderen?"
 msgid "delete application"
 msgstr "Verwijder applicatie"
 
-msgid "Edit"
-msgstr "Bewerken"
-
-msgid "A valid extension must be entered."
-msgstr "Geef een geldige extensie in."
-
-msgid "Internal extension used to reach this application."
-msgstr "Interne extensie gebruikt om deze applicatie te bereiken."
-
 msgid "Edit Application"
 msgstr "Bewerk applicatie"
 
 msgid "General Settings"
 msgstr "Algemeen"
 
-msgid "The number used to dial this application."
+#, fuzzy
+msgid "The number or pattern used to dial this application."
 msgstr "Het nummer om deze applicatie te bellen."
 
 msgid "Security"
@@ -1857,6 +1874,9 @@ msgstr "Verwijder belgroep"
 
 msgid "add call group"
 msgstr "Toevoegen belgroep"
+
+msgid "Edit"
+msgstr "Bewerken"
 
 msgid "Group name"
 msgstr "Groepnaam"
@@ -2007,13 +2027,21 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "upload"
 
-msgid "Edit Virtual Fax"
-msgstr "Bewerk Virtuele Fax"
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Bewerk Analoog"
 
 msgid "The number used to dial this fax."
 msgstr "Het nummer dat wordt gebruikt om deze fax te bellen."
 
-msgid "Enter a descriptive name for this fax."
+msgid "Text to be displayed for Caller ID."
+msgstr "Tekst om weer te geven voor Beller-ID."
+
+msgid "Edit Virtual Fax"
+msgstr "Bewerk Virtuele Fax"
+
+#, fuzzy
+msgid "Enter a name for this fax."
 msgstr "Beschrijvende naam voor deze fax"
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2577,9 +2605,6 @@ msgstr "Bewerk Analoge Telefoon"
 
 msgid "The number used to dial this phone."
 msgstr "Het nummer dat wordt gebruikt om deze telefoon te bellen."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Tekst om weer te geven voor Beller-ID."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Gesprek Notificaties & Voicemail"
@@ -3395,6 +3420,57 @@ msgstr "FOUT Kan configuratie niet installeren.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Echo het geluid en de video terug naar de beller zodra deze is ontvangen. "
+#~ "Wordt gebruikt om verbindings vertragingen te testen."
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Genereer een constante 1000Hz toon. Wordt gebruikt om de verbindings "
+#~ "kwaliteit te testen."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "Wake-Up beheerder. Bel hiernaar om op de huidige extensie een wake-up in "
+#~ "te stellen of te verwijderen."
+
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Met wat kennis van hoe het Asterisk belplan (dialplan) werkt, kunnen "
+#~ "basis applicaties toegevoegd worden aan het systeem. Deze applicaties "
+#~ "kunnen gebeld worden met hun voorgedefinieerde extensies of gebruikt "
+#~ "worden als een bestemming voor inkomende gesprekken van Providers."
+
+#~ msgid "descr"
+#~ msgstr "omschr"
+
+#~ msgid "edit application mapping"
+#~ msgstr "Bewerk applicatie toewijzing"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Weet u zeker dat u deze applicatie wilt verwijderen?"
+
+#~ msgid "delete application mapping"
+#~ msgstr "Applicatie verwijderen"
+
+#~ msgid "add application mapping"
+#~ msgstr "Toevoegen applicatie toewijzing"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Geef een geldige extensie in."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Interne extensie gebruikt om deze applicatie te bereiken."
+
 #~ msgid "Package activated successfully."
 #~ msgstr "Pakket succesvol geactiveerd."
 
@@ -4117,9 +4193,6 @@ msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 #~ "veroorzaken aan uw hardware! Als u niet zeker weet welke poorten FXS of "
 #~ "FXO op uw kaart zijn, configureer en verbind dan uw telefoon accounts "
 #~ "voordat u uw provider lijn aansluit."
-
-#~ msgid "Edit Analog"
-#~ msgstr "Bewerk Analoog"
 
 #~ msgid "Interface #"
 #~ msgstr "Interface #"

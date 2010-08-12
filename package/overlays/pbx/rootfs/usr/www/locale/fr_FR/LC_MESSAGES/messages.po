@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -287,8 +287,59 @@ msgstr "Numéro de poste manquant."
 msgid "Invalid extension number. Use only numerals."
 msgstr "Numéro de poste invalide. Utiliser des chiffres uniquement."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Numéro de poste manquant."
+
+msgid "Extension already in use, please choose another."
 msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Contient un caractère invalide"
+
+#, fuzzy
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+"Si un double caractere \"|\" est présent, seulement un seul est autorisé."
+
+#, fuzzy
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+"Si un double caractere \"+\" est présent, seulement un seul est autorisé."
+
+#, fuzzy
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+"Si un double caractere \"-\" est présent, seulement un seul est autorisé."
+
+#, fuzzy
+msgid "Nested square brackets are not allowed in an extension"
+msgstr "Les caractéres entre crochets ne sont pas autorisés."
+
+#, fuzzy
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr "Les crochets ne sont pas nécessaires pour moins de 2 caractères."
+
+#, fuzzy
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr "Seul des chiffres, ainsi que '*' et '#' sont autorisés."
+
+#, fuzzy
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"Le caractère générique \".\" n'est pas autorisé avant un préfixe qui doit "
+"être supprimé."
+
+#, fuzzy
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"Le caractère générique \"! \" n'est pas autorisé avant un préfixe qui doit "
+"être supprimé."
 
 msgid "Missing caller id."
 msgstr "Identification de la ligne manquante."
@@ -1008,24 +1059,6 @@ msgstr "AskoziaPBX &copy; 2007-2010 IKT. Tous droits réservés."
 
 msgid "view license"
 msgstr "Voir la licence d'utilisation"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Tests echos audio et vidéo. Utilisé pour contrôler le délai de connexion."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Génère un signal constant de 1000Hz. Utilisé pour tester la qualité de la "
-"connexion."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Gestionnaire de réveil. En appelant ce numéro vous pouvez définir ou annuler "
-"une heure ou le système vous rappellera."
 
 msgid "English"
 msgstr "Anglais"
@@ -1780,32 +1813,24 @@ msgstr "Service d'enregistrement DNS"
 msgid "Disable DNS SRV lookups."
 msgstr "Désactiver le serveur DNS de recherche."
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+#, fuzzy
+msgid "Plaintext"
+msgstr "clair"
+
+msgid "PHP"
 msgstr ""
-"Avec une certaine connaissance du fonctionnement du plan de numérotation "
-"d'Asterisk, certaines applications de base peuvent être ajoutés au système. "
-"Ces applications peuvent ensuite être appelés par le biais de leurs "
-"extensions définies ou utilisés en tant que destination pour les appels "
-"d'opérateurs."
 
-msgid "descr"
-msgstr "descr"
+#, fuzzy
+msgid "click to enable application"
+msgstr "Cliquer pour activer cette extension"
 
-msgid "edit application mapping"
-msgstr "Configurer la fonction"
+#, fuzzy
+msgid "Do you really want to disable this application?"
+msgstr "Voulez-vous supprimer cette application ?"
 
-msgid "Do you really want to delete this application mapping?"
-msgstr "Voulez-vous supprimer cette fonction ?"
-
-msgid "delete application mapping"
-msgstr "Supprimer la fonction"
-
-msgid "add application mapping"
-msgstr "Ajouter une fonction"
+#, fuzzy
+msgid "click to disable application"
+msgstr "Cliquer pour désactiver cette extension"
 
 msgid "edit application"
 msgstr "Configurer la fonction"
@@ -1816,22 +1841,14 @@ msgstr "Voulez-vous supprimer cette application ?"
 msgid "delete application"
 msgstr "Supprimer l'application"
 
-msgid "Edit"
-msgstr "Configuration"
-
-msgid "A valid extension must be entered."
-msgstr "Une extension valide doit être spécifié."
-
-msgid "Internal extension used to reach this application."
-msgstr "Extension interne utilisée pour parvenir à cette application."
-
 msgid "Edit Application"
 msgstr "Configurer l'application "
 
 msgid "General Settings"
 msgstr "Paramètres généraux"
 
-msgid "The number used to dial this application."
+#, fuzzy
+msgid "The number or pattern used to dial this application."
 msgstr "Extension interne utilisée pour composer ce numéro."
 
 msgid "Security"
@@ -1860,6 +1877,9 @@ msgstr "Effacer le groupe d'appel"
 
 msgid "add call group"
 msgstr "Ajouter un groupe d'appel"
+
+msgid "Edit"
+msgstr "Configuration"
 
 msgid "Group name"
 msgstr "Nom du groupe."
@@ -2011,15 +2031,22 @@ msgstr "Télècharger:"
 msgid "Upload"
 msgstr "Envoi"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Configuration ligne analogique"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Extension interne utilisée pour contacter ce téléphone."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Numéro/Nom à afficher lors de la présentation de l'appel."
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Nom descriptif de cette ligne."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2574,9 +2601,6 @@ msgstr "Configuration ligne analogique"
 
 msgid "The number used to dial this phone."
 msgstr "Extension interne utilisée pour contacter ce téléphone."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Numéro/Nom à afficher lors de la présentation de l'appel."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Notifications d'appels et de messagerie"
@@ -3388,6 +3412,57 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERREUR La configuration reçue est invalide. \n"
+
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Tests echos audio et vidéo. Utilisé pour contrôler le délai de connexion."
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Génère un signal constant de 1000Hz. Utilisé pour tester la qualité de la "
+#~ "connexion."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "Gestionnaire de réveil. En appelant ce numéro vous pouvez définir ou "
+#~ "annuler une heure ou le système vous rappellera."
+
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Avec une certaine connaissance du fonctionnement du plan de numérotation "
+#~ "d'Asterisk, certaines applications de base peuvent être ajoutés au "
+#~ "système. Ces applications peuvent ensuite être appelés par le biais de "
+#~ "leurs extensions définies ou utilisés en tant que destination pour les "
+#~ "appels d'opérateurs."
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#~ msgid "edit application mapping"
+#~ msgstr "Configurer la fonction"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Voulez-vous supprimer cette fonction ?"
+
+#~ msgid "delete application mapping"
+#~ msgstr "Supprimer la fonction"
+
+#~ msgid "add application mapping"
+#~ msgstr "Ajouter une fonction"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Une extension valide doit être spécifié."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Extension interne utilisée pour parvenir à cette application."
 
 #~ msgid "Package activated successfully."
 #~ msgstr "Paquet activé avec succés."
@@ -4238,9 +4313,6 @@ msgstr "ERREUR La configuration reçue est invalide. \n"
 #~ "matériel! Si vous ne savez pas que sont les ports FXO ou FXS sur votre "
 #~ "carte, configurez et connectez votre téléphone avant de brancher les "
 #~ "comptes du fournisseur de lignes."
-
-#~ msgid "Edit Analog"
-#~ msgstr "Configuration ligne analogique"
 
 #~ msgid "Interface #"
 #~ msgstr "l'interface # "

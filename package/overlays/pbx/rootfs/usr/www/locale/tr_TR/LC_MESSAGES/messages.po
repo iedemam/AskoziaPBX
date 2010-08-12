@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -309,7 +309,43 @@ msgstr ""
 msgid "Invalid extension number. Use only numerals."
 msgstr "Geçerli dahili hat girilmeli."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Gelen Arama Hat(lar)"
+
+msgid "Extension already in use, please choose another."
+msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr " '%s' alanı geçersiz karekter içermekte."
+
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed in an extension"
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
 msgstr ""
 
 msgid "Missing caller id."
@@ -979,19 +1015,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Tüm haklar saklı."
 
 msgid "view license"
 msgstr "lisansa bak"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr "1000Hz lik sabit ses oluşturur. Bağlantı kalite testi için kullanılır."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
 
 msgid "English"
 msgstr "İngilizce"
@@ -1733,30 +1756,23 @@ msgid "Disable DNS SRV lookups."
 msgstr "DNS SRV aramaları iptal et."
 
 #, fuzzy
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
-msgstr ""
-"Dahili hat grupları beraber çalmaları sağlanabilir. Bu gruplara onlara "
-"ilişkilendirilen dahili hatlarla erişilir veya hedef olarak operatörlerden "
-"gelen aramlar kullanılır."
+msgid "Plaintext"
+msgstr "şifresiz belge"
 
-msgid "descr"
+msgid "PHP"
 msgstr ""
 
-msgid "edit application mapping"
-msgstr ""
+#, fuzzy
+msgid "click to enable application"
+msgstr "telefonu geçerli kılmak için tıkla"
 
-msgid "Do you really want to delete this application mapping?"
-msgstr ""
+#, fuzzy
+msgid "Do you really want to disable this application?"
+msgstr "Bu telefon silinsin mi?"
 
-msgid "delete application mapping"
-msgstr ""
-
-msgid "add application mapping"
-msgstr ""
+#, fuzzy
+msgid "click to disable application"
+msgstr "telefonu erksiz kılmak için tıkla"
 
 #, fuzzy
 msgid "edit application"
@@ -1770,15 +1786,6 @@ msgstr "Bu telefon silinsin mi?"
 msgid "delete application"
 msgstr "Uygulama"
 
-msgid "Edit"
-msgstr "Düzenle"
-
-msgid "A valid extension must be entered."
-msgstr "Geçerli dahili hat girilmeli."
-
-msgid "Internal extension used to reach this application."
-msgstr "Bu uygulamaya erişmek için kullanılan dahili hat."
-
 #, fuzzy
 msgid "Edit Application"
 msgstr "Uygulama"
@@ -1788,7 +1795,7 @@ msgid "General Settings"
 msgstr "Ayarlar"
 
 #, fuzzy
-msgid "The number used to dial this application."
+msgid "The number or pattern used to dial this application."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
 #, fuzzy
@@ -1819,6 +1826,9 @@ msgstr "arama grubunu sil"
 
 msgid "add call group"
 msgstr "arama grubu ekle"
+
+msgid "Edit"
+msgstr "Düzenle"
 
 msgid "Group name"
 msgstr "Grup adı"
@@ -1951,15 +1961,22 @@ msgstr "Yükle:"
 msgid "Upload"
 msgstr "Yükle"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Analog düzenle"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Arayıcı İD yerine gösterilen metin."
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Bu telefon için açıklayıcı bir isim."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2497,9 +2514,6 @@ msgstr "Analog düzenle"
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Bu telefonu aramak için kullanılan dahili hat."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Arayıcı İD yerine gösterilen metin."
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"
@@ -3304,6 +3318,27 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "1000Hz lik sabit ses oluşturur. Bağlantı kalite testi için kullanılır."
+
+#, fuzzy
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Dahili hat grupları beraber çalmaları sağlanabilir. Bu gruplara onlara "
+#~ "ilişkilendirilen dahili hatlarla erişilir veya hedef olarak "
+#~ "operatörlerden gelen aramlar kullanılır."
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Geçerli dahili hat girilmeli."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Bu uygulamaya erişmek için kullanılan dahili hat."
+
 #~ msgid "Package activated successfully."
 #~ msgstr "Paket başarıyla etkinleştirildi."
 
@@ -3713,9 +3748,6 @@ msgstr ""
 
 #~ msgid "edit analog interface"
 #~ msgstr "analog arayüzü düzenle"
-
-#~ msgid "Edit Analog"
-#~ msgstr "Analog düzenle"
 
 #~ msgid "Interface #"
 #~ msgstr "Arayüz #"

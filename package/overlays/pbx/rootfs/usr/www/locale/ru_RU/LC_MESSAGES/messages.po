@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -280,8 +280,52 @@ msgstr "Отсутствует  номер."
 msgid "Invalid extension number. Use only numerals."
 msgstr "Неверный номер. Используйте только цифры."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Отсутствует  номер."
+
+msgid "Extension already in use, please choose another."
 msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Текст содержит недопустимый символ"
+
+#, fuzzy
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr "Текст содержит два знака \"|\" ,допускается только один."
+
+#, fuzzy
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr "Текст содержит два знака \"+\" ,допускается только один."
+
+#, fuzzy
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr "Текст содержит два знака \"-\" ,допускается только один."
+
+#, fuzzy
+msgid "Nested square brackets are not allowed in an extension"
+msgstr "Квадратные скобки не допускаются."
+
+#, fuzzy
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr "Скобки не нужны для менее 2 символов."
+
+#, fuzzy
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr "Добавляемые префиксы могут содержать только цифры, '*' и '#'."
+
+#, fuzzy
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr "Знак \".\" Не допускается в префикс, должен быть удален."
+
+#, fuzzy
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr "Знак \"!\" не допускается в префикс, должен быть удален."
 
 msgid "Missing caller id."
 msgstr "Отсутствует АОН."
@@ -1005,23 +1049,6 @@ msgstr "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 
 msgid "view license"
 msgstr "показать лицензию"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Эхо тест аудио и видео вызова. Используется для проверки связи и задержки "
-"соединения."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Генерирует постоянный 1000 Гц сигнал. Используется для проверки качества "
-"связи."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr "Будильник. Позвонить для установки и отмены для текущего номера."
 
 msgid "English"
 msgstr "Английский"
@@ -1759,30 +1786,24 @@ msgstr "Записи DNS сервера"
 msgid "Disable DNS SRV lookups."
 msgstr "Выключить DNS SRV запросы."
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+#, fuzzy
+msgid "Plaintext"
+msgstr "текст"
+
+msgid "PHP"
 msgstr ""
-"Для работы с приложениями требуются знания плана набора Asterisk. После "
-"добавления приложения могут вызываться по своему номеру, или использованы в "
-"качестве назначения для входящих звонков от Провайдеров."
 
-msgid "descr"
-msgstr "опис."
+#, fuzzy
+msgid "click to enable application"
+msgstr "нажмите, чтобы включить телефон"
 
-msgid "edit application mapping"
-msgstr "редактировать приложения"
+#, fuzzy
+msgid "Do you really want to disable this application?"
+msgstr "Вы действительно хотите удалить это приложение?"
 
-msgid "Do you really want to delete this application mapping?"
-msgstr "Вы действительно хотите удалить приложение?"
-
-msgid "delete application mapping"
-msgstr "удалить приложение"
-
-msgid "add application mapping"
-msgstr "добавить приложение"
+#, fuzzy
+msgid "click to disable application"
+msgstr "нажмите, чтобы отключить телефон"
 
 msgid "edit application"
 msgstr "редактировать приложение"
@@ -1793,22 +1814,14 @@ msgstr "Вы действительно хотите удалить это пр�
 msgid "delete application"
 msgstr "удалить приложение"
 
-msgid "Edit"
-msgstr "Редактировать"
-
-msgid "A valid extension must be entered."
-msgstr "Должен быть введен действительный номер."
-
-msgid "Internal extension used to reach this application."
-msgstr "Внутренний номер, по которому доступно приложение."
-
 msgid "Edit Application"
 msgstr "Редактировать приложения"
 
 msgid "General Settings"
 msgstr "Основные настройки"
 
-msgid "The number used to dial this application."
+#, fuzzy
+msgid "The number or pattern used to dial this application."
 msgstr "Номер который используется для набора этого приложения."
 
 msgid "Security"
@@ -1837,6 +1850,9 @@ msgstr "удалить группу вызовов"
 
 msgid "add call group"
 msgstr "добавить группу вызовов"
+
+msgid "Edit"
+msgstr "Редактировать"
 
 msgid "Group name"
 msgstr "Имя Группы"
@@ -1982,15 +1998,22 @@ msgstr "Добавить:"
 msgid "Upload"
 msgstr "Добавить"
 
-msgid "Edit Virtual Fax"
-msgstr "Редактировать Виртуальный Факс"
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Изменить аналоговый телефон"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Номер, используемый для набора этого телефона."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Текст для отображения  Caller ID."
+
+msgid "Edit Virtual Fax"
+msgstr "Редактировать Виртуальный Факс"
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Введите описательное название для этой службы."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2539,9 +2562,6 @@ msgstr "Изменить аналоговый телефон"
 
 msgid "The number used to dial this phone."
 msgstr "Номер, используемый для набора этого телефона."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Текст для отображения  Caller ID."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Уведомления и голосовая почта"
@@ -3343,6 +3363,54 @@ msgstr "ERR  не могу установить настройки.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR получена неправильная конфигурация.\n"
+
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Эхо тест аудио и видео вызова. Используется для проверки связи и задержки "
+#~ "соединения."
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Генерирует постоянный 1000 Гц сигнал. Используется для проверки качества "
+#~ "связи."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr "Будильник. Позвонить для установки и отмены для текущего номера."
+
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Для работы с приложениями требуются знания плана набора Asterisk. После "
+#~ "добавления приложения могут вызываться по своему номеру, или использованы "
+#~ "в качестве назначения для входящих звонков от Провайдеров."
+
+#~ msgid "descr"
+#~ msgstr "опис."
+
+#~ msgid "edit application mapping"
+#~ msgstr "редактировать приложения"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Вы действительно хотите удалить приложение?"
+
+#~ msgid "delete application mapping"
+#~ msgstr "удалить приложение"
+
+#~ msgid "add application mapping"
+#~ msgstr "добавить приложение"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Должен быть введен действительный номер."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Внутренний номер, по которому доступно приложение."
 
 #~ msgid "Package activated successfully."
 #~ msgstr "Пакет активирован успешно."

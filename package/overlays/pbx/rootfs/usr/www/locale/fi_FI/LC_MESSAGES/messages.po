@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -315,7 +315,43 @@ msgstr ""
 msgid "Invalid extension number. Use only numerals."
 msgstr "Kelpaava jatke on annettava."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Soittotunnus"
+
+msgid "Extension already in use, please choose another."
+msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Kohdassa '%s' löytyi virheellisiä tunnuksia."
+
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed in an extension"
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
 msgstr ""
 
 msgid "Missing caller id."
@@ -1048,23 +1084,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Kaikki oikeudet pidetään."
 
 msgid "view license"
 msgstr "tarkasta lisenssi"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Lähettää ääni ja video kaiku takaisin soittajalle heti kun se on "
-"vastaanotettu. Testaaksesi yhteyksen viivettä."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr "Generoi jatkuvan 1000Hz äänen. Testaaksesi yhteyksen laatua."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Herätys manageri. Puhelu herätyksen asettamiseksi tai peruttamiseksi "
-"nykyisellä jatkeella."
 
 msgid "English"
 msgstr "Englannin kieli"
@@ -1831,30 +1850,23 @@ msgid "Disable DNS SRV lookups."
 msgstr "Poista DNS SRV käytöstä."
 
 #, fuzzy
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
-msgstr ""
-"Vähällä tuntemuksella miten Asterisk dialplan toimii, voit lisätä perus "
-"toimintoja AskoziaPBX:ään. Niille voi sitten soittaa annetulla jatkeella tai "
-"käyttää päämäräänä sisääntuleville puheluille palveluntarjoajilta."
+msgid "Plaintext"
+msgstr "ilman suojausta"
 
-msgid "descr"
+msgid "PHP"
 msgstr ""
 
-msgid "edit application mapping"
-msgstr "muokkaa sovelluksien kartoittaminen"
+#, fuzzy
+msgid "click to enable application"
+msgstr "klikkaa ottaaksesi puhelinta käyttöön"
 
-msgid "Do you really want to delete this application mapping?"
+#, fuzzy
+msgid "Do you really want to disable this application?"
 msgstr "Oletko varma että haluat poistaa tämän sovelluksien kartoittaminen?"
 
-msgid "delete application mapping"
-msgstr "poista sovelluksien kartoittaminen"
-
-msgid "add application mapping"
-msgstr "lisää sovelluksien kartoittaminen"
+#, fuzzy
+msgid "click to disable application"
+msgstr "klikkaa poistaaksesi puhelinta käytöstä"
 
 #, fuzzy
 msgid "edit application"
@@ -1868,15 +1880,6 @@ msgstr "Oletko varma että haluat poistaa tämän sovelluksien kartoittaminen?"
 msgid "delete application"
 msgstr "poista sovelluksien kartoittaminen"
 
-msgid "Edit"
-msgstr "Muokkaa"
-
-msgid "A valid extension must be entered."
-msgstr "Kelpaava jatke on annettava."
-
-msgid "Internal extension used to reach this application."
-msgstr "Sisäinen jatke käytetty tämän sovelluksen tavoittamiseen."
-
 #, fuzzy
 msgid "Edit Application"
 msgstr "Sovellus"
@@ -1886,7 +1889,7 @@ msgid "General Settings"
 msgstr "Asetukset"
 
 #, fuzzy
-msgid "The number used to dial this application."
+msgid "The number or pattern used to dial this application."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
 #, fuzzy
@@ -1917,6 +1920,9 @@ msgstr "poista puheluryhmä"
 
 msgid "add call group"
 msgstr "muokkaa puheluryhmää"
+
+msgid "Edit"
+msgstr "Muokkaa"
 
 msgid "Group name"
 msgstr "Ryhmän nimi"
@@ -2060,15 +2066,22 @@ msgstr "Lataa ylös:"
 msgid "Upload"
 msgstr "Lataa ylös"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Muokkaa Analogi"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Teksti joka näytetään Soittajan Tunnukselle"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Kuvaileva nimi tälle puhelimelle."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2643,9 +2656,6 @@ msgstr "Muokkaa Analogi"
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Teksti joka näytetään Soittajan Tunnukselle"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"
@@ -3504,6 +3514,52 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Lähettää ääni ja video kaiku takaisin soittajalle heti kun se on "
+#~ "vastaanotettu. Testaaksesi yhteyksen viivettä."
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr "Generoi jatkuvan 1000Hz äänen. Testaaksesi yhteyksen laatua."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "Herätys manageri. Puhelu herätyksen asettamiseksi tai peruttamiseksi "
+#~ "nykyisellä jatkeella."
+
+#, fuzzy
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Vähällä tuntemuksella miten Asterisk dialplan toimii, voit lisätä perus "
+#~ "toimintoja AskoziaPBX:ään. Niille voi sitten soittaa annetulla jatkeella "
+#~ "tai käyttää päämäräänä sisääntuleville puheluille palveluntarjoajilta."
+
+#~ msgid "edit application mapping"
+#~ msgstr "muokkaa sovelluksien kartoittaminen"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Oletko varma että haluat poistaa tämän sovelluksien kartoittaminen?"
+
+#~ msgid "delete application mapping"
+#~ msgstr "poista sovelluksien kartoittaminen"
+
+#~ msgid "add application mapping"
+#~ msgstr "lisää sovelluksien kartoittaminen"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Kelpaava jatke on annettava."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Sisäinen jatke käytetty tämän sovelluksen tavoittamiseen."
+
 #~ msgid "Package activated successfully."
 #~ msgstr "Paketti aktivoitiin onnistuneesti."
 
@@ -4335,9 +4391,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 #~ "Jos yhdistät palveluntarjoajan linja fxs porttiin se voi vaurioittaa "
 #~ "järjestelmäsi! Jos olet epävarma mikä portti on fxs tai fxo sinun "
 #~ "kortilla, konfiguroi ja yhdistä puhelin tilisi ennen kun yhdistät linjoja."
-
-#~ msgid "Edit Analog"
-#~ msgstr "Muokkaa Analogi"
 
 #~ msgid "Interface #"
 #~ msgstr "Käyttöliittymä #"

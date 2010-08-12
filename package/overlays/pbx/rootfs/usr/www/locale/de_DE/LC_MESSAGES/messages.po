@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -292,7 +292,43 @@ msgstr ""
 msgid "Invalid extension number. Use only numerals."
 msgstr "Eine gültige Nebenstellennummer. Nur zahlen verwenden."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Dialstring fehlt."
+
+msgid "Extension already in use, please choose another."
+msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Es enthält ein ungültiges Zeichen."
+
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed in an extension"
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
 msgstr ""
 
 msgid "Missing caller id."
@@ -1020,24 +1056,6 @@ msgstr "AskoziaPBX &copy; 2007-2010 IKT. All Rechte vorbehalten."
 
 msgid "view license"
 msgstr "Lizenz anzeigen (engl.)"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Echo-Testanwendung. Audio und Video werden dem Anrufer wieder "
-"zurückgespielt. Wird verwendet um die Verbindungs-Latenz zu prüfen. "
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Erzeugt einen konstanten 1000-Hz-Ton. Zur Prüfung der Verbindungsqualität."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Automatischer Weckruf. Hier können für die rufende Nebenstelle Weckrufe "
-"eingestellt und gelöscht werden."
 
 msgid "English"
 msgstr "Englisch"
@@ -1789,31 +1807,23 @@ msgid "Disable DNS SRV lookups."
 msgstr "keine DNS-SRV-Anfragen durchführen."
 
 #, fuzzy
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+msgid "Plaintext"
+msgstr "Klartext"
+
+msgid "PHP"
 msgstr ""
-"Wenn Sie wissen, wie der Asterisk-Dialplan funktioniert können Sie einfache "
-"Applikationen in AskoziaPBX erstellen. Diese Applikationen können über die "
-"Ihnen zugewiesenen Nebenstellen-Nummern aufgerufen werden oder als Ausgangs-"
-"Nebenstelle für eingehende Anrufe verwendet werden."
 
-msgid "descr"
-msgstr "Beschreibung"
+#, fuzzy
+msgid "click to enable application"
+msgstr "hier klicken zum aktivieren"
 
-msgid "edit application mapping"
-msgstr "Applikations-Zuordnung bearbeiten"
-
-msgid "Do you really want to delete this application mapping?"
+#, fuzzy
+msgid "Do you really want to disable this application?"
 msgstr "Wollen Sie wirklich diese Applikations-Zuordnung löschen?"
 
-msgid "delete application mapping"
-msgstr "Applikations-Zuordnung löschen"
-
-msgid "add application mapping"
-msgstr "Applikations-Zuordnung hinzufügen"
+#, fuzzy
+msgid "click to disable application"
+msgstr "hier klicken zum deaktivieren"
 
 #, fuzzy
 msgid "edit application"
@@ -1827,15 +1837,6 @@ msgstr "Wollen Sie wirklich diese Applikations-Zuordnung löschen?"
 msgid "delete application"
 msgstr "Applikations-Zuordnung löschen"
 
-msgid "Edit"
-msgstr "Bearbeiten"
-
-msgid "A valid extension must be entered."
-msgstr "Eine gültige Nebenstelle muß angegeben werden."
-
-msgid "Internal extension used to reach this application."
-msgstr "Interne Nebenstelle für diese Applikation."
-
 msgid "Edit Application"
 msgstr "Applikation bearbeiten"
 
@@ -1843,7 +1844,7 @@ msgid "General Settings"
 msgstr "Allgemeine Einstellungen"
 
 #, fuzzy
-msgid "The number used to dial this application."
+msgid "The number or pattern used to dial this application."
 msgstr "Die interne Nebenstellennummer für dieses Telefon."
 
 msgid "Security"
@@ -1873,6 +1874,9 @@ msgstr "Rufgruppe löschen"
 
 msgid "add call group"
 msgstr "Rufgruppe hinzufügen"
+
+msgid "Edit"
+msgstr "Bearbeiten"
 
 msgid "Group name"
 msgstr "Gruppenname"
@@ -2026,15 +2030,22 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "Upload"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Analog-Leitung editieren"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Die interne Nebenstellennummer für dieses Telefon."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Text der als Caller-ID angezeigt werden soll."
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Sprechender Name für diese Nebenstelle."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2603,9 +2614,6 @@ msgstr "Analog-Leitung editieren"
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Die interne Nebenstellennummer für dieses Telefon."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Text der als Caller-ID angezeigt werden soll."
 
 msgid "Call Notifications & Voicemail"
 msgstr ""
@@ -3441,6 +3449,57 @@ msgstr "ERR Konnte Konfiguration nicht installieren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Ungültige Konfiguration.\n"
+
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Echo-Testanwendung. Audio und Video werden dem Anrufer wieder "
+#~ "zurückgespielt. Wird verwendet um die Verbindungs-Latenz zu prüfen. "
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Erzeugt einen konstanten 1000-Hz-Ton. Zur Prüfung der Verbindungsqualität."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "Automatischer Weckruf. Hier können für die rufende Nebenstelle Weckrufe "
+#~ "eingestellt und gelöscht werden."
+
+#, fuzzy
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Wenn Sie wissen, wie der Asterisk-Dialplan funktioniert können Sie "
+#~ "einfache Applikationen in AskoziaPBX erstellen. Diese Applikationen "
+#~ "können über die Ihnen zugewiesenen Nebenstellen-Nummern aufgerufen werden "
+#~ "oder als Ausgangs-Nebenstelle für eingehende Anrufe verwendet werden."
+
+#~ msgid "descr"
+#~ msgstr "Beschreibung"
+
+#~ msgid "edit application mapping"
+#~ msgstr "Applikations-Zuordnung bearbeiten"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Wollen Sie wirklich diese Applikations-Zuordnung löschen?"
+
+#~ msgid "delete application mapping"
+#~ msgstr "Applikations-Zuordnung löschen"
+
+#~ msgid "add application mapping"
+#~ msgstr "Applikations-Zuordnung hinzufügen"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Eine gültige Nebenstelle muß angegeben werden."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Interne Nebenstelle für diese Applikation."
 
 #~ msgid "Package activated successfully."
 #~ msgstr "Paket erfolgreich aktiviert."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -294,8 +294,54 @@ msgstr "Не е въведен вътрешен номер."
 msgid "Invalid extension number. Use only numerals."
 msgstr "Невалиден вътрешен номер. Използвайте само цифри."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Не е въведен вътрешен номер."
+
+msgid "Extension already in use, please choose another."
 msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Съдържа невалидни символи."
+
+#, fuzzy
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr "Символа \"|\" се съдържа два пъти, само един е позволен."
+
+#, fuzzy
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr "Символа \"+\" се съдържа два пъти, само един е позволен."
+
+#, fuzzy
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr "Символа \"-\" се съдържа два пъти, само един е позволен."
+
+#, fuzzy
+msgid "Nested square brackets are not allowed in an extension"
+msgstr "Вмъкнатите средни скоби не са позволени."
+
+#, fuzzy
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr "Не са необходими скоби за по-малко от два символа."
+
+#, fuzzy
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr "Добавеният префикс може да съдържа само цифри, '*' и '#'."
+
+#, fuzzy
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"Символа \".\" не е позволен преди префикс, който трябва да бъде премахнат."
+
+#, fuzzy
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"Символа \"!\" не е позволен преди префикс, който трябва да бъде премахнат."
 
 msgid "Missing caller id."
 msgstr "е е въведен caller id."
@@ -1018,25 +1064,6 @@ msgstr "Аскозия&reg;PBX &copy; 2007-2010 IKT. Всички права с�
 
 msgid "view license"
 msgstr "виж лиценза"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Ехото от аудиото и видеото върнато към обаждашия се веднага както е прието. "
-"Използва се за проверка на забавянето на връзката."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Генерира постоянен тон 1000Hz. Използва се за проверка на качеството на "
-"връзката."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Събуди-Ме оператор. Използва се за влючване и изключване на събуди-ме "
-"обаждания от текущия вътрешен номер."
 
 msgid "English"
 msgstr "Английски"
@@ -1779,31 +1806,24 @@ msgstr "DNS SRV Записи"
 msgid "Disable DNS SRV lookups."
 msgstr "Забрани DNS SRV следене."
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+#, fuzzy
+msgid "Plaintext"
+msgstr "прав текст"
+
+msgid "PHP"
 msgstr ""
-"С малко знание как работят схемите на избиране на Астериск, някои основни "
-"приложения могат да бъдат добавени в централата. Тези приложения могат да "
-"бъдат избирани с техните дефинирани вътрешни номера или да се използват като "
-"направление за входящи обаждания от външни линии."
 
-msgid "descr"
-msgstr "описание"
+#, fuzzy
+msgid "click to enable application"
+msgstr "кликнете за да разрешите вътрешната линия"
 
-msgid "edit application mapping"
-msgstr "редактирай приложението"
-
-msgid "Do you really want to delete this application mapping?"
+#, fuzzy
+msgid "Do you really want to disable this application?"
 msgstr "Сигурни ли сте че искате да изтриете приложението?"
 
-msgid "delete application mapping"
-msgstr "изтрий приложението"
-
-msgid "add application mapping"
-msgstr "добави приложение"
+#, fuzzy
+msgid "click to disable application"
+msgstr "кликнете за да забраните вътрешната линия"
 
 msgid "edit application"
 msgstr "редактирай приложението"
@@ -1814,22 +1834,14 @@ msgstr "Сигурни ли сте че искате да изтриете пр�
 msgid "delete application"
 msgstr "изтрий приложението"
 
-msgid "Edit"
-msgstr "Редактиране"
-
-msgid "A valid extension must be entered."
-msgstr "Въведете валиден вътрешен номер"
-
-msgid "Internal extension used to reach this application."
-msgstr "Вътрешен номер използван за достъп до приложението"
-
 msgid "Edit Application"
 msgstr "Редактиране на Приложение"
 
 msgid "General Settings"
 msgstr "Основни Настройки"
 
-msgid "The number used to dial this application."
+#, fuzzy
+msgid "The number or pattern used to dial this application."
 msgstr "Вътрешен номер използван за достъп до приложението."
 
 msgid "Security"
@@ -1859,6 +1871,9 @@ msgstr "изтрий група на звънене"
 
 msgid "add call group"
 msgstr "добави група на звънене"
+
+msgid "Edit"
+msgstr "Редактиране"
 
 msgid "Group name"
 msgstr "Име на групата"
@@ -2012,15 +2027,22 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "Upload"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Редактирай Аналогов"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Вътрешен Номер използван за избиране на този телефон."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Текст който да се показва за Caller ID."
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Моля въведете име за този канал."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2566,9 +2588,6 @@ msgstr "Редактиране на Аналогов Телефон"
 
 msgid "The number used to dial this phone."
 msgstr "Вътрешен Номер използван за избиране на този телефон."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Текст който да се показва за Caller ID."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Пропуснати Обаждания & Гласова Поща"
@@ -3372,6 +3391,57 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Ехото от аудиото и видеото върнато към обаждашия се веднага както е "
+#~ "прието. Използва се за проверка на забавянето на връзката."
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Генерира постоянен тон 1000Hz. Използва се за проверка на качеството на "
+#~ "връзката."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "Събуди-Ме оператор. Използва се за влючване и изключване на събуди-ме "
+#~ "обаждания от текущия вътрешен номер."
+
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "С малко знание как работят схемите на избиране на Астериск, някои основни "
+#~ "приложения могат да бъдат добавени в централата. Тези приложения могат да "
+#~ "бъдат избирани с техните дефинирани вътрешни номера или да се използват "
+#~ "като направление за входящи обаждания от външни линии."
+
+#~ msgid "descr"
+#~ msgstr "описание"
+
+#~ msgid "edit application mapping"
+#~ msgstr "редактирай приложението"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Сигурни ли сте че искате да изтриете приложението?"
+
+#~ msgid "delete application mapping"
+#~ msgstr "изтрий приложението"
+
+#~ msgid "add application mapping"
+#~ msgstr "добави приложение"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Въведете валиден вътрешен номер"
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Вътрешен номер използван за достъп до приложението"
 
 #~ msgid "Package activated successfully."
 #~ msgstr "Пакета е активиран успешно."
@@ -4201,9 +4271,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ "Включване на външна линия към FXS порта може да повреди вашия хардуер! "
 #~ "Ако не сте сигурни кои портове са FXO или FXS на вашата карта, настройте "
 #~ "и включете вътрешните телефони преди да включите някоя от външните линии."
-
-#~ msgid "Edit Analog"
-#~ msgstr "Редактирай Аналогов"
 
 #~ msgid "Interface #"
 #~ msgstr "Интерфейс #"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -291,8 +291,52 @@ msgstr "Mangler linie nummer."
 msgid "Invalid extension number. Use only numerals."
 msgstr "Ugyldig linie nr. Der skal indtastes numerisk tegn"
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Mangler linie nummer."
+
+msgid "Extension already in use, please choose another."
 msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Feltet '%s' indeholder ugyldig tegn."
+
+#, fuzzy
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr "Teksten indeholder dobbelt \"|\" tegn, kun et tegn er gyldig. "
+
+#, fuzzy
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr "Indeholder dobbelt \"+\" tegn, kun et er tilladt. "
+
+#, fuzzy
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr "Indeholder dobbelt \"-\" tegn, kun et er tilladt. "
+
+#, fuzzy
+msgid "Nested square brackets are not allowed in an extension"
+msgstr "Indlejrede firkantede parenteser er ikke tilladt."
+
+#, fuzzy
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr "Det er ikke nødvendig med rammer når der er mindre en 2 tegn."
+
+#, fuzzy
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr "Tilføjet præfikser må kun indeholde tal, '*' og '#'."
+
+#, fuzzy
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr "Joker tegn \".\" må ikke benyttes før et præfiks som bliver fjernet."
+
+#, fuzzy
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr "Joker tegn \"!\" må ikke benyttes før et præfiks som bliver fjernet."
 
 msgid "Missing caller id."
 msgstr "Mangler opkalds ID."
@@ -1005,22 +1049,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 
 msgid "view license"
 msgstr "se licens"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Sender lyd eller billede tilbage til personen der ringer op. Benyttes bl.a. "
-"til at teste forsunkelse på forbindelse"
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Generer en konstant 1000Hz tone. Bruges til at teste forbindelse kvalitet."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr "Telefonvækning. Ring for at indstille eller slette vækning"
 
 msgid "English"
 msgstr "Engelsk"
@@ -1763,31 +1791,24 @@ msgstr "DNS Tjeneste Poster"
 msgid "Disable DNS SRV lookups."
 msgstr "Deaktiver DNS SRV lookups."
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+#, fuzzy
+msgid "Plaintext"
+msgstr "ren tekst"
+
+msgid "PHP"
 msgstr ""
-"Med viden om hvordan Asterisk opkaldsplan fungerer, kan udvalgte simple "
-"funktioner tilføjes til systemet. Disse funktioner kan så tilgåes ved at "
-"benytte deres tilhørende linie nr.eller benyttes som destination for "
-"indkomne opkald fra udbydere."
 
-msgid "descr"
-msgstr "descr"
+#, fuzzy
+msgid "click to enable application"
+msgstr "klik for at aktivere telefon"
 
-msgid "edit application mapping"
-msgstr "rediger applikation kortlægning"
+#, fuzzy
+msgid "Do you really want to disable this application?"
+msgstr "Vil du virkeligt slette denne applikation? "
 
-msgid "Do you really want to delete this application mapping?"
-msgstr "Vil du virkeligt slette denne applikation kortlægning? "
-
-msgid "delete application mapping"
-msgstr "fjern applikation kortlægning"
-
-msgid "add application mapping"
-msgstr "tilføj applikation kortlægning"
+#, fuzzy
+msgid "click to disable application"
+msgstr "klik for at deaktivere telefon"
 
 msgid "edit application"
 msgstr "rediger applikation"
@@ -1798,22 +1819,14 @@ msgstr "Vil du virkeligt slette denne applikation? "
 msgid "delete application"
 msgstr "slet applikation"
 
-msgid "Edit"
-msgstr "Rediger"
-
-msgid "A valid extension must be entered."
-msgstr "En gyldig extension skal indtasstes"
-
-msgid "Internal extension used to reach this application."
-msgstr "Intern extension brugt for at nå denne applikation."
-
 msgid "Edit Application"
 msgstr "Ret applikation"
 
 msgid "General Settings"
 msgstr "Generelle indstillinger"
 
-msgid "The number used to dial this application."
+#, fuzzy
+msgid "The number or pattern used to dial this application."
 msgstr "Numret der benyttes til at ringe til denne applikation."
 
 msgid "Security"
@@ -1842,6 +1855,9 @@ msgstr "fjern opkalds gruppe"
 
 msgid "add call group"
 msgstr "tilføj opkalds gruppe"
+
+msgid "Edit"
+msgstr "Rediger"
 
 msgid "Group name"
 msgstr "Gruppe navn"
@@ -1991,15 +2007,22 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "Upload"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Rediger Analog"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Den interne nummer for at ringe til denne telefon."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Tekst der skal vises som Opkalds ID."
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Beskrivende navn på denne span."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2549,9 +2572,6 @@ msgstr "Ret analog telefon"
 
 msgid "The number used to dial this phone."
 msgstr "Den interne nummer for at ringe til denne telefon."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Tekst der skal vises som Opkalds ID."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Opkalds notifikationer & telefonsvare"
@@ -3351,6 +3371,54 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
 
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Sender lyd eller billede tilbage til personen der ringer op. Benyttes bl."
+#~ "a. til at teste forsunkelse på forbindelse"
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Generer en konstant 1000Hz tone. Bruges til at teste forbindelse kvalitet."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr "Telefonvækning. Ring for at indstille eller slette vækning"
+
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Med viden om hvordan Asterisk opkaldsplan fungerer, kan udvalgte simple "
+#~ "funktioner tilføjes til systemet. Disse funktioner kan så tilgåes ved at "
+#~ "benytte deres tilhørende linie nr.eller benyttes som destination for "
+#~ "indkomne opkald fra udbydere."
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#~ msgid "edit application mapping"
+#~ msgstr "rediger applikation kortlægning"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Vil du virkeligt slette denne applikation kortlægning? "
+
+#~ msgid "delete application mapping"
+#~ msgstr "fjern applikation kortlægning"
+
+#~ msgid "add application mapping"
+#~ msgstr "tilføj applikation kortlægning"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "En gyldig extension skal indtasstes"
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Intern extension brugt for at nå denne applikation."
+
 #~ msgid "Package activated successfully."
 #~ msgstr "Pakke aktiveret tilfredsstillende."
 
@@ -4088,9 +4156,6 @@ msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "edit analog interface"
 #~ msgstr "rediger analog interface"
-
-#~ msgid "Edit Analog"
-#~ msgstr "Rediger Analog"
 
 #~ msgid "Interface #"
 #~ msgstr "Interface #"

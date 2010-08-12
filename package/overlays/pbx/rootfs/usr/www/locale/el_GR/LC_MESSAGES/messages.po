@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,7 +314,43 @@ msgstr ""
 msgid "Invalid extension number. Use only numerals."
 msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εσωτερικό."
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "Κείμενο/αριθμός κλήσης"
+
+msgid "Extension already in use, please choose another."
+msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "Το πεδίο '%s' περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed in an extension"
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
 msgstr ""
 
 msgid "Missing caller id."
@@ -1064,25 +1100,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. Με επιφύλαξη παντός δ
 
 msgid "view license"
 msgstr "άδεια χρήσης"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"Αντηχεί φωνή και βίντεο στον καλούντα όπως λαμβάνεται από το τηλεφωνικό "
-"κέντρο. Χρησιμοποιείται για να ελεγχθεί η καθυστέρηση της σύνδεσης."
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"Παράγει έναν σταθερό τόνο 1000Hz. Χρησιμοποιείται για να ελεγχθεί η ποιότητα "
-"της σύνδεσης."
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"Διαχειριστής αφύπνισης. Καλέστε για να ενεργοποιήσετε και να "
-"απενεργοποιήσετε κλήσεις αφύπνισης στο εσωτερικό από το οποίο καλείτε."
 
 msgid "English"
 msgstr "Αγγλικά"
@@ -1860,32 +1877,23 @@ msgid "Disable DNS SRV lookups."
 msgstr "Απενεργοποίηση αναζητήσεων DNS SRV."
 
 #, fuzzy
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+msgid "Plaintext"
+msgstr "κείμενο"
+
+msgid "PHP"
 msgstr ""
-"Με λίγη γνώση του τρόπου με τον οποίο λειτουργεί το πλάνο κλήσεων του "
-"Asterisk, μπορείτε να προσθέσετε κάποιες βασικές εφαρμογές στο AskoziaPBX. "
-"Αυτές οι εφαρμογές μπορούν να κληθούν μέσω των εσωτερικών που θα ορίσετε ή "
-"να χρησιμοποιηθούν για τον τερματισμό των εισερχομένων κλήσεων από τους "
-"παρόχους."
 
-msgid "descr"
-msgstr "περιγραφή"
+#, fuzzy
+msgid "click to enable application"
+msgstr "κάντε κλικ για να ενεργοποιήσετε το τηλέφωνο"
 
-msgid "edit application mapping"
-msgstr "επεξεργασία αντιστοίχησης εφαρμογών"
-
-msgid "Do you really want to delete this application mapping?"
+#, fuzzy
+msgid "Do you really want to disable this application?"
 msgstr "Θέλετε πραγματικά να διαγράψετε αυτή την αντιστοίχηση εφαρμογής;"
 
-msgid "delete application mapping"
-msgstr "διαγραφή αντιστοίχησης εφαμογής"
-
-msgid "add application mapping"
-msgstr "προσθήκη αντιστοίχησης εφαρμογής"
+#, fuzzy
+msgid "click to disable application"
+msgstr "κάντε κλικ για να απενεργοποιήσετε το τηλέφωνο"
 
 #, fuzzy
 msgid "edit application"
@@ -1899,15 +1907,6 @@ msgstr "Θέλετε πραγματικά να διαγράψετε αυτή τ�
 msgid "delete application"
 msgstr "διαγραφή αντιστοίχησης εφαμογής"
 
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-msgid "A valid extension must be entered."
-msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εσωτερικό."
-
-msgid "Internal extension used to reach this application."
-msgstr "Ο αριθμός που θα χρησιμοποιείται για να κληθεί αυτή η εφαρμογή."
-
 #, fuzzy
 msgid "Edit Application"
 msgstr "Εφαρμογή"
@@ -1917,7 +1916,7 @@ msgid "General Settings"
 msgstr "Ρυθμίσεις"
 
 #, fuzzy
-msgid "The number used to dial this application."
+msgid "The number or pattern used to dial this application."
 msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
 
 #, fuzzy
@@ -1949,6 +1948,9 @@ msgstr "διαγραφή ομάδας τηλεφώνων"
 
 msgid "add call group"
 msgstr "προσθήκη ομάδας τηλεφώνων"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
 
 msgid "Group name"
 msgstr "Ονομασία ομάδας"
@@ -2103,15 +2105,22 @@ msgstr "Αποστολή:"
 msgid "Upload"
 msgstr "Αποστολή"
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "Επεξεργασία PSTN"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
 
+msgid "Text to be displayed for Caller ID."
+msgstr "Το κείμενο που θα παρουσιαστεί ως ταυτότητα καλούντος."
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "Επεξηγηματικό όνομα γι' αυτό το τηλέφωνο."
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2705,9 +2714,6 @@ msgstr "Επεξεργασία PSTN"
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "Το εσωτερικό που θα χρησιμοποιείτε για να καλέσετε αυτό το τηλέφωνο."
-
-msgid "Text to be displayed for Caller ID."
-msgstr "Το κείμενο που θα παρουσιαστεί ως ταυτότητα καλούντος."
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"
@@ -3607,6 +3613,59 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "Αντηχεί φωνή και βίντεο στον καλούντα όπως λαμβάνεται από το τηλεφωνικό "
+#~ "κέντρο. Χρησιμοποιείται για να ελεγχθεί η καθυστέρηση της σύνδεσης."
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "Παράγει έναν σταθερό τόνο 1000Hz. Χρησιμοποιείται για να ελεγχθεί η "
+#~ "ποιότητα της σύνδεσης."
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "Διαχειριστής αφύπνισης. Καλέστε για να ενεργοποιήσετε και να "
+#~ "απενεργοποιήσετε κλήσεις αφύπνισης στο εσωτερικό από το οποίο καλείτε."
+
+#, fuzzy
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Με λίγη γνώση του τρόπου με τον οποίο λειτουργεί το πλάνο κλήσεων του "
+#~ "Asterisk, μπορείτε να προσθέσετε κάποιες βασικές εφαρμογές στο "
+#~ "AskoziaPBX. Αυτές οι εφαρμογές μπορούν να κληθούν μέσω των εσωτερικών που "
+#~ "θα ορίσετε ή να χρησιμοποιηθούν για τον τερματισμό των εισερχομένων "
+#~ "κλήσεων από τους παρόχους."
+
+#~ msgid "descr"
+#~ msgstr "περιγραφή"
+
+#~ msgid "edit application mapping"
+#~ msgstr "επεξεργασία αντιστοίχησης εφαρμογών"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "Θέλετε πραγματικά να διαγράψετε αυτή την αντιστοίχηση εφαρμογής;"
+
+#~ msgid "delete application mapping"
+#~ msgstr "διαγραφή αντιστοίχησης εφαμογής"
+
+#~ msgid "add application mapping"
+#~ msgstr "προσθήκη αντιστοίχησης εφαρμογής"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εσωτερικό."
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "Ο αριθμός που θα χρησιμοποιείται για να κληθεί αυτή η εφαρμογή."
+
 #~ msgid "Package activated successfully."
 #~ msgstr "Το πακέτο ενεργοποιήθηκε επιτυχώς."
 
@@ -4472,9 +4531,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ "Αν συνδέσετε μια γραμμή παρόχου σε μια θύρα FXS θα καταστρέψετε τη θύρα! "
 #~ "Αν δεν είστε σίγουροι ποιές θύρες είναι FXS και ποιές είναι FXO, ρυθμίστε "
 #~ "και συνδέστε πρώτα τα τηλέφωνά σας, πριν συνδέσετε γραμμές παρόχων."
-
-#~ msgid "Edit Analog"
-#~ msgstr "Επεξεργασία PSTN"
 
 #~ msgid "Interface #"
 #~ msgstr "Αριθμός διεπαφής"

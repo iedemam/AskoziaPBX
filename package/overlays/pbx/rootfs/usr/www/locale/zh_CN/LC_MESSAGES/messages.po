@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -312,7 +312,43 @@ msgstr ""
 msgid "Invalid extension number. Use only numerals."
 msgstr "必须输入一个有效的分机"
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "拨号串"
+
+msgid "Extension already in use, please choose another."
+msgstr ""
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "'%s' 段含有无效字符。"
+
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed in an extension"
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
 msgstr ""
 
 msgid "Missing caller id."
@@ -1033,19 +1069,6 @@ msgstr "AskoziaPBX &copy; 2007-2008 IKT. All rights reserved."
 
 msgid "view license"
 msgstr "查看证书"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr "把音频和音频在收到后立即传回到呼叫方。用来测试连接延迟。"
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr "产生一个稳定的1000hz的声音。用来测试连接质量。"
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr "呼叫唤醒管理。呼叫设置或取消这个分机的电话唤醒服务。"
 
 msgid "English"
 msgstr "英语"
@@ -1801,29 +1824,23 @@ msgid "Disable DNS SRV lookups."
 msgstr "禁用DNS SRV查找"
 
 #, fuzzy
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+msgid "Plaintext"
+msgstr "明文"
+
+msgid "PHP"
 msgstr ""
-"在了解一些Asterisk拨号计划如何运作的情况下，一些基础的应用可以被加入到"
-"AskoziaPBX中。这些应用程序既被预定的分机拨通，也可以用作提供商来电的目的地。"
 
-msgid "descr"
-msgstr "描述"
+#, fuzzy
+msgid "click to enable application"
+msgstr "点击启用电话"
 
-msgid "edit application mapping"
-msgstr "编辑应用映射"
-
-msgid "Do you really want to delete this application mapping?"
+#, fuzzy
+msgid "Do you really want to disable this application?"
 msgstr "真的要删除这个应用映射？"
 
-msgid "delete application mapping"
-msgstr "删除应用映射"
-
-msgid "add application mapping"
-msgstr "添加应用映射"
+#, fuzzy
+msgid "click to disable application"
+msgstr "点击禁止电话"
 
 #, fuzzy
 msgid "edit application"
@@ -1837,15 +1854,6 @@ msgstr "真的要删除这个应用映射？"
 msgid "delete application"
 msgstr "删除应用映射"
 
-msgid "Edit"
-msgstr "编辑"
-
-msgid "A valid extension must be entered."
-msgstr "必须输入一个有效的分机"
-
-msgid "Internal extension used to reach this application."
-msgstr "内部的分机用来达到这个应用。"
-
 #, fuzzy
 msgid "Edit Application"
 msgstr "应用"
@@ -1855,7 +1863,7 @@ msgid "General Settings"
 msgstr "设置"
 
 #, fuzzy
-msgid "The number used to dial this application."
+msgid "The number or pattern used to dial this application."
 msgstr "这个内部分机用来拨打这个电话。"
 
 #, fuzzy
@@ -1885,6 +1893,9 @@ msgstr "删除通话组"
 
 msgid "add call group"
 msgstr "添加通话组"
+
+msgid "Edit"
+msgstr "编辑"
 
 msgid "Group name"
 msgstr "组名"
@@ -2019,15 +2030,22 @@ msgstr "上载："
 msgid "Upload"
 msgstr "上载："
 
-msgid "Edit Virtual Fax"
-msgstr ""
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "编辑模拟电话"
 
 #, fuzzy
 msgid "The number used to dial this fax."
 msgstr "这个内部分机用来拨打这个电话。"
 
+msgid "Text to be displayed for Caller ID."
+msgstr "为Caller ID显示的文本"
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
 #, fuzzy
-msgid "Enter a descriptive name for this fax."
+msgid "Enter a name for this fax."
 msgstr "这个电话的描述性名称。"
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2580,9 +2598,6 @@ msgstr "编辑模拟电话"
 #, fuzzy
 msgid "The number used to dial this phone."
 msgstr "这个内部分机用来拨打这个电话。"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "为Caller ID显示的文本"
 
 #, fuzzy
 msgid "Call Notifications & Voicemail"
@@ -3409,6 +3424,51 @@ msgstr "ERR 无法安装设置。\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
 
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr "把音频和音频在收到后立即传回到呼叫方。用来测试连接延迟。"
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr "产生一个稳定的1000hz的声音。用来测试连接质量。"
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr "呼叫唤醒管理。呼叫设置或取消这个分机的电话唤醒服务。"
+
+#, fuzzy
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "在了解一些Asterisk拨号计划如何运作的情况下，一些基础的应用可以被加入到"
+#~ "AskoziaPBX中。这些应用程序既被预定的分机拨通，也可以用作提供商来电的目的"
+#~ "地。"
+
+#~ msgid "descr"
+#~ msgstr "描述"
+
+#~ msgid "edit application mapping"
+#~ msgstr "编辑应用映射"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "真的要删除这个应用映射？"
+
+#~ msgid "delete application mapping"
+#~ msgstr "删除应用映射"
+
+#~ msgid "add application mapping"
+#~ msgstr "添加应用映射"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "必须输入一个有效的分机"
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "内部的分机用来达到这个应用。"
+
 #~ msgid "Package activated successfully."
 #~ msgstr "软件包成功启用。"
 
@@ -4177,9 +4237,6 @@ msgstr "ERR 收到无效的配置。\n"
 #~ msgstr ""
 #~ "连接一个供应商线路到FXS接口可能损坏您的硬件。如果您不清楚您的卡上哪个接口"
 #~ "是FXO或者FXS，在连接任何供应商线路之前，先设置并连接你的电话账号。"
-
-#~ msgid "Edit Analog"
-#~ msgstr "编辑模拟电话"
 
 #~ msgid "Interface #"
 #~ msgstr "接口 #"

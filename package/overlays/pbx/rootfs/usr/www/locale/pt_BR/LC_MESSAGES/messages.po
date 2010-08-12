@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -284,7 +284,41 @@ msgstr ""
 msgid "Invalid extension number. Use only numerals."
 msgstr ""
 
-msgid "This extension is already used. Choose another number."
+msgid "Missing extension."
+msgstr ""
+
+msgid "Extension already in use, please choose another."
+msgstr ""
+
+msgid "Extension contains an invalid character"
+msgstr ""
+
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr ""
+
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr ""
+
+msgid "Nested square brackets are not allowed in an extension"
+msgstr ""
+
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr ""
+
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr ""
+
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
 msgstr ""
 
 msgid "Missing caller id."
@@ -925,19 +959,6 @@ msgid "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 msgstr ""
 
 msgid "view license"
-msgstr ""
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
 msgstr ""
 
 msgid "English"
@@ -1645,26 +1666,19 @@ msgstr ""
 msgid "Disable DNS SRV lookups."
 msgstr ""
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+msgid "Plaintext"
 msgstr ""
 
-msgid "descr"
+msgid "PHP"
 msgstr ""
 
-msgid "edit application mapping"
+msgid "click to enable application"
 msgstr ""
 
-msgid "Do you really want to delete this application mapping?"
+msgid "Do you really want to disable this application?"
 msgstr ""
 
-msgid "delete application mapping"
-msgstr ""
-
-msgid "add application mapping"
+msgid "click to disable application"
 msgstr ""
 
 msgid "edit application"
@@ -1676,22 +1690,13 @@ msgstr ""
 msgid "delete application"
 msgstr ""
 
-msgid "Edit"
-msgstr ""
-
-msgid "A valid extension must be entered."
-msgstr ""
-
-msgid "Internal extension used to reach this application."
-msgstr ""
-
 msgid "Edit Application"
 msgstr ""
 
 msgid "General Settings"
 msgstr ""
 
-msgid "The number used to dial this application."
+msgid "The number or pattern used to dial this application."
 msgstr ""
 
 msgid "Security"
@@ -1716,6 +1721,9 @@ msgid "delete call group"
 msgstr ""
 
 msgid "add call group"
+msgstr ""
+
+msgid "Edit"
 msgstr ""
 
 msgid "Group name"
@@ -1849,13 +1857,19 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-msgid "Edit Virtual Fax"
+msgid "Edit Analog Fax"
 msgstr ""
 
 msgid "The number used to dial this fax."
 msgstr ""
 
-msgid "Enter a descriptive name for this fax."
+msgid "Text to be displayed for Caller ID."
+msgstr ""
+
+msgid "Edit Virtual Fax"
+msgstr ""
+
+msgid "Enter a name for this fax."
 msgstr ""
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2361,9 +2375,6 @@ msgid "Edit Analog Phone"
 msgstr ""
 
 msgid "The number used to dial this phone."
-msgstr ""
-
-msgid "Text to be displayed for Caller ID."
 msgstr ""
 
 msgid "Call Notifications & Voicemail"

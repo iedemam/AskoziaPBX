@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-05 13:08+0200\n"
+"POT-Creation-Date: 2010-08-12 16:57+0200\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -288,8 +288,55 @@ msgstr "内線番号に誤りがあります"
 msgid "Invalid extension number. Use only numerals."
 msgstr "無効な内線番号です。数字のみ利用可能です"
 
-msgid "This extension is already used. Choose another number."
+#, fuzzy
+msgid "Missing extension."
+msgstr "内線番号に誤りがあります"
+
+#, fuzzy
+msgid "Extension already in use, please choose another."
 msgstr "この内線番号は既に使用されています。他の番号を選択して下さい"
+
+#, fuzzy
+msgid "Extension contains an invalid character"
+msgstr "無効な文字が含まれています"
+
+#, fuzzy
+msgid "Extension contains a doubled \"|\" character, only one is allowed."
+msgstr "2つの \"|\" を含んでいます。一つのみ許可されます"
+
+#, fuzzy
+msgid "Extension contains a doubled \"+\" character, only one is allowed."
+msgstr "2つの \"+\" を含んでいます。一つのみ許可されます"
+
+#, fuzzy
+msgid "Extension contains a doubled \"-\" character, only one is allowed."
+msgstr "2つの \"-\" を含んでいます。一つのみ許可されます"
+
+#, fuzzy
+msgid "Nested square brackets are not allowed in an extension"
+msgstr "入れ子になった大括弧は許可されません"
+
+#, fuzzy
+msgid "Brackets are not needed for less than 2 characters in an extension."
+msgstr "2文字以下の場合、括弧は必要有りません"
+
+#, fuzzy
+msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
+msgstr "追加したプリフィックスは恐らく数字,'*'そして'#'しか含まれていません"
+
+#, fuzzy
+msgid ""
+"The wildcard character \".\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"ワイルドカードである \".\" は、プリフィックスの前に記述する事は出来ません"
+
+#, fuzzy
+msgid ""
+"The wildcard character \"!\" is not allowed in an extension before a prefix "
+"which is to be removed."
+msgstr ""
+"ワイルドカードである \"!\" は、プリフィックスの前に記述する事は出来ません"
 
 msgid "Missing caller id."
 msgstr "発信者番号に誤りがあります"
@@ -1012,24 +1059,6 @@ msgstr "Askozia&reg;PBX &copy; 2007-2010 IKT. All rights reserved."
 
 msgid "view license"
 msgstr "ライセンスを表示する"
-
-msgid ""
-"Echos audio and video back to the caller as soon as it is received. Used to "
-"test connection delay."
-msgstr ""
-"オーディオ及びビデオを受信すると、すぐさま発信者にエコーバック(掛け直し)ま"
-"す。これは、遅延のテストに用いられます"
-
-msgid "Generates a constant 1000Hz tone. Used to test connection quality."
-msgstr ""
-"一定の1000MHzのトーン信号を生成します。これは接続品質のテストに用いられます"
-
-msgid ""
-"Wake-Up call manager. Call to set and cancel wake-up calls on the current "
-"extension."
-msgstr ""
-"モーニングコールマネージャー:この内線番号でのモーニングコールを設定もしくは"
-"キャンセルする"
 
 msgid "English"
 msgstr "English"
@@ -1757,31 +1786,24 @@ msgstr "DNSサービスレコード"
 msgid "Disable DNS SRV lookups."
 msgstr "DNS SRV lookupsを無効にする。"
 
-msgid ""
-"With some knowledge of how the Asterisk dialplan works, some basic "
-"applications can be added to the system. These applications can then be "
-"dialed via their defined extensions or used as a destination for incoming "
-"calls from Providers."
+#, fuzzy
+msgid "Plaintext"
+msgstr "プレーンテキスト"
+
+msgid "PHP"
 msgstr ""
-"Asteriskのdialplanについていくらかの知識があれば、いくつかの基本的なアプリ"
-"ケーションをシステムに追加する事ができます。 これらのアプリケーションは、定義"
-"されたエクステンション経由でダイヤルしたり、プロバイダーからの着信呼び出しの"
-"送信先として使用することができます"
 
-msgid "descr"
-msgstr "descr"
+#, fuzzy
+msgid "click to enable application"
+msgstr "電話機を有効にします"
 
-msgid "edit application mapping"
-msgstr "アプリケーション関連付けの編集"
+#, fuzzy
+msgid "Do you really want to disable this application?"
+msgstr "本当に、このアプリケーションを削除しますか？"
 
-msgid "Do you really want to delete this application mapping?"
-msgstr "本当に、このアプリケーションの関連付けを削除しますか？"
-
-msgid "delete application mapping"
-msgstr "アプリケーションの関連付けの削除"
-
-msgid "add application mapping"
-msgstr "アプリケーションの関連付けの追加"
+#, fuzzy
+msgid "click to disable application"
+msgstr "電話機を無効にします"
 
 msgid "edit application"
 msgstr "アプリケーションの編集"
@@ -1792,22 +1814,14 @@ msgstr "本当に、このアプリケーションを削除しますか？"
 msgid "delete application"
 msgstr "アプリケーションの削除"
 
-msgid "Edit"
-msgstr "編集"
-
-msgid "A valid extension must be entered."
-msgstr "有効な内線番号を入力する必要があります"
-
-msgid "Internal extension used to reach this application."
-msgstr "このアプリケーションに接続させる為に割り当てる内線番号"
-
 msgid "Edit Application"
 msgstr "アプリケーションの編集"
 
 msgid "General Settings"
 msgstr "全般設定"
 
-msgid "The number used to dial this application."
+#, fuzzy
+msgid "The number or pattern used to dial this application."
 msgstr "その番号は、このアプリケーションにダイヤルする際に使用されています"
 
 msgid "Security"
@@ -1836,6 +1850,9 @@ msgstr "グループの削除"
 
 msgid "add call group"
 msgstr "グループの追加"
+
+msgid "Edit"
+msgstr "編集"
 
 msgid "Group name"
 msgstr "グループ名"
@@ -1974,13 +1991,21 @@ msgstr "アップロード:"
 msgid "Upload"
 msgstr "アップロード"
 
-msgid "Edit Virtual Fax"
-msgstr "バーチャルファックスの編集"
+#, fuzzy
+msgid "Edit Analog Fax"
+msgstr "アナログの編集"
 
 msgid "The number used to dial this fax."
 msgstr "その番号は、このファックスにダイヤルする為に使われています"
 
-msgid "Enter a descriptive name for this fax."
+msgid "Text to be displayed for Caller ID."
+msgstr "表示させる発信者IDを入力して下さい"
+
+msgid "Edit Virtual Fax"
+msgstr "バーチャルファックスの編集"
+
+#, fuzzy
+msgid "Enter a name for this fax."
 msgstr "このファックスに判り易い名前を入力して下さい"
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
@@ -2532,9 +2557,6 @@ msgstr "アナログ電話機の編集"
 
 msgid "The number used to dial this phone."
 msgstr "その番号は、この電話にダイヤルする為に使用されています"
-
-msgid "Text to be displayed for Caller ID."
-msgstr "表示させる発信者IDを入力して下さい"
 
 msgid "Call Notifications & Voicemail"
 msgstr "コール通知とヴォイスメール"
@@ -3345,6 +3367,57 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid ""
+#~ "Echos audio and video back to the caller as soon as it is received. Used "
+#~ "to test connection delay."
+#~ msgstr ""
+#~ "オーディオ及びビデオを受信すると、すぐさま発信者にエコーバック(掛け直し)ま"
+#~ "す。これは、遅延のテストに用いられます"
+
+#~ msgid "Generates a constant 1000Hz tone. Used to test connection quality."
+#~ msgstr ""
+#~ "一定の1000MHzのトーン信号を生成します。これは接続品質のテストに用いられま"
+#~ "す"
+
+#~ msgid ""
+#~ "Wake-Up call manager. Call to set and cancel wake-up calls on the current "
+#~ "extension."
+#~ msgstr ""
+#~ "モーニングコールマネージャー:この内線番号でのモーニングコールを設定もしく"
+#~ "はキャンセルする"
+
+#~ msgid ""
+#~ "With some knowledge of how the Asterisk dialplan works, some basic "
+#~ "applications can be added to the system. These applications can then be "
+#~ "dialed via their defined extensions or used as a destination for incoming "
+#~ "calls from Providers."
+#~ msgstr ""
+#~ "Asteriskのdialplanについていくらかの知識があれば、いくつかの基本的なアプリ"
+#~ "ケーションをシステムに追加する事ができます。 これらのアプリケーションは、"
+#~ "定義されたエクステンション経由でダイヤルしたり、プロバイダーからの着信呼び"
+#~ "出しの送信先として使用することができます"
+
+#~ msgid "descr"
+#~ msgstr "descr"
+
+#~ msgid "edit application mapping"
+#~ msgstr "アプリケーション関連付けの編集"
+
+#~ msgid "Do you really want to delete this application mapping?"
+#~ msgstr "本当に、このアプリケーションの関連付けを削除しますか？"
+
+#~ msgid "delete application mapping"
+#~ msgstr "アプリケーションの関連付けの削除"
+
+#~ msgid "add application mapping"
+#~ msgstr "アプリケーションの関連付けの追加"
+
+#~ msgid "A valid extension must be entered."
+#~ msgstr "有効な内線番号を入力する必要があります"
+
+#~ msgid "Internal extension used to reach this application."
+#~ msgstr "このアプリケーションに接続させる為に割り当てる内線番号"
 
 #~ msgid "Package activated successfully."
 #~ msgstr "パッケージが、有効になりました"
@@ -4174,9 +4247,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #~ "与えてしまいます。もしカードのポートがFXOかFXSのどちらか判らない場合、電話"
 #~ "回線に接続する前に、そのポートに内線番号を割り当てた上で電話機を接続してみ"
 #~ "て、FXSなのかどうか、切り分けてから使用して下さい"
-
-#~ msgid "Edit Analog"
-#~ msgstr "アナログの編集"
 
 #~ msgid "Interface #"
 #~ msgstr "インターフェース #"
