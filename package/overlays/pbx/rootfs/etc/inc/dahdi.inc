@@ -694,10 +694,6 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 				$conf .= "echocancel=" . $gateway['span' . $spannum . 'echo-taps'] . "\n";
 			}
 
-			if ($provider['defaultfax']) {
-				$conf .= "faxdetect=incoming\n";
-			}
-
 			$conf .= "language=" . $provider['language'] . "\n";
 			$conf .= "context=" . $provider['uniqid'] . "-incoming\n";
 			$conf .= "group=" . $basechannel . "\n";
@@ -739,6 +735,10 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 					$conf .= "echocancel=no\n";
 				} else {
 					$conf .= "echocancel=" . $pport['echo-taps'] . "\n";
+				}
+
+				if ($provider['defaultfax']) {
+					$conf .= "faxdetect=incoming\n";
 				}
 
 				$conf .= "language=" . $provider['language'] . "\n";
