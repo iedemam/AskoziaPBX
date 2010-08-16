@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -932,6 +932,17 @@ msgstr ""
 msgid "Private RSA Key"
 msgstr ""
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Sisääntuleva Jatke/Jatkeet"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Uusia paketteja ei ole saatavilla."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Soittosuunnitelma"
 
@@ -1327,9 +1338,6 @@ msgstr "Ulkoiset Puhelimet"
 
 msgid "Conference Rooms"
 msgstr "Neuvottelutilat"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "aktiivinen"
@@ -3744,9 +3752,6 @@ msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
 
 #~ msgid "Install"
 #~ msgstr "Asenna"
-
-#~ msgid "No new packages available."
-#~ msgstr "Uusia paketteja ei ole saatavilla."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Valitse .pbxpkg tiedosto jonka haluat asentaa."

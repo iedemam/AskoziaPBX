@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -913,6 +913,17 @@ msgstr "プライベート RSAキーで、発信した呼を認証する"
 msgid "Private RSA Key"
 msgstr "プライベートRSAキー"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "内線番号(着信用)"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "新しいパッケージは有りません"
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "ダイヤルプラン"
 
@@ -1295,9 +1306,6 @@ msgstr "外部の電話"
 
 msgid "Conference Rooms"
 msgstr "電話会議室"
-
-msgid "Virtual Faxes"
-msgstr "バーチャルファックス"
 
 msgid "active"
 msgstr "有効"
@@ -3364,6 +3372,9 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
 
+#~ msgid "Virtual Faxes"
+#~ msgstr "バーチャルファックス"
+
 #, fuzzy
 #~ msgid "Enter a name for this fax."
 #~ msgstr "このファックスに判り易い名前を入力して下さい"
@@ -3596,9 +3607,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Install"
 #~ msgstr "インストール"
-
-#~ msgid "No new packages available."
-#~ msgstr "新しいパッケージは有りません"
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -924,6 +924,17 @@ msgstr "autentica le chiamate uscenti con una chiave privata RSA"
 msgid "Private RSA Key"
 msgstr "Chiave RSA Privata"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Assegnazione chiamate entranti"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Nessun nuovo pacchetto disponibile."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Piano di numerazione"
 
@@ -1307,9 +1318,6 @@ msgstr "Telefoni Esterni"
 
 msgid "Conference Rooms"
 msgstr "Sale Conferenze"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "attivo"
@@ -3704,9 +3712,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 
 #~ msgid "Install"
 #~ msgstr "Installa"
-
-#~ msgid "No new packages available."
-#~ msgstr "Nessun nuovo pacchetto disponibile."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr ""

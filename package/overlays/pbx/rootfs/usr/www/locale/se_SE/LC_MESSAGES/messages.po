@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -814,6 +814,15 @@ msgstr ""
 msgid "Private RSA Key"
 msgstr ""
 
+msgid "Incoming Faxes"
+msgstr ""
+
+msgid "no faxes available."
+msgstr ""
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr ""
 
@@ -1193,9 +1202,6 @@ msgid "External Phones"
 msgstr ""
 
 msgid "Conference Rooms"
-msgstr ""
-
-msgid "Virtual Faxes"
 msgstr ""
 
 msgid "active"

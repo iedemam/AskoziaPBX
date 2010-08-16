@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -912,6 +912,17 @@ msgstr "authentifier les appels sortants avec une clé privée RSA"
 msgid "Private RSA Key"
 msgstr "Clé privée RSA"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Appels entrants"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Aucun nouveau paquet(s) de disponible."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Plan de numérotation"
 
@@ -1296,9 +1307,6 @@ msgstr "Lignes Externe"
 
 msgid "Conference Rooms"
 msgstr "Salle(s) de conférence"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "active"
@@ -3654,9 +3662,6 @@ msgstr "ERREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Install"
 #~ msgstr "Installation"
-
-#~ msgid "No new packages available."
-#~ msgstr "Aucun nouveau paquet(s) de disponible."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr ""

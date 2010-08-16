@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -917,6 +917,17 @@ msgstr "удостовери изходящите обаждания с вътр
 msgid "Private RSA Key"
 msgstr "Вътрешни RSA Ключове"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Входящи Маршрути"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Не са достъпни нови пакети."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -1300,9 +1311,6 @@ msgstr "External Phones"
 
 msgid "Conference Rooms"
 msgstr "Conference Rooms"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "активни"
@@ -3625,9 +3633,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 
 #~ msgid "Install"
 #~ msgstr "Инсталирай"
-
-#~ msgid "No new packages available."
-#~ msgstr "Не са достъпни нови пакети."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Изберете .pbxpkg файл за инсталиране от вашия компютър."

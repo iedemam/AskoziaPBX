@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -925,6 +925,17 @@ msgstr "Uitgaande gesprekken met een privé RSA sleutel verifiëren"
 msgid "Private RSA Key"
 msgstr "Privé RSA Sleutel"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Binnekomende Extensies"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Geen nieuwe pakketten beschikbaar."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Nummerplan"
 
@@ -1307,9 +1318,6 @@ msgstr "Externe Telefoons"
 
 msgid "Conference Rooms"
 msgstr "Vergaderruimtes"
-
-msgid "Virtual Faxes"
-msgstr "Virtuele Faxen"
 
 msgid "active"
 msgstr "actief"
@@ -3416,6 +3424,9 @@ msgstr "FOUT Kan configuratie niet installeren.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 
+#~ msgid "Virtual Faxes"
+#~ msgstr "Virtuele Faxen"
+
 #, fuzzy
 #~ msgid "Enter a name for this fax."
 #~ msgstr "Beschrijvende naam voor deze fax"
@@ -3657,9 +3668,6 @@ msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 
 #~ msgid "Install"
 #~ msgstr "Installeer"
-
-#~ msgid "No new packages available."
-#~ msgstr "Geen nieuwe pakketten beschikbaar."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Selecteer een .pbxpkg bestand van uw computer om te installeren."

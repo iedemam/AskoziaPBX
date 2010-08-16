@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -903,6 +903,17 @@ msgstr "аутентификация исходящих звонков с отк
 msgid "Private RSA Key"
 msgstr "Закрытый ключ RSA"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Входящий номер"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Нет новых пакетов."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "План набора"
 
@@ -1285,9 +1296,6 @@ msgstr "Внешние телефоны"
 
 msgid "Conference Rooms"
 msgstr "Конференц-комнаты"
-
-msgid "Virtual Faxes"
-msgstr "Виртуальные факсы"
 
 msgid "active"
 msgstr "активный"
@@ -3360,6 +3368,9 @@ msgstr "ERR  не могу установить настройки.\n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR получена неправильная конфигурация.\n"
 
+#~ msgid "Virtual Faxes"
+#~ msgstr "Виртуальные факсы"
+
 #, fuzzy
 #~ msgid "Enter a name for this fax."
 #~ msgstr "Введите описательное название для этой службы."
@@ -3587,9 +3598,6 @@ msgstr "ERR получена неправильная конфигурация.\
 
 #~ msgid "Install"
 #~ msgstr "Установить"
-
-#~ msgid "No new packages available."
-#~ msgstr "Нет новых пакетов."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Выберите .pbxpkg файл со своего компьютера для установки."

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -863,6 +863,17 @@ msgstr ""
 msgid "Private RSA Key"
 msgstr ""
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Gelen Arama Hat(lar)"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Mevcut yeni paket yok."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Aramaplanı"
 
@@ -1253,9 +1264,6 @@ msgstr "Harici Telefonlar"
 
 msgid "Conference Rooms"
 msgstr "Konferans Odaları"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "etkin"
@@ -3405,9 +3413,6 @@ msgstr ""
 
 #~ msgid "Install"
 #~ msgstr "Yükle"
-
-#~ msgid "No new packages available."
-#~ msgstr "Mevcut yeni paket yok."
 
 #~ msgid "Capacity"
 #~ msgstr "Kapasite"

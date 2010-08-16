@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: part of AskoziaPBX (http://askozia.com/pbx)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2010-08-04 01:08-0300\n"
 "Last-Translator: Facundo Ameal <facundo.ameal@railtion.com.ar>\n"
 "Language-Team: es_ES <LI@li.org>\n"
@@ -915,6 +915,17 @@ msgstr "autenticar las llamadas salientes con una clave pública RSA"
 msgid "Private RSA Key"
 msgstr "Clave Privada RSA"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Extension(es) entrante(s)"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "No hay paquetes nuevos disponibles"
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -1297,9 +1308,6 @@ msgstr "Teléfonos externos"
 
 msgid "Conference Rooms"
 msgstr "Salas de conferencia"
-
-msgid "Virtual Faxes"
-msgstr "Fax Virtuales"
 
 msgid "active"
 msgstr "activo"
@@ -3409,6 +3417,9 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
 
+#~ msgid "Virtual Faxes"
+#~ msgstr "Fax Virtuales"
+
 #, fuzzy
 #~ msgid "Enter a name for this fax."
 #~ msgstr "Ingrese un nombre descriptivo para este fax."
@@ -3614,9 +3625,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Install"
 #~ msgstr "Instalar"
-
-#~ msgid "No new packages available."
-#~ msgstr "No hay paquetes nuevos disponibles"
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Seleccione un archivo .pbxpkg de su equipo para instalar."

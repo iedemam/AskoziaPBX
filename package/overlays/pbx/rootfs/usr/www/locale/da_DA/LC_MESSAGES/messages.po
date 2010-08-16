@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -902,6 +902,17 @@ msgstr "godkend udgående opkald med en privat RSA nøgle"
 msgid "Private RSA Key"
 msgstr "Private RSA nægler"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Indkomne linier"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Ingen nye pakker tilgængelig"
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "dialplan"
 
@@ -1285,9 +1296,6 @@ msgstr "Eksterne Telefoner"
 
 msgid "Conference Rooms"
 msgstr "Konference rum"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "aktiv"
@@ -3599,9 +3607,6 @@ msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Install"
 #~ msgstr "Installer"
-
-#~ msgid "No new packages available."
-#~ msgstr "Ingen nye pakker tilgængelig"
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Vælg en .pbxpkg fil fra din computer for at installere."

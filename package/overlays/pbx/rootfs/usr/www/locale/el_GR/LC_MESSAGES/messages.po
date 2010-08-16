@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -948,6 +948,17 @@ msgstr ""
 msgid "Private RSA Key"
 msgstr ""
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Εισερχόμενο/α εσωτερικό/ά"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Δεν υπάρχουν νέα πακέτα διαθέσιμα."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Πλάνο κλήσεων"
 
@@ -1345,9 +1356,6 @@ msgstr "Εξωτερικά τηλέφωνα"
 
 msgid "Conference Rooms"
 msgstr "Χώροι συνδιασκέψεων"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "ενεργό"
@@ -3853,9 +3861,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 
 #~ msgid "Install"
 #~ msgstr "Εγκατάσταση"
-
-#~ msgid "No new packages available."
-#~ msgstr "Δεν υπάρχουν νέα πακέτα διαθέσιμα."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Επιλέξτε ένα αρχείο με κατάληξη .pbxpkg για την εγκατάσταση."

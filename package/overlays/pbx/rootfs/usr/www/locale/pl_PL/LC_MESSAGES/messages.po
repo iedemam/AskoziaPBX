@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Mateusz Viste <mateusz@viste-family.net>\n"
 "Language-Team: \n"
@@ -918,6 +918,17 @@ msgstr "uwierzytelnia połączenia wychodzące za pomocą prywatnego klucza RSA.
 msgid "Private RSA Key"
 msgstr "Prywatny klucz RSA"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Przychodzące numery wewnętrzne"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Brak nowych pakietów."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -1301,9 +1312,6 @@ msgstr "Telefony Zewnętrzne"
 
 msgid "Conference Rooms"
 msgstr "Sale Konferencyjne"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "aktywny"
@@ -3622,9 +3630,6 @@ msgstr "BŁĄD Otrzymano błędną konfigurację.\n"
 
 #~ msgid "Install"
 #~ msgstr "Instaluj"
-
-#~ msgid "No new packages available."
-#~ msgstr "Brak nowych pakietów."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr "Wybierz plik .pbxpkg na swoim komputerze aby zainstalować."

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -909,6 +909,17 @@ msgstr ""
 msgid "Private RSA Key"
 msgstr "Privater RSA Key"
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "eingehende Anschlüsse"
+
+#, fuzzy
+msgid "no faxes available."
+msgstr "Keine neuen Pakete verfügbar."
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -1298,9 +1309,6 @@ msgstr "Externe Nebenstellen"
 
 msgid "Conference Rooms"
 msgstr "Konferenzräume"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "aktiv"
@@ -3683,9 +3691,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "Install"
 #~ msgstr "Installieren"
-
-#~ msgid "No new packages available."
-#~ msgstr "Keine neuen Pakete verfügbar."
 
 #~ msgid "Select a .pbxpkg file from your computer to install."
 #~ msgstr ""

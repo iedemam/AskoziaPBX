@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 18:00+0200\n"
+"POT-Creation-Date: 2010-08-16 16:53+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -899,6 +899,16 @@ msgstr ""
 msgid "Private RSA Key"
 msgstr ""
 
+#, fuzzy
+msgid "Incoming Faxes"
+msgstr "Příchozí provolba(y)"
+
+msgid "no faxes available."
+msgstr ""
+
+msgid "Send all incoming faxes here."
+msgstr ""
+
 msgid "Dialplan"
 msgstr ""
 
@@ -1292,9 +1302,6 @@ msgstr ""
 
 msgid "Conference Rooms"
 msgstr "Telekonference"
-
-msgid "Virtual Faxes"
-msgstr ""
 
 msgid "active"
 msgstr "aktivní"
