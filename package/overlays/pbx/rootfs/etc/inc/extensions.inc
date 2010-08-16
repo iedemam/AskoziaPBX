@@ -533,6 +533,14 @@ function extensions_generate_provider_incoming_context($p) {
 	$conf = "[{$p['uniqid']}-incoming]\n";
 	$conf .= "include => public-direct-dial\n";
 
+
+	// fax handling is special and shows why this function should be rewritten
+	if ($p['defaultfax']) {
+		$conf .= "exten => fax,1,NoOp(incoming fax from provider: {$p['name']} to $\{EXTEN})\n";
+		$conf .= extensions_generate_extension_from_uniqid($p['defaultfax'], true, false, "fax");
+	}
+
+
 	// form "impromptu group arrays" for destinations mapped to the the same patterns
 	$groupped_mapping = array();
 	foreach ($p['incomingextensionmap'] as $map) {

@@ -692,7 +692,7 @@ function pbx_delete_fax($uniqid) {
 		is_array($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]])) {
 
 		unset($GLOBALS['config'][$fax_type]['fax'][$uniqid_map[$uniqid]]);
-		dialplan_remove_incomingextensionmap_reference_from_providers($uniqid);
+		dialplan_remove_defaultfax_reference_from_providers($uniqid);
 		return 0;
 
 	} else {

@@ -589,6 +589,10 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 				$conf .= "echocancel=" . $pport['echo-taps'] . "\n";
 			}
 
+			if ($provider['defaultfax']) {
+				$conf .= "faxdetect=incoming\n";
+			}
+
 			$conf .= "busydetect=yes\n";
 			$conf .= "busycount=3\n";
 			$conf .= "language=" . $provider['language'] . "\n";
@@ -688,6 +692,10 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 				$conf .= "echocancel=no\n";
 			} else {
 				$conf .= "echocancel=" . $gateway['span' . $spannum . 'echo-taps'] . "\n";
+			}
+
+			if ($provider['defaultfax']) {
+				$conf .= "faxdetect=incoming\n";
 			}
 
 			$conf .= "language=" . $provider['language'] . "\n";

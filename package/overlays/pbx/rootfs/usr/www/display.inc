@@ -1319,4 +1319,43 @@ function d_iax_keys() {
 	</tr><?
 }
 
+function d_incoming_fax_editor() {
+	global $form, $colspan;
+
+	$options[] = array("", gettext("none"));
+	$pad = "&nbsp;&nbsp;&nbsp;";
+
+	if (count($a_items = analog_get_faxes())) {
+		foreach ($a_items as $item) {
+			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	if (count($a_items = virtual_get_faxes())) {
+		foreach ($a_items as $item) {
+			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Incoming Faxes");?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
+
+		if (count($options) == 1) {
+			echo "<em>" . gettext("no faxes available.") . "</em>";
+		} else {
+			?><select name="defaultfax" class="formfld" id="defaultfax"><?
+				foreach ($options as $o) {
+				?><option value="<?=$o[0];?>" <?
+				if ($o[0] == $form['defaultfax'])
+					echo "selected"; ?>
+				><?=$o[1];?></option><?
+				}
+			?></select><?
+		}
+
+			?><br><span class="vexpl"><?=gettext("Send all incoming faxes here.");?></span>
+		</td>
+	</tr><?
+}
+
 ?>

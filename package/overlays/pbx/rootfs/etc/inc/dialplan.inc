@@ -83,7 +83,23 @@ function dialplan_remove_incomingextensionmap_reference_from_providers($removed_
 				}
 			}
 		}
-	}	
+	}
+}
+
+function dialplan_remove_defaultfax_reference_from_providers($removed_id) {
+	global $g;
+
+	foreach ($g['technologies'] as $tech) {
+		if (is_array($GLOBALS['config'][$tech]['provider'])) {
+			$a_providers = &$GLOBALS['config'][$tech]['provider'];
+			$n = count($a_providers);
+			for ($i = 0; $i < $n; $i++) {
+				if ($a_providers[$i]['defaultfax'] == $removed_id) {
+					unset($a_providers[$i]['defaultfax']);
+				}
+			}
+		}
+	}
 }
 
 /**

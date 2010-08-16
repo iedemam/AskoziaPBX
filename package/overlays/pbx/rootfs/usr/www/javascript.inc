@@ -127,13 +127,6 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
-	if (count($a_items = virtual_get_faxes())) {
-		$options[] = array("", gettext("Virtual Faxes"));
-		foreach ($a_items as $item) {
-			$options[] = array($item['uniqid'], $pad . $item['name'] . " &lt;" . $item['extension'] . "&gt;");
-		}
-	}
-	
 	if (count($a_items = applications_get_applications())) {
 		$options[] = array("", gettext("Applications"));
 		foreach ($a_items as $item) {
