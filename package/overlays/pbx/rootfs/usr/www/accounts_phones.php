@@ -107,7 +107,7 @@ if (file_exists($g['sip_dirty_path'])) {
 		$retval |= sip_conf_generate();
 		$retval |= extensions_conf_generate();
 		$retval |= voicemail_conf_generate();
-		$retval |= provisioning_configure();
+		//$retval |= provisioning_configure();
 		config_unlock();
 		
 		$retval |= pbx_exec("module reload chan_sip.so");
