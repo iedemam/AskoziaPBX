@@ -142,6 +142,61 @@ function pbx_configure() {
 	$res |= smdi_conf_generate();
 	if ($g['booting']) echo "done\n";
 
+	if ($g['booting']) echo "   |- generating manual configuration...";
+	$res |= adsi_conf_generate();
+	$res |= adtranvofr_conf_generate();
+	$res |= agents_conf_generate();
+	$res |= ais_conf_generate();
+	$res |= alarmreceiver_conf_generate();
+	$res |= alsa_conf_generate();
+	$res |= cdr_adaptive_odbc_conf_generate();
+	$res |= cdr_manager_conf_generate();
+	$res |= cdr_odbc_conf_generate();
+	$res |= cdr_pgsql_conf_generate();
+	$res |= cdr_sqlite3_custom_conf_generate();
+	$res |= cdr_tds_conf_generate();
+	$res |= cli_conf_generate();
+	$res |= cli_aliases_conf_generate();
+	$res |= cli_permissions_conf_generate();
+	$res |= codecs_conf_generate();
+	$res |= console_conf_generate();
+	$res |= dbsep_conf_generate();
+	$res |= dnsmgr_conf_generate();
+	$res |= dsp_conf_generate();
+	$res |= dundi_conf_generate();
+	$res |= extconfig_conf_generate();
+	$res |= extensions_minivm_conf_generate();
+	$res |= festival_conf_generate();
+	$res |= followme_conf_generate();
+	$res |= func_odbc_conf_generate();
+	$res |= gtalk_conf_generate();
+	$res |= h323_conf_generate();
+	$res |= http_conf_generate();
+	$res |= iaxprov_conf_generate();
+	$res |= jabber_conf_generate();
+	$res |= jingle_conf_generate();
+	$res |= mgcp_conf_generate();
+	$res |= minivm_conf_generate();
+	$res |= misdn_conf_generate();
+	$res |= muted_conf_generate();
+	$res |= chan_ooh323_conf_generate();
+	$res |= osp_conf_generate();
+	$res |= oss_conf_generate();
+	$res |= phone_conf_generate();
+	$res |= phoneprov_conf_generate();
+	$res |= queuerules_conf_generate();
+	$res |= queues_conf_generate();
+	$res |= res_config_sqlite_conf_generate();
+	$res |= res_ldap_conf_generate();
+	$res |= res_odbc_conf_generate();
+	$res |= res_pgsql_conf_generate();
+	$res |= res_snmp_conf_generate();
+	$res |= sla_conf_generate();
+	$res |= unistim_conf_generate();
+	$res |= usbradio_conf_generate();
+	$res |= users_conf_generate();
+	$res |= vpb_conf_generate();
+	if ($g['booting']) echo "done\n";
 
 
 	if ($g['booting']) echo "   |- executing Asterisk...";
@@ -1271,66 +1326,324 @@ EOD;
 }
 
 
+/* boilerplate functions */
+function adsi_conf_generate($return=false) {
 
+	$conf = "";
 
+	return ($return) ? $conf : util_file_write("/etc/asterisk/adsi.conf", $conf);
+}
+function adtranvofr_conf_generate($return=false) {
 
+	$conf = "";
 
+	return ($return) ? $conf : util_file_write("/etc/asterisk/adtranvofr.conf", $conf);
+}
+function agents_conf_generate($return=false) {
 
-/* boilerplate functions still needed to configure files not yet touched by the gui */
+	$conf = "";
 
-/*
-adsi.conf.sample
-adtranvofr.conf.sample
-agents.conf.sample
-ais.conf.sample
-alarmreceiver.conf.sample
-alsa.conf.sample
-cdr_adaptive_odbc.conf.sample
-cdr_manager.conf.sample
-cdr_odbc.conf.sample
-cdr_pgsql.conf.sample
-cdr_sqlite3_custom.conf.sample
-cdr_tds.conf.sample
-cli.conf.sample
-cli_aliases.conf.sample
-cli_permissions.conf.sample
-codecs.conf.sample
-console.conf.sample
-dbsep.conf.sample
-dnsmgr.conf.sample
-dsp.conf.sample
-dundi.conf.sample
-extconfig.conf.sample
-extensions_minivm.conf.sample
-festival.conf.sample
-followme.conf.sample
-func_odbc.conf.sample
-gtalk.conf.sample
-h323.conf.sample
-http.conf.sample
-iaxprov.conf.sample
-jabber.conf.sample
-jingle.conf.sample
-mgcp.conf.sample
-minivm.conf.sample
-misdn.conf.sample
-muted.conf.sample
-osp.conf.sample
-oss.conf.sample
-phone.conf.sample
-phoneprov.conf.sample
-queuerules.conf.sample
-queues.conf.sample
-res_config_sqlite.conf.sample
-res_ldap.conf.sample
-res_odbc.conf.sample
-res_pgsql.conf.sample
-res_snmp.conf.sample
-sla.conf.sample
-unistim.conf.sample
-usbradio.conf.sample
-users.conf.sample
-vpb.conf.sample
-*/
+	return ($return) ? $conf : util_file_write("/etc/asterisk/agents.conf", $conf);
+}
+function ais_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/ais.conf", $conf);
+}
+function alarmreceiver_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/alarmreceiver.conf", $conf);
+}
+function alsa_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/alsa.conf", $conf);
+}
+function cdr_adaptive_odbc_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_adaptive_odbc.conf", $conf);
+}
+function cdr_manager_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_manager.conf", $conf);
+}
+function cdr_odbc_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_odbc.conf", $conf);
+}
+function cdr_pgsql_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_pgsql.conf", $conf);
+}
+function cdr_sqlite3_custom_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_sqlite3_custom.conf", $conf);
+}
+function cdr_tds_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_tds.conf", $conf);
+}
+function chan_ooh323_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/chan_ooh323.conf", $conf);
+}
+function cli_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cli.conf", $conf);
+}
+function cli_aliases_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cli_aliases.conf", $conf);
+}
+function cli_permissions_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/cli_permissions.conf", $conf);
+}
+function codecs_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/codecs.conf", $conf);
+}
+function console_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/console.conf", $conf);
+}
+function dbsep_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/dbsep.conf", $conf);
+}
+function dnsmgr_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/dnsmgr.conf", $conf);
+}
+function dsp_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/dsp.conf", $conf);
+}
+function dundi_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/dundi.conf", $conf);
+}
+function extconfig_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/extconfig.conf", $conf);
+}
+function extensions_minivm_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/extensions_minivm.conf", $conf);
+}
+function festival_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/festival.conf", $conf);
+}
+function followme_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/followme.conf", $conf);
+}
+function func_odbc_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/func_odbc.conf", $conf);
+}
+function gtalk_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/gtalk.conf", $conf);
+}
+function h323_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/h323.conf", $conf);
+}
+function http_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/http.conf", $conf);
+}
+function iaxprov_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/iaxprov.conf", $conf);
+}
+function jabber_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/jabber.conf", $conf);
+}
+function jingle_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/jingle.conf", $conf);
+}
+function mgcp_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/mgcp.conf", $conf);
+}
+function minivm_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/minivm.conf", $conf);
+}
+function misdn_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/misdn.conf", $conf);
+}
+function muted_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/muted.conf", $conf);
+}
+function osp_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/osp.conf", $conf);
+}
+function oss_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/oss.conf", $conf);
+}
+function phone_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/phone.conf", $conf);
+}
+function phoneprov_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/phoneprov.conf", $conf);
+}
+function queuerules_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/queuerules.conf", $conf);
+}
+function queues_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/queues.conf", $conf);
+}
+function res_config_sqlite_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/res_config_sqlite.conf", $conf);
+}
+function res_ldap_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/res_ldap.conf", $conf);
+}
+function res_odbc_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/res_odbc.conf", $conf);
+}
+function res_pgsql_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/res_pgsql.conf", $conf);
+}
+function res_snmp_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/res_snmp.conf", $conf);
+}
+function sla_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/sla.conf", $conf);
+}
+function unistim_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/unistim.conf", $conf);
+}
+function usbradio_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/usbradio.conf", $conf);
+}
+function users_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/users.conf", $conf);
+}
+function vpb_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/vpb.conf", $conf);
+}
 
 ?>
