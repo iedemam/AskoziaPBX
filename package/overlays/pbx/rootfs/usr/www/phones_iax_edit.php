@@ -131,6 +131,18 @@ d_start("phones_iax_edit.php");
 	d_spacer();
 
 
+	// Outgoing Caller ID
+	if ($form['outgoingcalleridmap']) {
+		d_header(gettext("Outgoing Caller ID"));
+		d_outgoing_callerid_map();
+	} else {
+		d_collapsible(gettext("Outgoing Caller ID"));
+		d_outgoing_callerid_map();
+		d_collapsible_end();
+	}
+	d_spacer();
+
+
 	// Codecs
 	d_collapsible(gettext("Codecs"));
 

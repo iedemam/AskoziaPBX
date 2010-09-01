@@ -418,6 +418,7 @@ function sip_verify_phone($post, $errors) {
 	v_notifications_editor(&$phone, &$post, &$errors);
 	v_voicemail_editor(&$phone, &$post, &$errors);
 	v_provider_access_selector(&$phone, &$post);
+	v_outgoing_callerid_map(&$phone, &$post, &$errors);
 	v_codecs(&$phone, &$post);
 	v_password(&$phone, &$post);
 	v_manualattributes(&$phone, &$post, &$errors);

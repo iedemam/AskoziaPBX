@@ -36,7 +36,8 @@ $listtags = explode(" ",
 	"key dnsserver route shellcmd cacert earlyshellcmd " .
 	"phone provider codec room dialpattern callgroup groupmember incomingextensionmap " .
 	"dahdi-port dahdi-portgroup redfone-gateway disk package loadzone bridge application application2 " .
-	"manager-user read-permission write-permission app-command manual-attribute manual-file fax"
+	"manager-user read-permission write-permission app-command manual-attribute manual-file fax " .
+	"outgoingcalleridmap"
 );
 
 /* xml array used in parsing configuration files

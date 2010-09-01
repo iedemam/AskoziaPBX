@@ -1358,4 +1358,36 @@ function d_incoming_fax_editor() {
 	</tr><?
 }
 
+function d_outgoing_callerid_map() {
+	global $form, $colspan;
+
+	$providers = pbx_get_providers();
+
+	$indexed_map = array();
+	if ($form['outgoingcalleridmap']) {
+		foreach ($form['outgoingcalleridmap'] as $map) {
+			$indexed_map[$map['provideruniqid']] = $map['cidstring'];
+		}
+	}
+
+	foreach ($providers as $p) {
+		?><tr>
+			<td width="20%" valign="top" class="vncell"><?=$p['name'];?></td>
+			<td width="80%" colspan="<?=$colspan?>" class="vtable">
+				<input name="outgoingcalleridmap_<?=$p['uniqid'];?>" type="text" class="formfld" id="outgoingcalleridmap_<?=$p['uniqid'];?>" size="40" value="<?=htmlspecialchars($indexed_map[$p['uniqid']]);?>">
+			</td>
+		</tr><?
+	}
+
+	?><tr>
+		<td width="20%" valign="top" class="vncellreq"><?=gettext("Help");?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable">
+			<span class="vexpl"><?=gettext("Outgoing Caller ID can be set here for each Provider. Leave blank to use Provider default. Use the following formatting:") .
+			"<br><em>" .
+			gettext("Your Name &lt;number&gt;") . "</em>";?></span>
+		</td>
+	</tr><?
+
+}
+
 ?>

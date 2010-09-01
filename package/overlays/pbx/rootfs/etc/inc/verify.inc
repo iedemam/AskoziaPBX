@@ -582,7 +582,11 @@ function v_provider_access_selector($element, $post) {
 }
 
 function v_strip($s) {
-	return strlen($s) ? $s : false;
+	if (is_array($s)) {
+		return count($s) ? $s : false;
+	} else {
+		return strlen($s) ? $s : false;
+	}
 }
 
 function v_codecs($element, $post) {
@@ -774,6 +778,30 @@ function v_applicationlogic($element, $post, $errors) {
 	}
 
 	$post['applicationlogic'] = $element['applicationlogic'] = base64_encode($code);
+}
+
+function v_outgoing_callerid_map($element, $post, $errors) {
+
+	$maps = array();
+	$keys = array_keys($post);
+	$i = 0;
+	foreach ($keys as $key) {
+		if ((strpos($key, "outgoingcalleridmap_") !== false && strlen($post[$key]))) {
+			$pieces = explode("_", $key);
+			$maps[$i]['provideruniqid'] = $pieces[1];
+			$maps[$i]['cidstring'] = $post[$key];
+			$i++;
+		}
+	}
+
+	foreach($maps as $map) {
+		if (!pbx_is_valid_callerid_string($map['cidstring'])) {
+			$provider = pbx_get_provider($map['provideruniqid']);
+			$errors[] = sprintf(gettext("The outgoing Caller ID specified for \"%s\" is invalid."), $provider['name']);
+		}
+	}
+
+	$element['outgoingcalleridmap'] = $post['outgoingcalleridmap'] = v_strip($maps);
 }
 
 ?>

@@ -114,6 +114,18 @@ d_start("phones_skinny_edit.php");
 	d_spacer();
 
 
+	// Outgoing Caller ID
+	if ($form['outgoingcalleridmap']) {
+		d_header(gettext("Outgoing Caller ID"));
+		d_outgoing_callerid_map();
+	} else {
+		d_collapsible(gettext("Outgoing Caller ID"));
+		d_outgoing_callerid_map();
+		d_collapsible_end();
+	}
+	d_spacer();
+
+
 	// Advanced Options
 	d_collapsible(gettext("Advanced Options"));
 	d_manualattributes_editor($form['manualattributes']);

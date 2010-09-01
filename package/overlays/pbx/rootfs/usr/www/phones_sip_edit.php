@@ -46,6 +46,7 @@ if ($_POST) {
 	unset($input_errors);
 
 	$phone = sip_verify_phone(&$_POST, &$input_errors);
+
 	if (!$input_errors) {
 		sip_save_phone($phone);
 		header("Location: accounts_phones.php");
@@ -112,6 +113,18 @@ d_start("phones_sip_edit.php");
 	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
 
 	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+	d_spacer();
+
+
+	// Outgoing Caller ID
+	if ($form['outgoingcalleridmap']) {
+		d_header(gettext("Outgoing Caller ID"));
+		d_outgoing_callerid_map();
+	} else {
+		d_collapsible(gettext("Outgoing Caller ID"));
+		d_outgoing_callerid_map();
+		d_collapsible_end();
+	}
 	d_spacer();
 
 
