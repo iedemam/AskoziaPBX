@@ -1,9 +1,9 @@
 \section{Appendix}
 \label{sec:appendix}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Developers Parameters}%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Developers Parameters}%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin {description}
 
 \item {\texttt{-{}-askozia-confpage=<string>}} \newline
@@ -20,7 +20,7 @@ Name of the authentication-realm of the AskoziaPBX.
 This parameter allows one to override the sipp executable which is used to execute the performance tests.
 It is recommended to use the supplied version because it provides a standardized test base.
 \newline Default: \texttt{./PERF\_TESTS/sipp} or, if not existing, the result of \texttt{which sipp}
-\newline E.g. \texttt{-{}-sipp-path=../sipp} or \texttt{-{}-sipp-path=/tmp/sipp}
+\newline Example: \texttt{-{}-sipp-path=../sipp} or \texttt{-{}-sipp-path=/tmp/sipp}
 
 \item {\texttt{-{}-two-party-user-file=<string>}} \newline
 For executing two-party tests with sipp, there has to be a so-called injection file.
@@ -29,21 +29,21 @@ It is created by the script and contains all needed information (and not more)
 for sipp. It is possible to change the filepath and -name of this file by specifying
 this parameter and may be absolute or relative.
 \newline Default: \texttt{./results/<testname>/Users\_two-party.csv}
-\newline E.g. \texttt{-{}-users-2way-file=../Users\_two-party.csv}
+\newline Example: \texttt{-{}-users-2way-file=../Users\_two-party.csv}
 \newline or \texttt{-{}-users-2way-file=/tmp/Users\_two-party.csv}
 
 \item {\texttt{-{}-participants-user-file=<string>}} \newline
 Please have a look at the parameter \texttt{-{}-users-2way-file}.
 This parameter is the same only for conference tests with fixed number of rooms.
 \newline Default: \texttt{./results/<testname>/Users\_conf\_room.csv}
-\newline E.g. \texttt{-{}-users-conf-room-file=../Users\_conf\_room.csv}
+\newline Example: \texttt{-{}-users-conf-room-file=../Users\_conf\_room.csv}
 \newline or \texttt{-{}-users-conf-room-file=/tmp/Users\_conf\_room.csv}
 
 \item {\texttt{-{}-room-user-file=<string>}} \newline
 Please have a look at the parameter \texttt{-{}-users-2way-file}.
 This parameter is the same only for conference tests with fixed number of calls.
 \newline Default: \texttt{./results/<testname>/Users\_conf\_call.csv}
-\newline E.g. \texttt{-{}-users-conf-call-file=../Users\_conf\_call.csv}
+\newline Example: \texttt{-{}-users-conf-call-file=../Users\_conf\_call.csv}
 \newline or \texttt{-{}-users-conf-call-file=/tmp/Users\_conf\_call.csv}
 
 \item {\texttt{-{}-reg-scen=<string>}} \newline
@@ -51,21 +51,21 @@ This parameter specifies the path to the register scenario used by sipp.
 The register scenario is needed for two-party tests only.
 For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Register.xml}
-\newline E.g. \texttt{-{}-reg-scen=../Register.xml} or \texttt{-{}-reg-scen=/tmp/Register.xml}
+\newline Example: \texttt{-{}-reg-scen=../Register.xml} or \texttt{-{}-reg-scen=/tmp/Register.xml}
 
 \item {\texttt{-{}-dereg-scen=<string>}} \newline
 This parameter specifies the path to the deregister scenario used by sipp.
 The deregister scenario is needed for two-party tests only.
 For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Deregister.xml}
-\newline E.g. \texttt{-{}-dereg-scen=../Deregister.xml} or \texttt{-{}-dereg-scen=/tmp/Deregister.xml}
+\newline Example: \texttt{-{}-dereg-scen=../Deregister.xml} or \texttt{-{}-dereg-scen=/tmp/Deregister.xml}
 
 \item {\texttt{-{}-acc-scen=<string>}} \newline
 This parameter specifies the path to the accept scenario used by sipp.
 The accept scenario is needed for two-party tests only.
 For more information, please have a look at chapter \ref{sec:two-party-test}.
 \newline Default: \texttt{./PERF\_TEST\_FILES/Accept.xml}
-\newline E.g. \texttt{-{}-acc-scen=../Accept.xml} or \texttt{-{}-acc-scen=/tmp/Accept.xml}
+\newline Example: \texttt{-{}-acc-scen=../Accept.xml} or \texttt{-{}-acc-scen=/tmp/Accept.xml}
 
 \item {\texttt{-{}-inv-scen=<string>}} \newline
 This parameter specifies the path to the invite scneario used by sipp.
@@ -73,7 +73,7 @@ The invite scenario is needed for every test type.
 For more information, please have a look at the description of the
 different testtypes (chapters \ref{sec:two-party-test}, \ref{sec:conf-rooms-test} and \ref{sec:conf-participants-test}).
 \newline Default: \texttt{./PERF\_TEST\_Files/Invite.xml}
-\newline E.g. \texttt{-{}-inv-scen=../Invite.xml} or \texttt{-{}-inv-scen=/tmp/Invite.xml}
+\newline Example: \texttt{-{}-inv-scen=../Invite.xml} or \texttt{-{}-inv-scen=/tmp/Invite.xml}
 
 \item {\texttt{-{}-sip-src-port=<number>}} \newline
 Port of the local computer (testcomputer) to communicate with Askozia.
@@ -81,7 +81,7 @@ It is used for User A in two-party tests and for all users in conference tests.
 During the tests, there was a softphone running in background for communication
 in the office. Because of this, sipp was not able to reserve the usual sip port 5060.
 \newline Default: \texttt{5061}
-\newline E.g. \texttt{-{}-sip-src-port=5061}
+\newline Example: \texttt{-{}-sip-src-port=5061}
 
 \item {\texttt{-{}-sip-dst-port=<number>}} \newline
 Port of the local computer (testcomputer) to communicate with Askozia,
@@ -90,7 +90,7 @@ but this time only for User B in two-party tests. The first sipp process
 so the second sipp process (User B) needs another one to talk to Askozia.
 This is necessary for two-party tests only.
 \newline Default: \texttt{5062}
-\newline E.g. \texttt{-{}-sip-dst-port=5062}
+\newline Example: \texttt{-{}-sip-dst-port=5062}
 
 \item {\texttt{-{}-rtp-src-port=<number>}} \newline
 Port of the local computer for establishing RTP streams between the local testcomputer
@@ -98,14 +98,14 @@ and AskoziaPBX. This one is used by User A of two-party tests and by all users o
 conference tests. Sipp was not able to use the standard port because of a
 softphone running on the testcomputer in background.
 \newline Default: \texttt{6020}
-\newline E.g. \texttt{-{}-rtp-src-port=6020}
+\newline Example: \texttt{-{}-rtp-src-port=6020}
 
 \item {\texttt{-{}-rtp-dst-port=<number>}} \newline
 Port of the local computer for establishing RTP streams between the local testcomputer
 and AskoziaPBX. This one is used by User B of two-party tests only, so it not needed
 for conference testing.
 \newline Default: \texttt{6030}
-\newline E.g. \texttt{-{}-rtp-dst-port=6030}
+\newline Example: \texttt{-{}-rtp-dst-port=6030}
 
 \item {\texttt{-{}-restore=<string>}} \newline
 After the test, the AskoziaPBX is strongly reconfigured. There are possibly hundreds
@@ -117,7 +117,7 @@ helps to reconfigure the box after the test. There are three possible values:
 	\item [factory-defaults] The AskoziaPBX is set to factory-defaults.
 \end{description}
 Default: \texttt{old-config}
-\newline E.g. \texttt{-{}-restore=none} or \texttt{-{}-restore=factory-defaults}
+\newline Example: \texttt{-{}-restore=none} or \texttt{-{}-restore=factory-defaults}
 
 \item {\texttt{-{}-gnuplot-exe=<string>}} \newline
 The path to the gnuplot executable for drawing graphs of the results at the end of the test.
@@ -125,113 +125,527 @@ Has to be installed (\texttt{which gnuplot} determines path) or specified if the
 should be drawed. If not installed and specified (undefined), there is no possibility to
 draw the graphs. The test can nevertheless be executed.
 \newline Default: result of \texttt{which gnuplot} or, if not existing, undefined
-\newline E.g. \texttt{-{}-gnuplot-exe=../gnuplot} or \texttt{-{}-gnuplot-exe=/tmp/gnuplot}
+\newline Example: \texttt{-{}-gnuplot-exe=../gnuplot} or \texttt{-{}-gnuplot-exe=/tmp/gnuplot}
 
-\item {\texttt{-{}-two-party-user-file=<string>}} \newline
-For executing two-party tests with sipp, there has to be a so-called injection file.
-This is a csv file which is used by sipp for generating multiple calls automaticly.
-It is created by the script and contains all needed information (and not more)
-for sipp. It is possible to change the filepath and -name of this file by specifying
-this parameter and may be absolute or relative.
-\newline Default: \texttt{./results/<testname>/Users\_two-party.csv}
-\newline E.g. \texttt{-{}-users-2way-file=../Users\_two-party.csv}
-\newline or \texttt{-{}-users-2way-file=/tmp/Users\_two-party.csv}
-
-\item {\texttt{-{}-participants-user-file=<string>}} \newline
-Please have a look at the parameter \texttt{-{}-users-2way-file}.
-This parameter is the same only for conference tests with fixed number of rooms.
-\newline Default: \texttt{./results/<testname>/Users\_conf\_room.csv}
-\newline E.g. \texttt{-{}-users-conf-room-file=../Users\_conf\_room.csv}
-\newline or \texttt{-{}-users-conf-room-file=/tmp/Users\_conf\_room.csv}
-
-\item {\texttt{-{}-room-user-file=<string>}} \newline
-Please have a look at the parameter \texttt{-{}-users-2way-file}.
-This parameter is the same only for conference tests with fixed number of calls.
-\newline Default: \texttt{./results/<testname>/Users\_conf\_call.csv}
-\newline E.g. \texttt{-{}-users-conf-call-file=../Users\_conf\_call.csv}
-\newline or \texttt{-{}-users-conf-call-file=/tmp/Users\_conf\_call.csv}
-
-\item {\texttt{-{}-reg-scen=<string>}} \newline
-This parameter specifies the path to the register scenario used by sipp.
-The register scenario is needed for two-party tests only.
-For more information, please have a look at chapter \ref{sec:two-party-test}.
-\newline Default: \texttt{./PERF\_TEST\_FILES/Register.xml}
-\newline E.g. \texttt{-{}-reg-scen=../Register.xml} or \texttt{-{}-reg-scen=/tmp/Register.xml}
-
-\item {\texttt{-{}-dereg-scen=<string>}} \newline
-This parameter specifies the path to the deregister scenario used by sipp.
-The deregister scenario is needed for two-party tests only.
-For more information, please have a look at chapter \ref{sec:two-party-test}.
-\newline Default: \texttt{./PERF\_TEST\_FILES/Deregister.xml}
-\newline E.g. \texttt{-{}-dereg-scen=../Deregister.xml} or \texttt{-{}-dereg-scen=/tmp/Deregister.xml}
-
-\item {\texttt{-{}-acc-scen=<string>}} \newline
-This parameter specifies the path to the accept scenario used by sipp.
-The accept scenario is needed for two-party tests only.
-For more information, please have a look at chapter \ref{sec:two-party-test}.
-\newline Default: \texttt{./PERF\_TEST\_FILES/Accept.xml}
-\newline E.g. \texttt{-{}-acc-scen=../Accept.xml} or \texttt{-{}-acc-scen=/tmp/Accept.xml}
-
-\item {\texttt{-{}-inv-scen=<string>}} \newline
-This parameter specifies the path to the invite scneario used by sipp.
-The invite scenario is needed for every test type.
-For more information, please have a look at the description of the
-different testtypes (chapters \ref{sec:two-party-test}, \ref{sec:conf-rooms-test} and \ref{sec:conf-participants-test}).
-\newline Default: \texttt{./PERF\_TEST\_Files/Invite.xml}
-\newline E.g. \texttt{-{}-inv-scen=../Invite.xml} or \texttt{-{}-inv-scen=/tmp/Invite.xml}
-
-\item {\texttt{-{}-sip-src-port=<number>}} \newline
-Port of the local computer (testcomputer) to communicate with Askozia.
-It is used for User A in two-party tests and for all users in conference tests.
-During the tests, there was a softphone running in background for communication
-in the office. Because of this, sipp was not able to reserve the usual sip port 5060.
-\newline Default: \texttt{5061}
-\newline E.g. \texttt{-{}-sip-src-port=5061}
-
-\item {\texttt{-{}-sip-dst-port=<number>}} \newline
-Port of the local computer (testcomputer) to communicate with Askozia,
-but this time only for User B in two-party tests. The first sipp process
-(User A) blocks one port for communication with AskoziaPBX,
-so the second sipp process (User B) needs another one to talk to Askozia.
-This is necessary for two-party tests only.
-\newline Default: \texttt{5062}
-\newline E.g. \texttt{-{}-sip-dst-port=5062}
-
-\item {\texttt{-{}-rtp-src-port=<number>}} \newline
-Port of the local computer for establishing RTP streams between the local testcomputer
-and AskoziaPBX. This one is used by User A of two-party tests and by all users of
-conference tests. Sipp was not able to use the standard port because of a
-softphone running on the testcomputer in background.
-\newline Default: \texttt{6020}
-\newline E.g. \texttt{-{}-rtp-src-port=6020}
-
-\item {\texttt{-{}-rtp-dst-port=<number>}} \newline
-Port of the local computer for establishing RTP streams between the local testcomputer
-and AskoziaPBX. This one is used by User B of two-party tests only, so it not needed
-for conference testing.
-\newline Default: \texttt{6030}
-\newline E.g. \texttt{-{}-rtp-dst-port=6030}
-
-\item {\texttt{-{}-restore=<string>}} \newline
-After the test, the AskoziaPBX is strongly reconfigured. There are possibly hundreds
-of testusers and some new conference rooms. To avoid cleaning up by hand, this parameter
-helps to reconfigure the box after the test. There are three possible values:
-	\begin{description}
-	\item [none] The AskoziaPBX is not reconfigured.
-	\item [old-config] The AskoziaPBX is restored with the config existing before the test.
-	\item [factory-defaults] The AskoziaPBX is set to factory-defaults.
-	\end{description}
-Default: \texttt{old-config}
-\newline E.g. \texttt{-{}-restore=none} or \texttt{-{}-restore=factory-defaults}
 \end{description}
 
-\subsection{XML Scenarios}
-\subsubsection{REGISTER Scenario}
-\subsubsection{De-REGISTER Scenario}
-\subsubsection{INVITE Scenario}
-\subsubsection{ACCEPT Scenario}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{XML Scenarios}%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Example Configuration File}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{REGISTER Scenario}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[breaklines=true,label=code:appendix-register,caption={REGISTER scenario} ]
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scenario name="Registration of Testuser '[field2]'">
 
-\subsection{SIPP Manpage}
+<!-- REGISTER-VERSUCH 1 - ohne Authentication -->
+<send retrans="500">
+<![CDATA[ REGISTER sip:[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+To: "[field2]" <sip:[field2]@[remote_ip]>
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+Call-ID: [call_id]
+CSeq: [cseq] REGISTER
+Contact: <sip:[field2]@[local_ip]:[local_port]>
+Expires: 3600
+Content-Length: 0
+]]>
+</send>
+
+<!-- WAIT FOR "401 UNAUTHORIZED" -->
+<recv response="100" optional="true" />
+<recv response="401" auth="true" />
+
+<!-- REGISTER-VERSUCH 2 - mit Authentication -->
+<send>
+<![CDATA[ REGISTER sip:[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+To: "[field2]" <sip:[field2]@[remote_ip]>
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+Call-ID: [call_id]
+CSeq: [cseq] REGISTER
+Contact: <sip:[field2]@[local_ip]:[local_port]>
+Expires: 3600
+[field3]
+Content-Length: 0
+]]>
+</send>
+
+<!-- WAIT FOR "200 OK" -->
+<recv response="200" />
+
+<!-- <pause milliseconds="70000" /> -->
+</scenario>
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{De-REGISTER Scenario}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[breaklines=true,label=code:appendix-deregister,caption={DEREGISTER scenario} ]
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scenario name="Registration of Testuser [field2]">
+
+<!-- REGISTER-VERSUCH 1 - ohne Authentication -->
+<send retrans="500">
+<![CDATA[ REGISTER sip:[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+To: "[field2]" <sip:[field2]@[remote_ip]>
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+Call-ID: [call_id]
+CSeq: [cseq] REGISTER
+Contact: <sip:[field2]@[local_ip]:[local_port]>;expires=0
+Content-Length: 0
+]]>
+</send>
+
+<!-- WAIT FOR "401 UNAUTHORIZED" -->
+<recv response="401" auth="true" />
+
+<!-- REGISTER-VERSUCH 2 - mit Authentication -->
+<send>
+<![CDATA[ REGISTER sip:[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+To: "[field2]" <sip:[field2]@[remote_ip]>
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+Call-ID: [call_id]
+CSeq: [cseq] REGISTER
+Contact: <sip:[field2]@[local_ip]:[local_port]>;expires=0
+[field3]
+Content-Length: 0
+]]>
+</send>
+
+<!-- WAIT FOR "200 OK" -->
+<recv response="200" />
+
+<!-- <pause milliseconds="5000" /> -->
+</scenario>
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{INVITE Scenario}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[breaklines=true,label=code:appendix-invite,caption={INVITE scenario} ]
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scenario name="Try to get access to the conference-room of askozia">
+
+<!-- SEND INVITATION -->
+<send>
+<![CDATA[ INVITE sip:[field2]@[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+To: "[field2]" <sip:[field2]@[remote_ip]>
+From: "[field0]" <sip:[field0]@[remote_ip]>;tag=[call_number]
+Call-ID: [call_id]
+CSeq: [cseq] INVITE
+Contact: <sip:[field0]@[local_ip]:[local_port]>
+Content-Type: application/sdp
+Content-Length: [len]
+
+v=0
+o=TK-Labor  53655765 2353687637 IN IP[local_ip_type] [local_ip]:[local_port]
+s=-
+c=IN IP[media_ip_type] [media_ip]
+t=0 0
+m=audio [auto_media_port] RTP/AVP 8
+a=rtpmap:8 PCMA/8000
+]]>
+</send>
+
+<!-- WAIT FOR "401 UNAUTHORIZED" -->
+<recv response="401" rtd="true" auth="true" />
+
+<!-- SEND INVITATION AGAIN -->
+<send>
+<![CDATA[ INVITE sip:[field2]@[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+To: "[field2]" <sip:[field2]@[remote_ip]>
+From: "[field0]" <sip:[field0]@[remote_ip]>;tag=[call_number]
+Call-ID: [call_id]
+CSeq: [cseq] INVITE
+Contact: <sip:[field0]@[local_ip]:[local_port]>
+Content-Type: application/sdp
+[field1]
+Allow: INVITE,ACK,BYE,CANCEL,OPTIONS,PRACK,REFER,NOTIFY,SUBSCRIBE,INFO,MESSAGE
+Supported: replaces,norefersub,100rel
+Content-Length: [len]
+
+v=0
+o=TK-Labor 53655765 2353687637 IN IP[local_ip_type] [local_ip]:[local_port]
+s=-
+c=IN IP[media_ip_type] [media_ip]
+t=0 0
+m=audio [auto_media_port] RTP/AVP 8 
+a=rtpmap:8 PCMA/8000
+]]>
+</send>
+
+<!-- WAIT FOR RESPONSES -->
+<recv response="100" optional="true" />
+<recv response="180" optional="true" />
+<recv response="200" />
+
+<!-- SEND ACK -->
+<send>
+<![CDATA[ ACK sip:[field2]@[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip];rport;branch=[branch]
+From: "[field0]" <sip:[field0]@[remote_ip]>;tag=[call_number]
+To: "[field2]" <sip:[field2]@[remote_ip]>[peer_tag_param]
+Call-ID: [call_id]
+CSeq: [cseq] ACK
+Content-Length: 0 
+]]>
+</send>
+
+<!-- PLAY PCAP AUDIO FILE -->
+<nop> <action>
+<exec play_pcap_audio="PERF_TEST_FILES/g711a.pcap" />  
+</action> </nop>
+
+<pause milliseconds="10000"/>
+
+<!-- TERMINATE CALL -->
+<send retrans="500">
+<![CDATA[ BYE sip:[field2]@[remote_ip] SIP/2.0
+Via: SIP/2.0/[transport] [local_ip]:[local_port];rport;branch=[branch]
+Max-Forwards: 70
+From: "[field0]" <sip:[field0]@[remote_ip]>;tag=[call_number]
+To: "[field2]" <sip:[field2]@[remote_ip]>[peer_tag_param]
+Call-ID: [call_id]
+Cseq: [cseq] BYE
+Subject: Performance Test
+Content-Length: 0 
+]]>
+</send>
+
+<!-- WAIT FOR "200 OK" -->
+<recv response="200" />
+
+</scenario>
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{ACCEPT Scenario}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[breaklines=true,label=code:appendix-accept,caption={ACCEPT scenario} ]
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scenario name="User B waits for an invitation from User A">
+
+<!-- WAIT FOR "INVITE" -->
+<recv request="INVITE" rtd="true" auth="true" />
+
+<!-- SEND "100 TRYING" -->
+<send>
+<![CDATA[
+SIP/2.0 100 Trying
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+To: "[field0]" <sip:[field0]@[remote_ip]>
+Call-ID: [call_id]
+CSeq: [cseq] INVITE
+Contact: <sip:[field2]@[local_ip]:[local_port]>
+Content-Length: [len]
+]]>
+</send>
+
+<!-- SEND "180 RINGING" -->
+<send>
+<![CDATA[
+SIP/2.0 180 Ringing
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+To: "[field0]" <sip:[field0]@[remote_ip]>
+Call-ID: [call_id]
+CSeq: [cseq] INVITE 
+Contact: <sip:[field2]@[local_ip]:[local_port]>
+Content-Length: [len]
+]]>
+</send>
+
+
+<!-- SEND "200 OK" -->
+<send retrans="500">
+<![CDATA[
+SIP/2.0 200 OK
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+To: "[field0]" <sip:[field0]@[remote_ip]>
+Call-ID: [call_id]
+CSeq: [cseq] INVITE
+Contact: <sip:[field2]@[local_ip]:[local_port]>
+Content-Length: [len]
+Content-Type: application/sdp
+
+v=0
+o=TK-Labor 53655765 2353687637 IN IP[local_ip_type] [local_ip]:[local_port]
+s=-
+c=IN IP[media_ip_type] [media_ip]
+t=0 0
+m=audio [auto_media_port] RTP/AVP 8 0 3
+a=rtpmap:8 PCMA/8000\r\n
+a=rtpmap:0 PCMU/8000
+a=rtpmap:3 GSM/8000
+]]>
+</send>
+
+<!-- RECEIVE "ACK" -->
+<recv request="ACK" rtd="true" crlf="true"/>
+
+<!-- GET RTP STREAM -->
+<!-- PLAY PCAP AUDIO FILE -->
+<nop> <action>
+<exec play_pcap_audio="PERF_TEST_FILES/g711a.pcap"/> 
+</action> </nop>
+
+<!-- RECEIVE "BYE" -->
+<recv request="BYE" />
+
+<!-- SEND "200 OK" -->
+<send>
+<![CDATA[
+SIP/2.0 200 OK
+Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+Max-Forwards: 70
+From: "[field2]" <sip:[field2]@[remote_ip]>;tag=[call_number]
+To: "[field0]" <sip:[field0]@[remote_ip]>[peer_tag_param]
+Call-ID: [call_id]
+CSeq: [cseq] BYE
+Contact: <sip:[field2]@[local_ip]:[local_port]>
+Content-Length: [len]
+]]>
+</send>
+</scenario>
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example: Configuration File}%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[breaklines=true,label=code:appendix-configfile,caption={Configuration file} ]
+<?xml version="1.0"?>
+<askoziapbx>
+<version>2.1</version>
+<lastchange/>
+<system>
+<hostname>AskoziaPBX</hostname>
+<domain>local</domain>
+<dnsserver>192.168.1.1</dnsserver>
+<username>admin</username>
+<password>askozia</password>
+<time-update-interval>4-hours</time-update-interval>
+<timeservers>pool.ntp.org</timeservers>
+<webgui>
+<protocol>http</protocol>
+</webgui>
+</system>
+<interfaces>
+<lan>
+<dhcp/>
+<if>eth0</if>
+<ipaddr>192.168.1.2</ipaddr>
+<subnet>24</subnet>
+<gateway>192.168.1.1</gateway>
+</lan>
+<dahdi-port>
+<location/>
+<card>WARP FXS driver</card>
+<technology>analog</technology>
+<basechannel>1</basechannel>
+<type>fxs</type>
+<uniqid>DAHDIPORT-ANALOG-c4ca4238a0b923820dcc509a6f75849b</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 1</name>
+<startsignaling>ks</startsignaling>
+</dahdi-port>
+<dahdi-port>
+<location/>
+<card>WARP FXS driver</card>
+<technology>analog</technology>
+<basechannel>2</basechannel>
+<type>fxs</type>
+<uniqid>DAHDIPORT-ANALOG-c81e728d9d4c2f636f067f89cc14862c</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 2</name>
+<startsignaling>ks</startsignaling>
+</dahdi-port>
+<dahdi-port>
+<location/>
+<card>WARP FXS driver</card>
+<technology>analog</technology>
+<basechannel>3</basechannel>
+<type>fxs</type>
+<uniqid>DAHDIPORT-ANALOG-eccbc87e4b5ce2fe28308fd9f2a7baf3</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 3</name>
+<startsignaling>ks</startsignaling>
+</dahdi-port>
+<dahdi-port>
+<location/>
+<card>WARP FXS driver</card>
+<technology>analog</technology>
+<basechannel>4</basechannel>
+<type>fxs</type>
+<uniqid>DAHDIPORT-ANALOG-a87ff679a2f3e71d9181a67b7542122c</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 4</name>
+<startsignaling>ks</startsignaling>
+</dahdi-port>
+<dahdi-port>
+<location/>
+<card>WARP FXS driver</card>
+<technology>analog</technology>
+<basechannel>5</basechannel>
+<type>fxs</type>
+<uniqid>DAHDIPORT-ANALOG-e4da3b7fbbce2345d7772b0674a318d5</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 5</name>
+<startsignaling>ks</startsignaling>
+</dahdi-port>
+<dahdi-port>
+<location>Module B</location>
+<card>PIKA WARP BRI</card>
+<technology>isdn</technology>
+<span>2</span>
+<basechannel>6</basechannel>
+<totalchannels>3</totalchannels>
+<type>te</type>
+<uniqid>DAHDIPORT-ISDN-50b111bc086bb0827d04c8373faea562</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 2</name>
+<signaling>bri_cpe_ptmp</signaling>
+<unused/>
+</dahdi-port>
+<dahdi-port>
+<location>Module B</location>
+<card>PIKA WARP BRI</card>
+<technology>isdn</technology>
+<span>3</span>
+<basechannel>9</basechannel>
+<totalchannels>3</totalchannels>
+<type>te</type>
+<uniqid>DAHDIPORT-ISDN-f5dc22bc9041245137d8b2be75cb5d85</uniqid>
+<echo-taps>128</echo-taps>
+<rxgain>0</rxgain>
+<txgain>0</txgain>
+<name>Port 3</name>
+<signaling>bri_cpe_ptmp</signaling>
+<unused/>
+</dahdi-port>
+<dahdi-portgroup>
+<name>All Provider Ports</name>
+<number>62</number>
+<technology>isdn</technology>
+<type>te</type>
+<uniqid>DAHDIPORTGROUP-ISDN-ALLPROVIDERS</uniqid>
+<groupmember>DAHDIPORT-ISDN-50b111bc086bb0827d04c8373faea562</groupmember>
+<groupmember>DAHDIPORT-ISDN-f5dc22bc9041245137d8b2be75cb5d85</groupmember>
+</dahdi-portgroup>
+</interfaces>
+<conferencing>
+<room>
+<number>2663</number>
+<name>Default Conference</name>
+<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6</uniqid>
+</room>
+</conferencing>
+<dialplan>
+<application>
+<name>Read IP</name>
+<extension>000047</extension>
+<uniqid>DIALPLAN-APPLICATION-19518258630000000ac1dc5</uniqid>
+<type>plaintext</type>
+<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxTZXQoSVBPVVRQVVQ9JHtTSEVMTCgvZXRjL3NjcmlwdHMvcGFyc2VpcC5zaCl9KQo0LE5vT3AoSVBPVVRQVVQ6ICR7SVBPVVRQVVR9KQo1LFBsYXliYWNrKGJlZXApCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDEpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDIpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDMpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDQpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sUGxheWJhY2soc2lsZW5jZS8xKQpuLEdvdG8oNSk=</applicationlogic>
+</application>
+<application>
+<name>Echo</name>
+<extension>00003246</extension>
+<uniqid>DIALPLAN-APPLICATION-7674931110000000ac21b1</uniqid>
+<type>plaintext</type>
+<applicationlogic>MSxBbnN3ZXIoKQoyLEVjaG8oKQozLEhhbmd1cCgp</applicationlogic>
+</application>
+<application>
+<name>Milliwatt</name>
+<extension>000064554</extension>
+<uniqid>DIALPLAN-APPLICATION-13940402910000000ac2593</uniqid>
+<type>plaintext</type>
+<applicationlogic>MSxBbnN3ZXIoKQoyLE1pbGxpd2F0dCgpCjMsSGFuZ3VwKCk=</applicationlogic>
+</application>
+<application>
+<name>WakeMe</name>
+<extension>00009253</extension>
+<uniqid>DIALPLAN-APPLICATION-14329880820000000ac297b</uniqid>
+<type>plaintext</type>
+<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxXYWtlTWUoKQo0LEhhbmd1cCgp</applicationlogic>
+</application>
+</dialplan>
+<analog>
+<phone>
+<extension>101</extension>
+<callerid>Default Extension</callerid>
+<language>en-us</language>
+<ringlength>indefinitely</ringlength>
+<publicaccess/>
+<uniqid>ANALOG-PHONE-20698032090000001999170</uniqid>
+<port>DAHDIPORT-ANALOG-c4ca4238a0b923820dcc509a6f75849b</port>
+</phone>
+<phone>
+<extension>102</extension>
+<callerid>Default Extension</callerid>
+<language>en-us</language>
+<ringlength>indefinitely</ringlength>
+<publicaccess/>
+<uniqid>ANALOG-PHONE-19455483990000001a40b5f</uniqid>
+<port>DAHDIPORT-ANALOG-c81e728d9d4c2f636f067f89cc14862c</port>
+</phone>
+<phone>
+<extension>103</extension>
+<callerid>Default Extension</callerid>
+<language>en-us</language>
+<ringlength>indefinitely</ringlength>
+<publicaccess/>
+<uniqid>ANALOG-PHONE-15354168660000001ae0612</uniqid>
+<port>DAHDIPORT-ANALOG-eccbc87e4b5ce2fe28308fd9f2a7baf3</port>
+</phone>
+<phone>
+<extension>104</extension>
+<callerid>Default Extension</callerid>
+<language>en-us</language>
+<ringlength>indefinitely</ringlength>
+<publicaccess/>
+<uniqid>ANALOG-PHONE-9665264350000001b92fba</uniqid>
+<port>DAHDIPORT-ANALOG-a87ff679a2f3e71d9181a67b7542122c</port>
+</phone>
+<phone>
+<extension>105</extension>
+<callerid>Default Extension</callerid>
+<language>en-us</language>
+<ringlength>indefinitely</ringlength>
+<publicaccess/>
+<uniqid>ANALOG-PHONE-2739915790000001c478a3</uniqid>
+<port>DAHDIPORT-ANALOG-e4da3b7fbbce2345d7772b0674a318d5</port>
+</phone>
+</analog>
+</askoziapbx>
+\end{lstlisting}
 
