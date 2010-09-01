@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -406,6 +406,10 @@ msgstr "Ред номер %s от Допълнителни Настройки е
 
 msgid "PHP parsing error"
 msgstr "PHP грешка"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "Изходящата схема на избиране \"%s\" е неправилна. %s"
 
 msgid "Subject"
 msgstr "Тема"
@@ -928,6 +932,14 @@ msgstr "Не са достъпни нови пакети."
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Помощ"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -1039,9 +1051,6 @@ msgstr "Пакети"
 
 msgid "Status"
 msgstr "Статус"
-
-msgid "Help"
-msgstr "Помощ"
 
 msgid "add a new item"
 msgstr "добавяне на нов артикул"
@@ -2595,6 +2604,10 @@ msgstr "Вътрешен Номер използван за избиране н�
 
 msgid "Call Notifications & Voicemail"
 msgstr "Пропуснати Обаждания & Гласова Поща"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Outgoing Calls Only"
 
 msgid "Advanced Options"
 msgstr "Допълнителни Опции"

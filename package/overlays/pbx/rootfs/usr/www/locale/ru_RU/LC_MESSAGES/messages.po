@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -391,6 +391,10 @@ msgstr "Строка параметров %s является недействи
 
 msgid "PHP parsing error"
 msgstr "Ошибка разбора PHP"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "Исходящий номер \"%s\" неверен. %s"
 
 msgid "Subject"
 msgstr "Тема"
@@ -914,6 +918,14 @@ msgstr "Нет новых пакетов."
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Помощь"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "План набора"
 
@@ -1024,9 +1036,6 @@ msgstr "Пакеты"
 
 msgid "Status"
 msgstr "Статус"
-
-msgid "Help"
-msgstr "Помощь"
 
 msgid "add a new item"
 msgstr "добавить новый элемент"
@@ -2569,6 +2578,10 @@ msgstr "Номер, используемый для набора этого те
 
 msgid "Call Notifications & Voicemail"
 msgstr "Уведомления и голосовая почта"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Только исходящие вызовы"
 
 msgid "Advanced Options"
 msgstr "Дополнительно"

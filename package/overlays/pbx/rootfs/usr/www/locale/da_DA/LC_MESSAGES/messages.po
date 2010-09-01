@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -401,6 +401,10 @@ msgstr "Manuel attribut linie nummer %s er ugyldig."
 
 msgid "PHP parsing error"
 msgstr "PHP parsing fejl"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "Det udgående opkaldsmønster \"%s\" er ugyldig. %s"
 
 msgid "Subject"
 msgstr "Emne"
@@ -913,6 +917,14 @@ msgstr "Ingen nye pakker tilgængelig"
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Hjælp"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "dialplan"
 
@@ -1024,9 +1036,6 @@ msgstr "Pakker"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "Help"
-msgstr "Hjælp"
 
 msgid "add a new item"
 msgstr "tilføj et nyt element"
@@ -2579,6 +2588,10 @@ msgstr "Den interne nummer for at ringe til denne telefon."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Opkalds notifikationer & telefonsvare"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Kun udgående opkald"
 
 msgid "Advanced Options"
 msgstr "Avancerede indstillinger"

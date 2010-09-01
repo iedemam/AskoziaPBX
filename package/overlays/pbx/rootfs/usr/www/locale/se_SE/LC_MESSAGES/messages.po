@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -377,6 +377,10 @@ msgid "Manual Attribute line number %s is invalid."
 msgstr ""
 
 msgid "PHP parsing error"
+msgstr ""
+
+#, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
 msgstr ""
 
 msgid "Subject"
@@ -823,6 +827,14 @@ msgstr ""
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr ""
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr ""
 
@@ -932,9 +944,6 @@ msgid "Packages"
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Help"
 msgstr ""
 
 msgid "add a new item"
@@ -2381,6 +2390,9 @@ msgid "The number used to dial this phone."
 msgstr ""
 
 msgid "Call Notifications & Voicemail"
+msgstr ""
+
+msgid "Outgoing Caller ID"
 msgstr ""
 
 msgid "Advanced Options"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -402,6 +402,10 @@ msgid "Manual Attribute line number %s is invalid."
 msgstr ""
 
 msgid "PHP parsing error"
+msgstr ""
+
+#, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
 msgstr ""
 
 msgid "Subject"
@@ -909,6 +913,14 @@ msgstr ""
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Nápověda"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr ""
 
@@ -1024,9 +1036,6 @@ msgstr "Balíčky"
 
 msgid "Status"
 msgstr "Stav"
-
-msgid "Help"
-msgstr "Nápověda"
 
 msgid "add a new item"
 msgstr "přidat nový záznam"
@@ -2561,6 +2570,10 @@ msgstr "Opravdu chcete deaktivovat tento telefonní účet?"
 
 msgid "Call Notifications & Voicemail"
 msgstr ""
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Pouze odchozí hovory"
 
 #, fuzzy
 msgid "Advanced Options"

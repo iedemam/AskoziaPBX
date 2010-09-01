@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -401,6 +401,10 @@ msgstr "L'attributo personalizzato alla riga %s non è valido."
 
 msgid "PHP parsing error"
 msgstr "Errore di analisi sintattica nel codice PHP"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "Lo schema di selezione per le chiamate uscenti \"%s\" non è valida. %s"
 
 msgid "Subject"
 msgstr "Oggetto"
@@ -935,6 +939,14 @@ msgstr "Nessun nuovo pacchetto disponibile."
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Aiuto"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Piano di numerazione"
 
@@ -1046,9 +1058,6 @@ msgstr "Pacchetti"
 
 msgid "Status"
 msgstr "Stato"
-
-msgid "Help"
-msgstr "Aiuto"
 
 msgid "add a new item"
 msgstr "aggiungi una nuova voce"
@@ -2637,6 +2646,10 @@ msgstr "Numero usato per chiamare questo telefono."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Notifiche di Chiamata & casella Vocale"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Solo Chiamate Uscenti"
 
 msgid "Advanced Options"
 msgstr "Opzioni Avanzate"

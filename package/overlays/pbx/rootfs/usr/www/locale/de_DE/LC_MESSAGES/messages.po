@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andreas Jud <save@webflash.ch>\n"
 "Language-Team: \n"
@@ -397,6 +397,10 @@ msgstr "Manuelle Attribut Zeillennummer %s ist ungültig."
 
 msgid "PHP parsing error"
 msgstr "PHP parsing error"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "Das ausgehnde Wähl-Muster \"%s\" ist ungültig. %s"
 
 msgid "Subject"
 msgstr "Betreff"
@@ -920,6 +924,14 @@ msgstr "Keine neuen Pakete verfügbar."
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Hilfe"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Dialplan"
 
@@ -1031,9 +1043,6 @@ msgstr "Pakete"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "Help"
-msgstr "Hilfe"
 
 msgid "add a new item"
 msgstr "Element hinzufügen"
@@ -2621,6 +2630,9 @@ msgstr "Die interne Nebenstellennummer für dieses Telefon."
 
 msgid "Call Notifications & Voicemail"
 msgstr ""
+
+msgid "Outgoing Caller ID"
+msgstr "gehende Caller-ID"
 
 msgid "Advanced Options"
 msgstr "Erweiterte Einstellungen"
@@ -4366,9 +4378,6 @@ msgstr "ERR Ungültige Konfiguration.\n"
 
 #~ msgid "Incoming Caller ID Overrides"
 #~ msgstr "Einkommende Caller ID überschreiben"
-
-#~ msgid "Outgoing Caller ID"
-#~ msgstr "gehende Caller-ID"
 
 #~ msgid "There are currently no providers defined."
 #~ msgstr "Derzeit sind keine Provider angelegt."

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -415,6 +415,10 @@ msgstr ""
 
 msgid "PHP parsing error"
 msgstr ""
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "Soitto-kaava \"%s\" on kelvoton. %s"
 
 msgid "Subject"
 msgstr "Aihe"
@@ -943,6 +947,14 @@ msgstr "Uusia paketteja ei ole saatavilla."
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Apua"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Soittosuunnitelma"
 
@@ -1058,9 +1070,6 @@ msgstr "Paketit"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "Help"
-msgstr "Apua"
 
 msgid "add a new item"
 msgstr "lisää uusi"
@@ -2664,6 +2673,10 @@ msgstr "Sisäinen jatke käytetty tämän puhelimen tavoittamiseen."
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "Paikka"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Vain Ulosmeneviä Puheluita"
 
 #, fuzzy
 msgid "Advanced Options"

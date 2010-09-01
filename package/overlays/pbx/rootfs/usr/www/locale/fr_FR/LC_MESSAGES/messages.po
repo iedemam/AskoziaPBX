@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -405,6 +405,10 @@ msgstr "Le numéro de ligne attribué manuellement %s est invalide."
 
 msgid "PHP parsing error"
 msgstr "PHP erreur d'analyse"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "L'extension de sortie d'appel \"%s\" est non valide. %s"
 
 msgid "Subject"
 msgstr "Sujet"
@@ -923,6 +927,14 @@ msgstr "Aucun nouveau paquet(s) de disponible."
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "Aide"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "Plan de numérotation"
 
@@ -1034,9 +1046,6 @@ msgstr "Paquets"
 
 msgid "Status"
 msgstr "Etats"
-
-msgid "Help"
-msgstr "Aide"
 
 msgid "add a new item"
 msgstr "Ajouter un objet"
@@ -2608,6 +2617,10 @@ msgstr "Extension interne utilisée pour contacter ce téléphone."
 
 msgid "Call Notifications & Voicemail"
 msgstr "Notifications d'appels et de messagerie"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "Appels sortants seulement"
 
 msgid "Advanced Options"
 msgstr "Paramètres avancés"

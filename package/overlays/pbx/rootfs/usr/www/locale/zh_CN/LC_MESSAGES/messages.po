@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -412,6 +412,10 @@ msgstr ""
 
 msgid "PHP parsing error"
 msgstr ""
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "无效的拨号\"%s\"模式。%s"
 
 #, fuzzy
 msgid "Subject"
@@ -927,6 +931,14 @@ msgstr ""
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr ""
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "拨号计划"
 
@@ -1042,9 +1054,6 @@ msgstr "软件包"
 
 msgid "Status"
 msgstr "状态"
-
-msgid "Help"
-msgstr ""
 
 msgid "add a new item"
 msgstr "添加一个新项目"
@@ -2605,6 +2614,10 @@ msgstr "这个内部分机用来拨打这个电话。"
 #, fuzzy
 msgid "Call Notifications & Voicemail"
 msgstr "位置"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "呼出的Caller ID"
 
 #, fuzzy
 msgid "Advanced Options"

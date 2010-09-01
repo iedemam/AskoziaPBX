@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-16 16:53+0200\n"
+"POT-Creation-Date: 2010-09-01 17:25+0200\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -399,6 +399,10 @@ msgstr "手動で作成した属性の行番号 %s は正しく有りません"
 
 msgid "PHP parsing error"
 msgstr "PHPのパーシングエラー"
+
+#, fuzzy, php-format
+msgid "The outgoing Caller ID specified for \"%s\" is invalid."
+msgstr "この発信用ダイヤルパターン\"%s\"は無効です。%s"
 
 msgid "Subject"
 msgstr "件名"
@@ -924,6 +928,14 @@ msgstr "新しいパッケージは有りません"
 msgid "Send all incoming faxes here."
 msgstr ""
 
+msgid "Help"
+msgstr "ヘルプ"
+
+msgid ""
+"Outgoing Caller ID can be set here for each Provider. Leave blank to use "
+"Provider default. Use the following formatting:"
+msgstr ""
+
 msgid "Dialplan"
 msgstr "ダイヤルプラン"
 
@@ -1034,9 +1046,6 @@ msgstr "パッケージ"
 
 msgid "Status"
 msgstr "ステータス"
-
-msgid "Help"
-msgstr "ヘルプ"
 
 msgid "add a new item"
 msgstr "新しいアイテムを追加する"
@@ -2564,6 +2573,10 @@ msgstr "その番号は、この電話にダイヤルする為に使用されて
 
 msgid "Call Notifications & Voicemail"
 msgstr "コール通知とヴォイスメール"
+
+#, fuzzy
+msgid "Outgoing Caller ID"
+msgstr "発信のみ"
 
 msgid "Advanced Options"
 msgstr "拡張設定"
