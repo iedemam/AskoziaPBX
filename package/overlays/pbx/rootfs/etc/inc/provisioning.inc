@@ -63,7 +63,7 @@ function provisioning_configure() {
 	chmod("{$g['etc_path']}/httpd_provisioning.conf", 0600);
 
 	// kill any existing instances of the provisioning http server and snom daemon
-	$pid = exec('ps -w | grep "/etc/httpd_provisioning.conf" | grep -v "grep" | cut -d " " -f 2', $output);
+	$pid = exec('ps | grep "/etc/httpd_provisioning.conf" | grep -v "grep" | cut -d " " -f 2', $output);
 	syslog(LOG_INFO, "pid finder returned: " . implode("\n", $output));
 	if ($pid) {
 		syslog(LOG_INFO, "Existing httpd provisioning server running (pid: " . $pid . "), stopping.");

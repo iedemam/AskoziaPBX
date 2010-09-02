@@ -115,7 +115,7 @@ function system_update_httpd_settings() {
 		$username = "admin";
 	}
 
-	$pid = exec('ps -w | grep "/etc/httpd.conf" | grep -v "grep" | cut -d " " -f 2');
+	$pid = exec('ps | grep "/etc/httpd.conf" | grep -v "grep" | cut -d " " -f 2');
 	if ($pid) {
 		killbypidnumber($pid);
 	}
