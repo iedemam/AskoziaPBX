@@ -1030,8 +1030,6 @@ load => codec_g722.so
 load => codec_g726.so
 load => codec_gsm.so
 load => codec_lpc10.so
-load => codec_ilbc.so
-load => codec_resample.so
 load => codec_ulaw.so
 load => format_gsm.so
 load => format_pcm.so
@@ -1061,6 +1059,8 @@ EOD;
 
 	if ($g['platform'] != "COMpact 3000") {
 		$conf .= "load => func_speex.so\n";
+		$conf .= "load => codec_ilbc.so\n";
+		$conf .= "load => codec_resample.so\n";
 		$conf .= "load => codec_speex.so\n";
 	}
 

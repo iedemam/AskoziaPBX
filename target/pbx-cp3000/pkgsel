@@ -48,7 +48,6 @@ X asterisk16
 X asterisk16-addons
 X spandsp
 X libtiff
-X libresample
 
 # text2speech
 #X flite
