@@ -13,10 +13,11 @@
 #	b) Parse parameters
 #	c) Check dependencies
 #	d) Calculate needed test-time
-# 1. Get XML-Configfile from Askozia-Box, edit it und update Askozia-Box
-#   a) Get Configfile
-#	b) Edit it
-#	c) Re-Upload it
+# 1. Get Infos from Askozia-Box, edit configfile und update Askozia-Box
+#	a) Download translation table
+#   b) Get Configfile
+#	c) Edit it
+#	d) Re-Upload it
 # 2. Generate Users.csv-File for sipp
 #	a) For two-party-tests
 #	b) For "conference rooms test" 
@@ -49,13 +50,15 @@ use LWP;						# For executing HTTP-POST-Requests
 $SIG{'INT'} = 'term_handler';	# Catch "STRG-C" for deregister all registered users
 
 ### 0.b) Parse parameters ###
-my $debug = 0;						# Debug-Mode? (0=off, 1=on)
-my $save_debug;						# Save debug-msgs in this file? (undef = no saving)
-my $help;							# Print help an exit? (defined = yes)
-my $xml_configfile;					# Name for saving the original AskoziaPBX-XML-Configfile
-my $term_handler_called;			# Was the TERM-Signal (STRG+C) sent? --> cancel all tests
-my $testname = "";					# Name of the test (needed for creating subdir with result-files)
+my $debug = 0;								# Debug-Mode? (0=off, 1=on)
+my $save_debug;								# Save debug-msgs in this file? (undef = no saving)
+my $help;									# Print help an exit? (defined = yes)
+my $xml_configfile;							# Name for saving the original AskoziaPBX-XML-Configfile
+my $term_handler_called;					# Was the TERM-Signal (STRG+C) sent? --> cancel all tests
+my $testname = "";							# Name of the test (needed for creating subdir with result-files)
 chomp(my $gnuplot_exe = `which gnuplot`);	# Path to the gnuplot executable for drawing graphs at the end of the test
+my @codecs_to_draw;							# List of codecs that should be drawed as source codecs in the codecs.png
+my @PBXs_to_compare;						# List of PBX names which translation table results should be compared with these ones
 
 # Askozia-Settings
 my $ask_ip			= "10.10.10.1";					# IP of the askozia-box
@@ -66,6 +69,7 @@ my $ask_realm		= "Web Server Authentication";	# Realm for authentification
 my $ask_user		= "admin";						# User for down-/uploading the configuration-file
 my $ask_pw			= "askozia";					# Passwort for the user to login
 my $reboot_time		= 15;							# Time for completing a reboot after AskoziaPBX pings back again
+my $translation_table = "translation-table";		# Filename for saving the translation table
 my $restore			= "old-config";					# Which configuration shell the AskoziaPBX have AFTER the test?
 													# (old-config, keep, factory-defaults)
 
@@ -155,8 +159,15 @@ Getopt::Long::GetOptions (
 	"debug"								=> \$debug,
 	"help"								=> \$help,
 	"testname=s"						=> \$testname,
+	"translation-table=s"				=> \$translation_table,
+	"draw-codec=s"						=> \@codecs_to_draw,
+	"compare-PBX-with=s"				=> \@PBXs_to_compare,
 	"restore=s"							=> \$restore
 );
+
+# ensure that lists have one entry per array index
+@codecs_to_draw		= split (/,/, join (',', @codecs_to_draw));
+@PBXs_to_compare	= split (/,/, join (',', @PBXs_to_compare));
 
 ### 0.c) Check depedencies and settings ###
 print_help() if (defined $help);
@@ -168,20 +179,22 @@ warn ("WARN: No gnuplot executable specified, cannot create graphs at the end!")
 (mydie ("Must be root because sipp reserves ports.\n")) if (`id -u` != 0);
 
 # the following lines are necessary to avoid problems if used at different operating systems (lin, win, mac, ...)
-chomp(my $timestamp			= `date +"%Y-%m-%d_%H-%M"`);
-my $testpath			= File::Spec->rel2abs ("$testname"."_$timestamp", cwd()."/results");	# determine subdir-path to save all results
-(File::Path::mkpath ($testpath)) unless (-e $testpath);										# create subdir
-$users_two_party_file	= File::Spec->rel2abs ($users_two_party_file, $testpath);			# determine complete path of the csv-file for twoway calls
-$users_conf_rooms_file	= File::Spec->rel2abs ($users_conf_rooms_file, $testpath);			# determine complete path of the csv-file for fixed rooms
+chomp(my $timestamp				= `date +"%Y-%m-%d_%H-%M"`);
+my $testpath					= File::Spec->rel2abs ("$testname"."_$timestamp", cwd()."/results");# determine subdir-path to save all results
+(File::Path::mkpath ($testpath)) unless (-e $testpath);												# create subdir
+system ("chmod", "777", "$testpath");
+$translation_table				= File::Spec->rel2abs ($translation_table, $testpath);
+$users_two_party_file			= File::Spec->rel2abs ($users_two_party_file, $testpath);			# determine path of the csv-file for two-party tests
+$users_conf_rooms_file			= File::Spec->rel2abs ($users_conf_rooms_file, $testpath);			# determine complete path of the csv-file for fixed rooms
 $users_conf_participants_file	= File::Spec->rel2abs ($users_conf_participants_file, $testpath);	# determine complete path of the csv-file for fixed calls
-($save_debug			= File::Spec->rel2abs ("debug.log", $testpath))	if (defined $debug);			# file to save the debug-msgs
-($save_sipp_log			= File::Spec->rel2abs ("sipp.log", $testpath))	if (defined $save_sipp_log);	# file to save sipp-output
-($gnuplot_exe			= File::Spec->rel2abs ($gnuplot_exe, cwd()))	if ($gnuplot_exe);		# determine complete path of the gnuplot-executable
-$sipp_exe				= File::Spec->rel2abs ($sipp_exe, cwd());							# determine complete path of the sipp-executable
-$reg_scen				= File::Spec->rel2abs ($reg_scen, cwd());							# determine complete path of the register-scenario
-$der_scen				= File::Spec->rel2abs ($der_scen, cwd());							# determine complete path of the deregister-scenario
-$inv_scen				= File::Spec->rel2abs ($inv_scen, cwd());							# determine complete path of the invite-scenario
-$acc_scen				= File::Spec->rel2abs ($acc_scen, cwd());							# determine complete path of the accept-scenario
+($save_debug					= File::Spec->rel2abs ("debug.log", $testpath))	if (defined $debug);# file to save the debug-msgs
+($save_sipp_log					= File::Spec->rel2abs ("sipp.log", $testpath))	if (defined $save_sipp_log);	# file to save sipp-output
+($gnuplot_exe					= File::Spec->rel2abs ($gnuplot_exe, cwd()))	if ($gnuplot_exe);	# determine complete path of the gnuplot-executable
+$sipp_exe						= File::Spec->rel2abs ($sipp_exe, cwd());							# determine complete path of the sipp-executable
+$reg_scen						= File::Spec->rel2abs ($reg_scen, cwd());							# determine complete path of the register-scenario
+$der_scen						= File::Spec->rel2abs ($der_scen, cwd());							# determine complete path of the deregister-scenario
+$inv_scen						= File::Spec->rel2abs ($inv_scen, cwd());							# determine complete path of the invite-scenario
+$acc_scen						= File::Spec->rel2abs ($acc_scen, cwd());							# determine complete path of the accept-scenario
 
 # print debug messages for debugging :-)
 debug ("Settings for this performance-test:");
@@ -222,6 +235,11 @@ debug ("Settings for this performance-test:");
 (defined $testpath)						? debug ("testpath is '$testpath'")								: debug ("testpath is not defined.");
 (defined $restore)						? debug ("restore is '$restore'")								: debug ("restore is not defined.");
 debug ();
+if (@PBXs_to_compare)
+{
+	debug ("PBXs_to_compare is:");
+	debug (\@PBXs_to_compare);
+}
 
 ### 0.d) Calculate needed testtime ###
 my $sum_time = 0;
@@ -259,16 +277,39 @@ $text .= int($sec)." seconds.";
 print $text."\n";
 debug ($text);
 
-##########################################################
-### 1. GET XML-CONFIGFILE FROM ASKOZIA-BOX AND EDIT IT ###
-##########################################################
+#########################################################
+### 1. GET INFOS FROM ASKOZIA-BOX AND EDIT CONFIGFILE ###
+#########################################################
 debug ("### CHAPTER 1 ###");
 
-### 1.a) Execute POST-Request and download file ###
-debug ("Begin downloading configfile.");
+### 1.a) Download translation table ###
 my $ua = new LWP::UserAgent;
 $ua->credentials ("$ask_ip:$ask_port", $ask_realm, "$ask_user" => "$ask_pw");
-my $res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data", Content => [ Download => "1"]);
+my $res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+show+translation%27");
+
+debug ("Status: '". $res->status_line ."'");
+(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
+if ($res->is_success)
+{
+	my $table_ref = interpret_translation_table ($res->decoded_content);
+	draw_translation_table ($testpath, $table_ref, \@codecs_to_draw, \@PBXs_to_compare);
+	open (TRANSLATION, ">$translation_table.csv") || mydie ("Could not open '$translation_table.csv' for writing: $!");
+	for my $row (@$table_ref)
+	{
+		(print TRANSLATION "$_;") for (@$row);
+		print TRANSLATION "\n";
+	}
+	close TRANSLATION;
+	system ("chmod", "666", "$translation_table.csv");
+}
+else
+{
+	warn ("No success in downloading translation table.");
+}
+
+### 1.b) Execute POST-Request and download file ###
+debug ("Begin downloading configfile.");
+$res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data", Content => [ Download => "1"]);
 debug ("Ready downloading configfile. Status: ". $res->status_line);
 
 # Was the download successful AND the POST-Request correct?
@@ -279,6 +320,7 @@ if ($res->is_success && $res->filename ne "system_backup.php")
 	open (CONFFILE, ">", $xml_configfile) || mydie ("Could not open '". $xml_configfile ."' for writing: $!");
 	print CONFFILE $res->decoded_content;
 	close CONFFILE;
+	system ("chmod", "666", "$xml_configfile");
 	debug ("Ready saving original configfile '". $xml_configfile ."'");
 }
 
@@ -301,6 +343,7 @@ else
 	{
 		print CONFERROR $res->error_as_HTML;
 		close CONFERROR;
+		system ("chmod", "666", "$html_file");
 		mydie ("Could not download xml-configfile from askozia-box: ". $res->status_line ."\nSaved output in file '$html_file'");
 	}
 
@@ -313,7 +356,7 @@ else
 	}
 }
 
-### 1.b) Edit Configfile ###
+### 1.c) Edit Configfile ###
 # calculate needed users and conference rooms
 my ($users_conf, $rooms_conf) = create_conf_contents
 	($conffile_text_usertext, $conffile_conftext, $max_two_party, $max_conf_participants, $conf_participants_no_of_rooms, $max_conf_rooms, $conf_rooms_no_of_participants);
@@ -386,8 +429,9 @@ for my $line (@orig_conffile)
 	}
 }
 close EDITED_CONFFILE;
+system ("chmod", "666", "$xml_configfile"."_edited");
 
-### 1.c) Re-Upload edited configfile ###
+### 1.d) Re-Upload edited configfile ###
 debug ("Begin uploading configfile '". $xml_configfile ."_edited'");
 $res = $ua->request (POST "http://$ask_ip:$ask_port/$ask_conf_page", "Content-Type" => "multipart/form-data",
 	Content => [ Restore => "1", conffile => [ $xml_configfile."_edited" ] ]);
@@ -419,6 +463,7 @@ if ($max_two_party)
 	}
 
 	close CSV;
+	system ("chmod", "666", "$users_two_party_file");
 	debug ("Ready generating users for two-party-call.");
 }
 
@@ -444,6 +489,7 @@ if ($max_conf_participants)
 	}
 
 	close CSV;
+	system ("chmod", "666", "$users_conf_participants_file");
 	debug ("Ready generating users for 'conference participants test'");
 }
 
@@ -469,6 +515,7 @@ if ($max_conf_rooms)
 	}
 
 	close CSV;
+	system ("chmod", "666", "$users_conf_rooms_file");
 	debug ("Ready generating users for 'conference rooms test'");
 }
 
@@ -534,7 +581,7 @@ elsif ($pid > 0)
 			if ($counter++ >= $max_time)
 			{
 				# Slap the testprocess with an INT-signal
-				system ("kill -INT $pid");
+				system ("kill", "-INT", "$pid");
 				print "Sent INT-Signal to Test-Process.\n";
 				debug ("Sent INT-Signal to Test-Process.");
 			}
@@ -586,7 +633,7 @@ if ($max_two_party)
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
 #	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+debug+1000%27");
-	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+verbose+1000%27");
+#	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+verbose+1000%27");
 	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+two-party%27");
 	debug ("Status: '". $res->status_line ."'");
 	(debug ("Answer: '$_'")) for (split ("\n", $res->decoded_content));
@@ -620,6 +667,7 @@ if ($max_two_party)
 		open (LOG, ">>", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
 		(print LOG $_) for (@testresult);
 		close LOG;
+		system ("chmod", "666", "$save_sipp_log");
 		debug ("Ready saving sipp log.");
 	}
 	debug ("Ready with two-party tests, cleaning up now");
@@ -689,6 +737,7 @@ if ($max_conf_rooms)
 		open (LOG, ">", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
 		(print LOG $_) for (@testresult);
 		close LOG;
+		system ("chmod", "666", "$save_sipp_log");
 		debug ("Ready saving sipp-log.");
 	}
 	debug ("Ready with conf call tests, cleaning up now");
@@ -758,6 +807,7 @@ if ($max_conf_participants)
 		open (LOG, ">>", $save_sipp_log) || mydie ("Could not open logfile '$save_sipp_log' for writing: $!\n");
 		(print LOG $_) for (@testresult);
 		close LOG;
+		system ("chmod", "666", "$save_sipp_log");
 		debug ("Ready saving sipp-log.");
 	}
 	debug ("Ready with conf room tests, cleaning up now");
@@ -814,7 +864,7 @@ elsif($restore eq "factory-defaults")
 }
 
 ### END ###
-system ("killall -9 sipp");
+system ("killall", "-9", "sipp");
 print ("### END OF TEST ###");
 exit (0);
 
@@ -855,9 +905,9 @@ sub create_conf_contents
 	(ref $conffile_text_room)				&& mydie ("'Configfile-roomtext'-argument has to be scalar in function '$this_function'!");
 	(defined $conffile_text_room)			? debug ("conffile_text_room is '\n$conffile_text_room'")	: debug ("conffile_text_room is not defined.");
 	
-	my $max_two_party					= shift;
-	(ref $max_two_party)				&& mydie ("'Twoway_Calls'-argument has to be scalar in function '$this_function'!");
-	(defined $max_two_party)			? debug ("twoway_calls is '$max_two_party'")				: debug ("twoway_calls is not defined.");
+	my $max_two_party						= shift;
+	(ref $max_two_party)					&& mydie ("'Twoway_Calls'-argument has to be scalar in function '$this_function'!");
+	(defined $max_two_party)				? debug ("twoway_calls is '$max_two_party'")				: debug ("twoway_calls is not defined.");
 	
 	my $max_conf_participants				= shift;
 	(ref $max_conf_participants)			&& mydie ("'Conf_calls_room'-argument has to be scalar in function '$this_function'!");
@@ -929,7 +979,7 @@ sub create_conf_contents
 # (STRG+C)
 sub term_handler
 {
-	system ("killall -9 sipp");
+	system ("killall", "-9", "sipp");
 	(print $pipe "watchdog stop\n") if (defined $pipe);
 	$term_handler_called = 1;
 }
@@ -948,6 +998,12 @@ sub debug
 	(return 1) unless $debug;
 
 	my $message = shift || "";
+	if (ref ($message) eq "ARRAY")
+	{
+		my $printtext = "";
+		($printtext .= "DEBUG: - '$_'\n") for (@$message);
+	}
+
 	($debug_indent++) if ($message =~ /^### FUNCTION:/);
 	
 	print "DEBUG: " .(" "x(2*$debug_indent)). "$message\n";
@@ -956,6 +1012,7 @@ sub debug
 		open (DEBUG, ">>", $save_debug) || mydie ("Could not open '$save_debug' for appending: $!\n");
 		print DEBUG " "x(2*$debug_indent) . $message ."\n";
 		close DEBUG;
+		system ("chmod", "666", "$save_debug");
 	}
 
 	($debug_indent--) if ($message eq "### END FUNCTION ###");
@@ -1030,6 +1087,7 @@ sub download_qstat_data
 		open (QSTAT, ">$filename") || mydie ("Could not open file '$filename' for writing: $!\n");
 		(print QSTAT $_."\n") for (@qstat_data);
 		close QSTAT;
+		system ("chmod", "666", "$filename");
 
 		# Debug messages
 		debug ("QStat-Data is now:");
@@ -1253,6 +1311,7 @@ sub interpret_data
 	open (NEW_FILE, ">", $qstat_file .".csv") || mydie ("Cannot open $qstat_file.csv for writing: $!");
 	(print NEW_FILE $_."\n") for (@new_file);
 	close NEW_FILE;
+	system ("chmod", "666", "$qstat_file");
 
 	### CREATE GNUPLOT SCRIPTFILE ###
 
@@ -1302,6 +1361,7 @@ sub interpret_data
 	open (GNU_FILE, ">", $qstat_file .".gplt") || mydie ("Cannot open ". $qstat_file .".gplt for writing: $!");
 	print GNU_FILE $gnuplot_cmd;
 	close GNU_FILE;
+	system ("chmod", "666", "$qstat_file.gplt");
 	system ("$gnuplot_exe", "$qstat_file.gplt");
 
 	debug ("### END FUNCTION ###");
@@ -1354,6 +1414,255 @@ sub get_sut_data
 
 	debug ("### END FUNCTION ###");
 	return ($platform, $version);
+}
+
+##########################
+# DRAW_TRANSLATION_TABLE #
+##########################
+sub draw_translation_table
+{
+	# INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	my $testpath						= shift || mydie ("No 'Testpath'-argument specified in function '$this_function'!");
+	(ref ($testpath))					&& mydie ("'Testpath'-argument has to be scalar in function '$this_function'!");
+	(defined $testpath)					? debug ("testpath is '$testpath'") : debug ("testpath is not defined.");
+	
+	my $table_ref						= shift || mydie ("No 'Tableref'-argument specified in function '$this_function'!");
+	(ref ($table_ref) eq "ARRAY")		|| mydie ("'Tableref'-argument has to be array-ref in function '$this_function'!");
+	(defined $table_ref)				? debug ("table_ref is '$table_ref'") : debug ("table_ref is not defined.");
+
+	my $codeclist_ref					= shift || mydie ("No 'Codeclist_Ref'-argument specified in function '$this_function'!");
+	(ref ($codeclist_ref) eq "ARRAY")	|| mydie ("'Codeclist_Ref'-argument has to be array-ref in function '$this_function'!");
+	(defined $codeclist_ref)			? debug ("codeclist_ref is '$codeclist_ref'") : debug ("codeclist_ref is not defined.");
+
+	my $PBXlist_ref						= shift || mydie ("No 'PBXlist_Ref'-argument specified in function '$this_function'!");
+	(ref ($PBXlist_ref) eq "ARRAY")		|| mydie ("'PBXlist_Ref'-argument has to be array-ref in function '$this_function'!");
+	(defined $PBXlist_ref)				? debug ("PBXlist_ref is '$PBXlist_ref'") : debug ("PBXlist_ref is not defined.");
+
+	# Print all codecs if no specific codec(s) was/were specified
+	my @table = @$table_ref;
+	unless (@$codeclist_ref)
+	{
+		$codeclist_ref = $table[0];
+		shift @$codeclist_ref; # i don't want to have an empty entry here, so i have to subtract 1 to the indizes later
+		debug ("Codeclist is now:");
+		debug ("- '$_'") for (@$codeclist_ref);
+	}
+	
+	# read all files incl. the performance data in 2-dimensional array
+	my %compare_data;
+	for my $PBX (@$PBXlist_ref)
+	{
+		debug ("Looking at PBX '$PBX'");
+
+		for my $codec (@$codeclist_ref)
+		{
+			my $codec_file = File::Spec->rel2abs ("$codec.csv", "$testpath/../$PBX");
+			debug ("Looking at codec file '$codec_file'");
+
+			my @codec_data = ($codec);
+			open (CODEC, "<$codec_file") || mydie ("Could not open file '$codec_file' for reading: $!");
+			while (my $line = <CODEC>)
+			{
+				my @contents = split (/\s+/, $line);
+				push (@codec_data, $contents[1]) if (@contents >= 2);
+			}
+			close CODEC;
+			$compare_data{$PBX}{$codec} = \@codec_data;
+		}
+	}
+
+	debug ("Compare Data is now:");
+	for my $PBX (keys %compare_data)
+	{
+		debug ("### PBX: '$PBX'");
+		my $text;
+		for my $codec (keys %{$compare_data{$PBX}})
+		{
+			$text = "  Codec '$codec': ";
+			debug ("- '$_'") for (@{$compare_data{$PBX}});
+
+		}
+		debug ($text);
+	}
+
+	# Create a file for every codec with pairs of variates (necessary for plotting with gnuplot)
+	my $data = "";
+	for my $codec (@$codeclist_ref)
+	{
+		debug ("Looking at codec '$codec'");
+		my $codec_data = File::Spec->rel2abs ("$codec.csv", $testpath);
+		open (CODEC_DATA, ">$codec_data") || mydie ("Could not open '$codec_data' for writing: $!");
+		for my $index (1..$#table)
+		{
+			my $row = $table[$index];
+			my @row_parts = @$row;
+			if ($row->[0] eq $codec)
+			{
+				debug ("Found correct row: '@$row'");
+				my $codec_labels = $table[0];
+				debug ("Codec_labels is '@$codec_labels'");
+				my $counter = 1;
+				for my $index (1..$#row_parts)
+				{
+					if ($codec_labels->[$index-1] ne $codec)
+					{
+						debug ("Adding graph for codec '". $codec_labels->[$index-1] ."'");
+						print CODEC_DATA "$counter\t". $row->[$index] ."\t". $codec_labels->[$index-1] ."\n";
+						$counter++;
+					}
+					else
+					{
+						debug ("Ignoring codec '". $codec_labels->[$index-1] ."'");
+					}
+				}
+			}
+		}
+		close CODEC_DATA;
+		system ("chmod", "666", "$codec_data");
+		debug ("Closed file '$codec_data'");
+	}
+	my $codec_filenames = "";
+	($codec_filenames .= "'$_.csv',") for (@$codeclist_ref);
+	$codec_filenames =~ s/,$//;
+
+	# find out how many rows and columns are needed
+	my $graph_columns = 0;
+	my $graph_rows = 0;
+	($graph_columns++) while ($graph_columns * $graph_columns < @$codeclist_ref);
+	($graph_columns * ($graph_columns-1) < @$codeclist_ref)	? ($graph_rows = $graph_columns)
+															: ($graph_rows = $graph_columns - 1);
+	my $single_width = 1/$graph_columns;
+	my $single_height = 1/$graph_rows;
+	
+	# print general settings for output
+	my $gnuplot_cmd = "# gnuplot file for printing codecs\n";
+	$gnuplot_cmd .= "unset key\n";
+	$gnuplot_cmd .= "set grid\n";
+	$gnuplot_cmd .= "set size $single_width,$single_height\n";
+	$gnuplot_cmd .= "set xtics out\n";
+	$gnuplot_cmd .= "set xtics rotate 90\n";
+	$gnuplot_cmd .= "set format x ''\n";
+	$gnuplot_cmd .= "set xrange [0:". $#table ."]\n";
+	$gnuplot_cmd .= "set xlabel 'destination codec'\n";
+	$gnuplot_cmd .= "set ylabel 'conversion time in ms'\n";
+	$gnuplot_cmd .= "set boxwidth 0.5\n";
+	$gnuplot_cmd .= "set style fill solid border -1\n";
+	$gnuplot_cmd .= "set terminal png size ". ($graph_columns*640) .",". ($graph_rows*480) ."\n";
+	$gnuplot_cmd .= "set output '". File::Spec->rel2abs ('codecs.png', $testpath) ."'\n";
+	$gnuplot_cmd .= "set multiplot\n";
+	
+	# now, plot every single graph
+	for my $row (0..$graph_rows-1)
+	{
+		for my $column (0..$graph_columns-1)
+		{
+			my $index = $row * $graph_columns + $column;
+			debug ("Index is '$index'");
+			if ($index < @$codeclist_ref)
+			{
+				my $codec = $codeclist_ref->[$index];
+				debug ("Create plot command for codec '$codec'");
+				$gnuplot_cmd .= "\n# Codec '$codec'\n";
+				$gnuplot_cmd .= "set origin ". sprintf ("%.2f", $column * $single_width) .",". sprintf ("%.2f", 1 - $row * $single_height - $single_height) ."\n";
+				$gnuplot_cmd .= "set title 'Sourcecode: $codec'\n";
+				$gnuplot_cmd .= "plot '". File::Spec->rel2abs ("$codec.csv", $testpath) ."' using 1:2:xticlabels(3) with boxes lc 3\n";
+			}
+		}
+	}
+	$gnuplot_cmd .= "unset multiplot\n";
+	
+	my $filename = File::Spec->rel2abs ("codecs.gplt", $testpath);
+	debug ("Filename is '$filename'");
+	open (GNUPLOT, ">$filename") || mydie ("Could not open '$filename' for writing: $!");
+	print GNUPLOT $gnuplot_cmd;
+	close GNUPLOT;
+	system ("$gnuplot_exe", "$filename");
+	system ("chmod", "666", "$filename");
+	system ("chmod", "666", File::Spec->rel2abs ('codecs.png', $testpath));
+	
+	debug ("### END FUNCTION ###");
+	return;
+}
+
+###############################
+# INTERPRET_TRANSLATION_TABLE #
+###############################
+sub interpret_translation_table
+{
+	# INIT
+	my $this_function = (caller(0))[3];
+	debug();
+	debug ("### FUNCTION: '$this_function' ###");
+
+	my $table_string		= shift || mydie ("No 'Table'-argument specified in function '$this_function'!");
+	(ref $table_string)		&& mydie ("'Table'-argument has to be scalar in function '$this_function'!");
+	(defined $table_string)	? debug ("table_string is '$table_string'") : debug ("table_string is not defined.");
+
+	# format passed string to a 2-dimensional array
+	my @temp = split (/\n/, $table_string);
+	my @table;
+	for my $index (3..$#temp)
+	{
+		my @temp2 = split (/\s+/, $temp[$index]);
+		(shift @temp2) unless ($index == 3);
+		push (@table, \@temp2);
+	}
+
+	# find indizes of lines that contain no information (no milliseconds number) --> no supported codec
+	my $row_index = 1;
+	while ($row_index < @table)
+	{
+		my $row = $table[$row_index];
+		my $line = join (" ", @$row);
+
+		# Is there a valid content in this codec?
+		if ($line =~ / \d+ /)
+		{
+			debug ("Line '$line' is a valid codec.");
+			# Convert microseconds to milliseconds
+			for my $element (@$row)
+			{
+				if ($element =~ /^\d+$/)
+				{
+					$element = int ($element / 1000 + 0.5);
+				}
+				elsif ($element eq "-")
+				{
+					$element = 0;
+				}
+			}
+		}
+		else
+		{
+			debug ("Line '$line' is not a valid codec.");
+			# There is no valid content for this codec: Delete it
+			splice (@table, $row_index, 1);	# delete row
+			for my $temp_row (@table)		# delete column
+			{
+				splice (@$temp_row, $row_index, 1);
+			}
+			$row_index--;
+		}
+		$row_index++;
+	}
+
+	debug ("Translation table is now:");
+	for my $line (@table)
+	{
+		my $debug_text = "- '";
+		for my $column (@$line)
+		{
+			$debug_text .= "$column | ";
+		}
+		debug ("$debug_text'");
+	}
+
+	debug ("### END FUNCTION ###");
+	return (\@table);
 }
 
 ##############
