@@ -1,3 +1,7 @@
 echo "Documenting software used in this build ..."
+mkdir offload_stage/software-information
 svn info $base > offload_stage/software-information/00-svn-revision-information
 cp ../../var/adm/packages/* offload_stage/software-information/
+rm -f offload_stage/software-information.zip
+zip -9 -r offload_stage/software-information.zip offload_stage/software-information
+rm -rf offload_stage/software-information

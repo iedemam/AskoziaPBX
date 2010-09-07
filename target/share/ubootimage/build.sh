@@ -36,7 +36,6 @@ cp $base/target/$target/config.xml root_stage/conf/config.xml
 mkdir offload_stage
 mkdir offload_stage/asterisk
 mkdir offload_stage/kernel-modules
-mkdir offload_stage/software-information
 mkdir loop
 
 echo "Copy system into staging directories ..."
