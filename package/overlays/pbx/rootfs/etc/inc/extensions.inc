@@ -357,20 +357,10 @@ EOD;
 		$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";
 		$conf .= "[{$p['uniqid']}]\n";
 		$conf .= "include => internal\n";
-		// include each provider's contexts unless blocked
-		foreach ($providers as $provider) {
-			if (!isset($p['provider'])) {
-				if (pbx_provider_is_active($provider['uniqid'])) {
-					$conf .= extensions_generate_phone_to_provider_outgoing_prelogic($p, $provider);
-				}
-			} else {
-				if (!in_array($provider['uniqid'], $p['provider']) &&
-					pbx_provider_is_active($provider)) {
-					$conf .= extensions_generate_phone_to_provider_outgoing_prelogic($p, $provider);
-				}
-			}
-		}
+		$conf .= "include => {$p['uniqid']}-outgoing\n";
 		$conf .= "include => outgoing-uri\n";
+		$conf .= "\n";
+		$conf .= extensions_generate_phone_outgoing_context($p);
 		$conf .= "\n";
 	}
 
@@ -382,19 +372,9 @@ EOD;
 		$conf .= "; {$f['callerid']} - <{$f['extension']}>\n";
 		$conf .= "[{$f['uniqid']}]\n";
 		$conf .= "include => internal\n";
-		// include each provider's contexts unless blocked
-		foreach ($providers as $provider) {
-			if (!isset($f['provider'])) {
-				if (pbx_provider_is_active($provider['uniqid'])) {
-					$conf .= extensions_generate_phone_to_provider_outgoing_prelogic($f, $provider);
-				}
-			} else {
-				if (!in_array($provider['uniqid'], $f['provider']) &&
-					pbx_provider_is_active($provider)) {
-					$conf .= extensions_generate_phone_to_provider_outgoing_prelogic($f, $provider);
-				}
-			}
-		}
+		$conf .= "include => {$f['uniqid']}-outgoing\n";
+		$conf .= "\n";
+		$conf .= extensions_generate_phone_outgoing_context($f);
 		$conf .= "\n";
 	}
 
@@ -677,42 +657,53 @@ function extensions_generate_provider_outgoing_context($p) {
 	return $conf;
 }
 
-function extensions_generate_phone_to_provider_outgoing_prelogic($phone, $provider) {
+function extensions_generate_phone_outgoing_context($phone) {
 
-	// outgoing caller id should be that of the phone originating the call
-	$cidflag = "o";
-	// set the appropriate flag if an override is wished and defined
-	if ($provider['calleridsource'] == "string" && $provider['calleridstring']) {
-		$cidflag = "f";
-		$cidoverride = $provider['calleridstring'];
-	}
-	// set the appropriate caller id override if this phone has one set
-	$indexed_map = array();
-	if ($phone['outgoingcalleridmap']) {
-		foreach ($phone['outgoingcalleridmap'] as $map) {
-			if ($map['provideruniqid'] == $provider['uniqid']) {
-				$cidflag = "f";
-				$cidoverride = $map['cidstring'];
+	$providers = pbx_get_providers();
+
+	$conf .= "[{$phone['uniqid']}-outgoing]\n";
+
+	// include each provider's patterns unless blocked
+	foreach ($providers as $provider) {
+		if (!isset($provider['disabled'])) {
+			if ((!isset($phone['provider'])) || (!in_array($provider['uniqid'], $phone['provider']))) {
+				// outgoing caller id should be that of the phone originating the call
+				$cidflag = "o";
+				// set the appropriate flag if an override is wished and defined
+				if ($provider['calleridsource'] == "string" && $provider['calleridstring']) {
+					$cidflag = "f";
+					$cidoverride = $provider['calleridstring'];
+				}
+				// set the appropriate caller id override if this phone has one set
+				$indexed_map = array();
+				if ($phone['outgoingcalleridmap']) {
+					foreach ($phone['outgoingcalleridmap'] as $map) {
+						if ($map['provideruniqid'] == $provider['uniqid']) {
+							$cidflag = "f";
+							$cidoverride = $map['cidstring'];
+						}
+					}
+				}
+
+				foreach ($provider['dialpattern'] as $pattern) {
+					dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
+
+					$conf .= "exten => _$pattern,1,NoOp(pre-processing for outgoing call to provider: {$provider['name']})\n";
+					$conf .= "exten => _$pattern,n,Set(ORIGEXTENSION=$\{EXTEN})\n";
+					$conf .= "exten => _$pattern,n,NoOp( - original extension = $\{ORIGEXTENSION})\n";
+
+					// apply caller id override
+					if ($cidoverride) {
+						$conf .= "exten => _$pattern,n,Set(CALLERID(all)=$cidoverride)\n";
+						$conf .= "exten => _$pattern,n,NoOp( - caller id set = $cidoverride)\n";
+					} else {
+						$conf .= "exten => _$pattern,n,NoOp( - sending phone caller id)\n";
+					}
+
+					$conf .= "exten => _$pattern,n,Goto({$provider['uniqid']},$\{EXTEN},1)\n";
+				}
 			}
 		}
-	}
-
-	foreach ($provider['dialpattern'] as $pattern) {
-		dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-
-		$conf .= "exten => _$pattern,1,NoOp(pre-processing for outgoing call to provider: {$provider['name']})\n";
-		$conf .= "exten => _$pattern,n,Set(ORIGEXTENSION=$\{EXTEN})\n";
-		$conf .= "exten => _$pattern,n,NoOp( - original extension = $\{ORIGEXTENSION})\n";
-
-		// apply caller id override
-		if ($cidoverride) {
-			$conf .= "exten => _$pattern,n,Set(CALLERID(all)=$cidoverride)\n";
-			$conf .= "exten => _$pattern,n,NoOp( - caller id set = $cidoverride)\n";
-		} else {
-			$conf .= "exten => _$pattern,n,NoOp( - sending phone caller id)\n";
-		}
-
-		$conf .= "exten => _$pattern,n,Goto({$provider['uniqid']},$\{EXTEN},1)\n";
 	}
 
 	return $conf;
