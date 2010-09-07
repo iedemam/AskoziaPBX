@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: part of AskoziaPBX (http://askozia.com/pbx)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-01 17:25+0200\n"
+"POT-Creation-Date: 2010-09-07 20:01+0200\n"
 "PO-Revision-Date: 2010-08-04 01:08-0300\n"
 "Last-Translator: Facundo Ameal <facundo.ameal@railtion.com.ar>\n"
 "Language-Team: es_ES <LI@li.org>\n"
@@ -693,6 +693,9 @@ msgstr "Italiano"
 
 msgid "Polish"
 msgstr "Polaco"
+
+msgid "Portuguese (Brazil)"
+msgstr "Portugués (Brasil)"
 
 msgid "Russian"
 msgstr "Ruso"
@@ -4070,9 +4073,6 @@ msgstr "ERR Recibida una configuración inválida. \n"
 
 #~ msgid "Japanese"
 #~ msgstr "Japonés"
-
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "Portugués (Brasil)"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Nombre descriptivo para este teléfono"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-01 17:25+0200\n"
+"POT-Creation-Date: 2010-09-07 20:01+0200\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -691,6 +691,9 @@ msgstr "Italian"
 
 msgid "Polish"
 msgstr "Polish"
+
+msgid "Portuguese (Brazil)"
+msgstr "ポルトガル語(ブラジル)"
 
 msgid "Russian"
 msgstr "Russian"
@@ -4126,9 +4129,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 
 #~ msgid "Japanese"
 #~ msgstr "日本語"
-
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "ポルトガル語(ブラジル)"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "この電話の判り易い名前"

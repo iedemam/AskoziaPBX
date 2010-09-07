@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-01 17:25+0200\n"
+"POT-Creation-Date: 2010-09-07 20:01+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -682,6 +682,10 @@ msgstr "Итальянский"
 
 msgid "Polish"
 msgstr "Польский"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Португальский, Бразилия"
 
 msgid "Russian"
 msgstr "Русский"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-01 17:25+0200\n"
+"POT-Creation-Date: 2010-09-07 20:01+0200\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -691,6 +691,9 @@ msgstr "Italien"
 
 msgid "Polish"
 msgstr "Polonais"
+
+msgid "Portuguese (Brazil)"
+msgstr "Portugais (Brézil)"
 
 msgid "Russian"
 msgstr "Russe"
@@ -4195,9 +4198,6 @@ msgstr "ERREUR La configuration reçue est invalide. \n"
 
 #~ msgid "Japanese"
 #~ msgstr "Japonais"
-
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "Portugais (Brézil)"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Nom descriptif de cette ligne."

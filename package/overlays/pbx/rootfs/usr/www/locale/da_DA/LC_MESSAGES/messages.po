@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-01 17:25+0200\n"
+"POT-Creation-Date: 2010-09-07 20:01+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -678,6 +678,10 @@ msgstr "Italiensk"
 
 msgid "Polish"
 msgstr "Polsk"
+
+#, fuzzy
+msgid "Portuguese (Brazil)"
+msgstr "Portugisisk, Brasiliansk"
 
 msgid "Russian"
 msgstr "Russisk"
@@ -4063,10 +4067,6 @@ msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
 
 #~ msgid "Japanese"
 #~ msgstr "Japansk"
-
-#, fuzzy
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "Portugisisk, Brasiliansk"
 
 #~ msgid "Descriptive name for this phone."
 #~ msgstr "Beskrivende navn på denne telefon."
