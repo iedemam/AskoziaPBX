@@ -1,6 +1,6 @@
---- busybox-1.17.1/include/applets.src.h.orig	2010-08-12 13:16:43.000000000 +0200
-+++ busybox-1.17.1/include/applets.src.h	2010-08-12 13:17:16.000000000 +0200
-@@ -224,7 +224,7 @@
+--- busybox-1.15.3/include/applets.h.orig
++++ busybox-1.15.3/include/applets.h
+@@ -228,7 +228,7 @@
  IF_LESS(APPLET(less, _BB_DIR_USR_BIN, _BB_SUID_DROP))
  IF_SETARCH(APPLET_ODDNAME(linux32, setarch, _BB_DIR_BIN, _BB_SUID_DROP, linux32))
  IF_SETARCH(APPLET_ODDNAME(linux64, setarch, _BB_DIR_BIN, _BB_SUID_DROP, linux64))
