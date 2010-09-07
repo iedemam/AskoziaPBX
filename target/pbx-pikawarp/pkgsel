@@ -35,7 +35,6 @@ X automake
 X autoconf
 X libtool
 X gettext
-X bison
 X ncurses
 X termcap
 
@@ -94,7 +93,7 @@ X jquery.selectboxes
 X codemirror
 
 # provisioning
-X snomd
+#X snomd
 
 # binaries
 X busybox

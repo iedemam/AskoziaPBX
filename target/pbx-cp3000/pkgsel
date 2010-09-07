@@ -33,7 +33,6 @@ X automake
 X autoconf
 X libtool
 X gettext
-X bison
 X ncurses
 X termcap
 X libiconv
@@ -79,6 +78,8 @@ X jquery.progressbar
 X jquery.selectboxes
 X codemirror
 
+# provisioning
+#X snomd
 
 # binaries
 X busybox
