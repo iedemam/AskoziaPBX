@@ -99,7 +99,6 @@ X openssh
 X msmtp
 X ntpclient
 X ezipupdate
-X pciutils
 X lsof
 X verifysig
 

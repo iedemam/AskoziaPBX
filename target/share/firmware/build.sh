@@ -143,32 +143,13 @@ cp -Rp ../../usr/www_provisioning offload_stage/rootfs/usr/
 chmod 644 offload_stage/rootfs/usr/www_provisioning/*
 chmod 755 offload_stage/rootfs/usr/www_provisioning/*.php
 
-echo "Cleaning up asterisk sounds ..."
-if [[ -d "offload_stage/asterisk/sounds/es" ]] ; then
-	rmdir offload_stage/asterisk/sounds/es
-fi
-if [[ -d "offload_stage/asterisk/sounds/fr" ]] ; then
-	rmdir offload_stage/asterisk/sounds/fr
-fi
-find offload_stage/asterisk/sounds/ -type f -name "*.pdf" -print -delete
-find offload_stage/asterisk/sounds/ -type f -name "*.txt" -print -delete
-for FILE in `find offload_stage/asterisk/sounds/ -name *g711u`
-do
-NEW=`echo $FILE | sed -e 's/g711u/ulaw/'`
-mv "$FILE" "$NEW"
-done
+. target/share/clean-prompts.part
 
 echo "Documenting software used in this build ..."
 svn info $base > offload_stage/software-information/00-svn-revision-information
 cp ../../var/adm/packages/* offload_stage/software-information/
 
-echo "Cleaning away stray files ..."
-find ./ -name "._*" -print -delete
-find ./ -name "*.a" -print -delete
-find ./ -name "*.c" -print -delete
-find ./ -name "*.o" -print -delete
-find ./ -name "*.po" -print -delete
-rm -rf `find ./ -name ".svn"`
+. target/share/clean-strayfiles.part
 
 echo "Root partition size calculation ..."
 root_size=`du -B512 -s root_stage | cut -f 1`

@@ -1,0 +1,7 @@
+echo "Cleaning away stray files ..."
+find ./ -name "._*" -print -delete
+find ./ -name "*.a" -print -delete
+find ./ -name "*.c" -print -delete
+find ./ -name "*.o" -print -delete
+find ./ -name "*.po" -print -delete
+rm -rf `find ./ -name ".svn"`
