@@ -45,12 +45,8 @@ X openssl
 
 # asterisk + deps
 X asterisk16
-X asterisk16-addons
 X spandsp
 X libtiff
-
-# text2speech
-#X flite
 
 # dahdi + deps
 X libpri
@@ -83,8 +79,6 @@ X jquery.progressbar
 X jquery.selectboxes
 X codemirror
 
-# provisioning
-X snomd
 
 # binaries
 X busybox
