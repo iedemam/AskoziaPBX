@@ -5,10 +5,19 @@ fi
 if [[ -d "offload_stage/asterisk/sounds/fr" ]] ; then
 	rmdir offload_stage/asterisk/sounds/fr
 fi
+
 find offload_stage/asterisk/sounds/ -type f -name "*.pdf" -print -delete
 find offload_stage/asterisk/sounds/ -type f -name "*.txt" -print -delete
+
 for FILE in `find offload_stage/asterisk/sounds/ -name *g711u`
 do
 NEW=`echo $FILE | sed -e 's/g711u/ulaw/'`
 mv "$FILE" "$NEW"
+done
+
+for FILE in `find offload_stage/asterisk/sounds/ -name *.wav`
+do
+NEW=`echo $FILE | sed -e 's/wav/ulaw/'`
+sox -V "$FILE" -r 8000 -c 1 -t ul "$NEW"
+rm -f "$FILE"
 done

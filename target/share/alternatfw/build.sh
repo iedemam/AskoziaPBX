@@ -133,13 +133,11 @@ cp -Rp ../../usr/www_provisioning offload_stage/rootfs/usr/
 chmod 644 offload_stage/rootfs/usr/www_provisioning/*
 chmod 755 offload_stage/rootfs/usr/www_provisioning/*.php
 
-. target/share/clean-prompts.part
+. $base/target/share/clean-prompts.part
 
-echo "Documenting software used in this build ..."
-svn info $base > offload_stage/software-information/00-svn-revision-information
-cp ../../var/adm/packages/* offload_stage/software-information/
+. $base/target/share/stamp-softwareinformation.part
 
-. target/share/clean-strayfiles.part
+. $base/target/share/clean-strayfiles.part
 
 echo "Root partition size calculation ..."
 root_size=`du -B512 -s root_stage | cut -f 1`

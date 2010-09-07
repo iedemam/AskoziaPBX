@@ -1,0 +1,3 @@
+echo "Documenting software used in this build ..."
+svn info $base > offload_stage/software-information/00-svn-revision-information
+cp ../../var/adm/packages/* offload_stage/software-information/
