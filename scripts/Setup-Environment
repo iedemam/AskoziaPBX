@@ -1,11 +1,24 @@
 #!/bin/sh
-echo "Install mkimage ..."
-mkdir /tmp/setupenvironment
-cd /tmp/setupenvironment
-wget ftp://ftp.denx.de/pub/u-boot/u-boot-2010.03.tar.bz2
-tar jxf u-boot-2010.03.tar.bz2
-cd u-boot-2010.03
-make tools
-cp tools/mkimage /usr/sbin/mkimage
+if [ ! -d /tmp/update-askozia-environment ] ; then \
+	mkdir /tmp/update-askozia-environment
+fi
 
-echo "done"
+cd /tmp/update-askozia-environment
+
+if [ ! -f /usr/sbin/mkimage ] ; then \
+	echo "Install mkimage ..."
+	wget ftp://ftp.denx.de/pub/u-boot/u-boot-2010.03.tar.bz2
+	tar jxf u-boot-2010.03.tar.bz2
+	cd u-boot-2010.03
+	make tools
+	cp tools/mkimage /usr/sbin/mkimage
+fi
+
+if [ ! -f /usr/bin/jsmin ] ; then \
+	echo "Install jsmin ..."
+	wget http://www.crockford.com/javascript/jsmin.c
+	gcc jsmin.c -o jsmin
+	cp jsmin /usr/bin/jsmin
+fi
+
+rm -rf /tmp/update-askozia-environment
