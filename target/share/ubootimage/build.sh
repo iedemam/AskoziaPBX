@@ -135,6 +135,8 @@ chmod 755 offload_stage/rootfs/usr/www_provisioning/*.php
 
 . $base/target/share/clean-prompts.part
 
+. $base/target/share/shrink-javascript.part
+
 . $base/target/share/stamp-softwareinformation.part
 
 . $base/target/share/clean-strayfiles.part

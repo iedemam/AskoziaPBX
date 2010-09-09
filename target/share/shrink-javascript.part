@@ -1,0 +1,7 @@
+for FILE in `find offload_stage/rootfs/usr/www/ -name *.js`
+do
+TMP="${FILE}.minified"
+jsmin <$FILE >$TMP
+cp $TMP $FILE
+rm -f $TMP
+done
