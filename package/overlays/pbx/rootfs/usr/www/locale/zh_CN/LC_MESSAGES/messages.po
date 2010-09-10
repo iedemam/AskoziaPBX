@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-07 20:01+0200\n"
+"POT-Creation-Date: 2010-09-10 15:18+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1059,30 +1059,6 @@ msgstr "软件包"
 msgid "Status"
 msgstr "状态"
 
-msgid "add a new item"
-msgstr "添加一个新项目"
-
-msgid "item is disabled, click to enable"
-msgstr "项目是禁用的，点击启用"
-
-msgid "item is enabled, click to disable"
-msgstr "项目是启用的，点击禁用"
-
-msgid "edit an item"
-msgstr "编辑一个项目"
-
-msgid "permanently delete an item"
-msgstr "永久删除一个项目"
-
-msgid "check for package updates"
-msgstr "检查软件包更新"
-
-msgid "restore a backup archive"
-msgstr "恢复一个备份的文档"
-
-msgid "download a backup archive"
-msgstr "下载备份文档"
-
 msgid "webGUI Configuration"
 msgstr "网页设置界面"
 
@@ -1362,14 +1338,6 @@ msgid "HIDE"
 msgstr ""
 
 #, fuzzy
-msgid ""
-"Fax Accounts allow you to connect fax machines to your system as well as "
-"convert incoming faxes to e-mails. Click a fax type below to get started."
-msgstr ""
-"电话帐号，允许你设置内部分机和供应商账号对他们的访问。点击下面的一个帐号类型"
-"来开始。"
-
-#, fuzzy
 msgid "Virtual"
 msgstr "葡萄牙"
 
@@ -1400,13 +1368,6 @@ msgstr "真的要删除这个电话？"
 msgid "delete fax"
 msgstr "删除电话"
 
-msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
-msgstr ""
-"电话帐号，允许你设置内部分机和供应商账号对他们的访问。点击下面的一个帐号类型"
-"来开始。"
-
 msgid "External"
 msgstr "外部"
 
@@ -1436,14 +1397,6 @@ msgstr ""
 
 msgid "Dialstring"
 msgstr "拨号串"
-
-msgid ""
-"Provider Accounts allow you to configure routes to and from external sources "
-"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
-"Click an account type below to get started."
-msgstr ""
-"通过提供商账号允许您设置与外部来源来往的路由。(即VoIP服务提供商或附加的ISDN/"
-"模拟电话接口的硬件)。点击下面的一个账号开始。"
 
 msgid "Pattern(s)"
 msgstr "模式"
@@ -1894,14 +1847,6 @@ msgstr "秘密"
 msgid "Application Logic"
 msgstr "应用"
 
-msgid ""
-"Groups of extensions can be configured to ring concurrently. These groups "
-"can then be dialed via their defined extensions or used as a destination for "
-"incoming calls from Providers."
-msgstr ""
-"分机扩展的组可以被设置为同时响铃。这些组可以被各自预定的扩展分机拨通或者用作"
-"提供商来电的目的地。"
-
 msgid "edit call group"
 msgstr "编辑通话组"
 
@@ -1922,11 +1867,6 @@ msgstr "组名"
 
 msgid "Internal extension used to reach this call group."
 msgstr "内部分机用于联络这个通话组。"
-
-msgid ""
-"A variety of settings are here which define how call transfers and call "
-"parking are handled. The defaults should work in most situations."
-msgstr "关于一个呼叫转移和呼叫停泊的多样化设置。默认设置适用于大多数情况。"
 
 msgid "A valid parking start position must be specified."
 msgstr "必须指定一个有效的停泊开始位置。"
@@ -2249,15 +2189,6 @@ msgstr "界面"
 msgid "Wireless"
 msgstr "无线"
 
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"如果在现有的系统中有一个兼容的无线网卡，那么他可以被配置成为一个接入点。它会"
-"被桥接到AskoziaPBX连接的有线网络。"
-
 msgid "SSID,Channel"
 msgstr "SSID，信道"
 
@@ -2383,18 +2314,6 @@ msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
 msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"本页的设置对确保连接到VoIP供应商十分重要。实际上，不正确的网络设置可能造成电"
-"话无法接入。如果这个系统在一个NAT后，默认情况下，AskoziaPBX需要以下的端口映"
-"射：5060 UDP(SIP),4569 UDP(IAX)和10000-10200 UDP (RTP Audio)"
 
 msgid "A valid MAC address must be specified."
 msgstr "必须指定一个有效的MAC地址"
@@ -2539,13 +2458,6 @@ msgstr "改变您计算机的IP地址"
 
 msgid "access the webGUI with the new IP address"
 msgstr "用一个新IP地址访问网页界面"
-
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"为了通过电子邮件发送错过电话通知和记录下的语音信息，这里需要正确的配置一个邮"
-"件服务器。"
 
 msgid "A valid e-mail address must be specified."
 msgstr "必须指定一个有效的e-mail地址。"
@@ -2914,15 +2826,6 @@ msgid ""
 "entered above."
 msgstr "一些提供商需要单独的'from'域。<br>默认主机填在上面。"
 
-msgid ""
-"Conference rooms with optional pin authentication can be configured here. "
-"The system's performance is the only limiting factor on the number of "
-"concurrent members. These rooms can then be dialed via their defined "
-"extensions or used as a destination for incoming calls from Providers."
-msgstr ""
-"会议室以及可选的密码验证可以在这里被设置。系统配置是影响最大参与者数量的唯一"
-"因素。这些房间可以被预设的分机拨通或者作为提供商来电的目的地。"
-
 msgid "Room Number"
 msgstr "房间号"
 
@@ -3090,15 +2993,6 @@ msgstr ""
 msgid "Network"
 msgstr "网络"
 
-msgid ""
-"This is the first page which needs configuring upon installing a new system. "
-"Most importantly, the default password should be changed. Then, ensure your "
-"host/domain name, time zone and country's indication tones are set correctly "
-"before continuing."
-msgstr ""
-"这是第一页需要设置的，然后安装一个新系统。最重要的是，需要改变默认的密码。然"
-"后，确认您的主机名和域名，时区以及国家提示音在继续前已被设好"
-
 msgid "Hostname,Domain,Username"
 msgstr "主机名，域，用户名"
 
@@ -3215,10 +3109,6 @@ msgstr "NTP时间服务器"
 msgid "Enter a server to synchronize with."
 msgstr ""
 
-msgid ""
-"The entire system configuration can be backed up and restored via this page."
-msgstr "通过本页可以恢复和备份整个系统设置。"
-
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr "设置已被恢复还原。PBX正在重启。"
 
@@ -3277,16 +3167,6 @@ msgstr "是"
 
 msgid "No"
 msgstr "不"
-
-msgid ""
-"AskoziaPBX's firmware can be kept up to date here. The system's "
-"configuration will be maintained through the upgrade. The system will reboot "
-"automatically after installing the new firmware. Firmware images of formal "
-"releases are digitally signed before distribution and checked upon "
-"installation."
-msgstr ""
-"AskoziaPBX的固件可以在这里不断更新。系统设置在升级后将得到保持。升级后系统将"
-"自动重启。正式版的固件镜像在发布前都经过数字签名和安装测试。"
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
@@ -3443,6 +3323,127 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#~ msgid "add a new item"
+#~ msgstr "添加一个新项目"
+
+#~ msgid "item is disabled, click to enable"
+#~ msgstr "项目是禁用的，点击启用"
+
+#~ msgid "item is enabled, click to disable"
+#~ msgstr "项目是启用的，点击禁用"
+
+#~ msgid "edit an item"
+#~ msgstr "编辑一个项目"
+
+#~ msgid "permanently delete an item"
+#~ msgstr "永久删除一个项目"
+
+#~ msgid "check for package updates"
+#~ msgstr "检查软件包更新"
+
+#~ msgid "restore a backup archive"
+#~ msgstr "恢复一个备份的文档"
+
+#~ msgid "download a backup archive"
+#~ msgstr "下载备份文档"
+
+#, fuzzy
+#~ msgid ""
+#~ "Fax Accounts allow you to connect fax machines to your system as well as "
+#~ "convert incoming faxes to e-mails. Click a fax type below to get started."
+#~ msgstr ""
+#~ "电话帐号，允许你设置内部分机和供应商账号对他们的访问。点击下面的一个帐号类"
+#~ "型来开始。"
+
+#~ msgid ""
+#~ "Phone Accounts allow you to configure internal extensions and their "
+#~ "access to Provider Accounts. Click an account type below to get started."
+#~ msgstr ""
+#~ "电话帐号，允许你设置内部分机和供应商账号对他们的访问。点击下面的一个帐号类"
+#~ "型来开始。"
+
+#~ msgid ""
+#~ "Provider Accounts allow you to configure routes to and from external "
+#~ "sources (i.e. VoIP service providers or attached ISDN / Analog interface "
+#~ "hardware). Click an account type below to get started."
+#~ msgstr ""
+#~ "通过提供商账号允许您设置与外部来源来往的路由。(即VoIP服务提供商或附加的"
+#~ "ISDN/模拟电话接口的硬件)。点击下面的一个账号开始。"
+
+#~ msgid ""
+#~ "Groups of extensions can be configured to ring concurrently. These groups "
+#~ "can then be dialed via their defined extensions or used as a destination "
+#~ "for incoming calls from Providers."
+#~ msgstr ""
+#~ "分机扩展的组可以被设置为同时响铃。这些组可以被各自预定的扩展分机拨通或者用"
+#~ "作提供商来电的目的地。"
+
+#~ msgid ""
+#~ "A variety of settings are here which define how call transfers and call "
+#~ "parking are handled. The defaults should work in most situations."
+#~ msgstr "关于一个呼叫转移和呼叫停泊的多样化设置。默认设置适用于大多数情况。"
+
+#, fuzzy
+#~ msgid ""
+#~ "If a compatible wireless card is present in the system, it can be "
+#~ "configured to act as an Access Point. It will be bridged to the wired "
+#~ "network that the PBX is connected to."
+#~ msgstr ""
+#~ "如果在现有的系统中有一个兼容的无线网卡，那么他可以被配置成为一个接入点。它"
+#~ "会被桥接到AskoziaPBX连接的有线网络。"
+
+#, fuzzy
+#~ msgid ""
+#~ "The settings on this page are critical to ensuring connectivity to VoIP "
+#~ "Providers. In particular, incorrect Topology settings can prevent "
+#~ "incoming calls from connecting. If this system is behind a NAT, by "
+#~ "default the system requires the following ports be forwarded to it: 5060 "
+#~ "UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
+#~ msgstr ""
+#~ "本页的设置对确保连接到VoIP供应商十分重要。实际上，不正确的网络设置可能造成"
+#~ "电话无法接入。如果这个系统在一个NAT后，默认情况下，AskoziaPBX需要以下的端"
+#~ "口映射：5060 UDP(SIP),4569 UDP(IAX)和10000-10200 UDP (RTP Audio)"
+
+#~ msgid ""
+#~ "In order to send missed call notifications and recorded voicemail "
+#~ "messages via e-mail, a mail server must be correctly configured here."
+#~ msgstr ""
+#~ "为了通过电子邮件发送错过电话通知和记录下的语音信息，这里需要正确的配置一个"
+#~ "邮件服务器。"
+
+#~ msgid ""
+#~ "Conference rooms with optional pin authentication can be configured here. "
+#~ "The system's performance is the only limiting factor on the number of "
+#~ "concurrent members. These rooms can then be dialed via their defined "
+#~ "extensions or used as a destination for incoming calls from Providers."
+#~ msgstr ""
+#~ "会议室以及可选的密码验证可以在这里被设置。系统配置是影响最大参与者数量的唯"
+#~ "一因素。这些房间可以被预设的分机拨通或者作为提供商来电的目的地。"
+
+#~ msgid ""
+#~ "This is the first page which needs configuring upon installing a new "
+#~ "system. Most importantly, the default password should be changed. Then, "
+#~ "ensure your host/domain name, time zone and country's indication tones "
+#~ "are set correctly before continuing."
+#~ msgstr ""
+#~ "这是第一页需要设置的，然后安装一个新系统。最重要的是，需要改变默认的密码。"
+#~ "然后，确认您的主机名和域名，时区以及国家提示音在继续前已被设好"
+
+#~ msgid ""
+#~ "The entire system configuration can be backed up and restored via this "
+#~ "page."
+#~ msgstr "通过本页可以恢复和备份整个系统设置。"
+
+#~ msgid ""
+#~ "AskoziaPBX's firmware can be kept up to date here. The system's "
+#~ "configuration will be maintained through the upgrade. The system will "
+#~ "reboot automatically after installing the new firmware. Firmware images "
+#~ "of formal releases are digitally signed before distribution and checked "
+#~ "upon installation."
+#~ msgstr ""
+#~ "AskoziaPBX的固件可以在这里不断更新。系统设置在升级后将得到保持。升级后系统"
+#~ "将自动重启。正式版的固件镜像在发布前都经过数字签名和安装测试。"
 
 #, fuzzy
 #~ msgid "Enter a name for this fax."

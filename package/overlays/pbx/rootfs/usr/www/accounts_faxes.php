@@ -40,8 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Accounts"), gettext("Faxes"));
-$pghelp = gettext("Fax Accounts allow you to connect fax machines to your system as well as convert incoming faxes to e-mails. Click a fax type below to get started.");
-$pglegend = array("add", "enabled", "disabled", "edit", "delete");
 
 /* delete */
 if ($_GET['action'] == "delete") {

@@ -40,7 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Notifications"), gettext("E-Mail"));
-$pghelp = gettext("In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here.");
 
 $pconfig = notifications_get_email_configuration();
 

@@ -40,8 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Accounts"), gettext("Providers"));
-$pghelp = gettext("Provider Accounts allow you to configure routes to and from external sources (i.e. VoIP service providers or attached ISDN / Analog interface hardware). Click an account type below to get started.");
-$pglegend = array("add", "enabled", "disabled", "edit", "delete");
 
 /* delete */
 if ($_GET['action'] == "delete") {

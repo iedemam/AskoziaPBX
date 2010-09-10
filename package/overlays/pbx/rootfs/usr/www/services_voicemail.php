@@ -40,7 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("Voicemail"));
-$pghelp = "";
 
 $pconfig = voicemail_get_configuration();
 

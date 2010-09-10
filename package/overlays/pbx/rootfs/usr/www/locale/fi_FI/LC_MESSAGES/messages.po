@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-07 20:01+0200\n"
+"POT-Creation-Date: 2010-09-10 15:18+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1074,30 +1074,6 @@ msgstr "Paketit"
 msgid "Status"
 msgstr "Status"
 
-msgid "add a new item"
-msgstr "lisää uusi"
-
-msgid "item is disabled, click to enable"
-msgstr "poissa käytöstä, klikkaa palauttaaksesi käyttöön"
-
-msgid "item is enabled, click to disable"
-msgstr "käytöstä, klikkaa poistaaksesi käytöstä"
-
-msgid "edit an item"
-msgstr "muokkaa"
-
-msgid "permanently delete an item"
-msgstr "poista pysyvästi"
-
-msgid "check for package updates"
-msgstr "tarkista jos löytyy paketeille päivityksiä"
-
-msgid "restore a backup archive"
-msgstr "palauta varmuuskopiosta"
-
-msgid "download a backup archive"
-msgstr "Lataa varmuuskopio"
-
 msgid "webGUI Configuration"
 msgstr "Verkkokäyttöliittymän Konfigurointi"
 
@@ -1370,14 +1346,6 @@ msgid "HIDE"
 msgstr "PIILOTA"
 
 #, fuzzy
-msgid ""
-"Fax Accounts allow you to connect fax machines to your system as well as "
-"convert incoming faxes to e-mails. Click a fax type below to get started."
-msgstr ""
-"Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
-"Tiliin. Klikkaa tilityyppiä aloittaaksesi."
-
-#, fuzzy
 msgid "Virtual"
 msgstr "Portugali"
 
@@ -1408,13 +1376,6 @@ msgstr "Oletko varma että haluat poistaa tämän puhelimen?"
 msgid "delete fax"
 msgstr "poista puhelin"
 
-msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
-msgstr ""
-"Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
-"Tiliin. Klikkaa tilityyppiä aloittaaksesi."
-
 msgid "External"
 msgstr "Ulkoinen"
 
@@ -1444,15 +1405,6 @@ msgstr ""
 
 msgid "Dialstring"
 msgstr "Soittotunnus"
-
-msgid ""
-"Provider Accounts allow you to configure routes to and from external sources "
-"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
-"Click an account type below to get started."
-msgstr ""
-"Voit konfiguroida reittejä ulkoisille lähteille (esim. VoIP "
-"palveluntarjoajille tai attached ISDN / Analogi käyttöliittymä "
-"laitteistolle). Klikkaa tilityyppiä aloittaaksesi."
 
 msgid "Pattern(s)"
 msgstr "Kaavat(s)"
@@ -1920,15 +1872,6 @@ msgstr "Salaisuus"
 msgid "Application Logic"
 msgstr "Sovellus"
 
-msgid ""
-"Groups of extensions can be configured to ring concurrently. These groups "
-"can then be dialed via their defined extensions or used as a destination for "
-"incoming calls from Providers."
-msgstr ""
-"Ryhmä jatkeita voi konfiguroida soimaan samaanaikaiseksi. Näille ryhmille "
-"voi sitten soittaa heidän jatkeilla tai käyttää päämäräänä sisääntuleville "
-"puheluille palveluntarjoajilta."
-
 msgid "edit call group"
 msgstr "muokkaa puheluryhmää"
 
@@ -1949,13 +1892,6 @@ msgstr "Ryhmän nimi"
 
 msgid "Internal extension used to reach this call group."
 msgstr "Sisäinen jatke käytetty tämän ryhmän tavoittamiseen."
-
-msgid ""
-"A variety of settings are here which define how call transfers and call "
-"parking are handled. The defaults should work in most situations."
-msgstr ""
-"Nämä asetukset määrittää miten puheluiden siirrot ja pysäköinti toimii. "
-"Oletukset pitäisi toimia useimissa tapauksissa."
 
 msgid "A valid parking start position must be specified."
 msgstr "Kelpaava pysäköinti aloituskohta on määritettävä."
@@ -2285,16 +2221,6 @@ msgstr "Käyttöliittymät"
 msgid "Wireless"
 msgstr "Langaton"
 
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Jos yhteensopiva w-lan kortti on läsnä, sitä voi konfiguroida niin että se "
-"toimii tukiasemana. Se tulee olemaan sillattuna langalliseen verkkoon johon "
-"AskoziaPBX on kytketty."
-
 msgid "SSID,Channel"
 msgstr "SSID,Kanava"
 
@@ -2430,20 +2356,6 @@ msgid ""
 msgstr ""
 "104 (128) tavuinen avain on annettava 13 ASCII merkillä tai 26 HEX "
 "numeroilla jonka ennen tulee laittaa '0x'."
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"Asetukset tällä sivulla ovat kriittiset varmistaaksesi yhteys VoIP "
-"Palveluntarjoajille. Erityisesti väärä Topologia asetus voi aiheuttaa sitä "
-"että sisäntulevat puhelut eivät yhdistä. Jos järjestelmä on NAT:in takana, "
-"AskoziaPBX vaatii että seuraavat portit ovat välitetty sille: 5060 UDP "
-"(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Ääni)"
 
 msgid "A valid MAC address must be specified."
 msgstr "Kelpaava MAC osoite on oltava määritetty."
@@ -2596,13 +2508,6 @@ msgstr "vaihda IP osoite tälle tietokoneelle"
 
 msgid "access the webGUI with the new IP address"
 msgstr "avaa verkkokäyttöliittymää uudelleen uudella IP osoitteella"
-
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Jotta voi lähettää vastaamaton puhelu ilmoituksia ja vastaaja viestejä "
-"sähköpostiin, s-posti palvelin on oltava oikein määritetty."
 
 msgid "A valid e-mail address must be specified."
 msgstr "Kelpaava s-posti osoite on oltava määritetty."
@@ -2984,16 +2889,6 @@ msgstr ""
 "Jotkut palveluntarjoajat haluavat erillisen 'verkkotunnukselta' tunnuksen."
 "<br> Oletus on ylhäällä annettu isäntänimi"
 
-msgid ""
-"Conference rooms with optional pin authentication can be configured here. "
-"The system's performance is the only limiting factor on the number of "
-"concurrent members. These rooms can then be dialed via their defined "
-"extensions or used as a destination for incoming calls from Providers."
-msgstr ""
-"Konferenssi huoneet jolla on valinnainen pin varmennus voi konfiguroida "
-"tällä. Järjestelmän suorituskyky on ainoa rajoitus samanaikaseen käyttäjien "
-"määrään."
-
 msgid "Room Number"
 msgstr "Huoneen Numero"
 
@@ -3162,17 +3057,6 @@ msgstr ""
 msgid "Network"
 msgstr "Verkko"
 
-msgid ""
-"This is the first page which needs configuring upon installing a new system. "
-"Most importantly, the default password should be changed. Then, ensure your "
-"host/domain name, time zone and country's indication tones are set correctly "
-"before continuing."
-msgstr ""
-"Tämä on ensimmäinen sivu jota tarvitsee konfiguroida kun uusi järjestelmä "
-"asennetaan.Tärkeintä on, että oletus salasana muutetaan. Myös isäntänimi/"
-"verkkotunnus, aikavyöhyke ja maan merkkiäänivyöhyke on oltava oikein "
-"konfiguroitu."
-
 msgid "Hostname,Domain,Username"
 msgstr "Isäntänimi,Verkkotunnus,Käyttäjänimi"
 
@@ -3293,11 +3177,6 @@ msgstr "NTP aikaserveri"
 msgid "Enter a server to synchronize with."
 msgstr ""
 
-msgid ""
-"The entire system configuration can be backed up and restored via this page."
-msgstr ""
-"Järjestelmän konfigurointia voi varmuuskopioida ja palauttaa tällä sivulla."
-
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr "Konfigurointi on entisöity. PBX käynnistyy uudelleen."
 
@@ -3361,18 +3240,6 @@ msgstr "Kyllä"
 
 msgid "No"
 msgstr "Ei"
-
-msgid ""
-"AskoziaPBX's firmware can be kept up to date here. The system's "
-"configuration will be maintained through the upgrade. The system will reboot "
-"automatically after installing the new firmware. Firmware images of formal "
-"releases are digitally signed before distribution and checked upon "
-"installation."
-msgstr ""
-"AskoziaPBX:än laiteohjelmistoa voi päivittää täällä. Järjestelmän "
-"konfigurointi ei häviä tässä prosessissa. Järjestelmä käynnistyy "
-"automaattisesti uudelleen päivityksen jälkeen. Viralliset laiteohjelmisto-"
-"levykuvat ovat digitaalisesti allekirjoitettuja ja tarkistettu asennuksessa."
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
@@ -3533,6 +3400,142 @@ msgstr "ERR Konfigurointia ei pystytty asentamaan.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Viallinen konfigurointi vastaanotettu.\n"
+
+#~ msgid "add a new item"
+#~ msgstr "lisää uusi"
+
+#~ msgid "item is disabled, click to enable"
+#~ msgstr "poissa käytöstä, klikkaa palauttaaksesi käyttöön"
+
+#~ msgid "item is enabled, click to disable"
+#~ msgstr "käytöstä, klikkaa poistaaksesi käytöstä"
+
+#~ msgid "edit an item"
+#~ msgstr "muokkaa"
+
+#~ msgid "permanently delete an item"
+#~ msgstr "poista pysyvästi"
+
+#~ msgid "check for package updates"
+#~ msgstr "tarkista jos löytyy paketeille päivityksiä"
+
+#~ msgid "restore a backup archive"
+#~ msgstr "palauta varmuuskopiosta"
+
+#~ msgid "download a backup archive"
+#~ msgstr "Lataa varmuuskopio"
+
+#, fuzzy
+#~ msgid ""
+#~ "Fax Accounts allow you to connect fax machines to your system as well as "
+#~ "convert incoming faxes to e-mails. Click a fax type below to get started."
+#~ msgstr ""
+#~ "Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
+#~ "Tiliin. Klikkaa tilityyppiä aloittaaksesi."
+
+#~ msgid ""
+#~ "Phone Accounts allow you to configure internal extensions and their "
+#~ "access to Provider Accounts. Click an account type below to get started."
+#~ msgstr ""
+#~ "Voit konfiguroida sisäiset jatkeet ja niitten pääsy Palveluntarjoajan "
+#~ "Tiliin. Klikkaa tilityyppiä aloittaaksesi."
+
+#~ msgid ""
+#~ "Provider Accounts allow you to configure routes to and from external "
+#~ "sources (i.e. VoIP service providers or attached ISDN / Analog interface "
+#~ "hardware). Click an account type below to get started."
+#~ msgstr ""
+#~ "Voit konfiguroida reittejä ulkoisille lähteille (esim. VoIP "
+#~ "palveluntarjoajille tai attached ISDN / Analogi käyttöliittymä "
+#~ "laitteistolle). Klikkaa tilityyppiä aloittaaksesi."
+
+#~ msgid ""
+#~ "Groups of extensions can be configured to ring concurrently. These groups "
+#~ "can then be dialed via their defined extensions or used as a destination "
+#~ "for incoming calls from Providers."
+#~ msgstr ""
+#~ "Ryhmä jatkeita voi konfiguroida soimaan samaanaikaiseksi. Näille ryhmille "
+#~ "voi sitten soittaa heidän jatkeilla tai käyttää päämäräänä "
+#~ "sisääntuleville puheluille palveluntarjoajilta."
+
+#~ msgid ""
+#~ "A variety of settings are here which define how call transfers and call "
+#~ "parking are handled. The defaults should work in most situations."
+#~ msgstr ""
+#~ "Nämä asetukset määrittää miten puheluiden siirrot ja pysäköinti toimii. "
+#~ "Oletukset pitäisi toimia useimissa tapauksissa."
+
+#, fuzzy
+#~ msgid ""
+#~ "If a compatible wireless card is present in the system, it can be "
+#~ "configured to act as an Access Point. It will be bridged to the wired "
+#~ "network that the PBX is connected to."
+#~ msgstr ""
+#~ "Jos yhteensopiva w-lan kortti on läsnä, sitä voi konfiguroida niin että "
+#~ "se toimii tukiasemana. Se tulee olemaan sillattuna langalliseen verkkoon "
+#~ "johon AskoziaPBX on kytketty."
+
+#, fuzzy
+#~ msgid ""
+#~ "The settings on this page are critical to ensuring connectivity to VoIP "
+#~ "Providers. In particular, incorrect Topology settings can prevent "
+#~ "incoming calls from connecting. If this system is behind a NAT, by "
+#~ "default the system requires the following ports be forwarded to it: 5060 "
+#~ "UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
+#~ msgstr ""
+#~ "Asetukset tällä sivulla ovat kriittiset varmistaaksesi yhteys VoIP "
+#~ "Palveluntarjoajille. Erityisesti väärä Topologia asetus voi aiheuttaa "
+#~ "sitä että sisäntulevat puhelut eivät yhdistä. Jos järjestelmä on NAT:in "
+#~ "takana, AskoziaPBX vaatii että seuraavat portit ovat välitetty sille: "
+#~ "5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Ääni)"
+
+#~ msgid ""
+#~ "In order to send missed call notifications and recorded voicemail "
+#~ "messages via e-mail, a mail server must be correctly configured here."
+#~ msgstr ""
+#~ "Jotta voi lähettää vastaamaton puhelu ilmoituksia ja vastaaja viestejä "
+#~ "sähköpostiin, s-posti palvelin on oltava oikein määritetty."
+
+#~ msgid ""
+#~ "Conference rooms with optional pin authentication can be configured here. "
+#~ "The system's performance is the only limiting factor on the number of "
+#~ "concurrent members. These rooms can then be dialed via their defined "
+#~ "extensions or used as a destination for incoming calls from Providers."
+#~ msgstr ""
+#~ "Konferenssi huoneet jolla on valinnainen pin varmennus voi konfiguroida "
+#~ "tällä. Järjestelmän suorituskyky on ainoa rajoitus samanaikaseen "
+#~ "käyttäjien määrään."
+
+#~ msgid ""
+#~ "This is the first page which needs configuring upon installing a new "
+#~ "system. Most importantly, the default password should be changed. Then, "
+#~ "ensure your host/domain name, time zone and country's indication tones "
+#~ "are set correctly before continuing."
+#~ msgstr ""
+#~ "Tämä on ensimmäinen sivu jota tarvitsee konfiguroida kun uusi järjestelmä "
+#~ "asennetaan.Tärkeintä on, että oletus salasana muutetaan. Myös isäntänimi/"
+#~ "verkkotunnus, aikavyöhyke ja maan merkkiäänivyöhyke on oltava oikein "
+#~ "konfiguroitu."
+
+#~ msgid ""
+#~ "The entire system configuration can be backed up and restored via this "
+#~ "page."
+#~ msgstr ""
+#~ "Järjestelmän konfigurointia voi varmuuskopioida ja palauttaa tällä "
+#~ "sivulla."
+
+#~ msgid ""
+#~ "AskoziaPBX's firmware can be kept up to date here. The system's "
+#~ "configuration will be maintained through the upgrade. The system will "
+#~ "reboot automatically after installing the new firmware. Firmware images "
+#~ "of formal releases are digitally signed before distribution and checked "
+#~ "upon installation."
+#~ msgstr ""
+#~ "AskoziaPBX:än laiteohjelmistoa voi päivittää täällä. Järjestelmän "
+#~ "konfigurointi ei häviä tässä prosessissa. Järjestelmä käynnistyy "
+#~ "automaattisesti uudelleen päivityksen jälkeen. Viralliset laiteohjelmisto-"
+#~ "levykuvat ovat digitaalisesti allekirjoitettuja ja tarkistettu "
+#~ "asennuksessa."
 
 #, fuzzy
 #~ msgid "Enter a name for this fax."

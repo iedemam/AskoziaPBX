@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-07 20:01+0200\n"
+"POT-Creation-Date: 2010-09-10 15:18+0200\n"
 "PO-Revision-Date: 2008-09-12 20:05+0100\n"
 "Last-Translator: David Moravec <info@easywifi.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1040,30 +1040,6 @@ msgstr "Balíčky"
 msgid "Status"
 msgstr "Stav"
 
-msgid "add a new item"
-msgstr "přidat nový záznam"
-
-msgid "item is disabled, click to enable"
-msgstr "účet je neaktivní, kliknutím účet aktivujete"
-
-msgid "item is enabled, click to disable"
-msgstr "účet je aktivní, kliknutím účet deaktivujete"
-
-msgid "edit an item"
-msgstr "změnit položku"
-
-msgid "permanently delete an item"
-msgstr "trvale odstranit položku"
-
-msgid "check for package updates"
-msgstr "aktualizuj balíček"
-
-msgid "restore a backup archive"
-msgstr "obnov balíček ze zálohy"
-
-msgid "download a backup archive"
-msgstr "vytvoř zálohu balíčku"
-
 msgid "webGUI Configuration"
 msgstr "webGUI konfigurace"
 
@@ -1334,14 +1310,6 @@ msgid "HIDE"
 msgstr ""
 
 #, fuzzy
-msgid ""
-"Fax Accounts allow you to connect fax machines to your system as well as "
-"convert incoming faxes to e-mails. Click a fax type below to get started."
-msgstr ""
-"Pomocí Telefonních účtů nastavíte interní provolby a jejich přístup k účtům "
-"poskytovatel volání. Začněte kliknutím na příslušný typ protokolu níže."
-
-#, fuzzy
 msgid "Virtual"
 msgstr "Portugalsko"
 
@@ -1372,13 +1340,6 @@ msgstr "Opravdu chcete smazat tento telefonní účet?"
 msgid "delete fax"
 msgstr "smazat účet"
 
-msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
-msgstr ""
-"Pomocí Telefonních účtů nastavíte interní provolby a jejich přístup k účtům "
-"poskytovatel volání. Začněte kliknutím na příslušný typ protokolu níže."
-
 msgid "External"
 msgstr "Externí"
 
@@ -1408,15 +1369,6 @@ msgstr ""
 
 msgid "Dialstring"
 msgstr ""
-
-msgid ""
-"Provider Accounts allow you to configure routes to and from external sources "
-"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
-"Click an account type below to get started."
-msgstr ""
-"Účty operátorů umožnují nastavit směrování do a z externích zdrojů (např. "
-"VoIP operátori nebo připojené ISDN / analogové hardwarové rozhraní). Pro "
-"začátek klikněte na příslušný typ účtu."
 
 msgid "Pattern(s)"
 msgstr "Šablona(y)"
@@ -1858,12 +1810,6 @@ msgstr ""
 msgid "Application Logic"
 msgstr ""
 
-msgid ""
-"Groups of extensions can be configured to ring concurrently. These groups "
-"can then be dialed via their defined extensions or used as a destination for "
-"incoming calls from Providers."
-msgstr ""
-
 msgid "edit call group"
 msgstr ""
 
@@ -1883,11 +1829,6 @@ msgid "Group name"
 msgstr ""
 
 msgid "Internal extension used to reach this call group."
-msgstr ""
-
-msgid ""
-"A variety of settings are here which define how call transfers and call "
-"parking are handled. The defaults should work in most situations."
 msgstr ""
 
 msgid "A valid parking start position must be specified."
@@ -2205,16 +2146,6 @@ msgstr "Rozhraní"
 msgid "Wireless"
 msgstr "Bezdrátová síť"
 
-#, fuzzy
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-"Jesliže je v systému přítomna kompatibilní síťová karta, může být "
-"nakonfigurována jako přístupový bod. Takvý přístupový bod bude přemostěn se "
-"síťovým rohraním, na kterém je provozována AskoziaPBX."
-
 msgid "SSID,Channel"
 msgstr ""
 
@@ -2338,20 +2269,6 @@ msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
 msgstr ""
-
-#, fuzzy
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
-msgstr ""
-"Nastavení na této stránce jsou důležitá k zajištění spojení s Operátory "
-"VoIP. Konkrétné v případě nesprávného nastavení Topologie nemusí být "
-"příchozí hovory spojeny. Jestliže je tento systém za NATem, standardně "
-"vyžaduje AskoziaPBX, aby na ni byly přesměrovány tyto porty: 5060 UDP (SIP), "
-"4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
 
 msgid "A valid MAC address must be specified."
 msgstr ""
@@ -2498,13 +2415,6 @@ msgstr "změnit adresu IP vašeho počítače"
 
 msgid "access the webGUI with the new IP address"
 msgstr "přihlásit se do webGUI s novou adresou IP"
-
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Aby bylo možné e-mailem zasílat upozornění na zmeškané hovory a zprávy "
-"nahrané do hlasové schránky, musí být správně nastaven SMTP server."
 
 msgid "A valid e-mail address must be specified."
 msgstr ""
@@ -2868,13 +2778,6 @@ msgstr ""
 "Někteří operátoři vyžadují samostatnou 'from' doménu. <br>Odpovídá hostiteli "
 "zadanému výše."
 
-msgid ""
-"Conference rooms with optional pin authentication can be configured here. "
-"The system's performance is the only limiting factor on the number of "
-"concurrent members. These rooms can then be dialed via their defined "
-"extensions or used as a destination for incoming calls from Providers."
-msgstr ""
-
 msgid "Room Number"
 msgstr "Číslo konference"
 
@@ -3039,16 +2942,6 @@ msgstr ""
 msgid "Network"
 msgstr "Síť"
 
-msgid ""
-"This is the first page which needs configuring upon installing a new system. "
-"Most importantly, the default password should be changed. Then, ensure your "
-"host/domain name, time zone and country's indication tones are set correctly "
-"before continuing."
-msgstr ""
-"Toto je první nastavení, které by mělo být provedeno po instalaci systému. "
-"Nejdůležitější je změnit heslo. Než budete pokračovat dále, ujistětě se, že "
-"jste správně nastavili název hostitele/doménu, časové pásmo a zvuky."
-
 msgid "Hostname,Domain,Username"
 msgstr ""
 
@@ -3163,10 +3056,6 @@ msgstr "NTP server"
 msgid "Enter a server to synchronize with."
 msgstr ""
 
-msgid ""
-"The entire system configuration can be backed up and restored via this page."
-msgstr "Na toté stránce můžete uložita a obnovit konfiguraci systému."
-
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr ""
 
@@ -3227,18 +3116,6 @@ msgstr "Ano"
 
 msgid "No"
 msgstr "Ne"
-
-msgid ""
-"AskoziaPBX's firmware can be kept up to date here. The system's "
-"configuration will be maintained through the upgrade. The system will reboot "
-"automatically after installing the new firmware. Firmware images of formal "
-"releases are digitally signed before distribution and checked upon "
-"installation."
-msgstr ""
-"Zde lze udržovat firmware AskoziaPBX aktuální. Konfigurace systému zůstane "
-"během aktualizace zachována. Po instalaci nového firmware se systém "
-"automaticky restartuje. Před distribucí jsou image soubory prověřeny a "
-"digitálně podepsány."
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
@@ -3389,6 +3266,115 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "add a new item"
+#~ msgstr "přidat nový záznam"
+
+#~ msgid "item is disabled, click to enable"
+#~ msgstr "účet je neaktivní, kliknutím účet aktivujete"
+
+#~ msgid "item is enabled, click to disable"
+#~ msgstr "účet je aktivní, kliknutím účet deaktivujete"
+
+#~ msgid "edit an item"
+#~ msgstr "změnit položku"
+
+#~ msgid "permanently delete an item"
+#~ msgstr "trvale odstranit položku"
+
+#~ msgid "check for package updates"
+#~ msgstr "aktualizuj balíček"
+
+#~ msgid "restore a backup archive"
+#~ msgstr "obnov balíček ze zálohy"
+
+#~ msgid "download a backup archive"
+#~ msgstr "vytvoř zálohu balíčku"
+
+#, fuzzy
+#~ msgid ""
+#~ "Fax Accounts allow you to connect fax machines to your system as well as "
+#~ "convert incoming faxes to e-mails. Click a fax type below to get started."
+#~ msgstr ""
+#~ "Pomocí Telefonních účtů nastavíte interní provolby a jejich přístup k "
+#~ "účtům poskytovatel volání. Začněte kliknutím na příslušný typ protokolu "
+#~ "níže."
+
+#~ msgid ""
+#~ "Phone Accounts allow you to configure internal extensions and their "
+#~ "access to Provider Accounts. Click an account type below to get started."
+#~ msgstr ""
+#~ "Pomocí Telefonních účtů nastavíte interní provolby a jejich přístup k "
+#~ "účtům poskytovatel volání. Začněte kliknutím na příslušný typ protokolu "
+#~ "níže."
+
+#~ msgid ""
+#~ "Provider Accounts allow you to configure routes to and from external "
+#~ "sources (i.e. VoIP service providers or attached ISDN / Analog interface "
+#~ "hardware). Click an account type below to get started."
+#~ msgstr ""
+#~ "Účty operátorů umožnují nastavit směrování do a z externích zdrojů (např. "
+#~ "VoIP operátori nebo připojené ISDN / analogové hardwarové rozhraní). Pro "
+#~ "začátek klikněte na příslušný typ účtu."
+
+#, fuzzy
+#~ msgid ""
+#~ "If a compatible wireless card is present in the system, it can be "
+#~ "configured to act as an Access Point. It will be bridged to the wired "
+#~ "network that the PBX is connected to."
+#~ msgstr ""
+#~ "Jesliže je v systému přítomna kompatibilní síťová karta, může být "
+#~ "nakonfigurována jako přístupový bod. Takvý přístupový bod bude přemostěn "
+#~ "se síťovým rohraním, na kterém je provozována AskoziaPBX."
+
+#, fuzzy
+#~ msgid ""
+#~ "The settings on this page are critical to ensuring connectivity to VoIP "
+#~ "Providers. In particular, incorrect Topology settings can prevent "
+#~ "incoming calls from connecting. If this system is behind a NAT, by "
+#~ "default the system requires the following ports be forwarded to it: 5060 "
+#~ "UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
+#~ msgstr ""
+#~ "Nastavení na této stránce jsou důležitá k zajištění spojení s Operátory "
+#~ "VoIP. Konkrétné v případě nesprávného nastavení Topologie nemusí být "
+#~ "příchozí hovory spojeny. Jestliže je tento systém za NATem, standardně "
+#~ "vyžaduje AskoziaPBX, aby na ni byly přesměrovány tyto porty: 5060 UDP "
+#~ "(SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
+
+#~ msgid ""
+#~ "In order to send missed call notifications and recorded voicemail "
+#~ "messages via e-mail, a mail server must be correctly configured here."
+#~ msgstr ""
+#~ "Aby bylo možné e-mailem zasílat upozornění na zmeškané hovory a zprávy "
+#~ "nahrané do hlasové schránky, musí být správně nastaven SMTP server."
+
+#~ msgid ""
+#~ "This is the first page which needs configuring upon installing a new "
+#~ "system. Most importantly, the default password should be changed. Then, "
+#~ "ensure your host/domain name, time zone and country's indication tones "
+#~ "are set correctly before continuing."
+#~ msgstr ""
+#~ "Toto je první nastavení, které by mělo být provedeno po instalaci "
+#~ "systému. Nejdůležitější je změnit heslo. Než budete pokračovat dále, "
+#~ "ujistětě se, že jste správně nastavili název hostitele/doménu, časové "
+#~ "pásmo a zvuky."
+
+#~ msgid ""
+#~ "The entire system configuration can be backed up and restored via this "
+#~ "page."
+#~ msgstr "Na toté stránce můžete uložita a obnovit konfiguraci systému."
+
+#~ msgid ""
+#~ "AskoziaPBX's firmware can be kept up to date here. The system's "
+#~ "configuration will be maintained through the upgrade. The system will "
+#~ "reboot automatically after installing the new firmware. Firmware images "
+#~ "of formal releases are digitally signed before distribution and checked "
+#~ "upon installation."
+#~ msgstr ""
+#~ "Zde lze udržovat firmware AskoziaPBX aktuální. Konfigurace systému "
+#~ "zůstane během aktualizace zachována. Po instalaci nového firmware se "
+#~ "systém automaticky restartuje. Před distribucí jsou image soubory "
+#~ "prověřeny a digitálně podepsány."
 
 #, fuzzy
 #~ msgid "Enter a name for this fax."

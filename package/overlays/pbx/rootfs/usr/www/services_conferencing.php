@@ -40,8 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("Conferencing"));
-$pghelp = gettext("Conference rooms with optional pin authentication can be configured here. The system's performance is the only limiting factor on the number of concurrent members. These rooms can then be dialed via their defined extensions or used as a destination for incoming calls from Providers.");
-$pglegend = array("add", "edit", "delete");
 
 if (!is_array($config['conferencing']['room']))
 	$config['conferencing']['room'] = array();

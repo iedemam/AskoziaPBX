@@ -40,7 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Dialplan"), gettext("Transfers"));
-$pghelp = gettext("A variety of settings are here which define how call transfers and call parking are handled. The defaults should work in most situations.");
 
 $parkingconfig = &$config['dialplan']['callparking'];
 $featuremapconfig = &$config['dialplan']['featuremap'];

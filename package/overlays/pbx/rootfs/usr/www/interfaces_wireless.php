@@ -33,7 +33,6 @@ require("guiconfig.inc");
 require("interfaces_wlan.inc");
 
 $pgtitle = array(gettext("System"), gettext("Interfaces"), gettext("Wireless"));
-$pghelp = gettext("If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that the PBX is connected to.");
 
 /* XXX : what happens if the wireless interface changes */
 if (!is_array($config['interfaces']['wireless'])) {

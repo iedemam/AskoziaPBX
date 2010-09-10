@@ -40,7 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Dialplan"), gettext("Applications"));
-$pglegend = array("add", "enabled", "disabled", "edit", "delete");
 
 /* delete */
 if ($_GET['action'] == "delete") {

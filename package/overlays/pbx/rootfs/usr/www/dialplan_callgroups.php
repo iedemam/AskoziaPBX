@@ -40,8 +40,6 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Dialplan"), gettext("Call Groups"));
-$pghelp = gettext("Groups of extensions can be configured to ring concurrently. These groups can then be dialed via their defined extensions or used as a destination for incoming calls from Providers.");
-$pglegend = array("add", "edit", "delete");
 
 // XXX this is_array, sort, reference stuff is all over...
 if (!is_array($config['dialplan']['callgroup']))

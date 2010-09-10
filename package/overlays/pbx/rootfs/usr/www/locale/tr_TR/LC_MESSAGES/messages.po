@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-07 20:01+0200\n"
+"POT-Creation-Date: 2010-09-10 15:18+0200\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1005,30 +1005,6 @@ msgstr "Paketler"
 msgid "Status"
 msgstr "Statü"
 
-msgid "add a new item"
-msgstr "yeni bir öğe ekle"
-
-msgid "item is disabled, click to enable"
-msgstr "öğe erksiz kılınmıs, çalıştırmak için tıklayın"
-
-msgid "item is enabled, click to disable"
-msgstr "öğe çalışır duruma, erksiz kılmak için tıklayın"
-
-msgid "edit an item"
-msgstr "öğe düzenleyin"
-
-msgid "permanently delete an item"
-msgstr "öğeyi geri dönüştürülememe şeklinde silin"
-
-msgid "check for package updates"
-msgstr "paket güncelleğini kontrol et"
-
-msgid "restore a backup archive"
-msgstr "yedekleme dosyasını geri dönüştür"
-
-msgid "download a backup archive"
-msgstr "yedekleme dosyasını indir"
-
 msgid "webGUI Configuration"
 msgstr "webGUİ Ayarları"
 
@@ -1296,14 +1272,6 @@ msgid "HIDE"
 msgstr ""
 
 #, fuzzy
-msgid ""
-"Fax Accounts allow you to connect fax machines to your system as well as "
-"convert incoming faxes to e-mails. Click a fax type below to get started."
-msgstr ""
-"Telefon Hesaplar, dahili hatları ve onların sunucu Hesalarını düzenlemenizi "
-"sağlar. İşlemi başlatmak için altta hesap türünü seçin."
-
-#, fuzzy
 msgid "Virtual"
 msgstr "Portekiz"
 
@@ -1334,13 +1302,6 @@ msgstr "Bu telefon silinsin mi?"
 msgid "delete fax"
 msgstr "telefonu sil"
 
-msgid ""
-"Phone Accounts allow you to configure internal extensions and their access "
-"to Provider Accounts. Click an account type below to get started."
-msgstr ""
-"Telefon Hesaplar, dahili hatları ve onların sunucu Hesalarını düzenlemenizi "
-"sağlar. İşlemi başlatmak için altta hesap türünü seçin."
-
 msgid "External"
 msgstr "Harici"
 
@@ -1369,12 +1330,6 @@ msgid "Skinny"
 msgstr ""
 
 msgid "Dialstring"
-msgstr ""
-
-msgid ""
-"Provider Accounts allow you to configure routes to and from external sources "
-"(i.e. VoIP service providers or attached ISDN / Analog interface hardware). "
-"Click an account type below to get started."
 msgstr ""
 
 msgid "Pattern(s)"
@@ -1826,15 +1781,6 @@ msgstr "Gizli"
 msgid "Application Logic"
 msgstr "Uygulama"
 
-msgid ""
-"Groups of extensions can be configured to ring concurrently. These groups "
-"can then be dialed via their defined extensions or used as a destination for "
-"incoming calls from Providers."
-msgstr ""
-"Dahili hat grupları beraber çalmaları sağlanabilir. Bu gruplara onlara "
-"ilişkilendirilen dahili hatlarla erişilir veya hedef olarak operatörlerden "
-"gelen aramlar kullanılır."
-
 msgid "edit call group"
 msgstr "arama grubunu düzenle"
 
@@ -1855,11 +1801,6 @@ msgstr "Grup adı"
 
 msgid "Internal extension used to reach this call group."
 msgstr "Bu arama grubuna ulaşmak için dahili hat."
-
-msgid ""
-"A variety of settings are here which define how call transfers and call "
-"parking are handled. The defaults should work in most situations."
-msgstr ""
 
 msgid "A valid parking start position must be specified."
 msgstr ""
@@ -2178,12 +2119,6 @@ msgstr "Arayüzler"
 msgid "Wireless"
 msgstr "Telsiz"
 
-msgid ""
-"If a compatible wireless card is present in the system, it can be configured "
-"to act as an Access Point. It will be bridged to the wired network that the "
-"PBX is connected to."
-msgstr ""
-
 msgid "SSID,Channel"
 msgstr "SSİD, Kanal"
 
@@ -2307,14 +2242,6 @@ msgstr ""
 msgid ""
 "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
 "preceded by '0x'."
-msgstr ""
-
-msgid ""
-"The settings on this page are critical to ensuring connectivity to VoIP "
-"Providers. In particular, incorrect Topology settings can prevent incoming "
-"calls from connecting. If this system is behind a NAT, by default the system "
-"requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP "
-"(IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
 
 msgid "A valid MAC address must be specified."
@@ -2455,13 +2382,6 @@ msgstr "bilgisayarınızın İP adresini değişin"
 
 msgid "access the webGUI with the new IP address"
 msgstr "webGUİ'ye yeni İP adresinizle bağlanın"
-
-msgid ""
-"In order to send missed call notifications and recorded voicemail messages "
-"via e-mail, a mail server must be correctly configured here."
-msgstr ""
-"Kaçırılmış aramları ve kaydedilmiş sesli mesajlar için uyarı iletisi (e-"
-"posta) gönderilebilinmesi için bir e-posta sunucusu burada ayarlı olmalı "
 
 msgid "A valid e-mail address must be specified."
 msgstr "Geçerli e-posta adresi girilmeli."
@@ -2826,13 +2746,6 @@ msgid ""
 "entered above."
 msgstr ""
 
-msgid ""
-"Conference rooms with optional pin authentication can be configured here. "
-"The system's performance is the only limiting factor on the number of "
-"concurrent members. These rooms can then be dialed via their defined "
-"extensions or used as a destination for incoming calls from Providers."
-msgstr ""
-
 msgid "Room Number"
 msgstr "Oda Numarası"
 
@@ -3000,13 +2913,6 @@ msgstr ""
 msgid "Network"
 msgstr "Ağ"
 
-msgid ""
-"This is the first page which needs configuring upon installing a new system. "
-"Most importantly, the default password should be changed. Then, ensure your "
-"host/domain name, time zone and country's indication tones are set correctly "
-"before continuing."
-msgstr ""
-
 msgid "Hostname,Domain,Username"
 msgstr "Bilgisayar adı,Alan adı,Kullanıcı adı"
 
@@ -3118,10 +3024,6 @@ msgstr "NTP zaman suncusu"
 msgid "Enter a server to synchronize with."
 msgstr ""
 
-msgid ""
-"The entire system configuration can be backed up and restored via this page."
-msgstr "Sistem ayarları bu sayfadan geriye dönüştürülür veya korunmaya alınır."
-
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr "Ayarlama geriye dönüştürüldü. PBX yeniden çalıştırılıyor."
 
@@ -3177,14 +3079,6 @@ msgstr "Evet"
 
 msgid "No"
 msgstr "Hayır"
-
-msgid ""
-"AskoziaPBX's firmware can be kept up to date here. The system's "
-"configuration will be maintained through the upgrade. The system will reboot "
-"automatically after installing the new firmware. Firmware images of formal "
-"releases are digitally signed before distribution and checked upon "
-"installation."
-msgstr "İmge dosyası hatalı."
 
 #, php-format
 msgid "The uploaded image file is not for this platform (%s)."
@@ -3337,6 +3231,75 @@ msgstr ""
 
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
+
+#~ msgid "add a new item"
+#~ msgstr "yeni bir öğe ekle"
+
+#~ msgid "item is disabled, click to enable"
+#~ msgstr "öğe erksiz kılınmıs, çalıştırmak için tıklayın"
+
+#~ msgid "item is enabled, click to disable"
+#~ msgstr "öğe çalışır duruma, erksiz kılmak için tıklayın"
+
+#~ msgid "edit an item"
+#~ msgstr "öğe düzenleyin"
+
+#~ msgid "permanently delete an item"
+#~ msgstr "öğeyi geri dönüştürülememe şeklinde silin"
+
+#~ msgid "check for package updates"
+#~ msgstr "paket güncelleğini kontrol et"
+
+#~ msgid "restore a backup archive"
+#~ msgstr "yedekleme dosyasını geri dönüştür"
+
+#~ msgid "download a backup archive"
+#~ msgstr "yedekleme dosyasını indir"
+
+#, fuzzy
+#~ msgid ""
+#~ "Fax Accounts allow you to connect fax machines to your system as well as "
+#~ "convert incoming faxes to e-mails. Click a fax type below to get started."
+#~ msgstr ""
+#~ "Telefon Hesaplar, dahili hatları ve onların sunucu Hesalarını "
+#~ "düzenlemenizi sağlar. İşlemi başlatmak için altta hesap türünü seçin."
+
+#~ msgid ""
+#~ "Phone Accounts allow you to configure internal extensions and their "
+#~ "access to Provider Accounts. Click an account type below to get started."
+#~ msgstr ""
+#~ "Telefon Hesaplar, dahili hatları ve onların sunucu Hesalarını "
+#~ "düzenlemenizi sağlar. İşlemi başlatmak için altta hesap türünü seçin."
+
+#~ msgid ""
+#~ "Groups of extensions can be configured to ring concurrently. These groups "
+#~ "can then be dialed via their defined extensions or used as a destination "
+#~ "for incoming calls from Providers."
+#~ msgstr ""
+#~ "Dahili hat grupları beraber çalmaları sağlanabilir. Bu gruplara onlara "
+#~ "ilişkilendirilen dahili hatlarla erişilir veya hedef olarak "
+#~ "operatörlerden gelen aramlar kullanılır."
+
+#~ msgid ""
+#~ "In order to send missed call notifications and recorded voicemail "
+#~ "messages via e-mail, a mail server must be correctly configured here."
+#~ msgstr ""
+#~ "Kaçırılmış aramları ve kaydedilmiş sesli mesajlar için uyarı iletisi (e-"
+#~ "posta) gönderilebilinmesi için bir e-posta sunucusu burada ayarlı olmalı "
+
+#~ msgid ""
+#~ "The entire system configuration can be backed up and restored via this "
+#~ "page."
+#~ msgstr ""
+#~ "Sistem ayarları bu sayfadan geriye dönüştürülür veya korunmaya alınır."
+
+#~ msgid ""
+#~ "AskoziaPBX's firmware can be kept up to date here. The system's "
+#~ "configuration will be maintained through the upgrade. The system will "
+#~ "reboot automatically after installing the new firmware. Firmware images "
+#~ "of formal releases are digitally signed before distribution and checked "
+#~ "upon installation."
+#~ msgstr "İmge dosyası hatalı."
 
 #, fuzzy
 #~ msgid "Enter a name for this fax."

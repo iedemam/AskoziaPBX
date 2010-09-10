@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-07 20:01+0200\n"
+"POT-Creation-Date: 2010-09-10 15:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -889,30 +889,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-msgid "add a new item"
-msgstr ""
-
-msgid "item is disabled, click to enable"
-msgstr ""
-
-msgid "item is enabled, click to disable"
-msgstr ""
-
-msgid "edit an item"
-msgstr ""
-
-msgid "permanently delete an item"
-msgstr ""
-
-msgid "check for package updates"
-msgstr ""
-
-msgid "restore a backup archive"
-msgstr ""
-
-msgid "download a backup archive"
-msgstr ""
-
 msgid "webGUI Configuration"
 msgstr ""
 
@@ -1172,9 +1148,6 @@ msgstr ""
 msgid "HIDE"
 msgstr ""
 
-msgid "Fax Accounts allow you to connect fax machines to your system as well as convert incoming faxes to e-mails. Click a fax type below to get started."
-msgstr ""
-
 msgid "Virtual"
 msgstr ""
 
@@ -1197,9 +1170,6 @@ msgid "Do you really want to delete this fax?"
 msgstr ""
 
 msgid "delete fax"
-msgstr ""
-
-msgid "Phone Accounts allow you to configure internal extensions and their access to Provider Accounts. Click an account type below to get started."
 msgstr ""
 
 msgid "External"
@@ -1230,9 +1200,6 @@ msgid "Skinny"
 msgstr ""
 
 msgid "Dialstring"
-msgstr ""
-
-msgid "Provider Accounts allow you to configure routes to and from external sources (i.e. VoIP service providers or attached ISDN / Analog interface hardware). Click an account type below to get started."
 msgstr ""
 
 msgid "Pattern(s)"
@@ -1637,9 +1604,6 @@ msgstr ""
 msgid "Application Logic"
 msgstr ""
 
-msgid "Groups of extensions can be configured to ring concurrently. These groups can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
-msgstr ""
-
 msgid "edit call group"
 msgstr ""
 
@@ -1659,9 +1623,6 @@ msgid "Group name"
 msgstr ""
 
 msgid "Internal extension used to reach this call group."
-msgstr ""
-
-msgid "A variety of settings are here which define how call transfers and call parking are handled. The defaults should work in most situations."
 msgstr ""
 
 msgid "A valid parking start position must be specified."
@@ -1949,9 +1910,6 @@ msgstr ""
 msgid "Wireless"
 msgstr ""
 
-msgid "If a compatible wireless card is present in the system, it can be configured to act as an Access Point. It will be bridged to the wired network that the PBX is connected to."
-msgstr ""
-
 msgid "SSID,Channel"
 msgstr ""
 
@@ -2061,9 +2019,6 @@ msgid "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits pr
 msgstr ""
 
 msgid "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits preceded by '0x'."
-msgstr ""
-
-msgid "The settings on this page are critical to ensuring connectivity to VoIP Providers. In particular, incorrect Topology settings can prevent incoming calls from connecting. If this system is behind a NAT, by default the system requires the following ports be forwarded to it: 5060 UDP (SIP), 4569 UDP (IAX) and 10000-10200 UDP (RTP Audio)"
 msgstr ""
 
 msgid "A valid MAC address must be specified."
@@ -2187,9 +2142,6 @@ msgid "change the IP address of your computer"
 msgstr ""
 
 msgid "access the webGUI with the new IP address"
-msgstr ""
-
-msgid "In order to send missed call notifications and recorded voicemail messages via e-mail, a mail server must be correctly configured here."
 msgstr ""
 
 msgid "A valid e-mail address must be specified."
@@ -2488,9 +2440,6 @@ msgstr ""
 msgid "Some providers require a seperate 'from' domain. <br>Defaults to host entered above."
 msgstr ""
 
-msgid "Conference rooms with optional pin authentication can be configured here. The system's performance is the only limiting factor on the number of concurrent members. These rooms can then be dialed via their defined extensions or used as a destination for incoming calls from Providers."
-msgstr ""
-
 msgid "Room Number"
 msgstr ""
 
@@ -2641,9 +2590,6 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
-msgid "This is the first page which needs configuring upon installing a new system. Most importantly, the default password should be changed. Then, ensure your host/domain name, time zone and country's indication tones are set correctly before continuing."
-msgstr ""
-
 msgid "Hostname,Domain,Username"
 msgstr ""
 
@@ -2740,9 +2686,6 @@ msgstr ""
 msgid "Enter a server to synchronize with."
 msgstr ""
 
-msgid "The entire system configuration can be backed up and restored via this page."
-msgstr ""
-
 msgid "The configuration has been restored. The PBX is now rebooting."
 msgstr ""
 
@@ -2788,9 +2731,6 @@ msgid "Yes"
 msgstr ""
 
 msgid "No"
-msgstr ""
-
-msgid "AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation."
 msgstr ""
 
 #, php-format

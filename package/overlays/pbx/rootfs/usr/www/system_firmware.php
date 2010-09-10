@@ -36,7 +36,6 @@ $d_isfwfile = 1;
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));
-$pghelp = gettext("AskoziaPBX's firmware can be kept up to date here. The system's configuration will be maintained through the upgrade. The system will reboot automatically after installing the new firmware. Firmware images of formal releases are digitally signed before distribution and checked upon installation.");
 
 if ($_POST) {
 

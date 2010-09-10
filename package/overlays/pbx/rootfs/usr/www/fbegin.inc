@@ -262,31 +262,8 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 if (!$pgtitle_omit) {
 	?><p class="pgtitle"><?
 		echo gentitle($pgtitle);
-		if ($pghelp) {
-			?>&nbsp;<a href="javascript:{}" onclick="jQuery('#pghelp').toggle()"><img src="help.png" border="0" title="<?=gettext("Help");?>"></a><?
-		}
 	?></p><?
 
-	if ($pghelp) {
-		?><div class="pghelp" name="pghelp" id="pghelp"><?=$pghelp;?><?
-
-		if ($pglegend) {
-			$legendtext['add'] = gettext("add a new item");
-			$legendtext['disabled'] = gettext("item is disabled, click to enable");
-			$legendtext['enabled'] = gettext("item is enabled, click to disable");
-			$legendtext['edit'] = gettext("edit an item");
-			$legendtext['delete'] = gettext("permanently delete an item");
-			$legendtext['update'] = gettext("check for package updates");
-			$legendtext['restore'] = gettext("restore a backup archive");
-			$legendtext['backup'] = gettext("download a backup archive");
-			echo "<br>\n";
-			foreach ($pglegend as $legend) {
-				?><br><img src="<?=$legend;?>.png">&nbsp;-&nbsp;<?=$legendtext[$legend];?><?
-			}
-		}
-
-		?></div><?
-	}
 }
 
 if ($input_errors) {

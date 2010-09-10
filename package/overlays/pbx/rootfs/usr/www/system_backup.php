@@ -34,7 +34,6 @@ $omit_nocacheheaders = true;
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Backup/Restore"));
-$pghelp = gettext("The entire system configuration can be backed up and restored via this page."); 
 
 if ($_POST) {
 
