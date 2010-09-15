@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -49,6 +49,23 @@ function manager_conf_generate($return=false) {
 
 	$conf = <<<EOD
 
+; system    - General information about the system and ability to run system
+;             management commands, such as Shutdown, Restart, and Reload.
+; call      - Information about channels and ability to set information in a
+;             running channel.
+; log       - Logging information.  Read-only.
+; verbose   - Verbose information.  Read-only.
+; agent     - Information about queues and agents and ability to add queue
+;             members to a queue.
+; user      - Permission to send and receive UserEvent.
+; config    - Ability to read and write configuration files.
+; command   - Permission to run CLI commands.  Write-only.
+; dtmf      - Receive DTMF events.  Read-only.
+; reporting - Ability to get information about the system.
+; cdr       - Output of cdr_manager, if loaded.  Read-only.
+; dialplan  - Receive NewExten and VarSet events.  Read-only.
+; originate - Permission to originate new calls.  Write-only.
+
 [general]
 enabled = yes
 webenabled = no
@@ -59,8 +76,8 @@ bindaddr = 0.0.0.0
 secret = askozia
 deny=0.0.0.0/0.0.0.0
 permit=127.0.0.1/255.255.255.255
-read = system,call,log,verbose,command,agent,user,config
-write = system,call,log,verbose,command,agent,user,config
+read = system,call,log,verbose,agent,user,config,dtmf,reporting,cdr,dialplan
+write = system,call,agent,user,config,command,reporting,originate
 
 
 

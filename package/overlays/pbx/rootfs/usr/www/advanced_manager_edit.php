@@ -4,7 +4,7 @@
 	$Id: services_conferencing_edit.php 120 2007-06-07 13:35:39Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -40,6 +40,31 @@
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("Manager Interface"), gettext("Edit User"));
+
+$read_permissions = array(
+	"agent",
+	"call",
+	"cdr",
+	"config",
+	"dialplan",
+	"dtmf",
+	"log",
+	"reporting",
+	"system",
+	"user",
+	"verbose"
+);
+$write_permissions = array(
+	"agent",
+	"call",
+	"command",
+	"config",
+	"originate",
+	"reporting",
+	"system",
+	"user"
+);
+
 
 if (!is_array($config['services']['manager']['manager-user']))
 	$config['services']['manager']['manager-user'] = array();
@@ -159,7 +184,7 @@ if ($input_errors) display_input_errors($input_errors);
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Permissions");?></td>
 				<td width="25%" class="vtable" valign="top">
 					<strong><?=gettext("Read");?></strong><br><?
-				foreach ($manager_permissions as $perm) {
+				foreach ($read_permissions as $perm) {
 					?><input name="read-<?=$perm;?>" id="read-<?=$perm;?>" type="checkbox" value="yes" <?
 					if (in_array($perm, $pconfig['read-permission'])) echo "checked"; 
 					?>><?=$perm;?><br><?
@@ -167,7 +192,7 @@ if ($input_errors) display_input_errors($input_errors);
 				?></td>
 				<td width="55%" class="vtable" valign="top">
 					<strong><?=gettext("Write");?></strong><br><?
-				foreach ($manager_permissions as $perm) {
+				foreach ($write_permissions as $perm) {
 					?><input name="write-<?=$perm;?>" id="write-<?=$perm;?>" type="checkbox" value="yes" <?
 					if (in_array($perm, $pconfig['write-permission'])) echo "checked"; 
 					?>><?=$perm;?><br><?

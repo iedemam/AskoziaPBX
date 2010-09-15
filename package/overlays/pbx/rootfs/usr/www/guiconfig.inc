@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -147,17 +147,6 @@ $system_tonezones = array(
 	"uk" => gettext("United Kingdom"),
 	"us-old" => gettext("United States Circa 1950/ North America"),
 	"ve" => gettext("Venezuela / South America")
-);
-
-$manager_permissions = array(
-	"agent",
-	"call",
-	"command",
-	"config",
-	"log",
-	"user",
-	"verbose",
-	"system"
 );
 
 function exec_rc_script($scriptname) {
