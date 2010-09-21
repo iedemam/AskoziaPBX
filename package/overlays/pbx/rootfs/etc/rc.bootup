@@ -157,9 +157,9 @@
 	echo "done\n";
 
 	/* start autoprovisioning services */
-	//echo " - Starting autoprovisioning services... ";
-	//provisioning_configure();
-	//echo "done\n";
+	echo " - Starting autoprovisioning services... ";
+	provisioning_configure();
+	echo "done\n";
 
 	/* run any shell commands specified in config.xml */
 	echo " - Running shell commands... ";

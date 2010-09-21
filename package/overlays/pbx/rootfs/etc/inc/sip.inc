@@ -191,6 +191,9 @@ EOD;
 		$conf .= "minexpiry={$sipconfig['minexpiry']}\n";
 	if (isset($sipconfig['maxexpiry']))
 		$conf .= "maxexpiry={$sipconfig['maxexpiry']}\n";
+	
+	$laninfo = network_get_interface($config['interfaces']['lan']['if']);
+	$conf .= "snomautoprovisioningurl=http://" .$laninfo['ipaddr'] .":56080/snom.php?mac={mac}\n";
 	$conf .= "\n";
 	
 	// nat config
@@ -371,6 +374,10 @@ EOD;
 			foreach ($p['codec'] as $codec) {
 				$conf .= "allow=" . $codec . "\n";
 			}
+		}
+
+		if (isset($p['snom-mac'])) {
+			$conf .= "snom-mac=" . $p['snom-mac'] . "\n";
 		}
 
 		if ($p['manualattributes']) {
