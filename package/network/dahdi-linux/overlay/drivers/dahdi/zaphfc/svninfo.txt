@@ -1,0 +1,11 @@
+Path: .
+URL: http://zaphfc.googlecode.com/svn/branches/2.4
+Repository Root: http://zaphfc.googlecode.com/svn
+Repository UUID: 6b77f504-82de-11de-a8c8-95b3e4aa02d0
+Revision: 9
+Node Kind: directory
+Schedule: normal
+Last Changed Author: odicha@hotmail.com
+Last Changed Rev: 9
+Last Changed Date: 2010-09-15 14:11:03 +0200 (Wed, 15 Sep 2010)
+

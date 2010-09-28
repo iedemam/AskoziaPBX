@@ -401,6 +401,10 @@ typedef struct dahdi_hfc {
 
 } dahdi_hfc;
 
+static inline struct dahdi_hfc* dahdi_hfc_from_span(struct dahdi_span *span) {
+	return container_of(span, struct dahdi_hfc, span);
+}
+
 static inline u8 hfc_inb(struct hfc_card *card, int offset)
 {
  return readb(card->io_mem + offset);

@@ -32,6 +32,9 @@
 #include <linux/version.h>
 #include <linux/kernel.h>
 #include <linux/delay.h>
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32))
+#include <linux/sched.h>
+#endif
 #include <linux/proc_fs.h>
 #include <linux/if_arp.h>
 
@@ -591,7 +594,7 @@ static void hfc_hdlc_hard_xmit(struct dahdi_chan *d_chan)
 
 static int hfc_zap_startup(struct dahdi_span *span)
 {
-    struct dahdi_hfc *zthfc = span->pvt;
+    struct dahdi_hfc *zthfc = dahdi_hfc_from_span(span);
     struct hfc_card *hfctmp = zthfc->card;
     int alreadyrunning;
 
@@ -642,6 +645,20 @@ static int hfc_zap_spanconfig(struct dahdi_span *span,
 	return 0;
 }
 
+static const struct dahdi_span_ops hfc_zap_span_ops = {
+       .owner = THIS_MODULE,
+       .chanconfig = hfc_zap_chanconfig,
+       .spanconfig = hfc_zap_spanconfig,
+       .startup = hfc_zap_startup,
+       .shutdown = hfc_zap_shutdown,
+       .maint = hfc_zap_maint,
+       .rbsbits = hfc_zap_rbsbits,
+       .open = hfc_zap_open,
+       .close = hfc_zap_close,
+       .ioctl = hfc_zap_ioctl,
+       .hdlc_hard_xmit = hfc_hdlc_hard_xmit
+};
+
 static int hfc_zap_initialize(struct dahdi_hfc *hfccard)
 {
 	 struct hfc_card *hfctmp = hfccard->card;
@@ -655,17 +672,8 @@ static int hfc_zap_initialize(struct dahdi_hfc *hfccard)
 			hfctmp->nt_mode ? "NT" : "TE");
 	hfccard->span.spantype = hfctmp->nt_mode ? "NT" : "TE";
 	hfccard->span.manufacturer = "Cologne Chips";
-	hfccard->span.spanconfig = hfc_zap_spanconfig;
-	hfccard->span.chanconfig = hfc_zap_chanconfig;
-	hfccard->span.startup = hfc_zap_startup;
-	hfccard->span.shutdown = hfc_zap_shutdown;
-	hfccard->span.maint = hfc_zap_maint;
-	hfccard->span.rbsbits = hfc_zap_rbsbits;
-	hfccard->span.open = hfc_zap_open;
-	hfccard->span.close = hfc_zap_close;
-	hfccard->span.ioctl = hfc_zap_ioctl;
-	hfccard->span.hdlc_hard_xmit = hfc_hdlc_hard_xmit;
 	hfccard->span.flags = 0;
+	hfccard->span.ops = &hfc_zap_span_ops;
 	hfccard->span.irq = hfctmp->pcidev->irq;
 	dahdi_copy_string(hfccard->span.devicetype, "HFC-S PCI-A ISDN",
 			sizeof(hfccard->span.devicetype));
@@ -680,7 +688,6 @@ static int hfc_zap_initialize(struct dahdi_hfc *hfccard)
 	hfccard->span.linecompat = DAHDI_CONFIG_AMI | DAHDI_CONFIG_CCS;
 	hfccard->span.offset = 0;
 	init_waitqueue_head(&hfccard->span.maintq);
-	hfccard->span.pvt = hfccard;
 
 	for (i = 0; i < hfccard->span.channels; i++) {
 		memset(&hfccard->chans[i], 0x0, sizeof(struct dahdi_chan));
