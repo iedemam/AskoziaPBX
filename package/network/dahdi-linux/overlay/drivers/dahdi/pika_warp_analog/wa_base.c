@@ -856,6 +856,7 @@ static int dahdi_warp_analog_initialize_fxo(struct warp_analog *warpalg, unsigne
 		warpalg->chans[ii]->chanpos = first_timeslot + ii + 1;
 	}
 
+	warpalg->span.owner = THIS_MODULE;
 	warpalg->span.chans = warpalg->chans;
 	warpalg->span.manufacturer = "Pika";
 	warpalg->span.channels = warpalg->num_chans;
@@ -948,6 +949,7 @@ static int dahdi_warp_analog_initialize_fxs(struct warp_analog *warpalg,
 		warpalg->fxs_vmwi_active_msgs[ii] = 0;
 	}
 
+	warpalg->span.owner = THIS_MODULE;
 	warpalg->span.chans = warpalg->chans;
 	warpalg->span.manufacturer = "Pika";
 	warpalg->span.channels = warpalg->num_chans;

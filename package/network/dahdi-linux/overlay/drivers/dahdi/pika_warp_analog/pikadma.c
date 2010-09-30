@@ -39,6 +39,8 @@ struct dma_inst {
 struct dma_ctx g_dma_ctx;
 static PDEVICE_EXTENSION pdx;
 
+int taco_proc_init(PDEVICE_EXTENSION pdx);
+
 static inline unsigned fpga_read(void __iomem *fpga, int reg)
 {
 	return in_be32(fpga + reg);
@@ -386,6 +388,9 @@ int __init shared_dma_init_module(void)
         pdx->info.irql = irq;
         pdx->bar0 = fpga;
 
+	/* initialize the procfs interface */
+	taco_proc_init(pdx);
+
 	/* you need a device for DMA or nothing works with 2.6.31 */
 	pdx->dev = platform_device_register_simple("warp-dev", 0, NULL, 0);
 	pdx->dev->dev.coherent_dma_mask = ~0ULL;
@@ -395,11 +400,13 @@ int __init shared_dma_init_module(void)
 	 */
 
 	if ((rc = dma_init_module(pdx))) {
+		remove_proc_entry("driver/taco", NULL);
 		goto error_cleanup;
 	}
 
         /* only reset the silabs once. */
         if (daytona_silabs_reset(pdx)) {
+		remove_proc_entry("driver/taco", NULL);
                 printk(KERN_ERR "Unable to reset silabs\n");
                 return -ENODEV;
         }
@@ -427,6 +434,7 @@ module_init(shared_dma_init_module);
 void __exit shared_dma_exit_module(void)
 {
 	dma_exit_module();
+	remove_proc_entry("driver/taco", NULL);
 	if (pdx->bar0)
 		iounmap(pdx->bar0);
 	platform_device_unregister(pdx->dev);

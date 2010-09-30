@@ -1,8 +1,218 @@
 #include <linux/module.h>
 #include <linux/of.h>
 #include <linux/uaccess.h>
+#include <linux/io.h>
+#include <linux/delay.h>
+#include <linux/interrupt.h>
 
-#include "brie.h"
+#include <dahdi/kernel.h>
+
+#include "pikadma.h"
+#include "warped24succ.h"
+
+/* FPGA defines */
+#define FPGA_CONFIG		0x0000 /* Configuration */
+#define FPGA_PFT		0x000C /* Termination on BRI */
+#define FPGA_RESET		0x0014 /* Reset control */
+#define FPGA_DIAG		0x0018 /* Board Diagnostics */
+#define FPGA_REV		0x001C /* FPGA load type and revision */
+#define FPGA_CIAR		0x0024 /* Codec Indirect Register */
+#define FPGA_ICCR		0x002c /* Interrupt Cause/Clear */
+#define FPGA_IMR		0x0030 /* Interrupt Mask */
+#define FPGA_STAT_LINES		0x0034 /* Status Lines */
+#define FPGA_DMA_SG_IDX		0x0E10 /* DMA SG List Index */
+
+/* xhfc board defines */
+#define MAX_XHFC_SPANS	4	/* This is per chip */
+#define CHAN_PER_SPAN	4	/* D, B1, B2, PCM */
+#define MAX_CHAN	(MAX_XHFC_SPANS * CHAN_PER_SPAN)
+
+#define MAX_SPANS		8
+
+/* flags in _u16  span mode */
+#define SPAN_UNUSED		0x0000
+#define SPAN_MODE_NT		0x0001
+#define SPAN_MODE_TE		0x0002
+#define SPAN_MODE_S0		0x0004
+#define SPAN_MODE_UP		0x0008
+#define SPAN_MODE_EXCH_POL	0x0010
+#define SPAN_MODE_LOOP_B1	0x0020
+#define SPAN_MODE_LOOP_B2	0x0040
+#define SPAN_MODE_LOOP_D	0x0080
+#define SPAN_MODE_ENDPOINT	0x0100
+#define SPAN_MODE_STARTED       0x1000
+
+#define SPAN_MODE_LOOPS		0xE0	/* mask span mode Loop B1/B2/D */
+
+
+/* NT / TE defines */
+#define CLK_DLY_TE	0x0e	/* CLKDEL in TE mode */
+#define CLK_DLY_NT	0x6c	/* CLKDEL in NT mode */
+#define STA_ACTIVATE	0x60	/* start activation   in A_SU_WR_STA */
+#define STA_DEACTIVATE	0x40	/* start deactivation in A_SU_WR_STA */
+#define XHFC_TIMER_T3	2000	/* 2s activation timer T3 */
+#define XHFC_TIMER_T4	500	/* 500ms deactivation timer T4 */
+
+/* xhfc Layer1 Flags (stored in xhfc_port_t->l1_flags) */
+#define HFC_L1_ACTIVATING	1
+#define HFC_L1_ACTIVATED	2
+
+#define BRIE_CHANS_PER_SPAN 3
+
+/* DMA - this must match wa_dma.h but we cannot include wa_dma.h */
+#define FRAMES_PER_BUFFER	320 /* 40ms / (125us per frame) */
+#define FRAMES_PER_TRANSFER	8
+#define FRAMESIZE		64
+#define DMA_CARD_ID		7
+
+/* span struct for each S/U span */
+struct xhfc_span {
+	int span_id; /* Physical span id */
+	int id; /* 0 based, no gaps */
+	struct xhfc *xhfc;
+	struct xhfc_chan *d_chan;
+	struct xhfc_chan *b1_chan;
+	struct xhfc_chan *b2_chan;
+
+	int timeslot;
+
+	atomic_t open_count;
+
+	/* hdlc transmit data */
+	int tx_idx;
+	int tx_size;
+	int tx_frame;
+	u8  tx_buf[128];
+
+	/* hdlc receive data */
+	int rx_idx;
+	u8  rx_buf[128];
+
+	u16 mode;		/* NT/TE + ST/U */
+	u8 state;
+	u_long	l1_flags;
+	struct timer_list t3_timer;	/* for activation/deactivation */
+	struct timer_list t4_timer;	/* for activation/deactivation */
+	struct timer_list t1_timer;
+
+	/* Alarm state for dahdi */
+	int newalarm;
+	struct timer_list alarm_timer;
+
+	/* chip registers */
+	reg_a_su_ctrl0 su_ctrl0;
+	reg_a_su_ctrl1 su_ctrl1;
+	reg_a_su_ctrl2 su_ctrl2;
+
+	/* dahdi */
+	struct dahdi_span span;
+	struct dahdi_chan *chans[BRIE_CHANS_PER_SPAN]; /* Individual channels */
+	struct dahdi_chan *sigchan; /* the signaling channel for this span */
+};
+
+
+/* channel struct for each fifo */
+struct xhfc_chan {
+	int id;
+	struct xhfc_span *span;
+
+	unsigned char writechunk[DAHDI_CHUNKSIZE];
+	unsigned char readchunk[DAHDI_CHUNKSIZE];
+
+	struct dahdi_chan chan;
+};
+
+struct xhfc {
+	__u8		chipnum;	/* global chip number */
+	__u8		modidx;	/* module index 0 = mod a, 1 = mod b */
+	struct brie *dev; /* back pointer to g_brie */
+
+	int num_spans;		/* number of S and U interfaces */
+	int max_fifo;		/* always 4 fifos per span */
+	__u8 max_z;		/* fifo depth -1 */
+
+	struct xhfc_chan *chan;	/* one each D/B/PCM channel */
+
+	/* chip registers */
+	reg_r_irq_ctrl		irq_ctrl;
+	reg_r_misc_irqmsk	misc_irqmask;	/* mask of enabled interrupt
+						   sources */
+	reg_r_misc_irq		misc_irq;	/* collect interrupt status
+						   bits */
+
+	reg_r_su_irqmsk		su_irqmask;	/* mask of line interface
+						   state change interrupts */
+	reg_r_su_irq		su_irq;		/* collect interrupt status
+						   bits */
+	__u32 fifo_irq;		/* fifo bl irq */
+	__u32 fifo_irqmask;	/* fifo bl irq */
+
+	/* Debugging */
+	u8 r_af0_oview;
+	u8 r_bert_sta;
+	u32 rx_fifo_errs;
+	u32 tx_fifo_errs;
+};
+
+struct brie {
+	void __iomem *fpga;
+	int irq;
+
+	int loopback;
+
+	int pcm_master;
+
+	struct tasklet_struct brie_bh;
+
+	u8 moda;
+	u8 modb;
+	u8  num_xhfcs;
+	struct xhfc *xhfc;
+
+	struct xhfc_span *spans[MAX_SPANS];
+
+	/* DMA */
+	void *tx_buf;
+	void *rx_buf;
+};
+
+
+static inline __u8 read_xhfc(struct xhfc *xhfc, __u8 reg)
+{
+	__u8 data = 0;
+
+	fpga_read_indirect(xhfc->dev->fpga, xhfc->chipnum, reg, &data);
+	return data;
+}
+
+static inline void write_xhfc(struct xhfc *xhfc, __u8 reg, __u8 value)
+{
+	fpga_write_indirect(xhfc->dev->fpga, xhfc->chipnum, reg, value);
+}
+
+static inline void xhfc_waitbusy(struct xhfc *xhfc)
+{
+	while (read_xhfc(xhfc, R_STATUS) & M_BUSY)
+		cpu_relax();
+}
+
+static inline __init void xhfc_selfifo(struct xhfc *xhfc, __u8 fifo)
+{
+	write_xhfc(xhfc, R_FIFO, fifo);
+	xhfc_waitbusy(xhfc);
+}
+
+static inline void xhfc_inc_f(struct xhfc *xhfc)
+{
+	write_xhfc(xhfc, A_INC_RES_FIFO, M_INC_F);
+	xhfc_waitbusy(xhfc);
+}
+
+static inline __init void xhfc_resetfifo(struct xhfc *xhfc)
+{
+	write_xhfc(xhfc, A_INC_RES_FIFO, M_RES_FIFO | M_RES_FIFO_ERR);
+	xhfc_waitbusy(xhfc);
+}
 
 static void xhfc_write_fifo(struct xhfc *xhfc, int ch_index);
 static void xhfc_read_fifo(struct xhfc *xhfc, int ch_index);
@@ -10,15 +220,16 @@ static void xhfc_read_fifo(struct xhfc *xhfc, int ch_index);
 /* layer 1 specific */
 static void l1_activate(struct xhfc_span *span);
 static void l1_deactivate(struct xhfc_span *span);
+static void l1_timer_start_t1(struct xhfc_span *span);
 static void l1_timer_start_t3(struct xhfc_span *span);
 static void l1_timer_start_t4(struct xhfc_span *span);
+static inline void l1_timer_stop_t1(struct xhfc_span *span);
 static inline void l1_timer_stop_t3(struct xhfc_span *span);
 static inline void l1_timer_stop_t4(struct xhfc_span *span);
-static void l1_timer_expire_t3(struct xhfc_span *span);
-static void l1_timer_expire_t4(struct xhfc_span *span);
-static void nt_timer_start(struct xhfc_span *span);
-static inline void nt_timer_stop(struct xhfc_span *span);
-static void nt_timer_expire(unsigned long arg);
+static void l1_timer_expire_t1(unsigned long arg);
+static void l1_timer_expire_t3(unsigned long arg);
+static void l1_timer_expire_t4(unsigned long arg);
+
 static void alarm_timer_update(struct xhfc_span *span);
 static void alarm_timer_expire(unsigned long arg);
 
@@ -26,7 +237,7 @@ static void alarm_timer_expire(unsigned long arg);
 static void brispan_apply_config(struct xhfc_span *span);
 static int brichannels_create(struct xhfc_span *span);
 static int dchannel_setup_fifo(struct xhfc_chan *chan, unsigned rx);
-static void dchannel_toggle_fifo(struct xhfc_chan *chan, u8 rx, u8 enable);
+static void dchannel_toggle_fifo(struct xhfc_chan *chan, u8 enable);
 static int bchannel_setup_pcm(struct xhfc_chan *chan, unsigned rx);
 static void brispan_new_state(struct xhfc_span *span,
 			      u8 new_state, int expired);
@@ -40,7 +251,10 @@ static int debug;
 module_param(debug, int, 0664);
 
 static unsigned nt_mask;
-module_param(nt_mask, uint, 0664);
+module_param(nt_mask, uint, 0444);
+
+static unsigned endpoint_mask = 0xff;
+module_param(endpoint_mask, uint, 0444);
 
 /* Only one instance of the driver */
 static struct brie *g_brie;
@@ -218,14 +432,24 @@ static int brie_close(struct dahdi_chan *chan)
 static int brie_ioctl(struct dahdi_chan *chan,
 		      unsigned int cmd, unsigned long data)
 {
-	printk(KERN_INFO "Unexpected ioctl %x\n", cmd); /* SAM DBG */
-	return -ENOTTY;
+	switch (cmd) {
+	case DAHDI_TONEDETECT:
+		/* We don't do tone detection. */
+		return -EINVAL;
+
+	default:
+		printk(KERN_INFO "Unexpected ioctl %x\n", cmd); /* SAM DBG */
+		return -ENOTTY;
+	}
+
+	return 0;
 }
 
 /* DAHDI calls this when it has data it wants to send to the HDLC controller */
 static void brie_hdlc_hard_xmit(struct dahdi_chan *chan)
 {
-	struct xhfc_span *span = chan->pvt;
+	struct xhfc_chan *xchan = chan->pvt;
+	struct xhfc_span *span = xchan->span;
 
 	if (span->sigchan == chan) {
 		/* Kick it */
@@ -241,12 +465,10 @@ static int brie_spanconfig(struct dahdi_span *span, struct dahdi_lineconfig *lc)
 {
 #if 0
 	/* SAM Hopefully we will get NT/TE at some point in the lineconfig. */
-	printk(KERN_INFO "%s %s\n", __func__, span->name);
-	printk(KERN_INFO "    span %d\n", lc->span);
-	printk(KERN_INFO "    name %s\n", lc->name);
-	printk(KERN_INFO "    lbo %x\n", lc->lbo);
-	printk(KERN_INFO "    lineconfig %x\n", lc->lineconfig);
-	printk(KERN_INFO "    sync %x\n", lc->sync);
+	printk(KERN_INFO "%s %s span %d lineconfig %x\n",
+	       __func__, span->name, lc->span, lc->lineconfig);
+	if (lc->lineconfig & DAHDI_CONFIG_NTTE)
+		printk(KERN_INFO "      NT MODE SET!\n");
 #endif
 
 	return 0;
@@ -438,25 +660,6 @@ read_exit:
 /* -------------------------------------------------------------------------- */
 /* DMA */
 
-/* prepare data from asterisk for transmission (put it out on the buffer) */
-void brie_transmitprep(struct xhfc_span *span, u8 *tx_addr)
-{
-	int i;
-
-	/* Offset to start of b1 */
-	tx_addr += span->timeslot;
-
-	/* compute transmission (get buffer from Asterisk) */
-	dahdi_transmit(&span->span);
-
-	/* write data to DMA buffer */
-	for (i = 0; i < DAHDI_CHUNKSIZE; i++) {
-		*tx_addr       = span->b1_chan->writechunk[i];
-		*(tx_addr + 1) = span->b2_chan->writechunk[i];
-		tx_addr += FRAMESIZE;
-	}
-}
-
 /* prepare incoming audio data to be received by asterisk */
 void brie_receiveprep(struct xhfc_span *span, u8 *rx_addr)
 {
@@ -479,6 +682,25 @@ void brie_receiveprep(struct xhfc_span *span, u8 *rx_addr)
 
 	/* push data into asterisk */
 	dahdi_receive(&span->span);
+}
+
+/* prepare data from asterisk for transmission (put it out on the buffer) */
+void brie_transmitprep(struct xhfc_span *span, u8 *tx_addr)
+{
+	int i;
+
+	/* Offset to start of b1 */
+	tx_addr += span->timeslot;
+
+	/* compute transmission (get buffer from Asterisk) */
+	dahdi_transmit(&span->span);
+
+	/* write data to DMA buffer */
+	for (i = 0; i < DAHDI_CHUNKSIZE; i++) {
+		*tx_addr       = span->b1_chan->writechunk[i];
+		*(tx_addr + 1) = span->b2_chan->writechunk[i];
+		tx_addr += FRAMESIZE;
+	}
 }
 
 static void brie_dma_cb(int cardid)
@@ -619,25 +841,27 @@ static int __init brispan_create(struct xhfc *xhfc, unsigned span_id)
 
 	span->id = span_id;
 	span->xhfc = xhfc;
-	span->mode = (nt_mask & (1 << span_id)) ? SPAN_MODE_NT : SPAN_MODE_TE;
-	span->mode |= SPAN_MODE_ENDPOINT;
+	span->mode = (nt_mask & (1 << span->span_id)) ?
+		SPAN_MODE_NT : SPAN_MODE_TE;
+	if (endpoint_mask & (1 << span->span_id))
+		span->mode |= SPAN_MODE_ENDPOINT;
 	span->rx_idx = 0;
 	span->tx_idx = 0;
 
-	/* init t3 timer */
-	init_timer(&span->t3_timer);
-	span->t3_timer.data = (long) span;
-	span->t3_timer.function = (void *) l1_timer_expire_t3;
+	/* init t1 timer - nt only */
+	init_timer(&span->t1_timer);
+	span->t1_timer.data = (long)span;
+	span->t1_timer.function = l1_timer_expire_t1;
 
-	/* init t4 timer */
+	/* init t3 timer - te only */
+	init_timer(&span->t3_timer);
+	span->t3_timer.data = (long)span;
+	span->t3_timer.function = l1_timer_expire_t3;
+
+	/* init t4 timer - te only */
 	init_timer(&span->t4_timer);
 	span->t4_timer.data = (long) span;
-	span->t4_timer.function = (void *) l1_timer_expire_t4;
-
-	/* init nt timer */
-	init_timer(&span->nt_timer);
-	span->nt_timer.data = (long)span;
-	span->nt_timer.function = nt_timer_expire;
+	span->t4_timer.function = l1_timer_expire_t4;
 
 	/* init dahdi alarm timer */
 	init_timer(&span->alarm_timer);
@@ -697,8 +921,7 @@ static int brispan_start(struct xhfc_span *span)
 
 	brispan_apply_config(span);
 
-	dchannel_toggle_fifo(span->d_chan, 0, 1);
-	dchannel_toggle_fifo(span->d_chan, 1, 1);
+	dchannel_toggle_fifo(span->d_chan, 1);
 	bchannel_toggle(span->b1_chan, 1);
 	bchannel_toggle(span->b2_chan, 1);
 
@@ -716,12 +939,15 @@ static int brispan_stop(struct xhfc_span *span)
 
 	clear_bit(HFC_L1_ACTIVATING, &span->l1_flags);
 
-	dchannel_toggle_fifo(span->d_chan, 0, 0);
-	dchannel_toggle_fifo(span->d_chan, 1, 0);
+	dchannel_toggle_fifo(span->d_chan, 0);
+
 	bchannel_toggle(span->b1_chan, 0);
 	bchannel_toggle(span->b2_chan, 0);
 
 	l1_deactivate(span);
+
+	span->mode &= ~SPAN_MODE_STARTED;
+	span->span.flags &= ~DAHDI_FLAG_RUNNING;
 
 	/* These actions disable the automatic state machine No state
 	   machine changes can occur again until l1_activate is
@@ -742,13 +968,10 @@ static int brispan_stop(struct xhfc_span *span)
 
 	udelay(6);
 
-	span->mode &= ~SPAN_MODE_STARTED;
-	span->span.flags &= ~DAHDI_FLAG_RUNNING;
-
 	/* Make sure all the timers are dead */
+	del_timer_sync(&span->t1_timer);
 	del_timer_sync(&span->t3_timer);
 	del_timer_sync(&span->t4_timer);
-	del_timer_sync(&span->nt_timer);
 	del_timer_sync(&span->alarm_timer);
 
 	return 0;
@@ -930,7 +1153,7 @@ void brispan_apply_config(struct xhfc_span *span)
 	if (span->mode & SPAN_MODE_NT) {
 		delay = CLK_DLY_NT;
 		span->su_ctrl0.bit.v_su_md = 1;
-		nt_timer_stop(span);
+		l1_timer_stop_t1(span);
 	} else {
 		delay = CLK_DLY_TE;
 		span->su_ctrl0.bit.v_su_md = 0;
@@ -1041,7 +1264,7 @@ void brispan_new_state(struct xhfc_span *span, u8 new_state, int expired)
 
 			clear_bit(HFC_L1_ACTIVATED, &span->l1_flags);
 
-			nt_timer_stop(span);
+			l1_timer_stop_t1(span);
 			break;
 		case 2:			/* NT state G2: Pending Activation */
 			span->newalarm = DAHDI_ALARM_YELLOW;
@@ -1053,7 +1276,7 @@ void brispan_new_state(struct xhfc_span *span, u8 new_state, int expired)
 				write_xhfc(span->xhfc, A_SU_WR_STA,
 					   M_SU_SET_G2_G3);
 
-				nt_timer_start(span);
+				l1_timer_start_t1(span);
 			}
 			break;
 		case 3:			/* NT state G3: Active */
@@ -1061,12 +1284,12 @@ void brispan_new_state(struct xhfc_span *span, u8 new_state, int expired)
 
 			set_bit(HFC_L1_ACTIVATED, &span->l1_flags);
 
-			nt_timer_stop(span);
+			l1_timer_stop_t1(span);
 			break;
 		case 0x4:		/* NT state G4: Pending Deactivation */
 			span->newalarm = DAHDI_ALARM_RED;
 
-			nt_timer_stop(span);
+			l1_timer_stop_t1(span);
 			break;
 		}
 }
@@ -1103,6 +1326,27 @@ static void l1_deactivate(struct xhfc_span *span)
 	}
 }
 
+static void l1_timer_start_t1(struct xhfc_span *span)
+{
+	if (!timer_pending(&span->t1_timer)) {
+		span->t1_timer.expires =
+			jiffies + msecs_to_jiffies(100);
+		if (span->mode & SPAN_MODE_STARTED)
+			add_timer(&span->t1_timer);
+	}
+}
+
+static inline void l1_timer_stop_t1(struct xhfc_span *span)
+{
+	del_timer(&span->t1_timer);
+}
+
+static void l1_timer_expire_t1(unsigned long arg)
+{
+	struct xhfc_span *span = (struct xhfc_span *)arg;
+	brispan_new_state(span, span->state, 1);
+}
+
 static void l1_timer_start_t3(struct xhfc_span *span)
 {
 	if (!timer_pending(&span->t3_timer)) {
@@ -1118,8 +1362,9 @@ static inline void l1_timer_stop_t3(struct xhfc_span *span)
 	del_timer(&span->t3_timer);
 }
 
-static void l1_timer_expire_t3(struct xhfc_span *span)
+static void l1_timer_expire_t3(unsigned long arg)
 {
+	struct xhfc_span *span = (struct xhfc_span *)arg;
 	l1_deactivate(span);
 	/* afterwards will attempt to reactivate in state F3 since
 	 * HFC_L1_ACTIVATING is set */
@@ -1140,30 +1385,10 @@ static inline void l1_timer_stop_t4(struct xhfc_span *span)
 	del_timer(&span->t4_timer);
 }
 
-static void l1_timer_expire_t4(struct xhfc_span *span)
+static void l1_timer_expire_t4(unsigned long arg)
 {
-	clear_bit(HFC_L1_ACTIVATED, &span->l1_flags);
-}
-
-static void nt_timer_start(struct xhfc_span *span)
-{
-	if (!timer_pending(&span->nt_timer)) {
-		span->nt_timer.expires =
-			jiffies + msecs_to_jiffies(100);
-		if (span->mode & SPAN_MODE_STARTED)
-			add_timer(&span->nt_timer);
-	}
-}
-
-static inline void nt_timer_stop(struct xhfc_span *span)
-{
-	del_timer(&span->nt_timer);
-}
-
-static void nt_timer_expire(unsigned long arg)
-{	/* set new state to be the same as old state.. */
 	struct xhfc_span *span = (struct xhfc_span *)arg;
-	brispan_new_state(span, span->state, 1);
+	clear_bit(HFC_L1_ACTIVATED, &span->l1_flags);
 }
 
 static void alarm_timer_update(struct xhfc_span *span)
@@ -1189,13 +1414,51 @@ static void alarm_timer_expire(unsigned long arg)
 	}
 }
 
+void dchannel_toggle_fifo(struct xhfc_chan *chan, u8 enable)
+{
+	struct xhfc *xhfc = chan->span->xhfc;
+	unsigned fifo = chan->id * 2;
+	unsigned mask = (1 << fifo) | (1 << (fifo + 1));
+
+	if (enable)
+		xhfc->fifo_irqmask |= mask;
+	else
+		xhfc->fifo_irqmask &= ~mask;
+}
+
+int bchannel_toggle(struct xhfc_chan *chan, u8 enable)
+{
+	struct xhfc_span *span = chan->span;
+	int bc = chan->id % CHAN_PER_SPAN;
+
+	if (bc < 0 || bc > 1)
+		return EINVAL;
+
+	/* Force to 1 or 0 */
+	enable = enable ? 1 : 0;
+
+	if (bc) {
+		span->su_ctrl2.bit.v_b2_rx_en = enable;
+		span->su_ctrl0.bit.v_b2_tx_en = enable;
+	} else {
+		span->su_ctrl2.bit.v_b1_rx_en = enable;
+		span->su_ctrl0.bit.v_b1_tx_en = enable;
+	}
+
+	write_xhfc(span->xhfc, R_SU_SEL, span->id);
+	write_xhfc(span->xhfc, A_SU_CTRL0, span->su_ctrl0.reg);
+	write_xhfc(span->xhfc, A_SU_CTRL2, span->su_ctrl2.reg);
+
+	return 0;
+}
+
 static void __init dahdi_chan_init(struct xhfc_chan *chan, int id)
 {
 	struct xhfc_span *span = chan->span;
 	struct xhfc *xhfc = span->xhfc;
 
 	span->chans[id] = &chan->chan;
-	chan->chan.pvt = span;
+	chan->chan.pvt = chan;
 
 	/* Dahdi matches on the B4 to know it is BRI. */
 	sprintf(chan->chan.name, "B4/%d/%d/%d",
@@ -1277,41 +1540,11 @@ int __init dchannel_setup_fifo(struct xhfc_chan *chan, unsigned rx)
 	return 0;
 }
 
-void dchannel_toggle_fifo(struct xhfc_chan *chan, u8 rx, u8 enable)
-{
-	struct xhfc *xhfc = chan->span->xhfc;
-	unsigned fifo = (chan->id << 1) + rx;
-
-	if (enable)
-		xhfc->fifo_irqmask |= (1 << fifo);
-	else
-		xhfc->fifo_irqmask &= ~(1 << fifo);
-}
-
 int __init bchannel_setup_pcm(struct xhfc_chan *chan, unsigned rx)
 {
-	u8 fifo;
-	int timeslot;
+	__u8 fifo = (chan->id << 1) + rx;
+	int timeslot = (chan->id >> 1) + (chan->id & 1) + 4;
 	struct xhfc *xhfc = chan->span->xhfc;
-
-	fifo = (chan->id << 1) + rx;
-
-	switch (chan->id) {
-	case 0:
-		timeslot = 4;
-		break;
-	case 1:
-		timeslot = 5;
-		break;
-	case 4:
-		timeslot = 6;
-		break;
-	case 5:
-		timeslot = 7;
-		break;
-	default:
-		return ENOENT;
-	}
 
 	/* for module b.. timeslots starts at 12 */
 	if (xhfc->modidx == 1)
@@ -1340,33 +1573,7 @@ int __init bchannel_setup_pcm(struct xhfc_chan *chan, unsigned rx)
 	return 0;
 }
 
-int bchannel_toggle(struct xhfc_chan *chan, u8 enable)
-{
-	struct xhfc_span *span = chan->span;
-	int bc = chan->id % CHAN_PER_SPAN;
-
-	if (bc < 0 || bc > 1)
-		return EINVAL;
-
-	/* Force to 1 or 0 */
-	enable = enable ? 1 : 0;
-
-	if (bc) {
-		span->su_ctrl2.bit.v_b2_rx_en = enable;
-		span->su_ctrl0.bit.v_b2_tx_en = enable;
-	} else {
-		span->su_ctrl2.bit.v_b1_rx_en = enable;
-		span->su_ctrl0.bit.v_b1_tx_en = enable;
-	}
-
-	write_xhfc(span->xhfc, R_SU_SEL, span->id);
-	write_xhfc(span->xhfc, A_SU_CTRL0, span->su_ctrl0.reg);
-	write_xhfc(span->xhfc, A_SU_CTRL2, span->su_ctrl2.reg);
-
-	return 0;
-}
-
-static int brie_show_slips(char *page, char **start, off_t off,
+static int brie_show(char *page, char **start, off_t off,
 			   int count, int *eof, void *data)
 {
 	int i, len = 0;
@@ -1374,10 +1581,12 @@ static int brie_show_slips(char *page, char **start, off_t off,
 	for (i = 0; i < g_brie->num_xhfcs; i++) {
 		struct xhfc *xhfc = &g_brie->xhfc[i];
 		int n = sprintf(page + len,
-			       "%d: R_AF0_OVIEW: %02x  "
-			       "R_BERT_STA: %02x  "
+				"%c: XHFC-%s R_AF0_OVIEW: %02x  "
+				"R_BERT_STA: %02x  "
 				"FIFO: rx %u tx %u\n",
-				i, xhfc->r_af0_oview, xhfc->r_bert_sta,
+				xhfc->modidx ? 'B' : 'A',
+				xhfc->num_spans == 4 ? "4SU " : "2S4U",
+				xhfc->r_af0_oview, xhfc->r_bert_sta,
 				xhfc->rx_fifo_errs, xhfc->tx_fifo_errs);
 		len += n;
 	}
@@ -1686,13 +1895,13 @@ static int __init brie_init_module(void)
 	if (err)
 		goto irq_cleanup;
 
-	entry = create_proc_entry("driver/bri-slips", 0, NULL);
+	entry = create_proc_entry("driver/bri", 0, NULL);
 	if (!entry) {
-		printk(KERN_ERR "Unable to register /proc/driver/bri-slips\n");
+		printk(KERN_ERR "Unable to register /proc/driver/bri\n");
 		err = -ENOENT;
 		goto irq_cleanup;
 	}
-	entry->read_proc = brie_show_slips;
+	entry->read_proc = brie_show;
 
 	/* Register with dahdi - do this last */
 	for (i = 0; i < MAX_SPANS; ++i)
@@ -1712,6 +1921,8 @@ register_cleanup:
 	while (--i >= 0)
 		if (g_brie->spans[i])
 			dahdi_unregister(&g_brie->spans[i]->span);
+
+	remove_proc_entry("driver/bri", NULL);
 
 irq_cleanup:
 	free_irq(g_brie->irq, g_brie);
@@ -1765,7 +1976,7 @@ void __exit brie_exit_module(void)
 
 	free_irq(g_brie->irq, g_brie);
 
-	remove_proc_entry("driver/bri-slips", NULL);
+	remove_proc_entry("driver/bri", NULL);
 
 	iounmap(g_brie->fpga);
 

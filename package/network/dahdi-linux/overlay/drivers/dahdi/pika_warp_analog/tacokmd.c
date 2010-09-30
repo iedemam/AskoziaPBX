@@ -17,7 +17,7 @@ LIST_HEAD(board_list);
 
 static int taco_pft_init(PDEVICE_EXTENSION pdx);
 static void taco_print_rev(PDEVICE_EXTENSION pdx);
-static int taco_proc_init(PDEVICE_EXTENSION pdx);
+int taco_proc_init(PDEVICE_EXTENSION pdx);
 
 
 /* We must be very careful with the PFT register since the BRI module
@@ -260,7 +260,7 @@ static int taco_read_proc(char *page, char **start, off_t off,
 		       taco_mod_type_to_str(rev >> 20));
 }
 
-static int __init taco_proc_init(PDEVICE_EXTENSION pdx)
+int taco_proc_init(PDEVICE_EXTENSION pdx)
 {
 	struct proc_dir_entry *entry;
 

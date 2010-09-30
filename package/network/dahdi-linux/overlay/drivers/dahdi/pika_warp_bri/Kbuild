@@ -1,1 +1,1 @@
-obj-m += pika-brie.o
+obj-m += pikabrie.o
