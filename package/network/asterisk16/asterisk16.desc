@@ -27,7 +27,7 @@
 [A] Mark Spencer / Digium dba Linux Support Services, Inc.
 [M] Michael Iedema <michael@askozia.com>
 
-[F] CROSS NOPARALLEL
+[F] CROSS
 [C] extra/network
 
 [L] GPL

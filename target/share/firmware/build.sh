@@ -113,7 +113,6 @@ rm -rf offload_stage/rootfs/usr/sbin/dahdi_registration
 rm -rf offload_stage/rootfs/usr/sbin/grub
 # usr/share
 mkdir offload_stage/rootfs/usr/share
-cp -Rp ../../usr/share/dahdi offload_stage/rootfs/usr/share/
 mkdir offload_stage/rootfs/usr/share/terminfo
 mkdir offload_stage/rootfs/usr/share/terminfo/a
 cp -Rp ../../usr/share/terminfo/a/ansi offload_stage/rootfs/usr/share/terminfo/a/
