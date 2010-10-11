@@ -903,7 +903,8 @@ function extensions_generate_virtual_fax_context($f, $from_public=false, $extens
 	$conf .= "exten => s,n,Wait(6)\n";
 	$conf .= "exten => s,n,ReceiveFAX(/tmp/fax-$\{UNIQUEID})\n";
 	$conf .= "exten => s,n,Hangup()\n";
-	$conf .= "exten => h,1,Set(FAXFILENAME=virtualfax-" . $f['extension'] . "-$\{STRFTIME($\{EPOCH},,%Y-%m-%d-%H-%M-%S)}.pdf)\n";
+	$conf .= "exten => h,1,GotoIf($[\"$\{FAXSTATUS}\"!=\"SUCCESS\"]?transactionend)\n";
+	$conf .= "exten => h,n,Set(FAXFILENAME=virtualfax-" . $f['extension'] . "-$\{STRFTIME($\{EPOCH},,%Y-%m-%d-%H-%M-%S)}.pdf)\n";
 	$conf .= "exten => h,n,System(tiff2pdf /tmp/fax-$\{UNIQUEID} -o /tmp/$\{FAXFILENAME})\n";
 	$conf .= "exten => h,n,System(touch /tmp/email-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(echo \"date: \`date\`\" > /tmp/email-$\{UNIQUEID})\n";
@@ -921,6 +922,7 @@ function extensions_generate_virtual_fax_context($f, $from_public=false, $extens
 	$conf .= "exten => h,n,System(rm /tmp/$\{FAXFILENAME})\n";
 	$conf .= "exten => h,n,System(rm /tmp/fax-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(rm /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n(transactionend),NoOp(Receive fax terminated returning status: $\{FAXSTATUS})\n";
 	$conf .= "\n";
 
 	return $conf;
