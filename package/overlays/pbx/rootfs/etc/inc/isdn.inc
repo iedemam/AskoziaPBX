@@ -260,7 +260,6 @@ function isdn_verify_provider($post, $errors) {
 
 	v_cleanliness(&$post, &$errors);
 	v_required('name', gettext('Name'), &$provider, &$post, &$errors);
-	v_numeric('mainnumber', gettext('Main Number'), &$provider, &$post, &$errors);
 	v_incoming_prov_routing(&$provider, &$post, &$errors);
 	v_incoming_prov_callerid(&$provider, &$post, &$errors);
 	v_outgoing_prov_routing(&$provider, &$post, &$errors);

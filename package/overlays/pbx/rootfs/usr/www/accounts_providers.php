@@ -308,14 +308,13 @@ if (file_exists($g['analog_dirty_path'])) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="5%" class="list"></td>
-		<td colspan="5" class="listtopiclight"><?=gettext("ISDN");?></td>
+		<td colspan="4" class="listtopiclight"><?=gettext("ISDN");?></td>
 	</tr>
 	<tr>
 		<td width="5%" class="list"></td>
 		<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 		<td width="20%" class="listhdrr"><?=gettext("Pattern(s)");?></td>
-		<td width="20%" class="listhdrr"><?=gettext("Main Number");?></td>
-		<td width="20%" class="listhdr"><?=gettext("Port");?></td>
+		<td width="40%" class="listhdr"><?=gettext("Port");?></td>
 		<td width="10%" class="list"></td>
 	</tr>
 
@@ -336,8 +335,7 @@ if (file_exists($g['analog_dirty_path'])) {
 			?><span class="gray"><?=htmlspecialchars($p['name']);?></span><?
 		}
 		?></td>
-		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($p['mainnumber']);?></td><?
+		<td class="listr"><?=@implode("<br>", $p['dialpattern']);?>&nbsp;</td><?
 
 		if (strpos($p['port'], "REDFONE") !== false) {
 			// in case redfone spans start going into the double-digits, watch out here

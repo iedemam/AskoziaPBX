@@ -82,13 +82,6 @@ d_start("providers_isdn_edit.php");
 	d_header(gettext("General Settings"));
 	d_field(gettext("Name"), "name", 40,
 		gettext("Descriptive name for this provider."), "required");
-	?><tr>
-		<td width="20%" valign="top" class="vncellreq"><?=gettext("Main Number");?></td>
-		<td width="80%" colspan="1" class="vtable">
-			<input name="mainnumber" type="text" class="formfld" id="mainnumber" size="40" value="<?=htmlspecialchars($form['mainnumber']);?>">
-			<br><span class="vexpl"><?=gettext("The main telephone number assigned to this line.");?></span>
-		</td>
-	</tr><?
 	display_channel_language_selector($form['language'], 1);
 	?><tr>
 		<td valign="top" class="vncell"><?=gettext("Hardware Port");?></td>
