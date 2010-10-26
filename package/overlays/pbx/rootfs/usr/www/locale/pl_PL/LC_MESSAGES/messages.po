@@ -303,25 +303,20 @@ msgstr "Numer wewnętrzny zawiera podwójny znak \"+\", tylko jeden taki znak je
 msgid "Extension contains a doubled \"-\" character, only one is allowed."
 msgstr "Numer wewnętrzny zawiera podwójny znak \"-\", tylko jeden taki znak jest dozwolony."
 
-#, fuzzy
 msgid "Nested square brackets are not allowed in an extension"
-msgstr "Nawiasy kwadratowe nie są dozwolone."
+msgstr "Zagnieżdżone nawiasy kwadratowe nie są dozwolone w numerze wewnętrznym"
 
-#, fuzzy
 msgid "Brackets are not needed for less than 2 characters in an extension."
-msgstr "Dla mniej niż dwóch znaków nawiasy nie są wymagane."
+msgstr "Nawiasy nie są wymagane dla mniej niż dwóch znaków w numerze wewnętrznym."
 
-#, fuzzy
 msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
-msgstr "Dodane prefiksy mogą zawierać jedynie cyfry, '*' i '#'."
+msgstr "Prefiksy doklejane do numerów wewnętrznych mogą zawierać jedynie cyfry, '*' i '#'."
 
-#, fuzzy
 msgid "The wildcard character \".\" is not allowed in an extension before a prefix which is to be removed."
-msgstr "Znak wildcard \".\" nie jest dozwolony przed prefiksem, który ma zostać usunięty."
+msgstr "Znak wildcard \".\" nie jest dozwolony w numerze wewnętrznym, gdy jest przed prefiksem, który ma zostać usunięty."
 
-#, fuzzy
 msgid "The wildcard character \"!\" is not allowed in an extension before a prefix which is to be removed."
-msgstr "Znak wildcard \"!\" nie jest dozwolony przed prefiksem, który ma zostać usunięty."
+msgstr "Znak wildcard \"!\" nie jest dozwolony w numerze wewnętrznym, gdy jest przed prefiksem, który ma zostać usunięty."
 
 msgid "Missing caller id."
 msgstr "Brak caller id."
@@ -379,9 +374,9 @@ msgstr "Wykryto nieprawidłowy atrybut przy linii %s."
 msgid "PHP parsing error"
 msgstr "Błąd parsingu PHP"
 
-#, fuzzy, php-format
+#, php-format
 msgid "The outgoing Caller ID specified for \"%s\" is invalid."
-msgstr "Wychodzący wzorzec wybierania \"%s\" jest nieprawidłowy. %s"
+msgstr "Wychodzący Caller ID dla \"%s\" jest nieprawidłowy."
 
 msgid "Subject"
 msgstr "Temat"
@@ -810,7 +805,7 @@ msgid "Help"
 msgstr "Pomoc"
 
 msgid "Outgoing Caller ID can be set here for each Provider. Leave blank to use Provider default. Use the following formatting:"
-msgstr ""
+msgstr "Caller ID wykorzystany dla połączeń wychodzących może tutaj zostać skonfigurowany dla każdego z dostawców. Zostaw puste pole by użyć domyślnej wartości dostawy. Użyj następującej składni:"
 
 msgid "Dialplan"
 msgstr "Dialplan"
@@ -2235,9 +2230,8 @@ msgstr "Numer wywoławczy dla tego telefonu."
 msgid "Call Notifications & Voicemail"
 msgstr "Powiadomienia & poczta głosowa"
 
-#, fuzzy
 msgid "Outgoing Caller ID"
-msgstr "Tylko połączenia wychodzące"
+msgstr "Caller ID dla połączeń wychodzących"
 
 msgid "Advanced Options"
 msgstr "Ustawienia zaawansowane"
