@@ -285,7 +285,6 @@ msgstr "Brak numeru wewnętrznego."
 msgid "Invalid extension number. Use only numerals."
 msgstr "Nieprawidłowy numer wewnętrzny. Należy użyć wyłącznie cyfr."
 
-#, fuzzy
 msgid "Missing extension."
 msgstr "Brak numeru wewnętrznego."
 
@@ -336,9 +335,8 @@ msgstr "Powiadomienia e-mail są włączone, lecz podany adres e-mail jest niepr
 msgid "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr "Funkcja e-mailowej skrzynki głosowej jest włączona, lecz podany adres e-mail jest pusty lub nieprawidłowy."
 
-#, fuzzy
 msgid "The e-mail address is invalid or missing."
-msgstr "Funkcja e-mailowej skrzynki głosowej jest włączona, lecz podany adres e-mail jest pusty lub nieprawidłowy."
+msgstr "Podany adres e-mail jest pusty lub nieprawidłowy."
 
 msgid "Missing password."
 msgstr "Brak hasła."
@@ -1196,9 +1194,8 @@ msgstr "kliknij aby włączyć faks"
 msgid "Do you really want to disable this fax?"
 msgstr "Czy na pewno chcesz wyłączyć ten faks?"
 
-#, fuzzy
 msgid "click to disable fax"
-msgstr "kliknij aby wyłączyć pakiet"
+msgstr "kliknij aby wyłączyć faks"
 
 msgid "edit fax"
 msgstr "edytuj faks"
@@ -1608,17 +1605,14 @@ msgstr "zwykły tekst"
 msgid "PHP"
 msgstr "PHP"
 
-#, fuzzy
 msgid "click to enable application"
-msgstr "kliknij aby włączyć ten telefon"
+msgstr "kliknij aby włączyć aplikację"
 
-#, fuzzy
 msgid "Do you really want to disable this application?"
-msgstr "Czy na pewno chcesz usunąć tę aplikację?"
+msgstr "Czy na pewno chcesz wyłączyć tę aplikację?"
 
-#, fuzzy
 msgid "click to disable application"
-msgstr "kliknij aby wyłączyć ten telefon"
+msgstr "kliknij aby wyłączyć aplikację"
 
 msgid "edit application"
 msgstr "edytuj aplikację"
@@ -1635,9 +1629,8 @@ msgstr "Edytuj Aplikację"
 msgid "General Settings"
 msgstr "Ustawienia Główne"
 
-#, fuzzy
 msgid "The number or pattern used to dial this application."
-msgstr "Numer wywoławczy dla tej aplikacji."
+msgstr "Numer lub wzór wywoławczy dla tej aplikacji."
 
 msgid "Security"
 msgstr "Bezpieczeństwo"
@@ -1774,13 +1767,11 @@ msgstr "Wysłano:"
 msgid "Upload"
 msgstr "Wysłano"
 
-#, fuzzy
 msgid "Edit Analog Fax"
-msgstr "Edytuj Analogowe"
+msgstr "Edytuj analogowy faks"
 
-#, fuzzy
 msgid "The number used to dial this fax."
-msgstr "Numer wywoławczy dla tego telefonu."
+msgstr "Numer wywoławczy dla tego faksu."
 
 msgid "Text to be displayed for Caller ID."
 msgstr "Tekst wyświetlany jako Caller ID."
@@ -2526,9 +2517,8 @@ msgstr "Opcjonalny kod PIN niezbędny do dostępu do tej sali."
 msgid "All Virtual Faxes"
 msgstr "Wszystkie wirtualne faksy."
 
-#, fuzzy
 msgid "no faxes found"
-msgstr "Brak trafień."
+msgstr "Brak faksów"
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "W polu \"Adres źródłowy\" musi znajdować się poprawny adres e-mail."
@@ -2835,9 +2825,8 @@ msgstr "Czy na pewno chcesz zrestartować system?"
 msgid "Persistence"
 msgstr "Baza danych"
 
-#, fuzzy
 msgid "Asterisk logs"
-msgstr "Log Asteriska"
+msgstr "Logi Asteriska"
 
 msgid "edit disk"
 msgstr "edytuj dysk"
@@ -2897,13 +2886,11 @@ msgstr "usługa jest już przypisana do \"%s\""
 msgid "store Asterisk's database on disk"
 msgstr "przechowuj bazę danych Asteriska na tym dysku"
 
-#, fuzzy
 msgid "store Asterisk's logs on disk"
-msgstr "przechowuj bazę danych Asteriska na tym dysku"
+msgstr "przechowuj logi Asteriska na dysku"
 
-#, fuzzy
 msgid "store virtual faxes on disk"
-msgstr "przechowuj bazę danych Asteriska na tym dysku"
+msgstr "przechowuj wirtualne faksy na dysku"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "BŁĄD Nie zdołano zapisać konfiguracji.\n"
