@@ -55,16 +55,16 @@ msgid "It contains an invalid character"
 msgstr "Zawiera nieprawidłowy znak."
 
 msgid "It contains an doubled \"|\" character, only one is allowed."
-msgstr "Zawiera podwójny znak \"|\", tylko jeden jest dozwolony."
+msgstr "Zawiera podwójny znak \"|\", tylko jeden taki znak jest dozwolony."
 
 msgid "It contains an doubled \"+\" character, only one is allowed."
-msgstr "Zawiera podwójny znak \"+\", tylko jeden jest dozwolony."
+msgstr "Zawiera podwójny znak \"+\", tylko jeden taki znak jest dozwolony."
 
 msgid "It contains an doubled \"-\" character, only one is allowed."
-msgstr "Zawiera podwójny znak \"-\", tylko jeden jest dozwolony."
+msgstr "Zawiera podwójny znak \"-\", tylko jeden taki znak jest dozwolony."
 
 msgid "Nested square brackets are not allowed."
-msgstr "Nawiasy kwadratowe nie są dozwolone."
+msgstr "Zagnieżdżone nawiasy kwadratowe nie są dozwolone."
 
 msgid "Unmatched square bracket."
 msgstr "Niekompletny nawias kwadratowy."
@@ -82,7 +82,7 @@ msgid "The wildcard character \"!\" is not allowed before a prefix which is to b
 msgstr "Znak wildcard \"!\" nie jest dozwolony przed prefiksem, który ma zostać usunięty."
 
 msgid "Gateway Name"
-msgstr "Nazwa Bramy"
+msgstr "Nazwa bramy"
 
 msgid "Span"
 msgstr "Okres"
