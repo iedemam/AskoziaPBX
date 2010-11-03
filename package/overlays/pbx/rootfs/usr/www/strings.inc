@@ -12,7 +12,4 @@ gettext("up");
 gettext("down");
 gettext("associated");
 
-//the Wireless interface SSID in status_interfaces.php - XXX there are more
-gettext("HIDE");
-
 ?>

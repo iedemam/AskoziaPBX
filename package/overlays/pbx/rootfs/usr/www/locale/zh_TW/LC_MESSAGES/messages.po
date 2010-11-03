@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-03 17:08+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -43,10 +43,6 @@ msgstr "用戶名"
 
 msgid "Public Number"
 msgstr "公共號碼"
-
-#, fuzzy
-msgid "Main Number"
-msgstr "數量"
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1334,9 +1330,6 @@ msgstr ""
 msgid "associated"
 msgstr "相關監測站"
 
-msgid "HIDE"
-msgstr ""
-
 #, fuzzy
 msgid "Virtual"
 msgstr "葡萄牙"
@@ -2183,138 +2176,6 @@ msgstr "記憶體使用"
 msgid "Notes"
 msgstr "Notes"
 
-msgid "Interfaces"
-msgstr "界面(Interfaces)"
-
-msgid "Wireless"
-msgstr "無線"
-
-msgid "SSID,Channel"
-msgstr "SSID，通道"
-
-msgid ",WPA version,WPA cipher"
-msgstr "WPA版本，WPA 密鑰"
-
-msgid ",WPA PSK"
-msgstr "WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK密鑰必須由長度8到63個字符組成。"
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr "只有當標準同樣是802.11a的時候，才能選擇802.11a的通道。"
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "只有選擇了802.11a的通道，才能選用802.11a。"
-
-msgid "No compatible wireless interfaces detected."
-msgstr "沒有檢測到相容的無線介面。"
-
-msgid "Enable Wireless Interface"
-msgstr "允許無線介面"
-
-msgid "Standard"
-msgstr "標準"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "隱藏SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"如果勾選此選項，則SSID不會被以HostAP的模式被廣播，並且只有知道確切SSID的客戶"
-"端才能連接。註意的是，請不要用此選項來代替安全/加密的設置。"
-
-msgid "Channel"
-msgstr "通道"
-
-msgid "Auto"
-msgstr "自動"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA設置"
-
-msgid "Mode"
-msgstr "模式"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "僅WPA"
-
-msgid "WPA2 only"
-msgstr "僅WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "在大多數情況下，您應該在這裏選擇&quot;WPA + WPA2&quot;。"
-
-msgid "Cipher"
-msgstr "密鑰"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP與老的硬體有更好的相容性。"
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr "請輸入WPA-PSK將用到的密碼。其長度必須在8到63之間。"
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "允許 WEP"
-
-msgid "TX key"
-msgstr "TX Key"
-
-msgid "Key 1:"
-msgstr "Key 1:"
-
-msgid "Key 2:"
-msgstr "Key 2:"
-
-msgid "Key 3:"
-msgstr "Key 3:"
-
-msgid "Key 4:"
-msgstr "Key 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr "40 (64) 位的密鑰可以用5位的ASCII碼或者10位以0x開頭的16進制輸入。"
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr "104 (128) 位的密鑰可以用13位的ASCII碼或者26位以0x開頭的16進制數輸入。"
-
 msgid "A valid MAC address must be specified."
 msgstr "必須指定一個有效的MAC地址"
 
@@ -2590,6 +2451,23 @@ msgid "Edit SIP Phone"
 msgstr "電話"
 
 #, fuzzy
+msgid "Auto-Configuration"
+msgstr "恢復設置"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC地址"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
+#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "電話"
 
@@ -2794,10 +2672,6 @@ msgid "Edit ISDN Provider"
 msgstr "編輯Analog電話"
 
 #, fuzzy
-msgid "The main telephone number assigned to this line."
-msgstr "分配給這條線的電話號碼。"
-
-#, fuzzy
 msgid "Edit SIP Provider"
 msgstr "電話"
 
@@ -2935,6 +2809,9 @@ msgstr "活動的通道"
 
 msgid "There are currently no active channels."
 msgstr "目前沒有活動的通道。"
+
+msgid "Channel"
+msgstr "通道"
 
 msgid "Location"
 msgstr "位置"
@@ -3323,6 +3200,145 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#, fuzzy
+#~ msgid "Main Number"
+#~ msgstr "數量"
+
+#~ msgid "Interfaces"
+#~ msgstr "界面(Interfaces)"
+
+#~ msgid "Wireless"
+#~ msgstr "無線"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID，通道"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr "WPA版本，WPA 密鑰"
+
+#~ msgid ",WPA PSK"
+#~ msgstr "WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "WPA PSK密鑰必須由長度8到63個字符組成。"
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr "只有當標準同樣是802.11a的時候，才能選擇802.11a的通道。"
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr "只有選擇了802.11a的通道，才能選用802.11a。"
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "沒有檢測到相容的無線介面。"
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "允許無線介面"
+
+#~ msgid "Standard"
+#~ msgstr "標準"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "隱藏SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "如果勾選此選項，則SSID不會被以HostAP的模式被廣播，並且只有知道確切SSID的客"
+#~ "戶端才能連接。註意的是，請不要用此選項來代替安全/加密的設置。"
+
+#~ msgid "Auto"
+#~ msgstr "自動"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA設置"
+
+#~ msgid "Mode"
+#~ msgstr "模式"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "僅WPA"
+
+#~ msgid "WPA2 only"
+#~ msgstr "僅WPA2"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr "在大多數情況下，您應該在這裏選擇&quot;WPA + WPA2&quot;。"
+
+#~ msgid "Cipher"
+#~ msgstr "密鑰"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP與老的硬體有更好的相容性。"
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr "請輸入WPA-PSK將用到的密碼。其長度必須在8到63之間。"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "允許 WEP"
+
+#~ msgid "TX key"
+#~ msgstr "TX Key"
+
+#~ msgid "Key 1:"
+#~ msgstr "Key 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Key 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Key 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Key 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr "40 (64) 位的密鑰可以用5位的ASCII碼或者10位以0x開頭的16進制輸入。"
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128) 位的密鑰可以用13位的ASCII碼或者26位以0x開頭的16進制數輸入。"
+
+#, fuzzy
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "分配給這條線的電話號碼。"
 
 #~ msgid "add a new item"
 #~ msgstr "添加一個新項目"
@@ -3753,14 +3769,6 @@ msgstr "ERR 收到無效的設定。\n"
 #, fuzzy
 #~ msgid "The Fax's number, also the extension that this fax is reachable at."
 #~ msgstr "會議室的號碼，就是分機可以撥打"
-
-#, fuzzy
-#~ msgid "Auto-Configuration"
-#~ msgstr "恢復設置"
-
-#, fuzzy
-#~ msgid "SNOM MAC Address"
-#~ msgstr "MAC地址"
 
 #~ msgid "webGUI protocol"
 #~ msgstr "網頁設置界面傳輸協定"

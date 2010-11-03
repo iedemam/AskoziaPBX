@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-03 17:08+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -41,9 +41,6 @@ msgid "Username"
 msgstr ""
 
 msgid "Public Number"
-msgstr ""
-
-msgid "Main Number"
 msgstr ""
 
 msgid "It contains an invalid character"
@@ -1207,9 +1204,6 @@ msgstr ""
 msgid "associated"
 msgstr ""
 
-msgid "HIDE"
-msgstr ""
-
 msgid "Virtual"
 msgstr ""
 
@@ -1996,136 +1990,6 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
-msgid "Interfaces"
-msgstr ""
-
-msgid "Wireless"
-msgstr ""
-
-msgid "SSID,Channel"
-msgstr ""
-
-msgid ",WPA version,WPA cipher"
-msgstr ""
-
-msgid ",WPA PSK"
-msgstr ""
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr ""
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-
-msgid "No compatible wireless interfaces detected."
-msgstr ""
-
-msgid "Enable Wireless Interface"
-msgstr ""
-
-msgid "Standard"
-msgstr ""
-
-msgid "SSID"
-msgstr ""
-
-msgid "Hide SSID"
-msgstr ""
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-
-msgid "Channel"
-msgstr ""
-
-msgid "Auto"
-msgstr ""
-
-msgid "WPA"
-msgstr ""
-
-msgid "WPA settings"
-msgstr ""
-
-msgid "Mode"
-msgstr ""
-
-msgid "PSK"
-msgstr ""
-
-msgid "WPA only"
-msgstr ""
-
-msgid "WPA2 only"
-msgstr ""
-
-msgid "WPA + WPA2"
-msgstr ""
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr ""
-
-msgid "Cipher"
-msgstr ""
-
-msgid "TKIP"
-msgstr ""
-
-msgid "AES/CCMP"
-msgstr ""
-
-msgid "TKIP + AES/CCMP"
-msgstr ""
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-
-msgid "WEP"
-msgstr ""
-
-msgid "Enable WEP"
-msgstr ""
-
-msgid "TX key"
-msgstr ""
-
-msgid "Key 1:"
-msgstr ""
-
-msgid "Key 2:"
-msgstr ""
-
-msgid "Key 3:"
-msgstr ""
-
-msgid "Key 4:"
-msgstr ""
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-
 msgid "A valid MAC address must be specified."
 msgstr ""
 
@@ -2373,6 +2237,21 @@ msgstr ""
 msgid "Edit SIP Phone"
 msgstr ""
 
+msgid "Auto-Configuration"
+msgstr ""
+
+msgid "SNOM MAC Address"
+msgstr ""
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
 msgid "Edit Skinny Phone"
 msgstr ""
 
@@ -2551,9 +2430,6 @@ msgstr ""
 msgid "Edit ISDN Provider"
 msgstr ""
 
-msgid "The main telephone number assigned to this line."
-msgstr ""
-
 msgid "Edit SIP Provider"
 msgstr ""
 
@@ -2680,6 +2556,9 @@ msgid "Active Channels"
 msgstr ""
 
 msgid "There are currently no active channels."
+msgstr ""
+
+msgid "Channel"
 msgstr ""
 
 msgid "Location"

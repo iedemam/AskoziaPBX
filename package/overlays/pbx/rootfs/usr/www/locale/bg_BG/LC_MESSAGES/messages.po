@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia v2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-03 17:08+0100\n"
 "PO-Revision-Date: 2010-05-01 17:38+0200\n"
 "Last-Translator: Chavdar Iliev <chavdar_75@yahoo.com>\n"
 "Language-Team: Chavdar Iliev <chavdar_75@yahoo.com>\n"
@@ -50,9 +50,6 @@ msgstr "Потребителско Име"
 
 msgid "Public Number"
 msgstr "Общодостъпен Номер"
-
-msgid "Main Number"
-msgstr "Основен Номер"
 
 msgid "It contains an invalid character"
 msgstr "Съдържа невалидни символи."
@@ -1315,9 +1312,6 @@ msgstr "надолу"
 msgid "associated"
 msgstr "асоциирани"
 
-msgid "HIDE"
-msgstr "СКРИЙ"
-
 #, fuzzy
 msgid "Virtual"
 msgstr "Португалия"
@@ -2154,149 +2148,6 @@ msgstr "Използвана Памет"
 msgid "Notes"
 msgstr "Бележки"
 
-msgid "Interfaces"
-msgstr "Интерфейси"
-
-msgid "Wireless"
-msgstr "Безжичен"
-
-msgid "SSID,Channel"
-msgstr "SSID,Канал"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA версия,WPA код"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK трябва да е между 8 и 63 символа дълъг."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"802.11a канали могат да бъдат избирани ако е избран стандарт 802.11a също."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11a може да бъде избран ако 802.11a канал е избран също."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Не са намерени съвместими безжични интерфейси."
-
-msgid "Enable Wireless Interface"
-msgstr "Разреши Безжичен Интерфейс"
-
-msgid "Standard"
-msgstr "Стандарт"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Скрий SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Ако тази опция е избрана, SSID няма да се излъчва в hostap режим, и само "
-"клиенти които знаят точната SSID ще могат да се закачат. Имайте впредвид че "
-"тази опция никога не трябва да се използва за заместител на защитните "
-"настройки."
-
-msgid "Channel"
-msgstr "Канал"
-
-msgid "Auto"
-msgstr "Автоматично"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA настройки"
-
-msgid "Mode"
-msgstr "Режим"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPA"
-
-msgid "WPA2 only"
-msgstr "WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "В повечето случаи, би трябвало да изберете &quot;WPA + WPA2&quot; тук."
-
-msgid "Cipher"
-msgstr "Код"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP предоставя по-добра защита от TKIP, но TKIP е по съвместим с по-"
-"стар хардуер."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Въведете кодова дума която ще бъде използвана в WPA-PSK режим. Трябва да е "
-"между 8 и 63 символа дълга."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Разреши WEP"
-
-msgid "TX key"
-msgstr "TX код"
-
-msgid "Key 1:"
-msgstr "Код 1:"
-
-msgid "Key 2:"
-msgstr "Код 2:"
-
-msgid "Key 3:"
-msgstr "Код 3:"
-
-msgid "Key 4:"
-msgstr "Код 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bit кодове може да се въвеждат с 5 ASCII символа или 10 "
-"шестнадесетични символа предхождани от '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
-"шестнадесетични символа предхождани от '0x'."
-
 msgid "A valid MAC address must be specified."
 msgstr "Въведете валиден MAC адрес."
 
@@ -2562,6 +2413,21 @@ msgstr "Редактиране на ISDN Телефон"
 msgid "Edit SIP Phone"
 msgstr "Редактиране на SIP Телефон"
 
+msgid "Auto-Configuration"
+msgstr "Автоматично Конфигуриране"
+
+msgid "SNOM MAC Address"
+msgstr "SNOM MAC Адрес"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
 msgid "Edit Skinny Phone"
 msgstr "Редактиране на Skinny Телефон"
 
@@ -2753,9 +2619,6 @@ msgstr "Метод на Оторизация"
 msgid "Edit ISDN Provider"
 msgstr "Редактиране на ISDN Външна Линия"
 
-msgid "The main telephone number assigned to this line."
-msgstr "Телефонен номер определен за тази линия."
-
 msgid "Edit SIP Provider"
 msgstr "Редактиране на SIP Външна Линия"
 
@@ -2892,6 +2755,9 @@ msgstr "Активни Канали"
 
 msgid "There are currently no active channels."
 msgstr "В момента няма активни канали."
+
+msgid "Channel"
+msgstr "Канал"
 
 msgid "Location"
 msgstr "Местонахождение"
@@ -3275,6 +3141,157 @@ msgstr "ГРЕШКА Не мога да инсталирам конфигура�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ГРЕШКА Получена е неправилна конфигурация.\n"
+
+#~ msgid "Main Number"
+#~ msgstr "Основен Номер"
+
+#~ msgid "HIDE"
+#~ msgstr "СКРИЙ"
+
+#~ msgid "Interfaces"
+#~ msgstr "Интерфейси"
+
+#~ msgid "Wireless"
+#~ msgstr "Безжичен"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID,Канал"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr ",WPA версия,WPA код"
+
+#~ msgid ",WPA PSK"
+#~ msgstr ",WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "WPA PSK трябва да е между 8 и 63 символа дълъг."
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr ""
+#~ "802.11a канали могат да бъдат избирани ако е избран стандарт 802.11a също."
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr "802.11a може да бъде избран ако 802.11a канал е избран също."
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "Не са намерени съвместими безжични интерфейси."
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "Разреши Безжичен Интерфейс"
+
+#~ msgid "Standard"
+#~ msgstr "Стандарт"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "Скрий SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "Ако тази опция е избрана, SSID няма да се излъчва в hostap режим, и само "
+#~ "клиенти които знаят точната SSID ще могат да се закачат. Имайте впредвид "
+#~ "че тази опция никога не трябва да се използва за заместител на защитните "
+#~ "настройки."
+
+#~ msgid "Auto"
+#~ msgstr "Автоматично"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA настройки"
+
+#~ msgid "Mode"
+#~ msgstr "Режим"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "WPA"
+
+#~ msgid "WPA2 only"
+#~ msgstr "WPA2"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr ""
+#~ "В повечето случаи, би трябвало да изберете &quot;WPA + WPA2&quot; тук."
+
+#~ msgid "Cipher"
+#~ msgstr "Код"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "AES/CCMP предоставя по-добра защита от TKIP, но TKIP е по съвместим с по-"
+#~ "стар хардуер."
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr ""
+#~ "Въведете кодова дума която ще бъде използвана в WPA-PSK режим. Трябва да "
+#~ "е между 8 и 63 символа дълга."
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "Разреши WEP"
+
+#~ msgid "TX key"
+#~ msgstr "TX код"
+
+#~ msgid "Key 1:"
+#~ msgstr "Код 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Код 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Код 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Код 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "40 (64) bit кодове може да се въвеждат с 5 ASCII символа или 10 "
+#~ "шестнадесетични символа предхождани от '0x'."
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128) bit кодове може да се въвеждат с 13 ASCII символа или 26 "
+#~ "шестнадесетични символа предхождани от '0x'."
+
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "Телефонен номер определен за тази линия."
 
 #~ msgid "add a new item"
 #~ msgstr "добавяне на нов артикул"
@@ -3750,12 +3767,6 @@ msgstr "ГРЕШКА Получена е неправилна конфигура
 #~ msgstr ""
 #~ "Номер на стая за конференции, също така и вътрешен номер с който тази "
 #~ "конференция ще се избира."
-
-#~ msgid "Auto-Configuration"
-#~ msgstr "Автоматично Конфигуриране"
-
-#~ msgid "SNOM MAC Address"
-#~ msgstr "SNOM MAC Адрес"
 
 #~ msgid "webGUI protocol"
 #~ msgstr "webGUI протокол"

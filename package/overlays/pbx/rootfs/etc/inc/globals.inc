@@ -44,7 +44,6 @@ $g = array(
 	"www_path" => "/usr/www",
 	"xml_rootobj" => "askoziapbx",
 	"debug" => false,
-	"wireless_hostap_regex" => "/^(wi|ath|ral|ural)/",
 	"latest_config" => "2.1",
 	"package_system" => "1.0",
 	"technologies" => array("sip", "iax", "isdn", "analog", "skinny"),

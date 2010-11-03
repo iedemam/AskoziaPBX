@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-03 17:08+0100\n"
 "PO-Revision-Date: 2009-02-10 02:06+0100\n"
 "Last-Translator: Akif Dinc <akif@dinc.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,10 +43,6 @@ msgstr "Kullanıcı adı"
 
 msgid "Public Number"
 msgstr "Kamusal Numara"
-
-#, fuzzy
-msgid "Main Number"
-msgstr "Numara"
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1268,9 +1264,6 @@ msgstr ""
 msgid "associated"
 msgstr "ilişkilendirildi"
 
-msgid "HIDE"
-msgstr ""
-
 #, fuzzy
 msgid "Virtual"
 msgstr "Portekiz"
@@ -2113,137 +2106,6 @@ msgstr "Hafıza Kullanımı"
 msgid "Notes"
 msgstr "Notlar"
 
-msgid "Interfaces"
-msgstr "Arayüzler"
-
-msgid "Wireless"
-msgstr "Telsiz"
-
-msgid "SSID,Channel"
-msgstr "SSİD, Kanal"
-
-msgid ",WPA version,WPA cipher"
-msgstr ""
-
-msgid ",WPA PSK"
-msgstr ""
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr ""
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Uyum sağlayan telsiz arayüzü bulunamadı."
-
-msgid "Enable Wireless Interface"
-msgstr ""
-
-msgid "Standard"
-msgstr "Standart"
-
-msgid "SSID"
-msgstr "SSİD"
-
-msgid "Hide SSID"
-msgstr "SSİD Gizle"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-
-msgid "Channel"
-msgstr "Kanal"
-
-msgid "Auto"
-msgstr ""
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA ayarları"
-
-msgid "Mode"
-msgstr ""
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "Sade WPA"
-
-msgid "WPA2 only"
-msgstr "Sade WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "Burada genelde seçmeniz gereken &quot;WPA + WPA2&quot;."
-
-msgid "Cipher"
-msgstr ""
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP TKİP'den daha güvenirli, fakat TKİP eski hardwarelerle daha uyumlu."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "WEP geçerli kıl"
-
-msgid "TX key"
-msgstr "TX anahtarı"
-
-msgid "Key 1:"
-msgstr "Anahtar 1:"
-
-msgid "Key 2:"
-msgstr "Anahtar 2:"
-
-msgid "Key 3:"
-msgstr "Anahtar 3:"
-
-msgid "Key 4:"
-msgstr "Anahtar 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-
 msgid "A valid MAC address must be specified."
 msgstr "Geçerli MAX adresi belirtilmeli."
 
@@ -2514,6 +2376,23 @@ msgid "Edit SIP Phone"
 msgstr "SİP Telefonları"
 
 #, fuzzy
+msgid "Auto-Configuration"
+msgstr "Geri dönüşüm ayarları"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC Adresi"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
+#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "SİP Telefonları"
 
@@ -2715,10 +2594,6 @@ msgid "Edit ISDN Provider"
 msgstr "Analog düzenle"
 
 #, fuzzy
-msgid "The main telephone number assigned to this line."
-msgstr "Bu hatta atanmış telefon numarası."
-
-#, fuzzy
 msgid "Edit SIP Provider"
 msgstr "SİP Telefonları"
 
@@ -2855,6 +2730,9 @@ msgstr "Aktif Kanallar"
 
 msgid "There are currently no active channels."
 msgstr "Şu an aktif kanal yok."
+
+msgid "Channel"
+msgstr "Kanal"
 
 msgid "Location"
 msgstr "Lokasyon"
@@ -3232,6 +3110,93 @@ msgstr ""
 msgid "ERR Invalid configuration received.\n"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Main Number"
+#~ msgstr "Numara"
+
+#~ msgid "Interfaces"
+#~ msgstr "Arayüzler"
+
+#~ msgid "Wireless"
+#~ msgstr "Telsiz"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSİD, Kanal"
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "Uyum sağlayan telsiz arayüzü bulunamadı."
+
+#~ msgid "Standard"
+#~ msgstr "Standart"
+
+#~ msgid "SSID"
+#~ msgstr "SSİD"
+
+#~ msgid "Hide SSID"
+#~ msgstr "SSİD Gizle"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA ayarları"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "Sade WPA"
+
+#~ msgid "WPA2 only"
+#~ msgstr "Sade WPA2"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr "Burada genelde seçmeniz gereken &quot;WPA + WPA2&quot;."
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "AES/CCMP TKİP'den daha güvenirli, fakat TKİP eski hardwarelerle daha "
+#~ "uyumlu."
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "WEP geçerli kıl"
+
+#~ msgid "TX key"
+#~ msgstr "TX anahtarı"
+
+#~ msgid "Key 1:"
+#~ msgstr "Anahtar 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Anahtar 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Anahtar 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Anahtar 4:"
+
+#, fuzzy
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "Bu hatta atanmış telefon numarası."
+
 #~ msgid "add a new item"
 #~ msgstr "yeni bir öğe ekle"
 
@@ -3443,14 +3408,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Fax number matches an existing extension."
 #~ msgstr "Konferans numarası mevcut  bir hatta kullanılıyor."
-
-#, fuzzy
-#~ msgid "Auto-Configuration"
-#~ msgstr "Geri dönüşüm ayarları"
-
-#, fuzzy
-#~ msgid "SNOM MAC Address"
-#~ msgstr "MAC Adresi"
 
 #~ msgid "webGUI protocol"
 #~ msgstr "webGUİ protokolü"

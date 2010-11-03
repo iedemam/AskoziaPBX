@@ -85,11 +85,6 @@
 	system_resolvconf_generate();
 	echo "done\n";
 
-	/* configure wireless interface */
-	//echo " - Configuring wireless... ";
-	//wireless_configure();
-	//echo "done\n";
-
 	/* configure loopback interface */
 	echo " - Configuring network loopback interface... ";
 	network_loopback_configure();

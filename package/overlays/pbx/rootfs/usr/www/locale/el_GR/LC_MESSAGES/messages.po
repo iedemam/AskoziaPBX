@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-03 17:08+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,10 +45,6 @@ msgstr "Όνομα χρήστη"
 
 msgid "Public Number"
 msgstr "Δημόσιος αριθμός"
-
-#, fuzzy
-msgid "Main Number"
-msgstr "Αριθμός"
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1360,9 +1356,6 @@ msgstr "ανενεργό"
 msgid "associated"
 msgstr "συνδεδεμένο"
 
-msgid "HIDE"
-msgstr "ΑΠΟΚΡΥΨΗ"
-
 #, fuzzy
 msgid "Virtual"
 msgstr "Πορτογαλία"
@@ -2250,151 +2243,6 @@ msgstr "Χρήση μνήμης"
 msgid "Notes"
 msgstr "Σημειώσεις"
 
-msgid "Interfaces"
-msgstr "Διεπαφές"
-
-msgid "Wireless"
-msgstr "Ασύρματο δίκτυο"
-
-msgid "SSID,Channel"
-msgstr "SSID,Κανάλι"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA version,WPA cipher"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "Το WPA PSK πρέπει να έχει μήκος από 8 μέχρι 63 χαρακτήρες."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"Τα κανάλια 802.11a μπορούν να επιλεγούν μόνο αν έχετε επιλέξει το πρότυπο "
-"802.11a."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "Το 802.11a μπορεί να επιλεγεί μόνο αν επιλέξετε ένα κανάλι 802.11a."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Δεν βρέθηκαν συμβατές διεπαφές ασύρματου δικτύου."
-
-msgid "Enable Wireless Interface"
-msgstr "Ενεργοποίηση ασύρματης διεπαφής"
-
-msgid "Standard"
-msgstr "Πρότυπο"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Απόκρυψη  SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Αν επιλεγεί, το SSID δεν θα μεταδίδεται και θα μπορούν να συνδεθούν μόνο "
-"πελάτες που το γνωρίζουν. Σημειώστε ότι δεν θα πρέπει να χρησιμοποιείτε ποτέ "
-"αυτή την επιλογή σαν υποκατάστατο των ρυθμίσεων ασφαλείας και κρυπτογράφησης."
-
-msgid "Channel"
-msgstr "Κανάλι"
-
-msgid "Auto"
-msgstr "Αυτόματο"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "Ρυθμίσεις WPA"
-
-msgid "Mode"
-msgstr "Τρόπος λειτουργίας"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "μόνο WPA"
-
-msgid "WPA2 only"
-msgstr "μόνο WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr ""
-"Στις περισσότερες περιπτώσεις  η πιο σωστή επιλογή είναι &quot;WPA + "
-"WPA2&quot;."
-
-msgid "Cipher"
-msgstr "Κρυπτογραφία"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"Το AES/CCMP παρέχει καλύτερη ασφάλεια από το TKIP, αλλά το TKIP είναι πιο "
-"συμβατό με παλιότερες συσκευές."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Εισάγετε τον κωδικό (passphrase) που θα χρησιμοποιηθεί για τον τρόπο "
-"λειτουργίας WPA-PSK. Πρέπει να έχει μήκος από 8 μέχρι και 63 χαρακτήρες."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Ενεργοποίηση WEP"
-
-msgid "TX key"
-msgstr "Κλειδί (TX key)"
-
-msgid "Key 1:"
-msgstr "Κλειδί 1:"
-
-msgid "Key 2:"
-msgstr "Κλειδί 2:"
-
-msgid "Key 3:"
-msgstr "Κλειδί 3:"
-
-msgid "Key 4:"
-msgstr "Κλειδί 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"Τα κλειδιά 40 (64) bits μπορούν να εισαχθούν σαν 5 χαρακτήρες ASCII ή σαν 10 "
-"δεκαεξαδικά ψηφία με πρόθεμα '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"Τα κλειδιά 104 (128) bits μπορούν να εισαχθούν σαν 13 χαρακτήρες ASCII ή σαν "
-"26 δεκαεξαδικά ψηφία με πρόθεμα '0x'."
-
 msgid "A valid MAC address must be specified."
 msgstr "Πρέπει να ορίσετε μια έγκυρη διεύθυνση MAC."
 
@@ -2695,6 +2543,23 @@ msgid "Edit SIP Phone"
 msgstr "Τηλέφωνα SIP"
 
 #, fuzzy
+msgid "Auto-Configuration"
+msgstr "Επαναφορά ρυθμίσεων"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "Διεύθυνση MAC"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
+#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "Τηλέφωνα SIP"
 
@@ -2903,10 +2768,6 @@ msgid "Edit ISDN Provider"
 msgstr "Επεξεργασία PSTN"
 
 #, fuzzy
-msgid "The main telephone number assigned to this line."
-msgstr "Ο αριθμός κλήσης αυτής της γραμμής."
-
-#, fuzzy
 msgid "Edit SIP Provider"
 msgstr "Τηλέφωνα SIP"
 
@@ -3059,6 +2920,9 @@ msgstr "Ενεργά κανάλια"
 
 msgid "There are currently no active channels."
 msgstr "Δεν υπάρχουν ενεργά κανάλια αυτή τη στιγμή."
+
+msgid "Channel"
+msgstr "Κανάλι"
 
 msgid "Location"
 msgstr "Τοποθεσία"
@@ -3488,6 +3352,161 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#, fuzzy
+#~ msgid "Main Number"
+#~ msgstr "Αριθμός"
+
+#~ msgid "HIDE"
+#~ msgstr "ΑΠΟΚΡΥΨΗ"
+
+#~ msgid "Interfaces"
+#~ msgstr "Διεπαφές"
+
+#~ msgid "Wireless"
+#~ msgstr "Ασύρματο δίκτυο"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID,Κανάλι"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr ",WPA version,WPA cipher"
+
+#~ msgid ",WPA PSK"
+#~ msgstr ",WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "Το WPA PSK πρέπει να έχει μήκος από 8 μέχρι 63 χαρακτήρες."
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr ""
+#~ "Τα κανάλια 802.11a μπορούν να επιλεγούν μόνο αν έχετε επιλέξει το πρότυπο "
+#~ "802.11a."
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr "Το 802.11a μπορεί να επιλεγεί μόνο αν επιλέξετε ένα κανάλι 802.11a."
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "Δεν βρέθηκαν συμβατές διεπαφές ασύρματου δικτύου."
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "Ενεργοποίηση ασύρματης διεπαφής"
+
+#~ msgid "Standard"
+#~ msgstr "Πρότυπο"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "Απόκρυψη  SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "Αν επιλεγεί, το SSID δεν θα μεταδίδεται και θα μπορούν να συνδεθούν μόνο "
+#~ "πελάτες που το γνωρίζουν. Σημειώστε ότι δεν θα πρέπει να χρησιμοποιείτε "
+#~ "ποτέ αυτή την επιλογή σαν υποκατάστατο των ρυθμίσεων ασφαλείας και "
+#~ "κρυπτογράφησης."
+
+#~ msgid "Auto"
+#~ msgstr "Αυτόματο"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "Ρυθμίσεις WPA"
+
+#~ msgid "Mode"
+#~ msgstr "Τρόπος λειτουργίας"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "μόνο WPA"
+
+#~ msgid "WPA2 only"
+#~ msgstr "μόνο WPA2"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr ""
+#~ "Στις περισσότερες περιπτώσεις  η πιο σωστή επιλογή είναι &quot;WPA + "
+#~ "WPA2&quot;."
+
+#~ msgid "Cipher"
+#~ msgstr "Κρυπτογραφία"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "Το AES/CCMP παρέχει καλύτερη ασφάλεια από το TKIP, αλλά το TKIP είναι πιο "
+#~ "συμβατό με παλιότερες συσκευές."
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr ""
+#~ "Εισάγετε τον κωδικό (passphrase) που θα χρησιμοποιηθεί για τον τρόπο "
+#~ "λειτουργίας WPA-PSK. Πρέπει να έχει μήκος από 8 μέχρι και 63 χαρακτήρες."
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "Ενεργοποίηση WEP"
+
+#~ msgid "TX key"
+#~ msgstr "Κλειδί (TX key)"
+
+#~ msgid "Key 1:"
+#~ msgstr "Κλειδί 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Κλειδί 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Κλειδί 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Κλειδί 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "Τα κλειδιά 40 (64) bits μπορούν να εισαχθούν σαν 5 χαρακτήρες ASCII ή σαν "
+#~ "10 δεκαεξαδικά ψηφία με πρόθεμα '0x'."
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "Τα κλειδιά 104 (128) bits μπορούν να εισαχθούν σαν 13 χαρακτήρες ASCII ή "
+#~ "σαν 26 δεκαεξαδικά ψηφία με πρόθεμα '0x'."
+
+#, fuzzy
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "Ο αριθμός κλήσης αυτής της γραμμής."
 
 #~ msgid "add a new item"
 #~ msgstr "προσθήκη αντικειμένου"
@@ -3983,14 +4002,6 @@ msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
 #~ msgstr ""
 #~ "Ο αριθμός κλήσης αυτού του χώρου συνδιάσκεψης. Επίσης, ο αριθμός που θα "
 #~ "χρησιμοποιείτε για να συμμετάσχετε σε αυτή τη συνδιάσκεψη."
-
-#, fuzzy
-#~ msgid "Auto-Configuration"
-#~ msgstr "Επαναφορά ρυθμίσεων"
-
-#, fuzzy
-#~ msgid "SNOM MAC Address"
-#~ msgstr "Διεύθυνση MAC"
 
 #~ msgid "webGUI protocol"
 #~ msgstr "Πρωτόκολλο περιβάλλοντος διαχείρισης"

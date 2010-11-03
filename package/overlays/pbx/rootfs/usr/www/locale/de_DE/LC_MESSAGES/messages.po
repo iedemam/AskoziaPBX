@@ -73,13 +73,13 @@ msgid "It contains an invalid character"
 msgstr "Enthält ein ungültiges Zeichen."
 
 msgid "It contains an doubled \"|\" character, only one is allowed."
-msgstr "Enthält zwei \"|\"\ Zeichen, nur eins ist erlaubt. "
+msgstr "Enthält zwei \"|\" Zeichen, nur eins ist erlaubt. "
 
 msgid "It contains an doubled \"+\" character, only one is allowed."
-msgstr "Enthält zwei \"+\"\ Zeichen, nur eins ist erlaubt. "
+msgstr "Enthält zwei \"+\" Zeichen, nur eins ist erlaubt. "
 
 msgid "It contains an doubled \"-\" character, only one is allowed."
-msgstr "Enthält zwei \"-\"\ Zeichen, nur eins ist erlaubt. "
+msgstr "Enthält zwei \"-\" Zeichen, nur eins ist erlaubt. "
 
 msgid "Nested square brackets are not allowed."
 msgstr "Verschachtelte eckige Klammern sind nicht erlaubt. "

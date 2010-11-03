@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-03 17:08+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -38,9 +38,6 @@ msgstr "Имя пользователя"
 
 msgid "Public Number"
 msgstr "Внешний номер"
-
-msgid "Main Number"
-msgstr "Главный номер"
 
 msgid "It contains an invalid character"
 msgstr "Текст содержит недопустимый символ"
@@ -1301,9 +1298,6 @@ msgstr "вниз"
 msgid "associated"
 msgstr "ассоциированный"
 
-msgid "HIDE"
-msgstr "СПРЯТАТЬ"
-
 #, fuzzy
 msgid "Virtual"
 msgstr "Португалия"
@@ -2129,149 +2123,6 @@ msgstr "Использование памяти"
 msgid "Notes"
 msgstr "Примечания"
 
-msgid "Interfaces"
-msgstr "Интерфейсы"
-
-msgid "Wireless"
-msgstr "Беспроводной"
-
-msgid "SSID,Channel"
-msgstr "SSID,Канал"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA версия,WPA шифр"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK должно быть от 8 до 63 символов."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"Каналы 802.11a можно выбрать только в случае, если стандарт установлен тоже "
-"на 802.11a."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11a можно выбрать только если выбран канал 802.11a."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Нет совместимых беспроводных интерфейсов."
-
-msgid "Enable Wireless Interface"
-msgstr "Включить Беспроводной Интерфейс"
-
-msgid "Standard"
-msgstr "Стандарт"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Спрятать SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Если выбрана эта опция, SSID не будет транслироваться ,только те клиенты, "
-"которые знают точный SSID смогут подключиться. Обратите внимание, что этот "
-"вариант не должен использоваться в качестве замены шифрования."
-
-msgid "Channel"
-msgstr "Канал"
-
-msgid "Auto"
-msgstr "Автоматический"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA настройки"
-
-msgid "Mode"
-msgstr "Метод"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPA только"
-
-msgid "WPA2 only"
-msgstr "WPA2 только"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "В большинстве случаев вы должны выбрать &quot;WPA + WPA2&quot; здесь."
-
-msgid "Cipher"
-msgstr "Шифр"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP обеспечивает лучшую безопасность, чем TKIP, но TKIP более "
-"совместимы с устаревшим оборудованием."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Введите пароль, который будет использоваться в WPA-PSK режиме. Это должно "
-"быть от 8 до 63 символов."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Включить WEP"
-
-msgid "TX key"
-msgstr "TX key"
-
-msgid "Key 1:"
-msgstr "Key 1:"
-
-msgid "Key 2:"
-msgstr "Key 2:"
-
-msgid "Key 3:"
-msgstr "Key 3:"
-
-msgid "Key 4:"
-msgstr "Key 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) разрядных ключей может быть введен в качестве символов ASCII 5 или "
-"10 шестнадцатеричных цифр, перед которыми '0х'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) разрядных ключей может быть заключен до 13 символов ASCII или 26 "
-"шестнадцатеричных цифр, перед которыми '0х'."
-
 msgid "A valid MAC address must be specified."
 msgstr "Укажите правильный MAC адрес."
 
@@ -2538,6 +2389,23 @@ msgstr "Изменить ISDN Телефон"
 msgid "Edit SIP Phone"
 msgstr "Изменить SIP Телефон"
 
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "Восстановление конфигурации"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC адрес"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
 msgid "Edit Skinny Phone"
 msgstr "Изменить Skinny Телефон"
 
@@ -2727,9 +2595,6 @@ msgstr "Схема проверки подлинности"
 msgid "Edit ISDN Provider"
 msgstr "Изменить цифрового провайдера"
 
-msgid "The main telephone number assigned to this line."
-msgstr "Основной номер телефона присвоен к этой линии."
-
 msgid "Edit SIP Provider"
 msgstr "Изменить SIP провайдера"
 
@@ -2867,6 +2732,9 @@ msgstr "Активные каналы"
 
 msgid "There are currently no active channels."
 msgstr "В настоящее время нет активных каналов."
+
+msgid "Channel"
+msgstr "Канал"
 
 msgid "Location"
 msgstr "Местоположение"
@@ -3249,6 +3117,157 @@ msgstr "ERR  не могу установить настройки.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR получена неправильная конфигурация.\n"
+
+#~ msgid "Main Number"
+#~ msgstr "Главный номер"
+
+#~ msgid "HIDE"
+#~ msgstr "СПРЯТАТЬ"
+
+#~ msgid "Interfaces"
+#~ msgstr "Интерфейсы"
+
+#~ msgid "Wireless"
+#~ msgstr "Беспроводной"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID,Канал"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr ",WPA версия,WPA шифр"
+
+#~ msgid ",WPA PSK"
+#~ msgstr ",WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "WPA PSK должно быть от 8 до 63 символов."
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr ""
+#~ "Каналы 802.11a можно выбрать только в случае, если стандарт установлен "
+#~ "тоже на 802.11a."
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr "802.11a можно выбрать только если выбран канал 802.11a."
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "Нет совместимых беспроводных интерфейсов."
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "Включить Беспроводной Интерфейс"
+
+#~ msgid "Standard"
+#~ msgstr "Стандарт"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "Спрятать SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "Если выбрана эта опция, SSID не будет транслироваться ,только те клиенты, "
+#~ "которые знают точный SSID смогут подключиться. Обратите внимание, что "
+#~ "этот вариант не должен использоваться в качестве замены шифрования."
+
+#~ msgid "Auto"
+#~ msgstr "Автоматический"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA настройки"
+
+#~ msgid "Mode"
+#~ msgstr "Метод"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "WPA только"
+
+#~ msgid "WPA2 only"
+#~ msgstr "WPA2 только"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr ""
+#~ "В большинстве случаев вы должны выбрать &quot;WPA + WPA2&quot; здесь."
+
+#~ msgid "Cipher"
+#~ msgstr "Шифр"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "AES/CCMP обеспечивает лучшую безопасность, чем TKIP, но TKIP более "
+#~ "совместимы с устаревшим оборудованием."
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr ""
+#~ "Введите пароль, который будет использоваться в WPA-PSK режиме. Это должно "
+#~ "быть от 8 до 63 символов."
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "Включить WEP"
+
+#~ msgid "TX key"
+#~ msgstr "TX key"
+
+#~ msgid "Key 1:"
+#~ msgstr "Key 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Key 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Key 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Key 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "40 (64) разрядных ключей может быть введен в качестве символов ASCII 5 "
+#~ "или 10 шестнадцатеричных цифр, перед которыми '0х'."
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128) разрядных ключей может быть заключен до 13 символов ASCII или "
+#~ "26 шестнадцатеричных цифр, перед которыми '0х'."
+
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "Основной номер телефона присвоен к этой линии."
 
 #~ msgid "add a new item"
 #~ msgstr "добавить новый элемент"
