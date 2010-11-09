@@ -1,0 +1,35 @@
+#!/bin/sh
+
+HOME=/
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export HOME PATH
+
+echo "Mounting /dev, /dev/pts, /proc, /usbfs and /sys ..."
+mount -t tmpfs  none /dev -o mode=755
+mkdir /dev/pts
+mount -t devpts none /dev/pts
+mount -t proc   none /proc
+mount -t usbfs  none /proc/bus/usb 2> /dev/null
+mount -t sysfs  none /sys
+ln -s /proc/self/fd /dev/fd
+
+echo "Increasing verbosity ..."
+echo 9 > /proc/sys/kernel/printk
+
+echo "Populating u/dev ..."
+mknod /dev/tty1 c 4 1
+mknod /dev/tty2 c 4 2
+mknod /dev/tty3 c 4 3
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s
+
+# make some directories
+mkdir /ultmp /offload /cf /var/etc /var/db /var/spool/cron /var/spool/cron/crontabs
+
+# setup symbolic links
+ln -s /cf/conf /conf
+# new bits to move usr/* out of the initramfs and into /offload
+ln -s /offload/rootfs/usr /usr
+/etc/rc.mountoffload
+
+exec /sbin/init $*

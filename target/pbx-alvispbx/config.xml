@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!-- AskoziaPBX default system configuration -->
+<!-- $Id: config.xml 1681 2010-08-11 17:01:05Z michael.iedema $ -->
+<askoziapbx>
+	<version>2.1</version>
+	<lastchange></lastchange>
+	<system>
+		<hostname>AskoziaPBX</hostname>
+		<domain>local</domain>
+		<dnsserver>192.168.1.1</dnsserver>
+		<username>admin</username>
+		<password>askozia</password>
+		<time-update-interval>4-hours</time-update-interval>
+		<timeservers>pool.ntp.org</timeservers>
+		<webgui>
+			<protocol>http</protocol>
+		</webgui>
+	</system>
+	<interfaces>
+		<lan>
+			<dhcp/>
+			<if>eth0</if>
+			<ipaddr>192.168.1.2</ipaddr>
+			<subnet>24</subnet>
+			<gateway>192.168.1.1</gateway>
+		</lan>
+	</interfaces>
+	<conferencing>
+		<room>
+			<number>2663</number>
+			<name>Default Conference</name>
+			<uniqid>CONFERENCE-ROOM-914902610465bd5b50d0c6</uniqid>
+		</room>
+	</conferencing>
+	<dialplan>
+		<application>
+			<name>Read IP</name>
+			<extension>000047</extension>
+			<uniqid>DIALPLAN-APPLICATION-16151900034c62d16c92eba</uniqid>
+			<type>plaintext</type>
+				<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxTZXQoSVBPVVRQVVQ9JHtTSEVMTCgvZXRjL3NjcmlwdHMvcGFyc2VpcC5zaCl9KQo0LE5vT3AoSVBPVVRQVVQ6ICR7SVBPVVRQVVR9KQo1LFBsYXliYWNrKGJlZXApCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDEpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDIpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDMpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sU2F5RGlnaXRzKCR7Q1VUKElQT1VUUFVULFwuLDQpfSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sUGxheWJhY2soc2lsZW5jZS8xKQpuLEdvdG8oNSk=</applicationlogic>
+		</application>
+		<application>
+			<name>Echo</name>
+			<extension>00003246</extension>
+			<uniqid>DIALPLAN-APPLICATION-14520268874c62d16c931be</uniqid>
+			<type>plaintext</type>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLEVjaG8oKQozLEhhbmd1cCgp</applicationlogic>
+		</application>
+		<application>
+			<name>Milliwatt</name>
+			<extension>000064554</extension>
+			<uniqid>DIALPLAN-APPLICATION-7375249804c62d16c9336d</uniqid>
+			<type>plaintext</type>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLE1pbGxpd2F0dCgpCjMsSGFuZ3VwKCk=</applicationlogic>
+		</application>
+		<application>
+			<name>WakeMe</name>
+			<extension>00009253</extension>
+			<uniqid>DIALPLAN-APPLICATION-4653015014c62d16c93512</uniqid>
+			<type>plaintext</type>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxXYWtlTWUoKQo0LEhhbmd1cCgp</applicationlogic>
+		</application>
+	</dialplan>
+</askoziapbx>

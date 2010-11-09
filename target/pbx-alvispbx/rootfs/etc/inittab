@@ -1,0 +1,6 @@
+::sysinit:/sbin/syslogd -S -C512
+::sysinit:/etc/rc.bootup
+#ttyS0::respawn:/etc/rc.initial
+tty1::respawn:/etc/rc.initial
+tty2::respawn:/sbin/getty 38400 tty2
+tty3::respawn:/sbin/getty 38400 tty3
