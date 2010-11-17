@@ -407,7 +407,7 @@ function display_port_gain_selector($current_rxgain, $current_txgain, $colspan) 
 			<option value="<?=$i;?>" <?
 			if ($i == $current_rxgain)
 				echo "selected"; ?>
-			><?=sprintf("%0.1f\n", $i);?></option>
+			><?=sprintf("%0.1f dB\n", $i);?></option>
 			<? endfor; ?>
 			</select>&nbsp;<?=gettext("receive");?>
 			&nbsp;&nbsp;
@@ -417,7 +417,7 @@ function display_port_gain_selector($current_rxgain, $current_txgain, $colspan) 
 			<option value="<?=$i;?>" <?
 			if ($i == $current_txgain)
 				echo "selected"; ?>
-			><?=sprintf("%0.1f\n", $i);?></option>
+			><?=sprintf("%0.1f dB\n", $i);?></option>
 			<? endfor; ?>
 			</select>&nbsp;<?=gettext("transmit");?>
 			<br><span class="vexpl"><?=gettext("If calls coming through this port are too loud or too quiet, make adjustments here. Receive and transmit levels (in decibels) can be adjusted independently.");?></span>
