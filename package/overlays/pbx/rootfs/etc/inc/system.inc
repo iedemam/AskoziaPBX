@@ -473,6 +473,9 @@ function system_load_kernel_modules() {
 	} else {
 		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc", "wctdm24xxp");
 	}
+	if ($g['platform'] == "Embedded" || $g['platform'] == "Generic") {
+		$basemodules[] = "opvxa1200";
+	}
 
 	foreach ($basemodules as $m) {
 		$module_options = '';
