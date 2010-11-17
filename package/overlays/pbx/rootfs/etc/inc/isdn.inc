@@ -267,6 +267,10 @@ function isdn_verify_provider($post, $errors) {
 	v_manualattributes(&$provider, &$post, &$errors);
 
 	$optional = array(
+		'internationalprefix',
+		'nationalprefix',
+		'localprefix',
+		'privateprefix',
 		'failover',
 		'defaultfax'
 	);

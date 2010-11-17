@@ -748,6 +748,19 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 				} else {
 					$conf .= "group=" . $pport['basechannel'] . "\n";
 				}
+
+				$prefixes = array(
+					'internationalprefix',
+					'nationalprefix',
+					'localprefix',
+					'privateprefix'
+				);
+				foreach ($prefixes as $prefix) {
+					if (isset($provider[$prefix])) {
+						$conf .= $prefix . "=" . $provider[$prefix] . "\n";
+					}
+				}
+
 				if ($provider['manualattributes']) {
 					$conf .= "; manual attributes\n";
 					$conf .= base64_decode($provider['manualattributes']) . "\n";

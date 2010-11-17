@@ -137,6 +137,18 @@ d_start("providers_isdn_edit.php");
 	d_collapsible_end();
 	d_spacer();
 
+	// Regional Options
+	d_collapsible(gettext("Regional Settings"));
+	d_field(gettext("International Prefix"), "internationalprefix", 10,
+		gettext("The prefix used when dialing international numbers (usually 00)"));
+	d_field(gettext("National Prefix"), "nationalprefix", 10,
+		gettext("The prefix used when dialing numbers within your country (usually 0)"));
+	d_field(gettext("Local Prefix"), "localprefix", 15,
+		gettext("The prefix used when dialing numbers within your city (i.e. 0711)"));
+	d_field(gettext("Private Prefix"), "privateprefix", 15,
+		gettext("The prefix used when dialing numbers within your company (i.e. 07115678)"));
+	d_collapsible_end();
+	d_spacer();
 
 	// Advanced Options
 	d_collapsible(gettext("Advanced Options"));
