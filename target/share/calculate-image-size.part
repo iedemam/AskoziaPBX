@@ -1,0 +1,11 @@
+echo "Total image size calculation ..."
+total_sector_count=`expr $root_size + $offload_size + 1`
+echo "   = $total_sector_count sectors (actual calculated need, adjusting for padding...)"
+has_remainder=`expr $total_sector_count % 32`
+if [ $has_remainder -ne 0 ] ; then
+	missing_sectors=`expr 32 - $has_remainder`
+	offload_size=`expr $offload_size + $missing_sectors`
+	total_sector_count=`expr $root_size + $offload_size + 1`
+	echo "     --> sector count not evenly divisible by 32 (16k), adding $missing_sectors = $total_sector_count"
+fi
+echo "   = $total_sector_count new sector count for even 16k"

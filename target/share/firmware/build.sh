@@ -159,9 +159,7 @@ offload_size=`du -B512 -s offload_stage | cut -f 1`
 offload_size=`expr $offload_size + $block_pad`
 echo "   = $offload_size sectors"
 
-echo "Total image size calculation ..."
-total_sector_count=`expr $root_size + $offload_size + 1`
-echo "   = $total_sector_count sectors"
+. $base/target/share/calculate-image-size.part
 
 echo "Writing a binary container for the disk image ..."
 dd if=/dev/zero of=firmware.img bs=512 count=$total_sector_count
@@ -223,6 +221,8 @@ setup (hd0)
 quit
 
 " | grub --device-map=/dev/null --batch --no-pager --no-floppy --no-curses
+
+. $base/target/share/check-image-size.part
 
 gzip -9 firmware.img
 mv firmware.img.gz ../$SDECFG_ID.img

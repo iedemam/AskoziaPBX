@@ -1,0 +1,6 @@
+check_size_bytes=`du -b firmware.img | cut -f 1`
+check_size_remainder=`expr $check_size_bytes % 16384`
+if [ $check_size_remainder -ne 0 ] ; then
+	echo "!!!!!!! IMAGE SIZE IS NOT EVENLY DIVISIBLE BY 16384, EXITING"
+	exit
+fi
