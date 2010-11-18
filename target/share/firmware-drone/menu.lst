@@ -1,7 +1,0 @@
-default 0
-timeout 1
-
-title AskoziaDrone
-root (hd0,0)
-kernel /boot/vmlinuz
-initrd /boot/initramf.igz
