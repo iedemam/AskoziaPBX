@@ -63,8 +63,8 @@ function extensions_conf_generate($return=false) {
 
 [macro-main];
 exten => s,1,Dial($\{ARG1},$\{ARG5},$\{ARG4})
-exten => s,n,NoOp(DIALSTATUS: $\{DIALSTATUS})
-exten => s,n,Goto(s-$\{DIALSTATUS},1)
+exten => s,2,NoOp(DIALSTATUS: $\{DIALSTATUS})
+exten => s,3,Goto(s-$\{DIALSTATUS},1)
 
 ;exten => s-ANSWER
 ;exten => s-CANCEL
@@ -73,56 +73,28 @@ exten => s,n,Goto(s-$\{DIALSTATUS},1)
 ;exten => s-DONTCALL
 ;exten => s-TORTURE
 ;exten => s-INVALIDARGS
-exten => s-BUSY,1,Goto(busy,1)
-exten => s-NOANSWER,1,Goto(noanswer,1)
+exten => s-BUSY,1,Set(MISSEDCAUSE=busy)
+exten => s-BUSY,2,Goto(busy,1)
+exten => s-NOANSWER,1,Set(MISSEDCAUSE=no-answer)
+exten => s-NOANSWER,2,Goto(noanswer,1)
 exten => _s-.,1,Goto(noanswer,1)
 
 ; busy
-exten => busy,1,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-busy,1)
-exten => busy,n,Busy(10)
-exten => vm-busy,1,Wait(1)
-exten => vm-busy,n,Set(MISSEDCAUSE=busy)
-exten => vm-busy,n,GosubIf($["$\{SENDNOTIFICATIONS}" != ""]?mailnotification,1)
-exten => vm-busy,n,ExecIf($["$\{NOVOICEMAILWHENBUSY}" != ""]?Busy(10))
-exten => vm-busy,n,VoiceMail($\{ARG2},b,$\{ARG3})
-exten => vm-busy,n,Playback(vm-goodbye)
-exten => vm-busy,n,GotoIf($["$\{VMSTATUS}" = "SUCCESS"]?vm-message-exit,1:vm-nomessage-noexit,1)
+exten => busy,1,Busy(10)
+exten => busy,2,Hangup()
 
 ; no answer
-exten => noanswer,1,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-noanswer,1)
-exten => noanswer,n,Hangup()
-exten => vm-noanswer,1,Wait(1)
-exten => vm-noanswer,n,Set(MISSEDCAUSE=no-answer)
-exten => vm-noanswer,n,VoiceMail($\{ARG2},u,$\{ARG3})
-exten => vm-noanswer,n,Playback(vm-goodbye)
-exten => vm-noanswer,n,GotoIf($["$\{VMSTATUS}" = "SUCCESS"]?vm-message-exit,1:vm-nomessage-noexit,1)
-
-; voicemail exit
-exten => vm-message-exit,1,Set(MISSEDCAUSE=didntmiss)
-exten => vm-message-exit,n,Hangup()
-exten => vm-nomessage-exit,1,GosubIf($["$\{SENDNOTIFICATIONS}" != ""]?mailnotification,1)
-exten => vm-nomessage-exit,n,Hangup()
+exten => noanswer,1,NoOp(Call not answered in time)
+exten => noanswer,2,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-noanswer,1)
+exten => noanswer,3,Hangup()
+exten => vm-noanswer,1,NoOp(Callee has voicemail, sending to voicemail)
+exten => vm-noanswer,2,Wait(1)
+exten => vm-noanswer,3,VoiceMail($\{ARG2},u,$\{ARG3})
+exten => vm-noanswer,4,Playback(vm-goodbye)
+exten => vm-noanswer,5,Hangup()
 
 ; hangup
-exten => h,1,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-h,1)
-exten => h,n,Hangup()
-exten => vm-h,1,ExecIf($["$\{DIALSTATUS}" = "ANSWER"]?Hangup())
-exten => vm-h,n,ExecIf($["$\{MISSEDCAUSE}" = ""]?Set(MISSEDCAUSE=hungup))
-exten => vm-h,n,GosubIf($[("$\{SENDNOTIFICATIONS}" != "") & ("$\{MISSEDCAUSE}" != "didntmiss")]?mailnotification,1)
-exten => vm-h,n,Hangup()
-
-; mail missed call notification
-exten => mailnotification,1,Set(TMPMAILFILE=/var/asterisk/spool/tmp/email-$\{MD5($\{UNIQUEID})})
-exten => mailnotification,n,System(touch $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "date: `date`" > $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "from: $product_name Notifications <{$emailconfig['address']}>" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
-exten => mailnotification,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
-exten => mailnotification,n,System(rm $\{TMPMAILFILE})
-exten => mailnotification,n,Return()
+exten => h,1,NoOp(Entering the main macro h hangup extension)
 
 ;i - Invalid
 ;s - Start
@@ -131,6 +103,29 @@ exten => mailnotification,n,Return()
 ;T - AbsoluteTimeout
 ;a - Asterisk extension
 ;o - Operator
+
+
+; missed call notification mail macro
+[macro-missedcallmail];
+exten => s,1,NoOp(Entering the missed call mail macro)
+exten => s,n,NoOp(DIALSTATUS: $\{DIALSTATUS})
+exten => s,n,ExecIf($["$\{DIALSTATUS}" = "ANSWER"]?MacroExit())
+exten => s,n,NoOp(SENDNOTIFICATIONS: $\{SENDNOTIFICATIONS})
+exten => s,n,ExecIf($["$\{SENDNOTIFICATIONS}" = ""]?MacroExit())
+exten => s,n,NoOp(MISSEDCAUSE: $\{MISSEDCAUSE})
+exten => s,n,ExecIf($["$\{MISSEDCAUSE}" = "didntmiss"]?MacroExit())
+exten => s,n,NoOp(VMSTATUS: $\{VMSTATUS})
+exten => s,n,ExecIf($[$["$\{VMSTATUS}" != ""] & $["$\{VMSTATUS}" != "FAILED"]]?MacroExit())
+exten => s,n,Set(TMPMAILFILE=/var/asterisk/spool/tmp/email-$\{MD5($\{UNIQUEID})})
+exten => s,n,System(touch $\{TMPMAILFILE})
+exten => s,n,System(echo "date: `date`" > $\{TMPMAILFILE})
+exten => s,n,System(echo "to: $\{SENDNOTIFICATIONS}" >> $\{TMPMAILFILE})
+exten => s,n,System(echo "subject: Missed Call ($\{MISSEDCAUSE})" >> $\{TMPMAILFILE})
+exten => s,n,System(echo "from: $product_name Notifications <{$emailconfig['address']}>" >> $\{TMPMAILFILE})
+exten => s,n,System(echo >> $\{TMPMAILFILE})
+exten => s,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}" >> $\{TMPMAILFILE})
+exten => s,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
+exten => s,n,System(rm $\{TMPMAILFILE})
 
 
 EOD;
@@ -321,6 +316,13 @@ EOD;
 	$conf .= "; sip device hints\n";
 	$conf .= extensions_generate_hints();
 
+	$conf .= "\n";
+	$conf .= "; hangup logic\n";
+	$conf .= "exten => h,1,NoOp(Entering the internal context hangup extension)\n";
+	$conf .= "exten => h,n,Macro(missedcallmail)\n";
+	$conf .= "\n";
+
+
 	// providers contexts
 	foreach ($providers as $p) {
 		if (isset($p['disabled'])) {
@@ -402,12 +404,9 @@ function extensions_generate_call_notification_variables($exten, $phone) {
 		$dial .= "exten => $exten,n,Set(HASVOICEMAIL=\"yes\")\n";
 	}
 	if ($phone['emailcallnotify'] == "enabled") {
+		$dial .= "exten => $exten,n,Set(MISSEDCAUSE=hungup)\n";
 		$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['emailcallnotifyaddress']}\")\n";
 	}
-
-	//if ($phone['vmwhenbusy'] == "no") {
-	$dial .= "exten => $exten,n,Set(NOVOICEMAILWHENBUSY=\"yes\")\n";
-	//}
 
 	return $dial;
 }
