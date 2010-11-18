@@ -203,5 +203,7 @@ dd if=part2.img of=firmware.img bs=512 seek=$offload_start_sector
 
 . $base/target/share/check-image-size.part
 
+echo "Compressing image ..."
 gzip -9 firmware.img
+echo "Moving image ..."
 mv firmware.img.gz ../$SDECFG_ID.img

@@ -1,9 +1,15 @@
 echo "Total image size calculation ..."
 total_sector_count=`expr $root_size + $offload_size + 1`
 echo "   = $total_sector_count sectors (actual calculated need, adjusting for padding...)"
-has_remainder=`expr $total_sector_count % 32`
-if [ $has_remainder -ne 0 ] ; then
-	missing_sectors=`expr 32 - $has_remainder`
+# why this needs to be done with a 1 as comparison is a mystery
+# ...something in the way expr is handled in this environment when a 0 comes back
+# ...using the commented out line results in a silent crash of the script
+#has_remainder=`expr $total_sector_count % 32`
+has_remainder=`expr 1 + \( $total_sector_count % 32 \)`
+#if [ $has_remainder -ne 0 ] ; then
+if [ $has_remainder -ne 1 ] ; then
+#	missing_sectors=`expr 32 - $has_remainder`
+	missing_sectors=`expr 33 - $has_remainder`
 	offload_size=`expr $offload_size + $missing_sectors`
 	total_sector_count=`expr $root_size + $offload_size + 1`
 	echo "     --> sector count not evenly divisible by 32 (16k), adding $missing_sectors = $total_sector_count"

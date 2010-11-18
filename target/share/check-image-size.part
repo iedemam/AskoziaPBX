@@ -1,6 +1,15 @@
+echo "Checking image size validity ..."
 check_size_bytes=`du -b firmware.img | cut -f 1`
-check_size_remainder=`expr $check_size_bytes % 16384`
-if [ $check_size_remainder -ne 0 ] ; then
+echo " - $check_size_bytes bytes"
+# why this needs to be done with a 1 as comparison is a mystery
+# ...something in the way expr is handled in this environment when a 0 comes back
+# ...using the commented out line results in a silent crash of the script
+#check_size_remainder=`expr $check_size_bytes % 16384`
+check_size_remainder=`expr 1 + \( $check_size_bytes % 16384 \)`
+echo " - remainder $check_size_remainder"
+#if [ $check_size_remainder -ne 0 ] ; then
+if [ $check_size_remainder -ne 1 ] ; then
 	echo "!!!!!!! IMAGE SIZE IS NOT EVENLY DIVISIBLE BY 16384, EXITING"
 	exit
 fi
+echo " - image size is OK"
