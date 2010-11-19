@@ -577,6 +577,9 @@ function extensions_generate_provider_incoming_context($p) {
 			$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
 			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, '_' . $pattern);
 		}
+		$conf .= "; hangup logic\n";
+		$conf .= "exten => h,1,NoOp(Hanging up incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+		$conf .= "exten => h,n,Macro(missedcallmail)\n";
 		$conf .= "\n";
 	}
 
