@@ -139,6 +139,7 @@ function dahdi_autoconfigure_ports() {
 			$p['uniqid'] = $uniqid;
 
 			$p['echo-taps'] = $defaults['dahdi']['echo-taps'];
+			$p['echo-algorithm'] = $defaults['dahdi']['echo-algorithm'];
 
 			$p['rxgain'] = $defaults['dahdi']['rxgain'];
 			$p['txgain'] = $defaults['dahdi']['txgain'];
@@ -506,10 +507,16 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 	$conf .= "# Echo Cancellers\n";
 	// echocanceller=<echocanceller name>,<channel(s)>
 	foreach ($ports as $port) {
+
+		$algorithm = $defaults['dahdi']['echo-algorithm'];
+		if ($port['echo-algorithm']) {
+			$algorithm = $port['echo-algorithm'];
+		}
+
 		// analog port config
 		if ($port['technology'] == "analog") {
 			if ($port['echo-taps'] != "disable") {
-				$conf .= "echocanceller=oslec," . $port['basechannel'] . "\n";
+				$conf .= "echocanceller=" . $algorithm . "," . $port['basechannel'] . "\n";
 			}
 
 		// bri ports
@@ -517,11 +524,11 @@ function dahdi_generate_system_conf($return=false, $ports=false, $gateways=false
 			// 'phone' ports
 			if ($port['type'] == "nt") {
 				if ($port['echo-taps'] != "disable") {
-					$conf .= "echocanceller=oslec," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+					$conf .= "echocanceller=" . $algorithm . "," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 				}
 			} else if ($port['type'] == "te") {
 				if ($port['echo-taps'] != "disable") {
-					$conf .= "echocanceller=oslec," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
+					$conf .= "echocanceller=" . $algorithm . "," . $port['basechannel'] . "-" . ($port['basechannel'] + 1) . "\n";
 				}
 			}
 		}

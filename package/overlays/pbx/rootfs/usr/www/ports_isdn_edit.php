@@ -109,6 +109,19 @@ if ($input_errors) {
 
 			?></select>
 			<br><span class="vexpl"><?=gettext("The echo canceller window size. If your calls have echo, try increasing this window.");?></span>
+
+			<br><select name="echo-algorithm" class="formfld" id="echo-algorithm"><?
+				$algorithms = array("oslec", "mg2");
+				foreach ($algorithms as $algorithm) {
+					?><option value="<?=$algorithm;?>" <?
+					if ($pconfig['echo-algorithm'] == $algorithm) {
+						echo "selected";
+					}
+					?>><?=$algorithm;?></option><?
+				}
+
+			?></select>
+			<br><span class="vexpl"><?=gettext("Some platforms have resource issues with the default \"oslec\" algorithm. Choose \"mg2\" if you are experiencing excessive cpu usage.");?></span>
 		</td>
 	</tr>
 	<? display_port_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>

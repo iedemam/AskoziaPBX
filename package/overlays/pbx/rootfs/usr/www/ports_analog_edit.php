@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2009 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -56,6 +56,7 @@ if ($_POST) {
 	$port['name'] = $_POST['name'] ? $_POST['name'] : gettext("Port") . " " . $_POST['basechannel'];
 	$port['startsignaling'] = $_POST['startsignaling'];
 	$port['echo-taps'] = $_POST['echo-taps'];
+	$port['echo-algorithm'] = $_POST['echo-algorithm'];
 	$port['rxgain'] = $_POST['rxgain'];
 	$port['txgain'] = $_POST['txgain'];
 
@@ -108,6 +109,19 @@ if ($input_errors) {
 
 			?></select>
 			<br><span class="vexpl"><?=gettext("The echo canceller window size. If your calls have echo, try increasing this window.");?></span>
+
+			<br><select name="echo-algorithm" class="formfld" id="echo-algorithm"><?
+				$algorithms = array("oslec", "mg2");
+				foreach ($algorithms as $algorithm) {
+					?><option value="<?=$algorithm;?>" <?
+					if ($pconfig['echo-algorithm'] == $algorithm) {
+						echo "selected";
+					}
+					?>><?=$algorithm;?></option><?
+				}
+
+			?></select>
+			<br><span class="vexpl"><?=gettext("Some platforms have resource issues with the default \"oslec\" algorithm. Choose \"mg2\" if you are experiencing excessive cpu usage.");?></span>
 		</td>
 	</tr>
 	<? display_port_gain_selector($pconfig['rxgain'], $pconfig['txgain'], 1); ?>
