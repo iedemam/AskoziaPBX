@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1442,24 +1442,6 @@ msgstr ""
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr ""
 
-msgid "A valid national prefix must be specified."
-msgstr ""
-
-msgid "A valid international prefix must be specified."
-msgstr ""
-
-msgid "National Prefix"
-msgstr ""
-
-msgid "International Prefix"
-msgstr ""
-
-msgid "A-law"
-msgstr ""
-
-msgid "u-law"
-msgstr ""
-
 msgid "Manager Interface"
 msgstr ""
 
@@ -2220,6 +2202,9 @@ msgstr ""
 msgid "The echo canceller window size. If your calls have echo, try increasing this window."
 msgstr ""
 
+msgid "Some platforms have resource issues with the default \"oslec\" algorithm. Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr ""
 
@@ -2300,6 +2285,33 @@ msgid "Authentication Scheme"
 msgstr ""
 
 msgid "Edit ISDN Provider"
+msgstr ""
+
+msgid "Regional Settings"
+msgstr ""
+
+msgid "International Prefix"
+msgstr ""
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr ""
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+msgid "Local Prefix"
+msgstr ""
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+msgid "Private Prefix"
+msgstr ""
+
+msgid "The prefix used when dialing numbers within your company (i.e. 07115678)"
 msgstr ""
 
 msgid "Edit SIP Provider"
@@ -2519,9 +2531,6 @@ msgid "Hostname of the PBX."
 msgstr ""
 
 msgid "e.g. <em>pbx . mydomain.com"
-msgstr ""
-
-msgid "Regional Settings"
 msgstr ""
 
 msgid "Indication Tones"

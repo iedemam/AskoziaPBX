@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -1663,24 +1663,6 @@ msgstr "強制"
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "使用時基誤差(Jitter)緩存即使橋接兩個端點。"
 
-msgid "A valid national prefix must be specified."
-msgstr "必須指定一個有效的國家區號。"
-
-msgid "A valid international prefix must be specified."
-msgstr "必須指定一個有效的國際區號。"
-
-msgid "National Prefix"
-msgstr "國家區號"
-
-msgid "International Prefix"
-msgstr "國際區號"
-
-msgid "A-law"
-msgstr "A-Law"
-
-msgid "u-law"
-msgstr "u-Law"
-
 msgid "Manager Interface"
 msgstr "管理界面"
 
@@ -2574,6 +2556,11 @@ msgid ""
 "window."
 msgstr ""
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "開始信號"
 
@@ -2670,6 +2657,37 @@ msgstr "驗證方法"
 #, fuzzy
 msgid "Edit ISDN Provider"
 msgstr "編輯Analog電話"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "設置"
+
+msgid "International Prefix"
+msgstr "國際區號"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "國家區號"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "國家區號"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "國家區號"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2924,10 +2942,6 @@ msgstr "重啟PBX"
 #, fuzzy
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "例如<em>mycorp.com"
-
-#, fuzzy
-msgid "Regional Settings"
-msgstr "設置"
 
 #, fuzzy
 msgid "Indication Tones"
@@ -3200,6 +3214,18 @@ msgstr "ERR 無法安裝設置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到無效的設定。\n"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "必須指定一個有效的國家區號。"
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "必須指定一個有效的國際區號。"
+
+#~ msgid "A-law"
+#~ msgstr "A-Law"
+
+#~ msgid "u-law"
+#~ msgstr "u-Law"
 
 #, fuzzy
 #~ msgid "Main Number"

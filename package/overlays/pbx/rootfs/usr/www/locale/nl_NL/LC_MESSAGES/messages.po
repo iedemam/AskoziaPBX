@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Wim Van Clapdurp <wim.vanclapdurp@mac.com>\n"
 "Language-Team: \n"
@@ -47,9 +47,6 @@ msgstr "Gebruikersnaam"
 
 msgid "Public Number"
 msgstr "Publiek Nummer"
-
-msgid "Main Number"
-msgstr "Hoofd Nummer"
 
 msgid "It contains an invalid character"
 msgstr "Het bevat een ongeldige karakter."
@@ -1322,9 +1319,6 @@ msgstr "omlaag"
 msgid "associated"
 msgstr "geassocieerd"
 
-msgid "HIDE"
-msgstr "VERBERGEN"
-
 msgid "Virtual"
 msgstr "Virtueel"
 
@@ -1644,24 +1638,6 @@ msgstr "Forceer"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Gebruik Storingsbuffer ook in gebrugde modus tussen 2 eind punten."
-
-msgid "A valid national prefix must be specified."
-msgstr "Er moet een geldige nationale prefix worden opgeven."
-
-msgid "A valid international prefix must be specified."
-msgstr "Er moet een geldige internationale prefix worden opgegeven."
-
-msgid "National Prefix"
-msgstr "Nationale Prefix"
-
-msgid "International Prefix"
-msgstr "Internationale Prefix"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "u-law"
 
 msgid "Manager Interface"
 msgstr "Beheerders Interface"
@@ -2159,152 +2135,6 @@ msgstr "Geheugengebruik"
 msgid "Notes"
 msgstr "Notities"
 
-msgid "Interfaces"
-msgstr "Interfaces"
-
-msgid "Wireless"
-msgstr "Draadloos"
-
-msgid "SSID,Channel"
-msgstr "SSID, Kanaal"
-
-msgid ",WPA version,WPA cipher"
-msgstr ", WPA-versie, WPA-codering"
-
-msgid ",WPA PSK"
-msgstr ",WPA-PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "De WPA-PSK moet tussen de 8 en 63 tekens lang zijn."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"802.11a kanalen kunnen alleen geselecteerd worden als de standaard is "
-"ingesteld op 802.11a."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-"802.11a kan alleen worden geselecteerd als een 802.11a-kanaal is "
-"geselecteerd."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Geen compatibele draadloze interfaces ontdekt."
-
-msgid "Enable Wireless Interface"
-msgstr "Inschakelen Draadloze Interface"
-
-msgid "Standard"
-msgstr "Standaard"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Verberg SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Als deze optie is geselecteerd, wordt de SSID niet meer uitgezonden in "
-"hostap mode, en alleen cliënten die de exacte SSID kennen zullen in staat "
-"zijn om verbinding te maken. Merk op dat deze optie nooit mag worden "
-"gebruikt als vervanging voor een goede beveiliging / encryptie-instellingen."
-
-msgid "Channel"
-msgstr "Kanaal"
-
-msgid "Auto"
-msgstr "Auto"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA instellingen"
-
-msgid "Mode"
-msgstr "Mode"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "Enkel WPA"
-
-msgid "WPA2 only"
-msgstr "Enkel WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "In de meeste gevallen moet u hier kiezen voor &quot;WPA + WPA2&quot;."
-
-msgid "Cipher"
-msgstr "Codering"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES / CCMP biedt een betere beveiliging dan TKIP, maar TKIP is meer "
-"compatibel met oudere hardware."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Geef de wachtwoordzin in die wordt gebruikt in WPA-PSK-modus. Deze moet "
-"tussen de 8 en 63 tekens lang zijn."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Inschakelen WEP"
-
-msgid "TX key"
-msgstr "TX key"
-
-msgid "Key 1:"
-msgstr "Sleutel 1:"
-
-msgid "Key 2:"
-msgstr "Sleutel 2:"
-
-msgid "Key 3:"
-msgstr "Sleutel 3:"
-
-msgid "Key 4:"
-msgstr "Sleutel 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bits sleutels kunnen worden ingegeven als 5 ASCII tekens of 10 "
-"hexadecimale cijfers, voorafgegaan door een '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bit sleutels kunnen worden ingegeven als 13 ASCII tekens of 26 "
-"hexadecimale cijfers, voorafgegaan door een '0x'."
-
 msgid "A valid MAC address must be specified."
 msgstr "Er moet een geldig MAC-adres worden opgegeven."
 
@@ -2578,6 +2408,28 @@ msgstr "Bewerk ISDN Telefoon"
 msgid "Edit SIP Phone"
 msgstr "Bewerk SIP Telefoons"
 
+msgid "Auto-Configuration"
+msgstr "Automatische Configuratie"
+
+msgid "SNOM MAC Address"
+msgstr "SNOM MAC Adres"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+"Als dit account voor een SNOM telefoon is en het MAC adres is hier "
+"opgegeven, kan de hardware automatisch worden geconfigureerd wanneer deze "
+"opnieuw wordt opgestart. Het MAC-adres kan op de telefoon worden weergegeven "
+"door het indrukken van de \"Help\" toets op de telefoon. Voer het adres hier "
+"precies in zoals deze op het scherm van de telefoon staat.<br><br> De "
+"telefoon HTTP interface wachtwoord is hetzelfde als het wachtwoord van deze "
+"extensie. Het telefoon beheerder wachtwoord is het extensie nummer."
+
 msgid "Edit Skinny Phone"
 msgstr "Bewerk Skinny Telefoon"
 
@@ -2673,6 +2525,11 @@ msgstr ""
 "De echo onderdruk sterkte. Als uw gesprekken echo ondervinden, kunt u deze "
 "waarde verhogen."
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Start Signalering"
 
@@ -2767,8 +2624,35 @@ msgstr "Authenticatie Schema"
 msgid "Edit ISDN Provider"
 msgstr "Bewerk ISDN Provider"
 
-msgid "The main telephone number assigned to this line."
-msgstr "Hoofd telefoonnummer toegewezen aan deze lijn."
+msgid "Regional Settings"
+msgstr "Regionale Instellingen"
+
+msgid "International Prefix"
+msgstr "Internationale Prefix"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Nationale Prefix"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Nationale Prefix"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Privé RSA Sleutel"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "Bewerk SIP Provider"
@@ -2909,6 +2793,9 @@ msgstr "Actieve Kanalen"
 msgid "There are currently no active channels."
 msgstr "Er zijn momenteel geen actieve kanalen."
 
+msgid "Channel"
+msgstr "Kanaal"
+
 msgid "Location"
 msgstr "Locatie"
 
@@ -3021,9 +2908,6 @@ msgstr "Hostnaam van de PBX"
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "vb. <em>pbx . mijnbedrijf.nl"
-
-msgid "Regional Settings"
-msgstr "Regionale Instellingen"
 
 msgid "Indication Tones"
 msgstr "Indicatie Tonen"
@@ -3299,6 +3183,173 @@ msgstr "FOUT Kan configuratie niet installeren.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "FOUT Verkeerde configuratie ontvangen.\n"
+
+#~ msgid "Main Number"
+#~ msgstr "Hoofd Nummer"
+
+#~ msgid "HIDE"
+#~ msgstr "VERBERGEN"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Er moet een geldige nationale prefix worden opgeven."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Er moet een geldige internationale prefix worden opgegeven."
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
+
+#~ msgid "Interfaces"
+#~ msgstr "Interfaces"
+
+#~ msgid "Wireless"
+#~ msgstr "Draadloos"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID, Kanaal"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr ", WPA-versie, WPA-codering"
+
+#~ msgid ",WPA PSK"
+#~ msgstr ",WPA-PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "De WPA-PSK moet tussen de 8 en 63 tekens lang zijn."
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr ""
+#~ "802.11a kanalen kunnen alleen geselecteerd worden als de standaard is "
+#~ "ingesteld op 802.11a."
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr ""
+#~ "802.11a kan alleen worden geselecteerd als een 802.11a-kanaal is "
+#~ "geselecteerd."
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "Geen compatibele draadloze interfaces ontdekt."
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "Inschakelen Draadloze Interface"
+
+#~ msgid "Standard"
+#~ msgstr "Standaard"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "Verberg SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "Als deze optie is geselecteerd, wordt de SSID niet meer uitgezonden in "
+#~ "hostap mode, en alleen cliënten die de exacte SSID kennen zullen in staat "
+#~ "zijn om verbinding te maken. Merk op dat deze optie nooit mag worden "
+#~ "gebruikt als vervanging voor een goede beveiliging / encryptie-"
+#~ "instellingen."
+
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA instellingen"
+
+#~ msgid "Mode"
+#~ msgstr "Mode"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "Enkel WPA"
+
+#~ msgid "WPA2 only"
+#~ msgstr "Enkel WPA2"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr ""
+#~ "In de meeste gevallen moet u hier kiezen voor &quot;WPA + WPA2&quot;."
+
+#~ msgid "Cipher"
+#~ msgstr "Codering"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "AES / CCMP biedt een betere beveiliging dan TKIP, maar TKIP is meer "
+#~ "compatibel met oudere hardware."
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr ""
+#~ "Geef de wachtwoordzin in die wordt gebruikt in WPA-PSK-modus. Deze moet "
+#~ "tussen de 8 en 63 tekens lang zijn."
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "Inschakelen WEP"
+
+#~ msgid "TX key"
+#~ msgstr "TX key"
+
+#~ msgid "Key 1:"
+#~ msgstr "Sleutel 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Sleutel 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Sleutel 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Sleutel 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "40 (64) bits sleutels kunnen worden ingegeven als 5 ASCII tekens of 10 "
+#~ "hexadecimale cijfers, voorafgegaan door een '0x'."
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128) bit sleutels kunnen worden ingegeven als 13 ASCII tekens of 26 "
+#~ "hexadecimale cijfers, voorafgegaan door een '0x'."
+
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "Hoofd telefoonnummer toegewezen aan deze lijn."
 
 #~ msgid "add a new item"
 #~ msgstr "Nieuw item toevoegen"
@@ -3784,29 +3835,6 @@ msgstr "FOUT Verkeerde configuratie ontvangen.\n"
 #~ msgstr ""
 #~ "Het vergadernummer, ook wel de extensie waarop deze vergadering te "
 #~ "bereiken is."
-
-#~ msgid "Auto-Configuration"
-#~ msgstr "Automatische Configuratie"
-
-#~ msgid "SNOM MAC Address"
-#~ msgstr "SNOM MAC Adres"
-
-#~ msgid ""
-#~ "If this account is for a SNOM telephone, the hardware can be "
-#~ "automatically configured when it reboots if its MAC address is entered "
-#~ "here. The MAC address can be displayed by pressing the phone's \"Help\" "
-#~ "button. Enter the address exactly as it appears on the screen.<br><br>The "
-#~ "phone's HTTP interface password will be the same as this extension's "
-#~ "password and the on-telephone admin password is the extension number."
-#~ msgstr ""
-#~ "Als dit account voor een SNOM telefoon is en het MAC adres is hier "
-#~ "opgegeven, kan de hardware automatisch worden geconfigureerd wanneer deze "
-#~ "opnieuw wordt opgestart. Het MAC-adres kan op de telefoon worden "
-#~ "weergegeven door het indrukken van de \"Help\" toets op de telefoon. Voer "
-#~ "het adres hier precies in zoals deze op het scherm van de telefoon staat."
-#~ "<br><br> De telefoon HTTP interface wachtwoord is hetzelfde als het "
-#~ "wachtwoord van deze extensie. Het telefoon beheerder wachtwoord is het "
-#~ "extensie nummer."
 
 #~ msgid "webGUI protocol"
 #~ msgstr "webGUI protocol"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: part of AskoziaPBX (http://askozia.com/pbx)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: 2010-09-16 14:03-0300\n"
 "Last-Translator: \n"
 "Language-Team: es_ES <LI@li.org>\n"
@@ -1633,24 +1633,6 @@ msgstr "Forzar"
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Usar buffer de Jitter incluso cuando se conectan dos extremos."
 
-msgid "A valid national prefix must be specified."
-msgstr "Debe ser especificado un prefijo nacional válido."
-
-msgid "A valid international prefix must be specified."
-msgstr "Debe ser especificado un prefijo internacional válido."
-
-msgid "National Prefix"
-msgstr "Prefijo nacional"
-
-msgid "International Prefix"
-msgstr "Prefijo internacional"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "u-law"
-
 msgid "Manager Interface"
 msgstr "Interfaz de Gestor"
 
@@ -2538,6 +2520,11 @@ msgstr ""
 "Tamaño de la ventana del cancelador de eco. Si sus llamadas tienen eco, "
 "intente aumentando el tamaño de esta ventana."
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Comenzar la señalización"
 
@@ -2633,6 +2620,36 @@ msgstr "Método de Autenticación"
 
 msgid "Edit ISDN Provider"
 msgstr "Editar Proveedor RDSI"
+
+msgid "Regional Settings"
+msgstr "Ajustes Regionales"
+
+msgid "International Prefix"
+msgstr "Prefijo internacional"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Prefijo nacional"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Prefijo nacional"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Clave Privada RSA"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "Editar Proveedor SIP"
@@ -2896,9 +2913,6 @@ msgstr "Nombre del host de la PBX"
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "por ejemplo <em>pbx.miempresa.com"
-
-msgid "Regional Settings"
-msgstr "Ajustes Regionales"
 
 msgid "Indication Tones"
 msgstr "Tonos de Indicación"
@@ -3166,6 +3180,18 @@ msgstr "ERR No se pudo instalar la configuración. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR Recibida una configuración inválida. \n"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Debe ser especificado un prefijo nacional válido."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Debe ser especificado un prefijo internacional válido."
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
 
 #~ msgid ""
 #~ "In order to send missed call notifications and recorded voicemail "

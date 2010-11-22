@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX 2 traslation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: 2010-04-27 22:52+0100\n"
 "Last-Translator: Oscar Francia <piega@piega.org>\n"
 "Language-Team: Italian <iax@keybits.org>\n"
@@ -39,9 +39,6 @@ msgstr "Nome utente"
 
 msgid "Public Number"
 msgstr "Numero Pubblico"
-
-msgid "Main Number"
-msgstr "Numero Principale"
 
 msgid "It contains an invalid character"
 msgstr "Contiene un carattere non valido"
@@ -1322,9 +1319,6 @@ msgstr "giù"
 msgid "associated"
 msgstr "associato"
 
-msgid "HIDE"
-msgstr "NASCONDI"
-
 #, fuzzy
 msgid "Virtual"
 msgstr "Portogallo"
@@ -1651,24 +1645,6 @@ msgstr "Forzare"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Usare sempre Jitterbuffer quando si collegano due punti finali."
-
-msgid "A valid national prefix must be specified."
-msgstr "Deve essere specificato un prefisso nazionale valido."
-
-msgid "A valid international prefix must be specified."
-msgstr "Deve essere specificato un prefisso internazionale valido."
-
-msgid "National Prefix"
-msgstr "Prefisso Nazionale"
-
-msgid "International Prefix"
-msgstr "Prefisso Internazionale"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "u-law"
 
 msgid "Manager Interface"
 msgstr "Terminale Asterisk (AMI)"
@@ -2184,149 +2160,6 @@ msgstr "Memoria utilizzata"
 msgid "Notes"
 msgstr "Note"
 
-msgid "Interfaces"
-msgstr "Interfacce"
-
-msgid "Wireless"
-msgstr "Rete senza fili"
-
-msgid "SSID,Channel"
-msgstr "SSID,Canale"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",versione WPA,codice WPA"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "La chiave WPA PSK deve essere lunga tra 8 e 63 caratteri."
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr ""
-"I canali 802.11a possono essere selezionati se anche lo standard è 802.11a."
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr ""
-"802.11a può essere selezionato solo se un canale 802.11a è stato selezionato."
-
-msgid "No compatible wireless interfaces detected."
-msgstr "Nessuna interfaccia di rete senza fili è stata rilevata."
-
-msgid "Enable Wireless Interface"
-msgstr "Abilita rete senza fili"
-
-msgid "Standard"
-msgstr "Standard"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Nascondi SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"Se questa opzione viene selezionata l'SSID non trasmetterà in modalita "
-"hostap e solo gli utenti che conoscono l'esatto SSID potranno connettersi. "
-"Nota: questa opzione non dovrebbe essere mai usata come sostituto "
-
-msgid "Channel"
-msgstr "Canale"
-
-msgid "Auto"
-msgstr "Automatico"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "Impostazioni WPA"
-
-msgid "Mode"
-msgstr "Modo"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPA (solo)"
-
-msgid "WPA2 only"
-msgstr "WPA2 (solo)"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "Normalmente qui è necessario selezionare &quot;WPA + WPA2&quot;"
-
-msgid "Cipher"
-msgstr "Codice"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMP offre una migliore sicurezza del TKIP, ma il TKIP è maggiormente "
-"compatible con l'hardware più vecchio."
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"Inserire la frase d'accesso che verrà usata nella modalità WPA-PSK. Questa "
-"deve esssere lunga tra 8 e 63 caratteri."
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "Abilita WEP"
-
-msgid "TX key"
-msgstr "Tasto Tx"
-
-msgid "Key 1:"
-msgstr "Chiave 1:"
-
-msgid "Key 2:"
-msgstr "Chiave 2:"
-
-msgid "Key 3:"
-msgstr "Chiave 3:"
-
-msgid "Key 4:"
-msgstr "Chiave 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64 bit) le chiavi possono essere immesse come 5 caratteri ASCII o 10 "
-"valori esadecimali preceduti da '0x'."
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128 bits) le chiavi possono essere immesse come 13 caratteri ASCII o 26 "
-"valori esadecimali preceduti da '0x'."
-
 msgid "A valid MAC address must be specified."
 msgstr "Deve essere specificato un MAC address valido."
 
@@ -2604,6 +2437,27 @@ msgstr "Modifica Telefono ISDN"
 msgid "Edit SIP Phone"
 msgstr "Modifica Telefono SIP"
 
+msgid "Auto-Configuration"
+msgstr "Configurazione Automatica"
+
+msgid "SNOM MAC Address"
+msgstr "Indirizzo MAC SNOM"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+"Se questo profilo è per un telefono SNOM, l'apparecchio può essere "
+"configurato automaticamente quando si riavvia se l'indirizzo MAC è inserito "
+"qui. L'indirizzo MAC puà essere visualizzato premendo il pulsante \"Help\" "
+"del telefono. Inserisci l'indirizzo esatto che appare sul display.<br><br>La "
+"password dell'interfaccia HTTP del telefono è la stessa di questo derivato e "
+"la password di amministrazione del telefono è il numero del derivato stesso."
+
 msgid "Edit Skinny Phone"
 msgstr "Modifica Telefono Skinny"
 
@@ -2700,6 +2554,11 @@ msgstr ""
 "La grandezza della finestra del cancellatore di Echo. Se nelle chiamate hai "
 "echo, prova ad incrementarne il valore."
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Criterio di Impegno linea"
 
@@ -2794,8 +2653,35 @@ msgstr "Metodo di Autenticazione"
 msgid "Edit ISDN Provider"
 msgstr "Modifica Operatore ISDN"
 
-msgid "The main telephone number assigned to this line."
-msgstr "Numero telefonico principale assegnato a questa linea."
+msgid "Regional Settings"
+msgstr "Impostazioni Internazionali"
+
+msgid "International Prefix"
+msgstr "Prefisso Internazionale"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Prefisso Nazionale"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Prefisso Nazionale"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Chiave RSA Privata"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "Modifica Operatore SIP"
@@ -2950,6 +2836,9 @@ msgstr "Canali attivi"
 msgid "There are currently no active channels."
 msgstr "Al momento non ci sono canali attivi."
 
+msgid "Channel"
+msgstr "Canale"
+
 msgid "Location"
 msgstr "Luogo"
 
@@ -3064,9 +2953,6 @@ msgstr "Nome host del centralino."
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "es. <em>miocentralino . miodominio.it"
-
-msgid "Regional Settings"
-msgstr "Impostazioni Internazionali"
 
 msgid "Indication Tones"
 msgstr "Toni di segnalazione"
@@ -3344,6 +3230,171 @@ msgstr "ERR Non posso installare la configurazione.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR La configurazione ricevuta non è valida.\n"
+
+#~ msgid "Main Number"
+#~ msgstr "Numero Principale"
+
+#~ msgid "HIDE"
+#~ msgstr "NASCONDI"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Deve essere specificato un prefisso nazionale valido."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Deve essere specificato un prefisso internazionale valido."
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
+
+#~ msgid "Interfaces"
+#~ msgstr "Interfacce"
+
+#~ msgid "Wireless"
+#~ msgstr "Rete senza fili"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID,Canale"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr ",versione WPA,codice WPA"
+
+#~ msgid ",WPA PSK"
+#~ msgstr ",WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "La chiave WPA PSK deve essere lunga tra 8 e 63 caratteri."
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr ""
+#~ "I canali 802.11a possono essere selezionati se anche lo standard è "
+#~ "802.11a."
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr ""
+#~ "802.11a può essere selezionato solo se un canale 802.11a è stato "
+#~ "selezionato."
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "Nessuna interfaccia di rete senza fili è stata rilevata."
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "Abilita rete senza fili"
+
+#~ msgid "Standard"
+#~ msgstr "Standard"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "Nascondi SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "Se questa opzione viene selezionata l'SSID non trasmetterà in modalita "
+#~ "hostap e solo gli utenti che conoscono l'esatto SSID potranno "
+#~ "connettersi. Nota: questa opzione non dovrebbe essere mai usata come "
+#~ "sostituto "
+
+#~ msgid "Auto"
+#~ msgstr "Automatico"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "Impostazioni WPA"
+
+#~ msgid "Mode"
+#~ msgstr "Modo"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "WPA (solo)"
+
+#~ msgid "WPA2 only"
+#~ msgstr "WPA2 (solo)"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr "Normalmente qui è necessario selezionare &quot;WPA + WPA2&quot;"
+
+#~ msgid "Cipher"
+#~ msgstr "Codice"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "AES/CCMP offre una migliore sicurezza del TKIP, ma il TKIP è maggiormente "
+#~ "compatible con l'hardware più vecchio."
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr ""
+#~ "Inserire la frase d'accesso che verrà usata nella modalità WPA-PSK. "
+#~ "Questa deve esssere lunga tra 8 e 63 caratteri."
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "Abilita WEP"
+
+#~ msgid "TX key"
+#~ msgstr "Tasto Tx"
+
+#~ msgid "Key 1:"
+#~ msgstr "Chiave 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Chiave 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Chiave 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Chiave 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "40 (64 bit) le chiavi possono essere immesse come 5 caratteri ASCII o 10 "
+#~ "valori esadecimali preceduti da '0x'."
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128 bits) le chiavi possono essere immesse come 13 caratteri ASCII o "
+#~ "26 valori esadecimali preceduti da '0x'."
+
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "Numero telefonico principale assegnato a questa linea."
 
 #~ msgid "add a new item"
 #~ msgstr "aggiungi una nuova voce"
@@ -3830,28 +3881,6 @@ msgstr "ERR La configurazione ricevuta non è valida.\n"
 #~ msgstr ""
 #~ "Il numero della conferenza rappresenta quello del derivato virtuale da "
 #~ "chiamare per parteciparvi."
-
-#~ msgid "Auto-Configuration"
-#~ msgstr "Configurazione Automatica"
-
-#~ msgid "SNOM MAC Address"
-#~ msgstr "Indirizzo MAC SNOM"
-
-#~ msgid ""
-#~ "If this account is for a SNOM telephone, the hardware can be "
-#~ "automatically configured when it reboots if its MAC address is entered "
-#~ "here. The MAC address can be displayed by pressing the phone's \"Help\" "
-#~ "button. Enter the address exactly as it appears on the screen.<br><br>The "
-#~ "phone's HTTP interface password will be the same as this extension's "
-#~ "password and the on-telephone admin password is the extension number."
-#~ msgstr ""
-#~ "Se questo profilo è per un telefono SNOM, l'apparecchio può essere "
-#~ "configurato automaticamente quando si riavvia se l'indirizzo MAC è "
-#~ "inserito qui. L'indirizzo MAC puà essere visualizzato premendo il "
-#~ "pulsante \"Help\" del telefono. Inserisci l'indirizzo esatto che appare "
-#~ "sul display.<br><br>La password dell'interfaccia HTTP del telefono è la "
-#~ "stessa di questo derivato e la password di amministrazione del telefono è "
-#~ "il numero del derivato stesso."
 
 #~ msgid "webGUI protocol"
 #~ msgstr "Protocollo interfaccia WEB"

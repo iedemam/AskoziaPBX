@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: 2008-09-07 21:17+0200\n"
 "Last-Translator: sipahoy @ aphidnos\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1701,24 +1701,6 @@ msgstr "Εξαναγκασμός"
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Χρήση Jitterbuffer ακόμα και αν γίνεται γεφύρωση δύο τερματικών."
 
-msgid "A valid national prefix must be specified."
-msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εθνικό πρόθεμα."
-
-msgid "A valid international prefix must be specified."
-msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο διεθνές  πρόθεμα."
-
-msgid "National Prefix"
-msgstr "Εθνικό πρόθεμα"
-
-msgid "International Prefix"
-msgstr "Διεθνές πρόθεμα"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "u-law"
-
 msgid "Manager Interface"
 msgstr "Διαχείριση"
 
@@ -2668,6 +2650,11 @@ msgid ""
 "window."
 msgstr ""
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Έναρξη σηματοδότησης"
 
@@ -2766,6 +2753,37 @@ msgstr "Μέθοδος ταυτοποίησης"
 #, fuzzy
 msgid "Edit ISDN Provider"
 msgstr "Επεξεργασία PSTN"
+
+#, fuzzy
+msgid "Regional Settings"
+msgstr "Ρυθμίσεις"
+
+msgid "International Prefix"
+msgstr "Διεθνές πρόθεμα"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Εθνικό πρόθεμα"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Εθνικό πρόθεμα"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Εθνικό πρόθεμα"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -3050,10 +3068,6 @@ msgstr "επανεκκίνηση του τηλεφωνικού κέντρου"
 #, fuzzy
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "π.χ. <em>etaireia.gr"
-
-#, fuzzy
-msgid "Regional Settings"
-msgstr "Ρυθμίσεις"
 
 #, fuzzy
 msgid "Indication Tones"
@@ -3352,6 +3366,18 @@ msgstr "ΣΦΑΛΜΑ: Αδυναμία εγκατάστασης  ρυθμίσε�
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ΣΦΑΛΜΑ: Λήψη μη έγκυρων ρυθμίσεων.\n"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο εθνικό πρόθεμα."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Πρέπει να καταχωρήσετε ένα έγκυρο διεθνές  πρόθεμα."
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
 
 #, fuzzy
 #~ msgid "Main Number"

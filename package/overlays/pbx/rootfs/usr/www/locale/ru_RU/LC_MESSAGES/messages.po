@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AskoziaPBX Russian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: ATS Design <request@pbxware.ru>\n"
@@ -1624,24 +1624,6 @@ msgstr ""
 "Использовать аудио буфер даже тогда, когда соединены (bridging) две конечные "
 "точки. "
 
-msgid "A valid national prefix must be specified."
-msgstr "Укажите действительный национальный префикс."
-
-msgid "A valid international prefix must be specified."
-msgstr "Укажите действительный интернациональный префикс."
-
-msgid "National Prefix"
-msgstr "Национальный префикс."
-
-msgid "International Prefix"
-msgstr "Интернациональный префикс."
-
-msgid "A-law"
-msgstr "a-law"
-
-msgid "u-law"
-msgstr "u-law"
-
 msgid "Manager Interface"
 msgstr "Интерфейс менеджера "
 
@@ -2501,6 +2483,11 @@ msgstr ""
 "Размер окна эхо-компенсатора. Если у Вас проблемы с эхо, попробуйте "
 "увеличить это окно."
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Начало сигнализации"
 
@@ -2594,6 +2581,36 @@ msgstr "Схема проверки подлинности"
 
 msgid "Edit ISDN Provider"
 msgstr "Изменить цифрового провайдера"
+
+msgid "Regional Settings"
+msgstr "Региональные настройки"
+
+msgid "International Prefix"
+msgstr "Интернациональный префикс."
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Национальный префикс."
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Национальный префикс."
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Закрытый ключ RSA"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "Изменить SIP провайдера"
@@ -2844,9 +2861,6 @@ msgstr "Доменное имя сервера."
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "Пример: <em>pbx.company.com"
-
-msgid "Regional Settings"
-msgstr "Региональные настройки"
 
 msgid "Indication Tones"
 msgstr "Индикация Тонна"
@@ -3117,6 +3131,18 @@ msgstr "ERR  не могу установить настройки.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR получена неправильная конфигурация.\n"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Укажите действительный национальный префикс."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Укажите действительный интернациональный префикс."
+
+#~ msgid "A-law"
+#~ msgstr "a-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
 
 #~ msgid "Main Number"
 #~ msgstr "Главный номер"

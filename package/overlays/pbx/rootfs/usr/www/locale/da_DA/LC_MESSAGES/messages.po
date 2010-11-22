@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -1623,24 +1623,6 @@ msgstr "Tving"
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "Brug Jitterbuffer selv når bridging to slutpunkter."
 
-msgid "A valid national prefix must be specified."
-msgstr "Et brugbart nationalt præfix skal angives."
-
-msgid "A valid international prefix must be specified."
-msgstr "Et brugbart internationalt præfix skal angives."
-
-msgid "National Prefix"
-msgstr "Nationalt præfix"
-
-msgid "International Prefix"
-msgstr "Internationalt præfix"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "U-law"
-
 msgid "Manager Interface"
 msgstr "Manager Interface"
 
@@ -2517,6 +2499,11 @@ msgstr ""
 "Ekko undertrykkelsen område strørrelse. Hvis dine opkald har ekko, prøv at "
 "udvide dette område."
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Start Signalering"
 
@@ -2610,6 +2597,36 @@ msgstr "Godkendelses skema"
 
 msgid "Edit ISDN Provider"
 msgstr "Ret ISDN udbyder"
+
+msgid "Regional Settings"
+msgstr "Regionale indstillinger"
+
+msgid "International Prefix"
+msgstr "Internationalt præfix"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Nationalt præfix"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Nationalt præfix"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Private RSA nægler"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "Ret SIP udbyder"
@@ -2862,9 +2879,6 @@ msgstr "Værtsnavn for denne PBX"
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "eks. <em>pbx.ditfirma.dk"
-
-msgid "Regional Settings"
-msgstr "Regionale indstillinger"
 
 msgid "Indication Tones"
 msgstr "Indikator toner"
@@ -3131,6 +3145,18 @@ msgstr "FEJL: Kunne ikke installere konfigurationen.\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "FEJL: Ikke brugbar konfiguration modtaget.\n"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Et brugbart nationalt præfix skal angives."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Et brugbart internationalt præfix skal angives."
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "U-law"
 
 #~ msgid "Main Number"
 #~ msgstr "Hoved nummer"

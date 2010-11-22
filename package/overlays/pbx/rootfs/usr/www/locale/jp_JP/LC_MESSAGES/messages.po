@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Askozia webGUI for Japanese Ver0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: 2010-07-30 05:16+0900\n"
 "Last-Translator: kenichi fukaumi <kenichifukaumi@gmail.com>\n"
 "Language-Team: Japanese Translation Team(KENICHI FUKAUMI) <info@kula.co.jp>\n"
@@ -44,9 +44,6 @@ msgstr "ユーザー名"
 
 msgid "Public Number"
 msgstr "パブリックナンバー"
-
-msgid "Main Number"
-msgstr "主番号"
 
 msgid "It contains an invalid character"
 msgstr "無効な文字が含まれています"
@@ -1310,9 +1307,6 @@ msgstr "下"
 msgid "associated"
 msgstr "接続(稼働)中"
 
-msgid "HIDE"
-msgstr "隠す"
-
 msgid "Virtual"
 msgstr "バーチャル"
 
@@ -1629,24 +1623,6 @@ msgstr "効力"
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr ""
 "2 つのエンドポイントをブリッジする場合にも、ジッターバッファを使用します"
-
-msgid "A valid national prefix must be specified."
-msgstr "有効な国プレフィックスを指定する必要があります"
-
-msgid "A valid international prefix must be specified."
-msgstr "有効な国際プレフィックスを指定する必要があります"
-
-msgid "National Prefix"
-msgstr "国番号"
-
-msgid "International Prefix"
-msgstr "国際識別番号"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "u-law"
 
 msgid "Manager Interface"
 msgstr "管理者画面"
@@ -2124,148 +2100,6 @@ msgstr "メモリー使用状況"
 msgid "Notes"
 msgstr "メモ"
 
-msgid "Interfaces"
-msgstr "インターフェース"
-
-msgid "Wireless"
-msgstr "ワイヤレス"
-
-msgid "SSID,Channel"
-msgstr "SSID,チャンネル"
-
-msgid ",WPA version,WPA cipher"
-msgstr ",WPA version,WPA cipher"
-
-msgid ",WPA PSK"
-msgstr ",WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSKは、8から63文字の間である必要があります"
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr "標準が802.11a に設定されている場合、802.11aチャネルだけ選択できます"
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "802.11aチャネルが選択されている場合、802.11a だけ選択できます"
-
-msgid "No compatible wireless interfaces detected."
-msgstr "互換性のあるワイヤレスインタフェースは検出されませんでした"
-
-msgid "Enable Wireless Interface"
-msgstr "ワイヤレス接続を有効にする"
-
-msgid "Standard"
-msgstr "標準"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "SSIDを隠す"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"もしこのオプションが選択されると、SSIDはhostapモードではbroadcastされません。"
-"そして正確なSSIDを知っている端末だけが、接続出来る様になります。但しこのオプ"
-"ションは、決してセキュリティー/暗号化設定の代替えにはならない事に注意して下さ"
-"い"
-
-msgid "Channel"
-msgstr "チャンネル"
-
-msgid "Auto"
-msgstr "自動"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA設定"
-
-msgid "Mode"
-msgstr "モード"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "WPAのみ"
-
-msgid "WPA2 only"
-msgstr "WPA2のみ"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "ほとんどの場合、ここで&quot;WPA + WPA2&quot; を選択する必要があります"
-
-msgid "Cipher"
-msgstr "暗号化方式"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr ""
-"AES/CCMPは、TKIPよりも優れたセキュリティーを提供します。しかしTKIPは古いハー"
-"ドウェアへの互換性に優れています"
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr ""
-"WPA-PSKモードで使用するパスワードを入力して下さい。8から63文字の間である必要"
-"があります"
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "WEP有効"
-
-msgid "TX key"
-msgstr "TX key"
-
-msgid "Key 1:"
-msgstr "Key 1:"
-
-msgid "Key 2:"
-msgstr "Key 2:"
-
-msgid "Key 3:"
-msgstr "Key 3:"
-
-msgid "Key 4:"
-msgstr "Key 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr ""
-"40 (64) bitキーは、5文字のASCII文字または頭に'0x'を付けた10文字の16進数を入力"
-"する必要があります"
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr ""
-"104 (128) bitキーは、13文字のASCII文字または頭に'0x'を付けた26文字の16進数を"
-"入力する必要があります"
-
 msgid "A valid MAC address must be specified."
 msgstr "有効なMACアドレスを指定する必要があります"
 
@@ -2534,6 +2368,23 @@ msgstr "ISDN電話機の編集"
 msgid "Edit SIP Phone"
 msgstr "SIP電話機の編集"
 
+#, fuzzy
+msgid "Auto-Configuration"
+msgstr "設定ファイルのリストア"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MACアドレス"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
 msgid "Edit Skinny Phone"
 msgstr "Skinny電話機の編集"
 
@@ -2628,6 +2479,11 @@ msgid ""
 msgstr ""
 "エコーキャンセルの調整。もしエコーが発生したら、この設定値を増やしてみて下さ"
 "い"
+
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
 
 msgid "Start Signaling"
 msgstr "シグナリングスタート"
@@ -2724,8 +2580,35 @@ msgstr "認証方式"
 msgid "Edit ISDN Provider"
 msgstr "ISDNプロバイダーのの編集"
 
-msgid "The main telephone number assigned to this line."
-msgstr "この回線に主番号が割り当てられました"
+msgid "Regional Settings"
+msgstr "地域設定"
+
+msgid "International Prefix"
+msgstr "国際識別番号"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "国番号"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "国番号"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "プライベートRSAキー"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "SIPプロバイダーの編集"
@@ -2865,6 +2748,9 @@ msgstr "有効なチャンネル"
 msgid "There are currently no active channels."
 msgstr "現在、有効なチャンネルは有りません"
 
+msgid "Channel"
+msgstr "チャンネル"
+
 msgid "Location"
 msgstr "場所"
 
@@ -2978,9 +2864,6 @@ msgstr "PBXのホスト名"
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "例; <em>pbx.mydomain.co.jp"
-
-msgid "Regional Settings"
-msgstr "地域設定"
 
 msgid "Indication Tones"
 msgstr "トーン種別"
@@ -3257,6 +3140,168 @@ msgstr "ERR 設定をインストール出来ませんでした\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 無効な設定を受信しました\n"
+
+#~ msgid "Main Number"
+#~ msgstr "主番号"
+
+#~ msgid "HIDE"
+#~ msgstr "隠す"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "有効な国プレフィックスを指定する必要があります"
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "有効な国際プレフィックスを指定する必要があります"
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
+
+#~ msgid "Interfaces"
+#~ msgstr "インターフェース"
+
+#~ msgid "Wireless"
+#~ msgstr "ワイヤレス"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID,チャンネル"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr ",WPA version,WPA cipher"
+
+#~ msgid ",WPA PSK"
+#~ msgstr ",WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "WPA PSKは、8から63文字の間である必要があります"
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr "標準が802.11a に設定されている場合、802.11aチャネルだけ選択できます"
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr "802.11aチャネルが選択されている場合、802.11a だけ選択できます"
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "互換性のあるワイヤレスインタフェースは検出されませんでした"
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "ワイヤレス接続を有効にする"
+
+#~ msgid "Standard"
+#~ msgstr "標準"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "SSIDを隠す"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "もしこのオプションが選択されると、SSIDはhostapモードではbroadcastされませ"
+#~ "ん。そして正確なSSIDを知っている端末だけが、接続出来る様になります。但しこ"
+#~ "のオプションは、決してセキュリティー/暗号化設定の代替えにはならない事に注"
+#~ "意して下さい"
+
+#~ msgid "Auto"
+#~ msgstr "自動"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA設定"
+
+#~ msgid "Mode"
+#~ msgstr "モード"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "WPAのみ"
+
+#~ msgid "WPA2 only"
+#~ msgstr "WPA2のみ"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr ""
+#~ "ほとんどの場合、ここで&quot;WPA + WPA2&quot; を選択する必要があります"
+
+#~ msgid "Cipher"
+#~ msgstr "暗号化方式"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr ""
+#~ "AES/CCMPは、TKIPよりも優れたセキュリティーを提供します。しかしTKIPは古い"
+#~ "ハードウェアへの互換性に優れています"
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr ""
+#~ "WPA-PSKモードで使用するパスワードを入力して下さい。8から63文字の間である必"
+#~ "要があります"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "WEP有効"
+
+#~ msgid "TX key"
+#~ msgstr "TX key"
+
+#~ msgid "Key 1:"
+#~ msgstr "Key 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Key 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Key 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Key 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "40 (64) bitキーは、5文字のASCII文字または頭に'0x'を付けた10文字の16進数を"
+#~ "入力する必要があります"
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128) bitキーは、13文字のASCII文字または頭に'0x'を付けた26文字の16進数"
+#~ "を入力する必要があります"
+
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "この回線に主番号が割り当てられました"
 
 #~ msgid "add a new item"
 #~ msgstr "新しいアイテムを追加する"
@@ -3725,14 +3770,6 @@ msgstr "ERR 無効な設定を受信しました\n"
 #, fuzzy
 #~ msgid "The Fax's number, also the extension that this fax is reachable at."
 #~ msgstr "会議室番号は、内線番号と同様にダイヤルしてご利用になれます"
-
-#, fuzzy
-#~ msgid "Auto-Configuration"
-#~ msgstr "設定ファイルのリストア"
-
-#, fuzzy
-#~ msgid "SNOM MAC Address"
-#~ msgstr "MACアドレス"
 
 #~ msgid "webGUI protocol"
 #~ msgstr "webGUIで使用するプロトコル"

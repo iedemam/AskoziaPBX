@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:08+0100\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: 2010-04-26 22:35+0100\n"
 "Last-Translator: Jean-Pierre LOZANO <TraductionFR.AskoziaPBX@LaPoste.Net>\n"
 "Language-Team: French\n"
@@ -1637,24 +1637,6 @@ msgstr ""
 "Toujours utiliser lors de la connexion Jitterbuffer entre deux points de "
 "terminaison."
 
-msgid "A valid national prefix must be specified."
-msgstr "Un préfixe national valide doit être spécifié."
-
-msgid "A valid international prefix must be specified."
-msgstr "Un préfixe international valide doit être spécifié."
-
-msgid "National Prefix"
-msgstr "Préfixe National"
-
-msgid "International Prefix"
-msgstr "Préfixe International"
-
-msgid "A-law"
-msgstr "A-law"
-
-msgid "u-law"
-msgstr "u-law"
-
 msgid "Manager Interface"
 msgstr "Console Asterisk"
 
@@ -2537,6 +2519,11 @@ msgstr ""
 "Fenêtre d'annulation d'écho. Si vos appels ont de l'écho essayer d'augmenter "
 "cette fenêtre."
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "Début de signalisation"
 
@@ -2628,6 +2615,36 @@ msgstr "Méthode d'authentification"
 
 msgid "Edit ISDN Provider"
 msgstr "Configuration Opérateur RNIS"
+
+msgid "Regional Settings"
+msgstr "Paramètres régionaux"
+
+msgid "International Prefix"
+msgstr "Préfixe International"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "Préfixe National"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "Préfixe National"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "Clé privée RSA"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 msgid "Edit SIP Provider"
 msgstr "Configuration Opérateur SIP"
@@ -2887,9 +2904,6 @@ msgstr "Nom de l'hôte du PBX."
 
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "exemple: <em>mondomaine.fr"
-
-msgid "Regional Settings"
-msgstr "Paramètres régionaux"
 
 msgid "Indication Tones"
 msgstr "Tonalité du téléphone"
@@ -3162,6 +3176,18 @@ msgstr "ERREUR Impossible d'installer la configuration. \n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERREUR La configuration reçue est invalide. \n"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "Un préfixe national valide doit être spécifié."
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "Un préfixe international valide doit être spécifié."
+
+#~ msgid "A-law"
+#~ msgstr "A-law"
+
+#~ msgid "u-law"
+#~ msgstr "u-law"
 
 #~ msgid "Main Number"
 #~ msgstr "Numéro principal"

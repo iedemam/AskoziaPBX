@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 15:18+0200\n"
+"POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -43,10 +43,6 @@ msgstr "用户名"
 
 msgid "Public Number"
 msgstr "公共号码"
-
-#, fuzzy
-msgid "Main Number"
-msgstr "数量"
 
 #, fuzzy
 msgid "It contains an invalid character"
@@ -1334,9 +1330,6 @@ msgstr ""
 msgid "associated"
 msgstr "相关监测站"
 
-msgid "HIDE"
-msgstr ""
-
 #, fuzzy
 msgid "Virtual"
 msgstr "葡萄牙"
@@ -1669,24 +1662,6 @@ msgstr "强制"
 
 msgid "Use Jitterbuffer even when bridging two endpoints."
 msgstr "使用時基誤差(Jitter)缓存即使桥接两个端点。"
-
-msgid "A valid national prefix must be specified."
-msgstr "必须指定一个有效的国家区号。"
-
-msgid "A valid international prefix must be specified."
-msgstr "必须指定一个有效的国际区号。"
-
-msgid "National Prefix"
-msgstr "国家区号"
-
-msgid "International Prefix"
-msgstr "国际区号"
-
-msgid "A-law"
-msgstr "A-Law"
-
-msgid "u-law"
-msgstr "u-Law"
 
 msgid "Manager Interface"
 msgstr "管理界面"
@@ -2183,138 +2158,6 @@ msgstr "内存使用"
 msgid "Notes"
 msgstr "Notes"
 
-msgid "Interfaces"
-msgstr "界面"
-
-msgid "Wireless"
-msgstr "无线"
-
-msgid "SSID,Channel"
-msgstr "SSID，信道"
-
-msgid ",WPA version,WPA cipher"
-msgstr "WPA版本，WPA 密钥"
-
-msgid ",WPA PSK"
-msgstr "WPA PSK"
-
-msgid "The WPA PSK must be between 8 and 63 characters long."
-msgstr "WPA PSK密钥必须由长度8到63个字符组成。"
-
-msgid ""
-"802.11a channels can only be selected if the standard is set to 802.11a too."
-msgstr "只有当标准同样是802.11a的时候，才能选择802.11a的信道。"
-
-msgid "802.11a can only be selected if an 802.11a channel is selected too."
-msgstr "只有选择了802.11a的信道，才能选用802.11a。"
-
-msgid "No compatible wireless interfaces detected."
-msgstr "没有检测到兼容的无线接口。"
-
-msgid "Enable Wireless Interface"
-msgstr "允许无线接口"
-
-msgid "Standard"
-msgstr "标准"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "隐藏SSID"
-
-msgid ""
-"If this option is selected, the SSID will not be broadcast in hostap mode, "
-"and onlyclients that know the exact SSID will be able to connect. Note that "
-"this option should never be used as a substitute for proper security/"
-"encryption settings."
-msgstr ""
-"如果勾选此选项，则SSID不会被以HostAP的模式被广播，并且只有知道确切SSID的客户"
-"端才能连接。注意的是，请不要用此选项来代替安全/加密的设置。"
-
-msgid "Channel"
-msgstr "信道"
-
-msgid "Auto"
-msgstr "自动"
-
-msgid "WPA"
-msgstr "WPA"
-
-msgid "WPA settings"
-msgstr "WPA设置"
-
-msgid "Mode"
-msgstr "模式"
-
-msgid "PSK"
-msgstr "PSK"
-
-msgid "WPA only"
-msgstr "仅WPA"
-
-msgid "WPA2 only"
-msgstr "仅WPA2"
-
-msgid "WPA + WPA2"
-msgstr "WPA + WPA2"
-
-msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
-msgstr "在大多数情况下，您应该在这里选择&quot;WPA + WPA2&quot;。"
-
-msgid "Cipher"
-msgstr "密钥"
-
-msgid "TKIP"
-msgstr "TKIP"
-
-msgid "AES/CCMP"
-msgstr "AES/CCMP"
-
-msgid "TKIP + AES/CCMP"
-msgstr "TKIP + AES/CCMP"
-
-msgid ""
-"AES/CCMP provides better security than TKIP, but TKIP is more compatible "
-"with older hardware."
-msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP与老的硬件有更好的兼容性。"
-
-msgid ""
-"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
-"8 and 63 characters long."
-msgstr "请输入WPA-PSK将用到的密码。其长度必须在8到63之间。"
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "Enable WEP"
-msgstr "允许 WEP"
-
-msgid "TX key"
-msgstr "TX Key"
-
-msgid "Key 1:"
-msgstr "Key 1:"
-
-msgid "Key 2:"
-msgstr "Key 2:"
-
-msgid "Key 3:"
-msgstr "Key 3:"
-
-msgid "Key 4:"
-msgstr "Key 4:"
-
-msgid ""
-"40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
-"preceded by '0x'."
-msgstr "40 (64) 位的密钥可以用5位的ASCII码或者10位以0x开头的16进制输入。"
-
-msgid ""
-"104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
-"preceded by '0x'."
-msgstr "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
-
 msgid "A valid MAC address must be specified."
 msgstr "必须指定一个有效的MAC地址"
 
@@ -2590,6 +2433,23 @@ msgid "Edit SIP Phone"
 msgstr "电话"
 
 #, fuzzy
+msgid "Auto-Configuration"
+msgstr "恢复设置"
+
+#, fuzzy
+msgid "SNOM MAC Address"
+msgstr "MAC地址"
+
+msgid ""
+"If this account is for a SNOM telephone, the hardware can be automatically "
+"configured when it reboots if its MAC address is entered here. The MAC "
+"address can be displayed by pressing the phone's \"Help\" button. Enter the "
+"address exactly as it appears on the screen.<br><br>The phone's HTTP "
+"interface password will be the same as this extension's password and the on-"
+"telephone admin password is the extension number."
+msgstr ""
+
+#, fuzzy
 msgid "Edit Skinny Phone"
 msgstr "电话"
 
@@ -2696,6 +2556,11 @@ msgid ""
 "window."
 msgstr ""
 
+msgid ""
+"Some platforms have resource issues with the default \"oslec\" algorithm. "
+"Choose \"mg2\" if you are experiencing excessive cpu usage."
+msgstr ""
+
 msgid "Start Signaling"
 msgstr "开始信号"
 
@@ -2794,8 +2659,35 @@ msgid "Edit ISDN Provider"
 msgstr "编辑模拟电话"
 
 #, fuzzy
-msgid "The main telephone number assigned to this line."
-msgstr "分配给这条线的电话号码。"
+msgid "Regional Settings"
+msgstr "设置"
+
+msgid "International Prefix"
+msgstr "国际区号"
+
+msgid "The prefix used when dialing international numbers (usually 00)"
+msgstr ""
+
+msgid "National Prefix"
+msgstr "国家区号"
+
+msgid "The prefix used when dialing numbers within your country (usually 0)"
+msgstr ""
+
+#, fuzzy
+msgid "Local Prefix"
+msgstr "国家区号"
+
+msgid "The prefix used when dialing numbers within your city (i.e. 0711)"
+msgstr ""
+
+#, fuzzy
+msgid "Private Prefix"
+msgstr "国家区号"
+
+msgid ""
+"The prefix used when dialing numbers within your company (i.e. 07115678)"
+msgstr ""
 
 #, fuzzy
 msgid "Edit SIP Provider"
@@ -2936,6 +2828,9 @@ msgstr "活动的信道"
 msgid "There are currently no active channels."
 msgstr "目前没有活动的信道。"
 
+msgid "Channel"
+msgstr "信道"
+
 msgid "Location"
 msgstr "位置"
 
@@ -3047,10 +2942,6 @@ msgstr "重启PBX"
 #, fuzzy
 msgid "e.g. <em>pbx . mydomain.com"
 msgstr "例如<em>mycorp.com"
-
-#, fuzzy
-msgid "Regional Settings"
-msgstr "设置"
 
 #, fuzzy
 msgid "Indication Tones"
@@ -3323,6 +3214,157 @@ msgstr "ERR 无法安装设置。\n"
 
 msgid "ERR Invalid configuration received.\n"
 msgstr "ERR 收到无效的配置。\n"
+
+#, fuzzy
+#~ msgid "Main Number"
+#~ msgstr "数量"
+
+#~ msgid "A valid national prefix must be specified."
+#~ msgstr "必须指定一个有效的国家区号。"
+
+#~ msgid "A valid international prefix must be specified."
+#~ msgstr "必须指定一个有效的国际区号。"
+
+#~ msgid "A-law"
+#~ msgstr "A-Law"
+
+#~ msgid "u-law"
+#~ msgstr "u-Law"
+
+#~ msgid "Interfaces"
+#~ msgstr "界面"
+
+#~ msgid "Wireless"
+#~ msgstr "无线"
+
+#~ msgid "SSID,Channel"
+#~ msgstr "SSID，信道"
+
+#~ msgid ",WPA version,WPA cipher"
+#~ msgstr "WPA版本，WPA 密钥"
+
+#~ msgid ",WPA PSK"
+#~ msgstr "WPA PSK"
+
+#~ msgid "The WPA PSK must be between 8 and 63 characters long."
+#~ msgstr "WPA PSK密钥必须由长度8到63个字符组成。"
+
+#~ msgid ""
+#~ "802.11a channels can only be selected if the standard is set to 802.11a "
+#~ "too."
+#~ msgstr "只有当标准同样是802.11a的时候，才能选择802.11a的信道。"
+
+#~ msgid "802.11a can only be selected if an 802.11a channel is selected too."
+#~ msgstr "只有选择了802.11a的信道，才能选用802.11a。"
+
+#~ msgid "No compatible wireless interfaces detected."
+#~ msgstr "没有检测到兼容的无线接口。"
+
+#~ msgid "Enable Wireless Interface"
+#~ msgstr "允许无线接口"
+
+#~ msgid "Standard"
+#~ msgstr "标准"
+
+#~ msgid "SSID"
+#~ msgstr "SSID"
+
+#~ msgid "Hide SSID"
+#~ msgstr "隐藏SSID"
+
+#~ msgid ""
+#~ "If this option is selected, the SSID will not be broadcast in hostap "
+#~ "mode, and onlyclients that know the exact SSID will be able to connect. "
+#~ "Note that this option should never be used as a substitute for proper "
+#~ "security/encryption settings."
+#~ msgstr ""
+#~ "如果勾选此选项，则SSID不会被以HostAP的模式被广播，并且只有知道确切SSID的客"
+#~ "户端才能连接。注意的是，请不要用此选项来代替安全/加密的设置。"
+
+#~ msgid "Auto"
+#~ msgstr "自动"
+
+#~ msgid "WPA"
+#~ msgstr "WPA"
+
+#~ msgid "WPA settings"
+#~ msgstr "WPA设置"
+
+#~ msgid "Mode"
+#~ msgstr "模式"
+
+#~ msgid "PSK"
+#~ msgstr "PSK"
+
+#~ msgid "WPA only"
+#~ msgstr "仅WPA"
+
+#~ msgid "WPA2 only"
+#~ msgstr "仅WPA2"
+
+#~ msgid "WPA + WPA2"
+#~ msgstr "WPA + WPA2"
+
+#~ msgid "In most cases, you should select &quot;WPA + WPA2&quot; here."
+#~ msgstr "在大多数情况下，您应该在这里选择&quot;WPA + WPA2&quot;。"
+
+#~ msgid "Cipher"
+#~ msgstr "密钥"
+
+#~ msgid "TKIP"
+#~ msgstr "TKIP"
+
+#~ msgid "AES/CCMP"
+#~ msgstr "AES/CCMP"
+
+#~ msgid "TKIP + AES/CCMP"
+#~ msgstr "TKIP + AES/CCMP"
+
+#~ msgid ""
+#~ "AES/CCMP provides better security than TKIP, but TKIP is more compatible "
+#~ "with older hardware."
+#~ msgstr "AES/CCMP 提供比TKIP更好的安全性，但是TKIP与老的硬件有更好的兼容性。"
+
+#~ msgid ""
+#~ "Enter the passphrase that will be used in WPA-PSK mode. This must be "
+#~ "between 8 and 63 characters long."
+#~ msgstr "请输入WPA-PSK将用到的密码。其长度必须在8到63之间。"
+
+#~ msgid "WEP"
+#~ msgstr "WEP"
+
+#~ msgid "Enable WEP"
+#~ msgstr "允许 WEP"
+
+#~ msgid "TX key"
+#~ msgstr "TX Key"
+
+#~ msgid "Key 1:"
+#~ msgstr "Key 1:"
+
+#~ msgid "Key 2:"
+#~ msgstr "Key 2:"
+
+#~ msgid "Key 3:"
+#~ msgstr "Key 3:"
+
+#~ msgid "Key 4:"
+#~ msgstr "Key 4:"
+
+#~ msgid ""
+#~ "40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr "40 (64) 位的密钥可以用5位的ASCII码或者10位以0x开头的16进制输入。"
+
+#~ msgid ""
+#~ "104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits "
+#~ "preceded by '0x'."
+#~ msgstr ""
+#~ "104 (128) 位的密钥可以用13位的ASCII码或者26位以0x开头的16进制数输入。"
+
+#, fuzzy
+#~ msgid "The main telephone number assigned to this line."
+#~ msgstr "分配给这条线的电话号码。"
 
 #~ msgid "add a new item"
 #~ msgstr "添加一个新项目"
@@ -3753,14 +3795,6 @@ msgstr "ERR 收到无效的配置。\n"
 #, fuzzy
 #~ msgid "The Fax's number, also the extension that this fax is reachable at."
 #~ msgstr "会议室的号码，就是分机可以拨打"
-
-#, fuzzy
-#~ msgid "Auto-Configuration"
-#~ msgstr "恢复设置"
-
-#, fuzzy
-#~ msgid "SNOM MAC Address"
-#~ msgstr "MAC地址"
 
 #~ msgid "webGUI protocol"
 #~ msgstr "网页设置界面传输协议"
