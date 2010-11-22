@@ -1,0 +1,2 @@
+KERNEL=="port[0-9]*", NAME="gsm/%k",  OWNER="asterisk", GROUP="asterisk", MODE="0660"
+KERNEL=="ctl[0-9]*",  NAME="gsm/%k",  OWNER="asterisk", GROUP="asterisk", MODE="0660"

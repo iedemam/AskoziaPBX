@@ -1,0 +1,17 @@
+--- asterisk-1.8.0/contrib/scripts/get_ilbc_source.sh.orig	2010-11-21 21:41:01.000000000 +0100
++++ asterisk-1.8.0/contrib/scripts/get_ilbc_source.sh	2010-11-21 21:49:56.000000000 +0100
+@@ -18,11 +18,11 @@
+ echo "If you have not done so, you can abort the script now."
+ echo "***"
+ 
+-read tmp
++#read tmp
+ 
+-wget -P codecs/ilbc http://www.ietf.org/rfc/rfc3951.txt
++#wget -P codecs/ilbc http://www.ietf.org/rfc/rfc3951.txt
+ 
+-wget -q -O - http://www.ilbcfreeware.org/documentation/extract-cfile.awk | tr -d '\r' > codecs/ilbc/extract-cfile.awk
++#wget -q -O - http://www.ilbcfreeware.org/documentation/extract-cfile.awk | tr -d '\r' > codecs/ilbc/extract-cfile.awk
+ 
+ (cd codecs/ilbc && awk -f extract-cfile.awk rfc3951.txt)
+ 

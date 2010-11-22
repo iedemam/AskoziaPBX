@@ -44,7 +44,7 @@ X openssl
 X grub
 
 # asterisk + deps
-X asterisk16
+X asterisk18
 X spandsp
 X libtiff
 X libogg
@@ -76,7 +76,7 @@ X nl-nl-gsm-base
 X ru-ru-alaw-base
 
 # music-on-hold
-X freeplay-ulaw-base
+#X freeplay-ulaw-base
 
 # webgui
 X php4

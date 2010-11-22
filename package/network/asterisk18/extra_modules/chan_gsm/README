@@ -1,0 +1,117 @@
+Installation and Usage of chan_gsm
+----------------------------------
+
+
+REQUIREMENTS
+============
+
+* Kernel Modul 'bnxgsm' loaded
+* /dev/gsm/portX and /dev/gsm/ctlX created
+* /etc/asterisk/gsm.conf created
+* asterisk-1.4 installed
+
+chan_gsm requires some specific structures like 'res_configman', these are 
+kept in the 'compat' subfolder, and are installed automatically if not 
+present already. 
+
+
+INSTALLATION
+============
+
+Just type `make install`, the compat folder and chan_gsm should be installed
+now.
+
+
+CONFIGURATION
+=============
+
+The configuration file '/etc/asterisk/gsm.conf' is splitted in 3 section types:
+
+* [general] - here we have some general settings like: 
+	- debug = <1|0> if set to 1 we see some debugging stuff
+	- smsdir = <path> path is where incoming sms are stored
+
+* [default] - here are the default port settings stored, these are 
+		settings that can be set per port, like:
+	
+	- pin = <pin>,<pin2> , where pin is the SIM authentication code
+						   if pin="none" the pin authentication is
+						   skipped.
+	- context = <context>,<context2> , where incoming calls go to
+	- exten = <exten>,<exten2> , which extension incoming calls get
+	- hidecallerid = <yes|no>,<yes|no> , wether the callerid is screened or not
+
+* [<portgroup>] - here are all settings from the [default] section possible
+		+ you need to define which ports are in the group like:
+	
+	- ports=<X>, X equals one port, at the moment there are only single 
+			ports per group possible. 
+
+The second parameter is used for the second simslot. (chooseable by the 
+set_next_simslot application). If ommitted, the first parameter is used.
+
+
+DIALSTRING
+==========
+
+
+To dial out on a gsm port just use the following dialstring:
+
+exten => _X.,1,Dial(GSM/${PORT}/${EXTEN})  
+
+${PORT} is the port where you want to dialout and ${EXTEN} will be dialed.
+
+
+INCOMING CALLS
+==============
+
+For inbound calls you need to define the 'context' + 'exten' config settings in
+'/etc/asteriks/gsm.conf' the inbound calls on this port will arrive in the 
+extensions.conf at:
+
+['context']
+exten => 'exten',1,Noop(do whatever you like here)
+
+
+Applications
+============
+
+chan_gsm registers 1 application: gsm_set_simslot(<port>|<slot>)
+	<port> - the port where we want to switch the sim
+	<slot> - the simslot where we want to switch to (<1|0>)
+
+With 'gsm_set_simslot' you can choose the simslot (either 0|1) which is next 
+used. If the choosed is already selected nothing happens, if the slot needs to
+be switched the module is turned off, the sim slot is switched and the 
+module is turned on again, note that this process takes between 15 and 25 
+seconds. 
+
+
+you can use this application like:
+
+
+ exten => _9X.,1,Noop(use provider 1 in simslot 0)
+ exten => _9X.,n,gsm_set_simslot(1,0)
+ exten => _9X.,n,Dial(GSM/1/${EXTEN:1})
+
+ exten => _8X.,1,Noop(use provider 1 in simslot 1)
+ exten => _8X.,n,gsm_set_simslot(1,1)
+ exten => _8X.,n,Dial(GSM/1/${EXTEN:1})
+
+
+CLI COMMANDS
+============
+
+chan_gsm has numerous cli commands. There are some for turning off and on 
+the modules, others to send AT commands to the modules (note that '/' is 
+translated to '?' because this does not work to enter in *-readline). 
+
+There is even a CLI command for sending SMS. 
+
+
+MANAGER COMMANDS
+================
+
+There is one manager command to send SMS. 
+
+

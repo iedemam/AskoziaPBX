@@ -1,0 +1,144 @@
+--- asterisk-1.8.0/channels/chan_sip.c.orig	2010-11-22 12:18:30.000000000 +0100
++++ asterisk-1.8.0/channels/chan_sip.c	2010-11-22 12:19:42.000000000 +0100
+@@ -670,6 +670,7 @@
+ 	configuring devices
+ */
+ /*@{*/
++char snom_autoprovisioning_url[128] = "";
+ static char default_language[MAX_LANGUAGE];      /*!< Default language setting for new channels */
+ static char default_callerid[AST_MAX_EXTENSION]; /*!< Default caller ID for sip messages */
+ static char default_mwi_from[80];                /*!< Default caller ID for MWI updates */
+@@ -23098,6 +23099,110 @@
+ 		return 0;
+ 	}
+ 
++	/* Catch Snom subscribes for auto-provisioning */
++
++	if (strstr(get_header (req, "Event") , "vendor=\"snom\""))
++	{
++		/* Find out source mac address for mac filter */
++		char srcMac[32] = "";
++		char *beginSrcMac = strstr (get_header (req, "From"), "%3a") + 3;
++		char *endSrcMac = strchr (get_header (req, "From"), '@');
++		strncpy (srcMac, beginSrcMac, endSrcMac - beginSrcMac);
++
++		/* Is the source mac address in sip.conf? */
++		char valid_mac_addr = 0;
++		struct ast_flags config_flags = { 0 };
++		struct ast_config *cfg = ast_config_load (config, config_flags);
++		if (cfg == NULL) ast_log (LOG_WARNING, "Could not load config!\n");
++		char *cat = NULL;
++		while (cat = ast_category_browse(cfg, cat))
++		{
++			char *snomMac = ast_variable_retrieve(cfg, cat, "snom-mac");
++			
++			if ((snomMac != NULL) && (!strcasecmp (srcMac, snomMac)))
++			{
++				valid_mac_addr = 1;
++				break;
++			}
++		};
++		ast_config_destroy(cfg);
++
++		/* Was the source mac address found in sip.conf? */
++		if (valid_mac_addr)
++		{
++			// Send 200 OK
++			transmit_response(p, "200 OK", req);
++			
++			/* Prepare data for NOTIFY request */
++			/* Add server IP to VIA header */
++			char myVia[256] = "SIP/2.0/UDP ";
++			char myPort[16];
++			sprintf (myPort, "%d", ast_sockaddr_port(&p->ourip));
++			strncat (myVia, ast_sockaddr_stringify(&p->ourip), strlen(ast_sockaddr_stringify(&p->ourip)));
++			/* strncat (myVia, ":", 1); */
++			/* strncat (myVia, myPort, strlen (myPort)); */
++			strncat (myVia, ";rport", 6);
++					
++			/* Add tag to "To"-Header */
++			char myTo[256] = "";
++			strncat (myTo, get_header (req, "To"), strlen (get_header (req, "To")));
++			strncat (myTo, ";tag=12344321", 13);
++	
++			/* Build Contact header */
++			char myContact[256] = "<sip:";
++			strncat (myContact, ast_sockaddr_stringify(&p->ourip), strlen(ast_sockaddr_stringify(&p->ourip)));
++			strncat (myContact, ":", 1);
++			/* strncat (myContact, myPort, strlen (myPort)); */
++			strncat (myContact, ";transport=TCP;handler=dum>", 27);
++			
++			/* Copy Event header field */
++			char myEvent[256];
++			strncpy(myEvent, get_header (req, "Event"), strlen (get_header (req, "Event")));
++			
++			/* Find foreign IP for start-line of SIP header */
++			char foreignIP[64] = "";
++			char *beginForeignIP = strchr (get_header (req, "Contact"), '<') + 1;
++			char *endForeignIP = strchr (get_header (req, "Contact"), '>');
++			strncat (foreignIP, beginForeignIP, endForeignIP - beginForeignIP);
++	
++			/* Add headers to NOTFIY request */
++			struct sip_request notify_req;
++			init_req (&notify_req, SIP_NOTIFY, foreignIP);
++			add_header(&notify_req, "Content-Type", "application/url");
++			add_header(&notify_req, "Event", myEvent);
++			add_header(&notify_req, "Via", myVia);
++			add_header(&notify_req, "From", get_header (req, "From"));
++			add_header(&notify_req, "To", myTo);
++			add_header(&notify_req, "Call-Id", get_header (req, "Call-Id"));
++			add_header(&notify_req, "CSeq", "101 NOTIFY");
++			add_header(&notify_req, "Content-Type", "application/url");
++			add_header(&notify_req, "Max-Forwards", "20");
++			add_header(&notify_req, "Contact", myContact);
++	
++			/* Adding snom url in body*/
++			if (!strcmp (snom_autoprovisioning_url, ""))
++			{
++				strncat (snom_autoprovisioning_url, "http://", 7);
++				strncat (snom_autoprovisioning_url, ast_sockaddr_stringify_host(&p->ourip), strlen(ast_sockaddr_stringify_host(&p->ourip)));
++				strncat (snom_autoprovisioning_url, ":56080/snom.php?mac={mac}", 25);
++				ast_log (LOG_WARNING, "No snom auto-provisioning url specified, using default '%s'\n", snom_autoprovisioning_url);
++			}
++			add_content(&notify_req, snom_autoprovisioning_url);
++			
++			/* Send NOTIFY request */
++			send_request(p, &notify_req, XMIT_RELIABLE, p->ocseq);
++			ast_verbose (VERBOSE_PREFIX_3 "Answered snom auto-provisioning for mac '%s'\n", srcMac);
++		}
++		else
++		{
++			/* MAC address is not in sip.conf: Foreign address */
++			ast_verbose (VERBOSE_PREFIX_3 "Ignored snom auto-provisioning for mac '%s'\n", srcMac);
++		}
++		pvt_set_needdestroy(p, "Sent notify");
++		return 0;
++	}
++	/* End of snom auto-provisioning */
++
+ 	if ( (strchr(eventheader, ';'))) {
+ 		event = ast_strdupa(eventheader);	/* Since eventheader is a const, we can't change it */
+ 		temp = strchr(event, ';'); 		
+@@ -26567,6 +26672,8 @@
+ 
+ 		if (!strcasecmp(v->name, "context")) {
+ 			ast_copy_string(sip_cfg.default_context, v->value, sizeof(sip_cfg.default_context));
++		} else if (!strcasecmp(v->name, "snomautoprovisioningurl")) {
++			strcpy (snom_autoprovisioning_url, v->value);
+ 		} else if (!strcasecmp(v->name, "subscribecontext")) {
+ 			ast_copy_string(sip_cfg.default_subscribecontext, v->value, sizeof(sip_cfg.default_subscribecontext));
+ 		} else if (!strcasecmp(v->name, "callcounter")) {
+@@ -27117,6 +27224,13 @@
+ 				   sizeof reuseFlag);
+ 
+ 			ast_enable_packet_fragmentation(sipsock);
++            /* Add the snomd-multicast IP for auto-provisioning to this socket*/
++	       	struct ip_mreq mreq;
++	        mreq.imr_multiaddr.s_addr=inet_addr("224.0.1.75");
++	       	mreq.imr_interface.s_addr=htonl(INADDR_ANY);
++	       	if (setsockopt(sipsock, IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq)) < 0)
++				ast_log (LOG_WARNING, "Unable to add SIP multicast address: '%s'", strerror (errno));
++
+ 
+ 			if (ast_bind(sipsock, &bindaddr) < 0) {
+ 				ast_log(LOG_WARNING, "Failed to bind to %s: %s\n",
