@@ -69,7 +69,6 @@ $g = array(
 $defaults = array();
 
 $defaults['dahdi']['echo-taps'] = 128;
-$defaults['dahdi']['echo-algorithm'] = "oslec";
 $defaults['dahdi']['rxgain'] = 0.0;
 $defaults['dahdi']['txgain'] = 0.0;
 $defaults['dahdi']['analog']['startsignaling'] = 'ks';

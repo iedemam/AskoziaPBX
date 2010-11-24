@@ -462,7 +462,6 @@ function system_load_kernel_modules() {
 	mwexec("/sbin/modprobe -q dahdi_transcode");
 	mwexec("/sbin/modprobe -q echo");
 	mwexec("/sbin/modprobe -q dahdi_echocan_oslec");
-	mwexec("/sbin/modprobe -q dahdi_echocan_mg2");
 
 
 	if ($g['platform'] == "COMpact 3000") {
