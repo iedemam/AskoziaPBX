@@ -152,6 +152,10 @@ function dahdi_autoconfigure_ports() {
 			// setup bri isdn specific defaults
 			} else if ($p['technology'] == "isdn" && $p['totalchannels'] == 3) {
 				$p['name'] = gettext("Port") . " " . $p['span'];
+				// for now we're disabling echo cancellation on auto-generated isdn ports
+				// as several platforms have reported software interrupt floods and
+				// extremely high cpu usage causing the system to be unusable
+				$p['echo-taps'] = "disable";
 
 				if ($p['type'] == "nt") {
 					$p['signaling'] = "bri_net_ptmp";

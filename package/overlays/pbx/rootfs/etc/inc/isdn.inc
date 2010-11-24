@@ -122,6 +122,26 @@ function isdn_get_dialpatterns() {
 	return $dialpatterns;
 }
 
+function isdn_autoconfigure_phones() {
+	global $g;
+
+	$all_ports = dahdi_get_ports("isdn", "nt");
+
+	foreach ($all_ports as $port) {
+		if (isset($port['unused'])) {
+			$phone = isdn_generate_default_phone();
+			$phone['port'] = $port['uniqid'];
+			isdn_save_phone($phone);
+
+			unset($port['unused']);
+			dahdi_save_port($port);
+		}
+	}
+
+	unlink_if_exists($g['isdn_dirty_path']);
+	unlink_if_exists($g['dahdi_dirty_path']);
+}
+
 /**
  * Returns all phones associated with a particular ISDN unit
  * If no phones are associated with the supplied unit, an empty array is returned

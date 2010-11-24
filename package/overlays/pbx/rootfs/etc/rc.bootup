@@ -135,10 +135,9 @@
 	analog_autoconfigure_phones();
 	echo "done\n";
 
-	// disabling until bri_net_ptmp is implemented (Asterisk 1.8)
-	//echo " - Auto configuring ISDN phones... ";
-	//isdn_autoconfigure_phones();
-	//echo "done\n";
+	echo " - Auto configuring ISDN phones... ";
+	isdn_autoconfigure_phones();
+	echo "done\n";
 
 	if (file_exists("/etc/supports.redfone")) {
 		echo " - Configuring Redfone gateways... ";
