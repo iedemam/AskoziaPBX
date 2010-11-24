@@ -2544,7 +2544,7 @@ msgstr "Anschlussgruppe hinzufügen"
 
 #, php-format
 msgid "Edit Analog %s Port"
-msgstr "Analoganschluss &s bearbeiten"
+msgstr "Analoganschluss %s bearbeiten"
 
 msgid "Enter a descriptive name for this port."
 msgstr "Aussagekräftiger Name für diesen Anschluss."
