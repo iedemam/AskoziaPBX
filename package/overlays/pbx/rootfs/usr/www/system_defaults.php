@@ -56,7 +56,7 @@ if ($rebootmsg) {
 } else {
 
 	?><form action="system_defaults.php" method="post">
-		<p><strong><?=sprintf(gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.2 and the password will be set to '%s'."), $default_password);?><br>
+		<p><strong><?=sprintf(gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to use DHCP and the password will be set to '%s'."), $default_password);?><br>
 		<br>
 		<?=gettext("Are you sure you want to proceed?");?></strong></p>
 		<p><input name="Yes" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
