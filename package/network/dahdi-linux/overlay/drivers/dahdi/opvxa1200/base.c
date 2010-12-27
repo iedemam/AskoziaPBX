@@ -1,7 +1,9 @@
 /*
- * OpenVox A1200P FXS/FXO Interface Driver for Zapata Telephony interface
+ * OpenVox A1200P FXS/FXO Interface Driver for DAHDI Telephony interface
  *
- * Modify from wctdm.c by MiaoLin<miaolin@openvox.com.cn>
+ * Written by MiaoLin<miaolin@openvox.cn>
+ *
+ * Copyright (C) 2005-2010 OpenVox Communication Co. Ltd,
  *
  * All rights reserved.
  *
@@ -55,6 +57,7 @@
  * 
  * Rev 1.4.9.2.c
  * 	add driver parameter cidtimeout.
+ * 
  * Rev 1.4.9.2.d 
  *  	add debug stuff to test fxs power alarm
  *  
@@ -79,8 +82,16 @@
  *        Add touch_softlockup_watchdog() in wctdm_hardware_init, to avoid cpu softlockup system message for FXS.
  *
  *
- */
- 
+ * Rev 1.4.12.4  17/04/2009 James.zhu
+ *       Changed wctdm_voicedaa_check_hook() to detect FXO battery and solved the problem with dial(dahdi/go/XXXXXXXXXX)
+ *       add alarm detection for FXO
+ *
+ * Rev 1.4.12.5 01/10/2009 james.zhu
+ *       Add jiffies for 5 second in wctdm_hardware_init
+ *
+ *
+ */ 
+
 #include <linux/kernel.h>
 #include <linux/errno.h>
 #include <linux/module.h>
@@ -90,6 +101,7 @@
 #include <linux/interrupt.h>
 #include <linux/moduleparam.h>
 #include <asm/io.h>
+#include <linux/sched.h>
 #include "proslic.h"
    
 /* MiaoLin debug start */
@@ -172,9 +184,13 @@ static alpha  indirect_regs[] =
 {42,255,"DCDC_XTRA",0x1000},
 {43,66,"LOOP_CLOSE_TRES_LOW",0x1000},
 };
+
+
 #include <dahdi/kernel.h>
 #include <dahdi/wctdm_user.h>
+
 #include "fxo_modes.h"
+
 #define NUM_FXO_REGS 60
 
 #define WC_MAX_IFACES 128
@@ -225,19 +241,8 @@ static alpha  indirect_regs[] =
 #define FLAG_EMPTY	0
 #define FLAG_WRITE	1
 #define FLAG_READ	2
-
-
 #define DEFAULT_RING_DEBOUNCE		64		/* Ringer Debounce (64 ms) */
-
-/* the constants below control the 'debounce' periods enforced by the
-   check_hook routines; these routines are called once every 4 interrupts
-   (the interrupt cycles around the four modules), so the periods are
-   specified in _4 millisecond_ increments
-*/
-#define DEFAULT_BATT_DEBOUNCE	4		/* Battery debounce (64 ms) */
-#define POLARITY_DEBOUNCE 	4		/* Polarity debounce (64 ms) */
-#define DEFAULT_BATT_THRESH	3		/* Anything under this is "no battery" */
-
+#define POLARITY_DEBOUNCE 	64  	/* Polarity debounce (64 ms) */
 #define OHT_TIMER		6000	/* How long after RING to retain OHT */
 
 #define FLAG_3215	(1 << 0)
@@ -304,7 +309,7 @@ struct wctdm {
 	spinlock_t lock;
 
 	union {
-		struct {
+		struct fxo {
 #ifdef AUDIO_RINGCHECK
 			unsigned int pegtimer;
 			int pegcount;
@@ -316,14 +321,14 @@ struct wctdm {
 #endif			
 			int ringdebounce;
 			int offhook;
-            int battdebounce;
-			int nobatttimer;
-		    int battery;
-		    int lastpol;
-		    int polarity;
-		    int polaritydebounce;
+		    unsigned int battdebounce;
+			unsigned int battalarm;
+			enum battery_state battery;
+		        int lastpol;
+		        int polarity;
+		        int polaritydebounce;
 		} fxo;
-		struct  {
+		struct fxs {
 			int oldrxhook;
 			int debouncehook;
 			int lastrxhook;
@@ -350,8 +355,11 @@ struct wctdm {
 	dma_addr_t	writedma;
 	volatile unsigned char *writechunk;					/* Double-word aligned write memory */
 	volatile unsigned char *readchunk;					/* Double-word aligned read memory */
-	struct dahdi_chan _chans[MAX_NUM_CARDS];
-  struct dahdi_chan *chans[MAX_NUM_CARDS];
+	/*struct dahdi_chan chans[MAX_NUM_CARDS];*/
+	struct dahdi_chan _chans[NUM_CARDS];
+	struct dahdi_chan *chans[NUM_CARDS];
+
+
 #ifdef TEST_LOG_INCOME_VOICE	
 	char * voc_buf[MAX_NUM_CARDS + NUM_FLAG];
 	int voc_ptr[MAX_NUM_CARDS + NUM_FLAG];
@@ -366,11 +374,11 @@ struct wctdm {
 	int	 cid_history_ptr[MAX_NUM_CARDS];
 	int  cid_history_clone_cnt[MAX_NUM_CARDS];
 	enum cid_hook_state cid_state[MAX_NUM_CARDS];
-    int 	cid_ring_on_time[MAX_NUM_CARDS];
+   int 	cid_ring_on_time[MAX_NUM_CARDS];
 };
 
-char* A1200P_Name = "A1200P";
-char* A800P_Name  = "A800P";
+static char* A1200P_Name = "A1200P";
+static char* A800P_Name  = "A800P";
 
 struct wctdm_desc {
 	char *name;
@@ -383,9 +391,13 @@ static int acim2tiss[16] = { 0x0, 0x1, 0x4, 0x5, 0x7, 0x0, 0x0, 0x6, 0x0, 0x0, 0
 static struct wctdm *ifaces[WC_MAX_IFACES];
 
 static void wctdm_release(struct wctdm *wc);
-static int battdebounce = DEFAULT_BATT_DEBOUNCE;
-static int battthresh = DEFAULT_BATT_THRESH;
+
+static unsigned int battdebounce;
+static unsigned int battalarm;
+static unsigned int battthresh;
 static int ringdebounce = DEFAULT_RING_DEBOUNCE;
+/* times 4, because must be a multiple of 4ms: */
+static int dialdebounce = 8 * 8;
 static int fwringdetect = 0;
 static int debug = 0;
 static int robust = 0;
@@ -467,7 +479,7 @@ static inline void wctdm_transmitprep(struct wctdm *wc, unsigned char ints)
 #else
 		for (x=0;x<(MAX_NUM_CARDS+NUM_FLAG);x++) {
 			pos = y * (MAX_NUM_CARDS+NUM_FLAG) + ((x + chan_offset + MAX_NUM_CARDS+NUM_FLAG - WC_OFFSET)&0x0f);
-			if(x<wc->max_cards )
+			if(x<wc->max_cards/*MAX_NUM_CARDS*/)
 				txbuf[pos] = wc->chans[x]->writechunk[y]; 
 			else
 				txbuf[pos] = 0; 
@@ -532,7 +544,7 @@ static inline void ring_check(struct wctdm *wc, int card)
 
 static inline void wctdm_receiveprep(struct wctdm *wc, unsigned char ints)
 {
-	volatile unsigned char  *rxbuf;
+	volatile unsigned char *rxbuf;
 	int x, y, chan_offset;
 
 
@@ -562,9 +574,9 @@ static inline void wctdm_receiveprep(struct wctdm *wc, unsigned char ints)
 #ifdef __BIG_ENDIAN
 	// operation pending...
 #else
-		for (y=0;y<wc->max_cards;y++) { 
+		for (y=0;y<wc->max_cards/*MAX_NUM_CARDS*/;y++) { 
 			if (wc->cardflag & (1 << y))
-			wc->chans[y]->readchunk[x] = rxbuf[(MAX_NUM_CARDS+NUM_FLAG) * x + ((y + chan_offset ) & 0x0f)]; 
+				wc->chans[y]->readchunk[x] = rxbuf[(MAX_NUM_CARDS+NUM_FLAG) * x + ((y + chan_offset ) & 0x0f)];
 #ifdef TEST_LOG_INCOME_VOICE
 			wc->voc_buf[y][wc->voc_ptr[y]] = rxbuf[(MAX_NUM_CARDS+NUM_FLAG) * x + ((y + chan_offset) & 0x0f)];
 			wc->voc_ptr[y]++;
@@ -630,7 +642,7 @@ static inline void wctdm_receiveprep(struct wctdm *wc, unsigned char ints)
 	/* XXX We're wasting 8 taps.  We should get closer :( */
 	for (x = 0; x < wc->max_cards/*MAX_NUM_CARDS*/; x++) {
 		if (wc->cardflag & (1 << x))
-	dahdi_ec_chunk(wc->chans[x], wc->chans[x]->readchunk, wc->chans[x]->writechunk);
+			dahdi_ec_chunk(wc->chans[x], wc->chans[x]->readchunk, wc->chans[x]->writechunk);
 	}
 	dahdi_receive(&wc->span);
 }
@@ -979,7 +991,8 @@ static inline void wctdm_proslic_recheck_sanity(struct wctdm *wc, int card)
 	int res;
 	/* Check loopback */
 	res = wc->reg1shadow[card];
-   if (!res && (res != wc->mod[card].fxs.lasttxhook))     // read real state from register   By wx
+	
+	if (!res && (res != wc->mod[card].fxs.lasttxhook))     // read real state from register   By wx
 		res=wctdm_getreg(wc, card, 64);
 	
 	if (!res && (res != wc->mod[card].fxs.lasttxhook)) {
@@ -1000,74 +1013,84 @@ static inline void wctdm_proslic_recheck_sanity(struct wctdm *wc, int card)
 		}
 	}
 }
-
 static inline void wctdm_voicedaa_check_hook(struct wctdm *wc, int card)
 {
+#define MS_PER_CHECK_HOOK 16
+
 #ifndef AUDIO_RINGCHECK
 	unsigned char res;
 #endif	
 	signed char b;
-	int poopy = 0;
+	int errors = 0;
+	struct fxo *fxo = &wc->mod[card].fxo;
+
 	/* Try to track issues that plague slot one FXO's */
 	b = wc->reg0shadow[card];
 	if ((b & 0x2) || !(b & 0x8)) {
 		/* Not good -- don't look at anything else */
 		if (debug)
-			printk(KERN_DEBUG "Poopy (%02x) on card %d!\n", b, card + 1); 
-		poopy++;
+			printk(KERN_DEBUG "Error (%02x) on card %d!\n", b, card + 1); 
+		errors++;
 	}
 	b &= 0x9b;
-	if (wc->mod[card].fxo.offhook) {
+	if (fxo->offhook) {
 		if (b != 0x9)
 			wctdm_setreg(wc, card, 5, 0x9);
 	} else {
 		if (b != 0x8)
 			wctdm_setreg(wc, card, 5, 0x8);
 	}
-	if (poopy)
+	if (errors)
 		return;
-#ifndef AUDIO_RINGCHECK
-	if (!wc->mod[card].fxo.offhook) {
-		if(fixedtimepolarity)
-		if ( wc->cid_state[card] == CID_STATE_RING_ON && wc->cid_ring_on_time[card]>0)
-				if(wc->cid_ring_on_time[card]>=fixedtimepolarity )
-				{
-					dahdi_qevent_lock(&wc->chans[card], DAHDI_EVENT_POLARITY);
-					wc->cid_ring_on_time[card] = -1;	/* the polarity already sent */	
-				}
-				else
-					wc->cid_ring_on_time[card] += 16;
+	if (!fxo->offhook) {
+ if(fixedtimepolarity) {
+			if ( wc->cid_state[card] == CID_STATE_RING_ON && wc->cid_ring_on_time[card]>0)
+			{
+ 	if(wc->cid_ring_on_time[card]>=fixedtimepolarity )
+			{
+			dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
+			wc->cid_ring_on_time[card] = -1;	/* the polarity already sent */	
+			}
+			else
+		wc->cid_ring_on_time[card] += 16;
+    }
+}
 		if (fwringdetect) {
 			res = wc->reg0shadow[card] & 0x60;
-			if (wc->mod[card].fxo.ringdebounce--) {
-				if (res && (res != wc->mod[card].fxo.lastrdtx) && (wc->mod[card].fxo.battery ==1)) {
-				if (!wc->mod[card].fxo.wasringing) {
-						wc->mod[card].fxo.wasringing = 1;
+			if (fxo->ringdebounce) {
+				--fxo->ringdebounce;
+				if (res && (res != fxo->lastrdtx) &&
+				    (fxo->battery == BATTERY_PRESENT)) {
+					if (!fxo->wasringing) {
+						fxo->wasringing = 1;
 						if (debug)
-							printk(KERN_DEBUG "RING on %d/%d!\n", wc->span.spanno, card + 1);
-						if(cidbeforering)
+          printk(KERN_DEBUG "RING on %d/%d!\n", wc->span.spanno, card + 1);
+	if(cidbeforering)
 						{
 							if(wc->cid_state[card] == CID_STATE_IDLE)
+							{
 								wc->cid_state[card] = CID_STATE_RING_ON;
+								wc->cid_ring_on_time[card] = 16;	/* check every 16ms */
+							}
 							else
 								dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_RING);
 						}
-						else
-							dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_RING);
+						else 							
+        dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_RING);
 					}
-					wc->mod[card].fxo.lastrdtx = res;
-					wc->mod[card].fxo.ringdebounce = 10;
+					fxo->lastrdtx = res;
+					fxo->ringdebounce = 10;
 				} else if (!res) {
-					if ((wc->mod[card].fxo.ringdebounce == 0) && wc->mod[card].fxo.wasringing) {
-						wc->mod[card].fxo.wasringing = 0;
-						if (debug)
-							printk(KERN_DEBUG "NO RING on %d/%d!\n", wc->span.spanno, card + 1);
-						if(cidbeforering)
+					if ((fxo->ringdebounce == 0) && fxo->wasringing) {
+				fxo->wasringing = 0;
+				if (debug)
+				printk(KERN_DEBUG "NO RING on %d/%d!\n", wc->span.spanno, card + 1);
+	if(cidbeforering)
 						{
 							if(wc->cid_state[card] == CID_STATE_RING_ON)
 							{
-                  	if(fixedtimepolarity==0)
-								dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
+								if(fixedtimepolarity==0)
+									dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
 								wc->cid_state[card] = CID_STATE_RING_OFF;
 							}
 							else 
@@ -1078,45 +1101,49 @@ static inline void wctdm_voicedaa_check_hook(struct wctdm *wc, int card)
 							}
 						}
 						else
-							dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
-					}
+
+						dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
 				}
-			} else if (res && (wc->mod[card].fxo.battery ==1)) {
-				wc->mod[card].fxo.lastrdtx = res;
-				wc->mod[card].fxo.ringdebounce = 10;
+				}
+			} else if (res && (fxo->battery == BATTERY_PRESENT)) {
+				fxo->lastrdtx = res;
+				fxo->ringdebounce = 10;
 			}
 		} else {
 			res = wc->reg0shadow[card];
-			if ((res & 0x60) && (wc->mod[card].fxo.battery == 1)) {
-				wc->mod[card].fxo.ringdebounce += (DAHDI_CHUNKSIZE * 16);
-				if (wc->mod[card].fxo.ringdebounce >= DAHDI_CHUNKSIZE * ringdebounce) {
-					if (!wc->mod[card].fxo.wasringing) {
-						wc->mod[card].fxo.wasringing = 1;
-						if(cidbeforering)
+			if ((res & 0x60) && (fxo->battery == BATTERY_PRESENT)) {
+				fxo->ringdebounce += (DAHDI_CHUNKSIZE * 16);
+				if (fxo->ringdebounce >= DAHDI_CHUNKSIZE * ringdebounce) {
+					if (!fxo->wasringing) {
+						fxo->wasringing = 1;
+ if(cidbeforering)
 						{
 							if(wc->cid_state[card] == CID_STATE_IDLE)
+							{	
 								wc->cid_state[card] = CID_STATE_RING_ON;
+								wc->cid_ring_on_time[card] = 16;		/* check every 16ms */
+							}
 							else
 								dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_RING);
 						}
-						else
-							dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_RING);
+						else      
+						dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_RING);
 						if (debug)
 							printk(KERN_DEBUG "RING on %d/%d!\n", wc->span.spanno, card + 1);
 					}
-					wc->mod[card].fxo.ringdebounce = DAHDI_CHUNKSIZE * ringdebounce;
+					fxo->ringdebounce = DAHDI_CHUNKSIZE * ringdebounce;
 				}
 			} else {
-				wc->mod[card].fxo.ringdebounce -= DAHDI_CHUNKSIZE * 4;
-				if (wc->mod[card].fxo.ringdebounce <= 0) {
-					if (wc->mod[card].fxo.wasringing) {
-						wc->mod[card].fxo.wasringing = 0;
-						if(cidbeforering)
+				fxo->ringdebounce -= DAHDI_CHUNKSIZE * 4;
+				if (fxo->ringdebounce <= 0) {
+					if (fxo->wasringing) {
+						fxo->wasringing = 0;
+	if(cidbeforering)
 						{
 							if(wc->cid_state[card] == CID_STATE_RING_ON)
 							{
-		                        if(fixedtimepolarity==0)
-								dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
+								if(fixedtimepolarity==0)
+									dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
 								wc->cid_state[card] = CID_STATE_RING_OFF;
 							}
 							else 
@@ -1127,106 +1154,137 @@ static inline void wctdm_voicedaa_check_hook(struct wctdm *wc, int card)
 							}
 						}
 						else
-							dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
+						dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
 						if (debug)
 							printk(KERN_DEBUG "NO RING on %d/%d!\n", wc->span.spanno, card + 1);
 					}
-						wc->mod[card].fxo.ringdebounce = 0;
+					fxo->ringdebounce = 0;
 				}
 			}
 		}
 	}
-#endif
-	b = wc->reg1shadow[card];
-#if 0 
-	{
-		static int count = 0;
-		if (!(count++ % 100)) {
-			printk("Card %d: Voltage: %d  Debounce %d\n", card + 1, 
-			       b, wc->mod[card].fxo.battdebounce);
-		}
-	}
-#endif	
-	if (abs(b) < battthresh) {
-			wc->mod[card].fxo.nobatttimer++;
-#if 0
-		if (wc->mod[card].fxo.battery ==1)
-			printk(KERN_DEBUG "Battery loss: %d (%d debounce)\n", b, wc->mod[card].fxo.battdebounce);
-#endif
-		if (wc->mod[card].fxo.battery && !wc->mod[card].fxo.battdebounce) {
-			if (debug)
-				printk(KERN_DEBUG "NO BATTERY on %d/%d!\n", wc->span.spanno, card + 1);
-			wc->mod[card].fxo.battery =  0;
-#ifdef	JAPAN
-			if ((!wc->ohdebounce) && wc->offhook) {
-				dahdi_hooksig(&wc->chans[card], DAHDI_RXSIG_ONHOOK);
-				if (debug)
-					printk(KERN_DEBUG "Signalled On Hook\n");
-#ifdef	ZERO_BATT_RING
-				wc->onhook++;
-#endif
-			}
-#else
-			dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_ONHOOK);
-			dahdi_alarm_channel(wc->chans[card], DAHDI_ALARM_NONE);
-#endif
-			wc->mod[card].fxo.battdebounce = battdebounce;
-		} else if (!wc->mod[card].fxo.battery)
-			wc->mod[card].fxo.battdebounce = battdebounce;
-	} else if (abs(b) > battthresh) {
-		if ((wc->mod[card].fxo.battery < 1)&& !wc->mod[card].fxo.battdebounce) {
-			if (debug)
-				printk(KERN_DEBUG "BATTERY on %d/%d (%s)!\n", wc->span.spanno, card + 1, 
-					(b < 0) ? "-" : "+");			    
-#ifdef	ZERO_BATT_RING
-			if (wc->onhook) {
-				wc->onhook = 0;
-				dahdi_hooksig(&wc->chans[card], DAHDI_RXSIG_OFFHOOK);
-				if (debug)
-					printk("Signalled Off Hook\n");
-			}
-#else
-			dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
-			dahdi_alarm_channel(wc->chans[card], DAHDI_ALARM_NONE);
-#endif
-			wc->mod[card].fxo.battery = 1;
-			wc->mod[card].fxo.nobatttimer = 0;
-			wc->mod[card].fxo.battdebounce = battdebounce;
-		} else if (wc->mod[card].fxo.battery == 1)
-			wc->mod[card].fxo.battdebounce = battdebounce;
 
-		if (wc->mod[card].fxo.lastpol >= 0) {
-		    if (b < 0) {
-			wc->mod[card].fxo.lastpol = -1;
-			wc->mod[card].fxo.polaritydebounce = POLARITY_DEBOUNCE;
-		    }
-		} 
-		if (wc->mod[card].fxo.lastpol <= 0) {
-		    if (b > 0) {
-			wc->mod[card].fxo.lastpol = 1;
-			wc->mod[card].fxo.polaritydebounce = POLARITY_DEBOUNCE;
-		    }
+	b = wc->reg1shadow[card];
+	if (abs(b) < battthresh) {
+		/* possible existing states:
+		   battery lost, no debounce timer
+		   battery lost, debounce timer (going to battery present)
+		   battery present or unknown, no debounce timer
+		   battery present or unknown, debounce timer (going to battery lost)
+		*/
+
+		if (fxo->battery == BATTERY_LOST) {
+			if (fxo->battdebounce) {
+				/* we were going to BATTERY_PRESENT, but battery was lost again,
+				   so clear the debounce timer */
+				fxo->battdebounce = 0;
+			}
+		} else {
+			if (fxo->battdebounce) {
+				/* going to BATTERY_LOST, see if we are there yet */
+				if (--fxo->battdebounce == 0) {
+					fxo->battery = BATTERY_LOST;
+					if (debug)
+						printk(KERN_DEBUG "NO BATTERY on %d/%d!\n", wc->span.spanno, card + 1);
+#ifdef	JAPAN
+					if (!wc->ohdebounce && wc->offhook) {
+						dahdi_hooksig(&wc->chans[card], DAHDI_RXSIG_ONHOOK);
+						if (debug)
+							printk(KERN_DEBUG "Signalled On Hook\n");
+#ifdef	ZERO_BATT_RING
+						wc->onhook++;
+#endif
+					}
+#else
+					dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_ONHOOK);
+					/* set the alarm timer, taking into account that part of its time
+					   period has already passed while debouncing occurred */
+					fxo->battalarm = (battalarm - battdebounce) / MS_PER_CHECK_HOOK;
+#endif
+				}
+			} else {
+				/* start the debounce timer to verify that battery has been lost */
+				fxo->battdebounce = battdebounce / MS_PER_CHECK_HOOK;
+			}
 		}
 	} else {
-		/* It's something else... */
-		wc->mod[card].fxo.battdebounce = battdebounce;
+		/* possible existing states:
+		   battery lost or unknown, no debounce timer
+		   battery lost or unknown, debounce timer (going to battery present)
+		   battery present, no debounce timer
+		   battery present, debounce timer (going to battery lost)
+		*/
+
+		if (fxo->battery == BATTERY_PRESENT) {
+			if (fxo->battdebounce) {
+				/* we were going to BATTERY_LOST, but battery appeared again,
+				   so clear the debounce timer */
+				fxo->battdebounce = 0;
+			}
+		} else {
+			if (fxo->battdebounce) {
+				/* going to BATTERY_PRESENT, see if we are there yet */
+				if (--fxo->battdebounce == 0) {
+					fxo->battery = BATTERY_PRESENT;
+					if (debug)
+						printk(KERN_DEBUG "BATTERY on %d/%d (%s)!\n", wc->span.spanno, card + 1, 
+						       (b < 0) ? "-" : "+");			    
+#ifdef	ZERO_BATT_RING
+					if (wc->onhook) {
+						wc->onhook = 0;
+						dahdi_hooksig(&wc->chans[card], DAHDI_RXSIG_OFFHOOK);
+						if (debug)
+							printk(KERN_DEBUG "Signalled Off Hook\n");
+					}
+#else
+					dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
+#endif
+					/* set the alarm timer, taking into account that part of its time
+					   period has already passed while debouncing occurred */
+					fxo->battalarm = (battalarm - battdebounce) / MS_PER_CHECK_HOOK;
+				}
+			} else {
+				/* start the debounce timer to verify that battery has appeared */
+				fxo->battdebounce = battdebounce / MS_PER_CHECK_HOOK;
+			}
+		}
 	}
-	if (wc->mod[card].fxo.battdebounce)
-		wc->mod[card].fxo.battdebounce--;
-	if (wc->mod[card].fxo.polaritydebounce) {
-	        wc->mod[card].fxo.polaritydebounce--;
-		if (wc->mod[card].fxo.polaritydebounce < 1) {
-		    if (wc->mod[card].fxo.lastpol != wc->mod[card].fxo.polarity) {
+
+	if (fxo->lastpol >= 0) {
+		if (b < 0) {
+			fxo->lastpol = -1;
+			fxo->polaritydebounce = POLARITY_DEBOUNCE / MS_PER_CHECK_HOOK;
+		}
+	} 
+	if (fxo->lastpol <= 0) {
+		if (b > 0) {
+			fxo->lastpol = 1;
+			fxo->polaritydebounce = POLARITY_DEBOUNCE / MS_PER_CHECK_HOOK;
+		}
+	}
+
+	if (fxo->battalarm) {
+		if (--fxo->battalarm == 0) {
+			/* the alarm timer has expired, so update the battery alarm state
+			   for this channel */
+			dahdi_alarm_channel(wc->chans[card], fxo->battery == BATTERY_LOST ? DAHDI_ALARM_RED : DAHDI_ALARM_NONE);
+		}
+	}
+
+	if (fxo->polaritydebounce) {
+		if (--fxo->polaritydebounce == 0) {
+		    if (fxo->lastpol != fxo->polarity) {
 				if (debug)
 					printk(KERN_DEBUG "%lu Polarity reversed (%d -> %d)\n", jiffies, 
-				       wc->mod[card].fxo.polarity, 
-				       wc->mod[card].fxo.lastpol);
-				if (wc->mod[card].fxo.polarity)
-				    dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
-					wc->mod[card].fxo.polarity = 	wc->mod[card].fxo.lastpol;
+				       fxo->polarity, 
+				       fxo->lastpol);
+				if (fxo->polarity)
+					dahdi_qevent_lock(wc->chans[card], DAHDI_EVENT_POLARITY);
+				fxo->polarity = fxo->lastpol;
 		    }
 		}
 	}
+#undef MS_PER_CHECK_HOOK
 }
 
 static inline void wctdm_proslic_check_hook(struct wctdm *wc, int card)
@@ -1241,7 +1299,8 @@ static inline void wctdm_proslic_check_hook(struct wctdm *wc, int card)
 	hook = (res & 1);
 	if (hook != wc->mod[card].fxs.lastrxhook) {
 		/* Reset the debounce (must be multiple of 4ms) */
-		wc->mod[card].fxs.debounce = 8 * (4 * 8);
+		wc->mod[card].fxs.debounce = dialdebounce * 4;
+
 #if 0
 		printk(KERN_DEBUG "Resetting debounce card %d hook %d, %d\n", card, hook, wc->mod[card].fxs.debounce);
 #endif
@@ -1262,7 +1321,7 @@ static inline void wctdm_proslic_check_hook(struct wctdm *wc, int card)
 #if 1
 				if (debug)
 #endif				
-				printk(KERN_DEBUG "opvxa1200: Card %d Going off hook\n", card);
+					printk(KERN_DEBUG "opvxa1200: Card %d Going off hook\n", card);
 				dahdi_hooksig(wc->chans[card], DAHDI_RXSIG_OFFHOOK);
 				if (robust)
 					wctdm_init_proslic(wc, card, 1, 0, 1);
@@ -1293,22 +1352,18 @@ DAHDI_IRQ_HANDLER(wctdm_interrupt)
 
 	if (!ints)
 		return IRQ_NONE;
-		
 
 	outb(ints, wc->ioaddr + WC_INTSTAT);
 	
 	if (ints & 0x10) {
 		/* Stop DMA, wait for watchdog */
-		printk(KERN_DEBUG "TDM PCI Master abort\n");
+		printk(KERN_INFO "TDM PCI Master abort\n");
 		wctdm_stop_dma(wc);
-
 		return IRQ_RETVAL(1);
-	
 	}
 	
 	if (ints & 0x20) {
-		printk(KERN_DEBUG "PCI Target abort\n");
-
+		printk(KERN_INFO "PCI Target abort\n");
 		return IRQ_RETVAL(1);
 	}
 
@@ -1378,7 +1433,7 @@ DAHDI_IRQ_HANDLER(wctdm_interrupt)
 						wctdm_proslic_check_hook(wc, x);
 						if (!(wc->intcount & 0xf0))
 							wctdm_proslic_recheck_sanity(wc, x);
-						} else if (wc->modtype[x] == MOD_TYPE_FXO) {
+					} else if (wc->modtype[x] == MOD_TYPE_FXO) {
 						wctdm_voicedaa_check_hook(wc, x);
 					}
 					break;
@@ -1396,7 +1451,9 @@ DAHDI_IRQ_HANDLER(wctdm_interrupt)
 		wctdm_receiveprep(wc, ints);
 		wctdm_transmitprep(wc, ints);
 	}
+
 	return IRQ_RETVAL(1);
+
 }
 
 static int wctdm_voicedaa_insane(struct wctdm *wc, int card)
@@ -1431,7 +1488,7 @@ static int wctdm_proslic_insane(struct wctdm *wc, int card)
 		return -1;
 	}
 	if ((blah & 0xf) < 2) {
-		printk(KERN_DEBUG "ProSLIC 3210 version %d is too old\n", blah & 0xf);
+		printk(KERN_NOTICE "ProSLIC 3210 version %d is too old\n", blah & 0xf);
 		return -1;
 	}
 	if (wctdm_getreg(wc, card, 1) & 0x80)
@@ -1440,24 +1497,24 @@ static int wctdm_proslic_insane(struct wctdm *wc, int card)
 	
 	blah = wctdm_getreg(wc, card, 8);
 	if (blah != 0x2) {
-		printk(KERN_DEBUG "ProSLIC on module %d insane (1) %d should be 2\n", card, blah);
+		printk(KERN_NOTICE  "ProSLIC on module %d insane (1) %d should be 2\n", card, blah);
 		return -1;
 	} else if ( insane_report)
-		printk(KERN_DEBUG "ProSLIC on module %d Reg 8 Reads %d Expected is 0x2\n",card,blah);
+		printk(KERN_NOTICE  "ProSLIC on module %d Reg 8 Reads %d Expected is 0x2\n",card,blah);
 
 	blah = wctdm_getreg(wc, card, 64);
 	if (blah != 0x0) {
-		printk(KERN_DEBUG "ProSLIC on module %d insane (2)\n", card);
+		printk(KERN_NOTICE  "ProSLIC on module %d insane (2)\n", card);
 		return -1;
 	} else if ( insane_report)
-		printk(KERN_DEBUG "ProSLIC on module %d Reg 64 Reads %d Expected is 0x0\n",card,blah);
+		printk(KERN_NOTICE  "ProSLIC on module %d Reg 64 Reads %d Expected is 0x0\n",card,blah);
 
 	blah = wctdm_getreg(wc, card, 11);
 	if (blah != 0x33) {
-		printk(KERN_DEBUG "ProSLIC on module %d insane (3)\n", card);
+		printk(KERN_NOTICE  "ProSLIC on module %d insane (3)\n", card);
 		return -1;
 	} else if ( insane_report)
-		printk(KERN_DEBUG "ProSLIC on module %d Reg 11 Reads %d Expected is 0x33\n",card,blah);
+		printk(KERN_NOTICE  "ProSLIC on module %d Reg 11 Reads %d Expected is 0x33\n",card,blah);
 
 	/* Just be sure it's setup right. */
 	wctdm_setreg(wc, card, 30, 0);
@@ -1483,15 +1540,15 @@ static int wctdm_proslic_powerleak_test(struct wctdm *wc, int card)
 
 	while((vbat = wctdm_getreg(wc, card, 82)) > 0x6) {
 		if ((jiffies - origjiffies) >= (HZ/2))
-			break;;
+			break;
 	}
 
 	if (vbat < 0x06) {
-		printk(KERN_DEBUG "Excessive leakage detected on module %d: %d volts (%02x) after %d ms\n", card,
+		printk(KERN_NOTICE "Excessive leakage detected on module %d: %d volts (%02x) after %d ms\n", card,
 		       376 * vbat / 1000, vbat, (int)((jiffies - origjiffies) * 1000 / HZ));
 		return -1;
 	} else if (debug) {
-		printk(KERN_DEBUG "Post-leakage voltage: %d volts\n", 376 * vbat / 1000);
+		printk(KERN_NOTICE "Post-leakage voltage: %d volts\n", 376 * vbat / 1000);
 	}
 	return 0;
 }
@@ -1524,7 +1581,7 @@ static int wctdm_powerup_proslic(struct wctdm *wc, int card, int fast)
 
 	if (vbat < 0xc0) {
 		if (wc->proslic_power == PROSLIC_POWER_UNKNOWN)
-				 printk(KERN_DEBUG "ProSLIC on module %d failed to powerup within %d ms (%d mV only)\n\n -- DID YOU REMEMBER TO PLUG IN THE HD POWER CABLE TO THE A1200P??\n",
+				 printk(KERN_NOTICE "ProSLIC on module %d failed to powerup within %d ms (%d mV only)\n\n -- DID YOU REMEMBER TO PLUG IN THE HD POWER CABLE TO THE A1200P??\n",
 					card, (int)(((jiffies - origjiffies) * 1000 / HZ)),
 					vbat * 375);
 		wc->proslic_power = PROSLIC_POWER_WARNED;
@@ -1660,7 +1717,7 @@ static int wctdm_proslic_calibrate(struct wctdm *wc, int card)
 	origjiffies = jiffies;
 	while(wctdm_getreg(wc, card, 96)) {
 		if ((jiffies - origjiffies) > 2 * HZ) {
-			printk(KERN_DEBUG "Timeout waiting for calibration of module %d\n", card);
+			printk(KERN_NOTICE "Timeout waiting for calibration of module %d\n", card);
 			return -1;
 		}
 	}
@@ -1694,7 +1751,7 @@ static void wait_just_a_bit(int foo)
 static int wctdm_set_hwgain(struct wctdm *wc, int card, __s32 gain, __u32 tx)
 {
 	if (!(wc->modtype[card] == MOD_TYPE_FXO)) {
-		printk(KERN_DEBUG "Cannot adjust gain.  Unsupported module type!\n");
+		printk(KERN_NOTICE "Cannot adjust gain.  Unsupported module type!\n");
 		return -1;
 	}
 	if (tx) {
@@ -1707,7 +1764,7 @@ static int wctdm_set_hwgain(struct wctdm *wc, int card, __s32 gain, __u32 tx)
 			wctdm_setreg(wc, card, 38, gain/10);
 			wctdm_setreg(wc, card, 40, (gain%10));
 		} else {
-			printk(KERN_DEBUG "FXO tx gain is out of range (%d)\n", gain);
+			printk(KERN_INFO "FXO tx gain is out of range (%d)\n", gain);
 			return -1;
 		}
 	} else { /* rx */
@@ -1720,7 +1777,7 @@ static int wctdm_set_hwgain(struct wctdm *wc, int card, __s32 gain, __u32 tx)
 			wctdm_setreg(wc, card, 39, gain/10);
 			wctdm_setreg(wc, card, 41, (gain%10));
 		} else {
-			printk(KERN_DEBUG "FXO rx gain is out of range (%d)\n", gain);
+			printk(KERN_INFO "FXO rx gain is out of range (%d)\n", gain);
 			return -1;
 		}
 	}
@@ -1773,7 +1830,7 @@ static int wctdm_init_voicedaa(struct wctdm *wc, int card, int fast, int manual,
 	reg26 |= (fxo_modes[_opermode].ilim << 1);
 	wctdm_setreg(wc, card, 26, reg26);
 
-	/* Set AC Impedence */
+	/* Set AC Impedence */ 
 	reg30 = (fxofullscale==1) ? (fxo_modes[_opermode].acim|0x10) :  (fxo_modes[_opermode].acim);
 	wctdm_setreg(wc, card, 30, reg30);
 
@@ -1806,7 +1863,7 @@ static int wctdm_init_voicedaa(struct wctdm *wc, int card, int fast, int manual,
 		wait_just_a_bit(HZ/10);
 
 	if (!(wctdm_getreg(wc, card, 11) & 0xf0)) {
-		printk(KERN_DEBUG "VoiceDAA did not bring up ISO link properly!\n");
+		printk(KERN_NOTICE "VoiceDAA did not bring up ISO link properly!\n");
 		return -1;
 	}
 	if (debug)
@@ -1822,17 +1879,14 @@ static int wctdm_init_voicedaa(struct wctdm *wc, int card, int fast, int manual,
 
 	/* NZ -- crank the tx gain up by 7 dB */
 	if (!strcmp(fxo_modes[_opermode].name, "NEWZEALAND")) {
-		printk(KERN_DEBUG "Adjusting gain\n");
+		printk(KERN_INFO "Adjusting gain\n");
 		wctdm_set_hwgain(wc, card, 7, 1);
 	}
 
 	if(debug)
 		printk(KERN_DEBUG "DEBUG fxotxgain:%i.%i fxorxgain:%i.%i\n", (wctdm_getreg(wc, card, 38)/16)?-(wctdm_getreg(wc, card, 38) - 16) : wctdm_getreg(wc, card, 38), (wctdm_getreg(wc, card, 40)/16)? -(wctdm_getreg(wc, card, 40) - 16):wctdm_getreg(wc, card, 40), (wctdm_getreg(wc, card, 39)/16)? -(wctdm_getreg(wc, card, 39) - 16) : wctdm_getreg(wc, card, 39),(wctdm_getreg(wc, card, 41)/16)?-(wctdm_getreg(wc, card, 41) - 16):wctdm_getreg(wc, card, 41));
 
-	/* battery state still unknown */
-	wc->mod[card].fxo.battery = -1;
-
-	return 0;
+    return 0;
 		
 }
 
@@ -1909,7 +1963,7 @@ static int wctdm_init_proslic(struct wctdm *wc, int card, int fast, int manual, 
 		/* Perform calibration */
 		if(manual) {
 			if (wctdm_proslic_manual_calibrate(wc, card)) {
-				//printk("Proslic failed on Manual Calibration\n");
+				//printk(KERN_NOTICE "Proslic failed on Manual Calibration\n");
 				if (wctdm_proslic_manual_calibrate(wc, card)) {
 					printk(KERN_NOTICE "Proslic Failed on Second Attempt to Calibrate Manually. (Try -DNO_CALIBRATION in Makefile)\n");
 					return -1;
@@ -1919,7 +1973,7 @@ static int wctdm_init_proslic(struct wctdm *wc, int card, int fast, int manual, 
 		}
 		else {
 			if(wctdm_proslic_calibrate(wc, card))  {
-				//printk("ProSlic died on Auto Calibration.\n");
+				//printk(KERN_NOTICE "ProSlic died on Auto Calibration.\n");
 				if (wctdm_proslic_calibrate(wc, card)) {
 					printk(KERN_NOTICE "Proslic Failed on Second Attempt to Auto Calibrate\n");
 					return -1;
@@ -2016,24 +2070,24 @@ static int wctdm_init_proslic(struct wctdm *wc, int card, int fast, int manual, 
 			wctdm_setreg(wc, card, 74, 0x3f);
 			if (wctdm_proslic_setreg_indirect(wc, card, 21, 0x247)) 
 				return -1;
-			printk(KERN_INFO "Boosting fast ringer on slot %d (89V peak)\n", card + 1);
+			printk(KERN_INFO  "Boosting fast ringer on slot %d (89V peak)\n", card + 1);
 		} else if (lowpower) {
 			if (wctdm_proslic_setreg_indirect(wc, card, 21, 0x14b)) 
 				return -1;
-			printk(KERN_INFO "Reducing fast ring power on slot %d (50V peak)\n", card + 1);
+			printk(KERN_INFO  "Reducing fast ring power on slot %d (50V peak)\n", card + 1);
 		} else
-			printk(KERN_INFO "Speeding up ringer on slot %d (25Hz)\n", card + 1);
+			printk(KERN_INFO  "Speeding up ringer on slot %d (25Hz)\n", card + 1);
 	} else {
 		/* Beef up Ringing voltage to 89V */
 		if (boostringer) {
 			wctdm_setreg(wc, card, 74, 0x3f);
 			if (wctdm_proslic_setreg_indirect(wc, card, 21, 0x1d1)) 
 				return -1;
-			printk(KERN_INFO "Boosting ringer on slot %d (89V peak)\n", card + 1);
+			printk(KERN_INFO  "Boosting ringer on slot %d (89V peak)\n", card + 1);
 		} else if (lowpower) {
 			if (wctdm_proslic_setreg_indirect(wc, card, 21, 0x108)) 
 				return -1;
-			printk(KERN_INFO "Reducing ring power on slot %d (50V peak)\n", card + 1);
+			printk(KERN_INFO  "Reducing ring power on slot %d (50V peak)\n", card + 1);
 		}
 	}
 
@@ -2086,7 +2140,7 @@ static int wctdm_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long 
 	case DAHDI_ONHOOKTRANSFER:
 		if (wc->modtype[chan->chanpos - 1] != MOD_TYPE_FXS)
 			return -EINVAL;
-		if (get_user(x, (int *)data))
+		if (get_user(x, (__user  int *)data))
 			return -EFAULT;
 		wc->mod[chan->chanpos - 1].fxs.ohttimer = x << 3;
 		if (reversepolarity)
@@ -2103,7 +2157,7 @@ static int wctdm_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long 
 		}
 		break;
 	case DAHDI_SETPOLARITY:
-		if (get_user(x, (int *)data))
+		if (get_user(x, (__user int *)data))
 			return -EFAULT;
 		if (wc->modtype[chan->chanpos - 1] != MOD_TYPE_FXS)
 			return -EINVAL;
@@ -2129,7 +2183,7 @@ static int wctdm_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long 
 			stats.batvolt = (signed char)wctdm_getreg(wc, chan->chanpos - 1, 29) * 1000;
 		} else 
 			return -EINVAL;
-		if (copy_to_user((struct wctdm_stats *)data, &stats, sizeof(stats)))
+		if (copy_to_user((__user void *)data, &stats, sizeof(stats)))
 			return -EFAULT;
 		break;
 	case WCTDM_GET_REGS:
@@ -2143,26 +2197,26 @@ static int wctdm_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long 
 			for (x=0;x<NUM_FXO_REGS;x++)
 				regs.direct[x] = wctdm_getreg(wc, chan->chanpos - 1, x);
 		}
-		if (copy_to_user((struct wctdm_regs *)data, &regs, sizeof(regs)))
+		if (copy_to_user((__user void *)data, &regs, sizeof(regs)))
 			return -EFAULT;
 		break;
 	case WCTDM_SET_REG:
-		if (copy_from_user(&regop, (struct wctdm_regop *)data, sizeof(regop)))
+		if (copy_from_user(&regop, (__user void *)data, sizeof(regop)))
 			return -EFAULT;
 		if (regop.indirect) {
 			if (wc->modtype[chan->chanpos - 1] != MOD_TYPE_FXS)
 				return -EINVAL;
-			printk(KERN_INFO "Setting indirect %d to 0x%04x on %d\n", regop.reg, regop.val, chan->chanpos);
+			printk(KERN_INFO  "Setting indirect %d to 0x%04x on %d\n", regop.reg, regop.val, chan->chanpos);
 			wctdm_proslic_setreg_indirect(wc, chan->chanpos - 1, regop.reg, regop.val);
 		} else {
 			regop.val &= 0xff;
-			printk(KERN_INFO "Setting direct %d to %04x on %d\n", regop.reg, regop.val, chan->chanpos);
+			printk(KERN_INFO  "Setting direct %d to %04x on %d\n", regop.reg, regop.val, chan->chanpos);
 			wctdm_setreg(wc, chan->chanpos - 1, regop.reg, regop.val);
 		}
 		break;
 	case WCTDM_SET_ECHOTUNE:
-		printk(KERN_INFO "-- Setting echo registers: \n");
-		if (copy_from_user(&echoregs, (struct wctdm_echo_coefs*)data, sizeof(echoregs)))
+		printk(KERN_INFO  "-- Setting echo registers: \n");
+		if (copy_from_user(&echoregs, (__user void *)data, sizeof(echoregs)))
 			return -EFAULT;
 
 		if (wc->modtype[chan->chanpos - 1] == MOD_TYPE_FXO) {
@@ -2179,7 +2233,7 @@ static int wctdm_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long 
 			wctdm_setreg(wc, chan->chanpos - 1, 51, echoregs.coef7);
 			wctdm_setreg(wc, chan->chanpos - 1, 52, echoregs.coef8);
 
-			printk(KERN_INFO "-- Set echo registers successfully\n");
+			printk(KERN_INFO  "-- Set echo registers successfully\n");
 
 			break;
 		} else {
@@ -2188,7 +2242,7 @@ static int wctdm_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long 
 		}
 		break;
 	case DAHDI_SET_HWGAIN:
-		if (copy_from_user(&hwgain, (struct dahdi_hwgain*) data, sizeof(hwgain)))
+		if (copy_from_user(&hwgain, (__user void *) data, sizeof(hwgain)))
 			return -EFAULT;
 
 		wctdm_set_hwgain(wc, chan->chanpos-1, hwgain.newgain, hwgain.tx);
@@ -2212,14 +2266,21 @@ static int wctdm_open(struct dahdi_chan *chan)
 	if (wc->dead)
 		return -ENODEV;
 	wc->usecount++;
+
+	/*MOD_INC_USE_COUNT; */
 	try_module_get(THIS_MODULE);
 	return 0;
+}
+
+static inline struct wctdm *wctdm_from_span(struct dahdi_span *span)
+{
+	return container_of(span, struct wctdm, span);
 }
 
 static int wctdm_watchdog(struct dahdi_span *span, int event)
 {
 	printk(KERN_INFO "opvxa1200: Restarting DMA\n");
-	wctdm_restart_dma(span->pvt);
+	wctdm_restart_dma(wctdm_from_span(span));
 	return 0;
 }
 
@@ -2227,7 +2288,10 @@ static int wctdm_close(struct dahdi_chan *chan)
 {
 	struct wctdm *wc = chan->pvt;
 	wc->usecount--;
-    module_put(THIS_MODULE);
+
+	/*MOD_DEC_USE_COUNT;*/
+	module_put(THIS_MODULE);
+
 	if (wc->modtype[chan->chanpos - 1] == MOD_TYPE_FXS) {
 		if (reversepolarity)
 			wc->mod[chan->chanpos - 1].fxs.idletxhookstate = 5;
@@ -2300,7 +2364,7 @@ static int wctdm_hooksig(struct dahdi_chan *chan, enum dahdi_txsig txsig)
 			printk(KERN_NOTICE "opvxa1200: Can't set tx state to %d\n", txsig);
 		}
 		if (debug)
-			printk(KERN_NOTICE "Setting FXS hook state to %d (%02x)\n", txsig, reg);
+			printk(KERN_DEBUG "Setting FXS hook state to %d (%02x)\n", txsig, reg);
 
 #if 1
 		wctdm_setreg(wc, chan->chanpos - 1, 64, wc->mod[chan->chanpos-1].fxs.lasttxhook);
@@ -2308,6 +2372,17 @@ static int wctdm_hooksig(struct dahdi_chan *chan, enum dahdi_txsig txsig)
 	}
 	return 0;
 }
+
+#ifdef DAHDI_SPAN_OPS
+static const struct dahdi_span_ops wctdm_span_ops = {
+	.owner = THIS_MODULE,
+	.hooksig = wctdm_hooksig,
+	.open = wctdm_open,
+	.close = wctdm_close,
+	.ioctl = wctdm_ioctl,
+	.watchdog = wctdm_watchdog,
+};
+#endif
 
 static int wctdm_initialize(struct wctdm *wc)
 {
@@ -2319,7 +2394,7 @@ static int wctdm_initialize(struct wctdm *wc)
 	snprintf(wc->span.location, sizeof(wc->span.location) - 1,
 		 "PCI Bus %02d Slot %02d", wc->dev->bus->number, PCI_SLOT(wc->dev->devfn) + 1);
 	wc->span.manufacturer = "OpenVox";
-	strncpy(wc->span.devicetype, wc->variety, sizeof(wc->span.devicetype)-1);
+	dahdi_copy_string(wc->span.devicetype, wc->variety, sizeof(wc->span.devicetype));
 	if (alawoverride) {
 		printk(KERN_INFO "ALAW override parameter detected.  Device will be operating in ALAW\n");
 		wc->span.deflaw = DAHDI_LAW_ALAW;
@@ -2339,27 +2414,36 @@ static int wctdm_initialize(struct wctdm *wc)
 		wc->max_cards = 12;
 	}
 		
-	for (x = 0; x < wc->max_cards ; x++) {
-	 sprintf(wc->chans[x]->name, "OPVXA1200/%d", wc->pos);
+	for (x = 0; x < wc->max_cards/*MAX_NUM_CARDS*/; x++) {
+		sprintf(wc->chans[x]->name, "OPVXA1200/%d/%d", wc->pos, x);
 		wc->chans[x]->sigcap = DAHDI_SIG_FXOKS | DAHDI_SIG_FXOLS | DAHDI_SIG_FXOGS | DAHDI_SIG_SF | DAHDI_SIG_EM | DAHDI_SIG_CLEAR;
 		wc->chans[x]->sigcap |= DAHDI_SIG_FXSKS | DAHDI_SIG_FXSLS | DAHDI_SIG_SF | DAHDI_SIG_CLEAR;
 		wc->chans[x]->chanpos = x+1;
 		wc->chans[x]->pvt = wc;
 	}
+
+#ifdef DAHDI_SPAN_MODULE	
+		wc->span.owner = THIS_MODULE;
+#endif
+
+#ifdef DAHDI_SPAN_OPS
+	wc->span.ops = &wctdm_span_ops;
+#else
+		wc->span.hooksig = wctdm_hooksig,
+		wc->span.watchdog = wctdm_watchdog,
+		wc->span.open = wctdm_open;
+		wc->span.close  = wctdm_close;
+		wc->span.ioctl = wctdm_ioctl;
+		wc->span.pvt = wc;
+#endif
 	wc->span.chans = wc->chans;
 	wc->span.channels = wc->max_cards;	/*MAX_NUM_CARDS;*/
-	wc->span.hooksig = wctdm_hooksig;
 	wc->span.irq = wc->dev->irq;
-	wc->span.open = wctdm_open;
-	wc->span.close = wctdm_close;
 	wc->span.flags = DAHDI_FLAG_RBS;
-	wc->span.ioctl = wctdm_ioctl;
-	wc->span.watchdog = wctdm_watchdog;
 	init_waitqueue_head(&wc->span.maintq);
 
-	wc->span.pvt = wc;
 	if (dahdi_register(&wc->span, 0)) {
-		printk(KERN_NOTICE "Unable to register span with dahdi\n");
+		printk(KERN_NOTICE "Unable to register span with Dahdi\n");
 		return -1;
 	}
 	return 0;
@@ -2388,14 +2472,14 @@ static int wctdm_hardware_init(struct wctdm *wc)
 	unsigned char ver;
 	unsigned char x,y;
 	int failed;
-	//long origjiffies; //ml.
+	long origjiffies; //ml.
 	
 	/* Signal Reset */
-	//printk("before raise reset\n");
+	printk("before raise reset\n");
 	outb(0x01, wc->ioaddr + WC_CNTL);
 
-	/* Wait for 2 second */
-	/*
+	/* Wait for 5 second */
+	
 	origjiffies = jiffies;
 
 	while(1) 
@@ -2404,13 +2488,13 @@ static int wctdm_hardware_init(struct wctdm *wc)
 			break;;
 	}
 
-	printk("after raise reset\n");*/
+	/* printk(KERN_INFO "after raise reset\n");*/
 
 	/* Check OpenVox chip */
 	x=inb(wc->ioaddr + WC_CNTL);
 	ver = __wctdm_getcreg(wc, WC_VER);
 	wc->fwversion = ver;
-	/* if( ver & FLAG_A800)
+	/*if( ver & FLAG_A800)
 	{
 		wc->card_name = A800P_Name;
 		wc->max_cards = 8;
@@ -2419,8 +2503,8 @@ static int wctdm_hardware_init(struct wctdm *wc)
 	{
 		wc->card_name = A1200P_Name;
 		wc->max_cards = 12;
-	} */
-	printk(KERN_INFO "OpenVox %s version: %01x.%01x\n", wc->card_name, (ver&(~FLAG_A800))>>4, ver&0x0f);
+	}*/
+	printk(KERN_NOTICE "OpenVox %s version: %01x.%01x\n", wc->card_name, (ver&(~FLAG_A800))>>4, ver&0x0f);
 	
 	failed = 0;
 	if (ver != 0x00) {
@@ -2437,7 +2521,7 @@ static int wctdm_hardware_init(struct wctdm *wc)
 		if (!failed) {
 			printk(KERN_INFO "OpenVox %s passed register test\n", wc->card_name);
 		} else {
-			printk(KERN_INFO "OpenVox %s failed register test\n", wc->card_name);
+			printk(KERN_NOTICE "OpenVox %s failed register test\n", wc->card_name);
 			return -1;
 		}
 	} else {
@@ -2497,13 +2581,13 @@ static int wctdm_hardware_init(struct wctdm *wc)
 	for (x = 0; x < wc->max_cards/*MAX_NUM_CARDS*/; x++) {
 		int sane=0,ret=0,readi=0;
 #if 1
-    	touch_softlockup_watchdog(); 
+		touch_softlockup_watchdog();  // avoid showing CPU softlock message
 		/* Init with Auto Calibration */
 		if (!(ret=wctdm_init_proslic(wc, x, 0, 0, sane))) {
 			wc->cardflag |= (1 << x);
                         if (debug) {
                                 readi = wctdm_getreg(wc,x,LOOP_I_LIMIT);
-                                printk(KERN_DEBUG "Proslic module %d loop current is %dmA\n",x,
+                                printk("Proslic module %d loop current is %dmA\n",x,
                                 ((readi*3)+20));
                         }
 			printk(KERN_INFO "Module %d: Installed -- AUTO FXS/DPO\n",x);
@@ -2518,7 +2602,7 @@ static int wctdm_hardware_init(struct wctdm *wc)
 					wc->cardflag |= (1 << x);
                                 if (debug) {
                                         readi = wctdm_getreg(wc,x,LOOP_I_LIMIT);
-                                        printk(KERN_DEBUG "Proslic module %d loop current is %dmA\n",x,
+                                        printk("Proslic module %d loop current is %dmA\n",x,
                                         ((readi*3)+20));
                                 }
 					printk(KERN_INFO "Module %d: Installed -- MANUAL FXS\n",x);
@@ -2621,10 +2705,11 @@ static int __devinit wctdm_init_one(struct pci_dev *pdev, const struct pci_devic
 			
 			ifaces[x] = wc;
 			memset(wc, 0, sizeof(struct wctdm));
-		 	for (x=0; x < sizeof(wc->chans)/sizeof(wc->chans[0]); ++x) {
+			for (x=0; x < sizeof(wc->chans)/sizeof(wc->chans[0]); ++x) {
 				wc->chans[x] = &wc->_chans[x];
-                	}
-		 	spin_lock_init(&wc->lock);
+			}
+
+			spin_lock_init(&wc->lock);
 			wc->curcard = -1;
 			wc->ioaddr = pci_resource_start(pdev, 0);
 			wc->mem_region = pci_resource_start(pdev, 1);
@@ -2683,8 +2768,9 @@ static int __devinit wctdm_init_one(struct pci_dev *pdev, const struct pci_devic
 
 			/* Keep track of which device we are */
 			pci_set_drvdata(pdev, wc);
-			if (request_irq(pdev->irq, wctdm_interrupt, DAHDI_IRQ_SHARED, "opvxa1200", wc)) {
 
+
+			if (request_irq(pdev->irq, wctdm_interrupt, DAHDI_IRQ_SHARED, "opvxa1200", wc)) {
 				printk(KERN_NOTICE "opvxa1200: Unable to request IRQ %d\n", pdev->irq);
 				if (wc->freeregion & 0x01)
 					release_region(wc->ioaddr, 0xff);
@@ -2700,11 +2786,11 @@ static int __devinit wctdm_init_one(struct pci_dev *pdev, const struct pci_devic
 			}
 
 			if (wctdm_hardware_init(wc)) {
-				unsigned char x;
+				unsigned char w;
 
 				/* Set Reset Low */
-				x=inb(wc->ioaddr + WC_CNTL);
-				outb((~0x1)&x, wc->ioaddr + WC_CNTL);
+				w=inb(wc->ioaddr + WC_CNTL);
+				outb((~0x1)&w, wc->ioaddr + WC_CNTL);
 				/* Free Resources */
 				free_irq(pdev->irq, wc);
 				if (wc->freeregion & 0x01)
@@ -2723,10 +2809,10 @@ static int __devinit wctdm_init_one(struct pci_dev *pdev, const struct pci_devic
 			}
 
 #ifdef TEST_LOG_INCOME_VOICE
-			for(i=0; i<MAX_NUM_CARDS+NUM_FLAG; i++)
+			for(x=0; x<MAX_NUM_CARDS+NUM_FLAG; x++)
 			{
-				wc->voc_buf[i] = kmalloc(voc_buffer_size, GFP_KERNEL);
-				wc->voc_ptr[i] = 0;
+				wc->voc_buf[x] = kmalloc(voc_buffer_size, GFP_KERNEL);
+				wc->voc_ptr[x] = 0;
 			}
 #endif
 
@@ -2734,7 +2820,7 @@ static int __devinit wctdm_init_one(struct pci_dev *pdev, const struct pci_devic
 			{		
 				int len = cidbuflen * DAHDI_MAX_CHUNKSIZE;
 				if(debug)
-					printk(KERN_DEBUG "cidbeforering support enabled, length is %d msec\n", cidbuflen);
+					printk("cidbeforering support enabled, length is %d msec\n", cidbuflen);
 				for (x = 0; x < wc->max_cards/*MAX_NUM_CARDS*/; x++) 
 				{
 					wc->cid_history_buf[x] = kmalloc(len, GFP_KERNEL);
@@ -2759,9 +2845,9 @@ static int __devinit wctdm_init_one(struct pci_dev *pdev, const struct pci_devic
 					cardcount++;
 			}
 
-			printk(KERN_INFO "Found a OpenVox %s: Version %01x.%01x (%d modules)\n", wc->card_name, (wc->fwversion&(~FLAG_A800))>>4, wc->fwversion&0x0f, cardcount);
-	if(debug)
-				printk("OpenVox %s debug On\n", wc->card_name);
+			printk(KERN_INFO "Found an OpenVox %s: Version %x.%x (%d modules)\n", wc->card_name, (wc->fwversion&(~FLAG_A800))>>4, wc->fwversion&0x0f, cardcount);
+			if(debug)
+				printk(KERN_DEBUG "OpenVox %s debug On\n", wc->card_name);
 			
 			res = 0;
 		} else
@@ -2796,7 +2882,7 @@ static void wctdm_release(struct wctdm *wc)
 	
 		if (!f || !f->f_op || !f->f_op->read)
 		{
-			printk(KERN_NOTICE "WARNING: File (read) object is a null pointer!!!\n");
+			printk("WARNING: File (read) object is a null pointer!!!\n");
 			continue;
 		}
 	
@@ -2824,7 +2910,7 @@ static void wctdm_release(struct wctdm *wc)
 	}
  
 	kfree(wc);
-	printk(KERN_NOTICE "Freed a OpenVox A1200 card\n");
+	printk(KERN_INFO "Free an OpenVox A1200 card\n");
 }
 
 static void __devexit wctdm_remove_one(struct pci_dev *pdev)
@@ -2868,19 +2954,19 @@ static struct pci_device_id wctdm_pci_tbl[] = {
 	{ 0xe159, 0x0001, 0x9532, PCI_ANY_ID, 0, 0, (unsigned long) &wctdme }, 
 	{ 0xe159, 0x0001, 0x8519, PCI_ANY_ID, 0, 0, (unsigned long) &wctdme },
 	{ 0xe159, 0x0001, 0x9559, PCI_ANY_ID, 0, 0, (unsigned long) &wctdme },
-    { 0xe159, 0x0001, 0x9599, PCI_ANY_ID, 0, 0, (unsigned long) &wctdme },
+	{ 0xe159, 0x0001, 0x9599, PCI_ANY_ID, 0, 0, (unsigned long) &wctdme },
 	{ 0 }
 };
 
 MODULE_DEVICE_TABLE(pci, wctdm_pci_tbl);
 
 static struct pci_driver wctdm_driver = {
-	name: 	"opvxa1200",
-	probe: 	wctdm_init_one,
-	remove:	__devexit_p(wctdm_remove_one),
-	suspend: NULL,
-	resume:	NULL,
-	id_table: wctdm_pci_tbl,
+	.name = "opvxa1200",
+	.probe =	wctdm_init_one,
+	.remove =	__devexit_p(wctdm_remove_one),
+	.suspend = NULL,
+	.resume =	NULL,
+	.id_table = wctdm_pci_tbl,
 };
 
 static int __init wctdm_init(void)
@@ -2896,13 +2982,22 @@ static int __init wctdm_init(void)
 	} else {
 		printk(KERN_NOTICE "Invalid/unknown operating mode '%s' specified.  Please choose one of:\n", opermode);
 		for (x=0;x<sizeof(fxo_modes) / sizeof(fxo_modes[0]); x++)
-			printk(KERN_NOTICE "  %s\n", fxo_modes[x].name);
-		printk(KERN_NOTICE "Note this option is CASE SENSITIVE!\n");
+			printk(KERN_INFO "  %s\n", fxo_modes[x].name);
+		printk(KERN_INFO "Note this option is CASE SENSITIVE!\n");
 		return -ENODEV;
 	}
-	if (!strcmp(fxo_modes[_opermode].name,"AUSTRALIA")) {
+	if (!strcmp(fxo_modes[_opermode].name, "AUSTRALIA")) {
 		boostringer=1;
 		fxshonormode=1;
+}
+	if (battdebounce == 0) {
+		battdebounce = fxo_modes[_opermode].battdebounce;
+	}
+	if (battalarm == 0) {
+		battalarm = fxo_modes[_opermode].battalarm;
+	}
+	if (battthresh == 0) {
+		battthresh = fxo_modes[_opermode].battthresh;
 	}
 
 	res = dahdi_pci_module(&wctdm_driver);
@@ -2915,20 +3010,22 @@ static void __exit wctdm_cleanup(void)
 {
 	pci_unregister_driver(&wctdm_driver);
 }
+
 module_param(debug, int, 0600);
 module_param(loopcurrent, int, 0600);
 module_param(reversepolarity, int, 0600);
 module_param(robust, int, 0600);
-module_param(_opermode, int, 0600);
 module_param(opermode, charp, 0600);
 module_param(timingonly, int, 0600);
 module_param(lowpower, int, 0600);
 module_param(boostringer, int, 0600);
 module_param(fastringer, int, 0600);
 module_param(fxshonormode, int, 0600);
-module_param(battdebounce, int, 0600);
-module_param(battthresh, int, 0600);
+module_param(battdebounce, uint, 0600);
+module_param(battthresh, uint, 0600);
+module_param(battalarm, uint, 0600);
 module_param(ringdebounce, int, 0600);
+module_param(dialdebounce, int, 0600);
 module_param(fwringdetect, int, 0600);
 module_param(alawoverride, int, 0600);
 module_param(fastpickup, int, 0600);
@@ -2943,10 +3040,10 @@ module_param(cidbuflen, int, 0600);
 module_param(cidtimeout, int, 0600);
 module_param(fxofullscale, int, 0600);
 module_param(fixedtimepolarity, int, 0600);
+
 MODULE_DESCRIPTION("OpenVox A1200 Driver");
 MODULE_AUTHOR("MiaoLin <miaolin@openvox.com.cn>");
-#ifdef MODULE_LICENSE
 MODULE_LICENSE("GPL v2");
-#endif
+
 module_init(wctdm_init);
 module_exit(wctdm_cleanup);
