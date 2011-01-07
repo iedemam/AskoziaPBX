@@ -1053,6 +1053,7 @@ load => res_musiconhold.so
 load => res_qstat.so
 load => res_rtp_asterisk.so
 load => res_smdi.so
+load => res_crypto.so
 
 EOD;
 
@@ -1130,7 +1131,7 @@ function asterisk_conf_generate($return=false) {
 astetcdir => /etc/asterisk
 astagidir => /etc/asterisk/agi-bin
 astdbdir => $dbpath
-astkeydir => /etc/asterisk/keys
+astkeydir => /etc/asterisk
 astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
 astlogdir => $astlogpath
