@@ -879,7 +879,8 @@ function extensions_generate_application_extension($a, $from_public=false, $exte
 
 	$exten = ($extension !== false) ? $extension : $a['extension'];
 
-	return "exten => $exten,n,Dial(Local/$\{EXTEN}@" . $a['uniqid'] . "/n)\n";
+	//return "exten => $exten,n,Dial(Local/$\{EXTEN}@" . $a['uniqid'] . "/n)\n";
+	return "exten => $exten,n,Goto(" . $a['uniqid'] . ",$\{EXTEN},1)\n";
 }
 
 function extensions_generate_conference_room_extension($r, $from_public=false, $extension=false) {
