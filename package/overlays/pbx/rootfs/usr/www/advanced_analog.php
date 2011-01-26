@@ -253,7 +253,7 @@ if (!isset($config['system']['regional']['analog']['fxo']['daa'])) {
 		<tr> 
 			<td valign="top">&nbsp;</td>
 			<td colspan="2">
-				<input name="Submit" type="submit" class="formbtn" value="Save" onclick="save_loadzone_states()">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="save_loadzone_states()">
 				<input id="loadzones" name="loadzones" type="hidden" value="">
 			</td>
 		</tr>
