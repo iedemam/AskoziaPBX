@@ -351,7 +351,7 @@ msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
 msgstr "Wychodzący wzorzec wybierania \"%s\" jest nieprawidłowy. %s"
 
 msgid "A valid Caller ID string must be specified."
-msgstr "Poprawny ciąg Caller ID musi zostać podany."
+msgstr "Musisz podać poprawny ciąg Caller ID."
 
 msgid "An incoming Caller ID override string must be specified."
 msgstr "Musisz zdefiniować zastępczy Caller ID dla połączeń wchodzących."
@@ -670,7 +670,7 @@ msgid "connected"
 msgstr "połączony"
 
 msgid "connected but lagged"
-msgstr "połączony, ale z opóźnieniem"
+msgstr "połączony, ale z opóźnieniami"
 
 msgid "unreachable"
 msgstr "nieosiągalny"
@@ -901,7 +901,7 @@ msgid "System"
 msgstr "System"
 
 msgid "Connectivity"
-msgstr "Połączenie"
+msgstr "Łączność"
 
 msgid "Accounts"
 msgstr "Konta"
@@ -1394,16 +1394,16 @@ msgid "Certificate"
 msgstr "Certyfikat"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr "Wklej podpisany certyfikat w formacie X.509 PEM."
+msgstr "Wklej tutaj podpisany certyfikat w formacie X.509 PEM."
 
 msgid "Key"
 msgstr "Klucz"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr "Wklej prywatny klucz RSA w formacie PEM."
+msgstr "Wklej tutaj prywatny klucz RSA w formacie PEM."
 
 msgid "Generate self-signed certificate"
-msgstr "Wygeneruj certyfikat"
+msgstr "Wygeneruj certyfikat z podpisem własnym (self-signed)"
 
 msgid "Miscellaneous"
 msgstr "Różne"
