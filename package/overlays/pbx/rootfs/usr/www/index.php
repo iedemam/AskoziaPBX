@@ -53,7 +53,7 @@ if ($_POST) {
 		<td height="10" colspan="2">&nbsp;</td>
 	</tr>
 	<tr align="center" valign="top"> 
-		<td height="170" colspan="2"><img src="logobig.png"></td>
+		<td height="170" colspan="2"><img src="platform.png"></td>
 	</tr>
 	<tr>
 		<td colspan="2" class="listtopic"><?=gettext("System Information");?></td>
