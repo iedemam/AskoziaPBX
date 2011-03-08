@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 
-	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2010-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -76,6 +76,10 @@ include("fbegin.inc");
 ?><form action="system_storage.php" method="post">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
+			<td width="90%" colspan="3" valign="top" class="d_header"><?=gettext("Active Disks");?></td>
+			<td width="10%" class="list"></td>
+		</tr>
+		<tr>
 			<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
 			<td width="20%" class="listhdrr"><?=gettext("Mount Point");?></td>
 			<td width="50%" class="listhdrr"><?=gettext("Services");?></td>
@@ -111,6 +115,30 @@ include("fbegin.inc");
 			<td class="list" colspan="3"></td>
 			<td class="list"><a href="system_storage_edit.php"><img src="add.png" title="<?=gettext("add disk");?>" border="0"></a></td>
 		</tr>
-	</table>
+		<tr>
+			<td class="list" colspan="4">&nbsp;</td>
+		</tr><?
+		$prev_disks = storage_get_previously_used_disks();
+		if (count($prev_disks) > 0) {
+
+			?><tr>
+				<td width="90%" colspan="3" valign="top" class="d_header"><?=gettext("Previously Used Disks");?></td>
+				<td width="10%" class="list"></td>
+			</tr>
+			<tr>
+				<td colspan="3" width="90%" class="listhdrr"><?=gettext("Device");?></td>
+				<td width="10%" class="list"></td>
+			</tr><?
+
+			foreach ($prev_disks as $disk) {
+
+				?><tr>
+					<td class="listbgl" colspan="3"><?=htmlspecialchars($disk);?></td>
+					<td valign="middle" nowrap class="list"><a href="system_storage_edit.php?previous=<?=$disk;?>"><img src="add.png" title="<?=gettext("activate disk");?>" border="0"></a></td>
+				</tr><?
+
+			}
+	}
+	?></table>
 </form>
 <?php include("fend.inc"); ?>

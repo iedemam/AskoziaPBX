@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 
-	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2010-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -91,6 +91,29 @@ $unassigneddisks = storage_get_unassigned_devices();
 
 /* get assigned services */
 $assignedservices = storage_get_assigned_services($form['uniqid']);
+
+
+
+/* if we're dealing with a previously used disk, setup its defaults appropriately */
+if ($_GET['previous']) {
+	$form = storage_generate_default_disk();
+	$form['device'] = $_GET['previous'];
+	$initialformat = true;
+
+	exec("mkdir -p /mnt/tmpprevdisk");
+	openlog("system_storage_edit()", LOG_INFO, LOG_LOCAL0);
+	exec("mount -t vfat " . $form['device'] . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
+
+	foreach ($g['storage_services'] as $service) {
+		if (file_exists("/mnt/tmpprevdisk/askoziapbx/" . $service)) {
+			$form[$service] = true;
+		}
+	}
+
+	exec("umount /mnt/tmpprevdisk");
+	closelog();
+	exec("rmdir /mnt/tmpprevdisk");
+}
 
 
 include("fbegin.inc");

@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -50,6 +50,35 @@ function storage_disk_get_devices() {
 function storage_get_disks() {
 	$all_disks = $GLOBALS['config']['storage']['disk'];
 	return is_array($all_disks) ? $all_disks : array();
+}
+function storage_get_previously_used_disks() {
+	// find all of the disks available
+	$devices = storage_get_unassigned_devices();
+
+	// make a mount point, then loop through all relevant disks and look for the askoziapbx folder on them
+	exec("mkdir -p /mnt/tmpprevdisk");
+	openlog("storage_get_previously_used_disks()", LOG_INFO, LOG_LOCAL0);
+	foreach ($devices as $device=>$description) {
+		exec("mount -t vfat " . $device . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
+		if ($retval != 0) {
+			syslog(LOG_INFO, "Mounting " . $device . "1 on /mnt/tmpprevdisk returned " . $retval);
+		} else {
+			syslog(LOG_INFO, "Mounted " . $device . "1 on /mnt/tmpprevdisk");
+		}
+
+		if (file_exists("/mnt/tmpprevdisk/askoziapbx")) {
+			$prev_disks[] = $device;
+			syslog(LOG_INFO, "Previously used AskoziaPBX disk recognized on " . $device . "1");
+		} else {
+			syslog(LOG_INFO, "Disk does not appear to be an AskoziaPBX disk.");
+		}
+		exec("umount /mnt/tmpprevdisk");
+		sleep(1);
+	}
+	closelog();
+	exec("rmdir /mnt/tmpprevdisk");
+
+	return is_array($prev_disks) ? $prev_disks : array();
 }
 
 function storage_get_disk($uniqid) {
