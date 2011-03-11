@@ -20,7 +20,7 @@ SDECFGSET_INIT='busybox'
 # architecture
 SDECFGSET_ARCH='arm'
 SDECFGSET_ARM_ENDIANESS='le'
-SDECFGSET_ARM_OPT='arm920t'
+SDECFGSET_ARM_OPT='arm926ej-s'
 SDECFGSET_ARM_ABI='gnueabi'
 
 # firmware type
