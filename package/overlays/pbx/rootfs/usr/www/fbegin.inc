@@ -227,15 +227,17 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 <? } ?>
 <script src="gui_head.js" type="text/javascript"></script>
 <link href="gui.css" rel="stylesheet" type="text/css">
+<link href="devpan.css" rel="stylesheet" type="text/css">
+<!--[if gt IE 5]>
+	<script src="ie_cssfix.js" type="text/javascript"></script>
+<![endif]-->
 <link href="jqueryui/css/ui.css" rel="stylesheet" type="text/css">
 </head>
 
 <? include("fbegin_header.inc"); ?>
 	<tr valign="top"> 
-		<td width="150" class="link_table_bg">
-			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-				<tr>
-					<td>
+		<td id="link_cell" class="link_table_bg">
+			<div id="setup_links">
 						<ul class="framemenu"><?
 
 		dynamic_menu($menu['System'], gettext('System'));
@@ -250,11 +252,9 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 		dynamic_menu($menu['Advanced'], 'Advanced');
 
 						?></ul>
-					</td>
-				</tr>
-			</table>
+			</div>
 		</td>
-		<td width="600">
+		<td id="setup_operations">
 			<table width="100%" border="0" cellpadding="10" cellspacing="0">
 				<tr>
 					<td><?

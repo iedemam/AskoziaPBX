@@ -37,42 +37,6 @@
 */
 ?>
 
-<style type="text/css">
-
-	#devpanel {
-		z-index: 50;
-		width: 95%;
-		padding: 10px;
-		margin-bottom: 10px;
-		display: none;
-	}
-
-	#devfilepanel {
-		width: 100%;
-		display: none;
-	}
-
-	.devoutput {
-		border: 2px solid #435370;
-		background: #F0F0F0;
-		padding: 1em;
-		font-family: courier new, courier;
-		white-space: pre;
-		line-height: 10pt;
-		font-size: 10pt;
-	}
-
-	.devfixedwidth {
-		font-family: MonoSpace !important;
-		font-size: 10pt !important;
-		overflow: scroll;
-		overflow-y: scroll;
-		overflow-x: scroll;
-		white-space: nowrap;
-		width: 98%;
-	}
-
-</style>
 <script type="text/JavaScript">
 <!--
 

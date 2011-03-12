@@ -34,6 +34,12 @@
 a {
 	text-decoration: none;
 }
+
+body {
+	/* hack to center the page in ms i.e. */
+	text-align:center;
+}
+
 body,td,th,input,select {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
@@ -44,10 +50,31 @@ form {
 p {
 	margin: 0 0 10px 0;
 }
+#allbody {
+	/* counteract the i.e. hack, first restore the usual left text alignment */
+	text-align:left;
+	width: 95%;
+	max-width: 1000px;
+	min-width: 750px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#user {
+	margin-bottom: 10px;
+}
 .pgtitle {
 	font-size: 18px;
 	color: #777777;
 	font-weight: bold;
+}
+.pghelp {
+	padding: 5px;
+	margin-bottom: 12px;
+	background-color: #D9DEE8;
+	display: none;
 }
 .tfrtitle {
 	font-size: 18px;
@@ -382,28 +409,32 @@ textarea.code {
 }
 ul.framemenu {
 	list-style-type: none;
-	margin-top: 3px;
 	text-decoration: none;
 	font-size: 13px;
 	font-weight: bold;
 	background-color: #9D9D9D;
-	padding-left: 5px;
+	/*fully qualified margin and padding needed for i.e.*/
+	margin: 0 0 5px 0;
+	padding: 0 0 2px 0;
 }
 ul.submenu {
 	list-style-type: none;
-	padding: 0px 8px 0px 14px;
 	text-decoration: none;
 	font-size: 13px;
 	font-weight: normal;
 	color: #ffffff;
+	margin: 0 0 5px 0;
+	padding: 0 0 2px 12px;
 }
 li.menuitem {
 	padding: 1px 1px 1px 1px;
 	color: #ffffff;
+  white-space: nowrap;
 }
 li.submenuitem {
 	padding: 1px 1px 1px 1px;
 	color: #ffffff;
+  white-space: nowrap;
 }
 ul#tabnav {
 	font-size: 11px;
@@ -592,12 +623,35 @@ a.link_color_black {
 	background-color: #D9DEE8;
 }
 
-.webgui_bg {
-	background-color: #435370;
+#logo_topleft{
+	min-width: 160px;
+	max-width: 200px;
 }
 
 .link_table_bg {
 	background-color: #9D9D9D;
+}
+
+#link_cell{
+	/* set first a fixed width, again for i.e.!*/
+	width: 200px;
+	min-width: 160px;
+	max-width: 200px;
+	padding-right: 6px;
+}
+
+#setup_links{
+	min-width: 160px;
+	max-width: 200px;
+	padding: 6px;
+}
+
+#setup_operations{
+	min-width: 90%;
+}  
+
+.webgui_bg {
+	background-color: #435370;
 }
 
 .print_entry {
