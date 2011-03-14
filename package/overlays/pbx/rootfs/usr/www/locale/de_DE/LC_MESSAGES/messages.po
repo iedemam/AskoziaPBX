@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-22 19:06+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Giovanni Vallesi <iax@keybits.org>\n"
+"Last-Translator: Sebastian Kaiser <sebastian.kaiser@askozia.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -288,48 +288,38 @@ msgstr "Fehlende Durchwahl. "
 msgid "Invalid extension number. Use only numerals."
 msgstr "Ungültige Durchwahl. Bitte nur Ziffern verwenden."
 
-#, fuzzy
 msgid "Missing extension."
 msgstr "Fehlende Durchwahl. "
 
 msgid "Extension already in use, please choose another."
-msgstr ""
+msgstr "Die Nummer wird bereits verwendet. Bitte wählen Sie eine andere."
 
-#, fuzzy
 msgid "Extension contains an invalid character"
 msgstr "Enthält ein ungültiges Zeichen."
 
-#, fuzzy
 msgid "Extension contains a doubled \"|\" character, only one is allowed."
 msgstr "Enthält zwei \"|\" Zeichen, nur eins ist erlaubt. "
 
-#, fuzzy
 msgid "Extension contains a doubled \"+\" character, only one is allowed."
 msgstr "Enthält zwei \"+\" Zeichen, nur eins ist erlaubt. "
 
-#, fuzzy
 msgid "Extension contains a doubled \"-\" character, only one is allowed."
 msgstr "Enthält zwei \"-\" Zeichen, nur eins ist erlaubt. "
 
-#, fuzzy
 msgid "Nested square brackets are not allowed in an extension"
 msgstr "Verschachtelte eckige Klammern sind nicht erlaubt. "
 
-#, fuzzy
 msgid "Brackets are not needed for less than 2 characters in an extension."
 msgstr "Für weniger als zwei Zeichen werden keine Klammern benötigt. "
 
-#, fuzzy
 msgid "Appended prefixes in extensions may only contain digits, '*' and '#'."
 msgstr "Vorwahlen dürfen nur Zahlen, \"*\" und \"#\" enthalten. "
 
-#, fuzzy
 msgid "The wildcard character \".\" is not allowed in an extension before a prefix which is to be removed."
-msgstr "Der Platzhalter \".\" ist nicht vor einer Vorwahl erlaubt welche entfernt wird. "
+msgstr "Der Platzhalter \".\" ist nicht vor einem Prefix erlaubt welches entfernt wird. "
 
-#, fuzzy
 msgid "The wildcard character \"!\" is not allowed in an extension before a prefix which is to be removed."
-msgstr "Der Platzhalter \"!\" ist nicht vor einer Vorwahl erlaubt welche entfernt wird. "
+msgstr "Der Platzhalter \"!\" ist nicht vor einem Prefix erlaubt welches entfernt wird. "
 
 msgid "Missing caller id."
 msgstr "Fehlende Anruferkennung"
@@ -343,9 +333,8 @@ msgstr "Anrufbenachrichtigung per E-Mail ist aktiviert, es wurde jedoch keine od
 msgid "Voicemail to e-mail enabled but the e-mail address is invalid or missing."
 msgstr "Mailbox-Benachrichtigung per E-Mail ist aktiviert, es wurde jedoch keine oder eine ungültige E-Mailadresse angegeben."
 
-#, fuzzy
 msgid "The e-mail address is invalid or missing."
-msgstr "Mailbox-Benachrichtigung per E-Mail ist aktiviert, es wurde jedoch keine oder eine ungültige E-Mailadresse angegeben."
+msgstr "Es wurde keine oder eine ungültige E-Mailadresse angegeben."
 
 msgid "Missing password."
 msgstr "Passwort fehlt."
@@ -367,13 +356,11 @@ msgstr "Die Durchwahl \"%s\" ist ungültig. %s"
 msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
 msgstr "Die Vorwahl \"%s\" ist ungültig. %s"
 
-#, fuzzy
 msgid "A valid Caller ID string must be specified."
-msgstr "Eine gültige Parkdauer muß angegeben werden."
+msgstr "Es muss eine gültige Anruferkennung angegeben werden."
 
-#, fuzzy
 msgid "An incoming Caller ID override string must be specified."
-msgstr "Es muss eine gültige Vorwahl für die Anruferkennung angegeben werden. "
+msgstr "Es muss eine gültiger Text zum Überschreiben der Anruferkennung angegeben werden. "
 
 #, php-format
 msgid "The %s field is required."
@@ -390,9 +377,9 @@ msgstr "Das manuelle Attribut in Zeile %s ist ungültig."
 msgid "PHP parsing error"
 msgstr "PHP Parsing Fehler"
 
-#, fuzzy, php-format
+#, php-format
 msgid "The outgoing Caller ID specified for \"%s\" is invalid."
-msgstr "Die Vorwahl \"%s\" ist ungültig. %s"
+msgstr "Die ausgehende Anruferkennung \"%s\" ist ungültig. %s"
 
 msgid "Subject"
 msgstr "Betreff"
@@ -464,7 +451,7 @@ msgid "Incoming Extensions"
 msgstr "Eingehende Wählmuster"
 
 msgid "add incoming extension mapping"
-msgstr "eine weitere Durchwahl zuordnen"
+msgstr "Eine weitere Durchwahl zuordnen"
 
 msgid ""
 "Enter a pattern or a phone number and select a destination extension. To ring multiple phones, simply define them with the same pattern. If a phone number is entered, it will used as the \"external\" number on unanswered calls. If nothing is entered, all calls will be directed to the destination extension.<br>\n"
@@ -524,7 +511,7 @@ msgid "NAT"
 msgstr "NAT"
 
 msgid "Is there a NATing device between the PBX and this account?"
-msgstr "Gibt es eine NAT zwischen der Anlage und diesem Konto?"
+msgstr "Gibt es eine NAT zwischen der Telefonanlage und diesem Konto?"
 
 msgid "indefinitely"
 msgstr "unendlich"
@@ -550,19 +537,17 @@ msgstr "Wenn Gespräche über diesen Anschluss zu laut oder zu leise sind, kann 
 msgid "Incoming Modification"
 msgstr "Eingehende Anruferkennung modifizieren "
 
-#, fuzzy
 msgid "Source Name &lt;number&gt;"
 msgstr "Ihr Name  &lt;Nummer&gt;"
 
 msgid "Prepend with string"
-msgstr ""
+msgstr "Text voranstellen"
 
 msgid "Replace with string"
-msgstr ""
+msgstr "Mit Text ersetzen"
 
-#, fuzzy
 msgid "Replace calling name with calling number."
-msgstr "Ersetze Anruferkennung mit Rufnummer "
+msgstr "Ersetze Anrufername mit Anrufernummer. "
 
 msgid "Disable overrides"
 msgstr "Nicht überschreiben"
@@ -574,9 +559,8 @@ msgid "Your Name &lt;number&gt;"
 msgstr "Ihr Name  &lt;Nummer&gt;"
 
 msgid "Send string defined above&nbsp;"
-msgstr ""
+msgstr "Oben definierten Text senden"
 
-#, fuzzy
 msgid "Send phones' Caller ID"
 msgstr "Anruferkennung des Telefons verwenden"
 
@@ -812,15 +796,14 @@ msgstr "authentisiere abgehende Anrufe mit einem privaten RSA-Schlüssel"
 msgid "Private RSA Key"
 msgstr "Privater RSA-Schlüssel"
 
-#, fuzzy
 msgid "Incoming Faxes"
-msgstr "Eingehende Wählmuster"
+msgstr "Eingehende Faxe"
 
 msgid "no faxes available."
-msgstr ""
+msgstr "Keine Faxe verfügbar."
 
 msgid "Send all incoming faxes here."
-msgstr ""
+msgstr "Alle eingehenden Faxe hierher senden."
 
 msgid "Help"
 msgstr "Hilfe"
@@ -871,7 +854,7 @@ msgid "Phones"
 msgstr "Telefone"
 
 msgid "Faxes"
-msgstr ""
+msgstr "Faxe"
 
 msgid "Applications"
 msgstr "Anwendungen"
@@ -880,7 +863,7 @@ msgid "Call Groups"
 msgstr "Rufgruppen"
 
 msgid "Transfers"
-msgstr "Anrufweiterleitung"
+msgstr "Vermittlung"
 
 msgid "Conferencing"
 msgstr "Telefonkonferenzen"
@@ -889,7 +872,7 @@ msgid "Media"
 msgstr "Medien"
 
 msgid "Fax Archive"
-msgstr ""
+msgstr "Fax Archiv"
 
 msgid "Summary"
 msgstr "Übersicht"
@@ -1195,36 +1178,29 @@ msgstr "runter"
 msgid "associated"
 msgstr "zugeordnet"
 
-#, fuzzy
 msgid "Virtual"
-msgstr "Portugal"
+msgstr "Virtuell"
 
 msgid "Extension"
-msgstr "Durchwahl"
+msgstr "Nummer"
 
-#, fuzzy
 msgid "click to enable fax"
-msgstr "klicken um Telefon zu aktivieren"
+msgstr "Klicken Sie um das Fax zu aktivieren"
 
-#, fuzzy
 msgid "Do you really want to disable this fax?"
-msgstr "Möchten Sie das Telefon wirklich deaktivieren?"
+msgstr "Möchten Sie das Fax wirklich deaktivieren?"
 
-#, fuzzy
 msgid "click to disable fax"
-msgstr "klicken um Telefon zu deaktivieren"
+msgstr "Klicken Sie hier um das Fax zu deaktivieren"
 
-#, fuzzy
 msgid "edit fax"
-msgstr "Medien"
+msgstr "Fax bearbeiten"
 
-#, fuzzy
 msgid "Do you really want to delete this fax?"
-msgstr "Möchten Sie das Telefon wirklich löschen?"
+msgstr "Möchten Sie das Fax wirklich löschen?"
 
-#, fuzzy
 msgid "delete fax"
-msgstr "Telefon löschen"
+msgstr "Fax löschen"
 
 msgid "External"
 msgstr "Externe Telefone"
@@ -1514,9 +1490,8 @@ msgstr "lesen:"
 msgid "write:"
 msgstr "schreiben:"
 
-#, fuzzy
 msgid "edit manager user"
-msgstr "Manager hinzufügen"
+msgstr "Manager bearbeiten"
 
 msgid "Do you really want to delete this manager user?"
 msgstr "Wollen Sie diesen Manager wirklich löschen?"
@@ -1602,24 +1577,20 @@ msgstr "DNS Service Records"
 msgid "Disable DNS SRV lookups."
 msgstr "DNS-SRV-Anfragen deaktivieren"
 
-#, fuzzy
 msgid "Plaintext"
 msgstr "Klartext"
 
 msgid "PHP"
-msgstr ""
+msgstr "PHP"
 
-#, fuzzy
 msgid "click to enable application"
-msgstr "klicken um Telefon zu aktivieren"
+msgstr "Klicken Sie um die Anwendung zu aktivieren"
 
-#, fuzzy
 msgid "Do you really want to disable this application?"
-msgstr "Wollen Sie diese Anwendung wirklich dauerhaft löschen?"
+msgstr "Wollen Sie diese Anwendung wirklich deaktivieren?"
 
-#, fuzzy
 msgid "click to disable application"
-msgstr "klicken um Telefon zu deaktivieren"
+msgstr "Klicken Sie um die Anwendung zu deaktivieren"
 
 msgid "edit application"
 msgstr "Anwendung bearbeiten"
@@ -1636,7 +1607,6 @@ msgstr "Anwendung bearbeiten"
 msgid "General Settings"
 msgstr "Grundeinstellungen"
 
-#, fuzzy
 msgid "The number or pattern used to dial this application."
 msgstr "Die interne Rufnummer für diese Anwendung. "
 
@@ -1775,22 +1745,20 @@ msgstr "Upload:"
 msgid "Upload"
 msgstr "Upload"
 
-#, fuzzy
 msgid "Edit Analog Fax"
-msgstr "Analog Telefon bearbeiten"
+msgstr "Analoges Fax bearbeiten"
 
-#, fuzzy
 msgid "The number used to dial this fax."
-msgstr "Die Rufnummer für dieses Telefon."
+msgstr "Die Rufnummer für dieses Fax."
 
 msgid "Text to be displayed for Caller ID."
 msgstr "Text der als Anruferkennung angezeigt werden soll."
 
 msgid "Edit Virtual Fax"
-msgstr ""
+msgstr "Virtuelles Fax bearbeiten"
 
 msgid "Incoming faxes will be converted and sent to this e-mail address."
-msgstr ""
+msgstr "Eingehende Faxe werden konvertiert und an diese E-Mail-Adresse gesendet."
 
 msgid "Interface"
 msgstr "Interface"
@@ -2128,9 +2096,8 @@ msgstr "Die Rufnummer für dieses Telefon."
 msgid "Call Notifications & Voicemail"
 msgstr "Anrufbenachrichtigungen &  Mailbox "
 
-#, fuzzy
 msgid "Outgoing Caller ID"
-msgstr "Nur ausgehende Anrufe"
+msgstr "Ausgehende Anruferkennung"
 
 msgid "Advanced Options"
 msgstr "Erweiterte Einstellungen"
@@ -2177,16 +2144,14 @@ msgstr "ISDN-Telefon bearbeiten"
 msgid "Edit SIP Phone"
 msgstr "SIP-Telefon bearbeiten"
 
-#, fuzzy
 msgid "Auto-Configuration"
-msgstr "Konfiguration wiederherstellen"
+msgstr "Auto-Konfiguration"
 
-#, fuzzy
 msgid "SNOM MAC Address"
-msgstr "MAC-Adresse"
+msgstr "SNOM MAC-Adresse"
 
 msgid "If this account is for a SNOM telephone, the hardware can be automatically configured when it reboots if its MAC address is entered here. The MAC address can be displayed by pressing the phone's \"Help\" button. Enter the address exactly as it appears on the screen.<br><br>The phone's HTTP interface password will be the same as this extension's password and the on-telephone admin password is the extension number."
-msgstr ""
+msgstr "Falls dieses Konto für ein SNOM-Telefon ist, kann dieses automatisch konfiguriert werden. Geben Sie dazu die MAC-Adresse ein. Sie können sich die MAC-Adresse anzeigen lassen, indem sie die die Help-Taste ihres Telefons drücken. Geben Sie die Adresse exakt so ein, wie sie auf dem Display angezeigt wird. <br><br>Das Passwort des Webinterfaces des Telefons wird das gleiche sein wie das Passwort des Kontos. Das Administrator-Kennwort des Telefons ist die Durchwahlnummer."
 
 msgid "Edit Skinny Phone"
 msgstr "Skinny Telefon bearbeiten"
@@ -2303,7 +2268,7 @@ msgstr "Keine kompatiblen ISDN-Anschlüsse gefunden."
 msgid "Channels"
 msgstr "Kanäle"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Edit ISDN %s Port"
 msgstr "ISDN-Anschluss %s bearbeiten"
 
@@ -2389,7 +2354,7 @@ msgid "Edit SIP Provider"
 msgstr "SIP-Provider bearbeiten"
 
 msgid "Authorization User"
-msgstr "Authorisierungs Benutzer"
+msgstr "Authorisierungsbenutzer"
 
 msgid "Some providers require a seperate username for authorization.<br>Defaults to username entered above."
 msgstr "Einige Provider benötigen einen separaten Benutzer für die Authorisierung.<br>Falls unbelegt, wird der Benutzername oben verwendet. "
@@ -2398,7 +2363,7 @@ msgid "From User"
 msgstr "From User"
 
 msgid "Some providers require a seperate 'from' user.<br>Defaults to username entered above."
-msgstr "Einige Provider benötigen ein seperater 'from' Benutzer.<br>Falls unbelegt wird der Benutzername oben verwendet."
+msgstr "Einige Provider benötigen ein separater 'from' Benutzer.<br>Falls unbelegt wird der Benutzername oben verwendet."
 
 msgid "From Domain"
 msgstr "From Domain"
@@ -2446,10 +2411,10 @@ msgid "Optional PIN needed to access this conference room."
 msgstr "Optionale PIN für den Zugriff auf diesen Konferenzraum."
 
 msgid "All Virtual Faxes"
-msgstr ""
+msgstr "Alle virtuellen Faxe"
 
 msgid "no faxes found"
-msgstr ""
+msgstr "Keine Faxe gefunden"
 
 msgid "A valid e-mail address must be specified for the \"from address\"."
 msgstr "Eine gültige E-Mail-Adresse muss als Absenderadresse angegeben werden."
@@ -2461,7 +2426,7 @@ msgid "From Address"
 msgstr "Absenderaddresse"
 
 msgid "This will be shown as voicemail service's sending address."
-msgstr "Diese Adresse wird in Benachrichtigungsemails als Absender angezeigt."
+msgstr "Diese Adresse wird in Benachrichtigungs-E-Mails als Absender angezeigt."
 
 #, php-format
 msgid "Defaults to the e-mail address used in the %s setup."
@@ -2678,7 +2643,7 @@ msgid "Restore configuration"
 msgstr "Konfiguration wiederherstellen"
 
 msgid "Open a PBX configuration XML file and click the button below to restore the configuration."
-msgstr "Wählen Sie eine Akozia-XML-Konfigurationsdatei aus und klicken Sie auf die Schaltfläche unten um die Konfiguration wiederherzustellen."
+msgstr "Wählen Sie eine Askozia-XML-Konfigurationsdatei aus und klicken Sie auf die Schaltfläche unten um die Konfiguration wiederherzustellen."
 
 msgid "The PBX will reboot after restoring the configuration."
 msgstr "Die Anlage wird nach der Wiederherstellung neu starten."
@@ -2757,7 +2722,7 @@ msgid "Persistence"
 msgstr "Persistenz"
 
 msgid "Asterisk logs"
-msgstr ""
+msgstr "Asterisk Logs"
 
 msgid "edit disk"
 msgstr "Datenträger bearbeiten"
@@ -2817,13 +2782,11 @@ msgstr "Dienst ist bereits \"%s\" zugewiesen"
 msgid "store Asterisk's database on disk"
 msgstr "Asterisk's Datenbank auf Datenträger speichern"
 
-#, fuzzy
 msgid "store Asterisk's logs on disk"
-msgstr "Asterisk's Datenbank auf Datenträger speichern"
+msgstr "Asterisk Logs auf Datenträger speichern"
 
-#, fuzzy
 msgid "store virtual faxes on disk"
-msgstr "Asterisk's Datenbank auf Datenträger speichern"
+msgstr "Virtuelle Faxe auf Datenträger speichern"
 
 msgid "ERR Could not save configuration.\n"
 msgstr "ERR Konfiguration konnte nicht gespeichert werden.\n"
