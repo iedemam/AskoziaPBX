@@ -75,7 +75,7 @@
 		<exec play_pcap_audio="PERF_TEST_FILES/g711a.pcap" />  
 </action> </nop>
 
-<pause milliseconds="10000"/>
+<pause/>
 
 <!-- TERMINATE CALL -->
 <send retrans="500">

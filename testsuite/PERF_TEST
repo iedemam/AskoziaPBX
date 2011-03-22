@@ -632,6 +632,7 @@ if ($max_two_party)
 	
 	# Start QStat-Recording on AskoziaPBX
 	debug ("Starting QStat-Recording");
+	sleep (5);
 #	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+debug+1000%27");
 #	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27core+set+verbose+1000%27");
 	$res = $ua->request (GET "http://$ask_ip:$ask_port/cgi-bin/ajax.cgi?exec_ami=%27qstat+start+two-party%27");
