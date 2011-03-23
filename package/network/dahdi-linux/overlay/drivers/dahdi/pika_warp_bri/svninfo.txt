@@ -2,10 +2,10 @@ Path: .
 URL: http://svn.pikatech.com/open_warp/libpri/trunk/pikabrie
 Repository Root: http://svn.pikatech.com
 Repository UUID: 23da9cfa-551c-0410-93a2-a1880a72a40f
-Revision: 23490
+Revision: 25468
 Node Kind: directory
 Schedule: normal
-Last Changed Author: smaclennan
-Last Changed Rev: 23440
-Last Changed Date: 2010-09-28 19:37:04 +0200 (Tue, 28 Sep 2010)
+Last Changed Author: ukaraaslan
+Last Changed Rev: 25435
+Last Changed Date: 2011-03-20 05:55:03 +0100 (Sun, 20 Mar 2011)
 

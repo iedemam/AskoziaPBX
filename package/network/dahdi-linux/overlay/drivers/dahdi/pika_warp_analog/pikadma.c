@@ -343,6 +343,30 @@ void dma_exit_module(void)
 
 EXPORT_SYMBOL(dma_exit_module);
 
+void get_module_types(unsigned *moda, unsigned *modb)
+{
+	unsigned rev = BAR0_READ(pdx, BAR0_FPGA_REV);
+
+	*moda = (rev >> 16) & 0xf;
+	*modb = (rev >> 20) & 0xf;
+}
+
+EXPORT_SYMBOL(get_module_types);
+
+// note that this function doesnot check for the existence of a BRI module
+int get_bri_span_count(int module)
+{
+#define R_CHIPID	0x16
+	// TODO define module A as 0 and module B as 1 
+	unsigned channel = (module == 0) ? 2 : 6;
+	u8 data = 0;
+	fpga_read_indirect(pdx->bar0, channel, R_CHIPID, &data);
+
+	return data;
+}
+
+EXPORT_SYMBOL(get_bri_span_count);
+
 int __init shared_dma_init_module(void)
 {
 	struct device_node *np;

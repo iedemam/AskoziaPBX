@@ -65,6 +65,32 @@
 #define FRAMESIZE		64
 #define DMA_CARD_ID		7
 
+#define DAHDI_2_4_0		1
+
+static int brie_spanconfig(struct dahdi_span *span, struct dahdi_lineconfig *lc);
+static int brie_chanconfig(struct dahdi_chan *chan, int sigtype);
+static int brie_startup(struct dahdi_span *span);
+static int brie_shutdown(struct dahdi_span *span);
+static int brie_open(struct dahdi_chan *chan);
+static int brie_close(struct dahdi_chan *chan);
+static int brie_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long data);
+static void brie_hdlc_hard_xmit(struct dahdi_chan *chan);
+
+/* warp analog span ops struct for DAHDI 2.4.0 and beyond */
+#if defined(DAHDI_2_4_0)
+static const struct dahdi_span_ops warp_bri_span_ops = {
+	.owner = THIS_MODULE,
+	.spanconfig = brie_spanconfig,
+	.chanconfig = brie_chanconfig,
+	.startup = brie_startup,
+	.shutdown = brie_shutdown,
+	.open = brie_open,
+	.close = brie_close,
+	.ioctl = brie_ioctl,
+	.hdlc_hard_xmit = brie_hdlc_hard_xmit,
+};
+#endif
+
 /* span struct for each S/U span */
 struct xhfc_span {
 	int span_id; /* Physical span id */
@@ -407,7 +433,12 @@ static void brie_tasklet(unsigned long arg)
 /* Called by dahdi_cfg program. */
 static int brie_startup(struct dahdi_span *span)
 {
+#if defined(DAHDI_2_4_0)
+	struct xhfc_span *xspan = container_of(span, struct xhfc_span, span);
+	return brispan_start(xspan);
+#else
 	return brispan_start(span->pvt);
+#endif
 }
 
 static int brie_shutdown(struct dahdi_span *span)
@@ -747,9 +778,13 @@ static void __init dahdi_span_init(struct xhfc_span *span)
 	struct brie *dev = xhfc->dev;
 	struct dahdi_span *dahdi = &span->span;
 
-	dahdi->owner = THIS_MODULE;
 	dahdi->irq = dev->irq;
+#if defined(DAHDI_2_4_0)
+	/* we use container_of() macro and don't want pvt element in the dahdi struct anymore */
+#else
 	dahdi->pvt = span;
+#endif
+
 	dahdi->spantype = (span->mode & SPAN_MODE_TE) ? "TE" : "NT";
 	dahdi->offset = span->id;
 	dahdi->channels = BRIE_CHANS_PER_SPAN;
@@ -774,6 +809,9 @@ static void __init dahdi_span_init(struct xhfc_span *span)
 			  "PIKA WARP BRI", sizeof(dahdi->devicetype));
 	sprintf(dahdi->location, "Module %c", xhfc->modidx + 'A');
 
+#if defined(DAHDI_2_4_0)
+	dahdi->ops = &warp_bri_span_ops;
+#else
 	dahdi->spanconfig = brie_spanconfig;
 	dahdi->chanconfig = brie_chanconfig;
 	dahdi->startup = brie_startup;
@@ -782,6 +820,7 @@ static void __init dahdi_span_init(struct xhfc_span *span)
 	dahdi->close = brie_close;
 	dahdi->ioctl = brie_ioctl;
 	dahdi->hdlc_hard_xmit = brie_hdlc_hard_xmit;
+#endif
 
 	dahdi->chans = span->chans;
 	init_waitqueue_head(&dahdi->maintq);

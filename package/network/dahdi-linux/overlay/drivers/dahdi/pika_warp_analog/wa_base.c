@@ -40,6 +40,9 @@
 #include "wa_common.h"
 #include "fxo_modes.h"
 
+/* undefine this to go back to dahdi 2.3.x series */
+#define DAHDI_2_4_0		1
+
 /* common defines */
 #define HOOK_STATE_DEBOUNCE_TIME_DEFAULT \
 				PKH_BOARD_HOOK_STATE_DEBOUNCE_TIME_DEFAULT
@@ -82,6 +85,27 @@ void do_trunks(PDEVICE_EXTENSION pdx, unsigned iccr);
 
 /* our function to take care of timer events */
 void do_timers(PDEVICE_EXTENSION pdx);
+
+
+
+/* function headers */
+static int dahdi_warp_analog_open(struct dahdi_chan *chan);
+static int dahdi_warp_analog_close(struct dahdi_chan *chan);
+static int dahdi_warp_analog_ioctl(struct dahdi_chan *chan, unsigned int cmd, unsigned long data);
+static int dahdi_warp_analog_watchdog(struct dahdi_span *span, int event);
+static int dahdi_warp_analog_hooksig(struct dahdi_chan *chan, enum dahdi_txsig txsig);
+
+/* warp analog span ops struct for DAHDI 2.4.0 and beyond */
+#if defined(DAHDI_2_4_0)
+static const struct dahdi_span_ops warpalg_span_ops = {
+	.owner = THIS_MODULE,
+	.open = dahdi_warp_analog_open,
+	.close = dahdi_warp_analog_close,
+	.ioctl = dahdi_warp_analog_ioctl,
+	.watchdog = dahdi_warp_analog_watchdog,
+	.hooksig = dahdi_warp_analog_hooksig,
+};
+#endif
 
 /* allocate a new analog device struct */
 static struct warp_analog *dahdi_warp_analog_device_alloc(void)
@@ -856,18 +880,22 @@ static int dahdi_warp_analog_initialize_fxo(struct warp_analog *warpalg, unsigne
 		warpalg->chans[ii]->chanpos = first_timeslot + ii + 1;
 	}
 
-	warpalg->span.owner = THIS_MODULE;
 	warpalg->span.chans = warpalg->chans;
 	warpalg->span.manufacturer = "Pika";
 	warpalg->span.channels = warpalg->num_chans;
-	warpalg->span.hooksig = dahdi_warp_analog_hooksig;
 	warpalg->span.irq = 0;	
+	warpalg->span.flags = DAHDI_FLAG_RBS; 	 
+#if defined(DAHDI_2_4_0)
+	warpalg->span.ops = &warpalg_span_ops;
+#else
+	warpalg->span.owner = THIS_MODULE;
 	warpalg->span.open = dahdi_warp_analog_open;
 	warpalg->span.close = dahdi_warp_analog_close;
-	warpalg->span.flags = DAHDI_FLAG_RBS; 	 
 	warpalg->span.ioctl = dahdi_warp_analog_ioctl;
 	warpalg->span.watchdog = dahdi_warp_analog_watchdog;
+	warpalg->span.hooksig = dahdi_warp_analog_hooksig;
 	warpalg->span.pvt = warpalg;
+#endif
 	init_waitqueue_head(&warpalg->span.maintq);	
 	warpalg->span.deflaw = DAHDI_LAW_MULAW;
 	
@@ -949,18 +977,24 @@ static int dahdi_warp_analog_initialize_fxs(struct warp_analog *warpalg,
 		warpalg->fxs_vmwi_active_msgs[ii] = 0;
 	}
 
-	warpalg->span.owner = THIS_MODULE;
 	warpalg->span.chans = warpalg->chans;
 	warpalg->span.manufacturer = "Pika";
 	warpalg->span.channels = warpalg->num_chans;
-	warpalg->span.hooksig = dahdi_warp_analog_hooksig;
 	warpalg->span.irq = 0;	
+	warpalg->span.flags = DAHDI_FLAG_RBS;	/* (option 2) in dahdi.h */ 
+
+#if defined(DAHDI_2_4_0)
+	warpalg->span.ops = &warpalg_span_ops;
+#else
+	warpalg->span.owner = THIS_MODULE;
 	warpalg->span.open = dahdi_warp_analog_open;
 	warpalg->span.close = dahdi_warp_analog_close;
-	warpalg->span.flags = DAHDI_FLAG_RBS;	/* (option 2) in dahdi.h */ 
 	warpalg->span.ioctl = dahdi_warp_analog_ioctl;
 	warpalg->span.watchdog = dahdi_warp_analog_watchdog;
+	warpalg->span.hooksig = dahdi_warp_analog_hooksig;
 	warpalg->span.pvt = warpalg;
+#endif
+
 	init_waitqueue_head(&warpalg->span.maintq);	
 	warpalg->span.deflaw = DAHDI_LAW_MULAW;	/* default to mulaw */
 	
