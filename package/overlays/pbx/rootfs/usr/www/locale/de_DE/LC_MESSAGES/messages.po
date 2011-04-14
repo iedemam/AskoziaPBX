@@ -349,12 +349,12 @@ msgid "An invalid port was entered."
 msgstr "Es wurde ein ungültiger Anschluss eingegeben."
 
 #, php-format
-msgid "The incoming extension pattern \"%s\" is invalid. %s"
-msgstr "Die Durchwahl \"%s\" ist ungültig. %s"
+msgid "The incoming extension pattern \"%s\" is invalid."
+msgstr "Die Durchwahl \"%s\" ist ungültig."
 
 #, php-format
-msgid "The outgoing dial-pattern \"%s\" is invalid. %s"
-msgstr "Die Vorwahl \"%s\" ist ungültig. %s"
+msgid "The outgoing dial-pattern \"%s\" is invalid."
+msgstr "Die Vorwahl \"%s\" ist ungültig."
 
 msgid "A valid Caller ID string must be specified."
 msgstr "Es muss eine gültige Anruferkennung angegeben werden."
@@ -379,7 +379,7 @@ msgstr "PHP Parsing Fehler"
 
 #, php-format
 msgid "The outgoing Caller ID specified for \"%s\" is invalid."
-msgstr "Die ausgehende Anruferkennung \"%s\" ist ungültig. %s"
+msgstr "Die ausgehende Anruferkennung \"%s\" ist ungültig."
 
 msgid "Subject"
 msgstr "Betreff"
