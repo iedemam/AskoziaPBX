@@ -33,12 +33,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("GUI Options"));
 
-$pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
-$pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
+//$pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
+//$pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
-$pconfig['disablepackagechecks'] = isset($config['system']['disablepackagechecks']);
-$pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
+//$pconfig['disablepackagechecks'] = isset($config['system']['disablepackagechecks']);
+//$pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
 $pconfig['expandadvanced'] = isset($config['system']['webgui']['expandadvanced']);
 
 $pconfig['hidesip'] = isset($config['system']['webgui']['hidesip']);
@@ -46,51 +46,51 @@ $pconfig['hideiax'] = isset($config['system']['webgui']['hideiax']);
 $pconfig['hideisdn'] = isset($config['system']['webgui']['hideisdn']);
 $pconfig['hideanalog'] = isset($config['system']['webgui']['hideanalog']);
 
-if ($g['platform'] == "Generic") {
-	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
-}
-$pconfig['noantilockout'] = isset($config['system']['webgui']['noantilockout']);
-$pconfig['polling_enable'] = isset($config['system']['polling']);
+//if ($g['platform'] == "Generic") {
+//	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
+//}
+//$pconfig['noantilockout'] = isset($config['system']['webgui']['noantilockout']);
+//$pconfig['polling_enable'] = isset($config['system']['polling']);
 
 if ($_POST) {
 
 	unset($input_errors);
 	$savemsgadd = "";
 
-	if ($_POST['gencert']) {
-		/* custom certificate generation requested */
-		$ck = generate_self_signed_cert();
-		
-		if ($ck === false) {
-			$input_errors[] = gettext("A self-signed certificate could not be generated because the system's clock is not set.");
-		} else {
-			$_POST['cert'] = $ck['cert'];
-		 	$_POST['key'] = $ck['key'];
-			$savemsgadd = "<br><br>" . gettext("A self-signed certificate and private key have been automatically generated.");
-		}
-	}
+//   if ($_POST['gencert']) {
+//   	/* custom certificate generation requested */
+//   	$ck = generate_self_signed_cert();
+//   	
+//   	if ($ck === false) {
+//   		$input_errors[] = gettext("A self-signed certificate could not be generated because the system's clock is not set.");
+//   	} else {
+//   		$_POST['cert'] = $ck['cert'];
+//   	 	$_POST['key'] = $ck['key'];
+//   		$savemsgadd = "<br><br>" . gettext("A self-signed certificate and private key have been automatically generated.");
+//   	}
+//   }
 
 	$pconfig = $_POST;
 
-	/* input validation */
-	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
-		$input_errors[] = gettext("Certificate and key must always be specified together.");
-	} else if ($_POST['cert'] && $_POST['key']) {
-		if (!strstr($_POST['cert'], "BEGIN CERTIFICATE") || !strstr($_POST['cert'], "END CERTIFICATE"))
-			$input_errors[] = gettext("This certificate does not appear to be valid.");
-		if (!strstr($_POST['key'], "BEGIN RSA PRIVATE KEY") || !strstr($_POST['key'], "END RSA PRIVATE KEY"))
-			$input_errors[] = gettext("This key does not appear to be valid.");
-	}
+//	/* input validation */
+//	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
+//		$input_errors[] = gettext("Certificate and key must always be specified together.");
+//	} else if ($_POST['cert'] && $_POST['key']) {
+//		if (!strstr($_POST['cert'], "BEGIN CERTIFICATE") || !strstr($_POST['cert'], "END CERTIFICATE"))
+//			$input_errors[] = gettext("This certificate does not appear to be valid.");
+//		if (!strstr($_POST['key'], "BEGIN RSA PRIVATE KEY") || !strstr($_POST['key'], "END RSA PRIVATE KEY"))
+//			$input_errors[] = gettext("This key does not appear to be valid.");
+//	}
 
 	if (!$input_errors) {
-		$oldcert = $config['system']['webgui']['certificate'];
-		$oldkey = $config['system']['webgui']['private-key'];
-		$config['system']['webgui']['certificate'] = base64_encode($_POST['cert']);
-		$config['system']['webgui']['private-key'] = base64_encode($_POST['key']);
+//		$oldcert = $config['system']['webgui']['certificate'];
+//		$oldkey = $config['system']['webgui']['private-key'];
+//		$config['system']['webgui']['certificate'] = base64_encode($_POST['cert']);
+//		$config['system']['webgui']['private-key'] = base64_encode($_POST['key']);
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
-		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
+//		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['disablepackagechecks'] = $_POST['disablepackagechecks'] ? true : false;
-		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
+//		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
 		$config['system']['webgui']['expandadvanced'] = $_POST['expandadvanced'] ? true : false;
 		
 		$config['system']['webgui']['hidesip'] = $_POST['hidesip'] ? true : false;
@@ -98,31 +98,31 @@ if ($_POST) {
 		$config['system']['webgui']['hideisdn'] = $_POST['hideisdn'] ? true : false;
 		$config['system']['webgui']['hideanalog'] = $_POST['hideanalog'] ? true : false;
 		
-		if ($g['platform'] == "Generic") {
-			$oldharddiskstandby = $config['system']['harddiskstandby'];
-			$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
-		}
-		$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
-		$oldpolling = $config['system']['polling'];
-		$config['system']['polling'] = $_POST['polling_enable'] ? true : false;
+		//if ($g['platform'] == "Generic") {
+		//	$oldharddiskstandby = $config['system']['harddiskstandby'];
+		//	$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
+		//}
+		//$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
+		//$oldpolling = $config['system']['polling'];
+		//$config['system']['polling'] = $_POST['polling_enable'] ? true : false;
 
 		write_config();
 		
-		if (($config['system']['webgui']['certificate'] != $oldcert)
-				|| ($config['system']['webgui']['private-key'] != $oldkey)
-				|| ($config['system']['polling'] != $oldpolling)) {
-			touch($d_sysrebootreqd_path);
-		}
-		if (($g['platform'] == "Generic") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
-			if (!$config['system']['harddiskstandby']) {
-				// Reboot needed to deactivate standby due to a stupid ATA-protocol
-				touch($d_sysrebootreqd_path);
-				unset($config['system']['harddiskstandby']);
-			} else {
-				// No need to set the standby-time if a reboot is needed anyway
-				system_set_harddisk_standby();
-			}
-		}
+		//if (($config['system']['webgui']['certificate'] != $oldcert)
+		//		|| ($config['system']['webgui']['private-key'] != $oldkey)
+		//		|| ($config['system']['polling'] != $oldpolling)) {
+		//	touch($d_sysrebootreqd_path);
+		//}
+		//if (($g['platform'] == "Generic") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
+		//	if (!$config['system']['harddiskstandby']) {
+		//		// Reboot needed to deactivate standby due to a stupid ATA-protocol
+		//		touch($d_sysrebootreqd_path);
+		//		unset($config['system']['harddiskstandby']);
+		//	} else {
+		//		// No need to set the standby-time if a reboot is needed anyway
+		//		system_set_harddisk_standby();
+		//	}
+		//}
 		
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
@@ -138,7 +138,7 @@ if ($_POST) {
 
             <form action="advanced_guioptions.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
+                <? /* <tr> 
                   <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate/key");?></td>
                 </tr>
                 <tr> 
@@ -164,7 +164,7 @@ if ($_POST) {
                 </tr>
                 <tr> 
                   <td colspan="2" class="list" height="12"></td>
-                </tr>
+                </tr> */ ?>
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>
                 </tr>
@@ -175,8 +175,7 @@ if ($_POST) {
                     <strong><?=gettext("Disable console menu");?></strong><span class="vexpl"><br>
                     <?=gettext("Changes to this option will take effect after a reboot.");?></span></td>
                 </tr>
-<?php if ($g['platform'] == "Generic"): ?>
-				<tr> 
+			<?	/*<tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time");?></td>
                   <td width="78%" class="vtable"> 
                     <select name="harddiskstandby" class="formfld">
@@ -189,7 +188,7 @@ if ($_POST) {
                     <br>
                     <?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.");?></em></td>
 				</tr>
-<?php endif; ?>
+<?php endif; ?> */ ?>
 				<tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
                   <td width="78%" class="vtable">
