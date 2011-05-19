@@ -35,9 +35,27 @@ $d_isfwfile = 1;
 
 require("guiconfig.inc");
 
+check_update();
+
+?>
+<script src="jqueryui/js/jquery.js" type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+	$(document).bind("keydown","alt",function(e){
+			$("#Upgrade").val("<?=gettext("Upgrade firmware");?>*");
+			return false;
+		});
+});
+</script>
+<?php
+
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 
 if ($_POST) {
+	
+	// provide memory for update process
+	pbx_stop();
 
 	unset($input_errors);
 	unset($sig_warning);
@@ -53,9 +71,9 @@ if ($_POST) {
 
 		// verify that this file was uploaded through HTTP POST and not via another means
 		if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
-
+			
 			// check to see if the uploaded firmware is compatible with the platform based on its name
-			if (!stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && 
+			if (substr($_POST['Upgrade'],-1,1) != "*" && !stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && 
 				!$_POST['sig_override']) {
 				$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
 
@@ -91,11 +109,28 @@ if ($_POST) {
 			// fire up the update script in the background
 			exec("busybox nohup /etc/rc.firmware upgrade /ultmp/firmware.img.gz >/dev/null 2>&1 &");
 			$keepmsg = gettext("The firmware is now being installed. The PBX will reboot automatically.");
+		} else {
+			// restart pbx if update fails
+			pbx_start();
 		}
+	} else {
+		// restart pbx if update fails
+		pbx_start();
 	}
 }
 
 include("fbegin.inc");
+
+// update available
+if(!$_POST &&
+   !isset($config['system']['disable-update-check']) &&
+   isset($config['system']['latestversion']) &&
+   $config['system']['latestversion'] != "?" &&
+   trim(file_get_contents(("/etc/version"))) != $config['system']['latestversion'])
+{
+	$update_info = sprintf(gettext("There is an update for your version of AskoziaPBX available: %s<br>Download it at <a target='_blank' href='http://www.askozia.com/software'>www.askozia.com/software</a>"), $config['system']['latestversion']);
+	display_info_box($update_info, "keep");
+}
 
 // firmware upgrades not supported
 if (file_exists($g['varrun_path'] . "/firmware.upgrade.unsupported")) {
@@ -132,7 +167,7 @@ if (file_exists($g['varrun_path'] . "/firmware.upgrade.unsupported")) {
 					?><strong><?=gettext("Firmware image file:");?></strong>
 					<input name="ulfile" type="file" class="formfld"><br>
 					<br>
-					<input name="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>"><?
+					<input id="Upgrade" name="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>"><?
 
 				} else {
 

@@ -94,7 +94,7 @@ $vm_emailsubject = array(
 	"it-informal" =>	"Nuovo messaggio voicemail per te (box: $\{VM_MAILBOX})",
 
 	// japanese
-	"jp-formal" => 		"内線番号:$\{VM_MAILBOX}に、新しいメッセージがあります。",
+	"ja-formal" => 		"内線番号:$\{VM_MAILBOX}に、新しいメッセージがあります。",
 
 	// dutch
 	"nl-informal" => 	"Nieuw voicemail bericht (extensie: $\{VM_MAILBOX})",
@@ -313,10 +313,10 @@ function voicemail_conf_generate($return=false) {
 format=wav49
 attach=yes
 skipms=3000
-maxsilence=4
+maxsilence=3
 silencethreshold=128
 maxlogins=3
-minsecs=2
+minsecs=4
 charset=UTF-8
 
 fromstring=$product_name Voicemail

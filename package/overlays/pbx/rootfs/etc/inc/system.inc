@@ -467,7 +467,7 @@ function system_load_kernel_modules() {
 	if ($g['platform'] == "COMpact 3000") {
 		$basemodules = array("auerask_cp3k_mb", "auerask_cp3k_fxs", "auerask_cp3k_bri", "bfin_sport_tdm");
 	} else if ($g['platform'] == "Warp") {
-		$basemodules = array("warp_shared", "warp_analog", "pika-brie", "pika-gsm", "pikalcd");
+		$basemodules = array("warp_shared", "warp_analog", "pikabrie", "pika-gsm", "pikalcd");
 	} else if ($g['platform'] == "Deciso") {
 		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc");
 	} else {

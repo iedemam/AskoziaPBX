@@ -180,8 +180,8 @@ $menu['Services'][gettext("Voicemail")]			= array('services_voicemail.php');
 $menu['Services'][gettext("Conferencing")]		= array('services_conferencing.php',
 												'services_conferencing_edit.php');
 if (storage_service_is_active("media")) {
-	$menu['Services'][gettext("Media")]			= array('services_voiceprompts.php',
-												'services_musiconhold.php');
+	$menu['Services'][gettext("Media")]			= array('services_media_voicemessage.php',
+												'services_media_moh.php','services_voiceprompts.php');
 }
 if (storage_service_is_active("faxarchive")) {
 	$menu['Services'][gettext("Fax Archive")]	= array('services_faxarchive.php');
@@ -213,6 +213,7 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 <html>
 <head>
 <title><?=genhtmltitle($pgtitle);?></title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <script src="jqueryui/js/jquery.js" type="text/javascript"></script>
 <script src="jqueryui/js/ui.core.js" type="text/javascript"></script>

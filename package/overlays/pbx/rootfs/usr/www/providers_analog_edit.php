@@ -94,7 +94,7 @@ d_start("providers_analog_edit.php");
 	display_provider_dialpattern_editor($form['dialpattern'], 1);
 	display_incoming_extension_selector(1);
 	d_incoming_fax_editor();
-	d_failover_provider($form['failover']);
+	d_failover_provider($form['failover'],$uniqid);
 	d_spacer();
 
 

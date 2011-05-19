@@ -194,4 +194,54 @@ EOD;
 	return 0;
 }
 
+function check_update() {
+	global $g;
+	global $config;
+	if(file_exists("{$g['etc_path']}/brand.product")) { return; }
+	if(isset($config['system']['disable-update-check'])) { return; }
+	if(!isset($config['system']['lastupdatecheck']))
+	{
+		$config['system']['lastupdatecheck'] = 0;
+	}
+	$post = "&platform=" . rawurlencode($g['platform']) . 
+		"&version=" . rawurlencode(trim(file_get_contents("/etc/version"))) .
+		"&lastcheck=" . rawurlencode($config['system']['lastupdatecheck']);
+		
+	if(!($config['system']['lastupdatecheck']+(60*60*24*7*3) < time()))
+	{
+		return $config['system']['latestversion'];
+	}
+	$rfd = @fsockopen("updates.askozia.com", 80, $errno, $errstr, 3);
+	if ($rfd) {
+		$hdr = "POST /index.php HTTP/1.0\r\n";
+		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
+		$hdr .= "User-Agent: AskoziaPBX-webGUI/2.0\r\n";
+		$hdr .= "Host: updates.askozia.com\r\n";
+		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
+		fwrite($rfd, $hdr);
+		fwrite($rfd, $post);
+		$resp = "";
+		while (!feof($rfd)) {
+			$line = fgets($rfd);
+		}
+		$resp = $line; // only the last line
+		fclose($rfd);
+
+		if(preg_match("/^([0-9])+\.([0-9])+(\.[0-9]){0,2}$/",$resp))
+		{
+			$config['system']['lastupdatecheck'] = time();
+			$config['system']['latestversion'] = $resp;
+			write_config();
+			return $resp;
+		} else {
+			$config['system']['lastupdatecheck'] = time();
+			$config['system']['latestversion'] = "?";
+			write_config();
+			return $resp;
+		}
+	}
+	
+	return "?";
+}
+
 ?>

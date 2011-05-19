@@ -54,7 +54,7 @@ p {
 	/* counteract the i.e. hack, first restore the usual left text alignment */
 	text-align:left;
 	width: 95%;
-	max-width: 1000px;
+	max-width: 850px;
 	min-width: 750px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -657,6 +657,22 @@ a.link_color_black {
 .print_entry {
 	cursor: help; 
 	border-bottom: 1px dashed #000000;
+}
+
+.platform_information_text {
+	font-size: 19px;
+	color: #435370;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #999999;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.platform_information_image {
+	border-top: 1px solid #999999;
+	border-left: 1px solid #999999;
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
 .pkg_updates_img {

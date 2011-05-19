@@ -49,7 +49,7 @@ if (!$current_language) {
 
 bindtextdomain("messages", "./locale");
 bind_textdomain_codeset("messages","utf-8");
-setlocale(LC_MESSAGES, $current_language);
+setlocale(LC_MESSAGES, $current_language, $current_language.'.utf-8');
 putenv("LANG=$current_language");
 textdomain("messages");
 

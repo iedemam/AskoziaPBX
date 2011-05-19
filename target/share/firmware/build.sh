@@ -52,7 +52,7 @@ cp ../../boot/vmlinuz root_stage/boot/
 cp ../initramfs.igz root_stage/boot/
 cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 rm -rf offload_stage/asterisk/agi-bin
-rm -rf offload_stage/asterisk/documentation
+#rm -rf offload_stage/asterisk/documentation
 rm -rf offload_stage/asterisk/firmware
 rm -rf offload_stage/asterisk/images
 rm -rf offload_stage/asterisk/keys

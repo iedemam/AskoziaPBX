@@ -63,7 +63,9 @@ $g = array(
 	"storage_dirty_path" => "/var/run/storage.dirty",
 	"dialplan_dirty_path" => "/var/run/dialplan.dirty",
 	"external_dirty_path" => "/var/run/external.dirty",
-	"virtualfax_dirty_path" => "/var/run/virtualfax.dirty"
+	"virtualfax_dirty_path" => "/var/run/virtualfax.dirty",
+	"moh_dirty_path" => "/var/run/moh.dirty",
+	"vmgreeting_dirty_path" => "/var/run/vmgreeting.dirty"
 );
 
 $defaults = array();

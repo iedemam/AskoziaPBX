@@ -45,6 +45,7 @@ X grub
 
 # asterisk + deps
 X asterisk18
+X libxml2
 X spandsp
 X libtiff
 X libogg
@@ -63,6 +64,7 @@ X dahdi-tools
 X dahdi-linux
 
 # prompt sets
+X da-dk-gsm-base
 X en-us-ulaw-base
 X en-us-ulaw-wakeme
 X en-gb-ulaw-base
@@ -70,6 +72,7 @@ X es-es-ulaw-base
 X fr-ca-ulaw-base
 X de-de-wav-base
 X it-it-gsm-base
+X ja-jp-gsm-base
 X pl-pl-ulaw-base
 X pt-br-wav-base
 X nl-nl-gsm-base
@@ -100,6 +103,7 @@ X ntpclient
 X ezipupdate
 X lsof
 X verifysig
+X sox
 
 # redfone
 X fonulator

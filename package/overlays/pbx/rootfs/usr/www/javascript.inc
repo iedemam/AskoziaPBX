@@ -113,6 +113,13 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
+	if (count($a_items = analog_get_faxes())) {
+		$options[] = array("", gettext("Analog Faxes"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
 	if (count($a_items = external_get_phones())) {
 		$options[] = array("", gettext("External Phones"));
 		foreach ($a_items as $item) {
@@ -238,6 +245,30 @@ function javascript_notifications_editor($part) {
 }
 
 function javascript_voicemail_editor($part) {
+
+	if ($part == "functions") : ?>
+
+		function vmtoemail_toggle() {
+			if (jQuery("#vmtoemail").is(":checked")) {
+				jQuery("#vmtoemail_wrapper").show();
+			} else {
+				jQuery("#vmtoemail_wrapper").hide();
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#vmtoemail").click(vmtoemail_toggle);
+		vmtoemail_toggle();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_voicemail_editor()!
+
+	<? endif;
+}
+
+function javascript_moh_editor($part) {
 
 	if ($part == "functions") : ?>
 
@@ -443,6 +474,54 @@ function javascript_generate_passwd($part) {
 	<? else : ?>
 
 		ERROR: no part defined in javascript_generate_passwd()!
+
+	<? endif;
+}
+
+function javascript_userdefined_vmgreeting_file_upload($part) {
+
+	if ($part == "functions") : ?>
+
+		function slide_fields() {
+			if (jQuery("#custom-vmgreeting").is(":checked")) {
+				jQuery("#vmgreeting_file_upload_wrapper").slideDown();
+			} else {
+				jQuery("#vmgreeting_file_upload_wrapper").slideUp();
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#custom-vmgreeting").click(slide_fields);
+		slide_fields();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_userdefined_vmgreeting_file_upload()!
+
+	<? endif;
+}
+
+function javascript_userdefined_moh_file_upload($part) {
+
+	if ($part == "functions") : ?>
+
+		function slide_fields() {
+			if (jQuery("#custom-moh").is(":checked")) {
+				jQuery("#moh_file_upload_wrapper").slideDown();
+			} else {
+				jQuery("#moh_file_upload_wrapper").slideUp();
+			}
+		}
+
+	<? elseif ($part == "ready") : ?>
+
+		jQuery("#custom-moh").click(slide_fields);
+		slide_fields();
+
+	<? else : ?>
+
+		ERROR: no part defined in javascript_userdefined_moh_file_upload()!
 
 	<? endif;
 }

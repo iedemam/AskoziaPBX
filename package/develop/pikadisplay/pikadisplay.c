@@ -168,7 +168,7 @@ void display_ip(int fd)
 	strcpy(display_text,"IP: ");
 	strcat(display_text,get_ip());
 	
-	strcpy(display_ver,"Version: ");
+	strcpy(display_ver,"AskoziaPBX ");
 	strcat(display_ver,version_string);
 
 	msg.opcode = LCD_DISPLAY_STRING;

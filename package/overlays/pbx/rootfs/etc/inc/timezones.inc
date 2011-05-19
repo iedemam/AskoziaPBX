@@ -42,7 +42,7 @@ $tmp = gettext("Asia");
 $tz['0100'] = array($tmp.", ".gettext("Jakarta"), "WIB-7", "Asia/Jakarta");
 $tz['0200'] = array($tmp.", ".gettext("Singapore"), "SGT-8", "Asia/Singapore");
 $tz['0300'] = array($tmp.", ".gettext("Ulaanbaatar, Mongolia"), "ULAT-8ULAST,M3.5.0/2,M9.5.0/2", "Asia/Ulaanbaatar");
-
+$tz['0350'] = array($tmp.", ".gettext("Tokyo, Japan"), "JST", "Asia/Tokyo");
 $tmp = gettext("Australia");
 $tz['0400'] = array($tmp.", ".gettext("Adelaide"), "CST-9:30CDT-10:30,M10.5.0/02:00:00,M3.5.0/03:00:00", "Australia/Adelaide");
 $tz['0500'] = array($tmp.", ".gettext("Brisbane"), "EST-10", "Australia/Brisbane");

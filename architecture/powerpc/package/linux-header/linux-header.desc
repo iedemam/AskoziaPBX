@@ -12,5 +12,5 @@
 [COPY] GNU General Public License can be found in the file COPYING.
 [COPY] --- T2-COPYRIGHT-NOTE-END ---
 
-[V] 2.6.31.7-7
-[D] 0 linux-pikawarp-2.6.31.7-7.tar.bz2 ftp://ftp.pikatech.com/outgoing/pads/kernel-warp/
+[V] 2.6.31.7-12
+[D] 0 kernel-warp-2.6.31.7-12.tgz ftp://ftp.pikatech.com/outgoing/pads/kernel-warp/

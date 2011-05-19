@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2010-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -103,7 +103,7 @@ if ($_GET['startinstall']) {
 
 function _generate_digium_formats_array($language, $formats) {
 	$url = "http://downloads.asterisk.org/pub/telephony/sounds/releases";
-	$version = "1.4.17";
+	$version = "1.4.21";
 
 	$format_array = array();
 	foreach ($formats as $format) {
@@ -159,7 +159,7 @@ $languages = array(
 		"formats" => _generate_digium_formats_array("fr",
 			array("alaw", "g722", "g729", "gsm", "siren7", "siren14", "sln16", "ulaw", "wav")
 		)
-	)
+	),
 	//),
 	//"de-de" => array(
 	//	"name" => gettext("German"),
@@ -191,6 +191,19 @@ $languages = array(
 	//		)
 	//	)
 	//)
+	"ja_JP" => array(
+		"name" => gettext("Japanese"),
+		"formats" => _generate_digium_formats_array("ja",
+			array("ulaw", "g722", "g729", "gsm", "siren7", "siren14", "sln16", "alaw", "wav")
+		)
+    ),
+	"ru-ru" => array(
+		"name" => gettext("Russia"),
+		"formats" => _generate_digium_formats_array("ru",
+			array("alaw", "g722", "g729", "gsm", "siren7", "siren14", "sln16", "ulaw", "wav")
+		)
+	)
+
 );
 
 
@@ -426,6 +439,15 @@ if ($_GET['action'] == "add") {
 	);
 
 } else {
+	
+	?> <table width="100%" border="0" cellpadding="0" cellspacing="0"> <?
+	
+	display_media_tab_menu();
+	
+	?><tr>
+		<td class="tabcont">
+			<table width="100%" border="0" cellpadding="6" cellspacing="0"><?
+	
 	foreach ($languages as $code => $info) {
 		d_header($info["name"]);
 		d_blanklabel(
@@ -438,7 +460,12 @@ if ($_GET['action'] == "add") {
 		);
 		d_spacer();
 	}
+	
+		?></table>
+		</td>
+	</tr>
+</table><?
 }
 
-d_stop();
+d_scripts();
 include("fend.inc");

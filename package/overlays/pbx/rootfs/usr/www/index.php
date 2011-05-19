@@ -31,12 +31,28 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+if(is_file("/offload/livecd"))
+{
+	$local_version = trim(file_get_contents("/etc/version"));
+	$livecd_version = trim(file_get_contents("/offload/livecd"));
+	
+	if(strlen($livecd_version) > 0)
+	{
+		if($local_version != $livecd_version)
+		{
+			die(sprintf(gettext("Askozia is in update mode. You either have to remove the Live CD or install the newer version of Askozia. (Installed is %s, Live CD version is %s)"), $local_version, $livecd_version));
+		}
+	}
+}
+
 $pgtitle_omit = true;
 
 require("guiconfig.inc");
 
 $product_name = system_get_product_name();
 $pgtitle = array(gettext("$product_name webGUI"));
+
+check_update();
 
 if ($_POST) {
 	$config['system']['notes'] = base64_encode($_POST['notes']);
@@ -46,14 +62,27 @@ if ($_POST) {
 }
 
 ?>
-<?php include("fbegin.inc"); ?>
+<?php
+
+include("fbegin.inc");
+
+# check if asterisk is running
+if(pbx_exec("core show version") == 1)
+{
+	echo display_info_box(gettext("Asterisk hasn't started yet. Please wait for a few minutes. If it won't start you need to reboot AskoziaPBX."),"keep");
+}
+
+?>
 <form action="" method="POST">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr align="center" valign="top"> 
-		<td height="10" colspan="2">&nbsp;</td>
-	</tr>
-	<tr align="center" valign="top"> 
-		<td height="170" colspan="2"><img src="platform.png"></td>
+	<tr align="center" valign="top">
+		<td width="30%" class="platform_information_image" align="center" valign="middle"><img width="150px" src="platform.png"></td>
+		<td width="70%" class="platform_information_text" align="center" valign="middle"><strong><?
+			echo system_get_product_name()." "; readfile("/etc/version");
+			?></strong><?
+			echo gettext("on") . " ";
+			echo htmlspecialchars($g['platform']);
+			?></td>
 	</tr>
 	<tr>
 		<td colspan="2" class="listtopic"><?=gettext("System Information");?></td>
@@ -63,19 +92,18 @@ if ($_POST) {
 		<td width="70%" class="listr">
 			<? echo $config['system']['hostname'] . "." . $config['system']['domain']; ?>
 		</td>
-	</tr>
-	<tr>
-		<td valign="top" class="vncellt"><?=gettext("Version");?></td>
-		<td class="listr"><strong><?
-			readfile("/etc/version");
-			?></strong><?
-			echo gettext("on") . " ";
-			echo htmlspecialchars($g['platform']);
-			?><br><?
-			echo gettext("built on") . " ";
-			readfile("/etc/version.buildtime");
-		?></td>
-	</tr><?
+	</tr>		 <tr>
+         <td valign="top" class="vncellt"><?=gettext("Version");?></td>
+         <td class="listr"><strong><?
+            readfile("/etc/version");
+            ?></strong><?
+            echo gettext("on") . " ";
+            echo htmlspecialchars($g['platform']);
+            ?><br><?
+            echo gettext("built on") . " ";
+            readfile("/etc/version.buildtime");
+         ?></td>
+			        </tr><?
 if ($config['lastchange']) {
 		?><tr>
 			<td class="vncellt"><?=gettext("Last Config Change");?></td>

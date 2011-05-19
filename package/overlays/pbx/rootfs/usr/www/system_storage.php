@@ -85,30 +85,32 @@ include("fbegin.inc");
 			<td width="50%" class="listhdrr"><?=gettext("Services");?></td>
 			<td width="10%" class="list"></td>
 		</tr><?
-
-	foreach ($disks as $disk) {
-
-		?><tr>
-			<td class="listbgl"><?=htmlspecialchars($disk['name']);?></td>
-			<td class="listr"><?=htmlspecialchars($disk['mountpoint']);?></td><?
-			$services = array();
-			if (isset($disk['media'])) {
-				$services[] = gettext("Media");
-			}
-			if (isset($disk['persistence'])) {
-				$services[] = gettext("Persistence");
-			}
-			if (isset($disk['astlogs'])) {
-				$services[] = gettext("Asterisk logs");
-			}
-			if (isset($disk['faxarchive'])) {
-				$services[] = gettext("Fax Archive");
-			}
-			?><td class="listr"><?=htmlspecialchars(implode(", ", $services));?>&nbsp;</td>
-			<td valign="middle" nowrap class="list"><a href="system_storage_edit.php?uniqid=<?=$disk['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit disk");?>" border="0"></a>
-			<a href="?action=forget&uniqid=<?=$disk['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this disk?");?>')"><img src="delete.png" title="<?=gettext("forget disk settings");?>" border="0"></a></td>
-		</tr><?
-
+		
+	if(count($disks) > 0)
+	{
+		foreach ($disks as $disk) {
+    	
+			?><tr>
+				<td class="listbgl"><?=htmlspecialchars($disk['name']);?></td>
+				<td class="listr"><?=htmlspecialchars($disk['mountpoint']);?></td><?
+				$services = array();
+				if (isset($disk['media'])) {
+					$services[] = gettext("Media");
+				}
+				if (isset($disk['persistence'])) {
+					$services[] = gettext("Persistence");
+				}
+				if (isset($disk['astlogs'])) {
+					$services[] = gettext("Asterisk logs");
+				}
+				if (isset($disk['faxarchive'])) {
+					$services[] = gettext("Fax Archive");
+				}
+				?><td class="listr"><?=htmlspecialchars(implode(", ", $services));?>&nbsp;</td>
+				<td valign="middle" nowrap class="list"><a href="system_storage_edit.php?uniqid=<?=$disk['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit disk");?>" border="0"></a>
+				<a href="?action=forget&uniqid=<?=$disk['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this disk?");?>')"><img src="delete.png" title="<?=gettext("forget disk settings");?>" border="0"></a></td>
+			</tr><?
+		}
 	}
 
 		?><tr>

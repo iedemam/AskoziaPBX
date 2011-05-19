@@ -277,13 +277,13 @@ require_once("functions.inc");
 					$prompt_languages = array(
 						"en-us" => gettext("English (US)"),
 						"en-gb" => gettext("English (UK)"),
-						//"da" => gettext("Danish"),
+						"da-dk" => gettext("Danish"),
 						//"nl" => gettext("Dutch"),
 						//"fr" => gettext("French (France)"),
 						"fr-ca" => gettext("French (Canada)"),
 						"de-de" => gettext("German"),
 						"it-it" => gettext("Italian"),
-						//"jp" => gettext("Japanese"),
+						"ja-jp" => gettext("Japanese"),
 						//"pt-br" => gettext("Portuguese (Brazil)"),
 						"ru" => gettext("Russian"),
 						"es-es" => gettext("Spanish (Spain)")

@@ -59,6 +59,8 @@ function extensions_conf_generate($return=false) {
 
 	$product_name = system_get_product_name();
 
+	$disk = storage_service_is_active("media");
+
 	$conf = <<<EOD
 
 [globals]
@@ -92,9 +94,28 @@ exten => noanswer,2,GotoIf($["$\{HASVOICEMAIL}" != ""]?vm-noanswer,1)
 exten => noanswer,3,Hangup()
 exten => vm-noanswer,1,NoOp(Callee has voicemail, sending to voicemail)
 exten => vm-noanswer,2,Wait(1)
+
+EOD;
+
+if(isset($config['media']['custom-vmgreeting']))
+{
+$conf .= <<<EOD
+exten => vm-noanswer,3,Playback($disk[mountpoint]/askoziapbx/media/vmgreeting/vmgreeting_personal)
+exten => vm-noanswer,4,VoiceMail($\{ARG2},s,$\{ARG3})
+exten => vm-noanswer,5,Playback(vm-goodbye)
+exten => vm-noanswer,6,Hangup()
+
+EOD;
+} else {
+$conf .= <<<EOD
 exten => vm-noanswer,3,VoiceMail($\{ARG2},u,$\{ARG3})
 exten => vm-noanswer,4,Playback(vm-goodbye)
 exten => vm-noanswer,5,Hangup()
+
+EOD;
+}
+
+$conf .= <<<EOD
 
 ; hangup
 exten => h,1,NoOp(Entering the main macro h hangup extension)
@@ -331,7 +352,7 @@ EOD;
 		if (isset($p['disabled'])) {
 			continue;
 		}
-		if (count($p['incomingextensionmap'])) {
+		if ($p['defaultfax'] || count($p['incomingextensionmap'])) {
 			$conf .= "; incoming provider : {$p['name']}\n";
 			$conf .= extensions_generate_provider_incoming_context($p);
 		}
@@ -522,14 +543,16 @@ function extensions_generate_provider_incoming_context($p) {
 		$conf .= extensions_generate_extension_from_uniqid($p['defaultfax'], true, false, "fax");
 	}
 
-
 	// form "impromptu group arrays" for destinations mapped to the the same patterns
 	$groupped_mapping = array();
-	foreach ($p['incomingextensionmap'] as $map) {
-		if (!isset($map['incomingpattern'])) {
-			$groupped_mapping['all'][] = $map['destinationid'];
-		} else {
-			$groupped_mapping[$map['incomingpattern']][] = $map['destinationid'];
+	if(count($p['incomingextensionmap']) > 0)
+	{
+		foreach ($p['incomingextensionmap'] as $map) {
+			if (!isset($map['incomingpattern'])) {
+				$groupped_mapping['all'][] = $map['destinationid'];
+			} else {
+				$groupped_mapping[$map['incomingpattern']][] = $map['destinationid'];
+			}
 		}
 	}
 
@@ -551,34 +574,36 @@ function extensions_generate_provider_incoming_context($p) {
 	}
 
 	// generate incoming extensions
-	foreach ($groupped_mapping as $pattern => $destination) {
-		// XXX : hacky way to avoid handling multiple conditions in extensions_generate_extension_from_uniqid
-		// XXX : this could be stored correctly in the first place...
-		if (is_array($destination) && (count($destination) == 1)) {
-			$destination = $destination[0];
-		}
-
-		if ($pattern == "all") {
-			$catchall = array("_[0-9*#]!", "s");
-			// can we include the incoming username as a catch all extension
-			if ($tech == "SIP") {
-				$catchall[] = $p['username'];
+	if(count($groupped_mapping) > 0) {
+		foreach ($groupped_mapping as $pattern => $destination) {
+			// XXX : hacky way to avoid handling multiple conditions in extensions_generate_extension_from_uniqid
+			// XXX : this could be stored correctly in the first place...
+			if (is_array($destination) && (count($destination) == 1)) {
+				$destination = $destination[0];
 			}
-			foreach ($catchall as $catch) {
-				$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-				$conf .= extensions_generate_incoming_callerid_overrides($catch, $p['override'], $p['overridestring']);
-				$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
+    	
+			if ($pattern == "all") {
+				$catchall = array("_[0-9*#]!", "s");
+				// can we include the incoming username as a catch all extension
+				if ($tech == "SIP") {
+					$catchall[] = $p['username'];
+				}
+				foreach ($catchall as $catch) {
+					$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+					$conf .= extensions_generate_incoming_callerid_overrides($catch, $p['override'], $p['overridestring']);
+					$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
+				}
+    	
+			} else if (verify_is_numericint($pattern)) {
+				$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+				$conf .= extensions_generate_incoming_callerid_overrides($pattern, $p['override'], $p['overridestring']);
+				$conf .= extensions_generate_extension_from_uniqid($destination, true, $pattern, $pattern);
+    	
+			} else {
+				$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+				$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
+				$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, '_' . $pattern);
 			}
-
-		} else if (verify_is_numericint($pattern)) {
-			$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-			$conf .= extensions_generate_incoming_callerid_overrides($pattern, $p['override'], $p['overridestring']);
-			$conf .= extensions_generate_extension_from_uniqid($destination, true, $pattern, $pattern);
-
-		} else {
-			$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-			$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
-			$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, '_' . $pattern);
 		}
 	}
 

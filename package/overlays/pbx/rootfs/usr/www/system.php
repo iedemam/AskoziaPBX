@@ -107,10 +107,18 @@ if ($_POST) {
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
 		$config['system']['webgui']['language'] = $_POST['lang'];
+		
+		if($_POST["autocheck_update"] == true)
+		{
+			$config['system']['disable-update-check'] = false;
+		} else {
+			$config['system']['disable-update-check'] = true;
+		}
 
 		if ($_POST['password']) {
 			$config['system']['password'] = $_POST['password'];
 			touch($d_passworddirty_path);
+			touch($d_sysrebootreqd_path);
 		}
 		
 		write_config();
@@ -132,6 +140,12 @@ if ($_POST) {
 		
 		$savemsg = get_std_save_message($retval);
 	}
+}
+
+$form["autocheck_update"] = "";
+if(!isset($config['system']['disable-update-check']))
+{
+	$form["autocheck_update"] = " checked";
 }
 
 
@@ -255,6 +269,18 @@ include("fbegin.inc");
 			<input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>">
 			<br>
 			<span class="vexpl"><?=gettext("Enter a server to synchronize with.");?></span>
+		</td>
+	</tr>
+	<tr> 
+		<td colspan="2" class="list" height="12"></td>
+	</tr>
+	<tr> 
+		<td colspan="2" valign="top" class="listtopic"><?=gettext("Service");?></td>
+	</tr>
+	<tr> 
+		<td valign="top" class="vncell"><?=gettext("Updates");?></td>
+		<td class="vtable">
+			<input name="autocheck_update" type="checkbox" id="autocheck_update" value="yes" <?=$form["autocheck_update"]?>>&nbsp;<span class="vexpl"><?=gettext("Check automatically for new updates.");?></span>
 		</td>
 	</tr>
 	<tr> 

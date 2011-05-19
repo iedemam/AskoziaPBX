@@ -225,11 +225,11 @@ function pbx_restart() {
  * Executes a command using the AMI
  */
 function pbx_exec($cmd, $output=NULL) {
-
+	global $savemsg;
 	$token = md5(uniqid(rand()));
 	$errno = 0;
 	$errstr = 0;
-	$fp = fsockopen("localhost", 5038, &$errno, &$errstr, 20);
+	$fp = @fsockopen("localhost", 5038, &$errno, &$errstr, 20);
 	if (!$fp) {
 	  return 1;
 	}
@@ -1145,6 +1145,7 @@ debug = 0
 dumpcore = no
 internal_timing = yes
 hideconnect = yes
+nocolor=yes
 
 
 EOD;
@@ -1153,10 +1154,15 @@ EOD;
 }
 
 function musiconhold_conf_generate($return=false) {
-
+	global $config;
 	$mohpath = "/offload/asterisk/moh";
 	if ($disk = storage_service_is_active("media")) {
-		$mohpath = $disk['mountpoint'] . "/askoziapbx/media/moh";
+		if(isset($config['media']['custom-moh']))
+		{
+			$mohpath = $disk['mountpoint'] . "/askoziapbx/media/moh-custom";
+		} else {
+			$mohpath = $disk['mountpoint'] . "/askoziapbx/media/moh";
+		}
 	}
 
 	$conf = <<<EOD

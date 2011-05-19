@@ -58,22 +58,25 @@ function storage_get_previously_used_disks() {
 	// make a mount point, then loop through all relevant disks and look for the askoziapbx folder on them
 	exec("mkdir -p /mnt/tmpprevdisk");
 	openlog("storage_get_previously_used_disks()", LOG_INFO, LOG_LOCAL0);
-	foreach ($devices as $device=>$description) {
-		exec("mount -t vfat " . $device . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
-		if ($retval != 0) {
-			syslog(LOG_INFO, "Mounting " . $device . "1 on /mnt/tmpprevdisk returned " . $retval);
-		} else {
-			syslog(LOG_INFO, "Mounted " . $device . "1 on /mnt/tmpprevdisk");
+	if(count($devices) > 0)
+	{
+		foreach ($devices as $device=>$description) {
+			exec("mount -t vfat " . $device . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
+			if ($retval != 0) {
+				syslog(LOG_INFO, "Mounting " . $device . "1 on /mnt/tmpprevdisk returned " . $retval);
+			} else {
+				syslog(LOG_INFO, "Mounted " . $device . "1 on /mnt/tmpprevdisk");
+			}
+	
+			if (file_exists("/mnt/tmpprevdisk/askoziapbx")) {
+				$prev_disks[] = $device;
+				syslog(LOG_INFO, "Previously used AskoziaPBX disk recognized on " . $device . "1");
+			} else {
+				syslog(LOG_INFO, "Disk does not appear to be an AskoziaPBX disk.");
+			}
+			exec("umount /mnt/tmpprevdisk");
+			sleep(1);
 		}
-
-		if (file_exists("/mnt/tmpprevdisk/askoziapbx")) {
-			$prev_disks[] = $device;
-			syslog(LOG_INFO, "Previously used AskoziaPBX disk recognized on " . $device . "1");
-		} else {
-			syslog(LOG_INFO, "Disk does not appear to be an AskoziaPBX disk.");
-		}
-		exec("umount /mnt/tmpprevdisk");
-		sleep(1);
 	}
 	closelog();
 	exec("rmdir /mnt/tmpprevdisk");

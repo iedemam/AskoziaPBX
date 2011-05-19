@@ -173,7 +173,16 @@ if (file_exists($g['analog_dirty_path'])) {
 }
 ?>
 
-<? include("fbegin.inc"); ?>
+<?
+
+include("fbegin.inc");
+
+if(!file_exists("{$g['etc_path']}/brand.product") && (count(sip_get_providers())+count(iax_get_providers())+count(isdn_get_providers())+count(analog_get_providers())) == 0)
+{
+	echo display_info_box(sprintf(gettext("Looking for a <a href='%s' target='_blank'>VoIP provider</a>?"), "http://www.askozia.com/sipprovider"),"keep");
+}
+
+?>
 <script type="text/javascript" charset="utf-8">
 
 	<?=javascript_account_statuses("functions");?>

@@ -45,6 +45,7 @@ X openssl
 
 # asterisk + deps
 #X asterisk18		# error: missing ncurses
+X libxml2
 X spandsp
 X libtiff
 X libogg
@@ -97,6 +98,7 @@ X ntpclient
 X ezipupdate
 X lsof
 X verifysig
+X sox
 
 # file system overlay
 X pbx

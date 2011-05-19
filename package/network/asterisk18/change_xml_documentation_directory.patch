@@ -1,0 +1,111 @@
+--- asterisk-1.6.2.17/main/xmldoc.c.orig	2011-01-04 22:52:41.000000000 +0100
++++ asterisk-1.6.2.17/main/xmldoc.c	2011-05-04 10:48:56.000000000 +0200
+@@ -1753,37 +1753,37 @@
+ 	int globret;
+ 
+ 	snprintf(xmlpattern, xmlpattern_maxlen, "%s/documentation/thirdparty/*-%s.xml",
+-		ast_config_AST_DATA_DIR, documentation_language);
++		ast_config_AST_XMLDOC_DIR, documentation_language);
+ 	if((globret = glob(xmlpattern, GLOB_NOCHECK, NULL, globbuf))) {
+ 		return globret;
+ 	}
+ 
+ 	snprintf(xmlpattern, xmlpattern_maxlen, "%s/documentation/thirdparty/*-%.2s_??.xml",
+-		ast_config_AST_DATA_DIR, documentation_language);
++		ast_config_AST_XMLDOC_DIR, documentation_language);
+ 	if((globret = glob(xmlpattern, GLOB_APPEND | GLOB_NOCHECK, NULL, globbuf))) {
+ 		return globret;
+ 	}
+ 
+ 	snprintf(xmlpattern, xmlpattern_maxlen, "%s/documentation/thirdparty/*-%s.xml",
+-		ast_config_AST_DATA_DIR, default_documentation_language);
++		ast_config_AST_XMLDOC_DIR, default_documentation_language);
+ 	if((globret = glob(xmlpattern, GLOB_APPEND | GLOB_NOCHECK, NULL, globbuf))) {
+ 		return globret;
+ 	}
+ 
+ 	snprintf(xmlpattern, xmlpattern_maxlen, "%s/documentation/*-%s.xml",
+-		ast_config_AST_DATA_DIR, documentation_language);
++		ast_config_AST_XMLDOC_DIR, documentation_language);
+ 	if((globret = glob(xmlpattern, GLOB_APPEND | GLOB_NOCHECK, NULL, globbuf))) {
+ 		return globret;
+ 	}
+ 
+ 	snprintf(xmlpattern, xmlpattern_maxlen, "%s/documentation/*-%.2s_??.xml",
+-		ast_config_AST_DATA_DIR, documentation_language);
++		ast_config_AST_XMLDOC_DIR, documentation_language);
+ 	if((globret = glob(xmlpattern, GLOB_APPEND | GLOB_NOCHECK, NULL, globbuf))) {
+ 		return globret;
+ 	}
+ 
+ 	snprintf(xmlpattern, xmlpattern_maxlen, "%s/documentation/*-%s.xml",
+-		ast_config_AST_DATA_DIR, default_documentation_language);
++		ast_config_AST_XMLDOC_DIR, default_documentation_language);
+ 	globret = glob(xmlpattern, GLOB_APPEND | GLOB_NOCHECK, NULL, globbuf);
+ 
+ 	return globret;
+@@ -1843,12 +1843,12 @@
+ 	globbuf.gl_offs = 0;    /* slots to reserve in gl_pathv */
+ 
+ #if !defined(HAVE_GLOB_NOMAGIC) || !defined(HAVE_GLOB_BRACE) || defined(DEBUG_NONGNU)
+-	xmlpattern_maxlen = strlen(ast_config_AST_DATA_DIR) + strlen("/documentation/thirdparty") + strlen("/*-??_??.xml") + 1;
++	xmlpattern_maxlen = strlen(ast_config_AST_XMLDOC_DIR) + strlen("/documentation/thirdparty") + strlen("/*-??_??.xml") + 1;
+ 	xmlpattern = ast_malloc(xmlpattern_maxlen);
+ 	globret = xml_pathmatch(xmlpattern, xmlpattern_maxlen, &globbuf);
+ #else
+ 	/* Get every *-LANG.xml file inside $(ASTDATADIR)/documentation */
+-	ast_asprintf(&xmlpattern, "%s/documentation{/thirdparty/,/}*-{%s,%.2s_??,%s}.xml", ast_config_AST_DATA_DIR,
++	ast_asprintf(&xmlpattern, "%s/documentation{/thirdparty/,/}*-{%s,%.2s_??,%s}.xml", ast_config_AST_XMLDOC_DIR,
+ 		documentation_language, documentation_language, default_documentation_language);
+ 	globret = glob(xmlpattern, MY_GLOB_FLAGS, NULL, &globbuf);
+ #endif
+--- asterisk-1.6.2.17/include/asterisk/paths.h.orig	2007-12-20 10:55:05.000000000 +0100
++++ asterisk-1.6.2.17/include/asterisk/paths.h	2011-05-04 10:46:59.000000000 +0200
+@@ -25,6 +25,7 @@
+ extern const char *ast_config_AST_MONITOR_DIR;
+ extern const char *ast_config_AST_VAR_DIR;
+ extern const char *ast_config_AST_DATA_DIR;
++extern const char *ast_config_AST_XMLDOC_DIR;
+ extern const char *ast_config_AST_LOG_DIR;
+ extern const char *ast_config_AST_AGI_DIR;
+ extern const char *ast_config_AST_DB;
+--- asterisk-1.6.2.17/main/asterisk.c.orig	2011-05-04 09:38:26.000000000 +0200
++++ asterisk-1.6.2.17/main/asterisk.c	2011-05-04 10:47:01.000000000 +0200
+@@ -229,6 +229,7 @@
+ 	char monitor_dir[PATH_MAX];
+ 	char var_dir[PATH_MAX];
+ 	char data_dir[PATH_MAX];
++	char xmldoc_dir[PATH_MAX];
+ 	char log_dir[PATH_MAX];
+ 	char agi_dir[PATH_MAX];
+ 	char run_dir[PATH_MAX];
+@@ -252,6 +253,7 @@
+ const char *ast_config_AST_MONITOR_DIR	= cfg_paths.monitor_dir;
+ const char *ast_config_AST_VAR_DIR	= cfg_paths.var_dir;
+ const char *ast_config_AST_DATA_DIR	= cfg_paths.data_dir;
++const char *ast_config_AST_XMLDOC_DIR	= cfg_paths.xmldoc_dir;
+ const char *ast_config_AST_LOG_DIR	= cfg_paths.log_dir;
+ const char *ast_config_AST_AGI_DIR	= cfg_paths.agi_dir;
+ const char *ast_config_AST_KEY_DIR	= cfg_paths.key_dir;
+@@ -2853,6 +2855,7 @@
+  	snprintf(cfg_paths.monitor_dir, sizeof(cfg_paths.monitor_dir), "%s/monitor", cfg_paths.spool_dir);
+ 	ast_copy_string(cfg_paths.var_dir, DEFAULT_VAR_DIR, sizeof(cfg_paths.var_dir));
+ 	ast_copy_string(cfg_paths.data_dir, DEFAULT_DATA_DIR, sizeof(cfg_paths.data_dir));
++	ast_copy_string(cfg_paths.xmldoc_dir, DEFAULT_DATA_DIR, sizeof(cfg_paths.xmldoc_dir));
+ 	ast_copy_string(cfg_paths.log_dir, DEFAULT_LOG_DIR, sizeof(cfg_paths.log_dir));
+ 	ast_copy_string(cfg_paths.agi_dir, DEFAULT_AGI_DIR, sizeof(cfg_paths.agi_dir));
+ 	ast_copy_string(cfg_paths.db_path, DEFAULT_DB, sizeof(cfg_paths.db_path));
+@@ -2896,9 +2899,11 @@
+ 			ast_copy_string(cfg_paths.data_dir, v->value, sizeof(cfg_paths.data_dir));
+ 			if (!found.keydir)
+ 				snprintf(cfg_paths.key_dir, sizeof(cfg_paths.key_dir), "%s/keys", v->value);
+-		} else if (!strcasecmp(v->name, "astkeydir")) {
++		} 	else if (!strcasecmp(v->name, "astxmldocdir")) {
++			ast_copy_string(cfg_paths.xmldoc_dir, v->value, sizeof(cfg_paths.xmldoc_dir));
++		}	else if (!strcasecmp(v->name, "astkeydir")) {
+ 			snprintf(cfg_paths.key_dir, sizeof(cfg_paths.key_dir), "%s/keys", v->value);
+-			found.keydir = 1;
++				found.keydir = 1;
+ 		} else if (!strcasecmp(v->name, "astlogdir")) {
+ 			ast_copy_string(cfg_paths.log_dir, v->value, sizeof(cfg_paths.log_dir));
+ 		} else if (!strcasecmp(v->name, "astagidir")) {

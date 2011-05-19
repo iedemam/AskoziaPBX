@@ -36,6 +36,26 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
+function display_vmgreeting_file_upload($filetime)
+{
+	?>
+	<br>&nbsp;<br><span id="vmgreeting_file_upload_wrapper" style="display: none;">
+		<input name="audiofile" type="file" class="formfld" id="audiofile" size="40"><br><span class="vexpl">Supported file formats: wav, ulaw.</span><br><br>
+	<b>Last upload:</b>&nbsp;<?=$filetime?>
+	</span>
+	<?
+}
+
+function display_moh_file_upload($filetime)
+{
+	?>
+	<br>&nbsp;<br><span id="moh_file_upload_wrapper" style="display: none;">
+		<input name="audiofile" type="file" class="formfld" id="audiofile" size="40"><br><span class="vexpl">Supported file formats: wav, ulaw.</span><br><br>
+	<b>Last upload:</b>&nbsp;<?=$filetime?>
+	</span>
+	<?
+}
+
 function display_userdefined_email_notification($subj, $body) {
 
 	?><span id="email_notification_wrapper" style="display: none;">
@@ -77,14 +97,14 @@ function display_gui_language_selector($current_language) {
 		"zh_CN" => "简体中文",
 		"zh_TW" => "繁體中文",
 		"cs_CS" => "Čeština",
-		"da_DA" => "Dansk",
+		"da_DK" => "Dansk",
 		"de_DE" => "Deutsch",
 		"el_GR" => "Ελληνικά",
 		"fr_FR" => "Français",
 		"it_IT" => "Italiano",
 		"pl_PL" => "Polski",
 		"nl_NL" => "Nederlands",
-		"jp_JP" => "日本語",
+		"ja_JP" => "日本語",
 		"pt_BR" => "Português",
 		"fi_FI" => "Suomi",
 		"se_SE" => "Svenska",
@@ -492,13 +512,13 @@ function display_channel_language_selector($current_language, $colspan=1) {
 	$prompt_languages = array(
 		"en-us" => gettext("English (US)"),
 		"en-gb" => gettext("English (UK)"),
-		//"da" => gettext("Danish"),
+		"da-dk" => gettext("Danish"),
 		"nl-nl" => gettext("Dutch"),
 		//"fr" => gettext("French (France)"),
 		"fr-ca" => gettext("French (Canada)"),
 		"de-de" => gettext("German"),
 		"it-it" => gettext("Italian"),
-		//"jp" => gettext("Japanese"),
+		"ja-jp" => gettext("Japanese"),
 		"pl-pl" => gettext("Polish"),
 		"pt-br" => gettext("Portuguese (Brazil)"),
 		"ru-ru" => gettext("Russian"),
@@ -765,6 +785,25 @@ function display_ports_tab_menu() {
 			$tabs = array(
 				gettext('Analog')	=> 'ports_analog.php',
 				gettext('ISDN')		=> 'ports_isdn.php'
+			);
+			dynamic_tab_menu($tabs);
+
+			?></ul>
+		</td>
+	</tr><?
+
+}
+
+function display_media_tab_menu() {
+
+	?><tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav"><?
+
+			$tabs = array(
+				gettext('Voicemail Greeting')		=> 'services_media_voicemessage.php',
+				gettext('Music-on-Hold')		=> 'services_media_moh.php',
+				gettext('Voice Prompts')		=> 'services_voiceprompts.php'
 			);
 			dynamic_tab_menu($tabs);
 
@@ -1173,7 +1212,7 @@ function d_manualattributes_editor($current_manualattributes) {
 	</tr><?
 }
 
-function d_failover_provider($current_failover) {
+function d_failover_provider($current_failover, $exclude_provider) {
 	global $colspan;
 
 	$providers = pbx_get_providers();
@@ -1190,10 +1229,12 @@ function d_failover_provider($current_failover) {
 			?><select name="failover" class="formfld" id="failover">
 				<option><?=gettext("none");?></option><?
 			foreach ($providers as $p) {
-				?><option value="<?=$p['uniqid'];?>" <?
-				if ($p['uniqid'] == $current_failover)
-					echo "selected"; ?>
-				><?=$p['name'];?></option><?
+				if($exclude_provider != $p['uniqid']) {
+					?><option value="<?=$p['uniqid'];?>" <?
+					if ($p['uniqid'] == $current_failover)
+						echo "selected"; ?>
+					><?=$p['name'];?></option><?
+				}
 			}
 			?></select><?
 		}
@@ -1330,6 +1371,7 @@ function d_incoming_fax_editor() {
 			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
 		}
 	}
+	
 	if (count($a_items = virtual_get_faxes())) {
 		foreach ($a_items as $item) {
 			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
