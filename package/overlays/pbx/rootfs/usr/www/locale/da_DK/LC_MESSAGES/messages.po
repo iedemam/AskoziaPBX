@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-14 16:07+0200\n"
+"POT-Creation-Date: 2011-05-17 10:04+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Klaus E. Frederiksen <info@objecta.dk>\n"
 "Language-Team: \n"
@@ -220,6 +220,9 @@ msgstr "Der blev indtastet en ugyldig port."
 msgid "Analog"
 msgstr "Analog"
 
+msgid "Analog Faxes"
+msgstr ""
+
 msgid "Analog Phones"
 msgstr "Analoge telefoner"
 
@@ -247,6 +250,10 @@ msgstr "Argentina"
 msgid "Asia"
 msgstr "Asien"
 
+#, php-format
+msgid "Askozia is in update mode. You either have to remove the Live CD or install the newer version of Askozia. (Installed is %s, Live CD version is %s)"
+msgstr ""
+
 msgid "Askozia&reg;PBX &copy; 2007-2011 IKT. All rights reserved."
 msgstr ""
 
@@ -255,6 +262,9 @@ msgstr "AskoziaPBX test e-mail"
 
 msgid "AskoziaPBX: execute command"
 msgstr "AskoziaPBX: udfør kommando"
+
+msgid "Asterisk hasn't started yet. Please wait for a few minutes. If it won't start you need to reboot AskoziaPBX."
+msgstr ""
 
 msgid "Athens, Greece"
 msgstr "Athen, Grækenland"
@@ -423,6 +433,9 @@ msgstr "Kanal"
 
 msgid "Channels"
 msgstr "Kanaler"
+
+msgid "Check automatically for new updates."
+msgstr ""
 
 msgid "Chile"
 msgstr "Chilensk"
@@ -1233,6 +1246,9 @@ msgstr "Jakarta"
 msgid "Japan"
 msgstr "Japan"
 
+msgid "Japanese"
+msgstr "Japansk"
+
 msgid "Japanese (formal)"
 msgstr "Japansk (formelt)"
 
@@ -1302,6 +1318,10 @@ msgstr "Logbøger"
 
 msgid "London, Great Britain"
 msgstr "London, Stor Britanien"
+
+#, php-format
+msgid "Looking for a <a href='%s' target='_blank'>VoIP provider</a>?"
+msgstr ""
 
 msgid "Loop Start"
 msgstr "Klartone"
@@ -1770,6 +1790,9 @@ msgstr "Rom, Italien"
 msgid "Room Number"
 msgstr "Rum nummer"
 
+msgid "Russia"
+msgstr "Rusland"
+
 msgid "Russia / ex Soviet Union"
 msgstr "Russland / tidl. Sovjetunionen"
 
@@ -1834,6 +1857,9 @@ msgid "Select which ethernet port on this system the gateway is connected to."
 msgstr "Vælg hvilken ethernet port på systemet hvor denne adapter er forbundet til."
 
 msgid "Send all incoming faxes here."
+msgstr ""
+
+msgid "Service"
 msgstr ""
 
 msgid "Service Type"
@@ -2159,6 +2185,10 @@ msgstr "Der er i øjeblikket ingen aktive konferencer."
 msgid "There has been an error verifying the signature on this image."
 msgstr "Der opstod en fejl ved verificering af signatur på dette image."
 
+#, php-format
+msgid "There is an update for your version of AskoziaPBX available: %s<br>Download it at <a target='_blank' href='http://www.askozia.com/software'>www.askozia.com/software</a>"
+msgstr ""
+
 msgid "Third Party"
 msgstr ""
 
@@ -2209,6 +2239,9 @@ msgstr "Tidsudløb"
 
 msgid "Toggle auto-updates"
 msgstr "Skift auto-opdateringer"
+
+msgid "Tokyo, Japan"
+msgstr ""
 
 msgid "Tone Zones"
 msgstr "Tids Zoner"
@@ -2266,6 +2299,9 @@ msgstr "Opdater"
 
 msgid "Update Interval"
 msgstr "Opdateringsinterval"
+
+msgid "Updates"
+msgstr ""
 
 msgid "Upgrade firmware"
 msgstr "Opgradere firmware"
@@ -3216,9 +3252,6 @@ msgstr "skriv:"
 #~ msgid "Is there a NATing device between the pbx and this account? Setting this to 'yes' will work in most cases. The options 'never' and 'route' are only rarely used for certain buggy SIP phones."
 #~ msgstr "Er der en NATing enhed mellem AskoziaPBX og denne konto? Indstil til 'ja' vil virke i de fleste tilfælde. De øvrige muligheder 'aldrig' og 'route' benyttes yderst sjælden og kun i forbindelse med visse SIP telefoner."
 
-#~ msgid "Japanese"
-#~ msgstr "Japansk"
-
 #~ msgid "Keep diagnostics in navigation expanded"
 #~ msgstr "Behold diagnosticering i menu udfoldet"
 
@@ -3406,9 +3439,6 @@ msgstr "skriv:"
 
 #~ msgid "Restore from a Backup Archive"
 #~ msgstr "Reetabler fra et Backup Arkiv"
-
-#~ msgid "Russia"
-#~ msgstr "Rusland"
 
 #~ msgid "SIP proxy host URL or IP address and optional port."
 #~ msgstr "SIP proxy værl URL eller IP adressen og/eller port."
