@@ -455,7 +455,7 @@ function v_extensionpattern($element, $post, $errors) {
 	$dialpattern = $post['extension'];
 
 	//  - invalid character
-	if (!preg_match("/^[XNZ0-9\-\[\]\.\!]+$/", $dialpattern)) {
+	if (!preg_match("/^[XNZ0-9\-\[\]\.\!\*\#]+$/", $dialpattern)) {
 		$errors[] = gettext("Extension contains an invalid character");
 		return;
 	}
