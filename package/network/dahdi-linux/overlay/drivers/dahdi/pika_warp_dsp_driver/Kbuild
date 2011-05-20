@@ -1,0 +1,9 @@
+obj-m += warpdsp.o
+
+warpdsp-objs := warp-dsp.o
+
+EXTRA_CFLAGS += -I$(DAHDI_WARP_DSP_DIR) -I$(DAHDI_WARP_DSP_DIR)/3rdparty -D__COMPILER_VERSION__=500 -DLINUX -DDSP_TYPE=55
+
+#3rd Party source files 
+warpdsp-objs += 3rdparty/GpakApi.o 3rdparty/GpakCust.o
+
