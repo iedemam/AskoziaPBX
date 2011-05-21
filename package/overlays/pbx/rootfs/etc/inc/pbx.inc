@@ -290,7 +290,7 @@ function pbx_is_valid_callerid($id) {
  */
 function pbx_is_valid_callerid_string($string) {
 
-	if(preg_match("/^[a-z0-9]+(\s{1}[a-z0-9]|[a-z0-9])+\s{1}<{1}([0-9]+(\s{1}[0-9]|[0-9])+)+>$/i", $string)) {
+	if(preg_match("/^[a-z0-9]+(\s{1}[a-z0-9]|[a-z0-9])+\s{1}<{1}(\+){0,2}([0-9]+(\s{1}[0-9]|[0-9])+)+>$/i", $string)) {
 		return true;
 	} else {
 		return false;
