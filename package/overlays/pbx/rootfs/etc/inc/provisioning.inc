@@ -71,7 +71,6 @@ function provisioning_configure() {
 	} else {
 		syslog(LOG_INFO, "No existing httpd provisioning server running, not killing.");
 	}
-	//killbyname("snomd");
 
 	// see if any phones are setup with auto-provisioning...
 	$needs_provisioning = false;
@@ -90,7 +89,6 @@ function provisioning_configure() {
 	if ($needs_provisioning) {
 		syslog(LOG_INFO, "Phones needing provisioning found, starting services.");
 		mwexec("httpd -c /etc/httpd_provisioning.conf -u root -p " . $port . " -h /usr/www_provisioning/");
-		//mwexec_bg("/usr/sbin/snomd -l -v -u \"http://" . $laninfo['ipaddr'] . ":" . $port . "/snom.php?mac={mac}\"");
 	} else {
 		syslog(LOG_INFO, "No phones needing provisioning found, not starting services.");
 	}

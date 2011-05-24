@@ -95,9 +95,6 @@ X jquery.progressbar
 X jquery.selectboxes
 X codemirror
 
-# provisioning
-#X snomd
-
 # binaries
 X busybox
 X dropbear
