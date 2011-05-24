@@ -93,6 +93,7 @@ X ntpclient
 X ezipupdate
 X lsof
 X verifysig
+X libmad
 X sox
 
 # file system overlay

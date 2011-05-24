@@ -65,13 +65,15 @@ if($_POST['save'])
 			$filetype = $file_array[count($file_array)-1];
 			
 			// convert it to ulaw if it possible
-			if($filetype != "ulaw" && $filetype != "wav")
+			if($filetype != "ulaw" && $filetype != "wav" && $filetype != "mp3")
 			{
 				$input_errors[] = gettext("The filetype could not be recognized (file upload error).");
 			} else {
 				if($filetype == "wav")
 				{
  					exec("sox -V1 \"".$new_filename."\" -r 8000 -c 1 -t ul \"".$vmgreetingfile."\" 2>&1",$error_msg);
+				} else if($filetype == "mp3") {
+					exec("sox -V1 \"".$new_filename."\" -r 8000 -c 1 -t ul \"".$vmgreetingfile."\" 2>&1",$error_msg);
 				} else {
 					exec("mv ".$new_filename." ".$vmgreetingfile);
 				}

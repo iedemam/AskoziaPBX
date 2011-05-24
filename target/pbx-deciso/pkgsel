@@ -49,6 +49,7 @@ X libxml2
 X spandsp
 X libtiff
 X libogg
+X libmad
 X speex
 X curl
 X libresample

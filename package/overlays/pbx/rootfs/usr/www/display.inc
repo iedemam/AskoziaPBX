@@ -40,7 +40,7 @@ function display_vmgreeting_file_upload($filetime)
 {
 	?>
 	<br>&nbsp;<br><span id="vmgreeting_file_upload_wrapper" style="display: none;">
-		<input name="audiofile" type="file" class="formfld" id="audiofile" size="40"><br><span class="vexpl">Supported file formats: wav, ulaw.</span><br><br>
+		<input name="audiofile" type="file" class="formfld" id="audiofile" size="40"><br><span class="vexpl">Supported file formats: mp3, wav, ulaw.</span><br><br>
 	<b>Last upload:</b>&nbsp;<?=$filetime?>
 	</span>
 	<?
@@ -50,7 +50,7 @@ function display_moh_file_upload($filetime)
 {
 	?>
 	<br>&nbsp;<br><span id="moh_file_upload_wrapper" style="display: none;">
-		<input name="audiofile" type="file" class="formfld" id="audiofile" size="40"><br><span class="vexpl">Supported file formats: wav, ulaw.</span><br><br>
+		<input name="audiofile" type="file" class="formfld" id="audiofile" size="40"><br><span class="vexpl">Supported file formats: mp3, wav, ulaw.</span><br><br>
 	<b>Last upload:</b>&nbsp;<?=$filetime?>
 	</span>
 	<?

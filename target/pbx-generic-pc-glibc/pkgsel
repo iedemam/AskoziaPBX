@@ -48,6 +48,7 @@ X asterisk18
 X spandsp
 X libtiff
 X libogg
+X libmad
 X speex
 X curl
 X libresample
