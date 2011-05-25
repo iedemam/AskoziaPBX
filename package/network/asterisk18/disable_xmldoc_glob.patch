@@ -1,0 +1,11 @@
+--- asterisk-1.8.4/main/xmldoc.c.orig	2011-05-25 10:46:36.000000000 +0200
++++ asterisk-1.8.4/main/xmldoc.c	2011-05-25 10:46:59.000000000 +0200
+@@ -35,6 +35,8 @@
+ #include "asterisk/term.h"
+ #include "asterisk/xmldoc.h"
+ 
++#define DEBUG_NONGNU 1
++
+ #ifdef AST_XML_DOCS
+ 
+ /*! \brief Default documentation language. */

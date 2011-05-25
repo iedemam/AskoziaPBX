@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -1305,6 +1305,11 @@ function d_codemirror($codemirrorcontents) {
 	?><tr> 
 		<td colspan="<?=$colspan + 1 ?>" class="vtable_border">
 			<textarea name="code" id="code" cols="80" rows="30"><?=htmlspecialchars($codemirrorcontents);?></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="<?=$colspan + 1 ?>">
+			<span class="vexpl"><?=gettext("Enter application logic, one command per line as shown: <br> <pre> 1,Answer()\n 2,Echo()\n 3,Hangup()\n </pre> <p>Programming applications for the PBX requires knowledge of the Asterisk dialplan. An effort is made to verify this input but the possibility remains that an install may be rendered useless by faulty application logic. A reference of applications, functions and phones is available in the <strong><a href=\"popup_dialplan_element_library.php\" target=\"_blank\">Element Library</a></strong>.</p>"); ?></span>
 		</td>
 	</tr><?
 }

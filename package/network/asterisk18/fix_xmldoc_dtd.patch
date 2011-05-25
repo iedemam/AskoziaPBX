@@ -1,0 +1,12 @@
+--- asterisk-1.8.4/doc/appdocsxml.dtd      (revision 308789)
++++ asterisk-1.8.4/doc/appdocsxml.dtd      (working copy)
+@@ -30,7 +30,7 @@
+   <!ELEMENT see-also (ref|xi:include)*>
+ 
+   <!ELEMENT ref (#PCDATA)>
+-  <!ATTLIST ref type (application|function|astcli|link|manpage|filename|agi) #REQUIRED>
++  <!ATTLIST ref type (application|function|manager|astcli|link|manpage|filename|agi) #REQUIRED>
+ 
+   <!ELEMENT synopsis (#PCDATA)>
+ 
+

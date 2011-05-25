@@ -4,7 +4,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
