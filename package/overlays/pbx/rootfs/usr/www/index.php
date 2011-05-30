@@ -154,6 +154,34 @@ if ($config['lastchange']) {
 			echo $memUsage . "%";
 		?></td>
 	</tr>
+	<?
+	$storages = storage_get_disks();
+	if(count($storages) > 0) {
+		foreach($storages AS $key => $value)
+		{
+			exec("df -ah | grep ".$value['mountpoint']." | tr -s [:blank:] \" \" | cut -d\" \" -f5 | cut -d\"%\" -f1", $temp_storage_percent);
+			exec("df -ah | grep ".$value['mountpoint']." | tr -s [:blank:] \" \" | cut -d\" \" -f4", $temp_storage_size_total);
+			exec("df -ah | grep ".$value['mountpoint']." | tr -s [:blank:] \" \" | cut -d\" \" -f3", $temp_storage_size_used);
+			$temp_storage_percent = $temp_storage_percent[0];
+			$temp_storage_size_total = $temp_storage_size_total[0];
+			$temp_storage_size_used = $temp_storage_size_used[0];
+			$temp_storage_percent_invert = 100 - round($temp_storage_percent,0);
+			$usageTitle = $temp_storage_size_used . " / " . $temp_storage_size_total;
+	?>
+	<tr>
+		<td class="vncellt"><?=gettext("Storage")?> (<?=htmlspecialchars($value['name'])?>)</td>
+		<td class="listr"><?
+			echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle' title='$usageTitle'>";
+			echo "<img src='bar_blue.gif' height='15' width='" . $temp_storage_percent . "' border='0' align='absmiddle' title='$usageTitle'>";
+			echo "<img src='bar_gray.gif' height='15' width='" . $temp_storage_percent_invert . "' border='0' align='absmiddle' title='$usageTitle'>";
+			echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle' title='$usageTitle'> ";
+			echo $temp_storage_percent . "%";
+		?></td>
+	</tr>
+	<?
+		}
+	}
+	?>
 	<tr>
 		<td class="vncellt" valign="top"><?=gettext("Notes");?></td>
 		<td class="listr">
