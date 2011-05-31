@@ -51,7 +51,7 @@ $g = array(
 	"fax_types" => array("analog", "virtual"),
 	"provider_types" => array("sip", "iax", "isdn", "analog"),
 
-	"storage_services" => array("media", "persistence", "astlogs", "faxarchive"),
+	"storage_services" => array("media", "persistence", "astlogs", "faxarchive", "voicemailarchive"),
 
 	"dahdi_dirty_path" => "/var/run/dahdi.dirty",
 	"analog_dirty_path" => "/var/run/analog.dirty",

@@ -156,6 +156,7 @@ function storage_verify_disk($post, $errors) {
 	v_checkbox('persistence', &$disk, &$post);
 	v_checkbox('astlogs', &$disk, &$post);
 	v_checkbox('faxarchive', &$disk, &$post);
+	v_checkbox('voicemailarchive', &$disk, &$post);
 
 	$trusted = array(
 		'uniqid'

@@ -61,5 +61,12 @@
 			<type>plaintext</type>
 			<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxXYWtlTWUoKQo0LEhhbmd1cCgp</applicationlogic>
 		</application>
+		<application>
+			<name>Voicemail system</name>
+			<extension>000086</extension>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLFZvaWNlbWFpbE1haW4oJHtDQUxMRVJJRChudW0pfSkKMyxIYW5ndXAoKQ==</applicationlogic>
+			<uniqid>DIALPLAN-APPLICATION-7643526674dde509b64232</uniqid>
+			<type>plaintext</type>
+		</application>
 	</dialplan>
 </askoziapbx>

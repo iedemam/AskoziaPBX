@@ -555,10 +555,14 @@ function v_notifications_editor($element, $post, $errors) {
 
 function v_voicemail_editor($element, $post, $errors) {
 	if ($post['vmtoemail'] == 'enabled' && !v_is_email($post['vmtoemailaddress'])) {
-		$errors[] = gettext("Voicemail to e-mail enabled but the e-mail address is invalid or missing.");
+		$errors[] = gettext("Voicemail is enabled but the e-mail address is invalid or missing.");
+	}
+	if ($post['vmtoemail'] == 'enabled' && !v_is_pin($post['vmpin'])) {
+		$errors[] = gettext("The Voicemail PIN requires more than three digits.");
 	}
 	$element['vmtoemail'] = v_strip($post['vmtoemail']);
 	$element['vmtoemailaddress'] = v_strip($post['vmtoemailaddress']);
+	$element['vmpin'] = v_strip($post['vmpin']);
 }
 
 function v_email($element, $post, $errors) {
@@ -570,6 +574,10 @@ function v_email($element, $post, $errors) {
 
 function v_is_email($s) {
 	return eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,6}$", $s);
+}
+
+function v_is_pin($s) {
+	return eregi("^[0-9]{4,10}$", $s);
 }
 
 function v_provider_access_selector($element, $post) {

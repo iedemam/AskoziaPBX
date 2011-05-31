@@ -1126,18 +1126,25 @@ function asterisk_conf_generate($return=false) {
 	if ($disk = storage_service_is_active("astlogs")) {
 		$astlogpath = $disk['mountpoint'] . "/askoziapbx/logs/asterisk";
 	}
+	
+	if ($disk = storage_service_is_active("voicemailarchive")) {
+		$astspoolpath = "astspooldir => ".$disk['mountpoint'] . "/askoziapbx/voicemailarchive";
+	} else {
+		$astspoolpath = "astspooldir => /var/asterisk/spool";
+	}
+	
 	$conf = <<<EOD
 [directories]
 astetcdir => /etc/asterisk
 astagidir => /etc/asterisk/agi-bin
 astdbdir => $dbpath
 astkeydir => /etc/asterisk
-astspooldir => /var/asterisk/spool
 astrundir => /var/asterisk/run
 astlogdir => $astlogpath
 astmoddir => /offload/asterisk/modules
 astvarlibdir => $datapath
 astdatadir => $datapath
+$astspoolpath
 
 [options]
 verbose = 3
@@ -1146,6 +1153,7 @@ dumpcore = no
 internal_timing = yes
 hideconnect = yes
 nocolor=yes
+lockmode=flock
 
 
 EOD;

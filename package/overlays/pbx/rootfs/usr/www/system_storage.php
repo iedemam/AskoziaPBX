@@ -106,6 +106,9 @@ include("fbegin.inc");
 				if (isset($disk['faxarchive'])) {
 					$services[] = gettext("Fax Archive");
 				}
+				if (isset($disk['voicemailarchive'])) {
+					$services[] = gettext("Voicemail");
+				}
 				?><td class="listr"><?=htmlspecialchars(implode(", ", $services));?>&nbsp;</td>
 				<td valign="middle" nowrap class="list"><a href="system_storage_edit.php?uniqid=<?=$disk['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit disk");?>" border="0"></a>
 				<a href="?action=forget&uniqid=<?=$disk['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to forget this disk?");?>')"><img src="delete.png" title="<?=gettext("forget disk settings");?>" border="0"></a></td>

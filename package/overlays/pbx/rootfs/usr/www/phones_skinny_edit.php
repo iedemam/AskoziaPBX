@@ -110,7 +110,7 @@ d_start("phones_skinny_edit.php");
 
 	d_notifications_editor($form['emailcallnotify'], $form['emailcallnotifyaddress']);
 
-	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress']);
+	d_voicemail_editor($form['vmtoemail'], $form['vmtoemailaddress'], $form['vmpin']);
 	d_spacer();
 
 

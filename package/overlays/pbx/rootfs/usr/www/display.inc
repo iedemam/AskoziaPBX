@@ -1132,7 +1132,7 @@ function d_provider_access_selector($current_providers) {
 	</tr><?
 }
 
-function d_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress) {
+function d_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress, $current_vmpin) {
 	global $scripts, $colspan;
 
 	$scripts['javascript_voicemail_editor'] = true;
@@ -1144,9 +1144,12 @@ function d_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress) {
 			if ($current_vmtoemail == "enabled") {
 				echo "checked";
 			}
-			?>>&nbsp;<?=gettext("enable voicemail to e-mail");?>
+			?>>&nbsp;<?=gettext("enable voicemail");?><br>&nbsp;
 			<span name="vmtoemail_wrapper" id="vmtoemail_wrapper">
-				<br><?=gettext("address");?>:&nbsp;<input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
+				<br><?=gettext("PIN");?>:<br><input name="vmpin" id="vmpin" type="text" class="formfld" size="15" value="<?=htmlspecialchars($current_vmpin);?>"><br>
+				<br><span class="vexpl"><?=gettext("Note:") . " " .
+					gettext("Users can access the voicemail system by entering the following number and the PIN above: ");?><b>000086 (0000VM)</b></span><br>
+				<br><?=gettext("E-Mail address");?>:<br><input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
 				<br>
 				<br><span class="vexpl"><?=gettext("Note:") . " " .
 					gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work.");?></span>

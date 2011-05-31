@@ -365,7 +365,8 @@ function iax_generate_default_phone() {
 	$phone['secret'] = util_pwgen();
 	$phone['codec'] = $defaults['accounts']['codec'];
 	$phone['authentication'] = $defaults['iax']['authentication'];
-
+	$phone['vmpin'] = "0000";
+	
 	return $phone;
 }
 

@@ -403,7 +403,8 @@ function sip_generate_default_phone() {
 	$phone['codec'] = $defaults['accounts']['codec'];
 	$phone['dtmfmode'] = $defaults['sip']['dtmfmode'];
 	$phone['natmode'] = $defaults['sip']['natmode'];
-
+	$phone['vmpin'] = "0000";
+	
 	return $phone;
 }
 

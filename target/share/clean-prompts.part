@@ -18,6 +18,9 @@ done
 for FILE in `find offload_stage/asterisk/sounds/ -name *.wav`
 do
 NEW=`echo $FILE | sed -e 's/wav/ulaw/'`
-sox -V "$FILE" -r 8000 -c 1 -t ul "$NEW"
-rm -f "$FILE"
+
+if [ -f $FILE ]; then
+	sox -V "$FILE" -r 8000 -c 1 -t ul "$NEW"
+	rm -f "$FILE"
+fi
 done

@@ -196,6 +196,13 @@ if (!$initialformat && !count($unassigneddisks)) {
 		d_blanklabel(gettext("Fax Archive"),
 			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['faxarchive']));
 	}
+	// Voicemail Archive
+	if (!$assignedservices['voicemailarchive']) {
+		d_checkbox(gettext("Voicemail"), gettext("store voicemail on disk"), "voicemailarchive");
+	} else {
+		d_blanklabel(gettext("Voicemail"),
+			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['voicemailarchive']));
+	}
 	d_spacer();
 
 

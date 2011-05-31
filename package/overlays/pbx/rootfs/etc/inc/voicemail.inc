@@ -307,10 +307,18 @@ function voicemail_conf_generate($return=false) {
 	$email_config = notifications_get_email_configuration();
 
 	$product_name = system_get_product_name();
+	
+	if (storage_service_is_active("voicemailarchive")) {
+		$format_voicemail = "format=wav49|ulaw";
+	} else {
+		$format_voicemail = "format=wav49";
+	}
+	
 	$conf = <<<EOD
 
 [general]
-format=wav49
+$format_voicemail
+attachfmt=wav
 attach=yes
 skipms=3000
 maxsilence=3
@@ -318,6 +326,7 @@ silencethreshold=128
 maxlogins=3
 minsecs=4
 charset=UTF-8
+externpasscheck=/usr/www/external_voicemail_passwordchange.php
 
 fromstring=$product_name Voicemail
 
@@ -371,9 +380,13 @@ EOD;
 		if ($p['vmtoemail'] != "enabled") {
 			continue;
 		}
-		// is eliminating VoiceMailMain from the dialplan enough to keep
-		// this default password from being a privacy risk?
-		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['vmtoemailaddress']},,delete=yes\n";
+		if(strlen($p['vmpin']) == 0) { $p['vmpin'] = "0000"; }
+		
+		if (storage_service_is_active("voicemailarchive")) {
+			$conf .= "{$p['extension']} => {$p['vmpin']},{$p['callerid']},{$p['vmtoemailaddress']}\n";
+		} else {
+			$conf .= "{$p['extension']} => {$p['vmpin']},{$p['callerid']},{$p['vmtoemailaddress']},,delete\n";
+		}
 	}
 
 	// external phones
@@ -382,7 +395,13 @@ EOD;
 		if ($p['vmtoemail'] != "enabled") {
 			continue;
 		}
-		$conf .= "{$p['extension']} => 0000,{$p['callerid']},{$p['vmtoemailaddress']},,delete=yes\n";
+		if(strlen($p['vmpin']) == 0) { $p['vmpin'] = "0000"; }
+		
+		if (storage_service_is_active("voicemailarchive")) {
+			$conf .= "{$p['extension']} => {$p['vmpin']},{$p['callerid']},{$p['vmtoemailaddress']}\n";
+		} else {
+			$conf .= "{$p['extension']} => {$p['vmpin']},{$p['callerid']},{$p['vmtoemailaddress']},,delete\n";
+		}
 	}
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/voicemail.conf", $conf);

@@ -2,7 +2,7 @@ prompts_extract() {
 	echo "Extracting $1 ($taropt) ... "
 	mkdir $pkg-$ver
 	cd $pkg-$ver
-	tar -v $taropt $1 --wildcards --no-anchored 'agent-pass.*' 'auth-thankyou.*' 'auth-incorrect.*' 'conf-onlyperson.*' 'conf-getpin.*' 'conf-invalidpin.*' 'conf-kicked.*' 'pbx-transfer.*' 'pbx-invalid.*' 'pbx-invalidpark.*' 'vm-intro.*' 'vm-theperson.*' 'vm-isunavail.*' 'vm-isonphone.*' 'vm-goodbye.*' 'vm-password.*' 'digits/0.*' 'digits/1.*' 'digits/2.*' 'digits/3.*' 'digits/4.*' 'digits/5.*' 'digits/6.*' 'digits/7.*' 'digits/8.*' 'digits/9.*' | sed 's,^,$pkg-$ver/,' > ../untar.txt
+	tar -v $taropt $1 --wildcards --no-anchored 'agent-pass.*' 'auth-thankyou.*' 'auth-incorrect.*' 'conf-onlyperson.*' 'conf-getpin.*' 'conf-invalidpin.*' 'conf-kicked.*' 'pbx-transfer.*' 'pbx-invalid.*' 'pbx-invalidpark.*' 'vm*' 'digits/*' | sed 's,^,$pkg-$ver/,' > ../untar.txt
 	if [[ $prompt_language == "en-us" ]] ; then
 		tar -v $taropt $1 --wildcards --no-anchored 'beep*' 'silence/1.*' 'silence/5.*' 'digits/a-m.*' 'digits/p-m.*' 'digits/oclock.*' 'digits/oh.*' 'digits/10.*' 'digits/11.*' 'digits/12.*' 'digits/13.*' 'digits/14.*' 'digits/15.*' 'digits/16.*' 'digits/17.*' 'digits/18.*' 'digits/19.*' 'digits/20.*' 'digits/30.*' 'digits/40.*' 'digits/50.*' | sed 's,^,$pkg-$ver/,' >> ../untar.txt
 	fi

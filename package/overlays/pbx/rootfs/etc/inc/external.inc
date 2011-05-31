@@ -94,7 +94,8 @@ function external_generate_default_phone() {
 	$phone['uniqid'] = "EXTERNAL-PHONE-" . uniqid(rand());
 
 	$phone['dialprovider'] = $defaults['accounts']['phones']['dialprovider'];
-
+	$phone['vmpin'] = "0000";
+	
 	return $phone;
 }
 
