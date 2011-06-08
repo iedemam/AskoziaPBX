@@ -268,6 +268,8 @@ EOD;
 		
 		if($p['fromuser']) {
 			$conf .= "fromuser={$p['fromuser']}\n";
+		} else {
+			$conf .= "fromuser={$p['username']}\n";
 		}
 
 		$conf .= "host={$p['host']}\n";

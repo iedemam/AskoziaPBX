@@ -151,6 +151,20 @@ exten => s,n,System(echo "$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALL
 exten => s,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < $\{TMPMAILFILE})
 exten => s,n,System(rm $\{TMPMAILFILE})
 
+[macro-checkcf]
+exten => s,1,NoOp(Checking CF for $\{ARG1})
+exten => s,n,Set(LOCAL(extension)=$\{ARG1})
+exten => s,n,Set(LOCAL(cf_destination)=$\{DB(CF/$\{extension})})
+exten => s,n,GotoIf($["$\{cf_destination}" != ""]?has-cf,1:return,1)
+
+exten => has-cf,1,GosubIf($[$\{cf_destination} = $\{CALLERID(num)}]?return,1)
+exten => has-cf,n,Set(LOOP=$[$\{LOOP}+1])
+exten => has-cf,n,NoOp(LOOP: $\{LOOP})
+exten => has-cf,n,GosubIf($[$\{LOOP} < 3]?macro-checkcf,s,1($\{cf_destination}):return,1)
+
+exten => return,1,Set(CF=no)
+exten => return,n,Goto(internal,$\{extension},1)
+
 
 EOD;
 
@@ -760,11 +774,15 @@ function extensions_generate_internal_phone_extension($p, $from_public=false, $r
 	if ($p['ringlength'] != "indefinitely") {
 		$ringlength = $p['ringlength'];
 	}
-
+	
+	// Call Forwarding
+	$conf .= "exten => ".$exten.",n,Set(LOOP=0)\n".
+		 	 "exten => ".$exten.",n,GosubIf($[\"$\{CF}\" != \"no\"]?macro-checkcf,s,1(".$phone_exten."))\n";
+	
 	$conf .= extensions_generate_call_notification_variables($exten, $p);
 	if ($tech == "SIP" || $tech == "IAX2") {
 		$conf .= "exten => $exten,n,Macro(main,$tech/$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
-
+		
 	} else if ($tech == "SKINNY") {
 		$conf .= "exten => $exten,n,Macro(main,SKINNY/$phone_exten@$phone_exten,$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 

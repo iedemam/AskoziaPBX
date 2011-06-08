@@ -35,6 +35,7 @@
 	<dialplan>
 		<application>
 			<name>Read IP</name>
+			<descr>0000IP</descr>
 			<extension>000047</extension>
 			<uniqid>DIALPLAN-APPLICATION-16151900034c62d16c92eba</uniqid>
 			<type>plaintext</type>
@@ -43,12 +44,14 @@
 		<application>
 			<name>Echo</name>
 			<extension>00003246</extension>
+			<descr>0000ECHO</descr>
 			<uniqid>DIALPLAN-APPLICATION-14520268874c62d16c931be</uniqid>
 			<type>plaintext</type>
 			<applicationlogic>MSxBbnN3ZXIoKQoyLEVjaG8oKQozLEhhbmd1cCgp</applicationlogic>
 		</application>
 		<application>
 			<name>Milliwatt</name>
+			<descr>0000MILLI</descr>
 			<extension>000064554</extension>
 			<uniqid>DIALPLAN-APPLICATION-7375249804c62d16c9336d</uniqid>
 			<type>plaintext</type>
@@ -56,6 +59,7 @@
 		</application>
 		<application>
 			<name>WakeMe</name>
+			<descr>0000WAKE</descr>
 			<extension>00009253</extension>
 			<uniqid>DIALPLAN-APPLICATION-4653015014c62d16c93512</uniqid>
 			<type>plaintext</type>
@@ -63,9 +67,18 @@
 		</application>
 		<application>
 			<name>Voicemail system</name>
+			<descr>0000VM</descr>
 			<extension>000086</extension>
 			<applicationlogic>MSxBbnN3ZXIoKQoyLFZvaWNlbWFpbE1haW4oJHtDQUxMRVJJRChudW0pfSkKMyxIYW5ndXAoKQ==</applicationlogic>
 			<uniqid>DIALPLAN-APPLICATION-7643526674dde509b64232</uniqid>
+			<type>plaintext</type>
+		</application>
+		<application>
+			<name>Call forwarding</name>
+			<descr>0000CF</descr>
+			<extension>000023</extension>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLEdvdG9JZigkWyIke0RCKENGLyR7Q0FMTEVSSUQobnVtKX0pfSIgIT0gIiJdP3JlbW92ZWNmOnNldGNmbnVtYmVyKQozKHNldGNmbnVtYmVyKSxQbGF5YmFjayh2bS1lbnRlci1udW0tdG8tY2FsbCkKNCxSZWFkKENGX0RFU1RJTkFUSU9OLGJlZXAsLCwsNSkKNSxHb3RvSWYoJFske0NGX0RFU1RJTkFUSU9OfSA9ICR7RVhURU59XT85KQo2LFNldChEQihDRi8ke0NBTExFUklEKG51bSl9KT0ke0NGX0RFU1RJTkFUSU9OfSkKNyxQbGF5YmFjayhhdXRoLXRoYW5reW91KQo4LEhhbmd1cCgpCjksUGxheWJhY2soaW52YWxpZCkKMTAsSGFuZ3VwKCkKMTEocmVtb3ZlY2YpLFNldChvbGQ9JHtJRigke0RCX0VYSVNUUyhDRi8ke0NBTExFUklEKG51bSl9KX0pPyR7REJfREVMRVRFKENGLyR7Q0FMTEVSSUQobnVtKX0pfX0pCjEyLFBsYXliYWNrKGFza296aWEtbXVzaWMvYXNrb3ppYV9qaW5nbGVfc2hvcnQpCjEzLEdvdG9JZigkWyIke1BMQVlCQUNLU1RBVFVTfSIgPSAiU1VDQ0VTUyJdP2hhbmd1cDpwbGF5YWx0ZXJuYXRpdmUpCjE0KHBsYXlhbHRlcm5hdGl2ZSksUGxheVRvbmVzKCE1MDAvMTAwLDAvMTAwLCE1MDAvMTAwKQoxNSxXYWl0KDEpCjE2KGhhbmd1cCksSGFuZ3VwKCk=</applicationlogic>
+			<uniqid>DIALPLAN-APPLICATION-14778225794decb30253418</uniqid>
 			<type>plaintext</type>
 		</application>
 	</dialplan>
