@@ -34,8 +34,16 @@
 	</conferencing>
 	<dialplan>
 		<application>
+			<name>Read extension number</name>
+			<extension>000063</extension>
+			<descr>0000ME - Reads back the extension being used to call the application.</descr>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLFBsYXliYWNrKGJlZXApCjMsU2F5RGlnaXRzKCR7Q0FMTEVSSUQobnVtYmVyKX0pCm4sUGxheWJhY2soc2lsZW5jZS8xKQpuLFBsYXliYWNrKHNpbGVuY2UvMSkKbixQbGF5YmFjayhzaWxlbmNlLzEpCm4sR290bygyKQ==</applicationlogic>
+			<uniqid>APPLICATION-MAPPING-17266106704d401be865273</uniqid>
+			<type>plaintext</type>
+		</application>
+		<application>
 			<name>Read IP</name>
-			<descr>0000IP</descr>
+			<descr>0000IP - Reads back the system IP address.</descr>
 			<extension>000047</extension>
 			<uniqid>DIALPLAN-APPLICATION-16151900034c62d16c92eba</uniqid>
 			<type>plaintext</type>
@@ -43,31 +51,23 @@
 		</application>
 		<application>
 			<name>Echo</name>
+			<descr>0000ECHO - Echos audio and video back to the caller as soon as it is received. Used to test connection delay.</descr>
 			<extension>00003246</extension>
-			<descr>0000ECHO</descr>
 			<uniqid>DIALPLAN-APPLICATION-14520268874c62d16c931be</uniqid>
 			<type>plaintext</type>
 			<applicationlogic>MSxBbnN3ZXIoKQoyLEVjaG8oKQozLEhhbmd1cCgp</applicationlogic>
 		</application>
 		<application>
 			<name>Milliwatt</name>
-			<descr>0000MILLI</descr>
+			<descr>0000MILLI - Generates a constant 1000Hz tone. Used to test connection quality.</descr>
 			<extension>000064554</extension>
 			<uniqid>DIALPLAN-APPLICATION-7375249804c62d16c9336d</uniqid>
 			<type>plaintext</type>
 			<applicationlogic>MSxBbnN3ZXIoKQoyLE1pbGxpd2F0dCgpCjMsSGFuZ3VwKCk=</applicationlogic>
 		</application>
 		<application>
-			<name>WakeMe</name>
-			<descr>0000WAKE</descr>
-			<extension>00009253</extension>
-			<uniqid>DIALPLAN-APPLICATION-4653015014c62d16c93512</uniqid>
-			<type>plaintext</type>
-			<applicationlogic>MSxBbnN3ZXIoKQoyLFNldChDSEFOTkVMKGxhbmd1YWdlKT1lbi11cykKMyxXYWtlTWUoKQo0LEhhbmd1cCgp</applicationlogic>
-		</application>
-		<application>
 			<name>Voicemail system</name>
-			<descr>0000VM</descr>
+			<descr>0000VM - Voicemail system</descr>
 			<extension>000086</extension>
 			<applicationlogic>MSxBbnN3ZXIoKQoyLFZvaWNlbWFpbE1haW4oJHtDQUxMRVJJRChudW0pfSkKMyxIYW5ndXAoKQ==</applicationlogic>
 			<uniqid>DIALPLAN-APPLICATION-7643526674dde509b64232</uniqid>
@@ -75,10 +75,18 @@
 		</application>
 		<application>
 			<name>Call forwarding</name>
-			<descr>0000CF</descr>
+			<descr>0000CF - Activate and deactivate call forwarding.</descr>
 			<extension>000023</extension>
-			<applicationlogic>MSxBbnN3ZXIoKQoyLEdvdG9JZigkWyIke0RCKENGLyR7Q0FMTEVSSUQobnVtKX0pfSIgIT0gIiJdP3JlbW92ZWNmOnNldGNmbnVtYmVyKQozKHNldGNmbnVtYmVyKSxQbGF5YmFjayh2bS1lbnRlci1udW0tdG8tY2FsbCkKNCxSZWFkKENGX0RFU1RJTkFUSU9OLGJlZXAsLCwsNSkKNSxHb3RvSWYoJFske0NGX0RFU1RJTkFUSU9OfSA9ICR7RVhURU59XT85KQo2LFNldChEQihDRi8ke0NBTExFUklEKG51bSl9KT0ke0NGX0RFU1RJTkFUSU9OfSkKNyxQbGF5YmFjayhhdXRoLXRoYW5reW91KQo4LEhhbmd1cCgpCjksUGxheWJhY2soaW52YWxpZCkKMTAsSGFuZ3VwKCkKMTEocmVtb3ZlY2YpLFNldChvbGQ9JHtJRigke0RCX0VYSVNUUyhDRi8ke0NBTExFUklEKG51bSl9KX0pPyR7REJfREVMRVRFKENGLyR7Q0FMTEVSSUQobnVtKX0pfX0pCjEyLFBsYXliYWNrKGFza296aWEtbXVzaWMvYXNrb3ppYV9qaW5nbGVfc2hvcnQpCjEzLEdvdG9JZigkWyIke1BMQVlCQUNLU1RBVFVTfSIgPSAiU1VDQ0VTUyJdP2hhbmd1cDpwbGF5YWx0ZXJuYXRpdmUpCjE0KHBsYXlhbHRlcm5hdGl2ZSksUGxheVRvbmVzKCE1MDAvMTAwLDAvMTAwLCE1MDAvMTAwKQoxNSxXYWl0KDEpCjE2KGhhbmd1cCksSGFuZ3VwKCk=</applicationlogic>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLEdvdG9JZigkWyIke0RCKENGLyR7Q0FMTEVSSUQobnVtKX0pfSIgIT0gIiJdP3JlbW92ZWNmOnNldGNmbnVtYmVyKQozKHNldGNmbnVtYmVyKSxQbGF5YmFjayh2bS1lbnRlci1udW0tdG8tY2FsbCkKNCxSZWFkKENGX0RFU1RJTkFUSU9OLGJlZXAsLCwsNSkKNSxHb3RvSWYoJFske0NGX0RFU1RJTkFUSU9OfSA9ICR7RVhURU59XT8xMCkKNixTZXQoREIoQ0YvJHtDQUxMRVJJRChudW0pfSk9JHtDRl9ERVNUSU5BVElPTn0pCjcsU2F5RGlnaXRzKCR7Q0ZfREVTVElOQVRJT059KQo4LFBsYXliYWNrKGF1dGgtdGhhbmt5b3UpCjksSGFuZ3VwKCkKMTAsUGxheWJhY2soaW52YWxpZCkKMTEsSGFuZ3VwKCkKMTIocmVtb3ZlY2YpLFNldChvbGQ9JHtJRigke0RCX0VYSVNUUyhDRi8ke0NBTExFUklEKG51bSl9KX0pPyR7REJfREVMRVRFKENGLyR7Q0FMTEVSSUQobnVtKX0pfX0pCjEzLFBsYXliYWNrKGFza296aWEtbXVzaWMvYXNrb3ppYV9qaW5nbGVfc2hvcnQpCjE0LEdvdG9JZigkWyIke1BMQVlCQUNLU1RBVFVTfSIgPSAiU1VDQ0VTUyJdP2hhbmd1cDpwbGF5YWx0ZXJuYXRpdmUpCjE1KHBsYXlhbHRlcm5hdGl2ZSksUGxheVRvbmVzKCE1MDAvMTAwLDAvMTAwLCE1MDAvMTAwKQoxNixXYWl0KDEpCjE3KGhhbmd1cCksSGFuZ3VwKCk=</applicationlogic>
 			<uniqid>DIALPLAN-APPLICATION-14778225794decb30253418</uniqid>
+			<type>plaintext</type>
+		</application>
+		<application>
+			<name>Weasels</name>
+			<extension>00009327357</extension>
+			<descr>0000WEASELS</descr>
+			<applicationlogic>MSxBbnN3ZXIoKQoyLFBsYXliYWNrKHR0LXdlYXNlbHMpCjMsSGFuZ3VwKCk=</applicationlogic>
+			<uniqid>DIALPLAN-APPLICATION-13903502574df9cf4ca35a0</uniqid>
 			<type>plaintext</type>
 		</application>
 	</dialplan>

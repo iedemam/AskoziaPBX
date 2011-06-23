@@ -82,9 +82,6 @@ X ru-ru-alaw-base
 # music-on-hold
 X freeplay-ulaw-base
 
-# askozia
-X askozia-music
-
 # webgui
 X php4
 X stunnel

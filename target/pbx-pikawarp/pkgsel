@@ -58,6 +58,7 @@ X curl
 X libresample
 X sqlite
 X portaudio
+X humbug
 
 # text2speech
 X flite
@@ -70,7 +71,6 @@ X dahdi-linux
 # prompt sets
 X da-dk-gsm-base
 X en-us-ulaw-base
-X en-us-ulaw-wakeme
 X en-gb-ulaw-base
 X es-es-ulaw-base
 X fr-ca-ulaw-base
@@ -87,7 +87,7 @@ X freeplay-ulaw-base
 
 # webgui
 X php4
-X sslwrap
+X stunnel
 X ajaxcgi
 X jquery.ui
 X jquery.preloadimages
@@ -103,6 +103,7 @@ X msmtp
 X ntpclient
 X ezipupdate
 X lsof
+X verifysig
 X sox
 
 # pika
