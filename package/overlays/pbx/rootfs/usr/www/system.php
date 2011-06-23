@@ -6,7 +6,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -107,6 +107,8 @@ if ($_POST) {
 		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
 		$config['system']['webgui']['language'] = $_POST['lang'];
+		$config['system']['webgui']['protocol'] = $_POST['webguiproto'];
+		$config['system']['webgui']['port'] = $_POST['webguiport'];
 		
 		if($_POST["autocheck_update"] == true)
 		{
@@ -125,7 +127,9 @@ if ($_POST) {
 		
 		if (($oldwebguiproto != $config['system']['webgui']['protocol']) ||
 			($oldwebguiport != $config['system']['webgui']['port']))
+		{
 			touch($d_sysrebootreqd_path);
+		}
 		
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
@@ -171,7 +175,7 @@ include("fbegin.inc");
 			<input name="password2" type="password" class="formfld" id="password2" size="20">
 			&nbsp;(<?=gettext("confirmation");?>) <br> <span class="vexpl"><?=gettext("If you want to change the password for accessing the webGUI, enter it here twice.");?></span>
 		</td>
-	</tr><? /*
+	</tr>
 	<tr> 
 		<td valign="top" class="vncell"><?=gettext("webGUI protocol");?></td>
 		<td class="vtable">
@@ -179,7 +183,7 @@ include("fbegin.inc");
 			<?=gettext("HTTP");?> &nbsp;&nbsp;&nbsp; <input type="radio" name="webguiproto" value="https" <? if ($pconfig['webguiproto'] == "https") echo "checked"; ?>><?=gettext("HTTPS");?>
 		</td>
 	</tr>
-	*/ ?><tr> 
+	<tr> 
 		<td valign="top" class="vncell"><?=gettext("webGUI port");?></td>
 		<td class="vtable">
 			<input name="webguiport" type="text" class="formfld" id="webguiport" size="5" value="<?=htmlspecialchars($pconfig['webguiport']);?>">
@@ -286,8 +290,7 @@ include("fbegin.inc");
 	<tr> 
 		<td valign="top">&nbsp;</td>
 		<td>
-			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
-			<input name="webguiproto" id="webguiproto" type="hidden" value="http">
+			<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 		</td>
 	</tr>
 </table>

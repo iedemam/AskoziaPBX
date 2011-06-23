@@ -119,7 +119,7 @@ function system_update_httpd_settings() {
 	if ($pid) {
 		killbypidnumber($pid);
 	}
-	killbyname("sslwrap");
+	killbyname("stunnel");
 
 	// setup httpd with password protection and a php interpreter
 	$fd = fopen("{$g['etc_path']}/httpd.conf", "w");
@@ -129,6 +129,7 @@ function system_update_httpd_settings() {
 	}
 	fwrite($fd,
 		"/:" . $username . ":" . $config['system']['password'] . "\n".
+		"/logout.php:logout:logout\n".
 		"*.php:/usr/bin/php\n".
 		"I:index.php\n".
 		"\n"
@@ -159,9 +160,11 @@ function system_update_httpd_settings() {
 		} else {
 			$portarg = "-accept 443";
 		}
+		
+		stunnel_conf_generate();
 
 		$res = mwexec("httpd -c /etc/httpd.conf -u root -p 127.0.0.1:80 -h {$g['www_path']}");
-		$res |= mwexec_bg("sslwrap -cert {$g['etc_path']}/httpscert.pem -port 80 $portarg");
+		$res |= mwexec("stunnel /etc/stunnel/stunnel.conf");
 
 	} else {
 
@@ -471,7 +474,7 @@ function system_load_kernel_modules() {
 	} else if ($g['platform'] == "Deciso") {
 		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc");
 	} else {
-		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc", "wctdm24xxp");
+		$basemodules = array("wcfxo", "wctdm", "wcb4xxp", "zaphfc", "dahdi_voicebus", "wctdm24xxp");
 	}
 	if ($g['platform'] == "Embedded" || $g['platform'] == "Generic") {
 		$basemodules[] = "opvxa1200";
