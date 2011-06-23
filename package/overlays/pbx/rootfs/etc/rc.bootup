@@ -150,6 +150,11 @@
 	pbx_configure();
 	echo "done\n";
 
+	/* start up Humbug */
+	echo " - Starting Humbug... \n";
+	humbug_configure();
+	echo "done\n";
+
 	/* start autoprovisioning services */
 	echo " - Starting autoprovisioning services... ";
 	provisioning_configure();
