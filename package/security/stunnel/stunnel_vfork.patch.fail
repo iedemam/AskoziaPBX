@@ -1,0 +1,44 @@
+--- stunnel-4.37/src/libwrap.c.orig	2011-06-14 18:14:20.000000000 +0200
++++ stunnel-4.37/src/libwrap.c	2011-06-14 18:14:50.000000000 +0200
+@@ -73,7 +73,7 @@
+     for(i=0; i<num_processes; ++i) { /* spawn a child */
+         if(s_socketpair(AF_UNIX, SOCK_STREAM, 0, ipc_socket+2*i, 0, "libwrap_init"))
+             die(1);
+-        switch(fork()) {
++        switch(vfork()) {
+         case -1:    /* error */
+             ioerror("fork");
+             die(1);
+--- stunnel-4.37/src/sthreads.c.orig	2011-06-14 18:14:20.000000000 +0200
++++ stunnel-4.37/src/sthreads.c	2011-06-14 18:15:16.000000000 +0200
+@@ -194,7 +194,7 @@
+ }
+ 
+ int create_client(int ls, int s, CLI *arg, void *(*cli)(void *)) {
+-    switch(fork()) {
++    switch(vfork()) {
+     case -1:    /* error */
+         if(arg)
+             free(arg);
+--- stunnel-4.37/src/stunnel.c.orig	2011-06-14 18:14:20.000000000 +0200
++++ stunnel-4.37/src/stunnel.c	2011-06-14 18:15:24.000000000 +0200
+@@ -351,7 +351,7 @@
+     }
+ #else
+     chdir("/");
+-    switch(fork()) {
++    switch(vfork()) {
+     case -1:    /* fork failed */
+         ioerror("fork");
+         die(1);
+--- stunnel-4.37/src/client.c.orig	2011-06-14 18:14:20.000000000 +0200
++++ stunnel-4.37/src/client.c	2011-06-14 18:15:31.000000000 +0200
+@@ -918,7 +918,7 @@
+     } else
+         make_sockets(c, fd);
+ 
+-    pid=fork();
++    pid=vfork();
+     c->pid=(unsigned long)pid;
+     switch(pid) {
+     case -1:    /* error */
