@@ -4,7 +4,7 @@
     $Id:$
     part of AskoziaPBX (http://askozia.com/pbx)
     
-    Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+    Copyright (C) 2011 tecema (a.k.a IKT) <http://www.tecema.de>.
     All rights reserved.
     
     Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -48,32 +48,42 @@ if ($_GET['view']) {
 	exit;
 }
 
+if($_GET['action'] == "delete")
+{
+	virtual_delete_fax(urldecode($_GET['uniqid']));
+}
+
 include("fbegin.inc");
 
+$colspan = 2;
+
 ?><table width="100%" border="0" cellpadding="6" cellspacing="0">
+	<?=d_header(gettext("All Virtual Faxes"));?>
+	
 	<tr>
-		<td width="20%" valign="top" class="vncell"><?=gettext("All Virtual Faxes");?></td><?
+		<td width="15%" class="listhdrr"><?=gettext("Filename");?></td>
+		<td width="45%" class="listhdrr"><?=gettext("Options");?></td>	
+	</tr>
+	
+		<?
 
 	if ($disk = storage_service_is_active("faxarchive")) {
 		$archivepath = $disk['mountpoint'] . "/askoziapbx/faxarchive/";
 		$globber = glob($archivepath . "*.pdf");
 
 		if (count($globber)) {
-			?><td width="80%" class="vtable">
-				<ul><?
-
 				foreach ($globber as $match) {
-					echo "<li><a href=\"?view=" . $match . "\">" . basename($match) . "</a></li>";
+					echo "<tr>";
+					echo "<td width=\"80%\" class=\"vtable\"><a href=\"?view=" . $match . "\">" . basename($match) . "</a></td>";
+					echo "<td width=\"20%\" class=\"vtable\"><a href=\"?action=delete&uniqid=".urlencode(md5(basename($match)))."\" onclick=\"return confirm('".gettext("Do you really want to delete this fax?")."')\"><img src=\"delete.png\" title=\"".gettext("delete fax")."\" border=\"0\"></a></td>";
+					echo "</tr>";
 				}
-
-				?></ul>
-			</td><?
 		}
 	} else {
-		?><td width="80%" class="vtable"><?=gettext("no faxes found");?></td><?
+		?><tr><td width="100%" colspan="2" class="vtable"><?=gettext("no faxes found");?></td></tr><?
 	}
 
-	?></tr>
+	?>
 </table><?
 
 include("fend.inc");

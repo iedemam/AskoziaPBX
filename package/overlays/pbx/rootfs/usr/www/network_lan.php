@@ -120,10 +120,14 @@ if ($_POST) {
 		}
 	}
 
+	$ip_changed = false;
 
 	if (!$input_errors) {
 
 		if ($_POST['lanconfigure'] == "dhcp") {
+			$ip_changed = true;
+			$ip_changed_new = $lancfg['ipaddr'];
+			
 			$pconfig['dhcp'] = $lancfg['dhcp'] = true;
 			$pconfig['ipaddr'] = $lancfg['ipaddr'];
 			$pconfig['subnet'] = $lancfg['subnet'];
@@ -131,6 +135,9 @@ if ($_POST) {
 			list($pconfig['dns1'],$pconfig['dns2'],$pconfig['dns3']) = $config['system']['dnsserver'];
 
 		} else {
+			$ip_changed = true;
+			$ip_changed_new = $_POST['ipaddr'];
+			
 			$lancfg['dhcp'] = false;
 			$lancfg['ipaddr'] = $_POST['ipaddr'];
 			$lancfg['subnet'] = $_POST['subnet'];
@@ -178,7 +185,15 @@ if ($_POST) {
 		write_config();
 
 		$retval = 0;
+		
+		$refresh_ip_link = $config['system']['webgui']['protocol']."://".$ip_changed_new."/";
+		
 		if (!file_exists($d_sysrebootreqd_path)) {
+			
+			header("Location: ".$refresh_ip_link);
+			echo "<meta http-equiv=\"refresh\" content=\"1; url=".$refresh_ip_link.">";
+			flush();
+			
 			config_lock();
 			services_dyndns_reset();
 			$retval = system_resolvconf_generate();
@@ -192,7 +207,9 @@ if ($_POST) {
 }
 
 include("fbegin.inc");
-?><script type="text/JavaScript">
+?>
+
+<script type="text/JavaScript">
 <!--
 	<?=javascript_dyndns("functions");?>
 	<?=javascript_lan_dhcp("functions");?>

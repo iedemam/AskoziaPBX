@@ -86,6 +86,28 @@ function virtual_save_fax($fax) {
 	touch($g['virtualfax_dirty_path']);
 }
 
+function virtual_delete_fax($md5_filename)
+{
+	if ($disk = storage_service_is_active("faxarchive")) {
+		$archivepath = $disk['mountpoint'] . "/askoziapbx/faxarchive/";
+		$globber = glob($archivepath . "*.pdf");
+
+		if(strlen($md5_filename) == 0) { return false; }
+		
+		// No direct delete. Could be a security risk.
+		foreach ($globber as $match) {
+			if(md5(basename($match)) == $md5_filename)	
+			{
+				unlink($match);
+			}
+		}
+	} else {
+		return false;
+	}
+	
+	return true;
+}
+
 function virtual_get_faxes() {
 
 	if (!is_array($GLOBALS['config']['virtual']['fax'])) {
