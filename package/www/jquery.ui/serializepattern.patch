@@ -1,5 +1,5 @@
---- ../../development-bundle/ui/ui.sortable.js.orig	2009-11-24 11:52:10.000000000 +0100
-+++ ../../development-bundle/ui/ui.sortable.js	2009-11-24 11:53:03.000000000 +0100
+--- ../../development-bundle/ui/jquery.ui.sortable.js.orig	2009-11-24 11:52:10.000000000 +0100
++++ ../../development-bundle/ui/jquery.ui.sortable.js	2009-11-24 11:53:03.000000000 +0100
 @@ -364,7 +364,7 @@
  		var str = []; o = o || {};
  
