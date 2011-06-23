@@ -1,0 +1,11 @@
+--- asterisk-1.8.4/main/app.c.orig	2011-06-09 20:20:13.000000000 +0200
++++ asterisk-1.8.4/main/app.c	2011-06-09 20:20:37.000000000 +0200
+@@ -954,7 +954,7 @@
+ 			totalsilence += dspsilence;
+ 		}
+ 
+-        	if (totalsilence > 0)
++        	if (0 && totalsilence > 0)
+ 			*duration -= (totalsilence - 200) / 1000;
+ 		if (*duration < 0) {
+ 			*duration = 0;
