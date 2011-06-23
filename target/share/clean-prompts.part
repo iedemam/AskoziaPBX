@@ -20,7 +20,7 @@ do
 NEW=`echo $FILE | sed -e 's/wav/ulaw/'`
 
 if [ -f $FILE ]; then
-	sox -V "$FILE" -r 8000 -c 1 -t ul "$NEW"
+	sox -V "$FILE" -r 8000 -c 1 -t ul "$NEW" > /dev/null 2> /dev/null
 	rm -f "$FILE"
 fi
 done
