@@ -28,7 +28,7 @@
 
 [L] GPL
 [S] Stable
-[V] 2.4.0
+[V] 2.4.1.2
 [P] X -----5---9 140.000
 
-[D] 0 dahdi-linux-2.4.0.tar.gz http://downloads.digium.com/pub/telephony/dahdi-linux/releases/
+[D] 0 dahdi-linux-2.4.1.2.tar.gz http://downloads.digium.com/pub/telephony/dahdi-linux/releases/

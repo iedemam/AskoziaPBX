@@ -1,21 +1,25 @@
 --- verifysig.c.orig	2011-05-18 12:22:43.000000000 +0200
 +++ verifysig.c	2011-05-18 12:22:56.000000000 +0200
-@@ -92,6 +92,10 @@
- 	
- 	fseek(fin, -(sizeof(magic)), SEEK_END);
- 	fread(&magic, sizeof(magic), 1, fin);
+@@ -110,7 +110,12 @@
+ 		fseek(sigkey, -(sizeof(magic)), SEEK_END);
+ 		fread(&magic, sizeof(magic), 1, sigkey);
+ 	}
+-		
++	
 +	magic = ((magic & 0xFF000000)  >> 24) |
 +			((magic & 0x00FF0000)  >> 8) |
 +			((magic & 0x0000FF00)  << 8) |
 +			((magic & 0x000000FF)  << 24);
- 		
++	
  	if (magic != SIG_MAGIC) {
  		fclose(fin);
-@@ -101,6 +105,7 @@
- 	/* magic is good; get signature length */	
- 	fseek(fin, -(sizeof(magic) + sizeof(siglen)), SEEK_END);	
- 	fread(&siglen, sizeof(siglen), 1, fin);
+ 		exit(2);
+@@ -141,6 +146,8 @@
+ 		ERR_print_errors_fp(stderr);
+ 		exit(8);
+ 	}
++
 +	siglen = (((siglen & 0xFF00)  >> 8) | ((siglen & 0x00FF)  << 8));
  	
- 	/* read public key */
- 	fkey = fopen(argv[1], "r");
+ 	/* check if siglen is sane */
+ 	if ((siglen == 0) || (siglen > EVP_PKEY_size(pkey)))

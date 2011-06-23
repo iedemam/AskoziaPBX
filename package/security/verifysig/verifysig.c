@@ -45,6 +45,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#include <string.h>
 #include <openssl/rsa.h>
 #include <openssl/evp.h>
 #include <openssl/objects.h>
@@ -58,7 +59,7 @@
 
 void usage(void) {
 	
-	fprintf(stderr, "usage: verifysig pubkey file\n\n"
+	fprintf(stderr, "usage: verifysig pubkey file key\n\n"
 					"return values:    0 -> signature verified OK\n"
 					"                  1 -> signature invalid\n"
 					"                  2 -> no signature found\n"
@@ -69,7 +70,7 @@ void usage(void) {
 
 int main(int argc, char *argv[]) {
 	
-	FILE		*fin, *fkey;
+	FILE		*fin, *fkey, *sigkey;
 	u_int16_t	siglen;
 	u_int32_t	magic;
 	long		nread, ndata;
@@ -78,7 +79,7 @@ int main(int argc, char *argv[]) {
 	EVP_MD_CTX	ctx;
 	int			err, retval;
 	
-	if (argc != 3)
+	if (!(argc == 3 || argc == 4))
 		usage();
 	
 	ERR_load_crypto_strings();
@@ -87,26 +88,50 @@ int main(int argc, char *argv[]) {
 	fin = fopen(argv[2], "r+");
 	if (fin == NULL) {
 		fprintf(stderr, "unable to open file '%s'\n", argv[2]);
-		exit(4);
+		exit(5);
 	}
 	
-	fseek(fin, -(sizeof(magic)), SEEK_END);
-	fread(&magic, sizeof(magic), 1, fin);
+	
+	/* read signature key if available */
+	if(argc == 4)
+	{
+		sigkey = fopen(argv[3], "r");
+		if (sigkey == NULL) {
+			fprintf(stderr, "unable to open signature key file '%s'\n", argv[3]);
+			exit(6);
+		}
+	}
+	
+	if(argc == 3)
+	{
+		fseek(fin, -(sizeof(magic)), SEEK_END);
+		fread(&magic, sizeof(magic), 1, fin);
+	} else {
+		fseek(sigkey, -(sizeof(magic)), SEEK_END);
+		fread(&magic, sizeof(magic), 1, sigkey);
+	}
 		
 	if (magic != SIG_MAGIC) {
 		fclose(fin);
 		exit(2);
 	}
 	
-	/* magic is good; get signature length */	
-	fseek(fin, -(sizeof(magic) + sizeof(siglen)), SEEK_END);	
-	fread(&siglen, sizeof(siglen), 1, fin);
+	if(argc == 3)
+	{
+		/* magic is good; get signature length */	
+		fseek(fin, -(sizeof(magic) + sizeof(siglen)), SEEK_END);	
+		fread(&siglen, sizeof(siglen), 1, fin);
+	} else {
+		/* magic is good; get signature length */	
+		fseek(sigkey, -(sizeof(magic) + sizeof(siglen)), SEEK_END);	
+		fread(&siglen, sizeof(siglen), 1, sigkey);
+	}
 	
 	/* read public key */
 	fkey = fopen(argv[1], "r");
 	if (fkey == NULL) {
 		fprintf(stderr, "unable to open public key file '%s'\n", argv[1]);
-		exit(4);
+		exit(7);
 	}
 	
 	pkey = PEM_read_PUBKEY(fkey, NULL, NULL, NULL);
@@ -114,7 +139,7 @@ int main(int argc, char *argv[]) {
 	
 	if (pkey == NULL) {
 		ERR_print_errors_fp(stderr);
-		exit(4);
+		exit(8);
 	}
 	
 	/* check if siglen is sane */
@@ -124,24 +149,42 @@ int main(int argc, char *argv[]) {
 	/* got signature length; read signature */
 	sigbuf = malloc(siglen);
 	if (sigbuf == NULL)
-		exit(4);
+		exit(9);
 	
-	fseek(fin, -(sizeof(magic) + sizeof(siglen) + siglen), SEEK_END);	
-	if (fread(sigbuf, 1, siglen, fin) != siglen)
-		exit(4);
 	
-	/* signature read; truncate file to remove sig */
-	fseek(fin, 0, SEEK_END);
-	ndata = ftell(fin) - (sizeof(magic) + sizeof(siglen) + siglen);
-	ftruncate(fileno(fin), ndata);
+	if(argc == 3)
+	{
+		fseek(fin, -(sizeof(magic) + sizeof(siglen) + siglen), SEEK_END);	
+		if (fread(sigbuf, 1, siglen, fin) != siglen)
+		exit(10);
+		
+		/* signature read; truncate file to remove sig */
+		fseek(fin, 0, SEEK_END);
+		ndata = ftell(fin) - (sizeof(magic) + sizeof(siglen) + siglen);
+		ftruncate(fileno(fin), ndata);
+	}
 	
+	if(argc == 4)
+	{
+		rewind(sigkey);
+		while (!feof(sigkey)) {
+			nread = fread(sigbuf, 1, SIG_INBUFLEN, sigkey);
+			if (nread != SIG_INBUFLEN) {
+				if (ferror(sigkey)) {
+					fprintf(stderr, "read error in file '%s'\n", argv[2]);
+					exit(11);
+				}
+			}
+		}
+	}
+
 	/* verify the signature now */
 	EVP_VerifyInit(&ctx, EVP_sha1());
 	
 	/* allocate data buffer */
 	inbuf = malloc(SIG_INBUFLEN);
 	if (inbuf == NULL)
-		exit(4);
+		exit(13);
 	
 	rewind(fin);
 	while (!feof(fin)) {
@@ -149,7 +192,7 @@ int main(int argc, char *argv[]) {
 		if (nread != SIG_INBUFLEN) {
 			if (ferror(fin)) {
 				fprintf(stderr, "read error in file '%s'\n", argv[2]);
-				exit(4);
+				exit(14);
 			}
 		}
 		
