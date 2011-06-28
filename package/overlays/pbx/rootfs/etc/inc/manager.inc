@@ -79,6 +79,12 @@ permit=127.0.0.1/255.255.255.255
 read = system,call,log,verbose,agent,user,config,dtmf,reporting,cdr,dialplan
 write = system,call,agent,user,config,command,reporting,originate
 
+[humbug]
+secret = humbug
+deny=0.0.0.0/0.0.0.0
+permit=127.0.0.1/255.255.255.255
+read = call,cdr
+write = 
 
 
 EOD;

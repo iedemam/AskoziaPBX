@@ -93,6 +93,7 @@ $defaults['accounts']['providers']['calleridsource'] = 'phones';
 
 $defaults['sip']['dtmfmode'] = 'auto';
 $defaults['sip']['natmode'] = 'yes';
+$defaults['sip']['busylevel'] = 1;
 
 $defaults['iax']['authentication'] = 'md5';
 
@@ -106,6 +107,10 @@ $defaults['system'] = array();
 $defaults['system']['username'] = "admin";
 $defaults['system']['timeservers'] = "pool.ntp.org";
 $defaults['system']['timeupdateinterval'] = "4-hours";
+
+$defaults['dialplan']['attendedtransfer'] = "**";
+$defaults['dialplan']['blindtransfer'] = "##";
+$defaults['dialplan']['pickupexten'] = "*8";
 
 // regional settings defaults
 $defaults['system']['regional']['analog']['fxo']['daa'] = 'FCC';

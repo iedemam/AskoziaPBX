@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -108,9 +108,9 @@ exten => vm-noanswer,6,Hangup()
 EOD;
 } else {
 $conf .= <<<EOD
-exten => vm-noanswer,3,VoiceMail($\{ARG2},u,$\{ARG3})
-exten => vm-noanswer,4,Playback(vm-goodbye)
-exten => vm-noanswer,5,Hangup()
+exten => vm-noanswer,7,VoiceMail($\{ARG2},u,$\{ARG3})
+exten => vm-noanswer,8,Playback(vm-goodbye)
+exten => vm-noanswer,9,Hangup()
 
 EOD;
 }
@@ -170,22 +170,26 @@ EOD;
 
 
 	// application contexts
-	foreach ($applications as $a) {
-		if (isset($a['disabled'])) {
-			continue;
+	if(count($applications) > 0) {
+		foreach ($applications as $a) {
+			if (isset($a['disabled'])) {
+				continue;
+			}
+			$conf .= extensions_generate_application_context2($a);
+			$conf .= "\n";
 		}
-		$conf .= extensions_generate_application_context2($a);
-		$conf .= "\n";
 	}
 	$conf .= "\n";
 
 	// virtual fax contexts
-	foreach ($virtual_faxes as $f) {
-		if (isset($f['disabled'])) {
-			continue;
+	if(count($virtual_faxes) > 0) {
+		foreach ($virtual_faxes as $f) {
+			if (isset($f['disabled'])) {
+				continue;
+			}
+			$conf .= extensions_generate_virtual_fax_context($f);
+			$conf .= "\n";
 		}
-		$conf .= extensions_generate_virtual_fax_context($f);
-		$conf .= "\n";
 	}
 	$conf .= "\n";
 
@@ -193,84 +197,97 @@ EOD;
 	$conf .= "[public-direct-dial]\n";
 
 	// internal phone extensions
-	foreach ($internal_phones as $p) {
-		if (isset($p['disabled'])) {
-			continue;
-		}
-		if ($p['publicaccess'] == "enabled") {
-			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
-			if (!$p['publicname']) {
-				$conf .= "exten => {$p['extension']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
-				$conf .= extensions_generate_internal_phone_extension($p, true);
-			} else {
-				$conf .= "exten => {$p['publicname']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
-				$conf .= extensions_generate_internal_phone_extension($p, true, false, $p['publicname']);
+	if(count($internal_phones) > 0) {
+		foreach ($internal_phones as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			if ($p['publicaccess'] == "enabled") {
+				$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
+				if (!$p['publicname']) {
+					$conf .= "exten => {$p['extension']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
+					$conf .= "exten => {$p['extension']},n,Set(_PICKUPMARK={$p['extension']})\n";
+					
+					$conf .= extensions_generate_internal_phone_extension($p, true);
+				} else {
+					$conf .= "exten => {$p['publicname']},1,NoOp(public calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
+					$conf .= "exten => {$p['extension']},n,Set(_PICKUPMARK={$p['extension']})\n";
+					$conf .= extensions_generate_internal_phone_extension($p, true, false, $p['publicname']);
+				}
 			}
 		}
 	}
 
 	// external phone extensions
-	foreach ($external_phones as $p) {
-		if (isset($p['disabled'])) {
-			continue;
-		}
-		if ($p['publicaccess'] == "enabled") {
-			$conf .= "; external phone : {$p['callerid']} - <{$p['extension']}>\n";
-			if (!$p['publicname']) {
-				$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
-				$conf .= extensions_generate_external_phone_extension($p, true);
-			} else {
-				$conf .= "exten => {$p['publicname']},1,NoOp(public calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
-				$conf .= extensions_generate_external_phone_extension($p, true, false, $p['publicname']);
+	if(count($external_phones) > 0) {
+		foreach ($external_phones as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			if ($p['publicaccess'] == "enabled") {
+				$conf .= "; external phone : {$p['callerid']} - <{$p['extension']}>\n";
+				if (!$p['publicname']) {
+					$conf .= "exten => {$p['extension']},1,NoOp(public calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
+					$conf .= extensions_generate_external_phone_extension($p, true);
+				} else {
+					$conf .= "exten => {$p['publicname']},1,NoOp(public calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
+					$conf .= extensions_generate_external_phone_extension($p, true, false, $p['publicname']);
+				}
 			}
 		}
 	}
 
 	// callgroup extensions
-	foreach ($callgroups as $cg) {
-		if (!isset($cg['extension']) || !strlen($cg['extension'])) {
-			continue;
-		}
-		if ($cg['publicaccess'] == "enabled") {
-			$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
-			if (!$cg['publicname']) {
-				$conf .= "exten => {$cg['extension']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
-				$conf .= extensions_generate_callgroup_extension($cg, true);
-			} else {
-				$conf .= "exten => {$cg['publicname']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
-				$conf .= extensions_generate_callgroup_extension($cg, true, false, $cg['publicname']);
+	if(count($callgroups) > 0) {
+		foreach ($callgroups as $cg) {
+			if (!isset($cg['extension']) || !strlen($cg['extension'])) {
+				continue;
+			}
+			if ($cg['publicaccess'] == "enabled") {
+				$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
+				if (!$cg['publicname']) {
+					$conf .= "exten => {$cg['extension']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
+					$conf .= extensions_generate_callgroup_extension($cg, true);
+				} else {
+					$conf .= "exten => {$cg['publicname']},1,NoOp(public calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
+					$conf .= extensions_generate_callgroup_extension($cg, true, false, $cg['publicname']);
+				}
 			}
 		}
 	}
 
 	// application extensions
-	foreach ($applications as $a) {
-		if (isset($a['disabled'])) {
-			continue;
-		}
-		if ($a['publicaccess'] == "enabled") {
-			$conf .= "; application : {$a['name']}\n";
-			if (!$a['publicname']) {
-				$extension = extensions_patternify($a['extension']);
-				$conf .= "exten => $extension,1,NoOp(public calling application: {$a['name']})\n";
-				$conf .= extensions_generate_application_extension($a, true, $extension);
-			} else {
-				$conf .= "exten => {$a['publicname']},1,NoOp(public calling application: {$a['name']})\n";
-				$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
+	if(count($applications) > 0) {
+		foreach ($applications as $a) {
+			if (isset($a['disabled'])) {
+				continue;
+			}
+			if ($a['publicaccess'] == "enabled") {
+				$conf .= "; application : {$a['name']}\n";
+				if (!$a['publicname']) {
+					$extension = extensions_patternify($a['extension']);
+					$conf .= "exten => $extension,1,NoOp(public calling application: {$a['name']})\n";
+					$conf .= extensions_generate_application_extension($a, true, $extension);
+				} else {
+					$conf .= "exten => {$a['publicname']},1,NoOp(public calling application: {$a['name']})\n";
+					$conf .= extensions_generate_application_extension($a, true, $a['publicname']);
+				}
 			}
 		}
 	}
 
 	// conference room extensions
-	foreach ($conference_rooms as $r) {
-		if ($r['publicaccess'] == "enabled") {
-			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
-			if (!$r['publicname']) {
-				$conf .= "exten => {$r['number']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
-				$conf .= extensions_generate_conference_room_extension($r, true);
-			} else {
-				$conf .= "exten => {$r['publicname']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
-				$conf .= extensions_generate_conference_room_extension($r, true, $r['publicname']);
+	if(count($conference_rooms) > 0) {
+		foreach ($conference_rooms as $r) {
+			if ($r['publicaccess'] == "enabled") {
+				$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
+				if (!$r['publicname']) {
+					$conf .= "exten => {$r['number']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
+					$conf .= extensions_generate_conference_room_extension($r, true);
+				} else {
+					$conf .= "exten => {$r['publicname']},1,NoOp(public calling conference: {$r['name']} - <{$r['number']}>)\n";
+					$conf .= extensions_generate_conference_room_extension($r, true, $r['publicname']);
+				}
 			}
 		}
 	}
@@ -279,73 +296,88 @@ EOD;
 
 	// internal extensions context
 	$conf .= "[internal]\n";
+	
 
 	// internal phone extensions
-	foreach ($internal_phones as $p) {
-		if (isset($p['disabled'])) {
-			continue;
+	if(count($internal_phones) > 0) {
+		foreach ($internal_phones as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
+			$conf .= "exten => {$p['extension']},1,NoOp(internal calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
+			$conf .= extensions_generate_internal_phone_extension($p);
 		}
-		$conf .= "; internal phone : {$p['callerid']} - <{$p['extension']}>\n";
-		$conf .= "exten => {$p['extension']},1,NoOp(internal calling internal phone: {$p['callerid']} - <{$p['extension']}>)\n";
-		$conf .= extensions_generate_internal_phone_extension($p);
 	}
 
 	// external phone extensions
-	foreach ($external_phones as $p) {
-		if (isset($p['disabled'])) {
-			continue;
+	if(count($external_phones) > 0) {
+		foreach ($external_phones as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			$conf .= "; external phone : {$p['callerid']} - <{$p['extension']}>\n";
+			$conf .= "exten => {$p['extension']},1,NoOp(internal calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
+			$conf .= extensions_generate_external_phone_extension($p);
 		}
-		$conf .= "; external phone : {$p['callerid']} - <{$p['extension']}>\n";
-		$conf .= "exten => {$p['extension']},1,NoOp(internal calling external phone: {$p['callerid']} - <{$p['extension']}>)\n";
-		$conf .= extensions_generate_external_phone_extension($p);
 	}
 
 	// callgroup extensions
-	foreach ($callgroups as $cg) {
-		if (!isset($cg['extension']) || !strlen($cg['extension'])) {
-			continue;
+	if(count($callgroups) > 0) {
+		foreach ($callgroups as $cg) {
+			if (!isset($cg['extension']) || !strlen($cg['extension'])) {
+				continue;
+			}
+			$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
+			$conf .= "exten => {$cg['extension']},1,NoOp(internal calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
+			$conf .= extensions_generate_callgroup_extension($cg);
 		}
-		$conf .= "; callgroup : {$cg['name']} - <{$cg['extension']}>\n";
-		$conf .= "exten => {$cg['extension']},1,NoOp(internal calling callgroup: {$cg['name']} - <{$cg['extension']}>)\n";
-		$conf .= extensions_generate_callgroup_extension($cg);
 	}
 
 	// application extensions
-	foreach ($applications as $a) {
-		if (isset($a['disabled'])) {
-			continue;
+	if(count($applications) > 0) {
+		foreach ($applications as $a) {
+			if (isset($a['disabled'])) {
+				continue;
+			}
+			$extension = extensions_patternify($a['extension']);
+			$conf .= "; application : {$a['name']}\n";
+			$conf .= "exten => $extension,1,NoOp(internal calling application: {$a['name']})\n";
+			$conf .= extensions_generate_application_extension($a, false, $extension);
 		}
-		$extension = extensions_patternify($a['extension']);
-		$conf .= "; application : {$a['name']}\n";
-		$conf .= "exten => $extension,1,NoOp(internal calling application: {$a['name']})\n";
-		$conf .= extensions_generate_application_extension($a, false, $extension);
 	}
 
 	// conference room extensions
-	foreach ($conference_rooms as $r) {
-		$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
-		$conf .= "exten => {$r['number']},1,NoOp(internal calling conference: {$r['name']} - <{$r['number']}>)\n";
-		$conf .= extensions_generate_conference_room_extension($r);
+	if(count($conference_rooms) > 0) {
+		foreach ($conference_rooms as $r) {
+			$conf .= "; conference room : {$r['name']} - <{$r['number']}>\n";
+			$conf .= "exten => {$r['number']},1,NoOp(internal calling conference: {$r['name']} - <{$r['number']}>)\n";
+			$conf .= extensions_generate_conference_room_extension($r);
+		}
 	}
 
 	// virtual fax extensions
-	foreach ($virtual_faxes as $f) {
-		if (isset($f['disabled'])) {
-			continue;
+	if(count($virtual_faxes) > 0) {
+		foreach ($virtual_faxes as $f) {
+			if (isset($f['disabled'])) {
+				continue;
+			}
+			$conf .= "; virtual fax : {$f['callerid']} - <{$f['extension']}>\n";
+			$conf .= "exten => {$f['extension']},1,NoOp(internal calling virtual fax: {$f['callerid']} - <{$f['extension']}>)\n";
+			$conf .= extensions_generate_virtual_fax_extension($f);
 		}
-		$conf .= "; virtual fax : {$f['callerid']} - <{$f['extension']}>\n";
-		$conf .= "exten => {$f['extension']},1,NoOp(internal calling virtual fax: {$f['callerid']} - <{$f['extension']}>)\n";
-		$conf .= extensions_generate_virtual_fax_extension($f);
 	}
 
 	// analog fax extensions
-	foreach ($analog_faxes as $f) {
-		if (isset($f['disabled'])) {
-			continue;
+	if(count($analog_faxes) > 0) {
+		foreach ($analog_faxes as $f) {
+			if (isset($f['disabled'])) {
+				continue;
+			}
+			$conf .= "; analog fax : {$f['callerid']} - <{$f['extension']}>\n";
+			$conf .= "exten => {$f['extension']},1,NoOp(internal calling analog fax: {$f['callerid']} - <{$f['extension']}>)\n";
+			$conf .= extensions_generate_analog_fax_extension($f);
 		}
-		$conf .= "; analog fax : {$f['callerid']} - <{$f['extension']}>\n";
-		$conf .= "exten => {$f['extension']},1,NoOp(internal calling analog fax: {$f['callerid']} - <{$f['extension']}>)\n";
-		$conf .= extensions_generate_analog_fax_extension($f);
 	}
 
 	$conf .= "; parking lot\n";
@@ -362,60 +394,69 @@ EOD;
 
 
 	// providers contexts
-	foreach ($providers as $p) {
-		if (isset($p['disabled'])) {
-			continue;
+	if(count($providers) > 0) {
+		foreach ($providers as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			if ($p['defaultfax'] || count($p['incomingextensionmap'])) {
+				$conf .= "; incoming provider : {$p['name']}\n";
+				$conf .= extensions_generate_provider_incoming_context($p);
+			}
+			if (count($p['dialpattern'])) {
+				$conf .= "; outgoing provider : {$p['name']}\n";
+				$conf .= extensions_generate_provider_outgoing_context($p);
+			}
+			$conf .= "\n";
 		}
-		if ($p['defaultfax'] || count($p['incomingextensionmap'])) {
-			$conf .= "; incoming provider : {$p['name']}\n";
-			$conf .= extensions_generate_provider_incoming_context($p);
-		}
-		if (count($p['dialpattern'])) {
-			$conf .= "; outgoing provider : {$p['name']}\n";
-			$conf .= extensions_generate_provider_outgoing_context($p);
-		}
-		$conf .= "\n";
 	}
-
+	
 	// handling for multiple sip providers using same host
 	$sip_multi = sip_get_hosts_with_multiple_accounts();
-	foreach ($sip_multi as $host => $ids) {
-		$conf .= "; multiple SIP Provider accounts found for host : $host\n";
-		$conf .= "[SIP-PROVIDER-$host-incoming]\n";
-		foreach ($ids as $id) {
-			$sp = sip_get_provider($id);
-			$conf .= "exten => {$sp['username']},1,Goto({$sp['uniqid']}-incoming,s,1)\n";
+	
+	if(count($sip_multi) > 0) {
+		foreach ($sip_multi as $host => $ids) {
+			$conf .= "; multiple SIP Provider accounts found for host : $host\n";
+			$conf .= "[SIP-PROVIDER-$host-incoming]\n";
+			foreach ($ids as $id) {
+				$sp = sip_get_provider($id);
+				$conf .= "exten => {$sp['username']},1,Goto({$sp['uniqid']}-incoming,s,1)\n";
+			}
 		}
 	}
 	$conf .= "\n";
 
 	// internal phone contexts
-	foreach($internal_phones as $p) {
-		if (isset($p['disabled'])) {
-			continue;
+	if(count($internal_phones) > 0) {
+		foreach($internal_phones as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";
+			$conf .= "[{$p['uniqid']}]\n";
+			$conf .= "include => internal\n";
+			$conf .= "include => {$p['uniqid']}-outgoing\n";
+			$conf .= "include => outgoing-uri\n";
+			$conf .= "\n";
+			$conf .= extensions_generate_phone_outgoing_context($p);
+			$conf .= "\n";
 		}
-		$conf .= "; {$p['callerid']} - <{$p['extension']}>\n";
-		$conf .= "[{$p['uniqid']}]\n";
-		$conf .= "include => internal\n";
-		$conf .= "include => {$p['uniqid']}-outgoing\n";
-		$conf .= "include => outgoing-uri\n";
-		$conf .= "\n";
-		$conf .= extensions_generate_phone_outgoing_context($p);
-		$conf .= "\n";
 	}
 
 	// analog fax contexts
-	foreach($analog_faxes as $f) {
-		if (isset($f['disabled'])) {
-			continue;
+	if(count($analog_faxes) > 0) {
+		foreach($analog_faxes as $f) {
+			if (isset($f['disabled'])) {
+				continue;
+			}
+			$conf .= "; {$f['callerid']} - <{$f['extension']}>\n";
+			$conf .= "[{$f['uniqid']}]\n";
+			$conf .= "include => internal\n";
+			$conf .= "include => {$f['uniqid']}-outgoing\n";
+			$conf .= "\n";
+			$conf .= extensions_generate_phone_outgoing_context($f);
+			$conf .= "\n";
 		}
-		$conf .= "; {$f['callerid']} - <{$f['extension']}>\n";
-		$conf .= "[{$f['uniqid']}]\n";
-		$conf .= "include => internal\n";
-		$conf .= "include => {$f['uniqid']}-outgoing\n";
-		$conf .= "\n";
-		$conf .= extensions_generate_phone_outgoing_context($f);
-		$conf .= "\n";
 	}
 
 	$conf .= <<<EOD
@@ -439,11 +480,11 @@ EOD;
 function extensions_generate_call_notification_variables($exten, $phone) {
 
 	if ($phone['vmtoemail'] == "enabled") {
-		$dial .= "exten => $exten,n,Set(HASVOICEMAIL=\"yes\")\n";
+		$dial .= "exten => $exten,n,Set(HASVOICEMAIL=yes)\n";
 	}
 	if ($phone['emailcallnotify'] == "enabled") {
 		$dial .= "exten => $exten,n,Set(MISSEDCAUSE=hungup)\n";
-		$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS=\"{$phone['emailcallnotifyaddress']}\")\n";
+		$dial .= "exten => $exten,n,Set(SENDNOTIFICATIONS={$phone['emailcallnotifyaddress']})\n";
 	}
 
 	return $dial;
@@ -473,11 +514,14 @@ function extensions_generate_parkinglot() {
 function extensions_generate_hints() {
 
 	$phones = sip_get_phones();
-	foreach ($phones as $p) {
-		if (isset($p['disabled'])) {
-			continue;
+	
+	if(count($phones) > 0) {
+		foreach ($phones as $p) {
+			if (isset($p['disabled'])) {
+				continue;
+			}
+			$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
 		}
-		$conf .= "exten => {$p['extension']},hint,SIP/{$p['extension']}\n";
 	}
 	$conf .= "\n";
 
@@ -490,8 +534,10 @@ function extensions_generate_hints() {
 function extensions_phone_uniqids_to_dialstring($uniqid_array) {
 
 	$dial_strings = array();
-	foreach ($uniqid_array as $uniqid) {
-		$dial_strings[] = extensions_phone_uniqid_to_dialstring($uniqid);
+	if(count($uniqid_array) > 0) {
+		foreach ($uniqid_array as $uniqid) {
+			$dial_strings[] = extensions_phone_uniqid_to_dialstring($uniqid);
+		}
 	}
 
 	return implode("&", $dial_strings);
@@ -602,19 +648,43 @@ function extensions_generate_provider_incoming_context($p) {
 				if ($tech == "SIP") {
 					$catchall[] = $p['username'];
 				}
-				foreach ($catchall as $catch) {
-					$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
-					$conf .= extensions_generate_incoming_callerid_overrides($catch, $p['override'], $p['overridestring']);
-					$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
+				if(count($catchall) > 0)
+				{
+					foreach ($catchall as $catch) {
+						$phone_extension = pbx_get_phone($destination);
+						
+						$conf .= "exten => $catch,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+						$conf .= "exten => $catch,n,Set(CDR(UserField)=inbound)\n";
+						if ($p['defaultfax']) {
+							$conf .= "exten => $catch,n,Answer()\n";
+							$conf .= "exten => $catch,n,Wait(3)\n";	
+						}
+						$conf .= extensions_generate_incoming_callerid_overrides($catch, $p['override'], $p['overridestring']);
+						$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, $catch);
+					}
 				}
     	
 			} else if (verify_is_numericint($pattern)) {
+				$phone_extension = pbx_get_phone($destination);
+				
 				$conf .= "exten => $pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+				$conf .= "exten => $pattern,n,Set(CDR(UserField)=inbound)\n";
+				if ($p['defaultfax']) {
+					$conf .= "exten => $pattern,n,Answer()\n";
+					$conf .= "exten => $pattern,n,Wait(3)\n";	
+				}
 				$conf .= extensions_generate_incoming_callerid_overrides($pattern, $p['override'], $p['overridestring']);
 				$conf .= extensions_generate_extension_from_uniqid($destination, true, $pattern, $pattern);
     	
 			} else {
+				$phone_extension = pbx_get_phone($destination);
+				
 				$conf .= "exten => _$pattern,1,NoOp(incoming call from provider: {$p['name']} to $\{EXTEN})\n";
+				$conf .= "exten => _$pattern,n,Set(CDR(UserField)=inbound)\n";
+				if ($p['defaultfax']) {
+					$conf .= "exten => $pattern,n,Answer()\n";
+					$conf .= "exten => $pattern,n,Wait(3)\n";	
+				}
 				$conf .= extensions_generate_incoming_callerid_overrides("_" . $pattern, $p['override'], $p['overridestring']);
 				$conf .= extensions_generate_extension_from_uniqid($destination, true, $readbacknum, '_' . $pattern);
 			}
@@ -663,39 +733,44 @@ function extensions_generate_provider_outgoing_context($p) {
 
 	$conf .= "[{$p['uniqid']}]\n";
 
-	foreach ($p['dialpattern'] as $pattern) {
-		dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-
-		$conf .= "exten => _$pattern,1,NoOp(outgoing call to provider: {$p['name']})\n";
-
-		// generate technology specific dial()
-		if ($tech == "SIP") {
-			$conf .= "exten => _$pattern,n,Dial(SIP/$prefix$exten@{$p['uniqid']},,T$cidflag)\n";
-
-		} else if ($tech == "IAX2") {
-			$conf .= "exten => _$pattern,n,Dial(IAX2/{$p['uniqid']}/$prefix$exten,,T$cidflag)\n";
-
-		} else if ($tech == "DAHDI") {
-			$gnumber = dahdi_get_gnumber($p['port']);
-			$conf .= "exten => _$pattern,n,Dial(DAHDI/g$gnumber/$prefix$exten,,T$cidflag)\n";
-
-		} else {
-			$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
-		}
-
-		if ($p['failover'] && ($failover = pbx_get_provider($p['failover']))) {
-			$conf .= "exten => _$pattern,n,NoOp(DIALSTATUS = $\{DIALSTATUS})\n";
-			$conf .= "exten => _$pattern,n,Goto({$p['uniqid']}-$\{DIALSTATUS},1)\n";
-			$conf .= "exten => {$p['uniqid']}-NOANSWER,1,Hangup()\n";
-			$conf .= "exten => {$p['uniqid']}-CANCEL,1,Hangup()\n";
-			$conf .= "exten => {$p['uniqid']}-BUSY,1,Hangup()\n";
-			$conf .= "exten => {$p['uniqid']}-CONGESTION,1,NoOp(Failover needed, now using : " . $failover['name'] . ")\n";
-			$conf .= "exten => {$p['uniqid']}-CONGESTION,n,Goto({$p['failover']},$\{ORIGEXTENSION},1)\n";
-			$conf .= "exten => {$p['uniqid']}-CHANUNAVAIL,1,NoOp(Failover needed, now using : " . $failover['name'] . ")\n";
-			$conf .= "exten => {$p['uniqid']}-CHANUNAVAIL,n,Goto({$p['failover']},$\{ORIGEXTENSION},1)\n";
-
-		} else {
-			$conf .= "exten => _$pattern,n,Hangup()\n";
+	if(count($p['dialpattern']) > 0)
+	{
+		foreach ($p['dialpattern'] as $pattern) {
+			dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
+    	
+			$conf .= "exten => _$pattern,1,NoOp(outgoing call to provider: {$p['name']})\n";
+			
+			$conf .= "exten => _$pattern,n,Set(CDR(UserField)=outbound)\n";
+    	
+			// generate technology specific dial()
+			if ($tech == "SIP") {
+				$conf .= "exten => _$pattern,n,Dial(SIP/$prefix$exten@{$p['uniqid']},,T$cidflag)\n";
+    	
+			} else if ($tech == "IAX2") {
+				$conf .= "exten => _$pattern,n,Dial(IAX2/{$p['uniqid']}/$prefix$exten,,T$cidflag)\n";
+    	
+			} else if ($tech == "DAHDI") {
+				$gnumber = dahdi_get_gnumber($p['port']);
+				$conf .= "exten => _$pattern,n,Dial(DAHDI/g$gnumber/$prefix$exten,,T$cidflag)\n";
+    	
+			} else {
+				$conf .= "ERROR: unmatched case in extensions_generate_provider_outgoing_context!";
+			}
+    	
+			if ($p['failover'] && ($failover = pbx_get_provider($p['failover']))) {
+				$conf .= "exten => _$pattern,n,NoOp(DIALSTATUS = $\{DIALSTATUS})\n";
+				$conf .= "exten => _$pattern,n,Goto({$p['uniqid']}-$\{DIALSTATUS},1)\n";
+				$conf .= "exten => {$p['uniqid']}-NOANSWER,1,Hangup()\n";
+				$conf .= "exten => {$p['uniqid']}-CANCEL,1,Hangup()\n";
+				$conf .= "exten => {$p['uniqid']}-BUSY,1,Hangup()\n";
+				$conf .= "exten => {$p['uniqid']}-CONGESTION,1,NoOp(Failover needed, now using : " . $failover['name'] . ")\n";
+				$conf .= "exten => {$p['uniqid']}-CONGESTION,n,Goto({$p['failover']},$\{ORIGEXTENSION},1)\n";
+				$conf .= "exten => {$p['uniqid']}-CHANUNAVAIL,1,NoOp(Failover needed, now using : " . $failover['name'] . ")\n";
+				$conf .= "exten => {$p['uniqid']}-CHANUNAVAIL,n,Goto({$p['failover']},$\{ORIGEXTENSION},1)\n";
+    	
+			} else {
+				$conf .= "exten => _$pattern,n,Hangup()\n";
+			}
 		}
 	}
 
@@ -709,43 +784,49 @@ function extensions_generate_phone_outgoing_context($phone) {
 	$conf .= "[{$phone['uniqid']}-outgoing]\n";
 
 	// include each provider's patterns unless blocked
-	foreach ($providers as $provider) {
-		if (!isset($provider['disabled'])) {
-			if ((!isset($phone['provider'])) || (!in_array($provider['uniqid'], $phone['provider']))) {
-				// outgoing caller id should be that of the phone originating the call
-				$cidflag = "o";
-				// set the appropriate flag if an override is wished and defined
-				if ($provider['calleridsource'] == "string" && $provider['calleridstring']) {
-					$cidflag = "f";
-					$cidoverride = $provider['calleridstring'];
-				}
-				// set the appropriate caller id override if this phone has one set
-				$indexed_map = array();
-				if ($phone['outgoingcalleridmap']) {
-					foreach ($phone['outgoingcalleridmap'] as $map) {
-						if ($map['provideruniqid'] == $provider['uniqid']) {
-							$cidflag = "f";
-							$cidoverride = $map['cidstring'];
+	if(count($providers) > 0)
+	{
+		foreach ($providers as $provider) {
+			if (!isset($provider['disabled'])) {
+				if ((!isset($phone['provider'])) || (!in_array($provider['uniqid'], $phone['provider']))) {
+					// outgoing caller id should be that of the phone originating the call
+					$cidflag = "o";
+					// set the appropriate flag if an override is wished and defined
+					if ($provider['calleridsource'] == "string" && $provider['calleridstring']) {
+						$cidflag = "f";
+						$cidoverride = $provider['calleridstring'];
+					}
+					// set the appropriate caller id override if this phone has one set
+					$indexed_map = array();
+					if ($phone['outgoingcalleridmap']) {
+						foreach ($phone['outgoingcalleridmap'] as $map) {
+							if ($map['provideruniqid'] == $provider['uniqid']) {
+								$cidflag = "f";
+								$cidoverride = $map['cidstring'];
+							}
 						}
 					}
-				}
-
-				foreach ($provider['dialpattern'] as $pattern) {
-					dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
-
-					$conf .= "exten => _$pattern,1,NoOp(pre-processing for outgoing call to provider: {$provider['name']})\n";
-					$conf .= "exten => _$pattern,n,Set(ORIGEXTENSION=$\{EXTEN})\n";
-					$conf .= "exten => _$pattern,n,NoOp( - original extension = $\{ORIGEXTENSION})\n";
-
-					// apply caller id override
-					if ($cidoverride) {
-						$conf .= "exten => _$pattern,n,Set(CALLERID(all)=$cidoverride)\n";
-						$conf .= "exten => _$pattern,n,NoOp( - caller id set = $cidoverride)\n";
-					} else {
-						$conf .= "exten => _$pattern,n,NoOp( - sending phone caller id)\n";
+    	
+					if(count($provider['dialpattern']) > 0)
+					{
+						foreach ($provider['dialpattern'] as $pattern) {
+							dialplan_parse_pattern(&$pattern, &$prefix, &$offset, &$exten);
+    	            	
+							$conf .= "exten => _$pattern,1,NoOp(pre-processing for outgoing call to provider: {$provider['name']})\n";
+							$conf .= "exten => _$pattern,n,Set(ORIGEXTENSION=$\{EXTEN})\n";
+							$conf .= "exten => _$pattern,n,NoOp( - original extension = $\{ORIGEXTENSION})\n";
+    	            	
+							// apply caller id override
+							if ($cidoverride) {
+								$conf .= "exten => _$pattern,n,Set(CALLERID(all)=$cidoverride)\n";
+								$conf .= "exten => _$pattern,n,NoOp( - caller id set = $cidoverride)\n";
+							} else {
+								$conf .= "exten => _$pattern,n,NoOp( - sending phone caller id)\n";
+							}
+    	            	
+							$conf .= "exten => _$pattern,n,Goto({$provider['uniqid']},$\{EXTEN},1)\n";
+						}
 					}
-
-					$conf .= "exten => _$pattern,n,Goto({$provider['uniqid']},$\{EXTEN},1)\n";
 				}
 			}
 		}
@@ -843,7 +924,7 @@ function extensions_generate_external_phone_extension($p, $from_public=false, $r
 			"Macro(main,$tech/{$p['dialprovider']}/{$p['dialstring']},$phone_exten,$readbacknum," . $transfer_flags . "o,$ringlength)\n";
 
 	} else {
-		$conf .= "ERROR: unmatched case in extensions_generate_external_phone_extension!";
+		$conf .= "; ERROR: unmatched case in extensions_generate_external_phone_extension!\n";
 	}
 	
 	return $conf;
@@ -900,12 +981,15 @@ function extensions_generate_application_context2($a) {
 
 		$conf = "; " . $a['name'] . "\n";
 		$conf .= "[" . $a['uniqid'] . "]\n";
-		foreach ($lines as $l) {
-			if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', $l)) {
-				$conf .= $l . "\n";
-			} else {
-				$conf_ext1 .= "exten => _[0-9a-zA-Z*#]!," . $l . "\n";
-				$conf_ext2 .= "exten => s," . $l . "\n";
+		if(count($lines) > 0)
+		{
+			foreach ($lines as $l) {
+				if (preg_match('/^include\\s=>\\s[A-Z0-9-_]+/i', $l)) {
+					$conf .= $l . "\n";
+				} else {
+					$conf_ext1 .= "exten => _[0-9a-zA-Z*#]!," . $l . "\n";
+					$conf_ext2 .= "exten => s," . $l . "\n";
+				}
 			}
 		}
 		$conf .= $conf_ext1;
@@ -957,13 +1041,27 @@ function extensions_generate_virtual_fax_context($f, $from_public=false, $extens
 	$conf .= "exten => h,n,Set(FAXFILENAME=virtualfax-" . $f['extension'] . "-$\{STRFTIME($\{EPOCH},,%Y-%m-%d-%H-%M-%S)}.pdf)\n";
 	$conf .= "exten => h,n,System(tiff2pdf /tmp/fax-$\{UNIQUEID} -o /tmp/$\{FAXFILENAME})\n";
 	$conf .= "exten => h,n,System(touch /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo \"date: \`date\`\" > /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo \"to: " . $f['email'] . "\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo \"subject: New Fax from \$\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo \"from: $product_name Fax <{$emailconfig['address']}>\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(echo >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Date: \`date\`\" > /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"To: " . $f['email'] . "\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Subject: ".gettext("New Fax from")." \$\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"From: $product_name Fax <{$emailconfig['address']}>\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"X-Mailer: $product_name\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Content-Type: multipart/mixed\\; boundary=\\\"-\\\"\\n\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"---\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Content-Type: text/plain\\; format=flowed\\; charset=UTF-8\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Content-Disposition: inline\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Content-Transfer-Encoding: 8bit\\n\" >> /tmp/email-$\{UNIQUEID})\n";
 	$conf .= "exten => h,n,System(echo \"$\{STRFTIME($\{EPOCH},,%Y-%m-%d - %H:%M)} from $\{CALLERID(all)}\" >> /tmp/email-$\{UNIQUEID})\n";
-	$conf .= "exten => h,n,System(uuencode /tmp/$\{FAXFILENAME} $\{FAXFILENAME} >> /tmp/email-$\{UNIQUEID})\n";
+	
+	$conf .= "exten => h,n,System(echo \"---\" >> /tmp/email-$\{UNIQUEID})\n";
+	
+	$conf .= "exten => h,n,System(echo \"Content-Type: application/pdf\\; name=\\\"$\{FAXFILENAME}\\\"\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Content-Transfer-Encoding: base64\" >> /tmp/email-$\{UNIQUEID})\n";
+	$conf .= "exten => h,n,System(echo \"Content-Disposition: inline\\; filename=\\\"$\{FAXFILENAME}\\\"\\n\" >> /tmp/email-$\{UNIQUEID})\n\n";
+	$conf .= "exten => h,n,System(uuencode -m /tmp/$\{FAXFILENAME} $\{FAXFILENAME} >> /tmp/email-$\{UNIQUEID})\n";
+	
+	$conf .= "exten => h,n,System(echo \"-----\" >> /tmp/email-$\{UNIQUEID})\n";
+	
 	$conf .= "exten => h,n,System(/usr/bin/msmtp -C /etc/msmtp.conf -t < /tmp/email-$\{UNIQUEID})\n";
 	if ($disk = storage_service_is_active("faxarchive")) {
 		$archivepath = $disk['mountpoint'] . "/askoziapbx/faxarchive/";

@@ -628,7 +628,6 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		$conf .= "callerid=" . $phone['callerid'] . " <" . $phone['extension'] . ">\n";
 		$conf .= "signalling=fxo_" . $port['startsignaling'] . "\n";
 		$conf .= "transfer=yes\n";
-		$conf .= "threewaycalling=yes\n";
 		$conf .= "callwaiting=yes\n";
 		$conf .= "callwaitingcallerid=yes\n";
 		$conf .= "rxgain=" . $port['rxgain'] . "\n";
@@ -788,7 +787,6 @@ function chan_dahdi_conf_generate($return=false, $ports=false, $gateways=false) 
 		$conf .= "callerid=" . $phone['callerid'] . " <" . $phone['extension'] . ">\n";
 		$conf .= "signalling=bri_net_ptmp\n";
 		$conf .= "transfer=yes\n";
-		$conf .= "threewaycalling=yes\n";
 		$conf .= "callwaiting=yes\n";
 		$conf .= "callwaitingcallerid=yes\n";
 		$conf .= "facilityenable=yes\n";

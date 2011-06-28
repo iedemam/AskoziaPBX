@@ -82,7 +82,7 @@ function skinny_generate_default_phone() {
 	$phone['ringlength'] = $defaults['accounts']['phones']['ringlength'];
 	$phone['publicaccess'] = $defaults['accounts']['phones']['publicaccess'];
 	$phone['uniqid'] = "SKINNY-PHONE-" . uniqid(rand());
-	$phone['vmpin'] = "0000";
+	$phone['vmpin'] = rand(1000,9999);
 
 	return $phone;
 }

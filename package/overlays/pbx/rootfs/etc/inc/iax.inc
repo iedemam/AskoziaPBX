@@ -241,9 +241,17 @@ EOD;
 	
 		if(is_array($p['codec'])) {
 			foreach ($p['codec'] as $codec)
-				$conf .= "allow=$codec\n";
+			{
+				if(strlen($codec) > 0)
+				{
+					$conf .= "allow=$codec\n";
+				}
+			}
 		} else {
-			$conf .= "allow={$p['codec']}\n";
+			if(strlen($p['codec']) > 0)
+			{
+				$conf .= "allow={$p['codec']}\n";
+			}
 		}
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
 
@@ -295,9 +303,17 @@ EOD;
 	
 		if(is_array($p['codec'])) {
 			foreach ($p['codec'] as $codec)
-				$conf .= "allow=$codec\n";
+			{
+				if(strlen($codec) > 0)
+				{
+					$conf .= "allow=$codec\n";
+				}
+			}
 		} else {
-			$conf .= "allow={$p['codec']}\n";
+			if(strlen($p['codec']) > 0)
+			{
+				$conf .= "allow={$p['codec']}\n";
+			}
 		}
 		$conf .= "permit=0.0.0.0/0.0.0.0\n";
 
@@ -334,7 +350,10 @@ EOD;
 		$conf .= "disallow=all\n";
 		if(is_array($p['codec'])) {
 			foreach ($p['codec'] as $codec) {
-				$conf .= "allow=" . $codec . "\n";
+				if(strlen($codec) > 0)
+				{
+					$conf .= "allow=" . $codec . "\n";
+				}
 			}
 		}
 
@@ -365,7 +384,7 @@ function iax_generate_default_phone() {
 	$phone['secret'] = util_pwgen();
 	$phone['codec'] = $defaults['accounts']['codec'];
 	$phone['authentication'] = $defaults['iax']['authentication'];
-	$phone['vmpin'] = "0000";
+	$phone['vmpin'] = rand(1000,9999);
 	
 	return $phone;
 }

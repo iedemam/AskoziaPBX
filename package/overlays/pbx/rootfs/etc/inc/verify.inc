@@ -763,7 +763,7 @@ function v_applicationlogic($element, $post, $errors) {
 				continue;
 			}
 			// check for application rules:
-			if (preg_match('/^(?P<pri>[\d]+|n)(?:\((?P<lbl>[A-Za-z]{2,})\))??,(?P<cmd>[A-Za-z]{2,}(?:\(.*\)))/i', $split_lines[$i-1], $groups)) {
+			if (preg_match('/^(?P<pri>[\d]+|[nish])(?:\((?P<lbl>[A-Za-z]{2,})\))??,(?P<cmd>[A-Za-z]{2,}(?:\(.*\)))/i', $split_lines[$i-1], $groups)) {
 				// check for matching parentheses in commands
 				$result = verify_match_parentheses($groups['cmd']);
 				if ($result !== true) {

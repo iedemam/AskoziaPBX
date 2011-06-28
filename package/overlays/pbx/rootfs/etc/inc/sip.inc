@@ -330,7 +330,10 @@ EOD;
 		$conf .= "disallow=all\n";
 		if(is_array($p['codec'])) {
 			foreach ($p['codec'] as $codec) {
-				$conf .= "allow=$codec\n";
+				if(strlen($codec) > 0)
+				{
+					$conf .= "allow=$codec\n";
+				}
 			}
 		}
 
@@ -364,12 +367,25 @@ EOD;
 		$conf .= "dtmfmode=" . $p['dtmfmode'] . "\n";
 		$conf .= "qualify=yes\n";
 		$conf .= "directmedia=no\n";
-		$conf .= "busy-limit=1\n";		
+		
+		if(strlen($p['busylevel']) > 0)
+		{
+			$conf .= "busylevel=".$p['busylevel'] . "\n";
+		}
+		
+		if ($p['vmtoemail'] == "enabled" && storage_service_is_active("voicemailarchive"))
+		{
+			$conf .= "mailbox=". $p['extension'] . "\n";
+		}
+		
 
 		$conf .= "disallow=all\n";
 		if(is_array($p['codec'])) {
 			foreach ($p['codec'] as $codec) {
-				$conf .= "allow=" . $codec . "\n";
+				if(strlen($codec) > 0)
+				{
+					$conf .= "allow=" . $codec . "\n";
+				}
 			}
 		}
 
@@ -401,11 +417,13 @@ function sip_generate_default_phone() {
 	$phone['publicaccess'] = $defaults['accounts']['phones']['publicaccess'];
 	$phone['uniqid'] = "SIP-PHONE-" . uniqid(rand());
 
+	$phone['busylevel'] = $defaults['sip']['busylevel'];
+	
 	$phone['secret'] = util_pwgen();
 	$phone['codec'] = $defaults['accounts']['codec'];
 	$phone['dtmfmode'] = $defaults['sip']['dtmfmode'];
 	$phone['natmode'] = $defaults['sip']['natmode'];
-	$phone['vmpin'] = "0000";
+	$phone['vmpin'] = rand(1000,9999);
 	
 	return $phone;
 }
@@ -427,6 +445,7 @@ function sip_verify_phone($post, $errors) {
 	v_codecs(&$phone, &$post);
 	v_password(&$phone, &$post);
 	v_manualattributes(&$phone, &$post, &$errors);
+	v_numeric("busylevel",gettext("Busy level"),&$phone, &$post,&$errors,false);
 
 	$trusted = array(
 		'uniqid',

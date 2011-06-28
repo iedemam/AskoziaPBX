@@ -5,7 +5,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -330,6 +330,31 @@ function convert_config() {
 			}
 		}
 		$config['dialplan']['application'] = $updated_applications;
+		
+		// new applications
+		$config['dialplan']['application'][] = Array (
+					"name" => "Voicemail system",
+					"descr" => "0000VM",
+					"extension" => "000086",
+					"applicationlogic" => "MSxBbnN3ZXIoKQoyLFZvaWNlbWFpbE1haW4oJHtDQUxMRVJJRChudW0pfSkKMyxIYW5ndXAoKQ==",
+					"uniqid" => "DIALPLAN-APPLICATION-7643526674dde509b64232",
+					"type" => "plaintext" );
+					
+		$config['dialplan']['application'][] =  Array (
+					"name" => "Call Forwarding",
+					"descr" => "0000CF",
+					"extension" => "000023", "applicationlogic" => "MSxBbnN3ZXIoKQoyLEdvdG9JZigkWyIke0RCKENGLyR7Q0FMTEVSSUQobnVtKX0pfSIgIT0gIiJdP3JlbW92ZWNmOnNldGNmbnVtYmVyKQozKHNldGNmbnVtYmVyKSxQbGF5YmFjayh2bS1lbnRlci1udW0tdG8tY2FsbCkKNCxSZWFkKENGX0RFU1RJTkFUSU9OLGJlZXAsLCwsNSkKNSxHb3RvSWYoJFske0NGX0RFU1RJTkFUSU9OfSA9ICR7RVhURU59XT85KQo2LFNldChEQihDRi8ke0NBTExFUklEKG51bSl9KT0ke0NGX0RFU1RJTkFUSU9OfSkKNyxQbGF5YmFjayhhdXRoLXRoYW5reW91KQo4LEhhbmd1cCgpCjksUGxheWJhY2soaW52YWxpZCkKMTAsSGFuZ3VwKCkKMTEocmVtb3ZlY2YpLFNldChvbGQ9JHtJRigke0RCX0VYSVNUUyhDRi8ke0NBTExFUklEKG51bSl9KX0pPyR7REJfREVMRVRFKENGLyR7Q0FMTEVSSUQobnVtKX0pfX0pCjEyLFBsYXliYWNrKGFza296aWEtbXVzaWMvYXNrb3ppYV9qaW5nbGVfc2hvcnQpCjEzLEdvdG9JZigkWyIke1BMQVlCQUNLU1RBVFVTfSIgPSAiU1VDQ0VTUyJdP2hhbmd1cDpwbGF5YWx0ZXJuYXRpdmUpCjE0KHBsYXlhbHRlcm5hdGl2ZSksUGxheVRvbmVzKCE1MDAvMTAwLDAvMTAwLCE1MDAvMTAwKQoxNSxXYWl0KDEpCjE2KGhhbmd1cCksSGFuZ3VwKCk=",
+					"uniqid" => "DIALPLAN-APPLICATION-14778225794decb30253418",
+					"type" => "plaintext" ) ;
+
+		$config['dialplan']['application'][] =  Array (
+					"name" => "Weasels",
+					"extension" => "00009327357",
+					"descr" => "0000WEASELS",
+					"applicationlogic" => "MSxBbnN3ZXIoKQoyLFBsYXliYWNrKHR0LXdlYXNlbHMpCjMsSGFuZ3VwKCk=", "uniqid" => "DIALPLAN-APPLICATION-13903502574df9cf4ca35a0",
+					"type" => "plaintext" );
+	
+		
 		$config['version'] = "2.1";
 	}
 

@@ -380,7 +380,7 @@ EOD;
 		if ($p['vmtoemail'] != "enabled") {
 			continue;
 		}
-		if(strlen($p['vmpin']) == 0) { $p['vmpin'] = "0000"; }
+		if(strlen($p['vmpin']) == 0) { $p['vmpin'] = 0000; }
 		
 		if (storage_service_is_active("voicemailarchive")) {
 			$conf .= "{$p['extension']} => {$p['vmpin']},{$p['callerid']},{$p['vmtoemailaddress']}\n";
@@ -395,7 +395,7 @@ EOD;
 		if ($p['vmtoemail'] != "enabled") {
 			continue;
 		}
-		if(strlen($p['vmpin']) == 0) { $p['vmpin'] = "0000"; }
+		if(strlen($p['vmpin']) == 0) { $p['vmpin'] = rand(1000,9999); }
 		
 		if (storage_service_is_active("voicemailarchive")) {
 			$conf .= "{$p['extension']} => {$p['vmpin']},{$p['callerid']},{$p['vmtoemailaddress']}\n";

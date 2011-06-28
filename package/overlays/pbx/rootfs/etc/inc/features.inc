@@ -3,7 +3,7 @@
 	$Id$
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2007-2008 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -38,11 +38,22 @@
 
 require_once("functions.inc");
 
+function pbx_get_featuremap() {
+
+	if (!is_array($GLOBALS['config']['dialplan']['featuremap'])) {
+		$GLOBALS['config']['dialplan']['featuremap'] = array();
+	}
+
+	$tmp = $GLOBALS['config']['dialplan']['featuremap'];
+
+	return $tmp;
+}
+
 /**
  * Generates features.conf which contains call parking, transfer settings and feature maps
  */
 function features_conf_generate($return=false) {
-	global $config;
+	global $config, $defaults;
 	
 	$parkingconfig = $config['dialplan']['callparking'];
 	$pc['parkext'] = isset($parkingconfig['parkext']) ? $parkingconfig['parkext'] : "700";
@@ -51,8 +62,11 @@ function features_conf_generate($return=false) {
 	$pc['parktime'] = isset($parkingconfig['parktime']) ? $parkingconfig['parktime'] : "30";
 	
 	$featuremapconfig = $config['dialplan']['featuremap'];
-	$pc['attendedtransfer'] = isset($featuremapconfig['attendedtransfer']) ? $featuremapconfig['attendedtransfer'] : "**";
-	$pc['blindtransfer'] = isset($featuremapconfig['blindtransfer']) ? $featuremapconfig['blindtransfer'] : "##";
+	$pc['attendedtransfer'] = isset($featuremapconfig['attendedtransfer']) ? $featuremapconfig['attendedtransfer'] : $defaults['dialplan']['attendedtransfer'];
+	$pc['blindtransfer'] = isset($featuremapconfig['blindtransfer']) ? $featuremapconfig['blindtransfer'] : $defaults['dialplan']['blindtransfer'];
+	
+	$pc['pickupexten'] = isset($featuremapconfig['pickupexten']) ? $featuremapconfig['pickupexten'] : $defaults['dialplan']['pickupexten'];
+	
 	//$pc['disconnect'] = isset($featuremapconfig['disconnect']) ? $featuremapconfig['disconnect'] : "*0";
 	$pc['featuredigittimeout'] = isset($featuremapconfig['featuredigittimeout']) ? $featuremapconfig['featuredigittimeout'] : "500";
 	$pc['atxfernoanswertimeout'] = isset($featuremapconfig['atxfernoanswertimeout']) ? $featuremapconfig['atxfernoanswertimeout'] : "15";
@@ -67,11 +81,16 @@ function features_conf_generate($return=false) {
 	$conf .= "featuredigittimeout = " . $pc['featuredigittimeout'] . "\n";
 	$conf .= "atxfernoanswertimeout = " . $pc['atxfernoanswertimeout'] . "\n";
 	$conf .= "transferdigittimeout = " . $pc['transferdigittimeout'] . "\n";
+	$conf .= "xfersound = beep\n";
+	$conf .= "xferfailsound = beeperr\n";
+	$conf .= "pickupsound = beep\n";
+	$conf .= "pickupfailsound = beeperr\n";
 	$conf .= "\n";
 	
 	$conf .= "[featuremap]\n";
 	$conf .= "atxfer => " . $pc['attendedtransfer'] . "\n";
 	$conf .= "blindxfer => " . $pc['blindtransfer'] . "\n";
+	$conf .= "pickupexten => " . $pc['pickupexten'] . "\n";
 //	$conf .= "disconnect => ". $pc['disconnect'] . "\n";
 //	$conf .= "automon => *1\n";//                  ; One Touch Record
 

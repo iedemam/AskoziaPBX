@@ -207,7 +207,7 @@ function pbx_configure() {
 }
 
 function pbx_start() {
-	return mwexec_bg("/usr/sbin/asterisk -fn");
+	return mwexec_bg("/usr/sbin/safe_asterisk -fn");
 }
 
 function pbx_stop() {
@@ -1002,10 +1002,11 @@ autoload=no
 ; this is the minimum set of modules to support the
 ; functionality built into the AskoziaPBX GUI
 ;
+load => app_cdr.so
 load => app_dial.so
+load => app_directed_pickup.so
 load => app_echo.so
 load => app_exec.so
-load => app_fax.so
 load => app_macro.so
 load => app_meetme.so
 load => app_milliwatt.so
@@ -1017,8 +1018,9 @@ load => app_stack.so
 load => app_system.so
 load => app_verbose.so
 load => app_voicemail.so
-load => app_wakeme.so
 load => app_while.so
+load => cdr_custom.so
+load => cdr_manager.so
 load => chan_dahdi.so
 load => chan_iax2.so
 load => chan_local.so
@@ -1040,6 +1042,7 @@ load => func_callerid.so
 load => func_channel.so
 load => func_config.so
 load => func_cut.so
+load => func_cdr.so
 load => func_db.so
 load => func_logic.so
 load => func_md5.so
@@ -1050,11 +1053,14 @@ load => pbx_loopback.so
 load => pbx_spool.so
 load => res_adsi.so
 load => res_agi.so
+load => res_fax.so
+load => res_fax_spandsp.so
 load => res_limit.so
 load => res_musiconhold.so
-load => res_qstat.so
+;load => res_qstat.so
 load => res_rtp_asterisk.so
 load => res_smdi.so
+load => res_timing_dahdi.so
 load => res_crypto.so
 
 EOD;
@@ -1070,9 +1076,9 @@ EOD;
 	}
 
 	if ($g['platform'] == "Warp") {
-		$conf .= "load => res_csel.so\n";
-		$conf .= "load => res_statemachine.so\n";
-		$conf .= "load => res_configman.so\n";
+		#$conf .= "load => res_csel.so\n";
+		#$conf .= "load => res_statemachine.so\n";
+		#$conf .= "load => res_configman.so\n";
 		$conf .= ";load => chan_gsm.so\n";
 	}
 
@@ -1126,7 +1132,7 @@ function asterisk_conf_generate($return=false) {
 
 	$astlogpath = "/var/asterisk/log";
 	if ($disk = storage_service_is_active("astlogs")) {
-		$astlogpath = $disk['mountpoint'] . "/askoziapbx/logs/asterisk";
+		$astlogpath = $disk['mountpoint'] . "/askoziapbx/astlogs/asterisk";
 	}
 	
 	if ($disk = storage_service_is_active("voicemailarchive")) {
@@ -1149,7 +1155,7 @@ astdatadir => $datapath
 $astspoolpath
 
 [options]
-verbose = 3
+verbose = 0
 debug = 0
 dumpcore = no
 internal_timing = yes
@@ -1231,8 +1237,8 @@ enable=yes
 
 [csv]
 usegmtime=no
-loguniqueid=no
-loguserfield=no
+loguniqueid=yes
+loguserfield=yes
 
 
 EOD;
@@ -1244,7 +1250,7 @@ function cdr_custom_conf_generate($return=false) {
 
 $conf = <<<EOD
 [mappings]
-Master.csv => "$\{CDR(clid)}","$\{CDR(src)}","$\{CDR(dst)}","$\{CDR(dcontext)}","$\{CDR(channel)}","$\{CDR(dstchannel)}","$\{CDR(lastapp)}","$\{CDR(lastdata)}","$\{CDR(start)}","$\{CDR(answer)}","$\{CDR(end)}","$\{CDR(duration)}","$\{CDR(billsec)}","$\{CDR(disposition)}","$\{CDR(amaflags)}","$\{CDR(accountcode)}","$\{CDR(uniqueid)}","$\{CDR(userfield)}"
+cdr_pdf.csv => "$\{CDR(accountcode)}","$\{CDR(src)}","$\{CDR(dst)}","$\{CDR(dcontext)}","$\{CDR(clid)}","$\{CDR(channel)}","$\{CDR(dstchannel)}","$\{CDR(lastapp)}","$\{CDR(lastdata)}","$\{CDR(start)}","$\{CDR(answer)}","$\{CDR(end)}","$\{CDR(duration)}","$\{CDR(billsec)}","$\{CDR(disposition)}","$\{CDR(amaflags)}","$\{CDR(userfield)}","$\{CDR(uniqueid)}"
 
 
 EOD;
@@ -1332,12 +1338,18 @@ Event=>report
 [snom-check-cfg]
 Event=>check-sync\;reboot=false
 
+[snom-check-cfg-reboot]
+Event=>check-sync\;reboot=true
+
 [snom-reboot]
 Event=>reboot
 
 [cisco-check-cfg]
 Event=>check-sync
 
+[reboot-yealink]
+Event=>check-sync\;reboot=true
+Content-Length=>0
 
 EOD;
 
@@ -1390,7 +1402,7 @@ function cdr_adaptive_odbc_conf_generate($return=false) {
 }
 function cdr_manager_conf_generate($return=false) {
 
-	$conf = "";
+	$conf = "[general]\nenabled=yes\n";
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/cdr_manager.conf", $conf);
 }

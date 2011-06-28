@@ -61,7 +61,7 @@ function storage_get_previously_used_disks() {
 	if(count($devices) > 0)
 	{
 		foreach ($devices as $device=>$description) {
-			exec("mount -t vfat " . $device . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
+			exec("mount -w -t vfat " . $device . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
 			if ($retval != 0) {
 				syslog(LOG_INFO, "Mounting " . $device . "1 on /mnt/tmpprevdisk returned " . $retval);
 			} else {
@@ -230,7 +230,7 @@ function storage_format_disk($device) {
 
 function storage_mount_disk($uniqid) {
 	$disk = storage_get_disk($uniqid);
-	exec("mount " . $disk['device'] . "1 -o noatime", $out, $retval);
+	exec("mount " . $disk['device'] . "1 -w -o noatime", $out, $retval);
 	return $retval;
 }
 
@@ -269,6 +269,7 @@ function storage_initialize_service($service, $disk) {
 
 	} else if ($service == 'astlogs') {
 		exec("mkdir " . $servicepath . "/asterisk");
+		exec("mkdir " . $servicepath . "/asterisk/cdr-custom");
 	}
 
 	if (!$g['booting']) {
@@ -315,8 +316,20 @@ function storage_configure() {
 		foreach ($g['storage_services'] as $service) {
 			if (isset($disk[$service])) {
 				$servicepath = $disk['mountpoint'] . "/askoziapbx/" . $service;
+				
 				if (!file_exists($servicepath)) {
 					storage_initialize_service($service, $disk);
+				}
+				
+				if ($service == 'astlogs') {
+					if(!is_dir($servicepath . "/asterisk/"))
+					{
+						exec("mkdir " . $servicepath . "/asterisk");
+					}
+					if(!is_dir($servicepath . "/asterisk/cdr-custom"))
+					{
+						exec("mkdir " . $servicepath . "/asterisk/cdr-custom");
+					}
 				}
 			}
 		}
