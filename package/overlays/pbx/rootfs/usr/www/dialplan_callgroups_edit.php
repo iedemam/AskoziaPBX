@@ -123,9 +123,10 @@ include("fbegin.inc");
 
 //-->
 </script>
-<?php if ($input_errors) display_input_errors($input_errors); ?>
+<?php $colspan=2; if ($input_errors) display_input_errors($input_errors); ?>
 	<form action="dialplan_callgroups_edit.php" method="post" name="iform" id="iform">
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<?=d_header(gettext("Call Groups").": ".gettext("Edit"));?>
 			<tr> 
 				<td width="20%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 				<td width="80%" colspan="2" class="vtable">
@@ -148,7 +149,7 @@ include("fbegin.inc");
 				$form['ringlength'] = $defaults['accounts']['phones']['ringlength'];
 			}
 			display_phone_ringlength_selector($form['ringlength'], 2);
-			display_callgroup_member_selector($form['groupmember']);
+			display_callgroup_member_selector($form['groupmember'],gettext("All group members will be called at the same time. The voicemail account associated with the first member will be used if the call is not answered."));
 
 			?><tr>
 				<td valign="top">&nbsp;</td>

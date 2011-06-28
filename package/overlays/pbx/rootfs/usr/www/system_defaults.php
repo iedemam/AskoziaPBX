@@ -55,13 +55,10 @@ if ($rebootmsg) {
 	echo display_info_box($rebootmsg, "keep");
 } else {
 
-	?><form action="system_defaults.php" method="post">
-		<p><strong><?=sprintf(gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to use DHCP and the password will be set to '%s'."), $default_password);?><br>
-		<br>
-		<?=gettext("Are you sure you want to proceed?");?></strong></p>
-		<p><input name="Yes" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
-		<input name="No" type="submit" class="formbtn" value=" <?=gettext("No");?> "></p>
-	</form><?
+	d_start("system_defaults.php");
+	d_header(gettext("Factory Defaults"));
+	d_ask(sprintf(gettext("If you click &quot;Yes&quot;, the PBX will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to use DHCP and the password will be set to '%s'."), $default_password)."<br>&nbsp;<br>".gettext("Are you sure you want to proceed?"));
+	d_stop();
 
 }
 

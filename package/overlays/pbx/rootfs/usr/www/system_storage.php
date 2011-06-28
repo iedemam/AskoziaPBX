@@ -101,7 +101,7 @@ include("fbegin.inc");
 					$services[] = gettext("Persistence");
 				}
 				if (isset($disk['astlogs'])) {
-					$services[] = gettext("Asterisk logs");
+					$services[] = gettext("Logs");
 				}
 				if (isset($disk['faxarchive'])) {
 					$services[] = gettext("Fax Archive");

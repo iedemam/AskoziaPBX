@@ -31,6 +31,14 @@
 $navlevelsep = ": ";	/* navigation level separator string */
 $mandfldhtml = "";		/* display this before mandatory input fields */
 $mandfldhtmlspc = "";	/* same as above, but with spacing */
+$main_active = 0;
+
+function logout()
+{
+	header("Location: http://logout:logout@".$_ENV["HTTP_HOST"]."/logout.php?message=".urlencode(gettext("Logout successful."))."&back=".urlencode(gettext("Back to Askozia"))."&ip=".urlencode("http://".$_ENV["HTTP_HOST"]));
+}
+
+if(isset($_GET['logout'])) { logout(); }
 
 function gentitle($title) {
 	global $navlevelsep;
@@ -189,7 +197,7 @@ if (storage_service_is_active("faxarchive")) {
 
 /* Status */
 $menu['Status'][gettext("Summary")]				= array('index.php');
-$menu['Status'][gettext("Ports")]				= array('status_ports.php');
+//$menu['Status'][gettext("Ports")]				= array('status_ports.php');
 //$menu['Status'][gettext("Channels")]			= array('status_channels.php');
 //$menu['Status'][gettext("Conferences")]			= array('status_conferences.php');
 $menu['Status'][gettext("Network Traffic")]		= array('status_graph_traffic.php');
@@ -204,8 +212,8 @@ $menu['Advanced'][gettext("IAX")] 				= array('advanced_iax.php');
 $menu['Advanced'][gettext("Analog")] 			= array('advanced_analog.php');
 $menu['Advanced'][gettext("Manager")] 			= array('advanced_manager.php',
 												'advanced_manager_edit.php');
+$menu['Advanced'][gettext("Humbug Analytics")]       = array('thirdparty_humbug.php');
 $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
-
 
 ?>
 

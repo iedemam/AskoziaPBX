@@ -187,7 +187,7 @@ include("fbegin.inc");
 						<? endforeach; ?>
 						</select>
 						<br><input name="disablecertcheck" type="checkbox" class="formfld" id="disablecertcheck" value="yes" <?
-						if (isset($pconfig['disablecertcheck'])) echo "checked"; ?>
+						if (isset($pconfig['disablecertcheck']) || !isset($pconfig['address'])) echo "checked"; ?>
 						>&nbsp;<?=gettext("disable certificate checking");?>
 					</td>
 				</tr>

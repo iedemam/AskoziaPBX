@@ -113,6 +113,13 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		}
 	}
 	
+	if (count($a_items = virtual_get_faxes())) {
+		$options[] = array("", gettext("Virtual Faxes"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['uniqid'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
 	if (count($a_items = analog_get_faxes())) {
 		$options[] = array("", gettext("Analog Faxes"));
 		foreach ($a_items as $item) {
@@ -143,8 +150,14 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 	
 	$n = count($options);
 	for ($i = 0; $i < $n; $i++) {
-		$options[$i][1] = escape_jstring($options[$i][1]);
-		$add_options_string .= "\t\t+ '<option value=\"{$options[$i][0]}\">{$options[$i][1]}</option>'\n";
+		//$options[$i][1] = escape_jstring($options[$i][1]);
+		
+		if(strlen($options[$i][0]) == 0)
+		{
+			$add_options_string .= "\t\t+ '<optgroup label=\"{$options[$i][1]}&nbsp;\">&nbsp;</optgroup>'\n";
+		} else {
+			$add_options_string .= "\t\t+ '<option value=\"{$options[$i][0]}\">{$options[$i][1]}</option>'\n";
+		}
 	}
 
 	echo <<<EOD

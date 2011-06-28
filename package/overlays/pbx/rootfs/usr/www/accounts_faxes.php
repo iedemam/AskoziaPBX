@@ -4,7 +4,7 @@
 	$Id: accounts_faxes.php 1515 2010-04-30 11:38:34Z michael.iedema $
 	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2010 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
@@ -150,27 +150,30 @@ if ($analog_faxes = analog_get_faxes()) {
 		<td width="10%" class="list"></td>
 	</tr><?
 
-	foreach ($analog_faxes as $f) {
-	?><tr>
-		<td valign="middle" nowrap class="list"><?
-		if (isset($f['disabled'])) {
-			?><a href="?action=enable&uniqid=<?=$f['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable fax");?>" border="0"></a><?
-		} else {
-			?><a href="?action=disable&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this fax?");?>')"><img src="enabled.png" title="<?=gettext("click to disable fax");?>" border="0"></a><?
+	if(count($analog_faxes) > 0)
+	{
+		foreach ($analog_faxes as $f) {
+		?><tr>
+			<td valign="middle" nowrap class="list"><?
+			if (isset($f['disabled'])) {
+				?><a href="?action=enable&uniqid=<?=$f['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable fax");?>" border="0"></a><?
+			} else {
+				?><a href="?action=disable&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this fax?");?>')"><img src="enabled.png" title="<?=gettext("click to disable fax");?>" border="0"></a><?
+			}
+			?></td>
+			<td class="listbgl"><?
+			if (!isset($f['disabled'])) {
+				echo htmlspecialchars($f['extension']);
+			} else {
+				?><span class="gray"><?=htmlspecialchars($f['extension']);?></span><?
+			}
+			?></td>
+			<td class="listr"><?=htmlspecialchars($f['callerid']);?>&nbsp;</td>
+			<td class="listr"><?=htmlspecialchars(pbx_uniqid_to_name($f['port']));?>&nbsp;</td>
+			<td valign="middle" nowrap class="list"><a href="faxes_analog_edit.php?uniqid=<?=$f['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit fax");?>" border="0"></a>
+				<a href="?action=delete&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this fax?");?>')"><img src="delete.png" title="<?=gettext("delete fax");?>" border="0"></a></td>
+		</tr><?
 		}
-		?></td>
-		<td class="listbgl"><?
-		if (!isset($f['disabled'])) {
-			echo htmlspecialchars($f['extension']);
-		} else {
-			?><span class="gray"><?=htmlspecialchars($f['extension']);?></span><?
-		}
-		?></td>
-		<td class="listr"><?=htmlspecialchars($f['callerid']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars(pbx_uniqid_to_name($f['port']));?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="faxes_analog_edit.php?uniqid=<?=$f['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit fax");?>" border="0"></a>
-			<a href="?action=delete&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this fax?");?>')"><img src="delete.png" title="<?=gettext("delete fax");?>" border="0"></a></td>
-	</tr><?
 	}
 
 	?><tr>
@@ -193,27 +196,30 @@ if ($virtual_faxes = virtual_get_faxes()) {
 		<td width="10%" class="list"></td>
 	</tr><?
 
-	foreach ($virtual_faxes as $f) {
-	?><tr>
-		<td valign="middle" nowrap class="list"><?
-		if (isset($f['disabled'])) {
-			?><a href="?action=enable&uniqid=<?=$f['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable fax");?>" border="0"></a><?
-		} else {
-			?><a href="?action=disable&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this fax?");?>')"><img src="enabled.png" title="<?=gettext("click to disable fax");?>" border="0"></a><?
+	if(count($virtual_faxes) > 0)
+	{
+		foreach ($virtual_faxes as $f) {
+		?><tr>
+			<td valign="middle" nowrap class="list"><?
+			if (isset($f['disabled'])) {
+				?><a href="?action=enable&uniqid=<?=$f['uniqid'];?>"><img src="disabled.png" title="<?=gettext("click to enable fax");?>" border="0"></a><?
+			} else {
+				?><a href="?action=disable&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to disable this fax?");?>')"><img src="enabled.png" title="<?=gettext("click to disable fax");?>" border="0"></a><?
+			}
+			?></td>
+			<td class="listbgl"><?
+			if (!isset($f['disabled'])) {
+				echo htmlspecialchars($f['extension']);
+			} else {
+				?><span class="gray"><?=htmlspecialchars($f['extension']);?></span><?
+			}
+			?></td>
+			<td class="listr"><?=htmlspecialchars($f['callerid']);?>&nbsp;</td>
+			<td class="listr"><?=htmlspecialchars($f['email']);?>&nbsp;</td>
+			<td valign="middle" nowrap class="list"><a href="faxes_virtual_edit.php?uniqid=<?=$f['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit fax");?>" border="0"></a>
+				<a href="?action=delete&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this fax?");?>')"><img src="delete.png" title="<?=gettext("delete fax");?>" border="0"></a></td>
+		</tr><?
 		}
-		?></td>
-		<td class="listbgl"><?
-		if (!isset($f['disabled'])) {
-			echo htmlspecialchars($f['extension']);
-		} else {
-			?><span class="gray"><?=htmlspecialchars($f['extension']);?></span><?
-		}
-		?></td>
-		<td class="listr"><?=htmlspecialchars($f['callerid']);?>&nbsp;</td>
-		<td class="listr"><?=htmlspecialchars($f['email']);?>&nbsp;</td>
-		<td valign="middle" nowrap class="list"><a href="faxes_virtual_edit.php?uniqid=<?=$f['uniqid'];?>"><img src="edit.png" title="<?=gettext("edit fax");?>" border="0"></a>
-			<a href="?action=delete&uniqid=<?=$f['uniqid'];?>" onclick="return confirm('<?=gettext("Do you really want to delete this fax?");?>')"><img src="delete.png" title="<?=gettext("delete fax");?>" border="0"></a></td>
-	</tr><?
 	}
 
 	?><tr>

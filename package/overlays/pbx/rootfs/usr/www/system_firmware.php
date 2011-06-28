@@ -6,7 +6,7 @@
 	continued modifications as part of AskoziaPBX (http://askozia.com/pbx)
 	
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	Copyright (C) 2007-2009 tecema (a.k.a IKT) <http://www.tecema.de>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,13 @@ check_update();
 
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
-	$(document).bind("keydown","alt",function(e){
-			$("#Upgrade").val("<?=gettext("Upgrade firmware");?>*");
+	$(document).bind("keydown",function(e){
+		if(e.keyCode == 18)
+		{
+			$("#submit").val("<?=gettext("Upgrade firmware");?>*");
+		} else {
+			$("#submit").val("<?=gettext("Upgrade firmware");?>");
+		}
 			return false;
 		});
 });
@@ -60,7 +65,7 @@ if ($_POST) {
 	unset($input_errors);
 	unset($sig_warning);
 	
-	if ($_POST['Upgrade'] || $_POST['sig_override']) {
+	if ($_POST['Submit'] || $_POST['sig_override']) {
 		$upgrading = true;
 	} else if ($_POST['sig_no']) {
 		unlink("/ultmp/firmware.img.gz");
@@ -73,7 +78,7 @@ if ($_POST) {
 		if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 			
 			// check to see if the uploaded firmware is compatible with the platform based on its name
-			if (substr($_POST['Upgrade'],-1,1) != "*" && !stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && 
+			if (substr($_POST['submit'],-1,1) != "*" && !stristr($_FILES['ulfile']['name'], chop(file_get_contents("{$g['etc_path']}/firmwarepattern"))) && 
 				!$_POST['sig_override']) {
 				$input_errors[] = sprintf(gettext("The uploaded image file is not for this platform (%s)."), $g['platform']);
 
@@ -151,42 +156,21 @@ if (file_exists($g['varrun_path'] . "/firmware.upgrade.unsupported")) {
 
 // default firmware upgrade screen
 } else if (!$keepmsg) {
-
-	?><p><?=sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."),
-		chop(file_get_contents("{$g['etc_path']}/firmwarepattern")));?><br>
-	<?=gettext("Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
-
-	<form action="system_firmware.php" method="post" enctype="multipart/form-data">
-		<table width="100%" border="0" cellpadding="6" cellspacing="0">
-			<tr> 
-				<td width="22%" valign="top">&nbsp;</td>
-				<td width="78%"><?
-
-				if (!file_exists($d_sysrebootreqd_path)) {
-
-					?><strong><?=gettext("Firmware image file:");?></strong>
-					<input name="ulfile" type="file" class="formfld"><br>
-					<br>
-					<input id="Upgrade" name="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>"><?
-
-				} else {
-
-					?><strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong><?
-
-				}
-
-				?></td>
-			</tr>
-			<tr>
-				<td width="22%" valign="top">&nbsp;</td>
-				<td width="78%">
-					<span class="vexpl"><span class="red"><strong><?=gettext("Warning:");?></strong></span><br>
-					<?=gettext("DO NOT abort the firmware upgrade once it has started.");?></span>
-				</td>
-			</tr>
-		</table>
-	</form><?
-
+	
+	$colspan = 2;
+	
+	d_start("system_firmware.php",true);
+	d_header(gettext("System firmware"));
+	
+	if (!file_exists($d_sysrebootreqd_path)) {
+		d_blanklabel("",sprintf(gettext("Choose the new firmware image file (%s-*.img) to be installed."),
+			chop(file_get_contents("{$g['etc_path']}/firmwarepattern")))."<br>".gettext("Click &quot;Upgrade firmware&quot; to start the upgrade process."));
+		d_file(gettext("Firmware image"),"ulfile",30,gettext("DO NOT abort the firmware upgrade once it has started."),false,true);
+		d_submit(gettext("Upgrade firmware"));
+	} else {
+		d_blanklabel("",gettext("You must reboot the system before you can upgrade the firmware."));
+		d_stop();
+	}
 }
 
 include("fend.inc");

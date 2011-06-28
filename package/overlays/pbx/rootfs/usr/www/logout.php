@@ -1,11 +1,14 @@
 #!/usr/bin/php
-<?php 
+<?php
 /*
 	$Id$
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of AskoziaPBX (http://askozia.com/pbx)
 	
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2007-2011 tecema (a.k.a IKT) <http://www.tecema.de>.
 	All rights reserved.
+	
+	Askozia®PBX is a registered trademark of tecema. Any unauthorized use of
+	this trademark is prohibited by law and international treaties.
 	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -17,7 +20,12 @@
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
 	
-	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	3. Redistribution in any form at a charge, that in whole or in part
+	   contains or is derived from the software, including but not limited to
+	   value added products, is prohibited without prior written consent of
+	   tecema.
+	
+	THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
 	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
@@ -28,35 +36,31 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-require("guiconfig.inc");
-
-$pgtitle = array(gettext("System"), gettext("Reboot"));
-
-if ($_POST) {
-	if ($_POST['Yes']) {
-		system_reboot();
-		$rebootmsg = gettext("The system is rebooting now. This may take a minute.");
-	} else {
-		header("Location: index.php");
-		exit;
-	}
-}
 ?>
-<?php include("fbegin.inc"); ?>
 
-<?
+	<html>
 
-$colspan=1;
+	<head>
+	<title>AskoziaPBX webGUI - Logout</title>
+	
+	<style type="text/css">
+	<!--
+	body {
+		font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+		font-size: 13px;
+	}
+	
+	a {
+		color: #000066;
+	}
+	-->
+	</style>
+	
+	</head>
 
-if ($rebootmsg)
-{
-	echo display_info_box($rebootmsg, "keep");
-} else {
-	d_start("system_reboot.php");
-	d_header(gettext("Reboot"));
-	d_ask(gettext("Are you sure you want to reboot the system?"));
-	d_stop();
-}
+	<body bgcolor="#ffffff">
+	
+<br>&nbsp;<br>&nbsp;<br><center><?=urldecode($_GET['message']);?> (<a href="<?=urldecode($_GET['ip']);?>"><?=urldecode($_GET['back']);?></a>)</center>
 
-include("fend.inc"); ?>
+</body>
+</html>

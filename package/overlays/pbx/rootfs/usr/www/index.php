@@ -142,8 +142,8 @@ if ($config['lastchange']) {
 		<td class="listr"><?
 			exec("/usr/bin/free", $memory);
 			$memory = preg_split("/\s+/", $memory[1]);
-			$totalMem = $memory[2];
-			$freeMem = $memory[4];
+			$totalMem = $memory[1];
+			$freeMem = $memory[3];
 			$usedMem = $totalMem - $freeMem;
 			$memUsage = round(($usedMem * 100) / $totalMem, 0);
 			$usageTitle = $usedMem . " / " . $totalMem . " kBytes";

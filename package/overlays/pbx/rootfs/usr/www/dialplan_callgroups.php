@@ -79,9 +79,13 @@ if (file_exists($d_extensionsconfdirty_path)) {
 	}
 }
 
+$colspan = 4;
+
 include("fbegin.inc");
+
 ?><form action="dialplan_callgroups.php" method="post">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<?=d_header(gettext("Call Groups"));?>
 	<tr>
 		<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
 		<td width="15%" class="listhdrr"><?=gettext("Extension");?></td>

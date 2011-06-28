@@ -102,7 +102,7 @@ if ($_GET['previous']) {
 
 	exec("mkdir -p /mnt/tmpprevdisk");
 	openlog("system_storage_edit()", LOG_INFO, LOG_LOCAL0);
-	exec("mount -t vfat " . $form['device'] . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
+	exec("mount -w -t vfat " . $form['device'] . "1 /mnt/tmpprevdisk -o noatime", $out, $retval);
 
 	foreach ($g['storage_services'] as $service) {
 		if (file_exists("/mnt/tmpprevdisk/askoziapbx/" . $service)) {
@@ -184,7 +184,7 @@ if (!$initialformat && !count($unassigneddisks)) {
 	}
 	// logs
 	if (!$assignedservices['astlogs']) {
-		d_checkbox(gettext("Asterisk logs"), gettext("store Asterisk's logs on disk"), "astlogs");
+		d_checkbox(gettext("Logs"), gettext("store logs on disk"), "astlogs");
 	} else {
 		d_blanklabel(gettext("Asterisk logs"),
 			sprintf(gettext("service already assigned to \"%s\""), $assignedservices['astlogs']));

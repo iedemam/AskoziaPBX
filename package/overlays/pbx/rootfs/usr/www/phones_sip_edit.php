@@ -158,8 +158,8 @@ d_start("phones_sip_edit.php");
 	//d_field(gettext("Call Limit"), "calllimit", 5,
 	//	gettext("Permit only a certain number of concurrent calls."));
 
-	//d_field(gettext("Busy Limit"), "busylimit", 5,
-	//	gettext("Phone will be busy for others with this many concurrent calls."));
+	d_field(gettext("Busy level"), "busylevel", 5,
+		gettext("Phone will be busy for others with this many concurrent calls."));
 
 	d_manualattributes_editor($form['manualattributes']);
 	d_collapsible_end();

@@ -224,7 +224,7 @@ function display_video_codec_selector($enabled_codecs) {
 	</tr><?
 }
 
-function display_callgroup_member_selector($current_members) {
+function display_callgroup_member_selector($current_members,$description) {
 	
 	$internal_phones = pbx_get_phones();
 	$external_phones = external_get_phones();
@@ -268,13 +268,14 @@ function display_callgroup_member_selector($current_members) {
 			?></ul>
 		</td>
 	</tr>
+	<? if(strlen($description) > 0) { ?>
 	<tr>
 		<td width="20%" valign="top" class="vncell">&nbsp;</td>
 		<td width="40%" class="vtable" valign="top" colspan="2">
 			<span class="vexpl"><strong><span class="red"><?=gettext("Note:");?></span></strong>
-			<?=gettext("All group members will be called at the same time. <strong>The voicemail account associated with the first member will be used if the call is not answered.");?></strong></span>
+			<?=$description;?></span>
 		</td>
-	</tr><?	
+	</tr><?	}
 }
 
 function display_incoming_extension_selector($colspan) {
@@ -544,6 +545,7 @@ function display_channel_language_selector($current_language, $colspan=1) {
 
 function display_public_access_editor($current_publicaccess, $current_publicname, $colspan=1) {
 	global $scripts;
+	global $config;
 
 	$scripts['javascript_public_access_editor'] = true;
 
@@ -556,7 +558,7 @@ function display_public_access_editor($current_publicaccess, $current_publicname
 			}
 			?>>&nbsp;<?=gettext("allow this number to be reachable over the Internet");?>
 			<span name="publicaccess_wrapper" id="publicaccess_wrapper">
-				<br><?=gettext("alias");?>:&nbsp;<input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>">&nbsp(<?=gettext("optional");?>)
+				<br><?=gettext("alias");?>:&nbsp;<input name="publicname" type="text" class="formfld" id="publicname" size="20" value="<?=htmlspecialchars($current_publicname);?>"><b>@<?=$config['system']['hostname'] . "." . $config['system']['domain'];?></b>&nbsp(<?=gettext("optional");?>)
 				<br><br><span class="vexpl"><?=gettext("Set a friendlier alias above if you would like to use a word or name instead of the extension number.");?></span>
 			</span>
 		</td>
@@ -698,14 +700,14 @@ function display_firmware_update_info($status) {
 
 	} else if ($status == "release update available") { 
 	
-		$image = "exclam.gif";
+		$image = "exclam.png";
 		$message = gettext("A newer version of AskoziaPBX is available!") .
 					"<br><a href=\"http://askozia.com/pbx\" target=\"_blank\">" .
 					gettext("Update") . "</a>";
 
 	} else if ($status == "beta update available") { 
 
-		$image = "exclam.gif";
+		$image = "exclam.png";
 		$message = gettext("A newer <strong>beta</strong> version of AskoziaPBX is available!") .
 					"<br><a href=\"http://askozia.com/pbx\" target=\"_blank\">" .
 					gettext("Update") . "</a>";
@@ -767,7 +769,7 @@ function display_info_box($msg, $keep=false) {
 		<p>
 			<table border="0" cellspacing="0" cellpadding="4" width="100%">
 				<tr>
-					<td class="print_info_box_img" width="36"><img src="exclam.gif" width="28" height="32"></td>
+					<td class="print_info_box_img" width="36"><img src="exclam.png" width="28" height="32"></td>
 					<td class="print_info_box_msg"><?=$msg;?></td>
 				</tr>
 			</table>
@@ -891,11 +893,11 @@ function display_readback_number_field($current_readbacknumber, $colspan) {
 
 
 
-function d_start($formname=false) {
+function d_start($formname=false,$multipart=false) {
 
 	if ($formname) {
 ?>
-<form action="<?=$formname;?>" method="post" name="iform" id="iform">
+<form action="<?=$formname;?>" method="post" name="iform" id="iform"<?=($multipart)?" enctype=\"multipart/form-data\"":""?>>
 <?
 	}
 ?>
@@ -948,7 +950,7 @@ function d_field($title, $name, $width, $help=false, $required=false) {
 	<tr> 
 		<td width="20%" valign="top" class="<?=$class;?>"><?=$title;?></td>
 		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
-			<input name="<?=$name;?>" type="text" class="formfld" id="<?=$name;?>" size="<?=$width;?>" value="<?=htmlspecialchars($form[$name]);?>"> 
+			<input name="<?=$name;?>" type="text" class="formfld" id="<?=$name;?>" size="<?=$width;?>" value="<?=htmlspecialchars($form[$name]);?>">
 			<br><span class="vexpl"><?=$help;?></span>
 		</td>
 	</tr>
@@ -969,6 +971,31 @@ function d_label($title, $name) {
 <?
 }
 
+function d_file($title, $name, $width, $help=false, $required=false, $warning=false)
+{
+	global $form, $colspan;
+	
+	$class = ($required) ? "vncellreq" : "vncell";
+	?>
+	<tr> 
+		<td width="20%" valign="top" class="<?=$class;?>"><?=$title;?></td>
+		<td width="80%" colspan="<?=$colspan;?>" class="vtable">
+			<input name="<?=$name;?>" type="file" class="formfld" size="<?=$width;?>"><?
+			
+			if($warning)
+			{
+				?>
+				
+				<br><span class="red"><strong><?=gettext("Warning:");?></strong></span>
+				
+				<?
+			}
+			
+			?><br><span class="vexpl"><?=$help;?></span></td>
+	</tr>
+	<?
+}
+
 function d_blanklabel($title, $content) {
 	global $colspan;
 
@@ -980,17 +1007,37 @@ function d_blanklabel($title, $content) {
 <?
 }
 
+function d_ask($question) {
+	global $colspan;
+
+?>
+<tr>
+	<td width="100%" colspan="<?=$colspan;?>" class="vtable"><?=$content;?>
+
+        <span class="vask"><?=$question;?></span>
+	</td>
+</tr>
+<tr>
+	<td width="100%" colspan="<?=$colspan;?>" class="vtable">
+		<input name="Yes" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
+    	<input name="No" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
+	</td>
+</tr>
+<?
+}
+
 function d_spacer() {
 	global $colspan;
 ?>
 	<tr>
-		<td colspan="<?=($colspan+1);?>" class="list" height="22"></td>
+		<td colspan="<?=($colspan+1);?>" class="list" height="10"></td>
 	</tr>
 <?
 }
 
-function d_submit() {
+function d_submit($name="") {
 	global $form, $carryovers, $colspan;
+	if(strlen($name) == 0) { $name = gettext("Save"); }
 ?>
 	<tr> 
 		<td valign="top">&nbsp;</td>
@@ -1004,7 +1051,7 @@ function d_submit() {
 			}
 		}
 ?>
-			<input name="Submit" id="submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+			<input name="Submit" id="submit" type="submit" class="formbtn" value="<?=$name;?>">
 		</td>
 	</tr>
 </table>
@@ -1144,12 +1191,11 @@ function d_voicemail_editor($current_vmtoemail, $current_vmtoemailaddress, $curr
 			if ($current_vmtoemail == "enabled") {
 				echo "checked";
 			}
-			?>>&nbsp;<?=gettext("enable voicemail");?><br>&nbsp;
+			?>>&nbsp;<?=gettext("enable voicemail");?><br>&nbsp;<br>
+			<span class="vexpl"><?=sprintf(gettext("Note: Voicemail is send to the e-mail address specified below or can be accessed by dialing %s. If no external storage is installed, voicemail can only be accessed via e-mail."),"000086 (0000VM)");?></span><br>
 			<span name="vmtoemail_wrapper" id="vmtoemail_wrapper">
-				<br><?=gettext("PIN");?>:<br><input name="vmpin" id="vmpin" type="text" class="formfld" size="15" value="<?=htmlspecialchars($current_vmpin);?>"><br>
-				<br><span class="vexpl"><?=gettext("Note:") . " " .
-					gettext("Users can access the voicemail system by entering the following number and the PIN above: ");?><b>000086 (0000VM)</b></span><br>
-				<br><?=gettext("E-Mail address");?>:<br><input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
+				<br><?=gettext("PIN");?>:<br><input name="vmpin" id="vmpin" type="text" class="formfld" size="15" value="<?=htmlspecialchars($current_vmpin);?>">
+				<br>&nbsp;<br><?=gettext("E-Mail address");?>:<br><input name="vmtoemailaddress" id="vmtoemailaddress" type="text" class="formfld" size="40" value="<?=htmlspecialchars($current_vmtoemailaddress);?>">
 				<br>
 				<br><span class="vexpl"><?=gettext("Note:") . " " .
 					gettext("<a href=\"notifications_email.php\">E-Mail Notifications</a> must be configured correctly before this will work.");?></span>
@@ -1368,6 +1414,92 @@ function d_iax_keys() {
 	</tr><?
 }
 
+function d_select_internal_extension() {
+	global $form, $colspan;
+
+	$options[] = array("all", gettext("All"));
+	$pad = "&nbsp;&nbsp;&nbsp;";
+
+	if (count($a_items = callgroups_get_groups())) {
+		$options[] = array("", gettext("Call Groups"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['name'].";".$item['extension'], $pad . $item['name']);
+		}
+	}
+	
+	if (count($a_items = sip_get_phones())) {
+		$options[] = array("", gettext("SIP Phones"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['callerid'] . ";" . $item['extension'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
+	if (count($a_items = iax_get_phones())) {
+		$options[] = array("", gettext("IAX Phones"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['callerid'] . ";" . $item['extension'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
+	if (count($a_items = isdn_get_phones())) {
+		$options[] = array("", gettext("ISDN Phones"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['callerid'] . ";" . $item['extension'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
+	if (count($a_items = analog_get_phones())) {
+		$options[] = array("", gettext("Analog Phones"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['callerid'] . ";" . $item['extension'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
+	if (count($a_items = virtual_get_faxes())) {
+		$options[] = array("", gettext("Virtual Faxes"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['callerid'] . ";" . $item['extension'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
+	if (count($a_items = analog_get_faxes())) {
+		$options[] = array("", gettext("Analog Faxes"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['callerid'] . ";" . $item['extension'], $pad . $item['callerid'] . " &lt;" . $item['extension'] . "&gt;");
+		}
+	}
+	
+	if (count($a_items = external_get_phones())) {
+		$options[] = array("", gettext("External Phones"));
+		foreach ($a_items as $item) {
+			$options[] = array($item['name'] . ";" . $item['dialstring'], $pad . $item['name'] . " &lt;" . $item['dialstring'] . "&gt;");
+		}
+	}
+
+	?><tr>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Extension");?></td>
+		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
+
+		if (count($options) == 1) {
+			echo "<em>" . gettext("no extensions available.") . "</em>";
+		} else {
+			?><select name="extension_number" class="formfld" id="extension_number"><?
+				foreach ($options as $o) {
+					if(strlen($o[0]) == 0 && $o[1] != "All")
+					{
+						?><optgroup label="<?=$o[1];?>&nbsp;">&nbsp;</optgroup><?
+					} else {
+						?><option value="<?=$o[0];?>" <?=($o[0] == $form['extension_number'])?' selected':''?>><?=$o[1];?></option><?
+					}
+				}
+			?></select><?
+		}
+
+			?><br><span class="vexpl"><?=gettext("Select a specific extension or use all.");?></span>
+		</td>
+	</tr><?
+}
+
 function d_incoming_fax_editor() {
 	global $form, $colspan;
 
@@ -1387,7 +1519,7 @@ function d_incoming_fax_editor() {
 	}
 
 	?><tr>
-		<td width="20%" valign="top" class="vncell"><?=gettext("Incoming Faxes");?></td>
+		<td width="20%" valign="top" class="vncell"><?=gettext("Automatic Fax Detection");?></td>
 		<td width="80%" colspan="<?=$colspan?>" class="vtable"><?
 
 		if (count($options) == 1) {
