@@ -30,6 +30,7 @@ echo "Copying over firmware contents ..."
 cp -Rp $imagelocation/root_stage/* $livecdlocation
 cp -Rp $imagelocation/offload_stage/* $livecdlocation/
 touch $livecdlocation/livecd
+echo $config | cut -s -d "-" -f1 > $livecdlocation/livecd
 
 echo "Adding iso bootloader files ..."
 cp ../../usr/lib/grub/i386-t2/stage2_eltorito $livecdlocation/boot/grub/
