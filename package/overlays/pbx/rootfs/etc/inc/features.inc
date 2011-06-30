@@ -78,6 +78,8 @@ function features_conf_generate($return=false) {
 	$conf .= "parkpos => " . $pc['parkposstart'] . "-" . $pc['parkposend'] . "\n";
 	$conf .= "context => parkedcalls\n";
 	$conf .= "parkingtime => " . $pc['parktime'] . "\n";
+	$conf .= "parkedcallreparking = caller\n";
+	$conf .= "parkedcalltransfers = caller\n";
 	$conf .= "featuredigittimeout = " . $pc['featuredigittimeout'] . "\n";
 	$conf .= "atxfernoanswertimeout = " . $pc['atxfernoanswertimeout'] . "\n";
 	$conf .= "transferdigittimeout = " . $pc['transferdigittimeout'] . "\n";

@@ -1010,6 +1010,7 @@ load => app_exec.so
 load => app_macro.so
 load => app_meetme.so
 load => app_milliwatt.so
+load => app_originate.so
 load => app_playback.so
 load => app_playtones.so
 load => app_read.so

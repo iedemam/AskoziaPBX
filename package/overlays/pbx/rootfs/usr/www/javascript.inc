@@ -74,7 +74,7 @@ function escape_jstring($in_str) {
 
 function javascript_incoming_extension_selector($current_incomingextensionmap, $multiple=false) {
 	
-	$options[] = array("", gettext("Outgoing Calls Only"));
+	$options[] = array("outgoing", gettext("Outgoing Calls Only"));
 	$options[] = array("", "");
 	$pad = "&nbsp;&nbsp;&nbsp;";
 
@@ -156,6 +156,10 @@ function javascript_incoming_extension_selector($current_incomingextensionmap, $
 		{
 			$add_options_string .= "\t\t+ '<optgroup label=\"{$options[$i][1]}&nbsp;\">&nbsp;</optgroup>'\n";
 		} else {
+			if($options[$i][0] == "outgoing")
+			{
+				$options[$i][0] = "";
+			}
 			$add_options_string .= "\t\t+ '<option value=\"{$options[$i][0]}\">{$options[$i][1]}</option>'\n";
 		}
 	}
