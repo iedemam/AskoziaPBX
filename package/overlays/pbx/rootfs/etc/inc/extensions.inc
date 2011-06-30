@@ -97,7 +97,7 @@ exten => vm-noanswer,2,Wait(1)
 
 EOD;
 
-if(isset($config['media']['custom-vmgreeting']))
+if(storage_service_is_active("media") && is_file($disk['mountpoint']."/askoziapbx/media/vmgreeting/vmgreeting_personal.ulaw") && isset($config['media']['custom-vmgreeting']))
 {
 $conf .= <<<EOD
 exten => vm-noanswer,n,Playback($disk[mountpoint]/askoziapbx/media/vmgreeting/vmgreeting_personal)

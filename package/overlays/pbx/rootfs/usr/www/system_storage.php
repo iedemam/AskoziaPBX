@@ -63,7 +63,10 @@ if (file_exists($g['storage_dirty_path'])) {
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
 		$retval |= storage_configure();
+		$retval |= extensions_conf_generate();
 		config_unlock();
+		
+		$retval |= pbx_exec("dialplan reload");
 	}
 
 	$keepmsg = get_std_save_message($retval);

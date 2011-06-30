@@ -1175,8 +1175,9 @@ EOD;
 function musiconhold_conf_generate($return=false) {
 	global $config;
 	$mohpath = "/offload/asterisk/moh";
+	
 	if ($disk = storage_service_is_active("media")) {
-		if(isset($config['media']['custom-moh']))
+		if(isset($config['media']['custom-moh']) && is_file($disk['mountpoint']."/askoziapbx/media/moh-custom/moh_personal.ulaw"))
 		{
 			$mohpath = $disk['mountpoint'] . "/askoziapbx/media/moh-custom";
 		} else {
