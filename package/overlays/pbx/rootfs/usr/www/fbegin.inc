@@ -224,10 +224,15 @@ $menu['Advanced'][gettext("GUI Options")]		= array('advanced_guioptions.php');
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <script src="jqueryui/js/jquery.js" type="text/javascript"></script>
-<script src="jqueryui/js/ui.core.js" type="text/javascript"></script>
-<script src="jqueryui/js/ui.draggable.js" type="text/javascript"></script>
-<script src="jqueryui/js/ui.sortable.js" type="text/javascript"></script>
-<script src="jqueryui/js/ui.tabs.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.core.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.mouse.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.draggable.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.sortable.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.tabs.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.button.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.accordion.js" type="text/javascript"></script>
+<script src="jqueryui/js/jquery.ui.datepicker.js" type="text/javascript"></script>
 <script src="jquery.selectboxes.js" type="text/javascript"></script>
 <script src="jquery.preloadImage.js" type="text/javascript"></script>
 <script src="jquery.progressbar.js" type="text/javascript"></script>
