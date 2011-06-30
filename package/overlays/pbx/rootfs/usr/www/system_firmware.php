@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 
-if ($_POST) {
+if ($_POST && strlen($_FILES['ulfile']['tmp_name']) > 0) {
 	
 	// provide memory for update process
 	pbx_stop();
