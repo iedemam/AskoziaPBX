@@ -100,17 +100,17 @@ EOD;
 if(isset($config['media']['custom-vmgreeting']))
 {
 $conf .= <<<EOD
-exten => vm-noanswer,3,Playback($disk[mountpoint]/askoziapbx/media/vmgreeting/vmgreeting_personal)
-exten => vm-noanswer,4,VoiceMail($\{ARG2},s,$\{ARG3})
-exten => vm-noanswer,5,Playback(vm-goodbye)
-exten => vm-noanswer,6,Hangup()
+exten => vm-noanswer,n,Playback($disk[mountpoint]/askoziapbx/media/vmgreeting/vmgreeting_personal)
+exten => vm-noanswer,n,VoiceMail($\{ARG2},s,$\{ARG3})
+exten => vm-noanswer,n,Playback(vm-goodbye)
+exten => vm-noanswer,n,Hangup()
 
 EOD;
 } else {
 $conf .= <<<EOD
-exten => vm-noanswer,7,VoiceMail($\{ARG2},u,$\{ARG3})
-exten => vm-noanswer,8,Playback(vm-goodbye)
-exten => vm-noanswer,9,Hangup()
+exten => vm-noanswer,n,VoiceMail($\{ARG2},u,$\{ARG3})
+exten => vm-noanswer,n,Playback(vm-goodbye)
+exten => vm-noanswer,n,Hangup()
 
 EOD;
 }
