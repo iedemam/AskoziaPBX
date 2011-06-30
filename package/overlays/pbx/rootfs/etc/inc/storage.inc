@@ -257,6 +257,10 @@ function storage_initialize_service($service, $disk) {
 	exec("mkdir -p " . $servicepath);
 
 	if ($service == 'media') {
+		// no iax firmware error message
+		exec("mkdir " . $servicepath . "/firmware");
+		exec("mkdir " . $servicepath . "/firmware/iax");
+		
 		exec("mkdir " . $servicepath . "/moh");
 		exec("cp -Rp /offload/asterisk/moh/* " . $servicepath . "/moh/");
 		exec("mkdir " . $servicepath . "/sounds");
