@@ -54,6 +54,9 @@ cp -Rp ../../offload/asterisk/* offload_stage/asterisk/
 rm -rf offload_stage/asterisk/agi-bin
 #rm -rf offload_stage/asterisk/documentation
 rm -rf offload_stage/asterisk/firmware
+# get rid of error messages
+mkdir offload_stage/asterisk/firmware
+mkdir offload_stage/asterisk/firmware/iax
 rm -rf offload_stage/asterisk/images
 rm -rf offload_stage/asterisk/keys
 rm -rf offload_stage/asterisk/static-http
