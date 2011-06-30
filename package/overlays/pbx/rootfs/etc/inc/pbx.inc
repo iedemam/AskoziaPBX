@@ -149,6 +149,7 @@ function pbx_configure() {
 	$res |= ais_conf_generate();
 	$res |= alarmreceiver_conf_generate();
 	$res |= alsa_conf_generate();
+	$res |= ccss_conf_generate();
 	$res |= cdr_adaptive_odbc_conf_generate();
 	$res |= cdr_manager_conf_generate();
 	$res |= cdr_odbc_conf_generate();
@@ -166,6 +167,7 @@ function pbx_configure() {
 	$res |= dundi_conf_generate();
 	$res |= extconfig_conf_generate();
 	$res |= extensions_minivm_conf_generate();
+	$res |= fax_conf_generate();
 	$res |= festival_conf_generate();
 	$res |= followme_conf_generate();
 	$res |= func_odbc_conf_generate();
@@ -1395,6 +1397,12 @@ function alsa_conf_generate($return=false) {
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/alsa.conf", $conf);
 }
+function ccss_conf_generate($return=false) {
+
+	$conf = "";
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/ccss.conf", $conf);
+}
 function cdr_adaptive_odbc_conf_generate($return=false) {
 
 	$conf = "";
@@ -1502,6 +1510,20 @@ function extensions_minivm_conf_generate($return=false) {
 	$conf = "";
 
 	return ($return) ? $conf : util_file_write("/etc/asterisk/extensions_minivm.conf", $conf);
+}
+function fax_conf_generate($return=false) {
+
+	$conf = <<<EOD
+[general]
+maxrate=14400
+minrate=2400
+statusevents=yes
+modems=v17,v27,v29
+ecm=yes
+
+EOD;
+
+	return ($return) ? $conf : util_file_write("/etc/asterisk/res_fax.conf", $conf);
 }
 function festival_conf_generate($return=false) {
 

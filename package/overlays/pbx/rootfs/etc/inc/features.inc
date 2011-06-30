@@ -87,12 +87,12 @@ function features_conf_generate($return=false) {
 	$conf .= "xferfailsound = beeperr\n";
 	$conf .= "pickupsound = beep\n";
 	$conf .= "pickupfailsound = beeperr\n";
+	$conf .= "pickupexten = " . $pc['pickupexten'] . "\n";
 	$conf .= "\n";
 	
 	$conf .= "[featuremap]\n";
 	$conf .= "atxfer => " . $pc['attendedtransfer'] . "\n";
 	$conf .= "blindxfer => " . $pc['blindtransfer'] . "\n";
-	$conf .= "pickupexten => " . $pc['pickupexten'] . "\n";
 //	$conf .= "disconnect => ". $pc['disconnect'] . "\n";
 //	$conf .= "automon => *1\n";//                  ; One Touch Record
 
