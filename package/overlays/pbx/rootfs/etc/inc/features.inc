@@ -83,10 +83,6 @@ function features_conf_generate($return=false) {
 	$conf .= "featuredigittimeout = " . $pc['featuredigittimeout'] . "\n";
 	$conf .= "atxfernoanswertimeout = " . $pc['atxfernoanswertimeout'] . "\n";
 	$conf .= "transferdigittimeout = " . $pc['transferdigittimeout'] . "\n";
-	$conf .= "xfersound = beep\n";
-	$conf .= "xferfailsound = beeperr\n";
-	$conf .= "pickupsound = beep\n";
-	$conf .= "pickupfailsound = beeperr\n";
 	$conf .= "pickupexten = " . $pc['pickupexten'] . "\n";
 	$conf .= "\n";
 	
