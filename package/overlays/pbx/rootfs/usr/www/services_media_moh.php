@@ -129,7 +129,7 @@ if(isset($config['media']['custom-moh']))
 
 if(is_file($mohfile))
 {
-	$filetime = date("F j, Y, g:i a",fileatime($mohfile));
+	$filetime = date("F j, Y, g:i a",filemtime($mohfile));
 } else {
 	$filetime = gettext("No last upload.");
 }

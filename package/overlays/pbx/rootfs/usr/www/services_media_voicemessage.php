@@ -125,7 +125,7 @@ if(isset($config['media']['custom-vmgreeting']))
 
 if(is_file($vmgreetingfile))
 {
-	$filetime = date("F j, Y, g:i a",fileatime($vmgreetingfile));
+	$filetime = date("F j, Y, g:i a",filemtime($vmgreetingfile));
 } else {
 	$filetime = gettext("No last upload.");
 }
