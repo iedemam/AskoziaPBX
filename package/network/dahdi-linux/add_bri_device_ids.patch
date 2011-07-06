@@ -70,3 +70,14 @@
  	{0, }
  
  };
+--- dahdi-linux-2.3.0.1/drivers/dahdi/dahdi_transcode.c	2011-06-30 13:41:34.000000000 +0200
++++ dahdi-linux-2.3.0.1/drivers/dahdi/dahdi_transcode.c.2	2011-07-05 01:27:55.000000000 +0200
+@@ -46,7 +46,7 @@
+  * is used as a simplistic way to spread the load amongst the different hardware
+  * transcoders in the system. */
+ static LIST_HEAD(active_list);
+-static spinlock_t translock = SPIN_LOCK_UNLOCKED;
++static DEFINE_SPINLOCK(translock);
+ 
+ EXPORT_SYMBOL(dahdi_transcoder_register);
+ EXPORT_SYMBOL(dahdi_transcoder_unregister);
