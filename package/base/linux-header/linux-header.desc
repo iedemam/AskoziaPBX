@@ -31,11 +31,11 @@
 
 [L] GPL
 [S] Stable
-[V] 2.6.30.3
+[V] 2.6.39.2
 
 # in theory we only need the initial headers (stage 0) however some arches
 # generate some and need a compiler to do so (SPARC) so we do rebuild them
 # in stage 1 ...
 [P] X 01-------9 100.300
 
-[D] 0 linux-2.6.30.3.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/
+[D] 0 linux-2.6.39.2.tar.bz2 http://ftp.kernel.org/pub/linux/kernel/v2.6/

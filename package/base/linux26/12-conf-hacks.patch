@@ -24,52 +24,41 @@ for various new 2.5/2.6 kernels by Rene Rebe <rene@exactcode.de>.
 diff -ur linux-2.6.27/scripts/kconfig/conf.c linux-2.6.27.work/scripts/kconfig/conf.c
 --- linux-2.6.27/scripts/kconfig/conf.c	2008-10-10 00:13:53.000000000 +0200
 +++ linux-2.6.27.work/scripts/kconfig/conf.c	2008-10-19 14:39:10.000000000 +0200
-@@ -22,6 +22,7 @@
- 	ask_all,
- 	ask_new,
- 	ask_silent,
-+	set_no2mod,
- 	set_default,
- 	set_yes,
- 	set_mod,
-@@ -438,7 +439,7 @@
- 	bindtextdomain(PACKAGE, LOCALEDIR);
- 	textdomain(PACKAGE);
- 
--	while ((opt = getopt(ac, av, "osdD:nmyrh")) != -1) {
-+	while ((opt = getopt(ac, av, "osdD:nmMyrh")) != -1) {
- 		switch (opt) {
- 		case 'o':
- 			input_mode = ask_silent;
-@@ -460,6 +461,9 @@
- 		case 'm':
- 			input_mode = set_mod;
- 			break;
-+		case 'M':
-+			input_mode = set_no2mod;
-+			break;
- 		case 'y':
- 			input_mode = set_yes;
- 			break;
-@@ -533,6 +537,9 @@
+@@ -26,6 +26,7 @@
+ 	oldconfig,
+ 	allnoconfig,
+ 	allyesconfig,
++	no2modconfig,
+ 	allmodconfig,
+ 	alldefconfig,
+ 	randconfig,
+@@ -448,6 +449,7 @@
+ 	{"savedefconfig",   required_argument, NULL, savedefconfig},
+ 	{"allnoconfig",     no_argument,       NULL, allnoconfig},
+ 	{"allyesconfig",    no_argument,       NULL, allyesconfig},
++	{"no2modconfig",    no_argument,       NULL, no2modconfig},
+ 	{"allmodconfig",    no_argument,       NULL, allmodconfig},
+ 	{"alldefconfig",    no_argument,       NULL, alldefconfig},
+ 	{"randconfig",      no_argument,       NULL, randconfig},
+@@ -559,6 +561,9 @@
  		else if (!stat("all.config", &tmpstat))
  			conf_read_simple("all.config", S_DEF_USER);
  		break;
-+	case set_no2mod:
++	case no2modconfig:
 +		conf_read_simple(".config", S_DEF_USER);
 +		break;
  	default:
  		break;
  	}
-@@ -559,6 +566,9 @@
- 	case set_mod:
- 		conf_set_all_new_symbols(def_mod);
+@@ -582,6 +587,9 @@
+ 	case allyesconfig:
+ 		conf_set_all_new_symbols(def_yes);
  		break;
-+	case set_no2mod:
++	case no2modconfig:
 +		conf_set_all_new_symbols(def_no2mod);
 +		break;
- 	case set_random:
- 		conf_set_all_new_symbols(def_random);
+ 	case allmodconfig:
+ 		conf_set_all_new_symbols(def_mod);
  		break;
 diff -ur linux-2.6.27/scripts/kconfig/lkc.h linux-2.6.27.work/scripts/kconfig/lkc.h
 --- linux-2.6.27/scripts/kconfig/lkc.h	2008-10-10 00:13:53.000000000 +0200
@@ -85,33 +74,33 @@ diff -ur linux-2.6.27/scripts/kconfig/lkc.h linux-2.6.27.work/scripts/kconfig/lk
 diff -ur linux-2.6.27/scripts/kconfig/Makefile linux-2.6.27.work/scripts/kconfig/Makefile
 --- linux-2.6.27/scripts/kconfig/Makefile	2008-10-10 00:13:53.000000000 +0200
 +++ linux-2.6.27.work/scripts/kconfig/Makefile	2008-10-19 14:14:59.000000000 +0200
-@@ -2,7 +2,7 @@
- # Kernel configuration targets
+@@ -3,7 +3,7 @@
  # These targets are used from top-level makefile
  
--PHONY += oldconfig xconfig gconfig menuconfig config silentoldconfig update-po-config
-+PHONY += oldconfig xconfig gconfig menuconfig config silentoldconfig no2modconfig update-po-config
+ PHONY += oldconfig xconfig gconfig menuconfig config silentoldconfig update-po-config \
+-	localmodconfig localyesconfig
++	localmodconfig localyesconfig no2modconfig
  
- Kconfig := arch/$(SRCARCH)/Kconfig
- 
-@@ -61,6 +61,9 @@
- allmodconfig: $(obj)/conf
- 	$< -m $(Kconfig)
+ ifdef KBUILD_KCONFIG
+ Kconfig := $(KBUILD_KCONFIG)
+@@ -108,6 +108,9 @@
+ savedefconfig: $(obj)/conf
+ 	$< --$@=defconfig $(Kconfig)
  
 +no2modconfig: scripts/kconfig/conf
-+	$< -M $(Kconfig)
++	$< --$@ $(Kconfig)
 +
  defconfig: $(obj)/conf
  ifeq ($(KBUILD_DEFCONFIG),)
- 	$< -d $(Kconfig)
-@@ -83,6 +86,7 @@
- 	@echo  '  randconfig	  - New config with random answer to all options'
- 	@echo  '  defconfig	  - New config with default answer to all options'
+ 	$< --defconfig $(Kconfig)
+@@ -135,6 +138,7 @@
+ 	@echo  '  allnoconfig	  - New config where all options are answered with no'
+ 	@echo  '  allyesconfig	  - New config where all options are accepted with yes'
  	@echo  '  allmodconfig	  - New config selecting modules when possible'
 +	@echo  '  no2modconfig    - New config selecting modules for disabled options'
- 	@echo  '  allyesconfig	  - New config where all options are accepted with yes'
- 	@echo  '  allnoconfig	  - New config where all options are answered with no'
- 
+ 	@echo  '  alldefconfig    - New config with all symbols set to default'
+ 	@echo  '  randconfig	  - New config with random answer to all options'
+ 	@echo  '  listnewconfig   - List new options'
 --- linux-2.6.27.vanilla/scripts/kconfig/confdata.c	2008-10-10 00:13:53.000000000 +0200
 +++ linux-2.6.27/scripts/kconfig/confdata.c	2008-10-20 12:45:07.000000000 +0200
 @@ -824,6 +824,17 @@
