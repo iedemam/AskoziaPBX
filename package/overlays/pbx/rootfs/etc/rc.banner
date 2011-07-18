@@ -37,7 +37,7 @@
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
 	$product_name = system_get_product_name();
-	$copyright_info = "AskoziaPBX is Copyright (C) 2007-2010 IKT. All rights reserved.\n" .
+	$copyright_info = "AskoziaPBX is Copyright (C) 2007-2011 IKT. All rights reserved.\n" .
 		"    m0n0wall base Copyright (C) 2002-2007 Manuel Kasper. All rights reserved.\n";
 	if (file_exists("{$g['etc_path']}/brand.licensed")) {
 		$copyright_info = "\n\n";

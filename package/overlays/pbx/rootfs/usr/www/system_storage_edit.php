@@ -150,7 +150,7 @@ if (!$initialformat && !count($unassigneddisks)) {
 			<span class="vexpl"><strong><span class="red"><?=strtoupper(gettext("warning"));?>:</span>
 			<?=gettext("All information on this disk will be lost after clicking \"Format\"!");?></strong></span>
 			<br>
-			<input type="checkbox" onclick="jQuery('#format').removeAttr('disabled');"><?=gettext("I know, thanks for the warning.");?>&nbsp;&nbsp;<input name="format" id="format" type="submit" class="formbtn" disabled="true" value="<?=gettext("Format");?>...">
+			<input type="checkbox"><?=gettext("I know, thanks for the warning.");?>&nbsp;&nbsp;<input name="format" id="format" type="submit" class="formbtn" value="<?=gettext("Format");?>...">
 		</td>
 	</tr>
 </table>
